@@ -1,0 +1,16 @@
+<div class="is-dropdown-dual-multi-select-header">
+    <span class="fu-label">
+        {{title}}
+    </span>
+
+    <span class="fu-search-bar">
+        <fusion-input
+            showSearchIcon="right"
+            placeholder="Search"
+            [options]="{rounded: true, size: inputSize.Medium}"
+            [showSearchIconWhenHasInputValue]="true"
+            [clear]="true"
+            [formControl]="searchControl">
+        </fusion-input>
+    </span>
+</div>

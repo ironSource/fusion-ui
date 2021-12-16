@@ -1,0 +1,71 @@
+@import './vars/colors';
+@import './vars/border';
+@import 'vars/fonts_v1';
+@import './vars/mixins';
+
+$headerPadding: 15px;
+$panelTopMargn: 20px;
+$headerBoxShadow: 0 1px 3px 0 rgba(0, 0, 0, 0.23);
+$contentPadding: 30px;
+$footerPadding: 20px 0 0 0;
+
+.is-form-panel {
+	margin: 0 auto;
+	margin-top: $panelTopMargn;
+	@extend %border;
+	@extend %borderRadius;
+	background-color: $light-100;
+	box-shadow: $panel-box-shadow;
+
+	.is-panel-content {
+		padding: $contentPadding;
+		.is-content-group {
+			margin-top: 50px;
+			&:first-child {
+				margin-top: 0;
+			}
+			.is-panel-group-title {
+				@extend %font8;
+				color: $light-700;
+				text-transform: uppercase;
+				margin-bottom: 10px;
+			}
+
+			.is-content-header {
+				@extend %font12;
+				color: $light-900;
+				margin: 30px 0 10px 0;
+			}
+
+			.is-content-part {
+				@extend %borderRadius;
+				background-color: $White;
+				@extend %border;
+				padding: $contentPadding;
+				margin-bottom: 5px;
+				.is-content-label {
+					@extend %font11;
+					line-height: 32px;
+				}
+				.is-content-row {
+					margin-bottom: 15px;
+					&:last-child {
+						margin-bottom: 0;
+					}
+				}
+
+				&.creative-content {
+					padding: 0;
+				}
+			}
+		}
+	}
+
+	.is-panel-footer {
+		padding: $footerPadding;
+	}
+
+	&.big {
+		width: 920px;
+	}
+}

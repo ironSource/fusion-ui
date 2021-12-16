@@ -1,0 +1,26 @@
+name: CI-CodeCheck
+
+on:
+  push:
+
+jobs:
+  startCI:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate Short SHA and Unique runer id
+        id: vars
+        run: |
+          echo ::set-output name=sha_short::${GITHUB_SHA::7}
+          echo ::set-output name=uuid::${{github.ref_name}}:${GITHUB_SHA::7}:${GITHUB_RUN_ID}
+
+      - name: Trigger Code Validate
+        id: trigger
+        timeout-minutes: 7
+        uses: ironSource/action-trigger-workflow@v1
+        with:
+          owner: ironSource
+          repo: fusion-actions
+          github_token: ${{ secrets.PAT_TOKEN }}
+          workflow_file_name: ci.yml
+          job_uuid: "${{ steps.vars.outputs.uuid }}"
+          inputs: '{ "branch_name": "${{github.ref_name}}", "user": "${{github.actor}}", "job_uuid": "${{ steps.vars.outputs.uuid }}", "sha": "${{ steps.vars.outputs.sha_short }}", "event_name": "${{github.event_name}}", "event_action": "${{github.event.action}}"}'

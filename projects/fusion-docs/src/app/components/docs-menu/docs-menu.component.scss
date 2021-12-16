@@ -1,0 +1,61 @@
+@import '../../../../../fusion-ui/src/style/scss/vars/vars';
+@import '../../../../../fusion-ui/src/style/scss/vars/mixins';
+
+fusion-docs-menu {
+    @extend %list-reset;
+    position: fixed;
+
+  .is-right-side-menu {
+    margin-top: 30px;
+
+    .is-right-side-menu-title {
+      color: $dark-300;
+      @extend %font3;
+      padding: 3px 0;
+      position: relative;
+      cursor: pointer;
+
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 11px;
+        right: 0;
+        height: 5px;
+        width: 10px;
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSI1IiB2aWV3Qm94PSIwIDAgMTAgNSI+ICAgIDxwYXRoIGZpbGw9IiMxNzJENEMiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTAgMGgxMEw1IDV6Ii8+PC9zdmc+);
+        background-repeat: no-repeat;
+      }
+
+      &.is-closed {
+        &:after {
+          border-width: 5px 5px 0;
+          transform: rotate(-90deg);
+        }
+
+        + ul {
+          display: none;
+        }
+      }
+
+    }
+
+    .is-right-side-menu-item {
+      color: $light-900;
+      @extend %font5;
+      padding: 3px 0;
+
+      > div {
+        cursor: pointer;
+
+        &:hover {
+          color: $dark-300;
+        }
+      }
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}

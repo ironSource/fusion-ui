@@ -1,0 +1,41 @@
+@import '../../../../styles/vars';
+
+:host {
+    .icons-holder{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        .icon-item{
+            height: 140px;
+            border: solid 1px $fu-light-400;
+            margin: 8px;
+            .icon-icon{
+                width: 100px;
+                height: 80px;
+                display: table-cell;
+                text-align: center;
+                vertical-align: middle;
+                @include icon-style('icon-example', $fu-dark-500, 32px, null, true);
+            }
+            .icon-name {
+                padding: 5px;
+                width: 100px;
+                height: 58px;
+                background-color: $fu-light-100;
+                color: $fu-light-900;
+                @extend %font-body;
+                display: table-cell;
+                text-align: center;
+                vertical-align: middle;
+            }
+        }
+    }
+}
+
+.fu-search-and-action-holder{
+    --search-icon-focused-color: #{$fu-light-700};
+    --clear-input-top: 6px;
+    button.primary{
+        margin-left: 8px;
+    }
+}

@@ -1,0 +1,494 @@
+<div class="row">
+    <div class="col-9">
+        <!--UI-Component Examples-->
+        <fusion-example-block id="typeBasic" title="Basic">
+            <!--Code Examples-->
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code=' <!--simple using-->
+<fusion-accordion
+        [data]="accordionData"
+        (change)="accordionChanges($event, `leftAccordion`)"
+></fusion-accordion>
+
+<!--with dynamic component using-->
+<fusion-accordion
+    [data]="accordionWithComponentData"
+    [configuration]="accordionWithComponentOptions"
+    (change)="accordionChanges($event, `rightAccordion`)"
+></fusion-accordion>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="...
+    accordionOptions: AccordionConfigurations = {};
+    accordionLeftOptions: AccordionConfigurations = {opened: 1, iconPosition: 'left'};
+
+    accordionSimpleData: AccordionItem[];
+    accordionWithComponentData: AccordionItem[];
+
+    // if you want use dynamic component for content only
+    accordionWithComponentOptions: AccordionConfigurations = {opened: 1, iconPosition: 'left', content: {component: AccordionExampleContentComponent}};
+
+    /*
+     if you want use dynamic component for title and content:
+     {header: {component: AccordionExampleTitleComponent}, content: {component: AccordionExampleContentComponent}}
+     in this case item data must have data for both components:
+
+    {
+        headerData: {textTitle: 'Anaru Hakopa'},
+        contentData: {
+            textContent:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+        }
+    }
+
+    In additional for data component will get also:
+    isAccordion: true, isOpen: true / false, iconPosition: 'left' / 'right'
+    */
+
+
+    ngOnInit() {
+        this.accordionSimpleData = [
+            {
+                headerData: 'Anaru Hakopa',
+                contentData:
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+            },
+            {
+                headerData: 'Sam Daemon',
+                contentData:
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+            },
+            {
+                headerData: 'Onuchukwu Iweobiegbulam',
+                contentData:
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+            }
+        ];
+        this.accordionWithComponentData = [
+            {
+                headerData: 'Anaru Hakopa',
+                contentData: {
+                    textContent:
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+                }
+            },
+            {
+                headerData: 'Sam Daemon',
+                contentData: {
+                    textContent:
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+                }
+            },
+            {
+                headerData: 'Onuchukwu Iweobiegbulam',
+                contentData: {
+                    textContent:
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+                }
+            }
+        ];
+    }
+
+    accordionChanges($event, target) {
+        console.log('accordionChanges: ', target, $event);
+    }
+...."
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="import React from 'react';
+import ReactDOM from 'react-dom';
+import './Foo.css';
+import { FusionAccordion } from '@ironsrc/fusion-ui/native/react';
+
+const accordionSimpleData = [
+  {
+    headerData: 'Anaru Hakopa',
+    contentData:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+  },
+  {
+    headerData: 'Sam Daemon',
+    contentData:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+  },
+  {
+    headerData: 'Onuchukwu Iweobiegbulam',
+    contentData:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+  }
+];
+
+
+export default class Foo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      accordion: {
+        data: accordionSimpleData
+      }
+    };
+  }
+
+  componentDidMount() {
+    this.props.updateLayoutTitle({ title: 'Accordion' });
+  }
+
+  /**
+   * On accordion state (box open / close) change
+   * @param changes {opened: 1} 'opened' - box state (opened / closed) 1 - box index
+   */
+  accordionChanged(changes) {
+    console.log('accordionChanged', changes);
+  }
+
+  /**
+   * render Accordion Content element
+   * @param args
+   * @returns {HTMLDivElement}
+   */
+  renderContentElement(contentData) {
+    const host = document.createElement('div')
+    host.className = 'fu-accordion-box-content';
+    ReactDOM.render(<span>{contentData.text}</span>, host);
+    return host;
+  }
+
+
+  render() {
+    return (
+      <div className='example-holder'>
+        <p>Accordion example:</p>
+        <br/>
+        <FusionAccordion config={this.state.accordion} change={this.accordionChanged.bind(this)}></FusionAccordion>
+      </div>
+    );
+  }
+}
+"
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code=" <!--foo.css-->
+.example-holder{
+    width: 800px;
+    margin: 15px auto;
+    padding: 25px;
+    background-color: white;
+    border: solid 1px #ccc;
+}
+
+fusion-accordion{
+    width: 360px;
+    display: block;
+}
+
+.fu-accordion-box-content{
+    display: block;
+    color: #313d91;
+    padding: 10px;
+    font: 13px/20px helvetica, sans-serif;
+    border-bottom: solid 1px #e5e7e9;
+}
+
+"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<template>
+  <div class='example-holder'>
+    <p>Accordion example</p>
+    <FusionAccordion :config='accordion' @change='onChange'></FusionAccordion>
+  </div>
+</template>
+
+<style>
+.example-holder{
+  width: 360px;
+  margin: 15px auto;
+  padding: 25px;
+  background-color: white;
+  border: solid 1px #ccc;
+}
+</style>"
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="<script>
+import Vue from 'vue';
+import { FusionAccordion } from '@ironsrc/fusion-ui/native/vue';
+import AccordionContent from '@/components/AccordionContent';
+
+const accordionData = [
+  {
+    headerData: 'Anaru Hakopa',
+    contentData:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+  },
+  {
+    headerData: 'Sam Daemon',
+    contentData:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+  },
+  {
+    headerData: 'Onuchukwu Iweobiegbulam',
+    contentData:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+  }
+];
+
+export const FooComponent = {
+  name: 'FooComponent',
+  mounted() {
+    this.$emit('updateLayoutTitle', { title: 'Component Example' });
+  },
+  components: {
+    FusionAccordion
+  },
+  data() {
+    return {
+      accordion: {
+        configuration: {opened: 1, content:{renderElement: this.renderContentElement}},
+        data: accordionData
+      }
+    }
+  },
+  methods: {
+    onChange: function(data){
+      console.log('onChane', data);
+    },
+    renderContentElement: function(contentData){
+      const host = document.createElement('div');
+      const elem = new Vue({
+        el: host,
+        render(createElement) {
+          return createElement(
+              AccordionContent,
+              {
+                props: {
+                  text: contentData.text
+                }
+              });
+        },
+      });
+      return elem.$el;
+    }
+  }
+};
+export default FooComponent;
+</script>"
+                ></fusion-code-block>
+                <p style="font-weight: bold">AccordionContent</p>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="<template>
+  <div class='fu-accordion-box-content'>{ { text }}</div>
+</template>
+
+<script>
+export default {
+  name: 'AccordionContent',
+  props: ['text'],
+}
+</script>
+
+<style scoped>
+.fu-accordion-box-content{
+  display: block;
+  color: #313d91;
+  padding: 10px;
+  font: 13px/20px helvetica, sans-serif;
+  border-bottom: solid 1px #e5e7e9;
+}
+</style>
+"
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code=' <!--index.html -->
+<html>
+<head>
+    <title>FusionUI Native Sandbox</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="main.css" />
+
+    <link rel="stylesheet" href="node_modules/@ironsrc/fusion-ui/native/core/fusion.theme.css">
+    <script src="node_modules/@ironsrc/fusion-ui/native/core/polyfills-es2015.js" type="module"></script>
+    <script src="node_modules/@ironsrc/fusion-ui/native/core/polyfills-es5.js" nomodule></script>
+    <script src="node_modules/@ironsrc/fusion-ui/native/core/polyfill-webcomp-es5.js" nomodule></script>
+    <script src="node_modules/@ironsrc/fusion-ui/native/core/polyfill-webcomp-es2015.js"></script>
+    <script src="node_modules/@ironsrc/fusion-ui/native/core/main-es2015.js" type="module"></script>
+    <script src="node_modules/@ironsrc/fusion-ui/native/core/main-es5.js" nomodule></script>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script type="application/javascript" src="src/index.js"></script>
+</body>
+
+</html>
+'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<!-- main.css -->
+#app {
+    width: 360px;
+    margin: 50px auto;
+    padding: 30px;
+    border: solid 1px #ccc;
+}
+
+<!--For accordion content as element add element style-->
+.fu-accordion-box-content{
+    display: block;
+    color: #313d91;
+    padding: 10px;
+    font: 13px/20px helvetica, sans-serif;
+    border-bottom: solid 1px #e5e7e9;
+}
+"
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="<!-- index.js -->
+
+const accordionSimpleData = [
+    {
+        headerData: 'Anaru Hakopa',
+        contentData:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+    },
+    {
+        headerData: 'Sam Daemon',
+        contentData:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+    },
+    {
+        headerData: 'Onuchukwu Iweobiegbulam',
+        contentData:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+    }
+];
+
+/* For accordion content as element add element render method */
+const getContentElement = (contentData)=>{
+    const element = document.createElement('div');
+    element.className = 'fu-accordion-box-content';
+    element.appendChild(document.createTextNode(contentData.text));
+    return element;
+}
+/* For accordion content as element add element render method */
+
+const onLoad = () => {
+    // get application holder for add buttons here
+    const appHolder = document.getElementById('app');
+
+    // add button
+    const accordion = document.createElement('native-fusion-accordion');
+    accordion.config = {
+        configuration: {opened: 1}, // configuration - not required
+        data: accordionSimpleData
+    };
+
+    /* For accordion content as element set configuration:
+    ** configuration: {opened: 1, content:{renderElement: getContentElement}},
+    */
+
+    accordion.addEventListener('change',(data)=>{
+        console.log('Accordion change', data.detail)
+    }, false);
+
+    appHolder.appendChild(accordion);
+};
+
+document.addEventListener('DOMContentLoaded', onLoad, false);"
+                ></fusion-code-block>
+            </ng-template>
+            <!--Code Examples-->
+
+            <div class="row">
+                <div class="col-3">
+                    <fusion-accordion [data]="accordionSimpleData" (change)="accordionChanges($event, 'leftAccordion')"></fusion-accordion>
+                </div>
+                <div class="col-1"></div>
+                <div class="col-4">
+                    <fusion-accordion
+                        [data]="accordionWithComponentData"
+                        [configuration]="accordionWithComponentOptions"
+                        (change)="accordionChanges($event, 'rightAccordion')"
+                    ></fusion-accordion>
+                </div>
+            </div>
+        </fusion-example-block>
+        <!--UI-Component Examples-->
+
+        <!--UI-Component Configuration Doc-->
+        <div class="is-example-title">Configuration</div>
+        <fusion-example-block id="params" title="Parameters" [collapsible]="false">
+            <fusion-code-block
+                lang="js"
+                code="// input parameters
+@Input() data: AccordionItem[];
+@Input() configuration: AccordionOptions;
+
+// output events
+@Output() change = new EventEmitter(); // {opened: index} / {closed: index}
+
+// used types and interfaces
+export interface AccordionItem {
+    headerData: any;
+    contentData: any;
+}
+
+export interface AccordionConfigurations {
+    opened?: number;
+    iconPosition?: AccordionIconPosition;
+    header?: {
+        component?: Type<Component>;
+        renderElement?: (data, index) => Node;
+    };
+    content?: {
+        component?: Type<Component>;
+        renderElement?: (data, index) => Node;
+    };
+}
+
+// Also in case using in Angular with 'title' and 'content' as component in additional will be passed options:
+{
+    isAccordion: true
+    isOpen: boolean,
+    iconPosition: AccordionIconPosition
+}
+
+export type AccordionIconPosition = 'left' | 'right';
+"
+            ></fusion-code-block>
+        </fusion-example-block>
+        <!--UI-Component Configuration Doc-->
+    </div>
+
+    <div class="col-3 is-right-side-menu-holder">
+        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+    </div>
+</div>

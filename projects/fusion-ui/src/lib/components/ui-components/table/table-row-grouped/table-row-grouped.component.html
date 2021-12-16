@@ -1,0 +1,13 @@
+<td *ngFor="let cell of row.data; let cellIndex = index; let isLast = last"
+    [attr.rowspan]="getCellRowspan(cell)"
+    fusionTableCell
+    [data]="getCellValue(cell, columns[getColumnIndex(row.data, cellIndex)])"
+    [column]="columns[getColumnIndex(row.data, cellIndex)]"
+    [position]="{x: rowIndex, y: cellIndex}"
+    [options]="options"
+    [isRemove]="tableService.isRemove(isLast, options, row.options)"
+    (onRemove)="rowRemoved.emit()"
+    (onSelectedChange)="onRowSelectedChange($event)"
+    [style.width]="tableService.getWidth(columns, columns[getColumnIndex(row.data, cellIndex)])"
+>
+</td>

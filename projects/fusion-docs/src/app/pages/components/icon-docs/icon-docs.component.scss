@@ -1,0 +1,141 @@
+@import '../../../../styles/vars';
+
+:host {
+    @extend %list-reset;
+    .is-page-block {
+        margin-top: 30px;
+        .example-holder{
+            margin-left: 15px;
+            line-height: 35px;
+        }
+    }
+    .is-example-holder{
+        fusion-icon,
+        fusion-flag {
+            display: inline-block;
+            margin-right: 30px;
+            svg{
+                height: 32px;
+                width: 32px;
+            }
+        }
+    }
+
+    .is-icons-holder,
+    .is-flags-holder {
+        li{
+            width: 97px;
+            height: 160px;
+            display: inline-block;
+            margin: 15px;
+            position: relative;
+            border: solid 1px #fafafa;
+            fusion-icon{
+                display: block;
+                margin: 30px;
+                svg{
+                    height: 32px;
+                    width: 32px;
+                }
+            }
+            .is-icon-name{
+                height: 60px;
+                width: 100%;
+                background-color: #fafafa;
+                font-size: 13px;
+                color:$dark-300;
+                position: absolute;
+                bottom: 0;
+                div {
+                    @extend %font7;
+                    padding: 11% 0;
+                    text-align: center;
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+    .is-icons-holder{
+        li{
+            color:$light-700;
+            fusion-icon:not(
+                .loading,
+                .creative-image,
+                .creative-video,
+                .circle-interstitial,
+                .circle-offerwall-video,
+                .circle-offerwall
+            ){
+                svg * {
+                    fill: currentColor;
+                }
+            }
+            &:hover{
+                color:$light-900;
+            }
+        }
+    }
+    .is-flags-holder{
+        li{
+            fusion-flag{
+                display: block;
+                margin: 30px;
+                svg{
+                    height: 22px;
+                    width: 35px;
+                }
+            }
+        }
+    }
+
+    .is-logos-holder {
+        li {
+            width: 188px;
+            height: 130px;
+            display: inline-block;
+            margin: 15px;
+            position: relative;
+            border: solid 1px #fafafa;
+            color:$light-700;
+            fusion-svg {
+                height: 45px;
+                display: block;
+                text-align: center;
+                margin-top: 20px;
+                svg {
+                    height: 45px;
+                    * {
+                        fill:currentColor;
+                    }
+                }
+            }
+            &:hover{
+                color:$light-900;
+            }
+            .is-logo-name {
+                height: 60px;
+                width: 100%;
+                background-color: #fafafa;
+                font-size: 13px;
+                color:$dark-300;
+                position: absolute;
+                bottom: 0;
+                div {
+                    @extend %font7;
+                    padding: 11% 0;
+                    text-align: center;
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+
+    .icon-status-holder{
+        display: flex;
+        div{
+            margin-right: 30px;
+            font-size: 18px;
+            line-height: 22px;
+        }
+    }
+}

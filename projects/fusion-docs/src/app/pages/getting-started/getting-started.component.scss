@@ -1,0 +1,62 @@
+@import '../../../styles/vars';
+
+:host {
+    @extend %list-reset;
+    .getting-started-container {
+        h1 {
+            color: $light-700;
+
+            &.header {
+                font-size: 36px;
+                color: $light-800;
+            }
+        }
+
+        padding: 30px;
+
+        h2 {
+            color: $dark-100;
+        }
+
+        .code-container {
+            box-shadow: 2px 2px 3px 0 rgba(130, 141, 154, 0.3);
+            border-radius: 3px;
+            margin-bottom: 15px;
+            position: relative;
+
+            fusion-icon {
+                position: absolute;
+                right: 15px;
+                top: 22px;
+                cursor: pointer;
+            }
+
+            @include icon-style('squares', $light-800, 16px, true, true);
+            @include icon-style('download', $light-800, 16px, true, true) {
+                right: 45px;
+            }
+        }
+
+        .installation-container {
+            margin-bottom: 50px;
+
+            p {
+                margin-bottom: 5px;
+            }
+        }
+
+        .why-fusion {
+            @include icon-style('check-v-1', $light-800, 16px, true, true) {
+                vertical-align: top;
+            }
+        }
+
+        .support, .installation, .git-project, .why-fusion, .team {
+            margin-top: 50px;
+        }
+
+        .team img {
+            height: 80px;
+        }
+    }
+}

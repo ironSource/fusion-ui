@@ -1,0 +1,1485 @@
+<div class="row">
+    <div class="col-9">
+        <!--UI-Component Examples-->
+        <div class="is-example-title">Types</div>
+        <fusion-example-block id="typeBasic" title="Default">
+            <!--Code Examples-->
+            <ng-template fusionExampleBlock="Angular">
+                <p>Template part:</p>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<div class="tags-holder">
+    <div class="tabs-holder">
+        <fusion-tabs [configuration]="baseTabs" [(selected)]="selectedTab"></fusion-tabs>
+    </div>
+    <div class="tab-content-holder">
+        <!-- Here consumer can put content by selectedTab -->
+        <div class="selected-tab-content">Selected: { { selectedTab ? selectedTab.text : `nothing` }}</div>
+    </div>
+</div>
+'
+                ></fusion-code-block>
+                <p>Code part:</p>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="....
+selectedTab: TabConfiguration;
+baseTabs = {
+    tabs: [
+        {
+            text: 'Johannesburg'
+        },
+        {
+            text: 'Springfield',
+            infoIcon: 'info-circle',
+            popupContent: {
+                type: PopupContentExampleComponent as Type<Component>,
+                data: {
+                    title: 'Title modal',
+                    content:
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                    moreInfo: {
+                        url: 'http://google.com'
+                    }
+                }
+            }
+        },
+        {
+            text: 'Xian',
+            tooltipContent: `Here's a tooltip!`,
+            infoIcon: 'info-circle'
+        },
+        {
+            text: 'Milwaukee',
+            disabled: true
+        }
+    ];
+}
+...."
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import React from "react";
+import "./Foo.css";
+import {FusionTabs} from "@ironsrc/fusion-ui/native/react";
+
+const TABS_BASE_MOCK = [
+  {
+    text: "Johannesburg"
+  },
+  {
+    text: "Springfield"
+  },
+  {
+    text: "Xian",
+    tooltipContent: "Here`s a tooltip!",
+    infoIcon: "info-circle"
+  },
+  {
+    text: "I`am Disabled",
+    disabled: true
+  }
+];
+
+export default class Foo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tabs: {
+        configuration: {tabs: TABS_BASE_MOCK},
+        selected: TABS_BASE_MOCK[1]
+      },
+      selectedContent: TABS_BASE_MOCK[1].text
+    };
+  }
+
+  componentDidMount() {
+    this.props.updateLayoutTitle({ title: "Tabs" });
+  }
+
+  selectedChanged(selectedTab){
+    this.setState({
+      tabs: {...this.state.tabs, selected: selectedTab},
+      selectedContent: selectedTab.text
+    })
+  }
+
+  render() {
+    return (
+      <div className="example-holder">
+        <p>Toast component example:</p>
+        <div className="tabs-holder">
+          <FusionTabs config={this.state.tabs} selectedChange={this.selectedChanged.bind(this)}></FusionTabs>
+        </div>
+        <div className="tabs-content-holder">
+
+          Selected: {this.state.selectedContent}
+
+        </div>
+      </div>
+    );
+  }
+}
+
+// for FusionTooltip using you need to Add FusionTooltip component to main app component:
+....
+import {....., FusionTooltip} from "@ironsrc/fusion-ui/native/react";
+....
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      .....
+      tooltip: {
+        tooltipData: {}
+      }
+    }
+  }
+
+  componentDidMount() {
+    this.tooltipService = window.fusion.services.tooltipService;
+    this.tooltipDataSubscription = this.tooltipService.tooltipData$
+        .subscribe(tooltipData => this.setState({tooltip: {tooltipData}}));
+  }
+
+....
+
+  render() {
+    return (
+      <div>
+        ....
+        ....
+        {
+            this.state.tooltip.tooltipData.content &&
+            <div>
+                <FusionTooltip config={this.state.tooltip}></FusionTooltip>
+            </div>
+        }
+      </div>
+    )
+  }
+....
+'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div class="example-holder">
+    <p>Tabs example</p>
+    <div class="tabs-holder">
+      <FusionTabs :config="tabs" @selectedChange="onSelectedChanged"></FusionTabs>
+    </div>
+    <div class="tabs-content-holder">
+      Selected: { { selectedContent }}
+    </div>
+  </div>
+</template>
+
+<!--for FusionTooltip using you need to Add FusionTooltip component to main app component:-->
+<template>
+  <div id="app">
+  .....
+  .....
+  <FusionTooltip :config="tooltip" v-if="tooltip.tooltipData.content"/>
+  </div>
+<template>
+'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import { FusionTabs } from "@ironsrc/fusion-ui/native/vue";
+
+const TABS_BASE_MOCK = [
+  {
+    text: "Johannesburg"
+  },
+  {
+    text: "Springfield"
+  },
+  {
+    text: "Xian"
+  },
+  {
+    text: "I`am Disabled",
+    disabled: true
+  }
+];
+
+
+export const FooComponent = {
+  name: "FooComponent",
+  mounted() {
+    this.$emit("updateLayoutTitle", { title: "Component Example" });
+  },
+  components: {
+    FusionTabs
+  },
+  data() {
+    return {
+      tabs: {
+        configuration: {tabs: TABS_BASE_MOCK},
+      },
+      selectedContent: "no selected"
+    }
+  },
+  methods: {
+    onSelectedChanged: function(selected){
+      this.selectedContent = selected.text
+    }
+  }
+};
+export default FooComponent;
+</script>
+
+// for FusionTooltip using you need to Add FusionTooltip component to main app component
+// App.vue
+....
+import {...., FusionTooltip} from "@ironsrc/fusion-ui/native/vue";
+...
+export default {
+  ....
+  mounted() {
+    ....
+    setTimeout(this.initFusionServices);
+  },
+  data() {
+    return {
+      ....
+      tooltip: {tooltipData: {}}
+    }
+  },
+  components: {
+  ....
+  FusionTooltip
+  },
+  methods: {
+    initFusionServices() {
+      this.tooltipService = window.fusion.services.tooltipService;
+      this.tooltipDataSubscription = this.tooltipService.tooltipData$
+          .subscribe(tooltipData => this.tooltip = {tooltipData});
+    },
+    ....
+  },
+  ,
+  beforeDestroy() {
+    this.tooltipDataSubscription.unsubscribe();
+  }
+  ....
+}
+'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<style>
+.example-holder{
+  width: 800px;
+  height: 300px;
+  margin: 15px auto;
+  padding: 25px;
+  background-color: white;
+  border: solid 1px #ccc;
+}
+.tabs-holder {
+  --tab-border-bottom: none;
+}
+.tabs-content-holder {
+  padding: 30px;
+  border: solid 1px #ccc;
+}
+</style>
+"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code=' <!--index.html -->
+....
+<div id="app">
+    <div class="tabs-holder"></div>
+    <div class="tabs-content-holder">
+        no tab selected
+    </div>
+</div>
+<script type="application/javascript" src="src/index.js"></script>
+....
+'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<!-- main.css -->
+#app {
+  width: 800px;
+  margin: 50px auto;
+  background-color: #ffffff;
+}
+
+.tabs-holder {
+  --tab-border-bottom: none;
+}
+
+.tabs-content-holder {
+  padding: 30px;
+  border: solid 1px #ccc;
+}
+"
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="<!-- index.js -->
+
+const TABS_BASE_MOCK = {
+    tabs: [
+        {
+            text: 'Johannesburg'
+        },
+        {
+            text: 'Springfield',
+        },
+        {
+            text: 'Xian',
+        },
+        {
+            text: 'Milwaukee',
+            disabled: true
+        }
+    ]
+};
+
+const onLoad = () => {
+    // get holders for elements
+    const tabContentHolder  = document.querySelector('.tabs-content-holder');
+    const tabsHolder = document.querySelector('.tabs-holder');
+    const tabsEl = document.createElement('native-fusion-tabs')
+
+    // set input props
+    tabsEl.config = {
+        configuration: TABS_BASE_MOCK
+    }
+    // append to the holder
+    tabsHolder.appendChild(tabsEl);
+
+
+
+    // add event listener for selected tab
+    tabsEl.addEventListener('selectedChange', e=>{
+        // apply needed changes by tab selected
+        tabContentHolder.innerText = `Selected tab: ${e.detail.text}`;
+    })
+};
+
+document.addEventListener('DOMContentLoaded', onLoad, false);
+"
+                ></fusion-code-block>
+            </ng-template>
+            <!--Code Examples-->
+
+            <!--Component Example-->
+            <div class="row">
+                <div class="col-9" z>
+                    <div class="tabs-holder">
+                        <fusion-tabs [configuration]="baseTabs" [(selected)]="selectedTab"></fusion-tabs>
+                    </div>
+                    <div class="tab-content-holder">
+                        <!-- Here consumer can put content by selectedTab -->
+                        <div class="text">Selected: {{ selectedTab ? selectedTab.text : 'nothing' }}</div>
+                    </div>
+                </div>
+            </div>
+            <!--Component Example-->
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="typeBasicIcons" title="With icons">
+            <!--Code Examples-->
+            <ng-template fusionExampleBlock="Angular">
+                <p>Template part:</p>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<div class="tags-holder">
+    <div class="tabs-holder">
+        <fusion-tabs [configuration]="baseIconTabs" [(selected)]="selectedIconsTab"></fusion-tabs>
+    </div>
+    <div class="tab-content-holder">
+        <!-- Here consumer can put content by selectedTab -->
+        <div class="selected-tab-content">Selected: { { selectedIconsTab ? selectedIconsTab.text : `nothing` }}</div>
+    </div>
+</div>
+'
+                ></fusion-code-block>
+                <p>Code part:</p>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="....
+selectedIconsTab: TabConfiguration;
+baseIconTabs = {
+    tabs: [
+        {
+            icon: 'v2/alarm-clock',
+            text: 'Johannesburg'
+        },
+        {
+            icon: 'v2/company',
+            text: 'Springfield'
+        },
+        {
+            icon: 'v2/calendar',
+            text: 'Xian'
+        },
+        {
+            icon: 'v2/chart-line',
+            text: 'Milwaukee',
+            disabled: true
+        }
+    ];
+}
+...."
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import React from "react";
+import "./Foo.css";
+import {FusionTabs} from "@ironsrc/fusion-ui/native/react";
+
+const TABS_BASE_MOCK = [
+  {
+    icon: "v2/alarm-clock",
+    text: "Johannesburg"
+  },
+  {
+    icon: "v2/company",
+    text: "Springfield"
+  },
+  {
+    icon: "v2/calendar",
+    text: "Xian"
+  },
+  {
+    icon: "v2/chart-line",
+    text: "Milwaukee",
+    disabled: true
+  }
+];
+
+export default class Foo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tabs: {
+        configuration: {tabs: TABS_BASE_MOCK},
+        selected: TABS_BASE_MOCK[1]
+      },
+      selectedContent: TABS_BASE_MOCK[1].text
+    };
+  }
+
+  componentDidMount() {
+    this.props.updateLayoutTitle({ title: "Tabs" });
+  }
+
+  selectedChanged(selectedTab){
+    this.setState({
+      tabs: {...this.state.tabs, selected: selectedTab},
+      selectedContent: selectedTab.text
+    })
+  }
+
+  render() {
+    return (
+      <div className="example-holder">
+        <p>Toast component example:</p>
+        <div className="tabs-holder">
+          <FusionTabs config={this.state.tabs} selectedChange={this.selectedChanged.bind(this)}></FusionTabs>
+        </div>
+        <div className="tabs-content-holder">
+
+          Selected: {this.state.selectedContent}
+
+        </div>
+      </div>
+    );
+  }
+}
+'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div class="example-holder">
+    <p>Tabs example</p>
+    <div class="tabs-holder">
+      <FusionTabs :config="tabs" @selectedChange="onSelectedChanged"></FusionTabs>
+    </div>
+    <div class="tabs-content-holder">
+      Selected: { { selectedContent }}
+    </div>
+  </div>
+</template>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import { FusionTabs } from "@ironsrc/fusion-ui/native/vue";
+
+const TABS_BASE_MOCK = [
+  {
+    icon: "v2/alarm-clock",
+    text: "Johannesburg"
+  },
+  {
+    icon: "v2/company",
+    text: "Springfield"
+  },
+  {
+    icon: "v2/calendar",
+    text: "Xian"
+  },
+  {
+    icon: "v2/chart-line",
+    text: "Milwaukee",
+    disabled: true
+  }
+];
+
+
+export const FooComponent = {
+  name: "FooComponent",
+  mounted() {
+    this.$emit("updateLayoutTitle", { title: "Component Example" });
+  },
+  components: {
+    FusionTabs
+  },
+  data() {
+    return {
+      tabs: {
+        configuration: {tabs: TABS_BASE_MOCK},
+      },
+      selectedContent: "no selected"
+    }
+  },
+  methods: {
+    onSelectedChanged: function(selected){
+      this.selectedContent = selected.text
+    }
+  }
+};
+export default FooComponent;
+</script>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<style>
+.example-holder{
+  width: 800px;
+  height: 300px;
+  margin: 15px auto;
+  padding: 25px;
+  background-color: white;
+  border: solid 1px #ccc;
+}
+.tabs-holder {
+  --tab-border-bottom: none;
+}
+.tabs-content-holder {
+  padding: 30px;
+  border: solid 1px #ccc;
+}
+</style>
+"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code=' <!--index.html -->
+....
+<div id="app">
+    <div class="tabs-holder"></div>
+    <div class="tabs-content-holder">
+        no tab selected
+    </div>
+</div>
+<script type="application/javascript" src="src/index.js"></script>
+....
+'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<!-- main.css -->
+#app {
+  width: 800px;
+  margin: 50px auto;
+  background-color: #ffffff;
+}
+
+.tabs-holder {
+  --tab-border-bottom: none;
+}
+
+.tabs-content-holder {
+  padding: 30px;
+  border: solid 1px #ccc;
+}
+"
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="<!-- index.js -->
+
+const TABS_BASE_MOCK = {
+    tabs: [
+        {
+            icon: 'v2/alarm-clock',
+            text: 'Johannesburg'
+        },
+        {
+            icon: 'v2/company',
+            text: 'Springfield'
+        },
+        {
+            icon: 'v2/calendar',
+            text: 'Xian'
+        },
+        {
+            icon: 'v2/chart-line',
+            text: 'Milwaukee',
+            disabled: true
+        }
+    ]
+};
+
+const onLoad = () => {
+    // get holders for elements
+    const tabContentHolder  = document.querySelector('.tabs-content-holder');
+    const tabsHolder = document.querySelector('.tabs-holder');
+    const tabsEl = document.createElement('native-fusion-tabs')
+
+    // set input props
+    tabsEl.config = {
+        configuration: TABS_BASE_MOCK
+    }
+    // append to the holder
+    tabsHolder.appendChild(tabsEl);
+
+
+
+    // add event listener for selected tab
+    tabsEl.addEventListener('selectedChange', e=>{
+        // apply needed changes by tab selected
+        tabContentHolder.innerText = `Selected tab: ${e.detail.text}`;
+    })
+};
+
+document.addEventListener('DOMContentLoaded', onLoad, false);
+"
+                ></fusion-code-block>
+            </ng-template>
+            <!--Code Examples-->
+
+            <!--Component Example-->
+            <div class="row">
+                <div class="col-9">
+                    <div class="tabs-holder">
+                        <fusion-tabs [configuration]="baseIconTabs" [(selected)]="selectedIconsTab"></fusion-tabs>
+                    </div>
+                    <div class="tab-content-holder">
+                        <div class="text">Selected: {{ selectedIconsTab ? selectedIconsTab.text : 'nothing' }}</div>
+                    </div>
+                </div>
+            </div>
+            <!--Component Example-->
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="typeBasicIconsUp" title="With icons up">
+            <!--Code Examples-->
+            <ng-template fusionExampleBlock="Angular">
+                <p>Template part:</p>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<div class="tags-holder">
+    <div class="tabs-holder">
+        <fusion-tabs [configuration]="baseIconUpTabs" [(selected)]="selectedIconsUpTab"></fusion-tabs>
+    </div>
+    <div class="tab-content-holder">
+        <!-- Here consumer can put content by selectedTab -->
+        <div class="selected-tab-content">Selected: { { selectedIconsUpTab ? selectedIconsUpTab.text : `nothing` }}</div>
+    </div>
+</div>
+'
+                ></fusion-code-block>
+                <p>Code part:</p>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="....
+selectedIconsUpTab: TabConfiguration;
+baseIconUpTabs = {
+    tabs: [
+        {
+            icon: 'v2/alarm-clock',
+            text: 'Johannesburg'
+        },
+        {
+            icon: 'v2/company',
+            text: 'Springfield'
+        },
+        {
+            icon: 'v2/calendar',
+            text: 'Xian'
+        },
+        {
+            icon: 'v2/chart-line',
+            text: 'Milwaukee',
+            disabled: true
+        }
+    ],
+    verticalDisplay: true,
+    tabWidth: 140 // each tab will be 140px width
+};
+...."
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import React from "react";
+import "./Foo.css";
+import {FusionTabs} from "@ironsrc/fusion-ui/native/react";
+
+const TABS_BASE_MOCK = [
+  {
+    icon: "v2/alarm-clock",
+    text: "Johannesburg"
+  },
+  {
+    icon: "v2/company",
+    text: "Springfield"
+  },
+  {
+    icon: "v2/calendar",
+    text: "Xian"
+  },
+  {
+    icon: "v2/chart-line",
+    text: "Milwaukee",
+    disabled: true
+  }
+];
+
+export default class Foo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tabs: {
+        configuration: {
+          tabs: TABS_BASE_MOCK,
+          verticalDisplay: true,
+          tabWidth: 140
+        },
+        selected: TABS_BASE_MOCK[1]
+      },
+      selectedContent: TABS_BASE_MOCK[1].text
+    };
+  }
+
+  componentDidMount() {
+    this.props.updateLayoutTitle({ title: "Tabs" });
+  }
+
+  selectedChanged(selectedTab){
+    this.setState({
+      tabs: {...this.state.tabs, selected: selectedTab},
+      selectedContent: selectedTab.text
+    })
+  }
+
+  render() {
+    return (
+      <div className="example-holder">
+        <p>Toast component example:</p>
+        <div className="tabs-holder">
+          <FusionTabs config={this.state.tabs} selectedChange={this.selectedChanged.bind(this)}></FusionTabs>
+        </div>
+        <div className="tabs-content-holder">
+
+          Selected: {this.state.selectedContent}
+
+        </div>
+      </div>
+    );
+  }
+}
+'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div class="example-holder">
+    <p>Tabs example</p>
+    <div class="tabs-holder">
+      <FusionTabs :config="tabs" @selectedChange="onSelectedChanged"></FusionTabs>
+    </div>
+    <div class="tabs-content-holder">
+      Selected: { { selectedContent }}
+    </div>
+  </div>
+</template>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import { FusionTabs } from "@ironsrc/fusion-ui/native/vue";
+
+const TABS_BASE_MOCK = [
+  {
+    icon: "v2/alarm-clock",
+    text: "Johannesburg"
+  },
+  {
+    icon: "v2/company",
+    text: "Springfield"
+  },
+  {
+    icon: "v2/calendar",
+    text: "Xian"
+  },
+  {
+    icon: "v2/chart-line",
+    text: "Milwaukee",
+    disabled: true
+  }
+];
+
+
+export const FooComponent = {
+  name: "FooComponent",
+  mounted() {
+    this.$emit("updateLayoutTitle", { title: "Component Example" });
+  },
+  components: {
+    FusionTabs
+  },
+  data() {
+    return {
+      tabs: {
+        configuration: {
+          tabs: TABS_BASE_MOCK,
+          verticalDisplay: true,
+          tabWidth: 140
+        },
+        selected: TABS_BASE_MOCK[1]
+      },
+      selectedContent: TABS_BASE_MOCK[1].text
+    }
+  },
+  methods: {
+    onSelectedChanged: function(selected){
+      this.selectedContent = selected.text
+    }
+  }
+};
+export default FooComponent;
+</script>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<style>
+.example-holder{
+  width: 800px;
+  height: 300px;
+  margin: 15px auto;
+  padding: 25px;
+  background-color: white;
+  border: solid 1px #ccc;
+}
+.tabs-holder {
+  --tab-border-bottom: none;
+}
+.tabs-content-holder {
+  padding: 30px;
+  border: solid 1px #ccc;
+}
+</style>
+"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code=' <!--index.html -->
+....
+<div id="app">
+    <div class="tabs-holder"></div>
+    <div class="tabs-content-holder">
+        no tab selected
+    </div>
+</div>
+<script type="application/javascript" src="src/index.js"></script>
+....
+'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<!-- main.css -->
+#app {
+  width: 800px;
+  margin: 50px auto;
+  background-color: #ffffff;
+}
+
+.tabs-holder {
+  --tab-border-bottom: none;
+}
+
+.tabs-content-holder {
+  padding: 30px;
+  border: solid 1px #ccc;
+}
+"
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="<!-- index.js -->
+
+const TABS_BASE_MOCK = {
+    tabs: [
+        {
+            icon: 'v2/alarm-clock',
+            text: 'Johannesburg'
+        },
+        {
+            icon: 'v2/company',
+            text: 'Springfield'
+        },
+        {
+            icon: 'v2/calendar',
+            text: 'Xian'
+        },
+        {
+            icon: 'v2/chart-line',
+            text: 'Milwaukee',
+            disabled: true
+        }
+    ],
+    verticalDisplay: true,
+    tabWidth: 140 // set each tab width in px
+};
+
+const onLoad = () => {
+    // get holders for elements
+    const tabContentHolder  = document.querySelector('.tabs-content-holder');
+    const tabsHolder = document.querySelector('.tabs-holder');
+    const tabsEl = document.createElement('native-fusion-tabs')
+
+    // set input props
+    tabsEl.config = {
+        configuration: TABS_BASE_MOCK
+    }
+    // append to the holder
+    tabsHolder.appendChild(tabsEl);
+
+    // add event listener for selected tab
+    tabsEl.addEventListener('selectedChange', e=>{
+        // apply needed changes by tab selected
+        tabContentHolder.innerText = `Selected tab: ${e.detail.text}`;
+    })
+};
+
+document.addEventListener('DOMContentLoaded', onLoad, false);
+"
+                ></fusion-code-block>
+            </ng-template>
+            <!--Code Examples-->
+
+            <!--Component Example-->
+            <div class="row">
+                <div class="col-9">
+                    <div class="tabs-holder">
+                        <fusion-tabs [configuration]="baseIconUpTabs" [(selected)]="selectedIconsUpTab"></fusion-tabs>
+                    </div>
+                    <div class="tab-content-holder">
+                        <div class="text">Selected: {{ selectedIconsUpTab ? selectedIconsUpTab.text : 'nothing' }}</div>
+                    </div>
+                </div>
+            </div>
+            <!--Component Example-->
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="typeIconsOnly" title="With icons only">
+            <!--Code Examples-->
+            <ng-template fusionExampleBlock="Angular">
+                <p>Template part:</p>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<div class="tags-holder">
+    <div class="tabs-holder">
+       <fusion-tabs
+            class="fu-tab-high"
+            [configuration]="iconsOnlyTabs"
+            [(selected)]="selectedIconsOnlyTab"
+        ></fusion-tabs>
+    </div>
+    <div class="tab-content-holder">
+        <!-- Here consumer can put content by selectedTab -->
+        <div class="selected-tab-content">Selected: { { selectedIconsOnlyTab ? selectedIconsOnlyTab.text : `nothing` }}</div>
+    </div>
+</div>
+'
+                ></fusion-code-block>
+                <p>Code part:</p>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="....
+selectedIconsTab: TabConfiguration;
+iconsOnlyTabs = {
+    tabs: [
+        {
+            icon: 'v2/alarm-clock'
+        },
+        {
+            icon: 'v2/company',
+            tooltipContent: `Here's a tooltip!`
+        },
+        {
+            icon: 'v2/calendar'
+        },
+        {
+            icon: 'v2/chart-line',
+            disabled: true
+        }
+    ]
+}
+...."
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import React from "react";
+import "./Foo.css";
+import {FusionTabs} from "@ironsrc/fusion-ui/native/react";
+
+const TABS_BASE_MOCK = [
+  {
+    icon: "v2/alarm-clock",
+  },
+  {
+    icon: "v2/company",
+  },
+  {
+    icon: "v2/calendar",
+  },
+  {
+    icon: "v2/chart-line",
+    disabled: true
+  }
+];
+
+export default class Foo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tabs: {
+        configuration: {tabs: TABS_BASE_MOCK}
+      },
+      selectedContent: ""
+    };
+  }
+
+  componentDidMount() {
+    this.props.updateLayoutTitle({ title: "Tabs" });
+  }
+
+  selectedChanged(selectedTab){
+    this.setState({
+      tabs: {...this.state.tabs, selected: selectedTab},
+      selectedContent: `index ${TABS_BASE_MOCK.findIndex(item=>item==selectedTab)}`
+    })
+  }
+
+  render() {
+    return (
+      <div className="example-holder">
+        <p>Toast component example:</p>
+        <div className="tabs-holder">
+          <FusionTabs config={this.state.tabs} selectedChange={this.selectedChanged.bind(this)}></FusionTabs>
+        </div>
+        <div className="tabs-content-holder">
+
+          Selected: {this.state.selectedContent}
+
+        </div>
+      </div>
+    );
+  }
+}
+'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div class="example-holder">
+    <p>Tabs example</p>
+    <div class="tabs-holder">
+      <FusionTabs :config="tabs" @selectedChange="onSelectedChanged"></FusionTabs>
+    </div>
+    <div class="tabs-content-holder">
+      Selected: { { selectedContent }}
+    </div>
+  </div>
+</template>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import { FusionTabs } from "@ironsrc/fusion-ui/native/vue";
+
+const TABS_BASE_MOCK = [
+  {
+    icon: "v2/alarm-clock"
+  },
+  {
+    icon: "v2/company"
+  },
+  {
+    icon: "v2/calendar"
+  },
+  {
+    icon: "v2/chart-line",
+    disabled: true
+  }
+];
+
+
+export const FooComponent = {
+  name: "FooComponent",
+  mounted() {
+    this.$emit("updateLayoutTitle", { title: "Component Example" });
+  },
+  components: {
+    FusionTabs
+  },
+  data() {
+    return {
+      tabs: {
+        configuration: {
+          tabs: TABS_BASE_MOCK
+        },
+      },
+      selectedContent: ""
+    }
+  },
+  methods: {
+    onSelectedChanged: function(selected){
+      this.selectedContent = `index ${TABS_BASE_MOCK.findIndex(item=>item==selected)}`
+    }
+  }
+};
+export default FooComponent;
+</script>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<style>
+.example-holder{
+  width: 800px;
+  height: 300px;
+  margin: 15px auto;
+  padding: 25px;
+  background-color: white;
+  border: solid 1px #ccc;
+}
+.tabs-holder {
+  --tab-border-bottom: none;
+}
+.tabs-content-holder {
+  padding: 30px;
+  border: solid 1px #ccc;
+}
+</style>
+"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code=' <!--index.html -->
+....
+<div id="app">
+    <div class="tabs-holder"></div>
+    <div class="tabs-content-holder">
+        no tab selected
+    </div>
+</div>
+<script type="application/javascript" src="src/index.js"></script>
+....
+'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<!-- main.css -->
+#app {
+  width: 800px;
+  margin: 50px auto;
+  background-color: #ffffff;
+}
+
+.tabs-holder {
+  --tab-border-bottom: none;
+}
+
+.tabs-content-holder {
+  padding: 30px;
+  border: solid 1px #ccc;
+}
+"
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="<!-- index.js -->
+
+const TABS_BASE_MOCK = {
+    tabs: [
+        {
+            icon: 'v2/alarm-clock'
+        },
+        {
+            icon: 'v2/company'
+        },
+        {
+            icon: 'v2/calendar'
+        },
+        {
+            icon: 'v2/chart-line',
+            disabled: true
+        }
+    ]
+};
+
+const onLoad = () => {
+    // get holders for elements
+    const tabContentHolder  = document.querySelector('.tabs-content-holder');
+    const tabsHolder = document.querySelector('.tabs-holder');
+    const tabsEl = document.createElement('native-fusion-tabs')
+
+    // set input props
+    tabsEl.config = {
+        configuration: TABS_BASE_MOCK,
+        class: 'fu-tab-high' // for tab height 55px
+    }
+    // append to the holder
+    tabsHolder.appendChild(tabsEl);
+
+    // add event listener for selected tab
+    tabsEl.addEventListener('selectedChange', e=>{
+        // apply needed changes by tab selected
+        tabContentHolder.innerText = `Selected tab: ${TABS_BASE_MOCK.tabs.findIndex(item=>item==e.detail) + 1}`;
+    })
+};
+
+document.addEventListener('DOMContentLoaded', onLoad, false);
+"
+                ></fusion-code-block>
+            </ng-template>
+            <!--Code Examples-->
+
+            <!--Component Example-->
+            <div class="row">
+                <div class="col-6">
+                    <label class="example-label">Default tab height: 40px</label>
+                    <div class="tabs-holder" style="padding-top: 14px">
+                        <fusion-tabs [configuration]="iconsOnlyTabs" [(selected)]="selectedIconsOnlyTab"></fusion-tabs>
+                    </div>
+                    <div class="tab-content-holder">
+                        <div class="text">Selected: {{ selectedIconsOnlyTab ? selectedIconsOnlyTab.text : 'nothing' }}</div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <label class="example-label">High tab height: 56px</label>
+                    <div class="tabs-holder">
+                        <fusion-tabs
+                            class="fu-tab-high"
+                            [configuration]="iconsOnlyTabs2"
+                            [(selected)]="selectedIconsOnlyTab2"
+                        ></fusion-tabs>
+                    </div>
+                    <div class="tab-content-holder">
+                        <div class="text">Selected: {{ selectedIconsOnlyTab2 ? selectedIconsOnlyTab2.text : 'nothing' }}</div>
+                    </div>
+                </div>
+            </div>
+            <!--Component Example-->
+        </fusion-example-block>
+
+        <!--UI-Component Examples-->
+
+        <!--UI-Component Configuration Doc-->
+        <div class="is-example-title">Configuration</div>
+        <fusion-example-block id="params" title="Parameters" [collapsible]="false">
+            <fusion-code-block
+                lang="js"
+                code='
+TabsConfiguration {
+    tabs: TabConfiguration[];
+    verticalDisplay?: boolean; // tab icon position if true - tab text will be placed under icon
+    tabWidth?: number; // tab width in pixel
+}
+
+interface TabConfiguration {
+    text?: string;
+    icon?: string; // tab icon
+    infoIcon?: string; // icon on right from text - "info, question, etc..." for tooltip / popup
+    tooltipContent?: string;
+    popupContent?: PopupComponentContent; // used for popup showed by click on additional icon
+    disabled?: boolean;
+}
+
+PopupComponentContent {
+    type: Type<Component>; // dynamic component
+    data?: any;            // dynamic component inputs
+}
+'
+            ></fusion-code-block>
+        </fusion-example-block>
+
+        <fusion-example-block id="events" title="Events" [collapsible]="false">
+            <fusion-code-block lang="js" code="selectedChange(selected: TabConfiguration)"></fusion-code-block>
+        </fusion-example-block>
+
+        <fusion-example-block id="cssVars" title="CSS Vars" [collapsible]="false">
+            <label class="fu-doc-label">TabsComponent</label>
+            <div class="row fu-css-var-header">
+                <div class="col-4">CSS variable name</div>
+                <div class="col-6">Description</div>
+            </div>
+            <div class="row fu-css-var">
+                <div class="col-4">--tabs-background-color</div>
+                <div class="col-6">Tabs holder background color</div>
+            </div>
+            <div class="row fu-css-var">
+                <div class="col-4">--tab-border-bottom</div>
+                <div class="col-6">Tabs holder border bottom</div>
+            </div>
+            <br />
+            <label class="fu-doc-label">TabComponent</label>
+            <div class="row fu-css-var">
+                <div class="col-4">--tab-height</div>
+                <div class="col-6">Tab height</div>
+            </div>
+            <div class="row fu-css-var">
+                <div class="col-4">--tab-padding</div>
+                <div class="col-6">Tab padding</div>
+            </div>
+            <div class="row fu-css-var">
+                <div class="col-4">--tab-content-padding</div>
+                <div class="col-6">Tab content padding</div>
+            </div>
+            <div class="row fu-css-var">
+                <div class="col-4">--tab-border-radius</div>
+                <div class="col-6">Tab border radius</div>
+            </div>
+            <div class="row fu-css-var">
+                <div class="col-4">--tab-color</div>
+                <div class="col-6">Tab color</div>
+            </div>
+            <div class="row fu-css-var">
+                <div class="col-4">--tab-icon-color</div>
+                <div class="col-6">Tab icon (left) color, default - tab color</div>
+            </div>
+            <div class="row fu-css-var">
+                <div class="col-4">--tab-icon-size</div>
+                <div class="col-6">Tab icon (left) size</div>
+            </div>
+            <div class="row fu-css-var">
+                <div class="col-4">--tab-additional-icon-color</div>
+                <div class="col-6">Tab icon (right) color, default - tab color</div>
+            </div>
+            <div class="row fu-css-var">
+                <div class="col-4">--tab-additional-icon-size</div>
+                <div class="col-6">Tab icon (right) size</div>
+            </div>
+            <div class="row fu-css-var">
+                <div class="col-4">--tab-hover-background-color</div>
+                <div class="col-6">Tab background color on hover</div>
+            </div>
+            <div class="row fu-css-var">
+                <div class="col-4">--tab-disabled-color</div>
+                <div class="col-6">Tab disabled color</div>
+            </div>
+            <div class="row fu-css-var">
+                <div class="col-4">--tab-selected-border-bottom</div>
+                <div class="col-6">Tab selected border bottom</div>
+            </div>
+            <div class="row fu-css-var">
+                <div class="col-4">--tab-selected-color</div>
+                <div class="col-6">Tab selected color</div>
+            </div>
+            <div class="row fu-css-var">
+                <div class="col-4">--tab-selected-background-color</div>
+                <div class="col-6">Tab selected background color</div>
+            </div>
+            <div class="row fu-css-var">
+                <div class="col-4">--tab-selected-hovered-color</div>
+                <div class="col-6">Tab selected hovered color</div>
+            </div>
+            <div class="row fu-css-var">
+                <div class="col-4">--tab-selected-hovered-background-color</div>
+                <div class="col-6">Tab selected hovered background color</div>
+            </div>
+        </fusion-example-block>
+
+        <!--UI-Component Configuration Doc-->
+    </div>
+    <div class="col-3 is-right-side-menu-holder">
+        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+    </div>
+</div>

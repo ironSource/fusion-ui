@@ -1,0 +1,22 @@
+<ul>
+    <li class="is-icon-select-item" *ngFor="let option of options" [ngClass]="{'disabled':option.disabled}">
+        <label [ngClass]="{'selected':isItemChecked(option)}">
+            <div class="is-icon-holder">
+                <fusion-icon [name]="option.icon"></fusion-icon>
+            </div>
+            <fusion-checkbox *ngIf="isMultiSelect; else radioButton" [checked]="isItemChecked(option)" [isDisabled]="option.disabled"
+                             [name]="option.id" [label]="option.label" [value]="option.id"
+                             (changed)="onItemSelectionChanged($event, option)"></fusion-checkbox>
+            <ng-template #radioButton>
+                <fusion-radio
+                    [name]="id"
+                    [value]="option.id"
+                    [label]="option.label"
+                    [checked]="isItemChecked(option)"
+                    [isDisabled]="option.disabled"
+                    (changed)="onItemSelectionChanged($event, option)"></fusion-radio>
+            </ng-template>
+        </label>
+    </li>
+</ul>
+<div class="error-msg" *ngIf="error">{{error}}</div>

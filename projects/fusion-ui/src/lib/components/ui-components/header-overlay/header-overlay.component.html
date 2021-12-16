@@ -1,0 +1,28 @@
+<div (fusionClickOutside)="onOutsideClick()" [clickOutsideActivate]="clickOutsideActivate" class="wrap">
+  <div class="header" (click)="toggleOverlay()"
+       [ngClass]="{isOpen: isOpen, small: size === headerSizes.Small}"
+       #header
+       *ngIf="headerComponent || element">
+    <fusion-dynamic-components
+      [component]="headerComponent"
+      [componentData]="headerComponentData$ | async"
+      [element]="element">
+    </fusion-dynamic-components>
+  </div>
+
+  <div class="overlay" *ngIf="isOpen" [ngClass]="side" #modal>
+    <div class="content">
+      <div class="body" [style.width]="width" [style.height]="height">
+        <ng-content></ng-content>
+      </div>
+      <fusion-modal-footer
+        *ngIf="showFooter"
+        [error]="error"
+        saveButtonText="Apply"
+        cancelButtonText="Cancel"
+        (onSave)="saved.emit()"
+        (onCloseButtonClicked)="close()">
+      </fusion-modal-footer>
+    </div>
+  </div>
+</div>

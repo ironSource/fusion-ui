@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-9">
+        <fusion-example-block id="icoLib" title="Icons Library V2" [collapsible]="false">
+            <div>
+                <div class="icons-holder">
+                    <div class="icon-item" *ngFor="let icon of iconNames$ | async">
+                        <div>
+                            <div class="icon-icon"><fusion-icon class="icon-example" [name]="icon"></fusion-icon></div>
+                        </div>
+                        <div class="icon-name">{{ icon }}</div>
+                    </div>
+                </div>
+            </div>
+        </fusion-example-block>
+    </div>
+</div>
+
+<ng-template #iconsActionHeader>
+    <div class="fu-search-and-action-holder">
+        <fusion-input
+            showSearchIcon="right"
+            placeholder="Search"
+            [clear]="true"
+            [options]="{rounded: true, size: 'medium', width: '238px'}"
+            [showSearchIconWhenHasInputValue]="true"
+            [formControl]="searchKey"
+        >
+        </fusion-input>
+        <button fusion-button class="primary" (click)="onIconsDownload()"><span>Download SVG icons</span></button>
+    </div>
+</ng-template>

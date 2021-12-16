@@ -1,0 +1,31 @@
+<ng-container *ngIf="data?.shown">
+    <div class="is-notification" *ngIf="selectedVersion$ | async as currentStyleVersion">
+        <fusion-icon class="close" [name]="closeIconName$ | async" (click)="secondaryButtonClicked()"></fusion-icon>
+        <div class="is-header" [ngClass]="notificationType">
+            <fusion-icon
+                *ngIf="notificationType !== 'basic'"
+                class="{{ notificationType }}"
+                [name]="getIconName(currentStyleVersion)"
+            ></fusion-icon>
+            {{ data.title }}
+        </div>
+
+        <fusion-modal-content>
+            {{ data.content }}
+        </fusion-modal-content>
+
+        <fusion-modal-footer
+            *ngIf="data.buttons"
+            [notificationFooter]="true"
+            [saveButtonText]="data?.buttons?.primary?.label"
+            [saveButtonClass]="data?.buttons?.primary?.class || 'primary'"
+            [saveButtonLoading]="data?.buttons?.primary?.loading"
+            [cancelButtonHidden]="!data?.buttons?.secondary"
+            [cancelButtonText]="data?.buttons?.secondary?.label"
+            [cancelButtonClass]="data?.buttons?.secondary?.class || 'secondary'"
+            (onSave)="primaryButtonClicked()"
+            (onCloseButtonClicked)="secondaryButtonClicked()"
+        ></fusion-modal-footer>
+    </div>
+    <div class="is-notification-overlay"></div>
+</ng-container>

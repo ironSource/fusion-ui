@@ -1,0 +1,39 @@
+@import '../../../../../fusion-ui/src/style/scss/vars/vars';
+@import '../../../../../fusion-ui/src/style/scss/vars/mixins';
+
+:host{
+    .fu-info-popup-content{
+        position: relative;
+        padding: 25px 24px;
+        width: 448px;
+        height: 184px;
+        background-color: white;
+        color: #7b838c;
+        border-radius: 8px;
+        box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.15);
+
+        @include icon-style('fu-icon-close', currentColor, 12px, false, true) {
+            position: absolute;
+            top: 11px;
+            right: 12px;
+            cursor: pointer;
+        }
+        .fu-info-popup-content-header{
+            @extend %font-bodyStrong;
+            margin-bottom: 8px;
+        }
+        .fu-info-popup-content-content{
+            @extend %font-body;
+            height: 80px;
+            overflow-y: hidden;
+        }
+        .fu-info-popup-content-more{
+            @extend %font-bodyStrong;
+            margin-top: 17px;
+            a{
+                color: $fu-primary-500;
+                text-decoration: none;
+            }
+        }
+    }
+}

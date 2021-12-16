@@ -1,0 +1,55 @@
+<div
+    class="fu-layout fu-layout-page-header-behaviour-type_{{ pageHeaderBehaviourType$ | async }}"
+    [class.fu-layout-page-header-header]="(pageHeaderPosition$ | async) === pageHeaderPositionEnum.OnLayoutHeader"
+>
+    <!--sidebar with logo and menu-->
+    <div class="fu-sidebar-holder">
+        <fusion-sidebar
+            [configuration]="sidebarConfiguration"
+            [saveSidebarState]="!forceScreenMode"
+            [(sidebarOpen)]="sidebarOpen"
+            (logoClicked)="onLogoClicked()"
+            (sidebarClosedHovered)="onSidebarClosedHovered($event)"
+            (sidebarMenuItemClicked)="onSidebarMenuItemClicked($event)"
+            (navigationEnded)="onNavigationEnded()"
+            (logoutIconClicked)="onLogoutIconClicked($event)"
+        ></fusion-sidebar>
+    </div>
+    <!--sidebar with logo and menu-->
+    <!--header-->
+    <div
+        class="fu-header-holder"
+        [class.fu-layout-sidebar-closed]="!sidebarOpen"
+        [class.fu-sidebar-closed-hovered]="sidebarClosedHovered$ | async"
+    >
+        <fusion-layout-header
+            [configuration]="headerConfiguration"
+            [sidebarOpen]="sidebarOpen"
+            [showPageHeaderContent]="(pageHeaderPosition$ | async) === pageHeaderPositionEnum.OnLayoutHeader"
+            (sidebarToggleIconClicked)="onSidebarStateChanged()"
+            (layoutHeaderMenuItemClicked)="onHeaderMenuItemClicked($event)"
+        ></fusion-layout-header>
+    </div>
+    <!--header-->
+    <!--content-->
+    <div class="fu-content-holder" id="fu-layout-main-view" #mainContent>
+        <ng-container *ngIf="pageHeaderTitle$ | async as pageHeaderTitle">
+            <div class="fu-layout-page-header">
+                <div class="fu-layout-page-header-title">{{ pageHeaderTitle?.text }}</div>
+                <div *ngIf="showPageHeaderContent(!!pageHeaderTitle?.content)" class="fu-layout-page-header-content">
+                    <fusion-dynamic-components [configuration]="pageHeaderTitle?.content"></fusion-dynamic-components>
+                </div>
+            </div>
+        </ng-container>
+        <ng-content></ng-content>
+    </div>
+    <!--content-->
+    <!--mobile overlay-->
+    <div
+        class="fu-layout-mobile-overlay"
+        [class.fu-sidebar-closed-hovered]="sidebarClosedHovered$ | async"
+        (click)="onMobileOverlayClicked()"
+    ></div>
+    <!--media size detection-->
+    <div class="fu-screen-size-detection" #mediaSize></div>
+</div>

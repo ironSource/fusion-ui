@@ -1,0 +1,9 @@
+@import '../../../../styles/vars';
+
+:host {
+    label{
+        color: $fu-dark-200;
+        @extend %font-label;
+        line-height: 1.45;
+    }
+}

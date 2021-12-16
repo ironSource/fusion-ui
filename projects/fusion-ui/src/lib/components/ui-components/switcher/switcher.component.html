@@ -1,0 +1,14 @@
+<div [class]="'is-switcher ' + mode">
+    <div class="is-switcher-holder" *ngFor="let item of options" [ngClass]="{selected: isSelected(item), 'not-allowed': (item.disabled || isDisabled)}">
+        <input
+            type="radio"
+            id="{{ name }}_{{ item.id }}"
+            [name]="name"
+            [checked]="isSelected(item)"
+            (change)="setSelected(item)"
+            [disabled]="item.disabled"
+        />
+        <label for="{{ name }}_{{ item.id }}" title="{{ item.title }}">{{ item.title }}</label>
+    </div>
+</div>
+<div class="error-msg" *ngIf="error">{{ error }}</div>

@@ -1,0 +1,11 @@
+<label class="is-toggle" [ngClass]="{'animated': (animated$ | async), disabled: (isDisabled$ | async), loading: loading, 'is-small': size === 'small'}" (click)="propagateTouched()">
+  <input type="checkbox"
+         [ngModel]="model"
+         [disabled]="(isDisabled$ | async) || loading"
+         (ngModelChange)="onChange($event)"
+         [id]='id'
+         [value]="value"
+         [checked]="isChecked$ | async">
+  <span class="slider"></span>
+  <span *ngIf="currentLabel" class="label">{{currentLabel}}</span>
+</label>

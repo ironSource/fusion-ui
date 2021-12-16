@@ -1,0 +1,29 @@
+@import "../../../../../style/scss/vars/vars";
+@import "../../../../../style/scss/vars/colors";
+@import '../../../../../style/scss/vars/mixins';
+
+:host.fusion-style-v1 {
+    .is-nodata{
+        @extend %font1;
+        text-align: center;
+        color: $light-700;
+        padding: 65px 0;
+        &:hover{
+            background-color: $White;
+        }
+        .is-nodata-sub{
+            padding-top: 5px;
+            @extend %font12
+        }
+        .icon-container{
+            padding-bottom: 24px;
+            @include icon-style('empty-table-icon', $light-600, (height:51px, width:42px), true, true);
+            &+label{
+                color: $light-600;
+            }
+        }
+        .no-data-img{
+            display: none;
+        }
+    }
+}

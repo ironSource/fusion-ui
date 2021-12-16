@@ -1,0 +1,16 @@
+<div class="canvas-holder" [ngClass]="'fu-type-' + type" [hidden]="loading || noData">
+    <div class="summary-holder" [class.fu-summary-with-label]="pieSumLabel" *ngIf="pieDataSum || pieSumLabel">
+        <div class="fu-summary-data" *ngIf="pieDataSum">{{pieDataSum | shortNumberScaleSuffix}}</div>
+        <div class="fu-summary-label truncate" *ngIf="pieSumLabel">{{pieSumLabel}}</div>
+    </div>
+    <canvas></canvas>
+</div>
+<div *ngIf="noData || loading" class="chart-nodata" [class.fu-loading]="loading">
+    <ng-container *ngIf="noData && !loading">
+        <div class="no-data-img"></div>
+        <div class="no-data-text">No data to display</div>
+    </ng-container>
+    <ng-container *ngIf="loading">
+        <fusion-loader [status]="true">Loading please wait</fusion-loader>
+    </ng-container>
+</div>

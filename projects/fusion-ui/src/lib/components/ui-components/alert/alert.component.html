@@ -1,0 +1,8 @@
+<div class="is-alert" [ngClass]="alertCssClasses" *ngIf="shown">
+    <fusion-icon class="alert-type-icon" [name]="{iconName: alertIcon, iconVersion: 'v1'}"></fusion-icon>
+    <ng-content></ng-content>
+    <a href="#" class="is-do-not-show" (click)="onDontShowClicked($event)" *ngIf="showDoNotShowAgainButton">Don't show again</a>
+    <ng-container *ngIf="closeIconName$ | async as closeIconName">
+        <fusion-icon class="is-close-button" [name]="closeIconName" (click)="onCloseClicked()" *ngIf="showCloseButton"></fusion-icon>
+    </ng-container>
+</div>

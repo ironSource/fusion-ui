@@ -1,0 +1,15 @@
+@import '../../../../styles/vars';
+
+:host{
+    .fu-css-vars-using{
+        --fu-month-picker-height: 38px;
+        --fu-month-picker-border-radius: 0;
+        --fu-month-picker-color: #163562;
+        --fu-month-picker-calendar-icon-color: #163562;
+        --fu-month-picker-month-font-weight: bold;
+        --fu-month-picker-month-current-dot-color: #163562;
+        --fu-month-picker-month-selected-bg-color: #163562;
+        --fu-month-picker-month-hover-bg-color: #e1e6eb;
+        --fu-month-picker-month-disabled-color: #95a6b8;
+    }
+}

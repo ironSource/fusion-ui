@@ -1,0 +1,8 @@
+<div class="fu-info-popup-content" *ngIf="content">
+    <fusion-icon class="fu-icon-close" name="close" (click)="onCloseIconClicked($event)"></fusion-icon>
+    <div class="fu-info-popup-content-header">{{ title }}</div>
+    <div class="fu-info-popup-content-content">{{ content }}</div>
+    <div class="fu-info-popup-content-more">
+        <a href="{{ moreInfoUrl }}" target="_blank">LearnMore</a>
+    </div>
+</div>

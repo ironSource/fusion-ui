@@ -1,0 +1,12 @@
+<ng-container *ngFor="let boxData of accordionBoxes; let index = index">
+    <fusion-dynamic-components
+        [configuration]="getItemConfiguration(index, 'header')"
+        [class.closed]="!isOpened(index)"
+        (click)="onClick(index)"
+    ></fusion-dynamic-components>
+    <fusion-dynamic-components
+        *ngIf="isOpened(index)"
+        [configuration]="getItemConfiguration(index, 'content')"
+        [class.closed]="!isOpened(index)"
+    ></fusion-dynamic-components>
+</ng-container>

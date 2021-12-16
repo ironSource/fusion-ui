@@ -1,0 +1,934 @@
+<div class="row">
+    <div class="col-9">
+        <!--UI-Component Examples-->
+        <div class="is-example-title">Toast</div>
+        <fusion-example-block id="typeBasic" title="Basic in consumer toasts holder (no service required)">
+            <!--Code Examples-->
+            <ng-template fusionExampleBlock="Angular">
+                <p>Template part:</p>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<!--Use ToastComponent in consumer`s holder element (without ToasterService) -->
+1. put holder element with <fusion-toast... component
+    <div class="toast-holder">
+        <fusion-toast
+        *ngIf="isToastVisible"
+        [configuration]="simpleSuccessToastConfig"
+        (toastClosed)="onToastClose()"
+        ></fusion-toast>
+    </div>
+2. some show toast trigger
+<button fusion-button class="primary" (click)="showToast()">Show Toast</button>
+
+<!--
+style example for top-left position
+.toast-holder{
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    z-index: 9999;
+}
+-->
+'
+                ></fusion-code-block>
+                <p>Code part:</p>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="
+...
+isToastVisible = false; // toast shown status
+// toast configuration:
+simpleSuccessToastConfig: ToastEntity = {
+    type: 'success',
+    text: 'Well done! You successfully read this'
+};
+
+// method for show toast
+showToast(){
+    this.isToastVisible = true;
+}
+
+// method for close (hide) toast
+onToastClose(){
+    this.isToastVisible = false;
+}"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="import React from 'react';
+import './Foo.css';
+import {FusionButton, FusionToast} from '@ironsrc/fusion-ui/native/react';
+
+export default class Foo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      button: {
+        class: 'button'
+      },
+      toast:{
+        shown: false,
+        configuration: {
+          type: 'success',
+          text: 'Well done! You successfully read this',
+        }
+      }
+    };
+  }
+
+  componentDidMount() {
+    this.props.updateLayoutTitle({ title: 'Toast' });
+  }
+
+  showToast(){
+    this.setState({
+      toast: {
+        ...this.state.toast, shown: true
+      }
+    });
+  }
+
+  onToastClose() {
+    this.setState({
+      toast: {
+        ...this.state.toast, shown: false
+      }
+    });
+
+  }
+
+
+  render() {
+    return (
+      <div className='example-holder'>
+        <p>Toast component example:</p>
+        <FusionButton config={this.state.button} click={this.showToast.bind(this)}><span>Show Toast</span></FusionButton>
+        <br/><br/>
+        <div className='toast-holder'>
+          {this.state.toast.shown ? <FusionToast config={this.state.toast} close={this.onToastClose.bind(this)}></FusionToast> : null}
+        </div>
+      </div>
+    );
+  }
+}
+"
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code=" <!--foo.css-->
+.example-holder{
+    width: 800px;
+    margin: 15px auto;
+    padding: 25px;
+    background-color: white;
+    border: solid 1px #ccc;
+}
+
+.toast-holder{
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    z-index: 9999;
+}
+"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<template>
+  <div class='example-holder'>
+    <p>Toast example</p>
+    <FusionButton :config='button' @click='onClick'><span>Show Toast</span></FusionButton>
+
+    <div class='toast-holder'>
+      <FusionToast v-if='toast.shown' :config='toast' @close='onClose'></FusionToast>
+    </div>
+
+  </div>
+</template>
+
+<style>
+.example-holder{
+  width: 800px;
+  height: 200px;
+  margin: 15px auto;
+  padding: 25px;
+  background-color: white;
+  border: solid 1px #ccc;
+}
+.toast-holder{
+  position: fixed;
+  left: 20px;
+  top: 20px;
+  z-index: 9999;
+}
+
+</style>"
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="<script>
+import { FusionButton, FusionToast } from '@ironsrc/fusion-ui/native/vue';
+
+export const FooComponent = {
+  name: 'FooComponent',
+  mounted() {
+    this.$emit('updateLayoutTitle', { title: 'Component Example' });
+  },
+  components: {
+    FusionButton,
+    FusionToast
+  },
+  data() {
+    return {
+      button: {},
+      toast: {
+        shown: false,
+        configuration: {
+          type: 'success',
+          text: 'Well done! You successfully read this',
+        }
+      }
+    }
+  },
+  methods: {
+    onClick: function(){
+      this.toast = {
+        ...this.toast,
+        shown: true};
+    },
+    onClose: function(){
+      this.toast = {
+        ...this.toast,
+        shown: false};
+    }
+  }
+};
+export default FooComponent;
+</script>"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code=' <!--index.html -->
+
+<body>
+    ...
+    <div class="toast-holder"></div>
+    ...
+</body>
+'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<!-- main.css -->
+#app {
+    width: 650px;
+    margin: 50px auto;
+    padding: 30px;
+    border: solid 1px #ccc;
+    background-color: #ffffff;
+}
+
+.toast-holder{
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    z-index: 10;
+}
+"
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="<!-- index.js -->
+const showToast = (parent)=>{
+    const toast = document.createElement('native-fusion-toast');
+    toast.config = {
+        configuration: {
+            type: 'success',
+            text: 'Well done! You successfully read this',}
+    };
+
+    toast.addEventListener('close',(data)=>{
+        toast.remove();
+    }, false);
+
+    parent.appendChild(toast);
+};
+
+const onLoad = () => {
+    // get application holder for add buttons here
+    const appHolder = document.getElementById('app');
+
+    // add button
+    const button = document.createElement('native-fusion-button');
+    button.config = {class:'primary'};
+    appHolder.appendChild(button);
+    const textNode = document.createTextNode('Show Toast top-right');
+    button.appendChild(textNode);
+    // ---------------------------
+    appHolder.appendChild(button);
+    button.addEventListener('onclick', e => {
+        showToast(document.querySelector('.toast-holder'));
+    });
+};
+
+document.addEventListener('DOMContentLoaded', onLoad, false);
+"
+                ></fusion-code-block>
+            </ng-template>
+            <!--Code Examples-->
+
+            <div class="buttons-holder">
+                <button *ngFor="let toast of toastKeys" fusion-button class="primary" (click)="showToast(toast)">
+                    Show {{ toast }} Toast
+                </button>
+            </div>
+
+            <div class="toast-holder">
+                <fusion-toast
+                    *ngIf="toastKeysMap.has('successToast')"
+                    [configuration]="simpleSuccessToastConfig"
+                    (toastClosed)="onToastClose('successToast')"
+                ></fusion-toast>
+                <fusion-toast
+                    *ngIf="toastKeysMap.has('alertToast')"
+                    [configuration]="simpleAlertToastConfig"
+                    (toastClosed)="onToastClose('alertToast')"
+                ></fusion-toast>
+                <fusion-toast
+                    *ngIf="toastKeysMap.has('errorToast')"
+                    [configuration]="simpleErrorToastConfig"
+                    (toastClosed)="onToastClose('errorToast')"
+                ></fusion-toast>
+                <fusion-toast
+                    *ngIf="toastKeysMap.has('warningToast')"
+                    [configuration]="simpleWarningToastConfig"
+                    (toastClosed)="onToastClose('warningToast')"
+                ></fusion-toast>
+                <fusion-toast
+                    *ngIf="toastKeysMap.has('noTypeToast')"
+                    [configuration]="simpleNoTypeToastConfig"
+                    (toastClosed)="onToastClose('noTypeToast')"
+                ></fusion-toast>
+                <fusion-toast
+                    *ngIf="toastKeysMap.has('customIconToast')"
+                    [configuration]="simpleCustomIconToastConfig"
+                    (toastClosed)="onToastClose('customIconToast')"
+                ></fusion-toast>
+                <fusion-toast
+                    *ngIf="toastKeysMap.has('customImageToast')"
+                    [configuration]="simpleCustomImageToastConfig"
+                    (toastClosed)="onToastClose('customImageToast')"
+                ></fusion-toast>
+                <fusion-toast
+                    *ngIf="toastKeysMap.has('customToast')"
+                    [configuration]="simpleCustomContentToastConfig"
+                    (toastClosed)="onToastClose('customToast')"
+                ></fusion-toast>
+            </div>
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="typeBasicLocation" title="Basic with location (no service required)">
+            <!--Code Examples-->
+            <ng-template fusionExampleBlock="Angular">
+                <p>Template part:</p>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<!--Use ToastComponent with location (by parent with position: relative ) (without ToasterService) -->
+1. put fusion-toast component
+        <fusion-toast
+        *ngIf="isToastVisible"
+        [configuration]="simpleSuccessTopRightToastConfig"
+        (toastClosed)="onToastClose()"
+        ></fusion-toast>
+2. some show toast trigger
+<button fusion-button class="primary" (click)="showToast()">Show Toast</button>
+'
+                ></fusion-code-block>
+                <p>Code part:</p>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="
+...
+isToastVisible = false; // toast shown status
+// toast configuration:
+simpleSuccessTopRightToastConfig: ToastEntity = {
+    type: 'success',
+    text: 'Well done! You successfully read this',
+    location: 'top-right'
+};
+
+// method for show toast
+showToast(){
+    this.isToastVisible = true;
+}
+
+// method for close (hide) toast
+onToastClose(){
+    this.isToastVisible = false;
+}"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="import React from 'react';
+import './Foo.css';
+import {FusionButton, FusionToast} from '@ironsrc/fusion-ui/native/react';
+
+export default class Foo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      button: {
+        class: 'button'
+      },
+      toast:{
+        shown: false,
+        configuration: {
+          type: 'success',
+          text: 'Well done! You successfully read this',
+          location: 'top-right'
+        }
+      }
+    };
+  }
+
+  componentDidMount() {
+    this.props.updateLayoutTitle({ title: 'Toast' });
+  }
+
+  showToast(){
+    this.setState({
+      toast: {
+        ...this.state.toast, shown: true
+      }
+    });
+  }
+
+  onToastClose() {
+    this.setState({
+      toast: {
+        ...this.state.toast, shown: false
+      }
+    });
+
+  }
+
+
+  render() {
+    return (
+      <div className='example-holder'>
+        <p>Toast component example:</p>
+        <FusionButton config={this.state.button} click={this.showToast.bind(this)}><span>Show Toast</span></FusionButton>
+        <br/><br/>
+        {this.state.toast.shown ? <FusionToast config={this.state.toast} close={this.onToastClose.bind(this)}></FusionToast> : null}
+      </div>
+    );
+  }
+}
+"
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code=" &lt;!&ndash;foo.css&ndash;&gt;
+.example-holder{
+    width: 800px;
+    margin: 15px auto;
+    padding: 25px;
+    background-color: white;
+    border: solid 1px #ccc;
+}"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<template>
+  <div class='example-holder'>
+    <p>Toast example</p>
+    <FusionButton :config='button' @click='onClick'><span>Show Toast</span></FusionButton>
+    <FusionToast v-if='toast.shown' :config='toast' @close='onClose'></FusionToast>
+  </div>
+</template>
+
+<style>
+.example-holder{
+  width: 800px;
+  height: 200px;
+  margin: 15px auto;
+  padding: 25px;
+  background-color: white;
+  border: solid 1px #ccc;
+}
+</style>"
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="<script>
+import { FusionButton, FusionToast } from '@ironsrc/fusion-ui/native/vue';
+
+export const FooComponent = {
+  name: 'FooComponent',
+  mounted() {
+    this.$emit('updateLayoutTitle', { title: 'Component Example' });
+  },
+  components: {
+    FusionButton,
+    FusionToast
+  },
+  data() {
+    return {
+      button: {},
+      toast: {
+        shown: false,
+        configuration: {
+          type: 'success',
+          text: 'Well done! You successfully read this',
+          location: 'top-right'
+        }
+      }
+    }
+  },
+  methods: {
+    onClick: function(){
+      this.toast = {
+        ...this.toast,
+        shown: true};
+    },
+    onClose: function(){
+      this.toast = {
+        ...this.toast,
+        shown: false};
+    }
+  }
+};
+export default FooComponent;
+</script>"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code=' <!--index.html -->
+<html>
+
+<head>
+    <title>FusionUI Native Sandbox</title>
+    <meta charset="UTF-8" />
+
+    <link rel="stylesheet" href="node_modules/@ironsrc/fusion-ui/native/core/fusion.theme.css">
+    <script src="node_modules/@ironsrc/fusion-ui/native/core/polyfills-es2015.js" type="module"></script>
+    <script src="node_modules/@ironsrc/fusion-ui/native/core/polyfills-es5.js" nomodule></script>
+    <script src="node_modules/@ironsrc/fusion-ui/native/core/polyfill-webcomp-es5.js" nomodule></script>
+    <script src="node_modules/@ironsrc/fusion-ui/native/core/polyfill-webcomp-es2015.js"></script>
+    <script src="node_modules/@ironsrc/fusion-ui/native/core/main-es2015.js" type="module"></script>
+    <script src="node_modules/@ironsrc/fusion-ui/native/core/main-es5.js" nomodule></script>
+
+    <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+    <div id="app"></div>
+    <script type="application/javascript" src="src/index.js"></script>
+</body>
+
+</html>
+'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<!-- main.css -->
+#app {
+    width: 650px;
+    margin: 50px auto;
+    padding: 30px;
+    border: solid 1px #ccc;
+    background-color: #ffffff;
+}
+"
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="<!-- index.js -->
+const showToast = (parent, location)=>{
+    const toast = document.createElement('native-fusion-toast');
+    toast.config = {
+        configuration: {
+            type: 'success',
+            text: 'Well done! You successfully read this',
+            location: location
+        }
+    };
+
+    toast.addEventListener('close',(data)=>{
+        toast.remove();
+    }, false);
+
+    parent.appendChild(toast);
+};
+
+const onLoad = () => {
+    // get application holder for add buttons here
+    const appHolder = document.getElementById('app');
+
+    // add button
+    const button = document.createElement('native-fusion-button');
+    button.config = {class:'primary'};
+    appHolder.appendChild(button);
+    const textNode = document.createTextNode('Show Toast top-right');
+    button.appendChild(textNode);
+    // ---------------------------
+    appHolder.appendChild(button);
+    button.addEventListener('onclick', e => {
+        showToast(appHolder, 'top-right');
+    });
+};
+
+document.addEventListener('DOMContentLoaded', onLoad, false);
+"
+                ></fusion-code-block>
+            </ng-template>
+            <!--Code Examples-->
+
+            <div class="buttons-holder">
+                <button
+                    *ngFor="let locationKey of toastLocationsKeys"
+                    fusion-button
+                    class="primary"
+                    (click)="toggleLocationToast(locationKey)"
+                >
+                    Show Toast '{{ locationKey }}'
+                </button>
+            </div>
+            <!--toast with location-->
+            <fusion-toast
+                *ngIf="toastKeysMap.has('toastLocation')"
+                [configuration]="simpleLocationToastConfig"
+                (toastClosed)="onToastClose('toastLocation')"
+            ></fusion-toast>
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="typeToastService" title="With ToastService (recommended)">
+            <!--Code Examples-->
+            <ng-template fusionExampleBlock="Angular">
+                <p>Template part:</p>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<!--Use ToastComponent with ToasterService -->
+1. some show toast trigger (just for example)
+<button fusion-button class="primary" (click)="showToastWithService()">Show Toast</button>
+'
+                ></fusion-code-block>
+                <p>Code part:</p>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="...
+constructor(private toastService: ToastService) {}
+
+showToastWithService(){
+    this.toastService.show({
+        type: 'alert',
+        text: 'This alert needs your attention',
+        location: 'bottom-right' // optional, default - 'top-right'
+    });
+}
+"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="import React from 'react';
+import './Foo.css';
+import {FusionButton, FusionToast} from '@ironsrc/fusion-ui/native/react';
+
+export default class Foo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      button: {
+        class: 'button'
+      }
+    };
+  }
+
+  componentDidMount() {
+    this.props.updateLayoutTitle({ title: 'Toast' });
+  }
+
+  showToast(toastConfig){
+    window.fusion.services.toastService.show(toastConfig);
+  }
+
+  render() {
+    return (
+      <div className='example-holder'>
+        <p>Toast component example:</p>
+
+        <FusionButton config={this.state.button} click={this.showToast.bind(this,{
+          type: 'success',
+          text: 'Well done! You successfully read this',
+        })}><span>Show success Toast</span></FusionButton>
+        <FusionButton config={this.state.button} click={this.showToast.bind(this,{
+          type: 'error',
+          text: 'Ops! Error occur',
+        })}><span>Show error Toast</span></FusionButton>
+
+      </div>
+    );
+  }
+}
+"
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code=" <!--foo.css-->
+.example-holder{
+    width: 800px;
+    margin: 15px auto;
+    padding: 25px;
+    background-color: white;
+    border: solid 1px #ccc;
+}
+
+button{
+    margin: 10px;
+    width: 220px;
+}
+"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<template>
+<div class='example-holder'>
+<p>Toast example</p>
+<FusionButton :config='button' @click='onClick({
+  type: `success`,
+  text: `Well done! You successfully read this`,
+})'><span>Show Success Toast</span></FusionButton>
+
+<FusionButton :config='button' @click='onClick({
+  type: `error`,
+  text: `Ops! Error occur`,
+})'><span>Show Error Toast</span></FusionButton>
+</div>
+</template>
+<style>
+    .example-holder{
+        width: 800px;
+        height: 200px;
+        margin: 15px auto;
+        padding: 25px;
+        background-color: white;
+        border: solid 1px #ccc;
+    }
+    button{
+        display: block;
+        margin: 10px;
+        width: 220px;
+    }
+</style>"
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="<script>
+import { FusionButton } from '@ironsrc/fusion-ui/native/vue';
+
+export const FooComponent = {
+  name: 'FooComponent',
+  mounted() {
+    this.$emit('updateLayoutTitle', { title: 'Component Example' });
+  },
+  components: {
+    FusionButton
+  },
+  data() {
+    return {
+      button: {},
+    }
+  },
+  methods: {
+    onClick: function(toastConfig){
+      window.fusion.services.toastService.show(toastConfig);    }
+  }
+};
+export default FooComponent;
+</script>
+"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code=' <!--index.html -->
+<html>
+
+<head>
+    <title>FusionUI Native Sandbox</title>
+    <meta charset="UTF-8" />
+
+    <link rel="stylesheet" href="node_modules/@ironsrc/fusion-ui/native/core/fusion.theme.css">
+    <script src="node_modules/@ironsrc/fusion-ui/native/core/polyfills-es2015.js" type="module"></script>
+    <script src="node_modules/@ironsrc/fusion-ui/native/core/polyfills-es5.js" nomodule></script>
+    <script src="node_modules/@ironsrc/fusion-ui/native/core/polyfill-webcomp-es5.js" nomodule></script>
+    <script src="node_modules/@ironsrc/fusion-ui/native/core/polyfill-webcomp-es2015.js"></script>
+    <script src="node_modules/@ironsrc/fusion-ui/native/core/main-es2015.js" type="module"></script>
+    <script src="node_modules/@ironsrc/fusion-ui/native/core/main-es5.js" nomodule></script>
+
+    <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+    <div id="app"></div>
+    <script type="application/javascript" src="src/index.js"></script>
+</body>
+
+</html>
+'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<!-- main.css -->
+#app {
+    width: 650px;
+    margin: 50px auto;
+    padding: 30px;
+    border: solid 1px #ccc;
+    background-color: #ffffff;
+}
+"
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="<!-- index.js -->
+const onLoad = () => {
+    // get application holder for add buttons here
+    const appHolder = document.getElementById('app');
+
+    // add button
+    const button = document.createElement('native-fusion-button');
+    button.config = {class:'primary'};
+    appHolder.appendChild(button);
+    const textNode = document.createTextNode('Show Toast top-right');
+    button.appendChild(textNode);
+    // ---------------------------
+    appHolder.appendChild(button);
+    button.addEventListener('onclick', e => {
+        window.fusion.services.toastService.show({
+            type: 'success',
+            text: 'Well done! You successfully read this',
+        });
+    });
+};
+
+document.addEventListener('DOMContentLoaded', onLoad, false);"
+                ></fusion-code-block>
+            </ng-template>
+            <!--Code Examples-->
+            <div class="buttons-holder">
+                <button *ngFor="let toast of toastKeys" fusion-button class="primary" (click)="showToastWithService(toast)">
+                    Show {{ toast }} Toast
+                </button>
+            </div>
+        </fusion-example-block>
+        <!--UI-Component Examples-->
+
+        <!--UI-Component Configuration Doc-->
+        <div class="is-example-title">Configuration</div>
+        <fusion-example-block id="params" title="Parameters" [collapsible]="false">
+            <fusion-code-block
+                lang="js"
+                code="export interface ToastEntity {
+    text?: string;
+    type?: ToastType;
+    icon?: string; // icon name that will used inserted of type icon. Type must be not defined
+    image?: string; // image URL that will used inserted of type icon. Type must be not defined
+    custom?: DynamicComponentConfiguration; // toast dynamic content
+    duration?: number; // shown duration in seconds. default null.
+    location?: ToastLocation; // used without ToastService (default 'top-right')
+}
+
+export type ToastType = 'success' | 'alert' | 'error' | 'warning';
+export type ToastLocation = 'top-right' | 'top-left' | 'top-center' | 'bottom-right' | 'bottom-left' | 'bottom-center';
+
+// for dynamic content using
+export interface DynamicComponentConfiguration {
+    component?: {
+        type: Type<Component>;
+        data?: any;
+    };
+    element?: Node;
+    htmlSnippet?: string;
+}
+"
+            ></fusion-code-block>
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="cssVars" title="CSS Variables" [collapsible]="false">
+            <fusion-code-block
+                lang="html"
+                code="// toast
+--toast-width, 340px
+--toast-height, 64px
+--toast-background-color, #ffffff
+--toast-border, solid 1px $fu-light-300 (#e5e7e9);
+--toast-border-radius, 8px
+--toast-box-shadow, 0 3px 4px 0 rgba(0, 0, 0, 0.1);
+--toast-margin-bottom, 8px
+
+// icon in toast
+--toast-icon-color, currentColor
+--toast-icon-margin-left, 12px
+--toast-icon-width, 32px
+--toast-icon-height, 32px
+
+// location (position fixed)
+--toast-location-bottom-margin, 20px
+--toast-location-top-margin, 20px
+--toast-location-left-margin, 20px
+--toast-location-right-margin, 20px
+"
+            ></fusion-code-block>
+        </fusion-example-block>
+        <!--UI-Component Configuration Doc-->
+    </div>
+
+    <div class="col-3 is-right-side-menu-holder">
+        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+    </div>
+</div>

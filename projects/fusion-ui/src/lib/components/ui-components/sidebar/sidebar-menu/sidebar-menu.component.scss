@@ -1,0 +1,212 @@
+@import '../../../../../style/scss/vars/vars';
+@import '../../../../../style/scss/vars/mixins';
+
+// region SCSS vars
+$menuItemHeight: 48px;
+$menuItemPaddingLeft: 24px;
+
+$menuItemColor: $White;
+$menuItemIconSize: 12px;
+$menuItemIconArrowColor: rgba(255, 255, 255, 0.5);
+$menuItemIconArrowSize: 9px;
+$menuItemHoverBGColor: $fu-dark-400;
+$menuItemOpenColor: $fu-primary-300;
+$menuItemOpenBGColor: $fu-dark-600;
+$menuItemOpenLeftBorderWidth: 3px;
+$menuSubItemHolderHeight: 1050px;
+$menuSubItemTitleHeight: 32px;
+$menuSubItemHeight: 24px;
+$menuSubItemHoverBGColor: $fu-dark-300;
+$menuSubItemSubPaddingLeft: 16px;
+$menuSubItemBorderRadius: 12px;
+$menuSubItemPadding: 16px;
+$menuSubItemSelectedColor: $fu-primary-300;
+
+
+// for mobile
+$menuItemMobileHeight: 64px;
+$menuItemMobileColor: $White;
+$menuMobileBackgroundColor: $fu-dark-500;
+// endregion
+
+:host{
+    display: block;
+    @extend %border-box-normalize;
+    .fu-sidebar-menu{
+        .fu-sidebar-menu-item-holder{
+            padding-left: var(--sidebar-menu-item-padding-left, #{$menuItemPaddingLeft});
+            color: var(--sidebar-menu-item-color, $menuItemColor);
+            a.fu-sidebar-menu-item{
+                display: flex;
+                align-items: center;
+                height: var(--sidebar-menu-item-height, $menuItemHeight);
+                text-decoration: none;
+                &:visited,
+                &:link,
+                &:active {
+                    color: currentColor;
+                }
+                @include icon-style('fu-sidebar-menu-item-icon', var(--sidebar-menu-item-icon-color, currentColor), var(--sidebar-menu-item-icon-size, $menuItemIconSize), false, true) {
+                    margin-right: 12px;
+                    padding-top: .4em;
+                }
+                .fu-sidebar-menu-item-text{
+                    opacity: 1;
+                    transition: opacity .3s ease;
+                    @extend %font-subtitle;
+                    letter-spacing: 0.04px;
+                    line-height: initial;
+                    white-space: nowrap;
+                    @extend %truncate;
+                }
+                @include icon-style('fu-sidebar-menu-item-arrow', var(--sidebar-menu-item-icon-arrow-color, $menuItemIconArrowColor), var(--sidebar-menu-item-icon-arrow-size, $menuItemIconArrowSize), false, true) {
+                    margin-left: auto;
+                    margin-right: 20px;
+                }
+                // for mobile size
+                @include icon-style('fu-sidebar-menu-mobile-return-icon', var(--sidebar-menu-item-icon-color, currentColor), var(--sidebar-menu-item-icon-size, $menuItemIconSize), false, true) {
+                    margin-right: 1em;
+                    margin-top: .6em;
+                    display: none;
+                }
+            }
+            a.fu-sidebar-menu-item.fu-external-link{
+                text-decoration: none;
+                color: var(--sidebar-menu-link-item-color, $fu-primary-300);
+                .fu-sidebar-menu-item-text{
+                    white-space: nowrap;
+                    @extend %font-bodyStrong;
+                }
+            }
+            &:hover{
+                background-color: var(--sidebar-menu-item-hover-background-color, $menuItemHoverBGColor);
+            }
+
+            .fu-sidebar-menu-sub-items-holder{
+                max-height: 0;
+                overflow: hidden;
+                opacity: 0;
+                transition: opacity .1s ease-out, max-height .3s ease-out;
+                margin-left: calc(-#{$menuItemPaddingLeft} + #{$menuItemOpenLeftBorderWidth});
+                .fu-sidebar-menu-sub-item-title{
+                    white-space: nowrap;
+                    @extend %font-label;
+                    text-transform: uppercase;
+                    height: $menuSubItemTitleHeight;
+                    line-height: $menuSubItemTitleHeight;
+                    opacity: var(--sidebar-menu-sub-item-title-opacity, 0.5);
+                    color: var(--sidebar-menu-sub-item-title-color, $menuItemColor);
+                    cursor: default;
+                    pointer-events: none;
+                    padding-left: calc(#{$menuItemPaddingLeft});
+                }
+                .fu-sidebar-menu-sub-item-holder{
+                    position: relative;
+                    a.fu-sidebar-menu-sub-item-additional{
+                        position: absolute;
+                        top: 2px;
+                        right: 18px;
+                        text-decoration: none;
+                        @extend %font-bodyStrong;
+                        &:visited,
+                        &:link,
+                        &:active,{
+                            color: var(--sidebar-menu-additional-item-color, $fu-primary-300);
+                        }
+                    }
+                    a.fu-sidebar-menu-item{
+                        height: $menuSubItemHeight;
+                        line-height: $menuSubItemHeight;
+                        color: var(--sidebar-menu-sub-menu-item-color, $menuItemColor);
+                        margin-right: 8px;
+                        padding-left: calc(#{$menuItemPaddingLeft} - #{$menuItemOpenLeftBorderWidth});
+                        border-top-right-radius: $menuSubItemBorderRadius;
+                        border-bottom-right-radius: $menuSubItemBorderRadius;
+                        display: block;
+                        &:visited,
+                        &:link,
+                        &:active,{
+                            color: var(--sidebar-menu-sub-menu-item-color, $menuItemColor);
+                        }
+                        .fu-sidebar-menu-item-text{
+                            transition: none;
+                            @extend %font-body;
+                            line-height: $menuSubItemHeight;
+                            white-space: nowrap;
+                            @extend %truncate;
+                        }
+                        &:hover{
+                            background-color: var(--sidebar-menu-subitem-hover-background-color, $menuSubItemHoverBGColor);
+                        }
+                        &.fu-main-sub-item-active{
+                            color: var(--sidebar-menu-subitem-selected-color, $menuSubItemSelectedColor);
+                            background-color: var(--sidebar-menu-subitem-selected-background-color, $menuSubItemHoverBGColor);
+                            cursor: default;
+                            .fu-sidebar-menu-item-text{
+                                @extend %font-bodyStrong;
+                            }
+                        }
+                        &.fu-sidebar-menu-sub-child{
+                            padding-left: calc(#{$menuItemPaddingLeft} - #{$menuItemOpenLeftBorderWidth} + #{$menuSubItemPadding});
+                            &.fu-main-sub-item-active{
+                                padding-left: calc(#{$menuItemPaddingLeft} - #{$menuItemOpenLeftBorderWidth} + #{$menuSubItemPadding});
+                            }
+                            &:hover{
+                                padding-left: calc(#{$menuItemPaddingLeft} - #{$menuItemOpenLeftBorderWidth} + #{$menuSubItemSubPaddingLeft});
+                            }
+                        }
+                    }
+                }
+            }
+            &.fu-sidebar-menu-item-open{
+                @include icon-style('fu-sidebar-menu-item-arrow', var(--sidebar-menu-item-icon-arrow-color, $menuItemIconArrowColor), var(--sidebar-menu-item-icon-arrow-size, $menuItemIconArrowSize), false, true, 90);
+                background-color:  var(--sidebar-menu-item-open-background-color, $menuItemOpenBGColor);
+                .fu-sidebar-menu-sub-items-holder{
+                    opacity: 1;
+                    max-height: $menuSubItemHolderHeight;
+                    padding-bottom: 8px;
+                }
+            }
+            &.fu-sidebar-menu-item-selected{
+                border-left: solid $menuItemOpenLeftBorderWidth var(--sidebar-menu-item-selected-border-color, $fu-primary-300);
+                padding-left: calc(#{$menuItemPaddingLeft} - #{$menuItemOpenLeftBorderWidth});
+                color: var(--sidebar-menu-item-open-color, $menuItemOpenColor);
+                background-color:  var(--sidebar-menu-item-open-background-color, $menuItemOpenBGColor);
+            }
+        }
+    }
+}
+
+:host-context(.fu-sidebar-closed) {
+    .fu-sidebar-menu .fu-sidebar-menu-item-holder .fu-sidebar-menu-sub-items-holder{
+        max-height: 0px;
+        padding-bottom: 0;
+        opacity: 0;
+        transition: opacity 1s ease-out;
+    }
+    .fu-sidebar-menu .fu-sidebar-menu-item-holder{
+        .fu-sidebar-menu-item{
+            .fu-sidebar-menu-item-text,
+            .fu-sidebar-menu-item-arrow{
+                opacity: 0;
+            }
+
+        }
+    }
+    &.fu-sidebar-closed-hovered {
+        .fu-sidebar-menu .fu-sidebar-menu-item-holder{
+            .fu-sidebar-menu-item{
+                .fu-sidebar-menu-item-text,
+                .fu-sidebar-menu-item-arrow{
+                    opacity: 1;
+                }
+
+            }
+        }
+        .fu-sidebar-menu .fu-sidebar-menu-item-holder.fu-sidebar-menu-item-open .fu-sidebar-menu-sub-items-holder{
+            max-height: $menuSubItemHolderHeight;
+            padding-bottom: 8px;
+            opacity: 1;
+        }
+    }
+}

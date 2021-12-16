@@ -1,0 +1,62 @@
+@import '../../../../../style/scss/vars/vars';
+@import '../../../../../style/scss/vars/mixins';
+@import '../../../../../style/scss/mixins/breakpoints';
+
+$sectionHeight: 50px;
+$blockMaxHeight: 950px;
+
+:host {
+    .main-menu-wrapper {
+        position: absolute;
+        z-index: getZIndexLayerOffset(system, 8);
+        top:  $menuHeaderHeight;
+        left: 0;
+        background-color: var(--layout-background-color, $dark-400);
+        color: #fff;
+        overflow-y: auto;
+        height: calc(100vh - #{$headerPaddingSm} -  #{$menuHeaderHeight});
+    }
+
+    &.collapsed {
+        .main-menu-wrapper {
+            @include media-breakpoint-max('sm') {
+                display: none;
+            }
+            @include media-breakpoint-min('md') {
+                &.opened {
+                    box-shadow: 3px 0 5px 0 rgba(0, 0, 0, .3);
+                }
+            }
+            @include media-breakpoint-between('sm','md') {
+                display: none;
+            }
+        }
+    }
+
+    @include media-breakpoint-min('md') {
+        .main-menu-wrapper{
+            top: calc(#{$menuHeaderHeight} + 5px);
+        }
+    }
+
+    @include media-breakpoint-min('xl') {
+        .main-menu-wrapper {
+            top: calc(#{$menuHeaderHeight} + #{$headerPaddingLarge});
+            height: calc(100vh - #{$menuHeaderHeight} - #{$headerPaddingLarge});
+        }
+    }
+
+    @include media-breakpoint-max('sm') {
+        .main-menu-wrapper {
+            display: block;
+            width: 100%;
+            top: $mobileHeaderHeight;
+            bottom: 0;
+            overflow: scroll;
+            height: calc(100vh + #{$headerPaddingDesktop});
+            position: absolute;
+        }
+    }
+}
+
+

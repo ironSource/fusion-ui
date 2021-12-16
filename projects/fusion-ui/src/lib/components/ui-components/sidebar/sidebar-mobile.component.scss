@@ -1,0 +1,45 @@
+/*!
+ * Created on 2020.12.7 By Andy Kononenko (andyk@ironsrc.com)
+ */
+
+@import "common";
+
+:host{
+    @include media-breakpoint-max('xs') {
+        width: var(--layout-sidebar-mobile-width, $sidebarMobileWidth);
+        &.fu-sidebar-closed{
+            width: 0;
+            .fu-sidebar{
+                width: 0;
+                border-right: none;
+            }
+        }
+        .fu-sidebar{
+            display: flex;
+            flex-direction: column;
+
+            .fu-sidebar-dynamic-content-holder{
+                display: none;
+            }
+            .fu-sidebar-logo-holder{
+                height: 72px;
+                min-height: var(--layout-sidebar-logo-holder-height, $logoHolderHeight);
+                border-bottom: var(--layout-sidebar-delimiters-border, solid 1px  rgba(255, 255, 255, 0.5));
+                .fu-sidebar-logo{
+                    margin-top: 20px;
+                    margin-left: 20px;
+                }
+            }
+            .fu-sidebar-user-data{
+                display: block;
+                margin-top: auto;
+            }
+
+            &.fu-sidebar-hide-logo{
+                .fu-sidebar-logo-holder{
+                    display: none;
+                }
+            }
+        }
+    }
+}

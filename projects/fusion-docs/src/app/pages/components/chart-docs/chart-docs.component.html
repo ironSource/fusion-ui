@@ -1,0 +1,720 @@
+<div class="row">
+    <div class="col-9">
+        <!--UI-Component Examples-->
+        <div class="is-example-title">Chart Types:</div>
+        <fusion-example-block id="chartTypeBar" title="Chart type: 'bar'">
+            <ng-template fusionExampleBlock="Angular">
+                1. Add to host component template
+                <fusion-code-block lang="html"
+                                   code='<fusion-chart [data]="chartData" type="bar"></fusion-chart>'></fusion-code-block>
+                <br>
+                2. Prepare data for Chart Component
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleAngular"></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleReactBar"></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                Vue component-host file template part
+                <fusion-code-block lang="html"
+                                   code='<template>
+  <div style="margin: 15px;">
+    <p>Chart Component Example</p>
+    <div style="border: solid 1px #ccc; width: 800px; height:400px; padding: 20px; margin: 20px">
+      <FusionChart :config="chart"></FusionChart>
+    </div>
+  </div>
+</template>'></fusion-code-block>
+
+                <br>
+                Vue component-host file script part
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleVueBar"></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleNativeBar"></fusion-code-block>
+            </ng-template>
+            <br/>
+            <div class="chart-holder">
+                <fusion-chart [data]="chartData" type="bar" chartSubject="Revenue"></fusion-chart>
+            </div>
+        </fusion-example-block>
+
+        <br>
+        <fusion-example-block id="chartTypeLine" title="Chart type: 'line'">
+            <ng-template fusionExampleBlock="Angular">
+                1. Add to host component template
+                <fusion-code-block lang="html"
+                                   code='<fusion-chart id="lineChartExample" [data]="chartData" type="line"></fusion-chart>'></fusion-code-block>
+                <br>
+                2. Prepare data for Chart Component
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleAngular"></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleReact"></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                Vue component-host file template part
+                <fusion-code-block lang="html"
+                                   code='<template>
+  <div style="margin: 15px;">
+    <p>Chart Component Example</p>
+    <div style="border: solid 1px #ccc; width: 800px; height:400px; padding: 20px; margin: 20px">
+      <FusionChart :config="chart"></FusionChart>
+    </div>
+  </div>
+</template>'></fusion-code-block>
+
+                <br>
+                Vue component-host file script part
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleVue"></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleNative"></fusion-code-block>
+            </ng-template>
+            <br/>
+            <div class="chart-holder">
+                <fusion-chart id="lineChartExample" [data]="chartData" type="line"></fusion-chart>
+            </div>
+        </fusion-example-block>
+
+        <br>
+        <fusion-example-block id="chartTypeStackedLine" title="Chart type: 'Stacked Line'">
+            <ng-template fusionExampleBlock="Angular">
+                1. Add to host component template
+                <fusion-code-block lang="html"
+                                   code='<fusion-chart id="lineStackedChartExample" [data]="chartData" type="stackedLine"></fusion-chart>'></fusion-code-block>
+                <br>
+                2. Prepare data for Chart Component
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleAngular"></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleReactStackedLine"></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Vue">
+                Vue component-host file template part
+                <fusion-code-block lang="html"
+                                   code='<template>
+  <div style="margin: 15px;">
+    <p>Chart Component Example</p>
+    <div style="border: solid 1px #ccc; width: 800px; height:400px; padding: 20px; margin: 20px">
+      <FusionChart :config="chart"></FusionChart>
+    </div>
+  </div>
+</template>'></fusion-code-block>
+
+                <br>
+                Vue component-host file script part
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleVueStackedLine"></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleNativeStackedLine"></fusion-code-block>
+            </ng-template>
+            <br/>
+            <div class="chart-holder">
+                <fusion-chart id="lineStackedChartExample" [options]="chartOptionTest" [data]="chartData"
+                              type="stackedLine"></fusion-chart>
+            </div>
+        </fusion-example-block>
+
+        <br/>
+        <fusion-example-block id="chartTypeDoughnut" title="Chart type: 'Doughnut'">
+            <ng-template fusionExampleBlock="Angular">
+                1. Add to host component template
+                <fusion-code-block
+                    lang="html"
+                    code='<fusion-chart id="chartTypeDoughnutExample" [data]="chartPieData" type="doughnut"></fusion-chart>'
+                ></fusion-code-block>
+                <br/>
+                2. Prepare data for Chart Component
+                <fusion-code-block lang="js" [code]="codeExampleAngularPie"></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block lang="js" [code]="codeExampleReactPie"></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                Vue component-host file template part
+                <fusion-code-block
+                    lang="html"
+                    code='<template>
+                          <div style="margin: 15px;">
+                            <p>Chart Component Example</p>
+                            <div style="border: solid 1px #ccc; width: 800px; height:400px; padding: 20px; margin: 20px">
+                              <FusionChart :config="chart"></FusionChart>
+                            </div>
+                          </div>
+                        </template>'
+                ></fusion-code-block>
+
+                <br/>
+                Vue component-host file script part
+                <fusion-code-block lang="js" [code]="codeExampleVuePie"></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block lang="js" [code]="codeExampleNativePie"></fusion-code-block>
+            </ng-template>
+            <br/>
+            <div class="row">
+                <div class="col-4">
+                    <div class="chart-doughnut-holder">
+                        <fusion-chart id="chartTypeDoughnutExample1" [data]="chartPieData1"
+                                      type="doughnut"></fusion-chart>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="chart-doughnut-holder">
+                        <fusion-chart id="chartTypeDoughnutExample2" [data]="chartPieData2"
+                                      type="doughnut"></fusion-chart>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="chart-doughnut-holder">
+                        <fusion-chart id="chartTypeDoughnutExample3" [data]="chartPieData3"
+                                      type="doughnut"></fusion-chart>
+                    </div>
+                </div>
+            </div>
+        </fusion-example-block>
+
+        <div class="is-example-title">Chart with Labels:</div>
+        <fusion-example-block id="chartLabels" title="Chart type: 'line' with labels">
+            <ng-template fusionExampleBlock="Angular">
+                1. Add to host component template 2 components
+                - fusion-chart-labels
+                - fusion-chart
+                <fusion-code-block lang="html"
+                                   code='            <div class="row">
+                <div class="col-3">
+                    <fusion-chart-labels [dataSetsLabels]="chartDataLabels$ | async"></fusion-chart-labels>
+                </div>
+                <div class="col-9">
+                    <fusion-chart
+                        type="line"
+                        [data]="chartData"
+                        (afterDatasetInit)="onDatasetInit($event)"
+                        #myLineTypeLabels
+                    ></fusion-chart>
+                </div>
+            </div>'></fusion-code-block>
+                <br>
+                2. Add needed code to the host component code part
+                <fusion-code-block lang="js"
+                                   code="// For access to the public method of ChartComponent 'toggleDataset' that will change state of set to hide / show
+@ViewChild('myLineTypeLabels', {static: true}) myLineTypeLabels: ChartComponent;
+
+//On event 'afterDatasetInit' will be caled method 'onDatasetInit' ast it set in <fusion-chart.... '(afterDatasetInit)=onDatasetInit($event)'
+onDatasetInit(chartData: ChartData): void {
+    const chartDataLabels = chartData.datasets.map(dataSet => {
+        const dataLabel: FusionChartLabel = {
+            id: dataSet.id,
+            label: dataSet.label,
+            color: dataSet.borderColor,
+            labelVisible: new FormControl(!dataSet.hidden)
+        };
+        dataLabel.labelVisible.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(item => {
+            this.myLineTypeLabels.toggleDataset(dataLabel, true);
+        });
+        return dataLabel;
+    });
+
+    this.chartDataLabels$.next(chartDataLabels);
+}
+// it prepare data for 'fusion-chart-labels' and added listeners for label state changes
+// on label state changes will be called public method of ChartComponent - this.myLineTypeLabels.toggleDataset(dataLabel, true);
+
+// Please don't forget  'unsubscribe' from 'dataLabel.labelVisible.valueChanges'
+// by adding
+onDestroy$ = new Subject();
+ngOnDestroy() {
+    this.onDestroy$.next();
+    this.onDestroy$.complete();
+}
+"></fusion-code-block>
+            </ng-template>
+            <br/>
+            <div class="row">
+                <div class="col-3">
+                    <fusion-chart-labels
+                        [dataSetsLabels]="(chartDataLabels$.asObservable() | async)"></fusion-chart-labels>
+                </div>
+                <div class="col-9">
+                    <fusion-chart
+                        type="line"
+                        [data]="chartData"
+                        (afterDatasetInit)="onDatasetInit($event)"
+                        #myLineTypeLabels
+                    ></fusion-chart>
+                </div>
+            </div>
+        </fusion-example-block>
+        <br/>
+        <fusion-example-block id="chartLabelsLetter" title="Chart type: 'line' with labels letters">
+            <ng-template fusionExampleBlock="Angular">
+                1. Add to host component template 2 components
+                - fusion-chart-labels
+                - fusion-chart
+                <fusion-code-block lang="html"
+                                   code='            <div class="row">
+                <div class="col-3">
+                    <fusion-chart-labels [dataSetsLabels]="chartDataLabelsLetters$ | async"></fusion-chart-labels>
+                </div>
+                <div class="col-9">
+                    <fusion-chart
+                        type="line"
+                        [data]="chartData"
+                        (afterDatasetInit)="onDatasetInit($event)"
+                        #myLineTypeLabels
+                    ></fusion-chart>
+                </div>
+            </div>'></fusion-code-block>
+                <br>
+                2. Add needed code to the host component code part
+                <fusion-code-block lang="js"
+                                   code="//On event 'afterDatasetInit' will be caled method 'onDatasetInit' ast it set in <fusion-chart.... '(afterDatasetInit)=onDatasetInit($event)'
+onDatasetInit(chartData: ChartData): void {
+    this.chartDataLabelsLetters$.next(chartDatasets.map((dataSet, idx) => {
+            const baseCharCode = 65; // A
+            const dataLabel: ChartLabel = {
+                id: dataSet.id,
+                label: dataSet.label,
+                color: dataSet.borderColor,
+                labelLetter: String.fromCharCode(baseCharCode + idx)
+            };
+            return dataLabel;
+        }));
+}
+"></fusion-code-block>
+            </ng-template>
+            <br/>
+            <div class="row">
+                <div class="col-3">
+                    <fusion-chart-labels [dataSetsLabels]="(chartDataLabelsLetters$ | async)"></fusion-chart-labels>
+                </div>
+                <div class="col-9">
+                    <fusion-chart
+                        type="line"
+                        [data]="chartData"
+                        (afterDatasetInit)="onDatasetInit($event)"
+                        #myLineTypeLabels
+                    ></fusion-chart>
+                </div>
+            </div>
+        </fusion-example-block>
+
+        <div class="is-example-title">Line Types:</div>
+        <fusion-example-block id="lineTypeToday" title="Chart type: 'line' with data for today">
+            <ng-template fusionExampleBlock="Angular">
+                1. Add to host component template
+                <fusion-code-block lang="html"
+                                   code='<fusion-chart id="lineStackedChartExample" [data]="chartData" type="line"></fusion-chart>'></fusion-code-block>
+                <br>
+                2. Prepare data for Chart Component
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleAngularToday"></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleReactToday"></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                Vue component-host file template part
+                <fusion-code-block lang="html"
+                                   code='<template>
+  <div style="margin: 15px;">
+    <p>Chart Component Example</p>
+    <div style="border: solid 1px #ccc; width: 800px; height:400px; padding: 20px; margin: 20px">
+      <FusionChart :config="chart"></FusionChart>
+    </div>
+  </div>
+</template>'></fusion-code-block>
+
+                <br>
+                Vue component-host file script part
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleVueToday"></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleNativeToday"></fusion-code-block>
+            </ng-template>
+            <br/>
+            <div class="chart-holder">
+                <fusion-chart id="myLineChartToday" [data]="mockLineTypeToday" type="line"
+                              [options]="lineChartOptions"></fusion-chart>
+            </div>
+        </fusion-example-block>
+
+        <br>
+        <fusion-example-block id="lineTypeLast7Days" title="Chart type: 'line' with data for last 7 days">
+            <ng-template fusionExampleBlock="Angular">
+                1. Add to host component template
+                <fusion-code-block lang="html"
+                                   code='<fusion-chart id="myLineChart7Days" [data]="mockLineTypeLast7Days" type="line"></fusion-chart>'></fusion-code-block>
+                <br>
+                2. Prepare data for Chart Component
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleAngular7Days"></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleReact7Days"></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Vue">
+                Vue component-host file template part
+                <fusion-code-block lang="html"
+                                   code='<template>
+  <div style="margin: 15px;">
+    <p>Chart Component Example</p>
+    <div style="border: solid 1px #ccc; width: 800px; height:400px; padding: 20px; margin: 20px">
+      <FusionChart :config="chart"></FusionChart>
+    </div>
+  </div>
+</template>'></fusion-code-block>
+
+                <br>
+                Vue component-host file script part
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleVue7Days"></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleNative7Days"></fusion-code-block>
+            </ng-template>
+            <br/>
+            <div class="chart-holder">
+                <fusion-chart id="myLineChart7Days" [data]="mockLineTypeLast7Days" type="line"></fusion-chart>
+            </div>
+        </fusion-example-block>
+
+        <br>
+        <fusion-example-block id="lineTypeYesterday" title="Chart type: 'line' with data for yesterday">
+            <ng-template fusionExampleBlock="Angular">
+                1. Add to host component template
+                <fusion-code-block lang="html"
+                                   code='<fusion-chart id="myLineChart7Days" [data]="mockLineTypeLast7Days" type="line"></fusion-chart>'></fusion-code-block>
+                <br>
+                2. Prepare data for Chart Component
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleAngularYesterday"></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleReactYesterday"></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Vue">
+                Vue component-host file template part
+                <fusion-code-block lang="html"
+                                   code='<template>
+  <div style="margin: 15px;">
+    <p>Chart Component Example</p>
+    <div style="border: solid 1px #ccc; width: 800px; height:400px; padding: 20px; margin: 20px">
+      <FusionChart :config="chart"></FusionChart>
+    </div>
+  </div>
+</template>'></fusion-code-block>
+
+                <br>
+                Vue component-host file script part
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleVueYesterday"></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleNativeYesterday"></fusion-code-block>
+            </ng-template>
+            <br/>
+            <div class="chart-holder">
+                <fusion-chart id="myLineTypeYesterday" [data]="mockLineTypeYesterday" type="line"></fusion-chart>
+            </div>
+        </fusion-example-block>
+
+        <br>
+        <fusion-example-block id="lineTypeOneDay" title="Chart type: 'line' with data for one day">
+            <ng-template fusionExampleBlock="Angular">
+                1. Add to host component template
+                <fusion-code-block lang="html"
+                                   code='<fusion-chart id="myLineTypeOneDay" [data]="mockLineTypeOneDay" type="line"></fusion-chart>'></fusion-code-block>
+                <br>
+                2. Prepare data for Chart Component
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleAngularOneDay"></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleReactOneDay"></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Vue">
+                Vue component-host file template part
+                <fusion-code-block lang="html"
+                                   code='<template>
+  <div style="margin: 15px;">
+    <p>Chart Component Example</p>
+    <div style="border: solid 1px #ccc; width: 800px; height:400px; padding: 20px; margin: 20px">
+      <FusionChart :config="chart"></FusionChart>
+    </div>
+  </div>
+</template>'></fusion-code-block>
+
+                <br>
+                Vue component-host file script part
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleVueOneDay"></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleNativeOneDay"></fusion-code-block>
+            </ng-template>
+            <br/>
+            <div class="chart-holder">
+                <fusion-chart id="myLineTypeOneDay" [data]="mockLineTypeOneDay" type="line"></fusion-chart>
+            </div>
+        </fusion-example-block>
+
+        <br>
+        <fusion-example-block id="lineTypeNoDots" title="Chart type: 'line' with data for 50+ days">
+            <ng-template fusionExampleBlock="Angular">
+                1. Add to host component template
+                <fusion-code-block lang="html"
+                                   code='<fusion-chart id="myLineTypeOneDay" [data]="mockLineTypeOneDay" type="line"></fusion-chart>'></fusion-code-block>
+                <br>
+                2. Prepare data for Chart Component
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleAngular50Days"></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleReact50Days"></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                Vue component-host file template part
+                <fusion-code-block lang="html"
+                                   code='<template>
+  <div style="margin: 15px;">
+    <p>Chart Component Example</p>
+    <div style="border: solid 1px #ccc; width: 800px; height:400px; padding: 20px; margin: 20px">
+      <FusionChart :config="chart"></FusionChart>
+    </div>
+  </div>
+</template>'></fusion-code-block>
+
+                <br>
+                Vue component-host file script part
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleVue50Days"></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block lang="js"
+                                   [code]="codeExampleNative50Days"></fusion-code-block>
+            </ng-template>
+            <br/>
+            <div class="chart-holder">
+                <fusion-chart id="myLineTypeNoDots" [data]="mockLineTypeMore50Days" type="line"></fusion-chart>
+            </div>
+        </fusion-example-block>
+        <!--UI-Component Examples-->
+        <!--UI-Component Configuration Doc-->
+        <div class="is-example-title">Configuration</div>
+        <fusion-example-block id="params"
+                              title="Parameters"
+                              [collapsible]="false">
+
+            <fusion-code-block lang="js" code="// Input
+id: string;             // Dom Element ID, not required
+type: ChartType;        // see enum ChartType
+data: FusionChartData;  // Data for chart
+options: any = {};      // Chart options see CHART_CONFIGURATIONS
+chartSubject: string;   // user in tooltip for BAR chart type
+loading: boolean;       // show 'Loader' if true
+noData: boolean;        // show 'No Data' if true
+
+// Output (event)
+afterDatasetInit()      // occur when chart will be rendered (by chartJs)
+
+// Public method
+toggleDataset(label: FusionChartLabel): void // Used for Hide/Show chart by label"></fusion-code-block>
+
+        </fusion-example-block>
+
+        <fusion-example-block id="entities"
+                              title="Entities"
+                              [collapsible]="false">
+
+            <fusion-code-block lang="js" code="enum ChartType {
+    Line = 'line',
+    StackedLine = 'stackedLine',
+    Bar = 'bar',
+    Doughnut = 'doughnut',
+    Pie = 'pie'
+}
+
+interface FusionChartData {
+    legends: FusionChartLegend[];
+    data: {[index: string]: number[]}; // [index: string] must be in regex: /^\d{4}-\d{2}-\d{2}$/i like '2019-06-22'
+}
+
+interface FusionChartPieData {
+    label?: string;
+    data: FusionChartPie | FusionChartPieDataItem[];
+}
+
+type FusionChartPie = {[index: string]: number};
+
+interface FusionChartPieDataItem {
+    displayText: string;
+    value: number;
+    color: string;
+}
+
+interface FusionChartLegend {
+    displayName: string;
+    id: number | string;
+    value?: number;
+    hidden?: boolean;
+    displayFormat?: string; // 'currency' | 'number:1.0-0' | 'percent:1.2-2', etc.
+}
+
+interface FusionChartLabel {
+    id: number | string;
+    label: string;
+    labelLetter?: string; // used as letter in label bullet in case not checkbox (no labelVisible)
+    labelVisible: FormControl;
+    color?: string;
+    labelLetterColor?: string; // custom color for label letter
+    icon?: string;
+    flag?: string;
+    tooltip?: string;
+}
+
+interface ChartDataset {
+    id: string | number;
+    label: string;
+    displayFormat?: string;
+    backgroundColor?: string;
+    borderColor?: string;
+    pointBorderColor?: string;
+    pointBackgroundColor?: string;
+    fill?: boolean;
+    hidden?: boolean;
+}"></fusion-code-block>
+
+            <fusion-example-block id="options"
+                                  title="Base Options"
+                                  desc="Fusion ChartComponent use ChartJs (see https://www.chartjs.org/)"
+                                  [collapsible]="false">
+
+                <fusion-code-block lang="js" code="BASE_DATASET_OPTIONS = {
+    colorSettings: ['backgroundColor', 'borderColor', 'pointBorderColor', 'pointBackgroundColor'],
+    fillOpacity: 50, // in %
+    seriesToShow: 7,
+    lineOptions: {
+        fill: false,
+        hidden: false
+    }
+};
+
+// ChartJs options can be updated by input parameter - option
+CHART_CONFIGURATIONS = {
+    colorsPalette: 'base',
+    dottedLineForToday: true,
+    calculateMaxForAll: true,
+    calculatePieSummary: true,
+    responsive: true,
+    maintainAspectRatio: false,
+    resizeDelay: 0,
+    interaction: {
+        mode: 'nearest'
+    },
+    plugins: {
+        legend: {
+            display: false
+        },
+        title: {
+            display: false
+        },
+        subtitle: {
+            display: true
+        },
+        tooltip: {
+            enabled: true,
+            backgroundColor: '#fff',
+            titleFont: {size: 16},
+            titleColor: '#172D4C',
+            bodyFont: {size: 16},
+            bodyColor: '#172D4C',
+            borderColor: 'rgba(194,205,215,1)',
+            borderWidth: 1,
+            cornerRadius: 0,
+            caretSize: 10,
+            xPadding: 10,
+            yPadding: 10
+        }
+    },
+    layout: {
+        padding: {
+            top: 10
+        }
+    },
+    elements: {
+        line: {
+            borderWidth: 2,
+            tension: 0
+        },
+        point: {
+            borderWidth: 2,
+            radius: 3,
+            hoverRadius: 4,
+            hitRadius: 3
+        }
+    },
+    scales: {
+        x: {
+            beginAtZero: true,
+            ticks: {
+                color: '#678099',
+                padding: 5,
+                maxRotation: 0,
+            },
+            grid: {
+                display: false,
+                drawBorder: false
+            }
+        },
+        y: {
+            beginAtZero: true,
+            ticks: {
+                color: '#678099',
+                padding: 10
+            },
+            grid: {
+                drawBorder: false,
+                lineWidth: 1,
+                color: '#e1e6eb'
+            }
+        }
+    }
+};"></fusion-code-block>
+            </fusion-example-block>
+        </fusion-example-block>
+        <!--UI-Component Configuration Doc-->
+    </div>
+    <div class="col-3 is-right-side-menu-holder">
+        <!--UI-Component Examples menu-->
+        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+        <!--UI-Component Examples menu-->
+    </div>
+</div>

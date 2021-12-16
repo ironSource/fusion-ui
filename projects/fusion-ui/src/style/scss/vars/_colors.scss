@@ -1,0 +1,45 @@
+/* Colors */
+$dark: var(--dark-color, #0B1625);
+$dark-500: $dark;
+$dark-100: var(--dark-color-100,#224574);
+$dark-300: var(--dark-color-300,#172D4C);
+$dark-400: var(--dark-color-400,#112239);
+
+$light: var(--light-color,#E1E6EB);
+$light-500: $light;
+$light-100: var(--light-color-100,#F9FAFB);
+$light-200: var(--light-color-200,#F3F5F7);
+$light-300: var(--light-color-300,#EAEEF1);
+$light-400: var(--light-color-400,#E4E9ED);
+$light-600: var(--light-color-600,#C2CDD7);
+$light-700: var(--light-color-700,#95A6B8);
+$light-800: var(--light-color-800,#678099);
+$light-900: var(--light-color-900,#52677B);
+$light-hover:var(--light-color-hover, #d8dee5);
+
+$primary: var(--primary-color,#3091F6);
+$primary-500: $primary;
+$primary-100: var(--primary-color-100,#F3F9FF);
+$primary-200: var(--primary-color-200,#C3DFFC);
+$primary-hover: var(--primary-color-hover, #489ef7);
+
+$positive: var(--positive-color, #13C7C8);
+$positive-500: $positive;
+$positive-100: var(--positive-color-100,#DEFCFC);
+$positive-200: var(--positive-color-200, #B0F7F7);
+$positive-300: var(--positive-color-300,#52eeef);
+
+$neutral: var(--neutral-color,#FFBB5F);
+$neutral-500: $neutral;
+$neutral-100: var(--neutral-color-100,#FFFCF8);
+$neutral-200: var(--neutral-color-200,#FFE6C5);
+$neutral-700: var(--neutral-color-700,#FF9403);
+
+$negative: var(--negative-color, #e1174c);
+$negative-500: $negative;
+$negative-100:var(--negative-color-100, #FDEFF3);
+$negative-200:var(--negative-color-200, #F59CB3);
+$negative-300: var(--negative-color-300,#f06e90);
+$negative-hover: var(--negative-color-hover,#eb406d);
+
+$White: #FFF;

@@ -1,0 +1,13 @@
+@import '../../../../style/scss/vars/vars';
+@import '../../../../style/scss/vars/border';
+
+:host {
+    @extend %reset;
+    div.border{
+        @extend %border;
+    }
+
+    fusion-dynamic-components.closed {
+        cursor: pointer;
+    }
+}

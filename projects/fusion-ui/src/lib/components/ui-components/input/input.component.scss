@@ -1,0 +1,382 @@
+@import '../../../../style/scss/vars/vars';
+@import '../../../../style/scss/vars/border';
+@import '../../../../style/scss/vars/mixins';
+
+$errBorderColor: $negative-200;
+$errTextColor: $negative-500;
+
+$warningBorderColor: $neutral-500;
+$warningTextColor: $neutral-700;
+
+$regularHeight: 32px;
+$regularPadding: 6px 10px 7px;
+
+$smallHeight: 25px;
+$smallPadding: 4px 6px;
+
+:host.fusion-style-v1  {
+  @extend %reset;
+  width: 100%;
+  .fu-input-holder {
+    display: inline-flex;
+    flex-shrink: 1;
+    position: relative;
+    flex-direction: row;
+    align-items: stretch; /* align items in Cross Axis */
+    align-content: stretch; /* Extra space in Cross Axis */
+    flex-flow: row nowrap;
+    width: 100%;
+    .fu-search-icon-holder {
+      position: absolute;
+      left: 5px;
+      z-index: 2;
+      top: 8px;
+      @include icon-style('search', $light-700, 13px, false, true);
+    }
+    &.fu-search-icon-right-position .fu-search-icon-holder {
+      @include icon-style('search', $light-700, 14px, false, true);
+      left: inherit;
+      right: 5px;
+    }
+    .fu-input-units {
+      padding: 4px 5px 4px 10px;
+      @extend %border;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      display: flex;
+      border-radius: 3px 0 0 3px;
+      @extend %font12;
+      border-right-width: 0;
+      color: $light-800;
+      &.small {
+        border-right: none;
+        background: white;
+        display: block;
+        min-width: inherit;
+        padding: 2px 5px 0 6px;
+      }
+      &.is-error {
+        border-color: $errBorderColor;
+        &.focused {
+          border-color: $errBorderColor;
+        }
+      }
+      &.focused {
+        border-color: $primary;
+      }
+      &.right {
+        order: 99;
+        border-radius: 0 3px 3px 0;
+        border-left-width: 0;
+        border-right-width: 1px;
+        &.small {
+          @extend %border;
+          border-left: none;
+          padding: 1px 6px 0 0;
+          &.focused {
+            border-color: $primary;
+          }
+        }
+        & + input {
+          border-right-width: 0;
+          border-radius: 3px 0 0 3px;
+          border-left-width: 1px;
+          padding-right: 0;
+
+          &.is-underline, &.is-no-border {
+            border-radius: 0;
+          }
+        }
+      }
+      &:not(.right) + input {
+        border-left-width: 0;
+        border-radius: 0 3px 3px 0;
+        padding-left: 0;
+
+        &.is-underline, &.is-no-border {
+          border-radius: 0;
+        }
+      }
+      &.is-placeholder-units {
+        color: $light-800;
+      }
+    }
+    .fu-clear-input {
+      cursor: pointer;
+      position: absolute;
+      left: 5px;
+      z-index: 2;
+      top: 8px;
+      @include icon-style('clear-full-circle', ('.background': $light-600, '.inner': $White), 12px, false, true);
+    }
+    &.fu-search-icon-right-position .fu-clear-input{
+      right: 5px;
+      left: inherit;
+    }
+    .icon {
+      position: absolute;
+      pointer-events: none;
+      left: 10px;
+      top: 8px;
+      &.right {
+        left: auto;
+        right: 6px;
+        & ~ input {
+          padding-right: 25px;
+        }
+      }
+      &.has-units {
+        order: 1;
+        position: relative;
+        top: 0;
+        left: 5px;
+        margin: 10px -15px 0 0;
+        & ~ input {
+          order: 2;
+        }
+      }
+      @include icon-style(null, $light-800, 15px, false, true);
+      @include icon-style('icon-loading', none, 15px, true, true);
+    }
+    &.small{
+      .icon{
+       top: 5px;
+      }
+    }
+    input {
+      @extend %font12;
+      @extend %borderRadius;
+      @extend %border;
+      box-sizing: border-box;
+      padding: $regularPadding;
+      height: $regularHeight;
+      color: $dark-300;
+      width: 100%;
+
+      &:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 30px white inset;
+      }
+
+      &::placeholder {
+        @extend %font12;
+        color: $light-800;
+      }
+      &:focus {
+        border-color: $primary;
+        outline: none;
+        & + button {
+          border-color: $primary;
+          &.is-error {
+            border-color: $errBorderColor;
+          }
+        }
+        & ~ .fu-input-units {
+          border-color: #000;
+        }
+      }
+      &.small {
+        @extend %font12;
+        height: $smallHeight;
+        padding: $smallPadding;
+      }
+      &.has-clear-btn {
+        padding-right: 30px;
+      }
+      &.iconed {
+        padding-left: 30px;
+        &.right {
+          padding-left: 10px;
+          padding-right: 25px;
+        }
+      }
+      &.fu-button {
+        border-radius: 3px 0 0 3px;
+        border-right: none;
+        &.ng-not-empty {
+          & + button {
+            color: $primary;
+          }
+        }
+      }
+      &.disabled {
+        @extend %disabled;
+        cursor: text;
+        background: $light-300;
+        color: $light-800;
+        opacity: 1;
+        &:focus {
+          border-color: $light;
+          & + button {
+            border-color: $light;
+            &.is-error {
+              border-color: $errBorderColor;
+            }
+          }
+        }
+        & + button {
+          background-color: $light-300;
+          pointer-events: none;
+          color: $dark-300;
+        }
+        &.fu-button.ng-not-empty + button {
+          color: $dark-300;
+        }
+      }
+      &.is-error {
+        border-color: $errBorderColor;
+      }
+      &.is-underline, &.is-no-border {
+        border-width: 0 0 1px 0;
+        border-radius: unset;
+        background-color: transparent;
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+      }
+      &.is-no-border {
+        border-color: transparent;
+        &:focus {
+          border-color: $primary-500;
+        }
+      }
+      &.is-no-spin {
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+      }
+    }
+    &.fu-has-search-icon input {
+      padding-left: 21px;
+    }
+    &.fu-has-search-icon.fu-search-icon-right-position input {
+      padding: $regularPadding;
+    }
+    button {
+      order: 2;
+      cursor: pointer;
+      box-sizing: border-box;
+      padding: 6px 10px 7px;
+      position: relative;
+      border: 1px solid $light;
+      border-left: none;
+      background: none;
+      border-radius: 0 3px 3px 0;
+      outline: none;
+      color: $primary-500;
+      @extend %font12;
+      &:before {
+        content: "";
+        position: absolute;
+        top: 4px;
+        bottom: 4px;
+        left: 0;
+        width: 1px;
+        background: $light;
+      }
+      &:disabled {
+        cursor: default;
+        color: $light-800;
+      }
+      &.is-error {
+        border-color: $errBorderColor;
+      }
+      fusion-icon{
+        display: none;
+      }
+      &.is-loading {
+        padding-left: 25px;
+        cursor: default;
+        color: $light-800;
+        fusion-icon{
+          display: block;
+          position: absolute;
+          left: 6px;
+          top: 7px;
+            ::ng-deep svg {
+            width: 15px;
+            height: 15px;
+            * {
+              fill: none !important;
+            }
+            symbol#loading {
+              circle {
+                stroke: currentColor !important;
+              }
+            }
+          }
+        }
+      }
+    }
+    .fu-validation-icon-holder {
+      position: absolute;
+      right: 6px;
+      top: 3px;;
+        ::ng-deep svg {
+        width: 11px;
+        height: 11px;
+      }
+      & + fusion-tooltip .is-tooltip-content {
+        white-space: nowrap;
+      }
+    }
+    &.fu-error-warning,
+    &.fu-error-error {
+      input {
+        padding-right: 18px;
+      }
+    }
+    &.fu-error-warning {
+      .fu-input-units.is-error,
+      input {
+        border-color: $warningBorderColor;
+      }
+        ::ng-deep svg * {
+        fill: $warningTextColor;
+      }
+    }
+    &.fu-error-error {
+        ::ng-deep svg * {
+        fill: $errTextColor;
+      }
+    }
+    .fu-toggle-pass{
+      display: none;
+    }
+  }
+  .error-msg {
+    @extend %font12;
+    color: $errTextColor;
+    margin-top: 2px;
+    &.small {
+      display: none;
+    }
+  }
+  &.is-underline .fu-input-holder, &.is-no-border {
+    .fu-input-units.small {
+      border-width: 0 0 1px 0;
+      border-radius: unset;
+      background-color: transparent;
+      padding: 3px 3px 0 0;
+    }
+  }
+  &.is-search-style{
+    .fu-input-holder {
+      input.fu-input {
+        outline: none;
+        border: none;
+        border-radius: 0;
+        padding-bottom: 0;
+        padding-left: 2px;
+        border-bottom: solid 1px $light-600;
+        &:focus{
+          border-bottom: solid 1px $primary-500;
+        }
+      }
+    }
+  }
+}

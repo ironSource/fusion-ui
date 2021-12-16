@@ -1,0 +1,46 @@
+@import '../../../../styles/vars';
+
+:host {
+    .chart-label{
+        display: block;
+        @extend %font-bodyStrong;
+        color: $fu-dark-700;
+        margin-bottom: 32px;
+    }
+    .chart-holder{
+        height: 300px;
+        display: block;
+    }
+    .chart-doughnut-holder{
+        height: 150px;
+        display: block;
+    }
+    .palette-holder{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        .color-item{
+            height: 140px;
+            margin: 7px 7px 5px;
+            .color-example{
+                width: 100px;
+                height: 100px;
+                border-radius: 50px;
+                display: table-cell;
+                text-align: center;
+                vertical-align: middle;
+                color: $White;
+                @extend %font-subtitle;
+            }
+            .color-value {
+                padding: 5px;
+                width: 100px;
+                color: $fu-dark-700;
+                @extend %font-body;
+                display: table-cell;
+                text-align: center;
+                vertical-align: middle;
+            }
+        }
+    }
+}

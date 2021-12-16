@@ -1,0 +1,18 @@
+:host{
+    .toast-holder{
+        position: fixed;
+        left: 20px;
+        top: 20px;
+        z-index: 9999;
+    }
+    .buttons-holder{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        align-content: stretch;
+        button{
+            margin: 10px;
+            width: 220px;
+        }
+    }
+}

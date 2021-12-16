@@ -1,0 +1,18 @@
+<div class="is-datepicker">
+  <div *ngIf="dropDownStyle; else inputStyle">
+    <div class="is-datepicker-select" (click)="onInputFocus()" [ngClass]="{'is-disabled': isDisabled}">
+      <label class="truncate">
+        <fusion-icon name="calendar-2"></fusion-icon>
+        {{label}}</label>
+    </div>
+  </div>
+  <ng-template #inputStyle>
+    <fusion-input *ngIf="!dropDownStyle"
+                  icon='calendar-2'
+                  [isDisabled]="isDisabled"
+                  formControlName="dateVal"
+                  [placeholder]="'YYYY-MM-DD'"
+                  (ngFocus)="onInputFocus()"
+                  [error]="error"></fusion-input>
+  </ng-template>
+</div>

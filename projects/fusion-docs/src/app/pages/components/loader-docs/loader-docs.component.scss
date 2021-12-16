@@ -1,0 +1,17 @@
+@import '../../../../styles/vars';
+
+:host{
+  .is-example-row{
+    position: relative;
+    min-height: 140px;
+    border-bottom: solid 1px $light-500;
+    &:last-child{
+        border-bottom: none;
+    }
+  }
+
+
+  fusion-example-block {
+    margin-bottom: 25px;
+  }
+}

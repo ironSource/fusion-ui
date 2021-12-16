@@ -1,0 +1,28 @@
+@import '../../../../styles/vars';
+
+:host{
+
+    // region for using in doc page content
+    ::ng-deep .fu-layout{
+        width: inherit !important;
+        height: inherit !important;
+        .fu-sidebar{
+            position: absolute;
+        }
+    }
+    //endregion
+
+    .fusion-layout-example-holder{
+        border: solid 1px #ccc;
+    }
+
+    .inner-content-holder{
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .inner-content{
+
+        }
+    }
+}

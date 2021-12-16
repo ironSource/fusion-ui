@@ -1,0 +1,105 @@
+@import '../../../../styles/vars';
+
+:host {
+    fusion-example-block{
+      margin-bottom: 25px;
+    }
+
+    .intersection-target{
+        height: 200px;
+        width: 200px;
+        margin: 0px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $dark-500;
+        color: $White;
+    }
+
+    .margin-placeholder {
+        @extend %font10;
+        width: 200px;
+        background-color: $light-600;
+        border: 1px dotted $greyBorder;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .answer {
+        color: $negative-500;
+        &.positive {
+            color: $positive-500;
+        }
+    }
+
+    .scrollable {
+        @extend %border;
+        height: 200px;
+        overflow-y: auto;
+    }
+
+    .scrollable-body {
+        height: 800px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .bounce-down {
+        position: relative;
+        animation: bounce-up 2s infinite;
+    }
+
+    .bounce-up {
+        position: relative;
+        animation: bounce-down 2s infinite;
+    }
+
+    .arrow {
+        color: $light-600;
+        padding: 15px;
+    }
+
+    .sticky {
+        @extend %borderRight;
+        @extend %borderBottom;
+        position: absolute;
+        left: 0;
+        padding: 15px;
+        width: 200px;
+        display: flex;
+        flex-direction: column;
+
+        .row {
+            @include flex-direction("center");
+        }
+    }
+
+    @keyframes bounce-down {
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+
+    @keyframes bounce-up {
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(10px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+}

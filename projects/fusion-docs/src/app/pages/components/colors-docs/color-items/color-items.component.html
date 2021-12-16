@@ -1,0 +1,10 @@
+<div class="flex-row is-color-items-holder">
+    <div *ngFor="let color of colorSamples" class="is-color-item {{color.cssTextClass}}">
+        <div class="color-sample {{color.cssBgClass}}"></div>
+        <div class="color-names">
+            <div class="type-name">{{color.name}}</div>
+            <div class="color-name">{{color.color}}</div>
+        </div>
+    </div>
+</div>
+

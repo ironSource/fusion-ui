@@ -1,0 +1,41 @@
+<div class="fu-header">
+    <!--sidebar toggle icon-->
+    <div class="fu-header-sidebar-state-icon" (click)="sidebarToggleIconClicked.emit()">
+        <fusion-icon class="fu-sidebar-state-toggle-icon" *ngIf="sidebarIconName" [name]="sidebarIconName"></fusion-icon>
+    </div>
+    <!--sidebar toggle icon-->
+    <!--header title-->
+    <div class="fu-header-title">
+        <div *ngIf="titleText" class="fu-header-title-text">{{ titleText }}</div>
+        <div *ngIf="titleContent && showPageHeaderContent" class="fu-header-title-content">
+            <fusion-dynamic-components [configuration]="titleContent"></fusion-dynamic-components>
+        </div>
+    </div>
+
+    <!--header title-->
+    <div *ngIf="customHeader" class="fu-header-custom-element-holder">
+        <fusion-dynamic-components [configuration]="customHeader"></fusion-dynamic-components>
+    </div>
+    <!--header custom part-->
+    <!--header right panel-->
+    <div *ngIf="hasMenu" class="fu-header-right-panel">
+        <div *ngIf="userName" class="fu-header-user-holder" (click)="changeLayoutHeaderMenuState($event)">
+            <fusion-icon class="fu-header-icon-user" [name]="userIcon"></fusion-icon>
+            <div *ngIf="userName" class="fu-header-username">{{ userName }}</div>
+        </div>
+        <div class="fu-header-icon-more-holder" (click)="changeLayoutHeaderMenuState($event)">
+            <fusion-icon class="fu-header-icon-more" name="more"></fusion-icon>
+        </div>
+    </div>
+    <!--header right panel-->
+</div>
+
+<!--Header menu -->
+<fusion-layout-header-menu
+    *ngIf="hasMenu"
+    [class.fu-layout-header-menu]="menuOpen"
+    [configuration]="headerMenuConfiguration"
+    (fusionClickOutside)="onOutsideLayoutHeaderMenuClick()"
+    (layoutHeaderMenuItemClicked)="onLayoutHeaderMenuItemClicked($event)"
+></fusion-layout-header-menu>
+<!--Header menu -->

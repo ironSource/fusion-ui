@@ -1,0 +1,567 @@
+<div class="row">
+    <div class="col-9">
+        <!--UI-Component Examples-->
+        <div class="is-example-title">Type</div>
+
+        <fusion-example-block id="typeBasic" title="Basic">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<fusion-alert>
+  <span>This alert needs your attention, but it’s not super important</span>
+</fusion-alert>"
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      alert: {
+        type: "success"
+      }
+    }
+  }
+
+  render() {
+    return (
+      <FusionAlert config={this.state.alert}>
+        <span><b>Well done!</b> You successfully read this important alert message</span>
+      </FusionAlert>
+    )
+  }
+}
+
+export default App;'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div id="app">
+    <FusionAlert :config="alert" >
+        <span><b>Well done!</b> This alert needs your attention, but it’s not super important</span>
+    </FusionAlert>
+  </div>
+</template>'
+                >
+                </fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionAlert} from "@ironsrc/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+        alert: {
+          type: "success"
+        }
+    }
+  },
+  components: {
+    FusionAlert
+  }
+}
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const alert = document.createElement("native-fusion-alert");
+alert.config = {
+    type: "success"
+};
+
+const textNode = document.createTextNode("This alert needs your attention, but it’s not super important");
+document.body.appendChild(alert);
+alert.appendChild(textNode);'
+                >
+                </fusion-code-block>
+            </ng-template>
+
+            <div class="row fusion-alert-example-holder" style="padding-top: 0;">
+                <div class="col-12">
+                    <fusion-alert><strong>Heads up!</strong> This alert needs your attention, but it’s not super important </fusion-alert>
+                </div>
+            </div>
+
+            <div class="row fusion-alert-example-holder">
+                <div class="col-12">
+                    <fusion-alert type="success"
+                        ><strong>Well done!</strong> You successfully read this important alert message
+                    </fusion-alert>
+                </div>
+            </div>
+
+            <div class="row fusion-alert-example-holder">
+                <div class="col-12">
+                    <fusion-alert type="warning"
+                        ><strong>Warning!</strong> Better check yourself, you’re not looking too good
+                    </fusion-alert>
+                </div>
+            </div>
+
+            <div class="row fusion-alert-example-holder" style="padding-bottom: 0;">
+                <div class="col-12">
+                    <fusion-alert type="error"><strong>Oh snap!</strong> Change a few things up and try submitting again </fusion-alert>
+                </div>
+            </div>
+        </fusion-example-block>
+
+        <fusion-example-block id="typeSmallHeader" title="Small Header Alert">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<fusion-alert mode="header"
+              type="success"
+              (closed)="onCloseButtonClicked($event)">
+  <strong>Well done!</strong> You successfully read this important alert message
+</fusion-alert>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      alert: {
+        type: "success",
+        mode: "header",
+        showCloseButton: true
+      }
+    }
+  }
+
+  onClose() {
+    console.log("Alert Closed");
+  }
+
+  render() {
+    return (
+      <FusionAlert config={this.state.alert} closed={this.onClose}>
+        <span><b>Well done!</b> You successfully read this important alert message</span>
+      </FusionAlert>
+    )
+  }
+}
+
+export default App;'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div id="app">
+    <FusionAlert :config="alert" @closed="closed">
+        <span><b>Well done!</b> This alert needs your attention, but it’s not super important</span>
+    </FusionAlert>
+  </div>
+</template>'
+                >
+                </fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionAlert} from "@ironsrc/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+        alert: {
+          type: "success",
+          mode: "header",
+          showCloseButton: true
+        }
+    }
+  },
+  components: {
+    FusionAlert
+  },
+  methods: {
+    closed: function(){
+      console.log("Closed");
+    }
+  }
+}
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const alert = document.createElement("native-fusion-alert");
+alert.config = {
+    type: "success",
+    mode: "header",
+    showCloseButton: true
+};
+
+const textNode = document.createTextNode("This alert needs your attention, but it’s not super important");
+document.body.appendChild(alert);
+alert.appendChild(textNode);
+
+alert.addEventListener("close", e => console.log(e.detail));'
+                >
+                </fusion-code-block>
+            </ng-template>
+
+            <div class="row fusion-alert-example-holder" style="padding-top: 0;">
+                <div class="col-12">
+                    <fusion-alert mode="header" (closed)="onCloseButtonClicked($event)"
+                        ><strong>Heads up!</strong> This alert needs your attention, but it’s not super important
+                    </fusion-alert>
+                </div>
+            </div>
+
+            <div class="row fusion-alert-example-holder">
+                <div class="col-12">
+                    <fusion-alert mode="header" type="success"
+                        ><strong>Well done!</strong> You successfully read this important alert message
+                    </fusion-alert>
+                </div>
+            </div>
+
+            <div class="row fusion-alert-example-holder">
+                <div class="col-12">
+                    <fusion-alert mode="header" type="warning"
+                        ><strong>Warning!</strong> Better check yourself, you’re not looking too good
+                    </fusion-alert>
+                </div>
+            </div>
+
+            <div class="row fusion-alert-example-holder" style="padding-bottom: 0;">
+                <div class="col-12">
+                    <fusion-alert mode="header" type="error"
+                        ><strong>Oh snap!</strong> Change a few things up and try submitting again
+                    </fusion-alert>
+                </div>
+            </div>
+        </fusion-example-block>
+
+        <fusion-example-block id="typeLargeAlert" title="Large Alert">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<fusion-alert mode="large"
+              type="success">
+  <strong>Well done!</strong> You successfully read this important alert message
+</fusion-alert>'
+                >
+                </fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      alert: {
+        type: "success",
+        mode: "large"
+      }
+    }
+  }
+
+  onClose() {
+    console.log("Alert Closed");
+  }
+
+  render() {
+    return (
+      <FusionAlert config={this.state.alert} closed={this.onClose}>
+        <span><b>Well done!</b> You successfully read this important alert message</span>
+      </FusionAlert>
+    )
+  }
+}
+
+export default App;'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div id="app">
+    <FusionAlert :config="alert" >
+        <span><b>Well done!</b> This alert needs your attention, but it’s not super important</span>
+    </FusionAlert>
+  </div>
+</template>'
+                >
+                </fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionAlert} from "@ironsrc/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+        alert: {
+          type: "success",
+          mode: "large"
+        }
+    }
+  },
+  components: {
+    FusionAlert
+  }
+}
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const alert = document.createElement("native-fusion-alert");
+alert.config = {
+    type: "success",
+    mode: "large",
+};
+
+const textNode = document.createTextNode("This alert needs your attention, but it’s not super important");
+document.body.appendChild(alert);
+alert.appendChild(textNode);
+
+alert.addEventListener("close", e => console.log(e.detail));'
+                >
+                </fusion-code-block>
+            </ng-template>
+
+            <div class="row fusion-alert-example-holder" style="padding-top: 0;">
+                <div class="col-12">
+                    <fusion-alert mode="large" (closed)="onCloseButtonClicked($event)"
+                        ><strong>Heads up!</strong> This alert needs your attention, but it’s not super important
+                    </fusion-alert>
+                </div>
+            </div>
+
+            <div class="row fusion-alert-example-holder">
+                <div class="col-12">
+                    <fusion-alert mode="large" type="success"
+                        ><strong>Well done!</strong> You successfully read this important alert message
+                    </fusion-alert>
+                </div>
+            </div>
+
+            <div class="row fusion-alert-example-holder">
+                <div class="col-12">
+                    <fusion-alert mode="large" type="warning"
+                        ><strong>Warning!</strong> Better check yourself, you’re not looking too good
+                    </fusion-alert>
+                </div>
+            </div>
+
+            <div class="row fusion-alert-example-holder" style="padding-bottom: 0;">
+                <div class="col-12">
+                    <fusion-alert mode="large" type="error"
+                        ><strong>Oh snap!</strong> Change a few things up and try submitting again
+                    </fusion-alert>
+                </div>
+            </div>
+        </fusion-example-block>
+
+        <fusion-example-block id="typeFullColor" title="Full Color Alert">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<fusion-alert mode="fc-header"
+              type="success"
+              (closed)="onCloseButtonClicked($event)">
+  <strong>Well done!</strong> You successfully read this important alert message
+</fusion-alert>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      alert: {
+        type: "success",
+        mode: "fc-header"
+      }
+    }
+  }
+
+  onClose() {
+    console.log("Alert Closed");
+  }
+
+  render() {
+    return (
+      <FusionAlert config={this.state.alert} closed={this.onClose}>
+        <span><b>Well done!</b> You successfully read this important alert message</span>
+      </FusionAlert>
+    )
+  }
+}
+
+export default App;'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div id="app">
+    <FusionAlert :config="alert" @closed="closed">
+        <span><b>Well done!</b> This alert needs your attention, but it’s not super important</span>
+    </FusionAlert>
+  </div>
+</template>'
+                >
+                </fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionAlert} from "@ironsrc/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+        alert: {
+          type: "success",
+          mode: "large"
+        }
+    }
+  },
+  components: {
+    FusionAlert
+  },
+  methods: {
+    closed: function(){
+      window.console.log("Closed");
+    }
+  }
+}
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const alert = document.createElement("native-fusion-alert");
+alert.config = {
+    type: "success",
+    mode: "fc-header",
+};
+
+const textNode = document.createTextNode("This alert needs your attention, but it’s not super important");
+document.body.appendChild(alert);
+alert.appendChild(textNode);
+
+alert.addEventListener("close", e => console.log(e.detail));'
+                >
+                </fusion-code-block>
+            </ng-template>
+
+            <div class="row fusion-alert-example-holder" style="padding-top: 0;">
+                <div class="col-12">
+                    <fusion-alert mode="fc-header" (closed)="onCloseButtonClicked($event)"
+                        ><strong>Heads up!</strong> This alert needs your attention, but it’s not super important
+                    </fusion-alert>
+                </div>
+            </div>
+
+            <div class="row fusion-alert-example-holder">
+                <div class="col-12">
+                    <fusion-alert mode="fc-header" type="success"
+                        ><strong>Well done!</strong> You successfully read this important alert message
+                    </fusion-alert>
+                </div>
+            </div>
+
+            <div class="row fusion-alert-example-holder">
+                <div class="col-12">
+                    <fusion-alert mode="fc-header" type="warning"
+                        ><strong>Warning!</strong> Better check yourself, you’re not looking too good
+                    </fusion-alert>
+                </div>
+            </div>
+
+            <div class="row fusion-alert-example-holder" style="padding-bottom: 0;">
+                <div class="col-12">
+                    <fusion-alert mode="fc-header" type="error"
+                        ><strong>Oh snap!</strong> Change a few things up and try submitting again
+                    </fusion-alert>
+                </div>
+            </div>
+        </fusion-example-block>
+        <!--UI-Component Examples-->
+        <!--UI-Component Configuration Doc-->
+        <div class="is-example-title">Configuration</div>
+        <fusion-example-block id="params" title="Parameters" [collapsible]="false">
+            <fusion-code-block
+                lang="js"
+                code="type: 'info' | 'success' | 'warning' | 'error'       // default - 'info'
+shown: boolean                                      // default - true
+mode: 'basic' | 'header' | 'fc-header' | 'large'    // default - 'basic' (fc-header - full color header mode)
+data-alert-content: 'mainPageAlert' | 'modalAlert'  // optional - 'mainPageAlert' alert used in main page on fixed position
+showCloseButton: boolean                            // default - true
+showDoNotShowAgainButton: boolean                   // default - false"
+            ></fusion-code-block>
+        </fusion-example-block>
+
+        <fusion-example-block id="events" title="Events" [collapsible]="false">
+            <fusion-code-block lang="js" code="closed({dontShowAgain: boolean})"></fusion-code-block>
+        </fusion-example-block>
+        <!--UI-Component Configuration Doc-->
+    </div>
+
+    <div class="col-3 is-right-side-menu-holder">
+        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+@import '../../../../styles/vars';
+
+fusion-icon:after{
+  @include css-triangle(remCalc(5px), $light-800, top);
+  display: inline-block;
+  margin-left: 10px;
+
+  .isOpen &{
+      @include css-triangle(remCalc(5px), $light-900, top);
+  }
+}
+
+.border{
+  @extend %border;
+  padding: 0;
+}
+.border-right{
+  @extend %borderRight;
+}
+
+.border-left{
+  padding: 0;
+  @extend %borderLeft
+}
+
+.headerItem{
+  max-width: 60px;
+}

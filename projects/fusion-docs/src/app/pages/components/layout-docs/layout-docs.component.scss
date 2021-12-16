@@ -1,0 +1,13 @@
+@import '../../../../styles/vars';
+
+:host {
+    @extend %list-reset;
+    fusion-example-block {
+        margin-bottom: 25px;
+    }
+
+    fusion-code-block.no-bottom-margin{
+        margin-bottom: 12px;
+    }
+}
+

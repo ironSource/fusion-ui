@@ -1,0 +1,11 @@
+@import '../../../../styles/vars';
+
+:host{
+    .row{
+        margin-bottom: 20px;
+        label{
+            @extend %font-label;
+            color: $fu-dark-200;
+        }
+    }
+}

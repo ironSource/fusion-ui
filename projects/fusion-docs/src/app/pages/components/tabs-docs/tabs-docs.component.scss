@@ -1,0 +1,32 @@
+@import '../../../../styles/vars';
+
+:host{
+    .example-label,
+    .fu-doc-label{
+        color: $fu-dark-200;
+        @extend %font-label;
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    .tab-content-holder{
+        text-align: center;
+        height: 200px;
+        padding: 10px;
+        border: solid 1px $fu-light-300;
+        border-top: none;
+        .text{
+            @extend %font-headlineMedium;
+            margin-top: 10%;
+        }
+    }
+
+    .fu-doc-label{margin-bottom: 5px}
+    .fu-css-var-header{
+        @extend %font-bodyStrong;
+        padding-bottom: 4px;
+    }
+    .fu-css-var{
+        padding: 5px;
+    }
+}

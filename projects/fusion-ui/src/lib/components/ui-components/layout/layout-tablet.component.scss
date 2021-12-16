@@ -1,0 +1,23 @@
+@import 'common';
+
+:host:not(.fu-force-desktop){
+    @include media-breakpoint-between('xs', 'md') {
+        .fu-layout{
+            // header holder
+            .fu-header-holder{
+                &.fu-sidebar-closed-hovered{
+                    padding-left: var(--layout-sidebar-width, #{$sidebarWidth});
+                }
+            }
+            // by default - no sidebar
+            .fu-sidebar-holder {
+                display: block;
+                width: 0px;
+            }
+            // set content for media-size detection
+            .fu-screen-size-detection{
+                content: 'Tablet';
+            }
+        }
+    }
+}

@@ -1,0 +1,216 @@
+<div class="row">
+    <div class="col-9">
+        <!--UI-Component Examples-->
+        <div class="is-example-title">Video Player</div>
+
+        <fusion-example-block id="typeBasic" title="Basic">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<fusion-video-player [src]="config.video"
+                     [thumbnail]="config.thumbnail">
+</fusion-video-player>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      video: {
+        thumbnail: "https://s3-eu-west-1.amazonaws.com/ssa.public.videos/thumbnails/qSOaltvVFs_56293.jpg",
+        src: "https://v.ssacdn.com/auto/xOjjQjsSQV_0.mp4"
+      },
+    }
+  }
+
+  render() {
+    return (
+      <FusionVideoPlayer config={this.state.video} />
+    )
+  }
+}
+
+export default App;'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div id="app">
+    <FusionVideoPlayer :config="video"/>
+  </div>
+</template>'
+                ></fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionVideoPlayer} from "@ironsrc/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+      video: {
+        thumbnail: "https://s3-eu-west-1.amazonaws.com/ssa.public.videos/thumbnails/qSOaltvVFs_56293.jpg",
+        src: "https://v.ssacdn.com/auto/xOjjQjsSQV_0.mp4"
+      },
+    }
+  },
+  components: {
+    FusionVideoPlayer
+  }
+}
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const videoPlayer = document.createElement("native-fusion-video-player");
+videoPlayer.config = {
+    thumbnail: "https://s3-eu-west-1.amazonaws.com/ssa.public.videos/thumbnails/qSOaltvVFs_56293.jpg",
+    src: "https://v.ssacdn.com/auto/xOjjQjsSQV_0.mp4"
+};
+
+document.body.appendChild(videoPlayer);'
+                ></fusion-code-block>
+            </ng-template>
+
+            <div style="height: 300px; width: 300px;">
+                <fusion-video-player [src]="config.video" [thumbnail]="config.thumbnail"></fusion-video-player>
+            </div>
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="typeBasicAutoplay" title="Basic autoplay">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<fusion-video-player [src]="config.video"  [options]="{autoplay: true}"
+                     [thumbnail]="config.thumbnail">
+</fusion-video-player>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      video: {
+        thumbnail: "https://s3-eu-west-1.amazonaws.com/ssa.public.videos/thumbnails/qSOaltvVFs_56293.jpg",
+        src: "https://v.ssacdn.com/auto/xOjjQjsSQV_0.mp4",
+        options: {autoplay: true}
+      },
+    }
+  }
+
+  render() {
+    return (
+      <FusionVideoPlayer config={this.state.video} />
+    )
+  }
+}
+
+export default App;'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div id="app">
+    <FusionVideoPlayer :config="video"/>
+  </div>
+</template>'
+                ></fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionVideoPlayer} from "@ironsrc/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+      video: {
+        thumbnail: "https://s3-eu-west-1.amazonaws.com/ssa.public.videos/thumbnails/qSOaltvVFs_56293.jpg",
+        src: "https://v.ssacdn.com/auto/xOjjQjsSQV_0.mp4",
+        options: {autoplay: true}
+      },
+    }
+  },
+  components: {
+    FusionVideoPlayer
+  }
+}
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const videoPlayer = document.createElement("native-fusion-video-player");
+videoPlayer.config = {
+    thumbnail: "https://s3-eu-west-1.amazonaws.com/ssa.public.videos/thumbnails/qSOaltvVFs_56293.jpg",
+    src: "https://v.ssacdn.com/auto/xOjjQjsSQV_0.mp4",
+    options: {autoplay: true}
+};
+
+document.body.appendChild(videoPlayer);'
+                ></fusion-code-block>
+            </ng-template>
+
+            <!--
+            <div>
+                <button fusion-button class="primary" (click)="changeVideoSrc()">Change video</button>
+            </div>
+-->
+            <br />
+            <div style="height: 300px; width: 300px;">
+                <fusion-video-player [src]="videoSrc[curIndex]" [options]="{autoplay: true}"></fusion-video-player>
+            </div>
+        </fusion-example-block>
+
+        <!--UI-Component Configuration Doc-->
+        <div class="is-example-title">Configuration</div>
+        <fusion-example-block id="params" title="Parameters" [collapsible]="false">
+            <fusion-code-block
+                lang="js"
+                code="src: string   // not supported .mov
+width: string
+height: string
+thumbnail: string
+options: {
+    noVideo?: { icon?: string, title?: string }
+    autoplay?: boolean;
+    showTimeline?: boolean;
+}"
+            ></fusion-code-block>
+        </fusion-example-block>
+        <!--UI-Component Configuration Doc-->
+    </div>
+
+    <div class="col-3 is-right-side-menu-holder">
+        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+    </div>
+</div>

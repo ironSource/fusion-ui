@@ -1,0 +1,75 @@
+<div class="doc-page">
+    <div class="row">
+      <div class="col-9">
+        <!--UI-Component Examples-->
+        <h2>Scroll To</h2>
+
+        <fusion-example-block id="typeBasic"
+                              title="Basic">
+          <fusion-code-block lang="html"
+                             class="is-collapsible"
+                             code='HTML:
+<form [formGroup]="form" >
+  <div class="from-container">
+    <div class="input-container">
+      <p>First</p>
+      <fusion-input formControlName="first" placeholder="Enter Text"></fusion-input>
+    </div>
+    <div class="input-container">
+      <p>Second</p>
+      <fusion-input formControlName="second" placeholder="Enter Text"></fusion-input>
+    </div>
+    <div class="input-container">
+      <p>Third</p>
+      <fusion-input formControlName="third" placeholder="Enter Text"></fusion-input>
+    </div>
+    <div class="input-container">
+      <p>Fourth</p>
+      <fusion-input  formControlName="fourth" placeholder="Enter Text"></fusion-input>
+    </div>
+  </div>
+</form>
+
+<button fusion-button [fusionScrollTo]=""fusion-input.ng-invalid"">Apply</button>
+
+Input Parameters:
+                fusionScrollTo: string *css selector*
+                scrollDuration: number
+                scrollOffset: number
+                scrollMainView: string'></fusion-code-block>
+
+        <form [formGroup]="form" >
+          <div class="from-container">
+              <div class="input-container">
+                  <p>First</p>
+                  <fusion-input formControlName="first" placeholder="Enter Text"></fusion-input>
+              </div>
+              <div class="input-container">
+                  <p>Second</p>
+                  <fusion-input formControlName="second" placeholder="Enter Text"></fusion-input>
+              </div>
+              <div class="input-container">
+                  <p>Third</p>
+                  <fusion-input formControlName="third" placeholder="Enter Text"></fusion-input>
+              </div>
+              <div class="input-container">
+                  <p>Fourth</p>
+                  <fusion-input class="fourth-input" formControlName="fourth" placeholder="Enter Text"></fusion-input>
+              </div>
+          </div>
+        </form>
+
+        <button fusion-button [fusionScrollTo]="'fusion-input.ng-invalid'">Apply</button>
+
+        </fusion-example-block>
+
+
+
+
+      </div>
+
+      <div class="col-3 is-right-side-menu-holder">
+        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+      </div>
+    </div>
+  </div>

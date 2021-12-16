@@ -1,0 +1,299 @@
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+@mixin animation($str) {
+    -webkit-animation: #{$str};
+    -moz-animation: #{$str};
+    -ms-animation: #{$str};
+    -o-animation: #{$str};
+    animation: #{$str};
+}
+
+@mixin trn( $prop: all, $easing: linear, $duration: .3s, $delay: 0s ) {
+    -webkit-transition: $prop $easing $duration $delay;
+    -o-transition: $prop $easing $duration $delay;
+    transition: $prop $easing $duration $delay;
+}
+
+@mixin main-gradient($from, $to) {
+    background: $from;
+    background: -webkit-linear-gradient(left, $from 0%, $to 100%);
+    background: -o-linear-gradient(left, $from 0%, $to 100%);
+    background: linear-gradient(to right, $from 0%, $to 100%);
+}
+
+@mixin transition($args...) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+@mixin size($size) {
+    width: $size;
+    height: $size;
+}
+
+$flexLocationMapping: (
+    left: 'start',
+    right: 'end',
+    top: 'start',
+    bottom: 'end',
+);
+
+@mixin flex-direction($location) {
+    $direction: map-get($flexLocationMapping, $location);
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    @if $location == 'right' or $location == 'left' {
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-justify-content: flex-#{$direction};
+        justify-content: flex-#{$direction};
+    } @else if $location == 'top' or $location == 'bottom' {
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        -webkit-box-align: center;
+        align-items: center;
+    } @else if $location == 'center' {
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        -webkit-box-align: center;
+        align-items: center;
+    }
+}
+
+@mixin icon-style($name, $colors, $size, $nameContains:false, $isDeep:false, $rotate:0, $useColorForHoover:false) {
+    $classSelector: "";
+    @if $nameContains {
+        $classSelector: '[class^="#{$name}"]';
+    } @else if ($name) {
+        $classSelector: '.#{$name}';
+    }
+
+    @if ($useColorForHoover) {
+        $classSelector: '#{$classSelector}:hover';
+    }
+
+    $ngDeep: "";
+    @if $isDeep {
+        $ngDeep: '::ng-deep';
+    }
+
+    fusion-icon#{$classSelector} {
+        @content;
+
+        #{$ngDeep} svg {
+            @if (type_of($size) == 'map') {
+                @each $css, $value in $size {
+                    #{$css}: $value;
+                }
+            } @else if ($size) {
+                @include size($size);
+            }
+            @if $rotate !=0 {
+                transform: rotate(#{$rotate}deg);
+            }
+            @if (type_of($colors) == 'map') {
+                @each $cssSelector, $color in $colors {
+                    #{$cssSelector} {
+                        @if (type_of($color) == 'map') {
+                            @each $css, $value in $color {
+                                #{$css}: $value;
+                            }
+                        } @else {
+                            fill: $color;
+                        }
+                    }
+                }
+            } @else {
+                @if $colors != null {
+                    * {
+                        fill: $colors;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin link-style($color, $textDecoration, $isDeep:false){
+    $ngDeep: "";
+    @if $isDeep {
+        $ngDeep: '::ng-deep';
+    }
+
+    #{$ngDeep} a{
+        color: $color;
+        text-decoration: $textDecoration;
+
+        &:link,
+        &:visited,
+        &:hover,
+        &:active{
+            color: $color;
+        }
+    }
+}
+
+//input placeholders
+@mixin placeholder {
+    &::-webkit-input-placeholder {
+        @content;
+    }
+    &:-moz-placeholder {
+        @content; /* Firefox 18- */
+    }
+    &::-moz-placeholder {
+        @content;
+    }
+    &:-ms-input-placeholder {
+        @content;
+    }
+}
+
+// Z-index mapping
+$ZIndexByLayer: (
+    normal: 0,
+    application: 1000,
+    notification: 2000,
+    system: 3000
+);
+
+%applicationLayer {
+    z-index: map-get($ZIndexByLayer, application) !important;
+}
+
+%notificationLayer {
+    z-index: map-get($ZIndexByLayer, notification) !important;
+}
+
+%systemLayer {
+    z-index: map-get($ZIndexByLayer, system) !important;
+}
+
+@function getZIndexLayerOffset($layer, $offset) {
+    @return map-get($ZIndexByLayer, $layer) + $offset;
+}
+
+@function remCalc($pxWidth) {
+    @return $pxWidth / $em-base * 1rem;
+}
+
+
+@mixin circle($size, $color) {
+    background-color: $color;
+    border-radius: 50%;
+    width: $size;
+    height: $size;
+    display: inline-block;
+}
+
+@mixin css-triangle($triangle-size, $triangle-color, $triangle-direction) {
+    @content;
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border: inset $triangle-size;
+    @if ($triangle-direction == top) {
+        border-color: $triangle-color transparent transparent transparent;
+        border-top-style: solid;
+    }
+    @if ($triangle-direction == bottom) {
+        border-color: transparent transparent $triangle-color transparent;
+        border-bottom-style: solid;
+    }
+    @if ($triangle-direction == left) {
+        border-color: transparent transparent transparent $triangle-color;
+        border-left-style: solid;
+    }
+    @if ($triangle-direction == right) {
+        border-color: transparent $triangle-color transparent transparent;
+        border-right-style: solid;
+    }
+}
+
+@mixin margin-padding($marginOrPadding, $size, $name: null) {
+    @if $name {
+        .#{$marginOrPadding}#{$name} {
+            #{$marginOrPadding}-top: $size;
+        }
+        .#{$marginOrPadding}Top#{$name} {
+            #{$marginOrPadding}-top: $size;
+        }
+        .#{$marginOrPadding}Bottom#{$name} {
+            #{$marginOrPadding}-bottom: $size;
+        }
+        .#{$marginOrPadding}Left#{$name} {
+            #{$marginOrPadding}-left: $size;
+        }
+        .#{$marginOrPadding}Right#{$name} {
+            #{$marginOrPadding}-right: $size;
+        }
+    } @else {
+        #{$marginOrPadding}: $size;
+    }
+}
+
+
+@mixin user-select($args...) {
+    user-select: $args;
+    -webkit-user-select: $args; /* webkit (safari, chrome) browsers */
+    -moz-user-select: $args; /* mozilla browsers */
+    -ms-user-select: $args; /* IE10+ */
+}
+
+@mixin marked-corner($color, $size, $position) {
+    &:after{
+        content: '';
+        width: 0;
+        height: 0;
+        position: absolute;
+        @if ($position == bottom-right) {
+            right: 0;
+            bottom: 0;
+            border-style: solid;
+            border-width: $size $size 0;
+            border-color: transparent $color transparent transparent;
+        }
+        @if ($position == bottom-left) {
+            left: 0;
+            bottom: 0;
+            border-style: solid;
+            border-width: 0 $size $size 0;;
+            border-color: transparent transparent $color transparent;
+        }
+        @if ($position == top-left) {
+            left: 0;
+            top: 0;
+            border-style: solid;
+            border-width: $size $size 0 0;
+            border-color: $color transparent transparent transparent;
+        }
+        @if ($position == top-right) {
+            right: 0;
+            top: 0;
+            border-style: solid;
+            border-width: $size 0 $size $size;
+            border-color: $color transparent transparent transparent;
+        }
+    }
+}

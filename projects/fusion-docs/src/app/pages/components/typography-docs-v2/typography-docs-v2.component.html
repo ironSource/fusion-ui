@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-9">
+        <!--UI-Component Examples-->
+        <fusion-example-block
+            id="textStyles"
+            title="Typography"
+            desc="Please Note: we are use `webkit-font-smoothing:antialiased` in css of body"
+            [collapsible]="false"
+        >
+            <div class="row is-typography-holder" style="border-bottom: solid 2px #ccc;">
+                <div class="col-6">Font Spec.</div>
+                <div class="col-3">Typography Name</div>
+                <div class="col-3">SCSS % Name</div>
+            </div>
+            <ng-container *ngFor="let typography of typographyList; index as i">
+                <div class="row is-typography-holder">
+                    <div class="col-6">{{ i + 1 }}. {{ typography.spec }}</div>
+                    <div class="col-3" [ngClass]="typography.cssName">{{ typography.name }}</div>
+                    <div class="col-3">&lt;{{ typography.cssName }}&gt;</div>
+                </div>
+            </ng-container>
+        </fusion-example-block>
+        <br />
+        <fusion-example-block
+            id="textStylesWebSite"
+            title="Typography Website"
+            desc="Please Note: we are use `webkit-font-smoothing:antialiased` in css of body"
+            [collapsible]="false"
+        >
+            <div class="row is-typography-holder" style="border-bottom: solid 2px #ccc;">
+                <div class="col-4">Font Spec.</div>
+                <div class="col-5">Typography Name</div>
+                <div class="col-3">SCSS % Name</div>
+            </div>
+            <ng-container *ngFor="let typography of typographyWebsiteList; index as i">
+                <div class="row is-typography-holder" [ngClass]="{'big-line': i === 0}">
+                    <div class="col-4">{{ i + 1 }}. {{ typography.spec }}</div>
+                    <div class="col-5" [ngClass]="typography.cssName">{{ typography.name }}</div>
+                    <div class="col-3">&lt;{{ typography.cssName }}&gt;</div>
+                </div>
+            </ng-container>
+        </fusion-example-block>
+        <!--UI-Component Examples-->
+    </div>
+</div>

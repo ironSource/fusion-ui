@@ -1,0 +1,5 @@
+<fusion-icon class="item-icon" *ngIf="item.icon" [name]="item.icon"></fusion-icon>
+<label>{{item.name}}</label>
+<i class="icon-expand" *ngIf="item.children">
+  <fusion-icon [name]="{iconName: 'arrow-right', iconVersion: 'v1'}"></fusion-icon>
+</i>

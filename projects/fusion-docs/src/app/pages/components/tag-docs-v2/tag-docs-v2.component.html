@@ -1,0 +1,935 @@
+<div class="row">
+    <div class="col-9">
+        <!--UI-Component Examples-->
+        <div class="is-example-title">Types</div>
+        <fusion-example-block id="typeBasic" title="Basic">
+            <!--Code Examples-->
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<!--Tag-->
+<fusion-tag [configuration]="{title: `Niek Bove`}"></fusion-tag>
+
+<!--Tag with close button-->
+<fusion-tag [configuration]="{title: `Niek Bove`, close: true}" (onRemove)="onTagRemove($event)"></fusion-tag>
+
+<!--Tag with close button and icon-->
+<fusion-tag [configuration]="{icon: `v2/ios`, title: `Words for Winner`, close: true}" (onRemove)="onTagRemove($event)" ></fusion-tag>
+
+<!--Tag with close button and flag  countryId - 2 letter country code "br" -->
+<fusion-tag [configuration]="{flag: `br`, title: `Basil`, close: true}" (onRemove)="onTagRemove($event)"></fusion-tag>
+
+<!--Tag disabled -->
+<fusion-tag [configuration]="{title: `Niek Bove`, disabled: true}"></fusion-tag>
+
+<!--With long name and tooltip-->
+<fusion-tag
+    [configuration]="{
+        title: `This is a tag with a very long name and he needs a tooltip`,
+        tooltipContent: `This is a tag with a very long name and he needs a tooltip`
+    }"
+></fusion-tag>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import React from "react";
+import "./foo.css";
+import { FusionTag } from "@ironsrc/fusion-ui/native/react";
+
+export default class Foo extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            tag_1: {
+                configuration:{
+                    title: "Niek Bove"
+                }
+            },
+            tag_2: {
+                configuration:{
+                    icon: "v2/ios",
+                    title: "iOS",
+                    close: true
+                }
+            },
+            tag_3: {
+                configuration:{
+                    flag: "br",
+                    title: "Brazil",
+                    close: true
+                }
+            },
+            tag_4: {
+                configuration:{
+                    title: "Niek Bove",
+                    disabled: true,
+                    close: true
+                }
+            },
+        };
+    }
+
+    componentDidMount() {
+        this.props.updateLayoutTitle({ title: "Example" });
+        document.body.classList.add("fusion-style-v2");
+    }
+
+    render() {
+        return (
+            <div className="example-holder">
+                <h2>TagsInput - Example</h2>
+                <div className="component-holder">
+                    <FusionTag config={this.state.tag_1}/>&nbsp;
+                    <FusionTag config={this.state.tag_2}/>&nbsp;
+                    <FusionTag config={this.state.tag_3}/>&nbsp;
+                    <FusionTag config={this.state.tag_4}/>&nbsp;
+                </div>
+            </div>
+        );
+    }
+}'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div style="margin: 20px; background-color: white; padding: 20px;">
+    <p>Tag Component example</p>
+    <div style="width: 400px;">
+      <FusionTag :config="tag_1"/>&nbsp;
+      <FusionTag :config="tag_2"/>&nbsp;
+      <FusionTag :config="tag_3"/>&nbsp;
+      <FusionTag :config="tag_4"/>&nbsp;
+    </div>
+  </div>
+</template>'
+                ></fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import { FusionTag } from "@ironsrc/fusion-ui/native/vue";
+
+export const FooComponent = {
+  name: "FooComponent",
+  mounted() {
+    this.$emit("updateLayoutTitle", { title: "Component Example" });
+  },
+  components: {
+    FusionTag
+  },
+  data() {
+    return {
+      tag_1: {
+        configuration:{
+            title: "Niek Bove"
+        }
+      },
+      tag_2: {
+      configuration:{
+          icon: "v2/ios",
+            title: "iOS",
+            close: true
+        }
+      },
+      tag_3: {
+        configuration:{
+            flag: "br",
+            title: "Brazil",
+            close: true
+        }
+      },
+      tag_4: {
+        configuration:{
+            title: "Niek Bove",
+            disabled: true,
+            close: true
+        }
+      },
+    };
+  },
+  methods: {
+
+
+  }
+};
+
+export default FooComponent;
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<html>
+    <head>
+        <title>FusionUI Native Sandbox</title>
+        <meta charset="UTF-8" />
+
+        <link
+            rel="stylesheet"
+            href="node_modules/@ironsrc/fusion-ui/native/core/fusion.theme.css"
+        />
+        <script
+            src="node_modules/@ironsrc/fusion-ui/native/core/polyfills-es2015.js"
+            type="module"
+        ></script>
+        <script
+            src="node_modules/@ironsrc/fusion-ui/native/core/polyfills-es5.js"
+            nomodule
+        ></script>
+        <script
+            src="node_modules/@ironsrc/fusion-ui/native/core/polyfill-webcomp-es5.js"
+            nomodule
+        ></script>
+        <script src="node_modules/@ironsrc/fusion-ui/native/core/polyfill-webcomp-es2015.js"></script>
+        <script
+            src="node_modules/@ironsrc/fusion-ui/native/core/main-es2015.js"
+            type="module"
+        ></script>
+        <script
+            src="node_modules/@ironsrc/fusion-ui/native/core/main-es5.js"
+            nomodule
+        ></script>
+    </head>
+
+    <body class="fusion-style-v2">
+        <div id="app"></div>
+        <script type="application/javascript" src="src/index.js"></script>
+    </body>
+</html>
+'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='// src/index.js
+// Regular Tag
+const onLoad = () => {
+    // get component-holder
+    const componentHolder = document.getElementById("app");
+    // add tag
+    const tagEl = document.createElement("native-fusion-tag");
+    // set config
+    tagEl.config = {
+        configuration: {
+            title: "Niek Bove"
+        }
+    };
+    componentHolder.appendChild(tagEl);
+};
+document.addEventListener("DOMContentLoaded", onLoad, false);
+
+// Tag with Icon and close button
+const onLoad = () => {
+    // get component-holder
+    const componentHolder = document.getElementById("app");
+    // create tag element
+    const tagEl = document.createElement("native-fusion-tag");
+
+    // set config
+    tagEl.config = {
+        configuration: {
+            icon: "v2/ios",
+            title: "Words for Winner",
+            close: true,
+        }
+    };
+
+    componentHolder.appendChild(tagEl);
+};
+document.addEventListener("DOMContentLoaded", onLoad, false);
+
+// Tag with Flag and close button. (Flags SVG sprite must be loaded)
+const onLoad = () => {
+    // get component-holder
+    const componentHolder = document.getElementById("app");
+    // create tag element
+    const tagEl = document.createElement("native-fusion-tag");
+    // set config
+    tagEl.config = {
+        configuration: {
+            flag: "br",
+            title: "Brazil"
+            close: true,
+        }
+    };
+
+    componentHolder.appendChild(tagEl);
+};
+document.addEventListener("DOMContentLoaded", onLoad, false);
+
+// Disabled Tag with Flag and close button. (Flags SVG sprite must be loaded)
+const onLoad = () => {
+    // get component-holder
+    const componentHolder = document.getElementById("app");
+    // create tag element
+    const tagEl = document.createElement("native-fusion-tag");
+    // set config
+    tagEl.config = {
+        configuration: {
+            flag: "br",
+            title: "Brazil"
+            close: true,
+            disabled: true,
+        }
+    };
+
+    componentHolder.appendChild(tagEl);
+};
+document.addEventListener("DOMContentLoaded", onLoad, false);
+'
+                ></fusion-code-block>
+            </ng-template>
+            <!--Code Examples-->
+
+            <!--Component Example-->
+            <div class="row">
+                <div class="col-1">
+                    <label class="example-label" style="text-align: right; margin-top: 26px;">Enabled:</label>
+                </div>
+                <div class="col-2">
+                    <label class="example-label">Regular</label>
+                    <fusion-tag [configuration]="{title: 'Niek Bove', tooltipContent: 'Niek Bove'}"></fusion-tag>
+                </div>
+                <div class="col-2">
+                    <label class="example-label">With close button</label>
+                    <fusion-tag [configuration]="{title: 'Niek Bove', close: true}" (onRemove)="onTagRemove($event)"></fusion-tag>
+                </div>
+                <div class="col-3">
+                    <label class="example-label">With icon and close button</label>
+                    <fusion-tag
+                        [configuration]="{icon: 'ios', title: 'Words for Winner', close: true}"
+                        (onRemove)="onTagRemove($event)"
+                    ></fusion-tag>
+                </div>
+                <div class="col-3">
+                    <label class="example-label">With flag and close button</label>
+                    <fusion-tag [configuration]="{flag: 'br', title: 'Basil', close: true}" (onRemove)="onTagRemove($event)"></fusion-tag>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-1">
+                    <label class="example-label" style="text-align: right;">Disabled:</label>
+                </div>
+                <div class="col-2">
+                    <fusion-tag [configuration]="{title: 'Niek Bove', disabled: true}"></fusion-tag>
+                </div>
+                <div class="col-2">
+                    <fusion-tag
+                        [configuration]="{title: 'Niek Bove', close: true, disabled: true}"
+                        (onRemove)="onTagRemove($event)"
+                    ></fusion-tag>
+                </div>
+                <div class="col-3">
+                    <fusion-tag
+                        [configuration]="{icon: 'ios', title: 'Words for Winner', close: true, disabled: true}"
+                        (onRemove)="onTagRemove($event)"
+                    ></fusion-tag>
+                </div>
+                <div class="col-3">
+                    <fusion-tag
+                        [configuration]="{flag: 'br', title: 'Basil', close: true, disabled: true}"
+                        (onRemove)="onTagRemove($event)"
+                    ></fusion-tag>
+                </div>
+            </div>
+            <br /><br />
+            <div class="row">
+                <div class="col-3">
+                    <label class="example-label" style="margin-left: 10px;">With long name and tooltip: </label>
+                </div>
+                <div class="col-3">
+                    <fusion-tag
+                        [configuration]="{
+                            title: 'This is a tag with a very long name and he needs a tooltip',
+                            tooltipContent: 'This is a tag with a very long name and he needs a tooltip'
+                        }"
+                    ></fusion-tag>
+                </div>
+            </div>
+            <!--Component Example-->
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="typeInputTags" title="Input tags">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<fusion-tags-input [configuration]="tagsInputConfig" (tagsChanged)="onTagsChanged($event)"></fusion-tags-input>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="predefinedTags: Array<string> = [
+    'Art & Design',
+    'Beauty',
+    'Books & Reference',
+    'Education',
+    'Entertainment',
+    'Events',
+    'Finance',
+    'Food & Drink',
+    'Health & Fitness',
+    'House & Home',
+    'Libraries & Demo',
+    'Lifestyle',
+    'Maps & Navigation',
+    'Medical',
+    'Music & Audio',
+    'News & Magazines',
+    'Parenting'
+];
+
+tagsSelected = ['Art & Design', 'Beauty', 'Books & Reference'];
+
+tagsInputConfig = {
+    tags: this.tagsSelected,
+    tagList: this.predefinedTags,
+    autoComplete: true,
+    isPredefinedTags: true,
+    inputPlaceholder: 'Add...',
+    noResultMessage: 'No result'
+};
+"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import React from "react";
+import "./foo.css";
+import { FusionTagsInput } from "@ironsrc/fusion-ui/native/react";
+
+export default class Foo extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            tagsInput: {
+                configuration:{
+                    inputPlaceholder: "Add...",
+                    isAddTagsAllowed: false,
+                    isPredefinedTags: true,
+                    autoComplete: true,
+                    tagList: [
+                        "Art & Design",
+                        "Beauty",
+                        "Books & Reference",
+                        "Education",
+                        "Entertainment",
+                        "Events",
+                        "Finance",
+                        "Food & Drink",
+                        "Health & Fitness",
+                        "House & Home",
+                        "Libraries & Demo",
+                        "Lifestyle",
+                        "Maps & Navigation",
+                        "Medical",
+                        "Music & Audio",
+                        "News & Magazines",
+                        "Parenting"
+                    ],
+                    tags: ["Art & Design", "Beauty", "Books & Reference"]
+                }
+            },
+        };
+    }
+
+    componentDidMount() {
+        this.props.updateLayoutTitle({ title: "Example" });
+        document.body.classList.add("fusion-style-v2");
+    }
+
+    handleChange(name, value) {
+        this.setState({[name]: {...this.state[name], controlValue: value}})
+    }
+
+    render() {
+        return (
+            <div className="example-holder">
+                <h2>TagsInput - Example</h2>
+                <div className="component-holder">
+                    <FusionTagsInput config={this.state.tagsInput} tagsChanged={this.handleChange.bind(this, "tagsInput")} />
+                </div>
+            </div>
+        );
+    }
+}'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+    <div style="margin: 20px; background-color: white; padding: 20px;">
+        <p>Tag Component example</p>
+        <FusionTagsInput :config="tagsInput" @tagsChanged="e => handleChange(e, `tagsInput`)"/>
+    </div>
+</template>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import { FusionTagsInput } from "@ironsrc/fusion-ui/native/vue";
+
+export const FooComponent = {
+  name: "FooComponent",
+  mounted() {
+    this.$emit("updateLayoutTitle", { title: "Component Example" });
+  },
+  components: {
+    FusionTagsInput
+  },
+  data() {
+    return {
+      tagsInput: {
+        configuration:{
+          inputPlaceholder: "Add...",
+          isAddTagsAllowed: false,
+          isPredefinedTags: true,
+          autoComplete: true,
+          tagList: [
+            "Art & Design",
+            "Beauty",
+            "Books & Reference",
+            "Education",
+            "Entertainment",
+            "Events",
+            "Finance",
+            "Food & Drink",
+            "Health & Fitness",
+            "House & Home",
+            "Libraries & Demo",
+            "Lifestyle",
+            "Maps & Navigation",
+            "Medical",
+            "Music & Audio",
+            "News & Magazines",
+            "Parenting"
+          ],
+          tags: ["Art & Design", "Beauty", "Books & Reference"]
+        }
+      },
+    };
+  },
+  methods: {
+    handleChange: function(value, key){
+      this[key] = {...this[key], controlValue: value};
+    }
+  }
+};
+
+export default FooComponent;
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const tagsInput = document.createElement("native-fusion-tags-input");
+tagsInput.config = {
+    configuration:{
+          inputPlaceholder: "Add...",
+          isAddTagsAllowed: false,
+          isPredefinedTags: true,
+          autoComplete: true,
+          tagList: [
+            "Art & Design",
+            "Beauty",
+            "Books & Reference",
+            "Education",
+            "Entertainment",
+            "Events",
+            "Finance",
+            "Food & Drink",
+            "Health & Fitness",
+            "House & Home",
+            "Libraries & Demo",
+            "Lifestyle",
+            "Maps & Navigation",
+            "Medical",
+            "Music & Audio",
+            "News & Magazines",
+            "Parenting"
+          ],
+          tags: ["Art & Design", "Beauty", "Books & Reference"]
+        }
+};
+
+tagsInput.addEventListener("tagsChanged", (e) => console.log(e.detail));
+
+document.body.appendChild(tagsInput);'
+                ></fusion-code-block>
+            </ng-template>
+
+            <!--<div><button (click)="toggleDisabling($event)">Toggle disabling</button> <<{{ tagsInputDisabled$ | async }}>></div>-->
+
+            <fusion-tags-input
+                [formControl]="tagsFormControl"
+                [isDisabled]="tagsInputDisabled$ | async"
+                [configuration]="tagsInputConfig"
+                (tagsChanged)="onTagsChanged($event)"
+            ></fusion-tags-input>
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="variationsTagFilter" title="Tag Filter">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='
+<div class="is-tags-filter-holder">
+    <fusion-tag
+        class="tag-filter"
+        *ngFor="let option of tagsFilters"
+        [configuration]="option"
+        (onSelectedChange)="onTagToggle($event)"
+        >{ { option.title } }
+    </fusion-tag>
+</div>
+<div class="is-filter-icon-holder">
+    <ul>
+        <ng-container *ngFor="let option of iconsFilters">
+            <li *ngIf="filtered(option.id) || !hasFilters">
+                <fusion-icon class="filter-icon" [name]="option.icon"></fusion-icon>
+            </li>
+        </ng-container>
+    </ul>
+</div>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="    tagsFiltersMock: Array<TagConfiguration> = [
+    {
+        id: 1,
+        icon: 'music',
+        title: 'Music & Audio',
+        role: TagRole.Filter
+    },
+    {
+        id: 2,
+        icon: 'food',
+        title: 'Food & Drink',
+        role: TagRole.Filter
+    },
+    {
+        id: 3,
+        icon: 'wallet',
+        title: 'Finance',
+        role: TagRole.Filter
+    },
+    {
+        id: 4,
+        icon: 'education',
+        title: 'Education',
+        role: TagRole.Filter
+    },
+    {
+        id: 5,
+        icon: 'map',
+        title: 'Map & Navigation',
+        role: TagRole.Filter,
+        disabled: true
+    }
+];
+
+iconsFilters = this.tagsFiltersMock.map(item => {
+    return {
+        id: item.id,
+        icon: item.icon
+    };
+});
+
+tagsFilters = this.tagsFiltersMock.map(item => {
+    delete item.icon;
+    return item;
+});
+
+hasFilters = false;
+
+....
+
+ngOnInit() {
+    this.hasFilters = !!this.tagsFilters.filter(item => item.selected).length;
+}
+
+filtered(id): boolean {
+    return this.tagsFilters.filter(item => item.selected).some(item => item.id === id);
+}
+
+onTagToggle(option: any): void {
+    this.tagsFilters.forEach(item => {
+        if (item.id === option.id) {
+            item.selected = option.selected;
+        }
+    });
+    this.hasFilters = !!this.tagsFilters.filter(item => item.selected).length;
+}
+"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import React from "react";
+import "./foo.css";
+import { FusionTag } from "@ironsrc/fusion-ui/native/react";
+
+export default class Foo extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            tag_1: {
+                configuration:{
+                    id: 1,
+                    title: "Music & Audio",
+                    role: "filter",
+                }
+            },
+            tag_2: {
+                configuration:{
+                    id: 2,
+                    title: "Food & Drink",
+                    role: "filter",
+                }
+            },
+            tag_3: {
+                configuration:{
+                    id: 3,
+                    title: "Finance",
+                    role: "filter",
+                }
+            },
+            tag_4: {
+                configuration:{
+                    id: 4,
+                    title: "Education",
+                    role: "filter",
+                }
+            },
+            tag_5: {
+                configuration:{
+                    id: 5,
+                    title: "Map & Navigation",
+                    role: "filter",
+                }
+            },
+        };
+    }
+
+    componentDidMount() {
+        this.props.updateLayoutTitle({ title: "Example" });
+        document.body.classList.add("fusion-style-v2");
+    }
+
+    render() {
+        return (
+            <div className="example-holder">
+                <h2>TagsInput - Example</h2>
+                <div className="component-holder">
+                    <FusionTag config={this.state.tag_1}/>&nbsp;
+                    <FusionTag config={this.state.tag_2}/>&nbsp;
+                    <FusionTag config={this.state.tag_3}/>&nbsp;
+                    <FusionTag config={this.state.tag_4}/>&nbsp;
+                    <FusionTag config={this.state.tag_5}/>&nbsp;
+                </div>
+            </div>
+        );
+    }
+}'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div style="margin: 20px; background-color: white; padding: 20px;">
+    <p>Tag Component example</p>
+    <div style="width: 400px;">
+      <FusionTag :config="tag_1"/>&nbsp;
+      <FusionTag :config="tag_2"/>&nbsp;
+      <FusionTag :config="tag_3"/>&nbsp;
+      <FusionTag :config="tag_4"/>&nbsp;
+    </div>
+  </div>
+</template>'
+                ></fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import { FusionTag } from "@ironsrc/fusion-ui/native/vue";
+
+export const FooComponent = {
+  name: "FooComponent",
+  mounted() {
+    this.$emit("updateLayoutTitle", { title: "Component Example" });
+  },
+  components: {
+    FusionTag
+  },
+  data() {
+    return {
+      tag_1: {
+        configuration:{
+            title: "Niek Bove"
+        }
+      },
+      tag_2: {
+      configuration:{
+          icon: "v2/ios",
+            title: "iOS",
+            close: true
+        }
+      },
+      tag_3: {
+        configuration:{
+            flag: "br",
+            title: "Brazil",
+            close: true
+        }
+      },
+      tag_4: {
+        configuration:{
+            title: "Niek Bove",
+            disabled: true,
+            close: true
+        }
+      },
+    };
+  },
+  methods: {
+
+
+  }
+};
+
+export default FooComponent;
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='// src/index.js
+// Tag - Filter
+const onLoad = () => {
+    // get component-holder
+    const componentHolder = document.getElementById("app");
+    // create tag element
+    const tagEl = document.createElement("native-fusion-tag");
+    // set config
+    tagEl.config = {
+        configuration: {
+            id: 1,
+            title: "Music & Audio",
+            role: "filter",
+        },
+    };
+
+    componentHolder.appendChild(tagEl);
+};
+document.addEventListener("DOMContentLoaded", onLoad, false);'
+                ></fusion-code-block>
+            </ng-template>
+
+            <div class="is-tags-filter-holder">
+                <fusion-tag
+                    class="tag-filter"
+                    *ngFor="let option of tagsFilters"
+                    [configuration]="option"
+                    (onSelectedChange)="onTagToggle($event)"
+                    >{{ option.title }}
+                </fusion-tag>
+            </div>
+            <div class="is-filter-icon-holder">
+                <ul>
+                    <ng-container *ngFor="let option of iconsFilters">
+                        <li *ngIf="filtered(option.id) || !hasFilters">
+                            <fusion-icon class="filter-icon" [name]="option.icon"></fusion-icon>
+                        </li>
+                    </ng-container>
+                </ul>
+            </div>
+        </fusion-example-block>
+        <!--UI-Component Examples-->
+
+        <!--UI-Component Configuration Doc-->
+        <div class="is-example-title">Configuration</div>
+        <fusion-example-block id="params" title="Parameters" [collapsible]="false">
+            <fusion-code-block
+                lang="js"
+                code="// fusion-tag configuration:
+interface TagConfiguration {
+    id?: number | string;
+    icon?: string;
+    flag?: string;
+    title: string;
+    close?: boolean;
+    disabled?: boolean;
+    selected?: boolean;
+    role?: TagRole;
+    tooltipContent?: string;
+    tooltipWidth?: number;
+}
+
+// fusion-tags-input configuration
+interface TagsInputConfiguration {
+    id?: string;                        // DOM element ID
+    tags: Tag[] | string[];             // list selected possible tags
+    tagList: Tag[];                     // list possible tags
+    isPredefinedTags?: boolean;         // must be true in case using dropdown with tagList
+    inputPlaceholder?: string;          // Input placeholder test
+    placeholderPrefix?: string;         // Input placeholder test if selected tags > 0
+    noResultMessage?: string;
+    loading?: boolean;
+    error?: string;
+}
+
+interface Tag {
+    id: number | string;
+    title: string;
+    icon?: string;
+    flag?: string;
+}
+
+enum TagRole {
+    Filter = 'filter'
+}"
+            ></fusion-code-block>
+        </fusion-example-block>
+
+        <fusion-example-block id="events" title="Events" [collapsible]="false">
+            <fusion-code-block
+                lang="js"
+                code="// fusion-tags-input output events:
+tagsChanged(selectedTags: Tag[])
+"
+            ></fusion-code-block>
+        </fusion-example-block>
+        <!--UI-Component Configuration Doc-->
+    </div>
+
+    <div class="col-3 is-right-side-menu-holder">
+        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+    </div>
+</div>

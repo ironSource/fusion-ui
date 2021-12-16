@@ -1,0 +1,35 @@
+<ng-container *ngIf="selectedVersion$ | async as currentStyleVersion">
+    <ng-container *ngIf="!option.content; else customContentOption">
+        <div *ngIf="option.icon" class="icon-container">
+            <fusion-icon id="platform-icon" [name]="option.icon" class="icon"></fusion-icon>
+        </div>
+        <fusion-flag *ngIf="option.flag" [name]="option.flag"></fusion-flag>
+        <img [src]="option.image" *ngIf="option.image" alt="" />
+        <div [id]="option.id" class="text truncate" fusionTooltip="{{ optionToStringFunc | generic: option:mappingOptions:settings }}">
+            <fusion-icon *ngIf="option.indicationStatus" [name]="{iconName: 'status-dots', iconVersion: 'v1'}"></fusion-icon>
+            <span innerHTML="{{ optionToStringFunc | generic: option:mappingOptions:settings }}"></span>
+            <div *ngIf="option.subText && shouldDisplayMultiRaw" class="sub-text-container">
+                <fusion-icon *ngIf="option.subText.icon" class="sub-text-icon" [name]="option.subText.icon"></fusion-icon>
+                <label>{{ option.subText.text }}</label>
+            </div>
+        </div>
+        <span class="optionRightClickTextHover" *ngIf="optionRightHoverText">{{ optionRightHoverText }}</span>
+    </ng-container>
+
+    <ng-template #customContentOption>
+        <fusion-dynamic-components [configuration]="option.content"></fusion-dynamic-components>
+    </ng-template>
+    <ng-container *ngIf="hasChildren">
+        <fusion-icon *ngIf="dropdownArrowIconName$ | async as dropdownArrowIconName" class="icon-arrow" [name]="dropdownArrowIconName"></fusion-icon>
+        <ul class="is-subgroup-options">
+            <ng-container *ngFor="let childOption of option.childOptions; index as i">
+                <li
+                    [fusionDropdownOption]="childOption"
+                    [mappingOptions]="mappingOptions"
+                    [attr.data-id]="childOption.id"
+                    [ngClass]="{'is-selected': childOption.isSelected}"
+                ></li>
+            </ng-container>
+        </ul>
+    </ng-container>
+</ng-container>

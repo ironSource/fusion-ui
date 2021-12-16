@@ -1,0 +1,23 @@
+<ul>
+    <ng-container *ngFor="let datasetLabel of labels; let isFirst = first">
+        <li class="truncate" [ngClass]="{'no-checkbox': !hasCheckboxes}" (click)="onLabelClicked($event)">
+            <fusion-checkbox
+                *ngIf="hasCheckboxes; else noCheckbox"
+                [formControl]="datasetLabel.labelVisible"
+                [label]="datasetLabel.label"
+                [tooltipContent]="datasetLabel.tooltip"
+                [tooltipWidth]="240"
+                [backgroundColor]="datasetLabel.color"
+                [class]="isFirst ? 'font13' : 'font14'"
+            ></fusion-checkbox>
+            <ng-template #noCheckbox>
+                <label *ngIf="!hasCheckboxes"
+                    ><div class="lbl-color" [class.fu-label-letter]="datasetLabel.labelLetter" [style.color]="datasetLabel.labelLetterColor" [style.background-color]="datasetLabel.color">{{datasetLabel.labelLetter}}</div>
+                    {{ datasetLabel.label }}
+                    <div class="lbl-suffix" *ngIf="datasetLabel.labelSuffix">{{ datasetLabel.labelSuffix }}</div>
+                </label>
+            </ng-template>
+            <fusion-icon class="is-platform-icon" *ngIf="datasetLabel.icon" [name]="datasetLabel.icon"></fusion-icon>
+        </li>
+    </ng-container>
+</ul>

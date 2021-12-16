@@ -1,0 +1,1028 @@
+<div class="row" *ngIf="selectedVersion$ | async as currentStyleVersion">
+    <div class="col-9">
+        <div class="is-example-title">Type</div>
+
+        <fusion-example-block id="typeRegular" title="Regular">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<button fusion-button
+        (click)="onClick()">
+  Default Button
+</button>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  buttonClicked(){
+    console.log("Clicked");
+  }
+
+  render() {
+    return (
+      <FusionButton onclick={this.buttonClicked}>
+        <span>Default Button</span>
+      </FusionButton>
+    )
+  }
+}
+
+export default App;'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div id="app">
+      <FusionButton :config="button"  @onclick="onclick">
+        <span>Default Button</span>
+      </FusionButton>
+  </div>
+</template>'
+                >
+                </fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionButton} from "@ironsrc/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+      button: {}
+    }
+  },
+  components: {
+    FusionButton
+  },
+  methods: {
+    onclick: function(){
+      window.console.log("Click");
+    }
+  },
+}
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const button = document.createElement("native-fusion-button");
+const textNode = document.createTextNode("Default Button");
+
+document.body.appendChild(button);
+button.appendChild(textNode);
+button.addEventListener("onclick", e => console.log(e));'
+                ></fusion-code-block>
+            </ng-template>
+
+            <fusion-button [loading]="isLoading" (click)="onClick()">bla bla Button</fusion-button>
+
+        </fusion-example-block>
+
+        <fusion-example-block *ngIf="currentStyleVersion === styleVersion.V1" id="typeStroke" title="Stroke">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<button fusion-button class="stroke">Default Button</button>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      button: {
+        class: "stroke"
+      }
+    }
+  }
+
+  buttonClicked(){
+    console.log("Clicked");
+  }
+
+  render() {
+    return (
+      <FusionButton config={this.state.button} onclick={this.buttonClicked}>
+        <span>Default Button</span>
+      </FusionButton>
+    )
+  }
+}
+
+export default App;'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div id="app">
+      <FusionButton :config="button"  @onclick="onclick">
+        <span>Default Button</span>
+      </FusionButton>
+  </div>
+</template>'
+                >
+                </fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionButton} from "@ironsrc/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+      button: {
+        class: "stroke"
+      }
+    }
+  },
+  components: {
+    FusionButton
+  },
+  methods: {
+    onclick: function(){
+      window.console.log("Click");
+    }
+  },
+}
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const button = document.createElement("native-fusion-button");
+const textNode = document.createTextNode("Default Button");
+
+
+button.config = {
+  class: "stroke"
+};
+
+document.body.appendChild(button);
+button.appendChild(textNode);
+button.addEventListener("onclick", e => console.log(e));'
+                ></fusion-code-block>
+            </ng-template>
+
+            <button fusion-button class="stroke">Default Button</button>
+        </fusion-example-block>
+
+        <fusion-example-block *ngIf="currentStyleVersion === styleVersion.V2" id="typeLink" title="Link">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<!--Regular-->
+<a href="#" fusion-button (click)="onClick($event)">Link button</a>
+<a href="#" fusion-button icon="sync" (click)="onClick($event)">Sync</a>
+
+<!--Disabled-->
+<a href="#" fusion-button disabled (click)="onClick($event)">Link button</a>
+<a href="#" fusion-button [disabled]="true" icon="v2/sync" (click)="onClick($event)">Sync</a>
+
+<!--Loading-->
+<a href="#" fusion-button [loading]="true" (click)="onClick($event)">Link button</a>
+<a href="#" fusion-button [loading]="true" icon="v2/sync" (click)="onClick($event)">Sync</a>
+'
+                ></fusion-code-block>
+            </ng-template>
+
+            <div class="row">
+                <div class="col-2">Regular</div>
+                <div class="col-2"><a href="#" fusion-button (click)="onClick($event)">Link button</a></div>
+                <div class="col-2"><a href="#" fusion-button icon="sync" (click)="onClick($event)">Sync</a></div>
+            </div>
+            <div class="row">
+                <div class="col-2">Disabled</div>
+                <div class="col-2"><a href="#" fusion-button [disabled]="true" (click)="onClick($event)">Link button</a></div>
+                <div class="col-2"><a href="#" fusion-button [disabled]="true" icon="sync" (click)="onClick($event)">Sync</a></div>
+            </div>
+            <div class="row">
+                <div class="col-2">Loading</div>
+                <div class="col-2"><a href="#" fusion-button [loading]="true" (click)="onClick($event)">Link button</a></div>
+                <div class="col-2"><a href="#" fusion-button [loading]="true" icon="sync" (click)="onClick($event)">Sync</a></div>
+            </div>
+        </fusion-example-block>
+
+        <fusion-example-block id="typeColor" title="Color">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<button fusion-button class="primary">Default Button</button>
+<button fusion-button class="negative">Negative Action</button>
+<button fusion-button class="secondary">Secondary Button</button>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      button: {
+        class: "primary"
+      }
+    }
+  }
+
+  buttonClicked(){
+    console.log("Clicked");
+  }
+
+  render() {
+    return (
+      <FusionButton config={this.state.button} onclick={this.buttonClicked}>
+        <span>Default Button</span>
+      </FusionButton>
+    )
+  }
+}
+
+export default App;'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div id="app">
+      <FusionButton :config="button"  @onclick="onclick">
+        <span>Default Button</span>
+      </FusionButton>
+  </div>
+</template>'
+                >
+                </fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionButton} from "@ironsrc/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+      button: {
+        class: "primary"
+      }
+    }
+  },
+  components: {
+    FusionButton
+  },
+  methods: {
+    onclick: function(){
+      window.console.log("Click");
+    }
+  },
+}
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const button = document.createElement("native-fusion-button");
+const textNode = document.createTextNode("Default Button");
+
+
+button.config = {
+  class: "primary"
+};
+
+document.body.appendChild(button);
+button.appendChild(textNode);
+button.addEventListener("onclick", e => console.log(e));'
+                ></fusion-code-block>
+            </ng-template>
+
+            <button fusion-button class="primary">Default button</button>&nbsp;&nbsp;
+            <button fusion-button class="negative">Negative action</button>&nbsp;
+            <button fusion-button class="secondary">Secondary button</button>&nbsp;
+        </fusion-example-block>
+
+        <fusion-example-block id="typeTransparent" *ngIf="currentStyleVersion === styleVersion.V2" title="Transparent">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code=' <!--"Transparent" buttons-->
+<button fusion-button class="transparent">Apply</button>&nbsp;
+<button fusion-button class="transparent secondary">Cancel</button>&nbsp;
+<button fusion-button class="transparent medium">Apply</button>&nbsp;
+<button fusion-button class="transparent secondary medium">Cancel</button>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      button: {
+        class: "transparent"
+      }
+    }
+  }
+
+  buttonClicked(){
+    console.log("Clicked");
+  }
+
+  render() {
+    return (
+      <FusionButton config={this.state.button} onclick={this.buttonClicked}>
+        <span>Default Button</span>
+      </FusionButton>
+    )
+  }
+}
+
+export default App;'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div id="app">
+      <FusionButton :config="button"  @onclick="onclick">
+        <span>Default Button</span>
+      </FusionButton>
+  </div>
+</template>'
+                >
+                </fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionButton} from "@ironsrc/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+      button: {
+        class: "transparent"
+      }
+    }
+  },
+  components: {
+    FusionButton
+  },
+  methods: {
+    onclick: function(){
+      window.console.log("Click");
+    }
+  },
+}
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const button = document.createElement("native-fusion-button");
+const textNode = document.createTextNode("Default Button");
+
+
+button.config = {
+  class: "transparent"
+};
+
+document.body.appendChild(button);
+button.appendChild(textNode);
+button.addEventListener("onclick", e => console.log(e));'
+                ></fusion-code-block>
+            </ng-template>
+
+            <button fusion-button class="transparent">Apply</button>&nbsp;
+            <button fusion-button class="transparent secondary">Cancel</button>&nbsp;
+            <button fusion-button class="transparent medium">Apply</button>&nbsp;
+            <button fusion-button class="transparent secondary medium">Cancel</button>&nbsp;
+        </fusion-example-block>
+
+        <fusion-example-block id="typeIcon" title="Icon">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<button fusion-button icon="edit">Edit</button>
+
+<button fusion-button icon="edit"></button> <!--Not supported in V2-->
+
+<div class="is-btngroup">
+  <button fusion-button icon="export-csv"></button>
+  <button fusion-button icon="life-saver"></button>
+  <button fusion-button icon="brush"></button>
+  <button fusion-button icon="country"></button>
+</div>
+
+<!--Icon Buttons in Table-Cell (V2)-->
+<button title="medium" class="in-table" fusion-button
+        icon="v2/pen" (click)="onClick($event)"></button>
+<button title="medium" class="in-table" fusion-button
+        icon="delete" (click)="onClick($event)"></button>
+
+'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      button: {
+        icon: "edit"
+      }
+    }
+  }
+
+  buttonClicked(){
+    console.log("Clicked");
+  }
+
+  render() {
+    return (
+      <FusionButton config={this.state.button} onclick={this.buttonClicked}>
+        <span>Default Button</span>
+      </FusionButton>
+    )
+  }
+}
+
+export default App;'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div id="app">
+      <FusionButton :config="button"  @onclick="onclick">
+        <span>Default Button</span>
+      </FusionButton>
+  </div>
+</template>'
+                >
+                </fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionButton} from "@ironsrc/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+      button: {
+        icon: "edit"
+      }
+    }
+  },
+  components: {
+    FusionButton
+  },
+  methods: {
+    onclick: function(){
+      window.console.log("Click");
+    }
+  },
+}
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const button = document.createElement("native-fusion-button");
+
+button.config = {
+  icon: "edit"
+};
+
+document.body.appendChild(button);'
+                ></fusion-code-block>
+            </ng-template>
+
+            <div *ngIf="currentStyleVersion === styleVersion.V1">
+                <div style="height: 40px;" class="row is-example-row">
+                    <div class="col-2 is-txt-lbl">Text and Icon</div>
+                    <div class="col-10">
+                        <button fusion-button icon="edit">Edit</button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="height: 40px;" class="row is-example-row">
+                <div class="col-2 is-txt-lbl">Single Icon</div>
+                <div class="col-10">
+                    <button fusion-button icon="edit" *ngIf="currentStyleVersion === styleVersion.V1"></button>
+                    <fusion-button icon="pen" fusionTooltip="Edit" *ngIf="currentStyleVersion === styleVersion.V2"></fusion-button>
+                </div>
+            </div>
+
+            <div *ngIf="currentStyleVersion === styleVersion.V1">
+                <div style="height: 40px;" class="row is-example-row">
+                    <div class="col-2 is-txt-lbl">Group Icon</div>
+                    <div class="col-10">
+                        <div class="is-btngroup">
+                            <button fusion-button icon="export-csv"></button>
+                            <button fusion-button icon="life-saver"></button>
+                            <button fusion-button icon="brush"></button>
+                            <button fusion-button icon="country"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="currentStyleVersion === styleVersion.V2">
+                <div style="height: 40px;" class="row is-example-row">
+                    <div class="col-2 is-txt-lbl">In Table cell Icons</div>
+                    <div class="col-2" style="background-color: #f8f9fb; height: 48px; padding-top: 10px; text-align: right;">
+                        <fusion-button fusionTooltip="Edit" class="in-table" icon="pen" (click)="onClick($event)"></fusion-button>
+                        <fusion-button fusionTooltip="Delete" class="in-table" icon="delete" (click)="onClick($event)"></fusion-button>
+                    </div>
+                </div>
+            </div>
+        </fusion-example-block>
+
+        <div class="is-example-title">States</div>
+
+        <fusion-example-block id="buttonDisabled" title="Disabled">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<button fusion-button disabled>Default Button</button>"
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      button: {
+        disable: true
+      }
+    }
+  }
+
+  buttonClicked(){
+    console.log("Clicked");
+  }
+
+  render() {
+    return (
+      <FusionButton config={this.state.button} onclick={this.buttonClicked}>
+        <span>Default Button</span>
+      </FusionButton>
+    )
+  }
+}
+
+export default App;'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div id="app">
+      <FusionButton :config="button"  @onclick="onclick">
+        <span>Default Button</span>
+      </FusionButton>
+  </div>
+</template>'
+                >
+                </fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionButton} from "@ironsrc/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+      button: {
+        disable: true
+      }
+    }
+  },
+  components: {
+    FusionButton
+  },
+  methods: {
+    onclick: function(){
+      window.console.log("Click");
+    }
+  },
+}
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const button = document.createElement("native-fusion-button");
+const textNode = document.createTextNode("Default Button");
+
+button.config = {
+  disable: true
+};
+
+document.body.appendChild(button);
+button.appendChild(textNode);
+button.addEventListener("onclick", e => console.log(e));'
+                ></fusion-code-block>
+            </ng-template>
+
+            <div style="height: 40px;" class="row is-example-row">
+                <div class="col-1 is-txt-lbl">Regular</div>
+                <div class="col-11">
+                    <button fusion-button [disabled]="true" (click)="onClick()">Default Button</button>&nbsp;
+                    <button fusion-button [disabled]="true" class="small" (click)="onClick()">Small Button</button>
+                </div>
+            </div>
+
+            <div *ngIf="currentStyleVersion === styleVersion.V1">
+                <div style="height: 40px;" class="row is-example-row">
+                    <div class="col-1 is-txt-lbl">Stroke</div>
+                    <div class="col-11">
+                        <button fusion-button [disabled]="true" (click)="onClick()" class="stroke">Default Button</button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="height: 40px;" class="row is-example-row">
+                <div class="col-1 is-txt-lbl">Color</div>
+                <div class="col-11">
+                    <button fusion-button [disabled]="true" class="primary">Default Button</button>&nbsp;
+                    <button fusion-button [disabled]="true" class="negative">
+                        Negative Action</button
+                    >&nbsp; <button fusion-button [disabled]="true" class="secondary">Secondary Button</button>&nbsp;
+                    <button fusion-button [disabled]="true" class="transparent">
+                        Transparent button</button
+                    >&nbsp;
+                </div>
+            </div>
+        </fusion-example-block>
+
+        <fusion-example-block id="buttonLoading" title="Loading">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<button fusion-button [loading]="true">Default Button</button>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      button: {
+        loading: true
+      }
+    }
+  }
+
+  buttonClicked(){
+    console.log("Clicked");
+  }
+
+  render() {
+    return (
+      <FusionButton config={this.state.button} onclick={this.buttonClicked}>
+        <span>Default Button</span>
+      </FusionButton>
+    )
+  }
+}
+
+export default App;'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div id="app">
+      <FusionButton :config="button"  @onclick="onclick">
+        <span>Default Button</span>
+      </FusionButton>
+  </div>
+</template>'
+                >
+                </fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionButton} from "@ironsrc/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+      button: {
+        loading: true
+      }
+    }
+  },
+  components: {
+    FusionButton
+  },
+  methods: {
+    onclick: function(){
+      window.console.log("Click");
+    }
+  },
+}
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const button = document.createElement("native-fusion-button");
+const textNode = document.createTextNode("Default Button");
+
+button.config = {
+  loading: true
+};
+
+document.body.appendChild(button);
+button.addEventListener("onclick", e => console.log(e));'
+                ></fusion-code-block>
+            </ng-template>
+
+            <div style="height: 40px;" class="row is-example-row">
+                <div class="col-1 is-txt-lbl">Regular</div>
+                <div class="col-11">
+                    <button fusion-button [loading]="true">Default Button</button>&nbsp;
+                    <button *ngIf="currentStyleVersion === styleVersion.V2" fusion-button [loading]="true" class="small">
+                        Small Button
+                    </button>
+                </div>
+            </div>
+
+            <div *ngIf="currentStyleVersion === styleVersion.V1">
+                <div style="height: 40px;" class="row is-example-row">
+                    <div class="col-1 is-txt-lbl">Stroke</div>
+                    <div class="col-11">
+                        <button fusion-button [loading]="true" class="stroke">Default Button</button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="height: 40px;" class="row is-example-row">
+                <div class="col-1 is-txt-lbl">Color</div>
+                <div class="col-11">
+                    <button fusion-button [loading]="true" class="primary">Default Button</button>&nbsp;
+                    <button fusion-button [loading]="true" class="negative">Negative Action</button>&nbsp;
+                    <button fusion-button [loading]="true" class="secondary">Secondary Button</button>&nbsp;
+                </div>
+            </div>
+        </fusion-example-block>
+
+        <fusion-example-block id="buttonSize" title="Size">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<button fusion-button class="small">Small</button>
+
+<button fusion-button>Medium - default</button>
+
+<button fusion-button class="primary large">Large Button</button>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      button: {
+        class: "small"
+      }
+    }
+  }
+
+  buttonClicked(){
+    console.log("Clicked");
+  }
+
+  render() {
+    return (
+      <FusionButton config={this.state.button} onclick={this.buttonClicked}>
+        <span>Small Button</span>
+      </FusionButton>
+    )
+  }
+}
+
+export default App;'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div id="app">
+      <FusionButton :config="button"  @onclick="onclick">
+        <span>Small Button</span>
+      </FusionButton>
+  </div>
+</template>'
+                >
+                </fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionButton} from "@ironsrc/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+      button: {
+        class: "small"
+      }
+    }
+  },
+  components: {
+    FusionButton
+  },
+  methods: {
+    onclick: function(){
+      window.console.log("Click");
+    }
+  },
+}
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const button = document.createElement("native-fusion-button");
+const textNode = document.createTextNode("Small Button");
+
+button.config = {
+  class: "small"
+}
+
+document.body.appendChild(button);
+button.appendChild(textNode);
+button.addEventListener("onclick", e => console.log(e));'
+                ></fusion-code-block>
+            </ng-template>
+
+            <div class="row is-example-row">
+                <div class="col-2 is-txt-lbl">
+                    {{ currentStyleVersion === styleVersion.V1 ? '70px' : '64px' }}<br />
+                    Min. width
+                </div>
+                <div class="col-10">
+                    <button fusion-button class="small">Small</button>
+                </div>
+            </div>
+
+            <div class="row is-example-row">
+                <div class="col-2 is-txt-lbl">
+                    {{ currentStyleVersion === styleVersion.V1 ? '90px' : '92px' }}<br />
+                    Min. width
+                </div>
+                <div class="col-10">
+                    <button fusion-button>Medium</button>
+                </div>
+            </div>
+
+            <div class="row is-example-row">
+                <div class="col-2 is-txt-lbl">
+                    {{ currentStyleVersion === styleVersion.V1 ? '140px' : '144px' }}<br />
+                    Min. width
+                </div>
+                <div class="col-10">
+                    <button fusion-button class="primary large">Large Button</button>
+                </div>
+            </div>
+        </fusion-example-block>
+
+        <!--UI-Component Examples-->
+        <!--UI-Component Configuration Doc-->
+        <div class="is-example-title">Configuration</div>
+        <fusion-example-block id="params" title="Parameters" [collapsible]="false">
+            <fusion-code-block
+                lang="js"
+                code="icon: string;        // any supported by icon component icon name. Default - not set
+disabled: boolean;   // If true - make button disabled. Default - not set (false)
+loading: boolean;    // If true - added loading element. Default - not set (false)"
+            ></fusion-code-block>
+        </fusion-example-block>
+
+        <fusion-example-block id="events" title="Events" [collapsible]="false">
+            <fusion-code-block
+                lang="js"
+                code="(click) // for Angular
+'onclick' // for Native events"
+            ></fusion-code-block>
+        </fusion-example-block>
+        <!--UI-Component Configuration Doc-->
+    </div>
+
+    <div class="col-3 is-right-side-menu-holder">
+        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+    </div>
+</div>

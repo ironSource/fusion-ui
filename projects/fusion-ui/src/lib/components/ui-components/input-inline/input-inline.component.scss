@@ -1,0 +1,96 @@
+@import '../../../../style/scss/vars/vars';
+@import '../../../../style/scss/vars/border';
+@import '../../../../style/scss/vars/mixins';
+
+
+:host.fusion-style-v1 {
+
+    @include icon-style('edit', $light-800, (width: 12px, height: 14px), false, true) {
+        height: 14px;
+        visibility: hidden;
+        @extend %absoluteVerticalAlign;
+        right: 8px;
+        cursor: pointer;
+    }
+    @include icon-style('edit', $primary-500, (width: 12px, height: 14px), false, true, 0, true);
+
+    @include icon-style('check-v-2', $light-800, (width: 12px, height: 10px), false, true) {
+        @extend %absoluteVerticalAlign;
+        right: 10px;
+        cursor: pointer;
+    }
+    @include icon-style('check-v-2', $primary-500, (width: 12px, height: 10px), false, true, 0, true);
+
+  & .inline-input-wrapper {
+      .truncate{
+          @extend %truncate;
+          &.hidden {
+              display: none;
+          }
+      }
+      .is-readonly{
+          cursor: default;
+      }
+
+      .is-currency{
+        &::first-letter {
+            padding-right: 0.3em;
+        }
+     }
+
+      & > div {
+      vertical-align: middle;
+      padding-right: 15px;
+
+      &.is-edit-mode {
+        padding-right: 0;
+
+        ::ng-deep input.fu-input {
+          padding-right: 14px;
+
+          &[type="number"] {
+            text-align: right;
+          }
+        }
+      }
+
+      &.is-loading {
+        ::ng-deep .fu-input-units {
+          border-color: $greyBorder;
+        }
+      }
+
+      .default {
+        color: $light-800;
+      }
+    }
+
+    .viewOnlyText {
+      @extend %font11;
+    }
+  }
+
+  &:hover {
+    fusion-icon.edit {
+      visibility: visible;
+    }
+  }
+
+  fusion-loader {
+    position: absolute;
+    right: 15px;
+    top: 24px
+  }
+}
+
+:host-context(is-creative-table-cell).fusion-style-v1 {
+  & .inline-input-wrapper {
+    & > div {
+      &.is-edit-mode {
+        ::ng-deep input.fu-input {
+          padding-right: 24px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+/* Colors V2 */
+$fu-dark-100: var(--fu-dark-100, #ced0e0);
+$fu-dark-200: var(--fu-dark-200, #4c548e);
+$fu-dark-300: var(--fu-dark-300, #313d91);
+$fu-dark-400: var(--fu-dark-400, #212791);
+$fu-dark-500: var(--fu-dark-500, #0d148c);
+$fu-dark-600: var(--fu-dark-600, #021074);
+$fu-dark-700: var(--fu-dark-700, #1d1c64);
+$fu-dark: $fu-dark-500;
+
+$fu-primary-100: var(--fu-primary-100, #e2eeff);
+$fu-primary-200: var(--fu-primary-200, #c9dfff);
+$fu-primary-300: var(--fu-primary-300, #96c0ff);
+$fu-primary-400: var(--fu-primary-400, #68a5ff);
+$fu-primary-500: var(--fu-primary-500, #3083ff);
+$fu-primary-600: var(--fu-primary-600, #005be2);
+$fu-primary: $fu-primary-500;
+
+$fu-secondary-100: var(--fu-secondary-100, #e1fbfc);
+$fu-secondary-200: var(--fu-secondary-200, #bff2f5);
+$fu-secondary-300: var(--fu-secondary-300, #91e2e7);
+$fu-secondary-500: var(--fu-secondary-500, #00ccd7);
+$fu-secondary: $fu-secondary-500;
+
+$fu-light-100: var(--fu-light-100, #f7f8f9);
+$fu-light-200: var(--fu-light-200, #f0f1f2);
+$fu-light-300: var(--fu-light-300, #e5e7e9);
+$fu-light-400: var(--fu-light-400, #dddfe1);
+$fu-light-500: var(--fu-light-500, #d2d5d8);
+$fu-light-600: var(--fu-light-600, #b7bbc0);
+$fu-light-700: var(--fu-light-700, #a9afb4);
+$fu-light-800: var(--fu-light-800, #8e959d);
+$fu-light-900: var(--fu-light-900, #7b838c);
+$fu-light: $fu-light-500;
+
+$fu-positive-100: var(--fu-positive-100, #daf5ec);
+$fu-positive-200: var(--fu-positive-200, #b4e9d2);
+$fu-positive-300: var(--fu-positive-300, #78ddbc);
+$fu-positive-400: var(--fu-positive-400, #5cd6ad);
+$fu-positive-500: var(--fu-positive-500, #22c891);
+$fu-positive-600: var(--fu-positive-600, #1eb281);
+$fu-positive-700: var(--fu-positive-700, #1b9c71);
+$fu-positive: $fu-positive-500;
+
+$fu-neutral-100: var(--fu-neutral-100, #fff8e2);
+$fu-neutral-200: var(--fu-neutral-200, #ffe0a3);
+$fu-neutral-500: var(--fu-neutral-500, #ffb424);
+$fu-neutral-700: var(--fu-neutral-700, #fea222);
+$fu-neutral-900: var(--fu-neutral-900, #d8840d);
+$fu-neutral: $fu-neutral-500;
+
+$fu-negative-100: var(--fu-negative-100, #ffefee);
+$fu-negative-200: var(--fu-negative-200, #ffcbce);
+$fu-negative-300: var(--fu-negative-300, #ff9b96);
+$fu-negative-400: var(--fu-negative-400, #ff827c);
+$fu-negative-500: var(--fu-negative-500, #ff6a63);
+$fu-negative-600: var(--fu-negative-600, #ec5d56);
+$fu-negative-700: var(--fu-negative-700, #da564f);
+$fu-negative: $fu-negative-500;
+
+$White: var(--fu-white, #ffffff);

@@ -1,0 +1,31 @@
+<ng-container *ngIf="!useNewLayout; else layoutV2">
+    <fusion-layout-v1
+        userName="fusion@ironsource.com"
+        headerPrimaryMenuIconName="user-circle"
+        [headerPrimaryMenuItems]="userProfileMenuItems"
+        [headerSecondaryMenuItems]="helpMenuItems"
+        (menuItemClick)="headerClick($event)"
+        (logoClicked)="onLogoClicked()"
+        [state]="commonState"
+        [menuItems]="menuItems"
+        [scrollTopOnRouteChange]="true"
+    >
+        <router-outlet></router-outlet>
+    </fusion-layout-v1>
+</ng-container>
+<ng-template #layoutV2>
+    <fusion-layout
+        [class.fu-light-theme]="isLightTheme"
+        [configuration]="layoutConfiguration$ | async"
+        (menuSidebarItemClicked)="onSidebarMenuItemClicked($event)"
+        (menuHeaderItemClicked)="onHeaderMenuItemClicked($event)"
+        (userLogout)="onLayoutUserLogout($event)"
+        (routeNavigationEnded)="onNavigationEnd()"
+        (logoClicked)="onLogoClicked()"
+    >
+        <router-outlet></router-outlet>
+    </fusion-layout>
+</ng-template>
+<ng-template #sidebarDynamicContent>
+    <!--<div style="color: #fff; border: solid 1px red; height: 100%; text-align: center">Dynamic content</div>-->
+</ng-template>

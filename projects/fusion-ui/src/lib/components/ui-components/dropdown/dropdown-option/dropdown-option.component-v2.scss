@@ -1,0 +1,115 @@
+/*!
+ * Created on 2020.3.29 By Andy Kononenko (andyk@ironsrc.com)
+ */
+
+@import '../../../../../style/scss/vars/vars';
+@import '../../../../../style/scss/vars/border';
+@import '../../../../../style/scss/vars/mixins';
+
+:host:not(.fusion-style-v1) {
+    @extend %border-box-normalize;
+    @extend %list-reset;
+    position: relative;
+    width: inherit;
+    background: $White;
+    border-radius: 4px;
+    padding: 6px 10px 2px;
+    color: $fu-dark-700;
+    display: inherit;
+    @extend %font-body;
+    cursor: pointer;
+
+    // for applications (image + text + icon)
+    .icon-container{
+        position: absolute;
+        right: 12px;
+        top: 9px;
+        @include icon-style('icon', $fu-light-500, 13px, false, true);
+    }
+    img {
+        @include size(20px);
+        max-width: 20px;
+        border-radius: 4px;
+        height: auto;
+        margin-right: 10px;
+        // text next from image
+        & + .truncate {
+            width: calc(100% - 50px);
+        }
+    }
+    .text {
+        line-height: 20px;
+        &.truncate{
+            @extend %truncate;
+        }
+    }
+
+    // for countries (option with flag)
+    fusion-flag {
+        margin-right: 6px;
+        vertical-align: super;
+        & + .truncate {
+            width: calc(100% - 24px);
+        }
+    }
+
+    &:hover {
+        background: $fu-light-100;
+        .optionRightClickTextHover {
+            display: none; // not used in V2
+        }
+        .icon-container{
+            @include icon-style('icon', $fu-light-700, 13px, false, true);
+        }
+    }
+
+    &.is-has-children {
+        position: relative;
+        color: $fu-light-900;
+        @include icon-style('icon-arrow', $fu-light-900, 8px, true, true, -90) {
+            position: absolute;
+            right: 7px;
+            top: 8px;
+        }
+
+        .is-subgroup-options {
+            display: none;
+        }
+
+        &.is-open {
+            @include icon-style('icon-arrow', $fu-light-900, 8px, false, true, 360);
+            .is-subgroup-options {
+                display: block;
+                margin: 0 -10px;
+                padding-top: 4px;
+                background-color: $White;
+                .option {
+                    ::ng-deep fusion-dropdown-option {
+                        padding-left: 16px;
+                    }
+                }
+            }
+
+            &:hover {
+                background: $fu-light-100;
+                padding-bottom: 0;
+                margin-bottom: 2px;
+            }
+        }
+    }
+}
+
+:host-context(li.option.is-selected):not(.fusion-style-v1) {
+    border: none;
+    background-color: $fu-primary-100;
+    .icon-container{
+        @include icon-style('icon', $fu-primary-500, 13px, false, true);
+    }
+}
+:host-context(li.option.is-focused):not(.fusion-style-v1) {
+    background: $light-100;
+}
+
+:host-context(.fu-large-item-height){
+    padding: 11px 10px 3px;
+}

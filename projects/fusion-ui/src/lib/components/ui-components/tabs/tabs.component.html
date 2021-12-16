@@ -1,0 +1,18 @@
+<div class="fu-tabs-holder">
+    <ng-container *ngFor="let tab of tabs; trackBy: trackByTextOrIconName">
+        <fusion-tab
+            [style.flex]="tabFlex"
+            [class.fu-tab-icon-up]="iconPositionUp"
+            [class.fu-tab-selected]="isSelected(tab)"
+            [configuration]="tab"
+            (click)="onTabClicked(tab)"
+            (showPopup)="onPopupShow($event)"
+        ></fusion-tab>
+    </ng-container>
+</div>
+<!--Popup-->
+<ng-container *ngIf="popupData$ | async as popupData" [ngTemplateOutlet]="popupData ? popupRef : null">
+    <ng-template #popupRef>
+        <fusion-popup [popupData]="popupData"></fusion-popup>
+    </ng-template>
+</ng-container>

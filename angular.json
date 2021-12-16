@@ -1,0 +1,291 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "fusion-ui": {
+            "root": "projects/fusion-ui",
+            "sourceRoot": "projects/fusion-ui/src",
+            "projectType": "library",
+            "prefix": "fusion",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
+                    "options": {
+                        "tsConfig": "projects/fusion-ui/tsconfig.lib.prod.json",
+                        "project": "projects/fusion-ui/ng-package.json"
+                    }
+                },
+                "build-mfe": {
+                    "builder": "ngx-build-plus:browser",
+                    "options": {
+                        "outputPath": "dist/fusion-mfe",
+                        "index": "projects/fusion-ui/src/index.html",
+                        "main": "projects/fusion-ui/src/public-api.ts",
+                        "tsConfig": "projects/fusion-ui/tsconfig.lib.prod.json",
+                        "inlineStyleLanguage": "scss",
+                        "extraWebpackConfig": "projects/fusion-ui/src/webpack.config.js",
+                        "commonChunk": false
+                    },
+                    "configurations": {
+                        "dev": {
+                            "sourceMap": {
+                                "scripts": true,
+                                "styles": true,
+                                "hidden": true,
+                                "vendor": true
+                            },
+                            "optimization": false,
+                            "buildOptimizer": false,
+                            "outputHashing": "none"
+                        }
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "projects/fusion-ui/src/test.ts",
+                        "tsConfig": "projects/fusion-ui/tsconfig.spec.json",
+                        "karmaConfig": "projects/fusion-ui/karma.conf.js"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-eslint/builder:lint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "projects/fusion-ui/**/*.ts",
+                            "projects/fusion-ui/**/*.html"
+                        ]
+                    }
+                }
+            },
+            "schematics": {
+                "@schematics/angular:component": {
+                    "style": "scss"
+                }
+            }
+        },
+        "fusion-docs": {
+            "root": "projects/fusion-docs/",
+            "sourceRoot": "projects/fusion-docs/src",
+            "projectType": "application",
+            "prefix": "fusion",
+            "schematics": {
+                "@schematics/angular:component": {
+                    "style": "scss"
+                }
+            },
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist/fusion-docs",
+                        "index": "projects/fusion-docs/src/index.html",
+                        "main": "projects/fusion-docs/src/main.ts",
+                        "polyfills": "projects/fusion-docs/src/polyfills.ts",
+                        "tsConfig": "projects/fusion-docs/tsconfig.app.json",
+                        "assets": [
+                            "projects/fusion-docs/src/assets"
+                        ],
+                        "styles": [
+                            "projects/fusion-docs/src/styles.scss",
+                            "projects/fusion-ui/src/style/scss/fonts.scss"
+                        ],
+                        "scripts": [],
+                        "vendorChunk": true,
+                        "extractLicenses": false,
+                        "buildOptimizer": false,
+                        "sourceMap": true,
+                        "optimization": false,
+                        "namedChunks": true
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "projects/fusion-docs/src/environments/environment.ts",
+                                    "with": "projects/fusion-docs/src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "namedChunks": false,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb"
+                                }
+                            ]
+                        },
+                        "hmr": {
+                            "budgets": [
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb"
+                                }
+                            ],
+                            "fileReplacements": [
+                                {
+                                    "replace": "projects/fusion-docs/src/environments/environment.ts",
+                                    "with": "projects/fusion-docs/src/environments/environment.hmr.ts"
+                                }
+                            ]
+                        }
+                    },
+                    "defaultConfiguration": ""
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "fusion-docs:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "fusion-docs:build:production"
+                        },
+                        "hmr": {
+                            "hmr": true,
+                            "browserTarget": "fusion-docs:build:hmr"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "fusion-docs:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "projects/fusion-docs/src/test.ts",
+                        "polyfills": "projects/fusion-docs/src/polyfills.ts",
+                        "tsConfig": "projects/fusion-docs/tsconfig.spec.json",
+                        "karmaConfig": "projects/fusion-docs/karma.conf.js",
+                        "styles": [
+                            "projects/fusion-docs/src/styles.scss",
+                            "projects/fusion-ui/src/style/scss/fonts.scss"
+                        ],
+                        "scripts": [],
+                        "assets": [
+                            "projects/fusion-docs/src/favicon.ico",
+                            "projects/fusion-docs/src/assets"
+                        ]
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-eslint/builder:lint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "projects/fusion-docs//**/*.ts",
+                            "projects/fusion-docs//**/*.html"
+                        ]
+                    }
+                }
+            }
+        },
+        "fusion-native": {
+            "projectType": "application",
+            "schematics": {},
+            "root": "projects/fusion-native",
+            "sourceRoot": "projects/fusion-native/src",
+            "prefix": "fusion",
+            "architect": {
+                "build": {
+                    "builder": "ngx-build-plus:browser",
+                    "options": {
+                        "outputPath": "dist/fusion-ui/native",
+                        "index": "projects/fusion-native/src/index.html",
+                        "main": "projects/fusion-native/src/main.ts",
+                        "polyfills": "projects/fusion-native/src/polyfills.ts",
+                        "tsConfig": "projects/fusion-native/tsconfig.app.json",
+                        "assets": [],
+                        "styles": [
+                            "projects/fusion-native/src/styles.css"
+                        ],
+                        "scripts": [
+                            {
+                                "bundleName": "polyfill-webcomp-es5",
+                                "input": "node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"
+                            },
+                            {
+                                "bundleName": "polyfill-webcomp-es2015",
+                                "input": "node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce-pf.js"
+                            }
+                        ],
+                        "outputHashing": "none",
+                        "aot": true,
+                        "extractLicenses": false,
+                        "vendorChunk": false,
+                        "singleBundle": true
+                    },
+                    "configurations": {
+                        "production": {
+                            "sourceMap": false,
+                            "namedChunks": false,
+                            "optimization": true,
+                            "buildOptimizer": true
+                        },
+                        "dev": {
+                            "sourceMap": {
+                                "scripts": true,
+                                "styles": true,
+                                "hidden": true,
+                                "vendor": true
+                            },
+                            "namedChunks": true,
+                            "optimization": false,
+                            "buildOptimizer": false
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "fusion-native:build"
+                    }
+                },
+                "test": {
+                    "builder": "ngx-build-plus:karma",
+                    "options": {
+                        "main": "projects/fusion-native/src/test.ts",
+                        "polyfills": "projects/fusion-native/src/polyfills.ts",
+                        "tsConfig": "projects/fusion-native/tsconfig.spec.json",
+                        "karmaConfig": "projects/fusion-native/karma.conf.js",
+                        "assets": [
+                            "projects/fusion-native/src/favicon.ico",
+                            "projects/fusion-native/src/assets"
+                        ],
+                        "styles": [
+                            "projects/fusion-native/src/styles.css"
+                        ],
+                        "scripts": []
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-eslint/builder:lint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "projects/fusion-native/**/*.ts",
+                            "projects/fusion-native/**/*.html"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "defaultProject": "fusion-ui",
+    "cli": {
+        "analytics": false,
+        "defaultCollection": "@angular-eslint/schematics"
+    }
+}

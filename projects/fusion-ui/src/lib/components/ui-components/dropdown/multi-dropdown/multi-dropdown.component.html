@@ -1,0 +1,117 @@
+<div
+    class="is-dropdown is-multiselect"
+    [id]="id"
+    [style.width]="placeholderWidth"
+    [clickOutsideActivate]="isOpen$ | async"
+    (fusionClickOutside)="onOutsideClick()"
+    [ngClass]="getHolderCSSClasses()"
+    *ngIf="selectedVersion$ | async as currentStyleVersion"
+>
+    <fusion-dropdown-select
+        [class.is-icon-right-position]="this.isIconRightPosition"
+        (searchValueChanged)="searchValue.setValue($event)"
+        (click)="openDropdown($event)"
+        [configurations]="dropdownSelectConfigurations$ | async"
+        #selectComponent
+    >
+    </fusion-dropdown-select>
+    <div
+        class="options-dropdown"
+        [class.options-locate-left]="isLocatedLeft"
+        [class.options-locate-right]="isLocatedRight"
+        [ngClass]="{
+            'dd-disabled': isDisabled,
+            'dd-confirm': search || autoComplete,
+            'dd-scroll': filteredOptions?.length >= optionsWithoutScroll
+        }"
+    >
+        <!--search input-->
+        <fusion-dropdown-search
+            *ngIf="(search || autoComplete) && searchValue && currentStyleVersion === styleVersion.V1"
+            [formControl]="searchValue"
+            [placeholder]="searchPlaceholder"
+            #searchComponent
+        ></fusion-dropdown-search>
+        <!--dropdown options holder-->
+        <div class="options-holder" (scroll)="onScroll($event)" #optionsHolder>
+            <ul class="options multi">
+                <!--select all option checkbox-->
+                <li *ngIf="selectAllLabel && !loading && (hasSearchValue$ | async) === false && filteredOptions?.length !== 0">
+                    <label class="is-option-label" [for]="id + '-select-all'">
+                        <fusion-checkbox
+                            [id]="id + '-select-all'"
+                            [checked]="isAllSelected"
+                            [isIndeterminate]="isIndeterminate"
+                            (changed)="selectAll($event)"
+                            #selectAllCheckbox
+                        ></fusion-checkbox>
+                        <span [innerHTML]="selectAllLabel"></span>
+                    </label>
+                </li>
+                <!--options-->
+                <li class="option" [ngClass]="getOptionClasses(option)" *ngFor="let option of displayedOptions$ | async; index as i">
+                    <!--option regular for check-->
+                    <label
+                        class="is-option-label truncate"
+                        [id]="option.id"
+                        [for]="id + '-' + option.id"
+                        *ngIf="!option.isGroup; else groupOption"
+                        [ngClass]="{'has-icon': option.icon}"
+                        [fusionTooltip]="dropdownService.optionToString(option, mappingOptions, {dropdownType: 'multi'})"
+                    >
+                        <fusion-checkbox
+                            [id]="id + '-' + option.id"
+                            [checked]="isSelected(option)"
+                            [value]="option.id"
+                            (changed)="changeSelected(option)"
+                        ></fusion-checkbox>
+                        <ng-container [ngTemplateOutlet]="templateRef || basicTemplate" [ngTemplateOutletContext]="{option: option}">
+                        </ng-container>
+                    </label>
+                    <!--option group-->
+                    <ng-template #groupOption>
+                        <div class="is-dd-group">
+                            {{ dropdownService.optionToString(option, {dropdownType: 'multi'}) }}
+                        </div>
+                    </ng-template>
+                </li>
+                <!--loader holder-->
+                <li [fusionDropdownLoader]="(autoComplete || search) && loading"></li>
+                <!--no-result holder-->
+                <li class="no-results" *ngIf="!filteredOptions?.length && !loading && searchValue?.value">No results</li>
+            </ul>
+        </div>
+        <!--action "confirm" buttons holder-->
+        <div class="dd-actions" *ngIf="confirm">
+            <button
+                type="button"
+                fusion-button
+                class="secondary small"
+                [ngClass]="{transparent: currentStyleVersion === styleVersion.V2}"
+                (click)="closeDropdown()"
+                [disabled]="loading"
+            >
+                Cancel
+            </button>
+            <button
+                type="button"
+                fusion-button
+                class="primary small"
+                [ngClass]="{transparent: currentStyleVersion === styleVersion.V2}"
+                (click)="applySelect(true)"
+                [disabled]="loading"
+            >
+                Apply
+            </button>
+        </div>
+    </div>
+</div>
+<!--errors holder-->
+<div class="error-msg" *ngIf="error">{{ error }}</div>
+
+<ng-template #basicTemplate let-option="option">
+    <fusion-icon *ngIf="option.icon" [name]="option.icon" class="icon"></fusion-icon>
+    <fusion-flag *ngIf="option.flag" [name]="option.flag"></fusion-flag>
+    <img [src]="option.image" *ngIf="option.image" alt="" />
+    <span [innerHTML]="dropdownService.optionToString(option, mappingOptions, {dropdownType: 'multi'})"></span>
+</ng-template>

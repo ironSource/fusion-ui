@@ -1,0 +1,1029 @@
+:host {
+    .fusion-flag {
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        overflow: hidden;
+        position: relative;
+        vertical-align: middle;
+        box-sizing: content-box;
+        background: url(https://fusion.ironsrc.net/assets/images/flags-sprites-with-unknown.png) no-repeat;
+    }
+
+    .fusion-flag-ad {
+        background-position: 0 0
+    }
+
+    .fusion-flag-ae {
+        background-position: -16px 0
+    }
+
+    .fusion-flag-af {
+        background-position: -32px 0
+    }
+
+    .fusion-flag-ag {
+        background-position: -48px 0
+    }
+
+    .fusion-flag-ai {
+        background-position: -64px 0
+    }
+
+    .fusion-flag-al {
+        background-position: -80px 0
+    }
+
+    .fusion-flag-am {
+        background-position: -96px 0
+    }
+
+    .fusion-flag-an {
+        background-position: -112px 0
+    }
+
+    .fusion-flag-ao {
+        background-position: -128px 0
+    }
+
+    .fusion-flag-aq {
+        background-position: -144px 0
+    }
+
+    .fusion-flag-ar {
+        background-position: -160px 0
+    }
+
+    .fusion-flag-as {
+        background-position: -176px 0
+    }
+
+    .fusion-flag-at {
+        background-position: -192px 0
+    }
+
+    .fusion-flag-au {
+        background-position: -208px 0
+    }
+
+    .fusion-flag-aw {
+        background-position: -224px 0
+    }
+
+    .fusion-flag-ax {
+        background-position: -240px 0
+    }
+
+    .fusion-flag-az {
+        background-position: 0 -16px
+    }
+
+    .fusion-flag-ba {
+        background-position: -16px -16px
+    }
+
+    .fusion-flag-bb {
+        background-position: -32px -16px
+    }
+
+    .fusion-flag-bd {
+        background-position: -48px -16px
+    }
+
+    .fusion-flag-be {
+        background-position: -64px -16px
+    }
+
+    .fusion-flag-bf {
+        background-position: -80px -16px
+    }
+
+    .fusion-flag-bg {
+        background-position: -96px -16px
+    }
+
+    .fusion-flag-bh {
+        background-position: -112px -16px
+    }
+
+    .fusion-flag-bi {
+        background-position: -128px -16px
+    }
+
+    .fusion-flag-bj {
+        background-position: -144px -16px
+    }
+
+    .fusion-flag-bl {
+        background-position: -160px -16px
+    }
+
+    .fusion-flag-bm {
+        background-position: -176px -16px
+    }
+
+    .fusion-flag-bn {
+        background-position: -192px -16px
+    }
+
+    .fusion-flag-bo {
+        background-position: -208px -16px
+    }
+
+    .fusion-flag-bv {
+        @extend .fusion-flag-no;
+    }
+
+    .fusion-flag-bq {
+        @extend .fusion-flag-nl;
+    }
+    .fusion-flag-br {
+        background-position: -224px -16px
+    }
+
+    .fusion-flag-bs {
+        background-position: -240px -16px
+    }
+
+    .fusion-flag-bt {
+        background-position: 0 -32px
+    }
+
+    .fusion-flag-bw {
+        background-position: -16px -32px
+    }
+
+    .fusion-flag-by {
+        background-position: -32px -32px
+    }
+
+    .fusion-flag-bz {
+        background-position: -48px -32px
+    }
+
+    .fusion-flag-ca {
+        background-position: -64px -32px
+    }
+
+    .fusion-flag-cc {
+        background-position: -80px -32px
+    }
+
+    .fusion-flag-cd {
+        background-position: -96px -32px
+    }
+
+    .fusion-flag-cf {
+        background-position: -112px -32px
+    }
+
+    .fusion-flag-cg {
+        background-position: -128px -32px
+    }
+
+    .fusion-flag-ch {
+        background-position: -144px -32px
+    }
+
+    .fusion-flag-ci {
+        background-position: -160px -32px
+    }
+
+    .fusion-flag-ck {
+        background-position: -176px -32px
+    }
+
+    .fusion-flag-cl {
+        background-position: -192px -32px
+    }
+
+    .fusion-flag-cm {
+        background-position: -208px -32px
+    }
+
+    .fusion-flag-cn {
+        background-position: -224px -32px
+    }
+
+    .fusion-flag-co {
+        background-position: -240px -32px
+    }
+
+    .fusion-flag-cr {
+        background-position: 0 -48px
+    }
+
+    .fusion-flag-cu {
+        background-position: -16px -48px
+    }
+
+    .fusion-flag-cv {
+        background-position: -32px -48px
+    }
+
+    .fusion-flag-cw {
+        background-position: -48px -48px
+    }
+
+    .fusion-flag-cx {
+        background-position: -64px -48px
+    }
+
+    .fusion-flag-cy {
+        background-position: -80px -48px
+    }
+
+    .fusion-flag-cz {
+        background-position: -96px -48px
+    }
+
+    .fusion-flag-de {
+        background-position: -112px -48px
+    }
+
+    .fusion-flag-dj {
+        background-position: -128px -48px
+    }
+
+    .fusion-flag-dk {
+        background-position: -144px -48px
+    }
+
+    .fusion-flag-dm {
+        background-position: -160px -48px
+    }
+
+    .fusion-flag-do {
+        background-position: -176px -48px
+    }
+
+    .fusion-flag-dz {
+        background-position: -192px -48px
+    }
+
+    .fusion-flag-ec {
+        background-position: -208px -48px
+    }
+
+    .fusion-flag-ee {
+        background-position: -224px -48px
+    }
+
+    .fusion-flag-eg {
+        background-position: -240px -48px
+    }
+
+    .fusion-flag-eh {
+        background-position: 0 -64px
+    }
+
+    .fusion-flag-er {
+        background-position: -16px -64px
+    }
+
+    .fusion-flag-es {
+        background-position: -32px -64px
+    }
+
+    .fusion-flag-et {
+        background-position: -48px -64px
+    }
+
+    .fusion-flag-eu {
+        background-position: -64px -64px
+    }
+
+    .fusion-flag-fi {
+        background-position: -80px -64px
+    }
+
+    .fusion-flag-fj {
+        background-position: -96px -64px
+    }
+
+    .fusion-flag-fk {
+        background-position: -112px -64px
+    }
+
+    .fusion-flag-fm {
+        background-position: -128px -64px
+    }
+
+    .fusion-flag-fo {
+        background-position: -144px -64px
+    }
+
+    .fusion-flag-fr {
+        background-position: -160px -64px
+    }
+
+    .fusion-flag-ga {
+        background-position: -176px -64px
+    }
+
+    .fusion-flag-gb {
+        background-position: -192px -64px
+    }
+
+    .fusion-flag-gd {
+        background-position: -208px -64px
+    }
+
+    .fusion-flag-ge {
+        background-position: -224px -64px
+    }
+
+    .fusion-flag-gg {
+        background-position: -240px -64px
+    }
+
+    .fusion-flag-gh {
+        background-position: 0 -80px
+    }
+
+    .fusion-flag-gi {
+        background-position: -16px -80px
+    }
+
+    .fusion-flag-gl {
+        background-position: -32px -80px
+    }
+
+    .fusion-flag-gm {
+        background-position: -48px -80px
+    }
+
+    .fusion-flag-gn {
+        background-position: -64px -80px
+    }
+
+    .fusion-flag-gp {
+        @extend .fusion-flag-fr;
+    }
+
+    .fusion-flag-gq {
+        background-position: -80px -80px
+    }
+
+    .fusion-flag-gr {
+        background-position: -96px -80px
+    }
+
+    .fusion-flag-gs {
+        background-position: -112px -80px
+    }
+
+    .fusion-flag-gt {
+        background-position: -128px -80px
+    }
+
+    .fusion-flag-gu {
+        background-position: -144px -80px
+    }
+
+    .fusion-flag-gw {
+        background-position: -160px -80px
+    }
+
+    .fusion-flag-gy {
+        background-position: -176px -80px
+    }
+
+    .fusion-flag-hk {
+        background-position: -192px -80px
+    }
+
+    .fusion-flag-hm {
+        @extend .fusion-flag-au;
+    }
+
+    .fusion-flag-hn {
+        background-position: -208px -80px
+    }
+
+    .fusion-flag-hr {
+        background-position: -224px -80px
+    }
+
+    .fusion-flag-ht {
+        background-position: -240px -80px
+    }
+
+    .fusion-flag-hu {
+        background-position: 0 -96px
+    }
+
+    .fusion-flag-ic {
+        background-position: -16px -96px
+    }
+
+    .fusion-flag-id {
+        background-position: -32px -96px
+    }
+
+    .fusion-flag-ie {
+        background-position: -48px -96px
+    }
+
+    .fusion-flag-il {
+        background-position: -64px -96px
+    }
+
+    .fusion-flag-im {
+        background-position: -80px -96px
+    }
+
+    .fusion-flag-in {
+        background-position: -96px -96px
+    }
+
+    .fusion-flag-iq {
+        background-position: -112px -96px
+    }
+
+    .fusion-flag-ir {
+        background-position: -128px -96px
+    }
+
+    .fusion-flag-is {
+        background-position: -144px -96px
+    }
+
+    .fusion-flag-it {
+        background-position: -160px -96px
+    }
+
+    .fusion-flag-je {
+        background-position: -176px -96px
+    }
+
+    .fusion-flag-jm {
+        background-position: -192px -96px
+    }
+
+    .fusion-flag-jo {
+        background-position: -208px -96px
+    }
+
+    .fusion-flag-jp {
+        background-position: -224px -96px
+    }
+
+    .fusion-flag-ke {
+        background-position: -240px -96px
+    }
+
+    .fusion-flag-kg {
+        background-position: 0 -112px
+    }
+
+    .fusion-flag-kh {
+        background-position: -16px -112px
+    }
+
+    .fusion-flag-ki {
+        background-position: -32px -112px
+    }
+
+    .fusion-flag-km {
+        background-position: -48px -112px
+    }
+
+    .fusion-flag-kn {
+        background-position: -64px -112px
+    }
+
+    .fusion-flag-kp {
+        background-position: -80px -112px
+    }
+
+    .fusion-flag-kr {
+        background-position: -96px -112px
+    }
+
+    .fusion-flag-kw {
+        background-position: -112px -112px
+    }
+
+    .fusion-flag-ky {
+        background-position: -128px -112px
+    }
+
+    .fusion-flag-kz {
+        background-position: -144px -112px
+    }
+
+    .fusion-flag-la {
+        background-position: -160px -112px
+    }
+
+    .fusion-flag-lb {
+        background-position: -176px -112px
+    }
+
+    .fusion-flag-lc {
+        background-position: -192px -112px
+    }
+
+    .fusion-flag-li {
+        background-position: -208px -112px
+    }
+
+    .fusion-flag-lk {
+        background-position: -224px -112px
+    }
+
+    .fusion-flag-lr {
+        background-position: -240px -112px
+    }
+
+    .fusion-flag-ls {
+        background-position: 0 -128px
+    }
+
+    .fusion-flag-lt {
+        background-position: -16px -128px
+    }
+
+    .fusion-flag-lu {
+        background-position: -32px -128px
+    }
+
+    .fusion-flag-lv {
+        background-position: -48px -128px
+    }
+
+    .fusion-flag-ly {
+        background-position: -64px -128px
+    }
+
+    .fusion-flag-ma {
+        background-position: -80px -128px
+    }
+
+    .fusion-flag-mc {
+        background-position: -96px -128px
+    }
+
+    .fusion-flag-md {
+        background-position: -112px -128px
+    }
+
+    .fusion-flag-me {
+        background-position: -128px -128px
+    }
+
+    .fusion-flag-mf {
+        background-position: -144px -128px
+    }
+
+    .fusion-flag-mg {
+        background-position: -160px -128px
+    }
+
+    .fusion-flag-mh {
+        background-position: -176px -128px
+    }
+
+    .fusion-flag-mk {
+        background-position: -192px -128px
+    }
+
+    .fusion-flag-ml {
+        background-position: -208px -128px
+    }
+
+    .fusion-flag-mm {
+        background-position: -224px -128px
+    }
+
+    .fusion-flag-mn {
+        background-position: -240px -128px
+    }
+
+    .fusion-flag-mo {
+        background-position: 0 -144px
+    }
+
+    .fusion-flag-mp {
+        background-position: -16px -144px
+    }
+
+    .fusion-flag-mq {
+        background-position: -32px -144px
+    }
+
+    .fusion-flag-mr {
+        background-position: -48px -144px
+    }
+
+    .fusion-flag-ms {
+        background-position: -64px -144px
+    }
+
+    .fusion-flag-mt {
+        background-position: -80px -144px
+    }
+
+    .fusion-flag-mu {
+        background-position: -96px -144px
+    }
+
+    .fusion-flag-mv {
+        background-position: -112px -144px
+    }
+
+    .fusion-flag-mw {
+        background-position: -128px -144px
+    }
+
+    .fusion-flag-mx {
+        background-position: -144px -144px
+    }
+
+    .fusion-flag-my {
+        background-position: -160px -144px
+    }
+
+    .fusion-flag-mz {
+        background-position: -176px -144px
+    }
+
+    .fusion-flag-na {
+        background-position: -192px -144px
+    }
+
+    .fusion-flag-nc {
+        background-position: -208px -144px
+    }
+
+    .fusion-flag-ne {
+        background-position: -224px -144px
+    }
+
+    .fusion-flag-nf {
+        background-position: -240px -144px
+    }
+
+    .fusion-flag-ng {
+        background-position: 0 -160px
+    }
+
+    .fusion-flag-ni {
+        background-position: -16px -160px
+    }
+
+    .fusion-flag-nl {
+        background-position: -32px -160px
+    }
+
+    .fusion-flag-no {
+        background-position: -48px -160px
+    }
+
+    .fusion-flag-np {
+        background-position: -64px -160px
+    }
+
+    .fusion-flag-nr {
+        background-position: -80px -160px
+    }
+
+    .fusion-flag-nu {
+        background-position: -96px -160px
+    }
+
+    .fusion-flag-nz {
+        background-position: -112px -160px
+    }
+
+    .fusion-flag-om {
+        background-position: -128px -160px
+    }
+
+    .fusion-flag-pa {
+        background-position: -144px -160px
+    }
+
+    .fusion-flag-pe {
+        background-position: -160px -160px
+    }
+
+    .fusion-flag-pf {
+        background-position: -176px -160px
+    }
+
+    .fusion-flag-pg {
+        background-position: -192px -160px
+    }
+
+    .fusion-flag-ph {
+        background-position: -208px -160px
+    }
+
+    .fusion-flag-pk {
+        background-position: -224px -160px
+    }
+
+    .fusion-flag-pl {
+        background-position: -240px -160px
+    }
+
+    .fusion-flag-pm {
+        @extend .fusion-flag-fr;
+    }
+
+    .fusion-flag-pn {
+        background-position: 0 -176px
+    }
+
+    .fusion-flag-pr {
+        background-position: -16px -176px
+    }
+
+    .fusion-flag-ps {
+        background-position: -32px -176px
+    }
+
+    .fusion-flag-pt {
+        background-position: -48px -176px
+    }
+
+    .fusion-flag-pw {
+        background-position: -64px -176px
+    }
+
+    .fusion-flag-py {
+        background-position: -80px -176px
+    }
+
+    .fusion-flag-qa {
+        background-position: -96px -176px
+    }
+
+    .fusion-flag-re {
+        @extend .fusion-flag-fr;
+    }
+
+    .fusion-flag-ro {
+        background-position: -112px -176px
+    }
+
+    .fusion-flag-rs {
+        background-position: -128px -176px
+    }
+
+    .fusion-flag-ru {
+        background-position: -144px -176px
+    }
+
+    .fusion-flag-rw {
+        background-position: -160px -176px
+    }
+
+    .fusion-flag-sa {
+        background-position: -176px -176px
+    }
+
+    .fusion-flag-sb {
+        background-position: -192px -176px
+    }
+
+    .fusion-flag-sc {
+        background-position: -208px -176px
+    }
+
+    .fusion-flag-sd {
+        background-position: -224px -176px
+    }
+
+    .fusion-flag-se {
+        background-position: -240px -176px
+    }
+
+    .fusion-flag-sj {
+        @extend .fusion-flag-no;
+    }
+
+    .fusion-flag-sg {
+        background-position: 0 -192px
+    }
+
+    .fusion-flag-sh {
+        background-position: -16px -192px
+    }
+
+    .fusion-flag-si {
+        background-position: -32px -192px
+    }
+
+    .fusion-flag-sk {
+        background-position: -48px -192px
+    }
+
+    .fusion-flag-sl {
+        background-position: -64px -192px
+    }
+
+    .fusion-flag-sm {
+        background-position: -80px -192px
+    }
+
+    .fusion-flag-sn {
+        background-position: -96px -192px
+    }
+
+    .fusion-flag-so {
+        background-position: -112px -192px
+    }
+
+    .fusion-flag-sr {
+        background-position: -128px -192px
+    }
+
+    .fusion-flag-ss {
+        background-position: -144px -192px
+    }
+
+    .fusion-flag-st {
+        background-position: -160px -192px
+    }
+
+    .fusion-flag-sv {
+        background-position: -176px -192px
+    }
+
+    .fusion-flag-sy {
+        background-position: -192px -192px
+    }
+
+    .fusion-flag-sz {
+        background-position: -208px -192px
+    }
+
+    .fusion-flag-tc {
+        background-position: -224px -192px
+    }
+
+    .fusion-flag-td {
+        background-position: -240px -192px
+    }
+
+    .fusion-flag-tf {
+        background-position: 0 -208px
+    }
+
+    .fusion-flag-tg {
+        background-position: -16px -208px
+    }
+
+    .fusion-flag-th {
+        background-position: -32px -208px
+    }
+
+    .fusion-flag-tj {
+        background-position: -48px -208px
+    }
+
+    .fusion-flag-tk {
+        background-position: -64px -208px
+    }
+
+    .fusion-flag-tl {
+        background-position: -80px -208px
+    }
+
+    .fusion-flag-tm {
+        background-position: -96px -208px
+    }
+
+    .fusion-flag-tn {
+        background-position: -112px -208px
+    }
+
+    .fusion-flag-to {
+        background-position: -128px -208px
+    }
+
+    .fusion-flag-tr {
+        background-position: -144px -208px
+    }
+
+    .fusion-flag-tt {
+        background-position: -160px -208px
+    }
+
+    .fusion-flag-tv {
+        background-position: -176px -208px
+    }
+
+    .fusion-flag-tw {
+        background-position: -192px -208px
+    }
+
+    .fusion-flag-tz {
+        background-position: -208px -208px
+    }
+
+    .fusion-flag-ua {
+        background-position: -224px -208px
+    }
+
+    .fusion-flag-ug {
+        background-position: -240px -208px
+    }
+
+    .fusion-flag-us {
+        background-position: 0 -224px
+    }
+
+    .fusion-flag-um {
+        @extend .fusion-flag-us;
+    }
+
+    .fusion-flag-uy {
+        background-position: -16px -224px
+    }
+
+    .fusion-flag-uz {
+        background-position: -32px -224px
+    }
+
+    .fusion-flag-va {
+        background-position: -48px -224px
+    }
+
+    .fusion-flag-vc {
+        background-position: -64px -224px
+    }
+
+    .fusion-flag-ve {
+        background-position: -80px -224px
+    }
+
+    .fusion-flag-vg {
+        background-position: -96px -224px
+    }
+
+    .fusion-flag-vi {
+        background-position: -112px -224px
+    }
+
+    .fusion-flag-vn {
+        background-position: -128px -224px
+    }
+
+    .fusion-flag-vu {
+        background-position: -144px -224px
+    }
+
+    .fusion-flag-wf {
+        background-position: -160px -224px
+    }
+
+    .fusion-flag-ws {
+        background-position: -176px -224px
+    }
+
+    .fusion-flag-ye {
+        background-position: -192px -224px
+    }
+
+    .fusion-flag-yt {
+        background-position: -208px -224px
+    }
+
+    .fusion-flag-za {
+        background-position: -224px -224px
+    }
+
+    .fusion-flag-zm {
+        background-position: -240px -224px
+    }
+
+    .fusion-flag-zw {
+        background-position: 0 -240px
+    }
+
+    .fusion-flag-xk {
+        background-position: -32px -240px;
+    }
+
+    .fusion-flag-sx {
+        background-position: -16px -240px;
+    }
+
+    .fusion-flag-bi {
+        background-position: -48px -240px;
+    }
+
+    .fusion-flag-io {
+        background-position: -64px -240px;
+    }
+    .fusion-flag-gf {
+        background-position: -80px -240px;
+    }
+    .fusion-flag-zz {
+        background-position: -96px -240px;
+    }
+}

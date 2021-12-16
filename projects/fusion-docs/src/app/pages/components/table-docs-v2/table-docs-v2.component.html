@@ -1,0 +1,3082 @@
+<div class="row">
+    <div class="col-9">
+        <!--UI-Component Examples-->
+        <div class="is-example-title">Type</div>
+        <fusion-example-block id="typeBasicDefault" title="Default rows height (with 'Totals' row)">
+            <!--code examples by framework-->
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<fusion-table id="basicTableExample"
+              [columns]="columnsBasic"
+              [rows]="rowsTotals$ | async"
+              [options]="optionsBasicTotals"
+              [loading]="loading$ | async"
+              (rowModelChange)="onBasicRowModelChange($event)"
+              (sortChanged)="onBasicSortChanged($event)">
+</fusion-table>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='// Columns configuration example:
+const columnsBasic = [
+    {key: "checkbox", type: TableColumnTypeEnum.Checkbox, width: "32px"},
+    {key: "name", title: "Name", sort: "asc"},
+    {key: "username", title: "Username", sort: ""},
+    {key: "bid", type: TableColumnTypeEnum.InputEdit, inputType: InlineInputType.Currency,
+            currencyPipeParameters: {digitsInfo: `1.0-3`},
+            customErrorMapping: {
+            required: {errorMessageKey: "required"},
+            min: {errorMessageKey: "min", textMapping: [{key: "minValue", value: "10"}]}
+        },
+        title: "Bid",
+        width: "85px",
+        tooltip: "Lorem ipsum dolor sit amet"
+    },
+    {key: "email", title: "Email", sort: ""},
+    {key: "website", title: "Website"}
+]
+
+// Data example
+
+// For table with total row - first item in rows array - total row.
+const rowsTotals = [
+    {
+        checkbox: null,
+        name: "total names",
+        username: "total users",
+        email: "total emails",
+        website: "total websites",
+        bid: null
+    },
+    {
+        checkbox: false,
+        name: "Leanne Graham",
+        username: "Bret",
+        email: "Sincere@april.biz",
+        website: "hildegard.org",
+        bid: new FormControl(23, [Validators.required, Validators.min(10)])
+    },
+    ...,
+    ...
+]
+
+const tableOptionsWithTotalsRow = {
+    sortingType: "local",
+    remove: {active: true, onRemove: new EventEmitter()},
+    noDataSubMessage: "Lorem ipsum dolor",
+    hasTotalsRow: true
+};'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import React from "react";
+import { FusionTable } from "@ironsrc/fusion-ui/native/react";
+
+const TABLE_COLUMNS = [
+  { key: "checkbox", type: 2 <!--(TableColumnTypeEnum.Checkbox)-->, width: "32px" },
+  { key: "name", title: "Name", sort: "" },
+  { key: "username", title: "Username", sort: "" },
+  { key: "email", title: "Email", sort: "" },
+  { key: "website", title: "Website" }
+];
+
+const TABLE_ROWS = [
+  {
+    checkbox: null,
+    name: "total names",
+    username: "total users",
+    email: "total emails",
+    website: "total websites",
+    bid: null
+  },
+  {
+    name: "Leanne Graham",
+    username: "Bret",
+    email: "Sincere@april.biz",
+    website: "hildegard.org",
+    checkbox: true
+  },
+  ...
+];
+
+export default class Foo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      table: {
+        columns: TABLE_COLUMNS,
+        rows: TABLE_ROWS,
+        options: {
+          sortingType: "local",
+          hasTotalsRow: true
+        }
+      }
+    };
+  }
+
+  componentDidMount() {
+    this.props.updateLayoutTitle({ title: "Example" });
+  }
+
+  onTableRowChanged(rowDataChanged) {
+    console.log("rowModelChange: ", rowDataChanged);
+    rowDataChanged.onRequestDone(true);
+  }
+
+  render() {
+    return (
+      <div className="example-holder">
+        <h2>Table - Example</h2>
+        <FusionTable
+          config={this.state.table}
+          rowModelChange={this.onTableRowChanged}
+        />
+      </div>
+    );
+  }
+}
+'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div style="margin: 20px; background-color: white; padding: 20px;">
+    <p>Table Component example</p>
+    <FusionTable :config="tableBasic" @rowModelChange="onTableRowChanged" />
+  </div>
+</template>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import { FusionTable } from "@ironsrc/fusion-ui/native/vue";
+
+export const FooComponent = {
+  name: "FooComponent",
+  mounted() {
+    this.$emit("updateLayoutTitle", { title: "Component Example" });
+  },
+  components: {
+    FusionTable
+  },
+  data() {
+    return {
+      tableBasic: {
+        columns: TABLE_COLUMNS,
+        rows: TABLE_ROWS,
+        options: {
+          sortingType: "local",
+          hasTotalsRow: true
+        }
+      }
+    };
+  },
+  methods: {
+    onTableRowChanged: function(rowDataChanged) {
+      console.log(rowDataChanged);
+      rowDataChanged.onRequestDone(true);
+    }
+  }
+};
+
+const TABLE_COLUMNS = [
+  { key: "checkbox", type: 2 <!--(TableColumnTypeEnum.Checkbox)-->, width: "32px" },
+  { key: "name", title: "Name", sort: "" },
+  { key: "username", title: "Username", sort: "" },
+  { key: "email", title: "Email", sort: "" },
+  { key: "website", title: "Website" }
+];
+
+const TABLE_ROWS = [
+  {
+    checkbox: null,
+    name: "total names",
+    username: "total users",
+    email: "total emails",
+    website: "total websites",
+    bid: null
+  },
+  {
+    name: "Leanne Graham",
+    username: "Bret",
+    email: "Sincere@april.biz",
+    website: "hildegard.org",
+    checkbox: true
+  },
+  ...
+];
+export default FooComponent;'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const onLoad = () => {
+    // define data
+    const TABLE_COLUMNS = [
+      { key: "checkbox", type: 2 <!--(TableColumnTypeEnum.Checkbox)-->, width: "32px" },
+      { key: "name", title: "Name", sort: "" },
+      { key: "username", title: "Username", sort: "" },
+      { key: "email", title: "Email", sort: "" },
+      { key: "website", title: "Website" }
+    ];
+
+    const TABLE_ROWS = [
+      {
+        checkbox: null,
+        name: "total names",
+        username: "total users",
+        email: "total emails",
+        website: "total websites",
+        bid: null
+      },
+      {
+        name: "Leanne Graham",
+        username: "Bret",
+        email: "Sincere@april.biz",
+        website: "hildegard.org",
+        checkbox: true
+      },
+      ...
+    ];
+
+    const stateConfig = {
+        columns: tableColumns,
+        rows: tableRows,
+        options: {
+            sortingType: "local",
+            hasTotalsRow: true
+        }
+    };
+
+    // get application holder for add dropdown
+    const componentHolder = document.getElementById("component-holder");
+
+    const table = document.createElement("native-fusion-table");
+    table.config = stateConfig;
+
+    table.addEventListener("rowModelChange", e => {
+        console.log(e.detail);
+        // update state
+        //....
+        //....
+        // update state done Ok
+        e.detail.onRequestDone(true);
+    });
+    table.addEventListener("sortChanged", e => console.log(e));
+
+    // append to DOM
+    componentHolder.appendChild(table);
+};
+
+document.addEventListener("DOMContentLoaded", onLoad, false);'
+                ></fusion-code-block>
+            </ng-template>
+            <!--code examples by framework-->
+
+            <div class="row">
+                <div class="col-12" style="min-height: 60px;">
+                    <fusion-table
+                        id="basicTableExample"
+                        [columns]="columnsWithoutCheckboxAndToggle"
+                        [rows]="rowsTotals"
+                        [options]="tableOptionsWithTotalsRow"
+                        [loading]="loading$ | async"
+                        (rowModelChange)="onBasicRowModelChange($event)"
+                        (sortChanged)="onBasicSortChanged($event)"
+                        (selectionChanged)="onSelectedChanged($event)"
+                        (rowClicked)="onRowClicked($event)"
+                    ></fusion-table>
+                </div>
+            </div>
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="typeBigRowSze" title="Big rows height">
+            <!--code examples by framework-->
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<fusion-table id="basicTableExample"
+              [columns]="columnsBasic"
+              [rows]="rowsBig$ | async"
+              [options]="tableBigRowsOptions"
+              [loading]="loading$ | async"
+              (rowModelChange)="onBasicRowModelChange($event)"
+              (sortChanged)="onBasicSortChanged($event)">
+</fusion-table>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='// Columns configuration example:
+const columnsBasic = [
+    {key: "checkbox", type: TableColumnTypeEnum.Checkbox, width: "32px"},
+    {key: "name", title: "Name", sort: "asc"},
+    {key: "username", title: "Username", sort: ""},
+    {key: "bid", type: TableColumnTypeEnum.InputEdit, inputType: InlineInputType.Currency, customErrorMapping: {
+            required: {errorMessageKey: "required"},
+            min: {errorMessageKey: "min", textMapping: [{key: "minValue", value: "10"}]}
+        },
+        title: "Bid",
+        width: "85px",
+        tooltip: "Lorem ipsum dolor sit amet"
+    },
+    {key: "email", title: "Email", sort: ""},
+    {key: "website", title: "Website"}
+]
+
+// Data example
+const rowsBig = [
+    {
+        checkbox: false,
+        name: "Leanne Graham",
+        username: "Bret",
+        email: "Sincere@april.biz",
+        website: "hildegard.org",
+        bid: new FormControl(23, [Validators.required, Validators.min(10)])
+    },
+    ...,
+    ...
+]
+
+const tableBigRowsOptions = {
+    sortingType: "local",
+    remove: {active: true, onRemove: new EventEmitter()},
+    noDataSubMessage: "Lorem ipsum dolor",
+    rowHeight: TableRowHeight.Big
+};'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import React from "react";
+import { FusionTable } from "@ironsrc/fusion-ui/native/react";
+
+const TABLE_COLUMNS = [
+  { key: "checkbox", type: 2 <!--(TableColumnTypeEnum.Checkbox)-->, width: "32px" },
+  { key: "name", title: "Name", sort: "" },
+  { key: "username", title: "Username", sort: "" },
+  { key: "email", title: "Email", sort: "" },
+  { key: "website", title: "Website" }
+];
+
+const TABLE_ROWS = [
+  {
+    name: "Leanne Graham",
+    username: "Bret",
+    email: "Sincere@april.biz",
+    website: "hildegard.org",
+    checkbox: true
+  },
+  ...
+];
+
+export default class Foo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      table: {
+        columns: TABLE_COLUMNS,
+        rows: TABLE_ROWS,
+        options: {
+          sortingType: "local",
+          rowHeight: "big"
+        }
+      }
+    };
+  }
+
+  componentDidMount() {
+    this.props.updateLayoutTitle({ title: "Example" });
+  }
+
+  onTableRowChanged(rowDataChanged) {
+    console.log("rowModelChange: ", rowDataChanged);
+    rowDataChanged.onRequestDone(true);
+  }
+
+  render() {
+    return (
+      <div className="example-holder">
+        <h2>Table - Example</h2>
+        <FusionTable
+          config={this.state.table}
+          rowModelChange={this.onTableRowChanged}
+        />
+      </div>
+    );
+  }
+}
+'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div style="margin: 20px; background-color: white; padding: 20px;">
+    <p>Table Component example</p>
+    <FusionTable :config="tableBasic" @rowModelChange="onTableRowChanged" />
+  </div>
+</template>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import { FusionTable } from "@ironsrc/fusion-ui/native/vue";
+
+export const FooComponent = {
+  name: "FooComponent",
+  mounted() {
+    this.$emit("updateLayoutTitle", { title: "Component Example" });
+  },
+  components: {
+    FusionTable
+  },
+  data() {
+    return {
+      tableBasic: {
+        columns: TABLE_COLUMNS,
+        rows: TABLE_ROWS,
+        options: {
+          sortingType: "local",
+          rowHeight: "big"
+        }
+      }
+    };
+  },
+  methods: {
+    onTableRowChanged: function(rowDataChanged) {
+      console.log(rowDataChanged);
+      rowDataChanged.onRequestDone(true);
+    }
+  }
+};
+
+const TABLE_COLUMNS = [
+  { key: "checkbox", type: 2 <!--(TableColumnTypeEnum.Checkbox)-->, width: "32px" },
+  { key: "name", title: "Name", sort: "" },
+  { key: "username", title: "Username", sort: "" },
+  { key: "email", title: "Email", sort: "" },
+  { key: "website", title: "Website" }
+];
+
+const TABLE_ROWS = [
+  {
+    name: "Leanne Graham",
+    username: "Bret",
+    email: "Sincere@april.biz",
+    website: "hildegard.org",
+    checkbox: true
+  },
+  ...
+];
+export default FooComponent;'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const onLoad = () => {
+    // define data
+    const TABLE_COLUMNS = [
+      { key: "checkbox", type: 2 <!--(TableColumnTypeEnum.Checkbox)-->, width: "32px" },
+      { key: "name", title: "Name", sort: "" },
+      { key: "username", title: "Username", sort: "" },
+      { key: "email", title: "Email", sort: "" },
+      { key: "website", title: "Website" }
+    ];
+
+    const TABLE_ROWS = [
+      {
+        name: "Leanne Graham",
+        username: "Bret",
+        email: "Sincere@april.biz",
+        website: "hildegard.org",
+        checkbox: true
+      },
+      ...
+    ];
+
+    const stateConfig = {
+        columns: tableColumns,
+        rows: tableRows,
+        options: {
+            sortingType: "local",
+            rowHeight: "big"
+        }
+    };
+
+    // get application holder for add dropdown
+    const componentHolder = document.getElementById("component-holder");
+
+    const table = document.createElement("native-fusion-table");
+    table.config = stateConfig;
+
+    table.addEventListener("rowModelChange", e => {
+        console.log(e.detail);
+        // update state
+        //....
+        //....
+        // update state done Ok
+        e.detail.onRequestDone(true);
+    });
+    table.addEventListener("sortChanged", e => console.log(e));
+
+    // append to DOM
+    componentHolder.appendChild(table);
+};
+
+document.addEventListener("DOMContentLoaded", onLoad, false);'
+                ></fusion-code-block>
+            </ng-template>
+            <!--code examples by framework-->
+
+            <div class="row">
+                <div class="col-12" style="min-height: 60px;">
+                    <fusion-table
+                        id="basicBigRowTableExample"
+                        [columns]="columnsBasic"
+                        [rows]="rowsBig"
+                        [options]="tableBigRowsOptions"
+                        [loading]="loading$ | async"
+                        (rowModelChange)="onBasicRowModelChange($event)"
+                        (sortChanged)="onBasicSortChanged($event)"
+                    ></fusion-table>
+                </div>
+            </div>
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="typeSmallRowSze" title="Small rows height">
+            <!--code examples by framework-->
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<fusion-table id="basicTableExample"
+              [columns]="columnsBasic"
+              [rows]="rowsSmall$ | async"
+              [options]="tableSmallRowsOptions"
+              [loading]="loading$ | async"
+              (rowModelChange)="onBasicRowModelChange($event)"
+              (sortChanged)="onBasicSortChanged($event)">
+</fusion-table>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='// Columns configuration example:
+const columnsBasic = [
+    {key: "checkbox", type: TableColumnTypeEnum.Checkbox, width: "32px"},
+    {key: "name", title: "Name", sort: "asc"},
+    {key: "username", title: "Username", sort: ""},
+    {key: "bid", type: TableColumnTypeEnum.InputEdit, inputType: InlineInputType.Currency, customErrorMapping: {
+            required: {errorMessageKey: "required"},
+            min: {errorMessageKey: "min", textMapping: [{key: "minValue", value: "10"}]}
+        },
+        title: "Bid",
+        width: "85px",
+        tooltip: "Lorem ipsum dolor sit amet"
+    },
+    {key: "email", title: "Email", sort: ""},
+    {key: "website", title: "Website"}
+]
+
+// Data example
+const rowsSmall = [
+    {
+        checkbox: false,
+        name: "Leanne Graham",
+        username: "Bret",
+        email: "Sincere@april.biz",
+        website: "hildegard.org",
+        bid: new FormControl(23, [Validators.required, Validators.min(10)])
+    },
+    ...,
+    ...
+]
+
+const tableSmallRowsOptions = {
+    sortingType: "local",
+    remove: {active: true, onRemove: new EventEmitter()},
+    noDataSubMessage: "Lorem ipsum dolor",
+    rowHeight: TableRowHeight.Small
+};'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import React from "react";
+import { FusionTable } from "@ironsrc/fusion-ui/native/react";
+
+const TABLE_COLUMNS = [
+  { key: "checkbox", type: 2 <!--(TableColumnTypeEnum.Checkbox)-->, width: "32px" },
+  { key: "name", title: "Name", sort: "" },
+  { key: "username", title: "Username", sort: "" },
+  { key: "email", title: "Email", sort: "" },
+  { key: "website", title: "Website" }
+];
+
+const TABLE_ROWS = [
+  {
+    name: "Leanne Graham",
+    username: "Bret",
+    email: "Sincere@april.biz",
+    website: "hildegard.org",
+    checkbox: true
+  },
+  ...
+];
+
+export default class Foo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      table: {
+        columns: TABLE_COLUMNS,
+        rows: TABLE_ROWS,
+        options: {
+          sortingType: "local",
+          rowHeight: "small"
+        }
+      }
+    };
+  }
+
+  componentDidMount() {
+    this.props.updateLayoutTitle({ title: "Example" });
+  }
+
+  onTableRowChanged(rowDataChanged) {
+    console.log("rowModelChange: ", rowDataChanged);
+    rowDataChanged.onRequestDone(true);
+  }
+
+  render() {
+    return (
+      <div className="example-holder">
+        <h2>Table - Example</h2>
+        <FusionTable
+          config={this.state.table}
+          rowModelChange={this.onTableRowChanged}
+        />
+      </div>
+    );
+  }
+}
+'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div style="margin: 20px; background-color: white; padding: 20px;">
+    <p>Table Component example</p>
+    <FusionTable :config="tableBasic" @rowModelChange="onTableRowChanged" />
+  </div>
+</template>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import { FusionTable } from "@ironsrc/fusion-ui/native/vue";
+
+export const FooComponent = {
+  name: "FooComponent",
+  mounted() {
+    this.$emit("updateLayoutTitle", { title: "Component Example" });
+  },
+  components: {
+    FusionTable
+  },
+  data() {
+    return {
+      tableBasic: {
+        columns: TABLE_COLUMNS,
+        rows: TABLE_ROWS,
+        options: {
+          sortingType: "local",
+          rowHeight: "small"
+        }
+      }
+    };
+  },
+  methods: {
+    onTableRowChanged: function(rowDataChanged) {
+      console.log(rowDataChanged);
+      rowDataChanged.onRequestDone(true);
+    }
+  }
+};
+
+const TABLE_COLUMNS = [
+  { key: "checkbox", type: 2 <!--(TableColumnTypeEnum.Checkbox)-->, width: "32px" },
+  { key: "name", title: "Name", sort: "" },
+  { key: "username", title: "Username", sort: "" },
+  { key: "email", title: "Email", sort: "" },
+  { key: "website", title: "Website" }
+];
+
+const TABLE_ROWS = [
+  {
+    name: "Leanne Graham",
+    username: "Bret",
+    email: "Sincere@april.biz",
+    website: "hildegard.org",
+    checkbox: true
+  },
+  ...
+];
+export default FooComponent;'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const onLoad = () => {
+    // define data
+    const TABLE_COLUMNS = [
+      { key: "checkbox", type: 2 <!--(TableColumnTypeEnum.Checkbox)-->, width: "32px" },
+      { key: "name", title: "Name", sort: "" },
+      { key: "username", title: "Username", sort: "" },
+      { key: "email", title: "Email", sort: "" },
+      { key: "website", title: "Website" }
+    ];
+
+    const TABLE_ROWS = [
+      {
+        name: "Leanne Graham",
+        username: "Bret",
+        email: "Sincere@april.biz",
+        website: "hildegard.org",
+        checkbox: true
+      },
+      ...
+    ];
+
+    const stateConfig = {
+        columns: tableColumns,
+        rows: tableRows,
+        options: {
+            sortingType: "local",
+            rowHeight: "small"
+        }
+    };
+
+    // get application holder for add dropdown
+    const componentHolder = document.getElementById("component-holder");
+
+    const table = document.createElement("native-fusion-table");
+    table.config = stateConfig;
+
+    table.addEventListener("rowModelChange", e => {
+        console.log(e.detail);
+        // update state
+        //....
+        //....
+        // update state done Ok
+        e.detail.onRequestDone(true);
+    });
+    table.addEventListener("sortChanged", e => console.log(e));
+
+    // append to DOM
+    componentHolder.appendChild(table);
+};
+
+document.addEventListener("DOMContentLoaded", onLoad, false);'
+                ></fusion-code-block>
+            </ng-template>
+
+            <!--code examples by framework-->
+
+            <div class="row">
+                <div class="col-12" style="min-height: 60px;">
+                    <fusion-table
+                        id="basicSmallRowTableExample"
+                        [columns]="columnsSmall"
+                        [rows]="rowsSmall"
+                        [options]="tableSmallRowsOptions"
+                        [loading]="loading$ | async"
+                        (rowModelChange)="onBasicRowModelChange($event)"
+                        (sortChanged)="onBasicSortChanged($event)"
+                    ></fusion-table>
+                </div>
+            </div>
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="typExpandableRows" title="Expandable rows one level">
+            <!--code examples by framework-->
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<fusion-table
+    id="basicExpandableRowsTableExample"
+    [columns]="columnsWithoutCheckbox"
+    [rows]="rowsExpandable$ | async"
+    [options]="tableExpandableRowsOptions"
+    [loading]="loading$ | async"
+    [expandedRows]="expandedRows"
+    (rowModelChange)="onBasicRowModelChange($event)"
+    (sortChanged)="onBasicSortChanged($event)"
+    (expandRow)="onExpandRow($event)"
+></fusion-table>
+'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="rowsExpandable$ = new BehaviorSubject<any[]>([]);
+expandedRows: {[key: string]: boolean} = {};
+columnsWithoutCheckbox = [
+    {key: 'name', title: 'Name', sort: 'asc'},
+    {key: 'username', title: 'Username', sort: ''},
+    {
+        key: 'bid',
+        type: TableColumnTypeEnum.InputEdit,
+        inputType: InlineInputType.Currency,
+        customErrorMapping: {
+            required: {errorMessageKey: 'required'},
+            min: {
+                errorMessageKey: 'min',
+                textMapping: [{key: 'minValue', value: '10'}]
+            }
+        },
+        title: 'Bid',
+        width: '85px',
+        tooltip: 'Lorem ipsum dolor sit amet'
+    },
+    {key: 'email', title: 'Email', sort: '', tooltip: 'Warning message', tooltipIcon: 'v2/warning'},
+    {key: 'website', title: 'Website'}
+];
+
+tableExpandableRowsOptions = {
+    sortingType: 'local',
+    remove: {active: true, onRemove: new EventEmitter()},
+    noDataSubMessage: 'Lorem ipsum dolor',
+    rowsExpandableOptions: {
+        key: 'children',
+        columns: [
+            {'key':'name','title':'Name','sort':'asc'},
+            {'key':'username','title':'Username','sort':''},
+            {'key':'bid','type':4,'inputType':2,'customErrorMapping':{
+                    'required':{'errorMessageKey':'required'},
+                    'min':{'errorMessageKey':'min','textMapping':[{'key':'minValue','value':'10'}]}
+                },
+                'title':'Bid','width':'85px','tooltip':'Lorem ipsum dolor sit amet'},
+            {'key':'email','title':'Email','sort':'','tooltip':'Warning message','tooltipIcon':'v2/warning'},
+            {'key':'website','title':'Website'}]
+    }
+}
+
+/**
+* Just get from main data mock - portion for child rows
+*/
+private getExpandedData(rowIndex) {
+    return of(MOCK_DATA.slice(5, 7)).pipe(delay(1000));
+}
+
+onExpandRow({rowIndex, row, isExpanded, successCallback, failedCallback}: TableRowExpandEmitter): void {
+    (isExpanded ? this.getExpandedData(rowIndex) : of(null))
+        .pipe(
+            take(1),
+            tap(_ => (this.expandedRows = {...this.expandedRows, [rowIndex]: isExpanded}))
+        )
+        .subscribe(data => {
+            const children = !!data
+                ? data.map((item, _index) => {
+                      const fcBid = new FormControl(item.bid, [Validators.required, Validators.min(10)]);
+                      return {
+                          id: item.id,
+                          name: item.name,
+                          username: item.username,
+                          email: item.email,
+                          website: item.website,
+                          bid: fcBid
+                      };
+                  })
+                : [];
+
+            const tableRows = this.rowsExpandable$.getValue();
+            tableRows.splice(rowIndex, 1, {...row, children});
+            this.rowsExpandable$.next([...tableRows]);
+
+            successCallback();
+        }, failedCallback);
+}"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import React from "react";
+import "./foo.css";
+import { FusionTable } from "@ironsrc/fusion-ui/native/react";
+
+export default class Foo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      table: {
+        columns: TABLE_COLUMNS,
+        rows: TABLE_ROWS,
+        options: {
+          rowsExpandableOptions: {
+            columns: EXPAND_COLUMNS,
+            key: "children"
+          }
+        },
+        expandedRows: {}
+      }
+    };
+  }
+
+  componentDidMount() {
+    this.props.updateLayoutTitle({ title: "Example" });
+  }
+
+  onTableRowChanged(rowDataChanged) {
+    console.log("rowModelChange: ", rowDataChanged);
+    rowDataChanged.onRequestDone(true);
+  }
+
+  async onExpandRow({rowIndex, row, isExpanded, successCallback, failedCallback}) {
+    if(isExpanded){
+      try{
+        const children = await getExpandData(rowIndex);
+        this.childRowsUpdate({rowIndex, row, children, isExpanded});
+        successCallback();
+      }catch (e) {
+        failedCallback();
+      }
+    }else{
+      this.childRowsUpdate({rowIndex, row, children: [], isExpanded});
+    }
+  }
+
+  childRowsUpdate({rowIndex, row, children, isExpanded}){
+    // get updated expandedRows
+    const expandedRows = {...this.state.table.expandedRows, [rowIndex]: isExpanded};
+    // get current tableRows
+    const tableRows = this.state.table.rows;
+    // add child rows to the row by index
+    tableRows.splice(rowIndex, 1, {...row, children});
+    // update component state
+    this.setState({
+      table: {...this.state.table, rows: [...tableRows], expandedRows: expandedRows}
+    });
+  }
+
+  render() {
+    return (
+      <div className="example-holder">
+        <h2>Table - Example</h2>
+        <FusionTable
+          config={this.state.table}
+          rowModelChange={this.onTableRowChanged}
+          expandRow={this.onExpandRow.bind(this)}
+        />
+      </div>
+    );
+  }
+}
+
+const MOCK_DATA = [
+  {
+    id: 1,
+    name: "Leanne Graham",
+    username: "Bret",
+    email: "Sincere@april.biz",
+    address: {
+      street: "Kulas Light",
+      suite: "Apt. 556",
+      city: "Gwenborough",
+      zipcode: "92998-3874",
+      geo: {
+        lat: "-37.3159",
+        lng: "81.1496"
+      }
+    },
+    phone: "1-770-736-8031 x56442",
+    website: "hildegard.org",
+    company: {
+      name: "Romaguera-Crona",
+      catchPhrase: "Multi-layered client-server neural-net",
+      bs: "harness real-time e-markets"
+    }
+  },
+  {
+    id: 2,
+    name: "Ervin Howell",
+    username: "Antonette",
+    email: "Shanna@melissa.tv",
+    address: {
+      street: "Victor Plains",
+      suite: "Suite 879",
+      city: "Wisokyburgh",
+      zipcode: "90566-7771",
+      geo: {
+        lat: "-43.9509",
+        lng: "-34.4618"
+      }
+    },
+    phone: "010-692-6593 x09125",
+    website: "anastasia.net",
+    company: {
+      name: "Deckow-Crist",
+      catchPhrase: "Proactive didactic contingency",
+      bs: "synergize scalable supply-chains"
+    }
+  },
+  {
+    id: 3,
+    name: "Error on expand",
+    username: "Samantha",
+    email: "Nathan@yesenia.net",
+    address: {
+      street: "Douglas Extension",
+      suite: "Suite 847",
+      city: "McKenziehaven",
+      zipcode: "59590-4157",
+      geo: {
+        lat: "-68.6102",
+        lng: "-47.0653"
+      }
+    },
+    phone: "1-463-123-4447",
+    website: "ramiro.info",
+    company: {
+      name: "Romaguera-Jacobson",
+      catchPhrase: "Face to face bifurcated interface",
+      bs: "e-enable strategic applications"
+    }
+  },
+  {
+    id: 4,
+    name: "Patricia Lebsack",
+    username: "Karianne",
+    email: "Julianne.OConner@kory.org",
+    address: {
+      street: "Hoeger Mall",
+      suite: "Apt. 692",
+      city: "South Elvis",
+      zipcode: "53919-4257",
+      geo: {
+        lat: "29.4572",
+        lng: "-164.2990"
+      }
+    },
+    phone: "493-170-9623 x156",
+    website: "kale.biz",
+    company: {
+      name: "Robel-Corkery",
+      catchPhrase: "Multi-tiered zero tolerance productivity",
+      bs: "transition cutting-edge web services"
+    }
+  },
+  {
+    id: 5,
+    name: "Chelsey Dietrich",
+    username: "Kamren",
+    email: "Lucio_Hettinger@annie.ca",
+    address: {
+      street: "Skiles Walks",
+      suite: "Suite 351",
+      city: "Roscoeview",
+      zipcode: "33263",
+      geo: {
+        lat: "-31.8129",
+        lng: "62.5342"
+      }
+    },
+    phone: "(254)954-1289",
+    website: "demarco.info",
+    company: {
+      name: "Keebler LLC",
+      catchPhrase: "User-centric fault-tolerant solution",
+      bs: "revolutionize end-to-end systems"
+    }
+  },
+  {
+    id: 6,
+    name: "Mrs. Dennis Schulist",
+    username: "Leopoldo_Corkery",
+    email: "Karley_Dach@jasper.info",
+    address: {
+      street: "Norberto Crossing",
+      suite: "Apt. 950",
+      city: "South Christy",
+      zipcode: "23505-1337",
+      geo: {
+        lat: "-71.4197",
+        lng: "71.7478"
+      }
+    },
+    phone: "1-477-935-8478 x6430",
+    website: "ola.org",
+    company: {
+      name: "Considine-Lockman",
+      catchPhrase: "Synchronised bottom-line interface",
+      bs: "e-enable innovative applications"
+    }
+  },
+  {
+    id: 7,
+    name: "Kurtis Weissnat",
+    username: "Elwyn.Skiles",
+    email: "Telly.Hoeger@billy.biz",
+    address: {
+      street: "Rex Trail",
+      suite: "Suite 280",
+      city: "Howemouth",
+      zipcode: "58804-1099",
+      geo: {
+        lat: "24.8918",
+        lng: "21.8984"
+      }
+    },
+    phone: "210.067.6132",
+    website: "elvis.io",
+    company: {
+      name: "Johns Group",
+      catchPhrase: "Configurable multimedia task-force",
+      bs: "generate enterprise e-tailers"
+    }
+  },
+  {
+    id: 8,
+    name: "Nicholas Runolfsdottir V",
+    username: "Maxime_Nienow",
+    email: "Sherwood@rosamond.me",
+    address: {
+      street: "Ellsworth Summit",
+      suite: "Suite 729",
+      city: "Aliyaview",
+      zipcode: "45169",
+      geo: {
+        lat: "-14.3990",
+        lng: "-120.7677"
+      }
+    },
+    phone: "586.493.6943 x140",
+    website: "jacynthe.com",
+    company: {
+      name: "Abernathy Group",
+      catchPhrase: "Implemented secondary concept",
+      bs: "e-enable extensible e-tailers"
+    }
+  },
+  {
+    id: 9,
+    name: "Glenna Reichert",
+    username: "Delphine",
+    email: "Chaim_McDermott@dana.io",
+    address: {
+      street: "Dayna Park",
+      suite: "Suite 449",
+      city: "Bartholomebury",
+      zipcode: "76495-3109",
+      geo: {
+        lat: "24.6463",
+        lng: "-168.8889"
+      }
+    },
+    phone: "(775)976-6794 x41206",
+    website: "conrad.com",
+    company: {
+      name: "Yost and Sons",
+      catchPhrase: "Switchable contextually-based project",
+      bs: "aggregate real-time technologies"
+    }
+  },
+  {
+    id: 10,
+    name: "Clementina DuBuque",
+    username: "Moriah.Stanton",
+    email: "Rey.Padberg@karina.biz",
+    address: {
+      street: "Kattie Turnpike",
+      suite: "Suite 198",
+      city: "Lebsackbury",
+      zipcode: "31428-2261",
+      geo: {
+        lat: "-38.2386",
+        lng: "57.2232"
+      }
+    },
+    phone: "024-648-3804",
+    website: "ambrose.net",
+    company: {
+      name: "Hoeger LLC",
+      catchPhrase: "Centralized empowering task-force",
+      bs: "target end-to-end models"
+    }
+  }
+];
+const TABLE_COLUMNS = [
+  { key: "id", title: "Id"},
+  { key: "name", title: "Name"},
+  { key: "username", title: "Username"},
+  { key: "email", title: "Email"},
+  { key: "website", title: "Website" }
+];
+const EXPAND_COLUMNS = [
+  { key: "id", title: "Id"},
+  { key: "name", title: "Name"},
+  { key: "username", title: "Username"},
+  { key: "email", title: "Email"},
+  { key: "website", title: "Website" }
+];
+const TABLE_ROWS = MOCK_DATA.slice(0, 3).map(item=>({
+  id: item.id,
+  name: item.name,
+  username: item.username,
+  email: item.email,
+  website: item.website
+}));
+const getExpandData = async (idx) => {
+  await new Promise(r => setTimeout(r, 2000));
+  // error emulation
+  if (idx == 2) {
+    throw "Error occurred";
+  }
+  return MOCK_DATA.slice(idx + 3, idx + 5).map(item => ({
+    id: item.id,
+    name: item.name,
+    username: item.username,
+    email: item.email,
+    website: item.website
+  }));
+}'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div style="margin: 20px; background-color: white; padding: 20px;">
+    <p>Table Component Row expand / collapse example</p>
+    <FusionTable :config="tableBasic" @expandRow="onRowExpand" />
+  </div>
+</template>'
+                ></fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import { FusionTable } from "@ironsrc/fusion-ui/native/vue";
+
+export const FooComponent = {
+  name: "FooComponent",
+  mounted() {
+    this.$emit("updateLayoutTitle", { title: "Component Example" });
+  },
+  components: {
+    FusionTable
+  },
+  data() {
+    return {
+      tableBasic: {
+        columns: TABLE_COLUMNS,
+        rows: TABLE_ROWS,
+        options: {
+          rowsExpandableOptions: {
+            columns: EXPAND_COLUMNS,
+            key: "children"
+          }
+        },
+        expandedRows: {}
+      }
+    };
+  },
+  methods: {
+    onRowExpand: async function({rowIndex, row, isExpanded, successCallback, failedCallback}){
+      if(isExpanded){
+        try{
+          const children = await getExpandData(rowIndex);
+          this.tableBasic = updateState(this.tableBasic, {rowIndex, row, children, isExpanded});
+          successCallback();
+        }catch (e) {
+          failedCallback();
+        }
+      }else{
+        this.tableBasic = updateState(this.tableBasic, {rowIndex, row, children: [], isExpanded});
+      }
+    }
+  }
+
+};
+
+const MOCK_DATA = [
+  {
+    id: 1,
+    name: "Leanne Graham",
+    username: "Bret",
+    email: "Sincere@april.biz",
+    address: {
+      street: "Kulas Light",
+      suite: "Apt. 556",
+      city: "Gwenborough",
+      zipcode: "92998-3874",
+      geo: {
+        lat: "-37.3159",
+        lng: "81.1496"
+      }
+    },
+    phone: "1-770-736-8031 x56442",
+    website: "hildegard.org",
+    company: {
+      name: "Romaguera-Crona",
+      catchPhrase: "Multi-layered client-server neural-net",
+      bs: "harness real-time e-markets"
+    }
+  },
+  {
+    id: 2,
+    name: "Ervin Howell",
+    username: "Antonette",
+    email: "Shanna@melissa.tv",
+    address: {
+      street: "Victor Plains",
+      suite: "Suite 879",
+      city: "Wisokyburgh",
+      zipcode: "90566-7771",
+      geo: {
+        lat: "-43.9509",
+        lng: "-34.4618"
+      }
+    },
+    phone: "010-692-6593 x09125",
+    website: "anastasia.net",
+    company: {
+      name: "Deckow-Crist",
+      catchPhrase: "Proactive didactic contingency",
+      bs: "synergize scalable supply-chains"
+    }
+  },
+  {
+    id: 3,
+    name: "Error on expand",
+    username: "Samantha",
+    email: "Nathan@yesenia.net",
+    address: {
+      street: "Douglas Extension",
+      suite: "Suite 847",
+      city: "McKenziehaven",
+      zipcode: "59590-4157",
+      geo: {
+        lat: "-68.6102",
+        lng: "-47.0653"
+      }
+    },
+    phone: "1-463-123-4447",
+    website: "ramiro.info",
+    company: {
+      name: "Romaguera-Jacobson",
+      catchPhrase: "Face to face bifurcated interface",
+      bs: "e-enable strategic applications"
+    }
+  },
+  {
+    id: 4,
+    name: "Patricia Lebsack",
+    username: "Karianne",
+    email: "Julianne.OConner@kory.org",
+    address: {
+      street: "Hoeger Mall",
+      suite: "Apt. 692",
+      city: "South Elvis",
+      zipcode: "53919-4257",
+      geo: {
+        lat: "29.4572",
+        lng: "-164.2990"
+      }
+    },
+    phone: "493-170-9623 x156",
+    website: "kale.biz",
+    company: {
+      name: "Robel-Corkery",
+      catchPhrase: "Multi-tiered zero tolerance productivity",
+      bs: "transition cutting-edge web services"
+    }
+  },
+  {
+    id: 5,
+    name: "Chelsey Dietrich",
+    username: "Kamren",
+    email: "Lucio_Hettinger@annie.ca",
+    address: {
+      street: "Skiles Walks",
+      suite: "Suite 351",
+      city: "Roscoeview",
+      zipcode: "33263",
+      geo: {
+        lat: "-31.8129",
+        lng: "62.5342"
+      }
+    },
+    phone: "(254)954-1289",
+    website: "demarco.info",
+    company: {
+      name: "Keebler LLC",
+      catchPhrase: "User-centric fault-tolerant solution",
+      bs: "revolutionize end-to-end systems"
+    }
+  },
+  {
+    id: 6,
+    name: "Mrs. Dennis Schulist",
+    username: "Leopoldo_Corkery",
+    email: "Karley_Dach@jasper.info",
+    address: {
+      street: "Norberto Crossing",
+      suite: "Apt. 950",
+      city: "South Christy",
+      zipcode: "23505-1337",
+      geo: {
+        lat: "-71.4197",
+        lng: "71.7478"
+      }
+    },
+    phone: "1-477-935-8478 x6430",
+    website: "ola.org",
+    company: {
+      name: "Considine-Lockman",
+      catchPhrase: "Synchronised bottom-line interface",
+      bs: "e-enable innovative applications"
+    }
+  },
+  {
+    id: 7,
+    name: "Kurtis Weissnat",
+    username: "Elwyn.Skiles",
+    email: "Telly.Hoeger@billy.biz",
+    address: {
+      street: "Rex Trail",
+      suite: "Suite 280",
+      city: "Howemouth",
+      zipcode: "58804-1099",
+      geo: {
+        lat: "24.8918",
+        lng: "21.8984"
+      }
+    },
+    phone: "210.067.6132",
+    website: "elvis.io",
+    company: {
+      name: "Johns Group",
+      catchPhrase: "Configurable multimedia task-force",
+      bs: "generate enterprise e-tailers"
+    }
+  },
+  {
+    id: 8,
+    name: "Nicholas Runolfsdottir V",
+    username: "Maxime_Nienow",
+    email: "Sherwood@rosamond.me",
+    address: {
+      street: "Ellsworth Summit",
+      suite: "Suite 729",
+      city: "Aliyaview",
+      zipcode: "45169",
+      geo: {
+        lat: "-14.3990",
+        lng: "-120.7677"
+      }
+    },
+    phone: "586.493.6943 x140",
+    website: "jacynthe.com",
+    company: {
+      name: "Abernathy Group",
+      catchPhrase: "Implemented secondary concept",
+      bs: "e-enable extensible e-tailers"
+    }
+  },
+  {
+    id: 9,
+    name: "Glenna Reichert",
+    username: "Delphine",
+    email: "Chaim_McDermott@dana.io",
+    address: {
+      street: "Dayna Park",
+      suite: "Suite 449",
+      city: "Bartholomebury",
+      zipcode: "76495-3109",
+      geo: {
+        lat: "24.6463",
+        lng: "-168.8889"
+      }
+    },
+    phone: "(775)976-6794 x41206",
+    website: "conrad.com",
+    company: {
+      name: "Yost and Sons",
+      catchPhrase: "Switchable contextually-based project",
+      bs: "aggregate real-time technologies"
+    }
+  },
+  {
+    id: 10,
+    name: "Clementina DuBuque",
+    username: "Moriah.Stanton",
+    email: "Rey.Padberg@karina.biz",
+    address: {
+      street: "Kattie Turnpike",
+      suite: "Suite 198",
+      city: "Lebsackbury",
+      zipcode: "31428-2261",
+      geo: {
+        lat: "-38.2386",
+        lng: "57.2232"
+      }
+    },
+    phone: "024-648-3804",
+    website: "ambrose.net",
+    company: {
+      name: "Hoeger LLC",
+      catchPhrase: "Centralized empowering task-force",
+      bs: "target end-to-end models"
+    }
+  }
+];
+const TABLE_COLUMNS = [
+  { key: "id", title: "Id"},
+  { key: "name", title: "Name"},
+  { key: "username", title: "Username"},
+  { key: "email", title: "Email"},
+  { key: "website", title: "Website" }
+];
+const EXPAND_COLUMNS = [
+  { key: "id", title: "Id"},
+  { key: "name", title: "Name"},
+  { key: "username", title: "Username"},
+  { key: "email", title: "Email"},
+  { key: "website", title: "Website" }
+];
+const TABLE_ROWS = MOCK_DATA.slice(0, 3).map(item=>({
+  id: item.id,
+  name: item.name,
+  username: item.username,
+  email: item.email,
+  website: item.website
+}));
+
+/**
+ * get expandable data, if idx - 2 throw an error
+ * @param idx
+ * @returns {Promise<{website: *, name: *, id: *, email: *, username: *}[]>}
+ */
+const getExpandData = async (idx) => {
+  await new Promise(r => setTimeout(r, 2000));
+  // error emulation
+  if (idx === 2) {
+    throw new Error("Error occurred");
+  }
+  // just get 2 elements from mocked data
+  return MOCK_DATA.slice(idx + 3, idx + 5).map(item => ({
+    id: item.id,
+    name: item.name,
+    username: item.username,
+    email: item.email,
+    website: item.website
+  }));
+}
+/**
+ * Update table state
+ * @param tableState                       - current tabler state
+ * @param rowIndex                         - row to expand index
+ * @param row                              - row to expand
+ * @param children                         - children rows
+ * @param isExpanded                       - true if expand; false for collapse
+ * @returns { {expandedRows: *, rows: *[]} } - new table state
+ */
+const updateState = (tableState, {rowIndex, row, children, isExpanded})=>{
+  const expandedRows = {...tableState.expandedRows, [rowIndex]: isExpanded};
+  const tableRows = tableState.rows;
+  tableRows.splice(rowIndex, 1, {...row, children});
+  return {...tableState, rows: [...tableRows], expandedRows: expandedRows}
+}
+
+export default FooComponent;
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const MOCK_DATA = [
+    {
+        id: 1,
+        name: "Leanne Graham",
+        username: "Bret",
+        email: "Sincere@april.biz",
+        address: {
+            street: "Kulas Light",
+            suite: "Apt. 556",
+            city: "Gwenborough",
+            zipcode: "92998-3874",
+            geo: {
+                lat: "-37.3159",
+                lng: "81.1496"
+            }
+        },
+        phone: "1-770-736-8031 x56442",
+        website: "hildegard.org",
+        company: {
+            name: "Romaguera-Crona",
+            catchPhrase: "Multi-layered client-server neural-net",
+            bs: "harness real-time e-markets"
+        }
+    },
+    {
+        id: 2,
+        name: "Ervin Howell",
+        username: "Antonette",
+        email: "Shanna@melissa.tv",
+        address: {
+            street: "Victor Plains",
+            suite: "Suite 879",
+            city: "Wisokyburgh",
+            zipcode: "90566-7771",
+            geo: {
+                lat: "-43.9509",
+                lng: "-34.4618"
+            }
+        },
+        phone: "010-692-6593 x09125",
+        website: "anastasia.net",
+        company: {
+            name: "Deckow-Crist",
+            catchPhrase: "Proactive didactic contingency",
+            bs: "synergize scalable supply-chains"
+        }
+    },
+    {
+        id: 3,
+        name: "Error on expand",
+        username: "Samantha",
+        email: "Nathan@yesenia.net",
+        address: {
+            street: "Douglas Extension",
+            suite: "Suite 847",
+            city: "McKenziehaven",
+            zipcode: "59590-4157",
+            geo: {
+                lat: "-68.6102",
+                lng: "-47.0653"
+            }
+        },
+        phone: "1-463-123-4447",
+        website: "ramiro.info",
+        company: {
+            name: "Romaguera-Jacobson",
+            catchPhrase: "Face to face bifurcated interface",
+            bs: "e-enable strategic applications"
+        }
+    },
+    {
+        id: 4,
+        name: "Patricia Lebsack",
+        username: "Karianne",
+        email: "Julianne.OConner@kory.org",
+        address: {
+            street: "Hoeger Mall",
+            suite: "Apt. 692",
+            city: "South Elvis",
+            zipcode: "53919-4257",
+            geo: {
+                lat: "29.4572",
+                lng: "-164.2990"
+            }
+        },
+        phone: "493-170-9623 x156",
+        website: "kale.biz",
+        company: {
+            name: "Robel-Corkery",
+            catchPhrase: "Multi-tiered zero tolerance productivity",
+            bs: "transition cutting-edge web services"
+        }
+    },
+    {
+        id: 5,
+        name: "Chelsey Dietrich",
+        username: "Kamren",
+        email: "Lucio_Hettinger@annie.ca",
+        address: {
+            street: "Skiles Walks",
+            suite: "Suite 351",
+            city: "Roscoeview",
+            zipcode: "33263",
+            geo: {
+                lat: "-31.8129",
+                lng: "62.5342"
+            }
+        },
+        phone: "(254)954-1289",
+        website: "demarco.info",
+        company: {
+            name: "Keebler LLC",
+            catchPhrase: "User-centric fault-tolerant solution",
+            bs: "revolutionize end-to-end systems"
+        }
+    },
+    {
+        id: 6,
+        name: "Mrs. Dennis Schulist",
+        username: "Leopoldo_Corkery",
+        email: "Karley_Dach@jasper.info",
+        address: {
+            street: "Norberto Crossing",
+            suite: "Apt. 950",
+            city: "South Christy",
+            zipcode: "23505-1337",
+            geo: {
+                lat: "-71.4197",
+                lng: "71.7478"
+            }
+        },
+        phone: "1-477-935-8478 x6430",
+        website: "ola.org",
+        company: {
+            name: "Considine-Lockman",
+            catchPhrase: "Synchronised bottom-line interface",
+            bs: "e-enable innovative applications"
+        }
+    },
+    {
+        id: 7,
+        name: "Kurtis Weissnat",
+        username: "Elwyn.Skiles",
+        email: "Telly.Hoeger@billy.biz",
+        address: {
+            street: "Rex Trail",
+            suite: "Suite 280",
+            city: "Howemouth",
+            zipcode: "58804-1099",
+            geo: {
+                lat: "24.8918",
+                lng: "21.8984"
+            }
+        },
+        phone: "210.067.6132",
+        website: "elvis.io",
+        company: {
+            name: "Johns Group",
+            catchPhrase: "Configurable multimedia task-force",
+            bs: "generate enterprise e-tailers"
+        }
+    },
+    {
+        id: 8,
+        name: "Nicholas Runolfsdottir V",
+        username: "Maxime_Nienow",
+        email: "Sherwood@rosamond.me",
+        address: {
+            street: "Ellsworth Summit",
+            suite: "Suite 729",
+            city: "Aliyaview",
+            zipcode: "45169",
+            geo: {
+                lat: "-14.3990",
+                lng: "-120.7677"
+            }
+        },
+        phone: "586.493.6943 x140",
+        website: "jacynthe.com",
+        company: {
+            name: "Abernathy Group",
+            catchPhrase: "Implemented secondary concept",
+            bs: "e-enable extensible e-tailers"
+        }
+    },
+    {
+        id: 9,
+        name: "Glenna Reichert",
+        username: "Delphine",
+        email: "Chaim_McDermott@dana.io",
+        address: {
+            street: "Dayna Park",
+            suite: "Suite 449",
+            city: "Bartholomebury",
+            zipcode: "76495-3109",
+            geo: {
+                lat: "24.6463",
+                lng: "-168.8889"
+            }
+        },
+        phone: "(775)976-6794 x41206",
+        website: "conrad.com",
+        company: {
+            name: "Yost and Sons",
+            catchPhrase: "Switchable contextually-based project",
+            bs: "aggregate real-time technologies"
+        }
+    },
+    {
+        id: 10,
+        name: "Clementina DuBuque",
+        username: "Moriah.Stanton",
+        email: "Rey.Padberg@karina.biz",
+        address: {
+            street: "Kattie Turnpike",
+            suite: "Suite 198",
+            city: "Lebsackbury",
+            zipcode: "31428-2261",
+            geo: {
+                lat: "-38.2386",
+                lng: "57.2232"
+            }
+        },
+        phone: "024-648-3804",
+        website: "ambrose.net",
+        company: {
+            name: "Hoeger LLC",
+            catchPhrase: "Centralized empowering task-force",
+            bs: "target end-to-end models"
+        }
+    }
+];
+const TABLE_COLUMNS = [
+    { key: "id", title: "Id"},
+    { key: "name", title: "Name"},
+    { key: "username", title: "Username"},
+    { key: "email", title: "Email"},
+    { key: "website", title: "Website" }
+];
+const EXPAND_COLUMNS = [
+    { key: "id", title: "Id"},
+    { key: "name", title: "Name"},
+    { key: "username", title: "Username"},
+    { key: "email", title: "Email"},
+    { key: "website", title: "Website" }
+];
+const TABLE_ROWS = MOCK_DATA.slice(0, 3).map(item=>({
+    id: item.id,
+    name: item.name,
+    username: item.username,
+    email: item.email,
+    website: item.website
+}));
+
+/**
+ * get expandable data, if idx - 2 throw an error
+ * @param idx
+ * @returns {Promise<{website: *, name: *, id: *, email: *, username: *}[]>}
+ */
+const getExpandData = async (idx) => {
+    await new Promise(r => setTimeout(r, 2000));
+    // error emulation
+    if (idx === 2) {
+        throw new Error("Error occurred");
+    }
+    // just get 2 elements from mocked data
+    return MOCK_DATA.slice(idx + 3, idx + 5).map(item => ({
+        id: item.id,
+        name: item.name,
+        username: item.username,
+        email: item.email,
+        website: item.website
+    }));
+}
+
+/**
+ * Update table state
+ * @param tableState                       - current tabler state
+ * @param rowIndex                         - row to expand index
+ * @param row                              - row to expand
+ * @param children                         - children rows
+ * @param isExpanded                       - true if expand; false for collapse
+ * @returns { {expandedRows: *, rows: *[]} } - new table state
+ */
+const updateState = (tableState, {rowIndex, row, children, isExpanded})=>{
+    const expandedRows = {...tableState.expandedRows, [rowIndex]: isExpanded};
+    const tableRows = tableState.rows;
+    tableRows.splice(rowIndex, 1, {...row, children});
+    return {...tableState, rows: [...tableRows], expandedRows: expandedRows}
+}
+
+// define default state
+const stateConfig = {
+    columns: TABLE_COLUMNS,
+    rows: TABLE_ROWS,
+    loading: false,
+    options: {
+        rowsExpandableOptions: {
+            columns: EXPAND_COLUMNS,
+            key: "children"
+        }
+    },
+    expandedRows: {}
+};
+
+const onLoad = () => {
+    // get application holder for add dropdown
+    const componentHolder = document.getElementById("component-holder");
+
+    // create fusion-table native component
+    const table = document.createElement("native-fusion-table");
+    // set state to th component
+    table.config = stateConfig;
+    // add event listener to the event "expandRow"
+    table.addEventListener("expandRow", async e => {
+        const {rowIndex, row, isExpanded, successCallback, failedCallback} = e.detail;
+        if(isExpanded){
+            // need expand
+            try{
+                // get child rows
+                const children = await getExpandData(rowIndex);
+                // update state
+                table.config = updateState(stateConfig, {rowIndex, row, children, isExpanded});
+                // call callback - ok
+                successCallback();
+            }catch (e) {
+                // if rowIndex to expand was 2 we do error emulation and call callback - failed
+                failedCallback();
+            }
+        }else{
+            // need collapse
+            table.config = updateState(stateConfig, {rowIndex, row, children: [], isExpanded});
+        }
+    });
+
+    // append to DOM
+    componentHolder.appendChild(table);
+};
+
+document.addEventListener("DOMContentLoaded", onLoad, false);'
+                ></fusion-code-block>
+            </ng-template>
+            <!--code examples by framework-->
+            <div class="row">
+                <div style="margin-bottom: 25px;padding-bottom:10px; border-bottom: solid 1px #ccc;">
+                    <button (click)="doExpandRow()">Toggle All Expand</button>&nbsp;&nbsp;
+                    <button (click)="doExpandRow(1)">Toggle second row</button>&nbsp;&nbsp;
+                    <button (click)="doExpandRow('reset')">Reset</button>&nbsp;&nbsp;
+                    >>{{expandedRows | json}}<<
+                </div>
+                <div class="col-12" style="min-height: 60px;">
+                    <fusion-table
+                        id="basicExpandableRowsTableExample"
+                        [columns]="columnsWithoutCheckbox"
+                        [rows]="rowsExpandable$ | async"
+                        [options]="tableExpandableRowsOptions"
+                        [loading]="loading$ | async"
+                        [(expandedRows)]="expandedRows"
+                        (rowModelChange)="onBasicRowModelChange($event)"
+                        (sortChanged)="onBasicSortChanged($event)"
+                        (expandRow)="onExpandRow($event)"
+                    ></fusion-table>
+                </div>
+            </div>
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="typExpandableRows1" title="Expandable rows two levels">
+            <!--code examples by framework-->
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<fusion-table
+    id="basicExpandableRowsTableExample"
+    [columns]="columnsWithoutCheckbox"
+    [rows]="rowsExpandable$ | async"
+    [options]="tableExpandableRowsOptions"
+    [loading]="loading$ | async"
+    [expandedRows]="expandedRows"
+    (rowModelChange)="onBasicRowModelChange($event)"
+    (sortChanged)="onBasicSortChanged($event)"
+    (expandRow)="onExpandRow($event)"
+></fusion-table>
+'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="rowsExpandable$ = new BehaviorSubject<any[]>([]);
+expandedRows: {[key: string]: boolean} = {};
+columnsWithoutCheckbox = [
+    {key: 'name', title: 'Name', sort: 'asc'},
+    {key: 'username', title: 'Username', sort: ''},
+    {
+        key: 'bid',
+        type: TableColumnTypeEnum.InputEdit,
+        inputType: InlineInputType.Currency,
+        customErrorMapping: {
+            required: {errorMessageKey: 'required'},
+            min: {
+                errorMessageKey: 'min',
+                textMapping: [{key: 'minValue', value: '10'}]
+            }
+        },
+        title: 'Bid',
+        width: '85px',
+        tooltip: 'Lorem ipsum dolor sit amet'
+    },
+    {key: 'email', title: 'Email', sort: '', tooltip: 'Warning message', tooltipIcon: 'v2/warning'},
+    {key: 'website', title: 'Website'}
+];
+
+tableExpandableRowsOptions = {
+    sortingType: 'local',
+    remove: {active: true, onRemove: new EventEmitter()},
+    noDataSubMessage: 'Lorem ipsum dolor',
+    rowsExpandableOptions: {
+        key: 'children',
+        expandLevels: 2,
+        columns: [
+            {'key':'name','title':'Name','sort':'asc'},
+            {'key':'username','title':'Username','sort':''},
+            {'key':'bid','type':4,'inputType':2,'customErrorMapping':{
+                    'required':{'errorMessageKey':'required'},
+                    'min':{'errorMessageKey':'min','textMapping':[{'key':'minValue','value':'10'}]}
+                },
+                'title':'Bid','width':'85px','tooltip':'Lorem ipsum dolor sit amet'},
+            {'key':'email','title':'Email','sort':'','tooltip':'Warning message','tooltipIcon':'v2/warning'},
+            {'key':'website','title':'Website'}]
+    }
+}
+
+/**
+* Just get from main data mock - portion for child rows
+*/
+private getExpandedData(rowIndex) {
+    if (isNumber(rowIndex)) {
+        return of(MOCK_DATA.slice(5, 7)).pipe(delay(1000));
+    }
+    return of(MOCK_DATA.slice(7, 10)).pipe(delay(1000));
+}
+
+/**
+ * Find row to expand by rowIndex and update it with children
+ * @param rowIndex          // expand row index in table rows
+ *                          - for example: 1 - second row in table rows to expand index
+ *                                         1_0 - first row in children rows of second table row
+ * @param row               // expandable row to update (insert children rows)
+ * @param childrenRowsKey   // key in row for inserting children rows. For example - 'children'
+ * @param children          // children rows array to expand
+ */
+private updateRowByIndex(tableRows, rowIndex, row, childrenRowsKey, children): any[] {
+    let indexes: number[] = [];
+    // rowIndex - possible as number (for first expand level) or as string 0_1_2 here each number here - index of item
+    // in expanded rows chain
+    if (typeof rowIndex === 'string' && rowIndex.indexOf('_') > 0) {
+        // not first expand level, need find expandable item
+        indexes = rowIndex.split('_').map(Number);
+        let rows = [...tableRows];
+        indexes.forEach((index, idx) => {
+            if (idx < indexes.length - 1) {
+                // not last level, go deeper
+                rows = !!idx ? rows[childrenRowsKey][index] : rows[index];
+            } else {
+                // last expand level - do update expandable row with a children rows
+                rows[childrenRowsKey].splice(index, 1, {...row, children});
+            }
+        });
+    } else {
+        tableRows.splice(rowIndex, 1, {...row, children});
+    }
+    return [...tableRows];
+}
+
+onExpandRow({rowIndex, row, isExpanded, successCallback, failedCallback}: TableRowExpandEmitter): void {
+    (isExpanded ? this.getExpandedData(rowIndex) : of(null))
+        .pipe(
+            take(1),
+            tap(_ => (this.expandedRows = {...this.expandedRows, [rowIndex]: isExpanded}))
+        )
+        .subscribe(data => {
+            const children = !!data
+                ? data.map((item, _index) => {
+                      const fcBid = new FormControl(item.bid, [Validators.required, Validators.min(10)]);
+                      return {
+                          id: item.id,
+                          name: item.name,
+                          username: item.username,
+                          email: item.email,
+                          website: item.website,
+                          bid: fcBid
+                      };
+                  })
+                : [];
+
+            this.rowsExpandable$.next(
+                this.updateRowByIndex(this.rowsExpandable$.getValue(), rowIndex, row, this.expandChildrenRowsKey, children)
+            );
+
+            successCallback();
+        }, failedCallback);
+}"
+                ></fusion-code-block>
+            </ng-template>
+            <!--code examples by framework-->
+            <div class="row">
+                <div class="col-12" style="min-height: 60px;">
+                    <fusion-table
+                        id="basicExpandableRowsTableExample1"
+                        [columns]="columnsWithoutCheckbox"
+                        [rows]="rowsExpandable2Levels$ | async"
+                        [options]="tableExpandableRowsOptions2Levels$"
+                        [loading]="loading$ | async"
+                        [expandedRows]="expandedRows2Levels"
+                        (rowModelChange)="onBasicRowModelChange($event)"
+                        (sortChanged)="onBasicSortChanged($event)"
+                        (expandRow)="onExpandRow2Levels($event)"
+                    ></fusion-table>
+                </div>
+            </div>
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="typeCustomComponentCell" title="Dynamic Component in table (with 'Totals' row)">
+            <!--code examples by framework-->
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<fusion-table id="basicTableExample"
+              [columns]="columnsDynamic"
+              [rows]="rowsDynamicTotals"
+              [options]="optionsBasicTotals"
+              [loading]="loading$ | async"
+              (rowModelChange)="onBasicRowModelChange($event)"
+              (sortChanged)="onBasicSortChanged($event)">
+</fusion-table>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='// Columns configuration example:
+const columnsDynamic = [{
+    "key": "name",
+    "title": "Name",
+    "sort": "asc"
+}, {
+    "key": "username",
+    "title": "Username",
+    "sort": ""
+}, {
+    "key": "bid",
+    "type": 4,
+    "inputType": 2,
+    "customErrorMapping": {
+        "required": {
+            "errorMessageKey": "required"
+        },
+        "min": {
+            "errorMessageKey": "min",
+            "textMapping": [{
+                "key": "minValue",
+                "value": "10"
+            }]
+        }
+    },
+    "title": "Bid",
+    "width": "85px",
+    "tooltip": "Lorem ipsum dolor sit amet"
+}, {
+    "key": "status",
+    "title": "Status",
+    "type": TableColumnTypeEnum.Component,
+    "component": TableCellDynamicComponentExampleComponent,
+    "totalRowTypeAsString": false
+}, {
+    "key": "email",
+    "title": "Email",
+    "sort": ""
+}, {
+    "key": "website",
+    "title": "Website"
+}]
+
+// Data example
+
+// For table with total row - first item in rows array - total row.
+const rowsTotals = [
+    {
+        checkbox: null,
+        name: "total names",
+        username: "total users",
+        email: "total emails",
+        website: "total websites",
+        bid: null,
+        status: {status: StatusLabelStatus.Warning}
+    },
+    {
+        checkbox: false,
+        name: "Leanne Graham",
+        username: "Bret",
+        email: "Sincere@april.biz",
+        website: "hildegard.org",
+        bid: new FormControl(23, [Validators.required, Validators.min(10)]),
+        status: {status: StatusLabelStatus.Error}
+    },
+    ...,
+    ...
+]
+
+const tableOptionsWithTotalsRow = {
+    sortingType: "local",
+    remove: {active: true, onRemove: new EventEmitter()},
+    noDataSubMessage: "Lorem ipsum dolor",
+    hasTotalsRow: true
+};'
+                ></fusion-code-block>
+            </ng-template>
+            <!--code examples by framework-->
+
+            <div class="row">
+                <div class="col-12" style="min-height: 60px;">
+                    <fusion-table
+                        id="dynamicComponentTableExample"
+                        [columns]="columnsDynamic"
+                        [rows]="rowsDynamicTotals"
+                        [options]="tableOptionsWithTotalsRow"
+                        [loading]="loading$ | async"
+                        (rowModelChange)="onBasicRowModelChange($event)"
+                        (sortChanged)="onBasicSortChanged($event)"
+                    ></fusion-table>
+                </div>
+            </div>
+        </fusion-example-block>
+
+        <div class="is-example-title">States</div>
+        <fusion-example-block id="typeEmptyTable" title="Empty table">
+            <!--code examples by framework-->
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code=' <!--If rows$ - has empty array as value table state will be EMPTY-->
+<fusion-table id="basicTableExample"
+      [columns]="columnsBasic"
+      [rows]="[]"
+      [options]="optionsBasicTotals"
+      [loading]="loading$ | async"
+      (rowModelChange)="onBasicRowModelChange($event)"
+      (sortChanged)="onBasicSortChanged($event)">
+</fusion-table>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import React from "react";
+import { FusionTable } from "@ironsrc/fusion-ui/native/react";
+
+const TABLE_COLUMNS = [
+  { key: "name", title: "Name", sort: "" },
+  { key: "username", title: "Username", sort: "" },
+  { key: "email", title: "Email", sort: "" },
+  { key: "website", title: "Website" }
+];
+
+const TABLE_ROWS = [];
+
+export default class Foo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      table: {
+        columns: TABLE_COLUMNS,
+        rows: TABLE_ROWS,
+        options: {
+          sortingType: "local"
+        },
+        loading: false
+      }
+    };
+  }
+
+  componentDidMount() {
+    this.props.updateLayoutTitle({ title: "Example" });
+  }
+
+  onTableRowChanged(rowDataChanged) {
+    console.log("rowModelChange: ", rowDataChanged);
+    rowDataChanged.onRequestDone(true);
+  }
+
+  render() {
+    return (
+      <div className="example-holder">
+        <h2>Table - Example</h2>
+        <FusionTable
+          config={this.state.table}
+          rowModelChange={this.onTableRowChanged}
+        />
+      </div>
+    );
+  }
+}
+'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div style="margin: 20px; background-color: white; padding: 20px;">
+    <p>Table Component example</p>
+    <FusionTable :config="tableBasic" @rowModelChange="onTableRowChanged" />
+  </div>
+</template>'
+                ></fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import { FusionTable } from "@ironsrc/fusion-ui/native/vue";
+
+export const FooComponent = {
+  name: "FooComponent",
+  mounted() {
+    this.$emit("updateLayoutTitle", { title: "Component Example" });
+  },
+  components: {
+    FusionTable
+  },
+  data() {
+    return {
+      tableBasic: {
+        columns: TABLE_COLUMNS,
+        rows: TABLE_ROWS,
+        options: {
+          sortingType: "local"
+        },
+        loading: false
+      }
+    };
+  },
+  methods: {
+    onTableRowChanged: function(rowDataChanged) {
+      console.log(rowDataChanged);
+      rowDataChanged.onRequestDone(true);
+    }
+  }
+};
+
+const TABLE_COLUMNS = [
+  { key: "name", title: "Name", sort: "" },
+  { key: "username", title: "Username", sort: "" },
+  { key: "email", title: "Email", sort: "" },
+  { key: "website", title: "Website" }
+];
+
+const TABLE_ROWS = [];
+export default FooComponent;'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const onLoad = () => {
+    // define data
+    const tableColumns = [
+        { key: "name", title: "Name", sort: "" },
+        { key: "username", title: "Username", sort: "" },
+        { key: "email", title: "Email", sort: "" },
+        { key: "website", title: "Website" }
+    ];
+
+    const tableRows = [];
+
+    const stateConfig = {
+        columns: tableColumns,
+        rows: tableRows,
+        options: {
+            sortingType: "local"
+        },
+        loading: false
+    };
+
+    // get application holder for add dropdown
+    const componentHolder = document.getElementById("component-holder");
+
+    const table = document.createElement("native-fusion-table");
+    table.config = stateConfig;
+
+    table.addEventListener("rowModelChange", e => {
+        console.log(e.detail);
+        // update state
+        //....
+        //....
+        // update state done Ok
+        e.detail.onRequestDone(true);
+    });
+    table.addEventListener("sortChanged", e => console.log(e));
+
+    // append to DOM
+    componentHolder.appendChild(table);
+};
+
+document.addEventListener("DOMContentLoaded", onLoad, false);'
+                ></fusion-code-block>
+            </ng-template>
+            <!--code examples by framework-->
+            <div class="row">
+                <div class="col-12" style="min-height: 60px;">
+                    <fusion-table
+                        id="basicEmptyTableExample"
+                        [columns]="columnsBasic"
+                        [rows]="[]"
+                        [options]="tableOptions"
+                        [loading]="loading$ | async"
+                    ></fusion-table>
+                </div>
+            </div>
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="typeCustomEmptyTable" title="Empty table">
+            <!--code examples by framework-->
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code=' <!--If rows$ - has empty array as value table state will be EMPTY-->
+<fusion-table id="basicTableExample"
+      [columns]="columnsBasic"
+      [rows]="[]"
+      [options]="tableOptionsNoDataCustom"
+      [loading]="loading$ | async"
+      (rowModelChange)="onBasicRowModelChange($event)"
+      (sortChanged)="onBasicSortChanged($event)">
+</fusion-table>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import React from "react";
+import { FusionTable } from "@ironsrc/fusion-ui/native/react";
+
+const TABLE_COLUMNS = [
+  { key: "name", title: "Name", sort: "" },
+  { key: "username", title: "Username", sort: "" },
+  { key: "email", title: "Email", sort: "" },
+  { key: "website", title: "Website" }
+];
+
+const TABLE_ROWS = [];
+
+export default class Foo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      table: {
+        columns: TABLE_COLUMNS,
+        rows: TABLE_ROWS,
+        options: {
+          customNoData: DynamicComponentConfiguration
+        },
+        loading: false
+      }
+    };
+  }
+
+  componentDidMount() {
+    this.props.updateLayoutTitle({ title: "Example" });
+  }
+
+  onTableRowChanged(rowDataChanged) {
+    console.log("rowModelChange: ", rowDataChanged);
+    rowDataChanged.onRequestDone(true);
+  }
+
+  render() {
+    return (
+      <div className="example-holder">
+        <h2>Table - Example</h2>
+        <FusionTable
+          config={this.state.table}
+          rowModelChange={this.onTableRowChanged}
+        />
+      </div>
+    );
+  }
+}
+'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div style="margin: 20px; background-color: white; padding: 20px;">
+    <p>Table Component example</p>
+    <FusionTable :config="tableBasic" @rowModelChange="onTableRowChanged" />
+  </div>
+</template>'
+                ></fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import { FusionTable } from "@ironsrc/fusion-ui/native/vue";
+
+export const FooComponent = {
+  name: "FooComponent",
+  mounted() {
+    this.$emit("updateLayoutTitle", { title: "Component Example" });
+  },
+  components: {
+    FusionTable
+  },
+  data() {
+    return {
+      tableBasic: {
+        columns: TABLE_COLUMNS,
+        rows: TABLE_ROWS,
+        options: {
+          customNoData: DynamicComponentConfiguration
+        },
+        loading: false
+      }
+    };
+  },
+  methods: {
+    onTableRowChanged: function(rowDataChanged) {
+      console.log(rowDataChanged);
+      rowDataChanged.onRequestDone(true);
+    }
+  }
+};
+
+const TABLE_COLUMNS = [
+  { key: "name", title: "Name", sort: "" },
+  { key: "username", title: "Username", sort: "" },
+  { key: "email", title: "Email", sort: "" },
+  { key: "website", title: "Website" }
+];
+
+const TABLE_ROWS = [];
+export default FooComponent;'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const onLoad = () => {
+    // define data
+    const tableColumns = [
+        { key: "name", title: "Name", sort: "" },
+        { key: "username", title: "Username", sort: "" },
+        { key: "email", title: "Email", sort: "" },
+        { key: "website", title: "Website" }
+    ];
+
+    const tableRows = [];
+
+    const stateConfig = {
+        columns: tableColumns,
+        rows: tableRows,
+        options: {
+            customNoData: DynamicComponentConfiguration
+        },
+        loading: false
+    };
+
+    // get application holder for add dropdown
+    const componentHolder = document.getElementById("component-holder");
+
+    const table = document.createElement("native-fusion-table");
+    table.config = stateConfig;
+
+    table.addEventListener("rowModelChange", e => {
+        console.log(e.detail);
+        // update state
+        //....
+        //....
+        // update state done Ok
+        e.detail.onRequestDone(true);
+    });
+    table.addEventListener("sortChanged", e => console.log(e));
+
+    // append to DOM
+    componentHolder.appendChild(table);
+};
+
+document.addEventListener("DOMContentLoaded", onLoad, false);'
+                ></fusion-code-block>
+            </ng-template>
+            <!--code examples by framework-->
+            <div class="row">
+                <div class="col-12" style="min-height: 60px;">
+                    <fusion-table
+                        id="basicCustomEmptyTableExample"
+                        [columns]="columnsBasic"
+                        [rows]="[]"
+                        [options]="tableOptionsNoDataCustom"
+                        [loading]="loading$ | async"
+                    ></fusion-table>
+                </div>
+            </div>
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="typeLoadingTable" title="Loading">
+            <!--code examples by framework-->
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code=' <!--For LOADING state parameter [loading] must be true.-->
+<fusion-table id="basicTableExample"
+      [columns]="columnsBasic"
+      [rows]="rows$ | async"
+      [options]="optionsBasicTotals"
+      [loading]="loading$ | async"
+      (rowModelChange)="onBasicRowModelChange($event)"
+      (sortChanged)="onBasicSortChanged($event)">
+</fusion-table>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import React from "react";
+import { FusionTable } from "@ironsrc/fusion-ui/native/react";
+
+const TABLE_COLUMNS = [
+  { key: "name", title: "Name", sort: "" },
+  { key: "username", title: "Username", sort: "" },
+  { key: "email", title: "Email", sort: "" },
+  { key: "website", title: "Website" }
+];
+
+const TABLE_ROWS = [
+  {
+    name: "Leanne Graham",
+    username: "Bret",
+    email: "Sincere@april.biz",
+    website: "hildegard.org",
+  },
+  {
+    name: "Leanne Graham 2",
+    username: "Bret",
+    email: "Sincere@april.biz",
+    website: "hildegard.org",
+  },
+  {
+    name: "Leanne Graham 3",
+    username: "Bret",
+    email: "Sincere@april.biz",
+    website: "hildegard.org",
+  }
+];
+
+export default class Foo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      table: {
+        columns: TABLE_COLUMNS,
+        rows: TABLE_ROWS,
+        options: {
+          sortingType: "local"
+        },
+        loading: true
+      }
+    };
+  }
+
+  componentDidMount() {
+    this.props.updateLayoutTitle({ title: "Example" });
+  }
+
+  onTableRowChanged(rowDataChanged) {
+    console.log("rowModelChange: ", rowDataChanged);
+    rowDataChanged.onRequestDone(true);
+  }
+
+  render() {
+    return (
+      <div className="example-holder">
+        <h2>Table - Example</h2>
+        <FusionTable
+          config={this.state.table}
+          rowModelChange={this.onTableRowChanged}
+        />
+      </div>
+    );
+  }
+}
+'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div style="margin: 20px; background-color: white; padding: 20px;">
+    <p>Table Component example</p>
+    <FusionTable :config="tableBasic" @rowModelChange="onTableRowChanged" />
+  </div>
+</template>'
+                ></fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import { FusionTable } from "@ironsrc/fusion-ui/native/vue";
+
+export const FooComponent = {
+  name: "FooComponent",
+  mounted() {
+    this.$emit("updateLayoutTitle", { title: "Component Example" });
+  },
+  components: {
+    FusionTable
+  },
+  data() {
+    return {
+      tableBasic: {
+        columns: TABLE_COLUMNS,
+        rows: TABLE_ROWS,
+        options: {
+          sortingType: "local"
+        },
+        loading: true
+      }
+    };
+  },
+  methods: {
+    onTableRowChanged: function(rowDataChanged) {
+      console.log(rowDataChanged);
+      rowDataChanged.onRequestDone(true);
+    }
+  }
+};
+
+const TABLE_COLUMNS = [
+  { key: "name", title: "Name", sort: "" },
+  { key: "username", title: "Username", sort: "" },
+  { key: "email", title: "Email", sort: "" },
+  { key: "website", title: "Website" }
+];
+
+const TABLE_ROWS = [
+  {
+    name: "Leanne Graham",
+    username: "Bret",
+    email: "Sincere@april.biz",
+    website: "hildegard.org",
+  },
+  {
+    name: "Leanne Graham 2",
+    username: "Bret",
+    email: "Sincere@april.biz",
+    website: "hildegard.org",
+  },
+  {
+    name: "Leanne Graham 3",
+    username: "Bret",
+    email: "Sincere@april.biz",
+    website: "hildegard.org",
+  }
+];
+export default FooComponent;'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const onLoad = () => {
+    // define data
+    const tableColumns = [
+        { key: "name", title: "Name", sort: "" },
+        { key: "username", title: "Username", sort: "" },
+        { key: "email", title: "Email", sort: "" },
+        { key: "website", title: "Website" }
+    ];
+
+    const tableRows = [
+        {
+            name: "Leanne Graham",
+            username: "Bret",
+            email: "Sincere@april.biz",
+            website: "hildegard.org",
+            live: true
+        },
+        {
+            name: "Leanne Graham 2",
+            username: "Bret",
+            email: "Sincere@april.biz",
+            website: "hildegard.org",
+            live: true
+        },
+        {
+            name: "Leanne Graham 3",
+            username: "Bret",
+            email: "Sincere@april.biz",
+            website: "hildegard.org",
+        }
+    ];
+
+    const stateConfig = {
+        columns: tableColumns,
+        rows: tableRows,
+        options: {
+            sortingType: "local"
+        },
+        loading: true
+    };
+
+    // get application holder for add dropdown
+    const componentHolder = document.getElementById("component-holder");
+
+    const table = document.createElement("native-fusion-table");
+    table.config = stateConfig;
+
+    table.addEventListener("rowModelChange", e => {
+        console.log(e.detail);
+        // update state
+        //....
+        //....
+        // update state done Ok
+        e.detail.onRequestDone(true);
+    });
+    table.addEventListener("sortChanged", e => console.log(e));
+
+    // append to DOM
+    componentHolder.appendChild(table);
+};
+
+document.addEventListener("DOMContentLoaded", onLoad, false);'
+                ></fusion-code-block>
+            </ng-template>
+            <!--code examples by framework-->
+            <div class="row">
+                <div class="col-12" style="min-height: 60px;">
+                    <fusion-table
+                        id="basicLoadingTableExample"
+                        [columns]="columnsBasic"
+                        [rows]="[]"
+                        [options]="tableOptions"
+                        [loading]="true"
+                    ></fusion-table>
+                </div>
+            </div>
+        </fusion-example-block>
+
+        <br />
+        <!--UI-Component Configuration Doc-->
+        <div class="is-example-title">Configuration</div>
+        <fusion-example-block id="params" title="Parameters" [collapsible]="false">
+            <fusion-code-block
+                lang="js"
+                code="// --- Input parameters:
+id: string;
+options: TableOptions = {};
+columns: TableColumn[] = [];
+rows: any[] | TableRowsGrouped = [];
+loading: boolean;
+sortTableOnDataChanges = false;
+expandedRows: {[key: string]: boolean} = {};
+
+// ---- Interfaces and Enums
+
+interface TableOptions {
+    sortingType?: string;
+    remove?: TableRowRemoveAction;
+    isAllRowsSelectable?: boolean;
+    isLoadingOverlayMode?: boolean; // show data main loading as overlay on the whole table (if not set - default as true)
+    noDataMessage?: string;
+    noDataSubMessage?: string;
+    isGroupedTable?: string;
+    pagination?: TablePaginationOption;
+    hasTotalsRow?: boolean;
+    stickyHeader?: boolean; // is sticky header table
+    hideHeaderOnEmpty?: boolean; // is need to hide columns headers if table empty
+    cellBorders?: boolean;
+    emptyTableIcon?: string;
+    rowStyle?: any;
+    rowHeight?: TableRowHeight;
+    rowTrackingOption?: string;
+    headerRowStyle?: any;
+    rowsExpandableOptions?: TableRowsExpandableOptions;
+    rowsOptions?: {
+        [rowNumber: number]: TableRowOptions;
+        global?: TableRowOptions;
+        headerRow?: TableRowOptions;
+    };
+
+    isRemoveIconHiddenForRow?(row: any): boolean;
+    infoIconForRowOnHover?(row: any): string;
+}
+
+interface TablePaginationOption {
+    enable: boolean;
+    loading?: boolean;
+    handleLoadingFromHost?: boolean;
+}
+
+interface TableRowOptions {
+    [optionName: string]: any;
+}
+
+interface TableRowsExpandableOptions {
+    key: string;
+    columns: TableColumn[];
+    sticky?: boolean;
+    keyToIgnore?: string;
+    expandLevels?: number; // default - 1; MAXIMUM - 2
+    expendChunkSize?: number; // default - 10
+}
+
+interface CellPosition {
+    x: number;
+    y: number;
+}
+
+TableColumn {
+    key: string;
+    title?: string;
+    type?: TableColumnTypeEnum;
+    inputType?: InlineInputType;
+    totalRowTypeAsString?: boolean; // data type represent in total row cell as string. default true
+    component?: any;
+    sort?: string;
+    class?: string;
+    width?: string;
+    style?: any;
+    align?: 'left' | 'center' | 'right';
+    tooltip?: string;
+    tooltipIcon?: string;
+    pipeOptions?: string;
+    dataParser?: (data: any) => any; // used for data parsing (null to Undefined in budget for example)
+    // customErrorMapping example, turn pattern error to decimal error: { pattern: { error: 'decimalMax', values: {'decimalMax': 2}}}
+    customErrorMapping?: {
+        [errorKey: string]: {
+            errorMessageKey: string;
+            textMapping?: {key: string; value: string}[];
+        };
+    };
+    filter?: {
+        options: DropdownOption[];
+        selected?: DropdownOption[];
+        onChange?: EventEmitter<any>;
+    };
+    sticky?: boolean;
+    stickyLeftMargin?: string;
+    dateFormat?: string;
+    ignoreTimeZone?: boolean;
+    colspan?: number;
+    currencyPipeParameters?: CurrencyPipeParameters;
+}
+
+interface CurrencyPipeParameters {
+    currencyCode?: string; // The ISO 4217 currency code, such as USD for the US dollar and EUR for the euro.
+    display?: string; //  code: Show the code (such as 'USD'), `symbol`: Show the symbol (such as '$').
+    digitsInfo?: string; // '1.2-4'; minIntegerDigits.minFractionDigits-maxFractionDigits
+}
+
+interface TableModuleOptions {
+    errorMessages: {[errorKey: string]: string};
+}
+
+interface TableRowChangedData {
+    rowIndex: number;
+    rowModel: any;
+    keyChanged: string;
+    newValue: any;
+    prevValue: any;
+    onRequestDone?: Function;
+}
+
+interface TableRowExpandEmitter {
+    rowIndex: number;
+    row: any;
+    isExpanded: boolean;
+    successCallback: () => void;
+    failedCallback: () => void;
+}
+
+interface TableRowRemoveAction {
+    active?: boolean;
+    icon?: string;
+    tooltip?: {text: string; width?: string};
+    onRemove?: EventEmitter<{rowIndex: number; rowToRemove: any}>;
+}
+
+interface TableRowsGrouped {
+    value: number | string | Type<Component>;
+    options?: {class?: string; hideRemoveIcon?: boolean};
+    children: TableRowsGrouped[] | any[];
+}
+
+enum TableColumnTypeEnum {
+    String,
+    Component,
+    Checkbox,
+    ToggleButton,
+    InputEdit,
+    Date,
+    Currency,
+    Number,
+    Percent
+}
+
+enum TableRowClassesEnum {
+    Selected = 'is-row-selected',
+    Disabled = 'is-row-disabled',
+    Loading = 'is-row-loading'
+}
+
+export enum TableRowHeight {
+    Small = 'small',
+    Medium = 'medium', // default
+    Big = 'big'
+}
+"
+            ></fusion-code-block>
+        </fusion-example-block>
+        <fusion-example-block id="events" title="Events" [collapsible]="false">
+            <fusion-code-block
+                lang="js"
+                code="sortChanged(sortKey: string);
+selectionChanged(selectedRows: any[]);
+rowModelChange(rowChanges: TableRowChangedData);
+scrollDown($event.target);
+expandRow(tableRowExpandData: TableRowExpandEmitter)"
+            ></fusion-code-block>
+        </fusion-example-block>
+        <!--UI-Component Configuration Doc-->
+
+        <fusion-example-block id="customProperties" title="CSS Custom Properties" [collapsible]="false">
+            <fusion-table [columns]="customPropertiesTable.columns" [rows]="customPropertiesTable.rows"> </fusion-table>
+        </fusion-example-block>
+    </div>
+
+    <div class="col-3 is-right-side-menu-holder"><fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu></div>
+</div>

@@ -1,0 +1,783 @@
+<div class="row">
+    <div class="col-9">
+        <!--UI-Component Examples-->
+        <div class="is-example-title">Type</div>
+
+        <fusion-example-block id="typeBasic" title="Basic">
+            <!-- Code Examples-->
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<fusion-month-picker [formControl]="monthPickerBasic"></fusion-month-picker>
+<fusion-month-picker [formControl]="monthPickerBasic" [configuration]="monthPickerConfiguration"></fusion-month-picker>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="...
+monthPickerBasic = new FormControl();
+monthPickerConfiguration: MonthPickerConfiguration = {
+    max: {month: 4, year: 2019},    // May of 2019
+    min: {month: 10, year: 2022},   // November of 2022
+};"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import React from "react";
+import "./Foo.css";
+import {FusionMonthPicker} from "@ironsrc/fusion-ui/native/react";
+
+export default class Foo extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            monthPicker: {
+                configuration: {
+                    placeholder: "please select",
+                }
+            }
+        };
+    }
+
+    componentDidMount() {
+        this.props.updateLayoutTitle({title: "Month Picker"});
+    }
+
+    handleChange(name, value) {
+        this.setState({[name]: {...this.state[name], controlValue: value}});
+    }
+
+    render() {
+        return (
+            <div className="example-holder">
+                <h4>Month Picker example:</h4>
+                <div className="component-holder">
+                    <FusionMonthPicker config={this.state.monthPicker}
+                                       controlValueChange={this.handleChange.bind(this, "monthPicker")}></FusionMonthPicker>
+                </div>
+            </div>
+        );
+    }
+}'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div class="example-holder">
+    <h4>Month Picker base example:</h4>
+    <div class="component-holder">
+        <FusionMonthPicker :config="monthPicker"
+            @controlValueChange="e => handleChange(e, `dropdown`)"/>
+    </div>
+  </div>
+</template>
+'
+                ></fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionMonthPicker} from "@ironsrc/fusion-ui/native/vue";
+
+export const FooComponent = {
+  name: "FooComponent",
+  mounted() {
+    this.$emit("updateLayoutTitle", { title: "Component Example" });
+  },
+  components: {
+    FusionMonthPicker
+  },
+  data() {
+    return {
+      monthPicker: {
+        configuration: {
+          placeholder: "please select",
+        },
+      }
+    }
+  },
+  methods: {
+    handleChange: function(value, key) {
+      this[key] = { ...this[key], controlValue: value };
+    }
+  }
+};
+export default FooComponent;
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<body>
+    ....
+    <div id="componentHolder" style="width: 220px; margin: 50px;"></div>
+    ....
+    ....
+    <script type="application/javascript" src="src/index.js"></script>
+</body>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='// index.js
+const onLoad = () => {
+    // get application holder for add dropdown
+    const componentHolder = document.getElementById("componentHolder");
+
+    // define dropdown configuration
+    const baseConfig = {
+        configuration: {
+            placeholder: "please select",
+        }
+    };
+
+    // insert dropdown element
+    const monthPicker = document.createElement("native-fusion-month-picker");
+    // set dropdown configuration
+    monthPicker.config = baseConfig;
+
+    // add event on selection  changed
+    monthPicker.addEventListener("controlValueChange", e =>
+        console.log(e.detail)
+    );
+
+    // append to DOM
+    componentHolder.appendChild(monthPicker);
+};
+
+document.addEventListener("DOMContentLoaded", onLoad, false);
+'
+                ></fusion-code-block>
+            </ng-template>
+            <!-- Code Examples-->
+            <div style="width: 220px">
+                <fusion-month-picker [formControl]="monthPickerBasic" [configuration]="monthPickerConfiguration"></fusion-month-picker>
+            </div>
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="typeCss" title="Basic with CSS Variables">
+            <!-- Code Examples-->
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<div class="month-picker-wrapper"><fusion-month-picker [formControl]="monthPickerBasic" [configuration]="monthPickerConfiguration"></fusion-month-picker></div>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="css"
+                    class="is-collapsible"
+                    code="...
+.month-picker-wrapper{
+        width: 220px;
+
+        --fu-month-picker-height: 38px;
+        --fu-month-picker-border-radius: 0;
+        --fu-month-picker-color: #163562;
+        --fu-month-picker-calendar-icon-color: #163562;
+        --fu-month-picker-month-font-weight: bold;
+        --fu-month-picker-month-current-dot-color: #163562;
+        --fu-month-picker-month-selected-bg-color: #163562;
+        --fu-month-picker-month-hover-bg-color: #e1e6eb;
+        --fu-month-picker-month-disabled-color: #95a6b8;
+}
+..."
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="...
+monthPickerBasic = new FormControl({year:2021, month: 1});
+monthPickerConfiguration: MonthPickerConfiguration = {
+    max: {month: 4, year: 2019},    // May of 2019
+    min: {month: 10, year: 2022},   // November of 2022
+};"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import React from "react";
+import "./Foo.css";
+import {FusionMonthPicker} from "@ironsrc/fusion-ui/native/react";
+
+export default class Foo extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            monthPicker: {
+                configuration: {
+                    placeholder: "please select",
+                },
+                controlValue: {year: 2021, month: 4},
+            }
+        };
+    }
+
+    componentDidMount() {
+        this.props.updateLayoutTitle({title: "Month Picker"});
+    }
+
+    handleChange(name, value) {
+        this.setState({[name]: {...this.state[name], controlValue: value}});
+    }
+
+    render() {
+        return (
+            <div className="example-holder">
+                <h4>Month Picker example:</h4>
+                <div className="component-holder">
+                    <FusionMonthPicker config={this.state.monthPicker}
+                                       controlValueChange={this.handleChange.bind(this, "monthPicker")}></FusionMonthPicker>
+                </div>
+            </div>
+        );
+    }
+}'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="css"
+                    class="is-collapsible"
+                    code="...
+.component-holder{
+        width: 220px;
+
+        --fu-month-picker-height: 38px;
+        --fu-month-picker-border-radius: 0;
+        --fu-month-picker-color: #163562;
+        --fu-month-picker-calendar-icon-color: #163562;
+        --fu-month-picker-month-font-weight: bold;
+        --fu-month-picker-month-current-dot-color: #163562;
+        --fu-month-picker-month-selected-bg-color: #163562;
+        --fu-month-picker-month-hover-bg-color: #e1e6eb;
+        --fu-month-picker-month-disabled-color: #95a6b8;
+}
+..."
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div class="example-holder">
+    <h4>Month Picker base example:</h4>
+    <div class="component-holder">
+        <FusionMonthPicker :config="monthPicker"
+            @controlValueChange="e => handleChange(e, `dropdown`)"/>
+    </div>
+  </div>
+</template>
+'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="css"
+                    class="is-collapsible"
+                    code="...
+.component-holder{
+        width: 220px;
+
+        --fu-month-picker-height: 38px;
+        --fu-month-picker-border-radius: 0;
+        --fu-month-picker-color: #163562;
+        --fu-month-picker-calendar-icon-color: #163562;
+        --fu-month-picker-month-font-weight: bold;
+        --fu-month-picker-month-current-dot-color: #163562;
+        --fu-month-picker-month-selected-bg-color: #163562;
+        --fu-month-picker-month-hover-bg-color: #e1e6eb;
+        --fu-month-picker-month-disabled-color: #95a6b8;
+}
+..."
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionMonthPicker} from "@ironsrc/fusion-ui/native/vue";
+
+export const FooComponent = {
+  name: "FooComponent",
+  mounted() {
+    this.$emit("updateLayoutTitle", { title: "Component Example" });
+  },
+  components: {
+    FusionMonthPicker
+  },
+  data() {
+    return {
+      monthPicker: {
+        configuration: {
+          placeholder: "please select",
+        },
+        controlValue: {year: 2021, month: 2},
+      }
+    }
+  },
+  methods: {
+    handleChange: function(value, key) {
+      this[key] = { ...this[key], controlValue: value };
+    }
+  }
+};
+export default FooComponent;
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<body>
+    ....
+    <div id="componentHolder" style="width: 220px; margin: 50px;"></div>
+    ....
+    ....
+    <script type="application/javascript" src="src/index.js"></script>
+</body>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="css"
+                    class="is-collapsible"
+                    code="...
+#component-holder{
+        width: 220px;
+        margin: 50px;
+
+        --fu-month-picker-height: 38px;
+        --fu-month-picker-border-radius: 0;
+        --fu-month-picker-color: #163562;
+        --fu-month-picker-calendar-icon-color: #163562;
+        --fu-month-picker-month-font-weight: bold;
+        --fu-month-picker-month-current-dot-color: #163562;
+        --fu-month-picker-month-selected-bg-color: #163562;
+        --fu-month-picker-month-hover-bg-color: #e1e6eb;
+        --fu-month-picker-month-disabled-color: #95a6b8;
+}
+..."
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='// index.js
+const onLoad = () => {
+    // get application holder for add dropdown
+    const componentHolder = document.getElementById("componentHolder");
+
+    // define dropdown configuration
+    const baseConfig = {
+        configuration: {
+            placeholder: "please select",
+        },
+        controlValue: {year: 2021, month: 2},
+    };
+
+    // insert dropdown element
+    const monthPicker = document.createElement("native-fusion-month-picker");
+    // set dropdown configuration
+    monthPicker.config = baseConfig;
+
+    // add event on selection  changed
+    monthPicker.addEventListener("controlValueChange", e =>
+        console.log(e.detail)
+    );
+
+    // append to DOM
+    componentHolder.appendChild(monthPicker);
+};
+
+document.addEventListener("DOMContentLoaded", onLoad, false);
+'
+                ></fusion-code-block>
+            </ng-template>
+            <!-- Code Examples-->
+
+            <div class="fu-css-vars-using" style="width: 220px">
+                <fusion-month-picker [formControl]="monthPicker2" [configuration]="monthPickerConfiguration"></fusion-month-picker>
+            </div>
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="stateDisabled" title="Disabled">
+            <!-- Code Examples-->
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<fusion-month-picker [formControl]="monthPickerDisabled"></fusion-month-picker>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="...
+monthPickerDisabled = new FormControl({value: {year: 2021, month: 2}, disabled: true});"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import React from "react";
+import "./Foo.css";
+import {FusionMonthPicker} from "@ironsrc/fusion-ui/native/react";
+
+export default class Foo extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            monthPicker: {
+                controlValue: {year: 2021, month: 4},
+                disabled: true
+            }
+        };
+    }
+
+    componentDidMount() {
+        this.props.updateLayoutTitle({title: "Month Picker"});
+    }
+
+    handleChange(name, value) {
+        this.setState({[name]: {...this.state[name], controlValue: value}});
+    }
+
+    render() {
+        return (
+            <div className="example-holder">
+                <h4>Month Picker example:</h4>
+                <div className="component-holder">
+                    <FusionMonthPicker config={this.state.monthPicker}
+                                       controlValueChange={this.handleChange.bind(this, "monthPicker")}></FusionMonthPicker>
+                </div>
+            </div>
+        );
+    }
+}'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div class="example-holder">
+    <h4>Month Picker base example:</h4>
+    <div class="component-holder">
+        <FusionMonthPicker :config="monthPicker"
+            @controlValueChange="e => handleChange(e, `dropdown`)"/>
+    </div>
+  </div>
+</template>
+'
+                ></fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionMonthPicker} from "@ironsrc/fusion-ui/native/vue";
+
+export const FooComponent = {
+  name: "FooComponent",
+  mounted() {
+    this.$emit("updateLayoutTitle", { title: "Component Example" });
+  },
+  components: {
+    FusionMonthPicker
+  },
+  data() {
+    return {
+      monthPicker: {
+         controlValue: {year: 2021, month: 4},
+         disabled: true
+      }
+    }
+  },
+  methods: {
+    handleChange: function(value, key) {
+      this[key] = { ...this[key], controlValue: value };
+    }
+  }
+};
+export default FooComponent;
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<body>
+    ....
+    <div id="componentHolder" style="width: 220px; margin: 50px;"></div>
+    ....
+    ....
+    <script type="application/javascript" src="src/index.js"></script>
+</body>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='// index.js
+const onLoad = () => {
+    // get application holder for add dropdown
+    const componentHolder = document.getElementById("componentHolder");
+
+    // define dropdown configuration
+    const baseConfig = {
+        controlValue: {year: 2021, month: 2},
+        disabled: true
+    };
+
+    // insert dropdown element
+    const monthPicker = document.createElement("native-fusion-month-picker");
+    // set dropdown configuration
+    monthPicker.config = baseConfig;
+
+    // add event on selection  changed
+    monthPicker.addEventListener("controlValueChange", e =>
+        console.log(e.detail)
+    );
+
+    // append to DOM
+    componentHolder.appendChild(monthPicker);
+};
+
+document.addEventListener("DOMContentLoaded", onLoad, false);
+'
+                ></fusion-code-block>
+            </ng-template>
+            <!-- Code Examples-->
+
+            <div style="width: 220px">
+                <fusion-month-picker [formControl]="monthPickerDisabled" [configuration]="monthPickerConfiguration"></fusion-month-picker>
+            </div>
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="stateError" title="Error">
+            <!-- Code Examples-->
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<fusion-month-picker [formControl]="monthPickerRequired" [error]="errorMessage" [configuration]="monthPickerConfiguration"></fusion-month-picker>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="...
+monthPickerRequired = new FormControl(null, {validators: Validators.required});
+monthPickerConfiguration: MonthPickerConfiguration = {
+    max: {month: 4, year: 2019},    // May of 2019
+    min: {month: 10, year: 2022},   // November of 2022
+};
+
+get errorMessage(): string {
+   return this.monthPickerRequired.valid ? '' : 'This is a mandatory field';
+};"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import React from "react";
+import "./Foo.css";
+import {FusionMonthPicker} from "@ironsrc/fusion-ui/native/react";
+
+export default class Foo extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            monthPickerError: {
+                configuration: {
+                    placeholder: "Select month",
+                },
+                error: "This is a mandatory field"
+            }
+        };
+    }
+
+    componentDidMount() {
+        this.props.updateLayoutTitle({title: "Month Picker"});
+    }
+
+    handleChange(name, value) {
+        this.setState({[name]: {...this.state[name], controlValue: value, error: null}});
+    }
+
+    render() {
+        return (
+            <div className="example-holder">
+                <h4>Month Picker example:</h4>
+                <div className="component-holder">
+                    <FusionMonthPicker config={this.state.monthPickerError}
+                                       controlValueChange={this.handleChange.bind(this, "monthPicker")}></FusionMonthPicker>
+                </div>
+            </div>
+        );
+    }
+}'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div class="example-holder">
+    <h4>Month Picker base example:</h4>
+    <div class="component-holder">
+        <FusionMonthPicker :config="monthPicker"
+            @controlValueChange="e => handleChange(e, `dropdown`)"/>
+    </div>
+  </div>
+</template>
+'
+                ></fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionMonthPicker} from "@ironsrc/fusion-ui/native/vue";
+
+export const FooComponent = {
+  name: "FooComponent",
+  mounted() {
+    this.$emit("updateLayoutTitle", { title: "Component Example" });
+  },
+  components: {
+    FusionMonthPicker
+  },
+  data() {
+    return {
+      monthPicker: {
+        configuration: {
+            placeholder: "Select month",
+        },
+        error: "This is a mandatory field"
+      }
+    }
+  },
+  methods: {
+    handleChange: function(value, key) {
+      this[key] = { ...this[key], controlValue: value, error: null };
+    }
+  }
+};
+export default FooComponent;
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<body>
+    ....
+    <div id="componentHolder" style="width: 220px; margin: 50px;"></div>
+    ....
+    ....
+    <script type="application/javascript" src="src/index.js"></script>
+</body>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='// index.js
+const onLoad = () => {
+    // get application holder for add dropdown
+    const componentHolder = document.getElementById("componentHolder");
+
+    // define dropdown configuration
+    const baseConfig = {
+        configuration: {
+            placeholder: "please select",
+        },
+        error: "This is a mandatory field"
+    };
+
+    // insert dropdown element
+    const monthPicker = document.createElement("native-fusion-month-picker");
+    // set dropdown configuration
+    monthPicker.config = baseConfig;
+
+    // add event on selection  changed
+    monthPicker.addEventListener("controlValueChange", e =>
+        console.log(e.detail)
+    );
+
+    // append to DOM
+    componentHolder.appendChild(monthPicker);
+};
+
+document.addEventListener("DOMContentLoaded", onLoad, false);
+'
+                ></fusion-code-block>
+            </ng-template>
+            <!-- Code Examples-->
+
+            <div style="width: 220px">
+                <fusion-month-picker
+                    [formControl]="monthPickerError"
+                    [configuration]="monthPickerConfiguration"
+                    [error]="errorMessage"
+                ></fusion-month-picker>
+            </div>
+        </fusion-example-block>
+
+        <!--UI-Component Examples-->
+        <!--UI-Component Configuration Doc-->
+
+        <div class="is-example-title">Configuration</div>
+        <fusion-example-block id="params" title="Parameters" [collapsible]="false">
+            <fusion-code-block
+                lang="js"
+                code="
+export interface MonthPicker {
+    year: number;
+    month: number; // 0 - January
+}
+
+export interface MonthPickerPlaceholder {
+    text: string;    // Placeholder if month not selected - default 'Select'
+    prefix?: string; // Prefix for selected - default 'Month: '
+    format?: string; // Placeholder Month Year format - default 'MMM yyyy'
+}
+
+export interface MonthPickerConfiguration {
+    max?: MonthPicker;
+    min?: MonthPicker;
+    placeholder?: string | MonthPickerPlaceholder; // if string - MonthPickerPlaceholder.text will update with value
+}
+"
+            ></fusion-code-block>
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="events" title="Events" [collapsible]="false">
+            <fusion-code-block
+                lang="js"
+                code="formControl                                             // Angular
+controlValueChange(controlValue: {date: new Date()})    // in Native"
+            ></fusion-code-block>
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="cssVars" title="CSS Custom Properties" [collapsible]="false">
+            <fusion-table [columns]="customPropertiesTable.columns" [rows]="customPropertiesTable.rows"> </fusion-table>
+        </fusion-example-block>
+
+        <!--UI-Component Configuration Doc-->
+    </div>
+
+    <div class="col-3 is-right-side-menu-holder">
+        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+    </div>
+</div>

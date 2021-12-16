@@ -1,0 +1,28 @@
+@import '../../../../../style/scss/vars/vars';
+@import '../../../../../style/scss/vars/mixins';
+@import '../../../../../style/scss/vars/border';
+@import '../modal_vars-v2';
+
+:host:not(.fusion-style-v1){
+    @extend %border-box-normalize;
+    .modal-footer {
+        border-top: solid 1px $fu-light-300;
+        padding: 12px 15px;
+        box-sizing: border-box;
+
+        div.footer {
+            text-align: right;
+            button {
+                & + button {
+                    margin-left: 7px;
+                }
+            }
+        }
+        .is-error-message {
+            @extend %font-body;
+            font-size: 13px;
+            color: $fu-negative-500;
+            margin-right: 10px;
+        }
+    }
+}

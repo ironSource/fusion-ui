@@ -1,0 +1,12 @@
+<div class="main-menu-wrapper"
+    (mouseleave)="mouseLeave.emit($event)"
+    (mouseenter)="mouseEnter.emit($event)"
+>
+
+    <fusion-menu-list
+        (routeChanged)="routeChanged.emit()"
+        [menuItems]="menuItems"
+        (menuItemClicked)="menuItemClicked.emit($event)"
+        (menuAdditionalItemClicked)="menuAdditionalItemClicked.emit($event)"
+    ></fusion-menu-list>
+</div>

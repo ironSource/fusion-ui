@@ -1,0 +1,22 @@
+<div
+    #popupContainer
+    class="popupContainer"
+    [ngClass]="popupData?.location"
+    [style.width.px]="popupData?.size?.width"
+    [style.height.px]="popupData?.size?.height"
+    (fusionClickOutside)="onClickOutside($event)"
+    (window:resize)="onResize()"
+>
+    <fusion-dynamic-components
+        #dynamicContent
+        *ngIf="popupData?.component?.type || popupData?.element; else template"
+        [element]="popupData?.element"
+        [component]="popupData?.component.type"
+        [componentData]="popupData?.component.data"
+    >
+    </fusion-dynamic-components>
+
+    <ng-template #template>
+        <ng-content></ng-content>
+    </ng-template>
+</div>

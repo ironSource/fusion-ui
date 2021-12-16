@@ -1,0 +1,86 @@
+<div class="doc-page">
+    <div class="row">
+        <div class="col-9">
+            <h2>Toast Service</h2>
+            <fusion-example-block id="howToUse" title="How to use " [collapsible]="false">
+                <ng-template fusionExampleBlock="Angular">
+                    1. inject ToastService in constructor
+                    <fusion-code-block lang="js" code="constructor(..., private toastService: ToastService, ....) {}"></fusion-code-block>
+                    <br />
+                    2. Use it by this.toastService.show(configuration: ToastEntity); method:
+                    <fusion-code-block
+                        lang="js"
+                        code="this.toastService.show({
+    type: 'success',
+    text: 'Well done! You successfully read this'
+});"
+                    ></fusion-code-block>
+                </ng-template>
+                <ng-template fusionExampleBlock="React">
+                    Just use it by this.toastService.show(configuration: ToastEntity); method:
+                    <fusion-code-block
+                        lang="js"
+                        code="window.fusion.services.toastService.show({
+    type: 'success',
+    text: 'Well done! You successfully read this'
+});"
+                    ></fusion-code-block>
+                </ng-template>
+                <ng-template fusionExampleBlock="Vue">
+                    Just use it by this.toastService.show(configuration: ToastEntity); method:
+                    <fusion-code-block
+                        lang="js"
+                        code="window.fusion.services.toastService.show({
+    type: 'success',
+    text: 'Well done! You successfully read this'
+});"
+                    ></fusion-code-block>
+                </ng-template>
+                <ng-template fusionExampleBlock="Native">
+                    Just use it by this.toastService.show(configuration: ToastEntity); method:
+                    <fusion-code-block
+                        lang="js"
+                        code="window.fusion.services.toastService.show({
+    type: 'success',
+    text: 'Well done! You successfully read this'
+});"
+                    ></fusion-code-block>
+                </ng-template>
+            </fusion-example-block>
+            <br />
+            <fusion-example-block id="entities" title="Entities" [collapsible]="false">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="js"
+                        code="export interface ToastEntity {
+    text?: string;
+    type?: ToastType;
+    icon?: string; // icon name that will used inserted of type icon. Type must be not defined
+    image?: string; // image URL that will used inserted of type icon. Type must be not defined
+    custom?: DynamicComponentConfiguration; // toast dynamic content
+    duration?: number; // shown duration in seconds. default null.
+    location?: ToastLocation; // used without ToastService (default 'top-right')
+}
+
+export type ToastType = 'success' | 'alert' | 'error' | 'warning';
+export type ToastLocation = 'top-right' | 'top-left' | 'top-center' | 'bottom-right' | 'bottom-left' | 'bottom-center';
+
+// for dynamic content using
+export interface DynamicComponentConfiguration {
+    component?: {
+        type: Type<Component>;
+        data?: any;
+    };
+    element?: Node;
+    htmlSnippet?: string;
+}"
+                    ></fusion-code-block>
+                </ng-template>
+            </fusion-example-block>
+        </div>
+
+        <div class="col-3 is-right-side-menu-holder">
+            <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+        </div>
+    </div>
+</div>

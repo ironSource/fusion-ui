@@ -1,0 +1,10 @@
+@import '../../../../styles/vars';
+
+:host{
+    .chart-holder{
+        height: 400px;
+    }
+    .chart-doughnut-holder{
+        height: 150px;
+    }
+}

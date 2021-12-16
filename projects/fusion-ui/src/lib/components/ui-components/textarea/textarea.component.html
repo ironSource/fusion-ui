@@ -1,0 +1,12 @@
+<textarea
+  class="is-textarea"
+  [placeholder]="placeholder"
+  [readonly]="readonly"
+  [required]="required"
+  minlength="1"
+  [name]="name"
+  [ngClass]="{disabled: isDisabled, resize: resize, error:error}"
+  [ngModel]="model"
+  (ngModelChange)="onChange($event)"
+  [disabled]="isDisabled"></textarea>
+<div class="error-msg" *ngIf="error" [innerHTML]="error"></div>

@@ -1,0 +1,27 @@
+@import '../../../../styles/vars';
+
+
+:host {
+  .is-example-row {
+      margin-bottom: 30px;
+      &:last-child {
+          margin-bottom: 0;
+      }
+  }
+  .is-txt-lbl{
+      padding: 5px;
+      @extend %font5;
+      color: $light-800;
+  }
+    label{
+        @extend %font-label;
+        color: $fu-dark-200;
+        position: relative;
+        @include icon-style(null, $fu-dark-200, 12px, false, true){
+            position: absolute;
+            right: -15px;
+            top: -1px;
+        }
+        @include icon-style(null, $fu-dark-600, 12px, false, true, 0, true)
+    }
+}

@@ -1,0 +1,69 @@
+@import '../../../../style/scss/vars/vars';
+
+%stateFocus {
+    background-color: $fu-light-100;
+    border-bottom: solid 2px $fu-primary-500;
+    padding-bottom: 8px;
+    outline: none;
+    box-shadow: none;
+}
+
+:host:not(.fusion-style-v1) {
+    height: inherit;
+    @extend %border-box-normalize;
+    textarea {
+        border: none;
+        border-radius: 4px;
+        box-sizing: border-box;
+        background-color: $fu-light-100;
+        resize: none;
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        color: $fu-dark-300;
+        min-height: 50px;
+        @extend %font-body;
+        &::placeholder {
+            @extend %font-body;
+            color: $fu-light-800;
+        }
+        &:hover{
+            background-color: $fu-light-200;
+        }
+        &:focus {
+            @extend %stateFocus;
+        }
+        &.resize {
+            resize: both;
+        }
+        &.disabled,
+        &:disabled {
+            pointer-events: all;
+            color: $fu-dark-200;
+            &:hover {
+                cursor: not-allowed;
+            }
+            &:focus {
+                border-bottom: none;
+                padding-bottom: 10px;
+            }
+            resize: none;
+        }
+        &.error {
+            background-color: $fu-negative-100;
+            &:focus {
+                @extend %stateFocus;
+                & + .error-msg{
+                    display: none;
+                }
+            }
+        }
+    }
+
+
+    .error-msg {
+        @extend %font-captionRegular;
+        color: $fu-negative-500;
+        margin-top: -7px;
+    }
+}

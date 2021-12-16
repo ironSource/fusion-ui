@@ -1,0 +1,413 @@
+<div class="row" *ngIf="selectedVersion$ | async as currentStyleVersion">
+    <div class="col-9">
+        <!--UI-Component Examples-->
+
+        <div class="is-example-title">Types</div>
+
+        <fusion-example-block id="tglBasic" title="Basic">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<fusion-toggle [formControl]="toggleFormControl"
+               [label]="toggleLabel"
+               (modelChange)="onToggleChanged($event)">
+</fusion-toggle>
+
+<!--For Style V2 also supported custom background color for ON (selected) position-->
+<fusion-toggle [model]="false"
+               size="small"
+               customCheckedBackgroundColor="#FEA222"></fusion-toggle>
+
+'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      toggle: {
+        label: "Off State",
+        controlValue: true
+      }
+    }
+  }
+
+  handleChange(name, value) {
+    this.setState({[name]: {...this.state[name], controlValue: value}})
+  }
+
+  render() {
+    return (
+      <FusionToggle config={this.state.toggle} modelChange={this.handleChange.bind(this, "toggle")} />
+    )
+  }
+}
+
+export default App;'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div id="app">
+    <FusionToggle :config="toggle" @modelChange="e => handleChange(e, &#39;toggle&#39;)" />
+  </div>
+</template>'
+                ></fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionToggle} from "@ironsrc/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+      toggle: {
+        label: "Off State",
+        controlValue: true
+      }
+    }
+  },
+  components: {
+    FusionToggle
+  },
+  methods: {
+    handleChange: function(value, key){
+      this[key] = {...this[key], controlValue: value};
+    }
+  }
+}
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const toggle = document.createElement("native-fusion-toggle");
+toggle.config = {
+    label: "Off State",
+};
+
+toggle.addEventListener("modelChange", e => console.log(e.detail));
+
+toggle.setAttribute("name", "toggle");
+document.body.appendChild(toggle);'
+                ></fusion-code-block>
+            </ng-template>
+
+            <div class="row">
+                <div class="col-1">
+                    <fusion-toggle
+                        [formControl]="toggleFormControl"
+                        [label]="toggleLabel"
+                        (modelChange)="onToggleChanged($event)"
+                    ></fusion-toggle>
+                </div>
+                <div class="col-2">
+                    <fusion-toggle
+                        [formControl]="toggleSmallFormControl"
+                        size="small"
+                        (modelChange)="onToggleSmallChanged($event)"
+                    ></fusion-toggle>
+                    &nbsp;(size="small")
+                </div>
+                <div class="col-9" *ngIf="currentStyleVersion === styleVersion.V2">
+                    <fusion-toggle [model]="false" size="small" customCheckedBackgroundColor="#FEA222"></fusion-toggle>
+                    &nbsp;(size="small" customCheckedBackgroundColor="#FEA222")
+                </div>
+            </div>
+        </fusion-example-block>
+
+        <div class="is-example-title">States</div>
+
+        <fusion-example-block id="tglDisabled" title="Disabled">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<fusion-toggle [formControl]="toggleFormControl"
+               [isDisabled]="true"
+               label="On State"
+></fusion-toggle>
+
+<fusion-toggle [formControl]="toggleFormControl2"
+               [isDisabled]="true"
+               label="Off State">
+</fusion-toggle>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      toggle: {
+        label: "Off State",
+        controlValue: true,
+        isDisabled: true
+      }
+    }
+  }
+
+  handleChange(name, value) {
+    this.setState({[name]: {...this.state[name], controlValue: value}})
+  }
+
+  render() {
+    return (
+      <FusionToggle config={this.state.toggle} modelChange={this.handleChange.bind(this, "toggle")} />
+    )
+  }
+}
+
+export default App;'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div id="app">
+    <FusionToggle :config="toggle" @modelChange="e => handleChange(e, &#39;toggle&#39;)" />
+  </div>
+</template>'
+                ></fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionToggle} from "@ironsrc/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+      toggle: {
+        label: "Off State",
+        controlValue: true,
+        isDisabled: true
+      }
+    }
+  },
+  components: {
+    FusionToggle
+  },
+  methods: {
+    handleChange: function(value, key){
+      this[key] = {...this[key], controlValue: value};
+    }
+  }
+}
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const toggle = document.createElement("native-fusion-toggle");
+toggle.config = {
+  label: "Off State",
+  isDisabled: true
+};
+
+toggle.addEventListener("modelChange", e => console.log(e.detail));
+toggle.setAttribute("name", "toggle");
+document.body.appendChild(toggle);'
+                ></fusion-code-block>
+            </ng-template>
+
+            <div class="row">
+                <div class="col-1">
+                    <fusion-toggle [model]="true" [isDisabled]="true" [label]="'Live'"></fusion-toggle>
+                </div>
+                <div class="col-1">
+                    <fusion-toggle [model]="true" [isDisabled]="true" size="small"></fusion-toggle>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-1">
+                    <fusion-toggle [model]="false" [isDisabled]="true" label="Off state" [label]="'Off'"></fusion-toggle>
+                </div>
+                <div class="col-1">
+                    <fusion-toggle [model]="false" [isDisabled]="true" size="small"></fusion-toggle>
+                </div>
+            </div>
+        </fusion-example-block>
+
+        <fusion-example-block *ngIf="currentStyleVersion === styleVersion.V1" id="tglLoading" title="Loading">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<fusion-toggle [formControl]="toggleFormControl"
+               [loading]="true"
+               label="On State">
+</fusion-toggle>
+
+<fusion-toggle [formControl]="toggleFormControl2"
+               [loading]="true"
+               label="Off State">
+</fusion-toggle>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      toggle: {
+        label: "Off State",
+        controlValue: true,
+        loading: true
+      }
+    }
+  }
+
+  handleChange(name, value) {
+    this.setState({[name]: {...this.state[name], controlValue: value}})
+  }
+
+  render() {
+    return (
+      <FusionToggle config={this.state.toggle} modelChange={this.handleChange.bind(this, "toggle")} />
+    )
+  }
+}
+
+export default App;'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div id="app">
+    <FusionToggle :config="toggle" @modelChange="e => handleChange(e, &#39;toggle&#39;)" />
+  </div>
+</template>'
+                ></fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionToggle} from "@ironsrc/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+      toggle: {
+        label: "Off State",
+        controlValue: true,
+        loading: true
+      }
+    }
+  },
+  components: {
+    FusionToggle
+  },
+  methods: {
+    handleChange: function(value, key){
+      this[key] = {...this[key], controlValue: value};
+    }
+  }
+}
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const toggle = document.createElement("native-fusion-toggle");
+toggle.config = {
+  label: "Off State",
+  loading: true
+};
+
+toggle.addEventListener("modelChange", e => console.log(e.detail));
+toggle.setAttribute("name", "toggle");
+document.body.appendChild(toggle);'
+                ></fusion-code-block>
+            </ng-template>
+
+            <div class="row">
+                <div class="col-1">
+                    <fusion-toggle [model]="true" [loading]="true" [label]="'Live'"></fusion-toggle>
+                </div>
+                <div class="col-1">
+                    <fusion-toggle [model]="true" [loading]="true" size="small"></fusion-toggle>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-1">
+                    <fusion-toggle [model]="false" [loading]="true" [label]="'Off'"></fusion-toggle>
+                </div>
+                <div class="col-1">
+                    <fusion-toggle [model]="false" [loading]="true" size="small"></fusion-toggle>
+                </div>
+            </div>
+        </fusion-example-block>
+        <!--UI-Component Examples-->
+        <!--UI-Component Configuration Doc-->
+        <div class="is-example-title">Configuration</div>
+        <fusion-example-block id="params" title="Parameters" [collapsible]="false">
+            <fusion-code-block
+                lang="js"
+                code='label: string
+value: string
+name: string
+isDisabled: boolean
+loading: boolean
+model: boolean
+size: "medium" | "small"                  // default - medium
+customCheckedBackgroundColor: string      // css color value like "#FEA222" - work in UI Style V2.
+
+formControl: FormControl - value: boolean // Angular
+controlValue: boolean                     // Native'
+            ></fusion-code-block>
+        </fusion-example-block>
+
+        <fusion-example-block id="events" title="Events" [collapsible]="false">
+            <fusion-code-block lang="js" code="modelChange(state: boolean)"></fusion-code-block>
+        </fusion-example-block>
+        <!--UI-Component Configuration Doc-->
+    </div>
+
+    <div class="col-3 is-right-side-menu-holder">
+        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+    </div>
+</div>

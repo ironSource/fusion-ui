@@ -1,0 +1,76 @@
+@import '../../../../style/scss/vars/vars';
+@import '../../../../style/scss/vars/mixins';
+
+:host.fusion-style-v1 {
+  @extend %reset;
+  height: 24px;
+  line-height: 23px;
+  position: relative;
+  background-color: $light-300;
+  display: inline-block;
+  padding: 0 8px;
+  border-radius: 24px;
+  border: solid 1px transparent;
+  @extend %font6;
+  color: $dark-300;
+
+  margin-right: 4px;
+
+  @include icon-style('tag-icon', $light-900, 13px, true, true){
+      vertical-align: middle;
+  }
+
+  & > span {
+    min-width: 54px;
+    max-width: 250px;
+    color: $dark-300;
+    @extend %font14;
+    margin-left: 2px;
+    vertical-align: top;
+    @extend %truncate;
+    display: inline-block;
+  }
+
+  &.disabled {
+    @extend %disabled;
+    background-color: $light-300;
+    & > span {
+       color: $light-800;
+    }
+  }
+
+  &:hover {
+    color: $dark-300;
+    background-color: $light-500;
+    border: solid 1px $light-700;
+  }
+
+  &.selected {
+    background-color: $primary-500;
+    color: $White;
+    border: solid 1px $primary-500;
+    cursor: pointer;
+
+    fusion-icon {
+      svg * {
+        fill: $White;
+      }
+    }
+  }
+
+  &.with-closed-icon {
+    padding-right: 20px;
+    cursor: default;
+    @include icon-style('icon-close', ('.background': $light-700, '.inner': $White), 12px, true, true) {
+      position: absolute;
+      vertical-align: middle;
+      right: 5px;
+      top: 1px;
+      cursor: pointer;
+    }
+
+    & > span {
+      width: calc(100% - 30px);
+    }
+  }
+}

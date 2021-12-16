@@ -1,0 +1,139 @@
+<div class="row">
+    <div class="col-9">
+        <!--UI-Component Examples-->
+        <fusion-example-block id="textStyles" title="Text Styles" [collapsible]="false">
+            <div class="is-note-holder">
+                <strong>Please Note:</strong> we put a CSS code. <span class="is-code-example">”webkit-font-smoothing:antialiased”</span>
+            </div>
+
+            <div class="row is-typography-holder">
+                <div class="col-11">
+                    <div class="is-font-example fu-font1">Heading Large</div>
+                    <div class="is-font-description">Displayed on each page title header, Grotesk Display (Bold 22px)
+                    </div>
+                </div>
+                <div class="col-1 is-font-css-name">&lt;font1&gt;</div>
+            </div>
+
+            <div class="row is-typography-holder">
+                <div class="col-11">
+                    <div class="is-font-example fu-font2">Heading Medium</div>
+                    <div class="is-font-description">Displayed on each modal title header, Grotesk Text (Bold 18px)
+                    </div>
+                </div>
+                <div class="col-1 is-font-css-name">&lt;font2&gt;</div>
+            </div>
+
+            <div class="row is-typography-holder">
+                <div class="col-11">
+                    <div class="is-font-example fu-font3">Heading Small</div>
+                    <div class="is-font-description">Displayed on each graph titel, Grotesk Text (Bold 15px)</div>
+                </div>
+                <div class="col-1 is-font-css-name">&lt;font3&gt;</div>
+            </div>
+
+            <div class="row is-typography-holder">
+                <div class="col-11">
+                    <div class="is-font-example fu-font4"><span class="deprecated">Body Text Content, Bold</span> DEPRECATED</div>
+                    <div class="is-font-description">OpenSans (Semibold 13px)</div>
+                </div>
+                <div class="col-1 is-font-css-name">&lt;font4&gt;</div>
+            </div>
+
+            <div class="row is-typography-holder">
+                <div class="col-11">
+                    <div class="is-font-example fu-font5"><span class="deprecated">Body Text Content</span> DEPRECATED</div>
+                    <div class="is-font-description">OpenSans (Regular 13px)</div>
+                </div>
+                <div class="col-1 is-font-css-name">&lt;font5&gt;</div>
+            </div>
+
+            <div class="row is-typography-holder">
+                <div class="col-11">
+                    <div class="is-font-example fu-font6"><span class="deprecated">Small Body Text Content, Bold</span> DEPRECATED</div>
+                    <div class="is-font-description">OpenSans (Semibold 12px)</div>
+                </div>
+                <div class="col-1 is-font-css-name">&lt;font6&gt;</div>
+            </div>
+
+            <div class="row is-typography-holder">
+                <div class="col-11">
+                    <div class="is-font-example fu-font7"><span class="deprecated">Small Body Text Content</span> DEPRECATED</div>
+                    <div class="is-font-description">OpenSans (Regular 12px)</div>
+                </div>
+                <div class="col-1 is-font-css-name">&lt;font7&gt;</div>
+            </div>
+
+            <div class="row is-typography-holder">
+                <div class="col-11">
+                    <div class="is-font-example fu-font8">Heading Label</div>
+                    <div class="is-font-description">Displayed on sub section header and sidebar menu, Grotesk Text
+                        (Medium 11px, Uppercase)
+                    </div>
+                </div>
+                <div class="col-1 is-font-css-name">&lt;font8&gt;</div>
+            </div>
+
+            <div class="row is-typography-holder">
+                <div class="col-11">
+                    <div class="is-font-example fu-font9">Small Body Text Content, Bold</div>
+                    <div class="is-font-description">Helvetica Neue (Medium 11px)</div>
+                </div>
+                <div class="col-1 is-font-css-name">&lt;font9&gt;</div>
+            </div>
+
+            <div class="row is-typography-holder">
+                <div class="col-11">
+                    <div class="is-font-example fu-font10">Small Body Text Content</div>
+                    <div class="is-font-description">Helvetica Neue (Regular 11px)</div>
+                </div>
+                <div class="col-1 is-font-css-name">&lt;font10&gt;</div>
+            </div>
+
+            <div class="row is-typography-holder">
+                <div class="col-11">
+                    <div class="is-font-example fu-font11">Body Text Content, Bold  </div>
+                    <div class="is-font-description">Helvetica Neue (Medium 13px)</div>
+                </div>
+                <div class="col-1 is-font-css-name">&lt;font11&gt;</div>
+            </div>
+
+            <div class="row is-typography-holder">
+                <div class="col-11">
+                    <div class="is-font-example fu-font12">Body Text Content </div>
+                    <div class="is-font-description">Helvetica Neue (Regular 13px)</div>
+                </div>
+                <div class="col-1 is-font-css-name">&lt;font12&gt;</div>
+            </div>
+
+            <div class="row is-typography-holder">
+                <div class="col-11">
+                    <div class="is-font-example fu-font13">Small Body Text Content, Bold</div>
+                    <div class="is-font-description">Helvetica Neue (Medium 12px)</div>
+                </div>
+                <div class="col-1 is-font-css-name">&lt;font13&gt;</div>
+            </div>
+
+            <div class="row is-typography-holder">
+                <div class="col-11">
+                    <div class="is-font-example fu-font14">Small Body Text Content  </div>
+                    <div class="is-font-description">Helvetica Neue (Regular 12px)</div>
+                </div>
+                <div class="col-1 is-font-css-name">&lt;font14&gt;</div>
+            </div>
+
+        </fusion-example-block>
+
+
+        <fusion-example-block id="customProperties" title="CSS Custom Properties" [collapsible]="false">
+            <fusion-table [columns]="customPropertiesTable.columns"
+                          [rows]="customPropertiesTable.rows">
+            </fusion-table>
+        </fusion-example-block>
+    </div>
+
+    <div class="col-3 is-right-side-menu-holder">
+        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+    </div>
+
+</div>

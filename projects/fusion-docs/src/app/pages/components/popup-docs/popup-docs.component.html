@@ -1,0 +1,325 @@
+<div class="row">
+  <div class="col-9">
+    <!--UI-Component Examples-->
+    <div class="is-example-title">Popup examples:</div>
+    <fusion-example-block id="position_fixed" title="Fixed position on screen">
+        <ng-template fusionExampleBlock="Angular">
+            1. in application "root" component add `fusion-popup` component by this example
+            <fusion-code-block lang="html"
+                               code='<!-- Main Popup  -->
+<ng-container *ngIf="popupData$ | async as popupData" [ngTemplateOutlet]="popupData ? popupRef : null">
+    <ng-template #popupRef>
+        <fusion-popup [popupData]="popupData"></fusion-popup>
+    </ng-template>
+</ng-container>'></fusion-code-block>
+            <br>
+            And show PopUp triggers (buttons for example)
+            <fusion-code-block lang="html"
+                               code='<div class="row">
+    <div class="col-3">
+      <button fusion-button (click)="openBasic(popupLocation.TopRight)">top-right</button>
+    </div>
+    <div class="col-3">
+      <button fusion-button (click)="openBasic(popupLocation.TopLeft)">top-left</button>
+    </div>
+    <div class="col-3">
+      <button fusion-button (click)="openBasic(popupLocation.BottomRight)">bottom-right</button>
+    </div>
+    <div class="col-3">
+      <button fusion-button (click)="openBasic(popupLocation.BottomLeft)">bottom-left</button>
+    </div>
+</div>'></fusion-code-block>
+
+            <br>
+            2. Create public observable "popupData$" for storing and use in template popup data.
+               Inject PopupService in constructor as public and set reference in "ngOnInit" method like in example:
+            <fusion-code-block lang="js"
+                               code='import {ChangeDetectionStrategy, Component, OnInit} from "@angular/core";
+import {PopupEntity, PopupLocation} from "../../../../../../fusion-ui/src/lib/components/ui-components/popup/popup.entity";
+import {PopupService} from "../../../../../../fusion-ui/src/lib/components/ui-components/popup/popup.service";
+import {Observable} from "rxjs";
+
+const popUpBasic: PopupEntity = {
+    size: {
+        width: 300,
+        height: 300
+    },
+    backgroundColor: "yellow"
+};
+
+@Component({
+    selector: "fusion-popup-docs",
+    templateUrl: "./popup-docs.component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class PopupExampleHolderComponent implements OnInit {
+
+    popupData$: Observable<PopupEntity>;
+
+    popupLocation = PopupLocation;
+
+    constructor(private popupService: PopupService) {}
+
+    ngOnInit(): void {
+        this.popupData$ = this.popupService.popupData$.asObservable();
+    }
+
+    openBasic(popupLocation: PopupLocation) {
+        this.popupService.showPopUp({...popUpBasic, ...{location: popupLocation}});
+    }
+}
+'></fusion-code-block>
+        </ng-template>
+        <ng-template fusionExampleBlock="React">
+            <fusion-code-block lang="js"
+                               code='import React from "react";
+import { FusionPopup } from "@ironsrc/fusion-ui/native/react";
+
+export default class Foo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      popup: {
+        popupData: {
+          size: {
+              width: 300,
+              height: 300
+          },
+          backgroundColor: "yellow",
+          location: "top-right"}
+      }
+    };
+  }
+
+  componentDidMount() {
+    this.props.updateLayoutTitle({ title: "Popup" });
+  }
+
+  render() {
+    return (
+      <div>
+        <FusionPopup config={this.state.popup}></FusionPopup>
+      </div>
+    );
+  }
+}'></fusion-code-block>
+        </ng-template>
+        <ng-template fusionExampleBlock="Vue">
+            See an example:
+            <fusion-code-block lang="js"
+                               code='<template>
+  <div style="margin: 15px;">
+    <p>Popup Component Example</p>
+    <FusionPopup
+      :config="popup"
+      @clickedOutside="onOutsideClicked()"
+    ></FusionPopup>
+    <FusionButton :config="button" @onclick="onclick">
+      <span>Bottom Right Popup</span>
+    </FusionButton>
+  </div>
+</template>
+
+<script>
+import { FusionPopup, FusionButton } from "@ironsrc/fusion-ui/native/vue";
+
+export const FooComponent = {
+  name: "FooComponent",
+  data() {
+    return {
+      popup: {
+        popupData: {}
+      },
+      button: {}
+    };
+  },
+  components: {
+    FusionPopup,
+    FusionButton
+  },
+  methods: {
+    onclick: function() {
+      setTimeout(()=>{
+        this.popup = {
+          ...this.popup,
+          ...{
+            popupData: {
+              size: {
+                width: 300,
+                height: 300
+              },
+              backgroundColor: "yellow",
+              location: "bottom-right"
+            }
+          }
+        };
+      }, 0);
+    },
+    onOutsideClicked: function() {
+      this.popup = {
+        ...this.popup,
+        ...{
+          popupData: {}
+        }
+      }
+    }
+  }
+};
+
+export default FooComponent;
+</script>'></fusion-code-block>
+        </ng-template>
+        <ng-template fusionExampleBlock="Native">
+            See an example:
+            <fusion-code-block lang="js"
+                               code='const onLoad = () => {
+    // get application holder for add buttons here
+    const appHolder = document.getElementById("app");
+    // get all possible popup locations form enum
+    const popupLocations = window.fusion.enums.PopupLocation;
+    // define base popup data
+    const basePopup = {
+        size: {
+            width: 300,
+            height: 300
+        },
+        backgroundColor: "yellow"
+    };
+
+    // insert base popup element
+    const mainPopup = document.createElement("native-fusion-popup");
+    mainPopup.config = {
+        popupData: {}
+    };
+    document.body.appendChild(mainPopup);
+
+    mainPopup.addEventListener("clickedOutside", el => {
+        el.target.config = {
+            popupData: {}
+        };
+    });
+
+    // insert buttons
+    Object.values(popupLocations)
+        .filter(item => item !== "element-related")
+        .forEach(popupLocation => {
+            // define and append button
+            const button = document.createElement("native-fusion-button");
+            appHolder.appendChild(button);
+            const textNode = document.createTextNode(popupLocation);
+            button.appendChild(textNode);
+            button.style.paddingRight = "10px";
+
+            // define base popup data with needed popup location
+            let popupData = {
+                ...basePopup,
+                ...{
+                    location: popupLocation
+                }
+            };
+
+            // add event listener for bitton clicked to show popup
+            button.addEventListener("click", e => {
+                e.stopPropagation();
+                if (mainPopup) {
+                    mainPopup.config = {
+                        popupData: popupData
+                    };
+                }
+            });
+        });
+};
+
+document.addEventListener("DOMContentLoaded", onLoad, false);'></fusion-code-block>
+        </ng-template>
+        <br>
+
+      <div class="row">
+        <div class="col-3">
+          <button fusion-button (click)="openBasic(popupLocation.TopRight)">top-right</button>
+        </div>
+        <div class="col-3">
+          <button fusion-button (click)="openBasic(popupLocation.TopLeft)">top-left</button>
+        </div>
+        <div class="col-3">
+          <button fusion-button (click)="openBasic(popupLocation.BottomRight)">bottom-right</button>
+        </div>
+        <div class="col-3">
+          <button fusion-button (click)="openBasic(popupLocation.BottomLeft)">bottom-left</button>
+        </div>
+      </div>
+    </fusion-example-block>
+      <!--UI-Component Configuration Doc-->
+      <div class="is-example-title">Configuration</div>
+      <fusion-example-block id="params"
+                            title="Parameters"
+                            [collapsible]="false">
+
+          <fusion-code-block lang="js" code="interface PopupEntity {
+    backgroundColor?: string;
+    component?: PopupComponentContent;                  // Component - content for PopUp
+    isOpen?: boolean;
+    size?: PopupSize;
+    location?: PopupLocation;
+    hostElement?: ElementRef;                           // parent element if PopUp must  be related to the other 'parent element'
+    hostElementPositionOffset?: PopupPositionOffset;    // position related to parent element (used with host element)
+    suppressCloseElementSelector?: string;
+}
+
+interface PopupComponentContent {
+    type: Type<Component>;
+    data?: any;
+}
+
+interface PopupSize {
+    width?: number;
+    height?: number;
+}
+
+interface PopupPositionOffset {
+    top?: number;
+    left?: number;
+}
+
+enum PopupLocation {
+    TopRight = 'top-right',
+    TopLeft = 'top-left',
+    BottomRight = 'bottom-right',
+    BottomLeft = 'bottom-left',
+    ElementRelated = 'element-related'
+}
+"></fusion-code-block>
+
+
+      </fusion-example-block>
+
+      <fusion-example-block id="events"
+                            title="Events"
+                            [collapsible]="false">
+          <fusion-code-block lang="js" code="clickedOutside(); // PopUp closed by click outside PopUp"></fusion-code-block>
+      </fusion-example-block>
+      <fusion-example-block id="service"
+                            title="Service"
+                            [collapsible]="false">
+          <fusion-code-block lang="js" code="// show popup
+popupService.showPopUp(popupData: PopupEntity);
+
+// close popup
+popupService.closePopUp();"></fusion-code-block>
+
+
+      </fusion-example-block>
+
+      <!--UI-Component Configuration Doc-->
+  </div>
+  <div class="col-3 is-right-side-menu-holder">
+    <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+  </div>
+</div>
+<!--Popup-->
+<ng-container *ngIf="popupData$ | async as popupData" [ngTemplateOutlet]="popupData ? popupRef : null">
+    <ng-template #popupRef>
+        <fusion-popup [popupData]="popupData"></fusion-popup>
+    </ng-template>
+</ng-container>
+

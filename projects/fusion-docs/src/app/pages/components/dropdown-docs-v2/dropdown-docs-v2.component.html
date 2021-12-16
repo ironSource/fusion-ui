@@ -1,0 +1,1582 @@
+<div class="row">
+    <div class="col-9" [formGroup]="formDropDowns" novalidate>
+        <!--UI-Component Examples-->
+
+<!--        Single Selection-->
+        <div class="is-example-title">Single Selection</div>
+        <fusion-example-block id="ddSingleBasic" title="Basic">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<!-- Regular -->
+<fusion-dropdown placeholder="Please Select"
+    [formControl]="dropdownControl"
+    [options]="options">
+</fusion-dropdown>
+
+<!-- With Error -->
+<fusion-dropdown
+    placeholder="Please Select"
+    formControlName="dropdownRequired"
+    [fusionErrorMessage]="`This Dropdown`"
+    [showError]="true"
+    [options]="optionsNoIcons">
+</fusion-dropdown>
+
+<!-- Disabled -->
+<fusion-dropdown
+    placeholder="Please Select"
+    [formControl]="dropdownDisabledControl"
+    [isDisabled]="true"
+    [options]="optionsNoIcons">
+</fusion-dropdown>
+<!--options: DropdownOption[]-->'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const DROPDOWN_OPTIONS = [
+  {
+    id: 1,
+    displayText: "option_a"
+  },
+  {
+    id: 2,
+    displayText: "option_b"
+  }
+];
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dropdown: {
+        placeholder: "Please Select",
+        options: DROPDOWN_OPTIONS,
+        controlValue: DROPDOWN_OPTIONS[1]
+      }
+    }
+  }
+
+  handleChange(name, value) {
+    this.setState({[name]: {...this.state[name], controlValue: value}})
+  }
+
+  render() {
+    return (
+      <FusionDropdown config={this.state.dropdown} name="dropdown" selectedChange={this.handleChange.bind(this, "dropdown")} />
+    )
+  }
+}
+
+export default App;'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div id="app">
+      <FusionDropdown :config="dropdown" @selectedChange="e => handleChange(e, &#39;dropdown&#39;)" />
+  </div>
+</template>'
+                ></fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionDropdown} from "@ironsrc/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+      dropdown: {
+        placeholder: "Please Select",
+        options: DROPDOWN_OPTIONS,
+        controlValue: [DROPDOWN_OPTIONS[1]]
+      }
+    }
+  },
+  components: {
+    FusionDropdown
+  },
+  methods: {
+    handleChange: function(value, key){
+      this[key] = {...this[key], controlValue: value};
+    }
+  }
+}
+
+const DROPDOWN_OPTIONS = [
+  {
+    id: 1,
+    displayText: "option_a"
+  },
+  {
+    id: 2,
+    displayText: "option_b"
+  }
+];
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const dropdown = document.createElement("native-fusion-dropdown");
+dropdown.config = {
+  placeholder: "Please Select",
+  options: [
+    {
+        id: 1,
+        displayText: "option 1"
+    },
+    {
+        id: 2,
+        displayText: "option 2"
+    },
+    {
+        id: 3,
+        displayText: "option 3"
+    },
+    {
+        id: 4,
+        displayText: "option 4"
+    },
+    {
+        id: 5,
+        displayText: "option 5"
+    }
+],
+  get controlValue() {
+      return this.options[1];
+  }
+};
+
+dropdown.addEventListener("selectedChange", e => console.log(e.detail));
+document.body.appendChild(dropdown);'
+                ></fusion-code-block>
+            </ng-template>
+
+            <div class="row">
+                <div class="col-4">
+                    <label>Regular</label>
+                    <fusion-dropdown (closed)="onClose($event)" placeholderLocation="right" placeholderWidth="250px" placeholder="Select" [formControl]="dropdownControl" [options]="optionsNoIcons"></fusion-dropdown>
+                </div>
+                <div class="col-4">
+                    <label>Error</label>
+                    <fusion-dropdown
+                        placeholder="Select"
+                        formControlName="dropdownRequired"
+                        [fusionErrorMessage]="'This Dropdown'"
+                        [customMessages]="{required: 'Mandatory field'}"
+                        [showError]="true"
+                        [options]="optionsNoIcons"
+                    ></fusion-dropdown>
+                </div>
+                <div class="col-4">
+                    <label>Disabled</label>
+                    <fusion-dropdown
+                        placeholder="Select"
+                        [formControl]="dropdownDisabledControl"
+                        [isDisabled]="true"
+                        [options]="optionsNoIcons"
+                    ></fusion-dropdown>
+                </div>
+            </div>
+        </fusion-example-block>
+        <fusion-example-block id="ddSingleSearch" title="Including Search">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<!--In Component-Side Search-->
+<fusion-dropdown placeholder="Default Selection"
+                [formControl]="dropdownControlClientSearch"
+                [search]="true"
+                [options]="optionsNoIcons">
+</fusion-dropdown>
+
+<!--Host-Side Search (server-side)-->
+<fusion-dropdown
+    placeholder="Select"
+    [autoComplete]="true"
+    [loading]="loading"
+    [mappingOptions]="{id: `id`, title: `name`}"
+    (searchChange)="onSearchChange($event)"
+    [options]="optionsAutoComplete">
+</fusion-dropdown>
+
+<!--
+[mappingOptions]="{id: `id`, title: `name`}" here do items mapping from item:
+
+{
+    id: 1,
+    name: `id labore ex et quam laborum`,
+    email: `Eliseo@gardner.biz`
+}
+
+to:
+
+{
+    id: 1,
+    toitle: `id labore ex et quam laborum`
+}
+
+optionsAutoComplete = [] empty array-->'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <p>Client-side search</p>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const DROPDOWN_OPTIONS = [
+  {
+    id: 1,
+    displayText: "option_a"
+  },
+  {
+    id: 2,
+    displayText: "option_b"
+  }
+];
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dropdown: {
+        placeholder: "Select",
+        search: true,
+        options: DROPDOWN_OPTIONS,
+        controlValue: DROPDOWN_OPTIONS[1]
+      }
+    }
+  }
+
+  handleChange(name, value) {
+    this.setState({[name]: {...this.state[name], controlValue: value}})
+  }
+
+  render() {
+    return (
+      <FusionDropdown config={this.state.dropdown} name="dropdown" selectedChange={this.handleChange.bind(this, "dropdown")} />
+    )
+  }
+}
+
+export default App;'
+                ></fusion-code-block>
+                <p>Server-side search</p>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const DROPDOWN_OPTIONS = [
+  {
+    id: 1,
+    displayText: "option_a"
+  },
+  {
+    id: 2,
+    displayText: "option_b"
+  }
+];
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dropdown: {
+        placeholder: "Select",
+        search: true,
+        options: DROPDOWN_OPTIONS,
+        controlValue: DROPDOWN_OPTIONS[1]
+      }
+    }
+  }
+
+  handleChange(name, value) {
+    this.setState({[name]: {...this.state[name], controlValue: value}})
+  }
+
+  render() {
+    return (
+      <FusionDropdown config={this.state.dropdown} name="dropdown" selectedChange={this.handleChange.bind(this, "dropdown")} />
+    )
+  }
+}
+
+export default App;'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <p>Client-side search</p>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div id="app">
+      <FusionDropdown :config="dropdown" @selectedChange="e => handleChange(e, &#39;dropdown&#39;)" />
+  </div>
+</template>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionDropdown} from "@ironsrc/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+      dropdown: {
+        placeholder: "Select",
+        search: true,
+        options: DROPDOWN_OPTIONS,
+        controlValue: DROPDOWN_OPTIONS[1]
+      }
+    }
+  },
+  components: {
+    FusionDropdown
+  },
+  methods: {
+    handleChange: function(value, key){
+      this[key] = {...this[key], controlValue: value};
+    }
+  }
+}
+
+const DROPDOWN_OPTIONS = [
+  {
+    id: 1,
+    displayText: "option_a"
+  },
+  {
+    id: 2,
+    displayText: "option_b"
+  }
+];
+</script>'
+                ></fusion-code-block>
+                <p>Server-side search</p>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div id="app">
+      <FusionDropdown :config="dropdown" @selectedChange="e => handleChange(e, &#39;dropdown&#39;)" />
+  </div>
+</template>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionDropdown} from "@ironsrc/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+      dropdown: {
+        placeholder: "Select",
+        search: true,
+        options: DROPDOWN_OPTIONS,
+        controlValue: DROPDOWN_OPTIONS[1]
+      }
+    }
+  },
+  components: {
+    FusionDropdown
+  },
+  methods: {
+    handleChange: function(value, key){
+      this[key] = {...this[key], controlValue: value};
+    }
+  }
+}
+
+const DROPDOWN_OPTIONS = [
+  {
+    id: 1,
+    displayText: "option_a"
+  },
+  {
+    id: 2,
+    displayText: "option_b"
+  }
+];
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <p>Client-side search</p>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const dropdown = document.createElement("native-fusion-dropdown");
+dropdown.config = {
+  placeholder: "Select",
+  search: true,
+  options: [
+    {
+        id: 1,
+        displayText: "option 1"
+    },
+    {
+        id: 2,
+        displayText: "option 2"
+    },
+    {
+        id: 3,
+        displayText: "option 3"
+    },
+    {
+        id: 4,
+        displayText: "option 4"
+    },
+    {
+        id: 5,
+        displayText: "option 5"
+    }
+],
+  get controlValue() {
+      return this.options[1];
+  }
+};
+
+dropdown.addEventListener("selectedChange", e => console.log(e.detail));
+document.body.appendChild(dropdown);'
+                ></fusion-code-block>
+                <p>Server-side search</p>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const dropdown = document.createElement("native-fusion-dropdown");
+dropdown.config = {
+  placeholder: "Select",
+  search: true,
+  options: [
+    {
+        id: 1,
+        displayText: "option 1"
+    },
+    {
+        id: 2,
+        displayText: "option 2"
+    },
+    {
+        id: 3,
+        displayText: "option 3"
+    },
+    {
+        id: 4,
+        displayText: "option 4"
+    },
+    {
+        id: 5,
+        displayText: "option 5"
+    }
+],
+  get controlValue() {
+      return this.options[1];
+  }
+};
+
+dropdown.addEventListener("selectedChange", e => console.log(e.detail));
+document.body.appendChild(dropdown);'
+                ></fusion-code-block>
+            </ng-template>
+
+            <div class="row">
+                <div class="col-4">
+                    <label>Search</label>
+                    <fusion-dropdown
+                        placeholder="Default selection"
+                        [formControl]="dropdownControlClientSearch"
+                        [search]="true"
+                        [options]="optionsNoIcons"
+                    ></fusion-dropdown>
+                </div>
+                <div class="col-4">
+                    <label>Hidden list</label>
+                    <fusion-dropdown
+                        placeholder="Select"
+                        [autoComplete]="true"
+                        [loading]="loading"
+                        [mappingOptions]="{id: 'id', title: 'name'}"
+                        (searchChange)="onSearchChange($event)"
+                        [options]="optionsAutoComplete"
+                    ></fusion-dropdown>
+                </div>
+                <div class="col-4">
+                    <label>Application</label>
+                    <fusion-dropdown
+                        placeholder="Default selection"
+                        [formControl]="dropdownControlAppSearch"
+                        [search]="true"
+                        [isIconRightPosition]="true"
+                        [options]="applicationList"
+                    ></fusion-dropdown>
+                </div>
+            </div>
+        </fusion-example-block>
+        <fusion-example-block id="ddGrouped" title="Grouped Options">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<!--Items by groups-->
+<fusion-dropdown
+    placeholder="Select"
+    [optionsGroups]="groupedOptions">
+</fusion-dropdown>
+
+<!--groupedOptions Example-->
+[
+    {
+        id: "Top Group",
+        displayText: "Top Group",
+        childOptions: [
+    {
+        id: "First Group",
+        displayText: "First Group",
+        childOptions: [
+            {id: 1, displayText: "Mario Speedwagon"},
+            {id: 2, displayText: "Petey Cruiser"},
+            {id: 3, displayText: "Anna Sthesia"}
+        ]
+    },
+    {
+        id: "Second Group",
+        displayText: "Second Group",
+        childOptions: [
+            {id: 4, displayText: "Paul Molive"},
+            {id: 5, displayText: "Anna Mull"},
+            {id: 6, displayText: "Gail Forcewind"},
+            {id: 7, displayText: "Paige Turner"},
+            {id: 8, displayText: "Bob Frapples"},
+            {id: 9, displayText: "Walter Melon"},
+            {id: 10, displayText: "Nick R. Bocker"},
+            {id: 11, displayText: "Barb Ackue"},
+            {id: 12, displayText: "Buck Kinnear"},
+            {id: 13, displayText: "Greta Life"},
+            {id: 14, displayText: "Ira Membrit"},
+            {id: 15, displayText: "Shonda Leer"},
+            {id: 16, displayText: "Brock Lee"},
+            {id: 17, displayText: "Maya Didas"},
+            {id: 18, displayText: "Rick O`Shea"},
+            {id: 19, displayText: "Pete Sariya"},
+            {id: 20, displayText: "Monty Carlo"}
+        ]
+    }
+]'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='// Grouped Options
+const DROPDOWN_OPTIONS = [
+    {
+        id: "Top Group",
+        displayText: "Top Group",
+        childOptions: [{
+                title: "Item 1",
+                displayText: "Item Name A",
+                id: 1
+            },
+            {
+                title: "Item 2",
+                displayText: "Item Name B",
+                id: 2
+            },
+            {
+                title: "Item 3",
+                displayText: "Item Name C",
+                id: 3
+            }
+        ]
+    },
+    {
+        id: "Second Group",
+        displayText: "Second Group",
+        childOptions: [{
+                title: "Item 4",
+                displayText: "Item Name D",
+                id: 4
+            },
+            {
+                title: "Item 5",
+                displayText: "Item Name E",
+                id: 5
+            },
+            {
+                title: "Item 6",
+                displayText: "Item Name F",
+                id: 6
+            }
+        ]
+    }
+];
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dropdown1: {
+        placeholder: "Select",
+        options: DROPDOWN_OPTIONS
+      }
+    }
+  }
+
+  handleChange(name, value) {
+    this.setState({[name]: {...this.state[name], controlValue: value}});
+   }
+
+  render() {
+    return (
+      <FusionDropdown
+              config={this.state.dropdown1}
+              selectedChange={this.handleChange.bind(this, "dropdown1")}></FusionDropdown>
+    )
+  }
+}
+
+export default App;'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div id="app">
+      <FusionDropdown :config="dropdown" @selectedChange="e => handleChange(e, &#39;dropdown&#39;)" />
+  </div>
+</template>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionDropdown} from "@ironsrc/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+      dropdown: {
+        placeholder: "Select",
+        options: DROPDOWN_OPTIONS
+      }
+    }
+  },
+  components: {
+    FusionDropdown
+  },
+  methods: {
+    handleChange: function(value, key){
+      this[key] = {...this[key], controlValue: value};
+    }
+  }
+}
+
+const DROPDOWN_OPTIONS = [
+    {
+        id: "Top Group",
+        displayText: "Top Group",
+        childOptions: [{
+                title: "Item 1",
+                displayText: "Item Name A",
+                id: 1
+            },
+            {
+                title: "Item 2",
+                displayText: "Item Name B",
+                id: 2
+            },
+            {
+                title: "Item 3",
+                displayText: "Item Name C",
+                id: 3
+            }
+        ]
+    },
+    {
+        id: "Second Group",
+        displayText: "Second Group",
+        childOptions: [{
+                title: "Item 4",
+                displayText: "Item Name D",
+                id: 4
+            },
+            {
+                title: "Item 5",
+                displayText: "Item Name E",
+                id: 5
+            },
+            {
+                title: "Item 6",
+                displayText: "Item Name F",
+                id: 6
+            }
+        ]
+    }
+];
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='// Grouped Options
+
+const dropdown = document.createElement("native-fusion-dropdown");
+const baseGroupedOptions = [
+        {
+            id: "1",
+            displayText: "First Group",
+            childOptions: [
+                {
+                    title: "Item 1",
+                    displayText: "Item Name A",
+                    id: "1.1"
+                },
+                {
+                    title: "Item 2",
+                    displayText: "Item Name B",
+                    id: "1.2"
+                },
+                {
+                    title: "Item 3",
+                    displayText: "Item Name C",
+                    id: "1.3"
+                }
+            ]
+        },
+        {
+            id: "2",
+            displayText: "Second Group",
+            childOptions: [
+                {
+                    title: "Item 1",
+                    displayText: "Item Name A",
+                    id: "2.1"
+                },
+                {
+                    title: "Item 2",
+                    displayText: "Item Name B",
+                    id: "2.2"
+                },
+                {
+                    title: "Item 3",
+                    displayText: "Item Name C",
+                    id: "2.3"
+                }
+            ]
+        }
+    ];
+
+dropdown.config = {
+    placeholder: "Select",
+    optionsGroups: baseGroupedOptions,
+};
+
+dropdown.addEventListener("selectedChange", e => console.log(e.detail));
+document.body.appendChild(dropdown);'
+                ></fusion-code-block>
+            </ng-template>
+
+            <div class="row">
+                <div class="col-4">
+                    <label>Items by groups</label>
+                    <fusion-dropdown placeholder="Select" [optionsGroups]="groupedOptions"> </fusion-dropdown>
+                </div>
+                <!--
+                <div class="col-4">
+                    <label>Countries by groups</label>
+                    <fusion-dropdown placeholder="Select" [optionsGroups]="groupedCountriesOptions"> </fusion-dropdown>
+                </div>
+-->
+                <div class="col-4">
+                    <label>Countries by groups with search</label>
+                    <fusion-dropdown placeholder="Select" [search]="true" [optionsGroups]="groupedCountriesOptions"> </fusion-dropdown>
+                </div>
+                <div class="col-4">
+                    <label>Grouped sub grouped</label>
+                    <fusion-dropdown
+                        placeholder="Select"
+                        formControlName="subGroupDropDown"
+                        [optionsGroups]="groupedSubGroupOptions"
+                    ></fusion-dropdown>
+                </div>
+            </div>
+            <!--
+            <br />
+            <div class="row">
+                <div class="col-4">&nbsp;</div>
+            </div>
+-->
+        </fusion-example-block>
+<!--        Single Selection End-->
+
+<!--        Multiple Selection Start-->
+        <div class="is-example-title">Multiple Selection</div>
+        <fusion-example-block id="ddMultiBasic" title="Basic">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='HTML:
+<!--With `Select all` and selection confirm-->
+<fusion-multi-dropdown placeholder="Select"
+                       selectAllLabel="Select all"
+                       [formControl]="multiSelectedControl"
+                       [confirm]="true"
+                       [options]="optionsNoIcons">
+</fusion-multi-dropdown>
+
+<!--Without `Select all` and without confirm-->
+<fusion-multi-dropdown
+    placeholder="Select"
+    [formControl]="multiSelectedControlNoConfirm"
+    [options]="optionsNoIcons"
+></fusion-multi-dropdown>
+
+<!--Countries without `Select all` and without confirm-->
+<fusion-multi-dropdown
+    placeholderPrefix="Countries"
+    placeholder="Select"
+    [formControl]="multiSelectedCountriesControl"
+    [options]="countriesOptions"
+></fusion-multi-dropdown>
+
+<!--
+[confirm]="true" - for shown action panel with "cancel" and "apply" buttons
+selectAllLabel="All" - for shown "select all" checkbox with label
+-->'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const DROPDOWN_OPTIONS = [
+  {
+    id: 1,
+    displayText: "option_a"
+  },
+  {
+    id: 2,
+    displayText: "option_b"
+  }
+];
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      multiDropdown: {
+        placeholder: "Select",
+        selectAllLabel: "All",
+        confirm: true,
+        options: DROPDOWN_OPTIONS
+      }
+    }
+  }
+
+  handleChange(name, value) {
+    this.setState({[name]: {...this.state[name], controlValue: value}})
+  }
+
+  render() {
+    return (
+      <FusionMultiDropdown config={this.state.multiDropdown} selectedChange={this.handleChange.bind(this, "multiDropdown")} />
+    )
+  }
+}
+
+export default App;'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div id="app">
+      <FusionMultiDropdown :config="multiDropdown"
+                      @selectedChange="e => handleChange(e, &#39;multiDropdown&#39;)" />
+  </div>
+</template>'
+                ></fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionMultiDropdown} from "@ironsrc/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+      multiDropdown: {
+        placeholder: "Select",
+        confirm: true,
+        options: DROPDOWN_OPTIONS
+      }
+    }
+  },
+  components: {
+    FusionMultiDropdown
+  },
+  methods: {
+    handleChange: function(value, key){
+      this[key] = {...this[key], controlValue: value};
+    }
+  }
+}
+
+const DROPDOWN_OPTIONS = [
+  {
+    id: 1,
+    displayText: "option_a"
+  },
+  {
+    id: 2,
+    displayText: "option_b"
+  }
+];
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='// define options
+const baseOptions = [
+    {
+        id: 1,
+        displayText: "option 1"
+    },
+    {
+        id: 2,
+        displayText: "option 2"
+    },
+    {
+        id: 3,
+        displayText: "option 3"
+    },
+    {
+        id: 4,
+        displayText: "option 4"
+    },
+    {
+        id: 5,
+        displayText: "option 5"
+    }
+];
+
+// define dropdown configuration
+const baseConfig = {
+    placeholder: "Select",
+    selectAllLabel: "All",
+    confirm: true,
+    options: baseOptions,
+    get controlValue() {
+        return this.options[1];
+    }
+};
+
+// insert dropdown element
+const dropdown = document.createElement("native-fusion-multi-dropdown");
+
+// set dropdown configuration
+dropdown.config = baseConfig;
+
+// add event on selection  changed
+dropdown.addEventListener("selectedChange", e => console.log(e.detail));
+
+// append to DOM
+document.body.appendChild(dropdown);'
+                ></fusion-code-block>
+            </ng-template>
+
+            <div class="row">
+                <div class="col-4">
+                    <label>With 'Select all' and selection confirm</label>
+                    <fusion-multi-dropdown
+                        placeholderWidth="250px"
+                        placeholderLocation="right"
+                        placeholder="Select"
+                        selectAllLabel="Select all"
+                        [formControl]="multiSelectedControl"
+                        [confirm]="true"
+                        [options]="optionsNoIcons"
+                    ></fusion-multi-dropdown>
+                </div>
+                <!--
+                <div class="col-4">
+                    <label>Without `Select all` and without confirm</label>
+                    <fusion-multi-dropdown
+                        placeholder="Select"
+                        [formControl]="multiSelectedControlNoConfirm"
+                        [options]="optionsNoIcons"
+                    ></fusion-multi-dropdown>
+                </div>
+                <div class="col-4">
+                    <label>Countries</label>
+                    <fusion-multi-dropdown
+                        placeholderPrefix="Countries"
+                        placeholder="Select"
+                        [formControl]="multiSelectedCountriesControl"
+                        [options]="countriesOptions"
+                    ></fusion-multi-dropdown>
+                </div>
+-->
+            </div>
+        </fusion-example-block>
+        <fusion-example-block id="ddMultiSearch" title="Including Search">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<!--With client-side search-->
+<fusion-multi-dropdown
+    placeholder="Select"
+    [search]="true"
+    [formControl]="multiSelectedSearchControl"
+    [confirm]="true"
+    [options]="optionsNoIcons"
+></fusion-multi-dropdown>
+
+<!--With Application search-->
+<fusion-multi-dropdown
+    placeholder="Select"
+    placeholderPrefix="Applications"
+    [search]="true"
+    [formControl]="multiSelectedAppsSearchControl"
+    [confirm]="true"
+    [isIconRightPosition]="true"
+    [options]="applicationList"
+></fusion-multi-dropdown>
+
+<!--With Countries grouped search-->
+<fusion-multi-dropdown
+    placeholder="Select"
+    placeholderPrefix="Countries"
+    [search]="true"
+    [formControl]="multiSelectedCountriesSearchControl"
+    [confirm]="true"
+    [optionsGroups]="groupedCountriesOptions"
+></fusion-multi-dropdown>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const DROPDOWN_OPTIONS = [
+  {
+    id: 1,
+    displayText: "option_a"
+  },
+  {
+    id: 2,
+    displayText: "option_b"
+  }
+];
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      multiDropdown: {
+        placeholder: "Select",
+        search: true,
+        confirm: true,
+        options: DROPDOWN_OPTIONS
+      }
+    }
+  }
+
+  handleChange(name, value) {
+    this.setState({[name]: {...this.state[name], controlValue: value}})
+  }
+
+  render() {
+    return (
+      <FusionMultiDropdown config={this.state.multiDropdown} selectedChange={this.handleChange.bind(this, "multiDropdown")} />
+    )
+  }
+}
+
+export default App;'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div id="app">
+      <FusionMultiDropdown :config="multiDropdown"
+                      @selectedChange="e => handleChange(e, &#39;multiDropdown&#39;)" />
+  </div>
+</template>'
+                ></fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionMultiDropdown} from "@ironsrc/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+      multiDropdown: {
+        placeholder: "Select",
+        search: true,
+        confirm: true,
+        options: DROPDOWN_OPTIONS
+      }
+    }
+  },
+  components: {
+    FusionMultiDropdown
+  },
+  methods: {
+    handleChange: function(value, key){
+      this[key] = {...this[key], controlValue: value};
+    }
+  }
+}
+
+const DROPDOWN_OPTIONS = [
+  {
+    id: 1,
+    displayText: "option_a"
+  },
+  {
+    id: 2,
+    displayText: "option_b"
+  }
+];
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='// define options
+const baseOptions = [
+    {
+        id: 1,
+        displayText: "option 1"
+    },
+    {
+        id: 2,
+        displayText: "option 2"
+    },
+    {
+        id: 3,
+        displayText: "option 3"
+    },
+    {
+        id: 4,
+        displayText: "option 4"
+    },
+    {
+        id: 5,
+        displayText: "option 5"
+    }
+];
+
+// define dropdown configuration
+const baseConfig = {
+    placeholder: "Select",
+    search: true,
+    confirm: true,
+    options: baseOptions,
+    get controlValue() {
+        return this.options[1];
+    }
+};
+
+// insert dropdown element
+const dropdown = document.createElement("native-fusion-multi-dropdown");
+
+// set dropdown configuration
+dropdown.config = baseConfig;
+
+// add event on selection  changed
+dropdown.addEventListener("selectedChange", e => console.log(e.detail));
+
+// append to DOM
+document.body.appendChild(dropdown);'
+                ></fusion-code-block>
+            </ng-template>
+
+            <div class="row">
+                <div class="col-4">
+                    <label>Default</label>
+                    <fusion-multi-dropdown
+                        placeholderWidth="300px"
+                        placeholderLocation="right"
+                        placeholder="Select"
+                        selectAllLabel="Select all"
+                        [search]="true"
+                        [formControl]="multiSelectedSearchControl"
+                        [confirm]="true"
+                        [options]="optionsNoIcons"
+                    ></fusion-multi-dropdown>
+                </div>
+                <div class="col-4">
+                    <label>Apps</label>
+                    <fusion-multi-dropdown
+                        placeholder="Select App"
+                        selectAllLabel="Select all"
+                        placeholderPrefix="Applications"
+                        [search]="true"
+                        [formControl]="multiSelectedAppsSearchControl"
+                        [confirm]="true"
+                        [isIconRightPosition]="true"
+                        [options]="applicationList"
+                    ></fusion-multi-dropdown>
+                </div>
+                <div class="col-4">
+                    <label>Countries</label>
+                    <fusion-multi-dropdown
+                        placeholder="Select"
+                        selectAllLabel="Select all"
+                        placeholderPrefix="Countries"
+                        [search]="true"
+                        [formControl]="multiSelectedCountriesSearchControl"
+                        [confirm]="true"
+                        [optionsGroups]="groupedCountriesOptions"
+                    ></fusion-multi-dropdown>
+                </div>
+            </div>
+        </fusion-example-block>
+        <!--Multiple Selection End-->
+
+        <!--Variations-->
+        <div class="is-example-title">Variations</div>
+        <fusion-example-block id="ddVariations" title="Basic">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<!--Regular - H40px-->
+<fusion-dropdown
+    placeholder="Select"
+    [formControl]="dropdownControl"
+    [options]="options"
+></fusion-dropdown>
+
+<!--Small - h:32px-->
+<fusion-dropdown
+    class="small"
+    placeholder="Select"
+    [formControl]="dropdownControl"
+    [options]="options"
+></fusion-dropdown>
+
+<!--Rounded-->
+<fusion-dropdown
+    placeholder="Select"
+    class="rounded"
+    [formControl]="dropdownControl"
+    [options]="optionsNoIcons"
+></fusion-dropdown>
+
+<!--Items height - align top-->
+<fusion-dropdown
+    class="fu-items-top"
+    placeholder="Select"
+    [formControl]="dropdownControl"
+    [options]="optionsNoIcons"
+></fusion-dropdown>
+
+<!--Custom placeholder-->
+<fusion-dropdown
+    class="fu-large-item-height"
+    [placeholderComponent]="customPlaceholderComponent"
+    [placeholderComponentData]="customPlaceholderData"
+    [formControl]="dropdownControl"
+    [options]="optionsNoIcons"
+></fusion-dropdown>
+'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const DROPDOWN_OPTIONS = [
+  {
+    id: 1,
+    displayText: "option_a"
+  },
+  {
+    id: 2,
+    displayText: "option_b"
+  }
+];
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dropdown: {
+        placeholder: "Select",
+        options: DROPDOWN_OPTIONS,
+        controlValue: []
+      }
+    }
+  }
+
+  handleChange(name, value) {
+    this.setState({[name]: {...this.state[name], controlValue: value}})
+  }
+
+  render() {
+    return (
+      <FusionDropdown config={this.state.dropdown} name="dropdown" selectedChange={this.handleChange.bind(this, "dropdown")} />
+    )
+  }
+}
+
+export default App;'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div id="app">
+      <FusionDropdown :config="dropdown" @selectedChange="e => handleChange(e, &#39;dropdown&#39;)" />
+  </div>
+</template>'
+                ></fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionDropdown} from "@ironsrc/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+      dropdown: {
+        placeholder: "Select",
+        options: DROPDOWN_OPTIONS,
+        controlValue: []
+      }
+    }
+  },
+  components: {
+    FusionDropdown
+  },
+  methods: {
+    handleChange: function(value, key){
+      this[key] = {...this[key], controlValue: value};
+    }
+  }
+}
+
+const DROPDOWN_OPTIONS = [
+  {
+    id: 1,
+    displayText: "option_a"
+  },
+  {
+    id: 2,
+    displayText: "option_b"
+  }
+];
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const dropdown = document.createElement("native-fusion-dropdown");
+dropdown.config = {
+  placeholder: "Select",
+  options: [
+    {
+        id: 1,
+        displayText: "option 1"
+    },
+    {
+        id: 2,
+        displayText: "option 2"
+    },
+    {
+        id: 3,
+        displayText: "option 3"
+    },
+    {
+        id: 4,
+        displayText: "option 4"
+    },
+    {
+        id: 5,
+        displayText: "option 5"
+    }
+],
+  get controlValue() {
+      return this.options[1];
+  }
+};
+
+dropdown.addEventListener("selectedChange", e => console.log(e.detail));
+document.body.appendChild(dropdown);'
+                ></fusion-code-block>
+            </ng-template>
+
+            <div class="row">
+                <div class="col-4">
+                    <label>Regular - H40px</label>
+                    <fusion-dropdown placeholder="Select" [formControl]="dropdownControl" [options]="optionsNoIcons"></fusion-dropdown>
+                </div>
+                <div class="col-4">
+                    <label>Small - h:32px</label>
+                    <fusion-dropdown
+                        class="small"
+                        placeholder="Select"
+                        [formControl]="dropdownControl"
+                        [options]="optionsNoIcons"
+                    ></fusion-dropdown>
+                </div>
+                <div class="col-4">
+                    <label>Rounded</label>
+                    <fusion-dropdown
+                        placeholder="Select"
+                        class="rounded"
+                        [formControl]="dropdownControl"
+                        [options]="optionsNoIcons"
+                    ></fusion-dropdown>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+<!--
+                <div class="col-4">
+                    <label>Item height - H40px</label>
+                    <fusion-dropdown
+                        class="fu-large-item-height"
+                        placeholder="Select"
+                        [formControl]="dropdownControl"
+                        [options]="optionsNoIcons"
+                    ></fusion-dropdown>
+                </div>
+-->
+                <div class="col-4">
+                    <label>Items height - align top</label>
+                    <fusion-dropdown
+                        class="fu-items-top"
+                        placeholder="Select"
+                        [formControl]="dropdownControl"
+                        [options]="optionsNoIcons"
+                    ></fusion-dropdown>
+                </div>
+                <div class="col-4">
+                    <label>Custom placeholder</label>
+                    <fusion-dropdown
+                        #dropdownCustomComponent
+                        class="fu-large-item-height"
+                        [dynamicPlaceholder]="customDynamicComponent"
+                        [formControl]="dropdownControl"
+                        [options]="optionsNoIcons"
+                        (closed)="onClose($event)"
+                    ></fusion-dropdown>
+                </div>
+            </div>
+        </fusion-example-block>
+        <!--Variations End-->
+
+        <!--UI-Component Examples-->
+
+        <!--UI-Component Configuration Doc-->
+        <div class="is-example-title">Configuration</div>
+        <fusion-example-block id="params" title="Parameters" [collapsible]="false">
+            <fusion-code-block
+                lang="js"
+                code="interface IDropdownOption {
+    id: number | string;
+    icon?: string;
+    flag?: string;
+    title?: string;
+    displayText?: string;
+    titleText?: string;
+    image?: string;
+    class?: string;
+    checked?: boolean;
+    groupId?: number | string;
+    isGroup?: boolean;
+    isOpen?: boolean;                       // used for sub-group state storing open/closed
+    isSelected?: boolean;
+    childOptions?: IDropdownOption[];
+    permissions?: string[];                 // if user can see option by his permission
+    subText?: {text: string; icon?: string};
+    indicationStatus?: boolean;
+}
+
+options: DropdownOption[]
+optionsGroups: Array<any>
+placeholderPrefix: string
+placeholder: string
+searchPlaceholder: string
+placeholderComponent: Type<Component>       // Angular Only
+placeholderComponentData: any               // Angular Only (data for placeholderComponent)
+icon: string
+isIconRightPosition: boolean;
+isDisabled: boolean
+search: boolean
+autoComplete: boolean
+mappingOptions: any
+limitOptions: number"
+            ></fusion-code-block>
+        </fusion-example-block>
+
+        <fusion-example-block id="events" title="Events" [collapsible]="false">
+            <fusion-code-block
+                lang="js"
+                code="selectedChange(DropdownOption[]);
+
+// for addbox-dropdown
+itemSelected(DropdownOption)"
+            ></fusion-code-block>
+        </fusion-example-block>
+        <!--UI-Component Configuration Doc-->
+    </div>
+
+    <div class="col-3 is-right-side-menu-holder">
+        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+    </div>
+</div>

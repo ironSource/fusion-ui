@@ -1,0 +1,209 @@
+<div class="getting-started-container">
+
+    <h1 class="header">Fusion The UI & UX Framework for ironSource Platforms</h1>
+
+    <div class="why-fusion">
+        <h1>Why Fusion?</h1>
+        <h3>
+            <fusion-icon name="check-v-1"></fusion-icon>
+            Don’t reinvent the wheel - cut down developer hours
+        </h3>
+        <h3>
+            <fusion-icon name="check-v-1"></fusion-icon>
+            Tested for quality and stability - we QAed it all
+        </h3>
+        <h3>
+            <fusion-icon name="check-v-1"></fusion-icon>
+            Don’t worry about design implementation - less moving of pixels around
+        </h3>
+    </div>
+
+    <div class="installation">
+
+        <h1>Installation</h1>
+
+        <p>Add ironSource artifactory to your npm registry (no space after -u):
+        <p>
+        <div class="code-container">
+            <fusion-code-block lang="html"
+                               class="is-collapsible"
+                               code='{{text.npmRegistry}}'></fusion-code-block>
+            <fusion-icon name="squares"
+                         [fusionCopyToClipboard]="copyToClipboard(text.npmRegistry)"></fusion-icon>
+        </div>
+        <p>* If you already have authentication data in your .npmrc file, just add the registry mapping:
+        <p>
+        <div class="code-container">
+            <fusion-code-block lang="html"
+                               class="is-collapsible"
+                               code='{{text.npmRegistrySetConfig}}'></fusion-code-block>
+            <fusion-icon name="squares"
+                         [fusionCopyToClipboard]="copyToClipboard(text.npmRegistrySetConfig)"></fusion-icon>
+        </div>
+
+        <div class="code-container">
+            <fusion-code-block lang="js"
+                               class="is-collapsible"
+                               code='{{text.npm}}'></fusion-code-block>
+            <fusion-icon name="squares"
+                         [fusionCopyToClipboard]="copyToClipboard(text.npm)"></fusion-icon>
+        </div>
+
+
+        <div class="installation-container angular">
+            <h2>Angular</h2>
+            <p>Import fusion style to your angular.json file in option.styles</p>
+            <div class="code-container">
+                <fusion-code-block lang="css"
+                                   class="is-collapsible"
+                                   code='{{text.scss}}'></fusion-code-block>
+                <fusion-icon name="squares"
+                             [fusionCopyToClipboard]="copyToClipboard(text.scss)"></fusion-icon>
+            </div>
+            <p>Import required fusion module on demand and add it to imports array</p>
+            <div class="code-container">
+                <fusion-code-block lang="js"
+                                   class="is-collapsible"
+                                   code='{{text.importModule}}'></fusion-code-block>
+                <fusion-icon name="squares"
+                             [fusionCopyToClipboard]='copyToClipboard(text.importModule)'></fusion-icon>
+            </div>
+            <p>use it on required template</p>
+            <div class="code-container">
+                <fusion-code-block lang="html"
+                                   class="is-collapsible"
+                                   code='<fusion-alert>
+  <span>This alert needs your attention, but it’s not super important</span>
+</fusion-alert>'></fusion-code-block>
+                <fusion-icon name="squares"
+                             [fusionCopyToClipboard]='copyToClipboard(text.fusionAlert)'></fusion-icon>
+            </div>
+
+        </div>
+
+
+        <div class="installation-container react">
+            <h2>React</h2>
+            <p>Import fusion bundle on index.js file</p>
+            <div class="code-container">
+                <fusion-code-block lang="js"
+                                   class="is-collapsible"
+                                   code='{{text.mainReact}}'></fusion-code-block>
+                <fusion-icon name="squares"
+                             [fusionCopyToClipboard]="copyToClipboard(text.mainReact)"></fusion-icon>
+            </div>
+            <p>Import required fusion component on demand</p>
+            <div class="code-container">
+                <fusion-code-block lang="js"
+                                   class="is-collapsible"
+                                   code='{{text.importReact}}'></fusion-code-block>
+                <fusion-icon name="squares"
+                             [fusionCopyToClipboard]='copyToClipboard(text.importReact)'></fusion-icon>
+            </div>
+            <p>use it on required template</p>
+            <div class="code-container">
+                <fusion-code-block lang="html"
+                                   class="is-collapsible"
+                                   code={{text.fusionAlertReact}}></fusion-code-block>
+                <fusion-icon name="squares"
+                             [fusionCopyToClipboard]='copyToClipboard(text.fusionAlertReact)'></fusion-icon>
+            </div>
+
+        </div>
+
+
+        <div class="installation-container react">
+            <h2>Vue</h2>
+            <p>Import fusion bundle on main.js file</p>
+            <div class="code-container">
+                <fusion-code-block lang="js"
+                                   class="is-collapsible"
+                                   code='{{text.mainVue}}'></fusion-code-block>
+                <fusion-icon name="squares"
+                             [fusionCopyToClipboard]="copyToClipboard(text.mainVue)"></fusion-icon>
+            </div>
+            <p>Import required fusion component on demand</p>
+            <div class="code-container">
+                <fusion-code-block lang="js"
+                                   class="is-collapsible"
+                                   code='{{text.importVue}}'></fusion-code-block>
+                <fusion-icon name="squares"
+                             [fusionCopyToClipboard]='copyToClipboard(text.importVue)'></fusion-icon>
+            </div>
+            <div class="code-container">
+                <fusion-code-block lang="js"
+                                   class="is-collapsible"
+                                   code='{{text.importVue3}}'></fusion-code-block>
+                <fusion-icon name="squares"
+                             [fusionCopyToClipboard]='copyToClipboard(text.importVue3)'></fusion-icon>
+            </div>
+            <p>use it on required template</p>
+            <div class="code-container">
+                <fusion-code-block lang="html"
+                                   class="is-collapsible"
+                                   code={{text.fusionAlertVue}}></fusion-code-block>
+                <fusion-icon name="squares"
+                             [fusionCopyToClipboard]='copyToClipboard(text.fusionAlertVue)'></fusion-icon>
+            </div>
+
+        </div>
+
+        <div class="installation-container native">
+            <h2>Native</h2>
+
+            <p>Add the following to you index.html file (in that order)</p>
+
+            <div class="code-container">
+                <fusion-code-block lang="html"
+                                   class="is-collapsible"
+                                   code='{{text.native}}'></fusion-code-block>
+                <fusion-icon name="squares"
+                             [fusionCopyToClipboard]='copyToClipboard(text.native)'></fusion-icon>
+            </div>
+
+            <p>Use it on required javascript file</p>
+            <div class="code-container">
+                <fusion-code-block lang="js"
+                                   class="is-collapsible"
+                                   code="{{text.fusionAlertNative}}"></fusion-code-block>
+                <fusion-icon name="squares"
+                             [fusionCopyToClipboard]='copyToClipboard(text.fusionAlertNative)'></fusion-icon>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="support">
+        <h1>Support</h1>
+        <p>
+            We are developers too! We know one of the most important considerations in choosing a new open source
+            technology
+            is the ability of its community to give ad-hoc support to its users.
+        </p>
+        <p>
+            Feel free to contact us with inquiries regarding: integration, bugs, contributions, concerns, general
+            questions,
+            or anything else that comes to mind. Make a support ticket in Jira, and you will be matched with one of the
+            lead
+            developers of Fusion, dedicated to give support.
+        </p>
+        <label class="fu-font4">Support contact options:</label>
+        <ul>
+            <li>1. Documentation site</li>
+            <li>2. FusionUI Slack channel: fusion-ui-community</li>
+            <li>3. Contact directly one of FusionUI team members/li>
+        </ul>
+    </div>
+
+    <div class="team">
+        <h1>Team</h1>
+        <ul>
+            <li *ngFor="let teamMember of team">
+                <a [href]="'https://mail.google.com/mail/?view=cm&fs=1&to=' + teamMember.email">
+                    <img [src]="teamMember.image"
+                         [fusionTooltip]="teamMember.email">
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

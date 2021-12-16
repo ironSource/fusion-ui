@@ -1,0 +1,20 @@
+name: Issue Created Notification
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: 'Notify'
+        uses: ironSource/action-slack-notification@v1
+        with:
+          channel: fusion-notifications
+          username: FusionUI-CI
+          status: "warning"
+          message: "${{github.actor}} create an ${{ github.event.issue.labels[0].name }} ISSUE - ${{ github.event.issue.number }} ${{ github.event.issue.title }}. https://github.com/${{ github.repository }}/issues/${{ github.event.issue.number }}"
+          slack_webhook: ${{ secrets.SLACK_PATH }}

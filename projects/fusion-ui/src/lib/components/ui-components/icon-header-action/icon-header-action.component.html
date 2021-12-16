@@ -1,0 +1,4 @@
+<div [ngClass]="{isOpen: isOpen, hideDropArrow: hideDropArrow}" class="wrap">
+  <fusion-icon class="main-icon" [name]="icon" [ngClass]="{isActive: isActive, isOpen: isOpen}"></fusion-icon>
+  <fusion-icon *ngIf="!hideDropArrow" [name]="{iconName: 'arrow-right', iconVersion: 'v1'}" class="arrow-icon"></fusion-icon>
+</div>

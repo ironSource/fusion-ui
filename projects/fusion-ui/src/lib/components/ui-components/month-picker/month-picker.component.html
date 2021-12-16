@@ -1,0 +1,17 @@
+<div class="fu-month-picker-wrapper" (fusionClickOutside)="onOutsideClick()">
+    <fusion-month-picker-placeholder
+        [placeholder]="config?.placeholder"
+        [selected]="selected"
+        [class.fu-disabled]="isDisabled"
+        [class.fu-opened]="isOpen$ | async"
+        (click)="onMonthPlaceholderClicked()"
+    ></fusion-month-picker-placeholder>
+    <fusion-month-picker-selector
+        [class.fu-opened]="isOpen$ | async"
+        [selected]="selected"
+        [min]="config?.min"
+        [max]="config?.max"
+        (selectedChange)="onSelectedChanged($event)"
+    ></fusion-month-picker-selector>
+</div>
+<div class="error-msg" *ngIf="error">{{ error }}</div>

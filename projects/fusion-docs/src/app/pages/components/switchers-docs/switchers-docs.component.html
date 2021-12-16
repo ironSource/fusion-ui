@@ -1,0 +1,1183 @@
+<div class="row">
+    <div class="col-9">
+        <!--UI-Component Examples-->
+        <div class="is-example-title">Types</div>
+        <fusion-example-block id="switcherBasic" title="Basic">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<fusion-switcher [formControl]="switcherBasic" [options]="switcherOptions"></fusion-switcher>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import React from "react";
+import { FusionSwitcher } from "@ironsrc/fusion-ui/native/react";
+
+const SWITCHER_OPTIONS = [
+  { id: 1, title: "Non Incent" },
+  { id: 2, title: "Incent" }
+];
+
+export default class Foo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      switcher: {
+        options: SWITCHER_OPTIONS,
+        controlValue: SWITCHER_OPTIONS[1]
+      }
+    };
+  }
+
+  handleChange(stateName, value) {
+    this.setState({[stateName]: {...this.state[stateName], controlValue: value}})
+  }
+
+  render() {
+    return (
+      <div className="example-holder">
+        <FusionSwitcher config={this.state.switcher} selectedChange={this.handleChange.bind(this, "switcher")}></FusionSwitcher>
+      </div>
+    );
+  }
+}'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+    <div class="example-holder">
+        <FusionSwitcher :config="switcher1" @selectedChange="e => handleChange(e, `switcher1`)"/>
+    </div>
+</template>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import { FusionSwitcher } from "@ironsrc/fusion-ui/native/vue";
+
+const SWITCHER_OPTIONS = [
+  { id: 1, title: "Non Incent" },
+  { id: 2, title: "Incent" }
+];
+
+export const FooComponent = {
+  name: "FooComponent",
+  mounted() {
+    this.$emit("updateLayoutTitle", { title: "Switcher Component" });
+  },
+  components: {
+    FusionSwitcher
+  },
+  data() {
+    return {
+      switcher1: {
+        options: SWITCHER_OPTIONS,
+        controlValue: SWITCHER_OPTIONS[1],
+        error: null
+      }
+    };
+  },
+  methods: {
+    handleChange: function(value, key) {
+      this[key] = { ...this[key], controlValue: value };
+    }
+  }
+};
+
+export default FooComponent;
+</script>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<style>
+    .example-holder {
+      margin: 20px;
+      background-color: white;
+      padding: 20px;
+    }
+    native-fusion-switcher {
+      width: 400px;
+    }
+</style>"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const onLoad = () => {
+    // define data
+    const SWITCHER_OPTIONS = [
+        { id: 1, title: "Non Incent" },
+        { id: 2, title: "Incent" }
+    ];
+
+    // add switcher component
+    const switcher = document.createElement("native-fusion-switcher");
+    // add configuration
+    switcher.config = {
+        options: SWITCHER_OPTIONS,
+        controlValue: SWITCHER_OPTIONS[1],
+        error: null
+    };
+
+    switcher.addEventListener("selectedChange", $event => {
+        console.log(">>", $event.detail);
+    });
+
+    document.body.appendChild(switcher);
+};
+
+document.addEventListener("DOMContentLoaded", onLoad, false);'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<style>
+    native-fusion-switcher {
+      width: 400px;
+    }
+</style>"
+                ></fusion-code-block>
+            </ng-template>
+            <div class="row">
+                <div class="col-4">
+                    <fusion-switcher [formControl]="switcherBasic" [options]="switcherOptions"></fusion-switcher>
+                </div>
+            </div>
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="switcherSquare" title="Square" desc="Square style">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<fusion-switcher [formControl]="switcherBasic" [mode]="squareMode" [options]="switcherOptions"></fusion-switcher>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import React from "react";
+import { FusionSwitcher } from "@ironsrc/fusion-ui/native/react";
+
+const SWITCHER_OPTIONS = [
+  { id: 1, title: "Non Incent" },
+  { id: 2, title: "Incent" }
+];
+
+export default class Foo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      switcher: {
+        options: SWITCHER_OPTIONS,
+        controlValue: SWITCHER_OPTIONS[1],
+        mode: "square"
+      }
+    };
+  }
+
+  handleChange(stateName, value) {
+    this.setState({[stateName]: {...this.state[stateName], controlValue: value}})
+  }
+
+  render() {
+    return (
+      <div className="example-holder">
+        <FusionSwitcher config={this.state.switcher} selectedChange={this.handleChange.bind(this, "switcher")}></FusionSwitcher>
+      </div>
+    );
+  }
+}'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+    <div class="example-holder">
+        <FusionSwitcher :config="switcher1" @selectedChange="e => handleChange(e, `switcher1`)"/>
+    </div>
+</template>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import { FusionSwitcher } from "@ironsrc/fusion-ui/native/vue";
+
+const SWITCHER_OPTIONS = [
+  { id: 1, title: "Non Incent" },
+  { id: 2, title: "Incent" }
+];
+
+export const FooComponent = {
+  name: "FooComponent",
+  mounted() {
+    this.$emit("updateLayoutTitle", { title: "Switcher Component" });
+  },
+  components: {
+    FusionSwitcher
+  },
+  data() {
+    return {
+      switcher1: {
+        mode: "squire",
+        options: SWITCHER_OPTIONS,
+        controlValue: SWITCHER_OPTIONS[1],
+        error: null
+      }
+    };
+  },
+  methods: {
+    handleChange: function(value, key) {
+      this[key] = { ...this[key], controlValue: value };
+    }
+  }
+};
+
+export default FooComponent;
+</script>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<style>
+    .example-holder {
+      margin: 20px;
+      background-color: white;
+      padding: 20px;
+    }
+    native-fusion-switcher {
+      width: 400px;
+    }
+</style>"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const onLoad = () => {
+    // define data
+    const SWITCHER_OPTIONS = [
+        { id: 1, title: "Non Incent" },
+        { id: 2, title: "Incent" }
+    ];
+
+    // add switcher component
+    const switcher = document.createElement("native-fusion-switcher");
+    // add configuration
+    switcher.config = {
+        mode: "squire",
+        options: SWITCHER_OPTIONS,
+        controlValue: SWITCHER_OPTIONS[1],
+        error: null
+    };
+
+    switcher.addEventListener("selectedChange", $event => {
+        console.log(">>", $event.detail);
+    });
+
+    document.body.appendChild(switcher);
+};
+
+document.addEventListener("DOMContentLoaded", onLoad, false);'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<style>
+    native-fusion-switcher {
+      width: 400px;
+    }
+</style>"
+                ></fusion-code-block>
+            </ng-template>
+            <div class="row">
+                <div class="col-4">
+                    <fusion-switcher [formControl]="switcherBasic" [mode]="squareMode" [options]="switcherOptions"></fusion-switcher>
+                </div>
+            </div>
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="switcherMultiple" title="Multiple Options">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<fusion-switcher [formControl]="switcherMultiple" [options]="switcherOptions2"></fusion-switcher>
+<fusion-switcher [formControl]="switcherMultiple" [mode]="squareMode" [options]="switcherOptions2"></fusion-switcher>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import React from "react";
+import { FusionSwitcher } from "@ironsrc/fusion-ui/native/react";
+
+const SWITCHER_OPTIONS = [
+  { id: "1", title: "One" },
+  { id: "2", title: "Two" },
+  { id: "3", title: "Three" }
+];
+
+export default class Foo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      switcher1: {
+        options: SWITCHER_OPTIONS,
+        controlValue: SWITCHER_OPTIONS[1]
+      },
+      switcher2: {
+        options: SWITCHER_OPTIONS,
+        controlValue: SWITCHER_OPTIONS[1],
+        mode: "squire"
+      }
+    };
+  }
+
+  handleChange(stateName, value) {
+    this.setState({[stateName]: {...this.state[stateName], controlValue: value}})
+  }
+
+  render() {
+    return (
+      <div className="example-holder">
+        <h2>Switcher - Status Example</h2>
+        <FusionSwitcher config={this.state.switcher1} selectedChange={this.handleChange.bind(this, "switcher1")}></FusionSwitcher>
+        <br />
+        <br />
+        <FusionSwitcher config={this.state.switcher2} selectedChange={this.handleChange.bind(this, "switcher2")}></FusionSwitcher>
+      </div>
+    );
+  }
+}'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+    <div class="example-holder">
+        <FusionSwitcher :config="switcher1" @selectedChange="e => handleChange(e, `switcher1`)"/>
+        <br /><br />
+        <FusionSwitcher :config="switcher2" @selectedChange="e => handleChange(e, `switcher2`)"/>
+    </div>
+</template>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import { FusionSwitcher } from "@ironsrc/fusion-ui/native/vue";
+
+const SWITCHER_OPTIONS = [
+  { id: "1", title: "One" },
+  { id: "2", title: "Two" },
+  { id: "3", title: "Three" }
+];
+
+export const FooComponent = {
+  name: "FooComponent",
+  mounted() {
+    this.$emit("updateLayoutTitle", { title: "Switcher Component" });
+  },
+  components: {
+    FusionSwitcher
+  },
+  data() {
+    return {
+      switcher1: {
+        options: SWITCHER_OPTIONS,
+        controlValue: SWITCHER_OPTIONS[1],
+        error: null
+      },
+      switcher2: {
+        mode: "squire",
+        options: SWITCHER_OPTIONS,
+        controlValue: SWITCHER_OPTIONS[1],
+        error: null
+      }
+    };
+  },
+  methods: {
+    handleChange: function(value, key) {
+      this[key] = { ...this[key], controlValue: value };
+    }
+  }
+};
+
+export default FooComponent;
+</script>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<style>
+    .example-holder {
+      margin: 20px;
+      background-color: white;
+      padding: 20px;
+    }
+    native-fusion-switcher {
+      width: 400px;
+    }
+</style>"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const onLoad = () => {
+    // define data
+    const SWITCHER_OPTIONS = [
+        { id: "1", title: "One" },
+        { id: "2", title: "Two" },
+        { id: "3", title: "Three" }
+    ];
+
+    // add switcher component
+    const switcher1 = document.createElement("native-fusion-switcher");
+    // add configuration
+    switcher1.config = {
+        options: SWITCHER_OPTIONS,
+        controlValue: SWITCHER_OPTIONS[1],
+        error: null
+    };
+    // add event listener
+    switcher1.addEventListener("selectedChange", $event => {
+        console.log("switcher1>>", $event.detail);
+    });
+    // add to DOM
+    document.body.appendChild(switcher1);
+
+    // second switcher
+    const switcher2 = document.createElement("native-fusion-switcher");
+    // add configuration
+    switcher2.config = {
+        mode: "squire",
+        options: SWITCHER_OPTIONS,
+        controlValue: SWITCHER_OPTIONS[1],
+        error: null
+    };
+    // add event listener
+    switcher2.addEventListener("selectedChange", $event => {
+        console.log("switcher2>>", $event.detail);
+    });
+    // add to DOM
+    document.body.appendChild(switcher2);
+};
+
+document.addEventListener("DOMContentLoaded", onLoad, false);'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<style>
+    native-fusion-switcher {
+      width: 400px;
+    }
+</style>"
+                ></fusion-code-block>
+            </ng-template>
+            <div class="row">
+                <div class="col-5">
+                    <fusion-switcher [formControl]="switcherMultiple" [options]="switcherOptions2"></fusion-switcher>
+                    <br /><br />
+                    <fusion-switcher [formControl]="switcherMultiple" [mode]="squareMode" [options]="switcherOptions2"></fusion-switcher>
+                </div>
+            </div>
+        </fusion-example-block>
+
+        <div class="is-example-title">Sizes</div>
+
+        <fusion-example-block id="switcherMinWidth" title="Minimum Width">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<fusion-switcher [formControl]="switcherMin" [options]="switcherOptions3"></fusion-switcher>
+<fusion-switcher [formControl]="switcherMin" [mode]="squareMode" [options]="switcherOptions3"></fusion-switcher>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import React from "react";
+import { FusionSwitcher } from "@ironsrc/fusion-ui/native/react";
+
+const SWITCHER_OPTIONS = [
+  { id: "1", title: "Table" },
+  { id: "2", title: "Graph" }
+];
+
+export default class Foo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      switcher1: {
+        options: SWITCHER_OPTIONS,
+        controlValue: SWITCHER_OPTIONS[0]
+      },
+      switcher2: {
+        options: SWITCHER_OPTIONS,
+        controlValue: SWITCHER_OPTIONS[0],
+        mode: "squire"
+      }
+    };
+  }
+
+  handleChange(stateName, value) {
+    this.setState({[stateName]: {...this.state[stateName], controlValue: value}})
+  }
+
+  render() {
+    return (
+      <div className="example-holder">
+        <h2>Switcher - Status Example</h2>
+        <FusionSwitcher config={this.state.switcher1} selectedChange={this.handleChange.bind(this, "switcher1")}></FusionSwitcher>
+        <br />
+        <br />
+        <FusionSwitcher config={this.state.switcher2} selectedChange={this.handleChange.bind(this, "switcher2")}></FusionSwitcher>
+      </div>
+    );
+  }
+}'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+    <div class="example-holder">
+        <FusionSwitcher :config="switcher1" @selectedChange="e => handleChange(e, `switcher1`)"/>
+        <br /><br />
+        <FusionSwitcher :config="switcher2" @selectedChange="e => handleChange(e, `switcher2`)"/>
+    </div>
+</template>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import { FusionSwitcher } from "@ironsrc/fusion-ui/native/vue";
+
+const SWITCHER_OPTIONS = [
+  { id: "1", title: "Table" },
+  { id: "2", title: "Graph" }
+];
+
+export const FooComponent = {
+  name: "FooComponent",
+  mounted() {
+    this.$emit("updateLayoutTitle", { title: "Switcher Component" });
+  },
+  components: {
+    FusionSwitcher
+  },
+  data() {
+    return {
+      switcher1: {
+        options: SWITCHER_OPTIONS,
+        controlValue: SWITCHER_OPTIONS[0],
+        error: null
+      },
+      switcher2: {
+        mode: "squire",
+        options: SWITCHER_OPTIONS,
+        controlValue: SWITCHER_OPTIONS[0],
+        error: null
+      }
+    };
+  },
+  methods: {
+    handleChange: function(value, key) {
+      this[key] = { ...this[key], controlValue: value };
+    }
+  }
+};
+
+export default FooComponent;
+</script>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<style>
+    .example-holder {
+      margin: 20px;
+      background-color: white;
+      padding: 20px;
+    }
+</style>"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const onLoad = () => {
+    // define data
+    const SWITCHER_OPTIONS = [
+        { id: 1, title: "Non Incent" },
+        { id: 2, title: "Incent" }
+    ];
+
+    // add switcher component
+    const switcher1 = document.createElement("native-fusion-switcher");
+    // add configuration
+    switcher1.config = {
+        options: SWITCHER_OPTIONS,
+        controlValue: SWITCHER_OPTIONS[0],
+        error: null
+    };
+    // add event listener
+    switcher1.addEventListener("selectedChange", $event => {
+        console.log("switcher1>>", $event.detail);
+    });
+    // add to DOM
+    document.body.appendChild(switcher1);
+
+    // second switcher
+    const switcher2 = document.createElement("native-fusion-switcher");
+    // add configuration
+    switcher2.config = {
+        mode: "squire",
+        options: SWITCHER_OPTIONS,
+        controlValue: SWITCHER_OPTIONS[0],
+        error: null
+    };
+    // add event listener
+    switcher2.addEventListener("selectedChange", $event => {
+        console.log("switcher2>>", $event.detail);
+    });
+    // add to DOM
+    document.body.appendChild(switcher2);
+};
+
+document.addEventListener("DOMContentLoaded", onLoad, false);'
+                ></fusion-code-block>
+            </ng-template>
+            <div class="row">
+                <div class="col-1">
+                    <fusion-switcher [formControl]="switcherMin" [options]="switcherOptions3"></fusion-switcher>
+                    <br /><br />
+                    <fusion-switcher [formControl]="switcherMin" [mode]="squareMode" [options]="switcherOptions3"></fusion-switcher>
+                </div>
+            </div>
+        </fusion-example-block>
+
+        <div class="is-example-title">States</div>
+        <fusion-example-block id="switcherDisabledItem" title="Disabled Option">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<fusion-switcher [formControl]="switcherDisabled" [options]="switcherOptions4"></fusion-switcher>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import React from "react";
+import { FusionSwitcher } from "@ironsrc/fusion-ui/native/react";
+
+const SWITCHER_OPTIONS = [
+  { id: "1", title: "One" },
+  { id: "2", title: "Two" },
+  { id: "3", title: "Three", disabled: true }
+];
+
+export default class Foo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      switcher1: {
+        options: SWITCHER_OPTIONS,
+        controlValue: SWITCHER_OPTIONS[0]
+      },
+      switcher2: {
+        options: SWITCHER_OPTIONS,
+        controlValue: SWITCHER_OPTIONS[0],
+        mode: "squire"
+      }
+    };
+  }
+
+  handleChange(stateName, value) {
+    this.setState({[stateName]: {...this.state[stateName], controlValue: value}})
+  }
+
+  render() {
+    return (
+      <div className="example-holder">
+        <h2>Switcher - Status Example</h2>
+        <FusionSwitcher config={this.state.switcher1} selectedChange={this.handleChange.bind(this, "switcher1")}></FusionSwitcher>
+        <br />
+        <br />
+        <FusionSwitcher config={this.state.switcher2} selectedChange={this.handleChange.bind(this, "switcher2")}></FusionSwitcher>
+      </div>
+    );
+  }
+}'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+    <div class="example-holder">
+        <FusionSwitcher :config="switcher1" @selectedChange="e => handleChange(e, `switcher1`)"/>
+        <br /><br />
+        <FusionSwitcher :config="switcher2" @selectedChange="e => handleChange(e, `switcher2`)"/>
+    </div>
+</template>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import { FusionSwitcher } from "@ironsrc/fusion-ui/native/vue";
+
+const SWITCHER_OPTIONS = [
+  { id: "1", title: "One" },
+  { id: "2", title: "Two" },
+  { id: "3", title: "Three", disabled: true  }
+];
+
+export const FooComponent = {
+  name: "FooComponent",
+  mounted() {
+    this.$emit("updateLayoutTitle", { title: "Switcher Component" });
+  },
+  components: {
+    FusionSwitcher
+  },
+  data() {
+    return {
+      switcher1: {
+        options: SWITCHER_OPTIONS,
+        controlValue: SWITCHER_OPTIONS[1],
+        error: null
+      },
+      switcher2: {
+        mode: "squire",
+        options: SWITCHER_OPTIONS,
+        controlValue: SWITCHER_OPTIONS[1],
+        error: null
+      }
+    };
+  },
+  methods: {
+    handleChange: function(value, key) {
+      this[key] = { ...this[key], controlValue: value };
+    }
+  }
+};
+
+export default FooComponent;
+</script>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<style>
+    .example-holder {
+      margin: 20px;
+      background-color: white;
+      padding: 20px;
+    }
+    native-fusion-switcher {
+      width: 400px;
+    }
+</style>"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const onLoad = () => {
+    // define data
+    const SWITCHER_OPTIONS = [
+        { id: "1", title: "One" },
+        { id: "2", title: "Two" },
+        { id: "3", title: "Three", disabled: true }
+    ];
+
+    // add switcher component
+    const switcher1 = document.createElement("native-fusion-switcher");
+    // add configuration
+    switcher1.config = {
+        options: SWITCHER_OPTIONS,
+        controlValue: SWITCHER_OPTIONS[0],
+        error: null
+    };
+    // add event listener
+    switcher1.addEventListener("selectedChange", $event => {
+        console.log("switcher1>>", $event.detail);
+    });
+    // add to DOM
+    document.body.appendChild(switcher1);
+
+    // second switcher
+    const switcher2 = document.createElement("native-fusion-switcher");
+    // add configuration
+    switcher2.config = {
+        mode: "squire",
+        options: SWITCHER_OPTIONS,
+        controlValue: SWITCHER_OPTIONS[0],
+        error: null
+    };
+    // add event listener
+    switcher2.addEventListener("selectedChange", $event => {
+        console.log("switcher2>>", $event.detail);
+    });
+    // add to DOM
+    document.body.appendChild(switcher2);
+};
+
+document.addEventListener("DOMContentLoaded", onLoad, false);'
+                ></fusion-code-block>
+            </ng-template>
+            <div class="row">
+                <div class="col-2">
+                    <fusion-switcher [formControl]="switcherDisabled" [options]="switcherOptions4"></fusion-switcher>
+                    <br /><br />
+                    <fusion-switcher [formControl]="switcherDisabled" [mode]="squareMode" [options]="switcherOptions4"></fusion-switcher>
+                </div>
+            </div>
+        </fusion-example-block>
+
+        <fusion-example-block id="switcherErrorItem" title="Validation Error">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<fusion-switcher [formControl]="switcherError1" [options]="switcherOptions2" [error]="getSwitcherError1()"></fusion-switcher>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import React from "react";
+import { FusionSwitcher } from "@ironsrc/fusion-ui/native/react";
+
+const SWITCHER_OPTIONS = [
+  { id: "1", title: "One" },
+  { id: "2", title: "Two" },
+  { id: "3", title: "Three" }
+];
+
+export default class Foo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      switcher1: {
+        options: SWITCHER_OPTIONS,
+        controlValue: null,
+        error: null
+      },
+      switcher2: {
+        options: SWITCHER_OPTIONS,
+        controlValue: null,
+        mode: "squire",
+        error: null
+      }
+    };
+  }
+
+  componentDidMount() {
+    this.props.updateLayoutTitle({ title: "Example" });
+    this.validate("switcher1");
+    this.validate("switcher2");
+  }
+
+  handleChange(stateName, value) {
+    this.setState({
+      [stateName]: { ...this.state[stateName], controlValue: value }
+    });
+    this.validate(stateName);
+  }
+
+  validate(stateName) {
+    if (this.state[stateName].controlValue) {
+      this.setState({
+        [stateName]: { ...this.state[stateName], ...{ error: null } }
+      });
+    } else {
+      this.setState({
+        [stateName]: {
+          ...this.state[stateName],
+          ...{ error: "This is a mandatory field" }
+        }
+      });
+    }
+  }
+
+  render() {
+    return (
+      <div className="example-holder">
+        <FusionSwitcher
+          config={this.state.switcher1}
+          selectedChange={this.handleChange.bind(this, "switcher1")}
+        ></FusionSwitcher>
+        <br />
+        <br />
+        <FusionSwitcher
+          config={this.state.switcher2}
+          selectedChange={this.handleChange.bind(this, "switcher2")}
+        ></FusionSwitcher>
+      </div>
+    );
+  }
+}'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+    <div class="example-holder">
+        <FusionSwitcher :config="switcher1" @selectedChange="e => handleChange(e, `switcher1`)"/>
+        <br /><br />
+        <FusionSwitcher :config="switcher2" @selectedChange="e => handleChange(e, `switcher2`)"/>
+    </div>
+</template>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import { FusionSwitcher } from "@ironsrc/fusion-ui/native/vue";
+
+const SWITCHER_OPTIONS = [
+  { id: "1", title: "One" },
+  { id: "2", title: "Two" },
+  { id: "3", title: "Three"}
+];
+
+export const FooComponent = {
+  name: "FooComponent",
+  mounted() {
+    this.$emit("updateLayoutTitle", { title: "Switcher Component" });
+    this.validate("switcher1");
+    this.validate("switcher2");
+  },
+  components: {
+    FusionSwitcher
+  },
+  data() {
+    return {
+      switcher1: {
+        options: SWITCHER_OPTIONS,
+        controlValue: null,
+        error: null
+      },
+      switcher2: {
+        mode: "squire",
+        options: SWITCHER_OPTIONS,
+        controlValue: null,
+        error: null
+      }
+    };
+  },
+  methods: {
+    handleChange: function(value, key) {
+      this[key] = { ...this[key], controlValue: value };
+      this.validate(key);
+    },
+    validate(key) {
+      if (this[key].controlValue) {
+        this[key] = { ...this[key], error: null };
+      } else {
+        this[key] = { ...this[key], error: "This is a mandatory field" };
+      }
+    }
+  }
+};
+
+export default FooComponent;
+</script>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<style>
+    .example-holder {
+      margin: 20px;
+      background-color: white;
+      padding: 20px;
+    }
+    native-fusion-switcher {
+      width: 400px;
+    }
+</style>"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const onLoad = () => {
+    // define data
+    const SWITCHER_OPTIONS = [
+        { id: "1", title: "One" },
+        { id: "2", title: "Two" },
+        { id: "3", title: "Three" }
+    ];
+
+    // switcher1 state
+    let appState = {
+        switcher1: {
+            options: SWITCHER_OPTIONS,
+            controlValue: null,
+            error: null
+        },
+        switcher2: {
+            mode: "squire",
+            options: SWITCHER_OPTIONS,
+            controlValue: null,
+            error: null
+        }
+    };
+
+    // helper method
+    const validate = elementId => {
+        const el = document.getElementById(elementId);
+        if (appState[elementId].controlValue) {
+            appState[elementId] = { ...appState[elementId], error: null };
+        } else {
+            appState[elementId] = {
+                ...appState[elementId],
+                error: "This is a mandatory field"
+            };
+        }
+        el.config = appState[elementId];
+    };
+
+    // add switcher component
+    const switcher1 = document.createElement("native-fusion-switcher");
+    // add configuration
+    switcher1.id = "switcher1";
+    switcher1.config = appState.switcher1;
+
+    // add event listener
+    switcher1.addEventListener("selectedChange", $event => {
+        console.log("switcher1>>", $event.detail);
+        appState.switcher1 = {
+            ...appState.switcher1,
+            controlValue: $event.detail
+        };
+        switcher1.config = appState.switcher1;
+        validate("switcher1");
+    });
+    // add to DOM
+    document.body.appendChild(switcher1);
+
+    // second switcher
+    const switcher2 = document.createElement("native-fusion-switcher");
+    // add configuration
+    switcher2.id = "switcher2";
+    switcher2.config = appState.switcher2;
+
+    // add event listener
+    switcher2.addEventListener("selectedChange", $event => {
+        console.log("switcher2>>", $event.detail);
+        appState.switcher2 = {
+            ...appState.switcher2,
+            controlValue: $event.detail
+        };
+        switcher2.config = appState.switcher2;
+        validate("switcher2");
+    });
+    // add to DOM
+    document.body.appendChild(switcher2);
+
+    validate("switcher1");
+    validate("switcher2");
+};
+
+document.addEventListener("DOMContentLoaded", onLoad, false);
+'
+                ></fusion-code-block>
+            </ng-template>
+            <div class="row">
+                <div class="col-3">
+                    <fusion-switcher
+                        [formControl]="switcherError1"
+                        [options]="switcherOptions2"
+                        [error]="getSwitcherError1()"
+                    ></fusion-switcher>
+                    <br /><br />
+                    <fusion-switcher
+                        [formControl]="switcherError2"
+                        [mode]="squareMode"
+                        [options]="switcherOptions2"
+                        [error]="getSwitcherError2()"
+                    ></fusion-switcher>
+                </div>
+            </div>
+        </fusion-example-block>
+        <!--UI-Component Examples-->
+        <!--UI-Component Configuration Doc-->
+        <div class="is-example-title">Configuration</div>
+        <fusion-example-block id="params" title="Parameters" [collapsible]="false">
+            <fusion-code-block
+                lang="js"
+                code="// Inputs
+name: string;
+options: SwitcherItem[];
+error: string;
+mode: SwitcherMode; // SwitcherMode.Circle - default; SwitcherMode.Square
+
+formControlName - // name of FormControl used in component
+
+// Entities
+SwitcherItem {
+    id: number | string;
+    title: string;
+    disabled?: boolean;
+}
+
+SwitcherMode {
+    Circle = 'circle',
+    Square = 'square'
+}
+"
+            ></fusion-code-block>
+        </fusion-example-block>
+
+        <fusion-example-block id="events" title="Events" [collapsible]="false">
+            <fusion-code-block lang="js" code="selectedChange(selected: SwitcherItem)"></fusion-code-block>
+        </fusion-example-block>
+        <!--UI-Component Configuration Doc-->
+    </div>
+
+    <div class="col-3 is-right-side-menu-holder">
+        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+    </div>
+</div>

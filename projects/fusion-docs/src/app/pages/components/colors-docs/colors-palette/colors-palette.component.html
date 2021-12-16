@@ -1,0 +1,5 @@
+<ul class="is-color-palette">
+    <li class="{{colorPalette.className}}">{{colorPalette.name}}</li>
+    <li *ngFor="let color of colorPalette.colors" class="{{color.className}}"><div>{{color.name}}</div><div>{{color.value}}</div></li>
+</ul>
+

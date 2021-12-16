@@ -1,0 +1,26 @@
+<div
+    class="fu-sidebar"
+    [class.fu-sidebar-closed-hovered]="isSidebarClosedHovered$ | async"
+    [class.fu-sidebar-hide-logo]="!!(openedMenuItem$ | async)?.children"
+>
+    <div *ngIf="dynamicContent" class="fu-sidebar-dynamic-content-holder">
+        <fusion-dynamic-components [configuration]="dynamicContent"></fusion-dynamic-components>
+    </div>
+    <div class="fu-sidebar-logo-holder"><div [class.fu-logo-link]="isLogoClickable" class="fu-sidebar-logo" (click)="onLogoClicked()"></div></div>
+    <div class="fu-sidebar-menu-holder">
+        <fusion-sidebar-menu
+            [class.fu-sidebar-closed-hovered]="isSidebarClosedHovered$ | async"
+            [menuItems]="menuItems"
+            [pathNameNormalizeRegex]="pathNameNormalizeRegex"
+            (menuItemClicked)="onMenuItemClicked($event)"
+            (navigationEnded)="onNavigationEnded()"
+        ></fusion-sidebar-menu>
+    </div>
+    <!--user panel for mobile media-->
+    <div class="fu-sidebar-user-data">
+        <div class="fu-sidebar-user-name">{{ user?.name }}</div>
+        <div class="fu-sidebar-user-email">{{ user?.email }}</div>
+        <fusion-icon class="fu-sidebar-user-logout-icon" name="logout" (click)="onLogoutIconClicked()"></fusion-icon>
+    </div>
+    <!--user panel for mobile media-->
+</div>

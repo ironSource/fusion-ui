@@ -1,0 +1,170 @@
+/*!
+ * Created on 2020.12.7 By Andy Kononenko (andyk@ironsrc.com)
+ */
+
+@import "common";
+
+:host{
+    display: block;
+    height: 100%;
+    width: var(--layout-sidebar-width, $sidebarWidth);
+    transition: width .3s ease-out;
+    text-align: initial;
+
+    .fu-sidebar{
+        position: var(--sidebar-position, fixed);
+        z-index: getZIndexLayerOffset(system, 9);
+        left: 0;
+        top: 0;
+        width: inherit;
+
+        height: 100%;
+        border-right: var(--layout-sidebar-border-right, $sidebarBorderRight);
+        background-color: var(--layout-sidebar-backgroung-color, $sidebarBackgroundColor);
+
+        overflow-y: auto;
+        @extend %no-scroll-bar;
+
+        // dynamic content
+        .fu-sidebar-dynamic-content-holder{
+            position: absolute;
+            z-index: getZIndexLayerOffset(system, 10);
+            height: var(--layout-sidebar-dynamic-content-holder-height, $logoHolderHeight);
+            width: var(--layout-sidebar-dynamic-content-holder-width, 100%);
+        }
+
+        // logo
+        .fu-sidebar-logo-holder{
+            display: flex;
+            height: calc(var(--layout-sidebar-logo-holder-height, #{$logoHolderHeight}) + 1px);
+            border-bottom: var(--layout-sidebar-logo-bottom-border, $sidebarBorderRight);
+            .fu-sidebar-logo{
+                display: var(--layout-sidebar-logo-display, inherit);
+                margin-top: var(--layout-sidebar-logo-marging-top, 16px);
+                margin-left: var(--layout-sidebar-logo-marging-left, 18px);
+                width: var(--layout-sidebar-logo-width, $logoWidth);
+                height: var(--layout-sidebar-logo-height, $logoHeight);
+                background: left / cover no-repeat var(--layout-sidebar-logo-image, $logoBackgroundImage);
+                transition: var(--header-logo-transition, #{$logoTransition});
+                &.fu-logo-link{
+                    cursor: pointer;
+                }
+            }
+        }
+
+        // user data (for mobile only)
+        .fu-sidebar-user-data{
+            display: none;
+            position: relative;
+            padding: 18px 64px 17px 21px;
+            border-top: var(--layout-sidebar-userdata-delimiters-border, solid 1px  rgba(255, 255, 255, 0.5));
+            color: var(--layout-sidebar-user-data-color, $White);
+            .fu-sidebar-user-name{
+                @extend %truncate;
+                @extend %font-subtitle
+            }
+            .fu-sidebar-user-email{
+                @extend %truncate;
+                @extend %font-body;
+            }
+            @include icon-style('fu-sidebar-user-logout-icon', var(--layout-sidebar-user-logout-icon-color, rgba(255, 255, 255, 0.5)), var(--layout-sidebar-user-logout-icon-size, 18px), false, true) {
+                position: absolute;
+                right: 20px;
+                top: calc(50% - 9px);
+                cursor: pointer;
+            }
+        }
+    }
+
+    // sidebar closed (collapsed) state
+    &.fu-sidebar-closed{
+        width: var(--layout-sidebar-closed-width, $sidebarClosedWidth);
+
+        .fu-sidebar{
+            transition: width .3s ease-out;
+
+            .fu-sidebar-dynamic-content-holder{
+                display: var(--layout-sidebar-closed-dynamic-content-display, none);
+            }
+
+            .fu-sidebar-logo-holder{
+                .fu-sidebar-logo{
+                    width: var(--layout-sidebar-small-logo-width, $logoSmallWidth);
+                    height: var(--layout-sidebar-small-logo-height, $logoSmallHeight);
+                    background: left / cover no-repeat var(--layout-sidebar-small-logo-image, $logoBackgroundImageClosed);
+                    transition: none;
+                }
+            }
+
+            &.fu-sidebar-closed-hovered{
+                width: var(--layout-sidebar-width, $sidebarWidth);
+                .fu-sidebar-dynamic-content-holder{
+                    display: var(--layout-sidebar-closed-hovered-dynamic-content-display, initial);
+                }
+                .fu-sidebar-logo-holder{
+                    .fu-sidebar-logo{
+                        width: var(--layout-sidebar-logo-width, $logoWidth);
+                        height: var(--layout-sidebar-logo-height, $logoHeight);
+                        background: left / cover no-repeat var(--layout-sidebar-logo-image, $logoBackgroundImage);
+                    }
+                }
+            }
+        }
+    }
+
+    // sidebar for tablet media-size
+    @include media-breakpoint-between('xs', 'md') {
+        &.fu-sidebar-closed{
+            .fu-sidebar{
+                width: 0;
+            }
+        }
+    }
+}
+
+:host-context(.fu-light-theme){
+    .fu-sidebar{
+        .fu-sidebar-logo-holder{
+            .fu-sidebar-logo{
+                width: var(--layout-sidebar-logo-width, $logoWidth);
+                height: var(--layout-sidebar-logo-height, $logoHeight);
+                background: left / cover no-repeat var(--layout-sidebar-logo-image, $logoLightBackgroundImage);
+            }
+        }
+    }
+
+    &.fu-sidebar-closed{
+        .fu-sidebar {
+            .fu-sidebar-logo-holder {
+                .fu-sidebar-logo {
+                    width: var(--layout-sidebar-small-logo-width, $logoSmallWidth);
+                    height: var(--layout-sidebar-small-logo-height, $logoSmallHeight);
+                    background: left / cover no-repeat var(--layout-sidebar-small-logo-image, $logoLightBackgroundImageClosed);
+                }
+            }
+            &.fu-sidebar-closed-hovered{
+                .fu-sidebar-logo-holder{
+                    .fu-sidebar-logo{
+                        width: var(--layout-sidebar-logo-width, $logoWidth);
+                        height: var(--layout-sidebar-logo-height, $logoHeight);
+                        background: left / cover no-repeat var(--layout-sidebar-logo-image, $logoLightBackgroundImage);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// FU-89: force screen mode used for "emulation" screen size
+:host-context(.fu-force-desktop){
+    @include media-breakpoint-between('xs', 'md') {
+        &.fu-sidebar-closed{
+            .fu-sidebar {
+                width: inherit;
+                &.fu-sidebar-closed-hovered {
+                    width: var(--layout-sidebar-width, $sidebarWidth);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,302 @@
+<div class="row">
+    <div class="col-9">
+        <!--UI-Component Examples-->
+        <div class="is-example-title">Video Player</div>
+        <fusion-example-block id="typeBase" title="Base Examples">
+            <!--Examples by frameworks-->
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<!-- Default - no timeline, no autoplay -->
+<fusion-video-player [src]="config.video" [thumbnail]="config.thumbnail"></fusion-video-player>
+<!-- With autoplay -->
+<fusion-video-player [src]="config.video" [thumbnail]="config.thumbnail" [options]="{autoplay: true}"></fusion-video-player>
+<!-- With timeline -->
+<fusion-video-player [src]="config.video" [thumbnail]="config.thumbnail" [options]="{autoplay: true}"></fusion-video-player>
+<!-- With No video message -->
+<fusion-video-player [thumbnail]="config.thumbnail" [options]="{noVideo: {title: `No Video`, icon: `v2/importent`}}"></fusion-video-player>
+'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import React from "react";
+import "./Foo.css";
+import { FusionVideoPlayer } from "@ironsrc/fusion-ui/native/react";
+
+export default class Foo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      player1:{
+        thumbnail: "https://thumbnails-demand.ssacdn.com/hptxht4ie9kcyvjzaiz1.jpg",
+        src: "https://v.ssacdn.com/demand-creatives/assets/videos/hptxht4ie9kcyvjzaiz1.mp4"
+      },
+      player2:{
+        options: {autoplay: true},
+        thumbnail: "https://thumbnails-demand.ssacdn.com/r7m09rxubjmjhtorpsj9.jpg",
+        src: "https://v.ssacdn.com/demand-creatives/assets/videos/r7m09rxubjmjhtorpsj9.mp4"
+      },
+      player3:{
+        options: {showTimeline: true},
+        thumbnail: "https://platform.ssacdn.com/demand-creatives-dev/assets/thumbnails/ukcrqg7xeodlwah9gpcb.jpg",
+        src: "https://platform.ssacdn.com/demand-creatives-dev/assets/videos/ukcrqg7xeodlwah9gpcb.mp4"
+      }
+    };
+  }
+
+  componentDidMount() {
+    this.props.updateLayoutTitle({ title: "Popup" });
+  }
+
+  render() {
+    return (
+      <div className="example-holder">
+        <div className="video-examples-holder">
+          <div>
+            <label className="example-label">Play and pause only</label>
+            <div className="video-example"><FusionVideoPlayer config={this.state.player1} /></div>
+          </div>
+
+          <div>
+            <label className="example-label">With Timeline</label>
+            <div className="video-example"><FusionVideoPlayer config={this.state.player2} /></div>
+          </div>
+
+          <div>
+            <label className="example-label">Big Video play</label>
+            <div className="video-example large"><FusionVideoPlayer config={this.state.player3} /></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div class="example-holder">
+    <div class="video-examples-holder">
+      <div>
+        <label class="example-label">Play and pause only</label>
+        <div class="video-example"><FusionVideoPlayer :config="player1" /></div>
+      </div>
+
+      <div>
+        <label class="example-label">With Timeline</label>
+        <div class="video-example"><FusionVideoPlayer :config="player2" /></div>
+      </div>
+
+      <div>
+        <label class="example-label">Big Video play</label>
+        <div class="video-example large"><FusionVideoPlayer :config="player3" /></div>
+      </div>
+    </div>
+    <br/>
+    <div class="resazible-example">
+      <label>Resizable</label>
+      <div class="aspect-ratio-box">
+        <div class="aspect-ratio-box-inside"><FusionVideoPlayer :config="player3" /></div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style>
+.example-holder{
+  width: 80vw;
+  height: 80vh;
+  margin: 15px auto;
+  padding: 25px;
+  background-color: white;
+  border: solid 1px #ccc;
+}
+
+.video-examples-holder{
+  display: flex;
+  justify-content: space-evenly;
+}
+.video-example {
+  width: 256px;
+  height: 144px;
+  display: inline-block;
+}
+.video-example.large {
+  width: 416px;
+  height: 234px;
+}
+label.example-label{
+  display: block;
+  margin-bottom: 20px;
+  color: #1d1c64;
+}
+
+.resazible-example{
+  width: 40vw;
+  margin: auto;
+}
+
+.aspect-ratio-box {
+  height: 0;
+  overflow: hidden;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+  background: white;
+  position: relative;
+}
+.aspect-ratio-box-inside {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+</style>'
+                ></fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionVideoPlayer} from "@ironsrc/fusion-ui/native/vue";
+
+export const FooComponent = {
+  name: "FooComponent",
+  mounted() {
+    this.$emit("updateLayoutTitle", { title: "Component Example" });
+  },
+  components: {
+    FusionVideoPlayer
+  },
+  data() {
+    return {
+      player1:{
+        thumbnail: "https://thumbnails-demand.ssacdn.com/hptxht4ie9kcyvjzaiz1.jpg",
+        src: "https://v.ssacdn.com/demand-creatives/assets/videos/hptxht4ie9kcyvjzaiz1.mp4"
+      },
+      player2:{
+        options: {autoplay: true},
+        thumbnail: "https://thumbnails-demand.ssacdn.com/r7m09rxubjmjhtorpsj9.jpg",
+        src: "https://v.ssacdn.com/demand-creatives/assets/videos/r7m09rxubjmjhtorpsj9.mp4"
+      },
+      player3:{
+        options: {showTimeline: true},
+        thumbnail: "https://platform.ssacdn.com/demand-creatives-dev/assets/thumbnails/ukcrqg7xeodlwah9gpcb.jpg",
+        src: "https://platform.ssacdn.com/demand-creatives-dev/assets/videos/ukcrqg7xeodlwah9gpcb.mp4"
+      }
+    }
+  },
+  methods: {
+  }
+};
+export default FooComponent;
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const videoPlayer = document.createElement("native-fusion-video-player");
+videoPlayer.config = {
+    thumbnail: "https://s3-eu-west-1.amazonaws.com/ssa.public.videos/thumbnails/qSOaltvVFs_56293.jpg",
+    src: "https://v.ssacdn.com/auto/xOjjQjsSQV_0.mp4"
+};
+
+document.body.appendChild(videoPlayer);'
+                ></fusion-code-block>
+            </ng-template>
+            <!--Examples by frameworks-->
+            <div class="video-examples-holder">
+                <div class="example-holder" *ngFor="let videoData of videoConfig; let last = last">
+                    <label>{{ videoData.name }}</label>
+                    <div class="video-example" [ngClass]="{large: last}">
+                        <fusion-video-player
+                            [src]="videoData.video"
+                            [thumbnail]="videoData.thumbnail"
+                            [options]="videoData.options"
+                        ></fusion-video-player>
+                    </div>
+                </div>
+            </div>
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="typeResizable" title="Resizable Examples">
+            <!--Examples by frameworks-->
+            <fusion-code-block
+                lang="html"
+                class="is-collapsible"
+                code='<!-- Video Player get size of it`s container. On example we show how to make 16:9 Aspect Ratio container  -->
+<style>
+.aspect-ratio-box {
+    height: 0;
+    overflow: hidden;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+    background: white;
+    position: relative;
+}
+.aspect-ratio-box-inside {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+<style>
+
+<div class="aspect-ratio-box">
+    <div class="aspect-ratio-box-inside">
+        <fusion-video-player [src]="config.video"[thumbnail]="config.thumbnail"></fusion-video-player>
+    </div>
+</div>
+'
+            ></fusion-code-block>
+
+            <!--Examples by frameworks-->
+            <label>Resizable</label>
+            <div class="aspect-ratio-box">
+                <div class="aspect-ratio-box-inside">
+                    <fusion-video-player [src]="videoConfig[1].video" [thumbnail]="videoConfig[1].thumbnail"></fusion-video-player>
+                </div>
+            </div>
+        </fusion-example-block>
+
+        <!--UI-Component Configuration Doc-->
+        <div class="is-example-title">Configuration</div>
+        <fusion-example-block id="params" title="Parameters" [collapsible]="false">
+            <fusion-code-block
+                lang="js"
+                code="src: string    // not supported .mov
+width: string
+height: string
+thumbnail: string
+options: {
+    noVideo?: { icon?: string, title?: string }
+    autoplay?: boolean;
+    showTimeline?: boolean;
+}
+
+// CSS variables theme
+
+interface VideoPlayerTheme extends Theme {
+    '--player-border-radius'?: string;
+    '--player-background-color'?: string;
+}
+
+InjectionToken - VIDEO_PLAYER_THEME_TOKEN
+"
+            ></fusion-code-block>
+        </fusion-example-block>
+        <!--UI-Component Configuration Doc-->
+    </div>
+
+    <div class="col-3 is-right-side-menu-holder">
+        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+    </div>
+</div>

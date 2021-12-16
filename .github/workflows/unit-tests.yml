@@ -1,0 +1,22 @@
+name: UnitTests
+
+on:
+  workflow_dispatch:
+
+jobs:
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Install Node 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - run: npm ci
+
+      - name: Run Unit Tests
+        timeout-minutes: 10
+        run: npm run test-ui-ci
