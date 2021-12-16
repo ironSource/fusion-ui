@@ -1,0 +1,19 @@
+fusion-icon {
+    display: inline;
+    color: inherit;
+    svg {
+        max-height: 100%;
+        width: inherit;
+        height: inherit;
+        * {
+            fill: currentColor;
+        }
+    }
+    &.loading {
+        svg{
+            * {
+                fill: none !important;
+            }
+        }
+    }
+  }
