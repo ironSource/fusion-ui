@@ -15,7 +15,7 @@ jobs:
 
       - name: Trigger Code Validate
         id: trigger
-        timeout-minutes: 6
+        timeout-minutes: 5
         uses: ironSource/action-trigger-workflow@main
         with:
           owner: ironSource
