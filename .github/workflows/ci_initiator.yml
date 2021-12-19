@@ -20,7 +20,7 @@ jobs:
         with:
           owner: ironSource
           repo: fusion-actions
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PAT_TOKEN }}
           workflow_file_name: ci.yml
           job_uuid: "${{ steps.vars.outputs.uuid }}"
           inputs: '{ "branch_name": "${{github.ref_name}}", "user": "${{github.actor}}", "job_uuid": "${{ steps.vars.outputs.uuid }}", "sha": "${{ steps.vars.outputs.sha_short }}", "event_name": "${{github.event_name}}", "event_action": "${{github.event.action}}"}'
