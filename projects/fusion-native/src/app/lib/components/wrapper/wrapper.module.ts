@@ -109,7 +109,6 @@ import {MonthPickerModule} from '../../../../../../fusion-ui/src/lib/components/
         TabsModule,
         SidebarModule,
         MonthPickerModule
-    ],
-    entryComponents: [WrapperComponent]
+    ]
 })
 export class WrapperModule {}

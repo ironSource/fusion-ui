@@ -23,7 +23,6 @@ import {DropdownOptionsListModule} from '../dropdown-options-list/dropdown-optio
         DropdownLoaderModule,
         DropdownOptionModule,
         DropdownOptionsListModule
-    ],
-    entryComponents: [AddboxDropdownComponent]
+    ]
 })
 export class AddboxDropdownModule {}

@@ -20,13 +20,13 @@ $tabMediumHeight: 48px;
 $tabHighHeight: 56px;
 
 %height{
-    height: calc(var(--tab-height, #{$tabHeight}) - (var(--tab-padding, #{$tabPadding} * 2)));
+    height: calc(var(--tab-height, #{$tabHeight}) - (var(--tab-padding, $tabPadding * 2)));
 }
 %heightMiddle{
-    height: calc(var(--tab-height, #{$tabMediumHeight}) - (var(--tab-padding, #{$tabPadding} * 2)));
+    height: calc(var(--tab-height, #{$tabMediumHeight}) - (var(--tab-padding, $tabPadding * 2)));
 }
 %heightHigh{
-    height: calc(var(--tab-height, #{$tabHighHeight}) - (var(--tab-padding, #{$tabPadding} * 2)));
+    height: calc(var(--tab-height, #{$tabHighHeight}) - (var(--tab-padding, $tabPadding * 2)));
 }
 
 

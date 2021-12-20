@@ -13,8 +13,7 @@ import {MenuModuleOptions} from './menu-entities';
 @NgModule({
     declarations: [HeaderComponent],
     exports: [HeaderComponent],
-    imports: [CommonModule, IconModule, DynamicComponentsModule, RouterModule, TruncateModule, ClickOutsideModule],
-    entryComponents: [HeaderComponent]
+    imports: [CommonModule, IconModule, DynamicComponentsModule, RouterModule, TruncateModule, ClickOutsideModule]
 })
 export class HeaderModule {
     static forRoot(options?: MenuModuleOptions): ModuleWithProviders<HeaderModule> {

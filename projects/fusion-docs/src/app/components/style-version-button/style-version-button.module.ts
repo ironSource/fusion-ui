@@ -6,7 +6,6 @@ import {ButtonModule} from '@ironsrc/fusion-ui';
 @NgModule({
     declarations: [StyleVersionButtonComponent],
     exports: [StyleVersionButtonComponent],
-    entryComponents: [StyleVersionButtonComponent],
     imports: [CommonModule, ButtonModule]
 })
 export class StyleVersionButtonModule {}

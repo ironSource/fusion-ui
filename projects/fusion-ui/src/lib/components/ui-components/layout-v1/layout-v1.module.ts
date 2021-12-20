@@ -10,8 +10,7 @@ import {LAYOUT_OPTIONS_DEFAULT_VALUE} from './layout-v1-config';
 @NgModule({
     declarations: [LayoutV1Component],
     exports: [LayoutV1Component],
-    imports: [CommonModule, HeaderModule, MenuModule],
-    entryComponents: [LayoutV1Component]
+    imports: [CommonModule, HeaderModule, MenuModule]
 })
 export class LayoutV1Module {
     static forRoot(options?: LayoutModuleOptions): ModuleWithProviders<LayoutV1Module> {

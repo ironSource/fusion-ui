@@ -6,7 +6,6 @@ import {IconModule} from '../icon/icon.module';
 @NgModule({
     declarations: [AlertComponent],
     exports: [AlertComponent],
-    imports: [CommonModule, IconModule],
-    entryComponents: [AlertComponent]
+    imports: [CommonModule, IconModule]
 })
 export class AlertModule {}

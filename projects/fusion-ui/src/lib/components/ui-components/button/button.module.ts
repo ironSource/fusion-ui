@@ -9,8 +9,7 @@ import {BUTTON_OPTIONS_DEFAULT_VALUE} from './button-config';
 @NgModule({
     declarations: [ButtonComponent],
     exports: [ButtonComponent],
-    imports: [CommonModule, IconModule],
-    entryComponents: [ButtonComponent]
+    imports: [CommonModule, IconModule]
 })
 export class ButtonModule {
     static forRoot(options?: ButtonOptions): ModuleWithProviders<ButtonModule> {

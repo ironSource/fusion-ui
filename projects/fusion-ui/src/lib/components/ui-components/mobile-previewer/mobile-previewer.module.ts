@@ -7,7 +7,6 @@ import {IconModule} from '../icon/icon.module';
 @NgModule({
     imports: [CommonModule, IconModule, DynamicComponentsModule],
     declarations: [MobilePreviewerComponent],
-    exports: [MobilePreviewerComponent],
-    entryComponents: [MobilePreviewerComponent]
+    exports: [MobilePreviewerComponent]
 })
 export class MobilePreviewerModule {}

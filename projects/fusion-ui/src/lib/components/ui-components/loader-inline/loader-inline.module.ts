@@ -7,7 +7,6 @@ import {IconModule} from '../icon/icon.module';
     declarations: [LoaderInlineComponent],
     exports: [LoaderInlineComponent],
     providers: [CurrencyPipe],
-    imports: [CommonModule, IconModule],
-    entryComponents: [LoaderInlineComponent]
+    imports: [CommonModule, IconModule]
 })
 export class LoaderInlineModule {}

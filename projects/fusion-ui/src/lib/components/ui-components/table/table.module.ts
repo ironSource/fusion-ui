@@ -61,8 +61,7 @@ import {ButtonModule} from '../button/button.module';
         ErrorMessageModule,
         NotAvailableModule,
         ButtonModule
-    ],
-    entryComponents: [TableComponent]
+    ]
 })
 export class TableModule {
     static forRoot(options?: TableModuleOptions): ModuleWithProviders<TableModule> {

@@ -11,7 +11,6 @@ import {DynamicComponentsModule} from '../../dynamic-components/dynamic-componen
 @NgModule({
     declarations: [DropdownOptionComponent, DropdownOptionDirective],
     exports: [DropdownOptionDirective],
-    entryComponents: [DropdownOptionComponent],
     imports: [CommonModule, IconModule, TooltipModule, FlagModule, GenericPipeModule, DynamicComponentsModule]
 })
 export class DropdownOptionModule {}

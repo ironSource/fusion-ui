@@ -7,7 +7,6 @@ import {TooltipModule} from '../tooltip/tooltip.module';
 @NgModule({
     declarations: [ListBoxComponent],
     exports: [ListBoxComponent],
-    imports: [CommonModule, IconModule, TooltipModule],
-    entryComponents: [ListBoxComponent]
+    imports: [CommonModule, IconModule, TooltipModule]
 })
 export class ListBoxModule {}

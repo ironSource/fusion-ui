@@ -78,7 +78,6 @@ import {AccordionModule, ButtonComponent, VideoPlayerModule} from 'projects/fusi
             provide: CACHE_OPTIONS_TOKEN,
             useFactory: () => ({isLocalEnv: true, persistentKeyPrefix: '123'})
         }
-    ],
-    entryComponents: [IconComponent, ButtonComponent]
+    ]
 })
 export class PlaygroundModule {}
