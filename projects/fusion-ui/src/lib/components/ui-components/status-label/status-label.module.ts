@@ -6,7 +6,6 @@ import {IconModule} from '../icon/icon.module';
 @NgModule({
     declarations: [StatusLabelComponent],
     imports: [CommonModule, IconModule],
-    exports: [StatusLabelComponent],
-    entryComponents: [StatusLabelComponent]
+    exports: [StatusLabelComponent]
 })
 export class StatusLabelModule {}

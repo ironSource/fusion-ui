@@ -25,7 +25,6 @@ import {DropdownSelectModule} from '../../dropdown/dropdown-select/dropdown-sele
         DropdownSelectModule
     ],
     providers: [DaterangeService],
-    exports: [DaterangeComponent],
-    entryComponents: [DaterangeComponent]
+    exports: [DaterangeComponent]
 })
 export class DaterangeModule {}

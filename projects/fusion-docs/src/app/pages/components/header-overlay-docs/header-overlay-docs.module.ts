@@ -21,7 +21,6 @@ const routes: Routes = [{path: '', component: HeaderOverlayDocsComponent}];
         RouterModule.forChild(routes),
         ReactiveFormsModule,
         IconModule
-    ],
-    entryComponents: [DemoFilterComponent]
+    ]
 })
 export class HeaderOverlayDocsModule {}

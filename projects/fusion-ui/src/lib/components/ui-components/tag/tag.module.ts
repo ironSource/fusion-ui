@@ -8,7 +8,6 @@ import {FlagModule} from '../flag/flag.module';
 @NgModule({
     declarations: [TagComponent],
     exports: [TagComponent],
-    imports: [CommonModule, IconModule, FlagModule, TooltipModule],
-    entryComponents: [TagComponent]
+    imports: [CommonModule, IconModule, FlagModule, TooltipModule]
 })
 export class TagModule {}

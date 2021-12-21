@@ -26,7 +26,6 @@ const routes: Routes = [{path: '', component: TableDocsComponent}];
         AlertModule,
         TableCellIconExampleModule,
         TableCustomNoDataModule
-    ],
-    entryComponents: [TableDocsComponent]
+    ]
 })
 export class TableDocsModule {}

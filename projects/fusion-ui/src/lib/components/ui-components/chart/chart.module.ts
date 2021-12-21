@@ -11,7 +11,6 @@ import {CloneModule} from '../../../pipes/clone/clone.module';
     imports: [CommonModule, LoaderModule, ShortNumberScaleSuffixModule, CloneModule],
     declarations: [ChartComponent],
     exports: [ChartComponent],
-    providers: [DatePipe, CurrencyPipe, DecimalPipe, PercentPipe, ChartDataService, ShortNumberScaleSuffixPipe],
-    entryComponents: [ChartComponent]
+    providers: [DatePipe, CurrencyPipe, DecimalPipe, PercentPipe, ChartDataService, ShortNumberScaleSuffixPipe]
 })
 export class ChartModule {}

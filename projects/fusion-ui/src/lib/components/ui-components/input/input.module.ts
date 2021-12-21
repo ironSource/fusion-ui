@@ -11,7 +11,6 @@ import {LoaderInlineModule} from '../loader-inline/loader-inline.module';
 @NgModule({
     declarations: [InputComponent],
     exports: [InputComponent],
-    imports: [CommonModule, ReactiveFormsModule, IconModule, TooltipModule, LoaderModule, LoaderInlineModule, ClickOutsideModule],
-    entryComponents: [InputComponent]
+    imports: [CommonModule, ReactiveFormsModule, IconModule, TooltipModule, LoaderModule, LoaderInlineModule, ClickOutsideModule]
 })
 export class InputModule {}

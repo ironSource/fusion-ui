@@ -7,7 +7,6 @@ import {IconModule} from '../icon/icon.module';
 @NgModule({
     declarations: [RadioComponent],
     exports: [RadioComponent],
-    imports: [CommonModule, IconModule, TooltipModule],
-    entryComponents: [RadioComponent]
+    imports: [CommonModule, IconModule, TooltipModule]
 })
 export class RadioModule {}

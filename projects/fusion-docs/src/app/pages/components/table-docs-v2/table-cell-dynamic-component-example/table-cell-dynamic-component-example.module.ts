@@ -5,7 +5,6 @@ import {StatusLabelModule} from '@ironsrc/fusion-ui';
 
 @NgModule({
     declarations: [TableCellDynamicComponentExampleComponent],
-    imports: [CommonModule, StatusLabelModule],
-    entryComponents: [TableCellDynamicComponentExampleComponent]
+    imports: [CommonModule, StatusLabelModule]
 })
 export class TableCellDynamicComponentExampleModule {}

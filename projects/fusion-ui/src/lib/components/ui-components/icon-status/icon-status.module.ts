@@ -7,7 +7,6 @@ import {TooltipModule} from '../tooltip/tooltip.module';
 @NgModule({
     imports: [CommonModule, IconModule, TooltipModule],
     declarations: [IconStatusComponent],
-    exports: [IconStatusComponent],
-    entryComponents: [IconStatusComponent]
+    exports: [IconStatusComponent]
 })
 export class IconStatusModule {}

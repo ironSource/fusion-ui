@@ -5,7 +5,6 @@ import {IconModule} from '@ironsrc/fusion-ui';
 
 @NgModule({
     declarations: [ToastExampleContentComponent],
-    imports: [CommonModule, IconModule],
-    entryComponents: [ToastExampleContentComponent]
+    imports: [CommonModule, IconModule]
 })
 export class ToastExampleContentModule {}

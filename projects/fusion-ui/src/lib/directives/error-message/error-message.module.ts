@@ -7,7 +7,6 @@ import {ReactiveFormsModule} from '@angular/forms';
 @NgModule({
     imports: [CommonModule, ReactiveFormsModule],
     declarations: [ErrorMessageDirective, ErrorMessageComponent],
-    exports: [ErrorMessageDirective],
-    entryComponents: [ErrorMessageComponent]
+    exports: [ErrorMessageDirective]
 })
 export class ErrorMessageModule {}

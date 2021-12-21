@@ -5,7 +5,6 @@ import {ToggleModule} from '@ironsrc/fusion-ui';
 
 @NgModule({
     declarations: [MenuItemExampleComponent],
-    imports: [CommonModule, ToggleModule],
-    entryComponents: [MenuItemExampleComponent]
+    imports: [CommonModule, ToggleModule]
 })
 export class MenuItemExampleModule {}

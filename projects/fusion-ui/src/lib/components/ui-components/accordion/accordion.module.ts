@@ -8,7 +8,6 @@ import {AccordionContentModule} from './accordion-content/accordion-content.modu
 @NgModule({
     declarations: [AccordionComponent],
     exports: [AccordionComponent],
-    imports: [CommonModule, AccordionHeaderModule, AccordionContentModule, DynamicComponentsModule],
-    entryComponents: [AccordionComponent]
+    imports: [CommonModule, AccordionHeaderModule, AccordionContentModule, DynamicComponentsModule]
 })
 export class AccordionModule {}

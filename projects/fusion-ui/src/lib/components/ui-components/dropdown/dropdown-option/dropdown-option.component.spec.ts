@@ -3,7 +3,7 @@ import {DropdownOptionComponent} from './dropdown-option.component';
 import {IconModule} from '../../icon/icon.module';
 import {TooltipModule} from '../../tooltip/tooltip.module';
 import {FlagModule} from '../../flag/flag.module';
-import {DropdownOptionDirective} from './dropdown-option.directive';
+import {DropdownOptionDirective} from './dropdown-option.component';
 import {DropdownService} from '../dropdown.service';
 import {GenericPipeModule} from '../../../../pipes/generic/generic.module';
 

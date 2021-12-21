@@ -5,7 +5,6 @@ import {FlagComponent} from './flag.component';
 @NgModule({
     declarations: [FlagComponent],
     exports: [FlagComponent],
-    imports: [CommonModule],
-    entryComponents: [FlagComponent]
+    imports: [CommonModule]
 })
 export class FlagModule {}

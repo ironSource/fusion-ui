@@ -9,8 +9,7 @@ import {SVG_OPTIONS_TOKEN} from '../svg/svg-config';
 @NgModule({
     declarations: [IconComponent],
     exports: [IconComponent],
-    imports: [CommonModule, SvgModule],
-    entryComponents: [IconComponent]
+    imports: [CommonModule, SvgModule]
 })
 export class IconModule {
     static forRoot(options?: IconOptions): ModuleWithProviders<IconModule> {

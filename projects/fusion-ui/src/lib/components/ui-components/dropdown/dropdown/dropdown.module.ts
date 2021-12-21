@@ -39,7 +39,6 @@ import {DropdownSelectModule} from '../dropdown-select/dropdown-select.module';
         DropdownOptionModule,
         DropdownSearchModule,
         DropdownSelectModule
-    ],
-    entryComponents: [DropdownComponent]
+    ]
 })
 export class DropdownModule {}

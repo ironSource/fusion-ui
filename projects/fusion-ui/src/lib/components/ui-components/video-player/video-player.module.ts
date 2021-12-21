@@ -10,8 +10,7 @@ import {SecondsToMinutesModule} from '../../../pipes/numbers/seconds-to-minutes/
 @NgModule({
     declarations: [VideoPlayerComponent],
     exports: [VideoPlayerComponent],
-    imports: [CommonModule, IconModule, SecondsToMinutesModule],
-    entryComponents: [VideoPlayerComponent]
+    imports: [CommonModule, IconModule, SecondsToMinutesModule]
 })
 export class VideoPlayerModule {
     static forRoot(options?: VideoPlayerOptions): ModuleWithProviders<VideoPlayerModule> {

@@ -11,7 +11,6 @@ import {IconModule} from '../icon/icon.module';
 @NgModule({
     declarations: [ModalComponent, ModalFooterComponent, ModalContentComponent, ModalHeaderComponent],
     exports: [ModalComponent, ModalFooterComponent, ModalContentComponent, ModalHeaderComponent],
-    imports: [CommonModule, LoaderModule, ButtonModule, IconModule],
-    entryComponents: [ModalComponent]
+    imports: [CommonModule, LoaderModule, ButtonModule, IconModule]
 })
 export class ModalModule {}

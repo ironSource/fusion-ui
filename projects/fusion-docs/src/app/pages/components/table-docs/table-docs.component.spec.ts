@@ -20,8 +20,7 @@ class RouterStub {
 @NgModule({
     declarations: [TableCellIconExampleComponent],
     imports: [CommonModule, IconModule],
-    providers: [{provide: Router, useClass: RouterStub}],
-    entryComponents: [TableCellIconExampleComponent]
+    providers: [{provide: Router, useClass: RouterStub}]
 })
 export class TableCellIconExampleModule {}
 

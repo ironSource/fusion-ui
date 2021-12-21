@@ -6,7 +6,6 @@ import {TableCellIconExampleComponent} from './table-cell-icon-example.component
 @NgModule({
     imports: [CommonModule, IconModule],
     declarations: [TableCellIconExampleComponent],
-    exports: [TableCellIconExampleComponent],
-    entryComponents: [TableCellIconExampleComponent]
+    exports: [TableCellIconExampleComponent]
 })
 export class TableCellIconExampleModule {}

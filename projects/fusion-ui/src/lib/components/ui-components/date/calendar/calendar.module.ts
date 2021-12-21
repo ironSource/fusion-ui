@@ -7,7 +7,6 @@ import {CalendarService} from './calendar.service';
     declarations: [CalendarComponent],
     imports: [CommonModule],
     providers: [CalendarService],
-    exports: [CalendarComponent],
-    entryComponents: [CalendarComponent]
+    exports: [CalendarComponent]
 })
 export class CalendarModule {}
