@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 5.5.0-rc.0 (2021-12-21)
+
+
+### Features
+
+* upgrade to version 13 ([c701b16](https://github.com/ironSource/fusion-ui/commit/c701b1651a86e68f818c1b3eff126eac4736f072))
+* **v13:** remove unused core-js package ([283cdf2](https://github.com/ironSource/fusion-ui/commit/283cdf285c90f357ae6d653de21afa39629ae360))
+* **v13:** upgrde angular version to v13\n\nBREAKING CHANGE: v13 upgrade changes ([d9c8b64](https://github.com/ironSource/fusion-ui/commit/d9c8b64b0e0e214b8ca5e90c192a4c992b523970))
+
+
+### CI
+
+* checking PAT ([7d6b766](https://github.com/ironSource/fusion-ui/commit/7d6b76601549706a8d29a6c176d8bf8908e359f2))
+* **fu-294:** checking unit tests on GH actions ([6a76802](https://github.com/ironSource/fusion-ui/commit/6a76802423578ede35450514ed992a86e9c54625))
+* **fu-294:** checking unit tests on GH actions ([7b7d9ee](https://github.com/ironSource/fusion-ui/commit/7b7d9ee9b6dc97535234415806cbadb85b51fe2c))
+
 ### [5.4.1](https://github.com/ironSource/fusion-ui/compare/v5.4.0...v5.4.1) (2021-12-15)
 
 
