@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v6.0.0-rc.0...v6.0.0-rc.1) (2021-12-21)
+
+
+### Bug Fixes
+
+* **v13:** remove circle dep on dropdown option directive ([c67d525](https://github.com/ironSource/fusion-ui/commit/c67d52574895f3fc5c1b2f331cb1767292e92200))
+
 ## [6.0.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.5.0-rc.0...v6.0.0-rc.0) (2021-12-21)
 
 
