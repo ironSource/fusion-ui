@@ -39,7 +39,7 @@
     "format:check": "prettier --config ./prettier.config.js --check 'projects/**/*{.ts,.json}'",
     "format:pretty": "prettier --config ./prettier.config.js --write 'projects/**/*{.ts,.json}'",
     "prettier": "prettier",
-    "build:mfe:dev": "VERSION=6.0.0-rc.1 npm run build:mfe -- -c dev",
+    "build:mfe:dev": "VERSION=6.0.0-rc.2 npm run build:mfe -- -c dev",
     "build:mfe": "ng run fusion-ui:build-mfe",
     "deploy:mfe": "aws s3 rm s3://fusion-ui-mfe-bundles/bundles/v$VERSION --recursive && aws s3 cp ./dist/fusion-mfe s3://fusion-ui-mfe-bundles/bundles/v$VERSION --recursive --exclude 'index.html'",
     "release": "standard-version"
