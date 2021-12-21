@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.5.0-rc.0...v6.0.0-rc.0) (2021-12-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* v13 braking change
+
+### Features
+
+* upgrade to v13 ([bb0ab66](https://github.com/ironSource/fusion-ui/commit/bb0ab668d988057a5a449d036bde8106adae5f09))
+
 ## 5.5.0-rc.0 (2021-12-21)
 
 
