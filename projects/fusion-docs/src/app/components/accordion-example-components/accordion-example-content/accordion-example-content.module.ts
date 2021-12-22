@@ -4,7 +4,6 @@ import {AccordionExampleContentComponent} from './accordion-example-content.comp
 
 @NgModule({
     declarations: [AccordionExampleContentComponent],
-    imports: [CommonModule],
-    entryComponents: [AccordionExampleContentComponent]
+    imports: [CommonModule]
 })
 export class AccordionExampleContentModule {}

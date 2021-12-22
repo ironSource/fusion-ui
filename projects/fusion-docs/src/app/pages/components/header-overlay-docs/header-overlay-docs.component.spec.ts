@@ -13,8 +13,7 @@ import {CommonModule} from '@angular/common';
 @NgModule({
     imports: [CommonModule, ReactiveFormsModule, IconModule],
     declarations: [DemoFilterComponent],
-    exports: [DemoFilterComponent],
-    entryComponents: [DemoFilterComponent]
+    exports: [DemoFilterComponent]
 })
 class DemoFilterModule {}
 

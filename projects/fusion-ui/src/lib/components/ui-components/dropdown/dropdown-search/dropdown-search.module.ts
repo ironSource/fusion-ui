@@ -7,7 +7,6 @@ import {ReactiveFormsModule} from '@angular/forms';
 @NgModule({
     declarations: [DropdownSearchComponent],
     exports: [DropdownSearchComponent],
-    imports: [CommonModule, InputModule, ReactiveFormsModule],
-    entryComponents: [DropdownSearchComponent]
+    imports: [CommonModule, InputModule, ReactiveFormsModule]
 })
 export class DropdownSearchModule {}

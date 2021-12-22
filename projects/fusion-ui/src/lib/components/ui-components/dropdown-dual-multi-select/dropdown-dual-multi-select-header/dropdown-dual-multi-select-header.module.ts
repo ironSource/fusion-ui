@@ -7,7 +7,6 @@ import {ReactiveFormsModule} from '@angular/forms';
 @NgModule({
     declarations: [DropdownDualMultiSelectHeaderComponent],
     imports: [CommonModule, InputModule, ReactiveFormsModule],
-    exports: [DropdownDualMultiSelectHeaderComponent],
-    entryComponents: [DropdownDualMultiSelectHeaderComponent]
+    exports: [DropdownDualMultiSelectHeaderComponent]
 })
 export class DropdownDualMultiSelectHeaderModule {}

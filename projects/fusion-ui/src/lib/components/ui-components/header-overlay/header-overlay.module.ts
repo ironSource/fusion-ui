@@ -8,7 +8,6 @@ import {ModalModule} from '../modal/modal.module';
 @NgModule({
     declarations: [HeaderOverlayComponent],
     exports: [HeaderOverlayComponent],
-    imports: [CommonModule, ModalModule, DynamicComponentsModule, ClickOutsideModule],
-    entryComponents: [HeaderOverlayComponent]
+    imports: [CommonModule, ModalModule, DynamicComponentsModule, ClickOutsideModule]
 })
 export class HeaderOverlayModule {}

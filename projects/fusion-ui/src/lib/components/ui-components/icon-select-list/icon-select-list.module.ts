@@ -8,7 +8,6 @@ import {RadioModule} from '../radio/radio.module';
 @NgModule({
     declarations: [IconSelectListComponent],
     imports: [CommonModule, IconModule, CheckboxModule, RadioModule],
-    exports: [IconSelectListComponent],
-    entryComponents: [IconSelectListComponent]
+    exports: [IconSelectListComponent]
 })
 export class IconSelectListModule {}

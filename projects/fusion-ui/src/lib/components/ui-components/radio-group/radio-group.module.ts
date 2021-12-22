@@ -6,7 +6,6 @@ import {RadioModule} from '../radio/radio.module';
 @NgModule({
     declarations: [RadioGroupComponent],
     exports: [RadioGroupComponent],
-    imports: [RadioModule, CommonModule],
-    entryComponents: [RadioGroupComponent]
+    imports: [RadioModule, CommonModule]
 })
 export class RadioGroupModule {}

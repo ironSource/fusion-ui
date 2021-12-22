@@ -11,7 +11,6 @@ import {ClickOutsideModule} from '../../../directives/click-outside/click-outsid
 @NgModule({
     declarations: [InputInlineComponent],
     exports: [InputInlineComponent],
-    imports: [CommonModule, ReactiveFormsModule, LoaderModule, IconModule, InputModule, TooltipModule, ClickOutsideModule],
-    entryComponents: [InputInlineComponent]
+    imports: [CommonModule, ReactiveFormsModule, LoaderModule, IconModule, InputModule, TooltipModule, ClickOutsideModule]
 })
 export class InputInlineModule {}

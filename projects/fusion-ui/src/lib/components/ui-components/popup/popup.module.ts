@@ -8,7 +8,6 @@ import {PopupDirective} from './popup.directive';
 @NgModule({
     imports: [CommonModule, ClickOutsideModule, DynamicComponentsModule],
     declarations: [PopupComponent, PopupDirective],
-    exports: [PopupComponent, PopupDirective],
-    entryComponents: [PopupComponent]
+    exports: [PopupComponent, PopupDirective]
 })
 export class PopupModule {}

@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @import "mixins/breakpoints";
 
 $gridColumns: 12 !default;
@@ -10,12 +12,12 @@ $columnHiddenPrefix: '.hidden' !default;
 // create column props by size
 @mixin make-col($size, $columns: $gridColumns) {
     flex: 0 0 auto;
-    width: percentage($size / $columns);
+    width: percentage(math.div($size, $columns));
 }
 
 // create column offset props
 @mixin make-col-offset($size, $columns: $gridColumns) {
-    $num: $size / $columns;
+    $num: math.div($size, $columns);
     margin-left: if($num==0, 0, percentage($num));
 }
 

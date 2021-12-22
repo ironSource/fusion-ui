@@ -13,7 +13,6 @@ import {ClickOutsideModule} from '../../../directives/click-outside/click-outsid
     declarations: [DatepickerComponent, DatepickerHeaderComponent, DatepickerSelectionComponent],
     exports: [DatepickerComponent],
     imports: [CommonModule, ReactiveFormsModule, IconModule, InputModule, DropdownModule, ClickOutsideModule],
-    providers: [DatePipe],
-    entryComponents: [DatepickerComponent]
+    providers: [DatePipe]
 })
 export class DatepickerModule {}

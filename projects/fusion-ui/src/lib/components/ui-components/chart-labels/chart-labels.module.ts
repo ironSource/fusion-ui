@@ -8,7 +8,6 @@ import {CheckboxModule} from '../checkbox/checkbox.module';
 @NgModule({
     imports: [CommonModule, IconModule, ReactiveFormsModule, CheckboxModule],
     declarations: [ChartLabelsComponent],
-    exports: [ChartLabelsComponent],
-    entryComponents: [ChartLabelsComponent]
+    exports: [ChartLabelsComponent]
 })
 export class ChartLabelsModule {}

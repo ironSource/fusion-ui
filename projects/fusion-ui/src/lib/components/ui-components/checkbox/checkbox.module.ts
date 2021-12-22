@@ -8,7 +8,6 @@ import {TooltipModule} from '../tooltip/tooltip.module';
 @NgModule({
     declarations: [CheckboxComponent],
     exports: [CheckboxComponent],
-    imports: [CommonModule, IconModule, FlagModule, TooltipModule],
-    entryComponents: [CheckboxComponent]
+    imports: [CommonModule, IconModule, FlagModule, TooltipModule]
 })
 export class CheckboxModule {}

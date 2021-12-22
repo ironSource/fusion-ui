@@ -5,7 +5,6 @@ import {AccordionHeaderComponent} from './accordion-header.component';
 
 @NgModule({
     declarations: [AccordionHeaderComponent],
-    imports: [CommonModule, IconModule],
-    entryComponents: [AccordionHeaderComponent]
+    imports: [CommonModule, IconModule]
 })
 export class AccordionHeaderModule {}

@@ -7,7 +7,6 @@ import {LoaderInlineModule} from '../../loader-inline/loader-inline.module';
 @NgModule({
     declarations: [DropdownLoaderDirective, DropdownLoaderComponent],
     exports: [DropdownLoaderDirective, LoaderInlineModule],
-    entryComponents: [DropdownLoaderComponent],
     imports: [CommonModule, LoaderInlineModule]
 })
 export class DropdownLoaderModule {}

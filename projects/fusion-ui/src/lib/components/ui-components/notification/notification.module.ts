@@ -7,7 +7,6 @@ import {IconModule} from '../icon/icon.module';
 @NgModule({
     declarations: [NotificationComponent],
     exports: [NotificationComponent],
-    imports: [CommonModule, ModalModule, IconModule],
-    entryComponents: [NotificationComponent]
+    imports: [CommonModule, ModalModule, IconModule]
 })
 export class NotificationModule {}

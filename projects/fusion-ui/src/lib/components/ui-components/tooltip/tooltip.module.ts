@@ -8,7 +8,6 @@ import {IconModule} from '../icon/icon.module';
 @NgModule({
     declarations: [TooltipDirective, TooltipComponent],
     exports: [TooltipDirective, TooltipComponent],
-    imports: [CommonModule, DynamicComponentsModule, IconModule],
-    entryComponents: [TooltipComponent]
+    imports: [CommonModule, DynamicComponentsModule, IconModule]
 })
 export class TooltipModule {}

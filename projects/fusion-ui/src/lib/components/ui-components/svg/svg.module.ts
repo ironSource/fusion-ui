@@ -9,8 +9,7 @@ import {ApiModule} from '../../../services/api/api.module';
 @NgModule({
     declarations: [SvgComponent],
     exports: [SvgComponent],
-    imports: [CommonModule, HttpClientModule, ApiModule],
-    entryComponents: [SvgComponent]
+    imports: [CommonModule, HttpClientModule, ApiModule]
 })
 export class SvgModule {
     static forRoot(options?: SvgOptions): ModuleWithProviders<SvgModule> {

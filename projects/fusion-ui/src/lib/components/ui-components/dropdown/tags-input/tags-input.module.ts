@@ -23,7 +23,6 @@ import {DropdownOptionsListModule} from '../dropdown-options-list/dropdown-optio
         DropdownLoaderModule,
         ClickOutsideModule,
         DropdownOptionsListModule
-    ],
-    entryComponents: [TagsInputComponent]
+    ]
 })
 export class TagsInputModule {}

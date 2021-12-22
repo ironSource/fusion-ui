@@ -6,7 +6,6 @@ import {LoaderModule} from '../../../../../../../fusion-ui/src/public-api';
 @NgModule({
     declarations: [CustomLoaderComponent, CustomLoaderHostComponent],
     exports: [CustomLoaderComponent, CustomLoaderHostComponent],
-    entryComponents: [CustomLoaderComponent],
     imports: [CommonModule, LoaderModule]
 })
 export class CustomLoaderModule {}

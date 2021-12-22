@@ -11,7 +11,6 @@ import {MenuListComponent} from './menu-list/menu-list.component';
     declarations: [MenuComponent, MenuItemComponent, MenuListComponent],
     exports: [MenuComponent],
     imports: [CommonModule, IconModule, RouterModule],
-    providers: [MenuService],
-    entryComponents: [MenuComponent]
+    providers: [MenuService]
 })
 export class MenuModule {}
