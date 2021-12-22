@@ -6,7 +6,7 @@
         "url": "https://github.com/ironSource/fusion-ui.git"
     },
     "publishConfig": {
-        "registry": "https://npm.pkg.github.com/@dalenguyen"
+        "registry": "https://npm.pkg.github.com/@ironsource"
     },
     "dependencies": {
         "chart.js": "^3.5.1",
