@@ -1,5 +1,5 @@
 {
-    "name": "@ironsrc/fusion-ui",
+    "name": "@ironsource/fusion-ui",
     "version": "6.0.0",
     "dependencies": {
         "chart.js": "^3.5.1",
