@@ -7,9 +7,6 @@ CYAN='\033[0;36m'
 NC='\033[0m'
 
 BRANCH_NAME="$(git branch | grep \* | sed -e 's/\* //g')"
-
-echo ">>> $BRANCH_NAME"
-
 if [[ -z "$BRANCH_NAME" ]] || [ "$BRANCH_NAME" != "master" ]; then
     # if branch is different then master do not run tests
     exit 0
