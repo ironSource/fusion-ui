@@ -5,6 +5,7 @@ on:
 
 jobs:
   startCI:
+    if: ${{ github.actor != 'IronSourceFusionUI' }}
     runs-on: ubuntu-latest
     steps:
       - name: Generate Short SHA and Unique runer id
