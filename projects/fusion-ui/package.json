@@ -1,13 +1,6 @@
 {
     "name": "@ironsource/fusion-ui",
-    "version": "6.0.2-andyk.1",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/ironSource/fusion-ui.git"
-    },
-    "publishConfig": {
-        "registry": "https://npm.pkg.github.com/@ironsource"
-    },
+    "version": "6.0.2-andyk.2",
     "dependencies": {
         "chart.js": "^3.5.1",
         "tslib": "^2.0.0",
