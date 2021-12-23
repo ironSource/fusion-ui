@@ -5,6 +5,7 @@ on:
 
 jobs:
   startCI:
+    if: ${{ github.actor != 'IronSourceFusionUI' }}
     runs-on: ubuntu-latest
     steps:
       - name: Generate Short SHA and Unique runer id
@@ -14,7 +15,6 @@ jobs:
           echo ::set-output name=uuid::${{github.ref_name}}:${GITHUB_SHA::7}:${GITHUB_RUN_ID}
 
       - name: Trigger Code Validate
-        if: ${{ github.actor != 'IronSourceFusionUI' }}
         id: trigger
         timeout-minutes: 5
         uses: ironSource/action-trigger-workflow@v1
