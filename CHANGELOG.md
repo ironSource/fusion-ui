@@ -14,19 +14,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [6.0.1-rc.2](https://github.com/ironSource/fusion-ui/compare/v6.0.1-rc.1...v6.0.1-rc.2) (2021-12-22)
 
-
-### CI
-
-* **fu-294:** remove unit-test workflow ([82fea26](https://github.com/ironSource/fusion-ui/commit/82fea264e4ad1c98e74e0212ba156165f78537d3))
-
 ### [6.0.1-rc.1](https://github.com/ironSource/fusion-ui/compare/v6.0.1-rc.0...v6.0.1-rc.1) (2021-12-22)
 
 ### [6.0.1-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.0.0...v6.0.1-rc.0) (2021-12-22)
-
-
-### Bug Fixes
-
-* **fu-294:** for pre-release checking ([8b20204](https://github.com/ironSource/fusion-ui/commit/8b20204c81ce607aa3f521017d5724d682a74a1e))
 
 ## [6.0.0](https://github.com/ironSource/fusion-ui/compare/v6.0.0-rc.1...v6.0.0) (2021-12-21)
 
