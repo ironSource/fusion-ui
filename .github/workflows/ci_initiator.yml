@@ -16,7 +16,7 @@ jobs:
       - name: Trigger Code Validate
         if: ${{ github.actor != 'IronSourceFusionUI' }}
         id: trigger
-        timeout-minutes: 5
+        timeout-minutes: 6
         uses: ironSource/action-trigger-workflow@v1
         with:
           owner: ironSource
