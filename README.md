@@ -3,6 +3,7 @@
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.
 
 ## Prerequisites
+
 Add ironSource artifactory to your npm registry by running (no space after `-u`):
 ```
 curl -uACTIVE_DIRECTORY_USER_NAME:ACTIVE_DIRECTORY_PASSWORD https://ironsrc.jfrog.io/ironsrc/api/npm/npmjs-local/auth/ironsrc > ~/.npmrc
