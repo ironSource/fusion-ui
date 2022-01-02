@@ -5,7 +5,7 @@ on:
 
 jobs:
   startCI:
-    if: ${{ github.actor != 'IronSourceFusionUI' }}
+    if: ${{ github.actor != '${{ secrets.BOT_USER }}' }}
     runs-on: ubuntu-latest
     steps:
       - name: Generate Short SHA and Unique runer id
@@ -16,12 +16,12 @@ jobs:
 
       - name: Trigger Code Validate
         id: trigger
-        timeout-minutes: 5
+        timeout-minutes: 7
         uses: ironSource/action-trigger-workflow@v1
         with:
-          owner: ironSource
-          repo: fusion-actions
+          owner: ${{ secrets.TRIGGERED_OWNER }}
+          repo: ${{ secrets.TRIGGERED_REPO }}
           github_token: ${{ secrets.PAT_TOKEN }}
           workflow_file_name: ci.yml
           job_uuid: "${{ steps.vars.outputs.uuid }}"
-          inputs: '{ "branch_name": "${{github.ref_name}}", "user": "${{github.actor}}", "job_uuid": "${{ steps.vars.outputs.uuid }}", "sha": "${{ steps.vars.outputs.sha_short }}", "event_name": "${{github.event_name}}", "event_action": "${{github.event.action}}"}'
+          inputs: '{ "repository": "${{github.repository}}", "branch_name": "${{github.ref_name}}", "user": "${{github.actor}}", "job_uuid": "${{ steps.vars.outputs.uuid }}", "sha": "${{ steps.vars.outputs.sha_short }}", "event_name": "${{github.event_name}}", "event_action": "${{github.event.action}}"}'
