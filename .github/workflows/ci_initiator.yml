@@ -2,7 +2,7 @@ name: CI-CodeCheck
 
 on:
   push:
-
+  pull_request:
 jobs:
   startCI:
     if: ${{ github.actor != '${{ secrets.BOT_USER }}' }}
