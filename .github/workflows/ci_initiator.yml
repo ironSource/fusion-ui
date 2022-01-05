@@ -18,6 +18,7 @@ jobs:
         env:
           BRANCH_NAME: ${{ github.head_ref }}
         run: |
+          echo ::set-output name=branch_name::${BRANCH_NAME}
           echo "Branch is: ${BRANCH_NAME}"
 
       - name: Get branch name from push event
@@ -25,6 +26,7 @@ jobs:
         env:
           BRANCH_NAME`: ${{ github.ref_name }}
         run: |
+          echo ::set-output name=branch_name::${BRANCH_NAME}
           echo "Branch is: ${BRANCH_NAME}"
 
       - name: Generate Short SHA and Unique runer id
@@ -33,14 +35,16 @@ jobs:
           echo ::set-output name=sha_short::${GITHUB_SHA::7}
           echo ::set-output name=uuid::${BRANCH_NAME}:${GITHUB_SHA::7}:${GITHUB_RUN_ID}
 
-      - name: Trigger Code Validate
-        id: trigger
-        timeout-minutes: 7
-        uses: ironSource/action-trigger-workflow@v1
-        with:
-          owner: ${{ secrets.TRIGGERED_OWNER }}
-          repo: ${{ secrets.TRIGGERED_REPO }}
-          github_token: ${{ secrets.PAT_TOKEN }}
-          workflow_file_name: ci.yml
-          job_uuid: "${{ steps.vars.outputs.uuid }}"
-          inputs: '{ "repository": "${{github.repository}}", "branch_name": "${{BRANCH_NAME}}", "user": "${{github.actor}}", "job_uuid": "${{ steps.vars.outputs.uuid }}", "sha": "${{ steps.vars.outputs.sha_short }}", "event_name": "${{github.event_name}}", "event_action": "${{github.event.action}}"}'
+      - run: echo ">> ${BRANCH_NAME}"
+
+#      - name: Trigger Code Validate
+#        id: trigger
+#        timeout-minutes: 7
+#        uses: ironSource/action-trigger-workflow@v1
+#        with:
+#          owner: ${{ secrets.TRIGGERED_OWNER }}
+#          repo: ${{ secrets.TRIGGERED_REPO }}
+#          github_token: ${{ secrets.PAT_TOKEN }}
+#          workflow_file_name: ci.yml
+#          job_uuid: "${{ steps.vars.outputs.uuid }}"
+#          inputs: '{ "repository": "${{github.repository}}", "branch_name": "${{ steps.vars.outputs.uuid }}", "user": "${{github.actor}}", "job_uuid": "${{ steps.vars.outputs.uuid }}", "sha": "${{ steps.vars.outputs.sha_short }}", "event_name": "${{github.event_name}}", "event_action": "${{github.event.action}}"}'
