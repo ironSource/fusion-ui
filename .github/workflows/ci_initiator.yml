@@ -8,34 +8,40 @@ on:
       - "**"
   pull_request:
 
+env:
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+
 jobs:
   startCI:
     if: ${{ github.actor != '${{ secrets.BOT_USER }}' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Get branch name from pull_request event
-        if: github.event_name == 'pull_request'
-        env:
-          BRANCH_NAME: ${{ github.head_ref }}
-        run: |
-          echo ::set-output name=branch_name::${BRANCH_NAME}
-          echo "Branch is: ${BRANCH_NAME}"
-
-      - name: Get branch name from push event
-        if: github.event_name == 'push'
-        env:
-          BRANCH_NAME`: ${{ github.ref_name }}
-        run: |
-          echo ::set-output name=branch_name::${BRANCH_NAME}
-          echo "Branch is: ${BRANCH_NAME}"
-
+#      - name: Get branch name from pull_request event
+#        id: pull_branch_name
+#        if: github.event_name == 'pull_request'
+#        env:
+#          BRANCH_NAME: ${{ github.head_ref }}
+#        run: |
+#          echo ::set-output name=branch_name::${BRANCH_NAME}
+#          echo "Branch is: ${BRANCH_NAME}"
+#
+#      - name: Get branch name from push event
+#        id: push_branch_name
+#        if: github.event_name == 'push'
+#        env:
+#          BRANCH_NAME: ${{ github.ref_name }}
+#        run: |
+#          echo ::set-output name=branch_name::${BRANCH_NAME}
+#          echo "Branch is: ${BRANCH_NAME}"
+#
       - name: Generate Short SHA and Unique runer id
         id: vars
         run: |
           echo ::set-output name=sha_short::${GITHUB_SHA::7}
-          echo ::set-output name=uuid::${BRANCH_NAME}:${GITHUB_SHA::7}:${GITHUB_RUN_ID}
+          echo ::set-output name=branch_name::${{ github.head_ref || github.ref_name }}
+          echo ::set-output name=uuid::${{ github.head_ref || github.ref_name }}:${GITHUB_SHA::7}:${GITHUB_RUN_ID}
 
-      - run: echo ">> ${BRANCH_NAME}"
+      - run: echo ">> ${{ env.BRANCH_NAME }} - ${{ github.head_ref }} - ${{ github.ref_name }} - ${{ steps.vars.outputs.branch_name }}"
 
 #      - name: Trigger Code Validate
 #        id: trigger
