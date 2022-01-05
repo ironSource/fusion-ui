@@ -2,26 +2,49 @@ name: CI-CodeCheck
 
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "**"
   pull_request:
+
 jobs:
   startCI:
     if: ${{ github.actor != '${{ secrets.BOT_USER }}' }}
     runs-on: ubuntu-latest
     steps:
+      - name: Get branch name from pull_request event
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+          SOURCE_BRANCH: ${{ github.head_ref }}
+          BRANCH_NAME`: ${{ github.ref_name }}
+        run: |
+          echo "Branch is: ${BASE_BRANCH} ${SOURCE_BRANCH} ${BRANCH_NAME}"
+
+      - name: Get branch name from push event
+        if: github.event_name == 'push'
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+          SOURCE_BRANCH: ${{ github.head_ref }}
+          BRANCH_NAME`: ${{ github.ref_name }}
+        run: |
+          echo "Branch is: ${BASE_BRANCH} ${SOURCE_BRANCH} ${BRANCH_NAME}"
+
       - name: Generate Short SHA and Unique runer id
         id: vars
         run: |
           echo ::set-output name=sha_short::${GITHUB_SHA::7}
           echo ::set-output name=uuid::${{github.ref_name}}:${GITHUB_SHA::7}:${GITHUB_RUN_ID}
 
-      - name: Trigger Code Validate
-        id: trigger
-        timeout-minutes: 7
-        uses: ironSource/action-trigger-workflow@v1
-        with:
-          owner: ${{ secrets.TRIGGERED_OWNER }}
-          repo: ${{ secrets.TRIGGERED_REPO }}
-          github_token: ${{ secrets.PAT_TOKEN }}
-          workflow_file_name: ci.yml
-          job_uuid: "${{ steps.vars.outputs.uuid }}"
-          inputs: '{ "repository": "${{github.repository}}", "branch_name": "${{github.ref_name}}", "user": "${{github.actor}}", "job_uuid": "${{ steps.vars.outputs.uuid }}", "sha": "${{ steps.vars.outputs.sha_short }}", "event_name": "${{github.event_name}}", "event_action": "${{github.event.action}}"}'
+#      - name: Trigger Code Validate
+#        id: trigger
+#        timeout-minutes: 7
+#        uses: ironSource/action-trigger-workflow@v1
+#        with:
+#          owner: ${{ secrets.TRIGGERED_OWNER }}
+#          repo: ${{ secrets.TRIGGERED_REPO }}
+#          github_token: ${{ secrets.PAT_TOKEN }}
+#          workflow_file_name: ci.yml
+#          job_uuid: "${{ steps.vars.outputs.uuid }}"
+#          inputs: '{ "repository": "${{github.repository}}", "branch_name": "${{github.ref_name}}", "user": "${{github.actor}}", "job_uuid": "${{ steps.vars.outputs.uuid }}", "sha": "${{ steps.vars.outputs.sha_short }}", "event_name": "${{github.event_name}}", "event_action": "${{github.event.action}}"}'
