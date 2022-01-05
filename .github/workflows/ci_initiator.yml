@@ -43,4 +43,4 @@ jobs:
           github_token: ${{ secrets.PAT_TOKEN }}
           workflow_file_name: ci.yml
           job_uuid: "${{ steps.vars.outputs.uuid }}"
-          inputs: '{ "repository": "${{github.repository}}", "branch_name": "${BRANCH_NAME}", "user": "${{github.actor}}", "job_uuid": "${{ steps.vars.outputs.uuid }}", "sha": "${{ steps.vars.outputs.sha_short }}", "event_name": "${{github.event_name}}", "event_action": "${{github.event.action}}"}'
+          inputs: '{ "repository": "${{github.repository}}", "branch_name": "${{BRANCH_NAME}}", "user": "${{github.actor}}", "job_uuid": "${{ steps.vars.outputs.uuid }}", "sha": "${{ steps.vars.outputs.sha_short }}", "event_name": "${{github.event_name}}", "event_action": "${{github.event.action}}"}'
