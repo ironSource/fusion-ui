@@ -122,7 +122,7 @@
 
 
 ## Unit Tests
-##### !!! Do not check integration with other components !!! 
+##### !! Do not check integration with other components !! 
 ### External Behaviour 
 * @Input - trigger one by one and expect changes in DOM
 * @Output - trigger one by one from DOM and validate behaviour
