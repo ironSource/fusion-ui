@@ -2,6 +2,11 @@ name: CI-CodeCheck
 
 on:
   push:
+    branches:
+      - "**"
+    tags-ignore:
+      - "**"
+
   pull_request:
 
 env:
