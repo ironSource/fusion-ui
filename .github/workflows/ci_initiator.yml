@@ -3,6 +3,10 @@ name: CI-CodeCheck
 on:
   push:
   pull_request:
+
+env:
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+
 jobs:
   startCI:
     if: ${{ github.actor != '${{ secrets.BOT_USER }}' }}
@@ -12,7 +16,7 @@ jobs:
         id: vars
         run: |
           echo ::set-output name=sha_short::${GITHUB_SHA::7}
-          echo ::set-output name=uuid::${{github.ref_name}}:${GITHUB_SHA::7}:${GITHUB_RUN_ID}
+          echo ::set-output name=uuid::${{ env.BRANCH_NAME }}:${GITHUB_SHA::7}:${GITHUB_RUN_ID}
 
       - name: Trigger Code Validate
         id: trigger
@@ -24,4 +28,4 @@ jobs:
           github_token: ${{ secrets.PAT_TOKEN }}
           workflow_file_name: ci.yml
           job_uuid: "${{ steps.vars.outputs.uuid }}"
-          inputs: '{ "repository": "${{github.repository}}", "branch_name": "${{github.ref_name}}", "user": "${{github.actor}}", "job_uuid": "${{ steps.vars.outputs.uuid }}", "sha": "${{ steps.vars.outputs.sha_short }}", "event_name": "${{github.event_name}}", "event_action": "${{github.event.action}}"}'
+          inputs: '{ "repository": "${{github.repository}}", "branch_name": "${{ env.BRANCH_NAME }}", "user": "${{github.actor}}", "job_uuid": "${{ steps.vars.outputs.uuid }}", "sha": "${{ steps.vars.outputs.sha_short }}", "event_name": "${{github.event_name}}", "event_action": "${{github.event.action}}"}'
