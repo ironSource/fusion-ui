@@ -1,10 +1,6 @@
 {
     "name": "@ironsource/fusion-ui",
     "version": "6.0.2-rc.3",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/ironSource/fusion-ui.git"
-    },
     "publishConfig": {
         "registry":"https://npm.pkg.github.com"
     },
