@@ -576,8 +576,8 @@ document.body.appendChild(tagsInput);'
                 ></fusion-code-block>
             </ng-template>
 
-            <!--<div><button (click)="toggleDisabling($event)">Toggle disabling</button> <<{{ tagsInputDisabled$ | async }}>></div>-->
-
+            <div><button (click)="toggleDisabling($event)">Toggle disabling</button> <<{{ tagsInputDisabled$ | async }}>></div>
+            <br>
             <fusion-tags-input
                 [formControl]="tagsFormControl"
                 [isDisabled]="tagsInputDisabled$ | async"
