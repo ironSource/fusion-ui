@@ -12,9 +12,21 @@
         border-radius: 4px;
         box-sizing: border-box;
         width: 100%;
-        > ul li {
-            display: inline-flex;
-            margin: 2px;
+        > ul {
+            &.tags-holder {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            li {
+                display: inline-flex;
+                margin: 2px;
+                &.search-container {
+                    flex: 1 1 auto;
+                    fusion-input {
+                        width: 100%;
+                    }
+                }
+            }
         }
         &:hover{
             background-color: $fu-light-200;

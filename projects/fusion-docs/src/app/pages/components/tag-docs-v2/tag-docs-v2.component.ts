@@ -79,7 +79,7 @@ export class TagDocsV2Component implements OnInit, OnDestroy {
         tagList: this.predefinedTags,
         autoComplete: true,
         isPredefinedTags: true,
-        inputPlaceholder: 'Add...',
+        inputPlaceholder: 'Add..',
         noResultMessage: 'No result'
     };
 
