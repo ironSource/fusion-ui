@@ -179,6 +179,10 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
     private uid: string;
     private inputElement: any;
 
+    @HostBinding('class.fu-disabled') get disabled(): boolean {
+        return this.isDisabled;
+    }
+
     private isBulkInMaxValue(value): boolean {
         return !!this.bulkInsertOptions?.maxTagsShown && value.length > this.bulkInsertOptions?.maxTagsShown;
     }
