@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.1.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.0.0...v6.1.0-rc.0) (2022-01-13)
+
+
+### Features
+
+* **fu-308:** added support for child options select in multi select dropdown with groups ([1586de5](https://github.com/ironSource/fusion-ui/commit/1586de5e33e2d1c9cca9781df4a9488075f014ad))
+* **fu-308:** reset version from master for pre-release ([d05d2f7](https://github.com/ironSource/fusion-ui/commit/d05d2f7286146e22b076398e1724bd64e0c3bb92))
+
+
+### Bug Fixes
+
+* **actions-check:** just for actions checking ([#7](https://github.com/ironSource/fusion-ui/issues/7)) ([3689051](https://github.com/ironSource/fusion-ui/commit/3689051e4f8dcbc80f108f83e84a0324e104ec13))
+* **fu-308:** added css support for tags-input with options in "multi-raw-display" ([6e4d0d1](https://github.com/ironSource/fusion-ui/commit/6e4d0d1a5997786a6082be7ddaa8f221d833682e))
+* **fu-308:** fixed css tags-input component disabling state ([4669ea4](https://github.com/ironSource/fusion-ui/commit/4669ea40f401f8e4837c56d8fd8859463658fccb))
+* **fu-308:** fixed css type-input component for ul.tags-holder and li.search-container ([6b2a370](https://github.com/ironSource/fusion-ui/commit/6b2a370f22e1171caf0f62b060754319d62b9dbf))
+* **fu-308:** fixed cursor pointer image on tags input component ([cce2180](https://github.com/ironSource/fusion-ui/commit/cce218000aaf7ce2aaa1713807231d0c89fcb0ed))
+
 ### [6.0.1](https://github.com/ironSource/fusion-ui/compare/v6.0.1-rc.6...v6.0.1) (2021-12-22)
 
 ### [6.0.1-rc.6](https://github.com/ironSource/fusion-ui/compare/v6.0.1-rc.5...v6.0.1-rc.6) (2021-12-22)
