@@ -180,8 +180,16 @@ export class DropdownDocsV2Component implements OnInit, OnDestroy {
 
         this.formDropDowns = this.formBuilder.group({
             dropdownRequired: [null, [Validators.required]],
-            subGroupDropDown: [[]]
+            subGroupDropDown: [[]],
+            subGroupMultiDropDown: [[]]
         });
+
+        /*
+        this.formDropDowns.valueChanges.subscribe(val=>{
+            console.log('values', val.subGroupMultiDropDown);
+        })
+*/
+
         this.selectedVersion$.subscribe((styleVersion: StyleVersion) => {
             if (styleVersion === StyleVersion.V1) {
                 this.router.navigate(['docs/components/dropdown']);

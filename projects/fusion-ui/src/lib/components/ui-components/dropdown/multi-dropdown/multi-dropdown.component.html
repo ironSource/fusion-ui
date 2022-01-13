@@ -49,36 +49,18 @@
                     </label>
                 </li>
                 <!--options-->
-                <li class="option" [ngClass]="getOptionClasses(option)" *ngFor="let option of displayedOptions$ | async; index as i">
-                    <!--option regular for check-->
-                    <label
-                        class="is-option-label truncate"
-                        [id]="option.id"
-                        [for]="id + '-' + option.id"
-                        *ngIf="!option.isGroup; else groupOption"
-                        [ngClass]="{'has-icon': option.icon}"
-                        [fusionTooltip]="dropdownService.optionToString(option, mappingOptions, {dropdownType: 'multi'})"
-                    >
-                        <fusion-checkbox
-                            [id]="id + '-' + option.id"
-                            [checked]="isSelected(option)"
-                            [value]="option.id"
-                            (changed)="changeSelected(option)"
-                        ></fusion-checkbox>
-                        <ng-container [ngTemplateOutlet]="templateRef || basicTemplate" [ngTemplateOutletContext]="{option: option}">
-                        </ng-container>
-                    </label>
-                    <!--option group-->
-                    <ng-template #groupOption>
-                        <div class="is-dd-group">
-                            {{ dropdownService.optionToString(option, {dropdownType: 'multi'}) }}
-                        </div>
-                    </ng-template>
+                <li class="is-option" [class.is-has-children]="option.childOptions"
+                    (click)="optionParentClicked($event)" [ngClass]="getOptionClasses(option)"
+                    *ngFor="let option of displayedOptions$ | async; index as i">
+                    <!--option regular or parent for check-->
+                    <ng-container *ngIf="!option.childOptions" [ngTemplateOutlet]="regularOption" [ngTemplateOutletContext]="{option: option}"></ng-container>
+                    <ng-container *ngIf="option.childOptions" [ngTemplateOutlet]="parentOption" [ngTemplateOutletContext]="{option: option}"></ng-container>
                 </li>
                 <!--loader holder-->
                 <li [fusionDropdownLoader]="(autoComplete || search) && loading"></li>
                 <!--no-result holder-->
-                <li class="no-results" *ngIf="!filteredOptions?.length && !loading && searchValue?.value">No results</li>
+                <li class="no-results" *ngIf="!filteredOptions?.length && !loading && searchValue?.value">No results
+                </li>
             </ul>
         </div>
         <!--action "confirm" buttons holder-->
@@ -109,9 +91,54 @@
 <!--errors holder-->
 <div class="error-msg" *ngIf="error">{{ error }}</div>
 
+<!--INNER TEMPLATES-->
+<!--regular option-->
+<ng-template #regularOption let-option="option">
+    <ng-container *ngIf="!option.isGroup; else groupOption">
+        <label
+            class="is-option-label truncate"
+            [id]="option.id"
+            [for]="id + '-' + option.id"
+            [ngClass]="{'has-icon': option.icon}"
+            [fusionTooltip]="dropdownService.optionToString(option, mappingOptions, {dropdownType: 'multi'})"
+        >
+            <fusion-checkbox
+                [id]="id + '-' + option.id"
+                [checked]="isSelected(option)"
+                [value]="option.id"
+                (changed)="changeSelected(option)"
+            ></fusion-checkbox>
+            <ng-container [ngTemplateOutlet]="templateRef || basicTemplate" [ngTemplateOutletContext]="{option: option}">
+            </ng-container>
+        </label>
+    </ng-container>
+    <ng-template #groupOption>
+        <div class="is-dd-group">
+            {{ dropdownService.optionToString(option, {dropdownType: 'multi'}) }}
+        </div>
+    </ng-template>
+</ng-template>
+
+<!--parent option-->
+<ng-template #parentOption let-option="option">
+    <div [id]="option.id" class="text truncate"
+         [fusionTooltip]="dropdownService.optionToString(option, mappingOptions, {dropdownType: 'multi'})">
+        <span innerHTML="{{ dropdownService.optionToString(option, {dropdownType: 'multi'}) }}"></span>
+    </div>
+    <fusion-icon *ngIf="dropdownArrowIconName$ | async as dropdownArrowIconName" class="option-icon-arrow"
+                 [name]="dropdownArrowIconName"></fusion-icon>
+    <ul class="is-subgroup-options">
+        <li class="is-option" *ngFor="let childOption of option.childOptions; index as i">
+            <ng-container [ngTemplateOutlet]="regularOption"
+                          [ngTemplateOutletContext]="{option: childOption}"></ng-container>
+        </li>
+    </ul>
+</ng-template>
+
+<!--option basic content-->
 <ng-template #basicTemplate let-option="option">
     <fusion-icon *ngIf="option.icon" [name]="option.icon" class="icon"></fusion-icon>
     <fusion-flag *ngIf="option.flag" [name]="option.flag"></fusion-flag>
-    <img [src]="option.image" *ngIf="option.image" alt="" />
+    <img [src]="option.image" *ngIf="option.image" alt=""/>
     <span [innerHTML]="dropdownService.optionToString(option, mappingOptions, {dropdownType: 'multi'})"></span>
 </ng-template>
