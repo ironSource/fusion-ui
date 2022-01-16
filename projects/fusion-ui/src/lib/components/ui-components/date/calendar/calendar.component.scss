@@ -42,7 +42,7 @@
         }
 
         &.today {
-            text-decoration: underline;
+            text-decoration: var(--calendar-today-text-decoration, underline);
         }
 
         &.selected {
