@@ -77,7 +77,7 @@ $partsLeftMargin: 20px;
           background-color: $primary-200;
         }
         &.today{
-          text-decoration: underline;
+          text-decoration: var(--calendar-today-text-decoration, underline);
         }
         &.active{
           color: $White;
