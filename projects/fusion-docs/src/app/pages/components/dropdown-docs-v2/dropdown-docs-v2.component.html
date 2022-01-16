@@ -1056,6 +1056,7 @@ document.body.appendChild(dropdown);'
                         placeholder="Select"
                         formControlName="subGroupMultiDropDown"
                         selectAllLabel="Select all"
+                        placeholderPrefix=" "
                         [confirm]="true"
                         [optionsGroups]="groupedSubGroupOptions"
                     ></fusion-multi-dropdown>
@@ -1073,6 +1074,7 @@ document.body.appendChild(dropdown);'
 
             </div>
         </fusion-example-block>
+
         <fusion-example-block id="ddMultiSearch" title="Including Search">
             <ng-template fusionExampleBlock="Angular">
                 <fusion-code-block
@@ -1299,7 +1301,6 @@ document.body.appendChild(dropdown);'
             </div>
         </fusion-example-block>
         <!--Multiple Selection End-->
-
         <!--Variations-->
         <div class="is-example-title">Variations</div>
         <fusion-example-block id="ddVariations" title="Basic">

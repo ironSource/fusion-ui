@@ -181,12 +181,16 @@ export class DropdownDocsV2Component implements OnInit, OnDestroy {
         this.formDropDowns = this.formBuilder.group({
             dropdownRequired: [null, [Validators.required]],
             subGroupDropDown: [[]],
-            subGroupMultiDropDown: [[]]
+            subGroupMultiDropDown: [
+                [
+                    /*{"id":"ad_revenue_1d","displayText":"D1","titleText":"D1 Ad Revenue","checked":true,"isSelected":true},{"id":"ad_revenue_3d","displayText":"D3","titleText":"D3 Ad Revenue","checked":true,"isSelected":true},{"id":"ad_revenue_7d","displayText":"D7","titleText":"D7 Ad Revenue","checked":true,"isSelected":true},{"id":"ad_revenue_14d","displayText":"D14","titleText":"D14 Ad Revenue","checked":true,"isSelected":true},{"id":"ad_revenue_30d","displayText":"D30","titleText":"D30 Ad Revenue","checked":true,"isSelected":true},{"id":"iap_revenue_1d","displayText":"D1","titleText":"D1 IAP Revenue","checked":true,"isSelected":true},{"id":"iap_revenue_3d","displayText":"D3","titleText":"D3 IAP Revenue","checked":true,"isSelected":true},{"id":"iap_revenue_7d","displayText":"D7","titleText":"D7 IAP Revenue","checked":true,"isSelected":true},{"id":"iap_revenue_14d","displayText":"D14","titleText":"D14 IAP Revenue","checked":true,"isSelected":true},{"id":"iap_revenue_30d","displayText":"D30","titleText":"D30 IAP Revenue","checked":true,"isSelected":true},{"id":"total_revenue_1d","displayText":"D1","titleText":"D1 Total Revenue","checked":true,"isSelected":true},{"id":"total_revenue_3d","displayText":"D3","titleText":"D3 Total Revenue","checked":true,"isSelected":true},{"id":"total_revenue_7d","displayText":"D7","titleText":"D7 Total Revenue","checked":true,"isSelected":true},{"id":"total_revenue_14d","displayText":"D14","titleText":"D14 Total Revenue","checked":true,"isSelected":true},{"id":"total_revenue_30d","displayText":"D30","titleText":"D30 Total Revenue","checked":true,"isSelected":true},{"id":"roas_1d","displayText":"D1","titleText":"D1 ROAS","checked":true,"isSelected":true},{"id":"roas_3d","displayText":"D3","titleText":"D3 ROAS","checked":true,"isSelected":true},{"id":"roas_7d","displayText":"D7","titleText":"D7 ROAS","checked":true,"isSelected":true},{"id":"roas_14d","displayText":"D14","titleText":"D14 ROAS","checked":true,"isSelected":true},{"id":"roas_30d","displayText":"D30","titleText":"D30 ROAS","checked":true,"isSelected":true},{"id":"retention_1d","displayText":"D1","titleText":"D1 Retention","checked":true,"isSelected":true},{"id":"retention_3d","displayText":"D3","titleText":"D3 Retention","checked":true,"isSelected":true},{"id":"retention_7d","displayText":"D7","titleText":"D7 Retention","checked":true,"isSelected":true},{"id":"retention_14d","displayText":"D14","titleText":"D14 Retention","checked":true,"isSelected":true},{"id":"retention_30d","displayText":"D30","titleText":"D30 Retention","checked":true,"isSelected":true}*/
+                ]
+            ]
         });
 
         /*
         this.formDropDowns.valueChanges.subscribe(val=>{
-            console.log('values', val.subGroupMultiDropDown);
+            console.log('values', JSON.stringify(val.subGroupMultiDropDown));
         })
 */
 

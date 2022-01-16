@@ -29,8 +29,6 @@ export class MultiDropdownComponent extends DropdownComponent implements OnInit,
 
     tempSelected: DropdownOption[];
     tempOptions: DropdownOption[];
-    isAllSelected: boolean;
-    isIndeterminate = false;
 
     optionsWithoutScroll = DROPDOWN_OPTIONS_WITHOUT_SCROLL;
     dropdownArrowIconName$ = new BehaviorSubject<string | {iconName: string; iconVersion?: string}>({
@@ -205,21 +203,19 @@ export class MultiDropdownComponent extends DropdownComponent implements OnInit,
      */
     isInSelectAllAction() {
         const selectedList = this.confirm ? this.tempSelected : this.selected;
-        this.isAllSelected = this.tempOptions.length === selectedList.length;
+        const tempOptionsList = this.tempOptions.reduce((acc, option) => {
+            if (option.childOptions || option.isGroup) {
+                option.childOptions?.forEach(option => {
+                    acc.push(option);
+                });
+            } else {
+                acc.push(option);
+            }
+            return acc;
+        }, []);
 
-        this.isIndeterminate =
-            this.tempSelected.length !== 0 &&
-            this.tempSelected.length !==
-                this.options.reduce((acc, option) => {
-                    if (option.childOptions || option.isGroup) {
-                        option.childOptions?.forEach(option => {
-                            acc.push(option);
-                        });
-                    } else {
-                        acc.push(option);
-                    }
-                    return acc;
-                }, []).length;
+        this.isAllSelected = tempOptionsList.length === selectedList.length;
+        this.isIndeterminate = this.tempSelected.length !== 0 && this.tempSelected.length !== tempOptionsList.length;
     }
 
     /**
@@ -261,5 +257,7 @@ export class MultiDropdownComponent extends DropdownComponent implements OnInit,
     writeValue(value: any): void {
         super.writeValue(value);
         this.tempSelected = this.selected;
+        this.isInSelectAllAction();
+        super.setLabel();
     }
 }
