@@ -142,7 +142,7 @@ export class DaterangeComponent extends StyleBase implements OnInit {
             month,
             minDate: this.minDate,
             maxDate: this.maxDate,
-            allowFutureSelection: this.options.allowFutureSelection ?? true,
+            allowFutureSelection: this.options.allowFutureSelection ?? this.isSingleDatePicker,
             selection: this.selection,
             calendarType: this.isSingleDatePicker ? CalendarType.DATE_PICKER : CalendarType.DATE_RANGE
         };
