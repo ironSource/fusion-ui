@@ -49,7 +49,7 @@
                     </label>
                 </li>
                 <!--options-->
-                <li class="is-option" [class.is-has-children]="option.childOptions"
+                <li class="option" [class.is-has-children]="option.childOptions"
                     (click)="optionParentClicked($event)" [ngClass]="getOptionClasses(option)"
                     *ngFor="let option of displayedOptions$ | async; index as i">
                     <!--option regular or parent for check-->
@@ -128,7 +128,7 @@
     <fusion-icon *ngIf="dropdownArrowIconName$ | async as dropdownArrowIconName" class="option-icon-arrow"
                  [name]="dropdownArrowIconName"></fusion-icon>
     <ul class="is-subgroup-options">
-        <li class="is-option" *ngFor="let childOption of option.childOptions; index as i">
+        <li class="option" *ngFor="let childOption of option.childOptions; index as i">
             <ng-container [ngTemplateOutlet]="regularOption"
                           [ngTemplateOutletContext]="{option: childOption}"></ng-container>
         </li>
