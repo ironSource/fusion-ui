@@ -8,4 +8,5 @@ export interface DaterangeOptions {
     size?: 'medium' | 'large';
     placeholder?: string;
     overlayAlignPosition?: 'left' | 'right';
+    allowFutureSelection?: boolean;
 }

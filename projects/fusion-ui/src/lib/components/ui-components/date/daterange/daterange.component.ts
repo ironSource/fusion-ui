@@ -49,6 +49,7 @@ import {DEFAULT_PLACEHOLDER_TEXT} from './daterange.configuration';
 export class DaterangeComponent extends StyleBase implements OnInit {
     @Input() id: string;
     @Input() presetsHeaderTemplate: TemplateRef<any>;
+    @Input() minDate: Date;
     @Input() maxDate: Date;
     @Input() extraParams: any;
 
@@ -139,8 +140,9 @@ export class DaterangeComponent extends StyleBase implements OnInit {
         return {
             parentDaterangeId: this.id,
             month,
+            minDate: this.minDate,
             maxDate: this.maxDate,
-            allowFutureSelection: this.isSingleDatePicker,
+            allowFutureSelection: this.options.allowFutureSelection ?? true,
             selection: this.selection,
             calendarType: this.isSingleDatePicker ? CalendarType.DATE_PICKER : CalendarType.DATE_RANGE
         };

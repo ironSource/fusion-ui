@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', onLoad, false);"
             <div class="row">
                 <div class="col-12">
                     <div class="daterangeWrapper">
-                        <fusion-daterange [formControl]="daterangeDatePicker" [options]="optionOnlyDatePicker$ | async"></fusion-daterange>
+                        <fusion-daterange [minDate]="daterangeMinDate" [maxDate]="daterangeMaxDate" [formControl]="daterangeDatePicker" [options]="optionOnlyDatePicker$ | async"></fusion-daterange>
                     </div>
                 </div>
             </div>
@@ -304,6 +304,7 @@ document.addEventListener('DOMContentLoaded', onLoad, false);"
                     <div class="daterangeWrapper">
                         <fusion-daterange
                             [formControl]="daterangeDefault"
+                            [minDate]="minDate"
                             [maxDate]="maxDate"
                             [options]="optionNoPresets"
                         ></fusion-daterange>

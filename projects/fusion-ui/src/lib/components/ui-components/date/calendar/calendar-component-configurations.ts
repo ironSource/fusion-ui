@@ -6,6 +6,7 @@ export interface CalendarComponentConfigurations {
     allowFutureSelection: boolean;
     parentDaterangeId: string;
     selection: DaterangeSelection;
-    maxDate: Date;
+    minDate?: Date;
+    maxDate?: Date;
     calendarType: CalendarType;
 }

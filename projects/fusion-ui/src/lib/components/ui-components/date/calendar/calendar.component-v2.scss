@@ -71,7 +71,7 @@
             border: none;
         }
 
-        &:not(.selected):not(.hover-current):hover {
+        &:not(.selected):not(.disabled):not(.hover-current):hover {
             &:before {
                 @include calendar-circle($fu-primary-300, 50%);
                 color: $fu-dark-700;
@@ -165,8 +165,11 @@
         }
 
 
-        &.disabled:not(.selected) {
-            color: $fu-light-900;
+        &.disabled{
+            pointer-events: none;
+            &:not(.selected) {
+                color: $fu-light-900;
+            }
         }
     }
 
