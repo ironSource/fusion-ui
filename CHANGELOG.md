@@ -2,8 +2,6 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [6.1.1](https://github.com/ironSource/fusion-ui/compare/v6.1.0...v6.1.1) (2022-01-18)
-
 ## [6.1.0](https://github.com/ironSource/fusion-ui/compare/v6.1.0-rc.0...v6.1.0) (2022-01-18)
 
 

@@ -1,6 +1,6 @@
 {
     "name": "@ironsrc/fusion-ui",
-    "version": "6.1.1",
+    "version": "6.1.0",
     "dependencies": {
         "chart.js": "^3.5.1",
         "tslib": "^2.0.0",
