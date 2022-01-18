@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.1.0](https://github.com/ironSource/fusion-ui/compare/v6.1.0-rc.0...v6.1.0) (2022-01-18)
+
+
+### Bug Fixes
+
+* **6.1.x:**  allowFutureSelection set to default behaviour ([f452d48](https://github.com/ironSource/fusion-ui/commit/f452d48d40dd7a63f356788a8a976ecfeff393b2))
+* **6.1.x:**  daterange component min/max date fixes ([673cbb1](https://github.com/ironSource/fusion-ui/commit/673cbb1d0ba3b72999c9db7898a35c83015775f7))
+* **6.1.x:**  fixed select all placeholder in multi-dropdown.component.ts ([4f07e4f](https://github.com/ironSource/fusion-ui/commit/4f07e4fe6d0ec77d94f906c02c12db47f0d16128))
+* **6.1.x:**  update rc version ([c6ffae2](https://github.com/ironSource/fusion-ui/commit/c6ffae25318d447a4567094302ed505ecb5f7faa))
+* **6.1.x:** fix class name in multi-dropdown.component.html for option ([157ac1a](https://github.com/ironSource/fusion-ui/commit/157ac1a82d21c8ae4d5e11d4ca46caf1735cd274))
+* **6.1.x:** label "ALL..." in multi-dropdown.component in case options update. bump rc version ([3b0d100](https://github.com/ironSource/fusion-ui/commit/3b0d1006ff8fc57b62aa1ec303d9741385773a2f))
+* **6.1.x:** label "ALL..." in multi-dropdown.component in case options update. bump rc version ([87ca7f7](https://github.com/ironSource/fusion-ui/commit/87ca7f742e828afe0959265503a0c1cc475a15c7))
+* **fu-310:** for datepicker and calendar scss (v1) added css variable ([#10](https://github.com/ironSource/fusion-ui/issues/10)) ([bd06b5b](https://github.com/ironSource/fusion-ui/commit/bd06b5b5dea386032b0f25472f8c564c42254896))
+
+
+### CI
+
+* **6.1.x:** bump rc version ([b5672f7](https://github.com/ironSource/fusion-ui/commit/b5672f7a1d9a0c64ccd1e6c175d31a040bde0119))
+* **6.1.x:** merge in fu-310 bump version to 6.1.0-rc.1 ([4230963](https://github.com/ironSource/fusion-ui/commit/423096315e837577324e95333cf423e7407176d4))
+
 ## [6.1.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.0.0...v6.1.0-rc.0) (2022-01-13)
 
 
