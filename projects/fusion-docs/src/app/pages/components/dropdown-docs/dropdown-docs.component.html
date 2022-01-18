@@ -722,7 +722,22 @@ document.body.appendChild(dropdown);'
                             ></fusion-multi-dropdown>
                         </div>
                     </div>
-                    <div class="col-3"></div>
+                    <div class="col-3">
+                        <div class="is-sublabel">Test with options update</div>
+                        <div class="is-dropdown-holder">
+                            <fusion-multi-dropdown
+                                placeholder="No titles"
+                                selectAllLabel="All titles"
+                                placeholderPrefix="titles"
+                                formControlName="titles"
+                                [isIconRightPosition]="true"
+                                [search]="true"
+                                [loading]="loadingTitles"
+                                [confirm]="true"
+                                [options]="testTitles"
+                            ></fusion-multi-dropdown>
+                        </div>
+                    </div>
                 </div>
             </fusion-example-block>
 

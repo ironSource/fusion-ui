@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit, Type} from '@angular/core';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import {DropdownOption, StyleVersion, VersionService} from 'projects/fusion-ui/src/public-api';
 import {of, Observable, Subject} from 'rxjs';
-import {delay, takeUntil} from 'rxjs/operators';
+import {delay, finalize, takeUntil} from 'rxjs/operators';
 import {EXISTED_TITLES, OPTIONS_COUNTRIES, OPTIONS_GROUPED, OPTIONS_GROUPED_SUBGROUP} from './dropdown-docs.config';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Router} from '@angular/router';
@@ -480,6 +480,23 @@ export class DropdownDocsComponent implements OnInit, OnDestroy {
         }
     ];
 
+    testTitlesMock = [
+        {
+            id: 723293,
+            displayText: 'supplyApp_1020471284283',
+            image: 'https://platform.ssacdn.com/demand-creatives-dev/icons/icon_04ab5c7c22344f09f9af3df8d716a41f_f93a13f88e2c7fd6ae9f61d5976d0690.jpeg',
+            icon: 'ios'
+        },
+        {
+            id: 723292,
+            displayText: 'title_1020471284283',
+            image: 'https://platform.ssacdn.com/demand-creatives-dev/icons/icon_1fada91682dbb1c6e4aa56c7d24e2e10_f93a13f88e2c7fd6ae9f61d5976d0690.jpeg',
+            icon: 'ios'
+        }
+    ];
+    testTitles: DropdownOption[] = [];
+    loadingTitles = false;
+
     constructor(private formBuilder: FormBuilder, private versionService: VersionService, private router: Router) {}
 
     ngOnInit() {
@@ -633,6 +650,8 @@ export class DropdownDocsComponent implements OnInit, OnDestroy {
 
         this.optionsNoScroll2 = [...this.optionsNoIcons.filter((item, idx) => idx < 8)];
         this.formInit();
+
+        this.updateForm();
     }
 
     ngOnDestroy(): void {
@@ -646,13 +665,35 @@ export class DropdownDocsComponent implements OnInit, OnDestroy {
             headerCountrySelected: [[this.allCountriesOption]],
             addboxSelected: [[]],
             breakdown: [this.breakdownOptions[0]],
-            subGroupDropDown: [this.selected]
+            subGroupDropDown: [this.selected],
+            titles: [[...this.testTitles]]
         });
 
         this.formDropDowns.valueChanges.subscribe(val => {
             console.log('Form Controls changes>', val);
             this.errorMessage = val.requiredDropDown.length ? '' : 'Mandatory field';
         });
+    }
+
+    updateForm() {
+        this.loadingTitles = true;
+        of(this.testTitlesMock)
+            .pipe(
+                takeUntil(this.onDestroy$),
+                delay(1000),
+                finalize(() => {
+                    this.loadingTitles = false;
+                })
+            )
+            .subscribe(val => {
+                this.testTitles = val;
+                this.formDropDowns.setValue(
+                    Object.assign(this.formDropDowns.value, {
+                        titles: this.testTitles
+                    }),
+                    {emitEvent: false}
+                );
+            });
     }
 
     onSearchCampaignChange(searchKey) {

@@ -74,6 +74,7 @@ export class MultiDropdownComponent extends DropdownComponent implements OnInit,
             this.tempOptions = changes.options.currentValue;
             if (!changes.options.firstChange) {
                 this.tempSelected = this.cloneArray(this.selected);
+                this.isInSelectAllAction();
                 super.setLabel();
             }
         }
@@ -257,7 +258,5 @@ export class MultiDropdownComponent extends DropdownComponent implements OnInit,
     writeValue(value: any): void {
         super.writeValue(value);
         this.tempSelected = this.selected;
-        this.isInSelectAllAction();
-        super.setLabel();
     }
 }
