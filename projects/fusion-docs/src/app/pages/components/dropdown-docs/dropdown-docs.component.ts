@@ -673,6 +673,8 @@ export class DropdownDocsComponent implements OnInit, OnDestroy {
             console.log('Form Controls changes>', val);
             this.errorMessage = val.requiredDropDown.length ? '' : 'Mandatory field';
         });
+
+        // this.multiSelectedControl.setValue(this.optionsNoIcons);
     }
 
     updateForm() {

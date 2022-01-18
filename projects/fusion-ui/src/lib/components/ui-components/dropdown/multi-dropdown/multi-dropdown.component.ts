@@ -258,5 +258,7 @@ export class MultiDropdownComponent extends DropdownComponent implements OnInit,
     writeValue(value: any): void {
         super.writeValue(value);
         this.tempSelected = this.selected;
+        this.isInSelectAllAction();
+        super.setLabel();
     }
 }
