@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.1.0](https://github.com/ironSource/fusion-ui/compare/v6.1.0-rc.0...v6.1.0) (2022-01-18)
+
+
+### Bug Fixes
+
+* **6.1.x:**  allowFutureSelection set to default behaviour ([f452d48](https://github.com/ironSource/fusion-ui/commit/f452d48d40dd7a63f356788a8a976ecfeff393b2))
+* **6.1.x:**  daterange component min/max date fixes ([673cbb1](https://github.com/ironSource/fusion-ui/commit/673cbb1d0ba3b72999c9db7898a35c83015775f7))
+* **6.1.x:**  fixed select all placeholder in multi-dropdown.component.ts ([4f07e4f](https://github.com/ironSource/fusion-ui/commit/4f07e4fe6d0ec77d94f906c02c12db47f0d16128))
+* **6.1.x:**  update rc version ([c6ffae2](https://github.com/ironSource/fusion-ui/commit/c6ffae25318d447a4567094302ed505ecb5f7faa))
+* **6.1.x:** fix class name in multi-dropdown.component.html for option ([157ac1a](https://github.com/ironSource/fusion-ui/commit/157ac1a82d21c8ae4d5e11d4ca46caf1735cd274))
+* **6.1.x:** label "ALL..." in multi-dropdown.component in case options update. bump rc version ([3b0d100](https://github.com/ironSource/fusion-ui/commit/3b0d1006ff8fc57b62aa1ec303d9741385773a2f))
+* **fu-310:** for datepicker and calendar scss (v1) added css variable ([#10](https://github.com/ironSource/fusion-ui/issues/10)) ([bd06b5b](https://github.com/ironSource/fusion-ui/commit/bd06b5b5dea386032b0f25472f8c564c42254896))
+
+
+## [6.1.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.0.0...v6.1.0-rc.0) (2022-01-13)
+
+
+### Features
+
+* **fu-308:** added support for child options select in multi select dropdown with groups ([1586de5](https://github.com/ironSource/fusion-ui/commit/1586de5e33e2d1c9cca9781df4a9488075f014ad))
+
+### Bug Fixes
+
+* **fu-308:** added css support for tags-input with options in "multi-raw-display" ([6e4d0d1](https://github.com/ironSource/fusion-ui/commit/6e4d0d1a5997786a6082be7ddaa8f221d833682e))
+* **fu-308:** fixed css tags-input component disabling state ([4669ea4](https://github.com/ironSource/fusion-ui/commit/4669ea40f401f8e4837c56d8fd8859463658fccb))
+* **fu-308:** fixed css type-input component for ul.tags-holder and li.search-container ([6b2a370](https://github.com/ironSource/fusion-ui/commit/6b2a370f22e1171caf0f62b060754319d62b9dbf))
+* **fu-308:** fixed cursor pointer image on tags input component ([cce2180](https://github.com/ironSource/fusion-ui/commit/cce218000aaf7ce2aaa1713807231d0c89fcb0ed))
+
 ### [6.0.1](https://github.com/ironSource/fusion-ui/compare/v6.0.1-rc.6...v6.0.1) (2021-12-22)
 
 ### [6.0.1-rc.6](https://github.com/ironSource/fusion-ui/compare/v6.0.1-rc.5...v6.0.1-rc.6) (2021-12-22)

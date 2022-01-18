@@ -73,13 +73,35 @@ export class TagDocsV2Component implements OnInit, OnDestroy {
         'Parenting'
     ];
 
+    multiRawOptions = [
+        {
+            image: 'https://ui-demand.ssacdn.com/demand/img/appDefaultIcon.v2.png',
+            id: 11479,
+            displayText: '11479 Lost Toys',
+            icon: 'ios',
+            subText: {
+                text: 'Barkingmice'
+            }
+        },
+        {
+            image: 'https://ui-demand.ssacdn.com/demand/img/appDefaultIcon.v2.png',
+            id: 14238,
+            displayText: '14238 Slots - Lost Treasures',
+            icon: 'android',
+            subText: {
+                text: 'William Gelpi'
+            }
+        }
+    ];
+
     tagsSelected = ['Art & Design', 'Beauty', 'Books & Reference'];
 
     tagsInputConfig = {
         tagList: this.predefinedTags,
+        /*tagList: this.multiRawOptions,*/
         autoComplete: true,
         isPredefinedTags: true,
-        inputPlaceholder: 'Add...',
+        inputPlaceholder: 'Add..',
         noResultMessage: 'No result'
     };
 

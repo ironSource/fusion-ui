@@ -167,6 +167,9 @@ export class DropdownComponent extends StyleBase implements OnInit, OnDestroy, O
         iconVersion: 'v1'
     });
 
+    isAllSelected: boolean;
+    isIndeterminate = false;
+
     private _isLocatedRight = false;
     private _isLocatedLeft = false;
     private initPlaceholder: string;
@@ -424,7 +427,7 @@ export class DropdownComponent extends StyleBase implements OnInit, OnDestroy, O
                     this.labelFlag = '';
                 }
             } else {
-                const placeholderPrefix = this.selected.length === this.options.length ? 'All' : `${this.selected.length}`;
+                const placeholderPrefix = this.isAllSelected ? 'All' : `${this.selected.length}`;
                 placeholderForSearch = placeholder = this.placeholderPrefix
                     ? `${placeholderPrefix} ${this.placeholderPrefix} ${placeholderPrefix !== 'All' ? 'selected' : ''}`
                     : `${this.selected.length} selected`;

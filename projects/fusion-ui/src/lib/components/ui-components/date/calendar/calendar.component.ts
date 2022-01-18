@@ -106,7 +106,7 @@ export class CalendarComponent extends StyleBase implements OnInit {
     }
 
     isDisabled(day: Day): boolean {
-        return !day.date || (day.isInFuture && !this.configuration.allowFutureSelection);
+        return !day.date || (day.isInFuture && !this.configuration.allowFutureSelection) || this.isInMInMaxRange(day.date);
     }
 
     isActive(value: Day): boolean {
@@ -154,7 +154,7 @@ export class CalendarComponent extends StyleBase implements OnInit {
         }
     }
 
-    public getDayClasses(day: Day) {
+    getDayClasses(day: Day) {
         const selectedStartDateTimestamp = getDateDayTime(this.configuration.selection.startDate);
         const selectedEndDateTimestamp = getDateDayTime(this.configuration.selection.endDate);
         const dayDateTimestamp = getDateDayTime(day.date);
@@ -172,5 +172,15 @@ export class CalendarComponent extends StyleBase implements OnInit {
             active: this.isActive(day),
             disabled: this.isDisabled(day)
         };
+    }
+
+    private isInMInMaxRange(date: Date): boolean {
+        const minDate: Date = this.configuration?.minDate;
+        const maxDate: Date = this.configuration?.maxDate;
+
+        const isBeforeMinDate = minDate ? date.getTime() < minDate.getTime() : false;
+        const isAfterMaxDate = maxDate ? date.getTime() > maxDate.getTime() : false;
+
+        return isBeforeMinDate || isAfterMaxDate;
     }
 }

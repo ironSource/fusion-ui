@@ -179,7 +179,7 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
     private uid: string;
     private inputElement: any;
 
-    @HostBinding('class.fu-disabled') disabled(): boolean {
+    @HostBinding('class.fu-disabled') get disabled(): boolean {
         return this.isDisabled;
     }
 

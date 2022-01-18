@@ -64,13 +64,18 @@ export class DaterangeDocsComponent implements OnInit, OnDestroy {
     StyleVersion = StyleVersion;
     daterangeDefault: FormControl = new FormControl(this.daterangeService.getPresetRange(DaterangePresets.Yesterday));
     daterangeDatePicker: FormControl = new FormControl({
-        date: new Date(Date.UTC(2020, 0, 3))
+        date: new Date(Date.UTC(2022, 0, 10))
     });
+    daterangeMinDate = new Date(Date.UTC(2022, 0, 5));
+    daterangeMaxDate = new Date(Date.UTC(2022, 0, 25));
+
     daterangeCustom: FormControl = new FormControl({
-        startDate: new Date(Date.UTC(2020, 0, 3)),
-        endDate: new Date(Date.UTC(2020, 5, 9))
+        startDate: new Date(Date.UTC(2022, 0, 3)),
+        endDate: new Date(Date.UTC(2022, 5, 9))
     });
-    maxDate = new Date(Date.UTC(2020, 6, 3));
+
+    minDate = new Date(Date.UTC(2021, 11, 23));
+    maxDate = new Date(Date.UTC(2022, 0, 23));
 
     options$ = new BehaviorSubject<DaterangeOptions>({
         presets: [DaterangePresets.Today, DaterangePresets.Yesterday, DaterangePresets.ThisMonth, DaterangePresets.LastMonth],

@@ -29,8 +29,6 @@ export class MultiDropdownComponent extends DropdownComponent implements OnInit,
 
     tempSelected: DropdownOption[];
     tempOptions: DropdownOption[];
-    isAllSelected: boolean;
-    isIndeterminate = false;
 
     optionsWithoutScroll = DROPDOWN_OPTIONS_WITHOUT_SCROLL;
     dropdownArrowIconName$ = new BehaviorSubject<string | {iconName: string; iconVersion?: string}>({
@@ -76,6 +74,7 @@ export class MultiDropdownComponent extends DropdownComponent implements OnInit,
             this.tempOptions = changes.options.currentValue;
             if (!changes.options.firstChange) {
                 this.tempSelected = this.cloneArray(this.selected);
+                this.isInSelectAllAction();
                 super.setLabel();
             }
         }
@@ -113,11 +112,42 @@ export class MultiDropdownComponent extends DropdownComponent implements OnInit,
      */
     selectAll(checked?: boolean) {
         if (checked) {
-            this.tempOptions.map(option => (option.checked = true));
-            this.tempSelected = this.cloneArray(this.tempOptions);
+            this.tempOptions.forEach(option => {
+                if (option.childOptions || option.isGroup) {
+                    option.childOptions?.forEach(child => {
+                        child.checked = true;
+                    });
+                } else {
+                    option.checked = true;
+                }
+            });
+            this.tempSelected = this.cloneArray(
+                this.tempOptions.reduce((acc, option) => {
+                    if (option.childOptions || option.isGroup) {
+                        option.childOptions?.forEach(option => {
+                            if (option.checked) {
+                                acc.push(option);
+                            }
+                        });
+                    } else {
+                        if (option.checked) {
+                            acc.push(option);
+                        }
+                    }
+                    return acc;
+                }, [])
+            );
         } else {
             this.tempSelected = [];
-            this.tempOptions.map(option => (option.checked = false));
+            this.tempOptions.forEach(option => {
+                if (option.childOptions || option.isGroup) {
+                    option.childOptions?.forEach(child => {
+                        child.checked = false;
+                    });
+                } else {
+                    option.checked = false;
+                }
+            });
         }
         if (!this.confirm) {
             this.applySelect();
@@ -174,9 +204,19 @@ export class MultiDropdownComponent extends DropdownComponent implements OnInit,
      */
     isInSelectAllAction() {
         const selectedList = this.confirm ? this.tempSelected : this.selected;
-        this.isAllSelected = this.tempOptions.length === selectedList.length;
+        const tempOptionsList = this.tempOptions.reduce((acc, option) => {
+            if (option.childOptions || option.isGroup) {
+                option.childOptions?.forEach(option => {
+                    acc.push(option);
+                });
+            } else {
+                acc.push(option);
+            }
+            return acc;
+        }, []);
 
-        this.isIndeterminate = this.tempSelected.length !== 0 && this.tempSelected.length !== this.options.length;
+        this.isAllSelected = tempOptionsList.length === selectedList.length;
+        this.isIndeterminate = this.tempSelected.length !== 0 && this.tempSelected.length !== tempOptionsList.length;
     }
 
     /**
@@ -195,6 +235,19 @@ export class MultiDropdownComponent extends DropdownComponent implements OnInit,
         return optionSelectedIndex;
     }
 
+    optionParentClicked($event) {
+        const targetEl = $event.currentTarget;
+        const targetClassList = targetEl.classList;
+
+        if (targetClassList.contains('is-has-children')) {
+            if (targetClassList.contains('is-open')) {
+                this.renderer.removeClass(targetEl, 'is-open');
+            } else {
+                this.renderer.addClass(targetEl, 'is-open');
+            }
+        }
+    }
+
     /**
      * copy arrays without reference
      */
@@ -205,5 +258,7 @@ export class MultiDropdownComponent extends DropdownComponent implements OnInit,
     writeValue(value: any): void {
         super.writeValue(value);
         this.tempSelected = this.selected;
+        this.isInSelectAllAction();
+        super.setLabel();
     }
 }

@@ -20,7 +20,7 @@
                 [suppressClickOnRemove]="suppressClickOnRemove"
                 [tooltipContent]="tag.tooltip ? tag.tooltip : tag.title"
                 [disabled]="isDisabled"
-                >{{ tag.title }}</fusion-tag
+            >{{ tag.title }}</fusion-tag
             >
         </li>
         <li class="search-container">
@@ -51,9 +51,10 @@
                 <ul class="options">
                     <li [fusionDropdownLoader]="autoComplete && loading" class="auto-complete-loading"></li>
                     <li *ngIf="isNoResults() && !isAddTagsAllowed" class="no-results">{{ noResultMessage }}</li>
-                    <li *ngIf="isPredefinedTags && isAddCustomTag && currentStyleVersion === styleVersion.V1" class="auto-complete-loading">
+                    <li *ngIf="isPredefinedTags && isAddCustomTag && currentStyleVersion === styleVersion.V1"
+                        class="auto-complete-loading">
                         <a class="is-add-tag" href="#" (click)="addCustomPredefinedTag($event)"> Create new tag: </a>"{{
-                            searchValue.value
+                        searchValue.value
                         }}"
                     </li>
 
