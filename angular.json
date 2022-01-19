@@ -22,7 +22,7 @@
                         "outputPath": "dist/fusion-mfe",
                         "index": "projects/fusion-ui/src/index.html",
                         "main": "projects/fusion-ui/src/public-api.ts",
-                        "tsConfig": "projects/fusion-ui/tsconfig.lib.prod.json",
+                        "tsConfig": "projects/fusion-ui/tsconfig.lib.mfe.json",
                         "inlineStyleLanguage": "scss",
                         "extraWebpackConfig": "projects/fusion-ui/src/webpack.config.js",
                         "commonChunk": false
