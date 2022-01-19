@@ -1,6 +1,6 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {ToastDocsComponent} from './toast-docs.component';
-import {ButtonModule, ToastModule} from '@ironsrc/fusion-ui';
+import {ButtonModule, ToastModule} from '@ironource/fusion-ui';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';

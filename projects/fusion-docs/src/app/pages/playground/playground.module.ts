@@ -25,7 +25,7 @@ import {
     IconComponent,
     ErrorMessageModule,
     ToggleModule
-} from '@ironsrc/fusion-ui';
+} from '@ironource/fusion-ui';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {environment} from '../../../environments/environment';

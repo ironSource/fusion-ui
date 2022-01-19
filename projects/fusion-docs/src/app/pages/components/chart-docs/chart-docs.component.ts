@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {ChartComponent, ChartLabel, ChartDataset, VersionService, StyleVersion, FusionChartPieData} from '@ironsrc/fusion-ui';
+import {ChartComponent, ChartLabel, ChartDataset, VersionService, StyleVersion, FusionChartPieData} from '@ironource/fusion-ui';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {FormControl} from '@angular/forms';
 import {takeUntil} from 'rxjs/operators';
@@ -293,7 +293,7 @@ document.body.appendChild(fusionChart);`;
 
     vueExampleCode(dataMock: string, type = 'line'): string {
         return `<script>
-import {FusionChart } from '@ironsrc/fusion-ui/native/vue';
+import {FusionChart } from '@ironource/fusion-ui/native/vue';
 
 export const FooComponent = {
   name: 'FooComponent',
@@ -321,7 +321,7 @@ export default FooComponent;
     }
 
     reactExampleCode(dataMock: string, type = 'line'): string {
-        return `import {FusionChart} from '@ironsrc/fusion-ui/native/react';
+        return `import {FusionChart} from '@ironource/fusion-ui/native/react';
 
 export default class Foo extends React.Component {
     constructor(props) {

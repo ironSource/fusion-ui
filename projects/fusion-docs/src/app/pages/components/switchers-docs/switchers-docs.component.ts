@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {StyleVersion, SwitcherItem, SwitcherMode, VersionService} from '@ironsrc/fusion-ui';
+import {StyleVersion, SwitcherItem, SwitcherMode, VersionService} from '@ironource/fusion-ui';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Router} from '@angular/router';
 import {Observable, Subject} from 'rxjs';

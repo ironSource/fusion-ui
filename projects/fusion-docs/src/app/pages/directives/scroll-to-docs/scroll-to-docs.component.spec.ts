@@ -6,7 +6,7 @@ import {CodeBlockModule} from '../../../components/code-block/code-block.module'
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
-import {ButtonModule, InputModule, ScrollToModule} from '@ironsrc/fusion-ui';
+import {ButtonModule, InputModule, ScrollToModule} from '@ironource/fusion-ui';
 
 describe('ScrollToDocsComponent', () => {
     let component: ScrollToDocsComponent;

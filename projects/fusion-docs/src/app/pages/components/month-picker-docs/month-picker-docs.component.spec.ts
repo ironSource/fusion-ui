@@ -4,7 +4,7 @@ import {MonthPickerDocsComponent} from './month-picker-docs.component';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
-import {MonthPickerModule, TableModule} from '@ironsrc/fusion-ui';
+import {MonthPickerModule, TableModule} from '@ironource/fusion-ui';
 import {ReactiveFormsModule} from '@angular/forms';
 
 describe('MonthPickerDocsComponent', () => {

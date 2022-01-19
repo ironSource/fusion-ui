@@ -6,7 +6,7 @@ import {CodeBlockModule} from '../../../components/code-block/code-block.module'
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
-import {ToggleModule} from '@ironsrc/fusion-ui';
+import {ToggleModule} from '@ironource/fusion-ui';
 
 describe('ToggleDocsComponent', () => {
     let component: ToggleDocsComponent;

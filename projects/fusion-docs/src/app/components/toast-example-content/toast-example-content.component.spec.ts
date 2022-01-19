@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
 import {ToastExampleContentComponent} from './toast-example-content.component';
-import {IconModule} from '@ironsrc/fusion-ui';
+import {IconModule} from '@ironource/fusion-ui';
 
 describe('ToastExampleContentComponent', () => {
     let component: ToastExampleContentComponent;

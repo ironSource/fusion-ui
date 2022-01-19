@@ -7,7 +7,7 @@ import {CodeBlockModule} from '../../../components/code-block/code-block.module'
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ButtonModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/button/button.module';
 import {PopupModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/popup/popup.module';
-import {MobilePreviewerModule} from '@ironsrc/fusion-ui';
+import {MobilePreviewerModule} from '@ironource/fusion-ui';
 
 @NgModule({
     declarations: [MobilePreviewerDocsComponent],

@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DocsMenuComponent} from './docs-menu.component';
-import {ScrollToModule} from '@ironsrc/fusion-ui';
+import {ScrollToModule} from '@ironource/fusion-ui';
 
 @NgModule({
     declarations: [DocsMenuComponent],

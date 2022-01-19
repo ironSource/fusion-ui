@@ -5,7 +5,7 @@ import {ModalDocsRoutingModule} from './modal-docs-routing.module';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
-import {InputModule, LoaderModule, ModalModule, NotificationModule} from '@ironsrc/fusion-ui';
+import {InputModule, LoaderModule, ModalModule, NotificationModule} from '@ironource/fusion-ui';
 import {ReactiveFormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 

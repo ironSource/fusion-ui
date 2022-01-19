@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit, Type} from '@angular/core';
 import {environment} from '../../../../environments/environment';
-import {HeaderState, StyleVersion, VersionService} from '@ironsrc/fusion-ui';
+import {HeaderState, StyleVersion, VersionService} from '@ironource/fusion-ui';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {TableColumnTypeEnum} from '../../../../../../fusion-ui/src/public-api';
 import {MenuItemExampleComponent} from '../../../components/menu-item-example/menu-item-example.component';

@@ -6,7 +6,7 @@ import {ExampleBlockModule} from '../../../components/example-block/example-bloc
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ReactiveFormsModule} from '@angular/forms';
-import {TableModule} from '@ironsrc/fusion-ui';
+import {TableModule} from '@ironource/fusion-ui';
 import {TableCellDynamicComponentExampleModule} from './table-cell-dynamic-component-example';
 
 const routes: Routes = [{path: '', component: TableDocsV2Component}];

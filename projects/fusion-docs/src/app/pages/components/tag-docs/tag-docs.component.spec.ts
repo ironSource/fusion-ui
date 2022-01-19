@@ -6,7 +6,7 @@ import {CodeBlockModule} from '../../../components/code-block/code-block.module'
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {Router, RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
-import {IconModule, MultiDropdownModule, TagModule, TagsInputModule, TooltipModule} from '@ironsrc/fusion-ui';
+import {IconModule, MultiDropdownModule, TagModule, TagsInputModule, TooltipModule} from '@ironource/fusion-ui';
 
 class RouterStub {
     url = '';

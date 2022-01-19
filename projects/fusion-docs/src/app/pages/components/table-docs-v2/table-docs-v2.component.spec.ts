@@ -1,7 +1,7 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {TableDocsV2Component} from './table-docs-v2.component';
-import {TableModule} from '@ironsrc/fusion-ui';
+import {TableModule} from '@ironource/fusion-ui';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';

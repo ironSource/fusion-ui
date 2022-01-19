@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 
 import {DatepickerDocsRoutingModule} from './datepicker-docs-routing.module';
 import {DatepickerDocsComponent} from './datepicker-docs.component';
-import {DatepickerModule} from '@ironsrc/fusion-ui';
+import {DatepickerModule} from '@ironource/fusion-ui';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';

@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {IconStatusOption} from '@ironsrc/fusion-ui';
+import {IconStatusOption} from '@ironource/fusion-ui';
 
 @Component({
     selector: 'fusion-ab-test-option',

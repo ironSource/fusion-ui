@@ -8,7 +8,7 @@ import {
     MobilePreviewerComponentConfiguration,
     StyleVersion,
     VersionService
-} from '@ironsrc/fusion-ui';
+} from '@ironource/fusion-ui';
 import {takeUntil} from 'rxjs/operators';
 import {Router} from '@angular/router';
 

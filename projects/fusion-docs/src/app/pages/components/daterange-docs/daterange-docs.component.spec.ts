@@ -4,7 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
-import {DaterangeModule} from '@ironsrc/fusion-ui';
+import {DaterangeModule} from '@ironource/fusion-ui';
 
 describe('DaterangeDocsComponent', () => {
     let component: DaterangeDocsComponent;

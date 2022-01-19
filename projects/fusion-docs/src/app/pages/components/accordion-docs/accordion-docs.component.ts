@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import {Component, OnInit, Type} from '@angular/core';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
-import {AccordionConfigurations, AccordionItem} from '@ironsrc/fusion-ui';
+import {AccordionConfigurations, AccordionItem} from '@ironource/fusion-ui';
 import {AccordionExampleContentComponent} from '../../../components/accordion-example-components/accordion-example-content/accordion-example-content.component';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
 

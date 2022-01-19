@@ -6,7 +6,7 @@ import {CodeBlockModule} from '../../../components/code-block/code-block.module'
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {Router, RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
-import {AlertModule, IconModule, TableModule} from '@ironsrc/fusion-ui';
+import {AlertModule, IconModule, TableModule} from '@ironource/fusion-ui';
 import {NgModule, Injectable} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TableCellIconExampleComponent} from '../../../components/table-cell-icon-exmpale';

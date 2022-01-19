@@ -6,7 +6,7 @@ import {CodeBlockModule} from '../../../components/code-block/code-block.module'
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
-import {ErrorMessageModule, InputModule} from '@ironsrc/fusion-ui';
+import {ErrorMessageModule, InputModule} from '@ironource/fusion-ui';
 
 describe('ErrorMessageDocsComponent', () => {
     let component: ErrorMessageDocsComponent;

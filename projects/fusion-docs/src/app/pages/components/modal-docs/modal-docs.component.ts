@@ -1,5 +1,5 @@
 import {Component, ViewChild, OnInit, OnDestroy} from '@angular/core';
-import {ModalService, NotificationService, NotificationType, StyleVersion, VersionService} from '@ironsrc/fusion-ui';
+import {ModalService, NotificationService, NotificationType, StyleVersion, VersionService} from '@ironource/fusion-ui';
 import {Observable, timer, Subject, merge} from 'rxjs';
 import {mapTo, switchMap, takeUntil} from 'rxjs/operators';
 import {FormControl, Validators} from '@angular/forms';

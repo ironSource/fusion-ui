@@ -5,7 +5,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
-import {ClonePipe, FilterByFieldPipe, IconModule, TagModule, TagsInputModule} from '@ironsrc/fusion-ui';
+import {ClonePipe, FilterByFieldPipe, IconModule, TagModule, TagsInputModule} from '@ironource/fusion-ui';
 import {ReactiveFormsModule} from '@angular/forms';
 
 const routes: Routes = [{path: '', component: TagDocsV2Component}];

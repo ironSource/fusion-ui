@@ -585,7 +585,7 @@ After the page is loaded, we don't need all dropdown options to be rendered to t
 * **FU-102:** Deprecate screen scss Vars "projects/fusion-ui/src/style/scss/vars/_screen.scss"
   ##### Do import:
     ```
-    @import '~@ironsrc/fusion-ui/style/mixins/breakpoints';
+    @import '~@ironource/fusion-ui/style/mixins/breakpoints';
     ```
   ##### Instead '@media (....' now must use 'breakpoints' mixins:
     ```
@@ -1111,8 +1111,8 @@ enum HttpResponseStatusCodesEnum {
 ## [0.2.2-beta.X]
 ### DG-4307 - FusionUI - apply new ironSource style guide
 #### Added support for style guide versioning:
-- In react instead of instead of import "@ironsrc/fusion-ui/native/react" do import "@ironsrc/fusion-ui/native/react/v2"
-- In react instead of instead of import "@ironsrc/fusion-ui/native/vue" do import "@ironsrc/fusion-ui/native/vue/v2";
+- In react instead of instead of import "@ironource/fusion-ui/native/react" do import "@ironource/fusion-ui/native/react/v2"
+- In react instead of instead of import "@ironource/fusion-ui/native/vue" do import "@ironource/fusion-ui/native/vue/v2";
 - In angular just add class to body: ''fusion-style-v2"
 ### Added lint-staged with pre-commit & pre-push hooks:
 - Pre-commit: run prettier and add to git commit

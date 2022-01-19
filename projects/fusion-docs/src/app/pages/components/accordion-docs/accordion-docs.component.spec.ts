@@ -4,7 +4,7 @@ import {AccordionDocsComponent} from './accordion-docs.component';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
-import {AccordionModule} from '@ironsrc/fusion-ui';
+import {AccordionModule} from '@ironource/fusion-ui';
 import {AccordionExampleContentModule} from '../../../components/accordion-example-components/accordion-example-content/accordion-example-content.module';
 
 describe('AccordionDocsComponent', () => {

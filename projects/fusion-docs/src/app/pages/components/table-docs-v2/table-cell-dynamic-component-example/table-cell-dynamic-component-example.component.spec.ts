@@ -1,7 +1,7 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {TableCellDynamicComponentExampleComponent} from './table-cell-dynamic-component-example.component';
-import {StatusLabelModule} from '@ironsrc/fusion-ui';
+import {StatusLabelModule} from '@ironource/fusion-ui';
 
 describe('TableCellDynamicComponentExampleComponent', () => {
     let component: TableCellDynamicComponentExampleComponent;

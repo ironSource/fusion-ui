@@ -6,7 +6,7 @@ import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
-import {SwitcherModule} from '@ironsrc/fusion-ui';
+import {SwitcherModule} from '@ironource/fusion-ui';
 
 const routes: Routes = [{path: '', component: SwitchersDocsComponent}];
 

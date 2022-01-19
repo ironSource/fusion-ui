@@ -1,7 +1,7 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {DocsMenuComponent} from './docs-menu.component';
-import {ScrollToModule} from '@ironsrc/fusion-ui';
+import {ScrollToModule} from '@ironource/fusion-ui';
 
 describe('DocsMenuComponent', () => {
     let component: DocsMenuComponent;

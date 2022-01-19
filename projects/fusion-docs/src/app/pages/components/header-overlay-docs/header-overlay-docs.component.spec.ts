@@ -4,7 +4,7 @@ import {DemoFilterComponent, HeaderOverlayDocsComponent} from './header-overlay-
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
-import {HeaderOverlayModule, IconModule} from '@ironsrc/fusion-ui';
+import {HeaderOverlayModule, IconModule} from '@ironource/fusion-ui';
 import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 import {NgModule} from '@angular/core';

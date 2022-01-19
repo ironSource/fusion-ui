@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {merge, Observable, Subject, timer} from 'rxjs';
-import {ModalService, NotificationService, NotificationType, StyleVersion, VersionService} from '@ironsrc/fusion-ui';
+import {ModalService, NotificationService, NotificationType, StyleVersion, VersionService} from '@ironource/fusion-ui';
 import {mapTo, switchMap, takeUntil} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {DocsLayoutService} from '../../docs/docs-layout.service';

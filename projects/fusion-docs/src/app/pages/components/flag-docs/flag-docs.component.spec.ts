@@ -4,7 +4,7 @@ import {FlagDocsComponent} from './flag-docs.component';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
-import {FlagModule} from '@ironsrc/fusion-ui';
+import {FlagModule} from '@ironource/fusion-ui';
 import {RouterModule} from '@angular/router';
 
 describe('FlagDocsComponent', () => {
