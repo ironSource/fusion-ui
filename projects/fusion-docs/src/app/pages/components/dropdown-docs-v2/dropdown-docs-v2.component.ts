@@ -8,7 +8,7 @@ import {
     DynamicComponentConfiguration,
     StyleVersion,
     VersionService
-} from '@ironource/fusion-ui';
+} from '@ironsource/fusion-uifusion-ui';
 import {
     MOCK_AUTOCOMPLETE_DATA,
     MOCK_OPTIONS,

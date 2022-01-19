@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit, Type} from '@angular/core';
-import {DropdownOption, DynamicComponentConfiguration} from '@ironource/fusion-ui';
+import {DropdownOption, DynamicComponentConfiguration} from '@ironsource/fusion-uifusion-ui';
 import {DropdownCustomPlaceholderComponent} from '../../../components/dropdown-custom-placeholder/dropdown-custom-placeholder.component';
 import {
     dynamicDisplayItemBackendPagination,

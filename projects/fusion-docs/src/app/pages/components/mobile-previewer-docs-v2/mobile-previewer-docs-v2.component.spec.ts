@@ -3,7 +3,7 @@ import {MobilePreviewerDocsV2Component} from './mobile-previewer-docs-v2.compone
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
-import {ButtonModule, MobilePreviewerModule, PopupModule} from '@ironource/fusion-ui';
+import {ButtonModule, MobilePreviewerModule, PopupModule} from '@ironsource/fusion-uifusion-ui';
 import {Router} from '@angular/router';
 
 class RouterStub {

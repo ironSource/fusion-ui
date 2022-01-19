@@ -5,7 +5,7 @@ import {ExampleBlockModule} from '../../../components/example-block/example-bloc
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {RouterModule} from '@angular/router';
-import {FlagModule, IconModule, SvgModule} from '@ironource/fusion-ui';
+import {FlagModule, IconModule, SvgModule} from '@ironsource/fusion-uifusion-ui';
 
 describe('IconDocsComponent', () => {
     let component: IconDocsComponent;

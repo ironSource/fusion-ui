@@ -2,7 +2,7 @@ import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {IconDocsV2Component} from './icon-docs-v2.component';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
-import {IconModule} from '@ironource/fusion-ui';
+import {IconModule} from '@ironsource/fusion-uifusion-ui';
 
 describe('IconDocsV2Component', () => {
     let component: IconDocsV2Component;

@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, HostBinding, HostListener, Input, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {DocsMenuItem} from './docs-menu';
-import {VersionService} from '@ironource/fusion-ui';
+import {VersionService} from '@ironsource/fusion-uifusion-ui';
 import {BehaviorSubject, combineLatest, Observable, Subject} from 'rxjs';
 import {map} from 'rxjs/operators';
 

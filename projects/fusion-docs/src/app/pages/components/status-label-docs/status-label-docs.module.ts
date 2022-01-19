@@ -5,7 +5,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
-import {StatusLabelModule, TableModule, TooltipModule} from '@ironource/fusion-ui';
+import {StatusLabelModule, TableModule, TooltipModule} from '@ironsource/fusion-uifusion-ui';
 
 const routes: Routes = [{path: '', component: StatusLabelDocsComponent}];
 

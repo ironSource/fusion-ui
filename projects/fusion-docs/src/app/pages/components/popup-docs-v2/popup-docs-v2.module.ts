@@ -5,7 +5,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
-import {ButtonModule, PopupModule} from '@ironource/fusion-ui';
+import {ButtonModule, PopupModule} from '@ironsource/fusion-uifusion-ui';
 import {PopupV2InnerComponentExampleModule} from './popup-v2-inner-component-example/popup-v2-inner-component-example.module';
 
 const routes: Routes = [{path: '', component: PopupDocsV2Component}];

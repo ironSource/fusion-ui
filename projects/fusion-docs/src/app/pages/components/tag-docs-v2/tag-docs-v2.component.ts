@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import {StyleVersion, TagComponentConfigurations, TagRole, VersionService} from '@ironource/fusion-ui';
+import {StyleVersion, TagComponentConfigurations, TagRole, VersionService} from '@ironsource/fusion-uifusion-ui';
 import {takeUntil} from 'rxjs/operators';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Router} from '@angular/router';

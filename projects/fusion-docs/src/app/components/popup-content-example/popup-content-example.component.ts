@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {PopupContentExampleEntity} from './popup-content-example.entity';
-import {PopupService} from '@ironource/fusion-ui';
+import {PopupService} from '@ironsource/fusion-uifusion-ui';
 
 @Component({
     selector: 'fusion-popup-content-example',

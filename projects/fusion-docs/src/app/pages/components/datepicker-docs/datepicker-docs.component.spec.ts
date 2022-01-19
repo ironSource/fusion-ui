@@ -6,7 +6,7 @@ import {ExampleBlockModule} from '../../../components/example-block/example-bloc
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ReactiveFormsModule} from '@angular/forms';
-import {DatepickerModule} from '@ironource/fusion-ui';
+import {DatepickerModule} from '@ironsource/fusion-uifusion-ui';
 
 describe('DatepickerDocsComponent', () => {
     let component: DatepickerDocsComponent;

@@ -4,7 +4,14 @@ import {DropdownDocsComponent} from './dropdown-docs.component';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
-import {AddboxDropdownModule, ButtonModule, CheckboxModule, DropdownModule, InputModule, MultiDropdownModule} from '@ironource/fusion-ui';
+import {
+    AddboxDropdownModule,
+    ButtonModule,
+    CheckboxModule,
+    DropdownModule,
+    InputModule,
+    MultiDropdownModule
+} from '@ironsource/fusion-uifusion-ui';
 import {Router, RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 

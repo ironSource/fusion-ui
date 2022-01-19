@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {StyleVersion, VersionService} from '@ironource/fusion-ui';
+import {StyleVersion, VersionService} from '@ironsource/fusion-uifusion-ui';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
 

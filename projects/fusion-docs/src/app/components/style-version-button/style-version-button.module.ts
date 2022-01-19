@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {StyleVersionButtonComponent} from './style-version-button.component';
-import {ButtonModule} from '@ironource/fusion-ui';
+import {ButtonModule} from '@ironsource/fusion-uifusion-ui';
 
 @NgModule({
     declarations: [StyleVersionButtonComponent],

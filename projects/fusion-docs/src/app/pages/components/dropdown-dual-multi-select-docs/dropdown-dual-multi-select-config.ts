@@ -1,4 +1,4 @@
-import {DropdownOption} from '@ironource/fusion-ui';
+import {DropdownOption} from '@ironsource/fusion-uifusion-ui';
 import {DropdownCustomPlaceholderComponent} from '../../../components/dropdown-custom-placeholder/dropdown-custom-placeholder.component';
 import {Component, Type} from '@angular/core';
 

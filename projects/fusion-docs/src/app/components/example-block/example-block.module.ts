@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ExampleBlockComponent} from './example-block.component';
-import {IconModule} from '@ironource/fusion-ui';
+import {IconModule} from '@ironsource/fusion-uifusion-ui';
 import {ExampleBlockDirective} from './example-block.directive';
 
 @NgModule({

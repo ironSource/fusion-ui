@@ -4,7 +4,7 @@
         "outDir": "../../out-tsc/spec",
         "types": ["jasmine", "node"],
         "paths": {
-            "@ironource/fusion-ui": ["projects/fusion-ui/src/public-api"]
+            "@ironsource/fusion-uifusion-ui": ["projects/fusion-ui/src/public-api"]
         }
     },
     "files": ["src/test.ts", "src/polyfills.ts"],

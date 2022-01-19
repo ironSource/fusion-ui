@@ -4,7 +4,7 @@ import {ColorsDocsComponent} from './colors-docs.component';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
-import {ButtonModule, TableModule} from '@ironource/fusion-ui';
+import {ButtonModule, TableModule} from '@ironsource/fusion-uifusion-ui';
 import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ColorsPaletteComponent} from './colors-palette/colors-palette.component';

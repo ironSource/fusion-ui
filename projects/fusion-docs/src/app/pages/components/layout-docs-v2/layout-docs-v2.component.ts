@@ -8,7 +8,7 @@ import {
     StyleVersion,
     TableColumnTypeEnum,
     VersionService
-} from '@ironource/fusion-ui';
+} from '@ironsource/fusion-uifusion-ui';
 import {takeUntil} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {LAYOUT_CONFIGURATION} from './layout-docs-v2.mocking';

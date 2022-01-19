@@ -3,7 +3,7 @@ import {LayoutDocsComponent} from './layout-docs.component';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
-import {AlertModule, LayoutV1Module, TableModule} from '@ironource/fusion-ui';
+import {AlertModule, LayoutV1Module, TableModule} from '@ironsource/fusion-uifusion-ui';
 import {RouterTestingModule} from '@angular/router/testing';
 
 describe('LayoutDocsComponent', () => {
