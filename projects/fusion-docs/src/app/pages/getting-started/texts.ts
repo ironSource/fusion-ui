@@ -1,10 +1,8 @@
 export const GETTING_STARTED_PAGE_TEXTS = {
     npm: 'npm install --save @ironource/fusion-ui',
     // eslint-disable-next-line max-len
-    npmRegistry:
-        'curl -uACTIVE_DIRECTORY_USER_NAME:ACTIVE_DIRECTORY_PASSWORD ' +
-        'https://ironsrc.jfrog.io/ironsrc/api/npm/npmjs-local/auth/ironsrc > ~/.npmrc',
-    npmRegistrySetConfig: 'npm config set @ironsrc:registry https://ironsrc.jfrog.io/ironsrc/api/npm/npmjs-local/auth/ironsrc',
+    npmRegistry: '',
+    npmRegistrySetConfig: '',
     style: '<link rel="stylesheet" href="https://ssastatic.s3-eu-west-1.amazonaws.com/fusion/native/v1/fusion.theme.css">',
     importModule: 'import {AlertModule} from "@ironource/fusion-ui"',
     fusionAlert: `<fusion-alert>
