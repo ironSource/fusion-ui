@@ -20,8 +20,8 @@ Existing issues often contain information about workarounds, resolution, or prog
 # 🚀 feature request
 
 ### Relevant Package
-<!-- Can you pin-point one or more @ironsource/fusion-uifusion-ui/* packages the are relevant for this feature request? -->
-<!-- ✍️edit: --> This feature request is for @ironsource/fusion-uifusion-ui@XXX
+<!-- Can you pin-point one or more @ironsource/fusion-ui/* packages the are relevant for this feature request? -->
+<!-- ✍️edit: --> This feature request is for @ironsource/fusion-ui@XXX
 
 ### Blocker
 - [ ] Yes

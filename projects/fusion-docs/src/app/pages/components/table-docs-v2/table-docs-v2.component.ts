@@ -15,7 +15,7 @@ import {
     TableRowExpandEmitter,
     TableRowHeight,
     VersionService
-} from '@ironsource/fusion-uifusion-ui';
+} from '@ironsource/fusion-ui';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {TableCellDynamicComponentExampleComponent} from './table-cell-dynamic-component-example';
 import {DocsLayoutService} from '../../docs/docs-layout.service';

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
-import {IconSelectItem, StyleVersion, VersionService} from '@ironsource/fusion-uifusion-ui';
+import {IconSelectItem, StyleVersion, VersionService} from '@ironsource/fusion-ui';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
 

@@ -9,7 +9,7 @@ import {
     StyleVersion,
     VersionService,
     VideoPlayerComponent
-} from '@ironsource/fusion-uifusion-ui';
+} from '@ironsource/fusion-ui';
 import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {Router} from '@angular/router';

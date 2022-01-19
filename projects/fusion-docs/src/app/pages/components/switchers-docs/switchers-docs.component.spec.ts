@@ -4,7 +4,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
-import {SwitcherModule} from '@ironsource/fusion-uifusion-ui';
+import {SwitcherModule} from '@ironsource/fusion-ui';
 import {Router} from '@angular/router';
 
 class RouterStub {

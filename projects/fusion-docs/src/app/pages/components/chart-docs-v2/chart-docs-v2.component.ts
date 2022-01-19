@@ -15,7 +15,7 @@ import {
     ColorsService,
     StyleVersion,
     VersionService
-} from '@ironsource/fusion-uifusion-ui';
+} from '@ironsource/fusion-ui';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {EXAMPLE_DATA_7_DAYS_MOCK, EXAMPLE_DATA_MOCK, EXAMPLE_DATA_PIE_MOCK} from '../chart-docs/mocks/chart-example-data-mock';
@@ -366,7 +366,7 @@ document.body.appendChild(fusionChart);`;
 
     vueExampleCode(dataMock: string, type = 'line', loading = false, noData = false): string {
         return `<script>
-import {FusionChart } from '@ironsource/fusion-uifusion-ui/native/vue';
+import {FusionChart } from '@ironsource/fusion-ui/native/vue';
 
 export const FooComponent = {
   name: 'FooComponent',
@@ -396,7 +396,7 @@ export default FooComponent;
     }
 
     reactExampleCode(dataMock: string, type = 'line', loading = false, noData = false): string {
-        return `import {FusionChart} from '@ironsource/fusion-uifusion-ui/native/react';
+        return `import {FusionChart} from '@ironsource/fusion-ui/native/react';
 
 export default class Foo extends React.Component {
     constructor(props) {

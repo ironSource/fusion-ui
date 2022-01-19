@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
 import {PopupV2InnerComponentExampleComponent} from './popup-v2-inner-component-example.component';
-import {IconModule} from '@ironsource/fusion-uifusion-ui';
+import {IconModule} from '@ironsource/fusion-ui';
 
 describe('PopupV2InnerComponentExampleComponent', () => {
     let component: PopupV2InnerComponentExampleComponent;

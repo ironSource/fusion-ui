@@ -4,7 +4,7 @@ import {ChartDocsComponent} from './chart-docs.component';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
-import {ChartLabelsModule, ChartModule} from '@ironsource/fusion-uifusion-ui';
+import {ChartLabelsModule, ChartModule} from '@ironsource/fusion-ui';
 import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [

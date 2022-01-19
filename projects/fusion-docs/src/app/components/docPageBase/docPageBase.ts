@@ -4,7 +4,7 @@
 import {OnInit, OnDestroy} from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
 import {Observable, Subject} from 'rxjs';
-import {StyleVersion, VersionService} from '@ironsource/fusion-uifusion-ui';
+import {StyleVersion, VersionService} from '@ironsource/fusion-ui';
 import {Router} from '@angular/router';
 
 export abstract class DocPageBase implements OnInit, OnDestroy {

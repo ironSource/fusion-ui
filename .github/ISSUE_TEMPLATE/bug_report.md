@@ -20,8 +20,8 @@ Existing issues often contain information about workarounds, resolution, or prog
 # 🐞 bug report
 
 ### Affected Package
-<!-- Can you pin-point one or more @ironsource/fusion-uifusion-ui* packages as the source of the bug? -->
-<!-- ✍️edit: --> The issue is caused by package version @ironsource/fusion-uifusion-ui@XXX
+<!-- Can you pin-point one or more @ironsource/fusion-ui* packages as the source of the bug? -->
+<!-- ✍️edit: --> The issue is caused by package version @ironsource/fusion-ui@XXX
 
 ### Blocker
 - [ ] Yes

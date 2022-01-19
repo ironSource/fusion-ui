@@ -1,6 +1,6 @@
 import {TestBed, waitForAsync} from '@angular/core/testing';
 import {AppComponent} from './app.component';
-import {LayoutV1Module, LayoutModule, SvgModule, TooltipModule} from '@ironsource/fusion-uifusion-ui';
+import {LayoutV1Module, LayoutModule, SvgModule, TooltipModule} from '@ironsource/fusion-ui';
 import {AppRoutingModule} from './app.routing';
 
 describe('AppComponent', () => {

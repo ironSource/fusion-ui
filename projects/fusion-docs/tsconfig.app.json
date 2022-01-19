@@ -4,7 +4,7 @@
         "outDir": "../../out-tsc/app",
         "types": ["node"],
         "paths": {
-            "@ironsource/fusion-uifusion-ui": ["projects/fusion-ui/src/public-api"]
+            "@ironsource/fusion-ui": ["projects/fusion-ui/src/public-api"]
         }
     },
     "files": ["src/main.ts", "src/polyfills.ts"],

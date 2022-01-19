@@ -5,7 +5,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
-import {ChartLabelsModule, ChartModule} from '@ironsource/fusion-uifusion-ui';
+import {ChartLabelsModule, ChartModule} from '@ironsource/fusion-ui';
 
 const routes: Routes = [{path: '', component: ChartDocsV2Component}];
 

@@ -1,4 +1,4 @@
-import {DropdownOption} from '@ironsource/fusion-uifusion-ui';
+import {DropdownOption} from '@ironsource/fusion-ui';
 
 /* eslint-disable max-len */
 

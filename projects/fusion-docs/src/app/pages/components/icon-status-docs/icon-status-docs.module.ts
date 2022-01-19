@@ -5,7 +5,7 @@ import {ExampleBlockModule} from '../../../components/example-block/example-bloc
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {RouterModule, Routes} from '@angular/router';
-import {IconModule, IconStatusModule, SvgModule} from '@ironsource/fusion-uifusion-ui';
+import {IconModule, IconStatusModule, SvgModule} from '@ironsource/fusion-ui';
 
 const routes: Routes = [{path: '', component: IconStatusDocsComponent}];
 

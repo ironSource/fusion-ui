@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {IconModule} from '@ironsource/fusion-uifusion-ui';
+import {IconModule} from '@ironsource/fusion-ui';
 import {TableCellIconExampleComponent} from './table-cell-icon-example.component';
 
 @NgModule({

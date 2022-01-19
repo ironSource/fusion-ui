@@ -6,7 +6,7 @@ import {CodeBlockModule} from '../../../components/code-block/code-block.module'
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
-import {IconSelectListModule, InputModule, RadioGroupModule, RadioModule} from '@ironsource/fusion-uifusion-ui';
+import {IconSelectListModule, InputModule, RadioGroupModule, RadioModule} from '@ironsource/fusion-ui';
 
 describe('RadioDocsComponent', () => {
     let component: RadioDocsComponent;

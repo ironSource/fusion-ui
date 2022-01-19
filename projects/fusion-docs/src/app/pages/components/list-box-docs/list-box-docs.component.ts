@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {ListBoxModes, ListBoxOption, StyleVersion, VersionService} from '@ironsource/fusion-uifusion-ui';
+import {ListBoxModes, ListBoxOption, StyleVersion, VersionService} from '@ironsource/fusion-ui';
 import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';

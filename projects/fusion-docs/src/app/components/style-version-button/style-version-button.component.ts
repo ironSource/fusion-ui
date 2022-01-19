@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {StyleVersion, VersionService} from '@ironsource/fusion-uifusion-ui';
+import {StyleVersion, VersionService} from '@ironsource/fusion-ui';
 import {Observable} from 'rxjs';
 
 @Component({

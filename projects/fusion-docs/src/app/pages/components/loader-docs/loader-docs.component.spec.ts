@@ -6,7 +6,7 @@ import {CodeBlockModule} from '../../../components/code-block/code-block.module'
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
-import {LoaderInlineModule, LoaderModule} from '@ironsource/fusion-uifusion-ui';
+import {LoaderInlineModule, LoaderModule} from '@ironsource/fusion-ui';
 import {CustomLoaderModule} from './custom-loader/custom-loader.module';
 
 describe('LoaderDocsComponent', () => {

@@ -6,7 +6,7 @@ import {CodeBlockModule} from '../../../components/code-block/code-block.module'
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
-import {CopyToClipboardModule} from '@ironsource/fusion-uifusion-ui';
+import {CopyToClipboardModule} from '@ironsource/fusion-ui';
 
 describe('CopyToClipboardDocsComponent', () => {
     let component: CopyToClipboardDocsComponent;

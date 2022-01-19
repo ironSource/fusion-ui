@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {IconSelectItem, StyleVersion, VersionService} from '@ironsource/fusion-uifusion-ui';
+import {IconSelectItem, StyleVersion, VersionService} from '@ironsource/fusion-ui';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
 

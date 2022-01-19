@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
-import {StyleVersion, VersionService} from '@ironsource/fusion-uifusion-ui';
+import {StyleVersion, VersionService} from '@ironsource/fusion-ui';
 import {BehaviorSubject} from 'rxjs';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
 

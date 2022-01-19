@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
-import {PopupEntity, PopupLocation, PopupService, StyleVersion, VersionService} from '@ironsource/fusion-uifusion-ui';
+import {PopupEntity, PopupLocation, PopupService, StyleVersion, VersionService} from '@ironsource/fusion-ui';
 import {takeUntil} from 'rxjs/operators';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Router} from '@angular/router';

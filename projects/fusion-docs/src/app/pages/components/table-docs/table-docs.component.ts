@@ -8,7 +8,7 @@ import {
     TableOptions,
     TableRowExpandEmitter,
     VersionService
-} from '@ironsource/fusion-uifusion-ui';
+} from '@ironsource/fusion-ui';
 import {FormControl, Validators} from '@angular/forms';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {delay, take, takeUntil, tap} from 'rxjs/operators';

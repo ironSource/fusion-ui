@@ -3,7 +3,7 @@ import {PopupEntity, PopupLocation} from '../../../../../../fusion-ui/src/lib/co
 import {PopupService} from '../../../../../../fusion-ui/src/lib/components/ui-components/popup/popup.service';
 import {Observable, Subject} from 'rxjs';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
-import {StyleVersion, VersionService} from '@ironsource/fusion-uifusion-ui';
+import {StyleVersion, VersionService} from '@ironsource/fusion-ui';
 import {takeUntil} from 'rxjs/operators';
 import {Router} from '@angular/router';
 
