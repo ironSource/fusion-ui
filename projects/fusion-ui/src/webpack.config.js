@@ -6,7 +6,8 @@ module.exports = {
   output: {
     uniqueName: "fusion-lib",
     publicPath: "auto",
-    chunkFilename: '[name].[contenthash].js'
+    chunkFilename: '[name].[contenthash].js',
+    scriptType: 'text/javascript'
   },
   optimization: {
     runtimeChunk: false
