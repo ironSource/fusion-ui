@@ -16,8 +16,8 @@ export const GETTING_STARTED_PAGE_TEXTS = {
 <script src="node_modules/@ironource/fusion-ui/native/core/main-es2015.js" type="module"></script>
 <script src="node_modules/@ironource/fusion-ui/native/core/main-es5.js" nomodule></script>`,
     scss: 'node_modules/@ironource/fusion-ui/fusion.theme.css',
-    npmReact: 'npm install --save @ironsrc/fusion-native',
-    npmVue: 'npm install --save @ironsrc/fusion-native',
+    npmReact: 'npm install --save @ironource/fusion-uifusion-native',
+    npmVue: 'npm install --save @ironource/fusion-uifusion-native',
     mainReact: 'import "@ironource/fusion-ui/native/react";',
     mainVue: 'import "@ironource/fusion-ui/native/vue"',
     importReact: 'import {FusionAlert} from "@ironource/fusion-ui/native/react"',
