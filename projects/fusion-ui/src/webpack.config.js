@@ -22,13 +22,14 @@ module.exports = {
                  name: `fusion-mfe-lib-${process.env.VERSION}`
                 }
         },
-        shared: {
-          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: dependencies["@angular/core"] },
-          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: dependencies["@angular/common"] },
-          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: dependencies["@angular/common"] },
-          "@angular/router": { singleton: true, strictVersion: true, requiredVersion: dependencies["@angular/router"]},
-          "@angular/forms": { singleton: true, strictVersion: true, requiredVersion: dependencies["@angular/forms"]},
-        }
+        shared: [
+            "@angular/core",
+            "@angular/common",
+            "@angular/common/http",
+            "@angular/router",
+            "@angular/forms",
+            "@angular/platform-browser"
+        ]
     })
   ],
 };
