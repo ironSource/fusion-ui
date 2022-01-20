@@ -1,0 +1,193 @@
+@import './fonts_v1';
+@import './fonts';
+@import './colors';
+@import './colors_v2';
+
+$em-base: 16px;
+
+// header & menu styles
+$mobileHeaderHeight: var(--mobile-header-height, 50px);
+$headerPanelHeight: var(--header-panel-height, 60px);
+$menuHeaderHeight:  var(--menu-header-height, 60px);
+$headerPanelWidth: var(--header-panel-width, 60px);
+$footerHeight: var(--footer-height, 59px);
+$leftMenuWidth: var(--left-menu-width, 220px);
+$leftMenuCollapsedWidth: var(--left-menu-collapsed-width,  70px);
+$contentMargin: var(--content-margin, 2px);
+$headerPaddingMobile: var(--header-padding-mobile,  40px);
+$headerPaddingSm: var(--header-padding-small, 6px);
+$headerPaddingDesktop:var(--header-padding-desktop,  44px);
+$headerPaddingLarge: var(--header-padding-large, 50px);
+$box-padding: var(--box-padding, 20px);
+$componentsPagePadding:var(--components-page-padding, 30px);
+
+
+$padding: var(--padding, 15px);
+$margin: var(--margin, 15px);
+$marginDouble: calc(#{$margin} * 2);
+$marginOneThird: calc(#{$margin} * 4/3);
+$marginHalf: calc(#{$margin} / 2);
+$marginThird:calc(#{$margin} / 3);
+$marginTwoThird: calc(#{$margin} * 2/3);
+
+%border-box-normalize{
+    * {
+        box-sizing: border-box;
+    }
+}
+
+// add 3 dots (...) to text
+%truncate{
+    width: 100%;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
+
+%absoluteVerticalAlign {
+    margin-top: 0 !important;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+%absoluteHorizontalAlign {
+    margin-left: 0;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+%absoluteVerticalAndHorizontalAlign{
+    margin-left: 0;
+    margin-top: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+%center{
+    margin: 0 auto;
+    float: none;
+}
+
+%drop-arrow{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 14px;
+    right: 10px;
+    border-width: 4px 4px 0;
+    border-style: solid;
+    border-color: $dark-300 transparent transparent;
+}
+
+%disabled {
+    pointer-events: none;
+    cursor: default;
+    touch-callout: none;
+    user-select: none;
+}
+
+// resets
+%reset {
+    @extend %border-box-normalize; // add box-sizing
+    margin: 0;
+    padding: 0;
+    vertical-align: initial;
+    text-align: initial;
+}
+%list-reset {
+    ul, ol {
+        padding: 0;
+        margin: 0;
+        li {
+            list-style: none;
+        }
+    }
+}
+%link-reset{
+    a{
+        @extend %font6;
+        text-decoration: none;
+        color:$primary-500;
+        cursor: pointer;
+
+        &:link,
+        &:visited,
+        &:hover,
+        &:active{
+            color:$primary-500;
+        }
+    }
+}
+
+// no scroll
+%no-scroll-bar {
+    &::-webkit-scrollbar {
+        height: 0;
+        width: 0;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        height: 0;
+        width: 0;
+    }
+
+    &::-webkit-scrollbar-track {
+        height: 0;
+        width: 0;
+    }
+}
+
+// scroll
+$scrollWidth: 14px;
+$scrollThumbWidth: 4px;
+$scrollRadius: 4px;
+$scrollBackgroundColor: $White;
+$scrollColor: $light-600;
+%customScroll{
+    &::-webkit-scrollbar-track {
+        border-radius: $scrollRadius;
+        background-color: $scrollBackgroundColor;
+    }
+
+    &::-webkit-scrollbar {
+        width: $scrollWidth;
+        height: $scrollWidth;
+        background-color: $scrollBackgroundColor;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border: calc((#{$scrollWidth} - #{$scrollThumbWidth}) / 2) solid rgba(0, 0, 0, 0);
+        background-clip: padding-box;
+        border-radius: $scrollRadius;
+        background-color: $scrollColor;
+    }
+}
+
+// scroll - v2
+$scrollWidthV2: 12px;
+$scrollRadiusV2: 2px;
+$scrollColorV2: $fu-light-500;
+%customScroll-V2{
+    &::-webkit-scrollbar-track {
+        border-radius: $scrollRadius;
+        background-color: $scrollBackgroundColor;
+    }
+
+    &::-webkit-scrollbar {
+        width: $scrollWidthV2;
+        height: $scrollWidthV2;
+        background-color: $scrollBackgroundColor;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border: calc((#{$scrollWidthV2} - #{$scrollThumbWidth}) / 2) solid rgba(0, 0, 0, 0);
+        background-clip: padding-box;
+        border-radius: $scrollRadiusV2;
+        background-color: $scrollColorV2;
+    }
+}
+

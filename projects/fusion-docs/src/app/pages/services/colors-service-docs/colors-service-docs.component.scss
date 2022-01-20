@@ -1,0 +1,25 @@
+:host {
+    .flex-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        .is-color-item{
+            width: 120px;
+            height: 50px;
+            margin: 5px;
+            .is-color-example{
+                margin-right: 6px;
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+            }
+            .is-color-name{
+                display: inline-block;
+                vertical-align: top;
+
+            }
+        }
+    }
+}

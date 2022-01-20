@@ -1,0 +1,142 @@
+<div class="row">
+    <div class="col-4">
+        <div class="is-example-title">Regular With Application Items</div>
+        <fusion-dropdown-dual-multi-select
+            (viewChange)="isViewChanged($event)"
+            (searchChange)="isSearchChanged($event)"
+            (scrollDown)="isReachTotalData()"
+            [totalItems]="10"
+            [items]="applicationList"
+            title="Applications"
+            [pendingItems]="false"
+            [opened]="false"
+            [placeholder]="'Search Item'"
+        ></fusion-dropdown-dual-multi-select>
+    </div>
+
+    <div class="col-4">
+        <div class="is-example-title">Pre Selected Items</div>
+        <fusion-dropdown-dual-multi-select
+            (viewChange)="isViewChanged($event)"
+            (searchChange)="isSearchChanged($event)"
+            (scrollDown)="isReachTotalData()"
+            [totalItems]="totalItems"
+            [formControl]="itemsControl"
+            [items]="items"
+            title="Actors"
+            [pendingItems]="false"
+            [opened]="false"
+            [placeholder]="'Search Item'"
+        ></fusion-dropdown-dual-multi-select>
+    </div>
+
+    <div class="col-4">
+        <div class="is-example-title">Disabled Items</div>
+        <fusion-dropdown-dual-multi-select
+            (viewChange)="isViewChanged($event)"
+            (searchChange)="isSearchChanged($event)"
+            (scrollDown)="isReachTotalData()"
+            [totalItems]="totalItems"
+            [formControl]="disabledPreSelectedItemsControl"
+            [items]="itemsToDisable"
+            title="Actors"
+            [opened]="false"
+            [pendingItems]="false"
+            [placeholder]="'Search Item'"
+        ></fusion-dropdown-dual-multi-select>
+    </div>
+</div>
+<div class="row">
+    <div class="col-4">
+        <div class="is-example-title">Pending To Items</div>
+        <fusion-dropdown-dual-multi-select
+            (viewChange)="isViewChanged($event)"
+            (scrollDown)="isReachTotalData()"
+            [totalItems]="totalItems"
+            title="Actors"
+            [opened]="false"
+            [placeholder]="'Search Item'"
+            [pendingItems]="true"
+        ></fusion-dropdown-dual-multi-select>
+    </div>
+
+    <div class="col-4">
+        <div class="is-example-title">Disabled All Items</div>
+        <fusion-dropdown-dual-multi-select
+            (viewChange)="isViewChanged($event)"
+            (searchChange)="isSearchChanged($event)"
+            (scrollDown)="isReachTotalData()"
+            [totalItems]="totalItems"
+            [formControl]="disabledPreSelectedItemsControl"
+            [items]="DisableAllItems"
+            title="Actors"
+            [opened]="false"
+            [placeholder]="'Search Item'"
+            [pendingItems]="false"
+        ></fusion-dropdown-dual-multi-select>
+    </div>
+
+    <div class="col-4">
+        <div class="is-example-title">Disable Component</div>
+        <fusion-dropdown-dual-multi-select
+            [isDisabled]="true"
+            (scrollDown)="isReachTotalData()"
+            [totalItems]="totalItems"
+            [formControl]="itemsControl"
+            [items]="DisableAllItems"
+            title="Actors"
+            [opened]="false"
+            [placeholder]="'Search Item'"
+            [pendingItems]="false"
+        ></fusion-dropdown-dual-multi-select>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-4">
+        <div class="is-example-title">Dynamic Placeholder With Application Items</div>
+        <fusion-dropdown-dual-multi-select
+            (viewChange)="isViewChanged($event)"
+            (searchChange)="isSearchChanged($event)"
+            (scrollDown)="isReachTotalData()"
+            [totalItems]="10"
+            [formControl]="notPreSelectedItemsControl"
+            [items]="applicationList"
+            title="Applications"
+            [opened]="false"
+            [pendingItems]="false"
+            [dynamicPlaceholder]="placeholderData"
+        ></fusion-dropdown-dual-multi-select>
+    </div>
+
+    <div class="col-4">
+        <div class="is-example-title">Dynamic Component Items With Backend Pagination</div>
+        <fusion-dropdown-dual-multi-select
+            (viewChange)="isViewChanged($event)"
+            (searchChange)="isSearchChanged($event)"
+            (scrollDown)="onScrollDown()"
+            [totalItems]="totalItemBackendPagination"
+            [formControl]="notPreSelectedItemsControl"
+            [items]="dynamicItems"
+            title="Dynamic"
+            [opened]="false"
+            [pendingItems]="false"
+            [dynamicPlaceholder]="placeholderData"
+        ></fusion-dropdown-dual-multi-select>
+    </div>
+
+    <div class="col-4">
+        <div class="is-example-title">Disabled</div>
+        <fusion-dropdown-dual-multi-select
+            (viewChange)="isViewChanged($event)"
+            (searchChange)="isSearchChanged($event)"
+            (scrollDown)="isReachTotalData()"
+            [totalItems]="totalItems"
+            [items]="itemsToDisable"
+            title="Actors"
+            [opened]="false"
+            [pendingItems]="false"
+            [placeholder]="'Search Item'"
+        ></fusion-dropdown-dual-multi-select>
+    </div>
+</div>

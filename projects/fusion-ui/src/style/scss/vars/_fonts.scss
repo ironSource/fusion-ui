@@ -1,0 +1,87 @@
+// fonts
+$groteskDSPro75Bd: 'NHaasGroteskDSPro-75Bd', sans-serif;
+$groteskDSPro65Md: 'NHaasGroteskDSPro-65Md', sans-serif;
+$helveticaNueMd: 'HelveticaNeue-Medium', helvetica, sans-serif;
+$helveticaNueRg: 'HelveticaNeue', helvetica, sans-serif;
+
+// typography
+%font-headlineLarge {
+    font-size: 22px;
+    font-family: $groteskDSPro75Bd;
+    font-weight: normal;
+}
+
+%font-headlineMedium {
+    font-size: 18px;
+    font-family: $groteskDSPro75Bd;
+    font-weight: normal;
+}
+
+%font-headlineSmall {
+    font-size: 15px;
+    font-family: $groteskDSPro75Bd;
+    font-weight: normal;
+}
+
+%font-subtitle {
+    font-size: 13px;
+    font-family: $groteskDSPro75Bd;
+    font-weight: normal;
+}
+
+%font-bodyStrong {
+    font-size: 12px;
+    font-family: $helveticaNueMd;
+    font-weight: normal;
+    letter-spacing: 0.04px;
+}
+
+%font-body {
+    font-size: 12px;
+    font-family: $helveticaNueRg;
+    font-weight: normal;
+    letter-spacing: 0.04px;
+}
+
+%font-captionRegular {
+    font-size: 11px;
+    font-family: $helveticaNueRg;
+    font-weight: normal;
+}
+
+%font-label {
+    font-size: 11px;
+    font-family: $groteskDSPro65Md;
+    font-weight: normal;
+    letter-spacing: 0.25px;
+}
+
+%font-titleGiant {
+    font-size: 60px;
+    font-family: $groteskDSPro75Bd;
+}
+
+%font-titleMedium {
+    font-family: $groteskDSPro75Bd;
+    font-size: 32px;
+}
+
+%font-webBodyStrong {
+    font-family: $helveticaNueMd;
+    font-size: 14px;
+}
+
+%font-webBody {
+    font-family: $helveticaNueRg;
+    font-size: 14px;
+}
+
+%font-webBodyLargeStrong {
+    font-family: $helveticaNueMd;
+    font-size: 16px;
+}
+
+%font-webBodyLarge {
+    font-family: $helveticaNueRg;
+    font-size: 16px;
+}

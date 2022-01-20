@@ -1,0 +1,22 @@
+@import '../../../../styles/vars';
+
+:host{
+  .is-example-holder{
+        position: relative;
+        fusion-alert{
+            position: absolute;
+            width: calc(100% + 30px);
+            top: 0;
+            left: -15px;
+        }
+   }
+
+}
+
+.appsHeader{
+	& > td {
+		height: 30px;
+		line-height: 30px;
+		background-color: $light-100;
+	}
+}

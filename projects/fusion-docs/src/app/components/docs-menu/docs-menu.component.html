@@ -1,0 +1,8 @@
+<div class="is-right-side-menu" *ngFor="let menu of docsMenuItems$ | async">
+  <div class="is-right-side-menu-title" [ngClass]="{'is-closed':menu.isClosed}" (click)="menu.isClosed = !menu.isClosed">{{menu.title}}</div>
+  <ul>
+    <li class="is-right-side-menu-item" *ngFor="let item of menu.items">
+      <div [fusionScrollTo]="item.scrollTo" [scrollOffset]="item.scrollOffset" scrollMainView="body">{{item.label}}</div>
+    </li>
+  </ul>
+</div>

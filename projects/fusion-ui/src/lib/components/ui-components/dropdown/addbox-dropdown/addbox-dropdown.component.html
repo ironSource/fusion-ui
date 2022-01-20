@@ -1,0 +1,34 @@
+<div class="is-dropdown is-addbox-dropdown"
+     [clickOutsideActivate]="isOpen$ | async"
+     (fusionClickOutside)="onOutsideClick($event)"
+     [ngClass]="{'is-icon-right-position':isIconRightPosition, 'dd-opened':(isOpen$ | async),'ss-selected': selected.length > 0}">
+  <!--AddBox title-->
+  <fusion-input [id]="id" (btnAction)="addList()" [btn]="loading ? '' : actionButtonText" [btnDisabled]="isActionButtonDisabled()"
+            [error]="searchError" [formControl]="searchValue"
+            [placeholder]="placeholderText"
+            (ngEnter)="addList()"></fusion-input>
+  <!--AddBox title END -->
+  <div class="options-dropdown"
+       [ngClass]="{'dd-disabled': isDisabled, 'dd-confirm': (loading || autoComplete), 'dd-scroll': hasScroll}">
+    <!--dropdown options holder-->
+    <div class="options-holder" (scroll)="onScroll($event)" #optionsHolder>
+      <ul class="options">
+        <!--options-->
+          <fusion-dropdown-options-list [displayedOptions]="displayedOptions$ | async"
+                                    [isMultiRawDisplay]="isMultiRawDisplay"
+                                    [mappingOptions]="mappingOptions"
+                                    [selected]="selected"
+                                    [lastSearchValue]="lastSearchValue"
+                                    [optionRightHoverText]="optionRightHoverText"
+                                    (changeSelected)="changeSelected($event)">
+          </fusion-dropdown-options-list>
+        <!--loader holder-->
+        <li [fusionDropdownLoader]="autoComplete && loading"></li>
+        <!--no-result holder-->
+        <li class="no-results" *ngIf="(!loading || !autoComplete) && !filteredOptions.length">No item matched your search...</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!--errors holder-->
+<div class="error-msg" *ngIf="error">{{error}}</div>

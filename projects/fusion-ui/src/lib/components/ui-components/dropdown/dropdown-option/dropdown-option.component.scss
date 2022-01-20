@@ -1,0 +1,187 @@
+@import '../../../../../style/scss/vars/vars';
+@import '../../../../../style/scss/vars/border';
+@import '../../../../../style/scss/vars/mixins';
+
+:host.fusion-style-v1 {
+    @extend %list-reset;
+    @extend %border-box-normalize;
+    position: relative;
+    width: 100%;
+    background: $White;
+    padding: 5px 14px;
+    color: $dark-300;
+    display: inherit;
+    line-height: 16px;
+    @extend %font12;
+    cursor: pointer;
+
+    .text {
+        margin-left: 2px;
+        vertical-align: middle;
+        line-height: 20px;
+        &.truncate{
+            @extend %truncate;
+        }
+    }
+
+    img {
+        max-width: 19px;
+        @extend %borderRadius;
+        height: auto;
+        vertical-align: middle;
+        margin-right: 3px;
+
+        & + .truncate {
+            width: calc(100% - 24px);
+        }
+    }
+
+    @include icon-style('icon', $light-600, 13px, false, true) {
+        margin-right: 1px;
+        margin-top: -3px;
+        vertical-align: middle;
+        display: inline-block;
+    }
+
+    fusion-flag {
+        margin-right: 6px;
+        & + .truncate {
+            width: calc(100% - 24px);
+        }
+    }
+
+    ::ng-deep .is-id {
+        @extend %font13;
+        color: $light-800;
+        margin-right: 1px;
+        &::after {
+            content: ' -';
+        }
+    }
+
+    ::ng-deep .is-keyword {
+        @extend %font4;
+    }
+
+    .optionRightClickTextHover {
+        display: none;
+        @extend %font7;
+        color: $light-800;
+        float: right;
+        line-height: 23px;
+    }
+
+    &:hover {
+        background: $light-100;
+        .optionRightClickTextHover {
+            display: inline;
+        }
+    }
+
+    &.is-has-children {
+        position: relative;
+        color: $light-800;
+        @include icon-style('arrow-dropdown', $dark-300, 8px, false, true, -90) {
+            position: absolute;
+            right: 11px;
+            top: 5px;
+        }
+
+        .is-subgroup-options {
+            display: none;
+        }
+
+        &.is-open {
+            padding-bottom: 0;
+            @include icon-style('arrow-dropdown', $dark-300, 8px, false, true, 360);
+
+            .is-subgroup-options {
+                display: block;
+                margin: 5px -14px 0;
+
+                .option {
+                    ::ng-deep fusion-dropdown-option {
+                        padding-left: 30px;
+                    }
+
+                    &.is-selected {
+                        ::ng-deep fusion-dropdown-option {
+                            padding-left: 27px;
+                        }
+                    }
+                }
+            }
+
+            &:hover {
+                background: $White;
+            }
+        }
+    }
+
+    &.multi-raw-display {
+        height: 50px;
+        display: flex;
+        position: relative;
+        img {
+            height: 36px;
+            max-width: 36px;
+        }
+        .icon-container {
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            left: 38px;
+            bottom: 5px;
+            fusion-icon#platform-icon {
+                position: static;
+                margin-top: 2px;
+            }
+        }
+        .text {
+            padding-left: 5px;
+            .sub-text-container {
+                display: block;
+                font-size: 12px;
+                color: #678099;
+                @include icon-style('sub-text-icon', $light-700, 12px, false, true) {
+                    margin-right: 5px;
+                    vertical-align: text-top;
+                }
+            }
+        }
+        ::ng-deep .is-id {
+            color: inherit !important;
+        }
+    }
+    @include icon-style('status-dots', $neutral-700, 9px, true, true) {
+        margin-right: 6px;
+    }
+}
+
+:host-context(.is-dropdown.is-icon-right-position).fusion-style-v1,
+:host-context(.is-tags-holder.is-icon-right-position).fusion-style-v1 {
+    position: relative;
+    padding-right: 22px;
+
+    @include icon-style('icon', $light-600, 12px, false, true){
+        position: absolute;
+        right: 10px;
+        top: 11px;
+    }
+}
+
+:host-context(li.option.is-selected) {
+    border-left: solid 3px $primary;
+    box-sizing: border-box;
+    @extend %borderRadius;
+    padding-left: 10px;
+}
+
+:host-context(li.option.is-focused).fusion-style-v1 {
+    background: $light-100;
+}

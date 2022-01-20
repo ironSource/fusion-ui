@@ -1,0 +1,14 @@
+@import '../../../../styles/vars';
+
+.border{
+    @extend %border;
+    padding: 0;
+}
+
+.border-right{
+    @extend %borderRight;
+}
+.daterangeWrapper{
+    width: 240px;
+    float: right;
+}

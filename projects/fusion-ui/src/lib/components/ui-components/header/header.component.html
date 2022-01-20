@@ -1,0 +1,117 @@
+<header class="top-header">
+    <div class="top-header__logo">
+        <span class="logo" (click)="onLogoClicked($event)"></span>
+    </div>
+    <div class="top-header__panel">
+        <i class="menu-icon icon-x white" (click)="changeMenuState()"></i>
+        <span class="page-title">{{ state?.title }}</span>
+    </div>
+    <div class="menu-action" *ngIf="state?.actionComponent" [ngClass]="{'no-help-menu': !secondaryMenuItems?.length}" #menuAction>
+        <fusion-dynamic-components *ngIf="state.actionComponent" [component]="state.actionComponent" [componentData]="state.actionData">
+        </fusion-dynamic-components>
+    </div>
+    <div class="is-header-menu" *ngIf="primaryMenuItems?.length || secondaryMenuItems?.length">
+        <ng-container *ngIf="primaryMenuItems?.length">
+            <div
+                class="is-user"
+                (click)="onUserMenuClicked()"
+                (fusionClickOutside)="onOutsideMenuClick($event)"
+                [ngClass]="{opened: isUserMenuOpened}"
+            >
+                <fusion-icon class="header-user-icon" [name]="primaryMenuIconName"></fusion-icon>
+                <span class="is-user-name">{{ userName | truncate: 27 }}</span>
+            </div>
+            <div class="user-menu" [ngClass]="{userMenuOpened: isUserMenuOpened, 'has-help-menu': secondaryMenuItems?.length}">
+                <div class="user-menu-item user-name">
+                    <fusion-icon class="icon-user-name" *ngIf="headerMenuUserNameIcon" [name]="headerMenuUserNameIcon"></fusion-icon>{{ userName | truncate: 25 }}
+                </div>
+                <div
+                    class="header-menu-item {{ item.cssClass }}"
+                    *ngFor="let item of primaryMenuItems"
+                    [ngClass]="{'item-dynamic': item.content}"
+                >
+                    <a
+                        *ngIf="!item.content && item.route && !item.target"
+                        [routerLink]="item.route"
+                        (click)="onMenuItemClicked($event, item)"
+                    >
+                        <ng-container *ngTemplateOutlet="menuItem; context: {item: item}"></ng-container>
+                    </a>
+                    <a *ngIf="!item.content && item.route && item.target" [routerLink]="item.route" target="{{ item.target }}">
+                        <ng-container *ngTemplateOutlet="menuItem; context: {item: item}"></ng-container>
+                    </a>
+                    <a *ngIf="!item.content && item.redirect && item.target" [href]="item.redirect" target="{{ item.target }}">
+                        <ng-container *ngTemplateOutlet="menuItem; context: {item: item}"></ng-container>
+                    </a>
+                    <a
+                        *ngIf="!item.content && item.redirect && !item.target"
+                        [href]="item.redirect"
+                        (click)="onMenuItemClicked($event, item)"
+                    >
+                        <ng-container *ngTemplateOutlet="menuItem; context: {item: item}"></ng-container>
+                    </a>
+                    <ng-container *ngIf="!item.route && !item.redirect && item.content">
+                        <ng-container *ngTemplateOutlet="menuItemContent; context: {item: item}"></ng-container>
+                    </ng-container>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="secondaryMenuItems?.length">
+            <div
+                class="is-help-menu"
+                (click)="onHelpMenuClicked()"
+                (fusionClickOutside)="onOutsideHelpMenuClick($event)"
+                [ngClass]="{opened: isHelpMenuOpened}"
+            >
+                <fusion-icon [name]="{iconName: 'help', iconVersion: 'v1'}"></fusion-icon>
+            </div>
+            <div class="user-menu help-menu" [ngClass]="{helpMenuOpened: isHelpMenuOpened}">
+                <div
+                    class="header-menu-item {{ helpItem.cssClass }}"
+                    *ngFor="let helpItem of secondaryMenuItems"
+                    [ngClass]="{'item-dynamic': helpItem.content}"
+                >
+                    <a
+                        *ngIf="!helpItem.content && helpItem.route && !helpItem.target"
+                        [routerLink]="helpItem.route"
+                        (click)="onMenuItemClicked($event, helpItem)"
+                    >
+                        <ng-container *ngTemplateOutlet="menuItem; context: {item: helpItem}"></ng-container>
+                    </a>
+                    <a
+                        *ngIf="!helpItem.content && helpItem.route && helpItem.target"
+                        [routerLink]="helpItem.route"
+                        target="{{ helpItem.target }}"
+                    >
+                        <ng-container *ngTemplateOutlet="menuItem; context: {item: helpItem}"></ng-container>
+                    </a>
+                    <a
+                        *ngIf="!helpItem.content && helpItem.redirect && helpItem.target"
+                        [href]="helpItem.redirect"
+                        target="{{ helpItem.target }}"
+                    >
+                        <ng-container *ngTemplateOutlet="menuItem; context: {item: helpItem}"></ng-container>
+                    </a>
+                    <a
+                        *ngIf="!helpItem.content && helpItem.redirect && !helpItem.target"
+                        [href]="helpItem.redirect"
+                        (click)="onMenuItemClicked($event, helpItem)"
+                    >
+                        <ng-container *ngTemplateOutlet="menuItem; context: {item: helpItem}"></ng-container>
+                    </a>
+                    <ng-container *ngIf="!helpItem.route && !helpItem.redirect && helpItem.content">
+                        <ng-container *ngTemplateOutlet="menuItemContent; context: {item: helpItem}"></ng-container>
+                    </ng-container>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</header>
+<ng-template #menuItem let-item="item">
+    <div class="user-menu-item">
+        <fusion-icon class="header-menu-item-icon" *ngIf="item.icon" name="{{ item.icon }}"></fusion-icon> <span>{{ item.name }}</span>
+    </div>
+</ng-template>
+<ng-template #menuItemContent let-item="item">
+    <fusion-dynamic-components class="menu-item-content" [configuration]="item.content"></fusion-dynamic-components>
+</ng-template>

@@ -1,0 +1,47 @@
+@import '../../../../../style/scss/vars/vars';
+@import '../../../../../style/scss/vars/mixins';
+@import '../../../../../style/scss/vars/border';
+
+$padding-top:10px;
+$top-border:2px;
+
+:host{
+  line-height: 20px;
+  .is-datepicker-header{
+    padding: $padding-top 12px;
+    width: 250px;
+    cursor: pointer;
+    @include icon-style('calendar-2', $light-800, 14px, true, true);
+    @include icon-style('arrow-right', $light-800, (height:8px, width:5px), true, true, 90);
+    .lable-container{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .lable-with-icon{
+        >span{
+          display: inline-block;
+          line-height: 15px;
+          vertical-align: text-top;
+          margin-left: 5px;
+          @extend %font13;
+          span{
+            @extend %font14;
+          }
+        }
+      }
+    }
+
+    &:not(.opened):hover{
+      background-color: $light-100;
+      line-height: 19px;
+    }
+
+    &.opened{
+      border-top: $top-border solid $primary-500;
+      padding-top: $padding-top - $top-border;
+      @include icon-style('arrow-right', $light-800, (height:8px, width:5px), true, true, 270);
+    }
+  }
+}
+
+

@@ -1,0 +1,43 @@
+@import 'common';
+
+:host{
+    @include media-breakpoint-max('xs') {
+        .fu-layout{
+            // header holder
+            .fu-header-holder{
+                &.fu-sidebar-closed-hovered{
+                    padding-left: inherit;
+                }
+            }
+            // by default - no sidebar
+            .fu-sidebar-holder {
+                display: block;
+                width: 0px;
+            }
+
+            // overlay for mobile
+            .fu-layout-mobile-overlay{
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                background-color: #000;
+                opacity: 0.5;
+                overflow-x: auto;
+                z-index: getZIndexLayerOffset(system, 8);
+                //pointer-events: none;
+
+                &.fu-sidebar-closed-hovered{
+                    display: inherit;
+                }
+            }
+
+            // set content for media-size detection
+            .fu-screen-size-detection{
+                content: 'Mobile';
+            }
+        }
+    }
+}

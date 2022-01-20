@@ -1,0 +1,14 @@
+@import '../../../../../../fusion-ui/src/style/scss/vars/vars';
+:host {
+    .is-example-holder{
+        button{
+            margin-left: 10px;
+            &:first-child{
+                margin-left: 0;
+            }
+        }
+    }
+    .center{
+        @extend %center
+    }
+}

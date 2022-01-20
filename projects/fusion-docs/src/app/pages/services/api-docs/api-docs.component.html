@@ -1,0 +1,86 @@
+<div class="doc-page">
+  <div class="row">
+    <div class="col-9">
+
+      <h2>ApiService</h2>
+
+
+        <fusion-example-block id="howToUse"
+                              title="How to use"
+                              [collapsible]="false">
+
+            <fusion-code-block lang="js" code="1. Inject HttpClientModule in your app.module.ts files
+2. In your component/service inject the ApiService in the constructor
+3. If you want to add Authorization header add
+   {provide: API_OPTIONS_TOKEN, useFactory: () => ({autoAuthHeader: true})} to the providers section on app.module.ts"></fusion-code-block>
+
+        </fusion-example-block>
+
+      <fusion-example-block id="methods"
+                            title="Methods"
+                            [collapsible]="false">
+        <fusion-code-block lang="js"
+                           code='get(url: string, options?: ApiRequestOptions): Observable<any>;
+put(url: string, body:any, options?: ApiRequestOptions): Observable<any>;
+post(url: string, body:any, options?: ApiRequestOptions): Observable<any>;
+delete(url: string, options?: ApiRequestOptions): Observable<any>;'></fusion-code-block>
+
+
+      </fusion-example-block>
+
+      <fusion-example-block id="entities"
+                            title="Entities"
+                            [collapsible]="false">
+        <fusion-code-block lang="js"
+                           code='enum CacheType {
+  None = 0,
+  Application = 1,
+  SessionStorage = 2,
+  LocalStorage = 3,
+}
+
+enum ApiResponseType {
+  Json = "json",
+  Text = "text",
+  Blob = "blob",
+  ArrayBuffer = "arraybuffer"
+}
+
+interface ApiRequestOptions {
+  cache?: CacheType;
+  refreshCache?: boolean;
+  headers?: any;
+  responseType?: ApiResponseType;
+  parserObj?: BaseParser;
+  parserAction?: string;
+  loginAs?: boolean;
+  retryStrategy?: ApiRetryStrategy;
+  pagination?: ApiPaginationOptions;
+  skipResponseErrorParsing?: boolean;
+  noAuthHeader?: boolean;
+}
+
+interface ApiRetryStrategy {
+  maxRetryAttempts?: number;
+  scalingDuration?: number;
+  onDataRequired?: (...Array) => any;
+  excludedStatusCodes?: number[];
+}
+
+interface ApiPaginationOptions {
+  resultsBulkSize?: number;
+  pageNumber?: number;
+  requestId?: string;
+  resultsOffset?: number;
+}'></fusion-code-block>
+
+
+      </fusion-example-block>
+
+    </div>
+
+    <div class="col-3 is-right-side-menu-holder">
+      <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+    </div>
+  </div>
+</div>

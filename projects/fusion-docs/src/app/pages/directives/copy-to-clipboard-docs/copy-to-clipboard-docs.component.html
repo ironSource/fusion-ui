@@ -1,0 +1,41 @@
+<div class="doc-page">
+  <div class="row">
+    <div class="col-9">
+      <!--UI-Component Examples-->
+      <h2>Copy To Clipboard</h2>
+
+      <fusion-example-block id="typeBasic"
+                            title="Inner Text">
+        <fusion-code-block lang="html"
+                           class="is-collapsible"
+                           code='<div fusionCopyToClipboard>
+  Click To Copy
+</div>'></fusion-code-block>
+        <div class="container"
+             fusionCopyToClipboard>
+          Click To Copy
+        </div>
+
+      </fusion-example-block>
+
+      <fusion-example-block id="typeFunction"
+                            title="Function">
+        <fusion-code-block lang="html"
+                           class="is-collapsible"
+                           code='<div [fusionCopyToClipboard]="copyFunction">
+  Click To Copy
+</div>'></fusion-code-block>
+        <div class="container"
+             [fusionCopyToClipboard]="copyFunction">
+          Click To Copy
+        </div>
+
+      </fusion-example-block>
+
+    </div>
+
+    <div class="col-3 is-right-side-menu-holder">
+      <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+    </div>
+  </div>
+</div>

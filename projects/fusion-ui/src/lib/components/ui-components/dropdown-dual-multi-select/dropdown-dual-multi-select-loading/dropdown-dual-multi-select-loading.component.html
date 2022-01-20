@@ -1,0 +1,27 @@
+<ng-container [ngTemplateOutlet]="position === 'left' ? circleLeft : circleRight"></ng-container>
+
+<ng-template #circleRight>
+    <ul>
+        <li *ngFor="let item of items">
+            <div class="rect">
+                <div class="shine-overlay" style="animation-delay: 0s"></div>
+            </div>
+            <div class="circle">
+                <div class="shine-overlay" style="animation-delay: 0s"></div>
+            </div>
+        </li>
+    </ul>
+</ng-template>
+
+<ng-template #circleLeft>
+    <ul>
+        <li *ngFor="let item of items">
+            <div class="circle">
+                <div class="shine-overlay" style="animation-delay: 0s"></div>
+            </div>
+            <div class="rect">
+                <div class="shine-overlay" style="animation-delay: 0s"></div>
+            </div>
+        </li>
+    </ul>
+</ng-template>

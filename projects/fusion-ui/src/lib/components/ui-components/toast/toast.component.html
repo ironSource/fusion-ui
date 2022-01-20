@@ -1,0 +1,21 @@
+<div [className]="locationClass" #toast>
+    <ng-container *ngIf="!custom; else customContent">
+        <div class="fu-toast" [class.fu-toast-without-icon]="hasIconHolder">
+            <div class="fu-toast-icon-holder" *ngIf="!hasIconHolder">
+                <div class="fu-toast-icon-typed {{ type }}" *ngIf="hasIcon">
+                    <fusion-icon [name]="iconName"></fusion-icon>
+                </div>
+                <div class="fu-toast-image" *ngIf="image" [style.backgroundImage]="image"></div>
+            </div>
+            <div class="fu-toast-content">
+                {{ text }}
+            </div>
+            <div class="fu-toast-close-button-holder">
+                <fusion-icon class="fu-toast-close-button" name="close" (click)="onCloseClicked()"></fusion-icon>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #customContent>
+        <fusion-dynamic-components [configuration]="custom" (click)="onCloseClicked()"></fusion-dynamic-components>
+    </ng-template>
+</div>

@@ -1,0 +1,16 @@
+@import '../../../../styles/vars';
+
+:host {
+  .is-page-block {
+    margin-top: 30px;
+    /*
+	.example-block-content {
+		padding: 15px 30px;
+	}
+	*/
+    .example-holder {
+      margin-left: 15px;
+      line-height: 35px;
+    }
+  }
+}

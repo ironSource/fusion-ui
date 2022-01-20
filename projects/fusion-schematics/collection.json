@@ -1,0 +1,20 @@
+{
+    "$schema": "../../node_modules/@angular-devkit/schematics/collection-schema.json",
+    "schematics": {
+        "fusion-frameworks": {
+            "description": "A blank schematic.",
+            "factory": "./fusion-frameworks/index#fusionFramework",
+            "schema": "./fusion-frameworks/schema.json"
+        },
+        "fusion-frameworks-old": {
+            "description": "A blank schematic.",
+            "factory": "./fusion-frameworks-old/index#fusionFramework",
+            "schema": "./fusion-frameworks-old/schema.json"
+        },
+        "fusion-native": {
+            "description": "A blank schematic.",
+            "factory": "./fusion-native/index#fusionNative",
+            "schema": "./fusion-native/schema.json"
+        }
+    }
+}

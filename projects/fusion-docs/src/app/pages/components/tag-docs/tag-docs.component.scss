@@ -1,0 +1,29 @@
+@import '../../../../styles/vars';
+
+:host {
+    @extend %list-reset;
+    .is-selected-holder {
+        margin-top: 10px;
+    }
+    .is-filter-icon-holder {
+        background-color: $light-100;
+        padding: 35px;
+        margin: 15px -15px -40px;
+        li {
+            display: inline-block;
+            margin-right: 40px;
+            @include icon-style('music', $light-800, 20px);
+            @include icon-style('food', $light-800, 20px);
+            @include icon-style('wallet', $light-800, 20px);
+            @include icon-style('education', $light-800, 20px);
+            @include icon-style('map', $light-800, 20px);
+        }
+    }
+
+    .is-comment{
+        display: block;
+        padding: 10px 5px;
+        color: #678099;
+        @extend %font10;
+    }
+}

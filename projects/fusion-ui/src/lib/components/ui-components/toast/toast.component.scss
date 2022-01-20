@@ -1,0 +1,187 @@
+@import "../../../../style/scss/vars/vars";
+@import "../../../../style/scss/vars/mixins";
+
+$width: 340px;
+$height: 64px;
+$backgroundColor: $White;
+$border: solid 1px $fu-light-300;
+$borderRadius: 8px;
+$boxShadow: 0 3px 4px 0 rgba(0, 0, 0, 0.1);
+$marginBottom: 8px;
+
+$iconHolderWidth:  56px;
+$closeButtonHolderWidth:  48px;
+
+%baseIcon{
+    margin-left: var(--toast-icon-margin-left, 12px);
+    width: var(--toast-icon-width, 32px);
+    height: var(--toast-icon-height, 32px)  ;
+}
+
+%baseTop{
+    position: fixed;
+    top: var(--toast-location-top-marging, 20px);
+    z-index: getZIndexLayerOffset(system, 30);
+}
+
+%baseBottom{
+    position: fixed;
+    bottom: var(--toast-location-bottom-marging, 20px);
+    z-index: getZIndexLayerOffset(system, 30);
+    animation: bottom-fadein 0.5s;
+}
+
+// Animations
+@keyframes top-fadein {
+    from {top: -20px; opacity: 0; height: 0px;}
+    to {top: 20px; opacity: 1; height: $height;}
+}
+
+@keyframes bottom-fadein {
+    from {bottom: -20px; opacity: 0; height: 0px;}
+    to {bottom: 20px; opacity: 1; height: $height;}
+}
+
+@keyframes fadein {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeout {
+    from {opacity: 1; height: $height;}
+    to {opacity: 0; height: 0; margin-top: -$marginBottom}
+}
+
+@keyframes slide-out-right {
+    from {right: 20px; opacity: 1; height: $height;}
+    to {right: -$width; opacity: 0; height: 0;}
+}
+@keyframes slide-out-left {
+    from {left: 20px; opacity: 1; height: $height;}
+    to {left: -$width; opacity: 0; height: 0;}
+}
+// -------------------------------
+
+:host {
+    @extend %reset;
+    margin-bottom: var(--toast-margin-bottom, $marginBottom);
+    display: block;
+
+    .fu-fadein{
+        animation: fadein 0.5s;
+    }
+    .fu-top-fadein{
+        animation: top-fadein 0.5s;
+    }
+    .fu-bottom-fadein{
+        animation: bottom-fadein 0.5s;
+    }
+    .fu-fadeout{
+        animation: fadeout 0.5s;
+    }
+    .fu-slide-out-right{
+        animation: slide-out-right 0.8s;
+    }
+    .fu-slide-out-left{
+        animation: slide-out-left 0.8s;
+    }
+
+    .fu-toast {
+        width: var(--toast-width, $width);
+        height: var(--toast-height, $height);
+        border: var(--toast-border, $border);
+        border-radius: var(--toast-border-radius, $borderRadius);
+        background-color: var(--toast-background-color, $backgroundColor);
+        box-shadow: var(--toast-box-shadow, $boxShadow);
+        display: flex;
+        align-items: center;
+        align-content: stretch;
+        .fu-toast-icon-holder{
+            width: $iconHolderWidth;
+            .fu-toast-icon-typed{
+                @extend %baseIcon;
+                border-radius: 16px;
+                border: solid 2px transparent;
+                position: relative;
+                @include icon-style(null, var(--toast-icon-color, currentColor), 16px, false, true){
+                    position: absolute;
+                    top: calc(50% - 8px);
+                    left: calc(50% - 8px);
+                };
+                &.success{
+                    border-color: $fu-positive-200;
+                    color: $fu-positive-500;
+                }
+                &.alert{
+                    border-color: $fu-primary-200;
+                    color: $fu-primary-500;
+                }
+                &.error{
+                    border-color: $fu-negative-200;
+                    color: $fu-negative-500;
+                }
+                &.warning{
+                    border-color: $fu-neutral-200;
+                    color: $fu-neutral-500;
+                }
+            }
+            .fu-toast-image{
+                @extend %baseIcon;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+            }
+        }
+        .fu-toast-close-button-holder{
+            width: $closeButtonHolderWidth;
+            height: 100%;
+            border-left: solid 1px $fu-light-300;
+            position: relative;
+            @include icon-style('fu-toast-close-button', $fu-light-500, 14px, true, true){
+                position: absolute;
+                left: 16px;
+                top: calc(50% - 7px);
+                cursor: pointer;
+            }
+        }
+        .fu-toast-content{
+            width: calc(100% - #{$iconHolderWidth} - #{$closeButtonHolderWidth});
+            padding: 12px 0;
+            line-height: 1.4;
+            @extend %font-bodyStrong;
+            color: $fu-light-900;
+        }
+        &.fu-toast-without-icon{
+            .fu-toast-content{
+                padding-left: 24px;
+                width: calc(100% - #{$closeButtonHolderWidth});
+            }
+        }
+    }
+
+    .top-left{
+        @extend %baseTop;
+        left: var(--toast-location-left-margin, 20px);
+    }
+    .top-center{
+        @extend %baseTop;
+        left: calc(50% - var(--toast-width, #{$width}) / 2);
+    }
+    .top-right{
+        @extend %baseTop;
+        right: var(--toast-location-right-margin, 20px);
+    }
+
+    .bottom-left{
+        @extend %baseBottom;
+        left: var(--toast-location-left-margin, 20px);
+    }
+    .bottom-center{
+        @extend %baseBottom;
+        left: calc(50% - var(--toast-width, #{$width}) / 2);
+    }
+    .bottom-right{
+        @extend %baseBottom;
+        right: var(--toast-location-right-margin, 20px);
+    }
+}

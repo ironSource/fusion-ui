@@ -1,0 +1,8 @@
+<div
+    class="holder"
+    [ngClass]="holderClasses"
+    [ngStyle]="{color: config?.customColors?.color, backgroundColor: config?.customColors?.backgroundColor}"
+>
+    <ng-content *ngIf="!config.text"></ng-content>{{ config?.text
+    }}<fusion-icon class="label-icon" *ngIf="config?.icon" [name]="config?.icon"></fusion-icon>
+</div>

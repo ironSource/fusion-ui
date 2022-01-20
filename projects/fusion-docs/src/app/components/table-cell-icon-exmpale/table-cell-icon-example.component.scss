@@ -1,0 +1,9 @@
+@import "../../../../../fusion-ui/src/style/scss/vars/vars";
+@import "../../../../../fusion-ui/src/style/scss/vars/mixins";
+@import "../../../../../fusion-ui/src/style/scss/vars/colors";
+
+@include icon-style(null, $light-800, 17px, false, true) {
+  display: block;
+  padding-top: 5px;
+  padding-left: 5px;
+}

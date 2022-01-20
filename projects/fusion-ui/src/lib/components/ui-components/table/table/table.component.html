@@ -1,0 +1,106 @@
+<div class="tableWrap v2" [ngClass]="wrapperClasses" #tableWrapper>
+    <table [id]="id" #table *ngIf="!tableMainError">
+        <ng-container *ngIf="columns && options">
+            <thead *ngIf="columns.length" [hidden]="(isEmpty || (loading && !isLoadingOverlay)) && hideHeaderOnEmpty">
+                <tr [ngStyle]="!!options.rowsOptions && !!options.rowsOptions.headerRow ? options.rowsOptions.headerRow.style : null">
+                    <td
+                        *ngIf="!!options?.rowsExpandableOptions"
+                        class="expand-column"
+                        [class.sticky-left]="options?.rowsExpandableOptions?.sticky"
+                    >
+                        <span></span>
+                    </td>
+                    <td
+                        *ngFor="let column of columns; trackBy: trackByFunc; let isLast = last; let isFirst = first"
+                        [attr.data-col-key]="column.key"
+                        [ngClass]="tableService.getColumnClasses(column, true)"
+                        [ngStyle]="tableService.getColumnStyle(column)"
+                        (click)="onHeaderClicked(column)"
+                        [style.width]="tableService.setWidth(isLast, column.width)"
+                        [attr.colspan]="isFirst ? tableService.expandLevels : undefined"
+                    >
+                        <ng-container *ngIf="configIconNames$ | async as configIconNames">
+                            <fusion-icon class="icon-sort" [name]="configIconNames.iconSort" *ngIf="column.sort"></fusion-icon>
+                            {{ column.title }}
+                            <fusion-icon
+                                class="icon-tooltip"
+                                [name]="column.tooltipIcon || configIconNames.iconInfo"
+                                *ngIf="column.tooltip"
+                                [fusionTooltip]="column.tooltip"
+                            ></fusion-icon>
+                        </ng-container>
+                        <fusion-multi-dropdown
+                            *ngIf="column.filter && column.filter.options"
+                            placeholder="Please Select"
+                            class="filter"
+                            [selected]="column.filter.selected"
+                            [options]="column.filter.options"
+                            (selectedChange)="filterColumn(column, $event)"
+                            [confirm]="true"
+                            [search]="true"
+                            selectAllLabel="Select All <span class='grey'>(No Filters)</span>"
+                        >
+                        </fusion-multi-dropdown>
+
+                        <fusion-checkbox
+                            class="is-regular"
+                            title="select / un-select all"
+                            *ngIf="tableService.isTypeCheckbox(column) && isAllRowsSelectable && !isEmpty && isCheckboxTitleShown"
+                            [checked]="tableService.isAllRowsSelected(rows)"
+                            [isIndeterminate]="tableService.isPartialSelected(rows)"
+                            (changed)="tableService.onRowsSelectChanged(options.isGroupedTable, rows, $event)"
+                            [name]="'rows_all'"
+                        >
+                        </fusion-checkbox>
+                    </td>
+                </tr>
+            </thead>
+
+            <tbody *ngIf="loading && !isLoadingOverlay" [fusionTableLoading]="colsCount"></tbody>
+
+            <tbody
+                *ngIf="!options.isGroupedTable && (!loading || isLoadingOverlay) && !isEmpty"
+                fusionTableBasic
+                [rows]="tableRows"
+                [columns]="columns"
+                [options]="options"
+                [tableClientWidth]="getTableClientWidth()"
+                [expandedRows]="expandedRows"
+                (rowSelected)="selectionChanged.emit($event)"
+                (expandRow)="doExpandRow($event)"
+                (click)="onTableBodyClicked($event)"
+                #tableBody
+            ></tbody>
+
+            <tbody
+                *ngIf="options.isGroupedTable && (!loading || isLoadingOverlay) && !isEmpty"
+                fusionTableGrouped
+                [rows]="groupedTableRows"
+                [columns]="columns"
+                [options]="options"
+                (rowSelected)="selectionChanged.emit($event)"
+            ></tbody>
+        </ng-container>
+        <tbody
+            *ngIf="!loading && isEmpty"
+            [fusionTableEmpty]="colsCount"
+            [customContent]="options?.customNoData"
+            [header]="noDataMessage"
+            [subHeader]="noDataSubMessage"
+            [icon]="options?.emptyTableIcon"
+        ></tbody>
+        <tbody
+            *ngIf="isEmpty && loading"
+            [fusionTableEmpty]="colsCount"
+            [showNoDataImage]="false"
+        ></tbody>
+    </table>
+    <ng-container *ngIf="options?.pagination && options.pagination.loading">
+        <fusion-loader [status]="true" height="150">Loading Please Wait…</fusion-loader>
+    </ng-container>
+</div>
+<ng-container *ngIf="isLoadingOverlay && loading">
+    <div class="is-overlay-loader-holder">
+        <fusion-loader [status]="true">Loading Please Wait…</fusion-loader>
+    </div>
+</ng-container>

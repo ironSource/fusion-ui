@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+@import './styles/vars.scss';
+
+//* {
+//    box-sizing: border-box;
+//}
+
+body {
+    font: 13px/20px $body;
+    color: $dark-300;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+}
+
+
+.doc-page{
+  padding:30px;
+}
+
+// override bootstrap grid padding & margin
+.row{
+    padding: 0;
+    margin: 0;
+
+    [class^="col"] {
+        &:first-child{
+            padding-left: 0;
+            margin-left: 0;
+        }
+
+        &:last-child{
+            padding-right: 0;
+            margin-right: 0;
+        }
+    }
+}
+
+
+
+

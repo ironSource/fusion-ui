@@ -1,0 +1,38 @@
+@import '../../../styles/vars';
+
+:host {
+  .is-components-page {
+    margin: 30px;
+
+    ::ng-deep .is-example-title {
+      @extend %font2;
+      margin: 60px 0 20px 0;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    fusion-example-block {
+      margin-bottom: 15px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .is-example-block-subtitle {
+        @extend %font8;
+        color: $light-900;
+        margin: 11px 0 20px 0;
+      }
+    }
+
+    .is-right-side-menu-holder {
+      border-left: solid 1px $light-500;
+      position: relative;
+      //fix for col-3 (it about menu left border all height... )
+      margin-left: 10px !important;
+      flex: 0 0 calc(25% - 10px);
+    }
+  }
+}

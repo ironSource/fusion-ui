@@ -1,0 +1,47 @@
+@import "../../../../style/scss/vars/vars";
+
+$errBorderColor: $negative-200;
+
+:host.fusion-style-v1 {
+  height: inherit;
+    @extend %border-box-normalize;
+  .is-textarea {
+    border-radius: 3px;
+    border: 1px solid $light;
+    resize: none;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    color: $dark-300;
+    min-height: 50px;
+    @extend %font5;
+    &::placeholder{
+      @extend %font5;
+      color: $light-700
+    }
+    &:focus {
+      border-color: $primary;
+      outline: none;
+      box-shadow: none;
+    }
+    &.resize {
+      resize: both;
+    }
+    &.disabled {
+      @extend %disabled;
+      background: $light-300;
+      opacity: 1;
+      resize: none;
+      color: $light-800;
+    }
+    &.error{
+      border-color: $errBorderColor;
+      &.focused {
+        border-color: $errBorderColor;
+      }
+    }
+  }
+  .error-msg {
+    color: $negative;
+  }
+}

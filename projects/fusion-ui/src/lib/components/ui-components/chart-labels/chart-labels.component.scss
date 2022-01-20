@@ -1,0 +1,54 @@
+@import '../../../../style/scss/vars/mixins';
+@import '../../../../style/scss/vars/vars';
+@import '../../../../style/scss/vars/border';
+@import '../../../../style/scss/vars/fonts_v1';
+
+:host.fusion-style-v1 {
+    @extend %list-reset;
+    li {
+        @extend %borderBottom;
+        padding: 0 20px 3px 7px;
+        position: relative;
+        @include icon-style('is-platform-icon', $light-600, 12px, false, true){
+            position: absolute;
+            right: 4px;
+            top: 2px;
+        }
+        &:last-child{
+            border-bottom: none;
+        }
+        .lbl-color{
+            display: inline-block;
+            @include size(8px);
+            border-radius: 4px;
+            margin-right: 15px;
+            &.fu-label-letter{
+                color: $White;
+                height: 16px;
+                width: fit-content;
+                min-width: 16px;
+                border-radius: 8px;
+                @extend %font2;
+                font-size: 10px;
+                padding: 0 4px;
+                text-align: center;
+                line-height: 17px;
+            }
+        }
+        .lbl-suffix{
+            position: absolute;
+            top: 0;
+            right: 5px;
+        }
+        &.truncate{
+            @extend %truncate;
+        }
+    }
+    .font13 {
+        @extend %font13;
+    }
+
+    .font14 {
+        @extend %font14;
+    }
+}

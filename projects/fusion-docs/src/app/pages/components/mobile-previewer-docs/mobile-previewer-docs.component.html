@@ -1,0 +1,267 @@
+<div class="row">
+    <div class="col-9">
+        <!--UI-Component Examples-->
+        <div class="is-example-title">Popup examples:</div>
+        <fusion-example-block id="position_fixed" title="Orientations Options">
+            <ng-template fusionExampleBlock="Angular">
+                1. inject popup service to component
+                <fusion-code-block lang="html"
+                                   code='constructor(private popupService: PopupService){}'></fusion-code-block>
+
+                2. use button to open popup
+                <fusion-code-block lang="html"
+                                   code='<button fusion-button (click)="openPopup()">top-right</button>'></fusion-code-block>
+
+                <br>
+                3. Create public observable "popupData$" for storing and use in template popup data.
+                Inject PopupService in constructor as public and set reference in "ngOnInit" method like in example:
+                * create node element or angular component and set them under element/component value
+                <fusion-code-block lang="js"
+                                   code="
+    openPopup() {
+        const popUpBasic: PopupEntity = {
+            backgroundColor: 'yellow',
+            location: PopupLocation.BottomRight,
+            component: {
+                type: MobilePreviewerComponent as Type<Component>,
+                data: {
+                    configurations: {
+                        element: innerTextNodeElement
+                    } as MobilePreviewerComponentConfiguration
+                }
+            }
+        };
+        this.popupService.showPopUp({...popUpBasic});
+    }
+"></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block lang="js"
+                                   code="
+import React from 'react';
+import {FusionPopup, FusionMobilePreviewer} from '@ironsource/fusion-ui/native/react';
+
+export default class Bar extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            popup: {
+                popupData: {
+                    backgroundColor: 'yellow',
+                    location: 'bottom-right'
+                }
+            },
+            mobilePreviewer: {
+                configurations: {
+                    orientation: 0
+                }
+            },
+        };
+    }
+
+    componentDidMount() {
+        this.props.updateLayoutTitle('Bar');
+    }
+
+    render() {
+        return (
+            <div>
+                <FusionPopup config={this.state.popup}>
+                    <FusionMobilePreviewer config={this.state.mobilePreviewer}>
+                        <span>Inner Text</span>
+                    </FusionMobilePreviewer>
+                </FusionPopup>
+            </div>
+        );
+    }
+
+}
+"></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block lang="js"
+                                   code="
+<template>
+    <div>
+        <FusionButton :config='button' @onclick='onclickpopup'>
+            <span>Open Popup</span>
+        </FusionButton>
+        <FusionPopup
+            v-if='showMobilePreviewer'
+            :config='popup'
+            @clickedOutside='onOutsideClicked()'
+        >
+            <FusionMobilePreviewer
+                :config='mobilePreviewer'
+            >
+                <span>Inner Text</span>
+            </FusionMobilePreviewer>
+        </FusionPopup>
+    </div>
+</template>
+
+<script>
+    import {FusionButton, FusionPopup, FusionMobilePreviewer} from '@ironsource/fusion-ui/native/vue';
+
+    export default {
+        name: 'MobilePreviewerExamaple',
+        data() {
+            return {
+                popup: {
+                    popupData: {
+                        backgroundColor: 'yellow',
+                        location: 'bottom-right'
+                    }
+                },
+                mobilePreviewer: {
+                    configurations: {
+                        orientation: 0
+                    }
+                },
+                button: {},
+                showMobilePreviewer: false
+            }
+        },
+        components: {
+            FusionButton,
+            FusionPopup,
+            FusionMobilePreviewer
+        },
+        methods: {
+            onclickpopup: function () {
+                this.showMobilePreviewer = true;
+            },
+            onOutsideClicked: function () {
+                this.showMobilePreviewer = false;
+            }
+        }
+    }
+</script>
+"></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                See an example:
+                <fusion-code-block lang="js"
+                                   code="const onLoad = () => {
+
+    const popupLocations = window.fusion.enums.PopupLocation;
+    const mobileOrientations = window.fusion.enums.MobileOrientation;
+    // define base popup data
+    const basePopup = {
+        backgroundColor: 'black'
+    };
+
+    // inner element
+    const innerTextNodeElement = document.createElement('div');
+    const innerTextNodeElementText = document.createTextNode('Inner Text');
+    innerTextNodeElement.appendChild(innerTextNodeElementText);
+
+    // mobile previewer component
+    const innerPopupElementMobilePreviewer = document.createElement('native-fusion-mobile-previewer');
+    innerPopupElementMobilePreviewer.config = {
+        configurations: {
+            element: innerTextNodeElement,
+            orientation: mobileOrientations.ALL
+        }
+    };
+
+    const innerPopupElement = document.createElement('div');
+    innerPopupElement.appendChild(innerPopupElementMobilePreviewer);
+
+    // insert base popup element
+    const mainPopup = document.createElement('native-fusion-popup');
+    mainPopup.config = {
+        popupData: {}
+    };
+    mainPopup.appendChild(innerPopupElement);
+    document.body.appendChild(mainPopup);
+
+    mainPopup.addEventListener('clickedOutside', el => {
+        el.target.config = {
+            popupData: {}
+        };
+    });
+
+    // define and append button to open popup
+    const button = document.createElement('native-fusion-button');
+    document.getElementById('blabla').appendChild(button);
+    const textNode = document.createTextNode(popupLocations.BottomRight);
+    button.appendChild(textNode);
+    button.style.paddingRight = '10px';
+
+    // define base popup data with needed popup location
+    let popupData = {
+        ...basePopup,
+        ...{
+            location: popupLocations.BottomRight
+        }
+    };
+
+    // add event listener for bitton clicked to show popup
+    button.addEventListener('click', e => {
+        e.stopPropagation();
+        if (mainPopup) {
+            mainPopup.config = {popupData};
+        }
+    });
+};
+
+document.addEventListener('DOMContentLoaded', onLoad, false);"></fusion-code-block>
+            </ng-template>
+            <br>
+
+            <div class="row">
+                <div class="col-3">
+                    <button fusion-button (click)="openPopup(MobileOrientation.ALL)">All Orientations</button>
+                </div>
+                <div class="col-3">
+                    <button fusion-button (click)="openPopup(MobileOrientation.PORTRAIT)">Portrait</button>
+                </div>
+                <div class="col-3">
+                    <button fusion-button (click)="openPopup(MobileOrientation.LANDSCAPE)">Landscape</button>
+                </div>
+
+            </div>
+        </fusion-example-block>
+        <!--UI-Component Configuration Doc-->
+        <div class="is-example-title">Configuration</div>
+        <fusion-example-block id="params"
+                              title="Parameters"
+                              [collapsible]="false">
+
+            <fusion-code-block lang="js" code="
+configurations: MobilePreviewerComponentConfiguration
+
+interface MobilePreviewerComponentConfiguration {
+    orientation?: MobileOrientation;
+    element?: Node;
+    component?: {
+        type: Type<Component>;
+        data?: {[key: string]: any};
+    };
+}
+
+enum MobileOrientation {
+    ALL = 0,
+    PORTRAIT = 1,
+    LANDSCAPE = 2
+}
+"></fusion-code-block>
+
+
+        </fusion-example-block>
+
+        <!--UI-Component Configuration Doc-->
+    </div>
+    <div class="col-3 is-right-side-menu-holder">
+        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+    </div>
+</div>
+<!--Popup-->
+<ng-container *ngIf="popupData$ | async as popupData" [ngTemplateOutlet]="popupData ? popupRef : null">
+    <ng-template #popupRef>
+        <fusion-popup [popupData]="popupData"></fusion-popup>
+    </ng-template>
+</ng-container>
+

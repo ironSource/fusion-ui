@@ -1,0 +1,4 @@
+<ng-template #dynamicContent></ng-template>
+<div *ngIf="!component && !htmlSnippet && !templateRef" #elementContent></div>
+<div *ngIf="!component && htmlSnippet" [innerHTML]="htmlSnippet"></div>
+<ng-container *ngIf="!component && templateRef" [ngTemplateOutlet]="templateRef"></ng-container>

@@ -1,0 +1,14 @@
+@import '../../../../style/scss/vars/vars';
+
+:host.fusion-style-v1 {
+    @extend %border-box-normalize;
+    .fu-month-picker-wrapper {
+        color: var(--fu-month-picker-color, #{$dark-300});
+    }
+
+    .error-msg {
+        @extend %font14;
+        color: var(--fu-month-picker-error-color, #{$negative-500});
+        margin-top: 3px;
+    }
+}

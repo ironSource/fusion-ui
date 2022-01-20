@@ -1,0 +1,94 @@
+@import '../../../../../style/scss/vars/vars';
+@import '../../../../../style/scss/vars/mixins';
+
+$monthSelectorBorder: solid 1px $light-400;
+$monthSelectorBorderRadius: 1px;
+$monthSelectorBoxShadow: 0 3px 5px 0 rgba(0, 0, 0, 0.15);
+
+:host.fusion-style-v1 {
+    @extend %border-box-normalize;
+    background-color: $White;
+    border: var(--fu-month-picker-selector-border, #{$monthSelectorBorder});
+    border-radius: var(--fu-month-picker-selector-border-radius, #{$monthSelectorBorderRadius});
+    box-shadow: var(--fu-month-picker-selector-box-shadow, #{$monthSelectorBoxShadow});
+    padding: 14px 14px 19px;
+
+    .fu-year-selector {
+        height: 21px;
+        @extend %font3;
+        margin: 0 13px 12px;
+        .fu-arrow-holder {
+            padding-left: 3px;
+            width: 18px;
+            height: 18px;
+            border-radius: 9px;
+            @include icon-style('fu-arrow-prev', var(--fu-month-picker-prev-icon-color, #{$dark-100}), 12px, true, true, 180);
+            @include icon-style('fu-arrow-next', var(--fu-month-picker-next-icon-color, #{$dark-100}), 12px, true, true);
+
+            &:hover {
+                background-color: $light-500;
+            }
+
+            &.fu-disabled {
+                @include icon-style('fu-arrow-prev', var(--fu-month-picker-prev-icon-disabled-color, #{$light-700}), 12px, true, true, 180);
+                @include icon-style('fu-arrow-next', var(--fu-month-picker-next-icon-disabled-color, #{$light-700}), 12px, true, true);
+
+                &:hover {
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+
+    .fu-month-selector {
+        gap: 15px 27px;
+        margin: 0 5px;
+
+        .fu-month-name {
+            height: 30px;
+            padding: 4px;
+            @extend %font12;
+            font-weight: var(--fu-month-picker-month-font-weight, normal);
+            border-radius: 3px;
+
+            &:hover {
+                background-color: var(--fu-month-picker-month-hover-bg-color, #{$primary-200});
+            }
+
+            &.fu-current {
+                &:after {
+                    content: '';
+                    width: 4px;
+                    height: 4px;
+                    left: 47%;
+                    bottom: 4px;
+                    border-radius: 2px;
+                    display: block;
+                    position: absolute;
+                    background-color: var(--fu-month-picker-month-current-dot-color, #{$primary-500});
+                }
+            }
+
+            &.fu-disabled {
+                color: var(--fu-month-picker-month-disabled-color, #{$light-800});
+
+                &:hover {
+                    background-color: transparent;
+                }
+
+                &:after {
+                    background-color: var(--fu-month-picker-month-disabled-current-dot-color, #{$light-800});
+                }
+            }
+
+            &.fu-selected {
+                background-color: var(--fu-month-picker-month-selected-bg-color, #{$primary-500});
+                color: var(--fu-month-picker-month-selected-color, #{$White});
+
+                &:after {
+                    background-color: var(--fu-month-picker-month-selected-current-dot-color, #{$White});
+                }
+            }
+        }
+    }
+}

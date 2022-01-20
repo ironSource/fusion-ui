@@ -1,0 +1,97 @@
+<div class="doc-page">
+    <div class="row">
+        <div class="col-9">
+
+            <h2>Notification Service</h2>
+            <fusion-example-block id="howToUse"
+                                  title="How to use "
+                                  desc="Not needed in Native / React / Vue. For example of using in React / Vue / Native see 'Overlays' doc."
+                                  [collapsible]="false">
+
+                <ng-template fusionExampleBlock="Angular">
+                    1. in application "root" component add notification component
+                    <fusion-code-block lang="html"
+                                       code='<fusion-notification [data]="notificationService.notification$ | async"></fusion-notification>'>
+                    </fusion-code-block>
+                    and inject NotificationService in constructor as public
+                    <fusion-code-block lang="js"
+                                       code='constructor(..., public notificationService: NotificationService, ....) {}'></fusion-code-block>
+                    <br/>
+                    2. In your component/service inject the NotificationService in the constructor
+                    <fusion-code-block lang="js"
+                                       code='constructor(..., private notificationService: NotificationService, ....) {}'></fusion-code-block>
+                    <br/>
+                    3. Use it by this.notificationService.showNotification(notification) and
+                    this.notificationService.hideNotification(); methods:
+                    <fusion-code-block lang="js"
+                                       code='this.notificationService.showNotification({
+    type: NotificationType[type],
+    title: `${type} Notification Title`,
+    content: "Are you sure lorem ipsum dolor sit amet, Consectetur adipiscing elit?",
+    buttons: {
+        secondary: {
+            label: "Cancel",
+            onClick: () => {
+                this.notificationService.hideNotification();
+            }
+        },
+        primary: {
+            label: "Ok",
+            onClick: () => {
+                this.notificationService.hideNotification();
+            }
+        }
+    }
+});'></fusion-code-block>
+                </ng-template>
+            </fusion-example-block>
+            <br/>
+            <fusion-example-block id="methods"
+                                  title="Methods"
+                                  [collapsible]="false">
+                <fusion-code-block lang="js"
+                                   code='// for show notification:
+showNotification(notification: Notification);
+// for hide notification
+hideNotification()'></fusion-code-block>
+            </fusion-example-block>
+
+            <br/>
+            <fusion-example-block id="entities"
+                                  title="Entities"
+                                  [collapsible]="false">
+                <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block lang="js"
+                                   code='enum NotificationType {
+    Basic = 1,
+    Success = 2,
+    Error = 3,
+    Info = 4,
+    Warning = 5
+}
+
+interface NotificationActionButton {
+    label: string;
+    onClick?: any;
+}
+
+interface Notification {
+    type: NotificationType;
+    title: string;
+    content: string;
+    buttons?: {
+        secondary?: NotificationActionButton;
+        primary: NotificationActionButton;
+    };
+    shown?: boolean;
+}'></fusion-code-block>
+            </ng-template>
+            </fusion-example-block>
+
+        </div>
+
+        <div class="col-3 is-right-side-menu-holder">
+            <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+        </div>
+    </div>
+</div>

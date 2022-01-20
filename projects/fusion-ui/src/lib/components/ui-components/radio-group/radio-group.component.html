@@ -1,0 +1,14 @@
+<div [attr.id]="id">
+    <div class="is-radio-holder" *ngFor="let option of options" [ngClass]="{inline: inline}">
+        <fusion-radio
+            [name]="name"
+            [value]="option.id"
+            [label]="option.label"
+            [icon]="option.icon"
+            [tooltip]="option.tooltip"
+            [checked]="isSelected(option)"
+            [isDisabled]="isDisabled || option.disabled"
+            (changed)="setSelected($event)"
+        ></fusion-radio>
+    </div>
+</div>

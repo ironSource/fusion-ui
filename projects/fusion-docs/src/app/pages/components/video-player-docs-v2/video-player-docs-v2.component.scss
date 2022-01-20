@@ -1,0 +1,39 @@
+@import '../../../../styles/vars';
+
+:host {
+    .video-examples-holder{
+        display: flex;
+        justify-content: space-evenly;
+        .video-example {
+            width: 256px;
+            height: 144px;
+            display: inline-block;
+            &.large {
+                width: 416px;
+                height: 234px;
+            }
+        }
+    }
+    label{
+        display: block;
+        margin-bottom: 20px;
+        color: $fu-dark-500;
+        @extend %font-bodyStrong;
+        line-height: 1.33;
+    }
+
+    .aspect-ratio-box {
+        height: 0;
+        overflow: hidden;
+        padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+        background: white;
+        position: relative;
+    }
+    .aspect-ratio-box-inside {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}

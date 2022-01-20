@@ -1,0 +1,17 @@
+<div class="fu-tab" [class.fu-tab-disabled]="disabled" #tabElement>
+    <fusion-icon
+        class="fu-tab-icon"
+        *ngIf="iconName"
+        [fusionTooltip]="tooltipIconContent"
+        [class.fu-tab-icon-only]="!text"
+        [name]="iconName"
+    ></fusion-icon>
+    <div class="fu-tab-text" *ngIf="text" [fusionTooltip]="tooltipContent">{{ text }}</div>
+    <fusion-icon
+        *ngIf="infoIconName"
+        class="fu-tab-additional-icon"
+        [name]="infoIconName"
+        [fusionTooltip]="tooltipInfoIconContent"
+        (click)="onAdditionalIconClicked()"
+    ></fusion-icon>
+</div>

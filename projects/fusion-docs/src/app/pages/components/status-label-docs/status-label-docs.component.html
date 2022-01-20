@@ -1,0 +1,260 @@
+<div class="row">
+    <div class="col-9">
+        <div class="is-example-title">Basic</div>
+        <fusion-example-block id="basicStatusLabels" title="Status Labels">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<!--Default (success) with icon and tooltip-->
+<fusion-status-label [config]="configSuccessIcon" [fusionTooltip]="tooltipContent">High</fusion-status-label>
+<!--Default (success) without icon-->
+<fusion-status-label>High</fusion-status-label></div>
+<!--Default (success) rounded without icon-->
+<fusion-status-label [config]="configSuccessRounded">High</fusion-status-label>
+
+<!--Warning with icon-->
+<fusion-status-label [config]="configWarningIcon" [fusionTooltip]="tooltipContent">Average</fusion-status-label>
+<!--Warning without icon-->
+<fusion-status-label [config]="configWarning">Average</fusion-status-label>
+<!--Warning rounded-->
+<fusion-status-label [config]="configWarningRounded">Average</fusion-status-label>
+
+<!--Error with icon-->
+<fusion-status-label [config]="configErrorIcon" [fusionTooltip]="tooltipContent">Low</fusion-status-label>
+<!--Error without icon-->
+<fusion-status-label [config]="configError">Low</fusion-status-label>
+<!--Error rounded-->
+<fusion-status-label [config]="configErrorRoundedIcon">Low</fusion-status-label>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="// config examples:
+configSuccessIcon: StatusLabelConfig = {icon: 'info-circle'};
+configSuccessRounded: StatusLabelConfig = {borderType: StatusLabelBorderType.Circle};
+configSuccessRoundedIcon: StatusLabelConfig = {borderType: StatusLabelBorderType.Circle, icon: 'info-circle'};
+configWarning: StatusLabelConfig = {status: StatusLabelStatus.Warning};
+configWarningIcon: StatusLabelConfig = {icon: 'info-circle', status: StatusLabelStatus.Warning};
+configWarningRounded: StatusLabelConfig = {status: StatusLabelStatus.Warning, borderType: StatusLabelBorderType.Circle};
+configWarningRoundedIcon: StatusLabelConfig = {
+    status: StatusLabelStatus.Warning,
+    borderType: StatusLabelBorderType.Circle,
+    icon: 'info-circle'
+};
+configError: StatusLabelConfig = {status: StatusLabelStatus.Error};
+configErrorIcon: StatusLabelConfig = {icon: 'info-circle', status: StatusLabelStatus.Error};
+configErrorRounded: StatusLabelConfig = {status: StatusLabelStatus.Error, borderType: StatusLabelBorderType.Circle};
+configErrorRoundedIcon: StatusLabelConfig = {
+    status: StatusLabelStatus.Error,
+    borderType: StatusLabelBorderType.Circle,
+    icon: 'info-circle'
+};"
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="import React from'react';
+import'./foo.css';
+import {FusionStatusLabel} from'@ironsource/fusion-ui/native/react';
+
+
+export default class Foo extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            statusLabel: {
+                config: {icon: 'info-circle', status: 'warning', text: 'Average'}
+            }
+        };
+    }
+
+    componentDidMount() {
+        this.props.updateLayoutTitle({title: 'Example'});
+        document.body.classList.add('fusion-style-v2');
+    }
+
+  render() {
+    return (
+      <div className='example-holder'>
+        <h2>Status Label Example</h2>
+          <FusionStatusLabel config={this.state.statusLabel}></FusionStatusLabel>
+      </div>
+    );
+  }
+}"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div>
+    <FusionStatusLabel :config="statusLabel"></FusionStatusLabel>
+  </div>
+</template>'
+                ></fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="import {FusionStatusLabel} from '@ironsource/fusion-ui/native/vue';
+
+export const FooComponent = {
+  name: 'FooComponent',
+  data() {
+    return {
+      statusLabel: {
+        config:{icon: 'info-circle', status: 'warning', text: 'Average'}
+      }
+    }
+  },
+  components:{
+      FusionStatusLabel
+  },
+  mounted(){
+  },
+  methods: {
+  },
+}
+
+export default FooComponent;"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const onLoad = () => {
+    // get component-holder
+    const componentHolder = document.getElementById("app");
+    // add icon-status
+    const statusLabel = document.createElement("native-fusion-status-label");
+    // add icon
+    statusLabel.config = {
+        config: {
+            icon: "info-circle",
+            status: "warning",
+            borderType: "circle",
+        },
+    };
+
+    componentHolder.appendChild(statusLabel);
+    // add inner text
+    const textNode = document.createTextNode("High");
+    statusLabel.appendChild(textNode);
+};
+document.addEventListener("DOMContentLoaded", onLoad, false);'
+                ></fusion-code-block>
+            </ng-template>
+
+            <div class="row">
+                <div class="col-2">&nbsp;</div>
+                <div class="col-3"><label>with icon and tooltip</label></div>
+                <div class="col-2"><label>without icon</label></div>
+                <div class="col-2"><label>rounded</label></div>
+                <div class="col-3"><label>rounded without icon</label></div>
+            </div>
+            <div class="row">
+                <div class="col-2"><label>Success</label></div>
+                <div class="col-3">
+                    <fusion-status-label [config]="configSuccessIcon" [fusionTooltip]="tooltipContent">High</fusion-status-label>
+                </div>
+                <div class="col-2"><fusion-status-label>High</fusion-status-label></div>
+                <div class="col-2">
+                    <fusion-status-label [config]="configSuccessRoundedIcon" [fusionTooltip]="tooltipContent">High</fusion-status-label>
+                </div>
+                <div class="col-3"><fusion-status-label [config]="configSuccessRounded">High</fusion-status-label></div>
+            </div>
+            <div class="row">
+                <div class="col-2"><label>Warning</label></div>
+                <div class="col-3">
+                    <fusion-status-label [config]="configWarningIcon" [fusionTooltip]="tooltipContent">Average</fusion-status-label>
+                </div>
+                <div class="col-2"><fusion-status-label [config]="configWarning">Average</fusion-status-label></div>
+                <div class="col-2">
+                    <fusion-status-label [config]="configWarningRoundedIcon" [fusionTooltip]="tooltipContent">Average</fusion-status-label>
+                </div>
+                <div class="col-3">
+                    <fusion-status-label [config]="configWarningRounded">Average</fusion-status-label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2"><label>Error</label></div>
+                <div class="col-3">
+                    <fusion-status-label [config]="configErrorIcon" [fusionTooltip]="tooltipContent">Low</fusion-status-label>
+                </div>
+                <div class="col-2"><fusion-status-label [config]="configError">Low</fusion-status-label></div>
+                <div class="col-2">
+                    <fusion-status-label [config]="configErrorRoundedIcon" [fusionTooltip]="tooltipContent">Low</fusion-status-label>
+                </div>
+                <div class="col-3">
+                    <fusion-status-label [config]="configErrorRounded">Low</fusion-status-label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2"><label>Custom Colors</label></div>
+                <div class="col-3">
+                    <fusion-status-label [config]="configCustomIcon" [fusionTooltip]="tooltipContent">Low</fusion-status-label>
+                </div>
+                <div class="col-2"><fusion-status-label [config]="configCustomColors">Low</fusion-status-label></div>
+                <div class="col-2">
+                    <fusion-status-label [config]="configCustomRoundedIcon" [fusionTooltip]="tooltipContent">Low</fusion-status-label>
+                </div>
+                <div class="col-3">
+                    <fusion-status-label [config]="configCustomRounded">8</fusion-status-label>
+                </div>
+            </div>
+        </fusion-example-block>
+        <!--UI-Component Configuration Doc-->
+        <div class="is-example-title">Configuration</div>
+        <fusion-example-block id="params" title="Parameters" [collapsible]="false">
+            <fusion-code-block
+                lang="js"
+                code="config: StatusLabelConfig;
+
+export interface StatusLabelConfig {
+    text?: string;                          // inner text (use in react)
+    icon?: string;                          // default - no icon
+    status?: StatusLabelStatus;             // default - success
+    borderType?: StatusLabelBorderType;     // default - square
+    customColors?: {
+        color?: string;                     // custom color ('status' ignored, no changed on hover)
+        backgroundColor?: string;           // custom background color ('status' ignored, no changed on hover)
+    };
+}
+
+
+export enum StatusLabelStatus {
+    Success = 'success',
+    Warning = 'warning',
+    Error = 'error'
+}
+
+export enum StatusLabelBorderType {
+    Square = 'square',
+    Circle = 'circle'
+}
+"
+            ></fusion-code-block>
+        </fusion-example-block>
+
+        <fusion-example-block id="customProperties" title="CSS Custom Properties" [collapsible]="false">
+            <fusion-table [columns]="customPropertiesTable.columns" [rows]="customPropertiesTable.rows"> </fusion-table>
+        </fusion-example-block>
+    </div>
+    <div class="col-3 is-right-side-menu-holder">
+        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+    </div>
+</div>
+<!--<style>-->
+<!--    ::ng-deep fusion-tooltip {-->
+<!--        &#45;&#45;tooltip-background-color: white;-->
+<!--        &#45;&#45;tooltip-text-color: grey;-->
+<!--    }-->
+<!--</style>-->

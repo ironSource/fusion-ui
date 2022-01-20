@@ -1,0 +1,21 @@
+@import '../../../../styles/vars';
+
+:host {
+  fusion-example-block{
+    margin-bottom: 25px;
+  }
+  .is-alert-example-holder{
+    padding: 13px 0;
+    border-bottom: solid 1px $light-500;
+    &:last-child{
+      border-bottom: none;
+    }
+  }
+  #typeSmallHeader,
+  #typeLargeAlert {
+    .is-alert-example-holder{
+      border: none;
+    }
+  }
+}
+

@@ -1,0 +1,151 @@
+<div class="doc-page">
+    <div class="row">
+        <div class="col-9">
+            <!--UI-Component Examples-->
+            <h2>Intersection</h2>
+            <fusion-alert showCloseButton="false">
+                <span>This directive is not supported on Internet Explorer</span>
+            </fusion-alert>
+            <fusion-example-block id="typeBasic" title="Intersection with Viewport">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='
+<div class="intersection-target">
+    (fusionIntersection)="onIntersectionChange($event)">
+</div>
+'
+                ></fusion-code-block>
+                <div>
+                    Scroll up and down to test intersection with document's viewport.
+                    <br />
+                </div>
+                <br />
+                <div class="scrollable">
+                    <div class="scrollable-body fu-font2">
+                        <div class="sticky fu-font5">
+                            <div>
+                                Is Intersecting?
+                                <b class="answer" [class.positive]="isIntersecting">
+                                    {{ isIntersecting ? 'YES' : 'NO' }}
+                                </b>
+                            </div>
+                        </div>
+                        <div class="arrow bounce-down">⬇</div>
+                        <div class="arrow bounce-down">⬇</div>
+                        <div class="arrow bounce-down">⬇</div>
+                        <div class="intersection-target is-color-dark-500" (fusionIntersection)="onIntersectionChange($event)">
+                            <p>Intersection Target</p>
+                        </div>
+                        <div class="arrow bounce-up">⬆</div>
+                        <div class="arrow bounce-up">⬆</div>
+                        <div class="arrow bounce-up">⬆</div>
+                    </div>
+                </div>
+            </fusion-example-block>
+
+            <fusion-example-block id="customRoot" title="Intersection with custom root and vertical margin">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='
+<div class="scrollable" #intersectionRoot>
+    <div class="scrollable-body">
+        <div class="intersection-target"
+            (fusionIntersection)="onIntersectionChange($event)"
+            [intersectionOptions]="{ root: intersectionRoot, rootMargin: { top: "40px", bottom: "40px" } }">
+        </div>
+    </div>
+</div>
+'
+                ></fusion-code-block>
+                <div>
+                    Scroll up and down to test intersection with custom root element and vertical margin.
+                </div>
+                <br />
+                <div class="scrollable" #intersectionRoot>
+                    <div class="scrollable-body fu-font2">
+                        <div class="sticky fu-font5">
+                            <div>
+                                Is Intersecting?
+                                <b class="answer" [class.positive]="isIntersectingWithMargin">
+                                    {{ isIntersectingWithMargin ? 'YES' : 'NO' }}
+                                </b>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-5">
+                                    Margin:
+                                </div>
+                                <div class="col-7">
+                                    <fusion-input
+                                        [type]="'number'"
+                                        [formControl]="margin"
+                                        [placeholder]="'Vertical Margin'"
+                                        units="px"
+                                        unitPos="right"
+                                        [min]="0"
+                                        [max]="100"
+                                    >
+                                    </fusion-input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="arrow bounce-down">⬇</div>
+                        <div class="arrow bounce-down">⬇</div>
+                        <div class="arrow bounce-down">⬇</div>
+                        <div>
+                            <div class="margin-placeholder" [ngStyle]="{'height.px': marginInt}">{{ margin.value }}px margin</div>
+                            <div
+                                class="intersection-target is-color-dark-500"
+                                (fusionIntersection)="onIntersectionWithMarginChange($event)"
+                                [intersectionOptions]="{root: intersectionRoot, rootMargin: {top: marginInt, bottom: marginInt}}"
+                            >
+                                <p>Intersection Target</p>
+                            </div>
+                            <div class="margin-placeholder" [ngStyle]="{'height.px': marginInt}">{{ margin.value }}px margin</div>
+                        </div>
+                        <div class="arrow bounce-up">⬆</div>
+                        <div class="arrow bounce-up">⬆</div>
+                        <div class="arrow bounce-up">⬆</div>
+                    </div>
+                </div>
+            </fusion-example-block>
+            <!--UI-Component Configuration Doc-->
+            <div class="is-example-title">Configuration</div>
+            <fusion-example-block id="params" title="Parameters" [collapsible]="false">
+                <fusion-code-block
+                    lang="js"
+                    code="
+intersectionOptions: IntersectionOptions
+
+interface IntersectionOptions {
+    root?: string | HTMLElement;
+    rootMargin?: IntersectionRootMargin;
+    threshold?: number | Array<number>;
+}
+
+interface IntersectionRootMargin {
+    top?: string | number;
+    left?: string | number;
+    bottom?: string | number;
+    right?: string | number;
+}"
+                ></fusion-code-block>
+            </fusion-example-block>
+
+            <fusion-example-block id="events" title="Events" [collapsible]="false">
+                <fusion-code-block
+                    lang="js"
+                    code="
+fusionIntersection(entry: IntersectionObserverEntry)"
+                ></fusion-code-block>
+            </fusion-example-block>
+            <!--UI-Component Configuration Doc-->
+        </div>
+
+        <div class="col-3 is-right-side-menu-holder">
+            <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+        </div>
+    </div>
+</div>

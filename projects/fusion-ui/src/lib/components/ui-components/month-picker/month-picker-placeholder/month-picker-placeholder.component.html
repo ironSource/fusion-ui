@@ -1,0 +1,10 @@
+<fusion-icon class="fu-calendar-icon" name="calendar-2"></fusion-icon>
+<ng-container *ngIf="!selected && placeholder; else selectedMonth">
+    <div class="fu-placeholder">{{ placeholder?.text }}</div>
+</ng-container>
+<fusion-icon *ngIf="arrowIconName$ | async as arrowIconName" class="icon-arrow" [name]="arrowIconName"></fusion-icon>
+
+<ng-template #selectedMonth>
+    <div class="fu-placeholder">{{ placeholder?.prefix }}</div>
+    <div class="fu-value-selected">{{ selectedDate | date: placeholder?.format }}</div>
+</ng-template>

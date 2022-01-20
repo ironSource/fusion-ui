@@ -1,0 +1,185 @@
+<div class="row">
+    <div class="col-9" [formGroup]="formGroup">
+        <div class="is-example-title">Type</div>
+        <fusion-example-block id="typeRegular" title="Regular">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    code='<fusion-header-overlay [headerComponent]="headerComponent"
+                       formControlName="headerPopUpFormControl"
+                       (closed)="onClose()"
+                       (saved)="onSaveButtonClicked()">
+  <div>
+    <div>This is a Header Popup body</div>
+    <label for="myInput">here is an input</label>
+    <input id="myInput"
+           type="checkbox"
+           formControlName="bodyInput">
+  </div>
+</fusion-header-overlay>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    code='class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        headerLayout: {
+            size: 0,
+            showFooter: true,
+            element: null,
+            controlValue: null
+        },
+        icon: {
+            name: "filter"
+        },
+        showContent: false
+    };
+    this.iconRef = null;
+  }
+
+  componentDidMount() {
+    this.setState({headerLayout: {...this.state.headerLayout, element: this.iconRef.node}});
+  }
+
+  closed() {}
+
+  saved() {
+      this.setState({headerLayout: {...this.state.headerLayout, controlValue: {isOpen: false}}});
+  }
+
+  render() {
+    return (
+        <div>
+            <FusionIcon config={this.state.icon} ref={e => this.iconRef = e} />
+            <FusionHeaderOverlay
+                config={this.state.headerLayout}
+                closed={this.closed}
+                saved={this.saved.bind(this)}
+                isOpened={e => this.showContent = e}>
+                <div style={display: this.state.showContent ? "block" : "none"}>
+                    <span>hello</span>
+                </div>
+            </FusionHeaderOverlay>
+        </div>
+    )
+  }
+}
+
+export default App;'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+    <FusionIcon :config="icon" ref="iconComponent"></FusionIcon>
+    <FusionHeaderOverlay :config="headerLayout" @closed="closed" @saved="saved">
+        <div>
+            <span>hello</span>
+        </div>
+    </FusionHeaderOverlay>
+</template>'
+                >
+                </fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import {FusionHeaderOverlay, FusionIcon} from "@ironsource/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+        headerLayout: {
+            size:0,
+            showFooter: true
+        },
+        icon: {
+            name: "filter"
+        }
+    }
+  },
+  components: {
+    FusionHeaderOverlay,
+    FusionIcon
+  },
+  mounted(){
+    this.headerLayout = {...this.headerLayout, element: this.$refs.iconComponent.$el};
+  },
+  methods: {
+    closed: function(){
+        window.console.log("closed");
+    },
+    saved: function(){
+        window.console.log("saved");
+        this.headerLayout = {...this.headerLayout, controlValue: {isOpen: false}};
+    }
+  }
+}
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block lang="html" code=""></fusion-code-block>
+            </ng-template>
+
+            <div class="col-12 border">
+                <div class="row">
+                    <div class="col-1 headerItem border-right">
+                        <fusion-header-overlay
+                            [headerComponent]="headerComponent"
+                            formControlName="headerPopUpFormControl"
+                            (closed)="onClose()"
+                            (saved)="onSaveButtonClicked()"
+                        >
+                            <div>
+                                <div>This is a Header Popup body</div>
+                                <label for="myInput">here is an input</label>
+                                <input id="myInput" type="checkbox" formControlName="bodyInput" />
+                            </div>
+                        </fusion-header-overlay>
+                    </div>
+                </div>
+            </div>
+        </fusion-example-block>
+        <!--UI-Component Configuration Doc-->
+        <div class="is-example-title">Configuration</div>
+        <fusion-example-block id="params" title="Parameters" [collapsible]="false">
+            <fusion-code-block
+                lang="js"
+                code="enum HeaderSizes {
+    Normal = 0,
+    Small = 1
+}
+
+headerComponent: Type<Component>
+width: string           // Default - '100%'
+height: string          // Default - ''
+showFooter: boolean     // Default - true
+size: HeaderSizes       // enum Normal; Small; Default - Normal"
+            ></fusion-code-block>
+        </fusion-example-block>
+
+        <fusion-example-block id="events" title="Events" [collapsible]="false">
+            Events emitted from modal that used in component
+            <fusion-code-block
+                lang="js"
+                code="closed(); - overlay closed by outside, Or click on 'Cancel' (secondary) button clicked;
+saved() - 'Apply' (primary) button clicked;"
+            ></fusion-code-block>
+        </fusion-example-block>
+        <!--UI-Component Configuration Doc-->
+    </div>
+    <div class="col-3 is-right-side-menu-holder">
+        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+    </div>
+</div>

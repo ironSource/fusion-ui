@@ -1,0 +1,15 @@
+@import '../../../../../../fusion-ui/src/style/scss/vars/vars';
+@import '../../../../../../fusion-ui/src/style/scss/vars/colors';
+
+:host {
+    display: block;
+    border-bottom: solid 1px $fu-light-300;
+    .content{
+        padding: 1px 12px 12px;
+        @extend %font-body;
+        color: $fu-dark-300;
+        &.icon-position-left{
+            padding-left: 29px;
+        }
+    }
+}

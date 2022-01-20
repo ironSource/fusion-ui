@@ -1,0 +1,12 @@
+@import '../../../../styles/vars';
+
+
+fusion-table-cell-icon-example{
+  color: rebeccapurple;
+    @include icon-style(null, $light-800, 17px, false, true){
+      display: block;
+      padding-top: 5px;
+      padding-left: 5px;
+    }
+}
+

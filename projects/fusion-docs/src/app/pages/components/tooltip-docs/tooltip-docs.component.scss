@@ -1,0 +1,18 @@
+@import '../../../../styles/vars';
+
+:host {
+    .is-tooltip-example-holder {
+        border-bottom: solid 1px $light-500;
+        padding-bottom: 15px;
+
+        & > div {
+            width: fit-content;
+            margin: auto;
+        }
+    }
+
+    fusion-example-block {
+        margin-bottom: 25px;
+    }
+
+}

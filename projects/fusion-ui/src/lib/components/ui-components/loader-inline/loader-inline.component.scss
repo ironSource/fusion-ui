@@ -1,0 +1,41 @@
+@import '../../../../style/scss/vars/vars';
+@import '../../../../style/scss/vars/mixins';
+
+// inline (actions, in buttons....)
+$inlineLoaderImgSize: 13px;
+$inlineLoaderTextColor: $light-800;
+$inlineLoaderImgColor: $light-800;
+
+:host.fusion-style-v1 {
+    .loader-inline {
+        display: inline-flex;
+        margin-left: 5px;
+        vertical-align: middle;
+        height: $inlineLoaderImgSize;
+
+        fusion-icon {
+            ::ng-deep svg {
+                @include size(15px);
+                * {
+                    fill: none !important;
+                }
+                symbol#loading {
+                    circle {
+                        stroke: currentColor !important;
+                    }
+                }
+            }
+        }
+
+        .loader-txt {
+            @extend %font7;
+            margin-top: -3px;
+            padding-left: 4px;
+            color: $inlineLoaderTextColor;
+        }
+
+        .loader-v2{
+            display: none;
+        }
+    }
+}

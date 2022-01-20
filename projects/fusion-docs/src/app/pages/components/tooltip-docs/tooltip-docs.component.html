@@ -1,0 +1,478 @@
+<div class="row">
+    <div class="col-9">
+        <!--UI-Component Examples-->
+        <div class="is-example-title">Content</div>
+
+        <fusion-example-block id="typeBasic" title="Position">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="Add to app.component.ts:
+constructor(public tooltipService: TooltipService) {}"
+                >
+                </fusion-code-block>
+
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='Add to app.component.html:
+<ng-container *ngIf="(tooltipService.tooltipData$ | async) as tooltipData">
+    <fusion-tooltip *ngIf="tooltipData.content" [tooltipData]="tooltipData"></fusion-tooltip>
+</ng-container>'
+                >
+                </fusion-code-block>
+
+                <fusion-code-block lang="html" class="is-collapsible" code='<div fusionTooltip="I`m tooltip on top">Tooltip on top</div>'>
+                </fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="// Add FusionTooltip component to main app component:
+
+import React from 'react';
+import './App.css';
+import {FusionLayout, FusionTooltip} from '@ironsource/fusion-ui/native/react';
+import {Switch, Route, withRouter} from 'react-router-dom';
+import Tooltip from './components/Tooltip';
+
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            layout: {
+                userName: 'Fusion User',
+                state: {
+                    title: ''
+                },
+                menuItems
+            },
+            tooltip: {
+                tooltipData: {}
+            }
+
+        }
+    }
+
+    menuItemClick(e) {
+        if (!e.redirect) {
+            return;
+        }
+        e.openNewTab ?
+            window.open(e.redirect, '_blank') :
+            this.props.history.push(e.redirect);
+    }
+
+    componentDidMount() {
+        this.tooltipService = window.fusion.services.tooltipService;
+        this.tooltipDataSubscription = this.tooltipService.tooltipData$
+            .subscribe(tooltipData => this.setState({tooltip: {tooltipData}}));
+    }
+
+    componentWillUnmount() {
+        this.tooltipDataSubscription.unsubscribe();
+    }
+
+    updateLayoutTitle(title) {
+        this.setState({layout: {...this.state.layout, state: {title}}})
+    }
+
+    render() {
+        return (
+            <div>
+                <FusionLayout config={this.state.layout} menuItemClick={this.menuItemClick.bind(this)}>
+                    <div>
+                        <Switch>
+                            <Route path='/tooltip'>
+                                <Tooltip updateLayoutTitle={this.updateLayoutTitle.bind(this)}/>
+                            </Route>
+                        </Switch>
+                    </div>
+                </FusionLayout>
+
+                {
+                    this.state.tooltip.tooltipData.content &&
+                    <div>
+                        <FusionTooltip config={this.state.tooltip}></FusionTooltip>
+                    </div>
+                }
+            </div>
+        )
+    }
+}
+
+const menuItems = [
+    {
+        icon: 'dashboard',
+        name: 'Tooltip',
+        redirect: '/tooltip'
+    },
+];
+
+export default withRouter(App);
+"
+                ></fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="// Use fusion tooltip service to trigger tooltip on element:
+
+import React from 'react';
+export default class Tooltip extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.textRef = React.createRef();
+        this.tooltipElementStyle = {width: '100px'};
+    }
+
+    componentDidMount() {
+        this.props.updateLayoutTitle('Tooltip Example');
+        this.tooltipService = window.fusion.services.tooltipService;
+        this.tooltipPositions = window.fusion.enums.TooltipPosition;
+    }
+
+    handleMouseHover() {
+        this.tooltipService.showTooltip({
+                content: 'Tooltip Text',
+                parentEl: {nativeElement: this.textRef.current},
+                position: this.tooltipPositions.Top
+            }
+        );
+    }
+
+    handleMouseLeave() {
+        this.tooltipService.closeTooltip();
+    }
+
+    render() {
+        return (
+            <div>
+                <div
+                    style={this.tooltipElementStyle}
+                    ref={this.textRef}
+                    onMouseEnter={this.handleMouseHover.bind(this)}
+                    onMouseLeave={this.handleMouseLeave.bind(this)}>
+                    text with tooltip
+                </div>
+            </div>
+        );
+    }
+}"
+                >
+                </fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<!-- Main App Component Template-->
+<template>
+    <div id="app">
+        <FusionTooltip :config="tooltip" v-if="tooltip.tooltipData.content"/>
+        <TooltipExample/>
+    </div>
+</template>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="// Main App Component Class
+import TooltipExample from './components/TooltipExample.vue'
+import {FusionTooltip} from '@ironsource/fusion-ui/native/vue';
+
+export default {
+    name: 'app',
+    components: {
+        FusionTooltip, TooltipExample
+    },
+    mounted() {
+        setTimeout(this.initFusionServices)
+    },
+    methods: {
+        initFusionServices() {
+            this.tooltipService = window.fusion.services.tooltipService;
+            this.tooltipDataSubscription = this.tooltipService.tooltipData$
+                .subscribe(tooltipData => this.tooltip = {tooltipData});
+        }
+    },
+    beforeDestroy() {
+        this.tooltipDataSubscription.unsubscribe();
+    },
+    data() {
+        return {
+            tooltip: {tooltipData: {}}
+        }
+    }
+}"
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<!-- TooltipExample Component Template-->
+<template>
+    <div>
+        <div style="width: 100px; border: 1px solid grey"
+                ref="textTooltip"
+                @mouseenter="handleMouseHover"
+                @mouseleave="handleMouseLeave">
+                text with tooltip
+    </div>
+</div>
+</template>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="// TooltipExample Component Class
+export default {
+    name: 'TooltipExample',
+    mounted() {
+        setTimeout(this.initFusionServices)
+    },
+    data() {
+        return {}
+    },
+    methods: {
+        handleMouseHover() {
+            this.tooltipService.showTooltip({
+                    content: 'Tooltip Text',
+                    parentEl: {nativeElement: this.$refs.textTooltip},
+                    position: this.tooltipPositions.Top
+                }
+            );
+        },
+        handleMouseLeave() {
+            this.tooltipService.closeTooltip();
+        },
+        initFusionServices(){
+            this.tooltipService = window.fusion.services.tooltipService;
+            this.tooltipPositions = window.fusion.enums.TooltipPosition;
+        }
+    }
+}"
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<!--  index.html  -->
+<html>
+<head>
+    <title>FUSION TOOLTIP EXAMPLE</title>
+    <link rel="stylesheet" href="node_modules/@ironsource/fusion-ui/native/core/fusion.theme.css">
+</head>
+<body class="fusion-style-v2">
+    <script src="node_modules/@ironsource/fusion-ui/native/core/polyfills-es2015.js" type="module"></script>
+    <script src="node_modules/@ironsource/fusion-ui/native/core/polyfills-es5.js" nomodule></script>
+    <script src="node_modules/@ironsource/fusion-ui/native/core/polyfill-webcomp-es5.js" nomodule></script>
+    <script src="node_modules/@ironsource/fusion-ui/native/core/polyfill-webcomp-es2015.js"></script>
+    <script src="node_modules/@ironsource/fusion-ui/native/core/main-es2015.js" type="module"></script>
+    <script src="node_modules/@ironsource/fusion-ui/native/core/main-es5.js" nomodule></script>
+
+    <script src="./index.js" type="text/javascript"></script>
+
+    <div id="tooltipExample"
+         style="width: 100px; border: 1px solid grey"
+         onmouseenter="showTooltip(this)"
+         onmouseleave="closeTooltip()">
+        text with tooltip
+    </div>
+
+    <div id="tooltipComponentWrapper"></div>
+</body>
+</html>
+
+'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="// index.js
+const onLoad = () => {
+    showTooltip = (element) => {
+        const tooltipEl = document.createElement('native-fusion-tooltip');
+        const tooltipPositions = window.fusion.enums.TooltipPosition;
+        tooltipEl.config = {
+            tooltipData: {
+                content: 'Tooltip Example Text',
+                parentEl: {nativeElement: element},
+                position: tooltipPositions.Top
+            }
+        };
+
+        const tooltipComponentWrapper = document.getElementById('tooltipComponentWrapper');
+        tooltipComponentWrapper.appendChild(tooltipEl);
+    };
+
+    closeTooltip = () => {
+        tooltipComponentWrapper.innerHTML = '';
+    };
+};
+
+document.addEventListener('DOMContentLoaded', onLoad, false);"
+                ></fusion-code-block>
+            </ng-template>
+            <div class="row">
+                <div class="col-3">
+                    <div class="is-tooltip-example-holder">
+                        <div [tooltipType]="tooltipTypeHtml" fusionTooltip="<div style='color: red'>Here's a tooltip!</div>" [tooltipIcon]="'success'">Tooltip on top</div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="is-tooltip-example-holder">
+                        <div fusionTooltip="Here's a tooltip!" [tooltipPosition]="tooltipPosition.Bottom">Tooltip on buttom</div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="is-tooltip-example-holder">
+                        <div
+                            fusionTooltip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                            [tooltipPosition]="tooltipPosition.Left"
+                            tooltipWidth="250"
+                        >
+                            Tooltip on left
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="is-tooltip-example-holder">
+                        <div fusionTooltip="Here's a tooltip!" [tooltipPosition]="tooltipPosition.Right">Tooltip on right</div>
+                    </div>
+                </div>
+            </div>
+        </fusion-example-block>
+
+        <fusion-example-block id="truncate" title="ToolTip With Truncate">
+            <fusion-code-block
+                lang="html"
+                class="is-collapsible"
+                code='
+<div fusionTooltip="Tooltip Is Shown" class="truncate"
+     [style.width.px]="60">
+  With Truncate & Small Width
+</div>
+                           '
+            ></fusion-code-block>
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="is-tooltip-example-holder">
+                        <div fusionTooltip="Tooltip Is Shown" class="truncate" [style.width.px]="60">With Truncate & Small Width</div>
+                    </div>
+                </div>
+                <!--<div class="col-6">
+                    <div class="is-tooltip-example-holder">
+                        <div fusionTooltip="No Tooltip Shown" class="truncate">
+                            With Truncate & Full Width
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+        </fusion-example-block>
+
+        <fusion-example-block
+            id="overrideStyle"
+            title="Modify ToolTip Style"
+            (mouseleave)="modifyStyledTooltip(false)"
+            (mouseover)="modifyStyledTooltip(true)"
+        >
+            <fusion-code-block
+                lang="css"
+                class="is-collapsible"
+                code="
+fusion-tooltip {
+    --tooltip-background-color: white;
+    --tooltip-text-color: grey;
+}
+                           "
+            ></fusion-code-block>
+
+            <div class="row">
+                <div class="col-3">
+                    <div class="is-tooltip-example-holder">
+                        <div fusionTooltip="I am tooltip on top">Tooltip on top</div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="is-tooltip-example-holder">
+                        <div fusionTooltip="Bottom here :)))" [tooltipPosition]="tooltipPosition.Bottom">Tooltip on buttom</div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="is-tooltip-example-holder">
+                        <div
+                            fusionTooltip="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."
+                            [tooltipPosition]="tooltipPosition.Left"
+                            tooltipWidth="250"
+                        >
+                            Tooltip on left
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="is-tooltip-example-holder">
+                        <div
+                            fusionTooltip="I'm on right.  Aenean commodo ligula eget dolor."
+                            [tooltipPosition]="tooltipPosition.Right"
+                            tooltipWidth="250"
+                        >
+                            Tooltip on right
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fusion-example-block>
+        <!--UI-Component Configuration Doc-->
+        <div class="is-example-title">Configuration</div>
+        <fusion-example-block id="params" title="Parameters" [collapsible]="false">
+            <fusion-code-block
+                lang="js"
+                code="fusionTooltip: string;
+tooltipWidth: number
+tooltipPosition: TooltipPosition
+tooltipType: TooltipType
+tooltipComponentData: ITooltipData
+
+enum TooltipPosition {
+    Top = 0,
+    Right = 1,
+    Bottom = 2,
+    Left = 3,
+    TopFixed = 4
+}
+
+enum TooltipType {
+    Html = 0,
+    Component = 1  // Angular only
+}
+
+interface ITooltipData {
+    parentEl?: ElementRef;
+    position?: TooltipPosition;
+    content?: string;
+    width?: number;
+    type?: TooltipType;
+    componentData?: any;
+    componentData?: any;
+}
+"
+            ></fusion-code-block>
+        </fusion-example-block>
+
+        <fusion-example-block id="customProperties" title="CSS Custom Properties" [collapsible]="false">
+            <fusion-table [columns]="customPropertiesTable.columns" [rows]="customPropertiesTable.rows"> </fusion-table>
+        </fusion-example-block>
+    </div>
+
+    <div class="col-3 is-right-side-menu-holder">
+        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+    </div>
+</div>

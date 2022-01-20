@@ -1,0 +1,90 @@
+<div class="doc-page">
+    <div class="row">
+        <div class="col-9">
+            <!--UI-Component Examples-->
+            <h2>Error Message</h2>
+
+            <fusion-example-block id="typeBasic" title="Basic">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='HTML:
+<form [formGroup]="inputForm">
+  <fusion-input formControlName="input"
+                [fusionErrorMessage]=""Input filed""
+                [showError]="true">
+  </fusion-input>
+</form>
+
+Input Parameters:
+                showError: boolean
+                fusionErrorMessage: string
+                errorInnerMessage: string
+                customMessages: { [key: string]: string }
+                customMapping: { [key: string]: string }
+                errorStyles = {}'
+                ></fusion-code-block>
+
+                <form [formGroup]="inputForm">
+                    <fusion-input formControlName="input" [fusionErrorMessage]="'Input filed'" [showError]="true"></fusion-input>
+                </form>
+            </fusion-example-block>
+
+            <fusion-example-block id="typeCustom" title="Custom Mapping">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<form [formGroup]="customInputForm">
+  <fusion-input formControlName="inputMinVal"
+                type="number"
+                [fusionErrorMessage]=""Input filed""
+                [customMapping]="{minValue: "10"}"
+                [showError]="customInputForm.get("inputMinVal").dirty">
+  </fusion-input>
+
+  <fusion-input
+                formControlName="inputMinMaxLen"
+                [fusionErrorMessage]=""Input filed""
+                [customMapping]="{minlength: 8, maxlength: 16}"
+                [showError]="true">
+  </fusion-input>
+</form>'></fusion-code-block>
+                <fusion-code-block
+                    lang="JS"
+                    class="is-collapsible"
+                    code='customInputForm = this.fb.group({
+    inputMinVal: [null, [Validators.required, Validators.min(10)]],
+    inputMinMaxLen: ["", [Validators.required, Validators.minLength(8), Validators.maxLength(16)]],
+});'></fusion-code-block>
+
+                <form [formGroup]="customInputForm">
+                    <div class="row">
+                        <div class="col-4">
+                            <span>minimum value - {{ minValue }}</span>
+                            <fusion-input
+                                formControlName="inputMinVal"
+                                type="number"
+                                [fusionErrorMessage]="'Input filed'"
+                                [customMapping]="{minValue: minValue}"
+                                [showError]="customInputForm.get('inputMinVal').dirty"
+                            ></fusion-input>
+                        </div>
+                        <div class="col-4">
+                            <span>length must be from 8 to 16 chars</span>
+                            <fusion-input
+                                formControlName="inputMinMaxLen"
+                                [fusionErrorMessage]="'Input filed'"
+                                [customMapping]="{minlength: 8, maxlength: 16}"
+                                [showError]="true"
+                            ></fusion-input>
+                        </div>
+                    </div>
+                </form>
+            </fusion-example-block>
+        </div>
+
+        <div class="col-3 is-right-side-menu-holder">
+            <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="fu-layout-header-menu-holder">
+    <!--user data part-->
+    <div *ngIf="isUserMenu" class="fu-layout-header-menu-user" [class.fu-layout-header-menu-delimiter]="!!menuItems">
+        <div class="fu-layout-header-menu-user-name">{{ userData?.name }}</div>
+        <div class="fu-layout-header-menu-user-email">{{ userData?.email }}</div>
+    </div>
+    <!--user data part-->
+    <!--menu items-->
+    <div class="fu-layout-header-menu-items" *ngIf="menuItems">
+        <ng-container *ngFor="let item of menuItems">
+            <ng-container
+                *ngTemplateOutlet="
+                    item.content ? menuItemCustom : item.routeConfigurations ? menuItemLink : menuItemRegular;
+                    context: {item: item}
+                "
+            ></ng-container>
+        </ng-container>
+    </div>
+    <!--menu items-->
+</div>
+
+<ng-template #menuItemRegular let-item="item">
+    <div class="fu-layout-header-menu-item {{ item?.class }}" (click)="onMenuItemClicked(item)">
+        <ng-container *ngTemplateOutlet="menuItem; context: {item: item}"></ng-container>
+    </div>
+</ng-template>
+
+<ng-template #menuItemLink let-item="item">
+    <a
+        class="fu-layout-header-menu-item {{ item?.class }}"
+        href="{{ item.routeConfigurations?.href }}"
+        target="{{ item.routeConfigurations?.target || '_self' }}"
+    >
+        <ng-container *ngTemplateOutlet="menuItem; context: {item: item}"></ng-container>
+    </a>
+</ng-template>
+
+<ng-template #menuItem let-item="item">
+    <fusion-icon *ngIf="item?.icon" class="fu-layout-header-menu-item-icon" [name]="item?.icon"></fusion-icon>
+    <span class="fu-layout-header-menu-item-text">{{ item.name }}</span>
+</ng-template>
+
+<ng-template #menuItemCustom let-item="item">
+    <fusion-dynamic-components
+        class="fu-layout-header-menu-item-content {{ item?.class }}"
+        (click)="onMenuItemClicked(item)"
+        [configuration]="item.content"
+    ></fusion-dynamic-components>
+</ng-template>

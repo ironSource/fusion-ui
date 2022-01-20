@@ -1,0 +1,23 @@
+@import "../../../../../fusion-ui/src/style/scss/vars/vars";
+@import "../../../../../fusion-ui/src/style/scss/vars/mixins";
+@import "../../../../../fusion-ui/src/style/scss/vars/colors";
+
+:host{
+    box-sizing: border-box;
+    position: relative;
+    height: 45px;
+    padding: 12px 20px 10px 40px;
+    border-radius: 6px;
+    background-color: $fu-primary-500;
+    color: $White;
+    display: block;
+    cursor: pointer;
+    .fu-example-message{
+        @extend %font-headlineSmall;
+    }
+    @include icon-style(null, currentColor, 20px, false, true){
+        position: absolute;
+        top: 11px;
+        left: 9px;
+    };
+}

@@ -1,0 +1,103 @@
+@import '../../../../style/scss/vars/vars';
+@import '../../../../style/scss/vars/mixins';
+
+:host.fusion-style-v1 {
+    input[type='checkbox'] {
+        display: none;
+    }
+
+    input[type='checkbox'] + label {
+        @extend %font12;
+        color: $dark-300;
+        user-select: none;
+        cursor: pointer;
+
+        &.maxWidth {
+            width: 100%;
+            display: inline-block;
+            padding-right: 10px;
+        }
+
+        span {
+            display: inline-block;
+            width: 19px;
+            height: 19px;
+            margin-top: 2px;
+            margin-right: 3px;
+            vertical-align: middle;
+            background: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%2215%22%20height%3D%2215%22%20viewBox%3D%220%200%2015%2015%22%3E%3Cdefs%3E%3Crect%20id%3D%22a%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%2F%3E%3C%2Fdefs%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cuse%20fill%3D%22%23FFF%22%20xlink%3Ahref%3D%22%23a%22%2F%3E%3Crect%20width%3D%2214%22%20height%3D%2214%22%20x%3D%22.5%22%20y%3D%22.5%22%20stroke%3D%22%23C2CDD7%22%20rx%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E) left top no-repeat;
+            cursor: pointer;
+
+            &.is-partial {
+                background: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2215%22%20height%3D%2215%22%20viewBox%3D%220%200%2015%2015%22%3E%0A%20%20%20%20%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Crect%20width%3D%2214%22%20height%3D%2214%22%20x%3D%22.5%22%20y%3D%22.5%22%20stroke%3D%22%233091F6%22%20rx%3D%222%22/%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20fill%3D%22%233091F6%22%20d%3D%22M4%206h7v3H4z%22/%3E%0A%20%20%20%20%3C/g%3E%0A%3C/svg%3E%0A) left top no-repeat;
+            }
+        }
+
+        &.font13 {
+            @extend %font13;
+        }
+
+        &.font14 {
+            @extend %font14;
+        }
+    }
+
+    input[type='checkbox']:checked + label {
+        span {
+            background: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%2215%22%20height%3D%2215%22%20viewBox%3D%220%200%2015%2015%22%3E%3Cdefs%3E%3Crect%20id%3D%22a%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%2F%3E%3C%2Fdefs%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cuse%20fill%3D%22%23FFF%22%20xlink%3Ahref%3D%22%23a%22%2F%3E%3Crect%20width%3D%2214%22%20height%3D%2214%22%20x%3D%22.5%22%20y%3D%22.5%22%20stroke%3D%22%233091F6%22%20rx%3D%222%22%2F%3E%3Cpath%20fill%3D%22%233091F6%22%20d%3D%22M12.395%205.852l-4.47%204.47-.84.84a.57.57%200%200%201-.42.172.57.57%200%200%201-.418-.173l-.84-.84-2.234-2.233A.57.57%200%200%201%203%207.667c0-.165.058-.305.173-.42l.84-.84a.57.57%200%200%201%20.42-.172c.164%200%20.304.057.42.172L6.666%208.23l4.05-4.056a.57.57%200%200%201%20.42-.173c.164%200%20.304.06.42.174l.84.84a.57.57%200%200%201%20.17.42.57.57%200%200%201-.172.42z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E) left top no-repeat;
+        }
+    }
+
+    input[type='checkbox']:indeterminate + label {
+        span {
+            background: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2215%22%20height%3D%2215%22%20viewBox%3D%220%200%2015%2015%22%3E%0A%20%20%20%20%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Crect%20width%3D%2214%22%20height%3D%2214%22%20x%3D%22.5%22%20y%3D%22.5%22%20stroke%3D%22%233091F6%22%20rx%3D%222%22/%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20fill%3D%22%233091F6%22%20d%3D%22M4%206h7v3H4z%22/%3E%0A%20%20%20%20%3C/g%3E%0A%3C/svg%3E%0A) left top no-repeat;
+        }
+    }
+
+    input[type='checkbox']:disabled + label {
+        color: $light-700;
+        cursor: default;
+
+        span {
+            background: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2215%22%20height%3D%2215%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%3E%3Cdefs%3E%3Crect%20id%3D%22a%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22/%3E%3C/defs%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cuse%20fill%3D%22%23F3F5F7%22%20xlink%3Ahref%3D%22%23a%22/%3E%3Crect%20width%3D%2214%22%20height%3D%2214%22%20x%3D%22.5%22%20y%3D%22.5%22%20stroke%3D%22%23C2CDD7%22%20rx%3D%222%22/%3E%3C/g%3E%3C/svg%3E) left top no-repeat;
+            cursor: default;
+        }
+    }
+
+    input[type='checkbox']:disabled:checked + label {
+        cursor: default;
+
+        span {
+            background: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%2215%22%20height%3D%2215%22%20viewBox%3D%220%200%2015%2015%22%3E%3Cdefs%3E%3Crect%20id%3D%22a%22%20width%3D%2215%22%20height%3D%2215%22%20rx%3D%222%22%2F%3E%3C%2Fdefs%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cuse%20fill%3D%22%23FFF%22%20xlink%3Ahref%3D%22%23a%22%2F%3E%3Crect%20width%3D%2214%22%20height%3D%2214%22%20x%3D%22.5%22%20y%3D%22.5%22%20stroke%3D%22%2395A6B8%22%20rx%3D%222%22%2F%3E%3Cpath%20fill%3D%22%2395A6B8%22%20d%3D%22M12.395%205.852l-4.47%204.47-.84.84a.57.57%200%200%201-.42.172.57.57%200%200%201-.418-.173l-.84-.84-2.234-2.233A.57.57%200%200%201%203%207.667c0-.165.058-.305.173-.42l.84-.84a.57.57%200%200%201%20.42-.172c.164%200%20.304.057.42.172L6.666%208.23l4.05-4.056a.57.57%200%200%201%20.42-.173c.164%200%20.304.06.42.174l.84.84a.57.57%200%200%201%20.17.42.57.57%200%200%201-.172.42z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E) left top no-repeat;
+            cursor: default;
+        }
+    }
+
+    input[type='checkbox']:disabled:indeterminate + label {
+        cursor: default;
+
+        span {
+            background: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2215%22%20height%3D%2215%22%20viewBox%3D%220%200%2015%2015%22%3E%0A%20%20%20%20%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Crect%20width%3D%2214%22%20height%3D%2214%22%20x%3D%22.5%22%20y%3D%22.5%22%20stroke%3D%22%2395A6B8%22%20rx%3D%222%22/%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20fill%3D%22%2395A6B8%22%20d%3D%22M4%206h7v3H4z%22/%3E%0A%20%20%20%20%3C/g%3E%0A%3C/svg%3E%0A) left top no-repeat;
+            cursor: default;
+        }
+    }
+
+    label {
+        fusion-flag {
+            margin-right: 13px;
+            margin-left: 1px;
+            height: 15px;
+            width: 15px;
+        }
+
+        @include icon-style(null, $light-700, 15px, false, true) {
+            padding-right: 3px;
+            vertical-align: middle;
+        }
+    }
+
+    &.only-checkbox input[type='checkbox'] + label span {
+        margin-right: 0;
+    }
+
+}

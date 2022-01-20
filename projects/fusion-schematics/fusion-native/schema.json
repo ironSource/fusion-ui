@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "id": "FusionNativeSchematics",
+    "title": "Fusion Native Schematics",
+    "type": "object",
+    "description": "Fusion Native",
+    "properties": {
+        "outputDir": {
+            "type": "string",
+            "description": "the path for output react wrapper directory",
+            "x-prompt": "What should be output directory?"
+        }
+    },
+    "required": ["outputDir"]
+}

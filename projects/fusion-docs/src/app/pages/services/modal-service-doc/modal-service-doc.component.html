@@ -1,0 +1,209 @@
+<div class="doc-page">
+    <div class="row">
+        <div class="col-9">
+
+            <h2>Modal Service</h2>
+            <fusion-example-block id="howToUse"
+                                  title="How to use"
+                                  class="invertTabBGColor"
+                                  [collapsible]="false">
+
+                <ng-template fusionExampleBlock="Angular">
+                    1. Add modal to your component
+                    <fusion-code-block lang='html'
+                                       code='<fusion-modal id="uniqueID">
+        <!-- Any modal content -->
+        <div> Modal Content </div>
+        <!-- Any modal content -->
+<fusion-modal>'></fusion-code-block>
+                    <br/>
+                    2. inject ModalService in your component constructor as public
+                    <fusion-code-block lang="js"
+                                       code='constructor(...,  private modalService: ModalService, ...) {}'></fusion-code-block>
+                    <br/>
+                    3. Use modal service for open / hide your modal by modal unique ID that was provided as fusion-modal parameter.
+                    <fusion-code-block lang="js"
+                                       code='// open modal
+this.modalService.open("uniqueID");
+// close modal
+this.modalService.close("uniqueID");'></fusion-code-block>
+                </ng-template>
+
+                <ng-template fusionExampleBlock="React">
+                    Example code:
+                    <fusion-code-block lang="js"
+                                       code='import React from "react";
+import "./App.css";
+import {
+  FusionModal,
+  FusionButton
+} from "@ironsource/fusion-uifusion-native/react";
+
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+            this.state = {
+            modal: {
+                id: "testModal",
+                headerText: "This is a test modal",
+                width: 600
+            }
+        }
+    }
+
+    onModalOpen() {
+        console.log("Modal Open");
+    }
+
+    onModalClose() {
+        console.log("Modal Closed");
+    }
+
+    onModalSaveButtonClicked(){
+        console.log("Modal Save button clicked");
+        window.fusion.services.modalService.close("testModal");
+        // or if you need suppress modal "onClose" event.
+        // window.fusion.services.modalService.close("testModal", {emitEvent: false});
+    }
+
+
+    openModal(){
+        window.fusion.services.modalService.open("testModal");
+    }
+
+    render() {
+        return (
+            <div>
+                <FusionModal config={this.state.modal}
+                             onOpen={this.onModalOpen}
+                             onClose={this.onModalClose}
+                             onSave={this.onModalSaveButtonClicked}>
+                    <span>Modal Content Here</span>
+                </FusionModal>
+                <FusionButton onclick={this.openModal}><span>Open Modal</span></FusionButton>
+            </div>
+        )
+    }
+}
+export default App;'></fusion-code-block>
+                </ng-template>
+
+                <ng-template fusionExampleBlock="Vue">
+                    Example code:
+                    <fusion-code-block lang="js"
+                                       code='<template>
+    <div>
+        <FusionButton :config="button" @onclick="onclick">
+            <span>Open Modal</span>
+        </FusionButton>
+        <FusionModal :config="modal" @onOpen="onModalOpened" @onClose="onModalClose" @onSave="onModalSaveButtonClicked">
+            <span><b>Well done!</b> Modal Content</span>
+        </FusionModal>
+    </div>
+</template>
+
+<script>
+    import {FusionModal, FusionButton} from "@ironsource/fusion-uifusion-native/vue/fusion-vue.vue";
+
+    export const TestComponent = {
+        name: "TestComponent",
+        data() {
+            return {
+                modal: {
+                    id: "testModal",
+                    headerText: "This is a test modal",
+                    width: 600
+                },
+                button: {
+                    icon: "git-hub"
+                }
+            }
+        },
+        components: {
+            FusionModal,
+            FusionButton
+        },
+        methods: {
+            onclick: function () {
+                window.fusion.services.modalService.open("testModal");
+            },
+            onModalOpened: function () {
+                console.log("Modal Open");
+            },
+            onModalClose: function () {
+                console.log("Modal Close");
+            },
+            onModalSaveButtonClicked: function () {
+                console.log("Modal Save button clicked");
+                window.fusion.services.modalService.close("testModal");
+                // or if you need suppress modal "onClose" event.
+                // window.fusion.services.modalService.close("testModal", {emitEvent: false});
+            },
+        }
+    };
+export default TestComponent;
+</script>'></fusion-code-block>
+                </ng-template>
+
+                <ng-template fusionExampleBlock="Native">
+                    1. Define and add modal to DOM with attached event listeners
+                    <fusion-code-block lang="js"
+                                       code='// define modal
+const modal = document.createElement("native-fusion-modal");
+modal.config = {
+    id: "testModal",
+    headerText: "This is a test modal",
+    width: 600
+};
+
+// attach event listeners
+modal.addEventListener("onOpen", e => console.log(e));   // occur on modal opened
+modal.addEventListener("onClose", e => console.log(e));  // occur on modal close (icon [X] (close) on top right of modal,
+                                                         // button [Cancel] clicked, or called modalService method close(modalId))
+
+modal.addEventListener("onSave", e => {                  // occur on Primary button "Save" click
+        console.log(e);
+        fusion.services.modalService.close("testModal"); // (in this case you`ll need close modal by calling modalService method close(modalId))
+    });
+
+// add modal to the DOM
+document.body.appendChild(modal);'></fusion-code-block>
+                    <br/>
+                    2. Show it use modal service 'open' method with modal id as parameter
+                    <fusion-code-block lang="js"
+                                       code='fusion.services.modalService.open("testModal");'></fusion-code-block>
+                    <br/>
+                    3. Close it use modal service 'close' method with modal id as parameter
+                    <fusion-code-block lang="js"
+                                       code='fusion.services.modalService.close("testModal");
+
+// if you want suppress modal event "onClose" just add optional parameter  {emitEvent = false}
+fusion.services.modalService.close("testModal", {emitEvent = false})'></fusion-code-block>
+
+
+                </ng-template>
+            </fusion-example-block>
+            <br/>
+            <fusion-example-block id="methods"
+                                  title="Methods"
+                                  [collapsible]="false">
+                <fusion-code-block lang="js"
+                                   code='// add modal to modal service modals list. On modal component init it automatically
+add(modal: ModalComponent);
+
+// open modal (modal must be added to the modal service modals list )
+open(modalId: string);
+
+// close modal
+close(modalId: string, {emitEvent = true}) // emitEvent - false for suppress onClose() event. Optional
+
+// remove modal from modal service modals list
+remove(modalId: string)'></fusion-code-block>
+            </fusion-example-block>
+        </div>
+
+        <div class="col-3 is-right-side-menu-holder">
+            <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+        </div>
+    </div>
+</div>

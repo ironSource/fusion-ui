@@ -1,0 +1,67 @@
+<div class="doc-page">
+    <div class="row">
+        <div class="col-9">
+            <h2>Colors Service</h2>
+            <fusion-example-block
+                id="howToUse"
+                title="How to use"
+                desc="(For now used in Chart Component Only)"
+                class="invertTabBGColor"
+                [collapsible]="false"
+            >
+                <ng-template fusionExampleBlock="Angular">
+                    1. In your component/service inject the ColorsService in the constructor
+                    <fusion-code-block
+                        lang="js"
+                        code="...
+constructor(
+    ...,
+    private colorsService: ColorsService,
+    ...
+) {}
+..."
+                    >
+                    </fusion-code-block>
+                </ng-template>
+                <ng-template fusionExampleBlock="React">
+                    <fusion-code-block
+                        lang="js"
+                        code="{{codeExample}}"></fusion-code-block>
+                </ng-template>
+                <ng-template fusionExampleBlock="Vue">
+                    <fusion-code-block
+                        lang="js"
+                        code="{{codeExample}}"></fusion-code-block>
+                </ng-template>
+                <ng-template fusionExampleBlock="Native">
+                    <fusion-code-block
+                        lang="js"
+                        code="{{codeExample}}"></fusion-code-block>
+                </ng-template>
+            </fusion-example-block>
+            <br/>
+            <fusion-example-block id="methods" title="Methods" [collapsible]="false">
+                <fusion-code-block
+                    lang="js"
+                    code="// Get Colors Palette (hardcoded) contains 18 colors (HEX codes as string array)
+colorsService.getColorPalette(): string[];
+
+// Convert color from HEX string to RGB with alpha string
+colorsService.toRgba(color: string, alpha: number = 100): string"
+                ></fusion-code-block>
+            </fusion-example-block>
+            <br/>
+            <fusion-example-block id="cpalette" title="Colors" [collapsible]="false">
+                <div class="flex-row is-color-items-holder">
+                    <div *ngFor="let color of colorPalette" class="is-color-item">
+                        <div class="is-color-example" [style.background-color]="color"></div>
+                        <div class="is-color-name">{{color}}</div>
+                    </div>
+                </div>
+            </fusion-example-block>
+        </div>
+        <div class="col-3 is-right-side-menu-holder">
+            <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+        </div>
+    </div>
+</div>

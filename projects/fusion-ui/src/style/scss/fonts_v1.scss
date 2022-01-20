@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+$baseSDN: 'https://fusion.ironsrc.net/assets';
+
+@font-face {
+    font-family: 'NHaasGroteskDSPro-75Bd';
+    src: url('#{$baseSDN}/fonts/NHaasGroteskDSPro-75Bd.eot');
+    src: url('#{$baseSDN}/fonts/NHaasGroteskDSPro-75Bd.eot?#iefix') format('embedded-opentype'),
+    url('#{$baseSDN}/fonts/NHaasGroteskDSPro-75Bd.woff2') format('woff2'),
+    url('#{$baseSDN}/fonts/NHaasGroteskDSPro-75Bd.woff') format('woff'),
+    url('#{$baseSDN}/fonts/NHaasGroteskDSPro-75Bd.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NHaasGroteskTXPro-75Bd';
+    src: url('#{$baseSDN}/fonts/NHaasGroteskTXPro-75Bd.eot');
+    src: url('#{$baseSDN}/fonts/NHaasGroteskTXPro-75Bd.eot?#iefix') format('embedded-opentype'),
+    url('#{$baseSDN}/fonts/NHaasGroteskTXPro-75Bd.woff2') format('woff2'),
+    url('#{$baseSDN}/fonts/NHaasGroteskTXPro-75Bd.woff') format('woff'),
+    url('#{$baseSDN}/fonts/NHaasGroteskTXPro-75Bd.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NHaasGroteskTXPro-65Md';
+    src: url('#{$baseSDN}/fonts/NHaasGroteskTXPro-65Md.eot');
+    src: url('#{$baseSDN}/fonts/NHaasGroteskTXPro-65Md.eot?#iefix') format('embedded-opentype'),
+    url('#{$baseSDN}/fonts/NHaasGroteskTXPro-65Md.woff2') format('woff2'),
+    url('#{$baseSDN}/fonts/NHaasGroteskTXPro-65Md.woff') format('woff'),
+    url('#{$baseSDN}/fonts/NHaasGroteskTXPro-65Md.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url('#{$baseSDN}/fonts/HelveticaNeue.eot');
+    src: url('#{$baseSDN}/fonts/HelveticaNeue.eot?#iefix') format('embedded-opentype'),
+    url('#{$baseSDN}/fonts/HelveticaNeue.woff2') format('woff2'),
+    url('#{$baseSDN}/fonts/HelveticaNeue.woff') format('woff'),
+    url('#{$baseSDN}/fonts/HelveticaNeue.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url('#{$baseSDN}/fonts/HelveticaNeue-Medium.eot');
+    src: url('#{$baseSDN}/fonts/HelveticaNeue-Medium.eot?#iefix') format('embedded-opentype'),
+    url('#{$baseSDN}/fonts/HelveticaNeue-Medium.woff2') format('woff2'),
+    url('#{$baseSDN}/fonts/HelveticaNeue-Medium.woff') format('woff'),
+    url('#{$baseSDN}/fonts/HelveticaNeue-Medium.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@import 'vars/fonts_v1';
+
+.fu-font1 {
+    @extend %font1;
+}
+
+.fu-font2 {
+    @extend %font2;
+}
+
+.fu-font3 {
+    @extend %font3;
+}
+
+.fu-font4{
+    @extend %font4;
+}
+
+.fu-font5 {
+    @extend %font5;
+}
+
+.fu-font6 {
+    @extend %font6;
+}
+
+.fu-font7 {
+    @extend %font7;
+}
+
+.fu-font8 {
+    @extend %font8;
+}
+
+.fu-font9 {
+    @extend %font9;
+}
+
+.fu-font10 {
+    @extend %font10;
+}
+
+.fu-font11 {
+    @extend %font11;
+}
+
+.fu-font12 {
+    @extend %font12;
+}
+
+.fu-font13 {
+    @extend %font13;
+}
+
+.fu-font14 {
+    @extend %font14;
+}

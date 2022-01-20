@@ -1,0 +1,331 @@
+<div class="row">
+    <div class="col-9">
+        <!--UI-Component Examples-->
+        <div class="is-example-title">Type</div>
+
+        <fusion-example-block id="typeBasic" title="Basic">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="no-bottom-margin is-collapsible"
+                    code='<fusion-layout-v1
+    [userName]="userName"
+    [state]="headerState"
+    [scrollTopOnRouteChange]="true"
+    [menuItems]="mainMenuItems"
+    [headerPrimaryMenuItems]="headerPrimaryMenuItems"
+    [headerSecondaryMenuItems]="headerSecondaryMenuItems">
+    INNER CONTENT
+</fusion-layout-v1>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            layout: {
+                userName: "Fusion User",
+                scrollTopOnRouteChange: true,
+                state: {
+                    title: ""
+                },
+                menuItems,
+                headerPrimaryMenuItems,
+                headerSecondaryMenuItems
+            }
+        }
+    }
+
+    menuItemClick(e) {
+        if (!e.redirect) {
+            return;
+        }
+        e.openNewTab ?
+            window.open(e.redirect, "_blank") :
+            this.props.history.push(e.redirect);
+    }
+
+    updateLayoutTitle(layoutState) { // layoutState => {title: string, element?: Node }
+        this.setState({layout: {...this.state.layout, state:{...layoutState} }})
+    }
+
+    render() {
+        return (
+            <FusionLayout config={this.state.layout} menuItemClick={this.menuItemClick.bind(this)}>
+                <div>
+                    <Switch>
+                        <Route path="/foo">
+                            <Foo updateLayoutTitle={this.updateLayoutTitle.bind(this)} />
+                        </Route>
+                        <Route path="/bar">
+                            <Bar updateLayoutTitle={this.updateLayoutTitle.bind(this)}/>
+                        </Route>
+                    </Switch>
+                </div>
+            </FusionLayout>
+        );
+    }
+}
+
+const headerPrimaryMenuItems = [
+    {
+        name: "IronSource",
+        cssClass: "is-user-menu-item",
+        redirect: "https://www.ironsrc.com/"",
+        openNewTab: true
+    }
+];
+
+const headerSecondaryMenuItems = [
+    {
+        name: "Knowledge Center",
+        cssClass: "is-user-menu-item",
+        redirect: "https://www.ironsrc.com/",
+        openNewTab: true
+    },
+    {
+        name: "Download SDK",
+        cssClass: "is-user-menu-item",
+        redirect: "https://www.ironsrc.com/",
+        openNewTab: true
+    },
+    {
+        name: "Contact Us",
+        cssClass: "is-user-menu-item",
+        redirect: "https://www.ironsrc.com/",
+        openNewTab: true
+    }
+];
+
+const menuItems = [
+    {
+        icon: "dashboard",
+        name: "Foo",
+        redirect: "/foo"
+    },
+    {
+        icon: "spaceship",
+        name: "Bar",
+        children: [
+            {
+                name: "New Bar",
+                redirect: "/bar",
+                cssClass: "is-user-menu-last-child-item"
+            }
+        ]
+    }
+];
+
+export default withRouter(App);'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+    <div id="app">
+        <FusionLayout :config="layout" @menuItemClick="menuItemClick">
+            <div>
+                <router-view @updateLayoutTitle="updateLayoutTitle"></router-view>
+            </div>
+        </FusionLayout>
+    </div>
+</template>'
+                ></fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import {FusionLayout} from "@ironsource/fusion-ui/native/vue";
+
+export default {
+    name: "app",
+    data() {
+    return {
+        layout: {
+            userName: "Fusion User",
+            state: {
+                title: ""
+            },
+            menuItems,
+            headerPrimaryMenuItems,
+            headerSecondaryMenuItems
+        }
+    }
+    },
+    components: {
+        FusionLayout
+    },
+    methods: {
+        menuItemClick: function(e){
+            if(e.redirect){
+                this.$router.push(e.redirect);
+            }
+        },
+        updateLayoutTitle: function(layoutState){ // layoutState => {title: string, element?: Node}
+            this.layout = {...this.layout, state:{...layoutState}};
+        }
+    }
+}
+
+const headerPrimaryMenuItems = [
+    {
+        name: "IronSource",
+        cssClass: "is-user-menu-item",
+        redirect: "https://www.ironsrc.com/",
+        openNewTab: true
+    }
+];
+
+const headerSecondaryMenuItems = [
+    {
+        name: "Knowledge Center",
+        cssClass: "is-user-menu-item",
+        redirect: "https://www.ironsrc.com/",
+        openNewTab: true
+    },
+    {
+        name: "Download SDK",
+        cssClass: "is-user-menu-item",
+        redirect: "https://www.ironsrc.com/",
+        openNewTab: true
+    },
+    {
+        name: "Contact Us",
+        cssClass: "is-user-menu-item",
+        redirect: "https://www.ironsrc.com/",
+        openNewTab: true
+    }
+];
+
+const menuItems = [
+    {
+        icon: "dashboard",
+        name: "Foo",
+        redirect: "/foo"
+    },
+    {
+        icon: "spaceship",
+        name: "Bar",
+        children: [
+            {
+            name: "New Bar",
+            redirect: "/bar",
+            cssClass: "is-user-menu-last-child-item"
+            }
+        ]
+    }
+];
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const headerPrimaryMenuItems = [
+    {
+        name: "IronSource",
+        cssClass: "is-user-menu-item",
+        redirect: "https://www.ironsrc.com/",
+        openNewTab: true
+    }
+];
+
+const headerSecondaryMenuItems = [
+    {
+        name: "Knowledge Center",
+        cssClass: "is-user-menu-item",
+        redirect: "https://www.ironsrc.com/",
+        openNewTab: true
+    },
+    {
+        name: "Download SDK",
+        cssClass: "is-user-menu-item",
+        redirect: "https://www.ironsrc.com/",
+        openNewTab: true
+    },
+    {
+        name: "Contact Us",
+        cssClass: "is-user-menu-item",
+        redirect: "https://www.ironsrc.com/",
+        openNewTab: true
+    }
+];
+
+const menuItems = [
+    {
+        icon: "dashboard",
+        name: "Foo",
+        redirect: "/foo"
+    },
+    {
+        icon: "spaceship",
+        name: "Bar",
+        children: [
+            {
+                name: "New Bar",
+                redirect: `/bar`,
+                cssClass: "is-user-menu-last-child-item"
+            }
+        ]
+    }
+];
+
+const layout = document.createElement("native-fusion-layout-v1");
+layout.config = {
+    userName: "Fusion User",
+    state: {
+        title: ""
+    },
+    menuItems,
+    headerPrimaryMenuItems,
+    headerSecondaryMenuItems
+};
+
+layout.addEventListener("menuItemClick", e => console.log(e.detail));
+
+document.body.appendChild(layout);
+'
+                ></fusion-code-block>
+            </ng-template>
+
+            <div class="row fusion-layout-example-holder" style="padding-top: 0">
+                <div class="col-12">
+                    <fusion-layout-v1
+                        [userName]="userName"
+                        [state]="headerState"
+                        [menuItems]="mainMenuItems"
+                        [headerPrimaryMenuItems]="headerPrimaryMenuItems"
+                        [headerSecondaryMenuItems]="headerSecondaryMenuItems"
+                    >
+                        INNER CONTENT
+                    </fusion-layout-v1>
+                </div>
+            </div>
+        </fusion-example-block>
+        <!--UI-Component Examples-->
+        <!--UI-Component Configuration Doc-->
+        <div class="is-example-title">Configuration</div>
+        <fusion-example-block id="params" title="Parameters" [collapsible]="false">
+            <fusion-code-block lang="js" [code]="tsCodeExample"></fusion-code-block>
+        </fusion-example-block>
+        <!--UI-Component Configuration Doc-->
+
+        <fusion-example-block id="customProperties" title="CSS Custom Properties" [collapsible]="false">
+            <fusion-table [columns]="customPropertiesTable.columns" [rows]="customPropertiesTable.rows"> </fusion-table>
+        </fusion-example-block>
+    </div>
+
+    <div class="col-3 is-right-side-menu-holder">
+        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+    </div>
+</div>

@@ -1,0 +1,563 @@
+<div class="row">
+    <div class="col-9">
+        <!--UI-Component Examples-->
+        <div class="is-example-title">Type</div>
+
+        <fusion-example-block id="typeBasic" title="Basic">
+            <!--Code Examples-->
+            <ng-template fusionExampleBlock="Angular">
+                <p>Template part:</p>
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<fusion-layout
+    [class.fu-light-theme]="isLightTheme"
+    [configuration]="layoutConfiguration"
+    (menuHeaderItemClicked)="onHeaderMenuItemClicked($event)"
+    (menuSidebarItemClicked)="onSidebarMenuItemClicked($event)"
+    (userLogout)="onUserLogout($event)" <!-- userLogout for mobile screen size only-->
+>
+    <div class="inner-content-holder"><div class="inner-content">INNER CONTENT</div></div>
+</fusion-layout>
+'
+                ></fusion-code-block>
+                <p>Code part:</p>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="...
+layoutConfiguration: LayoutComponentConfiguration = LAYOUT_CONFIGURATION;
+
+....
+    onHeaderMenuItemClicked(menuItem: SidebarMenuItem) {
+        console.log('Header menu item was clicked: ', menuItem);
+        if (menuItem.name === 'Theme toggle') {
+            this.isLightTheme = !this.isLightTheme;
+        }
+    }
+
+    onSidebarMenuItemClicked(menuItem: SidebarMenuItem) {
+        console.log('Sidebar menu item was clicked: ', menuItem);
+    }
+
+    /**
+     * For mobile screen size (on mobile screen size will be shown additional USER menu with logout icon)
+     * - user data
+     */
+    onUserLogout(user: LayoutUser) {
+        console.log('User logout: ', user);
+    }
+...."
+                ></fusion-code-block>
+                <p>Data examples:</p>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="import {SidebarMenuItem, LayoutComponentConfiguration, LayoutHeaderComponentConfiguration} from '@ironsource/fusion-ui';
+
+export const LAYOUT_USER = {
+    icon: 'v2/user-circle',
+    name: 'Example Username',
+    email: 'test@irontest.com'
+};
+
+export const LAYOUT_HEADER_MENU_ITEMS: SidebarMenuItem[] = [
+    {
+        icon: 'v2/magic',
+        name: 'Theme toggle'
+    },
+    {
+        icon: 'v2/logout',
+        name: 'Sign out',
+        route: '/docs/components/v2/mobile-previewer'
+    }
+];
+
+export const LAYOUT_SIDEBAR_MENU_ITEMS: SidebarMenuItem[] = [
+    {
+        icon: 'v2/magic',
+        name: 'Getting Started',
+        route: '/docs/components/v2/layout'
+    },
+    {
+        icon: 'v2/paper-plane',
+        name: 'Guidelines',
+        children: [
+            {
+                name: 'Colors',
+                route: '/docs/components/colors'
+            },
+            {
+                name: 'Typography ',
+                route: '/docs/components/v2/typography'
+            },
+            {
+                name: 'Override Style',
+                route: '/docs/components/override-style'
+            }
+        ]
+    },
+    {
+        icon: 'v2/apps',
+        name: 'Components',
+        children: [
+            {
+                name: 'Alert',
+                route: '/docs/components/alert'
+            },
+            {
+                name: 'Accordion',
+                route: '/docs/components/accordion'
+            },
+            {
+                name: 'Charts',
+                route: '/docs/components/charts'
+            },
+            {
+                name: 'Some Group',
+                children: [
+                    {
+                        name: 'Alert',
+                        route: '/docs/components/v2/alert'
+                    },
+                    {
+                        name: 'Charts',
+                        route: '/docs/components/v2/charts'
+                    }
+                ]
+            },
+            {
+                name: 'Checkbox',
+                route: '/docs/components/checkbox'
+            }
+        ]
+    },
+    {
+        icon: 'info-circle',
+        name: 'Target Link Example',
+        routeConfigurations: {
+            href: 'http://developers.ironsrc.com',
+            target: '_blank'
+        }
+    }
+];
+
+export const LAYOUT_HEADER_CONFIGURATION: LayoutHeaderComponentConfiguration = {
+    title: 'Header Title',
+    menuItems: LAYOUT_HEADER_MENU_ITEMS
+};
+
+export const LAYOUT_CONFIGURATION: LayoutComponentConfiguration = {
+    sidebarMenuItems: LAYOUT_SIDEBAR_MENU_ITEMS,
+    headerConfiguration: LAYOUT_HEADER_CONFIGURATION,
+    user: LAYOUT_USER
+};
+...."
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import React from "react";
+import "./App.css";
+import {FusionLayout} from "@ironsource/fusion-ui/native/react";
+import {Switch, Route, withRouter} from "react-router-dom";
+import Bar from "./components/Bar";
+import Foo from "./components/Foo";
+
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      layout: {
+        configuration: LAYOUT_CONFIGURATION
+      }
+    }
+  }
+
+  componentDidMount() {
+    document.body.classList.add("fusion-style-v2");
+  }
+
+  menuItemClick(menuItem) {
+    if (!menuItem.route) {
+      return;
+    }
+    this.props.history.push(menuItem.route);
+  }
+
+  onSidebarMenuClicked(menuItem){
+    this.menuItemClick(menuItem)
+  }
+
+  onHeaderMenuClicked(menuItem){
+    this.menuItemClick(menuItem)
+  }
+
+  updateLayoutTitle(state) {
+    const headerConfiguration = {...this.state.layout.configuration.headerConfiguration, title: state.title}
+    const configuration = {...this.state.layout.configuration, headerConfiguration: headerConfiguration }
+
+    this.setState({layout: {...this.state.layout, configuration: configuration}});
+  }
+
+  render() {
+    return (
+      <FusionLayout config={this.state.layout} menuSidebarItemClicked={this.onSidebarMenuClicked.bind(this)} menuHeaderItemClicked={this.onHeaderMenuClicked.bind(this)}>
+        <div>
+          <Switch>
+            <Route path="/foo">
+              <Foo updateLayoutTitle={this.updateLayoutTitle.bind(this)} />
+            </Route>
+            <Route path="/bar">
+              <Bar updateLayoutTitle={this.updateLayoutTitle.bind(this)} />
+            </Route>
+          </Switch>
+        </div>
+      </FusionLayout>
+    );
+  }
+};
+
+const LAYOUT_USER = {
+  icon: "v2/user-circle",
+  name: "Example Username",
+  email: "test@irontest.com"
+};
+
+const LAYOUT_HEADER_MENU_ITEMS = [
+  {
+    icon: "v2/user-tie",
+    name: "My account",
+    route: "/account"
+  },
+  {
+    icon: "v2/logout",
+    name: "Sign out",
+    route: "/logout"
+  }
+];
+
+const LAYOUT_SIDEBAR_MENU_ITEMS = [
+  {
+    icon: "dashboard",
+    name: "Foo",
+    route: "/foo"
+  },
+  {
+    icon: "spaceship",
+    name: "Bar",
+    children: [
+      {
+        name: "New Bar",
+        route: "/bar",
+      }
+    ]
+  }
+
+];
+
+const LAYOUT_HEADER_CONFIGURATION = {
+  title: "Header Title",
+  menuItems: LAYOUT_HEADER_MENU_ITEMS
+};
+
+const LAYOUT_CONFIGURATION = {
+  sidebarMenuItems: LAYOUT_SIDEBAR_MENU_ITEMS,
+  headerConfiguration: LAYOUT_HEADER_CONFIGURATION,
+  user: LAYOUT_USER
+};
+
+export default withRouter(App);
+'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div id="app">
+    <FusionLayout :config="layout" @menuSidebarItemClicked="menuItemClick" @menuHeaderItemClicked="menuItemClick">
+      <div>
+        <router-view @updateLayoutTitle="updateLayoutTitle"></router-view>
+      </div>
+    </FusionLayout>
+    <FusionTooltip :config="tooltip" v-if="tooltip.tooltipData.content"/>
+  </div>
+</template>'
+                ></fusion-code-block>
+
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="<script>
+
+import {FusionLayout, FusionTooltip} from '@ironsource/fusion-ui/native/vue';
+
+export default {
+  name: 'app',
+  mounted() {
+    document.body.classList.add('fusion-style-v2');
+    setTimeout(this.initFusionServices);
+  },
+  data() {
+    return {
+      layout: {
+        configuration: LAYOUT_CONFIGURATION
+      },
+      tooltip: {tooltipData: {}}
+    }
+  },
+  components: {
+    FusionLayout, FusionTooltip
+  },
+  methods: {
+    initFusionServices() {
+      this.tooltipService = window.fusion.services.tooltipService;
+      this.tooltipDataSubscription = this.tooltipService.tooltipData$
+          .subscribe(tooltipData => this.tooltip = {tooltipData});
+    },
+    menuItemClick: function(menuItem){
+      if(menuItem.route && menuItem.route !== this.$router.currentRoute.path){
+        this.$router.push(menuItem.route);
+      }
+    },
+    updateLayoutTitle: function(titleState){
+      const headerConfiguration = {...this.layout.configuration.headerConfiguration, title: titleState.title}
+      const configuration = {...this.layout.configuration, headerConfiguration: headerConfiguration }
+
+
+
+      this.layout = {...this.layout, configuration: configuration};
+    }
+  },
+  beforeDestroy() {
+    this.tooltipDataSubscription.unsubscribe();
+  },
+}
+
+const LAYOUT_USER = {
+  icon: 'v2/user-circle',
+  name: 'Example Username',
+  email: 'test@irontest.com'
+};
+
+const LAYOUT_HEADER_MENU_ITEMS = [
+  {
+    icon: 'v2/user-tie',
+    name: 'My account',
+    route: '/account'
+  },
+  {
+    icon: 'v2/logout',
+    name: 'Sign out',
+    route: '/logout'
+  }
+];
+
+const LAYOUT_SIDEBAR_MENU_ITEMS = [
+  {
+    icon: 'dashboard',
+    name: 'Foo',
+    route: '/foo'
+  },
+  {
+    icon: 'spaceship',
+    name: 'Bar',
+    children: [
+      {
+        name: 'New Bar',
+        route: `/bar`,
+      }
+    ]
+  }
+
+];
+
+const LAYOUT_HEADER_CONFIGURATION = {
+  title: 'Header Title',
+  menuItems: LAYOUT_HEADER_MENU_ITEMS
+};
+
+const LAYOUT_CONFIGURATION = {
+  sidebarMenuItems: LAYOUT_SIDEBAR_MENU_ITEMS,
+  headerConfiguration: LAYOUT_HEADER_CONFIGURATION,
+  user: LAYOUT_USER
+};
+</script>"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code="
+// data for layout configuration
+const LAYOUT_USER = {
+    icon: 'v2/user-circle',
+    name: 'Example Username',
+    email: 'test@irontest.com'
+};
+
+const LAYOUT_HEADER_MENU_ITEMS = [
+    {
+        icon: 'v2/user-tie',
+        name: 'My account',
+        route: '/account'
+    },
+    {
+        icon: 'v2/logout',
+        name: 'Sign out',
+        route: '/logout'
+    }
+];
+
+const LAYOUT_SIDEBAR_MENU_ITEMS = [
+    {
+        icon: 'dashboard',
+        name: 'Foo',
+        route: '/foo'
+    },
+    {
+        icon: 'spaceship',
+        name: 'Bar',
+        children: [
+            {
+                name: 'New Bar',
+                route: `/bar`,
+            }
+        ]
+    }
+
+];
+
+const LAYOUT_HEADER_CONFIGURATION = {
+    title: 'Header Title',
+    menuItems: LAYOUT_HEADER_MENU_ITEMS
+};
+
+const LAYOUT_CONFIGURATION = {
+    sidebarMenuItems: LAYOUT_SIDEBAR_MENU_ITEMS,
+    headerConfiguration: LAYOUT_HEADER_CONFIGURATION,
+    user: LAYOUT_USER
+};
+
+
+const onLoad = () => {
+    const layout = document.createElement('native-fusion-layout');
+    layout.config = {
+        configuration: LAYOUT_CONFIGURATION
+    }
+
+    document.body.appendChild(layout);
+
+    layout.addEventListener('menuSidebarItemClicked', menuItem=>{
+        console.log('Sidebar menu item clicked: ', menuItem);
+    })
+
+    layout.addEventListener('menuHeaderItemClicked', menuItem=>{
+        console.log('Header menu item clicked: ', menuItem);
+    })
+
+    layout.addEventListener('userLogout', userData=>{
+        console.log('User logout: ', userData);
+    })
+};
+
+document.addEventListener('DOMContentLoaded', onLoad, false);
+"
+                ></fusion-code-block>
+            </ng-template>
+            <!--Code Examples-->
+
+            <div class="row">
+                <div class="col-12 fusion-layout-example-holder">
+                    <fusion-layout
+                        [class.fu-light-theme]="isLightTheme"
+                        [configuration]="layoutConfiguration"
+                        (menuHeaderItemClicked)="onHeaderMenuItemClicked($event)"
+                        (menuSidebarItemClicked)="onSidebarMenuItemClicked($event)"
+                        (userLogout)="onUserLogout($event)"
+                    >
+                        <div class="inner-content-holder"><div class="inner-content">INNER CONTENT</div></div>
+                    </fusion-layout>
+                </div>
+            </div>
+        </fusion-example-block>
+        <!--UI-Component Examples-->
+        <!--UI-Component Configuration Doc-->
+        <div class="is-example-title">Configuration</div>
+        <fusion-example-block id="params" title="Parameters">
+            <fusion-code-block
+                lang="js"
+                code="
+// supported screen sizes:
+Desktop: 1280 < X
+Tablet: 768 < X < 1279
+Mobile: X < 767
+
+export interface LayoutUser {
+    icon?: string;
+    name?: string;
+    email?: string;
+}
+
+interface SidebarMenuItem {
+    icon?: string;
+    name?: string; // not in use if has content
+    route?: string;
+    routeConfigurations?: {href: string; target?: string}; // for using without route but with <a:href...
+    class?: string;
+    children?: SidebarMenuItem[];
+    additionalAction?: SidebarMenuItem;
+    data?: any;
+    content?: DynamicComponentConfiguration;
+}
+
+interface LayoutHeaderComponentConfiguration {
+    title?: string;
+    content?: DynamicComponentConfiguration; // header dynamic content
+    menuItems?: SidebarMenuItem[];
+    user?: LayoutUser;
+}
+
+DynamicComponentConfiguration {
+    component?: {
+        type: Type<Component>;
+        data?: any;
+    };
+    element?: Node;
+    htmlSnippet?: string;
+}
+
+export interface LayoutHeaderComponentConfiguration {
+    title?: string;
+    content?: DynamicComponentConfiguration; // header dynamic content
+    menuItems?: SidebarMenuItem[];
+    user?: LayoutUser;
+}
+
+export interface LayoutComponentConfiguration {
+    sidebarMenuItems?: SidebarMenuItem[];
+    headerConfiguration?: LayoutHeaderComponentConfiguration;
+    user?: LayoutUser;
+    pathNameNormalizeRegex?: RegExp;  // used fo remove part of URL pathName for detect active menu item by route
+    logoClickable?: boolean; // used to male sidebar logo clickable and emit event 'logoClicked' if logo was clicked
+}
+"
+            ></fusion-code-block>
+        </fusion-example-block>
+        <!--UI-Component Configuration Doc-->
+        <br />
+        <fusion-example-block id="customProperties" title="CSS Custom Properties" [collapsible]="false">
+            <fusion-table [columns]="customPropertiesTable.columns" [rows]="customPropertiesTable.rows"> </fusion-table>
+        </fusion-example-block>
+    </div>
+
+    <div class="col-3 is-right-side-menu-holder">
+        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+    </div>
+</div>

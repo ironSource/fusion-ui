@@ -1,0 +1,15 @@
+<tr>
+    <td class="is-nodata" [attr.colspan]="fusionTableEmpty">
+        <ng-container *ngIf="customContent">
+            <fusion-dynamic-components [configuration]="customContent"></fusion-dynamic-components>
+        </ng-container>
+        <ng-container *ngIf="!customContent">
+            <div class="icon-container" *ngIf="icon">
+                <fusion-icon class="empty-table-icon" [name]="icon"></fusion-icon>
+            </div>
+            <div *ngIf="showNoDataImage" class="no-data-img"></div>
+            <label>{{ header }}</label>
+            <div class="is-nodata-sub" *ngIf="subHeader">{{ subHeader }}</div>
+        </ng-container>
+    </td>
+</tr>

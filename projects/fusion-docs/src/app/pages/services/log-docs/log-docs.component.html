@@ -1,0 +1,39 @@
+<div class="doc-page">
+    <div class="row">
+        <div class="col-9">
+
+            <h2>Log Service</h2>
+
+            <fusion-example-block id="howToUse"
+                                  title="How to use"
+                                  [collapsible]="false">
+                <fusion-code-block lang="js"
+                                   code='1. In your component/service inject the LogService in the constructor
+2. If you want to config production env status add
+  {
+    provide: IS_PRODUCTION_ENV,
+    useFactory: () => true/false
+  }
+  to the providers section on app.module.ts'>
+                </fusion-code-block>
+            </fusion-example-block>
+
+
+            <fusion-example-block id="methods"
+                                  title="Methods"
+                                  [collapsible]="false">
+                <fusion-code-block lang="js"
+                                   code='error(error: Error): void;
+warning(message: string): void;
+console(message: string): void;'></fusion-code-block>
+
+
+            </fusion-example-block>
+
+        </div>
+
+        <div class="col-3 is-right-side-menu-holder">
+            <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+        </div>
+    </div>
+</div>

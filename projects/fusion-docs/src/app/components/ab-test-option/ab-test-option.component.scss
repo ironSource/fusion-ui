@@ -1,0 +1,21 @@
+@import "../../../../../fusion-ui/src/style/scss/vars/vars";
+@import "../../../../../fusion-ui/src/style/scss/vars/colors";
+
+:host {
+    display: block;
+    padding: 2px 0;
+    .fu-test-title-wrapper{;
+        display: flex;
+        color: $dark-100;
+        @extend %font-bodyStrong;
+        line-height: 1.4;
+    }
+    .fu-test-status-wrapper{
+        display: block;
+        color: $light-800;
+        @extend %font6;
+        text-transform: capitalize;
+        line-height: 1.5;
+        --icon-status-color-grey: #c2cdd7;
+    }
+}

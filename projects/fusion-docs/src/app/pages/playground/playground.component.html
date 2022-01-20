@@ -1,0 +1,25 @@
+<form [formGroup]="group">
+    <fusion-input autofocus
+                  formControlName="password"
+                  id="password"
+                  placeholder="New Password"
+                  type="password"
+                  name="password"
+                  class="entranceInput"
+                  [fusionErrorMessage]="'Password'"
+                  [showError]="group.get('password').dirty"
+                  [customMapping]="{ maxValue : '8' }"
+                  [customMessages]="{ pattern: CUSTOM_ERRORS_MESSAGES.PATTERN }"
+                  [required]="true"> </fusion-input>
+
+    <fusion-input formControlName="confirm"
+                  id="confirm"
+                  placeholder="Confirm New Password"
+                  type="password"
+                  name="confirm"
+                  class="entranceInput"
+                  [fusionErrorMessage]="'Confirm'"
+                  [showError]="group.get('confirm').dirty"
+                  [customMessages]="{ noMatch: CUSTOM_ERRORS_MESSAGES.NO_MATCH }">
+    </fusion-input>
+</form>

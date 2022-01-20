@@ -1,0 +1,132 @@
+@import '../../../../style/scss/vars/vars';
+@import '../../../../style/scss/vars/mixins';
+@import '../../../../style/scss/vars/border';
+
+
+$backgroundColor:  #25282c;
+$foregroundColor: $White;
+$borerRadius: 4px;
+
+:host:not(.fusion-style-v1){
+    .fusion-video-preview {
+        border-radius: var(--player-border-radius, #{$borerRadius});
+        position: relative;
+        background-color: var(--player-background-color, #{$backgroundColor});
+        overflow: hidden;
+        .is-video-exists,
+        .is-no-video{
+            color: var(--player-foreground-color, #{$foregroundColor});
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            @include icon-style('fu-icon-no-video', currentColor, 100%, false, true){
+                width: 20%;
+                height: 20%;
+                margin-bottom: 2%;
+            };
+
+        }
+
+        .is-video-exists{
+            video{
+                border-radius: var(--player-border-radius, #{$borerRadius});
+            }
+            .is-video-action-button {
+                position: absolute;
+                z-index: getZIndexLayerOffset(application, 1);
+                width: 16%;
+                top: 34%;
+                left: 42%;
+                cursor: pointer;
+                @include icon-style('button-play', $White, 100%, false, true);
+                @include icon-style('button-pause', $White, 100%, false, true) {
+                    opacity: 0;
+                }
+
+            }
+            &:hover {
+                .is-video-action-button {
+                    @include icon-style('button-pause', $White, 100%, false, true) {
+                        opacity: 1;
+                    }
+                }
+            }
+            .is-video-duration-holder{
+                position: absolute;
+                bottom: 6px;
+                left: 10px;
+                @include icon-style('icon-video-camera', $White, null, false, true){
+                    margin-right: 5px;
+                }
+            }
+            .video-timing{
+                @extend %font-captionRegular;
+                color: $White;
+            }
+
+            .vide-controls-overlay{
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 32px;
+                border-radius: 4px;
+                background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000);
+            }
+            .video-controls-holder{
+                position: absolute;
+                bottom: 6px;
+                left: 10px;
+                right: 10px;
+                display: flex;
+                align-items: center;
+
+                .control-play-pause{
+                    padding-top: 2px;
+                    .control-button-play,
+                    .control-button-pause{
+                        &:hover{
+                            cursor: pointer;
+                        }
+                    }
+                    @include icon-style('control-button-play', $White, null, false, true);
+                    @include icon-style('control-button-pause', $White, null, false, true);
+                }
+
+                progress[value]{
+                    /* Reset the default appearance */
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                    /* Get rid of default border in Firefox. */
+                    border: none;
+
+                    /* Dimensions */
+                    height: 4px;
+                    margin-left: 5px;
+                    margin-right: 5px;
+                    width: calc(100% - 45px);
+
+                    &::-webkit-progress-bar{
+                        border-radius: 2px;
+                        background-color: rgba(255, 255, 255, 0.2);
+                    }
+                    &::-webkit-progress-value {
+                        border-radius: 2px;
+                        background-color: $fu-primary-500;
+                    }
+
+                    /* Firefox */
+                    &::-moz-progress-bar{
+                        color: $fu-primary-500;
+                        background-color: rgba(255, 255, 255, 0.2);
+                    }
+                }
+            }
+        }
+
+    }
+}

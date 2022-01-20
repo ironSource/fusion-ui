@@ -1,0 +1,34 @@
+<div class="layout-wrapper" [ngClass]="{collapsed: isMainMenuCollapsed, 'menu-opened': isMenuOpened}">
+    <fusion-header
+        [userName]="userName"
+        [headerMenuUserNameIcon]="headerMenuUserNameIcon"
+        [primaryMenuIconName]="headerPrimaryMenuIconName"
+        [primaryMenuItems]="headerPrimaryMenuItems"
+        [secondaryMenuItems]="headerSecondaryMenuItems"
+        [state]="state"
+        [isMainMenuCollapsed]="isMainMenuCollapsed"
+        (menuItemClick)="onMenuItemClicked($event)"
+        (menuStateChanged)="onMenuStateChanged($event)"
+        (logoClick)="onLogoClicked()"
+    >
+    </fusion-header>
+
+    <!--Main Menu-->
+    <fusion-menu
+        [menuItems]="menuItems"
+        (menuItemClicked)="onMenuItemClicked($event)"
+        (menuAdditionalItemClicked)="onMenuAdditionalItemClicked($event)"
+        (mouseLeave)="onMouseLeave()"
+        (mouseEnter)="onMouseEnter()"
+        (routeChanged)="routeChanged()"
+        [ngClass]="{opened: isMenuOpened, collapsed: isMainMenuCollapsed}"
+    ></fusion-menu>
+    <!--Main Menu END -->
+    <div #mainContent class="main-content" id="main-view">
+        <div class="page-view">
+            <div class="app-route-content-holder" [hidden]="loading">
+                <ng-content></ng-content>
+            </div>
+        </div>
+    </div>
+</div>

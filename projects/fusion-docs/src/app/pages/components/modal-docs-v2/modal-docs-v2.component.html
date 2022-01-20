@@ -1,0 +1,720 @@
+<fusion-notification [data]="notificationService.notification$ | async" (onClose)="onNotificationClose($event)"></fusion-notification>
+<div class="row">
+    <div class="col-9">
+        <!--UI-Component Examples-->
+        <div class="is-example-title">Types</div>
+        <fusion-example-block id="notification" title="Notification">
+            <!--Examples by frameworks-->
+            <ng-template fusionExampleBlock="Angular">
+                1. in application "root" component add notification component
+                <fusion-code-block
+                    lang="html"
+                    code='<fusion-notification [data]="notificationService.notification$ | async"></fusion-notification>'
+                >
+                </fusion-code-block>
+                and inject NotificationService in constructor as public
+                <fusion-code-block
+                    lang="js"
+                    code="constructor(..., public notificationService: NotificationService, ....) {}"
+                ></fusion-code-block>
+                <br />
+                2. In your component/service inject the NotificationService in the constructor
+                <fusion-code-block
+                    lang="js"
+                    code="constructor(..., private notificationService: NotificationService, ....) {}"
+                ></fusion-code-block>
+                <br />
+                3. Add (as example) buttons to the component template
+                <fusion-code-block
+                    lang="html"
+                    code='<button fusion-button (click)="showNotification(`Basic`)">Basic</button>
+
+<button fusion-button (click)="showNotification(`Info`)">Info</button>
+
+<button fusion-button (click)="showNotification(`Success`)">Success</button>
+
+<button fusion-button (click)="showNotification(`Error`)">Error</button>
+
+<button fusion-button (click)="showNotification(`Warning`)">Warning</button>
+
+<button fusion-button (click)="showNotification(`Delete`)">Delete</button>
+'
+                ></fusion-code-block>
+                <br />
+                3. Use it by this.notificationService.showNotification(notification) and this.notificationService.hideNotification();
+                methods:
+                <fusion-code-block
+                    lang="js"
+                    code='// Please note, that it just example
+showNotification(type: string): void {
+    this.notificationService.showNotification({
+        type: NotificationType[type],
+        title: `${type} Notification Title`,
+        content: "Are you sure lorem ipsum dolor sit amet, Consectetur adipiscing elit?",
+        buttons: {
+            secondary: {
+                label: "Cancel",
+                onClick: () => {
+                    this.notificationService.hideNotification();
+                }
+            },
+            primary: {
+                label: type === `Delete` ? `Delete` : `Ok`,
+                class: type === `Delete` ? `negative` : ``,
+                onClick: () => {
+                    if (type === `Delete`) {
+                        this.notificationService.setPrimaryButtonLoadingState(true);
+                        setTimeout(() => {
+                            this.notificationService.setPrimaryButtonLoadingState(false);
+                            this.notificationService.hideNotification();
+                        }, 2000);
+                    } else {
+                        this.notificationService.hideNotification();
+                    }
+                }
+            }
+        }
+    }
+  }
+);'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                See component code example:
+                <fusion-code-block
+                    lang="js"
+                    code='import React from "react";
+import {
+    FusionButton,
+    FusionNotification
+} from "@ironsource/fusion-ui/native/react";
+
+
+export default class Foo extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            notification: {data:{}}
+        }
+    }
+
+    showNotification() {
+        this.setState({
+            notification: {
+                ...this.state.notification, data: {
+                    type: window.fusion.enums.NotificationType.Info,
+                    title: "Notification Title",
+                    content:
+                        "Are you sure lorem ipsum dolor sit amet, Consectetur adipiscing elit?",
+                    buttons: {
+                        secondary: {
+                            label: "Cancel",
+                            onClick: () => {
+                                this.hideNotification();
+                            }
+                        },
+                        primary: {
+                            label: "Ok",
+                            onClick: () => {
+                                this.hideNotification();
+                            }
+                        }
+                    },
+                    shown: true
+                }
+            }
+        });
+    }
+
+    hideNotification(){
+        this.setState({
+            notification: {
+                ...this.state.notification, data:{}
+            }
+        });
+    }
+
+    render() {
+        return (
+            <div>
+                <div>
+                    <FusionButton onclick={this.showNotification.bind(this)}><span>Open Modal</span></FusionButton>
+                </div>
+                <FusionNotification config={this.state.notification}></FusionNotification>
+            </div>
+        )
+    }
+
+}'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                Vue component-host file template part
+                <fusion-code-block
+                    lang="html"
+                    code='<template>
+    <div>
+        <FusionButton :config="button" @onclick="onclick">
+            <span>Open Notification</span>
+        </FusionButton>
+        <FusionNotification :config="notification"></FusionNotification>
+    </div>
+</template>'
+                ></fusion-code-block>
+                <br />
+                Vue component-host file script part
+                <fusion-code-block
+                    lang="js"
+                    code='import {FusionButton, FusionNotification} from "@ironsource/fusion-ui/native/vue";
+
+export const TestComponent = {
+    name: "TestComponent",
+    data() {
+        return {
+            notification:{data:{}},
+            button: {
+                icon: "git-hub"
+            }
+        }
+    },
+    components: {
+        FusionButton,
+        FusionNotification
+    },
+    methods: {
+        onclick: function () {
+            this.notification = {...this.notification,
+                data:{
+                    type: window.fusion.enums.NotificationType.Info,
+                    title: "Notification Title",
+                    content:
+                        "Are you sure lorem ipsum dolor sit amet, Consectetur adipiscing elit?",
+                    buttons: {
+                        secondary: {
+                            label: "Cancel",
+                            onClick: () => {
+                                this.notification = {...this.notification, data:{}};
+                            }
+                        },
+                        primary: {
+                            label: "Ok",
+                            onClick: () => {
+                                this.notification = {data:{}};
+                            }
+                        }
+                    },
+                    shown: true
+                }
+            };
+        }
+    }
+};
+
+export default TestComponent;'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                1. Define and add to the DOM notification component
+                <fusion-code-block
+                    lang="js"
+                    code='const notification = document.createElement("native-fusion-notification");
+notification.config = {};
+document.body.appendChild(notification);'
+                ></fusion-code-block>
+                <br />
+                2. Define helper methods
+                <fusion-code-block
+                    lang="js"
+                    code="const showNotification = (notificationEl, notificationData) => {
+    notificationEl.config = {
+        data: { ...notificationData, shown: true }
+    };
+};
+const hideNotification = notificationEl => {
+    notificationEl.config = {
+        data: {shown: false}
+    };
+};"
+                ></fusion-code-block>
+                <br />
+                3. Define notification data
+                <fusion-code-block
+                    lang="js"
+                    code='const notificationData = {
+    type: window.fusion.enums.NotificationType.Info,
+    title: "Notification Title",
+    content: "Are you sure lorem ipsum dolor sit amet, Consectetur adipiscing elit?",
+    buttons: {
+        secondary: {
+            label: "Cancel",
+            onClick: () => {
+                hideNotification(notification);
+            }
+        },
+        primary: {
+            label: "Ok",
+            onClick: () => {
+                hideNotification(notification);
+            }
+        }
+    }
+};'
+                ></fusion-code-block>
+                <br />
+                4. Use helper method show notification
+                <fusion-code-block lang="js" code="showNotification(notification, notificationData);"></fusion-code-block>
+            </ng-template>
+            <!--Examples by frameworks-->
+
+            <br />
+            <div class="is-example-holder as-flex center">
+                <button fusion-button (click)="showNotification('Basic')">Basic</button>
+
+                <button fusion-button (click)="showNotification('Info')">Info</button>
+
+                <button fusion-button (click)="showNotification('Success')">Success</button>
+
+                <button fusion-button (click)="showNotification('Error')">Error</button>
+
+                <button fusion-button (click)="showNotification('Warning')">Warning</button>
+
+                <button fusion-button (click)="showNotification('Delete')">Delete</button>
+            </div>
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="dialog" title="Dialog">
+            <!--Examples by frameworks-->
+            <ng-template fusionExampleBlock="Angular">
+                1. Add modal to your component
+                <fusion-code-block
+                    lang="html"
+                    code='<fusion-modal id="uniqueID"
+    width="600"
+    headerText="Overlay Title"
+    (onSave)="saveClicked(`uniqueID`)">
+        <!-- Any modal content -->
+        <div> Modal Content </div>
+        <!-- Any modal content -->
+</fusion-modal>'
+                ></fusion-code-block>
+                <br />
+                2. inject ModalService in your component constructor as public
+                <fusion-code-block lang="js" code="constructor(...,  private modalService: ModalService, ...) {}"></fusion-code-block>
+                <br />
+                3. Use modal service for open / hide your modal by modal unique ID that was provided as fusion-modal parameter.
+                <fusion-code-block
+                    lang="js"
+                    code='// open modal
+this.modalService.open("uniqueID");
+// close modal
+this.modalService.close("uniqueID");'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                Example code:
+                <fusion-code-block
+                    lang="js"
+                    code='import React from "react";
+import "./App.css";
+import {
+  FusionModal,
+  FusionButton
+} from "@ironsource/fusion-uifusion-native/react";
+
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+            this.state = {
+            modal: {
+                id: "testModal",
+                headerText: "This is a test modal",
+                width: 600
+            }
+        }
+    }
+
+    onModalOpen() {
+        console.log("Modal Open");
+    }
+
+    onModalClose() {
+        console.log("Modal Closed");
+    }
+
+    onModalSaveButtonClicked(){
+        console.log("Modal Save button clicked");
+        window.fusion.services.modalService.close("testModal");
+        // or if you need suppress modal "onClose" event.
+        // window.fusion.services.modalService.close("testModal", {emitEvent: false});
+    }
+
+
+    openModal(){
+        window.fusion.services.modalService.open("testModal");
+    }
+
+    render() {
+        return (
+            <div>
+                <FusionModal config={this.state.modal}
+                             onOpen={this.onModalOpen}
+                             onClose={this.onModalClose}
+                             onSave={this.onModalSaveButtonClicked}>
+                    <span>Modal Content Here</span>
+                </FusionModal>
+                <FusionButton onclick={this.openModal}><span>Open Modal</span></FusionButton>
+            </div>
+        )
+    }
+}
+export default App;'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                Example code:
+                <fusion-code-block
+                    lang="js"
+                    code='<template>
+    <div>
+        <FusionButton :config="button" @onclick="onclick">
+            <span>Open Modal</span>
+        </FusionButton>
+        <FusionModal :config="modal" @onOpen="onModalOpened" @onClose="onModalClose" @onSave="onModalSaveButtonClicked">
+            <span><b>Well done!</b> Modal Content</span>
+        </FusionModal>
+    </div>
+</template>
+
+<script>
+    import {FusionModal, FusionButton} from "@ironsource/fusion-uifusion-native/vue/fusion-vue.vue";
+
+    export const TestComponent = {
+        name: "TestComponent",
+        data() {
+            return {
+                modal: {
+                    id: "testModal",
+                    headerText: "This is a test modal",
+                    width: 600
+                },
+                button: {
+                    icon: "git-hub"
+                }
+            }
+        },
+        components: {
+            FusionModal,
+            FusionButton
+        },
+        methods: {
+            onclick: function () {
+                window.fusion.services.modalService.open("testModal");
+            },
+            onModalOpened: function () {
+                console.log("Modal Open");
+            },
+            onModalClose: function () {
+                console.log("Modal Close");
+            },
+            onModalSaveButtonClicked: function () {
+                console.log("Modal Save button clicked");
+                window.fusion.services.modalService.close("testModal");
+                // or if you need suppress modal "onClose" event.
+                // window.fusion.services.modalService.close("testModal", {emitEvent: false});
+            },
+        }
+    };
+export default TestComponent;
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                1. Define and add modal to DOM with attached event listeners
+                <fusion-code-block
+                    lang="js"
+                    code='// define modal
+const modal = document.createElement("native-fusion-modal");
+modal.config = {
+    id: "testModal",
+    headerText: "This is a test modal",
+    width: 600
+};
+
+// attach event listeners
+modal.addEventListener("onOpen", e => console.log(e));   // occur on modal opened
+modal.addEventListener("onClose", e => console.log(e));  // occur on modal close (icon [X] (close) on top right of modal,
+                                                         // button [Cancel] clicked, or called modalService method close(modalId))
+
+modal.addEventListener("onSave", e => {                  // occur on Primary button "Save" click
+        console.log(e);
+        fusion.services.modalService.close("testModal"); // (in this case you`ll need close modal by calling modalService method close(modalId))
+    });
+
+// add modal to the DOM
+document.body.appendChild(modal);'
+                ></fusion-code-block>
+                <br />
+                2. Show it use modal service 'open' method with modal id as parameter
+                <fusion-code-block lang="js" code='fusion.services.modalService.open("testModal");'></fusion-code-block>
+                <br />
+                3. Close it use modal service 'close' method with modal id as parameter
+                <fusion-code-block
+                    lang="js"
+                    code='fusion.services.modalService.close("testModal");
+
+// if you want suppress modal event "onClose" just add optional parameter  {emitEvent = false}
+fusion.services.modalService.close("testModal", {emitEvent = false})'
+                ></fusion-code-block>
+            </ng-template>
+            <!--Examples by frameworks-->
+            <br />
+            <div class="is-example-holder as-flex center">
+                <button fusion-button (click)="modalService.open('testModal1')" class="stroke">Dialog</button>
+            </div>
+
+            <fusion-modal id="testModal1" width="600" [isClosed]="true" headerText="Overlay Title" [isClosed]="true" (onSave)="saveClicked('testModal1')">
+                <div style="background-color: rgb(255,242,242); border: solid 1px rgb(247,232,238); text-align: center; color:#313d91;">
+                    <p>Modal content</p>
+                </div>
+            </fusion-modal>
+        </fusion-example-block>
+
+        <div class="is-example-title">States</div>
+        <fusion-example-block id="modalLoadingPage" title="Loading content">
+            <fusion-code-block
+                lang="html"
+                class="is-collapsible"
+                code='HTML:
+
+<button fusion-button
+        (click)="modalService.open("testModalLoadingPage")"
+        class="stroke">Functional Overlay</button>
+
+<fusion-modal id="testModalLoadingPage"
+            width="600"
+            headerText="Overlay Title"
+            (onClose)="closeModal()"
+            (onSave)="saveClicked("testModalLoadingPage")">
+  <ng-container *ngIf="{loadModalContent: loadModalContent$ | async} as data">
+    <fusion-loader *ngIf="!data.loadModalContent"
+                    [status]="true"
+                    height="50">Loading Please Wait...</fusion-loader>
+    <div *ngIf="data.loadModalContent"
+          class="content">
+      <p>Modal Content</p>
+    </div>
+  </ng-container>
+</fusion-modal>
+
+*loadModalContent$ represent boolean observable, emits false when open and true when content arrived'
+            ></fusion-code-block>
+
+            <div class="is-example-holder as-flex center">
+                <button fusion-button (click)="modalService.open('testModalLoadingPage'); modalButtonClick$.next()">
+                    Loader Overlay
+                </button>
+            </div>
+            <fusion-modal
+                id="testModalLoadingPage"
+                width="600"
+                headerText="Overlay Title"
+                [isClosed]="true"
+                (onClose)="closeModal()"
+                (onSave)="saveClicked('testModalLoadingPage')"
+            >
+                <ng-container *ngIf="{loadModalContent: loadModalContent$ | async} as data">
+                    <fusion-loader *ngIf="!data.loadModalContent" [status]="true" height="45">Loading Please Wait...</fusion-loader>
+                    <div
+                        *ngIf="data.loadModalContent"
+                        style="background-color: rgb(255,242,242); border: solid 1px rgb(247,232,238); text-align: center; height: 100%"
+                    >
+                        <p>Modal content</p>
+                    </div>
+                </ng-container>
+            </fusion-modal>
+        </fusion-example-block>
+
+        <!--UI-Component Configuration Doc-->
+        <div class="is-example-title">Configuration</div>
+        <fusion-example-block id="paramsNotification" title="Notification parameters" [collapsible]="false">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="js"
+                    code="enum NotificationType {
+    Basic = 1,
+    Success = 2,
+    Error = 3,
+    Info = 4,
+    Warning = 5,
+    Delete = 6
+}
+
+interface NotificationActionButton {
+    label: string;
+    onClick?: any;
+    class?: string;
+    loading?: boolean;
+}
+
+interface Notification {
+    type: NotificationType;
+    title: string;
+    content: string;
+    buttons?: {
+        secondary?: NotificationActionButton;
+        primary: NotificationActionButton;
+    };
+    shown?: boolean;
+}"
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    code='Notification: {
+    type: number,   // 1-"Basic" | 2-"Success" | 3-"Error" | 4-"Info" | 5-"Warning"
+    title: string,            // Notification title
+    content: string           // Notification message,
+    buttons: {
+        secondary: {
+            label: string,    // Secondary button text
+            class: string,    // Secondary button class (optional)
+            onClick: Function // Method called on secondary button click
+        },
+        primary: {
+            label: : string,  // Primary button text
+            class: string,    // Primary button class (optional)
+            onClick: Function // Method called on primary button click
+        }
+    },
+    shown: boolean            // Optional. if true - notification will be shown
+}'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="js"
+                    code='Notification: {
+    type: number,   // 1-"Basic" | 2-"Success" | 3-"Error" | 4-"Info" | 5-"Warning"
+    title: string,            // Notification title
+    content: string           // Notification message,
+    buttons: {
+        secondary: {
+            label: string,    // Secondary button text
+            class: string,    // Secondary button class (optional)
+            onClick: Function // Method called on secondary button click
+        },
+        primary: {
+            label: : string,  // Primary button text
+            class: string,    // Primary button class (optional)
+            onClick: Function // Method called on primary button click
+        }
+    },
+    shown: boolean            // Optional. if true - notification will be shown
+}'
+                ></fusion-code-block>
+            </ng-template>
+
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    code="window.fusion.enums.NotificationType: {
+    Basic = 1,
+    Success = 2,
+    Error = 3,
+    Info = 4,
+    Warning = 5,
+    Delete = 6
+}
+
+Notification: {
+    type: NotificationType,
+    title: string,            // Notification title
+    content: string           // Notification message,
+    buttons: {
+        secondary: {
+            label: string,    // Secondary button text
+            class: string,    // Secondary button class (optional)
+            onClick: Function // Method called on secondary button click
+        },
+        primary: {
+            label: : string,  // Primary button text
+            class: string,    // Primary button class (optional)
+            onClick: Function // Method called on primary button click
+        }
+    },
+    shown: boolean            // Optional. if true - notification will be shown
+}"
+                ></fusion-code-block>
+            </ng-template>
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="serviceNotification" title="Notification Service" [collapsible]="false">
+            <fusion-code-block
+                lang="js"
+                code="
+// Show notification:
+showNotification(notificationOptions: Notification):
+
+// Close
+hideNotification()
+
+// Change primary button loading state
+setPrimaryButtonLoadingState(state: boolean)
+"
+            ></fusion-code-block>
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="paramsModal" title="Modal parameters" [collapsible]="false">
+            For modal you need to add fusion-modal element in DOM with parameters:
+            <fusion-code-block
+                lang="js"
+                code="id: string;      // must be Unique ised for open and close modal by modal Service
+footer = true;
+loading = false; // state for content loading
+waiting = false; // state for on click primary button waiter
+width: string;   // if in string units (px, vw) not set (only numeric value) - px will use by default
+height: string;  // if in string units (px, vh) not set (only numeric value) - px will use by default
+padding = '24px 32px 40px';
+error = '';
+headerText = '';
+noHeaderBorder = false;
+saveButtonText = 'Save';
+saveButtonDisabled = false;
+cancelButtonText = 'Cancel';
+cancelButtonHidden: boolean;"
+            ></fusion-code-block>
+            Then call ModalService method .open(modalID) to show modal
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="eventsModal" title="Modal Events" [collapsible]="false">
+            <fusion-code-block
+                lang="js"
+                code="onSave();         // save button was clicked
+onOpen();         // modal was opened
+onClose();        // modal was closed"
+            ></fusion-code-block>
+        </fusion-example-block>
+        <br />
+        <fusion-example-block id="serviceModal" title="Modal Service" [collapsible]="false">
+            <fusion-code-block
+                lang="js"
+                code="// Used for open / close defined in DOM modal by modal ID
+// Open:
+this.modalService.open(modalID)
+
+//Close
+this.modalService.close(modalID, {emitEvent = true}) // emitEvent - false for suppress onClose() event
+"
+            ></fusion-code-block>
+        </fusion-example-block>
+        <!--UI-Component Configuration Doc-->
+    </div>
+
+    <div class="col-3 is-right-side-menu-holder">
+        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+    </div>
+</div>

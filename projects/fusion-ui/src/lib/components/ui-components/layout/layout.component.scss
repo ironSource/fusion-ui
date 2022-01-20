@@ -1,0 +1,96 @@
+/*!
+ * Created on 2020.12.6 By Andy Kononenko (andyk@ironsrc.com)
+ */
+@import 'common';
+
+:host{
+    @extend %reset;
+    // main layout
+    .fu-layout{
+        display: grid;
+        grid-template-columns: min-content 1fr;
+        grid-template-rows: var(--layout-header-height, $headerHeight) auto;
+        width: 100vw;
+        height: 100vh;
+
+        // sidebar holder
+        .fu-sidebar-holder{
+            grid-row: span 2;
+        }
+
+        // header holder
+        .fu-header-holder{
+            height: var(--lauout-header-height, $headerHeight);
+            transition: padding-left .3s ease-out;
+
+            &.fu-sidebar-closed-hovered{
+                padding-left: calc(var(--layout-sidebar-width, #{$sidebarWidth}) - var(--layout-sidebar-closed-width, #{$sidebarClosedWidth}));
+            }
+        }
+
+        // main content holder
+        .fu-content-holder{
+            height: calc(100vh - var(--lauout-header-height, #{$headerHeight}) - 1px);
+            margin-top: 1px;
+            overflow-y: auto;
+
+            .fu-layout-page-header{
+                height: var(--layout-page-header-height, 72px);
+                margin: var(--layout-page-header-margin, 0 30px);
+                display: flex;
+                align-items: center;
+                transition: opacity .3s ease-out;
+                .fu-layout-page-header-title{
+                    @extend %font-titleGiant;
+                    color: var(--layout-page-header-title-color, $fu-dark-500);
+                    line-height: 1;
+                    white-space: nowrap;
+                }
+                .fu-layout-page-header-content{
+                    flex-grow: 1;
+                }
+            }
+        }
+
+        // overlays
+        .fu-layout-mobile-overlay{
+            display: none;
+        }
+
+        // utility block
+        .fu-screen-size-detection{
+            content: 'Desktop';
+        }
+
+        // region page header behaviour
+        &.fu-layout-page-header-behaviour-type_fixed{
+            .fu-content-holder{
+                .fu-layout-page-header{
+                    .fu-layout-page-header-content{
+                        position: fixed;
+                        z-index: getZIndexLayerOffset(application, 10);
+                        right: 40px;
+                    }
+                }
+            }
+        }
+        &.fu-layout-page-header-header{
+            .fu-content-holder{
+                .fu-layout-page-header{
+                    opacity: 0;
+                }
+            }
+        }
+        &.fu-layout-page-header-behaviour-type_fixed.fu-layout-page-header-header{
+            .fu-content-holder{
+                .fu-layout-page-header{
+                    opacity: 1;
+                    .fu-layout-page-header-title{
+                        opacity: 0;
+                    }
+                }
+            }
+        }
+        // end region
+    }
+}

@@ -1,0 +1,27 @@
+<input type="radio"
+       [checked]="checked"
+       [id]="genElementId()"
+       [name]="name"
+       [value]="value"
+       [disabled]="isDisabled"
+       (change)="onChanged()"
+>
+<ng-container [ngTemplateOutlet]="!!tooltip ? tooltipRef : defaultRef"></ng-container>
+
+
+<ng-template #defaultRef>
+  <label [for]="genElementId()"><span></span>
+    <ng-container [ngTemplateOutlet]="fusionIconRef"></ng-container>
+  </label>
+</ng-template>
+
+<ng-template #tooltipRef>
+  <label [fusionTooltip]="tooltip" [for]="genElementId()"><span></span>
+    <ng-container [ngTemplateOutlet]="fusionIconRef"></ng-container>
+  </label>
+</ng-template>
+
+<ng-template #fusionIconRef>
+  <fusion-icon class="fu-radio-icon" *ngIf="icon" [name]="icon"></fusion-icon>
+    {{label}}
+</ng-template>

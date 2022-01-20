@@ -1,0 +1,92 @@
+// fonts
+$black: var(--black-font-family, 'NHaasGroteskDSPro-75Bd', sans-serif);
+$bold: var(--bold-font-family, 'NHaasGroteskTXPro-75Bd', sans-serif);
+$medium: var(--medium-font-family,'NHaasGroteskTXPro-65Md', sans-serif);
+$regular: var(--regular-font-family, 'Open Sans', sans-serif);
+$body: var(--body-font-family, 'HelveticaNeue', helvetica, sans-serif);
+
+// typography
+%font1 {
+    font-size: 22px;
+    font-family: $black;
+    font-weight: 600;
+}
+
+%font2 {
+    font-size: 18px;
+    font-family: $bold;
+    font-weight: 600;
+}
+
+%font3 {
+    font-size: 15px;
+    font-family: $bold;
+    font-weight: 600;
+}
+
+%font4{
+    font-size: 13px;
+    font-family: $regular;
+    font-weight: 600;
+}
+
+%font5{
+    font-size: 13px;
+    font-family: $regular;
+    font-weight: 400;
+}
+
+%font6 {
+    font-size: 12px;
+    font-family: $regular;
+    font-weight: 600;
+}
+
+%font7 {
+    font-size: 12px;
+    font-family: $regular;
+    font-weight: 400;
+}
+
+%font8 {
+    font-size: 11px;
+    font-family: $medium;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+%font9 {
+    font-size: 11px;
+    font-family: $body;
+    font-weight: bold;
+}
+
+%font10 {
+    font-size: 11px;
+    font-family: $body;
+    font-weight: normal;
+}
+
+%font11 {
+    font-size: 13px;
+    font-family: $body;
+    font-weight: bold;
+}
+
+%font12 {
+    font-size: 13px;
+    font-family: $body;
+    font-weight: normal;
+}
+
+%font13 {
+    font-size: 12px;
+    font-family: $body;
+    font-weight: bold;
+}
+
+%font14 {
+    font-size: 12px;
+    font-family: $body;
+    font-weight: normal;
+}

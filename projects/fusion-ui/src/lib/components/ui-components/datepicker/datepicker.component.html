@@ -1,0 +1,87 @@
+<div *ngIf="datesInputs"
+     [clickOutsideActivate]="isOpen$ | async"
+     (fusionClickOutside)="onOutsideClick()"
+     [formGroup]="datesInputs">
+
+  <fusion-datepicker-selection *ngIf="mode === datepickerAvailableModes.Regular"
+                               [dropDownStyle]="dropDownStyle"
+                               [isDisabled]="isDisabled"
+                               [label]="selectedLabel"
+                               (inputFocus)="onInputFocus()"
+                               [error]="error">
+  </fusion-datepicker-selection>
+
+  <fusion-datepicker-header *ngIf="mode === datepickerAvailableModes.Header"
+                            [isDisabled]="isDisabled"
+                            [label]="selectedLabel"
+                            [prefix]="prefix"
+                            [open]="isOpen$ | async"
+                            (inputFocus)="onInputFocus()">
+  </fusion-datepicker-header>
+
+  <div class="is-datepicker-holder"
+       [class.opened]="isOpen$ | async">
+    <table class="is-calendar">
+      <thead>
+      <tr>
+        <th class="prev"
+            (click)="onMonthChangeClicked(-1)">
+          <fusion-icon [name]="{iconName: 'arrow-right', iconVersion: 'v1'}"></fusion-icon>
+        </th>
+        <th class="month"
+            colspan="5">{{calendarDate | date: 'MMMM y'}}</th>
+        <th class="next"
+            (click)="onMonthChangeClicked(1)">
+          <fusion-icon [name]="{iconName: 'arrow-right', iconVersion: 'v1'}"></fusion-icon>
+        </th>
+      </tr>
+      <tr>
+        <th class="dow"
+            *ngFor="let dow of daysOfWeek">{{dow}}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let week of weeks">
+        <td class="day"
+            *ngFor="let date of week"
+            title="{{date.date | date:'y-MM-dd'}}"
+            [ngClass]="{'today': date.isToday, 'active': date.isSelected && date.isInMonth, 'disabled':(!date.isInMonth || date.isDisabled)}"
+            (click)="onDateClick(date, $event)">
+          <span *ngIf="date.isInMonth">{{date.date | date: 'dd'}}</span>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="is-timepicker-holder"
+       *ngIf="isTimePicker">
+    <fusion-input #hoursPicker
+                  name="hoursPicker"
+                  formControlName="hoursVal"
+                  placeholder="00"
+                  type="number"
+                  min="0"
+                  [isDisabled]="!isDateSelected() || isDisabled"></fusion-input>
+    :
+    <fusion-input #minutesPicker
+                  name="minutesPicker"
+                  formControlName="minutesVal"
+                  placeholder="00"
+                  type="number"
+                  [isDisabled]="!isDateSelected() || isDisabled"></fusion-input>
+  </div>
+
+  <div class="is-timezone-holder"
+       *ngIf="isTimeZonePicker">
+    <fusion-dropdown placeholder="Default Selection"
+                     [search]="true"
+                     [options]="timeZonesOptions"
+                     [isDisabled]="!isDateSelected() || isDisabled"
+                     name="timeZonesOptions"
+                     formControlName="timezone"></fusion-dropdown>
+  </div>
+
+  <div class="error-msg"
+       *ngIf="error">{{error}}</div>
+</div>

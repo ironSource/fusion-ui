@@ -1,0 +1,34 @@
+@import '../../../../styles/vars';
+
+:host{
+    @extend %list-reset;
+    .example-label{
+        color: $fu-dark-200;
+        @extend %font-label;
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    .is-tags-filter-holder{
+        text-align: center;
+        fusion-tag{
+            margin: 2px;
+        }
+    }
+    .is-filter-icon-holder{
+        height: 115px;
+        background-color: $fu-light-100;
+        padding-top: 32px;
+        margin-top: 25px;
+        ul{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            li{
+                padding: 12px;
+                @include icon-style('filter-icon', $fu-light-900, 18px, true, true);
+            }
+        }
+    }
+}

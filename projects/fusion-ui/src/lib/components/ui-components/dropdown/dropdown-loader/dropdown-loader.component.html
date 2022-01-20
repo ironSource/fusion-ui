@@ -1,0 +1,6 @@
+<ng-container *ngIf="(selectedVersion$ | async) === styleVersion.V2; else styleVersion1">
+    Loading...<fusion-loader-inline [status]="true"></fusion-loader-inline>
+</ng-container>
+<ng-template #styleVersion1>
+    <fusion-loader-inline [status]="true" text="Loading..."></fusion-loader-inline>
+</ng-template>

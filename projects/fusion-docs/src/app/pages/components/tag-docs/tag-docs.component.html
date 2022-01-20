@@ -1,0 +1,1053 @@
+<div class="row">
+    <div class="col-9">
+        <form [formGroup]="formTagsPage" novalidate>
+            <!--UI-Component Examples-->
+            <div class="is-example-title">Types</div>
+
+            <fusion-example-block id="typeBasic" title="Basic">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<fusion-tags-input inputPlaceholder="Add..."
+                  [isAddTagsAllowed]="false"
+                  (tagsChanged)="onTagsChanged($event)"
+                  [autoComplete]="true"
+                  [isPredefinedTags]="true"
+                  [tagList]="predefinedTags">
+</fusion-tags-input>'
+                    ></fusion-code-block>
+                </ng-template>
+
+                <ng-template fusionExampleBlock="React">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='const TAGS_LIST_OPTIONS = [
+  {
+    id: 1,
+    title: "option a",
+  },
+  {
+    id: 2,
+    title: "option b",
+  },
+  {
+    id: 3,
+    title: "option c",
+  }
+];
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tagsInput: {
+        inputPlaceholder: "Add...",
+        isAddTagsAllowed: false,
+        isPredefinedTags: true,
+        autoComplete: true,
+        tagList: TAGS_LIST_OPTIONS,
+        controlValue: TAGS_LIST_OPTIONS[0]
+      },
+    }
+  }
+
+  handleChange(name, value) {
+    this.setState({[name]: {...this.state[name], controlValue: value}})
+  }
+
+  render() {
+    return (
+      <FusionTagsInput config={this.state.tagsInput} tagsChanged={this.handleChange.bind(this, "tagsInput")} />
+    )
+  }
+}
+
+export default App;'
+                    ></fusion-code-block>
+                </ng-template>
+
+                <ng-template fusionExampleBlock="Vue">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<template>
+  <div id="app">
+      <FusionTagsInput :config="tagsInput" @tagsChanged="e => handleChange(e, &#39;tagsInput&#39;)"/>
+  </div>
+</template>'
+                    ></fusion-code-block>
+
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='<script>
+import {FusionTagsInput} from "@ironsource/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+      tagsInput: {
+        inputPlaceholder: "Add...",
+        isAddTagsAllowed: false,
+        isPredefinedTags: true,
+        autoComplete: true,
+        tagList: TAGS_LIST_OPTIONS,
+        controlValue: [TAGS_LIST_OPTIONS[0]]
+      }
+    }
+  },
+  components: {
+    FusionTagsInput
+  },
+  methods: {
+    handleChange: function(value, key){
+      this[key] = {...this[key], controlValue: value};
+    }
+  }
+}
+
+const TAGS_LIST_OPTIONS = [
+  {
+    id: 1,
+    title: "option a",
+  },
+  {
+    id: 2,
+    title: "option b",
+  },
+  {
+    id: 3,
+    title: "option c",
+  }
+];
+</script>'
+                    ></fusion-code-block>
+                </ng-template>
+
+                <ng-template fusionExampleBlock="Native">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='const tagsInput = document.createElement("native-fusion-tags-input");
+tagsInput.config = {
+    inputPlaceholder: "Add...",
+    isAddTagsAllowed: false,
+    isPredefinedTags: true,
+    autoComplete: true,
+    tagList: [
+        {
+            id: 1,
+            title: "option a",
+        },
+        {
+            id: 2,
+            title: "option b",
+        },
+        {
+            id: 3,
+            title: "option c",
+        }
+    ]
+};
+
+tagsInput.addEventListener("tagsChanged", (e) => console.log(e.detail));
+
+document.body.appendChild(tagsInput);'
+                    ></fusion-code-block>
+                </ng-template>
+
+                <!--<div><button (click)="toggleDisabling($event)">Toggle disabling</button> <<{{ tagsInputDisabled$ | async }}>></div>-->
+                <fusion-tags-input
+                    inputPlaceholder="Add..."
+                    [isDisabled]="tagsInputDisabled$ | async"
+                    [isAddTagsAllowed]="false"
+                    (tagsChanged)="onTagsChanged($event)"
+                    [autoComplete]="true"
+                    [isPredefinedTags]="true"
+                    [tagList]="tagsObj"
+                ></fusion-tags-input>
+            </fusion-example-block>
+            <fusion-example-block id="typeCreateNew" title="Create New Tag">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<fusion-tags-input inputPlaceholder="Add..."
+                  (tagsChanged)="onTagsChanged($event)"
+                  [autoComplete]="true"
+                  [isAddTagsAllowed]="true"
+                  [isPredefinedTags]="true"
+                  [tagList]="predefinedTags"
+                  (addCustomTag)="addCustomTag($event)">
+</fusion-tags-input>'
+                    ></fusion-code-block>
+                </ng-template>
+
+                <ng-template fusionExampleBlock="React">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='const TAGS_LIST_OPTIONS = [
+    {
+      id: 1,
+      title: "option a",
+    },
+    {
+      id: 2,
+      title: "option b",
+    },
+    {
+      id: 3,
+      title: "option c",
+    }
+  ];
+
+  class App extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        tagsInput: {
+          inputPlaceholder: "Add...",
+          isPredefinedTags: true,
+          isAddTagsAllowed: true,
+          autoComplete: true,
+          tagList: TAGS_LIST_OPTIONS,
+          controlValue: TAGS_LIST_OPTIONS[0]
+        },
+      }
+    }
+
+    handleChange(name, value) {
+      this.setState({[name]: {...this.state[name], controlValue: value}})
+    }
+
+    render() {
+      return (
+        <FusionTagsInput config={this.state.tagsInput} tagsChanged={this.handleChange.bind(this, "tagsInput")} />
+      )
+    }
+  }
+
+  export default App;'
+                    ></fusion-code-block>
+                </ng-template>
+
+                <ng-template fusionExampleBlock="Vue">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<template>
+  <div id="app">
+      <FusionTagsInput :config="tagsInput" @tagsChanged="e => handleChange(e, &#39;tagsInput&#39;)"/>
+  </div>
+</template>'
+                    ></fusion-code-block>
+
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='<script>
+import {FusionTagsInput} from "@ironsource/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+      tagsInput: {
+        inputPlaceholder: "Add...",
+        isPredefinedTags: true,
+        isAddTagsAllowed: true,
+        autoComplete: true,
+        tagList: TAGS_LIST_OPTIONS,
+        controlValue: [TAGS_LIST_OPTIONS[0]]
+      }
+    }
+  },
+  components: {
+    FusionTagsInput
+  },
+  methods: {
+    handleChange: function(value, key){
+      this[key] = {...this[key], controlValue: value};
+    }
+  }
+}
+
+const TAGS_LIST_OPTIONS = [
+  {
+    id: 1,
+    title: "option a",
+  },
+  {
+    id: 2,
+    title: "option b",
+  },
+  {
+    id: 3,
+    title: "option c",
+  }
+];
+</script>'
+                    ></fusion-code-block>
+                </ng-template>
+
+                <ng-template fusionExampleBlock="Native">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='const tagsInput = document.createElement("native-fusion-tags-input");
+tagsInput.config = {
+  inputPlaceholder: "Add...",
+  isPredefinedTags: true,
+  autoComplete: true,
+  tagList: [
+    {
+        id: 1,
+        title: "option a",
+    },
+    {
+        id: 2,
+        title: "option b",
+    },
+    {
+        id: 3,
+        title: "option c",
+    }
+  ]
+};
+
+tagsInput.addEventListener("addCustomTag", (e) => console.log(e.detail));
+
+document.body.appendChild(tagsInput);'
+                    ></fusion-code-block>
+                </ng-template>
+
+                <fusion-tags-input
+                    inputPlaceholder="Add..."
+                    (tagsChanged)="onTagsChanged($event)"
+                    [autoComplete]="true"
+                    [isAddTagsAllowed]="true"
+                    [isPredefinedTags]="true"
+                    [tagList]="predefinedTags"
+                    (addCustomTag)="addCustomTag($event)"
+                ></fusion-tags-input>
+            </fusion-example-block>
+
+            <fusion-example-block id="typeAutocomplete" title="Hidden List">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<fusion-tags-input [autoComplete]="true"
+                   inputPlaceholder="Select..."
+                   (searchChange)="onTagsSearch($event)"
+                   [loading]="inSearch"
+                   [tagList]="tagsOptions"
+                   (tagsChanged)="onTagsChanged($event)">
+</fusion-tags-input>'
+                    ></fusion-code-block>
+                </ng-template>
+
+                <ng-template fusionExampleBlock="React">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='class App extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        tagsInput: {
+          inputPlaceholder: "Add...",
+          isPredefinedTags: false,
+          isAddTagsAllowed: false,
+          autoComplete: true,
+          tagList: []
+        },
+      }
+    }
+
+    handleChange(name, value) {
+      this.setState({[name]: {...this.state[name], controlValue: value}})
+    }
+
+    async searchChange(value) {
+      this.setState({tagsInput: {...this.state.tagsInput, loading: true, tagList: []}})
+      const response = await fetch("https://jsonplaceholder.typicode.com/comments");
+      const data = await response.json();
+      this.setState({
+        tagsInput: {
+          ...this.state.tagsInput, loading: false,
+          tagList: data
+            .filter(item => item.name.toLowerCase().indexOf(value.toLowerCase()) !== -1)
+            .map(item => ({id: item.id, title: item.email}))
+        }
+      });
+    }
+
+    render() {
+      return (
+        <FusionTagsInput config={this.state.tagsInput}
+                                  tagsChanged={this.handleChange.bind(this, "tagsInput")}
+                                  searchChange={this.searchChange.bind(this)} />
+    }
+  }
+
+  export default App;'
+                    ></fusion-code-block>
+                </ng-template>
+
+                <ng-template fusionExampleBlock="Vue">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<template>
+  <div id="app">
+      <FusionTagsInput :config="tagsInput"
+                       @tagsChanged="e => handleChange(e, &#39;tagsInput&#39;)"
+                       @searchChange="searchChange" />
+  </div>
+</template>'
+                    ></fusion-code-block>
+
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='<script>
+import {FusionTagsInput} from "@ironsource/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+      tagsInput: {
+        inputPlaceholder: "Add...",
+        isPredefinedTags: false,
+        isAddTagsAllowed: false,
+        autoComplete: true,
+        tagList: []
+      }
+    }
+  },
+  components: {
+    FusionTagsInput
+  },
+  methods: {
+    handleChange: function(value, key){
+      this[key] = {...this[key], controlValue: value};
+    },
+    async searchChange(value) {
+      this.tagsInput = {...this.tagsInput, loading: true, tagList: []};
+      const response = await fetch("https://jsonplaceholder.typicode.com/comments");
+      const data = await response.json();
+      this.tagsInput = {
+        ...this.tagsInput,
+        loading: false,
+          tagList: data
+            .filter(item => item.name.toLowerCase().indexOf(value.toLowerCase()) !== -1)
+            .map(item => ({id: item.id, title: item.email}))
+        };
+    }
+  }
+}
+</script>'
+                    ></fusion-code-block>
+                </ng-template>
+
+                <ng-template fusionExampleBlock="Native">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='const tagsInput = document.createElement("native-fusion-tags-input");
+tagsInput.config = {
+    inputPlaceholder: "Add...",
+    isPredefinedTags: false,
+    isAddTagsAllowed: false,
+    autoComplete: true,
+    tagList: []
+};
+
+tagsInput.addEventListener("searchChange", async (e) => {
+    tagsInput.config = {
+        loading: true
+    };
+    const response = await fetch("https://jsonplaceholder.typicode.com/comments");
+    const data = await response.json();
+    tagsInput.config = {
+        loading: false,
+        tagList: data
+            .filter(item => item.name.toLowerCase().indexOf(e.detail.toLowerCase()) !== -1)
+            .map(item => ({id: item.id, title: item.email}))
+    }
+});
+
+document.body.appendChild(tagsInput);'
+                    ></fusion-code-block>
+                </ng-template>
+
+                <fusion-tags-input
+                    [autoComplete]="true"
+                    inputPlaceholder="Select..."
+                    (searchChange)="onTagsSearch($event)"
+                    [loading]="inSearch"
+                    [tagList]="tagsOptions"
+                    (tagsChanged)="onTagsChanged($event)"
+                ></fusion-tags-input>
+            </fusion-example-block>
+
+            <fusion-example-block id="typeBulkInsert" title="Bulk Insert">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<div style="width: 600px;">
+    <fusion-tags-input
+        [formControl]="bulkInsertedTags"
+        [autoComplete]="true"
+        inputPlaceholder="Type or paste app IDs, separated by commas"
+        maxHeight="200"
+        (searchChange)="onTagsSearch($event)"
+        [loading]="inSearch"
+        [tagList]="tagsOptions"
+        (tagsChanged)="onBulkTagsChanged($event)"
+        [isBulkInsertTags]="true"
+        (bulkInsert)="onBulkInsert($event)"
+    ></fusion-tags-input>
+</div>
+<label *ngIf="bulkInsertedTags.value?.length" class="is-comment">{ { bulkInsertedTags.value.length } } items added</label>'
+                    ></fusion-code-block>
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code="// store inserted (selected) tags
+bulkInsertedTags = new FormControl([]);
+// search result - options in opened dropdown
+tagsOptions: Array<any>;
+// in search / bulk insertion
+inSearch = false;
+
+// on selected (inserted) tag-list changed (on Tag remove)
+onBulkTagsChanged(tags): void {
+    this.bulkInsertedTags.setValue(tags);
+}
+
+// on tag search
+onTagsSearch(searchValue): void {
+    // console.log('TagsInput Auto-Complete for: ', searchValue);
+    this.tagsOptions = [];
+    if (searchValue.length === 0) {
+        return;
+    }
+    this.inSearch = true;
+    this.apiService
+        .get('https://jsonplaceholder.typicode.com/comments', {
+            responseType: ApiResponseType.Json
+        })
+        .pipe(
+            map((data: any[]) => {
+                return data
+                    .filter(item => {
+                        return item.email.indexOf(searchValue) !== -1;
+                    })
+                    .map(item => {
+                        return {id: item.id, title: item.email};
+                    });
+            }),
+            delay(1000)
+        )
+
+        .subscribe(
+            data => {
+                this.inSearch = false;
+                console.log('ret: ', data);
+                this.tagsOptions = data;
+            },
+            error => {
+                console.error(error);
+                this.inSearch = false;
+            }
+        );
+}
+
+// on tag bulk insertion
+onBulkInsert(value: string[]) {
+    this.inSearch = true;
+    this.apiService
+        .get('https://jsonplaceholder.typicode.com/comments', {
+            responseType: ApiResponseType.Json
+        })
+        .pipe(
+            map((data: any[]) => {
+                return data
+                    .filter(item => {
+                        return value.includes(item.id.toString());
+                    })
+                    .map(item => {
+                        return {id: item.id, title: item.email};
+                    });
+            }),
+            delay(1000)
+        )
+
+        .subscribe(
+            data => {
+                this.inSearch = false;
+                console.log('ret: ', data);
+                if (Array.isArray(data)) {
+                        const selectedTags: Tag[] = this.bulkInsertedTags.value;
+                        this.bulkInsertedTags.setValue([
+                            ...selectedTags,
+                            ...data.filter((item: Tag) => {
+                                return !selectedTags.some(tag => tag.id === item.id);
+                            })
+                        ]);
+                    }
+            },
+            error => {
+                console.error(error);
+                this.inSearch = false;
+            }
+        );
+}
+
+"
+                    ></fusion-code-block>
+                </ng-template>
+
+                <div class="row">
+                    <div class="col-12">
+                        <label>Bulk insert behaviour explain</label>
+                        <p>
+                            In case option [isBulkInsertTags]="true" when user type in search input or make paste some string with delimiter
+                            (TagsInputBulkInsertOptions->delimiter) (by default - comma ',') fusion-tags-input stopped emmit event
+                            'searchChange' and by press 'Enter' key emmit 'bulkInsert' event with array of string for search.
+                        </p>
+                        <p>
+                            This array created by split entered to the input string by TagsInputBulkInsertOptions->delimiter (default comma
+                            ','), filtered invalid by TagsInputBulkInsertOptions->validateKeyMethod (default blank values will be removed)
+                            and duplicated will be removed after validation filter.
+                        </p>
+                        <p>
+                            In case 'bulk insert behaviour' dropdown will not be opened and consumer add it to the selected tags (by
+                            this.bulkInsertedTags.setValue(...NEW_TAGS_ARRAY...); on example)
+                        </p>
+                        <label>ids for bulk insertion example</label>
+                        <p>
+                            45,85,96,112,45,963,458,652,45,74,12,15,63,85,74,41,52,63,123,124,125,126,127,234,222,235,236,237,238,239,224,225,226,227,228
+                        </p>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-6">
+                        <fusion-tags-input
+                            [formControl]="bulkInsertedTags"
+                            [autoComplete]="true"
+                            inputPlaceholder="Type or paste app IDs, separated by commas"
+                            maxHeight="200"
+                            (searchChange)="onTagsSearch($event)"
+                            [loading]="inSearch"
+                            [tagList]="tagsOptions"
+                            (tagsChanged)="onBulkTagsChanged($event)"
+                            [isBulkInsertTags]="true"
+                            (bulkInsert)="onBulkInsert($event)"
+                        ></fusion-tags-input>
+                        <label *ngIf="bulkInsertedTags.value?.length" class="is-comment"
+                            >{{ bulkInsertedTags.value.length }} items added</label
+                        >
+                    </div>
+                </div>
+            </fusion-example-block>
+
+            <div class="is-example-title">Variations</div>
+
+            <fusion-example-block id="variationsMSP" title="Multiple Selection Dropdown">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='
+<div class="row">
+    <div class="col-4">
+        <fusion-multi-dropdown placeholder="Please Select Country"
+                           [selected]="selectedCountries"
+                           [confirm]="true"
+                           [options]="tagsWithFlags"
+                           (selectedChange)="onSelectedCountryChanged($event)">
+        </fusion-multi-dropdown>
+        <div class="is-selected-holder">
+            <fusion-tag *ngFor="let option of selectedCountries"
+                        [flag]="option.flag"
+                        [close]="true"
+                        (onRemove)="onCountryRemove(option)">
+                        {option.title}
+            </fusion-tag>
+        </div>
+    </div>
+</div>'
+                ></fusion-code-block>
+
+                <div class="row">
+                    <div class="col-4">
+                        <fusion-multi-dropdown
+                            placeholder="Please Select Country"
+                            [selected]="selectedCountries"
+                            [confirm]="true"
+                            [options]="tagsWithFlags"
+                            (selectedChange)="onSelectedCountryChanged($event)"
+                        ></fusion-multi-dropdown>
+                        <div class="is-selected-holder">
+                            <fusion-tag
+                                *ngFor="let option of selectedCountries"
+                                [flag]="option.flag"
+                                [close]="true"
+                                (onRemove)="onCountryRemove(option)"
+                                >{{ option.title }}
+                            </fusion-tag>
+                        </div>
+                    </div>
+                </div>
+            </fusion-example-block>
+
+            <fusion-example-block id="variationsTagFilter" title="Tag Filter">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='
+<div class="is-tags-filter-holder">
+    <fusion-tag *ngFor="let option of tagsFilters"
+                [id]="option.id"
+                [selected]="option.selected"
+                (onSelectedChange)="onTagToggle($event)">
+                {option.title}
+    </fusion-tag>
+</div>
+<div class="is-filter-icon-holder">
+    <ul>
+        <ng-container *ngFor="let option of tagsFilters">
+            <li *ngIf="option.selected">
+                <fusion-icon [name]="option.icon"></fusion-icon>
+            </li>
+        </ng-container>
+    </ul>
+</div>'
+                ></fusion-code-block>
+
+                <div class="is-tags-filter-holder">
+                    <fusion-tag
+                        *ngFor="let option of tagsFilters"
+                        [id]="option.id"
+                        [selected]="option.selected"
+                        (onSelectedChange)="onTagToggle($event)"
+                        >{{ option.title }}
+                    </fusion-tag>
+                </div>
+                <div class="is-filter-icon-holder">
+                    <ul>
+                        <ng-container *ngFor="let option of tagsFilters">
+                            <li *ngIf="option.selected || !hasFilters">
+                                <fusion-icon [name]="option.icon"></fusion-icon>
+                            </li>
+                        </ng-container>
+                    </ul>
+                </div>
+            </fusion-example-block>
+
+            <div class="is-example-title">Content</div>
+
+            <fusion-example-block id="contentIcon" title="Including Icon">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='
+<fusion-tags-input inputPlaceholder="Add Country..."
+                  [isAddTagsAllowed]="false"
+                  (tagsChanged)="onTagsChanged($event)"
+                  [autoComplete]="true"
+                  [isPredefinedTags]="true"
+                  [tagList]="tagsWithFlags">
+</fusion-tags-input>'
+                    ></fusion-code-block>
+                </ng-template>
+
+                <ng-template fusionExampleBlock="React">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='const TAGS_LIST_OPTIONS = [
+  {
+    id: 1,
+    flag: "de",
+    title: "Germany",
+    displayText: "Germany"
+  },
+  {
+    id: 2,
+    flag: "fr",
+    title: "France",
+    displayText: "France"
+  },
+  {
+    id: 3,
+    flag: "gb",
+    title: "United Kingdom",
+    displayText: "United Kingdom"
+  }
+];
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tagsInput: {
+        inputPlaceholder: "Add...",
+        isAddTagsAllowed: false,
+        isPredefinedTags: true,
+        autoComplete: true,
+        tagList: TAGS_LIST_OPTIONS,
+        controlValue: TAGS_LIST_OPTIONS[0]
+      },
+      flags: {
+        path: "icons/flags/flags.svg"
+      }
+    }
+  }
+
+  handleChange(name, value) {
+    this.setState({[name]: {...this.state[name], controlValue: value}})
+  }
+
+  render() {
+    return (
+      <div>
+          <FusionSvg config={this.state.flags} />
+          <FusionTagsInput config={this.state.tagsInput} tagsChanged={this.handleChange.bind(this, "tagsInput")} />
+      </div>
+    )
+  }
+}
+
+export default App;'
+                    ></fusion-code-block>
+                </ng-template>
+
+                <ng-template fusionExampleBlock="Vue">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<template>
+  <div id="app">
+      <FusionSvg :config="flags" />
+      <FusionTagsInput :config="tagsInput"
+                       @tagsChanged="e => handleChange(e, &#39;tagsInput&#39;)" />
+  </div>
+</template>'
+                    ></fusion-code-block>
+
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='<script>
+import {FusionTagsInput, FusionSvg} from "@ironsource/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+      tagsInput: {
+        inputPlaceholder: "Add...",
+        isAddTagsAllowed: false,
+        isPredefinedTags: true,
+        autoComplete: true,
+        tagList: TAGS_LIST_OPTIONS,
+        controlValue: TAGS_LIST_OPTIONS[0]
+      },
+      flags: {
+        path: "icons/flags/flags.svg"
+      }
+    }
+  },
+  components: {
+    FusionTagsInput,
+    FusionSvg
+  },
+  methods: {
+    handleChange: function(value, key){
+      this[key] = {...this[key], controlValue: value};
+    }
+  }
+}
+
+const TAGS_LIST_OPTIONS = [
+  {
+    id: 1,
+    flag: "de",
+    title: "Germany",
+    displayText: "Germany"
+  },
+  {
+    id: 2,
+    flag: "fr",
+    title: "France",
+    displayText: "France"
+  },
+  {
+    id: 3,
+    flag: "gb",
+    title: "United Kingdom",
+    displayText: "United Kingdom"
+  }
+];
+</script>'
+                    ></fusion-code-block>
+                </ng-template>
+
+                <ng-template fusionExampleBlock="Native">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='const tagsInput = document.createElement("native-fusion-tags-input");
+tagsInput.config = {
+  inputPlaceholder: "Add...",
+  isAddTagsAllowed: false,
+  isPredefinedTags: true,
+  autoComplete: true,
+  tagList: [
+    {
+      id: 1,
+      flag: "de",
+      title: "Germany",
+      displayText: "Germany"
+    },
+    {
+      id: 2,
+      flag: "fr",
+      title: "France",
+      displayText: "France"
+    },
+    {
+      id: 3,
+      flag: "gb",
+      title: "United Kingdom",
+      displayText: "United Kingdom"
+    }
+  ]
+};
+
+tagsInput.addEventListener("tagsChanged", (e) => console.log(e.detail));
+
+document.body.appendChild(tagsInput);'
+                    ></fusion-code-block>
+                </ng-template>
+
+                <fusion-tags-input
+                    inputPlaceholder="Add Country..."
+                    [isAddTagsAllowed]="false"
+                    (tagsChanged)="onTagsChanged($event)"
+                    [autoComplete]="true"
+                    [isPredefinedTags]="true"
+                    [tagList]="tagsWithFlags"
+                ></fusion-tags-input>
+            </fusion-example-block>
+
+            <fusion-example-block id="contentTooltip" title="Tooltip (long tag name)">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='
+<fusion-tag fusionTooltip="This is a tag this is a tag this is a tag this is a tag this is a tag"
+            [close]="true"
+            icon="ios">
+    This is a tag this is a tag this is a tag this is a tag this is a tag
+</fusion-tag>'
+                ></fusion-code-block>
+
+                <fusion-tag fusionTooltip="This is a tag this is a tag this is a tag this is a tag this is a tag" [close]="true" icon="ios">
+                    This is a tag this is a tag this is a tag this is a tag this is a tag
+                </fusion-tag>
+            </fusion-example-block>
+
+            <div class="is-example-title">State</div>
+
+            <fusion-example-block id="stateDisabled" title="Disabled">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='
+<fusion-tag [disabled]="true">Disabled tag</fusion-tag>'
+                ></fusion-code-block>
+
+                <fusion-tag [disabled]="true">Disabled tag</fusion-tag>
+            </fusion-example-block>
+
+            <fusion-example-block id="stateError" title="Error">
+                <fusion-code-block lang="html" class="is-collapsible" code=""></fusion-code-block>
+                <fusion-tags-input
+                    formControlName="requiredTags"
+                    inputPlaceholder="Add..."
+                    [isAddTagsAllowed]="false"
+                    (tagsChanged)="onTagsChanged($event)"
+                    [autoComplete]="true"
+                    [isPredefinedTags]="true"
+                    [tagList]="predefinedTags"
+                    [error]="errorMessage"
+                ></fusion-tags-input>
+            </fusion-example-block>
+            <!--UI-Component Examples-->
+            <!--UI-Component Configuration Doc-->
+            <div class="is-example-title">Configuration</div>
+            <fusion-example-block id="params" title="Parameters" [collapsible]="false">
+                <fusion-code-block
+                    lang="js"
+                    code="id: string
+isAddTagsAllowed: boolean
+isPredefinedTags: boolean
+inputPlaceholder: string
+isBulkInsertTags?: boolean;                             // true for bulk insertion behaviour enable - optional
+bulkInsertOptions?: TagsInputBulkInsertOptions;         // Options for bulk insertion behaviour - optional
+loading: boolean
+error: string
+saveSelectedAsITagObjects: boolean
+suppressClickOnRemove: boolean
+tagList: Tag[]
+formControlName: FormControl - value: string[] | Tag[] // Angular
+controlValue: Tag[]                                    // Native
+maxHeight: number                                      // tags-holder max height
+
+
+Tag {
+    id: number | string;
+    title: string;
+    icon?: string;
+    flag?: string;
+}
+
+TagsInputBulkInsertOptions {
+    delimiter?: string;                                 // char - delimiter by default comma - ','
+    validateKeyMethod?: (key: string) => boolean;       // validate method for each item in bulk array
+}
+"
+                ></fusion-code-block>
+            </fusion-example-block>
+
+            <fusion-example-block id="events" title="Events" [collapsible]="false">
+                <fusion-code-block
+                    lang="js"
+                    code="tagsChanged(tagsSelected: Tag[]) // emit on remove tag
+addCustomTag(customTag: string);
+tagListChanged();
+searchChange(searchKey: string)  // emit on value in search input changed (but not in BulkInsert mode)
+bulkInsert(keys: string[])       // emit in case 'isBulkInsertTags = true', in search-input has delimiter and 'Enter' key pressed
+"
+                ></fusion-code-block>
+            </fusion-example-block>
+            <!--UI-Component Configuration Doc-->
+        </form>
+    </div>
+
+    <div class="col-3 is-right-side-menu-holder">
+        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+    </div>
+</div>

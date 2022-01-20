@@ -1,0 +1,36 @@
+@import '../../../../../style/scss/vars/vars';
+@import '../../../../../style/scss/vars/mixins';
+
+$monthPickerHeight: 32px;
+$monthPickerBorder: solid 1px $light-500;
+$monthPickerBorderRadius: 3px;
+$monthPickerPadding: 9px;
+
+:host.fusion-style-v1 {
+    @extend %border-box-normalize;
+    height: var(--fu-month-picker-height, #{$monthPickerHeight});
+    padding: var(--fu-month-picker-padding, #{$monthPickerPadding});
+    border: var(--fu-month-picker-border, #{$monthPickerBorder});
+    border-radius: var(--fu-month-picker-border-radius, #{$monthPickerBorderRadius});
+    @extend %font12;
+    @include icon-style('fu-calendar-icon', var(--fu-month-picker-calendar-icon-color, #{$light-800}), var(--fu-month-picker-calendar-icon-size, 15px), true, true) {
+        margin-right: 8px;
+        padding-top: 4px;
+    }
+    @include icon-style('icon-arrow', var(--fu-month-picker-arrow-icon-color, #{$light-800}), var(--fu-month-picker-arrow-icon-size, 8px), true, true) {
+        margin-left: auto;
+    }
+
+    .fu-value-selected {
+        margin-left: 3px;
+        @extend %font11;
+    }
+
+    &.fu-opened {
+        @include icon-style('icon-arrow', var(--fu-month-picker-arrow-icon-color, #{$light-800}), var(--fu-month-picker-arrow-icon-size, 8px), true, true, 180);
+    }
+
+    &.fu-disabled {
+        color: var(--fu-month-picker-disabled-color, #{$light-800});
+    }
+}

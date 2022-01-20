@@ -1,0 +1,46 @@
+<header class="is-example-block-header">
+    <div class="header-left">
+    <span class="fu-font3"
+          [id]="id">{{title}}
+        <fusion-icon [name]="{iconName: 'arrow-right', iconVersion: 'v1'}"
+                     *ngIf="expandable"
+                     [ngClass]="{'opened':contentExpanded}"
+                     (click)="toggleContent()"></fusion-icon></span>
+        <span class="fu-font5">{{desc}}</span>
+    </div>
+    <div class="header-right">
+        <ng-container [ngTemplateOutlet]="tabs && tabs.length ? supportsLogo : null"></ng-container>
+        <fusion-icon *ngIf="collapsible"
+                     [name]="{iconName: 'code', iconVersion: 'v1'}"
+                     (click)="expandCode()"></fusion-icon>
+    </div>
+</header>
+<div class="is-example-block-content"
+     [ngClass]="{'expand': !expand, 'code-expandable': expandable, 'code-expand': contentExpanded}">
+    <div class="is-example-holder">
+        <div class="expandable-container"
+             [class.open]="!expand || !collapsible"
+             *ngIf="tabs && tabs.length">
+            <div class="tabs-expandable">
+                <div class="tabs-container">
+                  <span *ngFor="let tab of tabs"
+                        class="tab"
+                        [class.selected]="selectedTab === tab"
+                        (click)="selectedTab = tab">
+                    {{tab.customHeader || tab.fusionExampleBlock}}
+                  </span>
+                </div>
+            </div>
+            <ng-container [ngTemplateOutlet]="selectedTab?.templateRef"></ng-container>
+        </div>
+        <ng-content></ng-content>
+    </div>
+</div>
+
+<ng-template #supportsLogo>
+    <div class="tabs-logo">
+        <div class="image-container" *ngFor="let tab of tabs" >
+            <img src="../../../assets/images/{{tab.fusionExampleBlock.trim().toLowerCase()}}.svg"/>
+        </div>
+    </div>
+</ng-template>

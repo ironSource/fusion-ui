@@ -1,0 +1,93 @@
+@import '../../../../styles/vars.scss';
+
+:host {
+    .color-palettes-holder{
+        display: flex;
+        flex-wrap: wrap;
+        .color-palette-item{
+            flex: 1 0 calc(33.333% - 16px);
+            margin: 8px;
+            .color-palette {
+                list-style-type: none;
+                padding: 0;
+                margin: 0 0 25px;
+                li{
+                    padding: 15px;
+                    @extend %font7;
+                    &:first-child{
+                        height: 100px;
+                        @extend %font2;
+                    }
+                    display: flex;
+                    flex-direction: row;
+                    .color-var-name{
+                        width: 70%;
+                    }
+                    .color-var-value{
+                        text-align: right;
+                        width: 30%;
+                    }
+                }
+            }
+        }
+    }
+
+    .color-primary{ color: $White; background-color: $fu-primary;  }
+    .color-primary-600{ color: $White; background-color: $fu-primary-600;  }
+    .color-primary-500{ color: $White; background-color: $fu-primary-500;  }
+    .color-primary-400{ color: $White; background-color: $fu-primary-400;  }
+    .color-primary-300{ background-color: $fu-primary-300;  }
+    .color-primary-200{ background-color: $fu-primary-200;  }
+    .color-primary-100{ background-color: $fu-primary-100;  }
+
+    .color-secondary{ background-color: $fu-secondary;  }
+    .color-secondary-500{ background-color: $fu-secondary-500;  }
+    .color-secondary-200{ background-color: $fu-secondary-200;  }
+    .color-secondary-300{ background-color: $fu-secondary-300;  }
+    .color-secondary-100{ background-color: $fu-secondary-100;  }
+
+    .color-positive{ background-color: $fu-positive;  }
+    .color-positive-700{ background-color: $fu-positive-700;  }
+    .color-positive-600{ background-color: $fu-positive-600;  }
+    .color-positive-500{ background-color: $fu-positive-500;  }
+    .color-positive-400{ background-color: $fu-positive-400;  }
+    .color-positive-300{ background-color: $fu-positive-300;  }
+    .color-positive-200{ background-color: $fu-positive-200;  }
+    .color-positive-100{ background-color: $fu-positive-100;  }
+
+    .color-neutral{ background-color: $fu-neutral;  }
+    .color-neutral-900{ background-color: $fu-neutral-900;  }
+    .color-neutral-700{ background-color: $fu-neutral-700;  }
+    .color-neutral-500{ background-color: $fu-neutral-500;  }
+    .color-neutral-200{ background-color: $fu-neutral-200;  }
+    .color-neutral-100{ background-color: $fu-neutral-100;  }
+
+    .color-negative{ background-color: $fu-negative;  }
+    .color-negative-700{ background-color: $fu-negative-700;  }
+    .color-negative-600{ background-color: $fu-negative-600;  }
+    .color-negative-500{ background-color: $fu-negative-500;  }
+    .color-negative-400{ background-color: $fu-negative-400;  }
+    .color-negative-300{ background-color: $fu-negative-300;  }
+    .color-negative-200{ background-color: $fu-negative-200;  }
+    .color-negative-100{ background-color: $fu-negative-100;  }
+
+    .color-dark{ color: $White;  background-color: $fu-dark;  }
+    .color-dark-700{ color: $White;  background-color: $fu-dark-700;  }
+    .color-dark-600{ color: $White;  background-color: $fu-dark-600;  }
+    .color-dark-500{ color: $White;  background-color: $fu-dark-500;  }
+    .color-dark-400{ color: $White;  background-color: $fu-dark-400;  }
+    .color-dark-300{ color: $White;  background-color: $fu-dark-300;  }
+    .color-dark-200{ color: $White;  background-color: $fu-dark-200;  }
+    .color-dark-100{ background-color:  $fu-dark-100;  }
+
+    .color-light{ background-color: $fu-light;}
+    .color-light-900{ color: $White; background-color: $fu-light-900;}
+    .color-light-800{ background-color: $fu-light-800;}
+    .color-light-700{ background-color: $fu-light-700;}
+    .color-light-600{ background-color: $fu-light-600;}
+    .color-light-500{ background-color: $fu-light-500;}
+    .color-light-400{ background-color: $fu-light-400;}
+    .color-light-300{ background-color: $fu-light-300;}
+    .color-light-200{ background-color: $fu-light-200;}
+    .color-light-100{ background-color: $fu-light-100;}
+}

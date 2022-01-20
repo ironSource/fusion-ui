@@ -1,0 +1,152 @@
+<div class="row">
+    <div class="col-9">
+        <!--UI-Component Examples-->
+        <fusion-example-block id="icoStatus" title="Icon - 'Status'">
+            <ng-template fusionExampleBlock="Angular">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code="<fusion-icon-status [options]={color: 'orange', tooltip: 'Pending'}></fusion-icon-status> orange
+<fusion-icon-status [options]={color: 'green', tooltip: 'Active'}></fusion-icon-status> green
+<fusion-icon-status [options]={color: 'red', tooltip: 'Not Approve'}></fusion-icon-status> red
+<fusion-icon-status [options]={color: 'grey', tooltip: 'Inactive'}></fusion-icon-status> grey
+<fusion-icon-status [options]={color: 'grey', animated: true}></fusion-icon-status> animated
+<fusion-icon-status [options]={color: 'grey', animated: true, customColor: '#055ffa'}></fusion-icon-status> animated, custom color"
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="React">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='import React from "react";
+import {FusionIconStatus} from "@ironsource/fusion-ui/native/react";
+
+export default class Foo extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            iconStatusPending: {
+                options: {color: "orange"}      // in react application we have not support tooltip yet.
+            },
+            iconStatusActive: {
+                options: {color: "green"}
+            },
+            iconStatusNotApprove: {
+                options: {color: "red"}
+            },
+            iconStatusInactive: {
+                options: {color: "grey"}
+            }
+        };
+    }
+
+    componentDidMount() {
+        this.props.updateLayoutTitle({title: "Example"});
+    }
+
+  render() {
+    return (
+      <div className="example-holder">
+        <h2>Icon - Status Example</h2>
+              <FusionIconStatus config={this.state.iconStatusPending}></FusionIconStatus> Pending &nbsp;
+              <FusionIconStatus config={this.state.iconStatusActive}></FusionIconStatus> Active &nbsp;
+              <FusionIconStatus config={this.state.iconStatusNotApprove}></FusionIconStatus> Not Approve &nbsp;
+              <FusionIconStatus config={this.state.iconStatusInactive}></FusionIconStatus> Inactive &nbsp;
+      </div>
+    );
+  }
+}'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Vue">
+                <fusion-code-block
+                    lang="html"
+                    class="is-collapsible"
+                    code='<template>
+  <div style="margin: 20px;">
+    <p>IconStatus Component example</p>
+    <FusionIconStatus :config="iconStatus"></FusionIconStatus> Pending
+  </div>
+</template>'
+                ></fusion-code-block>
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='<script>
+import { FusionIconStatus } from "@ironsource/fusion-ui/native/vue";
+
+export const FooComponent = {
+  name: "FooComponent",
+  mounted() {
+    this.$emit("updateLayoutTitle", { title: "IconStatus Component" });
+  },
+  components: {
+    FusionIconStatus
+  },
+  data() {
+    return {
+      iconStatus: {
+        options: { color: "orange" }            // "green" | "red" | "grey"
+      }
+    };
+  },
+};
+
+export default FooComponent;
+</script>'
+                ></fusion-code-block>
+            </ng-template>
+            <ng-template fusionExampleBlock="Native">
+                <fusion-code-block
+                    lang="js"
+                    class="is-collapsible"
+                    code='const onLoad = () => {
+    // add icon-status
+    const iconStatus = document.createElement("native-fusion-icon-status");
+    iconStatus.config = {
+        options: {
+            color: "orange"
+        }
+    };
+
+    document.body.appendChild(iconStatus);
+};
+
+document.addEventListener("DOMContentLoaded", onLoad, false);'
+                ></fusion-code-block>
+            </ng-template>
+            <div class="icon-status-holder">
+                <div><fusion-icon-status [options]="{color: 'orange', tooltip: 'Pending'}"></fusion-icon-status> orange</div>
+                <div><fusion-icon-status [options]="{color: 'green', tooltip: 'Active'}"></fusion-icon-status> green</div>
+                <div><fusion-icon-status [options]="{color: 'red', tooltip: 'Not Approve'}"></fusion-icon-status> red</div>
+                <div><fusion-icon-status [options]="{color: 'grey', tooltip: 'Inactive'}"></fusion-icon-status> grey</div>
+                <div><fusion-icon-status [options]="{color: 'grey', animated: true}"></fusion-icon-status> animated</div>
+                <div>
+                    <fusion-icon-status [options]="{color: 'grey', animated: true, customColor: '#055ffa'}"></fusion-icon-status> animated,
+                    custom color
+                </div>
+            </div>
+        </fusion-example-block>
+        <!--UI-Component Examples-->
+        <!--UI-Component Configuration Doc-->
+        <div class="is-example-title">Configuration</div>
+        <fusion-example-block id="params" title="Parameters" [collapsible]="false">
+            <fusion-code-block
+                lang="text"
+                code="For 'fusion-icon-status':
+- options: IconStatusOption {
+    color?: 'orange' | 'green' | 'grey' | 'red';
+    customColor?: string                            // any css valid color - '#055ffa' for example
+    animated?: boolean;                             // if true use animated svg
+    tooltip?: string;                               // Angular only
+}"
+            ></fusion-code-block>
+        </fusion-example-block>
+        <!--UI-Component Configuration Doc-->
+    </div>
+
+    <div class="col-3 is-right-side-menu-holder">
+        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-9">
+        <!--UI-Component Examples-->
+        <fusion-example-block id="paletteColors" title="Color Palettes" [collapsible]="false">
+            <div class="is-example-block-subtitle">Theme Colors</div>
+            <div class="color-palettes-holder">
+                <div class="color-palette-item" *ngFor="let colorPalette of colorsThemeConfig">
+                    <ul class="color-palette">
+                        <li class="{{ colorPalette.className }}">{{ colorPalette.name }}</li>
+                        <li *ngFor="let color of colorPalette.colors" class="{{ color.className }}">
+                            <div class="color-var-name">{{ color.name }}</div>
+                            <div class="color-var-value">{{ color.value }}</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </fusion-example-block>
+        <!--UI-Component Examples-->
+    </div>
+</div>
+
+<ng-template #colorsFixedContent>
+    <div style="padding: 20px; border: solid 1px; background-color: #fff">PAGE FIXED POSITION</div>
+</ng-template>
