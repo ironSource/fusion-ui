@@ -5,7 +5,7 @@
         {
             "files": ["*.ts"],
             "parserOptions": {
-                "project": ["tsconfig.lib.json", "tsconfig.spec.json"],
+                "project": ["projects/fusion-ui/tsconfig.lib.json", "projects/fusion-ui/tsconfig.spec.json"],
                 "createDefaultProgram": true
             },
             "rules": {
