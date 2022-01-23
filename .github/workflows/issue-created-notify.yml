@@ -16,5 +16,6 @@ jobs:
           channel: fusion-notifications
           username: FusionUI-CI
           status: "warning"
+          icon_url: "https://avatars.githubusercontent.com/t/5433436?s=32&v=4"
           message: "${{github.actor}} create an ${{ github.event.issue.labels[0].name }} ISSUE - ${{ github.event.issue.number }} ${{ github.event.issue.title }}. https://github.com/${{ github.repository }}/issues/${{ github.event.issue.number }}"
           slack_webhook: ${{ secrets.SLACK_PATH }}
