@@ -9,7 +9,7 @@ import {STYLE_VERSION_TOKEN} from '../../../fusion-ui/src/lib/services/version/s
 @NgModule({
     declarations: [AppComponent],
     imports: [BrowserModule, AppRoutingModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), TooltipModule],
-    providers: [{provide: STYLE_VERSION_TOKEN, useFactory: () => StyleVersion.V1}],
+    providers: [{provide: STYLE_VERSION_TOKEN, useFactory: () => StyleVersion.V2}],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
