@@ -9,10 +9,10 @@ import {
     Input,
     OnDestroy,
     OnInit,
-    Output
+    Output,
+    ɵbypassSanitizationTrustStyle as bypassSanitizationTrustStyle
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {DomSanitizer} from '@angular/platform-browser';
 import {UniqueIdService} from '../../../services/unique-id/unique-id.service';
 import {StyleBase} from '../../style/style-base';
 import {StyleVersion} from '../../../services/version/style-version.enum';
@@ -52,12 +52,7 @@ export class CheckboxComponent extends StyleBase implements OnInit, ControlValue
         return this.tooltipContent ? this.tooltipContent : this.class && this.class.indexOf('truncate') > -1 ? this.label : '';
     }
 
-    constructor(
-        injector: Injector,
-        private uniqueIdService: UniqueIdService,
-        private cd: ChangeDetectorRef,
-        private sanitizer: DomSanitizer
-    ) {
+    constructor(injector: Injector, private uniqueIdService: UniqueIdService, private cd: ChangeDetectorRef) {
         super(injector);
     }
 
@@ -75,7 +70,7 @@ export class CheckboxComponent extends StyleBase implements OnInit, ControlValue
         let svg;
         if (this.backgroundColor && (this.checked || this.isIndeterminate)) {
             const baseSvg = styleVersion === StyleVersion.V2 ? BASE_CHECKED_IMAGE.style_v2 : BASE_CHECKED_IMAGE.style_v1;
-            svg = this.sanitizer.bypassSecurityTrustStyle(
+            svg = bypassSanitizationTrustStyle(
                 `url("data:image/svg+xml,${encodeURIComponent(
                     baseSvg[this.isIndeterminate ? 'indeterminate' : 'checked'].replace('{backgroundColor}', this.backgroundColor)
                 )}") left top no-repeat`

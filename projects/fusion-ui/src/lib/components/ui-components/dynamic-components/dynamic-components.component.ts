@@ -12,10 +12,11 @@ import {
     ChangeDetectionStrategy,
     Renderer2,
     ElementRef,
-    TemplateRef
+    TemplateRef,
+    ɵbypassSanitizationTrustHtml as bypassSanitizationTrustHtml,
+    ɵSafeHtml
 } from '@angular/core';
 import {DynamicComponentConfiguration} from './dynamic-component';
-import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 
 @Component({
     selector: 'fusion-dynamic-components',
@@ -50,11 +51,11 @@ export class DynamicComponentsComponent implements OnChanges, OnInit, OnDestroy 
             this.nativeElement = data.element;
             this.renderNativeElement();
         } else if (data?.htmlSnippet) {
-            this.htmlSnippet = this.sanitizer.bypassSecurityTrustHtml(data.htmlSnippet);
+            this.htmlSnippet = bypassSanitizationTrustHtml(data.htmlSnippet);
         }
     }
 
-    htmlSnippet: SafeHtml;
+    htmlSnippet: ɵSafeHtml;
     templateRef: TemplateRef<any>;
 
     private cmpRef: ComponentRef<Component>;
@@ -62,7 +63,7 @@ export class DynamicComponentsComponent implements OnChanges, OnInit, OnDestroy 
     private nativeElement: Node;
     private elementContainer: ElementRef;
 
-    constructor(private componentFactoryResolver: ComponentFactoryResolver, private renderer: Renderer2, private sanitizer: DomSanitizer) {}
+    constructor(private componentFactoryResolver: ComponentFactoryResolver, private renderer: Renderer2) {}
 
     updateComponent(isComponentChanged?: boolean) {
         if (!this.isViewInitialized) {
