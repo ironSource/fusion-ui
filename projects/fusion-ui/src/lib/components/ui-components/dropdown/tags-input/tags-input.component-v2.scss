@@ -36,6 +36,18 @@
             .options-dropdown {
                 top: calc(100% + 2px);
                 visibility: visible;
+                .is-footer {
+                    text-align: right;
+                    background-color: $White;
+                    padding: 8px 7px 7px 7px;
+                    border-top: solid 1px $fu-light-300;
+                    button + button {
+                        margin-left: 2px;
+                    }
+                }
+                &.has-footer{
+                    max-height: calc(#{$v2-optionHeight} * #{$v2-optionsToShow} + 8px + 40px); // add 40 px for footer
+                }
             }
         }
 

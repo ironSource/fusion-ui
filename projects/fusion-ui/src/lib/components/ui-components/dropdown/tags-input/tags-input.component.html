@@ -44,6 +44,7 @@
     <ng-container *ngIf="!bulkInsertion">
         <div
             class="options-dropdown"
+            [class.has-footer]="!!footer"
             [ngClass]="{'dd-scroll': hasScroll}"
             *ngIf="(searchValue.value || (filteredDisplayedOptions$ | async)?.length || loading) && !generateOnlyCustomTags"
         >
@@ -66,6 +67,24 @@
                     >
                     </fusion-dropdown-options-list>
                 </ul>
+            </div>
+            <!-- footer -->
+            <div class="is-footer" *ngIf="footer">
+                <button
+                    type="button"
+                    fusion-button
+                    class="secondary small"
+                    [ngClass]="{transparent: currentStyleVersion === styleVersion.V2}"
+                    (click)="closeDropdown()"
+                    [disabled]="loading"
+                >Cancel</button>
+                <button
+                    type="button"
+                    fusion-button
+                    class="primary small"
+                    [ngClass]="{transparent: currentStyleVersion === styleVersion.V2}"
+                    [disabled]="loading"
+                >Apply</button>
             </div>
         </div>
     </ng-container>

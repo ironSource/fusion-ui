@@ -13,6 +13,7 @@ export interface TagsInputComponentConfigurations {
     noResultMessage?: string;
     loading?: boolean;
     error?: string;
+    footer?: boolean | {clearAll?: boolean | string};
 }
 
 export interface TagsInputBulkInsertOptions {

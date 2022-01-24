@@ -50,6 +50,7 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
     @Input() isBulkInsertTags = false;
     @Input() bulkInsertOptions: TagsInputBulkInsertOptions;
     @Input() maxHeight: number;
+    @Input() footer: boolean | {clearAll?: boolean | string};
 
     // when using input tags inside an isClickOutside directive,
     // the click from the onremove will cause isClickOutside to trigger as an outside click
@@ -135,6 +136,7 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
             this.maxHeight = value.maxHeight;
             this.isBulkInsertTags = value.isBulkInsertTags;
             this.bulkInsertOptions = value.bulkInsertOptions;
+            this.footer = value.footer;
         }
     }
 
