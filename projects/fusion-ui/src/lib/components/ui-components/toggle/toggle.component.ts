@@ -8,8 +8,7 @@ import {
     Injector,
     Input,
     OnInit,
-    Output,
-    ɵbypassSanitizationTrustStyle as bypassSanitizationTrustStyle
+    Output
 } from '@angular/core';
 import {UniqueIdService} from '../../../services/unique-id/unique-id.service';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
@@ -18,6 +17,7 @@ import {StyleBase} from '../../style/style-base';
 import {delay, startWith} from 'rxjs/operators';
 import {isString} from '../../../utils';
 import {ToggleLabel} from './toggle.config';
+import {DomSanitizerService} from '../../../services/dom-sanitizer/dom-sanitizer.service';
 
 @Component({
     selector: 'fusion-toggle',
@@ -59,7 +59,7 @@ export class ToggleComponent extends StyleBase implements OnInit, ControlValueAc
     @HostBinding('attr.style')
     public get customBGColor(): any {
         return !!this.customCheckedBackgroundColor
-            ? bypassSanitizationTrustStyle(`--checked-bg-color: ${this.customCheckedBackgroundColor}`)
+            ? this.sanitizerService.bypassSanitizationTrustStyle(`--checked-bg-color: ${this.customCheckedBackgroundColor}`)
             : this.elementRef.nativeElement.getAttribute('style');
     }
 
@@ -75,7 +75,12 @@ export class ToggleComponent extends StyleBase implements OnInit, ControlValueAc
      */
     animated$ = of(true).pipe(delay(500), startWith(false));
 
-    constructor(injector: Injector, private uniqueIdService: UniqueIdService, private elementRef: ElementRef) {
+    constructor(
+        injector: Injector,
+        private uniqueIdService: UniqueIdService,
+        private elementRef: ElementRef,
+        private sanitizerService: DomSanitizerService
+    ) {
         super(injector);
     }
 
