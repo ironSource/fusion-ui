@@ -56,7 +56,7 @@ export class CheckboxComponent extends StyleBase implements OnInit, ControlValue
         injector: Injector,
         private uniqueIdService: UniqueIdService,
         private cd: ChangeDetectorRef,
-        private sanitizer: DomSanitizerService
+        private sanitizerService: DomSanitizerService
     ) {
         super(injector);
     }
@@ -75,7 +75,7 @@ export class CheckboxComponent extends StyleBase implements OnInit, ControlValue
         let svg;
         if (this.backgroundColor && (this.checked || this.isIndeterminate)) {
             const baseSvg = styleVersion === StyleVersion.V2 ? BASE_CHECKED_IMAGE.style_v2 : BASE_CHECKED_IMAGE.style_v1;
-            svg = this.sanitizer.bypassSecurityTrustStyle(
+            svg = this.sanitizerService.bypassSanitizationTrustStyle(
                 `url("data:image/svg+xml,${encodeURIComponent(
                     baseSvg[this.isIndeterminate ? 'indeterminate' : 'checked'].replace('{backgroundColor}', this.backgroundColor)
                 )}") left top no-repeat`

@@ -36,7 +36,7 @@ export class TooltipComponent extends StyleBase implements OnDestroy, AfterViewI
         this.position = newTooltipData.position || TooltipPosition.Top;
         this.content =
             newTooltipData.type === TooltipType.Html
-                ? this.sanitizer.bypassSecurityTrustHtml(newTooltipData.content)
+                ? this.sanitizerService.bypassSanitizationTrustHtml(newTooltipData.content)
                 : newTooltipData.content;
         this.width = newTooltipData.width;
         this.icon = newTooltipData.icon;
@@ -58,7 +58,7 @@ export class TooltipComponent extends StyleBase implements OnDestroy, AfterViewI
         private tooltipElRef: ElementRef,
         private window: WindowService,
         private renderer: Renderer2,
-        private sanitizer: DomSanitizerService
+        private sanitizerService: DomSanitizerService
     ) {
         super(injector);
     }

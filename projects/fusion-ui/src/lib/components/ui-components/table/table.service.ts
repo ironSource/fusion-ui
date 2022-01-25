@@ -12,7 +12,7 @@ export class TableService {
     public rowModelChange: EventEmitter<TableRowChangedData> = new EventEmitter();
     public expandLevels: number;
 
-    constructor(private sanitizer: DomSanitizerService, private logService: LogService) {}
+    constructor(private sanitizerService: DomSanitizerService, private logService: LogService) {}
 
     onRowsSelectChanged(isGroupedTable, rows, isChecked: boolean): void {
         if (isGroupedTable) {
@@ -199,7 +199,7 @@ export class TableService {
                 }
             }, '');
 
-            return this.sanitizer.bypassSecurityTrustStyle(`calc((100% - ${widthToReduce}) / ${columnToCalc})`);
+            return this.sanitizerService.bypassSanitizationTrustStyle(`calc((100% - ${widthToReduce}) / ${columnToCalc})`);
         }
     }
 

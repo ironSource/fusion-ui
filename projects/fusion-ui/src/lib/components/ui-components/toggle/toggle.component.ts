@@ -59,7 +59,7 @@ export class ToggleComponent extends StyleBase implements OnInit, ControlValueAc
     @HostBinding('attr.style')
     public get customBGColor(): any {
         return !!this.customCheckedBackgroundColor
-            ? this.sanitizer.bypassSecurityTrustStyle(`--checked-bg-color: ${this.customCheckedBackgroundColor}`)
+            ? this.sanitizerService.bypassSanitizationTrustStyle(`--checked-bg-color: ${this.customCheckedBackgroundColor}`)
             : this.elementRef.nativeElement.getAttribute('style');
     }
 
@@ -78,8 +78,8 @@ export class ToggleComponent extends StyleBase implements OnInit, ControlValueAc
     constructor(
         injector: Injector,
         private uniqueIdService: UniqueIdService,
-        private sanitizer: DomSanitizerService,
-        private elementRef: ElementRef
+        private elementRef: ElementRef,
+        private sanitizerService: DomSanitizerService
     ) {
         super(injector);
     }

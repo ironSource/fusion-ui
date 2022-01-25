@@ -50,7 +50,7 @@ export class DynamicComponentsComponent implements OnChanges, OnInit, OnDestroy 
             this.nativeElement = data.element;
             this.renderNativeElement();
         } else if (data?.htmlSnippet) {
-            this.htmlSnippet = this.sanitizer.bypassSecurityTrustHtml(data.htmlSnippet);
+            this.htmlSnippet = this.sanitizerService.bypassSanitizationTrustHtml(data.htmlSnippet);
         }
     }
 
@@ -65,7 +65,7 @@ export class DynamicComponentsComponent implements OnChanges, OnInit, OnDestroy 
     constructor(
         private componentFactoryResolver: ComponentFactoryResolver,
         private renderer: Renderer2,
-        private sanitizer: DomSanitizerService
+        private sanitizerService: DomSanitizerService
     ) {}
 
     updateComponent(isComponentChanged?: boolean) {
