@@ -1,0 +1,13 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "outDir": "../../out-tsc/app",
+        "types": [],
+        "paths": {
+            "@ironsource/fusion-ui": ["projects/fusion-ui/src/public-api"]
+        }
+    },
+    "files": ["src/main.ts", "src/polyfills.ts", "src/public-api.ts"],
+    "include": ["src/**/*.d.ts"]
+}

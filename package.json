@@ -39,8 +39,8 @@
     "format:check": "prettier --config ./prettier.config.js --check 'projects/**/*{.ts,.json}'",
     "format:pretty": "prettier --config ./prettier.config.js --write 'projects/**/*{.ts,.json}'",
     "prettier": "prettier",
-    "build:mfe:dev": "VERSION=1.0.2-rc.0 npm run build:mfe -- -c dev",
-    "build:mfe": "ng run fusion-ui:build-mfe",
+    "build:mfe:dev": "VERSION=1.0.2-rc.0ng build fusion-mfe -c dev",
+    "build:mfe": "VERSION=1.0.2 ng build fusion-mfe",
     "release": "standard-version"
   },
   "lint-staged": {
