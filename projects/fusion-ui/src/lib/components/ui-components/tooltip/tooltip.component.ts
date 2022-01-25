@@ -14,7 +14,7 @@ import {
 import {IShiftPosition, ITooltipData, TooltipPosition, TooltipType} from './tooltip.entities';
 import {WindowService} from '../../../services/window/window.service';
 import {StyleBase} from '../../style/style-base';
-import {DomSanitizerService, SafeHtml} from '../../../services/dom-sanitizer/dom-sanitizer.service';
+import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 
 const TOOLTIP_ARROW_SIZE = 6;
 
@@ -58,7 +58,7 @@ export class TooltipComponent extends StyleBase implements OnDestroy, AfterViewI
         private tooltipElRef: ElementRef,
         private window: WindowService,
         private renderer: Renderer2,
-        private sanitizer: DomSanitizerService
+        private sanitizer: DomSanitizer
     ) {
         super(injector);
     }

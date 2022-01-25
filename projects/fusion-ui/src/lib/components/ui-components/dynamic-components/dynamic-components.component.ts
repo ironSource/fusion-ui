@@ -15,7 +15,7 @@ import {
     TemplateRef
 } from '@angular/core';
 import {DynamicComponentConfiguration} from './dynamic-component';
-import {DomSanitizerService, SafeHtml} from '../../../services/dom-sanitizer/dom-sanitizer.service';
+import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 
 @Component({
     selector: 'fusion-dynamic-components',
@@ -62,11 +62,7 @@ export class DynamicComponentsComponent implements OnChanges, OnInit, OnDestroy 
     private nativeElement: Node;
     private elementContainer: ElementRef;
 
-    constructor(
-        private componentFactoryResolver: ComponentFactoryResolver,
-        private renderer: Renderer2,
-        private sanitizer: DomSanitizerService
-    ) {}
+    constructor(private componentFactoryResolver: ComponentFactoryResolver, private renderer: Renderer2, private sanitizer: DomSanitizer) {}
 
     updateComponent(isComponentChanged?: boolean) {
         if (!this.isViewInitialized) {

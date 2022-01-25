@@ -1,9 +1,9 @@
 import {EventEmitter, Injectable} from '@angular/core';
 import {isNullOrUndefined, isNumber, isUndefined} from '../../../utils';
+import {DomSanitizer} from '@angular/platform-browser';
 import {LogService} from '../../../services/log/log.service';
 import {TableColumn, TableColumnTypeEnum, TableOptions, TableRowChangedData, TableRowsExpandableOptions} from './entities';
 import {DEFAULT_EXPANDABLE_LEVEL, MAXIMUM_EXPANDABLE_LEVEL} from './table.config';
-import {DomSanitizerService} from '../../../services/dom-sanitizer/dom-sanitizer.service';
 
 @Injectable()
 export class TableService {
@@ -12,7 +12,7 @@ export class TableService {
     public rowModelChange: EventEmitter<TableRowChangedData> = new EventEmitter();
     public expandLevels: number;
 
-    constructor(private sanitizer: DomSanitizerService, private logService: LogService) {}
+    constructor(private sanitizer: DomSanitizer, private logService: LogService) {}
 
     onRowsSelectChanged(isGroupedTable, rows, isChecked: boolean): void {
         if (isGroupedTable) {
