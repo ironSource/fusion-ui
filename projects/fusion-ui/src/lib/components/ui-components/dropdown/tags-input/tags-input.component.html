@@ -70,21 +70,24 @@
             </div>
             <!-- footer -->
             <div class="is-footer" *ngIf="footer">
-                <button
-                    type="button"
-                    fusion-button
-                    class="secondary small"
-                    [ngClass]="{transparent: currentStyleVersion === styleVersion.V2}"
-                    (click)="closeDropdown()"
-                    [disabled]="loading"
-                >Cancel</button>
-                <button
-                    type="button"
-                    fusion-button
-                    class="primary small"
-                    [ngClass]="{transparent: currentStyleVersion === styleVersion.V2}"
-                    [disabled]="loading"
-                >Apply</button>
+                <a href="#" fusion-button class="button-clear" (click)="onClearSelectionClicked($event)">Clear selection</a>
+                <div class="fu-footer-buttons-holder">
+                    <button
+                        type="button"
+                        fusion-button
+                        class="secondary small"
+                        [ngClass]="{transparent: currentStyleVersion === styleVersion.V2}"
+                        (click)="closeDropdown()"
+                        [disabled]="loading"
+                    >Cancel</button>
+                    <button
+                        type="button"
+                        fusion-button
+                        class="primary small"
+                        [ngClass]="{transparent: currentStyleVersion === styleVersion.V2}"
+                        [disabled]="loading"
+                    >Apply</button>
+                </div>
             </div>
         </div>
     </ng-container>

@@ -449,6 +449,14 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
         return firstCondition || secondCondition;
     }
 
+    onClearSelectionClicked($event) {
+        if ($event) {
+            $event.preventDefault();
+            $event.stopPropagation();
+        }
+        console.log('onClearSelectionClicked', $event);
+    }
+
     private getOptionById(value: Array<any>) {
         return this.options.filter(item => value.some(val => item.id === (val.id ? val.id : val)));
     }

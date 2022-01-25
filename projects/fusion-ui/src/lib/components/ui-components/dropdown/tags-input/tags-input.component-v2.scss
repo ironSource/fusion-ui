@@ -37,12 +37,20 @@
                 top: calc(100% + 2px);
                 visibility: visible;
                 .is-footer {
-                    text-align: right;
                     background-color: $White;
-                    padding: 8px 7px 7px 7px;
+                    height: 41px;
+                    display: flex;
+                    align-items: center;
                     border-top: solid 1px $fu-light-300;
-                    button + button {
-                        margin-left: 2px;
+                    .fu-footer-buttons-holder{
+                        margin-left: auto;
+                        button + button {
+                            margin-left: 2px;
+                        }
+                    }
+                    .button-clear{
+                        color: var(--tags-input-footer-color-button-color, $fu-light-900);
+                        text-decoration: underline;
                     }
                 }
                 &.has-footer{

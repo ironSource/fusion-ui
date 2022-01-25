@@ -98,11 +98,11 @@ export class TagDocsV2Component implements OnInit, OnDestroy {
 
     tagsInputConfig = {
         tagList: this.predefinedTags,
-        /*tagList: this.multiRawOptions,*/
         autoComplete: true,
         isPredefinedTags: true,
         inputPlaceholder: 'Add..',
-        noResultMessage: 'No result'
+        noResultMessage: 'No result',
+        footer: true
     };
 
     tagsFormControl = new FormControl(this.tagsSelected);
