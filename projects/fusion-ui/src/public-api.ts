@@ -39,6 +39,9 @@ export * from './lib/services/version/version.service';
 export * from './lib/services/version/style-version.enum';
 export * from './lib/services/version/style-version-config';
 
+// DOM Sanitize
+export * from './lib/services/dom-sanitizer/dom-sanitizer.service';
+
 // ---------------- Components ----------------
 export * from './lib/components/components.module';
 
