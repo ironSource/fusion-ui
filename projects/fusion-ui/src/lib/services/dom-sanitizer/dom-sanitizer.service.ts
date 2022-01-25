@@ -6,6 +6,6 @@ export declare interface SafeHtml extends ɵSafeHtml {}
     providedIn: 'root'
 })
 export class DomSanitizerService {
-    bypassSecurityTrustStyle = ɵbypassSanitizationTrustStyle;
-    bypassSecurityTrustHtml = ɵbypassSanitizationTrustHtml;
+    bypassSanitizationTrustStyle = ɵbypassSanitizationTrustStyle;
+    bypassSanitizationTrustHtml = ɵbypassSanitizationTrustHtml;
 }
