@@ -9,12 +9,13 @@ import {
     OnChanges,
     OnDestroy,
     Renderer2,
-    SimpleChanges
+    SimpleChanges,
+    ɵbypassSanitizationTrustHtml as bypassSanitizationTrustHtml,
+    ɵSafeHtml
 } from '@angular/core';
 import {IShiftPosition, ITooltipData, TooltipPosition, TooltipType} from './tooltip.entities';
 import {WindowService} from '../../../services/window/window.service';
 import {StyleBase} from '../../style/style-base';
-import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 
 const TOOLTIP_ARROW_SIZE = 6;
 
@@ -25,7 +26,7 @@ const TOOLTIP_ARROW_SIZE = 6;
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TooltipComponent extends StyleBase implements OnDestroy, AfterViewInit, OnChanges {
-    public content: string | SafeHtml;
+    public content: string | ɵSafeHtml;
     public componentData: any;
     public icon: string | {iconName: string; iconVersion: string};
     private position: TooltipPosition;
@@ -35,9 +36,7 @@ export class TooltipComponent extends StyleBase implements OnDestroy, AfterViewI
         this.hostEl = newTooltipData.parentEl;
         this.position = newTooltipData.position || TooltipPosition.Top;
         this.content =
-            newTooltipData.type === TooltipType.Html
-                ? this.sanitizer.bypassSecurityTrustHtml(newTooltipData.content)
-                : newTooltipData.content;
+            newTooltipData.type === TooltipType.Html ? bypassSanitizationTrustHtml(newTooltipData.content) : newTooltipData.content;
         this.width = newTooltipData.width;
         this.icon = newTooltipData.icon;
         this.type = newTooltipData.type || TooltipType.Html;
@@ -53,13 +52,7 @@ export class TooltipComponent extends StyleBase implements OnDestroy, AfterViewI
         return this.type === TooltipType.Html;
     }
 
-    constructor(
-        injector: Injector,
-        private tooltipElRef: ElementRef,
-        private window: WindowService,
-        private renderer: Renderer2,
-        private sanitizer: DomSanitizer
-    ) {
+    constructor(injector: Injector, private tooltipElRef: ElementRef, private window: WindowService, private renderer: Renderer2) {
         super(injector);
     }
 
