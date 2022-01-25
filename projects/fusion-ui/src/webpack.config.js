@@ -28,8 +28,7 @@ module.exports = {
             "@angular/common",
             "@angular/common/http",
             "@angular/router",
-            "@angular/forms",
-            "@angular/platform-browser"
+            "@angular/forms"
         ]
     })
   ],

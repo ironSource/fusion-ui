@@ -12,11 +12,11 @@ import {
     Output
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {DomSanitizer} from '@angular/platform-browser';
 import {UniqueIdService} from '../../../services/unique-id/unique-id.service';
 import {StyleBase} from '../../style/style-base';
 import {StyleVersion} from '../../../services/version/style-version.enum';
 import {BASE_CHECKED_IMAGE} from './checkbox.cusom-svg';
+import {DomSanitizerService} from '../../../services/dom-sanitizer/dom-sanitizer.service';
 
 @Component({
     selector: 'fusion-checkbox',
@@ -56,7 +56,7 @@ export class CheckboxComponent extends StyleBase implements OnInit, ControlValue
         injector: Injector,
         private uniqueIdService: UniqueIdService,
         private cd: ChangeDetectorRef,
-        private sanitizer: DomSanitizer
+        private sanitizer: DomSanitizerService
     ) {
         super(injector);
     }
