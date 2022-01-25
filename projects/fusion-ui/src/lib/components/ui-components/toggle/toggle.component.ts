@@ -13,11 +13,11 @@ import {
 import {UniqueIdService} from '../../../services/unique-id/unique-id.service';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {BehaviorSubject, of} from 'rxjs';
-import {DomSanitizer} from '@angular/platform-browser';
 import {StyleBase} from '../../style/style-base';
 import {delay, startWith} from 'rxjs/operators';
 import {isString} from '../../../utils';
 import {ToggleLabel} from './toggle.config';
+import {DomSanitizerService} from '../../../services/dom-sanitizer/dom-sanitizer.service';
 
 @Component({
     selector: 'fusion-toggle',
@@ -78,7 +78,7 @@ export class ToggleComponent extends StyleBase implements OnInit, ControlValueAc
     constructor(
         injector: Injector,
         private uniqueIdService: UniqueIdService,
-        private sanitizer: DomSanitizer,
+        private sanitizer: DomSanitizerService,
         private elementRef: ElementRef
     ) {
         super(injector);
