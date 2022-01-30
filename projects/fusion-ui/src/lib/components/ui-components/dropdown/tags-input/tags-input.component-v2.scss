@@ -51,6 +51,7 @@
                     .button-clear{
                         color: var(--tags-input-footer-color-button-color, $fu-light-900);
                         text-decoration: underline;
+                        text-align: initial;
                     }
                 }
                 &.has-footer{

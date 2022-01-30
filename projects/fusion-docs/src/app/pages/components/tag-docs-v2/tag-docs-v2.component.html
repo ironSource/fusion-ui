@@ -2,29 +2,28 @@
     <div class="col-9">
         <!--UI-Component Examples-->
         <div class="is-example-title">Types</div>
-<!--
         <fusion-example-block id="typeBasic" title="Basic">
-            &lt;!&ndash;Code Examples&ndash;&gt;
+            <!--Code Examples-->
             <ng-template fusionExampleBlock="Angular">
                 <fusion-code-block
                     lang="html"
                     class="is-collapsible"
-                    code='&lt;!&ndash;Tag&ndash;&gt;
+                    code='<!--Tag-->
 <fusion-tag [configuration]="{title: `Niek Bove`}"></fusion-tag>
 
-&lt;!&ndash;Tag with close button&ndash;&gt;
+<!--Tag with close button-->
 <fusion-tag [configuration]="{title: `Niek Bove`, close: true}" (onRemove)="onTagRemove($event)"></fusion-tag>
 
-&lt;!&ndash;Tag with close button and icon&ndash;&gt;
+<!--Tag with close button and icon-->
 <fusion-tag [configuration]="{icon: `v2/ios`, title: `Words for Winner`, close: true}" (onRemove)="onTagRemove($event)" ></fusion-tag>
 
-&lt;!&ndash;Tag with close button and flag  countryId - 2 letter country code "br" &ndash;&gt;
+<!--Tag with close button and flag  countryId - 2 letter country code "br" -->
 <fusion-tag [configuration]="{flag: `br`, title: `Basil`, close: true}" (onRemove)="onTagRemove($event)"></fusion-tag>
 
-&lt;!&ndash;Tag disabled &ndash;&gt;
+<!--Tag disabled -->
 <fusion-tag [configuration]="{title: `Niek Bove`, disabled: true}"></fusion-tag>
 
-&lt;!&ndash;With long name and tooltip&ndash;&gt;
+<!--With long name and tooltip-->
 <fusion-tag
     [configuration]="{
         title: `This is a tag with a very long name and he needs a tooltip`,
@@ -290,9 +289,9 @@ document.addEventListener("DOMContentLoaded", onLoad, false);
 '
                 ></fusion-code-block>
             </ng-template>
-            &lt;!&ndash;Code Examples&ndash;&gt;
+            <!--Code Examples-->
 
-            &lt;!&ndash;Component Example&ndash;&gt;
+            <!--Component Example-->
             <div class="row">
                 <div class="col-1">
                     <label class="example-label" style="text-align: right; margin-top: 26px;">Enabled:</label>
@@ -358,10 +357,9 @@ document.addEventListener("DOMContentLoaded", onLoad, false);
                     ></fusion-tag>
                 </div>
             </div>
-            &lt;!&ndash;Component Example&ndash;&gt;
+            <!--Component Example-->
         </fusion-example-block>
         <br />
--->
         <fusion-example-block id="typeInputTags" title="Input tags">
             <ng-template fusionExampleBlock="Angular">
                 <fusion-code-block
@@ -578,18 +576,30 @@ document.body.appendChild(tagsInput);'
                 ></fusion-code-block>
             </ng-template>
 
-            <div><button (click)="toggleDisabling($event)">Toggle disabling</button> <<{{ tagsInputDisabled$ | async }}>></div>
-            <br>
-            <div style="width: 300px">
-                <fusion-tags-input
-                    [formControl]="tagsFormControl"
-                    [isDisabled]="tagsInputDisabled$ | async"
-                    [configuration]="tagsInputConfig"
-                    (tagsChanged)="onTagsChanged($event)"
-                ></fusion-tags-input>
+            <div class="row">
+                <div class="col-3">
+                    <div><button (click)="toggleDisabling($event)">Toggle disabling</button> <<{{ tagsInputDisabled$ | async }}>></div>
+                    <br>
+                    <fusion-tags-input
+                        [formControl]="tagsFormControl"
+                        [isDisabled]="tagsInputDisabled$ | async"
+                        [configuration]="tagsInputConfig"
+                        (tagsChanged)="onTagsChanged($event)"
+                    ></fusion-tags-input>
+
+                </div>
+                <div class="col-3"></div>
+                <div class="col-3">
+                    <br>
+                    <br>
+                    <fusion-tags-input
+                        [formControl]="tagsFormFooterControl"
+                        [configuration]="tagsInputFooterConfig"
+                        (tagsChanged)="onTagsChanged($event)"
+                    ></fusion-tags-input>
+                </div>
             </div>
         </fusion-example-block>
-<!--
         <br />
         <fusion-example-block id="variationsTagFilter" title="Tag Filter">
             <ng-template fusionExampleBlock="Angular">
@@ -876,9 +886,9 @@ document.addEventListener("DOMContentLoaded", onLoad, false);'
                 </ul>
             </div>
         </fusion-example-block>
-        &lt;!&ndash;UI-Component Examples&ndash;&gt;
+        <!--UI-Component Examples-->
 
-        &lt;!&ndash;UI-Component Configuration Doc&ndash;&gt;
+        <!--UI-Component Configuration Doc-->
         <div class="is-example-title">Configuration</div>
         <fusion-example-block id="params" title="Parameters" [collapsible]="false">
             <fusion-code-block
@@ -931,7 +941,6 @@ tagsChanged(selectedTags: Tag[])
 "
             ></fusion-code-block>
         </fusion-example-block>
--->
         <!--UI-Component Configuration Doc-->
     </div>
 

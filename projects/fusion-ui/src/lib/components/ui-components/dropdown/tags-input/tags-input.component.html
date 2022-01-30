@@ -1,16 +1,16 @@
 <div
     [id]="id"
     class="is-tags-holder"
-    (click)="setFocusToInput()"
     [clickOutsideActivate]="isOpen$ | async"
-    (fusionClickOutside)="onOutsideClick()"
+    [clickOutsideByCoordinates]="true"
+    (fusionClickOutside)="onOutsideClick($event)"
     [ngClass]="{'is-icon-right-position': isIconRightPosition, 'dd-opened': isOpen$ | async, 'ss-selected': selected?.length > 0}"
     [class.tags-disabled]="isDisabled"
     [class.is-autocomplete]="autoComplete"
     *ngIf="selectedVersion$ | async as currentStyleVersion"
 >
     <!--tags list holder-->
-    <ul class="tags-holder" [ngStyle]="{'max-height.px': maxHeight}">
+    <ul class="tags-holder" [ngStyle]="{'max-height.px': maxHeight}" (click)="setFocusToInput()">
         <li *ngFor="let tag of (displaySelectedTags$ | async)">
             <fusion-tag
                 [close]="true"
@@ -70,15 +70,15 @@
             </div>
             <!-- footer -->
             <div class="is-footer" *ngIf="footer">
-                <a href="#" fusion-button class="button-clear" (click)="onClearSelectionClicked($event)">Clear selection</a>
+                <a *ngIf="footer?.clearAll" href="#" fusion-button class="button-clear" (click)="onClearSelectionClicked($event)">{{!!footer?.clearAll.length ? footer?.clearAll : 'Clear selection' }}</a>
                 <div class="fu-footer-buttons-holder">
                     <button
                         type="button"
                         fusion-button
                         class="secondary small"
                         [ngClass]="{transparent: currentStyleVersion === styleVersion.V2}"
-                        (click)="closeDropdown()"
                         [disabled]="loading"
+                        (click)="onCancelSelection()"
                     >Cancel</button>
                     <button
                         type="button"
@@ -86,9 +86,11 @@
                         class="primary small"
                         [ngClass]="{transparent: currentStyleVersion === styleVersion.V2}"
                         [disabled]="loading"
+                        (click)="onApplySelection()"
                     >Apply</button>
                 </div>
             </div>
+            <!-- footer/ -->
         </div>
     </ng-container>
 </div>

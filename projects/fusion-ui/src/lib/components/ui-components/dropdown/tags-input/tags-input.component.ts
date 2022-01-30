@@ -169,6 +169,10 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
         return this.isBulkInsertTags && this.searchValue.value.indexOf(this.bulkInsertDelimiter) !== -1;
     }
 
+    get isApplyByConfirm(): boolean {
+        return !!this.footer;
+    }
+
     filteredDisplayedOptions$: Observable<DropdownOption[]>;
     searchValue = new FormControl('');
     isNotFoundPredefined = false;
@@ -180,6 +184,9 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
     private tagsState: Array<Tag> = [];
     private uid: string;
     private inputElement: any;
+
+    private initialSelectedTags = [];
+    private initialTagsOptions = [];
 
     @HostBinding('class.fu-disabled') get disabled(): boolean {
         return this.isDisabled;
@@ -219,8 +226,10 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
                 if (!!this.inputElement) {
                     this.inputElement.value = '';
                 }
-                this.propagateChange(this._mapSelected());
-                this.tagsChanged.emit(this.tagsSelected);
+                if (!this.isApplyByConfirm) {
+                    this.propagateChange(this._mapSelected());
+                    this.tagsChanged.emit(this.tagsSelected);
+                }
                 return true;
             } else {
                 return false;
@@ -281,33 +290,22 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
      * set focus
      */
     setFocusToInput(): void {
-        this.isOpen$.next(true);
-        if (!!this.inputElement) {
-            this.inputElement.focus();
+        if (!this.isOpen$.getValue()) {
+            this.openTagsOptions();
         }
-        // add calculation if need open above the input
-        setTimeout(this.calcOptionHolderPosition.bind(this), 0);
-        // reset options
-        this.setCheckedInOptions();
     }
 
     /**
      * do blur
      */
-    onOutsideClick(): void {
-        this.isOpen$.next(false);
-        this.resetOptionsStyle();
-        if (this.autoComplete && !this.isPredefinedTags) {
-            this.searchValue.setValue('');
-            if (!!this.inputElement) {
-                this.inputElement.value = this.searchValue.value;
-            }
-            if (!this.isPredefinedTags) {
-                this.options = [];
+    onOutsideClick(target: HTMLElement): void {
+        if (this.isOpen$.getValue()) {
+            if (this.isApplyByConfirm) {
+                this.onCancelSelection();
+            } else {
+                this.closeTagsOptions();
             }
         }
-        this.pagination = {...this.pagination, counter: 1, lastCounter: 0};
-        this.displayedOptions$.next(this.parseOptions(this.optionsState));
     }
 
     onEnterNewTag(value: string): void {
@@ -337,8 +335,11 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
         if (idx !== -1) {
             this.tagsState.splice(idx, 1);
             this.setCheckedInOptions();
-            this.propagateChange(this._mapSelected());
-            this.tagsChanged.emit(this.tagsSelected);
+
+            if (!this.isApplyByConfirm) {
+                this.propagateChange(this._mapSelected());
+                this.tagsChanged.emit(this.tagsSelected);
+            }
         }
     }
 
@@ -427,8 +428,12 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
                     flag: option.flag,
                     tooltip: option.tooltipText
                 });
-                this.propagateChange(this._mapSelected());
-                this.tagsChanged.emit(this.tagsSelected);
+
+                if (!this.isApplyByConfirm) {
+                    this.propagateChange(this._mapSelected());
+                    this.tagsChanged.emit(this.tagsSelected);
+                }
+
                 this.displaySelectedTags$.next(this.tagsState);
                 this.isAddCustomTag = false;
                 this.displayedOptions$.next(this.parseOptions(this.options));
@@ -454,7 +459,58 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
             $event.preventDefault();
             $event.stopPropagation();
         }
-        console.log('onClearSelectionClicked', $event);
+        this.tagsState = [];
+        this.setCheckedInOptions();
+        this.displaySelectedTags$.next(this.tagsState);
+        this.displayedOptions$.next(this.parseOptions(this.options));
+    }
+
+    onCancelSelection() {
+        this.options = [...this.initialTagsOptions];
+        this.tagsState = [...this.initialSelectedTags];
+        this.setCheckedInOptions();
+        this.displaySelectedTags$.next(this.tagsState);
+        this.displayedOptions$.next(this.parseOptions(this.options));
+        this.closeTagsOptions();
+    }
+
+    onApplySelection() {
+        if (this.hasChanges()) {
+            this.propagateChange(this._mapSelected());
+            this.tagsChanged.emit(this.tagsSelected);
+        }
+        this.closeTagsOptions();
+    }
+
+    private openTagsOptions() {
+        this.isOpen$.next(true);
+        if (!!this.inputElement) {
+            this.inputElement.focus();
+        }
+        if (this.isApplyByConfirm) {
+            this.initialSelectedTags = [...this.tagsState];
+            this.initialTagsOptions = [...this.options];
+        }
+        // add calculation if need open above the input
+        setTimeout(this.calcOptionHolderPosition.bind(this), 0);
+        // reset options
+        this.setCheckedInOptions();
+    }
+
+    private closeTagsOptions() {
+        this.isOpen$.next(false);
+        this.resetOptionsStyle();
+        if (this.autoComplete && !this.isPredefinedTags) {
+            this.searchValue.setValue('');
+            if (!!this.inputElement) {
+                this.inputElement.value = this.searchValue.value;
+            }
+            if (!this.isPredefinedTags) {
+                this.options = [];
+            }
+        }
+        this.pagination = {...this.pagination, counter: 1, lastCounter: 0};
+        this.displayedOptions$.next(this.parseOptions(this.optionsState));
     }
 
     private getOptionById(value: Array<any>) {
@@ -471,6 +527,16 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
         }
         const regExp = new RegExp(this.generateTagsRegexPattern);
         return regExp.test(tagName);
+    }
+
+    private hasChanges(): boolean {
+        if (this.initialSelectedTags.length === this.tagsState.length) {
+            // same length - compare by content
+            return !this.initialSelectedTags.every(item => {
+                return this.tagsState.some(tag => tag === item);
+            });
+        }
+        return true;
     }
 
     // Implement ControlValueAccessor methods
