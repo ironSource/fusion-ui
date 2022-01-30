@@ -298,7 +298,7 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
     /**
      * do blur
      */
-    onOutsideClick(target: HTMLElement): void {
+    onOutsideClick(): void {
         if (this.isOpen$.getValue()) {
             if (this.isApplyByConfirm) {
                 this.onCancelSelection();

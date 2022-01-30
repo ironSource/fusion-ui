@@ -3,7 +3,7 @@
     class="is-tags-holder"
     [clickOutsideActivate]="isOpen$ | async"
     [clickOutsideByCoordinates]="true"
-    (fusionClickOutside)="onOutsideClick($event)"
+    (fusionClickOutside)="onOutsideClick()"
     [ngClass]="{'is-icon-right-position': isIconRightPosition, 'dd-opened': isOpen$ | async, 'ss-selected': selected?.length > 0}"
     [class.tags-disabled]="isDisabled"
     [class.is-autocomplete]="autoComplete"
