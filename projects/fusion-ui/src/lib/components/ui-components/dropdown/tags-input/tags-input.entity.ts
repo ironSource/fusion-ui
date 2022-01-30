@@ -2,8 +2,9 @@ import {Tag} from '../../tag/tag';
 
 export interface TagsInputComponentConfigurations {
     id?: string;
-    tags: Tag[] | string[];
-    tagList: Tag[];
+    tags?: Tag[] | string[];
+    tagList: Tag[] | string[];
+    autoComplete?: boolean;
     isPredefinedTags?: boolean;
     isBulkInsertTags?: boolean;
     bulkInsertOptions?: TagsInputBulkInsertOptions;
