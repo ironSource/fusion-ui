@@ -120,6 +120,10 @@ describe('TagsInputComponent', () => {
             expect(fixture.debugElement.query(By.css('.is-footer button.secondary')).nativeElement.classList).toContain('transparent');
         });
 
+        it('footer should NOT have "Clear" button by default', () => {
+            expect(fixture.debugElement.query(By.css('.is-footer button.a.button-clear'))).not.toBeTruthy();
+        });
+
         it('footer should have "Clear" button if set with default text', () => {
             component.footer = {clearAll: true};
             component.tagList = MOCK_TAGLIST_OPTIONS;
