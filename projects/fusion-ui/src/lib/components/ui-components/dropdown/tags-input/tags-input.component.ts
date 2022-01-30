@@ -173,6 +173,19 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
         return !!this.footer;
     }
 
+    get hasClearAll(): boolean {
+        return !!this.footer && typeof this.footer !== 'boolean' && this.footer.hasOwnProperty('clearAll');
+    }
+
+    get clearAllText(): string {
+        return !!this.footer &&
+            typeof this.footer !== 'boolean' &&
+            this.footer.hasOwnProperty('clearAll') &&
+            typeof this.footer.clearAll !== 'boolean'
+            ? this.footer.clearAll
+            : 'Clear selection';
+    }
+
     filteredDisplayedOptions$: Observable<DropdownOption[]>;
     searchValue = new FormControl('');
     isNotFoundPredefined = false;

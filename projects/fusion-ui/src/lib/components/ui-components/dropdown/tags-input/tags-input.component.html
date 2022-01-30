@@ -70,7 +70,7 @@
             </div>
             <!-- footer -->
             <div class="is-footer" *ngIf="footer">
-                <a *ngIf="footer?.clearAll" href="#" fusion-button class="button-clear" (click)="onClearSelectionClicked($event)">{{!!footer?.clearAll.length ? footer?.clearAll : 'Clear selection' }}</a>
+                <a *ngIf="hasClearAll" href="#" fusion-button class="button-clear" (click)="onClearSelectionClicked($event)">{{clearAllText}}</a>
                 <div class="fu-footer-buttons-holder">
                     <button
                         type="button"
