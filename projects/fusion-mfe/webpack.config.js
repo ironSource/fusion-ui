@@ -1,5 +1,4 @@
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const dependencies = require("../../../package.json").dependencies;
 
 module.exports = {
   mode: 'production',
@@ -19,7 +18,7 @@ module.exports = {
         library: { type: "var", name: `fusionLib${process.env.VERSION.replace(/[.-]/g,'_')}` },
         exposes: {
              './fusion-ui': {
-                 import :'./projects/fusion-ui/src/public-api.ts',
+                 import :'./projects/fusion-mfe/src/public-api.ts',
                  name: `fusion-mfe-lib-${process.env.VERSION}`
                 }
         },

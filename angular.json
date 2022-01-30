@@ -16,31 +16,6 @@
                         "project": "projects/fusion-ui/ng-package.json"
                     }
                 },
-                "build-mfe": {
-                    "builder": "ngx-build-plus:browser",
-                    "options": {
-                        "outputPath": "dist/fusion-mfe",
-                        "index": "projects/fusion-ui/src/index.html",
-                        "main": "projects/fusion-ui/src/public-api.ts",
-                        "tsConfig": "projects/fusion-ui/tsconfig.lib.mfe.json",
-                        "inlineStyleLanguage": "scss",
-                        "extraWebpackConfig": "projects/fusion-ui/src/webpack.config.js",
-                        "commonChunk": false
-                    },
-                    "configurations": {
-                        "dev": {
-                            "sourceMap": {
-                                "scripts": true,
-                                "styles": true,
-                                "hidden": true,
-                                "vendor": true
-                            },
-                            "optimization": false,
-                            "buildOptimizer": false,
-                            "outputHashing": "none"
-                        }
-                    }
-                },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
@@ -277,6 +252,126 @@
                         "lintFilePatterns": [
                             "projects/fusion-native/**/*.ts",
                             "projects/fusion-native/**/*.html"
+                        ]
+                    }
+                }
+            }
+        },
+        "fusion-mfe": {
+            "projectType": "application",
+            "schematics": {
+                "@schematics/angular:component": {
+                    "style": "scss"
+                },
+                "@schematics/angular:application": {
+                    "strict": true
+                }
+            },
+            "root": "projects/fusion-mfe",
+            "sourceRoot": "projects/fusion-mfe/src",
+            "prefix": "app",
+            "architect": {
+                "build": {
+                    "builder": "ngx-build-plus:browser",
+                    "options": {
+                        "outputPath": "dist/fusion-mfe",
+                        "index": "projects/fusion-mfe/src/index.html",
+                        "main": "projects/fusion-mfe/src/main.ts",
+                        "polyfills": "projects/fusion-mfe/src/polyfills.ts",
+                        "tsConfig": "projects/fusion-mfe/tsconfig.app.json",
+                        "inlineStyleLanguage": "scss",
+                        "assets": [
+                            "projects/fusion-mfe/src/favicon.ico",
+                            "projects/fusion-mfe/src/assets"
+                        ],
+                        "styles": [
+                            "projects/fusion-mfe/src/styles.scss"
+                        ],
+                        "scripts": [],
+                        "extraWebpackConfig": "projects/fusion-mfe/webpack.config.js",
+                        "commonChunk": false
+                    },
+                    "configurations": {
+                        "production": {
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "500kb",
+                                    "maximumError": "2mb"
+                                }
+                            ],
+                            "fileReplacements": [
+                                {
+                                    "replace": "projects/fusion-mfe/src/environments/environment.ts",
+                                    "with": "projects/fusion-mfe/src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "outputHashing": "all"
+                        },
+                        "development": {
+                            "buildOptimizer": false,
+                            "optimization": false,
+                            "vendorChunk": true,
+                            "extractLicenses": false,
+                            "sourceMap": true,
+                            "namedChunks": true
+                        },
+                        "dev": {
+                            "sourceMap": {
+                                "scripts": true,
+                                "styles": true,
+                                "hidden": true,
+                                "vendor": true
+                            },
+                            "optimization": false,
+                            "buildOptimizer": false,
+                            "outputHashing": "none"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "fusion-mfe:build:production"
+                        },
+                        "development": {
+                            "browserTarget": "fusion-mfe:build:development"
+                        }
+                    },
+                    "defaultConfiguration": "development"
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "fusion-mfe:build"
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "projects/fusion-mfe/src/test.ts",
+                        "polyfills": "projects/fusion-mfe/src/polyfills.ts",
+                        "tsConfig": "projects/fusion-mfe/tsconfig.spec.json",
+                        "karmaConfig": "projects/fusion-mfe/karma.conf.js",
+                        "inlineStyleLanguage": "scss",
+                        "assets": [
+                            "projects/fusion-mfe/src/favicon.ico",
+                            "projects/fusion-mfe/src/assets"
+                        ],
+                        "styles": [
+                            "projects/fusion-mfe/src/styles.scss"
+                        ],
+                        "scripts": []
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-eslint/builder:lint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "projects/fusion-mfe/**/*.ts",
+                            "projects/fusion-mfe/**/*.html"
                         ]
                     }
                 }
