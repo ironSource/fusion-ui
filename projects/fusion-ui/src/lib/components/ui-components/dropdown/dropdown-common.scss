@@ -133,7 +133,9 @@ $optionsHeight: 204px;
         }
 
         // multi-select bottom action panel
-        .dd-actions {
+        .dd-actions,
+        .is-footer {
+            position: relative;
             @extend %font13;
             text-align: right;
             background-color: $light-100;
@@ -147,6 +149,18 @@ $optionsHeight: 204px;
 
             button + button {
                 margin-left: 2px;
+            }
+            a.button-clear{
+                color: var(--tags-input-footer-color-button-color, $fu-light-900);
+                text-decoration: underline;
+                text-align: initial;
+                padding: initial;
+                height: initial;
+                background-image: initial;
+                border: none;
+                position: absolute;
+                left: 16px;
+                bottom: 13px;
             }
         }
 
