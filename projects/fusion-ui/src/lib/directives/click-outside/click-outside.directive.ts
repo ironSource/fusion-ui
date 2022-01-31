@@ -34,9 +34,10 @@ export class ClickOutsideDirective implements OnInit, OnDestroy {
     private handleClickOutSideListener(value: boolean): void {
         if (value && !this.clickOutSideSubscription) {
             this.clickOutSideSubscription = fromEvent(document, 'click').subscribe((event: MouseEvent) => {
-                const clickedInside = this.byCoordinatesMode
-                    ? this.isClickInsideByCoordinates(event)
-                    : this.elementRef.nativeElement.contains(this.getEventElement(event));
+                const clickedInside =
+                    this.byCoordinatesMode && event.clientY !== 0 && event.clientY !== 0
+                        ? this.isClickInsideByCoordinates(event)
+                        : this.elementRef.nativeElement.contains(this.getEventElement(event));
                 if (!clickedInside) {
                     this.fusionClickOutside.emit(event.target);
                 }
