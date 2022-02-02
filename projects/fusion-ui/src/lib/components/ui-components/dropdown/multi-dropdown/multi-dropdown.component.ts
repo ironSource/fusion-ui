@@ -149,11 +149,10 @@ export class MultiDropdownComponent extends DropdownComponent implements OnInit,
                 }
             });
         }
+        this.isInSelectAllAction();
         if (!this.confirm) {
             this.applySelect();
         }
-
-        this.isInSelectAllAction();
     }
 
     /**
@@ -186,12 +185,10 @@ export class MultiDropdownComponent extends DropdownComponent implements OnInit,
         } else {
             this.tempSelected.push(option);
         }
-
+        this.isInSelectAllAction();
         if (!this.confirm) {
             this.applySelect();
         }
-
-        this.isInSelectAllAction();
     }
 
     isSelected(option: DropdownOption): boolean {
@@ -203,7 +200,6 @@ export class MultiDropdownComponent extends DropdownComponent implements OnInit,
      * If all options selected Or if none of the options selected.
      */
     isInSelectAllAction() {
-        const selectedList = this.confirm ? this.tempSelected : this.selected;
         const tempOptionsList = this.tempOptions.reduce((acc, option) => {
             if (option.childOptions || option.isGroup) {
                 option.childOptions?.forEach(option => {
@@ -215,7 +211,7 @@ export class MultiDropdownComponent extends DropdownComponent implements OnInit,
             return acc;
         }, []);
 
-        this.isAllSelected = tempOptionsList.length === selectedList.length;
+        this.isAllSelected = tempOptionsList.length === this.tempSelected.length;
         this.isIndeterminate = this.tempSelected.length !== 0 && this.tempSelected.length !== tempOptionsList.length;
     }
 
