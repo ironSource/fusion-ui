@@ -11,6 +11,6 @@
         "vue/core.js",
         "vue/v2/core.js",
         "vue/v3/core.js",
-        "native/core/main-es2015.js"
+        "native/core/main.js"
     ]
 }
