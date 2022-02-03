@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.fusionNative = void 0;
 const schematics_1 = require("@angular-devkit/schematics");
 const FILES = {
-    es5: ['polyfills-es2015.js', 'polyfill-webcomp-es2015.js', 'main-es2015.js'],
-    es2015: ['polyfills-es5.js', 'polyfill-webcomp-es5.js', 'main-es5.js'],
+    es5: ['polyfill-webcomp-es2015.js'],
+    es2015: ['polyfill-webcomp-es5.js'],
     serve: ['main.js', 'polyfills.js']
 };
 function fusionNative(options) {
