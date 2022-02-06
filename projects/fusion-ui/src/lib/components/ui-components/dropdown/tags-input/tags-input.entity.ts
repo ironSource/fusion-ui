@@ -15,10 +15,16 @@ export interface TagsInputComponentConfigurations {
     loading?: boolean;
     error?: string;
     footer?: boolean | {clearAll?: boolean | string};
+    clearSearchOn?: TagsInputClearSearchOn;
 }
 
 export interface TagsInputBulkInsertOptions {
     delimiter?: string;
     validateKeyMethod?: (key: string) => boolean;
     maxTagsShown?: number;
+}
+
+export enum TagsInputClearSearchOn {
+    Select = 'select',
+    Close = 'close'
 }

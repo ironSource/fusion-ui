@@ -11,7 +11,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {DropdownOption} from '../entities/dropdown-option';
 import {FilterByFieldPipe} from '../../../../pipes/collection/filter-by-field/filter-by-field.pipe';
 import {ClonePipe} from '../../../../pipes/clone/clone.pipe';
-import {TagsInputBulkInsertOptions, TagsInputComponentConfigurations} from './tags-input.entity';
+import {TagsInputBulkInsertOptions, TagsInputClearSearchOn, TagsInputComponentConfigurations} from './tags-input.entity';
 
 @Component({
     selector: 'fusion-tags-input',
@@ -51,6 +51,7 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
     @Input() bulkInsertOptions: TagsInputBulkInsertOptions;
     @Input() maxHeight: number;
     @Input() footer: boolean | {clearAll?: boolean | string};
+    @Input() clearSearchOn?: TagsInputClearSearchOn;
 
     // when using input tags inside an isClickOutside directive,
     // the click from the onremove will cause isClickOutside to trigger as an outside click
@@ -137,6 +138,7 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
             this.isBulkInsertTags = value.isBulkInsertTags;
             this.bulkInsertOptions = value.bulkInsertOptions;
             this.footer = value.footer;
+            this.clearSearchOn = value.clearSearchOn;
         }
     }
 
@@ -441,12 +443,13 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
                     flag: option.flag,
                     tooltip: option.tooltipText
                 });
-
                 if (!this.isApplyByConfirm) {
                     this.propagateChange(this._mapSelected());
                     this.tagsChanged.emit(this.tagsSelected);
                 }
-
+                if (this.clearSearchOn === TagsInputClearSearchOn.Select) {
+                    this.clearSearch();
+                }
                 this.displaySelectedTags$.next(this.tagsState);
                 this.isAddCustomTag = false;
                 this.displayedOptions$.next(this.parseOptions(this.options));
@@ -521,6 +524,9 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
             if (!this.isPredefinedTags) {
                 this.options = [];
             }
+        }
+        if (this.clearSearchOn === TagsInputClearSearchOn.Close) {
+            this.clearSearch();
         }
         this.pagination = {...this.pagination, counter: 1, lastCounter: 0};
         this.displayedOptions$.next(this.parseOptions(this.optionsState));
