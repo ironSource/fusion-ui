@@ -1,9 +1,11 @@
 {
     "extends": "./tsconfig.lib.json",
     "compilerOptions": {
-        "declarationMap": false
+        "declarationMap": false,
+        "module": "esnext"
     },
     "angularCompilerOptions": {
-        "enableIvy": "true"
+        "enableIvy": "true",
+        "allowEmptyCodegenFiles": true
     }
 }

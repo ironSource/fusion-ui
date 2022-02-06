@@ -1,6 +1,9 @@
 {
     "name": "@ironsource/fusion-ui",
     "version": "1.0.4-rc.1",
+    "scripts": {
+        "postinstall": "ivy-ngcc"
+    },
     "dependencies": {
         "chart.js": "^3.5.1",
         "tslib": "^2.0.0",
