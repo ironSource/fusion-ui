@@ -11,6 +11,14 @@
         "vue/core.js",
         "vue/v2/core.js",
         "vue/v3/core.js",
-        "native/core/main-es2015.js"
-    ]
+        "native/main.js"
+    ],
+    "exports": {
+        "./react/core":{
+          "default":"./react/core.js"
+        },
+        "./react":{
+          "default":"./react/index.js"
+        }
+    }
 }
