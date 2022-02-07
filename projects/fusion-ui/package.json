@@ -19,6 +19,12 @@
         },
         "./react": {
             "default": "./react/index.js"
+        },
+        "./vue/core": {
+            "default": "./vue/core.js"
+        },
+        "./vue": {
+            "default": "./vue/index.js"
         }
     }
 }
