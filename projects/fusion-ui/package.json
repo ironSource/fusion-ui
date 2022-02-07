@@ -11,7 +11,7 @@
         "vue/core.js",
         "vue/v2/core.js",
         "vue/v3/core.js",
-        "native/main.js"
+        "native/core/main.js"
     ],
     "exports": {
         "./react/core": {
