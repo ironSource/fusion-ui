@@ -12,9 +12,7 @@ export class ClickOutsideDirective implements OnInit, OnDestroy {
     }
 
     /**
-     * In case click was on element inside the component but this element was
-     * removed from DOM (tag removed on TagsList). In this case directive
-     * checked if click was inside by click event coordinates
+     * Use this when the click event will remove the host element from the DOM
      * @param value
      */
     @Input() set clickOutsideByCoordinates(value: boolean) {
