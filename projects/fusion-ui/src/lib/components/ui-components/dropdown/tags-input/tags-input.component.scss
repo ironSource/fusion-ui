@@ -32,6 +32,9 @@
     &.dd-opened.is-autocomplete{
       .options-dropdown {
           visibility: visible;
+          &.has-footer{
+              max-height: 296px; // add 40 px for footer
+          }
       }
     }
   }
