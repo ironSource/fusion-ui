@@ -1,6 +1,14 @@
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [1.1.0-rc.10](https://github.com/ironSource/fusion-ui/compare/v1.0.3...v1.1.0-rc.10) (2022-02-08)
+
+
+### Bug Fixes
+
+* **fu-316:** added new config prop for tags-input component - clearSearchOn ([#24](https://github.com/ironSource/fusion-ui/issues/24)) ([c11ebba](https://github.com/ironSource/fusion-ui/commit/c11ebbacae24dc19cd758f8a6b8810810c466236))
+
 ## [1.1.0-rc.6](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.5...v1.1.0-rc.6) (2022-02-06)
 
 
