@@ -2,8 +2,8 @@ import {Rule, SchematicContext, SchematicsException, Tree} from '@angular-devkit
 import {Schema} from './schema';
 
 const FILES: {[target: string]: string[]} = {
-    es5: ['polyfills-es2015.js', 'polyfill-webcomp-es2015.js', 'main-es2015.js'],
-    es2015: ['polyfills-es5.js', 'polyfill-webcomp-es5.js', 'main-es5.js'],
+    es5: ['polyfill-webcomp-es2015.js'],
+    es2015: ['polyfill-webcomp-es5.js'],
     serve: ['main.js', 'polyfills.js']
 };
 
