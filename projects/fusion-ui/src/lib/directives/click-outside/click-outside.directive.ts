@@ -10,6 +10,11 @@ export class ClickOutsideDirective implements OnInit, OnDestroy {
     @Input() set clickOutsideActivate(value: boolean) {
         this.listenClickOutside$.next(value);
     }
+
+    /**
+     * Use this when the click event will remove the host element from the DOM
+     * @param value
+     */
     @Input() set clickOutsideByCoordinates(value: boolean) {
         this.byCoordinatesMode = value;
     }
