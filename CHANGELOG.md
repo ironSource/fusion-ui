@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0-rc.12](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.11...v1.1.0-rc.12) (2022-02-14)
+
+
+### Bug Fixes
+
+* **fu-306:** fixed add css classes for native ([c8ced40](https://github.com/ironSource/fusion-ui/commit/c8ced4052671693ab1af3f60ed15179dd55690d6))
+
 ## [1.1.0-rc.11](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.10...v1.1.0-rc.11) (2022-02-09)
 
 ## [1.1.0-rc.10](https://github.com/ironSource/fusion-ui/compare/v1.0.3...v1.1.0-rc.10) (2022-02-08)
