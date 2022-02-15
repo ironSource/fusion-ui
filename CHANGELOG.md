@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0-rc.13](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.12...v1.1.0-rc.13) (2022-02-15)
+
+
+### Bug Fixes
+
+* **fu-306:** fixed native component selector -listbox to -list-box ([52bbae8](https://github.com/ironSource/fusion-ui/commit/52bbae80904282df83f2abb8c3a19ae6970f911c))
+
 ## [1.1.0-rc.12](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.11...v1.1.0-rc.12) (2022-02-14)
 
 
