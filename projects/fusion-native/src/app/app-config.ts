@@ -149,7 +149,7 @@ export const components = [
     {name: `${PREFIX}-layout`, componentInstance: LayoutComponent},
     {name: `${PREFIX}-sidebar`, componentInstance: SidebarComponent},
     {name: `${PREFIX}-sidebar-menu`, componentInstance: SidebarMenuComponent},
-    {name: `${PREFIX}-listbox`, componentInstance: ListBoxComponent},
+    {name: `${PREFIX}-list-box`, componentInstance: ListBoxComponent},
     {name: `${PREFIX}-loader`, componentInstance: LoaderComponent},
     {name: `${PREFIX}-loader-inline`, componentInstance: LoaderInlineComponent},
     {name: `${PREFIX}-menu`, componentInstance: MenuComponent},
