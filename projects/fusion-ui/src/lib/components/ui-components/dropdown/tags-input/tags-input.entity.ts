@@ -16,6 +16,7 @@ export interface TagsInputComponentConfigurations {
     error?: string;
     footer?: boolean | {clearAll?: boolean | string};
     clearSearchOn?: TagsInputClearSearchOn;
+    searchByProperties?: string[];
 }
 
 export interface TagsInputBulkInsertOptions {

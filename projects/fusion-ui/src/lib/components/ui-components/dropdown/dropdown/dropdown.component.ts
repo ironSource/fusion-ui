@@ -127,6 +127,7 @@ export class DropdownComponent extends StyleBase implements OnInit, OnDestroy, O
     }
 
     @Input() optionsRenderByHover = true;
+    @Input() searchByProperties?: string[] = [];
 
     @Output() searchChange = new EventEmitter();
     @Output() searchClear = new EventEmitter();
@@ -457,7 +458,11 @@ export class DropdownComponent extends StyleBase implements OnInit, OnDestroy, O
                 (!this.autoComplete && !this.backendPaginationState && this.searchValue && this.searchValue.value) ||
                 this.isPredefinedTags
             ) {
-                const filterByArray: string[] = this.mappingOptions ? Object.values(this.mappingOptions) : [];
+                const filterByArray: string[] = this.searchByProperties.length
+                    ? this.searchByProperties
+                    : this.mappingOptions
+                    ? Object.values(this.mappingOptions)
+                    : [];
                 // use filter !(item.checked && this.isPredefinedTags) because in tags-input component item.checked
                 // must bot showed and in drop-down can
                 filteredOptions = this.filterByFieldPipe.transform(
