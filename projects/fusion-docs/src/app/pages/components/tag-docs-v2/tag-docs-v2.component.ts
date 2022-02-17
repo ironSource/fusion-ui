@@ -112,7 +112,7 @@ export class TagDocsV2Component implements OnInit, OnDestroy {
     };
 
     tagsInputFooterConfig: TagsInputComponentConfigurations = {
-        tagList: this.predefinedTags.map((item, idx) => ({id: idx + 1, title: item /*, displayText: item*/})),
+        tagList: this.predefinedTags.map((item, idx) => ({id: idx + 1, title: item})),
         autoComplete: true,
         isPredefinedTags: true,
         inputPlaceholder: 'Add..',
