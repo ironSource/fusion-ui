@@ -139,6 +139,7 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
             this.bulkInsertOptions = value.bulkInsertOptions;
             this.footer = value.footer;
             this.clearSearchOn = value.clearSearchOn;
+            this.searchByProperties = value.searchByProperties ?? [];
         }
     }
 
