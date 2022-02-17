@@ -458,7 +458,7 @@ export class DropdownComponent extends StyleBase implements OnInit, OnDestroy, O
                 (!this.autoComplete && !this.backendPaginationState && this.searchValue && this.searchValue.value) ||
                 this.isPredefinedTags
             ) {
-                const filterByArray: string[] = this.searchByProperties.length
+                const filterByArray: string[] = this.searchByProperties?.length
                     ? this.searchByProperties
                     : this.mappingOptions
                     ? Object.values(this.mappingOptions)
