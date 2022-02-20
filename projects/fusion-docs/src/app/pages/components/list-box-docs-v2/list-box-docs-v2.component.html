@@ -113,7 +113,7 @@ const MOCK_DATA = [
                 <fusion-code-block
                     lang="js"
                     class="is-collapsible"
-                    code='const listbox = document.createElement("native-fusion-listbox");
+                    code='const listbox = document.createElement("native-fusion-list-box");
 listbox.config = {
     controlValue: [
       {id: 1, displayText: "Phakamile Sikali"},
@@ -254,7 +254,7 @@ const MOCK_DATA = [
                 <fusion-code-block
                     lang="js"
                     class="is-collapsible"
-                    code='const listbox = document.createElement("native-fusion-listbox");
+                    code='const listbox = document.createElement("native-fusion-list-box");
 listbox.config = {
   controlValue: [
     {id: 1, displayText: "Phakamile Sikali"},
@@ -383,7 +383,7 @@ document.body.appendChild(listbox);'
                 <fusion-code-block
                     lang="js"
                     class="is-collapsible"
-                    code='const listbox = document.createElement("native-fusion-listbox");
+                    code='const listbox = document.createElement("native-fusion-list-box");
         listbox.config = {
           controlValue: [
             {appKey: 1, name: "CPI Campaign US App"},
@@ -613,7 +613,7 @@ const configDropdown = {
 const onValueChanged = (value, key)=>{
     if(key==="dropdown"){
         // update listbox
-        const listbox = document.getElementsByTagName("native-fusion-listbox")[0];
+        const listbox = document.getElementsByTagName("native-fusion-list-box")[0];
         listbox.config = {...configListBox, controlValue: value}
     }else{
         // update dropdown
@@ -635,7 +635,7 @@ const onLoad = () => {
     componentHolder.appendChild(document.createElement("hr"))
 
     // add listbox
-    const listbox = document.createElement("native-fusion-listbox");
+    const listbox = document.createElement("native-fusion-list-box");
     listbox.config = configListBox;
     listbox.setAttribute("name", "listbox");
     listbox.addEventListener("controlValueChange", e => onValueChanged(e.detail, "listbox"));
@@ -767,7 +767,7 @@ export default {
                 <fusion-code-block
                     lang="js"
                     class="is-collapsible"
-                    code='const listbox = document.createElement("native-fusion-listbox");
+                    code='const listbox = document.createElement("native-fusion-list-box");
 listbox.config = {
   controlValue: [
     {id: 1, displayText: "Phakamile Sikali"},

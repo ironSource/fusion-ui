@@ -1,6 +1,27 @@
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+## [1.1.0-rc.17](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.14...v1.1.0-rc.17) (2022-02-20)
+
+
+### Features
+
+* **fu-319:** added new property searchByProperties?: string[] for TagsInputComponent ([#31](https://github.com/ironSource/fusion-ui/issues/31)) ([88fbcd2](https://github.com/ironSource/fusion-ui/commit/88fbcd216e6683b95b11d3101ce96bc6abd8717b))
+
+
+### Bug Fixes
+
+* **fu-319:** bulk insertion with predefined tags and search by properties fixed ([6f575ce](https://github.com/ironSource/fusion-ui/commit/6f575ced317bf393ee61883270b59751250c3bd8))
+
+
+## [1.1.0-rc.16](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.15...v1.1.0-rc.16) (2022-02-17)
+
+## [1.1.0-rc.15](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.13...v1.1.0-rc.15) (2022-02-17)
+
+
+### Features
+
+* **fu-319:** added new property searchByProperties?: string[] for TagsInputComponent ([#31](https://github.com/ironSource/fusion-ui/issues/31)) ([88fbcd2](https://github.com/ironSource/fusion-ui/commit/88fbcd216e6683b95b11d3101ce96bc6abd8717b))
 
 ## [1.1.0-rc.14](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.10...v1.1.0-rc.14) (2022-02-17)
 
@@ -8,6 +29,22 @@ All notable changes to this project will be documented in this file. See [standa
 ### Features
 
 * **fu-319:** added new property searchByProperties?: string[] for TagsInputComponent ([3de7fd8](https://github.com/ironSource/fusion-ui/commit/3de7fd8c6d9b858a0128582c6cf7496b4aa573de))
+
+## [1.1.0-rc.13](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.12...v1.1.0-rc.13) (2022-02-15)
+
+
+### Bug Fixes
+
+* **fu-306:** fixed native component selector -listbox to -list-box ([52bbae8](https://github.com/ironSource/fusion-ui/commit/52bbae80904282df83f2abb8c3a19ae6970f911c))
+
+## [1.1.0-rc.12](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.11...v1.1.0-rc.12) (2022-02-14)
+
+
+### Bug Fixes
+
+* **fu-306:** fixed add css classes for native ([c8ced40](https://github.com/ironSource/fusion-ui/commit/c8ced4052671693ab1af3f60ed15179dd55690d6))
+
+## [1.1.0-rc.11](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.10...v1.1.0-rc.11) (2022-02-09)
 
 ## [1.1.0-rc.10](https://github.com/ironSource/fusion-ui/compare/v1.0.3...v1.1.0-rc.10) (2022-02-08)
 
