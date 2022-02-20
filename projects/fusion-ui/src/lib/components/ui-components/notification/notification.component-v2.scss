@@ -116,10 +116,12 @@ $borderRadius: 8px;
             }
         }
 
-        fusion-modal-content{
+        .is-notification-content{
             color: $fu-dark-300;
             @extend %font-body;
             line-height: 1.67;
+            position: relative;
+            padding: 0 32px 32px;
         }
     }
 }
