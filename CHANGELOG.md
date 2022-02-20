@@ -1,6 +1,34 @@
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [1.1.0-rc.18](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.17...v1.1.0-rc.18) (2022-02-20)
+
+
+### Features
+
+* **fu-320:** remove <fusion-modal-content> from notification content ([8e198d3](https://github.com/ironSource/fusion-ui/commit/8e198d329438c7c6fb244085ba213206852f72f0))
+
+## [1.1.0-rc.16](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.15...v1.1.0-rc.16) (2022-02-17)
+
+## [1.1.0-rc.15](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.14...v1.1.0-rc.15) (2022-02-17)
+
+## [1.1.0-rc.13](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.12...v1.1.0-rc.13) (2022-02-15)
+
+
+### Bug Fixes
+
+* **fu-306:** fixed native component selector -listbox to -list-box ([52bbae8](https://github.com/ironSource/fusion-ui/commit/52bbae80904282df83f2abb8c3a19ae6970f911c))
+
+## [1.1.0-rc.12](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.11...v1.1.0-rc.12) (2022-02-14)
+
+
+### Bug Fixes
+
+* **fu-306:** fixed add css classes for native ([c8ced40](https://github.com/ironSource/fusion-ui/commit/c8ced4052671693ab1af3f60ed15179dd55690d6))
+
+## [1.1.0-rc.11](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.10...v1.1.0-rc.11) (2022-02-09)
+
 ## [1.1.0-rc.17](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.14...v1.1.0-rc.17) (2022-02-20)
 
 
