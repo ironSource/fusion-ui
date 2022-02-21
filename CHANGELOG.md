@@ -1,6 +1,39 @@
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+## [1.1.0-rc.17](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.14...v1.1.0-rc.17) (2022-02-20)
+
+
+### Features
+
+* **fu-319:** added new property searchByProperties?: string[] for TagsInputComponent ([#31](https://github.com/ironSource/fusion-ui/issues/31)) ([88fbcd2](https://github.com/ironSource/fusion-ui/commit/88fbcd216e6683b95b11d3101ce96bc6abd8717b))
+
+
+### Bug Fixes
+
+* **fu-319:** bulk insertion with predefined tags and search by properties fixed ([6f575ce](https://github.com/ironSource/fusion-ui/commit/6f575ced317bf393ee61883270b59751250c3bd8))
+
+
+## [1.1.0-rc.16](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.15...v1.1.0-rc.16) (2022-02-17)
+
+## [1.1.0-rc.15](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.13...v1.1.0-rc.15) (2022-02-17)
+
+
+### Features
+
+* **fu-319:** added new property searchByProperties?: string[] for TagsInputComponent ([#31](https://github.com/ironSource/fusion-ui/issues/31)) ([88fbcd2](https://github.com/ironSource/fusion-ui/commit/88fbcd216e6683b95b11d3101ce96bc6abd8717b))
+
+## [1.1.0-rc.17](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.14...v1.1.0-rc.17) (2022-02-20)
+
+
+### Features
+
+* **fu-319:** added new property searchByProperties?: string[] for TagsInputComponent ([#31](https://github.com/ironSource/fusion-ui/issues/31)) ([88fbcd2](https://github.com/ironSource/fusion-ui/commit/88fbcd216e6683b95b11d3101ce96bc6abd8717b))
+
+
+### Bug Fixes
+
+* **fu-319:** bulk insertion with predefined tags and search by properties fixed ([6f575ce](https://github.com/ironSource/fusion-ui/commit/6f575ced317bf393ee61883270b59751250c3bd8))
 
 ## [1.1.0-rc.18](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.17...v1.1.0-rc.18) (2022-02-20)
 
