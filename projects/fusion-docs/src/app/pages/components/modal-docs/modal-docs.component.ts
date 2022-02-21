@@ -123,7 +123,7 @@ export class ModalDocsComponent implements OnInit, OnDestroy {
         this.notificationService.showNotification({
             type: NotificationType[type],
             title: `${type} Notification Title`,
-            content: 'Are you sure lorem ipsum dolor sit amet, Consectetur adipiscing elit?',
+            content: 'Are you sure lorem ipsum dolor sit amet. <br/>Consectetur adipiscing elit?',
             buttons: {
                 secondary: {
                     label: 'Cancel',
