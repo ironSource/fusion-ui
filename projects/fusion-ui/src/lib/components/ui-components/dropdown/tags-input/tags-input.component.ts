@@ -335,8 +335,10 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
                 ((this.autoComplete && this.isPredefinedTags) || this.generateOnlyCustomTags) &&
                 ((valToAdd.length > 2 && valToAdd.indexOf(',') !== -1) || valToAdd.length === 2)
             ) {
-                // add from predefined by _option.id if input delimited by ',' comma
-                this.addMultiToTags(valToAdd.length === 2 ? [valToAdd] : this.inputElement.value.split(','));
+                if (this.searchByProperties.includes('id')) {
+                    // add from predefined by _option.id if input delimited by ',' comma
+                    this.addMultiToTags(valToAdd.length === 2 ? [valToAdd] : this.inputElement.value.split(','));
+                }
             }
             this.searchValue.setValue('', {emitEvent: false});
         }
