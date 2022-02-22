@@ -1,6 +1,14 @@
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [1.1.0-rc.20](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.10...v1.1.0-rc.20) (2022-02-22)
+
+
+### Features
+
+* **fu-319:** added new property searchByProperties?: string[] for TagsInputComponent ([#31](https://github.com/ironSource/fusion-ui/issues/31)) ([88fbcd2](https://github.com/ironSource/fusion-ui/commit/88fbcd216e6683b95b11d3101ce96bc6abd8717b))
+
 ## [1.1.0-rc.17](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.14...v1.1.0-rc.17) (2022-02-20)
 
 
