@@ -47,6 +47,13 @@ $boxShadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.1);
       top: 10px;
       right: 15px;
     }
+
+    .is-notification-content{
+        box-sizing: border-box;
+        position: relative;
+        min-height: 65px;
+        padding: 0 30px 15px;
+    }
   }
   .is-notification-overlay{
     /* modal background fixed across whole screen */

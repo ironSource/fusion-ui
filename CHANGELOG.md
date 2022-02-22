@@ -1,6 +1,15 @@
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [1.1.0-rc.20](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.10...v1.1.0-rc.20) (2022-02-22)
+
+## [1.1.0-rc.19](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.10...v1.1.0-rc.19) (2022-02-21)
+
+
+### Features
+* **fu-320:** added possibility use html tags in notification content ([e6652e0](https://github.com/ironSource/fusion-ui/commit/e6652e016741caac0b2accd4227798485728fc50))
+
 ## [1.1.0-rc.17](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.14...v1.1.0-rc.17) (2022-02-20)
 
 
