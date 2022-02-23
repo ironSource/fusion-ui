@@ -10,9 +10,7 @@
             {{ data.title }}
         </div>
 
-        <fusion-modal-content>
-            {{ data.content }}
-        </fusion-modal-content>
+        <div class="is-notification-content" [innerHtml]="data.content"></div>
 
         <fusion-modal-footer
             *ngIf="data.buttons"

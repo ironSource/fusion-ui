@@ -70,8 +70,8 @@ $borderRadius: 8px;
 
             &.basic{
                 padding: 30px 33px 13px;
-                & + fusion-modal-content{
-                    min-height: 97px;
+                & + .is-notification-content{
+                    min-height: 65px;
                 }
             }
 
@@ -116,10 +116,12 @@ $borderRadius: 8px;
             }
         }
 
-        fusion-modal-content{
+        .is-notification-content{
             color: $fu-dark-300;
             @extend %font-body;
             line-height: 1.67;
+            position: relative;
+            padding: 0 32px 32px;
         }
     }
 }
