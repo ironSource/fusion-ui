@@ -47,8 +47,8 @@ export class TooltipComponent extends StyleBase implements OnDestroy, AfterViewI
         this.renderer.removeClass(this.tooltipElRef.nativeElement, classToRemove as string);
     }
     @HostBinding('style.width.px') width: number;
-    @HostBinding('class.has-icon') get hasIcon(): boolean {
-        console.log('>>', !!this.icon);
+
+    public get hasIcon(): boolean {
         return !!this.icon;
     }
 
