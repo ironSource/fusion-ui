@@ -15,6 +15,7 @@ import {IShiftPosition, ITooltipData, TooltipPosition, TooltipType} from './tool
 import {WindowService} from '../../../services/window/window.service';
 import {StyleBase} from '../../style/style-base';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
+import {isNullOrUndefined} from '../../../utils';
 
 const TOOLTIP_ARROW_SIZE = 6;
 
@@ -78,15 +79,17 @@ export class TooltipComponent extends StyleBase implements OnDestroy, AfterViewI
      * Reposition Tooltip Content
      */
     _setPosition() {
-        const positionOffset: IShiftPosition = this._calcPosition(
-            this.position,
-            this.tooltipElRef.nativeElement,
-            this.hostEl.nativeElement
-        );
+        if (!isNullOrUndefined(this.hostEl)) {
+            const positionOffset: IShiftPosition = this._calcPosition(
+                this.position,
+                this.tooltipElRef.nativeElement,
+                this.hostEl.nativeElement
+            );
 
-        const rect = this.hostEl.nativeElement.getBoundingClientRect();
-        this.renderer.setStyle(this.tooltipElRef.nativeElement, 'top', rect.top + positionOffset.top + 'px');
-        this.renderer.setStyle(this.tooltipElRef.nativeElement, 'left', rect.left + positionOffset.left + 'px');
+            const rect = this.hostEl.nativeElement.getBoundingClientRect();
+            this.renderer.setStyle(this.tooltipElRef.nativeElement, 'top', rect.top + positionOffset.top + 'px');
+            this.renderer.setStyle(this.tooltipElRef.nativeElement, 'left', rect.left + positionOffset.left + 'px');
+        }
     }
 
     _adjustPosition(position: TooltipPosition, tooltipEl, hostEl): TooltipPosition {
