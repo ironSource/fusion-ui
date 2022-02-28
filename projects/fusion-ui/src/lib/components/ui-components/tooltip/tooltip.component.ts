@@ -48,6 +48,7 @@ export class TooltipComponent extends StyleBase implements OnDestroy, AfterViewI
     }
     @HostBinding('style.width.px') width: number;
     @HostBinding('class.has-icon') get hasIcon(): boolean {
+        console.log('>>', !!this.icon);
         return !!this.icon;
     }
 
