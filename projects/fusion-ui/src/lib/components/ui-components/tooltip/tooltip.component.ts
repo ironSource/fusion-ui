@@ -43,12 +43,13 @@ export class TooltipComponent extends StyleBase implements OnDestroy, AfterViewI
         this.icon = newTooltipData.icon;
         this.type = newTooltipData.type || TooltipType.Html;
         this.componentData = newTooltipData.componentData || {};
-        this.hasIcon = !!this.icon;
         const classToRemove = Array.from(this.tooltipElRef.nativeElement.classList).find((value: string) => value.includes('is-position-'));
         this.renderer.removeClass(this.tooltipElRef.nativeElement, classToRemove as string);
     }
     @HostBinding('style.width.px') width: number;
-    @HostBinding('class.has-icon') hasIcon = false;
+    @HostBinding('class.has-icon') get hasIcon(): boolean {
+        return !!this.icon;
+    }
 
     public get isHtml() {
         return this.type === TooltipType.Html;
