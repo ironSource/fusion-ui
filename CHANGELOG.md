@@ -4,15 +4,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [1.1.0-rc.23](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.22...v1.1.0-rc.23) (2022-02-28)
 
-## [1.1.0-rc.19](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.10...v1.1.0-rc.19) (2022-02-21)
-
-
-### Features
-
-* **fu-320:** added possibility use html tags in notification content ([e6652e0](https://github.com/ironSource/fusion-ui/commit/e6652e016741caac0b2accd4227798485728fc50))
-
-## [1.1.0-rc.22](https://github.com/ironSource/fusion-ui/compare/v1.1.0-rc.21...v1.1.0-rc.22) (2022-02-24)
-
 ### Features
 
 * **fu-320:** added possibility use html tags in notification content ([#36](https://github.com/ironSource/fusion-ui/issues/36)) ([b738be3](https://github.com/ironSource/fusion-ui/commit/b738be3bee3a11b3e5d5d67704367235e6c11116))
