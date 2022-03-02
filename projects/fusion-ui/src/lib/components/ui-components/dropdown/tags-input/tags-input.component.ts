@@ -5,7 +5,7 @@ import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/for
 import {DropdownComponent} from '../dropdown/dropdown.component';
 import {InputComponent} from '../../input/input.component';
 import {Tag} from '../../tag/tag';
-import {distinctUntilChanged, map} from 'rxjs/operators';
+import {map, takeUntil} from 'rxjs/operators';
 import {detectChangesDecorator} from '../../../../decorators/detect-changes.decorator';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {DropdownOption} from '../entities/dropdown-option';
@@ -289,7 +289,7 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
 
         super.ngOnInit();
 
-        this.searchValue.valueChanges.pipe(distinctUntilChanged()).subscribe(() => {
+        this.searchValue.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(() => {
             this.onSearchChange();
         });
 
@@ -340,7 +340,7 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
                     this.addMultiToTags(valToAdd.length === 2 ? [valToAdd] : this.inputElement.value.split(','));
                 }
             }
-            this.searchValue.setValue('', {emitEvent: false});
+            this.searchValue.setValue('');
         }
     }
 
