@@ -4,7 +4,8 @@
 :host:not(.fusion-style-v1) {
     @extend %font-bodyStrong;
     line-height: 1.45;
-    display: block;
+    display: flex;
+
     position: absolute;
     z-index: getZIndexLayerOffset(system, 20);
     max-width: 382px;
@@ -21,18 +22,15 @@
         text-align: left;
     }
 
-    .tooltip-icon {
-        display: none;
+    @include icon-style('tooltip-icon', currentColor, 13px, false, true) {
+        margin-right: 6px;
+        margin-top: 1px;
+        height: 16px;
+        display: block;
     }
 
-    &.has-icon {
-        display: flex;
-        @include icon-style('tooltip-icon', $White, 13px, false, true) {
-            margin-right: 6px;
-            margin-top: 1px;
-            height: 16px;
-            display: block;
-        }
+    .tooltip-icon {
+        display: none;
     }
 
     &.is-position-top,

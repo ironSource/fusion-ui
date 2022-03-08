@@ -26,9 +26,3 @@
         }
     }
 }
-
-:host-context(fusion-notification):not(.fusion-style-v1) {
-    .modal-content {
-        padding: 0 32px 32px;
-    }
-}

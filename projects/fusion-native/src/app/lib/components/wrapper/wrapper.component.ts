@@ -137,7 +137,12 @@ export class WrapperComponent implements AfterViewInit, OnDestroy {
             });
             this.handleControlValue(this.configuration[CONTROL_VALUE_NAME]);
             if (this.configuration.class && typeof this.configuration.class === 'string') {
-                this.renderer.addClass(this.componentRef.location.nativeElement, this.configuration.class);
+                this.configuration.class.split(' ').forEach(className => {
+                    className = className.trim();
+                    if (className.length) {
+                        this.renderer.addClass(this.componentRef.location.nativeElement, className);
+                    }
+                });
             }
             if (triggerChangeDetection) {
                 this.changeDetectorRef.detectChanges();

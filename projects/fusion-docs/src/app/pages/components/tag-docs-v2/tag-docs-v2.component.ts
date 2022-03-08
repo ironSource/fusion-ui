@@ -1,6 +1,13 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import {StyleVersion, TagComponentConfigurations, TagRole, VersionService} from '@ironsource/fusion-ui';
+import {
+    StyleVersion,
+    TagComponentConfigurations,
+    TagRole,
+    TagsInputClearSearchOn,
+    TagsInputComponentConfigurations,
+    VersionService
+} from '@ironsource/fusion-ui';
 import {takeUntil} from 'rxjs/operators';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Router} from '@angular/router';
@@ -96,16 +103,27 @@ export class TagDocsV2Component implements OnInit, OnDestroy {
 
     tagsSelected = ['Art & Design', 'Beauty', 'Books & Reference'];
 
-    tagsInputConfig = {
+    tagsInputConfig: TagsInputComponentConfigurations = {
         tagList: this.predefinedTags,
-        /*tagList: this.multiRawOptions,*/
         autoComplete: true,
         isPredefinedTags: true,
         inputPlaceholder: 'Add..',
         noResultMessage: 'No result'
     };
 
+    tagsInputFooterConfig: TagsInputComponentConfigurations = {
+        tagList: this.predefinedTags.map((item, idx) => ({id: idx + 1, title: item})),
+        autoComplete: true,
+        isPredefinedTags: true,
+        inputPlaceholder: 'Add..',
+        noResultMessage: 'No result',
+        footer: {clearAll: 'Clear'},
+        clearSearchOn: TagsInputClearSearchOn.Close,
+        searchByProperties: ['title']
+    };
+
     tagsFormControl = new FormControl(this.tagsSelected);
+    tagsFormFooterControl = new FormControl();
 
     tagsFiltersMock: Array<TagComponentConfigurations> = [
         {

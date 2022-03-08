@@ -10,11 +10,20 @@ export class ClickOutsideDirective implements OnInit, OnDestroy {
     @Input() set clickOutsideActivate(value: boolean) {
         this.listenClickOutside$.next(value);
     }
+
+    /**
+     * Use this when the click event will remove the host element from the DOM
+     * @param value
+     */
+    @Input() set clickOutsideByCoordinates(value: boolean) {
+        this.byCoordinatesMode = value;
+    }
     @Output() fusionClickOutside = new EventEmitter();
 
     private onDestroy$ = new Subject();
     private listenClickOutside$: BehaviorSubject<boolean> = new BehaviorSubject(true);
     private clickOutSideSubscription: Subscription;
+    private byCoordinatesMode = false;
 
     constructor(private elementRef: ElementRef) {}
 
@@ -30,7 +39,10 @@ export class ClickOutsideDirective implements OnInit, OnDestroy {
     private handleClickOutSideListener(value: boolean): void {
         if (value && !this.clickOutSideSubscription) {
             this.clickOutSideSubscription = fromEvent(document, 'click').subscribe((event: MouseEvent) => {
-                const clickedInside = this.elementRef.nativeElement.contains(this.getEventElement(event));
+                const clickedInside =
+                    this.byCoordinatesMode && event.clientY !== 0 && event.clientY !== 0
+                        ? this.isClickInsideByCoordinates(event)
+                        : this.elementRef.nativeElement.contains(this.getEventElement(event));
                 if (!clickedInside) {
                     this.fusionClickOutside.emit(event.target);
                 }
@@ -41,6 +53,16 @@ export class ClickOutsideDirective implements OnInit, OnDestroy {
                 this.clickOutSideSubscription = null;
             }
         }
+    }
+
+    private isClickInsideByCoordinates(event: MouseEvent): boolean {
+        const parentRect = this.elementRef.nativeElement.getBoundingClientRect();
+        return (
+            parentRect.left <= event.clientX &&
+            parentRect.right >= event.clientX &&
+            parentRect.top <= event.clientY &&
+            parentRect.bottom >= event.clientY
+        );
     }
 
     getEventElement(event: MouseEvent) {

@@ -9,6 +9,7 @@ import {DropdownLoaderModule} from '../dropdown-loader/dropdown-loader.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ClickOutsideModule} from '../../../../directives/click-outside/click-outside.module';
 import {DropdownOptionsListModule} from '../dropdown-options-list/dropdown-options-list.module';
+import {ButtonModule} from '../../button/button.module';
 
 @NgModule({
     declarations: [TagsInputComponent],
@@ -22,7 +23,8 @@ import {DropdownOptionsListModule} from '../dropdown-options-list/dropdown-optio
         DropdownOptionModule,
         DropdownLoaderModule,
         ClickOutsideModule,
-        DropdownOptionsListModule
+        DropdownOptionsListModule,
+        ButtonModule
     ]
 })
 export class TagsInputModule {}

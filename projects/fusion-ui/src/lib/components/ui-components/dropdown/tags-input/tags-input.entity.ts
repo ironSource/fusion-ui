@@ -2,8 +2,9 @@ import {Tag} from '../../tag/tag';
 
 export interface TagsInputComponentConfigurations {
     id?: string;
-    tags: Tag[] | string[];
-    tagList: Tag[];
+    tags?: Tag[] | string[];
+    tagList: Tag[] | string[];
+    autoComplete?: boolean;
     isPredefinedTags?: boolean;
     isBulkInsertTags?: boolean;
     bulkInsertOptions?: TagsInputBulkInsertOptions;
@@ -13,10 +14,18 @@ export interface TagsInputComponentConfigurations {
     noResultMessage?: string;
     loading?: boolean;
     error?: string;
+    footer?: boolean | {clearAll?: boolean | string};
+    clearSearchOn?: TagsInputClearSearchOn;
+    searchByProperties?: string[];
 }
 
 export interface TagsInputBulkInsertOptions {
     delimiter?: string;
     validateKeyMethod?: (key: string) => boolean;
     maxTagsShown?: number;
+}
+
+export enum TagsInputClearSearchOn {
+    Select = 'select',
+    Close = 'close'
 }
