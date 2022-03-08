@@ -5,13 +5,13 @@ import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/for
 import {DropdownComponent} from '../dropdown/dropdown.component';
 import {InputComponent} from '../../input/input.component';
 import {Tag} from '../../tag/tag';
-import {distinctUntilChanged, map} from 'rxjs/operators';
+import {map, takeUntil} from 'rxjs/operators';
 import {detectChangesDecorator} from '../../../../decorators/detect-changes.decorator';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {DropdownOption} from '../entities/dropdown-option';
 import {FilterByFieldPipe} from '../../../../pipes/collection/filter-by-field/filter-by-field.pipe';
 import {ClonePipe} from '../../../../pipes/clone/clone.pipe';
-import {TagsInputBulkInsertOptions, TagsInputComponentConfigurations} from './tags-input.entity';
+import {TagsInputBulkInsertOptions, TagsInputClearSearchOn, TagsInputComponentConfigurations} from './tags-input.entity';
 
 @Component({
     selector: 'fusion-tags-input',
@@ -50,6 +50,8 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
     @Input() isBulkInsertTags = false;
     @Input() bulkInsertOptions: TagsInputBulkInsertOptions;
     @Input() maxHeight: number;
+    @Input() footer: boolean | {clearAll?: boolean | string};
+    @Input() clearSearchOn?: TagsInputClearSearchOn;
 
     // when using input tags inside an isClickOutside directive,
     // the click from the onremove will cause isClickOutside to trigger as an outside click
@@ -135,6 +137,9 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
             this.maxHeight = value.maxHeight;
             this.isBulkInsertTags = value.isBulkInsertTags;
             this.bulkInsertOptions = value.bulkInsertOptions;
+            this.footer = value.footer;
+            this.clearSearchOn = value.clearSearchOn;
+            this.searchByProperties = value.searchByProperties ?? [];
         }
     }
 
@@ -167,6 +172,23 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
         return this.isBulkInsertTags && this.searchValue.value.indexOf(this.bulkInsertDelimiter) !== -1;
     }
 
+    get isApplyByConfirm(): boolean {
+        return !!this.footer;
+    }
+
+    get hasClearAll(): boolean {
+        return !!this.footer && typeof this.footer !== 'boolean' && this.footer.hasOwnProperty('clearAll');
+    }
+
+    get clearAllText(): string {
+        return !!this.footer &&
+            typeof this.footer !== 'boolean' &&
+            this.footer.hasOwnProperty('clearAll') &&
+            typeof this.footer.clearAll !== 'boolean'
+            ? this.footer.clearAll
+            : 'Clear selection';
+    }
+
     filteredDisplayedOptions$: Observable<DropdownOption[]>;
     searchValue = new FormControl('');
     isNotFoundPredefined = false;
@@ -178,6 +200,9 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
     private tagsState: Array<Tag> = [];
     private uid: string;
     private inputElement: any;
+
+    private initialSelectedTags = [];
+    private initialTagsOptions = [];
 
     @HostBinding('class.fu-disabled') get disabled(): boolean {
         return this.isDisabled;
@@ -217,8 +242,10 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
                 if (!!this.inputElement) {
                     this.inputElement.value = '';
                 }
-                this.propagateChange(this._mapSelected());
-                this.tagsChanged.emit(this.tagsSelected);
+                if (!this.isApplyByConfirm) {
+                    this.propagateChange(this._mapSelected());
+                    this.tagsChanged.emit(this.tagsSelected);
+                }
                 return true;
             } else {
                 return false;
@@ -262,7 +289,7 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
 
         super.ngOnInit();
 
-        this.searchValue.valueChanges.pipe(distinctUntilChanged()).subscribe(() => {
+        this.searchValue.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(() => {
             this.onSearchChange();
         });
 
@@ -279,33 +306,22 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
      * set focus
      */
     setFocusToInput(): void {
-        this.isOpen$.next(true);
-        if (!!this.inputElement) {
-            this.inputElement.focus();
+        if (!this.isOpen$.getValue()) {
+            this.openTagsOptions();
         }
-        // add calculation if need open above the input
-        setTimeout(this.calcOptionHolderPosition.bind(this), 0);
-        // reset options
-        this.setCheckedInOptions();
     }
 
     /**
      * do blur
      */
     onOutsideClick(): void {
-        this.isOpen$.next(false);
-        this.resetOptionsStyle();
-        if (this.autoComplete && !this.isPredefinedTags) {
-            this.searchValue.setValue('');
-            if (!!this.inputElement) {
-                this.inputElement.value = this.searchValue.value;
-            }
-            if (!this.isPredefinedTags) {
-                this.options = [];
+        if (this.isOpen$.getValue()) {
+            if (this.isApplyByConfirm) {
+                this.onCancelSelection();
+            } else {
+                this.closeTagsOptions();
             }
         }
-        this.pagination = {...this.pagination, counter: 1, lastCounter: 0};
-        this.displayedOptions$.next(this.parseOptions(this.optionsState));
     }
 
     onEnterNewTag(value: string): void {
@@ -319,10 +335,12 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
                 ((this.autoComplete && this.isPredefinedTags) || this.generateOnlyCustomTags) &&
                 ((valToAdd.length > 2 && valToAdd.indexOf(',') !== -1) || valToAdd.length === 2)
             ) {
-                // add from predefined by _option.id if input delimited by ',' comma
-                this.addMultiToTags(valToAdd.length === 2 ? [valToAdd] : this.inputElement.value.split(','));
+                if (this.searchByProperties.length === 0 || this.searchByProperties.includes('id')) {
+                    // add from predefined by _option.id if input delimited by ',' comma
+                    this.addMultiToTags(valToAdd.length === 2 ? [valToAdd] : this.inputElement.value.split(','));
+                }
             }
-            this.searchValue.setValue('', {emitEvent: false});
+            this.searchValue.setValue('');
         }
     }
 
@@ -335,8 +353,11 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
         if (idx !== -1) {
             this.tagsState.splice(idx, 1);
             this.setCheckedInOptions();
-            this.propagateChange(this._mapSelected());
-            this.tagsChanged.emit(this.tagsSelected);
+
+            if (!this.isApplyByConfirm) {
+                this.propagateChange(this._mapSelected());
+                this.tagsChanged.emit(this.tagsSelected);
+            }
         }
     }
 
@@ -425,8 +446,13 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
                     flag: option.flag,
                     tooltip: option.tooltipText
                 });
-                this.propagateChange(this._mapSelected());
-                this.tagsChanged.emit(this.tagsSelected);
+                if (!this.isApplyByConfirm) {
+                    this.propagateChange(this._mapSelected());
+                    this.tagsChanged.emit(this.tagsSelected);
+                }
+                if (this.clearSearchOn === TagsInputClearSearchOn.Select) {
+                    this.clearSearch();
+                }
                 this.displaySelectedTags$.next(this.tagsState);
                 this.isAddCustomTag = false;
                 this.displayedOptions$.next(this.parseOptions(this.options));
@@ -447,6 +473,68 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
         return firstCondition || secondCondition;
     }
 
+    onClearSelectionClicked($event) {
+        if ($event) {
+            $event.preventDefault();
+            $event.stopPropagation();
+        }
+        this.tagsState = [];
+        this.setCheckedInOptions();
+        this.displaySelectedTags$.next(this.tagsState);
+        this.displayedOptions$.next(this.parseOptions(this.options));
+    }
+
+    onCancelSelection() {
+        this.options = [...this.initialTagsOptions];
+        this.tagsState = [...this.initialSelectedTags];
+        this.setCheckedInOptions();
+        this.displaySelectedTags$.next(this.tagsState);
+        this.displayedOptions$.next(this.parseOptions(this.options));
+        this.closeTagsOptions();
+    }
+
+    onApplySelection() {
+        if (this.hasChanges()) {
+            this.propagateChange(this._mapSelected());
+            this.tagsChanged.emit(this.tagsSelected);
+        }
+        this.closeTagsOptions();
+    }
+
+    private openTagsOptions() {
+        this.isOpen$.next(true);
+        if (!!this.inputElement) {
+            this.inputElement.focus();
+        }
+        if (this.isApplyByConfirm) {
+            this.initialSelectedTags = [...this.tagsState];
+            this.initialTagsOptions = [...this.options];
+        }
+        // add calculation if need open above the input
+        setTimeout(this.calcOptionHolderPosition.bind(this), 0);
+        // reset options
+        this.setCheckedInOptions();
+    }
+
+    private closeTagsOptions() {
+        this.isOpen$.next(false);
+        this.resetOptionsStyle();
+        if (this.autoComplete && !this.isPredefinedTags) {
+            this.searchValue.setValue('');
+            if (!!this.inputElement) {
+                this.inputElement.value = this.searchValue.value;
+            }
+            if (!this.isPredefinedTags) {
+                this.options = [];
+            }
+        }
+        if (this.clearSearchOn === TagsInputClearSearchOn.Close) {
+            this.clearSearch();
+        }
+        this.pagination = {...this.pagination, counter: 1, lastCounter: 0};
+        this.displayedOptions$.next(this.parseOptions(this.optionsState));
+    }
+
     private getOptionById(value: Array<any>) {
         return this.options.filter(item => value.some(val => item.id === (val.id ? val.id : val)));
     }
@@ -461,6 +549,16 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
         }
         const regExp = new RegExp(this.generateTagsRegexPattern);
         return regExp.test(tagName);
+    }
+
+    private hasChanges(): boolean {
+        if (this.initialSelectedTags.length === this.tagsState.length) {
+            // same length - compare by content
+            return !this.initialSelectedTags.every(item => {
+                return this.tagsState.some(tag => tag === item);
+            });
+        }
+        return true;
     }
 
     // Implement ControlValueAccessor methods

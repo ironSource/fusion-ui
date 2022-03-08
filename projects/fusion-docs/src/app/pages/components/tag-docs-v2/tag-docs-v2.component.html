@@ -576,14 +576,29 @@ document.body.appendChild(tagsInput);'
                 ></fusion-code-block>
             </ng-template>
 
-            <div><button (click)="toggleDisabling($event)">Toggle disabling</button> <<{{ tagsInputDisabled$ | async }}>></div>
-            <br>
-            <fusion-tags-input
-                [formControl]="tagsFormControl"
-                [isDisabled]="tagsInputDisabled$ | async"
-                [configuration]="tagsInputConfig"
-                (tagsChanged)="onTagsChanged($event)"
-            ></fusion-tags-input>
+            <div class="row">
+                <div class="col-3">
+                    <div><button (click)="toggleDisabling($event)">Toggle disabling</button> <<{{ tagsInputDisabled$ | async }}>></div>
+                    <br>
+                    <fusion-tags-input
+                        [formControl]="tagsFormControl"
+                        [isDisabled]="tagsInputDisabled$ | async"
+                        [configuration]="tagsInputConfig"
+                        (tagsChanged)="onTagsChanged($event)"
+                    ></fusion-tags-input>
+
+                </div>
+                <div class="col-3"></div>
+                <div class="col-3">
+                    <div>With footer and search by 'title' only (not by id)</div>
+                    <br>
+                    <fusion-tags-input
+                        [formControl]="tagsFormFooterControl"
+                        [configuration]="tagsInputFooterConfig"
+                        (tagsChanged)="onTagsChanged($event)"
+                    ></fusion-tags-input>
+                </div>
+            </div>
         </fusion-example-block>
         <br />
         <fusion-example-block id="variationsTagFilter" title="Tag Filter">

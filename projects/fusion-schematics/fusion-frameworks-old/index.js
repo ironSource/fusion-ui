@@ -25,11 +25,11 @@ const generateFramworksScript = (tree, context, options) => {
         .replace(/(Wrapper)?Component/g, '')
         .replace(/([{,])\s*componentInstance\s*\:\s*(.*?)([},])/g, '$1 component: "$2"$3');
     const components = eval(fileText);
-    const sourceTemplates = schematics_1.url('./files');
-    const sourceParametrizedTemplates = schematics_1.apply(sourceTemplates, [
-        schematics_1.template(Object.assign(Object.assign(Object.assign({}, options), core_1.strings), { components })),
-        schematics_1.move(outputDir)
+    const sourceTemplates = (0, schematics_1.url)('./files');
+    const sourceParametrizedTemplates = (0, schematics_1.apply)(sourceTemplates, [
+        (0, schematics_1.template)(Object.assign(Object.assign(Object.assign({}, options), core_1.strings), { components })),
+        (0, schematics_1.move)(outputDir)
     ]);
-    return schematics_1.mergeWith(sourceParametrizedTemplates)(tree, context);
+    return (0, schematics_1.mergeWith)(sourceParametrizedTemplates)(tree, context);
 };
 //# sourceMappingURL=index.js.map

@@ -15,7 +15,6 @@ import {
 import {LOADER_COMPONENT_TYPE_TOKEN} from './loader-token';
 import {StyleBase} from '../../style/style-base';
 import {StyleVersion} from '../../../services/version/style-version.enum';
-import {BehaviorSubject, Observable} from 'rxjs';
 import {LoaderColor, LoaderPosition, LoaderSize} from './loader.types';
 import {map} from 'rxjs/operators';
 

@@ -1,8 +1,8 @@
 <div
     [id]="id"
     class="is-tags-holder"
-    (click)="setFocusToInput()"
     [clickOutsideActivate]="isOpen$ | async"
+    [clickOutsideByCoordinates]="true"
     (fusionClickOutside)="onOutsideClick()"
     [ngClass]="{'is-icon-right-position': isIconRightPosition, 'dd-opened': isOpen$ | async, 'ss-selected': selected?.length > 0}"
     [class.tags-disabled]="isDisabled"
@@ -10,7 +10,7 @@
     *ngIf="selectedVersion$ | async as currentStyleVersion"
 >
     <!--tags list holder-->
-    <ul class="tags-holder" [ngStyle]="{'max-height.px': maxHeight}">
+    <ul class="tags-holder" [ngStyle]="{'max-height.px': maxHeight}" (click)="setFocusToInput()">
         <li *ngFor="let tag of (displaySelectedTags$ | async)">
             <fusion-tag
                 [close]="true"
@@ -44,6 +44,7 @@
     <ng-container *ngIf="!bulkInsertion">
         <div
             class="options-dropdown"
+            [class.has-footer]="!!footer"
             [ngClass]="{'dd-scroll': hasScroll}"
             *ngIf="(searchValue.value || (filteredDisplayedOptions$ | async)?.length || loading) && !generateOnlyCustomTags"
         >
@@ -67,6 +68,29 @@
                     </fusion-dropdown-options-list>
                 </ul>
             </div>
+            <!-- footer -->
+            <div class="is-footer" *ngIf="footer">
+                <a *ngIf="hasClearAll" href="#" fusion-button class="button-clear" (click)="onClearSelectionClicked($event)">{{clearAllText}}</a>
+                <div class="fu-footer-buttons-holder">
+                    <button
+                        type="button"
+                        fusion-button
+                        class="secondary small"
+                        [ngClass]="{transparent: currentStyleVersion === styleVersion.V2}"
+                        [disabled]="loading"
+                        (click)="onCancelSelection()"
+                    >Cancel</button>
+                    <button
+                        type="button"
+                        fusion-button
+                        class="primary small"
+                        [ngClass]="{transparent: currentStyleVersion === styleVersion.V2}"
+                        [disabled]="loading"
+                        (click)="onApplySelection()"
+                    >Apply</button>
+                </div>
+            </div>
+            <!-- footer/ -->
         </div>
     </ng-container>
 </div>
