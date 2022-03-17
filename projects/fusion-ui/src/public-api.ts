@@ -5,40 +5,6 @@
 // All
 export * from './lib/fusion-ui.module';
 
-// ---------------- Services ----------------
-
-// API
-export * from './lib/services/api/api-entities';
-export * from './lib/services/api/api-config';
-export * from './lib/services/api/base-parser';
-export * from './lib/services/api/api.service';
-export * from './lib/services/api/http-response-status-codes.enum';
-
-// Cache
-export * from './lib/services/cache/cache-config';
-export * from './lib/services/cache/cache.service';
-export * from './lib/services/cache/cache-entities';
-// Log
-export * from './lib/services/log/log.service';
-
-// User Service
-export * from './lib/services/user/user.service';
-export * from './lib/services/user/user-config';
-export * from './lib/services/user/user-options';
-
-// Permissions Service
-export * from './lib/services/permissions/permissions.service';
-export * from './lib/services/permissions/permissions-config';
-export * from './lib/services/permissions/permissions-options';
-
-// Colors Service
-export * from './lib/services/colors/colors.service';
-
-// Version Service
-export * from './lib/services/version/version.service';
-export * from './lib/services/version/style-version.enum';
-export * from './lib/services/version/style-version-config';
-
 // ---------------- Components ----------------
 export * from './lib/components/components.module';
 
@@ -352,34 +318,3 @@ export * from './lib/directives/copy-to-clipboard/copy-to-clipboard.directive';
 export * from './lib/directives/intersection/intersection';
 export * from './lib/directives/intersection/intersection.module';
 export * from './lib/directives/intersection/intersection.directive';
-
-// ---------------- Pipes ----------------
-export * from './lib/pipes/pipes.module';
-
-// Capitalize
-export * from './lib/pipes/string/capitalize/capitalize.module';
-export * from './lib/pipes/string/capitalize/capitalize.pipe';
-export * from './lib/pipes/string/capitalize/capitalize-transform-options';
-
-// Filter By Field
-export * from './lib/pipes/collection/filter-by-field/filter-by-field.module';
-export * from './lib/pipes/collection/filter-by-field/filter-by-field.pipe';
-
-// Clone
-export * from './lib/pipes/clone/clone.module';
-export * from './lib/pipes/clone/clone.pipe';
-
-// Generic
-export * from './lib/pipes/generic/generic.module';
-export * from './lib/pipes/generic/generic.pipe';
-
-// Numbers
-export * from './lib/pipes/numbers/short-number-scale-suffix/short-number-scale-suffix.module';
-export * from './lib/pipes/numbers/short-number-scale-suffix/short-number-scale-suffix.pipe';
-
-// Seconds to minutes
-export * from './lib/pipes/numbers/seconds-to-minutes/seconds-to-minutes.module';
-export * from './lib/pipes/numbers/seconds-to-minutes/seconds-to-minutes.pipe';
-
-// ---------------- Utils ----------------
-export * from './lib/utils';

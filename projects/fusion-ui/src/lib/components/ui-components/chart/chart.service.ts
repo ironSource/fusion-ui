@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {isNullOrUndefined} from '../../../utils';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {ChartData as ChartJsData, ChartDataset as ChartJsDataSets} from 'chart.js';
 import {ChartData} from './entities/chart-data';
 import {ChartLegend} from './entities/chart-legend';

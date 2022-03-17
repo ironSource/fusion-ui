@@ -1,5 +1,5 @@
 import {InputConfiguration} from './input-entities';
-import {getUniqueNumber} from '../../../utils/unique-number';
+import {getUniqueNumber} from '@ironsource/fusion-ui/utils';
 import {DEFAULT_INPUT_OPTIONS} from './input.options';
 
 export const SPECIAL_KEYS = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Backspace', 'Tab', 'End', 'Home', 'Enter', 'Escape'];

@@ -13,9 +13,9 @@ import {
 } from '@angular/core';
 import {TableColumn, TableOptions, TableRowExpandEmitter, TableRowMetaData} from '../entities';
 import {TableService} from '../table.service';
-import {isNullOrUndefined} from '../../../../utils';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {StyleBase} from '../../../style/style-base';
-import {StyleVersion} from '../../../../services/version/style-version.enum';
+import {StyleVersion} from '@ironsource/fusion-ui/services';
 import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {ColumnData} from './column-data';

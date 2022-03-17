@@ -4,7 +4,7 @@ import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {StyleVersion} from './style-version.enum';
 import {STYLE_VERSION_TOKEN} from './style-version-config';
-import {NATIVE_TOKEN} from '../../decorators/native-token';
+import {NATIVE_TOKEN} from '@ironsource/fusion-ui/decorators';
 
 export const FUSION_V1_CLASS = 'fusion-style-v1';
 

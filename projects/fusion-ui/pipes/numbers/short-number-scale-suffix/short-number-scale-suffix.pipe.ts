@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {isNullOrUndefined} from '../../../utils';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Pipe({
     name: 'shortNumberScaleSuffix'

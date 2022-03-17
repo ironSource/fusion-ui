@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {isNullOrUndefined, isString, isUndefined} from '../../../utils';
+import {isNullOrUndefined, isString, isUndefined} from '@ironsource/fusion-ui/utils';
 import {DropdownOption} from './entities/dropdown-option';
 import {Subject} from 'rxjs';
 

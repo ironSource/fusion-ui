@@ -12,9 +12,9 @@ import {
     Output
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {UniqueIdService} from '../../../services/unique-id/unique-id.service';
+import {UniqueIdService} from '@ironsource/fusion-ui/services';
 import {StyleBase} from '../../style/style-base';
-import {isNullOrUndefined} from '../../../utils';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Component({
     selector: 'fusion-radio',

@@ -1,7 +1,7 @@
 import {Directive, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {BehaviorSubject, fromEvent, Subject, Subscription} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {isFunction} from '../../utils';
+import {isFunction} from '@ironsource/fusion-ui/utils';
 
 @Directive({
     selector: '[fusionClickOutside]'

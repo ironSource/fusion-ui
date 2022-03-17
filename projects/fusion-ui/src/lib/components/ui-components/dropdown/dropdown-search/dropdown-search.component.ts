@@ -2,7 +2,6 @@ import {ChangeDetectionStrategy, Component, forwardRef, HostListener, Injector, 
 import {InputComponent} from '../../input/input.component';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {StyleBase} from '../../../style/style-base';
-import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
 @Component({

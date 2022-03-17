@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {IconSelectItem} from './entities/icon-select-item';
-import {UniqueIdService} from '../../../services/unique-id/unique-id.service';
+import {UniqueIdService} from '@ironsource/fusion-ui/services';
 
 @Component({
     selector: 'fusion-icon-select-list',

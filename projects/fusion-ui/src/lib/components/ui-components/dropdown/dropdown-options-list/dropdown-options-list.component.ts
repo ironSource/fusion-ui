@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Injector, Input, Output} from '@angular/core';
 import {DropdownOption} from '../entities/dropdown-option';
 import {DropdownService} from '../dropdown.service';
-import {isNullOrUndefined} from '../../../../utils';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {StyleBase} from '../../../style/style-base';
 
 @Component({

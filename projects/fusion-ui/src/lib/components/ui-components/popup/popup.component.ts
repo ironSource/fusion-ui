@@ -13,7 +13,7 @@ import {
 import {PopupEntity, PopupLocation, PopupPositionOffset} from './popup.entity';
 import {DEFAULT_POPUP_OFFSET} from './popup.config';
 import {PopupService} from './popup.service';
-import {isNullOrUndefined} from '../../../utils';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Component({
     selector: 'fusion-popup',

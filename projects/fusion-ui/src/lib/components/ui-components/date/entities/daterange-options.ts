@@ -1,5 +1,4 @@
 import {DaterangePresets} from './daterange-presets.enum';
-import {CalendarType} from '../calendar/calendar-type.enum';
 
 export interface DaterangeOptions {
     calendarAmount?: number;

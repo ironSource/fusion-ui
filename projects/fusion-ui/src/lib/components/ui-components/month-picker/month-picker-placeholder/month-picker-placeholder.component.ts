@@ -4,7 +4,7 @@ import {MONTH_PICKER_PLACEHOLDER} from '../month-picker.configuration';
 import {StyleBase} from '../../../style/style-base';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import {StyleVersion} from '../../../../services/version/style-version.enum';
+import {StyleVersion} from '@ironsource/fusion-ui/services';
 
 @Component({
     selector: 'fusion-month-picker-placeholder',

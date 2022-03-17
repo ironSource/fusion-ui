@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output, ChangeDetectionStrategy, Type} from '@angular/core';
 import {AccordionConfigurations, AccordionIconPosition, AccordionItem} from './accordion-entities';
 import {DynamicComponentConfiguration} from '../dynamic-components/dynamic-component';
-import {isNullOrUndefined} from '../../../utils';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {AccordionContentComponent} from './accordion-content/accordion-content.component';
 import {AccordionHeaderComponent} from './accordion-header/accordion-header.component';
 

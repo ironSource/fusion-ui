@@ -1,6 +1,6 @@
 import {Directive, ElementRef, HostListener, Inject, Input, Renderer2} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
-import {isFunction} from '../../utils';
+import {isFunction} from '@ironsource/fusion-ui/utils';
 
 @Directive({
     selector: '[fusionCopyToClipboard]'

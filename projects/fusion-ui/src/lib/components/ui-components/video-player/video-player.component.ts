@@ -9,11 +9,11 @@ import {
     SimpleChanges,
     AfterViewInit
 } from '@angular/core';
-import {isNull} from '../../../utils';
+import {isNull} from '@ironsource/fusion-ui/utils';
 import {StyleBase} from '../../style/style-base';
 import {BehaviorSubject, fromEvent, Observable, Subject} from 'rxjs';
 import {map, startWith, switchMap} from 'rxjs/operators';
-import {StyleVersion} from '../../../services/version/style-version.enum';
+import {StyleVersion} from '@ironsource/fusion-ui/services';
 import {VIDEO_PLAYER_THEME_TOKEN} from './video-player-theme';
 
 @Component({

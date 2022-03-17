@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Injector, Input, Output} from '@angular/core';
 import {StyleBase} from '../../../style/style-base';
 import {Observable} from 'rxjs';
-import {StyleVersion} from '../../../../services/version/style-version.enum';
+import {StyleVersion} from '@ironsource/fusion-ui/services';
 import {map, startWith} from 'rxjs/operators';
 
 @Component({

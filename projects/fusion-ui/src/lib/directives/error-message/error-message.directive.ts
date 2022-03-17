@@ -12,11 +12,11 @@ import {
     Optional,
     ViewContainerRef
 } from '@angular/core';
-import {isString} from '../../utils';
+import {isString} from '@ironsource/fusion-ui/utils';
 import {ERROR_MESSAGES, FormControlStatus} from './error-message.config';
 import {ErrorMessageComponent} from './error-message.component';
 import {AbstractControl, ControlContainer, FormGroupDirective} from '@angular/forms';
-import {LogService} from '../../services/log/log.service';
+import {LogService} from '@ironsource/fusion-ui/services';
 import {DropdownComponent} from '../../components/ui-components/dropdown/dropdown/dropdown.component';
 import {InputComponent} from '../../components/ui-components/input/input.component';
 

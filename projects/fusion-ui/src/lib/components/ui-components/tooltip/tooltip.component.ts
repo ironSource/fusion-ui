@@ -12,10 +12,10 @@ import {
     SimpleChanges
 } from '@angular/core';
 import {IShiftPosition, ITooltipData, TooltipPosition, TooltipType} from './tooltip.entities';
-import {WindowService} from '../../../services/window/window.service';
+import {WindowService} from '@ironsource/fusion-ui/services';
 import {StyleBase} from '../../style/style-base';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
-import {isNullOrUndefined} from '../../../utils';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 const TOOLTIP_ARROW_SIZE = 6;
 

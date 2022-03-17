@@ -1,9 +1,9 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild, ElementRef, Renderer2} from '@angular/core';
-import {CacheService} from '../../../services/cache/cache.service';
-import {CacheType} from '../../../services/cache/cache-entities';
+import {CacheService} from '@ironsource/fusion-ui/services';
+import {CacheType} from '@ironsource/fusion-ui/services';
 import {MenuItem} from '../menu/menu-item';
 import {HeaderState} from './header-state';
-import {isNullOrUndefined} from '../../../utils';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Component({
     selector: 'fusion-header',

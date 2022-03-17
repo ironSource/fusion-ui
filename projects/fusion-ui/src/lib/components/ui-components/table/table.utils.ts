@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {isNullOrUndefined} from '../../../utils';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {TableOptions, TableRowChangedData, TableRowClassesEnum} from './entities';
 import {BehaviorSubject} from 'rxjs';
 

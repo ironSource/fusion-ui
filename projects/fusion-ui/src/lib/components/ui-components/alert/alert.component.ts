@@ -3,7 +3,7 @@ import {StyleBase} from '../../style/style-base';
 import {ALERT_THEME_TOKEN} from './alert-theme';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import {StyleVersion} from '../../../services/version/style-version.enum';
+import {StyleVersion} from '@ironsource/fusion-ui/services';
 
 @Component({
     selector: 'fusion-alert',

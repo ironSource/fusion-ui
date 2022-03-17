@@ -11,13 +11,13 @@ import {
     Renderer2,
     ViewChild
 } from '@angular/core';
-import {isDate, isNullOrUndefined, isUndefined} from '../../../utils';
+import {isDate, isNullOrUndefined, isUndefined} from '@ironsource/fusion-ui/utils';
 import {ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {DatepickerMode} from './datepicker-mode';
 import {DatepickerDate} from './datepicker-date';
 import {InputComponent} from '../input/input.component';
 import {DatePipe} from '@angular/common';
-import {TimezoneService} from '../../../services/timezone/timezone.service';
+import {TimezoneService} from '@ironsource/fusion-ui/services';
 import {Datepicker} from './datepicker';
 import {DropdownOption} from '../dropdown/entities/dropdown-option';
 import {DEFAULT_TIMEZONE_OPTIONS} from './datepicker.config';

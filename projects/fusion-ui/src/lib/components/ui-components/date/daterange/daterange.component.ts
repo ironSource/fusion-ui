@@ -13,7 +13,6 @@ import {
 } from '@angular/core';
 import {DatePipe} from '@angular/common';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
-import {WindowService} from '../../../../services/window/window.service';
 import {DaterangeOptions} from '../entities/daterange-options';
 import {DEFAULT_DATE_FORMAT} from '../entities/config';
 import {DaterangeSelection} from '../entities/daterange-selection';
@@ -21,16 +20,16 @@ import {Day} from '../entities/day';
 import {DaterangePresets} from '../entities/daterange-presets.enum';
 import {DaterangeService} from './daterange.service';
 import {CalendarService} from '../calendar/calendar.service';
-import {UniqueIdService} from '../../../../services/unique-id/unique-id.service';
-import {VersionService} from '../../../../services/version/version.service';
+import {UniqueIdService} from '@ironsource/fusion-ui/services';
+import {VersionService} from '@ironsource/fusion-ui/services';
 import {StyleBase} from '../../../style/style-base';
-import {isSameDates} from '../../../../utils/date';
-import {LogService} from '../../../../services/log/log.service';
+import {isSameDates} from '@ironsource/fusion-ui/utils';
+import {LogService} from '@ironsource/fusion-ui/services';
 import {BehaviorSubject} from 'rxjs';
 import {DropdownSelectConfigurations} from '../../dropdown/dropdown-select/dropdown-select-configurations';
 import {CalendarComponentConfigurations} from '../calendar/calendar-component-configurations';
 import {CalendarType} from '../calendar/calendar-type.enum';
-import {StyleVersion} from '../../../../services/version/style-version.enum';
+import {StyleVersion} from '@ironsource/fusion-ui/services';
 import {DEFAULT_PLACEHOLDER_TEXT} from './daterange.configuration';
 
 @Component({

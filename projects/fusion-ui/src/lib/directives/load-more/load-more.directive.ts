@@ -1,5 +1,5 @@
 import {Directive, Input, OnInit, TemplateRef, ViewContainerRef} from '@angular/core';
-import {isNullOrUndefined} from '../../utils';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 

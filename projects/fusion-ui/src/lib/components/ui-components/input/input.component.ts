@@ -13,12 +13,12 @@ import {
     AfterViewInit
 } from '@angular/core';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {isBoolean, isNullOrUndefined, isString} from '../../../utils';
+import {isBoolean, isNullOrUndefined, isString} from '@ironsource/fusion-ui/utils';
 import {BehaviorSubject, Observable, fromEvent} from 'rxjs';
 import {map, takeUntil, tap, filter} from 'rxjs/operators';
-import {StyleVersion} from '../../../services/version/style-version.enum';
-import {VersionService} from '../../../services/version/version.service';
-import {DEFAULT_INPUT_OPTIONS, InputOptions} from './input.options';
+import {StyleVersion} from '@ironsource/fusion-ui/services';
+import {VersionService} from '@ironsource/fusion-ui/services';
+import {InputOptions} from './input.options';
 import {CONFIG_INPUT_BY_UI_STYLE, InputConfigByStyle} from './input.component.config';
 import {InputParameters} from './input-parameters';
 import {SPECIAL_KEYS, ESCAPE_KEY_CODE, ENTER_KEY_CODE, INPUT_DEFAULT_CONFIGURATION} from './input-utils';

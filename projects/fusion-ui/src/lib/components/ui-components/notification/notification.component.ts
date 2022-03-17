@@ -16,10 +16,10 @@ import {DOCUMENT} from '@angular/common';
 import {Notification} from './notification';
 import {NotificationService} from './notification.service';
 import {NotificationType} from './notification-type';
-import {isFunction, isNullOrUndefined} from '../../../utils';
+import {isFunction} from '@ironsource/fusion-ui/utils';
 import {StyleBase} from '../../style/style-base';
 import {BehaviorSubject} from 'rxjs';
-import {StyleVersion} from '../../../services/version/style-version.enum';
+import {StyleVersion} from '@ironsource/fusion-ui/services';
 import {NOTIFICATION_ICON_MAP} from './notification.config';
 
 /** @dynamic */

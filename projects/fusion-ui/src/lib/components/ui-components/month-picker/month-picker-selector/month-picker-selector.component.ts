@@ -1,11 +1,11 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit, Output, EventEmitter, Injector} from '@angular/core';
 import {MonthPicker} from '../month-picker';
-import {isNullOrUndefined} from '../../../../utils';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {MONTH_NAMES_SHORT} from '../month-picker.configuration';
 import {StyleBase} from '../../../style/style-base';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import {StyleVersion} from '../../../../services/version/style-version.enum';
+import {StyleVersion} from '@ironsource/fusion-ui/services';
 
 @Component({
     selector: 'fusion-month-picker-selector',

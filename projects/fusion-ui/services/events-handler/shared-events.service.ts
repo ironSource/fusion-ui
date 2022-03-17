@@ -1,7 +1,7 @@
 import {Injectable, OnDestroy} from '@angular/core';
 import {fromEvent, merge, Observable, Subject} from 'rxjs';
 import {filter, shareReplay, take, takeUntil} from 'rxjs/operators';
-import {isUndefined} from '../../utils';
+import {isUndefined} from '@ironsource/fusion-ui/utils';
 
 @Injectable({
     providedIn: 'root'

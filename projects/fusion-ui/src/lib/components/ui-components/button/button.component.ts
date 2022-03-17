@@ -11,7 +11,6 @@ import {
     HostListener
 } from '@angular/core';
 import {StyleBase} from '../../style/style-base';
-import {takeUntil} from 'rxjs/operators';
 
 @Component({
     // eslint-disable-next-line

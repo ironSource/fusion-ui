@@ -12,17 +12,12 @@ import {
     Renderer2,
     Inject,
     Optional,
-    OnChanges,
     AfterViewInit,
-    SimpleChanges,
     ViewEncapsulation
 } from '@angular/core';
-import {ApiService} from '../../../services/api/api.service';
-import {LogService} from '../../../services/log/log.service';
-import {CacheType} from '../../../services/cache/cache-entities';
+import {ApiService, LogService, CacheType, ApiResponseType} from '@ironsource/fusion-ui/services';
 import {SVG_OPTIONS_TOKEN} from './svg-config';
 import {SvgOptions} from './svg-entities';
-import {ApiResponseType} from '../../../services/api/api-entities';
 
 @Component({
     selector: 'fusion-svg',

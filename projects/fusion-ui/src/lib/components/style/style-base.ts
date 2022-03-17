@@ -1,8 +1,7 @@
 import {ElementRef, AfterViewInit, Injector, Renderer2, OnDestroy, InjectionToken, Directive} from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
-import {FUSION_V1_CLASS, VersionService} from '../../services/version/version.service';
+import {FUSION_V1_CLASS, VersionService, StyleVersion} from '@ironsource/fusion-ui/services';
 import {Observable, Subject} from 'rxjs';
-import {StyleVersion} from '../../services/version/style-version.enum';
 import {ThemeBase} from '../theme/theme-base';
 
 /* eslint-disable @angular-eslint/directive-class-suffix */

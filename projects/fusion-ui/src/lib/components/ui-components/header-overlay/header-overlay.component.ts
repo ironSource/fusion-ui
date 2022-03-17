@@ -11,11 +11,11 @@ import {
     Type,
     ViewChild
 } from '@angular/core';
-import {isNullOrUndefined, isUndefined} from '../../../utils';
+import {isNullOrUndefined, isUndefined} from '@ironsource/fusion-ui/utils';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {HeaderSizes} from './header-sizes.enum';
 import {BehaviorSubject} from 'rxjs';
-import {WindowService} from '../../../services/window/window.service';
+import {WindowService} from '@ironsource/fusion-ui/services';
 import {HeaderOptions} from './header-options';
 
 @Component({

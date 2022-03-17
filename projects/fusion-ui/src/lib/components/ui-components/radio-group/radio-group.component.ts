@@ -10,8 +10,7 @@ import {
     ChangeDetectorRef
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {LogService} from '../../../services/log/log.service';
-import {UniqueIdService} from '../../../services/unique-id/unique-id.service';
+import {LogService, UniqueIdService} from '@ironsource/fusion-ui/services';
 import {RadioGroupOptions} from './radio-group.entities';
 
 @Component({

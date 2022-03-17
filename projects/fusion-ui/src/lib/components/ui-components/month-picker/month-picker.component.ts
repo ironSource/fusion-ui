@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, forwardRef, Injector, Input} from '@
 import {MONTH_PICKER_PLACEHOLDER} from './month-picker.configuration';
 import {MonthPicker, MonthPickerConfiguration, MonthPickerPlaceholder} from './month-picker';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
-import {isNullOrUndefined, isNumber} from '../../../utils';
+import {isNullOrUndefined, isNumber} from '@ironsource/fusion-ui/utils';
 import {BehaviorSubject} from 'rxjs';
 import {StyleBase} from '../../style/style-base';
 

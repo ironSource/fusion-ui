@@ -15,20 +15,20 @@ import {ChartData, FusionChartPieDataItem, FusionChartPieData} from './entities/
 import {ChartLabel} from './entities/chart-label';
 import {ChartDataset} from './entities/chart-dataset';
 import {CurrencyPipe, DatePipe, DecimalPipe, PercentPipe} from '@angular/common';
-import {UniqueIdService} from '../../../services/unique-id/unique-id.service';
+import {UniqueIdService} from '@ironsource/fusion-ui/services';
 import {ChartDataService} from './chart.service';
-import {ColorsService} from '../../../services/colors/colors.service';
-import {isNullOrUndefined} from '../../../utils';
-import {isDateString} from '../../../utils/date';
+import {ColorsService} from '@ironsource/fusion-ui/services';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
+import {isDateString} from '@ironsource/fusion-ui/utils';
 import {BASE_DATASET_OPTIONS, CHART_CONFIGURATIONS} from './chart.config';
-import {ShortNumberScaleSuffixPipe} from '../../../pipes/numbers/short-number-scale-suffix/short-number-scale-suffix.pipe';
+import {ShortNumberScaleSuffixPipe} from '@ironsource/fusion-ui/pipes';
 import {StyleBase} from '../../style/style-base';
-import {StyleVersion} from '../../../services/version/style-version.enum';
+import {StyleVersion} from '@ironsource/fusion-ui/services';
 import {takeUntil} from 'rxjs/operators';
-import {VersionService} from '../../../services/version/version.service';
+import {VersionService} from '@ironsource/fusion-ui/services';
 import {ChartBaseDatasetOptions} from './entities/chart-options';
 import {ChartType} from './entities/chart-type.enum';
-import {ClonePipe} from '../../../pipes/clone/clone.pipe';
+import {ClonePipe} from '@ironsource/fusion-ui/pipes';
 
 // Chart.js 3 is tree-shakeable, so it is necessary to import and register the controllers, elements, scales and plugins you are going to use.
 import {

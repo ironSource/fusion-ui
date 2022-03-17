@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, Optional, Outpu
 import {MenuItem} from '../menu-item';
 import {MenuItemAdditionalData} from '../menu-item-additional-data';
 import {MenuService} from '../menu.service';
-import {WindowService} from '../../../../services/window/window.service';
+import {WindowService} from '@ironsource/fusion-ui/services';
 import {Location} from '@angular/common';
 
 @Component({

@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, OnDestroy, ViewChild, ElementRef} from '@angular/core';
 import {MenuItem} from '../menu/menu-item';
 import {HeaderState} from '../header/header-state';
-import {CacheType} from '../../../services/cache/cache-entities';
-import {CacheService} from '../../../services/cache/cache.service';
+import {CacheType} from '@ironsource/fusion-ui/services';
+import {CacheService} from '@ironsource/fusion-ui/services';
 import {Subject} from 'rxjs';
 import {MenuItemAdditionalData} from '../menu/menu-item-additional-data';
 

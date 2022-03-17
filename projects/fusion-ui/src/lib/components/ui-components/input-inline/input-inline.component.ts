@@ -15,7 +15,7 @@ import {
     ChangeDetectorRef,
     Injector
 } from '@angular/core';
-import {isNullOrUndefined, isNumber, isObject, isString} from '../../../utils';
+import {isNullOrUndefined, isNumber, isObject, isString} from '@ironsource/fusion-ui/utils';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {InputComponent} from '../input/input.component';
 import {BehaviorSubject, Subject, fromEvent, Subscription, Observable} from 'rxjs';
@@ -24,7 +24,7 @@ import {CurrencyPipe} from '@angular/common';
 import {takeUntil, take, map} from 'rxjs/operators';
 import {AdvancedInputInline} from './advanced-input-inline';
 import {StyleBase} from '../../style/style-base';
-import {StyleVersion} from '../../../services/version/style-version.enum';
+import {StyleVersion} from '@ironsource/fusion-ui/services';
 import {CONFIG_INPUT_INLINE_BY_UI_STYLE, InputInlineConfigByStyle} from './input-inline.config';
 import {CurrencyPipeParameters} from '../table/entities';
 

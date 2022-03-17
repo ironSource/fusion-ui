@@ -15,18 +15,12 @@ import {
 } from '@angular/core';
 import {defer, fromEvent, Observable} from 'rxjs';
 import {debounceTime, map, takeUntil, tap} from 'rxjs/operators';
-import {isNullOrUndefined, isUndefined} from '../../../../utils';
+import {isNullOrUndefined, isUndefined} from '@ironsource/fusion-ui/utils';
 import {TableService} from '../table.service';
-import {UniqueIdService} from '../../../../services/unique-id/unique-id.service';
+import {UniqueIdService, StyleVersion} from '@ironsource/fusion-ui/services';
 import {TableRowsGrouped, TableColumn, TableColumnTypeEnum, TableOptions, TableRowExpandEmitter} from '../entities';
 import {StyleBase} from '../../../style/style-base';
-import {StyleVersion} from '../../../../services/version/style-version.enum';
-import {
-    CONFIG_TABLE_BY_UI_STYLE,
-    MAXIMUM_EXPANDABLE_LEVEL,
-    ROW_CLICK_SUPPRESS_FOR_PARENT_SELECTORS,
-    TableIconsConfigByStyle
-} from '../table.config';
+import {CONFIG_TABLE_BY_UI_STYLE, ROW_CLICK_SUPPRESS_FOR_PARENT_SELECTORS, TableIconsConfigByStyle} from '../table.config';
 import {TABLE_THEME_TOKEN} from './table-theme';
 import {TableBasicComponent} from '../table-basic/table-basic.component';
 

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Injector, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Injector, Input} from '@angular/core';
 import {StyleBase} from '../../style/style-base';
 
 @Component({

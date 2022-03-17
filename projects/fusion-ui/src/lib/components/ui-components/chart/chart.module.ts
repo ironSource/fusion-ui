@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
 import {CommonModule, CurrencyPipe, DatePipe, DecimalPipe, PercentPipe} from '@angular/common';
-import {ShortNumberScaleSuffixModule} from '../../../pipes/numbers/short-number-scale-suffix/short-number-scale-suffix.module';
+import {ShortNumberScaleSuffixModule} from '@ironsource/fusion-ui/pipes';
 import {ChartComponent} from './chart.component';
 import {LoaderModule} from '../loader/loader.module';
 import {ChartDataService} from './chart.service';
-import {ShortNumberScaleSuffixPipe} from '../../../pipes/numbers/short-number-scale-suffix/short-number-scale-suffix.pipe';
-import {CloneModule} from '../../../pipes/clone/clone.module';
+import {ShortNumberScaleSuffixPipe} from '@ironsource/fusion-ui/pipes';
+import {CloneModule} from '@ironsource/fusion-ui/pipes';
 
 @NgModule({
     imports: [CommonModule, LoaderModule, ShortNumberScaleSuffixModule, CloneModule],

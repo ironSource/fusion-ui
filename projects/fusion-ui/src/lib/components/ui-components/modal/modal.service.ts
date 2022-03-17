@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ModalComponent} from './modal/modal.component';
-import {isFunction} from '../../../utils';
+import {isFunction} from '@ironsource/fusion-ui/utils';
 
 @Injectable({
     providedIn: 'root'

@@ -1,16 +1,16 @@
 import {Component, EventEmitter, forwardRef, HostBinding, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {isNullOrUndefined} from '../../../../utils';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {DropdownService} from '../dropdown.service';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {DropdownComponent} from '../dropdown/dropdown.component';
 import {InputComponent} from '../../input/input.component';
 import {Tag} from '../../tag/tag';
 import {map, takeUntil} from 'rxjs/operators';
-import {detectChangesDecorator} from '../../../../decorators/detect-changes.decorator';
+import {detectChangesDecorator} from '@ironsource/fusion-ui/decorators';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {DropdownOption} from '../entities/dropdown-option';
-import {FilterByFieldPipe} from '../../../../pipes/collection/filter-by-field/filter-by-field.pipe';
-import {ClonePipe} from '../../../../pipes/clone/clone.pipe';
+import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes';
+import {ClonePipe} from '@ironsource/fusion-ui/pipes';
 import {TagsInputBulkInsertOptions, TagsInputClearSearchOn, TagsInputComponentConfigurations} from './tags-input.entity';
 
 @Component({

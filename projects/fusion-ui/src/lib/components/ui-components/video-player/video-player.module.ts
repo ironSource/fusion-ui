@@ -5,7 +5,7 @@ import {VideoPlayerOptions} from './video-player-entities';
 import {SVG_OPTIONS_TOKEN} from '../svg/svg-config';
 import {VIDEO_PLAYER_OPTIONS_DEFUALT_VALUE} from './video-player-config';
 import {IconModule} from '../icon/icon.module';
-import {SecondsToMinutesModule} from '../../../pipes/numbers/seconds-to-minutes/seconds-to-minutes.module';
+import {SecondsToMinutesModule} from '@ironsource/fusion-ui/pipes';
 
 @NgModule({
     declarations: [VideoPlayerComponent],

@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {CapitalizeModule} from '../../pipes/string/capitalize/capitalize.module';
+import {CapitalizeModule} from '@ironsource/fusion-ui/pipes';
 
 @NgModule({
     declarations: [],

@@ -4,7 +4,7 @@ import {HeaderComponent} from './header.component';
 import {IconModule} from '../icon/icon.module';
 import {DynamicComponentsModule} from '../dynamic-components/dynamic-components.module';
 import {RouterModule} from '@angular/router';
-import {TruncateModule} from '../../../pipes/string/truncate/truncate.module';
+import {TruncateModule} from '@ironsource/fusion-ui/pipes';
 import {ClickOutsideModule} from '../../../directives/click-outside/click-outside.module';
 import {SVG_OPTIONS_TOKEN} from '../svg/svg-config';
 import {MENU_OPTIONS_DEFUALT_VALUE} from './menu-config';

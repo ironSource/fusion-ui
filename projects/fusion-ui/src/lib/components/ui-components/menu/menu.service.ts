@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {MenuItem} from './menu-item';
-import {WindowService} from '../../../services/window/window.service';
+import {WindowService} from '@ironsource/fusion-ui/services';
 
 @Injectable({
     providedIn: 'root'

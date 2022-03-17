@@ -20,7 +20,7 @@ import {debounceTime, distinctUntilChanged, takeUntil} from 'rxjs/operators';
 import {SidebarMenuItem} from '../sidebar/sidebar-menu/sidebar-menu.entity';
 import {DynamicComponentConfiguration} from '../dynamic-components/dynamic-component';
 import {SCROLL_OFFSET_FOR_PAGE_TITLE} from './layout-config';
-import {isNullOrUndefined} from '../../../utils';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Component({
     selector: 'fusion-layout',

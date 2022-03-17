@@ -24,9 +24,9 @@ import {TABLE_OPTIONS_DEFAULT_VALUES, TABLE_OPTIONS_TOKEN} from './table.config'
 import {MultiDropdownModule} from '../dropdown/multi-dropdown/multi-dropdown.module';
 import {InputInlineModule} from '../input-inline/input-inline.module';
 import {LoadMoreModule} from '../../../directives/load-more/load-more.module';
-import {GenericPipeModule} from '../../../pipes/generic/generic.module';
+import {GenericPipeModule} from '@ironsource/fusion-ui/pipes';
 import {ErrorMessageModule} from '../../../directives/error-message/error-message.module';
-import {NotAvailableModule} from '../../../pipes/not-available/not-available.module';
+import {NotAvailableModule} from '@ironsource/fusion-ui/pipes';
 import {ButtonModule} from '../button/button.module';
 
 @NgModule({

@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
 import {IconStatusOption} from './entities/icon-status-option';
-import {isNullOrUndefined} from '../../../utils';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Component({
     selector: 'fusion-icon-status',

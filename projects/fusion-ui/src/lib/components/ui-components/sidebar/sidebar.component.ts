@@ -1,11 +1,10 @@
 import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBinding, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {SidebarConfiguration} from './sidebar.entity';
 import {LayoutUser} from '../layout/layout.entity';
-import {CacheService} from '../../../services/cache/cache.service';
-import {CacheType} from '../../../services/cache/cache-entities';
+import {CacheService, CacheType} from '@ironsource/fusion-ui/services';
 import {BehaviorSubject, fromEvent, merge, Subject, Subscription} from 'rxjs';
-import {isNullOrUndefined} from '../../../utils';
-import {debounceTime, takeUntil} from 'rxjs/operators';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
+import {takeUntil} from 'rxjs/operators';
 import {SidebarMenuItem} from './sidebar-menu/sidebar-menu.entity';
 import {SidebarMenuService} from './sidebar-menu/sidebar-menu.service';
 import {DynamicComponentConfiguration} from '../dynamic-components/dynamic-component';

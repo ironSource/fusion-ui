@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output} from '@angular/core';
 import {TableColumn, TableOptions, TableRowsGrouped} from '../entities';
 import {TableService} from '../table.service';
-import {isUndefined} from '../../../../utils';
+import {isUndefined} from '@ironsource/fusion-ui/utils';
 
 @Component({
     // eslint-disable-next-line

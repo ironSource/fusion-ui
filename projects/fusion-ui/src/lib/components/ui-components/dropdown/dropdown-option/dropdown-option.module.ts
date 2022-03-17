@@ -4,7 +4,7 @@ import {DropdownOptionComponent, DropdownOptionDirective} from './dropdown-optio
 import {IconModule} from '../../icon/icon.module';
 import {TooltipModule} from '../../tooltip/tooltip.module';
 import {FlagModule} from '../../flag/flag.module';
-import {GenericPipeModule} from '../../../../pipes/generic/generic.module';
+import {GenericPipeModule} from '@ironsource/fusion-ui/pipes';
 import {DynamicComponentsModule} from '../../dynamic-components/dynamic-components.module';
 
 @NgModule({

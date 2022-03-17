@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {ComponentsModule} from './components/components.module';
-import {PipesModule} from './pipes/pipes.module';
+import {PipesModule} from '@ironsource/fusion-ui/pipes';
 
 @NgModule({
     declarations: [],

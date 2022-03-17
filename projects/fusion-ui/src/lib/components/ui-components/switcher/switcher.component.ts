@@ -9,11 +9,11 @@ import {
     OnInit,
     Output
 } from '@angular/core';
-import {UniqueIdService} from '../../../services/unique-id/unique-id.service';
+import {UniqueIdService} from '@ironsource/fusion-ui/services';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {SwitcherItem} from './entities/switcher-item';
 import {SwitcherMode} from './entities/switcher-mode.enum';
-import {isNullOrUndefined} from '../../../utils';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {StyleBase} from '../../style/style-base';
 
 @Component({

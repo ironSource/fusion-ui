@@ -13,11 +13,11 @@ import {
 import {MenuItem} from '../menu-item';
 import {MenuItemAdditionalData} from '../menu-item-additional-data';
 import {MenuService} from '../menu.service';
-import {isNullOrUndefined} from '../../../../utils';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {NavigationEnd, Router} from '@angular/router';
 import {filter, takeUntil, tap} from 'rxjs/operators';
 import {fromEvent, merge, Subject} from 'rxjs';
-import {WindowService} from '../../../../services/window/window.service';
+import {WindowService} from '@ironsource/fusion-ui/services';
 
 const LEAVE_MENU_TIME_INTERVAL = 2000;
 

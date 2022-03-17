@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import {StyleBase} from '../../style/style-base';
 import {BehaviorSubject, fromEvent} from 'rxjs';
-import {StyleVersion} from '../../../services/version/style-version.enum';
+import {StyleVersion} from '@ironsource/fusion-ui/services';
 import {TagComponentConfigurations} from './tag-component-configurations';
 import {takeUntil} from 'rxjs/operators';
 

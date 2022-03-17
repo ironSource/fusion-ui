@@ -1,5 +1,5 @@
 import {Inject, Injectable, Optional} from '@angular/core';
-import {isNullOrUndefined} from '../../utils';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {ApiService} from '../api/api.service';
 import {CacheService} from '../cache/cache.service';
 import {PermissionsService} from '../permissions/permissions.service';

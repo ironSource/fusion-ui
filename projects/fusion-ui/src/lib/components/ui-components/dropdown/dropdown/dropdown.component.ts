@@ -15,26 +15,26 @@ import {
     Renderer2,
     ViewChild
 } from '@angular/core';
-import {isNullOrUndefined} from '../../../../utils';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {DropdownOption} from '../entities/dropdown-option';
 import {BackendPagination} from '../entities/backend-pagination';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import {UniqueIdService} from '../../../../services/unique-id/unique-id.service';
-import {ClonePipe} from '../../../../pipes/clone/clone.pipe';
+import {UniqueIdService} from '@ironsource/fusion-ui/services';
+import {ClonePipe} from '@ironsource/fusion-ui/pipes';
 import {debounceTime, distinctUntilChanged, switchMapTo, take, takeUntil} from 'rxjs/operators';
 import {DropdownSearchComponent} from '../dropdown-search/dropdown-search.component';
 import {DropdownService} from '../dropdown.service';
-import {FilterByFieldPipe} from '../../../../pipes/collection/filter-by-field/filter-by-field.pipe';
-import {detectChangesDecorator} from '../../../../decorators/detect-changes.decorator';
+import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes';
+import {detectChangesDecorator} from '@ironsource/fusion-ui/decorators';
 import {DROPDOWN_DEBOUNCE_TIME, DROPDOWN_OPTIONS_WITHOUT_SCROLL} from '../dropdown-config';
 import {StyleBase} from '../../../style/style-base';
-import {StyleVersion} from '../../../../services/version/style-version.enum';
+import {StyleVersion} from '@ironsource/fusion-ui/services';
 import {DropdownSelectConfigurations} from '../dropdown-select/dropdown-select-configurations';
 import {DropdownSelectComponent} from '../dropdown-select/dropdown-select.component';
 import {DynamicComponentConfiguration} from '../../dynamic-components/dynamic-component';
 import {ClosedOptions} from '../entities/closed-options';
-import {SharedEventsService} from '../../../../services/events-handler/shared-events.service';
+import {SharedEventsService} from '@ironsource/fusion-ui/services';
 import {DropdownPlaceholderConfiguration} from '../entities/dropdown-placeholder-configuration';
 
 @Component({

@@ -1,9 +1,9 @@
 import {AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild} from '@angular/core';
 import {ToastEntity, ToastLocation, ToastType} from './toast.entity';
 import {DynamicComponentConfiguration} from '../dynamic-components/dynamic-component';
-import {LogService} from '../../../services/log/log.service';
-import {fromEvent, Subject} from 'rxjs';
-import {take, takeUntil} from 'rxjs/operators';
+import {LogService} from '@ironsource/fusion-ui/services';
+import {fromEvent} from 'rxjs';
+import {take} from 'rxjs/operators';
 
 @Component({
     selector: 'fusion-toast',

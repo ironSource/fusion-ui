@@ -14,7 +14,7 @@ import {
     Type,
     ViewChild
 } from '@angular/core';
-import {isBoolean, isNull, isNullOrUndefined} from '../../../../utils';
+import {isBoolean, isNull, isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {CellPosition, TableColumn, TableOptions, TableRowHeight} from '../entities';
 import {BehaviorSubject} from 'rxjs';
 import {TableService} from '../table.service';
@@ -31,7 +31,7 @@ import {
 import {TableModuleOptions} from '../entities/table-module-options';
 import {ERROR_MESSAGES} from '../../../../directives/error-message/error-message.config';
 import {StyleBase} from '../../../style/style-base';
-import {LogService} from '../../../../services/log/log.service';
+import {LogService} from '@ironsource/fusion-ui/services';
 import {DynamicComponentConfiguration} from '../../dynamic-components/dynamic-component';
 
 type CellDataType = Type<Component> | FormControl | string | boolean | undefined | null;

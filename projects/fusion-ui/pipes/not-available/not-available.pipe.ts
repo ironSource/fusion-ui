@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {isNull} from '../../utils';
+import {isNull} from '@ironsource/fusion-ui/utils';
 
 @Pipe({
     name: 'notAvailable'

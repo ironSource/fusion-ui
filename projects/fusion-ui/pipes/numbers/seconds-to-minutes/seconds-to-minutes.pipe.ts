@@ -3,7 +3,7 @@
  */
 
 import {Pipe, PipeTransform} from '@angular/core';
-import {isNumber} from '../../../utils';
+import {isNumber} from '@ironsource/fusion-ui/utils';
 
 @Pipe({
     name: 'secondsToMinutes'
