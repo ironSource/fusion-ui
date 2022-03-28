@@ -1,0 +1,68 @@
+import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {AddboxDropdownComponent} from './addbox-dropdown.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {InputModule} from '@ironsource/fusion-ui/components/input';
+import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
+import {FilterByFieldModule} from '@ironsource/fusion-ui/pipes';
+import {CloneModule} from '@ironsource/fusion-ui/pipes';
+import {DropdownLoaderModule} from '../dropdown-loader/dropdown-loader.module';
+import {DropdownOptionModule} from '../dropdown-option/dropdown-option.module';
+import {UniqueIdService} from '@ironsource/fusion-ui/services';
+import {LogService} from '@ironsource/fusion-ui/services';
+import {ClonePipe} from '@ironsource/fusion-ui/pipes';
+import {DropdownService} from '../dropdown.service';
+import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes';
+import {ApiService} from '@ironsource/fusion-ui/services';
+import {MockLogService, MockUniqueIdService, MockApiService} from '@ironsource/fusion-ui/services';
+import {DropdownOptionsListModule} from '../dropdown-options-list/dropdown-options-list.module';
+
+describe('AddboxDropdownComponent', () => {
+    let component: AddboxDropdownComponent;
+    let fixture: ComponentFixture<AddboxDropdownComponent>;
+
+    beforeEach(
+        waitForAsync(() => {
+            TestBed.configureTestingModule({
+                imports: [
+                    ReactiveFormsModule,
+                    InputModule,
+                    ClickOutsideModule,
+                    FilterByFieldModule,
+                    CloneModule,
+                    DropdownLoaderModule,
+                    DropdownOptionModule,
+                    DropdownOptionsListModule
+                ],
+                declarations: [AddboxDropdownComponent],
+                providers: [
+                    FilterByFieldPipe,
+                    ClonePipe,
+                    DropdownService,
+                    {
+                        provide: LogService,
+                        useClass: MockLogService
+                    },
+                    {
+                        provide: UniqueIdService,
+                        useClass: MockUniqueIdService
+                    },
+                    {
+                        provide: ApiService,
+                        useClass: MockApiService
+                    }
+                ]
+            }).compileComponents();
+        })
+    );
+
+    beforeEach(() => {
+        fixture = TestBed.createComponent(AddboxDropdownComponent);
+        component = fixture.componentInstance;
+        component.options = [];
+        fixture.detectChanges();
+    });
+
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
+});

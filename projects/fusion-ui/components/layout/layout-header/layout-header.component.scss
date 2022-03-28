@@ -1,0 +1,160 @@
+@import '../../../src/style/scss/vars/vars';
+@import '../../../src/style/scss/vars/mixins';
+@import '../../../src/style/scss/mixins/breakpoints';
+
+$border: solid 1px $fu-light-300;
+$headerContentHeight: 64px;
+$sidebarIconSize: 16px;
+$userIconSize: 18px;
+$userNameWidth: 130px;
+$userNameColor: $fu-light-900;
+$iconMoreHolderSize: 32px;
+$iconMoreSize: 16px;
+
+%flexRow{
+    display: flex;
+    align-items: center;
+}
+
+:host{
+    position: relative;
+    display: block;
+    padding-left: var(--layout-header-padding-left, 1.5em);
+    padding-right: var(--layout-header-padding-right, 1em);
+    border-bottom: var(--layout-header-border-bottom, $border);
+    .fu-header{
+        height: var(--layout-header-height, $headerContentHeight);
+        @extend %flexRow;
+        .fu-header-sidebar-state-icon{
+            @include size(var(--layout-header-sidebar-icon-size, $sidebarIconSize));
+            margin-right: var(--layout-header-sidebar-icon-margin-right, 1em);
+            cursor: pointer;
+            @include icon-style(null, var(--layout-header-sidebar-icon-color, $fu-light-700), var(--layout-header-sidebar-icon-size, $sidebarIconSize), false, true);
+        }
+        .fu-header-title{
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin-right: var(--layout-header-title-margin-right, 1em);
+            opacity: 0;
+            transition: opacity .3s ease-out;
+
+            .fu-header-title-text{
+                color: var(--layout-header-title-color, $fu-dark-300);
+                margin-right: var(--layout-header-title-margin-right, 1em);
+                @extend %font-headlineMedium;
+                white-space: nowrap;
+            }
+            .fu-header-title-content{
+                flex-grow: 1;
+            }
+        }
+
+        .fu-header-custom-element-holder{
+            display: block;
+            flex-grow: 1;
+        }
+        .fu-header-right-panel{
+            height: 100%;
+            margin-left: auto;
+            border-left: var(--layout-header-right-panel-border-right, $border);
+            padding-left: 1em;
+            @extend %flexRow;
+            .fu-header-user-holder{
+                @extend %flexRow;
+                line-height: 1.5;
+                margin-right: 0.5em;
+                color: var(--layout-header-user-name-color, $userNameColor);
+                @include icon-style('fu-header-icon-user', var(--layout-header-user-icon-color, currentColor), var(--layout-header-user-icon-size, $userIconSize), false, true);
+                cursor: pointer;
+                .fu-header-username{
+                    margin-left: 1em;
+                    width: var(--layout-header-user-name-width, $userNameWidth);
+                    @extend %font-label;
+                    @extend %truncate;
+                }
+            }
+            .fu-header-icon-more-holder{
+                position: relative;
+                margin-left: auto;
+                @include size(var(--layout-header-menu-opener-size, #{$iconMoreHolderSize}));
+                border-radius: calc(var(--layout-header-menu-opener-size, #{$iconMoreHolderSize}) / 2);
+                @include icon-style('fu-header-icon-more', var(--layout-header-icon-more-color, $fu-light-700), var(--layout-header-icon-more-size, $iconMoreSize), false, true){
+                    position: absolute;
+                    top: calc(50% - var(--layout-header-icon-more-size, #{$iconMoreSize}) /2 );
+                    left: calc(50% - var(--layout-header-icon-more-size, #{$iconMoreSize}) /2 );
+                }
+                cursor: pointer;
+                &:hover{
+                    background-color: var(--layout-header-menu-opener-background-color-hover, $fu-light-300);
+                }
+            }
+        }
+    }
+
+    @include media-breakpoint-max('xs') {
+        .fu-header .fu-header-right-panel{
+            display: none;
+        }
+    }
+}
+
+// region no header behaviour set (test)
+:host-context(.fu-layout-page-header-behaviour-type_none){
+    .fu-header{
+        .fu-header-title{
+            display: none;
+        }
+    }
+}
+// endregion
+
+// region header behaviour static
+:host-context(.fu-layout-page-header-behaviour-type_static){
+    .fu-header{
+        .fu-header-title{
+            opacity: 1;
+        }
+    }
+}
+// endregion
+
+// region header behaviour page
+:host-context(.fu-layout-page-header-behaviour-type_page){
+    .fu-header{
+        .fu-header-title{
+            opacity: 0;
+        }
+    }
+}
+
+:host-context(.fu-layout-page-header-behaviour-type_page.fu-layout-page-header-header){
+    .fu-header{
+        .fu-header-title{
+            opacity: 1;
+        }
+    }
+}
+// endregion
+
+// region header behaviour fixed
+:host-context(.fu-layout-page-header-behaviour-type_fixed){
+    .fu-header{
+        .fu-header-title{
+            opacity: 0;
+            .fu-header-title-content{
+                display: none;
+            }
+        }
+    }
+}
+
+:host-context(.fu-layout-page-header-behaviour-type_fixed.fu-layout-page-header-header){
+    .fu-header{
+        .fu-header-title{
+            opacity: 1;
+        }
+    }
+}
+// endregion
+

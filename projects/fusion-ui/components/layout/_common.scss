@@ -1,0 +1,13 @@
+/*!
+ * Created on 2020.12.6 By Andy Kononenko (andyk@ironsrc.com)
+ */
+
+@import '../../src/style/scss/vars/vars';
+@import '../../src/style/scss/vars/mixins';
+@import '../../src/style/scss/mixins/breakpoints';
+
+$sidebarBackgroundColor: $fu-dark-500;
+$headerHeight: 64px;
+
+$sidebarWidth: 220px;
+$sidebarClosedWidth: 72px;

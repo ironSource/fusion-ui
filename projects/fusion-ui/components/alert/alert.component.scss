@@ -1,0 +1,175 @@
+@import '../../src/style/scss/vars/vars';
+@import '../../src/style/scss/vars/mixins';
+@import '../../src/style/scss/mixins/breakpoints';
+
+:host.fusion-style-v1 {
+  @extend %reset;
+  display: block;
+
+  &[data-alert-content='mainPageAlert'] {
+    right: 0;
+
+    &.is-fixed-position {
+      position: fixed;
+      z-index: getZIndexLayerOffset(application, 3);
+      top: 110px;
+      @include media-breakpoint-between('md','xl') {
+        top: 66px;
+      }
+      @include media-breakpoint-between('sm','md') {
+        top: 60px;
+      }
+      @include media-breakpoint-max('sm') {
+        top: 100px;
+        width: 100%;
+      }
+    }
+
+    &.left-menu-collapsed {
+      @include media-breakpoint-between('xxs','md') {
+        width: 100%;
+      }
+      @include media-breakpoint-max('sm') {
+        width: 100%;
+      }
+    }
+  }
+
+  &[data-alert-content='modalAlert'] {
+    margin: -28px -40px 20px -30px;
+  }
+
+  .is-alert {
+    position: relative;
+    padding: 7px 23px 3px 5px;
+    @extend %font7;
+
+    ::ng-deep fusion-icon {
+      vertical-align: sub;
+      margin: 5px;
+
+      svg {
+        @include size(15px);
+
+        * {
+          fill: currentColor;
+        }
+      }
+    }
+
+    strong {
+      margin-right: 2px;
+    }
+
+    .is-close-button {
+      visibility: hidden;
+      position: absolute;
+      right: 5px;
+      top: 3px;
+      cursor: pointer;
+
+      ::ng-deep svg {
+        @include size(8px);
+
+        * {
+          fill: currentColor;
+        }
+      }
+    }
+
+    &.info {
+      color: $dark-100;
+    }
+
+    &.error {
+      color: $negative-500;
+    }
+
+    &.warning {
+      color: $neutral-700;
+    }
+
+    &.success {
+      color: $positive-500;
+    }
+
+    &.header {
+      border-bottom: solid 1px;
+    }
+
+    &.large {
+      padding: 20px 20px 15px 20px;
+      border: solid 1px;
+
+      .is-close-button {
+        top: 14px;
+        right: 14px;
+      }
+    }
+
+    &.header,
+    &.fc-header,
+    &.large {
+      .is-close-button {
+        visibility: visible;
+      }
+    }
+
+    &.header.info,
+    &.large.info {
+      background-color: var(--alert-info-background-color, $primary-100);
+      border-color: $primary-200;
+    }
+
+    &.header.error,
+    &.large.error {
+      background-color: $negative-100;
+      border-color: $negative-200;
+    }
+
+    &.header.warning,
+    &.large.warning {
+      background-color: $neutral-100;
+      border-color: $neutral-200;
+    }
+
+    &.header.success,
+    &.large.success {
+      background-color: $positive-100;
+      border-color: $positive-200;
+    }
+
+    // full-color (v2 on dsi 2)
+    &.fc-header {
+      @extend %font13;
+      color: $White;
+      border: none;
+      box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
+      text-align: center;
+
+      &.info {
+        background-color: $primary-500;
+      }
+
+      &.success {
+        background-color: $positive-500;
+      }
+
+      &.warning {
+        background-color: $neutral-700;
+      }
+
+      &.error {
+        background-color: $negative-500;
+      }
+
+    }
+
+    .is-do-not-show {
+      color: $White;
+      @extend %font13;
+      margin-left: 5px;
+      text-decoration: underline;
+    }
+  }
+}

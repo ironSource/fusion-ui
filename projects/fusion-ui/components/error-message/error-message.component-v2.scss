@@ -1,0 +1,14 @@
+/*!
+ * Created on 2020.4.20 By Andy Kononenko (andyk@ironsrc.com)
+ */
+
+@import "../../src/style/scss/vars/vars";
+
+:host:not(.fusion-style-v1){
+    .fusion-error {
+        margin-top: 5px;
+        line-height: 14px;
+        @extend %font-captionRegular;
+        color: $fu-negative-700;
+    }
+}

@@ -46,3 +46,5 @@ export * from './events-handler/shared-events.service';
 
 //
 export * from './window/window.service';
+
+export * from './mocks/mocks-services';
