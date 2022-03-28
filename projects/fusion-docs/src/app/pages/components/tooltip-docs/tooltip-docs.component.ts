@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnInit, Renderer2} from '@angular/core';
-import {TableColumnTypeEnum, TooltipPosition, TooltipType} from 'projects/fusion-ui/src/public-api';
+import {TableColumnTypeEnum, TooltipPosition, TooltipType} from '@ironsource/fusion-ui';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
 

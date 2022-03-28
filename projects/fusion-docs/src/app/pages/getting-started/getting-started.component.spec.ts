@@ -2,7 +2,7 @@ import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {GettingStartedComponent} from './getting-started.component';
 import {RouterTestingModule} from '@angular/router/testing';
-import {CopyToClipboardModule, IconModule, TooltipModule} from 'projects/fusion-ui/src/public-api';
+import {CopyToClipboardModule, IconModule, TooltipModule} from '@ironsource/fusion-ui';
 import {HttpClientModule} from '@angular/common/http';
 import {CodeBlockModule} from '../../components/code-block/code-block.module';
 

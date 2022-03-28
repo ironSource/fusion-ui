@@ -33,7 +33,7 @@ import {TableCellIconExampleModule} from '../../components/table-cell-icon-exmpa
 import {PlaygroundComponent} from './playground.component';
 import {PlaygroundRoutingModule} from './playground-routing.module';
 import {CommonModule} from '@angular/common';
-import {AccordionModule, ButtonComponent, VideoPlayerModule} from 'projects/fusion-ui/src/public-api';
+import {AccordionModule, ButtonComponent, VideoPlayerModule} from '@ironsource/fusion-ui';
 
 @NgModule({
     declarations: [PlaygroundComponent],

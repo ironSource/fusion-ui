@@ -6,7 +6,7 @@ import {LayoutDocsComponent} from './layout-docs.component';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
-import {LayoutV1Module, TableModule} from '../../../../../../fusion-ui/src/public-api';
+import {LayoutV1Module, TableModule} from '@ironsource/fusion-ui';
 import {MenuItemExampleModule} from '../../../components/menu-item-example/menu-item-example.module';
 
 @NgModule({

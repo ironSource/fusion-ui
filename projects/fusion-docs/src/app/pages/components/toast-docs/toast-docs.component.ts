@@ -1,5 +1,5 @@
 import {Component, OnInit, Type} from '@angular/core';
-import {ToastEntity, ToastLocation} from '../../../../../../fusion-ui/src/lib/components/ui-components/toast/toast.entity';
+import {ToastEntity, ToastLocation} from '@ironsource/fusion-ui';
 import {ToastExampleContentComponent} from '../../../components/toast-example-content/toast-example-content.component';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {ToastService} from '@ironsource/fusion-ui';

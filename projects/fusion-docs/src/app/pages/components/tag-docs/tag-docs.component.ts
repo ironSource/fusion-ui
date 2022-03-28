@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
-import {ApiService, ApiResponseType, VersionService, StyleVersion, Tag} from 'projects/fusion-ui/src/public-api';
+import {ApiService, ApiResponseType, VersionService, StyleVersion, Tag} from '@ironsource/fusion-ui';
 import {map, delay, takeUntil} from 'rxjs/operators';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Router} from '@angular/router';

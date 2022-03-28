@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ColorsService} from '../../../../../../fusion-ui/src/lib/services/colors/colors.service';
+import {ColorsService} from '@ironsource/fusion-ui';
 import {EXAMPLE_CODE_MOCK} from './example-mock';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 

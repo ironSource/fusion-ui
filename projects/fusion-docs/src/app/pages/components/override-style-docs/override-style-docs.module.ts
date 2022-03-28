@@ -5,7 +5,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
-import {AlertModule, AlertTheme, ALERT_THEME_TOKEN} from '../../../../../../fusion-ui/src/public-api';
+import {AlertModule, AlertTheme, ALERT_THEME_TOKEN} from '@ironsource/fusion-ui';
 
 export const alertTheme: AlertTheme = {
     '--alert-info-background-color': '#B0F7F7'

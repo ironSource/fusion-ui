@@ -6,7 +6,7 @@ import {CodeBlockModule} from '../../../components/code-block/code-block.module'
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {RouterModule, Routes} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
-import {DropdownModule, ErrorMessageModule, MultiDropdownModule} from 'projects/fusion-ui/src/public-api';
+import {DropdownModule, ErrorMessageModule, MultiDropdownModule} from '@ironsource/fusion-ui';
 import {DropdownCustomPlaceholderModule} from '../../../components/dropdown-custom-placeholder/dropdown-custom-placeholder.module';
 
 const routes: Routes = [{path: '', component: DropdownDocsV2Component}];

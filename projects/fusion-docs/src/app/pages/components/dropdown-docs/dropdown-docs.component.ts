@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit, Type} from '@angular/core';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
-import {DropdownOption, StyleVersion, VersionService} from 'projects/fusion-ui/src/public-api';
+import {DropdownOption, StyleVersion, VersionService} from '@ironsource/fusion-ui';
 import {of, Observable, Subject} from 'rxjs';
 import {delay, finalize, takeUntil} from 'rxjs/operators';
 import {EXISTED_TITLES, OPTIONS_COUNTRIES, OPTIONS_GROUPED, OPTIONS_GROUPED_SUBGROUP} from './dropdown-docs.config';

@@ -19,7 +19,7 @@
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
-                        "main": "projects/fusion-ui/src/test.ts",
+                        "main": "projects/fusion-ui/test.ts",
                         "tsConfig": "projects/fusion-ui/tsconfig.spec.json",
                         "karmaConfig": "projects/fusion-ui/karma.conf.js"
                     }

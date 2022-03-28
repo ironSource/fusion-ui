@@ -5,14 +5,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
-import {
-    ButtonModule,
-    CheckboxModule,
-    InputModule,
-    DropdownModule,
-    MultiDropdownModule,
-    AddboxDropdownModule
-} from 'projects/fusion-ui/src/public-api';
+import {ButtonModule, CheckboxModule, InputModule, DropdownModule, MultiDropdownModule, AddboxDropdownModule} from '@ironsource/fusion-ui';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AbTestOptionModule} from '../../../components/ab-test-option/ab-test-option.module';
 
