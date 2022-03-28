@@ -1,6 +1,6 @@
 import {TableRowRemoveAction} from './table-row-remove-action';
 import {TableColumn} from './table-column';
-import {DynamicComponentConfiguration} from '../../dynamic-components/dynamic-component';
+import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
 
 export interface TableOptions {
     sortingType?: string;

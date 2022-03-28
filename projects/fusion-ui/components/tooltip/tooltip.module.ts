@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {TooltipDirective} from './tooltip.directive';
 import {TooltipComponent} from './tooltip.component';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
-import {IconModule} from '../icon/icon.module';
+import {IconModule} from '@ironsource/fusion-ui/components/icon';
 
 @NgModule({
     declarations: [TooltipDirective, TooltipComponent],

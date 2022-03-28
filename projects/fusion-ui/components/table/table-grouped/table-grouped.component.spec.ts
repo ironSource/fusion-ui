@@ -9,7 +9,7 @@ import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-
 import {DropdownModule} from '@ironsource/fusion-ui/components/dropdown';
 import {ReactiveFormsModule} from '@angular/forms';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
-import {ToggleModule} from '../../toggle/toggle.module';
+import {ToggleModule} from '@ironsource/fusion-ui/components/toggle';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {MultiDropdownModule} from '@ironsource/fusion-ui/components/dropdown';
 import {InputInlineModule} from '@ironsource/fusion-ui/components/input-inline';

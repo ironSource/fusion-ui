@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Injector, Input} from '@angular/core';
-import {ChartLabel} from '../chart/entities/chart-label';
+import {ChartLabel} from '@ironsource/fusion-ui/components/chart';
 import {StyleBase} from '@ironsource/fusion-ui/components/style';
 
 @Component({

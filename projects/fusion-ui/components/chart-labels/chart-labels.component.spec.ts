@@ -4,7 +4,7 @@ import {ChartLabelsComponent} from './chart-labels.component';
 import {Observable, of} from 'rxjs';
 import {UniqueIdService} from '@ironsource/fusion-ui/services';
 import {DebugElement} from '@angular/core';
-import {CheckboxModule} from '../checkbox/checkbox.module';
+import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {ApiService} from '@ironsource/fusion-ui/services';

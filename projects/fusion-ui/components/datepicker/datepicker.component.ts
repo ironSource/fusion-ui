@@ -22,7 +22,7 @@ import {Datepicker} from './datepicker';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown';
 import {DEFAULT_TIMEZONE_OPTIONS} from './datepicker.config';
 import {BehaviorSubject, Subject} from 'rxjs';
-import {DAY_NAMES} from '../date/entities/config';
+import {DAY_NAMES} from '@ironsource/fusion-ui/components/date';
 import {takeUntil} from 'rxjs/operators';
 import {CalendarService} from '@ironsource/fusion-ui/components/date';
 

@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Injector, Input} from '@angular/core';
-import {StyleBase} from '../../style/style-base';
+import {StyleBase} from '@ironsource/fusion-ui/components/style';
 
 @Component({
     selector: 'fusion-loader-inline',

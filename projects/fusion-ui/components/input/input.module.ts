@@ -6,7 +6,7 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {LoaderModule} from '@ironsource/fusion-ui/components/loader';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
-import {LoaderInlineModule} from '../loader-inline/loader-inline.module';
+import {LoaderInlineModule} from '@ironsource/fusion-ui/components/loader-inline';
 
 @NgModule({
     declarations: [InputComponent],

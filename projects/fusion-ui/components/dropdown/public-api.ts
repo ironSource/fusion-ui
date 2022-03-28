@@ -13,3 +13,4 @@ export * from './entities/backend-pagination';
 export * from './entities/closed-options';
 export * from './dropdown-select/dropdown-select-configurations';
 export * from './dropdown-select/dropdown-select.module';
+export * from './dropdown-select/dropdown-select.component';

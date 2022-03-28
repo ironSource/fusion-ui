@@ -10,7 +10,7 @@ import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside
 import {FilterByFieldModule} from '@ironsource/fusion-ui/pipes';
 import {CloneModule} from '@ironsource/fusion-ui/pipes';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
-import {DynamicComponentsModule} from '../../dynamic-components/dynamic-components.module';
+import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
 import {DropdownLoaderModule} from '../dropdown-loader/dropdown-loader.module';
 import {DropdownOptionModule} from '../dropdown-option/dropdown-option.module';
 import {DropdownSearchModule} from '../dropdown-search/dropdown-search.module';

@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
-import {IconModule} from '../../icon/icon.module';
+import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {AccordionHeaderComponent} from './accordion-header.component';
 
 describe('AccordionBoxTitleComponent', () => {

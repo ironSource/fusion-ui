@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Injector, AfterViewInit} from '@angular/core';
-import {StyleBase} from '../style/style-base';
+import {StyleBase} from '@ironsource/fusion-ui/components/style';
 import {ALERT_THEME_TOKEN} from './alert-theme';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';

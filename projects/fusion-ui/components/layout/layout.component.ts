@@ -13,12 +13,11 @@ import {
     ViewChild
 } from '@angular/core';
 import {LayoutHeaderComponentConfiguration, LayoutHeaderContentTitle, PageHeaderPosition} from './layout-header/layout-header-entity';
-import {SidebarConfiguration} from '@ironsource/fusion-ui/components/sidebar';
+import {SidebarConfiguration, SidebarMenuItem} from '@ironsource/fusion-ui/components/sidebar';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
 import {LayoutComponentConfiguration, LayoutMediaType, LayoutForceScreenMode} from './layout.entity';
 import {BehaviorSubject, fromEvent, Subject} from 'rxjs';
 import {debounceTime, distinctUntilChanged, takeUntil} from 'rxjs/operators';
-import {SidebarMenuItem} from '@ironsource/fusion-ui/components/sidebar';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
 import {SCROLL_OFFSET_FOR_PAGE_TITLE} from './layout-config';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';

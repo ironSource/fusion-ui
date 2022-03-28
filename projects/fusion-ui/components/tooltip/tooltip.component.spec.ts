@@ -10,7 +10,7 @@ import {TooltipDirective} from './tooltip.directive';
 import {WindowService} from '@ironsource/fusion-ui/services';
 import {TooltipComponent} from './tooltip.component';
 import {TooltipService} from './tooltip.service';
-import {DynamicComponentsModule} from '../dynamic-components/dynamic-components.module';
+import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
 import {CacheService} from '@ironsource/fusion-ui/services';
 import {IconModule} from '../icon/icon.module';
 import {MouseEvent} from 'react';
