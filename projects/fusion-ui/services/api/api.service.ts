@@ -3,7 +3,7 @@ import {EventEmitter, Inject, Injectable, Optional} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {catchError, finalize, map, mergeMap, publishReplay, refCount, retryWhen} from 'rxjs/operators';
 import {CapitalizePipe} from '@ironsource/fusion-ui/pipes/string';
-import {CacheService} from '../cache/cache.service';
+import {CacheService} from '@ironsource/fusion-ui/services/cache';
 import {ApiOptions, ApiPaginationOptions, ApiRequestOptions, ApiResponseType, ApiRetryStrategy} from './api-entities';
 import {API_OPTIONS_TOKEN} from './api-config';
 import {isObject} from '@ironsource/fusion-ui/utils';

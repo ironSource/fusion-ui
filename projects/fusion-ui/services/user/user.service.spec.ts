@@ -2,9 +2,9 @@ import {TestBed} from '@angular/core/testing';
 
 import {UserService} from './user.service';
 import {HttpClientModule} from '@angular/common/http';
-import {CapitalizePipe} from '../../pipes/string/capitalize/capitalize.pipe';
+import {CapitalizePipe} from '@ironsource/fusion-ui/pipes/string';
 import {Observable, of} from 'rxjs';
-import {ApiService} from '../api/api.service';
+import {ApiService} from '@ironsource/fusion-ui/services/api';
 
 class MockApiService {
     get(): Observable<any> {

@@ -1,4 +1,4 @@
-import {CacheType} from '../cache/cache-entities';
+import {CacheType} from '@ironsource/fusion-ui/services/cache';
 import {BaseParser} from './base-parser';
 
 export interface ApiOptions {

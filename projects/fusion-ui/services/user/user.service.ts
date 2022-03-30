@@ -1,12 +1,11 @@
 import {Inject, Injectable, Optional} from '@angular/core';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {ApiService} from '../api/api.service';
-import {CacheService} from '../cache/cache.service';
-import {PermissionsService} from '../permissions/permissions.service';
-import {LogService} from '../log/log.service';
+import {ApiService} from '@ironsource/fusion-ui/services/api';
+import {PermissionsService} from '@ironsource/fusion-ui/services/permissions';
+import {LogService} from '@ironsource/fusion-ui/services/log';
 import {Observable, throwError as observableThrowError} from 'rxjs';
-import {ApiRequestOptions, ApiResponseType} from '../api/api-entities';
-import {CacheType} from '../cache/cache-entities';
+import {ApiRequestOptions, ApiResponseType} from '@ironsource/fusion-ui/services/api';
+import {CacheType, CacheService} from '@ironsource/fusion-ui/services/cache';
 import {catchError, tap} from 'rxjs/operators';
 import {USER_OPTIONS_TOKEN} from './user-config';
 import {UserOptions} from './user-options';

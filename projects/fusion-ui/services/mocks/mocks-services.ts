@@ -1,5 +1,5 @@
-import {UniqueIdService} from '../unique-id/unique-id.service';
-import {LogService} from '../log/log.service';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
+import {LogService} from '@ironsource/fusion-ui/services/log';
 import {of, Observable} from 'rxjs';
 
 export class MockUniqueIdService extends UniqueIdService {

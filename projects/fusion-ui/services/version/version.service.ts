@@ -1,5 +1,5 @@
 import {Inject, Injectable, OnDestroy, Optional} from '@angular/core';
-import {WindowService} from '../window/window.service';
+import {WindowService} from '@ironsource/fusion-ui/services/window';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {StyleVersion} from './style-version.enum';

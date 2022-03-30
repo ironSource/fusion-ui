@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {COLORS_PALETTE, NAMED_WEB_COLORS, PIE_COLORS_PALETTE} from './colors-palette';
-import {VersionService} from '../version/version.service';
+import {VersionService} from '@ironsource/fusion-ui/services/version';
 
 @Injectable({
     providedIn: 'root'
