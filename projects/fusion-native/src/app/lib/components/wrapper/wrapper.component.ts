@@ -22,7 +22,7 @@ import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {WRAPPER_TOKEN, WrapperToken} from './wrapper-entities';
 import {WrapperService} from './wrapper.service';
-import {isString, isUndefined} from '../../../../../../fusion-ui/src/lib/utils';
+import {isString, isUndefined} from '@ironsource/fusion-ui/utils';
 
 export const CONTROL_VALUE_NAME = 'controlValue';
 

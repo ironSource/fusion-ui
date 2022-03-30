@@ -2,60 +2,60 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {WrapperComponent} from './wrapper.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {AccordionModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/accordion/accordion.module';
-import {AlertModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/alert/alert.module';
-import {ButtonModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/button/button.module';
-import {DatepickerModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/datepicker/datepicker.module';
-import {FlagModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/flag/flag.module';
-import {HeaderModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/header/header.module';
-import {HeaderOverlayModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/header-overlay/header-overlay.module';
-import {IconModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/icon/icon.module';
+import {AccordionModule} from '@ironsource/fusion-ui/components/accordion';
+import {AlertModule} from '@ironsource/fusion-ui/components/alert';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button';
+import {DatepickerModule} from '@ironsource/fusion-ui/components/datepicker';
+import {FlagModule} from '@ironsource/fusion-ui/components/flag';
+import {HeaderModule} from '@ironsource/fusion-ui/components/header';
+import {HeaderOverlayModule} from '@ironsource/fusion-ui/components/header-overlay';
+import {IconModule} from '@ironsource/fusion-ui/components/icon';
 // prettier-ignore
 import {
     IconHeaderActionModule
-} from '../../../../../../fusion-ui/src/lib/components/ui-components/icon-header-action/icon-header-action.module';
+} from '@ironsource/fusion-ui/components/icon-header-action';
 // prettier-ignore
 import {
     MultiDropdownModule
-} from '../../../../../../fusion-ui/src/lib/components/ui-components/dropdown/multi-dropdown/multi-dropdown.module';
+} from '@ironsource/fusion-ui/components/dropdown';
 // prettier-ignore
 
 import {
     AddboxDropdownModule
-} from '../../../../../../fusion-ui/src/lib/components/ui-components/dropdown/addbox-dropdown/addbox-dropdown.module';
-import {InputModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/input/input.module';
-import {InputInlineModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/input-inline/input-inline.module';
-import {LayoutV1Module} from '../../../../../../fusion-ui/src/lib/components/ui-components/layout-v1/layout-v1.module';
-import {LayoutModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/layout/layout.module';
-import {ListBoxModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/list-box/list-box.module';
-import {LoaderModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/loader/loader.module';
-import {LoaderInlineModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/loader-inline/loader-inline.module';
-import {MenuModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/menu/menu.module';
-import {ModalModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/modal/modal.module';
-import {NotificationModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/notification/notification.module';
-import {PopupModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/popup/popup.module';
-import {RadioModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/radio/radio.module';
-import {RadioGroupModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/radio-group/radio-group.module';
-import {SvgModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/svg/svg.module';
-import {TableModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/table/table.module';
-import {TagModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/tag/tag.module';
-import {ToggleModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/toggle/toggle.module';
-import {TooltipModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/tooltip/tooltip.module';
-import {VideoPlayerModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/video-player/video-player.module';
-import {TagsInputModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/dropdown/tags-input/tags-input.module';
-import {ChartLabelsModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/chart-labels/chart-labels.module';
-import {ChartModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/chart/chart.module';
-import {IconSelectListModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/icon-select-list/icon-select-list.module';
-import {IconStatusModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/icon-status/icon-status.module';
-import {SwitcherModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/switcher/switcher.module';
-import {CalendarModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/date/calendar/calendar.module';
-import {DaterangeModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/date/daterange/daterange.module';
-import {MobilePreviewerModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/mobile-previewer/mobile-previewer.module';
-import {StatusLabelModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/status-label/status-label.module';
-import {ToastModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/toast/toast.module';
-import {TabsModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/tabs/tabs.module';
-import {SidebarModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/sidebar/sidebar.module';
-import {MonthPickerModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/month-picker/month-picker.module';
+} from '@ironsource/fusion-ui/components/dropdown';
+import {InputModule} from '@ironsource/fusion-ui/components/input';
+import {InputInlineModule} from '@ironsource/fusion-ui/components/input-inline';
+import {LayoutV1Module} from '@ironsource/fusion-ui/components/layout-v1';
+import {LayoutModule} from '@ironsource/fusion-ui/components/layout';
+import {ListBoxModule} from '@ironsource/fusion-ui/components/list-box';
+import {LoaderModule} from '@ironsource/fusion-ui/components/loader';
+import {LoaderInlineModule} from '@ironsource/fusion-ui/components/loader-inline';
+import {MenuModule} from '@ironsource/fusion-ui/components/menu';
+import {ModalModule} from '@ironsource/fusion-ui/components/modal';
+import {NotificationModule} from '@ironsource/fusion-ui/components/notification';
+import {PopupModule} from '@ironsource/fusion-ui/components/popup';
+import {RadioModule} from '@ironsource/fusion-ui/components/radio';
+import {RadioGroupModule} from '@ironsource/fusion-ui/components/radio-group';
+import {SvgModule} from '@ironsource/fusion-ui/components/svg';
+import {TableModule} from '@ironsource/fusion-ui/components/table';
+import {TagModule} from '@ironsource/fusion-ui/components/tag';
+import {ToggleModule} from '@ironsource/fusion-ui/components/toggle';
+import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
+import {VideoPlayerModule} from '@ironsource/fusion-ui/components/video-player';
+import {TagsInputModule} from '@ironsource/fusion-ui/components/dropdown';
+import {ChartLabelsModule} from '@ironsource/fusion-ui/components/chart-labels';
+import {ChartModule} from '@ironsource/fusion-ui/components/chart';
+import {IconSelectListModule} from '@ironsource/fusion-ui/components/icon-select-list';
+import {IconStatusModule} from '@ironsource/fusion-ui/components/icon-status';
+import {SwitcherModule} from '@ironsource/fusion-ui/components/switcher';
+import {CalendarModule} from '@ironsource/fusion-ui/components/date';
+import {DaterangeModule} from '@ironsource/fusion-ui/components/date';
+import {MobilePreviewerModule} from '@ironsource/fusion-ui/components/mobile-previewer';
+import {StatusLabelModule} from '@ironsource/fusion-ui/components/status-label';
+import {ToastModule} from '@ironsource/fusion-ui/components/toast';
+import {TabsModule} from '@ironsource/fusion-ui/components/tabs';
+import {SidebarModule} from '@ironsource/fusion-ui/components/sidebar';
+import {MonthPickerModule} from '@ironsource/fusion-ui/components/month-picker';
 
 @NgModule({
     declarations: [WrapperComponent],
