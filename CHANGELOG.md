@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1-rc.2](https://github.com/ironSource/fusion-ui/compare/v1.1.1-rc.1...v1.1.1-rc.2) (2022-03-30)
+
+
+### Bug Fixes
+
+* support muti endpoint \n\nBREAKING CHANGE: services and pipes ([066ef5d](https://github.com/ironSource/fusion-ui/commit/066ef5da9b023214483860a261a08a36d1295f30))
+
 ### [1.1.1-rc.1](https://github.com/ironSource/fusion-ui/compare/v1.1.1-rc.0...v1.1.1-rc.1) (2022-03-28)
 
 
