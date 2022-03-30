@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v1.1.1-rc.2...v1.2.0-rc.0) (2022-03-30)
+
+
+### Features
+
+* **FU-328:** stable mutli entry points /n/nBREAKING CHANGE: stable muti entrires ([b2d07b9](https://github.com/ironSource/fusion-ui/commit/b2d07b9c2f7a8cd1d495177da0c2f8aad867680f))
+
 ### [1.1.1-rc.2](https://github.com/ironSource/fusion-ui/compare/v1.1.1-rc.1...v1.1.1-rc.2) (2022-03-30)
 
 
