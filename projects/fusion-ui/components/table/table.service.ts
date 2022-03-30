@@ -1,7 +1,7 @@
 import {EventEmitter, Injectable} from '@angular/core';
 import {isNullOrUndefined, isNumber, isUndefined} from '@ironsource/fusion-ui/utils';
 import {DomSanitizer} from '@angular/platform-browser';
-import {LogService} from '@ironsource/fusion-ui/services';
+import {LogService} from '@ironsource/fusion-ui/services/log';
 import {TableColumn, TableColumnTypeEnum, TableOptions, TableRowChangedData, TableRowsExpandableOptions} from './entities';
 import {DEFAULT_EXPANDABLE_LEVEL, MAXIMUM_EXPANDABLE_LEVEL} from './table.config';
 

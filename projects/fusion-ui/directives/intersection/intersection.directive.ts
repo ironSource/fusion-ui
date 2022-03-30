@@ -1,5 +1,5 @@
 import {Directive, AfterViewInit, OnInit, OnDestroy, ElementRef, EventEmitter, Output, Input} from '@angular/core';
-import {WindowService} from '@ironsource/fusion-ui/services';
+import {WindowService} from '@ironsource/fusion-ui/services/window';
 import {IntersectionOptions} from './intersection';
 
 @Directive({

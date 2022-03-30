@@ -13,9 +13,9 @@ import {
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {DomSanitizer} from '@angular/platform-browser';
-import {UniqueIdService} from '@ironsource/fusion-ui/services';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {StyleBase} from '@ironsource/fusion-ui/components/style';
-import {StyleVersion} from '@ironsource/fusion-ui/services';
+import {StyleVersion} from '@ironsource/fusion-ui/services/version';
 import {BASE_CHECKED_IMAGE} from './checkbox.cusom-svg';
 
 @Component({

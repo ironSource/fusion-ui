@@ -7,11 +7,11 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, DebugElement, ElementRef} from '@angular/core';
 
 import {TooltipDirective} from './tooltip.directive';
-import {WindowService} from '@ironsource/fusion-ui/services';
+import {WindowService} from '@ironsource/fusion-ui/services/window';
 import {TooltipComponent} from './tooltip.component';
 import {TooltipService} from './tooltip.service';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
-import {CacheService} from '@ironsource/fusion-ui/services';
+import {CacheService} from '@ironsource/fusion-ui/services/cache';
 import {IconModule} from '../icon/icon.module';
 import {MouseEvent} from 'react';
 import {Observable, of} from 'rxjs';

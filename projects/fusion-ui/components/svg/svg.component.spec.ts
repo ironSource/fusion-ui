@@ -7,9 +7,9 @@ import {DebugElement} from '@angular/core';
 
 import {Observable, of} from 'rxjs';
 import {SvgComponent} from './svg.component';
-import {ApiService} from '@ironsource/fusion-ui/services';
-import {CacheService} from '@ironsource/fusion-ui/services';
-import {LogService} from '@ironsource/fusion-ui/services';
+import {ApiService} from '@ironsource/fusion-ui/services/api';
+import {CacheService} from '@ironsource/fusion-ui/services/cache';
+import {LogService} from '@ironsource/fusion-ui/services/log';
 
 const dataMock: string =
     '<?xml version="1.0" encoding="UTF-8"?>' +

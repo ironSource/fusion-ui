@@ -17,7 +17,7 @@ import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {NavigationEnd, Router} from '@angular/router';
 import {filter, takeUntil, tap} from 'rxjs/operators';
 import {fromEvent, merge, Subject} from 'rxjs';
-import {WindowService} from '@ironsource/fusion-ui/services';
+import {WindowService} from '@ironsource/fusion-ui/services/window';
 
 const LEAVE_MENU_TIME_INTERVAL = 2000;
 

@@ -1,6 +1,6 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {SwitcherComponent} from './switcher.component';
-import {UniqueIdService} from '@ironsource/fusion-ui/services';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {SwitcherItem} from './entities/switcher-item';
 import {FormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';

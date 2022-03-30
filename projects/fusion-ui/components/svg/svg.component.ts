@@ -15,7 +15,9 @@ import {
     AfterViewInit,
     ViewEncapsulation
 } from '@angular/core';
-import {ApiService, LogService, CacheType, ApiResponseType} from '@ironsource/fusion-ui/services';
+import {ApiService, ApiResponseType} from '@ironsource/fusion-ui/services/api';
+import {LogService} from '@ironsource/fusion-ui/services/log';
+import {CacheType} from '@ironsource/fusion-ui/services/cache';
 import {SVG_OPTIONS_TOKEN} from './svg-config';
 import {SvgOptions} from './svg-entities';
 

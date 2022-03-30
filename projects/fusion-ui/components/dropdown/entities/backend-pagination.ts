@@ -1,5 +1,5 @@
 import {Observable} from 'rxjs';
-import {ApiPaginationOptions} from '@ironsource/fusion-ui/services';
+import {ApiPaginationOptions} from '@ironsource/fusion-ui/services/api';
 
 export interface BackendPagination {
     backendGetFunction: (options: any) => Observable<any>;

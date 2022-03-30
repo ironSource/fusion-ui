@@ -15,7 +15,7 @@ import {TableColumn, TableOptions, TableRowExpandEmitter, TableRowMetaData} from
 import {TableService} from '../table.service';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {StyleBase} from '@ironsource/fusion-ui/components/style';
-import {StyleVersion} from '@ironsource/fusion-ui/services';
+import {StyleVersion} from '@ironsource/fusion-ui/services/version';
 import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {ColumnData} from './column-data';

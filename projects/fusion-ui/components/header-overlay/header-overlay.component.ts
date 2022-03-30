@@ -15,7 +15,7 @@ import {isNullOrUndefined, isUndefined} from '@ironsource/fusion-ui/utils';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {HeaderSizes} from './header-sizes.enum';
 import {BehaviorSubject} from 'rxjs';
-import {WindowService} from '@ironsource/fusion-ui/services';
+import {WindowService} from '@ironsource/fusion-ui/services/window';
 import {HeaderOptions} from './header-options';
 
 @Component({

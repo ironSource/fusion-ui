@@ -9,7 +9,7 @@ import {
     OnInit,
     Output
 } from '@angular/core';
-import {UniqueIdService} from '@ironsource/fusion-ui/services';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {SwitcherItem} from './entities/switcher-item';
 import {SwitcherMode} from './entities/switcher-mode.enum';

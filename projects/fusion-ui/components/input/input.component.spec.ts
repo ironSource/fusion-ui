@@ -7,7 +7,7 @@ import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {LoaderModule} from '@ironsource/fusion-ui/components/loader';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {Observable, of} from 'rxjs';
-import {ApiService} from '@ironsource/fusion-ui/services';
+import {ApiService} from '@ironsource/fusion-ui/services/api';
 import {LoaderInlineModule} from '@ironsource/fusion-ui/components/loader-inline';
 
 class MockApiService {

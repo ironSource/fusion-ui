@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild, ElementRef, Renderer2} from '@angular/core';
-import {CacheService} from '@ironsource/fusion-ui/services';
-import {CacheType} from '@ironsource/fusion-ui/services';
+import {CacheService, CacheType} from '@ironsource/fusion-ui/services/cache';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu';
 import {HeaderState} from './header-state';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';

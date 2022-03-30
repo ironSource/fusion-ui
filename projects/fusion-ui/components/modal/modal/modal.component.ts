@@ -17,10 +17,10 @@ import {
 } from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {DOCUMENT} from '@angular/common';
-import {UniqueIdService} from '@ironsource/fusion-ui/services';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {ModalService} from '../modal.service';
-import {LogService} from '@ironsource/fusion-ui/services';
-import {WindowService} from '@ironsource/fusion-ui/services';
+import {LogService} from '@ironsource/fusion-ui/services/log';
+import {WindowService} from '@ironsource/fusion-ui/services/window';
 import {StyleBase} from '@ironsource/fusion-ui/components/style';
 
 /** @dynamic */

@@ -2,8 +2,8 @@ import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {VideoPlayerComponent} from './video-player.component';
 import {Observable, of} from 'rxjs';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
-import {LogService} from '@ironsource/fusion-ui/services';
-import {ApiService} from '@ironsource/fusion-ui/services';
+import {LogService} from '@ironsource/fusion-ui/services/log';
+import {ApiService} from '@ironsource/fusion-ui/services/api';
 import {SecondsToMinutesModule} from '@ironsource/fusion-ui/pipes';
 
 class MockApiService {

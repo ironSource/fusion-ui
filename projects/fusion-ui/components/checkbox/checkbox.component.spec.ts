@@ -8,7 +8,7 @@ import {DebugElement, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 
 import {CheckboxComponent} from './checkbox.component';
-import {UniqueIdService} from '@ironsource/fusion-ui/services';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 
 class MockUniqueIdService extends UniqueIdService {

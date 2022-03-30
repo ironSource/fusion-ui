@@ -12,7 +12,7 @@ import {
 import {ToastComponent} from './toast.component';
 import {ToastEntity, ToastLocation} from './toast.entity';
 import {TOAST_HOLDER_CLASS_NAME, TOAST_LOCATION_STYLE_MAP} from './toast.configuration';
-import {LogService} from '@ironsource/fusion-ui/services';
+import {LogService} from '@ironsource/fusion-ui/services/log';
 import {take} from 'rxjs/operators';
 import {DOCUMENT} from '@angular/common';
 

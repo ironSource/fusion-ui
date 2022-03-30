@@ -7,13 +7,13 @@ import {FilterByFieldModule} from '@ironsource/fusion-ui/pipes';
 import {CloneModule} from '@ironsource/fusion-ui/pipes';
 import {DropdownLoaderModule} from '../dropdown-loader/dropdown-loader.module';
 import {DropdownOptionModule} from '../dropdown-option/dropdown-option.module';
-import {UniqueIdService} from '@ironsource/fusion-ui/services';
-import {LogService} from '@ironsource/fusion-ui/services';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
+import {LogService} from '@ironsource/fusion-ui/services/log';
 import {ClonePipe} from '@ironsource/fusion-ui/pipes';
 import {DropdownService} from '../dropdown.service';
 import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes';
-import {ApiService} from '@ironsource/fusion-ui/services';
-import {MockLogService, MockUniqueIdService, MockApiService} from '@ironsource/fusion-ui/services';
+import {ApiService} from '@ironsource/fusion-ui/services/api';
+import {MockLogService, MockUniqueIdService, MockApiService} from '@ironsource/fusion-ui/services/mocks';
 import {DropdownOptionsListModule} from '../dropdown-options-list/dropdown-options-list.module';
 
 describe('AddboxDropdownComponent', () => {

@@ -19,10 +19,10 @@ import {DebugElement} from '@angular/core';
 import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes';
 import {ClonePipe} from '@ironsource/fusion-ui/pipes';
 import {DropdownService} from '../dropdown.service';
-import {LogService} from '@ironsource/fusion-ui/services';
-import {MockLogService, MockUniqueIdService, MockApiService} from '@ironsource/fusion-ui/services';
-import {UniqueIdService} from '@ironsource/fusion-ui/services';
-import {ApiService} from '@ironsource/fusion-ui/services';
+import {LogService} from '@ironsource/fusion-ui/services/log';
+import {MockLogService, MockUniqueIdService, MockApiService} from '@ironsource/fusion-ui/services/mocks';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
+import {ApiService} from '@ironsource/fusion-ui/services/api';
 import {DropdownSelectModule} from '../dropdown-select/dropdown-select.module';
 
 const optionMock = [

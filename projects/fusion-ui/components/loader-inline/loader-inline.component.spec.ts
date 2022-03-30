@@ -1,7 +1,7 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {LoaderInlineComponent} from './loader-inline.component';
 import {Observable, of} from 'rxjs';
-import {ApiService} from '@ironsource/fusion-ui/services';
+import {ApiService} from '@ironsource/fusion-ui/services/api';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 
 class MockApiService {

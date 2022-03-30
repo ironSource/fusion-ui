@@ -8,7 +8,7 @@ import {DebugElement, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy} from '@an
 import {FormsModule} from '@angular/forms';
 
 import {ToggleComponent} from './toggle.component';
-import {UniqueIdService} from '@ironsource/fusion-ui/services';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 
 class MockUniqueIdService extends UniqueIdService {
     getUniqueId() {

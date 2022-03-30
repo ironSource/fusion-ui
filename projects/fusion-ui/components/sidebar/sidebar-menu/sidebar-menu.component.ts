@@ -4,7 +4,8 @@ import {SidebarMenuService} from './sidebar-menu.service';
 import {delay, switchMap, takeUntil, tap} from 'rxjs/operators';
 import {NavigationEnd, NavigationError, NavigationStart, Router} from '@angular/router';
 import {BehaviorSubject, fromEvent, iif, merge, of, Subject} from 'rxjs';
-import {LogService, WindowService} from '@ironsource/fusion-ui/services';
+import {LogService} from '@ironsource/fusion-ui/services/log';
+import {WindowService} from '@ironsource/fusion-ui/services/window';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Component({

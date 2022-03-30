@@ -6,7 +6,7 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {TruncateModule} from '@ironsource/fusion-ui/pipes';
 import {RouterModule} from '@angular/router';
 import {Observable, of} from 'rxjs';
-import {ApiService} from '@ironsource/fusion-ui/services';
+import {ApiService} from '@ironsource/fusion-ui/services/api';
 
 // Mocking
 class MockApiService {

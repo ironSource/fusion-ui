@@ -20,7 +20,7 @@ import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/for
 import {DropdownOption} from '../entities/dropdown-option';
 import {BackendPagination} from '../entities/backend-pagination';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import {UniqueIdService} from '@ironsource/fusion-ui/services';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {ClonePipe} from '@ironsource/fusion-ui/pipes';
 import {debounceTime, distinctUntilChanged, switchMapTo, take, takeUntil} from 'rxjs/operators';
 import {DropdownSearchComponent} from '../dropdown-search/dropdown-search.component';
@@ -29,12 +29,12 @@ import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes';
 import {detectChangesDecorator} from '@ironsource/fusion-ui/decorators';
 import {DROPDOWN_DEBOUNCE_TIME, DROPDOWN_OPTIONS_WITHOUT_SCROLL} from '../dropdown-config';
 import {StyleBase} from '@ironsource/fusion-ui/components/style';
-import {StyleVersion} from '@ironsource/fusion-ui/services';
+import {StyleVersion} from '@ironsource/fusion-ui/services/version';
 import {DropdownSelectConfigurations} from '../dropdown-select/dropdown-select-configurations';
 import {DropdownSelectComponent} from '../dropdown-select/dropdown-select.component';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
 import {ClosedOptions} from '../entities/closed-options';
-import {SharedEventsService} from '@ironsource/fusion-ui/services';
+import {SharedEventsService} from '@ironsource/fusion-ui/services/events-handler';
 import {DropdownPlaceholderConfiguration} from '../entities/dropdown-placeholder-configuration';
 
 @Component({

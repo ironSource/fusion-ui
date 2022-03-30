@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Injector, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {StyleBase} from '@ironsource/fusion-ui/components/style';
 import {DropdownSelectConfigurations} from './dropdown-select-configurations';
-import {StyleVersion} from '@ironsource/fusion-ui/services';
+import {StyleVersion} from '@ironsource/fusion-ui/services/version';
 import {DropdownSearchComponent} from '../dropdown-search/dropdown-search.component';
 import {FormControl} from '@angular/forms';
 import {takeUntil} from 'rxjs/operators';

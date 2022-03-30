@@ -1,6 +1,6 @@
 import {ElementRef, AfterViewInit, Injector, Renderer2, OnDestroy, InjectionToken, Directive} from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
-import {FUSION_V1_CLASS, VersionService, StyleVersion} from '@ironsource/fusion-ui/services';
+import {FUSION_V1_CLASS, VersionService, StyleVersion} from '@ironsource/fusion-ui/services/version';
 import {Observable, Subject} from 'rxjs';
 import {ThemeBase} from './theme-base';
 

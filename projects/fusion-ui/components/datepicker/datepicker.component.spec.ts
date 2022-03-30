@@ -10,10 +10,10 @@ import {DatepickerHeaderComponent} from './datepicker-header/datepicker-header.c
 import {DatepickerSelectionComponent} from './datepicker-selection/datepicker-selection.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import {LogService} from '@ironsource/fusion-ui/services';
-import {TimezoneService} from '@ironsource/fusion-ui/services';
-import {UniqueIdService} from '@ironsource/fusion-ui/services';
-import {MockTimeZonesService, MockUniqueIdService} from '@ironsource/fusion-ui/services';
+import {LogService} from '@ironsource/fusion-ui/services/log';
+import {TimezoneService} from '@ironsource/fusion-ui/services/timezone';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
+import {MockTimeZonesService, MockUniqueIdService} from '@ironsource/fusion-ui/services/mocks';
 import {DebugElement} from '@angular/core';
 
 describe('DatepickerComponent', () => {

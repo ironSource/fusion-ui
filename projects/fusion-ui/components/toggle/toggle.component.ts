@@ -10,7 +10,7 @@ import {
     OnInit,
     Output
 } from '@angular/core';
-import {UniqueIdService} from '@ironsource/fusion-ui/services';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {BehaviorSubject, of} from 'rxjs';
 import {DomSanitizer} from '@angular/platform-browser';

@@ -1,11 +1,11 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ChartComponent} from './chart.component';
-import {LoaderModule} from '../loader/loader.module';
+import {LoaderModule} from '@ironsource/fusion-ui/components/loader';
 import {ChartData} from './entities/chart-data';
-import {UniqueIdService} from '@ironsource/fusion-ui/services';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {CurrencyPipe, DatePipe, DecimalPipe, PercentPipe} from '@angular/common';
-import {ColorsService} from '@ironsource/fusion-ui/services';
+import {ColorsService} from '@ironsource/fusion-ui/services/colors';
 import {ChartDataService} from './chart.service';
 import {ShortNumberScaleSuffixPipe} from '@ironsource/fusion-ui/pipes';
 import {DebugElement} from '@angular/core';

@@ -19,7 +19,7 @@ import {DropdownOption} from '../entities/dropdown-option';
 import {BehaviorSubject} from 'rxjs';
 import {StyleBase} from '@ironsource/fusion-ui/components/style';
 import {takeUntil} from 'rxjs/operators';
-import {StyleVersion} from '@ironsource/fusion-ui/services';
+import {StyleVersion} from '@ironsource/fusion-ui/services/version';
 
 @Directive({
     selector: '[fusionDropdownOption]'

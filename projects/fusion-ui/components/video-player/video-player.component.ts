@@ -13,7 +13,7 @@ import {isNull} from '@ironsource/fusion-ui/utils';
 import {StyleBase} from '@ironsource/fusion-ui/components/style';
 import {BehaviorSubject, fromEvent, Observable, Subject} from 'rxjs';
 import {map, startWith, switchMap} from 'rxjs/operators';
-import {StyleVersion} from '@ironsource/fusion-ui/services';
+import {StyleVersion} from '@ironsource/fusion-ui/services/version';
 import {VIDEO_PLAYER_THEME_TOKEN} from './video-player-theme';
 
 @Component({

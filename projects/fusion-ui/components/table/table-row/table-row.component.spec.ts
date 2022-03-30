@@ -5,7 +5,7 @@ import {TableCellComponent} from '../table-cell/table-cell.component';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {TableService} from '../table.service';
-import {LogService} from '@ironsource/fusion-ui/services';
+import {LogService} from '@ironsource/fusion-ui/services/log';
 import {By} from '@angular/platform-browser';
 import {NotAvailableModule} from '@ironsource/fusion-ui/pipes';
 import {GenericPipeModule} from '@ironsource/fusion-ui/pipes';

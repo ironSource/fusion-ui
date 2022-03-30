@@ -16,7 +16,7 @@ import {CalendarService} from './calendar.service';
 import {Day} from '../entities/day';
 import {StyleBase} from '@ironsource/fusion-ui/components/style';
 import {getDateDayTime} from '@ironsource/fusion-ui/utils';
-import {VersionService} from '@ironsource/fusion-ui/services';
+import {VersionService} from '@ironsource/fusion-ui/services/version';
 import {filter, takeUntil} from 'rxjs/operators';
 import {CalendarComponentConfigurations} from './calendar-component-configurations';
 import {DEFAULT_CALENDAR_COMPONENT_CONFIGURATION} from './calendar.config';

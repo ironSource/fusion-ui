@@ -9,7 +9,7 @@ import {InputModule} from '@ironsource/fusion-ui/components/input';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {Observable, of} from 'rxjs';
-import {ApiService} from '@ironsource/fusion-ui/services';
+import {ApiService} from '@ironsource/fusion-ui/services/api';
 
 class MockApiService {
     get(): Observable<any> {

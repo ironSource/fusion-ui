@@ -16,8 +16,7 @@ import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/for
 import {isBoolean, isNullOrUndefined, isString} from '@ironsource/fusion-ui/utils';
 import {BehaviorSubject, Observable, fromEvent} from 'rxjs';
 import {map, takeUntil, tap, filter} from 'rxjs/operators';
-import {StyleVersion} from '@ironsource/fusion-ui/services';
-import {VersionService} from '@ironsource/fusion-ui/services';
+import {StyleVersion, VersionService} from '@ironsource/fusion-ui/services/version';
 import {InputOptions} from './input.options';
 import {CONFIG_INPUT_BY_UI_STYLE, InputConfigByStyle} from './input.component.config';
 import {InputParameters} from './input-parameters';

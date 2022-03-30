@@ -1,6 +1,6 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {IconSelectListComponent} from './icon-select-list.component';
-import {UniqueIdService} from '@ironsource/fusion-ui/services';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {IconSelectItem} from './entities/icon-select-item';
 import {FormsModule} from '@angular/forms';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';

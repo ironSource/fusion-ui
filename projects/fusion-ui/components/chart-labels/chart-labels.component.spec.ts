@@ -2,12 +2,12 @@ import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ChartLabelsComponent} from './chart-labels.component';
 import {Observable, of} from 'rxjs';
-import {UniqueIdService} from '@ironsource/fusion-ui/services';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {DebugElement} from '@angular/core';
 import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
-import {ApiService} from '@ironsource/fusion-ui/services';
+import {ApiService} from '@ironsource/fusion-ui/services/api';
 import {By} from '@angular/platform-browser';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 

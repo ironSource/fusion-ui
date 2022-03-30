@@ -31,7 +31,7 @@ import {
 import {TableModuleOptions} from '../entities/table-module-options';
 import {ERROR_MESSAGES} from '@ironsource/fusion-ui/components/error-message';
 import {StyleBase} from '@ironsource/fusion-ui/components/style';
-import {LogService} from '@ironsource/fusion-ui/services';
+import {LogService} from '@ironsource/fusion-ui/services/log';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
 
 type CellDataType = Type<Component> | FormControl | string | boolean | undefined | null;

@@ -4,7 +4,7 @@ import {SvgComponent} from './svg.component';
 import {SvgOptions} from './svg-entities';
 import {SVG_OPTIONS_DEFAULT_VALUES, SVG_OPTIONS_TOKEN} from './svg-config';
 import {HttpClientModule} from '@angular/common/http';
-import {ApiModule} from '@ironsource/fusion-ui/services';
+import {ApiModule} from '@ironsource/fusion-ui/services/api';
 
 @NgModule({
     declarations: [SvgComponent],

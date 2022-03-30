@@ -12,7 +12,7 @@ import {
     Output
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {UniqueIdService} from '@ironsource/fusion-ui/services';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {StyleBase} from '@ironsource/fusion-ui/components/style';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 

@@ -1,9 +1,9 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {RadioGroupComponent} from './radio-group.component';
-import {UniqueIdService} from '@ironsource/fusion-ui/services';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {ChangeDetectionStrategy, CUSTOM_ELEMENTS_SCHEMA, DebugElement} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {LogService} from '@ironsource/fusion-ui/services';
+import {LogService} from '@ironsource/fusion-ui/services/log';
 import {By} from '@angular/platform-browser';
 import {RadioModule} from '@ironsource/fusion-ui/components/radio';
 

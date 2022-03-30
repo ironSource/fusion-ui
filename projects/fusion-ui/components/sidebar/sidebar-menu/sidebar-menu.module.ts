@@ -5,7 +5,7 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
 import {SidebarMenuService} from './sidebar-menu.service';
 import {RouterModule} from '@angular/router';
-import {LogService} from '@ironsource/fusion-ui/services';
+import {LogService} from '@ironsource/fusion-ui/services/log';
 
 @NgModule({
     declarations: [SidebarMenuComponent],
