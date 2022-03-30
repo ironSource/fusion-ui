@@ -21,13 +21,13 @@ import {ColorsService} from '@ironsource/fusion-ui/services/colors';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {isDateString} from '@ironsource/fusion-ui/utils';
 import {BASE_DATASET_OPTIONS, CHART_CONFIGURATIONS} from './chart.config';
-import {ShortNumberScaleSuffixPipe} from '@ironsource/fusion-ui/pipes';
+import {ShortNumberScaleSuffixPipe} from '@ironsource/fusion-ui/pipes/numbers';
 import {StyleBase} from '@ironsource/fusion-ui/components/style';
 import {StyleVersion, VersionService} from '@ironsource/fusion-ui/services/version';
 import {takeUntil} from 'rxjs/operators';
 import {ChartBaseDatasetOptions} from './entities/chart-options';
 import {ChartType} from './entities/chart-type.enum';
-import {ClonePipe} from '@ironsource/fusion-ui/pipes';
+import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
 
 // Chart.js 3 is tree-shakeable, so it is necessary to import and register the controllers, elements, scales and plugins you are going to use.
 import {

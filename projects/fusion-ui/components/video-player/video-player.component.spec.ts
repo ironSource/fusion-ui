@@ -4,7 +4,7 @@ import {Observable, of} from 'rxjs';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {ApiService} from '@ironsource/fusion-ui/services/api';
-import {SecondsToMinutesModule} from '@ironsource/fusion-ui/pipes';
+import {SecondsToMinutesModule} from '@ironsource/fusion-ui/pipes/numbers';
 
 class MockApiService {
     get(url): Observable<any> {

@@ -3,7 +3,7 @@ import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {HeaderComponent} from './header.component';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
-import {TruncateModule} from '@ironsource/fusion-ui/pipes';
+import {TruncateModule} from '@ironsource/fusion-ui/pipes/string';
 import {RouterModule} from '@angular/router';
 import {Observable, of} from 'rxjs';
 import {ApiService} from '@ironsource/fusion-ui/services/api';

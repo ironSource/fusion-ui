@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, Injector, Input, OnInit} from '@angular/core';
 import {MobileOrientation} from './mobile-orientation.enum';
 import {DEVICE_ORIENTATION, MobilePreviewerComponentConfiguration} from './mobile-previewer-component-configuration';
-import {CapitalizePipe} from '@ironsource/fusion-ui/pipes';
+import {CapitalizePipe} from '@ironsource/fusion-ui/pipes/string';
 import {StyleBase} from '@ironsource/fusion-ui/components/style';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';

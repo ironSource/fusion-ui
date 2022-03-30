@@ -5,7 +5,7 @@ import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {FlagModule} from '@ironsource/fusion-ui/components/flag';
 import {DropdownOptionDirective} from './dropdown-option.component';
 import {DropdownService} from '../dropdown.service';
-import {GenericPipeModule} from '@ironsource/fusion-ui/pipes';
+import {GenericPipeModule} from '@ironsource/fusion-ui/pipes/generic';
 
 describe('DropdownOptionComponent', () => {
     let component: DropdownOptionComponent;

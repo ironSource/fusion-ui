@@ -9,8 +9,8 @@ import {map, takeUntil} from 'rxjs/operators';
 import {detectChangesDecorator} from '@ironsource/fusion-ui/decorators';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {DropdownOption} from '../entities/dropdown-option';
-import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes';
-import {ClonePipe} from '@ironsource/fusion-ui/pipes';
+import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
+import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
 import {TagsInputBulkInsertOptions, TagsInputClearSearchOn, TagsInputComponentConfigurations} from './tags-input.entity';
 
 @Component({

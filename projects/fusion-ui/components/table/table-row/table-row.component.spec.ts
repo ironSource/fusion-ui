@@ -7,8 +7,8 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {TableService} from '../table.service';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {By} from '@angular/platform-browser';
-import {NotAvailableModule} from '@ironsource/fusion-ui/pipes';
-import {GenericPipeModule} from '@ironsource/fusion-ui/pipes';
+import {NotAvailableModule} from '@ironsource/fusion-ui/pipes/not-available';
+import {GenericPipeModule} from '@ironsource/fusion-ui/pipes/generic';
 
 // do dummy component - holder
 @Component({

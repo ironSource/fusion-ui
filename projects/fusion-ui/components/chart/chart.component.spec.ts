@@ -7,13 +7,13 @@ import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {CurrencyPipe, DatePipe, DecimalPipe, PercentPipe} from '@angular/common';
 import {ColorsService} from '@ironsource/fusion-ui/services/colors';
 import {ChartDataService} from './chart.service';
-import {ShortNumberScaleSuffixPipe} from '@ironsource/fusion-ui/pipes';
+import {ShortNumberScaleSuffixPipe} from '@ironsource/fusion-ui/pipes/numbers';
 import {DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {ShortNumberScaleSuffixModule} from '@ironsource/fusion-ui/pipes';
+import {ShortNumberScaleSuffixModule} from '@ironsource/fusion-ui/pipes/numbers';
 import {ChartType} from './entities/chart-type.enum';
-import {CloneModule} from '@ironsource/fusion-ui/pipes';
-import {ClonePipe} from '@ironsource/fusion-ui/pipes';
+import {CloneModule} from '@ironsource/fusion-ui/pipes/clone';
+import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
 
 const mockRawData: ChartData = {
     legends: [
