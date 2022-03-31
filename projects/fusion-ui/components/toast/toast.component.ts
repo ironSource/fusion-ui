@@ -68,21 +68,21 @@ export class ToastComponent implements OnInit, AfterViewInit {
             });
     }
 
-    private setIconByType(type: ToastType): string {
-        let iconName = '';
+    private setIconByType(type: ToastType): string | {iconName: string; iconVersion: string} {
+        let iconName;
         switch (type) {
             case 'success':
-                iconName = 'check';
+                iconName = {iconName: 'check', iconVersion: 'v2'};
                 break;
             case 'alert':
-                iconName = 'bullhorn';
+                iconName = {iconName: 'bullhorn', iconVersion: 'v2'};
                 break;
             case 'error':
             case 'warning':
-                iconName = 'warning-note';
+                iconName = {iconName: 'warning-note', iconVersion: 'v2'};
                 break;
         }
-        return iconName;
+        return iconName || '';
     }
 
     private getCustomConfiguration(toastConfig: ToastEntity): DynamicComponentConfiguration {

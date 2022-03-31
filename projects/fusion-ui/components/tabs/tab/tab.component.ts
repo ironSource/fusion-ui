@@ -26,12 +26,12 @@ export class TabComponent {
     @ViewChild('tabElement') tabElement: ElementRef;
 
     text: string;
-    iconName: string;
+    iconName: string | {iconName: string; iconVersion: string};
     disabled: boolean;
     tooltipInfoIconContent: string;
     tooltipIconContent: string;
     tooltipContent: string;
-    infoIconName: string;
+    infoIconName: string | {iconName: string; iconVersion: string};
     popupContent: PopupComponentContent;
 
     onAdditionalIconClicked() {

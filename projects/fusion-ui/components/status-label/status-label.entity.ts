@@ -4,7 +4,7 @@
 
 export interface StatusLabelConfig {
     text?: string;
-    icon?: string;
+    icon?: string | {iconName: string; iconVersion: string};
     status?: StatusLabelStatus;
     borderType?: StatusLabelBorderType;
     customColors?: {

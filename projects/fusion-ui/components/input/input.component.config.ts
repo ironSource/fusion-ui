@@ -24,10 +24,10 @@ export const CONFIG_INPUT_BY_UI_STYLE: {[styleKey: string]: InputConfigByStyle} 
     },
     style_v2: {
         iconSearch: {iconName: 'search', iconVersion: 'v2'},
-        iconClear: 'close-circle',
-        iconInfo: 'importent',
-        iconWarning: 'warning',
-        iconLoader: 'loading-rotate',
+        iconClear: {iconName: 'close-circle', iconVersion: 'v2'},
+        iconInfo: {iconName: 'importent', iconVersion: 'v2'},
+        iconWarning: {iconName: 'warning', iconVersion: 'v2'},
+        iconLoader: {iconName: 'loading-rotate', iconVersion: 'v2'},
         currentStyleVersion: StyleVersion.V2
     }
 };

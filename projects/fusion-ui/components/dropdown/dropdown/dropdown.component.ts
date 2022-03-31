@@ -273,7 +273,9 @@ export class DropdownComponent extends StyleBase implements OnInit, OnDestroy, O
 
         this.selectedVersion$.pipe(takeUntil(this.onDestroy$)).subscribe(styleVersion => {
             this.dropdownArrowIconName$.next(
-                styleVersion === StyleVersion.V2 ? 'arrow-down' : {iconName: 'arrow-dropdown', iconVersion: 'v1'}
+                styleVersion === StyleVersion.V2
+                    ? {iconName: 'arrow-down', iconVersion: 'v2'}
+                    : {iconName: 'arrow-dropdown', iconVersion: 'v1'}
             );
         });
 

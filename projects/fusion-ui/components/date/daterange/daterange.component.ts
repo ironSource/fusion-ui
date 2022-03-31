@@ -68,7 +68,9 @@ export class DaterangeComponent extends StyleBase implements OnInit {
 
     @ViewChild('overlay') overlay: ElementRef;
 
-    dropdownSelectConfigurations$ = new BehaviorSubject<DropdownSelectConfigurations>({dropdownArrowIconName: 'arrow-down'});
+    dropdownSelectConfigurations$ = new BehaviorSubject<DropdownSelectConfigurations>({
+        dropdownArrowIconName: {iconName: 'arrow-down', iconVersion: 'v2'}
+    });
     pevIconName$ = new BehaviorSubject<string | {iconName: string; iconVersion?: string}>({iconName: 'arrow-left', iconVersion: 'v1'});
     nextIconName$ = new BehaviorSubject<string | {iconName: string; iconVersion?: string}>({
         iconName: 'arrow-right',
@@ -122,8 +124,16 @@ export class DaterangeComponent extends StyleBase implements OnInit {
     ngOnInit() {
         this.id = this.id || `fs-daterange-${this.uniqueIdService.getUniqueId()}`;
         this.selectedVersion$.subscribe(styleVersion => {
-            this.pevIconName$.next(styleVersion === StyleVersion.V2 ? 'arrow-left' : {iconName: 'arrow-right', iconVersion: 'v1'});
-            this.nextIconName$.next(styleVersion === StyleVersion.V2 ? 'arrow-right' : {iconName: 'arrow-right', iconVersion: 'v1'});
+            this.pevIconName$.next(
+                styleVersion === StyleVersion.V2
+                    ? {iconName: 'arrow-left', iconVersion: 'v2'}
+                    : {iconName: 'arrow-right', iconVersion: 'v1'}
+            );
+            this.nextIconName$.next(
+                styleVersion === StyleVersion.V2
+                    ? {iconName: 'arrow-right', iconVersion: 'v2'}
+                    : {iconName: 'arrow-right', iconVersion: 'v1'}
+            );
         });
 
         this.onOptionsChanges();

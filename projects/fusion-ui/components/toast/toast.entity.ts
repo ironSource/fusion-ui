@@ -9,7 +9,7 @@ export type ToastLocation = 'top-right' | 'top-left' | 'top-center' | 'bottom-ri
 export interface ToastEntity {
     text?: string;
     type?: ToastType;
-    icon?: string; // icon name that will used inserted of type icon. Type must be not defined
+    icon?: string | {iconName: string; iconVersion: string}; // icon name that will used inserted of type icon. Type must be not defined
     image?: string; // image URL that will used inserted of type icon. Type must be not defined
     custom?: DynamicComponentConfiguration; // toast dynamic content
     duration?: number; // shown duration in seconds. default null.

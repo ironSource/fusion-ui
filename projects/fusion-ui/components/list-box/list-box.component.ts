@@ -35,12 +35,18 @@ export class ListBoxComponent extends StyleBase implements OnInit, ControlValueA
     }
 
     checkIconName$: Observable<string | {iconName: string; iconVersion: string}> = this.selectedVersion$.pipe(
-        map(styleVersion => (styleVersion === StyleVersion.V2 ? 'check' : 'check-v-2')),
+        map(styleVersion =>
+            styleVersion === StyleVersion.V2 ? {iconName: 'check', iconVersion: 'v2'} : {iconName: 'check-v-2', iconVersion: 'v2'}
+        ),
         startWith('check-v-2')
     );
 
     removeIconName$: Observable<string | {iconName: string; iconVersion: string}> = this.selectedVersion$.pipe(
-        map(styleVersion => (styleVersion === StyleVersion.V2 ? 'close-circle' : {iconName: 'clear-full-circle', iconVersion: 'v1'})),
+        map(styleVersion =>
+            styleVersion === StyleVersion.V2
+                ? {iconName: 'close-circle', iconVersion: 'v2'}
+                : {iconName: 'clear-full-circle', iconVersion: 'v1'}
+        ),
         startWith({iconName: 'clear-full-circle', iconVersion: 'v1'})
     );
 

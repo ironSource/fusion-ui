@@ -112,7 +112,9 @@ export class TableRowComponent extends StyleBase implements OnInit, OnChanges {
         this.dataRowIndex = this.rowIndex;
         this.expandArrowIconName$ = this.selectedVersion$.pipe(
             map((styleVersion: StyleVersion) =>
-                styleVersion === StyleVersion.V2 ? 'arrow-right' : {iconName: 'arrow-right', iconVersion: 'v1'}
+                styleVersion === StyleVersion.V2
+                    ? {iconName: 'arrow-right', iconVersion: 'v2'}
+                    : {iconName: 'arrow-right', iconVersion: 'v1'}
             )
         );
         if (this.isRowTotal) {

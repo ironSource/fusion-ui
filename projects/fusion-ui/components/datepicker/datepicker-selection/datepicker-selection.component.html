@@ -8,7 +8,7 @@
   </div>
   <ng-template #inputStyle>
     <fusion-input *ngIf="!dropDownStyle"
-                  icon='calendar-2'
+                  [icon]="{iconName: 'calendar-2', iconVersion:'v2'}"
                   [isDisabled]="isDisabled"
                   formControlName="dateVal"
                   [placeholder]="'YYYY-MM-DD'"

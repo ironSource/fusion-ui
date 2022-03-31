@@ -15,8 +15,8 @@ export const CONFIG_INPUT_INLINE_BY_UI_STYLE: {[styleKey: string]: InputInlineCo
         loadingSize: 'small'
     },
     style_v2: {
-        iconEdit: 'pen',
-        iconSave: 'check',
+        iconEdit: {iconName: 'pen', iconVersion: 'v2'},
+        iconSave: {iconName: 'check', iconVersion: 'v2'},
         loadingSize: 'inline'
     }
 };

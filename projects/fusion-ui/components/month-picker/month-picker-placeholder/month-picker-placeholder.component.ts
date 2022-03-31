@@ -21,7 +21,9 @@ export class MonthPickerPlaceholderComponent extends StyleBase {
     @Input() selected: MonthPicker;
 
     arrowIconName$: Observable<string | {iconName: string; iconVersion?: string}> = this.selectedVersion$.pipe(
-        map(styleVersion => (styleVersion === StyleVersion.V2 ? 'arrow-down' : {iconName: 'arrow-dropdown', iconVersion: 'v1'})),
+        map(styleVersion =>
+            styleVersion === StyleVersion.V2 ? {iconName: 'arrow-down', iconVersion: 'v2'} : {iconName: 'arrow-dropdown', iconVersion: 'v1'}
+        ),
         startWith({iconName: 'arrow-dropdown', iconVersion: 'v1'})
     );
 

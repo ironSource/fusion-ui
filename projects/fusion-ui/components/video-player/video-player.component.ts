@@ -44,17 +44,25 @@ export class VideoPlayerComponent extends StyleBase implements OnInit, AfterView
     }
 
     playIconName$: Observable<string | {iconName: string; iconVersion: string}> = this.selectedVersion$.pipe(
-        map(styleVersion => (styleVersion === StyleVersion.V2 ? 'play-video-2' : {iconName: 'play-video', iconVersion: 'v1'})),
+        map(styleVersion =>
+            styleVersion === StyleVersion.V2 ? {iconName: 'play-video-2', iconVersion: 'v2'} : {iconName: 'play-video', iconVersion: 'v1'}
+        ),
         startWith({iconName: 'play-video', iconVersion: 'v1'})
     );
 
     pauseIconName$: Observable<string | {iconName: string; iconVersion: string}> = this.selectedVersion$.pipe(
-        map(styleVersion => (styleVersion === StyleVersion.V2 ? 'pause-video-2' : {iconName: 'pause', iconVersion: 'v1'})),
+        map(styleVersion =>
+            styleVersion === StyleVersion.V2 ? {iconName: 'pause-video-2', iconVersion: 'v2'} : {iconName: 'pause', iconVersion: 'v1'}
+        ),
         startWith({iconName: 'pause', iconVersion: 'v1'})
     );
 
     videoCameraIconName$: Observable<string | {iconName: string; iconVersion: string}> = this.selectedVersion$.pipe(
-        map(styleVersion => (styleVersion === StyleVersion.V2 ? 'video-camera_2' : {iconName: 'video-camera', iconVersion: 'v1'})),
+        map(styleVersion =>
+            styleVersion === StyleVersion.V2
+                ? {iconName: 'video-camera_2', iconVersion: 'v2'}
+                : {iconName: 'video-camera', iconVersion: 'v1'}
+        ),
         startWith({iconName: 'video-camera', iconVersion: 'v1'})
     );
 
