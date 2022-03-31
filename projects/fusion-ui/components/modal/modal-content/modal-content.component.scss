@@ -1,8 +1,8 @@
-@import '../../../src/style/scss/vars/vars';
-@import '../../../src/style/scss/vars/mixins';
+@import '../../../src/style/scss/v1/vars/vars';
+@import '../../../src/style/scss/v1/vars/mixins';
 @import '../modal_vars';
 
-:host.fusion-style-v1{
+:host.fu-style-v1{
     @extend %border-box-normalize;
     @extend %customScroll;
     display: block;

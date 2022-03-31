@@ -1,6 +1,6 @@
-@import "../../../src/style/scss/vars/vars";
-@import "../../../src/style/scss/vars/mixins";
-@import "../../../src/style/scss/vars/colors";
+@import "../../../src/style/scss/v1/vars/vars";
+@import "../../../src/style/scss/v1/vars/mixins";
+@import "../../../src/style/scss/v1/vars/colors";
 
 $maxCollWidth: 350px;
 $headerHeight: 30px;
@@ -19,7 +19,7 @@ $headerBackgroundColor: $White;
   }
 }
 
-:host.fusion-style-v1 {
+:host.fu-style-v1 {
   @extend %reset;
   width: 100%;
   height: 100%;

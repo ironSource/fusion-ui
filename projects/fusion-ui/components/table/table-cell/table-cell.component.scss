@@ -1,13 +1,13 @@
-@import '../../../src/style/scss/vars/vars';
-@import '../../../src/style/scss/vars/mixins';
-@import '../../../src/style/scss/vars/colors';
+@import '../../../src/style/scss/v1/vars/vars';
+@import '../../../src/style/scss/v1/vars/mixins';
+@import '../../../src/style/scss/v1/vars/colors';
 
 $bodyBorder: 1px solid $light-500;
 $rowHeightV1: 55px;
 $rowHeightV2: 43px;
 $rowTotalsHeight: 25px;
 
-:host.fusion-style-v1 {
+:host.fu-style-v1 {
     position: relative;
     padding: 0 10px 0 10px;
     color: $dark-300;

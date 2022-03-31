@@ -1,5 +1,5 @@
-@import '../../../src/style/scss/vars/vars';
-@import '../../../src/style/scss/vars/mixins';
+@import '../../../src/style/scss/v2/vars/vars';
+@import '../../../src/style/scss/v2/vars/mixins';
 
 :host:not(.fusion-style-v1) {
     @extend %border-box-normalize;
@@ -86,7 +86,7 @@
             }
             &.fu-selected {
                 .fu-month-item {
-                    background-color: var(--fu-month-picker-month-selected-bg-color, #{$primary-500});
+                    background-color: var(--fu-month-picker-month-selected-bg-color, #{$fu-primary-500});
                     color: var(--fu-month-picker-month-selected-color, #{$White});
                 }
                 &:after {

@@ -1,9 +1,9 @@
-@import '../../../src/style/scss/vars/vars';
+@import '../../../src/style/scss/v2/vars/vars';
 @import '../modal_vars-v2';
 
 :host:not(.fusion-style-v1){
     @extend %border-box-normalize;
-    @extend %customScroll-V2;
+    @extend %customScroll;
     display: block;
     overflow-y: auto;
     &.is-has-height{

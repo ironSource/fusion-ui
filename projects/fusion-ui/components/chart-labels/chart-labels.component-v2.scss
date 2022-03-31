@@ -1,7 +1,7 @@
-@import '../../src/style/scss/vars/mixins';
-@import '../../src/style/scss/vars/vars';
-@import '../../src/style/scss/vars/border';
-@import '../../src/style/scss/vars/fonts_v1';
+@import '../../src/style/scss/v2/vars/mixins';
+@import '../../src/style/scss/v2/vars/vars';
+@import '../../src/style/scss/v2/vars/border';
+@import '../../src/style/scss/v2/vars/fonts';
 
 :host:not(.fusion-style-v1) {
     @extend %border-box-normalize;
@@ -14,7 +14,7 @@
         height: 32px;
         color: $fu-dark-700;
         display: block;
-        @include icon-style('is-platform-icon', $light-600, 12px, false, true){
+        @include icon-style('is-platform-icon', $fu-light-600, 12px, false, true){
             position: absolute;
             right: 4px;
             top: 2px;
@@ -40,7 +40,7 @@
                 width: fit-content;
                 min-width: 16px;
                 border-radius: 8px;
-                @extend %font2;
+                @extend %font-headlineMedium;
                 font-size: 10px;
                 text-align: center;
                 line-height: 17px;
@@ -56,10 +56,10 @@
         }
     }
     .font13 {
-        @extend %font13;
+        @extend %font-bodyStrong;
     }
 
     .font14 {
-        @extend %font14;
+        @extend %font-body;
     }
 }

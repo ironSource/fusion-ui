@@ -1,5 +1,5 @@
-@import '../../../src/style/scss/vars/vars';
-@import '../../../src/style/scss/vars/mixins';
+@import '../../../src/style/scss/v2/vars/vars';
+@import '../../../src/style/scss/v2/vars/mixins';
 
 $v2-bodyBorder: 1px solid $fu-light-300;
 
@@ -116,8 +116,8 @@ $v2-bodyBorder: 1px solid $fu-light-300;
                 position: absolute;
                 bottom: -27px;
                 left: 0;
-                box-shadow: 4px 3px 5px 0 $light-500;
-                background-color: $light-100;
+                box-shadow: 4px 3px 5px 0 $fu-light-500;
+                background-color: $fu-light-100;
             }
         }
     }
