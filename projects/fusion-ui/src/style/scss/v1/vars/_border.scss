@@ -1,0 +1,73 @@
+@import 'colors';
+
+$borderRadius: var(--border-radius, 3px);
+$greyBorder: $light-500;
+$box-shadow:  0 2px 4px 0 rgba(0, 0, 0, 0.3);
+$v2-box-shadow: 0 2px 4px 0 rgba(12, 0, 51, 0.2);
+$panel-box-shadow:  0 0 7px 0 rgba(0, 0, 0, 0.1);
+
+%borderRadius{
+    border-radius: $borderRadius;
+}
+%border{
+    border: 1px solid $greyBorder;
+}
+%borderRight{
+    border-right: 1px solid $greyBorder;
+}
+%borderLeft{
+    border-left: 1px solid $greyBorder;
+}
+%borderTop{
+    border-top: 1px solid $greyBorder;
+}
+%borderBottom{
+    border-bottom: 1px solid $greyBorder;
+}
+
+%noBorder{
+    border: none;
+}
+
+
+%noBorderRadiusTR{
+    border-top-right-radius: 0 !important;
+}
+%noBorderRadiusTL{
+    border-top-left-radius: 0 !important;
+}
+%noBorderRadiusBR{
+    border-bottom-right-radius: 0 !important;
+}
+%noBorderRadiusBL{
+    border-bottom-left-radius: 0 !important;
+}
+
+%noBorderLeft{
+    @extend %noBorderRadiusTL;
+    @extend %noBorderRadiusBL;
+    border-left: none;
+}
+
+%noBorderRight{
+    @extend %noBorderRadiusTR;
+    @extend %noBorderRadiusBR;
+    border-right: none;
+}
+
+%noBorderBottom{
+    @extend %noBorderRadiusBL;
+    @extend %noBorderRadiusBR;
+    border-bottom: none;
+}
+
+%noBorderTop{
+    @extend %noBorderRadiusTL;
+    @extend %noBorderRadiusTR;
+    border-top: none;
+}
+
+%bottomBoxShadow{
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.23);
+}
+

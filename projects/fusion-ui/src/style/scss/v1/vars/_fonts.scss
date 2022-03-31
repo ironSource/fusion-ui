@@ -1,9 +1,9 @@
 // fonts
-$black: var(--black-font-family, 'NHaasGroteskDSPro-75Bd', sans-serif);
-$bold: var(--bold-font-family, 'NHaasGroteskTXPro-75Bd', sans-serif);
-$medium: var(--medium-font-family,'NHaasGroteskTXPro-65Md', sans-serif);
-$regular: var(--regular-font-family, 'Open Sans', sans-serif);
-$body: var(--body-font-family, 'HelveticaNeue', helvetica, sans-serif);
+$black: var(--black-font-family, 'NHaasGroteskDSPro-75Bd, sans-serif');
+$bold: var(--bold-font-family, 'NHaasGroteskTXPro-75Bd, sans-serif');
+$medium: var(--medium-font-family,'NHaasGroteskTXPro-65Md, sans-serif');
+$regular: var(--regular-font-family, 'Open Sans, sans-serif');
+$body: var(--body-font-family, 'HelveticaNeue, helvetica, sans-serif');
 
 // typography
 %font1 {

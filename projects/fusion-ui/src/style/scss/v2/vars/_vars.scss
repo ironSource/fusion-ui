@@ -1,7 +1,5 @@
-@import './fonts_v1';
-@import './fonts';
-@import './colors';
-@import './colors_v2';
+@import 'fonts';
+@import 'colors';
 
 $em-base: 16px;
 
@@ -80,7 +78,7 @@ $marginTwoThird: calc(#{$margin} * 2/3);
     right: 10px;
     border-width: 4px 4px 0;
     border-style: solid;
-    border-color: $dark-300 transparent transparent;
+    border-color: $fu-dark-300 transparent transparent;
 }
 
 %disabled {
@@ -109,16 +107,16 @@ $marginTwoThird: calc(#{$margin} * 2/3);
 }
 %link-reset{
     a{
-        @extend %font6;
+        @extend %font-bodyStrong;
         text-decoration: none;
-        color:$primary-500;
+        color:$fu-primary-500;
         cursor: pointer;
 
         &:link,
         &:visited,
         &:hover,
         &:active{
-            color:$primary-500;
+            color:$fu-primary-500;
         }
     }
 }
@@ -142,14 +140,15 @@ $marginTwoThird: calc(#{$margin} * 2/3);
 }
 
 // scroll
-$scrollWidth: 14px;
+$scrollWidth: 12px;
+$scrollRadius: 2px;
+$scrollRadiusTrack: 4px;
 $scrollThumbWidth: 4px;
-$scrollRadius: 4px;
+$scrollColor: $fu-light-500;
 $scrollBackgroundColor: $White;
-$scrollColor: $light-600;
 %customScroll{
     &::-webkit-scrollbar-track {
-        border-radius: $scrollRadius;
+        border-radius: $scrollRadiusTrack;
         background-color: $scrollBackgroundColor;
     }
 
@@ -164,30 +163,6 @@ $scrollColor: $light-600;
         background-clip: padding-box;
         border-radius: $scrollRadius;
         background-color: $scrollColor;
-    }
-}
-
-// scroll - v2
-$scrollWidthV2: 12px;
-$scrollRadiusV2: 2px;
-$scrollColorV2: $fu-light-500;
-%customScroll-V2{
-    &::-webkit-scrollbar-track {
-        border-radius: $scrollRadius;
-        background-color: $scrollBackgroundColor;
-    }
-
-    &::-webkit-scrollbar {
-        width: $scrollWidthV2;
-        height: $scrollWidthV2;
-        background-color: $scrollBackgroundColor;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        border: calc((#{$scrollWidthV2} - #{$scrollThumbWidth}) / 2) solid rgba(0, 0, 0, 0);
-        background-clip: padding-box;
-        border-radius: $scrollRadiusV2;
-        background-color: $scrollColorV2;
     }
 }
 

@@ -56,7 +56,7 @@ $baseSDN: 'https://fusion.ironsrc.net/assets';
     font-style: normal;
 }
 
-@import 'vars/fonts_v1';
+@import 'vars/fonts';
 
 .fu-font1 {
     @extend %font1;

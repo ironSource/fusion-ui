@@ -1,89 +1,10 @@
-$baseSDN: 'https://fusion.ironsrc.net/assets';
+// todo: TEMP FOR CHECKING!!!
+/**
+Need check where has import to this file ..
 
-@font-face {
-    font-family: 'NHaasGroteskDSPro-75Bd';
-    src: url('#{$baseSDN}/fonts/NHaasGroteskDSPro-75Bd.eot'); /* IE9 Compat Modes */
-    src: url('#{$baseSDN}/fonts/NHaasGroteskDSPro-75Bd.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('#{$baseSDN}/fonts/NHaasGroteskDSPro-75Bd.woff2') format('woff2'), /* Super Modern Browsers */
-    url('#{$baseSDN}/fonts/NHaasGroteskDSPro-75Bd.woff') format('woff'), /* Pretty Modern Browsers */
-    url('#{$baseSDN}/fonts/NHaasGroteskDSPro-75Bd.ttf') format('truetype'); /* Safari, Android, iOS */
-}
+Compiled with problems:X
 
-@font-face {
-    font-family: 'NHaasGroteskDSPro-65Md';
-    src: url('#{$baseSDN}/fonts/NHaasGroteskDSPro-65Md.eot'); /* IE9 Compat Modes */
-    src: url('#{$baseSDN}/fonts/NHaasGroteskDSPro-65Md.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('#{$baseSDN}/fonts/NHaasGroteskDSPro-65Md.woff2') format('woff2'), /* Super Modern Browsers */
-    url('#{$baseSDN}/fonts/NHaasGroteskDSPro-65Md.woff') format('woff'), /* Pretty Modern Browsers */
-    url('#{$baseSDN}/fonts/NHaasGroteskDSPro-65Md.ttf') format('truetype'); /* Safari, Android, iOS */
-}
+ERROR
 
-@font-face {
-    font-family: 'HelveticaNeue';
-    src: url('#{$baseSDN}/fonts/HelveticaNeue.eot');
-    src: url('#{$baseSDN}/fonts/HelveticaNeue.eot?#iefix') format('embedded-opentype'),
-    url('#{$baseSDN}/fonts/HelveticaNeue.woff2') format('woff2'),
-    url('#{$baseSDN}/fonts/HelveticaNeue.woff') format('woff'),
-    url('#{$baseSDN}/fonts/HelveticaNeue.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'HelveticaNeue-Medium';
-    src: url('#{$baseSDN}/fonts/HelveticaNeue-Medium.eot');
-    src: url('#{$baseSDN}/fonts/HelveticaNeue-Medium.eot?#iefix') format('embedded-opentype'),
-    url('#{$baseSDN}/fonts/HelveticaNeue-Medium.woff2') format('woff2'),
-    url('#{$baseSDN}/fonts/HelveticaNeue-Medium.woff') format('woff'),
-    url('#{$baseSDN}/fonts/HelveticaNeue-Medium.ttf') format('truetype');
-}
-
-@import 'vars/fonts';
-
-// fonts v2
-.fu-font-headlineLarge {
-    @extend %font-headlineLarge;
-}
-.fu-font-headlineMedium {
-    @extend %font-headlineMedium;
-}
-.fu-font-headlineSmall {
-    @extend %font-headlineSmall;
-}
-.fu-font-subtitle {
-    @extend %font-subtitle;
-}
-.fu-font-bodyStrong {
-    @extend %font-bodyStrong;
-}
-.fu-font-body {
-    @extend %font-body;
-}
-.fu-font-captionRegular {
-    @extend %font-captionRegular;
-}
-.fu-font-label {
-    @extend %font-label;
-}
-
-.fu-font-titleGiant {
-    @extend %font-titleGiant;
-}
-
-.fu-font-titleMedium {
-    @extend %font-titleMedium;
-}
-
-.fu-font-webBodyStrong {
-    @extend %font-webBodyStrong;
-}
-
-.fu-font-webBody {
-    @extend %font-webBody;
-}
-
-.fu-font-webBodyLargeStrong {
-    @extend %font-webBodyLargeStrong;
-}
-
-.fu-font-webBodyLarge {
-    @extend %font-webBodyLarge;
-}
+Module not found: Error: Can't resolve '/Users/andyk/Works/fusion-ui/projects/fusion-ui/src/style/scss/fonts.scss' in '/Users/andyk/Works/fusion-ui'
+ */
