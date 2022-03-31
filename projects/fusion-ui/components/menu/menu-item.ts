@@ -2,7 +2,7 @@ import {MenuItemAdditionalData} from './menu-item-additional-data';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
 
 export interface MenuItem {
-    icon?: string;
+    icon?: string | {iconName: string; iconVersion: string};
     name: string;
     route?: string;
     permissions?: string[];

@@ -17,18 +17,19 @@ import {StyleBase} from '@ironsource/fusion-ui/components/style';
     selector: 'fusion-button,[fusion-button]',
     template: `
         <span [ngClass]="{'is-icon-text': iconName && projectContent}">
-            <fusion-icon
-                *ngIf="iconName && !isLoading"
-                class="icon"
-                [name]="(selectedVersion$ | async) === 1 ? {iconName: iconName, iconVersion: 'v1'} : iconName"
-            ></fusion-icon>
+            <fusion-icon *ngIf="iconName && !isLoading" class="icon" [name]="iconProp"></fusion-icon>
             <ng-container *ngIf="selectedVersion$ | async as selectedVersion">
                 <fusion-icon
                     *ngIf="selectedVersion === 1 && isLoading"
                     class="icon-loading"
                     [name]="{iconName: 'loading', iconVersion: 'v1'}"
                 ></fusion-icon>
-                <fusion-icon *ngIf="selectedVersion === 2 && isLoading" class="icon-loading" hidden name="loader-dots-v4"></fusion-icon>
+                <fusion-icon
+                    *ngIf="selectedVersion !== 1 && isLoading"
+                    class="icon-loading"
+                    hidden
+                    [name]="{iconName: 'loader-dots-v4', iconVersion: 'v2'}"
+                ></fusion-icon>
             </ng-container>
             <span><ng-content></ng-content></span>
         </span>
@@ -40,8 +41,9 @@ export class ButtonComponent extends StyleBase implements OnInit {
     @HostListener('click', ['$event']) onClick($event: any) {
         this.onclick.emit($event);
     }
-    @Input() set icon(value: string) {
-        this.iconName = value;
+    @Input() set icon(value: string | {iconName: string; iconVersion: string}) {
+        this.iconProp = value;
+        this.iconName = typeof this.iconProp === 'string' ? this.iconProp : this.iconProp.iconName;
         this.setIconState(!!this.iconName);
     }
     @Input() set disabled(value: boolean) {
@@ -58,6 +60,7 @@ export class ButtonComponent extends StyleBase implements OnInit {
     projectContent: boolean;
     isLoading: boolean;
     iconName: string;
+    iconProp: string | {iconName: string; iconVersion: string};
     private isDisabled: boolean;
 
     constructor(injector: Injector, private element: ElementRef, private renderer: Renderer2) {

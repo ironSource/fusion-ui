@@ -5,7 +5,7 @@
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
 
 export interface SidebarMenuItem {
-    icon?: string;
+    icon?: string | {iconName: string; iconVersion: string};
     name?: string; // not in use if has content
     route?: string;
     routeConfigurations?: {

@@ -1,5 +1,5 @@
 export interface LayoutUser {
-    icon?: string;
+    icon?: string | {iconName: string; iconVersion: string};
     name?: string;
     email?: string;
 }

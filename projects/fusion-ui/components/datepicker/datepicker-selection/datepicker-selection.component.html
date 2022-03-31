@@ -2,7 +2,7 @@
   <div *ngIf="dropDownStyle; else inputStyle">
     <div class="is-datepicker-select" (click)="onInputFocus()" [ngClass]="{'is-disabled': isDisabled}">
       <label class="truncate">
-        <fusion-icon name="calendar-2"></fusion-icon>
+        <fusion-icon [name]="{iconName:'calendar-2', iconVersion: 'v2'}"></fusion-icon>
         {{label}}</label>
     </div>
   </div>

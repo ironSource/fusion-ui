@@ -29,7 +29,7 @@ export class LayoutHeaderComponent {
     @Output() layoutHeaderMenuItemClicked = new EventEmitter<SidebarMenuItem>();
 
     sidebarOpenOpen: boolean;
-    sidebarIconName = SIDEBAR_TOGGLE_ICON.regular;
+    sidebarIconName: string | {iconName: string; iconVersion: string} = SIDEBAR_TOGGLE_ICON.regular;
 
     titleText: string;
     titleContent: DynamicComponentConfiguration;
@@ -37,7 +37,7 @@ export class LayoutHeaderComponent {
 
     hasMenu = false;
     userName: string;
-    userIcon: string;
+    userIcon: string | {iconName: string; iconVersion: string};
 
     headerMenuConfiguration: LayoutHeaderMenuConfiguration;
     menuOpen = false;
@@ -95,7 +95,7 @@ export class LayoutHeaderComponent {
      * - isOpen: Sidebar state Open
      * *private
      */
-    private setSidebarIconName(isOpen: boolean): string {
+    private setSidebarIconName(isOpen: boolean): string | {iconName: string; iconVersion: string} {
         return isOpen ? SIDEBAR_TOGGLE_ICON.regular : SIDEBAR_TOGGLE_ICON.closed;
     }
 

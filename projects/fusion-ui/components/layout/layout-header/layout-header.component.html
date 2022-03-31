@@ -24,7 +24,7 @@
             <div *ngIf="userName" class="fu-header-username">{{ userName }}</div>
         </div>
         <div class="fu-header-icon-more-holder" (click)="changeLayoutHeaderMenuState($event)">
-            <fusion-icon class="fu-header-icon-more" name="more"></fusion-icon>
+            <fusion-icon class="fu-header-icon-more" [name]="{iconName: 'more', iconVersion: 'v2'}"></fusion-icon>
         </div>
     </div>
     <!--header right panel-->
