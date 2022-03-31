@@ -1,5 +1,5 @@
-@import '../../../../../fusion-ui/src/style/scss/vars/vars';
-@import '../../../../../fusion-ui/src/style/scss/vars/mixins';
+@import '../../../../../fusion-ui/src/style/scss/v1/vars/vars';
+@import '../../../../../fusion-ui/src/style/scss/v1/vars/mixins';
 
 :host{
     .fu-info-popup-content{
@@ -19,19 +19,19 @@
             cursor: pointer;
         }
         .fu-info-popup-content-header{
-            @extend %font-bodyStrong;
+            @extend %font11;
             margin-bottom: 8px;
         }
         .fu-info-popup-content-content{
-            @extend %font-body;
+            @extend %font12;
             height: 80px;
             overflow-y: hidden;
         }
         .fu-info-popup-content-more{
-            @extend %font-bodyStrong;
+            @extend %font11;
             margin-top: 17px;
             a{
-                color: $fu-primary-500;
+                color: $primary-500;
                 text-decoration: none;
             }
         }
