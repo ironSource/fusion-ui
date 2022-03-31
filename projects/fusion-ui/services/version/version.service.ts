@@ -6,7 +6,7 @@ import {StyleVersion} from './style-version.enum';
 import {STYLE_VERSION_TOKEN} from './style-version-config';
 import {NATIVE_TOKEN} from '@ironsource/fusion-ui/decorators';
 
-export const FUSION_V1_CLASS = 'fusion-style-v1';
+export const FUSION_V1_CLASS = 'fu-style-v1';
 
 @Injectable({
     providedIn: 'root'
