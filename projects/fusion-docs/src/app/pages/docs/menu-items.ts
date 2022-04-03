@@ -6,12 +6,12 @@ const FUSION_DOCS_SITE = `https://fusion.ironsrc.net`;
 
 export const MENU_ITEMS: MenuItem[] = [
     {
-        icon: 'magic',
+        icon: {iconName: 'magic', iconVersion: 'v2'},
         name: 'Getting Started',
         route: '/docs/getting-started'
     },
     {
-        icon: 'paper-plane',
+        icon: {iconName: 'paper-plane', iconVersion: 'v2'},
         name: 'Guidelines',
         children: [
             {
@@ -37,7 +37,7 @@ export const MENU_ITEMS: MenuItem[] = [
         ]
     },
     {
-        icon: 'apps',
+        icon: {iconName: 'apps', iconVersion: 'v2'},
         name: 'Components',
         children: [
             {
@@ -219,7 +219,7 @@ export const MENU_ITEMS: MenuItem[] = [
         ]
     },
     {
-        icon: 'wrench',
+        icon: {iconName: 'wrench', iconVersion: 'v2'},
         name: 'Services',
         children: [
             {
@@ -253,7 +253,7 @@ export const MENU_ITEMS: MenuItem[] = [
         ]
     },
     {
-        icon: 'bullhorn',
+        icon: {iconName: 'bullhorn', iconVersion: 'v2'},
         name: 'Directives',
         children: [
             {
@@ -279,7 +279,7 @@ export const MENU_ITEMS: MenuItem[] = [
         ]
     },
     {
-        icon: 'info-circle',
+        icon: {iconName: 'info-circle', iconVersion: 'v2'},
         name: 'External link',
         target: '_blank',
         redirect: 'http://developers.ironsrc.com'
@@ -414,7 +414,7 @@ export const MENU_ITEMS_V2: SidebarMenuItem[] = [...MENU_ITEMS].map(item => {
         return item;
     } else {
         return {
-            icon: 'info-circle',
+            icon: {iconName: 'info-circle', iconVersion: 'v2'},
             name: 'External link',
             route: 'http://developers.ironsrc.com',
             routeConfigurations: {

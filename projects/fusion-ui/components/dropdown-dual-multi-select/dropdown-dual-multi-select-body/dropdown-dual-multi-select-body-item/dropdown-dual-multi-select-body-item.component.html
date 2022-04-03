@@ -21,7 +21,7 @@
 <ng-template #rightSide let-item="item" >
     <label class="is-option-label right-side">
         <ng-container [ngTemplateOutlet]="item?.content ? dynamicItem : optionTemplate" [ngTemplateOutletContext]="{item: item}"></ng-container>
-        <fusion-icon *ngIf="!isDisabled" (click)="clearSelectItem(item)" class="icon-clear" [name]="'close'"></fusion-icon>
+        <fusion-icon *ngIf="!isDisabled" (click)="clearSelectItem(item)" class="icon-clear" [name]="{iconName: 'close', iconVersion: 'v2'}"></fusion-icon>
     </label>
 </ng-template>
 

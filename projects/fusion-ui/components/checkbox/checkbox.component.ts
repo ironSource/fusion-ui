@@ -17,6 +17,7 @@ import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {StyleBase} from '@ironsource/fusion-ui/components/style';
 import {StyleVersion} from '@ironsource/fusion-ui/services/version';
 import {BASE_CHECKED_IMAGE} from './checkbox.cusom-svg';
+import {IconData} from '@ironsource/fusion-ui/components';
 
 @Component({
     selector: 'fusion-checkbox',
@@ -35,7 +36,7 @@ export class CheckboxComponent extends StyleBase implements OnInit, ControlValue
     @Input() label: string;
     @Input() name: string;
     @Input() value: string;
-    @Input() icon: string | {iconName: string; iconVersion?: string};
+    @Input() icon: string | IconData;
     @Input() flag: string;
     @Input() isDisabled: boolean;
     @Input() checked: boolean;

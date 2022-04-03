@@ -1456,7 +1456,7 @@ document.body.appendChild(dropdown);'
                 <div class="row">
                     <div class="col-3">
                         <div class="is-dropdown-holder">
-                            <fusion-dropdown placeholder="Please Select" icon="apps" [options]="optionsNoIcons"></fusion-dropdown>
+                            <fusion-dropdown placeholder="Please Select" [icon]="{iconName: 'apps', iconVersion: 'v2'}" [options]="optionsNoIcons"></fusion-dropdown>
                         </div>
                     </div>
                     <div class="col-3"></div>
@@ -2418,7 +2418,7 @@ document.body.appendChild(dropdown);'
                         <fusion-dropdown
                             placeholderPreffix="Breakdown: "
                             class="no-background-big"
-                            icon="breakdown_2"
+                            [icon]="{iconName: 'breakdown_2',iconVersion: 'v2'}"
                             placeholderPrefix="Breakdown:"
                             formControlName="breakdown"
                             [options]="breakdownOptions"

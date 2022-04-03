@@ -1,7 +1,7 @@
 <ng-container *ngIf="!useNewLayout; else layoutV2">
     <fusion-layout-v1
         userName="fusion@ironsource.com"
-        headerPrimaryMenuIconName="user-circle"
+        [headerPrimaryMenuIconName]="{iconName: 'user-circle', iconVersion: 'v1'}"
         [headerPrimaryMenuItems]="userProfileMenuItems"
         [headerSecondaryMenuItems]="helpMenuItems"
         (menuItemClick)="headerClick($event)"

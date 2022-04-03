@@ -4,6 +4,7 @@ import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dy
 import {LayoutHeaderMenuConfiguration} from './layout-header-menu/layout-header-menu-entity';
 import {SIDEBAR_TOGGLE_ICON, USER_ICON_NAME} from './layout-header.config';
 import {SidebarMenuItem} from '@ironsource/fusion-ui/components/sidebar';
+import {IconData} from '@ironsource/fusion-ui/components';
 
 @Component({
     selector: 'fusion-layout-header',
@@ -29,7 +30,7 @@ export class LayoutHeaderComponent {
     @Output() layoutHeaderMenuItemClicked = new EventEmitter<SidebarMenuItem>();
 
     sidebarOpenOpen: boolean;
-    sidebarIconName = SIDEBAR_TOGGLE_ICON.regular;
+    sidebarIconName: string | IconData = SIDEBAR_TOGGLE_ICON.regular;
 
     titleText: string;
     titleContent: DynamicComponentConfiguration;
@@ -37,7 +38,7 @@ export class LayoutHeaderComponent {
 
     hasMenu = false;
     userName: string;
-    userIcon: string;
+    userIcon: string | IconData;
 
     headerMenuConfiguration: LayoutHeaderMenuConfiguration;
     menuOpen = false;
@@ -95,7 +96,7 @@ export class LayoutHeaderComponent {
      * - isOpen: Sidebar state Open
      * *private
      */
-    private setSidebarIconName(isOpen: boolean): string {
+    private setSidebarIconName(isOpen: boolean): string | IconData {
         return isOpen ? SIDEBAR_TOGGLE_ICON.regular : SIDEBAR_TOGGLE_ICON.closed;
     }
 

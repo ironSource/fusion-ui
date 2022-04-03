@@ -3,6 +3,7 @@ import {ITooltipData, TooltipPosition, TooltipType} from './tooltip.entities';
 import {TooltipService} from './tooltip.service';
 import {Subject, fromEvent, merge, Observable} from 'rxjs';
 import {take, takeUntil} from 'rxjs/operators';
+import {IconData} from '@ironsource/fusion-ui/components';
 
 @Directive({
     selector: '[fusionTooltip]'
@@ -21,7 +22,7 @@ export class TooltipDirective implements OnDestroy {
     @Input() tooltipPosition: TooltipPosition = TooltipPosition.Top;
     @Input() tooltipType: TooltipType = TooltipType.Html;
     @Input() tooltipComponentData: ITooltipData = {};
-    @Input() tooltipIcon: string | {iconName: string; iconVersion: string};
+    @Input() tooltipIcon: string | IconData;
     @HostBinding('attr.title') emptyTooltip = ''; // remove existed title from parent element
 
     private visible = false;

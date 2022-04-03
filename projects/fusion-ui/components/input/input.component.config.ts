@@ -3,13 +3,14 @@
  */
 
 import {StyleVersion} from '@ironsource/fusion-ui/services/version';
+import {IconData} from '@ironsource/fusion-ui';
 
 export interface InputConfigByStyle {
-    iconSearch: string | {iconName: string; iconVersion?: string};
-    iconClear: string | {iconName: string; iconVersion?: string};
-    iconInfo: string | {iconName: string; iconVersion?: string};
-    iconWarning: string | {iconName: string; iconVersion?: string};
-    iconLoader: string | {iconName: string; iconVersion?: string};
+    iconSearch: string | IconData;
+    iconClear: string | IconData;
+    iconInfo: string | IconData;
+    iconWarning: string | IconData;
+    iconLoader: string | IconData;
     currentStyleVersion: StyleVersion;
 }
 
@@ -24,10 +25,10 @@ export const CONFIG_INPUT_BY_UI_STYLE: {[styleKey: string]: InputConfigByStyle} 
     },
     style_v2: {
         iconSearch: {iconName: 'search', iconVersion: 'v2'},
-        iconClear: 'close-circle',
-        iconInfo: 'importent',
-        iconWarning: 'warning',
-        iconLoader: 'loading-rotate',
+        iconClear: {iconName: 'close-circle', iconVersion: 'v2'},
+        iconInfo: {iconName: 'importent', iconVersion: 'v2'},
+        iconWarning: {iconName: 'warning', iconVersion: 'v2'},
+        iconLoader: {iconName: 'loading-rotate', iconVersion: 'v2'},
         currentStyleVersion: StyleVersion.V2
     }
 };

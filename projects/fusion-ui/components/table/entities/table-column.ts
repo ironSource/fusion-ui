@@ -3,6 +3,7 @@ import {TableColumnTypeEnum} from './table-column-type.enum';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown';
 import {EventEmitter} from '@angular/core';
 import {CellPosition} from './table-cell-position';
+import {IconData} from '@ironsource/fusion-ui/components';
 
 export interface TableColumn {
     key: string;
@@ -17,7 +18,7 @@ export interface TableColumn {
     style?: any;
     align?: 'left' | 'center' | 'right';
     tooltip?: string;
-    tooltipIcon?: string | {iconName: string; iconVersion?: string};
+    tooltipIcon?: string | IconData;
     pipeOptions?: string;
     dataParser?: (data: any) => any; // used for data parsing (null to Undefined in budget for example)
     // customErrorMapping example, turn pattern error to decimal error: { pattern: { error: 'decimalMax', values: {'decimalMax': 2}}}

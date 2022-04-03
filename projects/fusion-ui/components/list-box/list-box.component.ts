@@ -8,6 +8,7 @@ import {StyleBase} from '@ironsource/fusion-ui/components/style';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {StyleVersion} from '@ironsource/fusion-ui/services/version';
+import {IconData} from '@ironsource/fusion-ui/components';
 
 @Component({
     selector: 'fusion-list-box',
@@ -34,13 +35,19 @@ export class ListBoxComponent extends StyleBase implements OnInit, ControlValueA
         this.setDisabledState(value);
     }
 
-    checkIconName$: Observable<string | {iconName: string; iconVersion: string}> = this.selectedVersion$.pipe(
-        map(styleVersion => (styleVersion === StyleVersion.V2 ? 'check' : 'check-v-2')),
+    checkIconName$: Observable<string | IconData> = this.selectedVersion$.pipe(
+        map(styleVersion =>
+            styleVersion === StyleVersion.V2 ? {iconName: 'check', iconVersion: 'v2'} : {iconName: 'check-v-2', iconVersion: 'v2'}
+        ),
         startWith('check-v-2')
     );
 
-    removeIconName$: Observable<string | {iconName: string; iconVersion: string}> = this.selectedVersion$.pipe(
-        map(styleVersion => (styleVersion === StyleVersion.V2 ? 'close-circle' : {iconName: 'clear-full-circle', iconVersion: 'v1'})),
+    removeIconName$: Observable<string | IconData> = this.selectedVersion$.pipe(
+        map(styleVersion =>
+            styleVersion === StyleVersion.V2
+                ? {iconName: 'close-circle', iconVersion: 'v2'}
+                : {iconName: 'clear-full-circle', iconVersion: 'v1'}
+        ),
         startWith({iconName: 'clear-full-circle', iconVersion: 'v1'})
     );
 

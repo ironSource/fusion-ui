@@ -31,10 +31,10 @@
        target="{{ item.routeConfigurations?.target || '_self' }}"
        (click)="onMenuItemClicked($event, item)"
     >
-        <fusion-icon class="fu-sidebar-menu-mobile-return-icon" name="back"></fusion-icon>
+        <fusion-icon class="fu-sidebar-menu-mobile-return-icon" [name]="{iconName:'back', iconVersion: 'v2'}"></fusion-icon>
         <fusion-icon *ngIf="item?.icon" class="fu-sidebar-menu-item-icon" [name]="item?.icon"></fusion-icon>
         <span class="fu-sidebar-menu-item-text">{{ item.name }}</span>
-        <fusion-icon *ngIf="item?.children" class="fu-sidebar-menu-item-arrow" name="arrow-right"></fusion-icon>
+        <fusion-icon *ngIf="item?.children" class="fu-sidebar-menu-item-arrow" [name]="{iconName: 'arrow-right', iconVersion: 'v2'}"></fusion-icon>
     </a>
 </ng-template>
 <!--endregion menu item link-->

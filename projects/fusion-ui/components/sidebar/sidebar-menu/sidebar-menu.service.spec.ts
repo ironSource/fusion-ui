@@ -107,7 +107,7 @@ const MENU_ITEMS_MOCK: SidebarMenuItem[] = [
         ]
     },
     {
-        icon: 'info-circle',
+        icon: {iconName: 'info-circle', iconVersion: 'v2'},
         name: 'Knowledge Center',
         routeConfigurations: {
             href: 'http://developers.ironsrc.com',

@@ -6,6 +6,7 @@ import {StyleBase} from '@ironsource/fusion-ui/components/style';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {StyleVersion} from '@ironsource/fusion-ui/services/version';
+import {IconData} from '@ironsource/fusion-ui';
 
 @Component({
     selector: 'fusion-month-picker-selector',
@@ -37,12 +38,16 @@ export class MonthPickerSelectorComponent extends StyleBase implements OnInit {
     currentMonthPicker: MonthPicker;
     selectedValue: MonthPicker;
 
-    arrowLeftIconName$: Observable<string | {iconName: string; iconVersion?: string}> = this.selectedVersion$.pipe(
-        map(styleVersion => (styleVersion === StyleVersion.V2 ? 'arrow-left' : {iconName: 'arrow-right', iconVersion: 'v1'})),
+    arrowLeftIconName$: Observable<string | IconData> = this.selectedVersion$.pipe(
+        map(styleVersion =>
+            styleVersion === StyleVersion.V2 ? {iconName: 'arrow-left', iconVersion: 'v2'} : {iconName: 'arrow-right', iconVersion: 'v1'}
+        ),
         startWith({iconName: 'arrow-right', iconVersion: 'v1'})
     );
-    arrowRightIconName$: Observable<string | {iconName: string; iconVersion?: string}> = this.selectedVersion$.pipe(
-        map(styleVersion => (styleVersion === StyleVersion.V2 ? 'arrow-right' : {iconName: 'arrow-right', iconVersion: 'v1'})),
+    arrowRightIconName$: Observable<string | IconData> = this.selectedVersion$.pipe(
+        map(styleVersion =>
+            styleVersion === StyleVersion.V2 ? {iconName: 'arrow-right', iconVersion: 'v2'} : {iconName: 'arrow-right', iconVersion: 'v1'}
+        ),
         startWith({iconName: 'arrow-right', iconVersion: 'v1'})
     );
 

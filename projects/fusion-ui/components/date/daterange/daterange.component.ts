@@ -31,6 +31,7 @@ import {CalendarComponentConfigurations} from '../calendar/calendar-component-co
 import {CalendarType} from '../calendar/calendar-type.enum';
 import {StyleVersion} from '@ironsource/fusion-ui/services/version';
 import {DEFAULT_PLACEHOLDER_TEXT} from './daterange.configuration';
+import {IconData} from '@ironsource/fusion-ui/components';
 
 @Component({
     selector: 'fusion-daterange',
@@ -68,9 +69,11 @@ export class DaterangeComponent extends StyleBase implements OnInit {
 
     @ViewChild('overlay') overlay: ElementRef;
 
-    dropdownSelectConfigurations$ = new BehaviorSubject<DropdownSelectConfigurations>({dropdownArrowIconName: 'arrow-down'});
-    pevIconName$ = new BehaviorSubject<string | {iconName: string; iconVersion?: string}>({iconName: 'arrow-left', iconVersion: 'v1'});
-    nextIconName$ = new BehaviorSubject<string | {iconName: string; iconVersion?: string}>({
+    dropdownSelectConfigurations$ = new BehaviorSubject<DropdownSelectConfigurations>({
+        dropdownArrowIconName: {iconName: 'arrow-down', iconVersion: 'v2'}
+    });
+    pevIconName$ = new BehaviorSubject<string | IconData>({iconName: 'arrow-left', iconVersion: 'v1'});
+    nextIconName$ = new BehaviorSubject<string | IconData>({
         iconName: 'arrow-right',
         iconVersion: 'v1'
     });
@@ -122,8 +125,16 @@ export class DaterangeComponent extends StyleBase implements OnInit {
     ngOnInit() {
         this.id = this.id || `fs-daterange-${this.uniqueIdService.getUniqueId()}`;
         this.selectedVersion$.subscribe(styleVersion => {
-            this.pevIconName$.next(styleVersion === StyleVersion.V2 ? 'arrow-left' : {iconName: 'arrow-right', iconVersion: 'v1'});
-            this.nextIconName$.next(styleVersion === StyleVersion.V2 ? 'arrow-right' : {iconName: 'arrow-right', iconVersion: 'v1'});
+            const pervIcon =
+                styleVersion === StyleVersion.V2
+                    ? {iconName: 'arrow-left', iconVersion: 'v2'}
+                    : {iconName: 'arrow-right', iconVersion: 'v1'};
+            const nextIcon =
+                styleVersion === StyleVersion.V2
+                    ? {iconName: 'arrow-right', iconVersion: 'v2'}
+                    : {iconName: 'arrow-right', iconVersion: 'v1'};
+            this.pevIconName$.next(pervIcon);
+            this.nextIconName$.next(nextIcon);
         });
 
         this.onOptionsChanges();

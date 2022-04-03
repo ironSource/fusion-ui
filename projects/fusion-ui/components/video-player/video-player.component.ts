@@ -15,6 +15,7 @@ import {BehaviorSubject, fromEvent, Observable, Subject} from 'rxjs';
 import {map, startWith, switchMap} from 'rxjs/operators';
 import {StyleVersion} from '@ironsource/fusion-ui/services/version';
 import {VIDEO_PLAYER_THEME_TOKEN} from './video-player-theme';
+import {IconData} from '@ironsource/fusion-ui/components';
 
 @Component({
     selector: 'fusion-video-player',
@@ -43,18 +44,26 @@ export class VideoPlayerComponent extends StyleBase implements OnInit, AfterView
         return this.options.showTimeline ? true : null;
     }
 
-    playIconName$: Observable<string | {iconName: string; iconVersion: string}> = this.selectedVersion$.pipe(
-        map(styleVersion => (styleVersion === StyleVersion.V2 ? 'play-video-2' : {iconName: 'play-video', iconVersion: 'v1'})),
+    playIconName$: Observable<string | IconData> = this.selectedVersion$.pipe(
+        map(styleVersion =>
+            styleVersion === StyleVersion.V2 ? {iconName: 'play-video-2', iconVersion: 'v2'} : {iconName: 'play-video', iconVersion: 'v1'}
+        ),
         startWith({iconName: 'play-video', iconVersion: 'v1'})
     );
 
-    pauseIconName$: Observable<string | {iconName: string; iconVersion: string}> = this.selectedVersion$.pipe(
-        map(styleVersion => (styleVersion === StyleVersion.V2 ? 'pause-video-2' : {iconName: 'pause', iconVersion: 'v1'})),
+    pauseIconName$: Observable<string | IconData> = this.selectedVersion$.pipe(
+        map(styleVersion =>
+            styleVersion === StyleVersion.V2 ? {iconName: 'pause-video-2', iconVersion: 'v2'} : {iconName: 'pause', iconVersion: 'v1'}
+        ),
         startWith({iconName: 'pause', iconVersion: 'v1'})
     );
 
-    videoCameraIconName$: Observable<string | {iconName: string; iconVersion: string}> = this.selectedVersion$.pipe(
-        map(styleVersion => (styleVersion === StyleVersion.V2 ? 'video-camera_2' : {iconName: 'video-camera', iconVersion: 'v1'})),
+    videoCameraIconName$: Observable<string | IconData> = this.selectedVersion$.pipe(
+        map(styleVersion =>
+            styleVersion === StyleVersion.V2
+                ? {iconName: 'video-camera_2', iconVersion: 'v2'}
+                : {iconName: 'video-camera', iconVersion: 'v1'}
+        ),
         startWith({iconName: 'video-camera', iconVersion: 'v1'})
     );
 

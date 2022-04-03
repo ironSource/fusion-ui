@@ -94,7 +94,7 @@ button.addEventListener("onclick", e => console.log(e));'
                 ></fusion-code-block>
             </ng-template>
 
-            <fusion-button [loading]="isLoading" (click)="onClick()">bla bla Button</fusion-button>
+            <fusion-button [loading]="isLoading" icon="ab-test" (click)="onClick()">bla bla Button</fusion-button>
 
         </fusion-example-block>
 
@@ -224,17 +224,17 @@ button.addEventListener("onclick", e => console.log(e));'
             <div class="row">
                 <div class="col-2">Regular</div>
                 <div class="col-2"><a href="#" fusion-button (click)="onClick($event)">Link button</a></div>
-                <div class="col-2"><a href="#" fusion-button icon="sync" (click)="onClick($event)">Sync</a></div>
+                <div class="col-2"><a href="#" fusion-button [icon]="{iconName: 'sync', iconVersion: 'v2'}" (click)="onClick($event)">Sync</a></div>
             </div>
             <div class="row">
                 <div class="col-2">Disabled</div>
                 <div class="col-2"><a href="#" fusion-button [disabled]="true" (click)="onClick($event)">Link button</a></div>
-                <div class="col-2"><a href="#" fusion-button [disabled]="true" icon="sync" (click)="onClick($event)">Sync</a></div>
+                <div class="col-2"><a href="#" fusion-button [disabled]="true" [icon]="{iconName: 'sync', iconVersion: 'v2'}" (click)="onClick($event)">Sync</a></div>
             </div>
             <div class="row">
                 <div class="col-2">Loading</div>
                 <div class="col-2"><a href="#" fusion-button [loading]="true" (click)="onClick($event)">Link button</a></div>
-                <div class="col-2"><a href="#" fusion-button [loading]="true" icon="sync" (click)="onClick($event)">Sync</a></div>
+                <div class="col-2"><a href="#" fusion-button [loading]="true" [icon]="{iconName: 'sync', iconVersion: 'v2'}" (click)="onClick($event)">Sync</a></div>
             </div>
         </fusion-example-block>
 
@@ -569,7 +569,7 @@ document.body.appendChild(button);'
                 <div style="height: 40px;" class="row is-example-row">
                     <div class="col-2 is-txt-lbl">Text and Icon</div>
                     <div class="col-10">
-                        <button fusion-button icon="edit">Edit</button>
+                        <button fusion-button [icon]="{iconName: 'edit', iconVersion: 'v2'}">Edit</button>
                     </div>
                 </div>
             </div>
@@ -577,8 +577,8 @@ document.body.appendChild(button);'
             <div style="height: 40px;" class="row is-example-row">
                 <div class="col-2 is-txt-lbl">Single Icon</div>
                 <div class="col-10">
-                    <button fusion-button icon="edit" *ngIf="currentStyleVersion === styleVersion.V1"></button>
-                    <fusion-button icon="pen" fusionTooltip="Edit" *ngIf="currentStyleVersion === styleVersion.V2"></fusion-button>
+                    <button fusion-button [icon]="{iconName: 'edit', iconVersion: 'v2'}" *ngIf="currentStyleVersion === styleVersion.V1"></button>
+                    <fusion-button [icon]="{iconName: 'pen', iconVersion: 'v2'}" fusionTooltip="Edit" *ngIf="currentStyleVersion === styleVersion.V2"></fusion-button>
                 </div>
             </div>
 
@@ -587,10 +587,10 @@ document.body.appendChild(button);'
                     <div class="col-2 is-txt-lbl">Group Icon</div>
                     <div class="col-10">
                         <div class="is-btngroup">
-                            <button fusion-button icon="export-csv"></button>
-                            <button fusion-button icon="life-saver"></button>
-                            <button fusion-button icon="brush"></button>
-                            <button fusion-button icon="country"></button>
+                            <button fusion-button [icon]="{iconName: 'export-csv', iconVersion: 'v1'}"></button>
+                            <button fusion-button [icon]="{iconName: 'life-saver', iconVersion: 'v1'}"></button>
+                            <button fusion-button [icon]="{iconName: 'brush', iconVersion: 'v1'}"></button>
+                            <button fusion-button [icon]="{iconName: 'country', iconVersion: 'v1'}"></button>
                         </div>
                     </div>
                 </div>
@@ -600,8 +600,8 @@ document.body.appendChild(button);'
                 <div style="height: 40px;" class="row is-example-row">
                     <div class="col-2 is-txt-lbl">In Table cell Icons</div>
                     <div class="col-2" style="background-color: #f8f9fb; height: 48px; padding-top: 10px; text-align: right;">
-                        <fusion-button fusionTooltip="Edit" class="in-table" icon="pen" (click)="onClick($event)"></fusion-button>
-                        <fusion-button fusionTooltip="Delete" class="in-table" icon="delete" (click)="onClick($event)"></fusion-button>
+                        <fusion-button fusionTooltip="Edit" class="in-table" [icon]="{iconName: 'pen', iconVersion: 'v2'}" (click)="onClick($event)"></fusion-button>
+                        <fusion-button fusionTooltip="Delete" class="in-table" [icon]="{iconName: 'delete', iconVersion: 'v2'}" (click)="onClick($event)"></fusion-button>
                     </div>
                 </div>
             </div>

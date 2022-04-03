@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation} from '@angular/core';
 import {SvgComponent} from '@ironsource/fusion-ui/components/svg';
+import {IconData} from './icon-entities';
 
 @Component({
     selector: 'fusion-icon',
@@ -9,7 +10,7 @@ import {SvgComponent} from '@ironsource/fusion-ui/components/svg';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IconComponent extends SvgComponent {
-    @Input() set name(val: string | {iconName: string; iconVersion?: string}) {
+    @Input() set name(val: string | IconData) {
         if (typeof val === 'string') {
             this.onNameChanged(val);
         } else {

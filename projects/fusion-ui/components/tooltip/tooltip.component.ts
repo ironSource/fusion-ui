@@ -16,6 +16,7 @@ import {WindowService} from '@ironsource/fusion-ui/services/window';
 import {StyleBase} from '@ironsource/fusion-ui/components/style';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
+import {IconData} from '@ironsource/fusion-ui/components';
 
 const TOOLTIP_ARROW_SIZE = 6;
 
@@ -28,7 +29,7 @@ const TOOLTIP_ARROW_SIZE = 6;
 export class TooltipComponent extends StyleBase implements OnDestroy, AfterViewInit, OnChanges {
     public content: string | SafeHtml;
     public componentData: any;
-    public icon: string | {iconName: string; iconVersion: string};
+    public icon: string | IconData;
     private position: TooltipPosition;
     private hostEl: ElementRef;
     private type: TooltipType;

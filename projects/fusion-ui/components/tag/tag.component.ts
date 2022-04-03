@@ -4,6 +4,7 @@ import {BehaviorSubject, fromEvent} from 'rxjs';
 import {StyleVersion} from '@ironsource/fusion-ui/services/version';
 import {TagComponentConfigurations} from './tag-component-configurations';
 import {takeUntil} from 'rxjs/operators';
+import {IconData} from '@ironsource/fusion-ui/components';
 
 @Component({
     selector: 'fusion-tag',
@@ -12,7 +13,7 @@ import {takeUntil} from 'rxjs/operators';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TagComponent extends StyleBase implements OnInit {
-    closeIconName$ = new BehaviorSubject<string | {iconName: string; iconVersion?: any}>({
+    closeIconName$ = new BehaviorSubject<string | IconData>({
         iconName: 'clear-full-circle',
         iconVersion: 'v1'
     });
@@ -39,7 +40,7 @@ export class TagComponent extends StyleBase implements OnInit {
 
     // deprecated inputs
     @Input() id: number | string;
-    @Input() icon: string | {iconName: string; iconVersion: string};
+    @Input() icon: string | IconData;
     @Input() flag: string;
     @Input() title: string;
     @Input() tooltipContent: string;

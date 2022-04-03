@@ -2,9 +2,11 @@
  * Created on 2020.4.19 By Andy Kononenko (andyk@ironsrc.com)
  */
 
+import {IconData} from '@ironsource/fusion-ui';
+
 export interface InputInlineConfigByStyle {
-    iconEdit: string | {iconName: string; iconVersion?: string};
-    iconSave: string | {iconName: string; iconVersion?: string};
+    iconEdit: string | IconData;
+    iconSave: string | IconData;
     loadingSize: string;
 }
 
@@ -15,8 +17,8 @@ export const CONFIG_INPUT_INLINE_BY_UI_STYLE: {[styleKey: string]: InputInlineCo
         loadingSize: 'small'
     },
     style_v2: {
-        iconEdit: 'pen',
-        iconSave: 'check',
+        iconEdit: {iconName: 'pen', iconVersion: 'v2'},
+        iconSave: {iconName: 'check', iconVersion: 'v2'},
         loadingSize: 'inline'
     }
 };
