@@ -253,7 +253,7 @@ export const MENU_ITEMS: MenuItem[] = [
         ]
     },
     {
-        icon: {iconName: 'bullhorn', iconVersion: 'v3'},
+        icon: {iconName: 'bullhorn', iconVersion: 'v2'},
         name: 'Directives',
         children: [
             {
