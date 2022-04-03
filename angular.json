@@ -63,8 +63,7 @@
                             "projects/fusion-docs/src/assets"
                         ],
                         "styles": [
-                            "projects/fusion-docs/src/styles.scss",
-                            "projects/fusion-ui/src/style/scss/fonts.scss"
+                            "projects/fusion-docs/src/styles.scss"
                         ],
                         "scripts": [],
                         "vendorChunk": true,
@@ -147,8 +146,7 @@
                         "tsConfig": "projects/fusion-docs/tsconfig.spec.json",
                         "karmaConfig": "projects/fusion-docs/karma.conf.js",
                         "styles": [
-                            "projects/fusion-docs/src/styles.scss",
-                            "projects/fusion-ui/src/style/scss/fonts.scss"
+                            "projects/fusion-docs/src/styles.scss"
                         ],
                         "scripts": [],
                         "assets": [
