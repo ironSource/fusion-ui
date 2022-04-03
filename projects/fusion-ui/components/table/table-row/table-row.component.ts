@@ -20,6 +20,7 @@ import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {ColumnData} from './column-data';
 import {TableRow} from './table-row';
+import {IconData} from '@ironsource/fusion-ui';
 
 @Component({
     // eslint-disable-next-line
@@ -70,7 +71,7 @@ export class TableRowComponent extends StyleBase implements OnInit, OnChanges {
     }
 
     private inRequest = false;
-    expandArrowIconName$ = new Observable<string | {iconName: string; iconVersion?: string}>();
+    expandArrowIconName$ = new Observable<string | IconData>();
     columnsData: ColumnData[] = [];
 
     get expandCellCount(): Observable<number[]> {

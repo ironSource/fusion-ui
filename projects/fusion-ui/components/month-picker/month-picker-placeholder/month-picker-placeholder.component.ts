@@ -5,6 +5,7 @@ import {StyleBase} from '@ironsource/fusion-ui/components/style';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {StyleVersion} from '@ironsource/fusion-ui/services/version';
+import {IconData} from '@ironsource/fusion-ui';
 
 @Component({
     selector: 'fusion-month-picker-placeholder',
@@ -20,7 +21,7 @@ export class MonthPickerPlaceholderComponent extends StyleBase {
     @Input() placeholder: MonthPickerPlaceholder = MONTH_PICKER_PLACEHOLDER;
     @Input() selected: MonthPicker;
 
-    arrowIconName$: Observable<string | {iconName: string; iconVersion?: string}> = this.selectedVersion$.pipe(
+    arrowIconName$: Observable<string | IconData> = this.selectedVersion$.pipe(
         map(styleVersion =>
             styleVersion === StyleVersion.V2 ? {iconName: 'arrow-down', iconVersion: 'v2'} : {iconName: 'arrow-dropdown', iconVersion: 'v1'}
         ),

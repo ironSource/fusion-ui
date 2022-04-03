@@ -2,9 +2,11 @@
  * Created on 2020.4.19 By Andy Kononenko (andyk@ironsrc.com)
  */
 
+import {IconData} from '@ironsource/fusion-ui';
+
 export interface InputInlineConfigByStyle {
-    iconEdit: string | {iconName: string; iconVersion?: string};
-    iconSave: string | {iconName: string; iconVersion?: string};
+    iconEdit: string | IconData;
+    iconSave: string | IconData;
     loadingSize: string;
 }
 

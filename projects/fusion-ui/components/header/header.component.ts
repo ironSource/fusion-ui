@@ -3,6 +3,7 @@ import {CacheService, CacheType} from '@ironsource/fusion-ui/services/cache';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu';
 import {HeaderState} from './header-state';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
+import {IconData} from '@ironsource/fusion-ui/components';
 
 @Component({
     selector: 'fusion-header',
@@ -14,7 +15,7 @@ export class HeaderComponent {
     @ViewChild('menuAction', {read: ElementRef}) set menuAction(value: ElementRef) {
         this.onMenuActionChanged(value);
     }
-    @Input() primaryMenuIconName: string | {iconName: string; iconVersion?: string} = {iconName: 'user', iconVersion: 'v1'};
+    @Input() primaryMenuIconName: string | IconData = {iconName: 'user', iconVersion: 'v1'};
     @Input() primaryMenuItems: MenuItem[];
     @Input() secondaryMenuItems: MenuItem[];
     @Input() userName: string;

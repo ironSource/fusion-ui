@@ -15,6 +15,7 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {StyleBase} from '@ironsource/fusion-ui/components/style';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
+import {IconData} from '@ironsource/fusion-ui/components';
 
 @Component({
     selector: 'fusion-radio',
@@ -35,7 +36,7 @@ export class RadioComponent extends StyleBase implements OnInit, ControlValueAcc
     @Input() checked: boolean;
     @Input() value: string;
     @Input() label: string;
-    @Input() icon: string | {iconName: string; iconVersion?: string};
+    @Input() icon: string | IconData;
     @Input() tooltip: string;
     @Output() changed = new EventEmitter();
     private selectedValue: string;

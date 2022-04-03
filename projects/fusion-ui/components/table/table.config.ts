@@ -1,6 +1,7 @@
 import {InjectionToken} from '@angular/core';
 import {TableModuleOptions} from './entities/table-module-options';
 import {ERROR_MESSAGES} from '@ironsource/fusion-ui/components/error-message';
+import {IconData} from '@ironsource/fusion-ui';
 
 export const TABLE_OPTIONS_DEFAULT_VALUES: TableModuleOptions = {
     errorMessages: ERROR_MESSAGES
@@ -14,8 +15,8 @@ export const DEFAULT_REMOVE_TOOLTIP_WIDTH = '71';
 export const CELL_PADDING = '20px';
 
 export interface TableIconsConfigByStyle {
-    iconSort: string | {iconName: string; iconVersion?: string};
-    iconInfo: string | {iconName: string; iconVersion?: string};
+    iconSort: string | IconData;
+    iconInfo: string | IconData;
 }
 
 export const CONFIG_TABLE_BY_UI_STYLE: {[styleKey: string]: TableIconsConfigByStyle} = {

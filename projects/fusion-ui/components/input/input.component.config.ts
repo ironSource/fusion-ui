@@ -3,13 +3,14 @@
  */
 
 import {StyleVersion} from '@ironsource/fusion-ui/services/version';
+import {IconData} from '@ironsource/fusion-ui';
 
 export interface InputConfigByStyle {
-    iconSearch: string | {iconName: string; iconVersion?: string};
-    iconClear: string | {iconName: string; iconVersion?: string};
-    iconInfo: string | {iconName: string; iconVersion?: string};
-    iconWarning: string | {iconName: string; iconVersion?: string};
-    iconLoader: string | {iconName: string; iconVersion?: string};
+    iconSearch: string | IconData;
+    iconClear: string | IconData;
+    iconInfo: string | IconData;
+    iconWarning: string | IconData;
+    iconLoader: string | IconData;
     currentStyleVersion: StyleVersion;
 }
 

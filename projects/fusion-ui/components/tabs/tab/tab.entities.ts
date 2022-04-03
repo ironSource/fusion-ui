@@ -3,11 +3,12 @@
  */
 
 import {PopupComponentContent} from '@ironsource/fusion-ui/components/popup';
+import {IconData} from '@ironsource/fusion-ui/components';
 
 export interface TabConfiguration {
     text?: string;
-    icon?: string | {iconName: string; iconVersion: string}; // tab icon
-    infoIcon?: string | {iconName: string; iconVersion: string}; // icon on right from text - "info, question, etc..." for tooltip / popup
+    icon?: string | IconData; // tab icon
+    infoIcon?: string | IconData; // icon on right from text - "info, question, etc..." for tooltip / popup
     tooltipContent?: string;
     popupContent?: PopupComponentContent;
     disabled?: boolean;

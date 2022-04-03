@@ -1,5 +1,7 @@
+import {IconData} from '@ironsource/fusion-ui/components';
+
 export interface LayoutUser {
-    icon?: string | {iconName: string; iconVersion: string};
+    icon?: string | IconData;
     name?: string;
     email?: string;
 }

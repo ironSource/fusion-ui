@@ -1,5 +1,6 @@
 import {DropdownOption} from '../entities/dropdown-option';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
+import {IconData} from '@ironsource/fusion-ui/components';
 
 export interface DropdownSelectConfigurations {
     selectedOption?: DropdownOption[];
@@ -18,9 +19,9 @@ export interface DropdownSelectConfigurations {
     isOpen?: boolean;
     isMultipleSelection?: boolean;
     error?: string;
-    icon?: string | {iconName: string; iconVersion?: string};
+    icon?: string | IconData;
     labelFlag?: string;
     labelImage?: string;
-    dropdownArrowIconName?: string | {iconName: string; iconVersion?: string};
-    filterIconName?: string | {iconName: string; iconVersion?: string};
+    dropdownArrowIconName?: string | IconData;
+    filterIconName?: string | IconData;
 }

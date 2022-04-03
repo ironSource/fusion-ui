@@ -4,6 +4,7 @@ import {ALERT_THEME_TOKEN} from './alert-theme';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {StyleVersion} from '@ironsource/fusion-ui/services/version';
+import {IconData} from '@ironsource/fusion-ui/components';
 
 @Component({
     selector: 'fusion-alert',
@@ -27,8 +28,10 @@ export class AlertComponent extends StyleBase implements AfterViewInit {
         return [this.mode.toLowerCase(), this.type.toLowerCase(), this.showCloseButton && 'has-close-button'].filter(Boolean);
     }
 
-    closeIconName$: Observable<string | {iconName: string; iconVersion?: string}> = this.selectedVersion$.pipe(
-        map(styleVersion => (styleVersion === StyleVersion.V2 ? 'close' : {iconName: 'close', iconVersion: 'v1'})),
+    closeIconName$: Observable<string | IconData> = this.selectedVersion$.pipe(
+        map(styleVersion =>
+            styleVersion === StyleVersion.V2 ? {iconName: 'close', iconVersion: 'v2'} : {iconName: 'close', iconVersion: 'v1'}
+        ),
         startWith({iconName: 'close', iconVersion: 'v1'})
     );
 
