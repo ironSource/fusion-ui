@@ -1,6 +1,5 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Injector, AfterViewInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, AfterViewInit} from '@angular/core';
 import {StyleBase} from '@ironsource/fusion-ui/components/style';
-import {ALERT_THEME_TOKEN} from './alert-theme';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {StyleVersion} from '@ironsource/fusion-ui/services/version';
@@ -31,10 +30,6 @@ export class AlertComponent extends StyleBase implements AfterViewInit {
         map(styleVersion => (styleVersion === StyleVersion.V2 ? 'close' : {iconName: 'close', iconVersion: 'v1'})),
         startWith({iconName: 'close', iconVersion: 'v1'})
     );
-
-    constructor(injector: Injector) {
-        super(injector, ALERT_THEME_TOKEN);
-    }
 
     onCloseClicked(isDontShowAgain = false): void {
         this.shown = false;
