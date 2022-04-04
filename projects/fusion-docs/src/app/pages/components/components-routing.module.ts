@@ -164,6 +164,10 @@ const routes: Routes = [
                 loadChildren: () => import('./colors-docs-v2/colors-docs-v2.module').then(m => m.ColorsDocsV2Module)
             },
             {
+                path: 'v3/colors',
+                loadChildren: () => import('./colors-docs-v3/colors-docs-v3.module').then(m => m.ColorsDocsV3Module)
+            },
+            {
                 path: 'video-player',
                 loadChildren: () => import('./video-player-docs/video-player-docs.module').then(m => m.VideoPlayerDocsModule)
             },
