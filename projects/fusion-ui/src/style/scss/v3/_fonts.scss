@@ -72,15 +72,6 @@ $helveticaNue: 'HelveticaNeue', helvetica, sans-serif;
     font-family: $helveticaNue;
     font-weight: 400;
 }
-%font-bodyLargeStrong {
-    @extend %font-bodyMedium;
-    font-weight: 500;
-}
-%font-bodyMedium {
-    font-size: 14px;
-    font-family: $helveticaNue;
-    font-weight: 400;
-}
 %font-bodyMediumStrong {
     @extend %font-bodyMedium;
     font-weight: 500;
@@ -133,49 +124,28 @@ $helveticaNue: 'HelveticaNeue', helvetica, sans-serif;
 }
 
 .font-bodyLarge {
-    font-size: 16px;
-    font-family: $helveticaNue;
-    font-weight: 400;
-}
-.font-bodyLargeStrong {
     @extend %font-bodyLarge;
-    font-weight: 500;
-}
-.font-bodyMedium {
-    font-size: 14px;
-    font-family: $helveticaNue;
-    font-weight: 400;
 }
 .font-bodyLargeStrong {
-    @extend %font-bodyMedium;
-    font-weight: 500;
+    @extend %font-bodyLargeStrong;
 }
 .font-bodyMedium {
-    font-size: 14px;
-    font-family: $helveticaNue;
-    font-weight: 400;
+    @extend %font-bodyMedium;
 }
 .font-bodyMediumStrong {
-    @extend %font-bodyMedium;
-    font-weight: 500;
+    @extend %font-bodyMediumStrong;
 }
 .font-bodySmall {
-    font-size: 13px;
-    font-family: $helveticaNue;
-    font-weight: 400;
+    @extend %font-bodySmall;
 }
 .font-bodySmallStrong {
-    @extend %font-bodySmall;
-    font-weight: 500;
+    @extend %font-bodySmallStrong;
 }
 .font-bodyXSmall {
-    font-size: 12px;
-    font-family: $helveticaNue;
-    font-weight: 400;
+    @extend %font-bodyXSmall;
 }
 .font-bodyXSmallStrong {
-    @extend %font-bodyXSmall;
-    font-weight: 500;
+    @extend %font-bodyXSmallStrong;
 }
 
 .font-caption {
