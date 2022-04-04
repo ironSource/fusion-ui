@@ -2,23 +2,19 @@ import {ElementRef, AfterViewInit, Injector, Renderer2, OnDestroy, InjectionToke
 import {takeUntil} from 'rxjs/operators';
 import {FUSION_V1_CLASS, VersionService, StyleVersion} from '@ironsource/fusion-ui/services/version';
 import {Observable, Subject} from 'rxjs';
-import {ThemeBase} from './theme-base';
 
 /* eslint-disable @angular-eslint/directive-class-suffix */
 @Directive()
-export abstract class StyleBase extends ThemeBase implements AfterViewInit, OnDestroy {
+export abstract class StyleBase implements AfterViewInit, OnDestroy {
     protected onDestroy$ = new Subject<void>();
 
-    constructor(protected injector: Injector, protected themeToken?: InjectionToken<any>) {
-        super(injector, themeToken);
-    }
+    constructor(protected injector: Injector) {}
 
     styleVersion = StyleVersion;
     selectedVersion$: Observable<StyleVersion> = this.injector.get(VersionService).styleVersion$.pipe(takeUntil(this.onDestroy$));
 
     ngAfterViewInit() {
         this.handleStyleVersion();
-        super.ngAfterViewInit();
     }
 
     handleStyleVersion() {
