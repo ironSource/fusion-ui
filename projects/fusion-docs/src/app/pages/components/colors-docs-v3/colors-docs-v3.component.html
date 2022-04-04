@@ -6,8 +6,8 @@
             <div class="color-palettes-holder">
                 <div class="color-palette-item" *ngFor="let colorPalette of colorsThemeConfig">
                     <ul class="color-palette">
-                        <li [style.background-color]="colorPalette.value">{{ colorPalette.name }}</li>
-                        <li *ngFor="let color of colorPalette.colors" [style.background-color]="color.value">
+                        <li [style.background-color]="colorPalette.value" [style.color]="invertColor(colorPalette.value)">{{ colorPalette.name }}</li>
+                        <li *ngFor="let color of colorPalette.colors" [style.background-color]="color.value" [style.color]="invertColor(color.value)">
                             <div class="color-var-name">{{ color.name }}</div>
                             <div class="color-var-value">{{ color.value }}</div>
                         </li>
