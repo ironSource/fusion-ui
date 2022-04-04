@@ -39,10 +39,6 @@ export const LAYOUT_SIDEBAR_MENU_ITEMS: SidebarMenuItem[] = [
             {
                 name: 'Typography ',
                 route: '/docs/components/v2/typography'
-            },
-            {
-                name: 'Override Style',
-                route: '/docs/components/override-style'
             }
         ]
     },

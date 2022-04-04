@@ -200,10 +200,6 @@ const routes: Routes = [
                 loadChildren: () => import('./daterange-docs/daterange-docs.module').then(m => m.DaterangeDocsModule)
             },
             {
-                path: 'override-style',
-                loadChildren: () => import('./override-style-docs/override-style-docs.module').then(m => m.OverrideStyleDocsModule)
-            },
-            {
                 path: 'mobile-previewer',
                 loadChildren: () => import('./mobile-previewer-docs/mobile-previewer-docs.module').then(m => m.MobilePreviewerDocsModule)
             },

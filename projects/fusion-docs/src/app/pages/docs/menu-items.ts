@@ -29,10 +29,6 @@ export const MENU_ITEMS: MenuItem[] = [
             {
                 name: 'Typography ',
                 route: '/docs/components/v2/typography'
-            },
-            {
-                name: 'Override Style',
-                route: '/docs/components/override-style'
             }
         ]
     },
@@ -399,7 +395,6 @@ export const STYLE_2_MENU_ITEMS = [
     'Input',
     'Loader',
     'Month Picker',
-    'Override Style',
     'Radio',
     'Services',
     'Status Label',
