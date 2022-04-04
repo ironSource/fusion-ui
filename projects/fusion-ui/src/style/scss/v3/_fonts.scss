@@ -1,0 +1,183 @@
+$baseSDN: 'https://fusion.ironsrc.net/assets';
+
+@font-face {
+    font-family: 'NHaasGroteskDSPro';
+    src: url('#{$baseSDN}/fonts/NHaasGroteskDSPro-75Bd.eot'); /* IE9 Compat Modes */
+    src: url('#{$baseSDN}/fonts/NHaasGroteskDSPro-75Bd.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('#{$baseSDN}/fonts/NHaasGroteskDSPro-75Bd.woff2') format('woff2'), /* Super Modern Browsers */
+    url('#{$baseSDN}/fonts/NHaasGroteskDSPro-75Bd.woff') format('woff'), /* Pretty Modern Browsers */
+    url('#{$baseSDN}/fonts/NHaasGroteskDSPro-75Bd.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url('#{$baseSDN}/fonts/HelveticaNeue.eot');
+    src: url('#{$baseSDN}/fonts/HelveticaNeue.eot?#iefix') format('embedded-opentype'),
+    url('#{$baseSDN}/fonts/HelveticaNeue.woff2') format('woff2'),
+    url('#{$baseSDN}/fonts/HelveticaNeue.woff') format('woff'),
+    url('#{$baseSDN}/fonts/HelveticaNeue.ttf') format('truetype');
+}
+
+// font-family
+$groteskDSPro: 'NHaasGroteskDSPro', sans-serif;
+$helveticaNue: 'HelveticaNeue', helvetica, sans-serif;
+
+// typography font-family
+%font-heading {
+    font-family: $groteskDSPro;
+    font-weight: 700;
+}
+%font-heading-1 {
+    font-size: 60px;
+    @extend %font-heading;
+}
+%font-heading-2 {
+    font-size: 32px;
+    @extend %font-heading;
+}
+%font-heading-3 {
+    font-size: 22px;
+    @extend %font-heading;
+}
+%font-heading-4 {
+    font-size: 18px;
+    @extend %font-heading;
+}
+%font-heading-5 {
+    font-size: 15px;
+    @extend %font-heading;
+}
+%font-heading-6 {
+    font-size: 13px;
+    @extend %font-heading;
+}
+%font-heading-label {
+    font-size: 11px;
+    @extend %font-heading;
+    font-weight: 400;
+    letter-spacing: 0.25px;
+}
+
+%font-bodyLarge {
+    font-size: 16px;
+    font-family: $helveticaNue;
+    font-weight: 400;
+}
+%font-bodyLargeStrong {
+    @extend %font-bodyLarge;
+    font-weight: 500;
+}
+%font-bodyMedium {
+    font-size: 14px;
+    font-family: $helveticaNue;
+    font-weight: 400;
+}
+%font-bodyLargeStrong {
+    @extend %font-bodyMedium;
+    font-weight: 500;
+}
+%font-bodyMedium {
+    font-size: 14px;
+    font-family: $helveticaNue;
+    font-weight: 400;
+}
+%font-bodyMediumStrong {
+    @extend %font-bodyMedium;
+    font-weight: 500;
+}
+%font-bodySmall {
+    font-size: 13px;
+    font-family: $helveticaNue;
+    font-weight: 400;
+}
+%font-bodySmallStrong {
+    @extend %font-bodySmall;
+    font-weight: 500;
+}
+%font-bodyXSmall {
+    font-size: 12px;
+    font-family: $helveticaNue;
+    font-weight: 400;
+}
+%font-bodyXSmallStrong {
+    @extend %font-bodyXSmall;
+    font-weight: 500;
+}
+
+%font-caption {
+    font-size: 11px;
+    font-family: $helveticaNue;
+    font-weight: 400;
+}
+
+.font-heading-1{
+    @extend %font-heading-1;
+}
+.font-heading-2{
+    @extend %font-heading-2;
+}
+.font-heading-3{
+    @extend %font-heading-3;
+}
+.font-heading-4{
+    @extend %font-heading-4;
+}
+.font-heading-5{
+    @extend %font-heading-5;
+}
+.font-heading-6{
+    @extend %font-heading-6;
+}
+.font-heading-label{
+    @extend %font-heading-label;
+}
+
+.font-bodyLarge {
+    font-size: 16px;
+    font-family: $helveticaNue;
+    font-weight: 400;
+}
+.font-bodyLargeStrong {
+    @extend %font-bodyLarge;
+    font-weight: 500;
+}
+.font-bodyMedium {
+    font-size: 14px;
+    font-family: $helveticaNue;
+    font-weight: 400;
+}
+.font-bodyLargeStrong {
+    @extend %font-bodyMedium;
+    font-weight: 500;
+}
+.font-bodyMedium {
+    font-size: 14px;
+    font-family: $helveticaNue;
+    font-weight: 400;
+}
+.font-bodyMediumStrong {
+    @extend %font-bodyMedium;
+    font-weight: 500;
+}
+.font-bodySmall {
+    font-size: 13px;
+    font-family: $helveticaNue;
+    font-weight: 400;
+}
+.font-bodySmallStrong {
+    @extend %font-bodySmall;
+    font-weight: 500;
+}
+.font-bodyXSmall {
+    font-size: 12px;
+    font-family: $helveticaNue;
+    font-weight: 400;
+}
+.font-bodyXSmallStrong {
+    @extend %font-bodyXSmall;
+    font-weight: 500;
+}
+
+.font-caption {
+    @extend %font-caption;
+}

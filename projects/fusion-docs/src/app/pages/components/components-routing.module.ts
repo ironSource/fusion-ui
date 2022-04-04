@@ -152,6 +152,10 @@ const routes: Routes = [
                 loadChildren: () => import('./typography-docs-v2/typography-docs-v2.module').then(m => m.TypographyDocsV2Module)
             },
             {
+                path: 'v3/typography',
+                loadChildren: () => import('./typography-docs-v3/typography-docs-v3.module').then(m => m.TypographyDocsV3Module)
+            },
+            {
                 path: 'colors',
                 loadChildren: () => import('./colors-docs/colors-docs.module').then(m => m.ColorsDocsModule)
             },
