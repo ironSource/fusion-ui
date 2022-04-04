@@ -22,7 +22,6 @@ import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {TableRowsGrouped, TableColumn, TableColumnTypeEnum, TableOptions, TableRowExpandEmitter} from '../entities';
 import {StyleBase} from '@ironsource/fusion-ui/components/style';
 import {CONFIG_TABLE_BY_UI_STYLE, ROW_CLICK_SUPPRESS_FOR_PARENT_SELECTORS, TableIconsConfigByStyle} from '../table.config';
-import {TABLE_THEME_TOKEN} from './table-theme';
 import {TableBasicComponent} from '../table-basic/table-basic.component';
 
 @Component({
@@ -136,7 +135,7 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, OnDe
         private uniqueService: UniqueIdService,
         private cdr: ChangeDetectorRef
     ) {
-        super(injector, TABLE_THEME_TOKEN);
+        super(injector);
     }
 
     ngOnInit() {
