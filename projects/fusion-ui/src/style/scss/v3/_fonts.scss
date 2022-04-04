@@ -18,15 +18,29 @@ $baseSDN: 'https://fusion.ironsrc.net/assets';
     url('#{$baseSDN}/fonts/HelveticaNeue.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'HelveticaNeue-Medium';
+    src: url('#{$baseSDN}/fonts/HelveticaNeue-Medium.eot');
+    src: url('#{$baseSDN}/fonts/HelveticaNeue-Medium.eot?#iefix') format('embedded-opentype'),
+    url('#{$baseSDN}/fonts/HelveticaNeue-Medium.woff2') format('woff2'),
+    url('#{$baseSDN}/fonts/HelveticaNeue-Medium.woff') format('woff'),
+    url('#{$baseSDN}/fonts/HelveticaNeue-Medium.ttf') format('truetype');
+}
+
 // font-family
 $groteskDSPro: 'NHaasGroteskDSPro', sans-serif;
+$helveticaNueMd: 'HelveticaNeue-Medium', helvetica, sans-serif;
 $helveticaNue: 'HelveticaNeue', helvetica, sans-serif;
 
-// typography font-family
+// region heading fonts
+// region base for heading
 %font-heading {
     font-family: $groteskDSPro;
     font-weight: 700;
+    line-height: 1.5;
 }
+// endregion
+
 %font-heading-1 {
     font-size: 60px;
     @extend %font-heading;
@@ -57,50 +71,62 @@ $helveticaNue: 'HelveticaNeue', helvetica, sans-serif;
     font-weight: 400;
     letter-spacing: 0.25px;
 }
+// endregion
 
-%font-bodyLarge {
-    font-size: 16px;
+// region body fonts
+// region base for body
+%font-body{
     font-family: $helveticaNue;
     font-weight: 400;
+    line-height: 1.5;
+}
+%font-bodyStrong{
+    font-family: $helveticaNueMd;
+    font-weight: 500;
+    line-height: 1.5;
+}
+// endregion
+
+%font-bodyLarge {
+    @extend %font-body;
+    font-size: 16px;
 }
 %font-bodyLargeStrong {
-    @extend %font-bodyLarge;
-    font-weight: 500;
+    @extend %font-bodyStrong;
+    font-size: 16px;
 }
 %font-bodyMedium {
     font-size: 14px;
-    font-family: $helveticaNue;
-    font-weight: 400;
+    @extend %font-body;
 }
 %font-bodyMediumStrong {
-    @extend %font-bodyMedium;
-    font-weight: 500;
+    font-size: 14px;
+    @extend %font-bodyStrong;
 }
 %font-bodySmall {
     font-size: 13px;
-    font-family: $helveticaNue;
-    font-weight: 400;
+    @extend %font-body;
 }
 %font-bodySmallStrong {
-    @extend %font-bodySmall;
-    font-weight: 500;
+    @extend %font-bodyStrong;
+    font-size: 13px;
 }
 %font-bodyXSmall {
     font-size: 12px;
-    font-family: $helveticaNue;
-    font-weight: 400;
+    @extend %font-body;
 }
 %font-bodyXSmallStrong {
-    @extend %font-bodyXSmall;
-    font-weight: 500;
+    @extend %font-bodyStrong;
+    font-size: 12px;
 }
 
 %font-caption {
     font-size: 11px;
-    font-family: $helveticaNue;
-    font-weight: 400;
+    @extend %font-body;
 }
+// endregion
 
+// region CSS Clases
 .font-heading-1{
     @extend %font-heading-1;
 }
@@ -151,3 +177,4 @@ $helveticaNue: 'HelveticaNeue', helvetica, sans-serif;
 .font-caption {
     @extend %font-caption;
 }
+// endregion
