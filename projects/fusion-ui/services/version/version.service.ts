@@ -6,7 +6,7 @@ import {StyleVersion} from './style-version.enum';
 import {STYLE_VERSION_TOKEN} from './style-version-config';
 import {NATIVE_TOKEN} from '@ironsource/fusion-ui/decorators';
 
-export const FUSION_V1_CLASS = 'fu-style-v1';
+export const FUSION_STYLE_VERSION_PREFIX = 'fu-style-v';
 
 @Injectable({
     providedIn: 'root'
@@ -27,6 +27,13 @@ export class VersionService implements OnDestroy {
         this.version$.next(styleVersion);
     }
 
+    public latestStyleVersion = VersionService.getLastStyleGVersion();
+
+    static getLastStyleGVersion(): StyleVersion {
+        const lastKey = Object.values(StyleVersion)[Object.values(StyleVersion).length / 2 - 1];
+        return StyleVersion[lastKey];
+    }
+
     constructor(
         private windowService: WindowService,
         @Optional() @Inject(NATIVE_TOKEN) isFusionNative: boolean,
@@ -38,7 +45,12 @@ export class VersionService implements OnDestroy {
     }
 
     private setStyleVersion(classList: DOMTokenList) {
-        const newStyleVersion = classList.contains(FUSION_V1_CLASS) ? StyleVersion.V1 : StyleVersion.V2;
+        let newStyleVersion = this.latestStyleVersion;
+        classList.forEach(item => {
+            if (item.startsWith(FUSION_STYLE_VERSION_PREFIX)) {
+                newStyleVersion = StyleVersion['V' + item.replace(FUSION_STYLE_VERSION_PREFIX, '')] ?? this.latestStyleVersion;
+            }
+        });
         if (newStyleVersion !== this.styleVersion) {
             this.styleVersion = newStyleVersion;
         }
