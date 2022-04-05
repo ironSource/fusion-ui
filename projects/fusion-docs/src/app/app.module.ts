@@ -9,7 +9,7 @@ import {STYLE_VERSION_TOKEN} from '@ironsource/fusion-ui';
 @NgModule({
     declarations: [AppComponent],
     imports: [BrowserModule, AppRoutingModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), TooltipModule],
-    providers: [{provide: STYLE_VERSION_TOKEN, useFactory: () => StyleVersion.V2}],
+    providers: [{provide: STYLE_VERSION_TOKEN, useFactory: () => StyleVersion.V3}],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

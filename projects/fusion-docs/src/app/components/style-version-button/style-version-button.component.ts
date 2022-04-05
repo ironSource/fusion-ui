@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {StyleVersion, VersionService} from '@ironsource/fusion-ui';
-import {Observable} from 'rxjs';
+import {StyleVersion, SwitcherItem, VersionService} from '@ironsource/fusion-ui';
+import {FormControl} from '@angular/forms';
 
 @Component({
     selector: 'fusion-style-version-button',
@@ -8,18 +8,20 @@ import {Observable} from 'rxjs';
     styleUrls: ['./style-version-button.component.scss']
 })
 export class StyleVersionButtonComponent implements OnInit {
-    selectedVersion$: Observable<StyleVersion>;
     StyleVersion = StyleVersion;
+
+    optionsVersions: SwitcherItem[] = [
+        {id: 1, title: 'V1'},
+        {id: 2, title: 'V2'},
+        {id: 3, title: 'V3'}
+    ];
+    fcSelectedVersion = new FormControl(this.optionsVersions.find(option => option.id === this.versionService.styleVersion));
 
     constructor(private versionService: VersionService) {}
 
-    ngOnInit(): void {
-        this.selectedVersion$ = this.versionService.styleVersion$;
-    }
-
-    changeVersion(): void {
-        const selectedVersion = this.versionService.styleVersion;
-        const newVersion = selectedVersion === StyleVersion.V1 ? StyleVersion.V2 : StyleVersion.V1;
-        this.versionService.styleVersion = newVersion;
+    ngOnInit() {
+        this.fcSelectedVersion.valueChanges.subscribe(newVersion => {
+            this.versionService.styleVersion = StyleVersion[StyleVersion[newVersion.id]];
+        });
     }
 }
