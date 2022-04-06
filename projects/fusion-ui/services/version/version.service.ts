@@ -27,9 +27,7 @@ export class VersionService implements OnDestroy {
         this.version$.next(styleVersion);
     }
 
-    public latestStyleVersion = VersionService.getLastStyleGVersion();
-
-    static getLastStyleGVersion(): StyleVersion {
+    private getLastStyleGVersion(): StyleVersion {
         const lastKey = Object.values(StyleVersion)[Object.values(StyleVersion).length / 2 - 1];
         return StyleVersion[lastKey];
     }
@@ -45,10 +43,10 @@ export class VersionService implements OnDestroy {
     }
 
     private setStyleVersion(classList: DOMTokenList) {
-        let newStyleVersion = this.latestStyleVersion;
+        let newStyleVersion = this.getLastStyleGVersion();
         classList.forEach(item => {
             if (item.startsWith(FUSION_STYLE_VERSION_PREFIX)) {
-                newStyleVersion = StyleVersion['V' + item.replace(FUSION_STYLE_VERSION_PREFIX, '')] ?? this.latestStyleVersion;
+                newStyleVersion = StyleVersion['V' + item.replace(FUSION_STYLE_VERSION_PREFIX, '')] ?? newStyleVersion;
             }
         });
         if (newStyleVersion !== this.styleVersion) {

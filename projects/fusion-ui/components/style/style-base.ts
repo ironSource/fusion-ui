@@ -11,7 +11,6 @@ export abstract class StyleBase implements AfterViewInit, OnDestroy {
 
     constructor(protected injector: Injector) {}
 
-    lastStyleVersion = VersionService.getLastStyleGVersion();
     styleVersion = StyleVersion;
     selectedVersion$: Observable<StyleVersion> = this.injector.get(VersionService).styleVersion$.pipe(takeUntil(this.onDestroy$));
 
@@ -41,9 +40,7 @@ export abstract class StyleBase implements AfterViewInit, OnDestroy {
             }
         });
 
-        if (styleVersion !== this.lastStyleVersion) {
-            renderer.addClass(element.nativeElement, FUSION_STYLE_VERSION_PREFIX + styleVersion.toString());
-        }
+        renderer.addClass(element.nativeElement, FUSION_STYLE_VERSION_PREFIX + styleVersion.toString());
     }
 
     ngOnDestroy(): void {
