@@ -1,0 +1,657 @@
+@import '../../src/style/scss/vars/mixins';
+
+$helveticaNueMd: 'HelveticaNeue-Medium', helvetica, sans-serif;
+$helveticaNueRg: 'HelveticaNeue', helvetica, sans-serif;
+
+%font-subtitle {
+    font-size: 13px;
+    font-family:$helveticaNueMd;
+    text-align: center;
+    font-weight: 500;
+}
+
+%rotating-icon {
+    animation: rotation 1s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+// small
+$smallMinWidth: 66px;
+$smallHeight: 24px;
+$smallPadding: 3px 12px 4px;
+$smallPaddingWithIcon: 3px 10px 4px 8px;
+$smallPaddingWithIconRight: 3px 28px 4px 12px;
+$smallPaddingWithLoading: 3px 23px 4px;
+
+// medium - default
+$mediumMinWidth: 74px;
+$mediumHeight: 32px;
+$mediumPadding: 7px 16px 8px;
+$mediumPaddingWithIcon: 7px 16px 8px 10px;
+$mediumPaddingWithIconRight: 7px 28px 8px 20px;
+$mediumPaddingWithLoading: 7px 24px 8px;
+
+// large
+$largeMinWidth: 92px;
+$largeHeight: 40px;
+$largePadding: 10px 24px 12px;
+$largePaddingWithIcon: 8px 24px 8px 12px;
+$largePaddingWithIconRight: 8px 40px 8px 24px;
+$largePaddingWithLoading: 10px 28px 12px;
+
+$White: #ffff;
+$buttonBorderRadius: 100px;
+
+
+$fu-primary-100: #E2EEFF;
+$fu-primary-200: #C9DFFF;
+$fu-primary-300: #96C0FF;
+$fu-primary-500: #3083FF;
+$fu-primary-600: #2B76E6;
+$fu-primary-700: #005BE2;
+
+
+$fu-light-200: #EDEFF0;
+$fu-light-300: #E5E7E9;
+$fu-light-400: #DDDFE1;
+$fu-light-500: #D2D5D8;
+$fu-light-600: #B7BBC0;
+$fu-light-700: #A9AFB4;
+$fu-light-800: #8E959D;
+$fu-light-900: #7B838C;
+
+
+$fu-black-200: #696A6B;
+$fu-black-300: #565C62;
+$fu-black-500: #53575B;
+
+
+$fu-negative-500: #FF6A63;
+$fu-negative-600: #EC5D56;
+$fu-negative-700: #DA564F;
+
+
+:host.fu-style-v3 {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    @extend %font-subtitle;
+
+    height: $mediumHeight;
+    width: fit-content;
+    padding: $mediumPadding;
+    color: $White;
+    background-color: $fu-primary-500;
+    border-radius: $buttonBorderRadius;
+
+    &.dark {
+        --fu-border: 1px solid #ffff;
+        --fu-background-color: transparent;
+        --fu-font-color: #ffff;
+        --fu-hover-background-color: #565C62;
+        --fu-active-background-color: #565C62;
+    }
+
+    &:hover {
+        background-color: $fu-primary-600;
+    }
+
+    &:active {
+        background-color: $fu-primary-700;
+    }
+
+    &.fu-with-content {
+        & > span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            & > span {
+                height: 16px;
+                min-width: 42px;
+                line-height: 16px;
+            }
+        }
+    }
+
+    &.small {
+        height: $smallHeight;
+        padding: $smallPadding;
+    }
+
+    &.large{
+        height: $largeHeight;
+        padding: $largePadding;
+        font-size: 14px;
+        &.fu-with-content {
+            & > span {
+                & > span {
+                    min-width: 44px;
+                    height: 17px;
+                    line-height: 17px;
+                }
+            }
+        }
+    }
+
+    &.transparent:not(.delete){
+        background-color: transparent;
+        color: $fu-primary-500;
+        border: 1px solid $fu-primary-500;
+
+        &:hover {
+            color: $White;
+            background-color: $fu-primary-500;
+        }
+
+        &:active {
+            color: $White;
+            background-color: $fu-primary-500;
+        }
+
+        &.tried{
+            color: $fu-light-900;
+            border: 1px solid $fu-light-500;
+            background-color: transparent;
+            &:hover {
+                border: none;
+                background-color: $fu-light-200;
+            }
+
+            &:active {
+                border: none;
+                background-color: $fu-light-400;
+            }
+        }
+
+        &.black{
+            color: var(--fu-font-color, $fu-black-500);
+            border: var(--fu-border, 1px solid $fu-black-500);
+            background-color: var(--fu-background-color, transparent);
+            &:hover {
+                color: var(--fu-font-color, $White);
+                border: var(--fu-border, none);
+                background-color: var(--fu-hover-background-color, $fu-black-200);
+            }
+
+            &:active {
+                color: var(--fu-font-color, $White);
+                border: var(--fu-border, none);
+                background-color: var(--fu-active-background-color, $fu-black-500);
+            }
+        }
+
+        &.disabled {
+            color: $fu-light-800;
+            background-color: transparent;
+            border: 1px solid $fu-light-600;
+            cursor: initial;
+            pointer-events: none;
+        }
+    }
+
+    &.tried {
+        color: $fu-light-900;
+        background-color: $fu-light-200;
+        &:hover {
+            background-color: $fu-light-300;
+        }
+
+        &:active {
+            background-color: $fu-light-400;
+        }
+        &.transparent{
+
+        }
+    }
+
+    &.black {
+        color: $White;
+        background-color: var(--fu-background-color, $fu-black-500);
+        &:hover {
+            background-color: var(--fu-hover-background-color,$fu-black-200);
+        }
+
+        &:active {
+            background-color: var(--fu-active-background-color,$fu-black-500);
+        }
+    }
+
+    &.delete {
+        color: $White;
+        background-color: $fu-negative-500;
+        &:hover {
+            background-color: $fu-negative-600;
+        }
+
+        &:active {
+            background-color: $fu-negative-700;
+        }
+    }
+
+    &.disabled {
+        color: $White;
+        background-color: $fu-light-700;
+        cursor: initial;
+        pointer-events: none;
+    }
+
+    &.fu-with-content {
+        &.fu-iconed {
+            > span > span {
+                padding-left: 6px;
+            }
+
+            position: relative;
+
+            height: $mediumHeight;
+
+            width: fit-content;
+
+            padding: $mediumPaddingWithIcon;
+
+            @include icon-style('icon', currentColor, 16px, false, true){
+                height: 16px;
+            };
+
+            &.fu-icon-right {
+                padding: $mediumPaddingWithIconRight;
+                @include icon-style('icon', currentColor, 16px, false, true){
+                    height: 16px;
+                    position: absolute;
+                    right: 10px;
+                };
+                &.small {
+                    padding: $smallPaddingWithIconRight;
+                    @include icon-style('icon', currentColor, 14px, false, true){
+                        height: 16px;
+                        position: absolute;
+                        right: 10px;
+                        bottom: 3px;
+                    };
+                }
+                &.large {
+                    padding: $largePaddingWithIconRight;
+                    @include icon-style('icon', currentColor, 17px, false, true){
+                        height: 18px;
+                        position: absolute;
+                        right: 18px;
+                        bottom: 10px;
+                    };
+                }
+            }
+
+            &.small {
+                height: $smallHeight;
+                width: fit-content;
+                padding: $smallPaddingWithIcon;
+                > span > span {
+                    padding-left: 4px;
+                }
+                @include icon-style('icon', currentColor, 16px, false, true){
+                    height: 16px;
+                    width: 16px;
+                };
+            }
+
+            &.large {
+                padding: $largePaddingWithIcon;
+                height: $largeHeight;
+                width: fit-content;
+                @include icon-style('icon', currentColor, 17px, false, true){
+                    height: 17px;
+                };
+            }
+        }
+    }
+
+    &.fu-iconed {
+        width: 32px;
+
+        height: 32px;
+
+        padding: 0;
+
+        line-height: 0;
+
+        @include icon-style('icon',currentColor, 16px, false, true) {
+            height: 16px;
+            width: 16px;
+        }
+
+        &.small {
+            width: 24px;
+            height: 24px;
+            @include icon-style('icon', currentColor, 12px, false, true) {
+                height: 12px;
+                width: 12px;
+            }
+        }
+
+        &.large {
+            width: 40px;
+            height: 40px;
+            @include icon-style('icon', currentColor, 20px, false, true) {
+                height: 20px;
+                width: 20px;
+            }
+        }
+
+        &.fu-with-loading {
+            padding: 0;
+            line-height: 0;
+
+            > span {
+                height: 20px;
+                @extend %rotating-icon;
+                > span {
+                    display: none;
+                }
+            }
+
+            @include icon-style('loading-clean', currentColor, 20px, false, true);
+
+            &.large{
+                padding: 0;
+                line-height: 0;
+                > span {
+                    height: 24px;
+                }
+                @include icon-style('loading-clean', currentColor, 24px, false, true);
+            }
+
+            &.small {
+                padding: 0;
+                line-height: 0;
+                > span {
+                    height: 16px;
+                }
+                @include icon-style('loading-clean', currentColor, 16px, false, true);
+            }
+        }
+    }
+
+    &.fu-with-loading {
+        padding: $mediumPaddingWithLoading;
+        color: $White;
+        background-color: $fu-primary-500;
+        @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 26px), false, true) {
+            display: block;
+        }
+
+        > span {
+            height: 20px;
+            > span {
+                display: none;
+            }
+        }
+
+        &.fu-with-content {
+            &.fu-iconed {
+                > span {
+                    animation: none;
+                }
+                padding: $mediumPaddingWithLoading;
+                &.transparent:not(.delete) {
+                    background-color: transparent;
+                }
+                &.small {
+                    padding: $smallPaddingWithLoading;
+                }
+
+                &.large {
+                    padding: $largePaddingWithLoading;
+                }
+            }
+        }
+
+        .loading {
+            display: none
+        }
+
+        &.transparent:not(.delete) {
+            background-color: transparent;
+            color: $fu-primary-500;
+            border: 1px solid $fu-primary-500;
+        }
+
+        &.tried {
+            color: $fu-light-900;
+            background-color: $fu-light-200;
+
+            &.transparent {
+                color: $fu-light-900;
+                border: 1px solid $fu-light-500;
+                background-color: transparent;
+            }
+        }
+
+        &.black {
+            color: var(--fu-font-color, $White);
+            background-color: var(--fu-background-color, $fu-black-500);
+            &.transparent {
+                color: var(--fu-font-color, $fu-black-500);
+                border: var(--fu-border, 1px solid $fu-black-500);
+                background-color: var(--fu-background-color, transparent);
+            }
+
+        }
+
+        &.delete {
+            color: $White;
+            background-color: $fu-negative-500;
+        }
+
+        &.small {
+            padding: $smallPaddingWithLoading;
+            @include icon-style('loader-dots-v4', currentColor, (height: 8px, width: 20px), false, true){
+                display: block;
+            }
+        }
+
+        &.large{
+            padding: $largePaddingWithLoading;
+            @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 36px), false, true) {
+                display: block;
+            }
+        }
+    }
+}
+
+:host-context(a).fu-style-v3{
+    box-sizing: border-box;
+    text-decoration: none;
+    letter-spacing: 0.24px;
+    @extend %font-subtitle;
+    color: $fu-primary-500;
+    padding: 0;
+    height: 16px;
+    background-color: transparent;
+
+    &:hover {
+        background-color: transparent;
+        color: $fu-primary-500;
+    }
+
+    &.tried {
+        border: none;
+        background-color: transparent;
+        color: $fu-light-900;
+        text-decoration: underline;
+        &:hover {
+            border: none;
+            background-color: transparent;
+            color: $fu-light-900;
+        }
+    }
+
+    &.black {
+        border: none;
+        background-color: transparent;
+        color: $fu-black-500;
+        text-decoration: underline;
+        &:hover {
+            border: none;
+            background-color: transparent;
+            color: $fu-black-500;
+        }
+    }
+
+    &.disabled {
+        color: $fu-light-800;
+        text-decoration: none;
+        background-color: transparent;
+        border: none;
+        cursor: initial;
+        pointer-events: none;
+    }
+
+    &.fu-with-loading{
+        border: none;
+        background-color: transparent;
+        pointer-events: none;
+        padding: $mediumPadding;
+
+        > span {
+            height: 16px;
+            > span {
+                display: none;
+            }
+        }
+
+        @include icon-style('loader-dots-v4', $fu-primary-500, (height: 16px, width: 22px), false, true) {
+            height: 16px;
+        }
+
+        &.tried {
+            border: none;
+            background-color: transparent;
+            @include icon-style('loader-dots-v4', $fu-light-900, (height: 16px, width: 22px), false, true) {
+                height: 16px;
+            }
+        }
+
+        &.black {
+            border: none;
+            background-color: transparent;
+            @include icon-style('loader-dots-v4', $fu-black-500, (height: 16px, width: 22px), false, true) {
+                height: 16px;
+            }
+        }
+    }
+
+    &.fu-iconed {
+        &.fu-with-content {
+            padding: 0;
+            color: $fu-primary-500;
+            height: inherit;
+            @include icon-style('icon', $fu-primary-500, 16px , false, true) {
+                height: 16px;
+            }
+
+            > span > span {
+                padding-left: 6px;
+            }
+
+            &.tried {
+                padding: 0;
+                color: $fu-light-900;
+                @include icon-style('icon', $fu-light-900, 16px , false, true) {
+                    height: 16px;
+                }
+            }
+
+            &.black {
+                padding: 0;
+                color: $fu-black-500;
+                @include icon-style('icon', $fu-black-500, 16px , false, true) {
+                    height: 16px;
+                }
+            }
+
+            &.disabled {
+                padding: 0;
+                color:  $fu-light-800;
+                pointer-events: none;
+                @include icon-style('icon',  $fu-light-800, 16px , false, true) {
+                    height: 16px;
+                }
+            }
+
+            &.fu-with-loading{
+                > span {
+                    height: 16px;
+                    > span {
+                        display: none;
+                    }
+                }
+                @include icon-style('loader-dots-v4', $fu-primary-500, (height: 16px, width: 22px), false, true) {
+                    height: 16px;
+                }
+
+                &.tried {
+                    @include icon-style('loader-dots-v4', $fu-light-900, (height: 16px, width: 22px) , false, true) {
+                        height: 16px;
+                    }
+                }
+
+                &.black {
+                    @include icon-style('loader-dots-v4', $fu-black-500, (height: 16px, width: 22px) , false, true) {
+                        height: 16px;
+                    }
+                }
+            }
+
+            &.fu-icon-right {
+                padding: 0 22px 0 0;
+
+                > span > span {
+                    padding: 0;
+                }
+
+                @include icon-style('icon', $fu-primary-500, 16px, false, true){
+                    height: 16px;
+                    position: absolute;
+                    right: 0;
+                };
+
+                &.tried {
+                    @include icon-style('icon', $fu-light-900, 16px , false, true) {
+                        height: 16px;
+                        position: absolute;
+                        right: 0;
+                    }
+                }
+
+                &.black {
+                    @include icon-style('icon', $fu-black-500, 16px , false, true) {
+                        height: 16px;
+                        position: absolute;
+                        right: 0;
+                    }
+                }
+
+                &.disabled {
+                    pointer-events: none;
+                    @include icon-style('icon',  $fu-light-800, 16px , false, true) {
+                        height: 16px;
+                        position: absolute;
+                        right: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+

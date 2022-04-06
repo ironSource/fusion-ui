@@ -43,7 +43,7 @@ $largeMinWidth: 140px;
         @extend %disabled;
     }
 
-    &.is-with-loading {
+    &.fu-with-loading {
         padding-left: 10px;
 
         & + span {
@@ -72,7 +72,7 @@ $largeMinWidth: 140px;
         }
     }
 
-    &.is-iconed {
+    &.fu-iconed {
         min-width: 32px;
         padding: 8px 8px 7px 8px;
         margin-bottom: 2px;

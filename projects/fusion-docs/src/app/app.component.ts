@@ -10,7 +10,7 @@ import {Subject} from 'rxjs';
 })
 export class AppComponent implements OnInit, OnDestroy {
     tooltipData: ITooltipData = {};
-
+    loading = false;
     private onDestroy$ = new Subject();
 
     constructor(private tooltipService: TooltipService) {}
@@ -22,5 +22,16 @@ export class AppComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.onDestroy$.next();
         this.onDestroy$.complete();
+    }
+
+    onClick($event?) {
+        if ($event) {
+            $event.preventDefault();
+        }
+        console.log('Click');
+        this.loading = true;
+        setTimeout(_ => {
+            this.loading = false;
+        }, 2000);
     }
 }

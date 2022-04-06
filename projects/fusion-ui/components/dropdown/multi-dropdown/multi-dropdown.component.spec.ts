@@ -127,7 +127,7 @@ describe('MultiDropdownComponent', () => {
         expect(bottomActionEl.nativeElement.querySelector('button').outerHTML).toContain('fusion-button=""');
         expect(bottomActionEl.nativeElement.querySelector('button').innerText).toContain('Cancel');
         expect(bottomActionEl.nativeElement.querySelectorAll('button')[1].outerHTML).toContain(
-            'class="primary small is-with-content transparent'
+            'class="primary small fu-with-content transparent'
         );
         expect(bottomActionEl.nativeElement.querySelectorAll('button')[1].outerHTML).toContain('fusion-button=""');
         expect(bottomActionEl.nativeElement.querySelectorAll('button')[1].innerText).toContain('Apply');

@@ -21,17 +21,22 @@ import {IconData} from '@ironsource/fusion-ui/components';
             <fusion-icon *ngIf="iconName && !isLoading" class="icon" [name]="iconData"></fusion-icon>
             <ng-container *ngIf="selectedVersion$ | async as selectedVersion">
                 <fusion-icon
-                    *ngIf="isLoading"
+                    *ngIf="isLoading && (selectedVersion === 1 || selectedVersion === 2)"
                     class="icon-loading"
                     [name]="
                         selectedVersion === 1 ? {iconName: 'loading', iconVersion: 'v1'} : {iconName: 'loader-dots-v4', iconVersion: 'v2'}
                     "
                 ></fusion-icon>
+                <fusion-icon
+                    *ngIf="isLoading && selectedVersion === 3"
+                    class="icon-loading"
+                    [name]="!projectContent ? 'loading-clean' : {iconName: 'loader-dots-v4', iconVersion: 'v2'}"
+                ></fusion-icon>
             </ng-container>
             <span><ng-content></ng-content></span>
         </span>
     `,
-    styleUrls: ['./button.component.scss', './button.component-v2.scss'],
+    styleUrls: ['./button.component.scss', './button.component-v2.scss', './button.component-v3.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ButtonComponent extends StyleBase implements OnInit {
@@ -66,7 +71,7 @@ export class ButtonComponent extends StyleBase implements OnInit {
 
     ngOnInit() {
         this.projectContent = !!this.element.nativeElement.innerText;
-        this.setHostClass(this.projectContent, 'is-with-content');
+        this.setHostClass(this.projectContent, 'fu-with-content');
     }
 
     private setHostClass(add: boolean, className: string) {
@@ -85,13 +90,13 @@ export class ButtonComponent extends StyleBase implements OnInit {
     }
 
     private setLoadingState(loading: boolean) {
-        this.setHostClass(loading, 'is-with-loading');
+        this.setHostClass(loading, 'fu-with-loading');
         if (!this.isDisabled) {
             this.setDisableState(loading);
         }
     }
 
     private setIconState(hasIcon: boolean) {
-        this.setHostClass(hasIcon, 'is-iconed');
+        this.setHostClass(hasIcon, 'fu-iconed');
     }
 }
