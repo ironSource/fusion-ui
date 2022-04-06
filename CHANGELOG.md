@@ -1,6 +1,18 @@
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [2.0.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v1.2.0-rc.0...v2.0.0-rc.0) (2022-04-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* **fu-328:** change entry point
+
+### Features
+
+* **fu-328:** change entry point ([0d7f30e](https://github.com/ironSource/fusion-ui/commit/0d7f30e5f61cde8501a1da0e5330ac1abf07b7e8))
+
 ## [2.0.0]
 
 ## [1.2.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v1.1.1-rc.2...v1.2.0-rc.0) (2022-03-30)
