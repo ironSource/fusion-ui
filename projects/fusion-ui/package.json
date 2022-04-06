@@ -13,6 +13,20 @@
         "vue/v3/core.js",
         "native/core/main.js"
     ],
+    "sharedEntities": [
+        "./services/api",
+        "./services/cache",
+        "./services/version",
+        "./components/svg",
+        "./components/icon",
+        "./components/tooltip",
+        "./components/dropdown",
+        "./components/modal",
+        "./components/button",
+        "./components/date",
+        "./components/datepicker",
+        "./components/table"
+    ],
     "exports": {
         "./react/core": {
             "default": "./react/core.js"
