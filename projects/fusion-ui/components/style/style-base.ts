@@ -2,6 +2,7 @@ import {ElementRef, AfterViewInit, Injector, Renderer2, OnDestroy, Directive} fr
 import {filter, takeUntil} from 'rxjs/operators';
 import {VersionService, StyleVersion, FUSION_STYLE_VERSION_PREFIX} from '@ironsource/fusion-ui/services/version';
 import {Observable, Subject} from 'rxjs';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 /* eslint-disable @angular-eslint/directive-class-suffix */
 @Directive()
@@ -14,6 +15,8 @@ export abstract class StyleBase implements AfterViewInit, OnDestroy {
     styleVersion = StyleVersion;
     selectedVersion$: Observable<StyleVersion> = this.injector.get(VersionService).styleVersion$.pipe(takeUntil(this.onDestroy$));
 
+    private isManualStyle: boolean;
+
     ngAfterViewInit() {
         this.selectedVersion$
             .pipe(takeUntil(this.onDestroy$), filter(this.isStyleVersionNotManual.bind(this)))
@@ -22,7 +25,10 @@ export abstract class StyleBase implements AfterViewInit, OnDestroy {
 
     private isStyleVersionNotManual(): boolean {
         const element = this.injector.get(ElementRef);
-        return ![...element.nativeElement.classList].some(item => item.startsWith(FUSION_STYLE_VERSION_PREFIX));
+        if (isNullOrUndefined(this.isManualStyle)) {
+            this.isManualStyle = [...element.nativeElement.classList].some(item => item.startsWith(FUSION_STYLE_VERSION_PREFIX));
+        }
+        return !this.isManualStyle;
     }
 
     private handleStyleVersion(styleVersion: StyleVersion): void {
@@ -34,13 +40,10 @@ export abstract class StyleBase implements AfterViewInit, OnDestroy {
                 renderer.removeClass(element.nativeElement, item);
             }
         });
-        console.log('>>', element.nativeElement, [...element.nativeElement.classList]);
 
         if (styleVersion !== this.lastStyleVersion) {
             renderer.addClass(element.nativeElement, FUSION_STYLE_VERSION_PREFIX + styleVersion.toString());
         }
-
-        console.log('<<', element.nativeElement, [...element.nativeElement.classList]);
     }
 
     ngOnDestroy(): void {
