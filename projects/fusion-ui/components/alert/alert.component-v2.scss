@@ -6,7 +6,7 @@ $padding: 13px 12px 11px;
 $paddingSmall: 9px 12px 7px;
 $borderLeft: solid 4px $fu-primary-500;
 
-:host:not(.fusion-style-v1) {
+:host.fu-style-v2 {
     @extend %reset;
     box-sizing: border-box;
     display: block;

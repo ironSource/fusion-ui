@@ -7,7 +7,7 @@ $monthPickerBorderRadius: 4px;
 $monthPickerPadding: 12px;
 $monthPickerErrorBGColor: $fu-negative-100;
 
-:host:not(.fusion-style-v1) {
+:host.fu-style-v2 {
     @extend %border-box-normalize;
     height: var(--fu-month-picker-height, #{$monthPickerHeight});
     border: none;

@@ -8,7 +8,7 @@
     box-shadow: none;
 }
 
-:host:not(.fusion-style-v1) {
+:host.fu-style-v2 {
     height: inherit;
     @extend %border-box-normalize;
     textarea {

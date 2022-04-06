@@ -2,7 +2,7 @@
 @import '../../src/style/scss/v2/vars/border';
 @import '../../src/style/scss/v2/vars/mixins';
 
-:host:not(.fusion-style-v1) {
+:host.fu-style-v2 {
     @extend %border-box-normalize;
     .inline-input-wrapper {
         & > div {
@@ -50,7 +50,7 @@
     }
 }
 
-:host-context(tr:hover):not(.fusion-style-v1){
+:host-context(tr.fu-style-v2:hover){
     .inline-input-wrapper {
         fusion-icon.icon-edit {
             visibility: visible;

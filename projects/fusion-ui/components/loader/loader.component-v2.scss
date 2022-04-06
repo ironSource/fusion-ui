@@ -7,7 +7,7 @@ $overlayLoaderTextColor: $fu-dark-300;
 $overlayLoaderImgColor: $fu-light-800;
 $overlayLoaderImgSize: 50px;
 
-:host:not(.fusion-style-v1) {
+:host.fu-style-v2 {
     display: block;
 
     .is-loader {

@@ -7,7 +7,7 @@ $borderBottom: solid 1px $fu-light-300;
 $height: $modalHeaderHeight;
 $padding: 15px 32px;
 
-:host:not(.fusion-style-v1) {
+:host.fu-style-v2 {
     @extend %border-box-normalize;
     .modal-header {
         box-sizing: border-box;

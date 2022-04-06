@@ -4,7 +4,7 @@
 $iconWrapperSize: 32px;
 $borderRadius: 8px;
 
-:host:not(.fusion-style-v1){
+:host.fu-style-v2{
     @extend %border-box-normalize;
     display: block;
     border-radius: $borderRadius;

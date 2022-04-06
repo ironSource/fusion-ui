@@ -6,7 +6,7 @@ $iconsWidth: 46px;
 $optionHeight: 32px;
 $optionLargerHeight: 40px;
 
-:host:not(.fusion-style-v1) {
+:host.fu-style-v2 {
     @extend %reset;
     height: 100%;
     width: 100%;

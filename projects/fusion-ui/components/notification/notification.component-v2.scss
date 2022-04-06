@@ -4,7 +4,7 @@
 $boxShadow: 0 0 20px 0 rgba(30, 30, 30, 0.05);
 $borderRadius: 8px;
 
-:host:not(.fusion-style-v1) {
+:host.fu-style-v2 {
     .is-notification-overlay{
         /* modal background fixed across whole screen */
         position: fixed;

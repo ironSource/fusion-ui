@@ -26,7 +26,7 @@ $v2-borderRoundedRadius: 20px;
     }
 }
 
-:host:not(.fusion-style-v1) {
+:host.fu-style-v2 {
     @extend %reset;
     @extend %list-reset;
     display: inline;

@@ -1,6 +1,6 @@
 @import '../../src/style/scss/v2/vars/vars';
 
-:host:not(.fusion-style-v1) {
+:host.fu-style-v2 {
     @extend %border-box-normalize;
     .fu-month-picker-wrapper {
         color: var(--fu-month-picker-color, #{$fu-dark-500});

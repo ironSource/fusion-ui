@@ -6,7 +6,7 @@ $v2-headerHeight: 32px;
 $v2-headerCellPadding: 5px 8px;
 $v2-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-light-400);
 
-:host:not(.fusion-style-v1) {
+:host.fu-style-v2 {
     @extend %reset;
     display: block;
     width: 100%;

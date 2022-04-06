@@ -1,7 +1,7 @@
 @import '../../../src/style/scss/v2/vars/colors';
 @import '../../../src/style/scss/v2/vars/border';
 
-:host:not(.fusion-style-v1) {
+:host.fu-style-v2 {
     .search-panel {
         color: white;
         border: none;

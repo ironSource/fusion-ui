@@ -3,7 +3,7 @@
 @import '../../src/style/scss/v2/vars/border';
 @import '../../src/style/scss/v2/vars/fonts';
 
-:host:not(.fusion-style-v1) {
+:host.fu-style-v2 {
     @extend %border-box-normalize;
     @extend %list-reset;
     li {

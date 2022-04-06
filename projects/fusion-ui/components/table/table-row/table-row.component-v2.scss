@@ -10,7 +10,7 @@ $v2-bodyBorder: 1px solid $fu-light-300;
     height: 100%;
 }
 
-:host:not(.fusion-style-v1) {
+:host.fu-style-v2 {
     td:not(:last-child){
         border-right: var(--table-body-border, none);
     }
@@ -99,7 +99,7 @@ $v2-bodyBorder: 1px solid $fu-light-300;
     }
 }
 
-:host-context(.on-scroll-right):not(.fusion-style-v1) {
+:host-context(.on-scroll-right.fu-style-v2) {
     .sticky-left {
         &.display-shadow-on-scroll {
             &::after {

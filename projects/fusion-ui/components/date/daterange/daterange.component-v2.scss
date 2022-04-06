@@ -4,7 +4,7 @@
 
 $selectHolderHeight: 39px;
 
-:host:not(.fusion-style-v1) {
+:host.fu-style-v2 {
     @extend %reset;
     position: relative;
     display: inline-block;

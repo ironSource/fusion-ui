@@ -1,7 +1,7 @@
 @import '../../../src/style/scss/v2/vars/vars';
 @import '../modal_vars-v2';
 
-:host:not(.fusion-style-v1){
+:host.fu-style-v2{
     @extend %border-box-normalize;
     @extend %customScroll;
     display: block;
