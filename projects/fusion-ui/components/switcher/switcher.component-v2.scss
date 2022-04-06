@@ -11,7 +11,6 @@ $switcherItemSelectedBGColor: $fu-primary-500;
 $switcherItemHoverBGColor: $fu-primary-200;
 $switcherItemDisabledColor: $fu-primary-400;
 
-:host:not(.fu-style-v1), // todo-andyk: this line need for use this style also for v3.
 :host.fu-style-v2 {
     @extend %reset;
     line-height: 20px;
