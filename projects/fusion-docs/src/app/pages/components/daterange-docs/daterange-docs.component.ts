@@ -1,10 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {BehaviorSubject, Subject} from 'rxjs';
-import {DaterangeOptions, DaterangePresets, DaterangeService, StyleVersion, VersionService} from '@ironsource/fusion-ui';
+import {DaterangeOptions, DaterangePresets, DaterangeService, StyleVersion} from '@ironsource/fusion-ui';
 import {takeUntil} from 'rxjs/operators';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
+import {VersionService} from '../../../services/version/version.service';
 
 const rightMenuItems = [
     {

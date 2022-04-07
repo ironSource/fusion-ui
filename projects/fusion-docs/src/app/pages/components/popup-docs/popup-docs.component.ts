@@ -3,9 +3,10 @@ import {PopupEntity, PopupLocation} from '@ironsource/fusion-ui';
 import {PopupService} from '@ironsource/fusion-ui';
 import {Observable, Subject} from 'rxjs';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
-import {StyleVersion, VersionService} from '@ironsource/fusion-ui';
+import {StyleVersion} from '@ironsource/fusion-ui';
 import {takeUntil} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {VersionService} from '../../../services/version/version.service';
 
 const popUpBasic: PopupEntity = {
     size: {

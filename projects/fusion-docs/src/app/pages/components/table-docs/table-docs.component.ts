@@ -6,8 +6,7 @@ import {
     TableColumn,
     TableColumnTypeEnum,
     TableOptions,
-    TableRowExpandEmitter,
-    VersionService
+    TableRowExpandEmitter
 } from '@ironsource/fusion-ui';
 import {FormControl, Validators} from '@angular/forms';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
@@ -16,6 +15,7 @@ import {TableCellIconExampleComponent} from '../../../components/table-cell-icon
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Router} from '@angular/router';
 import {TableCustomNoDataComponent} from '../../../components/table-custom-no-data/table-custom-no-data.component';
+import {VersionService} from '../../../services/version/version.service';
 
 const tblOptions: TableOptions = {
     sortingType: 'local',

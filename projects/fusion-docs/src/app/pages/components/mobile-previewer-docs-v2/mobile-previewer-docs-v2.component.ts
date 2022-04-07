@@ -7,13 +7,13 @@ import {
     PopupLocation,
     PopupService,
     StyleVersion,
-    VersionService,
     VideoPlayerComponent
 } from '@ironsource/fusion-ui';
 import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
+import {VersionService} from '../../../services/version/version.service';
 
 const popUpBasic: PopupEntity = {
     location: PopupLocation.BottomRight,

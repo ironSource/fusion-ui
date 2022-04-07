@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {ChartComponent, ChartLabel, ChartDataset, VersionService, StyleVersion, FusionChartPieData} from '@ironsource/fusion-ui';
+import {ChartComponent, ChartLabel, ChartDataset, StyleVersion, FusionChartPieData} from '@ironsource/fusion-ui';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {FormControl} from '@angular/forms';
 import {takeUntil} from 'rxjs/operators';
@@ -23,6 +23,7 @@ import {
 } from './mocks/chart-example-data-mock';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Router} from '@angular/router';
+import {VersionService} from '../../../services/version/version.service';
 
 @Component({
     selector: 'fusion-chart-docs',

@@ -2,15 +2,10 @@ import {ChangeDetectionStrategy, Component, OnDestroy, OnInit, Type} from '@angu
 import {PopupEntity, PopupLocation} from '@ironsource/fusion-ui';
 import {PopupService} from '@ironsource/fusion-ui';
 import {Observable, Subject} from 'rxjs';
-import {
-    MobileOrientation,
-    MobilePreviewerComponent,
-    MobilePreviewerComponentConfiguration,
-    StyleVersion,
-    VersionService
-} from '@ironsource/fusion-ui';
+import {MobileOrientation, MobilePreviewerComponent, MobilePreviewerComponentConfiguration, StyleVersion} from '@ironsource/fusion-ui';
 import {takeUntil} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {VersionService} from '../../../services/version/version.service';
 
 const innerTextNodeElement = document.createElement('div');
 const innerTextNodeElementText = document.createTextNode('Mobile Previewer Demo');

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {StyleVersion, SwitcherItem, VersionService} from '@ironsource/fusion-ui';
+import {StyleVersion, SwitcherItem} from '@ironsource/fusion-ui';
 import {FormControl} from '@angular/forms';
+import {VersionService} from '../../services/version/version.service';
 
 @Component({
     selector: 'fusion-style-version-button',
