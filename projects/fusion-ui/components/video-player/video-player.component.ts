@@ -1,9 +1,8 @@
 import {ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, ViewChild, SimpleChanges, AfterViewInit} from '@angular/core';
 import {isNull} from '@ironsource/fusion-ui/utils';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {StyleBase, StyleVersion} from '@ironsource/fusion-ui/components/style';
 import {BehaviorSubject, fromEvent, Observable, Subject} from 'rxjs';
 import {map, startWith, switchMap} from 'rxjs/operators';
-import {StyleVersion} from '@ironsource/fusion-ui/services/version';
 
 @Component({
     selector: 'fusion-video-player',
@@ -46,8 +45,6 @@ export class VideoPlayerComponent extends StyleBase implements OnInit, AfterView
         map(styleVersion => (styleVersion === StyleVersion.V2 ? 'video-camera_2' : {iconName: 'video-camera', iconVersion: 'v1'})),
         startWith({iconName: 'video-camera', iconVersion: 'v1'})
     );
-
-    styleVersion = StyleVersion;
 
     isVideoPlaying$ = new BehaviorSubject<boolean>(false);
 

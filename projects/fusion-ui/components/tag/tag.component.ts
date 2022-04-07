@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Injector, Input, OnInit, Output, Renderer2} from '@angular/core';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {StyleBase, StyleVersion} from '@ironsource/fusion-ui/components/style';
 import {BehaviorSubject, fromEvent} from 'rxjs';
-import {StyleVersion} from '@ironsource/fusion-ui/services/version';
 import {TagComponentConfigurations} from './tag-component-configurations';
 import {takeUntil} from 'rxjs/operators';
 

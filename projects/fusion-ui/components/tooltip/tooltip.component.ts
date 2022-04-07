@@ -25,7 +25,7 @@ const TOOLTIP_ARROW_SIZE = 6;
     styleUrls: ['./tooltip.component.scss', './tooltip.component-v2.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TooltipComponent extends StyleBase implements OnDestroy, AfterViewInit, OnChanges {
+export class TooltipComponent extends StyleBase implements AfterViewInit, OnChanges {
     public content: string | SafeHtml;
     public componentData: any;
     public icon: string | {iconName: string; iconVersion: string};
