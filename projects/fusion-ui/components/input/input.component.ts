@@ -16,12 +16,12 @@ import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/for
 import {isBoolean, isNullOrUndefined, isString} from '@ironsource/fusion-ui/utils';
 import {BehaviorSubject, Observable, fromEvent} from 'rxjs';
 import {map, takeUntil, tap, filter} from 'rxjs/operators';
-import {StyleVersion, VersionService} from '@ironsource/fusion-ui/services/version';
 import {InputOptions} from './input.options';
 import {CONFIG_INPUT_BY_UI_STYLE, InputConfigByStyle} from './input.component.config';
 import {InputParameters} from './input-parameters';
 import {SPECIAL_KEYS, ESCAPE_KEY_CODE, ENTER_KEY_CODE, INPUT_DEFAULT_CONFIGURATION} from './input-utils';
 import {InputConfiguration} from './input-entities';
+import {StyleVersion} from '@ironsource/fusion-ui/components';
 
 // Todo - check if someone use error as boolean and if not change type to string only
 @Component({
@@ -56,7 +56,7 @@ export class InputComponent extends InputParameters implements OnInit, OnDestroy
     private fileControlValueChanges$: Observable<any>;
     private onBlur: (args: string) => void;
 
-    constructor(injector: Injector, public elementRef: ElementRef, private versionService: VersionService) {
+    constructor(injector: Injector, public elementRef: ElementRef) {
         super(injector);
     }
 
@@ -124,7 +124,7 @@ export class InputComponent extends InputParameters implements OnInit, OnDestroy
     }
 
     showErrorIcon(): boolean {
-        if (this.versionService.styleVersion === StyleVersion.V2) {
+        if (this.selectedVersion$.getValue() === StyleVersion.V2) {
             return !isNullOrUndefined(this.config.error);
         } else {
             return this.config.options.size === 'small' && this.config.error && !isBoolean(this.config.error);

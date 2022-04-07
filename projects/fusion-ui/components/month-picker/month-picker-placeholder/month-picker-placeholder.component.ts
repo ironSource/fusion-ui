@@ -1,10 +1,9 @@
 import {ChangeDetectionStrategy, Component, Injector, Input} from '@angular/core';
 import {MonthPicker, MonthPickerPlaceholder} from '../month-picker';
 import {MONTH_PICKER_PLACEHOLDER} from '../month-picker.configuration';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {StyleBase, StyleVersion} from '@ironsource/fusion-ui/components/style';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import {StyleVersion} from '@ironsource/fusion-ui/services/version';
 
 @Component({
     selector: 'fusion-month-picker-placeholder',

@@ -10,8 +10,11 @@ import {BehaviorSubject, Subject} from 'rxjs';
 @Directive()
 export abstract class StyleBase implements AfterViewInit, OnDestroy {
     onDestroy$ = new Subject<void>();
-    styleVersion: StyleVersion = StyleVersion[Object.values(StyleVersion)[Object.values(StyleVersion).length / 2 - 1]];
-    selectedVersion$: BehaviorSubject<StyleVersion> = new BehaviorSubject<StyleVersion>(this.styleVersion);
+    styleVersion = StyleVersion;
+
+    selectedVersion$: BehaviorSubject<StyleVersion> = new BehaviorSubject<StyleVersion>(
+        StyleVersion[Object.values(StyleVersion)[Object.values(StyleVersion).length / 2 - 1]]
+    );
 
     constructor(protected injector: Injector) {}
 
@@ -32,8 +35,7 @@ export abstract class StyleBase implements AfterViewInit, OnDestroy {
         ).trim();
 
         // todo-andyk: fix with version
-        this.styleVersion = StyleVersion.V2;
-        this.selectedVersion$.next(this.styleVersion);
+        this.selectedVersion$.next(this.styleVersion.V2);
 
         renderer.addClass(element.nativeElement, FUSION_STYLE_VERSION_PREFIX + uiStyleVersion);
     }

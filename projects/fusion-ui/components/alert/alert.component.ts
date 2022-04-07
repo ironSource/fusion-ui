@@ -1,8 +1,7 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, AfterViewInit} from '@angular/core';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {StyleBase, StyleVersion} from '@ironsource/fusion-ui/components/style';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import {StyleVersion} from '@ironsource/fusion-ui/services/version';
 
 @Component({
     selector: 'fusion-alert',

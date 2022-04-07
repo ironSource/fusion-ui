@@ -16,9 +16,8 @@ import {Notification} from './notification';
 import {NotificationService} from './notification.service';
 import {NotificationType} from './notification-type';
 import {isFunction} from '@ironsource/fusion-ui/utils';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {StyleBase, StyleVersion} from '@ironsource/fusion-ui/components/style';
 import {BehaviorSubject} from 'rxjs';
-import {StyleVersion} from '@ironsource/fusion-ui/services/version';
 import {NOTIFICATION_ICON_MAP} from './notification.config';
 
 /** @dynamic */

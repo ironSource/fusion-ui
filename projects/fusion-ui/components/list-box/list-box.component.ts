@@ -4,10 +4,9 @@ import {ListBoxOption} from './entities/list-box-option';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {ListBoxModes} from './entities/list-box-modes';
 import {detectChangesDecorator} from '@ironsource/fusion-ui/decorators';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {StyleBase, StyleVersion} from '@ironsource/fusion-ui/components/style';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import {StyleVersion} from '@ironsource/fusion-ui/services/version';
 
 @Component({
     selector: 'fusion-list-box',

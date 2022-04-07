@@ -12,8 +12,7 @@ import {
     ViewChild
 } from '@angular/core';
 import {LOADER_COMPONENT_TYPE_TOKEN} from './loader-token';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
-import {StyleVersion} from '@ironsource/fusion-ui/services/version';
+import {StyleBase, StyleVersion} from '@ironsource/fusion-ui/components/style';
 import {LoaderColor, LoaderPosition, LoaderSize} from './loader.types';
 import {map} from 'rxjs/operators';
 

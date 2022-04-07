@@ -2,7 +2,7 @@
  * Created on 2020.4.21 By Andy Kononenko (andyk@ironsrc.com)
  */
 
-import {StyleVersion} from '@ironsource/fusion-ui/services/version';
+import {StyleVersion} from '@ironsource/fusion-ui';
 
 export interface InputConfigByStyle {
     iconSearch: string | {iconName: string; iconVersion?: string};

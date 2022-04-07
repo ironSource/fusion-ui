@@ -22,8 +22,7 @@ import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {isDateString} from '@ironsource/fusion-ui/utils';
 import {BASE_DATASET_OPTIONS, CHART_CONFIGURATIONS} from './chart.config';
 import {ShortNumberScaleSuffixPipe} from '@ironsource/fusion-ui/pipes/numbers';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
-import {StyleVersion, VersionService} from '@ironsource/fusion-ui/services/version';
+import {StyleBase, StyleVersion} from '@ironsource/fusion-ui/components/style';
 import {takeUntil} from 'rxjs/operators';
 import {ChartBaseDatasetOptions} from './entities/chart-options';
 import {ChartType} from './entities/chart-type.enum';
@@ -99,8 +98,6 @@ export class ChartComponent extends StyleBase implements OnInit, OnDestroy, OnCh
     private isStacked = false;
     private yAxesFormat: string;
 
-    private currentStyleVersion: StyleVersion;
-
     constructor(
         injector: Injector,
         private datePipe: DatePipe,
@@ -111,7 +108,6 @@ export class ChartComponent extends StyleBase implements OnInit, OnDestroy, OnCh
         private uniqueIdService: UniqueIdService,
         private dataParseService: ChartDataService,
         private colorsService: ColorsService,
-        private versionService: VersionService,
         private elemRef: ElementRef,
         protected clonePipe: ClonePipe
     ) {
@@ -135,7 +131,6 @@ export class ChartComponent extends StyleBase implements OnInit, OnDestroy, OnCh
         this.ctx = this.elemRef.nativeElement.querySelector('canvas');
         this.canvasContent = this.ctx.getContext('2d');
         this.selectedVersion$.pipe(takeUntil(this.onDestroy$)).subscribe((styleVersion: StyleVersion) => {
-            this.currentStyleVersion = styleVersion;
             if (!isNullOrUndefined(this.ctx) && this._data && Object.keys(this._data).length) {
                 this.setChart(this._data, this.type);
             }
@@ -197,7 +192,7 @@ export class ChartComponent extends StyleBase implements OnInit, OnDestroy, OnCh
     }
 
     private getColors(): string[] {
-        const palette = this.colorsService.getColorPalette();
+        const palette = this.colorsService.getColorPalette(this.selectedVersion$.getValue());
         const legends = (this._data as ChartData).legends;
         const customPalette = legends
             ? legends.map((legend, idx) => {
@@ -315,14 +310,14 @@ export class ChartComponent extends StyleBase implements OnInit, OnDestroy, OnCh
     }
 
     private getDataSetOptionsByStyleVersion(): ChartBaseDatasetOptions {
-        const versionKey = `style_v${this.versionService.styleVersion}`;
+        const versionKey = `style_v${this.selectedVersion$.getValue()}`;
         return {
             ...(!isNullOrUndefined(BASE_DATASET_OPTIONS[versionKey]) ? BASE_DATASET_OPTIONS[versionKey] : BASE_DATASET_OPTIONS.style_v1)
         };
     }
 
     private getChartOptionsByStyleVersion(): any {
-        const versionKey = `style_v${this.versionService.styleVersion}`;
+        const versionKey = `style_v${this.selectedVersion$.getValue()}`;
         return this.clonePipe.transform(
             !isNullOrUndefined(CHART_CONFIGURATIONS[versionKey]) ? CHART_CONFIGURATIONS[versionKey] : CHART_CONFIGURATIONS.style_v1
         );
@@ -375,7 +370,7 @@ export class ChartComponent extends StyleBase implements OnInit, OnDestroy, OnCh
         if (Array.isArray(this.chartData.datasets) && this.chartData.datasets.length !== 0 && this.chartData.datasets[0].data.length > 50) {
             options.elements.point.pointRadius = 0;
         } else {
-            options.elements.point.pointRadius = this.versionService.styleVersion === 2 ? 3 : 2;
+            options.elements.point.pointRadius = this.selectedVersion$.getValue() === 2 ? 3 : 2;
         }
         this.calcYAxes(options.scales.y);
         if (this.isStacked) {
@@ -492,7 +487,9 @@ export class ChartComponent extends StyleBase implements OnInit, OnDestroy, OnCh
                     break;
                 case 'shortString':
                     retVal = !!value
-                        ? this.numberToStringPipe.transform(value, {noSeparateBySpace: this.currentStyleVersion === StyleVersion.V2})
+                        ? this.numberToStringPipe.transform(value, {
+                              noSeparateBySpace: this.selectedVersion$.getValue() === StyleVersion.V2
+                          })
                         : value;
                     break;
             }
