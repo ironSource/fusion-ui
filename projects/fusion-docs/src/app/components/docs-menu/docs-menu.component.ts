@@ -33,7 +33,7 @@ export class DocsMenuComponent extends StyleBase implements OnInit {
             map((menuItems: DocsMenuItem[]) => {
                 return menuItems.reduce((menuItemsOut: DocsMenuItem[], menuItem: DocsMenuItem) => {
                     const items = menuItem.items.filter(sub => {
-                        return !Array.isArray(sub.styleVersions) || sub.styleVersions.includes(this.styleVersion);
+                        return !Array.isArray(sub.styleVersions) || sub.styleVersions.includes(this.selectedVersion$.getValue());
                     });
                     if (items && items.length > 0) {
                         menuItemsOut.push({...menuItem, ...{items}});
