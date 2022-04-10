@@ -7,7 +7,6 @@ import {
     HostBinding,
     Injector,
     Input,
-    OnDestroy,
     OnInit,
     Output
 } from '@angular/core';
@@ -30,7 +29,7 @@ import {BASE_CHECKED_IMAGE} from './checkbox.cusom-svg';
         }
     ]
 })
-export class CheckboxComponent extends FusionBaseComponent implements OnInit, ControlValueAccessor, OnDestroy {
+export class CheckboxComponent extends FusionBaseComponent implements OnInit, ControlValueAccessor {
     @Input() label: string;
     @Input() name: string;
     @Input() value: string;

@@ -9,7 +9,6 @@ import {
     Injector,
     Input,
     OnChanges,
-    OnDestroy,
     OnInit,
     Renderer2,
     ViewContainerRef
@@ -73,7 +72,7 @@ export class DropdownOptionDirective implements OnInit, OnChanges {
     styleUrls: ['./dropdown-option.component.scss', './dropdown-option.component-v2.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DropdownOptionComponent extends FusionBaseComponent implements OnInit, OnDestroy {
+export class DropdownOptionComponent extends FusionBaseComponent implements OnInit {
     @Input() option: DropdownOption;
     @Input() mappingOptions: any;
     @Input() dropdownType: '' | 'multi' | 'tags';
@@ -117,9 +116,5 @@ export class DropdownOptionComponent extends FusionBaseComponent implements OnIn
                 styleVersion === StyleVersion.V2 ? 'arrow-down' : {iconName: 'arrow-dropdown', iconVersion: 'v1'}
             );
         });
-    }
-
-    ngOnDestroy(): void {
-        super.ngOnDestroy();
     }
 }

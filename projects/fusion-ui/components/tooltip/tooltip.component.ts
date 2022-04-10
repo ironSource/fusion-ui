@@ -7,7 +7,6 @@ import {
     Injector,
     Input,
     OnChanges,
-    OnDestroy,
     Renderer2,
     SimpleChanges
 } from '@angular/core';
