@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Injector, OnInit} from '@angular/core';
 import {StyleBase, StyleVersion, SwitcherItem} from '@ironsource/fusion-ui';
 import {FormControl} from '@angular/forms';
 import {VersionService} from '../../services/version/version.service';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
     selector: 'fusion-style-version-button',
@@ -11,20 +12,20 @@ import {VersionService} from '../../services/version/version.service';
 export class StyleVersionButtonComponent extends StyleBase implements OnInit {
     StyleVersion = StyleVersion;
 
-    // optionsVersions: SwitcherItem[] = [
-    //     {id: 1, title: 'V1'},
-    //     {id: 2, title: 'V2'},
-    //     {id: 3, title: 'V3'}
-    // ];
-    // fcSelectedVersion = new FormControl(this.optionsVersions.find(option => option.id === this.versionService.styleVersion));
+    optionsVersions: SwitcherItem[] = [
+        {id: 1, title: 'V1'},
+        {id: 2, title: 'V2'},
+        {id: 3, title: 'V3'}
+    ];
+    fcSelectedVersion = new FormControl(this.optionsVersions.find(option => option.id === this.versionService.styleVersion));
 
-    // constructor(private versionService: VersionService) {}
+    constructor(injector: Injector, private versionService: VersionService) {
+        super(injector);
+    }
 
     ngOnInit() {
-        /*
-        this.fcSelectedVersion.valueChanges.subscribe(newVersion => {
-            this.versionService.styleVersion = StyleVersion[StyleVersion[newVersion.id]];
+        this.fcSelectedVersion.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(newVersion => {
+            this.versionService.styleVersion = StyleVersion[`V${newVersion.id}`];
         });
-*/
     }
 }
