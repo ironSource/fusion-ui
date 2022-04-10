@@ -31,10 +31,8 @@ export abstract class FusionBaseComponent implements AfterViewInit, OnDestroy {
     private handleStyleVersion(): void {
         const element = this.injector.get(ElementRef);
         const renderer = this.injector.get(Renderer2);
-        const uiSelectedStyleVersion = (
-            getComputedStyle(element.nativeElement).getPropertyValue(FUSION_STYLE_VERSION_CSS_VAR_NAME) ??
-            this.selectedVersion$.getValue().toString()
-        ).trim();
+        let uiSelectedStyleVersion = getComputedStyle(element.nativeElement).getPropertyValue(FUSION_STYLE_VERSION_CSS_VAR_NAME).trim();
+        uiSelectedStyleVersion = uiSelectedStyleVersion ? uiSelectedStyleVersion : this.selectedVersion$.getValue().toString();
 
         if (StyleVersion[`V${uiSelectedStyleVersion}`] !== this.selectedVersion$.getValue()) {
             setTimeout(() => {

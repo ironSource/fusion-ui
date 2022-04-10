@@ -8,7 +8,7 @@ import {DOCUMENT} from '@angular/common';
     providedIn: 'root'
 })
 export class VersionService {
-    private version$ = new BehaviorSubject<StyleVersion>(this.getLastStyleGVersion());
+    private version$ = new BehaviorSubject<StyleVersion>(this.getVersionFromCSS());
 
     public get styleVersion$(): Observable<StyleVersion> {
         return this.version$.asObservable();
@@ -28,6 +28,13 @@ export class VersionService {
     private getLastStyleGVersion(): StyleVersion {
         const lastKey = Object.values(StyleVersion)[Object.values(StyleVersion).length / 2 - 1];
         return StyleVersion[lastKey];
+    }
+
+    private getVersionFromCSS(): StyleVersion {
+        const root = this.document.documentElement;
+        let uiSelectedStyleVersion = getComputedStyle(root).getPropertyValue(FUSION_STYLE_VERSION_CSS_VAR_NAME).trim();
+        uiSelectedStyleVersion = uiSelectedStyleVersion ? uiSelectedStyleVersion : this.getLastStyleGVersion().toString();
+        return StyleVersion[`V${uiSelectedStyleVersion}`];
     }
 
     private updateCssVariable(version: string): void {

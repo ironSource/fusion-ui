@@ -20,6 +20,7 @@ $buttonBorderRadius: 100px;
 $iconInTableButtonSize: 28px;
 $iconInTableButtonIconSize: 16px;
 
+:host.fu-style-v3,
 :host.fu-style-v2 {
     @extend %reset;
     outline: none;
