@@ -10,7 +10,7 @@ import {
     EventEmitter,
     HostListener
 } from '@angular/core';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
 
 @Component({
     // eslint-disable-next-line
@@ -36,7 +36,7 @@ import {StyleBase} from '@ironsource/fusion-ui/components/style';
     styleUrls: ['./button.component.scss', './button.component-v2.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ButtonComponent extends StyleBase implements OnInit {
+export class ButtonComponent extends FusionBaseComponent implements OnInit {
     @HostListener('click', ['$event']) onClick($event: any) {
         this.onclick.emit($event);
     }

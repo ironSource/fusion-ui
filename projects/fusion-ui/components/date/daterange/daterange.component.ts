@@ -21,7 +21,7 @@ import {DaterangePresets} from '../entities/daterange-presets.enum';
 import {DaterangeService} from './daterange.service';
 import {CalendarService} from '../calendar/calendar.service';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
-import {StyleBase, StyleVersion} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
 import {isSameDates} from '@ironsource/fusion-ui/utils';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {BehaviorSubject} from 'rxjs';
@@ -43,7 +43,7 @@ import {DEFAULT_PLACEHOLDER_TEXT} from './daterange.configuration';
         }
     ]
 })
-export class DaterangeComponent extends StyleBase implements OnInit {
+export class DaterangeComponent extends FusionBaseComponent implements OnInit {
     @Input() id: string;
     @Input() presetsHeaderTemplate: TemplateRef<any>;
     @Input() minDate: Date;

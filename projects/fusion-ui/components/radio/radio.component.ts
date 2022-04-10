@@ -13,7 +13,7 @@ import {
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Component({
@@ -29,7 +29,7 @@ import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
         }
     ]
 })
-export class RadioComponent extends StyleBase implements OnInit, ControlValueAccessor, OnDestroy {
+export class RadioComponent extends FusionBaseComponent implements OnInit, ControlValueAccessor, OnDestroy {
     @Input() name: string;
     @Input() isDisabled: boolean;
     @Input() checked: boolean;

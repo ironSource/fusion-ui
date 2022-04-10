@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, AfterViewInit} from '@angular/core';
-import {StyleBase, StyleVersion} from '@ironsource/fusion-ui/components/style';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
@@ -9,7 +9,7 @@ import {map, startWith} from 'rxjs/operators';
     styleUrls: ['./alert.component.scss', './alert.component-v2.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AlertComponent extends StyleBase implements AfterViewInit {
+export class AlertComponent extends FusionBaseComponent {
     @Input() type = 'info';
     @Input() mode = 'basic';
     @Input() shown = true;

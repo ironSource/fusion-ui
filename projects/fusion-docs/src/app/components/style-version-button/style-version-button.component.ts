@@ -1,5 +1,5 @@
 import {Component, Injector, OnInit} from '@angular/core';
-import {StyleBase, StyleVersion, SwitcherItem} from '@ironsource/fusion-ui';
+import {FusionBaseComponent, StyleVersion, SwitcherItem} from '@ironsource/fusion-ui';
 import {FormControl} from '@angular/forms';
 import {VersionService} from '../../services/version/version.service';
 import {takeUntil} from 'rxjs/operators';
@@ -9,7 +9,7 @@ import {takeUntil} from 'rxjs/operators';
     templateUrl: './style-version-button.component.html',
     styleUrls: ['./style-version-button.component.scss']
 })
-export class StyleVersionButtonComponent extends StyleBase implements OnInit {
+export class StyleVersionButtonComponent extends FusionBaseComponent implements OnInit {
     StyleVersion = StyleVersion;
 
     optionsVersions: SwitcherItem[] = [

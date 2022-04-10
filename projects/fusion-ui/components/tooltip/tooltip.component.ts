@@ -13,7 +13,7 @@ import {
 } from '@angular/core';
 import {IShiftPosition, ITooltipData, TooltipPosition, TooltipType} from './tooltip.entities';
 import {WindowService} from '@ironsource/fusion-ui/services/window';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
@@ -25,7 +25,7 @@ const TOOLTIP_ARROW_SIZE = 6;
     styleUrls: ['./tooltip.component.scss', './tooltip.component-v2.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TooltipComponent extends StyleBase implements AfterViewInit, OnChanges {
+export class TooltipComponent extends FusionBaseComponent implements AfterViewInit, OnChanges {
     public content: string | SafeHtml;
     public componentData: any;
     public icon: string | {iconName: string; iconVersion: string};

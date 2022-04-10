@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Injector, Input} from '@angular/core';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
 
 @Component({
     selector: 'fusion-modal-content',
@@ -7,7 +7,7 @@ import {StyleBase} from '@ironsource/fusion-ui/components/style';
     styleUrls: ['./modal-content.component.scss', './modal-content.component-v2.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ModalContentComponent extends StyleBase {
+export class ModalContentComponent extends FusionBaseComponent {
     @Input() padding: string;
     @Input() waiting = false;
 

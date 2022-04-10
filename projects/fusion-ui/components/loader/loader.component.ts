@@ -12,7 +12,7 @@ import {
     ViewChild
 } from '@angular/core';
 import {LOADER_COMPONENT_TYPE_TOKEN} from './loader-token';
-import {StyleBase, StyleVersion} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
 import {LoaderColor, LoaderPosition, LoaderSize} from './loader.types';
 import {map} from 'rxjs/operators';
 
@@ -22,7 +22,7 @@ import {map} from 'rxjs/operators';
     styleUrls: ['./loader.component.scss', './loader.component-v2.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LoaderComponent extends StyleBase implements AfterViewInit {
+export class LoaderComponent extends FusionBaseComponent implements AfterViewInit {
     @ViewChild('customLoader', {read: ElementRef}) customLoader: ElementRef;
 
     @Input() height: number; // has position static, with min-height

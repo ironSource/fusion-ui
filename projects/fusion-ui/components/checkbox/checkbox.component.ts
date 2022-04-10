@@ -14,7 +14,7 @@ import {
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {DomSanitizer} from '@angular/platform-browser';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
-import {StyleBase, StyleVersion} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
 import {BASE_CHECKED_IMAGE} from './checkbox.cusom-svg';
 
 @Component({
@@ -30,7 +30,7 @@ import {BASE_CHECKED_IMAGE} from './checkbox.cusom-svg';
         }
     ]
 })
-export class CheckboxComponent extends StyleBase implements OnInit, ControlValueAccessor, OnDestroy {
+export class CheckboxComponent extends FusionBaseComponent implements OnInit, ControlValueAccessor, OnDestroy {
     @Input() label: string;
     @Input() name: string;
     @Input() value: string;

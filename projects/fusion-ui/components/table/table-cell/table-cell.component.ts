@@ -30,7 +30,7 @@ import {
 } from '../table.config';
 import {TableModuleOptions} from '../entities/table-module-options';
 import {ERROR_MESSAGES} from '@ironsource/fusion-ui/components/error-message';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
 
@@ -43,7 +43,7 @@ type CellDataType = Type<Component> | FormControl | string | boolean | undefined
     styleUrls: ['./table-cell.component.scss', './table-cell.component-v2.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TableCellComponent extends StyleBase implements OnInit, OnChanges {
+export class TableCellComponent extends FusionBaseComponent implements OnInit, OnChanges {
     @Input() set data(value: CellDataType) {
         this._data = value;
     }

@@ -16,7 +16,7 @@ import {Notification} from './notification';
 import {NotificationService} from './notification.service';
 import {NotificationType} from './notification-type';
 import {isFunction} from '@ironsource/fusion-ui/utils';
-import {StyleBase, StyleVersion} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
 import {BehaviorSubject} from 'rxjs';
 import {NOTIFICATION_ICON_MAP} from './notification.config';
 
@@ -27,7 +27,7 @@ import {NOTIFICATION_ICON_MAP} from './notification.config';
     styleUrls: ['./notification.component.scss', './notification.component-v2.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NotificationComponent extends StyleBase implements OnInit, AfterViewInit {
+export class NotificationComponent extends FusionBaseComponent implements OnInit, AfterViewInit {
     @Input() data: Notification = {
         type: NotificationType.Basic,
         title: '',

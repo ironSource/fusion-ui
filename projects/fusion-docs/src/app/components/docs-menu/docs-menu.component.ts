@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, HostBinding, HostListener, Input, On
 import {DocsMenuItem} from './docs-menu';
 import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {StyleBase} from '@ironsource/fusion-ui';
+import {FusionBaseComponent} from '@ironsource/fusion-ui';
 
 @Component({
     selector: 'fusion-docs-menu',
@@ -11,7 +11,7 @@ import {StyleBase} from '@ironsource/fusion-ui';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DocsMenuComponent extends StyleBase implements OnInit {
+export class DocsMenuComponent extends FusionBaseComponent implements OnInit {
     @Input() set menuData(value: DocsMenuItem[]) {
         this.menuData$.next(value);
     }

@@ -1,2 +1,2 @@
-export * from './style-base';
+export * from './fusion-base-component';
 export * from './style-version.enum';

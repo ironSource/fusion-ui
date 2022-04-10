@@ -14,7 +14,7 @@ import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {SwitcherItem} from './entities/switcher-item';
 import {SwitcherMode} from './entities/switcher-mode.enum';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
 
 @Component({
     selector: 'fusion-switcher',
@@ -29,7 +29,7 @@ import {StyleBase} from '@ironsource/fusion-ui/components/style';
         }
     ]
 })
-export class SwitcherComponent extends StyleBase implements OnInit {
+export class SwitcherComponent extends FusionBaseComponent implements OnInit {
     @Input() name: string;
     @Input() options: SwitcherItem[] = [];
     @Input() error = '';

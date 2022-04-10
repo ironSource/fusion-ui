@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, forwardRef, Injector, Input, OnInit, Output} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
 
 @Component({
     selector: 'fusion-textarea',
@@ -15,7 +15,7 @@ import {StyleBase} from '@ironsource/fusion-ui/components/style';
         }
     ]
 })
-export class TextareaComponent extends StyleBase implements OnInit {
+export class TextareaComponent extends FusionBaseComponent implements OnInit {
     @Input() placeholder: string;
     @Input() error: string;
     @Input() readonly: boolean;

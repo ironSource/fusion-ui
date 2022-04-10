@@ -14,7 +14,7 @@ import {
 import {TableColumn, TableOptions, TableRowExpandEmitter, TableRowMetaData} from '../entities';
 import {TableService} from '../table.service';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {StyleBase, StyleVersion} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
 import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {ColumnData} from './column-data';
@@ -27,7 +27,7 @@ import {TableRow} from './table-row';
     styleUrls: ['./table-row.component.scss', './table-row.component-v2.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TableRowComponent extends StyleBase implements OnInit, OnChanges {
+export class TableRowComponent extends FusionBaseComponent implements OnInit, OnChanges {
     @Input() rowIndex: string | number;
     @Input() row: TableRow;
     @Input() options: TableOptions;

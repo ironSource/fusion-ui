@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, forwardRef, HostListener, Injector, Input, OnInit, ViewChild} from '@angular/core';
 import {InputComponent} from '@ironsource/fusion-ui/components/input';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
 import {takeUntil} from 'rxjs/operators';
 
 @Component({
@@ -17,7 +17,7 @@ import {takeUntil} from 'rxjs/operators';
         }
     ]
 })
-export class DropdownSearchComponent extends StyleBase implements OnInit, ControlValueAccessor {
+export class DropdownSearchComponent extends FusionBaseComponent implements OnInit, ControlValueAccessor {
     @Input() autoComplete: boolean;
     @Input() search: boolean;
     @Input() placeholder = 'Search';

@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, ViewChild, SimpleChanges, AfterViewInit} from '@angular/core';
 import {isNull} from '@ironsource/fusion-ui/utils';
-import {StyleBase, StyleVersion} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
 import {BehaviorSubject, fromEvent, Observable, Subject} from 'rxjs';
 import {map, startWith, switchMap} from 'rxjs/operators';
 
@@ -10,7 +10,7 @@ import {map, startWith, switchMap} from 'rxjs/operators';
     styleUrls: ['./video-player.component.scss', './video-player.component-v2.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class VideoPlayerComponent extends StyleBase implements OnInit, AfterViewInit, OnChanges {
+export class VideoPlayerComponent extends FusionBaseComponent implements OnInit, AfterViewInit, OnChanges {
     @ViewChild('videoPlayer') videoPlayer;
     @Input() src: string;
     @Input() width = '100%';

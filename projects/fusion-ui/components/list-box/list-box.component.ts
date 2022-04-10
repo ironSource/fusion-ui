@@ -4,7 +4,7 @@ import {ListBoxOption} from './entities/list-box-option';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {ListBoxModes} from './entities/list-box-modes';
 import {detectChangesDecorator} from '@ironsource/fusion-ui/decorators';
-import {StyleBase, StyleVersion} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
@@ -21,7 +21,7 @@ import {map, startWith} from 'rxjs/operators';
         }
     ]
 })
-export class ListBoxComponent extends StyleBase implements OnInit, ControlValueAccessor {
+export class ListBoxComponent extends FusionBaseComponent implements OnInit, ControlValueAccessor {
     options: ListBoxOption[];
     isDisabled: boolean;
     @Input() mappingOptions: any = {id: 'id', displayText: 'displayText'};

@@ -14,7 +14,7 @@ import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {BehaviorSubject, of} from 'rxjs';
 import {DomSanitizer} from '@angular/platform-browser';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
 import {delay, startWith} from 'rxjs/operators';
 import {isString} from '@ironsource/fusion-ui/utils';
 import {ToggleLabel} from './toggle.config';
@@ -32,7 +32,7 @@ import {ToggleLabel} from './toggle.config';
         }
     ]
 })
-export class ToggleComponent extends StyleBase implements OnInit, ControlValueAccessor {
+export class ToggleComponent extends FusionBaseComponent implements OnInit, ControlValueAccessor {
     @Input()
     set label(label: ToggleLabel) {
         this._label = label;

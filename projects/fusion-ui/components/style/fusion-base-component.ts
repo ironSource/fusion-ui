@@ -8,7 +8,7 @@ import {BehaviorSubject, Subject} from 'rxjs';
 
 /* eslint-disable @angular-eslint/directive-class-suffix */
 @Directive()
-export abstract class StyleBase implements AfterViewInit, OnDestroy {
+export abstract class FusionBaseComponent implements AfterViewInit, OnDestroy {
     onDestroy$ = new Subject<void>();
 
     styleVersion = StyleVersion;
