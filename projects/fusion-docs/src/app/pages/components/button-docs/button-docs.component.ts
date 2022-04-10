@@ -106,10 +106,6 @@ export class ButtonDocsComponent implements OnInit {
         this.docLayoutService.updateLayoutHeaderTitle({
             text: 'Button'
         });
-
-        this.selectedVersion$.subscribe((styleVersion: StyleVersion) => {
-            this.router.navigate(['docs/components/button']);
-        });
     }
 
     onTestClick() {
