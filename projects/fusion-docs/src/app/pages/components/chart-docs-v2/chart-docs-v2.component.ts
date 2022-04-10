@@ -21,7 +21,7 @@ import {takeUntil} from 'rxjs/operators';
 import {EXAMPLE_DATA_7_DAYS_MOCK, EXAMPLE_DATA_MOCK, EXAMPLE_DATA_PIE_MOCK} from '../chart-docs/mocks/chart-example-data-mock';
 import {FormControl} from '@angular/forms';
 import {Router} from '@angular/router';
-import {ChartType} from '../../../../../../fusion-ui/src/lib/components/ui-components/chart/entities/chart-type.enum';
+import {ChartType} from '@ironsource/fusion-ui';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
 
 @Component({

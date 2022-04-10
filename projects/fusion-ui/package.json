@@ -1,6 +1,6 @@
 {
     "name": "@ironsource/fusion-ui",
-    "version": "1.1.0",
+    "version": "2.0.0-rc.2",
     "dependencies": {
         "chart.js": "^3.5.1",
         "tslib": "^2.0.0",
@@ -12,6 +12,20 @@
         "vue/v2/core.js",
         "vue/v3/core.js",
         "native/core/main.js"
+    ],
+    "sharedEntities": [
+        "./services/api",
+        "./services/cache",
+        "./services/version",
+        "./components/svg",
+        "./components/icon",
+        "./components/tooltip",
+        "./components/dropdown",
+        "./components/modal",
+        "./components/button",
+        "./components/date",
+        "./components/datepicker",
+        "./components/table"
     ],
     "exports": {
         "./react/core": {

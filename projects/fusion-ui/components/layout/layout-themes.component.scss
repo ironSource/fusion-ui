@@ -1,0 +1,50 @@
+/*!
+ * Created on 2020.12.6 By Andy Kononenko (andyk@ironsrc.com)
+ */
+
+@import '../../src/style/scss/vars/vars';
+
+:host{
+    // use light theme
+    &.fu-light-theme{
+        // region Sidebar
+        // set vars data for light theme
+        --layout-sidebar-border-right: solid 1px #{ $fu-light-300};
+        --layout-sidebar-backgroung-color: #{$White};
+        --layout-sidebar-delimiters-border: solid 1px #{ $fu-light-300};
+
+        // user data in mobile
+        --layout-sidebar-userdata-delimiters-border: solid 1px #{ $fu-light-300};
+        --layout-sidebar-user-data-color: #{ $fu-dark-500};
+        --layout-sidebar-user-logout-icon-color: rgba(13,10,140,0.5);
+        // endregion
+
+        // region header
+        --layout-header-rigth-panel-border-right: none;
+        // endregion
+
+        // region menu
+        --sidebar-menu-item-color: #{ $fu-dark-500};
+        --sidebar-menu-link-item-color: #{ $fu-primary-500};
+        --sidebar-menu-item-hover-background-color: #{ $fu-light-100};
+        --sidebar-menu-item-icon-arrow-color: rgb(13, 20, 140, 0.5);
+        --sidebar-menu-item-link-icon-color: rgb(13, 20, 140, 0.5);
+        --sidebar-menu-item-open-color: #{ $fu-primary-500};
+        --sidebar-menu-item-open-background-color: #{$White};
+        --sidebar-menu-mobile-background-color: #{$White};
+        --sidebar-menu-item-selected-border-color: #{ $fu-primary-300};
+
+        --sidebar-menu-sub-item-title-opacity: 1;
+        --sidebar-menu-sub-item-title-color: #{ $fu-light-700};
+        --sidebar-menu-sub-menu-item-color: #{ $fu-light-900};
+        --sidebar-menu-subitem-hover-background-color: #{ $fu-light-100};
+        --sidebar-menu-subitem-selected-color: #{ $fu-primary-500};
+        --sidebar-menu-subitem-selected-background-color: #{ $fu-primary-100};
+
+        --sidebar-menu-subitem-mobile-border-top: solid 1px #{ $fu-light-300};
+
+        --sidebar-menu-item-mobile-selected-color: #{ $fu-dark-500};
+        --sidebar-menu-mobile-selected-background-color: #{$fu-primary-100};
+        // endregion
+    }
+}

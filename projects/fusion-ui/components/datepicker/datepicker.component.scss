@@ -1,0 +1,109 @@
+@import '../../src/style/scss/vars/vars';
+@import '../../src/style/scss/vars/mixins';
+@import '../../src/style/scss/vars/border';
+
+$datepickerWidth: 250px;
+$partsLeftMargin: 20px;
+
+:host{
+  @extend %reset;
+  position: relative;
+  display: inline-block;
+  &[hidden]{
+      display: none;
+  }
+  fusion-input{
+    font-size: 13px;
+  }
+
+  .is-timepicker-holder{
+    display: inline-block;
+    margin-left: $partsLeftMargin;
+    fusion-input {
+     display: inline-block;
+        width: 44%;
+    }
+  }
+
+  .is-timezone-holder{
+    display: inline-block;
+    margin-left: $partsLeftMargin;
+    fusion-dropdown{
+      display: inline-table;
+      width: 255px;
+    }
+  }
+
+  .is-datepicker-holder{
+    position: absolute;
+    @extend %notificationLayer;
+    display: none;
+    &.opened{
+      display: block;
+    }
+    @include size($datepickerWidth);
+    padding: $box-padding;
+    border-radius: $borderRadius;
+    background-color: $White;
+    box-shadow: $box-shadow;
+    color: $dark-300;
+
+    .prev{
+      transform: rotate(180deg);
+    }
+
+    .is-calendar{
+      border-spacing: 0;
+      width: 100%;
+      @include icon-style('arrow-right',$light-800,(width: 6px, height: 10px), true, true);
+      .prev,
+      .next{
+        cursor: pointer;
+      }
+      .month{
+        @extend %font3;
+      }
+      .dow{
+        @extend %font6;
+        padding-top: 9px;
+        border-bottom: solid 1px $light-500;
+      }
+      .day{
+        @extend %font7;
+        text-align: center;
+        @include size(28px);
+        cursor: pointer;
+        &:hover{
+          background-color: $primary-200;
+        }
+        &.today{
+          text-decoration: var(--calendar-today-text-decoration, underline);
+        }
+        &.active{
+          color: $White;
+          background-color: $primary-500;
+          font-weight: bold;
+          &:hover{
+            background-color: $primary-500;
+          }
+        }
+        &.disabled{
+          color: $light-800;
+          @extend %disabled;
+          &:hover{
+            background-color: transparent;
+          }
+        }
+      }
+    }
+  }
+
+  .error-msg {
+    @extend %font7;
+    color: $negative-500;
+    margin-top: 3px;
+  }
+}
+
+
+

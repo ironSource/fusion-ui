@@ -1,0 +1,67 @@
+@import '../../../../src/style/scss/vars/vars';
+@import '../../../../src/style/scss/vars/mixins';
+
+$border: solid 1px $fu-light-300;
+$userNameColor: $fu-light-900;
+$menuItemColor: $fu-dark-300;
+$menuItemHoverColor: $fu-light-100;
+$menuItemIconSize: 15px;
+
+:host{
+    display: none;
+    position: absolute;
+    z-index: getZIndexLayerOffset(application, 10);
+    width: var(--layout-header-menu-width, 324px);
+    top: 6px;
+    right: 8px;
+    border-radius: 8px;
+    background-color: $White;
+    box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.15);
+    padding: 4px;
+    &.fu-layout-header-menu{
+        display: initial;
+    }
+    .fu-layout-header-menu-holder{
+        .fu-layout-header-menu-user{
+            color: var(--layout-header-menu-user-name-color, $userNameColor);
+            padding: 11px 21px 4px;
+            .fu-layout-header-menu-user-name{
+                @extend %truncate;
+                @extend %font-subtitle;
+                line-height: 1;
+            }
+            .fu-layout-header-menu-user-email{
+                @extend %truncate;
+                @extend %font-body;
+                line-height: 1;
+            }
+            &.fu-layout-header-menu-delimiter:after{
+                content: "";
+                display: block;
+                height: 8px;
+                border-bottom: var(--header-border-bottom, $border);
+                margin: 0 -24px;
+            }
+        }
+        .fu-layout-header-menu-item{
+            height: var(--layout-header-menu-item-height, 40px);
+            border-radius: var(--layout-header-menu-item-border-radius, 4px);
+            padding: var(--layout-header-menu-item-border-padding, 0 20px);
+            @extend %font-body;
+            @include flex-direction("center");
+            color: var(--layout-header-menu-item-color, $menuItemColor);
+            text-decoration: none;
+            @include icon-style('fu-layout-header-menu-item-icon', var(--layout-header-menu-item-icon-color, currentColor), var(--layout-header-menu-item-icon-size, $menuItemIconSize), false, true) {
+                margin-right: 1em;
+                padding-top: .4em;
+            }
+            &:visited,
+            &:active,
+            &:hover{
+                color: var(--layout-header-menu-item-color, $menuItemColor);
+                background-color: var(--layout-header-menu-item-hover-color, $menuItemHoverColor);
+                cursor: pointer;
+            }
+        }
+    }
+}

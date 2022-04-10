@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {AbTestOptionComponent} from './ab-test-option.component';
-import {IconStatusModule} from '../../../../../fusion-ui/src/lib/components/ui-components/icon-status/icon-status.module';
+import {IconStatusModule} from '@ironsource/fusion-ui';
 
 @NgModule({
     declarations: [AbTestOptionComponent],

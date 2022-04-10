@@ -1,0 +1,126 @@
+@import '../../../src/style/scss/vars/vars';
+@import '../../../src/style/scss/vars/mixins';
+@import '../../../src/style/scss/vars/colors';
+
+$bodyBorder: 1px solid $light-500;
+
+%left-sticky {
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 100%;
+}
+
+:host.fusion-style-v1 {
+    .expand-cell {
+        text-align: center;
+        vertical-align: middle;
+        border-top: $bodyBorder;
+        border-bottom: $bodyBorder;
+        @include icon-style(
+            'arrow-right',
+            $dark-300,
+            (
+                height: 8px,
+                width: 5px
+            ),
+            false,
+            true
+        );
+        &.total-row {
+            border-bottom: solid 1px $light-700;
+        }
+        &.expanded {
+            @include icon-style(
+                'arrow-right',
+                $dark-300,
+                (
+                    height: 8px,
+                    width: 5px
+                ),
+                false,
+                true,
+                90
+            );
+        }
+        fusion-icon {
+            cursor: pointer;
+        }
+    }
+    &.is-with-totals {
+        td {
+            background-color: $light-100;
+        }
+    }
+    &.is-row-selected {
+        background-color: $primary-100;
+    }
+    &.is-row-disabled,
+    &.is-row-in-request {
+        td {
+            color: $light-700;
+            pointer-events: none;
+            fusion-icon {
+                opacity: 0.6;
+            }
+        }
+    }
+    &:nth-of-type(even) {
+        background-color: $light-100;
+    }
+}
+
+:host-context(.on-scroll-right).fusion-style-v1 {
+    .sticky-left {
+        &.display-shadow-on-scroll {
+            &::after {
+                @extend %left-sticky;
+                width: 1px;
+                right: 0;
+                box-shadow: 2px 3px 5px 0 rgba(0, 0, 0, 0.6);
+            }
+            &.after-sticky::before {
+                content: '';
+                width: 100%;
+                height: 26px;
+                position: absolute;
+                bottom: -27px;
+                left: 0;
+                box-shadow: 4px 3px 5px 0 $light-500;
+                background-color: $light-100;
+            }
+        }
+    }
+}
+
+:host-context(.v1).fusion-style-v1 {
+    &:nth-of-type(even) {
+        background-color: $light-100;
+    }
+    &:hover {
+        background-color: $light-300;
+    }
+}
+
+:host-context(.v2).fusion-style-v1 {
+    td {
+        background-color: $White;
+        &.inner-row {
+            background-color: $light-100;
+        }
+        &.sticky-left {
+            position: sticky;
+            left: 0;
+            z-index: 2;
+        }
+        &.cell-tooltip {
+            @include marked-corner($positive-500, remCalc(8px), bottom-right);
+        }
+    }
+
+    &:hover {
+        td {
+            background-color: $light-300;
+        }
+    }
+}

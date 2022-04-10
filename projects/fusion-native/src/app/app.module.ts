@@ -6,8 +6,8 @@ import {components, services, enums} from './app-config';
 import {WRAPPER_TOKEN} from './lib/components/wrapper/wrapper-entities';
 import {WrapperModule} from './lib/components/wrapper/wrapper.module';
 import {WrapperComponent} from './lib/components/wrapper/wrapper.component';
-import {WindowService} from '../../../fusion-ui/src/lib/services/window/window.service';
-import {NATIVE_TOKEN} from '../../../fusion-ui/src/lib/decorators/native-token';
+import {WindowService} from '@ironsource/fusion-ui/services/window';
+import {NATIVE_TOKEN} from '@ironsource/fusion-ui/decorators';
 import {EnumHelpers} from './lib/utils/enumHelper';
 import {TableTransformer} from './lib/utils/table-transformer';
 

@@ -2,7 +2,7 @@
  * Created on 2021.3.16 By Andy Kononenko (andyk@ironsrc.com)
  */
 
-import {TableColumnTypeEnum} from '../../../../../../fusion-ui/src/lib/components/ui-components/table/entities';
+import {TableColumnTypeEnum} from '@ironsource/fusion-ui';
 
 export const CSS_CUSTOM_PROPERTIES = {
     columns: [

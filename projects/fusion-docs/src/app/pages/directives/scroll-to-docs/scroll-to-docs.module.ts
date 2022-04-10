@@ -6,7 +6,7 @@ import {ExampleBlockModule} from '../../../components/example-block/example-bloc
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ReactiveFormsModule} from '@angular/forms';
-import {ScrollToModule, InputModule, ButtonModule} from 'projects/fusion-ui/src/public-api';
+import {ScrollToModule, InputModule, ButtonModule} from '@ironsource/fusion-ui';
 
 const routes: Routes = [{path: '', component: ScrollToDocsComponent}];
 

@@ -1,93 +1,83 @@
-import {TableComponent} from '../../../fusion-ui/src/lib/components/ui-components/table/table/table.component';
-import {AccordionComponent} from '../../../fusion-ui/src/lib/components/ui-components/accordion/accordion.component';
-import {AlertComponent} from '../../../fusion-ui/src/lib/components/ui-components/alert/alert.component';
-import {CheckboxComponent} from '../../../fusion-ui/src/lib/components/ui-components/checkbox/checkbox.component';
-import {DatepickerComponent} from '../../../fusion-ui/src/lib/components/ui-components/datepicker/datepicker.component';
-import {DropdownComponent} from '../../../fusion-ui/src/lib/components/ui-components/dropdown/dropdown/dropdown.component';
-import {MonthPickerComponent} from '../../../fusion-ui/src/lib/components/ui-components/month-picker/month-picker.component';
-import {DropdownDualMultiSelectComponent} from '../../../fusion-ui/src/lib/components/ui-components/dropdown-dual-multi-select/dropdown-dual-multi-select.component';
-// prettier-ignore
-import {
-    MultiDropdownComponent
-} from '../../../fusion-ui/src/lib/components/ui-components/dropdown/multi-dropdown/multi-dropdown.component';
-// prettier-ignore
-import {
-    AddboxDropdownComponent
-} from '../../../fusion-ui/src/lib/components/ui-components/dropdown/addbox-dropdown/addbox-dropdown.component';
-// prettier-ignore
-import {
-    IconHeaderActionComponent
-} from '../../../fusion-ui/src/lib/components/ui-components/icon-header-action/icon-header-action.component';
-
-import {FlagComponent} from '../../../fusion-ui/src/lib/components/ui-components/flag/flag.component';
-import {HeaderComponent} from '../../../fusion-ui/src/lib/components/ui-components/header/header.component';
-import {HeaderOverlayComponent} from '../../../fusion-ui/src/lib/components/ui-components/header-overlay/header-overlay.component';
-import {IconComponent} from '../../../fusion-ui/src/lib/components/ui-components/icon/icon.component';
-import {InputComponent} from '../../../fusion-ui/src/lib/components/ui-components/input/input.component';
-import {InputInlineComponent} from '../../../fusion-ui/src/lib/components/ui-components/input-inline/input-inline.component';
-import {LayoutV1Component} from '../../../fusion-ui/src/lib/components/ui-components/layout-v1/layout-v1.component';
-import {LayoutComponent} from '../../../fusion-ui/src/lib/components/ui-components/layout/layout.component';
-import {ListBoxComponent} from '../../../fusion-ui/src/lib/components/ui-components/list-box/list-box.component';
-import {LoaderComponent} from '../../../fusion-ui/src/lib/components/ui-components/loader/loader.component';
-import {LoaderInlineComponent} from '../../../fusion-ui/src/lib/components/ui-components/loader-inline/loader-inline.component';
-import {MenuComponent} from '../../../fusion-ui/src/lib/components/ui-components/menu/menu/menu.component';
-import {ModalComponent} from '../../../fusion-ui/src/lib/components/ui-components/modal/modal/modal.component';
-import {NotificationComponent} from '../../../fusion-ui/src/lib/components/ui-components/notification/notification.component';
-import {PopupComponent} from '../../../fusion-ui/src/lib/components/ui-components/popup/popup.component';
-import {RadioComponent} from '../../../fusion-ui/src/lib/components/ui-components/radio/radio.component';
-import {RadioGroupComponent} from '../../../fusion-ui/src/lib/components/ui-components/radio-group/radio-group.component';
-import {SvgComponent} from '../../../fusion-ui/src/lib/components/ui-components/svg/svg.component';
-import {TagComponent} from '../../../fusion-ui/src/lib/components/ui-components/tag/tag.component';
-import {TagsInputComponent} from '../../../fusion-ui/src/lib/components/ui-components/dropdown/tags-input/tags-input.component';
-import {ToggleComponent} from '../../../fusion-ui/src/lib/components/ui-components/toggle/toggle.component';
-import {TooltipComponent} from '../../../fusion-ui/src/lib/components/ui-components/tooltip/tooltip.component';
-import {VideoPlayerComponent} from '../../../fusion-ui/src/lib/components/ui-components/video-player/video-player.component';
-import {ChartComponent} from '../../../fusion-ui/src/lib/components/ui-components/chart/chart.component';
-import {ChartLabelsComponent} from '../../../fusion-ui/src/lib/components/ui-components/chart-labels/chart-labels.component';
-import {IconSelectListComponent} from '../../../fusion-ui/src/lib/components/ui-components/icon-select-list/icon-select-list.component';
-import {IconStatusComponent} from '../../../fusion-ui/src/lib/components/ui-components/icon-status/icon-status.component';
-import {SwitcherComponent} from '../../../fusion-ui/src/lib/components/ui-components/switcher/switcher.component';
-import {CalendarComponent} from '../../../fusion-ui/src/lib/components/ui-components/date/calendar/calendar.component';
-import {DaterangeComponent} from '../../../fusion-ui/src/lib/components/ui-components/date/daterange/daterange.component';
-import {MobilePreviewerComponent} from '../../../fusion-ui/src/lib/components/ui-components/mobile-previewer/mobile-previewer.component';
-import {StatusLabelComponent} from '../../../fusion-ui/src/lib/components/ui-components/status-label/status-label.component';
-import {ToastComponent} from '../../../fusion-ui/src/lib/components/ui-components/toast/toast.component';
-import {TabsComponent} from '../../../fusion-ui/src/lib/components/ui-components/tabs/tabs.component';
-import {SidebarComponent} from '../../../fusion-ui/src/lib/components/ui-components/sidebar/sidebar.component';
-import {SidebarMenuComponent} from '../../../fusion-ui/src/lib/components/ui-components/sidebar/sidebar-menu/sidebar-menu.component';
+import {TableComponent} from '@ironsource/fusion-ui/components/table';
+import {AccordionComponent} from '@ironsource/fusion-ui/components/accordion';
+import {AlertComponent} from '@ironsource/fusion-ui/components/alert';
+import {CheckboxComponent} from '@ironsource/fusion-ui/components/checkbox';
+import {DatepickerComponent} from '@ironsource/fusion-ui/components/datepicker';
+import {DropdownComponent} from '@ironsource/fusion-ui/components/dropdown';
+import {MonthPickerComponent} from '@ironsource/fusion-ui/components/month-picker';
+import {DropdownDualMultiSelectComponent} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
+import {MultiDropdownComponent} from '@ironsource/fusion-ui/components/dropdown';
+import {AddboxDropdownComponent} from '@ironsource/fusion-ui/components/dropdown';
+import {IconHeaderActionComponent} from '@ironsource/fusion-ui/components/icon-header-action';
+import {FlagComponent} from '@ironsource/fusion-ui/components/flag';
+import {HeaderComponent} from '@ironsource/fusion-ui/components/header';
+import {HeaderOverlayComponent} from '@ironsource/fusion-ui/components/header-overlay';
+import {IconComponent} from '@ironsource/fusion-ui/components/icon';
+import {InputComponent} from '@ironsource/fusion-ui/components/input';
+import {InputInlineComponent} from '@ironsource/fusion-ui/components/input-inline';
+import {LayoutV1Component} from '@ironsource/fusion-ui/components/layout-v1';
+import {LayoutComponent} from '@ironsource/fusion-ui/components/layout';
+import {ListBoxComponent} from '@ironsource/fusion-ui/components/list-box';
+import {LoaderComponent} from '@ironsource/fusion-ui/components/loader';
+import {LoaderInlineComponent} from '@ironsource/fusion-ui/components/loader-inline';
+import {MenuComponent} from '@ironsource/fusion-ui/components/menu';
+import {ModalComponent} from '@ironsource/fusion-ui/components/modal';
+import {NotificationComponent} from '@ironsource/fusion-ui/components/notification';
+import {PopupComponent} from '@ironsource/fusion-ui/components/popup';
+import {RadioComponent} from '@ironsource/fusion-ui/components/radio';
+import {RadioGroupComponent} from '@ironsource/fusion-ui/components/radio-group';
+import {SvgComponent} from '@ironsource/fusion-ui/components/svg';
+import {TagComponent} from '@ironsource/fusion-ui/components/tag';
+import {TagsInputComponent} from '@ironsource/fusion-ui/components/dropdown';
+import {ToggleComponent} from '@ironsource/fusion-ui/components/toggle';
+import {TooltipComponent} from '@ironsource/fusion-ui/components/tooltip';
+import {VideoPlayerComponent} from '@ironsource/fusion-ui/components/video-player';
+import {ChartComponent} from '@ironsource/fusion-ui/components/chart';
+import {ChartLabelsComponent} from '@ironsource/fusion-ui/components/chart-labels';
+import {IconSelectListComponent} from '@ironsource/fusion-ui/components/icon-select-list';
+import {IconStatusComponent} from '@ironsource/fusion-ui/components/icon-status';
+import {SwitcherComponent} from '@ironsource/fusion-ui/components/switcher';
+import {CalendarComponent} from '@ironsource/fusion-ui/components/date';
+import {DaterangeComponent} from '@ironsource/fusion-ui/components/date';
+import {MobilePreviewerComponent} from '@ironsource/fusion-ui/components/mobile-previewer';
+import {StatusLabelComponent} from '@ironsource/fusion-ui/components/status-label';
+import {ToastComponent} from '@ironsource/fusion-ui/components/toast';
+import {TabsComponent} from '@ironsource/fusion-ui/components/tabs';
+import {SidebarComponent} from '@ironsource/fusion-ui/components/sidebar';
+import {SidebarMenuComponent} from '@ironsource/fusion-ui/components/sidebar';
+import {ModalService} from '@ironsource/fusion-ui/components/modal';
+import {NotificationService} from '@ironsource/fusion-ui/components/notification';
+import {TooltipService} from '@ironsource/fusion-ui/components/tooltip';
+import {PopupService} from '@ironsource/fusion-ui/components/popup';
+import {CalendarService} from '@ironsource/fusion-ui/components/date';
+import {DaterangeService} from '@ironsource/fusion-ui/components/date';
+import {ToastService} from '@ironsource/fusion-ui/components/toast';
 
 // Services
-import {ApiService} from '../../../fusion-ui/src/lib/services/api/api.service';
-import {CacheService} from '../../../fusion-ui/src/lib/services/cache/cache.service';
-import {LogService} from '../../../fusion-ui/src/lib/services/log/log.service';
-import {UserService} from '../../../fusion-ui/src/lib/services/user/user.service';
-import {PermissionsService} from '../../../fusion-ui/src/lib/services/permissions/permissions.service';
-import {ModalService} from '../../../fusion-ui/src/lib/components/ui-components/modal/modal.service';
-import {NotificationService} from '../../../fusion-ui/src/lib/components/ui-components/notification/notification.service';
-import {TooltipService} from '../../../fusion-ui/src/lib/components/ui-components/tooltip/tooltip.service';
-import {PopupService} from '../../../fusion-ui/src/lib/components/ui-components/popup/popup.service';
-import {CalendarService} from '../../../fusion-ui/src/lib/components/ui-components/date/calendar/calendar.service';
-import {DaterangeService} from '../../../fusion-ui/src/lib/components/ui-components/date/daterange/daterange.service';
-import {ToastService} from '../../../fusion-ui/src/lib/components/ui-components/toast/toast.service';
+import {ApiService} from '@ironsource/fusion-ui/services/api/api.service';
+import {CacheService} from '@ironsource/fusion-ui/services/cache/cache.service';
+import {LogService} from '@ironsource/fusion-ui/services/log/log.service';
+import {UserService} from '@ironsource/fusion-ui/services/user/user.service';
+import {PermissionsService} from '@ironsource/fusion-ui/services/permissions/permissions.service';
+import {ApiResponseType} from '@ironsource/fusion-ui/services/api/api-entities';
+import {CacheType} from '@ironsource/fusion-ui/services/cache/cache-entities';
+import {ColorsService} from '@ironsource/fusion-ui/services/colors/colors.service';
 
 // enums
-import {NotificationType} from '../../../fusion-ui/src/lib/components/ui-components/notification/notification-type';
-import {DatepickerMode} from '../../../fusion-ui/src/lib/components/ui-components/datepicker/datepicker-mode';
-import {HeaderSizes} from '../../../fusion-ui/src/lib/components/ui-components/header-overlay/header-sizes.enum';
-import {InlineInputType} from '../../../fusion-ui/src/lib/components/ui-components/input-inline/inline-input-type.enum';
-import {ListBoxModes} from '../../../fusion-ui/src/lib/components/ui-components/list-box/entities/list-box-modes';
-import {PopupLocation} from '../../../fusion-ui/src/lib/components/ui-components/popup/popup.entity';
-import {TableColumnTypeEnum} from '../../../fusion-ui/src/lib/components/ui-components/table/entities';
-import {TooltipPosition, TooltipType} from '../../../fusion-ui/src/lib/components/ui-components/tooltip/tooltip.entities';
-import {FormControlStatus} from '../../../fusion-ui/src/lib/directives/error-message/error-message.config';
-import {ApiResponseType} from '../../../fusion-ui/src/lib/services/api/api-entities';
-import {CacheType} from '../../../fusion-ui/src/lib/services/cache/cache-entities';
-import {ColorsService} from '../../../fusion-ui/src/lib/services/colors/colors.service';
-import {SwitcherMode} from '../../../fusion-ui/src/lib/components/ui-components/switcher/entities/switcher-mode.enum';
-import {DaterangePresets} from '../../../fusion-ui/src/lib/components/ui-components/date/entities/daterange-presets.enum';
-import {MobileOrientation} from '../../../fusion-ui/src/lib/components/ui-components/mobile-previewer/mobile-orientation.enum';
-import {TextareaComponent} from '../../../fusion-ui/src/lib/components/ui-components/textarea/textarea.component';
-import {ButtonComponent} from '../../../fusion-ui/src/lib/components/ui-components/button/button.component';
+import {NotificationType} from '@ironsource/fusion-ui/components/notification';
+import {DatepickerMode} from '@ironsource/fusion-ui/components/datepicker';
+import {HeaderSizes} from '@ironsource/fusion-ui/components/header-overlay';
+import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline';
+import {ListBoxModes} from '@ironsource/fusion-ui/components/list-box';
+import {PopupLocation} from '@ironsource/fusion-ui/components/popup';
+import {TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table';
+import {TooltipPosition, TooltipType} from '@ironsource/fusion-ui/components/tooltip';
+import {FormControlStatus} from '@ironsource/fusion-ui/components/error-message';
+import {SwitcherMode} from '@ironsource/fusion-ui/components/switcher';
+import {DaterangePresets} from '@ironsource/fusion-ui/components/date';
+import {MobileOrientation} from '@ironsource/fusion-ui/components/mobile-previewer';
+import {TextareaComponent} from '@ironsource/fusion-ui/components/textarea';
+import {ButtonComponent} from '@ironsource/fusion-ui/components/button';
 
 const PREFIX = 'native-fusion';
 

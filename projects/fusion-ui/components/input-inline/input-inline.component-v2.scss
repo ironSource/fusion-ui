@@ -1,0 +1,59 @@
+@import '../../src/style/scss/vars/vars';
+@import '../../src/style/scss/vars/border';
+@import '../../src/style/scss/vars/mixins';
+
+:host:not(.fusion-style-v1) {
+    @extend %border-box-normalize;
+    .inline-input-wrapper {
+        & > div {
+            margin-top: 2px;
+            &.is-loading,
+            &.is-edit-mode{
+                margin-top: 0;
+            }
+            &.is-label{
+                padding-right: 16px;
+            }
+        }
+
+        .is-currency{
+            &::first-letter {
+                padding-right: 0.3em;
+            }
+        }
+
+        .truncate{
+            @extend %truncate;
+            &.hidden {
+                display: none;
+            }
+        }
+
+        .is-readonly{
+            cursor: default;
+        }
+
+        @include icon-style('icon-edit', $fu-light-700, 14px, true, true) {
+            visibility: hidden;
+            @extend %absoluteVerticalAlign;
+            right: 8px;
+            cursor: pointer;
+        }
+        @include icon-style('icon-edit', $fu-dark-700, 14px, true, true, 0, true);
+
+        @include icon-style('icon-save', $fu-light-700, 12px, true, true) {
+            @extend %absoluteVerticalAlign;
+            right: 13px;
+            cursor: pointer;
+        }
+        @include icon-style('icon-save', $fu-primary-500, 12px, true, true, 0, true);
+    }
+}
+
+:host-context(tr:hover):not(.fusion-style-v1){
+    .inline-input-wrapper {
+        fusion-icon.icon-edit {
+            visibility: visible;
+        }
+    }
+}

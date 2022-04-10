@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {TableColumnTypeEnum} from '../../../../../../fusion-ui/src/public-api';
+import {TableColumnTypeEnum} from '@ironsource/fusion-ui';
 
 @Component({
     selector: 'fusion-typography-docs',

@@ -3,8 +3,8 @@ import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {WrapperComponent} from './wrapper.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {WRAPPER_TOKEN} from './wrapper-entities';
-import {ButtonModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/button/button.module';
-import {ButtonComponent} from '../../../../../../fusion-ui/src/lib/components/ui-components/button/button.component';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button';
+import {ButtonComponent} from '@ironsource/fusion-ui/components/button';
 
 describe('WrapperComponent', () => {
     let component: WrapperComponent;

@@ -1,0 +1,510 @@
+@import '../../src/style/scss/vars/vars';
+@import '../../src/style/scss/vars/border';
+@import '../../src/style/scss/vars/mixins';
+
+$regularV2Height: 40px;
+$regularV2Padding: 10px;
+
+$smallV2Height: 32px;
+$smallV2Padding: 8px 10px;
+
+%actionButtonDisabled {
+    pointer-events: none;
+    cursor: default;
+    color: $fu-light-700;
+}
+
+%iconLeft{
+    left: 10px;
+    & + input {
+        padding-left: 32px;
+        padding-right: 10px;
+    }
+}
+
+%iconRight{
+    right: 10px;
+    & + input {
+        padding-left: 10px;
+        padding-right: 32px;
+    }
+}
+
+:host:not(.fusion-style-v1) {
+    @extend %reset;
+    .fu-input-holder {
+        display: inline-flex;
+        flex-shrink: 1;
+        position: relative;
+        flex-direction: row;
+        align-items: stretch;
+        align-content: stretch;
+        flex-flow: row nowrap;
+        width: 100%;
+        line-height: 23px;
+        &.fu--disabled {
+            cursor: not-allowed;
+
+            &:hover {
+                background-color: $fu-light-100;
+            }
+        }
+
+        input {
+            @extend %font-body;
+            border: none;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: $fu-light-100;
+            padding: $regularV2Padding;
+            height: $regularV2Height;
+            color: $fu-dark-300;
+            width: 100%;
+
+            &:-webkit-autofill,
+            &:-webkit-autofill:hover,
+            &:-webkit-autofill:focus,
+            &:-webkit-autofill:active {
+                -webkit-box-shadow: 0 0 0 30px $fu-light-100 inset !important;
+            }
+
+            &::placeholder {
+                @extend %font-body;
+                color: $fu-light-800;
+            }
+
+            &:hover {
+                border-bottom-color: $fu-light-800;
+                background-color: $fu-light-200;
+            }
+
+            &:active,
+            &:focus {
+                border-bottom: solid 2px $fu-primary-500;
+                outline: none;
+                padding-bottom: 8px;
+
+                &:hover {
+                    background-color: $fu-light-100;
+                }
+            }
+
+            &.disabled,
+            &:disabled,
+            &[readonly] {
+                @extend %disabled;
+                color: $fu-dark-200;
+
+                &:hover {
+                    background-color: $fu-light-100;
+                }
+
+                &:focus {
+                    border-bottom: none;
+                    padding-bottom: 10px;
+                }
+            }
+
+            &.is-error {
+                background-color: $fu-negative-100;
+
+                &:active,
+                &:focus {
+                    background-color: $fu-light-100;
+                }
+            }
+
+            &.small {
+                height: $smallV2Height;
+            }
+            &.fu-button {
+                padding-right: 129px;
+            }
+
+            &.is-type-pass {
+                padding-right: 30px;
+            }
+        }
+
+        // search icon
+        &.fu-has-search-icon {
+            // search on left position
+            .fu-search-icon-holder {
+                position: absolute;
+                left: 12px;
+                z-index: 2;
+                top: var(--search-icon-top, 12px);
+                color: var(--search-icon-color, #{$fu-light-700});
+                @include icon-style('icon-search', currentColor, 12px, false, true);
+
+                &.focused {
+                    color: var(--search-icon-focused-color, #{$fu-primary-500});
+                    @include icon-style('icon-search', currentColor, 12px, false, true);
+                }
+            }
+
+            input {
+                padding-left: 35px;
+                padding-right: 10px;
+            }
+            .fu-clear-input {
+                cursor: pointer;
+                position: absolute;
+                left: 12px;
+                z-index: 2;
+                top: 11px;
+                @include icon-style('icon-clear-search', $fu-light-500, 12px, false, true);
+
+                &.focused {
+                    @include icon-style('icon-clear-search', $fu-light-500, 12px, false, true);
+                }
+
+                @include icon-style('icon-clear-search', $fu-light-900, 12px, false, true, 0, true);
+            }
+
+            &.small {
+                .fu-search-icon-holder {
+                    top: var(--search-icon-top, 8px);
+                }
+                .fu-clear-input {
+                    top: 8px;
+                }
+                i.loading{
+                    top: 5px;
+                }
+            }
+
+            // search on right position
+            &.fu-search-icon-right-position {
+                .fu-search-icon-holder {
+                    right: 12px;
+                    left: inherit;
+                }
+
+                input {
+                    padding-left: 10px;
+                    padding-right: 35px;
+                }
+                .fu-clear-input {
+                    left: inherit;
+                    right: var(--clear-input-right, 12px);
+                }
+            }
+
+            // rounded with search
+            &.fu-rounded {
+                input {
+                    height: 24px;
+                    border-radius: 12px;
+                    padding-left: 24px;
+                    padding-right: 14px;
+
+                    &:active,
+                    &:focus {
+                        background-color: $White;
+                        padding-bottom: 10px;
+                        border: solid 1px $fu-light-300;
+                        padding-left: 24px;
+                        padding-right: 13px;
+                    }
+                }
+                .fu-search-icon-holder {
+                    top: var(--search-icon-top, 4px);
+                    left: 10px;
+                    right: inherit;
+                    color: var(--search-icon-color, #{$fu-light-700});
+                    @include icon-style('icon-search', currentColor, 12px, false, true);
+
+                    &.focused {
+                        color: var(--search-icon-focused-color, #{$fu-primary-500});
+                        @include icon-style('icon-search', currentColor, 12px, false, true);
+                    }
+                }
+                .fu-clear-input {
+                    top: var(--clear-input-top, 2px);
+                    left: var(--clear-input-left, 10px);
+                    right: inherit;
+                    @include icon-style('icon-clear-search', $fu-light-500, 12px, false, true) ;
+                    @include icon-style('icon-clear-search', $fu-light-900, 12px, false, true, 0, true);
+                }
+                &.fu-search-icon-right-position {
+                    .fu-search-icon-holder {
+                        top: var(--search-icon-top, 3px);
+                        right: 10px;
+                        left: inherit;
+                    }
+                    .fu-clear-input {
+                        right: var(--clear-input-right, 7px);
+                        left: inherit;
+                    }
+
+                    input {
+                        padding-left: 12px;
+                        padding-right: 25px;
+
+                        &:active,
+                        &:focus {
+                            padding-left: 11px;
+                            padding-right: 24px;
+                        }
+                    }
+                }
+                &.medium{
+                    input {
+                        height: 32px;
+                        border-radius: 17px;
+                    }
+                    .fu-search-icon-holder{
+                        top: var(--search-icon-top, 6px);
+                    }
+                    .fu-clear-input {
+                        top: var(--clear-input-top, 7px);
+                    }
+                }
+            }
+        }
+
+        // Icon
+        i.icon {
+            @include size(14px);
+            @include icon-style(null, $fu-light-700, 14px, false, true);
+            position: absolute;
+            top: 13px;
+
+            &.left {
+                @extend %iconLeft;
+            }
+
+            &.right {
+                @extend %iconRight;
+            }
+            &.loading{
+                @extend %iconRight;
+                &.left {
+                    @extend %iconLeft;
+                }
+            }
+        }
+
+        // Validation Icon
+        .fu-validation-icon-holder {
+            position: absolute;
+            top: 13px;
+            right: 11px;
+        }
+
+        &.small {
+            i.icon {
+                top: 8px;
+            }
+            i.fu-toggle-pass {
+                top: 9px;
+            }
+            .fu-validation-icon-holder {
+                top: 10px;
+            }
+        }
+
+        &.focused {
+            .fu-validation-icon-holder {
+                display: none;
+            }
+        }
+        &.fu-error-error {
+            .fu-validation-icon-holder {
+                @include icon-style('icon-validation', $fu-negative-500, 14px, false, true);
+            }
+
+            input {
+                padding-right: 32px;
+
+                &:focus {
+                    padding-right: 10px;
+                }
+            }
+        }
+        &.fu-error-warning {
+            .fu-validation-icon-holder {
+                @include icon-style('icon-validation', $fu-neutral-500, 14px, false, true);
+            }
+
+            input {
+                background-color: $fu-neutral-100;
+                padding-right: 32px;
+
+                &:focus {
+                    padding-right: 10px;
+                }
+            }
+        }
+
+        // password toggle shown icon
+        i.fu-toggle-pass {
+            @include size(14px);
+            @include icon-style(null, $fu-light-700, 14px, false, true);
+            position: absolute;
+            top: 13px;
+            right: 12px;
+            cursor: pointer;
+        }
+
+        // action button
+        button {
+            // hide loader from v1
+            fusion-icon.loading {
+                display: none;
+            }
+
+            order: 2;
+            cursor: pointer;
+            line-height: 1;
+            box-sizing: border-box;
+            padding: 14px 10px 11px;
+            position: absolute;
+            outline: none;
+            border: none;
+            background-color: transparent;
+            color: $fu-light-700;
+            width: 129px;
+            right: 0;
+            @extend %font-bodyStrong;
+            line-height: 1.33;
+            @include icon-style('button-icon', $fu-light-700, 11px, false, true) {
+                height: 11px;
+                vertical-align: middle;
+                margin-right: 8px;
+            }
+
+            &:hover {
+                color: $fu-primary-500;
+                @include icon-style('button-icon', $fu-primary-500, 11px, false, true);
+            }
+
+            &.is-loading {
+                cursor: not-allowed;
+                text-align: right;
+                padding: 13px 10px 11px;
+                .fu-action-button-text,
+                .button-icon {
+                    display: none;
+                }
+            }
+
+            &.is-error {
+                @extend %actionButtonDisabled;
+            }
+        }
+
+        &.focused button {
+            color: $fu-primary-500;
+            @include icon-style('button-icon', $fu-primary-500, 11px, false, true);
+
+            &.is-error {
+                @extend %actionButtonDisabled;
+                @include icon-style('button-icon', $fu-light-700, 11px, false, true);
+            }
+        }
+    }
+
+    // search in dropdown
+    &.is-search-style .fu-input-holder.fu-has-search-icon {
+        input{
+            padding-left: 10px;
+            padding-right: 30px;
+        }
+        .fu-search-icon-holder,
+        .fu-clear-input {
+            display: none;
+        }
+    }
+
+    .error-msg {
+        @extend %font-captionRegular;
+        color: $fu-negative-700;
+        margin-top: 5px;
+        line-height: 14px;
+        text-align: initial;
+        &.focused {
+            display: none;
+        }
+
+        &.small {
+            display: none;
+        }
+    }
+}
+
+:host-context(fusion-input-inline):not(.fusion-style-v1){
+    .fu-input-holder{
+        position: relative;
+        margin-left: -8px;
+        width: calc(100% + 8px);
+        .fu-input-units{
+            position: absolute;
+            top: 6px;
+            left: 8px;
+            @extend %font-body;
+        }
+
+        input {
+            background-color: $fu-light-200;
+            padding: 10px 19px;
+            &.is-error.has-units{
+                background-color: $fu-light-200;
+                border-bottom: solid 2px $fu-negative-500;
+                padding-bottom: 8px;
+            }
+
+            &.disabled,
+            &:disabled,
+            &[readonly] {
+                background-color: transparent;
+                color: $fu-light-900;
+            }
+
+            // hide spinner
+            /* Chrome, Safari, Edge, Opera */
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+            /* Firefox */
+            &[type=number] {
+                -moz-appearance: textfield;
+            }
+        }
+    }
+}
+:host-context(.is-row-height-small):not(.fusion-style-v1){
+    .fu-input-holder{
+        input.small{
+            height: 30px;
+        }
+    }
+}
+:host-context(.is-tags-holder):not(.fusion-style-v1){
+    .fu-input-holder{
+        .fu-input {
+            border: none;
+            background-color: transparent;
+            padding: 0;
+            height: 20px;
+            margin: 2px;
+
+            &:hover {
+                background-color: transparent;
+            }
+        }
+    }
+}
+
+:host-context(.is-dropdown-select.forced-placeholder .icon):not(.fusion-style-v1){
+    .fu-input-holder {
+        input.fu-input {
+            padding-left: 26px;
+            padding-bottom: 9px;
+        }
+    }
+}

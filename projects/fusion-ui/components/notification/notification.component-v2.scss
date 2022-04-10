@@ -1,0 +1,131 @@
+@import '../../src/style/scss/vars/vars';
+@import '../../src/style/scss/vars/mixins';
+
+$boxShadow: 0 0 20px 0 rgba(30, 30, 30, 0.05);
+$borderRadius: 8px;
+
+:host:not(.fusion-style-v1) {
+    .is-notification-overlay{
+        /* modal background fixed across whole screen */
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        /* semi-transparent black  */
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0.75;
+
+        /* z-index must be below .modal and above everything else  */
+        z-index: getZIndexLayerOffset(system, 10);
+    }
+    .is-notification {
+        line-height: 20px;
+        position: fixed;
+        z-index: getZIndexLayerOffset(system, 11);
+        left:0;
+        right:0;
+        margin: auto;
+        width: 400px;
+        min-height: 200px;
+        top: 38%;
+        background-color: $White;
+        border-radius: $borderRadius;
+        box-shadow: $boxShadow;
+
+        @include icon-style('close', $fu-light-700, 15px, true, true) {
+            cursor: pointer;
+            position: absolute;
+            top: 17px;
+            right: 16px;
+        }
+        @include icon-style('close', $fu-light-900, 15px, true, true, 0, true);
+
+        .is-header {
+            @extend %font-headlineSmall;
+            color: $fu-dark-300;
+            padding: 42px 33px 10px;
+
+            &:not(.basic){
+                padding-left: 93px;
+                padding-bottom: 26px;
+                &:before{
+                    content: '';
+                    width: 44px;
+                    height: 44px;
+                    border: solid 2px $fu-light-100;
+                    border-radius: 25px;
+                    position: absolute;
+                    top: 28px;
+                    left: 33px;
+                    display: block;
+                }
+                fusion-icon{
+                    position: absolute;
+                    left: 45px;
+                    top: 39px;
+                }
+            }
+
+            &.basic{
+                padding: 30px 33px 13px;
+                & + .is-notification-content{
+                    min-height: 65px;
+                }
+            }
+
+            &.info{
+                &:before{
+                    border-color: $fu-primary-200;
+                }
+                @include icon-style('info', $fu-primary-500, 25px, true, true);
+            }
+            &.success{
+                &:before{
+                    border-color: $fu-secondary-200;
+                }
+                @include icon-style('success', $fu-secondary-500, 25px, true, true){
+                    left: 46px;
+                    top: 41px;
+                }
+            }
+            &.error{
+                &:before{
+                    border-color: $fu-negative-200;
+                }
+                @include icon-style('error', $fu-negative-500, 25px, true, true){
+                    left: 45px;
+                    top: 40px;
+                }
+            }
+            &.warning{
+                &:before{
+                    border-color: $fu-neutral-200;
+                }
+                @include icon-style('warning', $fu-neutral-500, 25px, true, true){
+                    left: 45px;
+                    top: 40px;
+                }
+            }
+            &.delete{
+                &:before{
+                    border-color: $fu-negative-200;
+                }
+                @include icon-style('delete', $fu-negative-500, 25px, true, true)
+            }
+        }
+
+        .is-notification-content{
+            color: $fu-dark-300;
+            @extend %font-body;
+            line-height: 1.67;
+            position: relative;
+            padding: 0 32px 32px;
+        }
+    }
+}
+
+
+
+

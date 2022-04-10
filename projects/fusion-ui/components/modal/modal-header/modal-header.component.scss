@@ -1,0 +1,28 @@
+@import '../../../src/style/scss/vars/vars';
+@import '../../../src/style/scss/vars/mixins';
+@import '../../../src/style/scss/vars/border';
+@import '../modal_vars';
+
+:host.fusion-style-v1{
+    .modal-header {
+        box-sizing: border-box;
+        @extend %borderBottom;
+        @extend %font2;
+        height: $modalHeaderHeight;
+        padding: 14px 20px;
+
+        &.no-border-bottom {
+            border: none;
+            span{
+                @extend %font3;
+                padding-left: 10px;
+            }
+        }
+
+        @include icon-style('close', $light-800, 10px, false, true) {
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+        }
+    }
+}

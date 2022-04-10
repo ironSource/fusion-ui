@@ -7,7 +7,7 @@ import {
     SidebarMenuItem,
     StyleVersion,
     VersionService
-} from 'projects/fusion-ui/src/public-api';
+} from '@ironsource/fusion-ui';
 import {MENU_ITEMS, MENU_ITEMS_V2, STYLE_2_MENU_ITEMS, USER_PROFILE_MENU_ITEMS} from './menu-items';
 import {StyleVersionButtonComponent} from '../../components/style-version-button/style-version-button.component';
 import {Observable, Subject} from 'rxjs';

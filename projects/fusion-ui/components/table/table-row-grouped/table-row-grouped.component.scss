@@ -1,0 +1,21 @@
+@import "../../../src/style/scss/vars/vars";
+@import "../../../src/style/scss/vars/mixins";
+@import "../../../src/style/scss/vars/colors";
+
+:host {
+  &:hover{
+    background-color: $light-200;
+  }
+  &.is-selected {
+    background-color: $primary-100;
+  }
+  &.is-row-disabled {
+    td {
+      color: $light-800;
+      pointer-events: none;
+      fusion-icon{
+        opacity: 0.6;
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
-import {PopupEntity, PopupLocation} from '../../../../../../fusion-ui/src/lib/components/ui-components/popup/popup.entity';
-import {PopupService} from '../../../../../../fusion-ui/src/lib/components/ui-components/popup/popup.service';
+import {PopupEntity, PopupLocation} from '@ironsource/fusion-ui';
+import {PopupService} from '@ironsource/fusion-ui';
 import {Observable, Subject} from 'rxjs';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {StyleVersion, VersionService} from '@ironsource/fusion-ui';

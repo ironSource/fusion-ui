@@ -7,7 +7,7 @@ import {ExampleBlockModule} from '../../../components/example-block/example-bloc
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {AccordionExampleContentModule} from '../../../components/accordion-example-components/accordion-example-content/accordion-example-content.module';
-import {AccordionModule} from '../../../../../../fusion-ui/src/lib/components/ui-components/accordion/accordion.module';
+import {AccordionModule} from '@ironsource/fusion-ui';
 
 const routes: Routes = [{path: '', component: AccordionDocsComponent}];
 

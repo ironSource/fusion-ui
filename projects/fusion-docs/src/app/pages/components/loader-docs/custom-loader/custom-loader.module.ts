@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CustomLoaderComponent, CustomLoaderHostComponent} from './custom-loader.component';
-import {LoaderModule} from '../../../../../../../fusion-ui/src/public-api';
+import {LoaderModule} from '@ironsource/fusion-ui';
 
 @NgModule({
     declarations: [CustomLoaderComponent, CustomLoaderHostComponent],
