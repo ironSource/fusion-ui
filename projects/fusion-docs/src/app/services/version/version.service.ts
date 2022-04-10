@@ -8,7 +8,7 @@ import {DOCUMENT} from '@angular/common';
     providedIn: 'root'
 })
 export class VersionService {
-    private version$ = new BehaviorSubject(this.getLastStyleGVersion());
+    private version$ = new BehaviorSubject<StyleVersion>(this.getLastStyleGVersion());
 
     public get styleVersion$(): Observable<StyleVersion> {
         return this.version$.asObservable();

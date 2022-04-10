@@ -14,8 +14,7 @@ export abstract class StyleBase implements AfterViewInit, OnDestroy {
     styleVersion = StyleVersion;
 
     selectedVersion$: BehaviorSubject<StyleVersion> = new BehaviorSubject<StyleVersion>(
-        StyleVersion.V2
-        /*StyleVersion[Object.values(StyleVersion)[Object.values(StyleVersion).length / 2 - 1]]*/ // take latest from enum
+        StyleVersion[Object.values(StyleVersion)[Object.values(StyleVersion).length / 2 - 1]] // take latest from enum
     );
 
     constructor(protected injector: Injector) {}
