@@ -3,6 +3,7 @@ import {StyleVersion} from '@ironsource/fusion-ui';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
 import {VersionService} from '../../../services/version/version.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'fusion-button-docs',
@@ -99,11 +100,15 @@ export class ButtonDocsComponent implements OnInit {
     styleVersion = StyleVersion;
     selectedVersion$ = this.versionService.styleVersion$;
 
-    constructor(private versionService: VersionService, private docLayoutService: DocsLayoutService) {}
+    constructor(private versionService: VersionService, private docLayoutService: DocsLayoutService, private router: Router) {}
 
     ngOnInit() {
         this.docLayoutService.updateLayoutHeaderTitle({
             text: 'Button'
+        });
+
+        this.selectedVersion$.subscribe((styleVersion: StyleVersion) => {
+            this.router.navigate(['docs/components/button']);
         });
     }
 
