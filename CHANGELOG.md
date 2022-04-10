@@ -2,14 +2,7 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-
-### ⚠ BREAKING CHANGES
-
-* **fu-328:** Split fusion-ui into multiple sub entries path to improve tree shaking capabilities
-
-### Features
-
-* **fu-328:** Split fusion-ui into multiple sub entries ([0d7f30e](https://github.com/ironSource/fusion-ui/commit/0d7f30e5f61cde8501a1da0e5330ac1abf07b7e8))
+## [2.0.0](https://github.com/ironSource/fusion-ui/compare/v2.0.0-rc.2...v2.0.0) (2022-04-10)
 
 ## [2.0.0]
 
