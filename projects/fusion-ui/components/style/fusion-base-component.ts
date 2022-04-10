@@ -30,9 +30,9 @@ export abstract class FusionBaseComponent implements AfterViewInit, OnDestroy {
 
     private handleStyleVersion(): void {
         const element = this.injector.get(ElementRef);
-        const hasStyleClass = [...element.nativeElement.classList].some(item => item.startsWith(FUSION_STYLE_VERSION_PREFIX));
-        if (!hasStyleClass) {
-            const renderer = this.injector.get(Renderer2);
+        const renderer = this.injector.get(Renderer2);
+
+        if (![...element.nativeElement.classList].some(item => item.startsWith(FUSION_STYLE_VERSION_PREFIX))) {
             let uiSelectedStyleVersion = getComputedStyle(element.nativeElement).getPropertyValue(FUSION_STYLE_VERSION_CSS_VAR_NAME).trim();
             uiSelectedStyleVersion = uiSelectedStyleVersion ? uiSelectedStyleVersion : this.selectedVersion$.getValue().toString();
 
@@ -41,6 +41,7 @@ export abstract class FusionBaseComponent implements AfterViewInit, OnDestroy {
                     this.selectedVersion$.next(StyleVersion[`V${uiSelectedStyleVersion}`]);
                 });
             }
+
             renderer.addClass(element.nativeElement, FUSION_STYLE_VERSION_PREFIX + uiSelectedStyleVersion);
         }
     }
