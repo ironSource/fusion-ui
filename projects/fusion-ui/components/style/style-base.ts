@@ -32,9 +32,15 @@ export abstract class StyleBase implements AfterViewInit, OnDestroy {
         const element = this.injector.get(ElementRef);
         const renderer = this.injector.get(Renderer2);
         const uiSelectedStyleVersion = (
-            getComputedStyle(element.nativeElement).getPropertyValue(FUSION_STYLE_VERSION_CSS_VAR_NAME) ?? this.styleVersion.toString()
+            getComputedStyle(element.nativeElement).getPropertyValue(FUSION_STYLE_VERSION_CSS_VAR_NAME) ??
+            this.selectedVersion$.getValue().toString()
         ).trim();
-        this.selectedVersion$.next(StyleVersion[`V${uiSelectedStyleVersion}`]);
+
+        if (StyleVersion[`V${uiSelectedStyleVersion}`] !== this.selectedVersion$.getValue()) {
+            setTimeout(() => {
+                this.selectedVersion$.next(StyleVersion[`V${uiSelectedStyleVersion}`]);
+            });
+        }
         renderer.addClass(element.nativeElement, FUSION_STYLE_VERSION_PREFIX + uiSelectedStyleVersion);
     }
 }
