@@ -39,8 +39,4 @@ export class AlertComponent extends StyleBase implements AfterViewInit {
         $event.preventDefault();
         this.onCloseClicked(true);
     }
-
-    ngAfterViewInit() {
-        super.ngAfterViewInit();
-    }
 }

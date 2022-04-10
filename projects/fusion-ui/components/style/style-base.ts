@@ -1,4 +1,4 @@
-import {ElementRef, AfterViewInit, Injector, Renderer2, Directive, OnDestroy} from '@angular/core';
+import {AfterViewInit, Directive, ElementRef, Injector, OnDestroy, Renderer2} from '@angular/core';
 import {
     FUSION_STYLE_VERSION_CSS_VAR_NAME,
     FUSION_STYLE_VERSION_PREFIX,
@@ -10,10 +10,12 @@ import {BehaviorSubject, Subject} from 'rxjs';
 @Directive()
 export abstract class StyleBase implements AfterViewInit, OnDestroy {
     onDestroy$ = new Subject<void>();
+
     styleVersion = StyleVersion;
 
     selectedVersion$: BehaviorSubject<StyleVersion> = new BehaviorSubject<StyleVersion>(
-        StyleVersion[Object.values(StyleVersion)[Object.values(StyleVersion).length / 2 - 1]]
+        StyleVersion.V2
+        /*StyleVersion[Object.values(StyleVersion)[Object.values(StyleVersion).length / 2 - 1]]*/ // take latest from enum
     );
 
     constructor(protected injector: Injector) {}
@@ -30,13 +32,10 @@ export abstract class StyleBase implements AfterViewInit, OnDestroy {
     private handleStyleVersion(): void {
         const element = this.injector.get(ElementRef);
         const renderer = this.injector.get(Renderer2);
-        const uiStyleVersion = (
+        const uiSelectedStyleVersion = (
             getComputedStyle(element.nativeElement).getPropertyValue(FUSION_STYLE_VERSION_CSS_VAR_NAME) ?? this.styleVersion.toString()
         ).trim();
-
-        // todo-andyk: fix with version
-        this.selectedVersion$.next(this.styleVersion.V2);
-
-        renderer.addClass(element.nativeElement, FUSION_STYLE_VERSION_PREFIX + uiStyleVersion);
+        this.selectedVersion$.next(StyleVersion[`V${uiSelectedStyleVersion}`]);
+        renderer.addClass(element.nativeElement, FUSION_STYLE_VERSION_PREFIX + uiSelectedStyleVersion);
     }
 }
