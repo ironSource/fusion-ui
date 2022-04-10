@@ -7,6 +7,7 @@ $backgroundColor:  #25282c;
 $foregroundColor: $White;
 $borerRadius: 4px;
 
+:host.fu-style-v3,
 :host.fu-style-v2{
     .fusion-video-preview {
         border-radius: var(--player-border-radius, #{$borerRadius});

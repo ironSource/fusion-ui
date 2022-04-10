@@ -4,6 +4,7 @@
 
 $selectHolderHeight: 39px;
 
+:host.fu-style-v3,
 :host.fu-style-v2 {
     @extend %reset;
     position: relative;

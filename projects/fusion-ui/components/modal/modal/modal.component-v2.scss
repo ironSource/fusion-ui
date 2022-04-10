@@ -6,6 +6,7 @@
 $box-shadow: 0 0 20px 0 rgba(30, 30, 30, 0.05);
 $borderRadius: 24px;
 
+:host.fu-style-v3,
 :host.fu-style-v2 {
     @extend %reset;
     // overlay

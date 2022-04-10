@@ -3,6 +3,7 @@
 @import '../../../src/style/scss/v2/vars/border';
 @import '../modal_vars-v2';
 
+:host.fu-style-v3,
 :host.fu-style-v2{
     @extend %border-box-normalize;
     .modal-footer {

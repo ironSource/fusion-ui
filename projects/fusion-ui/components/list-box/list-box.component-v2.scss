@@ -6,6 +6,7 @@ $iconsWidth: 46px;
 $optionHeight: 32px;
 $optionLargerHeight: 40px;
 
+:host.fu-style-v3,
 :host.fu-style-v2 {
     @extend %reset;
     height: 100%;

@@ -10,6 +10,7 @@ $v2-bodyBorder: 1px solid $fu-light-300;
     height: 100%;
 }
 
+:host.fu-style-v3,
 :host.fu-style-v2 {
     td:not(:last-child){
         border-right: var(--table-body-border, none);

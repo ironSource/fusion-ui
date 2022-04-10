@@ -7,6 +7,7 @@ $borderBottom: solid 1px $fu-light-300;
 $height: $modalHeaderHeight;
 $padding: 15px 32px;
 
+:host.fu-style-v3,
 :host.fu-style-v2 {
     @extend %border-box-normalize;
     .modal-header {

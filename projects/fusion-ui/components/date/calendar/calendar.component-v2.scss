@@ -27,6 +27,7 @@
     left: calc(50% - 2px);
 }
 
+:host.fu-style-v3,
 :host.fu-style-v2 {
     @extend %reset;
     .calendar {

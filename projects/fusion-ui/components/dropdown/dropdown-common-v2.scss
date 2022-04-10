@@ -26,6 +26,7 @@ $v2-borderRoundedRadius: 20px;
     }
 }
 
+:host.fu-style-v3,
 :host.fu-style-v2 {
     @extend %reset;
     @extend %list-reset;
