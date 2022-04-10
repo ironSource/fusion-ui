@@ -5,6 +5,7 @@ import {
     StyleVersion
 } from '@ironsource/fusion-ui/components/style/style-version.enum';
 import {BehaviorSubject, Subject} from 'rxjs';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 /* eslint-disable @angular-eslint/directive-class-suffix */
 @Directive()
@@ -12,7 +13,6 @@ export abstract class FusionBaseComponent implements AfterViewInit, OnDestroy {
     onDestroy$ = new Subject<void>();
 
     styleVersion = StyleVersion;
-
     selectedVersion$: BehaviorSubject<StyleVersion> = new BehaviorSubject<StyleVersion>(
         StyleVersion[Object.values(StyleVersion)[Object.values(StyleVersion).length / 2 - 1]] // take latest from enum
     );
@@ -30,15 +30,18 @@ export abstract class FusionBaseComponent implements AfterViewInit, OnDestroy {
 
     private handleStyleVersion(): void {
         const element = this.injector.get(ElementRef);
-        const renderer = this.injector.get(Renderer2);
-        let uiSelectedStyleVersion = getComputedStyle(element.nativeElement).getPropertyValue(FUSION_STYLE_VERSION_CSS_VAR_NAME).trim();
-        uiSelectedStyleVersion = uiSelectedStyleVersion ? uiSelectedStyleVersion : this.selectedVersion$.getValue().toString();
+        const hasStyleClass = [...element.nativeElement.classList].some(item => item.startsWith(FUSION_STYLE_VERSION_PREFIX));
+        if (!hasStyleClass) {
+            const renderer = this.injector.get(Renderer2);
+            let uiSelectedStyleVersion = getComputedStyle(element.nativeElement).getPropertyValue(FUSION_STYLE_VERSION_CSS_VAR_NAME).trim();
+            uiSelectedStyleVersion = uiSelectedStyleVersion ? uiSelectedStyleVersion : this.selectedVersion$.getValue().toString();
 
-        if (StyleVersion[`V${uiSelectedStyleVersion}`] !== this.selectedVersion$.getValue()) {
-            setTimeout(() => {
-                this.selectedVersion$.next(StyleVersion[`V${uiSelectedStyleVersion}`]);
-            });
+            if (StyleVersion[`V${uiSelectedStyleVersion}`] !== this.selectedVersion$.getValue()) {
+                setTimeout(() => {
+                    this.selectedVersion$.next(StyleVersion[`V${uiSelectedStyleVersion}`]);
+                });
+            }
+            renderer.addClass(element.nativeElement, FUSION_STYLE_VERSION_PREFIX + uiSelectedStyleVersion);
         }
-        renderer.addClass(element.nativeElement, FUSION_STYLE_VERSION_PREFIX + uiSelectedStyleVersion);
     }
 }
