@@ -3,10 +3,7 @@
     "extends": "../../tsconfig.json",
     "compilerOptions": {
         "outDir": "../../out-tsc/app",
-        "types": [],
-        "paths": {
-            "@ironsource/fusion-ui": ["projects/fusion-ui/src/public-api"]
-        }
+        "types": []
     },
     "files": ["src/main.ts", "src/polyfills.ts", "src/public-api.ts"],
     "include": ["src/**/*.d.ts"]
