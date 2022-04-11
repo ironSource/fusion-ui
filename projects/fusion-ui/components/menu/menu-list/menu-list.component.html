@@ -27,7 +27,7 @@
                             "
                             ><span class="link-target">
                                 <fusion-icon class="item-icon" *ngIf="item.icon" [name]="item.icon"></fusion-icon>
-                                <a [href]="item.redirect" [target]="item.target" [ngStyle]="item.customCSS">{{ item.name }}<fusion-icon *ngIf="item.showNewWindowIcon ?? true" class="icon-new-window" name="new-window"></fusion-icon></a>
+                                <a [href]="item.redirect" [target]="item.target" [ngStyle]="item.customCSS">{{ item.name }}<fusion-icon *ngIf="item.showNewWindowIcon ?? true" class="icon-new-window" [name]="{iconName: 'new-window', iconVersion: 'v2'}"></fusion-icon></a>
                             </span>
                         </ng-container>
                         <!--Menu item with REDIRECT-->

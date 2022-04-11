@@ -3,9 +3,10 @@
  */
 
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
+import {IconData} from '@ironsource/fusion-ui/components';
 
 export interface SidebarMenuItem {
-    icon?: string;
+    icon?: string | IconData;
     name?: string; // not in use if has content
     route?: string;
     routeConfigurations?: {

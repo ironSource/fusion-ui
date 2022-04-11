@@ -114,7 +114,7 @@ document.body.appendChild(input);'
                         <label for="regularInput" *ngIf="currentStyleVersion === styleVersion.V2"
                         >Label content
                             <fusion-icon
-                                name="info-circle"
+                            [name]="{iconName: 'info-circle', iconVersion: 'v2'}"
                                 fusionTooltip="Here's tooltip!"
                                 [tooltipPosition]="tooltipPosition.Top"
                             ></fusion-icon>
@@ -443,11 +443,11 @@ document.body.appendChild(input);'
                 <div class="row" *ngIf="currentStyleVersion === styleVersion.V2">
                     <div class="col-6">
                         <p>With Icon left:</p>
-                        <fusion-input placeholder="Placeholder" [icon]="'alarm-clock'" iconPos="left" [formControl]="model"></fusion-input>
+                    <fusion-input placeholder="Placeholder" [icon]="{iconName: 'alarm-clock', iconVersion: 'v2'}" iconPos="left" [formControl]="model"></fusion-input>
                     </div>
                     <div class="col-6">
                         <p>With Icon right:</p>
-                        <fusion-input placeholder="Placeholder" [icon]="'alarm-clock'" iconPos="right" [formControl]="model"></fusion-input>
+                    <fusion-input placeholder="Placeholder" [icon]="{iconName: 'alarm-clock', iconVersion: 'v2'}" iconPos="right" [formControl]="model"></fusion-input>
                     </div>
                 </div>
             </fusion-example-block>
@@ -697,7 +697,7 @@ document.body.appendChild(input);'
                         <fusion-input
                             placeholder="Enter URL"
                             btn="Import app info"
-                            [options]="{buttonIcon: 'sync'}"
+                        [options]="{buttonIcon: {iconName: 'sync', iconVersion: 'v2'}}"
                             (btnAction)="alertMe($event)"
                             [btnLoading]="actionButtonLoading$ | async"
                             formControlName="applicationUrl"

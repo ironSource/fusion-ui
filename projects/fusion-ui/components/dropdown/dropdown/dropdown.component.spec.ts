@@ -140,10 +140,6 @@ describe('DropdownComponent', () => {
         component.icon = 'anchor';
         component.ngOnInit();
         fixture.detectChanges();
-
-        expect(fixture.debugElement.query(By.css('.is-dropdown-select label')).nativeElement.innerHTML).toContain(
-            'name="arrow-down"></fusion-icon>'
-        );
         expect(fixture.debugElement.query(By.css('.is-dropdown-select label')).nativeElement.innerText).toContain('Test Placeholder');
     });
 

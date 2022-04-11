@@ -42,7 +42,7 @@ export class LoaderComponent extends FusionBaseComponent implements AfterViewIni
             this.selectedVersion = styleVersion;
             let iconProperties = {iconName: 'loading', iconVersion: 'v1'};
             if (styleVersion === StyleVersion.V2) {
-                return this.size === 'inline' ? 'loading_rotate' : 'loader-dots-v4';
+                return this.size === 'inline' ? 'loading_rotate' : {iconName: 'loader-dots-v4', iconVersion: 'v2'};
             }
             return iconProperties;
         })

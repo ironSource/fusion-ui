@@ -158,18 +158,18 @@ export class DocsComponent implements OnInit, OnDestroy {
             },
             menuItems: [
                 {
-                    icon: 'magic',
+                    icon: {iconName: 'magic', iconVersion: 'v2'},
                     name: 'Theme toggle'
                 },
                 {
-                    icon: 'logout',
+                    icon: {iconName: 'logout', iconVersion: 'v2'},
                     name: 'Sign out',
                     route: '/docs/components/v2/mobile-previewer'
                 }
             ]
         };
         const layoutUser = {
-            icon: 'user-circle',
+            icon: {iconName: 'user-circle', iconVersion: 'v2'},
             name: 'Example Username',
             email: 'test@irontest.com'
         };

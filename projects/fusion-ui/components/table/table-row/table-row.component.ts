@@ -19,6 +19,7 @@ import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {ColumnData} from './column-data';
 import {TableRow} from './table-row';
+import {IconData} from '@ironsource/fusion-ui';
 
 @Component({
     // eslint-disable-next-line
@@ -69,7 +70,7 @@ export class TableRowComponent extends FusionBaseComponent implements OnInit, On
     }
 
     private inRequest = false;
-    expandArrowIconName$ = new Observable<string | {iconName: string; iconVersion?: string}>();
+    expandArrowIconName$ = new Observable<string | IconData>();
     columnsData: ColumnData[] = [];
 
     get expandCellCount(): Observable<number[]> {
@@ -111,7 +112,9 @@ export class TableRowComponent extends FusionBaseComponent implements OnInit, On
         this.dataRowIndex = this.rowIndex;
         this.expandArrowIconName$ = this.selectedVersion$.pipe(
             map((styleVersion: StyleVersion) =>
-                styleVersion === StyleVersion.V2 ? 'arrow-right' : {iconName: 'arrow-right', iconVersion: 'v1'}
+                styleVersion === StyleVersion.V2
+                    ? {iconName: 'arrow-right', iconVersion: 'v2'}
+                    : {iconName: 'arrow-right', iconVersion: 'v1'}
             )
         );
         if (this.isRowTotal) {

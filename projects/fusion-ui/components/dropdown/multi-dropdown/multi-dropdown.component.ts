@@ -4,9 +4,10 @@ import {DropdownOption} from '../entities/dropdown-option';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {DropdownService} from '../dropdown.service';
 import {DROPDOWN_OPTIONS_WITHOUT_SCROLL} from '../dropdown-config';
+import {StyleVersion} from '@ironsource/fusion-ui/components';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map, startWith, takeUntil} from 'rxjs/operators';
-import {StyleVersion} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components';
 
 @Component({
     selector: 'fusion-multi-dropdown',
@@ -31,7 +32,7 @@ export class MultiDropdownComponent extends DropdownComponent implements OnInit,
     tempOptions: DropdownOption[];
 
     optionsWithoutScroll = DROPDOWN_OPTIONS_WITHOUT_SCROLL;
-    dropdownArrowIconName$ = new BehaviorSubject<string | {iconName: string; iconVersion?: string}>({
+    dropdownArrowIconName$ = new BehaviorSubject<string | IconData>({
         iconName: 'arrow-dropdown',
         iconVersion: 'v1'
     });
@@ -52,9 +53,11 @@ export class MultiDropdownComponent extends DropdownComponent implements OnInit,
         super.ngOnInit();
 
         this.selectedVersion$.pipe(takeUntil(this.onDestroy$)).subscribe(styleVersion => {
-            this.dropdownArrowIconName$.next(
-                styleVersion === StyleVersion.V2 ? 'arrow-down' : {iconName: 'arrow-dropdown', iconVersion: 'v1'}
-            );
+            const dropdownArrowIcon =
+                styleVersion === StyleVersion.V2
+                    ? {iconName: 'arrow-down', iconVersion: 'v2'}
+                    : {iconName: 'arrow-dropdown', iconVersion: 'v1'};
+            this.dropdownArrowIconName$.next(dropdownArrowIcon);
         });
 
         this.hasSearchValue$ = this.searchValue.valueChanges.pipe(

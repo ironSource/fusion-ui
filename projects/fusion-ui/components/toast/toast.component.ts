@@ -4,6 +4,7 @@ import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dy
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {fromEvent} from 'rxjs';
 import {take} from 'rxjs/operators';
+import {IconData} from '@ironsource/fusion-ui/components';
 
 @Component({
     selector: 'fusion-toast',
@@ -29,7 +30,7 @@ export class ToastComponent implements OnInit, AfterViewInit {
 
     type: ToastType;
     text: string;
-    iconName: string | {iconName: string; iconVersion: string};
+    iconName: string | IconData;
     icon: string;
     image: string;
     duration: number;
@@ -68,21 +69,21 @@ export class ToastComponent implements OnInit, AfterViewInit {
             });
     }
 
-    private setIconByType(type: ToastType): string {
-        let iconName = '';
+    private setIconByType(type: ToastType): string | IconData {
+        let iconName;
         switch (type) {
             case 'success':
-                iconName = 'check';
+                iconName = {iconName: 'check', iconVersion: 'v2'};
                 break;
             case 'alert':
-                iconName = 'bullhorn';
+                iconName = {iconName: 'bullhorn', iconVersion: 'v2'};
                 break;
             case 'error':
             case 'warning':
-                iconName = 'warning-note';
+                iconName = {iconName: 'warning-note', iconVersion: 'v2'};
                 break;
         }
-        return iconName;
+        return iconName || '';
     }
 
     private getCustomConfiguration(toastConfig: ToastEntity): DynamicComponentConfiguration {

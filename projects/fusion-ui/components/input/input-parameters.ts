@@ -2,6 +2,7 @@ import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
 import {Directive, Input} from '@angular/core';
 import {InputConfiguration} from './input-entities';
 import {InputOptions, DEFAULT_INPUT_OPTIONS} from './input.options';
+import {IconData} from '@ironsource/fusion-ui';
 
 @Directive()
 export abstract class InputParameters extends FusionBaseComponent {
@@ -21,7 +22,7 @@ export abstract class InputParameters extends FusionBaseComponent {
         this.configuration = {...this._configuration, name};
     }
 
-    @Input() set icon(icon: string | {iconName: string; iconVersion?: string}) {
+    @Input() set icon(icon: string | IconData) {
         this.configuration = {...this._configuration, icon};
     }
 

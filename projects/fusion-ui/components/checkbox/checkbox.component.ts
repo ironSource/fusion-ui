@@ -15,6 +15,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
 import {BASE_CHECKED_IMAGE} from './checkbox.cusom-svg';
+import {IconData} from '@ironsource/fusion-ui/components';
 
 @Component({
     selector: 'fusion-checkbox',
@@ -33,7 +34,7 @@ export class CheckboxComponent extends FusionBaseComponent implements OnInit, Co
     @Input() label: string;
     @Input() name: string;
     @Input() value: string;
-    @Input() icon: string | {iconName: string; iconVersion?: string};
+    @Input() icon: string | IconData;
     @Input() flag: string;
     @Input() isDisabled: boolean;
     @Input() checked: boolean;

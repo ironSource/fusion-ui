@@ -18,6 +18,7 @@ import {DropdownOption} from '../entities/dropdown-option';
 import {BehaviorSubject} from 'rxjs';
 import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
 import {takeUntil} from 'rxjs/operators';
+import {IconData} from '@ironsource/fusion-ui';
 
 @Directive({
     selector: '[fusionDropdownOption]'
@@ -96,7 +97,7 @@ export class DropdownOptionComponent extends FusionBaseComponent implements OnIn
     settings: any;
     optionToStringFunc = this.dropdownService.optionToString.bind(this.dropdownService);
 
-    dropdownArrowIconName$ = new BehaviorSubject<string | {iconName: string; iconVersion?: string}>({
+    dropdownArrowIconName$ = new BehaviorSubject<string | IconData>({
         iconName: 'arrow-dropdown',
         iconVersion: 'v1'
     });
@@ -112,9 +113,11 @@ export class DropdownOptionComponent extends FusionBaseComponent implements OnIn
         };
 
         this.selectedVersion$.pipe(takeUntil(this.onDestroy$)).subscribe(styleVersion => {
-            this.dropdownArrowIconName$.next(
-                styleVersion === StyleVersion.V2 ? 'arrow-down' : {iconName: 'arrow-dropdown', iconVersion: 'v1'}
-            );
+            const dropdownArrowIcon =
+                styleVersion === StyleVersion.V2
+                    ? {iconName: 'arrow-down', iconVersion: 'v2'}
+                    : {iconName: 'arrow-dropdown', iconVersion: 'v1'};
+            this.dropdownArrowIconName$.next(dropdownArrowIcon);
         });
     }
 }

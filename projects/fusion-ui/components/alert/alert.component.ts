@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@
 import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import {IconData} from '@ironsource/fusion-ui/components';
 
 @Component({
     selector: 'fusion-alert',
@@ -25,8 +26,10 @@ export class AlertComponent extends FusionBaseComponent {
         return [this.mode.toLowerCase(), this.type.toLowerCase(), this.showCloseButton && 'has-close-button'].filter(Boolean);
     }
 
-    closeIconName$: Observable<string | {iconName: string; iconVersion?: string}> = this.selectedVersion$.pipe(
-        map(styleVersion => (styleVersion === StyleVersion.V2 ? 'close' : {iconName: 'close', iconVersion: 'v1'})),
+    closeIconName$: Observable<string | IconData> = this.selectedVersion$.pipe(
+        map(styleVersion =>
+            styleVersion === StyleVersion.V2 ? {iconName: 'close', iconVersion: 'v2'} : {iconName: 'close', iconVersion: 'v1'}
+        ),
         startWith({iconName: 'close', iconVersion: 'v1'})
     );
 

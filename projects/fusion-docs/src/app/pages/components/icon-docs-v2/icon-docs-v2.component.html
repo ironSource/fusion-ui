@@ -5,7 +5,7 @@
                 <div class="icons-holder">
                     <div class="icon-item" *ngFor="let icon of iconNames$ | async">
                         <div>
-                            <div class="icon-icon"><fusion-icon class="icon-example" [name]="icon"></fusion-icon></div>
+                            <div class="icon-icon"><fusion-icon class="icon-example" [name]="{iconName: icon, iconVersion:'v2'}"></fusion-icon></div>
                         </div>
                         <div class="icon-name">{{ icon }}</div>
                     </div>

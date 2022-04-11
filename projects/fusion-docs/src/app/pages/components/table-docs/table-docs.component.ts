@@ -585,7 +585,7 @@ export class TableDocsComponent implements OnInit, OnDestroy {
         },
         {
             id: 7,
-            icon: {iconName: 'user-v-2'},
+            icon: {iconName: {iconName: 'user-v-2', iconVersion: 'v1'}},
             name: 'Kurtis Weissnat',
             username: 'Elwyn.Skiles',
             email: 'Telly.Hoeger@billy.biz',

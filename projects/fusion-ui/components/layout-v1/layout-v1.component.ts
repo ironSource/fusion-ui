@@ -5,6 +5,7 @@ import {CacheType} from '@ironsource/fusion-ui/services/cache';
 import {CacheService} from '@ironsource/fusion-ui/services/cache';
 import {Subject} from 'rxjs';
 import {MenuItemAdditionalData} from '@ironsource/fusion-ui/components/menu';
+import {IconData} from '@ironsource/fusion-ui/components';
 
 @Component({
     selector: 'fusion-layout-v1',
@@ -18,7 +19,7 @@ export class LayoutV1Component implements OnDestroy {
     @Input() state: HeaderState = {};
     @Input() scrollTopOnRouteChange: boolean;
     @Input() userName = '';
-    @Input() headerPrimaryMenuIconName: string | {iconName: string; iconVersion?: string} = {iconName: 'user', iconVersion: 'v1'};
+    @Input() headerPrimaryMenuIconName: string | IconData = {iconName: 'user', iconVersion: 'v1'};
     @Input() headerMenuUserNameIcon: string;
     @Input() headerPrimaryMenuItems: MenuItem[] = [];
     @Input() headerSecondaryMenuItems: MenuItem[] = [];

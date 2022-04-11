@@ -11,7 +11,7 @@
     </div>
     <!--regular title-->
     <ng-template #regularLabel>
-        <fusion-icon class="filterTitle" [name]="configurations?.filterIconName || 'filter'" *ngIf="currentStyleVersion === styleVersion.V1"></fusion-icon>
+        <fusion-icon class="filterTitle" [name]="configurations?.filterIconName || {iconName: 'filter', iconVersion: 'v1'}" *ngIf="currentStyleVersion === styleVersion.V1"></fusion-icon>
         <label
             class="truncate"
             [fusionTooltip]="configurations.placeholder?.value"

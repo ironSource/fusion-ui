@@ -1,7 +1,8 @@
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
+import {IconData} from '@ironsource/fusion-ui/components';
 
 export interface DropdownOption {
-    icon?: string | {iconName: string; iconVersion?: string};
+    icon?: string | IconData;
     flag?: string;
     title?: string;
     displayText?: string;

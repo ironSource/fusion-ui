@@ -93,7 +93,7 @@
            *ngIf="config?.type === 'password'"
            (click)="passToggle($event)"
            (mousedown)="onPassToggleMouseDown($event)">
-            <fusion-icon [name]="config.options?.isPassHidden ? 'eye' : 'eye-slash'"></fusion-icon>
+            <fusion-icon [name]="config.options?.isPassHidden ? {iconName:'eye', iconVersion: 'v2'} : {iconName: 'eye-slash',iconVersion: 'v2'}"></fusion-icon>
         </i>
 
     </ng-container>

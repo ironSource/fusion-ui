@@ -1,4 +1,4 @@
-<fusion-icon class="fu-calendar-icon" name="calendar-2"></fusion-icon>
+<fusion-icon class="fu-calendar-icon" [name]="{iconName: 'calendar-2', iconVersion: 'v2'}"></fusion-icon>
 <ng-container *ngIf="!selected && placeholder; else selectedMonth">
     <div class="fu-placeholder">{{ placeholder?.text }}</div>
 </ng-container>

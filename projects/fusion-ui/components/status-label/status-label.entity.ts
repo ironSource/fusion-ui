@@ -2,9 +2,11 @@
  * Created on 2020.5.11 By Andy Kononenko (andyk@ironsrc.com)
  */
 
+import {IconData} from '@ironsource/fusion-ui/components';
+
 export interface StatusLabelConfig {
     text?: string;
-    icon?: string;
+    icon?: string | IconData;
     status?: StatusLabelStatus;
     borderType?: StatusLabelBorderType;
     customColors?: {

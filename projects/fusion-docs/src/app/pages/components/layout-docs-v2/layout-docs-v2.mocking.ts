@@ -5,18 +5,18 @@
 import {SidebarMenuItem, LayoutComponentConfiguration, LayoutHeaderComponentConfiguration, LayoutUser} from '@ironsource/fusion-ui';
 
 export const LAYOUT_USER: LayoutUser = {
-    icon: 'user-circle',
+    icon: {iconName: 'user-circle', iconVersion: 'v2'},
     name: 'Example Username',
     email: 'test@irontest.com'
 };
 
 export const LAYOUT_HEADER_MENU_ITEMS: SidebarMenuItem[] = [
     {
-        icon: 'magic',
+        icon: {iconName: 'magic', iconVersion: 'v2'},
         name: 'Theme toggle'
     },
     {
-        icon: 'logout',
+        icon: {iconName: 'logout', iconVersion: 'v2'},
         name: 'Sign out',
         route: '/docs/components/v2/mobile-previewer'
     }
@@ -24,12 +24,12 @@ export const LAYOUT_HEADER_MENU_ITEMS: SidebarMenuItem[] = [
 
 export const LAYOUT_SIDEBAR_MENU_ITEMS: SidebarMenuItem[] = [
     {
-        icon: 'magic',
+        icon: {iconName: 'magic', iconVersion: 'v2'},
         name: 'Getting Started',
         route: '/docs/components/v2/layout'
     },
     {
-        icon: 'paper-plane',
+        icon: {iconName: 'paper-plane', iconVersion: 'v2'},
         name: 'Guidelines',
         children: [
             {
@@ -43,7 +43,7 @@ export const LAYOUT_SIDEBAR_MENU_ITEMS: SidebarMenuItem[] = [
         ]
     },
     {
-        icon: 'apps',
+        icon: {iconName: 'apps', iconVersion: 'v2'},
         name: 'Components',
         children: [
             {
@@ -78,7 +78,7 @@ export const LAYOUT_SIDEBAR_MENU_ITEMS: SidebarMenuItem[] = [
         ]
     },
     {
-        icon: 'info-circle',
+        icon: {iconName: 'info-circle', iconVersion: 'v2'},
         name: 'Target Link Example',
         routeConfigurations: {
             href: 'http://developers.ironsrc.com',

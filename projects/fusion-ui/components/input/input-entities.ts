@@ -1,11 +1,12 @@
 import {InputOptions} from './input.options';
+import {IconData} from '@ironsource/fusion-ui';
 
 // Todo - replace multiple string type with enum
 export interface InputConfiguration {
     placeholder?: string;
     errorType?: string;
     name?: string;
-    icon?: string | {iconName: string; iconVersion?: string};
+    icon?: string | IconData;
     iconPos?: 'left' | 'right' | '';
     units?: string;
     unitPos?: string;

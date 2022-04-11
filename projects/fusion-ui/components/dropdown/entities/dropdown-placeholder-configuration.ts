@@ -1,5 +1,7 @@
+import {IconData} from '@ironsource/fusion-ui';
+
 export interface DropdownPlaceholderConfiguration {
-    icon?: string | {iconName: string; iconVersion?: string};
+    icon?: string | IconData;
     isForcedPlaceholder?: boolean;
     placeholderText: string;
 }

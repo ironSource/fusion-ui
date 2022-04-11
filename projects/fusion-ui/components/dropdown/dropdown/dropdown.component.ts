@@ -35,6 +35,7 @@ import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dy
 import {ClosedOptions} from '../entities/closed-options';
 import {SharedEventsService} from '@ironsource/fusion-ui/services/events-handler';
 import {DropdownPlaceholderConfiguration} from '../entities/dropdown-placeholder-configuration';
+import {IconData} from '@ironsource/fusion-ui/components';
 
 @Component({
     selector: 'fusion-dropdown',
@@ -72,7 +73,7 @@ export class DropdownComponent extends FusionBaseComponent implements OnInit, On
     /**
      * @deprecated since version 6.0.0
      */
-    @Input() icon: string | {iconName: string; iconVersion?: string};
+    @Input() icon: string | IconData;
     @Input() filterIconName: string;
     @Input() isIconRightPosition = false;
     @Input() isDisabled: boolean;
@@ -139,7 +140,7 @@ export class DropdownComponent extends FusionBaseComponent implements OnInit, On
 
     forcePlaceholderOnSelection = false;
     placeholderText = 'Please Select';
-    placeholderIcon: string | {iconName: string; iconVersion?: string};
+    placeholderIcon: string | IconData;
 
     isOpen$: BehaviorSubject<boolean> = new BehaviorSubject(false);
     id: any;
@@ -162,7 +163,7 @@ export class DropdownComponent extends FusionBaseComponent implements OnInit, On
     backendPaginationChanged$: Subject<any> = new Subject();
     displayedOptions$ = new BehaviorSubject<DropdownOption[]>([]);
     displayedOptionsObservable$: Observable<DropdownOption[]>;
-    dropdownArrowIconName$ = new BehaviorSubject<string | {iconName: string; iconVersion?: string}>({
+    dropdownArrowIconName$ = new BehaviorSubject<string | IconData>({
         iconName: 'arrow-dropdown',
         iconVersion: 'v1'
     });
@@ -173,7 +174,7 @@ export class DropdownComponent extends FusionBaseComponent implements OnInit, On
     private _isLocatedRight = false;
     private _isLocatedLeft = false;
     private initPlaceholder: string;
-    private initIcon: string | {iconName: string; iconVersion?: string};
+    private initIcon: string | IconData;
     protected focusedLI = -1;
     private loadingState: boolean;
     private backendPaginationState: BackendPagination;
@@ -271,9 +272,11 @@ export class DropdownComponent extends FusionBaseComponent implements OnInit, On
         });
 
         this.selectedVersion$.pipe(takeUntil(this.onDestroy$)).subscribe(styleVersion => {
-            this.dropdownArrowIconName$.next(
-                styleVersion === StyleVersion.V2 ? 'arrow-down' : {iconName: 'arrow-dropdown', iconVersion: 'v1'}
-            );
+            const dropdownArrowIcon =
+                styleVersion === StyleVersion.V2
+                    ? {iconName: 'arrow-down', iconVersion: 'v2'}
+                    : {iconName: 'arrow-dropdown', iconVersion: 'v1'};
+            this.dropdownArrowIconName$.next(dropdownArrowIcon);
         });
 
         this.initListeners();

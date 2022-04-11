@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {TabConfiguration} from './tab.entities';
 import {PopupComponentContent} from '@ironsource/fusion-ui/components/popup';
+import {IconData} from '@ironsource/fusion-ui/components';
 
 @Component({
     selector: 'fusion-tab',
@@ -26,12 +27,12 @@ export class TabComponent {
     @ViewChild('tabElement') tabElement: ElementRef;
 
     text: string;
-    iconName: string;
+    iconName: string | IconData;
     disabled: boolean;
     tooltipInfoIconContent: string;
     tooltipIconContent: string;
     tooltipContent: string;
-    infoIconName: string;
+    infoIconName: string | IconData;
     popupContent: PopupComponentContent;
 
     onAdditionalIconClicked() {
