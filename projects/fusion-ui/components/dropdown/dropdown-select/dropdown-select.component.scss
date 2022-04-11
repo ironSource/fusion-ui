@@ -11,8 +11,8 @@ $buttonHeightSmall: 25px;
     }
 }
 
-:host-context(fusion-dropdown.small).fusion-style-v1,
-:host-context(fusion-multi-dropdown.small).fusion-style-v1 {
+:host-context(fusion-dropdown.small).fu-style-v1,
+:host-context(fusion-multi-dropdown.small).fu-style-v1 {
     .is-dropdown-select label {
         @extend %font14;
         height: $buttonHeightSmall;
@@ -26,8 +26,8 @@ $buttonHeightSmall: 25px;
     }
 }
 
-:host-context(.is-dropdown).fusion-style-v1,
-:host-context(.is-tags-holder).fusion-style-v1 {
+:host-context(.is-dropdown).fu-style-v1,
+:host-context(.is-tags-holder).fu-style-v1 {
     .is-dropdown-select {
         .filterTitle {
             display: none;
@@ -112,8 +112,8 @@ $buttonHeightSmall: 25px;
     }
 }
 
-:host-context(.is-dropdown.is-icon-right-position).fusion-style-v1,
-:host-context(.is-tags-holder.is-icon-right-position).fusion-style-v1 {
+:host-context(.is-dropdown.is-icon-right-position).fu-style-v1,
+:host-context(.is-tags-holder.is-icon-right-position).fu-style-v1 {
     .is-dropdown-select label {
         position: relative;
         padding: 0 40px 0 10px;
@@ -127,7 +127,7 @@ $buttonHeightSmall: 25px;
     }
 }
 
-:host-context(.is-dropdown.is-tab-mode).fusion-style-v1 {
+:host-context(.is-dropdown.is-tab-mode).fu-style-v1 {
     .is-dropdown-select label {
         span.placeholderPrefix {
             font-weight: 600;
@@ -146,8 +146,8 @@ $buttonHeightSmall: 25px;
     }
 }
 
-:host-context(fusion-dropdown.filter).fusion-style-v1,
-:host-context(fusion-multi-dropdown.filter).fusion-style-v1 {
+:host-context(fusion-dropdown.filter).fu-style-v1,
+:host-context(fusion-multi-dropdown.filter).fu-style-v1 {
     .is-dropdown-select {
         label {
             display: none;
@@ -162,23 +162,23 @@ $buttonHeightSmall: 25px;
     }
 }
 
-:host-context(fusion-dropdown.filter).fusion-style-v1,
-:host-context(fusion-multi-dropdown.filter).fusion-style-v1 {
+:host-context(fusion-dropdown.filter).fu-style-v1,
+:host-context(fusion-multi-dropdown.filter).fu-style-v1 {
     .dd-opened{
         @include icon-style('filter', $dark-300, 14px, true, true);
     }
 }
 
-:host-context(fusion-dropdown.filter).fusion-style-v1,
-:host-context(fusion-multi-dropdown.filter).fusion-style-v1 {
+:host-context(fusion-dropdown.filter).fu-style-v1,
+:host-context(fusion-multi-dropdown.filter).fu-style-v1 {
     .is-dropdown-select.ss-selected{
         @include icon-style('filter', $primary-500, 14px, true, true);
     }
 
 }
 
-:host-context(fusion-dropdown.title).fusion-style-v1,
-:host-context(fusion-multi-dropdown.title).fusion-style-v1 {
+:host-context(fusion-dropdown.title).fu-style-v1,
+:host-context(fusion-multi-dropdown.title).fu-style-v1 {
     .is-dropdown-select {
         label {
             @extend %font2;
@@ -209,8 +209,8 @@ $buttonHeightSmall: 25px;
     }
 }
 
-:host-context(fusion-dropdown.title.small).fusion-style-v1,
-:host-context(fusion-multi-dropdown.title.small).fusion-style-v1 {
+:host-context(fusion-dropdown.title.small).fu-style-v1,
+:host-context(fusion-multi-dropdown.title.small).fu-style-v1 {
     .is-dropdown-select {
         label {
             @extend %font4;
@@ -222,8 +222,8 @@ $buttonHeightSmall: 25px;
     }
 }
 
-:host-context(fusion-dropdown.medium).fusion-style-v1,
-:host-context(fusion-multi-dropdown.medium).fusion-style-v1 {
+:host-context(fusion-dropdown.medium).fu-style-v1,
+:host-context(fusion-multi-dropdown.medium).fu-style-v1 {
     .is-dropdown-select {
         label {
             @extend %font3;
@@ -236,8 +236,8 @@ $buttonHeightSmall: 25px;
     }
 }
 
-:host-context(fusion-dropdown.no-background-big).fusion-style-v1,
-:host-context(fusion-multi-dropdown.no-background-big).fusion-style-v1 {
+:host-context(fusion-dropdown.no-background-big).fu-style-v1,
+:host-context(fusion-multi-dropdown.no-background-big).fu-style-v1 {
     .is-dropdown-select {
         border-right: 1px solid $light-500;
         border-top: 2px solid transparent;
@@ -275,8 +275,8 @@ $buttonHeightSmall: 25px;
     }
 }
 
-:host-context(fusion-dropdown.no-background-big).fusion-style-v1,
-:host-context(fusion-multi-dropdown.no-background-big).fusion-style-v1 {
+:host-context(fusion-dropdown.no-background-big).fu-style-v1,
+:host-context(fusion-multi-dropdown.no-background-big).fu-style-v1 {
     .is-dropdown-select.dd-opened {
         border-top-color: $primary-500;
 
@@ -286,8 +286,8 @@ $buttonHeightSmall: 25px;
     }
 }
 
-:host-context(fusion-dropdown.dd-tab-active).fusion-style-v1,
-:host-context(fusion-multi-dropdown.dd-tab-active).fusion-style-v1 {
+:host-context(fusion-dropdown.dd-tab-active).fu-style-v1,
+:host-context(fusion-multi-dropdown.dd-tab-active).fu-style-v1 {
     .is-dropdown-select {
         label {
             span.placeholderPrefix {

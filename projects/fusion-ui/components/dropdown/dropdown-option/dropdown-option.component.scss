@@ -163,8 +163,8 @@
     }
 }
 
-:host-context(.is-dropdown.is-icon-right-position).fusion-style-v1,
-:host-context(.is-tags-holder.is-icon-right-position).fusion-style-v1 {
+:host-context(.is-dropdown.is-icon-right-position).fu-style-v1,
+:host-context(.is-tags-holder.is-icon-right-position).fu-style-v1 {
     position: relative;
     padding-right: 22px;
 
@@ -182,6 +182,6 @@
     padding-left: 10px;
 }
 
-:host-context(li.option.is-focused).fusion-style-v1 {
+:host-context(li.option.is-focused).fu-style-v1 {
     background: $light-100;
 }

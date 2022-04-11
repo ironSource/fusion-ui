@@ -70,7 +70,7 @@ $bodyBorder: 1px solid $light-500;
     }
 }
 
-:host-context(.on-scroll-right).fusion-style-v1 {
+:host-context(.on-scroll-right).fu-style-v1 {
     .sticky-left {
         &.display-shadow-on-scroll {
             &::after {
@@ -93,7 +93,7 @@ $bodyBorder: 1px solid $light-500;
     }
 }
 
-:host-context(.v1).fusion-style-v1 {
+:host-context(.v1).fu-style-v1 {
     &:nth-of-type(even) {
         background-color: $light-100;
     }
@@ -102,7 +102,7 @@ $bodyBorder: 1px solid $light-500;
     }
 }
 
-:host-context(.v2).fusion-style-v1 {
+:host-context(.v2).fu-style-v1 {
     td {
         background-color: $White;
         &.inner-row {
