@@ -24,7 +24,7 @@ jobs:
       - name: Trigger Code Validate
         id: trigger
         timeout-minutes: 7
-        uses: ironSource/action-trigger-workflow@v1
+        uses: ironSource/action-trigger-workflow@main
         with:
           owner: ${{ secrets.TRIGGERED_OWNER }}
           repo: ${{ secrets.TRIGGERED_REPO }}
