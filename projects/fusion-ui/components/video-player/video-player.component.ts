@@ -3,7 +3,6 @@ import {isNull} from '@ironsource/fusion-ui/utils';
 import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
 import {BehaviorSubject, fromEvent, Observable, Subject} from 'rxjs';
 import {map, startWith, switchMap} from 'rxjs/operators';
-import {VIDEO_PLAYER_THEME_TOKEN} from './video-player-theme';
 import {IconData} from '@ironsource/fusion-ui/components';
 
 @Component({
