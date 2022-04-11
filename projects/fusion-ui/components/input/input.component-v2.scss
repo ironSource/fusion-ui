@@ -485,7 +485,7 @@ $smallV2Padding: 8px 10px;
         }
     }
 }
-:host-context(.is-tags-holder.fu-style-v2){
+:host-context(fusion-tags-input.fu-style-v2){
     .fu-input-holder{
         .fu-input {
             border: none;
@@ -493,7 +493,6 @@ $smallV2Padding: 8px 10px;
             padding: 0;
             height: 20px;
             margin: 2px;
-
             &:hover {
                 background-color: transparent;
             }
