@@ -4,6 +4,7 @@ import {StyleVersion} from '@ironsource/fusion-ui';
 import {BehaviorSubject} from 'rxjs';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
 import {VersionService} from '../../../services/version/version.service';
+import {delay, tap} from 'rxjs/operators';
 
 @Component({
     selector: 'fusion-loader-docs',
@@ -62,7 +63,17 @@ export class LoaderDocsComponent implements OnInit {
 
     isLoaded$ = new BehaviorSubject<boolean>(false);
     styleVersion = StyleVersion;
-    selectedVersion$ = this.versionService.styleVersion$;
+    styleUpdatingDelay = 0;
+    styleUpdating$ = new BehaviorSubject(false);
+    selectedVersion$ = this.versionService.styleVersion$.pipe(
+        tap(() => {
+            this.styleUpdating$.next(true);
+        }),
+        delay(this.styleUpdatingDelay),
+        tap(() => {
+            this.styleUpdating$.next(false);
+        })
+    );
 
     constructor(private versionService: VersionService, private docLayoutService: DocsLayoutService) {}
 

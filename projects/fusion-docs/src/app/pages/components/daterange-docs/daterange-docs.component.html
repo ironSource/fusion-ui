@@ -1,18 +1,19 @@
-<div class="row" *ngIf="styleVersion$ | async as styleVersion">
-    <div class="col-9">
-        <!--UI-Component Examples-->
-        <div class="is-example-title">Type</div>
-        <fusion-example-block id="typeSingleDatePicker" title="Single Date Picker" *ngIf="styleVersion === StyleVersion.V2">
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<fusion-daterange [formControl]="datePicker" [options]="options"></fusion-daterange>'
-                ></fusion-code-block>
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code="
+<div class="row" *ngIf="styleVersion$ | async as currentStyleVersion">
+    <ng-container *ngIf="!(styleUpdating$ | async); else inUpdate">
+        <div class="col-9">
+            <!--UI-Component Examples-->
+            <div class="is-example-title">Type</div>
+            <fusion-example-block id="typeSingleDatePicker" title="Single Date Picker" *ngIf="currentStyleVersion === StyleVersion.V2">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<fusion-daterange [formControl]="datePicker" [options]="options"></fusion-daterange>'
+                    ></fusion-code-block>
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code="
 options = {
     calendarAmount: 1,
     presets: false
@@ -22,13 +23,13 @@ datePicker: FormControl = new FormControl({
     date: new Date()
 })
 "
-                ></fusion-code-block>
-            </ng-template>
-            <ng-template fusionExampleBlock="React">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code="
+                    ></fusion-code-block>
+                </ng-template>
+                <ng-template fusionExampleBlock="React">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code="
 import React from 'react';
 import {FusionDaterange} from '@ironsource/fusion-ui/native/react';
 
@@ -74,24 +75,24 @@ export default class DateRange extends React.Component {
 
 }
 "
-                ></fusion-code-block>
-            </ng-template>
-            <ng-template fusionExampleBlock="Vue">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code="<template>
+                    ></fusion-code-block>
+                </ng-template>
+                <ng-template fusionExampleBlock="Vue">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code="<template>
     <div style='width: 240px;'>
         <div>
             <FusionDaterange :config='datepicker' @controlValueChange='dateChanged'></FusionDaterange>
         </div>
     </div>
 </template>"
-                ></fusion-code-block>
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code="import {FusionDaterange} from '@ironsource/fusion-ui/native/vue';
+                    ></fusion-code-block>
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code="import {FusionDaterange} from '@ironsource/fusion-ui/native/vue';
 
     export default {
         name: 'DateRange',
@@ -117,19 +118,19 @@ export default class DateRange extends React.Component {
             }
         }
     }"
-                ></fusion-code-block>
-            </ng-template>
-            <ng-template fusionExampleBlock="Native">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<div id="datepickerWrapper" style="width: 240px;"></div>'
-                ></fusion-code-block>
+                    ></fusion-code-block>
+                </ng-template>
+                <ng-template fusionExampleBlock="Native">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<div id="datepickerWrapper" style="width: 240px;"></div>'
+                    ></fusion-code-block>
 
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code="const onLoad = () => {
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code="const onLoad = () => {
     const datepickerWrapper = document.getElementById('datepickerWrapper');
     const daterangeEl = document.createElement('native-fusion-daterange');
 
@@ -150,31 +151,31 @@ export default class DateRange extends React.Component {
 };
 
 document.addEventListener('DOMContentLoaded', onLoad, false);"
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <div class="row">
-                <div class="col-12">
-                    <div class="daterangeWrapper">
-                        <fusion-daterange [minDate]="daterangeMinDate" [maxDate]="daterangeMaxDate" [formControl]="daterangeDatePicker" [options]="optionOnlyDatePicker$ | async"></fusion-daterange>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="daterangeWrapper">
+                            <fusion-daterange [minDate]="daterangeMinDate" [maxDate]="daterangeMaxDate" [formControl]="daterangeDatePicker" [options]="optionOnlyDatePicker$ | async"></fusion-daterange>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </fusion-example-block>
+            </fusion-example-block>
 
-        <fusion-example-block id="typeRegularNoPreset" title="No Preset" *ngIf="styleVersion === StyleVersion.V2">
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<fusion-daterange [formControl]="daterangeDefault" [options]="options"></fusion-daterange>'
-                ></fusion-code-block>
-            </ng-template>
-            <ng-template fusionExampleBlock="React">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code="
+            <fusion-example-block id="typeRegularNoPreset" title="No Preset" *ngIf="currentStyleVersion === StyleVersion.V2">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<fusion-daterange [formControl]="daterangeDefault" [options]="options"></fusion-daterange>'
+                    ></fusion-code-block>
+                </ng-template>
+                <ng-template fusionExampleBlock="React">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code="
 import React from 'react';
 import {FusionDaterange} from '@ironsource/fusion-ui/native/react';
 
@@ -222,24 +223,24 @@ export default class DateRange extends React.Component {
 
 }
 "
-                ></fusion-code-block>
-            </ng-template>
-            <ng-template fusionExampleBlock="Vue">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code="<template>
+                    ></fusion-code-block>
+                </ng-template>
+                <ng-template fusionExampleBlock="Vue">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code="<template>
     <div style='width: 240px;'>
                 <div>
                     <FusionDaterange :config='datepicker' @controlValueChange='dateChanged'></FusionDaterange>
                 </div>
     </div>
     </template>"
-                ></fusion-code-block>
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code="import {FusionDaterange} from '@ironsource/fusion-ui/native/vue';
+                    ></fusion-code-block>
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code="import {FusionDaterange} from '@ironsource/fusion-ui/native/vue';
 
     export default {
         name: 'DateRange',
@@ -265,19 +266,19 @@ export default class DateRange extends React.Component {
             }
         }
     }"
-                ></fusion-code-block>
-            </ng-template>
-            <ng-template fusionExampleBlock="Native">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<div id="datepickerWrapper" style="width: 240px;"></div>'
-                ></fusion-code-block>
+                    ></fusion-code-block>
+                </ng-template>
+                <ng-template fusionExampleBlock="Native">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<div id="datepickerWrapper" style="width: 240px;"></div>'
+                    ></fusion-code-block>
 
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code="const onLoad = () => {
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code="const onLoad = () => {
     const datepickerWrapper = document.getElementById('datepickerWrapper');
     const daterangeEl = document.createElement('native-fusion-daterange');
     daterangeEl.config = {
@@ -296,45 +297,45 @@ export default class DateRange extends React.Component {
     datepickerWrapper.appendChild(daterangeEl);
 
 document.addEventListener('DOMContentLoaded', onLoad, false);"
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <div class="row">
-                <div class="col-12">
-                    <div class="daterangeWrapper">
-                        <fusion-daterange
-                            [formControl]="daterangeDefault"
-                            [minDate]="minDate"
-                            [maxDate]="maxDate"
-                            [options]="optionNoPresets"
-                        ></fusion-daterange>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="daterangeWrapper">
+                            <fusion-daterange
+                                [formControl]="daterangeDefault"
+                                [minDate]="minDate"
+                                [maxDate]="maxDate"
+                                [options]="optionNoPresets"
+                            ></fusion-daterange>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </fusion-example-block>
+            </fusion-example-block>
 
-        <fusion-example-block id="typeRegular" title="Regular With Default Presets">
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<fusion-daterange [formControl]="daterange"></fusion-daterange>'
-                ></fusion-code-block>
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code="import {DaterangePresets, DaterangeService} from '@ironsource/fusion-ui';
+            <fusion-example-block id="typeRegular" title="Regular With Default Presets">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<fusion-daterange [formControl]="daterange"></fusion-daterange>'
+                    ></fusion-code-block>
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code="import {DaterangePresets, DaterangeService} from '@ironsource/fusion-ui';
 
 daterange: FormControl = new FormControl({
     this.daterangeService.getPresetRange(DaterangePresets.Yesterday)
 })"
-                ></fusion-code-block>
-            </ng-template>
-            <ng-template fusionExampleBlock="React">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code="import React from 'react';
+                    ></fusion-code-block>
+                </ng-template>
+                <ng-template fusionExampleBlock="React">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code="import React from 'react';
 import {FusionDaterange} from '@ironsource/fusion-ui/native/react';
 
 const datepickerWrapperStyle = {'width': '240px'};
@@ -390,24 +391,24 @@ export default class DateRange extends React.Component {
     }
 
 }"
-                ></fusion-code-block>
-            </ng-template>
-            <ng-template fusionExampleBlock="Vue">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code="<template>
+                    ></fusion-code-block>
+                </ng-template>
+                <ng-template fusionExampleBlock="Vue">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code="<template>
     <div style='width: 240px;'>
         <div>
             <FusionDaterange :config='daterange' @controlValueChange='dateChanged'></FusionDaterange>
         </div>
     </div>
 </template>"
-                ></fusion-code-block>
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code="import {FusionDaterange} from '@ironsource/fusion-ui/native/vue';
+                    ></fusion-code-block>
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code="import {FusionDaterange} from '@ironsource/fusion-ui/native/vue';
 
     export default {
         name: 'DateRange',
@@ -439,19 +440,19 @@ export default class DateRange extends React.Component {
             }
         }
     }"
-                ></fusion-code-block>
-            </ng-template>
-            <ng-template fusionExampleBlock="Native">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<div id="datepickerWrapper" style="width: 240px;"></div>'
-                ></fusion-code-block>
+                    ></fusion-code-block>
+                </ng-template>
+                <ng-template fusionExampleBlock="Native">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<div id="datepickerWrapper" style="width: 240px;"></div>'
+                    ></fusion-code-block>
 
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code="const onLoad = () => {
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code="const onLoad = () => {
     const datepickerWrapper = document.getElementById('datepickerWrapper');
     const daterangeEl = document.createElement('native-fusion-daterange');
     const daterangePresets = window.fusion.enums.DaterangePresets;
@@ -466,26 +467,26 @@ export default class DateRange extends React.Component {
     datepickerWrapper.appendChild(daterangeEl);
 
 document.addEventListener('DOMContentLoaded', onLoad, false);"
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <div class="row">
-                <div class="col-3">
-                   <fusion-daterange [formControl]="daterangeDefault"></fusion-daterange>
+                <div class="row">
+                    <div class="col-3">
+                        <fusion-daterange [formControl]="daterangeDefault"></fusion-daterange>
+                    </div>
                 </div>
-            </div>
-        </fusion-example-block>
-        <fusion-example-block id="typeOldDate" title="Custom Daterange & Presets">
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<fusion-daterange [formControl]="daterange" [options]="options"></fusion-daterange>'
-                ></fusion-code-block>
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code="daterange: FormControl = new FormControl({
+            </fusion-example-block>
+            <fusion-example-block id="typeOldDate" title="Custom Daterange & Presets">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<fusion-daterange [formControl]="daterange" [options]="options"></fusion-daterange>'
+                    ></fusion-code-block>
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code="daterange: FormControl = new FormControl({
     startDate: new Date(Date.UTC(2020, 0, 3)),
     endDate: new Date(Date.UTC(2020, 5, 9))
 });
@@ -493,13 +494,13 @@ document.addEventListener('DOMContentLoaded', onLoad, false);"
 options = {
     presets: [DaterangePresets.Today, DaterangePresets.Yesterday, DaterangePresets.ThisMonth, DaterangePresets.LastMonth]
 };"
-                ></fusion-code-block>
-            </ng-template>
-            <ng-template fusionExampleBlock="React">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code="import React from 'react';
+                    ></fusion-code-block>
+                </ng-template>
+                <ng-template fusionExampleBlock="React">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code="import React from 'react';
 import {FusionDaterange} from '@ironsource/fusion-ui/native/react';
 
 const datepickerWrapperStyle = {'width': '240px'};
@@ -561,24 +562,24 @@ export default class DateRange extends React.Component {
     }
 
 }"
-                ></fusion-code-block>
-            </ng-template>
-            <ng-template fusionExampleBlock="Vue">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code="<template>
+                    ></fusion-code-block>
+                </ng-template>
+                <ng-template fusionExampleBlock="Vue">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code="<template>
     <div style='width: 240px;'>
         <div>
             <FusionDaterange :config='daterange' @controlValueChange='dateChanged'></FusionDaterange>
         </div>
     </div>
 </template>"
-                ></fusion-code-block>
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code="import {FusionDaterange} from '@ironsource/fusion-ui/native/vue';
+                    ></fusion-code-block>
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code="import {FusionDaterange} from '@ironsource/fusion-ui/native/vue';
 
     export default {
         name: 'DateRange',
@@ -619,19 +620,19 @@ export default class DateRange extends React.Component {
             }
         }
     }"
-                ></fusion-code-block>
-            </ng-template>
-            <ng-template fusionExampleBlock="Native">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<div id="datepickerWrapper" style="width: 240px;"></div>'
-                ></fusion-code-block>
+                    ></fusion-code-block>
+                </ng-template>
+                <ng-template fusionExampleBlock="Native">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<div id="datepickerWrapper" style="width: 240px;"></div>'
+                    ></fusion-code-block>
 
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code="const onLoad = () => {
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code="const onLoad = () => {
      const datepickerWrapper = document.getElementById('datepickerWrapper');
     const daterangeEl = document.createElement('native-fusion-daterange');
     const daterangePresets = window.fusion.enums.DaterangePresets;
@@ -656,25 +657,25 @@ export default class DateRange extends React.Component {
     datepickerWrapper.appendChild(daterangeEl);
 
 document.addEventListener('DOMContentLoaded', onLoad, false);"
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <div class="row">
-                <div class="col-12">
-                    <div class="daterangeWrapper">
-                        <fusion-daterange [formControl]="daterangeCustom" [options]="options$ | async"></fusion-daterange>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="daterangeWrapper">
+                            <fusion-daterange [formControl]="daterangeCustom" [options]="options$ | async"></fusion-daterange>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </fusion-example-block>
-        <!--UI-Component Examples-->
+            </fusion-example-block>
+            <!--UI-Component Examples-->
 
-        <!--UI-Component Configuration Doc-->
-        <div class="is-example-title">Configuration</div>
-        <fusion-example-block id="params" title="Parameters" [collapsible]="false">
-            <fusion-code-block
-                lang="js"
-                code="// Input parameters:
+            <!--UI-Component Configuration Doc-->
+            <div class="is-example-title">Configuration</div>
+            <fusion-example-block id="params" title="Parameters" [collapsible]="false">
+                <fusion-code-block
+                    lang="js"
+                    code="// Input parameters:
 id: string;                                 // optional
 options: DaterangeOptions;                  // optional
 presetsHeaderTemplate: TemplateRef<any>;    // optional
@@ -748,21 +749,26 @@ DEFAULT_DATERANGE_PRESET_NAMES = {
     [DaterangePresets.ThisMonth]: 'This month',
     [DaterangePresets.LastMonth]: 'Last month'
 };"
-            ></fusion-code-block>
-        </fusion-example-block>
-        <br />
-        <fusion-example-block id="events" title="Events" [collapsible]="false">
-            <fusion-code-block
-                lang="js"
-                code="closed();
+                ></fusion-code-block>
+            </fusion-example-block>
+            <br />
+            <fusion-example-block id="events" title="Events" [collapsible]="false">
+                <fusion-code-block
+                    lang="js"
+                    code="closed();
 applied();
 daySelected(DaterangeSelection)"
-            ></fusion-code-block>
-        </fusion-example-block>
-        <!--UI-Component Configuration Doc-->
-    </div>
+                ></fusion-code-block>
+            </fusion-example-block>
+            <!--UI-Component Configuration Doc-->
+        </div>
+    </ng-container>
 
     <div class="col-3 is-right-side-menu-holder">
         <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
     </div>
 </div>
+
+<ng-template #inUpdate>
+    <div class="col-9"></div>
+</ng-template>

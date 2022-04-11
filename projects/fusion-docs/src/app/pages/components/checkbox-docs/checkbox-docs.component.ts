@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
-import {Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {BehaviorSubject, Subject} from 'rxjs';
+import {delay, takeUntil, tap} from 'rxjs/operators';
 import {IconSelectItem, StyleVersion} from '@ironsource/fusion-ui';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
@@ -158,7 +158,17 @@ export class CheckboxDocsComponent implements OnInit, OnDestroy {
     error = 'Mandatory field';
 
     styleVersion = StyleVersion;
-    selectedVersion$ = this.versionService.styleVersion$;
+    styleUpdatingDelay = 0;
+    styleUpdating$ = new BehaviorSubject(false);
+    selectedVersion$ = this.versionService.styleVersion$.pipe(
+        tap(() => {
+            this.styleUpdating$.next(true);
+        }),
+        delay(this.styleUpdatingDelay),
+        tap(() => {
+            this.styleUpdating$.next(false);
+        })
+    );
 
     constructor(private _formBuilder: FormBuilder, private versionService: VersionService, private docLayoutService: DocsLayoutService) {}
 

@@ -1,14 +1,15 @@
 <div class="row" *ngIf="selectedVersion$ | async as currentStyleVersion">
-    <div class="col-9">
-        <!--UI-Component Examples-->
-        <div class="is-example-title">Type</div>
+    <ng-container *ngIf="!(styleUpdating$ | async); else inUpdate">
+        <div class="col-9">
+            <!--UI-Component Examples-->
+            <div class="is-example-title">Type</div>
 
-        <fusion-example-block id="inpTypeBasic" title="Basic">
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<!--Regular Input type=text-->
+            <fusion-example-block id="inpTypeBasic" title="Basic">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<!--Regular Input type=text-->
 <fusion-input
     placeholder="Input"
     [formControl]="inputFormControl">
@@ -21,14 +22,14 @@
     [isDisabled]="true">
 </fusion-input>
 '
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="React">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='class App extends React.Component {
+                <ng-template fusionExampleBlock="React">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -50,24 +51,24 @@
 }
 
 export default App;'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Vue">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<template>
+                <ng-template fusionExampleBlock="Vue">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<template>
   <div id="app">
       <FusionInput :config="input" @controlValueChange="e => handleChange(e, &#39;input&#39;)" />
   </div>
 </template>'
-                ></fusion-code-block>
+                    ></fusion-code-block>
 
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='<script>
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='<script>
 import {FusionInput} from "@ironsource/fusion-ui/native/vue";
 
 export default {
@@ -89,14 +90,14 @@ export default {
   }
 }
 </script>'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Native">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='const input = document.createElement("native-fusion-input");
+                <ng-template fusionExampleBlock="Native">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='const input = document.createElement("native-fusion-input");
 input.config = {
   placeholder: "input",
   controlValue: "lorem ipsum"
@@ -105,34 +106,34 @@ input.config = {
 input.addEventListener("controlValueChange", e => console.log(e.detail));
 input.setAttribute("name", "input");
 document.body.appendChild(input);'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <div class="row">
-                <div class="col-6">
-                    <label for="regularInput" *ngIf="currentStyleVersion === styleVersion.V2"
+                <div class="row">
+                    <div class="col-6">
+                        <label for="regularInput" *ngIf="currentStyleVersion === styleVersion.V2"
                         >Label content
-                        <fusion-icon
-                            name="info-circle"
-                            fusionTooltip="Here's tooltip!"
-                            [tooltipPosition]="tooltipPosition.Top"
-                        ></fusion-icon>
-                    </label>
-                    <fusion-input id="regularInput" placeholder="Type something" [formControl]="model"></fusion-input>
+                            <fusion-icon
+                                name="info-circle"
+                                fusionTooltip="Here's tooltip!"
+                                [tooltipPosition]="tooltipPosition.Top"
+                            ></fusion-icon>
+                        </label>
+                        <fusion-input id="regularInput" placeholder="Type something" [formControl]="model"></fusion-input>
+                    </div>
+                    <div class="col-6">
+                        <label for="regularInput" *ngIf="currentStyleVersion === styleVersion.V2">Label content</label>
+                        <fusion-input placeholder="Type something" [formControl]="modelDisabled" [isDisabled]="true"></fusion-input>
+                    </div>
                 </div>
-                <div class="col-6">
-                    <label for="regularInput" *ngIf="currentStyleVersion === styleVersion.V2">Label content</label>
-                    <fusion-input placeholder="Type something" [formControl]="modelDisabled" [isDisabled]="true"></fusion-input>
-                </div>
-            </div>
-        </fusion-example-block>
+            </fusion-example-block>
 
-        <fusion-example-block id="inpTypeSearch" title="Including Search">
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<!--Search Icon on right position (with search icon showed on focus)-->
+            <fusion-example-block id="inpTypeSearch" title="Including Search">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<!--Search Icon on right position (with search icon showed on focus)-->
 <fusion-input
     showSearchIcon="right"
     placeholder="Search"
@@ -148,14 +149,14 @@ document.body.appendChild(input);'
     [clear]="true"
     [formControl]="model">
 </fusion-input>'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="React">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='class App extends React.Component {
+                <ng-template fusionExampleBlock="React">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -179,24 +180,24 @@ document.body.appendChild(input);'
 }
 
 export default App;'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Vue">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<template>
+                <ng-template fusionExampleBlock="Vue">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<template>
   <div id="app">
       <FusionInput :config="input" @controlValueChange="e => handleChange(e, &#39;input&#39;)" />
   </div>
 </template>'
-                ></fusion-code-block>
+                    ></fusion-code-block>
 
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='<script>
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='<script>
 import {FusionInput} from "@ironsource/fusion-ui/native/vue";
 
 export default {
@@ -220,14 +221,14 @@ export default {
   }
 }
 </script>'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Native">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='const input = document.createElement("native-fusion-input");
+                <ng-template fusionExampleBlock="Native">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='const input = document.createElement("native-fusion-input");
 input.config = {
   placeholder: "input",
   showSearchIcon: "left",
@@ -237,33 +238,33 @@ input.config = {
 input.addEventListener("controlValueChange", e => console.log(e.detail));
 input.setAttribute("name", "input");
 document.body.appendChild(input);'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <div class="row">
-                <div class="col-6">
-                    <p>With Search Icon:</p>
-                    <fusion-input
-                        showSearchIcon="right"
-                        placeholder="Search"
-                        [clear]="true"
-                        [showSearchIconWhenHasInputValue]="true"
-                        [formControl]="model"
-                    ></fusion-input>
+                <div class="row">
+                    <div class="col-6">
+                        <p>With Search Icon:</p>
+                        <fusion-input
+                            showSearchIcon="right"
+                            placeholder="Search"
+                            [clear]="true"
+                            [showSearchIconWhenHasInputValue]="true"
+                            [formControl]="model"
+                        ></fusion-input>
+                    </div>
+                    <div class="col-6" *ngIf="currentStyleVersion === styleVersion.V1">
+                        <p>With Search Icon on left with clear search keyword icon:</p>
+                        <fusion-input showSearchIcon="left" placeholder="Search" [clear]="true" [formControl]="model"></fusion-input>
+                    </div>
                 </div>
-                <div class="col-6" *ngIf="currentStyleVersion === styleVersion.V1">
-                    <p>With Search Icon on left with clear search keyword icon:</p>
-                    <fusion-input showSearchIcon="left" placeholder="Search" [clear]="true" [formControl]="model"></fusion-input>
-                </div>
-            </div>
-        </fusion-example-block>
+            </fusion-example-block>
 
-        <fusion-example-block *ngIf="currentStyleVersion === styleVersion.V2" id="inpTypeSearchRounded" title="Rounded including Search">
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<!--Rounded Input with Search Icon on right position (with clear search icon showed on focus)-->
+            <fusion-example-block *ngIf="currentStyleVersion === styleVersion.V2" id="inpTypeSearchRounded" title="Rounded including Search">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<!--Rounded Input with Search Icon on right position (with clear search icon showed on focus)-->
 <fusion-input
     showSearchIcon="right"
     placeholder="Search"
@@ -281,14 +282,14 @@ document.body.appendChild(input);'
     [showSearchIconWhenHasInputValue]="true"
     [formControl]="model">
 </fusion-input>'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="React">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='class App extends React.Component {
+                <ng-template fusionExampleBlock="React">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -311,24 +312,24 @@ document.body.appendChild(input);'
 }
 
 export default App;'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Vue">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<template>
+                <ng-template fusionExampleBlock="Vue">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<template>
   <div id="app">
       <FusionInput :config="input" @controlValueChange="e => handleChange(e, &#39;input&#39;)" />
   </div>
 </template>'
-                ></fusion-code-block>
+                    ></fusion-code-block>
 
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='<script>
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='<script>
 import {FusionInput} from "@ironsource/fusion-ui/native/vue";
 
 export default {
@@ -351,14 +352,14 @@ export default {
   }
 }
 </script>'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Native">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='const input = document.createElement("native-fusion-input");
+                <ng-template fusionExampleBlock="Native">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='const input = document.createElement("native-fusion-input");
 input.config = {
   placeholder: "input",
   showSearchIcon: "left"
@@ -367,37 +368,37 @@ input.config = {
 input.addEventListener("controlValueChange", e => console.log(e.detail));
 input.setAttribute("name", "input");
 document.body.appendChild(input);'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <div class="row">
-                <div class="col-6">
-                    <fusion-input
-                        placeholder="Search"
-                        showSearchIcon="right"
-                        [options]="{rounded: true, size: inputSize.Small}"
-                        [clear]="true"
-                        [formControl]="model"
-                    ></fusion-input>
+                <div class="row">
+                    <div class="col-6">
+                        <fusion-input
+                            placeholder="Search"
+                            showSearchIcon="right"
+                            [options]="{rounded: true, size: inputSize.Small}"
+                            [clear]="true"
+                            [formControl]="model"
+                        ></fusion-input>
+                    </div>
+                    <div class="col-6" *ngIf="currentStyleVersion !== styleVersion.V2">
+                        <fusion-input
+                            placeholder="Search"
+                            showSearchIcon="left"
+                            [options]="{rounded: true}"
+                            [showSearchIconWhenHasInputValue]="true"
+                            [formControl]="model"
+                        ></fusion-input>
+                    </div>
                 </div>
-                <div class="col-6" *ngIf="currentStyleVersion !== styleVersion.V2">
-                    <fusion-input
-                        placeholder="Search"
-                        showSearchIcon="left"
-                        [options]="{rounded: true}"
-                        [showSearchIconWhenHasInputValue]="true"
-                        [formControl]="model"
-                    ></fusion-input>
-                </div>
-            </div>
-        </fusion-example-block>
+            </fusion-example-block>
 
-        <fusion-example-block id="inpTypeIcon" title="Including Icon">
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<!--With Icon on left-->
+            <fusion-example-block id="inpTypeIcon" title="Including Icon">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<!--With Icon on left-->
 <fusion-input
     placeholder="Placeholder"
     icon="v2/alarm-clock"
@@ -412,65 +413,65 @@ document.body.appendChild(input);'
     iconPos="right"
     [formControl]="model"
 ></fusion-input>'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="React">
-                <fusion-code-block lang="js" class="is-collapsible" code=""></fusion-code-block>
-            </ng-template>
+                <ng-template fusionExampleBlock="React">
+                    <fusion-code-block lang="js" class="is-collapsible" code=""></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Vue">
-                <fusion-code-block lang="html" class="is-collapsible" code=""></fusion-code-block>
+                <ng-template fusionExampleBlock="Vue">
+                    <fusion-code-block lang="html" class="is-collapsible" code=""></fusion-code-block>
 
-                <fusion-code-block lang="js" class="is-collapsible" code=""></fusion-code-block>
-            </ng-template>
+                    <fusion-code-block lang="js" class="is-collapsible" code=""></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Native">
-                <fusion-code-block lang="js" class="is-collapsible" code=""></fusion-code-block>
-            </ng-template>
+                <ng-template fusionExampleBlock="Native">
+                    <fusion-code-block lang="js" class="is-collapsible" code=""></fusion-code-block>
+                </ng-template>
 
-            <div class="row" *ngIf="currentStyleVersion === styleVersion.V1">
-                <div class="col-6">
-                    <p>With Icon left:</p>
-                    <fusion-input placeholder="Placeholder" icon="android" iconPos="left" [formControl]="model"></fusion-input>
+                <div class="row" *ngIf="currentStyleVersion === styleVersion.V1">
+                    <div class="col-6">
+                        <p>With Icon left:</p>
+                        <fusion-input placeholder="Placeholder" icon="android" iconPos="left" [formControl]="model"></fusion-input>
+                    </div>
+                    <div class="col-6">
+                        <p>With Icon right:</p>
+                        <fusion-input placeholder="Placeholder" icon="ios" iconPos="right" [formControl]="model"></fusion-input>
+                    </div>
                 </div>
-                <div class="col-6">
-                    <p>With Icon right:</p>
-                    <fusion-input placeholder="Placeholder" icon="ios" iconPos="right" [formControl]="model"></fusion-input>
+                <div class="row" *ngIf="currentStyleVersion === styleVersion.V2">
+                    <div class="col-6">
+                        <p>With Icon left:</p>
+                        <fusion-input placeholder="Placeholder" [icon]="'alarm-clock'" iconPos="left" [formControl]="model"></fusion-input>
+                    </div>
+                    <div class="col-6">
+                        <p>With Icon right:</p>
+                        <fusion-input placeholder="Placeholder" [icon]="'alarm-clock'" iconPos="right" [formControl]="model"></fusion-input>
+                    </div>
                 </div>
-            </div>
-            <div class="row" *ngIf="currentStyleVersion === styleVersion.V2">
-                <div class="col-6">
-                    <p>With Icon left:</p>
-                    <fusion-input placeholder="Placeholder" [icon]="'alarm-clock'" iconPos="left" [formControl]="model"></fusion-input>
-                </div>
-                <div class="col-6">
-                    <p>With Icon right:</p>
-                    <fusion-input placeholder="Placeholder" [icon]="'alarm-clock'" iconPos="right" [formControl]="model"></fusion-input>
-                </div>
-            </div>
-        </fusion-example-block>
+            </fusion-example-block>
 
-        <div class="is-example-title">Variation</div>
+            <div class="is-example-title">Variation</div>
 
-        <fusion-example-block id="inpVaraction" title="Action" *ngIf="currentStyleVersion === styleVersion.V1">
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<fusion-input placeholder="Input"
+            <fusion-example-block id="inpVaraction" title="Action" *ngIf="currentStyleVersion === styleVersion.V1">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<fusion-input placeholder="Input"
               (btnAction)="alertMe($event)"
               btn="Search"
               [formControl]="inputFormControl">
 </fusion-input>'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="React">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='class App extends React.Component {
+                <ng-template fusionExampleBlock="React">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -499,26 +500,26 @@ document.body.appendChild(input);'
 }
 
 export default App;'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Vue">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<template>
+                <ng-template fusionExampleBlock="Vue">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<template>
   <div id="app">
       <FusionInput :config="input"
                    @controlValueChange="e => handleChange(e, &#39;input&#39;)"
                    @btnAction="btnAction" />
   </div>
 </template>'
-                ></fusion-code-block>
+                    ></fusion-code-block>
 
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='<script>
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='<script>
 import {FusionInput} from "@ironsource/fusion-ui/native/vue";
 
 export default {
@@ -544,14 +545,14 @@ export default {
   }
 }
 </script>'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Native">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='const input = document.createElement("native-fusion-input");
+                <ng-template fusionExampleBlock="Native">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='const input = document.createElement("native-fusion-input");
 input.config = {
   placeholder: "input",
   btn: "Search"
@@ -560,27 +561,27 @@ input.config = {
 input.addEventListener("btnAction", e => console.log(e.detail));
 input.addEventListener("controlValueChange", e => console.log(e.detail));
 document.body.appendChild(input);'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <div class="row">
-                <div class="col-6">
-                    <fusion-input placeholder="Input" (btnAction)="alertMe($event)" btn="Search" [formControl]="model"></fusion-input>
-                </div>
-                <div class="col-6" *ngIf="currentStyleVersion !== styleVersion.V2">
-                    <fusion-alert *ngIf="actionMessageShown" type="success"
+                <div class="row">
+                    <div class="col-6">
+                        <fusion-input placeholder="Input" (btnAction)="alertMe($event)" btn="Search" [formControl]="model"></fusion-input>
+                    </div>
+                    <div class="col-6" *ngIf="currentStyleVersion !== styleVersion.V2">
+                        <fusion-alert *ngIf="actionMessageShown" type="success"
                         ><span class="fu-font4">Action!</span> Input Action button was clicked.
-                    </fusion-alert>
+                        </fusion-alert>
+                    </div>
                 </div>
-            </div>
-        </fusion-example-block>
+            </fusion-example-block>
 
-        <fusion-example-block id="inpVarActionV2" title="Action" *ngIf="currentStyleVersion === styleVersion.V2">
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<fusion-input
+            <fusion-example-block id="inpVarActionV2" title="Action" *ngIf="currentStyleVersion === styleVersion.V2">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<fusion-input
     placeholder="Enter you URL"
     btn="Import app info"
     [options]="{buttonIcon:`v2/sync`}"
@@ -591,14 +592,14 @@ document.body.appendChild(input);'
     [customMessages]="{pattern: `Invalid Url`}"
     [showError]="true">
 </fusion-input>'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="React">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='class App extends React.Component {
+                <ng-template fusionExampleBlock="React">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -627,26 +628,26 @@ document.body.appendChild(input);'
 }
 
 export default App;'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Vue">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<template>
+                <ng-template fusionExampleBlock="Vue">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<template>
   <div id="app">
       <FusionInput :config="input"
                    @controlValueChange="e => handleChange(e, &#39;input&#39;)"
                    @btnAction="btnAction" />
   </div>
 </template>'
-                ></fusion-code-block>
+                    ></fusion-code-block>
 
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='<script>
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='<script>
 import {FusionInput} from "@ironsource/fusion-ui/native/vue";
 
 export default {
@@ -672,14 +673,14 @@ export default {
   }
 }
 </script>'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Native">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='const input = document.createElement("native-fusion-input");
+                <ng-template fusionExampleBlock="Native">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='const input = document.createElement("native-fusion-input");
 input.config = {
   placeholder: "input",
   btn: "Search"
@@ -688,41 +689,41 @@ input.config = {
 input.addEventListener("btnAction", e => console.log(e.detail));
 input.addEventListener("controlValueChange", e => console.log(e.detail));
 document.body.appendChild(input);'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <div class="row" [formGroup]="customInputForm">
-                <div class="col-12">
-                    <fusion-input
-                        placeholder="Enter URL"
-                        btn="Import app info"
-                        [options]="{buttonIcon: 'sync'}"
-                        (btnAction)="alertMe($event)"
-                        [btnLoading]="actionButtonLoading$ | async"
-                        formControlName="applicationUrl"
-                        fusionErrorMessage="App URL"
-                        [customMessages]="{pattern: 'Invalid URL'}"
-                        [showError]="true"
-                    ></fusion-input>
+                <div class="row" [formGroup]="customInputForm">
+                    <div class="col-12">
+                        <fusion-input
+                            placeholder="Enter URL"
+                            btn="Import app info"
+                            [options]="{buttonIcon: 'sync'}"
+                            (btnAction)="alertMe($event)"
+                            [btnLoading]="actionButtonLoading$ | async"
+                            formControlName="applicationUrl"
+                            fusionErrorMessage="App URL"
+                            [customMessages]="{pattern: 'Invalid URL'}"
+                            [showError]="true"
+                        ></fusion-input>
+                    </div>
                 </div>
-            </div>
-            <!--
-            <div class="row">
-                <div class="col-12">
-                    <fusion-alert *ngIf="actionMessageShown" type="success"
-                        ><span class="font4">Action!</span> Input Action button was clicked.
-                    </fusion-alert>
+                <!--
+                <div class="row">
+                    <div class="col-12">
+                        <fusion-alert *ngIf="actionMessageShown" type="success"
+                            ><span class="font4">Action!</span> Input Action button was clicked.
+                        </fusion-alert>
+                    </div>
                 </div>
-            </div>
--->
-        </fusion-example-block>
+    -->
+            </fusion-example-block>
 
-        <fusion-example-block id="inpVarLabeled" title="Labeled" *ngIf="currentStyleVersion === styleVersion.V1">
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<fusion-input
+            <fusion-example-block id="inpVarLabeled" title="Labeled" *ngIf="currentStyleVersion === styleVersion.V1">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<fusion-input
     units="kg"
     unitPos="right"
     placeholder="Enter weight"
@@ -745,14 +746,14 @@ For small-size use inputOptionsTest_options = {size: `small`};
     placeholder="Enter your amount"
     [formControl]="inputFormControl">
 </fusion-input>'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="React">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='class App extends React.Component {
+                <ng-template fusionExampleBlock="React">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -777,25 +778,25 @@ For small-size use inputOptionsTest_options = {size: `small`};
 }
 
 export default App;'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Vue">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<template>
+                <ng-template fusionExampleBlock="Vue">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<template>
   <div id="app">
       <FusionInput :config="input"
                    @controlValueChange="e => handleChange(e, &#39;input&#39;)" />
   </div>
 </template>'
-                ></fusion-code-block>
+                    ></fusion-code-block>
 
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='<script>
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='<script>
 import {FusionInput} from "@ironsource/fusion-ui/native/vue";
 
 export default {
@@ -819,14 +820,14 @@ export default {
   }
 }
 </script>'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Native">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='const input = document.createElement("native-fusion-input");
+                <ng-template fusionExampleBlock="Native">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='const input = document.createElement("native-fusion-input");
 input.config = {
   placeholder: "input",
   units: "kg",
@@ -836,60 +837,60 @@ input.config = {
 input.addEventListener("controlValueChange", e => console.log(e.detail));
 input.setAttribute("name", "input");
 document.body.appendChild(input);'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <div class="row is-example-row">
-                <div class="col-6">
-                    <fusion-input units="kg" unitPos="right" placeholder="Enter weight" [formControl]="model"></fusion-input>
+                <div class="row is-example-row">
+                    <div class="col-6">
+                        <fusion-input units="kg" unitPos="right" placeholder="Enter weight" [formControl]="model"></fusion-input>
+                    </div>
+                    <div class="col-6"></div>
                 </div>
-                <div class="col-6"></div>
-            </div>
 
-            <div class="row is-example-row">
-                <div class="col-6">
-                    <fusion-input
-                        units="$"
-                        unitPos="left"
-                        options="{units:'$'}"
-                        placeholder="Enter your amount"
-                        [formControl]="model"
-                    ></fusion-input>
+                <div class="row is-example-row">
+                    <div class="col-6">
+                        <fusion-input
+                            units="$"
+                            unitPos="left"
+                            options="{units:'$'}"
+                            placeholder="Enter your amount"
+                            [formControl]="model"
+                        ></fusion-input>
+                    </div>
+                    <div class="col-6"></div>
                 </div>
-                <div class="col-6"></div>
-            </div>
 
-            <div class="row">
-                <div class="col-6">
-                    <fusion-input
-                        units="$"
-                        unitPos="left"
-                        [options]="{size: 'small'}"
-                        placeholder="Enter your amount"
-                        [formControl]="model"
-                    ></fusion-input>
+                <div class="row">
+                    <div class="col-6">
+                        <fusion-input
+                            units="$"
+                            unitPos="left"
+                            [options]="{size: 'small'}"
+                            placeholder="Enter your amount"
+                            [formControl]="model"
+                        ></fusion-input>
+                    </div>
+                    <div class="col-6" style="color: #678099">Small size</div>
                 </div>
-                <div class="col-6" style="color: #678099">Small size</div>
-            </div>
-        </fusion-example-block>
+            </fusion-example-block>
 
-        <fusion-example-block id="inpVarNumber" title="Spinner Number">
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<fusion-input
+            <fusion-example-block id="inpVarNumber" title="Spinner Number">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<fusion-input
     type="number"
     [formControl]="inputFormControl">
 </fusion-input>'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="React">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='class App extends React.Component {
+                <ng-template fusionExampleBlock="React">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -913,25 +914,25 @@ document.body.appendChild(input);'
 }
 
 export default App;'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Vue">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<template>
+                <ng-template fusionExampleBlock="Vue">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<template>
   <div id="app">
       <FusionInput :config="input"
                    @controlValueChange="e => handleChange(e, &#39;input&#39;)" />
   </div>
 </template>'
-                ></fusion-code-block>
+                    ></fusion-code-block>
 
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='<script>
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='<script>
 import {FusionInput} from "@ironsource/fusion-ui/native/vue";
 
 export default {
@@ -954,14 +955,14 @@ export default {
   }
 }
 </script>'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Native">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='const input = document.createElement("native-fusion-input");
+                <ng-template fusionExampleBlock="Native">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='const input = document.createElement("native-fusion-input");
 input.config = {
   type:"number"
 };
@@ -969,37 +970,37 @@ input.config = {
 input.addEventListener("controlValueChange", e => console.log(e.detail));
 input.setAttribute("name", "input");
 document.body.appendChild(input);'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <div style="width: 100px">
-                <fusion-input type="number" sanitationRegex="[0-9.]" [formControl]="numberVal"></fusion-input>
-            </div>
-        </fusion-example-block>
+                <div style="width: 100px">
+                    <fusion-input type="number" sanitationRegex="[0-9.]" [formControl]="numberVal"></fusion-input>
+                </div>
+            </fusion-example-block>
 
-        <fusion-example-block id="inpTextArea" title="Text Area">
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<fusion-textarea
+            <fusion-example-block id="inpTextArea" title="Text Area">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<fusion-textarea
     placeholder="Enter your text"
     [model]="textAreaVal">
 </fusion-textarea>'
-                ></fusion-code-block>
-            </ng-template>
-            <div class="row">
-                <div class="col-6" style="height: 155px">
-                    <fusion-textarea placeholder="Enter your text" [model]="textAreaVal"></fusion-textarea>
+                    ></fusion-code-block>
+                </ng-template>
+                <div class="row">
+                    <div class="col-6" style="height: 155px">
+                        <fusion-textarea placeholder="Enter your text" [model]="textAreaVal"></fusion-textarea>
+                    </div>
                 </div>
-            </div>
-        </fusion-example-block>
-        <fusion-example-block id="inpPass" title="Password" *ngIf="currentStyleVersion === styleVersion.V2">
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<!--Regular using-->
+            </fusion-example-block>
+            <fusion-example-block id="inpPass" title="Password" *ngIf="currentStyleVersion === styleVersion.V2">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<!--Regular using-->
 <fusion-input type="password" placeholder="Enter your password" [formControl]="modelPass"></fusion-input>
 
 <!--Hide/Shown state toggle related using-->
@@ -1019,11 +1020,11 @@ document.body.appendChild(input);'
     (passHiddenStateChanged)="onPassConfirmStateChanged($event)"
 ></fusion-input>
 '
-                ></fusion-code-block>
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code="// for password hide / shown state changing on both inputs by chane in one please use
+                    ></fusion-code-block>
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code="// for password hide / shown state changing on both inputs by chane in one please use
 ...
 ...
     passwordOptions: InputOptions = {};
@@ -1039,13 +1040,13 @@ document.body.appendChild(input);'
         this.confirmPasswordOptions = {isPassHidden};
         this.passwordOptions = {isPassHidden};
     }"
-                ></fusion-code-block>
-            </ng-template>
-            <ng-template fusionExampleBlock="React">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='export default class Foo extends React.Component {
+                    ></fusion-code-block>
+                </ng-template>
+                <ng-template fusionExampleBlock="React">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='export default class Foo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -1095,13 +1096,13 @@ document.body.appendChild(input);'
     );
   }
 }'
-                ></fusion-code-block>
-            </ng-template>
-            <ng-template fusionExampleBlock="Vue">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<template>
+                    ></fusion-code-block>
+                </ng-template>
+                <ng-template fusionExampleBlock="Vue">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<template>
   <div style="margin: 25px;">
     <p>Example Here</p>
     <div
@@ -1123,12 +1124,12 @@ document.body.appendChild(input);'
     </div>
   </div>
 </template>'
-                ></fusion-code-block>
+                    ></fusion-code-block>
 
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='<script>
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='<script>
 import { FusionInput } from "@ironsource/fusion-ui/native/vue/fusion-vue.js";
 
 export const FooComponent = {
@@ -1179,37 +1180,37 @@ export const FooComponent = {
 
 export default FooComponent;
 </script>'
-                ></fusion-code-block>
-            </ng-template>
-            <div class="row">
-                <div class="col-3">
-                    <fusion-input
-                        type="password"
-                        placeholder="Enter your password"
-                        [formControl]="modelPass"
-                        [options]="passwordOptions"
-                        (passHiddenStateChanged)="onPassStateChanged($event)"
-                    ></fusion-input>
+                    ></fusion-code-block>
+                </ng-template>
+                <div class="row">
+                    <div class="col-3">
+                        <fusion-input
+                            type="password"
+                            placeholder="Enter your password"
+                            [formControl]="modelPass"
+                            [options]="passwordOptions"
+                            (passHiddenStateChanged)="onPassStateChanged($event)"
+                        ></fusion-input>
+                    </div>
+                    <div class="col-3">
+                        <fusion-input
+                            type="password"
+                            placeholder="Confirm your password"
+                            [formControl]="modelPassConfirm"
+                            [options]="confirmPasswordOptions"
+                            (passHiddenStateChanged)="onPassConfirmStateChanged($event)"
+                        ></fusion-input>
+                    </div>
                 </div>
-                <div class="col-3">
-                    <fusion-input
-                        type="password"
-                        placeholder="Confirm your password"
-                        [formControl]="modelPassConfirm"
-                        [options]="confirmPasswordOptions"
-                        (passHiddenStateChanged)="onPassConfirmStateChanged($event)"
-                    ></fusion-input>
-                </div>
-            </div>
-        </fusion-example-block>
-        <div class="is-example-title">Size</div>
+            </fusion-example-block>
+            <div class="is-example-title">Size</div>
 
-        <fusion-example-block id="inpSized" title="Regular and Small sizes">
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<fusion-input placeholder="Enter your input value"
+            <fusion-example-block id="inpSized" title="Regular and Small sizes">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<fusion-input placeholder="Enter your input value"
               [formControl]="inputFormControl">
 </fusion-input>
 
@@ -1219,14 +1220,14 @@ export default FooComponent;
 </fusion-input>
 
 <!--inputOptionsTest_options = {size: "small"}-->'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="React">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='class App extends React.Component {
+                <ng-template fusionExampleBlock="React">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -1252,25 +1253,25 @@ export default FooComponent;
 }
 
 export default App;'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Vue">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<template>
+                <ng-template fusionExampleBlock="Vue">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<template>
   <div id="app">
       <FusionInput :config="input"
                    @controlValueChange="e => handleChange(e, &#39;input&#39;)" />
   </div>
 </template>'
-                ></fusion-code-block>
+                    ></fusion-code-block>
 
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='<script>
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='<script>
 import {FusionInput} from "@ironsource/fusion-ui/native/vue";
 
 export default {
@@ -1295,14 +1296,14 @@ export default {
   }
 }
 </script>'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Native">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='const input = document.createElement("native-fusion-input");
+                <ng-template fusionExampleBlock="Native">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='const input = document.createElement("native-fusion-input");
 input.config = {
   options: {
     size: "small"
@@ -1312,35 +1313,35 @@ input.config = {
 input.addEventListener("controlValueChange", e => console.log(e.detail));
 input.setAttribute("name", "input");
 document.body.appendChild(input);'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <div class="row is-example-row">
-                <div class="col-6">
-                    <fusion-input placeholder="Enter your input value" [formControl]="model"></fusion-input>
+                <div class="row is-example-row">
+                    <div class="col-6">
+                        <fusion-input placeholder="Enter your input value" [formControl]="model"></fusion-input>
+                    </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="col-6">
-                    <fusion-input
-                        placeholder="Enter your input value"
-                        [options]="inputOptionsTest_options"
-                        [formControl]="model"
-                    ></fusion-input>
+                <div class="row">
+                    <div class="col-6">
+                        <fusion-input
+                            placeholder="Enter your input value"
+                            [options]="inputOptionsTest_options"
+                            [formControl]="model"
+                        ></fusion-input>
+                    </div>
                 </div>
-            </div>
-        </fusion-example-block>
+            </fusion-example-block>
 
-        <div class="is-example-title">States</div>
+            <div class="is-example-title">States</div>
 
-        <fusion-example-block id="inpStatesErrors" title="Errors & Warnings">
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    *ngIf="currentStyleVersion === styleVersion.V1"
-                    lang="html"
-                    class="is-collapsible"
-                    code='Basic Input:
+            <fusion-example-block id="inpStatesErrors" title="Errors & Warnings">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        *ngIf="currentStyleVersion === styleVersion.V1"
+                        lang="html"
+                        class="is-collapsible"
+                        code='Basic Input:
 <fusion-input
     [formControl]="inputFormControl"
     [required]="true"
@@ -1377,12 +1378,12 @@ Empty:
     [options]="inputOptionsTest_options"
     [formControl]="inputFormControl">
 </fusion-input>'
-                ></fusion-code-block>
-                <fusion-code-block
-                    *ngIf="currentStyleVersion === styleVersion.V2"
-                    lang="html"
-                    class="is-collapsible"
-                    code='<!--Input Error-->
+                    ></fusion-code-block>
+                    <fusion-code-block
+                        *ngIf="currentStyleVersion === styleVersion.V2"
+                        lang="html"
+                        class="is-collapsible"
+                        code='<!--Input Error-->
 <fusion-input
     [formControl]="inputFormControl"
     [required]="true"
@@ -1405,14 +1406,14 @@ Empty:
     error="Warning message here"
     placeholder="Enter your input value"
 ></fusion-input>'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="React">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='class App extends React.Component {
+                <ng-template fusionExampleBlock="React">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -1441,25 +1442,25 @@ Empty:
 }
 
 export default App;'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Vue">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<template>
+                <ng-template fusionExampleBlock="Vue">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<template>
   <div id="app">
       <FusionInput :config="input"
                    @controlValueChange="e => handleChange(e, &#39;input&#39;)" />
   </div>
 </template>'
-                ></fusion-code-block>
+                    ></fusion-code-block>
 
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='<script>
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='<script>
 import {FusionInput} from "@ironsource/fusion-ui/native/vue";
 
 export default {
@@ -1487,14 +1488,14 @@ export default {
   }
 }
 </script>'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Native">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='const input = document.createElement("native-fusion-input");
+                <ng-template fusionExampleBlock="Native">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='const input = document.createElement("native-fusion-input");
 input.config = {
   options: {
     size: "small"
@@ -1508,109 +1509,109 @@ input.config = {
 input.addEventListener("controlValueChange", e => console.log(e.detail));
 input.setAttribute("name", "input");
 document.body.appendChild(input);'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <div class="row is-example-row">
-                <div class="col-2 is-txt-lbl">Input Error</div>
-                <div class="col-6">
-                    <fusion-input [formControl]="model" error="Uh oh! Invalid content" placeholder="Enter your input value"></fusion-input>
-                </div>
-            </div>
-            <!--
-            <div class="row is-example-row" style="margin-bottom: 30px;">
-                <div class="col-2 is-txt-lbl">
-                    Textarea
-                </div>
-                <div class="col-6" style="height: 155px;">
-                    <fusion-textarea placeholder="Enter your text" [error]="'Error message here'" [model]="textAreaVal"></fusion-textarea>
-                </div>
-            </div>
--->
-
-            <div class="row is-example-row" *ngIf="currentStyleVersion === styleVersion.V2">
-                <div class="col-2 is-txt-lbl">Input Error Icon</div>
-                <div class="col-6">
-                    <fusion-input
-                        [formControl]="model"
-                        errorType="error"
-                        error="Uh oh! Invalid content"
-                        placeholder="Enter your input value"
-                    ></fusion-input>
-                </div>
-            </div>
-            <div class="row" *ngIf="currentStyleVersion === styleVersion.V2">
-                <div class="col-2 is-txt-lbl">Input Warning Icon</div>
-                <div class="col-6">
-                    <fusion-input
-                        [formControl]="model"
-                        errorType="warning"
-                        error="Warning! Invalid content"
-                        placeholder="Enter your input value"
-                    ></fusion-input>
-                </div>
-            </div>
-
-            <div *ngIf="currentStyleVersion === styleVersion.V1">
                 <div class="row is-example-row">
-                    <div class="col-2">Table Input</div>
-                </div>
-                <div class="row is-example-row">
-                    <div class="col-2 is-txt-lbl">Warning with icon</div>
-                    <div class="col-2">
-                        <fusion-input
-                            id="optionsTest4"
-                            units="$"
-                            unitPos="left"
-                            error="Error message here"
-                            errorType="warning"
-                            type="number"
-                            [decimal]="2"
-                            [options]="inputOptionsTest_options"
-                            [formControl]="tableInput"
-                        ></fusion-input>
+                    <div class="col-2 is-txt-lbl">Input Error</div>
+                    <div class="col-6">
+                        <fusion-input [formControl]="model" error="Uh oh! Invalid content" placeholder="Enter your input value"></fusion-input>
                     </div>
                 </div>
-                <div class="row is-example-row">
-                    <div class="col-2 is-txt-lbl">Error with icon</div>
-                    <div class="col-2">
-                        <fusion-input
-                            id="optionsTest3"
-                            units="$"
-                            unitPos="left"
-                            error="Error Text"
-                            errorType="error"
-                            type="number"
-                            [decimal]="2"
-                            [options]="inputOptionsTest_options"
-                            [formControl]="errorWithIconInput"
-                        ></fusion-input>
+                <!--
+                <div class="row is-example-row" style="margin-bottom: 30px;">
+                    <div class="col-2 is-txt-lbl">
+                        Textarea
+                    </div>
+                    <div class="col-6" style="height: 155px;">
+                        <fusion-textarea placeholder="Enter your text" [error]="'Error message here'" [model]="textAreaVal"></fusion-textarea>
                     </div>
                 </div>
-                <div class="row is-example-row">
-                    <div class="col-2 is-txt-lbl">Empty</div>
-                    <div class="col-2">
+    -->
+
+                <div class="row is-example-row" *ngIf="currentStyleVersion === styleVersion.V2">
+                    <div class="col-2 is-txt-lbl">Input Error Icon</div>
+                    <div class="col-6">
                         <fusion-input
-                            id="optionsTest2"
-                            units="$"
-                            unitPos="left"
-                            error="true"
-                            type="number"
-                            [decimal]="2"
-                            [options]="inputOptionsTest_options"
                             [formControl]="model"
+                            errorType="error"
+                            error="Uh oh! Invalid content"
+                            placeholder="Enter your input value"
                         ></fusion-input>
                     </div>
                 </div>
-            </div>
-        </fusion-example-block>
+                <div class="row" *ngIf="currentStyleVersion === styleVersion.V2">
+                    <div class="col-2 is-txt-lbl">Input Warning Icon</div>
+                    <div class="col-6">
+                        <fusion-input
+                            [formControl]="model"
+                            errorType="warning"
+                            error="Warning! Invalid content"
+                            placeholder="Enter your input value"
+                        ></fusion-input>
+                    </div>
+                </div>
 
-        <fusion-example-block id="inpStatesLoading" title="Loading">
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<fusion-input placeholder="Enter your input value"
+                <div *ngIf="currentStyleVersion === styleVersion.V1">
+                    <div class="row is-example-row">
+                        <div class="col-2">Table Input</div>
+                    </div>
+                    <div class="row is-example-row">
+                        <div class="col-2 is-txt-lbl">Warning with icon</div>
+                        <div class="col-2">
+                            <fusion-input
+                                id="optionsTest4"
+                                units="$"
+                                unitPos="left"
+                                error="Error message here"
+                                errorType="warning"
+                                type="number"
+                                [decimal]="2"
+                                [options]="inputOptionsTest_options"
+                                [formControl]="tableInput"
+                            ></fusion-input>
+                        </div>
+                    </div>
+                    <div class="row is-example-row">
+                        <div class="col-2 is-txt-lbl">Error with icon</div>
+                        <div class="col-2">
+                            <fusion-input
+                                id="optionsTest3"
+                                units="$"
+                                unitPos="left"
+                                error="Error Text"
+                                errorType="error"
+                                type="number"
+                                [decimal]="2"
+                                [options]="inputOptionsTest_options"
+                                [formControl]="errorWithIconInput"
+                            ></fusion-input>
+                        </div>
+                    </div>
+                    <div class="row is-example-row">
+                        <div class="col-2 is-txt-lbl">Empty</div>
+                        <div class="col-2">
+                            <fusion-input
+                                id="optionsTest2"
+                                units="$"
+                                unitPos="left"
+                                error="true"
+                                type="number"
+                                [decimal]="2"
+                                [options]="inputOptionsTest_options"
+                                [formControl]="model"
+                            ></fusion-input>
+                        </div>
+                    </div>
+                </div>
+            </fusion-example-block>
+
+            <fusion-example-block id="inpStatesLoading" title="Loading">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<fusion-input placeholder="Enter your input value"
     [loading]="true"
     [formControl]="nameInput">
 </fusion-input>
@@ -1633,14 +1634,14 @@ document.body.appendChild(input);'
     [loading]="true"
     [formControl]="nameInput"
 ></fusion-input>'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="React">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='class App extends React.Component {
+                <ng-template fusionExampleBlock="React">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -1667,25 +1668,25 @@ document.body.appendChild(input);'
 }
 
 export default App;'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Vue">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<template>
+                <ng-template fusionExampleBlock="Vue">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<template>
   <div id="app">
       <FusionInput :config="input"
                    @controlValueChange="e => handleChange(e, &#39;input&#39;)"/>
   </div>
 </template>'
-                ></fusion-code-block>
+                    ></fusion-code-block>
 
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='<script>
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='<script>
 import {FusionInput} from "@ironsource/fusion-ui/native/vue";
 
 export default {
@@ -1711,14 +1712,14 @@ export default {
   }
 }
 </script>'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Native">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='const input = document.createElement("native-fusion-input");
+                <ng-template fusionExampleBlock="Native">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='const input = document.createElement("native-fusion-input");
 input.config = {
   configuration: {
     placeholder: "input text",
@@ -1730,62 +1731,62 @@ input.config = {
 input.addEventListener("controlValueChange", e => console.log(e.detail));
 input.setAttribute("name", "input");
 document.body.appendChild(input);'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <div class="row is-example-row" *ngIf="currentStyleVersion === styleVersion.V1">
-                <div class="col-2">
-                    <fusion-input placeholder="Enter your input value" [loading]="true" [formControl]="nameInput"></fusion-input>
+                <div class="row is-example-row" *ngIf="currentStyleVersion === styleVersion.V1">
+                    <div class="col-2">
+                        <fusion-input placeholder="Enter your input value" [loading]="true" [formControl]="nameInput"></fusion-input>
+                    </div>
                 </div>
-            </div>
 
-            <div class="row is-example-row" *ngIf="currentStyleVersion === styleVersion.V1">
-                <div class="col-2">
-                    <fusion-input
-                        placeholder="Enter your input value"
-                        iconPos="right"
-                        [loading]="true"
-                        [formControl]="nameInput"
-                    ></fusion-input>
+                <div class="row is-example-row" *ngIf="currentStyleVersion === styleVersion.V1">
+                    <div class="col-2">
+                        <fusion-input
+                            placeholder="Enter your input value"
+                            iconPos="right"
+                            [loading]="true"
+                            [formControl]="nameInput"
+                        ></fusion-input>
+                    </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="col-4">
-                    <label>With button in button loading state</label>
-                    <fusion-input
-                        placeholder="Enter your input value"
-                        [btnLoading]="true"
-                        [btn]="'Loading'"
-                        [formControl]="nameInput"
-                    ></fusion-input>
+                <div class="row">
+                    <div class="col-4">
+                        <label>With button in button loading state</label>
+                        <fusion-input
+                            placeholder="Enter your input value"
+                            [btnLoading]="true"
+                            [btn]="'Loading'"
+                            [formControl]="nameInput"
+                        ></fusion-input>
+                    </div>
+                    <div class="col-4">
+                        <label>In loading state</label>
+                        <fusion-input
+                            placeholder="Enter your input value"
+                            [loading]="true"
+                            [formControl]="nameInput"
+                        ></fusion-input>
+                    </div>
+                    <div class="col-4">
+                        <label>In loading state editable</label>
+                        <fusion-input
+                            placeholder="Enter your input value"
+                            [configuration]="{disableOnLoading: false}"
+                            [loading]="true"
+                            [formControl]="nameInput"
+                        ></fusion-input>
+                    </div>
                 </div>
-                <div class="col-4">
-                    <label>In loading state</label>
-                    <fusion-input
-                        placeholder="Enter your input value"
-                        [loading]="true"
-                        [formControl]="nameInput"
-                    ></fusion-input>
-                </div>
-                <div class="col-4">
-                    <label>In loading state editable</label>
-                    <fusion-input
-                        placeholder="Enter your input value"
-                        [configuration]="{disableOnLoading: false}"
-                        [loading]="true"
-                        [formControl]="nameInput"
-                    ></fusion-input>
-                </div>
-            </div>
-        </fusion-example-block>
-        <!--UI-Component Examples-->
-        <!--UI-Component Configuration Doc-->
-        <div class="is-example-title">Configuration</div>
-        <fusion-example-block id="params" title="Parameters" [collapsible]="false">
-            <fusion-code-block
-                lang="js"
-                code='error: boolean | string
+            </fusion-example-block>
+            <!--UI-Component Examples-->
+            <!--UI-Component Configuration Doc-->
+            <div class="is-example-title">Configuration</div>
+            <fusion-example-block id="params" title="Parameters" [collapsible]="false">
+                <fusion-code-block
+                    lang="js"
+                    code='error: boolean | string
 placeholder: string
 errorType: string                           // - "error", "warning"
 name: string
@@ -1834,13 +1835,13 @@ interface InputOptions {
 
 controlValue: string | number         // Native
 '
-            ></fusion-code-block>
-        </fusion-example-block>
+                ></fusion-code-block>
+            </fusion-example-block>
 
-        <fusion-example-block id="events" title="Events" [collapsible]="false">
-            <fusion-code-block
-                lang="js"
-                code="ngFocus(event);                 // on focus in
+            <fusion-example-block id="events" title="Events" [collapsible]="false">
+                <fusion-code-block
+                    lang="js"
+                    code="ngFocus(event);                 // on focus in
 ngBlur(event);                  // on focus out
 ngEnter(event);                 // on key 'Enter' pressed
 ngEscape(event);                // on key 'Escape' pressed
@@ -1852,12 +1853,17 @@ passHiddenStateChanged(boolean)  // on password hide / show toggle
 // Value changed
 formControl                                          // Angular
 controlValueChange(controlValue: string | number)    // Native"
-            ></fusion-code-block>
-        </fusion-example-block>
-        <!--UI-Component Configuration Doc-->
-    </div>
+                ></fusion-code-block>
+            </fusion-example-block>
+            <!--UI-Component Configuration Doc-->
+        </div>
+    </ng-container>
 
     <div class="col-3 is-right-side-menu-holder">
         <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
     </div>
 </div>
+
+<ng-template #inUpdate>
+    <div class="col-9"></div>
+</ng-template>

@@ -4,6 +4,8 @@ import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
 import {VersionService} from '../../../services/version/version.service';
 import {Router} from '@angular/router';
+import {BehaviorSubject} from 'rxjs';
+import {delay, tap} from 'rxjs/operators';
 
 @Component({
     selector: 'fusion-button-docs',
@@ -98,7 +100,17 @@ export class ButtonDocsComponent implements OnInit {
     isLoading = false;
 
     styleVersion = StyleVersion;
-    selectedVersion$ = this.versionService.styleVersion$;
+    styleUpdatingDelay = 0;
+    styleUpdating$ = new BehaviorSubject(false);
+    selectedVersion$ = this.versionService.styleVersion$.pipe(
+        tap(() => {
+            this.styleUpdating$.next(true);
+        }),
+        delay(this.styleUpdatingDelay),
+        tap(() => {
+            this.styleUpdating$.next(false);
+        })
+    );
 
     constructor(private versionService: VersionService, private docLayoutService: DocsLayoutService, private router: Router) {}
 
