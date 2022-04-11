@@ -56,7 +56,7 @@ $smallPadding: 4px 6px;
         min-width: inherit;
         padding: 2px 5px 0 6px;
       }
-      &.is-error {
+      &.fu-error {
         border-color: $errBorderColor;
         &.focused {
           border-color: $errBorderColor;
@@ -114,7 +114,7 @@ $smallPadding: 4px 6px;
       right: 5px;
       left: inherit;
     }
-    .icon {
+    .fu-input-icon {
       position: absolute;
       pointer-events: none;
       left: 10px;
@@ -140,7 +140,7 @@ $smallPadding: 4px 6px;
       @include icon-style('icon-loading', none, 15px, true, true);
     }
     &.small{
-      .icon{
+      .fu-input-icon{
        top: 5px;
       }
     }
@@ -167,7 +167,7 @@ $smallPadding: 4px 6px;
         outline: none;
         & + button {
           border-color: $primary;
-          &.is-error {
+          &.fu-error {
             border-color: $errBorderColor;
           }
         }
@@ -209,7 +209,7 @@ $smallPadding: 4px 6px;
           border-color: $light;
           & + button {
             border-color: $light;
-            &.is-error {
+            &.fu-error {
               border-color: $errBorderColor;
             }
           }
@@ -223,7 +223,7 @@ $smallPadding: 4px 6px;
           color: $dark-300;
         }
       }
-      &.is-error {
+      &.fu-error {
         border-color: $errBorderColor;
       }
       &.is-underline, &.is-no-border {
@@ -282,7 +282,7 @@ $smallPadding: 4px 6px;
         cursor: default;
         color: $light-800;
       }
-      &.is-error {
+      &.fu-error {
         border-color: $errBorderColor;
       }
       fusion-icon{
@@ -331,7 +331,7 @@ $smallPadding: 4px 6px;
       }
     }
     &.fu-error-warning {
-      .fu-input-units.is-error,
+      .fu-input-units.fu-error,
       input {
         border-color: $warningBorderColor;
       }
@@ -348,7 +348,7 @@ $smallPadding: 4px 6px;
       display: none;
     }
   }
-  .error-msg {
+  .fu-error-msg {
     @extend %font12;
     color: $errTextColor;
     margin-top: 2px;

@@ -432,21 +432,21 @@ document.body.appendChild(input);'
             <div class="row" *ngIf="currentStyleVersion === styleVersion.V1">
                 <div class="col-6">
                     <p>With Icon left:</p>
-                    <fusion-input placeholder="Placeholder" icon="android" iconPos="left" [formControl]="model"></fusion-input>
+                    <fusion-input placeholder="Placeholder" [icon]="{iconData: 'android', iconPos:'left'}" [formControl]="model"></fusion-input>
                 </div>
                 <div class="col-6">
                     <p>With Icon right:</p>
-                    <fusion-input placeholder="Placeholder" icon="ios" iconPos="right" [formControl]="model"></fusion-input>
+                    <fusion-input placeholder="Placeholder" [icon]="{iconData: 'ios', iconPos:'left'}" [formControl]="model"></fusion-input>
                 </div>
             </div>
             <div class="row" *ngIf="currentStyleVersion === styleVersion.V2">
                 <div class="col-6">
                     <p>With Icon left:</p>
-                    <fusion-input placeholder="Placeholder" [icon]="{iconName: 'alarm-clock', iconVersion: 'v2'}" iconPos="left" [formControl]="model"></fusion-input>
+                    <fusion-input placeholder="Placeholder" [loading]="true" [icon]="[{iconData: {iconName: 'alarm-clock', iconVersion: 'v2'}, iconPos: 'right'},{iconData: {iconName: 'arrow-right', iconVersion: 'v2'}, iconPos: 'left'}]" [formControl]="model"></fusion-input>
                 </div>
                 <div class="col-6">
                     <p>With Icon right:</p>
-                    <fusion-input placeholder="Placeholder" [icon]="{iconName: 'alarm-clock', iconVersion: 'v2'}" iconPos="right" [formControl]="model"></fusion-input>
+                    <fusion-input placeholder="Placeholder" [icon]="[{iconData: {iconName: 'alarm-clock', iconVersion: 'v2'}, iconPos:'right'},{iconData: {iconName: 'arrow-left', iconVersion: 'v2'}, iconPos: 'left'}]" [formControl]="model"></fusion-input>
                 </div>
             </div>
         </fusion-example-block>
@@ -864,7 +864,6 @@ document.body.appendChild(input);'
                     <fusion-input
                         units="$"
                         unitPos="left"
-                        [options]="{size: 'small'}"
                         placeholder="Enter your amount"
                         [formControl]="model"
                     ></fusion-input>
@@ -1743,7 +1742,7 @@ document.body.appendChild(input);'
                 <div class="col-2">
                     <fusion-input
                         placeholder="Enter your input value"
-                        iconPos="right"
+
                         [loading]="true"
                         [formControl]="nameInput"
                     ></fusion-input>

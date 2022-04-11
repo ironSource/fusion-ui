@@ -27,7 +27,8 @@ import {InputConfiguration} from './input-entities';
 @Component({
     selector: 'fusion-input',
     templateUrl: './input.component.html',
-    styleUrls: ['./input.component.scss', 'input.component-v2.scss'],
+    // styleUrls: ['./input.component.scss', 'input.component-v2.scss'],
+    styleUrls: ['./input.component-v3.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => InputComponent), multi: true}]
 })
@@ -51,7 +52,7 @@ export class InputComponent extends InputParameters implements OnInit, OnDestroy
     showErrorClass$ = new BehaviorSubject(false);
     configByStyle$ = new Observable<InputConfigByStyle>();
     disabled$ = new BehaviorSubject(false);
-
+    loadingPos: 'right' | 'left' | '';
     private inputControlValueChanges$: Observable<any>;
     private fileControlValueChanges$: Observable<any>;
     private onBlur: (args: string) => void;
@@ -78,6 +79,7 @@ export class InputComponent extends InputParameters implements OnInit, OnDestroy
         this.fileControlValueChanges$ = this.getFileControlValueChangesObservable();
         this.configByStyle$ = this.getConfigStyleObservable();
         this.showErrorClass$.next(!!this.config.error);
+        this.loadingPos = Array.isArray(this.config?.icon) ? this.config?.icon?.[0]?.iconPos : this.config?.icon?.iconPos || 'right';
         this.initChangesTrigger();
     }
 

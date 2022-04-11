@@ -1,8 +1,7 @@
 import {StyleBase} from '@ironsource/fusion-ui/components/style';
 import {Directive, Input} from '@angular/core';
-import {InputConfiguration} from './input-entities';
+import {InputConfiguration, InputIconData} from './input-entities';
 import {InputOptions, DEFAULT_INPUT_OPTIONS} from './input.options';
-import {IconData} from '@ironsource/fusion-ui';
 
 @Directive()
 export abstract class InputParameters extends StyleBase {
@@ -22,12 +21,8 @@ export abstract class InputParameters extends StyleBase {
         this.configuration = {...this._configuration, name};
     }
 
-    @Input() set icon(icon: string | IconData) {
+    @Input() set icon(icon: InputIconData | InputIconData[]) {
         this.configuration = {...this._configuration, icon};
-    }
-
-    @Input() set iconPos(iconPos: 'left' | 'right' | '') {
-        this.configuration = {...this._configuration, iconPos};
     }
 
     @Input() set units(units: string) {

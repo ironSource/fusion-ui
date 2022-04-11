@@ -42,7 +42,7 @@ $smallV2Padding: 8px 10px;
         flex-flow: row nowrap;
         width: 100%;
         line-height: 23px;
-        &.fu--disabled {
+        &.fu-disabled {
             cursor: not-allowed;
 
             &:hover {
@@ -105,7 +105,7 @@ $smallV2Padding: 8px 10px;
                 }
             }
 
-            &.is-error {
+            &.fu-error {
                 background-color: $fu-negative-100;
 
                 &:active,
@@ -121,7 +121,7 @@ $smallV2Padding: 8px 10px;
                 padding-right: 129px;
             }
 
-            &.is-type-pass {
+            &.fu-type-pass {
                 padding-right: 30px;
             }
         }
@@ -265,7 +265,7 @@ $smallV2Padding: 8px 10px;
         }
 
         // Icon
-        i.icon {
+        i.fu-input-icon {
             @include size(14px);
             @include icon-style(null, $fu-light-700, 14px, false, true);
             position: absolute;
@@ -294,7 +294,7 @@ $smallV2Padding: 8px 10px;
         }
 
         &.small {
-            i.icon {
+            i.fu-input-icon {
                 top: 8px;
             }
             i.fu-toggle-pass {
@@ -390,7 +390,7 @@ $smallV2Padding: 8px 10px;
                 }
             }
 
-            &.is-error {
+            &.fu-error {
                 @extend %actionButtonDisabled;
             }
         }
@@ -399,7 +399,7 @@ $smallV2Padding: 8px 10px;
             color: $fu-primary-500;
             @include icon-style('button-icon', $fu-primary-500, 11px, false, true);
 
-            &.is-error {
+            &.fu-error {
                 @extend %actionButtonDisabled;
                 @include icon-style('button-icon', $fu-light-700, 11px, false, true);
             }
@@ -418,7 +418,7 @@ $smallV2Padding: 8px 10px;
         }
     }
 
-    .error-msg {
+    .fu-error-msg {
         @extend %font-captionRegular;
         color: $fu-negative-700;
         margin-top: 5px;
@@ -449,7 +449,7 @@ $smallV2Padding: 8px 10px;
         input {
             background-color: $fu-light-200;
             padding: 10px 19px;
-            &.is-error.has-units{
+            &.fu-error.has-units{
                 background-color: $fu-light-200;
                 border-bottom: solid 2px $fu-negative-500;
                 padding-bottom: 8px;
@@ -500,7 +500,7 @@ $smallV2Padding: 8px 10px;
     }
 }
 
-:host-context(.is-dropdown-select.forced-placeholder .icon):not(.fusion-style-v1){
+:host-context(.is-dropdown-select.forced-placeholder .fu-input-icon):not(.fusion-style-v1){
     .fu-input-holder {
         input.fu-input {
             padding-left: 26px;

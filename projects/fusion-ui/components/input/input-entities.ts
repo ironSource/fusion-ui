@@ -6,8 +6,7 @@ export interface InputConfiguration {
     placeholder?: string;
     errorType?: string;
     name?: string;
-    icon?: string | IconData;
-    iconPos?: 'left' | 'right' | '';
+    icon?: InputIconData | InputIconData[];
     units?: string;
     unitPos?: string;
     unitPlaceholder?: boolean;
@@ -34,4 +33,9 @@ export interface InputConfiguration {
     error?: boolean | string;
     autofocus?: boolean;
     disableOnLoading?: boolean; // suppress disable state on loading
+}
+
+export interface InputIconData {
+    iconData: string | IconData;
+    iconPos: 'left' | 'right' | '';
 }
