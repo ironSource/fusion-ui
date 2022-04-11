@@ -262,7 +262,7 @@ export class InputComponent extends InputParameters implements OnInit, OnDestroy
         const hasEscapeEmitterListeners = this.ngEscape.observers.length;
         const hasEnterEmitterListeners = this.ngEnter.observers.length;
 
-        if (hasPreventCharacters || hasEscapeEmitterListeners || hasEnterEmitterListeners) {
+        if (!isNullOrUndefined(this.input) && (hasPreventCharacters || hasEscapeEmitterListeners || hasEnterEmitterListeners)) {
             fromEvent(this.input.nativeElement, 'keydown')
                 .pipe(
                     filter((event: KeyboardEvent) => {
