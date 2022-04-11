@@ -1,5 +1,5 @@
 <div class="row" *ngIf="selectedVersion$ | async as currentStyleVersion">
-    <ng-container *ngIf="!(styleUpdating$ | async)">
+    <ng-container *ngIf="(styleUpdating$ | async) === false; else inUpdate">
         <div class="col-9">
             <form [formGroup]="formRadioButtons" novalidate>
                 <!--UI-Component Examples-->
@@ -1210,3 +1210,6 @@ selectionChanged(selected: IconSelectItem[])"
         <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
     </div>
 </div>
+<ng-template #inUpdate>
+    <div class="col-9"></div>
+</ng-template>

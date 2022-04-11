@@ -1,5 +1,5 @@
 <div class="row" *ngIf="styleVersion$ | async as currentStyleVersion">
-    <ng-container *ngIf="!(styleUpdating$ | async); else inUpdate">
+    <ng-container *ngIf="(styleUpdating$ | async) === false; else inUpdate">
         <div class="col-9">
             <!--UI-Component Examples-->
             <div class="is-example-title">Type</div>
