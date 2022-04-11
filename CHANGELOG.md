@@ -2,27 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/ironSource/fusion-ui/compare/v2.0.0-rc.2...v2.0.0) (2022-04-10)
 
 ### ⚠ BREAKING CHANGES
 
 * **fu-328:** Split fusion-ui into multiple sub entries path to improve tree shaking capabilities
-
-### Features
-
-* **fu-328:** Split fusion-ui into multiple sub entries ([0d7f30e](https://github.com/ironSource/fusion-ui/commit/0d7f30e5f61cde8501a1da0e5330ac1abf07b7e8))
-
-## [2.0.0]
-
-
-### Features
-
-* **FU-328:** Split fusion-ui into multiple sub entries /n/nBREAKING CHANGE: stable multi sub entries ([b2d07b9](https://github.com/ironSource/fusion-ui/commit/b2d07b9c2f7a8cd1d495177da0c2f8aad867680f))
-
-
+* **FU-328:** Split fusion-ui into multiple sub entries stable multi sub entries ([b2d07b9](https://github.com/ironSource/fusion-ui/commit/b2d07b9c2f7a8cd1d495177da0c2f8aad867680f))
 
 ### Bug Fixes
 
-* support muti endpoint \n\nBREAKING CHANGE: services and pipes ([066ef5d](https://github.com/ironSource/fusion-ui/commit/066ef5da9b023214483860a261a08a36d1295f30))
+* support muti endpoint services and pipes ([066ef5d](https://github.com/ironSource/fusion-ui/commit/066ef5da9b023214483860a261a08a36d1295f30))
 
 ### [1.1.1-rc.1](https://github.com/ironSource/fusion-ui/compare/v1.1.1-rc.0...v1.1.1-rc.1) (2022-03-28)
 
