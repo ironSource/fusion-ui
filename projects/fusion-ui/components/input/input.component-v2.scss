@@ -114,7 +114,7 @@ $smallV2Padding: 8px 10px;
                 }
             }
 
-            &.small {
+            &.fu-input-small {
                 height: $smallV2Height;
             }
             &.fu-button {
@@ -162,7 +162,7 @@ $smallV2Padding: 8px 10px;
                 @include icon-style('icon-clear-search', $fu-light-900, 12px, false, true, 0, true);
             }
 
-            &.small {
+            &.fu-input-small {
                 .fu-search-icon-holder {
                     top: var(--search-icon-top, 8px);
                 }
@@ -293,7 +293,7 @@ $smallV2Padding: 8px 10px;
             right: 11px;
         }
 
-        &.small {
+        &.fu-input-small {
             i.fu-input-icon {
                 top: 8px;
             }
@@ -428,7 +428,7 @@ $smallV2Padding: 8px 10px;
             display: none;
         }
 
-        &.small {
+        &.fu-input-small {
             display: none;
         }
     }
@@ -479,7 +479,7 @@ $smallV2Padding: 8px 10px;
 }
 :host-context(.is-row-height-small):not(.fusion-style-v1){
     .fu-input-holder{
-        input.small{
+        input.fu-input-small{
             height: 30px;
         }
     }

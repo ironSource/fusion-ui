@@ -49,7 +49,7 @@ $smallPadding: 4px 6px;
       @extend %font12;
       border-right-width: 0;
       color: $light-800;
-      &.small {
+      &.fu-input-small {
         border-right: none;
         background: white;
         display: block;
@@ -70,7 +70,7 @@ $smallPadding: 4px 6px;
         border-radius: 0 3px 3px 0;
         border-left-width: 0;
         border-right-width: 1px;
-        &.small {
+        &.fu-input-small {
           @extend %border;
           border-left: none;
           padding: 1px 6px 0 0;
@@ -139,7 +139,7 @@ $smallPadding: 4px 6px;
       @include icon-style(null, $light-800, 15px, false, true);
       @include icon-style('icon-loading', none, 15px, true, true);
     }
-    &.small{
+    &.fu-input-small{
       .fu-input-icon{
        top: 5px;
       }
@@ -175,7 +175,7 @@ $smallPadding: 4px 6px;
           border-color: #000;
         }
       }
-      &.small {
+      &.fu-input-small {
         @extend %font12;
         height: $smallHeight;
         padding: $smallPadding;
@@ -352,12 +352,12 @@ $smallPadding: 4px 6px;
     @extend %font12;
     color: $errTextColor;
     margin-top: 2px;
-    &.small {
+    &.fu-input-small {
       display: none;
     }
   }
   &.is-underline .fu-input-holder, &.is-no-border {
-    .fu-input-units.small {
+    .fu-input-units.fu-input-small {
       border-width: 0 0 1px 0;
       border-radius: unset;
       background-color: transparent;
