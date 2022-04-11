@@ -14,29 +14,10 @@ import {StyleBase} from '@ironsource/fusion-ui/components/style';
 import {IconData} from '@ironsource/fusion-ui/components';
 
 @Component({
-    // eslint-disable-next-line
     selector: 'fusion-button,[fusion-button]',
-    template: `
-        <span [ngClass]="{'is-icon-text': iconName && projectContent}">
-            <fusion-icon *ngIf="iconName && !isLoading" class="icon" [name]="iconData"></fusion-icon>
-            <ng-container *ngIf="selectedVersion$ | async as selectedVersion">
-                <fusion-icon
-                    *ngIf="isLoading && (selectedVersion === 1 || selectedVersion === 2)"
-                    class="icon-loading"
-                    [name]="
-                        selectedVersion === 1 ? {iconName: 'loading', iconVersion: 'v1'} : {iconName: 'loader-dots-v4', iconVersion: 'v2'}
-                    "
-                ></fusion-icon>
-                <fusion-icon
-                    *ngIf="isLoading && selectedVersion === 3"
-                    class="icon-loading"
-                    [name]="!projectContent ? 'loading-clean' : {iconName: 'loader-dots-v4', iconVersion: 'v2'}"
-                ></fusion-icon>
-            </ng-container>
-            <span><ng-content></ng-content></span>
-        </span>
-    `,
-    styleUrls: ['./button.component.scss', './button.component-v2.scss', './button.component-v3.scss'],
+    templateUrl: './button.component.html',
+    // styleUrls: ['./button.component.scss', './button.component-v2.scss', './button.component-v3.scss'],
+    styleUrls: ['./button.component-v3.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ButtonComponent extends StyleBase implements OnInit {
@@ -56,13 +37,23 @@ export class ButtonComponent extends StyleBase implements OnInit {
         this.isLoading = value;
         this.setLoadingState(this.isLoading);
     }
+    @Input() set link(value: boolean) {
+        this.isLink = value;
+        this.setLinkButtonState(this.isLink);
+    }
 
     @Output() onclick = new EventEmitter();
 
     projectContent: boolean;
     isLoading: boolean;
+    isLink: boolean;
     iconName: string;
     iconData: string | IconData;
+    loadingIcon: {[key: number]: string | IconData} = {
+        1: {iconName: 'loading', iconVersion: 'v1'},
+        2: {iconName: 'loader-dots-v4', iconVersion: 'v2'}
+    };
+
     private isDisabled: boolean;
 
     constructor(injector: Injector, private element: ElementRef, private renderer: Renderer2) {
@@ -98,5 +89,9 @@ export class ButtonComponent extends StyleBase implements OnInit {
 
     private setIconState(hasIcon: boolean) {
         this.setHostClass(hasIcon, 'fu-iconed');
+    }
+
+    private setLinkButtonState(isLinkButton: boolean) {
+        this.setHostClass(isLinkButton, 'fu-link-button');
     }
 }

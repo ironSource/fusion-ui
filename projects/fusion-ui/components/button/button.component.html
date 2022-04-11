@@ -1,0 +1,16 @@
+<span [ngClass]="{'is-icon-text': iconName && projectContent}">
+    <fusion-icon *ngIf="iconName && !isLoading" class="icon" [name]="iconData"></fusion-icon>
+    <ng-container *ngIf="selectedVersion$ | async as selectedVersion">
+<!--        <fusion-icon-->
+<!--            *ngIf="isLoading && selectedVersion !== 3"-->
+<!--            class="icon-loading"-->
+<!--            [name]="loadingIcon[selectedVersion]"-->
+<!--        ></fusion-icon>-->
+        <fusion-icon
+            *ngIf="isLoading && selectedVersion === 2"
+            class="icon-loading"
+            [name]="!projectContent ? 'loading-clean' : loadingIcon[2]"
+        ></fusion-icon>
+    </ng-container>
+    <span><ng-content></ng-content></span>
+</span>
