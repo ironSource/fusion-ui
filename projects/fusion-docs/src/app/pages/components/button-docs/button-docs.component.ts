@@ -3,7 +3,6 @@ import {StyleVersion} from '@ironsource/fusion-ui';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
 import {VersionService} from '../../../services/version/version.service';
-import {Router} from '@angular/router';
 import {BehaviorSubject} from 'rxjs';
 import {delay, tap} from 'rxjs/operators';
 
@@ -112,7 +111,7 @@ export class ButtonDocsComponent implements OnInit {
         })
     );
 
-    constructor(private versionService: VersionService, private docLayoutService: DocsLayoutService, private router: Router) {}
+    constructor(private versionService: VersionService, private docLayoutService: DocsLayoutService) {}
 
     ngOnInit() {
         this.docLayoutService.updateLayoutHeaderTitle({
