@@ -16,8 +16,7 @@ import {IconData} from '@ironsource/fusion-ui/components';
 @Component({
     selector: 'fusion-button,[fusion-button]',
     templateUrl: './button.component.html',
-    // styleUrls: ['./button.component.scss', './button.component-v2.scss', './button.component-v3.scss'],
-    styleUrls: ['./button.component-v3.scss'],
+    styleUrls: ['./button.component.scss', './button.component-v2.scss', './button.component-v3.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ButtonComponent extends StyleBase implements OnInit {
