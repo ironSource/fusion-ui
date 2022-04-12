@@ -13,7 +13,7 @@ import {
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {DomSanitizer} from '@angular/platform-browser';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
-import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
+import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {BASE_CHECKED_IMAGE} from './checkbox.cusom-svg';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
 
@@ -30,7 +30,7 @@ import {IconData} from '@ironsource/fusion-ui/components/icon';
         }
     ]
 })
-export class CheckboxComponent extends FusionBaseComponent implements OnInit, ControlValueAccessor {
+export class CheckboxComponent extends FusionBase implements OnInit, ControlValueAccessor {
     @Input() label: string;
     @Input() name: string;
     @Input() value: string;

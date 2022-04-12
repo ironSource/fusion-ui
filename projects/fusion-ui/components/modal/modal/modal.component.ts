@@ -21,7 +21,7 @@ import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {ModalService} from '../modal.service';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {WindowService} from '@ironsource/fusion-ui/services/window';
-import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
+import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
 
 /** @dynamic */
 @Component({
@@ -37,7 +37,7 @@ import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
         }
     ]
 })
-export class ModalComponent extends FusionBaseComponent implements OnInit, OnDestroy, AfterViewInit {
+export class ModalComponent extends FusionBase implements OnInit, OnDestroy, AfterViewInit {
     @Input() id: string;
     @Input() footer = true;
     @Input() loading = false; // state for content loading

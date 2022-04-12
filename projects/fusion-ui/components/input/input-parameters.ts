@@ -1,11 +1,11 @@
-import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
+import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
 import {Directive, Input} from '@angular/core';
 import {InputConfiguration} from './input-entities';
 import {InputOptions, DEFAULT_INPUT_OPTIONS} from './input.options';
-import {IconData} from '@ironsource/fusion-ui';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Directive()
-export abstract class InputParameters extends FusionBaseComponent {
+export abstract class InputParameters extends FusionBase {
     @Input() set configuration(value: InputConfiguration) {
         this.onConfigurationChanged(value);
     }

@@ -22,7 +22,7 @@ import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {isDateString} from '@ironsource/fusion-ui/utils';
 import {BASE_DATASET_OPTIONS, CHART_CONFIGURATIONS} from './chart.config';
 import {ShortNumberScaleSuffixPipe} from '@ironsource/fusion-ui/pipes/numbers';
-import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
+import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {takeUntil} from 'rxjs/operators';
 import {ChartBaseDatasetOptions} from './entities/chart-options';
 import {ChartType} from './entities/chart-type.enum';
@@ -69,7 +69,7 @@ Chart.register(
     styleUrls: ['./chart.component-common.scss', './chart.component-v1.scss', './chart.component-v2.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChartComponent extends FusionBaseComponent implements OnInit, OnDestroy, OnChanges {
+export class ChartComponent extends FusionBase implements OnInit, OnDestroy, OnChanges {
     @Input() id: string;
     @Input() type: ChartType;
 

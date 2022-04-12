@@ -34,7 +34,7 @@ export * from './radio';
 export * from './radio-group';
 export * from './sidebar';
 export * from './status-label';
-export * from './style';
+export * from './fusion-base';
 export * from './svg';
 export * from './switcher';
 export * from './table';

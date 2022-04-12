@@ -16,9 +16,9 @@ import {
 import {DropdownService} from '../dropdown.service';
 import {DropdownOption} from '../entities/dropdown-option';
 import {BehaviorSubject} from 'rxjs';
-import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
+import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {takeUntil} from 'rxjs/operators';
-import {IconData} from '@ironsource/fusion-ui';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Directive({
     selector: '[fusionDropdownOption]'
@@ -73,7 +73,7 @@ export class DropdownOptionDirective implements OnInit, OnChanges {
     styleUrls: ['./dropdown-option.component.scss', './dropdown-option.component-v2.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DropdownOptionComponent extends FusionBaseComponent implements OnInit {
+export class DropdownOptionComponent extends FusionBase implements OnInit {
     @Input() option: DropdownOption;
     @Input() mappingOptions: any;
     @Input() dropdownType: '' | 'multi' | 'tags';

@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
+import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
@@ -10,7 +10,7 @@ import {IconData} from '@ironsource/fusion-ui/components/icon';
     styleUrls: ['./alert.component.scss', './alert.component-v2.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AlertComponent extends FusionBaseComponent {
+export class AlertComponent extends FusionBase {
     @Input() type = 'info';
     @Input() mode = 'basic';
     @Input() shown = true;

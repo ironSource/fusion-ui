@@ -14,7 +14,7 @@ import {
 import {DAY_NAMES} from '../entities/config';
 import {CalendarService} from './calendar.service';
 import {Day} from '../entities/day';
-import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
+import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
 import {getDateDayTime} from '@ironsource/fusion-ui/utils';
 import {filter, takeUntil} from 'rxjs/operators';
 import {CalendarComponentConfigurations} from './calendar-component-configurations';
@@ -31,7 +31,7 @@ const HOVER_CURRENT_CLASS = 'hover-current';
     styleUrls: ['./calendar.component.scss', './calendar.component-v2.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CalendarComponent extends FusionBaseComponent implements OnInit {
+export class CalendarComponent extends FusionBase implements OnInit {
     @Input()
     set configuration(configuration: CalendarComponentConfigurations) {
         if (configuration.month) {

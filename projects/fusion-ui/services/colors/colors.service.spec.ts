@@ -1,6 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {ColorsService} from './colors.service';
-import {StyleVersion} from '@ironsource/fusion-ui/components/style';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 
 const mokPalette = [
     '#0d148c',

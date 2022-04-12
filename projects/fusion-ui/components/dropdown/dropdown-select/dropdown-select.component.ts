@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Injector, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
+import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {DropdownSelectConfigurations} from './dropdown-select-configurations';
 import {DropdownSearchComponent} from '../dropdown-search/dropdown-search.component';
 import {FormControl} from '@angular/forms';
@@ -11,7 +11,7 @@ import {takeUntil} from 'rxjs/operators';
     styleUrls: ['./dropdown-select.component.scss', './dropdown-select.component-v2.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DropdownSelectComponent extends FusionBaseComponent implements OnInit {
+export class DropdownSelectComponent extends FusionBase implements OnInit {
     @ViewChild('searchComponent') searchComponent: DropdownSearchComponent;
 
     @Output() searchValueChanged = new EventEmitter<string>();

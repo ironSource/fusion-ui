@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Injector, Input, Output} from '@angular/core';
-import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
+import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
@@ -8,7 +8,7 @@ import {map, startWith} from 'rxjs/operators';
     templateUrl: './modal-header.component.html',
     styleUrls: ['./modal-header.component.scss', './modal-header.component-v2.scss']
 })
-export class ModalHeaderComponent extends FusionBaseComponent {
+export class ModalHeaderComponent extends FusionBase {
     @Input() headerText: string;
     @Input() noHeaderBorder = false;
     @Output() closed = new EventEmitter();

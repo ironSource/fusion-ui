@@ -10,7 +10,7 @@ import {
     EventEmitter,
     HostListener
 } from '@angular/core';
-import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
+import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Component({
@@ -34,7 +34,7 @@ import {IconData} from '@ironsource/fusion-ui/components/icon';
     styleUrls: ['./button.component.scss', './button.component-v2.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ButtonComponent extends FusionBaseComponent implements OnInit {
+export class ButtonComponent extends FusionBase implements OnInit {
     @HostListener('click', ['$event']) onClick($event: any) {
         this.onclick.emit($event);
     }

@@ -21,7 +21,7 @@ import {CONFIG_INPUT_BY_UI_STYLE, InputConfigByStyle} from './input.component.co
 import {InputParameters} from './input-parameters';
 import {SPECIAL_KEYS, ESCAPE_KEY_CODE, ENTER_KEY_CODE, INPUT_DEFAULT_CONFIGURATION} from './input-utils';
 import {InputConfiguration} from './input-entities';
-import {StyleVersion} from '@ironsource/fusion-ui/components/style';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 
 // Todo - check if someone use error as boolean and if not change type to string only
 @Component({
