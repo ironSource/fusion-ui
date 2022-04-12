@@ -55,7 +55,6 @@ export * from '@ironsource/fusion-ui/services/permissions';
 export * from '@ironsource/fusion-ui/services/timezone';
 export * from '@ironsource/fusion-ui/services/unique-id';
 export * from '@ironsource/fusion-ui/services/user';
-export * from '@ironsource/fusion-ui/services/version';
 export * from '@ironsource/fusion-ui/services/window';
 export * from '@ironsource/fusion-ui/pipes/clone';
 export * from '@ironsource/fusion-ui/pipes/collection';
