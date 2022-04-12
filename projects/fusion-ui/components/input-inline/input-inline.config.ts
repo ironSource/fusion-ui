@@ -5,8 +5,8 @@
 import {IconData} from '@ironsource/fusion-ui';
 
 export interface InputInlineConfigByStyle {
-    iconEdit: string | IconData;
-    iconSave: string | IconData;
+    iconEdit: IconData;
+    iconSave: IconData;
     loadingSize: string;
 }
 

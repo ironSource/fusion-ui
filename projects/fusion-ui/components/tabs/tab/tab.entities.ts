@@ -7,8 +7,8 @@ import {IconData} from '@ironsource/fusion-ui/components';
 
 export interface TabConfiguration {
     text?: string;
-    icon?: string | IconData; // tab icon
-    infoIcon?: string | IconData; // icon on right from text - "info, question, etc..." for tooltip / popup
+    icon?: IconData; // tab icon
+    infoIcon?: IconData; // icon on right from text - "info, question, etc..." for tooltip / popup
     tooltipContent?: string;
     popupContent?: PopupComponentContent;
     disabled?: boolean;

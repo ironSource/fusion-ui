@@ -15,8 +15,8 @@ export const DEFAULT_REMOVE_TOOLTIP_WIDTH = '71';
 export const CELL_PADDING = '20px';
 
 export interface TableIconsConfigByStyle {
-    iconSort: string | IconData;
-    iconInfo: string | IconData;
+    iconSort: IconData;
+    iconInfo: IconData;
 }
 
 export const CONFIG_TABLE_BY_UI_STYLE: {[styleKey: string]: TableIconsConfigByStyle} = {

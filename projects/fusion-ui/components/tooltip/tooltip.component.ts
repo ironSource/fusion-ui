@@ -29,7 +29,7 @@ const TOOLTIP_ARROW_SIZE = 6;
 export class TooltipComponent extends StyleBase implements OnDestroy, AfterViewInit, OnChanges {
     public content: string | SafeHtml;
     public componentData: any;
-    public icon: string | IconData;
+    public icon: IconData;
     private position: TooltipPosition;
     private hostEl: ElementRef;
     private type: TooltipType;

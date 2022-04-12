@@ -36,7 +36,7 @@ export class RadioComponent extends StyleBase implements OnInit, ControlValueAcc
     @Input() checked: boolean;
     @Input() value: string;
     @Input() label: string;
-    @Input() icon: string | IconData;
+    @Input() icon: IconData;
     @Input() tooltip: string;
     @Output() changed = new EventEmitter();
     private selectedValue: string;

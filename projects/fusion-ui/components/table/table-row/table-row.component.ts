@@ -71,7 +71,7 @@ export class TableRowComponent extends StyleBase implements OnInit, OnChanges {
     }
 
     private inRequest = false;
-    expandArrowIconName$ = new Observable<string | IconData>();
+    expandArrowIconName$ = new Observable<IconData>();
     columnsData: ColumnData[] = [];
 
     get expandCellCount(): Observable<number[]> {

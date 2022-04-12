@@ -36,7 +36,7 @@ export class CheckboxComponent extends StyleBase implements OnInit, ControlValue
     @Input() label: string;
     @Input() name: string;
     @Input() value: string;
-    @Input() icon: string | IconData;
+    @Input() icon: IconData;
     @Input() flag: string;
     @Input() isDisabled: boolean;
     @Input() checked: boolean;

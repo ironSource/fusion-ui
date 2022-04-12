@@ -99,7 +99,7 @@ export class DropdownOptionComponent extends StyleBase implements OnInit, OnDest
     settings: any;
     optionToStringFunc = this.dropdownService.optionToString.bind(this.dropdownService);
 
-    dropdownArrowIconName$ = new BehaviorSubject<string | IconData>({
+    dropdownArrowIconName$ = new BehaviorSubject<IconData>({
         iconName: 'arrow-dropdown',
         iconVersion: 'v1'
     });

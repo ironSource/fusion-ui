@@ -72,8 +72,8 @@ export class DaterangeComponent extends StyleBase implements OnInit {
     dropdownSelectConfigurations$ = new BehaviorSubject<DropdownSelectConfigurations>({
         dropdownArrowIconName: {iconName: 'arrow-down', iconVersion: 'v2'}
     });
-    pevIconName$ = new BehaviorSubject<string | IconData>({iconName: 'arrow-left', iconVersion: 'v1'});
-    nextIconName$ = new BehaviorSubject<string | IconData>({
+    pevIconName$ = new BehaviorSubject<IconData>({iconName: 'arrow-left', iconVersion: 'v1'});
+    nextIconName$ = new BehaviorSubject<IconData>({
         iconName: 'arrow-right',
         iconVersion: 'v1'
     });
