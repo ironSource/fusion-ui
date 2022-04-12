@@ -7,7 +7,7 @@ import {DROPDOWN_OPTIONS_WITHOUT_SCROLL} from '../dropdown-config';
 import {StyleVersion} from '@ironsource/fusion-ui/services/version';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map, startWith, takeUntil} from 'rxjs/operators';
-import {IconData} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Component({
     selector: 'fusion-multi-dropdown',

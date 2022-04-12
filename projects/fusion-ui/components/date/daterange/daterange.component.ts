@@ -31,7 +31,7 @@ import {CalendarComponentConfigurations} from '../calendar/calendar-component-co
 import {CalendarType} from '../calendar/calendar-type.enum';
 import {StyleVersion} from '@ironsource/fusion-ui/services/version';
 import {DEFAULT_PLACEHOLDER_TEXT} from './daterange.configuration';
-import {IconData} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Component({
     selector: 'fusion-daterange',

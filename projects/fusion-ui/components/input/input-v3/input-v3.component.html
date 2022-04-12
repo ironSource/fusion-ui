@@ -1,0 +1,71 @@
+<div [class.fu-input-small]="isSmall" class="fu-input-holder"
+     [ngClass]="getHolderClasses()"
+     [style.width]="config.options?.width">
+
+    <ng-container *ngIf="configByStyle$ | async as configByStyle">
+
+        <i class="fu-input-icon {{ config?.icon?.iconPos || config?.icon?.[0]?.iconPos }}"
+           *ngIf="config?.icon && !loading && !config?.errorType"
+           [class.has-units]="config?.units"
+           [ngStyle]="config.options?.iconStyle">
+            <fusion-icon [name]="config?.icon?.iconData || config?.icon?.[0]?.iconData"></fusion-icon>
+        </i>
+
+        <i class="fu-input-second-icon {{ config?.icon?.[1]?.iconPos }}"
+           *ngIf="config?.icon?.[1]?.iconData  && !loading && !config?.errorType">
+            <fusion-icon [name]="config?.icon?.[1]?.iconData"></fusion-icon>
+        </i>
+
+        <input
+               [class.fu-input-small]="isSmall"
+               class="fu-input {{ config?.class }} {{ config?.icon?.iconPos || config?.icon?.[0]?.iconPos }}"
+               autocomplete="off"
+               minlength="1"
+               [class.fu-type-pass]="config?.type === 'password'"
+               [class.has-units]="config?.units"
+               [class.disabled]="disabled$ | async"
+               [class.iconed]="config?.icon || loading"
+               [class.fu-button]="config?.btn"
+               [class.has-clear-btn]="config?.clear"
+               [class.fu-error]="showErrorClass$ | async"
+               [id]="config?.id"
+               [type]="getInputType()"
+               [placeholder]="config?.placeholder"
+               [readonly]="config?.readonly || (disabled$ | async) || (loading && config?.disableOnLoading) || config?.btnLoading"
+               [required]="config?.required"
+               [attr.maxlength]="config?.maxlength"
+               [min]="config?.min"
+               [max]="config?.max"
+               [step]="step"
+               [formControl]="inputControl"
+               [ngStyle]="config.options?.style"
+               [attr.autofocus]="config?.autofocus"
+               (focus)="focus()"
+               (blur)="blur()"
+        />
+
+        <i class="fu-validation-icon-holder"
+           *ngIf="config?.errorType && showErrorIcon() && !loading"
+           [fusionTooltip]="getTooltipErrorsMessage()">
+            <fusion-icon class="icon-validation"
+                         [name]="getErrorIcon(config?.errorType, configByStyle.iconInfo, configByStyle.iconWarning)">
+            </fusion-icon>
+        </i>
+
+        <i class="fu-toggle-pass"
+           *ngIf="config?.type === 'password'"
+           (click)="passToggle($event)"
+           (mousedown)="onPassToggleMouseDown($event)">
+            <fusion-icon [name]="config.options?.isPassHidden ? {iconName:'eye', iconVersion: 'v2'} : {iconName: 'eye-slash',iconVersion: 'v2'}"></fusion-icon>
+        </i>
+
+    </ng-container>
+</div>
+
+<div class="fu-error-msg"
+     *ngIf="config.error && config.error !== true"
+     [hidden]="config?.errorType && showErrorIcon()"
+     [class.focused]="focused"
+     [innerHTML]="config.error">
+</div>
+

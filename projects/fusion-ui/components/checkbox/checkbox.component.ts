@@ -17,7 +17,7 @@ import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {StyleBase} from '@ironsource/fusion-ui/components/style';
 import {StyleVersion} from '@ironsource/fusion-ui/services/version';
 import {BASE_CHECKED_IMAGE} from './checkbox.cusom-svg';
-import {IconData} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Component({
     selector: 'fusion-checkbox',

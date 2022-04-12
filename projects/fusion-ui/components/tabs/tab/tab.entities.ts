@@ -3,7 +3,7 @@
  */
 
 import {PopupComponentContent} from '@ironsource/fusion-ui/components/popup';
-import {IconData} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 export interface TabConfiguration {
     text?: string;
