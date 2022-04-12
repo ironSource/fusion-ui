@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@
 import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import {IconData} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Component({
     selector: 'fusion-alert',

@@ -29,7 +29,7 @@ import {DropdownSelectConfigurations} from '@ironsource/fusion-ui/components/dro
 import {CalendarComponentConfigurations} from '../calendar/calendar-component-configurations';
 import {CalendarType} from '../calendar/calendar-type.enum';
 import {DEFAULT_PLACEHOLDER_TEXT} from './daterange.configuration';
-import {IconData} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Component({
     selector: 'fusion-daterange',

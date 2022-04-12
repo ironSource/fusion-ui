@@ -35,7 +35,7 @@ import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dy
 import {ClosedOptions} from '../entities/closed-options';
 import {SharedEventsService} from '@ironsource/fusion-ui/services/events-handler';
 import {DropdownPlaceholderConfiguration} from '../entities/dropdown-placeholder-configuration';
-import {IconData} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Component({
     selector: 'fusion-dropdown',

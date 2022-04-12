@@ -3,7 +3,7 @@ import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/component
 import {BehaviorSubject, fromEvent} from 'rxjs';
 import {TagComponentConfigurations} from './tag-component-configurations';
 import {takeUntil} from 'rxjs/operators';
-import {IconData} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Component({
     selector: 'fusion-tag',

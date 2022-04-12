@@ -15,7 +15,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
 import {BASE_CHECKED_IMAGE} from './checkbox.cusom-svg';
-import {IconData} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Component({
     selector: 'fusion-checkbox',

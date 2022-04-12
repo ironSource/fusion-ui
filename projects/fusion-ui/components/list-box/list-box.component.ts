@@ -7,7 +7,7 @@ import {detectChangesDecorator} from '@ironsource/fusion-ui/decorators';
 import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import {IconData} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Component({
     selector: 'fusion-list-box',

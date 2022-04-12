@@ -11,7 +11,7 @@ import {
     HostListener
 } from '@angular/core';
 import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
-import {IconData} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Component({
     // eslint-disable-next-line

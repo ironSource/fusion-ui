@@ -15,7 +15,7 @@ import {WindowService} from '@ironsource/fusion-ui/services/window';
 import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {IconData} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 const TOOLTIP_ARROW_SIZE = 6;
 
