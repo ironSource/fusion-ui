@@ -1,11 +1,6 @@
 import {AfterViewInit, Directive, ElementRef, Injector, OnDestroy, Renderer2} from '@angular/core';
-import {
-    FUSION_STYLE_VERSION_CSS_VAR_NAME,
-    FUSION_STYLE_VERSION_PREFIX,
-    StyleVersion
-} from '@ironsource/fusion-ui/components/style/style-version.enum';
+import {FUSION_STYLE_VERSION_CSS_VAR_NAME, FUSION_STYLE_VERSION_PREFIX, StyleVersion} from './style-version.enum';
 import {BehaviorSubject, Subject} from 'rxjs';
-import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 /* eslint-disable @angular-eslint/directive-class-suffix */
 @Directive()
