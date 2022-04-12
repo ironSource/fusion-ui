@@ -1,7 +1,7 @@
 import {InjectionToken} from '@angular/core';
 import {TableModuleOptions} from './entities/table-module-options';
 import {ERROR_MESSAGES} from '@ironsource/fusion-ui/components/error-message';
-import {IconData} from '@ironsource/fusion-ui';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 export const TABLE_OPTIONS_DEFAULT_VALUES: TableModuleOptions = {
     errorMessages: ERROR_MESSAGES

@@ -34,7 +34,7 @@ export * from '@ironsource/fusion-ui/components/radio';
 export * from '@ironsource/fusion-ui/components/radio-group';
 export * from '@ironsource/fusion-ui/components/sidebar';
 export * from '@ironsource/fusion-ui/components/status-label';
-export * from '@ironsource/fusion-ui/components/style';
+export * from '@ironsource/fusion-ui/components/fusion-base';
 export * from '@ironsource/fusion-ui/components/svg';
 export * from '@ironsource/fusion-ui/components/switcher';
 export * from '@ironsource/fusion-ui/components/table';

@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, forwardRef, Injector, Input, OnInit, Output} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
-import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent} from '@ironsource/fusion-ui/components/fusion-base';
 
 @Component({
     selector: 'fusion-textarea',

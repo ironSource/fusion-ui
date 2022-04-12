@@ -21,7 +21,7 @@ import {DaterangePresets} from '../entities/daterange-presets.enum';
 import {DaterangeService} from './daterange.service';
 import {CalendarService} from '../calendar/calendar.service';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
-import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {isSameDates} from '@ironsource/fusion-ui/utils';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {BehaviorSubject} from 'rxjs';
@@ -29,7 +29,7 @@ import {DropdownSelectConfigurations} from '@ironsource/fusion-ui/components/dro
 import {CalendarComponentConfigurations} from '../calendar/calendar-component-configurations';
 import {CalendarType} from '../calendar/calendar-type.enum';
 import {DEFAULT_PLACEHOLDER_TEXT} from './daterange.configuration';
-import {IconData} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Component({
     selector: 'fusion-daterange',

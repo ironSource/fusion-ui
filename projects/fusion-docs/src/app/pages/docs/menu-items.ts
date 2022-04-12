@@ -313,7 +313,7 @@ export const USER_PROFILE_MENU_ITEMS: MenuItem[] = [
     {
         name: 'test html snippet',
         content: {
-            htmlSnippet: `<div style="color:red; padding: 5px 20px;">HTML Snippet</div>`
+            htmlSnippet: `<div fusion-base="color:red; padding: 5px 20px;">HTML Snippet</div>`
         }
     },
     {
@@ -332,7 +332,7 @@ export const USER_PROFILE_MENU_ITEMS: MenuItem[] = [
         content: {
             element: (() => {
                 const element = document.createElement('div');
-                element.style.cssText = `color:green; padding: 5px 20px;`;
+                element.fusion-base.cssText = `color:green; padding: 5px 20px;`;
                 element.appendChild(document.createTextNode('HTML Element'));
                 return element;
             })()

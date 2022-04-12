@@ -1,20 +1,20 @@
 @import '../../../../styles/vars';
 
 :host{
-    //@include icon-style('filter', $light-800, 17px, false, true);
+    //@include icon-fusion-base('filter', $light-800, 17px, false, true);
     fusion-icon.filter {
         width: 17px;
         height: 17px;
         color: $light-800;
     }
-  //@include icon-style('apps', $negative-500, 17px, false, true);
+  //@include icon-fusion-base('apps', $negative-500, 17px, false, true);
     fusion-icon.apps {
         width: 17px;
         height: 17px;
         color: $negative-500;
     }
   .isOpen{
-      //@include icon-style('filter', $dark-300, 17px, false, true);
+      //@include icon-fusion-base('filter', $dark-300, 17px, false, true);
       fusion-icon.filter {
           width: 17px;
           height: 17px;

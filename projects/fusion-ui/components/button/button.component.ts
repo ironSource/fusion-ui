@@ -10,8 +10,8 @@ import {
     EventEmitter,
     HostListener
 } from '@angular/core';
-import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
-import {IconData} from '@ironsource/fusion-ui/components';
+import {FusionBaseComponent} from '@ironsource/fusion-ui/components/fusion-base';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Component({
     // eslint-disable-next-line

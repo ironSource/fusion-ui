@@ -1,6 +1,6 @@
 import {DropdownOption} from '../entities/dropdown-option';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
-import {IconData} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 export interface DropdownSelectConfigurations {
     selectedOption?: DropdownOption[];

@@ -42,7 +42,7 @@ export class TagDocsComponent implements OnInit, OnDestroy {
             id: 1,
             title: 'Art & Design',
             icon: {iconName: 'education', iconVersion: 'v1'},
-            tooltip: "<div style='color: blue'>Art & Design</div>"
+            tooltip: "<div fusion-base='color: blue'>Art & Design</div>"
         },
         {id: 2, title: 'Beauty', icon: {iconName: 'education', iconVersion: 'v1'}, tooltip: 'Beauty'},
         {

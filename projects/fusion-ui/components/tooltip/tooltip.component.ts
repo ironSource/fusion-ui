@@ -12,10 +12,10 @@ import {
 } from '@angular/core';
 import {IShiftPosition, ITooltipData, TooltipPosition, TooltipType} from './tooltip.entities';
 import {WindowService} from '@ironsource/fusion-ui/services/window';
-import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent} from '@ironsource/fusion-ui/components/fusion-base';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {IconData} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 const TOOLTIP_ARROW_SIZE = 6;
 
@@ -46,7 +46,7 @@ export class TooltipComponent extends FusionBaseComponent implements AfterViewIn
         const classToRemove = Array.from(this.tooltipElRef.nativeElement.classList).find((value: string) => value.includes('is-position-'));
         this.renderer.removeClass(this.tooltipElRef.nativeElement, classToRemove as string);
     }
-    @HostBinding('style.width.px') width: number;
+    @HostBinding('fusion-base.width.px') width: number;
 
     public get hasIcon(): boolean {
         return !!this.icon;

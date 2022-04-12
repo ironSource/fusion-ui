@@ -30,7 +30,7 @@ import {
 } from '../table.config';
 import {TableModuleOptions} from '../entities/table-module-options';
 import {ERROR_MESSAGES} from '@ironsource/fusion-ui/components/error-message';
-import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent} from '@ironsource/fusion-ui/components/fusion-base';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
 
@@ -77,7 +77,7 @@ export class TableCellComponent extends FusionBaseComponent implements OnInit, O
         return this.column.sticky;
     }
 
-    @HostBinding('style.left') get stickyLeft(): string {
+    @HostBinding('fusion-base.left') get stickyLeft(): string {
         return this.column.stickyLeftMargin;
     }
 

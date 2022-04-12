@@ -15,7 +15,7 @@ export class DocsMenuComponent extends FusionBaseComponent implements OnInit {
     @Input() set menuData(value: DocsMenuItem[]) {
         this.menuData$.next(value);
     }
-    @HostBinding('style.width.px') width = 239; // default
+    @HostBinding('fusion-base.width.px') width = 239; // default
 
     menuData$ = new BehaviorSubject<DocsMenuItem[]>([]);
     docsMenuItems$ = this.getMenuObservable$();

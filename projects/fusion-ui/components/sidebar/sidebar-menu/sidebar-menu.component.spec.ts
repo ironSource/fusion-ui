@@ -161,7 +161,7 @@ describe('SidebarMenuComponent', () => {
                         // check for sub-group
                         if (childMenuItem.children) {
                             const menuItemSubgroupEl = menuSubItemsHolderEl.querySelector('.fu-sidebar-menu-sub-item-title');
-                            // group name (uppercase by style)
+                            // group name (uppercase by fusion-base)
                             expect(menuItemSubgroupEl.innerText).toBe(childMenuItem.name.toUpperCase());
                             // child items
                             const menuSubgroupChildrenEls = menuSubItemsHolderEl.querySelectorAll(

@@ -14,7 +14,7 @@ import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {SwitcherItem} from './entities/switcher-item';
 import {SwitcherMode} from './entities/switcher-mode.enum';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent} from '@ironsource/fusion-ui/components/fusion-base';
 
 @Component({
     selector: 'fusion-switcher',

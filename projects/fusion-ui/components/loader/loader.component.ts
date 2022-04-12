@@ -12,7 +12,7 @@ import {
     ViewChild
 } from '@angular/core';
 import {LOADER_COMPONENT_TYPE_TOKEN} from './loader-token';
-import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {LoaderColor, LoaderPosition, LoaderSize} from './loader.types';
 import {map} from 'rxjs/operators';
 
@@ -31,7 +31,7 @@ export class LoaderComponent extends FusionBaseComponent implements AfterViewIni
     @Input() position: LoaderPosition = 'center';
     @Input() size: LoaderSize = 'large';
     @Input() color: LoaderColor = 'grey';
-    @HostBinding('style.top.px') top: number; // distance from top
+    @HostBinding('fusion-base.top.px') top: number; // distance from top
 
     public get loaderPosition() {
         return `position-${this.position}`;

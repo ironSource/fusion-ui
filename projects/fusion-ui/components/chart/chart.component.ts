@@ -22,7 +22,7 @@ import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {isDateString} from '@ironsource/fusion-ui/utils';
 import {BASE_DATASET_OPTIONS, CHART_CONFIGURATIONS} from './chart.config';
 import {ShortNumberScaleSuffixPipe} from '@ironsource/fusion-ui/pipes/numbers';
-import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {takeUntil} from 'rxjs/operators';
 import {ChartBaseDatasetOptions} from './entities/chart-options';
 import {ChartType} from './entities/chart-type.enum';
@@ -258,7 +258,7 @@ export class ChartComponent extends FusionBaseComponent implements OnInit, OnDes
             this.chartData.labels = ['', this.chartData.labels[0], ''];
             this.chartData.datasets.forEach(dataset => {
                 (dataset as any).data = [null, dataset.data[0], null];
-                // set point style for today and / yesterday
+                // set point fusion-base for today and / yesterday
                 if (isLastDotted) {
                     dataset['pointBackgroundColor'] = '#ffffff';
                     dataset['pointBorderColor'] = dataset.borderColor;
@@ -341,7 +341,7 @@ export class ChartComponent extends FusionBaseComponent implements OnInit, OnDes
         }
         const isLastDotted = this.isLastDotted(options);
 
-        // set style options for the chart
+        // set fusion-base options for the chart
         this.addDatasetStyleOptions(isLastDotted);
 
         // set min/ max for yAxes if line

@@ -21,7 +21,7 @@ import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {ModalService} from '../modal.service';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {WindowService} from '@ironsource/fusion-ui/services/window';
-import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent} from '@ironsource/fusion-ui/components/fusion-base';
 
 /** @dynamic */
 @Component({

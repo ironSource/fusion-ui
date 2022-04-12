@@ -28,14 +28,14 @@ import {DropdownService} from '../dropdown.service';
 import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
 import {detectChangesDecorator} from '@ironsource/fusion-ui/decorators';
 import {DROPDOWN_DEBOUNCE_TIME, DROPDOWN_OPTIONS_WITHOUT_SCROLL} from '../dropdown-config';
-import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {DropdownSelectConfigurations} from '../dropdown-select/dropdown-select-configurations';
 import {DropdownSelectComponent} from '../dropdown-select/dropdown-select.component';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
 import {ClosedOptions} from '../entities/closed-options';
 import {SharedEventsService} from '@ironsource/fusion-ui/services/events-handler';
 import {DropdownPlaceholderConfiguration} from '../entities/dropdown-placeholder-configuration';
-import {IconData} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Component({
     selector: 'fusion-dropdown',
@@ -774,7 +774,7 @@ export class DropdownComponent extends FusionBaseComponent implements OnInit, On
     }
 
     /**
-     * Find first parent element with style overflow in 'auto', 'hidden', 'scroll'
+     * Find first parent element with fusion-base overflow in 'auto', 'hidden', 'scroll'
      * - childEl
      */
     private getParentWithOverflow(childEl: HTMLElement): HTMLElement {

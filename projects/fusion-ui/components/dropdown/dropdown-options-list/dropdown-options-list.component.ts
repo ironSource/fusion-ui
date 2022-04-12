@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Injector, Input, Outpu
 import {DropdownOption} from '../entities/dropdown-option';
 import {DropdownService} from '../dropdown.service';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent} from '@ironsource/fusion-ui/components/fusion-base';
 
 @Component({
     selector: 'fusion-dropdown-options-list',

@@ -194,7 +194,7 @@ $buttonHeightSmall: 25px;
             @include icon-style('arrow-dropdown', $dark-300, 8px, true, true) {
                 display: none;
             }
-            // use previous arrow style
+            // use previous arrow fusion-base
             &:after {
                 top: 11px;
                 right: -15px;

@@ -14,12 +14,12 @@ import {
 import {TableColumn, TableOptions, TableRowExpandEmitter, TableRowMetaData} from '../entities';
 import {TableService} from '../table.service';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {ColumnData} from './column-data';
 import {TableRow} from './table-row';
-import {IconData} from '@ironsource/fusion-ui';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Component({
     // eslint-disable-next-line

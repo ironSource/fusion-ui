@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Injector, Input} from '@angular/core';
-import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent} from '@ironsource/fusion-ui/components/fusion-base';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
 
 @Component({

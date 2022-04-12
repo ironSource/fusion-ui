@@ -2,10 +2,10 @@ import {ChangeDetectionStrategy, Component, Input, OnInit, Output, EventEmitter,
 import {MonthPicker} from '../month-picker';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {MONTH_NAMES_SHORT} from '../month-picker.configuration';
-import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import {IconData} from '@ironsource/fusion-ui';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Component({
     selector: 'fusion-month-picker-selector',

@@ -248,7 +248,7 @@ headerPrimaryMenuItems = [
     {
         name: 'test html snippet',
         content: {
-            htmlSnippet: '<div style="color:red; padding: 5px 20px;">HTML Snippet</div>'
+            htmlSnippet: '<div fusion-base="color:red; padding: 5px 20px;">HTML Snippet</div>'
         }
     },
     {

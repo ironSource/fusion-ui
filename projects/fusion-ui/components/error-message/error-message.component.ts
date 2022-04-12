@@ -1,5 +1,5 @@
 import {Component, Injector, Input} from '@angular/core';
-import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent} from '@ironsource/fusion-ui/components/fusion-base';
 
 @Component({
     selector: 'fusion-error-message',

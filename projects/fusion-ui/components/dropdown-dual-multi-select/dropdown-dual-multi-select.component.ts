@@ -17,7 +17,7 @@ import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dy
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown';
 import {BehaviorSubject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent} from '@ironsource/fusion-ui/components/fusion-base';
 
 const CLASS_LIST = [
     'dual-select-button',

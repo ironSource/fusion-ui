@@ -4,10 +4,10 @@ import {DropdownOption} from '../entities/dropdown-option';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {DropdownService} from '../dropdown.service';
 import {DROPDOWN_OPTIONS_WITHOUT_SCROLL} from '../dropdown-config';
-import {StyleVersion} from '@ironsource/fusion-ui/components';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map, startWith, takeUntil} from 'rxjs/operators';
-import {IconData} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Component({
     selector: 'fusion-multi-dropdown',

@@ -159,7 +159,7 @@ describe('LayoutComponent', () => {
                     pageTitleTypePageMock.text
                 );
             });
-            it('should render layout content header with with content style for "page" behaviour', () => {
+            it('should render layout content header with with content fusion-base for "page" behaviour', () => {
                 setComponentConfig({
                     headerConfiguration: {
                         title: pageTitleTypePageMock
@@ -214,7 +214,7 @@ describe('LayoutComponent', () => {
                     pageTitleTypeFixedMock.text
                 );
             });
-            it('should render layout content header with with content style for "fixed" behaviour', () => {
+            it('should render layout content header with with content fusion-base for "fixed" behaviour', () => {
                 setComponentConfig({
                     headerConfiguration: {
                         title: pageTitleTypeFixedMock

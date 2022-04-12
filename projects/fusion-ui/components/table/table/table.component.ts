@@ -18,7 +18,7 @@ import {isNullOrUndefined, isUndefined} from '@ironsource/fusion-ui/utils';
 import {TableService} from '../table.service';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {TableRowsGrouped, TableColumn, TableColumnTypeEnum, TableOptions, TableRowExpandEmitter} from '../entities';
-import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {CONFIG_TABLE_BY_UI_STYLE, ROW_CLICK_SUPPRESS_FOR_PARENT_SELECTORS, TableIconsConfigByStyle} from '../table.config';
 import {TableBasicComponent} from '../table-basic/table-basic.component';
 

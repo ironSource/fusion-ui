@@ -16,9 +16,9 @@ import {
 import {DropdownService} from '../dropdown.service';
 import {DropdownOption} from '../entities/dropdown-option';
 import {BehaviorSubject} from 'rxjs';
-import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {takeUntil} from 'rxjs/operators';
-import {IconData} from '@ironsource/fusion-ui';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Directive({
     selector: '[fusionDropdownOption]'

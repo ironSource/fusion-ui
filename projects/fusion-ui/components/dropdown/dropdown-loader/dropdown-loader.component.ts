@@ -1,5 +1,5 @@
 import {Component, Injector} from '@angular/core';
-import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent} from '@ironsource/fusion-ui/components/fusion-base';
 
 @Component({
     selector: 'fusion-dropdown-loader',

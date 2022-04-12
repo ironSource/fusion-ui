@@ -5,7 +5,7 @@ import {VersionService} from '../../services/version/version.service';
 import {takeUntil} from 'rxjs/operators';
 
 @Component({
-    selector: 'fusion-style-version-button',
+    selector: 'fusion-fusion-base-version-button',
     templateUrl: './style-version-button.component.html',
     styleUrls: ['./style-version-button.component.scss']
 })

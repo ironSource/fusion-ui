@@ -14,7 +14,7 @@ import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {BehaviorSubject, of} from 'rxjs';
 import {DomSanitizer} from '@angular/platform-browser';
-import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent} from '@ironsource/fusion-ui/components/fusion-base';
 import {delay, startWith} from 'rxjs/operators';
 import {isString} from '@ironsource/fusion-ui/utils';
 import {ToggleLabel} from './toggle.config';
@@ -56,7 +56,7 @@ export class ToggleComponent extends FusionBaseComponent implements OnInit, Cont
     @Input() customCheckedBackgroundColor: string;
     @Output() modelChange = new EventEmitter();
 
-    @HostBinding('attr.style')
+    @HostBinding('attr.fusion-base')
     public get customBGColor(): any {
         return !!this.customCheckedBackgroundColor
             ? this.sanitizer.bypassSecurityTrustStyle(`--checked-bg-color: ${this.customCheckedBackgroundColor}`)

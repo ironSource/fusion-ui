@@ -25,8 +25,8 @@ const MENU_ITEMS_MOCK: SidebarMenuItem[] = [
                 name: 'GroupName',
                 children: [
                     {
-                        name: 'Override style',
-                        route: '/docs/components/override-style'
+                        name: 'Override fusion-base',
+                        route: '/docs/components/override-fusion-base'
                     }
                 ]
             },
@@ -160,9 +160,9 @@ describe('SidebarMenuService', () => {
     });
 
     it('should found open, selected and active menu item in menu-items tree with sub-group by route', () => {
-        service.setMenuByActiveRoute(MENU_ITEMS_MOCK, '/docs/components/override-style');
+        service.setMenuByActiveRoute(MENU_ITEMS_MOCK, '/docs/components/override-fusion-base');
 
-        expect(service.activeMenuItem$.getValue().name).toBe('Override style');
+        expect(service.activeMenuItem$.getValue().name).toBe('Override fusion-base');
         expect(service.openedMenuItem$.getValue().name).toBe('Styleguide');
         expect(service.selectedMenuItem$.getValue().name).toBe('Styleguide');
     });

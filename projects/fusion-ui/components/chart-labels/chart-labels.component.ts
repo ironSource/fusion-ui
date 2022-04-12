@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, Injector, Input} from '@angular/core';
 import {ChartLabel} from '@ironsource/fusion-ui/components/chart';
-import {FusionBaseComponent} from '@ironsource/fusion-ui/components/style';
+import {FusionBaseComponent} from '@ironsource/fusion-ui/components/fusion-base';
 
 @Component({
     selector: 'fusion-chart-labels',
