@@ -31,19 +31,19 @@ const generateNativeScript = (tree: Tree, _context: SchematicContext, options: S
         };
     }, {});
 
-    // const mainCssContent = tree.read(`${outputDir}/fusion.theme.css`);
-    // const mainScssContent = tree.read(`${outputDir}/fusion.theme.scss`);
-    // if (!mainCssContent || !mainScssContent) {
-    //     throw new SchematicsException('Could not find native dist files');
-    // }
+    const mainCssContent = tree.read(`${outputDir}/fusion.theme.css`);
+    const mainScssContent = tree.read(`${outputDir}/fusion.theme.scss`);
+    if (!mainCssContent || !mainScssContent) {
+        throw new SchematicsException('Could not find native dist files');
+    }
 
     tree.getDir(outputDir).subfiles.forEach(file => {
         tree.delete(`${outputDir}/${file}`);
     });
 
     Object.keys(filesContent).forEach(file => filesContent[file] && tree.create(`${outputDir}/core/${file}`, filesContent[file]));
-    // tree.create(`${outputDir}/core/fusion.theme.css`, mainCssContent);
-    // tree.create(`${outputDir}/core/fusion.theme.scss`, mainScssContent);
+    tree.create(`${outputDir}/core/fusion.theme.css`, mainCssContent);
+    tree.create(`${outputDir}/core/fusion.theme.scss`, mainScssContent);
 
     return tree;
 };

@@ -5,12 +5,12 @@ import {writeFile} from 'fs-extra';
 /** Bundles all SCSS files into a single file */
 async function bundleScss() {
     const isNative = process.argv[2];
-    let mainPath = 'projects/fusion-ui/src/fusion-base/scss/app.scss';
-    const dedupeGlobs = ['./projects/fusion-ui/src/fusion-base/**/*.scss'];
+    let mainPath = 'projects/fusion-ui/src/style/scss/app.scss';
+    const dedupeGlobs = ['./projects/fusion-ui/src/style/**/*.scss'];
 
     if (isNative) {
-        mainPath = 'projects/fusion-native/src/fusion-base/global.scss';
-        dedupeGlobs.push('./projects/fusion-native/src/fusion-base/**/*.scss');
+        mainPath = 'projects/fusion-native/src/style/global.scss';
+        dedupeGlobs.push('./projects/fusion-native/src/style/**/*.scss');
     }
 
     const {found, bundledContent, imports} = await new Bundler().Bundle(mainPath, dedupeGlobs);
