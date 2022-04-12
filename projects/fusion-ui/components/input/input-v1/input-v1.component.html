@@ -1,8 +1,6 @@
 <div [class.fu-input-small]="isSmall" class="fu-input-holder"
      [ngClass]="getHolderClasses()"
-     [style.width]="config.options?.width"
-     *ngIf="selectedVersion$ | async as selectedVersion"
->
+     [style.width]="config.options?.width">
 
     <ng-container *ngIf="configByStyle$ | async as configByStyle">
         <div class="fu-search-icon-holder"
@@ -22,27 +20,18 @@
             </fusion-icon>
         </label>
 
-        <i class="fu-input-icon {{ config?.icon?.iconPos || config?.icon?.[0]?.iconPos }}"
+        <i class="fu-input-icon {{ config?.icon?.iconPos || 'right' }}"
            *ngIf="config?.icon && !loading && !config?.errorType"
            [class.has-units]="config?.units"
            [ngStyle]="config.options?.iconStyle">
-            <fusion-icon [name]="config?.icon?.iconData || config?.icon?.[0]?.iconData"></fusion-icon>
+            <fusion-icon [name]="config?.icon?.iconData"></fusion-icon>
         </i>
 
-        <ng-container *ngIf="selectedVersion === 3">
-            <i class="fu-input-second-icon {{ config?.icon?.[1]?.iconPos }}"
-               *ngIf="config?.icon?.[1]?.iconData  && !loading && !config?.errorType">
-                <fusion-icon [name]="config?.icon?.[1]?.iconData"></fusion-icon>
-            </i>
-        </ng-container>
-
-        <ng-container *ngIf="selectedVersion !== 3">
-            <i class="fu-input-icon loading {{ this.config?.icon?.iconPos || 'right' }}"
-               *ngIf="loading"
-               [class.has-units]="config?.units">
-                <fusion-icon [name]="configByStyle.iconLoader"></fusion-icon>
-            </i>
-        </ng-container>
+        <i class="fu-input-icon loading {{ this.config?.icon?.iconPos || 'right' }}"
+           *ngIf="loading"
+           [class.has-units]="config?.units">
+            <fusion-icon [name]="configByStyle.iconLoader"></fusion-icon>
+        </i>
 
         <span class="fu-input-units {{ config?.unitPos }} {{ config.options?.size }}"
               *ngIf="config?.units"
@@ -53,8 +42,8 @@
         </span>
 
         <input #input
-               [class.fu-input-small]="config.options?.size === 'small'"
-               class="fu-input {{ config?.class }} {{ config?.icon?.iconPos || config?.icon?.[0]?.iconPos }}"
+               [class.fu-input-small]="isSmall"
+               class="fu-input {{ config?.class }} {{ config?.icon?.iconPos  || 'right' }}"
                autocomplete="off"
                minlength="1"
                [class.fu-type-pass]="config?.type === 'password'"
@@ -86,9 +75,7 @@
                 [class.is-loading]="config?.btnLoading"
                 [class.fu-error]="config?.error">
 
-            <ng-container [ngTemplateOutlet]="configByStyle.currentStyleVersion === styleVersion.V1 ? V1 : V2"
-                          [ngTemplateOutletContext]="{iconName:configByStyle.iconLoader}">
-            </ng-container>
+            <fusion-icon [name]="configByStyle.iconLoader"></fusion-icon>
 
             <span class="fu-action-button-text">{{ config?.btn }}</span>
         </button>
@@ -125,16 +112,3 @@
      [class.focused]="focused"
      [innerHTML]="config.error">
 </div>
-
-<ng-template #V1
-             let-iconName="iconName">
-    <fusion-icon [name]="iconName"></fusion-icon>
-</ng-template>
-
-<ng-template #V2>
-    <fusion-loader-inline [status]="config?.btnLoading"></fusion-loader-inline>
-    <fusion-icon *ngIf="config.options?.buttonIcon"
-                 class="button-icon"
-                 [name]="config.options?.buttonIcon">
-    </fusion-icon>
-</ng-template>
