@@ -1,5 +1,5 @@
-import {Component, OnInit, ChangeDetectionStrategy, forwardRef, OnDestroy, AfterViewInit} from '@angular/core';
-import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {Component, ChangeDetectionStrategy, forwardRef} from '@angular/core';
+import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {InputBase} from './input-base/input-base';
 
 // Todo - check if someone use error as boolean and if not change type to string only

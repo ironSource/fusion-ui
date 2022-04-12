@@ -21,7 +21,7 @@
         </label>
 
         <i class="fu-input-icon {{ config?.icon?.iconPos || 'right' }}"
-           *ngIf="config?.icon && !loading && !config?.errorType"
+           *ngIf="config?.icon?.iconData && !loading && !config?.errorType"
            [class.has-units]="config?.units"
            [ngStyle]="config.options?.iconStyle">
             <fusion-icon [name]="config?.icon?.iconData"></fusion-icon>

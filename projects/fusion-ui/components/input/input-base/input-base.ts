@@ -64,7 +64,6 @@ export abstract class InputBase extends InputParameters implements OnInit, OnDes
 
     ngAfterViewInit(): void {
         super.ngAfterViewInit();
-        this.setInputElementListeners();
         this.setMouseWheelListener();
         this.setKeyDownListener();
     }
