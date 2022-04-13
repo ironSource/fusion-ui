@@ -6,11 +6,11 @@ import {StyleVersion} from '@ironsource/fusion-ui/services/version';
 import {IconData} from '@ironsource/fusion-ui';
 
 export interface InputConfigByStyle {
-    iconSearch: IconData;
-    iconClear: IconData;
-    iconInfo: IconData;
-    iconWarning: IconData;
-    iconLoader: IconData;
+    iconSearch?: IconData;
+    iconClear?: IconData;
+    iconInfo?: IconData;
+    iconWarning?: IconData;
+    iconLoader?: IconData;
     currentStyleVersion: StyleVersion;
 }
 
@@ -30,5 +30,10 @@ export const CONFIG_INPUT_BY_UI_STYLE: {[styleKey: string]: InputConfigByStyle} 
         iconWarning: {iconName: 'warning', iconVersion: 'v2'},
         iconLoader: {iconName: 'loading-rotate', iconVersion: 'v2'},
         currentStyleVersion: StyleVersion.V2
+    },
+    style_v3: {
+        iconInfo: 'importent',
+        iconWarning: 'warning',
+        currentStyleVersion: StyleVersion.V3
     }
 };
