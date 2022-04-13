@@ -1,6 +1,6 @@
-@import '../../../src/style/scss/vars/vars';
-@import '../../../src/style/scss/vars/border';
-@import '../../../src/style/scss/vars/mixins';
+@import '../../../src/style/scss/v2/vars/vars';
+@import '../../../src/style/scss/v2/vars/border';
+@import '../../../src/style/scss/v2/mixins/mixins';
 
 $v2-headerHeight: 40px;
 $v2-borderRadius: 4px;
@@ -8,8 +8,8 @@ $v2-errorBGColor: $fu-negative-100;
 $v2-headerSmallHeight: 32px;
 $v2-borderRoundedRadius: 20px;
 
-
-:host:not(.fusion-style-v1) .is-dropdown-select {
+:host.fu-style-v3 .is-dropdown-select,
+:host.fu-style-v2 .is-dropdown-select {
     @extend %border-box-normalize;
     // title
     label {
@@ -90,7 +90,7 @@ $v2-borderRoundedRadius: 20px;
         }
     }
 }
-:host-context(.is-dropdown):not(.fusion-style-v1) .is-dropdown-select {
+:host-context(.is-dropdown.fu-style-v2) .is-dropdown-select {
     &.forced-placeholder{
         label.icon {
             .placeholderText {
@@ -118,7 +118,7 @@ $v2-borderRoundedRadius: 20px;
         }
     }
 }
-:host-context(.is-dropdown.is-icon-right-position):not(.fusion-style-v1) .is-dropdown-select {
+:host-context(.is-dropdown.is-icon-right-position.fu-style-v2) .is-dropdown-select {
     label {
         padding: 10px 40px 10px 10px;
         @include icon-style('is-custom-icon', $fu-dark-200, 12px, true, true) {
@@ -141,8 +141,8 @@ $v2-borderRoundedRadius: 20px;
 }
 
 // small size dropdown has changes in dropdown title only
-:host-context(fusion-dropdown.small):not(.fusion-style-v1),
-:host-context(fusion-multi-dropdown.small):not(.fusion-style-v1) {
+:host-context(fusion-dropdown.small.fu-style-v2),
+:host-context(fusion-multi-dropdown.small.fu-style-v2) {
     .is-dropdown-select label {
             @extend %font-body;
             height: $v2-headerSmallHeight;
@@ -159,15 +159,15 @@ $v2-borderRoundedRadius: 20px;
     }
 }
 
-:host-context(fusion-dropdown.rounded):not(.fusion-style-v1),
-:host-context(fusion-multi-dropdown.rounded):not(.fusion-style-v1) {
+:host-context(fusion-dropdown.rounded.fu-style-v2),
+:host-context(fusion-multi-dropdown.rounded.fu-style-v2) {
     .is-dropdown-select label {
         border-radius: $v2-borderRoundedRadius;
     }
 }
 
-:host-context(fusion-dropdown.ng-invalid):not(.fusion-style-v1) .is-dropdown-select label,
-:host-context(fusion-multi-dropdown.ng-invalid):not(.fusion-style-v1) .is-dropdown-select label {
+:host-context(fusion-dropdown.ng-invalid.fu-style-v2) .is-dropdown-select label,
+:host-context(fusion-multi-dropdown.ng-invalid.fu-style-v2) .is-dropdown-select label {
     background-color: $v2-errorBGColor;
     &.dd-active{
         background-color: $fu-light-100;

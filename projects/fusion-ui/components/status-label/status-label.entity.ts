@@ -2,7 +2,7 @@
  * Created on 2020.5.11 By Andy Kononenko (andyk@ironsrc.com)
  */
 
-import {IconData} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 export interface StatusLabelConfig {
     text?: string;

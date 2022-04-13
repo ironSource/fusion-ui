@@ -1,9 +1,9 @@
-@import '../../src/style/scss/vars/mixins';
-@import '../../src/style/scss/vars/vars';
-@import '../../src/style/scss/vars/border';
-@import '../../src/style/scss/vars/fonts_v1';
+@import '../../src/style/scss/v1/mixins/mixins';
+@import '../../src/style/scss/v1/vars/vars';
+@import '../../src/style/scss/v1/vars/border';
+@import '../../src/style/scss/v1/vars/fonts';
 
-:host.fusion-style-v1 {
+:host.fu-style-v1 {
     @extend %list-reset;
     li {
         @extend %borderBottom;

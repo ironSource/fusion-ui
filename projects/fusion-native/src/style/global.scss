@@ -1,5 +1,4 @@
-@import '../../../fusion-ui/src/style/scss/app.scss';
-@import '../../../fusion-ui/src/style/scss/mixins/breakpoints';
+@import '../../../fusion-ui/src/style/scss/v2/mixins/breakpoints';
 
 fusion-icon.clear-full-circle, fusion-icon.arrow-dropdown, fusion-dropdown .is-dropdown-select fusion-icon {
     display: list-item;
@@ -10,7 +9,7 @@ fusion-tags-input ul:not(.options) {
     display: flex;
 }
 
-fusion-mobile-previewer:not(.fusion-style-v2) .deviceSelectionFooter .iconWrapper > fusion-icon {
+fusion-mobile-previewer.fusion-style-v1 .deviceSelectionFooter .iconWrapper > fusion-icon {
     display: block;
     margin-top: 4px;
 }

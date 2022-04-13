@@ -1,13 +1,14 @@
-@import '../../../src/style/scss/vars/vars';
-@import '../../../src/style/scss/vars/mixins';
-@import '../../../src/style/scss/vars/border';
+@import '../../../src/style/scss/v2/vars/vars';
+@import '../../../src/style/scss/v2/mixins/mixins';
+@import '../../../src/style/scss/v2/vars/border';
 @import '../modal_vars-v2';
 
 $borderBottom: solid 1px $fu-light-300;
 $height: $modalHeaderHeight;
 $padding: 15px 32px;
 
-:host:not(.fusion-style-v1) {
+:host.fu-style-v3,
+:host.fu-style-v2 {
     @extend %border-box-normalize;
     .modal-header {
         box-sizing: border-box;

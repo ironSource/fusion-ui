@@ -2,11 +2,12 @@
  * Created on 2020.3.29 By Andy Kononenko (andyk@ironsrc.com)
  */
 
-@import '../../../src/style/scss/vars/vars';
-@import '../../../src/style/scss/vars/border';
-@import '../../../src/style/scss/vars/mixins';
+@import '../../../src/style/scss/v2/vars/vars';
+@import '../../../src/style/scss/v2/vars/border';
+@import '../../../src/style/scss/v2/mixins/mixins';
 
-:host:not(.fusion-style-v1) {
+:host.fu-style-v3,
+:host.fu-style-v2 {
     @extend %border-box-normalize;
     @extend %list-reset;
     position: relative;
@@ -130,7 +131,7 @@
                 display: block;
                 font-size: 12px;
                 color: #678099;
-                @include icon-style('sub-text-icon', $light-700, 12px, false, true) {
+                @include icon-style('sub-text-icon', $fu-light-700, 12px, false, true) {
                     margin-right: 5px;
                     vertical-align: text-top;
                 }
@@ -142,15 +143,15 @@
     }
 }
 
-:host-context(li.option.is-selected):not(.fusion-style-v1) {
+:host-context(li.option.is-selected.fu-style-v2) {
     border: none;
     background-color: $fu-primary-100;
     .icon-container{
         @include icon-style('icon', $fu-primary-500, 13px, false, true);
     }
 }
-:host-context(li.option.is-focused):not(.fusion-style-v1) {
-    background: $light-100;
+:host-context(li.option.is-focused.fu-style-v2) {
+    background: $fu-light-100;
 }
 
 :host-context(.fu-large-item-height){

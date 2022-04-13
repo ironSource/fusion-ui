@@ -1,13 +1,13 @@
-@import '../../../src/style/scss/vars/vars';
-@import '../../../src/style/scss/vars/mixins';
-@import '../../../src/style/scss/vars/colors';
+@import '../../../src/style/scss/v1/vars/vars';
+@import '../../../src/style/scss/v1/mixins/mixins';
+@import '../../../src/style/scss/v1/vars/colors';
 
 $bodyBorder: 1px solid $light-500;
 $rowHeightV1: 55px;
 $rowHeightV2: 43px;
 $rowTotalsHeight: 25px;
 
-:host.fusion-style-v1 {
+:host.fu-style-v1 {
     position: relative;
     padding: 0 10px 0 10px;
     color: $dark-300;
@@ -100,35 +100,35 @@ $rowTotalsHeight: 25px;
     }
 }
 
-:host-context(.v1).fusion-style-v1 {
+:host-context(.v1).fu-style-v1 {
     height: $rowHeightV1;
     @extend %font5;
 }
 
-:host-context(.v2).fusion-style-v1 {
+:host-context(.v2).fu-style-v1 {
     height: $rowHeightV2;
     @extend %font14;
 }
 
-:host-context(tr:hover).fusion-style-v1.is-inline-removable {
+:host-context(tr:hover).fu-style-v1.is-inline-removable {
     fusion-icon.removeRowIcon {
         visibility: visible;
     }
 }
 
-:host-context(tr:hover).fusion-style-v1 {
+:host-context(tr:hover).fu-style-v1 {
     fusion-icon.infoRowIcon {
         visibility: visible;
     }
 }
 
-:host-context(tr.is-row-in-request).fusion-style-v1 {
+:host-context(tr.is-row-in-request).fu-style-v1 {
     fusion-toggle {
         opacity: 0.5;
     }
 }
 
-:host-context(tr.is-with-totals).fusion-style-v1 {
+:host-context(tr.is-with-totals).fu-style-v1 {
     height: $rowTotalsHeight;
     @extend %font13;
     letter-spacing: .5px;

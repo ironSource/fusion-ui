@@ -1,10 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
-import {ApiService, ApiResponseType, VersionService, StyleVersion, Tag} from '@ironsource/fusion-ui';
+import {ApiService, ApiResponseType, StyleVersion, Tag} from '@ironsource/fusion-ui';
 import {map, delay, takeUntil} from 'rxjs/operators';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Router} from '@angular/router';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
+import {VersionService} from '../../../services/version/version.service';
 
 @Component({
     selector: 'fusion-tag-docs',

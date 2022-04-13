@@ -1,13 +1,14 @@
-@import '../../../src/style/scss/vars/vars';
-@import '../../../src/style/scss/vars/mixins';
+@import '../../../src/style/scss/v2/vars/vars';
+@import '../../../src/style/scss/v2/mixins/mixins';
 
 $monthPickerHeight: 40px;
-$monthPickerBorder: solid 1px $light-500;
+$monthPickerBorder: solid 1px $fu-light-500;
 $monthPickerBorderRadius: 4px;
 $monthPickerPadding: 12px;
 $monthPickerErrorBGColor: $fu-negative-100;
 
-:host:not(.fusion-style-v1) {
+:host.fu-style-v3,
+:host.fu-style-v2 {
     @extend %border-box-normalize;
     height: var(--fu-month-picker-height, #{$monthPickerHeight});
     border: none;

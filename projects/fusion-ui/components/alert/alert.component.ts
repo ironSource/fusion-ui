@@ -1,10 +1,8 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Injector, AfterViewInit} from '@angular/core';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
-import {ALERT_THEME_TOKEN} from './alert-theme';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import {StyleVersion} from '@ironsource/fusion-ui/services/version';
-import {IconData} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Component({
     selector: 'fusion-alert',
@@ -12,7 +10,7 @@ import {IconData} from '@ironsource/fusion-ui/components';
     styleUrls: ['./alert.component.scss', './alert.component-v2.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AlertComponent extends StyleBase implements AfterViewInit {
+export class AlertComponent extends FusionBase {
     @Input() type = 'info';
     @Input() mode = 'basic';
     @Input() shown = true;
@@ -35,10 +33,6 @@ export class AlertComponent extends StyleBase implements AfterViewInit {
         startWith({iconName: 'close', iconVersion: 'v1'})
     );
 
-    constructor(injector: Injector) {
-        super(injector, ALERT_THEME_TOKEN);
-    }
-
     onCloseClicked(isDontShowAgain = false): void {
         this.shown = false;
         this.closed.emit({dontShowAgain: isDontShowAgain});
@@ -47,9 +41,5 @@ export class AlertComponent extends StyleBase implements AfterViewInit {
     onDontShowClicked($event): void {
         $event.preventDefault();
         this.onCloseClicked(true);
-    }
-
-    ngAfterViewInit() {
-        super.ngAfterViewInit();
     }
 }

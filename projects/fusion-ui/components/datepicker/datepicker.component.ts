@@ -108,10 +108,7 @@ export class DatepickerComponent implements OnInit, OnDestroy, OnChanges, AfterV
         this.initData();
         this.initListeners();
         if (this.isTimePicker) {
-            this.renderer.setAttribute(this.hoursPicker.elementRef.nativeElement.querySelector('input'), 'min', '0');
-            this.renderer.setAttribute(this.hoursPicker.elementRef.nativeElement.querySelector('input'), 'max', '23');
-            this.renderer.setAttribute(this.minutesPicker.elementRef.nativeElement.querySelector('input'), 'min', '0');
-            this.renderer.setAttribute(this.minutesPicker.elementRef.nativeElement.querySelector('input'), 'max', '59');
+            this.setMinMaxForTimeInput();
         }
     }
 
@@ -129,6 +126,19 @@ export class DatepickerComponent implements OnInit, OnDestroy, OnChanges, AfterV
         return !isNullOrUndefined(this.selectedDate.date) && isDate(this.selectedDate.date)
             ? this.datePipe.transform(this.selectedDate.date, this.labelDateFormat)
             : this.placeholder;
+    }
+
+    private setMinMaxForTimeInput() {
+        setTimeout(() => {
+            if (!!this.hoursPicker.elementRef.nativeElement.querySelector('input')) {
+                this.renderer.setAttribute(this.hoursPicker.elementRef.nativeElement.querySelector('input'), 'min', '0');
+                this.renderer.setAttribute(this.hoursPicker.elementRef.nativeElement.querySelector('input'), 'max', '23');
+            }
+            if (!!this.minutesPicker.elementRef.nativeElement.querySelector('input')) {
+                this.renderer.setAttribute(this.minutesPicker.elementRef.nativeElement.querySelector('input'), 'min', '0');
+                this.renderer.setAttribute(this.minutesPicker.elementRef.nativeElement.querySelector('input'), 'max', '59');
+            }
+        });
     }
 
     private isDate(valToCheck): boolean {

@@ -1,12 +1,13 @@
 import {Component, OnDestroy, OnInit, Type} from '@angular/core';
 import {environment} from '../../../../environments/environment';
-import {HeaderState, StyleVersion, VersionService} from '@ironsource/fusion-ui';
+import {HeaderState, StyleVersion} from '@ironsource/fusion-ui';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {TableColumnTypeEnum} from '@ironsource/fusion-ui';
 import {MenuItemExampleComponent} from '../../../components/menu-item-example/menu-item-example.component';
 import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {VersionService} from '../../../services/version/version.service';
 
 const KNOWLEDGE_CENTER_URL = `${environment.developersReference}/sdk-repository`;
 const SUBMIT_REQUEST_URL = `${environment.developersReference}/submit-a-request`;

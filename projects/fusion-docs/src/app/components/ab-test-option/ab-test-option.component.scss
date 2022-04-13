@@ -1,5 +1,5 @@
-@import "../../../../../fusion-ui/src/style/scss/vars/vars";
-@import "../../../../../fusion-ui/src/style/scss/vars/colors";
+@import "../../../../../fusion-ui/src/style/scss/v1/vars/vars";
+@import "../../../../../fusion-ui/src/style/scss/v1/vars/colors";
 
 :host {
     display: block;
@@ -7,7 +7,7 @@
     .fu-test-title-wrapper{;
         display: flex;
         color: $dark-100;
-        @extend %font-bodyStrong;
+        @extend %font6;
         line-height: 1.4;
     }
     .fu-test-status-wrapper{

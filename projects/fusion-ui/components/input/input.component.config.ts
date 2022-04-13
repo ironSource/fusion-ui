@@ -2,8 +2,8 @@
  * Created on 2020.4.21 By Andy Kononenko (andyk@ironsrc.com)
  */
 
-import {StyleVersion} from '@ironsource/fusion-ui/services/version';
-import {IconData} from '@ironsource/fusion-ui';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 export interface InputConfigByStyle {
     iconSearch: string | IconData;

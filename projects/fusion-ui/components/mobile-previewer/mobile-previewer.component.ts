@@ -2,10 +2,9 @@ import {ChangeDetectionStrategy, Component, Injector, Input, OnInit} from '@angu
 import {MobileOrientation} from './mobile-orientation.enum';
 import {DEVICE_ORIENTATION, MobilePreviewerComponentConfiguration} from './mobile-previewer-component-configuration';
 import {CapitalizePipe} from '@ironsource/fusion-ui/pipes/string';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import {StyleVersion} from '@ironsource/fusion-ui/services/version';
 
 @Component({
     selector: 'fusion-mobile-previewer',
@@ -13,7 +12,7 @@ import {StyleVersion} from '@ironsource/fusion-ui/services/version';
     styleUrls: ['./mobile-previewer.component.scss', './mobile-previewer.component-v2.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MobilePreviewerComponent extends StyleBase implements OnInit {
+export class MobilePreviewerComponent extends FusionBase implements OnInit {
     _configurations: MobilePreviewerComponentConfiguration = {component: {type: null}};
     @Input()
     set configurations(configurations: MobilePreviewerComponentConfiguration) {

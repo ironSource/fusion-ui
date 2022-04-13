@@ -1,14 +1,15 @@
 <div class="row" *ngIf="selectedVersion$ | async as currentStyleVersion">
-    <div class="col-9">
-        <!--UI-Component Examples-->
-        <div class="is-example-title">Type</div>
+    <ng-container *ngIf="(styleUpdating$ | async) === false; else inUpdate">
+        <div class="col-9">
+            <!--UI-Component Examples-->
+            <div class="is-example-title">Type</div>
 
-        <fusion-example-block id="typeLoader" title="Loader">
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<!--Default (color=grey)-->
+            <fusion-example-block id="typeLoader" title="Loader">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<!--Default (color=grey)-->
 <fusion-loader [status]="true" height="150"></fusion-loader>
 
 <!--Color Blue-->
@@ -17,14 +18,14 @@
 <!--Color White-->
 <fusion-loader [status]="true" color="white" height="150"></fusion-loader>
 '
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="React">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code="class App extends React.Component {
+                <ng-template fusionExampleBlock="React">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code="class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -43,24 +44,24 @@
 }
 
 export default App;"
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Vue">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<template>
+                <ng-template fusionExampleBlock="Vue">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<template>
   <div id="app">
       <FusionLoader :config="loader" />
   </div>
 </template>'
-                ></fusion-code-block>
+                    ></fusion-code-block>
 
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='<script>
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='<script>
 import {FusionLoader} from "@ironsource/fusion-ui/native/vue";
 
 export default {
@@ -78,62 +79,62 @@ export default {
   }
 }
 </script>'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Native">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='const loader = document.createElement("native-fusion-loader");
+                <ng-template fusionExampleBlock="Native">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='const loader = document.createElement("native-fusion-loader");
 loader.config = {
     status: true,
     height: 150
 };
 
 document.body.appendChild(loader);'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-container *ngIf="currentStyleVersion === styleVersion.V1">
-                <button fusion-button (click)="onToggleClicked()">Toggle Loader</button> &nbsp;{{ isLoaded$ | async }}
-                <div style="height: 150px; border: solid 1px #ccc; position: relative;">
-                    <fusion-loader [status]="isLoaded$ | async" height="150"></fusion-loader>
+                <ng-container *ngIf="currentStyleVersion === styleVersion.V1">
+                    <button fusion-button (click)="onToggleClicked()">Toggle Loader</button> &nbsp;{{ isLoaded$ | async }}
+                    <div style="height: 150px; border: solid 1px #ccc; position: relative;">
+                        <fusion-loader [status]="isLoaded$ | async" height="150"></fusion-loader>
+                    </div>
+                </ng-container>
+                <div *ngIf="currentStyleVersion === styleVersion.V2" class="row">
+                    <div class="col-4 color-example">
+                        <p>color=grey &nbsp;(default)</p>
+                        <fusion-loader [status]="true" height="150"></fusion-loader>
+                    </div>
+                    <div class="col-4 color-example" style="background-color: #dce8fc;">
+                        <p>color=blue</p>
+                        <fusion-loader [status]="true" color="blue" height="150"></fusion-loader>
+                    </div>
+                    <div class="col-4 color-example" style="background-color: #d7dce3;">
+                        <p>color=white</p>
+                        <fusion-loader [status]="true" color="white" height="150"></fusion-loader>
+                    </div>
                 </div>
-            </ng-container>
-            <div *ngIf="currentStyleVersion === styleVersion.V2" class="row">
-                <div class="col-4 color-example">
-                    <p>color=grey &nbsp;(default)</p>
-                    <fusion-loader [status]="true" height="150"></fusion-loader>
-                </div>
-                <div class="col-4 color-example" style="background-color: #dce8fc;">
-                    <p>color=blue</p>
-                    <fusion-loader [status]="true" color="blue" height="150"></fusion-loader>
-                </div>
-                <div class="col-4 color-example" style="background-color: #d7dce3;">
-                    <p>color=white</p>
-                    <fusion-loader [status]="true" color="white" height="150"></fusion-loader>
-                </div>
-            </div>
-        </fusion-example-block>
+            </fusion-example-block>
 
-        <fusion-example-block id="typeLoaderText" title="Text Loader">
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<fusion-loader [status]="true"
+            <fusion-example-block id="typeLoaderText" title="Text Loader">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<fusion-loader [status]="true"
                height="150">
     Loading please wait…
 </fusion-loader>'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="React">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='class App extends React.Component {
+                <ng-template fusionExampleBlock="React">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='class App extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -153,26 +154,26 @@ document.body.appendChild(loader);'
   }
 
   export default App;'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Vue">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<template>
+                <ng-template fusionExampleBlock="Vue">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<template>
   <div id="app">
       <FusionLoader :config="loader">
           <span>Loading please wait…</span>
       </FusionLoader>
   </div>
 </template>'
-                ></fusion-code-block>
+                    ></fusion-code-block>
 
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='<script>
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='<script>
 import {FusionLoader} from "@ironsource/fusion-ui/native/vue";
 
 export default {
@@ -190,14 +191,14 @@ export default {
   }
 }
 </script>'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Native">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='const loader = document.createElement("native-fusion-loader");
+                <ng-template fusionExampleBlock="Native">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='const loader = document.createElement("native-fusion-loader");
 const textNode = document.createTextNode("Loading please wait…");
   loader.config = {
   status: true,
@@ -206,20 +207,20 @@ const textNode = document.createTextNode("Loading please wait…");
 
 document.body.appendChild(loader);
 loader2.appendChild(textNode);'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <fusion-loader [status]="true" height="150">Loading please wait… </fusion-loader>
-        </fusion-example-block>
+                <fusion-loader [status]="true" height="150">Loading please wait… </fusion-loader>
+            </fusion-example-block>
 
-        <div class="is-example-title">Variations</div>
+            <div class="is-example-title">Variations</div>
 
-        <fusion-example-block *ngIf="currentStyleVersion === styleVersion.V1" id="variationsSize" title="Size">
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='Small:
+            <fusion-example-block *ngIf="currentStyleVersion === styleVersion.V1" id="variationsSize" title="Size">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='Small:
 <fusion-loader [status]="true"
                size="small">
     Loading please wait…
@@ -235,14 +236,14 @@ Default:
 <fusion-loader [status]="true">
   Loading please wait…
 </fusion-loader>'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="React">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='class App extends React.Component {
+                <ng-template fusionExampleBlock="React">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='class App extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -262,26 +263,26 @@ Default:
   }
 
   export default App;'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Vue">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<template>
+                <ng-template fusionExampleBlock="Vue">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<template>
   <div id="app">
       <FusionLoader :config="loader">
           <span>Loading please wait…</span>
       </FusionLoader>
   </div>
 </template>'
-                ></fusion-code-block>
+                    ></fusion-code-block>
 
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='<script>
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='<script>
 import {FusionLoader} from "@ironsource/fusion-ui/native/vue";
 
 export default {
@@ -300,14 +301,14 @@ export default {
   }
 }
 </script>'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Native">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='const loader = document.createElement("native-fusion-loader");
+                <ng-template fusionExampleBlock="Native">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='const loader = document.createElement("native-fusion-loader");
 loader.config = {
   status: true,
   height: 150,
@@ -315,45 +316,45 @@ loader.config = {
 };
 
 document.body.appendChild(loader);'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <div class="is-example-row">
-                <fusion-loader [status]="true" size="small">Loading please wait… </fusion-loader>
-            </div>
+                <div class="is-example-row">
+                    <fusion-loader [status]="true" size="small">Loading please wait… </fusion-loader>
+                </div>
 
-            <div class="is-example-row">
-                <fusion-loader [status]="true" size="medium">Loading please wait… </fusion-loader>
-            </div>
+                <div class="is-example-row">
+                    <fusion-loader [status]="true" size="medium">Loading please wait… </fusion-loader>
+                </div>
 
-            <div class="is-example-row">
-                <fusion-loader [status]="true">Loading please wait…</fusion-loader>
-            </div>
-        </fusion-example-block>
+                <div class="is-example-row">
+                    <fusion-loader [status]="true">Loading please wait…</fusion-loader>
+                </div>
+            </fusion-example-block>
 
-        <fusion-example-block id="variationsInline" title="Inline Loader">
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<fusion-loader-inline [status]="true"
+            <fusion-example-block id="variationsInline" title="Inline Loader">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<fusion-loader-inline [status]="true"
                       text="Loading...">
 </fusion-loader-inline>'
-                ></fusion-code-block>
+                    ></fusion-code-block>
 
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code="@Input() status: boolean
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code="@Input() status: boolean
 @Input() text: string"
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="React">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='class App extends React.Component {
+                <ng-template fusionExampleBlock="React">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='class App extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -372,24 +373,24 @@ document.body.appendChild(loader);'
   }
 
   export default App;'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Vue">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<template>
+                <ng-template fusionExampleBlock="Vue">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<template>
   <div id="app">
       <FusionLoaderInline :config="loader" />
   </div>
 </template>'
-                ></fusion-code-block>
+                    ></fusion-code-block>
 
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='<script>
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='<script>
 import {FusionLoaderInline} from "@ironsource/fusion-ui/native/vue";
 
 export default {
@@ -407,14 +408,14 @@ export default {
   }
 }
 </script>'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <ng-template fusionExampleBlock="Native">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='const loaderInline = document.createElement("native-fusion-loader-inline");
+                <ng-template fusionExampleBlock="Native">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='const loaderInline = document.createElement("native-fusion-loader-inline");
 
 loaderInline.config = {
     text:"Loading...",
@@ -422,18 +423,18 @@ loaderInline.config = {
 };
 
 document.body.appendChild(loaderInline);'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <fusion-loader-inline [status]="true" text="Loading..."></fusion-loader-inline>
-        </fusion-example-block>
+                <fusion-loader-inline [status]="true" text="Loading..."></fusion-loader-inline>
+            </fusion-example-block>
 
-        <fusion-example-block id="customLoader" title="Custom Loader">
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='
+            <fusion-example-block id="customLoader" title="Custom Loader">
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='
 @Component({
     selector: "custom-loader",
     template: `<p>Custom Loader</p>`,
@@ -470,38 +471,43 @@ export class CustomLoaderModule {}
     bootstrap: [AppComponent]
 })
 export class AppModule {}'
-                ></fusion-code-block>
-            </ng-template>
+                    ></fusion-code-block>
+                </ng-template>
 
-            <fusion-custom-loader-host></fusion-custom-loader-host>
-        </fusion-example-block>
+                <fusion-custom-loader-host></fusion-custom-loader-host>
+            </fusion-example-block>
 
-        <!--UI-Component Examples-->
-        <!--UI-Component Configuration Doc-->
-        <div class="is-example-title">Configuration</div>
-        <fusion-example-block id="params" title="Parameters" [collapsible]="false">
-            <fusion-code-block
-                *ngIf="currentStyleVersion === styleVersion.V1"
-                lang="js"
-                code='height: number      // outer element Height (pixel)
+            <!--UI-Component Examples-->
+            <!--UI-Component Configuration Doc-->
+            <div class="is-example-title">Configuration</div>
+            <fusion-example-block id="params" title="Parameters" [collapsible]="false">
+                <fusion-code-block
+                    *ngIf="currentStyleVersion === styleVersion.V1"
+                    lang="js"
+                    code='height: number      // outer element Height (pixel)
 status: boolean     // if true loader shown; Default - false
 position:           // "center" | "left" | ""; Default - "center"
 size: string        // "large" | "medium" | "small"; Default - "large"'
-            ></fusion-code-block>
-            <fusion-code-block
-                *ngIf="currentStyleVersion === styleVersion.V2"
-                lang="js"
-                code='height: number      // outer element Height (pixel)
+                ></fusion-code-block>
+                <fusion-code-block
+                    *ngIf="currentStyleVersion === styleVersion.V2"
+                    lang="js"
+                    code='height: number      // outer element Height (pixel)
 status: boolean     // if true loader shown; Default - false
 position:           // "center" | "left" | ""; Default - "center"
 size: string        // "large" | "medium" | "small"; Default - "large"
 color: string       // "grey" | "ble" | "white"; Default - "grey"'
-            ></fusion-code-block>
-        </fusion-example-block>
-        <!--UI-Component Configuration Doc-->
-    </div>
+                ></fusion-code-block>
+            </fusion-example-block>
+            <!--UI-Component Configuration Doc-->
+        </div>
+    </ng-container>
 
     <div class="col-3 is-right-side-menu-holder">
         <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
     </div>
 </div>
+
+<ng-template #inUpdate>
+    <div class="col-9"></div>
+</ng-template>

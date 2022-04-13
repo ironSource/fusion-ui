@@ -1,10 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {ListBoxModes, ListBoxOption, StyleVersion, VersionService} from '@ironsource/fusion-ui';
+import {ListBoxModes, StyleVersion} from '@ironsource/fusion-ui';
 import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Router} from '@angular/router';
+import {VersionService} from '../../../services/version/version.service';
 
 /* eslint-disable max-len */
 const MOCK_DATA_1 = [

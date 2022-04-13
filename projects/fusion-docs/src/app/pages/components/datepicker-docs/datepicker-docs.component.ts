@@ -1,6 +1,9 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
+import {BehaviorSubject} from 'rxjs';
+import {delay, tap} from 'rxjs/operators';
+import {VersionService} from '../../../services/version/version.service';
 
 @Component({
     selector: 'fusion-datepicker-docs',
@@ -71,7 +74,19 @@ export class DatepickerDocsComponent implements OnInit {
 
     errorMessage = 'This is a mandatory field';
 
-    constructor(private formBuilder: FormBuilder) {}
+    styleUpdatingDelay = 0;
+    styleUpdating$ = new BehaviorSubject(false);
+    selectedVersion$ = this.versionService.styleVersion$.pipe(
+        tap(() => {
+            this.styleUpdating$.next(true);
+        }),
+        delay(this.styleUpdatingDelay),
+        tap(() => {
+            this.styleUpdating$.next(false);
+        })
+    );
+
+    constructor(private versionService: VersionService, private formBuilder: FormBuilder) {}
 
     ngOnInit() {
         this.formInit();

@@ -1,5 +1,6 @@
 <div class="row">
-    <div class="col-9">
+    <ng-container *ngIf="(styleUpdating$ | async) === false; else inUpdate">
+        <div class="col-9">
         <form [formGroup]="formDatePicker" novalidate>
             <!--UI-Component Examples-->
             <div class="is-example-title">Type</div>
@@ -309,7 +310,6 @@ datepicker.addEventListener("controlValueChange", e => console.log(e.detail));'
 
                 <fusion-datepicker formControlName="datePickerFull" isTimePicker="true" isTimeZonePicker="true"></fusion-datepicker>
             </fusion-example-block>
-
             <div class="is-example-title">States</div>
 
             <fusion-example-block id="stateDisabled" title="Disabled">
@@ -552,8 +552,12 @@ controlValueChange(controlValue: {date: new Date()})    // in Native"
             <!--UI-Component Configuration Doc-->
         </form>
     </div>
+    </ng-container>
 
     <div class="col-3 is-right-side-menu-holder">
         <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
     </div>
 </div>
+<ng-template #inUpdate>
+    <div class="col-9"></div>
+</ng-template>
