@@ -3,11 +3,11 @@
      [style.width]="config.options?.width"
      *ngIf="selectedVersion$ | async as selectedVersion">
     <ng-container [ngSwitch]="selectedVersion">
-        <ng-container *ngSwitchCase="1" [ngTemplateOutlet]="V1" [ngTemplateOutletContext]="{config:config}"></ng-container>
+        <ng-container *ngSwitchCase="1" [ngTemplateOutlet]="V1"></ng-container>
 
-        <ng-container *ngSwitchCase="2" [ngTemplateOutlet]="V2" [ngTemplateOutletContext]="{config:config}"></ng-container>
+        <ng-container *ngSwitchCase="2" [ngTemplateOutlet]="V2"></ng-container>
 
-        <ng-container *ngSwitchCase="3" [ngTemplateOutlet]="V3" [ngTemplateOutletContext]="{config:config}"></ng-container>
+        <ng-container *ngSwitchCase="3" [ngTemplateOutlet]="V3"></ng-container>
     </ng-container>
 </div>
 
@@ -18,7 +18,7 @@
      [innerHTML]="config.error">
 </div>
 
-<ng-template #V1 let-config='config'>
+<ng-template #V1>
     <ng-container *ngIf="configByStyle$ | async as configByStyle">
 
         <div class="fu-search-icon-holder"
@@ -122,7 +122,7 @@
 
 </ng-template>
 
-<ng-template #V2 let-config='config'>
+<ng-template #V2>
     <ng-container *ngIf="configByStyle$ | async as configByStyle">
 
         <div class="fu-search-icon-holder"
@@ -232,7 +232,7 @@
 
 </ng-template>
 
-<ng-template #V3 let-config='config'>
+<ng-template #V3>
     <ng-container *ngIf="configByStyle$ | async as configByStyle">
 
         <i class="fu-input-icon {{ config?.icon?.iconPos || config?.icon?.[0]?.iconPos }}"
