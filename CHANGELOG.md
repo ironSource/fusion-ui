@@ -8,10 +8,59 @@ All notable changes to this project will be documented in this file. See [standa
 
 * **fu-368:** Upgrade FusionUI to Design V3
 
-Rebuild wirk with style versions.
-Now default style version it v3 for using v2 or v1 need in root css add css variable  
-```--fu-style-version: 2 ``` for using v2. It will add to each fusion-component class ```fu-style-v2``` 
-In dist style folder has folder for each style version. And compiled fonts.css and grid.css from v3 ad a default. 
+Rebuild working with style versions.
+
+In native applications:
+- instead using class "fusion-style-v1" in <body> tag you need to use CSS variable "--fu-style-version: 1" in :root{}. Here "1" it a style version number. Currently, we have 3 style versions
+
+In angular application:
+- don't need using "STYLE_VERSION_TOKEN" in app.module.ts  you need to use CSS variable "--fu-style-version: 1" in app.component.scss. Here "1" it style version number. Currently, we have 3 style versions.
+
+In case the CSS variable is don't set, will be used last style version #3.
+In case you want to use mixed styles. For example main application style #3, but some components with style #2, you will need add CSS variable "--fu-style-version: 2" to this component.
+
+In dist style folder has folder for each style version.
+```
+style
+  v1
+    mixins
+      _breakpoints.scss
+      _mixins.scss
+    vars
+      _border.scss
+      _colors.scss
+      _fonts.scss
+      _screen.scss
+      _vars.scss
+    fonts.css
+    grid.css
+  v2
+    mixins
+      _breakpoints.scss
+      _mixins.scss
+    vars
+      _border.scss
+      _colors.scss
+      _fonts.scss
+      _screen.scss
+      _vars.scss
+    fonts.css
+    grid.css
+  v3
+    mixins
+      _breakpoints.scss
+      _mixins.scss
+    vars
+      _border.scss
+      _colors.scss
+      _fonts.scss
+      _screen.scss
+      _vars.scss
+    fonts.css
+    grid.css
+  fonts.css             # default fonts (from v3)
+  grid.css              # default grid (from v3)  
+```
 
 
 ## [2.0.0](https://github.com/ironSource/fusion-ui/compare/v2.0.0-rc.2...v2.0.0) (2022-04-10)
