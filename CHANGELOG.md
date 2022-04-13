@@ -25,49 +25,6 @@ In angular application:
 In case the CSS variable is don't set, will be used last style version #3.
 In case you want to use mixed styles. For example main application style #3, but some components with style #2, you will need add CSS variable "--fu-style-version: 2" to this component.
 
-In dist style folder has folder for each style version.
-```
-style
-  v1
-    mixins
-      _breakpoints.scss
-      _mixins.scss
-    vars
-      _border.scss
-      _colors.scss
-      _fonts.scss
-      _screen.scss
-      _vars.scss
-    fonts.css
-    grid.css
-  v2
-    mixins
-      _breakpoints.scss
-      _mixins.scss
-    vars
-      _border.scss
-      _colors.scss
-      _fonts.scss
-      _screen.scss
-      _vars.scss
-    fonts.css
-    grid.css
-  v3
-    mixins
-      _breakpoints.scss
-      _mixins.scss
-    vars
-      _border.scss
-      _colors.scss
-      _fonts.scss
-      _screen.scss
-      _vars.scss
-    fonts.css
-    grid.css
-  fonts.css             # default fonts (from v3)
-  grid.css              # default grid (from v3)  
-```
-
 
 ## [2.0.0](https://github.com/ironSource/fusion-ui/compare/v2.0.0-rc.2...v2.0.0) (2022-04-10)
 
