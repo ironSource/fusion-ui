@@ -124,7 +124,7 @@ export class InputComponent extends InputParameters implements OnInit, OnDestroy
     }
 
     showErrorIcon(): boolean {
-        if (this.selectedVersion$.getValue() === StyleVersion.V2) {
+        if (this.selectedVersion === StyleVersion.V2) {
             return !isNullOrUndefined(this.config.error);
         } else {
             return this.config.options.size === 'small' && this.config.error && !isBoolean(this.config.error);

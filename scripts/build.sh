@@ -6,6 +6,10 @@ npm run build:fusion-ui
 
 # build native project
 npm run build:fusion-native -- -c "$ENV"
+# run css-bundle for native
+npm run styles -- true
+# compile common fusion.theme.scss for native
+sass dist/fusion-ui/native/fusion.theme.scss dist/fusion-ui/native/fusion.theme.css -s compressed
 
 npm run build-native-frameworks
 npm run build-native-frameworks-old

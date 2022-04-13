@@ -1,4 +1,4 @@
-@import 'vars/mixins';
+@import './mixins';
 @import 'vars/vars';
 
 @include margin-padding(margin, $marginDouble, Double);

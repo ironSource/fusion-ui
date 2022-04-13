@@ -1,6 +1,6 @@
 @import '../../src/style/scss/v2/vars/vars';
 @import '../../src/style/scss/v2/vars/border';
-@import '../../src/style/scss/mixins/mixins';
+@import '../../src/style/scss/v2/mixins/mixins';
 
 $regularV2Height: 40px;
 $regularV2Padding: 10px;
@@ -485,6 +485,7 @@ $smallV2Padding: 8px 10px;
         }
     }
 }
+:host-context(fusion-dropdown-search.fu-style-v2),
 :host-context(fusion-tags-input.fu-style-v2){
     .fu-input-holder{
         .fu-input {

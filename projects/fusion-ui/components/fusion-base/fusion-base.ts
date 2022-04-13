@@ -12,6 +12,10 @@ export abstract class FusionBase implements AfterViewInit, OnDestroy {
         StyleVersion[Object.values(StyleVersion)[Object.values(StyleVersion).length / 2 - 1]] // take latest from enum
     );
 
+    get selectedVersion(): StyleVersion {
+        return this.selectedVersion$.getValue();
+    }
+
     constructor(protected injector: Injector) {}
 
     ngAfterViewInit() {

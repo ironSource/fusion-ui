@@ -22,7 +22,6 @@
     "build:fusion-native": "ng build fusion-native",
     "styles": "ts-node -P css-bundle/tsconfig.styles.bundle.json css-bundle",
     "build-styles": "bash scripts/build-styles.sh",
-    "build-styles-native": "npm run styles -- true && sass dist/fusion-ui/native/fusion.theme.scss dist/fusion-ui/native/fusion.theme.css -s compressed",
     "build-native-frameworks": "schematics ./projects/fusion-schematics/collection.json:fusion-frameworks --debug=false --force --componentsFilePath=projects/fusion-native/src/app/app-config.ts --outputDir=dist/fusion-ui",
     "build-native-frameworks-old": "schematics ./projects/fusion-schematics/collection.json:fusion-frameworks-old --debug=false --force --componentsFilePath=projects/fusion-native/src/app/app-config.ts --outputDir=dist/fusion-ui/native",
     "build-native-content": "schematics ./projects/fusion-schematics/collection.json:fusion-native --debug=false --force --outputDir=dist/fusion-ui/native",

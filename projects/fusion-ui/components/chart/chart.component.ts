@@ -370,7 +370,7 @@ export class ChartComponent extends FusionBase implements OnInit, OnDestroy, OnC
         if (Array.isArray(this.chartData.datasets) && this.chartData.datasets.length !== 0 && this.chartData.datasets[0].data.length > 50) {
             options.elements.point.pointRadius = 0;
         } else {
-            options.elements.point.pointRadius = this.selectedVersion$.getValue() === 2 ? 3 : 2;
+            options.elements.point.pointRadius = this.selectedVersion === 2 ? 3 : 2;
         }
         this.calcYAxes(options.scales.y);
         if (this.isStacked) {
@@ -488,7 +488,7 @@ export class ChartComponent extends FusionBase implements OnInit, OnDestroy, OnC
                 case 'shortString':
                     retVal = !!value
                         ? this.numberToStringPipe.transform(value, {
-                              noSeparateBySpace: this.selectedVersion$.getValue() === StyleVersion.V2
+                              noSeparateBySpace: this.selectedVersion === StyleVersion.V2
                           })
                         : value;
                     break;

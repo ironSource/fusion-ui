@@ -1,6 +1,6 @@
 @import '../../src/style/scss/v1/vars/vars';
-@import '../../src/style/scss/mixins/mixins';
-@import '../../src/style/scss/mixins/breakpoints';
+@import '../../src/style/scss/v1/mixins/mixins';
+@import '../../src/style/scss/v1/mixins/breakpoints';
 
 :host.fu-style-v1 {
   @extend %reset;
