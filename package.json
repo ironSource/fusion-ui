@@ -23,7 +23,7 @@
     "styles": "ts-node -P css-bundle/tsconfig.styles.bundle.json css-bundle",
     "build-styles": "npm run styles && sass dist/fusion-ui/fusion.theme.scss dist/fusion-ui/fusion.theme.css -s compressed && npm run copy-sass-vars && npm run copy-sass-mixins && npm run move-grid-sass && npm run copy-css-fonts-v1 && npm run copy-css-fonts-v2",
     "copy-sass-vars": "mkdir -p dist/fusion-ui/style && cp -R projects/fusion-ui/src/style/scss/v1/vars dist/fusion-ui/style/v1 && cp -R projects/fusion-ui/src/style/scss/v2/vars dist/fusion-ui/style/v2",
-    "copy-sass-mixins": "cp -R projects/fusion-ui/src/style/scss/v1/mixins dist/fusion-ui/style/v1 && cp -R projects/fusion-ui/src/style/scss/v2/mixins dist/fusion-ui/style/v2",
+    "copy-sass-mixins": "cp -R projects/fusion-ui/src/style/scss/mixins dist/fusion-ui/style",
     "move-grid-sass": "cp -R projects/fusion-ui/src/style/scss/v2/grid.scss dist/fusion-ui/style/v2/grid.scss && sass dist/fusion-ui/style/v2/grid.scss dist/fusion-ui/style/v2/grid.css -s compressed && cp -R projects/fusion-ui/src/style/scss/v2/grid.scss dist/fusion-ui/style/v2/grid.scss && sass dist/fusion-ui/style/v2/grid.scss dist/fusion-ui/style/v2/grid.css -s compressed",
     "copy-css-fonts-v1": "sass projects/fusion-ui/src/style/scss/v1/fonts.scss > dist/fusion-ui/style/v1/fonts.css -s compressed",
     "copy-css-fonts-v2": "sass projects/fusion-ui/src/style/scss/v2/fonts.scss dist/fusion-ui/style/v2/fonts.css -s compressed",
