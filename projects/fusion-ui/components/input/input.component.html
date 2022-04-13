@@ -1,105 +1,146 @@
-<ng-container *ngIf="selectedVersion$ | async as selectedVersion" [ngSwitch]="selectedVersion">
+<div [class.fu-input-small]="isSmall" class="fu-input-holder"
+     [ngClass]="getHolderClasses()"
+     [style.width]="config.options?.width"
+     *ngIf="selectedVersion$ | async as selectedVersion">
 
-    <ng-container *ngSwitchCase="1">
-        <fusion-input-v1 [loading]="loading"
-                         [configuration]="config"
-                         [placeholder]="config?.placeholder"
-                         [errorType]="config?.errorType"
-                         [name]="config?.name"
-                         [icon]="config?.icon"
-                         [units]="config?.units"
-                         [unitPos]="config?.unitPos"
-                         [unitPlaceholder]="config?.unitPlaceholder"
-                         [btn]="config?.btn"
-                         [btnDisabled]="config?.btnDisabled"
-                         [btnLoading]="config?.btnLoading"
-                         [id]="config?.id"
-                         [type]="config?.type"
-                         [class]="config?.class"
-                         [decimal]="config?.decimal"
-                         [clear]="config?.clear"
-                         [readonly]="config?.readonly"
-                         [required]="config?.required"
-                         [showSearchIcon]="config?.showSearchIcon"
-                         [showSearchIconWhenHasInputValue]="config?.showSearchIconWhenHasInputValue"
-                         [min]="config?.min"
-                         [max]="config?.max"
-                         [maxlength]="config?.maxlength"
-                         [sanitationRegex]="config?.sanitationRegex"
-                         [acceptFileExtensions]="config?.acceptFileExtensions"
-                         [disableWheelScroll]="config?.disableWheelScroll"
-                         [options]="config?.options"
-                         [isDisabled]="config?.disabled"
-                         [error]="config?.error"></fusion-input-v1>
-    </ng-container>
+    <ng-container *ngIf="configByStyle$ | async as configByStyle">
+       <ng-container *ngIf="selectedVersion !== 3">
+           <div class="fu-search-icon-holder"
+                *ngIf="displaySearchIcon && !loading"
+                [class.focused]="focused">
+               <fusion-icon class="icon-search" [name]="configByStyle.iconSearch"></fusion-icon>
+           </div>
 
-    <ng-container *ngSwitchCase="2">
-        <fusion-input-v2 [loading]="loading"
-                         [configuration]="config"
-                         [placeholder]="config?.placeholder"
-                         [errorType]="config?.errorType"
-                         [name]="config?.name"
-                         [icon]="config?.icon"
-                         [units]="config?.units"
-                         [unitPos]="config?.unitPos"
-                         [unitPlaceholder]="config?.unitPlaceholder"
-                         [btn]="config?.btn"
-                         [btnDisabled]="config?.btnDisabled"
-                         [btnLoading]="config?.btnLoading"
-                         [id]="config?.id"
-                         [type]="config?.type"
-                         [class]="config?.class"
-                         [decimal]="config?.decimal"
-                         [clear]="config?.clear"
-                         [readonly]="config?.readonly"
-                         [required]="config?.required"
-                         [showSearchIcon]="config?.showSearchIcon"
-                         [showSearchIconWhenHasInputValue]="config?.showSearchIconWhenHasInputValue"
-                         [min]="config?.min"
-                         [max]="config?.max"
-                         [maxlength]="config?.maxlength"
-                         [sanitationRegex]="config?.sanitationRegex"
-                         [acceptFileExtensions]="config?.acceptFileExtensions"
-                         [disableWheelScroll]="config?.disableWheelScroll"
-                         [options]="config?.options"
-                         [isDisabled]="config?.disabled"
-                         [error]="config?.error"></fusion-input-v2>
-    </ng-container>
+           <label class="fu-clear-input"
+                  [for]="'fu-clear-search-' + config?.id"
+                  [hidden]="!config?.clear || !input.value"
+                  [class.focused]="focused"
+                  (click)="clearInput(true)">
+               <fusion-icon class="icon-clear-search"
+                            [id]="'fu-clear-search-' + config?.id"
+                            [name]="configByStyle.iconClear">
+               </fusion-icon>
+           </label>
+       </ng-container>
 
-    <ng-container *ngSwitchCase="3">
-        <fusion-input-v3
-            [loading]="loading"
-            [configuration]="config"
-            [placeholder]="config?.placeholder"
-            [errorType]="config?.errorType"
-            [name]="config?.name"
-            [icon]="config?.icon"
-            [units]="config?.units"
-            [unitPos]="config?.unitPos"
-            [unitPlaceholder]="config?.unitPlaceholder"
-            [btn]="config?.btn"
-            [btnDisabled]="config?.btnDisabled"
-            [btnLoading]="config?.btnLoading"
-            [id]="config?.id"
-            [type]="config?.type"
-            [class]="config?.class"
-            [decimal]="config?.decimal"
-            [clear]="config?.clear"
-            [readonly]="config?.readonly"
-            [required]="config?.required"
-            [showSearchIcon]="config?.showSearchIcon"
-            [showSearchIconWhenHasInputValue]="config?.showSearchIconWhenHasInputValue"
-            [min]="config?.min"
-            [max]="config?.max"
-            [maxlength]="config?.maxlength"
-            [sanitationRegex]="config?.sanitationRegex"
-            [acceptFileExtensions]="config?.acceptFileExtensions"
-            [disableWheelScroll]="config?.disableWheelScroll"
-            [options]="config?.options"
-            [isDisabled]="config?.disabled"
-            [error]="config?.error"
-        ></fusion-input-v3>
-    </ng-container>
+        <i class="fu-input-icon {{ config?.icon?.iconPos || config?.icon?.[0]?.iconPos }}"
+           *ngIf="config?.icon && !loading && !config?.errorType"
+           [class.has-units]="config?.units"
+           [ngStyle]="config.options?.iconStyle">
+            <fusion-icon [name]="config?.icon?.iconData || config?.icon?.[0]?.iconData"></fusion-icon>
+        </i>
 
-</ng-container>
+            <ng-container *ngIf="selectedVersion === 3 && config?.icon?.[1]?.iconData">
+                <i class="fu-input-second-icon {{ config?.icon?.[1]?.iconPos }}"
+                   *ngIf="config?.icon && !loading && !config?.errorType"
+                   [class.has-units]="config?.units"
+                   [ngStyle]="config.options?.iconStyle">
+                    <fusion-icon [name]="config?.icon?.[1]?.iconData"></fusion-icon>
+                </i>
+            </ng-container>
+
+            <ng-container *ngIf="selectedVersion !== 3">
+                <i class="fu-input-icon loading {{ this.config?.icon?.iconPos || 'right' }}"
+                   *ngIf="loading"
+                   [class.has-units]="config?.units">
+                    <fusion-icon [name]="configByStyle.iconLoader"></fusion-icon>
+                </i>
+                <span class="fu-input-units {{ config?.unitPos }} {{ config.options?.size }}"
+                      *ngIf="config?.units"
+                      [class.focused]="focused"
+                      [class.fu-error]="config.error"
+                      [class.is-placeholder-units]="config?.unitPlaceholder && !inputControl.value">
+                        {{ config?.units }}
+                </span>
+            </ng-container>
+
+
+            <input #input
+                   [class.fu-input-small]="isSmall"
+                   class="fu-input {{ config?.class }} {{ config?.icon?.iconPos || config?.icon?.[0]?.iconPos }}"
+                   autocomplete="off"
+                   minlength="1"
+                   [class.fu-type-pass]="config?.type === 'password'"
+                   [class.has-units]="config?.units"
+                   [class.disabled]="disabled$ | async"
+                   [class.iconed]="config?.icon || loading"
+                   [class.fu-button]="config?.btn"
+                   [class.has-clear-btn]="config?.clear"
+                   [class.fu-error]="showErrorClass$ | async"
+                   [id]="config?.id"
+                   [type]="getInputType()"
+                   [placeholder]="config?.placeholder"
+                   [readonly]="config?.readonly || (disabled$ | async) || (loading && config?.disableOnLoading) || config?.btnLoading"
+                   [required]="config?.required"
+                   [attr.maxlength]="config?.maxlength"
+                   [min]="config?.min"
+                   [max]="config?.max"
+                   [step]="step"
+                   [formControl]="inputControl"
+                   [ngStyle]="config.options?.style"
+                   [attr.autofocus]="config?.autofocus"
+                   (focus)="focus()"
+                   (blur)="blur()"
+            />
+
+            <ng-container *ngIf="selectedVersion !== 3">
+                <button *ngIf="config?.btn"
+                        [disabled]="config?.btnDisabled"
+                        (click)="onButtonClicked($event)"
+                        [class.is-loading]="config?.btnLoading"
+                        [class.fu-error]="config?.error">
+
+                    <ng-container [ngTemplateOutlet]="configByStyle.currentStyleVersion === styleVersion.V1 ? V1 : V2"
+                                  [ngTemplateOutletContext]="{iconName:configByStyle.iconLoader}">
+                    </ng-container>
+
+                    <span class="fu-action-button-text">{{ config?.btn }}</span>
+                </button>
+            </ng-container>
+
+            <i class="fu-validation-icon-holder"
+               *ngIf="config?.errorType && showErrorIcon() && !loading"
+               [fusionTooltip]="getTooltipErrorsMessage()">
+                <fusion-icon class="icon-validation"
+                             [name]="getErrorIcon(config?.errorType, configByStyle.iconInfo, configByStyle.iconWarning)">
+                </fusion-icon>
+            </i>
+
+            <i class="fu-toggle-pass"
+               *ngIf="config?.type === 'password'"
+               (click)="passToggle($event)"
+               (mousedown)="onPassToggleMouseDown($event)">
+                <fusion-icon [name]="config.options?.isPassHidden ? {iconName:'eye', iconVersion: 'v2'} : {iconName: 'eye-slash',iconVersion: 'v2'}"></fusion-icon>
+            </i>
+
+        </ng-container>
+
+        <input *ngIf="config.type === 'file'"
+               hidden
+               value=""
+               type="file"
+               #fileInput
+               [formControl]="file"
+               [accept]="config?.acceptFileExtensions" />
+</div>
+
+<div class="fu-error-msg"
+     *ngIf="config.error && config.error !== true"
+     [hidden]="config?.errorType && showErrorIcon()"
+     [class.focused]="focused"
+     [innerHTML]="config.error">
+</div>
+
+<ng-template #V1
+             let-iconName="iconName">
+    <fusion-icon [name]="iconName"></fusion-icon>
+</ng-template>
+
+<ng-template #V2>
+    <fusion-loader-inline [status]="config?.btnLoading"></fusion-loader-inline>
+    <fusion-icon *ngIf="config.options?.buttonIcon"
+                 class="button-icon"
+                 [name]="config.options?.buttonIcon">
+    </fusion-icon>
+</ng-template>
 

@@ -1,6 +1,6 @@
-@import '../../../src/style/scss/vars/vars';
-@import '../../../src/style/scss/vars/border';
-@import '../../../src/style/scss/vars/mixins';
+@import '../../src/style/scss/vars/vars';
+@import '../../src/style/scss/vars/border';
+@import '../../src/style/scss/vars/mixins';
 
 $errBorderColor: $negative-200;
 $errTextColor: $negative-500;
@@ -39,7 +39,7 @@ $smallPadding: 4px 6px;
       right: 5px;
     }
     .fu-input-units {
-      padding: 4px 5px 4px 10px;
+      padding: 0 5px 0 10px;
       @extend %border;
       align-items: center;
       justify-content: center;

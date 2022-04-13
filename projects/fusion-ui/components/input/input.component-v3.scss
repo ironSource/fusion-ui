@@ -1,4 +1,4 @@
-@import '../../../src/style/scss/vars/mixins';
+@import '../../src/style/scss/vars/mixins';
 
 // Fonts
 $helveticaNueMd: 'HelveticaNeue-Medium', helvetica, sans-serif;
@@ -84,7 +84,7 @@ $fu-negative-700: #DA564F;
 $fu-neutral-100: #fff8e2;
 $fu-neutral-500: #ffb424;
 
-:host {
+:host.fusion-style-v3 {
     .fu-input-holder {
         position: relative;
         display: flex;
