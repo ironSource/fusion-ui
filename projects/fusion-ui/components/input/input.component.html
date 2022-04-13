@@ -1,7 +1,7 @@
 <ng-container *ngIf="selectedVersion$ | async as selectedVersion" [ngSwitch]="selectedVersion">
 
     <ng-container *ngSwitchCase="1">
-        <fusion-input-v1 [loading]="loading"
+        <div fusion-input-v1 [loading]="loading"
                          [configuration]="config"
                          [placeholder]="config?.placeholder"
                          [errorType]="config?.errorType"
@@ -30,11 +30,11 @@
                          [disableWheelScroll]="config?.disableWheelScroll"
                          [options]="config?.options"
                          [isDisabled]="config?.disabled"
-                         [error]="config?.error"></fusion-input-v1>
+                      [error]="config?.error"></div>
     </ng-container>
 
     <ng-container *ngSwitchCase="2">
-        <fusion-input-v2 [loading]="loading"
+        <div fusion-input-v2 [loading]="loading"
                          [configuration]="config"
                          [placeholder]="config?.placeholder"
                          [errorType]="config?.errorType"
@@ -63,11 +63,11 @@
                          [disableWheelScroll]="config?.disableWheelScroll"
                          [options]="config?.options"
                          [isDisabled]="config?.disabled"
-                         [error]="config?.error"></fusion-input-v2>
+                      [error]="config?.error"></div>
     </ng-container>
 
     <ng-container *ngSwitchCase="3">
-        <fusion-input-v3
+        <div fusion-input-v3
             [loading]="loading"
             [configuration]="config"
             [placeholder]="config?.placeholder"
@@ -98,7 +98,7 @@
             [options]="config?.options"
             [isDisabled]="config?.disabled"
             [error]="config?.error"
-        ></fusion-input-v3>
+        ></div>
     </ng-container>
 
 </ng-container>

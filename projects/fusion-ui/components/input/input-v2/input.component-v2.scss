@@ -30,7 +30,7 @@ $smallV2Padding: 8px 10px;
     }
 }
 
-:host.fusion-style-v2 {
+:host {
     @extend %reset;
     .fu-input-holder {
         display: inline-flex;
@@ -434,7 +434,7 @@ $smallV2Padding: 8px 10px;
     }
 }
 
-:host-context(fusion-input-inline).fusion-style-v2{
+:host-context(fusion-input-inline):not(.fusion-style-v1){
     .fu-input-holder{
         position: relative;
         margin-left: -8px;
@@ -477,14 +477,14 @@ $smallV2Padding: 8px 10px;
         }
     }
 }
-:host-context(.is-row-height-small).fusion-style-v2{
+:host-context(.is-row-height-small):not(.fusion-style-v1){
     .fu-input-holder{
         input.fu-input-small{
             height: 30px;
         }
     }
 }
-:host-context(.is-tags-holder).fusion-style-v2{
+:host-context(.is-tags-holder):not(.fusion-style-v1){
     .fu-input-holder{
         .fu-input {
             border: none;
@@ -500,7 +500,7 @@ $smallV2Padding: 8px 10px;
     }
 }
 
-:host-context(.is-dropdown-select.forced-placeholder .fu-input-icon).fusion-style-v2{
+:host-context(.is-dropdown-select.forced-placeholder .fu-input-icon):not(.fusion-style-v1){
     .fu-input-holder {
         input.fu-input {
             padding-left: 26px;

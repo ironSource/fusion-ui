@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, Component, ElementRef, forwardRef, ViewChild} f
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 
 @Component({
-    selector: 'fusion-input-v1',
+    selector: '[fusion-input-v1]',
     templateUrl: './input-v1.component.html',
     styleUrls: ['./input.component-v1.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
