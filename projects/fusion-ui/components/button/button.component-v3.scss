@@ -79,7 +79,7 @@ $fu-negative-600: #EC5D56;
 $fu-negative-700: #DA564F;
 
 
-:host {
+:host.fusion-style-v3 {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -97,7 +97,7 @@ $fu-negative-700: #DA564F;
     border-radius: $buttonBorderRadius;
 
     &.dark {
-        --fu-border: 1px solid #ffff;
+        --fu-border-color: #ffff;
         --fu-background-color: transparent;
         --fu-font-color: #ffff;
         --fu-hover-background-color: #565C62;
@@ -177,7 +177,7 @@ $fu-negative-700: #DA564F;
 
         &.black{
             color: var(--fu-font-color, $fu-black-500);
-            border: var(--fu-border, 1px solid $fu-black-500);
+            border-color: var(--fu-border-color, $fu-black-500);
             background-color: var(--fu-background-color, transparent);
             &:hover {
                 color: var(--fu-font-color, $White);
@@ -224,6 +224,11 @@ $fu-negative-700: #DA564F;
 
         &:active {
             background-color: var(--fu-active-background-color,$fu-black-500);
+        }
+
+        &.dark {
+            border: 1px solid;
+            border-color: var(--fu-border-color, $fu-black-500);
         }
     }
 
