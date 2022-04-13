@@ -21,11 +21,11 @@ mkdir -p dist/fusion-ui/style
 # copy vars by style version
 echo  -e "${GREEN}-- copy vars by style version ${NOCOLOR}"
 mkdir -p dist/fusion-ui/style/v1/vars
-cp -R projects/fusion-ui/src/style/scss/v1/vars dist/fusion-ui/style/v1/vars
+cp -R projects/fusion-ui/src/style/scss/v1/vars dist/fusion-ui/style/v1/
 mkdir -p dist/fusion-ui/style/v2/vars
-cp -R projects/fusion-ui/src/style/scss/v2/vars dist/fusion-ui/style/v2/vars
+cp -R projects/fusion-ui/src/style/scss/v2/vars dist/fusion-ui/style/v2/
 mkdir -p dist/fusion-ui/style/v3/vars
-cp -R projects/fusion-ui/src/style/scss/v3/vars dist/fusion-ui/style/v3/vars
+cp -R projects/fusion-ui/src/style/scss/v3/vars dist/fusion-ui/style/v3/
 
 # copy mixins by style version
 echo  -e "${GREEN}-- copy mixins by style version ${NOCOLOR}"

@@ -11,7 +11,7 @@ All notable changes to this project will be documented in this file. See [standa
 Rebuild wirk with style versions.
 Now default style version it v3 for using v2 or v1 need in root css add css variable  
 ```--fu-style-version: 2 ``` for using v2. It will add to each fusion-component class ```fu-style-v2``` 
-In dist style folder has folder for each style version. And compiled fonts.css and grid.css from v3 ad a default 
+In dist style folder has folder for each style version. And compiled fonts.css and grid.css from v3 ad a default. 
 
 
 ## [2.0.0](https://github.com/ironSource/fusion-ui/compare/v2.0.0-rc.2...v2.0.0) (2022-04-10)
