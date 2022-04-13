@@ -10,11 +10,17 @@ All notable changes to this project will be documented in this file. See [standa
 
 Rebuild working with style versions.
 
-In native applications:
-- instead using class "fusion-style-v1" in <body> tag you need to use CSS variable "--fu-style-version: 1" in :root{}. Here "1" it a style version number. Currently, we have 3 style versions
+In React, Vue.js & VanillaJS applications:
+- instead using class "fusion-style-v1" in <body> tag you need to use CSS variable "--fu-style-version: 1" in root. for example 
+    ```
+    :root { --fu-style-version: 1 }
+    ```
 
 In angular application:
-- don't need using "STYLE_VERSION_TOKEN" in app.module.ts  you need to use CSS variable "--fu-style-version: 1" in app.component.scss. Here "1" it style version number. Currently, we have 3 style versions.
+- instead of using `STYLE_VERSION_TOKEN` injection token in app.module.ts, you need to use CSS variable "--fu-style-version: 1" in app.component.scss.  for example 
+    ```
+    :root { --fu-style-version: 1 }
+    ```
 
 In case the CSS variable is don't set, will be used last style version #3.
 In case you want to use mixed styles. For example main application style #3, but some components with style #2, you will need add CSS variable "--fu-style-version: 2" to this component.
