@@ -6,7 +6,6 @@ npm run build:fusion-ui
 
 # build native project
 npm run build:fusion-native -- -c "$ENV"
-npm run build-styles-native
 
 npm run build-native-frameworks
 npm run build-native-frameworks-old
