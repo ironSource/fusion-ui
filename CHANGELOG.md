@@ -23,7 +23,9 @@ In angular application:
     ```
 
 In case the CSS variable is don't set, will be used last style version #3.
-In case you want to use mixed styles. For example main application style #3, but some components with style #2, you will need add CSS variable "--fu-style-version: 2" to this component.
+
+Now fusion-ui support mixed styles.
+For example if main application use style #3, but some components will need use with style #2, you will need add CSS variable "--fu-style-version: 2" to this component or component's holder.
 
 
 ## [2.0.0](https://github.com/ironSource/fusion-ui/compare/v2.0.0-rc.2...v2.0.0) (2022-04-10)
