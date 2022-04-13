@@ -16,7 +16,7 @@ import {IconData} from '@ironsource/fusion-ui/components';
 @Component({
     selector: 'fusion-button,[fusion-button]',
     templateUrl: './button.component.html',
-    styleUrls: ['./button.component.scss', './button.component-v2.scss', './button.component-v3.scss'],
+    styleUrls: ['./button.component-v1.scss', './button.component-v2.scss', './button.component-v3.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ButtonComponent extends StyleBase implements OnInit {
@@ -48,10 +48,6 @@ export class ButtonComponent extends StyleBase implements OnInit {
     isLink: boolean;
     iconName: string;
     iconData: string | IconData;
-    loadingIcon: {[key: number]: string | IconData} = {
-        1: {iconName: 'loading', iconVersion: 'v1'},
-        2: {iconName: 'loader-dots-v4', iconVersion: 'v2'}
-    };
 
     private isDisabled: boolean;
 

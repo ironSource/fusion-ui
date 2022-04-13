@@ -1,16 +1,34 @@
 <span [ngClass]="{'is-icon-text': iconName && projectContent}">
     <fusion-icon *ngIf="iconName && !isLoading" class="icon" [name]="iconData"></fusion-icon>
     <ng-container *ngIf="selectedVersion$ | async as selectedVersion">
-<!--        <fusion-icon-->
-<!--            *ngIf="isLoading && selectedVersion !== 3"-->
-<!--            class="icon-loading"-->
-<!--            [name]="loadingIcon[selectedVersion]"-->
-<!--        ></fusion-icon>-->
-        <fusion-icon
-            *ngIf="isLoading && selectedVersion === 2"
-            class="icon-loading"
-            [name]="!projectContent ? 'loading-clean' : loadingIcon[2]"
-        ></fusion-icon>
+        <ng-container [ngSwitch]="selectedVersion">
+            <ng-container *ngSwitchCase="1" [ngTemplateOutlet]="V1" [ngTemplateOutletContext]="{isLoading: isLoading}"></ng-container>
+            <ng-container *ngSwitchCase="2" [ngTemplateOutlet]="V2" [ngTemplateOutletContext]="{isLoading: isLoading}"></ng-container>
+            <ng-container *ngSwitchCase="3" [ngTemplateOutlet]="V3" [ngTemplateOutletContext]="{isLoading: isLoading, projectContent: projectContent}"></ng-container>
+        </ng-container>
     </ng-container>
     <span><ng-content></ng-content></span>
 </span>
+
+
+<ng-template #V1 let-loading="isLoading">
+    <fusion-icon
+        *ngIf="loading"
+        class="icon-loading"
+        [name]="{iconName: 'loading', iconVersion: 'v1'}"
+    ></fusion-icon>
+</ng-template>
+<ng-template #V2 let-loading="isLoading">
+    <fusion-icon
+        *ngIf="loading"
+        class="icon-loading"
+        [name]="{iconName: 'loader-dots-v4', iconVersion: 'v2'}"
+    ></fusion-icon>
+</ng-template>
+<ng-template #V3 let-loading="isLoading" let-isContent="projectContent">
+    <fusion-icon
+        *ngIf="loading"
+        class="icon-loading"
+        [name]="!isContent ? 'loading-clean' : {iconName: 'loader-dots-v4', iconVersion: 'v2'}"
+    ></fusion-icon>
+</ng-template>
