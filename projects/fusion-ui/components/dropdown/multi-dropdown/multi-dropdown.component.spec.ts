@@ -132,12 +132,13 @@ describe('MultiDropdownComponent', () => {
 
         expect(bottomActionEl.nativeElement.querySelector('button').outerHTML).toContain('fusion-button=""');
         expect(bottomActionEl.nativeElement.querySelector('button').textContent.trim()).toContain('Cancel');
-        console.log(bottomActionEl.nativeElement.querySelectorAll('button')[1].outerHTML);
-        expect(bottomActionEl.nativeElement.querySelectorAll('button')[1].outerHTML.trim()).toContain(
-            'class="primary small fu-with-content transparent fu-style-v2'
-        );
+        const buttonClasses = bottomActionEl.nativeElement.querySelectorAll('button')[1].classList;
+
+        expect(buttonClasses.contains('primary')).toBeTruthy();
+        expect(buttonClasses.contains('small')).toBeTruthy();
+
         expect(bottomActionEl.nativeElement.querySelectorAll('button')[1].outerHTML).toContain('fusion-button=""');
-        expect(bottomActionEl.nativeElement.querySelectorAll('button')[1].innerText).toContain('Apply');
+        expect(bottomActionEl.nativeElement.querySelectorAll('button')[1].textContent.trim()).toContain('Apply');
     });
 
     it('Should be opened by click', () => {
