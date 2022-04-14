@@ -152,12 +152,20 @@ const routes: Routes = [
                 loadChildren: () => import('./typography-docs-v2/typography-docs-v2.module').then(m => m.TypographyDocsV2Module)
             },
             {
+                path: 'v3/typography',
+                loadChildren: () => import('./typography-docs-v3/typography-docs-v3.module').then(m => m.TypographyDocsV3Module)
+            },
+            {
                 path: 'colors',
                 loadChildren: () => import('./colors-docs/colors-docs.module').then(m => m.ColorsDocsModule)
             },
             {
                 path: 'v2/colors',
                 loadChildren: () => import('./colors-docs-v2/colors-docs-v2.module').then(m => m.ColorsDocsV2Module)
+            },
+            {
+                path: 'v3/colors',
+                loadChildren: () => import('./colors-docs-v3/colors-docs-v3.module').then(m => m.ColorsDocsV3Module)
             },
             {
                 path: 'video-player',
@@ -190,10 +198,6 @@ const routes: Routes = [
             {
                 path: 'daterange',
                 loadChildren: () => import('./daterange-docs/daterange-docs.module').then(m => m.DaterangeDocsModule)
-            },
-            {
-                path: 'override-style',
-                loadChildren: () => import('./override-style-docs/override-style-docs.module').then(m => m.OverrideStyleDocsModule)
             },
             {
                 path: 'mobile-previewer',

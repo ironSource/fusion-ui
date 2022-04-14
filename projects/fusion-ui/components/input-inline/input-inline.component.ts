@@ -23,8 +23,7 @@ import {InlineInputType} from './inline-input-type.enum';
 import {CurrencyPipe} from '@angular/common';
 import {takeUntil, map} from 'rxjs/operators';
 import {AdvancedInputInline} from './advanced-input-inline';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
-import {StyleVersion} from '@ironsource/fusion-ui/services/version';
+import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {CONFIG_INPUT_INLINE_BY_UI_STYLE, InputInlineConfigByStyle} from './input-inline.config';
 import {CurrencyPipeParameters} from './input-inline.config';
 
@@ -41,7 +40,7 @@ import {CurrencyPipeParameters} from './input-inline.config';
         }
     ]
 })
-export class InputInlineComponent extends StyleBase implements ControlValueAccessor, OnInit, OnChanges, OnDestroy {
+export class InputInlineComponent extends FusionBase implements ControlValueAccessor, OnInit, OnChanges, OnDestroy {
     @ViewChild('inputComponent') inputComponent: InputComponent;
     @Input() textClass: string;
     @Input() type: InlineInputType = InlineInputType.Text;

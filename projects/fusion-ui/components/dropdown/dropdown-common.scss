@@ -1,6 +1,6 @@
-@import '../../src/style/scss/vars/vars';
-@import '../../src/style/scss/vars/border';
-@import '../../src/style/scss/vars/mixins';
+@import '../../src/style/scss/v1/vars/vars';
+@import '../../src/style/scss/v1/vars/border';
+@import '../../src/style/scss/v1/mixins/mixins';
 
 $minWidth: 85px;
 $maxWidth: 550px;
@@ -22,7 +22,7 @@ $optionsHeight: 204px;
     }
 }
 
-:host.fusion-style-v1 {
+:host.fu-style-v1 {
     @extend %reset;
     @extend %list-reset;
     min-width: $minWidth;
@@ -151,7 +151,7 @@ $optionsHeight: 204px;
                 margin-left: 2px;
             }
             a.button-clear{
-                color: var(--tags-input-footer-color-button-color, $fu-light-900);
+                color: var(--tags-input-footer-color-button-color, $light-900);
                 text-decoration: underline;
                 text-align: initial;
                 padding: initial;

@@ -1,12 +1,13 @@
-@import '../../src/style/scss/vars/mixins';
-@import '../../src/style/scss/vars/vars';
-@import '../../src/style/scss/vars/border';
+@import '../../src/style/scss/v2/mixins/mixins';
+@import '../../src/style/scss/v2/vars/vars';
+@import '../../src/style/scss/v2/vars/border';
 
 $iconsWidth: 46px;
 $optionHeight: 32px;
 $optionLargerHeight: 40px;
 
-:host:not(.fusion-style-v1) {
+:host.fu-style-v3,
+:host.fu-style-v2 {
     @extend %reset;
     height: 100%;
     width: 100%;
@@ -17,7 +18,7 @@ $optionLargerHeight: 40px;
         overflow-x: hidden;
         height: 100%;
         display: block;
-        @extend %customScroll-V2;
+        @extend %customScroll;
         .option {
             height: $optionHeight;
             border-bottom: 1px solid $fu-light-300;
@@ -60,7 +61,7 @@ $optionLargerHeight: 40px;
                 overflow-y: scroll;
                 overflow-x: hidden;
                 height: 100%;
-                @extend %customScroll-V2;
+                @extend %customScroll;
                 li {
                     margin-right: -10px;
                     .removeIcon {

@@ -9,7 +9,6 @@ import {
     Injector,
     Input,
     OnChanges,
-    OnDestroy,
     OnInit,
     Renderer2,
     ViewContainerRef
@@ -17,10 +16,9 @@ import {
 import {DropdownService} from '../dropdown.service';
 import {DropdownOption} from '../entities/dropdown-option';
 import {BehaviorSubject} from 'rxjs';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {takeUntil} from 'rxjs/operators';
-import {StyleVersion} from '@ironsource/fusion-ui/services/version';
-import {IconData} from '@ironsource/fusion-ui';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Directive({
     selector: '[fusionDropdownOption]'
@@ -75,7 +73,7 @@ export class DropdownOptionDirective implements OnInit, OnChanges {
     styleUrls: ['./dropdown-option.component.scss', './dropdown-option.component-v2.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DropdownOptionComponent extends StyleBase implements OnInit, OnDestroy {
+export class DropdownOptionComponent extends FusionBase implements OnInit {
     @Input() option: DropdownOption;
     @Input() mappingOptions: any;
     @Input() dropdownType: '' | 'multi' | 'tags';
@@ -121,9 +119,5 @@ export class DropdownOptionComponent extends StyleBase implements OnInit, OnDest
                     : {iconName: 'arrow-dropdown', iconVersion: 'v1'};
             this.dropdownArrowIconName$.next(dropdownArrowIcon);
         });
-    }
-
-    ngOnDestroy(): void {
-        super.ngOnDestroy();
     }
 }

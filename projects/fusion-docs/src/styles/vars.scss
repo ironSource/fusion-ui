@@ -1,8 +1,18 @@
-@import '../../../fusion-ui/src/style/scss/vars/vars';
-@import '../../../fusion-ui/src/style/scss/vars/mixins';
-@import '../../../fusion-ui/src/style/scss/vars/border';
+@import '../../../fusion-ui/src/style/scss/v1/vars/vars';
+@import '../../../fusion-ui/src/style/scss/v1/mixins/mixins';
+@import '../../../fusion-ui/src/style/scss/v1/vars/border';
+@import '../../../fusion-ui/src/style/scss/v1/fonts';
+@import '../../../fusion-ui/src/style/scss/v1/grid';
+
+@import '../../../fusion-ui/src/style/scss/v2/vars/vars';
+@import '../../../fusion-ui/src/style/scss/v2/mixins/mixins';
+@import '../../../fusion-ui/src/style/scss/v2/vars/border';
+@import '../../../fusion-ui/src/style/scss/v2/fonts';
+@import '../../../fusion-ui/src/style/scss/v2/grid';
+// defaults from style v3
 @import '../../../fusion-ui/src/style/scss/fonts';
-@import '../../../fusion-ui/src/style/scss/fonts_v1';
-@import '../../../fusion-ui/src/style/scss/grid';
+@import '../../../fusion-ui/src/style/scss/colors';
 
-
+:root{
+    --fu-style-version: 2;
+}

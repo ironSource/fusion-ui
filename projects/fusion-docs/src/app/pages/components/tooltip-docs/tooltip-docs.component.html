@@ -1,5 +1,6 @@
 <div class="row">
-    <div class="col-9">
+    <ng-container *ngIf="(styleUpdating$ | async) === false; else inUpdate">
+        <div class="col-9">
         <!--UI-Component Examples-->
         <div class="is-example-title">Content</div>
 
@@ -471,8 +472,13 @@ interface ITooltipData {
             <fusion-table [columns]="customPropertiesTable.columns" [rows]="customPropertiesTable.rows"> </fusion-table>
         </fusion-example-block>
     </div>
+    </ng-container>
 
     <div class="col-3 is-right-side-menu-holder">
         <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
     </div>
 </div>
+
+<ng-template #inUpdate>
+    <div class="col-9"></div>
+</ng-template>

@@ -1,6 +1,6 @@
-@import '../../src/style/scss/vars/vars';
-@import '../../src/style/scss/vars/mixins';
-@import '../../src/style/scss/vars/border';
+@import '../../src/style/scss/v1/vars/vars';
+@import '../../src/style/scss/v1/mixins/mixins';
+@import '../../src/style/scss/v1/vars/border';
 
 $smallHeight: 25px;
 $smallMinWidth: 70px;
@@ -16,7 +16,7 @@ $largeMinWidth: 140px;
     overflow: hidden;
 }
 
-:host.fusion-style-v1 {
+:host.fu-style-v1 {
     @extend %reset;
     position: relative;
     display: inline-block;

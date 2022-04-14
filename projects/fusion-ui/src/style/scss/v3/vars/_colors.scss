@@ -1,0 +1,88 @@
+/* Colors V3 */
+$White: var(--fu-white, #ffffff);
+
+// region BLACK
+$fu-black-200: var(--fu-black-200, #696A6B);
+$fu-black-500: var(--fu-black-500, #53575B);
+$fu-black-900: var(--fu-black-900, #41454D);
+$fu-black: $fu-black-500;
+// endregion
+
+// region LIGHT
+$fu-light-50: var(--fu-light-50, #F7F8F9);
+$fu-light-100: var(--fu-light-100, #F1F3F4);
+$fu-light-200: var(--fu-light-200, #EDEFF0);
+$fu-light-300: var(--fu-light-300, #E5E7E9);
+$fu-light-400: var(--fu-light-400, #DDDFE1);
+$fu-light-500: var(--fu-light-500, #D2D5D8);
+$fu-light-600: var(--fu-light-600, #B7BBC0);
+$fu-light-700: var(--fu-light-700, #A9AFB4);
+$fu-light-800: var(--fu-light-800, #8E959D);
+$fu-light-900: var(--fu-light-900, #7B838C);
+$fu-light-1000: var(--fu-light-1000, #626970);
+$fu-light: $fu-light-500;
+// endregion
+
+// region PRIMARY
+$fu-primary-100: var(--fu-primary-100, #E2EEFF);
+$fu-primary-200: var(--fu-primary-200, #C9DFFF);
+$fu-primary-300: var(--fu-primary-300, #96C0FF);
+$fu-primary-400: var(--fu-primary-400, #68A5FF);
+$fu-primary-500: var(--fu-primary-500, #3083FF);
+$fu-primary-600: var(--fu-primary-600, #2B76E6);
+$fu-primary-700: var(--fu-primary-700, #005BE2);
+$fu-primary-800: var(--fu-primary-800, #0051C9);
+$fu-primary-900: var(--fu-primary-900, #0046AF);
+$fu-primary: $fu-primary-500;
+// endregion
+
+// region SECONDARY
+$fu-secondary-100: var(--fu-secondary-100, #E1FBFC);
+$fu-secondary-200: var(--fu-secondary-200, #BFF2F5);
+$fu-secondary-300: var(--fu-secondary-300, #91E2E7);
+$fu-secondary-500: var(--fu-secondary-500, #00CCD7);
+$fu-secondary: $fu-secondary-500;
+// endregion
+
+// region POSITIVE
+$fu-positive-100: var(--fu-positive-100, #DAF5EC);
+$fu-positive-200: var(--fu-positive-200, #B4E9D2);
+$fu-positive-300: var(--fu-positive-300, #78DDBC);
+$fu-positive-400: var(--fu-positive-400, #5CD6AD);
+$fu-positive-500: var(--fu-positive-500, #22C891);
+$fu-positive-600: var(--fu-positive-600, #1EB281);
+$fu-positive-700: var(--fu-positive-700, #1B9C71);
+$fu-positive: $fu-positive-500;
+// endregion
+
+// region NEUTRAL
+$fu-neutral-100: var(--fu-neutral-100, #FFF8E2);
+$fu-neutral-200: var(--fu-neutral-200, #FFE0A3);
+$fu-neutral-500: var(--fu-neutral-500, #FFB424);
+$fu-neutral-700: var(--fu-neutral-700, #FEA222);
+$fu-neutral-900: var(--fu-neutral-900, #D8840D);
+$fu-neutral: $fu-neutral-500;
+// endregion
+
+// region NEGATIVE
+$fu-negative-100: var(--fu-negative-100, #FFEFEE);
+$fu-negative-200: var(--fu-negative-200, #FFCBCE);
+$fu-negative-300: var(--fu-negative-300, #FF9B96);
+$fu-negative-400: var(--fu-negative-400, #FF827C);
+$fu-negative-500: var(--fu-negative-500, #FF6A63);
+$fu-negative-600: var(--fu-negative-600, #EC5D56);
+$fu-negative-700: var(--fu-negative-700, #DA564F);
+$fu-negative: $fu-negative-500;
+// endregion
+
+// region DARK
+$fu-dark-100: var(--fu-dark-100, #CFD0E8);
+$fu-dark-200: var(--fu-dark-200, #B6B9DD);
+$fu-dark-300: var(--fu-dark-300, #313D91);
+$fu-dark-400: var(--fu-dark-400, #212791);
+$fu-dark-500: var(--fu-dark-500, #0D148C);
+$fu-dark-600: var(--fu-dark-600, #021074);
+$fu-dark-700: var(--fu-dark-700, #1D1C64);
+$fu-dark-800: var(--fu-dark-800, #070A46);
+$fu-dark: $fu-dark-500;
+// endregion

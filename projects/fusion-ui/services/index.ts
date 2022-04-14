@@ -8,5 +8,4 @@ export * from './permissions';
 export * from './timezone';
 export * from './unique-id';
 export * from './user';
-export * from './version';
 export * from './window';

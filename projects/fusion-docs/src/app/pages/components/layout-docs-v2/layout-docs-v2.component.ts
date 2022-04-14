@@ -1,19 +1,13 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Observable, Subject} from 'rxjs';
-import {
-    LayoutComponentConfiguration,
-    LayoutUser,
-    SidebarMenuItem,
-    StyleVersion,
-    TableColumnTypeEnum,
-    VersionService
-} from '@ironsource/fusion-ui';
+import {LayoutComponentConfiguration, LayoutUser, SidebarMenuItem, StyleVersion, TableColumnTypeEnum} from '@ironsource/fusion-ui';
 import {takeUntil} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {LAYOUT_CONFIGURATION} from './layout-docs-v2.mocking';
 import {CSS_VARIABLES} from './layout-docs-v2.data';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
+import {VersionService} from '../../../services/version/version.service';
 
 @Component({
     selector: 'fusion-layout-docs-v2',

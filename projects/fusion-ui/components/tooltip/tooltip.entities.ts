@@ -1,5 +1,5 @@
 import {ElementRef} from '@angular/core';
-import {IconData} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 export enum TooltipPosition {
     Top = 0,

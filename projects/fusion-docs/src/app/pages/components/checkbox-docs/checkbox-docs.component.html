@@ -1,25 +1,26 @@
 <div class="row" *ngIf="selectedVersion$ | async as currentStyleVersion">
-    <div class="col-9">
-        <form [formGroup]="formCheckBoxes" novalidate>
-            <!--UI-Component Examples-->
+    <ng-container *ngIf="(styleUpdating$ | async) === false; else inUpdate">
+        <div class="col-9">
+            <form [formGroup]="formCheckBoxes" novalidate>
+                <!--UI-Component Examples-->
 
-            <div class="is-example-title">Basic</div>
+                <div class="is-example-title">Basic</div>
 
-            <fusion-example-block id="typeBasic" title="Basic">
-                <ng-template fusionExampleBlock="Angular">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<fusion-checkbox label="Checked A" [formControl]="checkboxControl"></fusion-checkbox>'
-                    >
-                    </fusion-code-block>
-                </ng-template>
+                <fusion-example-block id="typeBasic" title="Basic">
+                    <ng-template fusionExampleBlock="Angular">
+                        <fusion-code-block
+                            lang="html"
+                            class="is-collapsible"
+                            code='<fusion-checkbox label="Checked A" [formControl]="checkboxControl"></fusion-checkbox>'
+                        >
+                        </fusion-code-block>
+                    </ng-template>
 
-                <ng-template fusionExampleBlock="React">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='class App extends React.Component {
+                    <ng-template fusionExampleBlock="React">
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -42,24 +43,24 @@
 }
 
 export default App;'
-                    ></fusion-code-block>
-                </ng-template>
+                        ></fusion-code-block>
+                    </ng-template>
 
-                <ng-template fusionExampleBlock="Vue">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<template>
+                    <ng-template fusionExampleBlock="Vue">
+                        <fusion-code-block
+                            lang="html"
+                            class="is-collapsible"
+                            code='<template>
   <div id="app">
       <FusionCheckbox :config="checkbox"  @changed="e => handleChange(e, &#39;checkbox&#39;)" />
   </div>
 </template>'
-                    ></fusion-code-block>
+                        ></fusion-code-block>
 
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='<script>
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='<script>
 import {FusionCheckbox} from "@ironsource/fusion-ui/native/vue";
 
 export default {
@@ -82,14 +83,14 @@ export default {
   }
 }
 </script>'
-                    ></fusion-code-block>
-                </ng-template>
+                        ></fusion-code-block>
+                    </ng-template>
 
-                <ng-template fusionExampleBlock="Native">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='const checkbox = document.createElement("native-fusion-checkbox");
+                    <ng-template fusionExampleBlock="Native">
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='const checkbox = document.createElement("native-fusion-checkbox");
 checkbox.config = {
     label: "Checked A",
     controlValue: true
@@ -99,32 +100,32 @@ checkbox.setAttribute("name", "checkbox");
 checkbox.addEventListener("changed", $event => {
     console.log(">>", $event.detail); // $event.detail - new checkbox state (true / false)
 });'
-                    ></fusion-code-block>
-                </ng-template>
+                        ></fusion-code-block>
+                    </ng-template>
 
-                <div style="margin-bottom: 8px;">
-                    <fusion-checkbox
-                        [isIndeterminate]="checkboxControl.value"
-                        label="Multiple Choice"
-                        [formControl]="checkboxControl"
-                    ></fusion-checkbox>
-                </div>
-                <div style="margin-bottom: 8px;">
-                    <fusion-checkbox label="Selected" [formControl]="checkboxControl"></fusion-checkbox>
-                </div>
-                <div>
-                    <fusion-checkbox label="Inactive" [checked]="false"></fusion-checkbox>
-                </div>
-            </fusion-example-block>
+                    <div style="margin-bottom: 8px;">
+                        <fusion-checkbox
+                            [isIndeterminate]="checkboxControl.value"
+                            label="Multiple Choice"
+                            [formControl]="checkboxControl"
+                        ></fusion-checkbox>
+                    </div>
+                    <div style="margin-bottom: 8px;">
+                        <fusion-checkbox label="Selected" [formControl]="checkboxControl"></fusion-checkbox>
+                    </div>
+                    <div>
+                        <fusion-checkbox label="Inactive" [checked]="false"></fusion-checkbox>
+                    </div>
+                </fusion-example-block>
 
-            <div class="is-example-title">Type</div>
+                <div class="is-example-title">Type</div>
 
-            <fusion-example-block id="typeHorizontal" title="Horizontal" desc=" set by CSS on '<li>' tag">
-                <ng-template fusionExampleBlock="Angular">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<ul class="is-list-inline">
+                <fusion-example-block id="typeHorizontal" title="Horizontal" desc=" set by CSS on '<li>' tag">
+                    <ng-template fusionExampleBlock="Angular">
+                        <fusion-code-block
+                            lang="html"
+                            class="is-collapsible"
+                            code='<ul class="is-list-inline">
     <li class="is-item">
         <fusion-checkbox label="Checked A" [formControl]="firstCheckbox"></fusion-checkbox>
     </li>
@@ -132,11 +133,11 @@ checkbox.addEventListener("changed", $event => {
         <fusion-checkbox label="Checked B" [formControl]="secondCheckbox"></fusion-checkbox>
     </li>
 </ul>'
-                    ></fusion-code-block>
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code="// define public:
+                        ></fusion-code-block>
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code="// define public:
 firstCheckbox = new FormControl(true);
 secondCheckbox = new FormControl();
 
@@ -149,14 +150,14 @@ this.secondCheckbox.valueChanges
     .pipe(takeUntil(this.onDestroy$))
     .subscribe(val => console.log(val));
 "
-                    ></fusion-code-block>
-                </ng-template>
+                        ></fusion-code-block>
+                    </ng-template>
 
-                <ng-template fusionExampleBlock="React">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='class App extends React.Component {
+                    <ng-template fusionExampleBlock="React">
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -189,14 +190,14 @@ this.secondCheckbox.valueChanges
 }
 
 export default App;'
-                    ></fusion-code-block>
-                </ng-template>
+                        ></fusion-code-block>
+                    </ng-template>
 
-                <ng-template fusionExampleBlock="Vue">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<template>
+                    <ng-template fusionExampleBlock="Vue">
+                        <fusion-code-block
+                            lang="html"
+                            class="is-collapsible"
+                            code='<template>
   <div id="app">
       <ul class="is-list-inline">
           <li class="is-item">
@@ -208,12 +209,12 @@ export default App;'
       </ul >
   </div>
 </template>'
-                    ></fusion-code-block>
+                        ></fusion-code-block>
 
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='<script>
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='<script>
 import {FusionCheckbox} from "@ironsource/fusion-ui/native/vue";
 
 export default {
@@ -239,14 +240,14 @@ export default {
   }
 }
 </script>'
-                    ></fusion-code-block>
-                </ng-template>
+                        ></fusion-code-block>
+                    </ng-template>
 
-                <ng-template fusionExampleBlock="Native">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='const ul = document.createElement("ul");
+                    <ng-template fusionExampleBlock="Native">
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='const ul = document.createElement("ul");
 ul.classList.add("is-list-inline");
 
 const checkbox_list = ["Checked A", "Checked B"];
@@ -269,24 +270,24 @@ for (let curr of checkbox_list) {
 }
 
 document.body.appendChild(ul);'
-                    ></fusion-code-block>
-                </ng-template>
+                        ></fusion-code-block>
+                    </ng-template>
 
-                <ul class="is-list-inline">
-                    <li class="is-item">
-                        <fusion-checkbox label="Checked A" [formControl]="firstCheckbox"></fusion-checkbox>
-                    </li>
-                    <li class="is-item">
-                        <fusion-checkbox label="Checked B" [formControl]="secondCheckbox"></fusion-checkbox>
-                    </li>
-                </ul>
-            </fusion-example-block>
+                    <ul class="is-list-inline">
+                        <li class="is-item">
+                            <fusion-checkbox label="Checked A" [formControl]="firstCheckbox"></fusion-checkbox>
+                        </li>
+                        <li class="is-item">
+                            <fusion-checkbox label="Checked B" [formControl]="secondCheckbox"></fusion-checkbox>
+                        </li>
+                    </ul>
+                </fusion-example-block>
 
-            <fusion-example-block id="typeVertical" title="Vertical">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='HTML:
+                <fusion-example-block id="typeVertical" title="Vertical">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='HTML:
 <ul>
     <li class="is-item">
         <fusion-checkbox formControlName="firstFormControlElement" label="Checked A"></fusion-checkbox>
@@ -295,11 +296,11 @@ document.body.appendChild(ul);'
         <fusion-checkbox formControlName="secondFormControlElement" label="Checked B"></fusion-checkbox>
     </li>
 </ul>'
-                ></fusion-code-block>
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='
+                    ></fusion-code-block>
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code='
 TS:
 formInit():void{
     this.formCheckBoxes = this.formBuilder.group({
@@ -311,35 +312,35 @@ formInit():void{
         console.log("Form Controls changes>", val)
     });
 }'
-                ></fusion-code-block>
-
-                <ul>
-                    <li class="is-item">
-                        <fusion-checkbox formControlName="firstFormControlElement" label="Checked A"></fusion-checkbox>
-                    </li>
-                    <li class="is-item">
-                        <fusion-checkbox formControlName="secondFormControlElement" label="Checked B"></fusion-checkbox>
-                    </li>
-                </ul>
-            </fusion-example-block>
-
-            <div class="is-example-title">Content</div>
-
-            <fusion-example-block id="contentIcon" title="Including flags">
-                <ng-template fusionExampleBlock="Angular">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<fusion-checkbox [checked]="true" icon="ios" label="Checked A"></fusion-checkbox>
-<fusion-checkbox [checked]="false" icon="android" label="Checked B"></fusion-checkbox>'
                     ></fusion-code-block>
-                </ng-template>
 
-                <ng-template fusionExampleBlock="React">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='class App extends React.Component {
+                    <ul>
+                        <li class="is-item">
+                            <fusion-checkbox formControlName="firstFormControlElement" label="Checked A"></fusion-checkbox>
+                        </li>
+                        <li class="is-item">
+                            <fusion-checkbox formControlName="secondFormControlElement" label="Checked B"></fusion-checkbox>
+                        </li>
+                    </ul>
+                </fusion-example-block>
+
+                <div class="is-example-title">Content</div>
+
+                <fusion-example-block id="contentIcon" title="Including flags">
+                    <ng-template fusionExampleBlock="Angular">
+                        <fusion-code-block
+                            lang="html"
+                            class="is-collapsible"
+                            code='<fusion-checkbox [checked]="true" icon="ios" label="Checked A"></fusion-checkbox>
+<fusion-checkbox [checked]="false" icon="android" label="Checked B"></fusion-checkbox>'
+                        ></fusion-code-block>
+                    </ng-template>
+
+                    <ng-template fusionExampleBlock="React">
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -363,24 +364,24 @@ formInit():void{
 }
 
 export default App;'
-                    ></fusion-code-block>
-                </ng-template>
+                        ></fusion-code-block>
+                    </ng-template>
 
-                <ng-template fusionExampleBlock="Vue">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<template>
+                    <ng-template fusionExampleBlock="Vue">
+                        <fusion-code-block
+                            lang="html"
+                            class="is-collapsible"
+                            code='<template>
   <div id="app">
       <FusionCheckbox :config="checkbox"  @changed="e => handleChange(e, &#39;checkbox&#39;)" />
   </div>
 </template>'
-                    ></fusion-code-block>
+                        ></fusion-code-block>
 
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='<script>
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='<script>
 import {FusionCheckbox} from "@ironsource/fusion-ui/native/vue";
 
 export default {
@@ -404,14 +405,14 @@ export default {
   }
 }
 </script>'
-                    ></fusion-code-block>
-                </ng-template>
+                        ></fusion-code-block>
+                    </ng-template>
 
-                <ng-template fusionExampleBlock="Native">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='const checkbox = document.createElement("native-fusion-checkbox");
+                    <ng-template fusionExampleBlock="Native">
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='const checkbox = document.createElement("native-fusion-checkbox");
 checkbox.config = {
   label: "Checked A",
   icon: "ios"
@@ -422,51 +423,51 @@ document.body.appendChild(checkbox);
 checkbox.addEventListener("changed", $event => {
     console.log(">>", $event.detail); // $event.detail - new checkbox state (true / false)
 });'
-                    ></fusion-code-block>
-                </ng-template>
+                        ></fusion-code-block>
+                    </ng-template>
 
-                <div class="row">
-                    <div *ngIf="currentStyleVersion === styleVersion.V1" class="col-2">
-                        <ul>
-                            <li class="is-item">
-                                <fusion-checkbox [checked]="true" [icon]="{iconName: 'ios', iconVersion: 'v1'}" label="Checked A"></fusion-checkbox>
-                            </li>
-                            <li class="is-item">
-                                <fusion-checkbox [checked]="false" [icon]="{iconName: 'android', iconVersion: 'v1'}" label="Checked B"></fusion-checkbox>
-                            </li>
-                        </ul>
+                    <div class="row">
+                        <div *ngIf="currentStyleVersion === styleVersion.V1" class="col-2">
+                            <ul>
+                                <li class="is-item">
+                                    <fusion-checkbox [checked]="true" [icon]="{iconName: 'ios', iconVersion: 'v1'}" label="Checked A"></fusion-checkbox>
+                                </li>
+                                <li class="is-item">
+                                    <fusion-checkbox [checked]="false" [icon]="{iconName: 'android', iconVersion: 'v1'}" label="Checked B"></fusion-checkbox>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-2">
+                            <ul>
+                                <li class="is-item">
+                                    <fusion-checkbox [checked]="true" flag="ua" label="Ukraine"></fusion-checkbox>
+                                </li>
+                                <li class="is-item">
+                                    <fusion-checkbox [checked]="false" flag="il" label="Israel"></fusion-checkbox>
+                                </li>
+                                <li class="is-item">
+                                    <fusion-checkbox [checked]="false" flag="br" label="Brazil"></fusion-checkbox>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="col-2">
-                        <ul>
-                            <li class="is-item">
-                                <fusion-checkbox [checked]="true" flag="ua" label="Ukraine"></fusion-checkbox>
-                            </li>
-                            <li class="is-item">
-                                <fusion-checkbox [checked]="false" flag="il" label="Israel"></fusion-checkbox>
-                            </li>
-                            <li class="is-item">
-                                <fusion-checkbox [checked]="false" flag="br" label="Brazil"></fusion-checkbox>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </fusion-example-block>
+                </fusion-example-block>
 
-            <fusion-example-block id="contentIconBig" *ngIf="currentStyleVersion === styleVersion.V1" title="Large Icon Above">
-                <ng-template fusionExampleBlock="Angular">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<fusion-icon-select-list
+                <fusion-example-block id="contentIconBig" *ngIf="currentStyleVersion === styleVersion.V1" title="Large Icon Above">
+                    <ng-template fusionExampleBlock="Angular">
+                        <fusion-code-block
+                            lang="html"
+                            class="is-collapsible"
+                            code='<fusion-icon-select-list
     [options]="iconMultiSelectDeviceTypeOptions"
     [selected]="iconMultiSelectDeviceTypeSelected"
     (selectionChanged)="onDeviceTypeSelectionChanged($event)"
 ></fusion-icon-select-list>'
-                    ></fusion-code-block>
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code="// Data
+                        ></fusion-code-block>
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code="// Data
 iconMultiSelectDeviceTypeOptions: Array<IconSelectItem> = [
     {
         id: 'phone',
@@ -491,13 +492,13 @@ iconMultiSelectDeviceTypeSelected: Array<IconSelectItem> = [{
 onDeviceTypeSelectionChanged(selected: IconSelectItem[]): void {
    console.log('Selected', selected);
 }"
-                    ></fusion-code-block>
-                </ng-template>
-                <ng-template fusionExampleBlock="React">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='import React from "react";
+                        ></fusion-code-block>
+                    </ng-template>
+                    <ng-template fusionExampleBlock="React">
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='import React from "react";
 import { FusionIconSelectList } from "@ironsource/fusion-ui/native/react";
 
 const iconOptions = [
@@ -548,23 +549,23 @@ export default class Foo extends React.Component {
     );
   }
 }'
-                    ></fusion-code-block>
-                </ng-template>
-                <ng-template fusionExampleBlock="Vue">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<template>
+                        ></fusion-code-block>
+                    </ng-template>
+                    <ng-template fusionExampleBlock="Vue">
+                        <fusion-code-block
+                            lang="html"
+                            class="is-collapsible"
+                            code='<template>
     <div style="margin: 20px;">
         <p>Icon Select List Component Example</p>
         <FusionIconSelectList :config="iconSelectList" @selectionChanged="selectionChanged"></FusionIconSelectList>
     </div>
 </template>'
-                    ></fusion-code-block>
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='<script>
+                        ></fusion-code-block>
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='<script>
     import {FusionIconSelectList} from "@ironsource/fusion-ui/native/vue";
 
     export const FooComponent = {
@@ -609,13 +610,13 @@ export default class Foo extends React.Component {
 
     export default FooComponent;
 </script>'
-                    ></fusion-code-block>
-                </ng-template>
-                <ng-template fusionExampleBlock="Native">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='const onLoad = () => {
+                        ></fusion-code-block>
+                    </ng-template>
+                    <ng-template fusionExampleBlock="Native">
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='const onLoad = () => {
     // add icon-select-list
     const iconSelectList = document.createElement(
         "native-fusion-icon-select-list"
@@ -650,31 +651,31 @@ export default class Foo extends React.Component {
 };
 
 document.addEventListener("DOMContentLoaded", onLoad, false);'
-                    ></fusion-code-block>
-                </ng-template>
-                <fusion-icon-select-list
-                    [options]="iconMultiSelectDeviceTypeOptions"
-                    [selected]="iconMultiSelectDeviceTypeSelected"
-                    (selectionChanged)="onDeviceTypeSelectionChanged($event)"
-                ></fusion-icon-select-list>
-            </fusion-example-block>
+                        ></fusion-code-block>
+                    </ng-template>
+                    <fusion-icon-select-list
+                        [options]="iconMultiSelectDeviceTypeOptions"
+                        [selected]="iconMultiSelectDeviceTypeSelected"
+                        (selectionChanged)="onDeviceTypeSelectionChanged($event)"
+                    ></fusion-icon-select-list>
+                </fusion-example-block>
 
-            <div class="is-example-title">States</div>
+                <div class="is-example-title">States</div>
 
-            <fusion-example-block id="stateDisabled" title="Disabled">
-                <ng-template fusionExampleBlock="Angular">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<fusion-checkbox [checked]="true" [isDisabled]="true" label="Checked A"></fusion-checkbox>'
-                    ></fusion-code-block>
-                </ng-template>
+                <fusion-example-block id="stateDisabled" title="Disabled">
+                    <ng-template fusionExampleBlock="Angular">
+                        <fusion-code-block
+                            lang="html"
+                            class="is-collapsible"
+                            code='<fusion-checkbox [checked]="true" [isDisabled]="true" label="Checked A"></fusion-checkbox>'
+                        ></fusion-code-block>
+                    </ng-template>
 
-                <ng-template fusionExampleBlock="React">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='class App extends React.Component {
+                    <ng-template fusionExampleBlock="React">
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -698,24 +699,24 @@ document.addEventListener("DOMContentLoaded", onLoad, false);'
 }
 
 export default App;'
-                    ></fusion-code-block>
-                </ng-template>
+                        ></fusion-code-block>
+                    </ng-template>
 
-                <ng-template fusionExampleBlock="Vue">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<template>
+                    <ng-template fusionExampleBlock="Vue">
+                        <fusion-code-block
+                            lang="html"
+                            class="is-collapsible"
+                            code='<template>
     <div id="app">
         <FusionCheckbox :config="checkbox"  @changed="e => handleChange(e, &#39;checkbox&#39;)" />
     </div>
   </template>'
-                    ></fusion-code-block>
+                        ></fusion-code-block>
 
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='<script>
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='<script>
   import {FusionCheckbox} from "@ironsource/fusion-ui/native/vue";
 
   export default {
@@ -739,14 +740,14 @@ export default App;'
     }
   }
   </script>'
-                    ></fusion-code-block>
-                </ng-template>
+                        ></fusion-code-block>
+                    </ng-template>
 
-                <ng-template fusionExampleBlock="Native">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='
+                    <ng-template fusionExampleBlock="Native">
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='
 const checkbox = document.createElement("native-fusion-checkbox");
 checkbox.config = {
     label: "Checked A",
@@ -759,42 +760,42 @@ document.body.appendChild(checkbox);
 checkbox.addEventListener("changed", $event => {
     console.log(">>", $event.detail); // $event.detail - new checkbox state (true / false)
 });'
-                    ></fusion-code-block>
-                </ng-template>
+                        ></fusion-code-block>
+                    </ng-template>
 
-                <ul>
-                    <li class="is-item">
-                        <fusion-checkbox
-                            [isIndeterminate]="true"
-                            [checked]="false"
-                            [isDisabled]="true"
-                            label="Multiple Choice"
-                        ></fusion-checkbox>
-                    </li>
-                    <li class="is-item">
-                        <fusion-checkbox [checked]="true" [isDisabled]="true" label="Selected"></fusion-checkbox>
-                    </li>
-                    <li class="is-item">
-                        <fusion-checkbox [checked]="false" [isDisabled]="true" label="Inactive"></fusion-checkbox>
-                    </li>
-                </ul>
-            </fusion-example-block>
+                    <ul>
+                        <li class="is-item">
+                            <fusion-checkbox
+                                [isIndeterminate]="true"
+                                [checked]="false"
+                                [isDisabled]="true"
+                                label="Multiple Choice"
+                            ></fusion-checkbox>
+                        </li>
+                        <li class="is-item">
+                            <fusion-checkbox [checked]="true" [isDisabled]="true" label="Selected"></fusion-checkbox>
+                        </li>
+                        <li class="is-item">
+                            <fusion-checkbox [checked]="false" [isDisabled]="true" label="Inactive"></fusion-checkbox>
+                        </li>
+                    </ul>
+                </fusion-example-block>
 
-            <fusion-example-block id="stateDisabledIconBig" *ngIf="currentStyleVersion === styleVersion.V1" title="Disabled Large Icon">
-                <ng-template fusionExampleBlock="Angular">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<fusion-icon-select-list
+                <fusion-example-block id="stateDisabledIconBig" *ngIf="currentStyleVersion === styleVersion.V1" title="Disabled Large Icon">
+                    <ng-template fusionExampleBlock="Angular">
+                        <fusion-code-block
+                            lang="html"
+                            class="is-collapsible"
+                            code='<fusion-icon-select-list
     [options]="iconMultiSelectConnectionTypeOptions"
     [selected]="iconMultiSelectConnectionTypeSelected"
     (selectionChanged)="onConnectionTypeSelectionChanged($event)"
 ></fusion-icon-select-list>'
-                    ></fusion-code-block>
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code="// Define all options with first - disabled
+                        ></fusion-code-block>
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code="// Define all options with first - disabled
 iconMultiSelectConnectionTypeOptions: Array<IconSelectItem> = [
     {
         id: 'wifi',
@@ -825,13 +826,13 @@ onConnectionTypeSelectionChanged(selected: IconSelectItem[]): void {
    console.log('Selected', selected);
 }
 "
-                    ></fusion-code-block>
-                </ng-template>
-                <ng-template fusionExampleBlock="React">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='import React from "react";
+                        ></fusion-code-block>
+                    </ng-template>
+                    <ng-template fusionExampleBlock="React">
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='import React from "react";
 import { FusionIconSelectList } from "@ironsource/fusion-ui/native/react";
 
 // Data
@@ -895,23 +896,23 @@ export default class Foo extends React.Component {
     );
   }
 }'
-                    ></fusion-code-block>
-                </ng-template>
-                <ng-template fusionExampleBlock="Vue">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<template>
+                        ></fusion-code-block>
+                    </ng-template>
+                    <ng-template fusionExampleBlock="Vue">
+                        <fusion-code-block
+                            lang="html"
+                            class="is-collapsible"
+                            code='<template>
     <div style="margin: 20px;">
         <p>Icon Select List Component Example</p>
         <FusionIconSelectList :config="iconSelectList" @selectionChanged="selectionChanged"></FusionIconSelectList>
     </div>
 </template>'
-                    ></fusion-code-block>
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='<script>
+                        ></fusion-code-block>
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='<script>
     import {FusionIconSelectList} from "@ironsource/fusion-ui/native/vue";
 
     export const FooComponent = {
@@ -968,13 +969,13 @@ export default class Foo extends React.Component {
     ];
     export default FooComponent;
 </script>'
-                    ></fusion-code-block>
-                </ng-template>
-                <ng-template fusionExampleBlock="Native">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='const onLoad = () => {
+                        ></fusion-code-block>
+                    </ng-template>
+                    <ng-template fusionExampleBlock="Native">
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='const onLoad = () => {
     // add icon-select-list
     const iconSelectList = document.createElement(
         "native-fusion-icon-select-list"
@@ -1020,22 +1021,22 @@ export default class Foo extends React.Component {
 };
 
 document.addEventListener("DOMContentLoaded", onLoad, false);'
-                    ></fusion-code-block>
-                </ng-template>
-                <fusion-icon-select-list
-                    [options]="iconMultiSelectConnectionTypeOptions"
-                    [selected]="iconMultiSelectConnectionTypeSelected"
-                    (selectionChanged)="onConnectionTypeSelectionChanged($event)"
-                ></fusion-icon-select-list>
-            </fusion-example-block>
-        </form>
-        <!--UI-Component Examples-->
-        <!--UI-Component Configuration Doc-->
-        <div class="is-example-title">Configuration</div>
-        <fusion-example-block id="params" title="Parameters" [collapsible]="false">
-            <fusion-code-block
-                lang="js"
-                code="label: string               // text for check box. Default - '' (blank)
+                        ></fusion-code-block>
+                    </ng-template>
+                    <fusion-icon-select-list
+                        [options]="iconMultiSelectConnectionTypeOptions"
+                        [selected]="iconMultiSelectConnectionTypeSelected"
+                        (selectionChanged)="onConnectionTypeSelectionChanged($event)"
+                    ></fusion-icon-select-list>
+                </fusion-example-block>
+            </form>
+            <!--UI-Component Examples-->
+            <!--UI-Component Configuration Doc-->
+            <div class="is-example-title">Configuration</div>
+            <fusion-example-block id="params" title="Parameters" [collapsible]="false">
+                <fusion-code-block
+                    lang="js"
+                    code="label: string               // text for check box. Default - '' (blank)
 value: string               // (deprecated ) value used for checkbox. Default - '' (blank)
 icon: string                // any supported by icon component icon name . Default - not set (no icon)
 flag: string                // country code supported by flag component. Default - not set (no flag icon)
@@ -1063,23 +1064,28 @@ IconSelectItem {
     icon?: string;
     disabled?: boolean;
 }"
-            ></fusion-code-block>
-        </fusion-example-block>
+                ></fusion-code-block>
+            </fusion-example-block>
 
-        <fusion-example-block id="events" title="Events" [collapsible]="false">
-            <fusion-code-block
-                lang="js"
-                code="formControl       // Angular
+            <fusion-example-block id="events" title="Events" [collapsible]="false">
+                <fusion-code-block
+                    lang="js"
+                    code="formControl       // Angular
 changed(boolean)  // Checkbox state - true for checked;
 
 // for 'fusion-icon-select-list' component:
 selectionChanged(Array<IconSelectItem>)"
-            ></fusion-code-block>
-        </fusion-example-block>
-        <!--UI-Component Configuration Doc-->
-    </div>
+                ></fusion-code-block>
+            </fusion-example-block>
+            <!--UI-Component Configuration Doc-->
+        </div>
+    </ng-container>
 
     <div class="col-3 is-right-side-menu-holder">
         <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
     </div>
 </div>
+
+<ng-template #inUpdate>
+    <div class="col-9"></div>
+</ng-template>

@@ -1,12 +1,13 @@
-@import '../../../src/style/scss/vars/vars';
-@import '../../../src/style/scss/vars/mixins';
-@import '../../../src/style/scss/vars/border';
+@import '../../../src/style/scss/v2/vars/vars';
+@import '../../../src/style/scss/v2/mixins/mixins';
+@import '../../../src/style/scss/v2/vars/border';
 @import '../modal_vars-v2';
 
 $box-shadow: 0 0 20px 0 rgba(30, 30, 30, 0.05);
 $borderRadius: 24px;
 
-:host:not(.fusion-style-v1) {
+:host.fu-style-v3,
+:host.fu-style-v2 {
     @extend %reset;
     // overlay
     position: fixed;

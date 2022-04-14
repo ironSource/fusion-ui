@@ -17,7 +17,7 @@ import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dy
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown';
 import {BehaviorSubject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
 
 const CLASS_LIST = [
     'dual-select-button',
@@ -41,7 +41,7 @@ const CLASS_LIST = [
         }
     ]
 })
-export class DropdownDualMultiSelectComponent extends StyleBase implements OnInit, ControlValueAccessor, OnDestroy {
+export class DropdownDualMultiSelectComponent extends FusionBase implements OnInit, ControlValueAccessor, OnDestroy {
     @Input() isDisabled: boolean = false;
     @Input() dynamicPlaceholder: DynamicComponentConfiguration;
     @Input() totalItems: number;

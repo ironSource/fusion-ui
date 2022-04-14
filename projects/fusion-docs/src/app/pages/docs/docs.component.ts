@@ -5,8 +5,7 @@ import {
     LayoutComponentConfiguration,
     MenuItem,
     SidebarMenuItem,
-    StyleVersion,
-    VersionService
+    StyleVersion
 } from '@ironsource/fusion-ui';
 import {MENU_ITEMS, MENU_ITEMS_V2, STYLE_2_MENU_ITEMS, USER_PROFILE_MENU_ITEMS} from './menu-items';
 import {StyleVersionButtonComponent} from '../../components/style-version-button/style-version-button.component';
@@ -14,6 +13,7 @@ import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {DocsLayoutService} from './docs-layout.service';
+import {VersionService} from '../../services/version/version.service';
 
 @Component({
     selector: 'fusion-docs',

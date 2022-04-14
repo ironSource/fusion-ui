@@ -12,8 +12,7 @@ import {
     ViewChild
 } from '@angular/core';
 import {LOADER_COMPONENT_TYPE_TOKEN} from './loader-token';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
-import {StyleVersion} from '@ironsource/fusion-ui/services/version';
+import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {LoaderColor, LoaderPosition, LoaderSize} from './loader.types';
 import {map} from 'rxjs/operators';
 
@@ -23,7 +22,7 @@ import {map} from 'rxjs/operators';
     styleUrls: ['./loader.component.scss', './loader.component-v2.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LoaderComponent extends StyleBase implements AfterViewInit {
+export class LoaderComponent extends FusionBase implements AfterViewInit {
     @ViewChild('customLoader', {read: ElementRef}) customLoader: ElementRef;
 
     @Input() height: number; // has position static, with min-height
@@ -37,10 +36,8 @@ export class LoaderComponent extends StyleBase implements AfterViewInit {
     public get loaderPosition() {
         return `position-${this.position}`;
     }
-    selectedVersion: number;
     public loaderIconName$ = this.selectedVersion$.pipe(
         map((styleVersion: StyleVersion) => {
-            this.selectedVersion = styleVersion;
             let iconProperties = {iconName: 'loading', iconVersion: 'v1'};
             if (styleVersion === StyleVersion.V2) {
                 return this.size === 'inline' ? 'loading_rotate' : {iconName: 'loader-dots-v4', iconVersion: 'v2'};

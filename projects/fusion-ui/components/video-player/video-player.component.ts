@@ -1,21 +1,9 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    Input,
-    OnChanges,
-    OnInit,
-    ViewChild,
-    Injector,
-    SimpleChanges,
-    AfterViewInit
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, ViewChild, SimpleChanges, AfterViewInit} from '@angular/core';
 import {isNull} from '@ironsource/fusion-ui/utils';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {BehaviorSubject, fromEvent, Observable, Subject} from 'rxjs';
 import {map, startWith, switchMap} from 'rxjs/operators';
-import {StyleVersion} from '@ironsource/fusion-ui/services/version';
-import {VIDEO_PLAYER_THEME_TOKEN} from './video-player-theme';
-import {IconData} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Component({
     selector: 'fusion-video-player',
@@ -23,7 +11,7 @@ import {IconData} from '@ironsource/fusion-ui/components';
     styleUrls: ['./video-player.component.scss', './video-player.component-v2.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class VideoPlayerComponent extends StyleBase implements OnInit, AfterViewInit, OnChanges {
+export class VideoPlayerComponent extends FusionBase implements OnInit, AfterViewInit, OnChanges {
     @ViewChild('videoPlayer') videoPlayer;
     @Input() src: string;
     @Input() width = '100%';
@@ -67,18 +55,12 @@ export class VideoPlayerComponent extends StyleBase implements OnInit, AfterView
         startWith({iconName: 'video-camera', iconVersion: 'v1'})
     );
 
-    styleVersion = StyleVersion;
-
     isVideoPlaying$ = new BehaviorSubject<boolean>(false);
 
     videoLoaded$ = new Subject();
     videoDuration$: Observable<number>;
     progressValue$: Observable<number>;
     videoCurrentTime$: Observable<number>;
-
-    constructor(public injector: Injector) {
-        super(injector, VIDEO_PLAYER_THEME_TOKEN);
-    }
 
     ngOnInit() {
         this.options.noVideo = this.options.noVideo || {};

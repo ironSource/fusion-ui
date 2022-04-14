@@ -1,7 +1,7 @@
 import {InjectionToken} from '@angular/core';
 import {TableModuleOptions} from './entities/table-module-options';
 import {ERROR_MESSAGES} from '@ironsource/fusion-ui/components/error-message';
-import {IconData} from '@ironsource/fusion-ui';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 export const TABLE_OPTIONS_DEFAULT_VALUES: TableModuleOptions = {
     errorMessages: ERROR_MESSAGES
@@ -27,6 +27,10 @@ export const CONFIG_TABLE_BY_UI_STYLE: {[styleKey: string]: TableIconsConfigBySt
     style_v2: {
         iconSort: {iconName: 'arrow-sort-down', iconVersion: 'v2'},
         iconInfo: {iconName: 'info-circle', iconVersion: 'v2'}
+    },
+    style_v3: {
+        iconSort: {iconName: 'arrow-sort-down', iconVersion: 'v3'},
+        iconInfo: {iconName: 'info-circle', iconVersion: 'v3'}
     }
 };
 

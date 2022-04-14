@@ -1,7 +1,7 @@
-@import '../../../src/style/scss/vars/colors';
-@import "../../../src/style/scss/vars/border";
+@import '../../../src/style/scss/v1/vars/colors';
+@import "../../../src/style/scss/v1/vars/border";
 
-:host.fusion-style-v1 {
+:host.fu-style-v1 {
   .search-panel {
     color: white;
     position: relative;

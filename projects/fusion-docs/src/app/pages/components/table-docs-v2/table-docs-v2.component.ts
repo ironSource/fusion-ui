@@ -13,13 +13,13 @@ import {
     TableColumnTypeEnum,
     TableOptions,
     TableRowExpandEmitter,
-    TableRowHeight,
-    VersionService
+    TableRowHeight
 } from '@ironsource/fusion-ui';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {TableCellDynamicComponentExampleComponent} from './table-cell-dynamic-component-example';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
 import {TableCustomNoDataComponent} from '../../../components/table-custom-no-data/table-custom-no-data.component';
+import {VersionService} from '../../../services/version/version.service';
 
 const TABLE_OPTIONS: TableOptions = {
     sortingType: 'local',

@@ -1,6 +1,6 @@
-@import '../../src/style/scss/vars/vars';
-@import '../../src/style/scss/vars/mixins';
-@import '../../src/style/scss/vars/border';
+@import '../../src/style/scss/v2/vars/vars';
+@import '../../src/style/scss/v2/mixins/mixins';
+@import '../../src/style/scss/v2/vars/border';
 
 $smallHeight: 24px;
 $smallMinWidth: 64px;
@@ -279,7 +279,7 @@ $iconInTableButtonIconSize: 16px;
     }
 }
 
-:host-context(fusion-button).fusion-style-v2 {
+:host-context(fusion-button.fu-style-v2) {
     @extend %reset;
     display: inline-flex;
     text-align: center;
@@ -406,7 +406,7 @@ $iconInTableButtonIconSize: 16px;
     }
 }
 
-:host-context(a).fusion-style-v2 {
+:host-context(a.fusion-style-v2) {
     @extend %font-bodyStrong;
     line-height: 1.33;
     color: $fu-primary-500;

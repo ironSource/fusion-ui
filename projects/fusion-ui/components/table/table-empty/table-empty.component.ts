@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Injector, Input} from '@angular/core';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
 
 @Component({
@@ -9,7 +9,7 @@ import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dy
     styleUrls: ['./table-empty.component.scss', './table-empty.component-v2.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TableEmptyComponent extends StyleBase {
+export class TableEmptyComponent extends FusionBase {
     @Input() fusionTableEmpty: number;
     @Input() customContent: DynamicComponentConfiguration;
     @Input() header: string;

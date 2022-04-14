@@ -24,6 +24,7 @@ import {MockLogService, MockUniqueIdService, MockApiService} from '@ironsource/f
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {ApiService} from '@ironsource/fusion-ui/services/api';
 import {DropdownSelectModule} from '../dropdown-select/dropdown-select.module';
+import {FUSION_STYLE_VERSION_CSS_VAR_NAME} from '@ironsource/fusion-ui';
 
 const optionMock = [
     {
@@ -97,6 +98,7 @@ describe('MultiDropdownComponent', () => {
     );
 
     beforeEach(() => {
+        document.documentElement.style.setProperty(FUSION_STYLE_VERSION_CSS_VAR_NAME, '1');
         fixture = TestBed.createComponent(MultiDropdownComponent);
         component = fixture.componentInstance;
         component.options = optionMock;
@@ -112,6 +114,10 @@ describe('MultiDropdownComponent', () => {
 
     it('Must exist and render DOM Elements" ', () => {
         component.selectAllLabel = 'Select All';
+        fixture.detectChanges();
+        fixture.debugElement
+            .query(By.css('fusion-dropdown-select'))
+            .triggerEventHandler('click', {target: fixture.debugElement.query(By.css('fusion-dropdown-select')).nativeElement});
         fixture.detectChanges();
 
         // options holder
