@@ -71,8 +71,8 @@ $buttonBorderRadius: 100px;
         --fu-border-color: #ffff;
         --fu-background-color: transparent;
         --fu-font-color: #ffff;
-        --fu-hover-background-color: $fu-black-300;
-        --fu-active-background-color: $fu-black-300;
+        --fu-hover-background-color: #696A6B;
+        --fu-active-background-color: #696A6B;
     }
 
     &:hover {
@@ -154,19 +154,25 @@ $buttonBorderRadius: 100px;
                 color: var(--fu-font-color, $White);
                 border: none;
                 background-color: var(--fu-hover-background-color, $fu-black-200);
-                &.dark {
-                    border: 1px solid;
-                    border-color: var(--fu-border-color);
-                }
             }
 
             &:active {
                 color: var(--fu-font-color, $White);
                 border: none;
                 background-color: var(--fu-active-background-color, $fu-black-500);
-                &.dark {
+            }
+
+            &.dark {
+                &:hover, &:active {
                     border: 1px solid;
+                    background-color: var(--fu-hover-background-color);
                     border-color: var(--fu-border-color);
+                }
+
+                &.disabled {
+                    background-color: transparent;
+                    border-color: $fu-light-800;
+                    color: $fu-light-800;
                 }
             }
         }
@@ -208,6 +214,11 @@ $buttonBorderRadius: 100px;
         &.dark {
             border: 1px solid;
             border-color: var(--fu-border-color, $fu-black-500);
+            &.disabled {
+                border-color: $fu-light-800;
+                background-color: transparent;
+                color: $fu-light-800;
+            }
         }
     }
 
