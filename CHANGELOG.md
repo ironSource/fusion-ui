@@ -24,6 +24,18 @@ In angular application:
 
 In case the CSS variable is don't set, will be used last style version #3.
 
+Changes in imports:
+- instead import colors and fonts SCSS style version V1 path `@ironsource/fusion-ui/style/vars/colors` (fonts) use `@ironsource/fusion-ui/style/v1/colors` (fonts)
+- instead import colors and fonts SCSS  path `@ironsource/fusion-ui/style/vars/colors_v2` (fonts_v2)  use `@ironsource/fusion-ui/style/v2/colors` (fonts)
+- compiled (CSS) style version V1 fonts `@ironsource/fusion-ui/style/fonts_v1` use `@ironsource/fusion-ui/style/v1/fonts`
+- compiled (CSS) style version V2 fonts `@ironsource/fusion-ui/style/fonts` use `@ironsource/fusion-ui/style/v2/fonts`
+- compiled (CSS) style version V2 grid `@ironsource/fusion-ui/style/grid` use `@ironsource/fusion-ui/style/v2/grid`
+
+New imports for style version 3:
+- compiled (CSS) fonts `@ironsource/fusion-ui/style/fonts` or `@ironsource/fusion-ui/style/v3/fonts`
+- compiled (CSS) grid `@ironsource/fusion-ui/style/grid` or `@ironsource/fusion-ui/style/v3/grid`
+- SCSS fonts and colors: `@ironsource/fusion-ui/style/v3/vars/vars`
+
 Now fusion-ui support mixed styles.
 For example if main application use style #3, but some components will need use with style #2, you will need add CSS variable "--fu-style-version: 2" to this component or component's holder.
 
