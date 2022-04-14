@@ -152,14 +152,22 @@ $buttonBorderRadius: 100px;
             background-color: var(--fu-background-color, transparent);
             &:hover {
                 color: var(--fu-font-color, $White);
-                border: var(--fu-border, none);
+                border: none;
                 background-color: var(--fu-hover-background-color, $fu-black-200);
+                &.dark {
+                    border: 1px solid;
+                    border-color: var(--fu-border-color);
+                }
             }
 
             &:active {
                 color: var(--fu-font-color, $White);
-                border: var(--fu-border, none);
+                border: none;
                 background-color: var(--fu-active-background-color, $fu-black-500);
+                &.dark {
+                    border: 1px solid;
+                    border-color: var(--fu-border-color);
+                }
             }
         }
 
@@ -423,7 +431,7 @@ $buttonBorderRadius: 100px;
             background-color: var(--fu-background-color, $fu-black-500);
             &.transparent {
                 color: var(--fu-font-color, $fu-black-500);
-                border: var(--fu-border, 1px solid $fu-black-500);
+                border-color: var(--fu-border-color, $fu-black-500);
                 background-color: var(--fu-background-color, transparent);
             }
         }
