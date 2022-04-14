@@ -37,7 +37,7 @@ In case the CSS variable is don't set, will be used last style version #3.
 - SCSS fonts and colors: `@ironsource/fusion-ui/style/v3/vars/vars`
 
 **Now fusion-ui support mixed styles.**
-For example if main application use style #3, but some components will need use with style #2, you will need add CSS variable "--fu-style-version: 2" to this component or component's holder.
+For example if main application use style #3, but some components will need use with style #2, you will need add CSS variable `--fu-style-version: 2` to this component or component's holder.
 
 
 
