@@ -1,6 +1,6 @@
-@import "../../src/style/scss/vars/vars";
-@import "../../src/style/scss/vars/colors";
-@import "../../src/style/scss/vars/border";
+@import "../../src/style/scss/v2/vars/vars";
+@import "../../src/style/scss/v2/vars/colors";
+@import "../../src/style/scss/v2/vars/border";
 
 $switcherItemHeight: 24px;
 $switcherItemMinWidth: 68px;
@@ -11,7 +11,8 @@ $switcherItemSelectedBGColor: $fu-primary-500;
 $switcherItemHoverBGColor: $fu-primary-200;
 $switcherItemDisabledColor: $fu-primary-400;
 
-:host:not(.fusion-style-v1) {
+:host.fu-style-v3,
+:host.fu-style-v2 {
     @extend %reset;
     line-height: 20px;
     .is-switcher{

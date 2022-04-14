@@ -1,33 +1,27 @@
 import {
     Component,
+    Input,
+    EventEmitter,
+    OnInit,
+    Output,
+    ElementRef,
     ChangeDetectionStrategy,
     forwardRef,
     ViewChild,
-    ElementRef,
-    Input,
-    Output,
-    EventEmitter,
     Injector,
-    OnInit,
     OnDestroy,
     AfterViewInit
 } from '@angular/core';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {InputBase} from './input-base';
-import {BehaviorSubject, fromEvent, Observable} from 'rxjs';
-import {CONFIG_INPUT_BY_UI_STYLE, InputConfigByStyle} from '@ironsource/fusion-ui/components/input/input.component.config';
-import {StyleVersion, VersionService} from '@ironsource/fusion-ui/services';
-import {InputConfiguration} from '@ironsource/fusion-ui/components/input/input-entities';
-import {
-    ENTER_KEY_CODE,
-    ESCAPE_KEY_CODE,
-    INPUT_DEFAULT_CONFIGURATION,
-    SPECIAL_KEYS
-} from '@ironsource/fusion-ui/components/input/input-utils';
-import {filter, map, takeUntil, tap} from 'rxjs/operators';
 import {isBoolean, isNullOrUndefined, isString} from '@ironsource/fusion-ui/utils';
-import {InputOptions} from '@ironsource/fusion-ui/components';
-import {InputParameters} from '@ironsource/fusion-ui/components/input/input-parameters';
+import {BehaviorSubject, Observable, fromEvent} from 'rxjs';
+import {map, takeUntil, tap, filter} from 'rxjs/operators';
+import {InputOptions} from './input.options';
+import {CONFIG_INPUT_BY_UI_STYLE, InputConfigByStyle} from './input.component.config';
+import {InputParameters} from './input-parameters';
+import {SPECIAL_KEYS, ESCAPE_KEY_CODE, ENTER_KEY_CODE, INPUT_DEFAULT_CONFIGURATION} from './input-utils';
+import {InputConfiguration} from './input-entities';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 
 // Todo - check if someone use error as boolean and if not change type to string only
 @Component({
@@ -57,11 +51,12 @@ export class InputComponent extends InputParameters implements OnInit, OnDestroy
     showErrorClass$ = new BehaviorSubject(false);
     configByStyle$ = new Observable<InputConfigByStyle>();
     disabled$ = new BehaviorSubject(false);
-    protected inputControlValueChanges$: Observable<any>;
-    protected fileControlValueChanges$: Observable<any>;
-    protected onBlur: (args: string) => void;
 
-    constructor(injector: Injector, public elementRef: ElementRef, private versionService: VersionService) {
+    private inputControlValueChanges$: Observable<any>;
+    private fileControlValueChanges$: Observable<any>;
+    private onBlur: (args: string) => void;
+
+    constructor(injector: Injector, public elementRef: ElementRef) {
         super(injector);
     }
 
@@ -92,6 +87,7 @@ export class InputComponent extends InputParameters implements OnInit, OnDestroy
 
     ngAfterViewInit(): void {
         super.ngAfterViewInit();
+        this.setInputElementListeners();
         this.setMouseWheelListener();
         this.setKeyDownListener();
     }
@@ -132,7 +128,7 @@ export class InputComponent extends InputParameters implements OnInit, OnDestroy
     }
 
     showErrorIcon(): boolean {
-        if (this.versionService.styleVersion === StyleVersion.V2) {
+        if (this.selectedVersion === StyleVersion.V2) {
             return !isNullOrUndefined(this.config.error);
         } else {
             return this.config.options.size === 'small' && this.config.error && !isBoolean(this.config.error);
@@ -233,20 +229,20 @@ export class InputComponent extends InputParameters implements OnInit, OnDestroy
         this.disabled$.next(isDisabled);
     }
 
-    protected getStepIndication(): string {
+    private getStepIndication(): string {
         if (Number.isInteger(this.config.decimal) && this.config.decimal > 0) {
             return '0.' + new Array(this.config.decimal).fill('0').slice(0, -1).join('') + '1';
         }
     }
 
-    protected setPasswordShownState(value: InputOptions): void {
+    private setPasswordShownState(value: InputOptions): void {
         if (!!value && !isNullOrUndefined(value.isPassHidden)) {
             this.passToggle(null);
         }
     }
 
     // Todo - use optional chaining when upgrade ts version
-    protected getFileControlValueChangesObservable(): Observable<any> {
+    private getFileControlValueChangesObservable(): Observable<any> {
         return this.file.valueChanges.pipe(
             tap(value => {
                 const fileName =
@@ -259,18 +255,18 @@ export class InputComponent extends InputParameters implements OnInit, OnDestroy
         );
     }
 
-    protected getConfigStyleObservable(): Observable<InputConfigByStyle> {
+    private getConfigStyleObservable(): Observable<InputConfigByStyle> {
         return this.selectedVersion$.pipe(map((styleVersion: StyleVersion) => CONFIG_INPUT_BY_UI_STYLE[`style_v${styleVersion}`]));
     }
 
     // Todo - use optional chaining when upgrade ts version
-    protected setInputElementListeners(): void {
+    private setInputElementListeners(): void {
         const hasPreventCharacters =
             this.config.options && this.config.options.preventCharacters && this.config.options.preventCharacters.length;
         const hasEscapeEmitterListeners = this.ngEscape.observers.length;
         const hasEnterEmitterListeners = this.ngEnter.observers.length;
 
-        if (hasPreventCharacters || hasEscapeEmitterListeners || hasEnterEmitterListeners) {
+        if (!isNullOrUndefined(this.input) && (hasPreventCharacters || hasEscapeEmitterListeners || hasEnterEmitterListeners)) {
             fromEvent(this.input.nativeElement, 'keydown')
                 .pipe(
                     filter((event: KeyboardEvent) => {
@@ -286,7 +282,7 @@ export class InputComponent extends InputParameters implements OnInit, OnDestroy
         }
     }
 
-    protected inputKeydownHandler(event: KeyboardEvent): boolean {
+    private inputKeydownHandler(event: KeyboardEvent): boolean {
         if (event.key === ENTER_KEY_CODE) {
             this.ngEnter.emit(this.inputControl.value);
         } else if (event.key === ESCAPE_KEY_CODE) {
@@ -297,7 +293,7 @@ export class InputComponent extends InputParameters implements OnInit, OnDestroy
         }
     }
 
-    protected setMouseWheelListener(): void {
+    private setMouseWheelListener(): void {
         if (this.config.disableWheelScroll && this.config.type === 'number') {
             fromEvent(this.elementRef.nativeElement, 'mousewheel')
                 .pipe(takeUntil(this.onDestroy$))
@@ -305,7 +301,7 @@ export class InputComponent extends InputParameters implements OnInit, OnDestroy
         }
     }
 
-    protected setKeyDownListener(): void {
+    private setKeyDownListener(): void {
         if (this.config.sanitationRegex) {
             const regex = new RegExp(this.config.sanitationRegex);
             fromEvent(this.elementRef.nativeElement, 'keydown')
@@ -317,19 +313,19 @@ export class InputComponent extends InputParameters implements OnInit, OnDestroy
         }
     }
 
-    protected onOptionsChanged({previousValue, currentValue}: {previousValue: InputOptions; currentValue: InputOptions}): void {
+    private onOptionsChanged({previousValue, currentValue}: {previousValue: InputOptions; currentValue: InputOptions}): void {
         if (currentValue !== previousValue) {
             this.setPasswordShownState(currentValue);
         }
     }
 
-    protected onDisabledChanged({previousValue, currentValue}: {previousValue: boolean; currentValue: boolean}): void {
+    private onDisabledChanged({previousValue, currentValue}: {previousValue: boolean; currentValue: boolean}): void {
         if (currentValue !== previousValue) {
             this.disabled$.next(currentValue);
         }
     }
 
-    protected onErrorChanged({previousValue, currentValue}: {previousValue: boolean | string; currentValue: boolean | string}): void {
+    private onErrorChanged({previousValue, currentValue}: {previousValue: boolean | string; currentValue: boolean | string}): void {
         if (currentValue !== previousValue) {
             this.toggleErrorClass(!!currentValue);
         }

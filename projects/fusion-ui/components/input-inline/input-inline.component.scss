@@ -1,9 +1,9 @@
-@import '../../src/style/scss/vars/vars';
-@import '../../src/style/scss/vars/border';
-@import '../../src/style/scss/vars/mixins';
+@import '../../src/style/scss/v1/vars/vars';
+@import '../../src/style/scss/v1/vars/border';
+@import '../../src/style/scss/v1/mixins/mixins';
 
 
-:host.fusion-style-v1 {
+:host.fu-style-v1 {
 
     @include icon-style('edit', $light-800, (width: 12px, height: 14px), false, true) {
         height: 14px;
@@ -83,7 +83,7 @@
   }
 }
 
-:host-context(is-creative-table-cell).fusion-style-v1 {
+:host-context(is-creative-table-cell).fu-style-v1 {
   & .inline-input-wrapper {
     & > div {
       &.is-edit-mode {

@@ -14,9 +14,8 @@ import {
 import {DAY_NAMES} from '../entities/config';
 import {CalendarService} from './calendar.service';
 import {Day} from '../entities/day';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
 import {getDateDayTime} from '@ironsource/fusion-ui/utils';
-import {VersionService} from '@ironsource/fusion-ui/services/version';
 import {filter, takeUntil} from 'rxjs/operators';
 import {CalendarComponentConfigurations} from './calendar-component-configurations';
 import {DEFAULT_CALENDAR_COMPONENT_CONFIGURATION} from './calendar.config';
@@ -32,7 +31,7 @@ const HOVER_CURRENT_CLASS = 'hover-current';
     styleUrls: ['./calendar.component.scss', './calendar.component-v2.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CalendarComponent extends StyleBase implements OnInit {
+export class CalendarComponent extends FusionBase implements OnInit {
     @Input()
     set configuration(configuration: CalendarComponentConfigurations) {
         if (configuration.month) {
@@ -51,12 +50,7 @@ export class CalendarComponent extends StyleBase implements OnInit {
     daysOfTheWeek = DAY_NAMES;
     _configurations: CalendarComponentConfigurations = DEFAULT_CALENDAR_COMPONENT_CONFIGURATION;
 
-    constructor(
-        injector: Injector,
-        public calendarService: CalendarService,
-        private versionService: VersionService,
-        private renderer: Renderer2
-    ) {
+    constructor(injector: Injector, public calendarService: CalendarService, private renderer: Renderer2) {
         super(injector);
     }
 
@@ -131,7 +125,7 @@ export class CalendarComponent extends StyleBase implements OnInit {
         const isNotDatePicker = !this.configuration.selection.date;
         const isStartSelection = this.configuration.selection.startDate.getTime() === this.configuration.selection.endDate.getTime();
         const isHoveredDayBiggerThenSelected = day.date.getTime() > this.configuration.selection.startDate.getTime();
-        const isStyleV2 = this.versionService.styleVersion === this.styleVersion.V2;
+        const isStyleV2 = this.selectedVersion === this.styleVersion.V2;
         if (isStyleV2 && isNotDatePicker && isStartSelection) {
             if (isHoveredDayBiggerThenSelected) {
                 this.renderer.addClass(hoveredElement, HOVER_CURRENT_CLASS);

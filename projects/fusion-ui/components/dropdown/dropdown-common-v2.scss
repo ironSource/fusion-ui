@@ -1,6 +1,6 @@
-@import '../../src/style/scss/vars/vars';
-@import '../../src/style/scss/vars/border';
-@import '../../src/style/scss/vars/mixins';
+@import '../../src/style/scss/v2/vars/vars';
+@import '../../src/style/scss/v2/vars/border';
+@import '../../src/style/scss/v2/mixins/mixins';
 
 $v2-minWidth: 85px;
 $v2-headerHeight: 40px;
@@ -26,7 +26,8 @@ $v2-borderRoundedRadius: 20px;
     }
 }
 
-:host:not(.fusion-style-v1) {
+:host.fu-style-v3,
+:host.fu-style-v2 {
     @extend %reset;
     @extend %list-reset;
     display: inline;
@@ -158,7 +159,7 @@ $v2-borderRoundedRadius: 20px;
                                         margin-right: 10px;
                                         margin-top: -2px;
                                     }
-                                    @include icon-style('icon', $light-600, 13px, false, true) {
+                                    @include icon-style('icon', $fu-light-600, 13px, false, true) {
                                         margin-right: 6px;
                                         vertical-align: sub;
                                         display: inline-block;

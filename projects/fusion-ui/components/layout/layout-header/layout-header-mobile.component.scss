@@ -1,4 +1,4 @@
-@import '../../../src/style/scss/mixins/breakpoints';
+@import '../../../src/style/scss/v1/mixins/breakpoints';
 
 :host{
     @include media-breakpoint-max('xs') {

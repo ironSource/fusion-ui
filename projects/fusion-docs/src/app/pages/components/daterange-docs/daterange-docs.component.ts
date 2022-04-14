@@ -1,10 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {BehaviorSubject, Subject} from 'rxjs';
-import {DaterangeOptions, DaterangePresets, DaterangeService, StyleVersion, VersionService} from '@ironsource/fusion-ui';
-import {takeUntil} from 'rxjs/operators';
+import {DaterangeOptions, DaterangePresets, DaterangeService, StyleVersion} from '@ironsource/fusion-ui';
+import {delay, takeUntil, tap} from 'rxjs/operators';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
+import {VersionService} from '../../../services/version/version.service';
 
 const rightMenuItems = [
     {
@@ -60,6 +61,8 @@ export class DaterangeDocsComponent implements OnInit, OnDestroy {
         }
     ];
     onDestroy$ = new Subject();
+    styleUpdatingDelay = 0;
+    styleUpdating$ = new BehaviorSubject(false);
     styleVersion$ = this.versionService.styleVersion$;
     StyleVersion = StyleVersion;
     daterangeDefault: FormControl = new FormControl(this.daterangeService.getPresetRange(DaterangePresets.Yesterday));
@@ -108,32 +111,43 @@ export class DaterangeDocsComponent implements OnInit, OnDestroy {
 
         this.daterangeDatePicker.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(value => console.log(value));
 
-        this.styleVersion$.pipe(takeUntil(this.onDestroy$)).subscribe(styleVersion => {
-            this.rightMenu = [
-                {
-                    title: this.rightMenu[0].title,
-                    items: styleVersion === StyleVersion.V2 ? rightMenuItems : rightMenuItems.slice(2)
-                },
-                this.rightMenu[1]
-            ];
-            // update formats by StyleVersion
-            const dateFormat = styleVersion === StyleVersion.V2 ? 'd MMM, y' : 'd MMM y';
-            this.optionOnlyDatePicker$.next({
-                calendarAmount: 1,
-                presets: false,
-                format: dateFormat
+        this.styleVersion$
+            .pipe(
+                takeUntil(this.onDestroy$),
+                tap(() => {
+                    this.styleUpdating$.next(true);
+                }),
+                delay(this.styleUpdatingDelay),
+                tap(() => {
+                    this.styleUpdating$.next(false);
+                })
+            )
+            .subscribe(styleVersion => {
+                this.rightMenu = [
+                    {
+                        title: this.rightMenu[0].title,
+                        items: styleVersion === StyleVersion.V2 ? rightMenuItems : rightMenuItems.slice(2)
+                    },
+                    this.rightMenu[1]
+                ];
+                // update formats by StyleVersion
+                const dateFormat = styleVersion === StyleVersion.V2 ? 'd MMM, y' : 'd MMM y';
+                this.optionOnlyDatePicker$.next({
+                    calendarAmount: 1,
+                    presets: false,
+                    format: dateFormat
+                });
+                this.options$.next({
+                    presets: [
+                        DaterangePresets.Today,
+                        DaterangePresets.Yesterday,
+                        DaterangePresets.ThisMonth,
+                        DaterangePresets.LastMonth,
+                        DaterangePresets.Last60Days
+                    ],
+                    format: dateFormat
+                });
             });
-            this.options$.next({
-                presets: [
-                    DaterangePresets.Today,
-                    DaterangePresets.Yesterday,
-                    DaterangePresets.ThisMonth,
-                    DaterangePresets.LastMonth,
-                    DaterangePresets.Last60Days
-                ],
-                format: dateFormat
-            });
-        });
     }
 
     ngOnDestroy() {

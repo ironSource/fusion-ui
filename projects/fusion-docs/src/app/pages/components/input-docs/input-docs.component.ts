@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, Validators} from '@angular/forms';
-import {InputOptions, InputSize, StyleVersion, TooltipPosition, VersionService} from '@ironsource/fusion-ui';
+import {InputOptions, InputSize, StyleVersion, TooltipPosition} from '@ironsource/fusion-ui';
 import {BehaviorSubject} from 'rxjs';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
+import {VersionService} from '../../../services/version/version.service';
+import {delay, tap} from 'rxjs/operators';
 
 @Component({
     selector: 'fusion-input-docs',
@@ -147,7 +149,17 @@ export class InputDocsComponent implements OnInit {
     actionButtonLoading$ = new BehaviorSubject(false);
 
     styleVersion = StyleVersion;
-    selectedVersion$ = this.versionService.styleVersion$;
+    styleUpdatingDelay = 0;
+    styleUpdating$ = new BehaviorSubject(false);
+    selectedVersion$ = this.versionService.styleVersion$.pipe(
+        tap(() => {
+            this.styleUpdating$.next(true);
+        }),
+        delay(this.styleUpdatingDelay),
+        tap(() => {
+            this.styleUpdating$.next(false);
+        })
+    );
 
     passwordOptions: InputOptions = {};
     confirmPasswordOptions: InputOptions = {};

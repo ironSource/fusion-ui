@@ -7,13 +7,12 @@ import {
     Injector,
     Input,
     OnChanges,
-    OnDestroy,
     Renderer2,
     SimpleChanges
 } from '@angular/core';
 import {IShiftPosition, ITooltipData, TooltipPosition, TooltipType} from './tooltip.entities';
 import {WindowService} from '@ironsource/fusion-ui/services/window';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
@@ -26,7 +25,7 @@ const TOOLTIP_ARROW_SIZE = 6;
     styleUrls: ['./tooltip.component.scss', './tooltip.component-v2.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TooltipComponent extends StyleBase implements OnDestroy, AfterViewInit, OnChanges {
+export class TooltipComponent extends FusionBase implements AfterViewInit, OnChanges {
     public content: string | SafeHtml;
     public componentData: any;
     public icon: IconData;

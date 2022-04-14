@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Injector, Input, Outpu
 import {DropdownOption} from '../entities/dropdown-option';
 import {DropdownService} from '../dropdown.service';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
 
 @Component({
     selector: 'fusion-dropdown-options-list',
@@ -10,7 +10,7 @@ import {StyleBase} from '@ironsource/fusion-ui/components/style';
     styleUrls: ['./dropdown-options-list.component.scss', './dropdown-options-list.component-v2.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DropdownOptionsListComponent extends StyleBase {
+export class DropdownOptionsListComponent extends FusionBase {
     @Input() displayedOptions: DropdownOption[];
     @Input() isMultiRawDisplay = false;
     @Input() mappingOptions: any;

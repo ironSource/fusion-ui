@@ -4,10 +4,9 @@ import {ListBoxOption} from './entities/list-box-option';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {ListBoxModes} from './entities/list-box-modes';
 import {detectChangesDecorator} from '@ironsource/fusion-ui/decorators';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import {StyleVersion} from '@ironsource/fusion-ui/services/version';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Component({
@@ -23,7 +22,7 @@ import {IconData} from '@ironsource/fusion-ui/components/icon';
         }
     ]
 })
-export class ListBoxComponent extends StyleBase implements OnInit, ControlValueAccessor {
+export class ListBoxComponent extends FusionBase implements OnInit, ControlValueAccessor {
     options: ListBoxOption[];
     isDisabled: boolean;
     @Input() mappingOptions: any = {id: 'id', displayText: 'displayText'};

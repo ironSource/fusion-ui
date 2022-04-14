@@ -21,15 +21,13 @@ import {DaterangePresets} from '../entities/daterange-presets.enum';
 import {DaterangeService} from './daterange.service';
 import {CalendarService} from '../calendar/calendar.service';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
-import {VersionService} from '@ironsource/fusion-ui/services/version';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {isSameDates} from '@ironsource/fusion-ui/utils';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {BehaviorSubject} from 'rxjs';
 import {DropdownSelectConfigurations} from '@ironsource/fusion-ui/components/dropdown';
 import {CalendarComponentConfigurations} from '../calendar/calendar-component-configurations';
 import {CalendarType} from '../calendar/calendar-type.enum';
-import {StyleVersion} from '@ironsource/fusion-ui/services/version';
 import {DEFAULT_PLACEHOLDER_TEXT} from './daterange.configuration';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
 
@@ -46,7 +44,7 @@ import {IconData} from '@ironsource/fusion-ui/components/icon';
         }
     ]
 })
-export class DaterangeComponent extends StyleBase implements OnInit {
+export class DaterangeComponent extends FusionBase implements OnInit {
     @Input() id: string;
     @Input() presetsHeaderTemplate: TemplateRef<any>;
     @Input() minDate: Date;
@@ -93,7 +91,7 @@ export class DaterangeComponent extends StyleBase implements OnInit {
     originalSelection: DaterangeSelection = null;
     currentPreset: DaterangePresets = null;
     overlayAlign$ = new BehaviorSubject<string>('');
-    selectedVersion$ = this.versionService.styleVersion$;
+
     private daterangeOptions: DaterangeOptions;
 
     public get selectorIcon(): string {
@@ -111,7 +109,6 @@ export class DaterangeComponent extends StyleBase implements OnInit {
 
     constructor(
         injector: Injector,
-        private versionService: VersionService,
         public daterangeService: DaterangeService,
         private calendarService: CalendarService,
         private elemRef: ElementRef,

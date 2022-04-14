@@ -2,11 +2,10 @@ import {ChangeDetectionStrategy, Component, Input, OnInit, Output, EventEmitter,
 import {MonthPicker} from '../month-picker';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {MONTH_NAMES_SHORT} from '../month-picker.configuration';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import {StyleVersion} from '@ironsource/fusion-ui/services/version';
-import {IconData} from '@ironsource/fusion-ui';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Component({
     selector: 'fusion-month-picker-selector',
@@ -18,7 +17,7 @@ import {IconData} from '@ironsource/fusion-ui';
     ],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MonthPickerSelectorComponent extends StyleBase implements OnInit {
+export class MonthPickerSelectorComponent extends FusionBase implements OnInit {
     @Input() min: MonthPicker;
     @Input() max: MonthPicker;
 

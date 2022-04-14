@@ -1,12 +1,12 @@
 import {Component, EventEmitter, Injector, Input, Output} from '@angular/core';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
 
 @Component({
     selector: 'fusion-modal-footer',
     templateUrl: './modal-footer.component.html',
     styleUrls: ['./modal-footer.component.scss', './modal-footer.component-v2.scss']
 })
-export class ModalFooterComponent extends StyleBase {
+export class ModalFooterComponent extends FusionBase {
     @Input() loading = false;
     @Input() error = '';
     @Input() saveButtonText = 'Save';

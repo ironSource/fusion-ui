@@ -4,7 +4,7 @@ import {MonthPicker, MonthPickerConfiguration, MonthPickerPlaceholder} from './m
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {isNullOrUndefined, isNumber} from '@ironsource/fusion-ui/utils';
 import {BehaviorSubject} from 'rxjs';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
 
 @Component({
     selector: 'fusion-month-picker',
@@ -19,7 +19,7 @@ import {StyleBase} from '@ironsource/fusion-ui/components/style';
         }
     ]
 })
-export class MonthPickerComponent extends StyleBase {
+export class MonthPickerComponent extends FusionBase {
     @Input() set configuration(value: MonthPickerConfiguration) {
         this.config.placeholder = this.setPlaceholder(value.placeholder);
         this.config.min = value.min;

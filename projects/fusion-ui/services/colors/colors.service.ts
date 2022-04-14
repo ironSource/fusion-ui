@@ -1,16 +1,13 @@
 import {Injectable} from '@angular/core';
 import {COLORS_PALETTE, NAMED_WEB_COLORS, PIE_COLORS_PALETTE} from './colors-palette';
-import {VersionService} from '@ironsource/fusion-ui/services/version';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ColorsService {
-    constructor(private versionService: VersionService) {}
-
-    public getColorPalette(): string[] {
-        const paletteName = `style_v${this.versionService.styleVersion}`;
-        return !!COLORS_PALETTE[paletteName] ? COLORS_PALETTE[paletteName] : COLORS_PALETTE.style_v1;
+    public getColorPalette(styleVersion: number): string[] {
+        const paletteName = `style_v${styleVersion}`;
+        return !!COLORS_PALETTE[paletteName] ? COLORS_PALETTE[paletteName] : COLORS_PALETTE.style_v2;
     }
 
     public getPieColorsPalette(): string[] {

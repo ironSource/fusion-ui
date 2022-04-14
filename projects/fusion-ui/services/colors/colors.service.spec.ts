@@ -1,6 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {ColorsService} from './colors.service';
-import {VersionService} from '../version/version.service';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 
 const mokPalette = [
     '#0d148c',
@@ -33,7 +33,7 @@ describe('ColorsService', () => {
 
     it('Color service must return base colors Palette', () => {
         const colorService: ColorsService = TestBed.inject(ColorsService);
-        expect(colorService.getColorPalette()).toEqual(mokPalette);
+        expect(colorService.getColorPalette(StyleVersion.V2)).toEqual(mokPalette);
     });
 
     it('Color service must convert color HEX "#2FCF73" to RGBA (rgba(47,207,115,1)) no opacity', () => {

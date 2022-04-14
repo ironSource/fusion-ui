@@ -28,8 +28,7 @@ import {DropdownService} from '../dropdown.service';
 import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
 import {detectChangesDecorator} from '@ironsource/fusion-ui/decorators';
 import {DROPDOWN_DEBOUNCE_TIME, DROPDOWN_OPTIONS_WITHOUT_SCROLL} from '../dropdown-config';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
-import {StyleVersion} from '@ironsource/fusion-ui/services/version';
+import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {DropdownSelectConfigurations} from '../dropdown-select/dropdown-select-configurations';
 import {DropdownSelectComponent} from '../dropdown-select/dropdown-select.component';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
@@ -52,7 +51,7 @@ import {IconData} from '@ironsource/fusion-ui/components/icon';
         }
     ]
 })
-export class DropdownComponent extends StyleBase implements OnInit, OnDestroy, OnChanges, ControlValueAccessor {
+export class DropdownComponent extends FusionBase implements OnInit, OnDestroy, OnChanges, ControlValueAccessor {
     @Input() set options(value: DropdownOption[]) {
         this.optionsState = this.cloneOptions(value);
         this.displayedOptions$.next(this.parseOptions(this.optionsState));
