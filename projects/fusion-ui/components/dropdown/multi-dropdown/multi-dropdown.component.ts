@@ -32,7 +32,7 @@ export class MultiDropdownComponent extends DropdownComponent implements OnInit,
     tempOptions: DropdownOption[];
 
     optionsWithoutScroll = DROPDOWN_OPTIONS_WITHOUT_SCROLL;
-    dropdownArrowIconName$ = new BehaviorSubject<string | IconData>({
+    dropdownArrowIconName$ = new BehaviorSubject<IconData>({
         iconName: 'arrow-dropdown',
         iconVersion: 'v1'
     });

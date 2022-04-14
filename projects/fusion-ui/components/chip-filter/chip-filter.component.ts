@@ -2,57 +2,38 @@ import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Injector, 
 import {StyleBase} from '@ironsource/fusion-ui/components/style';
 import {BehaviorSubject, fromEvent} from 'rxjs';
 import {StyleVersion} from '@ironsource/fusion-ui/services/version';
-import {TagComponentConfigurations} from './tag-component-configurations';
+import {ChipFilterComponentConfigurations, ChipType, ChipTypeToClass} from './chip-filter-component-configurations';
 import {takeUntil} from 'rxjs/operators';
 import {IconData} from '@ironsource/fusion-ui/components';
 
 @Component({
-    selector: 'fusion-tag',
-    templateUrl: './tag.component.html',
-    styleUrls: ['./tag.component.scss', './tag.component-v2.scss'],
+    selector: 'fusion-chip-filter',
+    templateUrl: './chip-filter.component.html',
+    styleUrls: ['./chip-filter.component-v3.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TagComponent extends StyleBase implements OnInit {
-    closeIconName$ = new BehaviorSubject<IconData>({
-        iconName: 'clear-full-circle',
-        iconVersion: 'v1'
-    });
+export class ChipFilterComponent extends StyleBase implements OnInit {
+    id: number | string;
     width: number;
     tooltipWidth: number;
-    _selected: boolean;
-    _disabled: boolean;
-    _close: boolean;
+    tooltipContent: string;
 
-    @Input() set configuration(value: TagComponentConfigurations) {
+    private _selected: boolean;
+    private _disabled: boolean;
+    private _close: boolean;
+
+    @Input() set configuration(value: ChipFilterComponentConfigurations) {
         if (!!value) {
             this.id = value.id;
-            this.icon = value.icon;
-            this.flag = value.flag;
-            this.title = value.title;
             this.close = value.close;
             this.disabled = value.disabled;
-            this.role = value.role;
             this.selected = value.selected;
+            this.type = value.type;
             this.tooltipContent = value.tooltipContent;
             this.tooltipWidth = value.tooltipWidth;
         }
     }
-
-    // deprecated inputs
-    @Input() id: number | string;
-    @Input() icon: IconData;
-    @Input() flag: string;
-    @Input() title: string;
-    @Input() tooltipContent: string;
-    // when using tags inside an isClickOutside directive,
-    // the click from the onremove will cause isClickOutside to trigger as an outside click
-    // due to the tag being already removed from the DOM tree when the click reaches isClickOutside
-    // in which case we want to set suppressClickOnRemove as true
     @Input() suppressClickOnRemove = false;
-
-    @Input() set role(role: 'filter') {
-        this.changeHostClass('tag-filter', role === 'filter');
-    }
 
     @Input() set close(close: boolean) {
         this._close = close;
@@ -65,7 +46,7 @@ export class TagComponent extends StyleBase implements OnInit {
 
     @Input() set disabled(disabled: boolean) {
         this._disabled = disabled;
-        this.changeHostClass('disabled', disabled);
+        this.changeHostClass('fu-disabled', disabled);
     }
 
     get disabled(): boolean {
@@ -73,8 +54,13 @@ export class TagComponent extends StyleBase implements OnInit {
     }
 
     @Input()
+    set type(chipType: ChipType) {
+        this.changeHostClass(ChipTypeToClass[chipType], !!chipType);
+    }
+
+    @Input()
     set selected(selected: boolean) {
-        this.changeHostClass('selected', selected);
+        this.changeHostClass('fu-selected', selected);
         this._selected = selected;
     }
 
@@ -82,9 +68,7 @@ export class TagComponent extends StyleBase implements OnInit {
         return this._selected;
     }
 
-    // eslint-disable-next-line
     @Output() onRemove = new EventEmitter();
-    // eslint-disable-next-line
     @Output() onSelectedChange = new EventEmitter<any>();
 
     constructor(injector: Injector, private element: ElementRef, private renderer: Renderer2) {
@@ -93,10 +77,6 @@ export class TagComponent extends StyleBase implements OnInit {
 
     ngOnInit() {
         this.width = this.element.nativeElement.offsetWidth;
-        this.selectedVersion$.subscribe(styleVersion => {
-            this.closeIconName$.next(styleVersion === StyleVersion.V2 ? 'close' : {iconName: 'clear-full-circle', iconVersion: 'v1'});
-        });
-
         if (!this.close && !this.disabled) {
             this.setClickListener();
         }

@@ -22,7 +22,7 @@ export abstract class InputParameters extends StyleBase {
         this.configuration = {...this._configuration, name};
     }
 
-    @Input() set icon(icon: string | IconData) {
+    @Input() set icon(icon: IconData) {
         this.configuration = {...this._configuration, icon};
     }
 

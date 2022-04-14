@@ -6,7 +6,7 @@ import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dy
 import {IconData} from '@ironsource/fusion-ui/components';
 
 export interface SidebarMenuItem {
-    icon?: string | IconData;
+    icon?: IconData;
     name?: string; // not in use if has content
     route?: string;
     routeConfigurations?: {

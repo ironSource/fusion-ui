@@ -38,13 +38,13 @@ export class MonthPickerSelectorComponent extends StyleBase implements OnInit {
     currentMonthPicker: MonthPicker;
     selectedValue: MonthPicker;
 
-    arrowLeftIconName$: Observable<string | IconData> = this.selectedVersion$.pipe(
+    arrowLeftIconName$: Observable<IconData> = this.selectedVersion$.pipe(
         map(styleVersion =>
             styleVersion === StyleVersion.V2 ? {iconName: 'arrow-left', iconVersion: 'v2'} : {iconName: 'arrow-right', iconVersion: 'v1'}
         ),
         startWith({iconName: 'arrow-right', iconVersion: 'v1'})
     );
-    arrowRightIconName$: Observable<string | IconData> = this.selectedVersion$.pipe(
+    arrowRightIconName$: Observable<IconData> = this.selectedVersion$.pipe(
         map(styleVersion =>
             styleVersion === StyleVersion.V2 ? {iconName: 'arrow-right', iconVersion: 'v2'} : {iconName: 'arrow-right', iconVersion: 'v1'}
         ),

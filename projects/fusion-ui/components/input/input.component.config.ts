@@ -6,11 +6,11 @@ import {StyleVersion} from '@ironsource/fusion-ui/services/version';
 import {IconData} from '@ironsource/fusion-ui';
 
 export interface InputConfigByStyle {
-    iconSearch: string | IconData;
-    iconClear: string | IconData;
-    iconInfo: string | IconData;
-    iconWarning: string | IconData;
-    iconLoader: string | IconData;
+    iconSearch: IconData;
+    iconClear: IconData;
+    iconInfo: IconData;
+    iconWarning: IconData;
+    iconLoader: IconData;
     currentStyleVersion: StyleVersion;
 }
 

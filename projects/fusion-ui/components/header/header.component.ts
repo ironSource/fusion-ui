@@ -15,7 +15,7 @@ export class HeaderComponent {
     @ViewChild('menuAction', {read: ElementRef}) set menuAction(value: ElementRef) {
         this.onMenuActionChanged(value);
     }
-    @Input() primaryMenuIconName: string | IconData = {iconName: 'user', iconVersion: 'v1'};
+    @Input() primaryMenuIconName: IconData = {iconName: 'user', iconVersion: 'v1'};
     @Input() primaryMenuItems: MenuItem[];
     @Input() secondaryMenuItems: MenuItem[];
     @Input() userName: string;

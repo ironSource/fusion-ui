@@ -1,0 +1,105 @@
+@import '../../src/style/scss/vars/mixins';
+
+$helveticaNueMd: 'HelveticaNeue-Medium', helvetica, sans-serif;
+$helveticaNueRg: 'HelveticaNeue', helvetica, sans-serif;
+
+
+%chip-font {
+    letter-spacing: 0.24px;
+    font-size: 13px;
+    line-height: 15.87px;
+    font-family: $helveticaNueMd;
+    font-weight: 500;
+}
+
+$chipHeight: 32px;
+$dateChipMaxWidth: 215px;
+$addChipMaxWidth: 105px;
+
+$fu-light-100: #F1F3F4;
+$fu-light-200: #EDEFF0;
+$fu-light-900: #7B838C;
+
+
+$fu-primary-100: #E2EEFF;
+$fu-primary-200: #C9DFFF;
+$fu-primary-300: #96C0FF;
+$fu-primary-400: #68A5FF;
+$fu-primary-500: #3083FF;
+
+$fu-black-500: #53575B;
+
+:host {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 4px 8px 4px 16px;
+    height: $chipHeight;
+    @extend %chip-font;
+    border-radius: 100px;
+    border: none;
+    gap: 4px;
+    background-color: $fu-primary-100;
+    color:$fu-primary-500;
+
+    @include icon-style('fu-icon-close', $fu-primary-300, 16px, true, true,true){
+        margin-left: auto;
+        width: 16px;
+        height: 16px;
+    };
+
+    @include icon-style('fu-icon-close', $fu-primary-400, 16px, flase, true,true,true){
+        &:hover {
+            cursor: pointer;
+        }
+    };
+
+    &:hover {
+        background-color: $fu-primary-200;
+        cursor: pointer;
+    }
+
+    .fu-chip-content {
+        white-space: nowrap;
+        overflow: hidden !important;
+        text-overflow: ellipsis;
+        display: flex;
+        width: 190px;
+    }
+
+    &.fu-date-filter {
+        padding: 4px 16px 4px 12px;
+        max-width: $dateChipMaxWidth;
+        .fu-icon-close {
+            display: none;
+        }
+    }
+
+    &.fu-add-filter {
+        background-color: $fu-light-200;
+        color: $fu-black-500;
+        max-width: $addChipMaxWidth;
+
+        &:hover {
+            color: $fu-primary-500;
+            cursor: pointer;
+        }
+    }
+
+    &.fu-disabled{
+        background-color: $fu-light-100;
+        cursor: not-allowed;
+        color: $fu-light-900;
+        .fu-icon-close{
+            display: none;
+        }
+        pointer-events: none;
+    }
+
+    &.fu-selected{
+        background-color: $fu-primary-200;
+    }
+
+
+}

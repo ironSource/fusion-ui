@@ -23,4 +23,8 @@ export class AppComponent implements OnInit, OnDestroy {
         this.onDestroy$.next();
         this.onDestroy$.complete();
     }
+
+    onTagRemove($event): void {
+        console.log('onTagRemove> ', $event);
+    }
 }

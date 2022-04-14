@@ -74,7 +74,7 @@ export class DropdownComponent extends StyleBase implements OnInit, OnDestroy, O
     /**
      * @deprecated since version 6.0.0
      */
-    @Input() icon: string | IconData;
+    @Input() icon: IconData;
     @Input() filterIconName: string;
     @Input() isIconRightPosition = false;
     @Input() isDisabled: boolean;
@@ -141,7 +141,7 @@ export class DropdownComponent extends StyleBase implements OnInit, OnDestroy, O
 
     forcePlaceholderOnSelection = false;
     placeholderText = 'Please Select';
-    placeholderIcon: string | IconData;
+    placeholderIcon: IconData;
 
     isOpen$: BehaviorSubject<boolean> = new BehaviorSubject(false);
     id: any;
@@ -164,7 +164,7 @@ export class DropdownComponent extends StyleBase implements OnInit, OnDestroy, O
     backendPaginationChanged$: Subject<any> = new Subject();
     displayedOptions$ = new BehaviorSubject<DropdownOption[]>([]);
     displayedOptionsObservable$: Observable<DropdownOption[]>;
-    dropdownArrowIconName$ = new BehaviorSubject<string | IconData>({
+    dropdownArrowIconName$ = new BehaviorSubject<IconData>({
         iconName: 'arrow-dropdown',
         iconVersion: 'v1'
     });
@@ -175,7 +175,7 @@ export class DropdownComponent extends StyleBase implements OnInit, OnDestroy, O
     private _isLocatedRight = false;
     private _isLocatedLeft = false;
     private initPlaceholder: string;
-    private initIcon: string | IconData;
+    private initIcon: IconData;
     protected focusedLI = -1;
     private loadingState: boolean;
     private backendPaginationState: BackendPagination;

@@ -6,7 +6,7 @@ export interface InputConfiguration {
     placeholder?: string;
     errorType?: string;
     name?: string;
-    icon?: string | IconData;
+    icon?: IconData;
     iconPos?: 'left' | 'right' | '';
     units?: string;
     unitPos?: string;

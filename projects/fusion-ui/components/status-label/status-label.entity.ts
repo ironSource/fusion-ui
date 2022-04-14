@@ -6,7 +6,7 @@ import {IconData} from '@ironsource/fusion-ui/components';
 
 export interface StatusLabelConfig {
     text?: string;
-    icon?: string | IconData;
+    icon?: IconData;
     status?: StatusLabelStatus;
     borderType?: StatusLabelBorderType;
     customColors?: {
