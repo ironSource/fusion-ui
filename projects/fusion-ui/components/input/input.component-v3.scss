@@ -86,6 +86,8 @@ $smallHeight: 32px;
 
             &[readonly] {
                 color: $fu-black-500;
+                border: none;
+                padding-top: initial;
             }
 
             &.disabled,
