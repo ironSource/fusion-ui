@@ -1,15 +1,7 @@
-@import '../../src/style/scss/vars/mixins';
+@import '../../src/style/scss/v3/mixins/mixins';
+@import '../../src/style/scss/v3/vars/fonts';
+@import '../../src/style/scss/v3/vars/colors';
 
-// Fonts
-$helveticaNueMd: 'HelveticaNeue-Medium', helvetica, sans-serif;
-$helveticaNueRg: 'HelveticaNeue', helvetica, sans-serif;
-
-%font-body {
-    font-size: 12px;
-    font-family: $helveticaNueMd;
-    font-weight: 500;
-    letter-spacing: 0.24px;
-}
 
 %iconLeft{
     left: 10px;
@@ -43,12 +35,6 @@ $helveticaNueRg: 'HelveticaNeue', helvetica, sans-serif;
     }
 }
 
-%font-captionRegular {
-    font-size: 11px;
-    font-family: $helveticaNueRg;
-    font-weight: 400;
-}
-
 // Regular size
 $regularHeight: 40px;
 $regularPadding: 0 12px 0 12px;
@@ -57,34 +43,7 @@ $borderRadius: 8px;
 // Small size
 $smallHeight: 32px;
 
-$White: #fffff;
-
-// Light
-$fu-light-100: #F1F3F4;
-$fu-light-200: #EDEFF0;
-$fu-light-300: #e5e7e9;
-$fu-light-500: #d2d5d8;
-$fu-light-700: #a9afb4;
-$fu-light-800: #8E959D;
-$fu-light-900: #7B838C;
-
-// Black
-$fu-black-200: #696A6B;
-$fu-black-500: #53575B;
-
-// Primary
-$fu-primary-500: #3083FF;
-
-// Negative
-$fu-negative-100: #ffefee;
-$fu-negative-500: #ff6a63;
-$fu-negative-700: #DA564F;
-
-// Neutral
-$fu-neutral-100: #fff8e2;
-$fu-neutral-500: #ffb424;
-
-:host.fusion-style-v3 {
+:host.fu-style-v3 {
     .fu-input-holder {
         position: relative;
         display: flex;
@@ -103,7 +62,8 @@ $fu-neutral-500: #ffb424;
         }
 
         input {
-            @extend %font-body;
+            @extend %font-bodyXSmallStrong;
+            letter-spacing: 0.24px;
             border: none;
             box-sizing: border-box;
             border-radius: $borderRadius;
@@ -248,7 +208,7 @@ $fu-neutral-500: #ffb424;
     }
 
     .fu-error-msg {
-        @extend %font-captionRegular;
+        @extend %font-caption;
         color: $fu-negative-700;
         margin-top: 4px;
         height: 16px;
