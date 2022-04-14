@@ -1,28 +1,7 @@
 @import '../../src/style/scss/v3/mixins/mixins';
 @import '../../src/style/scss/v3/vars/colors';
+@import '../../src/style/scss/v3/vars/fonts';
 
-$helveticaNueMd: 'HelveticaNeue-Medium', helvetica, sans-serif;
-$helveticaNueRg: 'HelveticaNeue', helvetica, sans-serif;
-
-%font-subtitle {
-    font-size: 13px;
-    font-family:$helveticaNueMd;
-    text-align: center;
-    font-weight: 500;
-}
-
-%rotating-icon {
-    animation: rotation 1s infinite linear;
-}
-
-@keyframes rotation {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(359deg);
-    }
-}
 
 // small
 $smallMinWidth: 66px;
@@ -58,7 +37,8 @@ $buttonBorderRadius: 100px;
     align-items: center;
     cursor: pointer;
     border: none;
-    @extend %font-subtitle;
+    @extend %font-bodyStrong;
+    text-align: center;
 
     height: $mediumHeight;
     width: fit-content;
@@ -71,6 +51,9 @@ $buttonBorderRadius: 100px;
         --fu-border-color: #ffff;
         --fu-background-color: transparent;
         --fu-font-color: #ffff;
+        --fu-disable-font-color: #8E959D;
+        --fu-disable-border-color: #8E959D;
+        --fu-border: 1px solid;
         --fu-hover-background-color: #696A6B;
         --fu-active-background-color: #696A6B;
     }
@@ -152,28 +135,14 @@ $buttonBorderRadius: 100px;
             background-color: var(--fu-background-color, transparent);
             &:hover {
                 color: var(--fu-font-color, $White);
-                border: none;
+                border: var(--fu-border,none);
                 background-color: var(--fu-hover-background-color, $fu-black-200);
             }
 
             &:active {
                 color: var(--fu-font-color, $White);
-                border: none;
                 background-color: var(--fu-active-background-color, $fu-black-500);
-            }
-
-            &.dark {
-                &:hover, &:active {
-                    border: 1px solid;
-                    background-color: var(--fu-hover-background-color);
-                    border-color: var(--fu-border-color);
-                }
-
-                &.disabled {
-                    background-color: transparent;
-                    border-color: $fu-light-800;
-                    color: $fu-light-800;
-                }
+                border: var(--fu-border,none);
             }
         }
 
@@ -182,6 +151,9 @@ $buttonBorderRadius: 100px;
             border: 1px solid $fu-light-600;
             cursor: initial;
             pointer-events: none;
+            &.black {
+                background-color: var(--fu-background-color, transparent);
+            }
         }
     }
 
@@ -202,6 +174,8 @@ $buttonBorderRadius: 100px;
 
     &.black {
         color: $White;
+        border: var(--fu-border, none);
+        border-color: var(--fu-border-color, $fu-black-500);
         background-color: var(--fu-background-color, $fu-black-500);
         &:hover {
             background-color: var(--fu-hover-background-color,$fu-black-200);
@@ -209,16 +183,6 @@ $buttonBorderRadius: 100px;
 
         &:active {
             background-color: var(--fu-active-background-color,$fu-black-500);
-        }
-
-        &.dark {
-            border: 1px solid;
-            border-color: var(--fu-border-color, $fu-black-500);
-            &.disabled {
-                border-color: $fu-light-800;
-                background-color: transparent;
-                color: $fu-light-800;
-            }
         }
     }
 
@@ -235,8 +199,9 @@ $buttonBorderRadius: 100px;
     }
 
     &.disabled {
-        color: $White;
-        background-color: $fu-light-700;
+        color: var(--fu-disable-font-color,$White);
+        border-color: var(--fu-disable-border-color, initial);
+        background-color: var(--fu-background-color,$fu-light-700);
         cursor: initial;
         pointer-events: none;
     }
@@ -439,11 +404,12 @@ $buttonBorderRadius: 100px;
 
         &.black {
             color: var(--fu-font-color, $White);
+            border: var(--fu-border, none);
+            border-color: var(--fu-border-color, $fu-black-500);
             background-color: var(--fu-background-color, $fu-black-500);
             &.transparent {
                 color: var(--fu-font-color, $fu-black-500);
                 border-color: var(--fu-border-color, $fu-black-500);
-                background-color: var(--fu-background-color, transparent);
             }
         }
 

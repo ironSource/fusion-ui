@@ -24,7 +24,7 @@ import {MockLogService, MockUniqueIdService, MockApiService} from '@ironsource/f
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {ApiService} from '@ironsource/fusion-ui/services/api';
 import {DropdownSelectModule} from '../dropdown-select/dropdown-select.module';
-import {FUSION_STYLE_VERSION_CSS_VAR_NAME} from '@ironsource/fusion-ui';
+import {FUSION_STYLE_VERSION_CSS_VAR_NAME, StyleVersion} from '@ironsource/fusion-ui';
 
 const optionMock = [
     {
@@ -131,9 +131,10 @@ describe('MultiDropdownComponent', () => {
         expect(bottomActionEl.children.length).toBe(2); // 2 buttons here
 
         expect(bottomActionEl.nativeElement.querySelector('button').outerHTML).toContain('fusion-button=""');
-        expect(bottomActionEl.nativeElement.querySelector('button').innerText).toContain('Cancel');
-        expect(bottomActionEl.nativeElement.querySelectorAll('button')[1].outerHTML).toContain(
-            'class="primary small fu-with-content transparent'
+        expect(bottomActionEl.nativeElement.querySelector('button').textContent.trim()).toContain('Cancel');
+        console.log(bottomActionEl.nativeElement.querySelectorAll('button')[1].outerHTML);
+        expect(bottomActionEl.nativeElement.querySelectorAll('button')[1].outerHTML.trim()).toContain(
+            'class="primary small fu-with-content transparent fu-style-v2'
         );
         expect(bottomActionEl.nativeElement.querySelectorAll('button')[1].outerHTML).toContain('fusion-button=""');
         expect(bottomActionEl.nativeElement.querySelectorAll('button')[1].innerText).toContain('Apply');
