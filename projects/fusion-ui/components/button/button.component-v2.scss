@@ -20,7 +20,7 @@ $buttonBorderRadius: 100px;
 $iconInTableButtonSize: 28px;
 $iconInTableButtonIconSize: 16px;
 
-:host.fusion-style-v2 {
+:host.fu-style-v2 {
     @extend %reset;
     outline: none;
     height: $mediumHeight;
@@ -406,7 +406,7 @@ $iconInTableButtonIconSize: 16px;
     }
 }
 
-:host-context(a.fusion-style-v2) {
+:host-context(a.fu-style-v2) {
     @extend %font-bodyStrong;
     line-height: 1.33;
     color: $fu-primary-500;

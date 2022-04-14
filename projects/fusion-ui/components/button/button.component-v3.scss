@@ -1,4 +1,5 @@
-@import '../../src/style/scss/vars/mixins';
+@import '../../src/style/scss/v3/mixins/mixins';
+@import '../../src/style/scss/v3/vars/colors';
 
 $helveticaNueMd: 'HelveticaNeue-Medium', helvetica, sans-serif;
 $helveticaNueRg: 'HelveticaNeue', helvetica, sans-serif;
@@ -46,40 +47,10 @@ $largePadding: 10px 24px 12px;
 $largePaddingWithIcon: 8px 24px 8px 14px;
 $largePaddingWithIconRight: 8px 40px 8px 22px;
 $largePaddingWithLoading: 10px 28px 12px;
-
-$White: #ffff;
 $buttonBorderRadius: 100px;
 
 
-$fu-primary-100: #E2EEFF;
-$fu-primary-200: #C9DFFF;
-$fu-primary-300: #96C0FF;
-$fu-primary-500: #3083FF;
-$fu-primary-600: #2B76E6;
-$fu-primary-700: #005BE2;
-
-
-$fu-light-200: #EDEFF0;
-$fu-light-300: #E5E7E9;
-$fu-light-400: #DDDFE1;
-$fu-light-500: #D2D5D8;
-$fu-light-600: #B7BBC0;
-$fu-light-700: #A9AFB4;
-$fu-light-800: #8E959D;
-$fu-light-900: #7B838C;
-
-
-$fu-black-200: #696A6B;
-$fu-black-300: #565C62;
-$fu-black-500: #53575B;
-
-
-$fu-negative-500: #FF6A63;
-$fu-negative-600: #EC5D56;
-$fu-negative-700: #DA564F;
-
-
-:host.fusion-style-v3 {
+:host.fu-style-v3 {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -100,8 +71,8 @@ $fu-negative-700: #DA564F;
         --fu-border-color: #ffff;
         --fu-background-color: transparent;
         --fu-font-color: #ffff;
-        --fu-hover-background-color: #565C62;
-        --fu-active-background-color: #565C62;
+        --fu-hover-background-color: $fu-black-300;
+        --fu-active-background-color: $fu-black-300;
     }
 
     &:hover {
@@ -455,7 +426,6 @@ $fu-negative-700: #DA564F;
                 border: var(--fu-border, 1px solid $fu-black-500);
                 background-color: var(--fu-background-color, transparent);
             }
-
         }
 
         &.delete {
