@@ -1,25 +1,9 @@
-import {
-    Component,
-    Input,
-    OnInit,
-    ElementRef,
-    Renderer2,
-    ChangeDetectionStrategy,
-    Injector,
-    Output,
-    EventEmitter,
-    HostListener
-} from '@angular/core';
+import {Input, OnInit, ElementRef, Renderer2, Injector, Output, EventEmitter, HostListener, Directive} from '@angular/core';
 import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
 
-@Component({
-    selector: 'fusion-button,[fusion-button]',
-    templateUrl: './button.component.html',
-    styleUrls: ['./button.component-v1.scss', './button.component-v2.scss', './button.component-v3.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class ButtonComponent extends FusionBase implements OnInit {
+@Directive()
+export abstract class ButtonBaseComponent implements OnInit {
     @HostListener('click', ['$event']) onClick($event: any) {
         this.onclick.emit($event);
     }
@@ -51,9 +35,7 @@ export class ButtonComponent extends FusionBase implements OnInit {
 
     private isDisabled: boolean;
 
-    constructor(injector: Injector, private element: ElementRef, private renderer: Renderer2) {
-        super(injector);
-    }
+    constructor(injector: Injector, private element: ElementRef, private renderer: Renderer2) {}
 
     ngOnInit() {
         this.projectContent = !!this.element.nativeElement.innerText;

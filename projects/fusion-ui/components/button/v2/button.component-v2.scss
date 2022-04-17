@@ -1,6 +1,6 @@
-@import '../../src/style/scss/v2/vars/vars';
-@import '../../src/style/scss/v2/mixins/mixins';
-@import '../../src/style/scss/v2/vars/border';
+@import '../../../src/style/scss/v2/vars/vars';
+@import '../../../src/style/scss/v2/mixins/mixins';
+@import '../../../src/style/scss/v2/vars/border';
 
 $smallHeight: 24px;
 $smallMinWidth: 64px;
@@ -20,7 +20,7 @@ $buttonBorderRadius: 100px;
 $iconInTableButtonSize: 28px;
 $iconInTableButtonIconSize: 16px;
 
-:host.fu-style-v2 {
+:host {
     @extend %reset;
     outline: none;
     height: $mediumHeight;
@@ -96,14 +96,12 @@ $iconInTableButtonIconSize: 16px;
             }
             &.fu-with-loading {
                 min-width: $mediumMinWidth;
-                @include icon-style('loader-dots-v4', currentColor, (height: 16px, width: 36px), false, true);
+
                 &.large{
                     min-width: $largeMinWidth;
-                    @include icon-style('loader-dots-v4', currentColor, (height: 16px, width: 36px), false, true);
                 }
                 &.small{
                     min-width: $smallMinWidth;
-                    @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 24px), false, true);
                 }
             }
             & > span{
@@ -181,21 +179,21 @@ $iconInTableButtonIconSize: 16px;
         .loading {
             display: none
         }
-        @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 36px), false, true) {
-            display: block;
-        }
+        //@include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 36px), false, true) {
+        //    display: block;
+        //}
         &:disabled{
             background-color: $fu-primary-500;
         }
-        &.small {
-            min-width: 24px;
-            @include icon-style('loader-dots-v4', currentColor, (height: 8px, width: 20px), false, true)
-        }
-        &.large{
-            @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 36px), false, true) {
-                padding-top: 5px;
-            }
-        }
+        //&.small {
+        //    min-width: 24px;
+        //    @include icon-style('loader-dots-v4', currentColor, (height: 8px, width: 20px), false, true)
+        //}
+        //&.large{
+        //    @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 36px), false, true) {
+        //        padding-top: 5px;
+        //    }
+        //}
         &.secondary:disabled{
             color: $fu-light-800;
             background-color: $fu-light-200;
@@ -204,15 +202,15 @@ $iconInTableButtonIconSize: 16px;
             background-color: $fu-negative-500;
         }
         &.fu-iconed{
-            @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 24px), false, true);
-            &.large{
-                @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 30px), false, true){
-                    padding: 0;
-                }
-            }
-            &.small {
-                @include icon-style('loader-dots-v4', currentColor, (height: 8px, width: 20px), false, true)
-            }
+            //@include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 24px), false, true);
+            //&.large{
+            //    @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 30px), false, true){
+            //        padding: 0;
+            //    }
+            //}
+            //&.small {
+            //    @include icon-style('loader-dots-v4', currentColor, (height: 8px, width: 20px), false, true)
+            //}
 
             &.fu-with-content {
                 > span > span {
@@ -279,7 +277,7 @@ $iconInTableButtonIconSize: 16px;
     }
 }
 
-:host-context(fusion-button.fu-style-v2) {
+:host-context(fusion-button) {
     @extend %reset;
     display: inline-flex;
     text-align: center;
@@ -324,17 +322,7 @@ $iconInTableButtonIconSize: 16px;
                 height: 16px;
             };
         }
-        &.fu-with-loading {
-            @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 24px), false, true);
-            &.large{
-                @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 30px), false, true){
-                    padding: 0;
-                }
-            }
-            &.small {
-                @include icon-style('loader-dots-v4', currentColor, (height: 8px, width: 20px), false, true)
-            }
-        }
+
         &.fu-with-content {
             padding: 8px 16px 8px;
             min-width: 92px;
@@ -355,14 +343,12 @@ $iconInTableButtonIconSize: 16px;
             }
             &.fu-with-loading {
                 min-width: $mediumMinWidth;
-                @include icon-style('loader-dots-v4', currentColor, (height: 16px, width: 36px), false, true);
+
                 &.large{
                     min-width: $largeMinWidth;
-                    @include icon-style('loader-dots-v4', currentColor, (height: 16px, width: 36px), false, true);
                 }
                 &.small{
                     min-width: $smallMinWidth;
-                    @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 24px), false, true);
                 }
             }
         }
@@ -374,9 +360,6 @@ $iconInTableButtonIconSize: 16px;
         }
         &.large{
             padding: $largePaddingButtonComponent;
-            @include icon-style('loader-dots-v4', currentColor, (height: 16px, width: 36px), false, true){
-                padding: 0;
-            }
             &.fu-iconed {
                 padding: $largePaddingButtonComponentWithIcon;
             }
@@ -406,7 +389,7 @@ $iconInTableButtonIconSize: 16px;
     }
 }
 
-:host-context(a.fu-style-v2) {
+:host-context(a) {
     @extend %font-bodyStrong;
     line-height: 1.33;
     color: $fu-primary-500;
@@ -423,23 +406,11 @@ $iconInTableButtonIconSize: 16px;
     }
     &.fu-with-loading{
         text-align: center;
-        @include icon-style('loader-dots-v4', $fu-light-900, (height: 16px, width: 36px), false, true) {
-            display: inherit;
-        }
     }
     &.fu-iconed {
         padding: $mediumPadding;
         height: auto;
         width: auto;
-        @include icon-style('icon', var(--button-icon-color, currentColor), var(--button-small-icon-size, 12px), false, true){
-            margin-right: 8px;
-            vertical-align: middle;
-        }
-        &.fu-with-loading{
-            @include icon-style('icon', var(--button-icon-color, currentColor), var(--button-small-icon-size, 12px), false, true){
-                display: none;
-            }
-        }
     }
     .is-icon-text{
         line-height: 1;

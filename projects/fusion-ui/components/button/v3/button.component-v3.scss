@@ -1,6 +1,6 @@
-@import '../../src/style/scss/v3/mixins/mixins';
-@import '../../src/style/scss/v3/vars/colors';
-@import '../../src/style/scss/v3/vars/fonts';
+@import '../../../src/style/scss/v3/mixins/mixins';
+@import '../../../src/style/scss/v3/vars/colors';
+@import '../../../src/style/scss/v3/vars/fonts';
 
 
 // small
@@ -29,7 +29,7 @@ $largePaddingWithLoading: 10px 30px 12px;
 $buttonBorderRadius: 100px;
 
 
-:host.fu-style-v3 {
+:host {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -351,9 +351,6 @@ $buttonBorderRadius: 100px;
         padding: $mediumPaddingWithLoading;
         color: $White;
         background-color: $fu-primary-500;
-        @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 26px), false, true) {
-            display: block;
-        }
 
         > span {
             height: 20px;
@@ -420,16 +417,10 @@ $buttonBorderRadius: 100px;
 
         &.small {
             padding: $smallPaddingWithLoading;
-            @include icon-style('loader-dots-v4', currentColor, (height: 8px, width: 20px), false, true){
-                display: block;
-            }
         }
 
         &.large{
             padding: $largePaddingWithLoading;
-            @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 36px), false, true) {
-                display: block;
-            }
         }
     }
 
@@ -440,6 +431,10 @@ $buttonBorderRadius: 100px;
         background-color: transparent;
         padding: 0;
         height: 16px;
+
+        &:hover {
+            background-color: transparent;
+        }
 
         span {
             display: inline-block;
@@ -472,6 +467,7 @@ $buttonBorderRadius: 100px;
             pointer-events: none;
             padding: $mediumPadding;
             color: $fu-primary-500;
+            background-color: transparent;
             > span {
                 height: 16px;
                 > span {
@@ -479,21 +475,6 @@ $buttonBorderRadius: 100px;
                 }
             }
 
-            @include icon-style('loader-dots-v4', $fu-primary-500, (height: 16px, width: 22px), false, true) {
-                height: 16px;
-            }
-
-            &.third {
-                @include icon-style('loader-dots-v4', $fu-light-900, (height: 16px, width: 22px), false, true) {
-                    height: 16px;
-                }
-            }
-
-            &.black {
-                @include icon-style('loader-dots-v4', $fu-black-500, (height: 16px, width: 22px), false, true) {
-                    height: 16px;
-                }
-            }
         }
 
         &.fu-iconed {
@@ -527,27 +508,6 @@ $buttonBorderRadius: 100px;
                     color:  $fu-light-800;
                     pointer-events: none;
                     @include icon-style('icon',  $fu-light-800, 16px , false, true);
-                }
-
-                &.fu-with-loading{
-                    > span {
-                        height: 16px;
-                        > span {
-                            display: none;
-                        }
-                    }
-
-                    @include icon-style('loader-dots-v4', $fu-primary-500, (height: 16px, width: 22px), false, true) {
-                        height: 16px;
-                    }
-
-                    &.third {
-                        @include icon-style('loader-dots-v4', $fu-light-900, (height: 16px, width: 22px) , false, true);
-                    }
-
-                    &.black {
-                        @include icon-style('loader-dots-v4', $fu-black-500, (height: 16px, width: 22px) , false, true);
-                    }
                 }
 
                 &.fu-icon-right {
