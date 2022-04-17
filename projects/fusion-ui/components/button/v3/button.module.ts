@@ -3,9 +3,8 @@ import {CommonModule} from '@angular/common';
 import {ButtonComponent} from './button.component';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {SVG_OPTIONS_TOKEN} from '@ironsource/fusion-ui/components/svg';
-import {ButtonOptions} from '@ironsource/fusion-ui/components/button/common/base/button-entities';
-import {BUTTON_OPTIONS_DEFAULT_VALUE} from '@ironsource/fusion-ui/components/button/common/base/button-config';
-import {ButtonLoadingModule} from '@ironsource/fusion-ui/components/button/v3/components/button-loading.module';
+import {ButtonOptions, BUTTON_OPTIONS_DEFAULT_VALUE} from '@ironsource/fusion-ui/components/button/common/base';
+import {ButtonLoadingModule} from './components/button-loading.module';
 
 @NgModule({
     declarations: [ButtonComponent],

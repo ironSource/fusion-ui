@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
-import {ButtonLoadingComponent} from '@ironsource/fusion-ui/components/button/v2/components/button-loading.component';
+import {ButtonLoadingComponent} from './button-loading.component';
 
 @NgModule({
     declarations: [ButtonLoadingComponent],
