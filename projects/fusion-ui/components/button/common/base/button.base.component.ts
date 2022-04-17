@@ -1,5 +1,4 @@
 import {Input, OnInit, ElementRef, Renderer2, Injector, Output, EventEmitter, HostListener, Directive} from '@angular/core';
-import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Directive()
