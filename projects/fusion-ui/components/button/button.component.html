@@ -3,8 +3,8 @@
     <ng-container *ngIf="selectedVersion$ | async as selectedVersion">
         <ng-container [ngSwitch]="selectedVersion">
             <ng-container *ngSwitchCase="1" [ngTemplateOutlet]="V1" [ngTemplateOutletContext]="{isLoading: isLoading}"></ng-container>
-            <ng-container *ngSwitchCase="3" [ngTemplateOutlet]="V2" [ngTemplateOutletContext]="{isLoading: isLoading}"></ng-container>
-            <ng-container *ngSwitchCase="2" [ngTemplateOutlet]="V3" [ngTemplateOutletContext]="{isLoading: isLoading, projectContent: projectContent}"></ng-container>
+            <ng-container *ngSwitchCase="2" [ngTemplateOutlet]="V2" [ngTemplateOutletContext]="{isLoading: isLoading}"></ng-container>
+            <ng-container *ngSwitchCase="3" [ngTemplateOutlet]="V3" [ngTemplateOutletContext]="{isLoading: isLoading, projectContent: projectContent}"></ng-container>
         </ng-container>
     </ng-container>
     <span><ng-content></ng-content></span>
@@ -29,6 +29,6 @@
     <fusion-icon
         *ngIf="loading"
         class="icon-loading"
-        [name]="!isContent ? 'loading-clean' : {iconName: 'loader-dots-v4', iconVersion: 'v2'}"
+        [name]="!projectContent ? 'loading-clean' : {iconName: 'loader-dots-v4', iconVersion: 'v2'}"
     ></fusion-icon>
 </ng-template>
