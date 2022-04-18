@@ -1,7 +1,7 @@
 import {Component, OnInit, ChangeDetectionStrategy, forwardRef, OnDestroy, AfterViewInit} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {CONFIG_INPUT_BY_UI_STYLE, InputBaseComponent} from '@ironsource/fusion-ui/components/input/common/base';
-import {isNullOrUndefined} from '@ironsource/fusion-ui';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {of} from 'rxjs';
 
 @Component({
