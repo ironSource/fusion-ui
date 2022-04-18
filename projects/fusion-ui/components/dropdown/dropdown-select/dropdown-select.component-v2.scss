@@ -90,7 +90,7 @@ $v2-borderRoundedRadius: 20px;
         }
     }
 }
-:host-context(.is-dropdown.fu-style-v2) .is-dropdown-select, :host-context(.is-dropdown.fu-style-v3) .is-dropdown-select {
+:host-context(.is-dropdown.fu-style-v2) .is-dropdown-select, :host-context(.is-dropdown.fu-style-v3 .is-dropdown-select)  {
     &.forced-placeholder{
         label.icon {
             .placeholderText {
