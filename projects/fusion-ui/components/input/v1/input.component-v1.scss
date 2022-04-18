@@ -1,6 +1,6 @@
-@import '../../src/style/scss/v1/vars/vars';
-@import '../../src/style/scss/v1/vars/border';
-@import '../../src/style/scss/v1/mixins/mixins';
+@import '../../../src/style/scss/v1/vars/vars';
+@import '../../../src/style/scss/v1/vars/border';
+@import '../../../src/style/scss/v1/mixins/mixins';
 
 $errBorderColor: $negative-200;
 $errTextColor: $negative-500;
@@ -14,7 +14,7 @@ $regularPadding: 6px 10px 7px;
 $smallHeight: 25px;
 $smallPadding: 4px 6px;
 
-:host.fu-style-v1 {
+:host {
   @extend %reset;
   width: 100%;
   .fu-input-holder {
@@ -260,7 +260,7 @@ $smallPadding: 4px 6px;
       order: 2;
       cursor: pointer;
       box-sizing: border-box;
-      padding: 6px 10px 7px;
+      padding: 0 10px 0 10px;
       position: relative;
       border: 1px solid $light;
       border-left: none;

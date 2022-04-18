@@ -1,6 +1,6 @@
-@import '../../src/style/scss/v3/mixins/mixins';
-@import '../../src/style/scss/v3/vars/fonts';
-@import '../../src/style/scss/v3/vars/colors';
+@import '../../../src/style/scss/v3/mixins/mixins';
+@import '../../../src/style/scss/v3/vars/fonts';
+@import '../../../src/style/scss/v3/vars/colors';
 
 
 %iconLeft{
@@ -43,7 +43,7 @@ $borderRadius: 8px;
 // Small size
 $smallHeight: 32px;
 
-:host.fu-style-v3 {
+:host {
     .fu-input-holder {
         position: relative;
         display: flex;

@@ -1,6 +1,6 @@
-@import '../../src/style/scss/v2/vars/vars';
-@import '../../src/style/scss/v2/vars/border';
-@import '../../src/style/scss/v2/mixins/mixins';
+@import '../../../src/style/scss/v2/vars/vars';
+@import '../../../src/style/scss/v2/vars/border';
+@import '../../../src/style/scss/v2/mixins/mixins';
 
 $regularV2Height: 40px;
 $regularV2Padding: 10px;
@@ -30,8 +30,9 @@ $smallV2Padding: 8px 10px;
     }
 }
 
-:host.fu-style-v2 {
+:host {
     @extend %reset;
+
     .fu-input-holder {
         display: inline-flex;
         flex-shrink: 1;
@@ -42,6 +43,7 @@ $smallV2Padding: 8px 10px;
         flex-flow: row nowrap;
         width: 100%;
         line-height: 23px;
+
         &.fu-disabled {
             cursor: not-allowed;
 
@@ -117,6 +119,7 @@ $smallV2Padding: 8px 10px;
             &.fu-input-small {
                 height: $smallV2Height;
             }
+
             &.fu-button {
                 padding-right: 129px;
             }
@@ -135,7 +138,7 @@ $smallV2Padding: 8px 10px;
                 z-index: 2;
                 top: var(--search-icon-top, 12px);
                 color: var(--search-icon-color, #{$fu-light-700});
-                @include icon-style('icon-search', currentColor, 12px, false, true);
+                @include icon-style('icon-search', currentColor, 12px, true, true);
 
                 &.focused {
                     color: var(--search-icon-focused-color, #{$fu-primary-500});
@@ -147,6 +150,7 @@ $smallV2Padding: 8px 10px;
                 padding-left: 35px;
                 padding-right: 10px;
             }
+
             .fu-clear-input {
                 cursor: pointer;
                 position: absolute;
@@ -166,10 +170,12 @@ $smallV2Padding: 8px 10px;
                 .fu-search-icon-holder {
                     top: var(--search-icon-top, 8px);
                 }
+
                 .fu-clear-input {
                     top: 8px;
                 }
-                i.loading{
+
+                i.loading {
                     top: 5px;
                 }
             }
@@ -185,6 +191,7 @@ $smallV2Padding: 8px 10px;
                     padding-left: 10px;
                     padding-right: 35px;
                 }
+
                 .fu-clear-input {
                     left: inherit;
                     right: var(--clear-input-right, 12px);
@@ -208,6 +215,7 @@ $smallV2Padding: 8px 10px;
                         padding-right: 13px;
                     }
                 }
+
                 .fu-search-icon-holder {
                     top: var(--search-icon-top, 4px);
                     left: 10px;
@@ -220,6 +228,7 @@ $smallV2Padding: 8px 10px;
                         @include icon-style('icon-search', currentColor, 12px, false, true);
                     }
                 }
+
                 .fu-clear-input {
                     top: var(--clear-input-top, 2px);
                     left: var(--clear-input-left, 10px);
@@ -227,6 +236,7 @@ $smallV2Padding: 8px 10px;
                     @include icon-style('icon-clear-search', $fu-light-500, 12px, false, true) ;
                     @include icon-style('icon-clear-search', $fu-light-900, 12px, false, true, 0, true);
                 }
+
                 &.fu-search-icon-right-position {
                     .fu-search-icon-holder {
                         top: var(--search-icon-top, 3px);
@@ -249,14 +259,17 @@ $smallV2Padding: 8px 10px;
                         }
                     }
                 }
-                &.medium{
+
+                &.medium {
                     input {
                         height: 32px;
                         border-radius: 17px;
                     }
-                    .fu-search-icon-holder{
+
+                    .fu-search-icon-holder {
                         top: var(--search-icon-top, 6px);
                     }
+
                     .fu-clear-input {
                         top: var(--clear-input-top, 7px);
                     }
@@ -278,8 +291,10 @@ $smallV2Padding: 8px 10px;
             &.right {
                 @extend %iconRight;
             }
-            &.loading{
+
+            &.loading {
                 @extend %iconRight;
+
                 &.left {
                     @extend %iconLeft;
                 }
@@ -293,148 +308,155 @@ $smallV2Padding: 8px 10px;
             right: 11px;
         }
 
-        &.fu-input-small {
-            i.fu-input-icon {
-                top: 8px;
-            }
-            i.fu-toggle-pass {
-                top: 9px;
-            }
-            .fu-validation-icon-holder {
-                top: 10px;
-            }
-        }
+            &.fu-input-small {
+                i.fu-input-icon {
+                    top: 8px;
+                }
 
-        &.focused {
-            .fu-validation-icon-holder {
-                display: none;
-            }
-        }
-        &.fu-error-error {
-            .fu-validation-icon-holder {
-                @include icon-style('icon-validation', $fu-negative-500, 14px, false, true);
-            }
+                i.fu-toggle-pass {
+                    top: 9px;
+                }
 
-            input {
-                padding-right: 32px;
-
-                &:focus {
-                    padding-right: 10px;
+                .fu-validation-icon-holder {
+                    top: 10px;
                 }
             }
-        }
-        &.fu-error-warning {
-            .fu-validation-icon-holder {
-                @include icon-style('icon-validation', $fu-neutral-500, 14px, false, true);
-            }
 
-            input {
-                background-color: $fu-neutral-100;
-                padding-right: 32px;
-
-                &:focus {
-                    padding-right: 10px;
-                }
-            }
-        }
-
-        // password toggle shown icon
-        i.fu-toggle-pass {
-            @include size(14px);
-            @include icon-style(null, $fu-light-700, 14px, false, true);
-            position: absolute;
-            top: 13px;
-            right: 12px;
-            cursor: pointer;
-        }
-
-        // action button
-        button {
-            // hide loader from v1
-            fusion-icon.loading {
-                display: none;
-            }
-
-            order: 2;
-            cursor: pointer;
-            line-height: 1;
-            box-sizing: border-box;
-            padding: 14px 10px 11px;
-            position: absolute;
-            outline: none;
-            border: none;
-            background-color: transparent;
-            color: $fu-light-700;
-            width: 129px;
-            right: 0;
-            @extend %font-bodyStrong;
-            line-height: 1.33;
-            @include icon-style('button-icon', $fu-light-700, 11px, false, true) {
-                height: 11px;
-                vertical-align: middle;
-                margin-right: 8px;
-            }
-
-            &:hover {
-                color: $fu-primary-500;
-                @include icon-style('button-icon', $fu-primary-500, 11px, false, true);
-            }
-
-            &.is-loading {
-                cursor: not-allowed;
-                text-align: right;
-                padding: 13px 10px 11px;
-                .fu-action-button-text,
-                .button-icon {
+            &.focused {
+                .fu-validation-icon-holder {
                     display: none;
                 }
             }
 
-            &.fu-error {
-                @extend %actionButtonDisabled;
+            &.fu-error-error {
+                .fu-validation-icon-holder {
+                    @include icon-style('icon-validation', $fu-negative-500, 14px, false, true);
+                }
+
+                input {
+                    padding-right: 32px;
+
+                    &:focus {
+                        padding-right: 10px;
+                    }
+                }
+            }
+
+            &.fu-error-warning {
+                .fu-validation-icon-holder {
+                    @include icon-style('icon-validation', $fu-neutral-500, 14px, false, true);
+                }
+
+                input {
+                    background-color: $fu-neutral-100;
+                    padding-right: 32px;
+
+                    &:focus {
+                        padding-right: 10px;
+                    }
+                }
+            }
+
+            // password toggle shown icon
+            i.fu-toggle-pass {
+                @include size(14px);
+                @include icon-style(null, $fu-light-700, 14px, false, true);
+                position: absolute;
+                top: 13px;
+                right: 12px;
+                cursor: pointer;
+            }
+
+            // action button
+            button {
+                // hide loader from v1
+                fusion-icon.loading {
+                    display: none;
+                }
+
+                order: 2;
+                cursor: pointer;
+                line-height: 1;
+                box-sizing: border-box;
+                padding: 14px 10px 11px;
+                position: absolute;
+                outline: none;
+                border: none;
+                background-color: transparent;
+                color: $fu-light-700;
+                width: 129px;
+                right: 0;
+                @extend %font-bodyStrong;
+                line-height: 1.33;
+                @include icon-style('button-icon', $fu-light-700, 11px, false, true) {
+                    height: 11px;
+                    vertical-align: middle;
+                    margin-right: 8px;
+                }
+
+                &:hover {
+                    color: $fu-primary-500;
+                    @include icon-style('button-icon', $fu-primary-500, 11px, false, true);
+                }
+
+                &.is-loading {
+                    cursor: not-allowed;
+                    text-align: right;
+                    padding: 13px 10px 11px;
+
+                    .fu-action-button-text,
+                    .button-icon {
+                        display: none;
+                    }
+                }
+
+                &.fu-error {
+                    @extend %actionButtonDisabled;
+                }
+            }
+
+            &.focused button {
+                color: $fu-primary-500;
+                @include icon-style('button-icon', $fu-primary-500, 11px, false, true);
+
+                &.fu-error {
+                    @extend %actionButtonDisabled;
+                    @include icon-style('button-icon', $fu-light-700, 11px, false, true);
+                }
             }
         }
 
-        &.focused button {
-            color: $fu-primary-500;
-            @include icon-style('button-icon', $fu-primary-500, 11px, false, true);
+        // search in dropdown
+        &.is-search-style .fu-input-holder.fu-has-search-icon {
+            input {
+                padding-left: 10px;
+                padding-right: 30px;
+            }
 
-            &.fu-error {
-                @extend %actionButtonDisabled;
-                @include icon-style('button-icon', $fu-light-700, 11px, false, true);
+            .fu-search-icon-holder,
+            .fu-clear-input {
+                display: none;
+            }
+        }
+
+        .fu-error-msg {
+            @extend %font-captionRegular;
+            color: $fu-negative-700;
+            margin-top: 5px;
+            line-height: 14px;
+            text-align: initial;
+
+            &.focused {
+                display: none;
+            }
+
+            &.fu-input-small {
+                display: none;
             }
         }
     }
 
-    // search in dropdown
-    &.is-search-style .fu-input-holder.fu-has-search-icon {
-        input{
-            padding-left: 10px;
-            padding-right: 30px;
-        }
-        .fu-search-icon-holder,
-        .fu-clear-input {
-            display: none;
-        }
-    }
-
-    .fu-error-msg {
-        @extend %font-captionRegular;
-        color: $fu-negative-700;
-        margin-top: 5px;
-        line-height: 14px;
-        text-align: initial;
-        &.focused {
-            display: none;
-        }
-
-        &.fu-input-small {
-            display: none;
-        }
-    }
-}
-
-:host-context(fusion-input-inline.fu-style-v2){
+:host-context(fusion-input-inline){
     .fu-input-holder{
         position: relative;
         margin-left: -8px;
@@ -477,15 +499,15 @@ $smallV2Padding: 8px 10px;
         }
     }
 }
-:host-context(.is-row-height-small.fu-style-v2){
+:host-context(.is-row-height-small){
     .fu-input-holder{
         input.fu-input-small{
             height: 30px;
         }
     }
 }
-:host-context(fusion-dropdown-search.fu-style-v2),
-:host-context(fusion-tags-input.fu-style-v2){
+:host-context(fusion-dropdown-search),
+:host-context(fusion-tags-input){
     .fu-input-holder{
         .fu-input {
             border: none;
