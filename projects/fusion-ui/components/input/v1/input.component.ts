@@ -3,7 +3,7 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {InputBaseComponent} from '@ironsource/fusion-ui/components/input/common/base';
 import {of} from 'rxjs';
 import {CONFIG_INPUT_BY_UI_STYLE} from '@ironsource/fusion-ui/components/input/common/base';
-import {isBoolean} from '@ironsource/fusion-ui';
+import {isBoolean} from '@ironsource/fusion-ui/utils';
 
 @Component({
     selector: 'fusion-input',
