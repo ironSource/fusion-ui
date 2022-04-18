@@ -40,7 +40,7 @@ export class MobilePreviewerComponent extends FusionBase implements OnInit {
     devices: string[];
 
     iconPrefix$: Observable<string> = this.selectedVersion$.pipe(
-        map(styleVersion => (styleVersion === StyleVersion.V2 ? 'v2' : 'v1')),
+        map(styleVersion => (styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3 ? 'v2' : 'v1')),
         startWith('v1')
     );
 

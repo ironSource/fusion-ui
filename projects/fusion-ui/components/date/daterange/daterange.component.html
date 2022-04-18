@@ -1,6 +1,6 @@
 <div [id]="id" (fusionClickOutside)="onOutsideClick()" *ngIf="selectedVersion$ | async as selectedVersion">
     <fusion-dropdown-select
-        *ngIf="styleVersion.V2 === selectedVersion; else v1DateSelector"
+        *ngIf="styleVersion.V2 === selectedVersion || styleVersion.V3 === selectedVersion; else v1DateSelector"
         (click)="toggle()"
         [configurations]="dropdownSelectConfigurations$ | async"
     >
@@ -46,7 +46,7 @@
                     <fusion-icon *ngIf="nextIconName$ | async as nextIconName" class="icon-next" [name]="nextIconName"></fusion-icon>
                 </div>
             </div>
-            <div *ngIf="!isSingleDatePicker && selectedVersion === styleVersion.V2" class="calendarsFooter">
+            <div *ngIf="!isSingleDatePicker && (selectedVersion === styleVersion.V2 && selectedVersion === styleVersion.V3)" class="calendarsFooter">
                 <span>All reports and dates are in UTC</span>
                 <button fusion-button class="primary transparent" (click)="apply()">Apply</button>
                 <button fusion-button class="secondary transparent" (click)="close()">Cancel</button>

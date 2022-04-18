@@ -28,7 +28,9 @@ export class AlertComponent extends FusionBase {
 
     closeIconName$: Observable<string | IconData> = this.selectedVersion$.pipe(
         map(styleVersion =>
-            styleVersion === StyleVersion.V2 ? {iconName: 'close', iconVersion: 'v2'} : {iconName: 'close', iconVersion: 'v1'}
+            styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
+                ? {iconName: 'close', iconVersion: 'v2'}
+                : {iconName: 'close', iconVersion: 'v1'}
         ),
         startWith({iconName: 'close', iconVersion: 'v1'})
     );

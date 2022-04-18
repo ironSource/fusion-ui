@@ -273,7 +273,7 @@ export class DropdownComponent extends FusionBase implements OnInit, OnDestroy, 
 
         this.selectedVersion$.pipe(takeUntil(this.onDestroy$)).subscribe(styleVersion => {
             const dropdownArrowIcon =
-                styleVersion === StyleVersion.V2
+                styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
                     ? {iconName: 'arrow-down', iconVersion: 'v2'}
                     : {iconName: 'arrow-dropdown', iconVersion: 'v1'};
             this.dropdownArrowIconName$.next(dropdownArrowIcon);

@@ -39,7 +39,7 @@ export class LoaderComponent extends FusionBase implements AfterViewInit {
     public loaderIconName$ = this.selectedVersion$.pipe(
         map((styleVersion: StyleVersion) => {
             let iconProperties = {iconName: 'loading', iconVersion: 'v1'};
-            if (styleVersion === StyleVersion.V2) {
+            if (styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3) {
                 return this.size === 'inline' ? 'loading_rotate' : {iconName: 'loader-dots-v4', iconVersion: 'v2'};
             }
             return iconProperties;
