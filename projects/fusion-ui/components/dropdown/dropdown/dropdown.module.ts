@@ -4,7 +4,7 @@ import {DropdownComponent} from './dropdown.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button';
-import {InputModule} from '@ironsource/fusion-ui/components/input';
+import {InputModule} from '@ironsource/fusion-ui/components/input/v2';
 import {FlagModule} from '@ironsource/fusion-ui/components/flag';
 import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';

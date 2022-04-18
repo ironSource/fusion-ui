@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {InputModule} from '@ironsource/fusion-ui/components/input';
+import {InputModule} from '@ironsource/fusion-ui/components/input/v2';
 import {DropdownSearchComponent} from './dropdown-search.component';
 import {ReactiveFormsModule} from '@angular/forms';
 

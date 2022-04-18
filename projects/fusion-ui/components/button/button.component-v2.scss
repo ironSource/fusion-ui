@@ -280,7 +280,7 @@ $iconInTableButtonIconSize: 16px;
     }
 }
 
-:host-context(fusion-button.fu-style-v2) {
+:host-context(fusion-button.fu-style-v2), :host-context(fusion-button.fu-style-v3) {
     @extend %reset;
     display: inline-flex;
     text-align: center;
@@ -408,7 +408,7 @@ $iconInTableButtonIconSize: 16px;
 }
 
 
-:host-context(a.fu-style-v2) {
+:host-context(a.fu-style-v2), :host-context(a.fu-style-v3) {
     @extend %font-bodyStrong;
     line-height: 1.33;
     color: $fu-primary-500;
