@@ -30,5 +30,13 @@ export const CONFIG_INPUT_BY_UI_STYLE: {[styleKey: string]: InputConfigByStyle} 
         iconWarning: {iconName: 'warning', iconVersion: 'v2'},
         iconLoader: {iconName: 'loading-rotate', iconVersion: 'v2'},
         currentStyleVersion: StyleVersion.V2
+    },
+    style_v3: {
+        iconSearch: {iconName: 'search', iconVersion: 'v2'},
+        iconClear: {iconName: 'close-circle', iconVersion: 'v2'},
+        iconInfo: {iconName: 'importent', iconVersion: 'v2'},
+        iconWarning: {iconName: 'warning', iconVersion: 'v2'},
+        iconLoader: {iconName: 'loading-rotate', iconVersion: 'v2'},
+        currentStyleVersion: StyleVersion.V3
     }
 };

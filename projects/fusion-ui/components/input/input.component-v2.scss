@@ -435,6 +435,7 @@ $smallV2Padding: 8px 10px;
     }
 }
 
+:host-context(fusion-input-inline.fu-style-v3),
 :host-context(fusion-input-inline.fu-style-v2){
     .fu-input-holder{
         position: relative;
@@ -478,6 +479,8 @@ $smallV2Padding: 8px 10px;
         }
     }
 }
+
+:host-context(.is-row-height-small.fu-style-v3),
 :host-context(.is-row-height-small.fu-style-v2){
     .fu-input-holder{
         input.small{
@@ -485,6 +488,9 @@ $smallV2Padding: 8px 10px;
         }
     }
 }
+
+:host-context(fusion-dropdown-search.fu-style-v3),
+:host-context(fusion-tags-input.fu-style-v3),
 :host-context(fusion-dropdown-search.fu-style-v2),
 :host-context(fusion-tags-input.fu-style-v2){
     .fu-input-holder{
@@ -501,6 +507,7 @@ $smallV2Padding: 8px 10px;
     }
 }
 
+:host-context(.is-dropdown-select.forced-placeholder .icon.fu-style-v3),
 :host-context(.is-dropdown-select.forced-placeholder .icon.fu-style-v2){
     .fu-input-holder {
         input.fu-input {

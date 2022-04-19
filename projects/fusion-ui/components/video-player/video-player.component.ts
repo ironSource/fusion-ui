@@ -32,23 +32,27 @@ export class VideoPlayerComponent extends FusionBase implements OnInit, AfterVie
         return this.options.showTimeline ? true : null;
     }
 
-    playIconName$: Observable<string | IconData> = this.selectedVersion$.pipe(
+    playIconName$: Observable<IconData> = this.selectedVersion$.pipe(
         map(styleVersion =>
-            styleVersion === StyleVersion.V2 ? {iconName: 'play-video-2', iconVersion: 'v2'} : {iconName: 'play-video', iconVersion: 'v1'}
+            styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
+                ? {iconName: 'play-video-2', iconVersion: 'v2'}
+                : {iconName: 'play-video', iconVersion: 'v1'}
         ),
         startWith({iconName: 'play-video', iconVersion: 'v1'})
     );
 
-    pauseIconName$: Observable<string | IconData> = this.selectedVersion$.pipe(
+    pauseIconName$: Observable<IconData> = this.selectedVersion$.pipe(
         map(styleVersion =>
-            styleVersion === StyleVersion.V2 ? {iconName: 'pause-video-2', iconVersion: 'v2'} : {iconName: 'pause', iconVersion: 'v1'}
+            styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
+                ? {iconName: 'pause-video-2', iconVersion: 'v2'}
+                : {iconName: 'pause', iconVersion: 'v1'}
         ),
         startWith({iconName: 'pause', iconVersion: 'v1'})
     );
 
-    videoCameraIconName$: Observable<string | IconData> = this.selectedVersion$.pipe(
+    videoCameraIconName$: Observable<IconData> = this.selectedVersion$.pipe(
         map(styleVersion =>
-            styleVersion === StyleVersion.V2
+            styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
                 ? {iconName: 'video-camera_2', iconVersion: 'v2'}
                 : {iconName: 'video-camera', iconVersion: 'v1'}
         ),

@@ -20,9 +20,11 @@ export class MonthPickerPlaceholderComponent extends FusionBase {
     @Input() placeholder: MonthPickerPlaceholder = MONTH_PICKER_PLACEHOLDER;
     @Input() selected: MonthPicker;
 
-    arrowIconName$: Observable<string | IconData> = this.selectedVersion$.pipe(
+    arrowIconName$: Observable<IconData> = this.selectedVersion$.pipe(
         map(styleVersion =>
-            styleVersion === StyleVersion.V2 ? {iconName: 'arrow-down', iconVersion: 'v2'} : {iconName: 'arrow-dropdown', iconVersion: 'v1'}
+            styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
+                ? {iconName: 'arrow-down', iconVersion: 'v2'}
+                : {iconName: 'arrow-dropdown', iconVersion: 'v1'}
         ),
         startWith({iconName: 'arrow-dropdown', iconVersion: 'v1'})
     );

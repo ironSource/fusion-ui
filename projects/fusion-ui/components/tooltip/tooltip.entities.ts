@@ -19,7 +19,7 @@ export interface ITooltipData {
     content?: string;
     width?: number;
     type?: TooltipType;
-    icon?: string | IconData;
+    icon?: IconData;
     componentData?: any;
 }
 

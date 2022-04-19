@@ -34,7 +34,7 @@ export class CheckboxComponent extends FusionBase implements OnInit, ControlValu
     @Input() label: string;
     @Input() name: string;
     @Input() value: string;
-    @Input() icon: string | IconData;
+    @Input() icon: IconData;
     @Input() flag: string;
     @Input() isDisabled: boolean;
     @Input() checked: boolean;
@@ -73,7 +73,10 @@ export class CheckboxComponent extends FusionBase implements OnInit, ControlValu
     getBackgroundImage(styleVersion: StyleVersion) {
         let svg;
         if (this.backgroundColor && (this.checked || this.isIndeterminate)) {
-            const baseSvg = styleVersion === StyleVersion.V2 ? BASE_CHECKED_IMAGE.style_v2 : BASE_CHECKED_IMAGE.style_v1;
+            const baseSvg =
+                styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
+                    ? BASE_CHECKED_IMAGE.style_v2
+                    : BASE_CHECKED_IMAGE.style_v1;
             svg = this.sanitizer.bypassSecurityTrustStyle(
                 `url("data:image/svg+xml,${encodeURIComponent(
                     baseSvg[this.isIndeterminate ? 'indeterminate' : 'checked'].replace('{backgroundColor}', this.backgroundColor)

@@ -30,7 +30,7 @@ export class ToastComponent implements OnInit, AfterViewInit {
 
     type: ToastType;
     text: string;
-    iconName: string | IconData;
+    iconName: IconData;
     icon: string;
     image: string;
     duration: number;
@@ -69,7 +69,7 @@ export class ToastComponent implements OnInit, AfterViewInit {
             });
     }
 
-    private setIconByType(type: ToastType): string | IconData {
+    private setIconByType(type: ToastType): IconData {
         let iconName;
         switch (type) {
             case 'success':
