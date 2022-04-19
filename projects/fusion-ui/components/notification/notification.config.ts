@@ -18,5 +18,13 @@ export const NOTIFICATION_ICON_MAP = {
         info: {iconName: 'bullhorn', iconVersion: 'v2'},
         warning: {iconName: 'warning-note', iconVersion: 'v2'},
         delete: {iconName: 'delete', iconVersion: 'v2'}
+    },
+    3: {
+        basic: '',
+        success: {iconName: 'check', iconVersion: 'v2'},
+        error: {iconName: 'warning-note', iconVersion: 'v2'},
+        info: {iconName: 'bullhorn', iconVersion: 'v2'},
+        warning: {iconName: 'warning-note', iconVersion: 'v2'},
+        delete: {iconName: 'delete', iconVersion: 'v2'}
     }
 };
