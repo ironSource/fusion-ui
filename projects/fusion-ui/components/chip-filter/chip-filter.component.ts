@@ -1,10 +1,7 @@
-import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Injector, Input, OnInit, Output, Renderer2} from '@angular/core';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
-import {BehaviorSubject, fromEvent} from 'rxjs';
-import {StyleVersion} from '@ironsource/fusion-ui/services/version';
+import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2} from '@angular/core';
+import {fromEvent, Subject} from 'rxjs';
 import {ChipFilterComponentConfigurations, ChipType, ChipTypeToClass} from './chip-filter-component-configurations';
 import {takeUntil} from 'rxjs/operators';
-import {IconData} from '@ironsource/fusion-ui/components';
 
 @Component({
     selector: 'fusion-chip-filter',
@@ -12,7 +9,7 @@ import {IconData} from '@ironsource/fusion-ui/components';
     styleUrls: ['./chip-filter.component-v3.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChipFilterComponent extends StyleBase implements OnInit {
+export class ChipFilterComponent implements OnInit, OnDestroy {
     id: number | string;
     width: number;
     tooltipWidth: number;
@@ -21,7 +18,7 @@ export class ChipFilterComponent extends StyleBase implements OnInit {
     private _selected: boolean;
     private _disabled: boolean;
     private _close: boolean;
-
+    onDestroy$ = new Subject<void>();
     @Input() set configuration(value: ChipFilterComponentConfigurations) {
         if (!!value) {
             this.id = value.id;
@@ -71,15 +68,18 @@ export class ChipFilterComponent extends StyleBase implements OnInit {
     @Output() onRemove = new EventEmitter();
     @Output() onSelectedChange = new EventEmitter<any>();
 
-    constructor(injector: Injector, private element: ElementRef, private renderer: Renderer2) {
-        super(injector);
-    }
+    constructor(private element: ElementRef, private renderer: Renderer2) {}
 
     ngOnInit() {
         this.width = this.element.nativeElement.offsetWidth;
         if (!this.close && !this.disabled) {
             this.setClickListener();
         }
+    }
+
+    ngOnDestroy() {
+        this.onDestroy$.next();
+        this.onDestroy$.complete();
     }
 
     closeClicked($event) {
