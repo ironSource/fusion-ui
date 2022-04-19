@@ -2,6 +2,9 @@ import {Component, ElementRef, OnInit, Renderer2} from '@angular/core';
 import {TableColumnTypeEnum, TooltipPosition, TooltipType} from '@ironsource/fusion-ui';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
+import {BehaviorSubject} from 'rxjs';
+import {delay, tap} from 'rxjs/operators';
+import {VersionService} from '../../../services/version/version.service';
 
 @Component({
     selector: 'fusion-tooltip-docs',
@@ -75,7 +78,24 @@ export class TooltipDocsComponent implements OnInit {
         ]
     };
 
-    constructor(private elementRef: ElementRef, private renderer: Renderer2, private docLayoutService: DocsLayoutService) {}
+    styleUpdatingDelay = 0;
+    styleUpdating$ = new BehaviorSubject(false);
+    selectedVersion$ = this.versionService.styleVersion$.pipe(
+        tap(() => {
+            this.styleUpdating$.next(true);
+        }),
+        delay(this.styleUpdatingDelay),
+        tap(() => {
+            this.styleUpdating$.next(false);
+        })
+    );
+
+    constructor(
+        private versionService: VersionService,
+        private elementRef: ElementRef,
+        private renderer: Renderer2,
+        private docLayoutService: DocsLayoutService
+    ) {}
 
     ngOnInit() {
         this.docLayoutService.updateLayoutHeaderTitle({

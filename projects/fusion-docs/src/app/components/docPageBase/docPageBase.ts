@@ -4,8 +4,9 @@
 import {OnInit, OnDestroy} from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
 import {Observable, Subject} from 'rxjs';
-import {StyleVersion, VersionService} from '@ironsource/fusion-ui';
+import {StyleVersion} from '@ironsource/fusion-ui';
 import {Router} from '@angular/router';
+import {VersionService} from '../../services/version/version.service';
 
 export abstract class DocPageBase implements OnInit, OnDestroy {
     protected onDestroy$ = new Subject<void>();

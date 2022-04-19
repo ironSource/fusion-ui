@@ -3,7 +3,7 @@ import {ITooltipData, TooltipPosition, TooltipType} from './tooltip.entities';
 import {TooltipService} from './tooltip.service';
 import {Subject, fromEvent, merge, Observable} from 'rxjs';
 import {take, takeUntil} from 'rxjs/operators';
-import {IconData} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Directive({
     selector: '[fusionTooltip]'

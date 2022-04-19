@@ -1,7 +1,8 @@
-@import '../../src/style/scss/vars/vars';
-@import '../../src/style/scss/vars/mixins';
+@import '../../src/style/scss/v2/vars/vars';
+@import '../../src/style/scss/v2/mixins/mixins';
 
-:host:not(.fusion-style-v1) {
+:host.fu-style-v3,
+:host.fu-style-v2 {
     input[type='checkbox'] {
         display: none;
     }
@@ -77,7 +78,7 @@
             margin-left: 1px;
         }
 
-        @include icon-style(null, $light-700, 14px, false, true) {
+        @include icon-style(null, $fu-light-700, 14px, false, true) {
             padding-right: 3px;
             vertical-align: sub;
         }

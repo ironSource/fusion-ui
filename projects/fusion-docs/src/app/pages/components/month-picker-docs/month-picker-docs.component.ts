@@ -3,6 +3,9 @@ import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {FormControl, Validators} from '@angular/forms';
 import {MonthPickerConfiguration} from '@ironsource/fusion-ui';
 import {CSS_CUSTOM_PROPERTIES} from './month-picker-docs.config';
+import {VersionService} from '../../../services/version/version.service';
+import {BehaviorSubject} from 'rxjs';
+import {delay, tap} from 'rxjs/operators';
 
 @Component({
     selector: 'fusion-month-picker-docs',
@@ -64,6 +67,18 @@ export class MonthPickerDocsComponent implements OnInit {
         }
     ];
 
+    styleUpdatingDelay = 0;
+    styleUpdating$ = new BehaviorSubject(false);
+    selectedVersion$ = this.versionService.styleVersion$.pipe(
+        tap(() => {
+            this.styleUpdating$.next(true);
+        }),
+        delay(this.styleUpdatingDelay),
+        tap(() => {
+            this.styleUpdating$.next(false);
+        })
+    );
+
     monthPickerBasic = new FormControl();
     monthPicker2 = new FormControl();
 
@@ -85,7 +100,7 @@ export class MonthPickerDocsComponent implements OnInit {
         return this.monthPickerError.valid ? '' : 'This is a mandatory field';
     }
 
-    constructor() {}
+    constructor(private versionService: VersionService) {}
 
     ngOnInit(): void {
         const selected = new Date();

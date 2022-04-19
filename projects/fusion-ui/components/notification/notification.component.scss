@@ -1,10 +1,10 @@
-@import '../../src/style/scss/vars/vars';
-@import '../../src/style/scss/vars/mixins';
-@import '../../src/style/scss/vars/border';
+@import '../../src/style/scss/v1/vars/vars';
+@import '../../src/style/scss/v1/mixins/mixins';
+@import '../../src/style/scss/v1/vars/border';
 
 $boxShadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.1);
 
-:host.fusion-style-v1 {
+:host.fu-style-v1 {
   .is-notification {
     position: fixed;
     z-index: getZIndexLayerOffset(system, 11);

@@ -1,6 +1,6 @@
-@import '../../../src/style/scss/vars/vars';
-@import '../../../src/style/scss/vars/mixins';
-@import '../../../src/style/scss/vars/border';
+@import '../../../src/style/scss/v1/vars/vars';
+@import '../../../src/style/scss/v1/mixins/mixins';
+@import '../../../src/style/scss/v1/vars/border';
 
 
 $itemHeight: 32px;
@@ -80,7 +80,7 @@ $itemWidth: 254px;
                         padding-right: 8px;
                         &:hover {
                             border-radius: 5px;
-                            color: $fu-primary-500;
+                            color: $primary-500;
                         }
                     }
                 }
@@ -147,8 +147,8 @@ $itemWidth: 254px;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                @extend %font-body;
-                color: $fu-light-800;
+                @extend %font14;
+                color: $light-800;
                 .fu-no-data-img {
                     display: block;
                     width: 114px;

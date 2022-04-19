@@ -5,14 +5,14 @@ import {
     TagComponentConfigurations,
     TagRole,
     TagsInputClearSearchOn,
-    TagsInputComponentConfigurations,
-    VersionService
+    TagsInputComponentConfigurations
 } from '@ironsource/fusion-ui';
 import {takeUntil} from 'rxjs/operators';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Router} from '@angular/router';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
 import {FormControl} from '@angular/forms';
+import {VersionService} from '../../../services/version/version.service';
 
 @Component({
     selector: 'fusion-tag-docs-v2',

@@ -1,8 +1,8 @@
-@import '../../src/style/scss/vars/vars';
-@import '../../src/style/scss/vars/mixins';
-@import '../../src/style/scss/vars/border';
+@import '../../src/style/scss/v1/vars/vars';
+@import '../../src/style/scss/v1/mixins/mixins';
+@import '../../src/style/scss/v1/vars/border';
 
-:host.fusion-style-v1{
+:host.fu-style-v1{
     .fusion-video-preview {
         position: relative;
         background-color: $light-200;
@@ -57,7 +57,7 @@
     }
 }
 
-:host-context(is-asset-box).fusion-style-v1{
+:host-context(is-asset-box).fu-style-v1{
 	div.fusion-video-preview{
 		div.is-video-exists{
 			div.is-video-action-button {

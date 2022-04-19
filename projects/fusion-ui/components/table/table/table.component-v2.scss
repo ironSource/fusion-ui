@@ -1,12 +1,13 @@
-@import "../../../src/style/scss/vars/vars";
-@import "../../../src/style/scss/vars/mixins";
+@import "../../../src/style/scss/v2/vars/vars";
+@import "../../../src/style/scss/v2/mixins/mixins";
 
 $v2-maxCollWidth: 350px;
 $v2-headerHeight: 32px;
 $v2-headerCellPadding: 5px 8px;
 $v2-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-light-400);
 
-:host:not(.fusion-style-v1) {
+:host.fu-style-v3,
+:host.fu-style-v2 {
     @extend %reset;
     display: block;
     width: 100%;

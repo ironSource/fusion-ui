@@ -1,5 +1,5 @@
-@import '../../../src/style/scss/vars/vars';
-@import '../../../src/style/scss/vars/mixins';
+@import '../../../src/style/scss/v2/vars/vars';
+@import '../../../src/style/scss/v2/mixins/mixins';
 
 $v2-rowTotalsHeight: 32px;
 $v2-rowSmallHeight: 32px;
@@ -7,7 +7,8 @@ $v2-rowDefaultHeight: 40px;
 $v2-rowBigHeight: 48px;
 $v2-bodyBorder: 1px solid $fu-light-300;
 
-:host:not(.fusion-style-v1) {
+:host.fu-style-v3,
+:host.fu-style-v2 {
     position: relative;
     padding: 0 8px;
     height: $v2-rowDefaultHeight;
@@ -74,29 +75,29 @@ $v2-bodyBorder: 1px solid $fu-light-300;
     }
 }
 
-:host-context(.is-row-height-big):not(.fusion-style-v1) {
+:host-context(.is-row-height-big.fu-style-v2) {
     height: $v2-rowBigHeight;
     button.removeRowIcon {
         top: 10px;
     }
 }
-:host-context(.is-row-height-small):not(.fusion-style-v1) {
+:host-context(.is-row-height-small.fu-style-v2) {
     height: $v2-rowSmallHeight;
     button.removeRowIcon {
         top: 4px;
     }
 }
-:host-context(tr:hover):not(.fusion-style-v1).is-inline-removable {
+:host-context(tr.fu-style-v2:hover).is-inline-removable {
     button.removeRowIcon {
         visibility: visible;
     }
 }
-:host-context(tr.is-row-in-request):not(.fusion-style-v1) {
+:host-context(tr.is-row-in-request.fu-style-v2) {
     fusion-toggle {
         opacity: 0.5;
     }
 }
-:host-context(tr.is-with-totals):not(.fusion-style-v1) {
+:host-context(tr.is-with-totals.fu-style-v2) {
     height: $v2-rowTotalsHeight;
     @extend %font-label;
     letter-spacing: .5px;

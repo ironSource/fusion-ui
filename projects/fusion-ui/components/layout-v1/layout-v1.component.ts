@@ -5,7 +5,7 @@ import {CacheType} from '@ironsource/fusion-ui/services/cache';
 import {CacheService} from '@ironsource/fusion-ui/services/cache';
 import {Subject} from 'rxjs';
 import {MenuItemAdditionalData} from '@ironsource/fusion-ui/components/menu';
-import {IconData} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Component({
     selector: 'fusion-layout-v1',

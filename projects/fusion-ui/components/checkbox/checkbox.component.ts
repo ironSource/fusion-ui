@@ -7,17 +7,15 @@ import {
     HostBinding,
     Injector,
     Input,
-    OnDestroy,
     OnInit,
     Output
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {DomSanitizer} from '@angular/platform-browser';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
-import {StyleVersion} from '@ironsource/fusion-ui/services/version';
+import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {BASE_CHECKED_IMAGE} from './checkbox.cusom-svg';
-import {IconData} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Component({
     selector: 'fusion-checkbox',
@@ -32,7 +30,7 @@ import {IconData} from '@ironsource/fusion-ui/components';
         }
     ]
 })
-export class CheckboxComponent extends StyleBase implements OnInit, ControlValueAccessor, OnDestroy {
+export class CheckboxComponent extends FusionBase implements OnInit, ControlValueAccessor {
     @Input() label: string;
     @Input() name: string;
     @Input() value: string;

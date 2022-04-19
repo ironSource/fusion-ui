@@ -3,7 +3,7 @@ import {TableColumnTypeEnum} from './table-column-type.enum';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown';
 import {EventEmitter} from '@angular/core';
 import {CellPosition} from './table-cell-position';
-import {IconData} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 export interface TableColumn {
     key: string;

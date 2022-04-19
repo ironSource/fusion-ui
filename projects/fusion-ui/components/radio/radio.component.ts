@@ -13,9 +13,9 @@ import {
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {IconData} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Component({
     selector: 'fusion-radio',
@@ -30,7 +30,7 @@ import {IconData} from '@ironsource/fusion-ui/components';
         }
     ]
 })
-export class RadioComponent extends StyleBase implements OnInit, ControlValueAccessor, OnDestroy {
+export class RadioComponent extends FusionBase implements OnInit, ControlValueAccessor, OnDestroy {
     @Input() name: string;
     @Input() isDisabled: boolean;
     @Input() checked: boolean;

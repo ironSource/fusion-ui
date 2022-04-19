@@ -2,6 +2,63 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0-rc.4](https://github.com/ironSource/fusion-ui/compare/v2.0.0-rc.2...v3.0.0-rc.4) (2022-04-14)
+
+
+### Features
+
+* **fu-369:** add .gitattributes file to project ([2522b97](https://github.com/ironSource/fusion-ui/commit/2522b974cb010cd5b4ff868e3f66c5d136aa0c67))
+* **fu-369:** add .gitattributes file to project ([4d9135a](https://github.com/ironSource/fusion-ui/commit/4d9135a1aec1263d6d61c737c1a2bd8d48672209))
+* **fu-369:** add .gitattributes file to project ([ec86c4e](https://github.com/ironSource/fusion-ui/commit/ec86c4edb55dae3dbe02bdd8a2862755f04fe5e7))
+* **fu-369:** add .gitattributes file to project ([964985a](https://github.com/ironSource/fusion-ui/commit/964985a4cf942ba089d2640418e4cc20b4b0b00e))
+* **fu-369:** add .gitattributes file to project ([563a1ae](https://github.com/ironSource/fusion-ui/commit/563a1ae85fc7d45e7a85c2e63d501d838543c939))
+* **fu-369:** add .gitattributes file to project ([8fc4c81](https://github.com/ironSource/fusion-ui/commit/8fc4c81899a66da3a27e425886fe6ef3b9004884))
+* **fu-369:** add v3 icons folder and adjust icon component ([ff69a24](https://github.com/ironSource/fusion-ui/commit/ff69a24df60d38ce2815b670c19dbbc4102dbffe))
+* **fu-369:** add v3 icons folder and adjust icon component ([e4451c1](https://github.com/ironSource/fusion-ui/commit/e4451c1a66c50c480bf6c46817a0ad077692f22f))
+* **fu-369:** add v3 icons folder and adjust icon component ([7069fa5](https://github.com/ironSource/fusion-ui/commit/7069fa5cf67360e19ff05687fdaea00724a9140e))
+* **fu-369:** fix icon version ([309080a](https://github.com/ironSource/fusion-ui/commit/309080a43f6da14f301dadea721c8034b79a669a))
+* **fu-369:** fix PR ([22fef25](https://github.com/ironSource/fusion-ui/commit/22fef25944c6999169d2ca7a1e55d73dbfff42c6))
+
+## [3.0.0-rc.3](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.2...v3.0.0-rc.3) (2022-04-13)
+
+### ⚠ BREAKING CHANGES
+
+* **fu-368:** Upgrade FusionUI to Design V3
+
+#### Rebuild working with style versions.
+
+**In React, Vue.js & VanillaJS applications:**
+- instead using class "fusion-style-v1" in <body> tag you need to use CSS variable "--fu-style-version: 1" in root. for example 
+    ```
+    :root { --fu-style-version: 1 }
+    ```
+
+**In angular application:**
+- instead of using `STYLE_VERSION_TOKEN` injection token in app.module.ts, you need to use CSS variable "--fu-style-version: 1" in app.component.scss.  for example 
+    ```
+    :root { --fu-style-version: 1 }
+    ```
+
+In case the CSS variable is don't set, will be used last style version #3.
+
+**Changes in imports:**
+- instead import colors and fonts SCSS style version V1 path `@ironsource/fusion-ui/style/vars/colors` (fonts) use `@ironsource/fusion-ui/style/v1/colors` (fonts)
+- instead import colors and fonts SCSS  path `@ironsource/fusion-ui/style/vars/colors_v2` (fonts_v2)  use `@ironsource/fusion-ui/style/v2/colors` (fonts)
+- compiled (CSS) style version V1 fonts `@ironsource/fusion-ui/style/fonts_v1` use `@ironsource/fusion-ui/style/v1/fonts`
+- compiled (CSS) style version V2 fonts `@ironsource/fusion-ui/style/fonts` use `@ironsource/fusion-ui/style/v2/fonts`
+- compiled (CSS) style version V2 grid `@ironsource/fusion-ui/style/grid` use `@ironsource/fusion-ui/style/v2/grid`
+
+**New imports for style version 3:**
+- compiled (CSS) fonts `@ironsource/fusion-ui/style/fonts` or `@ironsource/fusion-ui/style/v3/fonts`
+- compiled (CSS) grid `@ironsource/fusion-ui/style/grid` or `@ironsource/fusion-ui/style/v3/grid`
+- SCSS fonts and colors: `@ironsource/fusion-ui/style/v3/vars/vars`
+
+**Now fusion-ui support mixed styles.**
+For example if main application use style #3, but some components will need use with style #2, you will need add CSS variable `--fu-style-version: 2` to this component or component's holder.
+
+
+
+
 ## [2.0.0](https://github.com/ironSource/fusion-ui/compare/v2.0.0-rc.2...v2.0.0) (2022-04-10)
 
 ### ⚠ BREAKING CHANGES
@@ -15,10 +72,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [1.1.1-rc.1](https://github.com/ironSource/fusion-ui/compare/v1.1.1-rc.0...v1.1.1-rc.1) (2022-03-28)
 
-
 ### Bug Fixes
 
-* multi entry point \n\nBREAKING CHANGE: support multiple entry points ([064bf43](https://github.com/ironSource/fusion-ui/commit/064bf43570ca42c5535a6e625bfb61ec41eb9c16))
+* multi entry point  support multiple entry points ([064bf43](https://github.com/ironSource/fusion-ui/commit/064bf43570ca42c5535a6e625bfb61ec41eb9c16))
 
 ### [1.1.1-rc.0](https://github.com/ironSource/fusion-ui/compare/v1.0.0...v1.1.1-rc.0) (2022-03-17)
 

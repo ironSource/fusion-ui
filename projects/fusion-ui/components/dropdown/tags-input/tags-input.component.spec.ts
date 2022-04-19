@@ -12,6 +12,7 @@ import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
 import {DropdownOptionsListModule} from '../dropdown-options-list/dropdown-options-list.module';
 import {DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
+import {FUSION_STYLE_VERSION_CSS_VAR_NAME} from '@ironsource/fusion-ui';
 
 const MOCK_TAGLIST_OPTIONS = [
     'Art & Design',
@@ -109,7 +110,6 @@ describe('TagsInputComponent', () => {
         it('footer should have "Apply" button', () => {
             expect(fixture.debugElement.query(By.css('.is-footer button.primary'))).toBeTruthy();
             expect(fixture.debugElement.query(By.css('.is-footer button.primary')).nativeElement.classList).toContain('small');
-            expect(fixture.debugElement.query(By.css('.is-footer button.primary')).nativeElement.classList).toContain('transparent');
             expect(fixture.debugElement.query(By.css('.is-footer button.primary')).nativeElement.textContent).toBe('Apply');
         });
 
@@ -117,7 +117,6 @@ describe('TagsInputComponent', () => {
             expect(fixture.debugElement.query(By.css('.is-footer button.secondary'))).toBeTruthy();
             expect(fixture.debugElement.query(By.css('.is-footer button.secondary')).nativeElement.textContent).toBe('Cancel');
             expect(fixture.debugElement.query(By.css('.is-footer button.secondary')).nativeElement.classList).toContain('small');
-            expect(fixture.debugElement.query(By.css('.is-footer button.secondary')).nativeElement.classList).toContain('transparent');
         });
 
         it('footer should NOT have "Clear" button by default', () => {

@@ -1,10 +1,9 @@
 import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Injector, Input, OnInit, Output, Renderer2} from '@angular/core';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {BehaviorSubject, fromEvent} from 'rxjs';
-import {StyleVersion} from '@ironsource/fusion-ui/services/version';
 import {TagComponentConfigurations} from './tag-component-configurations';
 import {takeUntil} from 'rxjs/operators';
-import {IconData} from '@ironsource/fusion-ui/components';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Component({
     selector: 'fusion-tag',
@@ -12,7 +11,7 @@ import {IconData} from '@ironsource/fusion-ui/components';
     styleUrls: ['./tag.component.scss', './tag.component-v2.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TagComponent extends StyleBase implements OnInit {
+export class TagComponent extends FusionBase implements OnInit {
     closeIconName$ = new BehaviorSubject<IconData>({
         iconName: 'clear-full-circle',
         iconVersion: 'v1'

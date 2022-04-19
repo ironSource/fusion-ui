@@ -269,7 +269,7 @@ const hideNotification = notificationEl => {
 
             <br />
             <div class="is-example-holder as-flex center">
-                <button fusion-button (click)="showNotification('Basic')">Basic</button>
+                <button fusion-button [style.--fu-style-version]="1" (click)="showNotification('Basic')">Basic</button>
 
                 <button fusion-button (click)="showNotification('Info')">Info</button>
 

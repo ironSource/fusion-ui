@@ -1,6 +1,6 @@
-@import '../../../../src/style/scss/vars/vars';
-@import '../../../../src/style/scss/vars/mixins';
-@import '../../../../src/style/scss/vars/border';
+@import '../../../../src/style/scss/v1/vars/vars';
+@import '../../../../src/style/scss/v1/mixins/mixins';
+@import '../../../../src/style/scss/v1/vars/border';
 
 
 $rightSidePadding: 4px 4px 5px 6px;
@@ -68,7 +68,7 @@ $leftSidePadding: 4px 4px 5px 5px;
             }
         }
         &.right-side {
-            @include icon-style('icon-clear', $fu-light-700, 12px, false, true);
+            @include icon-style('icon-clear', $light-700, 12px, false, true);
             @extend %font14;
             padding: $rightSidePadding;
             cursor: pointer;

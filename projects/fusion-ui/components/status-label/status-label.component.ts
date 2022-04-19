@@ -1,6 +1,4 @@
-import {Component, Injector, Input} from '@angular/core';
-import {STATUS_LABEL_THEME_TOKEN} from './status-label.theme';
-import {ThemeBase} from '@ironsource/fusion-ui/components/style';
+import {Component, Input} from '@angular/core';
 import {StatusLabelBorderType, StatusLabelConfig, StatusLabelStatus} from './status-label.entity';
 
 @Component({
@@ -8,7 +6,7 @@ import {StatusLabelBorderType, StatusLabelConfig, StatusLabelStatus} from './sta
     templateUrl: './status-label.component.html',
     styleUrls: ['./status-label.component.scss']
 })
-export class StatusLabelComponent extends ThemeBase {
+export class StatusLabelComponent {
     @Input() config: StatusLabelConfig = {};
 
     get holderClasses(): string[] {
@@ -18,9 +16,5 @@ export class StatusLabelComponent extends ThemeBase {
             this.config.status === StatusLabelStatus.Error && 'error',
             this.config.borderType === StatusLabelBorderType.Circle && 'rounded'
         ].filter(Boolean);
-    }
-
-    constructor(injector: Injector) {
-        super(injector, STATUS_LABEL_THEME_TOKEN);
     }
 }

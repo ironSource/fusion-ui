@@ -9,7 +9,6 @@ import {
     OnChanges,
     HostBinding,
     ElementRef,
-    OnDestroy,
     ChangeDetectorRef,
     Injector
 } from '@angular/core';
@@ -17,12 +16,10 @@ import {defer, fromEvent, Observable} from 'rxjs';
 import {debounceTime, map, takeUntil, tap} from 'rxjs/operators';
 import {isNullOrUndefined, isUndefined} from '@ironsource/fusion-ui/utils';
 import {TableService} from '../table.service';
-import {StyleVersion} from '@ironsource/fusion-ui/services/version';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {TableRowsGrouped, TableColumn, TableColumnTypeEnum, TableOptions, TableRowExpandEmitter} from '../entities';
-import {StyleBase} from '@ironsource/fusion-ui/components/style';
+import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {CONFIG_TABLE_BY_UI_STYLE, ROW_CLICK_SUPPRESS_FOR_PARENT_SELECTORS, TableIconsConfigByStyle} from '../table.config';
-import {TABLE_THEME_TOKEN} from './table-theme';
 import {TableBasicComponent} from '../table-basic/table-basic.component';
 
 @Component({
@@ -32,7 +29,7 @@ import {TableBasicComponent} from '../table-basic/table-basic.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TableService]
 })
-export class TableComponent extends StyleBase implements OnInit, OnChanges, OnDestroy {
+export class TableComponent extends FusionBase implements OnInit, OnChanges {
     @Input() id: string;
     @Input() options: TableOptions = {};
     @Input() columns: TableColumn[] = [];
@@ -136,7 +133,7 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, OnDe
         private uniqueService: UniqueIdService,
         private cdr: ChangeDetectorRef
     ) {
-        super(injector, TABLE_THEME_TOKEN);
+        super(injector);
     }
 
     ngOnInit() {
@@ -185,10 +182,6 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, OnDe
                 this.localSorting(sortedColumn.key);
             }
         }
-    }
-
-    ngOnDestroy() {
-        super.ngOnDestroy();
     }
 
     setSelectedRow() {
