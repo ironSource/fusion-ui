@@ -1,0 +1,37 @@
+@import '../../../../../src/style/scss/v3/vars/fonts';
+@import '../../../../../src/style/scss/v3/mixins/mixins';
+@import '../../../../../src/style/scss/v3/vars/colors';
+@import '../../modal_vars';
+
+%border-box-normalize{
+    * {
+        box-sizing: border-box;
+    }
+}
+
+$borderBottom: 1px solid $fu-light-400;
+$height: $modalHeaderHeight;
+$padding: 15px 32px;
+
+
+:host {
+    @extend %border-box-normalize;
+    .modal-header {
+        box-sizing: border-box;
+        @extend %font-heading-5;
+        color: $fu-black-900;
+        height: $height;
+        padding: $padding;
+        border-bottom: $borderBottom;
+
+        @include icon-style('close', $fu-light-500, 24px, true, true) {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            position: absolute;
+            right: 28px;
+            top: 14px;
+        }
+        @include icon-style('close', $fu-light-500, 24px, true, true, 0, true);
+    }
+}

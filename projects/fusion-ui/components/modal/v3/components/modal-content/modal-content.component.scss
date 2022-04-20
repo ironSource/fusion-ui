@@ -1,0 +1,42 @@
+@import '../../../../../src/style/scss/v3/vars/vars';
+@import '../../modal_vars';
+
+%border-box-normalize{
+    * {
+        box-sizing: border-box;
+    }
+}
+
+:host {
+    @extend %border-box-normalize;
+    @extend %customScroll;
+    display: block;
+    overflow-y: auto;
+    &.is-has-height{
+        min-height: calc(100% - #{$modalHeaderHeight} - #{$modalFooterHeight});
+    }
+
+    .modal-content {
+        position: relative;
+        padding: 32px;
+
+        .is-in-waiting {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background-color: $White;
+            opacity: 0.5;
+            display: block;
+        }
+        .content {
+            background-color: $fu-light-100;
+            color: $fu-light-1000;
+            border-radius: 8px;
+            border: 1px solid $fu-light-100;
+            @extend %font-bodyMedium;
+            line-height: 21px;
+        }
+    }
+}
