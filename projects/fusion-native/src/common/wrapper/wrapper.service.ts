@@ -2,9 +2,7 @@ import {Injectable, OnDestroy} from '@angular/core';
 // eslint-disable-next-line
 const IS_WC = window['VUE_TYPE'] === 'wc';
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class WrapperService implements OnDestroy {
     private headMutationObserver: MutationObserver;
     private shadowRootElements: ShadowRoot[] = [];

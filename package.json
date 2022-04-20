@@ -41,7 +41,11 @@
     "prettier": "prettier",
     "build:mfe:dev": "ng build fusion-mfe -c dev",
     "build:mfe": "ng build fusion-mfe",
-    "release": "standard-version"
+    "release": "standard-version",
+    "style-fusion-native":"sass ./projects/fusion-native/src/style/global.scss ./dist/fusion-native/fusion.theme.css -s compressed",
+    "build-fusion-native":"ng build fusion-native && npm run  style-fusion-native",
+    "build-fusion-react":"npm run build-fusion-native && ng build fusion-react && npm run copy-fusion-theme",
+    "copy-fusion-theme": "mkdir ./dist/fusion-react/theme &&  cp ./dist/fusion-native/{fusion.theme.css,fusion.theme.css.map} ./dist/fusion-react/theme/"
   },
   "lint-staged": {
     "**/*{.ts,.json}": "prettier --config ./prettier.config.js --write"

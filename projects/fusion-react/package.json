@@ -1,0 +1,17 @@
+{
+  "name": "@ironsource/fusion-react",
+  "version": "1.0.0",
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "peerDependencies": {
+      "react":"*",
+      "react-dom":"*"
+  },
+  "sideEffects": ["fesm2020/ironsource-fusion-react-core.mjs"],
+  "exports": {
+    "./theme": {
+        "default": "./theme/fusion.theme.css"
+    }
+  }
+}

@@ -29,7 +29,6 @@ export const CONTROL_VALUE_NAME = 'controlValue';
 @Component({
     selector: 'fusion-wrapper',
     templateUrl: './wrapper.component.html',
-    styleUrls: ['./wrapper.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WrapperComponent implements AfterViewInit, OnDestroy {

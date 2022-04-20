@@ -15,7 +15,9 @@
         "lib": ["es2018", "dom"],
         "paths": {
             "@ironsource/fusion-ui/*": ["projects/fusion-ui/*"],
-            "@ironsource/fusion-ui": ["projects/fusion-ui"]
+            "@ironsource/fusion-ui": ["projects/fusion-ui"],
+            "@ironsource/fusion-react": ["projects/fusion-react"],
+            "@ironsource/fusion-react/*": ["projects/fusion-react/*"]
         }
     }
 }

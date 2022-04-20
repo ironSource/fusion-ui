@@ -1,4 +1,4 @@
-import {Transformer} from '../components/wrapper/wrapper-entities';
+import {Transformer} from '../wrapper/wrapper-entities';
 import {TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table';
 import {FormControl} from '@angular/forms';
 
