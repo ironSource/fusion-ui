@@ -39,6 +39,7 @@ describe('MonthPickerButtonComponent', () => {
         it('arrow icon', () => {
             const arrowIcon = debugNativeEl.querySelector('fusion-icon.icon-arrow');
             expect(arrowIcon).toBeTruthy();
+            console.log(arrowIcon);
             expect(arrowIcon.classList).toContain('arrow-dropdown');
         });
     });
