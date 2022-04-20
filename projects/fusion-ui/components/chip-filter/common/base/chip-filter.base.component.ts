@@ -1,15 +1,11 @@
-import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2, ViewChild} from '@angular/core';
 import {fromEvent, Subject} from 'rxjs';
 import {ChipFilterComponentConfigurations, ChipType, ChipTypeToClass} from './chip-filter-component-configurations';
 import {takeUntil} from 'rxjs/operators';
 
-@Component({
-    selector: 'fusion-chip-filter',
-    templateUrl: './chip-filter.component.html',
-    styleUrls: ['./chip-filter.component-v3.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class ChipFilterComponent implements OnInit, OnDestroy {
+@Directive()
+export abstract class ChipFilterBaseComponent implements OnInit, OnDestroy {
+    @ViewChild('content', {read: ElementRef, static: true}) contentEl: ElementRef;
     id: number | string;
     width: number;
     tooltipWidth: number;
@@ -18,6 +14,7 @@ export class ChipFilterComponent implements OnInit, OnDestroy {
     private _selected: boolean;
     private _disabled: boolean;
     private _close: boolean;
+    private contentElements: any[];
     onDestroy$ = new Subject<void>();
     @Input() set configuration(value: ChipFilterComponentConfigurations) {
         if (!!value) {
@@ -72,9 +69,11 @@ export class ChipFilterComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.width = this.element.nativeElement.offsetWidth;
+        this.contentElements = Array.from((this.contentEl.nativeElement as HTMLElement).children);
         if (!this.close && !this.disabled) {
             this.setClickListener();
         }
+        this.changeHostClass('fu-labeled', this.isLabeled());
     }
 
     ngOnDestroy() {
@@ -106,5 +105,9 @@ export class ChipFilterComponent implements OnInit, OnDestroy {
     changeHostClass(className: string, add: boolean): void {
         const classAction = add ? 'addClass' : 'removeClass';
         this.renderer[classAction](this.element.nativeElement, className);
+    }
+
+    private isLabeled() {
+        return this.contentElements.some(contentEl => contentEl.tagName === 'LABEL');
     }
 }

@@ -1,7 +1,6 @@
-@import '../../src/style/scss/v3/mixins/mixins';
-
-$helveticaNueMd: 'HelveticaNeue-Medium', helvetica, sans-serif;
-$helveticaNueRg: 'HelveticaNeue', helvetica, sans-serif;
+@import '../../../src/style/scss/v3/mixins/mixins';
+@import '../../../src/style/scss/v3/vars/colors';
+@import '../../../src/style/scss/v3/vars/fonts';
 
 
 %chip-font {
@@ -13,28 +12,20 @@ $helveticaNueRg: 'HelveticaNeue', helvetica, sans-serif;
 }
 
 $chipHeight: 32px;
-$dateChipMaxWidth: 215px;
-$addChipMaxWidth: 105px;
+$chipMaxWidth: 352px;
 
-$fu-light-100: #F1F3F4;
-$fu-light-200: #EDEFF0;
-$fu-light-900: #7B838C;
-
-
-$fu-primary-100: #E2EEFF;
-$fu-primary-200: #C9DFFF;
-$fu-primary-300: #96C0FF;
-$fu-primary-400: #68A5FF;
-$fu-primary-500: #3083FF;
-
-$fu-black-500: #53575B;
+$paddingChip:  4px 12px 4px 12px;
+$paddingChipWithIcon:  4px 16px 4px 12px;
+$paddingChipWithCloseButton: 4px 10px 4px 14px;
 
 :host {
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 4px 8px 4px 16px;
+    padding:$paddingChip;
+    max-width: $chipMaxWidth;
+    width: fit-content;
     height: $chipHeight;
     @extend %chip-font;
     border-radius: 100px;
@@ -60,17 +51,15 @@ $fu-black-500: #53575B;
         cursor: pointer;
     }
 
-    .fu-chip-content {
+    .fu-chip-content-wrapper.truncate {
         white-space: nowrap;
         overflow: hidden !important;
         text-overflow: ellipsis;
-        display: flex;
-        width: 190px;
+        display: inline-block;
     }
 
     &.fu-date-filter {
-        padding: 4px 16px 4px 12px;
-        max-width: $dateChipMaxWidth;
+        padding: $paddingChipWithIcon;
         .fu-icon-close {
             display: none;
         }
@@ -78,12 +67,38 @@ $fu-black-500: #53575B;
 
     &.fu-add-filter {
         background-color: $fu-light-200;
+        padding: $paddingChipWithIcon;
         color: $fu-black-500;
-        max-width: $addChipMaxWidth;
-
         &:hover {
             color: $fu-primary-500;
             cursor: pointer;
+        }
+    }
+
+    &.fu-chip-select {
+        &.with-closed-icon {
+            padding: $paddingChipWithCloseButton;
+
+            @include icon-style('fu-icon-close', $fu-primary-500, 16px, flase, true,true,true){
+                &:hover {
+                    cursor: pointer;
+                }
+            };
+        }
+
+        &.fu-labeled{
+            @include icon-style('fu-icon-close', $fu-primary-400, 16px, flase, true,true,true){
+                &:hover {
+                    cursor: pointer;
+                }
+            };
+
+            .fu-chip-content{
+                > label {
+                    font-family: $helveticaNueMd;
+                    font-weight: 900;
+                }
+            }
         }
     }
 
@@ -96,10 +111,5 @@ $fu-black-500: #53575B;
         }
         pointer-events: none;
     }
-
-    &.fu-selected{
-        background-color: $fu-primary-200;
-    }
-
 
 }

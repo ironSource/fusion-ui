@@ -10,7 +10,8 @@ export interface ChipFilterComponentConfigurations {
 
 export enum ChipTypeToClass {
     DateFilter = 'fu-date-filter',
-    AddFilter = 'fu-add-filter'
+    AddFilter = 'fu-add-filter',
+    ChipSelect = 'fu-chip-select'
 }
 
-export type ChipType = 'DateFilter' | 'AddFilter';
+export type ChipType = 'DateFilter' | 'AddFilter' | 'ChipSelect';

@@ -1,5 +1,5 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
-import {ChipFilterComponent} from './chip-filter.component';
+import {ChipFilterComponent} from '@ironsource/fusion-ui/components/chip-filter';
 import {TooltipModule, IconModule, FlagModule} from '@ironsource/fusion-ui';
 
 describe('ChipFilterComponent', () => {
