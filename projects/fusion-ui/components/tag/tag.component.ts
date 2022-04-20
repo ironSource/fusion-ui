@@ -93,7 +93,11 @@ export class TagComponent extends FusionBase implements OnInit {
     ngOnInit() {
         this.width = this.element.nativeElement.offsetWidth;
         this.selectedVersion$.subscribe(styleVersion => {
-            this.closeIconName$.next(styleVersion === StyleVersion.V2 ? 'close' : {iconName: 'clear-full-circle', iconVersion: 'v1'});
+            this.closeIconName$.next(
+                styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
+                    ? 'close'
+                    : {iconName: 'clear-full-circle', iconVersion: 'v1'}
+            );
         });
 
         if (!this.close && !this.disabled) {

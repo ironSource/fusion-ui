@@ -488,7 +488,7 @@ export class ChartComponent extends FusionBase implements OnInit, OnDestroy, OnC
                 case 'shortString':
                     retVal = !!value
                         ? this.numberToStringPipe.transform(value, {
-                              noSeparateBySpace: this.selectedVersion === StyleVersion.V2
+                              noSeparateBySpace: this.selectedVersion === StyleVersion.V2 || this.selectedVersion === StyleVersion.V3
                           })
                         : value;
                     break;

@@ -102,7 +102,7 @@ document.body.appendChild(loader);'
                         <fusion-loader [status]="isLoaded$ | async" height="150"></fusion-loader>
                     </div>
                 </ng-container>
-                <div *ngIf="currentStyleVersion === styleVersion.V2" class="row">
+                <div *ngIf="currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3" class="row">
                     <div class="col-4 color-example">
                         <p>color=grey &nbsp;(default)</p>
                         <fusion-loader [status]="true" height="150"></fusion-loader>
@@ -490,7 +490,7 @@ position:           // "center" | "left" | ""; Default - "center"
 size: string        // "large" | "medium" | "small"; Default - "large"'
                 ></fusion-code-block>
                 <fusion-code-block
-                    *ngIf="currentStyleVersion === styleVersion.V2"
+                    *ngIf="currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3"
                     lang="js"
                     code='height: number      // outer element Height (pixel)
 status: boolean     // if true loader shown; Default - false

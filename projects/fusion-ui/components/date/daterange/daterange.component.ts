@@ -123,11 +123,11 @@ export class DaterangeComponent extends FusionBase implements OnInit {
         this.id = this.id || `fs-daterange-${this.uniqueIdService.getUniqueId()}`;
         this.selectedVersion$.subscribe(styleVersion => {
             const pervIcon =
-                styleVersion === StyleVersion.V2
+                styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
                     ? {iconName: 'arrow-left', iconVersion: 'v2'}
                     : {iconName: 'arrow-right', iconVersion: 'v1'};
             const nextIcon =
-                styleVersion === StyleVersion.V2
+                styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
                     ? {iconName: 'arrow-right', iconVersion: 'v2'}
                     : {iconName: 'arrow-right', iconVersion: 'v1'};
             this.pevIconName$.next(pervIcon);

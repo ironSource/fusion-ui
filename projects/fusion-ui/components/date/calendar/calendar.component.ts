@@ -125,7 +125,7 @@ export class CalendarComponent extends FusionBase implements OnInit {
         const isNotDatePicker = !this.configuration.selection.date;
         const isStartSelection = this.configuration.selection.startDate.getTime() === this.configuration.selection.endDate.getTime();
         const isHoveredDayBiggerThenSelected = day.date.getTime() > this.configuration.selection.startDate.getTime();
-        const isStyleV2 = this.selectedVersion === this.styleVersion.V2;
+        const isStyleV2 = this.selectedVersion === this.styleVersion.V2 || this.selectedVersion === this.styleVersion.V3;
         if (isStyleV2 && isNotDatePicker && isStartSelection) {
             if (isHoveredDayBiggerThenSelected) {
                 this.renderer.addClass(hoveredElement, HOVER_CURRENT_CLASS);

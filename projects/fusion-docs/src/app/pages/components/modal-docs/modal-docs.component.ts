@@ -99,7 +99,7 @@ export class ModalDocsComponent implements OnInit, OnDestroy {
             this.modalButtonClick$.asObservable().pipe(switchMap(_ => timer(1000).pipe(mapTo(true))))
         );
         this.selectedVersion$.subscribe((styleVersion: StyleVersion) => {
-            if (styleVersion === StyleVersion.V2) {
+            if (styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3) {
                 this.router.navigate(['docs/components/v2/modal']);
             }
         });

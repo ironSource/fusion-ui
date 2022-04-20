@@ -111,7 +111,7 @@ document.body.appendChild(input);'
 
                 <div class="row">
                     <div class="col-6">
-                        <label for="regularInput" *ngIf="currentStyleVersion === styleVersion.V2"
+                        <label for="regularInput" *ngIf="currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3"
                         >Label content
                             <fusion-icon
                             [name]="{iconName: 'info-circle', iconVersion: 'v2'}"
@@ -122,7 +122,7 @@ document.body.appendChild(input);'
                         <fusion-input id="regularInput" placeholder="Type something" [formControl]="model"></fusion-input>
                     </div>
                     <div class="col-6">
-                        <label for="regularInput" *ngIf="currentStyleVersion === styleVersion.V2">Label content</label>
+                        <label for="regularInput" *ngIf="currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3">Label content</label>
                         <fusion-input placeholder="Type something" [formControl]="modelDisabled" [isDisabled]="true"></fusion-input>
                     </div>
                 </div>
@@ -259,7 +259,7 @@ document.body.appendChild(input);'
                 </div>
             </fusion-example-block>
 
-            <fusion-example-block *ngIf="currentStyleVersion === styleVersion.V2" id="inpTypeSearchRounded" title="Rounded including Search">
+            <fusion-example-block *ngIf="currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3" id="inpTypeSearchRounded" title="Rounded including Search">
                 <ng-template fusionExampleBlock="Angular">
                     <fusion-code-block
                         lang="html"
@@ -381,7 +381,7 @@ document.body.appendChild(input);'
                             [formControl]="model"
                         ></fusion-input>
                     </div>
-                    <div class="col-6" *ngIf="currentStyleVersion !== styleVersion.V2">
+                    <div class="col-6" *ngIf="currentStyleVersion !== styleVersion.V2 || currentStyleVersion !== styleVersion.V3">
                         <fusion-input
                             placeholder="Search"
                             showSearchIcon="left"
@@ -440,7 +440,7 @@ document.body.appendChild(input);'
                         <fusion-input placeholder="Placeholder" icon="ios" iconPos="right" [formControl]="model"></fusion-input>
                     </div>
                 </div>
-                <div class="row" *ngIf="currentStyleVersion === styleVersion.V2">
+                <div class="row" *ngIf="currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3">
                     <div class="col-6">
                         <p>With Icon left:</p>
                     <fusion-input placeholder="Placeholder" [icon]="{iconName: 'alarm-clock', iconVersion: 'v2'}" iconPos="left" [formControl]="model"></fusion-input>
@@ -568,7 +568,7 @@ document.body.appendChild(input);'
                     <div class="col-6">
                         <fusion-input placeholder="Input" (btnAction)="alertMe($event)" btn="Search" [formControl]="model"></fusion-input>
                     </div>
-                    <div class="col-6" *ngIf="currentStyleVersion !== styleVersion.V2">
+                    <div class="col-6" *ngIf="currentStyleVersion !== styleVersion.V2 || currentStyleVersion !== styleVersion.V3">
                         <fusion-alert *ngIf="actionMessageShown" type="success"
                         ><span class="fu-font4">Action!</span> Input Action button was clicked.
                         </fusion-alert>
@@ -576,7 +576,7 @@ document.body.appendChild(input);'
                 </div>
             </fusion-example-block>
 
-            <fusion-example-block id="inpVarActionV2" title="Action" *ngIf="currentStyleVersion === styleVersion.V2">
+            <fusion-example-block id="inpVarActionV2" title="Action" *ngIf="currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3">
                 <ng-template fusionExampleBlock="Angular">
                     <fusion-code-block
                         lang="html"
@@ -995,7 +995,7 @@ document.body.appendChild(input);'
                     </div>
                 </div>
             </fusion-example-block>
-            <fusion-example-block id="inpPass" title="Password" *ngIf="currentStyleVersion === styleVersion.V2">
+            <fusion-example-block id="inpPass" title="Password" *ngIf="currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3">
                 <ng-template fusionExampleBlock="Angular">
                     <fusion-code-block
                         lang="html"
@@ -1380,7 +1380,7 @@ Empty:
 </fusion-input>'
                     ></fusion-code-block>
                     <fusion-code-block
-                        *ngIf="currentStyleVersion === styleVersion.V2"
+                        *ngIf="currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3"
                         lang="html"
                         class="is-collapsible"
                         code='<!--Input Error-->
@@ -1529,7 +1529,7 @@ document.body.appendChild(input);'
                 </div>
     -->
 
-                <div class="row is-example-row" *ngIf="currentStyleVersion === styleVersion.V2">
+                <div class="row is-example-row" *ngIf="currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3">
                     <div class="col-2 is-txt-lbl">Input Error Icon</div>
                     <div class="col-6">
                         <fusion-input
@@ -1540,7 +1540,7 @@ document.body.appendChild(input);'
                         ></fusion-input>
                     </div>
                 </div>
-                <div class="row" *ngIf="currentStyleVersion === styleVersion.V2">
+                <div class="row" *ngIf="currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3">
                     <div class="col-2 is-txt-lbl">Input Warning Icon</div>
                     <div class="col-6">
                         <fusion-input

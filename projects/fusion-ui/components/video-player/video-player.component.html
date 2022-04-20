@@ -27,7 +27,7 @@
                 <fusion-icon class="button-play" [name]="playIconName$ | async" *ngIf="(isVideoPlaying$ | async) === false"></fusion-icon>
                 <fusion-icon class="button-pause" [name]="pauseIconName$ | async" *ngIf="(isVideoPlaying$ | async) === true"></fusion-icon>
             </div>
-            <ng-container *ngIf="currentStyleVersion === styleVersion.V2">
+            <ng-container *ngIf="currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3">
                 <div class="is-video-duration-holder">
                     <fusion-icon class="icon-video-camera" [name]="videoCameraIconName$ | async"></fusion-icon>
                     <ng-container *ngTemplateOutlet="videoTimeData"></ng-container>
@@ -35,7 +35,7 @@
             </ng-container>
         </ng-container>
         <ng-template #videoControls>
-            <div class="vide-controls-overlay" *ngIf="currentStyleVersion === styleVersion.V2">
+            <div class="vide-controls-overlay" *ngIf="currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3">
                 <div class="video-controls-holder">
                     <div class="control-play-pause" (click)="onVideoPlayPauseButtonClicked($event, videoPlayer)">
                         <fusion-icon class="control-button-play" [name]="{iconName: 'controls-play', iconVersion: 'v1'}" *ngIf="(isVideoPlaying$ | async) === false"></fusion-icon>

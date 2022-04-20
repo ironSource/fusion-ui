@@ -39,13 +39,17 @@ export class MonthPickerSelectorComponent extends FusionBase implements OnInit {
 
     arrowLeftIconName$: Observable<IconData> = this.selectedVersion$.pipe(
         map(styleVersion =>
-            styleVersion === StyleVersion.V2 ? {iconName: 'arrow-left', iconVersion: 'v2'} : {iconName: 'arrow-right', iconVersion: 'v1'}
+            styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
+                ? {iconName: 'arrow-left', iconVersion: 'v2'}
+                : {iconName: 'arrow-right', iconVersion: 'v1'}
         ),
         startWith({iconName: 'arrow-right', iconVersion: 'v1'})
     );
     arrowRightIconName$: Observable<IconData> = this.selectedVersion$.pipe(
         map(styleVersion =>
-            styleVersion === StyleVersion.V2 ? {iconName: 'arrow-right', iconVersion: 'v2'} : {iconName: 'arrow-right', iconVersion: 'v1'}
+            styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
+                ? {iconName: 'arrow-right', iconVersion: 'v2'}
+                : {iconName: 'arrow-right', iconVersion: 'v1'}
         ),
         startWith({iconName: 'arrow-right', iconVersion: 'v1'})
     );
