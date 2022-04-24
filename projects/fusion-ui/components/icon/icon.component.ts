@@ -10,7 +10,7 @@ import {IconData} from './icon-entities';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IconComponent extends SvgComponent {
-    @Input() set name(val: string | IconData) {
+    @Input() set name(val: IconData) {
         if (typeof val === 'string') {
             this.onNameChanged(val);
         } else {

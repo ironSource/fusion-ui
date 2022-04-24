@@ -25,7 +25,7 @@
                 [placeholder]="configurations.placeholder?.search"
                 #searchComponent
             ></fusion-dropdown-search>
-            <fusion-icon class="is-custom-icon" *ngIf="configurations.icon" [name]="configurations.icon"></fusion-icon>
+<!--            <fusion-icon class="is-custom-icon" *ngIf="configurations.icon" [name]="configurations.icon"></fusion-icon>-->
             <img [src]="configurations.labelImage" *ngIf="configurations.labelImage && !configurations.isTabMode" alt=""/>
             <fusion-flag *ngIf="configurations.labelFlag" [name]="configurations.labelFlag"></fusion-flag>
             <span class="placeholderPrefix" *ngIf="!configurations?.isMultipleSelection && configurations?.placeholder?.prefix">{{
