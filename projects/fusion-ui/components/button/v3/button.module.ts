@@ -4,7 +4,7 @@ import {ButtonComponent} from './button.component';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {SVG_OPTIONS_TOKEN} from '@ironsource/fusion-ui/components/svg';
 import {ButtonOptions, BUTTON_OPTIONS_DEFAULT_VALUE} from '@ironsource/fusion-ui/components/button/common/base';
-import {ButtonLoadingModule} from './components/button-loading.module';
+import {ButtonLoadingModule} from './components/button-loading/button-loading.module';
 
 @NgModule({
     declarations: [ButtonComponent],

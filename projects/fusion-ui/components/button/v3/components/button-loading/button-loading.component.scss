@@ -1,5 +1,5 @@
-@import '../../../../src/style/scss/v3/mixins/mixins';
-@import '../../../../src/style/scss/v3/vars/colors';
+@import '../../../../../src/style/scss/v3/mixins/mixins';
+@import '../../../../../src/style/scss/v3/vars/colors';
 
 :host {
     @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 26px), false, true) {
