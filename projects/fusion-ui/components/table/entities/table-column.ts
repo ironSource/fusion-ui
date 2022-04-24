@@ -18,7 +18,7 @@ export interface TableColumn {
     style?: any;
     align?: 'left' | 'center' | 'right';
     tooltip?: string;
-    tooltipIcon?: string | IconData;
+    tooltipIcon?: IconData;
     pipeOptions?: string;
     dataParser?: (data: any) => any; // used for data parsing (null to Undefined in budget for example)
     // customErrorMapping example, turn pattern error to decimal error: { pattern: { error: 'decimalMax', values: {'decimalMax': 2}}}

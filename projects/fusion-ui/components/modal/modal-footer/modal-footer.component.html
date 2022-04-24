@@ -4,7 +4,7 @@
         <button
             fusion-button
             [class]="cancelButtonClass"
-            [ngClass]="{small: notificationFooter && currentStyleVersion === styleVersion.V2}"
+            [ngClass]="{small: notificationFooter && (currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3)}"
             (click)="onCloseButtonClicked.emit()"
             *ngIf="!cancelButtonHidden"
         >
@@ -13,7 +13,7 @@
         <button
             fusion-button
             [class]="saveButtonClass"
-            [ngClass]="{small: notificationFooter && currentStyleVersion === styleVersion.V2}"
+            [ngClass]="{small: notificationFooter && (currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3)}"
             [loading]="saveButtonLoading"
             [disabled]="saveButtonDisabled || loading || error"
             (click)="onSave.emit()"

@@ -2,7 +2,7 @@ import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {DropdownComponent} from './dropdown.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
-import {ButtonModule} from '@ironsource/fusion-ui/components/button';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
 import {InputModule} from '@ironsource/fusion-ui/components/input';
 import {FlagModule} from '@ironsource/fusion-ui/components/flag';
 import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox';

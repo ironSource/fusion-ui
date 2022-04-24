@@ -1,6 +1,6 @@
-@import '../../src/style/scss/v1/vars/vars';
-@import '../../src/style/scss/v1/mixins/mixins';
-@import '../../src/style/scss/v1/vars/border';
+@import '../../../src/style/scss/v1/vars/vars';
+@import '../../../src/style/scss/v1/mixins/mixins';
+@import '../../../src/style/scss/v1/vars/border';
 
 $smallHeight: 25px;
 $smallMinWidth: 70px;
@@ -16,7 +16,7 @@ $largeMinWidth: 140px;
     overflow: hidden;
 }
 
-:host.fu-style-v1 {
+:host {
     @extend %reset;
     position: relative;
     display: inline-block;
@@ -43,7 +43,7 @@ $largeMinWidth: 140px;
         @extend %disabled;
     }
 
-    &.is-with-loading {
+    &.fu-with-loading {
         padding-left: 10px;
 
         & + span {
@@ -72,7 +72,7 @@ $largeMinWidth: 140px;
         }
     }
 
-    &.is-iconed {
+    &.fu-iconed {
         min-width: 32px;
         padding: 8px 8px 7px 8px;
         margin-bottom: 2px;

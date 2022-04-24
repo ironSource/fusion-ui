@@ -34,16 +34,18 @@ export class ListBoxComponent extends FusionBase implements OnInit, ControlValue
         this.setDisabledState(value);
     }
 
-    checkIconName$: Observable<string | IconData> = this.selectedVersion$.pipe(
+    checkIconName$: Observable<IconData> = this.selectedVersion$.pipe(
         map(styleVersion =>
-            styleVersion === StyleVersion.V2 ? {iconName: 'check', iconVersion: 'v2'} : {iconName: 'check-v-2', iconVersion: 'v2'}
+            styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
+                ? {iconName: 'check', iconVersion: 'v2'}
+                : {iconName: 'check-v-2', iconVersion: 'v2'}
         ),
         startWith('check-v-2')
     );
 
-    removeIconName$: Observable<string | IconData> = this.selectedVersion$.pipe(
+    removeIconName$: Observable<IconData> = this.selectedVersion$.pipe(
         map(styleVersion =>
-            styleVersion === StyleVersion.V2
+            styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
                 ? {iconName: 'close-circle', iconVersion: 'v2'}
                 : {iconName: 'clear-full-circle', iconVersion: 'v1'}
         ),

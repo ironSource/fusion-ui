@@ -19,7 +19,7 @@ export class LayoutV1Component implements OnDestroy {
     @Input() state: HeaderState = {};
     @Input() scrollTopOnRouteChange: boolean;
     @Input() userName = '';
-    @Input() headerPrimaryMenuIconName: string | IconData = {iconName: 'user', iconVersion: 'v1'};
+    @Input() headerPrimaryMenuIconName: IconData = {iconName: 'user', iconVersion: 'v1'};
     @Input() headerMenuUserNameIcon: string;
     @Input() headerPrimaryMenuItems: MenuItem[] = [];
     @Input() headerSecondaryMenuItems: MenuItem[] = [];

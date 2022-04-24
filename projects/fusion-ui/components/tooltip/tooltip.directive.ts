@@ -22,7 +22,7 @@ export class TooltipDirective implements OnDestroy {
     @Input() tooltipPosition: TooltipPosition = TooltipPosition.Top;
     @Input() tooltipType: TooltipType = TooltipType.Html;
     @Input() tooltipComponentData: ITooltipData = {};
-    @Input() tooltipIcon: string | IconData;
+    @Input() tooltipIcon: IconData;
     @HostBinding('attr.title') emptyTooltip = ''; // remove existed title from parent element
 
     private visible = false;

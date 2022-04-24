@@ -97,7 +97,7 @@ export class DropdownOptionComponent extends FusionBase implements OnInit {
     settings: any;
     optionToStringFunc = this.dropdownService.optionToString.bind(this.dropdownService);
 
-    dropdownArrowIconName$ = new BehaviorSubject<string | IconData>({
+    dropdownArrowIconName$ = new BehaviorSubject<IconData>({
         iconName: 'arrow-dropdown',
         iconVersion: 'v1'
     });
@@ -114,7 +114,7 @@ export class DropdownOptionComponent extends FusionBase implements OnInit {
 
         this.selectedVersion$.pipe(takeUntil(this.onDestroy$)).subscribe(styleVersion => {
             const dropdownArrowIcon =
-                styleVersion === StyleVersion.V2
+                styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
                     ? {iconName: 'arrow-down', iconVersion: 'v2'}
                     : {iconName: 'arrow-dropdown', iconVersion: 'v1'};
             this.dropdownArrowIconName$.next(dropdownArrowIcon);
