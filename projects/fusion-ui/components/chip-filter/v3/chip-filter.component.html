@@ -1,8 +1,4 @@
-<!--<fusion-icon class="fu-chip-icon" [name]="icon" *ngIf="icon"></fusion-icon>-->
-<!--<fusion-flag class="fu-chip-flag" [name]="flag" *ngIf="flag"></fusion-flag>-->
-<!--<span class="truncate" [tooltipWidth]="tooltipWidth" [fusionTooltip]="tooltipContent">{{ title }}<ng-content *ngIf="!title"></ng-content></span>-->
-
-<div class="truncate fu-chip-content-wrapper" #content>
+<div class="truncate fu-chip-content-wrapper">
     <ng-content></ng-content>
 </div>
 <fusion-icon class="fu-icon-close" *ngIf="close" (click)="closeClicked($event)" [name]="'close-bold'"></fusion-icon>

@@ -85,21 +85,6 @@ $paddingChipWithCloseButton: 4px 10px 4px 14px;
                 }
             };
         }
-
-        &.fu-labeled{
-            @include icon-style('fu-icon-close', $fu-primary-400, 16px, flase, true,true,true){
-                &:hover {
-                    cursor: pointer;
-                }
-            };
-
-            .fu-chip-content{
-                > label {
-                    font-family: $helveticaNueMd;
-                    font-weight: 900;
-                }
-            }
-        }
     }
 
     &.fu-disabled{
