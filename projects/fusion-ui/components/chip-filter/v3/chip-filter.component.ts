@@ -4,7 +4,7 @@ import {ChipFilterBaseComponent} from '@ironsource/fusion-ui/components/chip-fil
 @Component({
     selector: 'fusion-chip-filter',
     templateUrl: './chip-filter.component.html',
-    styleUrls: ['./chip-filter.component-v3.scss'],
+    styleUrls: ['./chip-filter.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChipFilterComponent extends ChipFilterBaseComponent implements OnInit, OnDestroy {}

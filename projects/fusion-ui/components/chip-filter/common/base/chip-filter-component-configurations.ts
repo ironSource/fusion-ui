@@ -4,14 +4,13 @@ export interface ChipFilterComponentConfigurations {
     disabled?: boolean;
     selected?: boolean;
     type?: ChipType;
-    tooltipContent?: string;
-    tooltipWidth?: number;
 }
 
 export enum ChipTypeToClass {
     DateFilter = 'fu-date-filter',
     AddFilter = 'fu-add-filter',
-    ChipSelect = 'fu-chip-select'
+    ChipSelect = 'fu-chip-select',
+    ChipDropdown = 'fu-chip-dropdown'
 }
 
-export type ChipType = 'DateFilter' | 'AddFilter' | 'ChipSelect';
+export type ChipType = 'DateFilter' | 'AddFilter' | 'ChipSelect' | 'ChipDropdown';

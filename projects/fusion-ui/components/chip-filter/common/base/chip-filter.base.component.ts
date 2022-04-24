@@ -7,8 +7,6 @@ import {takeUntil} from 'rxjs/operators';
 export abstract class ChipFilterBaseComponent implements OnInit, OnDestroy {
     id: number | string;
     width: number;
-    tooltipWidth: number;
-    tooltipContent: string;
 
     private _selected: boolean;
     private _disabled: boolean;
@@ -22,8 +20,6 @@ export abstract class ChipFilterBaseComponent implements OnInit, OnDestroy {
             this.disabled = value.disabled;
             this.selected = value.selected;
             this.type = value.type;
-            this.tooltipContent = value.tooltipContent;
-            this.tooltipWidth = value.tooltipWidth;
         }
     }
     @Input() suppressClickOnRemove = false;
