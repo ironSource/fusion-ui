@@ -31,10 +31,7 @@
             display: block;
         }
         .content {
-            background-color: $fu-light-100;
             color: $fu-light-1000;
-            border-radius: 8px;
-            border: 1px solid $fu-light-100;
             @extend %font-bodyMedium;
             line-height: 21px;
         }
