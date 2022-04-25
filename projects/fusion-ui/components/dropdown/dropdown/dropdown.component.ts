@@ -406,7 +406,7 @@ export class DropdownComponent extends StyleBase implements OnInit, OnDestroy, O
         this.labelImageSrc = undefined;
         let placeholder = this.initPlaceholder;
         let placeholderForSearch = this.searchPlaceholder;
-        this.icon = typeof this.initIcon === 'string' ? this.initIcon : {...this.initIcon};
+        this.icon = this.initIcon;
         this.labelFlag = '';
         if (this.selected && this.selected.length > 0 && !this.forcePlaceholderOnSelection) {
             if (this.selected.length === 1) {
@@ -417,7 +417,7 @@ export class DropdownComponent extends StyleBase implements OnInit, OnDestroy, O
                     ? this.selected[0].titleText
                     : this.dropdownService.optionToString(this.selected[0], this.mappingOptions, {}, true);
                 if (!!this.selected[0].icon) {
-                    this.icon = typeof this.selected[0].icon === 'string' ? this.selected[0].icon : {...this.selected[0].icon};
+                    this.icon = this.selected[0].icon;
                 }
                 if (!!this.selected[0].image) {
                     this.labelImageSrc = this.selected[0].image;
