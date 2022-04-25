@@ -17,7 +17,9 @@
             "@ironsource/fusion-ui/*": ["projects/fusion-ui/*"],
             "@ironsource/fusion-ui": ["projects/fusion-ui"],
             "@ironsource/fusion-react": ["projects/fusion-react"],
-            "@ironsource/fusion-react/*": ["projects/fusion-react/*"]
+            "@ironsource/fusion-react/*": ["projects/fusion-react/*"],
+            "@ironsource/fusion-vue": ["projects/fusion-vue"],
+            "@ironsource/fusion-vue/*": ["projects/fusion-vue/*"]
         }
     }
 }

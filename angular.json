@@ -399,6 +399,46 @@
           }
         }
       }
+    },
+    "fusion-vue": {
+      "projectType": "library",
+      "root": "projects/fusion-vue",
+      "sourceRoot": "projects/fusion-vue/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/fusion-vue/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/fusion-vue/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/fusion-vue/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/fusion-vue/src/test.ts",
+            "tsConfig": "projects/fusion-vue/tsconfig.spec.json",
+            "karmaConfig": "projects/fusion-vue/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/fusion-vue/**/*.ts",
+              "projects/fusion-vue/**/*.html"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "fusion-ui",

@@ -1,0 +1,16 @@
+{
+  "name": "@ironsource/fusion-vue",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "vue": "*"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": ["fesm2020/ironsource-fusion-vue-core.mjs","fesm2015/ironsource-fusion-vue-core.mjs"],
+  "exports": {
+    "./theme": {
+        "default": "./theme/fusion.theme.css"
+    }
+  }
+}
