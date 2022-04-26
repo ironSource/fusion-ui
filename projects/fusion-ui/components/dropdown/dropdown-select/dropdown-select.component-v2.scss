@@ -90,6 +90,8 @@ $v2-borderRoundedRadius: 20px;
         }
     }
 }
+
+:host-context(.is-dropdown.fu-style-v3) .is-dropdown-select,
 :host-context(.is-dropdown.fu-style-v2) .is-dropdown-select {
     &.forced-placeholder{
         label.icon {
@@ -118,6 +120,8 @@ $v2-borderRoundedRadius: 20px;
         }
     }
 }
+
+:host-context(.is-dropdown.is-icon-right-position.fu-style-v3) .is-dropdown-select,
 :host-context(.is-dropdown.is-icon-right-position.fu-style-v2) .is-dropdown-select {
     label {
         padding: 10px 40px 10px 10px;
@@ -141,6 +145,8 @@ $v2-borderRoundedRadius: 20px;
 }
 
 // small size dropdown has changes in dropdown title only
+:host-context(fusion-dropdown.small.fu-style-v3),
+:host-context(fusion-multi-dropdown.small.fu-style-v3),
 :host-context(fusion-dropdown.small.fu-style-v2),
 :host-context(fusion-multi-dropdown.small.fu-style-v2) {
     .is-dropdown-select label {
@@ -159,6 +165,8 @@ $v2-borderRoundedRadius: 20px;
     }
 }
 
+:host-context(fusion-dropdown.rounded.fu-style-v3),
+:host-context(fusion-multi-dropdown.rounded.fu-style-v3),
 :host-context(fusion-dropdown.rounded.fu-style-v2),
 :host-context(fusion-multi-dropdown.rounded.fu-style-v2) {
     .is-dropdown-select label {
@@ -166,6 +174,9 @@ $v2-borderRoundedRadius: 20px;
     }
 }
 
+
+:host-context(fusion-dropdown.ng-invalid.fu-style-v3) .is-dropdown-select label,
+:host-context(fusion-multi-dropdown.ng-invalid.fu-style-v3) .is-dropdown-select label,
 :host-context(fusion-dropdown.ng-invalid.fu-style-v2) .is-dropdown-select label,
 :host-context(fusion-multi-dropdown.ng-invalid.fu-style-v2) .is-dropdown-select label {
     background-color: $v2-errorBGColor;

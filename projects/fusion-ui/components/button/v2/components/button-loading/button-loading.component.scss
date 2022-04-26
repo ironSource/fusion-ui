@@ -1,0 +1,91 @@
+@import '../../../../../src/style/scss/v2/mixins/mixins';
+@import '../../../../../src/style/scss/v2/vars/colors';
+
+:host {
+    @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 36px), false, true) {
+        display: block;
+    }
+
+    &.large {
+        @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 36px), false, true) {
+            padding-top: 5px;
+        }
+    }
+
+    &.small {
+        @include icon-style('loader-dots-v4', currentColor, (height: 8px, width: 20px), false, true)
+    }
+}
+
+:host-context(.fu-iconed) {
+    @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 24px), false, true);
+    &.large{
+        @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 30px), false, true){
+            padding: 0;
+        }
+    }
+    &.small {
+        @include icon-style('loader-dots-v4', currentColor, (height: 8px, width: 20px), false, true)
+    }
+}
+
+:host-context(fusion-button.fu-iconed) {
+    @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 24px), false, true);
+    &.large{
+        @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 30px), false, true){
+            padding: 0;
+        }
+    }
+
+    &.small {
+        @include icon-style('loader-dots-v4', currentColor, (height: 8px, width: 20px), false, true)
+    }
+
+    &.fu-with-loading {
+        @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 24px), false, true);
+        &.large{
+            @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 30px), false, true){
+                padding: 0;
+            }
+        }
+        &.small {
+            @include icon-style('loader-dots-v4', currentColor, (height: 8px, width: 20px), false, true)
+        }
+
+        &.fu-with-content {
+            @include icon-style('loader-dots-v4', currentColor, (height: 16px, width: 36px), false, true);
+            &.large{
+                @include icon-style('loader-dots-v4', currentColor, (height: 16px, width: 36px), false, true);
+            }
+            &.small{
+                @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 24px), false, true);
+            }
+        }
+    }
+}
+
+:host-context(fusion-button.fu-with-loading.large) {
+    @include icon-style('loader-dots-v4', currentColor, (height: 16px, width: 36px), false, true){
+        padding: 0;
+    }
+}
+
+:host-context(a) {
+    &.fu-with-loading{
+        @include icon-style('loader-dots-v4', $fu-light-900, (height: 16px, width: 36px), false, true) {
+            display: inherit;
+        }
+    }
+
+    &.fu-iconed {
+        @include icon-style('icon', var(--button-icon-color, currentColor), var(--button-small-icon-size, 12px), false, true){
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        &.fu-with-loading{
+            @include icon-style('icon', var(--button-icon-color, currentColor), var(--button-small-icon-size, 12px), false, true){
+                display: none;
+            }
+        }
+    }
+}

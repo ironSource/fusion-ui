@@ -5,7 +5,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
-import {ButtonModule} from '@ironsource/fusion-ui/components/button';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
 import {InputModule} from '@ironsource/fusion-ui/components/input';
 import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox';
 import {DropdownDualMultiSelectBodyModule} from './dropdown-dual-multi-select-body/dropdown-dual-multi-select-body.module';

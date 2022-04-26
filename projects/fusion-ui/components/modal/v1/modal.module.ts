@@ -5,7 +5,7 @@ import {ModalFooterComponent} from './components/modal-footer/modal-footer.compo
 import {ModalContentComponent} from './components/modal-content/modal-content.component';
 import {ModalHeaderComponent} from './components/modal-header/modal-header.component';
 import {LoaderModule} from '@ironsource/fusion-ui/components/loader';
-import {ButtonModule} from '@ironsource/fusion-ui/components/button';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 
 @NgModule({

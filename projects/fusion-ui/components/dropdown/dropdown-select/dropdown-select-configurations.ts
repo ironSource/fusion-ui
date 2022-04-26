@@ -19,9 +19,9 @@ export interface DropdownSelectConfigurations {
     isOpen?: boolean;
     isMultipleSelection?: boolean;
     error?: string;
-    icon?: string | IconData;
+    icon?: IconData;
     labelFlag?: string;
     labelImage?: string;
-    dropdownArrowIconName?: string | IconData;
-    filterIconName?: string | IconData;
+    dropdownArrowIconName?: IconData;
+    filterIconName?: IconData;
 }

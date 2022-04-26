@@ -1,0 +1,10 @@
+@import '../../../../../src/style/scss/v1/mixins/mixins';
+@import '../../../../../src/style/scss/v1/vars/colors';
+
+:host-context(.fu-with-loading) {
+    @include icon-style('loading', currentColor, 15px, false, true){
+        vertical-align: middle;
+        margin-right: 5px;
+    };
+}
+
