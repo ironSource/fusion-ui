@@ -1,0 +1,80 @@
+@import "../../../src/style/scss/v1/vars/vars";
+@import "../../../src/style/scss/v1/mixins/mixins";
+
+:host.fu-style-v1 {
+    > .is-tooltip-content {
+        white-space: normal;
+        line-height: 16px;
+        max-width: 250px;
+        text-align: left;
+    }
+
+    display: flex;
+    position: absolute;
+    color: $White;
+    border-radius: 3px;
+    background-color: $dark-300;
+    padding: 7px;
+    z-index: getZIndexLayerOffset(system, 20);
+    @extend %font6;
+    word-wrap: break-word;
+
+    @include icon-style('tooltip-icon', currentColor, 13px, false, true) {
+        margin-right: 6px;
+        margin-top: 1px;
+        height: 16px;
+        display: block;
+    }
+
+    .tooltip-icon {
+        display: none;
+    }
+
+    &.is-position-top {
+        &::after {
+            border: solid;
+            border-color: $dark-300 transparent transparent transparent;
+            border-width: 4px 7px 0;
+            content: "";
+            position: absolute;
+            top: 100%;
+            @extend %absoluteHorizontalAlign;
+        }
+    }
+
+    &.is-position-bottom {
+        &::after {
+            border: solid;
+            border-color: transparent transparent $dark-300 transparent;
+            border-width: 0 7px 4px;
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            @extend %absoluteHorizontalAlign;
+        }
+    }
+
+    &.is-position-left {
+        &::after {
+            border: solid;
+            border-color: transparent transparent transparent $dark-300;
+            border-width: 7px 4px 7px;
+            content: "";
+            position: absolute;
+            top: 35%;
+            left: 100%;
+        }
+    }
+
+    &.is-position-right {
+        &::after {
+            border: solid;
+            border-color: transparent $dark-300 transparent transparent;
+            border-width: 7px 4px 7px;
+            content: "";
+            position: absolute;
+            top: 35%;
+            right: 100%;
+        }
+    }
+}
