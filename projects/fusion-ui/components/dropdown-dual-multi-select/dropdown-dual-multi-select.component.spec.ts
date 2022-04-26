@@ -3,7 +3,7 @@ import {DropdownDualMultiSelectComponent} from './dropdown-dual-multi-select.com
 import {By} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
-import {ButtonModule} from '@ironsource/fusion-ui/components/button';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
 import {InputModule} from '@ironsource/fusion-ui/components/input';
 import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox';
 import {ReactiveFormsModule} from '@angular/forms';

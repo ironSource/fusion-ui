@@ -6,7 +6,7 @@ export enum TagRole {
 
 export interface TagComponentConfigurations {
     id?: number | string;
-    icon?: string | IconData;
+    icon?: IconData;
     flag?: string;
     title: string;
     close?: boolean;

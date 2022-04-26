@@ -9,7 +9,7 @@ import {DropdownLoaderModule} from '../dropdown-loader/dropdown-loader.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {DropdownOptionsListModule} from '../dropdown-options-list/dropdown-options-list.module';
-import {ButtonModule} from '@ironsource/fusion-ui/components/button';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
 
 @NgModule({
     declarations: [TagsInputComponent],

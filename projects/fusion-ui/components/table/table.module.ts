@@ -27,7 +27,7 @@ import {LoadMoreModule} from '@ironsource/fusion-ui/directives/load-more';
 import {GenericPipeModule} from '@ironsource/fusion-ui/pipes/generic';
 import {ErrorMessageModule} from '@ironsource/fusion-ui/components/error-message';
 import {NotAvailableModule} from '@ironsource/fusion-ui/pipes/not-available';
-import {ButtonModule} from '@ironsource/fusion-ui/components/button';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
 
 @NgModule({
     exports: [TableComponent],

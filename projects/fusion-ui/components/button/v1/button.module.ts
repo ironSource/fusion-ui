@@ -3,13 +3,13 @@ import {CommonModule} from '@angular/common';
 import {ButtonComponent} from './button.component';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {SVG_OPTIONS_TOKEN} from '@ironsource/fusion-ui/components/svg';
-import {ButtonOptions} from './button-entities';
-import {BUTTON_OPTIONS_DEFAULT_VALUE} from './button-config';
+import {ButtonOptions, BUTTON_OPTIONS_DEFAULT_VALUE} from '@ironsource/fusion-ui/components/button/common/base';
+import {ButtonLoadingModule} from './components/button-loading/button-loading.module';
 
 @NgModule({
     declarations: [ButtonComponent],
     exports: [ButtonComponent],
-    imports: [CommonModule, IconModule]
+    imports: [CommonModule, IconModule, ButtonLoadingModule]
 })
 export class ButtonModule {
     static forRoot(options?: ButtonOptions): ModuleWithProviders<ButtonModule> {
