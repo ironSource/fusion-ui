@@ -2,7 +2,7 @@ import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {MultiDropdownComponent} from './multi-dropdown.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
-import {ButtonModule} from '@ironsource/fusion-ui/components/button';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
 import {InputModule} from '@ironsource/fusion-ui/components/input';
 import {FlagModule} from '@ironsource/fusion-ui/components/flag';
 import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox';
@@ -24,7 +24,7 @@ import {MockLogService, MockUniqueIdService, MockApiService} from '@ironsource/f
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {ApiService} from '@ironsource/fusion-ui/services/api';
 import {DropdownSelectModule} from '../dropdown-select/dropdown-select.module';
-import {FUSION_STYLE_VERSION_CSS_VAR_NAME} from '@ironsource/fusion-ui';
+import {FUSION_STYLE_VERSION_CSS_VAR_NAME, StyleVersion} from '@ironsource/fusion-ui';
 
 const optionMock = [
     {
@@ -131,10 +131,14 @@ describe('MultiDropdownComponent', () => {
         expect(bottomActionEl.children.length).toBe(2); // 2 buttons here
 
         expect(bottomActionEl.nativeElement.querySelector('button').outerHTML).toContain('fusion-button=""');
-        expect(bottomActionEl.nativeElement.querySelector('button.secondary').textContent).toContain('Cancel');
-        expect(bottomActionEl.nativeElement.querySelectorAll('button')[1].classList).toContain('primary');
+        expect(bottomActionEl.nativeElement.querySelector('button').textContent.trim()).toContain('Cancel');
+        const buttonClasses = bottomActionEl.nativeElement.querySelectorAll('button')[1].classList;
+
+        expect(buttonClasses.contains('primary')).toBeTruthy();
+        expect(buttonClasses.contains('small')).toBeTruthy();
+
         expect(bottomActionEl.nativeElement.querySelectorAll('button')[1].outerHTML).toContain('fusion-button=""');
-        expect(bottomActionEl.nativeElement.querySelectorAll('button')[1].textContent).toContain('Apply');
+        expect(bottomActionEl.nativeElement.querySelectorAll('button')[1].textContent.trim()).toContain('Apply');
     });
 
     it('Should be opened by click', () => {

@@ -1,6 +1,6 @@
 <div [id]="id" (fusionClickOutside)="onOutsideClick()" *ngIf="selectedVersion$ | async as selectedVersion">
     <fusion-dropdown-select
-        *ngIf="(styleVersion.V2 === selectedVersion || styleVersion.V3 === selectedVersion); else v1DateSelector"
+        *ngIf="styleVersion.V2 === selectedVersion || styleVersion.V3 === selectedVersion; else v1DateSelector"
         (click)="toggle()"
         [configurations]="dropdownSelectConfigurations$ | async"
     >

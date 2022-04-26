@@ -95,7 +95,7 @@ button.addEventListener("onclick", e => console.log(e));'
                     ></fusion-code-block>
                 </ng-template>
 
-            <fusion-button [loading]="isLoading" (click)="onClick()">bla bla Button</fusion-button>
+            <fusion-button icon="bullhorn" [loading]="isLoading" (click)="onClick()">Button</fusion-button>
 
             </fusion-example-block>
 
@@ -341,10 +341,10 @@ button.addEventListener("onclick", e => console.log(e));'
                     ></fusion-code-block>
                 </ng-template>
 
-                <button fusion-button class="primary">Default button</button>&nbsp;&nbsp;
-                <button fusion-button class="negative">Negative action</button>&nbsp;
-                <button fusion-button class="secondary">Secondary button</button>&nbsp;
-            </fusion-example-block>
+            <fusion-button class="primary">Default button</fusion-button>&nbsp;&nbsp;
+            <fusion-button class="black dark">Negative action</fusion-button>&nbsp;
+            <fusion-button class="secondary">Secondary button</fusion-button>&nbsp;
+        </fusion-example-block>
 
             <fusion-example-block id="typeTransparent" *ngIf="currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3" title="Transparent">
                 <ng-template fusionExampleBlock="Angular">
@@ -447,11 +447,11 @@ button.addEventListener("onclick", e => console.log(e));'
                     ></fusion-code-block>
                 </ng-template>
 
-                <button fusion-button class="transparent">Apply</button>&nbsp;
-                <button fusion-button class="transparent secondary">Cancel</button>&nbsp;
-                <button fusion-button class="transparent medium">Apply</button>&nbsp;
-                <button fusion-button class="transparent secondary medium">Cancel</button>&nbsp;
-            </fusion-example-block>
+            <fusion-button class="transparent">Apply</fusion-button>&nbsp;
+            <fusion-button class="transparent secondary">Cancel</fusion-button>&nbsp;
+            <fusion-button class="transparent medium">Apply</fusion-button>&nbsp;
+            <fusion-button class="transparent secondary medium">Cancel</fusion-button>&nbsp;
+        </fusion-example-block>
 
             <fusion-example-block id="typeIcon" title="Icon">
                 <ng-template fusionExampleBlock="Angular">

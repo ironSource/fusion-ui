@@ -1,0 +1,44 @@
+@import '../../../../../src/style/scss/v3/mixins/mixins';
+@import '../../../../../src/style/scss/v3/vars/colors';
+
+:host {
+    @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 26px), false, true) {
+        display: block;
+    }
+
+    @include icon-style('loading-clean', currentColor, 20px, false, true);
+}
+
+:host-context(.large) {
+    @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 36px), false, true) {
+        display: block;
+    }
+    @include icon-style('loading-clean', currentColor, 24px, false, true);
+
+}
+
+:host-context(.small) {
+    @include icon-style('loader-dots-v4', currentColor, (height: 8px, width: 20px), false, true){
+        display: block;
+    }
+    @include icon-style('loading-clean', currentColor, 16px, false, true);
+}
+
+:host-context(.fu-link-button) {
+    @include icon-style('loader-dots-v4', $fu-primary-500, (height: 16px, width: 22px), false, true) {
+        height: 16px;
+    }
+}
+
+:host-context(.fu-link-button.third) {
+    @include icon-style('loader-dots-v4', $fu-light-900, (height: 16px, width: 22px), false, true) {
+        height: 16px;
+    }
+}
+
+:host-context(.fu-link-button.black) {
+    @include icon-style('loader-dots-v4', $fu-black-500, (height: 16px, width: 22px), false, true) {
+        height: 16px;
+    }
+}
+

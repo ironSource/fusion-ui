@@ -1,40 +1,8 @@
-import {
-    Component,
-    Input,
-    OnInit,
-    ElementRef,
-    Renderer2,
-    ChangeDetectionStrategy,
-    Injector,
-    Output,
-    EventEmitter,
-    HostListener
-} from '@angular/core';
-import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
+import {Input, OnInit, ElementRef, Renderer2, Injector, Output, EventEmitter, HostListener, Directive} from '@angular/core';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
 
-@Component({
-    // eslint-disable-next-line
-    selector: 'fusion-button,[fusion-button]',
-    template: `
-        <span [ngClass]="{'is-icon-text': iconName && projectContent}">
-            <fusion-icon *ngIf="iconName && !isLoading" class="icon" [name]="iconData"></fusion-icon>
-            <ng-container *ngIf="selectedVersion$ | async as selectedVersion">
-                <fusion-icon
-                    *ngIf="isLoading"
-                    class="icon-loading"
-                    [name]="
-                        selectedVersion === 1 ? {iconName: 'loading', iconVersion: 'v1'} : {iconName: 'loader-dots-v4', iconVersion: 'v2'}
-                    "
-                ></fusion-icon>
-            </ng-container>
-            <span><ng-content></ng-content></span>
-        </span>
-    `,
-    styleUrls: ['./button.component.scss', './button.component-v2.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class ButtonComponent extends FusionBase implements OnInit {
+@Directive()
+export abstract class ButtonBaseComponent implements OnInit {
     @HostListener('click', ['$event']) onClick($event: any) {
         this.onclick.emit($event);
     }
@@ -51,22 +19,25 @@ export class ButtonComponent extends FusionBase implements OnInit {
         this.isLoading = value;
         this.setLoadingState(this.isLoading);
     }
+    @Input() set link(value: boolean) {
+        this.isLink = value;
+        this.setLinkButtonState(this.isLink);
+    }
 
     @Output() onclick = new EventEmitter();
 
     projectContent: boolean;
     isLoading: boolean;
+    isLink: boolean;
     iconName: string;
     iconData: IconData;
     private isDisabled: boolean;
 
-    constructor(injector: Injector, private element: ElementRef, private renderer: Renderer2) {
-        super(injector);
-    }
+    constructor(injector: Injector, private element: ElementRef, private renderer: Renderer2) {}
 
     ngOnInit() {
         this.projectContent = !!this.element.nativeElement.innerText;
-        this.setHostClass(this.projectContent, 'is-with-content');
+        this.setHostClass(this.projectContent, 'fu-with-content');
     }
 
     private setHostClass(add: boolean, className: string) {
@@ -85,13 +56,17 @@ export class ButtonComponent extends FusionBase implements OnInit {
     }
 
     private setLoadingState(loading: boolean) {
-        this.setHostClass(loading, 'is-with-loading');
+        this.setHostClass(loading, 'fu-with-loading');
         if (!this.isDisabled) {
             this.setDisableState(loading);
         }
     }
 
     private setIconState(hasIcon: boolean) {
-        this.setHostClass(hasIcon, 'is-iconed');
+        this.setHostClass(hasIcon, 'fu-iconed');
+    }
+
+    private setLinkButtonState(isLinkButton: boolean) {
+        this.setHostClass(isLinkButton, 'fu-link-button');
     }
 }
