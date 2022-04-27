@@ -76,7 +76,7 @@
                         type="button"
                         fusion-button
                         class="secondary small"
-                        [ngClass]="{transparent: currentStyleVersion === styleVersion.V2}"
+                        [ngClass]="{transparent: currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3}"
                         [disabled]="loading"
                         (click)="onCancelSelection()"
                     >Cancel</button>
@@ -84,7 +84,7 @@
                         type="button"
                         fusion-button
                         class="primary small"
-                        [ngClass]="{transparent: currentStyleVersion === styleVersion.V2}"
+                        [ngClass]="{transparent: currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3}"
                         [disabled]="loading"
                         (click)="onApplySelection()"
                     >Apply</button>

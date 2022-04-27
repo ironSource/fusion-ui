@@ -73,7 +73,7 @@ export class DropdownComponent extends FusionBase implements OnInit, OnDestroy, 
     /**
      * @deprecated since version 6.0.0
      */
-    @Input() icon: string | IconData;
+    @Input() icon: IconData;
     @Input() filterIconName: string;
     @Input() isIconRightPosition = false;
     @Input() isDisabled: boolean;
@@ -140,7 +140,7 @@ export class DropdownComponent extends FusionBase implements OnInit, OnDestroy, 
 
     forcePlaceholderOnSelection = false;
     placeholderText = 'Please Select';
-    placeholderIcon: string | IconData;
+    placeholderIcon: IconData;
 
     isOpen$: BehaviorSubject<boolean> = new BehaviorSubject(false);
     id: any;
@@ -163,7 +163,7 @@ export class DropdownComponent extends FusionBase implements OnInit, OnDestroy, 
     backendPaginationChanged$: Subject<any> = new Subject();
     displayedOptions$ = new BehaviorSubject<DropdownOption[]>([]);
     displayedOptionsObservable$: Observable<DropdownOption[]>;
-    dropdownArrowIconName$ = new BehaviorSubject<string | IconData>({
+    dropdownArrowIconName$ = new BehaviorSubject<IconData>({
         iconName: 'arrow-dropdown',
         iconVersion: 'v1'
     });
@@ -174,7 +174,7 @@ export class DropdownComponent extends FusionBase implements OnInit, OnDestroy, 
     private _isLocatedRight = false;
     private _isLocatedLeft = false;
     private initPlaceholder: string;
-    private initIcon: string | IconData;
+    private initIcon: IconData;
     protected focusedLI = -1;
     private loadingState: boolean;
     private backendPaginationState: BackendPagination;
@@ -273,7 +273,7 @@ export class DropdownComponent extends FusionBase implements OnInit, OnDestroy, 
 
         this.selectedVersion$.pipe(takeUntil(this.onDestroy$)).subscribe(styleVersion => {
             const dropdownArrowIcon =
-                styleVersion === StyleVersion.V2
+                styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
                     ? {iconName: 'arrow-down', iconVersion: 'v2'}
                     : {iconName: 'arrow-dropdown', iconVersion: 'v1'};
             this.dropdownArrowIconName$.next(dropdownArrowIcon);

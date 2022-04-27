@@ -14,7 +14,7 @@ export class ModalHeaderComponent extends FusionBase {
     @Output() closed = new EventEmitter();
 
     closeIconName$: Observable<string> = this.selectedVersion$.pipe(
-        map(styleVersion => (styleVersion === StyleVersion.V2 ? 'close' : 'close')),
+        map(styleVersion => (styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3 ? 'close' : 'close')),
         startWith('close')
     );
 

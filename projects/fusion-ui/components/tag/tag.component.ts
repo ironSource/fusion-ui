@@ -1,21 +1,9 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    ContentChild,
-    ElementRef,
-    EventEmitter,
-    Injector,
-    Input,
-    OnInit,
-    Output,
-    Renderer2
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Injector, Input, OnInit, Output, Renderer2} from '@angular/core';
 import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {BehaviorSubject, fromEvent} from 'rxjs';
 import {TagComponentConfigurations} from './tag-component-configurations';
 import {takeUntil} from 'rxjs/operators';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
-import {TooltipComponent} from '@ironsource/fusion-ui/components';
 
 @Component({
     selector: 'fusion-tag',
@@ -24,9 +12,7 @@ import {TooltipComponent} from '@ironsource/fusion-ui/components';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TagComponent extends FusionBase implements OnInit {
-    @ContentChild(TooltipComponent, {static: false}) private tooltipComponent: TooltipComponent;
-
-    closeIconName$ = new BehaviorSubject<string | IconData>({
+    closeIconName$ = new BehaviorSubject<IconData>({
         iconName: 'clear-full-circle',
         iconVersion: 'v1'
     });
@@ -53,7 +39,7 @@ export class TagComponent extends FusionBase implements OnInit {
 
     // deprecated inputs
     @Input() id: number | string;
-    @Input() icon: string | IconData;
+    @Input() icon: IconData;
     @Input() flag: string;
     @Input() title: string;
     @Input() tooltipContent: string;
@@ -107,7 +93,11 @@ export class TagComponent extends FusionBase implements OnInit {
     ngOnInit() {
         this.width = this.element.nativeElement.offsetWidth;
         this.selectedVersion$.subscribe(styleVersion => {
-            this.closeIconName$.next(styleVersion === StyleVersion.V2 ? 'close' : {iconName: 'clear-full-circle', iconVersion: 'v1'});
+            this.closeIconName$.next(
+                styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
+                    ? 'close'
+                    : {iconName: 'clear-full-circle', iconVersion: 'v1'}
+            );
         });
 
         if (!this.close && !this.disabled) {

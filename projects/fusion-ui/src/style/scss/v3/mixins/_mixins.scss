@@ -26,6 +26,21 @@
     animation: #{$str};
 }
 
+// region rotate animation
+%rotating-icon {
+    animation: rotation 1s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+// endregion
+
 @mixin trn( $prop: all, $easing: linear, $duration: .3s, $delay: 0s ) {
     -webkit-transition: $prop $easing $duration $delay;
     -o-transition: $prop $easing $duration $delay;

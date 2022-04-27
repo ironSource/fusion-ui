@@ -39,7 +39,10 @@ export class DropdownSelectComponent extends FusionBase implements OnInit {
     }
 
     getLabelCSSClasses(currentStyleVersion: StyleVersion, isOpen: boolean): string[] {
-        const isV2OpenWithSearch = currentStyleVersion === this.styleVersion.V2 && this.configurations.isSearch && isOpen;
+        const isV2OpenWithSearch =
+            (currentStyleVersion === this.styleVersion.V2 || currentStyleVersion === this.styleVersion.V3) &&
+            this.configurations.isSearch &&
+            isOpen;
         const classesList = [
             this.configurations.disabled && 'dd-disabled',
             !!this.configurations.error && 'dd-error',

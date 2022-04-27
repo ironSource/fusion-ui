@@ -8,7 +8,7 @@ import {CalendarModule} from '../calendar/calendar.module';
 import {DaterangeService} from './daterange.service';
 import {InputModule} from '@ironsource/fusion-ui/components/input';
 import {ReactiveFormsModule} from '@angular/forms';
-import {ButtonModule} from '@ironsource/fusion-ui/components/button';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
 import {DropdownSelectModule} from '@ironsource/fusion-ui/components/dropdown';
 
 @NgModule({

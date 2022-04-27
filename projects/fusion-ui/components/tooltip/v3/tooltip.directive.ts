@@ -8,14 +8,13 @@ import {
     OnInit,
     AfterViewInit,
     ViewContainerRef,
-    ComponentFactoryResolver,
-    HostBinding
+    ComponentFactoryResolver
 } from '@angular/core';
 import {TooltipComponent} from './tooltip.component';
 import {IShiftPosition, TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {fromEvent, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {FUSION_STYLE_VERSION_CSS_VAR_NAME, WindowService} from '@ironsource/fusion-ui';
+import {WindowService} from '@ironsource/fusion-ui/services/window';
 
 @Directive({selector: '[fusionTooltip]'})
 export class TooltipDirective implements OnInit, OnDestroy, AfterViewInit {

@@ -10,7 +10,6 @@ import {Subject} from 'rxjs';
 })
 export class AppComponent implements OnInit, OnDestroy {
     tooltipData: ITooltipData = {};
-
     private onDestroy$ = new Subject();
 
     constructor(private tooltipService: TooltipService) {}

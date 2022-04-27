@@ -55,7 +55,7 @@ export class NotificationComponent extends FusionBase implements OnInit, AfterVi
 
     ngOnInit() {
         this.selectedVersion$.subscribe((styleVersion: StyleVersion) => {
-            this.closeIconName$.next(styleVersion === StyleVersion.V2 ? 'close' : 'close');
+            this.closeIconName$.next(styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3 ? 'close' : 'close');
         });
     }
 

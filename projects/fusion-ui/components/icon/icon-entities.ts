@@ -4,7 +4,9 @@ export interface IconOptions {
     svgOptions: SvgOptions;
 }
 
-export interface IconData {
+interface Icon {
     iconName: string;
     iconVersion: string;
 }
+
+export type IconData = string | Icon;
