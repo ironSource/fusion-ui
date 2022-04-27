@@ -1,3 +1,11 @@
-<router-outlet></router-outlet>
-<fusion-tooltip *ngIf="tooltipData.content"
-            [tooltipData]="tooltipData"></fusion-tooltip>
+<!--<router-outlet></router-outlet>-->
+<!--<fusion-tooltip *ngIf="tooltipData.content"-->
+<!--            [tooltipData]="tooltipData"></fusion-tooltip>-->
+<div style="display: flex; justify-content: center;">
+    <div fusionTooltip="Hello Text" style="border: 1px solid black;">
+        Tooltip Component
+        <fusion-tooltip>
+            <div>Component Tooltip</div>
+        </fusion-tooltip>
+    </div>
+</div>

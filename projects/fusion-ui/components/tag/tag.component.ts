@@ -1,9 +1,21 @@
-import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Injector, Input, OnInit, Output, Renderer2} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ContentChild,
+    ElementRef,
+    EventEmitter,
+    Injector,
+    Input,
+    OnInit,
+    Output,
+    Renderer2
+} from '@angular/core';
 import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {BehaviorSubject, fromEvent} from 'rxjs';
 import {TagComponentConfigurations} from './tag-component-configurations';
 import {takeUntil} from 'rxjs/operators';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
+import {TooltipComponent} from '@ironsource/fusion-ui/components';
 
 @Component({
     selector: 'fusion-tag',
@@ -12,6 +24,8 @@ import {IconData} from '@ironsource/fusion-ui/components/icon';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TagComponent extends FusionBase implements OnInit {
+    @ContentChild(TooltipComponent, {static: false}) private tooltipComponent: TooltipComponent;
+
     closeIconName$ = new BehaviorSubject<string | IconData>({
         iconName: 'clear-full-circle',
         iconVersion: 'v1'

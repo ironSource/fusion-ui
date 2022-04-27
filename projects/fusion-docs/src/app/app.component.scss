@@ -1,0 +1,21 @@
+[tooltipDirective] {
+    position: relative;
+}
+
+.tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    color: #ffff;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 19.5px;
+    letter-spacing: 0.24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 8px 7px;
+    background-color: #696a6b;
+}

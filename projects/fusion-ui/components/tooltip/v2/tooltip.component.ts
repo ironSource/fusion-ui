@@ -22,7 +22,7 @@ const TOOLTIP_ARROW_SIZE = 6;
 @Component({
     selector: 'fusion-tooltip',
     templateUrl: './tooltip.component.html',
-    styleUrls: ['./tooltip.component.scss', './tooltip.component-v2.scss'],
+    styleUrls: ['./tooltip.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TooltipComponent extends FusionBase implements AfterViewInit, OnChanges {

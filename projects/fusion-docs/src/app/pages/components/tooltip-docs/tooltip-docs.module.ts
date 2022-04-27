@@ -6,7 +6,8 @@ import {ExampleBlockModule} from '../../../components/example-block/example-bloc
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ReactiveFormsModule} from '@angular/forms';
-import {TableModule, TooltipModule} from '@ironsource/fusion-ui';
+import {TableModule} from '@ironsource/fusion-ui/components/table';
+import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 
 const routes: Routes = [{path: '', component: TooltipDocsComponent}];
 
