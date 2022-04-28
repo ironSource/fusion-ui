@@ -1,6 +1,22 @@
 @import "../../../src/style/scss/v3/vars/vars";
 @import "../../../src/style/scss/v3/mixins/mixins";
 
+%arrowBorderVertical{
+    content: '';
+    position: absolute;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+}
+
+%arrowBorderHorizontal {
+    content: '';
+    position: absolute;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+}
+
 :host {
     --fu-tooltip-background-color: #696A6B;
     @extend %font-bodySmallStrong;
@@ -19,42 +35,28 @@
     background-color: var(--fu-tooltip-background-color);
     border: none;
 
-
-    &::after {
-        content: '';
-        position: absolute;
-    }
-
     &.fu-tooltip-top::after {
         top: 100%;
         left: 50%;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
+        @extend %arrowBorderHorizontal;
         border-color: var(--fu-tooltip-background-color) transparent transparent transparent;
     }
     &.fu-tooltip-bottom::after {
         bottom: 100%;
         left: 50%;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
+        @extend %arrowBorderHorizontal;
         border-color: transparent transparent var(--fu-tooltip-background-color) transparent;
     }
     &.fu-tooltip-left::after {
         top: 50%;
         left: 100%;
-        margin-top: -5px;
-        border-width: 5px;
-        border-style: solid;
+        @extend %arrowBorderVertical;
         border-color: transparent transparent transparent var(--fu-tooltip-background-color);
     }
     &.fu-tooltip-right::after {
         top: 50%;
         right: 100%;
-        margin-top: -5px;
-        border-width: 5px;
-        border-style: solid;
+        @extend %arrowBorderVertical;
         border-color: transparent var(--fu-tooltip-background-color) transparent transparent;
     }
 }
