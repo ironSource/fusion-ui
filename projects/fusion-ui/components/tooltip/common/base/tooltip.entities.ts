@@ -27,3 +27,11 @@ export interface IShiftPosition {
     top: number;
     left: number;
 }
+
+export type TooltipComponentStyleConfiguration = {
+    top?: string;
+    left?: string;
+    width?: string;
+    height?: string;
+    backgroundColor?: string;
+};

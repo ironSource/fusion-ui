@@ -5,52 +5,53 @@ import {
     ElementRef,
     ContentChild,
     OnDestroy,
-    OnInit,
     AfterViewInit,
-    ViewContainerRef,
-    ComponentFactoryResolver
+    ComponentRef,
+    ViewContainerRef
 } from '@angular/core';
 import {TooltipComponent} from './tooltip.component';
 import {IShiftPosition, TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {fromEvent, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {WindowService} from '@ironsource/fusion-ui/services/window';
+import {TooltipContentDirective} from './tooltip-content.directive';
 
 @Directive({selector: '[fusionTooltip]'})
-export class TooltipDirective implements OnInit, OnDestroy, AfterViewInit {
+export class TooltipDirective implements OnDestroy, AfterViewInit {
     @ContentChild(TooltipComponent, {read: TooltipComponent, static: false}) tooltipComponent!: TooltipComponent;
+    @ContentChild(TooltipContentDirective) directiveRef: TooltipContentDirective;
 
     @Input() fusionTooltip = '';
-    @Input() width: number = 150;
-    @Input() height: number = 30;
-    @Input() backgroundColor: string = '#696a6b';
+    @Input() set configuration(config: any) {
+        if (config) {
+            this.width = config.width || this.width;
+            this.height = config.height || this.height;
+            this.backgroundColor = config.backgroundColor || this.backgroundColor;
+        }
+    }
 
+    width: number = 150;
+    height: number = 30;
+    backgroundColor: string = '#696a6b';
     onDestroy$ = new Subject<void>();
-    toolTipVisible$ = new Subject<boolean>();
 
     private position = TooltipPosition.Top;
-    private tooltipElement: any;
     private tooltipPosition: {
         position: TooltipPosition;
         left: number;
         top: number;
     };
+    private tooltipComponentRef: ComponentRef<TooltipComponent>;
 
     constructor(
         private renderer: Renderer2,
         private elementRef: ElementRef,
         private window: WindowService,
-        public viewContainerRef: ViewContainerRef,
-        private componentFactoryResolver: ComponentFactoryResolver
+        private viewContainerRef: ViewContainerRef
     ) {}
 
-    ngOnInit() {
-        this.initListeners();
-    }
-
     ngAfterViewInit() {
-        this.setTooltipContent();
-        this.tooltipElement.style.display = 'none';
+        this.initListeners();
     }
 
     ngOnDestroy() {
@@ -61,20 +62,30 @@ export class TooltipDirective implements OnInit, OnDestroy, AfterViewInit {
     initListeners() {
         fromEvent(this.elementRef.nativeElement, 'mouseenter')
             .pipe(takeUntil(this.onDestroy$))
-            .subscribe(_ => {
-                this.setTooltipPosition(this.position);
-            });
+            .subscribe(_ => this.showTooltip());
 
         fromEvent(this.elementRef.nativeElement, 'mouseleave')
             .pipe(takeUntil(this.onDestroy$))
-            .subscribe(_ => {
-                this.toolTipVisible$.next(false);
-            });
+            .subscribe(_ => this.hideTooltip());
+    }
 
-        this.toolTipVisible$.pipe(takeUntil(this.onDestroy$)).subscribe(visible => {
-            this.tooltipElement.style.display = !visible ? 'none' : 'flex';
-            this.changeHostClass('fu-tooltip-show', visible, this.tooltipElement);
-        });
+    private showTooltip(): void {
+        if (this.directiveRef) {
+            this.directiveRef.create();
+            this.tooltipComponentRef = this.directiveRef.tooltipComponentRef;
+        } else {
+            this.tooltipComponentRef = this.viewContainerRef.createComponent(TooltipComponent);
+            this.tooltipComponentRef.instance.tooltipTextContent = this.fusionTooltip;
+        }
+        this.setTooltipPosition(this.position);
+    }
+
+    private hideTooltip(): void {
+        if (this.directiveRef) {
+            this.directiveRef.destroy();
+        } else {
+            this.tooltipComponentRef.destroy();
+        }
     }
 
     private adjustTooltipPosition(position: TooltipPosition): TooltipPosition {
@@ -138,37 +149,17 @@ export class TooltipDirective implements OnInit, OnDestroy, AfterViewInit {
             left: shiftPosition.left,
             top: shiftPosition.top
         };
-        this.showTooltip();
-    }
-
-    private showTooltip(): void {
-        const {position} = this.tooltipPosition;
-        this.changeHostClass('fu-tooltip-' + TooltipPosition[position].toLowerCase(), true, this.tooltipElement);
         this.setTooltipConfiguration();
-        this.toolTipVisible$.next(true);
     }
 
     private setTooltipConfiguration(): void {
-        this.tooltipElement.style.top = this.tooltipPosition.top.toString() + 'px';
-        this.tooltipElement.style.left = this.tooltipPosition.left.toString() + 'px';
-        this.tooltipElement.style.width = this.width.toString() + 'px';
-        this.tooltipElement.style.height = this.height.toString() + 'px';
-        this.tooltipElement.style.setProperty('--fu-tooltip-background-color', this.backgroundColor);
-    }
-
-    private setTooltipContent(): void {
-        if (this.tooltipComponent) {
-            this.tooltipElement = this.tooltipComponent.elementRef.nativeElement;
-        } else {
-            const componentFactory = this.componentFactoryResolver.resolveComponentFactory(TooltipComponent);
-            const componentRef = this.viewContainerRef.createComponent(componentFactory);
-            this.tooltipElement = componentRef.location.nativeElement;
-            this.tooltipElement.innerHTML = this.fusionTooltip;
-        }
-    }
-
-    private changeHostClass(className: string, add: boolean, element: any): void {
-        const classAction = add ? 'addClass' : 'removeClass';
-        this.renderer[classAction](element, className);
+        this.tooltipComponentRef.instance.tooltipStyleConfiguration = {
+            top: this.tooltipPosition.top.toString() + 'px',
+            left: this.tooltipPosition.left.toString() + 'px',
+            width: this.width.toString() + 'px',
+            height: this.height.toString() + 'px',
+            backgroundColor: this.backgroundColor
+        };
+        this.tooltipComponentRef.instance.tooltipPositionClass = this.tooltipPosition.position;
     }
 }
