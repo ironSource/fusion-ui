@@ -10,6 +10,7 @@ import {Subject} from 'rxjs';
 })
 export class AppComponent implements OnInit, OnDestroy {
     tooltipData: ITooltipData = {};
+    showModal = false;
     private onDestroy$ = new Subject();
 
     constructor(private tooltipService: TooltipService) {}
@@ -21,5 +22,9 @@ export class AppComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.onDestroy$.next();
         this.onDestroy$.complete();
+    }
+
+    openModal() {
+        this.showModal = !this.showModal;
     }
 }

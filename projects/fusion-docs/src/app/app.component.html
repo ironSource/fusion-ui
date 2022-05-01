@@ -1,5 +1,13 @@
-<router-outlet></router-outlet>
-<fusion-tooltip *ngIf="tooltipData.content"
-                [tooltipData]="tooltipData"></fusion-tooltip>
+<!--<router-outlet></router-outlet>-->
+<!--<fusion-tooltip *ngIf="tooltipData.content"-->
+<!--                [tooltipData]="tooltipData"></fusion-tooltip>-->
 
+<fusion-button (click)="openModal()">Open Modal</fusion-button>
+<fusion-modal
+    headerText="Title"
+    width="600"
+    saveButtonText="Ok"
+>
+    <p>Modal content</p>
+</fusion-modal>
 
