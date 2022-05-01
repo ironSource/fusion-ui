@@ -15,4 +15,4 @@ import {ModalBaseComponent} from '@ironsource/fusion-ui/components/modal/common/
         }
     ]
 })
-export class ModalComponent extends ModalBaseComponent implements OnInit, OnDestroy {}
+export class ModalComponent extends ModalBaseComponent {}

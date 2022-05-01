@@ -18,7 +18,6 @@ $borderRadius: 24px;
     z-index: getZIndexLayerOffset(system, 10);
 
     .modal {
-        // set modal on screen center
         height: calc(100vh - 20px);
         display: flex;
         flex-direction: column;

@@ -25,7 +25,7 @@ export abstract class ModalBaseComponent implements OnInit, OnDestroy {
     @Input() waiting = false; // state for on click primary button waiter
     @Input() set width(value: string) {
         if (value) {
-            this._width = ModalBaseComponent.setDefaultCssUnit(value);
+            this._width = this.getDefaultCssUnit(value);
         }
     }
 
@@ -35,7 +35,7 @@ export abstract class ModalBaseComponent implements OnInit, OnDestroy {
 
     @Input() set height(value: string) {
         if (value) {
-            this._height = ModalBaseComponent.setDefaultCssUnit(value);
+            this._height = this.getDefaultCssUnit(value);
         }
     }
 
@@ -112,7 +112,7 @@ export abstract class ModalBaseComponent implements OnInit, OnDestroy {
         this.onSave.emit(value);
     }
 
-    private static setDefaultCssUnit(value: string): string {
+    private getDefaultCssUnit(value: string): string {
         return /^\d+$/.test(value) ? `${value}px` : value;
     }
 

@@ -19,9 +19,9 @@ $padding: 20px 30px;
         border-top: $borderTop;
         padding: $padding;
         box-sizing: border-box;
-
         div.footer {
-            text-align: right;
+            display: flex;
+            justify-content: flex-end;
             fusion-button {
                 & + fusion-button {
                     margin-left: 7px;
@@ -29,8 +29,7 @@ $padding: 20px 30px;
             }
         }
         .is-error-message {
-            @extend %font-body;
-            font-size: 13px;
+            @extend %font-bodySmall;
             color: $fu-negative-500;
             margin-right: 10px;
         }
