@@ -1,7 +1,7 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {ITooltipData, TooltipService} from '@ironsource/fusion-ui';
 import {takeUntil} from 'rxjs/operators';
-import {Subject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 
 @Component({
     selector: 'fusion-docs',
@@ -10,7 +10,8 @@ import {Subject} from 'rxjs';
 })
 export class AppComponent implements OnInit, OnDestroy {
     tooltipData: ITooltipData = {};
-    showModal = false;
+    private showModalToggle$ = new BehaviorSubject<boolean>(false);
+    showModal$ = this.showModalToggle$.asObservable();
     private onDestroy$ = new Subject();
 
     constructor(private tooltipService: TooltipService) {}
@@ -25,6 +26,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     openModal() {
-        this.showModal = !this.showModal;
+        const currentState = this.showModalToggle$.value;
+        this.showModalToggle$.next(!currentState);
     }
 }

@@ -68,10 +68,11 @@ export abstract class ModalBaseComponent implements OnInit, OnDestroy {
     private _width: string;
     private _height: string;
 
+    static activeModals: {[id: string]: ModalBaseComponent} = {};
+
     constructor(
         @Inject(DOCUMENT) private document: Document,
         private uidService: UniqueIdService,
-        private modalService: ModalService,
         private elRef: ElementRef,
         private windowRef: WindowService,
         private logService: LogService,
@@ -85,15 +86,16 @@ export abstract class ModalBaseComponent implements OnInit, OnDestroy {
             this.logService.error(new Error('Modal component must have an id'));
             return;
         }
-        // add self (this modal instance) to the modal service so it's accessible from controllers
-        this.modalService.add(this);
+
+        this.addModal(this);
+
         if (this.isClosed) {
             this.close(false);
         }
     }
 
     ngOnDestroy() {
-        this.modalService.remove(this.id);
+        this.removeModal(this.id);
     }
 
     open() {
@@ -116,25 +118,33 @@ export abstract class ModalBaseComponent implements OnInit, OnDestroy {
         return /^\d+$/.test(value) ? `${value}px` : value;
     }
 
-    // todo: add parameter for possibility close on outside click and escape press
-
-    /**
-     * close modal on background click
-     */
-    @HostListener('click', ['$event.target'])
-    onClick(target: any) {
-        // if (!$(target).closest('.modal-body').length) {
-        //     this.close();
-        // }
+    private addModal(modal: ModalBaseComponent) {
+        ModalBaseComponent.activeModals[modal.id] = modal;
     }
 
-    /**
-     * close modal on escape keyboard click
-     */
-    @HostListener('document:keyup', ['$event.keyCode'])
-    onKeyUp(keyCode: number) {
-        // if (keyCode === 27) { // ESCAPE
-        //     this.close();
-        // }
+    private removeModal(id: string) {
+        delete ModalBaseComponent.activeModals[id];
     }
+
+    // // todo: add parameter for possibility close on outside click and escape press
+    //
+    // /**
+    //  * close modal on background click
+    //  */
+    // @HostListener('click', ['$event.target'])
+    // onClick(target: any) {
+    //     // if (!$(target).closest('.modal-body').length) {
+    //     //     this.close();
+    //     // }
+    // }
+    //
+    // /**
+    //  * close modal on escape keyboard click
+    //  */
+    // @HostListener('document:keyup', ['$event.keyCode'])
+    // onKeyUp(keyCode: number) {
+    //     // if (keyCode === 27) { // ESCAPE
+    //     //     this.close();
+    //     // }
+    // }
 }

@@ -3,7 +3,7 @@
 <!--                [tooltipData]="tooltipData"></fusion-tooltip>-->
 
 <fusion-button (click)="openModal()">Open Modal</fusion-button>
-<fusion-modal
+<fusion-modal *ngIf="showModal$ | async"
     headerText="Title"
     width="600"
     saveButtonText="Ok"
@@ -11,3 +11,12 @@
     <p>Modal content</p>
 </fusion-modal>
 
+
+
+<fusion-modal
+    headerText="Title"
+    width="600"
+    saveButtonText="Ok"
+>
+    <p>Modal content</p>
+</fusion-modal>
