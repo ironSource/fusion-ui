@@ -1,7 +1,6 @@
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
-
 ### [2.0.1-rc.1](https://github.com/ironSource/fusion-ui/compare/v2.0.1-rc.0...v2.0.1-rc.1) (2022-04-26)
 
 ### [2.0.1-rc.0](https://github.com/ironSource/fusion-ui/compare/v2.0.0-rc.2...v2.0.1-rc.0) (2022-04-25)
@@ -9,7 +8,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* **dropdown-icon-fix:** fix icon value in dropdown configuration ([075d317](https://github.com/ironSource/fusion-ui/commit/075d31726a7eea335b2cf1419267527008e07f1b))
+* **dropdown-icon-fix:** fix icon value in drop
 
 ## [2.0.0](https://github.com/ironSource/fusion-ui/compare/v2.0.0-rc.2...v2.0.0) (2022-04-10)
 
