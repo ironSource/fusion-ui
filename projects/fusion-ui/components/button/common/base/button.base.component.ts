@@ -30,7 +30,7 @@ export abstract class ButtonBaseComponent implements OnInit {
     isLoading: boolean;
     isLink: boolean;
     iconName: string;
-    iconData: string | IconData;
+    iconData: IconData;
 
     private isDisabled: boolean;
 

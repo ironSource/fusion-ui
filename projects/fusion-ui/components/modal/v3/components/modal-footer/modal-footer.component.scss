@@ -28,7 +28,7 @@ $padding: 20px 30px;
                 }
             }
         }
-        .is-error-message {
+        .fu-error-message {
             @extend %font-bodySmall;
             color: $fu-negative-500;
             margin-right: 10px;

@@ -6,7 +6,7 @@ import {WindowService} from '@ironsource/fusion-ui/services/window';
 import {getDefaultCssUnit} from '@ironsource/fusion-ui/components/modal/common/base/modal-utils';
 
 @Directive()
-export abstract class ModalBaseComponent implements OnInit, OnDestroy {
+export abstract class ModalBaseComponent implements OnInit {
     @Input() id: string;
     @Input() footer = true;
     @Input() loading = false; // state for content loading
@@ -52,15 +52,13 @@ export abstract class ModalBaseComponent implements OnInit, OnDestroy {
     private _width: string;
     private _height: string;
 
-    static activeModals: {[id: string]: ModalBaseComponent} = {};
-
     constructor(
-        @Inject(DOCUMENT) private document: Document,
-        private uidService: UniqueIdService,
-        private elRef: ElementRef,
-        private windowRef: WindowService,
-        private logService: LogService,
-        private renderer: Renderer2
+        @Inject(DOCUMENT) protected document: Document,
+        protected uidService: UniqueIdService,
+        protected elRef: ElementRef,
+        protected windowRef: WindowService,
+        protected logService: LogService,
+        protected renderer: Renderer2
     ) {
         this.uid = this.uidService.getUniqueId().toString();
     }
@@ -70,16 +68,9 @@ export abstract class ModalBaseComponent implements OnInit, OnDestroy {
             this.logService.error(new Error('Modal component must have an id'));
             return;
         }
-
-        this.addModal(this);
-
         if (this.isClosed) {
             this.close(false);
         }
-    }
-
-    ngOnDestroy() {
-        this.removeModal(this.id);
     }
 
     open() {
@@ -96,13 +87,5 @@ export abstract class ModalBaseComponent implements OnInit, OnDestroy {
 
     save(value) {
         this.onSave.emit(value);
-    }
-
-    private addModal(modal: ModalBaseComponent) {
-        ModalBaseComponent.activeModals[modal.id] = modal;
-    }
-
-    private removeModal(id: string) {
-        delete ModalBaseComponent.activeModals[id];
     }
 }
