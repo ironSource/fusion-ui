@@ -78,6 +78,7 @@ import {DaterangePresets} from '@ironsource/fusion-ui/components/date';
 import {MobileOrientation} from '@ironsource/fusion-ui/components/mobile-previewer';
 import {TextareaComponent} from '@ironsource/fusion-ui/components/textarea';
 import {ButtonComponent} from '@ironsource/fusion-ui/components/button';
+import {FileDragAndDropComponent} from '@ironsource/fusion-ui/components/file-drag-and-drop';
 
 const PREFIX = 'native-fusion';
 
@@ -166,5 +167,6 @@ export const components = [
     {name: `${PREFIX}-toast`, componentInstance: ToastComponent},
     {name: `${PREFIX}-textarea`, componentInstance: TextareaComponent, avoidJsonParse: true},
     {name: `${PREFIX}-tabs`, componentInstance: TabsComponent},
-    {name: `${PREFIX}-dropdown-dual-multi-select`, componentInstance: DropdownDualMultiSelectComponent}
+    {name: `${PREFIX}-dropdown-dual-multi-select`, componentInstance: DropdownDualMultiSelectComponent},
+    {name: `${PREFIX}-file-drag-and-drop`, componentInstance: FileDragAndDropComponent}
 ];
