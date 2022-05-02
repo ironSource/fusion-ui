@@ -143,14 +143,16 @@
     }
 }
 
-:host-context(li.option.is-selected.fu-style-v2) {
+:host-context(li.option.is-selected.fu-style-v3),
+:host-context(li.option.is-selected.fu-style-v2){
     border: none;
     background-color: $fu-primary-100;
     .icon-container{
         @include icon-style('icon', $fu-primary-500, 13px, false, true);
     }
 }
-:host-context(li.option.is-focused.fu-style-v2) {
+:host-context(li.option.is-focused.fu-style-v3),
+:host-context(li.option.is-focused.fu-style-v2){
     background: $fu-light-100;
 }
 

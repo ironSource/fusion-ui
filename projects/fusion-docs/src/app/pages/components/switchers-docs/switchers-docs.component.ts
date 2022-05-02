@@ -119,7 +119,7 @@ export class SwitchersDocsComponent implements OnInit, OnDestroy {
         this.switcherError2.markAsDirty();
 
         this.selectedVersion$.subscribe((styleVersion: StyleVersion) => {
-            if (styleVersion === StyleVersion.V2) {
+            if (styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3) {
                 this.router.navigate(['docs/components/v2/switchers']);
             }
         });

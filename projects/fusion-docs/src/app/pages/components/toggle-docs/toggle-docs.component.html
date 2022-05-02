@@ -126,7 +126,7 @@ document.body.appendChild(toggle);'
                     ></fusion-toggle>
                     &nbsp;(size="small")
                 </div>
-                <div class="col-9" *ngIf="currentStyleVersion === styleVersion.V2">
+                <div class="col-9" *ngIf="currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3">
                     <fusion-toggle [model]="false" size="small" customCheckedBackgroundColor="#FEA222"></fusion-toggle>
                     &nbsp;(size="small" customCheckedBackgroundColor="#FEA222")
                 </div>

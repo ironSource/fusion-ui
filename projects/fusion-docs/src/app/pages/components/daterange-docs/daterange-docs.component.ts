@@ -126,12 +126,13 @@ export class DaterangeDocsComponent implements OnInit, OnDestroy {
                 this.rightMenu = [
                     {
                         title: this.rightMenu[0].title,
-                        items: styleVersion === StyleVersion.V2 ? rightMenuItems : rightMenuItems.slice(2)
+                        items:
+                            styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3 ? rightMenuItems : rightMenuItems.slice(2)
                     },
                     this.rightMenu[1]
                 ];
                 // update formats by StyleVersion
-                const dateFormat = styleVersion === StyleVersion.V2 ? 'd MMM, y' : 'd MMM y';
+                const dateFormat = styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3 ? 'd MMM, y' : 'd MMM y';
                 this.optionOnlyDatePicker$.next({
                     calendarAmount: 1,
                     presets: false,

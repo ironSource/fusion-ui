@@ -11,7 +11,6 @@ export const INPUT_DEFAULT_CONFIGURATION: InputConfiguration = {
     disabled: false,
     disableOnLoading: true,
     errorType: '',
-    iconPos: 'right',
     btnDisabled: false,
     btnLoading: false,
     id: getUniqueNumber(),

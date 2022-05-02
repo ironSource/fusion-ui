@@ -33,7 +33,7 @@ export abstract class DocPageBase implements OnInit, OnDestroy {
         const currentRouteAsArray = currentRoute.split('/');
         if (styleVersion === StyleVersion.V1 && currentRouteAsArray.includes(routeV2Prefix)) {
             currentRouteAsArray.splice(currentRouteAsArray.length - 2, 1);
-        } else if (styleVersion === StyleVersion.V2 && !currentRouteAsArray.includes(routeV2Prefix)) {
+        } else if ((styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3) && !currentRouteAsArray.includes(routeV2Prefix)) {
             currentRouteAsArray.splice(currentRouteAsArray.length - 1, 0, routeV2Prefix);
         }
         return currentRouteAsArray.join('/');

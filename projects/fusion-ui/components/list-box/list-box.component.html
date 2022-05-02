@@ -1,4 +1,4 @@
-<div class="title" *ngIf="title">{{ title }} ({{ options && options.length }})</div>
+ <div class="title" *ngIf="title">{{ title }} ({{ options && options.length }})</div>
 <div [id]="id" class="is-list-holder" [class]="options && options.length ? mode : ''" [ngClass]="{'is-disabled': isDisabled}">
     <ul>
         <li *ngFor="let option of options; trackBy: trackByOption">
