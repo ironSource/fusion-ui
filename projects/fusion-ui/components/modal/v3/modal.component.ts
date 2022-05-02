@@ -1,8 +1,20 @@
-import {ChangeDetectionStrategy, Component, ElementRef, forwardRef, Inject, OnDestroy, OnInit, Renderer2} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ElementRef,
+    forwardRef,
+    Inject,
+    Input,
+    OnDestroy,
+    OnInit,
+    Renderer2,
+    TemplateRef
+} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {ModalBaseComponent, ModalService} from '@ironsource/fusion-ui/components/modal/common/base';
 import {DOCUMENT} from '@angular/common';
 import {LogService, UniqueIdService, WindowService} from '@ironsource/fusion-ui/services';
+import {isFunction} from '@ironsource/fusion-ui/utils';
 
 @Component({
     selector: 'fusion-modal',
@@ -20,6 +32,12 @@ import {LogService, UniqueIdService, WindowService} from '@ironsource/fusion-ui/
 export class ModalComponent extends ModalBaseComponent implements OnDestroy {
     static activeModals: {[id: string]: ModalBaseComponent} = {};
 
+    @Input() set onOpenModal(id: string) {
+        if (id) {
+            this.openModal(id);
+        }
+    }
+
     ngOnInit() {
         super.ngOnInit();
         this.addModal(this);
@@ -29,11 +47,29 @@ export class ModalComponent extends ModalBaseComponent implements OnDestroy {
         this.removeModal(this.id);
     }
 
-    private addModal(modal: ModalBaseComponent) {
+    addModal(modal: ModalBaseComponent) {
         ModalComponent.activeModals[modal.id] = modal;
     }
 
-    private removeModal(id: string) {
+    removeModal(id: string) {
         delete ModalComponent.activeModals[id];
+    }
+
+    openModal(id: string) {
+        if (ModalComponent.activeModals[id]) {
+            Object.keys(ModalComponent.activeModals).forEach(modalId => {
+                if (modalId === id) {
+                    ModalComponent.activeModals[modalId].open();
+                } else {
+                    this.closeModal(modalId);
+                }
+            });
+        }
+    }
+
+    closeModal(id: string, emitEvent: boolean = true) {
+        if (ModalComponent.activeModals[id]) {
+            ModalComponent.activeModals[id].close(emitEvent);
+        }
     }
 }

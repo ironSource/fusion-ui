@@ -10,7 +10,7 @@ export abstract class ModalBaseComponent implements OnInit {
     @Input() id: string;
     @Input() footer = true;
     @Input() loading = false; // state for content loading
-    @Input() onSubmit = false; // state for on click primary button waiter
+    @Input() onSubmit = false; // submit state when click right button
     @Input() set width(value: string) {
         if (value) {
             this._width = getDefaultCssUnit(value);
