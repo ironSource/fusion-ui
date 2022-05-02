@@ -2,12 +2,12 @@ import {InputOptions} from './input.options';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 // Todo - replace multiple string type with enum
+
 export interface InputConfiguration {
     placeholder?: string;
     errorType?: string;
     name?: string;
-    icon?: IconData;
-    iconPos?: 'left' | 'right' | '';
+    icon?: InputIconData | InputIconData[];
     units?: string;
     unitPos?: string;
     unitPlaceholder?: boolean;
@@ -34,4 +34,9 @@ export interface InputConfiguration {
     error?: boolean | string;
     autofocus?: boolean;
     disableOnLoading?: boolean; // suppress disable state on loading
+}
+
+export interface InputIconData {
+    iconData: string | IconData;
+    iconPos: 'left' | 'right' | '';
 }

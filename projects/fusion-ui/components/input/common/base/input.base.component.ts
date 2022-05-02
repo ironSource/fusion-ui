@@ -1,37 +1,16 @@
-import {
-    Component,
-    Input,
-    EventEmitter,
-    OnInit,
-    Output,
-    ElementRef,
-    ChangeDetectionStrategy,
-    forwardRef,
-    ViewChild,
-    OnDestroy,
-    Injector,
-    AfterViewInit
-} from '@angular/core';
-import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {isBoolean, isNullOrUndefined, isString} from '@ironsource/fusion-ui/utils';
-import {BehaviorSubject, Observable, fromEvent} from 'rxjs';
+import {Input, EventEmitter, OnInit, Output, ElementRef, ViewChild, Injector, OnDestroy, AfterViewInit, Directive} from '@angular/core';
+import {ControlValueAccessor, FormControl} from '@angular/forms';
+import {isNullOrUndefined, isString} from '@ironsource/fusion-ui/utils';
+import {BehaviorSubject, Observable, fromEvent, Subject, of} from 'rxjs';
 import {map, takeUntil, tap, filter} from 'rxjs/operators';
 import {InputOptions} from './input.options';
-import {CONFIG_INPUT_BY_UI_STYLE, InputConfigByStyle} from './input.component.config';
+import {InputConfigByStyle} from './input.component.config';
 import {InputParameters} from './input-parameters';
 import {SPECIAL_KEYS, ESCAPE_KEY_CODE, ENTER_KEY_CODE, INPUT_DEFAULT_CONFIGURATION} from './input-utils';
 import {InputConfiguration} from './input-entities';
-import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 
-// Todo - check if someone use error as boolean and if not change type to string only
-@Component({
-    selector: 'fusion-input',
-    templateUrl: './input.component.html',
-    styleUrls: ['./input.component.scss', 'input.component-v2.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => InputComponent), multi: true}]
-})
-export class InputComponent extends InputParameters implements OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
+@Directive()
+export class InputBaseComponent extends InputParameters implements OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
     @ViewChild('input', {static: false}) input: ElementRef;
     @ViewChild('fileInput', {static: false}) fileInput: ElementRef;
 
@@ -44,6 +23,7 @@ export class InputComponent extends InputParameters implements OnInit, OnDestroy
     @Output() btnAction = new EventEmitter<MouseEvent>();
     @Output() passHiddenStateChanged = new EventEmitter<boolean>();
 
+    onDestroy$ = new Subject<void>();
     inputControl = new FormControl();
     file = new FormControl();
     focused: boolean;
@@ -56,12 +36,16 @@ export class InputComponent extends InputParameters implements OnInit, OnDestroy
     private fileControlValueChanges$: Observable<any>;
     private onBlur: (args: string) => void;
 
-    constructor(injector: Injector, public elementRef: ElementRef) {
-        super(injector);
+    constructor(public elementRef: ElementRef) {
+        super();
     }
 
     get config(): InputConfiguration {
         return {...INPUT_DEFAULT_CONFIGURATION, ...this._configuration};
+    }
+
+    get isSmall(): boolean {
+        return this.config.options?.size === 'small';
     }
 
     // Todo - use optional chaining when upgrade ts version
@@ -82,14 +66,14 @@ export class InputComponent extends InputParameters implements OnInit, OnDestroy
     }
 
     ngAfterViewInit(): void {
-        super.ngAfterViewInit();
         this.setInputElementListeners();
         this.setMouseWheelListener();
         this.setKeyDownListener();
     }
 
-    ngOnDestroy(): void {
-        super.ngOnDestroy();
+    ngOnDestroy() {
+        this.onDestroy$.next();
+        this.onDestroy$.complete();
     }
 
     initChangesTrigger(): void {
@@ -124,11 +108,7 @@ export class InputComponent extends InputParameters implements OnInit, OnDestroy
     }
 
     showErrorIcon(): boolean {
-        if (this.selectedVersion === StyleVersion.V2 || this.selectedVersion === StyleVersion.V3) {
-            return !isNullOrUndefined(this.config.error);
-        } else {
-            return this.config.options.size === 'small' && this.config.error && !isBoolean(this.config.error);
-        }
+        return true;
     }
 
     getErrorIcon(errorType: string, infoIconName: string, warningIconName: string): string {
@@ -251,10 +231,6 @@ export class InputComponent extends InputParameters implements OnInit, OnDestroy
         );
     }
 
-    private getConfigStyleObservable(): Observable<InputConfigByStyle> {
-        return this.selectedVersion$.pipe(map((styleVersion: StyleVersion) => CONFIG_INPUT_BY_UI_STYLE[`style_v${styleVersion}`]));
-    }
-
     // Todo - use optional chaining when upgrade ts version
     private setInputElementListeners(): void {
         const hasPreventCharacters =
@@ -325,5 +301,9 @@ export class InputComponent extends InputParameters implements OnInit, OnDestroy
         if (currentValue !== previousValue) {
             this.toggleErrorClass(!!currentValue);
         }
+    }
+
+    protected getConfigStyleObservable(): Observable<InputConfigByStyle> {
+        return of({} as InputConfigByStyle);
     }
 }

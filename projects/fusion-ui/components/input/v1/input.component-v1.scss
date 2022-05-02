@@ -1,6 +1,6 @@
-@import '../../src/style/scss/v1/vars/vars';
-@import '../../src/style/scss/v1/vars/border';
-@import '../../src/style/scss/v1/mixins/mixins';
+@import '../../../src/style/scss/v1/vars/vars';
+@import '../../../src/style/scss/v1/vars/border';
+@import '../../../src/style/scss/v1/mixins/mixins';
 
 $errBorderColor: $negative-200;
 $errTextColor: $negative-500;
@@ -14,7 +14,7 @@ $regularPadding: 6px 10px 7px;
 $smallHeight: 25px;
 $smallPadding: 4px 6px;
 
-:host.fu-style-v1 {
+:host {
   @extend %reset;
   width: 100%;
   .fu-input-holder {
@@ -39,7 +39,7 @@ $smallPadding: 4px 6px;
       right: 5px;
     }
     .fu-input-units {
-      padding: 4px 5px 4px 10px;
+      padding: 0 5px 0 10px;
       @extend %border;
       align-items: center;
       justify-content: center;
@@ -49,14 +49,14 @@ $smallPadding: 4px 6px;
       @extend %font12;
       border-right-width: 0;
       color: $light-800;
-      &.small {
+      &.fu-input-small {
         border-right: none;
         background: white;
         display: block;
         min-width: inherit;
         padding: 2px 5px 0 6px;
       }
-      &.is-error {
+      &.fu-error {
         border-color: $errBorderColor;
         &.focused {
           border-color: $errBorderColor;
@@ -70,7 +70,7 @@ $smallPadding: 4px 6px;
         border-radius: 0 3px 3px 0;
         border-left-width: 0;
         border-right-width: 1px;
-        &.small {
+        &.fu-input-small {
           @extend %border;
           border-left: none;
           padding: 1px 6px 0 0;
@@ -114,7 +114,7 @@ $smallPadding: 4px 6px;
       right: 5px;
       left: inherit;
     }
-    .icon {
+    .fu-input-icon {
       position: absolute;
       pointer-events: none;
       left: 10px;
@@ -139,8 +139,8 @@ $smallPadding: 4px 6px;
       @include icon-style(null, $light-800, 15px, false, true);
       @include icon-style('icon-loading', none, 15px, true, true);
     }
-    &.small{
-      .icon{
+    &.fu-input-small{
+      .fu-input-icon{
        top: 5px;
       }
     }
@@ -167,7 +167,7 @@ $smallPadding: 4px 6px;
         outline: none;
         & + button {
           border-color: $primary;
-          &.is-error {
+          &.fu-error {
             border-color: $errBorderColor;
           }
         }
@@ -175,7 +175,7 @@ $smallPadding: 4px 6px;
           border-color: #000;
         }
       }
-      &.small {
+      &.fu-input-small {
         @extend %font12;
         height: $smallHeight;
         padding: $smallPadding;
@@ -209,7 +209,7 @@ $smallPadding: 4px 6px;
           border-color: $light;
           & + button {
             border-color: $light;
-            &.is-error {
+            &.fu-error {
               border-color: $errBorderColor;
             }
           }
@@ -223,7 +223,7 @@ $smallPadding: 4px 6px;
           color: $dark-300;
         }
       }
-      &.is-error {
+      &.fu-error {
         border-color: $errBorderColor;
       }
       &.is-underline, &.is-no-border {
@@ -260,7 +260,7 @@ $smallPadding: 4px 6px;
       order: 2;
       cursor: pointer;
       box-sizing: border-box;
-      padding: 6px 10px 7px;
+      padding: 0 10px 0 10px;
       position: relative;
       border: 1px solid $light;
       border-left: none;
@@ -282,7 +282,7 @@ $smallPadding: 4px 6px;
         cursor: default;
         color: $light-800;
       }
-      &.is-error {
+      &.fu-error {
         border-color: $errBorderColor;
       }
       fusion-icon{
@@ -331,7 +331,7 @@ $smallPadding: 4px 6px;
       }
     }
     &.fu-error-warning {
-      .fu-input-units.is-error,
+      .fu-input-units.fu-error,
       input {
         border-color: $warningBorderColor;
       }
@@ -348,16 +348,16 @@ $smallPadding: 4px 6px;
       display: none;
     }
   }
-  .error-msg {
+  .fu-error-msg {
     @extend %font12;
     color: $errTextColor;
     margin-top: 2px;
-    &.small {
+    &.fu-input-small {
       display: none;
     }
   }
   &.is-underline .fu-input-holder, &.is-no-border {
-    .fu-input-units.small {
+    .fu-input-units.fu-input-small {
       border-width: 0 0 1px 0;
       border-radius: unset;
       background-color: transparent;

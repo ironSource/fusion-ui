@@ -6,11 +6,11 @@ import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 export interface InputConfigByStyle {
-    iconSearch: IconData;
-    iconClear: IconData;
-    iconInfo: IconData;
-    iconWarning: IconData;
-    iconLoader: IconData;
+    iconSearch?: IconData;
+    iconClear?: IconData;
+    iconInfo?: IconData;
+    iconWarning?: IconData;
+    iconLoader?: IconData;
     currentStyleVersion: StyleVersion;
 }
 
@@ -32,11 +32,8 @@ export const CONFIG_INPUT_BY_UI_STYLE: {[styleKey: string]: InputConfigByStyle} 
         currentStyleVersion: StyleVersion.V2
     },
     style_v3: {
-        iconSearch: {iconName: 'search', iconVersion: 'v2'},
-        iconClear: {iconName: 'close-circle', iconVersion: 'v2'},
-        iconInfo: {iconName: 'importent', iconVersion: 'v2'},
-        iconWarning: {iconName: 'warning', iconVersion: 'v2'},
-        iconLoader: {iconName: 'loading-rotate', iconVersion: 'v2'},
+        iconInfo: 'importent',
+        iconWarning: 'warning',
         currentStyleVersion: StyleVersion.V3
     }
 };
