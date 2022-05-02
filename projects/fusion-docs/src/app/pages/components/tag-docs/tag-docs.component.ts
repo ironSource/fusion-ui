@@ -237,7 +237,7 @@ export class TagDocsComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.initForm();
         this.selectedVersion$.subscribe((styleVersion: StyleVersion) => {
-            if (styleVersion === StyleVersion.V2) {
+            if (styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3) {
                 this.router.navigate(['docs/components/v2/tag']);
             }
         });

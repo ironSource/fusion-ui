@@ -30,7 +30,6 @@
                 *ngIf="!isDisabled && (isAddTagsAllowed || autoComplete)"
                 [hidden]="isDisabled"
                 [loading]="loading && bulkInsertion"
-                [iconPos]="'right'"
                 [placeholder]="displayPlaceholder"
                 (ngEnter)="onEnterNewTag($event)"
                 [options]="{size: 'small'}"

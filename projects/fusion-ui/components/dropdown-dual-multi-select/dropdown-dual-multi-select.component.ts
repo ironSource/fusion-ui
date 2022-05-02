@@ -11,7 +11,7 @@ import {
     Output,
     Renderer2
 } from '@angular/core';
-import {InputSize} from '@ironsource/fusion-ui/components/input';
+import {InputSize} from '@ironsource/fusion-ui/components/input/common/base';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown';

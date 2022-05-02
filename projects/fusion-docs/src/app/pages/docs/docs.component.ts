@@ -52,7 +52,7 @@ export class DocsComponent implements OnInit, OnDestroy {
 
         this.selectedVersion$.pipe(takeUntil(this.onDestroy$)).subscribe(value => {
             const menuItemsAll = JSON.parse(JSON.stringify(this.useNewLayout ? MENU_ITEMS_V2 : MENU_ITEMS));
-            if (value === StyleVersion.V2) {
+            if (value === StyleVersion.V2 || value === StyleVersion.V3) {
                 this.menuItems = menuItemsAll.filter(item => {
                     if (STYLE_2_MENU_ITEMS.includes(item.name)) {
                         return true;

@@ -3,7 +3,7 @@
         <div class="col-9">
             <!--UI-Component Examples-->
             <div class="is-example-title">Type</div>
-            <fusion-example-block id="typeSingleDatePicker" title="Single Date Picker" *ngIf="currentStyleVersion === StyleVersion.V2">
+            <fusion-example-block id="typeSingleDatePicker" title="Single Date Picker" *ngIf="currentStyleVersion === StyleVersion.V2 || currentStyleVersion === StyleVersion.V3">
                 <ng-template fusionExampleBlock="Angular">
                     <fusion-code-block
                         lang="html"
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', onLoad, false);"
                 </div>
             </fusion-example-block>
 
-            <fusion-example-block id="typeRegularNoPreset" title="No Preset" *ngIf="currentStyleVersion === StyleVersion.V2">
+            <fusion-example-block id="typeRegularNoPreset" title="No Preset" *ngIf="currentStyleVersion === StyleVersion.V2 || currentStyleVersion === StyleVersion.V3">
                 <ng-template fusionExampleBlock="Angular">
                     <fusion-code-block
                         lang="html"
