@@ -1,0 +1,10 @@
+<div style="display: block; border: solid 1px green" fusionFileDragAndDrop
+     [elementIdForClick]="elementIdForClick"
+     [fileDragAndDropDisabled]="isDisabled"
+     [dragOverCSSClass]="dragOverCSS"
+     [acceptFiles]="acceptFiles"
+     [multipleFiles]="multipleFiles"
+     (onHandleFileDragAndDrop)="handleSelectedFile($event)"
+>
+    <ng-content></ng-content>
+</div>
