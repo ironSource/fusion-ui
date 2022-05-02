@@ -127,7 +127,7 @@
         <fusion-icon *ngIf="infoIconTooltip" class="infoRowIcon" name="info-tooltip" [fusionTooltip]="infoIconTooltip"></fusion-icon>
 
         <button
-            *ngIf="currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3 && isRemove && !isReadOnly"
+            *ngIf="(currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3) && isRemove && !isReadOnly"
             fusion-button
             class="in-table removeRowIcon"
             [ngClass]="{small: isSmallActionButton}"

@@ -1,11 +1,9 @@
-import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
 import {Directive, Input} from '@angular/core';
-import {InputConfiguration} from './input-entities';
+import {InputConfiguration, InputIconData} from './input-entities';
 import {InputOptions, DEFAULT_INPUT_OPTIONS} from './input.options';
-import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Directive()
-export abstract class InputParameters extends FusionBase {
+export abstract class InputParameters {
     @Input() set configuration(value: InputConfiguration) {
         this.onConfigurationChanged(value);
     }
@@ -22,12 +20,8 @@ export abstract class InputParameters extends FusionBase {
         this.configuration = {...this._configuration, name};
     }
 
-    @Input() set icon(icon: string | IconData) {
+    @Input() set icon(icon: InputIconData | InputIconData[]) {
         this.configuration = {...this._configuration, icon};
-    }
-
-    @Input() set iconPos(iconPos: 'left' | 'right' | '') {
-        this.configuration = {...this._configuration, iconPos};
     }
 
     @Input() set units(units: string) {

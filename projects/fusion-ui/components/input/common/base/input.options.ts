@@ -12,7 +12,7 @@ export enum InputSize {
 export interface InputOptions {
     size?: InputSize;
     width?: string;
-    buttonIcon?: string | IconData;
+    buttonIcon?: IconData;
     rounded?: boolean;
     style?: {[styleKey: string]: string};
     iconStyle?: {[styleKey: string]: string};
