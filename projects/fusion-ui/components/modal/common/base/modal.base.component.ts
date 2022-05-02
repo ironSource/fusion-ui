@@ -1,31 +1,19 @@
-import {
-    Directive,
-    ElementRef,
-    EventEmitter,
-    HostListener,
-    Inject,
-    Input,
-    OnDestroy,
-    OnInit,
-    Output,
-    Renderer2,
-    ViewChild
-} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, Inject, Input, OnDestroy, OnInit, Output, Renderer2, ViewChild} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
-import {ModalService} from './modal.base.service';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {WindowService} from '@ironsource/fusion-ui/services/window';
+import {getDefaultCssUnit} from '@ironsource/fusion-ui/components/modal/common/base/modal-utils';
 
 @Directive()
 export abstract class ModalBaseComponent implements OnInit, OnDestroy {
     @Input() id: string;
     @Input() footer = true;
     @Input() loading = false; // state for content loading
-    @Input() waiting = false; // state for on click primary button waiter
+    @Input() onSubmit = false; // state for on click primary button waiter
     @Input() set width(value: string) {
         if (value) {
-            this._width = this.getDefaultCssUnit(value);
+            this._width = getDefaultCssUnit(value);
         }
     }
 
@@ -35,7 +23,7 @@ export abstract class ModalBaseComponent implements OnInit, OnDestroy {
 
     @Input() set height(value: string) {
         if (value) {
-            this._height = this.getDefaultCssUnit(value);
+            this._height = getDefaultCssUnit(value);
         }
     }
 
@@ -52,19 +40,15 @@ export abstract class ModalBaseComponent implements OnInit, OnDestroy {
     @Input() saveButtonDisabled = false;
     @Input() cancelButtonText = 'Cancel';
     @Input() cancelButtonHidden: boolean;
-    // eslint-disable-next-line
+
     @Output() onSave = new EventEmitter();
-    // eslint-disable-next-line
     @Output() onOpen = new EventEmitter();
-    // eslint-disable-next-line
     @Output() onClose = new EventEmitter();
 
     @ViewChild('modalBody', {static: true}) modalBody: ElementRef;
     @ViewChild('modalHolder', {static: true}) modalHolder: ElementRef;
 
-    private bodyEl: any;
     protected uid: string;
-
     private _width: string;
     private _height: string;
 
@@ -114,10 +98,6 @@ export abstract class ModalBaseComponent implements OnInit, OnDestroy {
         this.onSave.emit(value);
     }
 
-    private getDefaultCssUnit(value: string): string {
-        return /^\d+$/.test(value) ? `${value}px` : value;
-    }
-
     private addModal(modal: ModalBaseComponent) {
         ModalBaseComponent.activeModals[modal.id] = modal;
     }
@@ -125,26 +105,4 @@ export abstract class ModalBaseComponent implements OnInit, OnDestroy {
     private removeModal(id: string) {
         delete ModalBaseComponent.activeModals[id];
     }
-
-    // // todo: add parameter for possibility close on outside click and escape press
-    //
-    // /**
-    //  * close modal on background click
-    //  */
-    // @HostListener('click', ['$event.target'])
-    // onClick(target: any) {
-    //     // if (!$(target).closest('.modal-body').length) {
-    //     //     this.close();
-    //     // }
-    // }
-    //
-    // /**
-    //  * close modal on escape keyboard click
-    //  */
-    // @HostListener('document:keyup', ['$event.keyCode'])
-    // onKeyUp(keyCode: number) {
-    //     // if (keyCode === 27) { // ESCAPE
-    //     //     this.close();
-    //     // }
-    // }
 }

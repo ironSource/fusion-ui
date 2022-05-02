@@ -12,7 +12,7 @@
     @extend %customScroll;
     display: block;
     overflow-y: auto;
-    &.is-has-height{
+    &.fu-has-height{
         min-height: calc(100% - #{$modalHeaderHeight} - #{$modalFooterHeight});
     }
 
@@ -20,7 +20,7 @@
         position: relative;
         padding: 32px;
 
-        .is-in-waiting {
+        .fu-on-submit {
             position: absolute;
             top: 0;
             bottom: 0;

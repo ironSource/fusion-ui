@@ -378,10 +378,6 @@ $buttonBorderRadius: 100px;
             }
         }
 
-        .loading {
-            display: none
-        }
-
         &.transparent:not(.delete) {
             background-color: transparent;
             color: $fu-primary-500;

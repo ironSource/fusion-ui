@@ -41,7 +41,7 @@
                     class="stroke"
                     (click)="showNotification(`Success`)">Success</button>
 
-            <button fusion-button
+            <button fusion-button[waiting]="(loadModalContent$ | async) === false"
                     class="stroke"
                     (click)="showNotification(`Error`)">Error</button>
 
@@ -535,7 +535,7 @@ fusion.services.modalService.close("testModal", {emitEvent = false})'
                 id="testModalLoading"
                 width="600"
                 headerText="Overlay Title"
-                [waiting]="(loadModalContent$ | async) === false"
+                [onSubmit]="(loadModalContent$ | async) === false"
                 [isClosed]="true"
                 (onClose)="closeModal()"
                 (onSave)="saveClicked('testModalLoading')"
