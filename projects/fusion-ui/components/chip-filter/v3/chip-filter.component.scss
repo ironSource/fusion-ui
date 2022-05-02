@@ -1,0 +1,123 @@
+@import '../../../src/style/scss/v3/mixins/mixins';
+@import '../../../src/style/scss/v3/vars/colors';
+@import '../../../src/style/scss/v3/vars/fonts';
+
+
+$chipHeight: 32px;
+$chipMaxWidth: 352px;
+
+$paddingChip:  4px 12px 4px 12px;
+$paddingChipWithIcon:  4px 16px 4px 12px;
+$paddingChipWithCloseButton: 4px 10px 4px 14px;
+
+:host {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding:$paddingChip;
+    max-width: $chipMaxWidth;
+    width: fit-content;
+    height: $chipHeight;
+    @extend %font-bodySmallStrong;
+    line-height: 15.87px;
+    letter-spacing: 0.24px;
+    border-radius: 100px;
+    border: none;
+    gap: 4px;
+    background-color: $fu-primary-100;
+    color:$fu-primary-500;
+
+    fusion-icon.fu-icon-close{
+        color: $fu-primary-300;
+        margin-left: auto;
+        width: 16px;
+        height: 16px;
+        &:hover {
+            color: $fu-primary-400;
+            cursor: pointer;
+        }
+    }
+
+    &:hover {
+        background-color: $fu-primary-200;
+        cursor: pointer;
+    }
+
+    .fu-chip-content-wrapper.truncate {
+        white-space: nowrap;
+        overflow: hidden !important;
+        text-overflow: ellipsis;
+        display: inline-block;
+    }
+
+    &.fu-date-filter {
+        padding: $paddingChipWithIcon;
+        .fu-icon-close {
+            display: none;
+        }
+        &.fu-disabled{
+            background-color: $fu-light-100;
+            color: $fu-light-900;
+            .fu-icon-close{
+                display: none;
+            }
+            pointer-events: none;
+        }
+    }
+
+    &.fu-add-filter {
+        background-color: $fu-light-200;
+        padding: $paddingChipWithIcon;
+        color: $fu-black-500;
+        .fu-icon-close{
+            display: none;
+        }
+        &:hover {
+            color: $fu-primary-500;
+            cursor: pointer;
+        }
+        &.fu-disabled{
+            color: $fu-light-900;
+            pointer-events: none;
+        }
+    }
+
+    &.fu-chip-select {
+        &.closed-icon {
+            padding: $paddingChipWithCloseButton;
+
+            fusion-icon.fu-icon-close{
+                color: $fu-primary-300;
+                margin-left: auto;
+                width: 16px;
+                height: 16px;
+                &:hover {
+                    color: $fu-primary-500;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    &.fu-chip-dropdown {
+        border: 1px solid $fu-light-400;
+        background-color: $White;
+        color: $fu-black-500;
+        .fu-icon-close {
+            display: none;
+        }
+
+        &:hover {
+            border-color: $fu-light-700;
+        }
+
+        &.fu-disabled {
+            background-color: $White;
+            color: $fu-light-700;
+            border-color: $fu-light-400;
+            pointer-events: none;
+        }
+    }
+
+}

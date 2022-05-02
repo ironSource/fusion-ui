@@ -66,7 +66,7 @@ export class PopupDocsComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.popupData$ = this.popupService.popupData$.asObservable();
         this.selectedVersion$.subscribe((styleVersion: StyleVersion) => {
-            if (styleVersion === StyleVersion.V2) {
+            if (styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3) {
                 this.router.navigate(['docs/components/v2/popup']);
             }
         });
