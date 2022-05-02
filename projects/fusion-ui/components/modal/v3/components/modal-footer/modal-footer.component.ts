@@ -16,6 +16,6 @@ export class ModalFooterComponent {
     @Input() cancelButtonClass = 'third';
     @Input() cancelButtonHidden: boolean;
     @Input() notificationFooter: boolean;
-    @Output() onSave = new EventEmitter();
+    @Output() onSubmit = new EventEmitter();
     @Output() onCloseButtonClicked = new EventEmitter();
 }

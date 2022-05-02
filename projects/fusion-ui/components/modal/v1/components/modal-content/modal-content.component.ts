@@ -8,5 +8,5 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 })
 export class ModalContentComponent {
     @Input() padding: string;
-    @Input() onSubmit = false;
+    @Input() loadingOnSubmit = false;
 }

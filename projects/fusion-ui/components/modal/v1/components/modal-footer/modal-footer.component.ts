@@ -17,7 +17,7 @@ export class ModalFooterComponent {
     @Input() cancelButtonHidden: boolean;
     @Input() notificationFooter: boolean;
     // eslint-disable-next-line
-    @Output() onSave = new EventEmitter();
+    @Output() onSubmit = new EventEmitter();
     // eslint-disable-next-line
     @Output() onCloseButtonClicked = new EventEmitter();
 }

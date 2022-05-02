@@ -38,6 +38,12 @@ export class ModalComponent extends ModalBaseComponent implements OnDestroy {
         }
     }
 
+    @Input() set onCloseModal(id: string) {
+        if (id) {
+            this.closeModal(id);
+        }
+    }
+
     ngOnInit() {
         super.ngOnInit();
         this.addModal(this);
@@ -61,7 +67,7 @@ export class ModalComponent extends ModalBaseComponent implements OnDestroy {
                 if (modalId === id) {
                     ModalComponent.activeModals[modalId].open();
                 } else {
-                    this.closeModal(modalId);
+                    this.closeModal(modalId, false);
                 }
             });
         }

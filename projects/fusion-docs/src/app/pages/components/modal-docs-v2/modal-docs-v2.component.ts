@@ -72,6 +72,7 @@ export class ModalDocsV2Component implements OnInit, OnDestroy {
     modalButtonClick$ = new Subject();
     loadModalContent$: Observable<boolean>;
     openModalById$ = new BehaviorSubject<string>(null);
+    openModalById2$ = new BehaviorSubject<string>(null);
     constructor(
         public notificationService: NotificationService,
         public modalService: ModalService,
@@ -104,8 +105,14 @@ export class ModalDocsV2Component implements OnInit, OnDestroy {
     onClickModalOpen(id: string) {
         this.openModalById$.next(id);
     }
+
+    onClickModalOpenLoading(id: string) {
+        this.openModalById2$.next(id);
+    }
+
     onModalClosed() {
         this.openModalById$.next(null);
+        this.openModalById2$.next(null);
     }
 
     showNotification(type: string): void {

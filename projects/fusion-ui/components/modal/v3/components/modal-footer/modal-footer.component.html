@@ -14,7 +14,7 @@
             [ngClass]="{small: notificationFooter}"
             [loading]="saveButtonLoading"
             [disabled]="saveButtonDisabled || loading || !!error"
-            (click)="onSave.emit()"
+            (click)="onSubmit.emit()"
         >
             {{ saveButtonText }}
         </fusion-button>

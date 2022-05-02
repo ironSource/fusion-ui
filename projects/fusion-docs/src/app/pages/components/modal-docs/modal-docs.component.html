@@ -476,7 +476,7 @@ fusion.services.modalService.close("testModal", {emitEvent = false})'
                 <button fusion-button (click)="modalService.open('testModal2')" class="stroke">Dialog without border on header</button>
             </div>
 
-            <fusion-modal id="testModal1" width="600" headerText="Header Title" [isClosed]="true" (onSave)="saveClicked('testModal1')">
+            <fusion-modal id="testModal1" width="600" headerText="Header Title" [isClosed]="true" (onSubmit)="saveClicked('testModal1')">
                 <div class="row is-row-example">
                     <p>Modal content</p>
                 </div>
@@ -488,7 +488,7 @@ fusion.services.modalService.close("testModal", {emitEvent = false})'
                 headerText="Overlay Title"
                 [isClosed]="true"
                 [noHeaderBorder]="true"
-                (onSave)="saveClicked('testModal2')"
+                (onSubmit)="saveClicked('testModal2')"
             >
                 <div class="row is-row-example">
                     <p>Modal without header border content</p>
@@ -535,10 +535,10 @@ fusion.services.modalService.close("testModal", {emitEvent = false})'
                 id="testModalLoading"
                 width="600"
                 headerText="Overlay Title"
-                [onSubmit]="(loadModalContent$ | async) === false"
+                [loadingOnSubmit]="(loadModalContent$ | async) === false"
                 [isClosed]="true"
                 (onClose)="closeModal()"
-                (onSave)="saveClicked('testModalLoading')"
+                (onSubmit)="saveClicked('testModalLoading')"
             >
                 <div class="row is-row-example">
                     <div class="col-3"><span class="fu-font4">Field Label</span></div>
@@ -590,7 +590,7 @@ fusion.services.modalService.close("testModal", {emitEvent = false})'
                 headerText="Overlay Title"
                 [isClosed]="true"
                 (onClose)="closeModal()"
-                (onSave)="saveClicked('testModalLoadingPage')"
+                (onSubmit)="saveClicked('testModalLoadingPage')"
             >
                 <ng-container *ngIf="{loadModalContent: loadModalContent$ | async} as data">
                     <fusion-loader *ngIf="!data.loadModalContent" [status]="true" height="50">Loading Please Wait...</fusion-loader>
@@ -637,7 +637,7 @@ fusion.services.modalService.close("testModal", {emitEvent = false})'
                 headerText="Overlay Title"
                 [isClosed]="true"
                 [error]="mandatoryForm.valid ? '' : 'Must file all the fields'"
-                (onSave)="saveClicked('testModalError')"
+                (onSubmit)="saveClicked('testModalError')"
             >
                 <div class="row is-row-example">
                     <div class="col-3"><span class="fu-font4">Field Label</span></div>

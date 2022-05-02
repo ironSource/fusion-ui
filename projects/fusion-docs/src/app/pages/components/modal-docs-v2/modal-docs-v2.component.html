@@ -473,7 +473,7 @@ fusion.services.modalService.close("testModal", {emitEvent = false})'
                 <fusion-button (click)="onClickModalOpen('testModal1')" class="stroke">Dialog</fusion-button>
             </div>
 
-            <fusion-modal id="testModal1" (onClose)="onModalClosed()" [onOpenModal]="openModalById$ | async" width="600" headerText="Overlay Title" [isClosed]="true" (onSave)="saveClicked('testModal1')">
+            <fusion-modal id="testModal1" (onClose)="onModalClosed()" [onOpenModal]="openModalById$ | async" width="600" headerText="Overlay Title" [isClosed]="true" (onSubmit)="saveClicked('testModal1')">
                 <div style="background-color: rgb(255,242,242); border: solid 1px rgb(247,232,238); text-align: center; color:#313d91;">
                     <p>Modal content</p>
                 </div>
@@ -511,17 +511,18 @@ fusion.services.modalService.close("testModal", {emitEvent = false})'
             ></fusion-code-block>
 
             <div class="is-example-holder as-flex center">
-                <button fusion-button (click)="modalService.open('testModalLoadingPage'); modalButtonClick$.next()">
+                <fusion-button (click)="onClickModalOpenLoading('testModalLoadingPage'); modalButtonClick$.next()">
                     Loader Overlay
-                </button>
+                </fusion-button>
             </div>
             <fusion-modal
                 id="testModalLoadingPage"
                 width="600"
                 headerText="Overlay Title"
                 [isClosed]="true"
-                (onClose)="closeModal()"
-                (onSave)="saveClicked('testModalLoadingPage')"
+                [onOpenModal]="openModalById2$ | async"
+                (onClose)="onModalClosed()"
+                (onSubmit)="saveClicked('testModalLoadingPage')"
             >
                 <ng-container *ngIf="{loadModalContent: loadModalContent$ | async} as data">
                     <fusion-loader *ngIf="!data.loadModalContent" [status]="true" height="45">Loading Please Wait...</fusion-loader>
@@ -693,7 +694,7 @@ cancelButtonHidden: boolean;"
         <fusion-example-block id="eventsModal" title="Modal Events" [collapsible]="false">
             <fusion-code-block
                 lang="js"
-                code="onSave();         // save button was clicked
+                code="onSubmit();         // save button was clicked
 onOpen();         // modal was opened
 onClose();        // modal was closed"
             ></fusion-code-block>
