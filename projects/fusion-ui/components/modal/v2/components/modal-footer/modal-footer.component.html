@@ -1,0 +1,22 @@
+<div class="modal-footer">
+    <div class="footer">
+        <span class="is-error-message">{{ error }}</span>
+        <fusion-button
+            [class]="cancelButtonClass"
+            [ngClass]="{small: notificationFooter}"
+            (click)="onCloseButtonClicked.emit()"
+            *ngIf="!cancelButtonHidden"
+        >
+            {{ cancelButtonText }}
+        </fusion-button>
+        <fusion-button
+            [class]="saveButtonClass"
+            [ngClass]="{small: notificationFooter}"
+            [loading]="saveButtonLoading"
+            [disabled]="saveButtonDisabled || loading || !!error"
+            (click)="onSave.emit()"
+        >
+            {{ saveButtonText }}
+        </fusion-button>
+    </div>
+</div>

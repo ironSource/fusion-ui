@@ -1,0 +1,39 @@
+<div class="modal" [ngClass]="{waiting: waiting, loading: loading}" #modalHolder>
+    <div class="modal-body" [class.has-footer]="footer" [class.has-header]="headerText" [style.width]="width" [style.height]="height" #modalBody>
+
+        <fusion-modal-header [headerText]="headerText" [noHeaderBorder]="noHeaderBorder" (closed)="close()"></fusion-modal-header>
+
+        <fusion-modal-content
+            *ngIf="headerText || footer"
+            [padding]="padding"
+            [waiting]="waiting"
+            [ngClass]="{'is-has-height': !!height}"
+        >
+            <ng-container *ngTemplateOutlet="content"></ng-container>
+        </fusion-modal-content>
+
+        <ng-container *ngIf="!headerText && !footer">
+            <ng-container *ngTemplateOutlet="content"></ng-container>
+        </ng-container>
+
+        <!--can use <ng-content> tag twice in html page unless we use select attribute -->
+        <ng-template #content>
+            <ng-content></ng-content>
+        </ng-template>
+
+        <fusion-modal-footer
+            *ngIf="footer"
+            [loading]="loading"
+            [error]="error"
+            [saveButtonText]="saveButtonText"
+            [saveButtonDisabled]="saveButtonDisabled"
+            [cancelButtonHidden]="cancelButtonHidden"
+            [cancelButtonText]="cancelButtonText"
+            (onSave)="onSave.emit()"
+            (onCloseButtonClicked)="close()"
+            [saveButtonLoading]="waiting"
+        ></fusion-modal-footer>
+
+    </div>
+</div>
+

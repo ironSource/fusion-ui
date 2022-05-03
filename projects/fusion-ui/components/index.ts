@@ -46,3 +46,4 @@ export * from './toast';
 export * from './toggle';
 export * from './tooltip';
 export * from './video-player';
+export * from './chip-filter';

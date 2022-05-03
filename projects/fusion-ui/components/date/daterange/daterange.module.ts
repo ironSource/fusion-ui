@@ -6,7 +6,7 @@ import {ModalModule} from '@ironsource/fusion-ui/components/modal';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {CalendarModule} from '../calendar/calendar.module';
 import {DaterangeService} from './daterange.service';
-import {InputModule} from '@ironsource/fusion-ui/components/input';
+import {InputModule} from '@ironsource/fusion-ui/components/input/v2';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
 import {DropdownSelectModule} from '@ironsource/fusion-ui/components/dropdown';

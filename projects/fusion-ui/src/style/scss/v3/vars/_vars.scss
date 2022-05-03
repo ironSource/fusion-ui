@@ -1,3 +1,29 @@
 @import 'fonts';
 @import 'colors';
 
+// scroll
+$scrollWidth: 12px;
+$scrollRadius: 2px;
+$scrollRadiusTrack: 4px;
+$scrollThumbWidth: 4px;
+$scrollColor: $fu-light-500;
+$scrollBackgroundColor: $White;
+%customScroll{
+    &::-webkit-scrollbar-track {
+        border-radius: $scrollRadiusTrack;
+        background-color: $scrollBackgroundColor;
+    }
+
+    &::-webkit-scrollbar {
+        width: $scrollWidth;
+        height: $scrollWidth;
+        background-color: $scrollBackgroundColor;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border: calc((#{$scrollWidth} - #{$scrollThumbWidth}) / 2) solid rgba(0, 0, 0, 0);
+        background-clip: padding-box;
+        border-radius: $scrollRadius;
+        background-color: $scrollColor;
+    }
+}
