@@ -3,7 +3,7 @@ import {DOCUMENT} from '@angular/common';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {WindowService} from '@ironsource/fusion-ui/services/window';
-import {getDefaultCssUnit} from '@ironsource/fusion-ui/components/modal/common/base/modal-utils';
+import {getDefaultCssUnit} from './modal-utils';
 
 @Directive()
 export abstract class ModalBaseComponent implements OnInit {
