@@ -74,7 +74,7 @@ export class ModalComponent extends ModalBaseComponent implements OnDestroy {
     }
 
     closeModal(id: string, emitEvent: boolean = true) {
-        if (ModalComponent.activeModals[id]) {
+        if (ModalComponent.activeModals[id] && !ModalComponent.activeModals[id].isClosed) {
             ModalComponent.activeModals[id].close(emitEvent);
         }
     }
