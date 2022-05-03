@@ -2,7 +2,9 @@ import {ChangeDetectionStrategy, Component, ElementRef, forwardRef, Inject, OnDe
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {ModalBaseComponent, ModalService} from '@ironsource/fusion-ui/components/modal/common/base';
 import {DOCUMENT} from '@angular/common';
-import {LogService, UniqueIdService, WindowService} from '@ironsource/fusion-ui';
+import {WindowService} from '@ironsource/fusion-ui/services/window';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
+import {LogService} from '@ironsource/fusion-ui/services/log';
 
 @Component({
     selector: 'fusion-modal',
