@@ -1,20 +1,6 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    forwardRef,
-    Inject,
-    Input,
-    OnDestroy,
-    OnInit,
-    Renderer2,
-    TemplateRef
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef, Input, OnDestroy} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
-import {ModalBaseComponent, ModalService} from '@ironsource/fusion-ui/components/modal/common/base';
-import {DOCUMENT} from '@angular/common';
-import {LogService, UniqueIdService, WindowService} from '@ironsource/fusion-ui/services';
-import {isFunction} from '@ironsource/fusion-ui/utils';
+import {ModalBaseComponent} from '@ironsource/fusion-ui/components/modal/common/base';
 
 @Component({
     selector: 'fusion-modal',
