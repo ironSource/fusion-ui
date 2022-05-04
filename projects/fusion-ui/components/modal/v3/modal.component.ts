@@ -17,7 +17,7 @@ import {getDefaultCssUnit} from '@ironsource/fusion-ui/components/modal/common/b
 import {DOCUMENT} from '@angular/common';
 import {LogService, UniqueIdService, WindowService} from '@ironsource/fusion-ui/services';
 import {ModalConfiguration} from '@ironsource/fusion-ui/components/modal/v3/modal.entities';
-import {BehaviorSubject, Subject} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
     selector: 'fusion-modal',
@@ -56,8 +56,6 @@ export class ModalComponent implements OnDestroy, OnInit {
     @ViewChild('modalBody', {static: true}) modalBody: ElementRef;
     @ViewChild('modalHolder', {static: true}) modalHolder: ElementRef;
 
-    onDestroy$ = new Subject<void>();
-
     private uid: string;
     private _configuration: ModalConfiguration;
     private isClosed$ = new BehaviorSubject<boolean>(false);
@@ -86,8 +84,6 @@ export class ModalComponent implements OnDestroy, OnInit {
 
     ngOnDestroy() {
         this.removeModal(this.configuration.id);
-        this.onDestroy$.next();
-        this.onDestroy$.complete();
     }
 
     open() {
