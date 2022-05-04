@@ -1,6 +1,5 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ModalComponent} from './modal.component';
-import {LoaderModule} from '@ironsource/fusion-ui/components/loader';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {ModalFooterComponent} from './components/modal-footer/modal-footer.component';
@@ -14,7 +13,7 @@ describe('ModalComponent', () => {
     beforeEach(
         waitForAsync(() => {
             TestBed.configureTestingModule({
-                imports: [LoaderModule, ButtonModule, IconModule],
+                imports: [ButtonModule, IconModule],
                 declarations: [ModalComponent, ModalFooterComponent, ModalContentComponent, ModalHeaderComponent]
             }).compileComponents();
         })
@@ -23,6 +22,7 @@ describe('ModalComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(ModalComponent);
         component = fixture.componentInstance;
+        component.configuration = {defaultModalState: 'close', id: 'testModal1', width: '600', headerText: 'Overlay Title'};
         fixture.detectChanges();
     });
 
