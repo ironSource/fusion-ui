@@ -25,14 +25,20 @@ export class TabGroupComponent implements OnInit, OnDestroy {
     }
 
     private onClick(event) {
-        const clickedTab = event.target.closest('fusion-tab');
-        if (clickedTab) {
+        const clickedTabElement: HTMLElement = event.target.closest('fusion-tab');
+        if (clickedTabElement) {
             this._element.nativeElement.querySelectorAll('fusion-tab[selected]').forEach(el => {
                 this._renderer.removeAttribute(el, 'selected');
             });
-            this._renderer.setAttribute(clickedTab, 'selected', '');
+            this._renderer.setAttribute(clickedTabElement, 'selected', '');
 
-            this.selectedChange.emit({index: 2, tabElement: clickedTab});
+            const selectedTabIndex = this.getTabElementIndex(clickedTabElement);
+
+            this.selectedChange.emit({index: selectedTabIndex, tabElement: clickedTabElement});
         }
+    }
+
+    private getTabElementIndex(tabElement: HTMLElement): number {
+        return [...this._element.nativeElement.querySelectorAll('fusion-tab')].findIndex(el => el === tabElement);
     }
 }
