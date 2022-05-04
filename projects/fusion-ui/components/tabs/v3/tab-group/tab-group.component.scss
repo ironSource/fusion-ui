@@ -1,0 +1,17 @@
+@import '../../../../src/style/scss/v3/vars/vars';
+
+$tabWidth: 150px;
+$tabHeight: 48px;
+$tabPadding: 4px;
+$tabBorderWidth: 1px;
+
+:host{
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: var(--fu-tab-group-justify-content, flex-start);
+
+    border-bottom: var(--fu-tab-border-bottom, solid $fu-light-400);
+    border-bottom-width: var(--fu-tab-border-bottom-width, $tabBorderWidth);
+
+}

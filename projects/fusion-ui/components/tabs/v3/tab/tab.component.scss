@@ -1,0 +1,86 @@
+@import '../../../../src/style/scss/v3/vars/vars';
+@import '../../../../src/style/scss/v3/mixins/mixins';
+
+$tabWidth: 150px;
+$tabHeight: 48px;
+$tabPadding: 4px;
+$tabBorderWidth: 1px;
+$tabSelectedBorderWidth: 2px;
+
+%height{
+    height: calc(var(--fu-tab-height, #{$tabHeight}) - (var(--fu-tab-padding, $tabPadding * 2)));
+}
+
+:host {
+    box-sizing: border-box;
+
+    min-width: var(--fu-tab-min-width, $tabWidth);
+    min-height: var(--fu-tab-min-height, $tabHeight);
+    height: var(--fu-tab-height, #{$tabHeight});
+
+    padding: var(--fu-tab-padding, $tabPadding);
+    background-color: var(--fu-tab-background-color, $White);
+
+    border-bottom: var(--fu-tab-border-bottom, solid $fu-light-400);
+    border-bottom-width: var(--fu-tab-border-bottom-width, $tabBorderWidth);
+    margin-bottom: calc(var(--fu-tab-border-bottom-width, $tabBorderWidth) * -1);
+
+    .fu-tab-content{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3px;
+
+        @extend %height;
+
+        color: var(--fu-tab-color, $fu-light-900);
+        background-color: var(--fu-tab-background-color, $White);
+        @extend %font-bodySmallStrong;
+        letter-spacing: var(--fu-tab-letter-spasing, 0.24px);
+
+        ::ng-deep fusion-icon{
+            width: 15px;
+            height: 15px;
+        }
+    }
+
+
+    &:hover{
+        cursor: pointer;
+        .fu-tab-content{
+            color: var(--fu-tab-hover-color, $fu-light-1000);
+            background-color: var(--fu-tab-hover-background-color, $fu-light-50);
+            border-radius: var(--fu-tab-hover-border-radius, 4px);
+        }
+    }
+
+    &[selected]{
+        @extend %no-pointer-events;
+        border-bottom: var(--fu-tab-selected-border-bottom, solid $fu-primary-500);
+        border-bottom-width: var(--fu-tab-selected-border-bottom-width, $tabSelectedBorderWidth);
+        .fu-tab-content{
+            color: var(--fu-tab-selected-color, $fu-black-500);
+        }
+        &:hover{
+            .fu-tab-content{
+                color: var(--fu-tab-selected-color, $fu-black-500);
+                background-color: var(--fu-tab-background-color, $White);
+            }
+        }
+    }
+
+    &[disabled]{
+        @extend %no-pointer-events;
+        .fu-tab-content{
+            color: var(--fu-tab-selected-color, $fu-light-800);
+        }
+        &:hover{
+            .fu-tab-content{
+                color: var(--fu-tab-selected-color, $fu-light-800);
+                background-color: var(--fu-tab-background-color, $White);
+            }
+        }
+
+    }
+
+}
