@@ -1,4 +1,16 @@
-<router-outlet></router-outlet>
-<fusion-tooltip *ngIf="tooltipData.content"
-                [tooltipData]="tooltipData"></fusion-tooltip>
+<!--<router-outlet></router-outlet>-->
+<!--<fusion-tooltip *ngIf="tooltipData.content"-->
+<!--                [tooltipData]="tooltipData"></fusion-tooltip>-->
 
+<fusion-button (click)="onClickModalOpen()" class="stroke"
+>Dialog</fusion-button
+>
+<fusion-modal
+    (onClose)="onModalClosed($event)"
+    [isModalOpen]="openModal$ | async"
+    [configuration]="{defaultModalState: 'close',id:'testModal1',width:'600',headerText:'Overlay Title'}">
+    <div
+        style="background-color:#F1F3F4;padding: 16px;border-radius: 8px; text-align: center;">
+        <p>Modal content</p>
+    </div>
+</fusion-modal>

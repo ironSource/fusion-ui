@@ -3,20 +3,17 @@
         <span class="fu-error-message">{{ error }}</span>
         <fusion-button
             [class]="cancelButtonClass"
-            [ngClass]="{small: notificationFooter}"
             (click)="onCloseButtonClicked.emit()"
             *ngIf="!cancelButtonHidden"
         >
             {{ cancelButtonText }}
         </fusion-button>
         <fusion-button
-            [class]="saveButtonClass"
-            [ngClass]="{small: notificationFooter}"
-            [loading]="saveButtonLoading"
-            [disabled]="saveButtonDisabled || loading || !!error"
+            [class]="submitButtonClass"
+            [disabled]="submitButtonDisabled || !!error"
             (click)="onSubmit.emit()"
         >
-            {{ saveButtonText }}
+            {{ submitButtonText }}
         </fusion-button>
     </div>
 </div>

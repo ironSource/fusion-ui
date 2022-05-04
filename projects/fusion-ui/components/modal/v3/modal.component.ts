@@ -1,10 +1,27 @@
-import {ChangeDetectionStrategy, Component, forwardRef, Input, OnDestroy} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ElementRef,
+    EventEmitter,
+    forwardRef,
+    Inject,
+    Input,
+    OnDestroy,
+    OnInit,
+    Output,
+    Renderer2,
+    ViewChild
+} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
-import {ModalBaseComponent} from '@ironsource/fusion-ui/components/modal/common/base';
+import {getDefaultCssUnit} from '@ironsource/fusion-ui/components/modal/common/base/modal-utils';
+import {DOCUMENT} from '@angular/common';
+import {LogService, UniqueIdService, WindowService} from '@ironsource/fusion-ui/services';
+import {ModalConfiguration} from '@ironsource/fusion-ui/components/modal/v3/modal.entities';
+import {BehaviorSubject, Subject} from 'rxjs';
 
 @Component({
     selector: 'fusion-modal',
-    templateUrl: '../common/base/modal.base.component.html',
+    templateUrl: './modal.component.html',
     styleUrls: ['./modal.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -15,53 +32,122 @@ import {ModalBaseComponent} from '@ironsource/fusion-ui/components/modal/common/
         }
     ]
 })
-export class ModalComponent extends ModalBaseComponent implements OnDestroy {
-    static activeModals: {[id: string]: ModalBaseComponent} = {};
+export class ModalComponent implements OnDestroy, OnInit {
+    static activeModals: {[id: string]: ModalComponent} = {};
 
-    @Input() set onOpenModal(id: string) {
-        if (id) {
-            this.openModal(id);
+    @Input() set isModalOpen(value: boolean) {
+        if (value) {
+            this.isClosed$.next(!value);
+            this.onOpenModal(this.configuration.id);
         }
     }
 
-    @Input() set onCloseModal(id: string) {
-        if (id) {
-            this.closeModal(id);
-        }
+    @Input() set configuration(config: ModalConfiguration) {
+        this.setModalConfiguration(config);
+    }
+
+    get configuration(): ModalConfiguration {
+        return this._configuration;
+    }
+
+    @Output() onOpen = new EventEmitter();
+    @Output() onClose = new EventEmitter();
+
+    @ViewChild('modalBody', {static: true}) modalBody: ElementRef;
+    @ViewChild('modalHolder', {static: true}) modalHolder: ElementRef;
+
+    onDestroy$ = new Subject<void>();
+
+    private uid: string;
+    private _configuration: ModalConfiguration;
+    private isClosed$ = new BehaviorSubject<boolean>(false);
+
+    constructor(
+        @Inject(DOCUMENT) protected document: Document,
+        private uidService: UniqueIdService,
+        private elRef: ElementRef,
+        private windowRef: WindowService,
+        private logService: LogService,
+        private renderer: Renderer2
+    ) {
+        this.uid = this.uidService.getUniqueId().toString();
     }
 
     ngOnInit() {
-        super.ngOnInit();
+        if (!this.configuration.id) {
+            this.logService.error(new Error('Modal component must have an id'));
+            return;
+        }
+        if (this.configuration.defaultModalState === 'close') {
+            this.close(false);
+        }
         this.addModal(this);
     }
 
     ngOnDestroy() {
-        this.removeModal(this.id);
+        this.removeModal(this.configuration.id);
+        this.onDestroy$.next();
+        this.onDestroy$.complete();
     }
 
-    addModal(modal: ModalBaseComponent) {
-        ModalComponent.activeModals[modal.id] = modal;
+    open() {
+        this.renderer.setStyle(this.elRef.nativeElement, 'display', 'block');
+        this.onOpen.emit();
+    }
+
+    close(emitEvent = true, eventType: 'close' | 'submit' = 'close') {
+        this.renderer.setStyle(this.elRef.nativeElement, 'display', 'none');
+        if (emitEvent) {
+            this.onClose.emit(eventType);
+        }
+    }
+
+    addModal(modal: ModalComponent) {
+        ModalComponent.activeModals[modal.configuration.id] = modal;
     }
 
     removeModal(id: string) {
         delete ModalComponent.activeModals[id];
     }
 
-    openModal(id: string) {
+    onOpenModal(id: string) {
         if (ModalComponent.activeModals[id]) {
             Object.keys(ModalComponent.activeModals).forEach(modalId => {
                 if (modalId === id) {
                     ModalComponent.activeModals[modalId].open();
                 } else {
-                    this.closeModal(modalId, false);
+                    this.onCloseModal(modalId, false);
                 }
             });
         }
     }
 
-    closeModal(id: string, emitEvent: boolean = true) {
-        if (ModalComponent.activeModals[id] && !ModalComponent.activeModals[id].isClosed) {
-            ModalComponent.activeModals[id].close(emitEvent);
+    onCloseModal(id: string, emitEvent: boolean = true) {
+        if (ModalComponent.activeModals[id] && !ModalComponent.activeModals[id].isClosed$.getValue()) {
+            ModalComponent.activeModals[id].close(emitEvent, 'close');
         }
+    }
+
+    private setModalConfiguration(config: ModalConfiguration) {
+        this._configuration = {
+            id: config.id,
+            width: getDefaultCssUnit(config.width),
+            height: getDefaultCssUnit(config.height),
+            defaultModalState: config.defaultModalState || 'open',
+            hasFooter: config.hasFooter || true,
+            error: config.error || '',
+            headerText: config.headerText || '',
+            isHeaderBorder: config.isHeaderBorder || true,
+            submitButton: {
+                submitButtonText: config.submitButton.submitButtonText || 'Save',
+                submitButtonClass: config.submitButton.submitButtonClass || '',
+                submitButtonDisabled: config.submitButton.submitButtonDisabled || false
+            },
+            cancelButton: {
+                cancelButtonText: config.cancelButton.cancelButtonText || 'Cancel',
+                cancelButtonHidden: config.cancelButton.cancelButtonHidden || false,
+                cancelButtonClass: config.cancelButton.cancelButtonClass || 'third'
+            }
+        };
     }
 }

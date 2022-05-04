@@ -6,7 +6,4 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
     styleUrls: ['./modal-content.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ModalContentComponent {
-    @Input() padding: string;
-    @Input() loadingOnSubmit = false;
-}
+export class ModalContentComponent {}

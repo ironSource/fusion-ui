@@ -10,7 +10,7 @@ export abstract class ModalBaseComponent implements OnInit {
     @Input() id: string;
     @Input() footer = true;
     @Input() loading = false; // state for content loading
-    @Input() loadingOnSubmit = false; // submit state when click right button
+    @Input() waiting = false; // state for on click primary button waiter
     @Input() set width(value: string) {
         if (value) {
             this._width = getDefaultCssUnit(value);
@@ -41,8 +41,11 @@ export abstract class ModalBaseComponent implements OnInit {
     @Input() cancelButtonText = 'Cancel';
     @Input() cancelButtonHidden: boolean;
 
-    @Output() onSubmit = new EventEmitter();
+    // eslint-disable-next-line
+    @Output() onSave = new EventEmitter();
+    // eslint-disable-next-line
     @Output() onOpen = new EventEmitter();
+    // eslint-disable-next-line
     @Output() onClose = new EventEmitter();
 
     @ViewChild('modalBody', {static: true}) modalBody: ElementRef;
@@ -86,6 +89,6 @@ export abstract class ModalBaseComponent implements OnInit {
     }
 
     save(value) {
-        this.onSubmit.emit(value);
+        this.onSave.emit(value);
     }
 }

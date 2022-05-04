@@ -20,16 +20,6 @@
         position: relative;
         padding: 32px;
 
-        .fu-on-submit {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            left: 0;
-            background-color: $White;
-            opacity: 0.5;
-            display: block;
-        }
         .content {
             color: $fu-light-1000;
             @extend %font-bodyMedium;

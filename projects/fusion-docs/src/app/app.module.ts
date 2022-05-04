@@ -4,8 +4,8 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app.routing';
 import {environment} from '../environments/environment';
 import {SvgModule, TooltipModule} from '@ironsource/fusion-ui';
-import {ModalModule} from '@ironsource/fusion-ui/components/modal/v1';
-import {ButtonModule} from '@ironsource/fusion-ui/components/button/v1';
+import {ModalModule} from '@ironsource/fusion-ui/components/modal';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button';
 
 @NgModule({
     declarations: [AppComponent],
