@@ -130,7 +130,7 @@ export class ModalComponent implements OnDestroy, OnInit {
 
     private setModalConfiguration(config: ModalConfiguration) {
         this._configuration = {
-            id: config.id,
+            id: config?.id,
             width: getDefaultCssUnit(config?.width),
             height: getDefaultCssUnit(config?.height),
             defaultModalState: config?.defaultModalState || 'open',
