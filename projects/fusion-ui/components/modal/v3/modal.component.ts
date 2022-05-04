@@ -131,22 +131,22 @@ export class ModalComponent implements OnDestroy, OnInit {
     private setModalConfiguration(config: ModalConfiguration) {
         this._configuration = {
             id: config.id,
-            width: getDefaultCssUnit(config.width),
-            height: getDefaultCssUnit(config.height),
-            defaultModalState: config.defaultModalState || 'open',
-            hasFooter: config.hasFooter || true,
-            error: config.error || '',
-            headerText: config.headerText || '',
-            isHeaderBorder: config.isHeaderBorder || true,
+            width: getDefaultCssUnit(config?.width),
+            height: getDefaultCssUnit(config?.height),
+            defaultModalState: config?.defaultModalState || 'open',
+            hasFooter: config?.hasFooter || true,
+            error: config?.error || '',
+            headerText: config?.headerText || '',
+            isHeaderBorder: config?.isHeaderBorder || true,
             submitButton: {
-                submitButtonText: config.submitButton.submitButtonText || 'Save',
-                submitButtonClass: config.submitButton.submitButtonClass || '',
-                submitButtonDisabled: config.submitButton.submitButtonDisabled || false
+                submitButtonText: config?.submitButton?.submitButtonText || 'Save',
+                submitButtonClass: config?.submitButton?.submitButtonClass || '',
+                submitButtonDisabled: config?.submitButton?.submitButtonDisabled || false
             },
             cancelButton: {
-                cancelButtonText: config.cancelButton.cancelButtonText || 'Cancel',
-                cancelButtonHidden: config.cancelButton.cancelButtonHidden || false,
-                cancelButtonClass: config.cancelButton.cancelButtonClass || 'third'
+                cancelButtonText: config?.cancelButton?.cancelButtonText || 'Cancel',
+                cancelButtonHidden: config?.cancelButton?.cancelButtonHidden || false,
+                cancelButtonClass: config?.cancelButton?.cancelButtonClass || 'third'
             }
         };
     }
