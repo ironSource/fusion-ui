@@ -13,11 +13,13 @@ import {
     ViewChild
 } from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
-import {getDefaultCssUnit} from './modal-utils';
 import {DOCUMENT} from '@angular/common';
-import {LogService, UniqueIdService, WindowService} from '@ironsource/fusion-ui/services';
-import {ModalConfiguration} from '@ironsource/fusion-ui/components/modal/v3/modal.entities';
 import {BehaviorSubject} from 'rxjs';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
+import {LogService} from '@ironsource/fusion-ui/services/log';
+import {WindowService} from '@ironsource/fusion-ui/services/window';
+import {ModalConfiguration} from './modal.entities';
+import {getDefaultCssUnit} from './modal-utils';
 
 @Component({
     selector: 'fusion-modal',

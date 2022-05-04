@@ -1,10 +1,6 @@
-import {ChangeDetectionStrategy, Component, ElementRef, forwardRef, Inject, OnDestroy, Renderer2} from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
-import {ModalBaseComponent, ModalService} from '@ironsource/fusion-ui/components/modal/common/base';
-import {DOCUMENT} from '@angular/common';
-import {WindowService} from '@ironsource/fusion-ui/services/window';
-import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
-import {LogService} from '@ironsource/fusion-ui/services/log';
+import {ModalBaseComponent} from '@ironsource/fusion-ui/components/modal/common/base';
 
 @Component({
     selector: 'fusion-modal',
@@ -19,25 +15,4 @@ import {LogService} from '@ironsource/fusion-ui/services/log';
         }
     ]
 })
-export class ModalComponent extends ModalBaseComponent implements OnDestroy {
-    constructor(
-        @Inject(DOCUMENT) protected document: Document,
-        protected uidService: UniqueIdService,
-        protected elRef: ElementRef,
-        protected windowRef: WindowService,
-        protected logService: LogService,
-        protected renderer: Renderer2,
-        private modalService: ModalService
-    ) {
-        super(document, uidService, elRef, windowRef, logService, renderer);
-    }
-
-    ngOnInit() {
-        super.ngOnInit();
-        this.modalService.add(this);
-    }
-
-    ngOnDestroy() {
-        this.modalService.remove(this.id);
-    }
-}
+export class ModalComponent extends ModalBaseComponent {}

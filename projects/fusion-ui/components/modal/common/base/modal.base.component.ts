@@ -4,9 +4,10 @@ import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {WindowService} from '@ironsource/fusion-ui/services/window';
 import {getDefaultCssUnit} from './modal-utils';
+import {ModalService} from './modal.base.service';
 
 @Directive()
-export abstract class ModalBaseComponent implements OnInit {
+export abstract class ModalBaseComponent implements OnInit, OnDestroy {
     @Input() id: string;
     @Input() footer = true;
     @Input() loading = false; // state for content loading
@@ -61,6 +62,7 @@ export abstract class ModalBaseComponent implements OnInit {
         protected elRef: ElementRef,
         protected windowRef: WindowService,
         protected logService: LogService,
+        private modalService: ModalService,
         protected renderer: Renderer2
     ) {
         this.uid = this.uidService.getUniqueId().toString();
@@ -74,6 +76,11 @@ export abstract class ModalBaseComponent implements OnInit {
         if (this.isClosed) {
             this.close(false);
         }
+        this.modalService.add(this);
+    }
+
+    ngOnDestroy() {
+        this.modalService.remove(this.id);
     }
 
     open() {
