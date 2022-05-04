@@ -13,7 +13,7 @@ import {
     ViewChild
 } from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
-import {getDefaultCssUnit} from '@ironsource/fusion-ui/components/modal/common/base/modal-utils';
+import {getDefaultCssUnit} from './modal-utils';
 import {DOCUMENT} from '@angular/common';
 import {LogService, UniqueIdService, WindowService} from '@ironsource/fusion-ui/services';
 import {ModalConfiguration} from '@ironsource/fusion-ui/components/modal/v3/modal.entities';
