@@ -1,16 +1,16 @@
 <div class="modal" #modalHolder>
-    <div class="modal-body" [class.has-footer]="configuration.hasFooter" [class.has-header]="configuration.headerText" [style.width]="configuration.width" [style.height]="configuration.height" #modalBody>
+    <div class="modal-body" [class.has-footer]="configuration?.hasFooter" [class.has-header]="configuration?.headerText" [style.width]="configuration?.width" [style.height]="configuration?.height" #modalBody>
 
-        <fusion-modal-header [headerText]="configuration.headerText" [isHeaderBorder]="configuration.isHeaderBorder" (closed)="close(true, 'close')"></fusion-modal-header>
+        <fusion-modal-header [headerText]="configuration?.headerText" [isHeaderBorder]="configuration?.isHeaderBorder" (closed)="close(true, 'close')"></fusion-modal-header>
 
         <fusion-modal-content
-            *ngIf="configuration.headerText || configuration.hasFooter"
-            [ngClass]="{'fu-has-height': !!configuration.height}"
+            *ngIf="configuration?.headerText || configuration?.hasFooter"
+            [ngClass]="{'fu-has-height': !!configuration?.height}"
         >
             <ng-container *ngTemplateOutlet="content"></ng-container>
         </fusion-modal-content>
 
-        <ng-container *ngIf="!configuration.headerText && !configuration.hasFooter">
+        <ng-container *ngIf="!configuration?.headerText && !configuration?.hasFooter">
             <ng-container *ngTemplateOutlet="content"></ng-container>
         </ng-container>
 
@@ -19,10 +19,10 @@
         </ng-template>
 
         <fusion-modal-footer
-            *ngIf="configuration.hasFooter"
-            [error]="configuration.error"
-            [submitButton]="configuration.submitButton"
-            [cancelButton]="configuration.cancelButton"
+            *ngIf="configuration?.hasFooter"
+            [error]="configuration?.error"
+            [submitButton]="configuration?.submitButton"
+            [cancelButton]="configuration?.cancelButton"
             (onSubmit)="close(true, 'submit')"
             (onCloseButtonClicked)="close(true, 'close')"
         ></fusion-modal-footer>
