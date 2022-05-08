@@ -11,6 +11,13 @@ $tabSelectedBorderWidth: 2px;
     height: calc(var(--fu-tab-height, #{$tabHeight}) - (var(--fu-tab-padding, $tabPadding * 2)));
 }
 
+%tab-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+}
+
 :host {
     box-sizing: border-box;
 
@@ -26,10 +33,7 @@ $tabSelectedBorderWidth: 2px;
     margin-bottom: calc(var(--fu-tab-border-bottom-width, $tabBorderWidth) * -1);
 
     .fu-tab-content{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 3px;
+        @extend %tab-flex;
 
         @extend %height;
 
@@ -38,7 +42,7 @@ $tabSelectedBorderWidth: 2px;
         @extend %font-bodySmallStrong;
         letter-spacing: var(--fu-tab-letter-spasing, 0.24px);
 
-        ::ng-deep fusion-icon{
+        ::ng-deep fusion-icon.fu-tab-icon{
             width: 15px;
             height: 15px;
         }
@@ -82,5 +86,13 @@ $tabSelectedBorderWidth: 2px;
         }
 
     }
+}
 
+// for support additional div for ng-content in native
+:host-context(native-fusion-tab){
+    .fu-tab-content{
+        & ::ng-deep > div {
+            @extend %tab-flex;
+        }
+    }
 }
