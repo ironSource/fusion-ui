@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.2](https://github.com/ironSource/fusion-ui/compare/v2.0.1...v2.0.2) (2022-05-08)
+
+
+### Bug Fixes
+
+* **shared-entities:** append string pipes to shared entities declaration ([af81d9a](https://github.com/ironSource/fusion-ui/commit/af81d9ac7155b1a1cc6b17dfb876aeab31707b9f))
+
 ### [2.0.1](https://github.com/ironSource/fusion-ui/compare/v2.0.1-rc.1...v2.0.1) (2022-05-01)
 
 ## [2.0.0](https://github.com/ironSource/fusion-ui/compare/v2.0.0-rc.2...v2.0.0) (2022-04-10)
