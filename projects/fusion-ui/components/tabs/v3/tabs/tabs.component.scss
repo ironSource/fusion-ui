@@ -9,9 +9,8 @@ $tabBorderWidth: 1px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    justify-content: var(--fu-tab-group-justify-content, flex-start);
+    justify-content: var(--fu-tabs-justify-content, flex-start);
 
     border-bottom: var(--fu-tab-border-bottom, solid $fu-light-400);
     border-bottom-width: var(--fu-tab-border-bottom-width, $tabBorderWidth);
-
 }

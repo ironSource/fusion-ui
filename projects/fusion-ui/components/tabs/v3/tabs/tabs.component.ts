@@ -1,14 +1,14 @@
 import {Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, Renderer2} from '@angular/core';
 import {fromEvent, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {TabSelectedEventData} from '../tab-group.entities';
+import {TabSelectedEventData} from '../tabs.entities';
 
 @Component({
-    selector: 'fusion-tab-group',
+    selector: 'fusion-tabs',
     template: '<ng-content></ng-content>',
-    styleUrls: ['./tab-group.component.scss']
+    styleUrls: ['./tabs.component.scss']
 })
-export class TabGroupComponent implements OnInit, OnDestroy {
+export class TabsComponent implements OnInit, OnDestroy {
     @Output() selectedChange = new EventEmitter<TabSelectedEventData>();
 
     onDestroy$ = new Subject<void>();

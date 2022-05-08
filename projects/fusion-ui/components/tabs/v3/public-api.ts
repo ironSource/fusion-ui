@@ -1,4 +1,4 @@
 export * from './tabs.module';
-export * from './tab-group.entities';
-export * from './tab-group/tab-group.component';
+export * from './tabs.entities';
+export * from './tabs/tabs.component';
 export * from './tab/tab.component';
