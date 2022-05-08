@@ -45,7 +45,7 @@ import {ToastComponent} from '@ironsource/fusion-ui/components/toast';
 import {TabsComponent} from '@ironsource/fusion-ui/components/tabs/v2';
 import {SidebarComponent} from '@ironsource/fusion-ui/components/sidebar';
 import {SidebarMenuComponent} from '@ironsource/fusion-ui/components/sidebar';
-import {ModalService} from '@ironsource/fusion-ui/components/modal';
+import {ModalService} from '@ironsource/fusion-ui/components/modal/common/base';
 import {NotificationService} from '@ironsource/fusion-ui/components/notification';
 import {TooltipService} from '@ironsource/fusion-ui/components/tooltip';
 import {PopupService} from '@ironsource/fusion-ui/components/popup';
