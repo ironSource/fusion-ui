@@ -100,15 +100,15 @@ export class ModalComponent implements OnDestroy, OnInit {
         }
     }
 
-    addModal(modal: ModalComponent) {
+    private addModal(modal: ModalComponent) {
         ModalComponent.activeModals[modal.configuration.id] = modal;
     }
 
-    removeModal(id: string) {
+    private removeModal(id: string) {
         delete ModalComponent.activeModals[id];
     }
 
-    onOpenModal(id: string) {
+    private onOpenModal(id: string) {
         if (ModalComponent.activeModals[id]) {
             Object.keys(ModalComponent.activeModals).forEach(modalId => {
                 if (modalId === id) {
@@ -120,7 +120,7 @@ export class ModalComponent implements OnDestroy, OnInit {
         }
     }
 
-    onCloseModal(id: string, emitEvent: boolean = true) {
+    private onCloseModal(id: string, emitEvent: boolean = true) {
         if (ModalComponent.activeModals[id] && !ModalComponent.activeModals[id].isClosed$.getValue()) {
             ModalComponent.activeModals[id].close(emitEvent, 'close');
         }
