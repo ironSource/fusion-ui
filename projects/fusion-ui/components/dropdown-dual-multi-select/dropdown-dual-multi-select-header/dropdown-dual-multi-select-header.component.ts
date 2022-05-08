@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input, forwardRef, OnDestroy} from '@angular/core';
-import {InputSize} from '@ironsource/fusion-ui/components/input';
+import {InputSize} from '@ironsource/fusion-ui/components/input/common/base';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {debounceTime, distinctUntilChanged, takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';

@@ -20,7 +20,7 @@
         >
             <!--search input-->
             <fusion-dropdown-search
-                *ngIf="currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3 && configurations.isSearch && configurations.isOpen"
+                *ngIf="(currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3) && configurations.isSearch && configurations.isOpen"
                 [formControl]="searchValue"
                 [placeholder]="configurations.placeholder?.search"
                 #searchComponent

@@ -202,7 +202,7 @@ button.addEventListener("onclick", e => console.log(e));'
                 <button fusion-button class="stroke">Default Button</button>
             </fusion-example-block>
 
-            <fusion-example-block *ngIf="currentStyleVersion === styleVersion.V2" id="typeLink" title="Link">
+            <fusion-example-block *ngIf="currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3" id="typeLink" title="Link">
                 <ng-template fusionExampleBlock="Angular">
                     <fusion-code-block
                         lang="html"
@@ -346,7 +346,7 @@ button.addEventListener("onclick", e => console.log(e));'
             <fusion-button class="secondary">Secondary button</fusion-button>&nbsp;
         </fusion-example-block>
 
-            <fusion-example-block id="typeTransparent" *ngIf="currentStyleVersion === styleVersion.V2" title="Transparent">
+            <fusion-example-block id="typeTransparent" *ngIf="currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3" title="Transparent">
                 <ng-template fusionExampleBlock="Angular">
                     <fusion-code-block
                         lang="html"
@@ -579,7 +579,7 @@ document.body.appendChild(button);'
                     <div class="col-2 is-txt-lbl">Single Icon</div>
                     <div class="col-10">
                     <button fusion-button [icon]="{iconName: 'edit', iconVersion: 'v2'}" *ngIf="currentStyleVersion === styleVersion.V1"></button>
-                    <fusion-button [icon]="{iconName: 'pen', iconVersion: 'v2'}" fusionTooltip="Edit" *ngIf="currentStyleVersion === styleVersion.V2"></fusion-button>
+                    <fusion-button [icon]="{iconName: 'pen', iconVersion: 'v2'}" fusionTooltip="Edit" *ngIf="currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3"></fusion-button>
                     </div>
                 </div>
 
@@ -597,7 +597,7 @@ document.body.appendChild(button);'
                     </div>
                 </div>
 
-                <div *ngIf="currentStyleVersion === styleVersion.V2">
+                <div *ngIf="currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3">
                     <div style="height: 40px;" class="row is-example-row">
                         <div class="col-2 is-txt-lbl">In Table cell Icons</div>
                         <div class="col-2" style="background-color: #f8f9fb; height: 48px; padding-top: 10px; text-align: right;">
@@ -842,7 +842,7 @@ button.addEventListener("onclick", e => console.log(e));'
                     <div class="col-1 is-txt-lbl">Regular</div>
                     <div class="col-11">
                         <button fusion-button [loading]="true">Default Button</button>&nbsp;
-                        <button *ngIf="currentStyleVersion === styleVersion.V2" fusion-button [loading]="true" class="small">
+                        <button *ngIf="currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3" fusion-button [loading]="true" class="small">
                             Small Button
                         </button>
                     </div>

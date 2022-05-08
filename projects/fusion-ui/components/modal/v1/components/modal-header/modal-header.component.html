@@ -1,0 +1,6 @@
+<div class="modal-header" [ngClass]="{'no-border-bottom': noHeaderBorder}" *ngIf="headerText">
+    <div>
+        <span>{{ headerText }}</span>
+        <fusion-icon class="close" [name]="{iconName: 'close', iconVersion: 'v1'}" (click)="closed.emit()"></fusion-icon>
+    </div>
+</div>

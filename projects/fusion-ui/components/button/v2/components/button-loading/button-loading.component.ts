@@ -7,4 +7,5 @@ import {Component, Input} from '@angular/core';
 })
 export class ButtonLoadingComponent {
     @Input() projectContent: boolean = false;
+    @Input() buttonWithIcon: boolean = false;
 }

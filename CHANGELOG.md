@@ -1,7 +1,6 @@
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
-
 ## [3.0.0-rc.4](https://github.com/ironSource/fusion-ui/compare/v2.0.0-rc.2...v3.0.0-rc.4) (2022-04-14)
 
 
@@ -28,13 +27,13 @@ All notable changes to this project will be documented in this file. See [standa
 #### Rebuild working with style versions.
 
 **In React, Vue.js & VanillaJS applications:**
-- instead using class "fusion-style-v1" in <body> tag you need to use CSS variable "--fu-style-version: 1" in root. for example 
+- instead using class "fusion-style-v1" in <body> tag you need to use CSS variable "--fu-style-version: 1" in root. for example
     ```
     :root { --fu-style-version: 1 }
     ```
 
 **In angular application:**
-- instead of using `STYLE_VERSION_TOKEN` injection token in app.module.ts, you need to use CSS variable "--fu-style-version: 1" in app.component.scss.  for example 
+- instead of using `STYLE_VERSION_TOKEN` injection token in app.module.ts, you need to use CSS variable "--fu-style-version: 1" in app.component.scss.  for example
     ```
     :root { --fu-style-version: 1 }
     ```
@@ -57,7 +56,16 @@ In case the CSS variable is don't set, will be used last style version #3.
 For example if main application use style #3, but some components will need use with style #2, you will need add CSS variable `--fu-style-version: 2` to this component or component's holder.
 
 
+### [2.0.1](https://github.com/ironSource/fusion-ui/compare/v2.0.1-rc.1...v2.0.1) (2022-05-01)
 
+### [2.0.1-rc.1](https://github.com/ironSource/fusion-ui/compare/v2.0.1-rc.0...v2.0.1-rc.1) (2022-04-26)
+
+### [2.0.1-rc.0](https://github.com/ironSource/fusion-ui/compare/v2.0.0-rc.2...v2.0.1-rc.0) (2022-04-25)
+
+
+### Bug Fixes
+
+* **dropdown-icon-fix:** fix icon value in drop
 
 ## [2.0.0](https://github.com/ironSource/fusion-ui/compare/v2.0.0-rc.2...v2.0.0) (2022-04-10)
 

@@ -220,7 +220,7 @@ export class ChartDocsComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.selectedVersion$.subscribe((styleVersion: StyleVersion) => {
-            if (styleVersion === StyleVersion.V2) {
+            if (styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3) {
                 this.router.navigate(['/docs/components/v2/charts']);
             }
         });

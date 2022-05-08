@@ -6,7 +6,7 @@ export abstract class ButtonBaseComponent implements OnInit {
     @HostListener('click', ['$event']) onClick($event: any) {
         this.onclick.emit($event);
     }
-    @Input() set icon(value: string | IconData) {
+    @Input() set icon(value: IconData) {
         this.iconData = value;
         this.iconName = typeof this.iconData === 'string' ? this.iconData : this.iconData.iconName;
         this.setIconState(!!this.iconName);
@@ -30,8 +30,7 @@ export abstract class ButtonBaseComponent implements OnInit {
     isLoading: boolean;
     isLink: boolean;
     iconName: string;
-    iconData: string | IconData;
-
+    iconData: IconData;
     private isDisabled: boolean;
 
     constructor(injector: Injector, private element: ElementRef, private renderer: Renderer2) {}

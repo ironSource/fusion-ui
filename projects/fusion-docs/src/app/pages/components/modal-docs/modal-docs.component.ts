@@ -1,11 +1,12 @@
 import {Component, ViewChild, OnInit, OnDestroy} from '@angular/core';
-import {ModalService, NotificationService, NotificationType, StyleVersion} from '@ironsource/fusion-ui';
+import {NotificationService, NotificationType, StyleVersion} from '@ironsource/fusion-ui';
 import {Observable, timer, Subject, merge} from 'rxjs';
 import {mapTo, switchMap, takeUntil} from 'rxjs/operators';
 import {FormControl, Validators} from '@angular/forms';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Router} from '@angular/router';
 import {VersionService} from '../../../services/version/version.service';
+import {ModalService} from '@ironsource/fusion-ui/components/modal/common/base';
 
 @Component({
     selector: 'fusion-modal-docs',
@@ -99,7 +100,7 @@ export class ModalDocsComponent implements OnInit, OnDestroy {
             this.modalButtonClick$.asObservable().pipe(switchMap(_ => timer(1000).pipe(mapTo(true))))
         );
         this.selectedVersion$.subscribe((styleVersion: StyleVersion) => {
-            if (styleVersion === StyleVersion.V2) {
+            if (styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3) {
                 this.router.navigate(['docs/components/v2/modal']);
             }
         });
