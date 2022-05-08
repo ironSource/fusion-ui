@@ -19,6 +19,7 @@ $tabSelectedBorderWidth: 2px;
 }
 
 :host {
+    display: block;
     box-sizing: border-box;
 
     min-width: var(--fu-tab-min-width, $tabWidth);
