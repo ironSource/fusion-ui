@@ -1,7 +1,7 @@
 import {Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, Renderer2} from '@angular/core';
 import {fromEvent, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {TabSelectedEventData} from '@ironsource/fusion-ui/components/tabs/v3/tab-group.entities';
+import {TabSelectedEventData} from '../tab-group.entities';
 
 @Component({
     selector: 'fusion-tab-group',
