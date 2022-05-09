@@ -65,7 +65,7 @@ import {PermissionsService} from '@ironsource/fusion-ui/services/permissions/per
 import {ApiResponseType} from '@ironsource/fusion-ui/services/api/api-entities';
 import {CacheType} from '@ironsource/fusion-ui/services/cache/cache-entities';
 import {ColorsService} from '@ironsource/fusion-ui/services/colors/colors.service';
-import {TooltipService} from '@ironsource/fusion-ui/components/tooltip';
+import {TooltipService} from '@ironsource/fusion-ui/components/tooltip/common/base';
 
 // enums
 import {NotificationType} from '@ironsource/fusion-ui/components/notification';
@@ -75,7 +75,7 @@ import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline';
 import {ListBoxModes} from '@ironsource/fusion-ui/components/list-box';
 import {PopupLocation} from '@ironsource/fusion-ui/components/popup';
 import {TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table';
-import {TooltipPosition, TooltipType} from '@ironsource/fusion-ui/components/tooltip';
+import {TooltipPosition, TooltipType} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {FormControlStatus} from '@ironsource/fusion-ui/components/error-message';
 import {SwitcherMode} from '@ironsource/fusion-ui/components/switcher';
 import {DaterangePresets} from '@ironsource/fusion-ui/components/date';
