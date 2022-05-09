@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {StatusLabelBorderType, StatusLabelConfig, StatusLabelStatus, TableColumnTypeEnum} from '@ironsource/fusion-ui';
-import {TooltipType} from '@ironsource/fusion-ui/components/tooltip';
+import {TooltipType} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {DomSanitizer} from '@angular/platform-browser';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
 

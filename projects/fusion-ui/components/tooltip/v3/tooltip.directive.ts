@@ -10,7 +10,7 @@ import {
     ViewContainerRef
 } from '@angular/core';
 import {TooltipContentComponent} from './tooltip.content.component';
-import {IShiftPosition, TooltipPosition} from '@ironsource/fusion-ui/components/tooltip';
+import {IShiftPosition, TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {fromEvent, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {TooltipContentDirective} from './tooltip-content.directive';

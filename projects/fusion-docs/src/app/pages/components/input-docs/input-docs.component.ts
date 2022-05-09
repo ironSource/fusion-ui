@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, Validators} from '@angular/forms';
 import {StyleVersion} from '@ironsource/fusion-ui';
 import {InputOptions, InputSize} from '@ironsource/fusion-ui/components/input/common/base';
-import {TooltipPosition} from '@ironsource/fusion-ui/components/tooltip';
+import {TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {BehaviorSubject} from 'rxjs';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
