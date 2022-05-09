@@ -31,7 +31,6 @@ import {TagComponent} from '@ironsource/fusion-ui/components/tag';
 import {TagsInputComponent} from '@ironsource/fusion-ui/components/dropdown';
 import {ToggleComponent} from '@ironsource/fusion-ui/components/toggle';
 import {TooltipComponent} from '@ironsource/fusion-ui/components/tooltip';
-import {TooltipComponent} from '@ironsource/fusion-ui/components/tooltip/v3/tooltip.wrapper.component';
 import {VideoPlayerComponent} from '@ironsource/fusion-ui/components/video-player';
 import {ChartComponent} from '@ironsource/fusion-ui/components/chart';
 import {ChartLabelsComponent} from '@ironsource/fusion-ui/components/chart-labels';
@@ -169,6 +168,5 @@ export const components = [
     {name: `${PREFIX}-textarea`, componentInstance: TextareaComponent, avoidJsonParse: true},
     {name: `${PREFIX}-tabs`, componentInstance: TabsComponent},
     {name: `${PREFIX}-dropdown-dual-multi-select`, componentInstance: DropdownDualMultiSelectComponent},
-    {name: `${PREFIX}-chip-filter`, componentInstance: ChipFilterComponent},
-    {name: `${PREFIX}-tooltip-wrapper`, componentInstance: TooltipComponent}
+    {name: `${PREFIX}-chip-filter`, componentInstance: ChipFilterComponent}
 ];
