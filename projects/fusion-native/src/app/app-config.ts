@@ -31,6 +31,7 @@ import {TagComponent} from '@ironsource/fusion-ui/components/tag';
 import {TagsInputComponent} from '@ironsource/fusion-ui/components/dropdown';
 import {ToggleComponent} from '@ironsource/fusion-ui/components/toggle';
 import {TooltipComponent} from '@ironsource/fusion-ui/components/tooltip';
+import {TooltipWrapperComponent} from '@ironsource/fusion-ui/components/tooltip/v3';
 import {VideoPlayerComponent} from '@ironsource/fusion-ui/components/video-player';
 import {ChartComponent} from '@ironsource/fusion-ui/components/chart';
 import {ChartLabelsComponent} from '@ironsource/fusion-ui/components/chart-labels';
@@ -64,7 +65,7 @@ import {PermissionsService} from '@ironsource/fusion-ui/services/permissions/per
 import {ApiResponseType} from '@ironsource/fusion-ui/services/api/api-entities';
 import {CacheType} from '@ironsource/fusion-ui/services/cache/cache-entities';
 import {ColorsService} from '@ironsource/fusion-ui/services/colors/colors.service';
-import {TooltipService} from '@ironsource/fusion-ui/components/tooltip/common/base';
+import {TooltipService} from '@ironsource/fusion-ui/components/tooltip';
 
 // enums
 import {NotificationType} from '@ironsource/fusion-ui/components/notification';
@@ -74,7 +75,7 @@ import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline';
 import {ListBoxModes} from '@ironsource/fusion-ui/components/list-box';
 import {PopupLocation} from '@ironsource/fusion-ui/components/popup';
 import {TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table';
-import {TooltipPosition, TooltipType} from '@ironsource/fusion-ui/components/tooltip/common/base';
+import {TooltipPosition, TooltipType} from '@ironsource/fusion-ui/components/tooltip';
 import {FormControlStatus} from '@ironsource/fusion-ui/components/error-message';
 import {SwitcherMode} from '@ironsource/fusion-ui/components/switcher';
 import {DaterangePresets} from '@ironsource/fusion-ui/components/date';
@@ -168,5 +169,6 @@ export const components = [
     {name: `${PREFIX}-textarea`, componentInstance: TextareaComponent, avoidJsonParse: true},
     {name: `${PREFIX}-tabs`, componentInstance: TabsComponent},
     {name: `${PREFIX}-dropdown-dual-multi-select`, componentInstance: DropdownDualMultiSelectComponent},
-    {name: `${PREFIX}-chip-filter`, componentInstance: ChipFilterComponent}
+    {name: `${PREFIX}-chip-filter`, componentInstance: ChipFilterComponent},
+    {name: `${PREFIX}-tooltip-wrapper`, componentInstance: TooltipWrapperComponent}
 ];
