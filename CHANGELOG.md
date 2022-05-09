@@ -1,6 +1,50 @@
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [3.0.0-rc.5](https://github.com/ironSource/fusion-ui/compare/v2.0.3...v3.0.0-rc.5) (2022-05-09)
+
+
+### Features
+
+* **fu-385:** add chip component with style guide v3 and folder structure sub entries ([08b661b](https://github.com/ironSource/fusion-ui/commit/08b661b7a2d8627bb0b1d9965a7cc25040ba5038))
+
+
+### Bug Fixes
+
+* **fu-393:** fixed import path to ModalService in native app-config.ts ([2f1cf5a](https://github.com/ironSource/fusion-ui/commit/2f1cf5ab7bcee5bf450990e608ddaf7c7b3379df))
+
+
+### CI
+
+* **release/3.x.x:** prepare for next rc ([50b03c0](https://github.com/ironSource/fusion-ui/commit/50b03c011d3610ba7c86445cfcbd0d854790c6c6))
+* **release/3.x.x:** remove modal from old doc ([d8cf8bb](https://github.com/ironSource/fusion-ui/commit/d8cf8bb73a4402fc35cf2f1b761fa413eae45d05))
+
+## [3.0.0-rc.4](https://github.com/ironSource/fusion-ui/compare/v2.0.0...v3.0.0-rc.4) (2022-04-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* **FU-383:** merge iconPose and icon component inputs into one input: icon contain both values.
+  inputIconData: {iconData: string | IconData; iconPose: 'left' | 'right'}
+  IconData: string | {iconName: string; iconVersion: string}
+
+### Features
+
+* **fu-369:** add .gitattributes file to project ([2522b97](https://github.com/ironSource/fusion-ui/commit/2522b974cb010cd5b4ff868e3f66c5d136aa0c67))
+* **fu-369:** add .gitattributes file to project ([4d9135a](https://github.com/ironSource/fusion-ui/commit/4d9135a1aec1263d6d61c737c1a2bd8d48672209))
+* **fu-369:** add .gitattributes file to project ([ec86c4e](https://github.com/ironSource/fusion-ui/commit/ec86c4edb55dae3dbe02bdd8a2862755f04fe5e7))
+* **fu-369:** add .gitattributes file to project ([964985a](https://github.com/ironSource/fusion-ui/commit/964985a4cf942ba089d2640418e4cc20b4b0b00e))
+* **fu-369:** add .gitattributes file to project ([563a1ae](https://github.com/ironSource/fusion-ui/commit/563a1ae85fc7d45e7a85c2e63d501d838543c939))
+* **fu-369:** add .gitattributes file to project ([8fc4c81](https://github.com/ironSource/fusion-ui/commit/8fc4c81899a66da3a27e425886fe6ef3b9004884))
+* **fu-369:** add v3 icons folder and adjust icon component ([ff69a24](https://github.com/ironSource/fusion-ui/commit/ff69a24df60d38ce2815b670c19dbbc4102dbffe))
+* **fu-369:** add v3 icons folder and adjust icon component ([e4451c1](https://github.com/ironSource/fusion-ui/commit/e4451c1a66c50c480bf6c46817a0ad077692f22f))
+* **fu-369:** add v3 icons folder and adjust icon component ([7069fa5](https://github.com/ironSource/fusion-ui/commit/7069fa5cf67360e19ff05687fdaea00724a9140e))
+* **fu-369:** fix icon version ([309080a](https://github.com/ironSource/fusion-ui/commit/309080a43f6da14f301dadea721c8034b79a669a))
+* **fu-369:** fix PR ([22fef25](https://github.com/ironSource/fusion-ui/commit/22fef25944c6999169d2ca7a1e55d73dbfff42c6))
+* **fu-378:** add button v3 style guide ([f992a7a](https://github.com/ironSource/fusion-ui/commit/f992a7a1ae451479fcd9a85b5f73dc91769f21a6))
+* **FU-383:** style guide v3 input component ([4c1c8b8](https://github.com/ironSource/fusion-ui/commit/4c1c8b8bd06a22bebdb1fcac76145c78dbc2d7a9))
+
 ## [3.0.0-rc.4](https://github.com/ironSource/fusion-ui/compare/v2.0.0-rc.2...v3.0.0-rc.4) (2022-04-14)
 
 
