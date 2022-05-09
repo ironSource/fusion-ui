@@ -14,7 +14,7 @@
             [class]="saveButtonClass"
             [loading]="saveButtonLoading"
             [disabled]="saveButtonDisabled || loading || !!error"
-            (click)="onSubmit.emit()"
+            (click)="onSave.emit()"
         >
             {{ saveButtonText }}
         </button>

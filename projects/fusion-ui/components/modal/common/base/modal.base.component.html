@@ -6,7 +6,7 @@
         <fusion-modal-content
             *ngIf="headerText || footer"
             [padding]="padding"
-            [loadingOnSubmit]="waiting"
+            [waiting]="waiting"
             [ngClass]="{'fu-has-height': !!height}"
         >
             <ng-container *ngTemplateOutlet="content"></ng-container>
@@ -29,7 +29,7 @@
             [saveButtonDisabled]="saveButtonDisabled"
             [cancelButtonHidden]="cancelButtonHidden"
             [cancelButtonText]="cancelButtonText"
-            (onSubmit)="onSave.emit()"
+            (onSave)="onSave.emit()"
             (onCloseButtonClicked)="close()"
             [saveButtonLoading]="waiting"
         ></fusion-modal-footer>

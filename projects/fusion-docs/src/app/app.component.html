@@ -6,7 +6,7 @@
 >Dialog</fusion-button
 >
 <fusion-modal
-    (onClose)="onModalClosed($event)"
+    (close)="onModalClosed($event)"
     [isModalOpen]="openModal$ | async"
     [configuration]="{defaultModalState: 'close',id:'testModal1',width:'600',headerText:'Overlay Title'}">
     <div

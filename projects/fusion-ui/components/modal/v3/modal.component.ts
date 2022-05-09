@@ -40,7 +40,7 @@ export class ModalComponent implements OnDestroy, OnInit {
     @Input() set isModalOpen(value: boolean) {
         if (value) {
             this.isClosed$.next(!value);
-            this.onOpenModal(this.configuration.id);
+            this.onModalOpened(this.configuration.id);
         }
     }
 
@@ -52,8 +52,8 @@ export class ModalComponent implements OnDestroy, OnInit {
         return this._configuration;
     }
 
-    @Output() onOpen = new EventEmitter();
-    @Output() onClose = new EventEmitter();
+    @Output() open = new EventEmitter();
+    @Output() close = new EventEmitter();
 
     @ViewChild('modalBody', {static: true}) modalBody: ElementRef;
     @ViewChild('modalHolder', {static: true}) modalHolder: ElementRef;
@@ -79,7 +79,7 @@ export class ModalComponent implements OnDestroy, OnInit {
             return;
         }
         if (this.configuration.defaultModalState === 'close') {
-            this.close(false);
+            this.onClose(false);
         }
         this.addModal(this);
     }
@@ -88,15 +88,15 @@ export class ModalComponent implements OnDestroy, OnInit {
         this.removeModal(this.configuration.id);
     }
 
-    open() {
+    onOpen() {
         this.renderer.setStyle(this.elRef.nativeElement, 'display', 'block');
-        this.onOpen.emit();
+        this.open.emit();
     }
 
-    close(emitEvent = true, eventType: 'close' | 'submit' = 'close') {
+    onClose(emitEvent = true, eventType: 'close' | 'submit' = 'close') {
         this.renderer.setStyle(this.elRef.nativeElement, 'display', 'none');
         if (emitEvent) {
-            this.onClose.emit(eventType);
+            this.close.emit(eventType);
         }
     }
 
@@ -108,21 +108,21 @@ export class ModalComponent implements OnDestroy, OnInit {
         delete ModalComponent.activeModals[id];
     }
 
-    private onOpenModal(id: string) {
+    private onModalOpened(id: string) {
         if (ModalComponent.activeModals[id]) {
             Object.keys(ModalComponent.activeModals).forEach(modalId => {
                 if (modalId === id) {
-                    ModalComponent.activeModals[modalId].open();
+                    ModalComponent.activeModals[modalId].onOpen();
                 } else {
-                    this.onCloseModal(modalId, false);
+                    this.onModalClosed(modalId, false);
                 }
             });
         }
     }
 
-    private onCloseModal(id: string, emitEvent: boolean = true) {
+    private onModalClosed(id: string, emitEvent: boolean = true) {
         if (ModalComponent.activeModals[id] && !ModalComponent.activeModals[id].isClosed$.getValue()) {
-            ModalComponent.activeModals[id].close(emitEvent, 'close');
+            ModalComponent.activeModals[id].onClose(emitEvent, 'close');
         }
     }
 
