@@ -59,7 +59,7 @@ $tabSelectedBorderWidth: 2px;
         }
     }
 
-    &[selected]{
+    &[tab-selected]{
         @extend %no-pointer-events;
         border-bottom: var(--fu-tab-selected-border-bottom, solid $fu-primary-500);
         border-bottom-width: var(--fu-tab-selected-border-bottom-width, $tabSelectedBorderWidth);
@@ -74,7 +74,7 @@ $tabSelectedBorderWidth: 2px;
         }
     }
 
-    &[disabled]{
+    &[tab-disabled]{
         @extend %no-pointer-events;
         .fu-tab-content{
             color: var(--fu-tab-selected-color, $fu-light-800);

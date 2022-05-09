@@ -1,7 +1,8 @@
-import {Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, Renderer2} from '@angular/core';
+import {Component, ContentChildren, ElementRef, EventEmitter, OnDestroy, OnInit, Output, QueryList, Renderer2} from '@angular/core';
 import {fromEvent, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {TabSelectedEventData} from '../tabs.entities';
+import {TabComponent} from '@ironsource/fusion-ui/components';
 
 @Component({
     selector: 'fusion-tabs',
@@ -10,6 +11,8 @@ import {TabSelectedEventData} from '../tabs.entities';
 })
 export class TabsComponent implements OnInit, OnDestroy {
     @Output() selectedChange = new EventEmitter<TabSelectedEventData>();
+
+    @ContentChildren(TabComponent) tabList: QueryList<TabComponent>;
 
     onDestroy$ = new Subject<void>();
 
@@ -27,18 +30,21 @@ export class TabsComponent implements OnInit, OnDestroy {
     private onClick(event) {
         const clickedTabElement: HTMLElement = event.target.closest('fusion-tab');
         if (clickedTabElement) {
-            this._element.nativeElement.querySelectorAll('fusion-tab[selected]').forEach(el => {
-                this._renderer.removeAttribute(el, 'selected');
-            });
-            this._renderer.setAttribute(clickedTabElement, 'selected', '');
-
-            const selectedTabIndex = this.getTabElementIndex(clickedTabElement);
-
+            const selectedTabIndex = this.setSelectedAndGetIndex(clickedTabElement);
             this.selectedChange.emit({index: selectedTabIndex, tabElement: clickedTabElement});
         }
     }
 
-    private getTabElementIndex(tabElement: HTMLElement): number {
-        return [...this._element.nativeElement.querySelectorAll('fusion-tab')].findIndex(el => el === tabElement);
+    private setSelectedAndGetIndex(tabElementToSelect: HTMLElement): number {
+        let selectedTabIndex;
+        this.tabList.forEach((tab: TabComponent, idx) => {
+            if (tab.selected) {
+                tab.selected = false;
+            } else if (tab.nativeElement === tabElementToSelect) {
+                tab.selected = true;
+                selectedTabIndex = idx;
+            }
+        });
+        return selectedTabIndex;
     }
 }
