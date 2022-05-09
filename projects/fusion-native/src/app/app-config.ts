@@ -79,6 +79,7 @@ import {DaterangePresets} from '@ironsource/fusion-ui/components/date';
 import {MobileOrientation} from '@ironsource/fusion-ui/components/mobile-previewer';
 import {TextareaComponent} from '@ironsource/fusion-ui/components/textarea';
 import {ButtonComponent} from '@ironsource/fusion-ui/components/button';
+import {FileDragAndDropComponent} from '@ironsource/fusion-ui/components/file-drag-and-drop';
 
 const PREFIX = 'native-fusion';
 
@@ -169,5 +170,6 @@ export const components = [
     {name: `${PREFIX}-tabs-v2`, componentInstance: TabsComponentV2},
     {name: `${PREFIX}-dropdown-dual-multi-select`, componentInstance: DropdownDualMultiSelectComponent},
     {name: `${PREFIX}-tabs`, componentInstance: TabsComponent},
-    {name: `${PREFIX}-tab`, componentInstance: TabComponent}
+    {name: `${PREFIX}-tab`, componentInstance: TabComponent},
+    {name: `${PREFIX}-file-drag-and-drop`, componentInstance: FileDragAndDropComponent}
 ];
