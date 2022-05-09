@@ -11,7 +11,7 @@ import {
     Renderer2,
     SimpleChanges
 } from '@angular/core';
-import {IShiftPosition, ITooltipData, TooltipPosition, TooltipType} from '@ironsource/fusion-ui/components/tooltip/common/base';
+import {IShiftPosition, ITooltipData, TooltipPosition, TooltipType} from '@ironsource/fusion-ui/components/tooltip';
 import {WindowService} from '@ironsource/fusion-ui/services/window';
 import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';

@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnInit, Renderer2} from '@angular/core';
-import {TooltipPosition, TooltipType} from '@ironsource/fusion-ui/components/tooltip/common/base';
+import {TooltipPosition, TooltipType} from '@ironsource/fusion-ui/components/tooltip';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
 import {BehaviorSubject} from 'rxjs';
