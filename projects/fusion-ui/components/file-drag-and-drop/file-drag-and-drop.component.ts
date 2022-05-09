@@ -14,9 +14,7 @@ export class FileDragAndDropComponent {
     /**
      * for disabling file selection
      */
-    @Input() set disabled(value: boolean) {
-        this.isDisabled = value;
-    }
+    @Input() disabled: boolean;
     /**
      * input.file accept attribute (file select dialog only, not grad&&drop)
      */
@@ -29,8 +27,6 @@ export class FileDragAndDropComponent {
      * output event emitter (files: FileList)
      */
     @Output() handleFile = new EventEmitter();
-
-    isDisabled = false;
 
     handleSelectedFile(files: FileList) {
         this.handleFile.emit(files);
