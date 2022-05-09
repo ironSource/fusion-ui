@@ -10,6 +10,7 @@ export * from './dropdown';
 export * from './dropdown-dual-multi-select';
 export * from './dynamic-components';
 export * from './error-message';
+export * from './file-drag-and-drop';
 export * from './flag';
 export * from './header';
 export * from './header-overlay';
