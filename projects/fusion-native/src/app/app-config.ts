@@ -54,6 +54,7 @@ import {ToastService} from '@ironsource/fusion-ui/components/toast';
 import {TextareaComponent} from '@ironsource/fusion-ui/components/textarea';
 import {ButtonComponent} from '@ironsource/fusion-ui/components/button';
 import {ChipFilterComponent} from '@ironsource/fusion-ui/components/chip-filter';
+import {FileDragAndDropComponent} from '@ironsource/fusion-ui/components/file-drag-and-drop';
 
 // Services
 import {ApiService} from '@ironsource/fusion-ui/services/api/api.service';
@@ -168,5 +169,6 @@ export const components = [
     {name: `${PREFIX}-textarea`, componentInstance: TextareaComponent, avoidJsonParse: true},
     {name: `${PREFIX}-tabs`, componentInstance: TabsComponent},
     {name: `${PREFIX}-dropdown-dual-multi-select`, componentInstance: DropdownDualMultiSelectComponent},
-    {name: `${PREFIX}-chip-filter`, componentInstance: ChipFilterComponent}
+    {name: `${PREFIX}-chip-filter`, componentInstance: ChipFilterComponent},
+    {name: `${PREFIX}-file-drag-and-drop`, componentInstance: FileDragAndDropComponent}
 ];

@@ -25,7 +25,8 @@
         "./components/button",
         "./components/date",
         "./components/datepicker",
-        "./components/table"
+        "./components/table",
+        "./pipes/string"
     ],
     "exports": {
         "./react/core": {
