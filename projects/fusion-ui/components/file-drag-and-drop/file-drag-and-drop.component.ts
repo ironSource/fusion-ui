@@ -10,37 +10,29 @@ export class FileDragAndDropComponent {
      * element ID for initial file selection dialog by click.
      * if not provided used click on host
      */
-    @Input() elementIdForClick: string;
-    //
+    @Input() buttonId: string;
     /**
      * for disabling file selection
      */
-    @Input() set fileDragAndDropDisabled(value: boolean) {
+    @Input() set disabled(value: boolean) {
         this.isDisabled = value;
-    }
-    /**
-     * CSS class name will set to the host element on drag over state
-     */
-    @Input() set dragOverCSSClass(value: string) {
-        this.dragOverCSS = value;
     }
     /**
      * input.file accept attribute (file select dialog only, not grad&&drop)
      */
-    @Input() acceptFiles: string;
+    @Input() accept: string;
     /**
      * input.file multiple attribute (file select dialog only, not grad&&drop)
      */
-    @Input() multipleFiles = false;
+    @Input() multiple = false;
     /**
      * output event emitter (files: FileList)
      */
-    @Output() onHandleFileDragAndDrop = new EventEmitter();
+    @Output() handleFile = new EventEmitter();
 
     isDisabled = false;
-    dragOverCSS = 'fu-drag-over';
 
     handleSelectedFile(files: FileList) {
-        this.onHandleFileDragAndDrop.emit(files);
+        this.handleFile.emit(files);
     }
 }

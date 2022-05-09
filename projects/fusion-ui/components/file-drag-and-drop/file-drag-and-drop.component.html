@@ -1,10 +1,9 @@
 <div fusionFileDragAndDrop
-     [elementIdForClick]="elementIdForClick"
-     [fileDragAndDropDisabled]="isDisabled"
-     [dragOverCSSClass]="dragOverCSS"
-     [acceptFiles]="acceptFiles"
-     [multipleFiles]="multipleFiles"
-     (onHandleFileDragAndDrop)="handleSelectedFile($event)"
+     [buttonId]="buttonId"
+     [disabled]="isDisabled"
+     [accept]="accept"
+     [multiple]="multiple"
+     (handleFile)="handleSelectedFile($event)"
 >
     <ng-content></ng-content>
 </div>
