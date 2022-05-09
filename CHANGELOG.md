@@ -2,13 +2,103 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0-rc.6](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.5...v3.0.0-rc.6) (2022-05-09)
+
+
+### CI
+
+* **release/3.x.x:** update CHANGELOG.md ([9f3a9ca](https://github.com/ironSource/fusion-ui/commit/9f3a9ca0f1ef12f3a48546a2aa969aac8da59aa5))
+
 ## [3.0.0-rc.5](https://github.com/ironSource/fusion-ui/compare/v2.0.3...v3.0.0-rc.5) (2022-05-09)
 
 
 ### Features
-
+* **fu-390:** add modal style guide v3 and change folder structure sub entries ([08b661b](https://github.com/ironSource/fusion-ui/commit/71b711c676777d68ee559175349fa9178c34ff6e))
+  * Remove ModalService in V3 modal component, example of usage: 
+    ```html
+    <fusion-button (click)="onClickModalOpen()" class="stroke">Open Modal</fusion-button>
+    <fusion-modal (close)="onModalClosed($event)" [isModalOpen]="openModal$ | async" [configuration]="{defaultModalState: 'close',id: 'testModal1',width: '600',headerText: 'Overlay Title'}">
+        <div>
+            <p>Modal content</p>
+        </div>
+    </fusion-modal>
+    ```
+  * Modal configuration object:
+    ```
+        interface ModalConfiguration {
+              id: string;
+              width?: string;
+              height?: string;
+              defaultModalState?: 'open' | 'close';
+              error?: string;
+              hasFooter?: boolean;
+              headerText?: string;
+              isHeaderBorder?: boolean;
+              submitButton?: {
+                  submitButtonClass?: string;
+                  submitButtonText?: string;
+                  submitButtonDisabled?: boolean;
+              };
+              cancelButton?: {
+                  cancelButtonText?: string;
+                  cancelButtonHidden?: boolean;
+                  cancelButtonClass?: string;
+              };
+        }   
+    ```
 * **fu-385:** add chip component with style guide v3 and folder structure sub entries ([08b661b](https://github.com/ironSource/fusion-ui/commit/08b661b7a2d8627bb0b1d9965a7cc25040ba5038))
+* **fu-393:** added new directive `fusionFileDragAndDrop` ([bfecd91](https://github.com/ironSource/fusion-ui/pull/41/commits/bfecd9151817269a2bb6cd593bfde4f8c7692484))
+  * Directive `fusionFileDragAndDrop` usable for file selection by file select dialog
+    or by files drag and drop to the host area.
+    * Inputs:
+      - "buttonId" - element ID for initial file selection dialog by click. If not provided used click on host element.
+      - "disabled" - for disabling file selection. Default false
+      - "accept" - input.file accept attribute (file select dialog only, not grad&&drop). Default not set
+      - "multiple" - input.file multiple attribute (file select dialog only, not grad&&drop). Default false
 
+    * On "onDragEnter" will be added CSS class `fu-file-drag-over` and on "onDragLeave" it will be removed
+    * On "disabled"  will be added CSS class `fu-file-drag-drop-disabled`
+
+    * Outputs:
+      - "handleFile" - output event emitter (files: FileList)
+
+  * Component `fusion-file-drag-and-drop`
+    * Component `fusionFileDragAndDrop` used `fusionFileDragAndDrop` directive usable for native frameworks instead directive
+      * Inputs:
+        - "buttonId" - element ID for initial file selection dialog by click. If not provided used click on host element.
+        - "disabled" - for disabling file selection. Default false
+        - "accept" - `input.file` accept attribute (file select dialog only, not grad&&drop). Default not set
+        - "multiple" - `input.file` multiple attribute (file select dialog only, not grad&&drop). Default false
+
+      * Outputs:
+        - "handleFile" - output event emitter (files: FileList)
+
+  `In Angular projects recommended use directive, in native (React, Vue, VanillaJs) component - "FusionFileDragAndDrop"`
+
+
+* **fu-394:** added V3 tabs ([1ae2444](https://github.com/ironSource/fusion-ui/pull/41/commits/1ae24448510b34d2253d68f0f3973c4c4ab3e2c6))
+  * Example of using:
+    ```html
+    <fusion-tabs (selectedChange)="onTabSelected($event)">
+        <fusion-tab>Offerwall</fusion-tab>
+        <fusion-tab>Reworded Video</fusion-tab>
+        <fusion-tab>Banner</fusion-tab>
+        <fusion-tab disabled>Milwaukee</fusion-tab>
+    </fusion-tabs>
+    ```
+    ```html
+    <fusion-tab disabled="true"> <!--tab disabled-->
+    <fusion-tab selected="true"> <!--tab pre-selected-->
+    ```
+    
+    selectedChange<TabSelectedEventData>
+    
+    ```ts
+    export interface TabSelectedEventData {
+        index: number;
+        tabElement: HTMLElement;
+    }
+    ```
 
 ### Bug Fixes
 
