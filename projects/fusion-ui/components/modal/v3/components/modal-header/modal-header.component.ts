@@ -7,6 +7,6 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 })
 export class ModalHeaderComponent {
     @Input() headerText: string;
-    @Input() noHeaderBorder = false;
+    @Input() isHeaderBorder = true;
     @Output() closed = new EventEmitter();
 }

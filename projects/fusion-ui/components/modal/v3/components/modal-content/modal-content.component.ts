@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
     selector: 'fusion-modal-content',
@@ -6,7 +6,4 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
     styleUrls: ['./modal-content.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ModalContentComponent {
-    @Input() padding: string;
-    @Input() waiting = false;
-}
+export class ModalContentComponent {}

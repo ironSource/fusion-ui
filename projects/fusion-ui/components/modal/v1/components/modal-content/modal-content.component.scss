@@ -6,7 +6,7 @@
     @extend %customScroll;
     display: block;
     overflow-y: auto;
-    &.is-has-height{
+    &.fu-has-height{
         min-height: calc(100% - #{$modalHeaderHeight} - #{$modalFooterHeight});
     }
 

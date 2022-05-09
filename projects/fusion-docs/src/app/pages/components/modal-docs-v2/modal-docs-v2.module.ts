@@ -6,7 +6,7 @@ import {ExampleBlockModule} from '../../../components/example-block/example-bloc
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ButtonModule, LoaderModule, NotificationModule} from '@ironsource/fusion-ui';
-import {ModalModule} from '@ironsource/fusion-ui/components/modal';
+import {ModalModule} from '@ironsource/fusion-ui/components/modal/v2';
 
 const routes: Routes = [{path: '', component: ModalDocsV2Component}];
 

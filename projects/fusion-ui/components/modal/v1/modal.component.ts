@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, forwardRef, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {ModalBaseComponent} from '@ironsource/fusion-ui/components/modal/common/base';
 
@@ -15,4 +15,4 @@ import {ModalBaseComponent} from '@ironsource/fusion-ui/components/modal/common/
         }
     ]
 })
-export class ModalComponent extends ModalBaseComponent implements OnInit, OnDestroy {}
+export class ModalComponent extends ModalBaseComponent {}
