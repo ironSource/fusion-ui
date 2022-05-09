@@ -1,19 +1,6 @@
-import {
-    AfterViewInit,
-    ChangeDetectionStrategy,
-    Component,
-    Directive,
-    ElementRef,
-    HostBinding,
-    Injector,
-    Input,
-    OnChanges,
-    Renderer2,
-    SimpleChanges
-} from '@angular/core';
+import {AfterViewInit, Directive, ElementRef, HostBinding, Injector, Input, OnChanges, Renderer2, SimpleChanges} from '@angular/core';
 import {IShiftPosition, ITooltipData, TooltipPosition, TooltipType} from '@ironsource/fusion-ui/components/tooltip';
 import {WindowService} from '@ironsource/fusion-ui/services/window';
-import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
