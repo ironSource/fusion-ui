@@ -13,7 +13,39 @@ All notable changes to this project will be documented in this file. See [standa
 
 
 ### Features
-
+* **fu-390:** add modal style guide v3 and change folder structure sub entries ([08b661b](https://github.com/ironSource/fusion-ui/commit/71b711c676777d68ee559175349fa9178c34ff6e))
+  * Remove ModalService in V3 modal component, example of usage: 
+    ```html
+    <fusion-button (click)="onClickModalOpen()" class="stroke">Open Modal</fusion-button>
+    <fusion-modal (close)="onModalClosed($event)" [isModalOpen]="openModal$ | async" [configuration]="{defaultModalState: 'close',id: 'testModal1',width: '600',headerText: 'Overlay Title'}">
+        <div>
+            <p>Modal content</p>
+        </div>
+    </fusion-modal>
+    ```
+  * Modal configuration object:
+    ```
+        interface ModalConfiguration {
+              id: string;
+              width?: string;
+              height?: string;
+              defaultModalState?: 'open' | 'close';
+              error?: string;
+              hasFooter?: boolean;
+              headerText?: string;
+              isHeaderBorder?: boolean;
+              submitButton?: {
+                  submitButtonClass?: string;
+                  submitButtonText?: string;
+                  submitButtonDisabled?: boolean;
+              };
+              cancelButton?: {
+                  cancelButtonText?: string;
+                  cancelButtonHidden?: boolean;
+                  cancelButtonClass?: string;
+              };
+        }   
+    ```
 * **fu-385:** add chip component with style guide v3 and folder structure sub entries ([08b661b](https://github.com/ironSource/fusion-ui/commit/08b661b7a2d8627bb0b1d9965a7cc25040ba5038))
 * **fu-393:** added new directive `fusionFileDragAndDrop` ([bfecd91](https://github.com/ironSource/fusion-ui/pull/41/commits/bfecd9151817269a2bb6cd593bfde4f8c7692484))
   * Directive `fusionFileDragAndDrop` usable for file selection by file select dialog
