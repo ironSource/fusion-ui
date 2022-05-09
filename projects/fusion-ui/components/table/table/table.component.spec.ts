@@ -14,7 +14,7 @@ import {TableService} from '../table.service';
 import {TableRowGroupedComponent} from '../table-row-grouped/table-row-grouped.component';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {LogService} from '@ironsource/fusion-ui/services/log';
-import {TooltipService} from '@ironsource/fusion-ui/components/tooltip/common/base';
+import {TooltipService} from '@ironsource/fusion-ui/components/tooltip';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {InputModule} from '@ironsource/fusion-ui/components/input';
 import {LoadMoreModule} from '@ironsource/fusion-ui/directives/load-more';
