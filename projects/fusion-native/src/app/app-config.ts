@@ -30,7 +30,7 @@ import {SvgComponent} from '@ironsource/fusion-ui/components/svg';
 import {TagComponent} from '@ironsource/fusion-ui/components/tag';
 import {TagsInputComponent} from '@ironsource/fusion-ui/components/dropdown';
 import {ToggleComponent} from '@ironsource/fusion-ui/components/toggle';
-import {TooltipComponent} from '@ironsource/fusion-ui/components/tooltip';
+import {TooltipComponent} from '@ironsource/fusion-ui/components/tooltip/v3';
 import {VideoPlayerComponent} from '@ironsource/fusion-ui/components/video-player';
 import {ChartComponent} from '@ironsource/fusion-ui/components/chart';
 import {ChartLabelsComponent} from '@ironsource/fusion-ui/components/chart-labels';
