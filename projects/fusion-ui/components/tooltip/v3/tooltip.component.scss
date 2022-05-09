@@ -34,29 +34,30 @@
     padding: 8px 8px 7px;
     background-color: var(--fu-tooltip-background-color);
     border: none;
-
-    &.fu-tooltip-top::after {
-        top: 100%;
-        left: 50%;
-        @extend %arrowBorderHorizontal;
-        border-color: var(--fu-tooltip-background-color) transparent transparent transparent;
-    }
-    &.fu-tooltip-bottom::after {
-        bottom: 100%;
-        left: 50%;
-        @extend %arrowBorderHorizontal;
-        border-color: transparent transparent var(--fu-tooltip-background-color) transparent;
-    }
-    &.fu-tooltip-left::after {
-        top: 50%;
-        left: 100%;
-        @extend %arrowBorderVertical;
-        border-color: transparent transparent transparent var(--fu-tooltip-background-color);
-    }
-    &.fu-tooltip-right::after {
-        top: 50%;
-        right: 100%;
-        @extend %arrowBorderVertical;
-        border-color: transparent var(--fu-tooltip-background-color) transparent transparent;
+    .fu-tooltip-component {
+        &.fu-tooltip-top::after {
+            top: 100%;
+            left: 50%;
+            @extend %arrowBorderHorizontal;
+            border-color: var(--fu-tooltip-background-color) transparent transparent transparent;
+        }
+        &.fu-tooltip-bottom::after {
+            bottom: 100%;
+            left: 50%;
+            @extend %arrowBorderHorizontal;
+            border-color: transparent transparent var(--fu-tooltip-background-color) transparent;
+        }
+        &.fu-tooltip-left::after {
+            top: 50%;
+            left: 100%;
+            @extend %arrowBorderVertical;
+            border-color: transparent transparent transparent var(--fu-tooltip-background-color);
+        }
+        &.fu-tooltip-right::after {
+            top: 50%;
+            right: 100%;
+            @extend %arrowBorderVertical;
+            border-color: transparent var(--fu-tooltip-background-color) transparent transparent;
+        }
     }
 }

@@ -13,12 +13,11 @@ import {TooltipComponent} from './tooltip.component';
 import {IShiftPosition, TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {fromEvent, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {WindowService} from '@ironsource/fusion-ui/services/window';
 import {TooltipContentDirective} from './tooltip-content.directive';
 
 @Directive({selector: '[fusionTooltip]'})
 export class TooltipDirective implements OnDestroy, AfterViewInit {
-    @ContentChild(TooltipComponent, {read: TooltipComponent, static: false}) tooltipComponent!: TooltipComponent;
+    @ContentChild(TooltipComponent) tooltipComponent!: TooltipComponent;
     @ContentChild(TooltipContentDirective) directiveRef: TooltipContentDirective;
 
     @Input() fusionTooltip = '';
@@ -43,12 +42,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     };
     private tooltipComponentRef: ComponentRef<TooltipComponent>;
 
-    constructor(
-        private renderer: Renderer2,
-        private elementRef: ElementRef,
-        private window: WindowService,
-        private viewContainerRef: ViewContainerRef
-    ) {}
+    constructor(private renderer: Renderer2, private elementRef: ElementRef, private viewContainerRef: ViewContainerRef) {}
 
     ngAfterViewInit() {
         this.initListeners();
@@ -60,13 +54,9 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     }
 
     initListeners() {
-        fromEvent(this.elementRef.nativeElement, 'mouseenter')
-            .pipe(takeUntil(this.onDestroy$))
-            .subscribe(_ => this.showTooltip());
+        fromEvent(this.elementRef.nativeElement, 'mouseenter').pipe(takeUntil(this.onDestroy$)).subscribe(this.showTooltip.bind(this));
 
-        fromEvent(this.elementRef.nativeElement, 'mouseleave')
-            .pipe(takeUntil(this.onDestroy$))
-            .subscribe(_ => this.hideTooltip());
+        fromEvent(this.elementRef.nativeElement, 'mouseleave').pipe(takeUntil(this.onDestroy$)).subscribe(this.hideTooltip.bind(this));
     }
 
     private showTooltip(): void {
@@ -83,6 +73,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     private hideTooltip(): void {
         if (this.directiveRef) {
             this.directiveRef.destroy();
+            this.tooltipComponentRef = null;
         } else {
             this.tooltipComponentRef.destroy();
         }
@@ -95,7 +86,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
             return TooltipPosition.Top;
         }
 
-        if (this.window.nativeWindow.innerWidth - this.width - hostRect.left <= 0) {
+        if (window.innerWidth - this.width - hostRect.left <= 0) {
             position = TooltipPosition.Left;
         } else if (hostRect.left - this.width <= 0) {
             position = TooltipPosition.Right;
@@ -110,38 +101,16 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
         position = this.adjustTooltipPosition(position);
         switch (position) {
             case TooltipPosition.Left:
-                shiftPosition = {
-                    top:
-                        this.elementRef.nativeElement.getBoundingClientRect().top -
-                        this.height / 2 +
-                        this.elementRef.nativeElement.offsetHeight / 2,
-                    left: this.elementRef.nativeElement.getBoundingClientRect().left - this.width - 6
-                };
+                shiftPosition = {...this.setPositionLeftRight('left')};
                 break;
             case TooltipPosition.Right:
-                shiftPosition = {
-                    top:
-                        this.elementRef.nativeElement.getBoundingClientRect().top -
-                        this.height / 2 +
-                        this.elementRef.nativeElement.offsetHeight / 2,
-                    left: this.elementRef.nativeElement.getBoundingClientRect().left + this.elementRef.nativeElement.offsetWidth + 5
-                };
+                shiftPosition = {...this.setPositionLeftRight('right')};
                 break;
             case TooltipPosition.Bottom:
-                shiftPosition = {
-                    top: this.elementRef.nativeElement.getBoundingClientRect().bottom + 6,
-                    left:
-                        this.elementRef.nativeElement.getBoundingClientRect().left +
-                        (this.elementRef.nativeElement.offsetWidth / 2 - this.width / 2)
-                };
+                shiftPosition = {...this.setPositionBottomTop('bottom')};
                 break;
             default:
-                shiftPosition = {
-                    top: this.elementRef.nativeElement.getBoundingClientRect().top - this.height - 6,
-                    left:
-                        this.elementRef.nativeElement.getBoundingClientRect().left +
-                        (this.elementRef.nativeElement.offsetWidth / 2 - this.width / 2)
-                };
+                shiftPosition = {...this.setPositionBottomTop('top')};
                 break;
         }
         this.tooltipPosition = {
@@ -161,5 +130,36 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
             backgroundColor: this.backgroundColor
         };
         this.tooltipComponentRef.instance.tooltipPositionClass = this.tooltipPosition.position;
+    }
+
+    private setPositionLeftRight(pos: 'left' | 'right'): {top: number; left: number} {
+        const position = {
+            top:
+                this.elementRef.nativeElement.getBoundingClientRect().top -
+                this.height / 2 +
+                this.elementRef.nativeElement.offsetHeight / 2,
+            left: 0
+        };
+        if (pos === 'left') {
+            position.left = this.elementRef.nativeElement.getBoundingClientRect().left - this.width - 6;
+        } else {
+            position.left = this.elementRef.nativeElement.getBoundingClientRect().left + this.elementRef.nativeElement.offsetWidth + 6;
+        }
+        return position;
+    }
+
+    private setPositionBottomTop(pos: 'bottom' | 'top'): {top: number; left: number} {
+        const position = {
+            top: 0,
+            left:
+                this.elementRef.nativeElement.getBoundingClientRect().left +
+                (this.elementRef.nativeElement.offsetWidth / 2 - this.width / 2)
+        };
+        if (pos === 'bottom') {
+            position.top = this.elementRef.nativeElement.getBoundingClientRect().bottom + 6;
+        } else {
+            position.top = this.elementRef.nativeElement.getBoundingClientRect().top - this.height - 6;
+        }
+        return position;
     }
 }

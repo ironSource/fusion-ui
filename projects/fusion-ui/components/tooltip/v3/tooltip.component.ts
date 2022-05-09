@@ -3,21 +3,24 @@ import {TooltipComponentStyleConfiguration, TooltipPosition} from '@ironsource/f
 
 @Component({
     selector: 'fusion-tooltip',
-    template: `<ng-container [ngTemplateOutlet]="templateRef"></ng-container>`,
+    template: `<div class="fu-tooltip-component" [ngClass]="'fu-tooltip-' + position">
+        <ng-container *ngIf="!tooltipInnerText" [ngTemplateOutlet]="templateRef"></ng-container>
+        <span *ngIf="tooltipInnerText">{{ tooltipInnerText }}</span>
+    </div>`,
     styleUrls: ['./tooltip.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TooltipComponent {
-    constructor(public elementRef: ElementRef, private renderer: Renderer2) {}
-
+    tooltipInnerText: string;
+    position: string;
     @Input() templateRef: TemplateRef<any>;
 
     @Input() set tooltipTextContent(text: string) {
-        this.setTooltipInnerText(text);
+        this.tooltipInnerText = text;
     }
 
     @Input() set tooltipPositionClass(pos: TooltipPosition) {
-        this.changeHostClass('fu-tooltip-' + TooltipPosition[pos].toLowerCase(), true, this.elementRef);
+        this.position = TooltipPosition[pos].toLowerCase();
     }
 
     @Input() set tooltipStyleConfiguration(config: TooltipComponentStyleConfiguration) {
@@ -25,6 +28,8 @@ export class TooltipComponent {
             this.setTooltipStyle(config);
         }
     }
+
+    constructor(public elementRef: ElementRef, private renderer: Renderer2) {}
 
     private setTooltipStyle(propertyValue: {[key: string]: string}) {
         Object.keys(propertyValue).forEach(val => {
@@ -34,16 +39,5 @@ export class TooltipComponent {
                 this.renderer.setStyle(this.elementRef.nativeElement, val, propertyValue[val]);
             }
         });
-    }
-
-    private setTooltipInnerText(text: string) {
-        if (text) {
-            this.renderer.setProperty(this.elementRef.nativeElement, 'innerHTML', text);
-        }
-    }
-
-    private changeHostClass(className: string, add: boolean, element: ElementRef): void {
-        const classAction = add ? 'addClass' : 'removeClass';
-        this.renderer[classAction](element.nativeElement, className);
     }
 }

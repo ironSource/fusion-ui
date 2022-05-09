@@ -6,7 +6,7 @@ import {FormControl, Validators} from '@angular/forms';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Router} from '@angular/router';
 import {VersionService} from '../../../services/version/version.service';
-import {ModalService} from '@ironsource/fusion-ui/components/modal/common/base';
+import {ModalService} from '@ironsource/fusion-ui/components/modal';
 
 @Component({
     selector: 'fusion-modal-docs',

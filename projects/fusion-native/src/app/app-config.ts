@@ -47,11 +47,13 @@ import {SidebarComponent} from '@ironsource/fusion-ui/components/sidebar';
 import {SidebarMenuComponent} from '@ironsource/fusion-ui/components/sidebar';
 import {ModalService} from '@ironsource/fusion-ui/components/modal';
 import {NotificationService} from '@ironsource/fusion-ui/components/notification';
-import {TooltipService} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {PopupService} from '@ironsource/fusion-ui/components/popup';
 import {CalendarService} from '@ironsource/fusion-ui/components/date';
 import {DaterangeService} from '@ironsource/fusion-ui/components/date';
 import {ToastService} from '@ironsource/fusion-ui/components/toast';
+import {TextareaComponent} from '@ironsource/fusion-ui/components/textarea';
+import {ButtonComponent} from '@ironsource/fusion-ui/components/button';
+import {ChipFilterComponent} from '@ironsource/fusion-ui/components/chip-filter';
 
 // Services
 import {ApiService} from '@ironsource/fusion-ui/services/api/api.service';
@@ -62,6 +64,7 @@ import {PermissionsService} from '@ironsource/fusion-ui/services/permissions/per
 import {ApiResponseType} from '@ironsource/fusion-ui/services/api/api-entities';
 import {CacheType} from '@ironsource/fusion-ui/services/cache/cache-entities';
 import {ColorsService} from '@ironsource/fusion-ui/services/colors/colors.service';
+import {TooltipService} from '@ironsource/fusion-ui/components/tooltip/common/base';
 
 // enums
 import {NotificationType} from '@ironsource/fusion-ui/components/notification';
@@ -76,8 +79,6 @@ import {FormControlStatus} from '@ironsource/fusion-ui/components/error-message'
 import {SwitcherMode} from '@ironsource/fusion-ui/components/switcher';
 import {DaterangePresets} from '@ironsource/fusion-ui/components/date';
 import {MobileOrientation} from '@ironsource/fusion-ui/components/mobile-previewer';
-import {TextareaComponent} from '@ironsource/fusion-ui/components/textarea';
-import {ButtonComponent} from '@ironsource/fusion-ui/components/button';
 
 const PREFIX = 'native-fusion';
 
@@ -166,5 +167,6 @@ export const components = [
     {name: `${PREFIX}-toast`, componentInstance: ToastComponent},
     {name: `${PREFIX}-textarea`, componentInstance: TextareaComponent, avoidJsonParse: true},
     {name: `${PREFIX}-tabs`, componentInstance: TabsComponent},
-    {name: `${PREFIX}-dropdown-dual-multi-select`, componentInstance: DropdownDualMultiSelectComponent}
+    {name: `${PREFIX}-dropdown-dual-multi-select`, componentInstance: DropdownDualMultiSelectComponent},
+    {name: `${PREFIX}-chip-filter`, componentInstance: ChipFilterComponent}
 ];
