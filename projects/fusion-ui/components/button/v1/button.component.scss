@@ -52,24 +52,6 @@ $largeMinWidth: 140px;
             padding: 25px 0;
             border: solid 1px red;
         }
-
-        .loading {
-            vertical-align: middle;
-            margin-right: 5px;
-
-            ::ng-deep svg {
-                @include size(15px);
-
-                * {
-                    fill: none;
-                    stroke: currentColor;
-                }
-            }
-
-            & + span {
-                vertical-align: text-bottom;
-            }
-        }
     }
 
     &.fu-iconed {

@@ -41,7 +41,7 @@
                     class="stroke"
                     (click)="showNotification(`Success`)">Success</button>
 
-            <button fusion-button
+            <button fusion-button[waiting]="(loadModalContent$ | async) === false"
                     class="stroke"
                     (click)="showNotification(`Error`)">Error</button>
 

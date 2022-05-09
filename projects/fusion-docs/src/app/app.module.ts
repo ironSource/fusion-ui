@@ -3,7 +3,9 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app.routing';
 import {environment} from '../environments/environment';
-import {ChipFilterModule, IconModule, SvgModule, TooltipModule} from '@ironsource/fusion-ui';
+import {SvgModule, TooltipModule} from '@ironsource/fusion-ui';
+import {ModalModule} from '@ironsource/fusion-ui/components/modal';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button';
 
 @NgModule({
     declarations: [AppComponent],
@@ -12,8 +14,8 @@ import {ChipFilterModule, IconModule, SvgModule, TooltipModule} from '@ironsourc
         AppRoutingModule,
         SvgModule.forRoot({assetsPath: environment.assetsPath}),
         TooltipModule,
-        ChipFilterModule,
-        IconModule
+        ModalModule,
+        ButtonModule
     ],
     bootstrap: [AppComponent]
 })

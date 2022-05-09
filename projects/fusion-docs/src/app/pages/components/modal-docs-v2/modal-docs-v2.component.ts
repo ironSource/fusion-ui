@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
-import {merge, Observable, Subject, timer} from 'rxjs';
+import {BehaviorSubject, merge, Observable, Subject, timer} from 'rxjs';
 import {NotificationService, NotificationType, StyleVersion} from '@ironsource/fusion-ui';
 import {mapTo, switchMap, takeUntil} from 'rxjs/operators';
 import {Router} from '@angular/router';
@@ -71,7 +71,8 @@ export class ModalDocsV2Component implements OnInit, OnDestroy {
     modalClosed$ = new Subject();
     modalButtonClick$ = new Subject();
     loadModalContent$: Observable<boolean>;
-
+    openModalById$ = new BehaviorSubject<string>(null);
+    openModalById2$ = new BehaviorSubject<string>(null);
     constructor(
         public notificationService: NotificationService,
         public modalService: ModalService,
@@ -99,6 +100,19 @@ export class ModalDocsV2Component implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.onDestroy$.next();
         this.onDestroy$.complete();
+    }
+
+    onClickModalOpen(id: string) {
+        this.openModalById$.next(id);
+    }
+
+    onClickModalOpenLoading(id: string) {
+        this.openModalById2$.next(id);
+    }
+
+    onModalClosed() {
+        this.openModalById$.next(null);
+        this.openModalById2$.next(null);
     }
 
     showNotification(type: string): void {

@@ -6,7 +6,7 @@ import {isFunction} from '@ironsource/fusion-ui/utils';
     providedIn: 'root'
 })
 export class ModalService {
-    private modals: {[id: string]: ModalBaseComponent} = {};
+    modals: {[id: string]: ModalBaseComponent} = {};
 
     add(modal: ModalBaseComponent) {
         // add modal to array of active modals
