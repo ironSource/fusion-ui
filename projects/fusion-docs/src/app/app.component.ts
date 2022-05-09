@@ -1,5 +1,5 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
-import {ITooltipData, TooltipService} from '@ironsource/fusion-ui/components/tooltip/common/base';
+import {ITooltipData, TooltipService} from '@ironsource/fusion-ui/components/tooltip';
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 

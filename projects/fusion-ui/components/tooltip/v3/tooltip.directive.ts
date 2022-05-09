@@ -9,7 +9,7 @@ import {
     ComponentRef,
     ViewContainerRef
 } from '@angular/core';
-import {TooltipComponent} from './tooltip.component';
+import {TooltipContentComponent} from './tooltip.content.component';
 import {IShiftPosition, TooltipPosition} from '@ironsource/fusion-ui/components/tooltip';
 import {fromEvent, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -17,7 +17,7 @@ import {TooltipContentDirective} from './tooltip-content.directive';
 
 @Directive({selector: '[fusionTooltip]'})
 export class TooltipDirective implements OnDestroy, AfterViewInit {
-    @ContentChild(TooltipComponent) tooltipComponent!: TooltipComponent;
+    @ContentChild(TooltipContentComponent) tooltipComponent!: TooltipContentComponent;
     @ContentChild(TooltipContentDirective) directiveRef: TooltipContentDirective;
 
     @Input() fusionTooltip = '';
@@ -40,7 +40,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
         left: number;
         top: number;
     };
-    private tooltipComponentRef: ComponentRef<TooltipComponent>;
+    private tooltipComponentRef: ComponentRef<TooltipContentComponent>;
 
     constructor(private renderer: Renderer2, private elementRef: ElementRef, private viewContainerRef: ViewContainerRef) {}
 
@@ -60,14 +60,15 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     }
 
     private showTooltip(): void {
+        this.setTooltipPosition(this.position);
         if (this.directiveRef) {
             this.directiveRef.create();
             this.tooltipComponentRef = this.directiveRef.tooltipComponentRef;
         } else {
-            this.tooltipComponentRef = this.viewContainerRef.createComponent(TooltipComponent);
+            this.tooltipComponentRef = this.viewContainerRef.createComponent(TooltipContentComponent);
             this.tooltipComponentRef.instance.tooltipTextContent = this.fusionTooltip;
         }
-        this.setTooltipPosition(this.position);
+        this.setTooltipConfiguration();
     }
 
     private hideTooltip(): void {
@@ -118,7 +119,6 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
             left: shiftPosition.left,
             top: shiftPosition.top
         };
-        this.setTooltipConfiguration();
     }
 
     private setTooltipConfiguration(): void {

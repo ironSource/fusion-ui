@@ -1,11 +1,22 @@
-<router-outlet></router-outlet>
-<fusion-tooltip *ngIf="tooltipData.content"
-            [tooltipData]="tooltipData"></fusion-tooltip>
-<!--<div style="display: flex; justify-content: center;">-->
-<!--    <div fusionTooltip="Hello Text" style="border: 1px solid black;">-->
-<!--        Tooltip Component-->
-<!--        <fusion-tooltip>-->
-<!--            <div>Component Tooltip</div>-->
-<!--        </fusion-tooltip>-->
-<!--    </div>-->
-<!--</div>-->
+<!--<router-outlet></router-outlet>-->
+<!--<fusion-tooltip *ngIf="tooltipData.content"-->
+<!--            [tooltipData]="tooltipData"></fusion-tooltip>-->
+
+<div style="display: flex; justify-content: center;">
+    <fusion-tooltip>
+        <fusion-button class="third">
+            Trigger Tooltip
+        </fusion-button>
+        <div class="tooltipWithContent">Component Tooltip</div>
+    </fusion-tooltip>
+</div>
+
+<br>
+<br>
+<div style="display: flex; justify-content: center;">
+    <fusion-button class="delete" fusionTooltip="Hello Text">
+        Trigger Tooltip
+            <div *fusionTooltipContent>Component Tooltip</div>
+    </fusion-button>
+</div>
+

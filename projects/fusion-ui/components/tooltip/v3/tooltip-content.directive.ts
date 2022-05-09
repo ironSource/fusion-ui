@@ -1,11 +1,11 @@
 import {ComponentRef, Directive, TemplateRef, ViewContainerRef} from '@angular/core';
-import {TooltipComponent} from './tooltip.component';
+import {TooltipContentComponent} from './tooltip.content.component';
 
 @Directive({
     selector: `[fusionTooltipContent]`
 })
 export class TooltipContentDirective {
-    private componentRef: ComponentRef<TooltipComponent>;
+    private componentRef: ComponentRef<TooltipContentComponent>;
 
     constructor(private templateRef: TemplateRef<any>, private viewContainerRef: ViewContainerRef) {}
 
@@ -15,7 +15,7 @@ export class TooltipContentDirective {
 
     create() {
         if (!this.componentRef) {
-            this.componentRef = this.viewContainerRef.createComponent(TooltipComponent);
+            this.componentRef = this.viewContainerRef.createComponent(TooltipContentComponent);
             this.componentRef.instance.templateRef = this.templateRef;
         }
     }
