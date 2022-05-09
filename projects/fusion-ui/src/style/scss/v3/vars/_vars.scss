@@ -1,6 +1,15 @@
 @import 'fonts';
 @import 'colors';
 
+
+%no-pointer-events{
+    pointer-events: none;
+    cursor: default;
+    touch-callout: none;
+    user-select: none;
+}
+
+
 // scroll
 $scrollWidth: 12px;
 $scrollRadius: 2px;

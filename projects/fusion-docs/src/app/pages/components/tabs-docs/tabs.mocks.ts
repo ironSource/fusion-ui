@@ -2,7 +2,7 @@
  * Created on 2020.12.2 By Andy Kononenko (andyk@ironsrc.com)
  */
 
-import {TabsConfiguration} from '@ironsource/fusion-ui';
+import {TabsConfiguration} from '@ironsource/fusion-ui/components/tabs/v2';
 import {PopupContentExampleComponent} from '../../../components/popup-content-example/popup-content-example.component';
 import {Component, Type} from '@angular/core';
 

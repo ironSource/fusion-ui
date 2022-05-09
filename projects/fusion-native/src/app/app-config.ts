@@ -42,7 +42,7 @@ import {DaterangeComponent} from '@ironsource/fusion-ui/components/date';
 import {MobilePreviewerComponent} from '@ironsource/fusion-ui/components/mobile-previewer';
 import {StatusLabelComponent} from '@ironsource/fusion-ui/components/status-label';
 import {ToastComponent} from '@ironsource/fusion-ui/components/toast';
-import {TabsComponent} from '@ironsource/fusion-ui/components/tabs';
+import {TabsComponent as TabsComponentV2} from '@ironsource/fusion-ui/components/tabs/v2';
 import {SidebarComponent} from '@ironsource/fusion-ui/components/sidebar';
 import {SidebarMenuComponent} from '@ironsource/fusion-ui/components/sidebar';
 import {ModalService} from '@ironsource/fusion-ui/components/modal';
@@ -51,6 +51,7 @@ import {PopupService} from '@ironsource/fusion-ui/components/popup';
 import {CalendarService} from '@ironsource/fusion-ui/components/date';
 import {DaterangeService} from '@ironsource/fusion-ui/components/date';
 import {ToastService} from '@ironsource/fusion-ui/components/toast';
+import {TabsComponent, TabComponent} from '@ironsource/fusion-ui/components/tabs';
 import {TextareaComponent} from '@ironsource/fusion-ui/components/textarea';
 import {ButtonComponent} from '@ironsource/fusion-ui/components/button';
 import {ChipFilterComponent} from '@ironsource/fusion-ui/components/chip-filter';
@@ -167,8 +168,10 @@ export const components = [
     {name: `${PREFIX}-status-label`, componentInstance: StatusLabelComponent},
     {name: `${PREFIX}-toast`, componentInstance: ToastComponent},
     {name: `${PREFIX}-textarea`, componentInstance: TextareaComponent, avoidJsonParse: true},
-    {name: `${PREFIX}-tabs`, componentInstance: TabsComponent},
+    {name: `${PREFIX}-tabs-v2`, componentInstance: TabsComponentV2},
     {name: `${PREFIX}-dropdown-dual-multi-select`, componentInstance: DropdownDualMultiSelectComponent},
+    {name: `${PREFIX}-tabs`, componentInstance: TabsComponent},
+    {name: `${PREFIX}-tab`, componentInstance: TabComponent},
     {name: `${PREFIX}-chip-filter`, componentInstance: ChipFilterComponent},
     {name: `${PREFIX}-file-drag-and-drop`, componentInstance: FileDragAndDropComponent}
 ];
