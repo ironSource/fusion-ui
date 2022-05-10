@@ -69,6 +69,8 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
             this.tooltipComponentRef.instance.tooltipTextContent = this.fusionTooltip;
         }
         this.setTooltipConfiguration();
+        console.log('tooltipContentComponent: ', this.tooltipComponentRef);
+        console.log('fusionTooltip: ', this.fusionTooltip);
     }
 
     private hideTooltip(): void {

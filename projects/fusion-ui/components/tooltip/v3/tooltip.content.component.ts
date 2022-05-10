@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2, TemplateRef} from '@angular/core';
+import {AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2, TemplateRef} from '@angular/core';
 import {TooltipComponentStyleConfiguration, TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
 
 @Component({
@@ -10,17 +10,20 @@ import {TooltipComponentStyleConfiguration, TooltipPosition} from '@ironsource/f
     styleUrls: ['./tooltip.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TooltipContentComponent {
+export class TooltipContentComponent implements AfterViewInit {
     tooltipInnerText: string;
     position: string;
+
     @Input() templateRef: TemplateRef<any>;
 
     @Input() set tooltipTextContent(text: string) {
         this.tooltipInnerText = text;
+        console.log('text tooltip content: ', this.tooltipInnerText);
     }
 
     @Input() set tooltipPositionClass(pos: TooltipPosition) {
         this.position = TooltipPosition[pos].toLowerCase();
+        console.log('position tooltip content: ', this.position);
     }
 
     @Input() set tooltipStyleConfiguration(config: TooltipComponentStyleConfiguration) {
@@ -29,7 +32,23 @@ export class TooltipContentComponent {
         }
     }
 
+    // @ViewChild('tooltipContent') contentHolder: ElementRef;
+
     constructor(public elementRef: ElementRef, private renderer: Renderer2) {}
+
+    ngAfterViewInit() {
+        this.setTooltipContent();
+    }
+
+    private setTooltipContent() {
+        // if (this.tooltipInnerText) {
+        //     this.renderer.setProperty(this.contentHolder.nativeElement, 'innerText', this.tooltipInnerText);
+        // }
+        // else {
+        //     console.log(this.templateRef);
+        //     this.renderer.appendChild(this.contentHolder.nativeElement, this.templateRef.elementRef.nativeElement);
+        // }
+    }
 
     private setTooltipStyle(propertyValue: {[key: string]: string}) {
         Object.keys(propertyValue).forEach(val => {

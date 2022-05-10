@@ -35,3 +35,9 @@ export type TooltipComponentStyleConfiguration = {
     height?: string;
     backgroundColor?: string;
 };
+
+export type tooltipConfiguration = {
+    width?: string;
+    height?: string;
+    backgroundColor?: string;
+};
