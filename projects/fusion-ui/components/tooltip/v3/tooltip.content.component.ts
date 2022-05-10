@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2, TemplateRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2, TemplateRef} from '@angular/core';
 import {TooltipComponentStyleConfiguration, TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
 
 @Component({
@@ -10,7 +10,7 @@ import {TooltipComponentStyleConfiguration, TooltipPosition} from '@ironsource/f
     styleUrls: ['./tooltip.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TooltipContentComponent implements AfterViewInit {
+export class TooltipContentComponent {
     tooltipInnerText: string;
     position: string;
 
@@ -32,23 +32,7 @@ export class TooltipContentComponent implements AfterViewInit {
         }
     }
 
-    // @ViewChild('tooltipContent') contentHolder: ElementRef;
-
     constructor(public elementRef: ElementRef, private renderer: Renderer2) {}
-
-    ngAfterViewInit() {
-        this.setTooltipContent();
-    }
-
-    private setTooltipContent() {
-        // if (this.tooltipInnerText) {
-        //     this.renderer.setProperty(this.contentHolder.nativeElement, 'innerText', this.tooltipInnerText);
-        // }
-        // else {
-        //     console.log(this.templateRef);
-        //     this.renderer.appendChild(this.contentHolder.nativeElement, this.templateRef.elementRef.nativeElement);
-        // }
-    }
 
     private setTooltipStyle(propertyValue: {[key: string]: string}) {
         Object.keys(propertyValue).forEach(val => {
