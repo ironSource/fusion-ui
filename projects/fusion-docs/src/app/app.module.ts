@@ -4,12 +4,11 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app.routing';
 import {environment} from '../environments/environment';
 import {SvgModule} from '@ironsource/fusion-ui';
-import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v3';
-import {ButtonModule} from '@ironsource/fusion-ui/components/button';
+import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 
 @NgModule({
     declarations: [AppComponent],
-    imports: [BrowserModule, AppRoutingModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), TooltipModule, ButtonModule],
+    imports: [BrowserModule, AppRoutingModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), TooltipModule],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

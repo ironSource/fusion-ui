@@ -1,7 +1,7 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {ITooltipData, TooltipService} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {takeUntil} from 'rxjs/operators';
-import {BehaviorSubject, Subject} from 'rxjs';
+import {Subject} from 'rxjs';
 
 @Component({
     selector: 'fusion-docs',
@@ -21,21 +21,5 @@ export class AppComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.onDestroy$.next();
         this.onDestroy$.complete();
-    }
-
-    openModal$ = new BehaviorSubject<boolean>(false);
-    closeModal$ = new BehaviorSubject<boolean>(null);
-    onClickModalOpen() {
-        this.openModal$.next(true);
-    }
-
-    onModalClosed($event) {
-        console.log($event);
-        this.openModal$.next(false);
-    }
-
-    saveClicked($event: any): void {
-        console.log($event);
-        console.log('modal save button clicked!');
     }
 }
