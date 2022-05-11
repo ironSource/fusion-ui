@@ -3,8 +3,8 @@ import {TooltipComponentStyleConfiguration, TooltipPosition} from '@ironsource/f
 
 @Component({
     selector: 'fusion-tooltip-content',
-    template: `<div class="fu-tooltip-component" [ngClass]="'fu-tooltip-' + position">
-        <ng-container *ngIf="!tooltipInnerText" [ngTemplateOutlet]="templateRef"></ng-container>
+    template: ` <div class="fu-tooltip-component" [ngClass]="'fu-tooltip-' + position">
+        <ng-container *ngIf="!tooltipInnerText" [ngTemplateOutlet]="temp"></ng-container>
         <span *ngIf="tooltipInnerText">{{ tooltipInnerText }}</span>
     </div>`,
     styleUrls: ['./tooltip.component.scss'],
@@ -13,17 +13,18 @@ import {TooltipComponentStyleConfiguration, TooltipPosition} from '@ironsource/f
 export class TooltipContentComponent {
     tooltipInnerText: string;
     position: string;
+    temp: TemplateRef<any>;
 
-    @Input() templateRef: TemplateRef<any>;
+    @Input() set templateRef(template: TemplateRef<any>) {
+        this.temp = template;
+    }
 
     @Input() set tooltipTextContent(text: string) {
         this.tooltipInnerText = text;
-        console.log('text tooltip content: ', this.tooltipInnerText);
     }
 
     @Input() set tooltipPositionClass(pos: TooltipPosition) {
         this.position = TooltipPosition[pos].toLowerCase();
-        console.log('position tooltip content: ', this.position);
     }
 
     @Input() set tooltipStyleConfiguration(config: TooltipComponentStyleConfiguration) {

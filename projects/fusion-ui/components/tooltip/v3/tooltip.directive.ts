@@ -7,7 +7,8 @@ import {
     OnDestroy,
     AfterViewInit,
     ComponentRef,
-    ViewContainerRef
+    ViewContainerRef,
+    OnInit
 } from '@angular/core';
 import {TooltipContentComponent} from './tooltip.content.component';
 import {IShiftPosition, TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
@@ -18,7 +19,7 @@ import {TooltipContentDirective} from './tooltip-content.directive';
 @Directive({selector: '[fusionTooltip]'})
 export class TooltipDirective implements OnDestroy, AfterViewInit {
     @ContentChild(TooltipContentComponent) tooltipComponent!: TooltipContentComponent;
-    @ContentChild(TooltipContentDirective) directiveRef: TooltipContentDirective;
+    @ContentChild(TooltipContentDirective) directiveRef!: TooltipContentDirective;
 
     @Input() fusionTooltip = '';
     @Input() set configuration(config: any) {
@@ -43,7 +44,6 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     private tooltipComponentRef: ComponentRef<TooltipContentComponent>;
 
     constructor(private renderer: Renderer2, private elementRef: ElementRef, private viewContainerRef: ViewContainerRef) {}
-
     ngAfterViewInit() {
         this.initListeners();
     }
@@ -68,9 +68,8 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
             this.tooltipComponentRef = this.viewContainerRef.createComponent(TooltipContentComponent);
             this.tooltipComponentRef.instance.tooltipTextContent = this.fusionTooltip;
         }
+        this.tooltipComponentRef.changeDetectorRef.markForCheck();
         this.setTooltipConfiguration();
-        console.log('tooltipContentComponent: ', this.tooltipComponentRef);
-        console.log('fusionTooltip: ', this.fusionTooltip);
     }
 
     private hideTooltip(): void {

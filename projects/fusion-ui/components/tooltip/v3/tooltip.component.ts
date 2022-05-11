@@ -1,14 +1,14 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {TooltipComponentStyleConfiguration, tooltipConfiguration} from '@ironsource/fusion-ui/components/tooltip/common/base';
+import {tooltipConfiguration} from '@ironsource/fusion-ui/components/tooltip/common/base';
 
 @Component({
     selector: 'fusion-tooltip',
     template: `
         <div class="tooltip-container" [fusionTooltip]="tooltipText" [configuration]="tooltipConfig">
-            <div><ng-content></ng-content></div>
+            <ng-content></ng-content>
             <ng-container *ngIf="!tooltipText">
                 <div *fusionTooltipContent>
-                    <ng-content select=".tooltipContent"></ng-content>
+                    <ng-content select=".fusionTooltipContent"></ng-content>
                 </div>
             </ng-container>
         </div>
@@ -23,12 +23,12 @@ import {TooltipComponentStyleConfiguration, tooltipConfiguration} from '@ironsou
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TooltipComponent {
-    @Input() set fusionTooltip(value: string) {
+    @Input() set fusionTooltipText(value: string) {
         this.tooltipText = value;
     }
     @Input() set tooltipConfiguration(value: tooltipConfiguration) {
         this.tooltipConfig = value;
     }
     tooltipConfig: tooltipConfiguration;
-    tooltipText: string;
+    tooltipText: string = '';
 }
