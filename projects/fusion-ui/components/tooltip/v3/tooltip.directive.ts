@@ -7,8 +7,7 @@ import {
     OnDestroy,
     AfterViewInit,
     ComponentRef,
-    ViewContainerRef,
-    OnInit
+    ViewContainerRef
 } from '@angular/core';
 import {TooltipContentComponent} from './tooltip.content.component';
 import {IShiftPosition, TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
