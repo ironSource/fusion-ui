@@ -86,11 +86,11 @@ export class DaterangeDocsComponent implements OnInit, OnDestroy {
     });
 
     optionNoPresets: DaterangeOptions = {
-        presets: false
+        presets: []
     };
     optionOnlyDatePicker$ = new BehaviorSubject<DaterangeOptions>({
         calendarAmount: 1,
-        presets: false,
+        presets: [],
         format: 'd MMM y'
     });
 
@@ -135,7 +135,7 @@ export class DaterangeDocsComponent implements OnInit, OnDestroy {
                 const dateFormat = styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3 ? 'd MMM, y' : 'd MMM y';
                 this.optionOnlyDatePicker$.next({
                     calendarAmount: 1,
-                    presets: false,
+                    presets: [],
                     format: dateFormat
                 });
                 this.options$.next({

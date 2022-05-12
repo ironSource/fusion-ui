@@ -53,6 +53,7 @@ export class DaterangeComponent extends FusionBase implements OnInit {
 
     @Input()
     set options(value: DaterangeOptions) {
+        console.log('..', value);
         this.daterangeOptions = {...value};
         this.onOptionsChanges();
     }
@@ -100,7 +101,7 @@ export class DaterangeComponent extends FusionBase implements OnInit {
     }
 
     public get isPresetsShown(): boolean {
-        return !!this.presetsHeaderTemplate || this.daterangeOptions.presets !== false;
+        return !!this.presetsHeaderTemplate || (Array.isArray(this.daterangeOptions.presets) && !!this.daterangeOptions.presets.length);
     }
 
     public get isSingleDatePicker(): boolean {
