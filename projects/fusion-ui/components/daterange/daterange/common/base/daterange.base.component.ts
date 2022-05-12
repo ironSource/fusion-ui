@@ -122,7 +122,7 @@ export abstract class DaterangeBaseComponent implements OnInit {
     }
 
     onOutsideClick() {
-        // this.close();
+        this.close();
     }
 
     apply() {
