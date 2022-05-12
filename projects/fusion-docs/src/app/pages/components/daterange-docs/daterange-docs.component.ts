@@ -37,9 +37,10 @@ const rightMenuItems = [
     styleUrls: ['./daterange-docs.component.scss']
 })
 export class DaterangeDocsComponent implements OnInit, OnDestroy {
-    date = new Date('2020-04-15 10:00:00');
-    startDate = new Date('2020-04-01 10:00:00');
-    endDate = new Date('2020-04-27 10:00:00');
+    date = new Date('2022-04-15 10:00:00');
+    startDate = new Date('2022-04-01 10:00:00');
+    endDate = new Date('2022-04-27 10:00:00');
+
     rightMenu: DocsMenuItem[] = [
         {
             title: 'Daterange',
@@ -61,6 +62,7 @@ export class DaterangeDocsComponent implements OnInit, OnDestroy {
             ]
         }
     ];
+
     onDestroy$ = new Subject();
     styleUpdatingDelay = 0;
     styleUpdating$ = new BehaviorSubject(false);

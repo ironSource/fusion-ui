@@ -29,13 +29,15 @@ $selectHolderHeight: 39px;
 
         &.singleDatePicker {
             min-width: 240px;
+            padding: 0;
 
             .rightSide, .rightSide .calendarsWrap {
                 width: 100%;
             }
 
             .rightSide .calendarsWrap {
-                padding-bottom: 0;
+                padding-bottom: 8px;
+                min-height: initial;
             }
         }
 
@@ -123,6 +125,13 @@ $selectHolderHeight: 39px;
                     }
 
                 }
+            }
+        }
+
+        &:not(.singleDatePicker).fu-no-presets{
+            padding-left: 4px;
+            .calendarsFooter{
+                margin-left: -4px;
             }
         }
 
