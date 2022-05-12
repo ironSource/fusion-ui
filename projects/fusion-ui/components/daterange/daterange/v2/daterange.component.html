@@ -1,0 +1,47 @@
+<div [id]="id" (fusionClickOutside)="onOutsideClick()">
+    <fusion-dropdown-select
+        (click)="toggle()"
+        [configurations]="dropdownSelectConfigurations$ | async"
+    >
+    </fusion-dropdown-select>
+
+    <div class="overlay" #overlay *ngIf="isOpen" [class]="overlayAlign$ | async" [ngClass]="{visible: (overlayAlign$ | async), isOpen: isOpen, singleDatePicker: isSingleDatePicker}">
+        <div class="presetsWrap" *ngIf="isPresetsShown">
+            <ng-container [ngTemplateOutlet]="presetsHeaderTemplate || defaultPreset"></ng-container>
+            <ng-template #defaultPreset>
+                <ul>
+                    <li
+                        *ngFor="let preset of options.presets"
+                        (click)="selectPreset(preset)"
+                        [ngClass]="{selected: currentPreset === preset}"
+                    >
+                        {{ daterangeService.getPresetName(preset) }}
+                    </li>
+                </ul>
+            </ng-template>
+        </div>
+        <div class="rightSide">
+            <div class="calendarsWrap" [ngClass]="{large: options.size === 'large'}">
+                <div class="prev" (click)="onMonthChange('previous')">
+                    <fusion-icon class="icon-prev" [name]="pevIconName"></fusion-icon>
+                </div>
+
+                <fusion-calendar
+                    *ngFor="let month of currentMonths"
+                    (daySelected)="onSelectDay($event)"
+                    [configuration]="getCalendarConfigurations(month)"
+                >
+                </fusion-calendar>
+
+                <div class="next" (click)="onMonthChange('next')">
+                    <fusion-icon class="icon-next" [name]="nextIconName"></fusion-icon>
+                </div>
+            </div>
+            <div *ngIf="!isSingleDatePicker" class="calendarsFooter">
+                <span>All reports and dates are in UTC</span>
+                <button fusion-button class="primary transparent" (click)="apply()">Apply</button>
+                <button fusion-button class="secondary transparent" (click)="close()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

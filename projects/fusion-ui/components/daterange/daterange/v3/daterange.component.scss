@@ -1,0 +1,141 @@
+@import '../../../../src/style/scss/v3/vars/vars';
+@import '../../../../src/style/scss/v3/mixins/mixins';
+@import '../../../../src/style/scss/v3/vars/border';
+
+$selectHolderHeight: 39px;
+
+:host {
+    @extend %reset;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    line-height: 20px;
+
+    &.open-to-right .overlay {
+        left: 0;
+    }
+
+    .overlay {
+        @extend %notificationLayer;
+        position: absolute;
+        right: 0;
+        display: none;
+        padding: 8px;
+        min-width: 480px;
+        border-radius: 4px;
+        background-color: $White;
+        box-shadow: $v2-box-shadow;
+        visibility: hidden;
+
+        &.singleDatePicker {
+            min-width: 240px;
+
+            .rightSide, .rightSide .calendarsWrap {
+                width: 100%;
+            }
+
+            .rightSide .calendarsWrap {
+                padding-bottom: 0;
+            }
+        }
+
+        .rightSide {
+            width: 488px;
+            position: relative;
+            .calendarsWrap {
+                padding: 8px 8px 18px;
+                display: flex;
+                gap: 28px;
+                min-height: 282px;
+            }
+
+            .calendarsFooter {
+                border-top: 1px solid $fu-light-300;
+                margin-right: -9px;
+                height: 40px;
+                padding: 12px 17px 2px 0;
+                display: flex;
+                gap: 4px;
+                justify-content: end;
+            }
+
+            .prev, .next {
+                position: absolute;
+                top: 15px;
+                width: 24px;
+                height: 24px;
+                cursor: pointer;
+                border-radius: 100px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                @include icon-style('icon-prev',  $fu-black-500, 16px, true, true);
+                @include icon-style('icon-next',  $fu-black-500, 16px, true, true);
+
+                .icon-prev,
+                .icon-next{
+                    @include size(16px);
+                }
+
+                &:hover {
+                    background-color: $fu-light-200;
+                }
+            }
+
+            .prev {
+                left: 13px;
+            }
+
+            .next {
+                right: 10px;
+            }
+        }
+
+        .presetsWrap {
+            width: 181px;
+            @extend %font-bodySmall;
+            ul{
+                padding: 0;
+                margin: 0;
+                li {
+                    color: $fu-black-500;
+                    height: 32px;
+                    padding: 8px;
+                    display: flex;
+                    align-items: center;
+                    border-radius: 8px;
+
+                    &:not(.selected):not(.disabled):hover {
+                        cursor: pointer;
+                        border-radius: 4px;
+                        background-color: $fu-light-50;
+                    }
+
+                    &.selected {
+                        color: $fu-primary-500;
+                        background-color: $fu-primary-100;
+                    }
+
+                    &.disabled {
+                        color: $fu-light-800;
+                        pointer-events: none;
+                    }
+
+                }
+            }
+        }
+
+        &.isOpen {
+            display: flex;
+        }
+
+        &.left {
+            left: 0;
+            right: initial;
+        }
+        &.visible{
+            visibility: initial;
+        }
+    }
+}

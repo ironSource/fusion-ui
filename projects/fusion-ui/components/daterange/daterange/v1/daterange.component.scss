@@ -1,0 +1,144 @@
+@import '../../../../src/style/scss/v1/vars/vars';
+@import '../../../../src/style/scss/v1/mixins/mixins';
+@import '../../../../src/style/scss/v1/vars/border';
+
+$selectHolderHeight: 39px;
+$topBorderWidth: 2px;
+
+:host {
+    @extend %reset;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    .selection {
+        height: $selectHolderHeight;
+        line-height: calc(#{$selectHolderHeight} + 1px);
+        color: $dark-300;
+        padding-left: 15px;
+        cursor: pointer;
+        min-width: 230px;
+        @extend %font14;
+        box-sizing: border-box;
+        @include icon-style('calendar-2', $light-800, 14px, false, true){
+            margin-right: 5px;
+            vertical-align: sub;
+            display: inline-block;
+        }
+        @include icon-style('arrow-right', $dark-300, (height: 8px, width: 5px), false, true, 90){
+            position: absolute;
+            right: 10px;
+            top: 15px;
+            height: 8px;
+            line-height: 8px;
+        }
+
+        &.isOpen{
+            border-top: $topBorderWidth solid $primary-500;
+            line-height: calc(#{$selectHolderHeight} - #{$topBorderWidth} - 1px);
+            @include icon-style('arrow-right', $dark-300, (height: 8px, width: 5px), false, true, 270);
+        }
+        &:hover {
+            background-color: $light-100;
+        }
+    }
+
+    .calendarsWrap {
+        padding: 20px 0 15px 20px;
+        &.large{
+            height: 297px;
+        }
+
+        fusion-calendar{
+            padding-right: 20px;
+            display: inline-grid;
+        }
+    }
+
+    .rightSide{
+        display: inline-block;
+        vertical-align: top;
+        @extend %borderLeft;
+        position: relative;
+        .modal-footer{
+            height: inherit;
+        }
+    }
+
+    .presetsWrap{
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 170px;
+
+        user-select: none;
+        -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+        -moz-user-select: none; /* mozilla browsers */
+        -ms-user-select: none; /* IE10+ */
+
+        ul, ol {
+            padding: 0;
+            margin: 0;
+            li {
+                list-style: none outside none;
+                height: 40px;
+                line-height: 40px;
+                padding-left: 20px;
+                @extend %font12;
+                counter-reset: $dark-300;
+                @extend %borderTop;
+                cursor: pointer;
+
+                &:first-child{
+                    border-top: none;
+                }
+                &:hover{
+                    background: $light-100;
+                }
+                &.selected{
+                    background: $light-100;
+                    border-left: 3px solid $primary-500;
+                    padding-left: 17px;
+                }
+            }
+        }
+    }
+
+    .overlay{
+        @include icon-style('icon-prev', $dark-300, (height: 10px, width: 6px), true, true, 180);
+        @include icon-style('icon-next', $dark-300, (height: 10px, width: 6px), true, true);
+        @extend %notificationLayer;
+        position: absolute;
+        display: none;
+        min-width: 623px;
+        right: 0;
+        top: calc(#{$selectHolderHeight} + 1px);
+        border-radius: $borderRadius;
+        background-color: $White;
+        box-shadow: $box-shadow;
+        color: $dark-300;
+        visibility: hidden;
+
+        &.isOpen{
+            display: flex;
+        }
+        &.left {
+            left: 0;
+            right: initial;
+        }
+        &.visible{
+            visibility: initial;
+        }
+        .prev, .next{
+            position: absolute;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .prev{
+            left: 20px;
+        }
+        .next{
+            right: 20px;
+        }
+    }
+}
+
