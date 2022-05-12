@@ -53,7 +53,6 @@ export class DaterangeComponent extends FusionBase implements OnInit {
 
     @Input()
     set options(value: DaterangeOptions) {
-        console.log('..', value);
         this.daterangeOptions = {...value};
         this.onOptionsChanges();
     }
