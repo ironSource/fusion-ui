@@ -1,39 +1,31 @@
-import {
-    Input,
-    Renderer2,
-    Directive,
-    ElementRef,
-    ContentChild,
-    OnDestroy,
-    AfterViewInit,
-    ComponentRef,
-    ViewContainerRef
-} from '@angular/core';
+import {Input, Renderer2, Directive, ElementRef, ContentChild, OnDestroy, AfterViewInit, ComponentRef} from '@angular/core';
 import {TooltipContentComponent} from './tooltip.content.component';
-import {IShiftPosition, TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
+import {IShiftPosition, tooltipConfiguration, TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {fromEvent, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {TooltipContentDirective} from './tooltip-content.directive';
 
 @Directive({selector: '[fusionTooltip]'})
 export class TooltipDirective implements OnDestroy, AfterViewInit {
-    @ContentChild(TooltipContentComponent) tooltipComponent!: TooltipContentComponent;
     @ContentChild(TooltipContentDirective) directiveRef!: TooltipContentDirective;
+    @ContentChild('tooltipTriggerElement') tooltipTriggerElement!: ElementRef;
 
-    @Input() fusionTooltip = '';
-    @Input() set configuration(config: any) {
+    @Input() set configuration(config: tooltipConfiguration) {
         if (config) {
             this.width = config.width || this.width;
             this.height = config.height || this.height;
             this.backgroundColor = config.backgroundColor || this.backgroundColor;
+            this.preventTooltipToClose = config.preventTooltipToClose || this.preventTooltipToClose;
         }
     }
 
     width: number = 150;
     height: number = 30;
     backgroundColor: string = '#696a6b';
-    onDestroy$ = new Subject<void>();
+    preventTooltipToClose: boolean = false;
 
+    private onDestroy$ = new Subject<void>();
+    private tooltipElementRef: ElementRef;
     private position = TooltipPosition.Top;
     private tooltipPosition: {
         position: TooltipPosition;
@@ -42,8 +34,10 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     };
     private tooltipComponentRef: ComponentRef<TooltipContentComponent>;
 
-    constructor(private renderer: Renderer2, private elementRef: ElementRef, private viewContainerRef: ViewContainerRef) {}
+    constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
+
     ngAfterViewInit() {
+        this.tooltipElementRef = this.preventTooltipToClose ? this.elementRef : this.tooltipTriggerElement;
         this.initListeners();
     }
 
@@ -53,31 +47,26 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     }
 
     initListeners() {
-        fromEvent(this.elementRef.nativeElement, 'mouseenter').pipe(takeUntil(this.onDestroy$)).subscribe(this.showTooltip.bind(this));
+        fromEvent(this.tooltipElementRef.nativeElement, 'mouseenter')
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe(this.showTooltip.bind(this));
 
-        fromEvent(this.elementRef.nativeElement, 'mouseleave').pipe(takeUntil(this.onDestroy$)).subscribe(this.hideTooltip.bind(this));
+        fromEvent(this.tooltipElementRef.nativeElement, 'mouseleave')
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe(this.hideTooltip.bind(this));
     }
 
     private showTooltip(): void {
         this.setTooltipPosition(this.position);
-        if (this.directiveRef) {
-            this.directiveRef.create();
-            this.tooltipComponentRef = this.directiveRef.tooltipComponentRef;
-        } else {
-            this.tooltipComponentRef = this.viewContainerRef.createComponent(TooltipContentComponent);
-            this.tooltipComponentRef.instance.tooltipTextContent = this.fusionTooltip;
-        }
+        this.directiveRef.create();
+        this.tooltipComponentRef = this.directiveRef.tooltipComponentRef;
         this.tooltipComponentRef.changeDetectorRef.markForCheck();
         this.setTooltipConfiguration();
     }
 
     private hideTooltip(): void {
-        if (this.directiveRef) {
-            this.directiveRef.destroy();
-            this.tooltipComponentRef = null;
-        } else {
-            this.tooltipComponentRef.destroy();
-        }
+        this.directiveRef.destroy();
+        this.tooltipComponentRef = null;
     }
 
     private adjustTooltipPosition(position: TooltipPosition): TooltipPosition {
