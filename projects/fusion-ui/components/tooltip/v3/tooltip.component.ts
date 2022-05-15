@@ -4,16 +4,15 @@ import {tooltipConfiguration} from '@ironsource/fusion-ui/components/tooltip/com
 @Component({
     selector: 'fusion-tooltip',
     template: `
-        <div class="tooltip-container" fusionTooltip [configuration]="tooltipConfig">
+        <div class="tooltip-container" [fusionTooltip]="tooltipText" [configuration]="tooltipConfig">
             <div #tooltipTriggerElement>
                 <ng-content></ng-content>
             </div>
+            <!--            <ng-container *ngIf="!tooltipText">-->
             <div *fusionTooltipContent>
-                <ng-container *ngIf="!tooltipText">
-                    <ng-content select=".fusionTooltipContent"></ng-content>
-                </ng-container>
-                <span *ngIf="tooltipText">{{ tooltipText }}</span>
+                <ng-content select=".fusionTooltipContent"></ng-content>
             </div>
+            <!--            </ng-container>-->
         </div>
     `,
     styles: [
@@ -30,7 +29,8 @@ export class TooltipComponent {
         this.tooltipText = value;
     }
     @Input() set tooltipConfiguration(value: tooltipConfiguration) {
-        this.tooltipConfig = value;
+        console.log('>>>>TooltipComponent configuration<<<<', value);
+        this.tooltipConfig = {...value};
     }
 
     tooltipConfig: tooltipConfiguration;
