@@ -9,7 +9,6 @@ import {
     ComponentRef,
     OnInit,
     OnChanges,
-    AfterViewChecked,
     ViewContainerRef
 } from '@angular/core';
 import {TooltipContentComponent} from './tooltip.content.component';
@@ -61,12 +60,6 @@ export class TooltipDirective implements OnDestroy, AfterViewInit, OnInit, OnCha
     ngOnInit() {
         console.log('>>>>TooltipDirective ngOnInit<<<<', this.tooltipElementRef, this.preventTooltipToClose);
     }
-
-    // ngAfterViewChecked() {
-    //     console.log('>>>>TooltipDirective ngAfterViewChecked 1<<<<', this.tooltipElementRef, this.preventTooltipToClose);
-    //
-    //     console.log('>>>>TooltipDirective ngAfterViewChecked 2<<<<', this.tooltipElementRef, this.preventTooltipToClose);
-    // }
 
     ngAfterViewInit() {
         console.log('>>>>TooltipDirective ngAfterViewInit<<<<', this.tooltipElementRef, this.preventTooltipToClose);
