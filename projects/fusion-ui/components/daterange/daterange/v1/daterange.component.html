@@ -8,7 +8,7 @@
 
 
     <div class="overlay" #overlay *ngIf="isOpen" [class]="overlayAlign$ | async"
-         [ngClass]="{visible: (overlayAlign$ | async), isOpen: isOpen, singleDatePicker: isSingleDatePicker}">
+         [ngClass]="{visible: (overlayAlign$ | async), isOpen: isOpen, singleDatePicker: isSingleDatePicker, noPresets: !isPresetsShown}">
         <div class="presetsWrap" *ngIf="isPresetsShown">
             <ng-container [ngTemplateOutlet]="presetsHeaderTemplate || defaultPreset"></ng-container>
             <ng-template #defaultPreset>
@@ -41,6 +41,7 @@
                 </div>
             </div>
             <fusion-modal-footer
+                *ngIf="!isSingleDatePicker"
                 (onSave)="apply()"
                 (onCloseButtonClicked)="close()"
                 saveButtonText="Apply"

@@ -118,6 +118,13 @@ $topBorderWidth: 2px;
         color: $dark-300;
         visibility: hidden;
 
+        &.singleDatePicker{
+            min-width: 237px;
+        }
+        &.noPresets{
+            min-width: 453px;
+        }
+
         &.isOpen{
             display: flex;
         }
@@ -140,5 +147,6 @@ $topBorderWidth: 2px;
             right: 20px;
         }
     }
+
 }
 
