@@ -136,7 +136,6 @@ export abstract class DaterangeBaseComponent implements OnInit {
                 : this.originalSelection?.startDate && this.originalSelection?.endDate
                 ? this.originalSelection
                 : null;
-
             this.propagateChange(valueToPropagate);
         }
     }

@@ -37,9 +37,9 @@ const rightMenuItems = [
     styleUrls: ['./daterange-docs.component.scss']
 })
 export class DaterangeDocsComponent implements OnInit, OnDestroy {
-    date = new Date('2022-04-15 10:00:00');
-    startDate = new Date('2022-04-01 10:00:00');
-    endDate = new Date('2022-04-27 10:00:00');
+    date = new Date('2022-05-15 10:00:00');
+    startDate = new Date('2022-05-01 10:00:00');
+    endDate = new Date('2022-05-27 10:00:00');
 
     rightMenu: DocsMenuItem[] = [
         {
@@ -70,10 +70,10 @@ export class DaterangeDocsComponent implements OnInit, OnDestroy {
     StyleVersion = StyleVersion;
     daterangeDefault: FormControl = new FormControl(this.daterangeService.getPresetRange(DaterangePresets.Yesterday));
     daterangeDatePicker: FormControl = new FormControl({
-        date: new Date(Date.UTC(2022, 0, 10))
+        date: new Date(Date.UTC(2022, 4, 10))
     });
-    daterangeMinDate = new Date(Date.UTC(2022, 0, 5));
-    daterangeMaxDate = new Date(Date.UTC(2022, 0, 25));
+    daterangeMinDate = new Date(Date.UTC(2022, 4, 5));
+    daterangeMaxDate = new Date(Date.UTC(2022, 4, 25));
 
     daterangeCustom: FormControl = new FormControl({
         startDate: new Date(Date.UTC(2022, 0, 3)),
@@ -112,7 +112,9 @@ export class DaterangeDocsComponent implements OnInit, OnDestroy {
 
         this.daterangeCustom.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(value => console.log(value));
 
-        this.daterangeDatePicker.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(value => console.log(value));
+        this.daterangeDatePicker.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(value => {
+            console.log('>>', value);
+        });
 
         this.styleVersion$
             .pipe(
