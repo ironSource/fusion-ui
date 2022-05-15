@@ -2,7 +2,6 @@ import {ChangeDetectionStrategy, Component, forwardRef} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {BehaviorSubject} from 'rxjs';
 import {DaterangeBaseComponent} from '../common/base/daterange.base.component';
-import {DaterangeSelection} from '../../entities/daterange-selection';
 import {DropdownSelectConfigurations} from '@ironsource/fusion-ui';
 
 @Component({
@@ -25,13 +24,4 @@ export class DaterangeComponent extends DaterangeBaseComponent {
 
     pevIconName = {iconName: 'arrow-back', iconVersion: 'v3'};
     nextIconName = {iconName: 'arrow-forward', iconVersion: 'v3'};
-
-    propagateChange = (_: DaterangeSelection) => {};
-    writeValue(value: DaterangeSelection): void {
-        this.onWriteValue(value);
-    }
-    registerOnChange(fn: any): void {
-        this.propagateChange = fn;
-    }
-    registerOnTouched(): void {}
 }

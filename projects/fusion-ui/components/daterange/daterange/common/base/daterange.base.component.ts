@@ -64,11 +64,6 @@ export abstract class DaterangeBaseComponent implements OnInit {
 
     private daterangeOptions: DaterangeOptions;
 
-    public get selectorIcon(): string {
-        const arrowPosition = this.isOpen ? 'up' : 'down';
-        return `arrow-${arrowPosition}`;
-    }
-
     public get isPresetsShown(): boolean {
         return !!this.presetsHeaderTemplate || (Array.isArray(this.daterangeOptions.presets) && !!this.daterangeOptions.presets.length);
     }
@@ -135,6 +130,14 @@ export abstract class DaterangeBaseComponent implements OnInit {
             this.setPlaceholder({isOpen: false});
             this.selectionStarted = null;
             this.applied.emit();
+
+            const valueToPropagate = this.isSingleDatePicker
+                ? {date: this.originalSelection.startDate}
+                : this.originalSelection?.startDate && this.originalSelection?.endDate
+                ? this.originalSelection
+                : null;
+
+            this.propagateChange(valueToPropagate);
         }
     }
 
@@ -281,4 +284,13 @@ export abstract class DaterangeBaseComponent implements OnInit {
 
         this.initMonth(this.calendarService.getCurrentDateUTC());
     }
+
+    propagateChange = (_: DaterangeSelection) => {};
+    writeValue(value: DaterangeSelection): void {
+        this.onWriteValue(value);
+    }
+    registerOnChange(fn: any): void {
+        this.propagateChange = fn;
+    }
+    registerOnTouched(): void {}
 }
