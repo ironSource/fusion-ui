@@ -9,11 +9,13 @@ import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {DatepickerModule} from '@ironsource/fusion-ui/components/datepicker/v3';
 import {DaterangeModule} from '@ironsource/fusion-ui/components/daterange/daterange/v3';
+import {IconModule} from '@ironsource/fusion-ui';
 
 @NgModule({
     declarations: [DatepickerDocsComponent],
     imports: [
         CommonModule,
+        IconModule,
         DatepickerDocsRoutingModule,
         ExampleBlockModule,
         CodeBlockModule,

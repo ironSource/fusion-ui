@@ -3,6 +3,7 @@ import {DEFAULT_DATERANGE_PRESET_LIST, DEFAULT_DATERANGE_PRESET_NAMES} from '../
 import {CalendarService} from '../../calendar/common/calendar.service';
 import {DaterangePresets} from '../../entities/daterange-presets.enum';
 import {DaterangeSelection} from '../../entities/daterange-selection';
+import {DateRange, DaterangeCustomPreset} from '../../entities/daterange-custom-presets';
 
 @Injectable({
     providedIn: 'root'
@@ -77,11 +78,21 @@ export class DaterangeService {
         }
     };
 
-    getPresetName(preset: DaterangePresets): string {
-        return DEFAULT_DATERANGE_PRESET_NAMES[preset];
+    isCustomPreset(preset: DaterangePresets | DaterangeCustomPreset): boolean {
+        return preset.hasOwnProperty('label') && preset.hasOwnProperty('startDate') && preset.hasOwnProperty('endDate');
     }
 
-    determinePreset(daterange: DaterangeSelection, availablePresets: DaterangePresets[] = null, params?: any): DaterangePresets {
+    getPresetName(preset: DaterangePresets | DaterangeCustomPreset): string {
+        return this.isCustomPreset(preset)
+            ? (preset as DaterangeCustomPreset).label
+            : DEFAULT_DATERANGE_PRESET_NAMES[preset as DaterangePresets];
+    }
+
+    determinePreset(
+        daterange: DaterangeSelection,
+        availablePresets: DaterangePresets[] | DaterangeCustomPreset[] = null,
+        params?: any
+    ): DaterangePresets | DaterangeCustomPreset {
         if (!availablePresets) {
             availablePresets = this.defaultPresetList;
         }
@@ -90,19 +101,16 @@ export class DaterangeService {
             return null;
         }
 
-        for (const preset of availablePresets) {
-            const presetRange = this.presetDateFunctions[preset]();
-            if (
-                presetRange.startDate.getTime() === daterange.startDate.getTime() &&
-                presetRange.endDate.getTime() === daterange.endDate.getTime()
-            ) {
-                return preset;
-            }
-        }
+        return this.getPresetBySelectedDates(daterange, availablePresets);
     }
 
-    getPresetRange(preset: DaterangePresets, params?: any): DaterangeSelection {
-        return this.presetDateFunctions[preset]();
+    getPresetRange(preset: DaterangePresets | DaterangeCustomPreset, params?: any): DaterangeSelection {
+        return this.isCustomPreset(preset)
+            ? {
+                  startDate: (preset as DaterangeCustomPreset).startDate,
+                  endDate: (preset as DaterangeCustomPreset).endDate
+              }
+            : this.presetDateFunctions[preset as DaterangePresets]();
     }
 
     getDefaultRange(): DaterangeSelection {
@@ -122,5 +130,40 @@ export class DaterangeService {
             date.getUTCMinutes(),
             date.getUTCSeconds()
         );
+    }
+
+    private getPresetBySelectedDates(
+        daterange: DaterangeSelection,
+        availablePresets: DaterangePresets[] | DaterangeCustomPreset[]
+    ): DaterangePresets | DaterangeCustomPreset {
+        for (const preset of availablePresets) {
+            if (this.isCustomPreset(preset)) {
+                const presetCustomRange: DateRange = {
+                    startDate: (preset as DaterangeCustomPreset).startDate,
+                    endDate: (preset as DaterangeCustomPreset).endDate
+                };
+
+                if (this.isSameRange(daterange as DateRange, presetCustomRange)) {
+                    return preset;
+                }
+            } else {
+                const presetRange = this.presetDateFunctions[preset as DaterangePresets]();
+                if (
+                    presetRange.startDate.getTime() === daterange.startDate.getTime() &&
+                    presetRange.endDate.getTime() === daterange.endDate.getTime()
+                ) {
+                    return preset;
+                }
+            }
+        }
+        return null;
+    }
+
+    private isSameRange(selectedRange: DateRange, presetRange: DateRange): boolean {
+        return this.isSameDay(selectedRange.startDate, presetRange.startDate) && this.isSameDay(selectedRange.endDate, presetRange.endDate);
+    }
+
+    private isSameDay(date1: Date, date2: Date): boolean {
+        return date1.toISOString().split('T')[0] === date2.toISOString().split('T')[0];
     }
 }

@@ -5,6 +5,7 @@ import {BehaviorSubject} from 'rxjs';
 import {delay, tap} from 'rxjs/operators';
 import {VersionService} from '../../../services/version/version.service';
 import {DaterangeOptions} from '@ironsource/fusion-ui';
+import {DaterangeCustomPreset} from '@ironsource/fusion-ui/components/daterange/entities/daterange-custom-presets';
 
 @Component({
     selector: 'fusion-datepicker-docs',
@@ -88,16 +89,55 @@ export class DatepickerDocsComponent implements OnInit {
     );
 
     daterangeDates: FormControl = new FormControl({
-        startDate: new Date(Date.UTC(2022, 4, 10)),
-        endDate: new Date(Date.UTC(2022, 4, 20))
+        startDate: new Date(Date.UTC(2022, 4, 12)),
+        endDate: new Date(Date.UTC(2022, 4, 16))
     });
-    daterangeMinDate = new Date(Date.UTC(2022, 4, 5));
+    daterangeMinDate = new Date(Date.UTC(2022, 3, 5));
     daterangeMaxDate = new Date(Date.UTC(2022, 4, 25));
 
+    // region set custom presets
+    // set for presets start and end date - just for example.
+    // Consumers can do it as they wish
+    dateNow = new Date();
+    getCurWeek = () => {
+        let curr = new Date();
+        let day = curr.getDay();
+        let firstday = new Date(curr.getTime() - 60 * 60 * 24 * day * 1000);
+        let lastday = new Date(firstday.getTime() + 60 * 60 * 24 * 6 * 1000);
+        return {
+            startDate: firstday,
+            endDate: lastday
+        };
+    };
+
+    customDateRangePresets: DaterangeCustomPreset[] = [
+        {
+            label: 'Last 5 days',
+            startDate: new Date(Date.UTC(this.dateNow.getFullYear(), this.dateNow.getMonth(), this.dateNow.getDate() - 4)),
+            endDate: new Date(Date.UTC(this.dateNow.getFullYear(), this.dateNow.getMonth(), this.dateNow.getDate()))
+        },
+        {
+            label: 'Last 15 days',
+            startDate: new Date(Date.UTC(this.dateNow.getFullYear(), this.dateNow.getMonth(), this.dateNow.getDate() - 14)),
+            endDate: new Date(Date.UTC(this.dateNow.getFullYear(), this.dateNow.getMonth(), this.dateNow.getDate()))
+        },
+        {
+            label: 'Next 3 days',
+            startDate: new Date(Date.UTC(this.dateNow.getFullYear(), this.dateNow.getMonth(), this.dateNow.getDate() + 1)),
+            endDate: new Date(Date.UTC(this.dateNow.getFullYear(), this.dateNow.getMonth(), this.dateNow.getDate() + 3))
+        },
+        {
+            label: 'Current Week',
+            ...this.getCurWeek()
+        }
+    ];
+
+    // add it with options.presets
     optionOnlyDatePicker$ = new BehaviorSubject<DaterangeOptions>({
         format: 'd MMM y',
-        allowFutureSelection: false
+        presets: this.customDateRangePresets
     });
+    // endregion
 
     constructor(private versionService: VersionService, private formBuilder: FormBuilder) {}
 

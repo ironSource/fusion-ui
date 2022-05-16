@@ -9,6 +9,7 @@ import {DEFAULT_DATE_FORMAT} from '../../../entities/config';
 import {DaterangeSelection} from '../../../entities/daterange-selection';
 import {Day} from '../../../entities/day';
 import {DaterangePresets} from '../../../entities/daterange-presets.enum';
+import {DaterangeCustomPreset} from '../../../entities/daterange-custom-presets';
 import {DaterangeService} from '../daterange.service';
 import {CalendarService} from '../../../calendar/common/calendar.service';
 import {DropdownSelectConfigurations} from '@ironsource/fusion-ui/components/dropdown';
@@ -60,7 +61,7 @@ export abstract class DaterangeBaseComponent implements OnInit, ControlValueAcce
     currentSelectionFormatted: string;
     selectionStarted: Day = null;
     originalSelection: DaterangeSelection = null;
-    currentPreset: DaterangePresets = null;
+    currentPreset: DaterangePresets | DaterangeCustomPreset = null;
     overlayAlign$ = new BehaviorSubject<string>('');
 
     protected daterangeOptions: DaterangeOptions;
@@ -263,7 +264,7 @@ export abstract class DaterangeBaseComponent implements OnInit, ControlValueAcce
     }
 
     private determinePreset(range, params?) {
-        return this.daterangeService.determinePreset(range, this.options.presets as DaterangePresets[], params);
+        return this.daterangeService.determinePreset(range, this.options.presets, params);
     }
 
     private initMonth(date) {
