@@ -1,34 +1,17 @@
-import {
-    AfterViewInit,
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    HostBinding,
-    Injector,
-    Input,
-    OnChanges,
-    Renderer2,
-    SimpleChanges
-} from '@angular/core';
+import {AfterViewInit, Directive, ElementRef, HostBinding, Injector, Input, OnChanges, Renderer2, SimpleChanges} from '@angular/core';
 import {IShiftPosition, ITooltipData, TooltipPosition, TooltipType} from './tooltip.entities';
 import {WindowService} from '@ironsource/fusion-ui/services/window';
-import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 const TOOLTIP_ARROW_SIZE = 6;
 
-@Component({
-    selector: 'fusion-tooltip',
-    templateUrl: './tooltip.component.html',
-    styleUrls: ['./tooltip.component.scss', './tooltip.component-v2.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class TooltipComponent extends FusionBase implements AfterViewInit, OnChanges {
+@Directive()
+export abstract class TooltipBaseComponent implements AfterViewInit, OnChanges {
     public content: string | SafeHtml;
     public componentData: any;
-    public icon: IconData;
+    public icon: string | IconData;
     private position: TooltipPosition;
     private hostEl: ElementRef;
     private type: TooltipType;
@@ -62,9 +45,7 @@ export class TooltipComponent extends FusionBase implements AfterViewInit, OnCha
         private window: WindowService,
         private renderer: Renderer2,
         private sanitizer: DomSanitizer
-    ) {
-        super(injector);
-    }
+    ) {}
 
     ngOnChanges(changes: SimpleChanges) {
         if (!changes.tooltipData.isFirstChange()) {
@@ -73,7 +54,6 @@ export class TooltipComponent extends FusionBase implements AfterViewInit, OnCha
     }
 
     ngAfterViewInit() {
-        super.ngAfterViewInit();
         this._setPosition();
     }
 

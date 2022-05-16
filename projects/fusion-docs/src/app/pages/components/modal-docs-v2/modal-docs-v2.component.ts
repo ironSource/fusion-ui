@@ -6,7 +6,7 @@ import {mapTo, switchMap, takeUntil} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
 import {VersionService} from '../../../services/version/version.service';
-import {ModalService} from '@ironsource/fusion-ui/components/modal/common/base';
+import {ModalService} from '@ironsource/fusion-ui/components/modal';
 
 @Component({
     selector: 'fusion-modal-docs-v2',

@@ -30,7 +30,7 @@ import {SvgComponent} from '@ironsource/fusion-ui/components/svg';
 import {TagComponent} from '@ironsource/fusion-ui/components/tag';
 import {TagsInputComponent} from '@ironsource/fusion-ui/components/dropdown';
 import {ToggleComponent} from '@ironsource/fusion-ui/components/toggle';
-import {TooltipComponent} from '@ironsource/fusion-ui/components/tooltip';
+import {TooltipComponent} from '@ironsource/fusion-ui/components/tooltip/v3';
 import {VideoPlayerComponent} from '@ironsource/fusion-ui/components/video-player';
 import {ChartComponent} from '@ironsource/fusion-ui/components/chart';
 import {ChartLabelsComponent} from '@ironsource/fusion-ui/components/chart-labels';
@@ -45,14 +45,17 @@ import {ToastComponent} from '@ironsource/fusion-ui/components/toast';
 import {TabsComponent as TabsComponentV2} from '@ironsource/fusion-ui/components/tabs/v2';
 import {SidebarComponent} from '@ironsource/fusion-ui/components/sidebar';
 import {SidebarMenuComponent} from '@ironsource/fusion-ui/components/sidebar';
-import {ModalService} from '@ironsource/fusion-ui/components/modal/common/base';
+import {ModalService} from '@ironsource/fusion-ui/components/modal';
 import {NotificationService} from '@ironsource/fusion-ui/components/notification';
-import {TooltipService} from '@ironsource/fusion-ui/components/tooltip';
 import {PopupService} from '@ironsource/fusion-ui/components/popup';
 import {CalendarService} from '@ironsource/fusion-ui/components/date';
 import {DaterangeService} from '@ironsource/fusion-ui/components/date';
 import {ToastService} from '@ironsource/fusion-ui/components/toast';
 import {TabsComponent, TabComponent} from '@ironsource/fusion-ui/components/tabs';
+import {TextareaComponent} from '@ironsource/fusion-ui/components/textarea';
+import {ButtonComponent} from '@ironsource/fusion-ui/components/button';
+import {ChipFilterComponent} from '@ironsource/fusion-ui/components/chip-filter';
+import {FileDragAndDropComponent} from '@ironsource/fusion-ui/components/file-drag-and-drop';
 
 // Services
 import {ApiService} from '@ironsource/fusion-ui/services/api/api.service';
@@ -63,6 +66,7 @@ import {PermissionsService} from '@ironsource/fusion-ui/services/permissions/per
 import {ApiResponseType} from '@ironsource/fusion-ui/services/api/api-entities';
 import {CacheType} from '@ironsource/fusion-ui/services/cache/cache-entities';
 import {ColorsService} from '@ironsource/fusion-ui/services/colors/colors.service';
+import {TooltipService} from '@ironsource/fusion-ui/components/tooltip/common/base';
 
 // enums
 import {NotificationType} from '@ironsource/fusion-ui/components/notification';
@@ -72,14 +76,11 @@ import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline';
 import {ListBoxModes} from '@ironsource/fusion-ui/components/list-box';
 import {PopupLocation} from '@ironsource/fusion-ui/components/popup';
 import {TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table';
-import {TooltipPosition, TooltipType} from '@ironsource/fusion-ui/components/tooltip';
+import {TooltipPosition, TooltipType} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {FormControlStatus} from '@ironsource/fusion-ui/components/error-message';
 import {SwitcherMode} from '@ironsource/fusion-ui/components/switcher';
 import {DaterangePresets} from '@ironsource/fusion-ui/components/date';
 import {MobileOrientation} from '@ironsource/fusion-ui/components/mobile-previewer';
-import {TextareaComponent} from '@ironsource/fusion-ui/components/textarea';
-import {ButtonComponent} from '@ironsource/fusion-ui/components/button';
-import {FileDragAndDropComponent} from '@ironsource/fusion-ui/components/file-drag-and-drop';
 
 const PREFIX = 'native-fusion';
 
@@ -171,5 +172,6 @@ export const components = [
     {name: `${PREFIX}-dropdown-dual-multi-select`, componentInstance: DropdownDualMultiSelectComponent},
     {name: `${PREFIX}-tabs`, componentInstance: TabsComponent},
     {name: `${PREFIX}-tab`, componentInstance: TabComponent},
+    {name: `${PREFIX}-chip-filter`, componentInstance: ChipFilterComponent},
     {name: `${PREFIX}-file-drag-and-drop`, componentInstance: FileDragAndDropComponent}
 ];

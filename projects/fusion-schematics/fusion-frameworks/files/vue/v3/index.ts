@@ -75,7 +75,8 @@ export const createComponent = ({name, selector}: {name: string, selector: strin
                     // @ts-ignore
                     if (this.$el.children && this.$el.children.length) {
                         // @ts-ignore
-                        this.instance.appendChild(this.$el.children[0]);
+                        [...this.$el.children].forEach(child => this.instance.appendChild(child))
+
                     }
                     // @ts-ignore
                     this.$el.appendChild(this.instance);

@@ -1,6 +1,5 @@
 import {TestBed} from '@angular/core/testing';
-
-import {TooltipService} from './tooltip.service';
+import {TooltipService} from './tooltip.base.service';
 
 describe('TooltipService', () => {
     beforeEach(() =>

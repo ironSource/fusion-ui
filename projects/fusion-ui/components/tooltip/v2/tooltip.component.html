@@ -1,0 +1,7 @@
+<ng-container *ngIf="isHtml; else component">
+  <fusion-icon *ngIf="icon" [class.has-icon]="hasIcon" class="tooltip-icon" [name]="icon"></fusion-icon>
+  <div class="is-tooltip-content" [innerHTML]="content"></div>
+</ng-container>
+<ng-template #component>
+  <fusion-dynamic-components [component]="content" [componentData]="componentData"></fusion-dynamic-components>
+</ng-template>
