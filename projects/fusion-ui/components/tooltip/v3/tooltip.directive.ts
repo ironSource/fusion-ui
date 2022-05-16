@@ -7,8 +7,6 @@ import {
     OnDestroy,
     AfterViewInit,
     ComponentRef,
-    OnInit,
-    OnChanges,
     ViewContainerRef
 } from '@angular/core';
 import {TooltipContentComponent} from './tooltip.content.component';
@@ -18,14 +16,13 @@ import {takeUntil} from 'rxjs/operators';
 import {TooltipContentDirective} from './tooltip-content.directive';
 
 @Directive({selector: '[fusionTooltip]'})
-export class TooltipDirective implements OnDestroy, AfterViewInit, OnInit, OnChanges {
+export class TooltipDirective implements OnDestroy, AfterViewInit {
     @ContentChild(TooltipContentDirective, {static: true}) directiveRef!: TooltipContentDirective;
     @ContentChild('tooltipTriggerElement', {static: true}) tooltipTriggerElement!: ElementRef;
 
     @Input() fusionTooltip = '';
     @Input() set configuration(config: tooltipConfiguration) {
         if (config) {
-            console.log('>>>>TooltipDirective configuration<<<<', config);
             this.width = config.width || this.width;
             this.height = config.height || this.height;
             this.backgroundColor = config.backgroundColor || this.backgroundColor;
@@ -50,19 +47,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit, OnInit, OnCha
 
     constructor(private renderer: Renderer2, private elementRef: ElementRef, private viewContainerRef: ViewContainerRef) {}
 
-    ngOnChanges(changes) {
-        this.tooltipElementRef = this.preventTooltipToClose
-            ? this.elementRef.nativeElement.parentElement
-            : this.tooltipTriggerElement.nativeElement;
-        console.log('>>>>TooltipDirective ngOnChanges<<<<', this.tooltipElementRef, this.preventTooltipToClose, changes?.configuration);
-    }
-
-    ngOnInit() {
-        console.log('>>>>TooltipDirective ngOnInit<<<<', this.tooltipElementRef, this.preventTooltipToClose);
-    }
-
     ngAfterViewInit() {
-        console.log('>>>>TooltipDirective ngAfterViewInit<<<<', this.tooltipElementRef, this.preventTooltipToClose);
         this.tooltipElementRef = this.preventTooltipToClose
             ? this.elementRef.nativeElement.parentElement
             : this.tooltipTriggerElement.nativeElement;

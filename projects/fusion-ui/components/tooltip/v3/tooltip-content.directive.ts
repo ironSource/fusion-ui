@@ -14,6 +14,7 @@ export class TooltipContentDirective {
     }
 
     create() {
+        console.log('>>>>', this.viewContainerRef);
         if (!this.componentRef) {
             this.componentRef = this.viewContainerRef.createComponent(TooltipContentComponent);
             this.componentRef.instance.templateRef = this.templateRef;
