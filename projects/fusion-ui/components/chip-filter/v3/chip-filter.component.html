@@ -1,4 +1,7 @@
 <div class="truncate fu-chip-content-wrapper">
-    <ng-content></ng-content>
+    <ng-content select=".fu-chip-content"></ng-content>
 </div>
 <fusion-icon class="fu-icon-close" *ngIf="close" (click)="closeClicked($event)" [name]="'close-bold'"></fusion-icon>
+<ng-template #ref>
+    <ng-content select=".filter-element"></ng-content>
+</ng-template>
