@@ -2,6 +2,51 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### Features
+* **fu-391:** add tooltip style guide v3 and change folder structure sub entries ([08b661b](https://github.com/ironSource/fusion-ui/commit/acc524a67509cab60336936d9531cf1cf1bcb2e8))
+    * change tooltip control on VanillaJs, Vue and React:
+    * Text only (example in Angular): 
+        ```html
+            <fusion-tooltip [fusionTooltipText]="'Get Tool'">
+                <div class="fusionTooltipTrigger">
+                    Trigger Tooltip
+                </div>
+            <div class="fusionTooltipContent">Component Tooltip</div>
+        </fusion-tooltip>
+        ```
+    * Element (example in Angular):
+        ```html
+            <fusion-tooltip fusionTooltipText>
+                <div class="fusionTooltipTrigger">
+                    Trigger Tooltip
+                </div>
+            <div class="fusionTooltipContent">Component Tooltip</div>
+        </fusion-tooltip>
+        ```
+    * Tooltip configuration:
+        ```
+            export type tooltipConfiguration = {
+                width?: number;
+                height?: number;
+                backgroundColor?: string;
+                preventTooltipToClose?: boolean;
+            };
+      ```
+    * "preventTooltipToClose": prevent from Tooltip to close when hover on him.
+    * On Angular usage can be done also as follows:
+    * With Element:
+        ```html
+        <div class="delete" fusionTooltip [configuration]="{backgroundColor: 'blue'}">
+            <div #tooltipTriggerElement>Trigger Tooltip</div>
+            <div *fusionTooltipContent>Component Tooltip</div>
+        </div>
+        ```
+    * With Text:
+        ```html
+            <div class="delete" [fusionTooltip]="'hello'" [configuration]="{backgroundColor: 'blue'}">
+                <div #tooltipTriggerElement>Trigger Tooltip</div>
+            </div>
+        ```
 ## [3.0.0-rc.6](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.5...v3.0.0-rc.6) (2022-05-09)
 
 
