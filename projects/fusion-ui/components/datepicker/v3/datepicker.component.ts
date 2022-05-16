@@ -1,7 +1,9 @@
-import {ChangeDetectionStrategy, Component, forwardRef, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef, Input, OnDestroy, OnInit} from '@angular/core';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {DatepickerOptions} from './datepicker.entities';
+import {DatepickerOptions, DatepickerSelection} from './datepicker.entities';
 import {DaterangeOptions} from '@ironsource/fusion-ui/components/daterange/entities/daterange-options';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 const DEFAULT_OPTIONS = {
     calendarAmount: 1,
@@ -14,7 +16,7 @@ const DEFAULT_OPTIONS = {
         [minDate]="daterangeMinDate"
         [maxDate]="daterangeMaxDate"
         [options]="daterangeOptions"
-        formControl="daterangeFormControl"
+        [formControl]="daterangeFormControl"
     ></fusion-daterange>`,
     styles: [':host { margin: 0; padding: 0 }'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,7 +28,7 @@ const DEFAULT_OPTIONS = {
         }
     ]
 })
-export class DatepickerComponent implements ControlValueAccessor {
+export class DatepickerComponent implements OnInit, OnDestroy, ControlValueAccessor {
     @Input() set options(value: DatepickerOptions) {
         this.daterangeOptions = {...DEFAULT_OPTIONS, ...value};
     }
@@ -37,15 +39,28 @@ export class DatepickerComponent implements ControlValueAccessor {
         this.daterangeMaxDate = value;
     }
 
+    onDestroy$ = new Subject<void>();
+
     daterangeOptions: DaterangeOptions = {...DEFAULT_OPTIONS};
-    daterangeFormControl: FormControl = new FormControl({date: new Date()});
+    daterangeFormControl: FormControl = new FormControl();
     daterangeMinDate: Date;
     daterangeMaxDate: Date;
 
-    propagateChange = (_: any) => {};
+    ngOnInit() {
+        this.daterangeFormControl.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(value => {
+            this.propagateChange(value);
+        });
+    }
+
+    ngOnDestroy() {
+        this.onDestroy$.next();
+        this.onDestroy$.complete();
+    }
+
+    propagateChange = (_: DatepickerSelection) => {};
     propagateTouched = () => {};
-    writeValue(value: Date): void {
-        // this.daterangeFormControl.setValue({date: value}, {emitEvent: false})
+    writeValue(value: DatepickerSelection): void {
+        this.daterangeFormControl.setValue(value, {emitEvent: false});
     }
     registerOnChange(fn: any): void {
         this.propagateChange = fn;
