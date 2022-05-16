@@ -1,4 +1,4 @@
-import {Directive, ElementRef, EventEmitter, Injector, Input, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
 import {DatePipe} from '@angular/common';
 import {BehaviorSubject} from 'rxjs';
 import {isSameDates} from '@ironsource/fusion-ui/utils';
@@ -16,9 +16,10 @@ import {CalendarComponentConfigurations} from '../../../calendar/common/calendar
 import {CalendarType} from '../../../calendar/common/calendar-type.enum';
 import {DEFAULT_PLACEHOLDER_TEXT} from '../daterange.configuration';
 import {IconData} from '@ironsource/fusion-ui';
+import {ControlValueAccessor} from '@angular/forms';
 
 @Directive()
-export abstract class DaterangeBaseComponent implements OnInit {
+export abstract class DaterangeBaseComponent implements OnInit, ControlValueAccessor {
     @Input() id: string;
     @Input() presetsHeaderTemplate: TemplateRef<any>;
     @Input() minDate: Date;
@@ -62,7 +63,7 @@ export abstract class DaterangeBaseComponent implements OnInit {
     currentPreset: DaterangePresets = null;
     overlayAlign$ = new BehaviorSubject<string>('');
 
-    private daterangeOptions: DaterangeOptions;
+    protected daterangeOptions: DaterangeOptions;
 
     public get isPresetsShown(): boolean {
         return !!this.presetsHeaderTemplate || (Array.isArray(this.daterangeOptions.presets) && !!this.daterangeOptions.presets.length);
@@ -273,7 +274,7 @@ export abstract class DaterangeBaseComponent implements OnInit {
         }
     }
 
-    private onOptionsChanges(): void {
+    protected onOptionsChanges(): void {
         if (this.daterangeOptions) {
             this.daterangeOptions = Object.assign({}, this.defaultOptions, this.daterangeOptions);
         } else {
@@ -285,11 +286,14 @@ export abstract class DaterangeBaseComponent implements OnInit {
     }
 
     propagateChange = (_: DaterangeSelection) => {};
+
     writeValue(value: DaterangeSelection): void {
         this.onWriteValue(value);
     }
+
     registerOnChange(fn: any): void {
         this.propagateChange = fn;
     }
+
     registerOnTouched(): void {}
 }

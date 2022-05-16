@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, forwardRef} from '@angular/core';
-import {NG_VALUE_ACCESSOR} from '@angular/forms';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {BehaviorSubject} from 'rxjs';
 import {DaterangeBaseComponent} from '../common/base/daterange.base.component';
 import {DropdownSelectConfigurations} from '@ironsource/fusion-ui';

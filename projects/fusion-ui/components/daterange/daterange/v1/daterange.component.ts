@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, forwardRef} from '@angular/core';
 import {DaterangeBaseComponent} from '../common/base/daterange.base.component';
-import {NG_VALUE_ACCESSOR} from '@angular/forms';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 @Component({
     selector: 'fusion-daterange',

@@ -1,9 +1,10 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {BehaviorSubject} from 'rxjs';
 import {delay, tap} from 'rxjs/operators';
 import {VersionService} from '../../../services/version/version.service';
+import {DaterangeOptions} from '@ironsource/fusion-ui';
 
 @Component({
     selector: 'fusion-datepicker-docs',
@@ -85,6 +86,17 @@ export class DatepickerDocsComponent implements OnInit {
             this.styleUpdating$.next(false);
         })
     );
+
+    daterangeDatePicker: FormControl = new FormControl({
+        date: new Date(Date.UTC(2022, 4, 10))
+    });
+    daterangeMinDate = new Date(Date.UTC(2022, 4, 5));
+    daterangeMaxDate = new Date(Date.UTC(2022, 4, 25));
+
+    optionOnlyDatePicker$ = new BehaviorSubject<DaterangeOptions>({
+        format: 'd MMM y',
+        allowFutureSelection: false
+    });
 
     constructor(private versionService: VersionService, private formBuilder: FormBuilder) {}
 
