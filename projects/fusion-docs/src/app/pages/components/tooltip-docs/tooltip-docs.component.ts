@@ -1,10 +1,11 @@
 import {Component, ElementRef, OnInit, Renderer2} from '@angular/core';
-import {TableColumnTypeEnum, TooltipPosition, TooltipType} from '@ironsource/fusion-ui';
+import {TooltipPosition, TooltipType} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
 import {BehaviorSubject} from 'rxjs';
 import {delay, tap} from 'rxjs/operators';
 import {VersionService} from '../../../services/version/version.service';
+import {TableColumnTypeEnum} from '@ironsource/fusion-ui';
 
 @Component({
     selector: 'fusion-tooltip-docs',
