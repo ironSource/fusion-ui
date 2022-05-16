@@ -1,4 +1,42 @@
-<router-outlet></router-outlet>
-<fusion-tooltip *ngIf="tooltipData.content"
-            [tooltipData]="tooltipData"></fusion-tooltip>
+<!--<router-outlet></router-outlet>-->
+<!--<fusion-tooltip *ngIf="tooltipData.content"-->
+<!--            [tooltipData]="tooltipData"></fusion-tooltip>-->
+
+<br>
+<br>
+<br>
+<div style="display: flex; justify-content: center;">
+    <fusion-tooltip [fusionTooltipText]="'Get Tool'" [tooltipConfiguration]="{
+        backgroundColor: 'blue',
+        preventTooltipToClose: true,
+        width: 500
+    }">
+        <fusion-button class="third fusionTooltipTrigger">
+            Trigger Tooltip
+        </fusion-button>
+        <div class="fusionTooltipContent">Component Tooltip</div>
+    </fusion-tooltip>
+</div>
+<!--<fusion-tooltip [tooltipConfiguration]="{-->
+<!--        width: 500,-->
+<!--        preventTooltipToClose: true-->
+<!--    }" [fusionTooltipText]="'Heesfsfki'">-->
+<!--    <fusion-button class="third">-->
+<!--        Trigger Tooltip2-->
+<!--    </fusion-button>-->
+<!--    <div class="fusionTooltipContent">Component Tooltip</div>-->
+<!--</fusion-tooltip>-->
+<!--</div>-->
+<!--<br>-->
+<!--<br>-->
+<div style="display: flex; justify-content: center;">
+    <div class="delete" [fusionTooltip]="'hello'" [configuration]="{
+        backgroundColor: 'blue',
+        preventTooltipToClose: true,
+        width: 200
+    }">
+        <div #tooltipTriggerElement>Trigger Tooltip</div>
+        <div *fusionTooltipContent>Component Tooltip</div>
+    </div>
+</div>
 
