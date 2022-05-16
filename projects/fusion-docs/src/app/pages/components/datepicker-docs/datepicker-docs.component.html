@@ -100,15 +100,13 @@ datepicker.addEventListener("controlValueChange", e => console.log(e.detail));'
                 </ng-template>
 
 
-
-                <div style="display: block; width: 240px;">
-                    <!--<fusion-datepicker [minDate]="daterangeMinDate" [maxDate]="daterangeMaxDate"></fusion-datepicker>-->
-                    <br/><br/>
-                    <fusion-daterange [minDate]="daterangeMinDate" [maxDate]="daterangeMaxDate"
-                                      [formControl]="daterangeDatePicker"
-                                      [options]="optionOnlyDatePicker$ | async"></fusion-daterange>
+                <div class="row">
+                    <div class="col-3"><fusion-datepicker [minDate]="daterangeMinDate" [maxDate]="daterangeMaxDate" formControlName="datePickerBasic"></fusion-datepicker></div>
+                    <div class="col-3"></div>
+                    <div class="col-3"><fusion-daterange [minDate]="daterangeMinDate" [maxDate]="daterangeMaxDate"
+                                                         [formControl]="daterangeDates"
+                                                         [options]="optionOnlyDatePicker$ | async"></fusion-daterange></div>
                 </div>
-
 
             </fusion-example-block>
 <!--

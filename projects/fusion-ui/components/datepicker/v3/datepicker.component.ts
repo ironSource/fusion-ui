@@ -18,7 +18,7 @@ const DEFAULT_OPTIONS = {
         [options]="daterangeOptions"
         [formControl]="daterangeFormControl"
     ></fusion-daterange>`,
-    styles: [':host { margin: 0; padding: 0 }'],
+    styles: [':host { margin: 0; padding: 0;} fusion-daterange {width: 240px}'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

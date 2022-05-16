@@ -87,8 +87,9 @@ export class DatepickerDocsComponent implements OnInit {
         })
     );
 
-    daterangeDatePicker: FormControl = new FormControl({
-        date: new Date(Date.UTC(2022, 4, 10))
+    daterangeDates: FormControl = new FormControl({
+        startDate: new Date(Date.UTC(2022, 4, 10)),
+        endDate: new Date(Date.UTC(2022, 4, 20))
     });
     daterangeMinDate = new Date(Date.UTC(2022, 4, 5));
     daterangeMaxDate = new Date(Date.UTC(2022, 4, 25));
