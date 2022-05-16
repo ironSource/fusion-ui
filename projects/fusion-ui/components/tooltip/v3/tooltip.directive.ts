@@ -19,6 +19,7 @@ import {TooltipContentDirective} from './tooltip-content.directive';
 export class TooltipDirective implements OnDestroy, AfterViewInit {
     @ContentChild(TooltipContentDirective, {static: true}) directiveRef!: TooltipContentDirective;
     @ContentChild('tooltipTriggerElement', {static: true}) tooltipTriggerElement!: ElementRef;
+    @ContentChild('tooltipTriggerElement', {static: true, read: ViewContainerRef}) viewTriggerContainer!: ViewContainerRef;
 
     @Input() fusionTooltip = '';
     @Input() set configuration(config: tooltipConfiguration) {
@@ -45,12 +46,11 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     };
     private tooltipComponentRef: ComponentRef<TooltipContentComponent>;
 
-    constructor(private renderer: Renderer2, private elementRef: ElementRef, private viewContainerRef: ViewContainerRef) {}
+    constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
 
     ngAfterViewInit() {
-        this.tooltipElementRef = this.preventTooltipToClose
-            ? this.elementRef.nativeElement.parentElement
-            : this.tooltipTriggerElement.nativeElement;
+        console.log(this.viewTriggerContainer);
+        this.tooltipElementRef = this.preventTooltipToClose ? this.elementRef.nativeElement : this.tooltipTriggerElement.nativeElement;
         this.initListeners();
     }
 
@@ -71,7 +71,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
             this.directiveRef.create();
             this.tooltipComponentRef = this.directiveRef.tooltipComponentRef;
         } else {
-            this.tooltipComponentRef = this.viewContainerRef.createComponent(TooltipContentComponent);
+            this.tooltipComponentRef = this.viewTriggerContainer.createComponent(TooltipContentComponent);
             this.tooltipComponentRef.instance.tooltipTextContent = this.fusionTooltip;
         }
         this.tooltipComponentRef.changeDetectorRef.markForCheck();
