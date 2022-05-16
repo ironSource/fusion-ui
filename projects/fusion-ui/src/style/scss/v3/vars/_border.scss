@@ -6,6 +6,9 @@ $box-shadow:  0 2px 4px 0 rgba(0, 0, 0, 0.3);
 $v2-box-shadow: 0 2px 4px 0 rgba(12, 0, 51, 0.2);
 $panel-box-shadow:  0 0 7px 0 rgba(0, 0, 0, 0.1);
 
+$overlayBorderRadius: var(--fu-overlay-border-radius, 8px);
+$overlayBoxShadow: 0px 8px 24px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4);
+
 %borderRadius{
     border-radius: $borderRadius;
 }

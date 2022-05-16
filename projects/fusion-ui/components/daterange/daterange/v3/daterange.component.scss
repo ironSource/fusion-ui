@@ -21,31 +21,34 @@ $selectHolderHeight: 39px;
         right: 0;
         display: none;
         padding: 8px;
+        margin-top: 4px;
         min-width: 480px;
-        border-radius: 4px;
+        border-radius: $overlayBorderRadius;
+        box-shadow: $overlayBoxShadow;
         background-color: $White;
-        box-shadow: $v2-box-shadow;
         visibility: hidden;
 
         &.singleDatePicker {
-            min-width: 240px;
+            min-width: 256px;
             padding: 0;
 
             .rightSide, .rightSide .calendarsWrap {
                 width: 100%;
             }
 
+            /*
             .rightSide .calendarsWrap {
-                padding-bottom: 8px;
+                padding-bottom: 16px;
                 min-height: initial;
             }
+            */
         }
 
         .rightSide {
             width: 488px;
             position: relative;
             .calendarsWrap {
-                padding: 8px 8px 18px;
+                padding: 12px 16px;
                 display: flex;
                 gap: 28px;
                 min-height: 282px;
@@ -63,7 +66,7 @@ $selectHolderHeight: 39px;
 
             .prev, .next {
                 position: absolute;
-                top: 15px;
+                top: 24px;
                 width: 24px;
                 height: 24px;
                 cursor: pointer;
@@ -86,11 +89,11 @@ $selectHolderHeight: 39px;
             }
 
             .prev {
-                left: 13px;
+                left: 20px;
             }
 
             .next {
-                right: 10px;
+                right: 20px;
             }
         }
 

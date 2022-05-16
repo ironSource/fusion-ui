@@ -101,9 +101,8 @@ datepicker.addEventListener("controlValueChange", e => console.log(e.detail));'
 
 
                 <div class="row">
-                    <!--<div class="col-3"><fusion-datepicker [minDate]="daterangeMinDate" [maxDate]="daterangeMaxDate" formControlName="datePickerBasic"></fusion-datepicker></div>-->
-                    <div class="col-4"></div>
-                <div class="col-3"><fusion-daterange [minDate]="daterangeMinDate" [maxDate]="daterangeMaxDate"
+                    <div class="col-3"><fusion-datepicker formControlName="datePickerBasic"></fusion-datepicker></div>
+                    <div class="col-3"><fusion-daterange [minDate]="daterangeMinDate" [maxDate]="daterangeMaxDate"
                                                      [formControl]="daterangeDates"
                                                      [options]="optionOnlyDatePicker$ | async"></fusion-daterange></div>
                 </div>

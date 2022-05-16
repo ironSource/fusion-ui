@@ -18,6 +18,8 @@ export class CalendarComponent extends CalendarBaseComponent implements OnDestro
 
     @ViewChildren('date', {read: ElementRef}) dateList: QueryList<ElementRef>;
 
+    daysOfTheWeek = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+
     constructor(calendarService: CalendarService, public renderer: Renderer2) {
         super(calendarService);
     }

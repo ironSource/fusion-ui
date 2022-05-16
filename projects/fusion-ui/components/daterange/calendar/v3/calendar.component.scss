@@ -1,18 +1,17 @@
 @import '../../../../src/style/scss/v3/vars/vars';
 @import '../../../../src/style/scss/v3/mixins/mixins';
-//@import '../../../../src/style/scss/v3/vars/border';
+@import '../../../../src/style/scss/v3/vars/border';
 
 @mixin calendar-circle($color, $border-radius) {
     position: absolute;
     content: '';
-    left: 0px;
-    top: 0px;
+    left: 0;
+    top: -1px;
     background-color: $color;
-    height: 28px;
-    width: 28px;
+    height: 32px;
+    width: 32px;
     border-radius: $border-radius;
     display: block;
-    margin: 2px;
 }
 
 @mixin calendar-today-dot($color) {
@@ -31,7 +30,8 @@
     .calendar {
         width: 224px;
         @include user-select(none);
-        border-spacing: 0;
+        border-spacing: 0 4px;
+        color: $fu-black-500;
         background-color: $White;
     }
 
@@ -42,20 +42,21 @@
     }
 
     .day-in-week th {
-        @extend %font-bodyStrong;
+        @extend %font-bodyXSmall;
         color: $fu-black-500;
         width: 32px;
-        height: 24px;
+        height: 32px;
     }
 
     .day {
         @extend %font-bodySmall;
+        line-height: 16px;
+        letter-spacing: 0.24px;
         color: $fu-black-500;
         text-align: center;
         cursor: pointer;
         @include size(32px);
         position: relative;
-
         span {
             position: relative;
         }

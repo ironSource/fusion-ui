@@ -148,7 +148,7 @@ export class DatepickerDocsComponent implements OnInit {
     formInit(): void {
         this.formDatePicker = this.formBuilder.group({
             datePickerRequired: [null, [Validators.required]],
-            datePickerBasic: [{date: new Date()}],
+            datePickerBasic: [{date: new Date('2021-09-13')}],
             datePickerFull: [{date: new Date(), timezone: 'UTC'}],
             datePickerDisabled: [{value: {date: new Date()}, disabled: true}]
         });

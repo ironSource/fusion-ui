@@ -22,6 +22,6 @@ export class DaterangeComponent extends DaterangeBaseComponent {
         dropdownArrowIconName: {iconName: 'angle-down', iconVersion: 'v3'}
     });
 
-    pevIconName = {iconName: 'arrow-back', iconVersion: 'v3'};
-    nextIconName = {iconName: 'arrow-forward', iconVersion: 'v3'};
+    pevIconName = {iconName: 'angle-left', iconVersion: 'v3'};
+    nextIconName = {iconName: 'angle-right', iconVersion: 'v3'};
 }
