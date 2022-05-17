@@ -119,7 +119,7 @@ export abstract class DaterangeBaseComponent implements OnInit, ControlValueAcce
     }
 
     onOutsideClick() {
-        // this.close();
+        this.close();
     }
 
     apply() {
