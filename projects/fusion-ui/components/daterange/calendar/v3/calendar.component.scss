@@ -88,11 +88,6 @@
             &:last-child .selected-range {
                 width: 33px;
             }
-
-            &:first-child .selected-range {
-                left: 3px;
-                width: 30px;
-            }
         }
 
         &.today {
@@ -135,14 +130,11 @@
 
         &.selectedEnd:before {
             @include calendar-circle($fu-primary-500, 0 50% 50% 0);
-            width: 32px;
-            left: 1px;
+            left: -2px;
         }
 
         &.selectedStart:before, &.active.selected.oneDaySelection.hover-range:before {
             @include calendar-circle($fu-primary-500, 50% 0 0 50%);
-            width: 32px;
-            left: -2px;
         }
 
         &.selectedDayAfterDay:not(:last-child).selectedStart:after {

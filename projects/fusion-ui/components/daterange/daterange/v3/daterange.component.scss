@@ -29,22 +29,21 @@ $selectHolderHeight: 39px;
         visibility: hidden;
 
         .rightSide {
-            width: 488px;
-            position: relative;
             .calendarsWrap {
-                /*padding: 12px 16px;*/
+                position: relative;
+                margin-top: -4px;
                 display: flex;
-                gap: 28px;
-                min-height: 282px;
+                gap: 24px;
+                margin-bottom: 12px;
             }
 
             .calendarsFooter {
                 border-top: 1px solid $fu-light-300;
-                margin-right: -9px;
-                height: 40px;
-                padding: 12px 17px 2px 0;
+                margin-right: -17px;
+                height: 32px;
+                padding: 12px 14px 0 0;
                 display: flex;
-                gap: 4px;
+                grid-gap: 4px;
                 justify-content: end;
             }
 
@@ -83,6 +82,7 @@ $selectHolderHeight: 39px;
 
         .presetsWrap {
             width: 136px;
+            margin-right: 16px;
             @extend %font-bodySmall;
             ul{
                 padding: 0;
@@ -91,12 +91,14 @@ $selectHolderHeight: 39px;
                     color: $fu-black-500;
                     height: 32px;
                     padding: 8px;
+                    margin-bottom: 2px;
                     display: flex;
                     align-items: center;
-                    border-radius: 8px;
+                    border-radius: $borderRadius;
+                    letter-spacing: 0.24px;
+                    line-height: 16px;
                     &:not(.selected):not(.disabled):hover {
                         cursor: pointer;
-                        border-radius: 4px;
                         background-color: $fu-light-50;
                     }
 
@@ -117,24 +119,9 @@ $selectHolderHeight: 39px;
         &.singleDatePicker {
             min-width: 256px;
             padding: 12px 16px;
-
             .rightSide, .rightSide .calendarsWrap {
                 width: 100%;
-            }
-
-            /*
-            .rightSide .calendarsWrap {
-                padding-bottom: 16px;
-                !*min-height: initial;*!
-            }
-            */
-        }
-
-
-        &:not(.singleDatePicker).fu-no-presets{
-            padding-left: 4px;
-            .calendarsFooter{
-                margin-left: -4px;
+                margin-bottom: 0;
             }
         }
 

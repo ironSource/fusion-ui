@@ -134,8 +134,8 @@ export class DatepickerDocsComponent implements OnInit {
 
     // add it with options.presets
     optionOnlyDatePicker$ = new BehaviorSubject<DaterangeOptions>({
-        format: 'd MMM y'
-        /*        presets: this.customDateRangePresets*/
+        format: 'd MMM y',
+        presets: this.customDateRangePresets
     });
     // endregion
 
