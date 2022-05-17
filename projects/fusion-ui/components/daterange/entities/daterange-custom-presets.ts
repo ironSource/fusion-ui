@@ -1,7 +1,5 @@
-export interface DaterangeCustomPreset {
+export interface DaterangeCustomPreset extends DateRange {
     label: string;
-    startDate: Date;
-    endDate: Date;
 }
 
 export interface DateRange {
