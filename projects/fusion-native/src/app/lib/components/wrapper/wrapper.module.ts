@@ -48,8 +48,7 @@ import {ChartModule} from '@ironsource/fusion-ui/components/chart';
 import {IconSelectListModule} from '@ironsource/fusion-ui/components/icon-select-list';
 import {IconStatusModule} from '@ironsource/fusion-ui/components/icon-status';
 import {SwitcherModule} from '@ironsource/fusion-ui/components/switcher';
-import {CalendarModule} from '@ironsource/fusion-ui/components/date';
-import {DaterangeModule} from '@ironsource/fusion-ui/components/date';
+import {DaterangeModule} from '@ironsource/fusion-ui/components/daterange';
 import {MobilePreviewerModule} from '@ironsource/fusion-ui/components/mobile-previewer';
 import {StatusLabelModule} from '@ironsource/fusion-ui/components/status-label';
 import {ToastModule} from '@ironsource/fusion-ui/components/toast';
@@ -101,7 +100,6 @@ import {MonthPickerModule} from '@ironsource/fusion-ui/components/month-picker';
         IconSelectListModule,
         IconStatusModule,
         SwitcherModule,
-        CalendarModule,
         DaterangeModule,
         MobilePreviewerModule,
         StatusLabelModule,

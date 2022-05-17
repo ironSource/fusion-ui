@@ -37,8 +37,7 @@ import {ChartLabelsComponent} from '@ironsource/fusion-ui/components/chart-label
 import {IconSelectListComponent} from '@ironsource/fusion-ui/components/icon-select-list';
 import {IconStatusComponent} from '@ironsource/fusion-ui/components/icon-status';
 import {SwitcherComponent} from '@ironsource/fusion-ui/components/switcher';
-import {CalendarComponent} from '@ironsource/fusion-ui/components/date';
-import {DaterangeComponent} from '@ironsource/fusion-ui/components/date';
+import {DaterangeComponent} from '@ironsource/fusion-ui/components/daterange';
 import {MobilePreviewerComponent} from '@ironsource/fusion-ui/components/mobile-previewer';
 import {StatusLabelComponent} from '@ironsource/fusion-ui/components/status-label';
 import {ToastComponent} from '@ironsource/fusion-ui/components/toast';
@@ -48,8 +47,7 @@ import {SidebarMenuComponent} from '@ironsource/fusion-ui/components/sidebar';
 import {ModalService} from '@ironsource/fusion-ui/components/modal';
 import {NotificationService} from '@ironsource/fusion-ui/components/notification';
 import {PopupService} from '@ironsource/fusion-ui/components/popup';
-import {CalendarService} from '@ironsource/fusion-ui/components/date';
-import {DaterangeService} from '@ironsource/fusion-ui/components/date';
+import {DaterangeService} from '@ironsource/fusion-ui/components/daterange';
 import {ToastService} from '@ironsource/fusion-ui/components/toast';
 import {TabsComponent, TabComponent} from '@ironsource/fusion-ui/components/tabs';
 import {TextareaComponent} from '@ironsource/fusion-ui/components/textarea';
@@ -70,7 +68,7 @@ import {TooltipService} from '@ironsource/fusion-ui/components/tooltip/common/ba
 
 // enums
 import {NotificationType} from '@ironsource/fusion-ui/components/notification';
-import {DatepickerMode} from '@ironsource/fusion-ui/components/datepicker';
+import {DatepickerMode} from '@ironsource/fusion-ui/components/datepicker/v1';
 import {HeaderSizes} from '@ironsource/fusion-ui/components/header-overlay';
 import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline';
 import {ListBoxModes} from '@ironsource/fusion-ui/components/list-box';
@@ -79,7 +77,7 @@ import {TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table';
 import {TooltipPosition, TooltipType} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {FormControlStatus} from '@ironsource/fusion-ui/components/error-message';
 import {SwitcherMode} from '@ironsource/fusion-ui/components/switcher';
-import {DaterangePresets} from '@ironsource/fusion-ui/components/date';
+import {DaterangePresets} from '@ironsource/fusion-ui/components/daterange/entities';
 import {MobileOrientation} from '@ironsource/fusion-ui/components/mobile-previewer';
 
 const PREFIX = 'native-fusion';
@@ -95,7 +93,6 @@ export const services = {
     tooltipService: TooltipService,
     popupService: PopupService,
     colorsService: ColorsService,
-    calendarService: CalendarService,
     daterangeService: DaterangeService,
     toastService: ToastService
 };
@@ -162,7 +159,6 @@ export const components = [
     {name: `${PREFIX}-icon-select-list`, componentInstance: IconSelectListComponent},
     {name: `${PREFIX}-icon-status`, componentInstance: IconStatusComponent},
     {name: `${PREFIX}-switcher`, componentInstance: SwitcherComponent},
-    {name: `${PREFIX}-calendar`, componentInstance: CalendarComponent},
     {name: `${PREFIX}-daterange`, componentInstance: DaterangeComponent},
     {name: `${PREFIX}-mobile-previewer`, componentInstance: MobilePreviewerComponent},
     {name: `${PREFIX}-status-label`, componentInstance: StatusLabelComponent},
