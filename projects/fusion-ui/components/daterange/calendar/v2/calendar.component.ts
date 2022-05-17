@@ -1,11 +1,11 @@
 import {ChangeDetectionStrategy, Component, ElementRef, OnDestroy, QueryList, Renderer2, ViewChildren} from '@angular/core';
 import {CalendarBaseComponent} from '../common/base/calendar.base.component';
 import {Subject} from 'rxjs';
-import {CalendarService} from '@ironsource/fusion-ui/components/daterange/calendar/common/calendar.service';
+import {CalendarService} from '../common/calendar.service';
 import {filter, takeUntil} from 'rxjs/operators';
-import {HOVER_CURRENT_CLASS, HOVER_RANGE_CLASS} from '@ironsource/fusion-ui/components/daterange/calendar/common/calendar.config';
-import {Day} from '@ironsource/fusion-ui/components/daterange';
-import {CalendarType} from '@ironsource/fusion-ui/components/daterange/calendar/common/calendar-type.enum';
+import {HOVER_CURRENT_CLASS, HOVER_RANGE_CLASS} from '../common/calendar.config';
+import {Day} from '../../entities/day';
+import {CalendarType} from '../common/calendar-type.enum';
 
 @Component({
     selector: 'fusion-calendar',

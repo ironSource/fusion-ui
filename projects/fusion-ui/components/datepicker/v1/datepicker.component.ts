@@ -16,15 +16,15 @@ import {isDate, isNullOrUndefined, isUndefined} from '@ironsource/fusion-ui/util
 import {ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {DatepickerMode} from './datepicker-mode';
 import {DatepickerDate} from './datepicker-date';
-import {InputComponent} from '@ironsource/fusion-ui/components/input';
+import {InputComponent} from '../../input';
 import {DatePipe} from '@angular/common';
-import {TimezoneService} from '@ironsource/fusion-ui/services/timezone';
+import {TimezoneService} from '../../../services/timezone';
 import {Datepicker} from './datepicker';
-import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown';
+import {DropdownOption} from '../../dropdown';
 import {DEFAULT_TIMEZONE_OPTIONS} from './datepicker.config';
 import {BehaviorSubject, Subject} from 'rxjs';
-import {CalendarService} from '@ironsource/fusion-ui/components/daterange/calendar/common/calendar.service';
-import {DAY_NAMES} from '@ironsource/fusion-ui/components/daterange/entities/config';
+import {CalendarService} from '../../daterange/calendar/common/calendar.service';
+import {DAY_NAMES} from '../../daterange/entities/config';
 
 @Component({
     selector: 'fusion-datepicker',
