@@ -101,10 +101,10 @@ datepicker.addEventListener("controlValueChange", e => console.log(e.detail));'
 
 
                 <div class="row">
-                    <div class="col-3"><fusion-datepicker formControlName="datePickerBasic"></fusion-datepicker></div>
+                    <div class="col-3"><fusion-datepicker formControlName="datePickerBasic" [options]="optionDatePicker$ | async"></fusion-datepicker></div>
                     <div class="col-3"><fusion-daterange
                                                      [formControl]="daterangeDates"
-                                                     [options]="optionOnlyDatePicker$ | async"></fusion-daterange></div>
+                                                     [options]="optionDateRange$ | async"></fusion-daterange></div>
                 </div>
 
             </fusion-example-block>

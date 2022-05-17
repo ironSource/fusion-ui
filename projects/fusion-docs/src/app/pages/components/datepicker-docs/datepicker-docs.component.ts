@@ -95,6 +95,8 @@ export class DatepickerDocsComponent implements OnInit {
     daterangeMinDate = new Date(Date.UTC(2022, 3, 5));
     daterangeMaxDate = new Date(Date.UTC(2022, 5, 25));
 
+    optionDatePicker$ = new BehaviorSubject<DaterangeOptions>({});
+
     // region set custom presets
     // set for presets start and end date - just for example.
     // Consumers can do it as they wish
@@ -133,7 +135,7 @@ export class DatepickerDocsComponent implements OnInit {
     ];
 
     // add it with options.presets
-    optionOnlyDatePicker$ = new BehaviorSubject<DaterangeOptions>({
+    optionDateRange$ = new BehaviorSubject<DaterangeOptions>({
         format: 'd MMM y',
         presets: this.customDateRangePresets
     });
@@ -148,7 +150,7 @@ export class DatepickerDocsComponent implements OnInit {
     formInit(): void {
         this.formDatePicker = this.formBuilder.group({
             datePickerRequired: [null, [Validators.required]],
-            datePickerBasic: [{date: new Date('2021-09-13')}],
+            datePickerBasic: [{date: new Date()}],
             datePickerFull: [{date: new Date(), timezone: 'UTC'}],
             datePickerDisabled: [{value: {date: new Date()}, disabled: true}]
         });

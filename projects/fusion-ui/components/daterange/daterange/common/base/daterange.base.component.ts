@@ -101,7 +101,7 @@ export abstract class DaterangeBaseComponent implements OnInit, ControlValueAcce
             month,
             minDate: this.minDate,
             maxDate: this.maxDate,
-            allowFutureSelection: this.options.allowFutureSelection ?? this.isSingleDatePicker,
+            allowFutureSelection: this.options.allowFutureSelection ?? !this.isSingleDatePicker,
             selection: this.selection,
             calendarType: this.isSingleDatePicker ? CalendarType.DATE_PICKER : CalendarType.DATE_RANGE
         };
