@@ -119,7 +119,7 @@ export abstract class DaterangeBaseComponent implements OnInit, ControlValueAcce
     }
 
     onOutsideClick() {
-        this.close();
+        // this.close();
     }
 
     apply() {
@@ -281,7 +281,7 @@ export abstract class DaterangeBaseComponent implements OnInit, ControlValueAcce
         } else {
             this.daterangeOptions = this.defaultOptions;
         }
-        this.overlayAlign$.next(this.daterangeOptions?.overlayAlignPosition ?? '');
+        this.overlayAlign$.next(this.daterangeOptions?.overlayAlignPosition ?? 'left');
 
         this.initMonth(this.calendarService.getCurrentDateUTC());
     }

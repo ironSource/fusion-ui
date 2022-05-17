@@ -20,35 +20,19 @@ $selectHolderHeight: 39px;
         position: absolute;
         right: 0;
         display: none;
-        padding: 8px;
+        padding: 16px 16px 16px 12px;
         margin-top: 4px;
         min-width: 480px;
-        border-radius: $overlayBorderRadius;
-        box-shadow: $overlayBoxShadow;
+        border-radius: $borderRadius;
+        box-shadow: $boxShadow;
         background-color: $White;
         visibility: hidden;
-
-        &.singleDatePicker {
-            min-width: 256px;
-            padding: 0;
-
-            .rightSide, .rightSide .calendarsWrap {
-                width: 100%;
-            }
-
-            /*
-            .rightSide .calendarsWrap {
-                padding-bottom: 16px;
-                min-height: initial;
-            }
-            */
-        }
 
         .rightSide {
             width: 488px;
             position: relative;
             .calendarsWrap {
-                padding: 12px 16px;
+                /*padding: 12px 16px;*/
                 display: flex;
                 gap: 28px;
                 min-height: 282px;
@@ -66,7 +50,7 @@ $selectHolderHeight: 39px;
 
             .prev, .next {
                 position: absolute;
-                top: 24px;
+                top: 12px;
                 width: 24px;
                 height: 24px;
                 cursor: pointer;
@@ -89,16 +73,16 @@ $selectHolderHeight: 39px;
             }
 
             .prev {
-                left: 20px;
+                left: 4px;
             }
 
             .next {
-                right: 20px;
+                right: 4px;
             }
         }
 
         .presetsWrap {
-            width: 181px;
+            width: 136px;
             @extend %font-bodySmall;
             ul{
                 padding: 0;
@@ -110,7 +94,6 @@ $selectHolderHeight: 39px;
                     display: flex;
                     align-items: center;
                     border-radius: 8px;
-
                     &:not(.selected):not(.disabled):hover {
                         cursor: pointer;
                         border-radius: 4px;
@@ -130,6 +113,23 @@ $selectHolderHeight: 39px;
                 }
             }
         }
+
+        &.singleDatePicker {
+            min-width: 256px;
+            padding: 12px 16px;
+
+            .rightSide, .rightSide .calendarsWrap {
+                width: 100%;
+            }
+
+            /*
+            .rightSide .calendarsWrap {
+                padding-bottom: 16px;
+                !*min-height: initial;*!
+            }
+            */
+        }
+
 
         &:not(.singleDatePicker).fu-no-presets{
             padding-left: 4px;

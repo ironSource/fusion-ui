@@ -93,7 +93,7 @@ export class DatepickerDocsComponent implements OnInit {
         endDate: new Date(Date.UTC(2022, 4, 16))
     });
     daterangeMinDate = new Date(Date.UTC(2022, 3, 5));
-    daterangeMaxDate = new Date(Date.UTC(2022, 4, 25));
+    daterangeMaxDate = new Date(Date.UTC(2022, 5, 25));
 
     // region set custom presets
     // set for presets start and end date - just for example.
@@ -134,8 +134,8 @@ export class DatepickerDocsComponent implements OnInit {
 
     // add it with options.presets
     optionOnlyDatePicker$ = new BehaviorSubject<DaterangeOptions>({
-        format: 'd MMM y',
-        presets: this.customDateRangePresets
+        format: 'd MMM y'
+        /*        presets: this.customDateRangePresets*/
     });
     // endregion
 
