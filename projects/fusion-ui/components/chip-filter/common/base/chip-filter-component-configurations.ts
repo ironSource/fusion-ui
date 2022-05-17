@@ -3,14 +3,13 @@ export interface ChipFilterComponentConfigurations {
     close?: boolean;
     disabled?: boolean;
     selected?: boolean;
-    type?: ChipType;
 }
 
 export enum ChipTypeToClass {
-    DateFilter = 'fu-date-filter',
+    UnRemoveAbleSelect = 'fu-un-removable-filter',
     AddFilter = 'fu-add-filter',
-    ChipSelect = 'fu-chip-select',
+    RemoveAbleSelect = 'fu-removable-filter',
     ChipDropdown = 'fu-chip-dropdown'
 }
 
-export type ChipType = 'DateFilter' | 'AddFilter' | 'ChipSelect' | 'ChipDropdown';
+export type ChipType = 'UnRemoveAbleSelect' | 'AddFilter' | 'RemoveAbleSelect' | 'ChipDropdown';

@@ -1,0 +1,16 @@
+@import '../../../src/style/scss/v3/vars/colors';
+
+
+:host{
+   .chip-filters-container{
+       box-sizing: border-box;
+       display: flex;
+       flex-direction: row;
+       align-items: flex-start;
+       gap: 4px;
+       padding: 16px 24px 16px 24px;
+       background-color: $White;
+       width: 100%;
+       min-height: 64px;
+   }
+}

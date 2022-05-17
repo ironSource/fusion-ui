@@ -55,6 +55,7 @@ import {TabsComponent, TabComponent} from '@ironsource/fusion-ui/components/tabs
 import {TextareaComponent} from '@ironsource/fusion-ui/components/textarea';
 import {ButtonComponent} from '@ironsource/fusion-ui/components/button';
 import {ChipFilterComponent} from '@ironsource/fusion-ui/components/chip-filter';
+import {ChipFiltersComponent} from '@ironsource/fusion-ui/components/chip-filters';
 import {FileDragAndDropComponent} from '@ironsource/fusion-ui/components/file-drag-and-drop';
 
 // Services
@@ -173,5 +174,6 @@ export const components = [
     {name: `${PREFIX}-tabs`, componentInstance: TabsComponent},
     {name: `${PREFIX}-tab`, componentInstance: TabComponent},
     {name: `${PREFIX}-chip-filter`, componentInstance: ChipFilterComponent},
+    {name: `${PREFIX}-chip-filters`, componentInstance: ChipFiltersComponent},
     {name: `${PREFIX}-file-drag-and-drop`, componentInstance: FileDragAndDropComponent}
 ];

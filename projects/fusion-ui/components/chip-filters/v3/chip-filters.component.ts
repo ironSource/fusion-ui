@@ -1,4 +1,5 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {AfterViewInit, ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChipFiltersBaseComponent} from '@ironsource/fusion-ui/components/chip-filters/common/base';
 
 @Component({
     selector: 'fusion-chip-filters',
@@ -6,4 +7,4 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
     styleUrls: ['./chip-filters.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChipFiltersComponent {}
+export class ChipFiltersComponent extends ChipFiltersBaseComponent implements AfterViewInit {}
