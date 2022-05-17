@@ -90,7 +90,7 @@ export abstract class DaterangeBaseComponent implements OnInit, ControlValueAcce
     }
 
     selectPreset(preset, cohort?: number) {
-        this.selection = this.daterangeService.getPresetRange(preset, cohort);
+        this.selection = this.daterangeService.getPresetRange(preset);
         this.currentPreset = preset;
         this.initMonth(this.selection.endDate);
     }

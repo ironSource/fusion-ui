@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {DEFAULT_DATERANGE_PRESET_LIST, DEFAULT_DATERANGE_PRESET_NAMES} from '../../entities/config';
 import {CalendarService} from '../../calendar/common/calendar.service';
 import {DaterangePresets} from '../../entities/daterange-presets.enum';
-import {DaterangeSelection} from '../../entities/daterange-selection';
 import {DateRange, DaterangeCustomPreset} from '../../entities/daterange-custom-presets';
 
 @Injectable({
@@ -13,63 +12,63 @@ export class DaterangeService {
 
     defaultPresetList = DEFAULT_DATERANGE_PRESET_LIST;
     presetDateFunctions = {
-        [DaterangePresets.Today]: () => {
+        [DaterangePresets.Today]: (): DateRange => {
             const now = this.calendarService.getCurrentDateUTC();
             return {
                 endDate: now,
                 startDate: now
             };
         },
-        [DaterangePresets.Yesterday]: () => {
+        [DaterangePresets.Yesterday]: (): DateRange => {
             const now = this.calendarService.getCurrentDateUTC();
             return {
                 endDate: new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1),
                 startDate: new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1)
             };
         },
-        [DaterangePresets.Last3Days]: () => {
+        [DaterangePresets.Last3Days]: (): DateRange => {
             const now = this.calendarService.getCurrentDateUTC();
             return {
                 endDate: now,
                 startDate: new Date(now.getFullYear(), now.getMonth(), now.getDate() - 2)
             };
         },
-        [DaterangePresets.Last7Days]: () => {
+        [DaterangePresets.Last7Days]: (): DateRange => {
             const now = this.calendarService.getCurrentDateUTC();
             return {
                 endDate: now,
                 startDate: new Date(now.getFullYear(), now.getMonth(), now.getDate() - 6)
             };
         },
-        [DaterangePresets.Last14Days]: () => {
+        [DaterangePresets.Last14Days]: (): DateRange => {
             const now = this.calendarService.getCurrentDateUTC();
             return {
                 endDate: now,
                 startDate: new Date(now.getFullYear(), now.getMonth(), now.getDate() - 13)
             };
         },
-        [DaterangePresets.Last30Days]: () => {
+        [DaterangePresets.Last30Days]: (): DateRange => {
             const now = this.calendarService.getCurrentDateUTC();
             return {
                 endDate: now,
                 startDate: new Date(now.getFullYear(), now.getMonth(), now.getDate() - 29)
             };
         },
-        [DaterangePresets.ThisMonth]: () => {
+        [DaterangePresets.ThisMonth]: (): DateRange => {
             const now = this.calendarService.getCurrentDateUTC();
             return {
                 startDate: new Date(now.getFullYear(), now.getMonth(), 1),
                 endDate: now
             };
         },
-        [DaterangePresets.LastMonth]: () => {
+        [DaterangePresets.LastMonth]: (): DateRange => {
             const now = this.calendarService.getCurrentDateUTC();
             return {
                 startDate: new Date(now.getFullYear(), now.getMonth() - 1, 1),
                 endDate: new Date(now.getFullYear(), now.getMonth(), 0)
             };
         },
-        [DaterangePresets.Last60Days]: () => {
+        [DaterangePresets.Last60Days]: (): DateRange => {
             const now = this.calendarService.getCurrentDateUTC();
             return {
                 endDate: now,
@@ -89,22 +88,20 @@ export class DaterangeService {
     }
 
     determinePreset(
-        daterange: DaterangeSelection,
+        daterange: DateRange,
         availablePresets: DaterangePresets[] | DaterangeCustomPreset[] = null,
         params?: any
     ): DaterangePresets | DaterangeCustomPreset {
         if (!availablePresets) {
             availablePresets = this.defaultPresetList;
         }
-
         if (!daterange || !daterange.startDate || !daterange.endDate) {
             return null;
         }
-
         return this.getPresetBySelectedDates(daterange, availablePresets);
     }
 
-    getPresetRange(preset: DaterangePresets | DaterangeCustomPreset, params?: any): DaterangeSelection {
+    getPresetRange(preset: DaterangePresets | DaterangeCustomPreset): DateRange {
         return this.isCustomPreset(preset)
             ? {
                   startDate: (preset as DaterangeCustomPreset).startDate,
@@ -113,7 +110,7 @@ export class DaterangeService {
             : this.presetDateFunctions[preset as DaterangePresets]();
     }
 
-    getDefaultRange(): DaterangeSelection {
+    getDefaultRange(): DateRange {
         return this.presetDateFunctions[DaterangePresets.Last7Days]();
     }
 
@@ -133,27 +130,13 @@ export class DaterangeService {
     }
 
     private getPresetBySelectedDates(
-        daterange: DaterangeSelection,
+        daterange: DateRange,
         availablePresets: DaterangePresets[] | DaterangeCustomPreset[]
     ): DaterangePresets | DaterangeCustomPreset {
         for (const preset of availablePresets) {
-            if (this.isCustomPreset(preset)) {
-                const presetCustomRange: DateRange = {
-                    startDate: (preset as DaterangeCustomPreset).startDate,
-                    endDate: (preset as DaterangeCustomPreset).endDate
-                };
-
-                if (this.isSameRange(daterange as DateRange, presetCustomRange)) {
-                    return preset;
-                }
-            } else {
-                const presetRange = this.presetDateFunctions[preset as DaterangePresets]();
-                if (
-                    presetRange.startDate.getTime() === daterange.startDate.getTime() &&
-                    presetRange.endDate.getTime() === daterange.endDate.getTime()
-                ) {
-                    return preset;
-                }
+            const presetRange = this.getPresetRange(preset);
+            if (this.isSameRange(daterange, presetRange)) {
+                return preset;
             }
         }
         return null;
@@ -164,6 +147,6 @@ export class DaterangeService {
     }
 
     private isSameDay(date1: Date, date2: Date): boolean {
-        return date1.toISOString().split('T')[0] === date2.toISOString().split('T')[0];
+        return date1.getFullYear() === date2.getFullYear() && date1.getMonth() === date2.getMonth() && date1.getDate() === date2.getDate();
     }
 }

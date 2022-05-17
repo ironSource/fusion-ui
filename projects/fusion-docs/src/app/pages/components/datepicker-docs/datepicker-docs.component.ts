@@ -89,8 +89,8 @@ export class DatepickerDocsComponent implements OnInit {
     );
 
     daterangeDates: FormControl = new FormControl({
-        startDate: new Date(Date.UTC(2022, 4, 12)),
-        endDate: new Date(Date.UTC(2022, 4, 16))
+        startDate: new Date(Date.UTC(2022, 4, 4)),
+        endDate: new Date(Date.UTC(2022, 4, 17))
     });
     daterangeMinDate = new Date(Date.UTC(2022, 3, 5));
     daterangeMaxDate = new Date(Date.UTC(2022, 5, 25));
@@ -136,8 +136,8 @@ export class DatepickerDocsComponent implements OnInit {
 
     // add it with options.presets
     optionDateRange$ = new BehaviorSubject<DaterangeOptions>({
-        format: 'd MMM y',
-        presets: this.customDateRangePresets
+        format: 'd MMM y' /*,
+        presets: this.customDateRangePresets*/
     });
     // endregion
 
