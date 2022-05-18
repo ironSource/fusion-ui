@@ -1,0 +1,140 @@
+@import '../../../src/style/scss/v3/vars/vars';
+@import '../../../src/style/scss/v3/mixins/mixins';
+@import '../../../src/style/scss/v3/vars/border';
+
+$selectHolderHeight: 39px;
+
+:host {
+    @extend %reset;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    line-height: 20px;
+
+    &.open-to-right .overlay {
+        left: 0;
+    }
+
+    .overlay {
+        @extend %notificationLayer;
+        position: absolute;
+        right: 0;
+        display: none;
+        padding: 16px 16px 16px 12px;
+        margin-top: 4px;
+        min-width: 480px;
+        border-radius: $borderRadius;
+        box-shadow: $boxShadow;
+        background-color: $White;
+        visibility: hidden;
+
+        .rightSide {
+            .calendarsWrap {
+                position: relative;
+                margin-top: -4px;
+                display: flex;
+                gap: 24px;
+                margin-bottom: 12px;
+            }
+
+            .calendarsFooter {
+                border-top: 1px solid $fu-light-300;
+                margin-right: -17px;
+                height: 32px;
+                padding: 12px 14px 0 0;
+                display: flex;
+                grid-gap: 4px;
+                justify-content: flex-end;
+            }
+
+            .prev, .next {
+                position: absolute;
+                top: 12px;
+                width: 24px;
+                height: 24px;
+                cursor: pointer;
+                border-radius: 100px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                @include icon-style('icon-prev',  $fu-black-500, 16px, true, true);
+                @include icon-style('icon-next',  $fu-black-500, 16px, true, true);
+
+                .icon-prev,
+                .icon-next{
+                    @include size(16px);
+                }
+
+                &:hover {
+                    background-color: $fu-light-200;
+                }
+            }
+
+            .prev {
+                left: 4px;
+            }
+
+            .next {
+                right: 4px;
+            }
+        }
+
+        .presetsWrap {
+            width: 136px;
+            margin-right: 16px;
+            @extend %font-bodySmall;
+            ul{
+                padding: 0;
+                margin: 0;
+                li {
+                    color: $fu-black-500;
+                    height: 32px;
+                    padding: 8px;
+                    margin-bottom: 2px;
+                    display: flex;
+                    align-items: center;
+                    border-radius: $borderRadius;
+                    letter-spacing: 0.24px;
+                    line-height: 16px;
+                    &:not(.selected):not(.disabled):hover {
+                        cursor: pointer;
+                        background-color: $fu-light-50;
+                    }
+
+                    &.selected {
+                        color: $fu-primary-500;
+                        background-color: $fu-primary-100;
+                    }
+
+                    &.disabled {
+                        color: $fu-light-800;
+                        pointer-events: none;
+                    }
+
+                }
+            }
+        }
+
+        &.singleDatePicker {
+            min-width: 256px;
+            padding: 12px 16px;
+            .rightSide, .rightSide .calendarsWrap {
+                width: 100%;
+                margin-bottom: 0;
+            }
+        }
+
+        &.isOpen {
+            display: flex;
+        }
+
+        &.left {
+            left: 0;
+            right: initial;
+        }
+        &.visible{
+            visibility: initial;
+        }
+    }
+}

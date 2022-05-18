@@ -8,8 +8,8 @@ import {CodeBlockModule} from '../../../components/code-block/code-block.module'
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {DatepickerModule} from '@ironsource/fusion-ui/components/datepicker/v3';
-import {DaterangeModule} from '@ironsource/fusion-ui/components/daterange/daterange/v3';
 import {IconModule} from '@ironsource/fusion-ui';
+import {DaterangeModule} from '@ironsource/fusion-ui/components/daterange/v3';
 
 @NgModule({
     declarations: [DatepickerDocsComponent],

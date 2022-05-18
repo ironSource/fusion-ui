@@ -4,8 +4,8 @@ import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {BehaviorSubject} from 'rxjs';
 import {delay, tap} from 'rxjs/operators';
 import {VersionService} from '../../../services/version/version.service';
-import {DaterangeOptions} from '@ironsource/fusion-ui';
 import {DaterangeCustomPreset} from '@ironsource/fusion-ui/components/daterange/entities/daterange-custom-presets';
+import {DaterangeOptions} from '@ironsource/fusion-ui/components/daterange/entities';
 
 @Component({
     selector: 'fusion-datepicker-docs',

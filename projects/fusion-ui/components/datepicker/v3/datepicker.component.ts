@@ -1,9 +1,9 @@
 import {ChangeDetectionStrategy, Component, forwardRef, Input, OnDestroy, OnInit} from '@angular/core';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {DatepickerOptions, DatepickerSelection} from './datepicker.entities';
-import {DaterangeOptions} from '@ironsource/fusion-ui/components/daterange/entities/daterange-options';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+import {DatepickerOptions, DatepickerSelection} from './datepicker.entities';
+import {DaterangeOptions} from '@ironsource/fusion-ui/components/daterange/entities';
 
 const DEFAULT_OPTIONS = {
     calendarAmount: 1,

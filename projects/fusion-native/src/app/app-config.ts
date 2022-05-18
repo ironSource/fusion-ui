@@ -2,6 +2,7 @@ import {TableComponent} from '@ironsource/fusion-ui/components/table';
 import {AccordionComponent} from '@ironsource/fusion-ui/components/accordion';
 import {AlertComponent} from '@ironsource/fusion-ui/components/alert';
 import {CheckboxComponent} from '@ironsource/fusion-ui/components/checkbox';
+import {DatepickerComponent as DatepickerComponentV1} from '@ironsource/fusion-ui/components/datepicker/v1';
 import {DatepickerComponent} from '@ironsource/fusion-ui/components/datepicker';
 import {DropdownComponent} from '@ironsource/fusion-ui/components/dropdown';
 import {MonthPickerComponent} from '@ironsource/fusion-ui/components/month-picker';
@@ -37,6 +38,11 @@ import {ChartLabelsComponent} from '@ironsource/fusion-ui/components/chart-label
 import {IconSelectListComponent} from '@ironsource/fusion-ui/components/icon-select-list';
 import {IconStatusComponent} from '@ironsource/fusion-ui/components/icon-status';
 import {SwitcherComponent} from '@ironsource/fusion-ui/components/switcher';
+import {CalendarComponent as CalendarComponentV1} from '@ironsource/fusion-ui/components/calendar/v1';
+import {CalendarComponent as CalendarComponentV2} from '@ironsource/fusion-ui/components/calendar/v2';
+import {CalendarComponent} from '@ironsource/fusion-ui/components/calendar';
+import {DaterangeComponent as DaterangeComponentV1} from '@ironsource/fusion-ui/components/daterange/v1';
+import {DaterangeComponent as DaterangeComponentV2} from '@ironsource/fusion-ui/components/daterange/v2';
 import {DaterangeComponent} from '@ironsource/fusion-ui/components/daterange';
 import {MobilePreviewerComponent} from '@ironsource/fusion-ui/components/mobile-previewer';
 import {StatusLabelComponent} from '@ironsource/fusion-ui/components/status-label';
@@ -44,11 +50,6 @@ import {ToastComponent} from '@ironsource/fusion-ui/components/toast';
 import {TabsComponent as TabsComponentV2} from '@ironsource/fusion-ui/components/tabs/v2';
 import {SidebarComponent} from '@ironsource/fusion-ui/components/sidebar';
 import {SidebarMenuComponent} from '@ironsource/fusion-ui/components/sidebar';
-import {ModalService} from '@ironsource/fusion-ui/components/modal';
-import {NotificationService} from '@ironsource/fusion-ui/components/notification';
-import {PopupService} from '@ironsource/fusion-ui/components/popup';
-import {DaterangeService} from '@ironsource/fusion-ui/components/daterange';
-import {ToastService} from '@ironsource/fusion-ui/components/toast';
 import {TabsComponent, TabComponent} from '@ironsource/fusion-ui/components/tabs';
 import {TextareaComponent} from '@ironsource/fusion-ui/components/textarea';
 import {ButtonComponent} from '@ironsource/fusion-ui/components/button';
@@ -65,6 +66,12 @@ import {ApiResponseType} from '@ironsource/fusion-ui/services/api/api-entities';
 import {CacheType} from '@ironsource/fusion-ui/services/cache/cache-entities';
 import {ColorsService} from '@ironsource/fusion-ui/services/colors/colors.service';
 import {TooltipService} from '@ironsource/fusion-ui/components/tooltip/common/base';
+import {CalendarService} from '@ironsource/fusion-ui/components/calendar/common/base';
+import {DaterangeService} from '@ironsource/fusion-ui/components/daterange/common/base';
+import {PopupService} from '@ironsource/fusion-ui/components/popup';
+import {ToastService} from '@ironsource/fusion-ui/components/toast';
+import {NotificationService} from '@ironsource/fusion-ui/components/notification';
+import {ModalService} from '@ironsource/fusion-ui/components/modal';
 
 // enums
 import {NotificationType} from '@ironsource/fusion-ui/components/notification';
@@ -93,6 +100,7 @@ export const services = {
     tooltipService: TooltipService,
     popupService: PopupService,
     colorsService: ColorsService,
+    calendarService: CalendarService,
     daterangeService: DaterangeService,
     toastService: ToastService
 };
@@ -123,6 +131,7 @@ export const components = [
     {name: `${PREFIX}-accordion`, componentInstance: AccordionComponent},
     {name: `${PREFIX}-alert`, componentInstance: AlertComponent},
     {name: `${PREFIX}-checkbox`, componentInstance: CheckboxComponent, type: `checkbox`},
+    {name: `${PREFIX}-datepicker-v1`, componentInstance: DatepickerComponentV1},
     {name: `${PREFIX}-datepicker`, componentInstance: DatepickerComponent},
     {name: `${PREFIX}-month-picker`, componentInstance: MonthPickerComponent},
     {name: `${PREFIX}-dropdown`, componentInstance: DropdownComponent},
@@ -159,6 +168,11 @@ export const components = [
     {name: `${PREFIX}-icon-select-list`, componentInstance: IconSelectListComponent},
     {name: `${PREFIX}-icon-status`, componentInstance: IconStatusComponent},
     {name: `${PREFIX}-switcher`, componentInstance: SwitcherComponent},
+    {name: `${PREFIX}-calendar-v1`, componentInstance: CalendarComponentV1},
+    {name: `${PREFIX}-calendar-v2`, componentInstance: CalendarComponentV2},
+    {name: `${PREFIX}-calendar`, componentInstance: CalendarComponent},
+    {name: `${PREFIX}-daterange-v1`, componentInstance: DaterangeComponentV1},
+    {name: `${PREFIX}-daterange-v2`, componentInstance: DaterangeComponentV2},
     {name: `${PREFIX}-daterange`, componentInstance: DaterangeComponent},
     {name: `${PREFIX}-mobile-previewer`, componentInstance: MobilePreviewerComponent},
     {name: `${PREFIX}-status-label`, componentInstance: StatusLabelComponent},
