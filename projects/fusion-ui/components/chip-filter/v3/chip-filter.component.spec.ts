@@ -51,7 +51,7 @@ describe('ChipFilterComponent', () => {
             chipElement = chipEl.nativeElement;
         });
 
-        it('should create ChipSelect type', async () => {
+        it('should create chip select removable type', async () => {
             component.config = {id: 1, type: 'dynamic'};
             fixture.detectChanges();
             expect(chipEl).toBeTruthy();
@@ -64,7 +64,7 @@ describe('ChipFilterComponent', () => {
             expect(iconClose).toContain('fu-icon-close');
         });
 
-        it('should create DateFilter type', async () => {
+        it('should create chip select un removable type', async () => {
             component.config = {id: 1, type: 'static'};
             fixture.detectChanges();
             expect(chipEl).toBeTruthy();
