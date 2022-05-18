@@ -8,19 +8,8 @@ import {ChipFilterComponentConfigurations, ChipType} from '@ironsource/fusion-ui
 const innerText = 'Test Chip';
 
 @Component({
-    selector: 'fusion-trigger',
-    template: `<ng-container [ngTemplateOutlet]="templateRef"></ng-container>`
-})
-class TriggerComponent {
-    templateRef: TemplateRef<any>;
-}
-
-@Component({
     template: `<fusion-chip-filter [chipFilterType]="type" [configuration]="config">
         <div class="fu-chip-content">${innerText}</div>
-        <div class="filter-element">
-            <fusion-trigger></fusion-trigger>
-        </div>
     </fusion-chip-filter>`
 })
 class TestChipComponent {
@@ -68,6 +57,9 @@ describe('ChipFilterComponent', () => {
             fixture.detectChanges();
             expect(chipEl).toBeTruthy();
             expect(collectionToArray(chipElement.classList)).toEqual(['closed-icon', 'fu-removable-filter']);
+
+            const iconClose = chipEl.query(By.css('fusion-icon')).nativeElement.classList;
+            expect(iconClose).toContain('fu-icon-close');
 
             component.type = 'RemoveAbleSelect';
             fixture.detectChanges();
