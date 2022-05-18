@@ -1,8 +1,8 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
-import {IconModule} from '@ironsource/fusion-ui/components/icon';
-import {InputModule} from '@ironsource/fusion-ui/components/input';
-import {DropdownModule} from '@ironsource/fusion-ui/components/dropdown';
-import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
+import {IconModule} from '../../icon';
+import {InputModule} from '../../input';
+import {DropdownModule} from '../../dropdown';
+import {ClickOutsideModule} from '../../../directives/click-outside';
 import {DatePipe} from '@angular/common';
 
 import {DatepickerComponent} from './datepicker.component';
@@ -10,10 +10,10 @@ import {DatepickerHeaderComponent} from './datepicker-header/datepicker-header.c
 import {DatepickerSelectionComponent} from './datepicker-selection/datepicker-selection.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import {LogService} from '@ironsource/fusion-ui/services/log';
-import {TimezoneService} from '@ironsource/fusion-ui/services/timezone';
-import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
-import {MockTimeZonesService, MockUniqueIdService} from '@ironsource/fusion-ui/services/mocks';
+import {LogService} from '../../../services/log';
+import {TimezoneService} from '../../../services/timezone';
+import {UniqueIdService} from '../../../services/unique-id';
+import {MockTimeZonesService, MockUniqueIdService} from '../../../services/mocks';
 import {DebugElement} from '@angular/core';
 
 describe('DatepickerComponent', () => {
