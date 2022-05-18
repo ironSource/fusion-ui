@@ -95,7 +95,6 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     }
 
     ngAfterViewInit() {
-        this.setIsActiveListener();
         this.setValueSelectedListener();
     }
 
@@ -115,17 +114,6 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
             id: this.id
         });
         this.selected = false;
-    }
-
-    private setIsActiveListener() {
-        this.apiBase
-            ?.isActive()
-            .pipe(takeUntil(this.onDestroy$))
-            .subscribe((isOpen: boolean) => {
-                if (isOpen) {
-                    console.log('isActive fired: ', isOpen);
-                }
-            });
     }
 
     private setValueSelectedListener() {
