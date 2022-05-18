@@ -3,18 +3,17 @@ import {ChipFilterComponent} from '@ironsource/fusion-ui/components/chip-filter'
 import {TooltipModule, IconModule, FlagModule} from '@ironsource/fusion-ui';
 import {By} from '@angular/platform-browser';
 import {Component, DebugElement, Input, TemplateRef} from '@angular/core';
-import {ChipFilterComponentConfigurations, ChipType} from '@ironsource/fusion-ui/components/chip-filter/common/base';
+import {ChipFilterComponentConfigurations, ChipFilterType, ChipType} from '@ironsource/fusion-ui/components/chip-filter/common/base';
 
 const innerText = 'Test Chip';
 
 @Component({
-    template: `<fusion-chip-filter [chipFilterType]="type" [configuration]="config">
+    template: `<fusion-chip-filter [configuration]="config">
         <div class="fu-chip-content">${innerText}</div>
     </fusion-chip-filter>`
 })
 class TestChipComponent {
     @Input() config: ChipFilterComponentConfigurations;
-    @Input() type: ChipType;
 }
 
 export const collectionToArray = (el: any) => [].slice.call(el);
@@ -53,44 +52,43 @@ describe('ChipFilterComponent', () => {
         });
 
         it('should create ChipSelect type', async () => {
-            component.type = 'RemoveAbleSelect';
+            component.config = {id: 1, type: 'dynamic'};
             fixture.detectChanges();
             expect(chipEl).toBeTruthy();
-            expect(collectionToArray(chipElement.classList)).toEqual(['closed-icon', 'fu-removable-filter']);
+
+            chipElement.dispatchEvent(new Event('click'));
+            fixture.detectChanges();
+            expect(collectionToArray(chipElement.classList)).toEqual(['fu-selected', 'closed-icon', 'fu-removable-filter']);
 
             const iconClose = chipEl.query(By.css('fusion-icon')).nativeElement.classList;
             expect(iconClose).toContain('fu-icon-close');
-
-            component.type = 'RemoveAbleSelect';
-            fixture.detectChanges();
-            expect(chipEl).toBeTruthy();
-            expect(collectionToArray(chipElement.classList)).toContain('fu-removable-filter');
         });
 
         it('should create DateFilter type', async () => {
-            component.type = 'UnRemoveAbleSelect';
+            component.config = {id: 1, type: 'static'};
             fixture.detectChanges();
             expect(chipEl).toBeTruthy();
-            expect(collectionToArray(chipElement.classList)).toEqual(['fu-un-removable-filter']);
+            chipElement.dispatchEvent(new Event('click'));
+            fixture.detectChanges();
+            expect(collectionToArray(chipElement.classList)).toEqual(['fu-selected', 'fu-un-removable-filter']);
         });
-
-        it('should create AddFilter type', async () => {
-            component.type = 'AddFilter';
+        //
+        //     it('should create AddFilter type', async () => {
+        //         component.type = 'add';
+        //         fixture.detectChanges();
+        //         expect(chipEl).toBeTruthy();
+        //         expect(collectionToArray(chipElement.classList)).toEqual(['fu-add-filter']);
+        //     });
+        //
+        it('should create ChipFilter type', async () => {
+            component.config = {id: 1, type: 'static'};
             fixture.detectChanges();
             expect(chipEl).toBeTruthy();
-            expect(collectionToArray(chipElement.classList)).toEqual(['fu-add-filter']);
-        });
-
-        it('should create ChipDropdown type', async () => {
-            component.type = 'ChipDropdown';
-            fixture.detectChanges();
-            expect(chipEl).toBeTruthy();
-            expect(collectionToArray(chipElement.classList)).toEqual(['fu-chip-dropdown']);
+            expect(collectionToArray(chipElement.classList)).toEqual(['fu-chip-filter']);
         });
 
         it('should create Disabled Chip type', async () => {
-            component.config = {disabled: true};
-            component.type = 'ChipDropdown';
+            component.config = {id: 1, disabled: true, type: 'static'};
             fixture.detectChanges();
             expect(chipEl).toBeTruthy();
             expect(collectionToArray(chipElement.classList)).toContain('fu-disabled');

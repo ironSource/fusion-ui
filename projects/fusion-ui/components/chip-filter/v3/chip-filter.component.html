@@ -6,7 +6,7 @@
 <ng-container *ngIf="!apiBase" [ngTemplateOutlet]="chipComponent"></ng-container>
 
 <ng-template #chipComponent>
-    <div class="fu-chip-filter">
+    <div class="fu-chip-filter-container">
         <div class="truncate fu-chip-content-wrapper">
             <ng-content select=".fu-chip-content"></ng-content>
         </div>

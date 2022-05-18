@@ -13,7 +13,7 @@ import {
     ViewChild
 } from '@angular/core';
 import {BehaviorSubject, fromEvent, merge, Subject} from 'rxjs';
-import {ChipFilterComponentConfigurations, ChipType, ChipTypeToClass} from './chip-filter-component-configurations';
+import {ChipFilterComponentConfigurations, ChipFilterType, ChipType, ChipTypeToClass} from './chip-filter-component-configurations';
 import {takeUntil} from 'rxjs/operators';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base/api-base';
 
@@ -23,27 +23,22 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     @ViewChild('ref', {static: true}) ref: TemplateRef<any>;
 
     id: number | string;
-    width: number;
     onDestroy$ = new Subject<void>();
     restListeners$ = new Subject<void>();
-    type$ = new BehaviorSubject<ChipType>(null);
+    chipCssType$ = new BehaviorSubject<ChipType>(null);
     clearClickSubscription$ = merge(this.onDestroy$, this.restListeners$);
-    isCloseIcon$ = new BehaviorSubject<boolean>(false);
+    isCloseIcon$ = new BehaviorSubject<boolean>(null);
 
-    private _selected: boolean;
-    private _disabled: boolean;
+    private _selected: boolean = false;
+    private _disabled: boolean = false;
+    private _type: ChipFilterType = 'static';
 
     @Input() set configuration(value: ChipFilterComponentConfigurations) {
         if (!!value) {
             this.id = value.id;
             this.disabled = value.disabled;
             this.selected = value.selected;
-        }
-    }
-
-    @Input() set chipFilterType(value: ChipType) {
-        if (value) {
-            this.chipTypeChanged(value);
+            this.type = value.type;
         }
     }
 
@@ -67,9 +62,12 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
         return this._disabled;
     }
 
-    set type(chipType: ChipType) {
-        this.type$.next(chipType);
-        this.changeHostClass(ChipTypeToClass[chipType], !!chipType);
+    set type(chipType: ChipFilterType) {
+        this._type = chipType;
+    }
+
+    get type() {
+        return this._type;
     }
 
     set selected(selected: boolean) {
@@ -84,7 +82,6 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     constructor(public element: ElementRef, private renderer: Renderer2) {}
 
     ngOnInit() {
-        this.width = this.element.nativeElement.offsetWidth;
         if (!this.suppressClickEvent && !this.disabled) {
             this.setClickListener();
         }
@@ -92,6 +89,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
         if (this.apiBase) {
             this.apiBase.templateRef = this.ref;
         }
+        this.setChipType(this.selected);
     }
 
     ngAfterViewInit() {
@@ -114,15 +112,17 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
             id: this.id
         });
         this.selected = false;
+        this.setChipType(this.selected);
     }
 
-    private setValueSelectedListener() {
+    private setValueSelectedListener(): void {
         this.apiBase
             ?.valueSelected()
             .pipe(takeUntil(this.onDestroy$))
             .subscribe((isSelected: boolean) => {
-                if (isSelected) {
+                if (isSelected && !this.disabled) {
                     this.selected = isSelected;
+                    this.setChipType(isSelected);
                     this.onSelectedChange.emit({
                         id: this.id,
                         selected: this.selected
@@ -137,6 +137,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
             .pipe(takeUntil(this.clearClickSubscription$))
             .subscribe(_ => {
                 this.selected = !this.selected;
+                this.setChipType(this.selected);
                 this.onSelectedChange.emit({
                     id: this.id,
                     selected: this.selected
@@ -149,9 +150,22 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
         this.renderer[classAction](this.element.nativeElement, className);
     }
 
-    private chipTypeChanged(chipType: ChipType) {
-        this.changeHostClass(ChipTypeToClass[this.type$.getValue()], false);
-        this.close = chipType === 'RemoveAbleSelect';
-        this.type = chipType;
+    private setChipType(hasValue: boolean) {
+        if (this.chipCssType$.getValue()) {
+            this.changeHostClass(ChipTypeToClass[this.chipCssType$.getValue()], false);
+        }
+        switch (this.type) {
+            case 'dynamic':
+                this.chipCssType$.next(hasValue ? 'RemoveAbleSelect' : 'ChipFilter');
+                if (hasValue) {
+                    this.close = true;
+                }
+                break;
+            case 'static':
+                this.chipCssType$.next(hasValue ? 'UnRemoveAbleSelect' : 'ChipFilter');
+                break;
+        }
+
+        this.changeHostClass(ChipTypeToClass[this.chipCssType$.getValue()], !!this.chipCssType$.getValue());
     }
 }

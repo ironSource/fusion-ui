@@ -7,6 +7,7 @@ $chipHeight: 32px;
 $chipMaxWidth: 352px;
 
 $paddingChip:  4px 12px 4px 12px;
+$paddingWithBorderChip:  3px 11px 3px 11px;
 $paddingChipWithIcon:  4px 16px 4px 12px;
 $paddingChipWithCloseButton: 4px 10px 4px 14px;
 
@@ -31,10 +32,16 @@ $paddingChipWithCloseButton: 4px 10px 4px 14px;
 }
 
 :host {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: fit-content;
+
     &.fu-un-removable-filter {
-        .fu-chip-filter {
+        .fu-chip-filter-container {
             @extend %chip-style;
-            padding: $paddingChipWithIcon;
+            padding: $paddingChip;
 
             &:hover {
                 background-color: $fu-primary-200;
@@ -52,7 +59,9 @@ $paddingChipWithCloseButton: 4px 10px 4px 14px;
                 display: none;
             }
 
-            &.fu-disabled {
+        }
+        &.fu-disabled {
+            .fu-chip-filter-container{
                 background-color: $fu-light-100;
                 color: $fu-light-900;
 
@@ -66,7 +75,7 @@ $paddingChipWithCloseButton: 4px 10px 4px 14px;
     }
 
     &.fu-add-filter {
-        .fu-chip-filter {
+        .fu-chip-filter-container {
             @extend %chip-style;
             background-color: $fu-light-200;
             padding: $paddingChipWithIcon;
@@ -87,8 +96,10 @@ $paddingChipWithCloseButton: 4px 10px 4px 14px;
                 color: $fu-primary-500;
                 cursor: pointer;
             }
+        }
 
-            &.fu-disabled {
+        &.fu-disabled {
+            .fu-chip-filter-container{
                 color: $fu-light-900;
                 pointer-events: none;
             }
@@ -97,7 +108,7 @@ $paddingChipWithCloseButton: 4px 10px 4px 14px;
 
     &.fu-removable-filter {
         &.closed-icon {
-            .fu-chip-filter {
+            .fu-chip-filter-container {
                 @extend %chip-style;
                 padding: $paddingChipWithCloseButton;
 
@@ -137,16 +148,24 @@ $paddingChipWithCloseButton: 4px 10px 4px 14px;
                     }
                 }
             }
+            &.fu-disabled {
+                .fu-chip-filter-container{
+                    background-color: $fu-light-100;
+                    color: $fu-light-900;
+                    pointer-events: none;
+                }
+            }
         }
     }
 
-    &.fu-chip-dropdown {
-        .fu-chip-filter{
+    &.fu-chip-filter {
+        .fu-chip-filter-container{
             @extend %chip-style;
             border: 1px solid $fu-light-400;
             background-color: $White;
             color: $fu-black-500;
             cursor: pointer;
+            padding: $paddingWithBorderChip;
 
             .fu-chip-content-wrapper.truncate {
                 white-space: nowrap;
@@ -163,7 +182,10 @@ $paddingChipWithCloseButton: 4px 10px 4px 14px;
                 border-color: $fu-light-700;
             }
 
-            &.fu-disabled {
+
+        }
+        &.fu-disabled {
+            .fu-chip-filter-container {
                 background-color: $White;
                 color: $fu-light-700;
                 border-color: $fu-light-400;
