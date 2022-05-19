@@ -62,8 +62,8 @@ $paddingChipWithCloseButton: 4px 10px 4px 14px;
         }
         &.fu-disabled {
             .fu-chip-filter-container{
-                background-color: $fu-light-100;
-                color: $fu-light-900;
+                background-color: $fu-primary-100;
+                color: $fu-primary-500;
 
                 .fu-icon-close {
                     display: none;
@@ -150,8 +150,8 @@ $paddingChipWithCloseButton: 4px 10px 4px 14px;
             }
             &.fu-disabled {
                 .fu-chip-filter-container{
-                    background-color: $fu-light-100;
-                    color: $fu-light-900;
+                    background-color: $fu-primary-100;
+                    color: $fu-primary-500;
                     pointer-events: none;
                 }
             }
@@ -187,7 +187,7 @@ $paddingChipWithCloseButton: 4px 10px 4px 14px;
         &.fu-disabled {
             .fu-chip-filter-container {
                 background-color: $White;
-                color: $fu-light-700;
+                color: $fu-light-900;
                 border-color: $fu-light-400;
                 pointer-events: none;
             }

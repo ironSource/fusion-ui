@@ -8,11 +8,16 @@ import {ChipType} from '@ironsource/fusion-ui/components/chip-filter/common/base
 export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestroy {
     @ContentChildren(ChipFilterComponent) chipFilters!: QueryList<ChipFilterComponent>;
 
+    @Input() set disableAddFilter(val: boolean) {
+        this.disableAddFilter$.next(val);
+    }
+
     @Output() onSelect = new EventEmitter<any>();
 
     @Output() onRemoveSelection = new EventEmitter<any>();
 
     showAddFilter$ = new BehaviorSubject<boolean>(null);
+    disableAddFilter$ = new BehaviorSubject<boolean>(null);
 
     private onDestroy$ = new Subject<void>();
 
