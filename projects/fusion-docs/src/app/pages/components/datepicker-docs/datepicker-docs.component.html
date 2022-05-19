@@ -99,9 +99,16 @@ datepicker.addEventListener("controlValueChange", e => console.log(e.detail));'
                     ></fusion-code-block>
                 </ng-template>
 
-                <fusion-datepicker formControlName="datePickerBasic"></fusion-datepicker>
-            </fusion-example-block>
 
+                <div class="row">
+                    <div class="col-3"><fusion-datepicker formControlName="datePickerBasic" [options]="optionDatePicker$ | async"></fusion-datepicker></div>
+                    <div class="col-3"><fusion-daterange
+                                                     [formControl]="daterangeDates"
+                                                     [options]="optionDateRange$ | async"></fusion-daterange></div>
+                </div>
+
+            </fusion-example-block>
+<!--
             <fusion-example-block id="typeComboBox" title="ComboBox">
                 <ng-template fusionExampleBlock="Angular">
                     <fusion-code-block
@@ -506,7 +513,7 @@ datepicker.addEventListener("controlValueChange", e => console.log(e.detail));'
                 </ng-template>
 
                 <fusion-datepicker formControlName="datePickerRequired" [error]="errorMessage"></fusion-datepicker>
-            </fusion-example-block>
+            </fusion-example-block>-->
 
             <!--UI-Component Examples-->
             <!--UI-Component Configuration Doc-->

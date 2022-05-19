@@ -1,0 +1,158 @@
+@import '../../../src/style/scss/v3/vars/vars';
+@import '../../../src/style/scss/v3/mixins/mixins';
+@import '../../../src/style/scss/v3/vars/border';
+
+@mixin calendar-circle($color, $border-radius) {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: -1px;
+    background-color: $color;
+    height: 32px;
+    width: 32px;
+    border-radius: $border-radius;
+    display: block;
+}
+
+@mixin calendar-today-dot($color) {
+    content: '';
+    background-color: $color;
+    width: 4px;
+    height: 4px;
+    position: absolute;
+    bottom: 5px;
+    border-radius: 100px;
+    left: calc(50% - 2px);
+}
+
+:host {
+    @extend %reset;
+    .calendar {
+        width: 224px;
+        @include user-select(none);
+        border-spacing: 0 4px;
+        color: $fu-black-500;
+        background-color: $White;
+    }
+
+    .month {
+        @extend %font-heading-6;
+        color: $fu-black-500;
+        height: 40px;
+    }
+
+    .day-in-week th {
+        @extend %font-bodyXSmall;
+        color: $fu-light-800;
+        width: 32px;
+        height: 32px;
+    }
+
+    .day {
+        @extend %font-bodySmall;
+        line-height: 16px;
+        letter-spacing: 0.24px;
+        color: $fu-black-500;
+        text-align: center;
+        cursor: pointer;
+        @include size(32px);
+        position: relative;
+        span {
+            position: relative;
+        }
+
+        &:not(.selected):not(.disabled):not(.hover-current):hover {
+            &:before {
+                @include calendar-circle($fu-light-100, 50%);
+            }
+        }
+
+        &.selected:not(.active), &.hover-range:not(.active) {
+            border: none;
+
+            .selected-range {
+                display: inline;
+                cursor: pointer;
+                width: 32px;
+                height: 32px;
+                position: absolute;
+                top: -1px;
+                left: 0;
+                background-color: $fu-primary-300;
+            }
+
+            .selected-range + span {
+                color: $White;
+            }
+        }
+
+        &.today {
+            &.selected, &.active, &.hover-current {
+                &:after {
+                    @include calendar-today-dot($White);
+                }
+            }
+        }
+
+        &.today:not(.selected):not(.active):not(.hover-current):after {
+            @include calendar-today-dot($fu-primary-500);
+        }
+
+        &.active {
+            color: $White;
+            background-color: transparent;
+
+            &.selected.oneDaySelection {
+                &:before {
+                    @include calendar-circle($fu-primary-500, 50%);
+                }
+            }
+        }
+
+        &.hover-current {
+            color: $White;
+
+            &:before {
+                @include calendar-circle($fu-primary-300, 0 50% 50% 0);
+            }
+        }
+
+        &.selectedEnd:before {
+            @include calendar-circle($fu-primary-500, 0 50% 50% 0);
+        }
+
+        &.selectedStart:before, &.active.selected.oneDaySelection.hover-range:before {
+            @include calendar-circle($fu-primary-500, 50% 0 0 50%);
+        }
+
+        &.selectedDayAfterDay:not(:last-child).selectedStart:after {
+            content: '';
+            background-color: $fu-primary-500;
+            width: 8px;
+            height: 28px;
+            position: absolute;
+            display: block;
+            top: 2px;
+            right: -4px;
+        }
+
+
+        &.disabled{
+            pointer-events: none;
+            &:not(.selected) {
+                color: $fu-light-700;
+            }
+        }
+    }
+}
+
+.oneDaySelection.hover-range + .hover-current:not(.today):after {
+    content: '';
+    background-color: $fu-primary-500;
+    width: 8px;
+    height: 28px;
+    position: absolute;
+    display: block;
+    top: 2px;
+    left: -10px;
+}
