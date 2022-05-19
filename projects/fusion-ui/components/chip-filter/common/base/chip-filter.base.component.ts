@@ -35,7 +35,6 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
 
     @Input() set configuration(value: ChipFilterComponentConfigurations) {
         if (!!value) {
-            console.log(value);
             this.id = value.id;
             this.disabled = value.disabled || false;
             this.selected = value.selected || false;
