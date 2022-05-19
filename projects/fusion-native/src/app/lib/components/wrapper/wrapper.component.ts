@@ -95,7 +95,10 @@ export class WrapperComponent implements AfterViewInit, OnDestroy {
 
     private mutationObserverCallback(value: MutationRecord[]): void {
         if (value[0] && value[0].addedNodes && value[0].addedNodes.length) {
-            this.renderComponentWithProjectNodes([value[0].addedNodes[0]]);
+            const arr: Node[] = [];
+            value[0].addedNodes.forEach(val => arr.push(val));
+
+            this.renderComponentWithProjectNodes([...arr]);
             this.mutationObserver.disconnect();
             this.mutationObserver = null;
         }
