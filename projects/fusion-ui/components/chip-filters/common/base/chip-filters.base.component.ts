@@ -17,6 +17,7 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
     @Output() onRemoveSelection = new EventEmitter<any>();
 
     showAddFilter$ = new BehaviorSubject<boolean>(null);
+
     disableAddFilter$ = new BehaviorSubject<boolean>(null);
 
     private onDestroy$ = new Subject<void>();
