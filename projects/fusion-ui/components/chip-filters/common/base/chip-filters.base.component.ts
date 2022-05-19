@@ -1,8 +1,9 @@
 import {AfterViewInit, ContentChildren, Directive, EventEmitter, Input, OnDestroy, Output, QueryList, Renderer2} from '@angular/core';
-import {ChipFilterComponent} from '@ironsource/fusion-ui';
+import {ChipFilterComponent} from '@ironsource/fusion-ui/components/chip-filter';
 import {BehaviorSubject, combineLatest, Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {ChipType} from '@ironsource/fusion-ui/components/chip-filter/common/base';
+import {FormControl} from '@angular/forms';
 
 @Directive()
 export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestroy {
@@ -21,6 +22,8 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
     disableAddFilter$ = new BehaviorSubject<boolean>(null);
 
     private onDestroy$ = new Subject<void>();
+
+    private formControl = new FormControl(null);
 
     constructor(private renderer: Renderer2) {}
 

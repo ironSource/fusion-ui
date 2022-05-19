@@ -15,7 +15,7 @@ import {
 import {BehaviorSubject, fromEvent, merge, Subject} from 'rxjs';
 import {ChipFilterComponentConfigurations, ChipFilterType, ChipType, ChipTypeToClass} from './chip-filter-component-configurations';
 import {takeUntil} from 'rxjs/operators';
-import {ApiBase} from '@ironsource/fusion-ui/components/api-base/api-base';
+import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 
 @Directive()
 export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, OnDestroy {
@@ -122,11 +122,12 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
             this.renderer.removeChild(this.renderer.parentNode(this.element.nativeElement), this.element.nativeElement);
         }
 
-        this.onRemove.emit({
-            id: this.id
-        });
         this.selected = false;
         this.setChipType(this.selected);
+        this.onRemove.emit({
+            id: this.id,
+            isSelected: this.selected
+        });
     }
 
     private setValueSelectedListener(): void {
