@@ -2,51 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0-rc.7](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.6...v3.0.0-rc.7) (2022-05-19)
+
+
 ### Features
-* **fu-391:** add tooltip style guide v3 and change folder structure sub entries ([08b661b](https://github.com/ironSource/fusion-ui/commit/acc524a67509cab60336936d9531cf1cf1bcb2e8))
-    * change tooltip control on VanillaJs, Vue and React:
-    * Text only (example in Angular): 
-        ```html
-            <fusion-tooltip [fusionTooltipText]="'Get Tool'">
-                <div class="fusionTooltipTrigger">
-                    Trigger Tooltip
-                </div>
-            <div class="fusionTooltipContent">Component Tooltip</div>
-        </fusion-tooltip>
-        ```
-    * Element (example in Angular):
-        ```html
-            <fusion-tooltip fusionTooltipText>
-                <div class="fusionTooltipTrigger">
-                    Trigger Tooltip
-                </div>
-            <div class="fusionTooltipContent">Component Tooltip</div>
-        </fusion-tooltip>
-        ```
-    * Tooltip configuration:
-        ```
-            export type tooltipConfiguration = {
-                width?: number;
-                height?: number;
-                backgroundColor?: string;
-                preventTooltipToClose?: boolean;
-            };
-      ```
-    * "preventTooltipToClose": prevent from Tooltip to close when hover on him.
-    * On Angular usage can be done also as follows:
-    * With Element:
-        ```html
-        <div class="delete" fusionTooltip [configuration]="{backgroundColor: 'blue'}">
-            <div #tooltipTriggerElement>Trigger Tooltip</div>
-            <div *fusionTooltipContent>Component Tooltip</div>
-        </div>
-        ```
-    * With Text:
-        ```html
-            <div class="delete" [fusionTooltip]="'hello'" [configuration]="{backgroundColor: 'blue'}">
-                <div #tooltipTriggerElement>Trigger Tooltip</div>
-            </div>
-        ```
+
+* **391:** add tooltip new structure support v1 v2 and v3 with new implementation on v3 ([1789b0b](https://github.com/ironSource/fusion-ui/commit/1789b0b0367f37af9a45a3fe70155ad8b712ca50))
+
+
+### Bug Fixes
+
+* **fu-397:** V3 Calendar, Daterange, Date picker components ([#59](https://github.com/ironSource/fusion-ui/issues/59)) ([ed33be4](https://github.com/ironSource/fusion-ui/commit/ed33be45e8356a48496827d54f263ff598ffb3be))
+
 ## [3.0.0-rc.6](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.5...v3.0.0-rc.6) (2022-05-09)
 
 
