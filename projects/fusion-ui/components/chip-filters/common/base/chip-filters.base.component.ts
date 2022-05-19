@@ -1,14 +1,4 @@
-import {
-    AfterViewInit,
-    ContentChild,
-    ContentChildren,
-    Directive,
-    EventEmitter,
-    OnDestroy,
-    Output,
-    QueryList,
-    Renderer2
-} from '@angular/core';
+import {AfterViewInit, ContentChildren, Directive, EventEmitter, Input, OnDestroy, Output, QueryList, Renderer2} from '@angular/core';
 import {ChipFilterComponent} from '@ironsource/fusion-ui';
 import {combineLatest, Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -20,7 +10,7 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
 
     @Output() onSelect = new EventEmitter<any>();
 
-    @Output() onChipSelectionRemoved = new EventEmitter<any>();
+    @Output() onRemoveSelection = new EventEmitter<any>();
 
     private onDestroy$ = new Subject<void>();
 
@@ -61,9 +51,7 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
     }
 
     private onClosedChipListener(): void {
-        this.chipFilters.forEach(chip =>
-            chip.onRemove.pipe(takeUntil(this.onDestroy$)).subscribe(val => this.onChipSelectionRemoved.emit(val))
-        );
+        this.chipFilters.forEach(chip => chip.onRemove.pipe(takeUntil(this.onDestroy$)).subscribe(val => this.onRemoveSelection.emit(val)));
     }
 
     private orderChipFilters(chipFilters: QueryList<ChipFilterComponent>) {

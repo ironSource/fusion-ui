@@ -3,6 +3,7 @@ export interface ChipFilterComponentConfigurations {
     disabled?: boolean;
     selected?: boolean;
     type?: ChipFilterType;
+    close?: boolean;
 }
 
 export enum ChipTypeToClass {

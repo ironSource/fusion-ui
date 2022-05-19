@@ -30,19 +30,18 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     isCloseIcon$ = new BehaviorSubject<boolean>(null);
 
     private _selected: boolean = false;
-    private _disabled: boolean = false;
+    private _disabled$ = new BehaviorSubject<boolean>(false);
     private _type: ChipFilterType = 'static';
 
     @Input() set configuration(value: ChipFilterComponentConfigurations) {
         if (!!value) {
             this.id = value.id;
-            this.disabled = value.disabled;
-            this.selected = value.selected;
+            this.disabled = value.disabled || false;
+            this.selected = value.selected || false;
             this.type = value.type;
+            this.close = value.close || false;
         }
     }
-
-    @Input() suppressClickEvent = false;
 
     @Output() onRemove = new EventEmitter();
 
@@ -52,14 +51,17 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
         this.isCloseIcon$.next(close);
         this.changeHostClass('closed-icon', close);
     }
+    get close() {
+        return this.isCloseIcon$.getValue();
+    }
 
     set disabled(disabled: boolean) {
-        this._disabled = disabled;
+        this._disabled$.next(disabled);
         this.changeHostClass('fu-disabled', disabled);
     }
 
     get disabled(): boolean {
-        return this._disabled;
+        return this._disabled$.getValue();
     }
 
     set type(chipType: ChipFilterType) {
@@ -82,12 +84,13 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     constructor(public element: ElementRef, private renderer: Renderer2) {}
 
     ngOnInit() {
-        if (!this.suppressClickEvent && !this.disabled) {
+        if (!this.apiBase && !this.disabled) {
             this.setClickListener();
         }
 
         if (this.apiBase) {
             this.apiBase.templateRef = this.ref;
+            this.apiBase.isComponentDisabled$.next(this.disabled);
         }
         this.setChipType(this.selected);
     }
@@ -103,11 +106,12 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     }
 
     closeClicked($event) {
-        if (this.suppressClickEvent) {
+        if (this.apiBase) {
             $event.stopPropagation();
         } else {
             this.renderer.removeChild(this.renderer.parentNode(this.element.nativeElement), this.element.nativeElement);
         }
+
         this.onRemove.emit({
             id: this.id
         });
@@ -156,13 +160,14 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
         }
         switch (this.type) {
             case 'dynamic':
-                this.chipCssType$.next(hasValue ? 'RemoveAbleSelect' : 'ChipFilter');
-                if (hasValue) {
-                    this.close = true;
-                }
+                this.chipCssType$.next('AddFilter');
                 break;
             case 'static':
-                this.chipCssType$.next(hasValue ? 'UnRemoveAbleSelect' : 'ChipFilter');
+                if (this.close) {
+                    this.chipCssType$.next(hasValue ? 'RemoveAbleSelect' : 'ChipFilter');
+                } else {
+                    this.chipCssType$.next(hasValue ? 'UnRemoveAbleSelect' : 'ChipFilter');
+                }
                 break;
         }
 

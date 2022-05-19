@@ -3,7 +3,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 
 export abstract class ApiBase {
     templateRef: TemplateRef<any>;
-    selectedValue$ = new BehaviorSubject<any>(null);
+    isComponentDisabled$ = new BehaviorSubject<boolean>(false);
 
     abstract valueSelected(): Observable<any>;
 }
