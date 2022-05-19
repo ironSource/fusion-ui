@@ -1,4 +1,4 @@
-<div [id]="id" (fusionClickOutside)="onOutsideClick()">
+<div [id]="id" (fusionClickOutside)="onOutsideClick($event)">
     <fusion-dropdown-select
         (click)="toggle()"
         [configurations]="dropdownSelectConfigurations$ | async"

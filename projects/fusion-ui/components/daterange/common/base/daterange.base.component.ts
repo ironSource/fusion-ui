@@ -2,7 +2,7 @@ import {Directive, ElementRef, EventEmitter, Input, OnInit, Output, TemplateRef,
 import {ControlValueAccessor} from '@angular/forms';
 import {DatePipe} from '@angular/common';
 import {BehaviorSubject} from 'rxjs';
-import {isSameDates} from '@ironsource/fusion-ui/utils';
+import {isNullOrUndefined, isSameDates} from '@ironsource/fusion-ui/utils';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {DropdownSelectConfigurations} from '@ironsource/fusion-ui/components/dropdown';
@@ -75,6 +75,8 @@ export abstract class DaterangeBaseComponent implements OnInit, ControlValueAcce
         return this.options.calendarAmount === 1;
     }
 
+    private originalMaxDate: Date;
+
     constructor(
         public daterangeService: DaterangeService,
         private calendarService: CalendarService,
@@ -87,6 +89,9 @@ export abstract class DaterangeBaseComponent implements OnInit, ControlValueAcce
 
     ngOnInit() {
         this.id = this.id || `fs-daterange-${this.uniqueIdService.getUniqueId()}`;
+        if (!isNullOrUndefined(this.maxDate)) {
+            this.originalMaxDate = this.maxDate;
+        }
         this.onOptionsChanges();
     }
 
@@ -119,8 +124,10 @@ export abstract class DaterangeBaseComponent implements OnInit, ControlValueAcce
         }
     }
 
-    onOutsideClick() {
-        this.close();
+    onOutsideClick(target: HTMLElement) {
+        if (this.validateClickOutside(target)) {
+            this.close();
+        }
     }
 
     apply() {
@@ -140,6 +147,7 @@ export abstract class DaterangeBaseComponent implements OnInit, ControlValueAcce
                 ? this.originalSelection
                 : null;
             this.propagateChange(valueToPropagate);
+            this.clearRangeDaysLimit();
         }
     }
 
@@ -150,7 +158,10 @@ export abstract class DaterangeBaseComponent implements OnInit, ControlValueAcce
                 this.initMonth(this.originalSelection.endDate);
                 this.selectionStarted = null;
                 this.selection = {...this.originalSelection};
+            } else {
+                this.selection = {endDate: null, startDate: null};
             }
+            this.clearRangeDaysLimit();
             this.closed.emit();
             this.setPlaceholder({isOpen: false});
         }
@@ -178,17 +189,17 @@ export abstract class DaterangeBaseComponent implements OnInit, ControlValueAcce
 
     onSelectDay(day: Day) {
         this.currentPreset = null;
+
         if (
             this.selectionStarted &&
             day.date >= this.selectionStarted.date &&
             day.date.getTime() !== this.selectionStarted.date.getTime()
         ) {
-            this.selection = {startDate: this.selectionStarted.date, endDate: day.date};
-            this.selectionStarted = null;
+            this.onSelectEndDate(day);
         } else {
-            this.selectionStarted = day;
-            this.selection = {startDate: day.date, endDate: day.date};
+            this.onSelectStartDate(day);
         }
+
         this.daySelected.emit(this.selection);
         if (this.isSingleDatePicker) {
             this.apply();
@@ -245,6 +256,10 @@ export abstract class DaterangeBaseComponent implements OnInit, ControlValueAcce
         });
     }
 
+    private validateClickOutside(target: HTMLElement): boolean {
+        return !target.closest('td[data-datetime]');
+    }
+
     private calculateOverlayAlignPosition() {
         // in case no was calculation yet
         if (this.overlayAlign$.getValue() === '') {
@@ -285,6 +300,32 @@ export abstract class DaterangeBaseComponent implements OnInit, ControlValueAcce
         this.overlayAlign$.next(this.daterangeOptions?.overlayAlignPosition ?? 'left');
 
         this.initMonth(this.calendarService.getCurrentDateUTC());
+    }
+
+    private onSelectStartDate(day: Day): void {
+        this.selectionStarted = day;
+        this.selection = {startDate: day.date, endDate: day.date};
+        this.setRangeDaysLimit();
+    }
+
+    private onSelectEndDate(day: Day): void {
+        this.selection = {startDate: this.selectionStarted.date, endDate: day.date};
+        this.selectionStarted = null;
+        this.clearRangeDaysLimit();
+    }
+
+    private setRangeDaysLimit(): void {
+        if (!!this.daterangeOptions?.maxDaysInSelectedRange) {
+            const rangeMaxEndDate = new Date(this.selection.startDate);
+            rangeMaxEndDate.setDate(rangeMaxEndDate.getDate() + (this.daterangeOptions?.maxDaysInSelectedRange - 1));
+            this.maxDate = new Date(rangeMaxEndDate);
+        }
+    }
+
+    private clearRangeDaysLimit(): void {
+        if (!!this.daterangeOptions?.maxDaysInSelectedRange) {
+            this.maxDate = !isNullOrUndefined(this.originalMaxDate) ? this.originalMaxDate : null;
+        }
     }
 
     propagateChange = (_: DaterangeSelection) => {};

@@ -9,4 +9,5 @@ export interface DaterangeOptions {
     placeholder?: string;
     overlayAlignPosition?: 'left' | 'right';
     allowFutureSelection?: boolean;
+    maxDaysInSelectedRange?: number;
 }
