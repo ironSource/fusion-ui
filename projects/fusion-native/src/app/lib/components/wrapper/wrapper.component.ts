@@ -95,11 +95,7 @@ export class WrapperComponent implements AfterViewInit, OnDestroy {
 
     private mutationObserverCallback(value: MutationRecord[]): void {
         if (value[0] && value[0].addedNodes && value[0].addedNodes.length) {
-            const arr: Node[] = [];
-            value[0].addedNodes.forEach(val => arr.push(val));
-            console.log('>>>>>>Mutation: ', value[0].addedNodes);
-            console.log('>>>>>>Mutation: ', arr);
-            this.renderComponentWithProjectNodes([...arr]);
+            this.renderComponentWithProjectNodes([value[0].addedNodes[0]]);
             this.mutationObserver.disconnect();
             this.mutationObserver = null;
         }
@@ -107,7 +103,6 @@ export class WrapperComponent implements AfterViewInit, OnDestroy {
 
     private renderComponentWithProjectNodes(node: Node[]): void {
         const nodesElement = [].slice.call(node).map(nodeElement => [nodeElement]);
-        console.log('>>>>>>', nodesElement);
         const factory = this.cfr.resolveComponentFactory(this.wrapperToken.component);
         if (this.componentRef) {
             this.componentRef.destroy();
