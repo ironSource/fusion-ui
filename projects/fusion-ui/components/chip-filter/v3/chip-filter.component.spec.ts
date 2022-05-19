@@ -8,12 +8,16 @@ import {ChipFilterComponentConfigurations, ChipFilterType, ChipType} from '@iron
 const innerText = 'Test Chip';
 
 @Component({
-    template: `<fusion-chip-filter [configuration]="config">
+    template: `<fusion-chip-filter [configuration]="chipConfig">
         <div class="fu-chip-content">${innerText}</div>
     </fusion-chip-filter>`
 })
 class TestChipComponent {
-    @Input() config: ChipFilterComponentConfigurations;
+    chipConfig: ChipFilterComponentConfigurations;
+    @Input() set config(value: ChipFilterComponentConfigurations) {
+        console.log('>>>>>>>>>>>value<<<<<<<', value);
+        this.chipConfig = value;
+    }
 }
 
 export const collectionToArray = (el: any) => [].slice.call(el);
@@ -52,13 +56,13 @@ describe('ChipFilterComponent', () => {
         });
 
         it('should create chip select removable type', async () => {
-            component.config = {id: 1, type: 'dynamic'};
+            component.config = {id: 1, type: 'static', close: true};
             fixture.detectChanges();
             expect(chipEl).toBeTruthy();
 
             chipElement.dispatchEvent(new Event('click'));
             fixture.detectChanges();
-            expect(collectionToArray(chipElement.classList)).toEqual(['fu-selected', 'closed-icon', 'fu-removable-filter']);
+            expect(collectionToArray(chipElement.classList)).toEqual(['closed-icon', 'fu-selected', 'fu-removable-filter']);
 
             const iconClose = chipEl.query(By.css('fusion-icon')).nativeElement.classList;
             expect(iconClose).toContain('fu-icon-close');
@@ -72,14 +76,16 @@ describe('ChipFilterComponent', () => {
             fixture.detectChanges();
             expect(collectionToArray(chipElement.classList)).toEqual(['fu-selected', 'fu-un-removable-filter']);
         });
-        //
-        //     it('should create AddFilter type', async () => {
-        //         component.type = 'add';
-        //         fixture.detectChanges();
-        //         expect(chipEl).toBeTruthy();
-        //         expect(collectionToArray(chipElement.classList)).toEqual(['fu-add-filter']);
-        //     });
-        //
+
+        // it('should create AddFilter type', async () => {
+        //     component.config = {type: 'dynamic'};
+        //     fixture.detectChanges();
+        //     expect(chipEl).toBeTruthy();
+        //     fixture.detectChanges();
+        //     console.log('>>>>>>>>>', collectionToArray(chipElement.classList));
+        //     expect(collectionToArray(chipElement.classList)).toEqual(['fu-add-filter']);
+        // });
+
         it('should create ChipFilter type', async () => {
             component.config = {id: 1, type: 'static'};
             fixture.detectChanges();
