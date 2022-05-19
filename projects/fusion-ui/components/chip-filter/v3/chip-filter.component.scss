@@ -37,6 +37,7 @@ $paddingChipWithCloseButton: 4px 10px 4px 14px;
     flex-direction: row;
     align-items: center;
     width: fit-content;
+    position: relative;
 
     &.fu-un-removable-filter {
         .fu-chip-filter-container {
