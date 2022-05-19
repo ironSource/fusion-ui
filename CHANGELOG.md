@@ -2,51 +2,112 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0-rc.7](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.6...v3.0.0-rc.7) (2022-05-19)
+
+
 ### Features
-* **fu-391:** add tooltip style guide v3 and change folder structure sub entries ([08b661b](https://github.com/ironSource/fusion-ui/commit/acc524a67509cab60336936d9531cf1cf1bcb2e8))
-    * change tooltip control on VanillaJs, Vue and React:
-    * Text only (example in Angular): 
-        ```html
-            <fusion-tooltip [fusionTooltipText]="'Get Tool'">
-                <div class="fusionTooltipTrigger">
-                    Trigger Tooltip
-                </div>
-            <div class="fusionTooltipContent">Component Tooltip</div>
-        </fusion-tooltip>
-        ```
-    * Element (example in Angular):
-        ```html
-            <fusion-tooltip fusionTooltipText>
-                <div class="fusionTooltipTrigger">
-                    Trigger Tooltip
-                </div>
-            <div class="fusionTooltipContent">Component Tooltip</div>
-        </fusion-tooltip>
-        ```
-    * Tooltip configuration:
-        ```
-            export type tooltipConfiguration = {
-                width?: number;
-                height?: number;
-                backgroundColor?: string;
-                preventTooltipToClose?: boolean;
-            };
-      ```
-    * "preventTooltipToClose": prevent from Tooltip to close when hover on him.
-    * On Angular usage can be done also as follows:
-    * With Element:
-        ```html
-        <div class="delete" fusionTooltip [configuration]="{backgroundColor: 'blue'}">
-            <div #tooltipTriggerElement>Trigger Tooltip</div>
-            <div *fusionTooltipContent>Component Tooltip</div>
-        </div>
-        ```
-    * With Text:
-        ```html
-            <div class="delete" [fusionTooltip]="'hello'" [configuration]="{backgroundColor: 'blue'}">
-                <div #tooltipTriggerElement>Trigger Tooltip</div>
-            </div>
-        ```
+
+* **fu-391:** add tooltip new structure support v1 v2 and v3 with new implementation on v3 ([1789b0b](https://github.com/ironSource/fusion-ui/commit/1789b0b0367f37af9a45a3fe70155ad8b712ca50))
+* **fu-397:** V3 Daterange and Datepicker components ([#59](https://github.com/ironSource/fusion-ui/issues/59)) ([ed33be4](https://github.com/ironSource/fusion-ui/commit/ed33be45e8356a48496827d54f263ff598ffb3be))
+    * Datepicker V3:
+    ```html
+    <fusion-datepicker [minDate]="daterangeMinDate" [maxDate]="daterangeMaxDate" [formControl]="fcDatePicker" [options]="datepickerOptions"></fusion-datepicker>
+    ```  
+    ```
+    // fcDatePicker - FormControl with DatepickerSelection
+
+    interface DatepickerSelection {
+        date?: Date;
+    }
+  
+    daterangeMinDate: Date;
+    daterangeMaxDate: Date;
+
+    datepickerOptions {
+        format?: string;
+        placeholder?: string;
+        allowFutureSelection?: boolean;
+    }
+    ```
+    * Daterange
+      **In case no presets - set in options `presets: []` instead `presets: false`  **
+    ```
+    daterangeOptions = {
+        presets: []
+        ....
+    };
+    ```
+    ```
+    interface DaterangeOptions {
+        format?: string;
+        presets?: DaterangeCustomPreset[] | DaterangePresets[];
+        placeholder?: string;
+        overlayAlignPosition?: 'left' | 'right';
+        allowFutureSelection?: boolean;
+        maxDaysInSelectedRange?: number;
+    }
+    ```
+
+* **fu-402** added possibility use custom presets in daterange component
+    * Example:   
+    ```html
+    <fusion-daterange [formControl]="daterangeDates" [options]="daterangeOptions"></fusion-daterange>
+    ```
+    ```
+         getCurWeek = () => {
+            let curr = new Date();
+            let day = curr.getDay();
+            let firstday = new Date(curr.getTime() - 60*60*24* day*1000);
+            let lastday = new Date(firstday.getTime() + 60 * 60 *24 * 6 * 1000);
+            return {
+                startDate: firstday,
+                endDate: lastday
+            }
+        }
+    
+        customDateRangePresets: DaterangeCustomPreset[] = [
+            {
+                label: 'Last 5 days',
+                startDate: new Date(Date.UTC(this.dateNow.getFullYear(), this.dateNow.getMonth(), this.dateNow.getDate() - 4)),
+                endDate: new Date(Date.UTC(this.dateNow.getFullYear(), this.dateNow.getMonth(), this.dateNow.getDate()))
+            },
+            {
+                label: 'Last 15 days',
+                startDate: new Date(Date.UTC(this.dateNow.getFullYear(), this.dateNow.getMonth(), this.dateNow.getDate() - 14)),
+                endDate: new Date(Date.UTC(this.dateNow.getFullYear(), this.dateNow.getMonth(), this.dateNow.getDate()))
+            },
+            {
+                label: 'Next 3 days',
+                startDate: new Date(Date.UTC(this.dateNow.getFullYear(), this.dateNow.getMonth(), this.dateNow.getDate()+1)),
+                endDate: new Date(Date.UTC(this.dateNow.getFullYear(), this.dateNow.getMonth(), this.dateNow.getDate() + 3))
+            },
+            {
+                label: 'Current Week',
+                ...this.getCurWeek()
+            }
+    
+        ]
+    
+        
+        daterangeOptions: DaterangeOptions = {
+            presets: this.customDateRangePresets
+        };
+    ```
+    ```
+    interface DaterangeCustomPreset {
+        label: string;
+        startDate: Date;
+        endDate: Date;
+    }
+    ```
+* **fu-404**: added maxDaysInSelectedRange to teh daterange component
+    * Daterange component new feature - Maximum Days In Selected Range. Added new option property - `maxDaysInSelectedRange?: number` to the `interface DaterangeOptions`. If `maxDaysInSelectedRange` set, in case user slicked to the start date, `maxDate` will be calculated as (startDate + maxDaysInSelectedRange - 1). So user can select period with `maxDaysInSelectedRange` days amount. On click to endDate original maxDate will be restored if it will be set.
+    ```
+    daterangeOptions = {
+        maxDaysInSelectedRange: 5
+    };
+    ```    
+
 ## [3.0.0-rc.6](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.5...v3.0.0-rc.6) (2022-05-09)
 
 
