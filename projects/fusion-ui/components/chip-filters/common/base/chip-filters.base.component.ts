@@ -21,9 +21,9 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
 
     disableAddFilter$ = new BehaviorSubject<boolean>(null);
 
-    private onDestroy$ = new Subject<void>();
+    formControl = new FormControl(null);
 
-    private formControl = new FormControl(null);
+    private onDestroy$ = new Subject<void>();
 
     constructor(private renderer: Renderer2) {}
 
