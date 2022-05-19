@@ -1,0 +1,76 @@
+@import '../../../src/style/scss/v1/vars/vars';
+@import '../../../src/style/scss/v1/mixins/mixins';
+@import '../../../src/style/scss/v1/vars/border';
+
+:host {
+    @extend %reset;
+    .calendar {
+        display: inline-block;
+        border-collapse: collapse;
+        width: 196px;
+
+        user-select: none;
+        -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+        -moz-user-select: none; /* mozilla browsers */
+        -ms-user-select: none; /* IE10+ */
+    }
+
+    .month {
+        @extend %font3;
+    }
+
+    .day-in-week {
+        @extend %font9;
+        line-height: 14px;
+        text-transform: uppercase;
+        th {
+            padding-top: 6px;
+            padding-bottom: 6px;
+        }
+
+        @extend %borderBottom;
+    }
+
+    .day {
+        @extend %font14;
+        text-align: center;
+        @include size(28px);
+        cursor: pointer;
+
+        &:hover {
+            background-color: $primary-200;
+        }
+
+        &.today {
+            text-decoration: var(--calendar-today-text-decoration, underline);
+        }
+
+        &.selected {
+            background-color: $primary-100;
+            font-weight: bold;
+
+            &:hover {
+                background-color: $primary-200;
+            }
+        }
+
+        &.active {
+            color: $White;
+            background-color: $primary-500;
+            font-weight: bold;
+
+            &:hover {
+                background-color: $primary-500;
+            }
+        }
+
+        &.disabled {
+            color: $light-700;
+            @extend %disabled;
+
+            &:hover {
+                background-color: transparent;
+            }
+        }
+    }
+}

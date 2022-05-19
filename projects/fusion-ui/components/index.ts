@@ -4,7 +4,7 @@ export * from './button';
 export * from './chart';
 export * from './chart-labels';
 export * from './checkbox';
-export * from './date';
+export * from './calendar';
 export * from './datepicker';
 export * from './dropdown';
 export * from './dropdown-dual-multi-select';

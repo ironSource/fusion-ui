@@ -1,34 +1,5 @@
-@import 'colors';
-
-$borderRadius: var(--border-radius, 3px);
-$greyBorder: $fu-light-500;
-$box-shadow:  0 2px 4px 0 rgba(0, 0, 0, 0.3);
-$v2-box-shadow: 0 2px 4px 0 rgba(12, 0, 51, 0.2);
-$panel-box-shadow:  0 0 7px 0 rgba(0, 0, 0, 0.1);
-
-%borderRadius{
-    border-radius: $borderRadius;
-}
-%border{
-    border: 1px solid $greyBorder;
-}
-%borderRight{
-    border-right: 1px solid $greyBorder;
-}
-%borderLeft{
-    border-left: 1px solid $greyBorder;
-}
-%borderTop{
-    border-top: 1px solid $greyBorder;
-}
-%borderBottom{
-    border-bottom: 1px solid $greyBorder;
-}
-
-%noBorder{
-    border: none;
-}
-
+$borderRadius: var(--fu-border-radius, 8px);
+$boxShadow: 0px 8px 24px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4);
 
 %noBorderRadiusTR{
     border-top-right-radius: 0 !important;

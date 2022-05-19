@@ -1,6 +1,19 @@
 @import 'fonts';
 @import 'colors';
 
+%border-box-normalize {
+    * {box-sizing: border-box;}
+}
+
+// resets
+%reset {
+    @extend %border-box-normalize; // add box-sizing
+    margin: 0;
+    padding: 0;
+    vertical-align: initial;
+    text-align: initial;
+}
+
 
 %no-pointer-events{
     pointer-events: none;
