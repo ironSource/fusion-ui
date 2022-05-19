@@ -15,7 +15,6 @@ const innerText = 'Test Chip';
 class TestChipComponent {
     chipConfig: ChipFilterComponentConfigurations;
     @Input() set config(value: ChipFilterComponentConfigurations) {
-        console.log('>>>>>>>>>>>value<<<<<<<', value);
         this.chipConfig = value;
     }
 }
@@ -56,13 +55,13 @@ describe('ChipFilterComponent', () => {
         });
 
         it('should create chip select removable type', async () => {
-            component.config = {id: 1, type: 'static', close: true};
+            component.config = {id: 1, type: 'dynamic'};
             fixture.detectChanges();
             expect(chipEl).toBeTruthy();
 
             chipElement.dispatchEvent(new Event('click'));
             fixture.detectChanges();
-            expect(collectionToArray(chipElement.classList)).toEqual(['closed-icon', 'fu-selected', 'fu-removable-filter']);
+            expect(collectionToArray(chipElement.classList)).toEqual(['fu-selected', 'closed-icon', 'fu-removable-filter']);
 
             const iconClose = chipEl.query(By.css('fusion-icon')).nativeElement.classList;
             expect(iconClose).toContain('fu-icon-close');
@@ -77,14 +76,12 @@ describe('ChipFilterComponent', () => {
             expect(collectionToArray(chipElement.classList)).toEqual(['fu-selected', 'fu-un-removable-filter']);
         });
 
-        // it('should create AddFilter type', async () => {
-        //     component.config = {type: 'dynamic'};
-        //     fixture.detectChanges();
-        //     expect(chipEl).toBeTruthy();
-        //     fixture.detectChanges();
-        //     console.log('>>>>>>>>>', collectionToArray(chipElement.classList));
-        //     expect(collectionToArray(chipElement.classList)).toEqual(['fu-add-filter']);
-        // });
+        it('should create AddFilter type', async () => {
+            component.config = {type: 'add'};
+            fixture.detectChanges();
+            expect(chipEl).toBeTruthy();
+            expect(collectionToArray(chipElement.classList)).toEqual(['fu-add-filter']);
+        });
 
         it('should create ChipFilter type', async () => {
             component.config = {id: 1, type: 'static'};

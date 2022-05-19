@@ -14,4 +14,4 @@ export enum ChipTypeToClass {
 }
 
 export type ChipType = 'UnRemoveAbleSelect' | 'AddFilter' | 'RemoveAbleSelect' | 'ChipFilter';
-export type ChipFilterType = 'static' | 'dynamic';
+export type ChipFilterType = 'static' | 'dynamic' | 'add';

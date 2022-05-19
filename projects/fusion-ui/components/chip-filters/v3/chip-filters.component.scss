@@ -12,5 +12,8 @@
        background-color: $White;
        width: 100%;
        min-height: 64px;
+       .fu-add-filter {
+           order: 100;
+       }
    }
 }

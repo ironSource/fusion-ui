@@ -1,3 +1,16 @@
 <div class="chip-filters-container">
     <ng-content></ng-content>
+    <ng-container *ngIf="showAddFilter$ | async">
+        <fusion-chip-filter [configuration]="{type:'add'}">
+            <div class="fu-chip-content">
+                <span  style="display: flex; gap: 3px;">
+                    <fusion-icon style="width: 16px; height: 16px;" name="tune"></fusion-icon>
+                    Add filters
+                </span>
+            </div>
+            <div class="filter-element">
+                <ng-content select="fusion-dropdown"></ng-content>
+            </div>
+        </fusion-chip-filter>
+    </ng-container>
 </div>

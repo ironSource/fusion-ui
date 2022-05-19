@@ -1,6 +1,6 @@
 import {AfterViewInit, ContentChildren, Directive, EventEmitter, Input, OnDestroy, Output, QueryList, Renderer2} from '@angular/core';
 import {ChipFilterComponent} from '@ironsource/fusion-ui';
-import {combineLatest, Observable, Subject} from 'rxjs';
+import {BehaviorSubject, combineLatest, Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {ChipType} from '@ironsource/fusion-ui/components/chip-filter/common/base';
 
@@ -12,6 +12,8 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
 
     @Output() onRemoveSelection = new EventEmitter<any>();
 
+    showAddFilter$ = new BehaviorSubject<boolean>(null);
+
     private onDestroy$ = new Subject<void>();
 
     constructor(private renderer: Renderer2) {}
@@ -22,19 +24,26 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
     }
 
     ngAfterViewInit() {
+        this.activateAddFilter();
         this.orderChipFilters(this.chipFilters);
         this.initListeners();
     }
 
+    private activateAddFilter() {
+        setTimeout(() => {
+            this.showAddFilter$.next(this.chipFilters.some(chip => chip.type === 'dynamic'));
+        });
+    }
+
     private initListeners() {
-        this.onChipsChanges();
+        this.onTypeChipsChanges();
 
         this.onSelectedValueListener();
 
         this.onClosedChipListener();
     }
 
-    private onChipsChanges(): void {
+    private onTypeChipsChanges(): void {
         const chipTypes: Observable<ChipType>[] = this.chipFilters.map(chip => chip.chipCssType$.asObservable());
         combineLatest(chipTypes)
             .pipe(takeUntil(this.onDestroy$))
@@ -62,9 +71,6 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
                     break;
                 case 'UnRemoveAbleSelect':
                     this.renderer.setStyle(chip.element.nativeElement, 'order', `-${chipFilters.length - index}`);
-                    break;
-                case 'AddFilter':
-                    this.renderer.setStyle(chip.element.nativeElement, 'order', `${chipFilters.length}`);
                     break;
                 default:
                     this.renderer.setStyle(chip.element.nativeElement, 'order', `${index}`);

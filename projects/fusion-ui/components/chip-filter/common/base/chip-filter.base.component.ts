@@ -35,10 +35,11 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
 
     @Input() set configuration(value: ChipFilterComponentConfigurations) {
         if (!!value) {
+            console.log(value);
             this.id = value.id;
             this.disabled = value.disabled || false;
             this.selected = value.selected || false;
-            this.type = value.type;
+            this.type = value.type || 'static';
             this.close = value.close || false;
         }
     }
@@ -66,6 +67,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
 
     set type(chipType: ChipFilterType) {
         this._type = chipType;
+        this.setChipType(this.selected);
     }
 
     get type() {
@@ -92,7 +94,6 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
             this.apiBase.templateRef = this.ref;
             this.apiBase.isComponentDisabled$.next(this.disabled);
         }
-        this.setChipType(this.selected);
     }
 
     ngAfterViewInit() {
@@ -123,13 +124,13 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
         this.apiBase
             ?.valueSelected()
             .pipe(takeUntil(this.onDestroy$))
-            .subscribe((isSelected: boolean) => {
-                if (isSelected && !this.disabled) {
-                    this.selected = isSelected;
-                    this.setChipType(isSelected);
+            .subscribe((selected: {value: any; isSelected: boolean}) => {
+                if (selected.isSelected && !this.disabled) {
+                    this.selected = selected.isSelected;
+                    this.setChipType(this.selected);
                     this.onSelectedChange.emit({
                         id: this.id,
-                        selected: this.selected
+                        ...selected
                     });
                 }
             });
@@ -160,14 +161,14 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
         }
         switch (this.type) {
             case 'dynamic':
-                this.chipCssType$.next('AddFilter');
+                this.chipCssType$.next(hasValue ? 'RemoveAbleSelect' : 'ChipFilter');
+                this.close = true;
                 break;
             case 'static':
-                if (this.close) {
-                    this.chipCssType$.next(hasValue ? 'RemoveAbleSelect' : 'ChipFilter');
-                } else {
-                    this.chipCssType$.next(hasValue ? 'UnRemoveAbleSelect' : 'ChipFilter');
-                }
+                this.chipCssType$.next(hasValue ? 'UnRemoveAbleSelect' : 'ChipFilter');
+                break;
+            case 'add':
+                this.chipCssType$.next('AddFilter');
                 break;
         }
 
