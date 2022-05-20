@@ -13,14 +13,9 @@
 <!--        <fusion-icon class="fu-icon-close" *ngIf="isCloseIcon$ | async" (click)="closeClicked($event)" [name]="'close-bold'"></fusion-icon>-->
 <!--    </div>-->
 <!--</ng-template>-->
-
-<ng-template #ref>
-    <div class="fu-chip-filter-container">
-        <div class="truncate fu-chip-content-wrapper">
-            <ng-content select=".fu-chip-content"></ng-content>
-        </div>
-        <fusion-icon class="fu-icon-close" *ngIf="isCloseIcon$ | async" (click)="closeClicked($event)" [name]="'close-bold'"></fusion-icon>
+<div class="fu-chip-filter-container">
+    <div class="truncate fu-chip-content-wrapper">
+        <ng-content select=".fu-chip-content"></ng-content>
     </div>
-</ng-template>
-
-<ng-content select=".filter-element"></ng-content>
+    <fusion-icon class="fu-icon-close" *ngIf="isCloseIcon$ | async" (click)="closeClicked($event)" [name]="'close-bold'"></fusion-icon>
+</div>

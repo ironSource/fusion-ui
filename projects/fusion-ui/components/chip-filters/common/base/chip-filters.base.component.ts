@@ -4,6 +4,7 @@ import {BehaviorSubject, combineLatest, Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {ChipType} from '@ironsource/fusion-ui/components/chip-filter/common/base';
 import {FormControl} from '@angular/forms';
+import {DropdownOption} from '@ironsource/fusion-ui';
 
 @Directive()
 export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestroy {
@@ -11,6 +12,10 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
 
     @Input() set disableAddFilter(val: boolean) {
         this.disableAddFilter$.next(val);
+    }
+
+    @Input() set addFilterOptions(options: DropdownOption[]) {
+        this.options$.next(options);
     }
 
     @Output() onSelect = new EventEmitter<any>();
@@ -22,6 +27,8 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
     disableAddFilter$ = new BehaviorSubject<boolean>(null);
 
     formControl = new FormControl(null);
+
+    options$ = new BehaviorSubject<DropdownOption[]>([]);
 
     private onDestroy$ = new Subject<void>();
 
@@ -70,6 +77,15 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
 
     private onClosedChipListener(): void {
         this.chipFilters.forEach(chip => chip.onRemove.pipe(takeUntil(this.onDestroy$)).subscribe(val => this.onRemoveSelection.emit(val)));
+    }
+
+    addChipFilter($event) {
+        console.log('>>>>', $event);
+        this.chipFilters.forEach(chip => {
+            if (chip.id === 2) {
+                chip.isVisible = true;
+            }
+        });
     }
 
     private orderChipFilters(chipFilters: QueryList<ChipFilterComponent>) {
