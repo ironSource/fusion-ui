@@ -1,7 +1,6 @@
 export interface ChipFilterComponentConfigurations {
     id?: number | string;
     disabled?: boolean;
-    selected?: boolean;
     type?: ChipFilterType;
     close?: boolean;
 }
