@@ -26,7 +26,7 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
 
     disableAddFilter$ = new BehaviorSubject<boolean>(null);
 
-    formControl = new FormControl(null);
+    formControl = new FormControl([]);
 
     options$ = new BehaviorSubject<DropdownOption[]>([]);
 
@@ -45,18 +45,21 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
         this.initListeners();
     }
 
-    private activateAddFilter() {
-        setTimeout(() => {
-            this.showAddFilter$.next(this.chipFilters.some(chip => chip.type === 'dynamic'));
-        });
-    }
-
-    private initListeners() {
+    private initListeners(): void {
         this.onTypeChipsChanges();
 
         this.onSelectedValueListener();
 
         this.onClosedChipListener();
+
+        // this.formControl.valueChanges.pipe().subscribe((option: DropdownOption[]) => this.addChipFilter(option[0].id));
+        this.formControl.valueChanges.pipe().subscribe(option => this.addChipFilter(2));
+    }
+
+    private activateAddFilter(): void {
+        setTimeout(() => {
+            this.showAddFilter$.next(this.chipFilters.some(chip => chip.type === 'dynamic'));
+        });
     }
 
     private onTypeChipsChanges(): void {
@@ -72,23 +75,33 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
     }
 
     private onSelectedValueListener(): void {
-        this.chipFilters.forEach(chip => chip.onSelectedChange.pipe(takeUntil(this.onDestroy$)).subscribe(val => this.onSelect.emit(val)));
+        this.chipFilters.forEach(chip => {
+            if (chip.type !== 'add') {
+                chip.onSelectedChange.pipe(takeUntil(this.onDestroy$)).subscribe(val => this.onSelect.emit(val));
+            }
+        });
     }
 
     private onClosedChipListener(): void {
         this.chipFilters.forEach(chip => chip.onRemove.pipe(takeUntil(this.onDestroy$)).subscribe(val => this.onRemoveSelection.emit(val)));
     }
 
-    addChipFilter($event) {
-        console.log('>>>>', $event);
-        this.chipFilters.forEach(chip => {
-            if (chip.id === 2) {
-                chip.isVisible = true;
+    private addChipFilter(id: number | string): void {
+        this.chipFilters.toArray().forEach(chip => {
+            if (chip['id'] === id) {
+                setTimeout(() => {
+                    chip['isVisible'] = true;
+                    chip['isSelected'] = true;
+                    this.onSelect.emit({
+                        id,
+                        isSelected: chip.selected
+                    });
+                });
             }
         });
     }
 
-    private orderChipFilters(chipFilters: QueryList<ChipFilterComponent>) {
+    private orderChipFilters(chipFilters: QueryList<ChipFilterComponent>): void {
         [...chipFilters].forEach((chip: ChipFilterComponent, index: number) => {
             switch (chip.chipCssType$.getValue()) {
                 case 'RemoveAbleSelect':

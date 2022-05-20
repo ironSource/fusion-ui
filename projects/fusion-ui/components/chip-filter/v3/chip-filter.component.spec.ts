@@ -55,13 +55,13 @@ describe('ChipFilterComponent', () => {
         });
 
         it('should create chip select removable type', async () => {
-            component.config = {id: 1, type: 'dynamic'};
+            component.config = {id: 1, type: 'static', close: true};
             fixture.detectChanges();
             expect(chipEl).toBeTruthy();
 
             chipElement.dispatchEvent(new Event('click'));
             fixture.detectChanges();
-            expect(collectionToArray(chipElement.classList)).toEqual(['fu-selected', 'closed-icon', 'fu-removable-filter']);
+            expect(collectionToArray(chipElement.classList)).toEqual(['closed-icon', 'fu-selected', 'fu-removable-filter']);
 
             const iconClose = chipEl.query(By.css('fusion-icon')).nativeElement.classList;
             expect(iconClose).toContain('fu-icon-close');
