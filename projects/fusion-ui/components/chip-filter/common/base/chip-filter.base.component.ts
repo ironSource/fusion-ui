@@ -178,6 +178,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
         switch (this.type) {
             case 'dynamic':
                 this.chipCssType$.next('RemoveAbleSelect');
+                this.close = true;
                 break;
             case 'static':
                 this.setChipSelectType(hasValue);
