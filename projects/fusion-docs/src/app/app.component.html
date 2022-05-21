@@ -1,3 +1,71 @@
-<router-outlet></router-outlet>
-<fusion-tooltip *ngIf="tooltipData.content"
-                [tooltipData]="tooltipData"></fusion-tooltip>
+<!--<router-outlet></router-outlet>-->
+<!--<fusion-tooltip *ngIf="tooltipData.content"-->
+<!--                [tooltipData]="tooltipData"></fusion-tooltip>-->
+
+<fusion-chip-filters (onSelect)="chipChanged($event)" (onRemoveSelection)="removeChip($event)">
+    <fusion-chip-filter [configuration]="{id: 1, type: 'static'}">
+        <div class="fu-chip-content">Chip filter 1: All</div>
+        <div class="filter-element">
+            <fusion-daterange
+                [options]="{calendarAmount: 1,presets: []}"
+                [formControl]="formControl2"
+            >
+            </fusion-daterange>
+        </div>
+    </fusion-chip-filter>
+
+    <fusion-chip-filter [configuration]="{id: 2, type:'dynamic', close:true}">
+        <div class="fu-chip-content">Alert type 2: All</div>
+        <div class="filter-element">
+            <fusion-daterange
+                [formControl]="formControl"
+            >
+            </fusion-daterange>
+        </div>
+    </fusion-chip-filter>
+    <fusion-chip-filter [configuration]="{id: 3,type:'dynamic'}">
+        <div class="fu-chip-content">Status 3: Active</div>
+        <div class="filter-element">
+            <fusion-daterange
+                [formControl]="formControl"
+            >
+            </fusion-daterange>
+        </div>
+    </fusion-chip-filter>
+
+    <fusion-chip-filter [configuration]="{id: 4,type:'static'}">
+        <div class="fu-chip-content">Alert type 4: All</div>
+        <div class="filter-element">
+            <fusion-daterange
+                [formControl]="formControl"
+            >
+            </fusion-daterange>
+        </div>
+    </fusion-chip-filter>
+
+    <fusion-chip-filter [configuration]="{id: 5,type:'static'}">
+        <div class="fu-chip-content">Status 5: Active</div>
+        <div class="filter-element">
+            <fusion-daterange
+                [formControl]="formControl"
+            >
+            </fusion-daterange>
+        </div>
+    </fusion-chip-filter>
+</fusion-chip-filters>
+
+<!--<br>-->
+<!--<br>-->
+
+<!--<fusion-chip-filters>-->
+<!--    <fusion-chip-filter [configuration]="{id: 1, type:'static'}" [isSelected]="true">-->
+<!--        <div class="fu-chip-content">Status 1: Active</div>-->
+<!--    </fusion-chip-filter>-->
+<!--    <fusion-chip-filter [configuration]="{id: 2,type:'dynamic',close:true}">-->
+<!--        <div class="fu-chip-content">Status 2: Active</div>-->
+<!--    </fusion-chip-filter>-->
+<!--    <fusion-chip-filter [configuration]="{id: 3,type:'static'}">-->
+<!--        <div class="fu-chip-content">Status 3: Active</div>-->
+<!--    </fusion-chip-filter>-->
+<!--</fusion-chip-filters>-->
+

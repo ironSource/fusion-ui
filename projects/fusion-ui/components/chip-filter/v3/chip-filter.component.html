@@ -1,21 +1,21 @@
-<!--<ng-template #ref>-->
-    <div *fusionChipFilterContent="apiBase" class="fu-chip-filter-container">
-        <div class="truncate fu-chip-content-wrapper">
-            <ng-content select=".fu-chip-content"></ng-content>
-        </div>
-        <fusion-icon class="fu-icon-close" *ngIf="isCloseIcon$ | async" (click)="closeClicked($event)" [name]="'close-bold'"></fusion-icon>
-    </div>
-<!--    <ng-container *ngIf="apiBase" [ngTemplateOutlet]="chipComponent"></ng-container>-->
-<!--</ng-template>-->
-<ng-content select=".filter-element"></ng-content>
-
-<!--<ng-container *ngIf="!apiBase" [ngTemplateOutlet]="chipComponent"></ng-container>-->
-
-<!--<ng-template #chipComponent>-->
-<!--    <div class="fu-chip-filter-container">-->
+<ng-template #ref>
+<!--    <div *fusionChipFilterContent="apiBase" class="fu-chip-filter-container">-->
 <!--        <div class="truncate fu-chip-content-wrapper">-->
 <!--            <ng-content select=".fu-chip-content"></ng-content>-->
 <!--        </div>-->
 <!--        <fusion-icon class="fu-icon-close" *ngIf="isCloseIcon$ | async" (click)="closeClicked($event)" [name]="'close-bold'"></fusion-icon>-->
 <!--    </div>-->
-<!--</ng-template>-->
+    <ng-container *ngIf="apiBase" [ngTemplateOutlet]="chipComponent"></ng-container>
+</ng-template>
+<ng-content select=".filter-element"></ng-content>
+
+<ng-container *ngIf="!apiBase" [ngTemplateOutlet]="chipComponent"></ng-container>
+
+<ng-template #chipComponent>
+    <div class="fu-chip-filter-container">
+        <div class="truncate fu-chip-content-wrapper">
+            <ng-content select=".fu-chip-content"></ng-content>
+        </div>
+        <fusion-icon class="fu-icon-close" *ngIf="isCloseIcon$ | async" (click)="closeClicked($event)" [name]="'close-bold'"></fusion-icon>
+    </div>
+</ng-template>
