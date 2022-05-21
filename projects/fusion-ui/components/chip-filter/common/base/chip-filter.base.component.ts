@@ -103,7 +103,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
         }
 
         if (this.apiBase) {
-            this.apiBase.templateRef = this.ref;
+            // this.apiBase.templateRef = this.ref;
             this.apiBase.isComponentDisabled$.next(this.disabled);
         }
 
