@@ -97,7 +97,7 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
     private onClosedChipListener(): void {
         this.chipFilters.forEach(chip =>
             chip.onRemove.pipe(takeUntil(this.onDestroy$)).subscribe(val => {
-                this.selectedFilters = this.selectedFilters.filter(selectedChip => val.id === selectedChip.id);
+                this.selectedFilters = this.selectedFilters.filter(selectedChip => val.id !== selectedChip.id);
                 this.onRemoveSelection.emit(this.selectedFilters);
             })
         );
@@ -109,11 +109,13 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
                 setTimeout(() => {
                     chip['isVisible'] = true;
                     chip['isSelected'] = true;
-                    this.onSelect.emit({
+                    const newSelection = {
                         id: option.id,
                         value: option?.displayText,
                         isSelected: chip.selected
-                    });
+                    };
+                    this.selectedFilters = [...this.selectedFilters, newSelection];
+                    this.onSelect.emit(this.selectedFilters);
                 });
             }
         });
