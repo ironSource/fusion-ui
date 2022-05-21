@@ -52,8 +52,14 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
 
         this.onClosedChipListener();
 
-        // this.formControl.valueChanges.pipe().subscribe((option: DropdownOption[]) => this.addChipFilter(option[0].id));
-        this.formControl.valueChanges.pipe().subscribe(option => this.addChipFilter(2));
+        // this.formControl.valueChanges.pipe().subscribe((option: DropdownOption[]) => this.addChipFilter(option[0]));
+        this.formControl.valueChanges.pipe().subscribe(option => {
+            const dropdownOption = {
+                id: 2,
+                displayText: 'Alert type'
+            };
+            this.addChipFilter(dropdownOption);
+        });
     }
 
     private activateAddFilter(): void {
@@ -86,14 +92,15 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
         this.chipFilters.forEach(chip => chip.onRemove.pipe(takeUntil(this.onDestroy$)).subscribe(val => this.onRemoveSelection.emit(val)));
     }
 
-    private addChipFilter(id: number | string): void {
+    private addChipFilter(option: DropdownOption): void {
         this.chipFilters.toArray().forEach(chip => {
-            if (chip['id'] === id) {
+            if (chip['id'] === option.id) {
                 setTimeout(() => {
                     chip['isVisible'] = true;
                     chip['isSelected'] = true;
                     this.onSelect.emit({
-                        id,
+                        id: option.id,
+                        value: option?.displayText,
                         isSelected: chip.selected
                     });
                 });
@@ -105,10 +112,10 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
         [...chipFilters].forEach((chip: ChipFilterComponent, index: number) => {
             switch (chip.chipCssType$.getValue()) {
                 case 'RemoveAbleSelect':
-                    this.renderer.setStyle(chip.element.nativeElement, 'order', `-${index}`);
+                    this.renderer.setStyle(chip.element.nativeElement, 'order', `-${chipFilters.length - index}`);
                     break;
                 case 'UnRemoveAbleSelect':
-                    this.renderer.setStyle(chip.element.nativeElement, 'order', `-${chipFilters.length - index}`);
+                    this.renderer.setStyle(chip.element.nativeElement, 'order', `-${2 * chipFilters.length - index}`);
                     break;
                 default:
                     this.renderer.setStyle(chip.element.nativeElement, 'order', `${index}`);
