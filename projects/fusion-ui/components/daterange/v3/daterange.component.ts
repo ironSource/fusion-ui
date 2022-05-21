@@ -4,7 +4,6 @@ import {BehaviorSubject} from 'rxjs';
 import {DropdownSelectConfigurations} from '@ironsource/fusion-ui/components/dropdown';
 import {DaterangeBaseComponent} from '@ironsource/fusion-ui/components/daterange/common/base';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
-import {map} from 'rxjs/operators';
 
 @Component({
     selector: 'fusion-daterange',

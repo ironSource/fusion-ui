@@ -5,6 +5,7 @@ import {takeUntil} from 'rxjs/operators';
 import {ChipType} from '@ironsource/fusion-ui/components/chip-filter/common/base';
 import {FormControl} from '@angular/forms';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown';
+import {SelectedFilters} from './chip-filters-entities';
 
 @Directive()
 export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestroy {
@@ -29,6 +30,8 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
     formControl = new FormControl([]);
 
     options$ = new BehaviorSubject<DropdownOption[]>([]);
+
+    private selectedFilters: SelectedFilters[] = [];
 
     private onDestroy$ = new Subject<void>();
 
@@ -83,13 +86,21 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
     private onSelectedValueListener(): void {
         this.chipFilters.forEach(chip => {
             if (chip.type !== 'add') {
-                chip.onSelectedChange.pipe(takeUntil(this.onDestroy$)).subscribe(val => this.onSelect.emit(val));
+                chip.onSelectedChange.pipe(takeUntil(this.onDestroy$)).subscribe(val => {
+                    this.selectedFilters = [...this.selectedFilters, val];
+                    this.onSelect.emit(this.selectedFilters);
+                });
             }
         });
     }
 
     private onClosedChipListener(): void {
-        this.chipFilters.forEach(chip => chip.onRemove.pipe(takeUntil(this.onDestroy$)).subscribe(val => this.onRemoveSelection.emit(val)));
+        this.chipFilters.forEach(chip =>
+            chip.onRemove.pipe(takeUntil(this.onDestroy$)).subscribe(val => {
+                this.selectedFilters = this.selectedFilters.filter(selectedChip => val.id === selectedChip.id);
+                this.onRemoveSelection.emit(this.selectedFilters);
+            })
+        );
     }
 
     private addChipFilter(option: DropdownOption): void {
