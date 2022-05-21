@@ -23,15 +23,15 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     @ViewChild('ref', {static: true}) ref: TemplateRef<any>;
 
     id: number | string;
-    onDestroy$ = new Subject<void>();
-    restListeners$ = new Subject<void>();
     chipCssType$ = new BehaviorSubject<ChipType>(null);
-    clearClickSubscription$ = merge(this.onDestroy$, this.restListeners$);
     isCloseIcon$ = new BehaviorSubject<boolean>(false);
 
-    private _selected: boolean = false;
-    private _disabled$ = new BehaviorSubject<boolean>(false);
-    private _type: ChipFilterType = 'static';
+    private onDestroy$ = new Subject<void>();
+    private restListeners$ = new Subject<void>();
+    private clearClickSubscription$ = merge(this.onDestroy$, this.restListeners$);
+    private chipSelected: boolean = false;
+    private chipDisabled$ = new BehaviorSubject<boolean>(false);
+    private chipType: ChipFilterType = 'static';
 
     @Input() set configuration(value: ChipFilterComponentConfigurations) {
         if (!!value) {
@@ -68,31 +68,31 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     }
 
     set disabled(disabled: boolean) {
-        this._disabled$.next(disabled);
+        this.chipDisabled$.next(disabled);
         this.changeHostClass('fu-disabled', disabled);
     }
 
     get disabled(): boolean {
-        return this._disabled$.getValue();
+        return this.chipDisabled$.getValue();
     }
 
     set type(chipType: ChipFilterType) {
-        this._type = chipType;
+        this.chipType = chipType;
         this.setChipType(this.selected);
     }
 
     get type() {
-        return this._type;
+        return this.chipType;
     }
 
     set selected(selected: boolean) {
-        this._selected = selected;
+        this.chipSelected = selected;
         this.changeHostClass('fu-selected', selected);
         this.setChipType(selected);
     }
 
     get selected(): boolean {
-        return this._selected;
+        return this.chipSelected;
     }
 
     constructor(public element: ElementRef, private renderer: Renderer2) {}
@@ -166,11 +166,6 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
             });
     }
 
-    private changeHostClass(className: string, add: boolean): void {
-        const classAction = add ? 'addClass' : 'removeClass';
-        this.renderer[classAction](this.element.nativeElement, className);
-    }
-
     private setChipType(hasValue: boolean) {
         if (this.chipCssType$.getValue()) {
             this.changeHostClass(ChipTypeToClass[this.chipCssType$.getValue()], false);
@@ -197,5 +192,10 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
         } else {
             this.chipCssType$.next(hasValue ? 'UnRemoveAbleSelect' : 'ChipFilter');
         }
+    }
+
+    private changeHostClass(className: string, add: boolean): void {
+        const classAction = add ? 'addClass' : 'removeClass';
+        this.renderer[classAction](this.element.nativeElement, className);
     }
 }

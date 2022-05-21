@@ -34,4 +34,13 @@ export class AppComponent implements OnInit, OnDestroy {
         console.log($event);
         this.formControl.reset();
     }
+
+    chipChangedWithNoChildren($event) {
+        console.log($event);
+    }
+
+    removeChipWithNoChildren($event) {
+        console.log($event);
+        this.formControl.reset();
+    }
 }

@@ -100,18 +100,33 @@
     </fusion-chip-filter>
 </fusion-chip-filters>
 
-<!--<br>-->
-<!--<br>-->
+<br>
+<br>
 
-<!--<fusion-chip-filters>-->
-<!--    <fusion-chip-filter [configuration]="{id: 1, type:'static'}" [isSelected]="true">-->
-<!--        <div class="fu-chip-content">Status 1: Active</div>-->
-<!--    </fusion-chip-filter>-->
-<!--    <fusion-chip-filter [configuration]="{id: 2,type:'dynamic'}">-->
-<!--        <div class="fu-chip-content">Status 2: Active</div>-->
-<!--    </fusion-chip-filter>-->
-<!--    <fusion-chip-filter [configuration]="{id: 3,type:'static'}">-->
-<!--        <div class="fu-chip-content">Status 3: Active</div>-->
-<!--    </fusion-chip-filter>-->
-<!--</fusion-chip-filters>-->
+<fusion-chip-filters (onSelect)="chipChangedWithNoChildren($event)" (onRemoveSelection)="removeChipWithNoChildren($event)">
+    <fusion-chip-filter [configuration]="{id: 1, type:'static'}" [isSelected]="true">
+        <div class="fu-chip-content">Status 1: Active</div>
+    </fusion-chip-filter>
+    <fusion-chip-filter [configuration]="{id: 2,type:'dynamic'}">
+        <div class="fu-chip-content">Status 2: Active</div>
+    </fusion-chip-filter>
+    <fusion-chip-filter [configuration]="{id: 3,type:'static'}">
+        <div class="fu-chip-content">Status 3: Active</div>
+    </fusion-chip-filter>
+    <fusion-chip-filter [configuration]="{id: 4,type:'static', close: true}">
+        <div class="fu-chip-content">Status 4: Active</div>
+    </fusion-chip-filter>
+    <fusion-chip-filter [configuration]="{id: 5,type:'static'}">
+        <div class="fu-chip-content">Status 5: Active</div>
+    </fusion-chip-filter>
+    <fusion-chip-filter [configuration]="{id: 6,type:'static', close: true}">
+        <div class="fu-chip-content">Status 6: Active</div>
+    </fusion-chip-filter>
+    <fusion-chip-filter [configuration]="{id: 7,type:'static'}">
+        <div class="fu-chip-content">Status 7: Active</div>
+    </fusion-chip-filter>
+    <fusion-chip-filter [configuration]="{id: 8,type:'static', close: true}">
+        <div class="fu-chip-content">Status 8: Active</div>
+    </fusion-chip-filter>
+</fusion-chip-filters>
 
