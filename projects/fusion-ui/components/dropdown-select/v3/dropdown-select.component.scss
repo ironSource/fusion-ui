@@ -1,6 +1,6 @@
-@import '../../../src/style/scss/v2/vars/vars';
-@import '../../../src/style/scss/v2/vars/border';
-@import '../../../src/style/scss/v2/mixins/mixins';
+@import '../../../src/style/scss/v3/vars/vars';
+@import '../../../src/style/scss/v3/vars/border';
+@import '../../../src/style/scss/v3/mixins/mixins';
 
 $v2-headerHeight: 40px;
 $v2-borderRadius: 4px;
@@ -8,8 +8,7 @@ $v2-errorBGColor: $fu-negative-100;
 $v2-headerSmallHeight: 32px;
 $v2-borderRoundedRadius: 20px;
 
-:host.fu-style-v3 .is-dropdown-select,
-:host.fu-style-v2 .is-dropdown-select {
+:host .is-dropdown-select {
     @extend %border-box-normalize;
     // title
     label {
@@ -91,8 +90,7 @@ $v2-borderRoundedRadius: 20px;
     }
 }
 
-:host-context(.is-dropdown.fu-style-v3) .is-dropdown-select,
-:host-context(.is-dropdown.fu-style-v2) .is-dropdown-select {
+:host-context(.is-dropdown) .is-dropdown-select {
     &.forced-placeholder{
         label.icon {
             .placeholderText {
@@ -121,8 +119,7 @@ $v2-borderRoundedRadius: 20px;
     }
 }
 
-:host-context(.is-dropdown.is-icon-right-position.fu-style-v3) .is-dropdown-select,
-:host-context(.is-dropdown.is-icon-right-position.fu-style-v2) .is-dropdown-select {
+:host-context(.is-dropdown.is-icon-right-position) .is-dropdown-select {
     label {
         padding: 10px 40px 10px 10px;
         @include icon-style('is-custom-icon', $fu-dark-200, 12px, true, true) {
@@ -145,18 +142,16 @@ $v2-borderRoundedRadius: 20px;
 }
 
 // small size dropdown has changes in dropdown title only
-:host-context(fusion-dropdown.small.fu-style-v3),
-:host-context(fusion-multi-dropdown.small.fu-style-v3),
-:host-context(fusion-dropdown.small.fu-style-v2),
-:host-context(fusion-multi-dropdown.small.fu-style-v2) {
+:host-context(fusion-dropdown.small),
+:host-context(fusion-multi-dropdown.small) {
     .is-dropdown-select label {
-            @extend %font-body;
-            height: $v2-headerSmallHeight;
-            padding: 6px 25px 8px 7px;
-            line-height: unset;
-            @include icon-style('icon-arrow', $fu-dark-200, 8px, true, true) {
-                top: 6px;
-            }
+        @extend %font-body;
+        height: $v2-headerSmallHeight;
+        padding: 6px 25px 8px 7px;
+        line-height: unset;
+        @include icon-style('icon-arrow', $fu-dark-200, 8px, true, true) {
+            top: 6px;
+        }
     }
     &.is-icon-right-position{
         .is-dropdown-select label {
@@ -165,23 +160,17 @@ $v2-borderRoundedRadius: 20px;
     }
 }
 
-:host-context(fusion-dropdown.rounded.fu-style-v3),
-:host-context(fusion-multi-dropdown.rounded.fu-style-v3),
-:host-context(fusion-dropdown.rounded.fu-style-v2),
-:host-context(fusion-multi-dropdown.rounded.fu-style-v2) {
+:host-context(fusion-dropdown.rounded),
+:host-context(fusion-multi-dropdown.rounded) {
     .is-dropdown-select label {
         border-radius: $v2-borderRoundedRadius;
     }
 }
 
-
-:host-context(fusion-dropdown.ng-invalid.fu-style-v3) .is-dropdown-select label,
-:host-context(fusion-multi-dropdown.ng-invalid.fu-style-v3) .is-dropdown-select label,
-:host-context(fusion-dropdown.ng-invalid.fu-style-v2) .is-dropdown-select label,
-:host-context(fusion-multi-dropdown.ng-invalid.fu-style-v2) .is-dropdown-select label {
+:host-context(fusion-dropdown.ng-invalid) .is-dropdown-select label,
+:host-context(fusion-multi-dropdown.ng-invalid) .is-dropdown-select label {
     background-color: $v2-errorBGColor;
     &.dd-active{
         background-color: $fu-light-100;
     }
 }
-

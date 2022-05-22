@@ -1,17 +1,12 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Injector, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
-import {DropdownSelectConfigurations} from './dropdown-select-configurations';
+import {Directive, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
+import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {DropdownSearchComponent} from '@ironsource/fusion-ui/components/dropdown-search/v2';
+import {DropdownSelectConfigurations} from '@ironsource/fusion-ui/components/dropdown-select';
+import {DropdownSearchComponent} from '@ironsource/fusion-ui/components/dropdown-search/v1';
 
-@Component({
-    selector: 'fusion-dropdown-select',
-    templateUrl: './dropdown-select.component.html',
-    styleUrls: ['./dropdown-select.component.scss', './dropdown-select.component-v2.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class DropdownSelectComponent extends FusionBase implements OnInit {
+@Directive()
+export class DropdownSelectBaseComponent implements OnInit, OnDestroy {
     @ViewChild('searchComponent') searchComponent: DropdownSearchComponent;
 
     @Output() searchValueChanged = new EventEmitter<string>();
@@ -30,15 +25,18 @@ export class DropdownSelectComponent extends FusionBase implements OnInit {
     public placeholder: string;
     searchValue = new FormControl();
 
-    constructor(injector: Injector) {
-        super(injector);
-    }
+    onDestroy$ = new Subject<void>();
 
     ngOnInit() {
         this.searchValue.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(value => this.searchValueChanged.next(value));
     }
 
-    getLabelCSSClasses(currentStyleVersion: StyleVersion, isOpen: boolean): string[] {
+    ngOnDestroy() {
+        this.onDestroy$.next();
+        this.onDestroy$.complete();
+    }
+
+    /*    getLabelCSSClasses(currentStyleVersion: StyleVersion, isOpen: boolean): string[] {
         const isV2OpenWithSearch =
             (currentStyleVersion === this.styleVersion.V2 || currentStyleVersion === this.styleVersion.V3) &&
             this.configurations.isSearch &&
@@ -53,7 +51,7 @@ export class DropdownSelectComponent extends FusionBase implements OnInit {
             isV2OpenWithSearch && this.searchValue.value && 'dd_search-has-value'
         ].filter(Boolean);
         return classesList;
-    }
+    }*/
 
     resetSearch(): void {
         this.searchValue.reset('', {onlySelf: true, emitEvent: false});
