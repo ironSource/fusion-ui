@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, for
 import {SwitcherItem, SwitcherConfiguration} from './switcher.entities';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {UniqueIdService} from '@ironsource/fusion-ui/services';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 
 @Component({
     selector: 'fusion-switcher',
