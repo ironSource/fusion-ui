@@ -2,7 +2,7 @@ import {Directive, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} fr
 import {FormControl} from '@angular/forms';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {DropdownSelectConfigurations} from '@ironsource/fusion-ui/components/dropdown-select';
+import {DropdownSelectConfigurations} from '@ironsource/fusion-ui/components/dropdown-select/entities';
 import {DropdownSearchComponent} from '@ironsource/fusion-ui/components/dropdown-search/v1';
 
 @Directive()
