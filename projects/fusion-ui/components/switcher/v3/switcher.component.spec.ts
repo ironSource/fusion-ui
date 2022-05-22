@@ -35,7 +35,7 @@ describe('SwitcherComponent', () => {
         fixture = TestBed.createComponent(SwitcherComponent);
         component = fixture.componentInstance;
 
-        component.configuration = {name: 'switcherTest'};
+        component.configuration = {name: 'switcherTest', size: 'large'};
         component.options = mockOptions;
 
         fixture.detectChanges();
@@ -49,7 +49,10 @@ describe('SwitcherComponent', () => {
         const items = component.options;
 
         expect(fixture.debugElement.query(By.css('div.fu-switcher-holder'))).toBeTruthy();
-
+        expect(Array.from(fixture.debugElement.query(By.css('div.fu-switcher-holder')).nativeElement.classList)).toEqual([
+            'fu-switcher-holder',
+            'fu-size-large'
+        ]);
         const elDInputs = fixture.debugElement.queryAll(By.css('input[type="radio"]'));
         const elDLabels = fixture.debugElement.queryAll(By.css('label'));
 

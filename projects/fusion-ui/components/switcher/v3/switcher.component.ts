@@ -27,7 +27,6 @@ export class SwitcherComponent implements OnInit {
     @Output() selectedChange: EventEmitter<SwitcherItem> = new EventEmitter();
 
     id: string;
-    isDisabled = false;
     switcherConfiguration: SwitcherConfiguration = {name: '', size: 'small'};
 
     private selected: SwitcherItem;
@@ -72,9 +71,5 @@ export class SwitcherComponent implements OnInit {
 
     registerOnTouched(fn: any): void {
         this.propagateTouched = fn;
-    }
-
-    setDisabledState?(isDisabled: boolean): void {
-        this.isDisabled = isDisabled;
     }
 }
