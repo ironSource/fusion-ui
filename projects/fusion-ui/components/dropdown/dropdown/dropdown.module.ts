@@ -14,9 +14,9 @@ import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
 import {DropdownLoaderModule} from '../dropdown-loader/dropdown-loader.module';
 import {DropdownOptionModule} from '../dropdown-option/dropdown-option.module';
-import {DropdownSearchModule} from '../dropdown-search/dropdown-search.module';
 import {DropdownOptionsListModule} from '../dropdown-options-list/dropdown-options-list.module';
 import {DropdownSelectModule} from '../dropdown-select/dropdown-select.module';
+import {DropdownSearchModule} from '@ironsource/fusion-ui/components/dropdown-search/v1';
 
 @NgModule({
     declarations: [DropdownComponent],
@@ -37,8 +37,9 @@ import {DropdownSelectModule} from '../dropdown-select/dropdown-select.module';
         DropdownLoaderModule,
         DropdownOptionsListModule,
         DropdownOptionModule,
+        DropdownSelectModule,
         DropdownSearchModule,
-        DropdownSelectModule
+        DropdownSearchModule
     ]
 })
 export class DropdownModule {}

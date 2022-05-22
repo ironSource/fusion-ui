@@ -5,7 +5,7 @@ import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {ReactiveFormsModule} from '@angular/forms';
-import {DropdownSearchModule} from '../dropdown-search/dropdown-search.module';
+import {DropdownSearchOldModule} from '../dropdown-search/dropdown-search.module';
 import {FlagModule} from '@ironsource/fusion-ui/components/flag';
 
 describe('DropdownSelectComponent', () => {
@@ -16,7 +16,7 @@ describe('DropdownSelectComponent', () => {
         waitForAsync(() => {
             TestBed.configureTestingModule({
                 declarations: [DropdownSelectComponent],
-                imports: [DynamicComponentsModule, IconModule, TooltipModule, ReactiveFormsModule, DropdownSearchModule, FlagModule]
+                imports: [DynamicComponentsModule, IconModule, TooltipModule, ReactiveFormsModule, DropdownSearchOldModule, FlagModule]
             }).compileComponents();
         })
     );

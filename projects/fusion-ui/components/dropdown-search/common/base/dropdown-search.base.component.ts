@@ -1,23 +1,11 @@
-import {ChangeDetectionStrategy, Component, forwardRef, HostListener, Injector, Input, OnInit, ViewChild} from '@angular/core';
-import {InputComponent} from '@ironsource/fusion-ui/components/input';
-import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
+import {Directive, HostListener, Injector, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {ControlValueAccessor, FormControl} from '@angular/forms';
+import {InputComponent} from '@ironsource/fusion-ui';
 import {takeUntil} from 'rxjs/operators';
+import {Subject} from 'rxjs';
 
-@Component({
-    selector: 'fusion-dropdown-search',
-    templateUrl: './dropdown-search.component.html',
-    styleUrls: ['./dropdown-search.component.scss', './dropdown-search.component-v2.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => DropdownSearchComponent),
-            multi: true
-        }
-    ]
-})
-export class DropdownSearchComponent extends FusionBase implements OnInit, ControlValueAccessor {
+@Directive()
+export abstract class DropdownSearchBaseComponent implements OnInit, OnDestroy, ControlValueAccessor {
     @Input() autoComplete: boolean;
     @Input() search: boolean;
     @Input() placeholder = 'Search';
@@ -33,14 +21,17 @@ export class DropdownSearchComponent extends FusionBase implements OnInit, Contr
         event.stopPropagation();
     }
 
-    constructor(injector: Injector) {
-        super(injector);
-    }
+    onDestroy$ = new Subject<void>();
 
     ngOnInit() {
         this.searchValue.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(newValue => {
             this.propagateChange(newValue);
         });
+    }
+
+    ngOnDestroy() {
+        this.onDestroy$.next();
+        this.onDestroy$.complete();
     }
 
     /**

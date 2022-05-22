@@ -13,7 +13,7 @@ import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
 import {DropdownLoaderModule} from '../dropdown-loader/dropdown-loader.module';
 import {DropdownOptionModule} from '../dropdown-option/dropdown-option.module';
-import {DropdownSearchModule} from '../dropdown-search/dropdown-search.module';
+import {DropdownSearchOldModule} from '../dropdown-search/dropdown-search.module';
 import {DropdownService} from '../dropdown.service';
 import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
@@ -73,7 +73,7 @@ describe('DropdownComponent', () => {
                     DropdownLoaderModule,
                     DropdownOptionsListModule,
                     DropdownOptionModule,
-                    DropdownSearchModule,
+                    DropdownSearchOldModule,
                     DropdownSelectModule
                 ],
                 declarations: [DropdownComponent],

@@ -23,7 +23,6 @@ import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
 import {debounceTime, distinctUntilChanged, switchMapTo, take, takeUntil} from 'rxjs/operators';
-import {DropdownSearchComponent} from '../dropdown-search/dropdown-search.component';
 import {DropdownService} from '../dropdown.service';
 import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
 import {detectChangesDecorator} from '@ironsource/fusion-ui/decorators';
@@ -36,6 +35,7 @@ import {ClosedOptions} from '../entities/closed-options';
 import {SharedEventsService} from '@ironsource/fusion-ui/services/events-handler';
 import {DropdownPlaceholderConfiguration} from '../entities/dropdown-placeholder-configuration';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
+import {DropdownSearchComponent} from '@ironsource/fusion-ui/components/dropdown-search/v1';
 
 @Component({
     selector: 'fusion-dropdown',

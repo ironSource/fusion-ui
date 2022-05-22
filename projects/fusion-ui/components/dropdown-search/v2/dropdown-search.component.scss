@@ -1,8 +1,7 @@
 @import '../../../src/style/scss/v2/vars/colors';
 @import '../../../src/style/scss/v2/vars/border';
 
-:host.fu-style-v3,
-:host.fu-style-v2 {
+:host {
     .search-panel {
         color: white;
         border: none;
@@ -10,4 +9,5 @@
         margin-left: -8px;
         margin-right: -25px;
     }
+    pointer-events: none;
 }
