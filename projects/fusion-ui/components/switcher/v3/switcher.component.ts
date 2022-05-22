@@ -1,25 +1,12 @@
-import {
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component,
-    EventEmitter,
-    forwardRef,
-    Injector,
-    Input,
-    OnInit,
-    Output
-} from '@angular/core';
-import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
+import {SwitcherItem, SwitcherConfiguration} from './switcher.entities';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
-import {SwitcherItem} from './entities/switcher-item';
-import {SwitcherMode} from './entities/switcher-mode.enum';
-import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
+import {isNullOrUndefined, UniqueIdService} from '@ironsource/fusion-ui';
 
 @Component({
     selector: 'fusion-switcher',
     templateUrl: './switcher.component.html',
-    styleUrls: ['./switcher.component.scss', './switcher.component-v2.scss'],
+    styleUrls: ['./switcher.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -29,39 +16,37 @@ import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
         }
     ]
 })
-export class SwitcherComponent extends FusionBase implements OnInit {
-    @Input() name: string;
-    @Input() options: SwitcherItem[] = [];
-    @Input() error = '';
-    @Input() mode = SwitcherMode.Circle;
-    @Input() set disabled(value: boolean) {
-        this.setDisabledState(value);
+export class SwitcherComponent implements OnInit {
+    @Input() set configuration(value: SwitcherConfiguration) {
+        if (value) {
+            this.switcherConfiguration = {...this.switcherConfiguration, ...value};
+        }
     }
+    @Input() options: SwitcherItem[] = [];
     @Output() selectedChange: EventEmitter<SwitcherItem> = new EventEmitter();
 
     id: string;
     isDisabled = false;
+    switcherConfiguration: SwitcherConfiguration = {name: '', size: 'small'};
 
     private selected: SwitcherItem;
 
-    constructor(injector: Injector, private uniqueService: UniqueIdService, private changeDetectorRef: ChangeDetectorRef) {
-        super(injector);
-    }
+    constructor(private uniqueService: UniqueIdService, private changeDetectorRef: ChangeDetectorRef) {}
 
     ngOnInit() {
         const uniq = this.uniqueService.getUniqueId();
-        this.name = this.name || `fui-switcher-${uniq}`;
-        this.id = `fuiSwitcher${uniq}`;
+        this.switcherConfiguration.name = this.switcherConfiguration.name || `fu-switcher-${uniq}`;
+        this.id = `fuSwitcher${uniq}`;
     }
 
-    isSelected(item: SwitcherItem) {
+    isSelected(item: SwitcherItem): boolean {
         if (isNullOrUndefined(this.selected) || isNullOrUndefined(this.selected.id)) {
             return false;
         }
         return item.id === this.selected.id;
     }
 
-    setSelected(selected: SwitcherItem) {
+    setSelection(selected: SwitcherItem): void {
         this.propagateTouched();
         if (!isNullOrUndefined(this.selected) && !isNullOrUndefined(this.selected.id) && selected.id === this.selected.id) {
             return;
@@ -71,17 +56,12 @@ export class SwitcherComponent extends FusionBase implements OnInit {
         this.selectedChange.emit({...selected});
     }
 
-    // Implement ControlValueAccessor methods
     propagateChange = (_: SwitcherItem) => {};
 
     propagateTouched = () => {};
 
     writeValue(value: SwitcherItem): void {
-        if (isNullOrUndefined(value)) {
-            this.selected = {id: '', title: ''};
-        } else {
-            this.selected = value;
-        }
+        this.selected = isNullOrUndefined(value) ? {id: '', title: ''} : value;
         this.changeDetectorRef.markForCheck();
     }
 
