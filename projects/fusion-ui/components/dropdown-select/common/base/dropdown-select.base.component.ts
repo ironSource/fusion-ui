@@ -6,7 +6,7 @@ import {DropdownSelectConfigurations} from '@ironsource/fusion-ui/components/dro
 import {DropdownSearchComponent} from '@ironsource/fusion-ui/components/dropdown-search/v1';
 
 @Directive()
-export class DropdownSelectBaseComponent implements OnInit, OnDestroy {
+export abstract class DropdownSelectBaseComponent implements OnInit, OnDestroy {
     @ViewChild('searchComponent') searchComponent: DropdownSearchComponent;
 
     @Output() searchValueChanged = new EventEmitter<string>();
