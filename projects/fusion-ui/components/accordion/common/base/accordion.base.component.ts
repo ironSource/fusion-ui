@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output, ChangeDetectionStrategy, Type} from '@angular/core';
+import {Component, EventEmitter, Input, Output, Type, Directive} from '@angular/core';
 import {AccordionConfigurations, AccordionIconPosition, AccordionItem} from './accordion-entities';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
@@ -11,13 +11,8 @@ const DEFAULT_CONFIGURATION = {
     content: {component: AccordionContentComponent as Type<Component>}
 };
 
-@Component({
-    selector: 'fusion-accordion',
-    templateUrl: './accordion.component.html',
-    styleUrls: ['./accordion.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class AccordionComponent {
+@Directive()
+export class AccordionBaseComponent {
     @Input() set data(value: AccordionItem[]) {
         this.accordionBoxes = Array.isArray(value) ? value : [];
     }
