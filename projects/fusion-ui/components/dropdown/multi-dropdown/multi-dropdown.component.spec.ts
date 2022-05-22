@@ -13,7 +13,6 @@ import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
 import {DropdownLoaderModule} from '../dropdown-loader/dropdown-loader.module';
 import {DropdownOptionModule} from '../dropdown-option/dropdown-option.module';
-import {DropdownSearchModule} from '../dropdown-search/dropdown-search.module';
 import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
 import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
@@ -25,6 +24,7 @@ import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {ApiService} from '@ironsource/fusion-ui/services/api';
 import {DropdownSelectModule} from '../dropdown-select/dropdown-select.module';
 import {FUSION_STYLE_VERSION_CSS_VAR_NAME, StyleVersion} from '@ironsource/fusion-ui';
+import {DropdownSearchModule} from '@ironsource/fusion-ui/components/dropdown-search/v2';
 
 const optionMock = [
     {

@@ -13,9 +13,9 @@ import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
 import {DropdownLoaderModule} from '../dropdown-loader/dropdown-loader.module';
 import {DropdownOptionModule} from '../dropdown-option/dropdown-option.module';
-import {DropdownSearchModule} from '../dropdown-search/dropdown-search.module';
 import {MultiDropdownComponent} from './multi-dropdown.component';
 import {DropdownSelectModule} from '../dropdown-select/dropdown-select.module';
+import {DropdownSearchModule} from '@ironsource/fusion-ui/components/dropdown-search/v2';
 
 @NgModule({
     declarations: [MultiDropdownComponent],
