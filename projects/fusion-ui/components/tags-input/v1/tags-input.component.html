@@ -7,7 +7,6 @@
     [ngClass]="{'is-icon-right-position': isIconRightPosition, 'dd-opened': isOpen$ | async, 'ss-selected': selected?.length > 0}"
     [class.tags-disabled]="isDisabled"
     [class.is-autocomplete]="autoComplete"
-    *ngIf="selectedVersion$ | async as currentStyleVersion"
 >
     <!--tags list holder-->
     <ul class="tags-holder" [ngStyle]="{'max-height.px': maxHeight}" (click)="setFocusToInput()">
@@ -51,7 +50,7 @@
                 <ul class="options">
                     <li [fusionDropdownLoader]="autoComplete && loading" class="auto-complete-loading"></li>
                     <li *ngIf="isNoResults() && !isAddTagsAllowed" class="no-results">{{ noResultMessage }}</li>
-                    <li *ngIf="isPredefinedTags && isAddCustomTag && currentStyleVersion === styleVersion.V1"
+                    <li *ngIf="isPredefinedTags && isAddCustomTag"
                         class="auto-complete-loading">
                         <a class="is-add-tag" href="#" (click)="addCustomPredefinedTag($event)"> Create new tag: </a>"{{
                         searchValue.value
@@ -75,7 +74,6 @@
                         type="button"
                         fusion-button
                         class="secondary small"
-                        [ngClass]="{transparent: currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3}"
                         [disabled]="loading"
                         (click)="onCancelSelection()"
                     >Cancel</button>
@@ -83,7 +81,6 @@
                         type="button"
                         fusion-button
                         class="primary small"
-                        [ngClass]="{transparent: currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3}"
                         [disabled]="loading"
                         (click)="onApplySelection()"
                     >Apply</button>

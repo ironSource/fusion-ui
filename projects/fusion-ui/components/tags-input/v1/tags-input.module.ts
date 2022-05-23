@@ -1,15 +1,15 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {TagsInputComponent} from './tags-input.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button/v1';
 import {TagModule} from '@ironsource/fusion-ui/components/tag';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
-import {InputModule} from '@ironsource/fusion-ui/components/input/v2';
-import {DropdownOptionModule} from '../dropdown-option/dropdown-option.module';
-import {DropdownLoaderModule} from '../dropdown-loader/dropdown-loader.module';
-import {ReactiveFormsModule} from '@angular/forms';
+import {InputModule} from '@ironsource/fusion-ui/components/input/v1';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
-import {DropdownOptionsListModule} from '../dropdown-options-list/dropdown-options-list.module';
-import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
+import {DropdownOptionModule} from '@ironsource/fusion-ui/components/dropdown-option/v1';
+import {DropdownLoaderModule} from '@ironsource/fusion-ui/components/dropdown-loader/v1';
+import {DropdownOptionsListModule} from '@ironsource/fusion-ui/components/dropdown-options-list/v1';
+import {TagsInputComponent} from './tags-input.component';
 
 @NgModule({
     declarations: [TagsInputComponent],

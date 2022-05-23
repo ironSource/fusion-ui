@@ -1,6 +1,6 @@
-@import "../dropdown-common";
+@import "../../dropdown/v1/dropdown.component";
 
-:host.fu-style-v1 {
+:host {
   @extend %link-reset;
   max-width: none !important;
   .is-tags-holder {

@@ -1,34 +1,21 @@
-import {Component, EventEmitter, forwardRef, HostBinding, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {DropdownService} from '../dropdown.service';
-import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {DropdownComponent} from '../dropdown/dropdown.component';
-import {InputComponent} from '@ironsource/fusion-ui/components/input';
-import {Tag} from '@ironsource/fusion-ui/components/tag';
+import {Directive, EventEmitter, HostBinding, Input, Output, ViewChild} from '@angular/core';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {FormControl} from '@angular/forms';
 import {map, takeUntil} from 'rxjs/operators';
 import {detectChangesDecorator} from '@ironsource/fusion-ui/decorators';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {DropdownOption} from '../entities/dropdown-option';
-import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
-import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
-import {TagsInputBulkInsertOptions, TagsInputClearSearchOn, TagsInputComponentConfigurations} from './tags-input.entity';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
+import {InputComponent} from '@ironsource/fusion-ui/components/input/v1';
+import {
+    TagsInputBulkInsertOptions,
+    TagsInputClearSearchOn,
+    TagsInputComponentConfigurations
+} from '@ironsource/fusion-ui/components/tags-input/entities';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
+import {DropdownBaseComponent} from '@ironsource/fusion-ui/components/dropdown/common/base';
+import {Tag} from '@ironsource/fusion-ui/components/tag';
 
-@Component({
-    selector: 'fusion-tags-input',
-    templateUrl: './tags-input.component.html',
-    styleUrls: ['./tags-input.component.scss', './tags-input.component-v2.scss'],
-    providers: [
-        ClonePipe,
-        FilterByFieldPipe,
-        DropdownService,
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => TagsInputComponent),
-            multi: true
-        }
-    ]
-})
-export class TagsInputComponent extends DropdownComponent implements OnInit, ControlValueAccessor {
+@Directive()
+export class TagsInputBaseComponent extends DropdownBaseComponent {
     @ViewChild('tagInput') set tagInput(value: InputComponent) {
         if (!!value && !!value.elementRef && !!value.elementRef.nativeElement) {
             if (this.isAddTagsAllowed || this.autoComplete) {
@@ -197,12 +184,12 @@ export class TagsInputComponent extends DropdownComponent implements OnInit, Con
     _loading = false;
     displaySelectedTags$ = new BehaviorSubject<Tag[] | string[]>([]);
 
-    private tagsState: Array<Tag> = [];
-    private uid: string;
-    private inputElement: any;
+    protected tagsState: Array<Tag> = [];
+    protected uid: string;
+    protected inputElement: any;
 
-    private initialSelectedTags = [];
-    private initialTagsOptions = [];
+    protected initialSelectedTags = [];
+    protected initialTagsOptions = [];
 
     @HostBinding('class.fu-disabled') get disabled(): boolean {
         return this.isDisabled;
