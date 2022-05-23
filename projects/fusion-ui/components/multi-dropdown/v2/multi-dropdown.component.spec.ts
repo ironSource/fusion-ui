@@ -1,5 +1,4 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
-import {MultiDropdownComponent} from './multi-dropdown.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
@@ -11,20 +10,21 @@ import {FilterByFieldModule} from '@ironsource/fusion-ui/pipes/collection';
 import {CloneModule} from '@ironsource/fusion-ui/pipes/clone';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
-import {DropdownLoaderModule} from '../dropdown-loader/dropdown-loader.module';
-import {DropdownOptionModule} from '../dropdown-option/dropdown-option.module';
 import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
 import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
 import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
-import {DropdownService} from '../dropdown.service';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {MockLogService, MockUniqueIdService, MockApiService} from '@ironsource/fusion-ui/services/mocks';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {ApiService} from '@ironsource/fusion-ui/services/api';
-import {DropdownSelectModule} from '../dropdown-select/dropdown-select.module';
-import {FUSION_STYLE_VERSION_CSS_VAR_NAME, StyleVersion} from '@ironsource/fusion-ui';
+
+import {DropdownLoaderModule} from '@ironsource/fusion-ui/components/dropdown-loader/v2';
+import {DropdownOptionModule} from '@ironsource/fusion-ui/components/dropdown-option/v2';
 import {DropdownSearchModule} from '@ironsource/fusion-ui/components/dropdown-search/v2';
+import {DropdownSelectModule} from '@ironsource/fusion-ui/components/dropdown-select/v2';
+import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/servise';
+import {MultiDropdownComponent} from './multi-dropdown.component';
 
 const optionMock = [
     {
@@ -98,7 +98,6 @@ describe('MultiDropdownComponent', () => {
     );
 
     beforeEach(() => {
-        document.documentElement.style.setProperty(FUSION_STYLE_VERSION_CSS_VAR_NAME, '1');
         fixture = TestBed.createComponent(MultiDropdownComponent);
         component = fixture.componentInstance;
         component.options = optionMock;

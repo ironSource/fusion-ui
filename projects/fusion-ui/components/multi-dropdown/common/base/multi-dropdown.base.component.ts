@@ -1,29 +1,11 @@
-import {ChangeDetectionStrategy, Component, forwardRef, Input, OnChanges, OnDestroy, OnInit, TemplateRef} from '@angular/core';
-import {DropdownComponent} from '../dropdown/dropdown.component';
-import {DropdownOption} from '../entities/dropdown-option';
-import {NG_VALUE_ACCESSOR} from '@angular/forms';
-import {DropdownService} from '../dropdown.service';
-import {DROPDOWN_OPTIONS_WITHOUT_SCROLL} from '../dropdown-config';
-import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {Directive, Input, TemplateRef} from '@angular/core';
+import {DROPDOWN_OPTIONS_WITHOUT_SCROLL, DropdownBaseComponent} from '@ironsource/fusion-ui/components/dropdown/common/base';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
+import {Observable} from 'rxjs';
 import {map, startWith, takeUntil} from 'rxjs/operators';
-import {IconData} from '@ironsource/fusion-ui/components/icon';
 
-@Component({
-    selector: 'fusion-multi-dropdown',
-    templateUrl: './multi-dropdown.component.html',
-    styleUrls: ['./multi-dropdown.component.scss', './multi-dropdown.component-v2.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        DropdownService,
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => MultiDropdownComponent),
-            multi: true
-        }
-    ]
-})
-export class MultiDropdownComponent extends DropdownComponent implements OnInit, OnChanges, OnDestroy {
+@Directive()
+export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent {
     @Input() confirm = true;
     @Input() selectAllLabel: string;
     @Input() templateRef: TemplateRef<any>;
@@ -32,10 +14,6 @@ export class MultiDropdownComponent extends DropdownComponent implements OnInit,
     tempOptions: DropdownOption[];
 
     optionsWithoutScroll = DROPDOWN_OPTIONS_WITHOUT_SCROLL;
-    dropdownArrowIconName$ = new BehaviorSubject<IconData>({
-        iconName: 'arrow-dropdown',
-        iconVersion: 'v1'
-    });
     hasSearchValue$: Observable<boolean> = new Observable<boolean>();
 
     get isMulti(): boolean {
@@ -51,14 +29,6 @@ export class MultiDropdownComponent extends DropdownComponent implements OnInit,
         // if has "search"
         this.optionsWithoutScroll = this.search || this.autoComplete ? this.optionsWithoutScroll - 1 : this.optionsWithoutScroll;
         super.ngOnInit();
-
-        this.selectedVersion$.pipe(takeUntil(this.onDestroy$)).subscribe(styleVersion => {
-            const dropdownArrowIcon =
-                styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
-                    ? {iconName: 'arrow-down', iconVersion: 'v2'}
-                    : {iconName: 'arrow-dropdown', iconVersion: 'v1'};
-            this.dropdownArrowIconName$.next(dropdownArrowIcon);
-        });
 
         this.hasSearchValue$ = this.searchValue.valueChanges.pipe(
             takeUntil(this.onDestroy$),
@@ -82,10 +52,6 @@ export class MultiDropdownComponent extends DropdownComponent implements OnInit,
             }
         }
         this.dropdownSelectConfigurations$.next(this.getDropdownSelectConfigurations());
-    }
-
-    ngOnDestroy() {
-        super.ngOnDestroy();
     }
 
     getHolderCSSClasses(): string[] {
