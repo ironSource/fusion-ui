@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Input, OnInit, Directive} from '@angular/core';
+import {ChangeDetectorRef, Input, OnInit, Directive, Injector} from '@angular/core';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {ListBoxOption} from './entities/list-box-option';
 import {ControlValueAccessor} from '@angular/forms';
@@ -22,7 +22,7 @@ export abstract class ListBoxBaseComponent implements OnInit, ControlValueAccess
     checkIconName: IconData;
     removeIconName: IconData;
 
-    constructor(public cdr: ChangeDetectorRef) {}
+    constructor(protected injector: Injector, protected cdr: ChangeDetectorRef) {}
 
     ngOnInit() {
         this.mappingOptions = {
@@ -44,6 +44,7 @@ export abstract class ListBoxBaseComponent implements OnInit, ControlValueAccess
         if ($event) {
             $event.stopPropagation();
         }
+        // this.cdr.markForCheck();
     }
 
     // Implement ControlValueAccessor methods
