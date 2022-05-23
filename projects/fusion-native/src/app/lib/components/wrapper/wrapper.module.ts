@@ -17,12 +17,12 @@ import {
 // prettier-ignore
 import {
     MultiDropdownModule
-} from '@ironsource/fusion-ui/components/dropdown';
+} from '@ironsource/fusion-ui/components/multi-dropdown';
 // prettier-ignore
 
 import {
     AddboxDropdownModule
-} from '@ironsource/fusion-ui/components/dropdown';
+} from '@ironsource/fusion-ui/components/addbox-dropdown';
 import {InputModule} from '@ironsource/fusion-ui/components/input';
 import {InputInlineModule} from '@ironsource/fusion-ui/components/input-inline';
 import {LayoutV1Module} from '@ironsource/fusion-ui/components/layout-v1';
@@ -42,7 +42,7 @@ import {TagModule} from '@ironsource/fusion-ui/components/tag';
 import {ToggleModule} from '@ironsource/fusion-ui/components/toggle';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {VideoPlayerModule} from '@ironsource/fusion-ui/components/video-player';
-import {TagsInputModule} from '@ironsource/fusion-ui/components/dropdown';
+import {TagsInputModule} from '@ironsource/fusion-ui/components/tags-input';
 import {ChartLabelsModule} from '@ironsource/fusion-ui/components/chart-labels';
 import {ChartModule} from '@ironsource/fusion-ui/components/chart';
 import {IconSelectListModule} from '@ironsource/fusion-ui/components/icon-select-list';

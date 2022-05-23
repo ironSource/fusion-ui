@@ -4,11 +4,15 @@ import {AlertComponent} from '@ironsource/fusion-ui/components/alert';
 import {CheckboxComponent} from '@ironsource/fusion-ui/components/checkbox';
 import {DatepickerComponent as DatepickerComponentV1} from '@ironsource/fusion-ui/components/datepicker/v1';
 import {DatepickerComponent} from '@ironsource/fusion-ui/components/datepicker';
+import {DropdownComponent as DropdownComponentV1} from '@ironsource/fusion-ui/components/dropdown/v1';
+import {DropdownComponent as DropdownComponentV2} from '@ironsource/fusion-ui/components/dropdown/v2';
 import {DropdownComponent} from '@ironsource/fusion-ui/components/dropdown';
 import {MonthPickerComponent} from '@ironsource/fusion-ui/components/month-picker';
 import {DropdownDualMultiSelectComponent} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
-import {MultiDropdownComponent} from '@ironsource/fusion-ui/components/dropdown';
-import {AddboxDropdownComponent} from '@ironsource/fusion-ui/components/dropdown';
+import {MultiDropdownComponent as MultiDropdownComponentV1} from '@ironsource/fusion-ui/components/multi-dropdown/v1';
+import {MultiDropdownComponent as MultiDropdownComponentV2} from '@ironsource/fusion-ui/components/multi-dropdown/v2';
+import {MultiDropdownComponent} from '@ironsource/fusion-ui/components/multi-dropdown';
+import {AddboxDropdownComponent} from '@ironsource/fusion-ui/components/addbox-dropdown';
 import {IconHeaderActionComponent} from '@ironsource/fusion-ui/components/icon-header-action';
 import {FlagComponent} from '@ironsource/fusion-ui/components/flag';
 import {HeaderComponent} from '@ironsource/fusion-ui/components/header';
@@ -29,7 +33,9 @@ import {RadioComponent} from '@ironsource/fusion-ui/components/radio';
 import {RadioGroupComponent} from '@ironsource/fusion-ui/components/radio-group';
 import {SvgComponent} from '@ironsource/fusion-ui/components/svg';
 import {TagComponent} from '@ironsource/fusion-ui/components/tag';
-import {TagsInputComponent} from '@ironsource/fusion-ui/components/dropdown';
+import {TagsInputComponent as TagsInputComponentV1} from '@ironsource/fusion-ui/components/tags-input/v1';
+import {TagsInputComponent as TagsInputComponentV2} from '@ironsource/fusion-ui/components/tags-input/v2';
+import {TagsInputComponent} from '@ironsource/fusion-ui/components/tags-input';
 import {ToggleComponent} from '@ironsource/fusion-ui/components/toggle';
 import {TooltipComponent} from '@ironsource/fusion-ui/components/tooltip/v3';
 import {VideoPlayerComponent} from '@ironsource/fusion-ui/components/video-player';
@@ -134,7 +140,11 @@ export const components = [
     {name: `${PREFIX}-datepicker-v1`, componentInstance: DatepickerComponentV1},
     {name: `${PREFIX}-datepicker`, componentInstance: DatepickerComponent},
     {name: `${PREFIX}-month-picker`, componentInstance: MonthPickerComponent},
+    {name: `${PREFIX}-dropdown-v1`, componentInstance: DropdownComponentV1},
+    {name: `${PREFIX}-dropdown-v2`, componentInstance: DropdownComponentV2},
     {name: `${PREFIX}-dropdown`, componentInstance: DropdownComponent},
+    {name: `${PREFIX}-multi-dropdown-v1`, componentInstance: MultiDropdownComponentV1},
+    {name: `${PREFIX}-multi-dropdown-v2`, componentInstance: MultiDropdownComponentV2},
     {name: `${PREFIX}-multi-dropdown`, componentInstance: MultiDropdownComponent},
     {name: `${PREFIX}-addbox-dropdown`, componentInstance: AddboxDropdownComponent},
     {name: `${PREFIX}-flag`, componentInstance: FlagComponent},
@@ -159,6 +169,8 @@ export const components = [
     {name: `${PREFIX}-radio-group`, componentInstance: RadioGroupComponent},
     {name: `${PREFIX}-svg`, componentInstance: SvgComponent},
     {name: `${PREFIX}-tag`, componentInstance: TagComponent},
+    {name: `${PREFIX}-tags-input-v1`, componentInstance: TagsInputComponentV1},
+    {name: `${PREFIX}-tags-input-v2`, componentInstance: TagsInputComponentV2},
     {name: `${PREFIX}-tags-input`, componentInstance: TagsInputComponent},
     {name: `${PREFIX}-toggle`, componentInstance: ToggleComponent, type: `checkbox`},
     {name: `${PREFIX}-tooltip`, componentInstance: TooltipComponent},
