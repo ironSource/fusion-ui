@@ -1,8 +1,9 @@
 import {ChangeDetectionStrategy, Component, DoCheck, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output} from '@angular/core';
 import {FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {distinctUntilChanged} from 'rxjs/operators';
-import {DropdownService} from '@ironsource/fusion-ui/components/dropdown';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
+import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/servise';
+import {DropdownBaseComponent} from '@ironsource/fusion-ui/components/dropdown/common/base';
 
 @Component({
     selector: 'fusion-addbox-dropdown',
@@ -19,7 +20,7 @@ import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/e
     ]
 })
 // eslint-disable-next-line @angular-eslint/no-conflicting-lifecycle
-export class AddboxDropdownComponent extends DropdownBaseComponent implements OnInit, DoCheck, OnChanges {
+export class AddboxDropdownComponent extends DropdownBaseComponent {
     @Input() selected: DropdownOption[] = [];
     @Input() autoComplete = true;
     @Input() actionButtonText;
@@ -43,11 +44,6 @@ export class AddboxDropdownComponent extends DropdownBaseComponent implements On
 
     private oldIsLoading = false;
     private commaSeparatedSearch = false;
-
-    // eslint-disable-next-line @angular-eslint/no-conflicting-lifecycle
-    ngOnInit() {
-        super.ngOnInit();
-    }
 
     // eslint-disable-next-line @angular-eslint/no-conflicting-lifecycle
     ngOnChanges(changes) {
