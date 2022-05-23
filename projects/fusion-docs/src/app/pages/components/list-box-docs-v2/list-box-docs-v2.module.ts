@@ -6,8 +6,8 @@ import {ExampleBlockModule} from '../../../components/example-block/example-bloc
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ReactiveFormsModule} from '@angular/forms';
-import {ListBoxModule} from '@ironsource/fusion-ui';
-import {MultiDropdownModule} from '@ironsource/fusion-ui';
+import {ListBoxModule} from '@ironsource/fusion-ui/components/list-box';
+import {MultiDropdownModule} from '@ironsource/fusion-ui/components/multi-dropdown/v2';
 
 const routes: Routes = [{path: '', component: ListBoxDocsV2Component}];
 
