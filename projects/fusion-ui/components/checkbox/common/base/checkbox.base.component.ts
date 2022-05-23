@@ -1,36 +1,11 @@
-import {
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component,
-    EventEmitter,
-    forwardRef,
-    HostBinding,
-    Injector,
-    Input,
-    OnInit,
-    Output
-} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {ChangeDetectorRef, Directive, EventEmitter, HostBinding, Input, OnInit, Output} from '@angular/core';
+import {ControlValueAccessor} from '@angular/forms';
 import {DomSanitizer} from '@angular/platform-browser';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
-import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
-import {BASE_CHECKED_IMAGE} from './checkbox.cusom-svg';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
 
-@Component({
-    selector: 'fusion-checkbox',
-    templateUrl: './checkbox.component.html',
-    styleUrls: ['./checkbox.component.scss', './checkbox.component-v2.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => CheckboxComponent),
-            multi: true
-        }
-    ]
-})
-export class CheckboxComponent extends FusionBase implements OnInit, ControlValueAccessor {
+@Directive()
+export abstract class CheckboxBaseComponent implements OnInit, ControlValueAccessor {
     @Input() label: string;
     @Input() name: string;
     @Input() value: string;
@@ -51,14 +26,7 @@ export class CheckboxComponent extends FusionBase implements OnInit, ControlValu
         return this.tooltipContent ? this.tooltipContent : this.class && this.class.indexOf('truncate') > -1 ? this.label : '';
     }
 
-    constructor(
-        injector: Injector,
-        private uniqueIdService: UniqueIdService,
-        private cd: ChangeDetectorRef,
-        private sanitizer: DomSanitizer
-    ) {
-        super(injector);
-    }
+    constructor(private uniqueIdService: UniqueIdService, private cd: ChangeDetectorRef, protected sanitizer: DomSanitizer) {}
 
     ngOnInit() {
         const unique = this.uniqueIdService.getUniqueId();
@@ -68,23 +36,6 @@ export class CheckboxComponent extends FusionBase implements OnInit, ControlValu
         this.label = this.label || '';
         this.value = this.value || '';
         this.isOnlyCheckbox = !this.label && !this.icon && !this.flag;
-    }
-
-    getBackgroundImage(styleVersion: StyleVersion) {
-        let svg;
-        if (this.backgroundColor && (this.checked || this.isIndeterminate)) {
-            const baseSvg =
-                styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
-                    ? BASE_CHECKED_IMAGE.style_v2
-                    : BASE_CHECKED_IMAGE.style_v1;
-            svg = this.sanitizer.bypassSecurityTrustStyle(
-                `url("data:image/svg+xml,${encodeURIComponent(
-                    baseSvg[this.isIndeterminate ? 'indeterminate' : 'checked'].replace('{backgroundColor}', this.backgroundColor)
-                )}") left top no-repeat`
-            );
-        }
-
-        return svg;
     }
 
     change(event: any): void {
