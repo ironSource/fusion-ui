@@ -7,11 +7,11 @@ import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
 import {InputModule} from '@ironsource/fusion-ui/components/input/v2';
-import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox';
-import {DropdownDualMultiSelectBodyModule} from './dropdown-dual-multi-select-body/dropdown-dual-multi-select-body.module';
-import {DropdownDualMultiSelectHeaderModule} from './dropdown-dual-multi-select-header/dropdown-dual-multi-select-header.module';
-import {DropdownDualMultiSelectFooterModule} from './dropdown-dual-multi-select-footer/dropdown-dual-multi-select-footer.module';
-import {DropdownDualMultiSelectLoadingModule} from './dropdown-dual-multi-select-loading/dropdown-dual-multi-select-loading.module';
+import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox/v2';
+import {DropdownDualMultiSelectBodyModule} from './components/dropdown-dual-multi-select-body/dropdown-dual-multi-select-body.module';
+import {DropdownDualMultiSelectHeaderModule} from './components/dropdown-dual-multi-select-header/dropdown-dual-multi-select-header.module';
+import {DropdownDualMultiSelectFooterModule} from './components/dropdown-dual-multi-select-footer/dropdown-dual-multi-select-footer.module';
+import {DropdownDualMultiSelectLoadingModule} from './components/dropdown-dual-multi-select-loading/dropdown-dual-multi-select-loading.module';
 
 @NgModule({
     declarations: [DropdownDualMultiSelectComponent],

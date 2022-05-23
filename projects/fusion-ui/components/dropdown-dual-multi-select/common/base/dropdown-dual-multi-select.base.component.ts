@@ -1,23 +1,10 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    EventEmitter,
-    forwardRef,
-    Injector,
-    Input,
-    OnDestroy,
-    OnInit,
-    Output,
-    Renderer2
-} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2} from '@angular/core';
 import {InputSize} from '@ironsource/fusion-ui/components/input/common/base';
-import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {ControlValueAccessor, FormControl} from '@angular/forms';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
 
 const CLASS_LIST = [
     'dual-select-button',
@@ -28,20 +15,8 @@ const CLASS_LIST = [
     'fu-dual-multi-select-placeholder'
 ];
 
-@Component({
-    selector: 'fusion-dropdown-dual-multi-select',
-    templateUrl: './dropdown-dual-multi-select.component.html',
-    styleUrls: ['./dropdown-dual-multi-select.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => DropdownDualMultiSelectComponent),
-            multi: true
-        }
-    ]
-})
-export class DropdownDualMultiSelectComponent extends FusionBase implements OnInit, ControlValueAccessor, OnDestroy {
+@Directive()
+export abstract class DropdownDualMultiSelectBaseComponent implements OnInit, ControlValueAccessor, OnDestroy {
     @Input() isDisabled: boolean = false;
     @Input() dynamicPlaceholder: DynamicComponentConfiguration;
     @Input() totalItems: number;
@@ -77,13 +52,17 @@ export class DropdownDualMultiSelectComponent extends FusionBase implements OnIn
 
     private selectedChange: DropdownOption[];
     private parentWithOverflow: HTMLElement;
+    private onDestroy$ = new Subject<void>();
 
-    constructor(protected element: ElementRef, protected renderer: Renderer2, injector: Injector) {
-        super(injector);
-    }
+    constructor(protected element: ElementRef, protected renderer: Renderer2) {}
 
     ngOnInit(): void {
         this.initializeListeners();
+    }
+
+    ngOnDestroy() {
+        this.onDestroy$.next();
+        this.onDestroy$.complete();
     }
 
     onScrollDown(): void {
