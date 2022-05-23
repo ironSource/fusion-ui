@@ -1,28 +1,13 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, Input, OnInit, Optional, Inject, Injector} from '@angular/core';
+import {ChangeDetectorRef, Input, OnInit, Directive} from '@angular/core';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {ListBoxOption} from './entities/list-box-option';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {ControlValueAccessor} from '@angular/forms';
 import {ListBoxModes} from './entities/list-box-modes';
 import {detectChangesDecorator} from '@ironsource/fusion-ui/decorators';
-import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
 
-@Component({
-    selector: 'fusion-list-box',
-    templateUrl: './list-box.component.html',
-    styleUrls: ['./list-box.component.scss', './list-box.component-v2.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => ListBoxComponent),
-            multi: true
-        }
-    ]
-})
-export class ListBoxComponent extends FusionBase implements OnInit, ControlValueAccessor {
+@Directive()
+export abstract class ListBoxBaseComponent implements OnInit, ControlValueAccessor {
     options: ListBoxOption[];
     isDisabled: boolean;
     @Input() mappingOptions: any = {id: 'id', displayText: 'displayText'};
@@ -34,27 +19,10 @@ export class ListBoxComponent extends FusionBase implements OnInit, ControlValue
         this.setDisabledState(value);
     }
 
-    checkIconName$: Observable<IconData> = this.selectedVersion$.pipe(
-        map(styleVersion =>
-            styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
-                ? {iconName: 'check', iconVersion: 'v2'}
-                : {iconName: 'check-v-2', iconVersion: 'v2'}
-        ),
-        startWith('check-v-2')
-    );
+    checkIconName: IconData;
+    removeIconName: IconData;
 
-    removeIconName$: Observable<IconData> = this.selectedVersion$.pipe(
-        map(styleVersion =>
-            styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
-                ? {iconName: 'close-circle', iconVersion: 'v2'}
-                : {iconName: 'clear-full-circle', iconVersion: 'v1'}
-        ),
-        startWith({iconName: 'clear-full-circle', iconVersion: 'v1'})
-    );
-
-    constructor(injector: Injector, public cdr: ChangeDetectorRef) {
-        super(injector);
-    }
+    constructor(public cdr: ChangeDetectorRef) {}
 
     ngOnInit() {
         this.mappingOptions = {

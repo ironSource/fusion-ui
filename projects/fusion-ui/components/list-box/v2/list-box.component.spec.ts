@@ -1,8 +1,8 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ListBoxComponent} from './list-box.component';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
-import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
-import {ListBoxOption} from './entities/list-box-option';
+import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v2';
+import {ListBoxOption} from '@ironsource/fusion-ui/components/list-box/common/base';
 
 const OPTIONS_MOCK: ListBoxOption[] = [
     {id: 1, displayText: 'First option'},

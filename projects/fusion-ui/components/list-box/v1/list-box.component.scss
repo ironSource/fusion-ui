@@ -1,10 +1,10 @@
-@import '../../src/style/scss/v1/mixins/mixins';
-@import '../../src/style/scss/v1/vars/vars';
-@import '../../src/style/scss/v1/vars/border';
+@import '../../../src/style/scss/v1/mixins/mixins';
+@import '../../../src/style/scss/v1/vars/vars';
+@import '../../../src/style/scss/v1/vars/border';
 
 $iconsWidth: 46px;
 
-:host.fu-style-v1{
+:host {
     @extend %reset;
     height: 100%;
     width: 100%;

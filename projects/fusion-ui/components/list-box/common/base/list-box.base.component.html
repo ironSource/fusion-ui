@@ -3,12 +3,12 @@
     <ul>
         <li *ngFor="let option of options; trackBy: trackByOption">
             <div class="option">
-                <fusion-icon [name]="checkIconName$ | async" class="checkIcon"></fusion-icon>
+                <fusion-icon [name]="checkIconName" class="checkIcon"></fusion-icon>
                 <span class="option-label truncate" [fusionTooltip]="option[mappingOptions?.displayText]">{{
                     option[mappingOptions?.displayText]
                 }}</span>
                 <fusion-icon
-                    [name]="removeIconName$ | async"
+                    [name]="removeIconName"
                     class="removeIcon"
                     (click)="removeOption(option, $event)"
                     *ngIf="!isDisabled"
