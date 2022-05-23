@@ -1,17 +1,12 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild, ElementRef, Renderer2} from '@angular/core';
+import {EventEmitter, Input, Output, ViewChild, ElementRef, Renderer2, Directive} from '@angular/core';
 import {CacheService, CacheType} from '@ironsource/fusion-ui/services/cache';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu';
 import {HeaderState} from './header-state';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
 
-@Component({
-    selector: 'fusion-header',
-    templateUrl: './header.component.html',
-    styleUrls: ['./header.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class HeaderComponent {
+@Directive()
+export abstract class HeaderBaseComponent {
     @ViewChild('menuAction', {read: ElementRef}) set menuAction(value: ElementRef) {
         this.onMenuActionChanged(value);
     }

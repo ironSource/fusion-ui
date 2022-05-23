@@ -1,37 +1,12 @@
-import {
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component,
-    ElementRef,
-    EventEmitter,
-    forwardRef,
-    Input,
-    OnInit,
-    Output,
-    Type,
-    ViewChild
-} from '@angular/core';
+import {ChangeDetectorRef, Component, Directive, ElementRef, EventEmitter, Input, OnInit, Output, Type, ViewChild} from '@angular/core';
 import {isNullOrUndefined, isUndefined} from '@ironsource/fusion-ui/utils';
-import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {HeaderSizes} from './header-sizes.enum';
+import {HeaderOptions} from './header-options';
 import {BehaviorSubject} from 'rxjs';
 import {WindowService} from '@ironsource/fusion-ui/services/window';
-import {HeaderOptions} from './header-options';
 
-@Component({
-    selector: 'fusion-header-overlay',
-    templateUrl: './header-overlay.component.html',
-    styleUrls: ['./header-overlay.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => HeaderOverlayComponent),
-            multi: true
-        }
-    ]
-})
-export class HeaderOverlayComponent implements OnInit {
+@Directive()
+export abstract class HeaderOverlayBaseComponent implements OnInit {
     @Input() headerComponent: Type<Component>;
     @Input() width = '100%';
     @Input() height = '';

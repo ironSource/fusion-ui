@@ -1,12 +1,12 @@
 import {Component, OnDestroy, OnInit, Type} from '@angular/core';
 import {
     LayoutHeaderComponentConfiguration,
-    HeaderState,
     LayoutComponentConfiguration,
     MenuItem,
     SidebarMenuItem,
     StyleVersion
 } from '@ironsource/fusion-ui';
+import {HeaderState} from '@ironsource/fusion-ui/components/header/common/base';
 import {MENU_ITEMS, MENU_ITEMS_V2, STYLE_2_MENU_ITEMS, USER_PROFILE_MENU_ITEMS} from './menu-items';
 import {StyleVersionButtonComponent} from '../../components/style-version-button/style-version-button.component';
 import {Observable, Subject} from 'rxjs';
