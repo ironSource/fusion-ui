@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {IconSelectListComponent} from './icon-select-list.component';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
-import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox';
+import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox/v1';
 import {RadioModule} from '@ironsource/fusion-ui/components/radio';
 
 @NgModule({

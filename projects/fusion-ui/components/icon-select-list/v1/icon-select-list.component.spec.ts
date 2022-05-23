@@ -1,12 +1,12 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {IconSelectListComponent} from './icon-select-list.component';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
-import {IconSelectItem} from './entities/icon-select-item';
 import {FormsModule} from '@angular/forms';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox';
 import {RadioModule} from '@ironsource/fusion-ui/components/radio';
 import {By} from '@angular/platform-browser';
+import {IconSelectItem} from '@ironsource/fusion-ui/components/icon-select-list/common/base';
 
 class MockUniqueIdService extends UniqueIdService {
     getUniqueId() {

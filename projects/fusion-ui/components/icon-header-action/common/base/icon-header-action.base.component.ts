@@ -1,18 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Directive, Input, OnInit} from '@angular/core';
 
-@Component({
-    selector: 'fusion-icon-header-action',
-    templateUrl: './icon-header-action.component.html',
-    styleUrls: ['./icon-header-action.component.scss']
-})
-export class IconHeaderActionComponent implements OnInit {
+@Directive()
+export abstract class IconHeaderActionBaseComponent implements OnInit {
     @Input() componentData: any = {};
     @Input() isActive: boolean;
     @Input() isOpen: boolean;
     icon = 'filter-full';
     hideDropArrow = false;
-
-    constructor() {}
 
     ngOnInit() {
         if (this.componentData && this.componentData.icon) {

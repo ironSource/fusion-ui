@@ -1,22 +1,9 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
-import {NG_VALUE_ACCESSOR} from '@angular/forms';
+import {Directive, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IconSelectItem} from './entities/icon-select-item';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 
-@Component({
-    selector: 'fusion-icon-select-list',
-    templateUrl: './icon-select-list.component.html',
-    styleUrls: ['./icon-select-list.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => IconSelectListComponent),
-            multi: true
-        }
-    ]
-})
-export class IconSelectListComponent implements OnInit {
+@Directive()
+export abstract class IconSelectListBaseComponent implements OnInit {
     @Input() id: string;
     @Input() error: string;
     @Input() options: Array<IconSelectItem>;
