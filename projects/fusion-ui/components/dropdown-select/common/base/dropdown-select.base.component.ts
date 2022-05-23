@@ -36,23 +36,6 @@ export abstract class DropdownSelectBaseComponent implements OnInit, OnDestroy {
         this.onDestroy$.complete();
     }
 
-    /*    getLabelCSSClasses(currentStyleVersion: StyleVersion, isOpen: boolean): string[] {
-        const isV2OpenWithSearch =
-            (currentStyleVersion === this.styleVersion.V2 || currentStyleVersion === this.styleVersion.V3) &&
-            this.configurations.isSearch &&
-            isOpen;
-        const classesList = [
-            this.configurations.disabled && 'dd-disabled',
-            !!this.configurations.error && 'dd-error',
-            isOpen && 'dd-active',
-            !!this.configurations.selectedOption && 'ss-selected',
-            this.configurations.isTabMode && 'is-tab-mode',
-            isV2OpenWithSearch && 'dd-search-active',
-            isV2OpenWithSearch && this.searchValue.value && 'dd_search-has-value'
-        ].filter(Boolean);
-        return classesList;
-    }*/
-
     resetSearch(): void {
         this.searchValue.reset('', {onlySelf: true, emitEvent: false});
     }

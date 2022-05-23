@@ -44,7 +44,6 @@ export abstract class DropdownSearchBaseComponent implements OnInit, OnDestroy, 
      * update value from model to the component
      */
     writeValue(value: string): void {
-        console.log('>>', value);
         this.searchValue.patchValue(value);
     }
 

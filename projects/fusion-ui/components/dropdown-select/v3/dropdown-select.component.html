@@ -13,6 +13,7 @@
         <label
             class="truncate"
             [fusionTooltip]="configurations.placeholder?.value"
+            [ngClass]="getLabelCSSClasses(configurations.isOpen)"
             [class.icon]="configurations.icon"
         >
             <!--search input-->

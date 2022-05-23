@@ -14,6 +14,7 @@
         <label
             class="truncate"
             [fusionTooltip]="configurations.placeholder?.value"
+            [ngClass]="getLabelCSSClasses(configurations.isOpen)"
             [class.icon]="configurations.icon"
         >
             <fusion-icon class="is-custom-icon" *ngIf="configurations.icon" [name]="configurations.icon"></fusion-icon>
