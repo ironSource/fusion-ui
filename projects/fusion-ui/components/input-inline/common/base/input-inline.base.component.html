@@ -1,4 +1,4 @@
-<div class="inline-input-wrapper" *ngIf="configByStyle$ | async as configByStyle">
+<div class="inline-input-wrapper">
     <div
         [ngClass]="{'is-currency': isTypeCurrency, hidden: isEditMode$ | async, 'is-readonly': readOnly}"
         class="truncate is-label"

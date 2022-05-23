@@ -77,7 +77,7 @@ import {ModalService} from '@ironsource/fusion-ui/components/modal';
 import {NotificationType} from '@ironsource/fusion-ui/components/notification';
 import {DatepickerMode} from '@ironsource/fusion-ui/components/datepicker/v1';
 import {HeaderSizes} from '@ironsource/fusion-ui/components/header-overlay/common/base';
-import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline';
+import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline/common/base';
 import {ListBoxModes} from '@ironsource/fusion-ui/components/list-box';
 import {PopupLocation} from '@ironsource/fusion-ui/components/popup';
 import {TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table';

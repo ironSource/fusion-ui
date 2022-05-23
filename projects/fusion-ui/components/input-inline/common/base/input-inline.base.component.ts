@@ -1,8 +1,5 @@
 import {
-    ChangeDetectionStrategy,
-    Component,
     EventEmitter,
-    forwardRef,
     HostListener,
     Input,
     OnChanges,
@@ -13,34 +10,21 @@ import {
     ViewChild,
     ElementRef,
     ChangeDetectorRef,
-    Injector
+    Directive
 } from '@angular/core';
 import {isNullOrUndefined, isNumber, isObject, isString} from '@ironsource/fusion-ui/utils';
-import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {ControlValueAccessor, FormControl} from '@angular/forms';
 import {InputComponent} from '@ironsource/fusion-ui/components/input';
-import {BehaviorSubject, Subject, fromEvent, Subscription, Observable} from 'rxjs';
+import {BehaviorSubject, Subject, fromEvent, Subscription} from 'rxjs';
 import {InlineInputType} from './inline-input-type.enum';
 import {CurrencyPipe} from '@angular/common';
-import {takeUntil, map} from 'rxjs/operators';
+import {takeUntil} from 'rxjs/operators';
 import {AdvancedInputInline} from './advanced-input-inline';
-import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
-import {CONFIG_INPUT_INLINE_BY_UI_STYLE, InputInlineConfigByStyle} from './input-inline.config';
+import {InputInlineConfigByStyle} from './input-inline.config';
 import {CurrencyPipeParameters} from './input-inline.config';
 
-@Component({
-    selector: 'fusion-input-inline',
-    templateUrl: './input-inline.component.html',
-    styleUrls: ['./input-inline.component.scss', './input-inline.component-v2.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => InputInlineComponent),
-            multi: true
-        }
-    ]
-})
-export class InputInlineComponent extends FusionBase implements ControlValueAccessor, OnInit, OnChanges, OnDestroy {
+@Directive()
+export abstract class InputInlineBaseComponent implements ControlValueAccessor, OnInit, OnChanges, OnDestroy {
     @ViewChild('inputComponent') inputComponent: InputComponent;
     @Input() textClass: string;
     @Input() type: InlineInputType = InlineInputType.Text;
@@ -59,10 +43,11 @@ export class InputInlineComponent extends FusionBase implements ControlValueAcce
     sanitationRegex: string;
     viewOnlyText: string;
 
-    configByStyle$ = new Observable<InputInlineConfigByStyle>();
+    configByStyle: InputInlineConfigByStyle;
 
     private stayInEditMode = false;
     private clickOutSideSubscription: Subscription;
+    private onDestroy$ = new Subject<void>();
 
     get inputType(): string {
         return this.type === InlineInputType.Text ? 'text' : 'number';
@@ -105,9 +90,7 @@ export class InputInlineComponent extends FusionBase implements ControlValueAcce
         return !isNullOrUndefined(this.currencyPipeParameters) ? this.currencyPipeParameters.digitsInfo : undefined;
     }
 
-    constructor(injector: Injector, private currencyPipe: CurrencyPipe, private elementRef: ElementRef, private cdr: ChangeDetectorRef) {
-        super(injector);
-    }
+    constructor(private currencyPipe: CurrencyPipe, private elementRef: ElementRef, private cdr: ChangeDetectorRef) {}
 
     ngOnInit() {
         this.sanitationRegex = this.inputType === 'text' ? '' : '[0-9.]';
@@ -119,11 +102,12 @@ export class InputInlineComponent extends FusionBase implements ControlValueAcce
             }
         });
 
-        this.configByStyle$ = this.selectedVersion$.pipe(
-            map((styleVersion: StyleVersion) => CONFIG_INPUT_INLINE_BY_UI_STYLE[`style_v${styleVersion}`])
-        );
-
         this.isEditMode$.asObservable().pipe(takeUntil(this.onDestroy$)).subscribe(this.handleClickOutSideListener.bind(this));
+    }
+
+    ngOnDestroy() {
+        this.onDestroy$.next();
+        this.onDestroy$.complete();
     }
 
     ngOnChanges(changes: SimpleChanges) {
