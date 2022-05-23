@@ -25,15 +25,11 @@ import {SharedEventsService} from '@ironsource/fusion-ui/services/events-handler
 import {IconData} from '@ironsource/fusion-ui/components/icon';
 import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/servise';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
-import {DropdownPlaceholderConfiguration} from '@ironsource/fusion-ui/components/dropdown/entities/dropdown-placeholder-configuration';
 import {DropdownSearchComponent} from '@ironsource/fusion-ui/components/dropdown-search';
 import {DropdownSelectComponent} from '@ironsource/fusion-ui/components/dropdown-select';
 import {DropdownSelectConfigurations} from '@ironsource/fusion-ui/components/dropdown-select/entities';
-import {
-    DROPDOWN_DEBOUNCE_TIME,
-    DROPDOWN_OPTIONS_WITHOUT_SCROLL
-} from '@ironsource/fusion-ui/components/dropdown/common/base/dropdown-config';
-import {BackendPagination, ClosedOptions} from '@ironsource/fusion-ui/components/dropdown/entities';
+import {DROPDOWN_DEBOUNCE_TIME, DROPDOWN_OPTIONS_WITHOUT_SCROLL} from './dropdown-config';
+import {BackendPagination, ClosedOptions, DropdownPlaceholderConfiguration} from '@ironsource/fusion-ui/components/dropdown/entities';
 
 @Directive()
 export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChanges, ControlValueAccessor {

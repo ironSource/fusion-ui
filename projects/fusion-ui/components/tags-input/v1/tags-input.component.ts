@@ -4,7 +4,7 @@ import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
 import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
 import {InputComponent} from '@ironsource/fusion-ui/components/input/v1';
 import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/servise';
-import {TagsInputBaseComponent} from '@ironsource/fusion-ui/components/tags-input/common/base/tags-input.base.component';
+import {TagsInputBaseComponent} from '@ironsource/fusion-ui/components/tags-input/common/base';
 
 @Component({
     selector: 'fusion-tags-input',

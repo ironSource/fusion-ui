@@ -1,5 +1,5 @@
 import {ComponentRef, Directive} from '@angular/core';
-import {DropdownOptionBaseDirective} from '@ironsource/fusion-ui/components/dropdown-option/common/base/dropdown-option.base.directive';
+import {DropdownOptionBaseDirective} from '@ironsource/fusion-ui/components/dropdown-option/common/base';
 import {DropdownOptionComponent} from './dropdown-option.component';
 
 @Directive({

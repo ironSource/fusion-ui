@@ -15,7 +15,7 @@ import {DropdownBaseComponent} from '@ironsource/fusion-ui/components/dropdown/c
 import {Tag} from '@ironsource/fusion-ui/components/tag';
 
 @Directive()
-export class TagsInputBaseComponent extends DropdownBaseComponent {
+export abstract class TagsInputBaseComponent extends DropdownBaseComponent {
     @ViewChild('tagInput') set tagInput(value: InputComponent) {
         if (!!value && !!value.elementRef && !!value.elementRef.nativeElement) {
             if (this.isAddTagsAllowed || this.autoComplete) {

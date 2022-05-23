@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {DropdownOptionBaseComponent} from '@ironsource/fusion-ui/components/dropdown-option/common/base/dropdown-option.base.component';
+import {DropdownOptionBaseComponent} from '@ironsource/fusion-ui/components/dropdown-option/common/base';
 
 @Component({
     selector: 'fusion-dropdown-option',

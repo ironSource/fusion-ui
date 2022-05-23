@@ -1,1 +1,1 @@
-export * from './dropdown-search.base.component';
+export * from './tags-input.base.component';
