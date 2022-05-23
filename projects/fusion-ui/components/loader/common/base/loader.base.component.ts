@@ -1,28 +1,10 @@
-import {
-    AfterViewInit,
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    HostBinding,
-    Inject,
-    Injector,
-    Input,
-    Optional,
-    Renderer2,
-    ViewChild
-} from '@angular/core';
+import {AfterViewInit, Directive, ElementRef, HostBinding, Inject, Input, Optional, Renderer2, ViewChild} from '@angular/core';
 import {LOADER_COMPONENT_TYPE_TOKEN} from './loader-token';
-import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {LoaderColor, LoaderPosition, LoaderSize} from './loader.types';
-import {map} from 'rxjs/operators';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
-@Component({
-    selector: 'fusion-loader',
-    templateUrl: './loader.component.html',
-    styleUrls: ['./loader.component.scss', './loader.component-v2.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class LoaderComponent extends FusionBase implements AfterViewInit {
+@Directive()
+export abstract class LoaderBaseComponent implements AfterViewInit {
     @ViewChild('customLoader', {read: ElementRef}) customLoader: ElementRef;
 
     @Input() height: number; // has position static, with min-height
@@ -36,28 +18,17 @@ export class LoaderComponent extends FusionBase implements AfterViewInit {
     public get loaderPosition() {
         return `position-${this.position}`;
     }
-    public loaderIconName$ = this.selectedVersion$.pipe(
-        map((styleVersion: StyleVersion) => {
-            let iconProperties = {iconName: 'loading', iconVersion: 'v1'};
-            if (styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3) {
-                return this.size === 'inline' ? 'loading_rotate' : {iconName: 'loader-dots-v4', iconVersion: 'v2'};
-            }
-            return iconProperties;
-        })
-    );
+    public loaderIconName: IconData;
 
     constructor(
-        injector: Injector,
         private elementRef: ElementRef,
         private renderer: Renderer2,
         @Optional() @Inject(LOADER_COMPONENT_TYPE_TOKEN) public componentType
     ) {
-        super(injector);
         this.size = this.size || 'large';
     }
 
     ngAfterViewInit() {
-        super.ngAfterViewInit();
         const loaderEl = this.elementRef.nativeElement.querySelector('.is-loader');
         if (this.height && !!loaderEl) {
             this.renderer.setStyle(loaderEl, 'position', 'static');
