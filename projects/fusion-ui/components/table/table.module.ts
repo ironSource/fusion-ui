@@ -21,7 +21,7 @@ import {ToggleModule} from '@ironsource/fusion-ui/components/toggle';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {TableModuleOptions} from './entities/table-module-options';
 import {TABLE_OPTIONS_DEFAULT_VALUES, TABLE_OPTIONS_TOKEN} from './table.config';
-import {MultiDropdownModule} from '@ironsource/fusion-ui/components/dropdown';
+import {MultiDropdownModule} from '@ironsource/fusion-ui/components/multi-dropdown';
 import {InputInlineModule} from '@ironsource/fusion-ui/components/input-inline';
 import {LoadMoreModule} from '@ironsource/fusion-ui/directives/load-more';
 import {GenericPipeModule} from '@ironsource/fusion-ui/pipes/generic';
