@@ -1,7 +1,7 @@
 import {Directive, EventEmitter, Input, Output} from '@angular/core';
 
 @Directive()
-export class AlertBaseComponent {
+export abstract class AlertBaseComponent {
     @Input() type = 'info';
     @Input() mode = 'basic';
     @Input() shown = true;

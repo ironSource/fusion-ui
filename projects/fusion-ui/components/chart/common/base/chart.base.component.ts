@@ -1,16 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    EventEmitter,
-    Injector,
-    Input,
-    OnChanges,
-    OnDestroy,
-    OnInit,
-    Output,
-    SimpleChanges
-} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, Injector, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
 import {ChartData, FusionChartPieDataItem, FusionChartPieData} from './entities/chart-data';
 import {ChartLabel} from './entities/chart-label';
 import {ChartDataset} from './entities/chart-dataset';
@@ -22,8 +10,6 @@ import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {isDateString} from '@ironsource/fusion-ui/utils';
 import {BASE_DATASET_OPTIONS, CHART_CONFIGURATIONS} from './chart.config';
 import {ShortNumberScaleSuffixPipe} from '@ironsource/fusion-ui/pipes/numbers';
-import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
-import {takeUntil} from 'rxjs/operators';
 import {ChartBaseDatasetOptions} from './entities/chart-options';
 import {ChartType} from './entities/chart-type.enum';
 import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
@@ -63,13 +49,8 @@ Chart.register(
     Tooltip
 );
 
-@Component({
-    selector: 'fusion-chart',
-    templateUrl: './chart.component.html',
-    styleUrls: ['./chart.component-common.scss', './chart.component-v1.scss', './chart.component-v2.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class ChartComponent extends FusionBase implements OnInit, OnDestroy, OnChanges {
+@Directive()
+export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges {
     @Input() id: string;
     @Input() type: ChartType;
 
@@ -88,31 +69,28 @@ export class ChartComponent extends FusionBase implements OnInit, OnDestroy, OnC
     pieDataSum: number;
     pieSumLabel: string;
 
-    private _data: ChartData | FusionChartPieData;
-    private ctx: HTMLCanvasElement;
-    private canvasContent: CanvasRenderingContext2D;
-    private chart: Chart;
-    private chartData: ChartJsData;
-    private chartOptions: ChartJsOptions;
-    private maxVal: number;
-    private isStacked = false;
-    private yAxesFormat: string;
+    protected _data: ChartData | FusionChartPieData;
+    protected ctx: HTMLCanvasElement;
+    protected canvasContent: CanvasRenderingContext2D;
+    protected chart: Chart;
+    protected chartData: ChartJsData;
+    protected chartOptions: ChartJsOptions;
+    protected maxVal: number;
+    protected isStacked = false;
+    protected yAxesFormat: string;
 
     constructor(
-        injector: Injector,
-        private datePipe: DatePipe,
-        private currencyPipe: CurrencyPipe,
-        private decimalPipe: DecimalPipe,
-        private percentPipe: PercentPipe,
-        private numberToStringPipe: ShortNumberScaleSuffixPipe,
-        private uniqueIdService: UniqueIdService,
-        private dataParseService: ChartDataService,
-        private colorsService: ColorsService,
-        private elemRef: ElementRef,
+        protected datePipe: DatePipe,
+        protected currencyPipe: CurrencyPipe,
+        protected decimalPipe: DecimalPipe,
+        protected percentPipe: PercentPipe,
+        protected numberToStringPipe: ShortNumberScaleSuffixPipe,
+        protected uniqueIdService: UniqueIdService,
+        protected dataParseService: ChartDataService,
+        protected colorsService: ColorsService,
+        protected elemRef: ElementRef,
         protected clonePipe: ClonePipe
-    ) {
-        super(injector);
-    }
+    ) {}
 
     ngOnInit() {
         this.id = this.id || `fs-chart-${this.uniqueIdService.getUniqueId()}`;
@@ -130,15 +108,12 @@ export class ChartComponent extends FusionBase implements OnInit, OnDestroy, OnC
         this.elemRef.nativeElement.querySelector('div').id = this.id;
         this.ctx = this.elemRef.nativeElement.querySelector('canvas');
         this.canvasContent = this.ctx.getContext('2d');
-        this.selectedVersion$.pipe(takeUntil(this.onDestroy$)).subscribe((styleVersion: StyleVersion) => {
-            if (!isNullOrUndefined(this.ctx) && this._data && Object.keys(this._data).length) {
-                this.setChart(this._data, this.type);
-            }
-        });
+        if (!isNullOrUndefined(this.ctx) && this._data && Object.keys(this._data).length) {
+            this.setChart(this._data, this.type);
+        }
     }
 
     ngOnDestroy() {
-        super.ngOnDestroy();
         if (this.chart) {
             this.chart.destroy();
             this.chart = void 0;
@@ -191,8 +166,8 @@ export class ChartComponent extends FusionBase implements OnInit, OnDestroy, OnC
         }
     }
 
-    private getColors(): string[] {
-        const palette = this.colorsService.getColorPalette(this.selectedVersion$.getValue());
+    protected getColors(): string[] {
+        const palette = this.colorsService.getColorPalette(2);
         const legends = (this._data as ChartData).legends;
         const customPalette = legends
             ? legends.map((legend, idx) => {
@@ -309,18 +284,14 @@ export class ChartComponent extends FusionBase implements OnInit, OnDestroy, OnC
         return null;
     }
 
-    private getDataSetOptionsByStyleVersion(): ChartBaseDatasetOptions {
-        const versionKey = `style_v${this.selectedVersion$.getValue()}`;
+    protected getDataSetOptionsByStyleVersion(): ChartBaseDatasetOptions {
         return {
-            ...(!isNullOrUndefined(BASE_DATASET_OPTIONS[versionKey]) ? BASE_DATASET_OPTIONS[versionKey] : BASE_DATASET_OPTIONS.style_v1)
+            ...BASE_DATASET_OPTIONS.style_v2
         };
     }
 
-    private getChartOptionsByStyleVersion(): any {
-        const versionKey = `style_v${this.selectedVersion$.getValue()}`;
-        return this.clonePipe.transform(
-            !isNullOrUndefined(CHART_CONFIGURATIONS[versionKey]) ? CHART_CONFIGURATIONS[versionKey] : CHART_CONFIGURATIONS.style_v1
-        );
+    protected getChartOptionsByStyleVersion(): any {
+        return this.clonePipe.transform(CHART_CONFIGURATIONS.style_v2);
     }
 
     private applyOptions() {
@@ -365,12 +336,12 @@ export class ChartComponent extends FusionBase implements OnInit, OnDestroy, OnC
         return options;
     }
 
-    private setLineChartOptions(options) {
+    protected setLineChartOptions(options) {
         // calculate line-point options (if more than 50 points on char)
         if (Array.isArray(this.chartData.datasets) && this.chartData.datasets.length !== 0 && this.chartData.datasets[0].data.length > 50) {
             options.elements.point.pointRadius = 0;
         } else {
-            options.elements.point.pointRadius = this.selectedVersion === 2 ? 3 : 2;
+            options.elements.point.pointRadius = 3;
         }
         this.calcYAxes(options.scales.y);
         if (this.isStacked) {
@@ -436,7 +407,7 @@ export class ChartComponent extends FusionBase implements OnInit, OnDestroy, OnC
         return new Chart(ctx, opts);
     }
 
-    private calcYAxes(yAxe: any): void {
+    protected calcYAxes(yAxe: any): void {
         const sets = this.options.calculateMaxForAll ? this.chartData.datasets : this.chartData.datasets.filter(item => !item.hidden);
         const tickCount = this.options.yAxisLines || 5;
         // get max & min values
@@ -471,7 +442,7 @@ export class ChartComponent extends FusionBase implements OnInit, OnDestroy, OnC
         };
     }
 
-    private getFormatted(value, format?: string): string {
+    protected getFormatted(value, format?: string): string {
         let retVal = value;
         if (!isNullOrUndefined(format)) {
             const formatter = format.split(':');
@@ -488,7 +459,7 @@ export class ChartComponent extends FusionBase implements OnInit, OnDestroy, OnC
                 case 'shortString':
                     retVal = !!value
                         ? this.numberToStringPipe.transform(value, {
-                              noSeparateBySpace: this.selectedVersion === StyleVersion.V2 || this.selectedVersion === StyleVersion.V3
+                              noSeparateBySpace: true
                           })
                         : value;
                     break;

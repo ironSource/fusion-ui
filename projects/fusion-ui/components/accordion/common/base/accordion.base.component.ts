@@ -12,7 +12,7 @@ const DEFAULT_CONFIGURATION = {
 };
 
 @Directive()
-export class AccordionBaseComponent {
+export abstract class AccordionBaseComponent {
     @Input() set data(value: AccordionItem[]) {
         this.accordionBoxes = Array.isArray(value) ? value : [];
     }
