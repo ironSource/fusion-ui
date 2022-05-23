@@ -1,5 +1,4 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
-import {DropdownComponent} from './dropdown.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
@@ -11,10 +10,6 @@ import {FilterByFieldModule} from '@ironsource/fusion-ui/pipes/collection';
 import {CloneModule} from '@ironsource/fusion-ui/pipes/clone';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
-import {DropdownLoaderModule} from '../dropdown-loader/dropdown-loader.module';
-import {DropdownOptionModule} from '../dropdown-option/dropdown-option.module';
-import {DropdownSearchOldModule} from '../dropdown-search/dropdown-search.module';
-import {DropdownService} from '../dropdown.service';
 import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
 import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
@@ -23,8 +18,13 @@ import {LogService} from '@ironsource/fusion-ui/services/log';
 import {MockLogService, MockUniqueIdService, MockApiService} from '@ironsource/fusion-ui/services/mocks';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {ApiService} from '@ironsource/fusion-ui/services/api';
-import {DropdownOptionsListModule} from '../dropdown-options-list/dropdown-options-list.module';
-import {DropdownSelectModule} from '../dropdown-select/dropdown-select.module';
+import {DropdownLoaderModule} from '@ironsource/fusion-ui/components/dropdown-loader/v1';
+import {DropdownOptionsListModule} from '@ironsource/fusion-ui/components/dropdown-options-list/v1';
+import {DropdownOptionModule} from '@ironsource/fusion-ui/components/dropdown-option/v1';
+import {DropdownSearchModule} from '@ironsource/fusion-ui/components/dropdown-search/v1';
+import {DropdownSelectModule} from '@ironsource/fusion-ui/components/dropdown-select/v1';
+import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/servise/dropdown.service';
+import {DropdownComponent} from './dropdown.component';
 
 const optionMock = [
     {
@@ -73,7 +73,7 @@ describe('DropdownComponent', () => {
                     DropdownLoaderModule,
                     DropdownOptionsListModule,
                     DropdownOptionModule,
-                    DropdownSearchOldModule,
+                    DropdownSearchModule,
                     DropdownSelectModule
                 ],
                 declarations: [DropdownComponent],

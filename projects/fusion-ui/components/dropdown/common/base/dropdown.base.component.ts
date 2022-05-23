@@ -1,12 +1,9 @@
 import {
-    ChangeDetectionStrategy,
     ChangeDetectorRef,
-    Component,
+    Directive,
     ElementRef,
     EventEmitter,
-    forwardRef,
     HostListener,
-    Injector,
     Input,
     OnChanges,
     OnDestroy,
@@ -16,42 +13,30 @@ import {
     ViewChild
 } from '@angular/core';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {DropdownOption} from '../entities/dropdown-option';
-import {BackendPagination} from '../entities/backend-pagination';
+import {ControlValueAccessor, FormControl} from '@angular/forms';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
 import {debounceTime, distinctUntilChanged, switchMapTo, take, takeUntil} from 'rxjs/operators';
-import {DropdownService} from '../dropdown.service';
 import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
 import {detectChangesDecorator} from '@ironsource/fusion-ui/decorators';
-import {DROPDOWN_DEBOUNCE_TIME, DROPDOWN_OPTIONS_WITHOUT_SCROLL} from '../dropdown-config';
-import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
-import {DropdownSelectConfigurations} from '../dropdown-select/dropdown-select-configurations';
-import {DropdownSelectComponent} from '../dropdown-select/dropdown-select.component';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
-import {ClosedOptions} from '../entities/closed-options';
 import {SharedEventsService} from '@ironsource/fusion-ui/services/events-handler';
-import {DropdownPlaceholderConfiguration} from '../entities/dropdown-placeholder-configuration';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
-import {DropdownSearchComponent} from '@ironsource/fusion-ui/components/dropdown-search/v1';
+import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/servise';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
+import {DropdownPlaceholderConfiguration} from '@ironsource/fusion-ui/components/dropdown/entities/dropdown-placeholder-configuration';
+import {DropdownSearchComponent} from '@ironsource/fusion-ui/components/dropdown-search';
+import {DropdownSelectComponent} from '@ironsource/fusion-ui/components/dropdown-select';
+import {DropdownSelectConfigurations} from '@ironsource/fusion-ui/components/dropdown-select/entities';
+import {
+    DROPDOWN_DEBOUNCE_TIME,
+    DROPDOWN_OPTIONS_WITHOUT_SCROLL
+} from '@ironsource/fusion-ui/components/dropdown/common/base/dropdown-config';
+import {BackendPagination, ClosedOptions} from '@ironsource/fusion-ui/components/dropdown/entities';
 
-@Component({
-    selector: 'fusion-dropdown',
-    templateUrl: './dropdown.component.html',
-    styleUrls: ['./dropdown.component.scss', './dropdown.component-v2.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        DropdownService,
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => DropdownComponent),
-            multi: true
-        }
-    ]
-})
-export class DropdownComponent extends FusionBase implements OnInit, OnDestroy, OnChanges, ControlValueAccessor {
+@Directive()
+export class DropdownBaseComponent implements OnInit, OnDestroy, OnChanges, ControlValueAccessor {
     @Input() set options(value: DropdownOption[]) {
         this.optionsState = this.cloneOptions(value);
         this.displayedOptions$.next(this.parseOptions(this.optionsState));
@@ -138,6 +123,8 @@ export class DropdownComponent extends FusionBase implements OnInit, OnDestroy, 
     @ViewChild('searchComponent') searchComponent: DropdownSearchComponent;
     @ViewChild('selectComponent') selectComponent: DropdownSelectComponent;
 
+    onDestroy$ = new Subject<void>();
+
     forcePlaceholderOnSelection = false;
     placeholderText = 'Please Select';
     placeholderIcon: IconData;
@@ -163,10 +150,11 @@ export class DropdownComponent extends FusionBase implements OnInit, OnDestroy, 
     backendPaginationChanged$: Subject<any> = new Subject();
     displayedOptions$ = new BehaviorSubject<DropdownOption[]>([]);
     displayedOptionsObservable$: Observable<DropdownOption[]>;
-    dropdownArrowIconName$ = new BehaviorSubject<IconData>({
+
+    dropdownArrowIconName = {
         iconName: 'arrow-dropdown',
         iconVersion: 'v1'
-    });
+    };
 
     isAllSelected: boolean;
     isIndeterminate = false;
@@ -226,11 +214,8 @@ export class DropdownComponent extends FusionBase implements OnInit, OnDestroy, 
         protected filterByFieldPipe: FilterByFieldPipe,
         public cdr: ChangeDetectorRef,
         protected clonePipe: ClonePipe,
-        protected sharedEventsService: SharedEventsService,
-        injector: Injector
-    ) {
-        super(injector);
-    }
+        protected sharedEventsService: SharedEventsService
+    ) {}
 
     ngOnInit() {
         this.displayedOptionsObservable$ = this.getDisplayedOptionsObservable();
@@ -271,14 +256,6 @@ export class DropdownComponent extends FusionBase implements OnInit, OnDestroy, 
             this.displayedOptions$.next(this.parseOptions(this.options));
         });
 
-        this.selectedVersion$.pipe(takeUntil(this.onDestroy$)).subscribe(styleVersion => {
-            const dropdownArrowIcon =
-                styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
-                    ? {iconName: 'arrow-down', iconVersion: 'v2'}
-                    : {iconName: 'arrow-dropdown', iconVersion: 'v1'};
-            this.dropdownArrowIconName$.next(dropdownArrowIcon);
-        });
-
         this.initListeners();
     }
 
@@ -302,14 +279,16 @@ export class DropdownComponent extends FusionBase implements OnInit, OnDestroy, 
             icon: this.icon || this.placeholderIcon,
             labelFlag: this.labelFlag,
             labelImage: this.labelImageSrc,
-            dropdownArrowIconName: this.dropdownArrowIconName$.getValue(),
+            dropdownArrowIconName: this.dropdownArrowIconName,
             isMultipleSelection: this.isMulti,
             filterIconName: this.filterIconName
         };
     }
 
     ngOnDestroy() {
-        super.ngOnDestroy();
+        this.onDestroy$.next();
+        this.onDestroy$.complete();
+
         this.backendPaginationChanged$.next();
         this.backendPaginationChanged$.complete();
     }

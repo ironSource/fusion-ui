@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {DropdownComponent} from './dropdown.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
@@ -12,11 +11,12 @@ import {FilterByFieldModule} from '@ironsource/fusion-ui/pipes/collection';
 import {CloneModule} from '@ironsource/fusion-ui/pipes/clone';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
-import {DropdownLoaderModule} from '../dropdown-loader/dropdown-loader.module';
-import {DropdownOptionModule} from '../dropdown-option/dropdown-option.module';
-import {DropdownOptionsListModule} from '../dropdown-options-list/dropdown-options-list.module';
-import {DropdownSelectModule} from '../dropdown-select/dropdown-select.module';
-import {DropdownSearchModule} from '@ironsource/fusion-ui/components/dropdown-search/v1';
+import {DropdownLoaderModule} from '@ironsource/fusion-ui/components/dropdown-loader/v3';
+import {DropdownOptionsListModule} from '@ironsource/fusion-ui/components/dropdown-options-list/v3';
+import {DropdownOptionModule} from '@ironsource/fusion-ui/components/dropdown-option/v3';
+import {DropdownSelectModule} from '@ironsource/fusion-ui/components/dropdown-select/v3';
+import {DropdownSearchModule} from '@ironsource/fusion-ui/components/dropdown-search/v3';
+import {DropdownComponent} from './dropdown.component';
 
 @NgModule({
     declarations: [DropdownComponent],
@@ -38,7 +38,6 @@ import {DropdownSearchModule} from '@ironsource/fusion-ui/components/dropdown-se
         DropdownOptionsListModule,
         DropdownOptionModule,
         DropdownSelectModule,
-        DropdownSearchModule,
         DropdownSearchModule
     ]
 })

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {isNullOrUndefined, isString, isUndefined} from '@ironsource/fusion-ui/utils';
-import {DropdownOption} from './entities/dropdown-option';
 import {Subject} from 'rxjs';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 
 @Injectable({
     providedIn: null

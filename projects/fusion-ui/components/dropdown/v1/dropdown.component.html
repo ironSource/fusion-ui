@@ -5,7 +5,6 @@
     [clickOutsideActivate]="isOpen$ | async"
     (fusionClickOutside)="onOutsideClick($event)"
     [ngClass]="getHolderCSSClasses()"
-    *ngIf="selectedVersion$ | async as currentStyleVersion"
 >
     <fusion-dropdown-select
         [class.is-icon-right-position]="this.isIconRightPosition"
@@ -18,7 +17,7 @@
     <div class="options-dropdown" [class.options-locate-left]="isLocatedLeft" [class.options-locate-right]="isLocatedRight" [ngClass]="{'dd-disabled': isDisabled, 'dd-confirm': search || autoComplete, 'dd-scroll': hasScroll}">
         <!--search input-->
         <fusion-dropdown-search
-            *ngIf="(search || autoComplete) && searchValue && currentStyleVersion === styleVersion.V1"
+            *ngIf="(search || autoComplete) && searchValue"
             [formControl]="searchValue"
             [placeholder]="searchPlaceholder"
             #searchComponent
