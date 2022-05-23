@@ -4,6 +4,7 @@ import {
     ElementRef,
     EventEmitter,
     HostListener,
+    Injector,
     Input,
     OnChanges,
     OnDestroy,
@@ -210,7 +211,8 @@ export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChan
         protected filterByFieldPipe: FilterByFieldPipe,
         public cdr: ChangeDetectorRef,
         protected clonePipe: ClonePipe,
-        protected sharedEventsService: SharedEventsService
+        protected sharedEventsService: SharedEventsService,
+        protected injector: Injector
     ) {}
 
     ngOnInit() {
