@@ -1,6 +1,6 @@
 @import '../../../src/style/scss/v1/vars/vars';
 
-:host.fu-style-v1 {
+:host {
     @extend %list-reset;
     @extend %border-box-normalize;
     .option {

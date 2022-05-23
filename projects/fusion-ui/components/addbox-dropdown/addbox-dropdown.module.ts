@@ -6,9 +6,9 @@ import {InputModule} from '@ironsource/fusion-ui/components/input/v2';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {FilterByFieldModule} from '@ironsource/fusion-ui/pipes/collection';
 import {CloneModule} from '@ironsource/fusion-ui/pipes/clone';
-import {DropdownLoaderModule} from '../dropdown-loader/dropdown-loader.module';
-import {DropdownOptionModule} from '../dropdown-option/dropdown-option.module';
-import {DropdownOptionsListModule} from '../dropdown-options-list/dropdown-options-list.module';
+import {DropdownLoaderModule} from '@ironsource/fusion-ui/components/dropdown-loader/v1';
+import {DropdownOptionModule} from '@ironsource/fusion-ui/components/dropdown-option/v1';
+import {DropdownOptionsListModule} from '@ironsource/fusion-ui/components/dropdown-options-list/v1';
 
 @NgModule({
     exports: [AddboxDropdownComponent],

@@ -1,20 +1,20 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
-import {AddboxDropdownComponent} from './addbox-dropdown.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {InputModule} from '@ironsource/fusion-ui/components/input';
+import {InputModule} from '@ironsource/fusion-ui/components/input/v1';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {FilterByFieldModule} from '@ironsource/fusion-ui/pipes/collection';
 import {CloneModule} from '@ironsource/fusion-ui/pipes/clone';
-import {DropdownLoaderModule} from '../dropdown-loader/dropdown-loader.module';
-import {DropdownOptionModule} from '../dropdown-option/dropdown-option.module';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
-import {DropdownService} from '../dropdown.service';
 import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
 import {ApiService} from '@ironsource/fusion-ui/services/api';
 import {MockLogService, MockUniqueIdService, MockApiService} from '@ironsource/fusion-ui/services/mocks';
-import {DropdownOptionsListModule} from '../dropdown-options-list/dropdown-options-list.module';
+import {DropdownService} from '@ironsource/fusion-ui';
+import {DropdownLoaderModule} from '@ironsource/fusion-ui/components/dropdown-loader/v1';
+import {DropdownOptionModule} from '@ironsource/fusion-ui/components/dropdown-option/v1';
+import {DropdownOptionsListModule} from '@ironsource/fusion-ui/components/dropdown-options-list/v1';
+import {AddboxDropdownComponent} from './addbox-dropdown.component';
 
 describe('AddboxDropdownComponent', () => {
     let component: AddboxDropdownComponent;

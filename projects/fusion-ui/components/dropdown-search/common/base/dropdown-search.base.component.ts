@@ -16,6 +16,7 @@ export abstract class DropdownSearchBaseComponent implements OnInit, OnDestroy, 
      * Suppress mouse click event
      * (in case that search placed in drop-down )
      */
+    // todo-andyk: Chnage to RxJs or by CSS
     @HostListener('click', ['$event'])
     public onClick(event: any): void {
         event.stopPropagation();

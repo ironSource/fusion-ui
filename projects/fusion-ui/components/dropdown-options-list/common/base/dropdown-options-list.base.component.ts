@@ -1,16 +1,10 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Injector, Input, Output} from '@angular/core';
-import {DropdownOption} from '../entities/dropdown-option';
-import {DropdownService} from '../dropdown.service';
+import {Directive, EventEmitter, Input, Output} from '@angular/core';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
+import {DropdownService} from '@ironsource/fusion-ui';
 
-@Component({
-    selector: 'fusion-dropdown-options-list',
-    templateUrl: './dropdown-options-list.component.html',
-    styleUrls: ['./dropdown-options-list.component.scss', './dropdown-options-list.component-v2.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class DropdownOptionsListComponent extends FusionBase {
+@Directive()
+export abstract class DropdownOptionsListBaseComponent {
     @Input() displayedOptions: DropdownOption[];
     @Input() isMultiRawDisplay = false;
     @Input() mappingOptions: any;
@@ -20,9 +14,7 @@ export class DropdownOptionsListComponent extends FusionBase {
 
     @Output() changeSelected = new EventEmitter<any>();
 
-    constructor(injector: Injector, public dropdownService: DropdownService) {
-        super(injector);
-    }
+    constructor(public dropdownService: DropdownService) {}
 
     isSelected(option): boolean {
         return (
