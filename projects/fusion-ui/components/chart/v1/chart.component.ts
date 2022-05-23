@@ -16,8 +16,7 @@ import {
     Tooltip
 } from 'chart.js';
 import {ChartBaseComponent, ChartData} from '@ironsource/fusion-ui/components/chart/common/base';
-import {ChartBaseDatasetOptions} from '@ironsource/fusion-ui/components/chart/common/base/entities/chart-options';
-import {BASE_DATASET_OPTIONS, CHART_CONFIGURATIONS} from '@ironsource/fusion-ui/components/chart/common/base/chart.config';
+import {ChartBaseDatasetOptions, CHART_CONFIGURATIONS, BASE_DATASET_OPTIONS} from '@ironsource/fusion-ui/components/chart/common/base';
 
 Chart.register(
     ArcElement,
