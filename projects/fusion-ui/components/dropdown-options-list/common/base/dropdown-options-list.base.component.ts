@@ -1,7 +1,7 @@
 import {Directive, EventEmitter, Input, Output} from '@angular/core';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {DropdownService} from '@ironsource/fusion-ui';
+import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/servise';
 
 @Directive()
 export abstract class DropdownOptionsListBaseComponent {

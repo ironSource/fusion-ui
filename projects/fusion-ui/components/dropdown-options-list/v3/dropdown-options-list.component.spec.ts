@@ -1,6 +1,6 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {DropdownOptionsListComponent} from './dropdown-options-list.component';
-import {DropdownService} from '@ironsource/fusion-ui';
+import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/servise';
 import {DropdownOptionModule} from '@ironsource/fusion-ui/components/dropdown-option/v3';
 
 describe('DropdownOptionsListComponent', () => {

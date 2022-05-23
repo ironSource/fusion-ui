@@ -36,7 +36,7 @@ import {
 import {BackendPagination, ClosedOptions} from '@ironsource/fusion-ui/components/dropdown/entities';
 
 @Directive()
-export class DropdownBaseComponent implements OnInit, OnDestroy, OnChanges, ControlValueAccessor {
+export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChanges, ControlValueAccessor {
     @Input() set options(value: DropdownOption[]) {
         this.optionsState = this.cloneOptions(value);
         this.displayedOptions$.next(this.parseOptions(this.optionsState));
