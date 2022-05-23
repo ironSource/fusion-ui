@@ -14,7 +14,7 @@ import {
 import {InputSize} from '@ironsource/fusion-ui/components/input/common/base';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
-import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 import {BehaviorSubject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';

@@ -8,7 +8,7 @@ import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {FilterByFieldModule} from '@ironsource/fusion-ui/pipes/collection';
 import {CloneModule} from '@ironsource/fusion-ui/pipes/clone';
-import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
+import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v1';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
 import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';

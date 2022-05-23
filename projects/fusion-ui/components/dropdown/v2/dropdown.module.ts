@@ -9,7 +9,7 @@ import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {FilterByFieldModule} from '@ironsource/fusion-ui/pipes/collection';
 import {CloneModule} from '@ironsource/fusion-ui/pipes/clone';
-import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
+import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v2';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
 import {DropdownLoaderModule} from '@ironsource/fusion-ui/components/dropdown-loader/v2';
 import {DropdownOptionsListModule} from '@ironsource/fusion-ui/components/dropdown-options-list/v2';

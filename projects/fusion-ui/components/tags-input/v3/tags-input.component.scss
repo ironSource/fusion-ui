@@ -1,7 +1,7 @@
 @import '../../dropdown/v3/dropdown.component';
 
 :host{
-    @extend %link-reset;
+    //@extend %link-reset;
     max-width: none;
     width: 100%;
     text-align: initial;

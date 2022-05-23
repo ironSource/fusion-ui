@@ -183,7 +183,7 @@ $v2-borderRoundedRadius: 20px;
                                         margin-top: 0;
                                     }
                                     .is-dd-group {
-                                        @extend %font-label;
+                                        //@extend %font-label;
                                         text-transform: uppercase;
                                         color: $fu-light-900;
                                         cursor: default;
@@ -272,7 +272,7 @@ $v2-borderRoundedRadius: 20px;
     }
 
     .error-msg{
-        @extend %font-captionRegular;
+        //@extend %font-captionRegular;
         color: $fu-negative-500;
         margin-top: -2px;
     }

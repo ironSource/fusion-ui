@@ -43,7 +43,7 @@ $v2-borderRoundedRadius: 20px;
         // selected option image - (application image)
         img {
             @include size(20px);
-            @extend %borderRadius;
+            //@extend %borderRadius;
             vertical-align: middle;
             margin: -3px 6px auto -2px;
         }

@@ -4,7 +4,7 @@ import {GenericPipeModule} from '@ironsource/fusion-ui/pipes/generic';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {FlagModule} from '@ironsource/fusion-ui/components/flag';
-import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v3';
+import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v2';
 import {DropdownOptionComponent} from './dropdown-option.component';
 import {DropdownOptionDirective} from './dropdown-option.directive';
 

@@ -5,7 +5,7 @@
     @extend %list-reset;
     .option {
         .is-dd-group {
-            @extend %font-label;
+            //@extend %font-label;
             text-transform: uppercase;
             color: $fu-light-900;
             background-color: $fu-light-200;

@@ -10,7 +10,7 @@ import {
     Output,
     ViewChild
 } from '@angular/core';
-import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 import {BehaviorSubject, combineLatest, fromEvent, Observable, Subject} from 'rxjs';
 import {debounceTime, filter, map, scan, takeUntil, tap} from 'rxjs/operators';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
