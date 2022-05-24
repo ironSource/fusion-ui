@@ -34,7 +34,6 @@ import {RadioGroupComponent} from '@ironsource/fusion-ui/components/radio-group'
 import {SvgComponent} from '@ironsource/fusion-ui/components/svg';
 import {TagComponent} from '@ironsource/fusion-ui/components/tag';
 import {TagsInputComponent as TagsInputComponentV1} from '@ironsource/fusion-ui/components/tags-input/v1';
-import {TagsInputComponent as TagsInputComponentV2} from '@ironsource/fusion-ui/components/tags-input/v2';
 import {TagsInputComponent} from '@ironsource/fusion-ui/components/tags-input';
 import {ToggleComponent} from '@ironsource/fusion-ui/components/toggle';
 import {TooltipComponent} from '@ironsource/fusion-ui/components/tooltip/v3';
@@ -170,7 +169,6 @@ export const components = [
     {name: `${PREFIX}-svg`, componentInstance: SvgComponent},
     {name: `${PREFIX}-tag`, componentInstance: TagComponent},
     {name: `${PREFIX}-tags-input-v1`, componentInstance: TagsInputComponentV1},
-    {name: `${PREFIX}-tags-input-v2`, componentInstance: TagsInputComponentV2},
     {name: `${PREFIX}-tags-input`, componentInstance: TagsInputComponent},
     {name: `${PREFIX}-toggle`, componentInstance: ToggleComponent, type: `checkbox`},
     {name: `${PREFIX}-tooltip`, componentInstance: TooltipComponent},

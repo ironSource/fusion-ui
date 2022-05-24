@@ -1,26 +1,12 @@
-import {ChangeDetectionStrategy, Component, DoCheck, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output} from '@angular/core';
-import {FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {Directive, EventEmitter, Input, Output} from '@angular/core';
+import {FormControl} from '@angular/forms';
 import {distinctUntilChanged} from 'rxjs/operators';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
-import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/servise';
 import {DropdownBaseComponent} from '@ironsource/fusion-ui/components/dropdown/common/base';
 
-@Component({
-    selector: 'fusion-addbox-dropdown',
-    templateUrl: './addbox-dropdown.component.html',
-    styleUrls: ['./addbox-dropdown.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        DropdownService,
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => AddboxDropdownComponent),
-            multi: true
-        }
-    ]
-})
+@Directive()
 // eslint-disable-next-line @angular-eslint/no-conflicting-lifecycle
-export class AddboxDropdownComponent extends DropdownBaseComponent {
+export class AddboxDropdownBaseComponent extends DropdownBaseComponent {
     @Input() selected: DropdownOption[] = [];
     @Input() autoComplete = true;
     @Input() actionButtonText;

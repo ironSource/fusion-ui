@@ -23,7 +23,7 @@ import {DropdownLoaderModule} from '@ironsource/fusion-ui/components/dropdown-lo
 import {DropdownOptionModule} from '@ironsource/fusion-ui/components/dropdown-option/v1';
 import {DropdownSearchModule} from '@ironsource/fusion-ui/components/dropdown-search/v1';
 import {DropdownSelectModule} from '@ironsource/fusion-ui/components/dropdown-select/v1';
-import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/servise';
+import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/service';
 import {MultiDropdownComponent} from './multi-dropdown.component';
 
 const optionMock = [

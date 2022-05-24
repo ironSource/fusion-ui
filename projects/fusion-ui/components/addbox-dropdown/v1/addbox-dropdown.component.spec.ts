@@ -10,7 +10,7 @@ import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
 import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
 import {ApiService} from '@ironsource/fusion-ui/services/api';
 import {MockLogService, MockUniqueIdService, MockApiService} from '@ironsource/fusion-ui/services/mocks';
-import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/servise';
+import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/service';
 import {DropdownLoaderModule} from '@ironsource/fusion-ui/components/dropdown-loader/v1';
 import {DropdownOptionModule} from '@ironsource/fusion-ui/components/dropdown-option/v1';
 import {DropdownOptionsListModule} from '@ironsource/fusion-ui/components/dropdown-options-list/v1';

@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, forwardRef, ViewChild} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
-import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/servise';
+import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/service';
 import {DropdownBaseComponent} from '@ironsource/fusion-ui/components/dropdown/common/base';
 import {DropdownSearchComponent} from '@ironsource/fusion-ui/components/dropdown-search/v3';
 import {DropdownSelectComponent} from '@ironsource/fusion-ui/components/dropdown-select/v3';
