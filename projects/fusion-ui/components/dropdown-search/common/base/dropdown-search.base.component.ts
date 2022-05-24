@@ -1,8 +1,8 @@
-import {Directive, HostListener, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Directive, ElementRef, HostListener, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ControlValueAccessor, FormControl} from '@angular/forms';
 import {InputComponent} from '@ironsource/fusion-ui/components/input/v1';
 import {takeUntil} from 'rxjs/operators';
-import {Subject} from 'rxjs';
+import {fromEvent, Subject} from 'rxjs';
 
 @Directive()
 export abstract class DropdownSearchBaseComponent implements OnInit, OnDestroy, ControlValueAccessor {
@@ -12,22 +12,19 @@ export abstract class DropdownSearchBaseComponent implements OnInit, OnDestroy, 
     @ViewChild('inputComponent', {static: true}) inputComponent: InputComponent;
     searchValue = new FormControl();
 
-    /**
-     * Suppress mouse click event
-     * (in case that search placed in drop-down )
-     */
-    // todo-andyk: Chnage to RxJs or by CSS
-    @HostListener('click', ['$event'])
-    public onClick(event: any): void {
-        event.stopPropagation();
-    }
-
     onDestroy$ = new Subject<void>();
+
+    constructor(protected elementRef: ElementRef) {}
 
     ngOnInit() {
         this.searchValue.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(newValue => {
             this.propagateChange(newValue);
         });
+        fromEvent(this.elementRef.nativeElement, 'click')
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe((event: PointerEvent) => {
+                event.stopPropagation();
+            });
     }
 
     ngOnDestroy() {
