@@ -6,7 +6,6 @@ import {delay, take, takeUntil, tap} from 'rxjs/operators';
 import {
     isNullOrUndefined,
     isNumber,
-    StatusLabelStatus,
     StyleVersion,
     TableColumn,
     TableColumnTypeEnum,
@@ -14,6 +13,7 @@ import {
     TableRowExpandEmitter,
     TableRowHeight
 } from '@ironsource/fusion-ui';
+import {StatusLabelStatus} from '@ironsource/fusion-ui/components/status-label/common/entities';
 import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline/common/base';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {TableCellDynamicComponentExampleComponent} from './table-cell-dynamic-component-example';

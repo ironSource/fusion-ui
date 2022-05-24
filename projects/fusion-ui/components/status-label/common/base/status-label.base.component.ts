@@ -1,12 +1,8 @@
-import {Component, Input} from '@angular/core';
-import {StatusLabelBorderType, StatusLabelConfig, StatusLabelStatus} from './status-label.entity';
+import {Directive, Input} from '@angular/core';
+import {StatusLabelBorderType, StatusLabelConfig, StatusLabelStatus} from '@ironsource/fusion-ui/components/status-label/common/entities';
 
-@Component({
-    selector: 'fusion-status-label',
-    templateUrl: './status-label.component.html',
-    styleUrls: ['./status-label.component.scss']
-})
-export class StatusLabelComponent {
+@Directive()
+export abstract class StatusLabelBaseComponent {
     @Input() config: StatusLabelConfig = {};
 
     get holderClasses(): string[] {

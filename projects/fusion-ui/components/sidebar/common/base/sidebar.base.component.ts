@@ -9,7 +9,7 @@ import {SidebarMenuService} from '@ironsource/fusion-ui/components/sidebar/commo
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
 
 @Directive()
-export class SidebarBaseComponent implements OnInit, OnDestroy {
+export abstract class SidebarBaseComponent implements OnInit, OnDestroy {
     @Input() set configuration(value: SidebarConfiguration) {
         this.menuItems = value?.menuItems ?? [];
         this.user = value?.user;

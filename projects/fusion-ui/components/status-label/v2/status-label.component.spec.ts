@@ -1,5 +1,4 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
-
 import {StatusLabelComponent} from './status-label.component';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 
