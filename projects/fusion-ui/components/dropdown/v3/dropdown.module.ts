@@ -2,15 +2,14 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ReactiveFormsModule} from '@angular/forms';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
-import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button/v3';
 import {InputModule} from '@ironsource/fusion-ui/components/input';
 import {FlagModule} from '@ironsource/fusion-ui/components/flag';
 import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {FilterByFieldModule} from '@ironsource/fusion-ui/pipes/collection';
 import {CloneModule} from '@ironsource/fusion-ui/pipes/clone';
-// todo-andyk: on work woth DD v3 change it
-import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v2';
+import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v3';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
 import {DropdownLoaderModule} from '@ironsource/fusion-ui/components/dropdown-loader/v3';
 import {DropdownOptionsListModule} from '@ironsource/fusion-ui/components/dropdown-options-list/v3';

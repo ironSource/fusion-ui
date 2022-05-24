@@ -4,7 +4,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
 import {FlagModule} from '@ironsource/fusion-ui/components/flag';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
-import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v2';
+import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v3';
 import {DropdownSearchModule} from '@ironsource/fusion-ui/components/dropdown-search/v3';
 import {DropdownSelectComponent} from './dropdown-select.component';
 
