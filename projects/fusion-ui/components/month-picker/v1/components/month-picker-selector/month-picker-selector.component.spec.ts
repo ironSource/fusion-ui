@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MonthPickerSelectorComponent} from './month-picker-selector.component';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
-import {MONTH_NAMES_SHORT} from '../month-picker.configuration';
+import {MONTH_NAMES_SHORT} from '@ironsource/fusion-ui/components/month-picker/common/base';
 
 describe('MonthPickerSelectorComponent', () => {
     let component: MonthPickerSelectorComponent;

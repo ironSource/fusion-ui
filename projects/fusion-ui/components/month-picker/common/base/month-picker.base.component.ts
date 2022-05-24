@@ -1,25 +1,11 @@
-import {ChangeDetectionStrategy, Component, forwardRef, Injector, Input} from '@angular/core';
+import {Directive, Input} from '@angular/core';
 import {MONTH_PICKER_PLACEHOLDER} from './month-picker.configuration';
 import {MonthPicker, MonthPickerConfiguration, MonthPickerPlaceholder} from './month-picker';
-import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {isNullOrUndefined, isNumber} from '@ironsource/fusion-ui/utils';
 import {BehaviorSubject} from 'rxjs';
-import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
 
-@Component({
-    selector: 'fusion-month-picker',
-    templateUrl: './month-picker.component.html',
-    styleUrls: ['./month-picker.component.scss', './month-picker-v1.component.scss', './month-picker-v2.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => MonthPickerComponent),
-            multi: true
-        }
-    ]
-})
-export class MonthPickerComponent extends FusionBase {
+@Directive()
+export class MonthPickerBaseComponent {
     @Input() set configuration(value: MonthPickerConfiguration) {
         this.config.placeholder = this.setPlaceholder(value.placeholder);
         this.config.min = value.min;
@@ -36,10 +22,6 @@ export class MonthPickerComponent extends FusionBase {
     isOpen$: BehaviorSubject<boolean> = new BehaviorSubject(false);
     isDisabled = false;
     selected: MonthPicker;
-
-    constructor(injector: Injector) {
-        super(injector);
-    }
 
     onOutsideClick() {
         if (this.isOpen$.getValue()) {

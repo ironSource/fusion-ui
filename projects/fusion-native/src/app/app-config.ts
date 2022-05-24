@@ -6,6 +6,7 @@ import {DatepickerComponent as DatepickerComponentV1} from '@ironsource/fusion-u
 import {DatepickerComponent} from '@ironsource/fusion-ui/components/datepicker';
 import {DropdownComponent} from '@ironsource/fusion-ui/components/dropdown';
 import {MonthPickerComponent} from '@ironsource/fusion-ui/components/month-picker';
+import {MonthPickerComponent as MonthPickerComponentV1} from '@ironsource/fusion-ui/components/month-picker/v1';
 import {DropdownDualMultiSelectComponent} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
 import {MultiDropdownComponent} from '@ironsource/fusion-ui/components/dropdown';
 import {AddboxDropdownComponent} from '@ironsource/fusion-ui/components/dropdown';
@@ -137,6 +138,7 @@ export const components = [
     {name: `${PREFIX}-datepicker-v1`, componentInstance: DatepickerComponentV1},
     {name: `${PREFIX}-datepicker`, componentInstance: DatepickerComponent},
     {name: `${PREFIX}-month-picker`, componentInstance: MonthPickerComponent},
+    {name: `${PREFIX}-month-picker-v1`, componentInstance: MonthPickerComponentV1},
     {name: `${PREFIX}-dropdown`, componentInstance: DropdownComponent},
     {name: `${PREFIX}-multi-dropdown`, componentInstance: MultiDropdownComponent},
     {name: `${PREFIX}-addbox-dropdown`, componentInstance: AddboxDropdownComponent},

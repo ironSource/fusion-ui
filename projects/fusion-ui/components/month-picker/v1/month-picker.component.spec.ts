@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {MonthPickerComponent} from './month-picker.component';
-import {MonthPickerPlaceholderModule} from './month-picker-placeholder/month-picker-placeholder.module';
-import {MonthPickerSelectorModule} from './month-picker-selector/month-picker-selector.module';
+import {MonthPickerPlaceholderModule} from './components/month-picker-placeholder/month-picker-placeholder.module';
+import {MonthPickerSelectorModule} from './components/month-picker-selector/month-picker-selector.module';
 
 describe('MonthPickerComponent', () => {
     let component: MonthPickerComponent;

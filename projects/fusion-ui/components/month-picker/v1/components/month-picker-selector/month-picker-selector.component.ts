@@ -1,23 +1,17 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit, Output, EventEmitter, Injector} from '@angular/core';
-import {MonthPicker} from '../month-picker';
+import {ChangeDetectionStrategy, Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {MONTH_NAMES_SHORT} from '../month-picker.configuration';
-import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
+import {MONTH_NAMES_SHORT, MonthPicker} from '@ironsource/fusion-ui/components/month-picker/common/base';
 
 @Component({
     selector: 'fusion-month-picker-selector',
     templateUrl: './month-picker-selector.component.html',
-    styleUrls: [
-        './month-picker-selector.component.scss',
-        './month-picker-selector-v1.component.scss',
-        './month-picker-selector-v2.component.scss'
-    ],
+    styleUrls: ['./month-picker-selector.component.scss', './month-picker-selector-v1.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MonthPickerSelectorComponent extends FusionBase implements OnInit {
+export class MonthPickerSelectorComponent implements OnInit {
     @Input() min: MonthPicker;
     @Input() max: MonthPicker;
 
@@ -37,26 +31,8 @@ export class MonthPickerSelectorComponent extends FusionBase implements OnInit {
     currentMonthPicker: MonthPicker;
     selectedValue: MonthPicker;
 
-    arrowLeftIconName$: Observable<IconData> = this.selectedVersion$.pipe(
-        map(styleVersion =>
-            styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
-                ? {iconName: 'arrow-left', iconVersion: 'v2'}
-                : {iconName: 'arrow-right', iconVersion: 'v1'}
-        ),
-        startWith({iconName: 'arrow-right', iconVersion: 'v1'})
-    );
-    arrowRightIconName$: Observable<IconData> = this.selectedVersion$.pipe(
-        map(styleVersion =>
-            styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
-                ? {iconName: 'arrow-right', iconVersion: 'v2'}
-                : {iconName: 'arrow-right', iconVersion: 'v1'}
-        ),
-        startWith({iconName: 'arrow-right', iconVersion: 'v1'})
-    );
-
-    constructor(injector: Injector) {
-        super(injector);
-    }
+    arrowLeftIconName = {iconName: 'arrow-right', iconVersion: 'v1'};
+    arrowRightIconName = {iconName: 'arrow-right', iconVersion: 'v1'};
 
     ngOnInit() {
         this.setDefaultYear();

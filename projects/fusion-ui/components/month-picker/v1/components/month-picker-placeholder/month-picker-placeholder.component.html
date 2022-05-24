@@ -2,7 +2,7 @@
 <ng-container *ngIf="!selected && placeholder; else selectedMonth">
     <div class="fu-placeholder">{{ placeholder?.text }}</div>
 </ng-container>
-<fusion-icon *ngIf="(arrowIconName$ | async) as arrowIconName" class="icon-arrow" [name]="arrowIconName"></fusion-icon>
+<fusion-icon *ngIf="arrowIconName" class="icon-arrow" [name]="arrowIconName"></fusion-icon>
 
 <ng-template #selectedMonth>
     <div class="fu-placeholder">{{ placeholder?.prefix }}</div>

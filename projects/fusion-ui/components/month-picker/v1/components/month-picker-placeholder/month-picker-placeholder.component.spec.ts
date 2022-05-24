@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {MonthPickerPlaceholderComponent} from './month-picker-placeholder.component';
-import {MONTH_PICKER_PLACEHOLDER} from '../month-picker.configuration';
+import {MONTH_PICKER_PLACEHOLDER} from '@ironsource/fusion-ui/components/month-picker/common/base';
 
 describe('MonthPickerButtonComponent', () => {
     let component: MonthPickerPlaceholderComponent;
@@ -39,7 +39,7 @@ describe('MonthPickerButtonComponent', () => {
         it('arrow icon', () => {
             const arrowIcon = debugNativeEl.querySelector('fusion-icon.icon-arrow');
             expect(arrowIcon).toBeTruthy();
-            expect(arrowIcon.classList).toContain('arrow-down');
+            expect(arrowIcon.classList).toContain('arrow-dropdown');
         });
     });
 });

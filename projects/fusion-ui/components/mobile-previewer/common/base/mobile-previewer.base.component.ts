@@ -4,7 +4,7 @@ import {DEVICE_ORIENTATION, MobilePreviewerComponentConfiguration} from './mobil
 import {CapitalizePipe} from '@ironsource/fusion-ui/pipes/string';
 
 @Directive()
-export class MobilePreviewerBaseComponent implements OnInit {
+export abstract class MobilePreviewerBaseComponent implements OnInit {
     _configurations: MobilePreviewerComponentConfiguration = {component: {type: null}};
     @Input()
     set configurations(configurations: MobilePreviewerComponentConfiguration) {
@@ -30,11 +30,6 @@ export class MobilePreviewerBaseComponent implements OnInit {
     _selectedDevice = '';
     refresh = true;
     devices: string[];
-
-    // iconPrefix$: Observable<string> = this.selectedVersion$.pipe(
-    //     map(styleVersion => (styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3 ? 'v2' : 'v1')),
-    //     startWith('v1')
-    // );
 
     public get selectedDevice() {
         return this._capitalizePipe.transform(this._selectedDevice.replace('-', ' '));
