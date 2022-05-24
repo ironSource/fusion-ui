@@ -5,7 +5,6 @@
 $headerHeight: 40px;
 $borderRadius: 8px;
 $headerSmallHeight: 32px;
-$errorBGColor: $fu-negative-700;
 
 :host .is-dropdown-select {
     @extend %border-box-normalize;
@@ -17,17 +16,18 @@ $errorBGColor: $fu-negative-700;
         background-color: $fu-light-100;
         border: none;
         border-radius: $borderRadius;
-        padding: 10px 25px 10px 10px;
         @include icon-style('icon-arrow', $fu-light-900, 16px, true, true) {
             position: absolute;
             right: 12px;
             top: 13px;
             height: 16px;
+            width: 16px;
         }
-
-        @extend %font-body;
         @extend %truncate;
-        color: $fu-dark-700;
+        @extend %font-bodySmall;
+        letter-spacing: 0.24px;
+        color: $fu-black-500;
+        padding: 10px 25px 10px 10px;
 
         .placeholderText {
             margin-left: 2px;
@@ -54,6 +54,7 @@ $errorBGColor: $fu-negative-700;
             margin-right: 6px;
         }
 
+*/
         // states
         &:hover {
             background-color: $fu-light-200;
@@ -61,19 +62,18 @@ $errorBGColor: $fu-negative-700;
 
         &:active:not(.is-tab-mode),
         &.dd-active {
-            @include icon-style('icon-arrow', $fu-dark-500, 8px, true, true, 180);
             border-bottom: solid 2px $fu-primary-500;
         }
 
         &.dd-disabled {
             pointer-events: none;
-            color: $fu-light-900;
-            @include icon-style('icon-arrow', $fu-light-700, 8px, true, true);
-            @include icon-style('is-custom-icon', $fu-light-700, 13px, true, true);
+            color: $fu-light-800;
+            @include icon-style('icon-arrow', $fu-light-800, 16px, true, true)
         }
-        &.dd-error{
-            background-color: $errorBGColor;
-        }*/
+        &.dd-readonly {
+            pointer-events: none;
+            @include icon-style('icon-arrow', $fu-light-800, 16px, true, true)
+        }
     }
 
     // region dynamic component

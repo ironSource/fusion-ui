@@ -266,15 +266,21 @@ $v2-borderRoundedRadius: 20px;
             }
         }
 
-        &.dd-disabled{
+        &.dd-disabled,
+        &.dd-readonly {
             cursor: not-allowed;
         }
     }
 
-    .error-msg{
-        //@extend %font-captionRegular;
-        color: $fu-negative-500;
-        margin-top: -2px;
+    .fu-error-msg{
+        @extend %font-caption;
+        color: $fu-negative-700;
+        margin-top: 3px;
+    }
+    .fu-helper-text{
+        @extend %font-caption;
+        color: $fu-black-200;
+        margin-top: 3px;
     }
 
     &.fu-options-position-up{

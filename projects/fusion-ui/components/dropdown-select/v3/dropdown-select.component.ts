@@ -13,6 +13,7 @@ export class DropdownSelectComponent extends DropdownSelectBaseComponent {
     getLabelCSSClasses(isOpen: boolean): string[] {
         const classesList = [
             this.configurations.disabled && 'dd-disabled',
+            this.configurations.readonly && 'dd-readonly',
             !!this.configurations.error && 'dd-error',
             isOpen && 'dd-active',
             !!this.configurations.selectedOption && 'ss-selected',

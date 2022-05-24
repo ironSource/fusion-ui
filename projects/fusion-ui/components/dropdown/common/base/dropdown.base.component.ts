@@ -59,6 +59,7 @@ export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChan
     @Input() filterIconName: string;
     @Input() isIconRightPosition = false;
     @Input() isDisabled: boolean;
+    @Input() readonly: boolean;
     @Input() search: boolean;
     @Input() autoComplete: boolean;
     @Input() mappingOptions: any;
@@ -90,6 +91,8 @@ export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChan
 
     @Input() optionRightHoverText;
     @Input() changeConfirmation: () => Promise<boolean>;
+
+    @Input() helper: string;
 
     @Input() set backendPagination(value: BackendPagination) {
         this.onBackendPaginationChanged(value);
@@ -270,6 +273,7 @@ export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChan
                 overlayLocation: this.placeholderLocation
             },
             disabled: this.isDisabled,
+            readonly: this.readonly,
             isTabMode: this.isTabMode,
             isSearch: this.autoComplete || this.search,
             isOpen: this.isOpen$.getValue(),
@@ -330,7 +334,7 @@ export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChan
      */
     openDropdown(event: MouseEvent) {
         const forceOpen = !!(event.target as Element).closest('div.dropdown-arrow-container');
-        if (!this.isDisabled) {
+        if (!this.isDisabled && !this.readonly) {
             if (!this.isTabMode || forceOpen) {
                 if (this.isOpen$.getValue()) {
                     this.closeDropdown();
@@ -425,6 +429,7 @@ export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChan
             this.isOpen$.getValue() && 'dd-opened',
             !!this.selected && this.selected.length && 'ss-selected',
             this.isDisabled && 'dd-disabled',
+            this.readonly && 'dd-readonly',
             this.isTabMode && 'is-tab-mode'
         ].filter(Boolean);
     }
