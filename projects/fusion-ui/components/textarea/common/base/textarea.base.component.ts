@@ -1,21 +1,7 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, forwardRef, Injector, Input, OnInit, Output} from '@angular/core';
-import {NG_VALUE_ACCESSOR} from '@angular/forms';
-import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
+import {Directive, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
-@Component({
-    selector: 'fusion-textarea',
-    templateUrl: './textarea.component.html',
-    styleUrls: ['./textarea.component.scss', './textarea.component-v2.scss'],
-    changeDetection: ChangeDetectionStrategy.Default,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => TextareaComponent),
-            multi: true
-        }
-    ]
-})
-export class TextareaComponent extends FusionBase implements OnInit {
+@Directive()
+export abstract class TextareaBaseComponent implements OnInit {
     @Input() placeholder: string;
     @Input() error: string;
     @Input() readonly: boolean;
@@ -25,10 +11,6 @@ export class TextareaComponent extends FusionBase implements OnInit {
     @Input() isDisabled: boolean;
     @Input() model: string;
     @Output() modelChange = new EventEmitter();
-
-    constructor(injector: Injector) {
-        super(injector);
-    }
 
     ngOnInit() {
         this.resize = typeof this.resize === 'undefined' ? false : this.resize;

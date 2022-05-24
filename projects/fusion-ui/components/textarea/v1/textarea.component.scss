@@ -1,8 +1,8 @@
-@import "../../src/style/scss/v1/vars/vars";
+@import "../../../src/style/scss/v1/vars/vars";
 
 $errBorderColor: $negative-200;
 
-:host.fu-style-v1 {
+:host {
   height: inherit;
     @extend %border-box-normalize;
   .is-textarea {

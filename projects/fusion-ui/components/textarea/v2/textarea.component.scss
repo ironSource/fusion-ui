@@ -1,4 +1,4 @@
-@import '../../src/style/scss/v2/vars/vars';
+@import '../../../src/style/scss/v2/vars/vars';
 
 %stateFocus {
     background-color: $fu-light-100;
@@ -8,8 +8,7 @@
     box-shadow: none;
 }
 
-:host.fu-style-v3,
-:host.fu-style-v2 {
+:host {
     height: inherit;
     @extend %border-box-normalize;
     textarea {
