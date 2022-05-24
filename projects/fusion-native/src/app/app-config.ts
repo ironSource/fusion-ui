@@ -20,7 +20,9 @@ import {LayoutV1Component} from '@ironsource/fusion-ui/components/layout-v1';
 import {LayoutComponent} from '@ironsource/fusion-ui/components/layout';
 import {ListBoxComponent} from '@ironsource/fusion-ui/components/list-box';
 import {LoaderComponent} from '@ironsource/fusion-ui/components/loader';
+import {LoaderComponent as LoaderComponentV1} from '@ironsource/fusion-ui/components/loader/v1';
 import {LoaderInlineComponent} from '@ironsource/fusion-ui/components/loader-inline';
+import {LoaderInlineComponent as LoaderInlineComponentV1} from '@ironsource/fusion-ui/components/loader-inline/v1';
 import {MenuComponent} from '@ironsource/fusion-ui/components/menu';
 import {ModalComponent} from '@ironsource/fusion-ui/components/modal';
 import {NotificationComponent} from '@ironsource/fusion-ui/components/notification';
@@ -45,6 +47,7 @@ import {DaterangeComponent as DaterangeComponentV1} from '@ironsource/fusion-ui/
 import {DaterangeComponent as DaterangeComponentV2} from '@ironsource/fusion-ui/components/daterange/v2';
 import {DaterangeComponent} from '@ironsource/fusion-ui/components/daterange';
 import {MobilePreviewerComponent} from '@ironsource/fusion-ui/components/mobile-previewer';
+import {MobilePreviewerComponent as MobilePreviewerComponentV1} from '@ironsource/fusion-ui/components/mobile-previewer/v1';
 import {StatusLabelComponent} from '@ironsource/fusion-ui/components/status-label';
 import {ToastComponent} from '@ironsource/fusion-ui/components/toast';
 import {TabsComponent as TabsComponentV2} from '@ironsource/fusion-ui/components/tabs/v2';
@@ -76,16 +79,16 @@ import {ModalService} from '@ironsource/fusion-ui/components/modal';
 // enums
 import {NotificationType} from '@ironsource/fusion-ui/components/notification';
 import {DatepickerMode} from '@ironsource/fusion-ui/components/datepicker/v1';
-import {HeaderSizes} from '@ironsource/fusion-ui/components/header-overlay';
-import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline';
-import {ListBoxModes} from '@ironsource/fusion-ui/components/list-box';
+import {HeaderSizes} from '@ironsource/fusion-ui/components/header-overlay/common/base';
+import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline/common/base';
+import {ListBoxModes} from '@ironsource/fusion-ui/components/list-box/common/base';
 import {PopupLocation} from '@ironsource/fusion-ui/components/popup';
 import {TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table';
 import {TooltipPosition, TooltipType} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {FormControlStatus} from '@ironsource/fusion-ui/components/error-message';
 import {SwitcherMode} from '@ironsource/fusion-ui/components/switcher';
 import {DaterangePresets} from '@ironsource/fusion-ui/components/daterange/entities';
-import {MobileOrientation} from '@ironsource/fusion-ui/components/mobile-previewer';
+import {MobileOrientation} from '@ironsource/fusion-ui/components/mobile-previewer/common/base';
 
 const PREFIX = 'native-fusion';
 
@@ -150,7 +153,9 @@ export const components = [
     {name: `${PREFIX}-sidebar-menu`, componentInstance: SidebarMenuComponent},
     {name: `${PREFIX}-list-box`, componentInstance: ListBoxComponent},
     {name: `${PREFIX}-loader`, componentInstance: LoaderComponent},
+    {name: `${PREFIX}-loader-v1`, componentInstance: LoaderComponentV1},
     {name: `${PREFIX}-loader-inline`, componentInstance: LoaderInlineComponent},
+    {name: `${PREFIX}-loader-inline-v1`, componentInstance: LoaderInlineComponentV1},
     {name: `${PREFIX}-menu`, componentInstance: MenuComponent},
     {name: `${PREFIX}-modal`, componentInstance: ModalComponent},
     {name: `${PREFIX}-notification`, componentInstance: NotificationComponent},
@@ -175,6 +180,7 @@ export const components = [
     {name: `${PREFIX}-daterange-v2`, componentInstance: DaterangeComponentV2},
     {name: `${PREFIX}-daterange`, componentInstance: DaterangeComponent},
     {name: `${PREFIX}-mobile-previewer`, componentInstance: MobilePreviewerComponent},
+    {name: `${PREFIX}-mobile-previewer-v1`, componentInstance: MobilePreviewerComponentV1},
     {name: `${PREFIX}-status-label`, componentInstance: StatusLabelComponent},
     {name: `${PREFIX}-toast`, componentInstance: ToastComponent},
     {name: `${PREFIX}-textarea`, componentInstance: TextareaComponent, avoidJsonParse: true},

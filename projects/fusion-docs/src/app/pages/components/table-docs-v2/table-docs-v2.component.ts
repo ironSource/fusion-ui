@@ -4,7 +4,6 @@ import {FormControl, Validators} from '@angular/forms';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {delay, take, takeUntil, tap} from 'rxjs/operators';
 import {
-    InlineInputType,
     isNullOrUndefined,
     isNumber,
     StatusLabelStatus,
@@ -15,6 +14,7 @@ import {
     TableRowExpandEmitter,
     TableRowHeight
 } from '@ironsource/fusion-ui';
+import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline/common/base';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {TableCellDynamicComponentExampleComponent} from './table-cell-dynamic-component-example';
 import {DocsLayoutService} from '../../docs/docs-layout.service';

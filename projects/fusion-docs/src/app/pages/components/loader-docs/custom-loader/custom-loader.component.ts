@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {LOADER_COMPONENT_TYPE_TOKEN} from '@ironsource/fusion-ui';
+import {LOADER_COMPONENT_TYPE_TOKEN} from '@ironsource/fusion-ui/components/loader/common/base';
 
 @Component({
     selector: 'fusion-custom-loader',

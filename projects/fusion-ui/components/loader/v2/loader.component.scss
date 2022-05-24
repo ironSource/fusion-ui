@@ -1,0 +1,51 @@
+@import '../../../src/style/scss/v2/vars/vars';
+@import '../../../src/style/scss/v2/mixins/mixins';
+
+//overlay loader
+$overlayLoaderBG: $White; //$greyBackground;
+$overlayLoaderTextColor: $fu-dark-300;
+$overlayLoaderImgColor: $fu-light-800;
+$overlayLoaderImgSize: 50px;
+
+
+:host {
+    display: block;
+
+    .is-loader {
+        @extend %applicationLayer;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        color: $fu-light-900;
+        &.blue{
+            color: $fu-primary-500;
+        }
+        &.white{
+            color: $White;
+        }
+        @include icon-style('fu-loader', currentColor, (width: 40px), false, true);
+        .is-loader-content {
+            @extend %font-body;
+            margin-top: 15px;
+        }
+
+        &.small {
+            @include icon-style('fu-loader', currentColor, (width: 30px), false, true);
+        }
+
+        &.inline{
+            @include icon-style('fu-loader', currentColor, 32px, true, true){
+                display: block;
+                position: absolute;
+                right: 0;
+            }
+        }
+    }
+}

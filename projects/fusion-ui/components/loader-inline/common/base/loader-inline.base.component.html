@@ -1,0 +1,6 @@
+<div *ngIf="status" class="loader-inline" [ngClass]="[color]">
+    <fusion-loading-icon></fusion-loading-icon>
+<!--    <fusion-icon class="loader-v1" [name]="{iconName: 'loading', iconVersion: 'v1'}"></fusion-icon>-->
+<!--    <fusion-icon class="loader-v2" [name]="{iconName: 'loader-dots-v4', iconVersion: 'v2'}"></fusion-icon>-->
+    <span *ngIf="text" class="loader-txt">{{ text }}</span>
+</div>
