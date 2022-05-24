@@ -329,7 +329,6 @@ export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChan
      * Open dropdown windows
      */
     openDropdown(event: MouseEvent) {
-        console.log('>>', event.target);
         const forceOpen = !!(event.target as Element).closest('div.dropdown-arrow-container');
         if (!this.isDisabled) {
             if (!this.isTabMode || forceOpen) {
