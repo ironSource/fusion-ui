@@ -1,0 +1,45 @@
+<div
+    class="is-dropdown"
+    [id]="id"
+    [style.width]="placeholderWidth"
+    [clickOutsideActivate]="isOpen$ | async"
+    (fusionClickOutside)="onOutsideClick($event)"
+    [ngClass]="getHolderCSSClasses()"
+>
+    <fusion-dropdown-select
+        [class.is-icon-right-position]="this.isIconRightPosition"
+        (searchValueChanged)="searchValue.setValue($event)"
+        (click)="openDropdown($event)"
+        [configurations]="dropdownSelectConfigurations$ | async"
+        #selectComponent
+    >
+    </fusion-dropdown-select>
+    <div class="options-dropdown" [class.options-locate-left]="isLocatedLeft" [class.options-locate-right]="isLocatedRight" [ngClass]="{'dd-disabled': isDisabled, 'dd-confirm': search || autoComplete, 'dd-scroll': hasScroll}">
+        <!--search input-->
+        <fusion-dropdown-search
+            *ngIf="(search || autoComplete) && searchValue"
+            [formControl]="searchValue"
+            [placeholder]="searchPlaceholder"
+            #searchComponent
+        ></fusion-dropdown-search>
+        <!--dropdown options holder-->
+        <div class="options-holder" (scroll)="onScroll($event)" #optionsHolder>
+            <ul class="options">
+                <!--options-->
+                <fusion-dropdown-options-list
+                    [displayedOptions]="displayedOptionsObservable$ | async"
+                    [isMultiRawDisplay]="isMultiRawDisplay"
+                    [mappingOptions]="mappingOptions"
+                    [selected]="selected"
+                    (changeSelected)="changeSelected($event)"
+                ></fusion-dropdown-options-list>
+                <!--loader holder-->
+                <li [fusionDropdownLoader]="(autoComplete || search) && loading"></li>
+                <!--no-result holder-->
+                <li class="no-results" *ngIf="!filteredOptions?.length && !loading">No results</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--errors holder-->
+<div class="error-msg" *ngIf="error">{{ error }}</div>

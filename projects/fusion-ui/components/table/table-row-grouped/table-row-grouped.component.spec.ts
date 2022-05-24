@@ -11,7 +11,6 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {ToggleModule} from '@ironsource/fusion-ui/components/toggle';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
-import {MultiDropdownModule} from '@ironsource/fusion-ui/components/dropdown';
 import {InputInlineModule} from '@ironsource/fusion-ui/components/input-inline';
 import {TableService} from '../table.service';
 import {TableCellComponent} from '../table-cell/table-cell.component';
@@ -20,6 +19,7 @@ import {TableLoadingComponent} from '../table-loading/table-loading.component';
 import {TableRowComponent} from '../table-row/table-row.component';
 import {NotAvailableModule} from '@ironsource/fusion-ui/pipes/not-available';
 import {GenericPipeModule} from '@ironsource/fusion-ui/pipes/generic';
+import {MultiDropdownModule} from '@ironsource/fusion-ui/components/multi-dropdown';
 
 describe('TableRowGroupedComponent', () => {
     let component: TableRowGroupedComponent;

@@ -1,6 +1,6 @@
 import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline/common/base';
 import {TableColumnTypeEnum} from './table-column-type.enum';
-import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 import {EventEmitter} from '@angular/core';
 import {CellPosition} from './table-cell-position';
 import {IconData} from '@ironsource/fusion-ui/components/icon';

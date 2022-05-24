@@ -1,4 +1,4 @@
-import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 
 export const MOCK_DUAL_ITEMS: DropdownOption[] = [
     {id: 1, title: 'Mario Speedwagon'},

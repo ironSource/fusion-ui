@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit, Type} from '@angular/core';
-import {DropdownOption, DynamicComponentConfiguration} from '@ironsource/fusion-ui';
+import {DynamicComponentConfiguration} from '@ironsource/fusion-ui';
 import {DropdownCustomPlaceholderComponent} from '../../../components/dropdown-custom-placeholder/dropdown-custom-placeholder.component';
 import {
     dynamicDisplayItemBackendPagination,
@@ -14,6 +14,7 @@ import {FormControl} from '@angular/forms';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {MOK_APPLICATIONS} from '../dropdown-docs-v2/dropdown-docs-v2.config';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 
 @Component({
     selector: 'fusion-dropdown-dual-multi-select-docs',

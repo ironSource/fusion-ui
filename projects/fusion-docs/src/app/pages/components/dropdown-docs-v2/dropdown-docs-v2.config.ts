@@ -1,7 +1,6 @@
-import {DropdownOption} from '@ironsource/fusion-ui';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 
 /* eslint-disable max-len */
-
 export const MOCK_OPTIONS: DropdownOption[] = [
     {
         icon: 'monetize',

@@ -13,11 +13,7 @@ import {
     TooltipModule,
     InputInlineModule,
     LoaderInlineModule,
-    DropdownModule,
-    MultiDropdownModule,
-    AddboxDropdownModule,
     TagModule,
-    TagsInputModule,
     TableModule,
     ListBoxModule,
     CacheService,
@@ -33,6 +29,10 @@ import {PlaygroundComponent} from './playground.component';
 import {PlaygroundRoutingModule} from './playground-routing.module';
 import {CommonModule} from '@angular/common';
 import {AccordionModule, VideoPlayerModule} from '@ironsource/fusion-ui';
+import {AddboxDropdownModule} from '@ironsource/fusion-ui/components/addbox-dropdown';
+import {MultiDropdownModule} from '@ironsource/fusion-ui/components/multi-dropdown/v1';
+import {TagsInputModule} from '@ironsource/fusion-ui/components/tags-input/v1';
+import {DropdownModule} from '@ironsource/fusion-ui/components/dropdown/v1';
 
 @NgModule({
     declarations: [PlaygroundComponent],

@@ -1,6 +1,6 @@
-import {DropdownOption} from '@ironsource/fusion-ui';
 import {DropdownCustomPlaceholderComponent} from '../../../components/dropdown-custom-placeholder/dropdown-custom-placeholder.component';
 import {Component, Type} from '@angular/core';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 
 export const MOCK_DUAL_OPTIONS_PRESET: DropdownOption[] = [
     {id: 1, title: 'Mario Speedwagon'},

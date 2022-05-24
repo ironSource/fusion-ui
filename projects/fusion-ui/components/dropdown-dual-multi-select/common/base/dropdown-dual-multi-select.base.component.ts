@@ -2,7 +2,7 @@ import {Directive, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, R
 import {InputSize} from '@ironsource/fusion-ui/components/input/common/base';
 import {ControlValueAccessor, FormControl} from '@angular/forms';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
-import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 import {BehaviorSubject, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 

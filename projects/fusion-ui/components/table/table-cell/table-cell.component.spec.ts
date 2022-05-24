@@ -11,7 +11,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {ToggleModule} from '@ironsource/fusion-ui/components/toggle';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
-import {MultiDropdownModule} from '@ironsource/fusion-ui/components/dropdown';
+import {MultiDropdownModule} from '@ironsource/fusion-ui/components/multi-dropdown';
 import {InputInlineModule} from '@ironsource/fusion-ui/components/input-inline';
 import {TableService} from '../table.service';
 import {NotAvailableModule} from '@ironsource/fusion-ui/pipes/not-available';

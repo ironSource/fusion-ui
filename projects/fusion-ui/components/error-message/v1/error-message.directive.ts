@@ -17,7 +17,7 @@ import {ERROR_MESSAGES, FormControlStatus} from './error-message.config';
 import {ErrorMessageComponent} from './error-message.component';
 import {AbstractControl, ControlContainer, FormGroupDirective} from '@angular/forms';
 import {LogService} from '@ironsource/fusion-ui/services/log';
-import {DropdownComponent} from '@ironsource/fusion-ui/components/dropdown';
+import {DropdownComponent} from '@ironsource/fusion-ui/components/dropdown/v2';
 import {InputComponent} from '@ironsource/fusion-ui/components/input/v2';
 
 @Directive({

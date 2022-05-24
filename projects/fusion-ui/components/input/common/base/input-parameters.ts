@@ -48,7 +48,7 @@ export abstract class InputParameters {
         this.configuration = {...this._configuration, btnLoading};
     }
 
-    @Input() set id(id: number) {
+    @Input() set id(id: number | string) {
         this.configuration = {...this._configuration, id};
     }
 
