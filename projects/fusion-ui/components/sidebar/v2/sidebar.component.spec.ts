@@ -3,10 +3,9 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {SidebarComponent} from './sidebar.component';
 import {By} from '@angular/platform-browser';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
-import {SidebarMenuItem} from './sidebar-menu/sidebar-menu.entity';
-import {SidebarMenuService} from './sidebar-menu/sidebar-menu.service';
-import {SidebarMenuModule} from './sidebar-menu/sidebar-menu.module';
-import {SidebarConfiguration} from './sidebar.entity';
+import {SidebarMenuItem, SidebarConfiguration} from '@ironsource/fusion-ui/components/sidebar/common/entities';
+import {SidebarMenuService} from '@ironsource/fusion-ui/components/sidebar/common/services';
+import {SidebarMenuModule} from './components/sidebar-menu/sidebar-menu.module';
 
 const MENU_ITEMS_MOCK: SidebarMenuItem[] = [
     {

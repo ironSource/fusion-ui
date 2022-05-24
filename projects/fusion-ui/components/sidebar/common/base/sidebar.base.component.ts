@@ -1,21 +1,15 @@
-import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostBinding, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {SidebarConfiguration} from './sidebar.entity';
+import {Directive, ElementRef, EventEmitter, HostBinding, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
 import {CacheService, CacheType} from '@ironsource/fusion-ui/services/cache';
 import {BehaviorSubject, fromEvent, merge, Subject, Subscription} from 'rxjs';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {takeUntil} from 'rxjs/operators';
-import {SidebarMenuItem} from './sidebar-menu/sidebar-menu.entity';
-import {SidebarMenuService} from './sidebar-menu/sidebar-menu.service';
+import {SidebarMenuItem, SidebarConfiguration} from '@ironsource/fusion-ui/components/sidebar/common/entities';
+import {SidebarMenuService} from '@ironsource/fusion-ui/components/sidebar/common/services';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
 
-@Component({
-    selector: 'fusion-sidebar',
-    templateUrl: './sidebar.component.html',
-    styleUrls: ['./sidebar.component.scss', './sidebar-mobile.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class SidebarComponent implements OnInit, OnDestroy {
+@Directive()
+export class SidebarBaseComponent implements OnInit, OnDestroy {
     @Input() set configuration(value: SidebarConfiguration) {
         this.menuItems = value?.menuItems ?? [];
         this.user = value?.user;

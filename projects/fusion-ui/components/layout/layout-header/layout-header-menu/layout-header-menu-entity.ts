@@ -3,7 +3,7 @@
  */
 
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
-import {SidebarMenuItem} from '@ironsource/fusion-ui/components/sidebar';
+import {SidebarMenuItem} from '@ironsource/fusion-ui/components/sidebar/common/entities';
 
 export interface LayoutHeaderMenuConfiguration {
     user?: LayoutUser;

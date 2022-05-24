@@ -1,4 +1,4 @@
-import {SidebarMenuItem} from '@ironsource/fusion-ui';
+import {SidebarMenuItem} from '@ironsource/fusion-ui/components/sidebar/common/entities';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 import {Component, Type} from '@angular/core';
 import {MenuItemExampleComponent} from '../../components/menu-item-example/menu-item-example.component';

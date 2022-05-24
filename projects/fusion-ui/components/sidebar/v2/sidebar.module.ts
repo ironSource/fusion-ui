@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {SidebarComponent} from './sidebar.component';
-import {SidebarMenuModule} from './sidebar-menu/sidebar-menu.module';
+import {SidebarMenuModule} from './components/sidebar-menu/sidebar-menu.module';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
-import {SidebarMenuService} from './sidebar-menu/sidebar-menu.service';
+import {SidebarMenuService} from '@ironsource/fusion-ui/components/sidebar/common/services';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
 
 @NgModule({

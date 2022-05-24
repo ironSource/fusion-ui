@@ -1,9 +1,8 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-
 import {SidebarMenuComponent} from './sidebar-menu.component';
-import {SidebarMenuService} from './sidebar-menu.service';
+import {SidebarMenuService} from '@ironsource/fusion-ui/components/sidebar/common/services';
 import {RouterTestingModule} from '@angular/router/testing';
-import {SidebarMenuItem} from './sidebar-menu.entity';
+import {SidebarMenuItem} from '@ironsource/fusion-ui/components/sidebar/common/entities';
 import {By} from '@angular/platform-browser';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 

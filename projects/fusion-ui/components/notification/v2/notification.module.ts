@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {NotificationComponent} from './notification.component';
-import {ModalModule} from '@ironsource/fusion-ui/components/modal/v1';
+import {ModalModule} from '@ironsource/fusion-ui/components/modal/v2';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 
 @NgModule({

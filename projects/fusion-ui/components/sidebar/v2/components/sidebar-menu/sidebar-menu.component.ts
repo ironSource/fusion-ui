@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit, Output, EventEmitter, OnDestroy, Optional} from '@angular/core';
-import {SidebarMenuItem} from './sidebar-menu.entity';
-import {SidebarMenuService} from './sidebar-menu.service';
+import {SidebarMenuItem} from '@ironsource/fusion-ui/components/sidebar/common/entities';
+import {SidebarMenuService} from '@ironsource/fusion-ui/components/sidebar/common/services';
 import {delay, switchMap, takeUntil, tap} from 'rxjs/operators';
 import {NavigationEnd, NavigationError, NavigationStart, Router} from '@angular/router';
 import {BehaviorSubject, fromEvent, iif, merge, of, Subject} from 'rxjs';

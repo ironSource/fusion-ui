@@ -3,7 +3,7 @@
  */
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
 import {LayoutHeaderComponentConfiguration} from './layout-header/layout-header-entity';
-import {SidebarMenuItem} from '@ironsource/fusion-ui/components/sidebar';
+import {SidebarMenuItem} from '@ironsource/fusion-ui/components/sidebar/common/entities';
 import {SvgOptions} from '@ironsource/fusion-ui/components/svg';
 
 export interface LayoutComponentConfiguration {

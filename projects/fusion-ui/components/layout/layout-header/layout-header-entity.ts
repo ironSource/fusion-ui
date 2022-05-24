@@ -4,7 +4,7 @@
 
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
-import {SidebarMenuItem} from '@ironsource/fusion-ui/components/sidebar';
+import {SidebarMenuItem} from '@ironsource/fusion-ui/components/sidebar/common/entities';
 
 export interface LayoutHeaderContentTitle {
     text: string;

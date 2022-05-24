@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
-import {SidebarMenuItem} from './sidebar-menu.entity';
+import {SidebarMenuItem} from '@ironsource/fusion-ui/components/sidebar/common/entities';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Injectable({

@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {LayoutHeaderMenuConfiguration} from './layout-header-menu-entity';
-import {SidebarMenuItem} from '@ironsource/fusion-ui/components/sidebar';
+import {SidebarMenuItem} from '@ironsource/fusion-ui/components/sidebar/common/entities';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
 
 @Component({

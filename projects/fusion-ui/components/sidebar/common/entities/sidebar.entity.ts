@@ -3,7 +3,7 @@
  */
 
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
-import {SidebarMenuItem} from './sidebar-menu/sidebar-menu.entity';
+import {SidebarMenuItem} from './sidebar-menu.entity';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
 
 export interface SidebarConfiguration {

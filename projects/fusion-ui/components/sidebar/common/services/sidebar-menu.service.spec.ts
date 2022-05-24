@@ -1,7 +1,7 @@
 import {TestBed} from '@angular/core/testing';
 
 import {SidebarMenuService} from './sidebar-menu.service';
-import {SidebarMenuItem} from './sidebar-menu.entity';
+import {SidebarMenuItem} from '@ironsource/fusion-ui/components/sidebar/common/entities';
 
 const MENU_ITEMS_MOCK: SidebarMenuItem[] = [
     {
