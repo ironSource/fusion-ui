@@ -1,38 +1,14 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    EventEmitter,
-    forwardRef,
-    HostBinding,
-    Injector,
-    Input,
-    OnInit,
-    Output
-} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, HostBinding, Input, OnInit, Output} from '@angular/core';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {ControlValueAccessor} from '@angular/forms';
 import {BehaviorSubject, of} from 'rxjs';
 import {DomSanitizer} from '@angular/platform-browser';
-import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
 import {delay, startWith} from 'rxjs/operators';
 import {isString} from '@ironsource/fusion-ui/utils';
-import {ToggleLabel} from './toggle.config';
+import {ToggleLabel} from '@ironsource/fusion-ui/components/toggle/common/entities';
 
-@Component({
-    selector: 'fusion-toggle',
-    templateUrl: './toggle.component.html',
-    styleUrls: ['./toggle.component.scss', './toggle.component-v2.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => ToggleComponent),
-            multi: true
-        }
-    ]
-})
-export class ToggleComponent extends FusionBase implements OnInit, ControlValueAccessor {
+@Directive()
+export abstract class ToggleBaseComponent implements OnInit, ControlValueAccessor {
     @Input()
     set label(label: ToggleLabel) {
         this._label = label;
@@ -75,14 +51,7 @@ export class ToggleComponent extends FusionBase implements OnInit, ControlValueA
      */
     animated$ = of(true).pipe(delay(500), startWith(false));
 
-    constructor(
-        injector: Injector,
-        private uniqueIdService: UniqueIdService,
-        private sanitizer: DomSanitizer,
-        private elementRef: ElementRef
-    ) {
-        super(injector);
-    }
+    constructor(private uniqueIdService: UniqueIdService, private sanitizer: DomSanitizer, private elementRef: ElementRef) {}
 
     ngOnInit() {
         this.id = 'is-toggle-' + this.uniqueIdService.getUniqueId();

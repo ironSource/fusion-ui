@@ -41,6 +41,7 @@ import {TagComponent as TagComponentV1} from '@ironsource/fusion-ui/components/t
 import {TagsInputComponent as TagsInputComponentV1} from '@ironsource/fusion-ui/components/tags-input/v1';
 import {TagsInputComponent} from '@ironsource/fusion-ui/components/tags-input/v2';
 import {ToggleComponent} from '@ironsource/fusion-ui/components/toggle';
+import {ToggleComponent as ToggleComponentV1} from '@ironsource/fusion-ui/components/toggle/v1';
 import {TooltipComponent} from '@ironsource/fusion-ui/components/tooltip/v3';
 import {VideoPlayerComponent} from '@ironsource/fusion-ui/components/video-player';
 import {ChartComponent} from '@ironsource/fusion-ui/components/chart';
@@ -182,6 +183,7 @@ export const components = [
     {name: `${PREFIX}-tags-input-v1`, componentInstance: TagsInputComponentV1},
     {name: `${PREFIX}-tags-input`, componentInstance: TagsInputComponent},
     {name: `${PREFIX}-toggle`, componentInstance: ToggleComponent, type: `checkbox`},
+    {name: `${PREFIX}-toggle-v1`, componentInstance: ToggleComponentV1, type: `checkbox`},
     {name: `${PREFIX}-tooltip`, componentInstance: TooltipComponent},
     {name: `${PREFIX}-video-player`, componentInstance: VideoPlayerComponent},
     {name: `${PREFIX}-chart`, componentInstance: ChartComponent},
