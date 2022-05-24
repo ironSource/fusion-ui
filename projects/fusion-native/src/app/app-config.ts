@@ -47,6 +47,7 @@ import {DaterangeComponent as DaterangeComponentV1} from '@ironsource/fusion-ui/
 import {DaterangeComponent as DaterangeComponentV2} from '@ironsource/fusion-ui/components/daterange/v2';
 import {DaterangeComponent} from '@ironsource/fusion-ui/components/daterange';
 import {MobilePreviewerComponent} from '@ironsource/fusion-ui/components/mobile-previewer';
+import {MobilePreviewerComponent as MobilePreviewerComponentV1} from '@ironsource/fusion-ui/components/mobile-previewer/v1';
 import {StatusLabelComponent} from '@ironsource/fusion-ui/components/status-label';
 import {ToastComponent} from '@ironsource/fusion-ui/components/toast';
 import {TabsComponent as TabsComponentV2} from '@ironsource/fusion-ui/components/tabs/v2';
@@ -87,7 +88,7 @@ import {TooltipPosition, TooltipType} from '@ironsource/fusion-ui/components/too
 import {FormControlStatus} from '@ironsource/fusion-ui/components/error-message';
 import {SwitcherMode} from '@ironsource/fusion-ui/components/switcher';
 import {DaterangePresets} from '@ironsource/fusion-ui/components/daterange/entities';
-import {MobileOrientation} from '@ironsource/fusion-ui/components/mobile-previewer';
+import {MobileOrientation} from '@ironsource/fusion-ui/components/mobile-previewer/common/base';
 
 const PREFIX = 'native-fusion';
 
@@ -179,6 +180,7 @@ export const components = [
     {name: `${PREFIX}-daterange-v2`, componentInstance: DaterangeComponentV2},
     {name: `${PREFIX}-daterange`, componentInstance: DaterangeComponent},
     {name: `${PREFIX}-mobile-previewer`, componentInstance: MobilePreviewerComponent},
+    {name: `${PREFIX}-mobile-previewer-v1`, componentInstance: MobilePreviewerComponentV1},
     {name: `${PREFIX}-status-label`, componentInstance: StatusLabelComponent},
     {name: `${PREFIX}-toast`, componentInstance: ToastComponent},
     {name: `${PREFIX}-textarea`, componentInstance: TextareaComponent, avoidJsonParse: true},

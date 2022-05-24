@@ -1,11 +1,11 @@
-@import '../../src/style/scss/v2/mixins/mixins';
-@import '../../src/style/scss/v2/vars/vars';
+@import '../../../src/style/scss/v2/mixins/mixins';
+@import '../../../src/style/scss/v2/vars/vars';
 
 $iconWrapperSize: 32px;
 $borderRadius: 8px;
 
-:host.fu-style-v3,
-:host.fu-style-v2{
+
+:host {
     @extend %border-box-normalize;
     display: block;
     border-radius: $borderRadius;

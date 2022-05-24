@@ -1,18 +1,10 @@
-import {ChangeDetectionStrategy, Component, Injector, Input, OnInit} from '@angular/core';
+import {Directive, Input, OnInit} from '@angular/core';
 import {MobileOrientation} from './mobile-orientation.enum';
 import {DEVICE_ORIENTATION, MobilePreviewerComponentConfiguration} from './mobile-previewer-component-configuration';
 import {CapitalizePipe} from '@ironsource/fusion-ui/pipes/string';
-import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
 
-@Component({
-    selector: 'fusion-mobile-previewer',
-    templateUrl: './mobile-previewer.component.html',
-    styleUrls: ['./mobile-previewer.component.scss', './mobile-previewer.component-v2.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class MobilePreviewerComponent extends FusionBase implements OnInit {
+@Directive()
+export class MobilePreviewerBaseComponent implements OnInit {
     _configurations: MobilePreviewerComponentConfiguration = {component: {type: null}};
     @Input()
     set configurations(configurations: MobilePreviewerComponentConfiguration) {
@@ -39,10 +31,10 @@ export class MobilePreviewerComponent extends FusionBase implements OnInit {
     refresh = true;
     devices: string[];
 
-    iconPrefix$: Observable<string> = this.selectedVersion$.pipe(
-        map(styleVersion => (styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3 ? 'v2' : 'v1')),
-        startWith('v1')
-    );
+    // iconPrefix$: Observable<string> = this.selectedVersion$.pipe(
+    //     map(styleVersion => (styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3 ? 'v2' : 'v1')),
+    //     startWith('v1')
+    // );
 
     public get selectedDevice() {
         return this._capitalizePipe.transform(this._selectedDevice.replace('-', ' '));
@@ -88,9 +80,7 @@ export class MobilePreviewerComponent extends FusionBase implements OnInit {
         return width;
     }
 
-    constructor(injector: Injector, private _capitalizePipe: CapitalizePipe) {
-        super(injector);
-    }
+    constructor(private _capitalizePipe: CapitalizePipe) {}
 
     ngOnInit() {
         this._selectedDevice = this.configurations.orientation === MobileOrientation.PORTRAIT ? 'phone-portrait' : 'phone-landscape';
