@@ -1,17 +1,10 @@
-import {ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, ViewChild, SimpleChanges, AfterViewInit} from '@angular/core';
+import {Input, OnChanges, OnInit, ViewChild, SimpleChanges, AfterViewInit, Directive} from '@angular/core';
 import {isNull} from '@ironsource/fusion-ui/utils';
-import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {BehaviorSubject, fromEvent, Observable, Subject} from 'rxjs';
 import {map, startWith, switchMap} from 'rxjs/operators';
-import {IconData} from '@ironsource/fusion-ui/components/icon';
 
-@Component({
-    selector: 'fusion-video-player',
-    templateUrl: './video-player.component.html',
-    styleUrls: ['./video-player.component.scss', './video-player.component-v2.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class VideoPlayerComponent extends FusionBase implements OnInit, AfterViewInit, OnChanges {
+@Directive()
+export abstract class VideoPlayerBaseComponent implements OnInit, AfterViewInit, OnChanges {
     @ViewChild('videoPlayer') videoPlayer;
     @Input() src: string;
     @Input() width = '100%';
@@ -31,33 +24,6 @@ export class VideoPlayerComponent extends FusionBase implements OnInit, AfterVie
     get isTimeline(): boolean {
         return this.options.showTimeline ? true : null;
     }
-
-    playIconName$: Observable<IconData> = this.selectedVersion$.pipe(
-        map(styleVersion =>
-            styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
-                ? {iconName: 'play-video-2', iconVersion: 'v2'}
-                : {iconName: 'play-video', iconVersion: 'v1'}
-        ),
-        startWith({iconName: 'play-video', iconVersion: 'v1'})
-    );
-
-    pauseIconName$: Observable<IconData> = this.selectedVersion$.pipe(
-        map(styleVersion =>
-            styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
-                ? {iconName: 'pause-video-2', iconVersion: 'v2'}
-                : {iconName: 'pause', iconVersion: 'v1'}
-        ),
-        startWith({iconName: 'pause', iconVersion: 'v1'})
-    );
-
-    videoCameraIconName$: Observable<IconData> = this.selectedVersion$.pipe(
-        map(styleVersion =>
-            styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
-                ? {iconName: 'video-camera_2', iconVersion: 'v2'}
-                : {iconName: 'video-camera', iconVersion: 'v1'}
-        ),
-        startWith({iconName: 'video-camera', iconVersion: 'v1'})
-    );
 
     isVideoPlaying$ = new BehaviorSubject<boolean>(false);
 
@@ -92,7 +58,6 @@ export class VideoPlayerComponent extends FusionBase implements OnInit, AfterVie
     }
 
     ngAfterViewInit() {
-        super.ngAfterViewInit();
         this.videoLoaded$.next();
     }
 

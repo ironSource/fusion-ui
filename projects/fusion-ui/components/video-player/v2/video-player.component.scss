@@ -1,14 +1,13 @@
-@import '../../src/style/scss/v2/vars/vars';
-@import '../../src/style/scss/v2/mixins/mixins';
-@import '../../src/style/scss/v2/vars/border';
+@import '../../../src/style/scss/v2/vars/vars';
+@import '../../../src/style/scss/v2/mixins/mixins';
+@import '../../../src/style/scss/v2/vars/border';
 
 
 $backgroundColor:  #25282c;
 $foregroundColor: $White;
 $borerRadius: 4px;
 
-:host.fu-style-v3,
-:host.fu-style-v2{
+:host {
     .fusion-video-preview {
         border-radius: var(--player-border-radius, #{$borerRadius});
         position: relative;

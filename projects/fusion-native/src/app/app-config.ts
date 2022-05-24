@@ -43,7 +43,10 @@ import {TagsInputComponent} from '@ironsource/fusion-ui/components/tags-input/v2
 import {ToggleComponent} from '@ironsource/fusion-ui/components/toggle';
 import {ToggleComponent as ToggleComponentV1} from '@ironsource/fusion-ui/components/toggle/v1';
 import {TooltipComponent} from '@ironsource/fusion-ui/components/tooltip/v3';
+import {TooltipComponent as TooltipComponentV2} from '@ironsource/fusion-ui/components/tooltip/v2';
+import {TooltipComponent as TooltipComponentV1} from '@ironsource/fusion-ui/components/tooltip/v1';
 import {VideoPlayerComponent} from '@ironsource/fusion-ui/components/video-player';
+import {VideoPlayerComponent as VideoPlayerComponentV1} from '@ironsource/fusion-ui/components/video-player/v1';
 import {ChartComponent} from '@ironsource/fusion-ui/components/chart';
 import {ChartLabelsComponent} from '@ironsource/fusion-ui/components/chart-labels';
 import {IconSelectListComponent} from '@ironsource/fusion-ui/components/icon-select-list';
@@ -185,7 +188,10 @@ export const components = [
     {name: `${PREFIX}-toggle`, componentInstance: ToggleComponent, type: `checkbox`},
     {name: `${PREFIX}-toggle-v1`, componentInstance: ToggleComponentV1, type: `checkbox`},
     {name: `${PREFIX}-tooltip`, componentInstance: TooltipComponent},
+    {name: `${PREFIX}-tooltip-v1`, componentInstance: TooltipComponentV1},
+    {name: `${PREFIX}-tooltip-v2`, componentInstance: TooltipComponentV2},
     {name: `${PREFIX}-video-player`, componentInstance: VideoPlayerComponent},
+    {name: `${PREFIX}-video-player-v1`, componentInstance: VideoPlayerComponentV1},
     {name: `${PREFIX}-chart`, componentInstance: ChartComponent},
     {name: `${PREFIX}-chart-labels`, componentInstance: ChartLabelsComponent},
     {name: `${PREFIX}-icon-select-list`, componentInstance: IconSelectListComponent},

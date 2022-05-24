@@ -1,9 +1,8 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {VideoPlayerComponent} from './video-player.component';
-import {VideoPlayerOptions} from './video-player-entities';
+import {VideoPlayerOptions, VIDEO_PLAYER_OPTIONS_DEFUALT_VALUE} from '@ironsource/fusion-ui/components/video-player/common/entities';
 import {SVG_OPTIONS_TOKEN} from '@ironsource/fusion-ui/components/svg';
-import {VIDEO_PLAYER_OPTIONS_DEFUALT_VALUE} from './video-player-config';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {SecondsToMinutesModule} from '@ironsource/fusion-ui/pipes/numbers';
 
