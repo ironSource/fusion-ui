@@ -1,36 +1,11 @@
-import {
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component,
-    ElementRef,
-    EventEmitter,
-    forwardRef,
-    Injector,
-    Input,
-    OnDestroy,
-    OnInit,
-    Output
-} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {ChangeDetectorRef, Directive, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ControlValueAccessor} from '@angular/forms';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
-import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
 
-@Component({
-    selector: 'fusion-radio',
-    templateUrl: './radio.component.html',
-    styleUrls: ['./radio.component.scss', './radio.component-v2.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => RadioComponent),
-            multi: true
-        }
-    ]
-})
-export class RadioComponent extends FusionBase implements OnInit, ControlValueAccessor, OnDestroy {
+@Directive()
+export abstract class RadioBaseComponent implements OnInit, ControlValueAccessor {
     @Input() name: string;
     @Input() isDisabled: boolean;
     @Input() checked: boolean;
@@ -42,14 +17,7 @@ export class RadioComponent extends FusionBase implements OnInit, ControlValueAc
     private selectedValue: string;
     id: string;
 
-    constructor(
-        injector: Injector,
-        private uidService: UniqueIdService,
-        private elRef: ElementRef,
-        private changeDetectorRef: ChangeDetectorRef
-    ) {
-        super(injector);
-    }
+    constructor(private uidService: UniqueIdService, private elRef: ElementRef, private changeDetectorRef: ChangeDetectorRef) {}
 
     ngOnInit() {
         const grUniq = this.uidService.getUniqueId();

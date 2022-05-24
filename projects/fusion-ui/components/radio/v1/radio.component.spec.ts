@@ -1,5 +1,4 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
-
 import {RadioComponent} from './radio.component';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 

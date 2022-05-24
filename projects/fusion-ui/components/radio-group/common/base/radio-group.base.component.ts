@@ -1,34 +1,11 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    EventEmitter,
-    forwardRef,
-    Input,
-    OnInit,
-    Output,
-    ViewEncapsulation,
-    ChangeDetectorRef
-} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {EventEmitter, Input, OnInit, Output, ChangeDetectorRef, Directive} from '@angular/core';
+import {ControlValueAccessor} from '@angular/forms';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
-import {RadioGroupOptions} from './radio-group.entities';
+import {RadioGroupOptions} from '@ironsource/fusion-ui/components/radio-group/common/entities';
 
-@Component({
-    selector: 'fusion-radio-group',
-    templateUrl: './radio-group.component.html',
-    styleUrls: ['./radio-group.component.scss'],
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => RadioGroupComponent),
-            multi: true
-        }
-    ]
-})
-export class RadioGroupComponent implements OnInit, ControlValueAccessor {
+@Directive()
+export abstract class RadioGroupBaseComponent implements OnInit, ControlValueAccessor {
     @Input() name: string; // radio buttons group name
     @Input() inline: boolean; // is inline
     @Input() isDisabled: boolean; // is disabled (all group) but can be some of options

@@ -7,7 +7,7 @@ import {BehaviorSubject} from 'rxjs';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Directive()
-export class NotificationBaseComponent implements AfterViewInit {
+export abstract class NotificationBaseComponent implements AfterViewInit {
     @Input() data: Notification = {
         type: NotificationType.Basic,
         title: '',

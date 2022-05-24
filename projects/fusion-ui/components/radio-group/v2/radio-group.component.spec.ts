@@ -5,7 +5,7 @@ import {ChangeDetectionStrategy, CUSTOM_ELEMENTS_SCHEMA, DebugElement} from '@an
 import {FormsModule} from '@angular/forms';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {By} from '@angular/platform-browser';
-import {RadioModule} from '@ironsource/fusion-ui/components/radio';
+import {RadioModule} from '@ironsource/fusion-ui/components/radio/v2';
 
 class MockUniqueIdService extends UniqueIdService {
     getUniqueId() {

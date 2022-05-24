@@ -9,7 +9,7 @@ import {PopupService} from '@ironsource/fusion-ui/components/popup/common/servic
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Directive()
-export class PopupBaseComponent implements OnInit, AfterViewInit {
+export abstract class PopupBaseComponent implements OnInit, AfterViewInit {
     @ViewChild('dynamicContent') dynamicContent: ElementRef;
     @ViewChild('popupContainer', {static: true}) popupContainer: ElementRef;
     @Input() set popupData(value: PopupEntity) {

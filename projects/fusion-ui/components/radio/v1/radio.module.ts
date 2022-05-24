@@ -1,4 +1,4 @@
-import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
+import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v1';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RadioComponent} from './radio.component';

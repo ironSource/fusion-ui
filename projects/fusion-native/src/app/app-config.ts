@@ -33,6 +33,7 @@ import {ModalComponent} from '@ironsource/fusion-ui/components/modal';
 import {NotificationComponent} from '@ironsource/fusion-ui/components/notification';
 import {PopupComponent} from '@ironsource/fusion-ui/components/popup';
 import {RadioComponent} from '@ironsource/fusion-ui/components/radio';
+import {RadioComponent as RadioComponentV1} from '@ironsource/fusion-ui/components/radio/v1';
 import {RadioGroupComponent} from '@ironsource/fusion-ui/components/radio-group';
 import {SvgComponent} from '@ironsource/fusion-ui/components/svg';
 import {TagComponent} from '@ironsource/fusion-ui/components/tag';
@@ -172,6 +173,7 @@ export const components = [
     {name: `${PREFIX}-notification`, componentInstance: NotificationComponent},
     {name: `${PREFIX}-popup`, componentInstance: PopupComponent},
     {name: `${PREFIX}-radio`, componentInstance: RadioComponent},
+    {name: `${PREFIX}-radio-v1`, componentInstance: RadioComponentV1},
     {name: `${PREFIX}-radio-group`, componentInstance: RadioGroupComponent},
     {name: `${PREFIX}-svg`, componentInstance: SvgComponent},
     {name: `${PREFIX}-tag`, componentInstance: TagComponent},
