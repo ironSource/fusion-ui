@@ -2,11 +2,10 @@
 @import '../../../src/style/scss/v3/vars/border';
 @import '../../../src/style/scss/v3/mixins/mixins';
 
-$v2-headerHeight: 40px;
-$v2-borderRadius: 4px;
-$v2-errorBGColor: $fu-negative-100;
-$v2-headerSmallHeight: 32px;
-$v2-borderRoundedRadius: 20px;
+$headerHeight: 40px;
+$borderRadius: 8px;
+$headerSmallHeight: 32px;
+$errorBGColor: $fu-negative-700;
 
 :host .is-dropdown-select {
     @extend %border-box-normalize;
@@ -14,25 +13,27 @@ $v2-borderRoundedRadius: 20px;
     label {
         display: block;
         cursor: pointer;
-        height: $v2-headerHeight;
+        height: $headerHeight;
+        background-color: $fu-light-100;
+        border: none;
+        border-radius: $borderRadius;
+        padding: 10px 25px 10px 10px;
+        @include icon-style('icon-arrow', $fu-light-900, 16px, true, true) {
+            position: absolute;
+            right: 12px;
+            top: 13px;
+            height: 16px;
+        }
+
         @extend %font-body;
         @extend %truncate;
         color: $fu-dark-700;
-        background-color: $fu-light-100;
-        border: none;
-        border-radius: $v2-borderRadius;
-        padding: 10px 25px 10px 10px;
-        @include icon-style('icon-arrow', $fu-dark-200, 8px, true, true) {
-            position: absolute;
-            right: 12px;
-            top: 10px;
-        }
 
         .placeholderText {
             margin-left: 2px;
         }
 
-        // selected option icon - (application platform)
+/*        // selected option icon - (application platform)
         @include icon-style('is-custom-icon', $fu-dark-200, 13px, true, true) {
             vertical-align: middle;
             display: inline-block;
@@ -71,10 +72,11 @@ $v2-borderRoundedRadius: 20px;
             @include icon-style('is-custom-icon', $fu-light-700, 13px, true, true);
         }
         &.dd-error{
-            background-color: $v2-errorBGColor;
-        }
+            background-color: $errorBGColor;
+        }*/
     }
 
+    // region dynamic component
     .is-dynamic-component-holder{
         margin-right: 12px;
         display: flex;
@@ -88,8 +90,9 @@ $v2-borderRoundedRadius: 20px;
             @include icon-style('arrow-dropdown', var(--custom-placeholder-arrow-open-color, #{$fu-dark-500}), var(--custom-placeholder-arrow-open-size, 8px), true, true, 180);
         }
     }
+    // endregion
 }
-
+/*
 :host-context(.is-dropdown) .is-dropdown-select {
     &.forced-placeholder{
         label.icon {
@@ -146,7 +149,7 @@ $v2-borderRoundedRadius: 20px;
 :host-context(fusion-multi-dropdown.small) {
     .is-dropdown-select label {
         @extend %font-body;
-        height: $v2-headerSmallHeight;
+        height: $headerSmallHeight;
         padding: 6px 25px 8px 7px;
         line-height: unset;
         @include icon-style('icon-arrow', $fu-dark-200, 8px, true, true) {
@@ -158,19 +161,4 @@ $v2-borderRoundedRadius: 20px;
             padding: 6px 25px 8px 7px;
         }
     }
-}
-
-:host-context(fusion-dropdown.rounded),
-:host-context(fusion-multi-dropdown.rounded) {
-    .is-dropdown-select label {
-        border-radius: $v2-borderRoundedRadius;
-    }
-}
-
-:host-context(fusion-dropdown.ng-invalid) .is-dropdown-select label,
-:host-context(fusion-multi-dropdown.ng-invalid) .is-dropdown-select label {
-    background-color: $v2-errorBGColor;
-    &.dd-active{
-        background-color: $fu-light-100;
-    }
-}
+}*/

@@ -12,7 +12,7 @@ import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox';
 import {InputModule} from '@ironsource/fusion-ui/components/input/v1';
 import {DropdownModule} from '@ironsource/fusion-ui/components/dropdown/v1';
 import {MultiDropdownModule} from '@ironsource/fusion-ui/components/multi-dropdown/v1';
-import {AddboxDropdownModule} from '@ironsource/fusion-ui/components/addbox-dropdown';
+import {AddboxDropdownModule} from '@ironsource/fusion-ui/components/addbox-dropdown/v1';
 
 const routes: Routes = [{path: '', component: DropdownDocsComponent}];
 
