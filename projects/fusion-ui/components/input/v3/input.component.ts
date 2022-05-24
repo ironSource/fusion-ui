@@ -7,7 +7,7 @@ import {of} from 'rxjs';
 @Component({
     selector: 'fusion-input',
     templateUrl: './input.component.html',
-    styleUrls: ['./input.component-v3.scss'],
+    styleUrls: ['./input.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => InputComponent), multi: true}]
 })
