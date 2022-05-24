@@ -4,7 +4,7 @@ import {ToastComponent} from './toast.component';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
 import {LogService} from '@ironsource/fusion-ui/services/log';
-import {ToastEntity, ToastLocation} from './toast.entity';
+import {ToastEntity, ToastLocation} from '@ironsource/fusion-ui/components/toast/common/entities';
 
 const TOAST_MOCK_DATA: {[key: string]: ToastEntity} = {
     successToastConfig: {

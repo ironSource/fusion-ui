@@ -1,18 +1,13 @@
-import {AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild} from '@angular/core';
-import {ToastEntity, ToastLocation, ToastType} from './toast.entity';
+import {AfterViewInit, Directive, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild} from '@angular/core';
+import {ToastEntity, ToastLocation, ToastType} from '@ironsource/fusion-ui/components/toast/common/entities';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {fromEvent} from 'rxjs';
 import {take} from 'rxjs/operators';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
 
-@Component({
-    selector: 'fusion-toast',
-    templateUrl: './toast.component.html',
-    styleUrls: ['./toast.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class ToastComponent implements OnInit, AfterViewInit {
+@Directive()
+export abstract class ToastBaseComponent implements OnInit, AfterViewInit {
     @Input() set configuration(value: ToastEntity) {
         this.text = value.text || '';
         this.type = value.type || null;

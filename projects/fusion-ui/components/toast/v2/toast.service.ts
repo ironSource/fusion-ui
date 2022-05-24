@@ -10,8 +10,12 @@ import {
     RendererFactory2
 } from '@angular/core';
 import {ToastComponent} from './toast.component';
-import {ToastEntity, ToastLocation} from './toast.entity';
-import {TOAST_HOLDER_CLASS_NAME, TOAST_LOCATION_STYLE_MAP} from './toast.configuration';
+import {
+    ToastEntity,
+    ToastLocation,
+    TOAST_LOCATION_STYLE_MAP,
+    TOAST_HOLDER_CLASS_NAME
+} from '@ironsource/fusion-ui/components/toast/common/entities';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {take} from 'rxjs/operators';
 import {DOCUMENT} from '@angular/common';
