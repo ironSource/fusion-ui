@@ -1,5 +1,7 @@
 import {Component, ViewChild, OnInit, OnDestroy} from '@angular/core';
-import {NotificationService, NotificationType, StyleVersion} from '@ironsource/fusion-ui';
+import {StyleVersion} from '@ironsource/fusion-ui';
+import {NotificationType} from '@ironsource/fusion-ui/components/notification/common/entities';
+import {NotificationService} from '@ironsource/fusion-ui/components/notification/common/services';
 import {Observable, timer, Subject, merge} from 'rxjs';
 import {mapTo, switchMap, takeUntil} from 'rxjs/operators';
 import {FormControl, Validators} from '@angular/forms';

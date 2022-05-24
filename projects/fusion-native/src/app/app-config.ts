@@ -79,11 +79,11 @@ import {CalendarService} from '@ironsource/fusion-ui/components/calendar/common/
 import {DaterangeService} from '@ironsource/fusion-ui/components/daterange/common/base';
 import {PopupService} from '@ironsource/fusion-ui/components/popup';
 import {ToastService} from '@ironsource/fusion-ui/components/toast';
-import {NotificationService} from '@ironsource/fusion-ui/components/notification';
+import {NotificationService} from '@ironsource/fusion-ui/components/notification/common/services';
 import {ModalService} from '@ironsource/fusion-ui/components/modal';
 
 // enums
-import {NotificationType} from '@ironsource/fusion-ui/components/notification';
+import {NotificationType} from '@ironsource/fusion-ui/components/notification/common/entities';
 import {DatepickerMode} from '@ironsource/fusion-ui/components/datepicker/v1';
 import {HeaderSizes} from '@ironsource/fusion-ui/components/header-overlay/common/base';
 import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline/common/base';

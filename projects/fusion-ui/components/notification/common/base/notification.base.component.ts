@@ -1,33 +1,13 @@
-import {
-    AfterViewInit,
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    EventEmitter,
-    Inject,
-    Injector,
-    Input,
-    OnInit,
-    Output,
-    Renderer2
-} from '@angular/core';
+import {AfterViewInit, Directive, ElementRef, EventEmitter, Inject, Input, Output, Renderer2} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
-import {Notification} from './notification';
-import {NotificationService} from './notification.service';
-import {NotificationType} from './notification-type';
+import {NotificationService} from '@ironsource/fusion-ui/components/notification/common/services';
+import {Notification, NotificationType} from '@ironsource/fusion-ui/components/notification/common/entities';
 import {isFunction} from '@ironsource/fusion-ui/utils';
-import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {BehaviorSubject} from 'rxjs';
-import {NOTIFICATION_ICON_MAP} from './notification.config';
+import {IconData} from '@ironsource/fusion-ui/components/icon';
 
-/** @dynamic */
-@Component({
-    selector: 'fusion-notification',
-    templateUrl: './notification.component.html',
-    styleUrls: ['./notification.component.scss', './notification.component-v2.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class NotificationComponent extends FusionBase implements OnInit, AfterViewInit {
+@Directive()
+export class NotificationBaseComponent implements AfterViewInit {
     @Input() data: Notification = {
         type: NotificationType.Basic,
         title: '',
@@ -37,35 +17,21 @@ export class NotificationComponent extends FusionBase implements OnInit, AfterVi
     // eslint-disable-next-line
     @Output() onClose = new EventEmitter();
 
-    closeIconName$ = new BehaviorSubject<string>('close');
+    closeIconName$ = new BehaviorSubject<IconData>({iconName: 'close', iconVersion: 'v2'});
 
     get notificationType(): string {
         return NotificationType[this.data.type].toLowerCase();
     }
 
     constructor(
-        injector: Injector,
         @Inject(DOCUMENT) private document: Document,
         private notificationService: NotificationService,
         private elRef: ElementRef,
         private renderer: Renderer2
-    ) {
-        super(injector);
-    }
-
-    ngOnInit() {
-        this.selectedVersion$.subscribe((styleVersion: StyleVersion) => {
-            this.closeIconName$.next(styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3 ? 'close' : 'close');
-        });
-    }
+    ) {}
 
     ngAfterViewInit() {
-        super.ngAfterViewInit();
         this.renderer.appendChild(this.document.body, this.elRef.nativeElement);
-    }
-
-    getIconName(styleVersion: StyleVersion): string {
-        return NOTIFICATION_ICON_MAP[styleVersion][this.notificationType];
     }
 
     close() {

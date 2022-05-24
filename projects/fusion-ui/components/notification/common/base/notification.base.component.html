@@ -1,11 +1,11 @@
 <ng-container *ngIf="data?.shown">
-    <div class="is-notification" *ngIf="selectedVersion$ | async as currentStyleVersion">
+    <div class="is-notification">
         <fusion-icon class="close" [name]="closeIconName$ | async" (click)="secondaryButtonClicked()"></fusion-icon>
         <div class="is-header" [ngClass]="notificationType">
             <fusion-icon
                 *ngIf="notificationType !== 'basic'"
                 class="{{ notificationType }}"
-                [name]="getIconName(currentStyleVersion)"
+                [name]="getIconName()"
             ></fusion-icon>
             {{ data.title }}
         </div>

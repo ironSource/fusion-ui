@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Notification} from './notification';
-import {NotificationType} from './notification-type';
+import {NotificationType, Notification} from '@ironsource/fusion-ui/components/notification/common/entities';
 import {BehaviorSubject} from 'rxjs';
 
 const NO_NOTIFICATION = {

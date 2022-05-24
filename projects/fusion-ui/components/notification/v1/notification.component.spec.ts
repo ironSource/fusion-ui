@@ -3,7 +3,7 @@ import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {NotificationComponent} from './notification.component';
 import {ModalModule} from '@ironsource/fusion-ui/components/modal';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
-import {NotificationType} from './notification-type';
+import {NotificationType} from '@ironsource/fusion-ui/components/notification/common/entities';
 
 describe('NotificationComponent', () => {
     let component: NotificationComponent;
