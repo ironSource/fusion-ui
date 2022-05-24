@@ -14,7 +14,7 @@ export interface InputConfiguration {
     btn?: string;
     btnDisabled?: boolean;
     btnLoading?: boolean;
-    id?: number;
+    id?: number | string;
     type?: string;
     class?: string;
     decimal?: number;

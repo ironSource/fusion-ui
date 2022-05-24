@@ -2,7 +2,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {DropdownDualMultiSelectBodyItemComponent} from './dropdown-dual-multi-select-body-item.component';
 import {DropdownDualMultiSelectBodyModule} from '../dropdown-dual-multi-select-body.module';
-import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 
 export const MOCK_ITEM: DropdownOption = {id: 1, title: 'Mario Speedwagon', isDisabled: true};
 

@@ -5,10 +5,10 @@ import {DaterangeComponent} from './daterange.component';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {ModalModule} from '@ironsource/fusion-ui/components/modal/v1';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button/v1';
-import {DropdownSelectModule} from '@ironsource/fusion-ui/components/dropdown';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {CalendarModule} from '@ironsource/fusion-ui/components/calendar/v1';
 import {DaterangeService} from '@ironsource/fusion-ui/components/daterange/common/base';
+import {DropdownSelectModule} from '@ironsource/fusion-ui/components/dropdown-select/v1';
 
 @NgModule({
     declarations: [DaterangeComponent],

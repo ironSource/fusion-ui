@@ -1,0 +1,80 @@
+@import '../../dropdown/v2/dropdown.component';
+
+:host{
+    @extend %link-reset;
+    max-width: none;
+    width: 100%;
+    text-align: initial;
+    .is-tags-holder {
+        min-height: 40px;
+        padding: 6px 8px 5px;
+        background-color: $fu-light-100;
+        border-radius: 4px;
+        box-sizing: border-box;
+        width: 100%;
+        > ul {
+            &.tags-holder {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            li {
+                display: inline-flex;
+                margin: 2px;
+                &.search-container {
+                    flex: 1 1 auto;
+                    fusion-input {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        &:hover{
+            background-color: $fu-light-200;
+        }
+        &.dd-opened{
+            border-bottom: solid 2px $fu-primary-500;
+            .options-dropdown {
+                top: calc(100% + 2px);
+                visibility: visible;
+                .is-footer {
+                    background-color: $White;
+                    height: 41px;
+                    display: flex;
+                    align-items: center;
+                    border-top: solid 1px $fu-light-300;
+                    .fu-footer-buttons-holder{
+                        margin-left: auto;
+                        button + button {
+                            margin-left: 2px;
+                        }
+                    }
+                    .button-clear{
+                        color: var(--tags-input-footer-color-button-color, $fu-light-900);
+                        text-decoration: underline;
+                        text-align: initial;
+                        font-weight: normal;
+                    }
+                }
+                &.has-footer{
+                    max-height: calc(#{$v2-optionHeight} * #{$v2-optionsToShow} + 8px + 40px); // add 40 px for footer
+                }
+            }
+        }
+
+        &.tags-disabled{
+            pointer-events: none;
+            &:hover{
+                background-color: $fu-light-100;
+                cursor: not-allowed;
+            }
+            .placeholder{
+                @extend %font-body;
+                color: $fu-light-800;
+                margin: 2px;
+            }
+        }
+    }
+    &.fu-disabled{
+        cursor: not-allowed;
+    }
+}
