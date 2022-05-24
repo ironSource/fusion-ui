@@ -20,7 +20,9 @@ import {LayoutV1Component} from '@ironsource/fusion-ui/components/layout-v1';
 import {LayoutComponent} from '@ironsource/fusion-ui/components/layout';
 import {ListBoxComponent} from '@ironsource/fusion-ui/components/list-box';
 import {LoaderComponent} from '@ironsource/fusion-ui/components/loader';
+import {LoaderComponent as LoaderComponentV1} from '@ironsource/fusion-ui/components/loader/v1';
 import {LoaderInlineComponent} from '@ironsource/fusion-ui/components/loader-inline';
+import {LoaderInlineComponent as LoaderInlineComponentV1} from '@ironsource/fusion-ui/components/loader-inline/v1';
 import {MenuComponent} from '@ironsource/fusion-ui/components/menu';
 import {ModalComponent} from '@ironsource/fusion-ui/components/modal';
 import {NotificationComponent} from '@ironsource/fusion-ui/components/notification';
@@ -150,7 +152,9 @@ export const components = [
     {name: `${PREFIX}-sidebar-menu`, componentInstance: SidebarMenuComponent},
     {name: `${PREFIX}-list-box`, componentInstance: ListBoxComponent},
     {name: `${PREFIX}-loader`, componentInstance: LoaderComponent},
+    {name: `${PREFIX}-loader-v1`, componentInstance: LoaderComponentV1},
     {name: `${PREFIX}-loader-inline`, componentInstance: LoaderInlineComponent},
+    {name: `${PREFIX}-loader-inline-v1`, componentInstance: LoaderInlineComponentV1},
     {name: `${PREFIX}-menu`, componentInstance: MenuComponent},
     {name: `${PREFIX}-modal`, componentInstance: ModalComponent},
     {name: `${PREFIX}-notification`, componentInstance: NotificationComponent},

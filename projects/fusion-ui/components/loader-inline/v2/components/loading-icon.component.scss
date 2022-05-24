@@ -1,0 +1,8 @@
+@import '../../../../src/style/scss/v1/mixins/mixins';
+
+:host {
+    @include icon-style('loader-dots-v4', currentColor, (width: 25px), false, true){
+        display: flex;
+        align-items: center;
+    }
+}

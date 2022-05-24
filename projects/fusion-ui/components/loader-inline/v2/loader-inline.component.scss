@@ -1,8 +1,7 @@
-@import '../../src/style/scss/v2/vars/vars';
-@import '../../src/style/scss/v2/mixins/mixins';
+@import '../../../src/style/scss/v2/vars/vars';
+@import '../../../src/style/scss/v2/mixins/mixins';
 
-:host.fu-style-v3,
-:host.fu-style-v2 {
+:host {
     .loader-inline {
         display: inline-flex;
         margin-left: 5px;
@@ -15,18 +14,18 @@
         &.white{
             color: $White;
         }
-        @include icon-style('loader-dots-v4', currentColor, (width: 25px), false, true){
-            display: flex;
-            align-items: center;
-        }
+        //@include icon-style('loader-dots-v4', currentColor, (width: 25px), false, true){
+        //    display: flex;
+        //    align-items: center;
+        //}
 
         .loader-txt {
             @extend %font-body;
             padding-left: 14px;
         }
 
-        .loader-v1{
-            display: none;
-        }
+        //.loader-v1{
+        //    display: none;
+        //}
     }
 }
