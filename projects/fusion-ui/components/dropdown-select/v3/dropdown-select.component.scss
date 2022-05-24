@@ -55,7 +55,7 @@ $headerSmallHeight: 32px;
         }
 
 */
-        // states
+        // region states
         &:hover {
             background-color: $fu-light-200;
         }
@@ -74,6 +74,7 @@ $headerSmallHeight: 32px;
             pointer-events: none;
             @include icon-style('icon-arrow', $fu-light-800, 16px, true, true)
         }
+        // endregion
     }
 
     // region dynamic component
@@ -143,7 +144,7 @@ $headerSmallHeight: 32px;
         }
     }
 }
-
+*/
 // small size dropdown has changes in dropdown title only
 :host-context(fusion-dropdown.small),
 :host-context(fusion-multi-dropdown.small) {
@@ -152,13 +153,13 @@ $headerSmallHeight: 32px;
         height: $headerSmallHeight;
         padding: 6px 25px 8px 7px;
         line-height: unset;
-        @include icon-style('icon-arrow', $fu-dark-200, 8px, true, true) {
-            top: 6px;
+        .icon-arrow {
+            top: 9px;
         }
     }
-    &.is-icon-right-position{
-        .is-dropdown-select label {
-            padding: 6px 25px 8px 7px;
-        }
-    }
-}*/
+    //&.is-icon-right-position{
+    //    .is-dropdown-select label {
+    //        padding: 6px 25px 8px 7px;
+    //    }
+    //}
+}
