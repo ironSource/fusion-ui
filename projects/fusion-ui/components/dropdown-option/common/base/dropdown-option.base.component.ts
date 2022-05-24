@@ -1,7 +1,7 @@
 import {Directive, HostBinding, Input, OnInit} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
-import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/servise';
+import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/service';
 
 @Directive()
 export abstract class DropdownOptionBaseComponent implements OnInit {

@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, forwardRef} from '@angular/core';
-import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/servise';
+import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/service';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {MultiDropdownBaseComponent} from '@ironsource/fusion-ui/components/multi-dropdown/common/base';
 

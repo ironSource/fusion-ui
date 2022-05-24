@@ -1,2 +1,1 @@
-export * from './addbox-dropdown.component';
-export * from './addbox-dropdown.module';
+export * from './v1';
