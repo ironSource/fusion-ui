@@ -1,6 +1,6 @@
 import {EventEmitter, Input, Output, ViewChild, ElementRef, Renderer2, Directive} from '@angular/core';
 import {CacheService, CacheType} from '@ironsource/fusion-ui/services/cache';
-import {MenuItem} from '@ironsource/fusion-ui/components/menu';
+import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 import {HeaderState} from './header-state';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {IconData} from '@ironsource/fusion-ui/components/icon';

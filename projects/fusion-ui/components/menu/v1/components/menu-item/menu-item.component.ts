@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {MenuItem} from '../menu-item';
+import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 
 @Component({
     selector: 'fusion-menu-item',

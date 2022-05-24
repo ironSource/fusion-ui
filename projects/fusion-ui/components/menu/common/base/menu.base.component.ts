@@ -1,17 +1,12 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Optional, Output} from '@angular/core';
-import {MenuItem} from '../menu-item';
-import {MenuItemAdditionalData} from '../menu-item-additional-data';
-import {MenuService} from '../menu.service';
+import {Directive, EventEmitter, Input, Optional, Output} from '@angular/core';
+import {MenuItem} from './menu-item';
+import {MenuItemAdditionalData} from './menu-item-additional-data';
+import {MenuService} from './menu.service';
 import {WindowService} from '@ironsource/fusion-ui/services/window';
 import {Location} from '@angular/common';
 
-@Component({
-    selector: 'fusion-menu',
-    templateUrl: './menu.component.html',
-    styleUrls: ['./menu.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class MenuComponent {
+@Directive()
+export abstract class MenuBaseComponent {
     private _menuItems: MenuItem[];
     @Output() routeChanged = new EventEmitter<void>();
 
