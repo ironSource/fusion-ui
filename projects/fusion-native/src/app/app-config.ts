@@ -36,7 +36,7 @@ import {RadioGroupComponent} from '@ironsource/fusion-ui/components/radio-group'
 import {SvgComponent} from '@ironsource/fusion-ui/components/svg';
 import {TagComponent} from '@ironsource/fusion-ui/components/tag';
 import {TagsInputComponent as TagsInputComponentV1} from '@ironsource/fusion-ui/components/tags-input/v1';
-import {TagsInputComponent} from '@ironsource/fusion-ui/components/tags-input';
+import {TagsInputComponent} from '@ironsource/fusion-ui/components/tags-input/v2';
 import {ToggleComponent} from '@ironsource/fusion-ui/components/toggle';
 import {TooltipComponent} from '@ironsource/fusion-ui/components/tooltip/v3';
 import {VideoPlayerComponent} from '@ironsource/fusion-ui/components/video-player';

@@ -42,7 +42,7 @@ import {TagModule} from '@ironsource/fusion-ui/components/tag';
 import {ToggleModule} from '@ironsource/fusion-ui/components/toggle';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {VideoPlayerModule} from '@ironsource/fusion-ui/components/video-player';
-import {TagsInputModule} from '@ironsource/fusion-ui/components/tags-input';
+import {TagsInputModule} from '@ironsource/fusion-ui/components/tags-input/v2';
 import {ChartLabelsModule} from '@ironsource/fusion-ui/components/chart-labels';
 import {ChartModule} from '@ironsource/fusion-ui/components/chart';
 import {IconSelectListModule} from '@ironsource/fusion-ui/components/icon-select-list';
