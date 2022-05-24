@@ -35,7 +35,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     width: number = 150;
     height: number = 30;
     backgroundColor: string = '#696a6b';
-    preventTooltipToClose: boolean = false;
+    preventTooltipToClose: boolean = true;
 
     private onDestroy$ = new Subject<void>();
     private tooltipElementRef: HTMLElement;

@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {BehaviorSubject, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {ChartLabel} from '@ironsource/fusion-ui';
 
 @Component({
     selector: 'fusion-click-outside-docs',

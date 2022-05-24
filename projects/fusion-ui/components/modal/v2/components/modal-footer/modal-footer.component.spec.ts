@@ -1,7 +1,7 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ModalFooterComponent} from './modal-footer.component';
-import {LoaderModule} from '@ironsource/fusion-ui/components/loader';
-import {ButtonModule} from '@ironsource/fusion-ui/components/button';
+import {LoaderModule} from '@ironsource/fusion-ui/components/loader/v2';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 
 describe('ModalFooterComponent', () => {

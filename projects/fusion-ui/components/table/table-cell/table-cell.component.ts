@@ -20,7 +20,7 @@ import {BehaviorSubject} from 'rxjs';
 import {TableService} from '../table.service';
 import {FormControl} from '@angular/forms';
 import {InputInlineComponent} from '@ironsource/fusion-ui/components/input-inline';
-import {AdvancedInputInline} from '@ironsource/fusion-ui/components/input-inline';
+import {AdvancedInputInline} from '@ironsource/fusion-ui/components/input-inline/common/base';
 import {
     CELL_PADDING,
     DEFAULT_REMOVE_ICON,
