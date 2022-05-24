@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, DoCheck, EventEmitter, forwardRef, I
 import {FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {distinctUntilChanged} from 'rxjs/operators';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
-import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/servise';
+import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/service';
 import {DropdownBaseComponent} from '@ironsource/fusion-ui/components/dropdown/common/base';
 
 @Component({

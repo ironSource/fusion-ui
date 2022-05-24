@@ -24,7 +24,7 @@ import {detectChangesDecorator} from '@ironsource/fusion-ui/decorators';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
 import {SharedEventsService} from '@ironsource/fusion-ui/services/events-handler';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
-import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/servise';
+import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/service';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 import {DropdownSearchComponent} from '@ironsource/fusion-ui/components/dropdown-search';
 import {DropdownSelectComponent} from '@ironsource/fusion-ui/components/dropdown-select';
