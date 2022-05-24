@@ -8,7 +8,7 @@ $clearIconColor: #DADADA;
 :host {
     .search-panel {
         position: relative;
-        margin-bottom: 2px;
+        margin-bottom: 10px;
         padding-right: 5px;
         @include icon-style('fu-icon-search', $fu-light-700, 16px, true, true){
             position: absolute;

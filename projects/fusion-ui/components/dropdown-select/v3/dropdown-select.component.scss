@@ -29,32 +29,34 @@ $headerSmallHeight: 32px;
         color: $fu-black-500;
         padding: 10px 25px 10px 10px;
 
-        .placeholderText {
-            margin-left: 2px;
+        .fu-inner-elements{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+
+            // region inner - image, icon and flag
+            @include icon-style('is-custom-icon', $fu-light-900, 16px, true, true) {
+                @include size(16px);
+            }
+
+            img {
+                @include size(20px);
+                border-radius: 7px;
+            }
+
+            fusion-flag {
+                margin-right: 6px;
+            }
+            // endregion
+
+            .placeholderText{
+                line-height: initial;
+            }
         }
 
-/*        // selected option icon - (application platform)
-        @include icon-style('is-custom-icon', $fu-dark-200, 13px, true, true) {
-            vertical-align: middle;
-            display: inline-block;
-            margin-top: 2px;
-            margin-right: 3px;
-        }
 
-        // selected option image - (application image)
-        img {
-            @include size(20px);
-            //@extend %borderRadius;
-            vertical-align: middle;
-            margin: -3px 6px auto -2px;
-        }
 
-        // country - flag
-        fusion-flag {
-            margin-right: 6px;
-        }
-
-*/
         // region states
         &:hover {
             background-color: $fu-light-200;
