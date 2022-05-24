@@ -1,27 +1,18 @@
-import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Injector, Input, OnInit, Output, Renderer2} from '@angular/core';
-import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
-import {BehaviorSubject, fromEvent} from 'rxjs';
-import {TagComponentConfigurations} from './tag-component-configurations';
+import {Directive, ElementRef, EventEmitter, Injector, Input, OnDestroy, OnInit, Output, Renderer2} from '@angular/core';
+import {BehaviorSubject, fromEvent, Subject} from 'rxjs';
+import {TagComponentConfigurations} from '@ironsource/fusion-ui/components/tag/common/entities';
 import {takeUntil} from 'rxjs/operators';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
 
-@Component({
-    selector: 'fusion-tag',
-    templateUrl: './tag.component.html',
-    styleUrls: ['./tag.component.scss', './tag.component-v2.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class TagComponent extends FusionBase implements OnInit {
-    closeIconName$ = new BehaviorSubject<IconData>({
-        iconName: 'clear-full-circle',
-        iconVersion: 'v1'
-    });
+@Directive()
+export abstract class TagBaseComponent implements OnInit, OnDestroy {
+    closeIconName$ = new BehaviorSubject<IconData>('');
     width: number;
     tooltipWidth: number;
     _selected: boolean;
     _disabled: boolean;
     _close: boolean;
-
+    protected onDestroy$ = new Subject<void>();
     @Input() set configuration(value: TagComponentConfigurations) {
         if (!!value) {
             this.id = value.id;
@@ -86,23 +77,26 @@ export class TagComponent extends FusionBase implements OnInit {
     // eslint-disable-next-line
     @Output() onSelectedChange = new EventEmitter<any>();
 
-    constructor(injector: Injector, private element: ElementRef, private renderer: Renderer2) {
-        super(injector);
-    }
+    constructor(private element: ElementRef, private renderer: Renderer2) {}
 
     ngOnInit() {
         this.width = this.element.nativeElement.offsetWidth;
-        this.selectedVersion$.subscribe(styleVersion => {
-            this.closeIconName$.next(
-                styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
-                    ? 'close'
-                    : {iconName: 'clear-full-circle', iconVersion: 'v1'}
-            );
-        });
+        // this.selectedVersion$.subscribe(styleVersion => {
+        //     this.closeIconName$.next(
+        //         styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
+        //             ? 'close'
+        //             : {iconName: 'clear-full-circle', iconVersion: 'v1'}
+        //     );
+        // });
 
         if (!this.close && !this.disabled) {
             this.setClickListener();
         }
+    }
+
+    ngOnDestroy() {
+        this.onDestroy$.next();
+        this.onDestroy$.complete();
     }
 
     closeClicked($event) {
