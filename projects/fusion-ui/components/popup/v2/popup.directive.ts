@@ -1,6 +1,6 @@
 import {Directive, ElementRef, HostListener, Input} from '@angular/core';
-import {PopupEntity, PopupLocation} from './popup.entity';
-import {PopupService} from './popup.service';
+import {PopupEntity, PopupLocation} from '@ironsource/fusion-ui/components/popup/common/entities';
+import {PopupService} from '@ironsource/fusion-ui/components/popup/common/services';
 
 @Directive({
     selector: '[fusionPopup]'

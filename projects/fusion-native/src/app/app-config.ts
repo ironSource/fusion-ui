@@ -77,7 +77,7 @@ import {ColorsService} from '@ironsource/fusion-ui/services/colors/colors.servic
 import {TooltipService} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {CalendarService} from '@ironsource/fusion-ui/components/calendar/common/base';
 import {DaterangeService} from '@ironsource/fusion-ui/components/daterange/common/base';
-import {PopupService} from '@ironsource/fusion-ui/components/popup';
+import {PopupService} from '@ironsource/fusion-ui/components/popup/common/services';
 import {ToastService} from '@ironsource/fusion-ui/components/toast';
 import {NotificationService} from '@ironsource/fusion-ui/components/notification/common/services';
 import {ModalService} from '@ironsource/fusion-ui/components/modal';
@@ -88,7 +88,7 @@ import {DatepickerMode} from '@ironsource/fusion-ui/components/datepicker/v1';
 import {HeaderSizes} from '@ironsource/fusion-ui/components/header-overlay/common/base';
 import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline/common/base';
 import {ListBoxModes} from '@ironsource/fusion-ui/components/list-box/common/base';
-import {PopupLocation} from '@ironsource/fusion-ui/components/popup';
+import {PopupLocation} from '@ironsource/fusion-ui/components/popup/common/entities';
 import {TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table';
 import {TooltipPosition, TooltipType} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {FormControlStatus} from '@ironsource/fusion-ui/components/error-message';

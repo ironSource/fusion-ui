@@ -1,27 +1,15 @@
+import {AfterViewInit, Directive, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild} from '@angular/core';
 import {
-    AfterViewInit,
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    EventEmitter,
-    Input,
-    OnInit,
-    Output,
-    Renderer2,
-    ViewChild
-} from '@angular/core';
-import {PopupEntity, PopupLocation, PopupPositionOffset} from './popup.entity';
-import {DEFAULT_POPUP_OFFSET} from './popup.config';
-import {PopupService} from './popup.service';
+    PopupEntity,
+    PopupLocation,
+    PopupPositionOffset,
+    DEFAULT_POPUP_OFFSET
+} from '@ironsource/fusion-ui/components/popup/common/entities';
+import {PopupService} from '@ironsource/fusion-ui/components/popup/common/services';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
-@Component({
-    selector: 'fusion-popup',
-    templateUrl: './popup.component.html',
-    styleUrls: ['./popup.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class PopupComponent implements OnInit, AfterViewInit {
+@Directive()
+export class PopupBaseComponent implements OnInit, AfterViewInit {
     @ViewChild('dynamicContent') dynamicContent: ElementRef;
     @ViewChild('popupContainer', {static: true}) popupContainer: ElementRef;
     @Input() set popupData(value: PopupEntity) {

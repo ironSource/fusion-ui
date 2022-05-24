@@ -4,7 +4,7 @@ import {MenuModule} from '@ironsource/fusion-ui/components/menu';
 import {LayoutV1Component} from './layout-v1.component';
 import {PopupModule} from '@ironsource/fusion-ui/components/popup';
 import {CacheService} from '@ironsource/fusion-ui/services/cache';
-import {PopupService} from '@ironsource/fusion-ui/components/popup';
+import {PopupService} from '@ironsource/fusion-ui/components/popup/common/services';
 import {RouterTestingModule} from '@angular/router/testing';
 
 describe('LayoutV1Component', () => {

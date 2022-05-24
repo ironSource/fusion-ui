@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {PopupEntity} from './popup.entity';
+import {PopupEntity} from '@ironsource/fusion-ui/components/popup/common/entities';
 import {BehaviorSubject} from 'rxjs';
 
 @Injectable({

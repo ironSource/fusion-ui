@@ -2,7 +2,7 @@
  * Created on 2020.12.2 By Andy Kononenko (andyk@ironsrc.com)
  */
 
-import {PopupComponentContent} from '@ironsource/fusion-ui/components/popup';
+import {PopupComponentContent} from '@ironsource/fusion-ui/components/popup/common/entities';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 export interface TabConfiguration {
