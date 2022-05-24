@@ -225,12 +225,4 @@ $smallHeight: 32px;
             display: none;
         }
     }
-
-    &.is-search-style{
-        .fu-input-holder{
-            input {
-                color: $fu-black-500;
-            }
-        }
-    }
 }
