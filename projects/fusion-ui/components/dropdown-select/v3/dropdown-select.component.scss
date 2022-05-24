@@ -35,7 +35,7 @@ $headerSmallHeight: 32px;
             align-items: center;
             gap: 4px;
 
-            // region inner - image, icon and flag
+            // region image, icon and flag
             @include icon-style('is-custom-icon', $fu-light-900, 16px, true, true) {
                 @include size(16px);
             }
@@ -46,7 +46,8 @@ $headerSmallHeight: 32px;
             }
 
             fusion-flag {
-                margin-right: 6px;
+                margin-right: 8px;
+                margin-left: 5px;
             }
             // endregion
 
