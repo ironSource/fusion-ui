@@ -29,7 +29,7 @@ import {
     TABLE_OPTIONS_TOKEN
 } from '../table.config';
 import {TableModuleOptions} from '../entities/table-module-options';
-import {ERROR_MESSAGES} from '@ironsource/fusion-ui/components/error-message';
+import {ERROR_MESSAGES} from '@ironsource/fusion-ui/components/error-message/common/entities';
 import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
