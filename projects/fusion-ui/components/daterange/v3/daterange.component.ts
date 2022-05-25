@@ -3,6 +3,7 @@ import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {BehaviorSubject} from 'rxjs';
 import {DropdownSelectConfigurations} from '@ironsource/fusion-ui/components/dropdown-select/entities';
 import {DaterangeBaseComponent} from '@ironsource/fusion-ui/components/daterange/common/base';
+import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 
 @Component({
     selector: 'fusion-daterange',
@@ -10,6 +11,7 @@ import {DaterangeBaseComponent} from '@ironsource/fusion-ui/components/daterange
     styleUrls: ['./daterange.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
+        {provide: ApiBase, useExisting: DaterangeComponent},
         {
             provide: NG_VALUE_ACCESSOR,
             useExisting: forwardRef(() => DaterangeComponent),

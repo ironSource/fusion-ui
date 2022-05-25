@@ -19,9 +19,11 @@ import {CalendarService} from '@ironsource/fusion-ui/components/calendar/common/
 import {DEFAULT_DATE_FORMAT} from './config';
 import {DaterangeService} from './daterange.service';
 import {DEFAULT_PLACEHOLDER_TEXT} from './daterange.configuration';
+import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
+import {map} from 'rxjs/operators';
 
 @Directive()
-export abstract class DaterangeBaseComponent implements OnInit, ControlValueAccessor {
+export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, ControlValueAccessor {
     @Input() id: string;
     @Input() presetsHeaderTemplate: TemplateRef<any>;
     @Input() minDate: Date;
@@ -64,7 +66,7 @@ export abstract class DaterangeBaseComponent implements OnInit, ControlValueAcce
     originalSelection: DaterangeSelection = null;
     currentPreset: DaterangePresets | DaterangeCustomPreset = null;
     overlayAlign$ = new BehaviorSubject<string>('');
-
+    protected selected$ = new BehaviorSubject<DaterangeSelection>(null);
     protected daterangeOptions: DaterangeOptions;
 
     public get isPresetsShown(): boolean {
@@ -84,6 +86,7 @@ export abstract class DaterangeBaseComponent implements OnInit, ControlValueAcce
         private logService: LogService,
         private uniqueIdService: UniqueIdService
     ) {
+        super();
         this.defaultOptions.presets = [...this.daterangeService.defaultPresetList];
     }
 
@@ -93,6 +96,10 @@ export abstract class DaterangeBaseComponent implements OnInit, ControlValueAcce
             this.originalMaxDate = this.maxDate;
         }
         this.onOptionsChanges();
+    }
+
+    valueSelected() {
+        return this.selected$.asObservable().pipe(map(value => ({value, isSelected: !!value})));
     }
 
     selectPreset(preset, cohort?: number) {
@@ -114,7 +121,7 @@ export abstract class DaterangeBaseComponent implements OnInit, ControlValueAcce
     }
 
     toggle() {
-        if (!this.isOpen) {
+        if (!this.isOpen && !this.isComponentDisabled$.getValue()) {
             this.calculateOverlayAlignPosition();
             this.currentPreset = this.determinePreset(this.originalSelection, this.extraParams);
             this.isOpen = !this.isOpen;
@@ -146,6 +153,7 @@ export abstract class DaterangeBaseComponent implements OnInit, ControlValueAcce
                 : this.originalSelection?.startDate && this.originalSelection?.endDate
                 ? this.originalSelection
                 : null;
+            this.selected$.next(valueToPropagate);
             this.propagateChange(valueToPropagate);
             this.clearRangeDaysLimit();
         }
@@ -245,6 +253,7 @@ export abstract class DaterangeBaseComponent implements OnInit, ControlValueAcce
             this.selection = {endDate: null, startDate: null};
             this.originalSelection = null;
         }
+        this.selected$.next(this.originalSelection);
         this.setPlaceholder();
     }
 

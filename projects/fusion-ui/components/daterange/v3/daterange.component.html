@@ -1,9 +1,17 @@
 <div [id]="id" (fusionClickOutside)="onOutsideClick($event)">
-    <fusion-dropdown-select
-        (click)="toggle()"
-        [configurations]="dropdownSelectConfigurations$ | async"
-    >
-    </fusion-dropdown-select>
+    <div *ngIf="templateRef"  (click)="toggle()">
+        <ng-container [ngTemplateOutlet]="templateRef"></ng-container>
+    </div>
+
+    <ng-container *ngIf="!templateRef" [ngTemplateOutlet]="defaultTrigger"></ng-container>
+
+    <ng-template #defaultTrigger>
+        <fusion-dropdown-select
+            (click)="toggle()"
+            [configurations]="dropdownSelectConfigurations$ | async"
+        >
+        </fusion-dropdown-select>
+    </ng-template>
     <div class="overlay" #overlay [class.fu-no-presets]="!isPresetsShown" *ngIf="isOpen" [class]="overlayAlign$ | async" [ngClass]="{visible: (overlayAlign$ | async), isOpen: isOpen, singleDatePicker: isSingleDatePicker}">
         <div class="presetsWrap" *ngIf="isPresetsShown">
             <ng-container [ngTemplateOutlet]="presetsHeaderTemplate || defaultPreset"></ng-container>

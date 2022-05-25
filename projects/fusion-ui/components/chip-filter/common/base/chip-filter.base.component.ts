@@ -1,71 +1,119 @@
-import {Directive, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2, ViewChild} from '@angular/core';
-import {fromEvent, merge, Subject} from 'rxjs';
-import {ChipFilterComponentConfigurations, ChipType, ChipTypeToClass} from './chip-filter-component-configurations';
+import {
+    AfterViewInit,
+    ContentChild,
+    Directive,
+    ElementRef,
+    EventEmitter,
+    Input,
+    OnDestroy,
+    OnInit,
+    Output,
+    Renderer2,
+    TemplateRef,
+    ViewChild
+} from '@angular/core';
+import {BehaviorSubject, fromEvent, merge, Subject} from 'rxjs';
+import {ChipFilterComponentConfigurations, ChipFilterType, ChipType, ChipTypeToClass} from './chip-filter-component-configurations';
 import {takeUntil} from 'rxjs/operators';
+import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 
 @Directive()
-export abstract class ChipFilterBaseComponent implements OnInit, OnDestroy {
-    id: number | string;
-    onDestroy$ = new Subject<void>();
-    restListeners$ = new Subject<void>();
-    clearClickSubscription$ = merge(this.onDestroy$, this.restListeners$);
-    width: number;
+export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, OnDestroy {
+    @ContentChild(ApiBase, {static: true}) apiBase: ApiBase;
+    @ViewChild('ref', {static: true}) ref: TemplateRef<any>;
 
-    private _selected: boolean;
-    private _disabled: boolean;
-    private _close: boolean;
+    id: number | string;
+    chipCssType$ = new BehaviorSubject<ChipType>(null);
+    isCloseIcon$ = new BehaviorSubject<boolean>(false);
+
+    private onDestroy$ = new Subject<void>();
+    private restListeners$ = new Subject<void>();
+    private clearClickSubscription$ = merge(this.onDestroy$, this.restListeners$);
+    private chipSelected: boolean = false;
+    private chipDisabled$ = new BehaviorSubject<boolean>(false);
+    private chipType: ChipFilterType = 'static';
 
     @Input() set configuration(value: ChipFilterComponentConfigurations) {
         if (!!value) {
             this.id = value.id;
-            this.close = value.close;
-            this.disabled = value.disabled;
-            this.selected = value.selected;
-            this.type = value.type;
+            this.disabled = value.disabled || false;
+            this.type = value.type || 'static';
+            this.close = value.close || false;
         }
     }
-    @Input() suppressClickOnRemove = false;
+
+    @Input() set isSelected(value: boolean) {
+        this.selected = value || false;
+    }
+
+    @Input() set isVisible(value: boolean) {
+        if (!value) {
+            this.renderer.setStyle(this.element.nativeElement, 'display', 'none');
+        } else {
+            this.renderer.setStyle(this.element.nativeElement, 'display', 'block');
+        }
+    }
+
     @Output() onRemove = new EventEmitter();
+
     @Output() onSelectedChange = new EventEmitter<any>();
 
     set close(close: boolean) {
-        this._close = close;
+        this.isCloseIcon$.next(close);
         this.changeHostClass('closed-icon', close);
     }
 
-    get close(): boolean {
-        return this._close;
+    get close() {
+        return this.isCloseIcon$.getValue();
     }
 
     set disabled(disabled: boolean) {
-        this._disabled = disabled;
+        this.chipDisabled$.next(disabled);
         this.changeHostClass('fu-disabled', disabled);
     }
 
     get disabled(): boolean {
-        return this._disabled;
+        return this.chipDisabled$.getValue();
     }
 
-    set type(chipType: ChipType) {
-        this.changeHostClass(ChipTypeToClass[chipType], !!chipType);
+    set type(chipType: ChipFilterType) {
+        this.chipType = chipType;
+        this.setChipType(this.selected);
+    }
+
+    get type() {
+        return this.chipType;
     }
 
     set selected(selected: boolean) {
+        this.chipSelected = selected;
         this.changeHostClass('fu-selected', selected);
-        this._selected = selected;
+        this.setChipType(selected);
     }
 
     get selected(): boolean {
-        return this._selected;
+        return this.chipSelected;
     }
 
-    constructor(private element: ElementRef, private renderer: Renderer2) {}
+    constructor(public element: ElementRef, private renderer: Renderer2) {}
 
     ngOnInit() {
-        this.width = this.element.nativeElement.offsetWidth;
-        if (!this.close && !this.disabled) {
+        if (!this.apiBase && !this.disabled) {
             this.setClickListener();
         }
+
+        if (this.apiBase) {
+            this.apiBase.templateRef = this.ref;
+            this.apiBase.isComponentDisabled$.next(this.disabled);
+        }
+
+        if (this.type === 'dynamic') {
+            this.renderer.setStyle(this.element.nativeElement, 'display', 'none');
+        }
+    }
+
+    ngAfterViewInit() {
+        this.setValueSelectedListener();
     }
 
     ngOnDestroy() {
@@ -75,19 +123,42 @@ export abstract class ChipFilterBaseComponent implements OnInit, OnDestroy {
     }
 
     closeClicked($event) {
-        this.renderer.removeChild(this.renderer.parentNode(this.element.nativeElement), this.element.nativeElement);
-        this.onRemove.emit();
-        if (this.suppressClickOnRemove) {
-            $event.stopPropagation();
+        $event.stopPropagation();
+        if (this.type === 'dynamic') {
+            this.renderer.setStyle(this.element.nativeElement, 'display', 'none');
         }
+
+        this.selected = false;
+        this.setChipType(this.selected);
+        this.onRemove.emit({
+            id: this.id,
+            isSelected: this.selected
+        });
     }
 
-    setClickListener(): void {
+    private setValueSelectedListener(): void {
+        this.apiBase
+            ?.valueSelected()
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe((selected: {value: any; isSelected: boolean}) => {
+                if (selected.isSelected && !this.disabled) {
+                    this.selected = selected.isSelected;
+                    this.setChipType(this.selected);
+                    this.onSelectedChange.emit({
+                        id: this.id,
+                        ...selected
+                    });
+                }
+            });
+    }
+
+    private setClickListener(): void {
         this.restListeners$.next();
         fromEvent(this.element.nativeElement, 'click')
             .pipe(takeUntil(this.clearClickSubscription$))
             .subscribe(_ => {
-                this.selected = !this.selected;
+                this.selected = true;
+                this.setChipType(this.selected);
                 this.onSelectedChange.emit({
                     id: this.id,
                     selected: this.selected
@@ -95,7 +166,35 @@ export abstract class ChipFilterBaseComponent implements OnInit, OnDestroy {
             });
     }
 
-    changeHostClass(className: string, add: boolean): void {
+    private setChipType(hasValue: boolean) {
+        if (this.chipCssType$.getValue()) {
+            this.changeHostClass(ChipTypeToClass[this.chipCssType$.getValue()], false);
+        }
+        switch (this.type) {
+            case 'dynamic':
+                this.chipCssType$.next('RemoveAbleSelect');
+                this.close = true;
+                break;
+            case 'static':
+                this.setChipSelectType(hasValue);
+                break;
+            case 'add':
+                this.chipCssType$.next('AddFilter');
+                break;
+        }
+
+        this.changeHostClass(ChipTypeToClass[this.chipCssType$.getValue()], !!this.chipCssType$.getValue());
+    }
+
+    private setChipSelectType(hasValue: boolean) {
+        if (this.close === true) {
+            this.chipCssType$.next(hasValue ? 'RemoveAbleSelect' : 'ChipFilter');
+        } else {
+            this.chipCssType$.next(hasValue ? 'UnRemoveAbleSelect' : 'ChipFilter');
+        }
+    }
+
+    private changeHostClass(className: string, add: boolean): void {
         const classAction = add ? 'addClass' : 'removeClass';
         this.renderer[classAction](this.element.nativeElement, className);
     }

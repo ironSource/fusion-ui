@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ElementRef, OnDestroy, QueryList, Renderer2, ViewChildren} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, OnDestroy, OnInit, QueryList, Renderer2, ViewChildren} from '@angular/core';
 import {Subject} from 'rxjs';
 import {filter, takeUntil} from 'rxjs/operators';
 import {CalendarBaseComponent, HOVER_CURRENT_CLASS, HOVER_RANGE_CLASS} from '@ironsource/fusion-ui/components/calendar/common/base';
@@ -11,7 +11,7 @@ import {CalendarService} from '@ironsource/fusion-ui/components/calendar/common/
     styleUrls: ['./calendar.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CalendarComponent extends CalendarBaseComponent implements OnDestroy {
+export class CalendarComponent extends CalendarBaseComponent implements OnDestroy, OnInit {
     onDestroy$ = new Subject<void>();
 
     @ViewChildren('date', {read: ElementRef}) dateList: QueryList<ElementRef>;

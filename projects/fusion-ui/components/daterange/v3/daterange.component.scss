@@ -138,3 +138,9 @@ $selectHolderHeight: 39px;
         }
     }
 }
+
+:host-context(fusion-chip-filter){
+    .overlay{
+        top: -4px;
+    }
+}

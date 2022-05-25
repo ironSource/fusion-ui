@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {ChipFilterBaseComponent} from '@ironsource/fusion-ui/components/chip-filter/common/base';
 
 @Component({
