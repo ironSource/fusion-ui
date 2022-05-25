@@ -90,6 +90,14 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
         return this._error;
     }
 
+    @Input()
+    set optionsTitle(value: string) {
+        this._optionsTitle = value;
+    }
+    get optionsTitle(): string {
+        return this._optionsTitle;
+    }
+
     @Input() optionRightHoverText;
     @Input() changeConfirmation: () => Promise<boolean>;
     @Input() optionCloseIcon: boolean;
@@ -163,6 +171,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     isAllSelected: boolean;
     isIndeterminate = false;
 
+    private _optionsTitle: string;
     private _isLocatedRight = false;
     private _isLocatedLeft = false;
     private initPlaceholder: string;

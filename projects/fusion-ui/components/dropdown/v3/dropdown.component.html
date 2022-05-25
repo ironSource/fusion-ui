@@ -13,19 +13,24 @@
     <ng-container *ngIf="!templateRef" [ngTemplateOutlet]="defaultTrigger"></ng-container>
 
     <ng-template #defaultTrigger>
-    <fusion-dropdown-select
-        [class.is-icon-right-position]="this.isIconRightPosition"
-        (searchValueChanged)="searchValue.setValue($event)"
-        (click)="openDropdown($event)"
-        [configurations]="dropdownSelectConfigurations$ | async"
-        #selectComponent
-    >
-    </fusion-dropdown-select>
+        <fusion-dropdown-select
+            [class.is-icon-right-position]="this.isIconRightPosition"
+            (searchValueChanged)="searchValue.setValue($event)"
+            (click)="openDropdown($event)"
+            [configurations]="dropdownSelectConfigurations$ | async"
+            #selectComponent
+        >
+        </fusion-dropdown-select>
     </ng-template>
     <div class="options-dropdown" [class.options-locate-left]="isLocatedLeft" [class.options-locate-right]="isLocatedRight" [ngClass]="{'dd-disabled': isDisabled, 'dd-confirm': search || autoComplete, 'dd-scroll': hasScroll}">
         <!--dropdown options holder-->
         <div class="options-holder" (scroll)="onScroll($event)" #optionsHolder>
             <ul class="options">
+                <!--elements shown without selector-->
+                <ng-container *ngIf="templateRef">
+                    <li *ngIf="optionsTitle" class="fu-option-title">{{optionsTitle}}</li>
+                </ng-container>
+                <!--elements shown without selector-->
                 <!--options-->
                 <fusion-dropdown-options-list
                     [displayedOptions]="displayedOptionsObservable$ | async"

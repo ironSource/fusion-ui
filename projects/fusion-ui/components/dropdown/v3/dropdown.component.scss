@@ -52,6 +52,15 @@ $optionGroupHeight: 24px;
                 overflow: hidden;
                 overflow-y: auto;
                 @extend %customScroll;
+
+                .fu-option-title{
+                    height: 48px;
+                    @extend %font-bodyMediumStrong;
+                    color: $fu-black-500;
+                    padding: 12px;
+                    border-bottom: solid 1px $fu-light-400;
+                    margin: 0 -4px;
+                }
             }
         }
 
