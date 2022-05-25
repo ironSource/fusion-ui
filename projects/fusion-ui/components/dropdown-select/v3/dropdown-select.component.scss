@@ -56,9 +56,19 @@ $headerSmallHeight: 32px;
         }
 
         &:active:not(.is-tab-mode),
-        &.dd-active {
-            border-bottom: solid 2px $fu-primary-500;
-            padding-bottom: 8px;
+        &.dd-active,
+        &.dd-active.dd-search-active{
+            position: relative;
+            &::after{
+                content: " ";
+                width: calc(100% + 30px);
+                /* height: 8px; */
+                margin-left: -10px;
+                border-bottom: solid 2px #3083FF;
+                border-bottom: solid 2px var(--fu-primary-500, #3083FF);
+                /* display: block; */
+                position: absolute;
+                bottom: 0px;            }
         }
 
         &.dd-disabled {
