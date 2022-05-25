@@ -9,6 +9,7 @@
     background: $White;
     display: flex;
     align-items: center;
+    gap: 7px;
     height: 32px;
     padding: 8px;
     border-radius: 8px;
@@ -16,11 +17,27 @@
     color: $fu-black-500;
     cursor: pointer;
 
+    @include icon-style('fu-option-icon', $fu-light-600, 16px, false, true){
+        @include size(16px);
+    }
+
+    img{
+        @include size(20px);
+        @extend %app-image-masked;
+    }
+
+    .text {
+        .sub-text-container{
+            label {
+                color: $fu-light-900;
+                @extend %font-caption;
+            }
+        }
+    }
+
     &:hover {
         background: $fu-light-50;
     }
-
-
 
 
 /*    @extend %list-reset;
@@ -161,10 +178,23 @@
 :host-context(li.option.is-selected){
     background-color: $fu-primary-100;
     color: $fu-primary-500;
+    .sub-text-container{
+        label {
+            color: $fu-primary-400;
+        }
+    }
 }
 :host-context(li.option.is-disabled){
     color: $fu-light-800;
     cursor: default;
+    .sub-text-container{
+        label {
+            color: $fu-light-800;
+        }
+    }
+}
+:host-context(li.option.is-with-second-line){
+    height: 48px;
 }
 
 
