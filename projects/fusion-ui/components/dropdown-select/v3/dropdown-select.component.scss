@@ -20,8 +20,7 @@ $headerSmallHeight: 32px;
             position: absolute;
             right: 12px;
             top: 13px;
-            height: 16px;
-            width: 16px;
+            @include size(16px);
         }
         @extend %truncate;
         @extend %font-bodySmall;
@@ -96,58 +95,7 @@ $headerSmallHeight: 32px;
     }
     // endregion
 }
-/*
-:host-context(.is-dropdown) .is-dropdown-select {
-    &.forced-placeholder{
-        label.icon {
-            .placeholderText {
-                margin-left: 18px
-            }
-            &.dd-search-active {
-                @include icon-style('is-custom-icon', $fu-light-700, 13px, false, true) {
-                    position: absolute;
-                    left: 10px;
-                    top: 10px;
-                    z-index: 2;
-                }
-                &.dd_search-has-value {
-                    @include icon-style('is-custom-icon', $fu-light-500, 13px, true, true) {
-                        display: block;
-                    }
-                }
-            }
-            @include icon-style('is-custom-icon', $fu-dark-200, 13px, true, true) {
-                position: absolute;
-                left: 10px;
-                top: 10px;
-                z-index: 2;
-            }
-        }
-    }
-}
 
-:host-context(.is-dropdown.is-icon-right-position) .is-dropdown-select {
-    label {
-        padding: 10px 40px 10px 10px;
-        @include icon-style('is-custom-icon', $fu-dark-200, 12px, true, true) {
-            position: absolute;
-            right: 25px;
-            top: 10px;
-        }
-
-        &.dd-search-active {
-            padding: 10px 25px 10px 10px;
-            @include icon-style('is-custom-icon', $fu-light-500, 13px, true, true);
-
-            &.dd_search-has-value {
-                @include icon-style('is-custom-icon', $fu-light-500, 13px, true, true) {
-                    display: none;
-                }
-            }
-        }
-    }
-}
-*/
 // small size dropdown has changes in dropdown title only
 :host-context(fusion-dropdown.small),
 :host-context(fusion-multi-dropdown.small) {
@@ -160,9 +108,4 @@ $headerSmallHeight: 32px;
             top: 9px;
         }
     }
-    //&.is-icon-right-position{
-    //    .is-dropdown-select label {
-    //        padding: 6px 25px 8px 7px;
-    //    }
-    //}
 }
