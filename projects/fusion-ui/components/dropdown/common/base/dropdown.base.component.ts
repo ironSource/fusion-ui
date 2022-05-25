@@ -84,9 +84,16 @@ export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChan
         this._error = error;
         this.dropdownSelectConfigurations$.next(this.getDropdownSelectConfigurations());
     }
-
     get error(): string {
         return this._error;
+    }
+
+    @Input()
+    set optionsTitle(value: string) {
+        this._optionsTitle = value;
+    }
+    get optionsTitle(): string {
+        return this._optionsTitle;
     }
 
     @Input() optionRightHoverText;
@@ -162,6 +169,7 @@ export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChan
     isAllSelected: boolean;
     isIndeterminate = false;
 
+    private _optionsTitle: string;
     private _isLocatedRight = false;
     private _isLocatedLeft = false;
     private initPlaceholder: string;
