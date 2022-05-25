@@ -1,5 +1,7 @@
 import {Component, OnDestroy, OnInit, Type} from '@angular/core';
-import {PopupEntity, PopupLocation, PopupService, StyleVersion, VideoPlayerComponent} from '@ironsource/fusion-ui';
+import {StyleVersion, VideoPlayerComponent} from '@ironsource/fusion-ui';
+import {PopupEntity, PopupLocation} from '@ironsource/fusion-ui/components/popup/common/entities';
+import {PopupService} from '@ironsource/fusion-ui/components/popup/common/services';
 import {MobilePreviewerComponent} from '@ironsource/fusion-ui/components/mobile-previewer/v2';
 import {MobilePreviewerComponentConfiguration, MobileOrientation} from '@ironsource/fusion-ui/components/mobile-previewer/common/base';
 import {Observable, Subject} from 'rxjs';

@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, OnInit, Type} from '@angular/core';
-import {PopupEntity, PopupLocation} from '@ironsource/fusion-ui';
-import {PopupService} from '@ironsource/fusion-ui';
+import {PopupEntity, PopupLocation} from '@ironsource/fusion-ui/components/popup/common/entities';
+import {PopupService} from '@ironsource/fusion-ui/components/popup/common/services';
 import {Observable, Subject} from 'rxjs';
 import {StyleVersion} from '@ironsource/fusion-ui';
 import {MobilePreviewerComponent} from '@ironsource/fusion-ui/components/mobile-previewer/v1';

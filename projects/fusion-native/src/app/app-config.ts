@@ -1,5 +1,6 @@
-import {TableComponent} from '@ironsource/fusion-ui/components/table';
-import {AccordionComponent} from '@ironsource/fusion-ui/components/accordion';
+import {TableComponent} from '@ironsource/fusion-ui/components/table/v2';
+import {TableComponent as TableComponentV1} from '@ironsource/fusion-ui/components/table/v1';
+import {AccordionComponent} from '@ironsource/fusion-ui/components/accordion/v2';
 import {AlertComponent} from '@ironsource/fusion-ui/components/alert';
 import {CheckboxComponent} from '@ironsource/fusion-ui/components/checkbox';
 import {DatepickerComponent as DatepickerComponentV1} from '@ironsource/fusion-ui/components/datepicker/v1';
@@ -8,11 +9,12 @@ import {DropdownComponent as DropdownComponentV1} from '@ironsource/fusion-ui/co
 import {DropdownComponent as DropdownComponentV2} from '@ironsource/fusion-ui/components/dropdown/v2';
 import {DropdownComponent} from '@ironsource/fusion-ui/components/dropdown';
 import {MonthPickerComponent} from '@ironsource/fusion-ui/components/month-picker';
-import {DropdownDualMultiSelectComponent} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
+import {MonthPickerComponent as MonthPickerComponentV1} from '@ironsource/fusion-ui/components/month-picker/v1';
+import {DropdownDualMultiSelectComponent} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select/v2';
 import {MultiDropdownComponent as MultiDropdownComponentV1} from '@ironsource/fusion-ui/components/multi-dropdown/v1';
 import {MultiDropdownComponent as MultiDropdownComponentV2} from '@ironsource/fusion-ui/components/multi-dropdown/v2';
 import {MultiDropdownComponent} from '@ironsource/fusion-ui/components/multi-dropdown';
-import {AddboxDropdownComponent} from '@ironsource/fusion-ui/components/addbox-dropdown';
+import {AddboxDropdownComponent} from '@ironsource/fusion-ui/components/addbox-dropdown/v1';
 import {IconHeaderActionComponent} from '@ironsource/fusion-ui/components/icon-header-action';
 import {FlagComponent} from '@ironsource/fusion-ui/components/flag';
 import {HeaderComponent} from '@ironsource/fusion-ui/components/header';
@@ -20,8 +22,8 @@ import {HeaderOverlayComponent} from '@ironsource/fusion-ui/components/header-ov
 import {IconComponent} from '@ironsource/fusion-ui/components/icon';
 import {InputComponent} from '@ironsource/fusion-ui/components/input';
 import {InputInlineComponent} from '@ironsource/fusion-ui/components/input-inline';
-import {LayoutV1Component} from '@ironsource/fusion-ui/components/layout-v1';
-import {LayoutComponent} from '@ironsource/fusion-ui/components/layout';
+import {LayoutComponent as LayoutV1Component} from '@ironsource/fusion-ui/components/layout/v1';
+import {LayoutComponent} from '@ironsource/fusion-ui/components/layout/v2';
 import {ListBoxComponent} from '@ironsource/fusion-ui/components/list-box';
 import {LoaderComponent} from '@ironsource/fusion-ui/components/loader';
 import {LoaderComponent as LoaderComponentV1} from '@ironsource/fusion-ui/components/loader/v1';
@@ -32,14 +34,20 @@ import {ModalComponent} from '@ironsource/fusion-ui/components/modal';
 import {NotificationComponent} from '@ironsource/fusion-ui/components/notification';
 import {PopupComponent} from '@ironsource/fusion-ui/components/popup';
 import {RadioComponent} from '@ironsource/fusion-ui/components/radio';
+import {RadioComponent as RadioComponentV1} from '@ironsource/fusion-ui/components/radio/v1';
 import {RadioGroupComponent} from '@ironsource/fusion-ui/components/radio-group';
 import {SvgComponent} from '@ironsource/fusion-ui/components/svg';
 import {TagComponent} from '@ironsource/fusion-ui/components/tag';
+import {TagComponent as TagComponentV1} from '@ironsource/fusion-ui/components/tag/v1';
 import {TagsInputComponent as TagsInputComponentV1} from '@ironsource/fusion-ui/components/tags-input/v1';
 import {TagsInputComponent} from '@ironsource/fusion-ui/components/tags-input/v2';
 import {ToggleComponent} from '@ironsource/fusion-ui/components/toggle';
+import {ToggleComponent as ToggleComponentV1} from '@ironsource/fusion-ui/components/toggle/v1';
 import {TooltipComponent} from '@ironsource/fusion-ui/components/tooltip/v3';
+import {TooltipComponent as TooltipComponentV2} from '@ironsource/fusion-ui/components/tooltip/v2';
+import {TooltipComponent as TooltipComponentV1} from '@ironsource/fusion-ui/components/tooltip/v1';
 import {VideoPlayerComponent} from '@ironsource/fusion-ui/components/video-player';
+import {VideoPlayerComponent as VideoPlayerComponentV1} from '@ironsource/fusion-ui/components/video-player/v1';
 import {ChartComponent} from '@ironsource/fusion-ui/components/chart';
 import {ChartLabelsComponent} from '@ironsource/fusion-ui/components/chart-labels';
 import {IconSelectListComponent} from '@ironsource/fusion-ui/components/icon-select-list';
@@ -76,19 +84,19 @@ import {ColorsService} from '@ironsource/fusion-ui/services/colors/colors.servic
 import {TooltipService} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {CalendarService} from '@ironsource/fusion-ui/components/calendar/common/base';
 import {DaterangeService} from '@ironsource/fusion-ui/components/daterange/common/base';
-import {PopupService} from '@ironsource/fusion-ui/components/popup';
+import {PopupService} from '@ironsource/fusion-ui/components/popup/common/services';
 import {ToastService} from '@ironsource/fusion-ui/components/toast';
-import {NotificationService} from '@ironsource/fusion-ui/components/notification';
+import {NotificationService} from '@ironsource/fusion-ui/components/notification/common/services';
 import {ModalService} from '@ironsource/fusion-ui/components/modal';
 
 // enums
-import {NotificationType} from '@ironsource/fusion-ui/components/notification';
+import {NotificationType} from '@ironsource/fusion-ui/components/notification/common/entities';
 import {DatepickerMode} from '@ironsource/fusion-ui/components/datepicker/v1';
 import {HeaderSizes} from '@ironsource/fusion-ui/components/header-overlay/common/base';
 import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline/common/base';
 import {ListBoxModes} from '@ironsource/fusion-ui/components/list-box/common/base';
-import {PopupLocation} from '@ironsource/fusion-ui/components/popup';
-import {TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table';
+import {PopupLocation} from '@ironsource/fusion-ui/components/popup/common/entities';
+import {TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table/common/entities';
 import {TooltipPosition, TooltipType} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {FormControlStatus} from '@ironsource/fusion-ui/components/error-message';
 import {SwitcherMode} from '@ironsource/fusion-ui/components/switcher';
@@ -135,6 +143,7 @@ export const enums = {
 
 export const components = [
     {name: `${PREFIX}-table`, componentInstance: TableComponent},
+    {name: `${PREFIX}-table-v1`, componentInstance: TableComponentV1},
     {name: `${PREFIX}-button`, componentInstance: ButtonComponent},
     {name: `${PREFIX}-accordion`, componentInstance: AccordionComponent},
     {name: `${PREFIX}-alert`, componentInstance: AlertComponent},
@@ -142,6 +151,7 @@ export const components = [
     {name: `${PREFIX}-datepicker-v1`, componentInstance: DatepickerComponentV1},
     {name: `${PREFIX}-datepicker`, componentInstance: DatepickerComponent},
     {name: `${PREFIX}-month-picker`, componentInstance: MonthPickerComponent},
+    {name: `${PREFIX}-month-picker-v1`, componentInstance: MonthPickerComponentV1},
     {name: `${PREFIX}-dropdown-v1`, componentInstance: DropdownComponentV1},
     {name: `${PREFIX}-dropdown-v2`, componentInstance: DropdownComponentV2},
     {name: `${PREFIX}-dropdown`, componentInstance: DropdownComponent},
@@ -170,14 +180,20 @@ export const components = [
     {name: `${PREFIX}-notification`, componentInstance: NotificationComponent},
     {name: `${PREFIX}-popup`, componentInstance: PopupComponent},
     {name: `${PREFIX}-radio`, componentInstance: RadioComponent},
+    {name: `${PREFIX}-radio-v1`, componentInstance: RadioComponentV1},
     {name: `${PREFIX}-radio-group`, componentInstance: RadioGroupComponent},
     {name: `${PREFIX}-svg`, componentInstance: SvgComponent},
     {name: `${PREFIX}-tag`, componentInstance: TagComponent},
+    {name: `${PREFIX}-tag-v1`, componentInstance: TagComponentV1},
     {name: `${PREFIX}-tags-input-v1`, componentInstance: TagsInputComponentV1},
     {name: `${PREFIX}-tags-input`, componentInstance: TagsInputComponent},
     {name: `${PREFIX}-toggle`, componentInstance: ToggleComponent, type: `checkbox`},
+    {name: `${PREFIX}-toggle-v1`, componentInstance: ToggleComponentV1, type: `checkbox`},
     {name: `${PREFIX}-tooltip`, componentInstance: TooltipComponent},
+    {name: `${PREFIX}-tooltip-v1`, componentInstance: TooltipComponentV1},
+    {name: `${PREFIX}-tooltip-v2`, componentInstance: TooltipComponentV2},
     {name: `${PREFIX}-video-player`, componentInstance: VideoPlayerComponent},
+    {name: `${PREFIX}-video-player-v1`, componentInstance: VideoPlayerComponentV1},
     {name: `${PREFIX}-chart`, componentInstance: ChartComponent},
     {name: `${PREFIX}-chart-labels`, componentInstance: ChartLabelsComponent},
     {name: `${PREFIX}-icon-select-list`, componentInstance: IconSelectListComponent},

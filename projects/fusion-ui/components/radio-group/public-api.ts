@@ -1,3 +1,1 @@
-export * from './radio-group.entities';
-export * from './radio-group.component';
-export * from './radio-group.module';
+export * from './v2';

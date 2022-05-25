@@ -3,7 +3,7 @@
  */
 
 import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
-import {IconData} from '@ironsource/fusion-ui/components/icon';
+import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 
 export interface InputConfigByStyle {
     iconSearch?: IconData;

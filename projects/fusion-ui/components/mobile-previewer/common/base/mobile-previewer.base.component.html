@@ -30,7 +30,7 @@
             [ngClass]="{selected: isDeviceSelected(device), landscape: isDeviceLandscape(device)}"
             (click)="selectDevice(device)"
         >
-            <fusion-icon [class]="'icon-' + device" [name]="{iconName: device, iconVersion: iconPrefix}"></fusion-icon>
+            <fusion-icon [class]="'icon-' + device" [name]="{iconName: device, iconVersion: (iconPrefix$ | async)}"></fusion-icon>
         </span>
     </div>
 </div>

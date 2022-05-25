@@ -2,7 +2,7 @@
  * Created on 2020.3.24 By Andy Kononenko (andyk@ironsrc.com)
  */
 
-import {IconData} from '@ironsource/fusion-ui/components/icon';
+import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 
 export enum InputSize {
     Small = 'small',

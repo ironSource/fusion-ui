@@ -1,0 +1,16 @@
+@import '../../../src/style/scss/v2/vars/vars';
+
+:host{
+    @extend %border-box-normalize;
+    .fu-month-picker-wrapper {
+        position: relative;
+        min-width: 220px;
+        max-width: 300px;
+        color: var(--fu-month-picker-color, #{$fu-dark-500});
+    }
+
+    .error-msg{
+        @extend %font-captionRegular;
+        color: $fu-negative-500;
+    }
+}

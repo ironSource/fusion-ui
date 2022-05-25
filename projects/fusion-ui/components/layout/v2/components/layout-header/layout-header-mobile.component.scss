@@ -1,0 +1,9 @@
+@import '../../../../../src/style/scss/v1/mixins/breakpoints';
+
+:host{
+    @include media-breakpoint-max('xs') {
+        .fu-header .fu-header-right-panel{
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,77 @@
+@import '../../../src/style/scss/v1/vars/vars';
+@import '../../../src/style/scss/v1/mixins/mixins';
+@import '../../../src/style/scss/v1/vars/border';
+
+$boxShadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.1);
+
+:host {
+  .is-notification {
+    position: fixed;
+    z-index: getZIndexLayerOffset(system, 11);
+    top: 38%;
+    left:0;
+    right:0;
+    width: 400px;
+    display: block;
+    margin: auto;
+    text-align: left;
+    background-color: $White;
+    @extend %borderRadius;
+    @extend %border;
+    box-shadow: $boxShadow;
+    .is-header {
+      @extend %font3;
+      padding: 15px 30px 10px 30px;
+
+      @include icon-style('info', $light-800, 20px, true, true) {
+        vertical-align: sub;
+        margin-right: 5px;
+      }
+      @include icon-style('error', $negative-500, 20px,  true, true) {
+        vertical-align: sub;
+        margin-right: 5px;
+      }
+      @include icon-style('success', $positive-500, 20px,  true, true) {
+        vertical-align: sub;
+        margin-right: 5px;
+      }
+      @include icon-style('warning', $neutral-700, 20px,  true, true) {
+        vertical-align: sub;
+        margin-right: 5px;
+      }
+    }
+
+    @include icon-style('close', $light-800, 10px, true, true) {
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 15px;
+    }
+
+    .is-notification-content{
+        box-sizing: border-box;
+        position: relative;
+        min-height: 65px;
+        padding: 0 30px 15px;
+    }
+  }
+  .is-notification-overlay{
+    /* modal background fixed across whole screen */
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    /* semi-transparent black  */
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0.75;
+
+    /* z-index must be below .modal and above everything else  */
+    z-index: getZIndexLayerOffset(system, 10);
+  }
+}
+
+
+
+

@@ -3,17 +3,15 @@ import {Router} from '@angular/router';
 import {FormControl, Validators} from '@angular/forms';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {delay, take, takeUntil, tap} from 'rxjs/operators';
+import {isNullOrUndefined, isNumber, StyleVersion} from '@ironsource/fusion-ui';
 import {
-    isNullOrUndefined,
-    isNumber,
-    StatusLabelStatus,
-    StyleVersion,
     TableColumn,
     TableColumnTypeEnum,
     TableOptions,
     TableRowExpandEmitter,
     TableRowHeight
-} from '@ironsource/fusion-ui';
+} from '@ironsource/fusion-ui/components/table/common/entities';
+import {StatusLabelStatus} from '@ironsource/fusion-ui/components/status-label/common/entities';
 import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline/common/base';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {TableCellDynamicComponentExampleComponent} from './table-cell-dynamic-component-example';

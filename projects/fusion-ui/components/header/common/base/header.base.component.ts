@@ -3,7 +3,7 @@ import {CacheService, CacheType} from '@ironsource/fusion-ui/services/cache';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 import {HeaderState} from './header-state';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {IconData} from '@ironsource/fusion-ui/components/icon';
+import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 
 @Directive()
 export abstract class HeaderBaseComponent {

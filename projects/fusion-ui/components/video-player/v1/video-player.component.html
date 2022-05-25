@@ -1,0 +1,40 @@
+<div
+    class="fusion-video-preview"
+    [style.width]="width"
+    [style.height]="height"
+    [ngClass]="{'no-data': !src}"
+>
+    <div *ngIf="src" class="is-video-exists">
+        <video
+            preload="metadata"
+            [attr.autoplay]="isAutoplay"
+            [attr.controls]="isTimeline ? true : null"
+            [style.width]="width"
+            [style.height]="height"
+            [src]="src"
+            [poster]="thumbnail"
+            #videoPlayer
+        ></video>
+        <ng-container *ngIf="!isTimeline">
+            <div
+                class="is-video-overlay"
+                *ngIf="(isVideoPlaying$ | async) === false"
+                [style.width]="width"
+                [style.height]="height"
+            ></div>
+            <div class="is-video-action-button" (click)="onVideoPlayPauseButtonClicked($event, videoPlayer)">
+                <fusion-icon class="button-play" [name]="playIconName" *ngIf="(isVideoPlaying$ | async) === false"></fusion-icon>
+                <fusion-icon class="button-pause" [name]="pauseIconName" *ngIf="(isVideoPlaying$ | async) === true"></fusion-icon>
+            </div>
+        </ng-container>
+    </div>
+
+    <div *ngIf="!src" class="is-no-video">
+        <fusion-icon class="fu-icon-no-video" *ngIf="options.noVideo?.icon" [name]="options.noVideo.icon"></fusion-icon>
+        <div *ngIf="options.noVideo?.title">{{ options.noVideo.title }}</div>
+    </div>
+</div>
+<ng-template #videoTimeData>
+    <span class="video-timing" [hidden]="(isVideoPlaying$ | async) === false">{{ videoCurrentTime$ | async | secondsToMinutes }}</span>
+    <span class="video-timing" [hidden]="(isVideoPlaying$ | async) === true">{{ videoDuration$ | async | secondsToMinutes }}</span>
+</ng-template>
