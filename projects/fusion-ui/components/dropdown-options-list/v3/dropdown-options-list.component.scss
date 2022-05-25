@@ -7,15 +7,12 @@
         margin-bottom: 2px;
         &.option {
             .is-dd-group {
-                text-transform: uppercase;
-                color: $fu-light-900;
-                background-color: $fu-light-200;
-                border-radius: 4px;
-                cursor: default;
-                padding: 3px 8px;
-                display: block;
-                height: 24px;
-                margin: 4px 0;
+                @extend %font-bodyMediumStrong;
+                color: $fu-black-500;
+                height: 40px;
+                margin-left: 8px;
+                display: flex;
+                align-items: center;
             }
         }
         &.is-disabled{
