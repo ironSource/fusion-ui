@@ -1,12 +1,7 @@
-import {ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2} from '@angular/core';
+import {Directive, ElementRef, Input, Renderer2} from '@angular/core';
 
-@Component({
-    selector: 'fusion-flag',
-    templateUrl: './flag.component.html',
-    styleUrls: ['./flag.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class FlagComponent {
+@Directive()
+export abstract class FlagBaseComponent {
     @Input() set name(value: string) {
         this.onNameChanged(value);
     }
