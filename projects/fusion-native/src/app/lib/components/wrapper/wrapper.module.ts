@@ -25,8 +25,8 @@ import {
 } from '@ironsource/fusion-ui/components/addbox-dropdown';
 import {InputModule} from '@ironsource/fusion-ui/components/input';
 import {InputInlineModule} from '@ironsource/fusion-ui/components/input-inline';
-import {LayoutV1Module} from '@ironsource/fusion-ui/components/layout-v1';
-import {LayoutModule} from '@ironsource/fusion-ui/components/layout';
+import {LayoutModule as LayoutV1Module} from '@ironsource/fusion-ui/components/layout/v1';
+import {LayoutModule} from '@ironsource/fusion-ui/components/layout/v2';
 import {ListBoxModule} from '@ironsource/fusion-ui/components/list-box';
 import {LoaderModule} from '@ironsource/fusion-ui/components/loader';
 import {LoaderInlineModule} from '@ironsource/fusion-ui/components/loader-inline';

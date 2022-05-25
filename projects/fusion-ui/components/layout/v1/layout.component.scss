@@ -1,6 +1,6 @@
-@import '../../src/style/scss/v1/vars/vars';
-@import '../../src/style/scss/v1/mixins/mixins';
-@import '../../src/style/scss/v1/mixins/breakpoints';
+@import '../../../src/style/scss/v1/vars/vars';
+@import '../../../src/style/scss/v1/mixins/mixins';
+@import '../../../src/style/scss/v1/mixins/breakpoints';
 
 :host{
     @extend %reset;

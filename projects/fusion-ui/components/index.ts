@@ -21,7 +21,6 @@ export * from './icon-status';
 export * from './input';
 export * from './input-inline';
 export * from './layout';
-export * from './layout-v1';
 export * from './list-box';
 export * from './loader';
 export * from './loader-inline';

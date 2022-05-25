@@ -12,7 +12,11 @@ import {
     Output,
     ViewChild
 } from '@angular/core';
-import {LayoutHeaderComponentConfiguration, LayoutHeaderContentTitle, PageHeaderPosition} from './layout-header/layout-header-entity';
+import {
+    LayoutHeaderComponentConfiguration,
+    LayoutHeaderContentTitle,
+    PageHeaderPosition
+} from './components/layout-header/layout-header-entity';
 import {SidebarConfiguration, SidebarMenuItem} from '@ironsource/fusion-ui/components/sidebar/common/entities';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
 import {LayoutComponentConfiguration, LayoutMediaType, LayoutForceScreenMode} from './layout.entity';

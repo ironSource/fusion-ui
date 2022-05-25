@@ -21,8 +21,8 @@ import {HeaderOverlayComponent} from '@ironsource/fusion-ui/components/header-ov
 import {IconComponent} from '@ironsource/fusion-ui/components/icon';
 import {InputComponent} from '@ironsource/fusion-ui/components/input';
 import {InputInlineComponent} from '@ironsource/fusion-ui/components/input-inline';
-import {LayoutV1Component} from '@ironsource/fusion-ui/components/layout-v1';
-import {LayoutComponent} from '@ironsource/fusion-ui/components/layout';
+import {LayoutComponent as LayoutV1Component} from '@ironsource/fusion-ui/components/layout/v1';
+import {LayoutComponent} from '@ironsource/fusion-ui/components/layout/v2';
 import {ListBoxComponent} from '@ironsource/fusion-ui/components/list-box';
 import {LoaderComponent} from '@ironsource/fusion-ui/components/loader';
 import {LoaderComponent as LoaderComponentV1} from '@ironsource/fusion-ui/components/loader/v1';

@@ -1,21 +1,21 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {LayoutV1Component} from './layout-v1.component';
+import {LayoutComponent} from './layout.component';
 import {HeaderModule} from '@ironsource/fusion-ui/components/header';
 import {MenuModule} from '@ironsource/fusion-ui/components/menu';
 import {SVG_OPTIONS_TOKEN} from '@ironsource/fusion-ui/components/svg';
-import {LayoutModuleOptions} from './layout-v1-entities';
-import {LAYOUT_OPTIONS_DEFAULT_VALUE} from './layout-v1-config';
+import {LayoutModuleOptions} from './layout-entities';
+import {LAYOUT_OPTIONS_DEFAULT_VALUE} from './layout-config';
 
 @NgModule({
-    declarations: [LayoutV1Component],
-    exports: [LayoutV1Component],
+    declarations: [LayoutComponent],
+    exports: [LayoutComponent],
     imports: [CommonModule, HeaderModule, MenuModule]
 })
-export class LayoutV1Module {
-    static forRoot(options?: LayoutModuleOptions): ModuleWithProviders<LayoutV1Module> {
+export class LayoutModule {
+    static forRoot(options?: LayoutModuleOptions): ModuleWithProviders<LayoutModule> {
         return {
-            ngModule: LayoutV1Module,
+            ngModule: LayoutModule,
             providers: [
                 {
                     provide: SVG_OPTIONS_TOKEN,

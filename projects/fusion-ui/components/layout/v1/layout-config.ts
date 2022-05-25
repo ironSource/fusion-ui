@@ -1,4 +1,4 @@
-import {LayoutModuleOptions} from './layout-v1-entities';
+import {LayoutModuleOptions} from './layout-entities';
 
 export const LAYOUT_OPTIONS_DEFAULT_VALUE: LayoutModuleOptions = {
     svgOptions: {assetsPath: ''}

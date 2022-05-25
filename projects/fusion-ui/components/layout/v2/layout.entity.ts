@@ -2,7 +2,7 @@
  * Created on 2020.11.19 By Andy Kononenko (andyk@ironsrc.com)
  */
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
-import {LayoutHeaderComponentConfiguration} from './layout-header/layout-header-entity';
+import {LayoutHeaderComponentConfiguration} from './components/layout-header/layout-header-entity';
 import {SidebarMenuItem} from '@ironsource/fusion-ui/components/sidebar/common/entities';
 import {SvgOptions} from '@ironsource/fusion-ui/components/svg';
 

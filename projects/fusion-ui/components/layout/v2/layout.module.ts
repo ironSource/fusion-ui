@@ -4,8 +4,8 @@ import {LayoutComponent} from './layout.component';
 import {LayoutModuleOptions} from './layout.entity';
 import {SVG_OPTIONS_TOKEN} from '@ironsource/fusion-ui/components/svg';
 import {LAYOUT_OPTIONS_DEFAULT_VALUE} from './layout-config';
-import {LayoutHeaderModule} from './layout-header/layout-header.module';
-import {SidebarModule} from '@ironsource/fusion-ui/components/sidebar';
+import {LayoutHeaderModule} from './components/layout-header/layout-header.module';
+import {SidebarModule} from '@ironsource/fusion-ui/components/sidebar/v2';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
 

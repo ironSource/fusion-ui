@@ -7,12 +7,12 @@ import {MenuItem, MenuItemAdditionalData} from '@ironsource/fusion-ui/components
 import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 @Component({
-    selector: 'fusion-layout-v1',
-    templateUrl: './layout-v1.component.html',
-    styleUrls: ['./layout-v1.component.scss'],
+    selector: 'fusion-layout',
+    templateUrl: './layout.component.html',
+    styleUrls: ['./layout.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LayoutV1Component implements OnDestroy {
+export class LayoutComponent implements OnDestroy {
     @Input() loading: boolean;
     @Input() menuItems: MenuItem[] = [];
     @Input() state: HeaderState = {};

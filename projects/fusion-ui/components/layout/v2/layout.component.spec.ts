@@ -1,11 +1,11 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {LayoutComponent} from './layout.component';
 import {By} from '@angular/platform-browser';
-import {LayoutHeaderModule} from './layout-header/layout-header.module';
+import {LayoutHeaderModule} from './components/layout-header/layout-header.module';
 import {RouterTestingModule} from '@angular/router/testing';
 import {SidebarModule} from '@ironsource/fusion-ui/components/sidebar';
 import {LayoutComponentConfiguration} from './layout.entity';
-import {LayoutHeaderContentTitle} from './layout-header/layout-header-entity';
+import {LayoutHeaderContentTitle} from './components/layout-header/layout-header-entity';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
 
 const MENUITEM_MOCK = {
