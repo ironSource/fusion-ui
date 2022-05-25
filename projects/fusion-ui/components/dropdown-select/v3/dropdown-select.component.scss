@@ -32,7 +32,7 @@ $headerSmallHeight: 32px;
             height: 100%;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 7px;
 
             // region image, icon and flag
             @include icon-style('is-custom-icon', $fu-light-900, 16px, true, true) {
@@ -41,12 +41,7 @@ $headerSmallHeight: 32px;
 
             img {
                 @include size(20px);
-                border-radius: 7px;
-            }
-
-            fusion-flag {
-                margin-right: 8px;
-                margin-left: 5px;
+                @extend %app-image-masked;
             }
             // endregion
 
@@ -63,6 +58,7 @@ $headerSmallHeight: 32px;
         &:active:not(.is-tab-mode),
         &.dd-active {
             border-bottom: solid 2px $fu-primary-500;
+            padding-bottom: 8px;
         }
 
         &.dd-disabled {
