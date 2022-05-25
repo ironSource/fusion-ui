@@ -19,6 +19,8 @@ export abstract class DropdownOptionBaseDirective implements OnInit, OnChanges {
     @Input() lastSearchValue: string;
     @Input() optionRightHoverText: string;
     @Input() isMultiRawDisplay = false;
+    @Input() optionCloseIcon: boolean;
+
     @HostBinding('class.option') optionClass = true;
     @HostBinding('class.is-hidden') isOptionHidden = false;
 
@@ -55,5 +57,6 @@ export abstract class DropdownOptionBaseDirective implements OnInit, OnChanges {
         this.optionComponentRef.instance.lastSearchValue = this.lastSearchValue;
         this.optionComponentRef.instance.optionRightHoverText = this.optionRightHoverText;
         this.optionComponentRef.instance.isMultiRawDisplay = this.isMultiRawDisplay;
+        this.optionComponentRef.instance.optionCloseIcon = this.optionCloseIcon;
     }
 }

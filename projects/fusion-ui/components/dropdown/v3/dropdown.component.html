@@ -24,6 +24,8 @@
                     [isMultiRawDisplay]="isMultiRawDisplay"
                     [mappingOptions]="mappingOptions"
                     [selected]="selected"
+                    [optionCloseIcon]="optionCloseIcon"
+                    (closeIconClicked)="onCloseIconClicked($event)"
                     (changeSelected)="changeSelected($event)"
                 ></fusion-dropdown-options-list>
                 <!--loader holder-->

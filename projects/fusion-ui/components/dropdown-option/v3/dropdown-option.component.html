@@ -9,7 +9,7 @@
             <label>{{ option.subText?.text || option.subText }}</label>
         </div>
     </div>
-    <span class="optionRightClickTextHover" *ngIf="optionRightHoverText">{{ optionRightHoverText }}</span>
+    <fusion-icon *ngIf="optionCloseIcon" [name]="closeIcon" class="fu-option-action-icon"></fusion-icon>
 </ng-container>
 
 <ng-template #customContentOption>

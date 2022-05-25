@@ -1,26 +1,31 @@
 @import '../../../src/style/scss/v3/vars/vars';
 
 :host {
-    li.is-disabled{
-        pointer-events: none;
-    }
-/*    @extend %border-box-normalize;
+    @extend %border-box-normalize;
     @extend %list-reset;
-    .option {
-        .is-dd-group {
-            //@extend %font-label;
-            text-transform: uppercase;
-            color: $fu-light-900;
-            background-color: $fu-light-200;
-            border-radius: 4px;
-            cursor: default;
-            padding: 3px 8px;
-            display: block;
-            height: 24px;
-            margin: 4px 0;
+    li{
+        margin-bottom: 2px;
+        &.option {
+            .is-dd-group {
+                text-transform: uppercase;
+                color: $fu-light-900;
+                background-color: $fu-light-200;
+                border-radius: 4px;
+                cursor: default;
+                padding: 3px 8px;
+                display: block;
+                height: 24px;
+                margin: 4px 0;
+            }
+        }
+        &.is-disabled{
+            pointer-events: none;
         }
     }
     li:first-child.option .is-dd-group{
         margin-top: 0;
-    }*/
+    }
+    li:last-child{
+        margin-bottom: 0;
+    }
 }

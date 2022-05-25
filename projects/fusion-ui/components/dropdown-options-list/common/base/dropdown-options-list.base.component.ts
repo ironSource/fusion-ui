@@ -11,6 +11,7 @@ export abstract class DropdownOptionsListBaseComponent {
     @Input() selected: DropdownOption[];
     @Input() lastSearchValue: string;
     @Input() optionRightHoverText: string;
+    @Input() optionCloseIcon: boolean;
 
     @Output() changeSelected = new EventEmitter<any>();
 

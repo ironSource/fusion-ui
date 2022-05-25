@@ -28,12 +28,17 @@
 
     .text {
         .sub-text-container{
-            label {
-                color: $fu-light-900;
-                @extend %font-caption;
-            }
+            line-height: 13px;
+            color: $fu-light-900;
+            @extend %font-caption;
         }
     }
+
+    @include icon-style('fu-option-action-icon', $fu-light-600, 16px, false, true){
+        @include size(16px);
+        margin-left: auto;
+    }
+
 
     &:hover {
         background: $fu-light-50;

@@ -91,6 +91,7 @@ export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChan
 
     @Input() optionRightHoverText;
     @Input() changeConfirmation: () => Promise<boolean>;
+    @Input() optionCloseIcon: boolean;
 
     @Input() helper: string;
 
@@ -116,6 +117,8 @@ export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChan
 
     @Output() searchChange = new EventEmitter();
     @Output() searchClear = new EventEmitter();
+
+    @Output() optionCloseIconClicked = new EventEmitter();
 
     @Output() closed = new EventEmitter<ClosedOptions>();
 
@@ -597,6 +600,10 @@ export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChan
         } else {
             this.doChanges(option);
         }
+    }
+
+    onCloseIconClicked(option: DropdownOption) {
+        this.optionCloseIconClicked.emit(option);
     }
 
     private doChanges(option?: DropdownOption): void {
