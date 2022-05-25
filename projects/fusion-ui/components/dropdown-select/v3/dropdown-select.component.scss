@@ -8,7 +8,7 @@ $headerSmallHeight: 32px;
 
 :host .is-dropdown-select {
     @extend %border-box-normalize;
-    // title
+
     label {
         display: block;
         cursor: pointer;
@@ -54,8 +54,6 @@ $headerSmallHeight: 32px;
                 line-height: initial;
             }
         }
-
-
 
         // region states
         &:hover {
