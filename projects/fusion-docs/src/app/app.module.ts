@@ -4,11 +4,11 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app.routing';
 import {environment} from '../environments/environment';
 import {IconModule, SvgModule} from '@ironsource/fusion-ui';
-import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
+import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v2';
 import {ChipFilterModule} from '@ironsource/fusion-ui/components/chip-filter';
 import {ChipFiltersModule} from '@ironsource/fusion-ui/components/chip-filters';
 import {ReactiveFormsModule} from '@angular/forms';
-import {DaterangeModule} from '@ironsource/fusion-ui/components/daterange';
+import {DaterangeModule} from '@ironsource/fusion-ui/components/daterange/v3';
 
 @NgModule({
     declarations: [AppComponent],
