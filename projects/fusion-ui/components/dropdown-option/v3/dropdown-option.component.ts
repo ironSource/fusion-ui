@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {DropdownOptionBaseComponent} from '@ironsource/fusion-ui/components/dropdown-option/common/base';
-import {IconData} from '@ironsource/fusion-ui';
+import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 
 const CLOSE_ICON = 'close-bold';
 const dropdownArrowIcon = {
