@@ -2,8 +2,8 @@ import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnI
 import {TabsConfiguration} from './tabs.entities';
 import {TabConfiguration} from './tab/tab.entities';
 import {Observable} from 'rxjs';
-import {PopupComponentContent, PopupEntity} from '@ironsource/fusion-ui/components/popup';
-import {PopupService} from '@ironsource/fusion-ui/components/popup';
+import {PopupComponentContent, PopupEntity} from '@ironsource/fusion-ui/components/popup/common/entities';
+import {PopupService} from '@ironsource/fusion-ui/components/popup/common/services';
 
 @Component({
     selector: 'fusion-tabs',

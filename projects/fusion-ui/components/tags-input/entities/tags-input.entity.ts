@@ -1,4 +1,4 @@
-import {Tag} from '@ironsource/fusion-ui/components/tag';
+import {Tag} from '@ironsource/fusion-ui/components/tag/common/entities';
 
 export interface TagsInputComponentConfigurations {
     id?: string;

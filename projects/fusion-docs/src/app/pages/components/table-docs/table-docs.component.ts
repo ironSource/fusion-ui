@@ -1,5 +1,11 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, OnDestroy, OnInit, Type} from '@angular/core';
-import {isBoolean, StyleVersion, TableColumn, TableColumnTypeEnum, TableOptions, TableRowExpandEmitter} from '@ironsource/fusion-ui';
+import {isBoolean, StyleVersion} from '@ironsource/fusion-ui';
+import {
+    TableColumn,
+    TableColumnTypeEnum,
+    TableOptions,
+    TableRowExpandEmitter
+} from '@ironsource/fusion-ui/components/table/common/entities';
 import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline/common/base';
 import {FormControl, Validators} from '@angular/forms';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';

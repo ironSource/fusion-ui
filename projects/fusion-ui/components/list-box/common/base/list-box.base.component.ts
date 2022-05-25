@@ -4,7 +4,7 @@ import {ListBoxOption} from './entities/list-box-option';
 import {ControlValueAccessor} from '@angular/forms';
 import {ListBoxModes} from './entities/list-box-modes';
 import {detectChangesDecorator} from '@ironsource/fusion-ui/decorators';
-import {IconData} from '@ironsource/fusion-ui/components/icon';
+import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 
 @Directive()
 export abstract class ListBoxBaseComponent implements OnInit, ControlValueAccessor {

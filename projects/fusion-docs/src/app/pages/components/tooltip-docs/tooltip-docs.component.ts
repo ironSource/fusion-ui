@@ -5,7 +5,7 @@ import {DocsLayoutService} from '../../docs/docs-layout.service';
 import {BehaviorSubject} from 'rxjs';
 import {delay, tap} from 'rxjs/operators';
 import {VersionService} from '../../../services/version/version.service';
-import {TableColumnTypeEnum} from '@ironsource/fusion-ui';
+import {TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table/common/entities';
 
 @Component({
     selector: 'fusion-tooltip-docs',

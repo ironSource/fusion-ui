@@ -12,7 +12,7 @@ import {
 } from '@ironsource/fusion-ui/components/tags-input/entities';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 import {DropdownBaseComponent} from '@ironsource/fusion-ui/components/dropdown/common/base';
-import {Tag} from '@ironsource/fusion-ui/components/tag';
+import {Tag} from '@ironsource/fusion-ui/components/tag/common/entities';
 
 @Directive()
 export abstract class TagsInputBaseComponent extends DropdownBaseComponent {

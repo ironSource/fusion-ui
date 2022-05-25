@@ -3,7 +3,7 @@ import {ITooltipData, TooltipPosition, TooltipType} from './tooltip.entities';
 import {TooltipService} from './tooltip.base.service';
 import {Subject, fromEvent, merge, Observable} from 'rxjs';
 import {take, takeUntil} from 'rxjs/operators';
-import {IconData} from '@ironsource/fusion-ui/components/icon';
+import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 
 @Directive()
 export abstract class TooltipBaseDirective implements OnDestroy {

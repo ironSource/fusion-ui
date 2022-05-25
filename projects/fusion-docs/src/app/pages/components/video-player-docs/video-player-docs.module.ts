@@ -6,8 +6,9 @@ import {ExampleBlockModule} from '../../../components/example-block/example-bloc
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ReactiveFormsModule} from '@angular/forms';
-import {ButtonModule, TooltipModule, VideoPlayerModule} from '@ironsource/fusion-ui';
-
+import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v1';
+import {VideoPlayerModule} from '@ironsource/fusion-ui/components/video-player/v1';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button/v1';
 const routes: Routes = [{path: '', component: VideoPlayerDocsComponent}];
 
 @NgModule({
