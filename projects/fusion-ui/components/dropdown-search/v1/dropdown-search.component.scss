@@ -1,0 +1,13 @@
+@import '../../../src/style/scss/v1/vars/colors';
+@import "../../../src/style/scss/v1/vars/border";
+
+:host {
+    .search-panel {
+        color: white;
+        position: relative;
+        height: 39px;
+        padding: 0 10px;
+        @extend %borderBottom;
+    }
+    pointer-events: none;
+}

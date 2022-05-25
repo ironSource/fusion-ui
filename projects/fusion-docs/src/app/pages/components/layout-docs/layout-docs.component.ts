@@ -1,8 +1,9 @@
 import {Component, OnDestroy, OnInit, Type} from '@angular/core';
 import {environment} from '../../../../environments/environment';
-import {HeaderState, StyleVersion} from '@ironsource/fusion-ui';
+import {StyleVersion} from '@ironsource/fusion-ui';
+import {HeaderState} from '@ironsource/fusion-ui/components/header/common/base';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
-import {TableColumnTypeEnum} from '@ironsource/fusion-ui';
+import {TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table/common/entities';
 import {MenuItemExampleComponent} from '../../../components/menu-item-example/menu-item-example.component';
 import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';

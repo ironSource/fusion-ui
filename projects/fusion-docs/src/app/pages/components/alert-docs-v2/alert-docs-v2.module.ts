@@ -6,7 +6,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
-import {AlertModule} from '@ironsource/fusion-ui';
+import {AlertModule} from '@ironsource/fusion-ui/components/alert';
 
 const routes: Routes = [{path: '', component: AlertDocsV2Component}];
 

@@ -1,0 +1,52 @@
+<div
+    class="fusion-video-preview"
+    [style.width]="width"
+    [style.height]="height"
+    [ngClass]="{'no-data': !src}"
+>
+    <div *ngIf="src" class="is-video-exists">
+        <video
+            preload="metadata"
+            [attr.autoplay]="isAutoplay"
+            [attr.controls]="null"
+            [style.width]="width"
+            [style.height]="height"
+            [src]="src"
+            [poster]="thumbnail"
+            #videoPlayer
+        ></video>
+        <ng-container *ngIf="!isTimeline; else videoControls">
+            <div class="is-video-action-button" (click)="onVideoPlayPauseButtonClicked($event, videoPlayer)">
+                <fusion-icon class="button-play" [name]="playIconName" *ngIf="(isVideoPlaying$ | async) === false"></fusion-icon>
+                <fusion-icon class="button-pause" [name]="pauseIconName" *ngIf="(isVideoPlaying$ | async) === true"></fusion-icon>
+            </div>
+            <ng-container>
+                <div class="is-video-duration-holder">
+                    <fusion-icon class="icon-video-camera" [name]="videoCameraIconName"></fusion-icon>
+                    <ng-container *ngTemplateOutlet="videoTimeData"></ng-container>
+                </div>
+            </ng-container>
+        </ng-container>
+        <ng-template #videoControls>
+            <div class="vide-controls-overlay">
+                <div class="video-controls-holder">
+                    <div class="control-play-pause" (click)="onVideoPlayPauseButtonClicked($event, videoPlayer)">
+                        <fusion-icon class="control-button-play" [name]="{iconName: 'controls-play', iconVersion: 'v1'}" *ngIf="(isVideoPlaying$ | async) === false"></fusion-icon>
+                        <fusion-icon class="control-button-pause" [name]="{iconName: 'controls-pause', iconVersion: 'v1'}" *ngIf="(isVideoPlaying$ | async) === true"></fusion-icon>
+                    </div>
+                    <progress min="0" max="100" value="{{ progressValue$ | async }}" #progressBar></progress>
+                    <div class="control-timer"><ng-container *ngTemplateOutlet="videoTimeData"></ng-container></div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+
+    <div *ngIf="!src" class="is-no-video">
+        <fusion-icon class="fu-icon-no-video" *ngIf="options.noVideo?.icon" [name]="options.noVideo.icon"></fusion-icon>
+        <div *ngIf="options.noVideo?.title">{{ options.noVideo.title }}</div>
+    </div>
+</div>
+<ng-template #videoTimeData>
+    <span class="video-timing" [hidden]="(isVideoPlaying$ | async) === false">{{ videoCurrentTime$ | async | secondsToMinutes }}</span>
+    <span class="video-timing" [hidden]="(isVideoPlaying$ | async) === true">{{ videoDuration$ | async | secondsToMinutes }}</span>
+</ng-template>

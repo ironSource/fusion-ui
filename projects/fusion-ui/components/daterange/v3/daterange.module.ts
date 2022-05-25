@@ -4,11 +4,11 @@ import {ReactiveFormsModule} from '@angular/forms';
 
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
-import {DropdownSelectModule} from '@ironsource/fusion-ui/components/dropdown';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button/v3';
 import {DaterangeComponent} from './daterange.component';
 import {DaterangeService} from '@ironsource/fusion-ui/components/daterange/common/base';
 import {CalendarModule} from '@ironsource/fusion-ui/components/calendar/v3';
+import {DropdownSelectModule} from '@ironsource/fusion-ui/components/dropdown-select/v3';
 
 @NgModule({
     declarations: [DaterangeComponent],

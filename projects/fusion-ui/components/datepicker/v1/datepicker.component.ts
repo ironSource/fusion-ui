@@ -20,7 +20,7 @@ import {DatepickerMode} from './datepicker-mode';
 import {DatepickerDate} from './datepicker-date';
 import {InputComponent} from '@ironsource/fusion-ui/components/input/v1';
 import {TimezoneService} from '@ironsource/fusion-ui/services/timezone';
-import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 import {CalendarService} from '@ironsource/fusion-ui/components/calendar/common/base';
 import {DAY_NAMES} from '@ironsource/fusion-ui/components/calendar/common/base';
 import {Datepicker} from './datepicker';

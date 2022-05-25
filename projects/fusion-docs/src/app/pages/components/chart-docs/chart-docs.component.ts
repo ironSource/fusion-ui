@@ -1,5 +1,7 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {ChartComponent, ChartLabel, ChartDataset, StyleVersion, FusionChartPieData} from '@ironsource/fusion-ui';
+import {StyleVersion} from '@ironsource/fusion-ui';
+import {ChartComponent} from '@ironsource/fusion-ui/components/chart/v1';
+import {ChartLabel, ChartDataset, FusionChartPieData} from '@ironsource/fusion-ui/components/chart/common/base';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {FormControl} from '@angular/forms';
 import {takeUntil} from 'rxjs/operators';

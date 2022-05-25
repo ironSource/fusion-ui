@@ -1,0 +1,12 @@
+:host {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &.fu-disabled {
+        cursor: default;
+        pointer-events: none;
+    }
+}

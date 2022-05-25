@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {THEME_COLORS_PALETTE, UI_COLORS_PALETTE, COLORS_TEXT} from './colors-docs-config';
-import {TableColumnTypeEnum} from '@ironsource/fusion-ui';
+import {TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table/common/entities';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 
 @Component({

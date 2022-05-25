@@ -5,7 +5,8 @@ import {Routes, RouterModule} from '@angular/router';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
-import {ButtonModule, CheckboxModule, IconSelectListModule, InputModule} from '@ironsource/fusion-ui';
+import {ButtonModule, IconSelectListModule, InputModule} from '@ironsource/fusion-ui';
+import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox/v2';
 import {ReactiveFormsModule} from '@angular/forms';
 
 const routes: Routes = [{path: '', component: CheckboxDocsComponent}];

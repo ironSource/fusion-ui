@@ -1,0 +1,76 @@
+@import '../../../src/style/scss/v2/mixins/mixins';
+@import '../../../src/style/scss/v2/vars/vars';
+
+$iconWrapperSize: 32px;
+$borderRadius: 8px;
+
+
+:host {
+    @extend %border-box-normalize;
+    display: block;
+    border-radius: $borderRadius;
+    overflow: hidden;
+    box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.15);
+
+    .deviceSelectionFooter {
+        height: 48px;
+        background-color: $White;
+        border-bottom-left-radius: $borderRadius;
+        border-bottom-right-radius: $borderRadius;
+        padding: 14px 12px;
+        .selectedTitle{
+            @extend %font-bodyStrong;
+            line-height: 1.33;
+            color:  $fu-light-900;
+        }
+        .iconWrapper {
+            @include size($iconWrapperSize);
+            float: right;
+            border: solid 1px $fu-light-400;
+            border-radius: calc(#{$iconWrapperSize} / 2);
+            margin-right: 1px;
+            margin-left: 2px;
+            margin-top: -7px;
+            position: relative;
+            @include icon-style('icon-phone-landscape', $fu-light-700, (width: 18px, height: 10px), false, true) {
+                position: absolute;
+                top: 6px;
+                left: 6px;
+            }
+            @include icon-style('icon-phone-portrait', $fu-light-700, (width: 10px, height: 18px), false, true) {
+                position: absolute;
+                top: 6px;
+                left: 10px;
+            }
+            @include icon-style('icon-tablet-landscape', $fu-light-700, (width: 18px, height: 14px), false, true) {
+                position: absolute;
+                top: 8px;
+                left: 6px;
+            }
+            @include icon-style('icon-tablet-portrait', $fu-light-700, (width: 14px, height: 18px), false, true) {
+                position: absolute;
+                top: 6px;
+                left: 8px;
+            }
+
+            &.selected,
+            &:hover{
+                border-color: $fu-primary-100;
+                background-color: $fu-primary-100;
+                @include icon-style('icon-phone-landscape', $fu-primary-500, (width: 18px, height: 10px), false, true);
+                @include icon-style('icon-phone-portrait', $fu-primary-500, (width: 10px, height: 18px), false, true);
+                @include icon-style('icon-tablet-landscape', $fu-primary-500, (width: 18px, height: 14px), false, true);
+                @include icon-style('icon-tablet-portrait', $fu-primary-500, (width: 14px, height: 18px), false, true);
+            }
+            &:hover:not(.selected) {
+                cursor: pointer;
+            }
+            &.selected {
+                pointer-events: none;
+            }
+
+        }
+    }
+}
+
+

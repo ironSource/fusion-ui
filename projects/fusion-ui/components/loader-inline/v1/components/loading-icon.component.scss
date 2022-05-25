@@ -1,0 +1,17 @@
+@import '../../../../src/style/scss/v1/mixins/mixins';
+
+:host {
+    fusion-icon {
+        ::ng-deep svg {
+            @include size(15px);
+            * {
+                fill: none !important;
+            }
+            symbol#loading {
+                circle {
+                    stroke: currentColor !important;
+                }
+            }
+        }
+    }
+}

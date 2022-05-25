@@ -1,0 +1,60 @@
+@import '../../../src/style/scss/v1/vars/vars';
+@import '../../../src/style/scss/v1/mixins/mixins';
+
+//overlay loader
+$overlayLoaderBG: $White; //$greyBackground;
+$overlayLoaderTextColor: $dark-300;
+$overlayLoaderImgColor: $light-800;
+$overlayLoaderImgSize: 50px;
+
+:host {
+    display: block;
+    .is-loader {
+        @extend %applicationLayer;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        &.position-left {
+            align-items: baseline;
+            flex-direction: row;
+            justify-content: left;
+            left: 20px;
+
+            fusion-icon,
+            .is-loader-content {
+                align-self: center;
+            }
+        }
+
+        @include icon-style(null, null, 50px, false, true);
+
+        .is-loader-content {
+            @extend %font14;
+            color: $light-800;
+        }
+        &.small {
+            fusion-icon {
+                ::ng-deep svg {
+                    @include size(15px);
+                }
+            }
+        }
+        &.medium {
+            fusion-icon {
+                ::ng-deep svg {
+                    @include size(30px);
+                }
+            }
+            .is-loader-content {
+                @extend %font12;
+            }
+        }
+    }
+}

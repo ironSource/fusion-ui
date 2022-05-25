@@ -5,7 +5,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
-import {VideoPlayerModule} from '@ironsource/fusion-ui';
+import {VideoPlayerModule} from '@ironsource/fusion-ui/components/video-player/v2';
 
 const routes: Routes = [{path: '', component: VideoPlayerDocsV2Component}];
 
