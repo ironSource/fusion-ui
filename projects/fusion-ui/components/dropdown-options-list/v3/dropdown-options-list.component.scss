@@ -1,7 +1,7 @@
 @import '../../../src/style/scss/v3/vars/vars';
 
 :host {
-    @extend %border-box-normalize;
+/*    @extend %border-box-normalize;
     @extend %list-reset;
     .option {
         .is-dd-group {
@@ -19,5 +19,5 @@
     }
     li:first-child.option .is-dd-group{
         margin-top: 0;
-    }
+    }*/
 }
