@@ -2,7 +2,7 @@ import {ChangeDetectorRef, Directive, EventEmitter, HostBinding, Input, OnInit, 
 import {ControlValueAccessor} from '@angular/forms';
 import {DomSanitizer} from '@angular/platform-browser';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
-import {IconData} from '@ironsource/fusion-ui/components/icon';
+import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 
 @Directive()
 export abstract class CheckboxBaseComponent implements OnInit, ControlValueAccessor {

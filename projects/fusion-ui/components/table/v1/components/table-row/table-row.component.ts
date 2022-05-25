@@ -16,7 +16,7 @@ import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {Observable, of} from 'rxjs';
 import {ColumnData} from './column-data';
 import {TableRow} from './table-row';
-import {IconData} from '@ironsource/fusion-ui/components/icon';
+import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 
 @Component({
     // eslint-disable-next-line

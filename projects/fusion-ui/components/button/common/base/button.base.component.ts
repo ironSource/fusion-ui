@@ -1,5 +1,5 @@
 import {Input, OnInit, ElementRef, Renderer2, Injector, Output, EventEmitter, HostListener, Directive} from '@angular/core';
-import {IconData} from '@ironsource/fusion-ui/components/icon';
+import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 
 @Directive()
 export abstract class ButtonBaseComponent implements OnInit {

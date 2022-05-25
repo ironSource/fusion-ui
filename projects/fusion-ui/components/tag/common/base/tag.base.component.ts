@@ -1,8 +1,8 @@
-import {Directive, ElementRef, EventEmitter, Injector, Input, OnDestroy, OnInit, Output, Renderer2} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2} from '@angular/core';
 import {BehaviorSubject, fromEvent, Subject} from 'rxjs';
 import {TagComponentConfigurations} from '@ironsource/fusion-ui/components/tag/common/entities';
 import {takeUntil} from 'rxjs/operators';
-import {IconData} from '@ironsource/fusion-ui/components/icon';
+import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 
 @Directive()
 export abstract class TagBaseComponent implements OnInit, OnDestroy {

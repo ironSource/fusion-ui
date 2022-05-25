@@ -1,6 +1,6 @@
 import {MenuItemAdditionalData} from './menu-item-additional-data';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
-import {IconData} from '@ironsource/fusion-ui/components/icon';
+import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 
 export interface MenuItem {
     icon?: IconData;

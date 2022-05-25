@@ -2,7 +2,7 @@
  * Created on 2020.11.2 By Andy Kononenko (andyk@ironsrc.com)
  */
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
-import {IconData} from '@ironsource/fusion-ui/components/icon';
+import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 
 export type ToastType = 'success' | 'alert' | 'error' | 'warning';
 export type ToastLocation = 'top-right' | 'top-left' | 'top-center' | 'bottom-right' | 'bottom-left' | 'bottom-center';

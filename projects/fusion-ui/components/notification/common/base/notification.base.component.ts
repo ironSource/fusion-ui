@@ -4,7 +4,7 @@ import {NotificationService} from '@ironsource/fusion-ui/components/notification
 import {Notification, NotificationType} from '@ironsource/fusion-ui/components/notification/common/entities';
 import {isFunction} from '@ironsource/fusion-ui/utils';
 import {BehaviorSubject} from 'rxjs';
-import {IconData} from '@ironsource/fusion-ui/components/icon';
+import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 
 @Directive()
 export abstract class NotificationBaseComponent implements AfterViewInit {

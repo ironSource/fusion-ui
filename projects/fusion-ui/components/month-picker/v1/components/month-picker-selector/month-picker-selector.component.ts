@@ -1,8 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
-import {IconData} from '@ironsource/fusion-ui/components/icon';
 import {MONTH_NAMES_SHORT, MonthPicker} from '@ironsource/fusion-ui/components/month-picker/common/base';
 
 @Component({

@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation} from '@angular/core';
+import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 import {SvgComponent} from '@ironsource/fusion-ui/components/svg';
-import {IconData} from './icon-entities';
 
 @Component({
     selector: 'fusion-icon',
