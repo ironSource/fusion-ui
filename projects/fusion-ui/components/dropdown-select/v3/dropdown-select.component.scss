@@ -61,14 +61,12 @@ $headerSmallHeight: 32px;
             position: relative;
             &::after{
                 content: " ";
-                width: calc(100% + 30px);
-                /* height: 8px; */
+                width: 100%;
                 margin-left: -10px;
-                border-bottom: solid 2px #3083FF;
-                border-bottom: solid 2px var(--fu-primary-500, #3083FF);
-                /* display: block; */
+                border-bottom: solid 2px $fu-primary-500;
                 position: absolute;
-                bottom: 0px;            }
+                bottom: 0;
+            }
         }
 
         &.dd-disabled {
