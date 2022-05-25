@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {LayoutHeaderComponentConfiguration} from './layout-header-entity';
-import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
+import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 import {LayoutHeaderMenuConfiguration} from './layout-header-menu/layout-header-menu-entity';
 import {SIDEBAR_TOGGLE_ICON, USER_ICON_NAME} from './layout-header.config';
 import {SidebarMenuItem} from '@ironsource/fusion-ui/components/sidebar/common/entities';

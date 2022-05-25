@@ -1,4 +1,4 @@
-import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
+import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 

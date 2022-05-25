@@ -1,6 +1,6 @@
 import {AfterViewInit, Directive, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild} from '@angular/core';
 import {ToastEntity, ToastLocation, ToastType} from '@ironsource/fusion-ui/components/toast/common/entities';
-import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
+import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {fromEvent} from 'rxjs';
 import {take} from 'rxjs/operators';

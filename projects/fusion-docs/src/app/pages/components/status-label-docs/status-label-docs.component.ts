@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
-import {TableColumnTypeEnum} from '@ironsource/fusion-ui';
+import {TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table/common/entities';
 import {StatusLabelBorderType, StatusLabelConfig, StatusLabelStatus} from '@ironsource/fusion-ui/components/status-label/common/entities';
 import {TooltipType} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {DomSanitizer} from '@angular/platform-browser';

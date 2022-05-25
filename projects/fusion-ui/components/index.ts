@@ -1,4 +1,4 @@
-export * from './accordion';
+export * from './accordion/v2';
 export * from './alert';
 export * from './button';
 export * from './chart';

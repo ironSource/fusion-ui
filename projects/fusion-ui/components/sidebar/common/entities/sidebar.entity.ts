@@ -4,7 +4,7 @@
 
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
 import {SidebarMenuItem} from './sidebar-menu.entity';
-import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
+import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 
 export interface SidebarConfiguration {
     menuItems?: SidebarMenuItem[];

@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {WrapperComponent} from './wrapper.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {AccordionModule} from '@ironsource/fusion-ui/components/accordion';
+import {AccordionModule} from '@ironsource/fusion-ui/components/accordion/v2';
 import {AlertModule} from '@ironsource/fusion-ui/components/alert';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button';
 import {DatepickerModule} from '@ironsource/fusion-ui/components/datepicker';
@@ -22,7 +22,7 @@ import {
 
 import {
     AddboxDropdownModule
-} from '@ironsource/fusion-ui/components/addbox-dropdown';
+} from '@ironsource/fusion-ui/components/addbox-dropdown/v1';
 import {InputModule} from '@ironsource/fusion-ui/components/input';
 import {InputInlineModule} from '@ironsource/fusion-ui/components/input-inline';
 import {LayoutModule as LayoutV1Module} from '@ironsource/fusion-ui/components/layout/v1';

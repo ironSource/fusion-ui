@@ -9,6 +9,7 @@ import {LoaderBaseComponent} from '@ironsource/fusion-ui/components/loader/commo
 })
 export class LoaderComponent extends LoaderBaseComponent implements OnInit {
     ngOnInit() {
-        this.loaderIconName = this.size === 'inline' ? 'loading_rotate' : {iconName: 'loader-dots-v4', iconVersion: 'v2'};
+        this.loaderIconName =
+            this.size === 'inline' ? {iconName: 'loading-rotate', iconVersion: 'v2'} : {iconName: 'loader-dots-v4', iconVersion: 'v2'};
     }
 }

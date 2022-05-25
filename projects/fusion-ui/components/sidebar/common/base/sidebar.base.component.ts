@@ -6,7 +6,7 @@ import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {takeUntil} from 'rxjs/operators';
 import {SidebarMenuItem, SidebarConfiguration} from '@ironsource/fusion-ui/components/sidebar/common/entities';
 import {SidebarMenuService} from '@ironsource/fusion-ui/components/sidebar/common/services';
-import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
+import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 
 @Directive()
 export abstract class SidebarBaseComponent implements OnInit, OnDestroy {

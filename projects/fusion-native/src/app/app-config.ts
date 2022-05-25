@@ -1,5 +1,6 @@
-import {TableComponent} from '@ironsource/fusion-ui/components/table';
-import {AccordionComponent} from '@ironsource/fusion-ui/components/accordion';
+import {TableComponent} from '@ironsource/fusion-ui/components/table/v2';
+import {TableComponent as TableComponentV1} from '@ironsource/fusion-ui/components/table/v1';
+import {AccordionComponent} from '@ironsource/fusion-ui/components/accordion/v2';
 import {AlertComponent} from '@ironsource/fusion-ui/components/alert';
 import {CheckboxComponent} from '@ironsource/fusion-ui/components/checkbox';
 import {DatepickerComponent as DatepickerComponentV1} from '@ironsource/fusion-ui/components/datepicker/v1';
@@ -9,11 +10,11 @@ import {DropdownComponent as DropdownComponentV2} from '@ironsource/fusion-ui/co
 import {DropdownComponent} from '@ironsource/fusion-ui/components/dropdown';
 import {MonthPickerComponent} from '@ironsource/fusion-ui/components/month-picker';
 import {MonthPickerComponent as MonthPickerComponentV1} from '@ironsource/fusion-ui/components/month-picker/v1';
-import {DropdownDualMultiSelectComponent} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
+import {DropdownDualMultiSelectComponent} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select/v2';
 import {MultiDropdownComponent as MultiDropdownComponentV1} from '@ironsource/fusion-ui/components/multi-dropdown/v1';
 import {MultiDropdownComponent as MultiDropdownComponentV2} from '@ironsource/fusion-ui/components/multi-dropdown/v2';
 import {MultiDropdownComponent} from '@ironsource/fusion-ui/components/multi-dropdown';
-import {AddboxDropdownComponent} from '@ironsource/fusion-ui/components/addbox-dropdown';
+import {AddboxDropdownComponent} from '@ironsource/fusion-ui/components/addbox-dropdown/v1';
 import {IconHeaderActionComponent} from '@ironsource/fusion-ui/components/icon-header-action';
 import {FlagComponent} from '@ironsource/fusion-ui/components/flag';
 import {HeaderComponent} from '@ironsource/fusion-ui/components/header';
@@ -95,7 +96,7 @@ import {HeaderSizes} from '@ironsource/fusion-ui/components/header-overlay/commo
 import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline/common/base';
 import {ListBoxModes} from '@ironsource/fusion-ui/components/list-box/common/base';
 import {PopupLocation} from '@ironsource/fusion-ui/components/popup/common/entities';
-import {TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table';
+import {TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table/common/entities';
 import {TooltipPosition, TooltipType} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {FormControlStatus} from '@ironsource/fusion-ui/components/error-message';
 import {SwitcherMode} from '@ironsource/fusion-ui/components/switcher';
@@ -142,6 +143,7 @@ export const enums = {
 
 export const components = [
     {name: `${PREFIX}-table`, componentInstance: TableComponent},
+    {name: `${PREFIX}-table-v1`, componentInstance: TableComponentV1},
     {name: `${PREFIX}-button`, componentInstance: ButtonComponent},
     {name: `${PREFIX}-accordion`, componentInstance: AccordionComponent},
     {name: `${PREFIX}-alert`, componentInstance: AlertComponent},

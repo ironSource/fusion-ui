@@ -1,0 +1,20 @@
+@import "../../../../../src/style/scss/v1/vars/vars";
+@import "../../../../../src/style/scss/v1/mixins/mixins";
+@import "../../../../../src/style/scss/v1/vars/colors";
+
+$fullCellHeight: 41px;
+$failedCellHeight: 27px;
+
+:host{
+    @extend %link-reset;
+    .full-cell{
+        height: $fullCellHeight;
+        background-color: $light-100;
+        &.load-more, &.failed{
+            height: $failedCellHeight;
+            p{
+                margin: 0;
+            }
+        }
+    }
+}

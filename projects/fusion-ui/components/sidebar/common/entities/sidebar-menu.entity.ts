@@ -2,7 +2,7 @@
  * Created on 2020.12.10 By Andy Kononenko (andyk@ironsrc.com)
  */
 
-import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components';
+import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 import {IconData} from '@ironsource/fusion-ui/components/icon';
 
 export interface SidebarMenuItem {
