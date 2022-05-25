@@ -3,13 +3,13 @@
     [ngClass]="{'dd-opened': configurations?.isOpen, 'ss-selected': configurations?.selectedOption?.length}"
     [class.forced-placeholder]="configurations.placeholder?.forcePlaceholderOnSelection"
 >
-    <!--dynamic title-->
+    <!--region dynamic title-->
     <div class="is-dynamic-component-holder" [class.item-selected]="configurations.selectedOption.length > 0" [class.open-dropdown]="configurations.isOpen" *ngIf="configurations.dynamicContent; else regularLabel">
         <fusion-dynamic-components [configuration]="configurations.dynamicContent">
         </fusion-dynamic-components>
     </div>
-    <!--dynamic title-->
-    <!--regular title-->
+    <!--endregion dynamic title-->
+    <!--region regular title-->
     <ng-template #regularLabel>
         <label
             class="truncate"
@@ -17,15 +17,15 @@
             [ngClass]="getLabelCSSClasses(configurations.isOpen)"
             [class.icon]="configurations.icon"
         >
-            <!--search input-->
+            <!-- region search input-->
             <fusion-dropdown-search
                 *ngIf="configurations.isSearch && configurations.isOpen"
                 [formControl]="searchValue"
                 [placeholder]="configurations.placeholder?.search"
                 #searchComponent
             ></fusion-dropdown-search>
-            <!--search input-->
-            <!--inner content-->
+            <!-- endregion search input-->
+            <!--region inner content-->
             <div class="fu-inner-elements">
                 <img [src]="configurations.labelImage" *ngIf="configurations.labelImage && !configurations.isTabMode" alt=""/>
                 <fusion-icon class="is-custom-icon" *ngIf="configurations.icon" [name]="configurations.icon"></fusion-icon>
@@ -35,13 +35,14 @@
                     }}</span>
                 <div class="placeholderText" [innerHTML]="configurations.placeholder?.value"></div>
             </div>
-            <!--inner content-->
-            <!--dropdown icon-->
+            <!--endregion inner content-->
+            <!--region dropdown icon-->
             <fusion-icon class="icon-arrow" *ngIf="!configurations.isTabMode && !(configurations.isSearch && configurations.isOpen)" [name]="configurations.dropdownArrowIconName"></fusion-icon>
             <div *ngIf="configurations.isTabMode" class="dropdown-arrow-container" #dropdownArrowContainer>
                 <fusion-icon class="icon-arrow" [name]="configurations.dropdownArrowIconName"></fusion-icon>
             </div>
-            <!--dropdown icon-->
+            <!--endregion dropdown icon-->
         </label>
     </ng-template>
+    <!--endregion regular title-->
 </div>
