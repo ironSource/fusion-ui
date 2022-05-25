@@ -1,7 +1,6 @@
-import {ChangeDetectorRef, Directive, EventEmitter, Injector, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectorRef, Directive, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
-import {SwitcherItem} from './entities/switcher-item';
-import {SwitcherMode} from './entities/switcher-mode.enum';
+import {SwitcherItem, SwitcherMode} from '@ironsource/fusion-ui/components/switcher/common/entities';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Directive()

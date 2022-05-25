@@ -3,7 +3,7 @@ import {SwitcherComponent} from './switcher.component';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {FormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import {SwitcherItem} from '@ironsource/fusion-ui/components/switcher/common/base';
+import {SwitcherItem} from '@ironsource/fusion-ui/components/switcher/common/entities';
 
 class MockUniqueIdService extends UniqueIdService {
     getUniqueId() {

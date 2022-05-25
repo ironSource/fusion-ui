@@ -6,7 +6,7 @@ import {Router} from '@angular/router';
 import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {VersionService} from '../../../services/version/version.service';
-import {SwitcherItem, SwitcherMode} from '@ironsource/fusion-ui/components/switcher/common/base';
+import {SwitcherItem, SwitcherMode} from '@ironsource/fusion-ui/components/switcher/common/entities';
 
 @Component({
     selector: 'fusion-switchers-docs',

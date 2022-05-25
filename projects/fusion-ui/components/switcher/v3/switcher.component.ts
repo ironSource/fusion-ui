@@ -1,4 +1,15 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ElementRef,
+    EventEmitter,
+    forwardRef,
+    Input,
+    OnInit,
+    Output,
+    Renderer2
+} from '@angular/core';
 import {SwitcherItem, SwitcherConfiguration} from './switcher.entities';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
@@ -31,7 +42,12 @@ export class SwitcherComponent implements OnInit {
 
     private selected: SwitcherItem;
 
-    constructor(private uniqueService: UniqueIdService, private changeDetectorRef: ChangeDetectorRef) {}
+    constructor(
+        private uniqueService: UniqueIdService,
+        private changeDetectorRef: ChangeDetectorRef,
+        private elementRef: ElementRef,
+        private renderer: Renderer2
+    ) {}
 
     ngOnInit() {
         const uniq = this.uniqueService.getUniqueId();
@@ -71,5 +87,10 @@ export class SwitcherComponent implements OnInit {
 
     registerOnTouched(fn: any): void {
         this.propagateTouched = fn;
+    }
+
+    private changeHostClass(className: string, add: boolean): void {
+        const classAction = add ? 'addClass' : 'removeClass';
+        this.renderer[classAction](this.elementRef.nativeElement, className);
     }
 }

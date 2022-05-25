@@ -101,7 +101,7 @@ import {PopupLocation} from '@ironsource/fusion-ui/components/popup/common/entit
 import {TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table/common/entities';
 import {TooltipPosition, TooltipType} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {FormControlStatus} from '@ironsource/fusion-ui/components/error-message';
-import {SwitcherMode} from '@ironsource/fusion-ui/components/switcher/common/base';
+import {SwitcherMode} from '@ironsource/fusion-ui/components/switcher/common/entities';
 import {DaterangePresets} from '@ironsource/fusion-ui/components/daterange/entities';
 import {MobileOrientation} from '@ironsource/fusion-ui/components/mobile-previewer/common/base';
 
