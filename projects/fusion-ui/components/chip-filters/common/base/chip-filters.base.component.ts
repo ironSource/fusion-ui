@@ -4,8 +4,8 @@ import {BehaviorSubject, combineLatest, Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {ChipType} from '@ironsource/fusion-ui/components/chip-filter/common/base';
 import {FormControl} from '@angular/forms';
-import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown';
 import {SelectedFilters} from './chip-filters-entities';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 
 @Directive()
 export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestroy {

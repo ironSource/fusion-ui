@@ -2,7 +2,7 @@
 <!--<fusion-tooltip *ngIf="tooltipData.content"-->
 <!--                [tooltipData]="tooltipData"></fusion-tooltip>-->
 
-<fusion-chip-filters (onSelect)="chipChanged($event)" (onRemoveSelection)="removeChip($event)">
+<fusion-chip-filters [addFilterOptions]="option" (onSelect)="chipChanged($event)" (onRemoveSelection)="removeChip($event)">
     <fusion-chip-filter [configuration]="{id: 1, type: 'static'}">
         <div class="fu-chip-content">Chip filter 1: All</div>
         <div class="filter-element">

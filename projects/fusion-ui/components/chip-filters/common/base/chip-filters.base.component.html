@@ -9,10 +9,11 @@
                 </span>
             </div>
             <div class="filter-element">
-                <fusion-daterange
+                <fusion-dropdown
+                    [options]="options$ | async"
                     [formControl]="formControl"
                 >
-                </fusion-daterange>
+                </fusion-dropdown>
             </div>
         </fusion-chip-filter>
     </ng-container>

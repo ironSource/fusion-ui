@@ -39,6 +39,7 @@ $optionGroupHeight: 24px;
             left: 0;
             right: 0;
             top: calc(100% + 4px);
+            min-width: var(--dropdown-overlay-min-width, 180px);
             max-height: 0;
             background: $White;
             box-shadow: 0 2px 4px 0 rgba(12, 0, 51, 0.2);
@@ -296,5 +297,11 @@ $optionGroupHeight: 24px;
         .options-dropdown {
             top: 0;
         }
+    }
+}
+
+:host-context(fusion-chip-filter){
+    .is-dropdown .options-dropdown {
+        top: -4px;
     }
 }
