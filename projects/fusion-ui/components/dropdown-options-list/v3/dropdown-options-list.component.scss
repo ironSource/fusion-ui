@@ -1,6 +1,9 @@
 @import '../../../src/style/scss/v3/vars/vars';
 
 :host {
+    li.is-disabled{
+        pointer-events: none;
+    }
 /*    @extend %border-box-normalize;
     @extend %list-reset;
     .option {

@@ -33,7 +33,8 @@ export abstract class DropdownOptionsListBaseComponent {
     getOptionClasses(option: DropdownOption) {
         return {
             [option.class]: option.class,
-            'is-selected': this.isSelected(option)
+            'is-selected': this.isSelected(option),
+            'is-disabled': option.isDisabled
         };
     }
 

@@ -624,7 +624,7 @@ export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChan
      * event from directive on outside component click
      */
     onOutsideClick($event?) {
-        this.closeDropdown({clickOutside: true});
+        // this.closeDropdown({clickOutside: true});
     }
 
     private cloneOptions(options: DropdownOption[]): DropdownOption[] {

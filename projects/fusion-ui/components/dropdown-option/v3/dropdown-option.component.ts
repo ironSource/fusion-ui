@@ -3,7 +3,7 @@ import {DropdownOptionBaseComponent} from '@ironsource/fusion-ui/components/drop
 
 @Component({
     selector: 'fusion-dropdown-option',
-    templateUrl: '../common/base/dropdown-option.base.component.html',
+    templateUrl: './dropdown-option.component.html',
     styleUrls: ['./dropdown-option.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })

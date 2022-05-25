@@ -3,8 +3,27 @@
 @import '../../../src/style/scss/v3/mixins/mixins';
 
 :host {
-    @extend %border-box-normalize;
-    @extend %list-reset;
+    position: relative;
+    box-sizing: border-box;
+    width: inherit;
+    background: $White;
+    display: flex;
+    align-items: center;
+    height: 32px;
+    padding: 8px;
+    border-radius: 8px;
+    @extend %font-bodySmall;
+    color: $fu-black-500;
+    cursor: pointer;
+
+    &:hover {
+        background: $fu-light-50;
+    }
+
+
+
+
+/*    @extend %list-reset;
     position: relative;
     width: inherit;
     background: $White;
@@ -15,39 +34,40 @@
     @extend %font-body;
     cursor: pointer;
 
-    // for applications (image + text + icon)
-    .icon-container{
-        position: absolute;
-        right: 12px;
-        top: 9px;
-        @include icon-style('icon', $fu-light-500, 13px, false, true);
-    }
-    img {
-        @include size(20px);
-        max-width: 20px;
-        border-radius: 4px;
-        height: auto;
-        margin-right: 10px;
-        // text next from image
-        & + .truncate {
-            width: calc(100% - 50px);
-        }
-    }
-    .text {
-        line-height: 20px;
-        &.truncate{
-            @extend %truncate;
-        }
-    }
-
-    // for countries (option with flag)
-    fusion-flag {
-        margin-right: 6px;
-        vertical-align: super;
-        & + .truncate {
-            width: calc(100% - 24px);
-        }
-    }
+    // region for applications (image + text + icon)
+    //.icon-container{
+    //    position: absolute;
+    //    right: 12px;
+    //    top: 9px;
+    //    @include icon-style('icon', $fu-light-500, 13px, false, true);
+    //}
+    //img {
+    //    @include size(20px);
+    //    max-width: 20px;
+    //    border-radius: 4px;
+    //    height: auto;
+    //    margin-right: 10px;
+    //    // text next from image
+    //    & + .truncate {
+    //        width: calc(100% - 50px);
+    //    }
+    //}
+    //.text {
+    //    line-height: 20px;
+    //    &.truncate{
+    //        @extend %truncate;
+    //    }
+    //}
+    //
+    //// for countries (option with flag)
+    //fusion-flag {
+    //    margin-right: 6px;
+    //    vertical-align: super;
+    //    & + .truncate {
+    //        width: calc(100% - 24px);
+    //    }
+    //}
+    // endregion
 
     &:hover {
         background: $fu-light-100;
@@ -135,16 +155,20 @@
         ::ng-deep .is-id {
             color: inherit !important;
         }
-    }
+    }*/
 }
 
 :host-context(li.option.is-selected){
-    border: none;
     background-color: $fu-primary-100;
-    .icon-container{
-        @include icon-style('icon', $fu-primary-500, 13px, false, true);
-    }
+    color: $fu-primary-500;
 }
+:host-context(li.option.is-disabled){
+    color: $fu-light-800;
+    cursor: default;
+}
+
+
+/*
 :host-context(li.option.is-focused){
     background: $fu-light-100;
 }
@@ -152,3 +176,4 @@
 :host-context(.fu-large-item-height){
     padding: 11px 10px 3px;
 }
+*/
