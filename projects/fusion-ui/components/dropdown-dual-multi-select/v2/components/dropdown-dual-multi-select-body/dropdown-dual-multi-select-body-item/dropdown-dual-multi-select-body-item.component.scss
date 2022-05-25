@@ -1,0 +1,106 @@
+@import '../../../../../../src/style/scss/v1/vars/vars';
+@import '../../../../../../src/style/scss/v1/mixins/mixins';
+@import '../../../../../../src/style/scss/v1/vars/border';
+
+
+$rightSidePadding: 4px 4px 5px 6px;
+$leftSidePadding: 4px 4px 5px 5px;
+
+%hover {
+    border-radius: 5px;
+    background-color: #f7f8f9;
+}
+
+%truncateList {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+:host-context(.options-data-list) {
+    @extend %border-box-normalize;
+    .is-option-label {
+        position: relative;
+        img {
+            @include size(20px);
+            max-width: 20px;
+            border-radius:  4px;
+            vertical-align: middle;
+            margin-right: 1px;
+            margin-top: -2px;
+        }
+        @include icon-style('icon', $light-700, 12px, false, true) {
+            margin-right: 1px;
+            padding: 2px 2px 2px 3px;
+            vertical-align: sub;
+            display: inline-block;
+        }
+        fusion-flag {
+            margin-right: 4px;
+        }
+        .dynamic-item {
+            display: inline-block;
+        }
+        &.left-side {
+            @extend %font14;
+            padding: $leftSidePadding;
+            cursor: pointer;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            width: 249px;
+            height: 32px;
+            margin-left: 6px;
+            margin-top: 2px;
+            &:hover {
+                @extend %hover;
+            }
+            .fu-option-title {
+                &.truncate{
+                    width: 190px;
+                    @extend %truncateList;
+                }
+            }
+            .item-check {
+                margin-right: 8px;
+                line-height: 0;
+            }
+        }
+        &.right-side {
+            @include icon-style('icon-clear', $light-700, 12px, false, true);
+            @extend %font14;
+            padding: $rightSidePadding;
+            cursor: pointer;
+            display: flex;
+            width: 249px;
+            height: 32px;
+            justify-content: flex-start;
+            align-items: center;
+            margin-left: 3px;
+            margin-top: 2px;
+            &:hover {
+                @extend %hover;
+            }
+            .fu-option-title {
+                line-height: 20px;
+                &.truncate{
+                    width: 190px;
+                    @extend %truncateList;
+                }
+            }
+            fusion-icon {
+                &.icon-clear {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: absolute;
+                    height: 16px;
+                    width: 16px;
+                    right: 0;
+                    padding-right: 4px;
+                }
+            }
+        }
+    }
+}

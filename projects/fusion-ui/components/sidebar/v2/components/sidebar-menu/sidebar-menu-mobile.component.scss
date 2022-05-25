@@ -1,0 +1,135 @@
+@import '../../../../../src/style/scss/v2/vars/vars';
+@import '../../../../../src/style/scss/v2/mixins/mixins';
+@import '../../../../../src/style/scss/v2/mixins/breakpoints';
+
+$menuItemMobileHeight: 64px;
+$menuItemMobileColor: $White;
+$menuMobileBackgroundColor: $fu-dark-500;
+
+$menuItemMobileSelectedColor: $White;
+$menuItemMobileSelectedBgColor: $fu-dark-600;
+
+$menuMobileIconSize:  16px;
+$menuMobileReturnIconSize:  18px;
+$menuMobileItemFontSize: 15px;
+
+:host {
+    @include media-breakpoint-max('xs') {
+        margin-left: -3px;
+        .fu-sidebar-menu{
+            padding-top: 16px;
+            .fu-sidebar-menu-item-holder{
+                color: var(--sidebar-menu-item-color, $menuItemMobileColor);
+                a.fu-sidebar-menu-item{
+                    height: var(--sidebar-menu-mobile-item-height, $menuItemMobileHeight);
+                    @include icon-style('fu-sidebar-menu-item-icon', var(--sidebar-menu-item-icon-color, currentColor), var(--sidebar-menu-item-icon-size, $menuMobileIconSize), false, true);
+                    @include icon-style('fu-sidebar-menu-mobile-return-icon', var(--sidebar-menu-item-icon-color, currentColor), var(--sidebar-menu-item-icon-size, $menuMobileReturnIconSize), false, true);
+                    .fu-sidebar-menu-item-text,
+                    .fu-sidebar-menu-item-arrow{
+                        opacity: 1;
+                        font-size: $menuMobileItemFontSize;
+                        font-family: $groteskDSPro75Bd;
+                        font-weight: normal;
+                    }
+                    &.fu-external-link{
+                        .fu-sidebar-menu-item-text{
+                            opacity: 1;
+                            font-size: $menuMobileItemFontSize;
+                            font-family: $groteskDSPro75Bd;
+                            font-weight: normal;
+                        }
+                    }
+                }
+                &.fu-sidebar-menu-item-open.fu-sidebar-menu-item-selected{
+                    color: var(--sidebar-menu-item-mobile-selected-color, $menuItemMobileSelectedColor);
+                    background-color: var(--sidebar-menu-mobile-selected-background-color, $menuItemMobileSelectedBgColor);
+                }
+                &.fu-sidebar-menu-item-open.fu-sidebar-menu-item-selected.fu-sidebar-menu-item-no-children{
+                    color: var(--sidebar-menu-item-mobile-selected-color, $menuItemMobileSelectedColor);
+                }
+                &.fu-sidebar-menu-item-selected:not(.fu-sidebar-menu-item-open){
+                    color: var(--sidebar-menu-item-mobile-selected-color, $menuItemMobileSelectedColor);
+                    background-color: var(--sidebar-menu-mobile-selected-background-color, $menuItemMobileSelectedBgColor);
+                }
+                .fu-sidebar-menu-sub-items-holder{
+                    .fu-sidebar-menu-sub-item:hover{
+                        background-color: initial;
+                    }
+                }
+                &:hover{
+                    background-color: initial;
+                }
+            }
+        }
+    }
+}
+
+:host-context(.fu-sidebar-hide-logo){
+    @include media-breakpoint-max('xs') {
+        .fu-sidebar-menu{
+            padding-top: 0;
+            .fu-sidebar-menu-item-holder {
+                display: none;
+
+                &.fu-sidebar-menu-item-open {
+                    display: inherit;
+                    background-color: var(--sidebar-menu-mobile-background-color, $menuMobileBackgroundColor);
+
+                    a.fu-sidebar-menu-item {
+                        .fu-sidebar-menu-item-icon,
+                        .fu-sidebar-menu-item-arrow {
+                            display: none;
+                        }
+                        &:first-child{
+                            .fu-sidebar-menu-mobile-return-icon {
+                                display: block;
+                                margin-right: 16px;
+                            }
+                            height: 72px;
+                            .fu-sidebar-menu-item-text{
+                                font-size: 18px;
+                            }
+                        }
+                    }
+
+                    .fu-sidebar-menu-sub-items-holder {
+                        border-top: var(--layout-sidebar-delimiters-border, solid 1px rgba(255, 255, 255, 0.5));
+                        padding-top: 16px;
+                        a.fu-sidebar-menu-item{
+                            .fu-sidebar-menu-mobile-return-icon{
+                                display: none;
+                            }
+                            .fu-sidebar-menu-item-text{
+                                // has error in case use @extend %font-... in media query :(
+                                font-size: 15px;
+                                font-family: $groteskDSPro75Bd;
+                                font-weight: normal;
+                            }
+                            color: var(--sidebar-menu-item-color, $menuItemMobileColor);
+                            display: flex;
+                            align-items: center;
+                            height: var(--sidebar-menu-mobile-item-height, $menuItemMobileHeight);
+                            margin-right: 0;
+                            border-radius: 0;
+                            padding-left: 32px;
+
+                            &.fu-main-sub-item-active {
+                                color: var(--sidebar-menu-item-mobile-selected-color, $menuItemMobileSelectedColor);
+                                background-color: var(--sidebar-menu-mobile-selected-background-color, $menuItemMobileSelectedBgColor);
+                                .fu-sidebar-menu-item-text{
+                                    // has error in case use @extend %font-... in media query :(
+                                    font-size: 15px;
+                                    font-family: $groteskDSPro75Bd;
+                                    font-weight: normal;
+                                }
+                            }
+                        }
+                        .fu-sidebar-menu-sub-item-title {
+                            color: var(--sidebar-menu-item-color, $menuItemMobileColor);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

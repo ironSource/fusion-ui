@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {WrapperComponent} from './wrapper.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {AccordionModule} from '@ironsource/fusion-ui/components/accordion';
+import {AccordionModule} from '@ironsource/fusion-ui/components/accordion/v2';
 import {AlertModule} from '@ironsource/fusion-ui/components/alert';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button';
 import {DatepickerModule} from '@ironsource/fusion-ui/components/datepicker';
@@ -17,16 +17,16 @@ import {
 // prettier-ignore
 import {
     MultiDropdownModule
-} from '@ironsource/fusion-ui/components/dropdown';
+} from '@ironsource/fusion-ui/components/multi-dropdown';
 // prettier-ignore
 
 import {
     AddboxDropdownModule
-} from '@ironsource/fusion-ui/components/dropdown';
+} from '@ironsource/fusion-ui/components/addbox-dropdown/v1';
 import {InputModule} from '@ironsource/fusion-ui/components/input';
 import {InputInlineModule} from '@ironsource/fusion-ui/components/input-inline';
-import {LayoutV1Module} from '@ironsource/fusion-ui/components/layout-v1';
-import {LayoutModule} from '@ironsource/fusion-ui/components/layout';
+import {LayoutModule as LayoutV1Module} from '@ironsource/fusion-ui/components/layout/v1';
+import {LayoutModule} from '@ironsource/fusion-ui/components/layout/v2';
 import {ListBoxModule} from '@ironsource/fusion-ui/components/list-box';
 import {LoaderModule} from '@ironsource/fusion-ui/components/loader';
 import {LoaderInlineModule} from '@ironsource/fusion-ui/components/loader-inline';
@@ -42,7 +42,7 @@ import {TagModule} from '@ironsource/fusion-ui/components/tag';
 import {ToggleModule} from '@ironsource/fusion-ui/components/toggle';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {VideoPlayerModule} from '@ironsource/fusion-ui/components/video-player';
-import {TagsInputModule} from '@ironsource/fusion-ui/components/dropdown';
+import {TagsInputModule} from '@ironsource/fusion-ui/components/tags-input/v2';
 import {ChartLabelsModule} from '@ironsource/fusion-ui/components/chart-labels';
 import {ChartModule} from '@ironsource/fusion-ui/components/chart';
 import {IconSelectListModule} from '@ironsource/fusion-ui/components/icon-select-list';

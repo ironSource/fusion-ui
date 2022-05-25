@@ -1,0 +1,7 @@
+<div *ngIf="status" class="is-loader" [ngClass]="[size, color, loaderPosition]">
+    <ng-container *ngIf="componentType" [ngComponentOutlet]="componentType" #customLoader></ng-container>
+    <ng-container *ngIf="!componentType">
+        <fusion-icon *ngIf="loaderIconName" class="fu-loader" [name]="loaderIconName"></fusion-icon>
+        <span class="is-loader-content" #ref><ng-content></ng-content></span>
+    </ng-container>
+</div>

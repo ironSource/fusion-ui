@@ -6,7 +6,9 @@ import {ExampleBlockModule} from '../../../components/example-block/example-bloc
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ReactiveFormsModule} from '@angular/forms';
-import {LoaderModule, LoaderInlineModule, ButtonModule} from '@ironsource/fusion-ui';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
+import {LoaderInlineModule} from '@ironsource/fusion-ui/components/loader-inline';
+import {LoaderModule} from '@ironsource/fusion-ui/components/loader';
 import {CustomLoaderModule} from './custom-loader/custom-loader.module';
 
 const routes: Routes = [{path: '', component: LoaderDocsComponent}];

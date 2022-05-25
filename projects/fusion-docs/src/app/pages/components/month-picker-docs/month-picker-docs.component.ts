@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {FormControl, Validators} from '@angular/forms';
-import {MonthPickerConfiguration} from '@ironsource/fusion-ui';
+import {MonthPickerConfiguration} from '@ironsource/fusion-ui/components/month-picker/common/base';
 import {CSS_CUSTOM_PROPERTIES} from './month-picker-docs.config';
 import {VersionService} from '../../../services/version/version.service';
 import {BehaviorSubject} from 'rxjs';

@@ -1,7 +1,6 @@
 import {Component, OnDestroy, OnInit, Type, ViewChild} from '@angular/core';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {ClosedOptions, DropdownComponent, DropdownOption, DynamicComponentConfiguration, StyleVersion} from '@ironsource/fusion-ui';
 import {
     MOCK_AUTOCOMPLETE_DATA,
     MOCK_OPTIONS,
@@ -18,6 +17,11 @@ import {Router} from '@angular/router';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
 import {DropdownCustomPlaceholderComponent} from '../../../components/dropdown-custom-placeholder/dropdown-custom-placeholder.component';
 import {VersionService} from '../../../services/version/version.service';
+import {StyleVersion} from '@ironsource/fusion-ui';
+import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
+import {DropdownComponent} from '@ironsource/fusion-ui/components/dropdown/v2';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
+import {ClosedOptions} from '@ironsource/fusion-ui/components/dropdown/entities';
 
 @Component({
     selector: 'fusion-dropdown-docs-v2',

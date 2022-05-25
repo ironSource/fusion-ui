@@ -6,7 +6,7 @@ import {ExampleBlockModule} from '../../../components/example-block/example-bloc
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ButtonModule} from '@ironsource/fusion-ui';
-import {PopupModule} from '@ironsource/fusion-ui';
+import {PopupModule} from '@ironsource/fusion-ui/components/popup';
 
 @NgModule({
     declarations: [PopupDocsComponent],

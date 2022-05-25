@@ -1,7 +1,0 @@
-@import '../../../../src/style/scss/v2/mixins/breakpoints';
-
-:host{
-    @include media-breakpoint-max('xs') {
-        display: none;
-    }
-}
