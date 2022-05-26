@@ -52,21 +52,6 @@ $optionGroupHeight: 24px;
                 overflow: hidden;
                 overflow-y: auto;
                 @extend %customScroll;
-
-                .fu-option-title{
-                    height: 48px;
-                    @extend %font-bodyMediumStrong;
-                    color: $fu-black-500;
-                    padding: 12px;
-                    border-bottom: solid 1px $fu-light-400;
-                    margin: 0 -4px;
-                }
-                .fu-search-holder{
-                    height: 40px;
-                    padding: 9px 12px 12px;
-                    border-bottom: solid 1px $fu-light-400;
-                    margin: 0 -4px;
-                }
             }
         }
 
@@ -86,6 +71,32 @@ $optionGroupHeight: 24px;
                 // use search or auto-complete input
                 &.dd-confirm {
                     max-height: calc(#{$optionHeight} * #{($optionsToShow + 1)} + 12px); //  8 options + search + padding 2*3 and border 2*1
+                }
+
+                &.fu-has-search{
+                    max-height: calc(#{$optionHeight} * #{$optionsToShow} + 40px);
+                }
+
+                &.fu-has-title{
+                    max-height: calc(#{$optionHeight} * #{$optionsToShow} + 48px);
+                    &.fu-has-search{
+                        max-height: calc(#{$optionHeight} * #{$optionsToShow} + 48px + 40px);
+                    }
+                }
+
+                .fu-option-title{
+                    height: 48px;
+                    @extend %font-bodyMediumStrong;
+                    color: $fu-black-500;
+                    padding: 12px;
+                    border-bottom: solid 1px $fu-light-400;
+                    margin: 0 -4px;
+                }
+                .fu-search-holder{
+                    height: 40px;
+                    padding: 9px 12px 12px;
+                    border-bottom: solid 1px $fu-light-400;
+                    margin: 0 -4px;
                 }
 
                 // move it to the right component - dropdown options list

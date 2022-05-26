@@ -11,7 +11,7 @@
     <!--endregion dynamic title-->
     <!--region regular title-->
     <ng-template #regularLabel>
-        <label
+        <label class="truncate"
             [fusionTooltip]="configurations.placeholder?.value"
             [ngClass]="getLabelCSSClasses(configurations.isOpen)"
             [class.icon]="configurations.icon"
