@@ -41,7 +41,7 @@ $headerSmallHeight: 32px;
 
             img {
                 @include size(20px);
-                @extend %app-image-masked;
+                @extend %image-masked;
             }
             // endregion
 
@@ -56,9 +56,17 @@ $headerSmallHeight: 32px;
         }
 
         &:active:not(.is-tab-mode),
-        &.dd-active {
-            border-bottom: solid 2px $fu-primary-500;
-            padding-bottom: 8px;
+        &.dd-active,
+        &.dd-active.dd-search-active{
+            position: relative;
+            &::after{
+                content: " ";
+                width: 100%;
+                margin-left: -10px;
+                border-bottom: solid 2px $fu-primary-500;
+                position: absolute;
+                bottom: 0;
+            }
         }
 
         &.dd-disabled {

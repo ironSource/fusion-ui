@@ -85,7 +85,6 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
         this._error = error;
         this.dropdownSelectConfigurations$.next(this.getDropdownSelectConfigurations());
     }
-
     get error(): string {
         return this._error;
     }
