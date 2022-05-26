@@ -14,6 +14,10 @@ export abstract class DropdownSearchBaseComponent implements OnInit, OnDestroy, 
 
     onDestroy$ = new Subject<void>();
 
+    public get searchInOptions(): boolean {
+        return this.elementRef?.nativeElement.classList.contains('fu-search-in-options');
+    }
+
     constructor(protected elementRef: ElementRef) {}
 
     ngOnInit() {
