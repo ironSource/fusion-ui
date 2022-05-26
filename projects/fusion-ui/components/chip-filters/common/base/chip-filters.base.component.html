@@ -10,8 +10,8 @@
             </div>
             <div class="filter-element">
                 <fusion-dropdown
-                    [optionsTitle]="'Title'"
-                    [search]="true"
+                    [optionsTitle]="addFiltersTitle"
+                    [search]="isSearch"
                     [options]="options$ | async"
                     [formControl]="formControl"
                 >

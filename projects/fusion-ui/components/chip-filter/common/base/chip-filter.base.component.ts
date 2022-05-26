@@ -32,6 +32,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     private chipSelected: boolean = false;
     private chipType: ChipFilterType = 'static';
     private _disabled$ = new BehaviorSubject<boolean>(false);
+    private chipSelectValue: {id: number | string; value?: any; isSelected?: boolean};
 
     @Input() set configuration(value: ChipFilterComponentConfigurations) {
         if (!!value) {
@@ -141,13 +142,14 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
             ?.valueSelected()
             .pipe(takeUntil(this.onDestroy$))
             .subscribe((selected: {value: any; isSelected: boolean}) => {
-                if (selected.isSelected && !this.disabled) {
+                if (selected?.isSelected) {
                     this.selected = selected.isSelected;
                     this.setChipType(this.selected);
-                    this.onSelectedChange.emit({
+                    this.chipSelectValue = {
                         id: this.id,
                         ...selected
-                    });
+                    };
+                    this.onSelectedChange.emit(this.chipSelectValue);
                 }
             });
     }
@@ -159,10 +161,11 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
             .subscribe(_ => {
                 this.selected = true;
                 this.setChipType(this.selected);
-                this.onSelectedChange.emit({
+                this.chipSelectValue = {
                     id: this.id,
-                    selected: this.selected
-                });
+                    isSelected: this.selected
+                };
+                this.onSelectedChange.emit(this.chipSelectValue);
             });
     }
 

@@ -30,6 +30,10 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
         this.options$.next(options);
     }
 
+    @Input() addFiltersTitle: string;
+
+    @Input() isSearch: boolean = false;
+
     @Output() onSelect = new EventEmitter<any>();
 
     @Output() onRemoveSelection = new EventEmitter<any>();
@@ -54,6 +58,7 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
     }
 
     ngAfterViewInit() {
+        this.setPreSelectedFilters();
         this.activateAddFilter();
         this.orderChipFilters(this.chipFilters);
         this.initListeners();
@@ -66,7 +71,11 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
 
         this.onClosedChipListener();
 
-        this.formControl.valueChanges.pipe().subscribe((option: DropdownOption[]) => this.addChipFilter(option[0]));
+        this.formControl.valueChanges.pipe().subscribe((option: DropdownOption[]) => {
+            if (option) {
+                this.addChipFilter(option[0]);
+            }
+        });
     }
 
     private activateAddFilter(): void {
@@ -88,15 +97,13 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
 
     private onSelectedValueListener(): void {
         this.chipFilters.forEach(chip => {
-            if (chip.type !== 'add') {
-                chip.onSelectedChange.pipe(takeUntil(this.onDestroy$)).subscribe(val => {
-                    const isSelected = this.selectedFilters.some(selectedChip => selectedChip.id === val.id);
-                    if (!isSelected) {
-                        this.selectedFilters = [...this.selectedFilters, val];
-                        this.onSelect.emit(this.selectedFilters);
-                    }
-                });
-            }
+            chip.onSelectedChange.pipe(takeUntil(this.onDestroy$)).subscribe(val => {
+                const isSelected = this.selectedFilters.some(selectedChip => selectedChip.id === val.id);
+                if (!isSelected) {
+                    this.selectedFilters = [...this.selectedFilters, val];
+                    this.onSelect.emit(this.selectedFilters);
+                }
+            });
         });
     }
 
@@ -105,6 +112,7 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
             chip.onRemove.pipe(takeUntil(this.onDestroy$)).subscribe(val => {
                 this.selectedFilters = this.selectedFilters.filter(selectedChip => val.id !== selectedChip.id);
                 this.onRemoveSelection.emit(this.selectedFilters);
+                this.formControl.reset();
             })
         );
     }
@@ -140,5 +148,10 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
                     this.renderer.setStyle(chip.element.nativeElement, 'order', `${index}`);
             }
         });
+    }
+
+    private setPreSelectedFilters(): void {
+        const preSelectedChip = this.chipFilters.filter(chip => !!chip['chipSelectValue']);
+        this.selectedFilters = preSelectedChip.map(chip => chip['chipSelectValue']);
     }
 }

@@ -12,6 +12,7 @@ import {FormControl} from '@angular/forms';
 export class AppComponent implements OnInit, OnDestroy {
     tooltipData: ITooltipData = {};
     formControl = new FormControl();
+    formControl1 = new FormControl({id: 1, displayText: 'Option 1'});
     formControl2 = new FormControl({startDate: new Date(), endDate: new Date()});
     optionsFilter = [
         {id: 1, displayText: 'Option 1'},

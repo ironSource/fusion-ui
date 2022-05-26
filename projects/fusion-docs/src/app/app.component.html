@@ -3,7 +3,7 @@
 <!--                [tooltipData]="tooltipData"></fusion-tooltip>-->
 
 <fusion-chip-filters [addFilterOptions]="optionsFilter" (onSelect)="chipChanged($event)" (onRemoveSelection)="removeChip($event)">
-    <fusion-chip-filter [configuration]="{id: 1, type: 'static'}">
+    <fusion-chip-filter [configuration]="{id: 1, type: 'static', disabled: true}">
         <div class="fu-chip-content">Chip filter 1: All</div>
         <div class="filter-element">
             <fusion-daterange
@@ -66,7 +66,7 @@
         <div class="fu-chip-content">Status 7: Active</div>
         <div class="filter-element">
             <fusion-daterange
-                [formControl]="formControl2"
+                [formControl]="formControl"
             >
             </fusion-daterange>
         </div>
@@ -110,7 +110,7 @@
     <fusion-chip-filter [configuration]="{id: 2,type:'dynamic'}">
         <div class="fu-chip-content">Status 2: Active</div>
     </fusion-chip-filter>
-    <fusion-chip-filter [configuration]="{id: 3,type:'static'}">
+    <fusion-chip-filter [configuration]="{id: 3,type:'static', disabled:true}">
         <div class="fu-chip-content">Status 3: Active</div>
     </fusion-chip-filter>
     <fusion-chip-filter [configuration]="{id: 4,type:'static', close: true}">
