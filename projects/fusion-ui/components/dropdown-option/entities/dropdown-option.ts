@@ -17,7 +17,7 @@ export interface DropdownOption {
     isSelected?: boolean;
     childOptions?: DropdownOption[];
     permissions?: string[]; // if user can see option by his permission
-    subText?: {text: string; icon?: string} | string;
+    subText?: {text: string; icon?: string};
     indicationStatus?: boolean;
     tooltipText?: string;
     isDisabled?: boolean;

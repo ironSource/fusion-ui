@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {LoaderInlineModule} from '@ironsource/fusion-ui/components/loader-inline';
 import {DropdownLoaderComponent} from './dropdown-loader.component';
 import {DropdownLoaderDirective} from './dropdown-loader.directive';
-import {IconModule} from '@ironsource/fusion-ui';
+import {IconModule} from '@ironsource/fusion-ui/components/icon';
 
 @NgModule({
     declarations: [DropdownLoaderDirective, DropdownLoaderComponent],
