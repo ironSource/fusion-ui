@@ -81,6 +81,7 @@
 :host-context(li.option.is-selected){
     background-color: $fu-primary-100;
     color: $fu-primary-500;
+    @include icon-style('fu-option-icon', $fu-primary-400, 16px, false, true);
     .sub-text-container{
         label {
             color: $fu-primary-400;
@@ -90,6 +91,7 @@
 :host-context(li.option.is-disabled){
     color: $fu-light-800;
     cursor: default;
+    @include icon-style('fu-option-icon', $fu-light-600, 16px, false, true);
     .sub-text-container{
         label {
             color: $fu-light-800;
