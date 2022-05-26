@@ -12,12 +12,6 @@ import {FormControl} from '@angular/forms';
 export class AppComponent implements OnInit, OnDestroy {
     tooltipData: ITooltipData = {};
     private onDestroy$ = new Subject();
-    options = [
-        {id: 1, title: 'First'},
-        {id: 2, title: 'Second'},
-        {id: 3, title: 'Third'}
-    ];
-    formControl = new FormControl();
     constructor(private tooltipService: TooltipService) {}
 
     ngOnInit() {
