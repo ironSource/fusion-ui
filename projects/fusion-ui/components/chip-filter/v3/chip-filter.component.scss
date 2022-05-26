@@ -1,10 +1,11 @@
 @import '../../../src/style/scss/v3/mixins/mixins';
 @import '../../../src/style/scss/v3/vars/colors';
 @import '../../../src/style/scss/v3/vars/fonts';
+@import '../../../src/style/scss/v3/vars/vars';
 
 
 $chipHeight: 32px;
-$chipMaxWidth: 352px;
+$chipMaxWidth: 154px;
 
 $paddingChip:  4px 12px 4px 12px;
 $paddingWithBorderChip:  3px 11px 3px 11px;
@@ -31,12 +32,19 @@ $paddingChipWithCloseButton: 4px 10px 4px 14px;
     color:$fu-primary-500;
 }
 
+%chip-select-disable {
+    background-color: $fu-primary-100;
+    color: $fu-primary-500;
+    opacity: 0.7;
+    pointer-events: none;
+    .fu-icon-close {
+        display: none;
+    }
+}
+
 :host {
     box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: fit-content;
+    display: inline-block;
     position: relative;
 
     &.fu-un-removable-filter {
@@ -49,61 +57,24 @@ $paddingChipWithCloseButton: 4px 10px 4px 14px;
                 cursor: pointer;
             }
 
-            .fu-chip-content-wrapper.truncate {
-                white-space: nowrap;
-                overflow: hidden !important;
-                text-overflow: ellipsis;
-                display: inline-block;
-            }
-
-            .fu-icon-close {
-                display: none;
-            }
-
-        }
-        &.fu-disabled {
-            .fu-chip-filter-container{
-                background-color: $fu-primary-100;
-                color: $fu-primary-500;
-                opacity: 0.7;
-
-                .fu-icon-close {
-                    display: none;
+            fu-chip-content-wrapper{
+                &.truncate {
+                    white-space: nowrap;
+                    overflow: hidden !important;
+                    text-overflow: ellipsis;
+                    display: inline-block;
                 }
-
-                pointer-events: none;
-            }
-        }
-    }
-
-    &.fu-add-filter {
-        .fu-chip-filter-container {
-            @extend %chip-style;
-            background-color: $fu-light-200;
-            padding: $paddingChipWithIcon;
-            color: $fu-black-500;
-
-            .fu-chip-content-wrapper.truncate {
-                white-space: nowrap;
-                overflow: hidden !important;
-                text-overflow: ellipsis;
-                display: inline-block;
             }
 
             .fu-icon-close {
                 display: none;
             }
 
-            &:hover {
-                color: $fu-primary-500;
-                cursor: pointer;
-            }
         }
-
         &.fu-disabled {
             .fu-chip-filter-container{
-                color: $fu-light-900;
-                pointer-events: none;
+                @extend %chip-select-disable;
+
             }
         }
     }
@@ -131,11 +102,12 @@ $paddingChipWithCloseButton: 4px 10px 4px 14px;
                     cursor: pointer;
                 }
 
-                .fu-chip-content-wrapper.truncate {
-                    white-space: nowrap;
-                    overflow: hidden !important;
-                    text-overflow: ellipsis;
-                    display: inline-block;
+                fu-chip-content-wrapper{
+                    &.truncate {
+                        white-space: nowrap;
+                        overflow: hidden !important;
+                        text-overflow: ellipsis;
+                    }
                 }
 
                 fusion-icon.fu-icon-close {
@@ -152,11 +124,41 @@ $paddingChipWithCloseButton: 4px 10px 4px 14px;
             }
             &.fu-disabled {
                 .fu-chip-filter-container{
-                    background-color: $fu-primary-100;
-                    color: $fu-primary-500;
-                    opacity: 0.7;
-                    pointer-events: none;
+                    @extend %chip-select-disable;
                 }
+            }
+        }
+    }
+
+    &.fu-add-filter {
+        .fu-chip-filter-container {
+            @extend %chip-style;
+            background-color: $fu-light-200;
+            padding: $paddingChipWithIcon;
+            color: $fu-black-500;
+
+            fu-chip-content-wrapper{
+                &.truncate {
+                    white-space: nowrap;
+                    overflow: hidden !important;
+                    text-overflow: ellipsis;
+                }
+            }
+
+            .fu-icon-close {
+                display: none;
+            }
+
+            &:hover {
+                color: $fu-primary-500;
+                cursor: pointer;
+            }
+        }
+
+        &.fu-disabled {
+            .fu-chip-filter-container{
+                color: $fu-light-900;
+                pointer-events: none;
             }
         }
     }
@@ -170,11 +172,12 @@ $paddingChipWithCloseButton: 4px 10px 4px 14px;
             cursor: pointer;
             padding: $paddingWithBorderChip;
 
-            .fu-chip-content-wrapper.truncate {
-                white-space: nowrap;
-                overflow: hidden !important;
-                text-overflow: ellipsis;
-                display: inline-block;
+            .fu-chip-content-wrapper{
+                &.truncate {
+                    white-space: nowrap;
+                    overflow: hidden !important;
+                    text-overflow: ellipsis;
+                }
             }
 
             .fu-icon-close {
@@ -198,4 +201,5 @@ $paddingChipWithCloseButton: 4px 10px 4px 14px;
         }
 
     }
+
 }

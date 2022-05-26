@@ -3,7 +3,7 @@
 <!--                [tooltipData]="tooltipData"></fusion-tooltip>-->
 
 <fusion-chip-filters [isSearch]="true" [addFiltersTitle]="'Countries'" [addFilterOptions]="optionsFilter" (onSelect)="chipChanged($event)" (onRemoveSelection)="removeChip($event)">
-    <fusion-chip-filter [configuration]="{id: 1, type: 'static', disabled: true}">
+    <fusion-chip-filter [configuration]="{id: 1, mode: 'static', disabled: true}">
         <div class="fu-chip-content">Chip filter 1: All</div>
         <div class="filter-element">
             <fusion-daterange
@@ -14,8 +14,8 @@
         </div>
     </fusion-chip-filter>
 
-    <fusion-chip-filter [configuration]="{id: 2, type:'dynamic'}">
-        <div class="fu-chip-content">Alert type 2</div>
+    <fusion-chip-filter [configuration]="{id: 2, mode:'dynamic'}">
+        <div class="fu-chip-content">Alert mode 2</div>
         <div class="filter-element">
             <fusion-daterange
                 [formControl]="formControl"
@@ -23,7 +23,7 @@
             </fusion-daterange>
         </div>
     </fusion-chip-filter>
-    <fusion-chip-filter [configuration]="{id: 3,type:'dynamic'}">
+    <fusion-chip-filter [configuration]="{id: 3,mode:'dynamic'}">
         <div class="fu-chip-content">Status 3: Active</div>
         <div class="filter-element">
             <fusion-daterange
@@ -33,8 +33,8 @@
         </div>
     </fusion-chip-filter>
 
-    <fusion-chip-filter [configuration]="{id: 4,type:'static'}">
-        <div class="fu-chip-content">Alert type 4: All</div>
+    <fusion-chip-filter [configuration]="{id: 4,mode:'static'}">
+        <div class="fu-chip-content">Alert mode 4: All</div>
         <div class="filter-element">
             <fusion-daterange
                 [formControl]="formControl"
@@ -43,7 +43,7 @@
         </div>
     </fusion-chip-filter>
 
-    <fusion-chip-filter [configuration]="{id: 5,type:'static',close:true}">
+    <fusion-chip-filter [configuration]="{id: 5,mode:'static',close:true}">
         <div class="fu-chip-content">Status 5: Active</div>
         <div class="filter-element">
             <fusion-daterange
@@ -53,7 +53,7 @@
         </div>
     </fusion-chip-filter>
 
-    <fusion-chip-filter [configuration]="{id: 6,type:'static',close:true}">
+    <fusion-chip-filter [configuration]="{id: 6,mode:'static',close:true}">
         <div class="fu-chip-content">Status 6: Active</div>
         <div class="filter-element">
             <fusion-daterange
@@ -62,7 +62,7 @@
             </fusion-daterange>
         </div>
     </fusion-chip-filter>
-    <fusion-chip-filter [configuration]="{id: 7,type:'static'}">
+    <fusion-chip-filter [configuration]="{id: 7,mode:'static'}">
         <div class="fu-chip-content">Status 7: Active</div>
         <div class="filter-element">
             <fusion-daterange
@@ -71,7 +71,7 @@
             </fusion-daterange>
         </div>
     </fusion-chip-filter>
-    <fusion-chip-filter [configuration]="{id: 8,type:'static',close:true}">
+    <fusion-chip-filter [configuration]="{id: 8,mode:'static',close:true}">
         <div class="fu-chip-content">Status 8: Active</div>
         <div class="filter-element">
             <fusion-daterange
@@ -80,7 +80,7 @@
             </fusion-daterange>
         </div>
     </fusion-chip-filter>
-    <fusion-chip-filter [configuration]="{id: 9,type:'static',close:true}">
+    <fusion-chip-filter [configuration]="{id: 9,mode:'static',close:true}">
         <div class="fu-chip-content">Status 9: Active</div>
         <div class="filter-element">
             <fusion-daterange
@@ -89,7 +89,7 @@
             </fusion-daterange>
         </div>
     </fusion-chip-filter>
-    <fusion-chip-filter [configuration]="{id: 10,type:'static'}">
+    <fusion-chip-filter [configuration]="{id: 10,mode:'static'}">
         <div class="fu-chip-content">Status 10: Active</div>
         <div class="filter-element">
             <fusion-daterange
@@ -104,29 +104,66 @@
 <br>
 
 <fusion-chip-filters [isSearch]="true" [addFiltersTitle]="'Countries'" [addFilterOptions]="optionsFilter" (onSelect)="chipChangedWithNoChildren($event)" (onRemoveSelection)="removeChipWithNoChildren($event)">
-    <fusion-chip-filter [configuration]="{id: 1, type:'static'}" [isSelected]="true">
+    <fusion-chip-filter [configuration]="{id: 1, mode:'static'}" [isSelected]="true">
         <div class="fu-chip-content">Status 1: Active</div>
     </fusion-chip-filter>
-    <fusion-chip-filter [configuration]="{id: 2,type:'dynamic'}">
+    <fusion-chip-filter [configuration]="{id: 2,mode:'dynamic'}">
         <div class="fu-chip-content">Status 2: Active</div>
     </fusion-chip-filter>
-    <fusion-chip-filter [configuration]="{id: 3,type:'static', disabled:true}">
+    <fusion-chip-filter [configuration]="{id: 3,mode:'static', disabled:true}">
         <div class="fu-chip-content">Status 3: Active</div>
     </fusion-chip-filter>
-    <fusion-chip-filter [configuration]="{id: 4,type:'static', close: true}">
+    <fusion-chip-filter [configuration]="{id: 4,mode:'static', close: true}">
         <div class="fu-chip-content">Status 4: Active</div>
     </fusion-chip-filter>
-    <fusion-chip-filter [configuration]="{id: 5,type:'static'}">
+    <fusion-chip-filter [configuration]="{id: 5,mode:'static'}">
         <div class="fu-chip-content">Status 5: Active</div>
     </fusion-chip-filter>
-    <fusion-chip-filter [configuration]="{id: 6,type:'static', close: true}">
+    <fusion-chip-filter [configuration]="{id: 6,mode:'static', close: true}">
         <div class="fu-chip-content">Status 6: Active</div>
     </fusion-chip-filter>
-    <fusion-chip-filter [configuration]="{id: 7,type:'static'}">
+    <fusion-chip-filter [configuration]="{id: 7,mode:'static'}">
         <div class="fu-chip-content">Status 7: Active</div>
     </fusion-chip-filter>
-    <fusion-chip-filter [configuration]="{id: 8,type:'static', close: true}">
+    <fusion-chip-filter [configuration]="{id: 8,mode:'static', close: true}">
         <div class="fu-chip-content">Status 8: Active</div>
     </fusion-chip-filter>
 </fusion-chip-filters>
 
+<br>
+<br>
+<fusion-chip-filter [configuration]="{id: 12,mode:'static'}">
+    <div class="fu-chip-content">Status 12: UnRemovable</div>
+</fusion-chip-filter>
+<br>
+<br>
+
+<fusion-chip-filter [configuration]="{id: 13,mode:'static', close: true}">
+    <div class="fu-chip-content">Status 13: Removable</div>
+</fusion-chip-filter>
+
+<br>
+<br>
+
+<fusion-chip-filter [configuration]="{id: 14,mode:'static', close: true}">
+    <div class="fu-chip-content">Status 14: Removable with filter element</div>
+    <div class="filter-element">
+        <fusion-daterange
+            [formControl]="formControl"
+        >
+        </fusion-daterange>
+    </div>
+</fusion-chip-filter>
+
+
+<br>
+<br>
+<fusion-chip-filter [configuration]="{id: 15,mode:'static'}">
+    <div class="fu-chip-content">Status 15: UnRemovable</div>
+    <div class="filter-element">
+        <fusion-daterange
+            [formControl]="formControl"
+        >
+        </fusion-daterange>
+    </div>
+</fusion-chip-filter>

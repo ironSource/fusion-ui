@@ -1,9 +1,9 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ChipFilterComponent} from '@ironsource/fusion-ui/components/chip-filter';
-import {TooltipModule, IconModule, FlagModule} from '@ironsource/fusion-ui';
+import {IconModule, FlagModule} from '@ironsource/fusion-ui';
 import {By} from '@angular/platform-browser';
-import {Component, DebugElement, Input, TemplateRef} from '@angular/core';
-import {ChipFilterComponentConfigurations, ChipFilterType, ChipType} from '@ironsource/fusion-ui/components/chip-filter/common/base';
+import {Component, DebugElement, Input} from '@angular/core';
+import {ChipFilterComponentConfigurations} from '@ironsource/fusion-ui/components/chip-filter/common/base';
 import {ChipFiltersComponent} from '@ironsource/fusion-ui/components/chip-filters';
 
 const innerText = 'Test Chip';

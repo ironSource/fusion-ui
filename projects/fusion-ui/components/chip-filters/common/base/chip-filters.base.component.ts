@@ -79,12 +79,12 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
     }
 
     private activateAddFilter(): void {
-        this.showAddFilter$.next(this.chipFilters.some(chip => chip.type === 'dynamic'));
+        this.showAddFilter$.next(this.chipFilters.some(chip => chip.mode === 'dynamic'));
         this.cdr.detectChanges();
     }
 
     private onTypeChipsChanges(): void {
-        const chipTypes: Observable<ChipType>[] = this.chipFilters.map(chip => chip.chipCssType$.asObservable());
+        const chipTypes: Observable<ChipType>[] = this.chipFilters.map(chip => chip.chipType$.asObservable());
         combineLatest(chipTypes)
             .pipe(takeUntil(this.onDestroy$))
             .subscribe(_ => {
@@ -137,7 +137,7 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
 
     private orderChipFilters(chipFilters: QueryList<ChipFilterComponent>): void {
         chipFilters.forEach((chip: ChipFilterComponent, index: number) => {
-            switch (chip.chipCssType$.getValue()) {
+            switch (chip.chipType$.getValue()) {
                 case 'RemoveAbleSelect':
                     this.renderer.setStyle(chip.element.nativeElement, 'order', `-${chipFilters.length - index}`);
                     break;
