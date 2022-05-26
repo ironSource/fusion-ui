@@ -5,7 +5,7 @@ import {ChipFilterModule} from '@ironsource/fusion-ui/components/chip-filter';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {DaterangeModule} from '@ironsource/fusion-ui/components/daterange';
 import {ReactiveFormsModule} from '@angular/forms';
-import {DropdownModule} from '@ironsource/fusion-ui';
+import {DropdownModule} from '@ironsource/fusion-ui/components/dropdown';
 
 @NgModule({
     declarations: [ChipFiltersComponent],
