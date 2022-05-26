@@ -8,6 +8,11 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 import {map} from 'rxjs/operators';
 import {of} from 'rxjs';
 
+const ARROW_ICON = {
+    iconName: 'angle-down',
+    iconVersion: 'v3'
+};
+
 @Component({
     selector: 'fusion-dropdown',
     templateUrl: './dropdown.component.html',
@@ -24,10 +29,8 @@ import {of} from 'rxjs';
     ]
 })
 export class DropdownComponent extends DropdownBaseComponent {
-    dropdownArrowIconName = {
-        iconName: 'angle-down',
-        iconVersion: 'v3'
-    };
+    dropdownArrowIconName = ARROW_ICON;
+
     @ViewChild('searchComponent') searchComponent: DropdownSearchComponent;
     @ViewChild('selectComponent') selectComponent: DropdownSelectComponent;
 

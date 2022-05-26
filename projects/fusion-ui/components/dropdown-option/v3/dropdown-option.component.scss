@@ -42,6 +42,40 @@
     &:hover {
         background: $fu-light-50;
     }
+
+    &.is-has-children {
+        position: relative;
+        color: $fu-light-900;
+        @include icon-style('icon-arrow', $fu-light-600, 16px, true, true, -90) {
+            @include size(16px);
+            margin-left: auto;
+        }
+
+        .is-subgroup-options {
+            display: none;
+        }
+
+        &.is-open {
+            @include icon-style('icon-arrow', $fu-light-600, 16px, true, true, 360);
+            .is-subgroup-options {
+                display: block;
+                margin: 0 -10px;
+                padding-top: 4px;
+                background-color: $White;
+                .option {
+                    ::ng-deep fusion-dropdown-option {
+                        padding-left: 16px;
+                    }
+                }
+            }
+
+            &:hover {
+                background: $fu-light-100;
+                padding-bottom: 0;
+                margin-bottom: 2px;
+            }
+        }
+    }
 }
 
 :host-context(li.option.is-selected){

@@ -12,9 +12,6 @@
     <fusion-icon *ngIf="optionCloseIcon" [name]="closeIcon" class="fu-option-action-icon"></fusion-icon>
 </ng-container>
 
-<ng-template #customContentOption>
-    <fusion-dynamic-components [configuration]="option.content"></fusion-dynamic-components>
-</ng-template>
 <ng-container *ngIf="hasChildren">
     <fusion-icon class="icon-arrow"
                  [name]="dropdownArrowIconName"></fusion-icon>
@@ -29,3 +26,7 @@
         </ng-container>
     </ul>
 </ng-container>
+
+<ng-template #customContentOption>
+    <fusion-dynamic-components [configuration]="option.content"></fusion-dynamic-components>
+</ng-template>
