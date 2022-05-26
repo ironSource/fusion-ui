@@ -5,6 +5,6 @@
            [placeholder]="placeholder"
            [formControl]="searchValue"
     />
-    <fusion-icon class="fu-icon-search" *ngIf="!input.value" [name]="searchIcon"></fusion-icon>
+    <fusion-icon class="fu-icon-search" *ngIf="!input.value || searchInOptions" [name]="searchIcon"></fusion-icon>
     <fusion-icon class="fu-icon-clear" *ngIf="input.value" [name]="searchClearIcon" (click)="clearSearch()"></fusion-icon>
 </div>
