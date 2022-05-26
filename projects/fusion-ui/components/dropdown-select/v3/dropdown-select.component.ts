@@ -18,7 +18,7 @@ export class DropdownSelectComponent extends DropdownSelectBaseComponent {
             isOpen && 'dd-active',
             !!this.configurations.selectedOption && 'ss-selected',
             this.configurations.isTabMode && 'is-tab-mode',
-            'dd-search-active',
+            this.configurations.isSearch && 'dd-search-active',
             this.searchValue.value && 'dd_search-has-value'
         ].filter(Boolean);
         return classesList;

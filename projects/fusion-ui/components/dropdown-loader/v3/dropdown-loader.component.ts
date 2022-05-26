@@ -5,4 +5,9 @@ import {Component} from '@angular/core';
     templateUrl: './dropdown-loader.component.html',
     styleUrls: ['./dropdown-loader.component.scss']
 })
-export class DropdownLoaderComponent {}
+export class DropdownLoaderComponent {
+    iconLoader = {
+        iconName: 'loading-rotate',
+        iconVersion: 'v2'
+    };
+}
