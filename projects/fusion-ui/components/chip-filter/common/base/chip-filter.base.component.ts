@@ -29,7 +29,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     private onDestroy$ = new Subject<void>();
     private restListeners$ = new Subject<void>();
     private clearClickSubscription$ = merge(this.onDestroy$, this.restListeners$);
-    private chipSelected: boolean = false;
+    private isChipSelected: boolean = false;
     private chipType: ChipFilterType = 'static';
     private _disabled$ = new BehaviorSubject<boolean>(false);
     private chipSelectValue: {id: number | string; value?: any; isSelected?: boolean};
@@ -94,13 +94,13 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     }
 
     set selected(selected: boolean) {
-        this.chipSelected = selected;
+        this.isChipSelected = selected;
         this.changeHostClass('fu-selected', selected);
         this.setChipType(selected);
     }
 
     get selected(): boolean {
-        return this.chipSelected;
+        return this.isChipSelected;
     }
 
     constructor(public element: ElementRef, private renderer: Renderer2) {}
