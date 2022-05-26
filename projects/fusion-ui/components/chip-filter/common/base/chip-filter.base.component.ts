@@ -45,6 +45,13 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
 
     @Input() set isSelected(value: boolean) {
         this.selected = value || false;
+        if (value) {
+            this.chipSelectValue = {
+                id: this.id,
+                isSelected: this.selected
+            };
+            this.onSelectedChange.emit(this.chipSelectValue);
+        }
     }
 
     @Input() set isVisible(value: boolean) {
