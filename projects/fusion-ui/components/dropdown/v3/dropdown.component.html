@@ -31,9 +31,8 @@
                     <li *ngIf="optionsTitle" class="fu-option-title">{{optionsTitle}}</li>
                     <!--search input-->
                     <ng-container *ngIf="(dropdownSelectConfigurations$ | async) as configurations">
-                        <li class="fu-search-holder">
+                        <li class="fu-search-holder" *ngIf="configurations.isSearch && configurations.isOpen">
                             <fusion-dropdown-search class="fu-search-in-options"
-                                                    *ngIf="configurations.isSearch && configurations.isOpen"
                                                     [formControl]="searchValue"
                                                     [placeholder]="configurations.placeholder?.search"
                                                     #searchComponent
