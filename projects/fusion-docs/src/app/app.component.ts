@@ -17,7 +17,7 @@ export class AppComponent implements OnInit, OnDestroy {
         {id: 2, title: 'Second'},
         {id: 3, title: 'Third'}
     ];
-    formControl = new FormControl({id: 1, title: 'first'});
+    formControl = new FormControl();
     constructor(private tooltipService: TooltipService) {}
 
     ngOnInit() {

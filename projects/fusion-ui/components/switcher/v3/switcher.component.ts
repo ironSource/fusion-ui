@@ -2,16 +2,15 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    ElementRef,
     EventEmitter,
     forwardRef,
     Input,
     OnInit,
     Output,
-    Renderer2
+    ViewChild
 } from '@angular/core';
 import {SwitcherItem, SwitcherConfiguration} from './switcher.entities';
-import {NG_VALUE_ACCESSOR} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 
@@ -39,27 +38,14 @@ export class SwitcherComponent implements OnInit {
 
     id: string;
     switcherConfiguration: SwitcherConfiguration = {name: '', size: 'small'};
+    selected: SwitcherItem;
 
-    private selected: SwitcherItem;
-
-    constructor(
-        private uniqueService: UniqueIdService,
-        private changeDetectorRef: ChangeDetectorRef,
-        private elementRef: ElementRef,
-        private renderer: Renderer2
-    ) {}
+    constructor(private uniqueService: UniqueIdService, private changeDetectorRef: ChangeDetectorRef) {}
 
     ngOnInit() {
         const uniq = this.uniqueService.getUniqueId();
         this.switcherConfiguration.name = this.switcherConfiguration.name || `fu-switcher-${uniq}`;
         this.id = `fuSwitcher${uniq}`;
-    }
-
-    isSelected(item: SwitcherItem): boolean {
-        if (isNullOrUndefined(this.selected) || isNullOrUndefined(this.selected.id)) {
-            return false;
-        }
-        return item.id === this.selected.id;
     }
 
     setSelection(selected: SwitcherItem): void {
@@ -87,10 +73,5 @@ export class SwitcherComponent implements OnInit {
 
     registerOnTouched(fn: any): void {
         this.propagateTouched = fn;
-    }
-
-    private changeHostClass(className: string, add: boolean): void {
-        const classAction = add ? 'addClass' : 'removeClass';
-        this.renderer[classAction](this.elementRef.nativeElement, className);
     }
 }
