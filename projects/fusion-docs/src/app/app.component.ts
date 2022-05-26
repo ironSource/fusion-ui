@@ -13,6 +13,18 @@ export class AppComponent implements OnInit, OnDestroy {
     tooltipData: ITooltipData = {};
     formControl = new FormControl();
     formControl2 = new FormControl({startDate: new Date(), endDate: new Date()});
+    optionsFilter = [
+        {id: 1, displayText: 'Option 1'},
+        {id: 2, displayText: 'Option 2'},
+        {id: 3, displayText: 'Option 3'},
+        {id: 4, displayText: 'Option 4'},
+        {id: 5, displayText: 'Option 5'},
+        {id: 6, displayText: 'Option 6'},
+        {id: 7, displayText: 'Option 7'},
+        {id: 8, displayText: 'Option 8'},
+        {id: 9, displayText: 'Option 9'},
+        {id: 10, displayText: 'Option 10'}
+    ];
     private onDestroy$ = new Subject();
 
     constructor(private tooltipService: TooltipService) {}

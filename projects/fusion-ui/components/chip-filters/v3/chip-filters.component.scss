@@ -14,6 +14,16 @@
        min-height: 64px;
        .fu-add-filter {
            order: 100;
+           .fu-chip-content {
+               > span {
+                   display: flex;
+                   gap: 3px;
+               }
+               fusion-icon {
+                   width: 16px;
+                   height: 16px;
+               }
+           }
        }
    }
 }

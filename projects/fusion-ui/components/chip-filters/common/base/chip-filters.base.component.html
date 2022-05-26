@@ -3,16 +3,17 @@
     <ng-container *ngIf="showAddFilter$ | async">
         <fusion-chip-filter [configuration]="{type:'add', disabled: (disableAddFilter$ | async)}">
             <div class="fu-chip-content">
-                <span  style="display: flex; gap: 3px;">
-                    <fusion-icon style="width: 16px; height: 16px;" name="tune"></fusion-icon>
+                <span>
+                    <fusion-icon name="tune"></fusion-icon>
                     Add filters
                 </span>
             </div>
             <div class="filter-element">
-                <fusion-daterange
+                <fusion-dropdown
+                    [options]="options$ | async"
                     [formControl]="formControl"
                 >
-                </fusion-daterange>
+                </fusion-dropdown>
             </div>
         </fusion-chip-filter>
     </ng-container>

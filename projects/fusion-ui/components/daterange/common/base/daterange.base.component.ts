@@ -1,7 +1,7 @@
 import {Directive, ElementRef, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
 import {ControlValueAccessor} from '@angular/forms';
 import {DatePipe} from '@angular/common';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, of} from 'rxjs';
 import {isNullOrUndefined, isSameDates} from '@ironsource/fusion-ui/utils';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
@@ -66,7 +66,6 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     originalSelection: DaterangeSelection = null;
     currentPreset: DaterangePresets | DaterangeCustomPreset = null;
     overlayAlign$ = new BehaviorSubject<string>('');
-    protected selected$ = new BehaviorSubject<DaterangeSelection>(null);
     protected daterangeOptions: DaterangeOptions;
 
     public get isPresetsShown(): boolean {
@@ -99,7 +98,7 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     }
 
     valueSelected() {
-        return this.selected$.asObservable().pipe(map(value => ({value, isSelected: !!value})));
+        return of(this.originalSelection).pipe(map(value => ({value, isSelected: !!value})));
     }
 
     selectPreset(preset, cohort?: number) {
@@ -153,7 +152,6 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
                 : this.originalSelection?.startDate && this.originalSelection?.endDate
                 ? this.originalSelection
                 : null;
-            this.selected$.next(valueToPropagate);
             this.propagateChange(valueToPropagate);
             this.clearRangeDaysLimit();
         }
@@ -253,7 +251,6 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
             this.selection = {endDate: null, startDate: null};
             this.originalSelection = null;
         }
-        this.selected$.next(this.originalSelection);
         this.setPlaceholder();
     }
 

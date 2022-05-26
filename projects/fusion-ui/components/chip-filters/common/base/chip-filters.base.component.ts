@@ -1,4 +1,15 @@
-import {AfterViewInit, ContentChildren, Directive, EventEmitter, Input, OnDestroy, Output, QueryList, Renderer2} from '@angular/core';
+import {
+    AfterViewInit,
+    ChangeDetectorRef,
+    ContentChildren,
+    Directive,
+    EventEmitter,
+    Input,
+    OnDestroy,
+    Output,
+    QueryList,
+    Renderer2
+} from '@angular/core';
 import {ChipFilterComponent} from '@ironsource/fusion-ui/components/chip-filter';
 import {BehaviorSubject, combineLatest, Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -35,7 +46,7 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
 
     private onDestroy$ = new Subject<void>();
 
-    constructor(private renderer: Renderer2) {}
+    constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
 
     ngOnDestroy() {
         this.onDestroy$.next();
@@ -55,20 +66,12 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
 
         this.onClosedChipListener();
 
-        // this.formControl.valueChanges.pipe().subscribe((option: DropdownOption[]) => this.addChipFilter(option[0]));
-        this.formControl.valueChanges.pipe().subscribe(option => {
-            const dropdownOption = {
-                id: 2,
-                displayText: 'Alert type'
-            };
-            this.addChipFilter(dropdownOption);
-        });
+        this.formControl.valueChanges.pipe().subscribe((option: DropdownOption[]) => this.addChipFilter(option[0]));
     }
 
     private activateAddFilter(): void {
-        setTimeout(() => {
-            this.showAddFilter$.next(this.chipFilters.some(chip => chip.type === 'dynamic'));
-        });
+        this.showAddFilter$.next(this.chipFilters.some(chip => chip.type === 'dynamic'));
+        this.cdr.detectChanges();
     }
 
     private onTypeChipsChanges(): void {
@@ -87,8 +90,11 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
         this.chipFilters.forEach(chip => {
             if (chip.type !== 'add') {
                 chip.onSelectedChange.pipe(takeUntil(this.onDestroy$)).subscribe(val => {
-                    this.selectedFilters = [...this.selectedFilters, val];
-                    this.onSelect.emit(this.selectedFilters);
+                    const isSelected = this.selectedFilters.some(selectedChip => selectedChip.id === val.id);
+                    if (!isSelected) {
+                        this.selectedFilters = [...this.selectedFilters, val];
+                        this.onSelect.emit(this.selectedFilters);
+                    }
                 });
             }
         });
@@ -105,24 +111,24 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
 
     private addChipFilter(option: DropdownOption): void {
         this.chipFilters.toArray().forEach(chip => {
-            if (chip['id'] === option.id) {
-                setTimeout(() => {
-                    chip['isVisible'] = true;
-                    chip['isSelected'] = true;
-                    const newSelection = {
-                        id: option.id,
-                        value: option?.displayText,
-                        isSelected: chip.selected
-                    };
-                    this.selectedFilters = [...this.selectedFilters, newSelection];
-                    this.onSelect.emit(this.selectedFilters);
-                });
+            const isSelected = this.selectedFilters.some(selectedChip => selectedChip.id === chip['id']);
+            if (chip['id'] === option.id && !isSelected) {
+                chip['isVisible'] = true;
+                chip['isSelected'] = true;
+                const newSelection = {
+                    id: option.id,
+                    value: option?.displayText,
+                    isSelected: chip.selected
+                };
+                this.selectedFilters = [...this.selectedFilters, newSelection];
+                this.onSelect.emit(this.selectedFilters);
+                this.cdr.markForCheck();
             }
         });
     }
 
     private orderChipFilters(chipFilters: QueryList<ChipFilterComponent>): void {
-        [...chipFilters].forEach((chip: ChipFilterComponent, index: number) => {
+        chipFilters.forEach((chip: ChipFilterComponent, index: number) => {
             switch (chip.chipCssType$.getValue()) {
                 case 'RemoveAbleSelect':
                     this.renderer.setStyle(chip.element.nativeElement, 'order', `-${chipFilters.length - index}`);

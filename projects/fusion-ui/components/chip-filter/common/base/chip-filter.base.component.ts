@@ -30,8 +30,8 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     private restListeners$ = new Subject<void>();
     private clearClickSubscription$ = merge(this.onDestroy$, this.restListeners$);
     private chipSelected: boolean = false;
-    private chipDisabled$ = new BehaviorSubject<boolean>(false);
     private chipType: ChipFilterType = 'static';
+    private _disabled$ = new BehaviorSubject<boolean>(false);
 
     @Input() set configuration(value: ChipFilterComponentConfigurations) {
         if (!!value) {
@@ -68,12 +68,12 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     }
 
     set disabled(disabled: boolean) {
-        this.chipDisabled$.next(disabled);
+        this._disabled$.next(disabled);
         this.changeHostClass('fu-disabled', disabled);
     }
 
     get disabled(): boolean {
-        return this.chipDisabled$.getValue();
+        return this._disabled$.getValue();
     }
 
     set type(chipType: ChipFilterType) {
