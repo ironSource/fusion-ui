@@ -2,7 +2,7 @@
     <fusion-flag *ngIf="option.flag" [name]="option.flag"></fusion-flag>
     <img [src]="option.image" *ngIf="option.image" alt=""/>
     <fusion-icon *ngIf="option.icon" [name]="option.icon" class="fu-option-icon"></fusion-icon>
-    <div [id]="option.id" class="text truncate"
+    <div [id]="option.id" class="fu-text-content"
          fusionTooltip="{{ optionToStringFunc | generic: option:mappingOptions:settings }}">
         <span innerHTML="{{ optionToStringFunc | generic: option:mappingOptions:settings }}"></span>
         <div *ngIf="option.subText" class="sub-text-container">

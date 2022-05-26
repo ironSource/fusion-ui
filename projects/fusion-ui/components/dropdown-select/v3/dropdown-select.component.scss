@@ -47,6 +47,7 @@ $headerSmallHeight: 32px;
 
             .placeholderText{
                 line-height: initial;
+                @extend %truncate-flex-child;
             }
         }
 

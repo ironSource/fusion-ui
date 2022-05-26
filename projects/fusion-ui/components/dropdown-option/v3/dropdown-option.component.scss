@@ -26,7 +26,8 @@
         @extend %image-masked;
     }
 
-    .text {
+    .fu-text-content {
+        @extend %truncate-flex-child;
         .sub-text-container{
             line-height: 13px;
             color: $fu-light-900;

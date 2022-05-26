@@ -39,6 +39,12 @@
     text-overflow: ellipsis;
 }
 
+%truncate-flex-child{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 %image-masked{
     -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 0C2 0 0 2 0 10s2 10 10 10 10-2 10-10S18 0 10 0Zm0 0' fill='%23a5a5a5'/%3E%3C/svg%3E");
     mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 0C2 0 0 2 0 10s2 10 10 10 10-2 10-10S18 0 10 0Zm0 0' fill='%23a5a5a5'/%3E%3C/svg%3E");
