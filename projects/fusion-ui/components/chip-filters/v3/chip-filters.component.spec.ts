@@ -68,7 +68,7 @@ describe('ChipFiltersComponent', () => {
         });
 
         it('should create chip select removable type', async () => {
-            component.config = {id: 1, type: 'static', close: true};
+            component.config = {id: 1, mode: 'static', close: true};
             fixture.detectChanges();
             expect(chipEl).toBeTruthy();
             chipElement.dispatchEvent(new Event('click'));
@@ -79,7 +79,7 @@ describe('ChipFiltersComponent', () => {
         });
 
         it('should create chip select un removable type', async () => {
-            component.config = {id: 1, type: 'static'};
+            component.config = {id: 1, mode: 'static'};
             fixture.detectChanges();
             expect(chipEl).toBeTruthy();
             chipElement.dispatchEvent(new Event('click'));
@@ -88,21 +88,21 @@ describe('ChipFiltersComponent', () => {
         });
 
         it('should create AddFilter type', async () => {
-            component.config = {type: 'add'};
+            component.config = {mode: 'add'};
             fixture.detectChanges();
             expect(chipEl).toBeTruthy();
             expect(collectionToArray(chipElement.classList)).toEqual(['fu-add-filter']);
         });
 
         it('should create ChipFilter type', async () => {
-            component.config = {id: 1, type: 'static'};
+            component.config = {id: 1, mode: 'static'};
             fixture.detectChanges();
             expect(chipEl).toBeTruthy();
             expect(collectionToArray(chipElement.classList)).toEqual(['fu-chip-filter']);
         });
 
         it('should create Disabled Chip type', async () => {
-            component.config = {id: 1, disabled: true, type: 'static'};
+            component.config = {id: 1, disabled: true, mode: 'static'};
             fixture.detectChanges();
             expect(chipEl).toBeTruthy();
             expect(collectionToArray(chipElement.classList)).toContain('fu-disabled');
