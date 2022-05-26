@@ -3,9 +3,9 @@ import {DropdownOptionBaseComponent} from '@ironsource/fusion-ui/components/drop
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 
 const CLOSE_ICON = 'close-bold';
-const dropdownArrowIcon = {
-    iconName: 'arrow-down',
-    iconVersion: 'v2'
+const ARROW_ICON = {
+    iconName: 'angle-down',
+    iconVersion: 'v3'
 };
 
 @Component({
@@ -15,6 +15,6 @@ const dropdownArrowIcon = {
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownOptionComponent extends DropdownOptionBaseComponent {
-    dropdownArrowIconName: IconData = dropdownArrowIcon;
+    dropdownArrowIconName: IconData = ARROW_ICON;
     closeIcon: IconData = CLOSE_ICON;
 }

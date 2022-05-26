@@ -26,7 +26,7 @@ $headerSmallHeight: 32px;
         @extend %font-bodySmall;
         letter-spacing: 0.24px;
         color: $fu-black-500;
-        padding: 10px 25px 10px 10px;
+        padding: 10px 25px 10px 12px;
 
         .fu-inner-elements{
             height: 100%;
@@ -47,6 +47,7 @@ $headerSmallHeight: 32px;
 
             .placeholderText{
                 line-height: initial;
+                @extend %truncate-flex-child;
             }
         }
 
@@ -104,7 +105,7 @@ $headerSmallHeight: 32px;
     .is-dropdown-select label {
         @extend %font-body;
         height: $headerSmallHeight;
-        padding: 6px 25px 8px 7px;
+        padding: 6px 25px 8px 12px;
         line-height: unset;
         .icon-arrow {
             top: 9px;
