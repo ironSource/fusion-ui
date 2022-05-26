@@ -1,16 +1,6 @@
-import {
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component,
-    EventEmitter,
-    forwardRef,
-    Input,
-    OnInit,
-    Output,
-    ViewChild
-} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
 import {SwitcherItem, SwitcherConfiguration} from './switcher.entities';
-import {FormBuilder, FormControl, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 
@@ -46,6 +36,13 @@ export class SwitcherComponent implements OnInit {
         const uniq = this.uniqueService.getUniqueId();
         this.switcherConfiguration.name = this.switcherConfiguration.name || `fu-switcher-${uniq}`;
         this.id = `fuSwitcher${uniq}`;
+    }
+
+    isSelected(item: SwitcherItem): boolean {
+        if (isNullOrUndefined(this.selected) || isNullOrUndefined(this.selected.id)) {
+            return false;
+        }
+        return item.id === this.selected.id;
     }
 
     setSelection(selected: SwitcherItem): void {
