@@ -1,13 +1,18 @@
 @import '../../../src/style/scss/v3/vars/vars';
+@import '../../../src/style/scss/v3/mixins/mixins';
 
 :host {
+    padding: 0 8px;
     cursor: default;
-    color: $fu-light-900;
-    height: 40px;
+    color: $fu-light-800;
+    height: 32px;
     background: #fff;
-    position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    gap: 10px;
+    gap: 4px;
+
+    @include icon-style('fu-icon-loading', $fu-light-700, 20px, false, true){
+        @include size(20px);
+    }
 }

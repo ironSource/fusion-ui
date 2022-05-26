@@ -57,8 +57,8 @@ $headerSmallHeight: 32px;
         }
 
         &:active:not(.is-tab-mode),
-        &.dd-active,
-        &.dd-active.dd-search-active{
+        &.dd-active
+        {
             position: relative;
             &::after{
                 content: " ";
@@ -67,6 +67,11 @@ $headerSmallHeight: 32px;
                 border-bottom: solid 2px $fu-primary-500;
                 position: absolute;
                 bottom: 0;
+            }
+            &.dd-search-active{
+                .fu-inner-elements{
+                    visibility: hidden;
+                }
             }
         }
 
