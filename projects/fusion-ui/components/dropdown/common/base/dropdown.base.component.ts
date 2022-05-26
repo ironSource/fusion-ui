@@ -15,10 +15,10 @@ import {
 } from '@angular/core';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {ControlValueAccessor, FormControl} from '@angular/forms';
-import {BehaviorSubject, Observable, Subject} from 'rxjs';
+import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
-import {debounceTime, distinctUntilChanged, switchMapTo, take, takeUntil} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, map, switchMapTo, take, takeUntil} from 'rxjs/operators';
 import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
 import {detectChangesDecorator} from '@ironsource/fusion-ui/decorators';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
@@ -31,9 +31,10 @@ import {DropdownSelectComponent} from '@ironsource/fusion-ui/components/dropdown
 import {DropdownSelectConfigurations} from '@ironsource/fusion-ui/components/dropdown-select/entities';
 import {DROPDOWN_DEBOUNCE_TIME, DROPDOWN_OPTIONS_WITHOUT_SCROLL} from './dropdown-config';
 import {BackendPagination, ClosedOptions, DropdownPlaceholderConfiguration} from '@ironsource/fusion-ui/components/dropdown/entities';
+import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 
 @Directive()
-export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChanges, ControlValueAccessor {
+export abstract class DropdownBaseComponent extends ApiBase implements OnInit, OnDestroy, OnChanges, ControlValueAccessor {
     @Input() set options(value: DropdownOption[]) {
         this.optionsState = this.cloneOptions(value);
         this.displayedOptions$.next(this.parseOptions(this.optionsState));
@@ -227,7 +228,9 @@ export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChan
         protected clonePipe: ClonePipe,
         protected sharedEventsService: SharedEventsService,
         protected injector: Injector
-    ) {}
+    ) {
+        super();
+    }
 
     ngOnInit() {
         this.displayedOptionsObservable$ = this.getDisplayedOptionsObservable();
@@ -608,6 +611,10 @@ export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChan
         } else {
             this.doChanges(option);
         }
+    }
+
+    valueSelected() {
+        return of([...this.selected]).pipe(map(value => ({value, isSelected: !!value})));
     }
 
     onCloseIconClicked(option: DropdownOption) {

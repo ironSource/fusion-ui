@@ -4,6 +4,9 @@ import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/service
 import {DropdownBaseComponent} from '@ironsource/fusion-ui/components/dropdown/common/base';
 import {DropdownSearchComponent} from '@ironsource/fusion-ui/components/dropdown-search/v3';
 import {DropdownSelectComponent} from '@ironsource/fusion-ui/components/dropdown-select/v3';
+import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
+import {map} from 'rxjs/operators';
+import {of} from 'rxjs';
 
 @Component({
     selector: 'fusion-dropdown',
@@ -12,6 +15,7 @@ import {DropdownSelectComponent} from '@ironsource/fusion-ui/components/dropdown
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         DropdownService,
+        {provide: ApiBase, useExisting: DropdownComponent},
         {
             provide: NG_VALUE_ACCESSOR,
             useExisting: forwardRef(() => DropdownComponent),
@@ -26,4 +30,8 @@ export class DropdownComponent extends DropdownBaseComponent {
     };
     @ViewChild('searchComponent') searchComponent: DropdownSearchComponent;
     @ViewChild('selectComponent') selectComponent: DropdownSelectComponent;
+
+    valueSelected() {
+        return of([...this.selected]).pipe(map(value => ({value, isSelected: !!value})));
+    }
 }

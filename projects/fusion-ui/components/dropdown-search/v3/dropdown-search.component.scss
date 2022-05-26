@@ -5,20 +5,22 @@
 
 $clearIconColor: #DADADA;
 
+%icons-positions{
+    position: absolute;
+    right: -15px;
+    top: 2px;
+}
+
 :host {
     .search-panel {
         position: relative;
         margin-bottom: 10px;
         padding-right: 5px;
         @include icon-style('fu-icon-search', $fu-light-700, 16px, true, true){
-            position: absolute;
-            right: -15px;
-            top: 2px;
+            @extend %icons-positions;
         }
         @include icon-style('fu-icon-clear', $clearIconColor, 16px, true, true){
-            position: absolute;
-            right: -15px;
-            top: 2px;
+            @extend %icons-positions;
         }
         input {
             @extend %font-bodySmall;
@@ -31,6 +33,15 @@ $clearIconColor: #DADADA;
 
             &::placeholder {
                 color: $fu-light-800;
+            }
+        }
+    }
+    &.fu-search-in-options{
+        .search-panel{
+            .fu-icon-search,
+            .fu-icon-clear {
+                right: -5px;
+                top: 4px;
             }
         }
     }
