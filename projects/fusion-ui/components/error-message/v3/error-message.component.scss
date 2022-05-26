@@ -1,0 +1,9 @@
+@import "../../../src/style/scss/v3/vars/vars";
+
+:host {
+    .fusion-error {
+        margin-top: 3px;
+        @extend %font-caption;
+        color: $fu-negative-700;
+    }
+}

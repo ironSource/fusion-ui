@@ -1,0 +1,32 @@
+<ng-container *ngIf="!option.content; else customContentOption">
+    <fusion-flag *ngIf="option.flag" [name]="option.flag"></fusion-flag>
+    <img [src]="option.image" *ngIf="option.image" alt=""/>
+    <fusion-icon *ngIf="option.icon" [name]="option.icon" class="fu-option-icon"></fusion-icon>
+    <div [id]="option.id" class="fu-text-content"
+         fusionTooltip="{{ optionToStringFunc | generic: option:mappingOptions:settings }}">
+        <span innerHTML="{{ optionToStringFunc | generic: option:mappingOptions:settings }}"></span>
+        <div *ngIf="option.subText" class="sub-text-container">
+            <label>{{ option.subText?.text || option.subText }}</label>
+        </div>
+    </div>
+    <fusion-icon *ngIf="optionCloseIcon" [name]="closeIcon" class="fu-option-action-icon"></fusion-icon>
+</ng-container>
+
+<ng-container *ngIf="hasChildren">
+    <fusion-icon class="icon-arrow"
+                 [name]="dropdownArrowIconName"></fusion-icon>
+    <ul class="is-subgroup-options">
+        <ng-container *ngFor="let childOption of option.childOptions; index as i">
+            <li
+                [fusionDropdownOption]="childOption"
+                [mappingOptions]="mappingOptions"
+                [attr.data-id]="childOption.id"
+                [ngClass]="{'is-selected': childOption.isSelected}"
+            ></li>
+        </ng-container>
+    </ul>
+</ng-container>
+
+<ng-template #customContentOption>
+    <fusion-dynamic-components [configuration]="option.content"></fusion-dynamic-components>
+</ng-template>

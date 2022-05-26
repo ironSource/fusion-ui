@@ -1,13 +1,48 @@
 @import '../../../src/style/scss/v3/vars/colors';
+@import '../../../src/style/scss/v3/vars/vars';
 @import '../../../src/style/scss/v3/vars/border';
+@import '../../../src/style/scss/v3/mixins/mixins';
+
+$clearIconColor: #DADADA;
+
+%icons-positions{
+    position: absolute;
+    right: -15px;
+    top: 2px;
+}
 
 :host {
     .search-panel {
-        color: white;
-        border: none;
-        background-color: transparent;
-        margin-left: -8px;
-        margin-right: -25px;
+        position: relative;
+        margin-bottom: 10px;
+        padding-right: 5px;
+        @include icon-style('fu-icon-search', $fu-light-700, 16px, true, true){
+            @extend %icons-positions;
+        }
+        @include icon-style('fu-icon-clear', $clearIconColor, 16px, true, true){
+            @extend %icons-positions;
+        }
+        input {
+            @extend %font-bodySmall;
+            letter-spacing: 0.24px;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            color: $fu-black-500;
+            width: 100%;
+
+            &::placeholder {
+                color: $fu-light-800;
+            }
+        }
     }
-    pointer-events: none;
+    &.fu-search-in-options{
+        .search-panel{
+            .fu-icon-search,
+            .fu-icon-clear {
+                right: -5px;
+                top: 4px;
+            }
+        }
+    }
 }

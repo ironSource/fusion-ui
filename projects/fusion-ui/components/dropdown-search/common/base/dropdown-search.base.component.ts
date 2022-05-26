@@ -1,4 +1,4 @@
-import {Directive, ElementRef, HostListener, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Directive, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ControlValueAccessor, FormControl} from '@angular/forms';
 import {InputComponent} from '@ironsource/fusion-ui/components/input/v1';
 import {takeUntil} from 'rxjs/operators';

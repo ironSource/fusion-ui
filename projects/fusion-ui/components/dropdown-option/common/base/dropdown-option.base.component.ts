@@ -13,6 +13,7 @@ export abstract class DropdownOptionBaseComponent implements OnInit {
     @Input() set isMultiRawDisplay(value: boolean) {
         this.isMultiRawDisplay$.next(value);
     }
+    @Input() optionCloseIcon: boolean;
 
     @HostBinding('class.multi-raw-display') get shouldDisplayMultiRaw(): boolean {
         return this.isMultiRawDisplay$.getValue();

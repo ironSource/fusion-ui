@@ -4,7 +4,14 @@ import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/service
 import {DropdownBaseComponent} from '@ironsource/fusion-ui/components/dropdown/common/base';
 import {DropdownSearchComponent} from '@ironsource/fusion-ui/components/dropdown-search/v3';
 import {DropdownSelectComponent} from '@ironsource/fusion-ui/components/dropdown-select/v3';
-import {ApiBase} from '@ironsource/fusion-ui/components';
+import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
+import {map} from 'rxjs/operators';
+import {of} from 'rxjs';
+
+const ARROW_ICON = {
+    iconName: 'angle-down',
+    iconVersion: 'v3'
+};
 
 @Component({
     selector: 'fusion-dropdown',
@@ -12,8 +19,8 @@ import {ApiBase} from '@ironsource/fusion-ui/components';
     styleUrls: ['./dropdown.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {provide: ApiBase, useExisting: DropdownComponent},
         DropdownService,
+        {provide: ApiBase, useExisting: DropdownComponent},
         {
             provide: NG_VALUE_ACCESSOR,
             useExisting: forwardRef(() => DropdownComponent),
@@ -22,10 +29,8 @@ import {ApiBase} from '@ironsource/fusion-ui/components';
     ]
 })
 export class DropdownComponent extends DropdownBaseComponent {
-    dropdownArrowIconName = {
-        iconName: 'arrow-down',
-        iconVersion: 'v2'
-    };
+    dropdownArrowIconName = ARROW_ICON;
+
     @ViewChild('searchComponent') searchComponent: DropdownSearchComponent;
     @ViewChild('selectComponent') selectComponent: DropdownSelectComponent;
 }

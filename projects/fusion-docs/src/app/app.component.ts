@@ -29,6 +29,29 @@ export class AppComponent implements OnInit, OnDestroy {
 
     constructor(private tooltipService: TooltipService) {}
 
+    option = [
+        {displayText: 'Mario Speedwagon'},
+        {displayText: 'Anna Sthesia'},
+        {displayText: 'Petey Cruiser'},
+        {displayText: 'Paul Molive'},
+        {displayText: 'Anna Mull'},
+        {displayText: 'Gail Forcewind'},
+        {displayText: 'Paige Turner'},
+        {displayText: 'Bob Frapples'},
+        {displayText: 'Walter Melon'},
+        {displayText: 'Nick R. Bocker'},
+        {displayText: 'Barb Ackue'},
+        {displayText: 'Buck Kinnear'},
+        {displayText: 'Greta Life'},
+        {displayText: 'Ira Membrit'},
+        {displayText: 'Shonda Leer'},
+        {displayText: 'Brock Lee'},
+        {displayText: 'Maya Didas'},
+        {displayText: 'Rick O`Shea'},
+        {displayText: 'Pete Sariya'},
+        {displayText: 'Monty Carlo'}
+    ];
+
     ngOnInit() {
         this.tooltipService.tooltipData$.pipe(takeUntil(this.onDestroy$)).subscribe(tooltipData => (this.tooltipData = tooltipData));
     }

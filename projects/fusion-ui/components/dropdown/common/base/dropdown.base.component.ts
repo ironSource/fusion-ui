@@ -60,6 +60,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     @Input() filterIconName: string;
     @Input() isIconRightPosition = false;
     @Input() isDisabled: boolean;
+    @Input() readonly: boolean;
     @Input() search: boolean;
     @Input() autoComplete: boolean;
     @Input() mappingOptions: any;
@@ -84,13 +85,23 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
         this._error = error;
         this.dropdownSelectConfigurations$.next(this.getDropdownSelectConfigurations());
     }
-
     get error(): string {
         return this._error;
     }
 
+    @Input()
+    set optionsTitle(value: string) {
+        this._optionsTitle = value;
+    }
+    get optionsTitle(): string {
+        return this._optionsTitle;
+    }
+
     @Input() optionRightHoverText;
     @Input() changeConfirmation: () => Promise<boolean>;
+    @Input() optionCloseIcon: boolean;
+
+    @Input() helper: string;
 
     @Input() set backendPagination(value: BackendPagination) {
         this.onBackendPaginationChanged(value);
@@ -114,6 +125,8 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
 
     @Output() searchChange = new EventEmitter();
     @Output() searchClear = new EventEmitter();
+
+    @Output() optionCloseIconClicked = new EventEmitter();
 
     @Output() closed = new EventEmitter<ClosedOptions>();
 
@@ -157,6 +170,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     isAllSelected: boolean;
     isIndeterminate = false;
 
+    private _optionsTitle: string;
     private _isLocatedRight = false;
     private _isLocatedLeft = false;
     private initPlaceholder: string;
@@ -273,6 +287,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
                 overlayLocation: this.placeholderLocation
             },
             disabled: this.isDisabled,
+            readonly: this.readonly,
             isTabMode: this.isTabMode,
             isSearch: this.autoComplete || this.search,
             isOpen: this.isOpen$.getValue(),
@@ -333,7 +348,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
      */
     openDropdown(event: MouseEvent) {
         const forceOpen = !!(event.target as Element).closest('div.dropdown-arrow-container');
-        if (!this.isDisabled) {
+        if (!this.isDisabled && !this.readonly) {
             if (!this.isTabMode || forceOpen) {
                 if (this.isOpen$.getValue()) {
                     this.closeDropdown();
@@ -428,6 +443,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
             this.isOpen$.getValue() && 'dd-opened',
             !!this.selected && this.selected.length && 'ss-selected',
             this.isDisabled && 'dd-disabled',
+            this.readonly && 'dd-readonly',
             this.isTabMode && 'is-tab-mode'
         ].filter(Boolean);
     }
@@ -599,6 +615,10 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
 
     valueSelected() {
         return of([...this.selected]).pipe(map(value => ({value, isSelected: !!value})));
+    }
+
+    onCloseIconClicked(option: DropdownOption) {
+        this.optionCloseIconClicked.emit(option);
     }
 
     private doChanges(option?: DropdownOption): void {

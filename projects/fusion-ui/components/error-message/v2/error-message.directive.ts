@@ -13,7 +13,7 @@ import {
     ViewContainerRef
 } from '@angular/core';
 import {isString} from '@ironsource/fusion-ui/utils';
-import {ERROR_MESSAGES, FormControlStatus} from './error-message.config';
+import {ERROR_MESSAGES, FormControlStatus} from '@ironsource/fusion-ui/components/error-message/common/entities';
 import {ErrorMessageComponent} from './error-message.component';
 import {AbstractControl, ControlContainer, FormGroupDirective} from '@angular/forms';
 import {LogService} from '@ironsource/fusion-ui/services/log';

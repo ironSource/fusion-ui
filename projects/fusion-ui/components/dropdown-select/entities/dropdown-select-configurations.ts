@@ -14,6 +14,7 @@ export interface DropdownSelectConfigurations {
         overlayLocation?: string;
     };
     disabled?: boolean;
+    readonly?: boolean;
     isTabMode?: boolean;
     isSearch?: boolean;
     isOpen?: boolean;

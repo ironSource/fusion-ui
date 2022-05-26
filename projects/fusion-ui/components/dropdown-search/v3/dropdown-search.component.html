@@ -1,0 +1,10 @@
+<div class="search-panel">
+    <input #input
+           autocomplete="off"
+           minlength="1"
+           [placeholder]="placeholder"
+           [formControl]="searchValue"
+    />
+    <fusion-icon class="fu-icon-search" *ngIf="!input.value" [name]="searchIcon"></fusion-icon>
+    <fusion-icon class="fu-icon-clear" *ngIf="input.value" [name]="searchClearIcon" (click)="clearSearch()"></fusion-icon>
+</div>

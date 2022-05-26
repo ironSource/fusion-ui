@@ -6,7 +6,6 @@
     (fusionClickOutside)="onOutsideClick($event)"
     [ngClass]="getHolderCSSClasses()"
 >
-
     <div *ngIf="templateRef"  (click)="openDropdown($event)">
         <ng-container [ngTemplateOutlet]="templateRef"></ng-container>
     </div>
@@ -27,21 +26,42 @@
         <!--dropdown options holder-->
         <div class="options-holder" (scroll)="onScroll($event)" #optionsHolder>
             <ul class="options">
+                <!--elements shown without selector-->
+                <ng-container *ngIf="templateRef">
+                    <li *ngIf="optionsTitle" class="fu-option-title">{{optionsTitle}}</li>
+                    <!--search input-->
+                    <ng-container *ngIf="(dropdownSelectConfigurations$ | async) as configurations">
+                        <li class="fu-search-holder">
+                            <fusion-dropdown-search class="fu-search-in-options"
+                                                    *ngIf="configurations.isSearch && configurations.isOpen"
+                                                    [formControl]="searchValue"
+                                                    [placeholder]="configurations.placeholder?.search"
+                                                    #searchComponent
+                            ></fusion-dropdown-search>
+                        </li>
+                    </ng-container>
+                    <!--search input-->
+                </ng-container>
+                <!--elements shown without selector-->
                 <!--options-->
                 <fusion-dropdown-options-list
                     [displayedOptions]="displayedOptionsObservable$ | async"
                     [isMultiRawDisplay]="isMultiRawDisplay"
                     [mappingOptions]="mappingOptions"
                     [selected]="selected"
+                    [optionCloseIcon]="optionCloseIcon"
+                    (closeIconClicked)="onCloseIconClicked($event)"
                     (changeSelected)="changeSelected($event)"
                 ></fusion-dropdown-options-list>
                 <!--loader holder-->
                 <li [fusionDropdownLoader]="(autoComplete || search) && loading"></li>
                 <!--no-result holder-->
-                <li class="no-results" *ngIf="!filteredOptions?.length && !loading">No results</li>
+                <li class="no-results" *ngIf="!filteredOptions?.length && !loading">No results found</li>
             </ul>
         </div>
     </div>
 </div>
 <!--errors holder-->
-<div class="error-msg" *ngIf="error">{{ error }}</div>
+<div class="fu-error-msg" *ngIf="error">{{ error }}</div>
+<!--helper holder-->
+<div class="fu-helper-text" *ngIf="helper">{{helper}}</div>
