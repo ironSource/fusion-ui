@@ -27,7 +27,6 @@ export class AppComponent implements OnInit, OnDestroy {
         {id: 10, displayText: 'Option 10'}
     ];
     private onDestroy$ = new Subject();
-
     constructor(private tooltipService: TooltipService) {}
 
     option = [
