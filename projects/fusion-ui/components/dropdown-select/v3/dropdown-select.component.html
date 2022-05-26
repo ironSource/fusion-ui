@@ -12,7 +12,6 @@
     <!--region regular title-->
     <ng-template #regularLabel>
         <label
-            [fusionTooltip]="configurations.placeholder?.value"
             [ngClass]="getLabelCSSClasses(configurations.isOpen)"
             [class.icon]="configurations.icon"
         >
@@ -32,7 +31,7 @@
                 <span class="placeholderPrefix" *ngIf="!configurations?.isMultipleSelection && configurations?.placeholder?.prefix">{{
                     configurations.placeholder?.prefix
                     }}</span>
-                <div class="placeholderText" [innerHTML]="configurations.placeholder?.value"></div>
+                <div class="placeholderText truncate" [fusionTooltip]="configurations.placeholder?.value" [innerHTML]="configurations.placeholder?.value"></div>
             </div>
             <!--endregion inner content-->
             <!--region dropdown icon-->
