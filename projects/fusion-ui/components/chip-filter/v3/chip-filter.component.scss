@@ -57,12 +57,11 @@ $paddingChipWithCloseButton: 4px 10px 4px 14px;
                 cursor: pointer;
             }
 
-            fu-chip-content-wrapper{
+            .fu-chip-content-wrapper{
                 &.truncate {
                     white-space: nowrap;
                     overflow: hidden !important;
                     text-overflow: ellipsis;
-                    display: inline-block;
                 }
             }
 
@@ -102,7 +101,7 @@ $paddingChipWithCloseButton: 4px 10px 4px 14px;
                     cursor: pointer;
                 }
 
-                fu-chip-content-wrapper{
+                .fu-chip-content-wrapper{
                     &.truncate {
                         white-space: nowrap;
                         overflow: hidden !important;
