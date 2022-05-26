@@ -41,7 +41,7 @@ $headerSmallHeight: 32px;
 
             img {
                 @include size(20px);
-                @extend %app-image-masked;
+                @extend %image-masked;
             }
             // endregion
 
