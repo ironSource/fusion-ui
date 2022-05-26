@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {DropdownOptionsListBaseComponent} from '@ironsource/fusion-ui/components/dropdown-options-list/common/base';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
-import {isNull} from '@ironsource/fusion-ui';
+import {isNull} from '@ironsource/fusion-ui/utils';
 
 const CLOSE_ACTION_SELECTOR = '.fu-option-action-icon';
 
