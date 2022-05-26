@@ -1,35 +1,10 @@
-import {
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component,
-    EventEmitter,
-    forwardRef,
-    Injector,
-    Input,
-    OnInit,
-    Output
-} from '@angular/core';
+import {ChangeDetectorRef, Directive, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
-import {NG_VALUE_ACCESSOR} from '@angular/forms';
-import {SwitcherItem} from './entities/switcher-item';
-import {SwitcherMode} from './entities/switcher-mode.enum';
+import {SwitcherItem, SwitcherMode} from '@ironsource/fusion-ui/components/switcher/common/entities';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
 
-@Component({
-    selector: 'fusion-switcher',
-    templateUrl: './switcher.component.html',
-    styleUrls: ['./switcher.component.scss', './switcher.component-v2.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => SwitcherComponent),
-            multi: true
-        }
-    ]
-})
-export class SwitcherComponent extends FusionBase implements OnInit {
+@Directive()
+export class SwitcherBaseComponent implements OnInit {
     @Input() name: string;
     @Input() options: SwitcherItem[] = [];
     @Input() error = '';
@@ -44,9 +19,7 @@ export class SwitcherComponent extends FusionBase implements OnInit {
 
     private selected: SwitcherItem;
 
-    constructor(injector: Injector, private uniqueService: UniqueIdService, private changeDetectorRef: ChangeDetectorRef) {
-        super(injector);
-    }
+    constructor(private uniqueService: UniqueIdService, private changeDetectorRef: ChangeDetectorRef) {}
 
     ngOnInit() {
         const uniq = this.uniqueService.getUniqueId();
