@@ -6,6 +6,7 @@ import {
     EventEmitter,
     Input,
     OnDestroy,
+    OnInit,
     Output,
     QueryList,
     Renderer2
@@ -19,7 +20,7 @@ import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/e
 import {SelectedFilters} from './chip-filters-entities';
 
 @Directive()
-export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestroy {
+export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestroy, OnInit {
     @ContentChildren(ChipFilterComponent) chipFilters!: QueryList<ChipFilterComponent>;
 
     @Input() set disableAddFilter(val: boolean) {
@@ -27,7 +28,7 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
     }
 
     @Input() set addFilterOptions(options: DropdownOption[]) {
-        this.options$.next(options);
+        this.optionsRef$.next(options);
     }
 
     @Input() addFiltersTitle: string;
@@ -42,7 +43,9 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
 
     disableAddFilter$ = new BehaviorSubject<boolean>(null);
 
-    formControl = new FormControl([]);
+    addFilterControl = new FormControl([]);
+
+    optionsRef$ = new BehaviorSubject<DropdownOption[]>([]);
 
     options$ = new BehaviorSubject<DropdownOption[]>([]);
 
@@ -51,6 +54,10 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
     private onDestroy$ = new Subject<void>();
 
     constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
+
+    ngOnInit() {
+        this.options$.next(this.optionsRef$.getValue());
+    }
 
     ngOnDestroy() {
         this.onDestroy$.next();
@@ -71,7 +78,7 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
 
         this.onClosedChipListener();
 
-        this.formControl.valueChanges.pipe().subscribe((option: DropdownOption[]) => {
+        this.addFilterControl.valueChanges.pipe().subscribe((option: DropdownOption[]) => {
             if (option) {
                 this.addChipFilter(option[0]);
             }
@@ -110,9 +117,15 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
     private onClosedChipListener(): void {
         this.chipFilters.forEach(chip =>
             chip.onRemove.pipe(takeUntil(this.onDestroy$)).subscribe(val => {
-                this.selectedFilters = this.selectedFilters.filter(selectedChip => val.id !== selectedChip.id);
+                this.selectedFilters = this.selectedFilters.filter(selectedChip => {
+                    if (val.id !== selectedChip.id) {
+                        return selectedChip;
+                    } else {
+                        this.restoredFiltersOptions(selectedChip, chip.mode === 'dynamic');
+                    }
+                });
                 this.onRemoveSelection.emit(this.selectedFilters);
-                this.formControl.reset();
+                this.addFilterControl.reset();
             })
         );
     }
@@ -120,17 +133,20 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
     private addChipFilter(option: DropdownOption): void {
         this.chipFilters.toArray().forEach(chip => {
             const isSelected = this.selectedFilters.some(selectedChip => selectedChip.id === chip['id']);
-            if (chip['id'] === option.id && !isSelected) {
+            if (chip['id'] === option.id && !isSelected && chip.mode === 'dynamic') {
                 chip['isVisible'] = true;
                 chip['isSelected'] = true;
                 const newSelection = {
                     id: option.id,
-                    value: option?.displayText,
+                    value: option,
                     isSelected: chip.selected
                 };
                 this.selectedFilters = [...this.selectedFilters, newSelection];
                 this.onSelect.emit(this.selectedFilters);
+                this.reduceSelectedOptions();
                 this.cdr.markForCheck();
+            } else {
+                this.addFilterControl.reset();
             }
         });
     }
@@ -153,5 +169,19 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
     private setPreSelectedFilters(): void {
         const preSelectedChip = this.chipFilters.filter(chip => !!chip['chipSelectValue']);
         this.selectedFilters = preSelectedChip.map(chip => chip['chipSelectValue']);
+    }
+
+    private reduceSelectedOptions(): void {
+        const selectedValues = this.selectedFilters.filter(selectedChip => selectedChip?.value);
+        const newOptions = this.optionsRef$.getValue().filter(option => !selectedValues.some(select => select.id === option.id));
+        this.options$.next(newOptions);
+    }
+
+    private restoredFiltersOptions(selectedChip: SelectedFilters, isDynamic: boolean): void {
+        if (isDynamic) {
+            const restoredOptions = this.options$.getValue().concat([selectedChip.value]);
+            const sortedRestoredOptions = restoredOptions.sort((a, b) => (a.id > b.id ? 1 : -1));
+            this.options$.next([...sortedRestoredOptions]);
+        }
     }
 }
