@@ -121,7 +121,7 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
                     if (val.id !== selectedChip.id) {
                         return selectedChip;
                     } else {
-                        this.restoredFiltersOptions(selectedChip, chip.mode === 'dynamic');
+                        this.restoredUnselectedFiltersOptions(selectedChip, chip.mode === 'dynamic');
                     }
                 });
                 this.onRemoveSelection.emit(this.selectedFilters);
@@ -143,7 +143,7 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
                 };
                 this.selectedFilters = [...this.selectedFilters, newSelection];
                 this.onSelect.emit(this.selectedFilters);
-                this.reduceSelectedOptions();
+                this.reduceSelectedFiltersOptions();
                 this.cdr.markForCheck();
             } else {
                 this.addFilterControl.reset();
@@ -171,13 +171,13 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
         this.selectedFilters = preSelectedChip.map(chip => chip['chipSelectValue']);
     }
 
-    private reduceSelectedOptions(): void {
+    private reduceSelectedFiltersOptions(): void {
         const selectedValues = this.selectedFilters.filter(selectedChip => selectedChip?.value);
         const newOptions = this.optionsRef$.getValue().filter(option => !selectedValues.some(select => select.id === option.id));
         this.options$.next(newOptions);
     }
 
-    private restoredFiltersOptions(selectedChip: SelectedFilters, isDynamic: boolean): void {
+    private restoredUnselectedFiltersOptions(selectedChip: SelectedFilters, isDynamic: boolean): void {
         if (isDynamic) {
             const restoredOptions = this.options$.getValue().concat([selectedChip.value]);
             const sortedRestoredOptions = restoredOptions.sort((a, b) => (a.id > b.id ? 1 : -1));
