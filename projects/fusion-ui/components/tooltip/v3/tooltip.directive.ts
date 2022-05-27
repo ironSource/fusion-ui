@@ -20,7 +20,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     //todo: Fix React not passing configuration for static mode
     @ContentChild(TooltipContentDirective, {static: true}) directiveRef!: TooltipContentDirective;
     @ContentChild('tooltipTriggerElement', {static: true}) tooltipTriggerElement!: ElementRef;
-    @ContentChild('tooltipTriggerElement', {static: true, read: ViewContainerRef}) viewTriggerContainer!: ViewContainerRef;
+    @ContentChild('tooltipTriggerElement', {static: true}) viewTriggerContainer!: ViewContainerRef;
 
     @Input() fusionTooltip = '';
     @Input() set configuration(config: tooltipConfiguration) {
@@ -45,11 +45,13 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
         left: number;
         top: number;
     };
+    private viewContainerRef: ViewContainerRef;
     private tooltipComponentRef: ComponentRef<TooltipContentComponent>;
 
-    constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
+    constructor(private renderer: Renderer2, private elementRef: ElementRef, private vcr: ViewContainerRef) {}
 
     ngAfterViewInit() {
+        this.viewContainerRef = this.viewTriggerContainer ? this.viewTriggerContainer : this.vcr;
         this.tooltipElementRef = this.preventTooltipToClose ? this.elementRef.nativeElement : this.tooltipTriggerElement.nativeElement;
         this.initListeners();
     }
@@ -71,7 +73,8 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
             this.directiveRef.create();
             this.tooltipComponentRef = this.directiveRef.tooltipComponentRef;
         } else {
-            this.tooltipComponentRef = this.viewTriggerContainer.createComponent(TooltipContentComponent);
+            this.tooltipComponentRef = this.viewContainerRef.createComponent(TooltipContentComponent);
+            console.log(this.tooltipComponentRef);
             this.tooltipComponentRef.instance.tooltipTextContent = this.fusionTooltip;
         }
         this.tooltipComponentRef.changeDetectorRef.markForCheck();
@@ -90,7 +93,6 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
 
     private adjustTooltipPosition(position: TooltipPosition): TooltipPosition {
         const hostRect = this.elementRef.nativeElement.getBoundingClientRect();
-
         if (position === TooltipPosition.TopFixed) {
             return TooltipPosition.Top;
         }
@@ -122,6 +124,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
                 shiftPosition = {...this.setPositionBottomTop('top')};
                 break;
         }
+        console.log('>>>>>>', position, shiftPosition.left, shiftPosition.top);
         this.tooltipPosition = {
             position,
             left: shiftPosition.left,
