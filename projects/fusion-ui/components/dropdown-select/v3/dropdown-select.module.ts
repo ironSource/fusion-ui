@@ -5,7 +5,7 @@ import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-
 import {FlagModule} from '@ironsource/fusion-ui/components/flag';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 // todo: will chane to v3 after tooltip bug will be fixed
-import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v2';
+import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v3';
 import {DropdownSearchModule} from '@ironsource/fusion-ui/components/dropdown-search/v3';
 import {DropdownSelectComponent} from './dropdown-select.component';
 

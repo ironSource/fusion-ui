@@ -3,7 +3,7 @@
 <!--                [tooltipData]="tooltipData"></fusion-tooltip>-->
 
 <fusion-chip-filters [isSearch]="true" [addFiltersTitle]="'Countries'" [addFilterOptions]="optionsFilter" (onSelect)="chipChanged($event)" (onRemoveSelection)="removeChip($event)">
-    <fusion-chip-filter [configuration]="{id: 1, mode: 'static', disabled: true}">
+    <fusion-chip-filter [fusionTooltip]="'Chip filter 1: All'" [configuration]="{id: 1, mode: 'static'}">
         <div class="fu-chip-content">Chip filter 1: All</div>
         <div class="filter-element">
             <fusion-daterange
@@ -167,3 +167,14 @@
         </fusion-daterange>
     </div>
 </fusion-chip-filter>
+
+
+
+<br>
+<br>
+
+<div style="width: 300px;">
+    <fusion-dropdown [options]="optionsFilter" [formControl]="formControl1">
+
+    </fusion-dropdown>
+</div>

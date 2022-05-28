@@ -1,7 +1,7 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {ITooltipData, TooltipService} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {takeUntil} from 'rxjs/operators';
-import {Subject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 import {FormControl} from '@angular/forms';
 
 @Component({
@@ -11,8 +11,9 @@ import {FormControl} from '@angular/forms';
 })
 export class AppComponent implements OnInit, OnDestroy {
     tooltipData: ITooltipData = {};
+    tooltipValue$ = new BehaviorSubject<string>('Hello');
     formControl = new FormControl();
-    formControl1 = new FormControl({id: 1, displayText: 'Option 1'});
+    formControl1 = new FormControl();
     formControl2 = new FormControl({startDate: new Date(), endDate: new Date()});
     optionsFilter = [
         {id: 1, displayText: 'Option 1'},
@@ -54,6 +55,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.tooltipService.tooltipData$.pipe(takeUntil(this.onDestroy$)).subscribe(tooltipData => (this.tooltipData = tooltipData));
+        this.formControl1.valueChanges.subscribe(val => this.tooltipValue$.next(val.displayText));
     }
 
     ngOnDestroy() {
