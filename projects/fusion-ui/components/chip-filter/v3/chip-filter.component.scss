@@ -18,7 +18,6 @@ $paddingChipWithCloseButton: 4px 10px 4px 14px;
     flex-direction: row;
     align-items: center;
     padding:$paddingChip;
-    max-width: $chipMaxWidth;
     width: fit-content;
     height: $chipHeight;
     @extend %font-bodySmallStrong;
