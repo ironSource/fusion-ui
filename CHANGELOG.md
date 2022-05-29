@@ -7,14 +7,21 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
-* **fu-406:** added new feature 'optionCloseIcon: boolean' to dropdown v3 ([f5ba67c](https://github.com/ironSource/fusion-ui/commit/f5ba67c9891ed033bac1e2110cc6ed2fbc105d77))
-* **fu-406:** new input props added to dropdown v3 ([efb1386](https://github.com/ironSource/fusion-ui/commit/efb1386e3825bcd86ec5e6596da0774fdfb83a41))
+* **fu-406:** added new style version V3 to dropdown v3 ([0198950](https://github.com/ironSource/fusion-ui/commit/01989506c677c03298fe3b79dbb48db0502c9991))
+* **fu-406:** new input props added to dropdown v3
+    - add input 'readonly: boolean' (with style)
+    - add input 'helper: string' (with style)
+* **fu-406:** added new feature 'optionCloseIcon: boolean' to dropdown v3
+    - if set as true, in options will show "close" icon, by click will be emitted event "optionCloseIconClicked" with option as argument
+
+* **fu-406:** fixed truncate in flexbox
+    - add new extend in v3 _vars.scss '%truncate-flex-child' for truncate text in flex child element example:
+    ```
+    .flex-child{
+        @extend %truncate-flex-child;
+    }
+    ```
 * **FU-407:** add new style guide v3 to switcher component ([aaea5a0](https://github.com/ironSource/fusion-ui/commit/aaea5a04f9b241eb287e87c740db827a00da1963))
-
-
-### Bug Fixes
-
-* **fu-406:** fixed truncate in flexbox ([4db883e](https://github.com/ironSource/fusion-ui/commit/4db883e384cedbbbf3f5a228c976cd9faf2fc596))
 
 ## [3.0.0-rc.7](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.6...v3.0.0-rc.7) (2022-05-19)
 
