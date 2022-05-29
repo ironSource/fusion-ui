@@ -53,6 +53,9 @@ $smallHeight: 32px;
         width: 100%;
         line-height: 14.65px;
 
+        border-radius: $borderRadius;
+        overflow: hidden;
+
         &.fu-disabled {
             cursor: not-allowed;
             input {
@@ -80,8 +83,6 @@ $smallHeight: 32px;
             &:active,
             &:focus {
                 outline: none;
-                padding-top: 2px;
-                border-bottom: solid 2px $fu-primary-500;
             }
 
             &[readonly] {
@@ -206,6 +207,15 @@ $smallHeight: 32px;
             cursor: pointer;
             @include size(16px);
             @include icon-style(null, $fu-light-700, 16px, false, true);
+        }
+
+        &.focused::after{
+            position: absolute;
+            content: '';
+            height: 2px;
+            width: 100%;
+            background-color: $fu-primary-500;
+            bottom: 0;
         }
     }
 
