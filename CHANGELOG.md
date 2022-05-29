@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0-rc.9](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.8...v3.0.0-rc.9) (2022-05-29)
+
+
+### Bug Fixes
+
+* **release/3.x.x:** fixed border-bottom for fusion-input in state focus ([6135427](https://github.com/ironSource/fusion-ui/commit/6135427da79f5703e2b9a118af01371dd90462fa))
+
 ## [3.0.0-rc.8](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.7...v3.0.0-rc.8) (2022-05-29)
 
 
