@@ -52,7 +52,9 @@ import {ChartComponent} from '@ironsource/fusion-ui/components/chart';
 import {ChartLabelsComponent} from '@ironsource/fusion-ui/components/chart-labels';
 import {IconSelectListComponent} from '@ironsource/fusion-ui/components/icon-select-list';
 import {IconStatusComponent} from '@ironsource/fusion-ui/components/icon-status';
-import {SwitcherComponent} from '@ironsource/fusion-ui/components/switcher';
+import {SwitcherComponent} from '@ironsource/fusion-ui/components/switcher/v3';
+import {SwitcherComponent as SwitcherComponentV2} from '@ironsource/fusion-ui/components/switcher/v2';
+import {SwitcherComponent as SwitcherComponentV1} from '@ironsource/fusion-ui/components/switcher/v1';
 import {CalendarComponent as CalendarComponentV1} from '@ironsource/fusion-ui/components/calendar/v1';
 import {CalendarComponent as CalendarComponentV2} from '@ironsource/fusion-ui/components/calendar/v2';
 import {CalendarComponent} from '@ironsource/fusion-ui/components/calendar';
@@ -99,7 +101,7 @@ import {PopupLocation} from '@ironsource/fusion-ui/components/popup/common/entit
 import {TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table/common/entities';
 import {TooltipPosition, TooltipType} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {FormControlStatus} from '@ironsource/fusion-ui/components/error-message';
-import {SwitcherMode} from '@ironsource/fusion-ui/components/switcher';
+import {SwitcherMode} from '@ironsource/fusion-ui/components/switcher/common/entities';
 import {DaterangePresets} from '@ironsource/fusion-ui/components/daterange/entities';
 import {MobileOrientation} from '@ironsource/fusion-ui/components/mobile-previewer/common/base';
 
@@ -199,6 +201,8 @@ export const components = [
     {name: `${PREFIX}-icon-select-list`, componentInstance: IconSelectListComponent},
     {name: `${PREFIX}-icon-status`, componentInstance: IconStatusComponent},
     {name: `${PREFIX}-switcher`, componentInstance: SwitcherComponent},
+    {name: `${PREFIX}-switcher-v1`, componentInstance: SwitcherComponentV1},
+    {name: `${PREFIX}-switcher-v2`, componentInstance: SwitcherComponentV2},
     {name: `${PREFIX}-calendar-v1`, componentInstance: CalendarComponentV1},
     {name: `${PREFIX}-calendar-v2`, componentInstance: CalendarComponentV2},
     {name: `${PREFIX}-calendar`, componentInstance: CalendarComponent},

@@ -1,0 +1,77 @@
+@import "../../../src/style/scss/v3/vars/vars";
+@import "../../../src/style/scss/v3/vars/colors";
+@import "../../../src/style/scss/v3/vars/border";
+
+$switchHeight: 24px;
+$switcherHeight: 32px;
+$switchMinWidth: 96px;
+$singleSwitchPadding: 7px 8px 7px 8px;
+$singleSwitchSelectedBackgroundColor: $White;
+$singleSwitchFontColor: $fu-black-500;
+
+:host {
+    *{
+        box-sizing: border-box;
+    }
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    .fu-switcher {
+        background-color: $fu-light-100;
+        height: $switcherHeight;
+        min-width: $switchMinWidth;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 4px;
+        border-radius: 8px;
+        gap: 4px;
+        &.fu-size-large {
+            height: 40px;
+        }
+        .fu-switcher-holder {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border-radius: 8px;
+            height: $switchHeight;
+            color: $singleSwitchFontColor;
+            background-color: $fu-light-100;
+
+            &.fu-size-large {
+                height: 32px;
+            }
+            input[type='radio'] {
+                display: none;
+                & + label{
+                    @extend %font-bodyXSmall;
+                    text-align: center;
+                    line-height: 14.32px;
+                    letter-spacing: 0.24px;
+                    display:inherit;
+                    padding:$singleSwitchPadding;
+                }
+            }
+
+            &:hover {
+                background-color: $fu-light-300;
+                label{
+                    cursor: pointer;
+                }
+                &.fu-selected label{
+                    cursor: default;
+                }
+            }
+
+            &.fu-selected{
+                background-color: $singleSwitchSelectedBackgroundColor;
+                color: $fu-black-500;
+                border-radius: 8px;
+                box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+            }
+
+        }
+    }
+}

@@ -1,9 +1,9 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {SwitcherComponent} from './switcher.component';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
-import {SwitcherItem} from './entities/switcher-item';
 import {FormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
+import {SwitcherItem} from './switcher.entities';
 
 class MockUniqueIdService extends UniqueIdService {
     getUniqueId() {
@@ -35,7 +35,7 @@ describe('SwitcherComponent', () => {
         fixture = TestBed.createComponent(SwitcherComponent);
         component = fixture.componentInstance;
 
-        component.name = 'switcherTest';
+        component.configuration = {name: 'switcherTest', size: 'large'};
         component.options = mockOptions;
 
         fixture.detectChanges();
@@ -48,8 +48,11 @@ describe('SwitcherComponent', () => {
     it('Must have rendered needed elements', () => {
         const items = component.options;
 
-        expect(fixture.debugElement.query(By.css('div.is-switcher-holder'))).toBeTruthy();
-
+        expect(fixture.debugElement.query(By.css('div.fu-switcher-holder'))).toBeTruthy();
+        expect(Array.from(fixture.debugElement.query(By.css('div.fu-switcher-holder')).nativeElement.classList)).toEqual([
+            'fu-switcher-holder',
+            'fu-size-large'
+        ]);
         const elDInputs = fixture.debugElement.queryAll(By.css('input[type="radio"]'));
         const elDLabels = fixture.debugElement.queryAll(By.css('label'));
 
@@ -63,7 +66,7 @@ describe('SwitcherComponent', () => {
 
         elDLabels.forEach((elem, idx) => {
             expect(elem.nativeElement.innerText).toBe(mockOptions[idx].title);
-            expect(elem.nativeElement.getAttribute('for')).toBe(component.name + '_' + items[idx].id.toString());
+            expect(elem.nativeElement.getAttribute('for')).toBe(component.switcherConfiguration.name + '_' + items[idx].id.toString());
         });
     });
 });
