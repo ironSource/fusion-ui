@@ -68,12 +68,18 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     }
 
     private showTooltip(): void {
+        const needToShow = this.calcTruncate();
+        if (!needToShow) {
+            return;
+        }
         if (this.directiveRef && !this.fusionTooltip) {
             this.directiveRef.create();
             this.tooltipComponentRef = this.directiveRef.tooltipComponentRef;
-        } else {
+        } else if (this.fusionTooltip) {
             this.tooltipComponentRef = this.viewContainerRef.createComponent(TooltipContentComponent);
             this.tooltipComponentRef.instance.tooltipTextContent = this.fusionTooltip;
+        } else {
+            return;
         }
 
         this.setTooltipPosition(this.position);
@@ -82,12 +88,19 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     }
 
     private hideTooltip(): void {
+        const needToHide = this.calcTruncate();
+        if (!needToHide) {
+            return;
+        }
+
         if (this.directiveRef && !this.fusionTooltip) {
             this.directiveRef.destroy();
             this.tooltipComponentRef = null;
-        } else {
+        } else if (this.fusionTooltip) {
             this.tooltipComponentRef.destroy();
             this.tooltipComponentRef = null;
+        } else {
+            return;
         }
     }
 
@@ -165,5 +178,10 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
             position.top = 0 - this.height - 6;
         }
         return position;
+    }
+
+    private calcTruncate(): boolean {
+        const nativeElement = this.elementRef.nativeElement;
+        return !(nativeElement.className.includes('truncate') && nativeElement.clientWidth >= nativeElement.scrollWidth);
     }
 }

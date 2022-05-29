@@ -1,4 +1,4 @@
-export * from '@ironsource/fusion-ui/components/accordion';
+export * from '@ironsource/fusion-ui/components/accordion/v2';
 export * from '@ironsource/fusion-ui/components/alert';
 export * from '@ironsource/fusion-ui/components/button';
 export * from '@ironsource/fusion-ui/components/chart';
@@ -21,7 +21,6 @@ export * from '@ironsource/fusion-ui/components/icon-status';
 export * from '@ironsource/fusion-ui/components/input';
 export * from '@ironsource/fusion-ui/components/input-inline';
 export * from '@ironsource/fusion-ui/components/layout';
-export * from '@ironsource/fusion-ui/components/layout-v1';
 export * from '@ironsource/fusion-ui/components/list-box';
 export * from '@ironsource/fusion-ui/components/loader';
 export * from '@ironsource/fusion-ui/components/loader-inline';
