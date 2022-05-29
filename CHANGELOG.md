@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0-rc.8](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.7...v3.0.0-rc.8) (2022-05-29)
+
+
+### Features
+
+* **fu-406:** added new feature 'optionCloseIcon: boolean' to dropdown v3 ([f5ba67c](https://github.com/ironSource/fusion-ui/commit/f5ba67c9891ed033bac1e2110cc6ed2fbc105d77))
+* **fu-406:** new input props added to dropdown v3 ([efb1386](https://github.com/ironSource/fusion-ui/commit/efb1386e3825bcd86ec5e6596da0774fdfb83a41))
+* **FU-407:** add new style guide v3 to switcher component ([aaea5a0](https://github.com/ironSource/fusion-ui/commit/aaea5a04f9b241eb287e87c740db827a00da1963))
+
+
+### Bug Fixes
+
+* **fu-406:** fixed truncate in flexbox ([4db883e](https://github.com/ironSource/fusion-ui/commit/4db883e384cedbbbf3f5a228c976cd9faf2fc596))
+
 ## [3.0.0-rc.7](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.6...v3.0.0-rc.7) (2022-05-19)
 
 

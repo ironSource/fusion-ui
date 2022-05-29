@@ -68,7 +68,6 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     }
 
     private showTooltip(): void {
-        this.setTooltipPosition(this.position);
         if (this.directiveRef && !this.fusionTooltip) {
             this.directiveRef.create();
             this.tooltipComponentRef = this.directiveRef.tooltipComponentRef;
@@ -76,6 +75,8 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
             this.tooltipComponentRef = this.viewContainerRef.createComponent(TooltipContentComponent);
             this.tooltipComponentRef.instance.tooltipTextContent = this.fusionTooltip;
         }
+
+        this.setTooltipPosition(this.position);
         this.tooltipComponentRef.changeDetectorRef.markForCheck();
         this.setTooltipConfiguration();
     }
@@ -95,7 +96,6 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
         if (position === TooltipPosition.TopFixed) {
             return TooltipPosition.Top;
         }
-
         if (window.innerWidth - this.width - hostRect.left <= 0) {
             position = TooltipPosition.Left;
         } else if (hostRect.left - this.width <= 0) {
