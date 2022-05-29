@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, DoCheck, EventEmitter, forwardRef, I
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/service';
 import {AddboxDropdownBaseComponent} from '@ironsource/fusion-ui/components/addbox-dropdown/common/base';
+import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 
 @Component({
     selector: 'fusion-addbox-dropdown',
@@ -10,6 +11,7 @@ import {AddboxDropdownBaseComponent} from '@ironsource/fusion-ui/components/addb
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         DropdownService,
+        {provide: ApiBase, useExisting: AddboxDropdownComponent},
         {
             provide: NG_VALUE_ACCESSOR,
             useExisting: forwardRef(() => AddboxDropdownComponent),

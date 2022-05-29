@@ -3,69 +3,53 @@
 @import '../../../src/style/scss/v3/mixins/mixins';
 
 :host {
-    @extend %border-box-normalize;
-    @extend %list-reset;
     position: relative;
+    box-sizing: border-box;
     width: inherit;
     background: $White;
-    border-radius: 4px;
-    padding: 6px 10px 2px;
-    color: $fu-dark-700;
-    display: inherit;
-    @extend %font-body;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    height: 32px;
+    padding: 8px;
+    border-radius: 8px;
+    @extend %font-bodySmall;
+    color: $fu-black-500;
     cursor: pointer;
 
-    // for applications (image + text + icon)
-    .icon-container{
-        position: absolute;
-        right: 12px;
-        top: 9px;
-        @include icon-style('icon', $fu-light-500, 13px, false, true);
+    @include icon-style('fu-option-icon', $fu-light-600, 16px, false, true){
+        @include size(16px);
     }
-    img {
+
+    img{
         @include size(20px);
-        max-width: 20px;
-        border-radius: 4px;
-        height: auto;
-        margin-right: 10px;
-        // text next from image
-        & + .truncate {
-            width: calc(100% - 50px);
-        }
+        @extend %image-masked;
     }
-    .text {
-        line-height: 20px;
-        &.truncate{
-            @extend %truncate;
+
+    .fu-text-content {
+        @extend %truncate-flex-child;
+        .sub-text-container{
+            line-height: 13px;
+            color: $fu-light-900;
+            @extend %font-caption;
         }
     }
 
-    // for countries (option with flag)
-    fusion-flag {
-        margin-right: 6px;
-        vertical-align: super;
-        & + .truncate {
-            width: calc(100% - 24px);
-        }
+    @include icon-style('fu-option-action-icon', $fu-light-600, 16px, false, true){
+        @include size(16px);
+        margin-left: auto;
     }
 
     &:hover {
-        background: $fu-light-100;
-        .optionRightClickTextHover {
-            display: none; // not used in V2
-        }
-        .icon-container{
-            @include icon-style('icon', $fu-light-700, 13px, false, true);
-        }
+        background: $fu-light-50;
     }
 
     &.is-has-children {
         position: relative;
         color: $fu-light-900;
-        @include icon-style('icon-arrow', $fu-light-900, 8px, true, true, -90) {
-            position: absolute;
-            right: 7px;
-            top: 8px;
+        @include icon-style('icon-arrow', $fu-light-600, 16px, true, true, -90) {
+            @include size(16px);
+            margin-left: auto;
         }
 
         .is-subgroup-options {
@@ -73,7 +57,7 @@
         }
 
         &.is-open {
-            @include icon-style('icon-arrow', $fu-light-900, 8px, false, true, 360);
+            @include icon-style('icon-arrow', $fu-light-600, 16px, true, true, 360);
             .is-subgroup-options {
                 display: block;
                 margin: 0 -10px;
@@ -93,62 +77,28 @@
             }
         }
     }
-
-    &.multi-raw-display {
-        height: 50px;
-        display: flex;
-        position: relative;
-        box-sizing: border-box;
-        img {
-            height: 36px;
-            width: 36px;
-            max-width: 36px;
-        }
-        .icon-container {
-            position: absolute;
-            height: 20px;
-            width: 20px;
-            border-radius: 50%;
-            background-color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            left: 34px;
-            top: 27px;
-            fusion-icon#platform-icon {
-                position: static;
-                margin-top: 2px;
-            }
-        }
-        .text {
-            padding-left: 5px;
-            .sub-text-container {
-                display: block;
-                font-size: 12px;
-                color: #678099;
-                @include icon-style('sub-text-icon', $fu-light-700, 12px, false, true) {
-                    margin-right: 5px;
-                    vertical-align: text-top;
-                }
-            }
-        }
-        ::ng-deep .is-id {
-            color: inherit !important;
-        }
-    }
 }
 
 :host-context(li.option.is-selected){
-    border: none;
     background-color: $fu-primary-100;
-    .icon-container{
-        @include icon-style('icon', $fu-primary-500, 13px, false, true);
+    color: $fu-primary-500;
+    @include icon-style('fu-option-icon', $fu-primary-400, 16px, false, true);
+    .sub-text-container{
+        label {
+            color: $fu-primary-400;
+        }
     }
 }
-:host-context(li.option.is-focused){
-    background: $fu-light-100;
+:host-context(li.option.is-disabled){
+    color: $fu-light-800;
+    cursor: default;
+    @include icon-style('fu-option-icon', $fu-light-600, 16px, false, true);
+    .sub-text-container{
+        label {
+            color: $fu-light-800;
+        }
+    }
 }
-
-:host-context(.fu-large-item-height){
-    padding: 11px 10px 3px;
+:host-context(li.option.is-with-second-line){
+    height: 48px;
 }

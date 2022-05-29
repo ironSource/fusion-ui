@@ -1,17 +1,18 @@
-@import '../../../src/style/scss/v2/vars/vars';
+@import '../../../src/style/scss/v3/vars/vars';
+@import '../../../src/style/scss/v3/mixins/mixins';
 
-:host.fu-style-v3,
-:host.fu-style-v2 {
+:host {
+    padding: 0 8px;
     cursor: default;
-    color: $fu-light-900;
-    padding: 5px 10px;
+    color: $fu-light-800;
     height: 32px;
     background: #fff;
-    position: relative;
-    display: block;
-    fusion-loader-inline{
-        position: absolute;
-        right: 13px;
-        top: 4px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4px;
+
+    @include icon-style('fu-icon-loading', $fu-light-700, 20px, false, true){
+        @include size(20px);
     }
 }

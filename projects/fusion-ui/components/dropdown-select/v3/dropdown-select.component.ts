@@ -13,11 +13,12 @@ export class DropdownSelectComponent extends DropdownSelectBaseComponent {
     getLabelCSSClasses(isOpen: boolean): string[] {
         const classesList = [
             this.configurations.disabled && 'dd-disabled',
+            this.configurations.readonly && 'dd-readonly',
             !!this.configurations.error && 'dd-error',
             isOpen && 'dd-active',
             !!this.configurations.selectedOption && 'ss-selected',
             this.configurations.isTabMode && 'is-tab-mode',
-            'dd-search-active',
+            this.configurations.isSearch && 'dd-search-active',
             this.searchValue.value && 'dd_search-has-value'
         ].filter(Boolean);
         return classesList;

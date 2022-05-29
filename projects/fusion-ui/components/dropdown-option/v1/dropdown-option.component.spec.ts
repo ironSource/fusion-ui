@@ -24,7 +24,7 @@ describe('DropdownOptionComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(DropdownOptionComponent);
         component = fixture.componentInstance;
-        component.option = {id: 1};
+        component.option = {id: 1, subText: {text: 'text'}};
         fixture.detectChanges();
     });
 

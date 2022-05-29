@@ -1,4 +1,4 @@
-import {Directive, ElementRef, HostListener, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Directive, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ControlValueAccessor, FormControl} from '@angular/forms';
 import {InputComponent} from '@ironsource/fusion-ui/components/input/v1';
 import {takeUntil} from 'rxjs/operators';
@@ -13,6 +13,10 @@ export abstract class DropdownSearchBaseComponent implements OnInit, OnDestroy, 
     searchValue = new FormControl();
 
     onDestroy$ = new Subject<void>();
+
+    public get searchInOptions(): boolean {
+        return this.elementRef?.nativeElement.classList.contains('fu-search-in-options');
+    }
 
     constructor(protected elementRef: ElementRef) {}
 

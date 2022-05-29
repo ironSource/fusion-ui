@@ -2,20 +2,15 @@
 @import '../../../src/style/scss/v3/vars/border';
 @import '../../../src/style/scss/v3/mixins/mixins';
 
-$v2-minWidth: 85px;
-$v2-headerHeight: 40px;
-$v2-errorBGColor: $fu-negative-100;
-$v2-borderRadius: 4px;
+$minWidth: 85px;
+$borderRadius: 8px;
 
-$v2-optionHeight: 32px;
-$v2-optionsToShow: 8;
-$v2-optionsHeight: 204px;
-$v2-optionGroupHeight: 24px;
+$optionHeight: 32px;
+$optionsToShow: 8;
+$optionGroupHeight: 24px;
 
-$v2-headerSmallHeight: 32px;
-$v2-borderRoundedRadius: 20px;
 
-// dropdown options location
+// region dropdown options holder location
 %location {
     &.options-locate-right {
         left: auto;
@@ -25,12 +20,13 @@ $v2-borderRoundedRadius: 20px;
         right: auto;
     }
 }
+// endregion
 
 :host {
     @extend %reset;
     @extend %list-reset;
     display: inline;
-    min-width: $v2-minWidth;
+    min-width: $minWidth;
     line-height: 20px;
 
     .is-dropdown,
@@ -42,18 +38,20 @@ $v2-borderRoundedRadius: 20px;
             position: absolute;
             left: 0;
             right: 0;
-            top: 100%;
+            top: calc(100% + 4px);
+            min-width: var(--dropdown-overlay-min-width, 180px);
             max-height: 0;
             background: $White;
             box-shadow: 0 2px 4px 0 rgba(12, 0, 51, 0.2);
             border: solid 1px $fu-light-300;
-            border-radius: $v2-borderRadius;
+            border-radius: $borderRadius;
             display: none;
             @extend %location;
             .options-holder {
                 padding: 4px;
                 overflow: hidden;
                 overflow-y: auto;
+                @extend %customScroll;
             }
         }
 
@@ -64,7 +62,7 @@ $v2-borderRoundedRadius: 20px;
                 visibility: hidden;
                 overflow-y: auto;
                 z-index: getZIndexLayerOffset(application, 1);
-                max-height: calc(#{$v2-optionHeight} * #{$v2-optionsToShow} + 8px); // 8 options + padding 2*3 and border 2*1
+                max-height: calc(#{$optionHeight} * #{$optionsToShow} + 8px); // 8 options + padding 2*3 and border 2*1
                 overflow-x: hidden;
 
                 &.dd-disabled {
@@ -72,7 +70,33 @@ $v2-borderRoundedRadius: 20px;
                 }
                 // use search or auto-complete input
                 &.dd-confirm {
-                    max-height: calc(#{$v2-optionHeight} * #{($v2-optionsToShow + 1)} + 12px); //  8 options + search + padding 2*3 and border 2*1
+                    max-height: calc(#{$optionHeight} * #{($optionsToShow + 1)} + 12px); //  8 options + search + padding 2*3 and border 2*1
+                }
+
+                &.fu-has-search{
+                    max-height: calc(#{$optionHeight} * #{$optionsToShow} + 40px);
+                }
+
+                &.fu-has-title{
+                    max-height: calc(#{$optionHeight} * #{$optionsToShow} + 48px);
+                    &.fu-has-search{
+                        max-height: calc(#{$optionHeight} * #{$optionsToShow} + 48px + 40px);
+                    }
+                }
+
+                .fu-option-title{
+                    height: 48px;
+                    @extend %font-bodyMediumStrong;
+                    color: $fu-black-500;
+                    padding: 12px;
+                    border-bottom: solid 1px $fu-light-400;
+                    margin: 0 -4px;
+                }
+                .fu-search-holder{
+                    height: 40px;
+                    padding: 9px 12px 12px;
+                    border-bottom: solid 1px $fu-light-400;
+                    margin: 0 -4px;
                 }
 
                 // move it to the right component - dropdown options list
@@ -97,7 +121,7 @@ $v2-borderRoundedRadius: 20px;
                         padding-bottom: 0;
                         height: 100%;
                         max-height: calc(
-                            #{$v2-optionHeight} * (#{$v2-optionsToShow} - 1) + (#{$v2-optionHeight} / 2) + 5px
+                            #{$optionHeight} * (#{$optionsToShow} - 1) + (#{$optionHeight} / 2) + 5px
                         ); // 7.5 options + padding 1*3 and border 2*1
                     }
                 }
@@ -120,23 +144,23 @@ $v2-borderRoundedRadius: 20px;
         &.is-multiselect {
             &.dd-opened {
                 .options-dropdown {
-                    max-height: calc(#{$v2-optionHeight} * #{($v2-optionsToShow + 1)} + 8px);
+                    max-height: calc(#{$optionHeight} * #{($optionsToShow + 1)} + 8px);
                     &.dd-confirm {
-                        max-height: calc(#{$v2-optionHeight} * #{($v2-optionsToShow + 1)} + 45px);
+                        max-height: calc(#{$optionHeight} * #{($optionsToShow + 1)} + 45px);
                     }
                     &.dd-scroll {
                         .options-holder {
                             padding-bottom: 0;
                             height: 100%;
-                            max-height: calc(#{$v2-optionHeight} * #{($v2-optionsToShow - 1)} + (#{$v2-optionHeight} / 2) + 5px);
+                            max-height: calc(#{$optionHeight} * #{($optionsToShow - 1)} + (#{$optionHeight} / 2) + 5px);
                         }
                     }
 
                     .options-holder {
                         .options.multi {
                             li {
-                                height: $v2-optionHeight;
-                                border-radius: $v2-borderRadius;
+                                height: $optionHeight;
+                                border-radius: $borderRadius;
                                 padding: 0 8px;
                                 .is-option-label {
                                     position: relative;
@@ -175,7 +199,7 @@ $v2-borderRoundedRadius: 20px;
                                 }
                                 &.is-group{
                                     padding: 8px;
-                                    height: $v2-optionGroupHeight;
+                                    height: $optionGroupHeight;
                                     background-color: $fu-light-200;
                                     border-radius: 4px;
                                     margin: 4px 0;
@@ -188,7 +212,7 @@ $v2-borderRoundedRadius: 20px;
                                         color: $fu-light-900;
                                         cursor: default;
                                         display: block;
-                                        height: $v2-optionGroupHeight;
+                                        height: $optionGroupHeight;
                                         margin: -5px 0;
                                     }
                                 }
@@ -266,15 +290,21 @@ $v2-borderRoundedRadius: 20px;
             }
         }
 
-        &.dd-disabled{
+        &.dd-disabled,
+        &.dd-readonly {
             cursor: not-allowed;
         }
     }
 
-    .error-msg{
-        //@extend %font-captionRegular;
-        color: $fu-negative-500;
-        margin-top: -2px;
+    .fu-error-msg{
+        @extend %font-caption;
+        color: $fu-negative-700;
+        margin-top: 3px;
+    }
+    .fu-helper-text{
+        @extend %font-caption;
+        color: $fu-black-200;
+        margin-top: 3px;
     }
 
     &.fu-options-position-up{
@@ -293,5 +323,11 @@ $v2-borderRoundedRadius: 20px;
         .options-dropdown {
             top: 0;
         }
+    }
+}
+
+:host-context(fusion-chip-filter){
+    .is-dropdown .options-dropdown {
+        top: -4px;
     }
 }

@@ -11,6 +11,7 @@ export abstract class DropdownOptionsListBaseComponent {
     @Input() selected: DropdownOption[];
     @Input() lastSearchValue: string;
     @Input() optionRightHoverText: string;
+    @Input() optionCloseIcon: boolean;
 
     @Output() changeSelected = new EventEmitter<any>();
 
@@ -33,7 +34,9 @@ export abstract class DropdownOptionsListBaseComponent {
     getOptionClasses(option: DropdownOption) {
         return {
             [option.class]: option.class,
-            'is-selected': this.isSelected(option)
+            'is-selected': this.isSelected(option),
+            'is-disabled': option.isDisabled,
+            'is-with-second-line': option.subText
         };
     }
 

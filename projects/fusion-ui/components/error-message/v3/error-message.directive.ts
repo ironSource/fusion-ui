@@ -17,8 +17,8 @@ import {ERROR_MESSAGES, FormControlStatus} from '@ironsource/fusion-ui/component
 import {ErrorMessageComponent} from './error-message.component';
 import {AbstractControl, ControlContainer, FormGroupDirective} from '@angular/forms';
 import {LogService} from '@ironsource/fusion-ui/services/log';
-import {DropdownComponent} from '@ironsource/fusion-ui/components/dropdown/v2';
-import {InputComponent} from '@ironsource/fusion-ui/components/input/v2';
+import {DropdownComponent} from '@ironsource/fusion-ui/components/dropdown/v3';
+import {InputComponent} from '@ironsource/fusion-ui/components/input/v3';
 
 @Directive({
     selector: '[fusionErrorMessage]'

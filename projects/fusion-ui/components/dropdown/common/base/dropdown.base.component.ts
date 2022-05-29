@@ -15,10 +15,10 @@ import {
 } from '@angular/core';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {ControlValueAccessor, FormControl} from '@angular/forms';
-import {BehaviorSubject, Observable, Subject} from 'rxjs';
+import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
-import {debounceTime, distinctUntilChanged, switchMapTo, take, takeUntil} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, map, switchMapTo, take, takeUntil} from 'rxjs/operators';
 import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
 import {detectChangesDecorator} from '@ironsource/fusion-ui/decorators';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
@@ -31,9 +31,10 @@ import {DropdownSelectComponent} from '@ironsource/fusion-ui/components/dropdown
 import {DropdownSelectConfigurations} from '@ironsource/fusion-ui/components/dropdown-select/entities';
 import {DROPDOWN_DEBOUNCE_TIME, DROPDOWN_OPTIONS_WITHOUT_SCROLL} from './dropdown-config';
 import {BackendPagination, ClosedOptions, DropdownPlaceholderConfiguration} from '@ironsource/fusion-ui/components/dropdown/entities';
+import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 
 @Directive()
-export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChanges, ControlValueAccessor {
+export abstract class DropdownBaseComponent extends ApiBase implements OnInit, OnDestroy, OnChanges, ControlValueAccessor {
     @Input() set options(value: DropdownOption[]) {
         this.optionsState = this.cloneOptions(value);
         this.displayedOptions$.next(this.parseOptions(this.optionsState));
@@ -59,6 +60,7 @@ export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChan
     @Input() filterIconName: string;
     @Input() isIconRightPosition = false;
     @Input() isDisabled: boolean;
+    @Input() readonly: boolean;
     @Input() search: boolean;
     @Input() autoComplete: boolean;
     @Input() mappingOptions: any;
@@ -83,13 +85,23 @@ export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChan
         this._error = error;
         this.dropdownSelectConfigurations$.next(this.getDropdownSelectConfigurations());
     }
-
     get error(): string {
         return this._error;
     }
 
+    @Input()
+    set optionsTitle(value: string) {
+        this._optionsTitle = value;
+    }
+    get optionsTitle(): string {
+        return this._optionsTitle;
+    }
+
     @Input() optionRightHoverText;
     @Input() changeConfirmation: () => Promise<boolean>;
+    @Input() optionCloseIcon: boolean;
+
+    @Input() helper: string;
 
     @Input() set backendPagination(value: BackendPagination) {
         this.onBackendPaginationChanged(value);
@@ -113,6 +125,8 @@ export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChan
 
     @Output() searchChange = new EventEmitter();
     @Output() searchClear = new EventEmitter();
+
+    @Output() optionCloseIconClicked = new EventEmitter();
 
     @Output() closed = new EventEmitter<ClosedOptions>();
 
@@ -156,6 +170,7 @@ export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChan
     isAllSelected: boolean;
     isIndeterminate = false;
 
+    private _optionsTitle: string;
     private _isLocatedRight = false;
     private _isLocatedLeft = false;
     private initPlaceholder: string;
@@ -213,7 +228,9 @@ export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChan
         protected clonePipe: ClonePipe,
         protected sharedEventsService: SharedEventsService,
         protected injector: Injector
-    ) {}
+    ) {
+        super();
+    }
 
     ngOnInit() {
         this.displayedOptionsObservable$ = this.getDisplayedOptionsObservable();
@@ -270,6 +287,7 @@ export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChan
                 overlayLocation: this.placeholderLocation
             },
             disabled: this.isDisabled,
+            readonly: this.readonly,
             isTabMode: this.isTabMode,
             isSearch: this.autoComplete || this.search,
             isOpen: this.isOpen$.getValue(),
@@ -330,7 +348,7 @@ export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChan
      */
     openDropdown(event: MouseEvent) {
         const forceOpen = !!(event.target as Element).closest('div.dropdown-arrow-container');
-        if (!this.isDisabled) {
+        if (!this.isDisabled && !this.readonly) {
             if (!this.isTabMode || forceOpen) {
                 if (this.isOpen$.getValue()) {
                     this.closeDropdown();
@@ -425,6 +443,7 @@ export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChan
             this.isOpen$.getValue() && 'dd-opened',
             !!this.selected && this.selected.length && 'ss-selected',
             this.isDisabled && 'dd-disabled',
+            this.readonly && 'dd-readonly',
             this.isTabMode && 'is-tab-mode'
         ].filter(Boolean);
     }
@@ -592,6 +611,14 @@ export abstract class DropdownBaseComponent implements OnInit, OnDestroy, OnChan
         } else {
             this.doChanges(option);
         }
+    }
+
+    valueSelected() {
+        return of([...this.selected]).pipe(map(value => ({value, isSelected: !!value})));
+    }
+
+    onCloseIconClicked(option: DropdownOption) {
+        this.optionCloseIconClicked.emit(option);
     }
 
     private doChanges(option?: DropdownOption): void {
