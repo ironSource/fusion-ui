@@ -22,6 +22,8 @@
     @extend %font-bodySmallStrong;
     box-sizing: border-box;
     position: absolute;
+    width: fit-content;
+    min-width: 154px;
     color: #ffff;
     border-radius: 8px;
     line-height: 19.5px;
@@ -34,6 +36,7 @@
     padding: 8px 8px 7px;
     background-color: var(--fu-tooltip-background-color);
     border: none;
+    @extend %systemLayer;
     .fu-tooltip-component {
         &.fu-tooltip-top::after {
             top: 100%;

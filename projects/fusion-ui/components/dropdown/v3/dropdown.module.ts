@@ -10,7 +10,7 @@ import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside
 import {FilterByFieldModule} from '@ironsource/fusion-ui/pipes/collection';
 import {CloneModule} from '@ironsource/fusion-ui/pipes/clone';
 // todo: will chane to v3 after tooltip bug will be fixed
-import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v2';
+import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v3';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
 import {DropdownLoaderModule} from '@ironsource/fusion-ui/components/dropdown-loader/v3';
 import {DropdownOptionsListModule} from '@ironsource/fusion-ui/components/dropdown-options-list/v3';

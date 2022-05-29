@@ -1,16 +1,17 @@
 export interface ChipFilterComponentConfigurations {
     id?: number | string;
-    close?: boolean;
     disabled?: boolean;
-    selected?: boolean;
-    type?: ChipType;
+    mode?: ChipFilterMode;
+    close?: boolean;
 }
 
 export enum ChipTypeToClass {
-    DateFilter = 'fu-date-filter',
+    UnRemoveAbleSelect = 'fu-un-removable-filter',
     AddFilter = 'fu-add-filter',
-    ChipSelect = 'fu-chip-select',
-    ChipDropdown = 'fu-chip-dropdown'
+    RemoveAbleSelect = 'fu-removable-filter',
+    ChipFilter = 'fu-chip-filter',
+    ChipSelect = 'fu-select-filter'
 }
 
-export type ChipType = 'DateFilter' | 'AddFilter' | 'ChipSelect' | 'ChipDropdown';
+export type ChipType = 'UnRemoveAbleSelect' | 'AddFilter' | 'RemoveAbleSelect' | 'ChipFilter' | 'ChipSelect';
+export type ChipFilterMode = 'static' | 'dynamic' | 'add';

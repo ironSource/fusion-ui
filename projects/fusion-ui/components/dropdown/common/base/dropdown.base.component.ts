@@ -614,7 +614,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     }
 
     valueSelected() {
-        return of([...this.selected]).pipe(map(value => ({value, isSelected: !!value})));
+        return of([...this.selected]).pipe(map(value => (value.length ? {value, isSelected: !!value} : null)));
     }
 
     onCloseIconClicked(option: DropdownOption) {

@@ -326,8 +326,10 @@ $optionGroupHeight: 24px;
     }
 }
 
+
 :host-context(fusion-chip-filter){
     .is-dropdown .options-dropdown {
         top: -4px;
+        min-width: 200px;
     }
 }

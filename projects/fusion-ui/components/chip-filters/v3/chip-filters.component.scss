@@ -1,0 +1,30 @@
+@import '../../../src/style/scss/v3/vars/colors';
+
+
+:host{
+   .chip-filters-container{
+       box-sizing: border-box;
+       display: flex;
+       flex-direction: row;
+       align-items: flex-start;
+       gap: 4px;
+       padding: 16px 24px 16px 24px;
+       background-color: $White;
+       width: 100%;
+       min-height: 64px;
+       .fu-add-filter {
+           order: 100;
+           min-width: 112px;
+           .fu-chip-content {
+               > span {
+                   display: flex;
+                   gap: 3px;
+               }
+               fusion-icon {
+                   width: 16px;
+                   height: 16px;
+               }
+           }
+       }
+   }
+}

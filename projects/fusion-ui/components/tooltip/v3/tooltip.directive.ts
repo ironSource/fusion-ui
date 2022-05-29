@@ -20,7 +20,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     //todo: Fix React not passing configuration for static mode
     @ContentChild(TooltipContentDirective, {static: true}) directiveRef!: TooltipContentDirective;
     @ContentChild('tooltipTriggerElement', {static: true}) tooltipTriggerElement!: ElementRef;
-    @ContentChild('tooltipTriggerElement', {static: true, read: ViewContainerRef}) viewTriggerContainer!: ViewContainerRef;
+    @ContentChild('tooltipTriggerElement', {static: true}) viewTriggerContainer!: ViewContainerRef;
 
     @Input() fusionTooltip = '';
     @Input() set configuration(config: tooltipConfiguration) {
@@ -32,7 +32,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
         }
     }
 
-    width: number = 150;
+    width: number;
     height: number = 30;
     backgroundColor: string = '#696a6b';
     preventTooltipToClose: boolean = true;
@@ -45,11 +45,13 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
         left: number;
         top: number;
     };
+    private viewContainerRef: ViewContainerRef;
     private tooltipComponentRef: ComponentRef<TooltipContentComponent>;
 
-    constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
+    constructor(private renderer: Renderer2, private elementRef: ElementRef, private vcr: ViewContainerRef) {}
 
     ngAfterViewInit() {
+        this.viewContainerRef = this.viewTriggerContainer ? this.viewTriggerContainer : this.vcr;
         this.tooltipElementRef = this.preventTooltipToClose ? this.elementRef.nativeElement : this.tooltipTriggerElement.nativeElement;
         this.initListeners();
     }
@@ -71,7 +73,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
             this.directiveRef.create();
             this.tooltipComponentRef = this.directiveRef.tooltipComponentRef;
         } else {
-            this.tooltipComponentRef = this.viewTriggerContainer.createComponent(TooltipContentComponent);
+            this.tooltipComponentRef = this.viewContainerRef.createComponent(TooltipContentComponent);
             this.tooltipComponentRef.instance.tooltipTextContent = this.fusionTooltip;
         }
         this.tooltipComponentRef.changeDetectorRef.markForCheck();
@@ -90,7 +92,6 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
 
     private adjustTooltipPosition(position: TooltipPosition): TooltipPosition {
         const hostRect = this.elementRef.nativeElement.getBoundingClientRect();
-
         if (position === TooltipPosition.TopFixed) {
             return TooltipPosition.Top;
         }
@@ -100,7 +101,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
         } else if (hostRect.left - this.width <= 0) {
             position = TooltipPosition.Right;
         } else if (hostRect.top - this.height <= 0) {
-            position = hostRect.left - this.width <= 0 ? TooltipPosition.Right : TooltipPosition.Left;
+            position = hostRect.bottom - this.height <= 0 ? TooltipPosition.Right : TooltipPosition.Bottom;
         }
         return position;
     }
@@ -133,8 +134,8 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
         this.tooltipComponentRef.instance.tooltipStyleConfiguration = {
             top: this.tooltipPosition.top.toString() + 'px',
             left: this.tooltipPosition.left.toString() + 'px',
-            width: this.width.toString() + 'px',
-            height: this.height.toString() + 'px',
+            width: this.width?.toString() + 'px' || null,
+            height: this.height?.toString() + 'px',
             backgroundColor: this.backgroundColor
         };
         this.tooltipComponentRef.instance.tooltipPositionClass = this.tooltipPosition.position;
@@ -142,16 +143,13 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
 
     private setPositionLeftRight(pos: 'left' | 'right'): {top: number; left: number} {
         const position = {
-            top:
-                this.elementRef.nativeElement.getBoundingClientRect().top -
-                this.height / 2 +
-                this.elementRef.nativeElement.offsetHeight / 2,
+            top: this.elementRef.nativeElement.offsetHeight / 2 - this.height / 2,
             left: 0
         };
         if (pos === 'left') {
-            position.left = this.elementRef.nativeElement.getBoundingClientRect().left - this.width - 6;
+            position.left = 0 - this.width - 6;
         } else {
-            position.left = this.elementRef.nativeElement.getBoundingClientRect().left + this.elementRef.nativeElement.offsetWidth + 6;
+            position.left = this.elementRef.nativeElement.offsetWidth + 6;
         }
         return position;
     }
@@ -159,14 +157,12 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     private setPositionBottomTop(pos: 'bottom' | 'top'): {top: number; left: number} {
         const position = {
             top: 0,
-            left:
-                this.elementRef.nativeElement.getBoundingClientRect().left +
-                (this.elementRef.nativeElement.offsetWidth / 2 - this.width / 2)
+            left: this.elementRef.nativeElement.offsetWidth / 2 - this.width / 2
         };
         if (pos === 'bottom') {
-            position.top = this.elementRef.nativeElement.getBoundingClientRect().bottom + 6;
+            position.top = this.elementRef.nativeElement.offsetHeight + 6;
         } else {
-            position.top = this.elementRef.nativeElement.getBoundingClientRect().top - this.height - 6;
+            position.top = 0 - this.height - 6;
         }
         return position;
     }

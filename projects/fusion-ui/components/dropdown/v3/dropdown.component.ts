@@ -33,8 +33,4 @@ export class DropdownComponent extends DropdownBaseComponent {
 
     @ViewChild('searchComponent') searchComponent: DropdownSearchComponent;
     @ViewChild('selectComponent') selectComponent: DropdownSelectComponent;
-
-    valueSelected() {
-        return of([...this.selected]).pipe(map(value => ({value, isSelected: !!value})));
-    }
 }

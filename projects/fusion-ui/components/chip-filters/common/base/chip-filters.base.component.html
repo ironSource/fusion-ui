@@ -1,0 +1,22 @@
+<div class="chip-filters-container">
+    <ng-content></ng-content>
+    <ng-container *ngIf="showAddFilter$ | async">
+        <fusion-chip-filter [configuration]="{mode:'add', disabled: (disableAddFilter$ | async)}">
+            <div class="fu-chip-content">
+                <span>
+                    <fusion-icon name="tune"></fusion-icon>
+                    Add filters
+                </span>
+            </div>
+            <div class="filter-element">
+                <fusion-dropdown
+                    [optionsTitle]="addFiltersTitle"
+                    [search]="isSearch"
+                    [options]="options$ | async"
+                    [formControl]="addFilterControl"
+                >
+                </fusion-dropdown>
+            </div>
+        </fusion-chip-filter>
+    </ng-container>
+</div>
