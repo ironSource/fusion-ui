@@ -13,7 +13,39 @@ All notable changes to this project will be documented in this file. See [standa
 
 
 ### Features
-
+* **fu-400:** add ChipFilter and ChipFilters component with v3 style ([a1c107d](https://github.com/ironSource/fusion-ui/commit/a1c107d99058a22d4f80cc7008dd866be686332f))
+    * ChipFilters component expose two events: 
+        * onSelect - when chip is selected return {id: number; value: any; isSelected: boolean}
+        * onRemoveSelection - when chip selection canceled return {id: number; isSelected: boolean}
+    * ChipFilters has three inputs that relate to a dynamic filters:
+        * isSearch - boolean type to determine if the dropdown in AddFilter chip will have a search bar
+        * addFilterOptions - DropdownOption[] type to pass the filters options.
+        * addFiltersTitle - String type to add title bar in the dropdown.
+    * ChipFilter has three inputs:
+        * configuration -
+            ```
+            export interface ChipFilterComponentConfigurations {
+                id: number | string;
+                disabled?: boolean;
+                mode?: ChipFilterMode;
+                close?: boolean;
+            }
+    
+            export type ChipFilterMode = 'static' | 'dynamic' | 'add';
+          ```
+        * isSelected - boolean type to pre-select chip component with no 'filter-element' element class under it.
+        * isVisible - boolean type to determine visibility of chip.
+    * Usage:
+        ```html
+      <fusion-chip-filters [isSearch]="true" [addFiltersTitle]="'Countries'" [addFilterOptions]="optionsFilter" (onSelect)="chipChanged($event)" (onRemoveSelection)="removeChip($event)">
+            <fusion-chip-filter [configuration]="{ id: 2, mode: 'dynamic' }">
+                <div class="fu-chip-content">{{ value }}</div>
+                <div class="filter-element">
+                    <fusion-daterange [formControl]="formControl"> </fusion-daterange>
+                </div>
+            </fusion-chip-filter>
+      </fusion-chip-filters>
+      ```
 * **fu-406:** added new style version V3 to dropdown v3 ([0198950](https://github.com/ironSource/fusion-ui/commit/01989506c677c03298fe3b79dbb48db0502c9991))
 * **fu-406:** new input props added to dropdown v3
     - add input 'readonly: boolean' (with style)

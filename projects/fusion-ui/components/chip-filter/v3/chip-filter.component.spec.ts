@@ -77,7 +77,7 @@ describe('ChipFilterComponent', () => {
         });
 
         it('should create AddFilter type', async () => {
-            component.config = {mode: 'add'};
+            component.config = {id: 1, mode: 'add'};
             fixture.detectChanges();
             expect(chipEl).toBeTruthy();
             expect(collectionToArray(chipElement.classList)).toEqual(['fu-add-filter']);

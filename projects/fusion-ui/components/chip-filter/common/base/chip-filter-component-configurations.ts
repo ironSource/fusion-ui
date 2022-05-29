@@ -1,5 +1,5 @@
 export interface ChipFilterComponentConfigurations {
-    id?: number | string;
+    id: number | string;
     disabled?: boolean;
     mode?: ChipFilterMode;
     close?: boolean;
