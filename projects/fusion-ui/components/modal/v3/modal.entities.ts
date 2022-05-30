@@ -2,7 +2,7 @@ export interface ModalConfiguration {
     id?: string;
     width?: string;
     height?: string;
-    defaultModalState?: 'open' | 'close';
+    defaultModalState?: OpenCloseType;
     error?: string;
     hasFooter?: boolean;
     headerText?: string;
@@ -18,3 +18,5 @@ export interface ModalConfiguration {
         cancelButtonClass?: string;
     };
 }
+
+export type OpenCloseType = 'open' | 'close';
