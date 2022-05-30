@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0-rc.12](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.11...v3.0.0-rc.12) (2022-05-30)
+
 ## [3.0.0-rc.11](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.10...v3.0.0-rc.11) (2022-05-30)
 
 ## [3.0.0-rc.10](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.9...v3.0.0-rc.10) (2022-05-30)
