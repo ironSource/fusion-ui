@@ -213,7 +213,7 @@ $smallHeight: 32px;
             @include icon-style(null, $fu-light-700, 16px, false, true);
         }
 
-        &.focused::after{
+        &.focused:not(.fu-readonly)::after{
             position: absolute;
             content: '';
             height: 2px;

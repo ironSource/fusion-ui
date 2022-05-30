@@ -1,6 +1,8 @@
 <div [class.fu-input-small]="isSmall" class="fu-input-holder"
      [ngClass]="getHolderClasses()"
-     [style.width]="config.options?.width">
+     [style.width]="config.options?.width"
+     [class.fu-readonly]="config?.readonly || (disabled$ | async) || (loading && config?.disableOnLoading) || config?.btnLoading"
+>
     <ng-container *ngIf="configByStyle$ | async as configByStyle">
 
         <i class="fu-input-icon {{ config?.icon?.iconPos || config?.icon?.[0]?.iconPos }}"
