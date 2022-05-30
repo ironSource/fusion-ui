@@ -376,6 +376,7 @@ document.body.appendChild(input);'
                             placeholder="Search"
                             showSearchIcon="left"
                             [options]="{rounded: true, size: inputSize.Small}"
+                            [icon]="[{iconData: 'ios', iconPos:'left'},{iconData: 'group', iconPos:'right'}]"
                             [clear]="true"
                             [formControl]="model"
                         ></fusion-input>
@@ -436,7 +437,7 @@ document.body.appendChild(input);'
                 </div>
                 <div class="col-6">
                     <p>With Icon right:</p>
-                    <fusion-input placeholder="Placeholder" [icon]="{iconData: 'ios', iconPos:'left'}" [formControl]="model"></fusion-input>
+                    <fusion-input placeholder="Placeholder" [icon]="[{iconData: 'ios', iconPos:'left'},{iconData: 'group', iconPos:'right'}]" [formControl]="model"></fusion-input>
                 </div>
             </div>
             <div class="row" *ngIf="currentStyleVersion === styleVersion.V2 || styleVersion.V3">
