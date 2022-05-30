@@ -49,6 +49,7 @@
                [min]="config?.min"
                [max]="config?.max"
                [step]="step"
+               [type]="getInputType()"
                [formControl]="inputControl"
                [ngStyle]="config.options?.style"
                [attr.autofocus]="config?.autofocus"
