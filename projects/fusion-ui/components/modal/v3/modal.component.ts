@@ -14,12 +14,13 @@ import {
 } from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {DOCUMENT} from '@angular/common';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {WindowService} from '@ironsource/fusion-ui/services/window';
 import {ModalConfiguration} from './modal.entities';
 import {getDefaultCssUnit} from './modal-utils';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
     selector: 'fusion-modal',
@@ -40,7 +41,7 @@ export class ModalComponent implements OnDestroy, OnInit {
     @Input() set isModalOpen(value: boolean) {
         if (value) {
             this.isClosed$.next(!value);
-            this.onModalOpened(this.configuration.id);
+            this.modalOpenListener$.next(value);
         }
     }
 
@@ -49,7 +50,7 @@ export class ModalComponent implements OnDestroy, OnInit {
     }
 
     get configuration(): ModalConfiguration {
-        return this._configuration;
+        return this._configuration.getValue();
     }
 
     @Output() open = new EventEmitter();
@@ -59,8 +60,10 @@ export class ModalComponent implements OnDestroy, OnInit {
     @ViewChild('modalHolder', {static: true}) modalHolder: ElementRef;
 
     private uid: string;
-    private _configuration: ModalConfiguration;
+    private _configuration = new BehaviorSubject<ModalConfiguration>(null);
     private isClosed$ = new BehaviorSubject<boolean>(false);
+    private modalOpenListener$ = new BehaviorSubject<boolean>(false);
+    private onDestroy$ = new Subject<void>();
 
     constructor(
         @Inject(DOCUMENT) protected document: Document,
@@ -82,9 +85,12 @@ export class ModalComponent implements OnDestroy, OnInit {
             this.onClose(false);
         }
         this.addModal(this);
+        this.initListeners();
     }
 
     ngOnDestroy() {
+        this.onDestroy$.next();
+        this.onDestroy$.complete();
         this.removeModal(this.configuration.id);
     }
 
@@ -98,6 +104,17 @@ export class ModalComponent implements OnDestroy, OnInit {
         if (emitEvent) {
             this.close.emit(eventType);
         }
+    }
+
+    private initListeners() {
+        this.modalOpenListener$
+            .asObservable()
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe(val => {
+                if (val) {
+                    this.onModalOpened(this.configuration.id);
+                }
+            });
     }
 
     private addModal(modal: ModalComponent) {
@@ -127,8 +144,8 @@ export class ModalComponent implements OnDestroy, OnInit {
     }
 
     private setModalConfiguration(config: ModalConfiguration) {
-        this._configuration = {
-            id: config.id || this.uid,
+        this._configuration.next({
+            id: config?.id || this.uid,
             width: getDefaultCssUnit(config?.width),
             height: getDefaultCssUnit(config?.height),
             defaultModalState: config?.defaultModalState || 'open',
@@ -146,6 +163,6 @@ export class ModalComponent implements OnDestroy, OnInit {
                 cancelButtonHidden: config?.cancelButton?.cancelButtonHidden || false,
                 cancelButtonClass: config?.cancelButton?.cancelButtonClass || 'third'
             }
-        };
+        });
     }
 }
