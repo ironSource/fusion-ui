@@ -1,5 +1,5 @@
-import {Component, OnInit, ChangeDetectionStrategy, forwardRef, OnDestroy, AfterViewInit} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {Component, ChangeDetectionStrategy, forwardRef} from '@angular/core';
+import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {CONFIG_INPUT_BY_UI_STYLE, InputBaseComponent} from '@ironsource/fusion-ui/components/input/common/base';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {of} from 'rxjs';
@@ -11,7 +11,7 @@ import {of} from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => InputComponent), multi: true}]
 })
-export class InputComponent extends InputBaseComponent implements OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
+export class InputComponent extends InputBaseComponent {
     showErrorIcon(): boolean {
         return !isNullOrUndefined(this.config.error);
     }

@@ -48,6 +48,12 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
         return this.config.options?.size === 'small';
     }
 
+    get isReadOnly() {
+        return (
+            this.config?.readonly || this.disabled$.getValue() || (this.loading && this.config?.disableOnLoading) || this.config?.btnLoading
+        );
+    }
+
     // Todo - use optional chaining when upgrade ts version
     get displaySearchIcon(): boolean {
         const inputValue = this.input ? this.input.nativeElement.value : null;
