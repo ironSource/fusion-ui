@@ -4,6 +4,7 @@ import {TooltipComponentStyleConfiguration, TooltipPosition} from '@ironsource/f
 @Component({
     selector: 'fusion-tooltip-content',
     template: ` <div class="fu-tooltip-component" [ngClass]="'fu-tooltip-' + position">
+        {{ position }}
         <ng-container *ngIf="!tooltipInnerText" [ngTemplateOutlet]="temp"></ng-container>
         <span *ngIf="tooltipInnerText">{{ tooltipInnerText }}</span>
     </div>`,
@@ -27,6 +28,7 @@ export class TooltipContentComponent {
 
     @Input() set tooltipPositionClass(pos: TooltipPosition) {
         this.position = TooltipPosition[pos].toLowerCase();
+        this.renderer.addClass(this.elementRef.nativeElement, 'fu-tooltip-' + this.position);
     }
 
     @Input() set tooltipStyleConfiguration(config: TooltipComponentStyleConfiguration) {
