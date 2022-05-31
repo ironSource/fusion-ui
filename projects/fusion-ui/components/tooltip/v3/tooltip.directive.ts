@@ -35,10 +35,8 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     width: number;
     height: number;
     backgroundColor: string = '#696a6b';
-    preventTooltipToClose: boolean = true;
+    preventTooltipToClose: boolean = false;
 
-    // private defaultWidth: number = 154;
-    // private defaultHeight: number = 30;
     private onDestroy$ = new Subject<void>();
     private tooltipElementRef: HTMLElement;
     private position = TooltipPosition.Top;
@@ -54,7 +52,11 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
 
     ngAfterViewInit() {
         this.viewContainerRef = this.viewTriggerContainer ? this.viewTriggerContainer : this.vcr;
-        this.tooltipElementRef = this.preventTooltipToClose ? this.elementRef.nativeElement : this.tooltipTriggerElement.nativeElement;
+        this.tooltipElementRef = this.preventTooltipToClose
+            ? this.elementRef.nativeElement
+            : this.elementRef.nativeElement.firstChild || this.tooltipTriggerElement.nativeElement;
+        console.log(this.elementRef.nativeElement, this.tooltipTriggerElement?.nativeElement);
+        console.log(this.tooltipElementRef);
         this.initListeners();
     }
 
@@ -74,7 +76,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
         if (!needToShow) {
             return;
         }
-        if (this.directiveRef) {
+        if (this.directiveRef && !this.fusionTooltip) {
             this.directiveRef.create();
             this.tooltipComponentRef = this.directiveRef.tooltipComponentRef;
         } else if (this.fusionTooltip) {
@@ -96,7 +98,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
             return;
         }
 
-        if (this.directiveRef) {
+        if (this.directiveRef && !this.fusionTooltip) {
             this.directiveRef.destroy();
             this.tooltipComponentRef = null;
         } else if (this.fusionTooltip) {
