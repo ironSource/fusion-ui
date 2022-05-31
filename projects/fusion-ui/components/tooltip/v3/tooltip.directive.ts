@@ -20,7 +20,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     //todo: Fix React not passing configuration for static mode
     @ContentChild(TooltipContentDirective, {static: true}) directiveRef!: TooltipContentDirective;
     @ContentChild('tooltipTriggerElement', {static: true}) tooltipTriggerElement!: ElementRef;
-    @ContentChild('tooltipTriggerElement', {static: true}) viewTriggerContainer!: ViewContainerRef;
+    @ContentChild('tooltipTriggerElement', {static: true, read: ViewContainerRef}) viewTriggerContainer!: ViewContainerRef;
 
     @Input() fusionTooltip = '';
     @Input() set configuration(config: tooltipConfiguration) {
@@ -72,7 +72,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
         if (!needToShow) {
             return;
         }
-        if (this.directiveRef && !this.fusionTooltip) {
+        if (this.directiveRef) {
             this.directiveRef.create();
             this.tooltipComponentRef = this.directiveRef.tooltipComponentRef;
         } else if (this.fusionTooltip) {
@@ -93,7 +93,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
             return;
         }
 
-        if (this.directiveRef && !this.fusionTooltip) {
+        if (this.directiveRef) {
             this.directiveRef.destroy();
             this.tooltipComponentRef = null;
         } else if (this.fusionTooltip) {
@@ -106,12 +106,13 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
 
     private adjustTooltipPosition(position: TooltipPosition): TooltipPosition {
         const hostRect = this.elementRef.nativeElement.getBoundingClientRect();
+        const tooltipWidth = this.width || 150;
         if (position === TooltipPosition.TopFixed) {
             return TooltipPosition.Top;
         }
-        if (window.innerWidth - this.width - hostRect.left <= 0) {
+        if (window.innerWidth - tooltipWidth - hostRect.left <= 0) {
             position = TooltipPosition.Left;
-        } else if (hostRect.left - this.width <= 0) {
+        } else if (hostRect.left - tooltipWidth <= 0) {
             position = TooltipPosition.Right;
         } else if (hostRect.top - this.height <= 0) {
             position = hostRect.bottom - this.height <= 0 ? TooltipPosition.Right : TooltipPosition.Bottom;
@@ -136,6 +137,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
                 shiftPosition = {...this.setPositionBottomTop('top')};
                 break;
         }
+
         this.tooltipPosition = {
             position,
             left: shiftPosition.left,
@@ -155,14 +157,15 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     }
 
     private setPositionLeftRight(pos: 'left' | 'right'): {top: number; left: number} {
+        const rect = this.elementRef.nativeElement.getBoundingClientRect();
         const position = {
-            top: this.elementRef.nativeElement.offsetHeight / 2 - this.height / 2,
+            top: this.elementRef.nativeElement.offsetHeight / 2 - this.height / 2 + rect.top,
             left: 0
         };
         if (pos === 'left') {
-            position.left = 0 - this.width - 6;
+            position.left = 0 - this.width - 6 + rect.left;
         } else {
-            position.left = this.elementRef.nativeElement.offsetWidth + 6;
+            position.left = this.elementRef.nativeElement.offsetWidth + 6 + rect.left;
         }
         return position;
     }
