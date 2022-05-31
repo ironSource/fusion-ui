@@ -37,8 +37,8 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     backgroundColor: string = '#696a6b';
     preventTooltipToClose: boolean = true;
 
-    private defaultWidth: number = 154;
-    private defaultHeight: number = 30;
+    // private defaultWidth: number = 154;
+    // private defaultHeight: number = 30;
     private onDestroy$ = new Subject<void>();
     private tooltipElementRef: HTMLElement;
     private position = TooltipPosition.Top;
@@ -84,8 +84,9 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
             return;
         }
 
-        this.setTooltipPosition(this.position);
-        this.tooltipComponentRef.changeDetectorRef.markForCheck();
+        this.tooltipComponentRef.changeDetectorRef.detectChanges();
+        const rectTooltip = this.tooltipComponentRef.instance.elementRef.nativeElement.getBoundingClientRect();
+        this.setTooltipPosition(this.position, rectTooltip);
         this.setTooltipConfiguration();
     }
 
@@ -120,10 +121,10 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
         return position;
     }
 
-    private setTooltipPosition(position: TooltipPosition): void {
+    private setTooltipPosition(position: TooltipPosition, tooltipElement: any): void {
         let shiftPosition: IShiftPosition;
-        const tooltipWidth = this.width || this.defaultWidth;
-        const tooltipHeight = this.height || this.defaultHeight;
+        const tooltipWidth = this.width || tooltipElement.width;
+        const tooltipHeight = this.height || tooltipElement.height;
         const rect = this.elementRef.nativeElement.getBoundingClientRect();
         position = this.adjustTooltipPosition(position, tooltipWidth, tooltipHeight, rect);
         switch (position) {
@@ -140,11 +141,10 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
                 shiftPosition = {...this.setPositionBottomTop('top', tooltipWidth, tooltipHeight)};
                 break;
         }
-        console.log(rect.left, this.elementRef.nativeElement);
         this.tooltipPosition = {
             position,
-            left: shiftPosition.left,
-            top: shiftPosition.top
+            left: shiftPosition.left + rect.left,
+            top: shiftPosition.top + rect.top
         };
     }
 
@@ -177,10 +177,6 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
             top: 0,
             left: this.elementRef.nativeElement.offsetWidth / 2 - tooltipWidth / 2
         };
-        console.log(
-            this.elementRef.nativeElement.offsetWidth / 2 - tooltipWidth / 2,
-            this.elementRef.nativeElement.offsetWidth / 2 - this.width / 2
-        );
         if (pos === 'bottom') {
             position.top = this.elementRef.nativeElement.offsetHeight + 6;
         } else {
