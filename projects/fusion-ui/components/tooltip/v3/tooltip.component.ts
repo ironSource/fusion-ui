@@ -17,6 +17,7 @@ import {tooltipConfiguration} from '@ironsource/fusion-ui/components/tooltip/com
         `
             .tooltip-container {
                 display: inline-block;
+                position: relative;
             }
         `
     ],

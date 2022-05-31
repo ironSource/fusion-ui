@@ -1,3 +1,81 @@
-<router-outlet></router-outlet>
-<fusion-tooltip *ngIf="tooltipData.content"
-                [tooltipData]="tooltipData"></fusion-tooltip>
+<!--<router-outlet></router-outlet>-->
+<!--<fusion-tooltip *ngIf="tooltipData.content"-->
+<!--                [tooltipData]="tooltipData"></fusion-tooltip>-->
+
+<!--<fusion-button (click)="onClickModalOpen()" class="stroke"-->
+<!--&gt;Dialog</fusion-button-->
+<!--&gt;-->
+<!--<fusion-modal-->
+<!--    (close)="onModalClosed($event)"-->
+<!--    [configuration]="{id: 'modalTest',defaultModalState: 'open',width: '600',headerText: 'Overlay Title'}"-->
+<!--    [isModalOpen]="openModal$ | async"-->
+<!--&gt;-->
+<!--    <div-->
+<!--        style="background-color:#F1F3F4;padding: 16px;border-radius: 8px; text-align: center;"-->
+<!--    >-->
+<!--        <p>Modal content</p>-->
+<!--    </div>-->
+<!--</fusion-modal>-->
+
+<!--<fusion-tooltip-->
+<!--    [fusionTooltipText]="'blabla'"-->
+<!--    [tooltipConfiguration]="{-->
+<!--    backgroundColor: 'blue',-->
+<!--    preventTooltipToClose: true,-->
+<!--    width: 300-->
+<!--  }"-->
+<!--&gt;-->
+<!--    <fusion-button class="third fusionTooltipTrigger">-->
+<!--        Trigger Tooltip-->
+<!--    </fusion-button>-->
+<!--    <div class="fusionTooltipContent">Component Tooltip</div>-->
+<!--</fusion-tooltip>-->
+
+<br>
+<br>
+<br>
+    <fusion-button
+        class="delete"
+        [fusionTooltip]="'hello 1'">Trigger Tooltip
+    </fusion-button>
+
+<br>
+<br>
+<br>
+<div style="display: flex; justify-content: right">
+    <fusion-button
+        style="position: relative"
+        class="black"
+        [fusionTooltip]="'hello'">
+        <div>Trigger Tooltip</div>
+    </fusion-button>
+</div>
+
+
+
+<fusion-tooltip
+    [fusionTooltipText]="'blabla'"
+    [tooltipConfiguration]="{
+    backgroundColor: 'blue',
+    preventTooltipToClose: true,
+    width: 300
+  }"
+>
+    <fusion-button class="third fusionTooltipTrigger">
+        Trigger Tooltip
+    </fusion-button>
+    <div class="fusionTooltipContent">Component Tooltip</div>
+</fusion-tooltip>
+
+<div style="display: flex; justify-content: center;">
+    <div
+        style="position: relative"
+        class="delete"
+        [fusionTooltip]="'hello'"
+        [configuration]="{
+      width: 200
+    }"
+    >
+        <div #tooltipTriggerElement>Trigger Tooltip</div>
+    </div>
+</div>

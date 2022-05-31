@@ -80,4 +80,25 @@ export class AppComponent implements OnInit, OnDestroy {
         console.log($event);
         this.formControl.reset();
     }
+
+    openModal$ = new BehaviorSubject<boolean>(false);
+    onClickModalOpen() {
+        this.openModal$.next(true);
+    }
+
+    onModalClosed($event) {
+        console.log($event);
+        this.openModal$.next(false);
+    }
+
+    saveClicked($event: any): void {
+        console.log($event);
+        console.log('modal save button clicked!');
+    }
+
+    onSaveClicked(modalId: string): void {
+        console.log('modal save button clicked!');
+        // this.modalService.close(modalId);
+        // this.modalClosed$.next(true);
+    }
 }
