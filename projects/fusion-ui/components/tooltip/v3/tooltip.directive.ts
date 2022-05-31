@@ -55,8 +55,6 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
         this.tooltipElementRef = this.preventTooltipToClose
             ? this.elementRef.nativeElement
             : this.elementRef.nativeElement.firstChild || this.tooltipTriggerElement.nativeElement;
-        console.log(this.elementRef.nativeElement, this.tooltipTriggerElement?.nativeElement);
-        console.log(this.tooltipElementRef);
         this.initListeners();
     }
 
