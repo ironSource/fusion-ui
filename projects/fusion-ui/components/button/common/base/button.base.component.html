@@ -1,6 +1,8 @@
 <span [ngClass]="{'is-icon-text': iconName && projectContent}">
-    <fusion-icon *ngIf="iconName && !(isLoading$ | async)" class="icon" [name]="iconData"></fusion-icon>
-    <fusion-button-loading *ngIf="(isLoading$ | async)" [buttonWithIcon]="!!iconName" [projectContent]="projectContent"></fusion-button-loading>
+    <ng-container *ngIf="(isLoading$ | async) as isLoading">
+        <fusion-icon *ngIf="iconName && !isLoading" class="icon" [name]="iconData"></fusion-icon>
+        <fusion-button-loading *ngIf="isLoading" [buttonWithIcon]="!!iconName" [projectContent]="projectContent"></fusion-button-loading>
+    </ng-container>
     <span><ng-content></ng-content></span>
 </span>
 
