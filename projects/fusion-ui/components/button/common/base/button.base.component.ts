@@ -32,6 +32,11 @@ export abstract class ButtonBaseComponent implements OnInit, OnDestroy {
     @Input() set loading(value: boolean) {
         this.isLoading$.next(value);
     }
+
+    get loading() {
+        return this.isLoading$.getValue();
+    }
+
     @Input() set link(value: boolean) {
         this.isLink = value;
         this.setLinkButtonState(this.isLink);
@@ -40,10 +45,10 @@ export abstract class ButtonBaseComponent implements OnInit, OnDestroy {
     @Output() onclick = new EventEmitter();
 
     projectContent: boolean;
-    isLoading$ = new BehaviorSubject<boolean>(false);
     isLink: boolean;
     iconName: string;
     iconData: IconData;
+    private isLoading$ = new BehaviorSubject<boolean>(false);
     private isDisabled: boolean;
     private onDestroy$ = new Subject<void>();
 
