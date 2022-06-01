@@ -11,7 +11,7 @@
 }
 
 $borderTop: 1px solid $fu-light-400;
-$padding: 20px 30px;
+$padding: 11px 30px 12px 30px;
 
 :host {
     @extend %border-box-normalize;
@@ -30,8 +30,10 @@ $padding: 20px 30px;
         }
         .fu-error-message {
             @extend %font-bodySmall;
+            display: inline-flex;
+            align-items: center;
             color: $fu-negative-500;
-            margin-right: 10px;
+            margin-right: 24px;
         }
     }
 }
