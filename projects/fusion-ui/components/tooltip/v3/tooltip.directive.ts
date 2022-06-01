@@ -35,7 +35,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     width: number;
     height: number;
     backgroundColor: string = '#696a6b';
-    preventTooltipToClose: boolean = true;
+    preventTooltipToClose: boolean = false;
 
     private onDestroy$ = new Subject<void>();
     private tooltipElementRef: HTMLElement;
@@ -51,10 +51,15 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     constructor(private renderer: Renderer2, private elementRef: ElementRef, private vcr: ViewContainerRef) {}
 
     ngAfterViewInit() {
+        if (this.tooltipTriggerElement) {
+            console.log('defined');
+        }
         this.viewContainerRef = this.viewTriggerContainer ? this.viewTriggerContainer : this.vcr;
         this.tooltipElementRef = this.preventTooltipToClose
             ? this.elementRef.nativeElement
-            : this.elementRef.nativeElement.firstChild || this.tooltipTriggerElement.nativeElement;
+            : !!this.tooltipTriggerElement?.nativeElement
+            ? this.tooltipTriggerElement?.nativeElement
+            : this.elementRef.nativeElement;
         this.initListeners();
     }
 
