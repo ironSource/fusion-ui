@@ -9,7 +9,7 @@ $smallHeight: 24px;
 $smallPadding: 3px 12px 4px;
 $smallPaddingWithIcon: 3px 10px 4px 8px;
 $smallPaddingWithIconRight: 3px 28px 4px 10px;
-$smallPaddingWithLoading: 3px 18px 4px;
+$smallPaddingWithLoading: 9px 16px 9px;
 
 // medium - default
 $mediumMinWidth: 74px;
@@ -54,7 +54,7 @@ $buttonBorderRadius: 100px;
         --fu-disable-font-color: #8E959D;
         --fu-disable-border-color: #8E959D;
         --fu-border: 1px solid;
-        --fu-hover-background-color: #696A6B;
+        --fu-hover-background-color: rgba(255, 255, 255, 0.15);
         --fu-active-background-color: #696A6B;
     }
 
@@ -99,7 +99,7 @@ $buttonBorderRadius: 100px;
         }
     }
 
-    &.transparent:not(.delete){
+    &.transparent:not(.danger){
         background-color: transparent;
         color: $fu-primary-500;
         border: 1px solid $fu-primary-500;
@@ -129,7 +129,7 @@ $buttonBorderRadius: 100px;
             }
         }
 
-        &.black{
+        &.secondary{
             color: var(--fu-font-color, $fu-black-500);
             border-color: var(--fu-border-color, $fu-black-500);
             background-color: var(--fu-background-color, transparent);
@@ -151,7 +151,7 @@ $buttonBorderRadius: 100px;
             border: 1px solid $fu-light-600;
             cursor: initial;
             pointer-events: none;
-            &.black {
+            &.secondary {
                 background-color: var(--fu-background-color, transparent);
             }
         }
@@ -172,7 +172,7 @@ $buttonBorderRadius: 100px;
         }
     }
 
-    &.black {
+    &.secondary {
         color: $White;
         border: var(--fu-border, none);
         border-color: var(--fu-border-color, $fu-black-500);
@@ -186,7 +186,7 @@ $buttonBorderRadius: 100px;
         }
     }
 
-    &.delete {
+    &.danger {
         color: $White;
         background-color: $fu-negative-500;
         &:hover {
@@ -353,7 +353,7 @@ $buttonBorderRadius: 100px;
         background-color: $fu-primary-500;
 
         > span {
-            height: 20px;
+            height: 24px;
             > span {
                 display: none;
             }
@@ -365,7 +365,7 @@ $buttonBorderRadius: 100px;
                     animation: none;
                 }
                 padding: $mediumPaddingWithLoading;
-                &.transparent:not(.delete) {
+                &.transparent:not(.danger) {
                     background-color: transparent;
                 }
                 &.small {
@@ -378,7 +378,7 @@ $buttonBorderRadius: 100px;
             }
         }
 
-        &.transparent:not(.delete) {
+        &.transparent:not(.danger) {
             background-color: transparent;
             color: $fu-primary-500;
             border: 1px solid $fu-primary-500;
@@ -395,7 +395,7 @@ $buttonBorderRadius: 100px;
             }
         }
 
-        &.black {
+        &.secondary {
             color: var(--fu-font-color, $White);
             border: var(--fu-border, none);
             border-color: var(--fu-border-color, $fu-black-500);
@@ -406,7 +406,7 @@ $buttonBorderRadius: 100px;
             }
         }
 
-        &.delete {
+        &.danger {
             color: $White;
             background-color: $fu-negative-500;
         }
@@ -417,6 +417,9 @@ $buttonBorderRadius: 100px;
 
         &.large{
             padding: $largePaddingWithLoading;
+            > span {
+                height: 32px;
+            }
         }
     }
 
@@ -443,7 +446,7 @@ $buttonBorderRadius: 100px;
             }
         }
 
-        &.black {
+        &.secondary {
             color: $fu-black-500;
             span {
                 text-decoration: underline;
@@ -494,7 +497,7 @@ $buttonBorderRadius: 100px;
                     @include icon-style('icon', $fu-light-900, 16px , false, true);
                 }
 
-                &.black {
+                &.secondary {
                     color: $fu-black-500;
                     text-decoration: underline;
                     @include icon-style('icon', $fu-black-500, 16px , false, true);
@@ -522,7 +525,7 @@ $buttonBorderRadius: 100px;
                         @include icon-style('icon', $fu-light-900, 16px , false, true);
                     }
 
-                    &.black {
+                    &.secondary {
                         @include icon-style('icon', $fu-black-500, 16px , false, true);
                     }
 

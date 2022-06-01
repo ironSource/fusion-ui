@@ -1,8 +1,22 @@
-import {Input, OnInit, ElementRef, Renderer2, Injector, Output, EventEmitter, HostListener, Directive} from '@angular/core';
+import {
+    Input,
+    OnInit,
+    ElementRef,
+    Renderer2,
+    Injector,
+    Output,
+    EventEmitter,
+    HostListener,
+    Directive,
+    SimpleChanges,
+    OnDestroy
+} from '@angular/core';
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
+import {BehaviorSubject, Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 @Directive()
-export abstract class ButtonBaseComponent implements OnInit {
+export abstract class ButtonBaseComponent implements OnInit, OnDestroy {
     @HostListener('click', ['$event']) onClick($event: any) {
         this.onclick.emit($event);
     }
@@ -16,8 +30,7 @@ export abstract class ButtonBaseComponent implements OnInit {
         this.setDisableState(value);
     }
     @Input() set loading(value: boolean) {
-        this.isLoading = value;
-        this.setLoadingState(this.isLoading);
+        this.isLoading$.next(value);
     }
     @Input() set link(value: boolean) {
         this.isLink = value;
@@ -27,17 +40,24 @@ export abstract class ButtonBaseComponent implements OnInit {
     @Output() onclick = new EventEmitter();
 
     projectContent: boolean;
-    isLoading: boolean;
+    isLoading$ = new BehaviorSubject<boolean>(false);
     isLink: boolean;
     iconName: string;
     iconData: IconData;
     private isDisabled: boolean;
+    private onDestroy$ = new Subject<void>();
 
     constructor(injector: Injector, private element: ElementRef, private renderer: Renderer2) {}
 
     ngOnInit() {
         this.projectContent = !!this.element.nativeElement.innerText;
         this.setHostClass(this.projectContent, 'fu-with-content');
+        this.isLoading$.asObservable().pipe(takeUntil(this.onDestroy$)).subscribe(this.setLoadingState.bind(this));
+    }
+
+    ngOnDestroy() {
+        this.onDestroy$.next();
+        this.onDestroy$.complete();
     }
 
     private setHostClass(add: boolean, className: string) {
