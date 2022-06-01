@@ -1,93 +1,112 @@
 @import '../../../../src/style/scss/v3/vars/vars';
 @import '../../../../src/style/scss/v3/mixins/mixins';
 
-$tabWidth: 150px;
-$tabHeight: 48px;
-$tabPadding: 4px;
-$tabBorderWidth: 1px;
-$tabSelectedBorderWidth: 2px;
+$tabHeightMD: 48px;
+$tabHeightSM: 40px;
+$tabHeightLG: 56px;
+$tabHeightXL: 64px;
 
-%height{
-    height: calc(var(--fu-tab-height, #{$tabHeight}) - (var(--fu-tab-padding, $tabPadding * 2)));
-}
+$tabInnerPadding: 0 16px;
+$tabInnerGap: 8px;
+$tabSelectedBorderWidth: 2px;
+$tabSelectedBorderColor: $fu-primary-500;
+
+$tabTextColor: $fu-light-800;
+$tabSelectedTextColor: $fu-black-500;
+
+$tabIconSizeMD: 16px;
+$tabIconSizeSM: 16px;
+$tabIconSizeLG: 20px;
+$tabOnlyIconSizeLG: 24px;
+$tabIconSizeXL: 20px;
+$tabOnlyIconSizeXL: 24px;
 
 %tab-flex{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 3px;
+    gap: $tabInnerGap;
 }
 
+@mixin iconSize($size) {
+    ::ng-deep .fu-tab-icon {
+        @include size($size);
+    }
+}
+
+
 :host {
+    @extend %reset;
     display: block;
     box-sizing: border-box;
-
-    min-width: var(--fu-tab-min-width, $tabWidth);
-    min-height: var(--fu-tab-min-height, $tabHeight);
-    height: var(--fu-tab-height, #{$tabHeight});
-
-    padding: var(--fu-tab-padding, $tabPadding);
-    background-color: var(--fu-tab-background-color, $White);
-
-    border-bottom: var(--fu-tab-border-bottom, solid $fu-light-400);
-    border-bottom-width: var(--fu-tab-border-bottom-width, $tabBorderWidth);
-    margin-bottom: calc(var(--fu-tab-border-bottom-width, $tabBorderWidth) * -1);
-
     .fu-tab-content{
+        height: $tabHeightMD;
+        padding: $tabInnerPadding;
         @extend %tab-flex;
 
-        @extend %height;
-
-        color: var(--fu-tab-color, $fu-light-900);
-        background-color: var(--fu-tab-background-color, $White);
+        color: var(--fu-tab-color, $tabTextColor);
         @extend %font-bodySmallStrong;
         letter-spacing: var(--fu-tab-letter-spasing, 0.24px);
 
-        ::ng-deep fusion-icon.fu-tab-icon{
-            width: 20px;
-            height: 20px;
-        }
+        @include iconSize($tabIconSizeMD);
     }
-
 
     &:hover{
         cursor: pointer;
         .fu-tab-content{
-            color: var(--fu-tab-hover-color, $fu-light-1000);
-            background-color: var(--fu-tab-hover-background-color, $fu-light-50);
-            border-radius: var(--fu-tab-hover-border-radius, 4px);
+            color: var(--fu-tab-hover-color, $tabSelectedTextColor);
         }
     }
 
     &[tab-selected]{
         @extend %no-pointer-events;
-        border-bottom: var(--fu-tab-selected-border-bottom, solid $fu-primary-500);
-        border-bottom-width: var(--fu-tab-selected-border-bottom-width, $tabSelectedBorderWidth);
-        .fu-tab-content{
-            color: var(--fu-tab-selected-color, $fu-black-500);
+        position: relative;
+        &::after{
+            content: " ";
+            width: 100%;
+            border-bottom: solid $tabSelectedBorderWidth $tabSelectedBorderColor;
+            position: absolute;
+            bottom: 0;
         }
-        &:hover{
-            .fu-tab-content{
-                color: var(--fu-tab-selected-color, $fu-black-500);
-                background-color: var(--fu-tab-background-color, $White);
-            }
+        .fu-tab-content{
+            color: var(--fu-tab-selected-color, $tabSelectedTextColor);
         }
     }
-
     &[tab-disabled]{
         @extend %no-pointer-events;
-        .fu-tab-content{
-            color: var(--fu-tab-selected-color, $fu-light-800);
-        }
-        &:hover{
-            .fu-tab-content{
-                color: var(--fu-tab-selected-color, $fu-light-800);
-                background-color: var(--fu-tab-background-color, $White);
-            }
-        }
-
+        opacity: 0.6;
     }
 }
+
+// sizes MD - default
+:host-context(.fu-size-sm){
+    .fu-tab-content {
+        height: $tabHeightSM;
+        @include iconSize($tabHeightSM);
+    }
+}
+
+:host-context(.fu-size-lg){
+    .fu-tab-content {
+        height: $tabHeightLG;
+        @include iconSize($tabHeightLG);
+        &.fu-icon-alone{
+            @include iconSize($tabOnlyIconSizeLG);
+        }
+    }
+}
+
+:host-context(.fu-size-xl){
+    .fu-tab-content {
+        height: $tabHeightXL;
+        @include iconSize($tabIconSizeXL);
+        &.fu-icon-alone{
+            @include iconSize($tabOnlyIconSizeXL);
+        }
+    }
+}
+
+
 
 // for support additional div for ng-content in native
 :host-context(native-fusion-tab){

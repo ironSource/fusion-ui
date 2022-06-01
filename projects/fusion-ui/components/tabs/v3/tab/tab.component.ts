@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, Renderer2} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, Renderer2} from '@angular/core';
 
 const ATTRIBUTE_SELECTED = 'tab-selected';
 const ATTRIBUTE_DISABLED = 'tab-disabled';
@@ -8,7 +8,7 @@ const ATTRIBUTE_DISABLED = 'tab-disabled';
     template: '<div class="fu-tab-content"><ng-content></ng-content></div>',
     styleUrls: ['./tab.component.scss']
 })
-export class TabComponent {
+export class TabComponent implements AfterViewInit {
     @Input() set selected(value: boolean) {
         this.toggleSelected(value);
     }
@@ -25,6 +25,20 @@ export class TabComponent {
     }
 
     constructor(private _element: ElementRef, private _renderer: Renderer2) {}
+
+    ngAfterViewInit() {
+        const tabsElement = this._element.nativeElement.closest('fusion-tabs');
+        if (tabsElement && (tabsElement.classList.contains('fu-size-xl') || tabsElement.classList.contains('fu-size-lg'))) {
+            this.setIconAloneClass();
+        }
+    }
+
+    private setIconAloneClass() {
+        const element = this._element.nativeElement.querySelector('.fu-tab-content');
+        if (element.querySelector('.fu-tab-icon') && !element.textContent.trim().length) {
+            this._renderer.addClass(element, 'fu-icon-alone');
+        }
+    }
 
     private toggleSelected(isSelected: boolean): void {
         const elementNative = this._element.nativeElement;

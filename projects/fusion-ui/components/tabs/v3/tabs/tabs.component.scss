@@ -1,10 +1,5 @@
 @import '../../../../src/style/scss/v3/vars/vars';
 
-$tabWidth: 150px;
-$tabHeight: 48px;
-$tabPadding: 4px;
-$tabBorderWidth: 1px;
-
 %tabs-flex{
     box-sizing: border-box;
     display: flex;
@@ -14,8 +9,6 @@ $tabBorderWidth: 1px;
 
 :host{
     @extend %tabs-flex;
-    border-bottom: var(--fu-tab-border-bottom, solid $fu-light-400);
-    border-bottom-width: var(--fu-tab-border-bottom-width, $tabBorderWidth);
 }
 
 // for support additional div for ng-content in native
