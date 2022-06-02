@@ -148,7 +148,6 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
             left: shiftPosition.left + rect.left,
             top: this.adjustTopPos(shiftPosition.top, rect.top, position)
         };
-        console.log(rect.top, this.tooltipPosition.top);
     }
 
     private setTooltipConfiguration(): void {
