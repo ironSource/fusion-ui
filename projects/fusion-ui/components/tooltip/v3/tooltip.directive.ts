@@ -25,16 +25,20 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     @Input() fusionTooltip = '';
     @Input() set configuration(config: tooltipConfiguration) {
         if (config) {
-            this.width = config.width || this.width;
-            this.height = config.height || this.height;
-            this.backgroundColor = config.backgroundColor || this.backgroundColor;
+            this.width = config?.width;
+            this.height = config?.height;
+            this.backgroundColor = config?.backgroundColor;
             this.preventTooltipToClose = config.preventTooltipToClose || this.preventTooltipToClose;
         }
+        console.log(config);
+        console.log(this.width);
+        console.log(this.height);
+        console.log(this.backgroundColor);
     }
 
     width: number;
     height: number;
-    backgroundColor: string = '#696a6b';
+    backgroundColor: string;
     preventTooltipToClose: boolean = false;
 
     private onDestroy$ = new Subject<void>();
@@ -156,7 +160,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
             left: this.tooltipPosition.left.toString() + 'px',
             width: this.width?.toString() + 'px',
             height: this.height?.toString() + 'px',
-            backgroundColor: this.backgroundColor
+            backgroundColor: this.backgroundColor || '#696a6b'
         };
         this.tooltipComponentRef.instance.tooltipPositionClass = this.tooltipPosition.position;
     }
