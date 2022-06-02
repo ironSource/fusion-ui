@@ -1,8 +1,8 @@
 @import '../../../../src/style/scss/v3/vars/vars';
 @import '../../../../src/style/scss/v3/mixins/mixins';
 
-$tabHeightMD: 48px;
 $tabHeightSM: 40px;
+$tabHeightMD: 48px;
 $tabHeightLG: 56px;
 $tabHeightXL: 64px;
 
@@ -82,14 +82,14 @@ $tabOnlyIconSizeXL: 24px;
 :host-context(.fu-size-sm){
     .fu-tab-content {
         height: $tabHeightSM;
-        @include iconSize($tabHeightSM);
+        @include iconSize($tabIconSizeSM);
     }
 }
 
 :host-context(.fu-size-lg){
     .fu-tab-content {
         height: $tabHeightLG;
-        @include iconSize($tabHeightLG);
+        @include iconSize($tabIconSizeLG);
         &.fu-icon-alone{
             @include iconSize($tabOnlyIconSizeLG);
         }
