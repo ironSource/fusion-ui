@@ -30,10 +30,6 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
             this.backgroundColor = config?.backgroundColor;
             this.preventTooltipToClose = config.preventTooltipToClose || this.preventTooltipToClose;
         }
-        console.log(config);
-        console.log(this.width);
-        console.log(this.height);
-        console.log(this.backgroundColor);
     }
 
     width: number;
@@ -150,7 +146,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
         this.tooltipPosition = {
             position,
             left: shiftPosition.left + rect.left,
-            top: shiftPosition.top + rect.top
+            top: this.adjustTopPos(shiftPosition.top, rect.top, position)
         };
     }
 
@@ -194,5 +190,10 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     private calcTruncate(): boolean {
         const nativeElement = this.elementRef.nativeElement;
         return !(nativeElement.className.includes('truncate') && nativeElement.clientWidth >= nativeElement.scrollWidth);
+    }
+
+    private adjustTopPos(tooltipTop: number, rectTop: number, position: TooltipPosition) {
+        const posTop = tooltipTop + rectTop;
+        return posTop < 0 && (position === TooltipPosition.Right || position === TooltipPosition.Left) ? 0 : posTop;
     }
 }
