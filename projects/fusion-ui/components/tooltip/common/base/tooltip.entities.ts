@@ -6,7 +6,11 @@ export enum TooltipPosition {
     Right = 1,
     Bottom = 2,
     Left = 3,
-    TopFixed = 4
+    TopFixed = 4,
+    TopLeft = 5,
+    TopRight = 6,
+    BottomLeft = 7,
+    BottomRight = 8
 }
 export enum TooltipType {
     Html = 0,
