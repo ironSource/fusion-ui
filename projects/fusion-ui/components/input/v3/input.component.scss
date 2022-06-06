@@ -65,7 +65,8 @@ $smallHeight: 32px;
         }
 
         input {
-            @extend %font-bodyXSmallStrong;
+            @extend %font-bodySmall;
+            font-weight: 400;
             letter-spacing: 0.24px;
             border: none;
             box-sizing: border-box;
@@ -73,7 +74,7 @@ $smallHeight: 32px;
             background-color: $fu-light-100;
             padding: $regularPadding;
             height: $regularHeight;
-            color: $fu-black-200;
+            color: $fu-black-500;
             width: 100%;
 
             &::placeholder {
