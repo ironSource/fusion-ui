@@ -106,10 +106,11 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
         this.chipFilters.forEach(chip => {
             chip.onSelectedChange.pipe(takeUntil(this.onDestroy$)).subscribe(val => {
                 const isSelected = this.selectedFilters.some(selectedChip => selectedChip.id === val.id);
-                if (!isSelected) {
-                    this.selectedFilters = [...this.selectedFilters, val];
-                    this.onSelect.emit(this.selectedFilters);
-                }
+                this.selectedFilters = isSelected
+                    ? this.selectedFilters.map(filter => (filter.id === val.id ? val : filter))
+                    : [...this.selectedFilters, val];
+
+                this.onSelect.emit(this.selectedFilters);
             });
         });
     }

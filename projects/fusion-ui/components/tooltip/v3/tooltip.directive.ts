@@ -28,12 +28,8 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
             this.width = config?.width;
             this.height = config?.height;
             this.backgroundColor = config?.backgroundColor;
-            this.preventTooltipToClose = config.preventTooltipToClose || this.preventTooltipToClose;
+            this.preventTooltipToClose = config?.preventTooltipToClose;
         }
-        console.log(config);
-        console.log(this.width);
-        console.log(this.height);
-        console.log(this.backgroundColor);
     }
 
     width: number;
@@ -117,12 +113,14 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
         if (position === TooltipPosition.TopFixed) {
             return TooltipPosition.Top;
         }
-        if (window.innerWidth - tooltipWidth - hostRect.left <= 0) {
+
+        const isTopPosNegative = hostRect.top + this.elementRef.nativeElement.offsetHeight / 2 - tooltipHeight / 2 >= 0;
+        if (window.innerWidth - tooltipWidth - hostRect.left <= 0 && isTopPosNegative) {
             position = TooltipPosition.Left;
-        } else if (hostRect.left - tooltipWidth <= 0) {
+        } else if (hostRect.left - tooltipWidth <= 0 && isTopPosNegative) {
             position = TooltipPosition.Right;
         } else if (hostRect.top - tooltipHeight <= 0) {
-            position = hostRect.left - tooltipWidth <= 0 ? TooltipPosition.Right : TooltipPosition.Left;
+            position = hostRect.left - tooltipWidth <= 0 && isTopPosNegative ? TooltipPosition.Right : TooltipPosition.Bottom;
         }
         return position;
     }
@@ -147,9 +145,10 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
                 shiftPosition = {...this.setPositionBottomTop('top', tooltipWidth, tooltipHeight)};
                 break;
         }
+        const {tooltipLeft, pos} = this.adjustArrowPos(shiftPosition.left, rect.left, position, tooltipWidth);
         this.tooltipPosition = {
-            position,
-            left: shiftPosition.left + rect.left,
+            position: pos,
+            left: tooltipLeft,
             top: shiftPosition.top + rect.top
         };
     }
@@ -194,5 +193,28 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     private calcTruncate(): boolean {
         const nativeElement = this.elementRef.nativeElement;
         return !(nativeElement.className.includes('truncate') && nativeElement.clientWidth >= nativeElement.scrollWidth);
+    }
+
+    private adjustArrowPos(
+        tooltipLeft: number,
+        rectLeft: number,
+        position: TooltipPosition,
+        tooltipWidth: number
+    ): {tooltipLeft: number; pos: TooltipPosition} {
+        let posLeft = tooltipLeft + rectLeft;
+        let newPosition: TooltipPosition = position;
+
+        if (posLeft < 0 && (position === TooltipPosition.Top || position === TooltipPosition.Bottom)) {
+            newPosition = position === TooltipPosition.Top ? TooltipPosition.TopLeft : TooltipPosition.BottomLeft;
+            posLeft = rectLeft + this.elementRef.nativeElement.offsetWidth / 2 - 20;
+        } else if (
+            window.innerWidth - Math.round(rectLeft + this.elementRef.nativeElement.offsetWidth) <= 0 &&
+            (position === TooltipPosition.Top || position === TooltipPosition.Bottom)
+        ) {
+            newPosition = position === TooltipPosition.Top ? TooltipPosition.TopRight : TooltipPosition.BottomRight;
+            posLeft = rectLeft + this.elementRef.nativeElement.offsetWidth / 2 - tooltipWidth + 20;
+        }
+
+        return {tooltipLeft: posLeft, pos: newPosition};
     }
 }

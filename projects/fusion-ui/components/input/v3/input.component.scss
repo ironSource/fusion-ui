@@ -7,14 +7,14 @@
     left: 10px;
     & + input {
         padding-left: 32px;
-        padding-right: 10px;
+        padding-right: 12px;
     }
 }
 
 %iconRight{
     right: 10px;
     & + input {
-        padding-left: 10px;
+        padding-left: 12px;
         padding-right: 32px;
     }
 }
@@ -150,6 +150,8 @@ $smallHeight: 32px;
             position: absolute;
             top: 13px;
             right: 11px;
+            width: 16px;
+            height: 16px;
         }
 
         &.fu-input-small {
@@ -180,7 +182,7 @@ $smallHeight: 32px;
 
         &.fu-error-error {
             .fu-validation-icon-holder {
-                @include icon-style('icon-validation', $fu-negative-500, 14px, false, true);
+                @include icon-style('icon-validation', $fu-negative-500, 16px, false, true);
             }
 
             input {
@@ -193,7 +195,7 @@ $smallHeight: 32px;
 
         &.fu-error-warning {
             .fu-validation-icon-holder {
-                @include icon-style('icon-validation', $fu-neutral-500, 14px, false, true);
+                @include icon-style('icon-validation', $fu-neutral-500, 16px, false, true);
             }
 
             input {
@@ -228,6 +230,25 @@ $smallHeight: 32px;
         @extend %font-caption;
         color: $fu-negative-700;
         margin-top: 4px;
+        margin-left: 2px;
+        height: 16px;
+        line-height: 16.5px;
+        text-align: initial;
+
+        &.focused {
+            display: none;
+        }
+
+        &.small {
+            display: none;
+        }
+    }
+
+    .fu-helper-text {
+        @extend %font-caption;
+        color: $fu-black-200;
+        margin-top: 4px;
+        margin-left: 2px;
         height: 16px;
         line-height: 16.5px;
         text-align: initial;
