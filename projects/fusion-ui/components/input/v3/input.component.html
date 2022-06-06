@@ -69,5 +69,10 @@
      [innerHTML]="config.error">
 </div>
 
-
+<div class="fu-helper-text"
+     *ngIf="config.helperText"
+     [hidden]="!config.helperText || !!config.error"
+     [class.focused]="focused"
+     [innerHTML]="config.helperText">
+</div>
 

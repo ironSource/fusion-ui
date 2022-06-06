@@ -130,6 +130,10 @@ export abstract class InputParameters {
         this.configuration = {...this._configuration, error};
     }
 
+    @Input() set helperText(helperText: string) {
+        this.configuration = {...this._configuration, helperText};
+    }
+
     _configuration: InputConfiguration = {};
 
     abstract onConfigurationChanged(value: InputConfiguration): void;

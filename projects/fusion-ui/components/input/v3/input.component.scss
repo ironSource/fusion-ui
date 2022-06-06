@@ -227,6 +227,25 @@ $smallHeight: 32px;
         @extend %font-caption;
         color: $fu-negative-700;
         margin-top: 4px;
+        margin-left: 2px;
+        height: 16px;
+        line-height: 16.5px;
+        text-align: initial;
+
+        &.focused {
+            display: none;
+        }
+
+        &.small {
+            display: none;
+        }
+    }
+
+    .fu-helper-text {
+        @extend %font-caption;
+        color: $fu-black-200;
+        margin-top: 4px;
+        margin-left: 2px;
         height: 16px;
         line-height: 16.5px;
         text-align: initial;

@@ -34,6 +34,7 @@ export interface InputConfiguration {
     error?: boolean | string;
     autofocus?: boolean;
     disableOnLoading?: boolean; // suppress disable state on loading
+    helperText?: string;
 }
 
 export interface InputIconData {

@@ -118,7 +118,7 @@ document.body.appendChild(input);'
                                 fusionTooltip="Here's tooltip!"
                             ></fusion-icon>
                         </label>
-                        <fusion-input id="regularInput" placeholder="Type something" [formControl]="model"></fusion-input>
+                        <fusion-input [helperText]="'Email Insert Here'" id="regularInput" placeholder="Type something" [formControl]="model"></fusion-input>
                     </div>
                     <div class="col-6">
                         <label for="regularInput" *ngIf="currentStyleVersion === styleVersion.V2 || styleVersion.V3">Label content</label>
