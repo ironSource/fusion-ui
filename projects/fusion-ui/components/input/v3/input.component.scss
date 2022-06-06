@@ -182,7 +182,9 @@ $smallHeight: 32px;
 
         &.fu-error-error {
             .fu-validation-icon-holder {
-                @include icon-style('icon-validation', $fu-negative-500, 16px, false, true);
+                @include icon-style('icon-validation', $fu-negative-500, 16px, false, true){
+                    @include size(16px);
+                };
             }
 
             input {
@@ -195,7 +197,9 @@ $smallHeight: 32px;
 
         &.fu-error-warning {
             .fu-validation-icon-holder {
-                @include icon-style('icon-validation', $fu-neutral-500, 16px, false, true);
+                @include icon-style('icon-validation', $fu-neutral-500, 16px, false, true){
+                    @include size(16px);
+                }
             }
 
             input {
