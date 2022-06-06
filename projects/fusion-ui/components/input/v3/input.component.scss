@@ -65,7 +65,7 @@ $smallHeight: 32px;
         }
 
         input {
-            @extend %font-bodyXSmallStrong;
+            @extend %font-bodySmallStrong;
             letter-spacing: 0.24px;
             border: none;
             box-sizing: border-box;
