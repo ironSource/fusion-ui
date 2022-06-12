@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {TabConfiguration} from './tab.entities';
 import {PopupComponentContent} from '@ironsource/fusion-ui/components/popup/common/entities';
-import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
+import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
 
 @Component({
     selector: 'fusion-tab',

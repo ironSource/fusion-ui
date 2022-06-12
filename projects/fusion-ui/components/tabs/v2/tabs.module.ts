@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TabsComponent} from './tabs.component';
 import {TabModule} from './tab/tab.module';
-import {PopupModule} from '@ironsource/fusion-ui/components/popup';
+import {PopupModule} from '@ironsource/fusion-ui/components/popup/v2';
 
 @NgModule({
     declarations: [TabsComponent],

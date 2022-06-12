@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {VideoPlayerComponent} from './video-player.component';
 import {VideoPlayerOptions, VIDEO_PLAYER_OPTIONS_DEFUALT_VALUE} from '@ironsource/fusion-ui/components/video-player/common/entities';
 import {SVG_OPTIONS_TOKEN} from '@ironsource/fusion-ui/components/svg';
-import {IconModule} from '@ironsource/fusion-ui/components/icon';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {SecondsToMinutesModule} from '@ironsource/fusion-ui/pipes/numbers';
 
 @NgModule({

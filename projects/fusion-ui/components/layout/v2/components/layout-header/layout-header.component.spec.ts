@@ -1,9 +1,9 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {LayoutHeaderComponent} from './layout-header.component';
-import {IconModule} from '@ironsource/fusion-ui/components/icon';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {By} from '@angular/platform-browser';
-import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
+import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components/v1';
 import {LayoutHeaderMenuModule} from './layout-header-menu/layout-header-menu.module';
 
 const HEADER_CONFIGURATION_MOCK = {

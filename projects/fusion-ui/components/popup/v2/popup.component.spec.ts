@@ -1,7 +1,7 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {PopupComponent} from './popup.component';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
-import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
+import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components/v1';
 
 const POPUP_CONTENT_MOCK = {
     size: {

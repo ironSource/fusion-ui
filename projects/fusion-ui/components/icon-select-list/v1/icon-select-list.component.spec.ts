@@ -2,9 +2,9 @@ import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {IconSelectListComponent} from './icon-select-list.component';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {FormsModule} from '@angular/forms';
-import {IconModule} from '@ironsource/fusion-ui/components/icon';
-import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox';
-import {RadioModule} from '@ironsource/fusion-ui/components/radio';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox/v2';
+import {RadioModule} from '@ironsource/fusion-ui/components/radio/v1';
 import {By} from '@angular/platform-browser';
 import {IconSelectItem} from '@ironsource/fusion-ui/components/icon-select-list/common/base';
 

@@ -4,7 +4,7 @@ import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dy
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {fromEvent} from 'rxjs';
 import {take} from 'rxjs/operators';
-import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
+import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
 
 @Directive()
 export abstract class ToastBaseComponent implements OnInit, AfterViewInit {

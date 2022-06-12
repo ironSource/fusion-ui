@@ -1,8 +1,8 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {HeaderComponent} from './header.component';
-import {IconModule} from '@ironsource/fusion-ui/components/icon';
-import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components/v1';
 import {RouterModule} from '@angular/router';
 import {TruncateModule} from '@ironsource/fusion-ui/pipes/string';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';

@@ -2,7 +2,7 @@ import {ChangeDetectorRef, Directive, ElementRef, EventEmitter, Input, OnInit, O
 import {ControlValueAccessor} from '@angular/forms';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
+import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
 
 @Directive()
 export abstract class RadioBaseComponent implements OnInit, ControlValueAccessor {

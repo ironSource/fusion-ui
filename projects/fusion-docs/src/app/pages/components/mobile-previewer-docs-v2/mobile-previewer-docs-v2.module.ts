@@ -8,7 +8,7 @@ import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {VideoPlayerModule} from '@ironsource/fusion-ui';
 import {MobilePreviewerModule} from '@ironsource/fusion-ui/components/mobile-previewer/v2';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
-import {PopupModule} from '@ironsource/fusion-ui/components/popup';
+import {PopupModule} from '@ironsource/fusion-ui/components/popup/v2';
 
 const routes: Routes = [{path: '', component: MobilePreviewerDocsV2Component}];
 

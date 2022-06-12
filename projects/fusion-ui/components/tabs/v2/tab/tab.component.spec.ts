@@ -3,7 +3,7 @@ import {TabComponent} from './tab.component';
 import {TabConfiguration} from './tab.entities';
 import {TabModule} from './tab.module';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
-import {IconModule} from '@ironsource/fusion-ui/components/icon';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {By} from '@angular/platform-browser';
 import {Component, Type} from '@angular/core';
 

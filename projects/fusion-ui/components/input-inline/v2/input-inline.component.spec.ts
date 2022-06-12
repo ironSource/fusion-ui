@@ -4,7 +4,7 @@ import {InputInlineComponent} from './input-inline.component';
 import {CurrencyPipe} from '@angular/common';
 import {ReactiveFormsModule} from '@angular/forms';
 import {LoaderModule} from '@ironsource/fusion-ui/components/loader/v2';
-import {IconModule} from '@ironsource/fusion-ui/components/icon';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {InputModule} from '@ironsource/fusion-ui/components/input/v2';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v2';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';

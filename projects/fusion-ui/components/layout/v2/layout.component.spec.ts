@@ -6,7 +6,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {SidebarModule} from '@ironsource/fusion-ui/components/sidebar';
 import {LayoutComponentConfiguration} from './layout.entity';
 import {LayoutHeaderContentTitle} from './components/layout-header/layout-header-entity';
-import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
+import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components/v1';
 
 const MENUITEM_MOCK = {
     name: 'Menu Item'

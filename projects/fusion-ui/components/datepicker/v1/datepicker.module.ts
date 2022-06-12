@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule, DatePipe} from '@angular/common';
 import {ReactiveFormsModule} from '@angular/forms';
-import {IconModule} from '@ironsource/fusion-ui/components/icon';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {InputModule} from '@ironsource/fusion-ui/components/input/v1';
 import {DropdownModule} from '@ironsource/fusion-ui/components/dropdown';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';

@@ -8,12 +8,12 @@ import {TableGroupedComponent} from './components/table-grouped/table-grouped.co
 import {TableLoadingComponent} from './components/table-loading/table-loading.component';
 import {TableRowComponent} from './components/table-row/table-row.component';
 import {TableRowGroupedComponent} from './components/table-row-grouped/table-row-grouped.component';
-import {IconModule} from '@ironsource/fusion-ui/components/icon';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {InputModule} from '@ironsource/fusion-ui/components/input/v1';
 import {LoaderModule} from '@ironsource/fusion-ui/components/loader/v1';
 import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox/v1';
 import {LoaderInlineModule} from '@ironsource/fusion-ui/components/loader-inline/v1';
-import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
+import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components/v1';
 import {DropdownModule} from '@ironsource/fusion-ui/components/dropdown/v1';
 import {ReactiveFormsModule} from '@angular/forms';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v1';

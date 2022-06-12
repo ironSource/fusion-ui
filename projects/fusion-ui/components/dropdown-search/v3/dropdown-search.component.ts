@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, ElementRef, forwardRef, ViewChild} from '@angular/core';
 import {DropdownSearchBaseComponent} from '@ironsource/fusion-ui/components/dropdown-search/common/base';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
-import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
+import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
 
 @Component({
     selector: 'fusion-dropdown-search',

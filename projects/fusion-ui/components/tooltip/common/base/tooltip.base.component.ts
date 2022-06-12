@@ -3,7 +3,7 @@ import {IShiftPosition, ITooltipData, TooltipPosition, TooltipType} from './tool
 import {WindowService} from '@ironsource/fusion-ui/services/window';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
+import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
 
 const TOOLTIP_ARROW_SIZE = 6;
 
