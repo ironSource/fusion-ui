@@ -4,43 +4,11 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [3.0.0-rc.26](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.25...v3.0.0-rc.26) (2022-06-02)
 
-## [3.0.0-rc.25](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.24...v3.0.0-rc.25) (2022-06-02)
-
-## [3.0.0-rc.24](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.23...v3.0.0-rc.24) (2022-06-02)
-
-## [3.0.0-rc.23](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.22...v3.0.0-rc.23) (2022-06-02)
-
-## [3.0.0-rc.22](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.21...v3.0.0-rc.22) (2022-06-01)
-
-## [3.0.0-rc.21](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.20...v3.0.0-rc.21) (2022-06-01)
-
-## [3.0.0-rc.20](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.19...v3.0.0-rc.20) (2022-06-01)
-
-## [3.0.0-rc.19](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.18...v3.0.0-rc.19) (2022-06-01)
-
-## [3.0.0-rc.18](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.17...v3.0.0-rc.18) (2022-06-01)
-
-## [3.0.0-rc.17](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.16...v3.0.0-rc.17) (2022-06-01)
-
-## [3.0.0-rc.16](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.15...v3.0.0-rc.16) (2022-05-31)
-
-## [3.0.0-rc.15](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.14...v3.0.0-rc.15) (2022-05-31)
-
-## [3.0.0-rc.14](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.13...v3.0.0-rc.14) (2022-05-31)
-
-## [3.0.0-rc.13](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.12...v3.0.0-rc.13) (2022-05-30)
-
-## [3.0.0-rc.12](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.11...v3.0.0-rc.12) (2022-05-30)
-
-## [3.0.0-rc.11](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.10...v3.0.0-rc.11) (2022-05-30)
-
-## [3.0.0-rc.10](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.9...v3.0.0-rc.10) (2022-05-30)
-
-## [3.0.0-rc.9](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.8...v3.0.0-rc.9) (2022-05-29)
-
-
 ### Bug Fixes
 
+* **release/3.x.x:** fix input helper text
+* **release/3.x.x:** fixed input font-size and color
+* **release/3.x.x:** fixed input validation icon size
 * **release/3.x.x:** fixed border-bottom for fusion-input in state focus ([6135427](https://github.com/ironSource/fusion-ui/commit/6135427da79f5703e2b9a118af01371dd90462fa))
 
 ## [3.0.0-rc.8](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.7...v3.0.0-rc.8) (2022-05-29)
