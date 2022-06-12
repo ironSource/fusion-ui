@@ -3,7 +3,7 @@ import {LayoutComponent} from './layout.component';
 import {By} from '@angular/platform-browser';
 import {LayoutHeaderModule} from './components/layout-header/layout-header.module';
 import {RouterTestingModule} from '@angular/router/testing';
-import {SidebarModule} from '@ironsource/fusion-ui/components/sidebar';
+import {SidebarModule} from '@ironsource/fusion-ui/components/sidebar/v2';
 import {LayoutComponentConfiguration} from './layout.entity';
 import {LayoutHeaderContentTitle} from './components/layout-header/layout-header-entity';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components/v1';

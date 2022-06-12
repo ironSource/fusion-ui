@@ -6,7 +6,7 @@ import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside
 import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
 import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
 import {TagsInputComponent} from './tags-input.component';
-import {TagModule} from '@ironsource/fusion-ui/components/tag';
+import {TagModule} from '@ironsource/fusion-ui/components/tag/v1';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {InputModule} from '@ironsource/fusion-ui/components/input/v1';
 import {DropdownOptionModule} from '@ironsource/fusion-ui/components/dropdown-option/v1';
