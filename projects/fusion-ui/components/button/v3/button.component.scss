@@ -117,9 +117,10 @@ $buttonBorderRadius: 100px;
         &.third{
             color: $fu-light-900;
             border-color: $fu-light-500;
-
+            padding: 3px 12px 3px;
             &:hover {
                 border: none;
+                padding: 4px 13px 4px;
                 background-color: $fu-light-200;
             }
 

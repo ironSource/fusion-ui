@@ -3,8 +3,9 @@ import {InputSize} from '@ironsource/fusion-ui/components/input/common/base';
 import {ControlValueAccessor, FormControl} from '@angular/forms';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
-import {BehaviorSubject, Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
+import {map, takeUntil} from 'rxjs/operators';
+import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 
 const CLASS_LIST = [
     'dual-select-button',
@@ -16,7 +17,7 @@ const CLASS_LIST = [
 ];
 
 @Directive()
-export abstract class DropdownDualMultiSelectBaseComponent implements OnInit, ControlValueAccessor, OnDestroy {
+export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase implements OnInit, ControlValueAccessor, OnDestroy {
     @Input() isDisabled: boolean = false;
     @Input() dynamicPlaceholder: DynamicComponentConfiguration;
     @Input() totalItems: number;
@@ -54,7 +55,9 @@ export abstract class DropdownDualMultiSelectBaseComponent implements OnInit, Co
     private parentWithOverflow: HTMLElement;
     private onDestroy$ = new Subject<void>();
 
-    constructor(protected element: ElementRef, protected renderer: Renderer2) {}
+    constructor(protected element: ElementRef, protected renderer: Renderer2) {
+        super();
+    }
 
     ngOnInit(): void {
         this.initializeListeners();
@@ -67,6 +70,10 @@ export abstract class DropdownDualMultiSelectBaseComponent implements OnInit, Co
 
     onScrollDown(): void {
         this.scrollDown.emit();
+    }
+
+    valueSelected(): Observable<{value: DropdownOption[]; isSelected: boolean}> {
+        return of(this.selectedChange).pipe(map(value => ({value, isSelected: !!value})));
     }
 
     applySelect(apply: boolean = false): void {

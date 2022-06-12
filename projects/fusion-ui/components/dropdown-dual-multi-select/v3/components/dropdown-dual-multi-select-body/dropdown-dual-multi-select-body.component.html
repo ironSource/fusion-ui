@@ -1,0 +1,93 @@
+<div class="is-dropdown-dual-multi-select-body">
+    <div class="header-control">
+        <div class="content-col-left">
+            <div class="body-header">
+                <label class="option-header-body" *ngIf="!isPendingItems">
+                    <fusion-checkbox
+                        class="fu-check-all"
+                        [isIndeterminate]="isIndeterminate"
+                        [checked]="isAllSelected"
+                        (changed)="selectAll($event)"
+                        [isDisabled]="isSelectAllDisabled$ | async"
+                    ></fusion-checkbox>
+                    <span class="fu-options-label">Select all</span>
+                </label>
+            </div>
+        </div>
+        <div class="content-col-right">
+            <div class="body-header">
+                <label class="fu-select-label">
+                    {{(selectedItemsMapping ? selectedItemsMapping : {}) | objectLengthWhereValueTrue}} selected
+                </label>
+                <div
+                    *ngIf="showClearAllButton()"
+                    (click)="clearAll()" class="clear-all-btn">Clear all</div>
+            </div>
+        </div>
+        <ng-container *ngIf="isPendingItems" [ngTemplateOutlet]="pendingHeadControl"></ng-container>
+    </div>
+    <div class="body-control">
+        <div class="options-wrapper content-col">
+            <div class="items-holder" #wrapperLeft>
+                <ul class="options-data-list" #containerLeft>
+                    <li *ngFor="let item of displayOptions$ | async;trackBy: trackById">
+                        <fusion-dropdown-dual-multi-select-body-item
+                            [isSelectedItem]="selectedItemsMapping[item.id]"
+                            [isDisabled]="item.isDisabled"
+                            (changeSelected)="changeSelected($event)"
+                            [item]="item"
+                            [bodySide]="'left'">
+                        </fusion-dropdown-dual-multi-select-body-item>
+                    </li>
+                    <ng-container *ngIf="loadingLeft$ | async" [ngTemplateOutlet]="loadingTemplate"> </ng-container>
+                </ul>
+            </div>
+        </div>
+        <div class="selected-list content-col">
+            <div class="items-holder" #wrapperRight>
+                <ul class="options-data-list" #containerRight>
+                    <li *ngFor="let selectedItem of selectedOptions$ | async;trackBy: trackById">
+                        <fusion-dropdown-dual-multi-select-body-item
+                            (clearSelect)="clearSelect($event)"
+                            [isDisabled]="selectedItem.isDisabled"
+                            [item]="selectedItem"
+                            [bodySide]="'right'">
+                        </fusion-dropdown-dual-multi-select-body-item>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ng-container *ngIf="isPendingItems" [ngTemplateOutlet]="pendingItems"> </ng-container>
+    </div>
+    <ng-container *ngIf="(isNoFoundDataToDisplay || (options$ | async)?.length === 0) && !isPendingItems" [ngTemplateOutlet]="noData"> </ng-container>
+</div>
+
+
+<ng-template #noData>
+    <div class="fu-no-data">
+        <div class="fu-no-data-img"></div>
+        <div class="fu-no-data-text">No results found</div>
+        <div class="fu-retry-text">Try different keyword</div>
+    </div>
+</ng-template>
+
+<ng-template #loadingTemplate>
+    <li class="fu-content-loading">
+        <label class="loading-label">Loading...</label>
+        <fusion-loader-inline class="loading-icon" [status]="true"></fusion-loader-inline>
+    </li>
+</ng-template>
+
+<ng-template #pendingItems>
+    <div class="fu-multiselect-list-loader">
+        <fusion-dropdown-dual-multi-select-loading class="left-loading" [amount]="7" [position]="'left'"></fusion-dropdown-dual-multi-select-loading>
+        <fusion-dropdown-dual-multi-select-loading class="right-loading" [amount]="7" [position]="'right'"></fusion-dropdown-dual-multi-select-loading>
+    </div>
+</ng-template>
+
+<ng-template #pendingHeadControl>
+    <div class="fu-multiselect-control-loader">
+        <fusion-dropdown-dual-multi-select-loading class="control-left-loading" [amount]="1" [position]="'left'"></fusion-dropdown-dual-multi-select-loading>
+        <fusion-dropdown-dual-multi-select-loading class="control-right-loading" [amount]="1" [position]="'right'"></fusion-dropdown-dual-multi-select-loading>
+    </div>
+</ng-template>

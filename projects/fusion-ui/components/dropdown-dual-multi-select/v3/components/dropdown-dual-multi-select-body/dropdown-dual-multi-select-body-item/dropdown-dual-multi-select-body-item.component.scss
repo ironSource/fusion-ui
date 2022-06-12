@@ -1,0 +1,107 @@
+@import '../../../../../../src/style/scss/v3/vars/vars';
+@import '../../../../../../src/style/scss/v3/mixins/mixins';
+@import '../../../../../../src/style/scss/v3/vars/border';
+
+
+$rightSidePadding: 4px 4px 5px 6px;
+$leftSidePadding: 4px 4px 5px 5px;
+
+%hover {
+    border-radius: 5px;
+    background-color: $fu-light-50;
+}
+
+%truncateList {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+:host-context(.options-data-list) {
+    @extend %border-box-normalize;
+    .is-option-label {
+        position: relative;
+        gap: 4px;
+        img {
+            @include size(20px);
+            @extend %image-masked;
+            max-width: 20px;
+            border-radius:  4px;
+            vertical-align: middle;
+        }
+        @include icon-style('icon', $fu-light-600, 16px, false, true) {
+            @include size(16px);
+            vertical-align: sub;
+            display: inline-block;
+        }
+        fusion-flag {
+            margin-right: 4px;
+        }
+        .dynamic-item {
+            display: inline-block;
+        }
+        &.left-side {
+            @extend %font-bodySmall;
+            padding: $leftSidePadding;
+            cursor: pointer;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            width: 256px;
+            height: 32px;
+            margin-left: 7px;
+            margin-top: 2px;
+            &:hover {
+                @extend %hover;
+            }
+            .fu-option-title {
+                &.truncate{
+                    width: 190px;
+                    @extend %truncateList;
+                }
+            }
+            .item-check {
+                margin-right: 8px;
+                line-height: 0;
+            }
+        }
+        &.right-side {
+            @extend %font-bodySmall;
+            padding: $rightSidePadding;
+            cursor: pointer;
+            display: flex;
+            width: 256px;
+            height: 32px;
+            justify-content: flex-start;
+            align-items: center;
+            margin-left: 7px;
+            margin-top: 2px;
+            &:hover {
+                @extend %hover;
+            }
+            .fu-option-title {
+                line-height: 20px;
+                &.truncate{
+                    width: 176px;
+                    @extend %truncateList;
+                }
+            }
+            fusion-icon {
+                &.icon-clear {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: absolute;
+                    right: 5px;
+                    color:$fu-light-500;
+                    @include size(16px);
+                    &:hover {
+                        color: $fu-light-800;
+                    }
+                }
+
+            }
+        }
+    }
+}

@@ -1,0 +1,78 @@
+@import '../../../../../src/style/scss/v3/vars/vars';
+@import '../../../../../src/style/scss/v3/vars/border';
+@import '../../../../../src/style/scss/v3/mixins/mixins';
+
+$clearIconColor: #DADADA;
+
+%clear-icon-position{
+    position: absolute;
+    right: -5px;
+    top: 2px;
+}
+
+%search-icon-position{
+    position: absolute;
+    left: -10px;
+    top: 2px;
+}
+
+:host {
+    .is-dropdown-dual-multi-select-header {
+        @extend %border-box-normalize;
+        height: 56px;
+        width: 545px;
+        border-bottom: 1px solid $fu-light-400;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        .fu-search-holder {
+            width: 405px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            .fu-search-bar {
+                position: relative;
+                @include icon-style('fu-icon-search', $fu-light-700, 16px, true, true){
+                    @extend %search-icon-position;
+                    @include size(16px);
+                }
+                @include icon-style('fu-icon-clear', $clearIconColor, 16px, true, true){
+                    @extend %clear-icon-position;
+                    @include size(16px);
+                    cursor: pointer;
+                }
+                input{
+                    @extend %font-bodySmall;
+                    letter-spacing: 0.24px;
+                    line-height: 15.51px;
+                    border: none;
+                    outline: none;
+                    background-color: transparent;
+                    color: $fu-light-800;
+                    width: 365px;
+                    height: 16px;
+                    padding: 0 8px 0 8px;
+                    margin-left: 5px;
+                    &::placeholder {
+                        color: $fu-light-800;
+                    }
+                }
+
+            }
+        }
+        .fu-label-holder {
+            border-right: 1px solid $fu-light-400;
+            height: 100%;
+            width: fit-content;
+            display: flex;
+            align-items: center;
+            .fu-label{
+                color: $fu-black-500;
+                @extend %font-bodyMediumStrong;
+                padding: 0 16px 0 24px;
+                min-width: 116px;
+            }
+        }
+
+    }
+}

@@ -1,0 +1,18 @@
+@import '../../../../../src/style/scss/v3/vars/vars';
+@import '../../../../../src/style/scss/v3/vars/border';
+@import '../../../../../src/style/scss/v3/mixins/mixins';
+
+:host{
+    @extend %border-box-normalize;
+    .is-dropdown-dual-multi-select-footer {
+        border-top: 1px solid $fu-light-400;
+        width: 545px;
+        height: 48px;
+        padding: 11px 16px 12px 16px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        @extend %font-bodyXSmallStrong;
+        gap: 4px;
+    }
+}
