@@ -15,7 +15,7 @@ import {MultiDropdownComponent as MultiDropdownComponentV1} from '@ironsource/fu
 import {MultiDropdownComponent as MultiDropdownComponentV2} from '@ironsource/fusion-ui/components/multi-dropdown/v2';
 import {MultiDropdownComponent} from '@ironsource/fusion-ui/components/multi-dropdown';
 import {AddboxDropdownComponent} from '@ironsource/fusion-ui/components/addbox-dropdown/v1';
-import {IconHeaderActionComponent} from '@ironsource/fusion-ui/components/icon-header-action';
+import {IconHeaderActionComponent} from '@ironsource/fusion-ui/components/icon-header-action/v1';
 import {FlagComponent} from '@ironsource/fusion-ui/components/flag/v1';
 import {HeaderComponent} from '@ironsource/fusion-ui/components/header/v1';
 import {HeaderOverlayComponent} from '@ironsource/fusion-ui/components/header-overlay/v1';
