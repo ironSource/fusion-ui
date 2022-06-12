@@ -3,8 +3,7 @@ import {DropdownDualMultiSelectComponent} from './dropdown-dual-multi-select.com
 import {By} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
-import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
-import {InputModule} from '@ironsource/fusion-ui/components/input';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button/v3';
 import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
@@ -36,7 +35,6 @@ describe('DropdownDualMultiSelectComponent', () => {
                 CommonModule,
                 IconModule,
                 ButtonModule,
-                InputModule,
                 CheckboxModule,
                 ReactiveFormsModule,
                 ClickOutsideModule,
@@ -119,8 +117,8 @@ describe('DropdownDualMultiSelectComponent', () => {
         });
         fixture.detectChanges();
 
-        fixture.debugElement.query(By.css('.transparent.primary')).triggerEventHandler('click', {
-            target: fixture.debugElement.query(By.css('.transparent.primary')).nativeElement
+        fixture.debugElement.query(By.css('.primary')).triggerEventHandler('click', {
+            target: fixture.debugElement.query(By.css('.primary')).nativeElement
         });
         component.writeValue([component.items$.getValue()[0]]);
         fixture.detectChanges();

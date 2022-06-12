@@ -6,7 +6,6 @@ import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
 import {IconModule} from '@ironsource/fusion-ui/components/icon';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button/v3';
-import {InputModule} from '@ironsource/fusion-ui/components/input/v3';
 import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox/v2';
 import {DropdownDualMultiSelectBodyModule} from './components/dropdown-dual-multi-select-body/dropdown-dual-multi-select-body.module';
 import {DropdownDualMultiSelectHeaderModule} from './components/dropdown-dual-multi-select-header/dropdown-dual-multi-select-header.module';
@@ -20,7 +19,6 @@ import {DropdownDualMultiSelectLoadingModule} from './components/dropdown-dual-m
         CommonModule,
         IconModule,
         ButtonModule,
-        InputModule,
         CheckboxModule,
         ReactiveFormsModule,
         ClickOutsideModule,
