@@ -13,7 +13,7 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 // prettier-ignore
 import {
     IconHeaderActionModule
-} from '@ironsource/fusion-ui/components/icon-header-action';
+} from '@ironsource/fusion-ui/components/icon-header-action/v1';
 // prettier-ignore
 import {
     MultiDropdownModule
@@ -45,7 +45,7 @@ import {VideoPlayerModule} from '@ironsource/fusion-ui/components/video-player';
 import {TagsInputModule} from '@ironsource/fusion-ui/components/tags-input/v2';
 import {ChartLabelsModule} from '@ironsource/fusion-ui/components/chart-labels/v2';
 import {ChartModule} from '@ironsource/fusion-ui/components/chart/v2';
-import {IconSelectListModule} from '@ironsource/fusion-ui/components/icon-select-list';
+import {IconSelectListModule} from '@ironsource/fusion-ui/components/icon-select-list/v1';
 import {IconStatusModule} from '@ironsource/fusion-ui/components/icon-status';
 import {SwitcherModule} from '@ironsource/fusion-ui/components/switcher';
 import {DaterangeModule} from '@ironsource/fusion-ui/components/daterange';
