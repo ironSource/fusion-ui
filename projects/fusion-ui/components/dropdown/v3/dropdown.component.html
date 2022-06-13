@@ -66,3 +66,9 @@
 <div class="fu-error-msg" *ngIf="error">{{ error }}</div>
 <!--helper holder-->
 <div class="fu-helper-text" *ngIf="helper">{{helper}}</div>
+
+<ng-template #chipContent>
+    <div class="fu-chip-content">
+        <div class="fu-chip-text">{{ placeholder$ | async }}</div>
+    </div>
+</ng-template>

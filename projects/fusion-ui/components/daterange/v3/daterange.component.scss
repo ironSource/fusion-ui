@@ -143,4 +143,15 @@ $selectHolderHeight: 39px;
     .overlay{
         top: -4px;
     }
+    .fu-chip-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        fusion-icon {
+            width: 16px;
+            height: 16px;
+            margin-bottom: 2px;
+        }
+    }
 }

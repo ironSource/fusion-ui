@@ -1,4 +1,4 @@
-import {Directive, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2, TemplateRef, ViewChild} from '@angular/core';
 import {InputSize} from '@ironsource/fusion-ui/components/input/common/base';
 import {ControlValueAccessor, FormControl} from '@angular/forms';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
@@ -40,6 +40,8 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     @Output() searchChange = new EventEmitter();
     @Output() viewChange = new EventEmitter();
 
+    @ViewChild('chipContent', {static: true}) chipContent: TemplateRef<any>;
+
     preSelectedItems = new FormControl();
     searchControlTerm = new FormControl('');
     items$ = new BehaviorSubject<DropdownOption[]>([]);
@@ -50,17 +52,19 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     isPositionLeft: boolean;
     inputSize = InputSize;
     dropdownDualMultiSelectionButtonOptions = {rounded: true, size: this.inputSize.Medium};
+    selected$ = new BehaviorSubject<string>('');
 
     private selectedChange: DropdownOption[];
     private parentWithOverflow: HTMLElement;
     private onDestroy$ = new Subject<void>();
-    private selected$ = new BehaviorSubject<string>('');
 
     constructor(protected element: ElementRef, protected renderer: Renderer2) {
         super();
     }
 
     ngOnInit(): void {
+        this.selected$.next(this.defaultPlaceHolder);
+        this.contentTemplate = this.chipContent;
         this.initializeListeners();
     }
 

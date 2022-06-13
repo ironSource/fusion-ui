@@ -63,3 +63,9 @@
         ></fusion-dropdown-dual-multi-select-footer>
     </div>
 </ng-template>
+
+<ng-template #chipContent>
+    <div class="fu-chip-content">
+        <div class="fu-chip-text">{{ selected$ | async }}</div>
+    </div>
+</ng-template>

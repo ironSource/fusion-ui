@@ -45,6 +45,7 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     @Output() daySelected = new EventEmitter<DaterangeSelection>();
 
     @ViewChild('overlay') overlay: ElementRef;
+    @ViewChild('chipContent', {static: true}) chipContent: TemplateRef<any>;
 
     dropdownSelectConfigurations$ = new BehaviorSubject<DropdownSelectConfigurations>({});
 
@@ -66,7 +67,7 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     originalSelection: DaterangeSelection = null;
     currentPreset: DaterangePresets | DaterangeCustomPreset = null;
     overlayAlign$ = new BehaviorSubject<string>('');
-    protected selected$ = new BehaviorSubject<string>('');
+    selected$ = new BehaviorSubject<string>('');
     protected daterangeOptions: DaterangeOptions;
 
     public get isPresetsShown(): boolean {
@@ -91,6 +92,7 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     }
 
     ngOnInit() {
+        this.contentTemplate = this.chipContent;
         this.id = this.id || `fs-daterange-${this.uniqueIdService.getUniqueId()}`;
         if (!isNullOrUndefined(this.maxDate)) {
             this.originalMaxDate = this.maxDate;

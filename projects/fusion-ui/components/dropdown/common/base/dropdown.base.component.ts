@@ -11,6 +11,7 @@ import {
     OnInit,
     Output,
     Renderer2,
+    TemplateRef,
     ViewChild
 } from '@angular/core';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
@@ -133,6 +134,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     @ViewChild('optionsHolder') optionsHolderElRef: ElementRef;
     @ViewChild('searchComponent') searchComponent: DropdownSearchComponent;
     @ViewChild('selectComponent') selectComponent: DropdownSelectComponent;
+    @ViewChild('chipContent', {static: true}) chipContent: TemplateRef<any>;
 
     onDestroy$ = new Subject<void>();
 
@@ -169,6 +171,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
 
     isAllSelected: boolean;
     isIndeterminate = false;
+    optionSelected$ = new BehaviorSubject<string>('');
 
     private _optionsTitle: string;
     private _isLocatedRight = false;
@@ -181,7 +184,6 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     private backendPaginationTotalResult: number;
     private backendPaginationPageNumber = 1;
     private filteredOptionsState: DropdownOption[] = [];
-    private optionSelected$ = new BehaviorSubject<string>('');
     protected optionsState: DropdownOption[] = [];
     public dropdownSelectConfigurations$ = new BehaviorSubject<DropdownSelectConfigurations>(this.getDropdownSelectConfigurations());
 
@@ -234,6 +236,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     }
 
     ngOnInit() {
+        this.contentTemplate = this.chipContent;
         this.displayedOptionsObservable$ = this.getDisplayedOptionsObservable();
         this.arrowNavigation = this.arrowNavigation || false;
         this.icon = this.icon || '';

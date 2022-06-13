@@ -1,4 +1,4 @@
-import {TemplateRef} from '@angular/core';
+import {TemplateRef, ViewChild} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 
 export abstract class ApiBase {
