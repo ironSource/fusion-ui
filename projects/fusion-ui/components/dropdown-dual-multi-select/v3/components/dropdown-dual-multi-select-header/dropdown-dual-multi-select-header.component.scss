@@ -32,14 +32,19 @@ $clearIconColor: #DADADA;
             align-items: center;
             .fu-search-bar {
                 position: relative;
-                @include icon-style('fu-icon-search', $fu-light-700, 16px, true, true){
+                fusion-icon.fu-icon-search {
+                    color: $fu-light-700;
                     @extend %search-icon-position;
                     @include size(16px);
                 }
-                @include icon-style('fu-icon-clear', $clearIconColor, 16px, true, true){
+                fusion-icon.fu-icon-clear {
+                    color:$fu-light-500;
                     @extend %clear-icon-position;
                     @include size(16px);
                     cursor: pointer;
+                    &:hover{
+                        color: $fu-light-800;
+                    }
                 }
                 input{
                     @extend %font-bodySmall;
@@ -48,7 +53,7 @@ $clearIconColor: #DADADA;
                     border: none;
                     outline: none;
                     background-color: transparent;
-                    color: $fu-light-800;
+                    color: $fu-black-500;
                     width: 365px;
                     height: 16px;
                     padding: 0 8px 0 8px;
