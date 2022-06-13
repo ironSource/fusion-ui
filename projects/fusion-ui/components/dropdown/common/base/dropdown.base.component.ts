@@ -18,7 +18,7 @@ import {ControlValueAccessor, FormControl} from '@angular/forms';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
-import {debounceTime, distinctUntilChanged, map, switchMapTo, take, takeUntil} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, map, startWith, switchMapTo, take, takeUntil} from 'rxjs/operators';
 import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
 import {detectChangesDecorator} from '@ironsource/fusion-ui/decorators';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
@@ -181,6 +181,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     private backendPaginationTotalResult: number;
     private backendPaginationPageNumber = 1;
     private filteredOptionsState: DropdownOption[] = [];
+    private optionSelected$ = new BehaviorSubject<string>('');
     protected optionsState: DropdownOption[] = [];
     public dropdownSelectConfigurations$ = new BehaviorSubject<DropdownSelectConfigurations>(this.getDropdownSelectConfigurations());
 
@@ -614,7 +615,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     }
 
     valueSelected() {
-        return of([...this.selected]).pipe(map(value => (value.length ? {value, isSelected: !!value} : null)));
+        return this.optionSelected$.asObservable().pipe(map(value => ({value, isSelected: !!value})));
     }
 
     onCloseIconClicked(option: DropdownOption) {
@@ -628,6 +629,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
             this.selectedChange.emit(this.selected);
             this.closeDropdown();
             this.setOptionsAndLabel();
+            this.optionSelected$.next(this.placeholder$.getValue());
         } else {
             option.isOpen = !option.isOpen;
         }

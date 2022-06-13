@@ -134,6 +134,7 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
     private addChipFilter(option: DropdownOption): void {
         this.chipFilters.toArray().forEach(chip => {
             const isSelected = this.selectedFilters.some(selectedChip => selectedChip.id === chip['id']);
+
             if (chip['id'] === option.id && !isSelected && chip.mode === 'dynamic') {
                 chip['isVisible'] = true;
                 chip['isSelected'] = true;

@@ -10,7 +10,8 @@ import {
     Output,
     Renderer2,
     TemplateRef,
-    ViewChild
+    ViewChild,
+    ViewContainerRef
 } from '@angular/core';
 import {BehaviorSubject, fromEvent, merge, Subject} from 'rxjs';
 import {ChipFilterComponentConfigurations, ChipFilterMode, ChipType, ChipTypeToClass} from './chip-filter-component-configurations';
@@ -21,6 +22,7 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, OnDestroy {
     @ContentChild(ApiBase, {static: true}) apiBase: ApiBase;
     @ViewChild('ref', {static: true}) ref: TemplateRef<any>;
+    @ViewChild('content', {static: true}) content: ElementRef;
 
     id: number | string;
     chipType$ = new BehaviorSubject<ChipType>(null);
@@ -121,6 +123,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
 
     ngAfterViewInit() {
         this.setValueSelectedListener();
+        console.log(this.content);
     }
 
     ngOnDestroy() {
@@ -156,6 +159,13 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
                         ...selected
                     };
                     this.onSelectedChange.emit(this.chipSelectValue);
+                } else {
+                    this.selected = selected?.isSelected;
+                    this.setChipType(this.selected);
+                    this.onRemove.emit({
+                        id: this.id,
+                        isSelected: this.selected
+                    });
                 }
             });
     }
@@ -181,8 +191,9 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
         }
         switch (this.mode) {
             case 'dynamic':
-                this.chipType$.next('RemoveAbleSelect');
-                this.close = true;
+                // this.chipType$.next('RemoveAbleSelect');
+                this.setChipSelectType(hasValue);
+                // this.close = true;
                 break;
             case 'static':
                 this.setChipSelectType(hasValue);

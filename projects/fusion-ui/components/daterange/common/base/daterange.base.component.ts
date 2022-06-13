@@ -66,7 +66,7 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     originalSelection: DaterangeSelection = null;
     currentPreset: DaterangePresets | DaterangeCustomPreset = null;
     overlayAlign$ = new BehaviorSubject<string>('');
-    protected selected$ = new BehaviorSubject<DaterangeSelection>(null);
+    protected selected$ = new BehaviorSubject<string>('');
     protected daterangeOptions: DaterangeOptions;
 
     public get isPresetsShown(): boolean {
@@ -99,7 +99,9 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     }
 
     valueSelected() {
-        return this.selected$.asObservable().pipe(map(value => ({value, isSelected: !!value})));
+        return this.selected$
+            .asObservable()
+            .pipe(map(value => (value !== 'Select' ? {value, isSelected: !!value} : {value: null, isSelected: false})));
     }
 
     selectPreset(preset, cohort?: number) {
@@ -153,7 +155,7 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
                 : this.originalSelection?.startDate && this.originalSelection?.endDate
                 ? this.originalSelection
                 : null;
-            this.selected$.next(valueToPropagate);
+            this.selected$.next(this.getCurrentSelectionFormatted());
             this.propagateChange(valueToPropagate);
             this.clearRangeDaysLimit();
         }
@@ -253,7 +255,7 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
             this.selection = {endDate: null, startDate: null};
             this.originalSelection = null;
         }
-        this.selected$.next(this.originalSelection);
+        this.selected$.next(this.getCurrentSelectionFormatted());
         this.setPlaceholder();
     }
 
