@@ -1,9 +1,9 @@
 import {Component, Injector, OnInit} from '@angular/core';
-import {FusionBase, StyleVersion} from '@ironsource/fusion-ui';
 import {SwitcherItem} from '@ironsource/fusion-ui/components/switcher/common/entities';
 import {FormControl} from '@angular/forms';
 import {VersionService} from '../../services/version/version.service';
 import {takeUntil} from 'rxjs/operators';
+import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 
 @Component({
     selector: 'fusion-style-version-button',

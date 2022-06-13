@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {FormControl, Validators} from '@angular/forms';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {delay, take, takeUntil, tap} from 'rxjs/operators';
-import {isNullOrUndefined, isNumber, StyleVersion} from '@ironsource/fusion-ui';
+import {isNullOrUndefined, isNumber} from '@ironsource/fusion-ui';
 import {
     TableColumn,
     TableColumnTypeEnum,
@@ -18,6 +18,7 @@ import {TableCellDynamicComponentExampleComponent} from './table-cell-dynamic-co
 import {DocsLayoutService} from '../../docs/docs-layout.service';
 import {TableCustomNoDataComponent} from '../../../components/table-custom-no-data/table-custom-no-data.component';
 import {VersionService} from '../../../services/version/version.service';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 
 const TABLE_OPTIONS: TableOptions = {
     sortingType: 'local',

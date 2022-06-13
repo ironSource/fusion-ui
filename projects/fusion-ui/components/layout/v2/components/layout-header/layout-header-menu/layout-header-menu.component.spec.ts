@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {LayoutHeaderMenuComponent} from './layout-header-menu.component';
-import {IconModule} from '@ironsource/fusion-ui/components/icon';
-import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components/v1';
 import {LayoutHeaderMenuConfiguration} from './layout-header-menu-entity';
 import {By} from '@angular/platform-browser';
 

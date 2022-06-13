@@ -10,8 +10,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 import {InputModule} from '@ironsource/fusion-ui/components/input/v2';
 import {ModalModule} from '@ironsource/fusion-ui/components/modal/v2';
-import {LoaderModule} from '@ironsource/fusion-ui/components/loader';
-import {NotificationModule} from '@ironsource/fusion-ui/components/notification';
+import {LoaderModule} from '@ironsource/fusion-ui/components/loader/v1';
+import {NotificationModule} from '@ironsource/fusion-ui/components/notification/v1';
 
 class RouterStub {
     url = '';

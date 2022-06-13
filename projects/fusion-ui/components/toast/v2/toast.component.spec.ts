@@ -1,8 +1,8 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {ToastComponent} from './toast.component';
-import {IconModule} from '@ironsource/fusion-ui/components/icon';
-import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components/v1';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {ToastEntity, ToastLocation} from '@ironsource/fusion-ui/components/toast/common/entities';
 

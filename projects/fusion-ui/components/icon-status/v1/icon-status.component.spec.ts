@@ -2,7 +2,7 @@ import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {IconStatusComponent} from './icon-status.component';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
-import {IconModule} from '@ironsource/fusion-ui/components/icon';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {DebugElement} from '@angular/core';
 
 describe('IconStatusComponent', () => {

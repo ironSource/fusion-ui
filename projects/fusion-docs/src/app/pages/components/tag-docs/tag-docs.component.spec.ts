@@ -6,7 +6,11 @@ import {CodeBlockModule} from '../../../components/code-block/code-block.module'
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {Router, RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
-import {IconModule, MultiDropdownModule, TagModule, TagsInputModule, TooltipModule} from '@ironsource/fusion-ui';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+import {MultiDropdownModule} from '@ironsource/fusion-ui/components/multi-dropdown/v1';
+import {TagModule} from '@ironsource/fusion-ui/components/tag/v1';
+import {TagsInputModule} from '@ironsource/fusion-ui/components/tags-input/v1';
+import {TooltipModule} from '@ironsource/fusion-ui';
 
 class RouterStub {
     url = '';

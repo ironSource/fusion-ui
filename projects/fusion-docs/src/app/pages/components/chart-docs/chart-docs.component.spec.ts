@@ -2,7 +2,8 @@ import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ChartDocsComponent} from './chart-docs.component';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
-import {ChartLabelsModule, ChartModule} from '@ironsource/fusion-ui';
+import {ChartLabelsModule} from '@ironsource/fusion-ui/components/chart-labels/v1';
+import {ChartModule} from '@ironsource/fusion-ui/components/chart/v1';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {RouterTestingModule} from '@angular/router/testing';

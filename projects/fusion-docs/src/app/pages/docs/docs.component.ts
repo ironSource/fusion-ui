@@ -1,5 +1,4 @@
 import {Component, OnDestroy, OnInit, Type} from '@angular/core';
-import {LayoutHeaderComponentConfiguration, LayoutComponentConfiguration, StyleVersion} from '@ironsource/fusion-ui';
 import {SidebarMenuItem} from '@ironsource/fusion-ui/components/sidebar/common/entities';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 import {HeaderState} from '@ironsource/fusion-ui/components/header/common/base';
@@ -10,6 +9,8 @@ import {takeUntil} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {DocsLayoutService} from './docs-layout.service';
 import {VersionService} from '../../services/version/version.service';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
+import {LayoutComponentConfiguration, LayoutHeaderComponentConfiguration} from '@ironsource/fusion-ui/components/layout/v2';
 
 @Component({
     selector: 'fusion-docs',

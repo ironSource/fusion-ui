@@ -1,8 +1,7 @@
 import {Inject, Injectable} from '@angular/core';
-import {startWith} from 'rxjs/operators';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {FUSION_STYLE_VERSION_CSS_VAR_NAME, StyleVersion} from '@ironsource/fusion-ui';
 import {DOCUMENT} from '@angular/common';
+import {FUSION_STYLE_VERSION_CSS_VAR_NAME, StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 
 @Injectable({
     providedIn: 'root'

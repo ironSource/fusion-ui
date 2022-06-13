@@ -1,9 +1,9 @@
 /*
  * Created on 2020.12.17 By Andy Kononenko (andyk@ironsrc.com)
  */
-
-import {LayoutComponentConfiguration, LayoutHeaderComponentConfiguration, LayoutUser} from '@ironsource/fusion-ui';
 import {SidebarMenuItem} from '@ironsource/fusion-ui/components/sidebar/common/entities';
+import {LayoutUser} from '@ironsource/fusion-ui';
+import {LayoutComponentConfiguration, LayoutHeaderComponentConfiguration} from '@ironsource/fusion-ui/components/layout/v2';
 
 export const LAYOUT_USER: LayoutUser = {
     icon: {iconName: 'user-circle', iconVersion: 'v2'},

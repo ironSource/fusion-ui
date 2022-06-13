@@ -1,5 +1,5 @@
 import {InputOptions} from './input.options';
-import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
+import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
 
 // Todo - replace multiple string type with enum
 

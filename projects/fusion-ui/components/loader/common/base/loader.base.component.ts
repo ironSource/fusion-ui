@@ -1,7 +1,7 @@
 import {AfterViewInit, Directive, ElementRef, HostBinding, Inject, Input, Optional, Renderer2, ViewChild} from '@angular/core';
 import {LOADER_COMPONENT_TYPE_TOKEN} from './loader-token';
 import {LoaderColor, LoaderPosition, LoaderSize} from './loader.types';
-import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
+import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
 
 @Directive()
 export abstract class LoaderBaseComponent implements AfterViewInit {
