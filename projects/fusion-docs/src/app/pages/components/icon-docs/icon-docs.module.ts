@@ -5,7 +5,10 @@ import {Routes, RouterModule} from '@angular/router';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
-import {SvgModule, IconModule, FlagModule, IconStatusModule} from '@ironsource/fusion-ui';
+import {SvgModule} from '@ironsource/fusion-ui/components/svg';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+import {FlagModule} from '@ironsource/fusion-ui/components/flag/v1';
+import {IconStatusModule} from '@ironsource/fusion-ui/components/icon-status';
 
 const routes: Routes = [{path: '', component: IconDocsComponent}];
 

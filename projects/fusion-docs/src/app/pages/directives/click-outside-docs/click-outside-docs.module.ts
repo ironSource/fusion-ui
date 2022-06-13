@@ -6,7 +6,8 @@ import {ExampleBlockModule} from '../../../components/example-block/example-bloc
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ReactiveFormsModule} from '@angular/forms';
-import {ClickOutsideModule, ToggleModule} from '@ironsource/fusion-ui';
+import {ClickOutsideModule} from '@ironsource/fusion-ui';
+import {ToggleModule} from '@ironsource/fusion-ui/components/toggle/v1';
 
 const routes: Routes = [{path: '', component: ClickOutsideDocsComponent}];
 

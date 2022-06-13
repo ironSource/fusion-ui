@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, OnDestroy, OnInit, Type} from '@angu
 import {PopupEntity, PopupLocation} from '@ironsource/fusion-ui/components/popup/common/entities';
 import {PopupService} from '@ironsource/fusion-ui/components/popup/common/services';
 import {Observable, Subject} from 'rxjs';
-import {StyleVersion} from '@ironsource/fusion-ui';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {MobilePreviewerComponent} from '@ironsource/fusion-ui/components/mobile-previewer/v1';
 import {MobileOrientation, MobilePreviewerComponentConfiguration} from '@ironsource/fusion-ui/components/mobile-previewer/common/base';
 import {takeUntil} from 'rxjs/operators';

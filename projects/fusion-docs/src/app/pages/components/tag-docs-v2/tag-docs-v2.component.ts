@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import {StyleVersion} from '@ironsource/fusion-ui';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {TagComponentConfigurations, TagRole} from '@ironsource/fusion-ui/components/tag/common/entities';
 import {takeUntil} from 'rxjs/operators';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';

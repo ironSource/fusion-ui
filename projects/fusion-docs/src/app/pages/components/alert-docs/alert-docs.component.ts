@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Observable, Subject} from 'rxjs';
-import {StyleVersion} from '@ironsource/fusion-ui';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {takeUntil} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {VersionService} from '../../../services/version/version.service';

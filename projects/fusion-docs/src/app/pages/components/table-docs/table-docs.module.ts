@@ -7,7 +7,7 @@ import {CodeBlockModule} from '../../../components/code-block/code-block.module'
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AlertModule} from '@ironsource/fusion-ui/components/alert/v1';
-import {IconModule} from '@ironsource/fusion-ui/components/icon';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TableModule} from '@ironsource/fusion-ui/components/table/v1';
 import {TableCellIconExampleModule} from '../../../components/table-cell-icon-exmpale';
 import {TableCustomNoDataModule} from '../../../components/table-custom-no-data/table-custom-no-data.module';

@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, HostBinding, HostListener, Input, On
 import {DocsMenuItem} from './docs-menu';
 import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {FusionBase} from '@ironsource/fusion-ui';
+import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
 
 @Component({
     selector: 'fusion-docs-menu',

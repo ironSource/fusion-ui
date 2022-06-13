@@ -6,7 +6,7 @@ import {ExampleBlockModule} from '../../../components/example-block/example-bloc
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
-import {ToastModule} from '@ironsource/fusion-ui/components/toast';
+import {ToastModule} from '@ironsource/fusion-ui/components/toast/v2';
 import {ToastExampleContentModule} from '../../../components/toast-example-content/toast-example-content.module';
 
 const routes: Routes = [{path: '', component: ToastDocsComponent}];
