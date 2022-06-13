@@ -54,7 +54,7 @@ $itemWidth: 252px;
             }
 
             .content-col-left {
-                width: 272.5px;
+                width: 272px;
                 padding: 4px 8px 3px 8px;
                 border-bottom: 1px solid $fu-light-400;
                 .body-header {
@@ -75,7 +75,7 @@ $itemWidth: 252px;
             }
 
             .content-col-right {
-                width: 272.5px;
+                width: 272px;
                 padding: 4px 8px 3px 8px;
                 border-bottom: 1px solid $fu-light-400;
                 border-left: 1px solid $fu-light-400;
@@ -110,7 +110,7 @@ $itemWidth: 252px;
                 &.content-col {
                     height: 216px;
                     max-height: 216px;
-                    width: 272.5px;
+                    width: 272px;
                 }
                 .items-holder {
                     @extend %scrollDefinition;
@@ -135,7 +135,7 @@ $itemWidth: 252px;
                 &.content-col {
                     height: 216px;
                     max-height: 216px;
-                    width: 272.5px;
+                    width: 272px;
                 }
                 .items-holder {
                     @extend %scrollDefinition;

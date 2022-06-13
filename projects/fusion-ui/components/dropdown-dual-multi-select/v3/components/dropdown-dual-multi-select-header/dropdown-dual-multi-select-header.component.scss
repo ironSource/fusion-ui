@@ -6,7 +6,7 @@ $clearIconColor: #DADADA;
 
 %clear-icon-position{
     position: absolute;
-    right: -5px;
+    right: -13px;
     top: 2px;
 }
 
@@ -19,11 +19,11 @@ $clearIconColor: #DADADA;
 :host {
     .is-dropdown-dual-multi-select-header {
         @extend %border-box-normalize;
-        height: 56px;
+        height: 55px;
         width: 545px;
         border-bottom: 1px solid $fu-light-400;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 0.5fr 1.5fr;
         align-items: center;
         .fu-search-holder {
             width: 405px;
@@ -75,7 +75,6 @@ $clearIconColor: #DADADA;
                 color: $fu-black-500;
                 @extend %font-bodyMediumStrong;
                 padding: 0 16px 0 24px;
-                min-width: 116px;
             }
         }
 
