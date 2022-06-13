@@ -8,7 +8,7 @@ import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {FlagModule} from '@ironsource/fusion-ui/components/flag/v1';
-import {IconStatusModule} from '@ironsource/fusion-ui/components/icon-status';
+import {IconStatusModule} from '@ironsource/fusion-ui/components/icon-status/v1';
 
 const routes: Routes = [{path: '', component: IconDocsComponent}];
 

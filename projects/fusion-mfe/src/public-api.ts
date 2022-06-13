@@ -17,7 +17,7 @@ export * from '@ironsource/fusion-ui/components/header-overlay/v1';
 export * from '@ironsource/fusion-ui/components/icon/v1';
 export * from '@ironsource/fusion-ui/components/icon-header-action/v1';
 export * from '@ironsource/fusion-ui/components/icon-select-list/v1';
-export * from '@ironsource/fusion-ui/components/icon-status';
+export * from '@ironsource/fusion-ui/components/icon-status/v1';
 export * from '@ironsource/fusion-ui/components/input';
 export * from '@ironsource/fusion-ui/components/input-inline/v2';
 export * from '@ironsource/fusion-ui/components/layout/v2';

@@ -46,7 +46,7 @@ import {TagsInputModule} from '@ironsource/fusion-ui/components/tags-input/v2';
 import {ChartLabelsModule} from '@ironsource/fusion-ui/components/chart-labels/v2';
 import {ChartModule} from '@ironsource/fusion-ui/components/chart/v2';
 import {IconSelectListModule} from '@ironsource/fusion-ui/components/icon-select-list/v1';
-import {IconStatusModule} from '@ironsource/fusion-ui/components/icon-status';
+import {IconStatusModule} from '@ironsource/fusion-ui/components/icon-status/v1';
 import {SwitcherModule} from '@ironsource/fusion-ui/components/switcher';
 import {DaterangeModule} from '@ironsource/fusion-ui/components/daterange';
 import {MobilePreviewerModule} from '@ironsource/fusion-ui/components/mobile-previewer/v2';

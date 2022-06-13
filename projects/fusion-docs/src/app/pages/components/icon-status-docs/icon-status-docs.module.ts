@@ -5,7 +5,7 @@ import {ExampleBlockModule} from '../../../components/example-block/example-bloc
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {RouterModule, Routes} from '@angular/router';
-import {IconStatusModule} from '@ironsource/fusion-ui/components/icon-status';
+import {IconStatusModule} from '@ironsource/fusion-ui/components/icon-status/v1';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 

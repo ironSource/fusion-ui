@@ -51,7 +51,7 @@ import {VideoPlayerComponent as VideoPlayerComponentV1} from '@ironsource/fusion
 import {ChartComponent} from '@ironsource/fusion-ui/components/chart/v2';
 import {ChartLabelsComponent} from '@ironsource/fusion-ui/components/chart-labels/v2';
 import {IconSelectListComponent} from '@ironsource/fusion-ui/components/icon-select-list/v1';
-import {IconStatusComponent} from '@ironsource/fusion-ui/components/icon-status';
+import {IconStatusComponent} from '@ironsource/fusion-ui/components/icon-status/v1';
 import {SwitcherComponent} from '@ironsource/fusion-ui/components/switcher/v3';
 import {SwitcherComponent as SwitcherComponentV2} from '@ironsource/fusion-ui/components/switcher/v2';
 import {SwitcherComponent as SwitcherComponentV1} from '@ironsource/fusion-ui/components/switcher/v1';
