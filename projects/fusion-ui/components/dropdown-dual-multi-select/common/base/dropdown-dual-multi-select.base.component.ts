@@ -54,7 +54,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     private selectedChange: DropdownOption[];
     private parentWithOverflow: HTMLElement;
     private onDestroy$ = new Subject<void>();
-    private selected$ = new BehaviorSubject<DropdownOption[]>(null);
+    private selected$ = new BehaviorSubject<string>('');
 
     constructor(protected element: ElementRef, protected renderer: Renderer2) {
         super();
@@ -73,7 +73,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.scrollDown.emit();
     }
 
-    valueSelected(): Observable<{value: DropdownOption[]; isSelected: boolean}> {
+    valueSelected(): Observable<{value: string; isSelected: boolean}> {
         return this.selected$.pipe(
             takeUntil(this.onDestroy$),
             map(value => ({value, isSelected: !!value}))
@@ -86,7 +86,8 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.setLabel();
         this.propagateChange(this.preSelectedItems.value);
         this.selectedChange = this.preSelectedItems.value;
-        this.selected$.next(this.preSelectedItems.value);
+        // this.selected$.next(this.preSelectedItems.value);
+        this.selected$.next(this.placeholder$.getValue());
         this.searchControlTerm.setValue('');
         this.viewChange.emit(this.opened$.getValue());
     }
