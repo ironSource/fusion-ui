@@ -8,10 +8,10 @@
 <ng-template #chipComponent>
     <div class="fu-chip-filter-container">
         <div class="truncate fu-chip-content-wrapper">
-            <ng-container *ngIf="!defaultContent">
+            <ng-container *ngIf="!isDefaultContent">
                 <ng-content select=".fu-chip-content"></ng-content>
             </ng-container>
-            <ng-container *ngIf="defaultContent" [ngTemplateOutlet]="defaultContent"></ng-container>
+            <ng-container *ngIf="apiBase && isDefaultContent" [ngTemplateOutlet]="defaultContent"></ng-container>
         </div>
         <fusion-icon class="fu-icon-close" *ngIf="isCloseIcon$ | async" (click)="closeClicked($event)" [name]="'close-bold'"></fusion-icon>
     </div>

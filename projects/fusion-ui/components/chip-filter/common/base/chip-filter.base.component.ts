@@ -12,7 +12,8 @@ import {
     Output,
     Renderer2,
     TemplateRef,
-    ViewChild
+    ViewChild,
+    ViewContainerRef
 } from '@angular/core';
 import {BehaviorSubject, fromEvent, merge, Subject} from 'rxjs';
 import {ChipFilterComponentConfigurations, ChipFilterMode, ChipType, ChipTypeToClass} from './chip-filter-component-configurations';
@@ -28,6 +29,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     chipType$ = new BehaviorSubject<ChipType>(null);
     isCloseIcon$ = new BehaviorSubject<boolean>(false);
     defaultContent: TemplateRef<any>;
+    isDefaultContent: boolean = true;
 
     private onDestroy$ = new Subject<void>();
     private restListeners$ = new Subject<void>();
@@ -62,6 +64,10 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
         } else {
             this.renderer.setStyle(this.element.nativeElement, 'display', 'block');
         }
+    }
+
+    @Input() set isDynamicContent(value: boolean) {
+        this.isDefaultContent = !value;
     }
 
     @Output() onRemove = new EventEmitter();

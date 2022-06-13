@@ -49,6 +49,8 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
 
     options$ = new BehaviorSubject<DropdownOption[]>([]);
 
+    addFilterIndex: number;
+
     private selectedFilters: SelectedFilters[] = [];
 
     private onDestroy$ = new Subject<void>();
@@ -65,6 +67,7 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
     }
 
     ngAfterViewInit() {
+        this.addFilterIndex = this.chipFilters.length;
         this.setPreSelectedFilters();
         this.activateAddFilter();
         this.orderChipFilters(this.chipFilters);
