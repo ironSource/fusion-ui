@@ -3,8 +3,9 @@ import {InputSize} from '@ironsource/fusion-ui/components/input/common/base';
 import {ControlValueAccessor, FormControl} from '@angular/forms';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
-import {BehaviorSubject, Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
+import {map, takeUntil} from 'rxjs/operators';
+import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 
 const CLASS_LIST = [
     'dual-select-button',
@@ -16,7 +17,7 @@ const CLASS_LIST = [
 ];
 
 @Directive()
-export abstract class DropdownDualMultiSelectBaseComponent implements OnInit, ControlValueAccessor, OnDestroy {
+export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase implements OnInit, ControlValueAccessor, OnDestroy {
     @Input() isDisabled: boolean = false;
     @Input() dynamicPlaceholder: DynamicComponentConfiguration;
     @Input() totalItems: number;
@@ -53,8 +54,11 @@ export abstract class DropdownDualMultiSelectBaseComponent implements OnInit, Co
     private selectedChange: DropdownOption[];
     private parentWithOverflow: HTMLElement;
     private onDestroy$ = new Subject<void>();
+    private selected$ = new BehaviorSubject<string>('');
 
-    constructor(protected element: ElementRef, protected renderer: Renderer2) {}
+    constructor(protected element: ElementRef, protected renderer: Renderer2) {
+        super();
+    }
 
     ngOnInit(): void {
         this.initializeListeners();
@@ -69,12 +73,21 @@ export abstract class DropdownDualMultiSelectBaseComponent implements OnInit, Co
         this.scrollDown.emit();
     }
 
+    valueSelected(): Observable<{value: string; isSelected: boolean}> {
+        return this.selected$.pipe(
+            takeUntil(this.onDestroy$),
+            map(value => ({value, isSelected: !!value}))
+        );
+    }
+
     applySelect(apply: boolean = false): void {
         this.opened$.next(!apply);
         this.confirm = true;
         this.setLabel();
         this.propagateChange(this.preSelectedItems.value);
         this.selectedChange = this.preSelectedItems.value;
+        // this.selected$.next(this.preSelectedItems.value);
+        this.selected$.next(this.placeholder$.getValue());
         this.searchControlTerm.setValue('');
         this.viewChange.emit(this.opened$.getValue());
     }

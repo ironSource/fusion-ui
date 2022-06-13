@@ -1,0 +1,21 @@
+<div class="is-dropdown-dual-multi-select-header">
+    <div class="fu-label-holder">
+        <span class="fu-label">
+        {{title}}
+        </span>
+    </div>
+
+    <div class="fu-search-holder">
+        <span class="fu-search-bar">
+            <fusion-icon class="fu-icon-search" *ngIf="!input.value" [name]="searchIcon"></fusion-icon>
+            <input #input
+                   autocomplete="off"
+                   minlength="1"
+                   [placeholder]="'Search'"
+                   [formControl]="searchControl"
+            />
+
+            <fusion-icon class="fu-icon-clear" *ngIf="input.value" [name]="searchClearIcon" (click)="clearSearch()"></fusion-icon>
+    </span>
+    </div>
+</div>
