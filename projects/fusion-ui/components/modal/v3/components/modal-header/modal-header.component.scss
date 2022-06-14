@@ -11,27 +11,27 @@
 
 $borderBottom: 1px solid $fu-light-400;
 $height: $modalHeaderHeight;
-$padding: 15px 32px;
+$padding: 16px 16px 16px 24px;
 
 
 :host {
     @extend %border-box-normalize;
     .modal-header {
         box-sizing: border-box;
-        @extend %font-heading-5;
-        color: $fu-black-900;
+        @extend %font-bodyMediumStrong;
+        color: $fu-black-500;
         height: $height;
         padding: $padding;
         border-bottom: $borderBottom;
 
-        @include icon-style('close', $fu-light-500, 24px, true, true) {
-            width: 24px;
-            height: 24px;
+        @include icon-style('close', $fu-light-500, 20px, true, true) {
+            width: 20px;
+            height: 20px;
             cursor: pointer;
             position: absolute;
-            right: 28px;
+            right: 18px;
             top: 14px;
         }
-        @include icon-style('close', $fu-light-500, 24px, true, true, 0, true);
+        @include icon-style('close', $fu-light-500, 20px, true, true, 0, true);
     }
 }
