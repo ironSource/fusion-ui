@@ -40,6 +40,7 @@ export * from '@ironsource/fusion-ui/components/switcher';
 export * from '@ironsource/fusion-ui/components/table/v2';
 export * from '@ironsource/fusion-ui/components/tabs';
 export * from '@ironsource/fusion-ui/components/tag/v2';
+export * from '@ironsource/fusion-ui/components/tags-input/v2';
 export * from '@ironsource/fusion-ui/components/textarea/v2';
 export * from '@ironsource/fusion-ui/components/toast/v2';
 export * from '@ironsource/fusion-ui/components/toggle/v2';
