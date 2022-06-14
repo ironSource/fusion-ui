@@ -119,6 +119,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     writeValue(value: DropdownOption[]): void {
         this.preSelectedItems.setValue(value);
         this.selectedChange = value;
+        this.selected$.next(this.placeholder$.getValue());
     }
 
     registerOnChange(fn: any): void {

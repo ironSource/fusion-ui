@@ -69,6 +69,8 @@
 
 <ng-template #chipContent>
     <div class="fu-chip-content-default">
-        <div class="fu-chip-text">{{ placeholder$ | async }}</div>
+        <ng-container *ngIf="(placeholder$ | async) as placeholder">
+            <div class="fu-chip-text">{{ placeholderPrefix ? placeholderPrefix + ': ' +  placeholder : placeholder }}</div>
+        </ng-container>
     </div>
 </ng-template>

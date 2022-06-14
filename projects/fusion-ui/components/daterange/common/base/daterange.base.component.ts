@@ -115,7 +115,13 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     valueSelected() {
         return this.selected$
             .asObservable()
-            .pipe(map(value => (value !== this.options?.placeholder ? {value, isSelected: !!value} : {value: null, isSelected: false})));
+            .pipe(
+                map(value =>
+                    value !== (this.options?.placeholder || DEFAULT_PLACEHOLDER_TEXT)
+                        ? {value, isSelected: !!value}
+                        : {value: null, isSelected: false}
+                )
+            );
     }
 
     selectPreset(preset, cohort?: number) {
