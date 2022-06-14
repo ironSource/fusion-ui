@@ -6,7 +6,7 @@
 // small
 $smallMinWidth: 66px;
 $smallHeight: 24px;
-$smallPadding: 3px 12px 4px;
+$smallPadding: 4px 12px 4px;
 $smallPaddingWithIcon: 3px 10px 4px 8px;
 $smallPaddingWithIconRight: 3px 28px 4px 10px;
 $smallPaddingWithLoading: 9px 16px 9px;
@@ -17,15 +17,15 @@ $mediumHeight: 32px;
 $mediumPadding: 7px 16px 8px;
 $mediumPaddingWithIcon: 7px 16px 8px 10px;
 $mediumPaddingWithIconRight: 7px 30px 8px 12px;
-$mediumPaddingWithLoading: 7px 23px 8px;
+$mediumPaddingWithLoading: 7px 23px 7px;
 
 // large
 $largeMinWidth: 92px;
 $largeHeight: 40px;
-$largePadding: 10px 24px 12px;
+$largePadding: 12px 24px 12px;
 $largePaddingWithIcon: 8px 24px 8px 14px;
 $largePaddingWithIconRight: 8px 40px 8px 22px;
-$largePaddingWithLoading: 10px 30px 12px;
+$largePaddingWithLoading: 10px 30px 10px;
 $buttonBorderRadius: 100px;
 
 
@@ -39,7 +39,7 @@ $buttonBorderRadius: 100px;
     border: none;
     @extend %font-bodyStrong;
     text-align: center;
-
+    font-size: 13px;
     height: $mediumHeight;
     width: fit-content;
     padding: $mediumPadding;
@@ -73,7 +73,6 @@ $buttonBorderRadius: 100px;
             justify-content: center;
             & > span {
                 height: 16px;
-                min-width: 42px;
                 line-height: 16px;
             }
         }
@@ -91,7 +90,6 @@ $buttonBorderRadius: 100px;
         &.fu-with-content {
             & > span {
                 & > span {
-                    min-width: 44px;
                     height: 17px;
                     line-height: 17px;
                 }

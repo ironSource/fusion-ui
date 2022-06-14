@@ -66,7 +66,6 @@ $smallHeight: 32px;
 
         input {
             @extend %font-bodySmall;
-            font-weight: 400;
             letter-spacing: 0.24px;
             border: none;
             box-sizing: border-box;
@@ -86,8 +85,13 @@ $smallHeight: 32px;
                 outline: none;
             }
 
+            &:hover{
+                background-color: $fu-light-200;
+            }
+
             &[readonly] {
                 color: $fu-black-500;
+                background-color: $fu-light-200;
                 border: none;
                 padding-top: initial;
             }
@@ -166,7 +170,7 @@ $smallHeight: 32px;
             i.fu-input-second-icon {
                 top: 8px;
             }
-            i.fu-toggle-pass {
+            .fu-toggle-pass {
                 top: 9px;
             }
             .fu-validation-icon-holder {
@@ -211,12 +215,18 @@ $smallHeight: 32px;
             }
         }
 
-        i.fu-toggle-pass {
+        .fu-toggle-pass {
             position: absolute;
-            top: 13px;
-            right: 12px;
+            top: 11px;
+            right: 14px;
             cursor: pointer;
-            @include size(16px);
+            width: 32px;
+            height: 14px;
+            .fu-show-pass{
+                text-decoration: underline;
+                @extend %font-bodyXSmall;
+                color: $fu-black-500;
+            }
             @include icon-style(null, $fu-light-700, 16px, false, true);
         }
 

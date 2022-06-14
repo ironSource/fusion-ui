@@ -27,12 +27,13 @@
             </fusion-icon>
         </i>
 
-        <i class="fu-toggle-pass"
+        <div class="fu-toggle-pass"
            *ngIf="config?.type === 'password'"
            (click)="passToggle($event)"
            (mousedown)="onPassToggleMouseDown($event)">
-            <fusion-icon [name]="config.options?.isPassHidden ? 'visibility' : 'visibility-off'"></fusion-icon>
-        </i>
+            <div class="fu-show-pass">Show</div>
+<!--            <fusion-icon [name]="config.options?.isPassHidden ? 'visibility' : 'visibility-off'"></fusion-icon>-->
+        </div>
 
         <input #input
                [class.fu-input-small]="isSmall"
