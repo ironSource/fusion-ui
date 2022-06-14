@@ -153,6 +153,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
             id: this.id,
             isSelected: this.selected
         });
+        this.apiBase?.resetState$.next();
     }
 
     private setValueSelectedListener(): void {

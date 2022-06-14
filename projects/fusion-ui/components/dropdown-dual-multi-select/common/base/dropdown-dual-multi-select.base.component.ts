@@ -69,6 +69,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     }
 
     ngOnDestroy() {
+        this.resetState$.complete();
         this.onDestroy$.next();
         this.onDestroy$.complete();
     }
@@ -176,6 +177,10 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     private initializeListeners(): void {
         this.searchControlTerm.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(this.changeTerm.bind(this));
         this.preSelectedItems.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(this.checkSelectItemsChanged.bind(this));
+        this.resetState$
+            .asObservable()
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe(_ => this.writeValue(null));
     }
 
     private checkSelectItemsChanged(item: any): void {

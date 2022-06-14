@@ -309,6 +309,8 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
         this.onDestroy$.next();
         this.onDestroy$.complete();
 
+        this.resetState$.complete();
+
         this.backendPaginationChanged$.next();
         this.backendPaginationChanged$.complete();
     }
@@ -334,6 +336,10 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
             }
             this.closeDropdown();
         });
+        this.resetState$
+            .asObservable()
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe(_ => this.writeValue(null));
     }
 
     /**

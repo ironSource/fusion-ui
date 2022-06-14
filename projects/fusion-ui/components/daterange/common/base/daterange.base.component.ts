@@ -1,7 +1,7 @@
-import {Directive, ElementRef, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
 import {ControlValueAccessor} from '@angular/forms';
 import {DatePipe} from '@angular/common';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 import {isNullOrUndefined, isSameDates} from '@ironsource/fusion-ui/utils';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
@@ -20,10 +20,10 @@ import {DEFAULT_DATE_FORMAT} from './config';
 import {DaterangeService} from './daterange.service';
 import {DEFAULT_PLACEHOLDER_TEXT} from './daterange.configuration';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
-import {map} from 'rxjs/operators';
+import {map, takeUntil} from 'rxjs/operators';
 
 @Directive()
-export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, ControlValueAccessor {
+export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, OnDestroy, ControlValueAccessor {
     @Input() id: string;
     @Input() presetsHeaderTemplate: TemplateRef<any>;
     @Input() minDate: Date;
@@ -80,6 +80,8 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
 
     private originalMaxDate: Date;
 
+    private onDestroy$ = new Subject<void>();
+
     constructor(
         public daterangeService: DaterangeService,
         private calendarService: CalendarService,
@@ -98,6 +100,16 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
             this.originalMaxDate = this.maxDate;
         }
         this.onOptionsChanges();
+        this.resetState$
+            .asObservable()
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe(_ => this.writeValue(null));
+    }
+
+    ngOnDestroy() {
+        this.resetState$.complete();
+        this.onDestroy$.next();
+        this.onDestroy$.complete();
     }
 
     valueSelected() {
