@@ -1,8 +1,8 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {DropdownOptionComponent} from './dropdown-option.component';
-import {IconModule} from '@ironsource/fusion-ui/components/icon';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
-import {FlagModule} from '@ironsource/fusion-ui/components/flag';
+import {FlagModule} from '@ironsource/fusion-ui/components/flag/v1';
 import {GenericPipeModule} from '@ironsource/fusion-ui/pipes/generic';
 import {DropdownOptionDirective} from './dropdown-option.directive';
 import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/service';

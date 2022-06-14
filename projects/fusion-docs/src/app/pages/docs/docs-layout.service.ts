@@ -1,6 +1,6 @@
 import {Injectable, EventEmitter} from '@angular/core';
 import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
-import {LayoutComponentConfiguration, LayoutHeaderContentTitle} from '@ironsource/fusion-ui';
+import {LayoutComponentConfiguration, LayoutHeaderContentTitle} from '@ironsource/fusion-ui/components/layout/v2';
 import {map, startWith} from 'rxjs/operators';
 
 @Injectable({

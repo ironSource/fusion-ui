@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {BehaviorSubject, merge, Observable, Subject, timer} from 'rxjs';
-import {StyleVersion} from '@ironsource/fusion-ui';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {NotificationType} from '@ironsource/fusion-ui/components/notification/common/entities';
 import {NotificationService} from '@ironsource/fusion-ui/components/notification/common/services';
 import {mapTo, switchMap, takeUntil} from 'rxjs/operators';

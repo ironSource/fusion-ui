@@ -4,7 +4,8 @@ import {ChartDocsV2Component} from './chart-docs-v2.component';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
-import {ChartLabelsModule, ChartModule} from '@ironsource/fusion-ui';
+import {ChartLabelsModule} from '@ironsource/fusion-ui/components/chart-labels/v2';
+import {ChartModule} from '@ironsource/fusion-ui/components/chart/v2';
 import {Router} from '@angular/router';
 
 class RouterStub {

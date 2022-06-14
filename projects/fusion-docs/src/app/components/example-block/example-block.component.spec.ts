@@ -1,7 +1,7 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ExampleBlockComponent} from './example-block.component';
-import {IconModule} from '@ironsource/fusion-ui';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 
 describe('ExampleBlockComponent', () => {
     let component: ExampleBlockComponent;

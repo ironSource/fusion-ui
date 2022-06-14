@@ -1,8 +1,8 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
-import {HeaderModule} from '@ironsource/fusion-ui/components/header';
-import {MenuModule} from '@ironsource/fusion-ui/components/menu';
+import {HeaderModule} from '@ironsource/fusion-ui/components/header/v1';
+import {MenuModule} from '@ironsource/fusion-ui/components/menu/v1';
 import {LayoutComponent} from './layout.component';
-import {PopupModule} from '@ironsource/fusion-ui/components/popup';
+import {PopupModule} from '@ironsource/fusion-ui/components/popup/v2';
 import {CacheService} from '@ironsource/fusion-ui/services/cache';
 import {PopupService} from '@ironsource/fusion-ui/components/popup/common/services';
 import {RouterTestingModule} from '@angular/router/testing';

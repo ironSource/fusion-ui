@@ -1,6 +1,7 @@
 export * from './table-module-options';
 export * from './table-column';
 export * from './table-options';
+export * from './table-row';
 export * from './table-row-changed-data';
 export * from './table-row-expand-emitter';
 export * from './table-rows-grouped';

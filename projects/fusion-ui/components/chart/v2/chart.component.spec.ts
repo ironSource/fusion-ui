@@ -1,6 +1,6 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {ChartComponent} from './chart.component';
-import {LoaderModule} from '@ironsource/fusion-ui/components/loader';
+import {LoaderModule} from '@ironsource/fusion-ui/components/loader/v2';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {CurrencyPipe, DatePipe, DecimalPipe, PercentPipe} from '@angular/common';
 import {ColorsService} from '@ironsource/fusion-ui/services/colors';

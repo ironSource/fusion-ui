@@ -2,7 +2,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TableEmptyComponent} from './table-empty.component';
 import {Component, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {IconModule} from '@ironsource/fusion-ui/components/icon';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 
 // do dummy component - holder
 @Component({

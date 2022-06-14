@@ -1,7 +1,8 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {PopupV2InnerComponentExampleComponent} from './popup-v2-inner-component-example.component';
-import {ButtonModule, IconModule} from '@ironsource/fusion-ui';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
 
 @NgModule({
     declarations: [PopupV2InnerComponentExampleComponent],

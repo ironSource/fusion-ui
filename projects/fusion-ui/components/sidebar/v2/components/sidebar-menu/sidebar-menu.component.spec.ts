@@ -4,7 +4,7 @@ import {SidebarMenuService} from '@ironsource/fusion-ui/components/sidebar/commo
 import {RouterTestingModule} from '@angular/router/testing';
 import {SidebarMenuItem} from '@ironsource/fusion-ui/components/sidebar/common/entities';
 import {By} from '@angular/platform-browser';
-import {IconModule} from '@ironsource/fusion-ui/components/icon';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 
 const MENU_ITEMS_MOCK: SidebarMenuItem[] = [
     {

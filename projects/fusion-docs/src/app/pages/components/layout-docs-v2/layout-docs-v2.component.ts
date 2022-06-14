@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Observable, Subject} from 'rxjs';
-import {LayoutComponentConfiguration, LayoutUser, StyleVersion} from '@ironsource/fusion-ui';
+import {LayoutUser} from '@ironsource/fusion-ui';
 import {TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table/common/entities';
 import {SidebarMenuItem} from '@ironsource/fusion-ui/components/sidebar/common/entities';
 import {takeUntil} from 'rxjs/operators';
@@ -10,6 +10,8 @@ import {LAYOUT_CONFIGURATION} from './layout-docs-v2.mocking';
 import {CSS_VARIABLES} from './layout-docs-v2.data';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
 import {VersionService} from '../../../services/version/version.service';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
+import {LayoutComponentConfiguration} from '@ironsource/fusion-ui/components/layout/v2';
 
 @Component({
     selector: 'fusion-layout-docs-v2',

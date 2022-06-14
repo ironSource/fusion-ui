@@ -100,7 +100,7 @@ export class DaterangeService {
         return this.getPresetBySelectedDates(daterange, availablePresets);
     }
 
-    getPresetRange(preset: DaterangePresets | DaterangeCustomPreset): DateRange {
+    getPresetRange(preset: DaterangePresets | DaterangeCustomPreset, params?: any): DateRange {
         return this.isCustomPreset(preset)
             ? {
                   startDate: (preset as DaterangeCustomPreset).startDate,

@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {LayoutHeaderComponent} from './layout-header.component';
-import {IconModule} from '@ironsource/fusion-ui/components/icon';
-import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components/v1';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {LayoutHeaderMenuModule} from './layout-header-menu/layout-header-menu.module';
 

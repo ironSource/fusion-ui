@@ -4,7 +4,7 @@ import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dy
 import {LayoutHeaderMenuConfiguration} from './layout-header-menu/layout-header-menu-entity';
 import {SIDEBAR_TOGGLE_ICON, USER_ICON_NAME} from './layout-header.config';
 import {SidebarMenuItem} from '@ironsource/fusion-ui/components/sidebar/common/entities';
-import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
+import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
 
 @Component({
     selector: 'fusion-layout-header',

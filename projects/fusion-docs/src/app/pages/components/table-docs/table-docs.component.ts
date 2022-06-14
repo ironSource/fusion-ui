@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, OnDestroy, OnInit, Type} from '@angular/core';
-import {isBoolean, StyleVersion} from '@ironsource/fusion-ui';
+import {isBoolean} from '@ironsource/fusion-ui';
 import {
     TableColumn,
     TableColumnTypeEnum,
@@ -15,6 +15,7 @@ import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Router} from '@angular/router';
 import {TableCustomNoDataComponent} from '../../../components/table-custom-no-data/table-custom-no-data.component';
 import {VersionService} from '../../../services/version/version.service';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 
 const tblOptions: TableOptions = {
     sortingType: 'local',

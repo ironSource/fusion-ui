@@ -5,9 +5,13 @@ import {Routes, RouterModule} from '@angular/router';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
-import {AlertModule, TextareaModule, ErrorMessageModule, IconModule, TooltipModule} from '@ironsource/fusion-ui';
 import {InputModule} from '@ironsource/fusion-ui/components/input/v3';
 import {ReactiveFormsModule} from '@angular/forms';
+import {TextareaModule} from '@ironsource/fusion-ui/components/textarea/v1';
+import {AlertModule} from '@ironsource/fusion-ui/components/alert/v1';
+import {ErrorMessageModule} from '@ironsource/fusion-ui/components/error-message';
+import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v1';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 
 const routes: Routes = [{path: '', component: InputDocsComponent}];
 

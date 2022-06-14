@@ -4,7 +4,7 @@
 import {OnInit, OnDestroy} from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
 import {Observable, Subject} from 'rxjs';
-import {StyleVersion} from '@ironsource/fusion-ui';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {Router} from '@angular/router';
 import {VersionService} from '../../services/version/version.service';
 

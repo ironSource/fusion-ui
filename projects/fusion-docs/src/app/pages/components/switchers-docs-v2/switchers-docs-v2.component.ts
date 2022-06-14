@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
-import {StyleVersion} from '@ironsource/fusion-ui';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {SwitcherItem} from '@ironsource/fusion-ui/components/switcher/common/entities';
 import {takeUntil} from 'rxjs/operators';
 import {Router} from '@angular/router';

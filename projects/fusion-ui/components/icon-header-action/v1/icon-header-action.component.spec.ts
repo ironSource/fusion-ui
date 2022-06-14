@@ -1,6 +1,6 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {IconHeaderActionComponent} from './icon-header-action.component';
-import {IconModule} from '@ironsource/fusion-ui/components/icon';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 
 describe('IconHeaderActionComponent', () => {
     let component: IconHeaderActionComponent;

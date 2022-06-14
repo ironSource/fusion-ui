@@ -5,7 +5,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
-import {DropdownModule, ErrorMessageModule, MultiDropdownModule} from '@ironsource/fusion-ui';
+import {DropdownModule, ErrorMessageModule} from '@ironsource/fusion-ui';
+import {MultiDropdownModule} from '@ironsource/fusion-ui/components/multi-dropdown/v2';
 import {Router, RouterModule} from '@angular/router';
 
 class RouterStub {

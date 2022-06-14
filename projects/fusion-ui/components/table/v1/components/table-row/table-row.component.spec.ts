@@ -3,7 +3,7 @@ import {Component, CUSTOM_ELEMENTS_SCHEMA, DebugElement} from '@angular/core';
 import {TableRowComponent} from './table-row.component';
 import {TableCellComponent} from '../table-cell/table-cell.component';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v1';
-import {IconModule} from '@ironsource/fusion-ui/components/icon';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TableService} from '@ironsource/fusion-ui/components/table/common/services';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {By} from '@angular/platform-browser';

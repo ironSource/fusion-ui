@@ -1,5 +1,5 @@
 import {Component, ViewChild, OnInit, OnDestroy} from '@angular/core';
-import {StyleVersion} from '@ironsource/fusion-ui';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {NotificationType} from '@ironsource/fusion-ui/components/notification/common/entities';
 import {NotificationService} from '@ironsource/fusion-ui/components/notification/common/services';
 import {Observable, timer, Subject, merge} from 'rxjs';

@@ -2,7 +2,7 @@ import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ModalContentComponent} from './modal-content.component';
 import {LoaderModule} from '@ironsource/fusion-ui/components/loader/v2';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
-import {IconModule} from '@ironsource/fusion-ui/components/icon';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 
 describe('ModalContentComponent', () => {
     let component: ModalContentComponent;

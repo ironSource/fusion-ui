@@ -6,7 +6,7 @@ import {ExampleBlockModule} from '../../../components/example-block/example-bloc
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
-import {PopupModule} from '@ironsource/fusion-ui/components/popup';
+import {PopupModule} from '@ironsource/fusion-ui/components/popup/v2';
 import {PopupV2InnerComponentExampleModule} from './popup-v2-inner-component-example/popup-v2-inner-component-example.module';
 
 const routes: Routes = [{path: '', component: PopupDocsV2Component}];

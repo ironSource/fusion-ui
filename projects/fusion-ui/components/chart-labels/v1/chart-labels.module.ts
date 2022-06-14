@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ChartLabelsComponent} from './chart-labels.component';
-import {IconModule} from '@ironsource/fusion-ui/components/icon';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {ReactiveFormsModule} from '@angular/forms';
-import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox';
+import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox/v1';
 
 @NgModule({
     imports: [CommonModule, IconModule, ReactiveFormsModule, CheckboxModule],

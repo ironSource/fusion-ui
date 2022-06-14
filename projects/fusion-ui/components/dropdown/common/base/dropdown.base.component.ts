@@ -24,7 +24,7 @@ import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
 import {detectChangesDecorator} from '@ironsource/fusion-ui/decorators';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 import {SharedEventsService} from '@ironsource/fusion-ui/services/events-handler';
-import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
+import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
 import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/service';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 import {DropdownSearchComponent} from '@ironsource/fusion-ui/components/dropdown-search';

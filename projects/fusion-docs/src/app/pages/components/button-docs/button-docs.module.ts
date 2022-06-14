@@ -5,7 +5,8 @@ import {Routes, RouterModule} from '@angular/router';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
-import {IconModule, TooltipModule} from '@ironsource/fusion-ui/components';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v2';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
 
 const routes: Routes = [{path: '', component: ButtonDocsComponent}];

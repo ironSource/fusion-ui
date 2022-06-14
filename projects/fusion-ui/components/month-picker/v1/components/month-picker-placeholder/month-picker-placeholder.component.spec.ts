@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {IconModule} from '@ironsource/fusion-ui/components/icon';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {MonthPickerPlaceholderComponent} from './month-picker-placeholder.component';
 import {MONTH_PICKER_PLACEHOLDER} from '@ironsource/fusion-ui/components/month-picker/common/base';
 
