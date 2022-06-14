@@ -8,7 +8,7 @@ export * from '@ironsource/fusion-ui/components/calendar';
 export * from '@ironsource/fusion-ui/components/datepicker';
 export * from '@ironsource/fusion-ui/components/daterange';
 export * from '@ironsource/fusion-ui/components/dropdown';
-export * from '@ironsource/fusion-ui/components/dropdown-dual-multi-select/v2';
+export * from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
 export * from '@ironsource/fusion-ui/components/dynamic-components/v1';
 export * from '@ironsource/fusion-ui/components/error-message';
 export * from '@ironsource/fusion-ui/components/flag/v1';
