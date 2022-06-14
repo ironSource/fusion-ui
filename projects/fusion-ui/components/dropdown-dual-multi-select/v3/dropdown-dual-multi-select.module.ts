@@ -11,6 +11,7 @@ import {DropdownDualMultiSelectBodyModule} from './components/dropdown-dual-mult
 import {DropdownDualMultiSelectHeaderModule} from './components/dropdown-dual-multi-select-header/dropdown-dual-multi-select-header.module';
 import {DropdownDualMultiSelectFooterModule} from './components/dropdown-dual-multi-select-footer/dropdown-dual-multi-select-footer.module';
 import {DropdownDualMultiSelectLoadingModule} from './components/dropdown-dual-multi-select-loading/dropdown-dual-multi-select-loading.module';
+import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v3';
 
 @NgModule({
     declarations: [DropdownDualMultiSelectComponent],
@@ -26,7 +27,8 @@ import {DropdownDualMultiSelectLoadingModule} from './components/dropdown-dual-m
         DropdownDualMultiSelectBodyModule,
         DropdownDualMultiSelectHeaderModule,
         DropdownDualMultiSelectFooterModule,
-        DropdownDualMultiSelectLoadingModule
+        DropdownDualMultiSelectLoadingModule,
+        TooltipModule
     ]
 })
 export class DropdownDualMultiSelectModule {}

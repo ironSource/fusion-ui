@@ -172,6 +172,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     isAllSelected: boolean;
     isIndeterminate = false;
     optionSelected$ = new BehaviorSubject<string>('');
+    chipDefaultContent: string;
 
     private _optionsTitle: string;
     private _isLocatedRight = false;
@@ -336,6 +337,13 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
             }
             this.closeDropdown();
         });
+        this.placeholder$
+            .asObservable()
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe(
+                placeholder =>
+                    (this.chipDefaultContent = this.placeholderPrefix ? this.placeholderPrefix + ': ' + placeholder : placeholder)
+            );
         this.resetState$
             .asObservable()
             .pipe(takeUntil(this.onDestroy$))
