@@ -55,12 +55,22 @@ $leftSidePadding: 4px 4px 5px 5px;
             &:hover {
                 @extend %hover;
             }
-            .fu-option-title {
-                &.truncate{
-                    width: 190px;
-                    @extend %truncateList;
+            .fu-text-content {
+                .fu-option-title {
+                    &.truncate{
+                        height: 14px;
+                        width: 176px;
+                        color: $fu-black-500;
+                        @extend %truncateList;
+                    }
+                }
+                .sub-text-container{
+                    line-height: 14.32px;
+                    color: $fu-light-900;
+                    @extend %font-bodyXSmall;
                 }
             }
+
             .item-check {
                 margin-right: 8px;
                 line-height: 0;
@@ -80,13 +90,24 @@ $leftSidePadding: 4px 4px 5px 5px;
             &:hover {
                 @extend %hover;
             }
-            .fu-option-title {
-                line-height: 20px;
-                &.truncate{
-                    width: 176px;
-                    @extend %truncateList;
+
+            .fu-text-content {
+                .fu-option-title {
+                    line-height: 20px;
+                    &.truncate{
+                        height: 14px;
+                        width: 176px;
+                        color: $fu-black-500;
+                        @extend %truncateList;
+                    }
+                }
+                .sub-text-container{
+                    line-height: 14.32px;
+                    color: $fu-light-900;
+                    @extend %font-bodyXSmall;
                 }
             }
+
             fusion-icon {
                 &.icon-clear {
                     display: flex;

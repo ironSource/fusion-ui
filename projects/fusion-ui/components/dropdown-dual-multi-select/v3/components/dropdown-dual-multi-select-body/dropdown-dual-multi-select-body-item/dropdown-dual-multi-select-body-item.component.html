@@ -37,5 +37,11 @@
     <img [src]="item.image" *ngIf="item.image" alt="item-image" />
     <fusion-flag *ngIf="item.flag" [name]="item.flag"></fusion-flag>
     <fusion-icon *ngIf="item.icon" [name]="item.icon" class="icon"></fusion-icon>
-    <span class="fu-option-title truncate" fusionTooltip="{{item.title || item.displayText}}">{{item.title || item.displayText}}</span>
+    <div class="fu-text-content">
+        <span class="fu-option-title truncate" fusionTooltip="{{item.title || item.displayText}}">{{item.title || item.displayText}}</span>
+        <div class="sub-text-container">
+            <label>{{ item?.subText?.text || item.subText }}</label>
+        </div>
+    </div>
+
 </ng-template>
