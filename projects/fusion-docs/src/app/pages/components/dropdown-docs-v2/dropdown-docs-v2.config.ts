@@ -3655,21 +3655,24 @@ export const MOK_APPLICATIONS = [
         name: 'Moy 7 the Virtual Pet Game',
         displayText: 'Moy 7 the Virtual Pet Game',
         platform: 'android',
-        icon: 'https://lh3.googleusercontent.com/T0yo2MIuoWWrhk7vaNX18MaOOI3StYYNb43Y1V_X8QJiWGu0SgMCAhSqoNc9ei5BHH9b=s180'
+        icon: 'https://lh3.googleusercontent.com/T0yo2MIuoWWrhk7vaNX18MaOOI3StYYNb43Y1V_X8QJiWGu0SgMCAhSqoNc9ei5BHH9b=s180',
+        subText: {text: '12421542'}
     },
     {
         id: 551615,
         name: '夢幻模擬戰',
         displayText: '夢幻模擬戰',
         platform: 'ios',
-        icon: 'https://is5-ssl.mzstatic.com/image/thumb/Purple124/v4/82/ce/6f/82ce6f3a-ed24-e4f8-bf28-830560af691d/source/512x512bb.jpg'
+        icon: 'https://is5-ssl.mzstatic.com/image/thumb/Purple124/v4/82/ce/6f/82ce6f3a-ed24-e4f8-bf28-830560af691d/source/512x512bb.jpg',
+        subText: {text: '112455'}
     },
     {
         id: 549109,
         name: 'Helix Crush - Fruit Slices',
         displayText: 'Helix Crush - Fruit Slices',
         platform: 'ios',
-        icon: 'https://is4-ssl.mzstatic.com/image/thumb/Purple123/v4/e5/52/eb/e552eb88-72c7-f284-7622-988200f345bd/source/512x512bb.jpg'
+        icon: 'https://is4-ssl.mzstatic.com/image/thumb/Purple123/v4/e5/52/eb/e552eb88-72c7-f284-7622-988200f345bd/source/512x512bb.jpg',
+        subText: {text: '167722'}
     },
     {
         id: 545663,
