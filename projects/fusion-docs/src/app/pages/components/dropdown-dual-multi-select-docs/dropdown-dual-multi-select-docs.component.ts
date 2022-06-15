@@ -41,7 +41,8 @@ export class DropdownDualMultiSelectDocsComponent implements OnInit, OnDestroy {
             name: app.name,
             displayText: app.name,
             icon: app.platform.toLowerCase(),
-            image: app.icon
+            image: app.icon,
+            subText: app.subText
         };
     });
     constructor() {}

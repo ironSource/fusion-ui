@@ -3,8 +3,8 @@
 @import '../../../../../../src/style/scss/v3/vars/border';
 
 
-$rightSidePadding: 4px 4px 5px 6px;
-$leftSidePadding: 4px 4px 5px 5px;
+$rightSidePadding: 8px 5px 8px 5px;
+$leftSidePadding: 8px 5px 8px 5px;
 
 %hover {
     border-radius: 5px;
@@ -42,6 +42,7 @@ $leftSidePadding: 4px 4px 5px 5px;
             display: inline-block;
         }
         &.left-side {
+            @extend %border-box-normalize;
             @extend %font-bodySmall;
             padding: $leftSidePadding;
             cursor: pointer;
@@ -49,17 +50,20 @@ $leftSidePadding: 4px 4px 5px 5px;
             justify-content: flex-start;
             align-items: center;
             width: 256px;
-            height: 32px;
-            margin-left: 7px;
-            margin-top: 2px;
+            height: fit-content;
+            min-height: 32px;
             &:hover {
                 @extend %hover;
             }
             .fu-text-content {
+                display: flex;
+                flex-direction: column;
+                gap: 3px;
                 .fu-option-title {
                     &.truncate{
-                        height: 14px;
+                        height: 16px;
                         width: 176px;
+                        line-height: 15.51px;
                         color: $fu-black-500;
                         @extend %truncateList;
                     }
@@ -67,6 +71,7 @@ $leftSidePadding: 4px 4px 5px 5px;
                 .sub-text-container{
                     line-height: 14.32px;
                     color: $fu-light-900;
+                    height: 14px;
                     @extend %font-bodyXSmall;
                 }
             }
@@ -78,24 +83,27 @@ $leftSidePadding: 4px 4px 5px 5px;
         }
         &.right-side {
             @extend %font-bodySmall;
+            @extend %border-box-normalize;
             padding: $rightSidePadding;
             cursor: pointer;
             display: flex;
             width: 256px;
-            height: 32px;
+            height: fit-content;
+            min-height: 32px;
             justify-content: flex-start;
             align-items: center;
-            margin-left: 7px;
-            margin-top: 2px;
             &:hover {
                 @extend %hover;
             }
 
             .fu-text-content {
+                display: flex;
+                flex-direction: column;
+                gap: 3px;
                 .fu-option-title {
-                    line-height: 20px;
                     &.truncate{
-                        height: 14px;
+                        height: 16px;
+                        line-height: 15.51px;
                         width: 176px;
                         color: $fu-black-500;
                         @extend %truncateList;
@@ -104,6 +112,7 @@ $leftSidePadding: 4px 4px 5px 5px;
                 .sub-text-container{
                     line-height: 14.32px;
                     color: $fu-light-900;
+                    height: 14px;
                     @extend %font-bodyXSmall;
                 }
             }

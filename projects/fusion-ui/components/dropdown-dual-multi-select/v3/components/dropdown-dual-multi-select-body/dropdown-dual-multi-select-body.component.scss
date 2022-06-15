@@ -117,10 +117,15 @@ $itemWidth: 252px;
                     .options-data-list {
                         list-style: none;
                         width: auto;
-                        margin: 0;
+                        margin: 2px 0 2px 0;
                         padding: 0;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
                         li {
-                            height: $itemHeight;
+                            min-height: $itemHeight;
+                            height: fit-content;
                             width: $itemWidth;
                         }
                         .fu-content-loading {
@@ -142,10 +147,15 @@ $itemWidth: 252px;
                     .options-data-list {
                         list-style: none;
                         width: auto;
-                        margin: 0;
+                        margin: 2px 0 2px 0;
                         padding: 0;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
                         li {
-                            height: $itemHeight;
+                            min-height: $itemHeight;
+                            height: fit-content;
                             width: $itemWidth;
                         }
                     }

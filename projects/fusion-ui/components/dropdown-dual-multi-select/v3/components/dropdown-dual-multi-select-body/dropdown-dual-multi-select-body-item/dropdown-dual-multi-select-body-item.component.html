@@ -39,7 +39,7 @@
     <fusion-icon *ngIf="item.icon" [name]="item.icon" class="icon"></fusion-icon>
     <div class="fu-text-content">
         <span class="fu-option-title truncate" fusionTooltip="{{item.title || item.displayText}}">{{item.title || item.displayText}}</span>
-        <div class="sub-text-container">
+        <div *ngIf="item?.subText" class="sub-text-container">
             <label>{{ item?.subText?.text || item.subText }}</label>
         </div>
     </div>
