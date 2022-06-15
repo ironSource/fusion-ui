@@ -53,6 +53,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     inputSize = InputSize;
     dropdownDualMultiSelectionButtonOptions = {rounded: true, size: this.inputSize.Medium};
     selected$ = new BehaviorSubject<string>('');
+    chipDefaultContent: string;
 
     private selectedChange: DropdownOption[];
     private parentWithOverflow: HTMLElement;
@@ -182,6 +183,10 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
             .asObservable()
             .pipe(takeUntil(this.onDestroy$))
             .subscribe(_ => this.writeValue(null));
+        this.selected$
+            .asObservable()
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe(selected => (this.chipDefaultContent = this.title + ': ' + selected));
     }
 
     private checkSelectItemsChanged(item: any): void {

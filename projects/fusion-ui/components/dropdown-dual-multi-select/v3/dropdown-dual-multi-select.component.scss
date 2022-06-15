@@ -75,3 +75,16 @@
         }
     }
 }
+
+:host-context(fusion-chip-filter) {
+    .fu-chip-content-default{
+        display: flex;
+        gap: 4px;
+        .fu-chip-label {
+            @extend %font-bodySmall;
+        }
+        .fu-chip-text {
+            @extend %font-bodySmallStrong;
+        }
+    }
+}
