@@ -1,6 +1,6 @@
 {
     "name": "@ironsource/fusion-ui",
-    "version": "3.0.0-rc.32",
+    "version": "3.0.0-rc.33",
     "dependencies": {
         "chart.js": "^3.5.1",
         "tslib": "^2.0.0",
