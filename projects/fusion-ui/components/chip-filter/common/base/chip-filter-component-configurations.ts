@@ -3,6 +3,7 @@ export interface ChipFilterComponentConfigurations {
     disabled?: boolean;
     mode?: ChipFilterMode;
     close?: boolean;
+    maxWidth?: number;
 }
 
 export enum ChipTypeToClass {

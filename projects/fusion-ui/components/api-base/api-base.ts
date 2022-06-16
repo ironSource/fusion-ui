@@ -1,4 +1,4 @@
-import {TemplateRef, ViewChild} from '@angular/core';
+import {TemplateRef} from '@angular/core';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 
 export abstract class ApiBase {
@@ -8,4 +8,6 @@ export abstract class ApiBase {
     resetState$ = new Subject<void>();
 
     abstract valueSelected(): Observable<any>;
+
+    abstract changeConfig(val: any): void;
 }

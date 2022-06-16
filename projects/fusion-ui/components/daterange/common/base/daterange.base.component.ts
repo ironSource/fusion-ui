@@ -112,6 +112,10 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
         this.onDestroy$.complete();
     }
 
+    changeConfig(val: string) {
+        this.elemRef.nativeElement.style.setProperty('--fu-chip-max-width', val);
+    }
+
     valueSelected() {
         return this.selected$
             .asObservable()

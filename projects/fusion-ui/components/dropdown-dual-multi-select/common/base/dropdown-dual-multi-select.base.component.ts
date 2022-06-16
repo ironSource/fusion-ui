@@ -79,6 +79,10 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.scrollDown.emit();
     }
 
+    changeConfig(val: string) {
+        this.element.nativeElement.style.setProperty('--fu-chip-max-width', val);
+    }
+
     valueSelected(): Observable<{value: string; isSelected: boolean}> {
         return this.selected$.pipe(
             takeUntil(this.onDestroy$),

@@ -12,8 +12,7 @@ import {
     Output,
     Renderer2,
     TemplateRef,
-    ViewChild,
-    ViewContainerRef
+    ViewChild
 } from '@angular/core';
 import {BehaviorSubject, fromEvent, merge, Subject} from 'rxjs';
 import {ChipFilterComponentConfigurations, ChipFilterMode, ChipType, ChipTypeToClass} from './chip-filter-component-configurations';
@@ -38,6 +37,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     private chipMode: ChipFilterMode = 'static';
     private _disabled$ = new BehaviorSubject<boolean>(false);
     private chipSelectValue: {id: number | string; value?: any; isSelected?: boolean};
+    private _maxWidth: number;
 
     @Input() set configuration(value: ChipFilterComponentConfigurations) {
         if (!!value) {
@@ -45,6 +45,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
             this.disabled = value.disabled || false;
             this.mode = value.mode || 'static';
             this.close = value.close || false;
+            this.maxWidth = value.maxWidth || 200;
         }
     }
 
@@ -73,6 +74,14 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     @Output() onRemove = new EventEmitter();
 
     @Output() onSelectedChange = new EventEmitter<any>();
+
+    set maxWidth(width: number) {
+        this._maxWidth = width;
+    }
+
+    get maxWidth() {
+        return this._maxWidth;
+    }
 
     set close(close: boolean) {
         this.isCloseIcon$.next(close);
@@ -119,6 +128,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
         }
 
         if (this.apiBase) {
+            this.apiBase.changeConfig(`${this.maxWidth}px`);
             this.apiBase.templateRef = this.ref;
             this.apiBase.isComponentDisabled$.next(this.disabled);
         }

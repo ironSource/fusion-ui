@@ -632,6 +632,10 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
         }
     }
 
+    changeConfig(val: string) {
+        this.element.nativeElement.style.setProperty('--fu-chip-max-width', val);
+    }
+
     valueSelected() {
         return this.optionSelected$.asObservable().pipe(map(value => ({value, isSelected: !!value})));
     }
