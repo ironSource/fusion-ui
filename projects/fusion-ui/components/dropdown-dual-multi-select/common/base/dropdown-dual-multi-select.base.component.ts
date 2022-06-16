@@ -1,4 +1,4 @@
-import {Directive, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2, TemplateRef, ViewChild} from '@angular/core';
 import {InputSize} from '@ironsource/fusion-ui/components/input/common/base';
 import {ControlValueAccessor, FormControl} from '@angular/forms';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
@@ -40,6 +40,8 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     @Output() searchChange = new EventEmitter();
     @Output() viewChange = new EventEmitter();
 
+    @ViewChild('chipContent', {static: true}) chipContent: TemplateRef<any>;
+
     preSelectedItems = new FormControl();
     searchControlTerm = new FormControl('');
     items$ = new BehaviorSubject<DropdownOption[]>([]);
@@ -50,21 +52,25 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     isPositionLeft: boolean;
     inputSize = InputSize;
     dropdownDualMultiSelectionButtonOptions = {rounded: true, size: this.inputSize.Medium};
+    selected$ = new BehaviorSubject<string>('');
+    chipDefaultContent: string;
 
     private selectedChange: DropdownOption[];
     private parentWithOverflow: HTMLElement;
     private onDestroy$ = new Subject<void>();
-    private selected$ = new BehaviorSubject<string>('');
 
     constructor(protected element: ElementRef, protected renderer: Renderer2) {
         super();
     }
 
     ngOnInit(): void {
+        this.selected$.next(this.defaultPlaceHolder);
+        this.contentTemplate = this.chipContent;
         this.initializeListeners();
     }
 
     ngOnDestroy() {
+        this.resetState$.complete();
         this.onDestroy$.next();
         this.onDestroy$.complete();
     }
@@ -73,10 +79,14 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.scrollDown.emit();
     }
 
+    changeConfig(val: string) {
+        this.element.nativeElement.style.setProperty('--fu-chip-max-width', val);
+    }
+
     valueSelected(): Observable<{value: string; isSelected: boolean}> {
         return this.selected$.pipe(
             takeUntil(this.onDestroy$),
-            map(value => ({value, isSelected: !!value}))
+            map(value => (value !== this.defaultPlaceHolder ? {value, isSelected: !!value} : {value: null, isSelected: false}))
         );
     }
 
@@ -86,7 +96,6 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.setLabel();
         this.propagateChange(this.preSelectedItems.value);
         this.selectedChange = this.preSelectedItems.value;
-        // this.selected$.next(this.preSelectedItems.value);
         this.selected$.next(this.placeholder$.getValue());
         this.searchControlTerm.setValue('');
         this.viewChange.emit(this.opened$.getValue());
@@ -115,6 +124,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     writeValue(value: DropdownOption[]): void {
         this.preSelectedItems.setValue(value);
         this.selectedChange = value;
+        this.selected$.next(this.placeholder$.getValue());
     }
 
     registerOnChange(fn: any): void {
@@ -173,6 +183,14 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     private initializeListeners(): void {
         this.searchControlTerm.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(this.changeTerm.bind(this));
         this.preSelectedItems.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(this.checkSelectItemsChanged.bind(this));
+        this.resetState$
+            .asObservable()
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe(_ => this.writeValue(null));
+        this.selected$
+            .asObservable()
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe(selected => (this.chipDefaultContent = this.title + ': ' + selected));
     }
 
     private checkSelectItemsChanged(item: any): void {

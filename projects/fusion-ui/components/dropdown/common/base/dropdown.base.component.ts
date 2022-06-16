@@ -11,6 +11,7 @@ import {
     OnInit,
     Output,
     Renderer2,
+    TemplateRef,
     ViewChild
 } from '@angular/core';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
@@ -18,7 +19,7 @@ import {ControlValueAccessor, FormControl} from '@angular/forms';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
-import {debounceTime, distinctUntilChanged, map, switchMapTo, take, takeUntil} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, map, startWith, switchMapTo, take, takeUntil, tap} from 'rxjs/operators';
 import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
 import {detectChangesDecorator} from '@ironsource/fusion-ui/decorators';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
@@ -133,6 +134,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     @ViewChild('optionsHolder') optionsHolderElRef: ElementRef;
     @ViewChild('searchComponent') searchComponent: DropdownSearchComponent;
     @ViewChild('selectComponent') selectComponent: DropdownSelectComponent;
+    @ViewChild('chipContent', {static: true}) chipContent: TemplateRef<any>;
 
     onDestroy$ = new Subject<void>();
 
@@ -169,6 +171,8 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
 
     isAllSelected: boolean;
     isIndeterminate = false;
+    optionSelected$ = new BehaviorSubject<string>('');
+    chipDefaultContent: string;
 
     private _optionsTitle: string;
     private _isLocatedRight = false;
@@ -233,6 +237,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     }
 
     ngOnInit() {
+        this.contentTemplate = this.chipContent;
         this.displayedOptionsObservable$ = this.getDisplayedOptionsObservable();
         this.arrowNavigation = this.arrowNavigation || false;
         this.icon = this.icon || '';
@@ -305,6 +310,8 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
         this.onDestroy$.next();
         this.onDestroy$.complete();
 
+        this.resetState$.complete();
+
         this.backendPaginationChanged$.next();
         this.backendPaginationChanged$.complete();
     }
@@ -330,6 +337,17 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
             }
             this.closeDropdown();
         });
+        this.placeholder$
+            .asObservable()
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe(
+                placeholder =>
+                    (this.chipDefaultContent = this.placeholderPrefix ? this.placeholderPrefix + ': ' + placeholder : placeholder)
+            );
+        this.resetState$
+            .asObservable()
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe(_ => this.writeValue(null));
     }
 
     /**
@@ -434,6 +452,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
 
         this.placeholder$.next(placeholder);
         this.searchPlaceholder$.next(placeholderForSearch);
+        this.optionSelected$.next(placeholder !== this.initPlaceholder ? placeholder : null);
         this.dropdownSelectConfigurations$.next(this.getDropdownSelectConfigurations());
     }
 
@@ -613,8 +632,12 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
         }
     }
 
+    changeConfig(val: string) {
+        this.element.nativeElement.style.setProperty('--fu-chip-max-width', val);
+    }
+
     valueSelected() {
-        return of([...this.selected]).pipe(map(value => (value.length ? {value, isSelected: !!value} : null)));
+        return this.optionSelected$.asObservable().pipe(map(value => ({value, isSelected: !!value})));
     }
 
     onCloseIconClicked(option: DropdownOption) {

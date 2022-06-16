@@ -51,3 +51,11 @@
         </div>
     </div>
 </div>
+<ng-template #chipContent>
+    <div class="fu-chip-content-default">
+        <fusion-icon name="calendar-today"></fusion-icon>
+        <ng-container *ngIf="(selected$ | async) as selected">
+            <div [fusionTooltip]="selected" class="truncate fu-chip-text">{{ selected }}</div>
+        </ng-container>
+    </div>
+</ng-template>

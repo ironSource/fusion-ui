@@ -140,7 +140,24 @@ $selectHolderHeight: 39px;
 }
 
 :host-context(fusion-chip-filter){
+    --fu-chip-max-width: 200px;
     .overlay{
         top: -4px;
+    }
+    .fu-chip-content-default {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        max-width: var(--fu-chip-max-width);
+        .fu-chip-text {
+            @extend %font-bodySmallStrong;
+            @extend %truncate-flex-child;
+        }
+        fusion-icon {
+            width: 16px;
+            height: 16px;
+            margin-bottom: 2px;
+        }
     }
 }

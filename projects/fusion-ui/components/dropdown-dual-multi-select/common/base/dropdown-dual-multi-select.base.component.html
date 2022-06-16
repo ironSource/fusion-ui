@@ -63,3 +63,9 @@
         ></fusion-dropdown-dual-multi-select-footer>
     </div>
 </ng-template>
+
+<ng-template #chipContent>
+    <div class="fu-chip-content-default">
+        <div [fusionTooltip]="chipDefaultContent" class="truncate fu-chip-text"><span *ngIf="title" class="fu-chip-label">{{ title + ': ' }}</span>{{ selected$ | async }}</div>
+    </div>
+</ng-template>

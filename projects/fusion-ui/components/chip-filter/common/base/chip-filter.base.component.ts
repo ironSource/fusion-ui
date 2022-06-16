@@ -1,5 +1,7 @@
 import {
+    AfterContentInit,
     AfterViewInit,
+    ChangeDetectorRef,
     ContentChild,
     Directive,
     ElementRef,
@@ -18,13 +20,15 @@ import {takeUntil} from 'rxjs/operators';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 
 @Directive()
-export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, OnDestroy {
+export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, OnDestroy, AfterContentInit {
     @ContentChild(ApiBase, {static: true}) apiBase: ApiBase;
     @ViewChild('ref', {static: true}) ref: TemplateRef<any>;
 
     id: number | string;
     chipType$ = new BehaviorSubject<ChipType>(null);
     isCloseIcon$ = new BehaviorSubject<boolean>(false);
+    defaultContent: TemplateRef<any>;
+    isDefaultContent: boolean = true;
 
     private onDestroy$ = new Subject<void>();
     private restListeners$ = new Subject<void>();
@@ -33,6 +37,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     private chipMode: ChipFilterMode = 'static';
     private _disabled$ = new BehaviorSubject<boolean>(false);
     private chipSelectValue: {id: number | string; value?: any; isSelected?: boolean};
+    private _maxWidth: number;
 
     @Input() set configuration(value: ChipFilterComponentConfigurations) {
         if (!!value) {
@@ -40,6 +45,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
             this.disabled = value.disabled || false;
             this.mode = value.mode || 'static';
             this.close = value.close || false;
+            this.maxWidth = value.maxWidth || 200;
         }
     }
 
@@ -61,9 +67,21 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
         }
     }
 
+    @Input() set isDynamicContent(value: boolean) {
+        this.isDefaultContent = !value;
+    }
+
     @Output() onRemove = new EventEmitter();
 
     @Output() onSelectedChange = new EventEmitter<any>();
+
+    set maxWidth(width: number) {
+        this._maxWidth = width;
+    }
+
+    get maxWidth() {
+        return this._maxWidth;
+    }
 
     set close(close: boolean) {
         this.isCloseIcon$.next(close);
@@ -102,7 +120,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
         return this.isChipSelected;
     }
 
-    constructor(public element: ElementRef, private renderer: Renderer2) {}
+    constructor(public element: ElementRef, private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
 
     ngOnInit() {
         if (!this.apiBase && !this.disabled) {
@@ -110,6 +128,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
         }
 
         if (this.apiBase) {
+            this.apiBase.changeConfig(`${this.maxWidth}px`);
             this.apiBase.templateRef = this.ref;
             this.apiBase.isComponentDisabled$.next(this.disabled);
         }
@@ -121,6 +140,9 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
 
     ngAfterViewInit() {
         this.setValueSelectedListener();
+    }
+    ngAfterContentInit() {
+        this.defaultContent = this.apiBase?.contentTemplate;
     }
 
     ngOnDestroy() {
@@ -141,6 +163,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
             id: this.id,
             isSelected: this.selected
         });
+        this.apiBase?.resetState$.next();
     }
 
     private setValueSelectedListener(): void {
@@ -156,6 +179,13 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
                         ...selected
                     };
                     this.onSelectedChange.emit(this.chipSelectValue);
+                } else {
+                    this.selected = selected?.isSelected;
+                    this.setChipType(this.selected);
+                    this.onRemove.emit({
+                        id: this.id,
+                        isSelected: this.selected
+                    });
                 }
             });
     }
@@ -181,8 +211,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
         }
         switch (this.mode) {
             case 'dynamic':
-                this.chipType$.next('RemoveAbleSelect');
-                this.close = true;
+                this.setChipSelectType(hasValue);
                 break;
             case 'static':
                 this.setChipSelectType(hasValue);

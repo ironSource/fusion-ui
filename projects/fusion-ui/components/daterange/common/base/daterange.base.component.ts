@@ -1,7 +1,7 @@
-import {Directive, ElementRef, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
 import {ControlValueAccessor} from '@angular/forms';
 import {DatePipe} from '@angular/common';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 import {isNullOrUndefined, isSameDates} from '@ironsource/fusion-ui/utils';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
@@ -20,10 +20,10 @@ import {DEFAULT_DATE_FORMAT} from './config';
 import {DaterangeService} from './daterange.service';
 import {DEFAULT_PLACEHOLDER_TEXT} from './daterange.configuration';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
-import {map} from 'rxjs/operators';
+import {map, takeUntil} from 'rxjs/operators';
 
 @Directive()
-export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, ControlValueAccessor {
+export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, OnDestroy, ControlValueAccessor {
     @Input() id: string;
     @Input() presetsHeaderTemplate: TemplateRef<any>;
     @Input() minDate: Date;
@@ -45,6 +45,7 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     @Output() daySelected = new EventEmitter<DaterangeSelection>();
 
     @ViewChild('overlay') overlay: ElementRef;
+    @ViewChild('chipContent', {static: true}) chipContent: TemplateRef<any>;
 
     dropdownSelectConfigurations$ = new BehaviorSubject<DropdownSelectConfigurations>({});
 
@@ -66,7 +67,7 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     originalSelection: DaterangeSelection = null;
     currentPreset: DaterangePresets | DaterangeCustomPreset = null;
     overlayAlign$ = new BehaviorSubject<string>('');
-    protected selected$ = new BehaviorSubject<DaterangeSelection>(null);
+    selected$ = new BehaviorSubject<string>('');
     protected daterangeOptions: DaterangeOptions;
 
     public get isPresetsShown(): boolean {
@@ -78,6 +79,8 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     }
 
     private originalMaxDate: Date;
+
+    private onDestroy$ = new Subject<void>();
 
     constructor(
         public daterangeService: DaterangeService,
@@ -91,15 +94,38 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     }
 
     ngOnInit() {
+        this.contentTemplate = this.chipContent;
         this.id = this.id || `fs-daterange-${this.uniqueIdService.getUniqueId()}`;
         if (!isNullOrUndefined(this.maxDate)) {
             this.originalMaxDate = this.maxDate;
         }
         this.onOptionsChanges();
+        this.resetState$
+            .asObservable()
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe(_ => this.writeValue(null));
+    }
+
+    ngOnDestroy() {
+        this.resetState$.complete();
+        this.onDestroy$.next();
+        this.onDestroy$.complete();
+    }
+
+    changeConfig(val: string) {
+        this.elemRef.nativeElement.style.setProperty('--fu-chip-max-width', val);
     }
 
     valueSelected() {
-        return this.selected$.asObservable().pipe(map(value => ({value, isSelected: !!value})));
+        return this.selected$
+            .asObservable()
+            .pipe(
+                map(value =>
+                    value !== (this.options?.placeholder || DEFAULT_PLACEHOLDER_TEXT)
+                        ? {value, isSelected: !!value}
+                        : {value: null, isSelected: false}
+                )
+            );
     }
 
     selectPreset(preset, cohort?: number) {
@@ -153,7 +179,7 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
                 : this.originalSelection?.startDate && this.originalSelection?.endDate
                 ? this.originalSelection
                 : null;
-            this.selected$.next(valueToPropagate);
+            this.selected$.next(this.getCurrentSelectionFormatted());
             this.propagateChange(valueToPropagate);
             this.clearRangeDaysLimit();
         }
@@ -253,7 +279,7 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
             this.selection = {endDate: null, startDate: null};
             this.originalSelection = null;
         }
-        this.selected$.next(this.originalSelection);
+        this.selected$.next(this.getCurrentSelectionFormatted());
         this.setPlaceholder();
     }
 

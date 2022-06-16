@@ -328,8 +328,21 @@ $optionGroupHeight: 24px;
 
 
 :host-context(fusion-chip-filter){
+    --fu-chip-max-width: 200px;
     .is-dropdown .options-dropdown {
         top: -4px;
         min-width: 200px;
+    }
+    .fu-chip-content-default{
+        display: flex;
+        gap: 4px;
+        max-width: var(--fu-chip-max-width);
+        .fu-chip-text {
+            @extend %font-bodySmallStrong;
+            @extend %truncate-flex-child;
+            .fu-chip-label {
+                @extend %font-bodySmall;
+            }
+        }
     }
 }
