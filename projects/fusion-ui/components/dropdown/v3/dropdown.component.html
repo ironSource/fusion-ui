@@ -68,8 +68,7 @@
 <div class="fu-helper-text" *ngIf="helper">{{helper}}</div>
 
 <ng-template #chipContent>
-    <div [fusionTooltip]="chipDefaultContent" class="truncate fu-chip-content-default">
-        <div *ngIf="placeholderPrefix" class="fu-chip-label">{{ placeholderPrefix + ': '}}</div>
-        <div class="fu-chip-text">{{ placeholder$ | async }}</div>
+    <div class="fu-chip-content-default">
+        <div [fusionTooltip]="chipDefaultContent" class="truncate fu-chip-text"><span *ngIf="placeholderPrefix" class="fu-chip-label">{{ placeholderPrefix + ': '}}</span>{{ placeholder$ | async }}</div>
     </div>
 </ng-template>
