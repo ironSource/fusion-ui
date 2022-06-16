@@ -306,7 +306,7 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
         } else {
             this.daterangeOptions = this.defaultOptions;
         }
-        this.overlayAlign$.next(this.daterangeOptions?.overlayAlignPosition ?? 'left');
+        this.overlayAlign$.next(this.daterangeOptions?.overlayAlignPosition ?? '');
 
         this.initMonth(this.calendarService.getCurrentDateUTC());
     }
