@@ -335,6 +335,12 @@ $optionGroupHeight: 24px;
     .fu-chip-content-default{
         display: flex;
         gap: 4px;
+        &.truncate {
+            max-width: 50px;
+            white-space: nowrap;
+            overflow: hidden !important;
+            text-overflow: ellipsis;
+        }
         .fu-chip-label {
             @extend %font-bodySmall;
         }
