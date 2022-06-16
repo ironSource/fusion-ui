@@ -5,7 +5,7 @@ export abstract class IconHeaderActionBaseComponent implements OnInit {
     @Input() componentData: any = {};
     @Input() isActive: boolean;
     @Input() isOpen: boolean;
-    icon = 'filter-full';
+    icon = {iconName: 'filter-full', iconVersion: 'v2'};
     hideDropArrow = false;
 
     ngOnInit() {
