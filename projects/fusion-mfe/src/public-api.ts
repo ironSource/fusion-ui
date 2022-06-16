@@ -13,7 +13,7 @@ export * from '@ironsource/fusion-ui/components/dynamic-components/v1';
 export * from '@ironsource/fusion-ui/components/error-message';
 export * from '@ironsource/fusion-ui/components/flag/v1';
 export * from '@ironsource/fusion-ui/components/header/v1';
-export * from '@ironsource/fusion-ui/components/header-overlay/v1';
+export * from '@ironsource/fusion-ui/components/header-overlay/v2';
 export * from '@ironsource/fusion-ui/components/icon/v1';
 export * from '@ironsource/fusion-ui/components/icon-header-action/v1';
 export * from '@ironsource/fusion-ui/components/icon-select-list/v1';
