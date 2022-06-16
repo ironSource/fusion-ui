@@ -17,6 +17,7 @@ import {CONFIG_INPUT_INLINE_BY_UI_STYLE, InputInlineBaseComponent} from '@ironso
 })
 export class InputInlineComponent extends InputInlineBaseComponent {
     ngOnInit() {
+        super.ngOnInit();
         this.configByStyle = CONFIG_INPUT_INLINE_BY_UI_STYLE[`style_v2`];
     }
 }
