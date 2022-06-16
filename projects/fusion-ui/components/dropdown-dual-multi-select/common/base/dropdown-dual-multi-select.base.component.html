@@ -65,8 +65,7 @@
 </ng-template>
 
 <ng-template #chipContent>
-    <div [fusionTooltip]="chipDefaultContent" class="truncate fu-chip-content-default">
-        <div *ngIf="title" class="fu-chip-label">{{ title + ': ' }}</div>
-        <div class="fu-chip-text">{{ selected$ | async }}</div>
+    <div class="fu-chip-content-default">
+        <div [fusionTooltip]="chipDefaultContent" class="truncate fu-chip-text"><span *ngIf="title" class="fu-chip-label">{{ title + ': ' }}</span>{{ selected$ | async }}</div>
     </div>
 </ng-template>

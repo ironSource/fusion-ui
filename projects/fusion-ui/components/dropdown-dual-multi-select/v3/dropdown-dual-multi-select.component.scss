@@ -80,11 +80,13 @@
     .fu-chip-content-default{
         display: flex;
         gap: 4px;
-        .fu-chip-label {
-            @extend %font-bodySmall;
-        }
+        max-width: 200px;
         .fu-chip-text {
             @extend %font-bodySmallStrong;
+            @extend %truncate-flex-child;
+            .fu-chip-label {
+                @extend %font-bodySmall;
+            }
         }
     }
 }
