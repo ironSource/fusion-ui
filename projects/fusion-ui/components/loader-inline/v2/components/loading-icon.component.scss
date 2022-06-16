@@ -1,7 +1,8 @@
-@import '../../../../src/style/scss/v1/mixins/mixins';
+@import '../../../../src/style/scss/v2/mixins/mixins';
+@import '../../../../src/style/scss/v2/vars/vars';
 
-:host {
-    @include icon-style('loader-dots-v4', currentColor, (width: 25px), false, true){
+:host-context(fusion-loader-inline) {
+    @include icon-style('loader-dots-v4', $fu-light-900, (width: 25px), false, true){
         display: flex;
         align-items: center;
     }

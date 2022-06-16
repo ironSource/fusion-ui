@@ -14,18 +14,11 @@
         &.white{
             color: $White;
         }
-        //@include icon-style('loader-dots-v4', currentColor, (width: 25px), false, true){
-        //    display: flex;
-        //    align-items: center;
-        //}
 
         .loader-txt {
             @extend %font-body;
             padding-left: 14px;
         }
 
-        //.loader-v1{
-        //    display: none;
-        //}
     }
 }

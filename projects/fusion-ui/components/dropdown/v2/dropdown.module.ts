@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {ReactiveFormsModule} from '@angular/forms';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
-import {InputModule} from '@ironsource/fusion-ui/components/input';
+import {InputModule} from '@ironsource/fusion-ui/components/input/v2';
 import {FlagModule} from '@ironsource/fusion-ui/components/flag/v1';
 import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox/v2';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';

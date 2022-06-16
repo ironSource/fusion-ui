@@ -13,20 +13,6 @@ $inlineLoaderImgColor: $light-800;
         vertical-align: middle;
         height: $inlineLoaderImgSize;
 
-        //fusion-icon {
-        //    ::ng-deep svg {
-        //        @include size(15px);
-        //        * {
-        //            fill: none !important;
-        //        }
-        //        symbol#loading {
-        //            circle {
-        //                stroke: currentColor !important;
-        //            }
-        //        }
-        //    }
-        //}
-
         .loader-txt {
             @extend %font7;
             margin-top: -3px;
@@ -34,8 +20,5 @@ $inlineLoaderImgColor: $light-800;
             color: $inlineLoaderTextColor;
         }
 
-        //.loader-v2{
-        //    display: none;
-        //}
     }
 }

@@ -491,7 +491,7 @@ document.body.appendChild(tagsInput);'
                     [autoComplete]="true"
                     inputPlaceholder="Select..."
                     (searchChange)="onTagsSearch($event)"
-                    [loading]="inSearch"
+                    [loading]="true"
                     [tagList]="tagsOptions"
                     (tagsChanged)="onTagsChanged($event)"
                 ></fusion-tags-input>
