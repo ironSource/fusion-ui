@@ -68,6 +68,7 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     currentPreset: DaterangePresets | DaterangeCustomPreset = null;
     overlayAlign$ = new BehaviorSubject<string>('');
     selected$ = new BehaviorSubject<string>('');
+    defaultPlaceholder = DEFAULT_PLACEHOLDER_TEXT;
     protected daterangeOptions: DaterangeOptions;
 
     public get isPresetsShown(): boolean {

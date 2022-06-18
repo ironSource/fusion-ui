@@ -153,6 +153,9 @@ $selectHolderHeight: 39px;
         .fu-chip-text {
             @extend %font-bodySmallStrong;
             @extend %truncate-flex-child;
+            .fu-chip-label {
+                @extend %font-bodySmall;
+            }
         }
         fusion-icon {
             width: 16px;

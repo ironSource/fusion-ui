@@ -10,4 +10,5 @@ export interface DaterangeOptions {
     overlayAlignPosition?: 'left' | 'right';
     allowFutureSelection?: boolean;
     maxDaysInSelectedRange?: number;
+    chipLabel?: string;
 }
