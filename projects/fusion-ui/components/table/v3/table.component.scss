@@ -1,10 +1,16 @@
-@import "../../../src/style/scss/v2/vars/vars";
-@import "../../../src/style/scss/v2/mixins/mixins";
+@import "../../../src/style/scss/v3/vars/vars";
+@import "../../../src/style/scss/v3/mixins/mixins";
 
-$v2-maxCollWidth: 350px;
-$v2-headerHeight: 32px;
-$v2-headerCellPadding: 5px 8px;
-$v2-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-light-400);
+$v3-maxCollWidth: 350px;
+$v3-headerHeight: 40px;
+$v3-headerCellPadding: 0 16px;
+$v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-light-400);
+
+%sort-triangle-base{
+    width: 0;
+    height: 0;
+    border: 4px solid transparent;
+}
 
 
 :host {
@@ -12,7 +18,7 @@ $v2-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
     display: block;
     width: 100%;
     height: 100%;
-    min-height: 160px;
+    /*min-height: 160px;*/
 
     .tableWrap{
         height: 100%;
@@ -20,7 +26,7 @@ $v2-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
         overflow-x: auto;
         @extend %customScroll;
         &::-webkit-scrollbar-track {
-            margin-top: $v2-headerHeight;
+            margin-top: $v3-headerHeight;
         }
         table {
             border: none;
@@ -31,20 +37,18 @@ $v2-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
 
             thead {
                 td {
-                    @extend %font-label;
-                    color: $fu-light-900;
+                    @extend %font-bodyXSmallStrong;
+                    color: $fu-light-1000;
                     white-space: nowrap;
                     position: relative;
-                    padding: $v2-headerCellPadding;
-                    max-width: $v2-maxCollWidth;
-                    height: $v2-headerHeight;
+                    padding: $v3-headerCellPadding;
+                    max-width: $v3-maxCollWidth;
+                    height: $v3-headerHeight;
                     line-height: 1;
-                    font-family: var(--table-header-font-family, $groteskDSPro65Md);
-                    font-size: var(--table-header-font-size, 11px);
-                    font-weight: var(--table-header-font-weight, normal);
                     cursor: default;
                     box-sizing: border-box;
 
+                    /*
                     @include icon-style('icon-sort', $fu-light-900, 16px, true, true){
                         position: absolute;
                         top: 6px;
@@ -60,21 +64,38 @@ $v2-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
                         vertical-align: middle;
                         margin-left: 3px;
                     };
+                    */
 
                     &.is-sort{
                         cursor: pointer;
-                        &.asc,
-                        &.desc {
-                            padding-left: 16px;
+                        padding-top: 3px;
+                        .fu-sort-wrapper{
+                            vertical-align: middle;
+                            display:inline-flex;
+                            flex-direction:column;
+                            gap:4px;
+                            margin-left: 4px;
+                            .fu-sort-up{
+                                @extend %sort-triangle-base;
+                            }
+                            .fu-sort-down{
+                                @extend %sort-triangle-base;
+                            }
                         }
-                        &.desc {
-                            @include icon-style('icon-sort', $fu-light-900, 16px, true, true, 180);
+                        &.desc .fu-sort-wrapper{
+                            .fu-sort-up{
+                                border-bottom-color: $fu-light-600;
+                            }
+                            .fu-sort-down{
+                                border-top-color: $fu-black-500;
+                            }
                         }
-                        &:hover{
-                            color: $fu-light-700;
-                            @include icon-style('icon-sort', $fu-light-700, 16px, true, true);
-                            &.desc {
-                                @include icon-style('icon-sort', $fu-light-700, 16px, true, true, 180);
+                        &.asc .fu-sort-wrapper{
+                            .fu-sort-up{
+                                border-bottom-color: $fu-black-500;
+                            }
+                            .fu-sort-down{
+                                border-top-color: $fu-light-600;
                             }
                         }
                     }
@@ -83,7 +104,7 @@ $v2-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
                     }
 
                     &:after{ // this is border bottom of header
-                        border-bottom: $v2-headerBottomBorder;
+                        border-bottom: $v3-headerBottomBorder;
                         content:'';
                         position:absolute;
                         left: 0;
@@ -93,16 +114,18 @@ $v2-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
                 }
             }
 
+            /*
             tbody {
                 overflow: auto;
                 td {
                     white-space: nowrap;
                 }
             }
+            */
         }
     }
 
-    &.is-empty,
+/*    &.is-empty,
     &.is-loading{
         .tableWrap table thead td{
             &.is-sort{
@@ -119,16 +142,16 @@ $v2-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
             top: 32px;
             background-color: rgba(255, 255, 255, 0.9);
         }
-    }
+    }*/
 
-    &.fixed-table {
+    /*&.fixed-table {
         position: relative;
         .tableWrap{
             table{
                 thead{
                     border-bottom: none;
                     td{
-                        height: $v2-headerHeight;
+                        height: $v3-headerHeight;
                         position: sticky;
                         top: 0;
                         z-index: getZIndexLayerOffset(normal, 3);
@@ -148,9 +171,9 @@ $v2-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
             top: 1px;
             background-color: $White;
             width: 16px;
-            height: $v2-headerHeight;
-            border-bottom: $v2-headerBottomBorder;
+            height: $v3-headerHeight;
+            border-bottom: $v3-headerBottomBorder;
             box-sizing: border-box;
         }
-    }
+    }*/
 }

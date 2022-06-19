@@ -1,4 +1,4 @@
-<div class="tableWrap v2" [ngClass]="wrapperClasses" #tableWrapper>
+<div class="tableWrap" [ngClass]="wrapperClasses" #tableWrapper>
     <table [id]="id" #table *ngIf="!tableMainError">
         <ng-container *ngIf="columns && options">
             <thead *ngIf="columns.length" [hidden]="(isEmpty || (loading && !isLoadingOverlay)) && hideHeaderOnEmpty">
@@ -17,18 +17,25 @@
                         [ngStyle]="tableService.getColumnStyle(column)"
                         (click)="onHeaderClicked(column)"
                         [style.width]="tableService.setWidth(isLast, column.width)"
+                        [style.text-align]="column.headerAlign"
                         [attr.colspan]="isFirst ? tableService.expandLevels : undefined"
                     >
-                        <ng-container *ngIf="configIconNames">
-                            <fusion-icon class="icon-sort" [name]="configIconNames.iconSort" *ngIf="column.sort"></fusion-icon>
+                        <ng-container>
                             {{ column.title }}
+                            <div class="fu-sort-wrapper">
+                                <div class="fu-sort-up"></div>
+                                <div class="fu-sort-down"></div>
+                            </div>
+<!--
                             <fusion-icon
                                 class="icon-tooltip"
                                 [name]="column.tooltipIcon || configIconNames.iconInfo"
                                 *ngIf="column.tooltip"
                                 [fusionTooltip]="column.tooltip"
                             ></fusion-icon>
+-->
                         </ng-container>
+<!--
                         <fusion-multi-dropdown
                             *ngIf="column.filter && column.filter.options"
                             placeholder="Please Select"
@@ -41,6 +48,7 @@
                             selectAllLabel="Select All <span class='grey'>(No Filters)</span>"
                         >
                         </fusion-multi-dropdown>
+-->
 
                         <fusion-checkbox
                             class="is-regular"
@@ -57,7 +65,7 @@
             </thead>
 
             <tbody *ngIf="loading && !isLoadingOverlay" [fusionTableLoading]="colsCount"></tbody>
-
+            <!--Table Body-->
             <tbody
                 *ngIf="!options.isGroupedTable && (!loading || isLoadingOverlay) && !isEmpty"
                 fusionTableBasic
@@ -71,7 +79,8 @@
                 (click)="onTableBodyClicked($event)"
                 #tableBody
             ></tbody>
-
+            <!--Table Body-->
+            <!--Grouped Table Body-->
             <tbody
                 *ngIf="options.isGroupedTable && (!loading || isLoadingOverlay) && !isEmpty"
                 fusionTableGrouped
@@ -80,7 +89,9 @@
                 [options]="options"
                 (rowSelected)="selectionChanged.emit($event)"
             ></tbody>
+            <!--Grouped Table Body-->
         </ng-container>
+<!--
         <tbody
             *ngIf="!loading && isEmpty"
             [fusionTableEmpty]="colsCount"
@@ -94,13 +105,18 @@
             [fusionTableEmpty]="colsCount"
             [showNoDataImage]="false"
         ></tbody>
+-->
     </table>
+<!--
     <ng-container *ngIf="options?.pagination && options.pagination.loading">
         <fusion-loader [status]="true" height="150">Loading Please Wait…</fusion-loader>
     </ng-container>
+-->
 </div>
 <ng-container *ngIf="isLoadingOverlay && loading">
+<!--
     <div class="is-overlay-loader-holder">
         <fusion-loader [status]="true">Loading Please Wait…</fusion-loader>
     </div>
+-->
 </ng-container>

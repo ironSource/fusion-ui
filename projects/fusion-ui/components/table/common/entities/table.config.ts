@@ -27,10 +27,6 @@ export const CONFIG_TABLE_BY_UI_STYLE: {[styleKey: string]: TableIconsConfigBySt
     style_v2: {
         iconSort: {iconName: 'arrow-sort-down', iconVersion: 'v2'},
         iconInfo: {iconName: 'info-circle', iconVersion: 'v2'}
-    },
-    style_v3: {
-        iconSort: {iconName: 'arrow-sort-down', iconVersion: 'v3'},
-        iconInfo: {iconName: 'info-circle', iconVersion: 'v3'}
     }
 };
 
