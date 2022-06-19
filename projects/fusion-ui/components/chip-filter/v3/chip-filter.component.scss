@@ -7,10 +7,10 @@
 $chipHeight: 32px;
 $chipMaxWidth: 154px;
 
-$paddingChip:  4px 12px 4px 12px;
-$paddingWithBorderChip:  3px 11px 3px 11px;
+$paddingChip:  4px 16px 4px 16px;
+$paddingWithBorderChip:  3px 16px 3px 16px;
 $paddingChipWithIcon:  4px 16px 4px 12px;
-$paddingChipWithCloseButton: 4px 10px 4px 14px;
+$paddingChipWithCloseButton: 4px 12px 4px 16px;
 
 %chip-style {
     box-sizing: border-box;
