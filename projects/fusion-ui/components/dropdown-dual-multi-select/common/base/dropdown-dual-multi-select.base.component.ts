@@ -97,7 +97,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.propagateChange(this.preSelectedItems.value);
         this.selectedChange = this.preSelectedItems.value;
         this.selected$.next(
-            this.selectedChange.length === 1
+            this.preSelectedItems?.value.length === 1
                 ? this.selectedChange[0]?.displayText || this.selectedChange[0]?.title
                 : this.placeholder$.getValue()
         );
@@ -127,9 +127,8 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
 
     writeValue(value: DropdownOption[]): void {
         this.preSelectedItems.setValue(value);
-        console.log(this.preSelectedItems.value);
         this.selectedChange = value;
-        this.selected$.next(value.length === 1 ? value[0]?.displayText || value[0]?.title : this.placeholder$.getValue());
+        this.selected$.next(value?.length === 1 ? value[0]?.displayText || value[0]?.title : this.placeholder$.getValue());
     }
 
     registerOnChange(fn: any): void {
