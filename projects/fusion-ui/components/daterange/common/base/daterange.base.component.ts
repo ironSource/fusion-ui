@@ -130,7 +130,7 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     }
 
     selectPreset(preset, cohort?: number) {
-        this.selection = this.daterangeService.getPresetRange(preset);
+        this.selection = this.daterangeService.getPresetRange(preset, cohort);
         this.currentPreset = preset;
         this.initMonth(this.selection.endDate);
     }
