@@ -68,6 +68,9 @@ $v3-cellActionIconSize: 16px;
             @include icon-style('fu-table-action-icon', $fu-light-900, $v3-cellActionIconSize, false, true){
                 @include size($v3-cellActionIconSize);
             }
+            @include icon-style('fu-table-multi-action-icon', $fu-light-900, 24px, false, true){
+                @include size(24px);
+            }
         }
     }
 
