@@ -21,21 +21,12 @@
                         [attr.colspan]="isFirst ? tableService.expandLevels : undefined"
                     >
                         <ng-container>
-                            {{ column.title }}
+                            <span [class.fu-tooltiped]="column.tooltip" [fusionTooltip]="column.tooltip">{{ column.title }}</span>
                             <div class="fu-sort-wrapper">
                                 <div class="fu-sort-up"></div>
                                 <div class="fu-sort-down"></div>
                             </div>
-<!--
-                            <fusion-icon
-                                class="icon-tooltip"
-                                [name]="column.tooltipIcon || configIconNames.iconInfo"
-                                *ngIf="column.tooltip"
-                                [fusionTooltip]="column.tooltip"
-                            ></fusion-icon>
--->
                         </ng-container>
-<!--
                         <fusion-multi-dropdown
                             *ngIf="column.filter && column.filter.options"
                             placeholder="Please Select"
@@ -48,8 +39,6 @@
                             selectAllLabel="Select All <span class='grey'>(No Filters)</span>"
                         >
                         </fusion-multi-dropdown>
--->
-
                         <fusion-checkbox
                             class="is-regular"
                             title="select / un-select all"
@@ -91,7 +80,6 @@
             ></tbody>
             <!--Grouped Table Body-->
         </ng-container>
-<!--
         <tbody
             *ngIf="!loading && isEmpty"
             [fusionTableEmpty]="colsCount"
@@ -105,7 +93,6 @@
             [fusionTableEmpty]="colsCount"
             [showNoDataImage]="false"
         ></tbody>
--->
     </table>
 <!--
     <ng-container *ngIf="options?.pagination && options.pagination.loading">

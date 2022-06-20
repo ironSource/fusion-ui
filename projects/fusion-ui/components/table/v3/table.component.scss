@@ -48,24 +48,6 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
                     cursor: default;
                     box-sizing: border-box;
 
-                    /*
-                    @include icon-style('icon-sort', $fu-light-900, 16px, true, true){
-                        position: absolute;
-                        top: 6px;
-                        left: 0;
-                    }
-
-                    @include icon-style('icon-tooltip', $fu-dark-200, 12px, true, true){
-                        vertical-align: middle;
-                        margin-left: 3px;
-                    };
-                    @include icon-style('icon-tooltip', $fu-dark-600, 12px, true, true, 0, true);
-                    @include icon-style('warning', $fu-neutral-500, 12px, false, true){
-                        vertical-align: middle;
-                        margin-left: 3px;
-                    };
-                    */
-
                     &.is-sort{
                         cursor: pointer;
                         padding-top: 3px;
@@ -110,6 +92,10 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
                         left: 0;
                         bottom: -1px;
                         width:100%;
+                    }
+
+                    .fu-tooltiped{
+                        cursor: help;
                     }
                 }
             }
