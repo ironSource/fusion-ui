@@ -1,5 +1,3 @@
-<tr>
-  <td class="is-tbl-loader" [attr.colspan]="fusionTableLoading">
-    <fusion-loader [status]='true' height='150'>Loading Please Wait…</fusion-loader>
-  </td>
+<tr *ngFor="let r of rowsToShow">
+  <td class="fu-table-cell-loading" *ngFor="let c of colsToShow"><div>&nbsp;</div></td>
 </tr>

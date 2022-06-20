@@ -23,10 +23,10 @@ import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 const TABLE_OPTIONS: TableOptions = {
     sortingType: 'local',
     remove: {active: true, onRemove: new EventEmitter()},
-    noDataSubMessage: 'Lorem ipsum dolor'
+    noDataSubMessage: 'Try using again with a different filters'
 };
 const TABLE_COLUMNS_CONFIG: Array<TableColumn> = [
-    {key: 'checkbox', type: TableColumnTypeEnum.Checkbox, width: '32px'},
+    {key: 'checkbox', type: TableColumnTypeEnum.Checkbox, width: '32px' /*, style: {'border-right': 'solid 1px #ccc'}*/},
     /*
     {key: 'id', title: 'ID', sort: 'asc'}, // 'asc' | 'desc' | ''},
      */
@@ -68,7 +68,7 @@ const TABLE_COLUMNS_CONFIG: Array<TableColumn> = [
         },
         title: 'Second Bid',
         width: '85px',
-        tooltip: 'Lorem ipsum dolor sit amet'
+        tooltip: 'Also Lorem ipsum dolor sit amet'
     },
     {key: 'email', title: 'Email', sort: ''},
     {key: 'website', title: 'Website'}
@@ -307,7 +307,8 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
 
     tableOptions: TableOptions = {...TABLE_OPTIONS};
     tableOptionsWithTotalsRow: TableOptions = {...TABLE_OPTIONS, ...{hasTotalsRow: true}};
-    tableBigRowsOptions: TableOptions = {...TABLE_OPTIONS, ...{rowHeight: TableRowHeight.Big}};
+    // tableBigRowsOptions: TableOptions = {...TABLE_OPTIONS, ...{rowHeight: TableRowHeight.Big}};
+    tableBigRowsOptions: TableOptions = {...TABLE_OPTIONS};
     tableSmallRowsOptions: TableOptions = {...TABLE_OPTIONS, ...{rowHeight: TableRowHeight.Small}};
 
     tableOptionsNoDataCustom = {

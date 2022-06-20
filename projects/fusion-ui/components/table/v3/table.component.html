@@ -80,6 +80,7 @@
             ></tbody>
             <!--Grouped Table Body-->
         </ng-container>
+        <!--table empty-->
         <tbody
             *ngIf="!loading && isEmpty"
             [fusionTableEmpty]="colsCount"
@@ -88,22 +89,17 @@
             [subHeader]="noDataSubMessage"
             [icon]="options?.emptyTableIcon"
         ></tbody>
+        <!--table empty-->
+        <!--table empty loading-->
         <tbody
             *ngIf="isEmpty && loading"
-            [fusionTableEmpty]="colsCount"
-            [showNoDataImage]="false"
+            [fusionTableLoading]="colsCount"
         ></tbody>
+        <!--table empty loading-->
     </table>
-<!--
+    <!--table pagination loading overlay-->
     <ng-container *ngIf="options?.pagination && options.pagination.loading">
-        <fusion-loader [status]="true" height="150">Loading Please Wait…</fusion-loader>
+        <div class="is-overlay-loader-holder"><fusion-loader [status]="true" height="150">Loading Please Wait…</fusion-loader></div>
     </ng-container>
--->
+    <!--table pagination loading overlay-->
 </div>
-<ng-container *ngIf="isLoadingOverlay && loading">
-<!--
-    <div class="is-overlay-loader-holder">
-        <fusion-loader [status]="true">Loading Please Wait…</fusion-loader>
-    </div>
--->
-</ng-container>

@@ -270,7 +270,6 @@ $ZIndexByLayer: (
     }
 }
 
-
 @mixin user-select($args...) {
     user-select: $args;
     -webkit-user-select: $args; /* webkit (safari, chrome) browsers */
@@ -312,5 +311,18 @@ $ZIndexByLayer: (
             border-width: $size 0 $size $size;
             border-color: $color transparent transparent transparent;
         }
+    }
+}
+
+@mixin loading($bgColor1:#E5E7E9, $bgColor2:#F1F3F4, $height:16px, $animationDuration:1s, $width:100%) {
+    width: $width;
+    @if $height {
+        height: $height;
+        border-radius: calc(#{$height} / 2);
+    }
+    animation: shine-animation $animationDuration linear infinite alternate;
+    @keyframes shine-animation {
+        0% {background-color: $bgColor1;}
+        100% {background-color: $bgColor2;}
     }
 }
