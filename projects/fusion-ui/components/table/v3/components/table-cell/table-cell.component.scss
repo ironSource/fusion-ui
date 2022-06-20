@@ -13,7 +13,8 @@ $v3-cellActionIconSize: 16px;
 :host {
     position: relative;
     padding: 0 16px;
-    height: $v3-rowDefaultHeight;
+    height:$v3-rowDefaultHeight;
+    box-sizing: border-box;
     @extend %font-bodySmall;
     color: $v3-cellColor;
     word-break: break-all;

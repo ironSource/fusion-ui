@@ -129,6 +129,11 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
         return this._expandedRows;
     }
 
+    get shownGoTopButton(): boolean {
+        // todo: add functional
+        return false;
+    }
+
     private lastScrollLeftValue: number;
     private _expandedRows: {[key: string]: boolean} = {};
     private currentExpandedMap: {[key: string]: boolean} = {};
@@ -247,6 +252,11 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
             const rowData = this.rows[rowIndex];
             this.rowClicked.emit({$event, rowIndex, rowEl, rowData});
         }
+    }
+
+    onClickReturnTop($event: MouseEvent) {
+        // todo: add functional
+        // console.log('to top>>')
     }
 
     private isElementChildOfSuppressed(element: Element): boolean {

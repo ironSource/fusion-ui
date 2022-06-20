@@ -1,6 +1,6 @@
-@import "../../../../../src/style/scss/v1/vars/vars";
-@import "../../../../../src/style/scss/v1/mixins/mixins";
-@import "../../../../../src/style/scss/v1/vars/colors";
+@import "../../../../../src/style/scss/v3/vars/vars";
+@import "../../../../../src/style/scss/v3/mixins/mixins";
+@import "../../../../../src/style/scss/v3/vars/colors";
 
 $fullCellHeight: 41px;
 $failedCellHeight: 27px;
@@ -16,5 +16,8 @@ $failedCellHeight: 27px;
                 margin: 0;
             }
         }
+    }
+    tr.is-row-in-request{
+        pointer-events: none;
     }
 }

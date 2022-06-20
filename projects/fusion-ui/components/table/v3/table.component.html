@@ -102,4 +102,10 @@
         <div class="is-overlay-loader-holder"><fusion-loader [status]="true" height="150">Loading Please Wait…</fusion-loader></div>
     </ng-container>
     <!--table pagination loading overlay-->
+    <!--todo: Add condition when to show-->
+    <ng-container *ngIf="shownGoTopButton">
+        <div class="fu-button-return-top" (click)="onClickReturnTop($event)">
+            <fusion-icon class="fu-return-top-icon" [name]="{iconName:'angle-up', iconVersion: 'v3'}"></fusion-icon>
+        </div>
+    </ng-container>
 </div>
