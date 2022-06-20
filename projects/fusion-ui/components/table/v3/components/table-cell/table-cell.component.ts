@@ -21,7 +21,7 @@ import {InputInlineComponent} from '@ironsource/fusion-ui/components/input-inlin
 import {AdvancedInputInline} from '@ironsource/fusion-ui/components/input-inline/common/base';
 import {
     CELL_PADDING,
-    DEFAULT_REMOVE_ICON,
+    DEFAULT_REMOVE_ICON_V3,
     DEFAULT_REMOVE_TOOLTIP_TEXT,
     DEFAULT_REMOVE_TOOLTIP_WIDTH,
     TABLE_OPTIONS_TOKEN,
@@ -34,6 +34,7 @@ import {
 import {ERROR_MESSAGES} from '@ironsource/fusion-ui/components/error-message';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
+import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 
 type CellDataType = Type<Component> | FormControl | string | boolean | undefined | null;
 
@@ -132,6 +133,10 @@ export class TableCellComponent implements OnInit, OnChanges {
             : null;
     }
 
+    get cellRemoveActionIcon(): IconData {
+        return this.options?.remove && this.options.remove?.icon ? this.options.remove.icon : DEFAULT_REMOVE_ICON_V3;
+    }
+
     private _data: CellDataType;
     private inlineInputViewOnlyText = '';
 
@@ -170,10 +175,6 @@ export class TableCellComponent implements OnInit, OnChanges {
         this.initInputData = !isNullOrUndefined(this.column.dataParser)
             ? this.column.dataParser((this.data as FormControl).value)
             : (this.data as FormControl).value;
-    }
-
-    getRemoveIconName(): string {
-        return this.options && this.options.remove && this.options.remove.icon ? this.options.remove.icon : DEFAULT_REMOVE_ICON;
     }
 
     getRemoveIconTooltipText(): string {
@@ -262,6 +263,14 @@ export class TableCellComponent implements OnInit, OnChanges {
     onCancel() {
         this.inputError$.next('');
         this.isInEditMode = false;
+    }
+
+    onRowRemoveClicked($event: MouseEvent) {
+        if ($event) {
+            $event.preventDefault();
+            $event.stopPropagation();
+        }
+        this.remove.emit();
     }
 
     getDateFormat(dateFormat: string): string {

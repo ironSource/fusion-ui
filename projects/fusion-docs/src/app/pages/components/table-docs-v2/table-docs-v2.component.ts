@@ -375,6 +375,10 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
         });
 
         this.getDataToTable();
+
+        this.tableOptionsWithTotalsRow.remove.onRemove.pipe(takeUntil(this.onDestroy$)).subscribe(rowRemoved => {
+            console.log(`row removed`, rowRemoved);
+        });
     }
 
     ngOnDestroy(): void {

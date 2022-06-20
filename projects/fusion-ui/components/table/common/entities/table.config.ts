@@ -10,6 +10,7 @@ export const TABLE_OPTIONS_DEFAULT_VALUES: TableModuleOptions = {
 export const TABLE_OPTIONS_TOKEN = new InjectionToken<TableModuleOptions>('Table options');
 
 export const DEFAULT_REMOVE_ICON = 'close';
+export const DEFAULT_REMOVE_ICON_V3 = {iconName: 'delete', iconVersion: 'v3'};
 export const DEFAULT_REMOVE_TOOLTIP_TEXT = 'Remove';
 export const DEFAULT_REMOVE_TOOLTIP_WIDTH = '71';
 export const CELL_PADDING = '20px';
