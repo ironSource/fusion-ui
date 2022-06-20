@@ -29,7 +29,7 @@
             [isDisabled]="loading"
             [formControl]="inputControl"
         ></fusion-input>
-        <fusion-icon class="icon-save" [name]="configByStyle.iconSave" (click)="save()" [hidden]="loading"></fusion-icon>
+        <fusion-icon class="icon-save" [name]="configByStyle.iconSave" (click)="save()" *ngIf="!loading"></fusion-icon>
         <fusion-loader [status]="loading" [size]="configByStyle.loadingSize"></fusion-loader>
     </div>
 </div>

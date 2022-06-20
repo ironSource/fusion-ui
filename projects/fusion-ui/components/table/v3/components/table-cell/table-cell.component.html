@@ -21,14 +21,11 @@
         </div>
         <!--ToggleButton Cell-->
         <div *ngIf="tableService.isTypeToggleButton(column) && isBoolean(data)">
-            <div class="loader-holder" *ngIf="isInRequest$ | async">
-                <fusion-loader [status]="isInRequest$ | async" size="small"></fusion-loader>
-            </div>
             <fusion-toggle
-                *ngIf="(isInRequest$ | async) === false"
                 [model]="data"
                 [isDisabled]="isReadOnly"
                 size="small"
+                customCheckedBackgroundColor="#3083FF"
                 (modelChange)="onToggleChanged($event)"
             ></fusion-toggle>
         </div>

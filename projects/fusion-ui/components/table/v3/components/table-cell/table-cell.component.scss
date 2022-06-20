@@ -1,22 +1,23 @@
-@import '../../../../../src/style/scss/v2/vars/vars';
-@import '../../../../../src/style/scss/v2/mixins/mixins';
+@import '../../../../../src/style/scss/v3/vars/vars';
+@import '../../../../../src/style/scss/v3/mixins/mixins';
 
-$v2-rowTotalsHeight: 32px;
-$v2-rowSmallHeight: 32px;
-$v2-rowDefaultHeight: 40px;
-$v2-rowBigHeight: 48px;
-$v2-bodyBorder: 1px solid $fu-light-300;
+$v3-rowTotalsHeight: 32px;
+$v3-rowSmallHeight: 32px;
+$v3-rowDefaultHeight: 48px;
+$v3-rowBigHeight: 48px;
+$v3-bodyBorder: 1px solid $fu-light-400;
+$v3-cellColor: $fu-black-500;
 
 :host {
     position: relative;
-    padding: 0 8px;
-    height: $v2-rowDefaultHeight;
-    @extend %font-body;
-    color: $fu-dark-700;
+    padding: 0 16px;
+    height: $v3-rowDefaultHeight;
+    @extend %font-bodySmall;
+    color: $v3-cellColor;
     word-break: break-all;
     max-width: 350px;
-    border-top: $v2-bodyBorder;
-    border-bottom: $v2-bodyBorder;
+    border-top: $v3-bodyBorder;
+    border-bottom: $v3-bodyBorder;
     &:first-child {
         border-left: none;
     }
@@ -57,7 +58,7 @@ $v2-bodyBorder: 1px solid $fu-light-300;
         }
     }
 
-    @include icon-style('infoRowIcon', $fu-dark-700, 11px, false, true) {
+    @include icon-style('infoRowIcon', $v3-cellColor, 11px, false, true) {
         visibility: hidden;
         position: absolute;
         right: 25px;
@@ -75,13 +76,13 @@ $v2-bodyBorder: 1px solid $fu-light-300;
 }
 
 :host-context(.is-row-height-big) {
-    height: $v2-rowBigHeight;
+    height: $v3-rowBigHeight;
     button.removeRowIcon {
         top: 10px;
     }
 }
 :host-context(.is-row-height-small) {
-    height: $v2-rowSmallHeight;
+    height: $v3-rowSmallHeight;
     button.removeRowIcon {
         top: 4px;
     }
@@ -91,13 +92,8 @@ $v2-bodyBorder: 1px solid $fu-light-300;
         visibility: visible;
     }
 }
-:host-context(tr.is-row-in-request) {
-    fusion-toggle {
-        opacity: 0.5;
-    }
-}
 :host-context(tr.is-with-totals) {
-    height: $v2-rowTotalsHeight;
-    @extend %font-label;
+    height: $v3-rowTotalsHeight;
+    @extend %font-bodySmallStrong;
     letter-spacing: .5px;
 }

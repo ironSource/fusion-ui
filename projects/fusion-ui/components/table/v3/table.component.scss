@@ -31,7 +31,7 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
         table {
             border: none;
             margin: 0;
-            width: calc(100% - 1px);
+            width: calc(100% - 2px);
             border-collapse: collapse;
             border-spacing: 0;
 
