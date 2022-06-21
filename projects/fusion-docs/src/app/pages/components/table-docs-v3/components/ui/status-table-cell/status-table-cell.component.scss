@@ -1,0 +1,33 @@
+@import '../../../../../../../styles/vars';
+
+:host{
+    .status-table-cell-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        label{
+            margin-left: 5px;
+        }
+
+        @include icon-style('stop-round', $light-700, 16px, true, true){
+            padding-top: 5px;
+            cursor: pointer;
+            display: inline-block;
+        }
+    }
+
+    .pause-icon{
+        display: none;
+    }
+}
+
+:host-context(tr:hover){
+  .status-table-cell-container{
+      .pause-icon{
+          display: block;
+          &:hover{
+              @include icon-style('stop-round', $primary-500, 16px, true, true);
+          }
+      }
+  }
+}

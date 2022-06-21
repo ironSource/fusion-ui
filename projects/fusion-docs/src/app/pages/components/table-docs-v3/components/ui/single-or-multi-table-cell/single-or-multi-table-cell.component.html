@@ -1,0 +1,18 @@
+<ng-container [ngTemplateOutlet]="config?.entities?.length === 0 ? all : (config?.entities?.length === 1 ? one : many)">
+</ng-container>
+
+<ng-template #one>
+    <p class="single-entity truncate" [fusionTooltip]="config?.entities?.[0]?.displayText || ''">
+        <fusion-flag *ngIf="config?.entities?.[0]?.flag" [name]="config?.entities?.[0]?.flag || ''"></fusion-flag>
+        <span class="id" *ngIf="config?.entities?.[0]?.id">{{config?.entities?.[0]?.id}}</span>
+        <span>{{config?.entities?.[0]?.displayText}}</span>
+    </p>
+</ng-template>
+
+<ng-template #many>
+    <span [fusionTooltip]="tooltip">{{config?.entities?.length}} {{config?.entityPrefix}}</span>
+</ng-template>
+
+<ng-template #all>
+    <p>{{config?.allEntityPrefix}}</p>
+</ng-template>

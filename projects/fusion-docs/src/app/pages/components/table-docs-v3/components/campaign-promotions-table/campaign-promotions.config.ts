@@ -1,5 +1,5 @@
 import {TableColumn, TableColumnTypeEnum, TableOptions} from '@ironsource/fusion-ui/components/table/v2';
-import {SingleOrMultiTableCellComponent, StatusTableCellComponent} from '@network-operations/ui/components';
+import {SingleOrMultiTableCellComponent, StatusTableCellComponent} from '../ui';
 
 export const CAMPAIGN_PROMOTIONS_TABLE_FIRST_INITIALIZATION = 25;
 
