@@ -371,6 +371,8 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
         this.selectedVersion$.subscribe((styleVersion: StyleVersion) => {
             if (styleVersion === StyleVersion.V1) {
                 this.router.navigate(['docs/components/table']);
+            } else if (styleVersion === StyleVersion.V3) {
+                this.router.navigate(['docs/components/v3/table']);
             }
         });
 

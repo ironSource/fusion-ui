@@ -776,8 +776,10 @@ export class TableDocsComponent implements OnInit, OnDestroy {
             console.log(`row removed`, rowRemoved);
         });
         this.selectedVersion$.subscribe((styleVersion: StyleVersion) => {
-            if (styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3) {
+            if (styleVersion === StyleVersion.V2) {
                 this.router.navigate(['docs/components/v2/table']);
+            } else if (styleVersion === StyleVersion.V3) {
+                this.router.navigate(['docs/components/v3/table']);
             }
         });
     }
