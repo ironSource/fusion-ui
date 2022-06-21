@@ -2,14 +2,14 @@
 @import "../../../../../src/style/scss/v3/mixins/mixins";
 @import "../../../../../src/style/scss/v3/vars/colors";
 
-$fullCellHeight: 41px;
+$fullCellHeight: 48px;
 $failedCellHeight: 27px;
 
 :host{
     @extend %link-reset;
     .full-cell{
         height: $fullCellHeight;
-        background-color: $light-100;
+        background-color: $fu-light-100;
         &.load-more, &.failed{
             height: $failedCellHeight;
             p{
