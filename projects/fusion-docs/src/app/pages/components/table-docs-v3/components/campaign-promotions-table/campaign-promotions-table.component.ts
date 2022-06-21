@@ -76,7 +76,15 @@ export class CampaignPromotionsTableComponent implements OnInit, OnDestroy {
                 this.promotionsTableRows = data.map(item => {
                     return {
                         name: item.campaignId,
-                        status: item.status,
+                        status: {
+                            config: {
+                                displayText: item.status == 6 ? 'Active' : item.status,
+                                defaultColor: item.status == 6 ? 'green' : 'grey',
+                                displayPauseButton: false,
+                                id: 1,
+                                entityId: 1
+                            }
+                        },
                         creationDate: new Date(item.createdTime),
                         createdBy: item.createdBy,
                         campaigns: item.campaign,
