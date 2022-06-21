@@ -18,11 +18,14 @@
   <div class="promotions-table-container">
     <ng-container [ngTemplateOutlet]="(selectedTab$ | async) === 0 ? promotionsTable : configurationsTable"></ng-container>
   </div>
+    <div class="promotions-table-footer-container">
+        &nbsp;
+    </div>
 </div>
 
 <ng-template #promotionsTable>
   <fusion-table
-    [options]="tableOptions"
+    [options]="promotionsTableOption"
     [rows]="promotionsTableRows"
     [columns]="promotionsTableColumns"></fusion-table>
 </ng-template>

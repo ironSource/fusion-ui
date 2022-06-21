@@ -9,6 +9,7 @@ export interface TableOptions {
     isLoadingOverlayMode?: boolean; // show data main loading as overlay on the whole table (if not set - default as true)
     noDataMessage?: string;
     noDataSubMessage?: string;
+    noDataImageBgUrl?: string; // custom image for empty table as background URL
     customNoData?: DynamicComponentConfiguration; // user defined "no data" content
     isGroupedTable?: string;
     pagination?: TablePaginationOption;

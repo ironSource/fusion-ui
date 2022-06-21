@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 
 @Component({
@@ -14,5 +15,12 @@ export class TableEmptyComponent {
     @Input() header: string;
     @Input() subHeader: string;
     @Input() icon: string;
+    @Input() imageBackgroundUrl: string;
     @Input() showNoDataImage = true;
+
+    constructor(private sanitizer: DomSanitizer) {}
+
+    get imageBackground(): SafeStyle {
+        return this.imageBackgroundUrl ? this.sanitizer.bypassSecurityTrustStyle(`url(${this.imageBackgroundUrl})`) : null;
+    }
 }
