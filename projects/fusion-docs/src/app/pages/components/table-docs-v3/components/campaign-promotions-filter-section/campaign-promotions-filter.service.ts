@@ -19,8 +19,6 @@ export class CampaignPromotionsFilterService {
         //     useCache: true
         // });
 
-        console.log('getApplicationsOptions >');
-
         return of({
             application: MOK_APPLICATIONS.map(app => {
                 return {

@@ -24,12 +24,14 @@
 <ng-template #promotionsTable>
   <fusion-table
     [options]="promotionsTableOption"
+    [loading]="loading$ | async"
     [rows]="promotionsTableRows"
     [columns]="promotionsTableColumns"></fusion-table>
 </ng-template>
 
 <ng-template #configurationsTable>
   <fusion-table
-    [options]="tableOptions"
+    [options]="configurationTableOptions"
+    [loading]="loading$ | async"
     [columns]="configTableColumns"></fusion-table>
 </ng-template>
