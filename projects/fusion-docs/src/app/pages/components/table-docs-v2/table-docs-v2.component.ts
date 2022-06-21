@@ -306,12 +306,18 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
     columnsWithoutCheckboxAndToggle: Array<TableColumn> = TABLE_COLUMNS_CONFIG.filter(cel => cel.key !== 'checkbox' && cel.key !== 'live');
 
     tableOptions: TableOptions = {...TABLE_OPTIONS};
+
     tableOptionsV3: TableOptions = {
         ...TABLE_OPTIONS,
         ...{
-            tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'}
+            tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'},
+            searchOptions: {
+                placeholder: 'Search',
+                onSearch: new EventEmitter()
+            }
         }
     };
+
     tableOptionsWithTotalsRow: TableOptions = {...TABLE_OPTIONS, ...{hasTotalsRow: true}};
     // tableBigRowsOptions: TableOptions = {...TABLE_OPTIONS, ...{rowHeight: TableRowHeight.Big}};
     tableBigRowsOptions: TableOptions = {...TABLE_OPTIONS};
@@ -354,6 +360,8 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
     rowsTotals: Array<any> = [];
     rowsDynamicTotals: Array<any> = [];
 
+    rowsSearch: Array<any> = [];
+
     rowsExpandable$ = new BehaviorSubject<any[]>([]);
     rowsExpandable2Levels$ = new BehaviorSubject<any[]>([]);
 
@@ -386,6 +394,14 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
 
         this.tableOptionsWithTotalsRow.remove.onRemove.pipe(takeUntil(this.onDestroy$)).subscribe(rowRemoved => {
             console.log(`row removed`, rowRemoved);
+        });
+
+        this.tableOptionsV3.searchOptions.onSearch.pipe(takeUntil(this.onDestroy$)).subscribe(value => {
+            this.rowsSearch = [
+                ...this.rows.filter(item => {
+                    return item.name.includes(value);
+                })
+            ];
         });
     }
 
@@ -432,6 +448,7 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
                     });
                     this.rowsBig = [...this.rows];
                     this.rowsSmall = [...this.rows];
+                    this.rowsSearch = [...this.rows];
                     this.rowsTotals = [
                         Object.keys(this.rows[0]).reduce((acc, item, idx) => {
                             switch (item) {

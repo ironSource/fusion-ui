@@ -169,6 +169,30 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
                 @include size(16px);
             }
         }
+        .fu-search-holder{
+            height: 100%;
+            border-left: solid 1px $fu-light-400;
+            padding-left: 19px;
+            display: flex;
+            align-items: center;
+            @include icon-style('fu-search-icon', $fu-light-700, 16px, false, true){
+                @include size(16px);
+            }
+            input{
+                border: none;
+                box-sizing: border-box;
+                padding: 10px;
+                color: $fu-black-500;
+                &::placeholder {
+                    color: $fu-light-800;
+                    @extend %font-bodySmall;
+                }
+                &:active,
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
     }
     .fu-table-footer{
         height: 72px;

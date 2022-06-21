@@ -2,6 +2,7 @@ import {TableRowRemoveAction} from './table-row-remove-action';
 import {TableColumn} from './table-column';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
+import {EventEmitter} from '@angular/core';
 
 export interface TableLabel {
     text: string;
@@ -9,8 +10,14 @@ export interface TableLabel {
     tooltip?: string;
 }
 
+export interface TableSearchOptions {
+    placeholder?: string;
+    onSearch?: EventEmitter<string>;
+}
+
 export interface TableOptions {
-    tableLabel?: TableLabel;
+    tableLabel?: TableLabel; // table label with info tooltip (v3)
+    searchOptions?: TableSearchOptions;
     sortingType?: string;
     remove?: TableRowRemoveAction;
     isAllRowsSelectable?: boolean;

@@ -1,11 +1,19 @@
 <div *ngIf="!noTableFrame" class="fu-table-header">
-<ng-container *ngIf="options?.tableLabel as tableLabel">
-    <div class="fu-table-label">{{tableLabel.text}}
-    <ng-container *ngIf="tableLabel.tooltip">
-        <fusion-icon [fusionTooltip]="tableLabel.tooltip" class="fu-info-icon" [name]="tableLabel.icon ?? {iconName: 'info', iconVersion: 'v3'}"></fusion-icon>
+    <ng-container *ngIf="options?.tableLabel as tableLabel">
+        <div class="fu-table-label">{{tableLabel.text}}
+        <ng-container *ngIf="tableLabel.tooltip">
+            <fusion-icon [fusionTooltip]="tableLabel.tooltip" class="fu-info-icon" [name]="tableLabel.icon ?? {iconName: 'info', iconVersion: 'v3'}"></fusion-icon>
+        </ng-container>
+        </div>
     </ng-container>
+
+    <div class="fu-search-holder" *ngIf="options?.searchOptions as searchOptions">
+        <fusion-icon class="fu-search-icon" [name]="{iconName: 'search-bold', iconVersion: 'v3'}"></fusion-icon>
+        <input
+            [placeholder]="searchOptions.placeholder"
+            (input)="searchOptions.onSearch.emit($event.target.value)"
+        />
     </div>
-</ng-container>
 </div>
 <div class="tableWrap" [ngClass]="wrapperClasses" #tableWrapper>
     <table [id]="id" #table *ngIf="!tableMainError">
