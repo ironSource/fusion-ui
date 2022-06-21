@@ -1,3 +1,12 @@
+<div *ngIf="!noTableFrame" class="fu-table-header">
+<ng-container *ngIf="options?.tableLabel as tableLabel">
+    <div class="fu-table-label">{{tableLabel.text}}
+    <ng-container *ngIf="tableLabel.tooltip">
+        <fusion-icon [fusionTooltip]="tableLabel.tooltip" class="fu-info-icon" [name]="tableLabel.icon ?? {iconName: 'info', iconVersion: 'v3'}"></fusion-icon>
+    </ng-container>
+    </div>
+</ng-container>
+</div>
 <div class="tableWrap" [ngClass]="wrapperClasses" #tableWrapper>
     <table [id]="id" #table *ngIf="!tableMainError">
         <ng-container *ngIf="columns && options">
@@ -103,10 +112,11 @@
         <div class="is-overlay-loader-holder"><fusion-loader [status]="true" height="150">Loading Please Wait…</fusion-loader></div>
     </ng-container>
     <!--table pagination loading overlay-->
-    <!--todo: Add condition when to show-->
+    <!--todo: Add condition when to show button 'go top'-->
     <ng-container *ngIf="shownGoTopButton">
         <div class="fu-button-return-top" (click)="onClickReturnTop($event)">
             <fusion-icon class="fu-return-top-icon" [name]="{iconName:'angle-up', iconVersion: 'v3'}"></fusion-icon>
         </div>
     </ng-container>
 </div>
+<div *ngIf="!noTableFrame" class="fu-table-footer"></div>

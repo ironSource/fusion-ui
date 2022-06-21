@@ -69,6 +69,10 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
         return !isNullOrUndefined(this.options) && !isNullOrUndefined(this.options.stickyHeader) && this.options.stickyHeader;
     }
 
+    @HostBinding('class.fu-no-table-frame') get noTableFrame(): boolean {
+        return this.options?.noHeaderFooter;
+    }
+
     @HostBinding('class.is-empty') get isEmpty(): boolean {
         return this.tableService.isTableEmpty(this.rows, this.options.isGroupedTable, this.options.hasTotalsRow);
     }

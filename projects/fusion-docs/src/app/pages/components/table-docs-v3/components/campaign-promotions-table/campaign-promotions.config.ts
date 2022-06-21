@@ -11,6 +11,7 @@ export const CAMPAIGN_PROMOTIONS_TABLE_OPTIONS: TableOptions = {
     sortingType: 'external',
     stickyHeader: true,
     hideHeaderOnEmpty: true,
+    noHeaderFooter: true,
     pagination: {
         enable: true,
         loading: false

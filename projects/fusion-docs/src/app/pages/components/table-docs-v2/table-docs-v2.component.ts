@@ -306,6 +306,12 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
     columnsWithoutCheckboxAndToggle: Array<TableColumn> = TABLE_COLUMNS_CONFIG.filter(cel => cel.key !== 'checkbox' && cel.key !== 'live');
 
     tableOptions: TableOptions = {...TABLE_OPTIONS};
+    tableOptionsV3: TableOptions = {
+        ...TABLE_OPTIONS,
+        ...{
+            tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'}
+        }
+    };
     tableOptionsWithTotalsRow: TableOptions = {...TABLE_OPTIONS, ...{hasTotalsRow: true}};
     // tableBigRowsOptions: TableOptions = {...TABLE_OPTIONS, ...{rowHeight: TableRowHeight.Big}};
     tableBigRowsOptions: TableOptions = {...TABLE_OPTIONS};
