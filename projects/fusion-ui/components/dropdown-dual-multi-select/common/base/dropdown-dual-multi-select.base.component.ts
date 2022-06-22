@@ -6,6 +6,7 @@ import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/e
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
+import {UniqueIdService} from '@ironsource/fusion-ui';
 
 const CLASS_LIST = [
     'dual-select-button',
@@ -54,13 +55,15 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     dropdownDualMultiSelectionButtonOptions = {rounded: true, size: this.inputSize.Medium};
     selected$ = new BehaviorSubject<string>('');
     chipDefaultContent: string;
+    uid: string;
 
     private selectedChange: DropdownOption[];
     private parentWithOverflow: HTMLElement;
     private onDestroy$ = new Subject<void>();
 
-    constructor(protected element: ElementRef, protected renderer: Renderer2) {
+    constructor(protected element: ElementRef, protected renderer: Renderer2, protected uidService: UniqueIdService) {
         super();
+        this.uid = this.uidService.getUniqueId().toString();
     }
 
     ngOnInit(): void {
@@ -149,11 +152,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
 
     // todo: need to check how to close element when more than one DropdownDualMultiSelect open component on screen
     onOutsideClick($event): void {
-        const isClickComponentButton = CLASS_LIST.some(val => val === $event.classList.value);
-        if (isClickComponentButton || $event.classList.value === '') {
-            return;
-        }
-        if (!$event.closest('fusion-dropdown-dual-multi-select')) {
+        if (!$event.closest('fusion-dropdown-dual-multi-select') || !($event.closest(`.is-dropdown-dual-multi-select`)?.id === this.uid)) {
             this.closeDropdownDualSelect();
             this.viewChange.emit(this.opened$.getValue());
         }
