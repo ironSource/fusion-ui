@@ -10,6 +10,15 @@ $baseSDN: 'https://fusion.ironsrc.net/assets';
 }
 
 @font-face {
+    font-family: 'NHaasGroteskDSPro-65Md';
+    src: url('#{$baseSDN}/fonts/NHaasGroteskDSPro-65Md.eot'); /* IE9 Compat Modes */
+    src: url('#{$baseSDN}/fonts/NHaasGroteskDSPro-65Md.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('#{$baseSDN}/fonts/NHaasGroteskDSPro-65Md.woff2') format('woff2'), /* Super Modern Browsers */
+    url('#{$baseSDN}/fonts/NHaasGroteskDSPro-65Md.woff') format('woff'), /* Pretty Modern Browsers */
+    url('#{$baseSDN}/fonts/NHaasGroteskDSPro-65Md.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+@font-face {
     font-family: 'HelveticaNeue';
     src: url('#{$baseSDN}/fonts/HelveticaNeue.eot');
     src: url('#{$baseSDN}/fonts/HelveticaNeue.eot?#iefix') format('embedded-opentype'),
@@ -29,6 +38,7 @@ $baseSDN: 'https://fusion.ironsrc.net/assets';
 
 // font-family
 $groteskDSPro: 'NHaasGroteskDSPro', sans-serif;
+$groteskDSPro65Md: 'NHaasGroteskDSPro-65Md', sans-serif;
 $helveticaNueMd: 'HelveticaNeue-Medium', helvetica, sans-serif;
 $helveticaNue: 'HelveticaNeue', helvetica, sans-serif;
 
@@ -36,8 +46,6 @@ $helveticaNue: 'HelveticaNeue', helvetica, sans-serif;
 // region base for heading
 %font-heading {
     font-family: $groteskDSPro;
-    font-weight: 700;
-    line-height: 1.5;
 }
 // endregion
 
@@ -67,8 +75,7 @@ $helveticaNue: 'HelveticaNeue', helvetica, sans-serif;
 }
 %font-heading-label {
     font-size: 11px;
-    @extend %font-heading;
-    font-weight: 400;
+    font-family: $groteskDSPro65Md;
     letter-spacing: 0.25px;
 }
 // endregion
@@ -77,12 +84,10 @@ $helveticaNue: 'HelveticaNeue', helvetica, sans-serif;
 // region base for body
 %font-body{
     font-family: $helveticaNue;
-    font-weight: 400;
     line-height: 1.5;
 }
 %font-bodyStrong{
     font-family: $helveticaNueMd;
-    font-weight: 500;
     line-height: 1.5;
 }
 // endregion
@@ -105,19 +110,23 @@ $helveticaNue: 'HelveticaNeue', helvetica, sans-serif;
 }
 %font-bodySmall {
     font-size: 13px;
+    letter-spacing: 0.24px;
     @extend %font-body;
 }
 %font-bodySmallStrong {
     @extend %font-bodyStrong;
     font-size: 13px;
+    letter-spacing: 0.24px;
 }
 %font-bodyXSmall {
     font-size: 12px;
+    letter-spacing: 0.24px;
     @extend %font-body;
 }
 %font-bodyXSmallStrong {
     @extend %font-bodyStrong;
     font-size: 12px;
+    letter-spacing: 0.24px;
 }
 
 %font-caption {
