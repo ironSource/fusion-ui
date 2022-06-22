@@ -150,7 +150,6 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.isDisabled = isDisabled;
     }
 
-    // todo: need to check how to close element when more than one DropdownDualMultiSelect open component on screen
     onOutsideClick($event): void {
         if (!$event.closest('fusion-dropdown-dual-multi-select') || !($event.closest(`.is-dropdown-dual-multi-select`)?.id === this.uid)) {
             this.closeDropdownDualSelect();
