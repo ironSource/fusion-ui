@@ -397,6 +397,7 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
         });
 
         this.tableOptionsV3.searchOptions.onSearch.pipe(takeUntil(this.onDestroy$)).subscribe(value => {
+            console.log('search: ', value);
             this.rowsSearch = [
                 ...this.rows.filter(item => {
                     return item.name.includes(value);

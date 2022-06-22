@@ -134,8 +134,8 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     get shownGoTopButton(): boolean {
-        // todo: add functional
-        return false;
+        // todo: calculate if table has scroll
+        return true;
     }
 
     private lastScrollLeftValue: number;
@@ -260,7 +260,14 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
 
     onClickReturnTop($event: MouseEvent) {
         // todo: add functional
-        // console.log('to top>>')
+        console.log('to top>>');
+        (function smoothscroll() {
+            const currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            if (currentScroll > 0) {
+                window.requestAnimationFrame(smoothscroll);
+                window.scrollTo(0, currentScroll - currentScroll / 8);
+            }
+        })();
     }
 
     private isElementChildOfSuppressed(element: Element): boolean {
@@ -400,5 +407,11 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
             }
             this.scrollDown.emit(target);
         }
+    }
+
+    private calculateHigh() {
+        const bounding = this.tableWrapperElement.nativeElement.getBoundingClientRect();
+
+        console.log('>>', bounding, window.innerHeight);
     }
 }

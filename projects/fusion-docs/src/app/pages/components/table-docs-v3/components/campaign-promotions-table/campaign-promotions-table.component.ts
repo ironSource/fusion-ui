@@ -78,9 +78,9 @@ export class CampaignPromotionsTableComponent implements OnInit, OnDestroy {
                         name: item.campaignId,
                         status: {
                             config: {
-                                displayText: item.status == 6 ? 'Active' : item.status,
-                                defaultColor: item.status == 6 ? 'green' : 'grey',
-                                displayPauseButton: false,
+                                displayText: item.status == 6 ? 'Paused' : item.status,
+                                defaultColor: item.status == 6 ? 'grey' : 'green',
+                                displayPauseButton: item.status != 6,
                                 id: 1,
                                 entityId: 1
                             }
