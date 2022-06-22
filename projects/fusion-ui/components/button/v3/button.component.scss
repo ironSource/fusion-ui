@@ -30,7 +30,7 @@ $buttonBorderRadius: 100px;
 
 
 :host {
-    box-sizing: border-box;
+    sbox-sizing: border-box;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -117,10 +117,9 @@ $buttonBorderRadius: 100px;
         &.third{
             color: $fu-black-500;
             border-color: $fu-light-500;
-            padding: 3px 12px 3px;
             &:hover {
                 border: none;
-                padding: 4px 13px 4px;
+                //padding: 9px 17px 9px;
                 background-color: $fu-light-200;
             }
 
@@ -167,9 +166,6 @@ $buttonBorderRadius: 100px;
 
         &:active {
             background-color: $fu-light-400;
-        }
-        &.transparent{
-
         }
     }
 
