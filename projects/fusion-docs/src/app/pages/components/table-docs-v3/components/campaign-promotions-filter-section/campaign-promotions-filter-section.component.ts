@@ -7,7 +7,7 @@ import {Observable, Subject, zip} from 'rxjs';
 import {map, takeUntil, tap} from 'rxjs/operators';
 
 @Component({
-    selector: 'network-operations-campaign-promotions-filter',
+    selector: 'fusion-campaign-promotions-filter',
     templateUrl: './campaign-promotions-filter-section.component.html',
     styleUrls: ['campaign-promotions-filter-section.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,

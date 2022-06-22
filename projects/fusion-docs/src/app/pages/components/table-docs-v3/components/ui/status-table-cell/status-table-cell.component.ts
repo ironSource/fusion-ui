@@ -3,7 +3,7 @@ import {PubSubEvent, StatusTableCell} from '../';
 // import {PubSubService} from '@network-operations/ui/services';
 
 @Component({
-    selector: 'network-operations-status-table-cell',
+    selector: 'fusion-status-table-cell',
     templateUrl: './status-table-cell.component.html',
     styleUrls: ['./status-table-cell.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush

@@ -7,7 +7,7 @@ import {delay, finalize, takeUntil} from 'rxjs/operators';
 import {CAMPAIGN_PROMOTION_MOCK} from './campaign-promotion-data.mock';
 
 @Component({
-    selector: 'network-operations-campaign-promotions-table',
+    selector: 'fusion-campaign-promotions-table',
     templateUrl: './campaign-promotions-table.component.html',
     styleUrls: ['./campaign-promotions-table.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush

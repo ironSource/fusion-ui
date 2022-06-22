@@ -4,7 +4,7 @@ import {SingleOrMultiTableCell} from '../';
 const MAX_LINES = 20;
 
 @Component({
-    selector: 'network-operations-single-or-multi-table-cell',
+    selector: 'fusion-single-or-multi-table-cell',
     templateUrl: './single-or-multi-table-cell.component.html',
     styleUrls: ['./single-or-multi-table-cell.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
