@@ -22,7 +22,6 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
     border: 1px solid $fu-light-400;
     border-radius: 16px;
 
-
     .tableWrap{
         height: 100%;
         display: block;
@@ -152,7 +151,6 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
         }
     }
 
-
     .fu-table-header{
         height: 56px;
         width: 100%;
@@ -203,5 +201,38 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
     &.fu-no-table-frame{
         border: initial;
         border-radius: initial;
+    }
+
+    &.fixed-table {
+        position: relative;
+        .tableWrap{
+            table{
+                thead{
+                    border-bottom: none;
+                    td{
+                        height: $v3-headerHeight;
+                        position: sticky;
+                        top: 0;
+                        z-index: getZIndexLayerOffset(normal, 3);
+                        background-color: $White;
+                        &.sticky-left{
+                            left: 0;
+                            z-index: getZIndexLayerOffset(normal, 4);
+                        }
+                    }
+                }
+            }
+        }
+        &:after { // fig leaf for hide scroll on header
+            content: '';
+            position:absolute;
+            right: 0;
+            top: 1px;
+            background-color: $White;
+            width: 16px;
+            height: $v3-headerHeight;
+            border-bottom: $v3-headerBottomBorder;
+            box-sizing: border-box;
+        }
     }
 }
