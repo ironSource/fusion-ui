@@ -151,7 +151,15 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     }
 
     onOutsideClick($event): void {
-        if (!$event.closest('fusion-dropdown-dual-multi-select') || !($event.closest(`.is-dropdown-dual-multi-select`)?.id === this.uid)) {
+        const regularButtonClicked = !this.dynamicPlaceholder
+            ? !($event.closest(`.dual-select-button`)?.id === `${this.uid}-button-regular`)
+            : !($event.closest(`.dual-select-button`)?.id === `${this.uid}-button-dynamic`);
+
+        const isClickOutSide = this.templateRef
+            ? !$event.closest('fusion-dropdown-dual-multi-select') || !($event.closest(`.is-dropdown-dual-multi-select`)?.id === this.uid)
+            : regularButtonClicked;
+
+        if (isClickOutSide) {
             this.closeDropdownDualSelect();
             this.viewChange.emit(this.opened$.getValue());
         }

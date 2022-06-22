@@ -20,7 +20,7 @@
 
 
 <ng-template #regularDropdownDualMultiSelectButton>
-    <div class="dual-select-button" [class.btn-disabled]="isDisabled" (click)="onClickDualMultiSelectButton()">
+    <div [id]="uid + '-button-regular'" class="dual-select-button" [class.btn-disabled]="isDisabled" (click)="onClickDualMultiSelectButton()">
         <span class="fu-dual-multi-select-placeholder">
             {{ placeholder$ | async }}
         </span>
@@ -31,7 +31,7 @@
 </ng-template>
 
 <ng-template #dynamicDropdownDualMultiSelectButton>
-    <div class="dual-select-button" [class.btn-disabled]="isDisabled" (click)="onClickDualMultiSelectButton()">
+    <div [id]="uid + '-button-dynamic'"  class="dual-select-button" [class.btn-disabled]="isDisabled" (click)="onClickDualMultiSelectButton()">
         <span class="fu-dual-multi-select-placeholder">
             <fusion-dynamic-components [configuration]="dynamicPlaceholder"></fusion-dynamic-components>
         </span>
