@@ -120,10 +120,9 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            // todo: change position by demand
-            position: absolute;
-            right: 48px;
-            bottom: 24px;
+            position: fixed;
+            right: 81px;
+            bottom: 48px;
 
             @include icon-style('fu-return-top-icon', $fu-light-800, 32px, false, true){
                 @include size(32px);

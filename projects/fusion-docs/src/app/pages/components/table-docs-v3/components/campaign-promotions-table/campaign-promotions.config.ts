@@ -12,6 +12,8 @@ export const CAMPAIGN_PROMOTIONS_TABLE_OPTIONS: TableOptions = {
     stickyHeader: true,
     hideHeaderOnEmpty: true,
     noHeaderFooter: true,
+    hasReturnToTopButton: true,
+    scrollElementSelector: '#fu-layout-main-view',
     pagination: {
         enable: true,
         loading: false

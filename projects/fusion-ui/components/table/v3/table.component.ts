@@ -12,7 +12,7 @@ import {
     ChangeDetectionStrategy,
     OnDestroy
 } from '@angular/core';
-import {defer, fromEvent, Subject} from 'rxjs';
+import {BehaviorSubject, defer, fromEvent, Subject} from 'rxjs';
 import {debounceTime, takeUntil, tap} from 'rxjs/operators';
 import {isNullOrUndefined, isUndefined} from '@ironsource/fusion-ui/utils';
 import {TableService} from '@ironsource/fusion-ui/components/table/common/services';
@@ -101,6 +101,8 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
 
     tableMainError = false;
 
+    shownGoTopButton$ = new BehaviorSubject(false);
+
     get isCheckboxTitleShown(): boolean {
         return this.columns ? this.columns.some(column => column.type === TableColumnTypeEnum.Checkbox && column.title !== '') : false;
     }
@@ -133,9 +135,12 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
         return this._expandedRows;
     }
 
-    get shownGoTopButton(): boolean {
-        // todo: calculate if table has scroll
-        return true;
+    get scrollElement(): HTMLElement {
+        const scrollElement = this.tableWrapperElement.nativeElement;
+        if (this.options.scrollElementSelector) {
+            return document.querySelector(this.options.scrollElementSelector) || scrollElement;
+        }
+        return scrollElement;
     }
 
     private lastScrollLeftValue: number;
@@ -258,16 +263,18 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
         }
     }
 
-    onClickReturnTop($event: MouseEvent) {
-        // todo: add functional
-        console.log('to top>>');
-        (function smoothscroll() {
-            const currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
-            if (currentScroll > 0) {
-                window.requestAnimationFrame(smoothscroll);
-                window.scrollTo(0, currentScroll - currentScroll / 8);
-            }
-        })();
+    onClickReturnTop() {
+        const viewPortElement = this.scrollElement || document.documentElement;
+        const currentScroll = viewPortElement.scrollTop || document.body.scrollTop;
+        if (currentScroll > 0) {
+            (function smoothScroll() {
+                let currentScroll = viewPortElement.scrollTop || document.body.scrollTop;
+                if (currentScroll > 0) {
+                    window.requestAnimationFrame(smoothScroll);
+                    viewPortElement.scrollTo(0, currentScroll - currentScroll / 8);
+                }
+            })();
+        }
     }
 
     private isElementChildOfSuppressed(element: Element): boolean {
@@ -330,10 +337,10 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
 
     private scrollListeners(): void {
         defer(() =>
-            fromEvent(this.tableWrapperElement.nativeElement, 'scroll').pipe(
+            fromEvent(this.scrollElement, 'scroll').pipe(
                 takeUntil(this.onDestroy$),
                 tap(_ => {
-                    const scrollLeft = this.tableWrapperElement.nativeElement.scrollLeft;
+                    const scrollLeft = this.scrollElement.scrollLeft;
                     if (this.lastScrollLeftValue !== scrollLeft) {
                         this.isScrollRight = scrollLeft > 0;
                         this.lastScrollLeftValue = scrollLeft;
@@ -395,23 +402,21 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     private onScroll($event) {
+        if (this.options.hasReturnToTopButton) {
+            this.shownGoTopButton$.next(this.scrollElement.scrollTop > this.tableElement.nativeElement.offsetTop);
+        }
+
         const target = $event.target || $event;
         if (!this.options.pagination || this.options.pagination.loading || !this.options.pagination.enable) {
             return;
         }
 
-        const top = this.tableWrapperElement.nativeElement.scrollTop;
-        if (top >= this.tableElement.nativeElement.offsetHeight - this.tableWrapperElement.nativeElement.offsetHeight - 100) {
+        const top = this.scrollElement.scrollTop;
+        if (top >= this.tableElement.nativeElement.offsetHeight - this.scrollElement.offsetHeight - 100) {
             if (!this.options.pagination.handleLoadingFromHost) {
                 this.options.pagination.loading = true;
             }
             this.scrollDown.emit(target);
         }
-    }
-
-    private calculateHigh() {
-        const bounding = this.tableWrapperElement.nativeElement.getBoundingClientRect();
-
-        console.log('>>', bounding, window.innerHeight);
     }
 }

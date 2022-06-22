@@ -97,4 +97,11 @@ export class CampaignPromotionsTableComponent implements OnInit, OnDestroy {
     getExampleData() {
         return of(this.promotionsData).pipe(delay(1000));
     }
+
+    onLoadNextPageOfData() {
+        console.log(':onLoadNextPageOfData:');
+
+        this.promotionsTableOption.pagination.loading = false;
+        this.promotionsTableOption = {...this.promotionsTableOption};
+    }
 }

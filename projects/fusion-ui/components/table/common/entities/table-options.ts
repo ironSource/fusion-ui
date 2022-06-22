@@ -17,7 +17,9 @@ export interface TableSearchOptions {
 
 export interface TableOptions {
     tableLabel?: TableLabel; // table label with info tooltip (v3)
-    searchOptions?: TableSearchOptions;
+    searchOptions?: TableSearchOptions; // table search (v3)
+    hasReturnToTopButton?: boolean; // has return to top button
+    scrollElementSelector?: string; // for vertically scroll listener - default table wrapper (v3)
     sortingType?: string;
     remove?: TableRowRemoveAction;
     isAllRowsSelectable?: boolean;
