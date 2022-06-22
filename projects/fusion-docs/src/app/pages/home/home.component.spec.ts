@@ -2,7 +2,8 @@ import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {HomeComponent} from './home.component';
 import {RouterTestingModule} from '@angular/router/testing';
-import {ButtonModule, IconModule} from '@ironsource/fusion-ui';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
 
 describe('HomeComponent', () => {
     let component: HomeComponent;

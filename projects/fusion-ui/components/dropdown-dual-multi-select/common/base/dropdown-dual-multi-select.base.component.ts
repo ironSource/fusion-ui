@@ -86,7 +86,11 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     valueSelected(): Observable<{value: string; isSelected: boolean}> {
         return this.selected$.pipe(
             takeUntil(this.onDestroy$),
-            map(value => (value !== this.defaultPlaceHolder ? {value, isSelected: !!value} : {value: null, isSelected: false}))
+            map(value =>
+                value !== this.defaultPlaceHolder && value !== 'All selected'
+                    ? {value, isSelected: !!value}
+                    : {value: null, isSelected: false}
+            )
         );
     }
 
