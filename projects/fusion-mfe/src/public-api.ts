@@ -37,7 +37,7 @@ export * from '@ironsource/fusion-ui/components/status-label/v2';
 export * from '@ironsource/fusion-ui/components/fusion-base';
 export * from '@ironsource/fusion-ui/components/svg';
 export * from '@ironsource/fusion-ui/components/switcher';
-export * from '@ironsource/fusion-ui/components/table/v2';
+export * from '@ironsource/fusion-ui/components/table';
 export * from '@ironsource/fusion-ui/components/tabs';
 export * from '@ironsource/fusion-ui/components/tag/v2';
 export * from '@ironsource/fusion-ui/components/tags-input/v2';
