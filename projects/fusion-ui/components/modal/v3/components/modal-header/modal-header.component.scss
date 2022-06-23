@@ -32,6 +32,6 @@ $padding: 16px 16px 16px 24px;
             right: 18px;
             top: 14px;
         }
-        @include icon-style('close', $fu-light-500, 20px, true, true, 0, true);
+        @include icon-style('close', $fu-light-800, 20px, true, true, 0, true);
     }
 }

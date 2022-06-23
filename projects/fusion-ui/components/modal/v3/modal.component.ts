@@ -161,7 +161,7 @@ export class ModalComponent implements OnDestroy, OnInit {
             cancelButton: {
                 cancelButtonText: config?.cancelButton?.cancelButtonText || 'Cancel',
                 cancelButtonHidden: config?.cancelButton?.cancelButtonHidden || false,
-                cancelButtonClass: config?.cancelButton?.cancelButtonClass || 'third'
+                cancelButtonClass: config?.cancelButton?.cancelButtonClass || 'transparent third'
             }
         });
     }
