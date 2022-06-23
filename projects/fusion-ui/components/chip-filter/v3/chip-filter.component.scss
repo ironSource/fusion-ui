@@ -148,14 +148,16 @@ $paddingChipWithCloseButton: 4px 12px 4px 16px;
             }
 
             &:hover {
-                color: $fu-primary-500;
+                color: $fu-black-500;
+                background-color: $fu-light-300;
                 cursor: pointer;
             }
         }
 
         &.fu-disabled {
             .fu-chip-filter-container{
-                color: $fu-light-900;
+                color: $fu-black-500;
+                opacity: 0.7;
                 pointer-events: none;
             }
         }
