@@ -164,7 +164,7 @@ export class InputDocsComponent implements OnInit {
     );
 
     passwordOptions: InputOptions = {};
-    confirmPasswordOptions: InputOptions = {};
+    confirmPasswordOptions: InputOptions = {size: InputSize.Small};
 
     constructor(private fb: FormBuilder, private versionService: VersionService, private docLayoutService: DocsLayoutService) {}
 
@@ -186,13 +186,13 @@ export class InputDocsComponent implements OnInit {
     }
 
     onPassStateChanged(isPassHidden) {
-        this.passwordOptions = {isPassHidden};
-        this.confirmPasswordOptions = {isPassHidden};
+        this.passwordOptions = {...this.passwordOptions, isPassHidden};
+        this.confirmPasswordOptions = {...this.confirmPasswordOptions, isPassHidden};
     }
 
     onPassConfirmStateChanged(isPassHidden) {
-        this.confirmPasswordOptions = {isPassHidden};
-        this.passwordOptions = {isPassHidden};
+        this.confirmPasswordOptions = {...this.confirmPasswordOptions, isPassHidden};
+        this.passwordOptions = {...this.passwordOptions, isPassHidden};
     }
 
     alertMe($event) {
