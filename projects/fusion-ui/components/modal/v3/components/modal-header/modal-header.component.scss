@@ -30,7 +30,7 @@ $padding: 16px 16px 16px 24px;
             cursor: pointer;
             position: absolute;
             right: 18px;
-            top: 14px;
+            top: 16px;
         }
         @include icon-style('close', $fu-light-800, 20px, true, true, 0, true);
     }
