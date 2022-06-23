@@ -49,14 +49,13 @@ $buttonBorderRadius: 100px;
     border-radius: $buttonBorderRadius;
 
     &.dark {
-        --fu-border-color: #ffff;
-        --fu-background-color: transparent;
-        --fu-font-color: #ffff;
-        --fu-disable-font-color: #8E959D;
-        --fu-disable-border-color: #8E959D;
-        --fu-border: 1px solid;
-        --fu-hover-background-color: rgba(255, 255, 255, 0.15);
-        --fu-active-background-color: #696A6B;
+        --fu-button-dark-border-color: #ffff;
+        --fu-button-dark-background-color: transparent;
+        --fu-button-dark-font-color: #ffff;
+        --fu-button-dark-disable-font-color: #8E959D;
+        --fu-button-dark-disable-border-color: #8E959D;
+        --fu-button-dark-border: 1px solid;
+        --fu-button-dark-hover-background-color: rgba(255, 255, 255, 0.15);
     }
 
     &:hover,
@@ -119,13 +118,14 @@ $buttonBorderRadius: 100px;
         }
 
         &.secondary{
-            color: $fu-black-500;
-            border-color: $fu-black-500;
-            background-color: transparent;
+            color: var(--fu-button-dark-font-color, $fu-black-500);
+            border-color: var(--fu-button-dark-border-color, $fu-black-500);
+            background-color: var(--fu-button-dark-background-color, transparent);
             &:hover,
             &:active {
-                color: $White;
-                background-color: $fu-black-500;
+                color: var(--fu-button-dark-font-color, $White);
+                border: var(--fu-button-dark-border,none);
+                background-color: var(--fu-button-dark-hover-background-color, $fu-black-200);
             }
         }
 
@@ -152,10 +152,10 @@ $buttonBorderRadius: 100px;
 
     &.secondary {
         color: $White;
-        background-color: var(--fu-background-color, $fu-black-500);
+        background-color: var(--fu-button-dark-background-color, $fu-black-500);
         &:hover,
         &:active {
-            background-color: var(--fu-hover-background-color,$fu-black-900);
+            background-color: var(--fu-button-dark-hover-background-color,$fu-black-900);
         }
     }
 
@@ -169,9 +169,9 @@ $buttonBorderRadius: 100px;
     }
 
     &.disabled {
-        color: var(--fu-disable-font-color,$White);
-        border-color: var(--fu-disable-border-color, initial);
-        background-color: var(--fu-background-color,$fu-light-600);
+        color: var(--fu-button-dark-disable-font-color,$White);
+        border-color: var(--fu-button-dark-disable-border-color, initial);
+        background-color: var(--fu-button-dark-background-color,$fu-light-600);
         cursor: initial;
         pointer-events: none;
     }
@@ -370,13 +370,13 @@ $buttonBorderRadius: 100px;
         }
 
         &.secondary {
-            color: var(--fu-font-color, $White);
-            border: var(--fu-border, none);
-            border-color: var(--fu-border-color, $fu-black-500);
-            background-color: var(--fu-background-color, $fu-black-500);
+            color: var(--fu-button-dark-font-color, $White);
+            border: var(--fu-button-dark-border, none);
+            border-color: var(--fu-button-dark-border-color, $fu-black-500);
+            background-color: var(--fu-button-dark-background-color, $fu-black-500);
             &.transparent {
-                color: var(--fu-font-color, $fu-black-500);
-                border-color: var(--fu-border-color, $fu-black-500);
+                color: var(--fu-button-dark-font-color, $fu-black-500);
+                border-color: var(--fu-button-dark-border-color, $fu-black-500);
             }
         }
 
