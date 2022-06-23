@@ -1,0 +1,127 @@
+<ng-container
+    *ngIf="(isRowTotal && tableService.isInTotalTypeString(column)) || tableService.isTypeString(column); else notStringColumnType"
+>
+    <!--String Cell-->
+    <div class="truncate centerVertical" [ngClass]="column.align" [style.width]="innerElementWidth"
+         [fusionTooltip]="cellStringData">
+        {{ cellStringData | notAvailable: notAvailableText }}
+    </div>
+</ng-container>
+
+<ng-template #notStringColumnType>
+    <!--Checkbox Cell-->
+    <div *ngIf="tableService.isTypeCheckbox(column) && isBoolean(data)" class="checkbox-cell">
+        <fusion-checkbox
+            class="is-regular"
+            title="select / un-select row"
+            [checked]="isRowChecked()"
+            (changed)="selectedChange.emit($event)"
+            [name]="'row_' + position.x"
+        ></fusion-checkbox>
+    </div>
+    <!--ToggleButton Cell-->
+    <div *ngIf="tableService.isTypeToggleButton(column) && isBoolean(data)">
+        <fusion-toggle
+            [model]="data"
+            [isDisabled]="isReadOnly"
+            size="small"
+            customCheckedBackgroundColor="#3083FF"
+            (modelChange)="onToggleChanged($event)"
+        ></fusion-toggle>
+    </div>
+    <!--InputEdit Cell-->
+    <div
+        *ngIf="tableService.isTypeInputEdit(column) && data"
+        [style.min-width]="'calc(' + column.width + ' - 1px)'"
+        class="inputType"
+        [ngClass]="column.align"
+    >
+        <fusion-input-inline
+            #inlineInput
+            *ngIf="!isRowTotal; else noEditCell"
+            [type]="column.inputType"
+            (onSave)="onEndEdit($event)"
+            (onCancel)="onCancel()"
+            [textClass]="customClass && customClass[column.key]"
+            [formControl]="data"
+            [loading]="isInRequest$ | async"
+            [error]="inputError$ | async"
+            [readOnly]="isReadOnly"
+            [currencyPipeParameters]="column?.currencyPipeParameters"
+        ></fusion-input-inline>
+        <ng-template #noEditCell>&nbsp;</ng-template>
+    </div>
+    <!--DynamicComponent Cell-->
+    <fusion-dynamic-components
+        *ngIf="tableService.isTypeComponent(column)"
+        [configuration]="customCellData"
+    >
+    </fusion-dynamic-components>
+    <!--Currency Cell-->
+    <div
+        *ngIf="tableService.isTypeCurrency(column)"
+        class="truncate centerVertical"
+        [ngClass]="column.align || 'right'"
+        [style.width]="innerElementWidth"
+        [fusionTooltip]="$any(data) | currency: 'USD'"
+    >
+        {{
+        !isNull(data)
+            ? ($any(data)
+                | currency
+                : column?.currencyPipeParameters?.currencyCode || undefined
+                    : column?.currencyPipeParameters?.display || (column?.currencyPipeParameters ? undefined : '$ ')
+                    : column?.currencyPipeParameters?.digitsInfo || undefined)
+            : (data | notAvailable: notAvailableText)
+        }}
+    </div>
+    <!--Number Cell-->
+    <div
+        *ngIf="tableService.isTypeNumber(column)"
+        class="truncate centerVertical"
+        [ngClass]="column.align || 'right'"
+        [style.width]="innerElementWidth"
+        [fusionTooltip]="$any(data) | number: column.pipeOptions"
+    >
+        {{ !isNull(data) ? ($any(data) | number: column.pipeOptions) : (data | notAvailable: notAvailableText) }}
+    </div>
+    <!--Percent Cell-->
+    <div
+        *ngIf="tableService.isTypePercent(column)"
+        class="truncate centerVertical"
+        [ngClass]="column.align || 'right'"
+        [style.width]="innerElementWidth"
+        fusionTooltip="{{ $any(data) | number: column.pipeOptions }} %"
+    >
+        {{ !isNull(data) ? ($any(data) | number: column.pipeOptions) : (data | notAvailable: notAvailableText) }}
+        {{ !isNullOrUndefined(data) ? '%' : null }}
+    </div>
+    <!--Date Cell-->
+    <div *ngIf="tableService.isTypeDate(column)" class="truncate centerVertical">
+        {{
+        data
+            ? isAsDate(data)
+                ? ($any(data) | date: getDateFormat(column.dateFormat):getDateUTCFormat(column.ignoreTimeZone))
+                : data
+            : !isRowTotal
+                ? 'No ' + column.title
+                : ''
+        }}
+    </div>
+</ng-template>
+
+<!--Row utility Cell icons and buttons-->
+<ng-container *ngIf="!isRowTotal && isLastColumn">
+    <!--single remove action button-->
+    <ng-container *ngIf="isRemove && !isReadOnly" [ngTemplateOutlet]="removeActionButton"></ng-container>
+    <!--single remove action button-->
+</ng-container>
+
+<ng-template #removeActionButton>
+    <div class="fu-cell-action-button"
+         [fusionTooltip]="getRemoveIconTooltipText()"
+         (click)="onRowRemoveClicked($event)"
+    >
+        <fusion-icon class="fu-table-action-icon" [name]="cellRemoveActionIcon"></fusion-icon>
+    </div>
+</ng-template>

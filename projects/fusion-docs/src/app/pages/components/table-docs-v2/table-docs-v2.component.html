@@ -1,3 +1,15 @@
+<!--<fusion-table
+    id="basicTableExample"
+    [columns]="columnsWithoutCheckboxAndToggle"
+    [rows]="rowsSearch"
+    [options]="tableOptionsV3"
+    [loading]="loading$ | async"
+    (rowModelChange)="onBasicRowModelChange($event)"
+    (sortChanged)="onBasicSortChanged($event)"
+    (selectionChanged)="onSelectedChanged($event)"
+    (rowClicked)="onRowClicked($event)"
+></fusion-table>-->
+
 <div class="row">
     <div class="col-9">
         <!--UI-Component Examples-->
@@ -2452,7 +2464,7 @@ document.addEventListener("DOMContentLoaded", onLoad, false);'
             </div>
         </fusion-example-block>
         <br />
-        <fusion-example-block id="typeCustomEmptyTable" title="Empty table">
+        <fusion-example-block id="typeCustomEmptyTable" title="Empty table custom">
             <!--code examples by framework-->
             <ng-template fusionExampleBlock="Angular">
                 <fusion-code-block
@@ -2880,7 +2892,7 @@ document.addEventListener("DOMContentLoaded", onLoad, false);'
                 <div class="col-12" style="min-height: 60px;">
                     <fusion-table
                         id="basicLoadingTableExample"
-                        [columns]="columnsBasic"
+                        [columns]="columnsWithoutCheckboxAndToggle"
                         [rows]="[]"
                         [options]="tableOptions"
                         [loading]="true"

@@ -17,6 +17,7 @@ export interface TableColumn {
     width?: string;
     style?: any;
     align?: 'left' | 'center' | 'right';
+    headerAlign?: 'left' | 'center' | 'right';
     tooltip?: string;
     tooltipIcon?: IconData;
     pipeOptions?: string;

@@ -5,8 +5,6 @@ import {DropdownBaseComponent} from '@ironsource/fusion-ui/components/dropdown/c
 import {DropdownSearchComponent} from '@ironsource/fusion-ui/components/dropdown-search/v3';
 import {DropdownSelectComponent} from '@ironsource/fusion-ui/components/dropdown-select/v3';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
-import {map} from 'rxjs/operators';
-import {of} from 'rxjs';
 
 const ARROW_ICON = {
     iconName: 'angle-down',

@@ -24,6 +24,22 @@
     }
 }
 
+%link-reset{
+    a{
+        @extend %font-bodyStrong;
+        text-decoration: none;
+        color:$fu-primary-500;
+        cursor: pointer;
+
+        &:link,
+        &:visited,
+        &:hover,
+        &:active{
+            color:$fu-primary-500;
+        }
+    }
+}
+
 %no-pointer-events{
     pointer-events: none;
     cursor: default;

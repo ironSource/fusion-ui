@@ -1,0 +1,78 @@
+<ng-container *ngIf="(filtersList$ | async) as filtersList">
+  <div class="filters-container" [formGroup]="form">
+    <fusion-chip-filters>
+      <fusion-chip-filter [configuration]="{ id: 1, mode: 'static', close: true }">
+        <div class="filter-element">
+          <fusion-dropdown-dual-multi-select
+            [totalItems]="10"
+            [items]="filtersList['campaign']"
+            title="Campaign"
+            [pendingItems]="false"
+            [placeholder]="'All'"
+            formControlName="campaigns"
+          ></fusion-dropdown-dual-multi-select>
+        </div>
+      </fusion-chip-filter>
+
+      <fusion-chip-filter [configuration]="{ id: 2, mode: 'static', close: true }">
+        <div class="filter-element">
+          <fusion-dropdown-dual-multi-select
+            [totalItems]="10"
+            [items]="filtersList['adUnit']"
+            title="Ad Unit"
+            [pendingItems]="false"
+            [placeholder]="'All'"
+            formControlName="adUnits"
+          ></fusion-dropdown-dual-multi-select>
+        </div>
+      </fusion-chip-filter>
+
+      <fusion-chip-filter [configuration]="{ id: 3, mode: 'static', close: true }">
+        <div class="filter-element">
+          <fusion-dropdown-dual-multi-select
+            [totalItems]="10"
+            [items]="filtersList['application']"
+            title="Application"
+            [pendingItems]="false"
+            [placeholder]="'All'"
+            formControlName="applications"
+          ></fusion-dropdown-dual-multi-select>
+        </div>
+      </fusion-chip-filter>
+
+      <fusion-chip-filter [configuration]="{ id: 4, mode: 'static', close: true }">
+        <div class="filter-element">
+
+          <fusion-dropdown-dual-multi-select
+            [totalItems]="10"
+            [items]="filtersList['status']"
+            title="Status"
+            [pendingItems]="false"
+            [placeholder]="'All'"
+            formControlName="status"
+          ></fusion-dropdown-dual-multi-select>
+        </div>
+      </fusion-chip-filter>
+
+      <fusion-chip-filter [configuration]="{ id: 5, mode: 'static', close: true }">
+        <div class="filter-element">
+          <fusion-dropdown-dual-multi-select
+            [totalItems]="10"
+            [items]="filtersList['promotion']"
+            title="Promotions"
+            [pendingItems]="false"
+            [placeholder]="'All'"
+            formControlName="promotions"
+          ></fusion-dropdown-dual-multi-select>
+        </div>
+      </fusion-chip-filter>
+
+      <fusion-chip-filter [configuration]="{ id: 6, mode: 'static',close: true }">
+        <div class="filter-element">
+          <fusion-daterange [options]="dateRangeOptions" formControlName="dateRange"> </fusion-daterange>
+        </div>
+      </fusion-chip-filter>
+
+    </fusion-chip-filters>
+  </div>
+</ng-container>

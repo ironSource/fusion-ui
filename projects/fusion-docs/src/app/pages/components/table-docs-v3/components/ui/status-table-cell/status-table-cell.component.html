@@ -1,0 +1,11 @@
+<div class="status-table-cell-container">
+  <div>
+    <fusion-icon-status [options]="{color:config?.defaultColor}"></fusion-icon-status>
+    <label>{{config?.displayText}}</label>
+  </div>
+  <span class="pause-icon"
+        *ngIf="config?.displayPauseButton">
+    <fusion-icon [name]="{iconName:'stop-round', iconVersion:'v2'}"
+                 (click)="pause()"></fusion-icon>
+  </span>
+</div>

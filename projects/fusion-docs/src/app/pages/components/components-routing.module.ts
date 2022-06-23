@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {ComponentsComponent} from './components.component';
+import {TableDocsV3Module} from './table-docs-v3/table-docs-v3.module';
 
 const routes: Routes = [
     {
@@ -118,6 +119,10 @@ const routes: Routes = [
             {
                 path: 'v2/table',
                 loadChildren: () => import('./table-docs-v2/table-docs-v2.module').then(m => m.TableDocsV2Module)
+            },
+            {
+                path: 'v3/table',
+                loadChildren: () => import('./table-docs-v3/table-docs-v3.module').then(m => m.TableDocsV3Module)
             },
             {
                 path: 'tag',

@@ -1,0 +1,29 @@
+@import "../../../../../src/style/scss/v3/vars/vars";
+@import "../../../../../src/style/scss/v3/vars/colors";
+@import '../../../../../src/style/scss/v3/mixins/mixins';
+
+:host {
+    .is-nodata{
+        @extend %font-bodyLargeStrong;
+        text-align: center;
+        color: $fu-black-200;
+        padding: 65px 0;
+        &:hover{
+            background-color: $White;
+        }
+        .is-nodata-sub{
+            padding-top: 8px;
+            @extend %font-bodySmall;
+        }
+        .icon-container{
+            padding-bottom: 24px;
+            @include icon-style('empty-table-icon', $fu-light-600, (height:51px, width:42px), true, true);
+        }
+        .no-data-img {
+            display: block;
+            height: 112px;
+            margin-bottom: 24px;
+            @extend %empty-state-background;
+        }
+    }
+}

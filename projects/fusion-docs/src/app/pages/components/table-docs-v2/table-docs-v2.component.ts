@@ -23,10 +23,10 @@ import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 const TABLE_OPTIONS: TableOptions = {
     sortingType: 'local',
     remove: {active: true, onRemove: new EventEmitter()},
-    noDataSubMessage: 'Lorem ipsum dolor'
+    noDataSubMessage: 'Try using again with a different filters'
 };
 const TABLE_COLUMNS_CONFIG: Array<TableColumn> = [
-    {key: 'checkbox', type: TableColumnTypeEnum.Checkbox, width: '32px'},
+    {key: 'checkbox', type: TableColumnTypeEnum.Checkbox, width: '32px' /*, style: {'border-right': 'solid 1px #ccc'}*/},
     /*
     {key: 'id', title: 'ID', sort: 'asc'}, // 'asc' | 'desc' | ''},
      */
@@ -68,7 +68,7 @@ const TABLE_COLUMNS_CONFIG: Array<TableColumn> = [
         },
         title: 'Second Bid',
         width: '85px',
-        tooltip: 'Lorem ipsum dolor sit amet'
+        tooltip: 'Also Lorem ipsum dolor sit amet'
     },
     {key: 'email', title: 'Email', sort: ''},
     {key: 'website', title: 'Website'}
@@ -306,8 +306,21 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
     columnsWithoutCheckboxAndToggle: Array<TableColumn> = TABLE_COLUMNS_CONFIG.filter(cel => cel.key !== 'checkbox' && cel.key !== 'live');
 
     tableOptions: TableOptions = {...TABLE_OPTIONS};
+
+    tableOptionsV3: TableOptions = {
+        ...TABLE_OPTIONS,
+        ...{
+            tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'},
+            searchOptions: {
+                placeholder: 'Search',
+                onSearch: new EventEmitter()
+            }
+        }
+    };
+
     tableOptionsWithTotalsRow: TableOptions = {...TABLE_OPTIONS, ...{hasTotalsRow: true}};
-    tableBigRowsOptions: TableOptions = {...TABLE_OPTIONS, ...{rowHeight: TableRowHeight.Big}};
+    // tableBigRowsOptions: TableOptions = {...TABLE_OPTIONS, ...{rowHeight: TableRowHeight.Big}};
+    tableBigRowsOptions: TableOptions = {...TABLE_OPTIONS};
     tableSmallRowsOptions: TableOptions = {...TABLE_OPTIONS, ...{rowHeight: TableRowHeight.Small}};
 
     tableOptionsNoDataCustom = {
@@ -347,6 +360,8 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
     rowsTotals: Array<any> = [];
     rowsDynamicTotals: Array<any> = [];
 
+    rowsSearch: Array<any> = [];
+
     rowsExpandable$ = new BehaviorSubject<any[]>([]);
     rowsExpandable2Levels$ = new BehaviorSubject<any[]>([]);
 
@@ -370,10 +385,25 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
         this.selectedVersion$.subscribe((styleVersion: StyleVersion) => {
             if (styleVersion === StyleVersion.V1) {
                 this.router.navigate(['docs/components/table']);
+            } else if (styleVersion === StyleVersion.V3) {
+                this.router.navigate(['docs/components/v3/table']);
             }
         });
 
         this.getDataToTable();
+
+        this.tableOptionsWithTotalsRow.remove.onRemove.pipe(takeUntil(this.onDestroy$)).subscribe(rowRemoved => {
+            console.log(`row removed`, rowRemoved);
+        });
+
+        this.tableOptionsV3.searchOptions.onSearch.pipe(takeUntil(this.onDestroy$)).subscribe(value => {
+            console.log('search: ', value);
+            this.rowsSearch = [
+                ...this.rows.filter(item => {
+                    return item.name.includes(value);
+                })
+            ];
+        });
     }
 
     ngOnDestroy(): void {
@@ -419,6 +449,7 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
                     });
                     this.rowsBig = [...this.rows];
                     this.rowsSmall = [...this.rows];
+                    this.rowsSearch = [...this.rows];
                     this.rowsTotals = [
                         Object.keys(this.rows[0]).reduce((acc, item, idx) => {
                             switch (item) {

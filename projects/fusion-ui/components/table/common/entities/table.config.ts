@@ -10,6 +10,7 @@ export const TABLE_OPTIONS_DEFAULT_VALUES: TableModuleOptions = {
 export const TABLE_OPTIONS_TOKEN = new InjectionToken<TableModuleOptions>('Table options');
 
 export const DEFAULT_REMOVE_ICON = 'close';
+export const DEFAULT_REMOVE_ICON_V3 = {iconName: 'delete', iconVersion: 'v3'};
 export const DEFAULT_REMOVE_TOOLTIP_TEXT = 'Remove';
 export const DEFAULT_REMOVE_TOOLTIP_WIDTH = '71';
 export const CELL_PADDING = '20px';
@@ -27,10 +28,6 @@ export const CONFIG_TABLE_BY_UI_STYLE: {[styleKey: string]: TableIconsConfigBySt
     style_v2: {
         iconSort: {iconName: 'arrow-sort-down', iconVersion: 'v2'},
         iconInfo: {iconName: 'info-circle', iconVersion: 'v2'}
-    },
-    style_v3: {
-        iconSort: {iconName: 'arrow-sort-down', iconVersion: 'v3'},
-        iconInfo: {iconName: 'info-circle', iconVersion: 'v3'}
     }
 };
 

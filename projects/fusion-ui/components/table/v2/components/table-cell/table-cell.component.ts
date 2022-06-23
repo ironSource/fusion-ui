@@ -34,6 +34,7 @@ import {
 import {ERROR_MESSAGES} from '@ironsource/fusion-ui/components/error-message';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
+import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 
 type CellDataType = Type<Component> | FormControl | string | boolean | undefined | null;
 
@@ -172,7 +173,7 @@ export class TableCellComponent implements OnInit, OnChanges {
             : (this.data as FormControl).value;
     }
 
-    getRemoveIconName(): string {
+    getRemoveIconName(): IconData {
         return this.options && this.options.remove && this.options.remove.icon ? this.options.remove.icon : DEFAULT_REMOVE_ICON;
     }
 

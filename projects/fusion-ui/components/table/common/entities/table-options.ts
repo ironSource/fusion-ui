@@ -1,14 +1,32 @@
 import {TableRowRemoveAction} from './table-row-remove-action';
 import {TableColumn} from './table-column';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
+import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
+import {EventEmitter} from '@angular/core';
+
+export interface TableLabel {
+    text: string;
+    icon?: IconData;
+    tooltip?: string;
+}
+
+export interface TableSearchOptions {
+    placeholder?: string;
+    onSearch?: EventEmitter<string>;
+}
 
 export interface TableOptions {
+    tableLabel?: TableLabel; // table label with info tooltip (v3)
+    searchOptions?: TableSearchOptions; // table search (v3)
+    hasReturnToTopButton?: boolean; // has return to top button
+    scrollElementSelector?: string; // for vertically scroll listener - default table wrapper (v3)
     sortingType?: string;
     remove?: TableRowRemoveAction;
     isAllRowsSelectable?: boolean;
     isLoadingOverlayMode?: boolean; // show data main loading as overlay on the whole table (if not set - default as true)
     noDataMessage?: string;
     noDataSubMessage?: string;
+    noDataImageBgUrl?: string; // custom image for empty table as background URL (v3)
     customNoData?: DynamicComponentConfiguration; // user defined "no data" content
     isGroupedTable?: string;
     pagination?: TablePaginationOption;
@@ -29,6 +47,7 @@ export interface TableOptions {
         ignoredParentSelectorsRowClickEvent?: string[];
     };
     notAvailableText?: string;
+    noHeaderFooter?: boolean; // suppress table frame with header and footer (from v3)
     isRemoveIconHiddenForRow?(row: any): boolean;
     infoIconForRowOnHover?(row: any): string;
 }
