@@ -37,11 +37,10 @@ $buttonBorderRadius: 100px;
     align-items: center;
     cursor: pointer;
     border: none;
-    font-family: $helveticaNueMd;
-    font-weight: 500;
-    line-height: 15.87px;
+
+    @extend %font-bodySmallStrong;
+
     text-align: center;
-    font-size: 13px;
     height: $mediumHeight;
     width: fit-content;
     padding: $mediumPadding;
@@ -83,12 +82,14 @@ $buttonBorderRadius: 100px;
     &.small {
         height: $smallHeight;
         padding: $smallPadding;
+        @extend %font-bodyXSmall;
     }
 
     &.large{
         height: $largeHeight;
         padding: $largePadding;
         font-size: 14px;
+        @extend %font-bodyMediumStrong;
         &.fu-with-content {
             & > span {
                 & > span {
