@@ -7,7 +7,7 @@ import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {RouterModule, Routes} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 import {DropdownCustomPlaceholderModule} from '../../../components/dropdown-custom-placeholder/dropdown-custom-placeholder.module';
-import {DropdownModule} from '@ironsource/fusion-ui/components/dropdown/v2';
+import {DropdownModule} from '@ironsource/fusion-ui/components/dropdown';
 import {MultiDropdownModule} from '@ironsource/fusion-ui/components/multi-dropdown/v2';
 import {ErrorMessageModule} from '@ironsource/fusion-ui/components/error-message';
 
