@@ -330,7 +330,7 @@ $optionGroupHeight: 24px;
 :host-context(fusion-chip-filter){
     --fu-chip-max-width: 200px;
     .is-dropdown .options-dropdown {
-        top: -4px;
+        top: -10px;
         min-width: 200px;
     }
     .fu-chip-content-default{

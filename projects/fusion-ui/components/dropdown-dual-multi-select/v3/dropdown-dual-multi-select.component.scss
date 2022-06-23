@@ -78,6 +78,9 @@
 
 :host-context(fusion-chip-filter) {
     --fu-chip-max-width: 200px;
+    .dropdown-dual-multi-select-layout {
+        top: -10px;
+    }
     .fu-chip-content-default{
         display: flex;
         gap: 4px;
