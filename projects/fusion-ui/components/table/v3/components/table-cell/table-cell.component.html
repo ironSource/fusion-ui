@@ -115,9 +115,6 @@
     <!--single remove action button-->
     <ng-container *ngIf="isRemove && !isReadOnly" [ngTemplateOutlet]="removeActionButton"></ng-container>
     <!--single remove action button-->
-    <!-- todo: multiple actions button-->
-    <!--<ng-container *ngIf="isRemove && !isReadOnly" [ngTemplateOutlet]="multiActionButton"></ng-container>-->
-    <!--multiple actions button-->
 </ng-container>
 
 <ng-template #removeActionButton>
@@ -128,14 +125,3 @@
         <fusion-icon class="fu-table-action-icon" [name]="cellRemoveActionIcon"></fusion-icon>
     </div>
 </ng-template>
-
-<ng-template #multiActionButton>
-    <div class="fu-cell-action-button"
-         (click)="onMultiActionButtonClicked($event)"
-    >
-        <fusion-icon class="fu-table-multi-action-icon" [name]="{iconName: 'more-vert', iconVersion: 'v3'}"></fusion-icon>
-    </div>
-</ng-template>
-
-
-

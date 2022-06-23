@@ -273,15 +273,6 @@ export class TableCellComponent implements OnInit, OnChanges {
         this.remove.emit();
     }
 
-    onMultiActionButtonClicked($event: MouseEvent) {
-        if ($event) {
-            $event.preventDefault();
-            $event.stopPropagation();
-        }
-
-        console.log('onMultiActionButtonClicked >>>');
-    }
-
     getDateFormat(dateFormat: string): string {
         return dateFormat || 'd MMM yyyy';
     }
