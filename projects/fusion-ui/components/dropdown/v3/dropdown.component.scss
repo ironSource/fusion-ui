@@ -42,9 +42,9 @@ $optionGroupHeight: 24px;
             min-width: var(--dropdown-overlay-min-width, 180px);
             max-height: 0;
             background: $White;
-            box-shadow: 0 2px 4px 0 rgba(12, 0, 51, 0.2);
-            border: solid 1px $fu-light-300;
+            box-shadow: 0px 8px 24px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4);
             border-radius: $borderRadius;
+            padding: 4px;
             display: none;
             @extend %location;
             .options-holder {
