@@ -150,6 +150,9 @@ $selectHolderHeight: 39px;
         justify-content: center;
         gap: 3px;
         max-width: var(--fu-chip-max-width);
+        .calendar-today{
+            margin: 0;
+        }
         .fu-chip-text {
             @extend %font-bodySmallStrong;
             @extend %truncate-flex-child;
