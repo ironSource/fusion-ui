@@ -3,13 +3,15 @@ import {
     ChangeDetectorRef,
     ContentChildren,
     Directive,
+    ElementRef,
     EventEmitter,
     Input,
     OnDestroy,
     OnInit,
     Output,
     QueryList,
-    Renderer2
+    Renderer2,
+    ViewChild
 } from '@angular/core';
 import {ChipFilterComponent} from '@ironsource/fusion-ui/components/chip-filter';
 import {BehaviorSubject, combineLatest, Observable, Subject} from 'rxjs';
@@ -22,6 +24,7 @@ import {SelectedFilters} from './chip-filters-entities';
 @Directive()
 export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestroy, OnInit {
     @ContentChildren(ChipFilterComponent) chipFilters!: QueryList<ChipFilterComponent>;
+    @ViewChild('addFilter', {static: true}) addFilterComponent: any;
 
     @Input() set disableAddFilter(val: boolean) {
         this.disableAddFilter$.next(val);
@@ -82,8 +85,13 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
         this.onSelectedValueListener();
 
         this.onClosedChipListener();
-
-        this.addFilterControl.valueChanges.pipe().subscribe((option: DropdownOption[]) => {
+        this.options$
+            .asObservable()
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe((option: DropdownOption[]) => {
+                this.showAddFilter$.next(option.length > 0);
+            });
+        this.addFilterControl.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe((option: DropdownOption[]) => {
             if (option) {
                 this.addChipFilter(option[0]);
             }
