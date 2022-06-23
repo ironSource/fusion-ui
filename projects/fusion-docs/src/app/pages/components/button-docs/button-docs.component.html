@@ -1,3 +1,103 @@
+<!--<div class="row">
+    <div class="col-1" style="padding: 15px">
+        <fusion-button
+            icon="frame"
+        >
+            Button
+        </fusion-button>
+
+    </div>
+    <div class="col-1" style="padding: 15px">
+        <fusion-button
+            class="transparent"
+            icon="frame"
+        >
+            Button
+        </fusion-button>
+
+    </div>
+    <div class="col-1" style="padding: 15px">
+        <fusion-button
+            icon="frame"
+            [loading]="true"
+        >
+            Button
+        </fusion-button>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-1" style="padding: 15px">
+        <fusion-button
+            class="secondary"
+            icon="frame"
+        >
+            Button
+        </fusion-button>
+
+    </div>
+    <div class="col-1" style="padding: 15px">
+        <fusion-button
+            class="transparent secondary"
+            icon="frame"
+        >
+            Button
+        </fusion-button>
+
+    </div>
+    <div class="col-1" style="padding: 15px">
+        <fusion-button
+            class="secondary"
+            icon="frame"
+            [loading]="true"
+        >
+            Button
+        </fusion-button>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-1" style="padding: 15px">
+        <fusion-button
+            class="third"
+            icon="frame"
+        >
+            Button
+        </fusion-button>
+
+    </div>
+    <div class="col-1" style="padding: 15px">
+        <fusion-button
+            class="third"
+            icon="frame"
+            [loading]="true"
+        >
+            Button
+        </fusion-button>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-1" style="padding: 15px">
+        <fusion-button
+            class="danger"
+            icon="frame"
+        >
+            Button
+        </fusion-button>
+
+    </div>
+    <div class="col-1" style="padding: 15px">
+        <fusion-button
+            class="danger"
+            icon="frame"
+            [loading]="true"
+        >
+            Button
+        </fusion-button>
+
+    </div>
+</div>-->
 <div class="row" *ngIf="selectedVersion$ | async as currentStyleVersion">
     <ng-container *ngIf="(styleUpdating$ | async) === false; else inUpdate">
         <div class="col-9">

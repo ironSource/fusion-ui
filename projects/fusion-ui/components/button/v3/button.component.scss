@@ -59,10 +59,7 @@ $buttonBorderRadius: 100px;
         --fu-active-background-color: #696A6B;
     }
 
-    &:hover {
-        background-color: $fu-primary-600;
-    }
-
+    &:hover,
     &:active {
         background-color: $fu-primary-700;
     }
@@ -105,11 +102,7 @@ $buttonBorderRadius: 100px;
         color: $fu-primary-500;
         border: 1px solid $fu-primary-500;
 
-        &:hover {
-            color: $White;
-            background-color: $fu-primary-500;
-        }
-
+        &:hover,
         &:active {
             color: $White;
             background-color: $fu-primary-500;
@@ -117,43 +110,33 @@ $buttonBorderRadius: 100px;
 
         &.third{
             color: $fu-black-500;
-            border-color: $fu-light-500;
-            &:hover {
-                border: none;
-                //padding: 9px 17px 9px;
-                background-color: $fu-light-200;
-            }
-
+            border-color: $fu-light-200;
+            &:hover,
             &:active {
                 border: none;
-                background-color: $fu-light-400;
+                background-color: $fu-light-200;
             }
         }
 
         &.secondary{
-            color: var(--fu-font-color, $fu-black-500);
-            border-color: var(--fu-border-color, $fu-black-500);
-            background-color: var(--fu-background-color, transparent);
-            &:hover {
-                color: var(--fu-font-color, $White);
-                border: var(--fu-border,none);
-                background-color: var(--fu-hover-background-color, $fu-black-200);
-            }
-
+            color: $fu-black-500;
+            border-color: $fu-black-500;
+            background-color: transparent;
+            &:hover,
             &:active {
-                color: var(--fu-font-color, $White);
-                background-color: var(--fu-active-background-color, $fu-black-500);
-                border: var(--fu-border,none);
+                color: $White;
+                background-color: $fu-black-500;
             }
         }
 
         &.disabled {
-            color: $fu-light-800;
+            color: $fu-light-600;
             border: 1px solid $fu-light-600;
             cursor: initial;
             pointer-events: none;
-            &.secondary {
-                background-color: var(--fu-background-color, transparent);
+            &:hover,
+            &:active {
+                background-color: transparent;
             }
         }
     }
@@ -161,36 +144,25 @@ $buttonBorderRadius: 100px;
     &.third {
         color: $fu-light-900;
         background-color: $fu-light-200;
-        &:hover {
-            background-color: $fu-light-300;
-        }
-
+        &:hover,
         &:active {
-            background-color: $fu-light-400;
+            background-color: $fu-light-300;
         }
     }
 
     &.secondary {
         color: $White;
-        border: var(--fu-border, none);
-        border-color: var(--fu-border-color, $fu-black-500);
         background-color: var(--fu-background-color, $fu-black-500);
-        &:hover {
-            background-color: var(--fu-hover-background-color,$fu-black-200);
-        }
-
+        &:hover,
         &:active {
-            background-color: var(--fu-active-background-color,$fu-black-500);
+            background-color: var(--fu-hover-background-color,$fu-black-900);
         }
     }
 
     &.danger {
         color: $White;
         background-color: $fu-negative-500;
-        &:hover {
-            background-color: $fu-negative-600;
-        }
-
+        &:hover,
         &:active {
             background-color: $fu-negative-700;
         }
@@ -199,7 +171,7 @@ $buttonBorderRadius: 100px;
     &.disabled {
         color: var(--fu-disable-font-color,$White);
         border-color: var(--fu-disable-border-color, initial);
-        background-color: var(--fu-background-color,$fu-light-700);
+        background-color: var(--fu-background-color,$fu-light-600);
         cursor: initial;
         pointer-events: none;
     }
