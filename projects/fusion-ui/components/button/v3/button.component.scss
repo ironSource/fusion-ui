@@ -24,7 +24,7 @@ $largeMinWidth: 92px;
 $largeHeight: 40px;
 $largePadding: 12px 24px;
 $largePaddingWithIcon: 8px 12px;
-$largePaddingWithIconRight: 8px 40px 8px 22px;
+$largePaddingWithIconRight: 7px 40px 8px 16px;
 $largePaddingWithLoading: 10px 30px;
 $buttonBorderRadius: 100px;
 
@@ -113,7 +113,7 @@ $buttonBorderRadius: 100px;
             border-color: $fu-light-200;
             &:hover,
             &:active {
-                border: none;
+                border-color: transparent;
                 background-color: $fu-light-200;
             }
         }
@@ -247,6 +247,9 @@ $buttonBorderRadius: 100px;
                 @include icon-style('icon', currentColor, 17px, false, true){
                     height: 17px;
                 };
+                > span > span {
+                    padding-left: 8px;
+                }
             }
         }
     }
@@ -301,6 +304,7 @@ $buttonBorderRadius: 100px;
                 padding: 0;
                 line-height: 0;
                 > span {
+                    padding-left: 8px;
                     height: 24px;
                 }
                 @include icon-style('loading-clean', currentColor, 24px, false, true);
