@@ -6,7 +6,7 @@ import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/e
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
-import {UniqueIdService} from '@ironsource/fusion-ui';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 
 const CLASS_LIST = [
     'dual-select-button',
