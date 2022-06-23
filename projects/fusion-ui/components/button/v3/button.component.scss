@@ -304,7 +304,6 @@ $buttonBorderRadius: 100px;
                 padding: 0;
                 line-height: 0;
                 > span {
-                    padding-left: 8px;
                     height: 24px;
                 }
                 @include icon-style('loading-clean', currentColor, 24px, false, true);
