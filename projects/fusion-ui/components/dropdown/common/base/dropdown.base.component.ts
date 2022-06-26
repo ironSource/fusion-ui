@@ -135,6 +135,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     @ViewChild('searchComponent') searchComponent: DropdownSearchComponent;
     @ViewChild('selectComponent') selectComponent: DropdownSelectComponent;
     @ViewChild('chipContent', {static: true}) chipContent: TemplateRef<any>;
+    @ViewChild('trigger') trigger: ElementRef;
 
     onDestroy$ = new Subject<void>();
 
@@ -237,6 +238,9 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     }
 
     ngOnInit() {
+        if (this.templateRef) {
+            this.optionsRenderByHover = false;
+        }
         this.contentTemplate = this.chipContent;
         this.displayedOptionsObservable$ = this.getDisplayedOptionsObservable();
         this.arrowNavigation = this.arrowNavigation || false;
@@ -630,6 +634,10 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
         return this.optionSelected$.asObservable().pipe(map(value => ({value, isSelected: !!value})));
     }
 
+    open() {
+        this.trigger.nativeElement.click();
+    }
+
     onCloseIconClicked(option: DropdownOption) {
         this.optionCloseIconClicked.emit(option);
     }
@@ -659,7 +667,9 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
      * event from directive on outside component click
      */
     onOutsideClick($event?) {
-        this.closeDropdown({clickOutside: true});
+        if (!$event.closest('fusion-dropdown-option')) {
+            this.closeDropdown({clickOutside: true});
+        }
     }
 
     private cloneOptions(options: DropdownOption[]): DropdownOption[] {

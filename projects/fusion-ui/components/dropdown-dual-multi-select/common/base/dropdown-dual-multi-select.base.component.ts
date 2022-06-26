@@ -1,4 +1,17 @@
-import {Directive, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2, TemplateRef, ViewChild} from '@angular/core';
+import {
+    AfterViewInit,
+    ChangeDetectorRef,
+    Directive,
+    ElementRef,
+    EventEmitter,
+    Input,
+    OnDestroy,
+    OnInit,
+    Output,
+    Renderer2,
+    TemplateRef,
+    ViewChild
+} from '@angular/core';
 import {InputSize} from '@ironsource/fusion-ui/components/input/common/base';
 import {ControlValueAccessor, FormControl} from '@angular/forms';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
@@ -42,6 +55,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     @Output() viewChange = new EventEmitter();
 
     @ViewChild('chipContent', {static: true}) chipContent: TemplateRef<any>;
+    @ViewChild('trigger') trigger: ElementRef;
 
     preSelectedItems = new FormControl();
     searchControlTerm = new FormControl('');
@@ -95,6 +109,10 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
                     : {value: null, isSelected: false}
             )
         );
+    }
+
+    open() {
+        this.trigger.nativeElement.click();
     }
 
     applySelect(apply: boolean = false): void {
@@ -159,7 +177,9 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
             ? !$event.closest('fusion-dropdown-dual-multi-select') || !($event.closest(`.is-dropdown-dual-multi-select`)?.id === this.uid)
             : regularButtonClicked;
 
-        if (isClickOutSide) {
+        const addFilterOptionClicked = !$event.closest('.fu-text-content') && !$event.closest('fusion-dropdown-option');
+
+        if (isClickOutSide && addFilterOptionClicked) {
             this.closeDropdownDualSelect();
             this.viewChange.emit(this.opened$.getValue());
         }

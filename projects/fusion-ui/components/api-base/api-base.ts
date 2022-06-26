@@ -10,4 +10,6 @@ export abstract class ApiBase {
     abstract valueSelected(): Observable<any>;
 
     abstract changeConfig(val: any): void;
+
+    abstract open(): void;
 }

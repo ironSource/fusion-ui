@@ -161,6 +161,7 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
                 };
                 this.addedFilters = [...this.addedFilters, newSelection];
                 this.reduceSelectedFiltersOptions();
+                chip.apiBase.open();
                 this.cdr.markForCheck();
             } else {
                 this.addFilterControl.reset();

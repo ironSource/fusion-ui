@@ -6,7 +6,7 @@
     (fusionClickOutside)="onOutsideClick($event)"
     [ngClass]="getHolderCSSClasses()"
 >
-    <div *ngIf="templateRef"  (click)="openDropdown($event)">
+    <div *ngIf="templateRef" #trigger  (click)="openDropdown($event)">
         <ng-container [ngTemplateOutlet]="templateRef"></ng-container>
     </div>
 

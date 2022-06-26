@@ -1,6 +1,6 @@
 <div [id]="uid" class="is-dropdown-dual-multi-select">
-    <ng-container *ngTemplateOutlet="opened$.getValue() ? dropdownDualMultiSelectLayout : dropdownDualMultiSelectButton"></ng-container>
-    <div *ngIf="templateRef"  (click)="onClickDualMultiSelectButton()">
+    <ng-container *ngTemplateOutlet="(opened$ | async) ? dropdownDualMultiSelectLayout : dropdownDualMultiSelectButton"></ng-container>
+    <div *ngIf="templateRef" #trigger  (click)="onClickDualMultiSelectButton()">
         <ng-container [ngTemplateOutlet]="templateRef"></ng-container>
     </div>
 </div>
