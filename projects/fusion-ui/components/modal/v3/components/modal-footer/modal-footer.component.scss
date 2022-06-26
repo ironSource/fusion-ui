@@ -11,12 +11,15 @@
 }
 
 $borderTop: 1px solid $fu-light-400;
-$padding: 11px 24px 12px 30px;
+$padding: 0 24px 0 30px;
 
 :host {
     @extend %border-box-normalize;
+    display: flex;
+    align-items: center;
+    border-top: $borderTop;
     .modal-footer {
-        border-top: $borderTop;
+        width: 100%;
         padding: $padding;
         box-sizing: border-box;
         div.footer {
