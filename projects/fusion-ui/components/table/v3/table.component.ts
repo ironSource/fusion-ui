@@ -332,6 +332,9 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
         if (!!this.options && !!this.options.rowHeight) {
             classes.push(`is-row-height-${this.options.rowHeight}`);
         }
+        if (this.options?.stickyHeader && this.options?.scrollElementSelector) {
+            classes.push(`fu-stocky-to-external`);
+        }
         return classes;
     }
 
