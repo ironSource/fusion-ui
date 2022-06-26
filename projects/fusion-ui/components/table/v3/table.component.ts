@@ -70,7 +70,7 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     @HostBinding('class.fu-no-table-frame') get noTableFrame(): boolean {
-        return this.options?.noHeaderFooter;
+        return !this.options?.noHeaderFooter && !(!!this.options?.tableLabel || !!this.options?.searchOptions);
     }
 
     @HostBinding('class.is-empty') get isEmpty(): boolean {

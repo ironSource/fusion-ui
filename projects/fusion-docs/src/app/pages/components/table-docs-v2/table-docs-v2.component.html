@@ -1,19 +1,22 @@
-<!--<fusion-table
-    id="basicTableExample"
-    [columns]="columnsWithoutCheckboxAndToggle"
-    [rows]="rowsSearch"
-    [options]="tableOptionsV3"
-    [loading]="loading$ | async"
-    (rowModelChange)="onBasicRowModelChange($event)"
-    (sortChanged)="onBasicSortChanged($event)"
-    (selectionChanged)="onSelectedChanged($event)"
-    (rowClicked)="onRowClicked($event)"
-></fusion-table>-->
-
 <div class="row">
     <div class="col-9">
         <!--UI-Component Examples-->
         <div class="is-example-title">Type</div>
+        <fusion-example-block id="typeHeaderFooter" title="Has Header and Footer">
+            <fusion-table
+                id="framedTableExample"
+                [columns]="columnsWithoutCheckboxAndToggle"
+                [rows]="rowsSearch"
+                [options]="tableOptionsV3"
+                [loading]="loading$ | async"
+                (rowModelChange)="onBasicRowModelChange($event)"
+                (sortChanged)="onBasicSortChanged($event)"
+                (selectionChanged)="onSelectedChanged($event)"
+                (rowClicked)="onRowClicked($event)"
+            ></fusion-table>
+        </fusion-example-block>
+        <br />
+
         <fusion-example-block id="typeBasicDefault" title="Default rows height (with 'Totals' row)">
             <!--code examples by framework-->
             <ng-template fusionExampleBlock="Angular">
