@@ -168,6 +168,14 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, OnDe
     }
 
     ngOnChanges(changes) {
+        console.log(
+            '>> ',
+            !this.options || !this.options.isGroupedTable,
+            !this.isRowsInit,
+            changes.rows,
+            changes.rows.currentValue,
+            changes.rows.currentValue.length
+        );
         if (
             (!this.options || !this.options.isGroupedTable) &&
             !this.isRowsInit &&
@@ -175,6 +183,7 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, OnDe
             changes.rows.currentValue &&
             changes.rows.currentValue.length
         ) {
+            console.log('::Ok::');
             this.isRowsInit = true;
             this.setSelectedRow();
         }
