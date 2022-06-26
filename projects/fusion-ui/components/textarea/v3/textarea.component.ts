@@ -92,6 +92,6 @@ export class TextareaComponent implements OnInit, ControlValueAccessor {
     }
 
     blur(): void {
-        // this.focused = false;
+        this.focused = false;
     }
 }

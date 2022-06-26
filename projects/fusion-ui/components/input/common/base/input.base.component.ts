@@ -77,7 +77,7 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
         this.fileControlValueChanges$ = this.getFileControlValueChangesObservable();
         this.configByStyle$ = this.getConfigStyleObservable();
         this.showErrorClass$.next(!!this.config.error);
-        this.isPassHidden = this.config.options.isPassHidden || this.isPassHidden;
+        this.isPassHidden = this.config.options.isPassHidden;
         this.initChangesTrigger();
     }
 
