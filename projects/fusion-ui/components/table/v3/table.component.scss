@@ -222,6 +222,9 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
                     }
                 }
             }
+            &.fu-stocky-to-external{
+                display: initial;
+            }
         }
         &:after { // fig leaf for hide scroll on header
             content: '';

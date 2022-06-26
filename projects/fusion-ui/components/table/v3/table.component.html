@@ -23,6 +23,7 @@
                         *ngIf="!!options?.rowsExpandableOptions"
                         class="expand-column"
                         [class.sticky-left]="options?.rowsExpandableOptions?.sticky"
+                        [style.top.px]="options?.stickyHeaderTopOffset"
                     >
                         <span></span>
                     </td>
@@ -35,6 +36,7 @@
                         [style.width]="tableService.setWidth(isLast, column.width)"
                         [style.text-align]="column.headerAlign"
                         [attr.colspan]="isFirst ? tableService.expandLevels : undefined"
+                        [style.top.px]="options?.stickyHeaderTopOffset"
                     >
                         <ng-container>
                             <span [class.fu-tooltiped]="column.tooltip" [fusionTooltip]="column.tooltip">{{ column.title }}</span>

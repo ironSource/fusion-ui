@@ -10,6 +10,7 @@ export const CAMPAIGN_PROMOTIONS_TABLE_BACK_END_PAGINATION = 50;
 export const CAMPAIGN_PROMOTIONS_TABLE_OPTIONS: TableOptions = {
     sortingType: 'external',
     stickyHeader: true,
+    stickyHeaderTopOffset: 64,
     hasReturnToTopButton: true,
     scrollElementSelector: '#fu-layout-main-view',
     pagination: {

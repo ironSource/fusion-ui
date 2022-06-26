@@ -20,6 +20,7 @@ export interface TableOptions {
     searchOptions?: TableSearchOptions; // table search (v3)
     hasReturnToTopButton?: boolean; // has return to top button
     scrollElementSelector?: string; // for vertically scroll listener - default table wrapper (v3)
+    stickyHeaderTopOffset?: number; // offset top (px) for stickyHeader in case scrollElementSelector exist
     sortingType?: string;
     remove?: TableRowRemoveAction;
     isAllRowsSelectable?: boolean;
