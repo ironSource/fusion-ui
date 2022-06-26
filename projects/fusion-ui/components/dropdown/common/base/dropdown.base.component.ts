@@ -337,17 +337,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
             }
             this.closeDropdown();
         });
-        this.placeholder$
-            .asObservable()
-            .pipe(takeUntil(this.onDestroy$))
-            .subscribe(
-                placeholder =>
-                    (this.chipDefaultContent = this.placeholderPrefix ? this.placeholderPrefix + ': ' + placeholder : placeholder)
-            );
-        this.resetState$
-            .asObservable()
-            .pipe(takeUntil(this.onDestroy$))
-            .subscribe(_ => this.writeValue(null));
+        this.apiBaseListeners();
     }
 
     /**
@@ -865,5 +855,19 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
         } else {
             return this.displayedOptions$.asObservable();
         }
+    }
+
+    private apiBaseListeners() {
+        this.placeholder$
+            .asObservable()
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe(
+                placeholder =>
+                    (this.chipDefaultContent = this.placeholderPrefix ? this.placeholderPrefix + ': ' + placeholder : placeholder)
+            );
+        this.resetState$
+            .asObservable()
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe(_ => this.writeValue(null));
     }
 }

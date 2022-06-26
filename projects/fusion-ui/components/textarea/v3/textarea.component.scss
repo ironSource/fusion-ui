@@ -1,0 +1,105 @@
+@import '../../../src/style/scss/v3/vars/vars';
+
+$borderRadius: 8px;
+:host {
+    height: inherit;
+    @extend %border-box-normalize;
+    .fu-textarea-container {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        .fu-textarea-content {
+            position: relative;
+            display: flex;
+            overflow: hidden;
+            flex-direction: column;
+            width: 100%;
+            border-radius: $borderRadius;
+
+            textarea {
+                border: none;
+                box-sizing: border-box;
+                background-color: $fu-light-100;
+                resize: none;
+                width: 100%;
+                height: 100%;
+                padding: 8px 12px 8px 12px;
+                color: $fu-black-500;
+                line-height: 19.5px;
+                min-height: 96px;
+                @extend %font-bodySmall;
+
+                &::placeholder {
+                    @extend %font-bodySmall;
+                    color: $fu-light-800;
+                }
+
+                &:hover{
+                    background-color: $fu-light-200;
+                }
+
+                &:focus{
+                    background-color: $fu-light-100;
+                    outline: none;
+                    box-shadow: none;
+                }
+
+                &.resize {
+                    resize: both;
+                }
+
+                &.disabled,
+                &:disabled {
+                    pointer-events: all;
+                    color: $fu-light-800;
+                    &:hover {
+                        cursor: not-allowed;
+                    }
+                    &:focus {
+                        border: none;
+                    }
+                    resize: none;
+                }
+
+                &.error {
+                    &:focus {
+                        background-color: $fu-light-100;
+                        outline: none;
+                        box-shadow: none;
+                        & + .fu-error-msg{
+                            display: none;
+                        }
+                    }
+                }
+
+            }
+
+            &.focused:not(.fu-readonly)::after{
+                position: absolute;
+                content: '';
+                height: 2px;
+                width: 100%;
+                background-color: $fu-primary-500;
+                bottom: 0;
+            }
+        }
+
+        .fu-error-msg {
+            @extend %font-caption;
+            color: $fu-negative-700;
+            height: 16px;
+            line-height: 16.5px;
+            text-align: initial;
+        }
+
+        .fu-helper-text {
+            @extend %font-caption;
+            color: $fu-black-200;
+            height: 16px;
+            line-height: 16.5px;
+            text-align: initial;
+        }
+    }
+
+}
