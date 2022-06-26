@@ -46,13 +46,14 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
 
     @ViewChild('overlay') overlay: ElementRef;
     @ViewChild('chipContent', {static: true}) chipContent: TemplateRef<any>;
+    @ViewChild('trigger') trigger: ElementRef;
 
     dropdownSelectConfigurations$ = new BehaviorSubject<DropdownSelectConfigurations>({});
 
     pevIconName: IconData;
     nextIconName: IconData;
 
-    isOpen = false;
+    isOpen$ = new BehaviorSubject<boolean>(false);
     error = '';
     currentMonths: Date[] = [];
     defaultOptions: DaterangeOptions = {
@@ -129,6 +130,11 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
             );
     }
 
+    open() {
+        console.log('forced open');
+        this.trigger.nativeElement.click();
+    }
+
     selectPreset(preset, cohort?: number) {
         this.selection = this.daterangeService.getPresetRange(preset, cohort);
         this.currentPreset = preset;
@@ -148,10 +154,10 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     }
 
     toggle() {
-        if (!this.isOpen && !this.isComponentDisabled$.getValue()) {
+        if (!this.isOpen$.getValue() && !this.isComponentDisabled$.getValue()) {
             this.calculateOverlayAlignPosition();
             this.currentPreset = this.determinePreset(this.originalSelection, this.extraParams);
-            this.isOpen = !this.isOpen;
+            this.isOpen$.next(!this.isOpen$.getValue());
             this.setPlaceholder({isOpen: true});
         } else {
             this.close();
@@ -159,14 +165,14 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     }
 
     onOutsideClick(target: HTMLElement) {
-        if (this.validateClickOutside(target)) {
+        if (this.validateClickOutside(target) && !target.closest('fusion-dropdown-option')) {
             this.close();
         }
     }
 
     apply() {
-        if (this.isOpen) {
-            this.isOpen = false;
+        if (this.isOpen$.getValue()) {
+            this.isOpen$.next(false);
             if (this.selection?.endDate) {
                 this.selection.endDate;
             }
@@ -187,8 +193,8 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     }
 
     close() {
-        if (this.isOpen) {
-            this.isOpen = false;
+        if (this.isOpen$.getValue()) {
+            this.isOpen$.next(false);
             if (!!this.originalSelection?.startDate && !!this.originalSelection?.endDate) {
                 this.initMonth(this.originalSelection.endDate);
                 this.selectionStarted = null;
