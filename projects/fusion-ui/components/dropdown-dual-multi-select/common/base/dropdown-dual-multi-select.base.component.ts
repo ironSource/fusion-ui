@@ -179,7 +179,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
 
         const addFilterOptionClicked = !$event.closest('fusion-dropdown-option');
 
-        if (isClickOutSide && addFilterOptionClicked && !$event.closest('.clear-all-btn')) {
+        if (isClickOutSide && addFilterOptionClicked && !$event.closest('.clear-all-btn') && !$event.closest('.icon-clear')) {
             this.closeDropdownDualSelect();
             this.viewChange.emit(this.opened$.getValue());
         }
