@@ -47,7 +47,6 @@ export interface TableOptions {
         ignoredParentSelectorsRowClickEvent?: string[];
     };
     notAvailableText?: string;
-    noHeaderFooter?: boolean; // suppress table frame with header and footer (from v3)
     isRemoveIconHiddenForRow?(row: any): boolean;
     infoIconForRowOnHover?(row: any): string;
 }
