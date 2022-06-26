@@ -5,7 +5,7 @@
     >
     </fusion-dropdown-select>
 
-    <div class="overlay" #overlay *ngIf="isOpen" [class]="overlayAlign$ | async" [ngClass]="{visible: (overlayAlign$ | async), isOpen: isOpen, singleDatePicker: isSingleDatePicker}">
+    <div class="overlay" #overlay [class]="overlayAlign$ | async" [ngClass]="{visible: (overlayAlign$ | async), isOpen: (isOpen$ | async), singleDatePicker: isSingleDatePicker}">
         <div class="presetsWrap" *ngIf="isPresetsShown">
             <ng-container [ngTemplateOutlet]="presetsHeaderTemplate || defaultPreset"></ng-container>
             <ng-template #defaultPreset>

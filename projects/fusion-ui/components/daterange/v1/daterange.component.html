@@ -1,14 +1,14 @@
 <div [id]="id" (fusionClickOutside)="onOutsideClick($event)">
 
-    <div class="selection" (click)="toggle()" [ngClass]="{isOpen: isOpen}">
+    <div class="selection" (click)="toggle()" [ngClass]="{isOpen: (isOpen$ | async)}">
         <fusion-icon [name]="{iconName: 'calendar-2', iconVersion: 'v1'}"></fusion-icon>
         <span>{{ currentSelectionFormatted }}</span>
         <fusion-icon [name]="{iconName: 'arrow-right', iconVersion: 'v1'}" class="arrow-icon"></fusion-icon>
     </div>
 
 
-    <div class="overlay" #overlay *ngIf="isOpen" [class]="overlayAlign$ | async"
-         [ngClass]="{visible: (overlayAlign$ | async), isOpen: isOpen, singleDatePicker: isSingleDatePicker, noPresets: !isPresetsShown}">
+    <div class="overlay" #overlay  [class]="overlayAlign$ | async"
+         [ngClass]="{visible: (overlayAlign$ | async), isOpen: (isOpen$ | async), singleDatePicker: isSingleDatePicker, noPresets: !isPresetsShown}">
         <div class="presetsWrap" *ngIf="isPresetsShown">
             <ng-container [ngTemplateOutlet]="presetsHeaderTemplate || defaultPreset"></ng-container>
             <ng-template #defaultPreset>
