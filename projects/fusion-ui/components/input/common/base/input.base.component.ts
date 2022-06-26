@@ -34,6 +34,7 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
 
     private inputControlValueChanges$: Observable<any>;
     private fileControlValueChanges$: Observable<any>;
+    private _isPassHidden = true;
     private onBlur: (args: string) => void;
 
     constructor(public elementRef: ElementRef) {
@@ -46,6 +47,14 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
 
     get isSmall(): boolean {
         return this.config.options?.size === 'small';
+    }
+
+    set isPassHidden(val: boolean) {
+        this._isPassHidden = val;
+    }
+
+    get isPassHidden() {
+        return this._isPassHidden;
     }
 
     get isReadOnly() {
@@ -68,6 +77,7 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
         this.fileControlValueChanges$ = this.getFileControlValueChangesObservable();
         this.configByStyle$ = this.getConfigStyleObservable();
         this.showErrorClass$.next(!!this.config.error);
+        this.isPassHidden = this.config.options.isPassHidden || this.isPassHidden;
         this.initChangesTrigger();
     }
 
@@ -162,17 +172,16 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
     }
 
     passToggle($event: Event): void {
-        const passShownState = this.config.options.hasOwnProperty('isPassHidden') ? this.config.options.isPassHidden : true;
+        const passShownState = this.config.options.hasOwnProperty('isPassHidden') ? this.isPassHidden : true;
         if (!isNullOrUndefined($event)) {
+            this.isPassHidden = !this.isPassHidden;
             this.setFocus();
             this.passHiddenStateChanged.emit(!passShownState);
         }
     }
 
     getInputType(): string {
-        return this.config.type === 'file' || (this.config.type === 'password' && !this.config.options.isPassHidden)
-            ? 'text'
-            : this.config.type;
+        return this.config.type === 'file' || (this.config.type === 'password' && !this.isPassHidden) ? 'text' : this.config.type;
     }
 
     onPassToggleMouseDown($event: Event): void {
