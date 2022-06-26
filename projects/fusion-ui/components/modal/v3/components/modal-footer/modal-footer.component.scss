@@ -11,7 +11,7 @@
 }
 
 $borderTop: 1px solid $fu-light-400;
-$padding: 0 24px 0 30px;
+$padding: 0 24px;
 
 :host {
     @extend %border-box-normalize;
@@ -36,7 +36,7 @@ $padding: 0 24px 0 30px;
             display: inline-flex;
             align-items: center;
             color: $fu-negative-500;
-            margin-right: 24px;
+            flex-grow: 1;
         }
     }
 }
