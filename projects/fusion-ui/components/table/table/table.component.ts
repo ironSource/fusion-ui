@@ -197,6 +197,7 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, OnDe
                 this.tableService.onRowSelectChanged(true, row);
             }
         });
+        console.log('setSelectedRow:', this.tableService.selectedRows);
     }
 
     onHeaderClicked(col: any): void {

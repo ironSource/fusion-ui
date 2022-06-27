@@ -7,7 +7,7 @@ import {DEFAULT_EXPANDABLE_LEVEL, MAXIMUM_EXPANDABLE_LEVEL} from './table.config
 
 @Injectable()
 export class TableService {
-    private selectedRows: any[] = [];
+    selectedRows: any[] = [];
     public selectionChanged = new EventEmitter();
     public rowModelChange: EventEmitter<TableRowChangedData> = new EventEmitter();
     public expandLevels: number;
@@ -116,6 +116,7 @@ export class TableService {
     }
 
     isRowSelected(row: any): boolean {
+        console.log('isRowSelected:', this.selectedRows);
         return this.selectedRows.indexOf(row) !== -1;
     }
 
