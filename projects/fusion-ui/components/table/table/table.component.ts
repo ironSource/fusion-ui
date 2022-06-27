@@ -137,6 +137,7 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, OnDe
         private cdr: ChangeDetectorRef
     ) {
         super(injector, TABLE_THEME_TOKEN);
+        this.tableService.clearSelectedRows();
     }
 
     ngOnInit() {
@@ -154,7 +155,6 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, OnDe
         this.noDataSubMessage = this.options.noDataSubMessage || '';
         this.hideHeaderOnEmpty = !isNullOrUndefined(this.options.hideHeaderOnEmpty) ? this.options.hideHeaderOnEmpty : false;
         this.isAllRowsSelectable = typeof this.options.isAllRowsSelectable === 'undefined' ? true : this.options.isAllRowsSelectable;
-        this.tableService.clearSelectedRows();
         this.scrollListeners();
 
         this.configIconNames$ = this.selectedVersion$.pipe(
