@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ReactiveFormsModule} from '@angular/forms';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
-import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button/v1';
 import {InputModule} from '@ironsource/fusion-ui/components/input';
 import {FlagModule} from '@ironsource/fusion-ui/components/flag/v1';
 import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox/v1';

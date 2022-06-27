@@ -2,96 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [3.0.0-rc.68](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.67...v3.0.0-rc.68) (2022-06-27)
+### [3.0.1](https://github.com/ironSource/fusion-ui/compare/v3.0.0...v3.0.1) (2022-06-27)
 
-## [3.0.0-rc.67](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.66...v3.0.0-rc.67) (2022-06-27)
-
-## [3.0.0-rc.66](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.65...v3.0.0-rc.66) (2022-06-27)
-
-## [3.0.0-rc.65](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.64...v3.0.0-rc.65) (2022-06-26)
-
-## [3.0.0-rc.64](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.63...v3.0.0-rc.64) (2022-06-26)
-
-## [3.0.0-rc.63](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.62...v3.0.0-rc.63) (2022-06-26)
-
-## [3.0.0-rc.62](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.61...v3.0.0-rc.62) (2022-06-26)
-
-## [3.0.0-rc.61](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.60...v3.0.0-rc.61) (2022-06-26)
-
-## [3.0.0-rc.60](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.59...v3.0.0-rc.60) (2022-06-26)
-
-## [3.0.0-rc.59](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.58...v3.0.0-rc.59) (2022-06-26)
-
-## [3.0.0-rc.58](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.57...v3.0.0-rc.58) (2022-06-23)
-
-## [3.0.0-rc.57](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.56...v3.0.0-rc.57) (2022-06-23)
-
-## [3.0.0-rc.56](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.55...v3.0.0-rc.56) (2022-06-23)
-
-## [3.0.0-rc.55](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.54...v3.0.0-rc.55) (2022-06-23)
-
-## [3.0.0-rc.54](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.53...v3.0.0-rc.54) (2022-06-23)
-
-## [3.0.0-rc.53](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.52...v3.0.0-rc.53) (2022-06-23)
-
-## [3.0.0-rc.52](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.51...v3.0.0-rc.52) (2022-06-22)
-
-## [3.0.0-rc.51](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.50...v3.0.0-rc.51) (2022-06-22)
-
-## [3.0.0-rc.50](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.49...v3.0.0-rc.50) (2022-06-22)
-
-## [3.0.0-rc.49](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.48...v3.0.0-rc.49) (2022-06-19)
-
-## [3.0.0-rc.48](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.47...v3.0.0-rc.48) (2022-06-19)
-
-## [3.0.0-rc.47](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.46...v3.0.0-rc.47) (2022-06-19)
-
-## [3.0.0-rc.46](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.45...v3.0.0-rc.46) (2022-06-19)
-
-## [3.0.0-rc.45](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.44...v3.0.0-rc.45) (2022-06-18)
-
-## [3.0.0-rc.44](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.43...v3.0.0-rc.44) (2022-06-16)
-
-## [3.0.0-rc.43](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.42...v3.0.0-rc.43) (2022-06-16)
-
-## [3.0.0-rc.42](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.41...v3.0.0-rc.42) (2022-06-16)
-
-## [3.0.0-rc.41](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.40...v3.0.0-rc.41) (2022-06-16)
-
-## [3.0.0-rc.40](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.39...v3.0.0-rc.40) (2022-06-16)
-
-## [3.0.0-rc.39](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.38...v3.0.0-rc.39) (2022-06-16)
-
-## [3.0.0-rc.38](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.37...v3.0.0-rc.38) (2022-06-15)
-
-## [3.0.0-rc.37](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.36...v3.0.0-rc.37) (2022-06-15)
-
-## [3.0.0-rc.36](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.35...v3.0.0-rc.36) (2022-06-15)
-
-## [3.0.0-rc.35](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.34...v3.0.0-rc.35) (2022-06-15)
-
-## [3.0.0-rc.34](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.33...v3.0.0-rc.34) (2022-06-15)
-
-## [3.0.0-rc.33](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.32...v3.0.0-rc.33) (2022-06-15)
-
-## [3.0.0-rc.32](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.31...v3.0.0-rc.32) (2022-06-15)
-
-## [3.0.0-rc.31](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.30...v3.0.0-rc.31) (2022-06-14)
-
-## [3.0.0-rc.30](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.29...v3.0.0-rc.30) (2022-06-14)
-
-## [3.0.0-rc.29](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.27...v3.0.0-rc.29) (2022-06-14)
-
-## [3.0.0-rc.28](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.27...v3.0.0-rc.28) (2022-06-13)
-
-
-### Code Refactoring
-
-* **3.x.x:** commons entities and services, defaults only for v3 ([442379c](https://github.com/ironSource/fusion-ui/commit/442379cfe341596168b317f7b639e569ec069f83))
+## [3.0.0](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.68...v3.0.0) (2022-06-27)
 
 ## [3.0.0-rc.27](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.26...v3.0.0-rc.27) (2022-06-12)
-
-## [3.0.0-rc.26](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.25...v3.0.0-rc.26) (2022-06-02)
 
 ### Bug Fixes
 

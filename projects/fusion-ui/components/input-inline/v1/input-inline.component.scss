@@ -4,7 +4,7 @@
 
 
 :host {
-
+    @extend %border-box-normalize;
     @include icon-style('edit', $light-800, (width: 12px, height: 14px), false, true) {
         height: 14px;
         visibility: hidden;
@@ -21,7 +21,7 @@
     }
     @include icon-style('check-v-2', $primary-500, (width: 12px, height: 10px), false, true, 0, true);
 
-  & .inline-input-wrapper {
+   .inline-input-wrapper {
       .truncate{
           @extend %truncate;
           &.hidden {
