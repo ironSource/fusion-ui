@@ -142,7 +142,6 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, Afte
     }
 
     ngOnInit() {
-        console.log('ngOnInit---');
         if (!!this.options.rowsExpandableOptions) {
             try {
                 this.tableService.setExpandLevelByExpandOptions(this.options.rowsExpandableOptions);
@@ -170,7 +169,6 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, Afte
     }
 
     ngOnChanges(changes) {
-        console.log('ngOnChanges---');
         if (
             (!this.options || !this.options.isGroupedTable) &&
             !this.isRowsInit &&
@@ -192,9 +190,6 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, Afte
 
     ngAfterViewInit() {
         super.ngAfterViewInit();
-
-        console.log('ngAfterViewInit: ', this.isRowsInit);
-
         if (!this.isRowsInit && (this.rows as any[]).length) {
             this.isRowsInit = true;
             this.setSelectedRow();
