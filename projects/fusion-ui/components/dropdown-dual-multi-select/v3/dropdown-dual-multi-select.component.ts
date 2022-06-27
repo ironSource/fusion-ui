@@ -13,7 +13,6 @@ import {
     ViewChild
 } from '@angular/core';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {DropdownDualMultiSelectBaseComponent} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select/common/base';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
@@ -184,7 +183,13 @@ export class DropdownDualMultiSelectComponent extends ApiBase implements OnInit,
 
         const addFilterOptionClicked = !$event.closest('fusion-dropdown-option');
 
-        if (isClickOutSide && addFilterOptionClicked && !$event.closest('.clear-all-btn') && !$event.closest('.icon-clear')) {
+        if (
+            isClickOutSide &&
+            addFilterOptionClicked &&
+            !$event.closest('.clear-all-btn') &&
+            !$event.closest('.icon-clear') &&
+            !$event.closest('.fu-custom-placeholder')
+        ) {
             this.closeDropdownDualSelect();
             this.viewChange.emit(this.opened$.getValue());
         }

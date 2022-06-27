@@ -18,11 +18,7 @@ import {
 } from '@angular/core';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/service';
-import {
-    DROPDOWN_DEBOUNCE_TIME,
-    DROPDOWN_OPTIONS_WITHOUT_SCROLL,
-    DropdownBaseComponent
-} from '@ironsource/fusion-ui/components/dropdown/common/base';
+import {DROPDOWN_DEBOUNCE_TIME, DROPDOWN_OPTIONS_WITHOUT_SCROLL} from '@ironsource/fusion-ui/components/dropdown/common/base';
 import {DropdownSearchComponent} from '@ironsource/fusion-ui/components/dropdown-search/v3';
 import {DropdownSelectComponent, DropdownSelectConfigurations} from '@ironsource/fusion-ui/components/dropdown-select/v3';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';

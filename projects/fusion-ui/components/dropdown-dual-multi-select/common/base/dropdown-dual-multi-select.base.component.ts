@@ -133,8 +133,12 @@ export abstract class DropdownDualMultiSelectBaseComponent implements OnInit, Co
         const regularButtonClicked = !this.dynamicPlaceholder
             ? !($event.closest(`.dual-select-button`)?.id === `${this.uid}-button-regular`)
             : !($event.closest(`.dual-select-button`)?.id === `${this.uid}-button-dynamic`);
-
-        if (regularButtonClicked && !$event.closest('.clear-all-btn') && !$event.closest('.icon-clear')) {
+        if (
+            regularButtonClicked &&
+            !$event.closest('.clear-all-btn') &&
+            !$event.closest('.icon-clear') &&
+            (!$event.closest('.fu-custom-placeholder') || !$event.closest('fusion-dropdown-custom-placeholder'))
+        ) {
             this.closeDropdownDualSelect();
             this.viewChange.emit(this.opened$.getValue());
         }

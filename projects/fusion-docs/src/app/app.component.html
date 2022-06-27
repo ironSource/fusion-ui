@@ -29,19 +29,28 @@
             [configuration]="{ id: 4, mode: 'dynamic', close: true }"
         >
             <div class="filter-element">
+                <fusion-dropdown-dual-multi-select
+                    [totalItems]="10"
+                    [items]="applicationList"
+                    title="Application"
+                    [pendingItems]="false"
+                    [opened]="false"
+                    [placeholder]="'Select App'"
+                    formControlName="applications"
+                ></fusion-dropdown-dual-multi-select>
 <!--                <fusion-daterange-->
 <!--                    [options]="{ chipLabel: 'Date' }"-->
 <!--                    formControlName="rangeTwo"-->
 <!--                >-->
 <!--                </fusion-daterange>-->
-                <fusion-dropdown
-                    [placeholderPrefix]="'Countries'"
-                    [placeholder]="'Select Country'"
-                    [search]="true"
-                    formControlName="countries"
-                    [options]="countries"
-                >
-                </fusion-dropdown>
+<!--                <fusion-dropdown-->
+<!--                    [placeholderPrefix]="'Countries'"-->
+<!--                    [placeholder]="'Select Country'"-->
+<!--                    [search]="true"-->
+<!--                    formControlName="countries"-->
+<!--                    [options]="countries"-->
+<!--                >-->
+<!--                </fusion-dropdown>-->
             </div>
         </fusion-chip-filter>
 
