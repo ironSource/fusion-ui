@@ -165,7 +165,8 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     }
 
     onOutsideClick(target: HTMLElement) {
-        if (this.validateClickOutside(target) && !target.closest('fusion-dropdown-option')) {
+        // if (this.validateClickOutside(target) && !target.closest('fusion-dropdown-option')) {
+        if (this.validateClickOutside(target)) {
             this.close();
         }
     }
