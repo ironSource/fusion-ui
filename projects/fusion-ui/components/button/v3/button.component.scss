@@ -14,9 +14,9 @@ $smallPaddingWithLoading: 9px 16px;
 // medium - default
 $mediumMinWidth: 74px;
 $mediumHeight: 32px;
-$mediumPadding: 7px 16px 8px;
-$mediumPaddingWithIcon: 7px 16px 8px 12px;
-$mediumPaddingWithIconRight: 7px 30px 8px 12px;
+$mediumPadding: 8px 16px 8px;
+$mediumPaddingWithIcon: 8px 16px 8px 12px;
+$mediumPaddingWithIconRight: 8px 30px 8px 12px;
 $mediumPaddingWithLoading: 7px 23px 7px;
 
 // large
@@ -507,6 +507,26 @@ $buttonBorderRadius: 100px;
                         @include icon-style('icon',  $fu-light-800, 16px , false, true);
                     }
                 }
+            }
+        }
+    }
+}
+
+:host-context(fusion-modal-footer) {
+    > span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        & > span {
+            height: 16px;
+            line-height: 16px;
+        }
+    }
+    &.large{
+        & > span {
+            & > span {
+                height: 17px;
+                line-height: 17px;
             }
         }
     }
