@@ -182,6 +182,9 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
                 } else {
                     this.selected = selected?.isSelected;
                     this.setChipType(this.selected);
+                    if (this.mode === 'dynamic') {
+                        this.renderer.setStyle(this.element.nativeElement, 'display', 'none');
+                    }
                     this.onRemove.emit({
                         id: this.id,
                         isSelected: this.selected

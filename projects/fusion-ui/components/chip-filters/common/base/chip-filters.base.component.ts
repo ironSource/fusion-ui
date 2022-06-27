@@ -24,7 +24,6 @@ import {SelectedFilters} from './chip-filters-entities';
 @Directive()
 export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestroy, OnInit {
     @ContentChildren(ChipFilterComponent) chipFilters!: QueryList<ChipFilterComponent>;
-    @ViewChild('addFilter', {static: true}) addFilterComponent: any;
 
     @Input() set disableAddFilter(val: boolean) {
         this.disableAddFilter$.next(val);
