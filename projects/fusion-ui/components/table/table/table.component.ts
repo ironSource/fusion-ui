@@ -137,6 +137,7 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, OnDe
         private cdr: ChangeDetectorRef
     ) {
         super(injector, TABLE_THEME_TOKEN);
+        this.tableService.clearSelectedRows();
     }
 
     ngOnInit() {
@@ -154,7 +155,6 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, OnDe
         this.noDataSubMessage = this.options.noDataSubMessage || '';
         this.hideHeaderOnEmpty = !isNullOrUndefined(this.options.hideHeaderOnEmpty) ? this.options.hideHeaderOnEmpty : false;
         this.isAllRowsSelectable = typeof this.options.isAllRowsSelectable === 'undefined' ? true : this.options.isAllRowsSelectable;
-        this.tableService.clearSelectedRows();
         this.scrollListeners();
 
         this.configIconNames$ = this.selectedVersion$.pipe(
@@ -168,14 +168,6 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, OnDe
     }
 
     ngOnChanges(changes) {
-        console.log(
-            '>> ',
-            !this.options || !this.options.isGroupedTable,
-            !this.isRowsInit,
-            changes.rows,
-            changes.rows.currentValue,
-            changes.rows.currentValue.length
-        );
         if (
             (!this.options || !this.options.isGroupedTable) &&
             !this.isRowsInit &&
@@ -183,7 +175,6 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, OnDe
             changes.rows.currentValue &&
             changes.rows.currentValue.length
         ) {
-            console.log('::Ok::');
             this.isRowsInit = true;
             this.setSelectedRow();
         }
