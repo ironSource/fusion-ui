@@ -165,6 +165,8 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, OnDe
         this.ignoredParentSelectorsRowClickEvent = ROW_CLICK_SUPPRESS_FOR_PARENT_SELECTORS.concat(
             this.options.rowsOptions?.ignoredParentSelectorsRowClickEvent ?? []
         );
+
+        console.log('ngOnInit---');
     }
 
     ngOnChanges(changes) {
