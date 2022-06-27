@@ -176,7 +176,7 @@ $smallPadding: 4px 6px;
                     border-color: #000;
                 }
             }
-            &.small {
+            &.fu-input-small {
                 @extend %font12;
                 height: $smallHeight;
                 padding: $smallPadding;
