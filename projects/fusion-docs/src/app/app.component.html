@@ -1,5 +1,91 @@
-<router-outlet></router-outlet>
-<fusion-tooltip *ngIf="tooltipData.content"
-                [tooltipData]="tooltipData"></fusion-tooltip>
+<!--<router-outlet></router-outlet>-->
+<!--<fusion-tooltip *ngIf="tooltipData.content"-->
+<!--                [tooltipData]="tooltipData"></fusion-tooltip>-->
 
+<div class="filters-container" [formGroup]="form">
+    <fusion-chip-filters
+        [isSearch]="true"
+        [addFiltersTitle]="'Countries'"
+        [addFilterOptions]="optionsFilter"
+        (onSelect)="chipChanged($event)"
+        (onRemoveSelection)="removeChip($event)"
+    >
+        <fusion-chip-filter [configuration]="{ id: 1, mode: 'static' }">
+            <div class="filter-element">
+                <fusion-daterange
+                    [options]="{
+            calendarAmount: 1,
+            presets: [],
+            allowFutureSelection: true,
+            chipLabel: 'Date'
+          }"
+                    formControlName="date"
+                >
+                </fusion-daterange>
+            </div>
+        </fusion-chip-filter>
 
+        <fusion-chip-filter
+            [configuration]="{ id: 4, mode: 'dynamic', close: true }"
+        >
+            <div class="filter-element">
+<!--                <fusion-daterange-->
+<!--                    [options]="{ chipLabel: 'Date' }"-->
+<!--                    formControlName="rangeTwo"-->
+<!--                >-->
+<!--                </fusion-daterange>-->
+                <fusion-dropdown
+                    [placeholderPrefix]="'Countries'"
+                    [placeholder]="'Select Country'"
+                    [search]="true"
+                    formControlName="countries"
+                    [options]="countries"
+                >
+                </fusion-dropdown>
+            </div>
+        </fusion-chip-filter>
+
+        <fusion-chip-filter
+            [configuration]="{ id: 5, mode: 'static', close: true }"
+        >
+            <div class="filter-element">
+                <fusion-dropdown-dual-multi-select
+                    [totalItems]="10"
+                    [items]="applicationList"
+                    title="Application"
+                    [pendingItems]="false"
+                    [opened]="false"
+                    [placeholder]="'Select App'"
+                    formControlName="applications"
+                ></fusion-dropdown-dual-multi-select>
+            </div>
+        </fusion-chip-filter>
+
+        <fusion-chip-filter
+            [configuration]="{ id: 6, mode: 'static', close: true }"
+        >
+            <div class="filter-element">
+                <fusion-daterange
+                    [options]="{ chipLabel: 'Date' }"
+                    formControlName="range"
+                >
+                </fusion-daterange>
+            </div>
+        </fusion-chip-filter>
+
+        <fusion-chip-filter
+            [configuration]="{ id: 7, mode: 'static', close: true }"
+        >
+            <div class="filter-element">
+                <fusion-dropdown
+                    [placeholderPrefix]="'Countries'"
+                    [placeholder]="'Select Country'"
+                    [search]="true"
+                    formControlName="countries"
+                    [options]="countries"
+                >
+                </fusion-dropdown>
+            </div>
+        </fusion-chip-filter>
+    </fusion-chip-filters>
+</div>

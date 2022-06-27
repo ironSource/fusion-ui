@@ -1,5 +1,8 @@
 <div [id]="uid" class="is-dropdown-dual-multi-select">
     <ng-container *ngTemplateOutlet="(opened$ | async) ? dropdownDualMultiSelectLayout : dropdownDualMultiSelectButton"></ng-container>
+    <div *ngIf="templateRef" #trigger  (click)="onClickDualMultiSelectButton()">
+        <ng-container [ngTemplateOutlet]="templateRef"></ng-container>
+    </div>
 </div>
 
 
@@ -7,6 +10,7 @@
 <ng-template #dropdownDualMultiSelectButton>
     <div class="dropdown-dual-multi-select-button">
         <ng-container
+            *ngIf="!templateRef"
             [ngTemplateOutlet]="dynamicPlaceholder ? dynamicDropdownDualMultiSelectButton : regularDropdownDualMultiSelectButton"
         ></ng-container>
     </div>
@@ -61,3 +65,8 @@
     </div>
 </ng-template>
 
+<ng-template #chipContent>
+    <div class="fu-chip-content-default">
+        <div [fusionTooltip]="chipDefaultContent" class="truncate fu-chip-text"><span *ngIf="title" class="fu-chip-label">{{ title + ': ' }}</span>{{ selected$ | async }}</div>
+    </div>
+</ng-template>

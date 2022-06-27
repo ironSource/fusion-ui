@@ -1,24 +1,10 @@
-import {
-    AfterViewInit,
-    ChangeDetectorRef,
-    Directive,
-    ElementRef,
-    EventEmitter,
-    Input,
-    OnDestroy,
-    OnInit,
-    Output,
-    Renderer2,
-    TemplateRef,
-    ViewChild
-} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2, TemplateRef, ViewChild} from '@angular/core';
 import {InputSize} from '@ironsource/fusion-ui/components/input/common/base';
 import {ControlValueAccessor, FormControl} from '@angular/forms';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
-import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
-import {map, takeUntil} from 'rxjs/operators';
-import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
+import {BehaviorSubject, Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 
 const CLASS_LIST = [
@@ -31,7 +17,7 @@ const CLASS_LIST = [
 ];
 
 @Directive()
-export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase implements OnInit, ControlValueAccessor, OnDestroy {
+export abstract class DropdownDualMultiSelectBaseComponent implements OnInit, ControlValueAccessor, OnDestroy {
     @Input() isDisabled: boolean = false;
     @Input() dynamicPlaceholder: DynamicComponentConfiguration;
     @Input() totalItems: number;
@@ -54,9 +40,6 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     @Output() searchChange = new EventEmitter();
     @Output() viewChange = new EventEmitter();
 
-    @ViewChild('chipContent', {static: true}) chipContent: TemplateRef<any>;
-    @ViewChild('trigger') trigger: ElementRef;
-
     preSelectedItems = new FormControl();
     searchControlTerm = new FormControl('');
     items$ = new BehaviorSubject<DropdownOption[]>([]);
@@ -76,43 +59,21 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     private onDestroy$ = new Subject<void>();
 
     constructor(protected element: ElementRef, protected renderer: Renderer2, protected uidService: UniqueIdService) {
-        super();
         this.uid = this.uidService.getUniqueId().toString();
     }
 
     ngOnInit(): void {
         this.selected$.next(this.defaultPlaceHolder);
-        this.contentTemplate = this.chipContent;
         this.initializeListeners();
     }
 
     ngOnDestroy() {
-        this.resetState$.complete();
         this.onDestroy$.next();
         this.onDestroy$.complete();
     }
 
     onScrollDown(): void {
         this.scrollDown.emit();
-    }
-
-    changeConfig(val: string) {
-        this.element.nativeElement.style.setProperty('--fu-chip-max-width', val);
-    }
-
-    valueSelected(): Observable<{value: string; isSelected: boolean}> {
-        return this.selected$.pipe(
-            takeUntil(this.onDestroy$),
-            map(value =>
-                value !== this.defaultPlaceHolder && value !== 'All selected'
-                    ? {value, isSelected: !!value}
-                    : {value: null, isSelected: false}
-            )
-        );
-    }
-
-    open() {
-        this.trigger.nativeElement.click();
     }
 
     applySelect(apply: boolean = false): void {
@@ -173,13 +134,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
             ? !($event.closest(`.dual-select-button`)?.id === `${this.uid}-button-regular`)
             : !($event.closest(`.dual-select-button`)?.id === `${this.uid}-button-dynamic`);
 
-        const isClickOutSide = this.templateRef
-            ? !$event.closest('fusion-dropdown-dual-multi-select') || !($event.closest(`.is-dropdown-dual-multi-select`)?.id === this.uid)
-            : regularButtonClicked;
-
-        const addFilterOptionClicked = !$event.closest('fusion-dropdown-option');
-
-        if (isClickOutSide && addFilterOptionClicked && !$event.closest('.clear-all-btn') && !$event.closest('.icon-clear')) {
+        if (regularButtonClicked && !$event.closest('.clear-all-btn') && !$event.closest('.icon-clear')) {
             this.closeDropdownDualSelect();
             this.viewChange.emit(this.opened$.getValue());
         }
@@ -217,14 +172,6 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     private initializeListeners(): void {
         this.searchControlTerm.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(this.changeTerm.bind(this));
         this.preSelectedItems.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(this.checkSelectItemsChanged.bind(this));
-        this.resetState$
-            .asObservable()
-            .pipe(takeUntil(this.onDestroy$))
-            .subscribe(_ => this.writeValue(null));
-        this.selected$
-            .asObservable()
-            .pipe(takeUntil(this.onDestroy$))
-            .subscribe(selected => (this.chipDefaultContent = this.title + ': ' + selected));
     }
 
     private checkSelectItemsChanged(item: any): void {

@@ -23,7 +23,7 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 import {map, takeUntil} from 'rxjs/operators';
 
 @Directive()
-export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, OnDestroy, ControlValueAccessor {
+export abstract class DaterangeBaseComponent implements OnInit, OnDestroy, ControlValueAccessor {
     @Input() id: string;
     @Input() presetsHeaderTemplate: TemplateRef<any>;
     @Input() minDate: Date;
@@ -91,48 +91,19 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
         private logService: LogService,
         private uniqueIdService: UniqueIdService
     ) {
-        super();
         this.defaultOptions.presets = [...this.daterangeService.defaultPresetList];
     }
 
     ngOnInit() {
-        this.contentTemplate = this.chipContent;
         this.id = this.id || `fs-daterange-${this.uniqueIdService.getUniqueId()}`;
         if (!isNullOrUndefined(this.maxDate)) {
             this.originalMaxDate = this.maxDate;
         }
-        this.onOptionsChanges();
-        this.resetState$
-            .asObservable()
-            .pipe(takeUntil(this.onDestroy$))
-            .subscribe(_ => this.writeValue(null));
     }
 
     ngOnDestroy() {
-        this.resetState$.complete();
         this.onDestroy$.next();
         this.onDestroy$.complete();
-    }
-
-    changeConfig(val: string) {
-        this.elemRef.nativeElement.style.setProperty('--fu-chip-max-width', val);
-    }
-
-    valueSelected() {
-        return this.selected$
-            .asObservable()
-            .pipe(
-                map(value =>
-                    value !== (this.options?.placeholder || DEFAULT_PLACEHOLDER_TEXT)
-                        ? {value, isSelected: !!value}
-                        : {value: null, isSelected: false}
-                )
-            );
-    }
-
-    open() {
-        console.log('forced open');
-        this.trigger.nativeElement.click();
     }
 
     selectPreset(preset, cohort?: number) {
@@ -154,7 +125,7 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     }
 
     toggle() {
-        if (!this.isOpen$.getValue() && !this.isComponentDisabled$.getValue()) {
+        if (!this.isOpen$.getValue()) {
             this.calculateOverlayAlignPosition();
             this.currentPreset = this.determinePreset(this.originalSelection, this.extraParams);
             this.isOpen$.next(!this.isOpen$.getValue());
@@ -165,7 +136,6 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     }
 
     onOutsideClick(target: HTMLElement) {
-        // if (this.validateClickOutside(target) && !target.closest('fusion-dropdown-option')) {
         if (this.validateClickOutside(target)) {
             this.close();
         }

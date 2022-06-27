@@ -1,0 +1,19 @@
+.filters-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.fu-chip-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+}
+
+.fu-chip-content fusion-icon {
+    width: 16px;
+    height: 16px;
+    margin-bottom: 2px;
+}

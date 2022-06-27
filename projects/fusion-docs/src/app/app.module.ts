@@ -7,7 +7,11 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v2';
 import {ReactiveFormsModule} from '@angular/forms';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
-import {ModalModule} from '@ironsource/fusion-ui/components/modal';
+import {DaterangeModule} from '@ironsource/fusion-ui/components/daterange';
+import {ChipFilterModule} from '@ironsource/fusion-ui/components/chip-filter';
+import {ChipFiltersModule} from '@ironsource/fusion-ui/components/chip-filters';
+import {DropdownDualMultiSelectModule} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
+import {DropdownModule} from '@ironsource/fusion-ui/components/dropdown';
 
 @NgModule({
     declarations: [AppComponent],
@@ -18,7 +22,11 @@ import {ModalModule} from '@ironsource/fusion-ui/components/modal';
         TooltipModule,
         IconModule,
         ReactiveFormsModule,
-        ModalModule
+        DaterangeModule,
+        ChipFilterModule,
+        ChipFiltersModule,
+        DropdownDualMultiSelectModule,
+        DropdownModule
     ],
     bootstrap: [AppComponent]
 })
