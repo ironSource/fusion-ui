@@ -190,6 +190,9 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, Afte
 
     ngAfterViewInit() {
         super.ngAfterViewInit();
+
+        console.log('ngAfterViewInit: ', this.isRowsInit);
+
         if (!this.isRowsInit) {
             this.isRowsInit = true;
             this.setSelectedRow();
