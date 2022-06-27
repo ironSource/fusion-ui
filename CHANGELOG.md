@@ -2,9 +2,7 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### Code Refactoring
-
-* **3.x.x:** commons entities and services, defaults only for v3 ([442379c](https://github.com/ironSource/fusion-ui/commit/442379cfe341596168b317f7b639e569ec069f83))
+## [3.0.0](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.68...v3.0.0) (2022-06-27)
 
 ## [3.0.0-rc.27](https://github.com/ironSource/fusion-ui/compare/v3.0.0-rc.26...v3.0.0-rc.27) (2022-06-12)
 
