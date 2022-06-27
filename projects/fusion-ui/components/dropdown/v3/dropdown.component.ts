@@ -27,14 +27,12 @@ import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dy
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 import {BackendPagination, ClosedOptions, DropdownPlaceholderConfiguration} from '@ironsource/fusion-ui/components/dropdown/entities';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import {
-    ClonePipe,
-    detectChangesDecorator,
-    FilterByFieldPipe,
-    isNullOrUndefined,
-    SharedEventsService,
-    UniqueIdService
-} from '@ironsource/fusion-ui';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
+import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
+import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
+import {detectChangesDecorator} from '@ironsource/fusion-ui/decorators';
+import {SharedEventsService} from '@ironsource/fusion-ui/services/events-handler';
 import {debounceTime, distinctUntilChanged, map, switchMapTo, take, takeUntil} from 'rxjs/operators';
 
 const ARROW_ICON = {
