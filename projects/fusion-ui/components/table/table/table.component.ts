@@ -11,7 +11,8 @@ import {
     ElementRef,
     OnDestroy,
     ChangeDetectorRef,
-    Injector
+    Injector,
+    AfterViewInit
 } from '@angular/core';
 import {defer, fromEvent, Observable} from 'rxjs';
 import {debounceTime, map, takeUntil, tap} from 'rxjs/operators';
@@ -32,7 +33,7 @@ import {TableBasicComponent} from '../table-basic/table-basic.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TableService]
 })
-export class TableComponent extends StyleBase implements OnInit, OnChanges, OnDestroy {
+export class TableComponent extends StyleBase implements OnInit, OnChanges, AfterViewInit, OnDestroy {
     @Input() id: string;
     @Input() options: TableOptions = {};
     @Input() columns: TableColumn[] = [];
@@ -196,6 +197,13 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, OnDe
                 this.localSorting(sortedColumn.key);
             }
         }
+    }
+
+    ngAfterViewInit() {
+        super.ngAfterViewInit();
+
+        this.setSelectedRow();
+        console.log('ngAfterViewInit----');
     }
 
     ngOnDestroy() {
