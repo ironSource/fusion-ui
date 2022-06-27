@@ -166,20 +166,9 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, Afte
         this.ignoredParentSelectorsRowClickEvent = ROW_CLICK_SUPPRESS_FOR_PARENT_SELECTORS.concat(
             this.options.rowsOptions?.ignoredParentSelectorsRowClickEvent ?? []
         );
-
-        console.log('ngOnInit---');
     }
 
     ngOnChanges(changes) {
-        console.log(
-            'table: ngOnChanges::',
-            !this.options || !this.options.isGroupedTable,
-            !this.isRowsInit,
-            changes.rows,
-            changes.rows.currentValue,
-            changes.rows.currentValue.length
-        );
-
         if (
             (!this.options || !this.options.isGroupedTable) &&
             !this.isRowsInit &&
@@ -201,8 +190,10 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, Afte
 
     ngAfterViewInit() {
         super.ngAfterViewInit();
-        console.log('ngAfterViewInit: isRowsInit----', this.isRowsInit);
-        this.setSelectedRow();
+        if (!this.isRowsInit) {
+            this.isRowsInit = true;
+            this.setSelectedRow();
+        }
     }
 
     ngOnDestroy() {
@@ -215,7 +206,6 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, Afte
                 this.tableService.onRowSelectChanged(true, row);
             }
         });
-        console.log('setSelectedRow:', this.tableService.selectedRows);
     }
 
     onHeaderClicked(col: any): void {

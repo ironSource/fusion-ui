@@ -116,7 +116,6 @@ export class TableService {
     }
 
     isRowSelected(row: any): boolean {
-        console.log('isRowSelected:', this.selectedRows, this.selectedRows.indexOf(row), row);
         return this.selectedRows.indexOf(row) !== -1;
     }
 
