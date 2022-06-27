@@ -168,6 +168,15 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, OnDe
     }
 
     ngOnChanges(changes) {
+        console.log(
+            'table: ngOnChanges::',
+            !this.options || !this.options.isGroupedTable,
+            !this.isRowsInit,
+            changes.rows,
+            changes.rows.currentValue,
+            changes.rows.currentValue.length
+        );
+
         if (
             (!this.options || !this.options.isGroupedTable) &&
             !this.isRowsInit &&
