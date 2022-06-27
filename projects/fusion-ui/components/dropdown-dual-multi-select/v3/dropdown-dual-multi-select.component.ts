@@ -17,8 +17,8 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import {InputSize} from '@ironsource/fusion-ui/components/input';
-import {UniqueIdService} from '@ironsource/fusion-ui';
+import {InputSize} from '@ironsource/fusion-ui/components/input/common/base';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {map, takeUntil} from 'rxjs/operators';
 
 @Component({
