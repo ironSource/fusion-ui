@@ -141,6 +141,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     ngAfterViewInit() {
         this.setValueSelectedListener();
     }
+
     ngAfterContentInit() {
         this.defaultContent = this.apiBase?.contentTemplate;
     }
