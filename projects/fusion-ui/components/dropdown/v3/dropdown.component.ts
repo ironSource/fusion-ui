@@ -25,7 +25,7 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
-import {BackendPagination, ClosedOptions, DropdownPlaceholderConfiguration} from '@ironsource/fusion-ui/components/dropdown';
+import {BackendPagination, ClosedOptions, DropdownPlaceholderConfiguration} from '@ironsource/fusion-ui/components/dropdown/entities';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {
     ClonePipe,

@@ -19,8 +19,6 @@ import {CalendarService} from '@ironsource/fusion-ui/components/calendar/common/
 import {DEFAULT_DATE_FORMAT} from './config';
 import {DaterangeService} from './daterange.service';
 import {DEFAULT_PLACEHOLDER_TEXT} from './daterange.configuration';
-import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
-import {map, takeUntil} from 'rxjs/operators';
 
 @Directive()
 export abstract class DaterangeBaseComponent implements OnInit, OnDestroy, ControlValueAccessor {

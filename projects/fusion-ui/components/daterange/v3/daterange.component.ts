@@ -14,17 +14,21 @@ import {
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {BehaviorSubject, Subject} from 'rxjs';
 import {DropdownSelectConfigurations} from '@ironsource/fusion-ui/components/dropdown-select/entities';
-import {
-    DaterangeBaseComponent,
-    DaterangeService,
-    DEFAULT_DATE_FORMAT,
-    DEFAULT_PLACEHOLDER_TEXT
-} from '@ironsource/fusion-ui/components/daterange/common/base';
+import {DaterangeService} from '@ironsource/fusion-ui/components/daterange/common/base';
+import {DEFAULT_DATE_FORMAT} from './config';
+import {DEFAULT_PLACEHOLDER_TEXT} from './daterange.configuration';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
-import {DaterangeCustomPreset, DaterangeOptions, DaterangePresets, DaterangeSelection} from '@ironsource/fusion-ui/components/daterange';
-import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
-import {CalendarComponentConfigurations, CalendarService, CalendarType, Day} from '@ironsource/fusion-ui/components/calendar';
-import {isNullOrUndefined, isSameDates, LogService, UniqueIdService} from '@ironsource/fusion-ui';
+import {
+    DaterangeCustomPreset,
+    DaterangeOptions,
+    DaterangePresets,
+    DaterangeSelection
+} from '@ironsource/fusion-ui/components/daterange/entities';
+import {CalendarComponentConfigurations, CalendarType, Day} from '@ironsource/fusion-ui/components/calendar';
+import {LogService} from '@ironsource/fusion-ui/services/log';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
+import {isNullOrUndefined, isSameDates} from '@ironsource/fusion-ui/utils';
+import {CalendarService} from '@ironsource/fusion-ui/components/calendar/common/base';
 import {map, takeUntil} from 'rxjs/operators';
 import {DatePipe} from '@angular/common';
 
