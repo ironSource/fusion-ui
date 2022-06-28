@@ -81,23 +81,4 @@ export class ChartComponent extends ChartBaseComponent {
             ...BASE_DATASET_OPTIONS.style_v1
         };
     }
-
-    protected getFormatted(value, format?: string): string {
-        let retVal = value;
-        if (!isNullOrUndefined(format)) {
-            const formatter = format.split(':');
-            switch (formatter[0]) {
-                case 'currency':
-                    retVal = this.currencyPipe.transform(value, 'USD', true);
-                    break;
-                case 'percent':
-                    retVal = this.percentPipe.transform(value / 100, formatter[1]);
-                    break;
-                case 'number':
-                    retVal = this.decimalPipe.transform(value, formatter[1]);
-                    break;
-            }
-        }
-        return retVal;
-    }
 }
