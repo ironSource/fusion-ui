@@ -32,6 +32,7 @@ export class TableService {
     }
 
     onRowSelectChanged(isChecked: boolean, row: any): void {
+        console.log('onRowSelectChanged', isChecked, row);
         const idx = this.selectedRows.indexOf(row);
         if (isChecked && idx === -1) {
             this.selectedRows.push(row);
@@ -88,6 +89,7 @@ export class TableService {
     }
 
     isAllRowsSelected(rows): boolean {
+        console.log('isAllRowsSelected', rows.length, this.selectedRows.length);
         return rows.length === this.selectedRows.length;
     }
 
@@ -116,6 +118,7 @@ export class TableService {
     }
 
     isRowSelected(row: any): boolean {
+        console.log('isRowSelected', this.selectedRows, row, this.selectedRows.indexOf(row));
         return this.selectedRows.indexOf(row) !== -1;
     }
 
