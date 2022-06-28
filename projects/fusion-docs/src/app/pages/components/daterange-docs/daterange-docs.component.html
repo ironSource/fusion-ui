@@ -1,8 +1,9 @@
-<div class="row" *ngIf="styleVersion$ | async as styleVersion">
+<div class="row" *ngIf="styleVersion$ | async as currentStyleVersion">
     <div class="col-9">
         <!--UI-Component Examples-->
         <div class="is-example-title">Type</div>
-        <fusion-example-block id="typeSingleDatePicker" title="Single Date Picker" *ngIf="styleVersion === StyleVersion.V2">
+        <fusion-example-block id="typeSingleDatePicker" title="Single Date Picker"
+                              *ngIf="currentStyleVersion === StyleVersion.V2 || currentStyleVersion === StyleVersion.V3">
             <ng-template fusionExampleBlock="Angular">
                 <fusion-code-block
                     lang="html"
@@ -156,13 +157,16 @@ document.addEventListener('DOMContentLoaded', onLoad, false);"
             <div class="row">
                 <div class="col-12">
                     <div class="daterangeWrapper">
-                        <fusion-daterange [minDate]="daterangeMinDate" [maxDate]="daterangeMaxDate" [formControl]="daterangeDatePicker" [options]="optionOnlyDatePicker$ | async"></fusion-daterange>
+                        <fusion-daterange [minDate]="daterangeMinDate" [maxDate]="daterangeMaxDate"
+                                          [formControl]="daterangeDatePicker"
+                                          [options]="optionOnlyDatePicker$ | async"></fusion-daterange>
                     </div>
                 </div>
             </div>
         </fusion-example-block>
 
-        <fusion-example-block id="typeRegularNoPreset" title="No Preset" *ngIf="styleVersion === StyleVersion.V2">
+        <fusion-example-block id="typeRegularNoPreset" title="No Preset"
+                              *ngIf="currentStyleVersion === StyleVersion.V2 || currentStyleVersion === StyleVersion.V3">
             <ng-template fusionExampleBlock="Angular">
                 <fusion-code-block
                     lang="html"
@@ -471,7 +475,7 @@ document.addEventListener('DOMContentLoaded', onLoad, false);"
 
             <div class="row">
                 <div class="col-3">
-                   <fusion-daterange [formControl]="daterangeDefault"></fusion-daterange>
+                    <fusion-daterange [formControl]="daterangeDefault"></fusion-daterange>
                 </div>
             </div>
         </fusion-example-block>
@@ -662,7 +666,8 @@ document.addEventListener('DOMContentLoaded', onLoad, false);"
             <div class="row">
                 <div class="col-12">
                     <div class="daterangeWrapper">
-                        <fusion-daterange [formControl]="daterangeCustom" [options]="options$ | async"></fusion-daterange>
+                        <fusion-daterange [formControl]="daterangeCustom"
+                                          [options]="options$ | async"></fusion-daterange>
                     </div>
                 </div>
             </div>
@@ -750,7 +755,7 @@ DEFAULT_DATERANGE_PRESET_NAMES = {
 };"
             ></fusion-code-block>
         </fusion-example-block>
-        <br />
+        <br/>
         <fusion-example-block id="events" title="Events" [collapsible]="false">
             <fusion-code-block
                 lang="js"
@@ -763,6 +768,6 @@ daySelected(DaterangeSelection)"
     </div>
 
     <div class="col-3 is-right-side-menu-holder">
-        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+        <!--<fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>-->
     </div>
 </div>

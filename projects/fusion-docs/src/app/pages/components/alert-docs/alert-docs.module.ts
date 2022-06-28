@@ -6,7 +6,7 @@ import {AlertDocsComponent} from './alert-docs.component';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
-import {AlertModule} from '@ironsource/fusion-ui';
+import {AlertModule} from '@ironsource/fusion-ui/components/alert/v1';
 
 @NgModule({
     declarations: [AlertDocsComponent],

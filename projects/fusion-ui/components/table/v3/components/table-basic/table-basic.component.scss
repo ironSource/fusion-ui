@@ -1,0 +1,23 @@
+@import "../../../../../src/style/scss/v3/vars/vars";
+@import "../../../../../src/style/scss/v3/mixins/mixins";
+@import "../../../../../src/style/scss/v3/vars/colors";
+
+$fullCellHeight: 48px;
+$failedCellHeight: 27px;
+
+:host{
+    @extend %link-reset;
+    .full-cell{
+        height: $fullCellHeight;
+        background-color: $fu-light-100;
+        &.load-more, &.failed{
+            height: $failedCellHeight;
+            p{
+                margin: 0;
+            }
+        }
+    }
+    tr.is-row-in-request{
+        pointer-events: none;
+    }
+}

@@ -1,5 +1,5 @@
-@import '../../../../../fusion-ui/src/style/scss/vars/vars';
-@import '../../../../../fusion-ui/src/style/scss/vars/mixins';
+@import '../../../../../fusion-ui/src/style/scss/v2/vars/vars';
+@import '../../../../../fusion-ui/src/style/scss/v2/mixins/mixins';
 
 :host{
     display: flex;
@@ -10,7 +10,7 @@
     }
 
     .icon-container {
-        color: $light-800;
+        color: $fu-light-800;
         @include icon-style(null, currentColor, 17px, false, true){
             margin-right: 8px;
         };
@@ -19,7 +19,7 @@
 
 :host-context(.item-selected) {
     .icon-container {
-        color: $primary;
+        color: $fu-primary;
     }
 }
 

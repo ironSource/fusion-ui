@@ -1,0 +1,16 @@
+@import '../../../src/style/scss/v2/vars/vars';
+
+:host {
+    cursor: default;
+    color: $fu-light-900;
+    padding: 5px 10px;
+    //height: 32px;
+    background: #fff;
+    position: relative;
+    display: block;
+    fusion-loader-inline{
+        position: absolute;
+        right: 13px;
+        top: 4px;
+    }
+}

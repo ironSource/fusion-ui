@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {isNullOrUndefined, StatusLabelConfig, StatusLabelStatus} from '@ironsource/fusion-ui';
+import {StatusLabelConfig, StatusLabelStatus} from '@ironsource/fusion-ui/components/status-label/common/entities';
 
 @Component({
     selector: 'fusion-table-cell-dynamic-component-example',

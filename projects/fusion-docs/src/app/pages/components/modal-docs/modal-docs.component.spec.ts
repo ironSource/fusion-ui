@@ -5,9 +5,13 @@ import {ModalDocsRoutingModule} from './modal-docs-routing.module';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
-import {InputModule, LoaderModule, ModalModule, NotificationModule} from '@ironsource/fusion-ui';
+
 import {ReactiveFormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
+import {InputModule} from '@ironsource/fusion-ui/components/input/v2';
+import {ModalModule} from '@ironsource/fusion-ui/components/modal/v2';
+import {LoaderModule} from '@ironsource/fusion-ui/components/loader/v1';
+import {NotificationModule} from '@ironsource/fusion-ui/components/notification/v1';
 
 class RouterStub {
     url = '';

@@ -1,18 +1,14 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import {
-    StyleVersion,
-    TagComponentConfigurations,
-    TagRole,
-    TagsInputClearSearchOn,
-    TagsInputComponentConfigurations,
-    VersionService
-} from '@ironsource/fusion-ui';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
+import {TagComponentConfigurations, TagRole} from '@ironsource/fusion-ui/components/tag/common/entities';
 import {takeUntil} from 'rxjs/operators';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Router} from '@angular/router';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
 import {FormControl} from '@angular/forms';
+import {VersionService} from '../../../services/version/version.service';
+import {TagsInputClearSearchOn, TagsInputComponentConfigurations} from '@ironsource/fusion-ui/components/tags-input/entities';
 
 @Component({
     selector: 'fusion-tag-docs-v2',

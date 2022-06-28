@@ -1,0 +1,61 @@
+<div [id]="id" (fusionClickOutside)="onOutsideClick($event)">
+    <div *ngIf="templateRef" #trigger (click)="toggle()">
+        <ng-container [ngTemplateOutlet]="templateRef"></ng-container>
+    </div>
+
+    <ng-container *ngIf="!templateRef" [ngTemplateOutlet]="defaultTrigger"></ng-container>
+
+    <ng-template #defaultTrigger>
+        <fusion-dropdown-select
+            (click)="toggle()"
+            [configurations]="dropdownSelectConfigurations$ | async"
+        >
+        </fusion-dropdown-select>
+    </ng-template>
+    <div class="overlay" #overlay [class.fu-no-presets]="!isPresetsShown" [class]="overlayAlign$ | async" [ngClass]="{visible: (overlayAlign$ | async), isOpen: (isOpen$ | async) , singleDatePicker: isSingleDatePicker}">
+        <div class="presetsWrap" *ngIf="isPresetsShown">
+            <ng-container [ngTemplateOutlet]="presetsHeaderTemplate || defaultPreset"></ng-container>
+            <ng-template #defaultPreset>
+                <ul>
+                    <li
+                        *ngFor="let preset of options.presets"
+                        (click)="selectPreset(preset)"
+                        [ngClass]="{selected: currentPreset === preset}"
+                    >
+                        {{ daterangeService.getPresetName(preset) }}
+                    </li>
+                </ul>
+            </ng-template>
+        </div>
+        <div class="rightSide">
+            <div class="calendarsWrap" [ngClass]="{large: options.size === 'large'}">
+                <div class="prev" (click)="onMonthChange('previous')">
+                    <fusion-icon class="icon-prev" [name]="pevIconName"></fusion-icon>
+                </div>
+
+                <fusion-calendar
+                    *ngFor="let month of currentMonths"
+                    (daySelected)="onSelectDay($event)"
+                    [configuration]="getCalendarConfigurations(month)"
+                >
+                </fusion-calendar>
+
+                <div class="next" (click)="onMonthChange('next')">
+                    <fusion-icon class="icon-next" [name]="nextIconName"></fusion-icon>
+                </div>
+            </div>
+            <div *ngIf="!isSingleDatePicker" class="calendarsFooter">
+                <fusion-button class="transparent third small" (click)="close()">Cancel</fusion-button>
+                <fusion-button class="primary small" (click)="apply()">Apply</fusion-button>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #chipContent>
+    <div class="fu-chip-content-default">
+        <ng-container *ngIf="(selected$ | async) as selected">
+            <fusion-icon *ngIf="selected !== (options?.placeholder || defaultPlaceholder)" name="calendar-today"></fusion-icon>
+            <div [fusionTooltip]="selected" class="truncate fu-chip-text"><span *ngIf="options?.chipLabel" class="fu-chip-label">{{options?.chipLabel + ': '}}</span>{{ selected }}</div>
+        </ng-container>
+    </div>
+</ng-template>

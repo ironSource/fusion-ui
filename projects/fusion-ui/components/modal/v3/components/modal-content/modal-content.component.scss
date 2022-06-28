@@ -1,0 +1,29 @@
+@import '../../../../../src/style/scss/v3/vars/vars';
+@import '../../modal_vars';
+
+%border-box-normalize{
+    * {
+        box-sizing: border-box;
+    }
+}
+
+:host {
+    @extend %border-box-normalize;
+    @extend %customScroll;
+    display: block;
+    overflow-y: auto;
+    &.fu-has-height{
+        min-height: calc(100% - #{$modalHeaderHeight} - #{$modalFooterHeight});
+    }
+
+    .modal-content {
+        position: relative;
+        padding: 24px;
+
+        .content {
+            color: $fu-light-1000;
+            @extend %font-bodyMedium;
+            line-height: 21px;
+        }
+    }
+}

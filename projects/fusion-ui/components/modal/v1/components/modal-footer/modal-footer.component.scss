@@ -1,0 +1,34 @@
+@import '../../../../../src/style/scss/v1/vars/vars';
+@import '../../../../../src/style/scss/v1/mixins/mixins';
+@import '../../../../../src/style/scss/v1/vars/border';
+@import '../../modal_vars';
+
+:host {
+    .modal-footer {
+        height: $modalFooterHeight;
+        background-color: $light-100;
+        @extend %borderTop;
+        @extend %borderRadius;
+        @extend %noBorderRadiusTR;
+        @extend %noBorderRadiusTL;
+        padding: 15px 30px 15px 15px;
+        box-sizing: border-box;
+
+        div {
+            text-align: right;
+
+            button {
+                vertical-align: middle;
+
+                & + button {
+                    margin-left: 10px;
+                }
+            }
+
+            .fu-error-message {
+                color: $negative-500;
+                margin-right: 15px;
+            }
+        }
+    }
+}

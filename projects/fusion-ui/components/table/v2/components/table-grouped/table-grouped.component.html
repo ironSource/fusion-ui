@@ -1,0 +1,11 @@
+<tr
+    *ngFor="let row of tableBody; let rowIndex = index"
+    fusionTableRowGrouped
+    [row]="row"
+    [ngClass]="getClass(row)"
+    [columns]="columns"
+    [rowIndex]="rowIndex"
+    [options]="options"
+    (rowRemoved)="tableService.removeRow({rows: tableBody, row: row, options: options, rowIndex: rowIndex})"
+    (selectedChanged)="onRowSelectChanged($event, row)"
+></tr>

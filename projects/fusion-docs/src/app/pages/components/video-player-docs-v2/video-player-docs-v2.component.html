@@ -281,15 +281,6 @@ options: {
     autoplay?: boolean;
     showTimeline?: boolean;
 }
-
-// CSS variables theme
-
-interface VideoPlayerTheme extends Theme {
-    '--player-border-radius'?: string;
-    '--player-background-color'?: string;
-}
-
-InjectionToken - VIDEO_PLAYER_THEME_TOKEN
 "
             ></fusion-code-block>
         </fusion-example-block>
@@ -297,6 +288,6 @@ InjectionToken - VIDEO_PLAYER_THEME_TOKEN
     </div>
 
     <div class="col-3 is-right-side-menu-holder">
-        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+        <!--<fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>-->
     </div>
 </div>

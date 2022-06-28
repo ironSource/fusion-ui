@@ -34,7 +34,7 @@ export class SvgComponent implements AfterViewInit {
         this.onPathChanged(value);
     }
 
-    libVersion = 'v2';
+    libVersion = 'v3';
     svgPath = '';
 
     // class constructor

@@ -1,11 +1,13 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
-import {ListBoxModes, StyleVersion, VersionService} from '@ironsource/fusion-ui';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
+import {ListBoxModes} from '@ironsource/fusion-ui/components/list-box/common/base';
 import {takeUntil} from 'rxjs/operators';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Router} from '@angular/router';
 import {FormControl} from '@angular/forms';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
+import {VersionService} from '../../../services/version/version.service';
 
 const MOCK_DATA_0 = [
     {id: 1, displayText: 'Phakamile Sikali'},

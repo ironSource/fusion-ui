@@ -1,0 +1,24 @@
+@import '../../../src/style/scss/v2/vars/vars';
+@import '../../../src/style/scss/v2/mixins/mixins';
+
+:host {
+    .loader-inline {
+        display: inline-flex;
+        margin-left: 5px;
+        align-items: center;
+        height: 16px;
+        color: $fu-light-900;
+        &.blue{
+            color: $fu-primary-500;
+        }
+        &.white{
+            color: $White;
+        }
+
+        .loader-txt {
+            @extend %font-body;
+            padding-left: 14px;
+        }
+
+    }
+}

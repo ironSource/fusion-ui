@@ -1,26 +1,27 @@
 <div class="row" *ngIf="selectedVersion$ | async as currentStyleVersion">
-    <div class="col-9">
-        <form [formGroup]="formRadioButtons" novalidate>
-            <!--UI-Component Examples-->
-            <div class="is-example-title">Type</div>
+    <ng-container *ngIf="(styleUpdating$ | async) === false; else inUpdate">
+        <div class="col-9">
+            <form [formGroup]="formRadioButtons" novalidate>
+                <!--UI-Component Examples-->
+                <div class="is-example-title">Type</div>
 
-            <fusion-example-block id="typeHorizontal" title="Horizontal">
-                <ng-template fusionExampleBlock="Angular">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<fusion-radio-group [options]="rbGroupOptions"
+                <fusion-example-block id="typeHorizontal" title="Horizontal">
+                    <ng-template fusionExampleBlock="Angular">
+                        <fusion-code-block
+                            lang="html"
+                            class="is-collapsible"
+                            code='<fusion-radio-group [options]="rbGroupOptions"
                     [formControl]="radioFormControl"
                     [inline]="true">
 </fusion-radio-group>'
-                    ></fusion-code-block>
-                </ng-template>
+                        ></fusion-code-block>
+                    </ng-template>
 
-                <ng-template fusionExampleBlock="React">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='const RADIO_GROUP_OPTIONS = [
+                    <ng-template fusionExampleBlock="React">
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='const RADIO_GROUP_OPTIONS = [
   {
     id: 1,
     label: "Checked 1"
@@ -55,24 +56,24 @@ class App extends React.Component {
 }
 
 export default App;'
-                    ></fusion-code-block>
-                </ng-template>
+                        ></fusion-code-block>
+                    </ng-template>
 
-                <ng-template fusionExampleBlock="Vue">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<template>
+                    <ng-template fusionExampleBlock="Vue">
+                        <fusion-code-block
+                            lang="html"
+                            class="is-collapsible"
+                            code='<template>
   <div id="app">
       <FusionRadioGroup :config="radioGroup"  @selectedChange="e => handleChange(e, &#39;radioGroup&#39;)"/>
   </div>
 </template>'
-                    ></fusion-code-block>
+                        ></fusion-code-block>
 
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='<script>
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='<script>
 import {FusionRadioGroup} from "@ironsource/fusion-ui/native/vue";
 
 export default {
@@ -107,14 +108,14 @@ const RADIO_GROUP_OPTIONS = [
   }
 ];
 </script>'
-                    ></fusion-code-block>
-                </ng-template>
+                        ></fusion-code-block>
+                    </ng-template>
 
-                <ng-template fusionExampleBlock="Native">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='
+                    <ng-template fusionExampleBlock="Native">
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='
 const radioGroup = document.createElement("native-fusion-radio-group");
 radioGroup.config = {
     options: [
@@ -136,212 +137,18 @@ radioGroup.config = {
 radioGroup.addEventListener("selectedChange", e => console.log(e.detail));
 radioGroup.setAttribute("name", "radioGroup");
 document.body.appendChild(radioGroup);'
-                    ></fusion-code-block>
-                </ng-template>
+                        ></fusion-code-block>
+                    </ng-template>
 
-                <fusion-radio-group [options]="rbGroupOptions" [formControl]="radioFormControl" [inline]="true"></fusion-radio-group>
-            </fusion-example-block>
-
-            <fusion-example-block id="typeVertical" title="Vertical">
-                <ng-template fusionExampleBlock="Angular">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<fusion-radio-group [options]="rbGroupSecondOptions"
-                    [formControl]="radioFormControl">
-</fusion-radio-group>'
-                    ></fusion-code-block>
-                </ng-template>
-
-                <ng-template fusionExampleBlock="React">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='const RADIO_GROUP_OPTIONS = [
-  {
-    id: 1,
-    label: "Checked 1",
-  },
-  {
-    id: 2,
-    label: "Checked 2"
-  }
-];
-
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      radioGroup: {
-        options: RADIO_GROUP_OPTIONS,
-        controlValue: RADIO_GROUP_OPTIONS[0]
-      }
-    }
-  }
-
-  handleChange(name, value) {
-    this.setState({[name]: {...this.state[name], controlValue: value}})
-  }
-
-  render() {
-    return (
-      <FusionRadioGroup config={this.state.radioGroup} selectedChange={this.handleChange.bind(this, "radioGroup")} />
-    )
-  }
-}
-
-export default App;'
-                    ></fusion-code-block>
-                </ng-template>
-
-                <ng-template fusionExampleBlock="Vue">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<template>
-  <div id="app">
-      <FusionRadioGroup :config="radioGroup"  @selectedChange="e => handleChange(e, &#39;radioGroup&#39;)"/>
-  </div>
-</template>'
-                    ></fusion-code-block>
-
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='<script>
-import {FusionRadioGroup} from "@ironsource/fusion-ui/native/vue";
-
-export default {
-  name: "app",
-  data() {
-    return {
-      radioGroup: {
-        options: RADIO_GROUP_OPTIONS,
-        controlValue: RADIO_GROUP_OPTIONS[0]
-      }
-    }
-  },
-  components: {
-    FusionRadioGroup
-  },
-  methods: {
-    handleChange: function(value, key){
-      this[key] = {...this[key], controlValue: value};
-    }
-  }
-}
-
-const RADIO_GROUP_OPTIONS = [
-  {
-    id: 1,
-    label: "Checked 1"
-  },
-  {
-    id: 2,
-    label: "Checked 2"
-  }
-];
-</script>'
-                    ></fusion-code-block>
-                </ng-template>
-
-                <ng-template fusionExampleBlock="Native">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='
-const radioGroup = document.createElement("native-fusion-radio-group");
-radioGroup.config = {
-  options: [
-    {
-        id: 1,
-        label: "Checked 1"
-    },
-    {
-        id: 2,
-        label: "Checked 2"
-    }
-  ],
-  get controlValue() {
-    return this.options[0];
-  }
-};
-
-radioGroup.addEventListener("selectedChange", e => console.log(e.detail));
-
-document.body.appendChild(radioGroup);'
-                    ></fusion-code-block>
-                </ng-template>
-
-                <fusion-radio-group [options]="rbGroupSecondOptions" [selected]="selectedRBSecondOption"></fusion-radio-group>
-            </fusion-example-block>
-
-            <ng-container *ngIf="currentStyleVersion === styleVersion.V1">
-                <div class="is-example-title">Content</div>
-
-                <fusion-example-block id="contentHTML" title="HTML Content">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='HTML:
-<fusion-radio name="testGroup1"
-              [value]="rbGroupOptions[0].id"
-              [label]="rbGroupOptions[0].label"
-              [formControl]="radioFormControl"
-              [isDisabled]="false"
-              (changed)="setSelected($event)">
-</fusion-radio>
-
-Input Parameters:
-                name: string
-                isDisabled: boolean
-                checked: boolean
-                value: string
-                label: string
-                icon: string
-
-Output Parameters:
-                  changed: EventEmitter'
-                    ></fusion-code-block>
-
-                    <div class="is-row-example">
-                        <div class="fusion-checkbox-holder">
-                            <fusion-radio
-                                name="testGroup1"
-                                [value]="rbGroupOptions[0].id"
-                                [label]="rbGroupOptions[0].label"
-                                [checked]="selectedRBOption.id === rbGroupOptions[0].id"
-                                [isDisabled]="false"
-                                (changed)="setSelected($event)"
-                            ></fusion-radio>
-                        </div>
-                        <div class="is-content-holder">
-                            <fusion-input placeholder="Enter your input value" [formControl]="input"></fusion-input>
-                        </div>
-                    </div>
-                    <div class="is-row-example">
-                        <div class="fusion-checkbox-holder">
-                            <fusion-radio
-                                name="testGroup1"
-                                [value]="rbGroupOptions[1].id"
-                                [label]="rbGroupOptions[1].label"
-                                [checked]="selectedRBOption.id === rbGroupOptions[1].id"
-                                [isDisabled]="false"
-                                (changed)="setSelected($event)"
-                            ></fusion-radio>
-                        </div>
-                        <div class="is-content-holder">
-                            <fusion-input placeholder="Enter your input value" [formControl]="input"></fusion-input>
-                        </div>
-                    </div>
+                    <fusion-radio-group [options]="rbGroupOptions" [formControl]="radioFormControl" [inline]="true"></fusion-radio-group>
                 </fusion-example-block>
 
-                <fusion-example-block id="contentIcon" title="Including Icon">
+                <fusion-example-block id="typeVertical" title="Vertical">
                     <ng-template fusionExampleBlock="Angular">
                         <fusion-code-block
                             lang="html"
                             class="is-collapsible"
-                            code='<fusion-radio-group [options]="rbGroupIconedOptions"
+                            code='<fusion-radio-group [options]="rbGroupSecondOptions"
                     [formControl]="radioFormControl">
 </fusion-radio-group>'
                         ></fusion-code-block>
@@ -355,12 +162,10 @@ Output Parameters:
   {
     id: 1,
     label: "Checked 1",
-    icon: "ios"
   },
   {
     id: 2,
-    label: "Checked 2",
-    icon: "android"
+    label: "Checked 2"
   }
 ];
 
@@ -413,6 +218,202 @@ export default {
     return {
       radioGroup: {
         options: RADIO_GROUP_OPTIONS,
+        controlValue: RADIO_GROUP_OPTIONS[0]
+      }
+    }
+  },
+  components: {
+    FusionRadioGroup
+  },
+  methods: {
+    handleChange: function(value, key){
+      this[key] = {...this[key], controlValue: value};
+    }
+  }
+}
+
+const RADIO_GROUP_OPTIONS = [
+  {
+    id: 1,
+    label: "Checked 1"
+  },
+  {
+    id: 2,
+    label: "Checked 2"
+  }
+];
+</script>'
+                        ></fusion-code-block>
+                    </ng-template>
+
+                    <ng-template fusionExampleBlock="Native">
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='
+const radioGroup = document.createElement("native-fusion-radio-group");
+radioGroup.config = {
+  options: [
+    {
+        id: 1,
+        label: "Checked 1"
+    },
+    {
+        id: 2,
+        label: "Checked 2"
+    }
+  ],
+  get controlValue() {
+    return this.options[0];
+  }
+};
+
+radioGroup.addEventListener("selectedChange", e => console.log(e.detail));
+
+document.body.appendChild(radioGroup);'
+                        ></fusion-code-block>
+                    </ng-template>
+
+                    <fusion-radio-group [options]="rbGroupSecondOptions" [selected]="selectedRBSecondOption"></fusion-radio-group>
+                </fusion-example-block>
+
+                <ng-container *ngIf="currentStyleVersion === styleVersion.V1">
+                    <div class="is-example-title">Content</div>
+
+                    <fusion-example-block id="contentHTML" title="HTML Content">
+                        <fusion-code-block
+                            lang="html"
+                            class="is-collapsible"
+                            code='HTML:
+<fusion-radio name="testGroup1"
+              [value]="rbGroupOptions[0].id"
+              [label]="rbGroupOptions[0].label"
+              [formControl]="radioFormControl"
+              [isDisabled]="false"
+              (changed)="setSelected($event)">
+</fusion-radio>
+
+Input Parameters:
+                name: string
+                isDisabled: boolean
+                checked: boolean
+                value: string
+                label: string
+                icon: string
+
+Output Parameters:
+                  changed: EventEmitter'
+                        ></fusion-code-block>
+
+                        <div class="is-row-example">
+                            <div class="fusion-checkbox-holder">
+                                <fusion-radio
+                                    name="testGroup1"
+                                    [value]="rbGroupOptions[0].id"
+                                    [label]="rbGroupOptions[0].label"
+                                    [checked]="selectedRBOption.id === rbGroupOptions[0].id"
+                                    [isDisabled]="false"
+                                    (changed)="setSelected($event)"
+                                ></fusion-radio>
+                            </div>
+                            <div class="is-content-holder">
+                                <fusion-input placeholder="Enter your input value" [formControl]="input"></fusion-input>
+                            </div>
+                        </div>
+                        <div class="is-row-example">
+                            <div class="fusion-checkbox-holder">
+                                <fusion-radio
+                                    name="testGroup1"
+                                    [value]="rbGroupOptions[1].id"
+                                    [label]="rbGroupOptions[1].label"
+                                    [checked]="selectedRBOption.id === rbGroupOptions[1].id"
+                                    [isDisabled]="false"
+                                    (changed)="setSelected($event)"
+                                ></fusion-radio>
+                            </div>
+                            <div class="is-content-holder">
+                                <fusion-input placeholder="Enter your input value" [formControl]="input"></fusion-input>
+                            </div>
+                        </div>
+                    </fusion-example-block>
+
+                    <fusion-example-block id="contentIcon" title="Including Icon">
+                        <ng-template fusionExampleBlock="Angular">
+                            <fusion-code-block
+                                lang="html"
+                                class="is-collapsible"
+                                code='<fusion-radio-group [options]="rbGroupIconedOptions"
+                    [formControl]="radioFormControl">
+</fusion-radio-group>'
+                            ></fusion-code-block>
+                        </ng-template>
+
+                        <ng-template fusionExampleBlock="React">
+                            <fusion-code-block
+                                lang="js"
+                                class="is-collapsible"
+                                code='const RADIO_GROUP_OPTIONS = [
+  {
+    id: 1,
+    label: "Checked 1",
+    icon: "ios"
+  },
+  {
+    id: 2,
+    label: "Checked 2",
+    icon: "android"
+  }
+];
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      radioGroup: {
+        options: RADIO_GROUP_OPTIONS,
+        controlValue: RADIO_GROUP_OPTIONS[0]
+      }
+    }
+  }
+
+  handleChange(name, value) {
+    this.setState({[name]: {...this.state[name], controlValue: value}})
+  }
+
+  render() {
+    return (
+      <FusionRadioGroup config={this.state.radioGroup} selectedChange={this.handleChange.bind(this, "radioGroup")} />
+    )
+  }
+}
+
+export default App;'
+                            ></fusion-code-block>
+                        </ng-template>
+
+                        <ng-template fusionExampleBlock="Vue">
+                            <fusion-code-block
+                                lang="html"
+                                class="is-collapsible"
+                                code='<template>
+  <div id="app">
+      <FusionRadioGroup :config="radioGroup"  @selectedChange="e => handleChange(e, &#39;radioGroup&#39;)"/>
+  </div>
+</template>'
+                            ></fusion-code-block>
+
+                            <fusion-code-block
+                                lang="js"
+                                class="is-collapsible"
+                                code='<script>
+import {FusionRadioGroup} from "@ironsource/fusion-ui/native/vue";
+
+export default {
+  name: "app",
+  data() {
+    return {
+      radioGroup: {
+        options: RADIO_GROUP_OPTIONS,
         controlValue: RADIO_GROUP_OPTIONS[0],
       }
     }
@@ -440,14 +441,14 @@ const RADIO_GROUP_OPTIONS = [
   }
 ];
   </script>'
-                        ></fusion-code-block>
-                    </ng-template>
+                            ></fusion-code-block>
+                        </ng-template>
 
-                    <ng-template fusionExampleBlock="Native">
-                        <fusion-code-block
-                            lang="js"
-                            class="is-collapsible"
-                            code='const radioGroup = document.createElement("native-fusion-radio-group");
+                        <ng-template fusionExampleBlock="Native">
+                            <fusion-code-block
+                                lang="js"
+                                class="is-collapsible"
+                                code='const radioGroup = document.createElement("native-fusion-radio-group");
 radioGroup.config = {
   options: [
   {
@@ -469,29 +470,29 @@ radioGroup.config = {
 radioGroup.addEventListener("selectedChange", e => console.log(e.detail));
 
 document.body.appendChild(radioGroup);'
-                        ></fusion-code-block>
-                    </ng-template>
+                            ></fusion-code-block>
+                        </ng-template>
 
-                    <fusion-radio-group [options]="rbGroupIconedOptions" [selected]="selectedRBIconedOption"></fusion-radio-group>
-                </fusion-example-block>
+                        <fusion-radio-group [options]="rbGroupIconedOptions" [selected]="selectedRBIconedOption"></fusion-radio-group>
+                    </fusion-example-block>
 
-                <fusion-example-block id="contentIconBig" title="Large Icon Above">
-                    <ng-template fusionExampleBlock="Angular">
-                        <fusion-code-block
-                            lang="html"
-                            class="is-collapsible"
-                            code='<!--For only one selected (radiobutton) - [isMultiSelect]="false"-->
+                    <fusion-example-block id="contentIconBig" title="Large Icon Above">
+                        <ng-template fusionExampleBlock="Angular">
+                            <fusion-code-block
+                                lang="html"
+                                class="is-collapsible"
+                                code='<!--For only one selected (radiobutton) - [isMultiSelect]="false"-->
 <fusion-icon-select-list
     [options]="iconSelectDeviceTypeOptions"
     [selected]="iconSelectDeviceTypeSelected"
     [isMultiSelect]="false"
     (selectionChanged)="onDeviceTypeSelectionChanged($event)"
 ></fusion-icon-select-list>'
-                        ></fusion-code-block>
-                        <fusion-code-block
-                            lang="js"
-                            class="is-collapsible"
-                            code="// Data
+                            ></fusion-code-block>
+                            <fusion-code-block
+                                lang="js"
+                                class="is-collapsible"
+                                code="// Data
 iconMultiSelectDeviceTypeOptions: Array<IconSelectItem> = [
     {
         id: 'phone',
@@ -515,13 +516,13 @@ iconMultiSelectDeviceTypeSelected: Array<IconSelectItem> = [{
 onDeviceTypeSelectionChanged(selected: IconSelectItem[]): void {
    console.log('Selected', selected);
 }"
-                        ></fusion-code-block>
-                    </ng-template>
-                    <ng-template fusionExampleBlock="React">
-                        <fusion-code-block
-                            lang="js"
-                            class="is-collapsible"
-                            code='import React from "react";
+                            ></fusion-code-block>
+                        </ng-template>
+                        <ng-template fusionExampleBlock="React">
+                            <fusion-code-block
+                                lang="js"
+                                class="is-collapsible"
+                                code='import React from "react";
 import { FusionIconSelectList } from "@ironsource/fusion-ui/native/react";
 
 const iconOptions = [
@@ -572,23 +573,23 @@ export default class Foo extends React.Component {
     );
   }
 }'
-                        ></fusion-code-block>
-                    </ng-template>
-                    <ng-template fusionExampleBlock="Vue">
-                        <fusion-code-block
-                            lang="html"
-                            class="is-collapsible"
-                            code='<template>
+                            ></fusion-code-block>
+                        </ng-template>
+                        <ng-template fusionExampleBlock="Vue">
+                            <fusion-code-block
+                                lang="html"
+                                class="is-collapsible"
+                                code='<template>
     <div style="margin: 20px;">
         <p>Icon Select List Component Example</p>
         <FusionIconSelectList :config="iconSelectList" @selectionChanged="selectionChanged"></FusionIconSelectList>
     </div>
 </template>'
-                        ></fusion-code-block>
-                        <fusion-code-block
-                            lang="js"
-                            class="is-collapsible"
-                            code='<script>
+                            ></fusion-code-block>
+                            <fusion-code-block
+                                lang="js"
+                                class="is-collapsible"
+                                code='<script>
     import {FusionIconSelectList} from "@ironsource/fusion-ui/native/vue";
 
     export const FooComponent = {
@@ -634,13 +635,13 @@ export default class Foo extends React.Component {
 
     export default FooComponent;
 </script>'
-                        ></fusion-code-block>
-                    </ng-template>
-                    <ng-template fusionExampleBlock="Native">
-                        <fusion-code-block
-                            lang="js"
-                            class="is-collapsible"
-                            code='const onLoad = () => {
+                            ></fusion-code-block>
+                        </ng-template>
+                        <ng-template fusionExampleBlock="Native">
+                            <fusion-code-block
+                                lang="js"
+                                class="is-collapsible"
+                                code='const onLoad = () => {
     // add icon-select-list
     const iconSelectList = document.createElement(
         "native-fusion-icon-select-list"
@@ -676,36 +677,36 @@ export default class Foo extends React.Component {
 };
 
 document.addEventListener("DOMContentLoaded", onLoad, false);'
-                        ></fusion-code-block>
-                    </ng-template>
-                    <fusion-icon-select-list
-                        [options]="iconSelectDeviceTypeOptions"
-                        [selected]="iconSelectDeviceTypeSelected"
-                        [isMultiSelect]="false"
-                        (selectionChanged)="onDeviceTypeSelectionChanged($event)"
-                    ></fusion-icon-select-list>
-                </fusion-example-block>
-            </ng-container>
+                            ></fusion-code-block>
+                        </ng-template>
+                        <fusion-icon-select-list
+                            [options]="iconSelectDeviceTypeOptions"
+                            [selected]="iconSelectDeviceTypeSelected"
+                            [isMultiSelect]="false"
+                            (selectionChanged)="onDeviceTypeSelectionChanged($event)"
+                        ></fusion-icon-select-list>
+                    </fusion-example-block>
+                </ng-container>
 
-            <div class="is-example-title">States</div>
+                <div class="is-example-title">States</div>
 
-            <fusion-example-block id="stateDisabled" title="Disabled">
-                <ng-template fusionExampleBlock="Angular">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<fusion-radio-group [isDisabled]="true"
+                <fusion-example-block id="stateDisabled" title="Disabled">
+                    <ng-template fusionExampleBlock="Angular">
+                        <fusion-code-block
+                            lang="html"
+                            class="is-collapsible"
+                            code='<fusion-radio-group [isDisabled]="true"
                     [options]="rbGroupSecondOptions"
                     [formControl]="radioFormControl">
 </fusion-radio-group>'
-                    ></fusion-code-block>
-                </ng-template>
+                        ></fusion-code-block>
+                    </ng-template>
 
-                <ng-template fusionExampleBlock="React">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='const RADIO_GROUP_OPTIONS = [
+                    <ng-template fusionExampleBlock="React">
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='const RADIO_GROUP_OPTIONS = [
   {
     id: 1,
     label: "Checked 1"
@@ -740,24 +741,24 @@ class App extends React.Component {
 }
 
 export default App;'
-                    ></fusion-code-block>
-                </ng-template>
+                        ></fusion-code-block>
+                    </ng-template>
 
-                <ng-template fusionExampleBlock="Vue">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<template>
+                    <ng-template fusionExampleBlock="Vue">
+                        <fusion-code-block
+                            lang="html"
+                            class="is-collapsible"
+                            code='<template>
   <div id="app">
       <FusionRadioGroup :config="radioGroup"  @selectedChange="e => handleChange(e, &#39;radioGroup&#39;)"/>
   </div>
 </template>'
-                    ></fusion-code-block>
+                        ></fusion-code-block>
 
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='<script>
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='<script>
 import {FusionRadioGroup} from "@ironsource/fusion-ui/native/vue";
 
 export default {
@@ -792,14 +793,14 @@ const RADIO_GROUP_OPTIONS = [
   }
 ];
   </script>'
-                    ></fusion-code-block>
-                </ng-template>
+                        ></fusion-code-block>
+                    </ng-template>
 
-                <ng-template fusionExampleBlock="Native">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='const radioGroup = document.createElement("native-fusion-radio-group");
+                    <ng-template fusionExampleBlock="Native">
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='const radioGroup = document.createElement("native-fusion-radio-group");
 radioGroup.config = {
   options: [
     {
@@ -821,33 +822,33 @@ radioGroup.addEventListener("selectedChange", e => console.log(e.detail));
 
 radioGroup.setAttribute("name", "radioGroup");
 document.body.appendChild(radioGroup);'
-                    ></fusion-code-block>
-                </ng-template>
+                        ></fusion-code-block>
+                    </ng-template>
 
-                <fusion-radio-group
-                    [isDisabled]="true"
-                    [options]="rbGroupSecondOptions"
-                    [selected]="selectedRBSecondOption"
-                ></fusion-radio-group>
-            </fusion-example-block>
+                    <fusion-radio-group
+                        [isDisabled]="true"
+                        [options]="rbGroupSecondOptions"
+                        [selected]="selectedRBSecondOption"
+                    ></fusion-radio-group>
+                </fusion-example-block>
 
-            <fusion-example-block *ngIf="currentStyleVersion === styleVersion.V1" id="stateDisabledIconBig" title="Disabled Large Icon">
-                <ng-template fusionExampleBlock="Angular">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<!--For only one selected (radiobutton) - [isMultiSelect]="false"-->
+                <fusion-example-block *ngIf="currentStyleVersion === styleVersion.V1" id="stateDisabledIconBig" title="Disabled Large Icon">
+                    <ng-template fusionExampleBlock="Angular">
+                        <fusion-code-block
+                            lang="html"
+                            class="is-collapsible"
+                            code='<!--For only one selected (radiobutton) - [isMultiSelect]="false"-->
 <fusion-icon-select-list
     [options]="iconSelectConnectionTypeOptions"
     [selected]="iconSelectConnectionTypeSelected"
     [isMultiSelect]="false"
     (selectionChanged)="onConnectionTypeSelectionChanged($event)"
 ></fusion-icon-select-list>'
-                    ></fusion-code-block>
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code="// Define all options with first - disabled
+                        ></fusion-code-block>
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code="// Define all options with first - disabled
 iconMultiSelectConnectionTypeOptions: Array<IconSelectItem> = [
     {
         id: 'wifi',
@@ -878,13 +879,13 @@ onConnectionTypeSelectionChanged(selected: IconSelectItem[]): void {
    console.log('Selected', selected);
 }
 "
-                    ></fusion-code-block>
-                </ng-template>
-                <ng-template fusionExampleBlock="React">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='import React from "react";
+                        ></fusion-code-block>
+                    </ng-template>
+                    <ng-template fusionExampleBlock="React">
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='import React from "react";
 import { FusionIconSelectList } from "@ironsource/fusion-ui/native/react";
 
 // Data
@@ -948,23 +949,23 @@ export default class Foo extends React.Component {
     );
   }
 }'
-                    ></fusion-code-block>
-                </ng-template>
-                <ng-template fusionExampleBlock="Vue">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<template>
+                        ></fusion-code-block>
+                    </ng-template>
+                    <ng-template fusionExampleBlock="Vue">
+                        <fusion-code-block
+                            lang="html"
+                            class="is-collapsible"
+                            code='<template>
     <div style="margin: 20px;">
         <p>Icon Select List Component Example</p>
         <FusionIconSelectList :config="iconSelectList" @selectionChanged="selectionChanged"></FusionIconSelectList>
     </div>
 </template>'
-                    ></fusion-code-block>
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='<script>
+                        ></fusion-code-block>
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='<script>
     import {FusionIconSelectList} from "@ironsource/fusion-ui/native/vue";
 
     export const FooComponent = {
@@ -1022,13 +1023,13 @@ export default class Foo extends React.Component {
     ];
     export default FooComponent;
 </script>'
-                    ></fusion-code-block>
-                </ng-template>
-                <ng-template fusionExampleBlock="Native">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='const onLoad = () => {
+                        ></fusion-code-block>
+                    </ng-template>
+                    <ng-template fusionExampleBlock="Native">
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='const onLoad = () => {
     // add icon-select-list
     const iconSelectList = document.createElement(
         "native-fusion-icon-select-list"
@@ -1075,32 +1076,32 @@ export default class Foo extends React.Component {
 };
 
 document.addEventListener("DOMContentLoaded", onLoad, false);'
-                    ></fusion-code-block>
-                </ng-template>
-                <fusion-icon-select-list
-                    [options]="iconSelectConnectionTypeOptions"
-                    [selected]="iconSelectConnectionTypeSelected"
-                    [isMultiSelect]="false"
-                    (selectionChanged)="onConnectionTypeSelectionChanged($event)"
-                ></fusion-icon-select-list>
-            </fusion-example-block>
+                        ></fusion-code-block>
+                    </ng-template>
+                    <fusion-icon-select-list
+                        [options]="iconSelectConnectionTypeOptions"
+                        [selected]="iconSelectConnectionTypeSelected"
+                        [isMultiSelect]="false"
+                        (selectionChanged)="onConnectionTypeSelectionChanged($event)"
+                    ></fusion-icon-select-list>
+                </fusion-example-block>
 
-            <fusion-example-block *ngIf="currentStyleVersion === styleVersion.V1" id="stateError" title="Error">
-                <ng-template fusionExampleBlock="Angular">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<!--For only one selected (radiobutton) - [isMultiSelect]="false"-->
+                <fusion-example-block *ngIf="currentStyleVersion === styleVersion.V1" id="stateError" title="Error">
+                    <ng-template fusionExampleBlock="Angular">
+                        <fusion-code-block
+                            lang="html"
+                            class="is-collapsible"
+                            code='<!--For only one selected (radiobutton) - [isMultiSelect]="false"-->
 <fusion-icon-select-list formControlName="iconSelectConnection"
                          [options]="iconSelectConnectionTypeOptionsTwo"
                          [isMultiSelect]="false"
                          [error]="error">
 </fusion-icon-select-list>'
-                    ></fusion-code-block>
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code="// Define data
+                        ></fusion-code-block>
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code="// Define data
 iconSelectConnectionTypeOptionsRequired: IconSelectItem[] = [
         {
             id: 'wifi',
@@ -1140,23 +1141,23 @@ iconSelectConnectionTypeOptionsRequired: IconSelectItem[] = [
         });
 
     }"
-                    ></fusion-code-block>
-                </ng-template>
-                <fusion-icon-select-list
-                    formControlName="iconSelectConnection"
-                    [options]="iconSelectConnectionTypeOptionsRequired"
-                    [isMultiSelect]="false"
-                    [error]="error"
-                ></fusion-icon-select-list>
-            </fusion-example-block>
+                        ></fusion-code-block>
+                    </ng-template>
+                    <fusion-icon-select-list
+                        formControlName="iconSelectConnection"
+                        [options]="iconSelectConnectionTypeOptionsRequired"
+                        [isMultiSelect]="false"
+                        [error]="error"
+                    ></fusion-icon-select-list>
+                </fusion-example-block>
 
-            <!--UI-Component Examples-->
-            <!--UI-Component Configuration Doc-->
-            <div class="is-example-title">Configuration</div>
-            <fusion-example-block id="params" title="Parameters" [collapsible]="false">
-                <fusion-code-block
-                    lang="js"
-                    code="interface Option {
+                <!--UI-Component Examples-->
+                <!--UI-Component Configuration Doc-->
+                <div class="is-example-title">Configuration</div>
+                <fusion-example-block id="params" title="Parameters" [collapsible]="false">
+                    <fusion-code-block
+                        lang="js"
+                        code="interface Option {
     name: string;
     inline: boolean;
     isDisabled: boolean;
@@ -1187,24 +1188,28 @@ IconSelectItem {
     icon?: string;
     disabled?: boolean;
 }"
-                ></fusion-code-block>
-            </fusion-example-block>
+                    ></fusion-code-block>
+                </fusion-example-block>
 
-            <fusion-example-block id="events" title="Events" [collapsible]="false">
-                <fusion-code-block
-                    lang="js"
-                    code="formControl: Option                     // Angular
+                <fusion-example-block id="events" title="Events" [collapsible]="false">
+                    <fusion-code-block
+                        lang="js"
+                        code="formControl: Option                     // Angular
 selectedChange(controlValue: Option);   // Native
 
 // for 'fusion-icon-select-list' component:
 selectionChanged(selected: IconSelectItem[])"
-                ></fusion-code-block>
-            </fusion-example-block>
-            <!--UI-Component Configuration Doc-->
-        </form>
-    </div>
+                    ></fusion-code-block>
+                </fusion-example-block>
+                <!--UI-Component Configuration Doc-->
+            </form>
+        </div>
+    </ng-container>
 
     <div class="col-3 is-right-side-menu-holder">
-        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+        <!--<fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>-->
     </div>
 </div>
+<ng-template #inUpdate>
+    <div class="col-9"></div>
+</ng-template>

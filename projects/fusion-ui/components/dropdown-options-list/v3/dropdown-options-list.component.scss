@@ -1,0 +1,28 @@
+@import '../../../src/style/scss/v3/vars/vars';
+
+:host {
+    @extend %border-box-normalize;
+    @extend %list-reset;
+    li{
+        margin-bottom: 2px;
+        &.option {
+            .is-dd-group {
+                @extend %font-bodyMediumStrong;
+                color: $fu-black-900;
+                height: 40px;
+                margin-left: 8px;
+                display: flex;
+                align-items: center;
+            }
+        }
+        &.is-disabled{
+            pointer-events: none;
+        }
+    }
+    li:first-child.option .is-dd-group{
+        margin-top: 0;
+    }
+    li:last-child{
+        margin-bottom: 0;
+    }
+}

@@ -1,11 +1,12 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
-import {PopupEntity, PopupLocation} from '@ironsource/fusion-ui';
-import {PopupService} from '@ironsource/fusion-ui';
+import {PopupEntity, PopupLocation} from '@ironsource/fusion-ui/components/popup/common/entities';
+import {PopupService} from '@ironsource/fusion-ui/components/popup/common/services';
 import {Observable, Subject} from 'rxjs';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
-import {StyleVersion, VersionService} from '@ironsource/fusion-ui';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {takeUntil} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {VersionService} from '../../../services/version/version.service';
 
 const popUpBasic: PopupEntity = {
     size: {
@@ -65,7 +66,7 @@ export class PopupDocsComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.popupData$ = this.popupService.popupData$.asObservable();
         this.selectedVersion$.subscribe((styleVersion: StyleVersion) => {
-            if (styleVersion === StyleVersion.V2) {
+            if (styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3) {
                 this.router.navigate(['docs/components/v2/popup']);
             }
         });

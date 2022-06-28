@@ -1,10 +1,13 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {BehaviorSubject, Subject} from 'rxjs';
-import {DaterangeOptions, DaterangePresets, DaterangeService, StyleVersion, VersionService} from '@ironsource/fusion-ui';
-import {takeUntil} from 'rxjs/operators';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
+import {delay, takeUntil, tap} from 'rxjs/operators';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
+import {VersionService} from '../../../services/version/version.service';
+import {DaterangeOptions, DaterangePresets} from '@ironsource/fusion-ui/components/daterange/entities';
+import {DaterangeService} from '@ironsource/fusion-ui/components/daterange/common/base';
 
 const rightMenuItems = [
     {
@@ -35,9 +38,10 @@ const rightMenuItems = [
     styleUrls: ['./daterange-docs.component.scss']
 })
 export class DaterangeDocsComponent implements OnInit, OnDestroy {
-    date = new Date('2020-04-15 10:00:00');
-    startDate = new Date('2020-04-01 10:00:00');
-    endDate = new Date('2020-04-27 10:00:00');
+    date = new Date('2022-05-15 10:00:00');
+    startDate = new Date('2022-05-01 10:00:00');
+    endDate = new Date('2022-05-27 10:00:00');
+
     rightMenu: DocsMenuItem[] = [
         {
             title: 'Daterange',
@@ -59,15 +63,18 @@ export class DaterangeDocsComponent implements OnInit, OnDestroy {
             ]
         }
     ];
+
     onDestroy$ = new Subject();
+    styleUpdatingDelay = 0;
+    styleUpdating$ = new BehaviorSubject(false);
     styleVersion$ = this.versionService.styleVersion$;
     StyleVersion = StyleVersion;
     daterangeDefault: FormControl = new FormControl(this.daterangeService.getPresetRange(DaterangePresets.Yesterday));
     daterangeDatePicker: FormControl = new FormControl({
-        date: new Date(Date.UTC(2022, 0, 10))
+        date: new Date(Date.UTC(2022, 4, 10))
     });
-    daterangeMinDate = new Date(Date.UTC(2022, 0, 5));
-    daterangeMaxDate = new Date(Date.UTC(2022, 0, 25));
+    daterangeMinDate = new Date(Date.UTC(2022, 4, 5));
+    daterangeMaxDate = new Date(Date.UTC(2022, 4, 25));
 
     daterangeCustom: FormControl = new FormControl({
         startDate: new Date(Date.UTC(2022, 0, 3)),
@@ -83,11 +90,11 @@ export class DaterangeDocsComponent implements OnInit, OnDestroy {
     });
 
     optionNoPresets: DaterangeOptions = {
-        presets: false
+        presets: []
     };
     optionOnlyDatePicker$ = new BehaviorSubject<DaterangeOptions>({
         calendarAmount: 1,
-        presets: false,
+        presets: [],
         format: 'd MMM y'
     });
 
@@ -106,34 +113,48 @@ export class DaterangeDocsComponent implements OnInit, OnDestroy {
 
         this.daterangeCustom.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(value => console.log(value));
 
-        this.daterangeDatePicker.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(value => console.log(value));
-
-        this.styleVersion$.pipe(takeUntil(this.onDestroy$)).subscribe(styleVersion => {
-            this.rightMenu = [
-                {
-                    title: this.rightMenu[0].title,
-                    items: styleVersion === StyleVersion.V2 ? rightMenuItems : rightMenuItems.slice(2)
-                },
-                this.rightMenu[1]
-            ];
-            // update formats by StyleVersion
-            const dateFormat = styleVersion === StyleVersion.V2 ? 'd MMM, y' : 'd MMM y';
-            this.optionOnlyDatePicker$.next({
-                calendarAmount: 1,
-                presets: false,
-                format: dateFormat
-            });
-            this.options$.next({
-                presets: [
-                    DaterangePresets.Today,
-                    DaterangePresets.Yesterday,
-                    DaterangePresets.ThisMonth,
-                    DaterangePresets.LastMonth,
-                    DaterangePresets.Last60Days
-                ],
-                format: dateFormat
-            });
+        this.daterangeDatePicker.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(value => {
+            console.log('>>', value);
         });
+
+        this.styleVersion$
+            .pipe(
+                takeUntil(this.onDestroy$),
+                tap(() => {
+                    this.styleUpdating$.next(true);
+                }),
+                delay(this.styleUpdatingDelay),
+                tap(() => {
+                    this.styleUpdating$.next(false);
+                })
+            )
+            .subscribe(styleVersion => {
+                this.rightMenu = [
+                    {
+                        title: this.rightMenu[0].title,
+                        items:
+                            styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3 ? rightMenuItems : rightMenuItems.slice(2)
+                    },
+                    this.rightMenu[1]
+                ];
+                // update formats by StyleVersion
+                const dateFormat = styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3 ? 'd MMM, y' : 'd MMM y';
+                this.optionOnlyDatePicker$.next({
+                    calendarAmount: 1,
+                    presets: [],
+                    format: dateFormat
+                });
+                this.options$.next({
+                    presets: [
+                        DaterangePresets.Today,
+                        DaterangePresets.Yesterday,
+                        DaterangePresets.ThisMonth,
+                        DaterangePresets.LastMonth,
+                        DaterangePresets.Last60Days
+                    ],
+                    format: dateFormat
+                });
+            });
     }
 
     ngOnDestroy() {

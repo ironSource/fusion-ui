@@ -1,0 +1,418 @@
+@import '../../../src/style/scss/v2/vars/vars';
+@import '../../../src/style/scss/v2/mixins/mixins';
+@import '../../../src/style/scss/v2/vars/border';
+
+$smallHeight: 24px;
+$smallMinWidth: 64px;
+$smallPadding: 4px 16px 5px;
+
+$mediumHeight: 32px;
+$mediumMinWidth: 92px;
+$mediumPadding: 8px 16px 8px;
+
+$largeHeight: 40px;
+$largeMinWidth: 144px;
+$largePadding: 8px 16px 8px;
+$largePaddingButtonComponent: 11px 16px 9px;
+$largePaddingButtonComponentWithIcon: 15px 5px 15px 5px;
+
+$buttonBorderRadius: 100px;
+$iconInTableButtonSize: 28px;
+$iconInTableButtonIconSize: 16px;
+
+:host {
+    @extend %reset;
+    outline: none;
+    height: $mediumHeight;
+    min-width: $mediumMinWidth;
+    padding: $mediumPadding;
+    color: $White;
+    background-color: $fu-primary-500;
+    border-radius: $buttonBorderRadius;
+    @extend %noBorder;
+    @extend %font-subtitle;
+    cursor: pointer;
+    text-align: var(--button-text-align, center);
+
+    &:hover {
+        background-color: $fu-primary-400;
+    }
+
+    &:active {
+        background-color: $fu-primary-600;
+    }
+
+    &.small {
+        height: $smallHeight;
+        min-width: $smallMinWidth;
+        padding: $smallPadding;
+    }
+
+    &.large{
+        height: $largeHeight;
+        min-width: $largeMinWidth;
+        padding: $largePadding;
+    }
+
+    &.fu-iconed {
+        @include size($mediumHeight);
+        min-width: inherit;
+        padding: var(--button-iconed-padding, 5px 2px 2px);
+        @include icon-style('icon', var(--button-icon-color, currentColor), var(--button-icon-size, 16px), false, true){
+            padding: var(--button-icon-padding);
+            height: 16px;
+        };
+
+        &.small {
+            @include size($smallHeight);
+            @include icon-style('icon', var(--button-icon-color, currentColor), var(--button-small-icon-size, 12px), false, true){
+                height: 12px;
+            };
+        }
+        &.large {
+            @include size($largeHeight);
+        }
+        &.fu-with-content{
+            width: initial;
+            padding: $mediumPadding;
+            &.transparent {
+                min-width: $mediumMinWidth;
+                height: $mediumHeight;
+                &.small {
+                    height: $smallHeight;
+                    min-width: $smallMinWidth;
+                }
+                &.large {
+                    min-width: $largeMinWidth;
+                    height: $largeHeight;
+                }
+            }
+            &.small {
+                padding: $smallPadding;
+                @include icon-style('icon', var(--button-icon-color, currentColor), var(--button-small-icon-size, 12px), false, true);
+            }
+            &.large{
+                padding: $largePadding;
+            }
+            &.fu-with-loading {
+                min-width: $mediumMinWidth;
+
+                &.large{
+                    min-width: $largeMinWidth;
+                }
+                &.small{
+                    min-width: $smallMinWidth;
+                }
+            }
+            & > span{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                & > span{
+                    margin-left: 7px;
+                }
+            }
+        }
+
+        &.in-table {
+            @include size($iconInTableButtonSize);
+            background-color: $White;
+            color: $fu-light-900;
+            margin-right: 8px;
+            &.small{
+                @include size($smallHeight);
+            }
+
+            &:hover {
+                background-color: $fu-primary-500;
+                color: $White;
+            }
+
+            &:active {
+                background-color: $fu-primary-600;
+                color: $White;
+            }
+        }
+    }
+
+    &.secondary {
+        color: $fu-light-800;
+        background-color: $fu-light-300;
+
+        &:hover {
+            background-color: $fu-light-400;
+        }
+
+        &:active {
+            background-color: $fu-light-500;
+        }
+        &.disabled,
+        &:disabled {
+            color: $White;
+            background-color: $fu-light-700;
+        }
+    }
+
+    &.negative {
+        color: $White;
+        background-color: $fu-negative-500;
+
+        &:hover {
+            background-color: $fu-negative-400;
+        }
+
+        &:active {
+            background-color: $fu-negative-700;
+        }
+    }
+
+    &:disabled,
+    &.disabled{
+        @extend %disabled;
+        background-color: $fu-light-700;
+    }
+
+    &.fu-with-loading {
+        > span > span {
+            visibility: hidden;
+        }
+        .loading {
+            display: none
+        }
+        //@include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 36px), false, true) {
+        //    display: block;
+        //}
+        &:disabled{
+            background-color: $fu-primary-500;
+        }
+        //&.small {
+        //    min-width: 24px;
+        //    @include icon-style('loader-dots-v4', currentColor, (height: 8px, width: 20px), false, true)
+        //}
+        //&.large{
+        //    @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 36px), false, true) {
+        //        padding-top: 5px;
+        //    }
+        //}
+        &.secondary:disabled{
+            color: $fu-light-800;
+            background-color: $fu-light-200;
+        }
+        &.negative:disabled{
+            background-color: $fu-negative-500;
+        }
+        &.fu-iconed{
+            //@include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 24px), false, true);
+            //&.large{
+            //    @include icon-style('loader-dots-v4', currentColor, (height: 10px, width: 30px), false, true){
+            //        padding: 0;
+            //    }
+            //}
+            //&.small {
+            //    @include icon-style('loader-dots-v4', currentColor, (height: 8px, width: 20px), false, true)
+            //}
+
+            &.fu-with-content {
+                > span > span {
+                    margin-left: 0;
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &.transparent{
+        background-color: transparent;
+        color: $fu-primary-500;
+
+        height: $smallHeight;
+        min-width: $smallMinWidth;
+        padding: $smallPadding;
+
+        &.medium{
+            height: $mediumHeight;
+            min-width: $mediumMinWidth;
+            padding: $mediumPadding;
+        }
+        &.large{
+            height: $largeHeight;
+            min-width: $largeMinWidth;
+            padding: $largePadding;
+        }
+        &:hover{
+            background-color: $fu-primary-100;
+        }
+        &.negative{
+            color: $fu-negative-500;
+            &:hover{
+                background-color: $fu-negative-100;
+            }
+        }
+        &.secondary{
+            color: $fu-light-800;
+            &:hover{
+                background-color: $fu-light-300;
+            }
+        }
+        &.disabled,
+        &:disabled {
+            color: $fu-light-700;
+            background-color: transparent;
+            &:hover{
+                background-color: transparent;
+            }
+        }
+        &.fu-with-loading{
+            background-color: transparent;
+            color: $fu-primary-500;
+            &.negative{
+                color: $fu-negative-500;
+                background-color: transparent;
+            }
+            &.secondary{
+                color: $fu-light-800;
+                background-color: transparent;
+            }
+        }
+    }
+}
+
+:host-context(fusion-button) {
+    @extend %reset;
+    display: inline-flex;
+    text-align: center;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    line-height: 1px;
+    min-width: $mediumMinWidth;
+    height: $mediumHeight;
+    .fu-with-content {
+        &.large{
+            height: $largeHeight;
+            min-width: $largeMinWidth;
+            padding: $largePaddingButtonComponent;
+        }
+    }
+    &.fu-iconed {
+        align-items: center;
+        padding:0;
+        line-height: 1px;
+        @include size($mediumHeight);
+        min-width: inherit;
+        @include icon-style('icon', var(--button-icon-color, currentColor), var(--button-icon-size, 16px), false, true){
+            height: 16px;
+        };
+        &.transparent{
+            padding:0;
+            &.small {
+                min-width: 24px;
+            }
+            &.large {
+                min-width: 40px;
+            }
+        }
+        &.small {
+            @include size($smallHeight);
+            @include icon-style('icon', var(--button-icon-color, currentColor), var(--button-small-icon-size, 12px), false, true);
+        }
+        &.large {
+            @include size($largeHeight);
+            @include icon-style('icon', var(--button-icon-color, currentColor), var(--button-icon-size, 16px), false, true){
+                height: 16px;
+            };
+        }
+
+        &.fu-with-content {
+            padding: 8px 16px 8px;
+            min-width: 92px;
+            @include icon-style('icon', var(--button-icon-color, currentColor), var(--button-icon-size, 16px), false, true){
+                height: 16px;
+            };
+            line-height: inherit;
+            &.small {
+                @include icon-style('icon', var(--button-icon-color, currentColor), var(--button-icon-size, 12px), false, true){
+                    height: 12px;
+                };
+                min-width: 64px;
+                width: inherit;
+            }
+            &.large {
+                width: inherit;
+                min-width: 144px;
+            }
+            &.fu-with-loading {
+                min-width: $mediumMinWidth;
+
+                &.large{
+                    min-width: $largeMinWidth;
+                }
+                &.small{
+                    min-width: $smallMinWidth;
+                }
+            }
+        }
+    }
+    &.fu-with-loading {
+        background-color: $fu-primary-500;
+        span {
+            line-height: 0;
+        }
+        &.large{
+            padding: $largePaddingButtonComponent;
+            &.fu-iconed {
+                padding: $largePaddingButtonComponentWithIcon;
+            }
+        }
+        &.secondary{
+            color: $fu-light-800;
+            background-color: $fu-light-200;
+        }
+        &.negative{
+            background-color: $fu-negative-500;
+        }
+        &.transparent{
+            background-color: transparent;
+            color: $fu-primary-500;
+            &.large{
+                padding: $largePaddingButtonComponent;
+            }
+            &.negative{
+                color: $fu-negative-500;
+                background-color: transparent;
+            }
+            &.secondary{
+                color: $fu-light-800;
+                background-color: transparent;
+            }
+        }
+    }
+}
+
+:host-context(a) {
+    @extend %font-bodyStrong;
+    line-height: 1.33;
+    color: $fu-primary-500;
+    background-color: transparent;
+    &:hover {
+        background-color: transparent;
+        color: $fu-primary-500;
+    }
+    &:disabled,
+    &.disabled {
+        @extend %disabled;
+        color: $fu-light-900;
+        background-color: transparent;
+    }
+    &.fu-with-loading{
+        text-align: center;
+    }
+    &.fu-iconed {
+        padding: $mediumPadding;
+        height: auto;
+        width: auto;
+    }
+    .is-icon-text{
+        line-height: 1;
+    }
+}

@@ -1,0 +1,18 @@
+@import '../../../../../../../styles/vars';
+
+:host{
+  display: inline-grid;
+  .single-entity{
+    fusion-flag{
+      margin-right: 5px;
+    }
+    .id{
+      font-weight: 600;
+      margin-right: 5px;
+      color: $light-900;
+    }
+  }
+  p{
+    margin: 0;
+  }
+}

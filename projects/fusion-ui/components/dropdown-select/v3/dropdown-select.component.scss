@@ -1,0 +1,119 @@
+@import '../../../src/style/scss/v3/vars/vars';
+@import '../../../src/style/scss/v3/vars/border';
+@import '../../../src/style/scss/v3/mixins/mixins';
+
+$headerHeight: 40px;
+$borderRadius: 8px;
+$headerSmallHeight: 32px;
+
+:host .is-dropdown-select {
+    @extend %border-box-normalize;
+
+    label {
+        display: block;
+        cursor: pointer;
+        height: $headerHeight;
+        background-color: $fu-light-100;
+        border: none;
+        border-radius: $borderRadius;
+        @include icon-style('icon-arrow', $fu-light-900, 16px, true, true) {
+            position: absolute;
+            right: 12px;
+            top: 13px;
+            @include size(16px);
+        }
+        @extend %truncate;
+        @extend %font-bodySmall;
+        letter-spacing: 0.24px;
+        color: $fu-black-500;
+        padding: 10px 25px 10px 12px;
+
+        .fu-inner-elements{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+
+            // region image, icon and flag
+            @include icon-style('is-custom-icon', $fu-light-900, 16px, true, true) {
+                @include size(16px);
+            }
+
+            img {
+                @include size(20px);
+                @extend %image-masked;
+            }
+            // endregion
+
+            .placeholderText{
+                line-height: initial;
+                @extend %truncate-flex-child;
+            }
+        }
+
+        // region states
+        &:hover {
+            background-color: $fu-light-200;
+        }
+
+        &:active:not(.is-tab-mode),
+        &.dd-active
+        {
+            position: relative;
+            &::after{
+                content: " ";
+                width: 100%;
+                margin-left: -10px;
+                border-bottom: solid 2px $fu-primary-500;
+                position: absolute;
+                bottom: 0;
+            }
+            &.dd-search-active{
+                .fu-inner-elements{
+                    visibility: hidden;
+                }
+            }
+        }
+
+        &.dd-disabled {
+            pointer-events: none;
+            color: $fu-light-800;
+            @include icon-style('icon-arrow', $fu-light-800, 16px, true, true)
+        }
+        &.dd-readonly {
+            pointer-events: none;
+            @include icon-style('icon-arrow', $fu-light-800, 16px, true, true)
+        }
+        // endregion
+    }
+
+    // region dynamic component
+    .is-dynamic-component-holder{
+        margin-right: 12px;
+        display: flex;
+        align-items: center;
+        @include icon-style('arrow-dropdown', var(--custom-placeholder-arrow-open-color, #{$fu-dark-500}), var(--custom-placeholder-arrow-open-size, 8px), true, true){
+            margin-left: auto;
+        }
+    }
+    &.dd-opened{
+        .is-dynamic-component-holder{
+            @include icon-style('arrow-dropdown', var(--custom-placeholder-arrow-open-color, #{$fu-dark-500}), var(--custom-placeholder-arrow-open-size, 8px), true, true, 180);
+        }
+    }
+    // endregion
+}
+
+// small size dropdown has changes in dropdown title only
+:host-context(fusion-dropdown.small),
+:host-context(fusion-multi-dropdown.small) {
+    .is-dropdown-select label {
+        @extend %font-body;
+        height: $headerSmallHeight;
+        padding: 6px 25px 8px 12px;
+        line-height: unset;
+        .icon-arrow {
+            top: 9px;
+        }
+    }
+}

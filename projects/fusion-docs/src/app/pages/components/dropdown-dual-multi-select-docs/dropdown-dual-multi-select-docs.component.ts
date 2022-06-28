@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit, Type} from '@angular/core';
-import {DropdownOption, DynamicComponentConfiguration} from '@ironsource/fusion-ui';
+import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 import {DropdownCustomPlaceholderComponent} from '../../../components/dropdown-custom-placeholder/dropdown-custom-placeholder.component';
 import {
     dynamicDisplayItemBackendPagination,
@@ -14,6 +14,7 @@ import {FormControl} from '@angular/forms';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {MOK_APPLICATIONS} from '../dropdown-docs-v2/dropdown-docs-v2.config';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 
 @Component({
     selector: 'fusion-dropdown-dual-multi-select-docs',
@@ -40,7 +41,8 @@ export class DropdownDualMultiSelectDocsComponent implements OnInit, OnDestroy {
             name: app.name,
             displayText: app.name,
             icon: app.platform.toLowerCase(),
-            image: app.icon
+            image: app.icon,
+            subText: app.subText
         };
     });
     constructor() {}

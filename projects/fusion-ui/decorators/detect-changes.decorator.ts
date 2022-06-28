@@ -7,7 +7,7 @@ export function detectChangesDecorator(target: any, propertyName: string, proper
     propertyDescriptor.value = function (...args) {
         const injector = this.injector;
         if (!injector) {
-            throw new Error('You must provide Injector as inject in component constructor');
+            throw new Error('You must provide Injector as injector in component constructor');
         }
         const result = method.apply(this, args);
         if (injector.get(NATIVE_TOKEN, null)) {

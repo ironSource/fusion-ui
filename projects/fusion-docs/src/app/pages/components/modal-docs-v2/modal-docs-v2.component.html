@@ -269,7 +269,7 @@ const hideNotification = notificationEl => {
 
             <br />
             <div class="is-example-holder as-flex center">
-                <button fusion-button (click)="showNotification('Basic')">Basic</button>
+                <button fusion-button [style.--fu-style-version]="1" (click)="showNotification('Basic')">Basic</button>
 
                 <button fusion-button (click)="showNotification('Info')">Info</button>
 
@@ -470,10 +470,10 @@ fusion.services.modalService.close("testModal", {emitEvent = false})'
             <!--Examples by frameworks-->
             <br />
             <div class="is-example-holder as-flex center">
-                <button fusion-button (click)="modalService.open('testModal1')" class="stroke">Dialog</button>
+                <fusion-button (click)="onClickModalOpen('testModal1')" class="stroke">Dialog</fusion-button>
             </div>
 
-            <fusion-modal id="testModal1" width="600" [isClosed]="true" headerText="Overlay Title" [isClosed]="true" (onSave)="saveClicked('testModal1')">
+            <fusion-modal id="testModal1" (onClose)="onModalClosed()" width="600" headerText="Overlay Title" [isClosed]="true" (onSave)="saveClicked('testModal1')">
                 <div style="background-color: rgb(255,242,242); border: solid 1px rgb(247,232,238); text-align: center; color:#313d91;">
                     <p>Modal content</p>
                 </div>
@@ -511,16 +511,16 @@ fusion.services.modalService.close("testModal", {emitEvent = false})'
             ></fusion-code-block>
 
             <div class="is-example-holder as-flex center">
-                <button fusion-button (click)="modalService.open('testModalLoadingPage'); modalButtonClick$.next()">
+                <fusion-button (click)="onClickModalOpenLoading('testModalLoadingPage'); modalButtonClick$.next()">
                     Loader Overlay
-                </button>
+                </fusion-button>
             </div>
             <fusion-modal
                 id="testModalLoadingPage"
                 width="600"
                 headerText="Overlay Title"
                 [isClosed]="true"
-                (onClose)="closeModal()"
+                (onClose)="onModalClosed()"
                 (onSave)="saveClicked('testModalLoadingPage')"
             >
                 <ng-container *ngIf="{loadModalContent: loadModalContent$ | async} as data">
@@ -693,7 +693,7 @@ cancelButtonHidden: boolean;"
         <fusion-example-block id="eventsModal" title="Modal Events" [collapsible]="false">
             <fusion-code-block
                 lang="js"
-                code="onSave();         // save button was clicked
+                code="onSubmit();         // save button was clicked
 onOpen();         // modal was opened
 onClose();        // modal was closed"
             ></fusion-code-block>
@@ -715,6 +715,6 @@ this.modalService.close(modalID, {emitEvent = true}) // emitEvent - false for su
     </div>
 
     <div class="col-3 is-right-side-menu-holder">
-        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+        <!--<fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>-->
     </div>
 </div>

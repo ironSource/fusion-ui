@@ -1,10 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {StyleVersion, SwitcherItem, SwitcherMode, VersionService} from '@ironsource/fusion-ui';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Router} from '@angular/router';
 import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+import {VersionService} from '../../../services/version/version.service';
+import {SwitcherItem, SwitcherMode} from '@ironsource/fusion-ui/components/switcher/common/entities';
 
 @Component({
     selector: 'fusion-switchers-docs',
@@ -118,7 +120,7 @@ export class SwitchersDocsComponent implements OnInit, OnDestroy {
         this.switcherError2.markAsDirty();
 
         this.selectedVersion$.subscribe((styleVersion: StyleVersion) => {
-            if (styleVersion === StyleVersion.V2) {
+            if (styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3) {
                 this.router.navigate(['docs/components/v2/switchers']);
             }
         });

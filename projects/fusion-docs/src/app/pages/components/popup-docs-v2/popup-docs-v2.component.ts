@@ -1,10 +1,13 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
-import {PopupEntity, PopupLocation, PopupService, StyleVersion, VersionService} from '@ironsource/fusion-ui';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
+import {PopupEntity, PopupLocation} from '@ironsource/fusion-ui/components/popup/common/entities';
+import {PopupService} from '@ironsource/fusion-ui/components/popup/common/services';
 import {takeUntil} from 'rxjs/operators';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Router} from '@angular/router';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
+import {VersionService} from '../../../services/version/version.service';
 
 @Component({
     selector: 'fusion-popup-docs-v2',

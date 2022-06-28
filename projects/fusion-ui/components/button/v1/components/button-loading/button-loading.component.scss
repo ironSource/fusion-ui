@@ -1,0 +1,23 @@
+@import '../../../../../src/style/scss/v1/mixins/mixins';
+@import '../../../../../src/style/scss/v1/vars/colors';
+
+:host-context(.fu-with-loading) {
+    .loading {
+        vertical-align: middle;
+        margin-right: 5px;
+
+        ::ng-deep svg {
+            @include size(15px);
+
+            * {
+                fill: none;
+                stroke: currentColor;
+            }
+        }
+
+        & + span {
+            vertical-align: text-bottom;
+        }
+    }
+}
+

@@ -6,23 +6,17 @@ import {
     CHART_DATA_STACKEDLINE_MOCK,
     CHART_PIE_DATA_MOCK
 } from '../chart-docs/mocks/chart-data-mock';
-import {
-    ChartComponent,
-    ChartData,
-    ChartDataset,
-    ChartLabel,
-    FusionChartPieData,
-    ColorsService,
-    StyleVersion,
-    VersionService
-} from '@ironsource/fusion-ui';
+import {ColorsService} from '@ironsource/fusion-ui';
+import {ChartComponent} from '@ironsource/fusion-ui/components/chart/v2';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {EXAMPLE_DATA_7_DAYS_MOCK, EXAMPLE_DATA_MOCK, EXAMPLE_DATA_PIE_MOCK} from '../chart-docs/mocks/chart-example-data-mock';
 import {FormControl} from '@angular/forms';
 import {Router} from '@angular/router';
-import {ChartType} from '@ironsource/fusion-ui';
+import {ChartType, ChartLabel, ChartDataset, ChartData, FusionChartPieData} from '@ironsource/fusion-ui/components/chart/common/base';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
+import {VersionService} from '../../../services/version/version.service';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 
 @Component({
     selector: 'fusion-chart-docs-v2',
@@ -285,7 +279,7 @@ export class ChartDocsV2Component implements OnInit, OnDestroy {
             if (styleVersion === StyleVersion.V1) {
                 this.router.navigate(['docs/components/charts']);
             }
-            this.colorPalette$.next(this.colorsService.getColorPalette());
+            this.colorPalette$.next(this.colorsService.getColorPalette(styleVersion));
         });
     }
 

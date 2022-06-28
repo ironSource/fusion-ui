@@ -1,0 +1,47 @@
+<ng-container [ngTemplateOutlet]="bodySide === 'left' ? leftSide : rightSide" [ngTemplateOutletContext]="{item: item}"></ng-container>
+
+
+<ng-template #leftSide let-item="item">
+    <label
+        [for]="item.id"
+        class="is-option-label left-side">
+        <fusion-checkbox
+            class="item-check"
+            [id]="item.id"
+            [isDisabled]="isDisabled"
+            [checked]="isSelectedItem"
+            (changed)="changeSelectedItem(item)"
+        ></fusion-checkbox>
+        <ng-container [ngTemplateOutlet]="item?.content ? dynamicItem : optionTemplate" [ngTemplateOutletContext]="{item: item}">
+        </ng-container>
+    </label>
+</ng-template>
+
+
+<ng-template #rightSide let-item="item" >
+    <label class="is-option-label right-side">
+        <ng-container [ngTemplateOutlet]="item?.content ? dynamicItem : optionTemplate" [ngTemplateOutletContext]="{item: item}"></ng-container>
+        <fusion-icon *ngIf="!isDisabled" (click)="clearSelectItem(item)" class="icon-clear" [name]="{iconName: 'close-bold', iconVersion: 'v3'}"></fusion-icon>
+    </label>
+</ng-template>
+
+
+<ng-template #dynamicItem let-item="item">
+    <span class="dynamic-item">
+        <fusion-dynamic-components [configuration]="item?.content"></fusion-dynamic-components>
+    </span>
+</ng-template>
+
+
+<ng-template #optionTemplate let-item="item">
+    <img [src]="item.image" *ngIf="item.image" alt="item-image" />
+    <fusion-flag *ngIf="item.flag" [name]="item.flag"></fusion-flag>
+    <fusion-icon *ngIf="item.icon" [name]="item.icon" class="icon"></fusion-icon>
+    <div class="fu-text-content">
+        <span class="fu-option-title truncate" fusionTooltip="{{item.title || item.displayText}}">{{item.title || item.displayText}}</span>
+        <div *ngIf="item?.subText" class="sub-text-container">
+            <label>{{ item?.subText?.text || item.subText }}</label>
+        </div>
+    </div>
+
+</ng-template>

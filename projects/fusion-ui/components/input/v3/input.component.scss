@@ -1,0 +1,270 @@
+@import '../../../src/style/scss/v3/mixins/mixins';
+@import '../../../src/style/scss/v3/vars/fonts';
+@import '../../../src/style/scss/v3/vars/colors';
+
+
+%iconLeft{
+    left: 10px;
+    & + input {
+        padding-left: 32px;
+        padding-right: 12px;
+    }
+}
+
+%iconRight{
+    right: 10px;
+    & + input {
+        padding-left: 12px;
+        padding-right: 32px;
+    }
+}
+
+%secondIconRight {
+    right: 10px;
+    & + input {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+}
+
+%secondIconLeft {
+    left: 10px;
+    & + input {
+        padding-right: 32px;
+        padding-left: 32px;
+    }
+}
+
+// Regular size
+$regularHeight: 40px;
+$regularPadding: 0 12px 0 12px;
+$borderRadius: 8px;
+
+// Small size
+$smallHeight: 32px;
+
+:host {
+    .fu-input-holder {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        align-content: stretch;
+        width: 100%;
+        line-height: 14.65px;
+
+        border-radius: $borderRadius;
+        overflow: hidden;
+
+        &.fu-disabled {
+            cursor: not-allowed;
+            input {
+                border-radius: $borderRadius;
+                background-color: $fu-light-200;
+            }
+        }
+
+        input {
+            @extend %font-bodySmall;
+            letter-spacing: 0.24px;
+            border: none;
+            box-sizing: border-box;
+            border-radius: $borderRadius;
+            background-color: $fu-light-100;
+            padding: $regularPadding;
+            height: $regularHeight;
+            color: $fu-black-500;
+            width: 100%;
+
+            &::placeholder {
+                color: $fu-light-800;
+            }
+
+            &:active,
+            &:focus {
+                outline: none;
+            }
+
+            &:hover{
+                background-color: $fu-light-200;
+            }
+
+            &[readonly] {
+                color: $fu-black-500;
+                background-color: $fu-light-200;
+                border: none;
+                padding-top: initial;
+            }
+
+            &.disabled,
+            &:disabled{
+                color: $fu-light-800;
+                pointer-events: none;
+                cursor: default;
+                user-select: none;
+
+                &:focus {
+                    border-bottom: none;
+                }
+            }
+
+            &.fu-type-pass {
+                padding-right: 30px;
+            }
+        }
+
+        i.fu-input-icon {
+            position: absolute;
+            top: 12px;
+            @include size(16px);
+            @include icon-style(null, $fu-light-900, 16px, false, true);
+
+            &.left {
+                @extend %iconLeft;
+            }
+
+            &.right {
+                @extend %iconRight;
+            }
+
+            &.loading{
+                @extend %iconRight;
+                &.left {
+                    @extend %iconLeft;
+                }
+            }
+        }
+
+        i.fu-input-second-icon {
+            position: absolute;
+            top: 12px;
+            @include size(16px);
+            @include icon-style(null, $fu-light-900, 16px, false, true);
+
+            &.left {
+                @extend %secondIconLeft;
+            }
+
+            &.right {
+                @extend %secondIconRight;
+            }
+        }
+
+        .fu-validation-icon-holder {
+            position: absolute;
+            top: 13px;
+            right: 11px;
+            width: 16px;
+            height: 16px;
+        }
+
+        &.fu-input-small {
+            input {
+                height: $smallHeight;
+            }
+
+            i.fu-input-icon {
+                top: 8px;
+            }
+
+            i.fu-input-second-icon {
+                top: 8px;
+            }
+            .fu-toggle-pass {
+                top: 7px;
+            }
+            .fu-validation-icon-holder {
+                top: 10px;
+            }
+        }
+
+        &.focused {
+            .fu-validation-icon-holder {
+                display: none;
+            }
+        }
+
+        &.fu-error-error {
+            .fu-validation-icon-holder {
+                @include icon-style('icon-validation', $fu-negative-500, 16px, false, true){
+                    @include size(16px);
+                };
+            }
+
+            input {
+                padding-right: 32px;
+                &:focus {
+                    padding-right: 10px;
+                }
+            }
+        }
+
+        &.fu-error-warning {
+            .fu-validation-icon-holder {
+                @include icon-style('icon-validation', $fu-neutral-500, 16px, false, true){
+                    @include size(16px);
+                }
+            }
+
+            input {
+                padding-right: 32px;
+
+                &:focus {
+                    padding-right: 10px;
+                }
+            }
+        }
+
+        .fu-toggle-pass {
+            position: absolute;
+            top: 11px;
+            right: 14px;
+            cursor: pointer;
+            width: 32px;
+            height: 14px;
+            .fu-show-pass{
+                text-decoration: underline;
+                @extend %font-bodyXSmall;
+                color: $fu-black-500;
+            }
+            @include icon-style(null, $fu-light-700, 16px, false, true);
+        }
+
+        &.focused:not(.fu-readonly)::after{
+            position: absolute;
+            content: '';
+            height: 2px;
+            width: 100%;
+            background-color: $fu-primary-500;
+            bottom: 0;
+        }
+    }
+
+    .fu-error-msg {
+        @extend %font-caption;
+        color: $fu-negative-700;
+        margin-top: 4px;
+        margin-left: 2px;
+        height: 16px;
+        line-height: 16.5px;
+        text-align: initial;
+
+        &.focused {
+            display: none;
+        }
+
+        &.small {
+            display: none;
+        }
+    }
+
+    .fu-helper-text {
+        @extend %font-caption;
+        color: $fu-black-200;
+        margin-top: 4px;
+        margin-left: 2px;
+        height: 16px;
+        line-height: 16.5px;
+        text-align: initial;
+    }
+}

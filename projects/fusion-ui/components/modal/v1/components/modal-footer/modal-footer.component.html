@@ -1,0 +1,22 @@
+<div class="modal-footer">
+    <div class="footer">
+        <span class="fu-error-message">{{ error }}</span>
+        <button
+            fusion-button
+            [class]="cancelButtonClass"
+            (click)="onCloseButtonClicked.emit()"
+            *ngIf="!cancelButtonHidden"
+        >
+            {{ cancelButtonText }}
+        </button>
+        <button
+            fusion-button
+            [class]="saveButtonClass"
+            [loading]="saveButtonLoading"
+            [disabled]="saveButtonDisabled || loading || !!error"
+            (click)="onSave.emit()"
+        >
+            {{ saveButtonText }}
+        </button>
+    </div>
+</div>

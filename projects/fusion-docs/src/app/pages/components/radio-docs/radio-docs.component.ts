@@ -1,8 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
-import {IconSelectItem, StyleVersion, VersionService} from '@ironsource/fusion-ui';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
+import {IconSelectItem} from '@ironsource/fusion-ui/components/icon-select-list/common/base';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
+import {VersionService} from '../../../services/version/version.service';
+import {BehaviorSubject} from 'rxjs';
+import {delay, tap} from 'rxjs/operators';
 
 @Component({
     selector: 'fusion-radio-docs',
@@ -167,7 +171,17 @@ export class RadioDocsComponent implements OnInit {
     error = 'Mandatory field';
 
     styleVersion = StyleVersion;
-    selectedVersion$ = this.versionService.styleVersion$;
+    styleUpdatingDelay = 0;
+    styleUpdating$ = new BehaviorSubject(false);
+    selectedVersion$ = this.versionService.styleVersion$.pipe(
+        tap(() => {
+            this.styleUpdating$.next(true);
+        }),
+        delay(this.styleUpdatingDelay),
+        tap(() => {
+            this.styleUpdating$.next(false);
+        })
+    );
 
     constructor(private formBuilder: FormBuilder, private versionService: VersionService, private docLayoutService: DocsLayoutService) {}
 

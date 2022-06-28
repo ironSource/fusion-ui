@@ -5,7 +5,10 @@ import {CodeBlockModule} from '../../../components/code-block/code-block.module'
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {Router} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
-import {ClonePipe, FilterByFieldPipe, IconModule, TagModule, TagsInputModule} from '@ironsource/fusion-ui';
+import {ClonePipe, FilterByFieldPipe} from '@ironsource/fusion-ui';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+import {TagModule} from '@ironsource/fusion-ui/components/tag/v2';
+import {TagsInputModule} from '@ironsource/fusion-ui/components/tags-input/v2';
 
 class RouterStub {
     url = '';

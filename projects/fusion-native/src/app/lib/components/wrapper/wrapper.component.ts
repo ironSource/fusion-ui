@@ -79,7 +79,7 @@ export class WrapperComponent implements AfterViewInit, OnDestroy {
         this.wrapperService.setShadowRoot(this.elementRef.nativeElement);
 
         if (this.contentWrapper.nativeElement && this.contentWrapper.nativeElement.children.length) {
-            this.renderComponentWithProjectNodes(this.contentWrapper.nativeElement.children[0]);
+            this.renderComponentWithProjectNodes(this.contentWrapper.nativeElement.children);
         } else {
             const factory = this.cfr.resolveComponentFactory(this.wrapperToken.component);
             this.componentRef = this.viewContainer.createComponent(factory);
@@ -95,18 +95,19 @@ export class WrapperComponent implements AfterViewInit, OnDestroy {
 
     private mutationObserverCallback(value: MutationRecord[]): void {
         if (value[0] && value[0].addedNodes && value[0].addedNodes.length) {
-            this.renderComponentWithProjectNodes(value[0].addedNodes[0]);
+            this.renderComponentWithProjectNodes([value[0].addedNodes[0]]);
             this.mutationObserver.disconnect();
             this.mutationObserver = null;
         }
     }
 
-    private renderComponentWithProjectNodes(node: Node): void {
+    private renderComponentWithProjectNodes(node: Node[]): void {
+        const nodesElement = [].slice.call(node).map(nodeElement => [nodeElement]);
         const factory = this.cfr.resolveComponentFactory(this.wrapperToken.component);
         if (this.componentRef) {
             this.componentRef.destroy();
         }
-        this.componentRef = this.viewContainer.createComponent(factory, 0, this.injector, [[node]]);
+        this.componentRef = this.viewContainer.createComponent(factory, 0, this.injector, nodesElement);
         this.afterComponentRenderer();
     }
 

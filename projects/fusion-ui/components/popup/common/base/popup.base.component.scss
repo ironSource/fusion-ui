@@ -1,0 +1,44 @@
+@import '../../../../src/style/scss/v2/vars/vars';
+@import '../../../../src/style/scss/v2/mixins/mixins';
+
+:host{
+    .popupContainer{
+        position: fixed;
+        background-color: var(--background-color);
+        z-index: getZIndexLayerOffset(system, 11);
+
+        &.top-right{
+            top: 5px;
+            right: 5px;
+        }
+
+        &.top-left{
+            top: 5px;
+            left: 5px;
+        }
+
+        &.bottom-right{
+            bottom: 5px;
+            right: 5px;
+        }
+
+        &.bottom-left{
+            bottom: 5px;
+            left: 5px;
+        }
+
+        &.element-related{
+            position: absolute;
+            &::after {
+                border: solid;
+                border-color: transparent transparent var(--background-color) transparent;
+                border-width: 0 7px 4px;
+                content: "";
+                position: absolute;
+                bottom: 100%;
+                @extend %absoluteHorizontalAlign;
+            }
+        }
+    }
+}
+

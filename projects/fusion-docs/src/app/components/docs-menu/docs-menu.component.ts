@@ -1,8 +1,8 @@
-import {ChangeDetectionStrategy, Component, HostBinding, HostListener, Input, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostBinding, HostListener, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {DocsMenuItem} from './docs-menu';
-import {VersionService} from '@ironsource/fusion-ui';
-import {BehaviorSubject, combineLatest, Observable, Subject} from 'rxjs';
+import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
 
 @Component({
     selector: 'fusion-docs-menu',
@@ -11,7 +11,7 @@ import {map} from 'rxjs/operators';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DocsMenuComponent implements OnInit {
+export class DocsMenuComponent extends FusionBase implements OnInit {
     @Input() set menuData(value: DocsMenuItem[]) {
         this.menuData$.next(value);
     }
@@ -22,20 +22,18 @@ export class DocsMenuComponent implements OnInit {
 
     private elMenuHolder: HTMLElement;
 
-    constructor(private versionService: VersionService) {}
-
     ngOnInit() {
         this.elMenuHolder = document.querySelector('.is-right-side-menu-holder') as HTMLElement;
         this.calcWidth();
     }
 
     getMenuObservable$(): Observable<DocsMenuItem[]> {
-        return combineLatest([this.menuData$, this.versionService.styleVersion$]).pipe(
+        return combineLatest([this.menuData$, this.selectedVersion$]).pipe(
             map(([menuData]) => menuData || this.menuData$.getValue()),
             map((menuItems: DocsMenuItem[]) => {
                 return menuItems.reduce((menuItemsOut: DocsMenuItem[], menuItem: DocsMenuItem) => {
                     const items = menuItem.items.filter(sub => {
-                        return !Array.isArray(sub.styleVersions) || sub.styleVersions.includes(this.versionService.styleVersion);
+                        return !Array.isArray(sub.styleVersions) || sub.styleVersions.includes(this.selectedVersion$.getValue());
                     });
                     if (items && items.length > 0) {
                         menuItemsOut.push({...menuItem, ...{items}});

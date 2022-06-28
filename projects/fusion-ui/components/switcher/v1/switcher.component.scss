@@ -1,0 +1,105 @@
+@import "../../../src/style/scss/v1/vars/vars";
+@import "../../../src/style/scss/v1/vars/colors";
+@import "../../../src/style/scss/v1/vars/border";
+
+$textColor: $dark-300;
+$textColorSelected: $White;
+$textColorDisabled: $light-800;
+$bgColor: $light-100;
+$bgColorSelected: $primary-500;
+$bgColorDisabled: $light-400;
+$bgColorHover: $light-200;
+$itemMinWidth: 70px;
+$itemHeight: 32px;
+$itemFontSize: 12px;
+$border: solid 1px $light-500;
+$borderSelected: solid 1px $primary-500;
+$borderRadius: 3px;
+$circleBorderRadius: 15px;
+
+:host {
+    @extend %reset;
+    width: inherit;
+    .is-switcher{
+        width: inherit;
+        display: inline-flex;
+        .is-switcher-holder{
+            @extend %font12;
+            min-width: $itemMinWidth;
+            flex-grow: 1;
+            flex-basis: 0;
+            display: inline-block;
+            text-align: center;
+            @extend %border;
+            color: $textColor;
+            background-color: $bgColor;
+            border-left-width: 0;
+            input[type='radio']{
+                display: none;
+                + label{
+                    cursor: pointer;
+                    display: inherit;
+                    font-size: $itemFontSize;
+                    line-height: $itemHeight;
+                    padding: 0 15px;
+                    white-space: nowrap;
+                    overflow: hidden !important;
+                    text-overflow: ellipsis;
+                }
+            }
+            &:first-child{
+                border-left-width: 1px;
+                border-radius: $borderRadius 0 0 $borderRadius;
+            }
+            &:last-child{
+                border-radius: 0 $borderRadius $borderRadius 0;
+            }
+            &.selected{
+                border: $borderSelected;
+                background-color: $bgColorSelected;
+                color: $textColorSelected;
+            }
+            &.not-allowed{
+                background-color: $bgColorDisabled;
+                color: $textColorDisabled;
+            }
+        }
+
+        &.circle{
+            border-radius: 21px;
+            padding: 4px;
+            @extend %border;
+            min-width: 134px;
+
+            input[type='radio'] + label{
+                border-radius: $circleBorderRadius;
+                padding: 0 10px;
+            }
+            .is-switcher-holder{
+                flex-basis: auto;
+                min-width: 0;
+                border: none;
+                border-radius: $circleBorderRadius;
+                background-color: $White;
+                margin-right: 4px;
+                &:last-child{
+                    margin-right: 0;
+                }
+                &:hover{
+                    background-color: $bgColorHover;
+                }
+                &.selected{
+                    background-color: $bgColorSelected;
+                    &:hover{
+                        background-color: $bgColorSelected;
+                    }
+                }
+            }
+        }
+    }
+    .error-msg {
+        @extend %font7;
+        color: $negative-500;
+        margin-top: 3px;
+    }
+}

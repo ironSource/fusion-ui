@@ -1,5 +1,5 @@
 import {Transformer} from '../components/wrapper/wrapper-entities';
-import {TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table';
+import {TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table/common/entities';
 import {FormControl} from '@angular/forms';
 
 export class TableTransformer implements Transformer {

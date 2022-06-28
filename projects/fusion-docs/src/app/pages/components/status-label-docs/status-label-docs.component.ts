@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
-import {StatusLabelBorderType, StatusLabelConfig, StatusLabelStatus, TableColumnTypeEnum, TooltipType} from '@ironsource/fusion-ui';
+import {TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table/common/entities';
+import {StatusLabelBorderType, StatusLabelConfig, StatusLabelStatus} from '@ironsource/fusion-ui/components/status-label/common/entities';
+import {TooltipType} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {DomSanitizer} from '@angular/platform-browser';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
 
@@ -100,28 +102,31 @@ export class StatusLabelDocsComponent implements OnInit {
         ]
     };
 
-    configSuccessIcon: StatusLabelConfig = {icon: 'info-circle'};
+    configSuccessIcon: StatusLabelConfig = {icon: {iconName: 'info-circle', iconVersion: 'v2'}};
     configSuccessRounded: StatusLabelConfig = {borderType: StatusLabelBorderType.Circle};
-    configSuccessRoundedIcon: StatusLabelConfig = {borderType: StatusLabelBorderType.Circle, icon: 'info-circle'};
+    configSuccessRoundedIcon: StatusLabelConfig = {
+        borderType: StatusLabelBorderType.Circle,
+        icon: {iconName: 'info-circle', iconVersion: 'v2'}
+    };
     configWarning: StatusLabelConfig = {status: StatusLabelStatus.Warning};
-    configWarningIcon: StatusLabelConfig = {icon: 'info-circle', status: StatusLabelStatus.Warning};
+    configWarningIcon: StatusLabelConfig = {icon: {iconName: 'info-circle', iconVersion: 'v2'}, status: StatusLabelStatus.Warning};
     configWarningRounded: StatusLabelConfig = {status: StatusLabelStatus.Warning, borderType: StatusLabelBorderType.Circle};
     configWarningRoundedIcon: StatusLabelConfig = {
         status: StatusLabelStatus.Warning,
         borderType: StatusLabelBorderType.Circle,
-        icon: 'info-circle'
+        icon: {iconName: 'info-circle', iconVersion: 'v2'}
     };
     configError: StatusLabelConfig = {status: StatusLabelStatus.Error};
-    configErrorIcon: StatusLabelConfig = {icon: 'info-circle', status: StatusLabelStatus.Error};
+    configErrorIcon: StatusLabelConfig = {icon: {iconName: 'info-circle', iconVersion: 'info-circle'}, status: StatusLabelStatus.Error};
     configErrorRounded: StatusLabelConfig = {status: StatusLabelStatus.Error, borderType: StatusLabelBorderType.Circle};
     configErrorRoundedIcon: StatusLabelConfig = {
         status: StatusLabelStatus.Error,
         borderType: StatusLabelBorderType.Circle,
-        icon: 'info-circle'
+        icon: {iconName: 'info-circle', iconVersion: 'v2'}
     };
 
     configCustomColors: StatusLabelConfig = {customColors: {color: '#678099', backgroundColor: '#eaeef1'}};
-    configCustomIcon: StatusLabelConfig = {...this.configCustomColors, ...{icon: 'info-circle'}};
+    configCustomIcon: StatusLabelConfig = {...this.configCustomColors, ...{icon: {iconName: 'info-circle', iconVersion: 'v2'}}};
     configCustomRounded: StatusLabelConfig = {...this.configCustomColors, borderType: StatusLabelBorderType.Circle};
     configCustomRoundedIcon: StatusLabelConfig = {...this.configCustomIcon, borderType: StatusLabelBorderType.Circle};
 

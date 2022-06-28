@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
-import {StyleVersion, VersionService} from '@ironsource/fusion-ui';
 import {Router} from '@angular/router';
 import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+import {VersionService} from '../../../services/version/version.service';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 
 @Component({
     selector: 'fusion-video-player-docs',
@@ -66,7 +67,7 @@ export class VideoPlayerDocsComponent implements OnInit {
 
     ngOnInit() {
         this.selectedVersion$.subscribe((styleVersion: StyleVersion) => {
-            if (styleVersion === StyleVersion.V2) {
+            if (styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3) {
                 this.router.navigate(['docs/components/v2/video-player']);
             }
         });

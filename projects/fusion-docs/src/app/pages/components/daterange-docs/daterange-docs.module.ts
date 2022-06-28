@@ -5,7 +5,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
-import {CalendarModule, DaterangeModule} from '@ironsource/fusion-ui';
+import {DaterangeModule} from '@ironsource/fusion-ui/components/daterange/v3';
 import {ReactiveFormsModule} from '@angular/forms';
 
 const routes: Routes = [{path: '', component: DaterangeDocsComponent}];
@@ -19,8 +19,7 @@ const routes: Routes = [{path: '', component: DaterangeDocsComponent}];
         DocsMenuModule,
         ExampleBlockModule,
         CodeBlockModule,
-        DaterangeModule,
-        CalendarModule
+        DaterangeModule
     ]
 })
 export class DaterangeDocsModule {}

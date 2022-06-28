@@ -1,14 +1,12 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, OnDestroy, OnInit, Type} from '@angular/core';
+import {isBoolean} from '@ironsource/fusion-ui';
 import {
-    InlineInputType,
-    isBoolean,
-    StyleVersion,
     TableColumn,
     TableColumnTypeEnum,
     TableOptions,
-    TableRowExpandEmitter,
-    VersionService
-} from '@ironsource/fusion-ui';
+    TableRowExpandEmitter
+} from '@ironsource/fusion-ui/components/table/common/entities';
+import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline/common/base';
 import {FormControl, Validators} from '@angular/forms';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {delay, take, takeUntil, tap} from 'rxjs/operators';
@@ -16,6 +14,8 @@ import {TableCellIconExampleComponent} from '../../../components/table-cell-icon
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Router} from '@angular/router';
 import {TableCustomNoDataComponent} from '../../../components/table-custom-no-data/table-custom-no-data.component';
+import {VersionService} from '../../../services/version/version.service';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 
 const tblOptions: TableOptions = {
     sortingType: 'local',
@@ -585,7 +585,7 @@ export class TableDocsComponent implements OnInit, OnDestroy {
         },
         {
             id: 7,
-            icon: {iconName: 'user-v-2'},
+            icon: {iconName: {iconName: 'user-v-2', iconVersion: 'v1'}},
             name: 'Kurtis Weissnat',
             username: 'Elwyn.Skiles',
             email: 'Telly.Hoeger@billy.biz',
@@ -778,6 +778,8 @@ export class TableDocsComponent implements OnInit, OnDestroy {
         this.selectedVersion$.subscribe((styleVersion: StyleVersion) => {
             if (styleVersion === StyleVersion.V2) {
                 this.router.navigate(['docs/components/v2/table']);
+            } else if (styleVersion === StyleVersion.V3) {
+                this.router.navigate(['docs/components/v3/table']);
             }
         });
     }

@@ -1,19 +1,16 @@
 import {Component, OnDestroy, OnInit, Type} from '@angular/core';
-import {
-    LayoutHeaderComponentConfiguration,
-    HeaderState,
-    LayoutComponentConfiguration,
-    MenuItem,
-    SidebarMenuItem,
-    StyleVersion,
-    VersionService
-} from '@ironsource/fusion-ui';
+import {SidebarMenuItem} from '@ironsource/fusion-ui/components/sidebar/common/entities';
+import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
+import {HeaderState} from '@ironsource/fusion-ui/components/header/common/base';
 import {MENU_ITEMS, MENU_ITEMS_V2, STYLE_2_MENU_ITEMS, USER_PROFILE_MENU_ITEMS} from './menu-items';
 import {StyleVersionButtonComponent} from '../../components/style-version-button/style-version-button.component';
 import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {DocsLayoutService} from './docs-layout.service';
+import {VersionService} from '../../services/version/version.service';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
+import {LayoutComponentConfiguration, LayoutHeaderComponentConfiguration} from '@ironsource/fusion-ui/components/layout/v2';
 
 @Component({
     selector: 'fusion-docs',
@@ -52,7 +49,7 @@ export class DocsComponent implements OnInit, OnDestroy {
 
         this.selectedVersion$.pipe(takeUntil(this.onDestroy$)).subscribe(value => {
             const menuItemsAll = JSON.parse(JSON.stringify(this.useNewLayout ? MENU_ITEMS_V2 : MENU_ITEMS));
-            if (value === StyleVersion.V2) {
+            if (value === StyleVersion.V2 || value === StyleVersion.V3) {
                 this.menuItems = menuItemsAll.filter(item => {
                     if (STYLE_2_MENU_ITEMS.includes(item.name)) {
                         return true;
@@ -158,18 +155,18 @@ export class DocsComponent implements OnInit, OnDestroy {
             },
             menuItems: [
                 {
-                    icon: 'magic',
+                    icon: {iconName: 'magic', iconVersion: 'v2'},
                     name: 'Theme toggle'
                 },
                 {
-                    icon: 'logout',
+                    icon: {iconName: 'logout', iconVersion: 'v2'},
                     name: 'Sign out',
                     route: '/docs/components/v2/mobile-previewer'
                 }
             ]
         };
         const layoutUser = {
-            icon: 'user-circle',
+            icon: {iconName: 'user-circle', iconVersion: 'v2'},
             name: 'Example Username',
             email: 'test@irontest.com'
         };

@@ -1,12 +1,14 @@
 import {Component, OnDestroy, OnInit, Type} from '@angular/core';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
-import {DropdownOption, StyleVersion, VersionService} from '@ironsource/fusion-ui';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {of, Observable, Subject} from 'rxjs';
 import {delay, finalize, takeUntil} from 'rxjs/operators';
 import {EXISTED_TITLES, OPTIONS_COUNTRIES, OPTIONS_GROUPED, OPTIONS_GROUPED_SUBGROUP} from './dropdown-docs.config';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Router} from '@angular/router';
 import {AbTestOptionComponent} from '../../../components/ab-test-option/ab-test-option.component';
+import {VersionService} from '../../../services/version/version.service';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 
 /* eslint-disable max-len */
 /* eslint-disable quote-props */
@@ -501,7 +503,7 @@ export class DropdownDocsComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.selectedVersion$.subscribe((styleVersion: StyleVersion) => {
-            if (styleVersion === StyleVersion.V2) {
+            if (styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3) {
                 this.router.navigate(['docs/components/v2/dropdown']);
             }
         });

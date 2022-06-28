@@ -3,8 +3,10 @@ import {LayoutDocsComponent} from './layout-docs.component';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
-import {AlertModule, LayoutV1Module, TableModule} from '@ironsource/fusion-ui';
 import {RouterTestingModule} from '@angular/router/testing';
+import {AlertModule} from '@ironsource/fusion-ui/components/alert/v1';
+import {LayoutModule} from '@ironsource/fusion-ui/components/layout/v1';
+import {TableModule} from '@ironsource/fusion-ui/components/table/v1';
 
 describe('LayoutDocsComponent', () => {
     let component: LayoutDocsComponent;
@@ -19,7 +21,7 @@ describe('LayoutDocsComponent', () => {
                     ExampleBlockModule,
                     CodeBlockModule,
                     AlertModule,
-                    LayoutV1Module,
+                    LayoutModule,
                     TableModule,
                     RouterTestingModule.withRoutes([
                         {

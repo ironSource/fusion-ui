@@ -1,0 +1,137 @@
+@import '../../../../../../src/style/scss/v3/vars/vars';
+@import '../../../../../../src/style/scss/v3/mixins/mixins';
+@import '../../../../../../src/style/scss/v3/vars/border';
+
+
+$rightSidePadding: 6px 5px 6px 5px;
+$leftSidePadding: 6px 5px 6px 5px;
+
+%hover {
+    border-radius: 5px;
+    background-color: $fu-light-50;
+}
+
+%truncateList {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+:host-context(.options-data-list) {
+    @extend %border-box-normalize;
+    .is-option-label {
+        position: relative;
+        gap: 4px;
+        img {
+            @include size(20px);
+            @extend %image-masked;
+            max-width: 20px;
+            border-radius:  4px;
+            vertical-align: middle;
+        }
+        @include icon-style('icon', $fu-light-600, 16px, false, true) {
+            @include size(16px);
+            vertical-align: sub;
+            display: inline-block;
+        }
+        fusion-flag {
+            margin-right: 4px;
+        }
+        .dynamic-item {
+            display: inline-block;
+        }
+        &.left-side {
+            @extend %border-box-normalize;
+            @extend %font-bodySmall;
+            padding: $leftSidePadding;
+            cursor: pointer;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            width: 256px;
+            height: fit-content;
+            min-height: 32px;
+            &:hover {
+                @extend %hover;
+            }
+            .fu-text-content {
+                display: flex;
+                flex-direction: column;
+                gap: 3px;
+                .fu-option-title {
+                    &.truncate{
+                        height: 16px;
+                        width: 176px;
+                        line-height: 15.51px;
+                        color: $fu-black-500;
+                        @extend %truncateList;
+                    }
+                }
+                .sub-text-container{
+                    line-height: 14.32px;
+                    color: $fu-light-900;
+                    height: 14px;
+                    @extend %font-bodyXSmall;
+                }
+            }
+
+            .item-check {
+                margin-right: 8px;
+                line-height: 0;
+            }
+        }
+        &.right-side {
+            @extend %font-bodySmall;
+            @extend %border-box-normalize;
+            padding: $rightSidePadding;
+            cursor: pointer;
+            display: flex;
+            width: 256px;
+            height: fit-content;
+            min-height: 32px;
+            justify-content: flex-start;
+            align-items: center;
+            &:hover {
+                @extend %hover;
+            }
+
+            .fu-text-content {
+                display: flex;
+                flex-direction: column;
+                gap: 3px;
+                .fu-option-title {
+                    &.truncate{
+                        height: 16px;
+                        line-height: 15.51px;
+                        width: 176px;
+                        color: $fu-black-500;
+                        @extend %truncateList;
+                    }
+                }
+                .sub-text-container{
+                    line-height: 14.32px;
+                    color: $fu-light-900;
+                    height: 14px;
+                    @extend %font-bodyXSmall;
+                }
+            }
+
+            fusion-icon {
+                &.icon-clear {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: absolute;
+                    right: 5px;
+                    color:$fu-light-500;
+                    @include size(16px);
+                    &:hover {
+                        color: $fu-light-800;
+                    }
+                }
+
+            }
+        }
+    }
+}

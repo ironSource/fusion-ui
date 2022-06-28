@@ -1,5 +1,6 @@
 <div class="row" *ngIf="selectedVersion$ | async as currentStyleVersion">
-    <div class="col-9">
+    <ng-container *ngIf="(styleUpdating$ | async) === false; else inUpdate">
+        <div class="col-9">
         <!--UI-Component Examples-->
 
         <div class="is-example-title">Types</div>
@@ -125,7 +126,7 @@ document.body.appendChild(toggle);'
                     ></fusion-toggle>
                     &nbsp;(size="small")
                 </div>
-                <div class="col-9" *ngIf="currentStyleVersion === styleVersion.V2">
+                <div class="col-9" *ngIf="currentStyleVersion === styleVersion.V2 || currentStyleVersion === styleVersion.V3">
                     <fusion-toggle [model]="false" size="small" customCheckedBackgroundColor="#FEA222"></fusion-toggle>
                     &nbsp;(size="small" customCheckedBackgroundColor="#FEA222")
                 </div>
@@ -406,8 +407,13 @@ controlValue: boolean                     // Native'
         </fusion-example-block>
         <!--UI-Component Configuration Doc-->
     </div>
+    </ng-container>
 
     <div class="col-3 is-right-side-menu-holder">
-        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+        <!--<fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>-->
     </div>
 </div>
+
+<ng-template #inUpdate>
+    <div class="col-9"></div>
+</ng-template>

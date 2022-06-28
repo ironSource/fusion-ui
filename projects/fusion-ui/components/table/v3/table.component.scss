@@ -1,0 +1,241 @@
+@import "../../../src/style/scss/v3/vars/vars";
+@import "../../../src/style/scss/v3/mixins/mixins";
+
+$v3-maxCollWidth: 350px;
+$v3-headerHeight: 40px;
+$v3-headerCellPadding: 0 16px;
+$v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-light-400);
+
+%sort-triangle-base{
+    width: 0;
+    height: 0;
+    border: 4px solid transparent;
+}
+
+
+:host {
+    @extend %reset;
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    border: 1px solid $fu-light-400;
+    border-radius: 16px;
+
+    .tableWrap{
+        height: 100%;
+        display: block;
+        overflow-x: auto;
+        @extend %customScroll;
+        &::-webkit-scrollbar-track {
+            margin-top: $v3-headerHeight;
+        }
+        table {
+            border: none;
+            margin: 0;
+            width: calc(100% - 2px);
+            border-collapse: collapse;
+            border-spacing: 0;
+
+            thead {
+                td {
+                    @extend %font-bodyXSmallStrong;
+                    color: $fu-light-1000;
+                    white-space: nowrap;
+                    position: relative;
+                    padding: $v3-headerCellPadding;
+                    max-width: $v3-maxCollWidth;
+                    height: $v3-headerHeight;
+                    line-height: 1;
+                    cursor: default;
+                    box-sizing: border-box;
+
+                    &.is-sort{
+                        cursor: pointer;
+                        padding-top: 3px;
+                        .fu-sort-wrapper{
+                            vertical-align: middle;
+                            display:inline-flex;
+                            flex-direction:column;
+                            gap:4px;
+                            margin-left: 4px;
+                            .fu-sort-up{
+                                @extend %sort-triangle-base;
+                            }
+                            .fu-sort-down{
+                                @extend %sort-triangle-base;
+                            }
+                        }
+                        &.desc .fu-sort-wrapper{
+                            .fu-sort-up{
+                                border-bottom-color: $fu-light-600;
+                            }
+                            .fu-sort-down{
+                                border-top-color: $fu-black-500;
+                            }
+                        }
+                        &.asc .fu-sort-wrapper{
+                            .fu-sort-up{
+                                border-bottom-color: $fu-black-500;
+                            }
+                            .fu-sort-down{
+                                border-top-color: $fu-light-600;
+                            }
+                        }
+                    }
+                    &.is-checkbox-holder{
+                        text-align: center;
+                    }
+
+                    &:after{ // this is border bottom of header
+                        border-bottom: $v3-headerBottomBorder;
+                        content:'';
+                        position:absolute;
+                        left: 0;
+                        bottom: -1px;
+                        width:100%;
+                    }
+
+                    .fu-tooltiped{
+                        cursor: help;
+                    }
+                }
+            }
+
+            tbody {
+                overflow: auto;
+                td {
+                    white-space: nowrap;
+                }
+            }
+        }
+
+        .fu-button-return-top{
+            @include size(48px);
+            background-color: $White;
+            border-radius: 24px;
+            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.24);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            position: fixed;
+            right: 81px;
+            bottom: 48px;
+
+            @include icon-style('fu-return-top-icon', $fu-light-800, 32px, false, true){
+                @include size(32px);
+            }
+            &:hover{
+                @include icon-style('fu-return-top-icon', $fu-black-500, 32px, false, true)
+            }
+        }
+
+        &.is-empty,
+        &.is-loading{
+            .tableWrap table thead td{
+                &.is-sort{
+                    cursor: default;
+                    pointer-events: none;
+                }
+            }
+            .is-overlay-loader-holder{
+                position: absolute;
+                z-index: 2;
+                width: 100%;
+                height: 100%;
+                min-height: 100px;
+                top: 42px;
+                background-color: rgba(255, 255, 255, 0.9);
+            }
+        }
+    }
+
+    .fu-table-header{
+        height: 56px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid $fu-light-400;
+
+        .fu-table-label{
+            @extend %font-bodyMediumStrong;
+            color: $fu-black-500;
+            padding: 19px;
+            @include icon-style('fu-info-icon', $fu-light-500, 16px, false, true){
+                @include size(16px);
+            }
+        }
+        .fu-search-holder{
+            height: 100%;
+            border-left: solid 1px $fu-light-400;
+            padding-left: 19px;
+            display: flex;
+            align-items: center;
+            @include icon-style('fu-search-icon', $fu-light-700, 16px, false, true){
+                @include size(16px);
+            }
+            input{
+                border: none;
+                box-sizing: border-box;
+                padding: 10px;
+                color: $fu-black-500;
+                &::placeholder {
+                    color: $fu-light-800;
+                    @extend %font-bodySmall;
+                }
+                &:active,
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+    }
+    .fu-table-footer{
+        height: 72px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    &.fu-no-table-frame{
+        border: initial;
+        border-radius: initial;
+    }
+
+    &.fixed-table {
+        position: relative;
+        .tableWrap{
+            table{
+                thead{
+                    border-bottom: none;
+                    td{
+                        height: $v3-headerHeight;
+                        position: sticky;
+                        top: 0;
+                        z-index: getZIndexLayerOffset(normal, 3);
+                        background-color: $White;
+                        &.sticky-left{
+                            left: 0;
+                            z-index: getZIndexLayerOffset(normal, 4);
+                        }
+                    }
+                }
+            }
+            &.fu-stocky-to-external{
+                display: initial;
+            }
+        }
+        &:after { // fig leaf for hide scroll on header
+            content: '';
+            position:absolute;
+            right: 0;
+            top: 1px;
+            background-color: $White;
+            width: 16px;
+            height: $v3-headerHeight;
+            border-bottom: $v3-headerBottomBorder;
+            box-sizing: border-box;
+        }
+    }
+}

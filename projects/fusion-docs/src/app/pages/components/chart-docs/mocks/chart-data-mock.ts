@@ -1,4 +1,4 @@
-import {ChartData, FusionChartPieData} from '@ironsource/fusion-ui';
+import {ChartData, FusionChartPieData} from '@ironsource/fusion-ui/components/chart/common/base';
 
 export const CHART_DATES_MOCK: string[] = (daysNumber => {
     const dates: string[] = [];

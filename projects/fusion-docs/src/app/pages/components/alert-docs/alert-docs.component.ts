@@ -1,9 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Observable, Subject} from 'rxjs';
-import {StyleVersion, VersionService} from '@ironsource/fusion-ui';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {takeUntil} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {VersionService} from '../../../services/version/version.service';
 
 @Component({
     selector: 'fusion-alert-docs',
@@ -61,7 +62,7 @@ export class AlertDocsComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.selectedVersion$.subscribe((styleVersion: StyleVersion) => {
-            if (styleVersion === StyleVersion.V2) {
+            if (styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3) {
                 this.router.navigate(['docs/components/v2/alert']);
             }
         });

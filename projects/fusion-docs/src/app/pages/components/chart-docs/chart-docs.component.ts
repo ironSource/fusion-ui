@@ -1,5 +1,7 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {ChartComponent, ChartLabel, ChartDataset, VersionService, StyleVersion, FusionChartPieData} from '@ironsource/fusion-ui';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
+import {ChartComponent} from '@ironsource/fusion-ui/components/chart/v1';
+import {ChartLabel, ChartDataset, FusionChartPieData} from '@ironsource/fusion-ui/components/chart/common/base';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {FormControl} from '@angular/forms';
 import {takeUntil} from 'rxjs/operators';
@@ -23,6 +25,7 @@ import {
 } from './mocks/chart-example-data-mock';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Router} from '@angular/router';
+import {VersionService} from '../../../services/version/version.service';
 
 @Component({
     selector: 'fusion-chart-docs',
@@ -219,7 +222,7 @@ export class ChartDocsComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.selectedVersion$.subscribe((styleVersion: StyleVersion) => {
-            if (styleVersion === StyleVersion.V2) {
+            if (styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3) {
                 this.router.navigate(['/docs/components/v2/charts']);
             }
         });

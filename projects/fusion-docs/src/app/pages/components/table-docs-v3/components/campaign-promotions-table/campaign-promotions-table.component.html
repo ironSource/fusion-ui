@@ -1,0 +1,39 @@
+<div class="promotions-table-content">
+  <div class="promotions-tabs-container">
+    <fusion-tabs (selectedChange)="tabSelected($event)" class="fu-size-lg">
+      <fusion-tab [selected]="true">
+        <div class="tab-content">
+          <fusion-icon [name]="{iconName: 'bullhorn', iconVersion: 'v3'}"></fusion-icon>
+          <span class="tab-text">{{promotionsPlaceholder$ | async}}</span>
+        </div>
+      </fusion-tab>
+      <fusion-tab>
+        <div class="tab-content">
+          <fusion-icon [name]="{iconName: 'group', iconVersion: 'v3'}"></fusion-icon>
+          <span class="tab-text">{{configurationsPlaceholder$ | async}}</span>
+        </div>
+      </fusion-tab>
+    </fusion-tabs>
+  </div>
+  <div class="promotions-table-container">
+    <ng-container [ngTemplateOutlet]="(selectedTab$ | async) === 0 ? promotionsTable : configurationsTable"></ng-container>
+  </div>
+    <div class="promotions-table-footer-container"></div>
+</div>
+
+<ng-template #promotionsTable>
+  <fusion-table
+    [options]="promotionsTableOption"
+    [loading]="loading$ | async"
+    [rows]="promotionsTableRows"
+    [columns]="promotionsTableColumns"
+    (scrollDown)="onLoadNextPageOfData()"
+  ></fusion-table>
+</ng-template>
+
+<ng-template #configurationsTable>
+  <fusion-table
+    [options]="configurationTableOptions"
+    [loading]="loading$ | async"
+    [columns]="configTableColumns"></fusion-table>
+</ng-template>

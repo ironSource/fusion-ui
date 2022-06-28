@@ -1,0 +1,138 @@
+@import '../../../../src/style/scss/v2/vars/vars';
+@import '../../../../src/style/scss/v2/mixins/mixins';
+
+$tabHeight: 40px;
+$tabPadding: 4px;
+$tabContentPadding: 0 24px;
+$tabBorderRadius: 4px;
+$tabBottomWidth: 1px;
+$tabTextMaxWidth: 200px;
+
+$tabColor: $fu-light-800;
+$tabSelectedColor: $fu-primary-500;
+$tabSelectedBottomBorderWidth: 2px;
+$tabSelectedBottomBorder: solid $tabSelectedBottomBorderWidth $fu-primary-500;
+
+$tabIconSize: 15px;
+$tabIconBigSize: 20px;
+$tabAdditionalIconSize: 12px;
+$tabMediumHeight: 48px;
+$tabHighHeight: 56px;
+
+%height{
+    height: calc(var(--tab-height, #{$tabHeight}) - (var(--tab-padding, $tabPadding * 2)));
+}
+%heightMiddle{
+    height: calc(var(--tab-height, #{$tabMediumHeight}) - (var(--tab-padding, $tabPadding * 2)));
+}
+%heightHigh{
+    height: calc(var(--tab-height, #{$tabHighHeight}) - (var(--tab-padding, $tabPadding * 2)));
+}
+
+
+:host{
+    padding: var(--tab-padding, $tabPadding);
+    .fu-tab{
+        // common tab css rules
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @extend %height;
+        border-radius: var(--tab-border-radius, $tabBorderRadius);
+        color: var(--tab-color, $tabColor);
+        @extend %font-bodyStrong;
+
+        padding: var(--tab-content-padding, $tabContentPadding);
+
+        // tab icon
+        @include icon-style('fu-tab-icon', var(--tab-icon-color, currentColor), var(--tab-icon-size, $tabIconSize), false, true) {
+            margin-right: 5px;
+            margin-top: 0;
+            &.fu-tab-icon-only{
+                margin-right: 0;
+            }
+        }
+
+        // text
+        .fu-tab-text{
+            max-width: var(--tab-text-max-width, $tabTextMaxWidth);
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            font-family: var(--tab-text-font-family, 'HelveticaNeue-Medium');
+            font-size: var(--tab-text-font-size, 12px);
+            font-weight: var(--tab-text-font-weight, normal);
+        }
+
+        // tooltip icon
+        @include icon-style('fu-tab-additional-icon', var(--tab-additional-icon-color, currentColor), var(--tab-additional-icon-size, $tabAdditionalIconSize), false, true) {
+            margin-left: 3px;
+        }
+        .fu-tab-additional-icon:hover{
+            color: $fu-dark-500;
+        }
+
+        // tab on hover
+        &:hover{
+            color: var(--tab-hover-color, $tabColor);
+            background-color: var(--tab-hover-background-color, $fu-light-100);
+            cursor: pointer;
+        }
+
+        // tab disabled
+        &.fu-tab-disabled{
+            color: var(--tab-disabled-color, $fu-light-700);
+            &:hover{
+                background-color: transparent;
+                cursor: not-allowed;
+            }
+        }
+    }
+
+    // tab where icon up
+    &.fu-tab-icon-up{
+        .fu-tab{
+            flex-direction: column;
+            @extend %heightHigh;
+            .fu-tab-icon{
+                margin-right: 0;
+                margin-top: 5px;
+            }
+        }
+    }
+
+    // selected tab
+    &.fu-tab-selected{
+        border-bottom: var(--tab-selected-border-bottom, $tabSelectedBottomBorder);
+        padding-bottom: var(--tab-selected-padding-bottom, 2px);
+        .fu-tab{
+            color: var(--tab-selected-color, $tabSelectedColor);
+            background-color: var(--tab-selected-background-color, transparent);
+            &:hover{
+                color: var(--tab-selected-hovered-color, $tabSelectedColor);
+                background-color: var(--tab-selected-hovered-background-color, transparent);
+                cursor: default;
+            }
+        }
+    }
+}
+
+// high tab 56px
+:host-context(.fu-tab-high){
+    .fu-tab{
+        @extend %heightHigh;
+        // tab icon
+        @include icon-style('fu-tab-icon', var(--tab-icon-color, currentColor), var(--tab-icon-size, $tabIconBigSize), false, true) {
+            margin-right: 5px;
+        }
+    }
+}
+
+// middle tab 48px
+:host-context(.fu-tab-middle){
+    .fu-tab{
+        @extend %heightMiddle
+    }
+}
+

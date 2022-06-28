@@ -1,6 +1,6 @@
 {
   "name": "fusion-ui",
-  "version": "2.0.3",
+  "version": "3.0.1",
   "description": "UI library created by ironSource",
   "license": "MIT",
   "repository": {
@@ -21,13 +21,7 @@
     "build:fusion-ui": "ng build fusion-ui",
     "build:fusion-native": "ng build fusion-native",
     "styles": "ts-node -P css-bundle/tsconfig.styles.bundle.json css-bundle",
-    "build-styles": "npm run styles && sass dist/fusion-ui/fusion.theme.scss dist/fusion-ui/fusion.theme.css -s compressed && npm run copy-sass-vars && npm run copy-sass-mixins && npm run move-grid-sass && npm run copy-css-fonts-v1 && npm run copy-css-fonts",
-    "copy-sass-vars": "mkdir -p dist/fusion-ui/style && cp -R ./projects/fusion-ui/src/style/scss/vars dist/fusion-ui/style",
-    "copy-sass-mixins": "cp -R ./projects/fusion-ui/src/style/scss/mixins dist/fusion-ui/style",
-    "move-grid-sass": "cp -R projects/fusion-ui/src/style/scss/grid.scss dist/fusion-ui/style/grid.scss && sass dist/fusion-ui/style/grid.scss dist/fusion-ui/style/grid.css -s compressed",
-    "copy-css-fonts-v1": "sass ./projects/fusion-ui/src/style/scss/fonts_v1.scss > dist/fusion-ui/style/fonts_v1.css -s compressed",
-    "copy-css-fonts": "sass ./projects/fusion-ui/src/style/scss/fonts.scss dist/fusion-ui/style/fonts.css -s compressed",
-    "build-styles-native": "npm run styles -- true && sass dist/fusion-ui/native/fusion.theme.scss dist/fusion-ui/native/fusion.theme.css -s compressed",
+    "build-styles": "bash scripts/build-styles.sh",
     "build-native-frameworks": "schematics ./projects/fusion-schematics/collection.json:fusion-frameworks --debug=false --force --componentsFilePath=projects/fusion-native/src/app/app-config.ts --outputDir=dist/fusion-ui",
     "build-native-frameworks-old": "schematics ./projects/fusion-schematics/collection.json:fusion-frameworks-old --debug=false --force --componentsFilePath=projects/fusion-native/src/app/app-config.ts --outputDir=dist/fusion-ui/native",
     "build-native-content": "schematics ./projects/fusion-schematics/collection.json:fusion-native --debug=false --force --outputDir=dist/fusion-ui/native",

@@ -1,7 +1,8 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
-import {ITooltipData, TooltipService} from '@ironsource/fusion-ui';
+import {ITooltipData, TooltipService} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {takeUntil} from 'rxjs/operators';
-import {Subject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
+import {FormControl} from '@angular/forms';
 
 @Component({
     selector: 'fusion-docs',
@@ -12,7 +13,6 @@ export class AppComponent implements OnInit, OnDestroy {
     tooltipData: ITooltipData = {};
 
     private onDestroy$ = new Subject();
-
     constructor(private tooltipService: TooltipService) {}
 
     ngOnInit() {

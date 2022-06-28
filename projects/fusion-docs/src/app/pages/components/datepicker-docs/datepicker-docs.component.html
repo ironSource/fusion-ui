@@ -1,5 +1,6 @@
 <div class="row">
-    <div class="col-9">
+    <ng-container *ngIf="(styleUpdating$ | async) === false; else inUpdate">
+        <div class="col-9">
         <form [formGroup]="formDatePicker" novalidate>
             <!--UI-Component Examples-->
             <div class="is-example-title">Type</div>
@@ -98,9 +99,16 @@ datepicker.addEventListener("controlValueChange", e => console.log(e.detail));'
                     ></fusion-code-block>
                 </ng-template>
 
-                <fusion-datepicker formControlName="datePickerBasic"></fusion-datepicker>
-            </fusion-example-block>
 
+                <div class="row">
+                    <div class="col-3"><fusion-datepicker formControlName="datePickerBasic" [options]="optionDatePicker$ | async"></fusion-datepicker></div>
+                    <div class="col-3"><fusion-daterange [minDate]="daterangeMinDate" [maxDate]="daterangeMaxDate"
+                                                     [formControl]="daterangeDates"
+                                                     [options]="optionDateRange$ | async"></fusion-daterange></div>
+                </div>
+
+            </fusion-example-block>
+<!--
             <fusion-example-block id="typeComboBox" title="ComboBox">
                 <ng-template fusionExampleBlock="Angular">
                     <fusion-code-block
@@ -309,7 +317,6 @@ datepicker.addEventListener("controlValueChange", e => console.log(e.detail));'
 
                 <fusion-datepicker formControlName="datePickerFull" isTimePicker="true" isTimeZonePicker="true"></fusion-datepicker>
             </fusion-example-block>
-
             <div class="is-example-title">States</div>
 
             <fusion-example-block id="stateDisabled" title="Disabled">
@@ -506,7 +513,7 @@ datepicker.addEventListener("controlValueChange", e => console.log(e.detail));'
                 </ng-template>
 
                 <fusion-datepicker formControlName="datePickerRequired" [error]="errorMessage"></fusion-datepicker>
-            </fusion-example-block>
+            </fusion-example-block>-->
 
             <!--UI-Component Examples-->
             <!--UI-Component Configuration Doc-->
@@ -552,8 +559,12 @@ controlValueChange(controlValue: {date: new Date()})    // in Native"
             <!--UI-Component Configuration Doc-->
         </form>
     </div>
+    </ng-container>
 
     <div class="col-3 is-right-side-menu-holder">
-        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+        <!--<fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>-->
     </div>
 </div>
+<ng-template #inUpdate>
+    <div class="col-9"></div>
+</ng-template>

@@ -1,0 +1,46 @@
+<div
+    class="is-dropdown-select"
+    [ngClass]="{'dd-opened': configurations?.isOpen, 'ss-selected': configurations?.selectedOption?.length}"
+    [class.forced-placeholder]="configurations.placeholder?.forcePlaceholderOnSelection"
+>
+    <!--region dynamic title-->
+    <div class="is-dynamic-component-holder" [class.item-selected]="configurations.selectedOption.length > 0" [class.open-dropdown]="configurations.isOpen" *ngIf="configurations.dynamicContent; else regularLabel">
+        <fusion-dynamic-components [configuration]="configurations.dynamicContent">
+        </fusion-dynamic-components>
+    </div>
+    <!--endregion dynamic title-->
+    <!--region regular title-->
+    <ng-template #regularLabel>
+        <label
+            [ngClass]="getLabelCSSClasses(configurations.isOpen)"
+            [class.icon]="configurations.icon"
+        >
+            <!-- region search input-->
+            <fusion-dropdown-search
+                *ngIf="configurations.isSearch && configurations.isOpen"
+                [formControl]="searchValue"
+                [placeholder]="configurations.placeholder?.search"
+                #searchComponent
+            ></fusion-dropdown-search>
+            <!-- endregion search input-->
+            <!--region inner content-->
+            <div class="fu-inner-elements">
+                <img [src]="configurations.labelImage" *ngIf="configurations.labelImage && !configurations.isTabMode" alt=""/>
+                <fusion-icon class="is-custom-icon" *ngIf="configurations.icon" [name]="configurations.icon"></fusion-icon>
+                <fusion-flag *ngIf="configurations.labelFlag" [name]="configurations.labelFlag"></fusion-flag>
+                <span class="placeholderPrefix" *ngIf="!configurations?.isMultipleSelection && configurations?.placeholder?.prefix">{{
+                    configurations.placeholder?.prefix
+                    }}</span>
+                <div class="placeholderText truncate" [fusionTooltip]="configurations.placeholder?.value" [innerHTML]="configurations.placeholder?.value"></div>
+            </div>
+            <!--endregion inner content-->
+            <!--region dropdown icon-->
+            <fusion-icon class="icon-arrow" *ngIf="!configurations.isTabMode && !(configurations.isSearch && configurations.isOpen)" [name]="configurations.dropdownArrowIconName"></fusion-icon>
+            <div *ngIf="configurations.isTabMode" class="dropdown-arrow-container" #dropdownArrowContainer>
+                <fusion-icon class="icon-arrow" [name]="configurations.dropdownArrowIconName"></fusion-icon>
+            </div>
+            <!--endregion dropdown icon-->
+        </label>
+    </ng-template>
+    <!--endregion regular title-->
+</div>

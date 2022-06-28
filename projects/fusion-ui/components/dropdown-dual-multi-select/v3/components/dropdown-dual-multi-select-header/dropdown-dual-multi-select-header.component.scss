@@ -1,0 +1,82 @@
+@import '../../../../../src/style/scss/v3/vars/vars';
+@import '../../../../../src/style/scss/v3/vars/border';
+@import '../../../../../src/style/scss/v3/mixins/mixins';
+
+$clearIconColor: #DADADA;
+
+%clear-icon-position{
+    position: absolute;
+    right: -13px;
+    top: 2px;
+}
+
+%search-icon-position{
+    position: absolute;
+    left: -10px;
+    top: 2px;
+}
+
+:host {
+    .is-dropdown-dual-multi-select-header {
+        @extend %border-box-normalize;
+        height: 55px;
+        width: 545px;
+        border-bottom: 1px solid $fu-light-400;
+        display: grid;
+        grid-template-columns: 0.5fr 1.5fr;
+        align-items: center;
+        .fu-search-holder {
+            width: 405px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            .fu-search-bar {
+                position: relative;
+                fusion-icon.fu-icon-search {
+                    color: $fu-light-700;
+                    @extend %search-icon-position;
+                    @include size(16px);
+                }
+                fusion-icon.fu-icon-clear {
+                    color:$fu-light-500;
+                    @extend %clear-icon-position;
+                    @include size(16px);
+                    cursor: pointer;
+                    &:hover{
+                        color: $fu-light-800;
+                    }
+                }
+                input{
+                    @extend %font-bodySmall;
+                    letter-spacing: 0.24px;
+                    line-height: 15.51px;
+                    border: none;
+                    outline: none;
+                    background-color: transparent;
+                    color: $fu-black-500;
+                    width: 365px;
+                    height: 16px;
+                    padding: 0 8px 0 8px;
+                    margin-left: 5px;
+                    &::placeholder {
+                        color: $fu-light-800;
+                    }
+                }
+
+            }
+        }
+        .fu-label-holder {
+            border-right: 1px solid $fu-light-400;
+            height: 100%;
+            width: fit-content;
+            display: flex;
+            align-items: center;
+            .fu-label{
+                color: $fu-black-500;
+                @extend %font-bodyMediumStrong;
+                padding: 0 16px 0 24px;
+            }
+        }
+
+    }
+}

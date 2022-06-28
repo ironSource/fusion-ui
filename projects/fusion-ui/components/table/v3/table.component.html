@@ -1,0 +1,131 @@
+<div *ngIf="!noTableFrame" class="fu-table-header">
+    <ng-container *ngIf="options?.tableLabel as tableLabel">
+        <div class="fu-table-label">{{tableLabel.text}}
+        <ng-container *ngIf="tableLabel.tooltip">
+            <fusion-icon [fusionTooltip]="tableLabel.tooltip" class="fu-info-icon" [name]="tableLabel.icon ?? {iconName: 'info', iconVersion: 'v3'}"></fusion-icon>
+        </ng-container>
+        </div>
+    </ng-container>
+    <div class="fu-search-holder" *ngIf="options?.searchOptions as searchOptions">
+        <fusion-icon class="fu-search-icon" [name]="{iconName: 'search-bold', iconVersion: 'v3'}"></fusion-icon>
+        <input
+            [placeholder]="searchOptions.placeholder"
+            (input)="searchOptions.onSearch.emit($any($event.target).value)"
+        />
+    </div>
+</div>
+<div class="tableWrap" [ngClass]="wrapperClasses" #tableWrapper>
+    <table [id]="id" #table *ngIf="!tableMainError">
+        <ng-container *ngIf="columns && options">
+            <thead *ngIf="columns.length" [hidden]="(isEmpty || (loading && !isLoadingOverlay)) && hideHeaderOnEmpty">
+                <tr [ngStyle]="!!options.rowsOptions && !!options.rowsOptions.headerRow ? options.rowsOptions.headerRow.style : null">
+                    <td
+                        *ngIf="!!options?.rowsExpandableOptions"
+                        class="expand-column"
+                        [class.sticky-left]="options?.rowsExpandableOptions?.sticky"
+                        [style.top.px]="options?.stickyHeaderTopOffset"
+                    >
+                        <span></span>
+                    </td>
+                    <td
+                        *ngFor="let column of columns; trackBy: trackByFunc; let isLast = last; let isFirst = first"
+                        [attr.data-col-key]="column.key"
+                        [ngClass]="tableService.getColumnClasses(column, true)"
+                        [ngStyle]="tableService.getColumnStyle(column)"
+                        (click)="onHeaderClicked(column)"
+                        [style.width]="tableService.setWidth(isLast, column.width)"
+                        [style.text-align]="column.headerAlign"
+                        [attr.colspan]="isFirst ? tableService.expandLevels : undefined"
+                        [style.top.px]="options?.stickyHeaderTopOffset"
+                    >
+                        <ng-container>
+                            <span [class.fu-tooltiped]="column.tooltip" [fusionTooltip]="column.tooltip">{{ column.title }}</span>
+                            <div class="fu-sort-wrapper">
+                                <div class="fu-sort-up"></div>
+                                <div class="fu-sort-down"></div>
+                            </div>
+                        </ng-container>
+                        <fusion-multi-dropdown
+                            *ngIf="column.filter && column.filter.options"
+                            placeholder="Please Select"
+                            class="filter"
+                            [selected]="column.filter.selected"
+                            [options]="column.filter.options"
+                            (selectedChange)="filterColumn(column, $event)"
+                            [confirm]="true"
+                            [search]="true"
+                            selectAllLabel="Select All <span class='grey'>(No Filters)</span>"
+                        >
+                        </fusion-multi-dropdown>
+                        <fusion-checkbox
+                            class="is-regular"
+                            title="select / un-select all"
+                            *ngIf="tableService.isTypeCheckbox(column) && isAllRowsSelectable && !isEmpty && isCheckboxTitleShown"
+                            [checked]="tableService.isAllRowsSelected(rows)"
+                            [isIndeterminate]="tableService.isPartialSelected(rows)"
+                            (changed)="tableService.onRowsSelectChanged(options.isGroupedTable, rows, $event)"
+                            [name]="'rows_all'"
+                        >
+                        </fusion-checkbox>
+                    </td>
+                </tr>
+            </thead>
+
+            <tbody *ngIf="loading && !isLoadingOverlay" [fusionTableLoading]="colsCount"></tbody>
+            <!--Table Body-->
+            <tbody
+                *ngIf="!options.isGroupedTable && (!loading || isLoadingOverlay) && !isEmpty"
+                fusionTableBasic
+                [rows]="tableRows"
+                [columns]="columns"
+                [options]="options"
+                [tableClientWidth]="getTableClientWidth()"
+                [expandedRows]="expandedRows"
+                (rowSelected)="selectionChanged.emit($event)"
+                (expandRow)="doExpandRow($event)"
+                (click)="onTableBodyClicked($event)"
+                #tableBody
+            ></tbody>
+            <!--Table Body-->
+            <!--Grouped Table Body-->
+            <tbody
+                *ngIf="options.isGroupedTable && (!loading || isLoadingOverlay) && !isEmpty"
+                fusionTableGrouped
+                [rows]="groupedTableRows"
+                [columns]="columns"
+                [options]="options"
+                (rowSelected)="selectionChanged.emit($event)"
+            ></tbody>
+            <!--Grouped Table Body-->
+        </ng-container>
+        <!--table empty-->
+        <tbody
+            *ngIf="!loading && isEmpty"
+            [fusionTableEmpty]="colsCount"
+            [customContent]="options?.customNoData"
+            [header]="noDataMessage"
+            [subHeader]="noDataSubMessage"
+            [icon]="options?.emptyTableIcon"
+            [imageBackgroundUrl]="options?.noDataImageBgUrl"
+        ></tbody>
+        <!--table empty-->
+        <!--table empty loading-->
+        <tbody
+            *ngIf="isEmpty && loading"
+            [fusionTableLoading]="colsCount"
+        ></tbody>
+        <!--table empty loading-->
+    </table>
+    <!--table pagination loading overlay-->
+    <ng-container *ngIf="options?.pagination && options.pagination.loading">
+        <div class="is-overlay-loader-holder"><fusion-loader [status]="true" height="150">Loading Please Wait…</fusion-loader></div>
+    </ng-container>
+    <!--table pagination loading overlay-->
+    <!--todo: Add condition when to show button 'go top'-->
+    <ng-container *ngIf="options?.hasReturnToTopButton && (shownGoTopButton$ | async)">
+        <div class="fu-button-return-top" fusionTooltip="Return to top" (click)="onClickReturnTop()">
+            <fusion-icon class="fu-return-top-icon" [name]="{iconName:'angle-up', iconVersion: 'v3'}"></fusion-icon>
+        </div>
+    </ng-container>
+</div>
+<div *ngIf="!noTableFrame" class="fu-table-footer"></div>

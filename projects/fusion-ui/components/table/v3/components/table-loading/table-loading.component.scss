@@ -1,0 +1,13 @@
+@import "../../../../../src/style/scss/v3/vars/vars";
+@import "../../../../../src/style/scss/v3/mixins/mixins";
+
+:host {
+    .fu-table-cell-loading {
+        height: 48px;
+        padding: 0 16px;
+        border-bottom: solid 1px $fu-light-400;
+        div{
+            @include loading();
+        }
+    }
+}

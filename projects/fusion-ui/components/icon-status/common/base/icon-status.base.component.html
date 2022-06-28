@@ -1,0 +1,6 @@
+<span [className]="color" [ngStyle]="{color: options?.customColor}" *ngIf="color || options?.customColor" [fusionTooltip]="tooltip">
+    <fusion-icon
+        class="status-icon"
+        [name]="options?.animated ? {iconName: 'loading', iconVersion: 'v1'} : {iconName: 'status-dots', iconVersion: 'v1'}"
+    ></fusion-icon>
+</span>

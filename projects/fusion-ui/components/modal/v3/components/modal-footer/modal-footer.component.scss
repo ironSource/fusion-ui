@@ -1,0 +1,42 @@
+@import '../../../../../src/style/scss/v3/vars/colors';
+@import '../../../../../src/style/scss/v3/vars/fonts';
+@import '../../../../../src/style/scss/v3/mixins/mixins';
+@import '../../modal_vars';
+
+
+%border-box-normalize{
+    * {
+        box-sizing: border-box;
+    }
+}
+
+$borderTop: 1px solid $fu-light-400;
+$padding: 0 24px;
+
+:host {
+    @extend %border-box-normalize;
+    display: flex;
+    align-items: center;
+    border-top: $borderTop;
+    .modal-footer {
+        width: 100%;
+        padding: $padding;
+        box-sizing: border-box;
+        div.footer {
+            display: flex;
+            justify-content: flex-end;
+            fusion-button {
+                & + fusion-button {
+                    margin-left: 7px;
+                }
+            }
+        }
+        .fu-error-message {
+            @extend %font-bodySmall;
+            display: inline-flex;
+            align-items: center;
+            color: $fu-negative-500;
+            flex-grow: 1;
+        }
+    }
+}

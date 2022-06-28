@@ -1,0 +1,191 @@
+@import '../../../src/style/scss/v1/vars/vars';
+@import '../../../src/style/scss/v1/mixins/mixins';
+@import '../../../src/style/scss/v1/vars/border';
+
+$smallHeight: 25px;
+$smallMinWidth: 70px;
+
+$mediumHeight: 32px;
+$mediumMinWidth: 90px;
+
+$largeHeight: 40px;
+$largeMinWidth: 140px;
+
+
+.is-btngroup {
+    overflow: hidden;
+}
+
+:host {
+    @extend %reset;
+    position: relative;
+    display: inline-block;
+    height: $mediumHeight;
+    min-width: $mediumMinWidth;
+    @extend %borderRadius;
+    @extend %border;
+    outline: none;
+    background-image: linear-gradient(to bottom, #fff, $light-200);
+    color: $dark-300;
+    @extend %font4;
+    line-height: 1.2em;
+    padding: 7px 15px;
+    cursor: pointer;
+    text-align: var(--button-text-align, center);
+
+    &:hover {
+        color: $primary-500;
+    }
+
+    &:disabled,
+    &.disabled {
+        color: $light-800;
+        @extend %disabled;
+    }
+
+    &.fu-with-loading {
+        padding-left: 10px;
+
+        & + span {
+            display: block;
+            position: relative;
+            padding: 25px 0;
+            border: solid 1px red;
+        }
+    }
+
+    &.fu-iconed {
+        min-width: 32px;
+        padding: 8px 8px 7px 8px;
+        margin-bottom: 2px;
+        @include icon-style('icon', currentColor, 15px, false, true) {
+            vertical-align: middle;
+        }
+
+        .is-icon-text {
+            padding: 0 5px;
+
+            fusion-icon {
+                margin-right: 4px;
+
+                & + span {
+                    vertical-align: text-top;
+                }
+            }
+        }
+    }
+
+    .is-btngroup & {
+        border-radius: 3px 0 0 3px;
+        float: left;
+
+        & + *[fusion-button] {
+            border-left: none;
+            border-radius: 0;
+            margin-left: 0;
+        }
+
+        &:last-child {
+            border-radius: 0 3px 3px 0;
+        }
+    }
+
+
+    &.small {
+        @extend %font6;
+        line-height: 0.8em;
+        height: $smallHeight;
+        min-width: $smallMinWidth;
+    }
+
+    &.large {
+        height: $largeHeight;
+        min-width: $largeMinWidth;
+    }
+
+
+    // Stroke Button
+    &.stroke {
+        border-color: $dark-100;
+        background: none;
+
+        &:hover {
+            color: $White;
+            background-color: $dark-100;
+        }
+
+        &:disabled,
+        &.disabled {
+            color: $light-800;
+            border-color: $light-700;
+
+            &:hover {
+                background-color: $White;
+            }
+        }
+    }
+
+    // Action buttons
+    &.primary {
+        border-color: $primary-500;
+        background: $primary-500;
+        color: $White;
+
+        &:hover {
+            background-color: $primary-hover;
+            border-color: $primary-hover;
+        }
+
+        &:disabled,
+        &.disabled {
+            opacity: 0.7;
+
+            &:hover {
+                border-color: $primary-500;
+                background: $primary-500;
+            }
+        }
+    }
+
+    &.negative {
+        border-color: $negative-500;
+        background: $negative-500;
+        color: $White;
+
+        &:hover {
+            background-color: $negative-hover;
+            border-color:$negative-hover;
+        }
+
+        &:disabled,
+        &.disabled {
+            opacity: 0.7;
+
+            &:hover {
+                border-color: $negative-500;
+                background: $negative-500;
+            }
+        }
+    }
+
+    &.secondary {
+        border-color: $light-500;
+        background: $light-500;
+        color: $light-900;
+
+        &:hover {
+            background-color: $light-hover;
+            border-color: $light-hover;
+        }
+
+        &:disabled,
+        &.disabled {
+            opacity: 0.7;
+
+            &:hover {
+                border-color: $light-500;
+                background: $light-500;
+            }
+        }
+    }
+}

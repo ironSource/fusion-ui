@@ -1,10 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Observable, Subject} from 'rxjs';
-import {StyleVersion, VersionService} from '@ironsource/fusion-ui';
 import {takeUntil} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
+import {VersionService} from '../../../services/version/version.service';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 
 @Component({
     selector: 'fusion-video-player-docs-v2',

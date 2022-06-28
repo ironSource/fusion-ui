@@ -1,0 +1,70 @@
+@use "sass:math";
+
+@import "mixins/breakpoints";
+
+$gridColumns: 12 !default;
+$gridColumnGap: 32px !default;
+$columnPrefix: '.col' !default;
+$columnOffset: '.offset' !default;
+$columnHiddenPrefix: '.hidden' !default;
+
+// grid mixins
+// create column props by size
+@mixin make-col($size, $columns: $gridColumns) {
+    flex: 0 0 auto;
+    width: percentage(math.div($size, $columns));
+}
+
+// create column offset props
+@mixin make-col-offset($size, $columns: $gridColumns) {
+    $num: math.div($size, $columns);
+    margin-left: if($num==0, 0, percentage($num));
+}
+
+// Generate the correct number of grid classes
+@mixin make-grid-columns($columns: $gridColumns, $gutter: $gridColumnGap, $breakpoints: $breakPoints) {
+    @each $breakpoint in map-keys($breakpoints) {
+        $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+        @include media-breakpoint-min($breakpoint, $breakpoints) {
+
+            // generate hidden prop for col by break point .hidden-xx
+            .hidden#{$infix} {
+                display: none;
+            }
+
+            // generate by columns in col .col-xx-xx
+            @if $columns>0 {
+                @for $i from 1 through $columns {
+                    .col#{$infix}-#{$i} {
+                        @include make-col($i, $columns);
+                    }
+                }
+
+                // generate offsets
+                @for $i from 0 through ($columns - 1) {
+                    @if not ($infix==""and $i==0) {
+                        // Avoid emitting useless .offset-0
+                        .offset#{$infix}-#{$i} {
+                            @include make-col-offset($i, $columns);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: calc(#{$gridColumnGap} / -2);
+    margin-left: calc(#{$gridColumnGap} / -2);
+    > * {
+        box-sizing: border-box;
+        padding-right: calc(#{$gridColumnGap} / 2);
+        padding-left: calc(#{$gridColumnGap} / 2);
+    }
+}
+
+@include make-grid-columns();

@@ -1,11 +1,13 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
-import {StyleVersion, SwitcherItem, VersionService} from '@ironsource/fusion-ui';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
+import {SwitcherItem} from '@ironsource/fusion-ui/components/switcher/common/entities';
 import {takeUntil} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {FormControl, Validators} from '@angular/forms';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
+import {VersionService} from '../../../services/version/version.service';
 
 @Component({
     selector: 'fusion-switchers-docs-v2',

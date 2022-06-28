@@ -1,0 +1,44 @@
+$borderRadius: var(--fu-border-radius, 8px);
+$boxShadow: 0px 8px 24px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4);
+
+%noBorderRadiusTR{
+    border-top-right-radius: 0 !important;
+}
+%noBorderRadiusTL{
+    border-top-left-radius: 0 !important;
+}
+%noBorderRadiusBR{
+    border-bottom-right-radius: 0 !important;
+}
+%noBorderRadiusBL{
+    border-bottom-left-radius: 0 !important;
+}
+
+%noBorderLeft{
+    @extend %noBorderRadiusTL;
+    @extend %noBorderRadiusBL;
+    border-left: none;
+}
+
+%noBorderRight{
+    @extend %noBorderRadiusTR;
+    @extend %noBorderRadiusBR;
+    border-right: none;
+}
+
+%noBorderBottom{
+    @extend %noBorderRadiusBL;
+    @extend %noBorderRadiusBR;
+    border-bottom: none;
+}
+
+%noBorderTop{
+    @extend %noBorderRadiusTL;
+    @extend %noBorderRadiusTR;
+    border-top: none;
+}
+
+%bottomBoxShadow{
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.23);
+}
+

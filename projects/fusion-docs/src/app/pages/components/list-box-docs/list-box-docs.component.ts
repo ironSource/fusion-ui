@@ -1,10 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {ListBoxModes, ListBoxOption, StyleVersion, VersionService} from '@ironsource/fusion-ui';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
+import {ListBoxModes} from '@ironsource/fusion-ui/components/list-box/common/base';
 import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Router} from '@angular/router';
+import {VersionService} from '../../../services/version/version.service';
 
 /* eslint-disable max-len */
 const MOCK_DATA_1 = [
@@ -108,7 +110,7 @@ export class ListBoxDocsComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.selectedVersion$.subscribe((styleVersion: StyleVersion) => {
-            if (styleVersion === StyleVersion.V2) {
+            if (styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3) {
                 this.router.navigate(['docs/components/v2/list-box']);
             }
         });

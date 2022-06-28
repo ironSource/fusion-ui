@@ -1,10 +1,13 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
-import {ApiService, ApiResponseType, VersionService, StyleVersion, Tag} from '@ironsource/fusion-ui';
+import {ApiService, ApiResponseType} from '@ironsource/fusion-ui';
+import {Tag} from '@ironsource/fusion-ui/components/tag/common/entities';
 import {map, delay, takeUntil} from 'rxjs/operators';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Router} from '@angular/router';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
+import {VersionService} from '../../../services/version/version.service';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 
 @Component({
     selector: 'fusion-tag-docs',
@@ -236,7 +239,7 @@ export class TagDocsComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.initForm();
         this.selectedVersion$.subscribe((styleVersion: StyleVersion) => {
-            if (styleVersion === StyleVersion.V2) {
+            if (styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3) {
                 this.router.navigate(['docs/components/v2/tag']);
             }
         });

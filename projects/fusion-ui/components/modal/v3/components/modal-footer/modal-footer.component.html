@@ -1,0 +1,19 @@
+<div class="modal-footer">
+    <div class="footer">
+        <span class="fu-error-message">{{ error }}</span>
+        <fusion-button
+            [class]="cancelButtonClass"
+            (click)="onCloseButtonClicked.emit()"
+            *ngIf="!cancelButtonHidden"
+        >
+            {{ cancelButtonText }}
+        </fusion-button>
+        <fusion-button
+            [class]="submitButtonClass"
+            [disabled]="submitButtonDisabled || !!error"
+            (click)="onSubmit.emit()"
+        >
+            {{ submitButtonText }}
+        </fusion-button>
+    </div>
+</div>

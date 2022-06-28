@@ -1,0 +1,47 @@
+@import '../../../src/style/scss/v3/vars/vars';
+@import '../../../src/style/scss/v3/mixins/mixins';
+@import '../../../src/style/scss/v3/vars/border';
+@import './modal_vars';
+
+$box-shadow: 0 0 20px 0 rgba(30, 30, 30, 0.05);
+$borderRadius: 16px;
+
+
+:host {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.56);
+    overflow-x: auto;
+    z-index: getZIndexLayerOffset(system, 10);
+
+    .modal {
+        height: calc(100vh - 20px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 0;
+        overflow: auto;
+
+        .modal-body{
+            position: relative;
+            background: #fff;
+            margin: 0 auto;
+            box-shadow: $box-shadow;
+            border-radius: $borderRadius;
+            display: grid;
+            &.has-header{
+                grid-template-rows: $modalHeaderHeight 1fr 20px;
+            }
+            &.has-footer{
+                grid-template-rows: 20px 1fr $modalFooterHeight;
+            }
+            &.has-footer.has-header{
+                grid-template-rows: $modalHeaderHeight 1fr $modalFooterHeight;
+            }
+        }
+    }
+}

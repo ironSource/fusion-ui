@@ -5,12 +5,23 @@ import {Routes, RouterModule} from '@angular/router';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
-import {ButtonModule, TooltipModule} from '@ironsource/fusion-ui';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v2';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button';
 
 const routes: Routes = [{path: '', component: ButtonDocsComponent}];
 
 @NgModule({
     declarations: [ButtonDocsComponent],
-    imports: [CommonModule, ExampleBlockModule, CodeBlockModule, DocsMenuModule, ButtonModule, RouterModule.forChild(routes), TooltipModule]
+    imports: [
+        CommonModule,
+        ExampleBlockModule,
+        CodeBlockModule,
+        DocsMenuModule,
+        ButtonModule,
+        IconModule,
+        RouterModule.forChild(routes),
+        TooltipModule
+    ]
 })
 export class ButtonDocsModule {}

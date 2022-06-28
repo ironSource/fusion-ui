@@ -1,8 +1,9 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {TABS_BASE_MOCK, TABS_ICON_ONLY_TEXT_BASE_MOCK, TABS_ICON_TEXT_BASE_MOCK, TABS_ICON_UP_TEXT_BASE_MOCK} from './tabs.mocks';
-import {PopupComponentContent, TabConfiguration} from '@ironsource/fusion-ui';
+import {PopupComponentContent} from '@ironsource/fusion-ui/components/popup/common/entities';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
+import {TabConfiguration} from '@ironsource/fusion-ui/components/tabs/v2';
 
 @Component({
     selector: 'fusion-tabs-docs',

@@ -1,0 +1,14 @@
+<div [class]="'fu-switcher ' + 'fu-size-' + switcherConfiguration.size">
+    <div class="fu-switcher-holder" *ngFor="let item of options" [class]="'fu-size-' + switcherConfiguration.size" [ngClass]="{'fu-selected': selected?.id === item?.id}">
+        <input
+            type="radio"
+            id="{{ switcherConfiguration.name }}_{{ item.id }}"
+            [name]="switcherConfiguration.name"
+            [checked]="selected?.id === item?.id"
+            (change)="setSelection(item)"
+        />
+        <label for="{{ switcherConfiguration.name }}_{{ item.id }}" title="{{ item.title }}">{{ item.title }}</label>
+    </div>
+</div>
+
+

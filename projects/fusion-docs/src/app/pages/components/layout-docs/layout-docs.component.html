@@ -16,7 +16,7 @@
     [headerPrimaryMenuItems]="headerPrimaryMenuItems"
     [headerSecondaryMenuItems]="headerSecondaryMenuItems">
     INNER CONTENT
-</fusion-layout-v1>'
+</fusion-layout>'
                 ></fusion-code-block>
             </ng-template>
 
@@ -280,7 +280,7 @@ const menuItems = [
     }
 ];
 
-const layout = document.createElement("native-fusion-layout-v1");
+const layout = document.createElement("native-fusion-layout");
 layout.config = {
     userName: "Fusion User",
     state: {
@@ -300,15 +300,16 @@ document.body.appendChild(layout);
 
             <div class="row fusion-layout-example-holder" style="padding-top: 0">
                 <div class="col-12">
-                    <fusion-layout-v1
+                    <fusion-layout
                         [userName]="userName"
                         [state]="headerState"
                         [menuItems]="mainMenuItems"
                         [headerPrimaryMenuItems]="headerPrimaryMenuItems"
                         [headerSecondaryMenuItems]="headerSecondaryMenuItems"
                     >
+
                         INNER CONTENT
-                    </fusion-layout-v1>
+                    </fusion-layout>
                 </div>
             </div>
         </fusion-example-block>
@@ -326,6 +327,6 @@ document.body.appendChild(layout);
     </div>
 
     <div class="col-3 is-right-side-menu-holder">
-        <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
+        <!--<fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>-->
     </div>
 </div>

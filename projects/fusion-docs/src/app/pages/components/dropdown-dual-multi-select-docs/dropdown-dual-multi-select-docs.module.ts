@@ -2,8 +2,8 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DropdownDualMultiSelectDocsComponent} from './dropdown-dual-multi-select-docs.component';
 import {RouterModule, Routes} from '@angular/router';
-import {DropdownDualMultiSelectModule} from '@ironsource/fusion-ui';
 import {ReactiveFormsModule} from '@angular/forms';
+import {DropdownDualMultiSelectModule} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
 
 const routes: Routes = [{path: '', component: DropdownDualMultiSelectDocsComponent}];
 

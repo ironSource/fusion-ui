@@ -1,8 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {StyleVersion, VersionService} from '@ironsource/fusion-ui';
+import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
+import {VersionService} from '../../../services/version/version.service';
+import {BehaviorSubject} from 'rxjs';
+import {delay, tap} from 'rxjs/operators';
 
 @Component({
     selector: 'fusion-toggle-docs',
@@ -14,7 +17,17 @@ export class ToggleDocsComponent implements OnInit {
     toggleSmallFormControl = new FormControl(false);
 
     styleVersion = StyleVersion;
-    selectedVersion$ = this.versionService.styleVersion$;
+    styleUpdatingDelay = 0;
+    styleUpdating$ = new BehaviorSubject(false);
+    selectedVersion$ = this.versionService.styleVersion$.pipe(
+        tap(() => {
+            this.styleUpdating$.next(true);
+        }),
+        delay(this.styleUpdatingDelay),
+        tap(() => {
+            this.styleUpdating$.next(false);
+        })
+    );
 
     constructor(private versionService: VersionService, private docLayoutService: DocsLayoutService) {}
 
