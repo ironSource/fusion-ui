@@ -4,7 +4,7 @@ import {CAMPAIGN_PROMOTIONS_TABLE_OPTIONS, CONFIGURATIONS_TABLE_COLUMNS, PROMOTI
 import {BehaviorSubject, of, Subject} from 'rxjs';
 import {TableOptions, TableRow} from '@ironsource/fusion-ui/components/table/common/entities';
 import {delay, finalize, takeUntil} from 'rxjs/operators';
-import {CAMPAIGN_PROMOTION_MOCK} from './campaign-promotion-data.mock';
+import {CAMPAIGN_PROMOTION_MOCK, CAMPAIGNS_CELL_MOCK} from './campaign-promotion-data.mock';
 
 @Component({
     selector: 'fusion-campaign-promotions-table',
@@ -74,6 +74,8 @@ export class CampaignPromotionsTableComponent implements OnInit, OnDestroy {
             )
             .subscribe(data => {
                 this.promotionsTableRows = data.map(item => {
+                    console.log('--', item.campaign);
+
                     return {
                         name: item.campaignId,
                         status: {
@@ -87,7 +89,13 @@ export class CampaignPromotionsTableComponent implements OnInit, OnDestroy {
                         },
                         creationDate: new Date(item.createdTime),
                         createdBy: item.createdBy,
-                        campaigns: item.campaign,
+                        campaigns: {
+                            config: {
+                                entities: CAMPAIGNS_CELL_MOCK /*.slice(0,10)*/,
+                                entityPrefix: 'campaigns',
+                                allEntityPrefix: 'all'
+                            }
+                        },
                         comments: item.description
                     };
                 });
