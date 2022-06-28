@@ -37,7 +37,11 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, Afte
     @Input() id: string;
     @Input() options: TableOptions = {};
     @Input() columns: TableColumn[] = [];
-    @Input() rows: any[] | TableRowsGrouped = [];
+    @Input() set rows(value: any[] | TableRowsGrouped) {
+        this._rows = value ?? [];
+        // check for checked
+        console.log('setter: ', this._rows);
+    }
     @Input() loading: boolean;
     @Input() sortTableOnDataChanges = false;
     @Input() set expandedRows(value: {[key: string]: boolean}) {
@@ -126,10 +130,15 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, Afte
         return this._expandedRows;
     }
 
+    get rows(): any[] | TableRowsGrouped {
+        return this._rows;
+    }
+
     private lastScrollLeftValue: number;
     private _expandedRows: {[key: string]: boolean} = {};
     private currentExpandedMap: {[key: string]: boolean} = {};
     private ignoredParentSelectorsRowClickEvent: string[];
+    private _rows: any[] | TableRowsGrouped;
 
     constructor(
         injector: Injector,
