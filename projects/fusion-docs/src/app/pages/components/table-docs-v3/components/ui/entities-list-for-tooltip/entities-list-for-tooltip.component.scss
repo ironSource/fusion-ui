@@ -1,0 +1,60 @@
+@import '../../../../../../../styles/vars';
+
+:host{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 1px 8px;
+    background-color: $White;
+
+    width: 256px;
+    max-height: 233px;
+
+    border: 1px solid $fu-light-400;
+    border-radius: 16px;
+
+    * {box-sizing: border-box;}
+
+    .entities-label-holder{
+        display: flex;
+        align-items: center;
+        min-height: 40px;
+        width: calc(100% + 3px);
+        margin-left: -2px;
+        padding: 0 12px;
+        @extend %font-bodyXSmallStrong;
+        color: $fu-black-500;
+        border-bottom: solid 1px $fu-light-400;
+    }
+    .entities-list-holder{
+        width: 100%;
+        overflow-y: auto;
+        @extend %customScroll;
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .entity-holder{
+            display: flex;
+            align-items: center;
+            gap:4px;
+            height: 16px;
+            color: $fu-black-500;
+
+            img{
+                @include size(16px);
+                @extend %image-masked;
+            }
+
+            @include icon-style('entity-icon', $fu-light-600, 16px, false, true){
+                @include size(16px);
+            }
+
+            .entity-text{
+                @extend %font-bodyXSmall;
+                @extend %truncate-flex-child;
+            }
+        }
+    }
+}

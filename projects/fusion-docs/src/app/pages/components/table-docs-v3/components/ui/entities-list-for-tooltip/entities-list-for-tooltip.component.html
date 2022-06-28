@@ -1,0 +1,10 @@
+<div class="entities-label-holder">
+{{configuration?.labelPrefix}} {{configuration?.entities.length}} {{entityName}}
+</div>
+<div class="entities-list-holder">
+    <div class="entity-holder" *ngFor="let entity of configuration.entities">
+        <img *ngIf="entity.imageUrl" [src]="entity.imageUrl" [alt]="entity.name"/>
+        <fusion-icon *ngIf="entity.icon" class="entity-icon" [name]="entity.icon"></fusion-icon>
+        <div class="entity-text">{{entity.name}}</div>
+    </div>
+</div>
