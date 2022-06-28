@@ -142,7 +142,7 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, OnDe
     private _expandedRows: {[key: string]: boolean} = {};
     private currentExpandedMap: {[key: string]: boolean} = {};
     private ignoredParentSelectorsRowClickEvent: string[];
-    private _rows: any[] | TableRowsGrouped;
+    private _rows: any[] | TableRowsGrouped = [];
 
     constructor(
         injector: Injector,
