@@ -169,6 +169,7 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, Afte
     }
 
     ngOnChanges(changes) {
+        console.log('ngOnChanges:');
         if (
             (!this.options || !this.options.isGroupedTable) &&
             !this.isRowsInit &&
@@ -190,6 +191,7 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, Afte
 
     ngAfterViewInit() {
         super.ngAfterViewInit();
+        console.log('ngAfterViewInit:', this.isRowsInit, this.rows);
         if (!this.isRowsInit && (this.rows as any[]).length) {
             this.isRowsInit = true;
             this.setSelectedRow();
