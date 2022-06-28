@@ -15,6 +15,7 @@ export class TableService {
     constructor(private sanitizer: DomSanitizer, private logService: LogService) {}
 
     onRowsSelectChanged(isGroupedTable, rows, isChecked: boolean): void {
+        console.log('onRowsSelectChanged');
         if (isGroupedTable) {
             this.selectionChanged.emit({isAllSelected: isChecked});
         } else {
@@ -22,6 +23,9 @@ export class TableService {
             if (isChecked) {
                 rows.forEach(row => {
                     if (!row.isRowTotal) {
+                        if (!!row.checkbox) {
+                            row.checkbox = true;
+                        }
                         this.selectedRows.push(row);
                     }
                 });
