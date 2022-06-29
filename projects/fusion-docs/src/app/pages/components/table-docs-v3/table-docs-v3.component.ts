@@ -4,7 +4,7 @@ import {VersionService} from '../../../services/version/version.service';
 import {Router} from '@angular/router';
 import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {EntitiesListForTooltipConfig} from './components/ui/entities-list-for-tooltip/entities-list-for-tooltip.entities';
+import {EntitiesListForTooltipConfig} from './components/ui/tooltiped-entities-table-cell/entities-list-for-tooltip/entities-list-for-tooltip.entities';
 
 @Component({
     selector: 'fusion-table-docs-v3',

@@ -1,5 +1,6 @@
 import {TableColumn, TableColumnTypeEnum, TableOptions} from '@ironsource/fusion-ui/components/table/v2';
 import {SingleOrMultiTableCellComponent, StatusTableCellComponent} from '../ui';
+import {TooltipedEntitiesTableCellComponent} from '../ui/tooltiped-entities-table-cell/tooltiped-entities-table-cell.component';
 
 export const CAMPAIGN_PROMOTIONS_TABLE_FIRST_INITIALIZATION = 25;
 
@@ -56,7 +57,7 @@ export const PROMOTIONS_TABLE_COLUMNS: TableColumn[] = [
         style: {'min-width': '152px'},
         width: '152px',
         type: TableColumnTypeEnum.Component,
-        component: SingleOrMultiTableCellComponent
+        component: TooltipedEntitiesTableCellComponent
     },
     {
         key: 'comments',

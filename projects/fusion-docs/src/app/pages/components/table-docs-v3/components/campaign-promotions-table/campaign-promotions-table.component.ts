@@ -74,8 +74,6 @@ export class CampaignPromotionsTableComponent implements OnInit, OnDestroy {
             )
             .subscribe(data => {
                 this.promotionsTableRows = data.map(item => {
-                    console.log('--', item.campaign);
-
                     return {
                         name: item.campaignId,
                         status: {
@@ -92,8 +90,9 @@ export class CampaignPromotionsTableComponent implements OnInit, OnDestroy {
                         campaigns: {
                             config: {
                                 entities: CAMPAIGNS_CELL_MOCK /*.slice(0,10)*/,
-                                entityPrefix: 'campaigns',
-                                allEntityPrefix: 'all'
+                                labelPrefix: 'Affecting',
+                                entitiesName: 'campaigns',
+                                entityName: 'campaign'
                             }
                         },
                         comments: item.description

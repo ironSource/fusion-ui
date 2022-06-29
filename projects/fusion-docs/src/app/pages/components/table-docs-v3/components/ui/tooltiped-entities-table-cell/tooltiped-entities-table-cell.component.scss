@@ -1,0 +1,14 @@
+@import '../../../../../../../styles/vars';
+
+:host{
+    .entity-count-wrapper{
+        @extend %font-bodySmall;
+        color: $fu-black-500;
+        text-decoration: underline;
+        text-decoration-style: dashed;
+        text-underline-offset: 3px;
+        & > span{
+            text-transform: capitalize;
+        }
+    }
+}
