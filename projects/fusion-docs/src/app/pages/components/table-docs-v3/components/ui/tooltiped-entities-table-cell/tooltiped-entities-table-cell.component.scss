@@ -1,6 +1,8 @@
 @import '../../../../../../../styles/vars';
 
 :host{
+    --fu-tooltip-padding: 0;
+    --fu-tooltip-background-color: white;
     .entity-count-wrapper{
         @extend %font-bodySmall;
         color: $fu-black-500;

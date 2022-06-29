@@ -1,9 +1,11 @@
+@import '../../../../styles/vars';
+
 :host {
     // add sticky to the filters-holder
     .filters-container {
         position: sticky;
         top: 0;
-        z-index: 9999;
+        z-index: getZIndexLayerOffset(application, 20);
         border-color: white;
     }
     .campaign-promotions-container {

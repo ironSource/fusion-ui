@@ -40,7 +40,7 @@ export class TooltipContentComponent {
 
     private setTooltipStyle(propertyValue: {[key: string]: string}) {
         Object.keys(propertyValue).forEach(val => {
-            if (val === 'backgroundColor') {
+            if (val === 'backgroundColor' && !!propertyValue[val]) {
                 this.elementRef.nativeElement.style.setProperty('--fu-tooltip-background-color', propertyValue[val]);
             } else {
                 this.renderer.setStyle(this.elementRef.nativeElement, val, propertyValue[val]);

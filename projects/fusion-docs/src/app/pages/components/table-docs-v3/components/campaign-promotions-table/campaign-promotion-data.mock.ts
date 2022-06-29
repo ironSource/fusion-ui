@@ -1912,7 +1912,7 @@ export const CAMPAIGNS_CELL_MOCK = [
     {
         id: 8404656,
         name: '12343',
-        icon: 'android',
+        icon: 'ios',
         imageUrl:
             'https://platform.ssacdn.com/demand-creatives/icons/icon_b641772fb9c0d33ab6c19b60f394509c_49ab746918e14e2ca380864bd12bb3fb.jpeg'
     },

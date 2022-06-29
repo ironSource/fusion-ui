@@ -89,7 +89,7 @@ export class CampaignPromotionsTableComponent implements OnInit, OnDestroy {
                         createdBy: item.createdBy,
                         campaigns: {
                             config: {
-                                entities: CAMPAIGNS_CELL_MOCK /*.slice(0,10)*/,
+                                entities: CAMPAIGNS_CELL_MOCK.slice(0, Math.floor(Math.random() * 14)),
                                 labelPrefix: 'Affecting',
                                 entitiesName: 'campaigns',
                                 entityName: 'campaign'

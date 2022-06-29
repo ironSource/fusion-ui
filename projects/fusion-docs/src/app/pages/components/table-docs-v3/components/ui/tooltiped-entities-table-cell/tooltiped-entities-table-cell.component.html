@@ -1,5 +1,8 @@
-<div fusionTooltip="test">
-    <div class="entity-count-wrapper">{{entityCount}} <span>{{entityName}}</span></div>
-    <!--<fusion-entities-list-for-tooltip [configuration]="config"></fusion-entities-list-for-tooltip>-->
-    <!--<div *fusionTooltipContent> test </div>-->
-</div>
+<fusion-tooltip [tooltipConfiguration]="{preventTooltipToClose: true}">
+    <div class="fusionTooltipTrigger">
+        <div class="entity-count-wrapper">{{entityCount}} <span>{{entityName}}</span></div>
+    </div>
+    <div class="fusionTooltipContent">
+        <fusion-entities-list-for-tooltip [configuration]="config"></fusion-entities-list-for-tooltip>
+    </div>
+</fusion-tooltip>
