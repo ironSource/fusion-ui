@@ -12,5 +12,8 @@
         & > span{
             text-transform: capitalize;
         }
+        &.no-entities{
+            text-decoration: none;
+        }
     }
 }

@@ -1,8 +1,16 @@
-<fusion-tooltip [tooltipConfiguration]="{preventTooltipToClose: true}">
-    <div class="fusionTooltipTrigger">
-        <div class="entity-count-wrapper">{{entityCount}} <span>{{entityName}}</span></div>
-    </div>
-    <div class="fusionTooltipContent">
-        <fusion-entities-list-for-tooltip [configuration]="config"></fusion-entities-list-for-tooltip>
-    </div>
-</fusion-tooltip>
+<ng-container [ngTemplateOutlet]="entityCount ? hasEntities : countEntities"></ng-container>
+
+<ng-template #hasEntities>
+    <fusion-tooltip [tooltipConfiguration]="{preventTooltipToClose: true}">
+        <div class="fusionTooltipTrigger" [ngTemplateOutlet]="countEntities"></div>
+        <div class="fusionTooltipContent">
+            <fusion-entities-list-for-tooltip [configuration]="config"></fusion-entities-list-for-tooltip>
+        </div>
+    </fusion-tooltip>
+</ng-template>
+
+<ng-template #countEntities>
+    <div class="entity-count-wrapper" [class.no-entities]="!entityCount">{{entityCount}} <span>{{entityName}}</span></div>
+</ng-template>
+
+
