@@ -10,7 +10,7 @@
   "scripts": {
     "ng": "ng",
     "prepare": "husky install",
-    "serve-docs": "ng serve --port 4300 fusion-docs",
+    "serve-docs": "ng serve --port 4200 fusion-docs",
     "test-docs": "ng test fusion-docs",
     "serve-native": "mkdir -p dist/fusion-ui && cp projects/fusion-ui/package.json dist/fusion-ui/package.json && watch 'npm run build:fusion-native' projects --wait=20 -d",
     "test-ui": "ng test fusion-ui",

@@ -5,3 +5,7 @@ export * from './status-table-cell/status-table-cell.component';
 export * from './status-table-cell/status-table-cell.module';
 export * from './single-or-multi-table-cell/single-or-multi-table-cell.component';
 export * from './single-or-multi-table-cell/single-or-multi-table-cell.module';
+export * from './tooltiped-entities-table-cell/tooltiped-entities-table-cell.component';
+export * from './tooltiped-entities-table-cell/tooltiped-entities-table-cell.module';
+export * from './adv-entity-table-cell/adv-entity-table-cell.component';
+export * from './adv-entity-table-cell/adv-entity-table-cell.module';

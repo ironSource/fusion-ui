@@ -1,12 +1,7 @@
-import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
+import {AdvEntityBase} from '../../entities/adv-entity-base.interface';
 
 export interface EntitiesListForTooltipConfig {
-    entities: {
-        id?: number;
-        name: string;
-        icon?: IconData;
-        imageUrl?: string;
-    }[];
+    entities: AdvEntityBase[];
     labelPrefix?: string;
     entityName: string;
     entitiesName?: string;

@@ -1,6 +1,7 @@
 import {TableColumn, TableColumnTypeEnum, TableOptions} from '@ironsource/fusion-ui/components/table/v2';
 import {SingleOrMultiTableCellComponent, StatusTableCellComponent} from '../ui';
 import {TooltipedEntitiesTableCellComponent} from '../ui/tooltiped-entities-table-cell/tooltiped-entities-table-cell.component';
+import {AdvEntityTableCellComponent} from '../ui/adv-entity-table-cell/adv-entity-table-cell.component';
 
 export const CAMPAIGN_PROMOTIONS_TABLE_FIRST_INITIALIZATION = 25;
 
@@ -22,10 +23,11 @@ export const CAMPAIGN_PROMOTIONS_TABLE_OPTIONS: TableOptions = {
 
 export const PROMOTIONS_TABLE_COLUMNS: TableColumn[] = [
     {
-        key: 'name',
-        title: 'Name',
-        sort: '',
-        width: '360px'
+        key: 'advEntityFull',
+        title: 'Adv Entity',
+        width: '360px',
+        type: TableColumnTypeEnum.Component,
+        component: AdvEntityTableCellComponent
     },
     {
         key: 'status',
@@ -61,8 +63,7 @@ export const PROMOTIONS_TABLE_COLUMNS: TableColumn[] = [
     },
     {
         key: 'comments',
-        title: 'Comments',
-        width: '220px'
+        title: 'Comments'
     }
 ];
 

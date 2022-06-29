@@ -10,7 +10,10 @@
 </ng-template>
 
 <ng-template #countEntities>
-    <div class="entity-count-wrapper" [class.no-entities]="!entityCount">{{entityCount}} <span>{{entityName}}</span></div>
+    <div class="entity-count-wrapper" [class.no-entities]="!entityCount" [ngSwitch]="entityCount">
+        <ng-container *ngSwitchCase="0">---</ng-container>
+        <ng-container *ngSwitchDefault>{{entityCount}} <span>{{entityName}}</span></ng-container>
+    </div>
 </ng-template>
 
 

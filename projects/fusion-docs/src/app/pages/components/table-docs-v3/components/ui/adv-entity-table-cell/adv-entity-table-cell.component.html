@@ -1,0 +1,8 @@
+<div class="adv-entity-holder">
+    <img *ngIf="advEntity.imageUrl" [src]="advEntity.imageUrl" [alt]="advEntity.name" class="adv-entity-image"/>
+    <fusion-icon *ngIf="advEntity.icon" class="adv-entity-icon" [name]="advEntity.icon"></fusion-icon>
+    <div class="adv-entity-text">
+        <div class="adv-entity-name" (click)="onEntityNameClicked($event)">{{advEntity.name}}</div>
+        <div *ngIf="advEntity.id" class="adv-entity-id">{{advEntity.id}}</div>
+    </div>
+</div>

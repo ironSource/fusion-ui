@@ -76,6 +76,14 @@ export class CampaignPromotionsTableComponent implements OnInit, OnDestroy {
                 this.promotionsTableRows = data.map(item => {
                     return {
                         name: item.campaignId,
+                        advEntityFull: {
+                            advEntity: {
+                                id: item.campaign.id,
+                                name: item.campaign.name,
+                                icon: item.campaign.os == 2 ? 'android' : 'ios',
+                                imageUrl: item.campaign.icon
+                            }
+                        },
                         status: {
                             config: {
                                 displayText: item.status == 6 ? 'Paused' : item.status,

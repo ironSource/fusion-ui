@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {EntitiesListForTooltipConfig} from './components/ui/tooltiped-entities-table-cell/entities-list-for-tooltip/entities-list-for-tooltip.entities';
+import {AdvEntityBase} from './components/ui/entities/adv-entity-base.interface';
 
 @Component({
     selector: 'fusion-table-docs-v3',
@@ -15,6 +16,14 @@ export class TableDocsV3Component implements OnInit, OnDestroy {
     onDestroy$ = new Subject();
 
     selectedVersion$: Observable<StyleVersion> = this.versionService.styleVersion$.pipe(takeUntil(this.onDestroy$));
+
+    advEntity: AdvEntityBase = {
+        id: 8404650,
+        name: '123',
+        icon: 'android',
+        imageUrl:
+            'https://platform.ssacdn.com/demand-creatives/icons/icon_b641772fb9c0d33ab6c19b60f394509c_49ab746918e14e2ca380864bd12bb3fb.jpeg'
+    };
 
     entitiesListForTooltipConfig: EntitiesListForTooltipConfig = {
         entities: [

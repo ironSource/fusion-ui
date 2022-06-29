@@ -1,0 +1,45 @@
+@import '../../../../../../../styles/vars';
+
+:host{
+    * {box-sizing: border-box;}
+    display: block;
+
+    .adv-entity-holder{
+        height: 100%;
+
+        display: flex;
+        align-items: center;
+        gap: 9px;
+
+        img{
+            @include size(32px);
+            @extend %image-masked;
+        }
+
+        @include icon-style('adv-entity-icon', $fu-light-600, 16px, false, true){
+            @include size(16px);
+        }
+
+        .adv-entity-text{
+            .adv-entity-name{
+                @extend %font-bodySmall;
+                color: $fu-black-500;
+                @extend %truncate-flex-child;
+            }
+            .adv-entity-id{
+                @extend %font-bodyXSmall;
+                color: $fu-light-900;
+            }
+        }
+
+    }
+}
+
+:host-context(tr:hover){
+    .adv-entity-holder .adv-entity-text .adv-entity-name{
+        color: $fu-primary-500;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
