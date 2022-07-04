@@ -38,7 +38,9 @@
     }
     .promotions-table-container {
       border-top: 1px solid $fu-light-400;
+      border-bottom: 1px solid $fu-light-400;
       width: 100%;
+      height: calc(100vh - 56px - 64px - 30px - 64px - 105px);
     }
       .promotions-table-footer-container{
           height: 72px;

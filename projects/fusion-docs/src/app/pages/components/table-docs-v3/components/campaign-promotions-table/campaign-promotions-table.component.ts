@@ -113,6 +113,7 @@ export class CampaignPromotionsTableComponent implements OnInit, OnDestroy {
     private setPaginationLoading(state: boolean) {
         const urOptions = this.promotionsTableOption$.getValue();
         urOptions.pagination.loading = state;
+        // urOptions.pagination.enable = state;
         this.promotionsTableOption$.next({...urOptions});
     }
 }
