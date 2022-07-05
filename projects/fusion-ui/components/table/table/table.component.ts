@@ -37,6 +37,8 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, OnDe
     @Input() options: TableOptions = {};
     @Input() columns: TableColumn[] = [];
     @Input() set rows(value: any[] | TableRowsGrouped) {
+        console.log('rows setter >>', value);
+
         this._rows = value ?? [];
         // check for checked
         console.log('setter: ', this._rows);
