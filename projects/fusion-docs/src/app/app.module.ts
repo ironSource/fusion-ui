@@ -7,7 +7,6 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v2';
 import {ReactiveFormsModule} from '@angular/forms';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
-import {ModalModule} from '@ironsource/fusion-ui/components/modal';
 
 @NgModule({
     declarations: [AppComponent],
@@ -17,8 +16,7 @@ import {ModalModule} from '@ironsource/fusion-ui/components/modal';
         SvgModule.forRoot({assetsPath: environment.assetsPath}),
         TooltipModule,
         IconModule,
-        ReactiveFormsModule,
-        ModalModule
+        ReactiveFormsModule
     ],
     bootstrap: [AppComponent]
 })

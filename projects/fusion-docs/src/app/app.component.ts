@@ -1,8 +1,7 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {ITooltipData, TooltipService} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {takeUntil} from 'rxjs/operators';
-import {BehaviorSubject, Subject} from 'rxjs';
-import {FormControl} from '@angular/forms';
+import {Subject} from 'rxjs';
 
 @Component({
     selector: 'fusion-docs',
