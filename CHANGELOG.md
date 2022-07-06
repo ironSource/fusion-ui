@@ -7,9 +7,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* **2.0.x:** fixed table row selected bug ([886d820](https://github.com/ironSource/fusion-ui/commit/886d820f5c74324494781d61e3a53560f0ff9a43))
-* **2.0.x:** fixed table row selected bug ([de199f4](https://github.com/ironSource/fusion-ui/commit/de199f42a4b43eebcb464d68e8d7abfd56f09e09))
-* **2.0.x:** fixed table row selected bug ([27c32f3](https://github.com/ironSource/fusion-ui/commit/27c32f3ecea569309d3ba560a4502467093b4480))
+* **2.0.x:** fixed table row selected in React bug ([886d820](https://github.com/ironSource/fusion-ui/commit/886d820f5c74324494781d61e3a53560f0ff9a43))
 
 ### [2.0.4](https://github.com/ironSource/fusion-ui/compare/v2.0.3...v2.0.4) (2022-06-27)
 
