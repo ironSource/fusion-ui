@@ -6,7 +6,6 @@ import {
     EventEmitter,
     ChangeDetectionStrategy,
     ViewChild,
-    OnChanges,
     HostBinding,
     ElementRef,
     OnDestroy,
@@ -32,7 +31,7 @@ import {TableBasicComponent} from '../table-basic/table-basic.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TableService]
 })
-export class TableComponent extends StyleBase implements OnInit, OnChanges, OnDestroy {
+export class TableComponent extends StyleBase implements OnInit, OnDestroy {
     @Input() id: string;
     @Input() options: TableOptions = {};
     @Input() columns: TableColumn[] = [];
@@ -173,27 +172,6 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, OnDe
         this.ignoredParentSelectorsRowClickEvent = ROW_CLICK_SUPPRESS_FOR_PARENT_SELECTORS.concat(
             this.options.rowsOptions?.ignoredParentSelectorsRowClickEvent ?? []
         );
-    }
-
-    ngOnChanges(changes) {
-        console.log('ngOnChanges:');
-        // if (
-        //     (!this.options || !this.options.isGroupedTable) &&
-        //     !this.isRowsInit &&
-        //     changes.rows &&
-        //     changes.rows.currentValue &&
-        //     changes.rows.currentValue.length
-        // ) {
-        //     this.isRowsInit = true;
-        //     this.setSelectedRow();
-        // }
-        // if (changes.rows && this.columns && this.sortTableOnDataChanges) {
-        //     const sortedColumn = this.columns.find(col => !!col.sort);
-        //     if (sortedColumn) {
-        //         sortedColumn.sort = sortedColumn.sort === 'asc' ? 'desc' : 'asc';
-        //         this.localSorting(sortedColumn.key);
-        //     }
-        // }
     }
 
     ngOnDestroy() {

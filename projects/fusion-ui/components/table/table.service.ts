@@ -15,7 +15,6 @@ export class TableService {
     constructor(private sanitizer: DomSanitizer, private logService: LogService) {}
 
     onRowsSelectChanged(isGroupedTable, rows, isChecked: boolean): void {
-        console.log('onRowsSelectChanged');
         if (isGroupedTable) {
             this.selectionChanged.emit({isAllSelected: isChecked});
         } else {
@@ -36,7 +35,6 @@ export class TableService {
     }
 
     onRowSelectChanged(isChecked: boolean, row: any): void {
-        console.log('onRowSelectChanged', isChecked, row);
         const idx = this.selectedRows.indexOf(row);
         if (isChecked && idx === -1) {
             this.selectedRows.push(row);
@@ -93,7 +91,6 @@ export class TableService {
     }
 
     isAllRowsSelected(rows): boolean {
-        console.log('isAllRowsSelected', rows.length, this.selectedRows.length);
         return rows.length === this.selectedRows.length;
     }
 
