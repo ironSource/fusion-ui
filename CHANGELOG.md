@@ -1,15 +1,23 @@
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+* **3.1.1:** add force open to dropdown daterange and include exclude component ([5a38ef8](https://github.com/ironSource/fusion-ui/commit/5a38ef80cbdf1cd8e44f8c70006cd674f0f4ec3e))
 
-## [3.1.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v3.1.0-rc.0...v3.1.0-rc.1) (2022-06-27)
+## [3.1.0](https://github.com/ironSource/fusion-ui/compare/v3.0.3...v3.1.0) (2022-07-03)
 
-## [3.1.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.0.1...v3.1.0-rc.0) (2022-06-27)
-
+* **3.x.x:** tooltip component v3 ([3788f2b](https://github.com/ironSource/fusion-ui/commit/3788f2ba9c7d895e907ee82aec52af70cb4f79b1))
 
 ### Features
+* Added new css vars to tooltip component:
+    * --fu-tooltip-padding
+    * --fu-tooltip-background-color
 
-* **3.1.0:** add force open to dropdown daterange and include exclude component ([5a38ef8](https://github.com/ironSource/fusion-ui/commit/5a38ef80cbdf1cd8e44f8c70006cd674f0f4ec3e))
+### Bug Fixes
+* Fixed z-index and box-shadow
+
+### [3.0.3](https://github.com/ironSource/fusion-ui/compare/v3.0.2...v3.0.3) (2022-06-28)
+
+### [3.0.2](https://github.com/ironSource/fusion-ui/compare/v3.0.1...v3.0.2) (2022-06-28)
 
 ### [3.0.1](https://github.com/ironSource/fusion-ui/compare/v3.0.0...v3.0.1) (2022-06-27)
 

@@ -159,7 +159,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
             left: this.tooltipPosition.left.toString() + 'px',
             width: this.width?.toString() + 'px',
             height: this.height?.toString() + 'px',
-            backgroundColor: this.backgroundColor || '#696a6b'
+            backgroundColor: this.backgroundColor
         };
         this.tooltipComponentRef.instance.tooltipPositionClass = this.tooltipPosition.position;
     }
