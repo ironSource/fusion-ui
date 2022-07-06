@@ -180,9 +180,7 @@ export class TableComponent extends StyleBase implements OnInit, OnDestroy {
 
     setSelectedRow() {
         (this.rows as any[]).forEach(row => {
-            if (row.checkbox) {
-                this.tableService.onRowSelectChanged(true, row);
-            }
+            this.tableService.onRowSelectChanged(row.checkbox, row);
         });
     }
 

@@ -35,7 +35,7 @@ export class TableService {
     }
 
     onRowSelectChanged(isChecked: boolean, row: any): void {
-        const idx = this.selectedRows.indexOf(row);
+        const idx = this.isInSelected(row);
         if (isChecked && idx === -1) {
             this.selectedRows.push(row);
         }
@@ -91,10 +91,17 @@ export class TableService {
     }
 
     isAllRowsSelected(rows): boolean {
+        console.log('isAllRowsSelected: ', rows.length === this.selectedRows.length, rows.length, this.selectedRows.length);
         return rows.length === this.selectedRows.length;
     }
 
     isPartialSelected(rows): boolean {
+        console.log(
+            'isAllRowsSelected: ',
+            this.selectedRows.length && rows.length !== this.selectedRows.length,
+            rows.length,
+            this.selectedRows.length
+        );
         return this.selectedRows.length && rows.length !== this.selectedRows.length;
     }
 
@@ -119,7 +126,7 @@ export class TableService {
     }
 
     isRowSelected(row: any): boolean {
-        return this.selectedRows.indexOf(row) !== -1;
+        return this.isInSelected(row) !== -1;
     }
 
     isColumnSortable(col: any): boolean {
@@ -239,5 +246,19 @@ export class TableService {
 
     isRowReadOnly(row: any): boolean {
         return !!row.rowMetaData && !!row.rowMetaData.readonly;
+    }
+
+    private isInSelected(row: any) {
+        if (row.hasOwnProperty('checkbox')) {
+            return this.selectedRows.findIndex(item => {
+                return Object.keys(row).every(key => {
+                    if (key !== 'checkbox') {
+                        return row[key] == item[key];
+                    }
+                    return true;
+                });
+            });
+        }
+        return this.selectedRows.indexOf(row);
     }
 }

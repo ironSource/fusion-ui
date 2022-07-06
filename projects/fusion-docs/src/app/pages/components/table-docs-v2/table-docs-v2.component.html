@@ -559,6 +559,7 @@ document.addEventListener("DOMContentLoaded", onLoad, false);'
                         [loading]="loading$ | async"
                         (rowModelChange)="onBasicRowModelChange($event)"
                         (sortChanged)="onBasicSortChanged($event)"
+                        (selectionChanged)="onSelectionChanged($event)"
                     ></fusion-table>
                 </div>
             </div>
