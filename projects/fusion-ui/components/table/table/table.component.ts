@@ -83,7 +83,6 @@ export class TableComponent extends StyleBase implements OnInit, OnDestroy {
         }
     }
 
-    isRowsInit = false;
     noDataMessage: string;
     noDataSubMessage: string;
     hideHeaderOnEmpty: boolean;
@@ -178,12 +177,6 @@ export class TableComponent extends StyleBase implements OnInit, OnDestroy {
         super.ngOnDestroy();
     }
 
-    setSelectedRow() {
-        (this.rows as any[]).forEach(row => {
-            this.tableService.onRowSelectChanged(row.checkbox, row);
-        });
-    }
-
     onHeaderClicked(col: any): void {
         if (!this.tableService.isColumnSortable(col)) {
             return;
@@ -239,14 +232,8 @@ export class TableComponent extends StyleBase implements OnInit, OnDestroy {
     }
 
     private initRows() {
-        if (
-            (!this.options || !this.options.isGroupedTable) &&
-            !this.isRowsInit &&
-            Array.isArray(this.rows) &&
-            (this.rows as any[]).length
-        ) {
-            this.isRowsInit = true;
-            this.setSelectedRow();
+        if (!this.options?.isGroupedTable && (this.rows as any[])?.length) {
+            this.tableService.initSelectedRows(this.rows as any[]);
         }
         if (Array.isArray(this.rows) && this.columns && this.sortTableOnDataChanges) {
             const sortedColumn = this.columns.find(col => !!col.sort);
