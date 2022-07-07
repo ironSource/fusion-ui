@@ -22,6 +22,7 @@ export class TableService {
             if (isChecked) {
                 rows.forEach(row => {
                     if (!row.isRowTotal) {
+                        row.checkbox = true;
                         this.selectedRows.push(row);
                     }
                 });
@@ -34,9 +35,11 @@ export class TableService {
     onRowSelectChanged(isChecked: boolean, row: any): void {
         const idx = this.isInSelected(row);
         if (isChecked && idx === -1) {
+            row.checkbox = true;
             this.selectedRows.push(row);
         }
         if (!isChecked && idx !== -1) {
+            row.checkbox = false;
             this.selectedRows.splice(idx, 1);
         }
 
@@ -95,17 +98,10 @@ export class TableService {
     }
 
     isAllRowsSelected(rows): boolean {
-        console.log('isAllRowsSelected: ', rows.length === this.selectedRows.length, rows.length, this.selectedRows.length);
         return rows.length === this.selectedRows.length;
     }
 
     isPartialSelected(rows): boolean {
-        console.log(
-            'isPartialSelected: ',
-            this.selectedRows.length && rows.length !== this.selectedRows.length,
-            rows.length,
-            this.selectedRows.length
-        );
         return this.selectedRows.length && rows.length !== this.selectedRows.length;
     }
 
