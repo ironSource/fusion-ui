@@ -4,12 +4,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [2.0.5](https://github.com/ironSource/fusion-ui/compare/v2.0.4...v2.0.5) (2022-07-07)
 
-### [2.0.4-rc.3](https://github.com/ironSource/fusion-ui/compare/v2.0.4-rc.2...v2.0.4-rc.3) (2022-07-07)
-
-### [2.0.4-rc.2](https://github.com/ironSource/fusion-ui/compare/v2.0.4-rc.1...v2.0.4-rc.2) (2022-07-06)
-
-### [2.0.4-rc.1](https://github.com/ironSource/fusion-ui/compare/v2.0.4...v2.0.4-rc.1) (2022-07-06)
-
 
 ### Bug Fixes
 
