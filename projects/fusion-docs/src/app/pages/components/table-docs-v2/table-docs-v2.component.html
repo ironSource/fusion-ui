@@ -1,9 +1,10 @@
 <div class="row">
     <div class="col-9">
         <!--UI-Component Examples-->
+<!--
         <div class="is-example-title">Type</div>
         <fusion-example-block id="typeBasicDefault" title="Default rows height (with 'Totals' row)">
-            <!--code examples by framework-->
+            &lt;!&ndash;code examples by framework&ndash;&gt;
             <ng-template fusionExampleBlock="Angular">
                 <fusion-code-block
                     lang="html"
@@ -79,7 +80,7 @@ const tableOptionsWithTotalsRow = {
 import { FusionTable } from "@ironsource/fusion-ui/native/react";
 
 const TABLE_COLUMNS = [
-  { key: "checkbox", type: 2 <!--(TableColumnTypeEnum.Checkbox)-->, width: "32px" },
+  { key: "checkbox", type: 2 &lt;!&ndash;(TableColumnTypeEnum.Checkbox)&ndash;&gt;, width: "32px" },
   { key: "name", title: "Name", sort: "" },
   { key: "username", title: "Username", sort: "" },
   { key: "email", title: "Email", sort: "" },
@@ -189,7 +190,7 @@ export const FooComponent = {
 };
 
 const TABLE_COLUMNS = [
-  { key: "checkbox", type: 2 <!--(TableColumnTypeEnum.Checkbox)-->, width: "32px" },
+  { key: "checkbox", type: 2 &lt;!&ndash;(TableColumnTypeEnum.Checkbox)&ndash;&gt;, width: "32px" },
   { key: "name", title: "Name", sort: "" },
   { key: "username", title: "Username", sort: "" },
   { key: "email", title: "Email", sort: "" },
@@ -224,7 +225,7 @@ export default FooComponent;'
                     code='const onLoad = () => {
     // define data
     const TABLE_COLUMNS = [
-      { key: "checkbox", type: 2 <!--(TableColumnTypeEnum.Checkbox)-->, width: "32px" },
+      { key: "checkbox", type: 2 &lt;!&ndash;(TableColumnTypeEnum.Checkbox)&ndash;&gt;, width: "32px" },
       { key: "name", title: "Name", sort: "" },
       { key: "username", title: "Username", sort: "" },
       { key: "email", title: "Email", sort: "" },
@@ -282,7 +283,7 @@ export default FooComponent;'
 document.addEventListener("DOMContentLoaded", onLoad, false);'
                 ></fusion-code-block>
             </ng-template>
-            <!--code examples by framework-->
+            &lt;!&ndash;code examples by framework&ndash;&gt;
 
             <div class="row">
                 <div class="col-12" style="min-height: 60px;">
@@ -301,6 +302,7 @@ document.addEventListener("DOMContentLoaded", onLoad, false);'
             </div>
         </fusion-example-block>
         <br />
+-->
         <fusion-example-block id="typeBigRowSze" title="Big rows height">
             <!--code examples by framework-->
             <ng-template fusionExampleBlock="Angular">
@@ -557,6 +559,7 @@ document.addEventListener("DOMContentLoaded", onLoad, false);'
                         [loading]="loading$ | async"
                         (rowModelChange)="onBasicRowModelChange($event)"
                         (sortChanged)="onBasicSortChanged($event)"
+                        (selectionChanged)="onSelectionChanged($event)"
                     ></fusion-table>
                 </div>
             </div>

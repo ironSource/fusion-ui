@@ -7,7 +7,7 @@ import {DEFAULT_EXPANDABLE_LEVEL, MAXIMUM_EXPANDABLE_LEVEL} from './table.config
 
 @Injectable()
 export class TableService {
-    private selectedRows: any[] = [];
+    selectedRows: any[] = [];
     public selectionChanged = new EventEmitter();
     public rowModelChange: EventEmitter<TableRowChangedData> = new EventEmitter();
     public expandLevels: number;
@@ -22,6 +22,7 @@ export class TableService {
             if (isChecked) {
                 rows.forEach(row => {
                     if (!row.isRowTotal) {
+                        row.checkbox = true;
                         this.selectedRows.push(row);
                     }
                 });
@@ -32,11 +33,13 @@ export class TableService {
     }
 
     onRowSelectChanged(isChecked: boolean, row: any): void {
-        const idx = this.selectedRows.indexOf(row);
+        const idx = this.isInSelected(row);
         if (isChecked && idx === -1) {
+            row.checkbox = true;
             this.selectedRows.push(row);
         }
         if (!isChecked && idx !== -1) {
+            row.checkbox = false;
             this.selectedRows.splice(idx, 1);
         }
 
@@ -87,6 +90,13 @@ export class TableService {
         }
     }
 
+    initSelectedRows(rows: any[]) {
+        this.selectedRows = [];
+        rows.forEach(row => {
+            this.onRowSelectChanged(row.checkbox, row);
+        });
+    }
+
     isAllRowsSelected(rows): boolean {
         return rows.length === this.selectedRows.length;
     }
@@ -116,7 +126,7 @@ export class TableService {
     }
 
     isRowSelected(row: any): boolean {
-        return this.selectedRows.indexOf(row) !== -1;
+        return this.isInSelected(row) !== -1;
     }
 
     isColumnSortable(col: any): boolean {
@@ -236,5 +246,19 @@ export class TableService {
 
     isRowReadOnly(row: any): boolean {
         return !!row.rowMetaData && !!row.rowMetaData.readonly;
+    }
+
+    private isInSelected(row: any) {
+        if (row.hasOwnProperty('checkbox')) {
+            return this.selectedRows.findIndex(item => {
+                return Object.keys(row).every(key => {
+                    if (key !== 'checkbox') {
+                        return row[key] == item[key];
+                    }
+                    return true;
+                });
+            });
+        }
+        return this.selectedRows.indexOf(row);
     }
 }

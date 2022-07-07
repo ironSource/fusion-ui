@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.4-rc.3](https://github.com/ironSource/fusion-ui/compare/v2.0.4-rc.2...v2.0.4-rc.3) (2022-07-07)
+
+### [2.0.4-rc.2](https://github.com/ironSource/fusion-ui/compare/v2.0.4-rc.1...v2.0.4-rc.2) (2022-07-06)
+
+### [2.0.4-rc.1](https://github.com/ironSource/fusion-ui/compare/v2.0.4...v2.0.4-rc.1) (2022-07-06)
+
+
+### Bug Fixes
+
+* **2.0.x:** fixed table row selected in React bug ([886d820](https://github.com/ironSource/fusion-ui/commit/886d820f5c74324494781d61e3a53560f0ff9a43))
+
 ### [2.0.4](https://github.com/ironSource/fusion-ui/compare/v2.0.3...v2.0.4) (2022-06-27)
 
 ### [2.0.3](https://github.com/ironSource/fusion-ui/compare/v2.0.2...v2.0.3) (2022-05-08)

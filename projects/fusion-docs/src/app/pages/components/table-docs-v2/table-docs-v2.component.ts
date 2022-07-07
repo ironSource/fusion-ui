@@ -407,7 +407,7 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
                             Validators.min(10)
                         ]);
                         return {
-                            checkbox: false,
+                            checkbox: _index == 1,
                             id: item.id,
                             name: item.name,
                             username: item.username,
@@ -639,5 +639,9 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
 
     onRowClicked(data: {$event: MouseEvent; rowIndex: string; rowEl: Element; rowData: any}) {
         console.log('onRowClicked: ', data);
+    }
+
+    onSelectionChanged($event) {
+        console.log('---', $event);
     }
 }

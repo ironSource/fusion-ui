@@ -6,7 +6,6 @@ import {
     EventEmitter,
     ChangeDetectionStrategy,
     ViewChild,
-    OnChanges,
     HostBinding,
     ElementRef,
     OnDestroy,
@@ -32,11 +31,14 @@ import {TableBasicComponent} from '../table-basic/table-basic.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TableService]
 })
-export class TableComponent extends StyleBase implements OnInit, OnChanges, OnDestroy {
+export class TableComponent extends StyleBase implements OnInit, OnDestroy {
     @Input() id: string;
     @Input() options: TableOptions = {};
     @Input() columns: TableColumn[] = [];
-    @Input() rows: any[] | TableRowsGrouped = [];
+    @Input() set rows(value: any[] | TableRowsGrouped) {
+        this._rows = (value as any[]).map(row => ({...row})) ?? [];
+        this.initRows();
+    }
     @Input() loading: boolean;
     @Input() sortTableOnDataChanges = false;
     @Input() set expandedRows(value: {[key: string]: boolean}) {
@@ -81,7 +83,6 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, OnDe
         }
     }
 
-    isRowsInit = false;
     noDataMessage: string;
     noDataSubMessage: string;
     hideHeaderOnEmpty: boolean;
@@ -125,10 +126,15 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, OnDe
         return this._expandedRows;
     }
 
+    get rows(): any[] | TableRowsGrouped {
+        return this._rows;
+    }
+
     private lastScrollLeftValue: number;
     private _expandedRows: {[key: string]: boolean} = {};
     private currentExpandedMap: {[key: string]: boolean} = {};
     private ignoredParentSelectorsRowClickEvent: string[];
+    private _rows: any[] | TableRowsGrouped = [];
 
     constructor(
         injector: Injector,
@@ -167,36 +173,8 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, OnDe
         );
     }
 
-    ngOnChanges(changes) {
-        if (
-            (!this.options || !this.options.isGroupedTable) &&
-            !this.isRowsInit &&
-            changes.rows &&
-            changes.rows.currentValue &&
-            changes.rows.currentValue.length
-        ) {
-            this.isRowsInit = true;
-            this.setSelectedRow();
-        }
-        if (changes.rows && this.columns && this.sortTableOnDataChanges) {
-            const sortedColumn = this.columns.find(col => !!col.sort);
-            if (sortedColumn) {
-                sortedColumn.sort = sortedColumn.sort === 'asc' ? 'desc' : 'asc';
-                this.localSorting(sortedColumn.key);
-            }
-        }
-    }
-
     ngOnDestroy() {
         super.ngOnDestroy();
-    }
-
-    setSelectedRow() {
-        (this.rows as any[]).forEach(row => {
-            if (row.checkbox) {
-                this.tableService.onRowSelectChanged(true, row);
-            }
-        });
     }
 
     onHeaderClicked(col: any): void {
@@ -250,6 +228,19 @@ export class TableComponent extends StyleBase implements OnInit, OnChanges, OnDe
             const rowIndex = rowEl.dataset.rowIdx;
             const rowData = this.rows[rowIndex];
             this.rowClicked.emit({$event, rowIndex, rowEl, rowData});
+        }
+    }
+
+    private initRows() {
+        if (!this.options?.isGroupedTable && (this.rows as any[])?.length) {
+            this.tableService.initSelectedRows(this.rows as any[]);
+        }
+        if (Array.isArray(this.rows) && this.columns && this.sortTableOnDataChanges) {
+            const sortedColumn = this.columns.find(col => !!col.sort);
+            if (sortedColumn) {
+                sortedColumn.sort = sortedColumn.sort === 'asc' ? 'desc' : 'asc';
+                this.localSorting(sortedColumn.key);
+            }
         }
     }
 
