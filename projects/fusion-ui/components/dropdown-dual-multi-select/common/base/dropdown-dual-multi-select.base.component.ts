@@ -220,7 +220,10 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.resetState$
             .asObservable()
             .pipe(takeUntil(this.onDestroy$))
-            .subscribe(_ => this.writeValue(null));
+            .subscribe(_ => {
+                this.writeValue(null);
+                this.propagateChange(null);
+            });
         this.selected$
             .asObservable()
             .pipe(takeUntil(this.onDestroy$))
