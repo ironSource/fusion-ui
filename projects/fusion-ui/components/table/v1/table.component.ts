@@ -339,6 +339,7 @@ export class TableComponent implements OnInit, OnDestroy {
         } else {
             otherRows = tableRows;
         }
+        console.log('<<', otherRows);
         otherRows.sort((a: any, b: any): number => {
             if (isNullOrUndefined(a[sortKey]) || isNullOrUndefined(b[sortKey])) {
                 return 0;
@@ -361,6 +362,8 @@ export class TableComponent implements OnInit, OnDestroy {
             }
             return 0;
         });
+
+        console.log('>>', otherRows);
 
         this._rows = [...totalRow, ...otherRows].filter(Boolean);
     }

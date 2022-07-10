@@ -368,6 +368,25 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
     public expandedRows: {[key: string]: boolean} = {};
     public expandedRows2Levels: {[key: string]: boolean} = {};
 
+    rbOptions = {
+        sortingType: 'local',
+        noDataMessage: 'No active rollbacks',
+        remove: {
+            active: true,
+            icon: 'delete'
+        }
+    };
+    rbColumns = [
+        {key: 'createdTime', title: 'Created time', sort: 'desc', type: TableColumnTypeEnum.Date, dateFormat: 'medium'},
+        {key: 'createdByUser', title: 'Created by', sort: ''},
+        {key: 'goalType', title: 'Type', sort: ''},
+        {key: 'type', title: 'Rollback by', sort: ''},
+        {key: 'value', title: 'Value', sort: '', width: '140px'},
+        {key: 'optimizerRunDate', title: 'Rollback to', sort: '', type: TableColumnTypeEnum.Date, dateFormat: 'medium'},
+        {key: 'description', title: 'Description', width: '200px'}
+    ];
+    rbRows = [];
+
     constructor(private versionService: VersionService, private router: Router, private docLayoutService: DocsLayoutService) {}
 
     ngOnInit() {
@@ -519,6 +538,48 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
                             return {...item};
                         })
                     );
+
+                    this.rbRows = [
+                        ...this.rbRows,
+                        ...[
+                            {
+                                createdTime: new Date('2022-07-10T11:40:26.000Z'),
+                                createdByUser: 'Tester',
+                                goalType: 1,
+                                type: '2',
+                                value: null,
+                                optimizerRunDate: new Date('2019-07-12T05:59:01.000Z'),
+                                description: null
+                            },
+                            {
+                                createdTime: new Date('2022-07-10T11:40:38.000Z'),
+                                createdByUser: 'Tester 2',
+                                goalType: 1,
+                                type: '1',
+                                value: null,
+                                optimizerRunDate: new Date('2019-07-12T05:59:01.000Z'),
+                                description: null
+                            },
+                            {
+                                createdTime: new Date('2022-07-10T11:40:55.000Z'),
+                                createdByUser: 'Tester 2',
+                                goalType: 1,
+                                type: '1',
+                                value: null,
+                                optimizerRunDate: new Date('2019-07-12T05:59:01.000Z'),
+                                description: null
+                            },
+                            {
+                                createdTime: new Date('2022-07-10T11:56:42.000Z'),
+                                createdByUser: 'Tester 2',
+                                goalType: 1,
+                                type: '1',
+                                value: null,
+                                optimizerRunDate: new Date('2019-07-12T05:59:01.000Z'),
+                                description: null
+                            }
+                        ]
+                    ];
                 },
                 error => {
                     console.error(error);
