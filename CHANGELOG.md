@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.6-rc.1](https://github.com/ironSource/fusion-ui/compare/v2.0.6-rc.0...v2.0.6-rc.1) (2022-07-10)
+
+
+### Bug Fixes
+
+* **fu-427:**  fixed table rows setter on local sort ([6cb07d8](https://github.com/ironSource/fusion-ui/commit/6cb07d8b4c54e3d67c93731819c66980c0fe3971))
+
 ### [2.0.6-rc.0](https://github.com/ironSource/fusion-ui/compare/v2.0.5...v2.0.6-rc.0) (2022-07-10)
 
 
