@@ -181,6 +181,10 @@ export class TableComponent implements OnInit, OnDestroy {
         this.ignoredParentSelectorsRowClickEvent = ROW_CLICK_SUPPRESS_FOR_PARENT_SELECTORS.concat(
             this.options.rowsOptions?.ignoredParentSelectorsRowClickEvent ?? []
         );
+
+        if (this.sortTableOnDataChanges && this.columns.find(col => !!col.sort)) {
+            this.doLocalSorting();
+        }
     }
 
     ngOnDestroy() {
@@ -260,6 +264,10 @@ export class TableComponent implements OnInit, OnDestroy {
         if (!this.options?.isGroupedTable && (this.rows as any[])?.length) {
             this.tableService.initSelectedRows(this.rows as any[]);
         }
+        this.doLocalSorting();
+    }
+
+    private doLocalSorting() {
         if (Array.isArray(this.rows) && this.columns && this.sortTableOnDataChanges) {
             const sortedColumn = this.columns.find(col => !!col.sort);
             if (sortedColumn) {

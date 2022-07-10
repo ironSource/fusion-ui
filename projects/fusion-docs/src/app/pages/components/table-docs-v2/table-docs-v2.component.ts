@@ -423,6 +423,48 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
                 })
             ];
         });
+
+        this.rbRows = [
+            ...this.rbRows,
+            ...[
+                {
+                    createdTime: '2022-07-10T11:40:26.000Z',
+                    createdByUser: 'Tester',
+                    goalType: 1,
+                    type: '2',
+                    value: null,
+                    optimizerRunDate: '2019-07-12T05:59:01.000Z',
+                    description: null
+                },
+                {
+                    createdTime: '2022-07-10T11:40:38.000Z',
+                    createdByUser: 'Tester 2',
+                    goalType: 1,
+                    type: '1',
+                    value: null,
+                    optimizerRunDate: '2019-07-12T05:59:01.000Z',
+                    description: null
+                },
+                {
+                    createdTime: '2022-07-10T11:40:55.000Z',
+                    createdByUser: 'Tester 2',
+                    goalType: 1,
+                    type: '1',
+                    value: null,
+                    optimizerRunDate: '2019-07-12T05:59:01.000Z',
+                    description: null
+                },
+                {
+                    createdTime: '2022-07-10T11:56:42.000Z',
+                    createdByUser: 'Tester 2',
+                    goalType: 1,
+                    type: '1',
+                    value: null,
+                    optimizerRunDate: '2019-07-12T05:59:01.000Z',
+                    description: null
+                }
+            ]
+        ];
     }
 
     ngOnDestroy(): void {
@@ -538,48 +580,6 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
                             return {...item};
                         })
                     );
-
-                    this.rbRows = [
-                        ...this.rbRows,
-                        ...[
-                            {
-                                createdTime: new Date('2022-07-10T11:40:26.000Z'),
-                                createdByUser: 'Tester',
-                                goalType: 1,
-                                type: '2',
-                                value: null,
-                                optimizerRunDate: new Date('2019-07-12T05:59:01.000Z'),
-                                description: null
-                            },
-                            {
-                                createdTime: new Date('2022-07-10T11:40:38.000Z'),
-                                createdByUser: 'Tester 2',
-                                goalType: 1,
-                                type: '1',
-                                value: null,
-                                optimizerRunDate: new Date('2019-07-12T05:59:01.000Z'),
-                                description: null
-                            },
-                            {
-                                createdTime: new Date('2022-07-10T11:40:55.000Z'),
-                                createdByUser: 'Tester 2',
-                                goalType: 1,
-                                type: '1',
-                                value: null,
-                                optimizerRunDate: new Date('2019-07-12T05:59:01.000Z'),
-                                description: null
-                            },
-                            {
-                                createdTime: new Date('2022-07-10T11:56:42.000Z'),
-                                createdByUser: 'Tester 2',
-                                goalType: 1,
-                                type: '1',
-                                value: null,
-                                optimizerRunDate: new Date('2019-07-12T05:59:01.000Z'),
-                                description: null
-                            }
-                        ]
-                    ];
                 },
                 error => {
                     console.error(error);
