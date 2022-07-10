@@ -365,7 +365,7 @@ export class TableComponent extends StyleBase implements OnInit, OnDestroy {
             return 0;
         });
 
-        this.rows = [...totalRow, ...otherRows].filter(Boolean);
+        this._rows = [...totalRow, ...otherRows].filter(Boolean);
     }
 
     private onScroll($event) {
