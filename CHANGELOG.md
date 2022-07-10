@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.6-rc.0](https://github.com/ironSource/fusion-ui/compare/v2.0.5...v2.0.6-rc.0) (2022-07-10)
+
+
+### Bug Fixes
+
+* **2.x.x:** fixed table onSelectionChange event call ([b4aef8a](https://github.com/ironSource/fusion-ui/commit/b4aef8accb9f7e1fea22ab4d35c189af9f4b09d7))
+
 ### [2.0.5](https://github.com/ironSource/fusion-ui/compare/v2.0.4...v2.0.5) (2022-07-07)
 
 
