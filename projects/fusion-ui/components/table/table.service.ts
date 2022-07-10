@@ -22,8 +22,10 @@ export class TableService {
             if (isChecked) {
                 rows.forEach(row => {
                     if (!row.isRowTotal) {
-                        row.checkbox = true;
-                        this.selectedRows.push(row);
+                        row.checkbox = isChecked;
+                        if (isChecked) {
+                            this.selectedRows.push(row);
+                        }
                     }
                 });
             }
@@ -33,16 +35,7 @@ export class TableService {
     }
 
     onRowSelectChanged(isChecked: boolean, row: any): void {
-        const idx = this.isInSelected(row);
-        if (isChecked && idx === -1) {
-            row.checkbox = true;
-            this.selectedRows.push(row);
-        }
-        if (!isChecked && idx !== -1) {
-            row.checkbox = false;
-            this.selectedRows.splice(idx, 1);
-        }
-
+        this.setRowSelectionState(isChecked, row);
         this.selectionChanged.emit(this.selectedRows);
     }
 
@@ -74,6 +67,9 @@ export class TableService {
     }
 
     clearSelectedRows(): void {
+        this.selectedRows.forEach(row => {
+            row.checkbox = false;
+        });
         this.selectedRows = [];
     }
 
@@ -93,7 +89,7 @@ export class TableService {
     initSelectedRows(rows: any[]) {
         this.selectedRows = [];
         rows.forEach(row => {
-            this.onRowSelectChanged(row.checkbox, row);
+            this.setRowSelectionState(row.checkbox, row);
         });
     }
 
@@ -246,6 +242,18 @@ export class TableService {
 
     isRowReadOnly(row: any): boolean {
         return !!row.rowMetaData && !!row.rowMetaData.readonly;
+    }
+
+    private setRowSelectionState(isChecked: boolean, row: any) {
+        const idx = this.isInSelected(row);
+        if (isChecked && idx === -1) {
+            row.checkbox = true;
+            this.selectedRows.push(row);
+        }
+        if (!isChecked && idx !== -1) {
+            row.checkbox = false;
+            this.selectedRows.splice(idx, 1);
+        }
     }
 
     private isInSelected(row: any) {
