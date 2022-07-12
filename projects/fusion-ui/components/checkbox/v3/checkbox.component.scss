@@ -1,0 +1,78 @@
+@import '../../../src/style/scss/v3/vars/vars';
+@import '../../../src/style/scss/v3/mixins/mixins';
+
+
+:host {
+    input[type='checkbox'] {
+        display: none;
+    }
+
+    input[type='checkbox'] + label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+
+        @extend %font-bodySmall;
+        color: $fu-black-500;
+        user-select: none;
+        cursor: pointer;
+
+        width: 100%;
+
+        .fu-label-checkbox {
+            box-sizing: border-box;
+            @include size(16px);
+            flex: 0 0 16px;
+            background: url("data:image/svg+xml,%3Csvg fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='1' width='14' height='14' rx='3' stroke='%23A9AFB4' stroke-width='2'/%3E%3C/svg%3E") left center no-repeat;
+            background-size: contain;
+            cursor: pointer;
+        }
+
+
+        @include icon-style(null, currentColor, 16px, false, true) {
+            @include size(16px);
+            flex: 0 0 16px;
+        }
+
+        &.truncate{
+            .fu-label-text {
+                white-space: nowrap;
+                overflow-x: hidden;
+                text-overflow: ellipsis;
+                flex: auto;
+            }
+        }
+
+        &.fu-align-top{
+            align-items: flex-start;
+            .fu-label-text {
+                margin-top: -2px;
+            }
+        }
+        &.fu-align-bottom{
+            align-items: flex-end;
+            .fu-label-text {
+                margin-bottom: -3px;
+            }
+        }
+
+    }
+
+    input[type='checkbox']:checked + label .fu-label-checkbox {
+        background: url("data:image/svg+xml,%3Csvg fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='4' fill='%233083FF'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='m7.104 11.863 5.75-5.398a.45.45 0 0 0 0-.664l-.707-.664a.523.523 0 0 0-.708 0L6.75 9.54 4.56 7.484a.523.523 0 0 0-.706 0l-.708.664a.45.45 0 0 0 0 .664l3.25 3.05a.523.523 0 0 0 .708 0Z' fill='%23fff'/%3E%3C/svg%3E") left center no-repeat;
+    }
+
+    input[type='checkbox']:indeterminate + label .fu-label-checkbox {
+        background: url("data:image/svg+xml,%3Csvg fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='4' fill='%233083FF'/%3E%3Cpath fill='%23fff' d='M4 7h8v2H4z'/%3E%3C/svg%3E") left center no-repeat;
+    }
+
+    input[type='checkbox']:disabled + label {
+        opacity: 0.5;
+        color: $fu-light-800;
+        cursor: default;
+
+        .fu-label-checkbox {
+            cursor: default;
+        }
+    }
+}
