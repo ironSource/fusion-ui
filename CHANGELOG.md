@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.1-rc.3](https://github.com/ironSource/fusion-ui/compare/v3.1.1-rc.2...v3.1.1-rc.3) (2022-07-10)
+
+### [3.1.1-rc.2](https://github.com/ironSource/fusion-ui/compare/v3.1.1-rc.1...v3.1.1-rc.2) (2022-07-10)
+
+
+### Bug Fixes
+
+* **3.x.x:** apply react bugfix for table with row.checkbox selections ([cce0a9f](https://github.com/ironSource/fusion-ui/commit/cce0a9f8548baa2f3f4f0b8b0b31ee575a284571))
+* **3.x.x:** fixes colors scss vars v3 ([5a8ade1](https://github.com/ironSource/fusion-ui/commit/5a8ade10e033f4143a5e10705e3a3927224fcfea))
+* **3.x.x:** revert fixes colors scss vars v3 ([a5189ea](https://github.com/ironSource/fusion-ui/commit/a5189ea030f3c85e93cc28631313dfa5203b10eb))
+* **3.x.x:** set version 3.1.1-beta.1 ([f4fb6c0](https://github.com/ironSource/fusion-ui/commit/f4fb6c074faa6cbde5c1e997ee046e263fe25e26))
+* **fu-427:**  fixed table rows setter on local sort ([a06ba99](https://github.com/ironSource/fusion-ui/commit/a06ba99fd401d86b8338ed794e8752d447553911))
+
 ### [3.1.1-rc.1](https://github.com/ironSource/fusion-ui/compare/v3.1.1-rc.0...v3.1.1-rc.1) (2022-07-10)
 
 ### [3.1.1-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.1.0...v3.1.1-rc.0) (2022-07-07)
