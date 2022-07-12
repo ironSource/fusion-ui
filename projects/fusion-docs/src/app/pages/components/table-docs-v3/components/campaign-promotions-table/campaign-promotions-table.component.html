@@ -23,7 +23,7 @@
 
 <ng-template #promotionsTable>
   <fusion-table
-    [options]="promotionsTableOption"
+    [options]="promotionsTableOption$ | async"
     [loading]="loading$ | async"
     [rows]="promotionsTableRows"
     [columns]="promotionsTableColumns"

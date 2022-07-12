@@ -25,27 +25,20 @@ export class TableService {
             this.selectionChanged.emit({isAllSelected: isChecked});
         } else {
             this.selectedRows = [];
-            if (isChecked) {
-                rows.forEach(row => {
-                    if (!row.isRowTotal) {
+            rows.forEach(row => {
+                if (!row.isRowTotal) {
+                    row.checkbox = isChecked;
+                    if (isChecked) {
                         this.selectedRows.push(row);
                     }
-                });
-            }
-
+                }
+            });
             this.selectionChanged.emit(this.selectedRows);
         }
     }
 
     onRowSelectChanged(isChecked: boolean, row: any): void {
-        const idx = this.selectedRows.indexOf(row);
-        if (isChecked && idx === -1) {
-            this.selectedRows.push(row);
-        }
-        if (!isChecked && idx !== -1) {
-            this.selectedRows.splice(idx, 1);
-        }
-
+        this.setRowSelectionState(isChecked, row);
         this.selectionChanged.emit(this.selectedRows);
     }
 
@@ -76,7 +69,17 @@ export class TableService {
         }
     }
 
+    initSelectedRows(rows: any[]) {
+        this.selectedRows = [];
+        rows.forEach(row => {
+            this.setRowSelectionState(row.checkbox, row);
+        });
+    }
+
     clearSelectedRows(): void {
+        this.selectedRows.forEach(row => {
+            row.checkbox = false;
+        });
         this.selectedRows = [];
     }
 
@@ -122,7 +125,7 @@ export class TableService {
     }
 
     isRowSelected(row: any): boolean {
-        return this.selectedRows.indexOf(row) !== -1;
+        return this.isInSelected(row) !== -1;
     }
 
     isColumnSortable(col: any): boolean {
@@ -242,5 +245,31 @@ export class TableService {
 
     isRowReadOnly(row: any): boolean {
         return !!row.rowMetaData && !!row.rowMetaData.readonly;
+    }
+
+    private setRowSelectionState(isChecked: boolean, row: any) {
+        const idx = this.isInSelected(row);
+        if (isChecked && idx === -1) {
+            row.checkbox = true;
+            this.selectedRows.push(row);
+        }
+        if (!isChecked && idx !== -1) {
+            row.checkbox = false;
+            this.selectedRows.splice(idx, 1);
+        }
+    }
+
+    private isInSelected(row: any) {
+        if (row.hasOwnProperty('checkbox')) {
+            return this.selectedRows.findIndex(item => {
+                return Object.keys(row).every(key => {
+                    if (key !== 'checkbox') {
+                        return row[key] == item[key];
+                    }
+                    return true;
+                });
+            });
+        }
+        return this.selectedRows.indexOf(row);
     }
 }

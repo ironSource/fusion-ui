@@ -1,6 +1,8 @@
 @import "../../../src/style/scss/v3/vars/vars";
 @import "../../../src/style/scss/v3/mixins/mixins";
 
+$backgroundColor: $fu-black-200;
+
 %arrowBorderVertical{
     content: '';
     position: absolute;
@@ -18,7 +20,6 @@
 }
 
 :host {
-    --fu-tooltip-background-color: #696A6B;
     @extend %font-bodySmallStrong;
     box-sizing: border-box;
     position: fixed;
@@ -32,59 +33,63 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 8px 8px 7px;
-    background-color: var(--fu-tooltip-background-color);
-    border: none;
-    @extend %systemLayer;
+    padding: var(--fu-tooltip-padding, 8px 8px 7px) ;
+    background-color: var(--fu-tooltip-background-color, $backgroundColor);
+    z-index: getZIndexLayerOffset(system, 20);
+
+    box-shadow: 0px 6px 6px -6px rgba(0, 0, 0, 0.16);
+    filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.4));
+
+
     &.fu-tooltip-top::after {
         top: 100%;
         left: 50%;
         @extend %arrowBorderHorizontal;
-        border-color: var(--fu-tooltip-background-color) transparent transparent transparent;
+        border-color: var(--fu-tooltip-background-color, $backgroundColor) transparent transparent transparent;
     }
     &.fu-tooltip-bottom::after {
         bottom: 100%;
         left: 50%;
         @extend %arrowBorderHorizontal;
-        border-color: transparent transparent var(--fu-tooltip-background-color) transparent;
+        border-color: transparent transparent var(--fu-tooltip-background-color, $backgroundColor) transparent;
     }
     &.fu-tooltip-left::after {
         top: 50%;
         left: 100%;
         @extend %arrowBorderVertical;
-        border-color: transparent transparent transparent var(--fu-tooltip-background-color);
+        border-color: transparent transparent transparent var(--fu-tooltip-background-color, $backgroundColor);
     }
     &.fu-tooltip-right::after {
         top: 50%;
         right: 100%;
         @extend %arrowBorderVertical;
-        border-color: transparent var(--fu-tooltip-background-color) transparent transparent;
+        border-color: transparent var(--fu-tooltip-background-color, $backgroundColor) transparent transparent;
     }
     &.fu-tooltip-topright::after {
         top: 100%;
         left: calc(100% - 20px);
         @extend %arrowBorderHorizontal;
-        border-color: var(--fu-tooltip-background-color) transparent transparent transparent;
+        border-color: var(--fu-tooltip-background-color, $backgroundColor) transparent transparent transparent;
     }
 
     &.fu-tooltip-topleft::after {
         top: 100%;
         left: 20px;
         @extend %arrowBorderHorizontal;
-        border-color: var(--fu-tooltip-background-color) transparent transparent transparent;
+        border-color: var(--fu-tooltip-background-color, $backgroundColor) transparent transparent transparent;
     }
 
     &.fu-tooltip-bottomright::after {
         bottom: 100%;
         left: calc(100% - 20px);
         @extend %arrowBorderHorizontal;
-        border-color: transparent transparent var(--fu-tooltip-background-color) transparent;
+        border-color: transparent transparent var(--fu-tooltip-background-color, $backgroundColor) transparent;
     }
 
     &.fu-tooltip-bottomleft::after {
         bottom: 100%;
         left: 20px;
         @extend %arrowBorderHorizontal;
-        border-color: transparent transparent var(--fu-tooltip-background-color) transparent;
+        border-color: transparent transparent var(--fu-tooltip-background-color, $backgroundColor) transparent;
     }
 }

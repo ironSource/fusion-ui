@@ -1,11 +1,13 @@
 :host {
     // add sticky to the filters-holder
+    /*
     .filters-container {
         position: sticky;
         top: 0;
         z-index: 9999;
         border-color: white;
     }
+    */
     .campaign-promotions-container {
         *{ box-sizing: border-box;}
         background-color: white;

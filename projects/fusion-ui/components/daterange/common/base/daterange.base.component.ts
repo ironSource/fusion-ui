@@ -105,7 +105,10 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
         this.resetState$
             .asObservable()
             .pipe(takeUntil(this.onDestroy$))
-            .subscribe(_ => this.writeValue(null));
+            .subscribe(_ => {
+                this.writeValue(null);
+                this.propagateChange(null);
+            });
     }
 
     ngOnDestroy() {
