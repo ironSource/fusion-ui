@@ -19,7 +19,7 @@ import {MultiDropdownBaseComponent} from '@ironsource/fusion-ui/components/multi
 })
 export class MultiDropdownComponent extends MultiDropdownBaseComponent {
     dropdownArrowIconName = {
-        iconName: 'arrow-down',
-        iconVersion: 'v2'
+        iconName: 'angle-down',
+        iconVersion: 'v3'
     };
 }

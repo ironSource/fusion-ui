@@ -531,3 +531,12 @@ $buttonBorderRadius: 100px;
         }
     }
 }
+
+:host-context(.dd-actions) {
+    > span {
+        & > span {
+            line-height: 1.5;
+        }
+    }
+}
+

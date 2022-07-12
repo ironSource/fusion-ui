@@ -57,24 +57,20 @@
         </div>
         <!--action "confirm" buttons holder-->
         <div class="dd-actions" *ngIf="confirm">
-            <button
-                type="button"
-                fusion-button
+            <fusion-button
                 class="secondary small transparent"
                 (click)="closeDropdown()"
                 [disabled]="loading"
             >
                 Cancel
-            </button>
-            <button
-                type="button"
-                fusion-button
-                class="primary small transparent"
+            </fusion-button>
+            <fusion-button
+                class="primary small"
                 (click)="applySelect(true)"
                 [disabled]="loading"
             >
                 Apply
-            </button>
+            </fusion-button>
         </div>
     </div>
 </div>

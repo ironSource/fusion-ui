@@ -50,12 +50,11 @@ $optionGroupHeight: 24px;
             .options-holder {
                 padding: 4px;
                 overflow: hidden;
-                overflow-y: auto;
                 @extend %customScroll;
             }
         }
 
-        // dropdown options opened
+        // region dropdown options opened
         &.dd-opened {
             .options-dropdown {
                 display: block;
@@ -118,6 +117,7 @@ $optionGroupHeight: 24px;
 
                 &.dd-scroll {
                     .options-holder {
+                        overflow-y: auto;
                         padding-bottom: 0;
                         height: 100%;
                         max-height: calc(
@@ -127,29 +127,24 @@ $optionGroupHeight: 24px;
                 }
             }
         }
+        // endregion
 
-
-        // multi-select bottom action panel
-        .dd-actions {
-            text-align: right;
-            background-color: $White;
-            padding: 8px 7px 7px 7px;
-            border-top: solid 1px $fu-light-300;
-            button + button {
-                margin-left: 2px;
-            }
-        }
-
-        // multi-select
+        // region multi-select
         &.is-multiselect {
             &.dd-opened {
                 .options-dropdown {
-                    max-height: calc(#{$optionHeight} * #{($optionsToShow + 1)} + 8px);
+                    padding: 0px;
+                    max-height: calc(#{$optionHeight} * #{$optionsToShow} + 16px);
+                    .options-holder {
+                        padding: 8px;
+                    }
                     &.dd-confirm {
+                        border: solid 2px red !important; // todo: remove this test prop
                         max-height: calc(#{$optionHeight} * #{($optionsToShow + 1)} + 45px);
                     }
                     &.dd-scroll {
                         .options-holder {
+                            overflow-y: auto;
                             padding-bottom: 0;
                             height: 100%;
                             max-height: calc(#{$optionHeight} * #{($optionsToShow - 1)} + (#{$optionHeight} / 2) + 5px);
@@ -272,6 +267,11 @@ $optionGroupHeight: 24px;
                     }
                 }
             }
+            &.is-with-confirm{
+                &.dd-opened .options-dropdown{
+                    max-height: calc(#{$optionHeight} * #{$optionsToShow} + 12px + 48px);
+                }
+            }
             &.is-icon-right-position.dd-opened {
                 .options-dropdown .options-holder .options.multi li {
                     .is-option-label {
@@ -289,6 +289,19 @@ $optionGroupHeight: 24px;
                 }
             }
         }
+
+        // multi-select bottom action panel
+        .dd-actions {
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            border-top: solid 1px $fu-light-400;
+            background-color: $White;
+            gap: 4px;
+            padding: 12px 16px;
+        }
+        // endregion
 
         &.dd-disabled,
         &.dd-readonly {
@@ -345,4 +358,8 @@ $optionGroupHeight: 24px;
             }
         }
     }
+}
+
+:host-context(fusion-multi-dropdown){
+
 }
