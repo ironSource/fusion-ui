@@ -87,7 +87,7 @@ export class CheckboxDocsComponent implements OnInit, OnDestroy {
     // model: any;
 
     formCheckBoxes: FormGroup;
-    checkboxControl = new FormControl(true);
+    checkboxControl = new FormControl({value: true});
     firstCheckbox = new FormControl(true);
     secondCheckbox = new FormControl();
 
@@ -202,6 +202,8 @@ export class CheckboxDocsComponent implements OnInit, OnDestroy {
         this.firstCheckbox.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(val => console.log(val));
 
         this.secondCheckbox.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(val => console.log(val));
+
+        this.checkboxControl.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(val => console.log(val));
     }
 
     onDeviceTypeSelectionChanged(selected: IconSelectItem[]): void {

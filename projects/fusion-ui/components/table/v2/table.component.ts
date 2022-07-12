@@ -4,7 +4,6 @@ import {
     OnInit,
     EventEmitter,
     ViewChild,
-    OnChanges,
     HostBinding,
     ElementRef,
     ChangeDetectorRef,
@@ -36,11 +35,14 @@ import {TableBasicComponent} from './components/table-basic/table-basic.componen
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TableService]
 })
-export class TableComponent implements OnInit, OnChanges, OnDestroy {
+export class TableComponent implements OnInit, OnDestroy {
     @Input() id: string;
     @Input() options: TableOptions = {};
     @Input() columns: TableColumn[] = [];
-    @Input() rows: any[] | TableRowsGrouped = [];
+    @Input() set rows(value: any[] | TableRowsGrouped) {
+        this._rows = (value as any[]).map(row => ({...row})) ?? [];
+        this.initRows();
+    }
     @Input() loading: boolean;
     @Input() sortTableOnDataChanges = false;
     @Input() set expandedRows(value: {[key: string]: boolean}) {
@@ -129,11 +131,16 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
         return this._expandedRows;
     }
 
+    get rows(): any[] | TableRowsGrouped {
+        return this._rows;
+    }
+
     private lastScrollLeftValue: number;
     private _expandedRows: {[key: string]: boolean} = {};
     private currentExpandedMap: {[key: string]: boolean} = {};
     private ignoredParentSelectorsRowClickEvent: string[];
     private onDestroy$ = new Subject<void>();
+    private _rows: any[] | TableRowsGrouped = [];
 
     constructor(public tableService: TableService, private uniqueService: UniqueIdService, private cdr: ChangeDetectorRef) {}
 
@@ -160,39 +167,15 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
         this.ignoredParentSelectorsRowClickEvent = ROW_CLICK_SUPPRESS_FOR_PARENT_SELECTORS.concat(
             this.options.rowsOptions?.ignoredParentSelectorsRowClickEvent ?? []
         );
+
+        if (this.sortTableOnDataChanges && this.columns.find(col => !!col.sort)) {
+            this.doLocalSorting();
+        }
     }
 
     ngOnDestroy() {
         this.onDestroy$.next();
         this.onDestroy$.complete();
-    }
-
-    ngOnChanges(changes) {
-        if (
-            (!this.options || !this.options.isGroupedTable) &&
-            !this.isRowsInit &&
-            changes.rows &&
-            changes.rows.currentValue &&
-            changes.rows.currentValue.length
-        ) {
-            this.isRowsInit = true;
-            this.setSelectedRow();
-        }
-        if (changes.rows && this.columns && this.sortTableOnDataChanges) {
-            const sortedColumn = this.columns.find(col => !!col.sort);
-            if (sortedColumn) {
-                sortedColumn.sort = sortedColumn.sort === 'asc' ? 'desc' : 'asc';
-                this.localSorting(sortedColumn.key);
-            }
-        }
-    }
-
-    setSelectedRow() {
-        (this.rows as any[]).forEach(row => {
-            if (row.checkbox) {
-                this.tableService.onRowSelectChanged(true, row);
-            }
-        });
     }
 
     onHeaderClicked(col: any): void {
@@ -246,6 +229,23 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
             const rowIndex = rowEl.dataset.rowIdx;
             const rowData = this.rows[rowIndex];
             this.rowClicked.emit({$event, rowIndex, rowEl, rowData});
+        }
+    }
+
+    private initRows() {
+        if (!this.options?.isGroupedTable && (this.rows as any[])?.length) {
+            this.tableService.initSelectedRows(this.rows as any[]);
+        }
+        this.doLocalSorting();
+    }
+
+    private doLocalSorting() {
+        if (Array.isArray(this.rows) && this.columns && this.sortTableOnDataChanges) {
+            const sortedColumn = this.columns.find(col => !!col.sort);
+            if (sortedColumn) {
+                sortedColumn.sort = sortedColumn.sort === 'asc' ? 'desc' : 'asc';
+                this.localSorting(sortedColumn.key);
+            }
         }
     }
 
@@ -370,7 +370,7 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
             return 0;
         });
 
-        this.rows = [...totalRow, ...otherRows].filter(Boolean);
+        this._rows = [...totalRow, ...otherRows].filter(Boolean);
     }
 
     private onScroll($event) {

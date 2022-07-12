@@ -79,7 +79,11 @@ $headerBackgroundColor: $White;
           color: $light-700;
         }
 
-        &:after{ // this is border bottom of header
+      &.is-checkbox-holder{
+          text-align: center;
+      }
+
+      &:after{ // this is border bottom of header
           content:'';
           position:absolute;
           left: 0;
