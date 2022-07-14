@@ -1,0 +1,23 @@
+@import "../../../src/style/scss/v3/vars/vars";
+@import "../../../src/style/scss/v3/vars/colors";
+
+fusion-radio-group {
+  text-align: initial;
+  & + & {
+    margin-left: 17px;
+  }
+
+  .is-radio-holder {
+    margin-bottom: 8px;
+
+    &.inline {
+      display: inline;
+      margin-right: 15px;
+
+      &:last-child {
+        margin-right: inherit;
+      }
+    }
+  }
+}
+
