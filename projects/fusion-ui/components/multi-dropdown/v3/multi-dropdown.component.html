@@ -8,6 +8,7 @@
 >
     <fusion-dropdown-select
         [class.is-icon-right-position]="this.isIconRightPosition"
+        [class.fu-search-has-no-result]="!filteredOptions?.length && !loading && searchValue?.value"
         (searchValueChanged)="searchValue.setValue($event)"
         (click)="openDropdown($event)"
         [configurations]="dropdownSelectConfigurations$ | async"
@@ -41,7 +42,7 @@
                     </label>
                 </li>
                 <!--options-->
-                <li class="option" [class.is-has-children]="option.childOptions"
+                <li class="option" [class.fu-option-two-lines]="!!option.subText" [class.is-has-children]="option.childOptions"
                     (click)="optionParentClicked($event)" [ngClass]="getOptionClasses(option)"
                     *ngFor="let option of displayedOptions$ | async; index as i">
                     <!--option regular or parent for check-->
@@ -51,7 +52,7 @@
                 <!--loader holder-->
                 <li [fusionDropdownLoader]="(autoComplete || search) && loading"></li>
                 <!--no-result holder-->
-                <li class="no-results" *ngIf="!filteredOptions?.length && !loading && searchValue?.value">No results
+                <li class="no-results" *ngIf="!filteredOptions?.length && !loading && searchValue?.value">No results found
                 </li>
             </ul>
         </div>
@@ -123,8 +124,11 @@
 
 <!--option basic content-->
 <ng-template #basicTemplate let-option="option">
-    <fusion-icon *ngIf="option.icon" [name]="option.icon" class="icon"></fusion-icon>
-    <fusion-flag *ngIf="option.flag" [name]="option.flag"></fusion-flag>
-    <img [src]="option.image" *ngIf="option.image" alt=""/>
-    <span [innerHTML]="dropdownService.optionToString(option, mappingOptions, {dropdownType: 'multi'})"></span>
+        <img [src]="option.image" *ngIf="option.image" alt="" loading="lazy" />
+        <fusion-flag *ngIf="option.flag" [name]="option.flag"></fusion-flag>
+        <fusion-icon *ngIf="option.icon" [name]="option.icon" class="fu-option-icon"></fusion-icon>
+        <div class="fu-text-content" *ngIf="dropdownService.optionToString(option, mappingOptions, {dropdownType: 'multi'}) as optionContent">
+            <div class="fu-text-container truncate" [fusionTooltip]="optionContent" [innerHTML]="optionContent"></div>
+            <div *ngIf="option.subText" class="fu-sub-text-container">{{ option.subText?.text || option.subText }}</div>
+        </div>
 </ng-template>

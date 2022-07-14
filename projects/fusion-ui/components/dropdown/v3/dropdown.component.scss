@@ -9,6 +9,8 @@ $optionHeight: 32px;
 $optionsToShow: 8;
 $optionGroupHeight: 24px;
 
+$optionTwoLines: 48px;
+
 
 // region dropdown options holder location
 %location {
@@ -98,20 +100,15 @@ $optionGroupHeight: 24px;
                     margin: 0 -4px;
                 }
 
-                // move it to the right component - dropdown options list
                 .options-holder {
-                   .options .is-hidden {
-                        display: none;
-                    }
-
                     // no-result panel (used with search or auto-complete input)
                     .options .no-results {
-                        @extend %font-body;
+                        @extend %font-bodySmall;
                         background: none;
                         cursor: default;
                         padding: 8px 10px;
                         height: 32px;
-                        color: $fu-light-900;
+                        color: $fu-light-800;
                     }
                 }
 
@@ -138,10 +135,6 @@ $optionGroupHeight: 24px;
                     .options-holder {
                         padding: 8px;
                     }
-                    &.dd-confirm {
-                        border: solid 2px red !important; // todo: remove this test prop
-                        max-height: calc(#{$optionHeight} * #{($optionsToShow + 1)} + 45px);
-                    }
                     &.dd-scroll {
                         .options-holder {
                             overflow-y: auto;
@@ -157,41 +150,49 @@ $optionGroupHeight: 24px;
                                 height: $optionHeight;
                                 border-radius: $borderRadius;
                                 padding: 0 8px;
+                                display: flex;
+                                align-items: center;
                                 .is-option-label {
-                                    position: relative;
-                                    @extend %font-body;
+                                    display: flex;
+                                    align-items: center;
+                                    gap:8px;
+                                    line-height: 1em;
+                                    width: 100%;
+
+                                    @extend %font-bodySmall;
+                                    color: $fu-black-500;
                                     cursor: pointer;
-                                    display: block;
-                                    color: $fu-dark-700;
-                                    height: 100%;
-                                    padding: 8px 0;
-                                    fusion-checkbox{
-                                        margin-right: 8px;
-                                    }
-                                    // option image (application image)
+
                                     img {
                                         @include size(20px);
-                                        max-width: 20px;
-                                        border-radius:  4px;
-                                        vertical-align: middle;
-                                        margin-right: 10px;
-                                        margin-top: -2px;
+                                        @extend %image-masked;
                                     }
-                                    @include icon-style('icon', $fu-light-600, 13px, false, true) {
-                                        margin-right: 6px;
-                                        vertical-align: sub;
-                                        display: inline-block;
+
+                                    @include icon-style('fu-option-icon', $fu-light-600, 16px, false, true) {
+                                        @include size(16px);
+                                        position: initial;
+                                        margin: 0 -4px;
                                     }
-                                    fusion-flag {
-                                        margin-right: 6px;
-                                    }
-                                    &.has-icon{
-                                        padding-right: 20px;
-                                    }
-                                    &.truncate{
-                                        @extend %truncate;
+
+                                    .fu-text-content{
+                                        display: flex;
+                                        flex-direction: column;
+                                        gap: 2px;
+                                        overflow: hidden;
+                                        .fu-text-container{
+                                            white-space: nowrap;
+                                            overflow: hidden;
+                                            text-overflow: ellipsis;
+                                        }
+
+                                        .fu-sub-text-container{
+                                            @extend %font-bodyXSmall;
+                                            color: $fu-light-900;
+                                        }
                                     }
                                 }
+
+                                // region grouped options
                                 &.is-group{
                                     padding: 8px;
                                     height: $optionGroupHeight;
@@ -252,8 +253,20 @@ $optionGroupHeight: 24px;
 
                                     }
                                 }
+                                // endregion
+
+                                &.is-hidden {
+                                    display: none;
+                                }
+
+                                &.fu-loader-wrapper:hover{
+                                    background-color: $White;
+                                }
+
                                 &.no-results{
                                     padding: 8px 10px;
+                                    @extend %font-bodySmall;
+                                    color: $fu-light-800;
                                     &:hover{
                                         background-color: $White;
                                     }
@@ -261,6 +274,10 @@ $optionGroupHeight: 24px;
 
                                 &:hover {
                                     background-color: $fu-light-100;
+                                }
+
+                                &.fu-option-two-lines{
+                                    height: $optionTwoLines;
                                 }
                             }
                         }

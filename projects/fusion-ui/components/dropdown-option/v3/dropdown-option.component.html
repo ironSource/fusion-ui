@@ -1,6 +1,6 @@
 <ng-container *ngIf="!option.content; else customContentOption">
     <fusion-flag *ngIf="option.flag" [name]="option.flag"></fusion-flag>
-    <img [src]="option.image" *ngIf="option.image" alt=""/>
+    <img [src]="option.image" *ngIf="option.image" alt="" loading="lazy"/>
     <fusion-icon *ngIf="option.icon" [name]="option.icon" class="fu-option-icon"></fusion-icon>
     <div [id]="option.id" class="fu-text-content truncate"
          fusionTooltip="{{ optionToStringFunc | generic: option:mappingOptions:settings }}">
