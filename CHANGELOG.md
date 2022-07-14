@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.2-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.1.1...v3.1.2-rc.0) (2022-07-14)
+
+
+### Bug Fixes
+
+* **3.1.1:** fix loading state and forcedClosing input when submit modal content ([274b291](https://github.com/ironSource/fusion-ui/commit/274b29169463053160d3f6e5b6bbf6a6482e99fb))
+
 ### [3.1.1](https://github.com/ironSource/fusion-ui/compare/v3.1.1-rc.1...v3.1.1) (2022-07-12)
 
 ### [3.1.1-rc.3](https://github.com/ironSource/fusion-ui/compare/v3.1.1-rc.2...v3.1.1-rc.3) (2022-07-10)
