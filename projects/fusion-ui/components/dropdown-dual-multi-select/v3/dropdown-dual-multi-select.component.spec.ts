@@ -4,7 +4,7 @@ import {By} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button/v3';
-import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox/v2';
+import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox/v3';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components/v1';
