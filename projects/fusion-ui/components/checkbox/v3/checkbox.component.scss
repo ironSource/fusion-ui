@@ -17,8 +17,6 @@
         user-select: none;
         cursor: pointer;
 
-        width: 100%;
-
         .fu-label-checkbox {
             box-sizing: border-box;
             @include size(16px);
@@ -35,6 +33,7 @@
         }
 
         &.truncate{
+            width: 100%;
             .fu-label-text {
                 white-space: nowrap;
                 overflow-x: hidden;
