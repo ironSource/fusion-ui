@@ -7,7 +7,7 @@ $borderRadius: 8px;
 
 $optionHeight: 32px;
 $optionsToShow: 8;
-$optionGroupHeight: 24px;
+$optionGroupHeight: 40px;
 
 $optionTwoLines: 48px;
 
@@ -196,61 +196,60 @@ $optionTwoLines: 48px;
                                 &.is-group{
                                     padding: 8px;
                                     height: $optionGroupHeight;
-                                    background-color: $fu-light-200;
-                                    border-radius: 4px;
-                                    margin: 4px 0;
-                                    &:first-child{
-                                        margin-top: 0;
+                                    background-color: $White;
+                                    &:hover{
+                                        background-color: $White;
                                     }
                                     .is-dd-group {
-                                        //@extend %font-label;
-                                        text-transform: uppercase;
-                                        color: $fu-light-900;
-                                        cursor: default;
-                                        display: block;
-                                        height: $optionGroupHeight;
-                                        margin: -5px 0;
+                                        @extend %font-bodyMediumStrong;
+                                        color: $fu-black-900;
+                                        display: flex;
+                                        align-items: center;
                                     }
                                 }
+                                // endregion
+                                // region group expandable
                                 &.is-has-children {
-                                    position: relative;
                                     color: $fu-light-900;
-                                    border: solid 1px transparent;
-                                    cursor: pointer;
-                                    padding-left: 13px;
-                                    > div{
-                                        margin-top: 5px;
+                                    flex-wrap: wrap;
+                                    @include icon-style('option-icon-arrow', $fu-light-600, 16px, true, true, -90) {
+                                        @include size(16px);
+                                        margin-left: auto;
                                     }
-                                    @include icon-style('option-icon-arrow', $fu-light-900, 8px, true, true, -90) {
-                                        position: absolute;
-                                        right: 7px;
-                                        top: 5px;
-                                    }
-                                    .is-subgroup-options{
+
+                                    .is-subgroup-options {
                                         display: none;
-                                        margin: 5px -10px 0 -14px;
-                                        padding-top: 4px;
-                                        background-color: #FFF;
-                                        .is-option-label{
-                                            display: flex;
-                                            align-content: center;
-                                            align-items: center;
-                                            padding-left: 5px;
-                                            fusion-checkbox{
-                                                margin: -5px 5px 0 5px;
-                                            }
-                                            > span{
-                                                margin-top: 1px;
-                                            }
-                                        }
                                     }
-                                    &.is-open{
+
+                                    &.is-open {
                                         height: 100%;
-                                        @include icon-style('option-icon-arrow', $fu-light-900, 8px, false, true, 360);
-                                        .is-subgroup-options{
-                                            display: block;
+                                        @include icon-style('option-icon-arrow', $fu-light-600, 16px, true, true, 360);
+                                        padding-bottom: 0;
+                                        margin-bottom: 2px;
+                                        padding-top: 6px;
+
+                                        .fu-flex-row-break{
+                                            flex-basis: 100%;
+                                            height: 0;
+                                            margin-top: 6px;
                                         }
 
+                                        .is-subgroup-options {
+                                            flex-basis: calc(100% + 18px);
+                                            display: block;
+                                            margin: 0 -10px;
+                                            padding-top: 4px;
+                                            background-color: $White;
+                                            .option {
+                                                ::ng-deep fusion-dropdown-option {
+                                                    padding-left: 16px;
+                                                }
+                                            }
+                                        }
+
+                                        &:hover {
+                                            background: $fu-light-50;
+                                        }
                                     }
                                 }
                                 // endregion
@@ -273,7 +272,7 @@ $optionTwoLines: 48px;
                                 }
 
                                 &:hover {
-                                    background-color: $fu-light-100;
+                                    background-color: $fu-light-50;
                                 }
 
                                 &.fu-option-two-lines{

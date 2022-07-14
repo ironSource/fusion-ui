@@ -114,6 +114,7 @@
     </div>
     <fusion-icon class="option-icon-arrow"
                  [name]="dropdownArrowIconName"></fusion-icon>
+    <div class="fu-flex-row-break"></div>
     <ul class="is-subgroup-options">
         <li class="option" *ngFor="let childOption of option.childOptions; index as i">
             <ng-container [ngTemplateOutlet]="regularOption"
