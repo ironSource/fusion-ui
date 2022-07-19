@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.2-rc.2](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.1...v3.1.2-rc.2) (2022-07-19)
+
 ### [3.1.2-rc.1](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.0...v3.1.2-rc.1) (2022-07-19)
 
 * fu-429: checkbox component update to v3
