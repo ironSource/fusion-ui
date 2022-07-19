@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [3.1.2-rc.1](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.0...v3.1.2-rc.1) (2022-07-19)
 
+* fu-429: checkbox component update to v3
+* fu-430: radio button component update to v3
+* fu-428: multi-select dropdown component update to v3
+
 ### [3.1.2-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.1.1...v3.1.2-rc.0) (2022-07-14)
 
 
