@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.2-rc.3](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.2...v3.1.2-rc.3) (2022-07-19)
+
+
+### Bug Fixes
+
+* **3.x.x:** fixed custom color support for checkbox component v3 ([cb203de](https://github.com/ironSource/fusion-ui/commit/cb203de30d4c6b0cf4d887dbd4c82d12db9cc5e5))
+* **3.x.x:** fixed error message style for multi-select dropdown v3 ([ec45a3d](https://github.com/ironSource/fusion-ui/commit/ec45a3da0f25c5d13ab06c69f1e677f237cc08f5))
+
 ### [3.1.2-rc.2](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.1...v3.1.2-rc.2) (2022-07-19)
 
 ### [3.1.2-rc.1](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.0...v3.1.2-rc.1) (2022-07-19)
