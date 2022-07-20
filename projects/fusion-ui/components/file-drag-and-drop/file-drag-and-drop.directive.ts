@@ -36,7 +36,7 @@ export class FileDragAndDropDirective implements OnInit, AfterViewInit, OnDestro
     /**
      * output event emitter (files: FileList)
      */
-    @Output() handleFile = new EventEmitter();
+    @Output() handleFiles = new EventEmitter();
 
     onDestroy$ = new Subject<void>();
     inputElement: any;
@@ -78,7 +78,7 @@ export class FileDragAndDropDirective implements OnInit, AfterViewInit, OnDestro
                     return;
                 }
                 const target = event.target as HTMLInputElement;
-                this.handleFile.emit(target.files);
+                this.handleFiles.emit(target.files);
                 setTimeout(() => {
                     // set input value to be empty to fix issue when user tries to upload same file again
                     target.value = '';
@@ -125,7 +125,7 @@ export class FileDragAndDropDirective implements OnInit, AfterViewInit, OnDestro
 
         this._renderer.removeClass(this._element.nativeElement, DRAG_OVER_CSS_CLASS);
         const files = event.dataTransfer.files;
-        this.handleFile.emit(files);
+        this.handleFiles.emit(files);
     }
 
     onClick(event) {

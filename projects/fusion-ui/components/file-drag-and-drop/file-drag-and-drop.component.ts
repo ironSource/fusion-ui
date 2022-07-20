@@ -28,7 +28,7 @@ export class FileDragAndDropComponent {
      */
     @Output() handleFiles = new EventEmitter();
 
-    handleSelectedFile(files: FileList) {
+    handleSelectedFiles(files: FileList) {
         this.handleFiles.emit(files);
     }
 }
