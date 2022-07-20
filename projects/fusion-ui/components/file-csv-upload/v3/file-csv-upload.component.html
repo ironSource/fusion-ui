@@ -1,1 +1,21 @@
-<p>file-csv-upload works!</p>
+<div class="fu-files-selector-wrapper"
+     fusionFileDragAndDrop
+     [buttonId]="buttonId"
+     [disabled]="disabled"
+     [loading]="loading"
+     accept=".csv"
+     [multiple]="false"
+     (handleFiles)="handleSelectedFiles($event)"
+>
+    <div class="fu-upload-icon">
+        <div></div>
+    </div>
+    <div class="fu-upload-title">Upload CSV</div>
+    <div class="fu-upload-description">Drag & drop your file here or <fusion-button [id]="buttonId" class="fu-link-button">browse</fusion-button></div>
+    <div class="fu-disabled-overlay"></div>
+</div>
+<!--errors holder-->
+<div class="fu-error-msg" *ngIf="error">{{ error }}</div>
+<!--helper holder-->
+<div class="fu-helper-text" *ngIf="helper">{{helper}}</div>
+
