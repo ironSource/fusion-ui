@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
-import {Observable, Subject} from 'rxjs';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {takeUntil} from 'rxjs/operators';
 import {Router} from '@angular/router';
@@ -54,6 +54,9 @@ export class AlertDocsV2Component implements OnInit, OnDestroy {
             ]
         }
     ];
+
+    fileInUpload$ = new BehaviorSubject(false);
+    fileUploadDisabled$ = new BehaviorSubject(false);
 
     constructor(private versionService: VersionService, private router: Router, private docLayoutService: DocsLayoutService) {}
 

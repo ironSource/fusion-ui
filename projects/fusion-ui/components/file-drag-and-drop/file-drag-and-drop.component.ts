@@ -16,6 +16,10 @@ export class FileDragAndDropComponent {
      */
     @Input() disabled: boolean;
     /**
+     * for loading file selection
+     */
+    @Input() loading: boolean;
+    /**
      * input.file accept attribute (file select dialog only, not grad&&drop)
      */
     @Input() accept: string;
