@@ -119,6 +119,7 @@ export class FileDragAndDropDirective implements OnInit, AfterViewInit, OnDestro
     }
 
     onDrop(event) {
+        this.suppressDefaultEvent(event);
         if (this.isDraggable()) {
             this._renderer.removeClass(this._element.nativeElement, DRAG_OVER_CSS_CLASS);
             const files = event.dataTransfer.files;
