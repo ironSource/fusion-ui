@@ -1,9 +1,102 @@
-import {Component} from '@angular/core';
-import {FileDragAndDropComponent} from '@ironsource/fusion-ui/components/file-drag-and-drop';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {FileDragAndDropComponent, FileDragAndDropState} from '@ironsource/fusion-ui/components/file-drag-and-drop';
+import {UniqueIdService} from '@ironsource/fusion-ui';
+import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 
 @Component({
     selector: 'fusion-file-csv-upload',
     templateUrl: './file-csv-upload.component.html',
     styleUrls: ['./file-csv-upload.component.scss']
 })
-export class FileCsvUploadComponent extends FileDragAndDropComponent {}
+export class FileCsvUploadComponent extends FileDragAndDropComponent {
+    /**
+     * General component error
+     * @param value
+     */
+    @Input() set error(value: string) {
+        this._error = value;
+    }
+    /**
+     * General component helper text
+     * @param value
+     */
+    @Input() set helper(value: string) {
+        this._helper = value;
+    }
+    /**
+     * File state
+     * @param value
+     */
+    @Input() set fileState(value: FileDragAndDropState) {
+        this._fileState = value ?? {name: ''};
+    }
+
+    /**
+     * Event on button replace was clicked
+     */
+    @Output() replaceFile = new EventEmitter<string>();
+    /**
+     * Event on button delete was clicked
+     */
+    @Output() deleteFile = new EventEmitter<string>();
+
+    successIcon: IconData = {iconName: 'success-full', iconVersion: 'v3'};
+    errorIcon: IconData = {iconName: 'error', iconVersion: 'v3'};
+
+    get error(): string {
+        return this._error;
+    }
+    private _error: string;
+
+    get helper(): string {
+        return this._helper;
+    }
+    private _helper: string;
+
+    get fileState(): FileDragAndDropState {
+        return this._fileState;
+    }
+    private _fileState: FileDragAndDropState;
+
+    get fileStateMessage(): string {
+        switch (this.fileState.state) {
+            case 'success':
+                return this.fileState.message ?? 'Upload successfully';
+            case 'error':
+                return this.fileState.message ?? 'Unknown error occurs';
+            case 'selected':
+                return this.fileState.message ?? 'File selected';
+            default:
+                return '';
+        }
+    }
+
+    constructor(private uniqueId: UniqueIdService) {
+        super();
+        this.buttonId = 'fu_' + this.uniqueId.getUniqueId();
+    }
+
+    handleSelectedFiles(files: FileList) {
+        this.error = '';
+        if (files.length === 1 && files.item(0).type == 'text/csv') {
+            this.handleFiles.emit(files);
+        } else {
+            this.error = 'Please select one *.csv file.';
+        }
+    }
+
+    onReplace($event) {
+        this.replaceFile.emit(this.fileState.name);
+        this.resetFileState();
+    }
+
+    onDelete($event) {
+        this.deleteFile.emit(this.fileState.name);
+        this.resetFileState();
+    }
+
+    private resetFileState() {
+        this._fileState = {name: ''};
+        this.error = '';
+    }
+}
