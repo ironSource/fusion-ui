@@ -13,6 +13,8 @@
         align-items: center;
         gap: 8px;
 
+        @extend %truncate-flex-child;
+
         @extend %font-bodySmall;
         color: $fu-black-500;
         user-select: none;
