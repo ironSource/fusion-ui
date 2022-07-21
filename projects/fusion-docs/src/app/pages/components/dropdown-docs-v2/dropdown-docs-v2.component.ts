@@ -170,7 +170,7 @@ export class DropdownDocsV2Component implements OnInit, OnDestroy {
             text: 'Dropdown'
         });
 
-        this.optionsNoIcons = this.options
+        this.optionsNoIcons = this.options /*.slice(0,4)*/
             .sort((a, b) => a.title.localeCompare(b.title))
             .map(item => {
                 return {...item, ...{displayText: item.title}};

@@ -16,6 +16,7 @@ import {DropdownLoaderComponent} from './dropdown-loader.component';
 })
 export class DropdownLoaderDirective implements OnChanges {
     @HostBinding('class.is-hidden') isOptionHidden = false;
+    @HostBinding('class.fu-loader-wrapper') loaderWrapper = true;
     @Input() fusionDropdownLoader: boolean;
     private loaderComponentRef: ComponentRef<DropdownLoaderComponent>;
 

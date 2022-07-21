@@ -37,12 +37,17 @@ import {takeUntil} from 'rxjs/operators';
 })
 export class ModalComponent implements OnDestroy, OnInit {
     static activeModals: {[id: string]: ModalComponent} = {};
+    @Input() submitPending = false; // state for submit pending
 
     @Input() set isModalOpen(value: boolean) {
         if (value) {
             this.isClosed$.next(!value);
             this.modalOpenListener$.next(value);
         }
+    }
+
+    @Input() set forcedClose(value: boolean) {
+        this.forcedClosing$.next(value);
     }
 
     @Input() set configuration(config: ModalConfiguration) {
@@ -63,6 +68,7 @@ export class ModalComponent implements OnDestroy, OnInit {
     private _configuration = new BehaviorSubject<ModalConfiguration>(null);
     private isClosed$ = new BehaviorSubject<boolean>(false);
     private modalOpenListener$ = new BehaviorSubject<boolean>(false);
+    private forcedClosing$ = new BehaviorSubject<boolean>(false);
     private onDestroy$ = new Subject<void>();
 
     constructor(
@@ -84,6 +90,7 @@ export class ModalComponent implements OnDestroy, OnInit {
         if (this.configuration.defaultModalState === 'close') {
             this.onClose(false);
         }
+
         this.addModal(this);
         this.initListeners();
     }
@@ -100,7 +107,9 @@ export class ModalComponent implements OnDestroy, OnInit {
     }
 
     onClose(emitEvent = true, eventType: 'close' | 'submit' = 'close') {
-        this.renderer.setStyle(this.elRef.nativeElement, 'display', 'none');
+        if (eventType === 'close') {
+            this.renderer.setStyle(this.elRef.nativeElement, 'display', 'none');
+        }
         if (emitEvent) {
             this.close.emit(eventType);
         }
@@ -113,6 +122,15 @@ export class ModalComponent implements OnDestroy, OnInit {
             .subscribe(val => {
                 if (val) {
                     this.onModalOpened(this.configuration.id);
+                }
+            });
+
+        this.forcedClosing$
+            .asObservable()
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe((val: boolean) => {
+                if (val) {
+                    this.onClose(false);
                 }
             });
     }

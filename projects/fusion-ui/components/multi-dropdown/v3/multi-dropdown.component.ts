@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, forwardRef} from '@angular/core';
 import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/service';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {MultiDropdownBaseComponent} from '@ironsource/fusion-ui/components/multi-dropdown/common/base';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
 
 @Component({
     selector: 'fusion-multi-dropdown',
@@ -19,7 +20,11 @@ import {MultiDropdownBaseComponent} from '@ironsource/fusion-ui/components/multi
 })
 export class MultiDropdownComponent extends MultiDropdownBaseComponent {
     dropdownArrowIconName = {
-        iconName: 'arrow-down',
-        iconVersion: 'v2'
+        iconName: 'angle-down',
+        iconVersion: 'v3'
     };
+
+    getOptionContent(option: DropdownOption): string {
+        return this.dropdownService.optionToString(this.selected[0], this.mappingOptions, {dropdownType: 'multi'});
+    }
 }

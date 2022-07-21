@@ -25,5 +25,16 @@
             @extend %font-bodyMedium;
             line-height: 21px;
         }
+
+        .fu-in-waiting {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background-color: $White;
+            opacity: 0.5;
+            display: block;
+        }
     }
 }

@@ -7,7 +7,9 @@ $borderRadius: 8px;
 
 $optionHeight: 32px;
 $optionsToShow: 8;
-$optionGroupHeight: 24px;
+$optionGroupHeight: 40px;
+
+$optionTwoLines: 48px;
 
 
 // region dropdown options holder location
@@ -50,12 +52,11 @@ $optionGroupHeight: 24px;
             .options-holder {
                 padding: 4px;
                 overflow: hidden;
-                overflow-y: auto;
                 @extend %customScroll;
             }
         }
 
-        // dropdown options opened
+        // region dropdown options opened
         &.dd-opened {
             .options-dropdown {
                 display: block;
@@ -99,25 +100,21 @@ $optionGroupHeight: 24px;
                     margin: 0 -4px;
                 }
 
-                // move it to the right component - dropdown options list
                 .options-holder {
-                   .options .is-hidden {
-                        display: none;
-                    }
-
                     // no-result panel (used with search or auto-complete input)
                     .options .no-results {
-                        @extend %font-body;
+                        @extend %font-bodySmall;
                         background: none;
                         cursor: default;
                         padding: 8px 10px;
                         height: 32px;
-                        color: $fu-light-900;
+                        color: $fu-light-800;
                     }
                 }
 
                 &.dd-scroll {
                     .options-holder {
+                        overflow-y: auto;
                         padding-bottom: 0;
                         height: 100%;
                         max-height: calc(
@@ -127,29 +124,20 @@ $optionGroupHeight: 24px;
                 }
             }
         }
+        // endregion
 
-
-        // multi-select bottom action panel
-        .dd-actions {
-            text-align: right;
-            background-color: $White;
-            padding: 8px 7px 7px 7px;
-            border-top: solid 1px $fu-light-300;
-            button + button {
-                margin-left: 2px;
-            }
-        }
-
-        // multi-select
+        // region multi-select
         &.is-multiselect {
             &.dd-opened {
                 .options-dropdown {
-                    max-height: calc(#{$optionHeight} * #{($optionsToShow + 1)} + 8px);
-                    &.dd-confirm {
-                        max-height: calc(#{$optionHeight} * #{($optionsToShow + 1)} + 45px);
+                    padding: 0px;
+                    max-height: calc(#{$optionHeight} * #{$optionsToShow} + 16px);
+                    .options-holder {
+                        padding: 8px;
                     }
                     &.dd-scroll {
                         .options-holder {
+                            overflow-y: auto;
                             padding-bottom: 0;
                             height: 100%;
                             max-height: calc(#{$optionHeight} * #{($optionsToShow - 1)} + (#{$optionHeight} / 2) + 5px);
@@ -162,114 +150,142 @@ $optionGroupHeight: 24px;
                                 height: $optionHeight;
                                 border-radius: $borderRadius;
                                 padding: 0 8px;
+                                display: flex;
+                                align-items: center;
                                 .is-option-label {
-                                    position: relative;
-                                    @extend %font-body;
+                                    display: flex;
+                                    align-items: center;
+                                    gap:8px;
+                                    line-height: 1em;
+                                    width: 100%;
+
+                                    @extend %font-bodySmall;
+                                    color: $fu-black-500;
                                     cursor: pointer;
-                                    display: block;
-                                    color: $fu-dark-700;
-                                    height: 100%;
-                                    padding: 8px 0;
-                                    fusion-checkbox{
-                                        margin-right: 8px;
-                                    }
-                                    // option image (application image)
+
                                     img {
                                         @include size(20px);
-                                        max-width: 20px;
-                                        border-radius:  4px;
-                                        vertical-align: middle;
-                                        margin-right: 10px;
-                                        margin-top: -2px;
+                                        @extend %image-masked;
                                     }
-                                    @include icon-style('icon', $fu-light-600, 13px, false, true) {
-                                        margin-right: 6px;
-                                        vertical-align: sub;
-                                        display: inline-block;
+
+                                    @include icon-style('fu-option-icon', $fu-light-600, 16px, false, true) {
+                                        @include size(16px);
+                                        position: initial;
+                                        margin: 0 -4px;
                                     }
-                                    fusion-flag {
-                                        margin-right: 6px;
-                                    }
-                                    &.has-icon{
-                                        padding-right: 20px;
-                                    }
-                                    &.truncate{
-                                        @extend %truncate;
+
+                                    .fu-text-content{
+                                        display: flex;
+                                        flex-direction: column;
+                                        gap: 2px;
+                                        overflow: hidden;
+                                        .fu-text-container{
+                                            white-space: nowrap;
+                                            overflow: hidden;
+                                            text-overflow: ellipsis;
+                                        }
+
+                                        .fu-sub-text-container{
+                                            @extend %font-bodyXSmall;
+                                            color: $fu-light-900;
+                                        }
                                     }
                                 }
+
+                                // region grouped options
                                 &.is-group{
                                     padding: 8px;
                                     height: $optionGroupHeight;
-                                    background-color: $fu-light-200;
-                                    border-radius: 4px;
-                                    margin: 4px 0;
-                                    &:first-child{
-                                        margin-top: 0;
+                                    background-color: $White;
+                                    &:hover{
+                                        background-color: $White;
                                     }
                                     .is-dd-group {
-                                        //@extend %font-label;
-                                        text-transform: uppercase;
-                                        color: $fu-light-900;
-                                        cursor: default;
-                                        display: block;
-                                        height: $optionGroupHeight;
-                                        margin: -5px 0;
+                                        @extend %font-bodyMediumStrong;
+                                        color: $fu-black-900;
+                                        display: flex;
+                                        align-items: center;
                                     }
                                 }
+                                // endregion
+                                // region group expandable
                                 &.is-has-children {
-                                    position: relative;
                                     color: $fu-light-900;
-                                    border: solid 1px transparent;
-                                    cursor: pointer;
-                                    padding-left: 13px;
-                                    > div{
-                                        margin-top: 5px;
+                                    flex-wrap: wrap;
+                                    @include icon-style('option-icon-arrow', $fu-light-600, 16px, true, true, -90) {
+                                        @include size(16px);
+                                        margin-left: auto;
                                     }
-                                    @include icon-style('option-icon-arrow', $fu-light-900, 8px, true, true, -90) {
-                                        position: absolute;
-                                        right: 7px;
-                                        top: 5px;
-                                    }
-                                    .is-subgroup-options{
+
+                                    .is-subgroup-options {
                                         display: none;
-                                        margin: 5px -10px 0 -14px;
-                                        padding-top: 4px;
-                                        background-color: #FFF;
-                                        .is-option-label{
-                                            display: flex;
-                                            align-content: center;
-                                            align-items: center;
-                                            padding-left: 5px;
-                                            fusion-checkbox{
-                                                margin: -5px 5px 0 5px;
-                                            }
-                                            > span{
-                                                margin-top: 1px;
-                                            }
-                                        }
                                     }
-                                    &.is-open{
+
+                                    &.is-open {
                                         height: 100%;
-                                        @include icon-style('option-icon-arrow', $fu-light-900, 8px, false, true, 360);
-                                        .is-subgroup-options{
-                                            display: block;
+                                        @include icon-style('option-icon-arrow', $fu-light-600, 16px, true, true, 360);
+                                        padding-bottom: 0;
+                                        margin-bottom: 2px;
+                                        padding-top: 6px;
+
+                                        .fu-flex-row-break{
+                                            flex-basis: 100%;
+                                            height: 0;
+                                            margin-top: 6px;
                                         }
 
+                                        .is-subgroup-options {
+                                            flex-basis: calc(100% + 18px);
+                                            display: block;
+                                            margin: 0 -10px;
+                                            padding-top: 4px;
+                                            background-color: $White;
+                                            .option {
+                                                ::ng-deep fusion-dropdown-option {
+                                                    padding-left: 16px;
+                                                }
+                                            }
+                                        }
+
+                                        &:hover {
+                                            background: $fu-light-50;
+                                        }
                                     }
                                 }
+                                // endregion
+
+                                &.is-hidden {
+                                    display: none;
+                                }
+
+                                &.fu-loader-wrapper:hover{
+                                    background-color: $White;
+                                }
+
                                 &.no-results{
                                     padding: 8px 10px;
+                                    @extend %font-bodySmall;
+                                    color: $fu-light-800;
                                     &:hover{
                                         background-color: $White;
                                     }
                                 }
 
                                 &:hover {
-                                    background-color: $fu-light-100;
+                                    background-color: $fu-light-50;
+                                }
+
+                                &.fu-option-two-lines{
+                                    height: $optionTwoLines;
                                 }
                             }
                         }
                     }
+                }
+            }
+            &.is-with-confirm{
+                &.dd-opened .options-dropdown{
+                    max-height: calc(#{$optionHeight} * #{$optionsToShow} + 12px + 48px);
                 }
             }
             &.is-icon-right-position.dd-opened {
@@ -289,6 +305,19 @@ $optionGroupHeight: 24px;
                 }
             }
         }
+
+        // multi-select bottom action panel
+        .dd-actions {
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            border-top: solid 1px $fu-light-400;
+            background-color: $White;
+            gap: 4px;
+            padding: 12px 16px;
+        }
+        // endregion
 
         &.dd-disabled,
         &.dd-readonly {
@@ -345,4 +374,8 @@ $optionGroupHeight: 24px;
             }
         }
     }
+}
+
+:host-context(fusion-multi-dropdown){
+
 }

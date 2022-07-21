@@ -1,6 +1,6 @@
 <ng-container *ngIf="!option.content; else customContentOption">
     <fusion-flag *ngIf="option.flag" [name]="option.flag"></fusion-flag>
-    <img [src]="option.image" *ngIf="option.image" alt=""/>
+    <img [src]="option.image" *ngIf="option.image" alt="" loading="lazy"/>
     <fusion-icon *ngIf="option.icon" [name]="option.icon" class="fu-option-icon"></fusion-icon>
     <div [id]="option.id" class="fu-text-content truncate"
          fusionTooltip="{{ optionToStringFunc | generic: option:mappingOptions:settings }}">
@@ -15,6 +15,7 @@
 <ng-container *ngIf="hasChildren">
     <fusion-icon class="icon-arrow"
                  [name]="dropdownArrowIconName"></fusion-icon>
+    <div class="fu-flex-row-break"></div>
     <ul class="is-subgroup-options">
         <ng-container *ngFor="let childOption of option.childOptions; index as i">
             <li

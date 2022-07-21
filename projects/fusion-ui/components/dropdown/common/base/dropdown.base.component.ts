@@ -666,10 +666,8 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     /**
      * event from directive on outside component click
      */
-    onOutsideClick($event?) {
-        // if (!$event?.closest('fusion-dropdown-option')) {
+    onOutsideClick(target?) {
         this.closeDropdown({clickOutside: true});
-        // }
     }
 
     private cloneOptions(options: DropdownOption[]): DropdownOption[] {

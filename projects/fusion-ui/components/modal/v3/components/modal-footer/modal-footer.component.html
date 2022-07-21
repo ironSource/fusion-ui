@@ -10,6 +10,7 @@
         </fusion-button>
         <fusion-button
             [class]="submitButtonClass"
+            [loading]="submitButtonPending"
             [disabled]="submitButtonDisabled || !!error"
             (click)="onSubmit.emit()"
         >

@@ -7,7 +7,7 @@ import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button/v3';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v3';
-import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox/v2';
+import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox/v3';
 import {DropdownDualMultiSelectBodyModule} from './components/dropdown-dual-multi-select-body/dropdown-dual-multi-select-body.module';
 import {DropdownDualMultiSelectHeaderModule} from './components/dropdown-dual-multi-select-header/dropdown-dual-multi-select-header.module';
 import {DropdownDualMultiSelectFooterModule} from './components/dropdown-dual-multi-select-footer/dropdown-dual-multi-select-footer.module';

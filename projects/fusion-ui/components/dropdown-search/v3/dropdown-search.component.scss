@@ -4,6 +4,7 @@
 @import '../../../src/style/scss/v3/mixins/mixins';
 
 $clearIconColor: #DADADA;
+$clearIconActiveColor: $fu-light-800;
 
 %icons-positions{
     position: absolute;
@@ -53,4 +54,7 @@ $clearIconColor: #DADADA;
             }
         }
     }
+}
+:host-context(.fu-search-has-no-result){
+    @include icon-style('fu-icon-clear', $clearIconActiveColor , 16px, true, true, 0, true);
 }

@@ -103,7 +103,42 @@ checkbox.addEventListener("changed", $event => {
                         ></fusion-code-block>
                     </ng-template>
 
-                    <div style="margin-bottom: 8px;">
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-2">Regular</div>
+                        <div class="col-2">Disabled</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2 fu-flex-column">
+                            <fusion-checkbox
+                                [isIndeterminate]="checkboxControl.value"
+                                label="Multiple Choice"
+                                [formControl]="checkboxControl"
+                            ></fusion-checkbox>
+                            <fusion-checkbox label="Selected" [formControl]="checkboxControl"></fusion-checkbox>
+                            <fusion-checkbox label="Inactive" [checked]="false"></fusion-checkbox>
+                        </div>
+                        <div class="col-2 fu-flex-column">
+                            <fusion-checkbox
+                                [isDisabled]="true"
+                                [isIndeterminate]="checkboxControl.value"
+                                label="Disabled Multiple Choice"
+                                [formControl]="checkboxControl"
+                            ></fusion-checkbox>
+                            <fusion-checkbox label="Disabled  Selected" [isDisabled]="true" [formControl]="checkboxControl"></fusion-checkbox>
+                            <fusion-checkbox label="Disabled  Inactive" [isDisabled]="true" [checked]="false"></fusion-checkbox>
+                        </div>
+                        <div class="col-2 fu-flex-column">
+                            <fusion-checkbox label="With Icon" icon="frame" [formControl]="checkboxControl"></fusion-checkbox>
+                            <fusion-checkbox label="With Flag" flag="il" [formControl]="checkboxControl"></fusion-checkbox>
+                            <fusion-checkbox label="With Icon and Flag" class="truncate" icon="frame" flag="il" [formControl]="checkboxControl"></fusion-checkbox>
+                            <fusion-checkbox [formControl]="checkboxControl"></fusion-checkbox>
+                        </div>
+                    </div>
+                    <div style="margin: 10px 0; border: solid 1px green; padding: 15px; width: 250px">
+                        <fusion-checkbox class="truncate" label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."></fusion-checkbox>
+                    </div>
+
+                    <div style="margin: 10px 0;">
                         <fusion-checkbox
                             [isIndeterminate]="checkboxControl.value"
                             label="Multiple Choice"

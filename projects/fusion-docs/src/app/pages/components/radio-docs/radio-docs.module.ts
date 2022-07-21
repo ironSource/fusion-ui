@@ -6,9 +6,9 @@ import {ExampleBlockModule} from '../../../components/example-block/example-bloc
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ReactiveFormsModule} from '@angular/forms';
-import {RadioGroupModule} from '@ironsource/fusion-ui/components/radio-group/v2';
-import {RadioModule} from '@ironsource/fusion-ui/components/radio/v1';
-import {InputModule} from '@ironsource/fusion-ui/components/input/v1';
+import {RadioGroupModule} from '@ironsource/fusion-ui/components/radio-group/v3';
+import {RadioModule} from '@ironsource/fusion-ui/components/radio/v3';
+import {InputModule} from '@ironsource/fusion-ui/components/input/v3';
 import {IconSelectListModule} from '@ironsource/fusion-ui/components/icon-select-list/v1';
 
 const routes: Routes = [{path: '', component: RadioDocsComponent}];

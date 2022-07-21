@@ -16,7 +16,7 @@
 </ng-template>
 
 <ng-template #tooltipRef>
-  <label [fusionTooltip]="tooltip" [for]="genElementId()"><span></span>
+  <label [fusionTooltip]="tooltip" class="truncate" [for]="genElementId()"><span></span>
     <ng-container [ngTemplateOutlet]="fusionIconRef"></ng-container>
   </label>
 </ng-template>

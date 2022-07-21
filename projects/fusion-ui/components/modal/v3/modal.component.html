@@ -5,6 +5,7 @@
 
         <fusion-modal-content
             *ngIf="configuration?.headerText || configuration?.hasFooter"
+            [pending]="submitPending"
             [ngClass]="{'fu-has-height': !!configuration?.height}"
         >
             <ng-container *ngTemplateOutlet="content"></ng-container>
@@ -25,6 +26,7 @@
             [cancelButton]="configuration?.cancelButton"
             (onSubmit)="onClose(true, 'submit')"
             (onCloseButtonClicked)="onClose(true, 'close')"
+            [submitButtonPending]="submitPending"
         ></fusion-modal-footer>
 
     </div>

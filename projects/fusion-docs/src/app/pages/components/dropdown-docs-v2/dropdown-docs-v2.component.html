@@ -168,7 +168,9 @@ document.body.appendChild(dropdown);'
             <div class="row">
                 <div class="col-4">
                     <label>Regular</label>
-                    <fusion-dropdown class="small" (closed)="onClose($event)" placeholderLocation="right" placeholderWidth="240px" placeholder="Select lorem ipsum dolor lorem ipsum" [formControl]="dropdownControl" [options]="optionsNoIcons"></fusion-dropdown>
+                    <fusion-dropdown class="small" (closed)="onClose($event)" placeholderLocation="right"
+                                     placeholderWidth="240px" placeholder="Select lorem ipsum dolor lorem ipsum"
+                                     [formControl]="dropdownControl" [options]="optionsNoIcons"></fusion-dropdown>
                 </div>
                 <div class="col-4">
                     <label>Error</label>
@@ -803,7 +805,7 @@ document.body.appendChild(dropdown);'
             <div class="row">
                 <div class="col-4">
                     <label>Items by groups</label>
-                    <fusion-dropdown placeholder="Select" [optionsGroups]="groupedOptions"> </fusion-dropdown>
+                    <fusion-dropdown placeholder="Select" [optionsGroups]="groupedOptions"></fusion-dropdown>
                 </div>
                 <!--
                 <div class="col-4">
@@ -813,7 +815,8 @@ document.body.appendChild(dropdown);'
 -->
                 <div class="col-4">
                     <label>Countries by groups with search</label>
-                    <fusion-dropdown placeholder="Select" [search]="true" [optionsGroups]="groupedCountriesOptions"> </fusion-dropdown>
+                    <fusion-dropdown placeholder="Select" [search]="true"
+                                     [optionsGroups]="groupedCountriesOptions"></fusion-dropdown>
                 </div>
                 <div class="col-4">
                     <label>Grouped sub grouped</label>
@@ -1030,11 +1033,11 @@ document.body.appendChild(dropdown);'
                         [options]="optionsNoIcons"
                     ></fusion-multi-dropdown>
                 </div>
-                <!--
                 <div class="col-4">
                     <label>Without `Select all` and without confirm</label>
                     <fusion-multi-dropdown
                         placeholder="Select"
+                        [confirm]="false"
                         [formControl]="multiSelectedControlNoConfirm"
                         [options]="optionsNoIcons"
                     ></fusion-multi-dropdown>
@@ -1048,7 +1051,6 @@ document.body.appendChild(dropdown);'
                         [options]="countriesOptions"
                     ></fusion-multi-dropdown>
                 </div>
--->
                 <div class="col-4">
                     <label>Grouped sub grouped</label>
                     <fusion-multi-dropdown
@@ -1060,16 +1062,14 @@ document.body.appendChild(dropdown);'
                         [optionsGroups]="groupedSubGroupOptions"
                     ></fusion-multi-dropdown>
                 </div>
-                <!--
-                                <div class="col-4">
-                                    <label>Grouped sub grouped</label>
-                                    <fusion-dropdown
-                                        placeholder="Select"
-                                        formControlName="subGroupDropDown"
-                                        [optionsGroups]="groupedSubGroupOptions"
-                                    ></fusion-dropdown>
-                                </div>
-                -->
+                <div class="col-4">
+                    <label>Grouped sub grouped</label>
+                    <fusion-dropdown
+                        placeholder="Select"
+                        formControlName="subGroupDropDown"
+                        [optionsGroups]="groupedSubGroupOptions"
+                    ></fusion-dropdown>
+                </div>
 
             </div>
         </fusion-example-block>
@@ -1301,244 +1301,244 @@ document.body.appendChild(dropdown);'
         </fusion-example-block>
         <!--Multiple Selection End-->
         <!--Variations-->
-        <div class="is-example-title">Variations</div>
-        <fusion-example-block id="ddVariations" title="Basic">
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<!--Regular - H40px-->
-<fusion-dropdown
-    placeholder="Select"
-    [formControl]="dropdownControl"
-    [options]="options"
-></fusion-dropdown>
+                <div class="is-example-title">Variations</div>
+                <fusion-example-block id="ddVariations" title="Basic">
+                    <ng-template fusionExampleBlock="Angular">
+                        <fusion-code-block
+                            lang="html"
+                            class="is-collapsible"
+                            code='<!--Regular - H40px-->
+        <fusion-dropdown
+            placeholder="Select"
+            [formControl]="dropdownControl"
+            [options]="options"
+        ></fusion-dropdown>
 
-<!--Small - h:32px-->
-<fusion-dropdown
-    class="small"
-    placeholder="Select"
-    [formControl]="dropdownControl"
-    [options]="options"
-></fusion-dropdown>
+        <!--Small - h:32px-->
+        <fusion-dropdown
+            class="small"
+            placeholder="Select"
+            [formControl]="dropdownControl"
+            [options]="options"
+        ></fusion-dropdown>
 
-<!--Rounded-->
-<fusion-dropdown
-    placeholder="Select"
-    class="rounded"
-    [formControl]="dropdownControl"
-    [options]="optionsNoIcons"
-></fusion-dropdown>
+        <!--Rounded-->
+        <fusion-dropdown
+            placeholder="Select"
+            class="rounded"
+            [formControl]="dropdownControl"
+            [options]="optionsNoIcons"
+        ></fusion-dropdown>
 
-<!--Items height - align top-->
-<fusion-dropdown
-    class="fu-items-top"
-    placeholder="Select"
-    [formControl]="dropdownControl"
-    [options]="optionsNoIcons"
-></fusion-dropdown>
+        <!--Items height - align top-->
+        <fusion-dropdown
+            class="fu-items-top"
+            placeholder="Select"
+            [formControl]="dropdownControl"
+            [options]="optionsNoIcons"
+        ></fusion-dropdown>
 
-<!--Custom placeholder-->
-<fusion-dropdown
-    class="fu-large-item-height"
-    [placeholderComponent]="customPlaceholderComponent"
-    [placeholderComponentData]="customPlaceholderData"
-    [formControl]="dropdownControl"
-    [options]="optionsNoIcons"
-></fusion-dropdown>
-'
-                ></fusion-code-block>
-            </ng-template>
-            <ng-template fusionExampleBlock="React">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='const DROPDOWN_OPTIONS = [
-  {
-    id: 1,
-    displayText: "option_a"
-  },
-  {
-    id: 2,
-    displayText: "option_b"
-  }
-];
+        <!--Custom placeholder-->
+        <fusion-dropdown
+            class="fu-large-item-height"
+            [placeholderComponent]="customPlaceholderComponent"
+            [placeholderComponentData]="customPlaceholderData"
+            [formControl]="dropdownControl"
+            [options]="optionsNoIcons"
+        ></fusion-dropdown>
+        '
+                        ></fusion-code-block>
+                    </ng-template>
+                    <ng-template fusionExampleBlock="React">
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='const DROPDOWN_OPTIONS = [
+          {
+            id: 1,
+            displayText: "option_a"
+          },
+          {
+            id: 2,
+            displayText: "option_b"
+          }
+        ];
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      dropdown: {
-        placeholder: "Select",
-        options: DROPDOWN_OPTIONS,
-        controlValue: []
-      }
-    }
-  }
+        class App extends React.Component {
+          constructor(props) {
+            super(props);
+            this.state = {
+              dropdown: {
+                placeholder: "Select",
+                options: DROPDOWN_OPTIONS,
+                controlValue: []
+              }
+            }
+          }
 
-  handleChange(name, value) {
-    this.setState({[name]: {...this.state[name], controlValue: value}})
-  }
+          handleChange(name, value) {
+            this.setState({[name]: {...this.state[name], controlValue: value}})
+          }
 
-  render() {
-    return (
-      <FusionDropdown config={this.state.dropdown} name="dropdown" selectedChange={this.handleChange.bind(this, "dropdown")} />
-    )
-  }
-}
+          render() {
+            return (
+              <FusionDropdown config={this.state.dropdown} name="dropdown" selectedChange={this.handleChange.bind(this, "dropdown")} />
+            )
+          }
+        }
 
-export default App;'
-                ></fusion-code-block>
-            </ng-template>
-            <ng-template fusionExampleBlock="Vue">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<template>
-  <div id="app">
-      <FusionDropdown :config="dropdown" @selectedChange="e => handleChange(e, &#39;dropdown&#39;)" />
-  </div>
-</template>'
-                ></fusion-code-block>
+        export default App;'
+                        ></fusion-code-block>
+                    </ng-template>
+                    <ng-template fusionExampleBlock="Vue">
+                        <fusion-code-block
+                            lang="html"
+                            class="is-collapsible"
+                            code='<template>
+          <div id="app">
+              <FusionDropdown :config="dropdown" @selectedChange="e => handleChange(e, &#39;dropdown&#39;)" />
+          </div>
+        </template>'
+                        ></fusion-code-block>
 
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='<script>
-import {FusionDropdown} from "@ironsource/fusion-ui/native/vue";
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='<script>
+        import {FusionDropdown} from "@ironsource/fusion-ui/native/vue";
 
-export default {
-  name: "app",
-  data() {
-    return {
-      dropdown: {
-        placeholder: "Select",
-        options: DROPDOWN_OPTIONS,
-        controlValue: []
-      }
-    }
-  },
-  components: {
-    FusionDropdown
-  },
-  methods: {
-    handleChange: function(value, key){
-      this[key] = {...this[key], controlValue: value};
-    }
-  }
-}
+        export default {
+          name: "app",
+          data() {
+            return {
+              dropdown: {
+                placeholder: "Select",
+                options: DROPDOWN_OPTIONS,
+                controlValue: []
+              }
+            }
+          },
+          components: {
+            FusionDropdown
+          },
+          methods: {
+            handleChange: function(value, key){
+              this[key] = {...this[key], controlValue: value};
+            }
+          }
+        }
 
-const DROPDOWN_OPTIONS = [
-  {
-    id: 1,
-    displayText: "option_a"
-  },
-  {
-    id: 2,
-    displayText: "option_b"
-  }
-];
-</script>'
-                ></fusion-code-block>
-            </ng-template>
-            <ng-template fusionExampleBlock="Native">
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code='const dropdown = document.createElement("native-fusion-dropdown");
-dropdown.config = {
-  placeholder: "Select",
-  options: [
-    {
-        id: 1,
-        displayText: "option 1"
-    },
-    {
-        id: 2,
-        displayText: "option 2"
-    },
-    {
-        id: 3,
-        displayText: "option 3"
-    },
-    {
-        id: 4,
-        displayText: "option 4"
-    },
-    {
-        id: 5,
-        displayText: "option 5"
-    }
-],
-  get controlValue() {
-      return this.options[1];
-  }
-};
+        const DROPDOWN_OPTIONS = [
+          {
+            id: 1,
+            displayText: "option_a"
+          },
+          {
+            id: 2,
+            displayText: "option_b"
+          }
+        ];
+        </script>'
+                        ></fusion-code-block>
+                    </ng-template>
+                    <ng-template fusionExampleBlock="Native">
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='const dropdown = document.createElement("native-fusion-dropdown");
+        dropdown.config = {
+          placeholder: "Select",
+          options: [
+            {
+                id: 1,
+                displayText: "option 1"
+            },
+            {
+                id: 2,
+                displayText: "option 2"
+            },
+            {
+                id: 3,
+                displayText: "option 3"
+            },
+            {
+                id: 4,
+                displayText: "option 4"
+            },
+            {
+                id: 5,
+                displayText: "option 5"
+            }
+        ],
+          get controlValue() {
+              return this.options[1];
+          }
+        };
 
-dropdown.addEventListener("selectedChange", e => console.log(e.detail));
-document.body.appendChild(dropdown);'
-                ></fusion-code-block>
-            </ng-template>
+        dropdown.addEventListener("selectedChange", e => console.log(e.detail));
+        document.body.appendChild(dropdown);'
+                        ></fusion-code-block>
+                    </ng-template>
 
-            <div class="row">
-                <div class="col-4">
-                    <label>Regular - H40px</label>
-                    <fusion-dropdown placeholder="Select" [formControl]="dropdownControl" [options]="optionsNoIcons"></fusion-dropdown>
-                </div>
-                <div class="col-4">
-                    <label>Small - h:32px</label>
-                    <fusion-dropdown
-                        class="small"
-                        placeholder="Select"
-                        [formControl]="dropdownControl"
-                        [options]="optionsNoIcons"
-                    ></fusion-dropdown>
-                </div>
-                <div class="col-4">
-                    <label>Rounded</label>
-                    <fusion-dropdown
-                        placeholder="Select"
-                        class="rounded"
-                        [formControl]="dropdownControl"
-                        [options]="optionsNoIcons"
-                    ></fusion-dropdown>
-                </div>
-            </div>
-            <br />
-            <div class="row">
-                <!--
-                                <div class="col-4">
-                                    <label>Item height - H40px</label>
-                                    <fusion-dropdown
-                                        class="fu-large-item-height"
-                                        placeholder="Select"
-                                        [formControl]="dropdownControl"
-                                        [options]="optionsNoIcons"
-                                    ></fusion-dropdown>
-                                </div>
-                -->
-                <div class="col-4">
-                    <label>Items height - align top</label>
-                    <fusion-dropdown
-                        class="fu-items-top"
-                        placeholder="Select"
-                        [formControl]="dropdownControl"
-                        [options]="optionsNoIcons"
-                    ></fusion-dropdown>
-                </div>
-                <div class="col-4">
-                    <label>Custom placeholder</label>
-                    <fusion-dropdown
-                        #dropdownCustomComponent
-                        class="fu-large-item-height"
-                        [dynamicPlaceholder]="customDynamicComponent"
-                        [formControl]="dropdownControl"
-                        [options]="optionsNoIcons"
-                        (closed)="onClose($event)"
-                    ></fusion-dropdown>
-                </div>
-            </div>
-        </fusion-example-block>
+                    <div class="row">
+                        <div class="col-4">
+                            <label>Regular - H40px</label>
+                            <fusion-dropdown placeholder="Select" [formControl]="dropdownControl" [options]="optionsNoIcons"></fusion-dropdown>
+                        </div>
+                        <div class="col-4">
+                            <label>Small - h:32px</label>
+                            <fusion-dropdown
+                                class="small"
+                                placeholder="Select"
+                                [formControl]="dropdownControl"
+                                [options]="optionsNoIcons"
+                            ></fusion-dropdown>
+                        </div>
+                        <div class="col-4">
+                            <label>Rounded</label>
+                            <fusion-dropdown
+                                placeholder="Select"
+                                class="rounded"
+                                [formControl]="dropdownControl"
+                                [options]="optionsNoIcons"
+                            ></fusion-dropdown>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <!--
+                                        <div class="col-4">
+                                            <label>Item height - H40px</label>
+                                            <fusion-dropdown
+                                                class="fu-large-item-height"
+                                                placeholder="Select"
+                                                [formControl]="dropdownControl"
+                                                [options]="optionsNoIcons"
+                                            ></fusion-dropdown>
+                                        </div>
+                        -->
+                        <div class="col-4">
+                            <label>Items height - align top</label>
+                            <fusion-dropdown
+                                class="fu-items-top"
+                                placeholder="Select"
+                                [formControl]="dropdownControl"
+                                [options]="optionsNoIcons"
+                            ></fusion-dropdown>
+                        </div>
+                        <div class="col-4">
+                            <label>Custom placeholder</label>
+                            <fusion-dropdown
+                                #dropdownCustomComponent
+                                class="fu-large-item-height"
+                                [dynamicPlaceholder]="customDynamicComponent"
+                                [formControl]="dropdownControl"
+                                [options]="optionsNoIcons"
+                                (closed)="onClose($event)"
+                            ></fusion-dropdown>
+                        </div>
+                    </div>
+                </fusion-example-block>
         <!--Variations End-->
 
         <!--UI-Component Examples-->
