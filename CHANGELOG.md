@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.2-rc.5](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.4...v3.1.2-rc.5) (2022-07-21)
+
+
+### Bug Fixes
+
+* **fu-437:** revert fix in click-outside for multi-select dropdown with search ([200d0cb](https://github.com/ironSource/fusion-ui/commit/200d0cb09ea70b2e912ac794967c8b44db3df0e9))
+
 ### [3.1.2-rc.4](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.3...v3.1.2-rc.4) (2022-07-21)
 
 
