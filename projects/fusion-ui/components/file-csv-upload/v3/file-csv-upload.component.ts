@@ -77,7 +77,7 @@ export class FileCsvUploadComponent extends FileDragAndDropComponent {
     }
 
     handleSelectedFiles(files: FileList) {
-        this.error = '';
+        this.resetFileState();
         if (files.length === 1 && files.item(0).type == 'text/csv') {
             this.handleFiles.emit(files);
         } else {
