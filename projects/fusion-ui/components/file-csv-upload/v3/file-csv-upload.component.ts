@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {FileDragAndDropComponent, FileDragAndDropState} from '@ironsource/fusion-ui/components/file-drag-and-drop';
-import {UniqueIdService} from '@ironsource/fusion-ui';
+import {FileDragAndDropState} from '@ironsource/fusion-ui/components/file-drag-and-drop';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 
 @Component({
@@ -8,7 +8,20 @@ import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
     templateUrl: './file-csv-upload.component.html',
     styleUrls: ['./file-csv-upload.component.scss']
 })
-export class FileCsvUploadComponent extends FileDragAndDropComponent {
+export class FileCsvUploadComponent {
+    /**
+     * element ID for initial file selection dialog by click.
+     * if not provided used click on host
+     */
+    @Input() buttonId: string;
+    /**
+     * for disabling file selection
+     */
+    @Input() disabled: boolean;
+    /**
+     * for loading file selection
+     */
+    @Input() loading: boolean;
     /**
      * General component error
      * @param value
@@ -31,6 +44,10 @@ export class FileCsvUploadComponent extends FileDragAndDropComponent {
         this._fileState = value ?? {name: ''};
     }
 
+    /**
+     * output event emitter (files: FileList)
+     */
+    @Output() handleFiles = new EventEmitter();
     /**
      * Event on button replace was clicked
      */
@@ -72,7 +89,6 @@ export class FileCsvUploadComponent extends FileDragAndDropComponent {
     }
 
     constructor(private uniqueId: UniqueIdService) {
-        super();
         this.buttonId = 'fu_' + this.uniqueId.getUniqueId();
     }
 
@@ -85,12 +101,12 @@ export class FileCsvUploadComponent extends FileDragAndDropComponent {
         }
     }
 
-    onReplace($event) {
+    onReplace() {
         this.replaceFile.emit(this.fileState.name);
         this.resetFileState();
     }
 
-    onDelete($event) {
+    onDelete() {
         this.deleteFile.emit(this.fileState.name);
         this.resetFileState();
     }

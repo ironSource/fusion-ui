@@ -101,37 +101,29 @@ export class FileDragAndDropDirective implements OnInit, AfterViewInit, OnDestro
     }
 
     onDragEnter(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        if (this._disabled || this._loading) {
-            return;
+        this.suppressDefaultEvent(event);
+        if (this.isDraggable()) {
+            this._renderer.addClass(this._element.nativeElement, DRAG_OVER_CSS_CLASS);
         }
-        this._renderer.addClass(this._element.nativeElement, DRAG_OVER_CSS_CLASS);
     }
 
     onDragLeave(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        if (this._disabled || this._loading) {
-            return;
+        this.suppressDefaultEvent(event);
+        if (this.isDraggable()) {
+            this._renderer.removeClass(this._element.nativeElement, DRAG_OVER_CSS_CLASS);
         }
-        this._renderer.removeClass(this._element.nativeElement, DRAG_OVER_CSS_CLASS);
     }
 
     onDragOver(event) {
-        event.preventDefault();
-        event.stopPropagation();
+        this.suppressDefaultEvent(event);
     }
 
     onDrop(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        if (this._disabled || this._loading) {
-            return;
+        if (this.isDraggable()) {
+            this._renderer.removeClass(this._element.nativeElement, DRAG_OVER_CSS_CLASS);
+            const files = event.dataTransfer.files;
+            this.handleFiles.emit(files);
         }
-        this._renderer.removeClass(this._element.nativeElement, DRAG_OVER_CSS_CLASS);
-        const files = event.dataTransfer.files;
-        this.handleFiles.emit(files);
     }
 
     onClick(event) {
@@ -145,6 +137,17 @@ export class FileDragAndDropDirective implements OnInit, AfterViewInit, OnDestro
         ) {
             this.inputElement.click();
         }
+    }
+
+    private suppressDefaultEvent(event: Event) {
+        if (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+    }
+
+    private isDraggable(): boolean {
+        return !(this._disabled || this._loading);
     }
 
     private toggleCssClass(className: string, toggled: boolean) {
