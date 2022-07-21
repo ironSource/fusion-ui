@@ -10,6 +10,7 @@
 :host {
     @extend %reset;
 
+    // region default
     .fu-files-selector-wrapper{
         position: relative;
         @include size(100%);
@@ -38,18 +39,25 @@
                 background-repeat: no-repeat;
             }
         }
-        .fu-upload-title{
-            @extend %font-bodyLargeStrong;
-            color: $fu-black-200;
-            margin-top: 16px;
-            margin-bottom: 4px;
-        }
-        .fu-upload-description{
-            @extend %font-bodySmall;
-            color: $fu-black-200;
+        .fu-title-description{
             display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            gap: 5px;
+
+            .fu-upload-title{
+                @extend %font-bodyLargeStrong;
+                color: $fu-black-200;
+                margin-top: 16px;
+                margin-bottom: 4px;
+            }
+            .fu-upload-description{
+                @extend %font-bodySmall;
+                color: $fu-black-200;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
         }
 
         .fu-disabled-overlay{
@@ -85,7 +93,9 @@
             }
         }
     }
+    // endregion
 
+    // region files selected
     .fu-file-result-wrapper{
         padding: 24px;
 
@@ -152,7 +162,36 @@
             margin-left: auto;
         }
     }
+    // endregion
 
+    // region small size
+    &.small{
+        width: 620px;
+        height: 96px;
+        display: block;
+        .fu-files-selector-wrapper {
+            padding: 0 24px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 16px;
+
+            .fu-title-description{
+                align-items: start;
+                .fu-upload-title{
+                    margin: 0;
+                }
+            }
+        }
+        .fu-file-result-wrapper{
+            @include size(100%);
+            padding: 0 24px;
+        }
+    }
+    // endregion
+
+    // region general error and helper texts
     .fu-error-msg{
         @extend %font-caption;
         color: $fu-negative-700;
@@ -163,4 +202,5 @@
         color: $fu-black-200;
         margin-top: 3px;
     }
+    // endregion
 }
