@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.2-rc.4](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.3...v3.1.2-rc.4) (2022-07-21)
+
+
+### Bug Fixes
+
+* **fu-436:** fixed tooltip visibility on radio if label not truncated ([a4fe3dc](https://github.com/ironSource/fusion-ui/commit/a4fe3dc1fd7ffe790387ce57b67a4bb5d9caf133))
+* **fu-437:** fixed click-outside for dropdown with search ([f888b32](https://github.com/ironSource/fusion-ui/commit/f888b32e2b85839b4c058a9c8a36fb3eb9a8f67f))
+* **fu-439:** fixed button text vertical align to center in multi-select dropdown ([c0c6a7f](https://github.com/ironSource/fusion-ui/commit/c0c6a7fb5b2cd91acc7d20f545715d24959cdb26))
+
 ### [3.1.2-rc.3](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.2...v3.1.2-rc.3) (2022-07-19)
 
 
