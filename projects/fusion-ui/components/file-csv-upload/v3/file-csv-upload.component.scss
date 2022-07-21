@@ -1,0 +1,206 @@
+@import '../../../src/style/scss/v3/vars/vars';
+@import '../../../src/style/scss/v3/mixins/mixins';
+
+@keyframes spin {
+    100% {
+        transform:rotate(360deg);
+    }
+}
+
+:host {
+    @extend %reset;
+
+    // region default
+    .fu-files-selector-wrapper{
+        position: relative;
+        @include size(100%);
+
+        background: $White;
+        border: 1px dashed $fu-light-700;
+        border-radius: 8px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .fu-upload-icon{
+            @include size(56px);
+            border-radius: 50%;
+            background-color: $fu-light-100;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            & > div{
+                width: 26px;
+                height: 31px;
+                background-image: url("data:image/svg+xml,%3Csvg fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 31'%3E%3Cpath d='M.443.148h16.773l3.014 3.075 4.814 4.752V30.34H.444V.148Z' fill='%2353575B'/%3E%3Cpath d='M9.142 16.933h1.247V20.8c0 .426.352.774.784.774h3.136a.781.781 0 0 0 .784-.774v-3.867h1.246c.698 0 1.05-.835.557-1.322l-3.599-3.55a.788.788 0 0 0-1.105 0l-3.599 3.55c-.494.487-.149 1.322.55 1.322Z' fill='%23F7F8F9'/%3E%3Cpath d='m17.216.148 7.828 7.827h-5.531a2.296 2.296 0 0 1-2.297-2.296V.148Z' fill='%23DDDFE1'/%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+            }
+        }
+        .fu-title-description{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .fu-upload-title{
+                @extend %font-bodyLargeStrong;
+                color: $fu-black-200;
+                margin-top: 16px;
+                margin-bottom: 4px;
+            }
+            .fu-upload-description{
+                @extend %font-bodySmall;
+                color: $fu-black-200;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+        }
+
+        .fu-disabled-overlay{
+            @include size(100%);
+            position: absolute;
+            background-color: $White;
+            opacity: 0.5;
+            border-radius: 8px;
+            visibility: hidden;
+        }
+
+        &.fu-file-drag-over:not(.fu-loading) {
+            background: $fu-light-100;
+            border-color: $fu-light-400;
+            .fu-upload-icon {
+                background-color: $White;
+            }
+        }
+        &.fu-file-drag-drop-loading{
+            .fu-upload-icon > div {
+                @include size(24px);
+                animation:spin 1s linear infinite;
+                background-image: url("data:image/svg+xml,%3Csvg fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12.257 23.93c6.335 0 11.687-5.351 11.687-11.687h-2.338c0 5.07-4.28 9.35-9.35 9.35-5.068 0-9.349-4.28-9.349-9.35 0-5.067 4.28-9.35 9.35-9.35V.558C5.92.557.57 5.909.57 12.243.57 18.58 5.92 23.93 12.257 23.93Z' fill='%2353575B'/%3E%3C/svg%3E");
+            }
+            .fu-disabled-overlay{
+                opacity: 0;
+                visibility: visible;
+            }
+        }
+        &.fu-file-drag-drop-disabled{
+            .fu-disabled-overlay{
+                visibility: visible;
+            }
+        }
+    }
+    // endregion
+
+    // region files selected
+    .fu-file-result-wrapper{
+        padding: 24px;
+
+        background: $White;
+        border: 1px solid $fu-light-400;
+        border-radius: 8px;
+
+        display: flex;
+        align-items: center;
+        gap: 16px;
+
+        .fu-file-icon{
+            @include size(80px);
+            background-image: url("data:image/svg+xml,%3Csvg fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 81 80'%3E%3Cpath d='M19.24 9h34.445l6.19 6.315 9.884 9.76V71H19.241V9Z' fill='%23EDEFF0'/%3E%3Cpath d='M53.685 9 69.76 25.074H55.981a2.296 2.296 0 0 1-2.296-2.296V9Z' fill='%2353575B'/%3E%3Crect x='9.5' y='40' width='40' height='21' rx='4' fill='%2353575B'/%3E%3Cpath d='M24.407 48.552h1.045a2.875 2.875 0 0 0-.374-1.1 2.697 2.697 0 0 0-.715-.803 3.134 3.134 0 0 0-.979-.484A4.038 4.038 0 0 0 22.218 46c-.601 0-1.137.11-1.606.33-.462.213-.85.506-1.166.88a3.928 3.928 0 0 0-.704 1.32 5.186 5.186 0 0 0-.242 1.606c0 .572.073 1.107.22 1.606.154.499.381.931.682 1.298.3.367.678.656 1.133.869.455.205.986.308 1.595.308 1.005 0 1.797-.275 2.376-.825.58-.55.92-1.32 1.023-2.31h-1.045a2.997 2.997 0 0 1-.198.902 2.114 2.114 0 0 1-1.155 1.199c-.264.11-.568.165-.913.165-.47 0-.873-.088-1.21-.264a2.439 2.439 0 0 1-.836-.704c-.213-.3-.37-.649-.473-1.045a5.153 5.153 0 0 1-.154-1.276c0-.41.051-.807.154-1.188a3.06 3.06 0 0 1 .473-1.012c.22-.3.495-.539.825-.715.337-.176.74-.264 1.21-.264.55 0 1.023.14 1.419.418.403.279.664.697.781 1.254ZM31.866 48.486h.99c-.014-.433-.099-.803-.253-1.111a2.087 2.087 0 0 0-.616-.781 2.485 2.485 0 0 0-.902-.451A4.197 4.197 0 0 0 29.963 46c-.359 0-.71.048-1.056.143a2.804 2.804 0 0 0-.913.418 2.071 2.071 0 0 0-.638.715c-.16.286-.242.627-.242 1.023 0 .36.07.66.21.902.146.235.337.429.571.583.242.147.514.268.814.363.301.088.605.169.913.242.316.066.624.132.924.198.301.066.569.154.803.264.242.103.433.238.572.407.147.169.22.389.22.66 0 .286-.058.52-.176.704-.117.183-.27.33-.462.44-.19.103-.407.176-.649.22-.234.044-.469.066-.704.066a3.36 3.36 0 0 1-.858-.11 2.196 2.196 0 0 1-.737-.341 1.855 1.855 0 0 1-.506-.583 1.851 1.851 0 0 1-.187-.858h-.99c0 .477.085.891.253 1.243.176.345.411.63.704.858.301.22.646.385 1.034.495a4.665 4.665 0 0 0 2.332.033c.367-.08.697-.213.99-.396.294-.19.532-.433.715-.726.191-.3.286-.66.286-1.078 0-.389-.073-.711-.22-.968-.139-.257-.33-.47-.572-.638a2.827 2.827 0 0 0-.803-.396c-.3-.103-.608-.19-.924-.264a22.87 22.87 0 0 0-.913-.198 5.366 5.366 0 0 1-.814-.242 1.703 1.703 0 0 1-.572-.363.852.852 0 0 1-.209-.594c0-.257.048-.47.143-.638.103-.176.235-.315.396-.418.17-.103.36-.176.572-.22.213-.044.43-.066.65-.066.542 0 .986.128 1.33.385.352.25.558.656.616 1.221ZM38.047 54.041l2.794-7.854h-1.089l-2.266 6.809h-.022l-2.244-6.809h-1.122l2.761 7.854h1.188Z' fill='%23fff'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+        }
+
+        .fu-file-info{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 8px;
+            width: calc(100% - 233px);
+
+            .fu-file-name{
+                @extend %font-bodyMedium;
+                color: $fu-black-200;
+                @extend %truncate-flex-child;
+            }
+            .fu-file-state{
+                display: flex;
+                align-items: center;
+                gap: 4px;
+
+                @include icon-style('fu-file-state-success-icon', $fu-positive-700, 16px, false, true) {
+                    @include size(16px);
+                    display: none;
+                }
+                @include icon-style('fu-file-state-error-icon', $fu-negative-500, 16px, false, true) {
+                    @include size(16px);
+                    display: none;
+                }
+                .fu-file-message{
+                    @extend %font-caption;
+                    color: $fu-light-900;
+                    height: 16px;
+                }
+                &.success{
+                    .fu-file-state-success-icon{
+                        display: block;
+                    }
+                }
+                &.error{
+                    .fu-file-state-error-icon{
+                        display: block;
+                    }
+                }
+            }
+        }
+        .fu-file-actions{
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: auto;
+        }
+    }
+    // endregion
+
+    // region small size
+    &.small{
+        width: 620px;
+        height: 96px;
+        display: block;
+        .fu-files-selector-wrapper {
+            padding: 0 24px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 16px;
+
+            .fu-title-description{
+                align-items: start;
+                .fu-upload-title{
+                    margin: 0;
+                }
+            }
+        }
+        .fu-file-result-wrapper{
+            @include size(100%);
+            padding: 0 24px;
+        }
+    }
+    // endregion
+
+    // region general error and helper texts
+    .fu-error-msg{
+        @extend %font-caption;
+        color: $fu-negative-700;
+        margin-top: 3px;
+    }
+    .fu-helper-text{
+        @extend %font-caption;
+        color: $fu-black-200;
+        margin-top: 3px;
+    }
+    // endregion
+}

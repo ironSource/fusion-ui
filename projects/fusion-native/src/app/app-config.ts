@@ -74,6 +74,7 @@ import {ButtonComponent} from '@ironsource/fusion-ui/components/button';
 import {ChipFilterComponent} from '@ironsource/fusion-ui/components/chip-filter';
 import {ChipFiltersComponent} from '@ironsource/fusion-ui/components/chip-filters';
 import {FileDragAndDropComponent} from '@ironsource/fusion-ui/components/file-drag-and-drop';
+import {FileCsvUploadComponent} from '@ironsource/fusion-ui/components/file-csv-upload';
 
 // Services
 import {ApiService} from '@ironsource/fusion-ui/services/api/api.service';
@@ -221,5 +222,6 @@ export const components = [
     {name: `${PREFIX}-tab`, componentInstance: TabComponent},
     {name: `${PREFIX}-chip-filter`, componentInstance: ChipFilterComponent},
     {name: `${PREFIX}-chip-filters`, componentInstance: ChipFiltersComponent},
-    {name: `${PREFIX}-file-drag-and-drop`, componentInstance: FileDragAndDropComponent}
+    {name: `${PREFIX}-file-drag-and-drop`, componentInstance: FileDragAndDropComponent},
+    {name: `${PREFIX}-file-csv-upload`, componentInstance: FileCsvUploadComponent}
 ];

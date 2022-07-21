@@ -47,6 +47,8 @@ export * from '@ironsource/fusion-ui/components/toast/v2';
 export * from '@ironsource/fusion-ui/components/toggle/v2';
 export * from '@ironsource/fusion-ui/components/tooltip/';
 export * from '@ironsource/fusion-ui/components/video-player';
+export * from '@ironsource/fusion-ui/components/file-drag-and-drop';
+export * from '@ironsource/fusion-ui/components/file-csv-upload';
 export * from '@ironsource/fusion-ui/services/api';
 export * from '@ironsource/fusion-ui/services/cache';
 export * from '@ironsource/fusion-ui/services/colors';

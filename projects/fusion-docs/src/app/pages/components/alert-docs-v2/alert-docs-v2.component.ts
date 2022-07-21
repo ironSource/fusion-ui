@@ -1,11 +1,12 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
-import {Observable, Subject} from 'rxjs';
+import {BehaviorSubject, Observable, of, Subject, throwError} from 'rxjs';
 import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
-import {takeUntil} from 'rxjs/operators';
+import {delay, finalize, take, takeUntil, tap} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
 import {VersionService} from '../../../services/version/version.service';
+import {FileDragAndDropState} from '@ironsource/fusion-ui/components/file-drag-and-drop';
 
 @Component({
     selector: 'fusion-alert-docs-v2',
@@ -55,6 +56,11 @@ export class AlertDocsV2Component implements OnInit, OnDestroy {
         }
     ];
 
+    fileInUpload$ = new BehaviorSubject(false);
+    fileUploadDisabled$ = new BehaviorSubject(false);
+
+    fileState$ = new BehaviorSubject<FileDragAndDropState>(null);
+
     constructor(private versionService: VersionService, private router: Router, private docLayoutService: DocsLayoutService) {}
 
     ngOnInit() {
@@ -74,5 +80,36 @@ export class AlertDocsV2Component implements OnInit, OnDestroy {
 
     linkClicked($event): void {
         $event.preventDefault();
+    }
+
+    onFilesSelected(files: FileList) {
+        of(files.item(0))
+            .pipe(
+                takeUntil(this.onDestroy$),
+                tap((file: File) => {
+                    this.fileInUpload$.next(true);
+                    this.fileState$.next({name: file.name});
+                }),
+                delay(2000),
+                finalize(() => {
+                    this.fileInUpload$.next(false);
+                })
+            )
+            .subscribe(
+                (file: File) => {
+                    this.fileState$.next({name: file.name, state: 'success'});
+                },
+                error => {
+                    this.fileState$.next({...this.fileState$.getValue(), state: 'error', message: error.errorMessage});
+                }
+            );
+    }
+
+    onFileDelete(fileName: string) {
+        console.log('delete file', fileName);
+        this.fileInUpload$.next(true);
+        setTimeout(_ => {
+            this.fileInUpload$.next(false);
+        }, 1000);
     }
 }

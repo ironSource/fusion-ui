@@ -7,6 +7,7 @@ import {ExampleBlockModule} from '../../../components/example-block/example-bloc
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {AlertModule} from '@ironsource/fusion-ui/components/alert/v2';
+import {FileCsvUploadModule} from '@ironsource/fusion-ui/components/file-csv-upload';
 
 const routes: Routes = [{path: '', component: AlertDocsV2Component}];
 
@@ -19,7 +20,8 @@ const routes: Routes = [{path: '', component: AlertDocsV2Component}];
         ExampleBlockModule,
         CodeBlockModule,
         DocsMenuModule,
-        AlertModule
+        AlertModule,
+        FileCsvUploadModule
     ]
 })
 export class AlertDocsV2Module {}

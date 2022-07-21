@@ -2,7 +2,7 @@ import {Directive, ElementRef, EventEmitter, Input, Output, OnInit, AfterViewIni
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {fromEvent, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {DISABLED_CSS_CLASS, DRAG_OVER_CSS_CLASS} from './file-drag-and-drop.config';
+import {DISABLED_CSS_CLASS, DRAG_OVER_CSS_CLASS, LOADING_CSS_CLASS} from './file-drag-and-drop.config';
 
 /**
  * Directive 'fusionFileDragAndDrop' for file selection by file select dialog
@@ -23,7 +23,14 @@ export class FileDragAndDropDirective implements OnInit, AfterViewInit, OnDestro
      */
     @Input() set disabled(value: boolean) {
         this._disabled = value;
-        this.toggleCssClassDisabled(this._disabled);
+        this.toggleCssClass(DISABLED_CSS_CLASS, this._disabled);
+    }
+    /**
+     * for loading file selection
+     */
+    @Input() set loading(value: boolean) {
+        this._loading = value;
+        this.toggleCssClass(LOADING_CSS_CLASS, this._loading);
     }
     /**
      * input.file accept attribute (file select dialog only, not grad&&drop)
@@ -36,12 +43,13 @@ export class FileDragAndDropDirective implements OnInit, AfterViewInit, OnDestro
     /**
      * output event emitter (files: FileList)
      */
-    @Output() handleFile = new EventEmitter();
+    @Output() handleFiles = new EventEmitter();
 
     onDestroy$ = new Subject<void>();
     inputElement: any;
 
     private _disabled = false;
+    private _loading = false;
 
     constructor(private _element: ElementRef, private _renderer: Renderer2) {}
 
@@ -78,7 +86,7 @@ export class FileDragAndDropDirective implements OnInit, AfterViewInit, OnDestro
                     return;
                 }
                 const target = event.target as HTMLInputElement;
-                this.handleFile.emit(target.files);
+                this.handleFiles.emit(target.files);
                 setTimeout(() => {
                     // set input value to be empty to fix issue when user tries to upload same file again
                     target.value = '';
@@ -93,39 +101,30 @@ export class FileDragAndDropDirective implements OnInit, AfterViewInit, OnDestro
     }
 
     onDragEnter(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        if (this._disabled) {
-            return;
+        this.suppressDefaultEvent(event);
+        if (this.isDraggable()) {
+            this._renderer.addClass(this._element.nativeElement, DRAG_OVER_CSS_CLASS);
         }
-        this._renderer.addClass(this._element.nativeElement, DRAG_OVER_CSS_CLASS);
     }
 
     onDragLeave(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        if (this._disabled) {
-            return;
+        this.suppressDefaultEvent(event);
+        if (this.isDraggable()) {
+            this._renderer.removeClass(this._element.nativeElement, DRAG_OVER_CSS_CLASS);
         }
-        this._renderer.removeClass(this._element.nativeElement, DRAG_OVER_CSS_CLASS);
     }
 
     onDragOver(event) {
-        event.preventDefault();
-        event.stopPropagation();
+        this.suppressDefaultEvent(event);
     }
 
     onDrop(event) {
-        event.preventDefault();
-        event.stopPropagation();
-
-        if (this._disabled) {
-            return;
+        this.suppressDefaultEvent(event);
+        if (this.isDraggable()) {
+            this._renderer.removeClass(this._element.nativeElement, DRAG_OVER_CSS_CLASS);
+            const files = event.dataTransfer.files;
+            this.handleFiles.emit(files);
         }
-
-        this._renderer.removeClass(this._element.nativeElement, DRAG_OVER_CSS_CLASS);
-        const files = event.dataTransfer.files;
-        this.handleFile.emit(files);
     }
 
     onClick(event) {
@@ -133,20 +132,30 @@ export class FileDragAndDropDirective implements OnInit, AfterViewInit, OnDestro
         event.stopPropagation();
 
         if (
-            !this._disabled &&
-            (event.target.id === this.buttonId ||
-                (event.target.offsetParent && event.target.offsetParent.id === this.buttonId) ||
-                isNullOrUndefined(this.buttonId))
+            !isNullOrUndefined(this.buttonId) &&
+            (!this._disabled || !this._loading) &&
+            (event.target.id === this.buttonId || event.target.closest('#' + this.buttonId))
         ) {
             this.inputElement.click();
         }
     }
 
-    private toggleCssClassDisabled(isDisable: boolean) {
-        if (isDisable) {
-            this._renderer.addClass(this._element.nativeElement, DISABLED_CSS_CLASS);
+    private suppressDefaultEvent(event: Event) {
+        if (event) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+    }
+
+    private isDraggable(): boolean {
+        return !(this._disabled || this._loading);
+    }
+
+    private toggleCssClass(className: string, toggled: boolean) {
+        if (toggled) {
+            this._renderer.addClass(this._element.nativeElement, className);
         } else {
-            this._renderer.removeClass(this._element.nativeElement, DISABLED_CSS_CLASS);
+            this._renderer.removeClass(this._element.nativeElement, className);
         }
     }
 }

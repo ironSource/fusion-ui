@@ -16,6 +16,10 @@ export class FileDragAndDropComponent {
      */
     @Input() disabled: boolean;
     /**
+     * for loading file selection
+     */
+    @Input() loading: boolean;
+    /**
      * input.file accept attribute (file select dialog only, not grad&&drop)
      */
     @Input() accept: string;
@@ -26,9 +30,9 @@ export class FileDragAndDropComponent {
     /**
      * output event emitter (files: FileList)
      */
-    @Output() handleFile = new EventEmitter();
+    @Output() handleFiles = new EventEmitter();
 
-    handleSelectedFile(files: FileList) {
-        this.handleFile.emit(files);
+    handleSelectedFiles(files: FileList) {
+        this.handleFiles.emit(files);
     }
 }
