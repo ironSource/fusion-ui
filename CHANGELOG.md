@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.2-rc.6](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.5...v3.1.2-rc.6) (2022-07-24)
+
+
+### Bug Fixes
+
+* **fu-437:** add 'isInsideByTargetPath' method to  click-outside directive ([55c97c9](https://github.com/ironSource/fusion-ui/commit/55c97c9bce72f268cb8e6ea42bc80b21deea81ac))
+
 ### [3.1.2-rc.5](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.4...v3.1.2-rc.5) (2022-07-21)
 
 
