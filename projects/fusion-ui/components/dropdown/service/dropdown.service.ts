@@ -82,9 +82,6 @@ export class DropdownService {
                 optionToString = option;
             } else if (option.displayText) {
                 optionToString = option.displayText;
-            } else if (!!option.subText) {
-                optionToString = option.displayText;
-                return ``;
             } else {
                 mappingOptions = mappingOptions ? mappingOptions : {id: 'id', title: 'title'};
                 if (withoutHTMLInString) {
