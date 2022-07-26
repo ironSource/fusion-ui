@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.2-rc.7](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.6...v3.1.2-rc.7) (2022-07-26)
+
+
+### Bug Fixes
+
+* **fu-443:** fix for dropdown - selected option not presenter ([03b6ec5](https://github.com/ironSource/fusion-ui/commit/03b6ec595b4a2ec376b3e3a3aff7a58e51943867))
+
 ### [3.1.2-rc.6](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.5...v3.1.2-rc.6) (2022-07-24)
 
 
