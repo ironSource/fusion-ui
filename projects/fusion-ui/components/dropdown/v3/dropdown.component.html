@@ -3,6 +3,7 @@
     [id]="id"
     [style.width]="placeholderWidth"
     [clickOutsideActivate]="isOpen$ | async"
+    [clickOutsideByCoordinates]="true"
     (fusionClickOutside)="onOutsideClick($event)"
     [ngClass]="getHolderCSSClasses()"
 >

@@ -6,6 +6,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
     styleUrls: ['./modal-footer.component.scss']
 })
 export class ModalFooterComponent {
+    @Input() submitButtonPending = false;
     @Input() set cancelButton(config: {cancelButtonText?: string; cancelButtonClass?: string; cancelButtonHidden?: boolean}) {
         this.cancelButtonText = config?.cancelButtonText;
         this.cancelButtonClass = config?.cancelButtonClass;

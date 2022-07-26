@@ -2,6 +2,52 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.2-rc.6](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.5...v3.1.2-rc.6) (2022-07-24)
+
+
+### Bug Fixes
+
+* **fu-437:** add 'isInsideByTargetPath' method to  click-outside directive ([55c97c9](https://github.com/ironSource/fusion-ui/commit/55c97c9bce72f268cb8e6ea42bc80b21deea81ac))
+
+### [3.1.2-rc.5](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.4...v3.1.2-rc.5) (2022-07-21)
+
+
+### Bug Fixes
+
+* **fu-437:** revert fix in click-outside for multi-select dropdown with search ([200d0cb](https://github.com/ironSource/fusion-ui/commit/200d0cb09ea70b2e912ac794967c8b44db3df0e9))
+
+### [3.1.2-rc.4](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.3...v3.1.2-rc.4) (2022-07-21)
+
+
+### Bug Fixes
+
+* **fu-436:** fixed tooltip visibility on radio if label not truncated ([a4fe3dc](https://github.com/ironSource/fusion-ui/commit/a4fe3dc1fd7ffe790387ce57b67a4bb5d9caf133))
+* **fu-437:** fixed click-outside for dropdown with search ([f888b32](https://github.com/ironSource/fusion-ui/commit/f888b32e2b85839b4c058a9c8a36fb3eb9a8f67f))
+* **fu-439:** fixed button text vertical align to center in multi-select dropdown ([c0c6a7f](https://github.com/ironSource/fusion-ui/commit/c0c6a7fb5b2cd91acc7d20f545715d24959cdb26))
+
+### [3.1.2-rc.3](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.2...v3.1.2-rc.3) (2022-07-19)
+
+
+### Bug Fixes
+
+* **3.x.x:** fixed custom color support for checkbox component v3 ([cb203de](https://github.com/ironSource/fusion-ui/commit/cb203de30d4c6b0cf4d887dbd4c82d12db9cc5e5))
+* **3.x.x:** fixed error message style for multi-select dropdown v3 ([ec45a3d](https://github.com/ironSource/fusion-ui/commit/ec45a3da0f25c5d13ab06c69f1e677f237cc08f5))
+
+### [3.1.2-rc.2](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.1...v3.1.2-rc.2) (2022-07-19)
+
+### [3.1.2-rc.1](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.0...v3.1.2-rc.1) (2022-07-19)
+
+* fu-429: checkbox component update to v3
+* fu-430: radio button component update to v3
+* fu-428: multi-select dropdown component update to v3
+
+### [3.1.2-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.1.1...v3.1.2-rc.0) (2022-07-14)
+
+
+### Bug Fixes
+
+* **3.1.1:** fix loading state and forcedClosing input when submit modal content ([274b291](https://github.com/ironSource/fusion-ui/commit/274b29169463053160d3f6e5b6bbf6a6482e99fb))
+
 ### [3.1.1](https://github.com/ironSource/fusion-ui/compare/v3.1.1-rc.1...v3.1.1) (2022-07-12)
 
 ### [3.1.1-rc.3](https://github.com/ironSource/fusion-ui/compare/v3.1.1-rc.2...v3.1.1-rc.3) (2022-07-10)
