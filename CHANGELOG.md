@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.2-rc.8](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.7...v3.1.2-rc.8) (2022-07-26)
+
+
+### Bug Fixes
+
+* **3.1.2:** fix for daterange force overlay align position ([749b27a](https://github.com/ironSource/fusion-ui/commit/749b27a90bbcb76ffc781dc19205f699710e7cb3))
+
 ### [3.1.2-rc.7](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.6...v3.1.2-rc.7) (2022-07-26)
 
 
