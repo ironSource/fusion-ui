@@ -4,7 +4,7 @@ import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 import {HeaderState} from '@ironsource/fusion-ui/components/header/common/base';
 import {MENU_ITEMS, MENU_ITEMS_V2, STYLE_2_MENU_ITEMS, USER_PROFILE_MENU_ITEMS} from './menu-items';
 import {StyleVersionButtonComponent} from '../../components/style-version-button/style-version-button.component';
-import {Observable, Subject} from 'rxjs';
+import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {DocsLayoutService} from './docs-layout.service';
