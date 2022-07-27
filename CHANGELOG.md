@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.2-rc.9](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.8...v3.1.2-rc.9) (2022-07-27)
+
+
+### Bug Fixes
+
+* **3.1.2:** fix for close on date selection for datepicker v1 ([1ace028](https://github.com/ironSource/fusion-ui/commit/1ace028a7eda14fc4d57e5b8a31cabc8ff3228d9))
+
 ### [3.1.2-rc.8](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.7...v3.1.2-rc.8) (2022-07-26)
 
 
