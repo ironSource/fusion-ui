@@ -2,6 +2,50 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.2-rc.9](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.8...v3.1.2-rc.9) (2022-07-27)
+
+
+### Bug Fixes
+
+* **3.1.2:** fix for close on date selection for datepicker v1 ([1ace028](https://github.com/ironSource/fusion-ui/commit/1ace028a7eda14fc4d57e5b8a31cabc8ff3228d9))
+
+### [3.1.2-rc.8](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.7...v3.1.2-rc.8) (2022-07-26)
+
+
+### Bug Fixes
+
+* **3.1.2:** fix for daterange force overlay align position ([749b27a](https://github.com/ironSource/fusion-ui/commit/749b27a90bbcb76ffc781dc19205f699710e7cb3))
+
+### [3.1.2-rc.7](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.6...v3.1.2-rc.7) (2022-07-26)
+
+
+### Bug Fixes
+
+* **fu-443:** fix for dropdown - selected option not presenter ([03b6ec5](https://github.com/ironSource/fusion-ui/commit/03b6ec595b4a2ec376b3e3a3aff7a58e51943867))
+
+### [3.1.2-rc.6](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.5...v3.1.2-rc.6) (2022-07-24)
+
+
+### Bug Fixes
+
+* **fu-437:** add 'isInsideByTargetPath' method to  click-outside directive ([55c97c9](https://github.com/ironSource/fusion-ui/commit/55c97c9bce72f268cb8e6ea42bc80b21deea81ac))
+
+### [3.1.2-rc.5](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.4...v3.1.2-rc.5) (2022-07-21)
+
+
+### Bug Fixes
+
+* **fu-437:** revert fix in click-outside for multi-select dropdown with search ([200d0cb](https://github.com/ironSource/fusion-ui/commit/200d0cb09ea70b2e912ac794967c8b44db3df0e9))
+
+### [3.1.2-rc.4](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.3...v3.1.2-rc.4) (2022-07-21)
+
+
+### Bug Fixes
+
+* **fu-436:** fixed tooltip visibility on radio if label not truncated ([a4fe3dc](https://github.com/ironSource/fusion-ui/commit/a4fe3dc1fd7ffe790387ce57b67a4bb5d9caf133))
+* **fu-437:** fixed click-outside for dropdown with search ([f888b32](https://github.com/ironSource/fusion-ui/commit/f888b32e2b85839b4c058a9c8a36fb3eb9a8f67f))
+* **fu-439:** fixed button text vertical align to center in multi-select dropdown ([c0c6a7f](https://github.com/ironSource/fusion-ui/commit/c0c6a7fb5b2cd91acc7d20f545715d24959cdb26))
+
 ### [3.1.2-rc.3](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.2...v3.1.2-rc.3) (2022-07-19)
 
 
