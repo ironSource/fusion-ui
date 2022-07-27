@@ -370,8 +370,8 @@ export class DatepickerComponent implements OnInit, OnDestroy, OnChanges, AfterV
         }
         if (this.suppressClickOnRemove) {
             $event.stopPropagation();
-            this.isOpen$.next(false);
         }
+        this.isOpen$.next(false);
     }
 
     /**
