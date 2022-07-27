@@ -23,6 +23,13 @@ export class FileCsvUploadComponent {
      */
     @Input() loading: boolean;
     /**
+     * Tile text
+     * @param value
+     */
+    @Input() set title(value: string) {
+        this._title = value ?? 'Upload CSV';
+    }
+    /**
      * General component error
      * @param value
      */
@@ -59,6 +66,11 @@ export class FileCsvUploadComponent {
 
     successIcon: IconData = {iconName: 'success-full', iconVersion: 'v3'};
     errorIcon: IconData = {iconName: 'error', iconVersion: 'v3'};
+
+    get title(): string {
+        return this._title;
+    }
+    private _title: string;
 
     get error(): string {
         return this._error;
