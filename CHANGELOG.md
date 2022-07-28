@@ -9,6 +9,30 @@ All notable changes to this project will be documented in this file. See [standa
 
 * **fu-433:** add component FileCsvUploadComponent ([#88](https://github.com/ironSource/fusion-ui/issues/88)) ([8fee685](https://github.com/ironSource/fusion-ui/commit/8fee685ba8dc8dba0151ff978b266a5608195c79))
 
+  Component based on FileDragAndDropComponent and use fusionFileDragAndDrop directive
+  With this component consumer can select one .csv file (for upload) by drag and drop or select file system dialog.
+  Component has limit (by design request) for only one file with csv extension
+
+  - Input props:
+      - 'title: string' - Title text
+      - 'error: string' - General component error message appear on left bottom of component
+      - 'helper: string' - General component helper message appear on left bottom of component
+      - 'fileState: FileDragAndDropState' - State of selected file.
+          ```
+          interface FileDragAndDropState{
+              name: string
+              state?: 'success' | 'error' | 'selected'
+              message?: string
+          }
+          ```
+      - 'disabled: boolean' - state disable
+      - 'loading: boolean' - state loading
+
+  - Output Events:
+      - emit event (handleFiles) with selected files: FileList with one item (file) for validation and upload by consumer
+      - emit event (deleteFile) with selected file name and reset component view to default
+      - emit event (replaceFile) with selected file name and reset component view to default
+
 ### [3.1.2-rc.9](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.8...v3.1.2-rc.9) (2022-07-27)
 
 
