@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.9...v3.2.0-rc.0) (2022-07-28)
+
+
+### Features
+
+* **fu-433:** add component FileCsvUploadComponent ([#88](https://github.com/ironSource/fusion-ui/issues/88)) ([8fee685](https://github.com/ironSource/fusion-ui/commit/8fee685ba8dc8dba0151ff978b266a5608195c79))
+
 ### [3.1.2-rc.9](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.8...v3.1.2-rc.9) (2022-07-27)
 
 
