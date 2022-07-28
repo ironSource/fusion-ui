@@ -1,0 +1,42 @@
+<ng-container *ngIf="fileState as fileState">
+    <div class="fu-files-selector-wrapper"
+         fusionFileDragAndDrop
+         [buttonId]="buttonId"
+         [disabled]="disabled"
+         [loading]="loading"
+         accept=".csv"
+         [multiple]="false"
+         (handleFiles)="handleSelectedFiles($event)"
+         *ngIf="!fileState?.state"
+    >
+        <div class="fu-upload-icon">
+            <div></div>
+        </div>
+        <div class="fu-title-description">
+            <div class="fu-upload-title">{{title}}</div>
+            <div class="fu-upload-description">Drag & drop your file here or <fusion-button [id]="buttonId" class="fu-link-button">browse</fusion-button></div>
+        </div>
+
+        <div class="fu-disabled-overlay"></div>
+    </div>
+
+    <div class="fu-file-result-wrapper" *ngIf="fileState?.state">
+        <div class="fu-file-icon"></div>
+        <div class="fu-file-info">
+            <div class="fu-file-name truncate" [fusionTooltip]="fileState.name">{{fileState.name}}</div>
+            <div class="fu-file-state {{fileState.state}}">
+                <fusion-icon class="fu-file-state-success-icon" [name]="successIcon"></fusion-icon>
+                <fusion-icon class="fu-file-state-error-icon" [name]="errorIcon"></fusion-icon>
+                <div class="fu-file-message" >{{fileStateMessage}}</div>
+            </div>
+        </div>
+        <div class="fu-file-actions">
+            <fusion-button class="transparent secondary" (click)="onReplace()">Replace</fusion-button>
+            <fusion-button class="transparent secondary" icon="delete" (click)="onDelete()"></fusion-button>
+        </div>
+    </div>
+</ng-container>
+<!--errors holder-->
+<div class="fu-error-msg" *ngIf="error">{{ error }}</div>
+<!--helper holder-->
+<div class="fu-helper-text" *ngIf="helper">{{helper}}</div>
