@@ -17,6 +17,7 @@ import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 export class SidebarMenuComponent implements OnInit, OnDestroy {
     @Input() set menuItems(value: SidebarMenuItem[]) {
         this.items = value;
+        this.initNavigationEvents();
     }
     @Input() set pathNameNormalizeRegex(value: RegExp) {
         this.pathRegex = value;

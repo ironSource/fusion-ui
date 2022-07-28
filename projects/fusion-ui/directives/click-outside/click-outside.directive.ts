@@ -42,7 +42,7 @@ export class ClickOutsideDirective implements OnInit, OnDestroy {
                 const clickedInside =
                     this.byCoordinatesMode && event.clientY !== 0 && event.clientY !== 0
                         ? this.isClickInsideByCoordinates(event)
-                        : this.elementRef.nativeElement.contains(this.getEventElement(event));
+                        : this.isInsideByTargetPath(event);
                 if (!clickedInside) {
                     this.fusionClickOutside.emit(event.target);
                 }
@@ -65,11 +65,30 @@ export class ClickOutsideDirective implements OnInit, OnDestroy {
         );
     }
 
+    isInsideByTargetPath(event: MouseEvent) {
+        if (isFunction(event.composedPath)) {
+            const elements = event.composedPath();
+            return elements.some(el => {
+                return el == this.elementRef.nativeElement;
+            });
+        } else {
+            return this.elementRef.nativeElement.contains(this.getEventElement(event));
+        }
+    }
+
     getEventElement(event: MouseEvent) {
         let element;
+
+        console.log('--', this.elementRef.nativeElement, event.composedPath());
+
         if (isFunction(event.composedPath)) {
             // event.composedPath()[0] support opened shadow root
             const elements = event.composedPath();
+
+            elements.forEach(el => {
+                console.log(':', el, el == this.elementRef.nativeElement);
+            });
+
             element = elements.length > 0 ? elements[0] : null;
         }
 

@@ -1,0 +1,13 @@
+<input
+    type="checkbox"
+    [id]="id"
+    [value]="value"
+    [checked]="checked"
+    [disabled]="isDisabled"
+    (change)="change($event)"
+    [indeterminate]="isIndeterminate"
+/>
+<label [for]="id"  [ngClass]="class">
+    <span class="fu-label-checkbox" [style.background]="getColoredBackgroundImage()">&nbsp;</span><fusion-icon *ngIf="icon" [name]="icon"></fusion-icon
+    ><fusion-flag *ngIf="flag" [name]="flag"></fusion-flag><span *ngIf="label" [fusionTooltip]="label" class="fu-label-text truncate">{{ label }}</span>
+</label>

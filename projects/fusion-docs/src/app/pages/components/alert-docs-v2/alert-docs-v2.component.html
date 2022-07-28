@@ -106,6 +106,28 @@ alert.appendChild(textNode);'
                 </fusion-code-block>
             </ng-template>
             <!--Code-Examples-->
+            <!--files selector example holder-->
+            <div style="width: 620px; height: 196px; display: block">
+                <fusion-file-csv-upload
+                    [loading]="fileInUpload$ | async"
+                    [disabled]="fileUploadDisabled$ | async"
+                    [fileState]="fileState$ | async"
+                    (handleFiles)="onFilesSelected($event)"
+                    (deleteFile)="onFileDelete($event)"
+                ></fusion-file-csv-upload>
+            </div>
+            <!--files selector example holder-->
+            <br /><hr/><br />
+            <div>
+                <fusion-file-csv-upload class="small"
+                    [loading]="fileInUpload$ | async"
+                    [disabled]="fileUploadDisabled$ | async"
+                    [fileState]="fileState$ | async"
+                    (handleFiles)="onFilesSelected($event)"
+                    (deleteFile)="onFileDelete($event)"
+                ></fusion-file-csv-upload>
+            </div>
+            <br /><hr/><br />
 
             <div class="row">
                 <div class="col-6">

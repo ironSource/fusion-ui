@@ -134,7 +134,6 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     }
 
     open() {
-        console.log('forced open');
         this.trigger.nativeElement.click();
     }
 
@@ -343,7 +342,10 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
         } else {
             this.daterangeOptions = this.defaultOptions;
         }
-        this.overlayAlign$.next(this.daterangeOptions?.overlayAlignPosition ?? '');
+
+        if (!isNullOrUndefined(this.daterangeOptions?.overlayAlignPosition)) {
+            this.overlayAlign$.next(this.daterangeOptions.overlayAlignPosition);
+        }
 
         this.initMonth(this.calendarService.getCurrentDateUTC());
     }
