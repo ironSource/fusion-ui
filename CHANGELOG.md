@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.2.1](https://github.com/ironSource/fusion-ui/compare/v3.2.0...v3.2.1) (2022-07-31)
+
+
+### Bug Fixes
+
+* **fu-455:** fixed dropdown option v3 css ([ebed94f](https://github.com/ironSource/fusion-ui/commit/ebed94f35884eab0a939b12f8b2dd2a54f34eac0))
+
 ## [3.2.0](https://github.com/ironSource/fusion-ui/compare/v3.2.0-rc.0...v3.2.0) (2022-07-28)
 
 ## [3.2.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.1.2-rc.9...v3.2.0-rc.0) (2022-07-28)
