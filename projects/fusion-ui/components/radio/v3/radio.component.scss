@@ -56,7 +56,6 @@
     label {
         @include icon-style('fu-radio-icon', currentColor, 16px, false, true) {
             @include size(16px);
-            margin: 0 -4px;
         }
     }
 
