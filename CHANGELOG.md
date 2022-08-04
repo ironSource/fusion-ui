@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* **fu-435:** fixed dropdown option v3 css ([d5c1dfd](https://github.com/ironSource/fusion-ui/commit/d5c1dfd080b30cb8fe12ddd8e7d420ddc2a82391))
+* fixed icons margin on radiobutton v3 css ([d5c1dfd](https://github.com/ironSource/fusion-ui/commit/d5c1dfd080b30cb8fe12ddd8e7d420ddc2a82391))
 * **fu-455:** fixed dropdown option v3 css ([#90](https://github.com/ironSource/fusion-ui/issues/90)) ([520d449](https://github.com/ironSource/fusion-ui/commit/520d449ff5d72ffb893f7ba0cf88a2f3b20e1330))
 
 ### [3.2.1](https://github.com/ironSource/fusion-ui/compare/v3.2.0...v3.2.1) (2022-07-31)
