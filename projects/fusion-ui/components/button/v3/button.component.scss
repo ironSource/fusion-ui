@@ -73,7 +73,7 @@ $buttonBorderRadius: 100px;
 
     &.small {
         height: $smallHeight;
-        @extend %font-bodyXSmall;
+        @extend %font-bodyXSmallStrong;
     }
 
     &.large{
@@ -104,11 +104,11 @@ $buttonBorderRadius: 100px;
 
         &.third{
             color: $fu-black-500;
-            border-color: $fu-light-200;
+            border-color: $fu-light-500;
             &:hover,
             &:active {
                 border-color: transparent;
-                background-color: $fu-light-200;
+                background-color: $fu-light-500;
             }
         }
 
