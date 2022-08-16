@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.2.4-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.2.3...v3.2.4-rc.0) (2022-08-16)
+
+
+### Bug Fixes
+
+* **3.1.1:** v3 style-guide fixes ([#93](https://github.com/ironSource/fusion-ui/issues/93)) ([2854224](https://github.com/ironSource/fusion-ui/commit/285422424b2f2dae004a02c85c49f0874dbc516f))
+* **3.x.x:** fixed title input for file-csv-upload component ([1439abf](https://github.com/ironSource/fusion-ui/commit/1439abfa72a8f2ba209672d836aa45364d19e35c))
+
 ### [3.2.3](https://github.com/ironSource/fusion-ui/compare/v3.2.2...v3.2.3) (2022-08-04)
 
 ### Bug Fixes
