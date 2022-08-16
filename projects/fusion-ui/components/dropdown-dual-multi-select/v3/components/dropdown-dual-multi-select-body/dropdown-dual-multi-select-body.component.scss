@@ -55,19 +55,23 @@ $itemWidth: 252px;
 
             .content-col-left {
                 width: 272px;
-                padding: 4px 9px 3px 9px;
+                padding: 4px 12px 3px 12px;
                 border-bottom: 1px solid $fu-light-400;
                 .body-header {
                     height: 32px;
                     display: flex;
                     align-items: center;
                     .option-header-body {
+                        display: flex;
+                        align-items: center;
                         color: $fu-black-500;
                         .fu-options-label {
                             margin: 5px;
                         }
                         .fu-check-all{
                             margin-left: 2px;
+                            width: 16px;
+                            height: 16px;
                         }
                     }
                 }
@@ -75,7 +79,7 @@ $itemWidth: 252px;
 
             .content-col-right {
                 width: 272px;
-                padding: 4px 8px 3px 8px;
+                padding: 4px 10px 3px 10px;
                 border-bottom: 1px solid $fu-light-400;
                 border-left: 1px solid $fu-light-400;
                 .body-header {

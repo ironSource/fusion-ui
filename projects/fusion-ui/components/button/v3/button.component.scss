@@ -6,6 +6,7 @@
 // small
 $smallMinWidth: 66px;
 $smallHeight: 24px;
+$smallPadding: 8px 12px;
 
 // medium - default
 $mediumMinWidth: 74px;
@@ -73,6 +74,7 @@ $buttonBorderRadius: 100px;
 
     &.small {
         height: $smallHeight;
+        padding: $smallPadding;
         @extend %font-bodyXSmallStrong;
     }
 
