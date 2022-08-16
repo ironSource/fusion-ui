@@ -12,7 +12,7 @@ $clearIconColor: #DADADA;
 
 %search-icon-position{
     position: absolute;
-    left: 3px;
+    left: 10px;
     top: 0;
 }
 
@@ -60,7 +60,7 @@ $clearIconColor: #DADADA;
                     color: $fu-black-500;
                     width: 365px;
                     height: 16px;
-                    padding: 0 16px 0 16px;
+                    padding: 0 25px 0 25px;
                     margin-left: 5px;
                     &::placeholder {
                         color: $fu-light-800;
