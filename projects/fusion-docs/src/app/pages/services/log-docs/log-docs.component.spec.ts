@@ -10,14 +10,12 @@ describe('LogDocsComponent', () => {
     let component: LogDocsComponent;
     let fixture: ComponentFixture<LogDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [LogDocsComponent],
-                imports: [RouterModule, ExampleBlockModule, CodeBlockModule, DocsMenuModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [LogDocsComponent],
+            imports: [RouterModule, ExampleBlockModule, CodeBlockModule, DocsMenuModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(LogDocsComponent);

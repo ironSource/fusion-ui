@@ -55,47 +55,45 @@ describe('MultiDropdownComponent', () => {
     let debugEl: DebugElement;
     let el: HTMLElement;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [
-                    ReactiveFormsModule,
-                    IconModule,
-                    ButtonModule,
-                    InputModule,
-                    FlagModule,
-                    CheckboxModule,
-                    ClickOutsideModule,
-                    FilterByFieldModule,
-                    CloneModule,
-                    TooltipModule,
-                    DynamicComponentsModule,
-                    DropdownLoaderModule,
-                    DropdownOptionModule,
-                    DropdownSearchModule,
-                    DropdownSelectModule
-                ],
-                declarations: [MultiDropdownComponent],
-                providers: [
-                    FilterByFieldPipe,
-                    ClonePipe,
-                    DropdownService,
-                    {
-                        provide: LogService,
-                        useClass: MockLogService
-                    },
-                    {
-                        provide: UniqueIdService,
-                        useClass: MockUniqueIdService
-                    },
-                    {
-                        provide: ApiService,
-                        useClass: MockApiService
-                    }
-                ]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [
+                ReactiveFormsModule,
+                IconModule,
+                ButtonModule,
+                InputModule,
+                FlagModule,
+                CheckboxModule,
+                ClickOutsideModule,
+                FilterByFieldModule,
+                CloneModule,
+                TooltipModule,
+                DynamicComponentsModule,
+                DropdownLoaderModule,
+                DropdownOptionModule,
+                DropdownSearchModule,
+                DropdownSelectModule
+            ],
+            declarations: [MultiDropdownComponent],
+            providers: [
+                FilterByFieldPipe,
+                ClonePipe,
+                DropdownService,
+                {
+                    provide: LogService,
+                    useClass: MockLogService
+                },
+                {
+                    provide: UniqueIdService,
+                    useClass: MockUniqueIdService
+                },
+                {
+                    provide: ApiService,
+                    useClass: MockApiService
+                }
+            ]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(MultiDropdownComponent);

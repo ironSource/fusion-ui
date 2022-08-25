@@ -12,27 +12,25 @@ describe('LayoutDocsComponent', () => {
     let component: LayoutDocsComponent;
     let fixture: ComponentFixture<LayoutDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [LayoutDocsComponent],
-                imports: [
-                    DocsMenuModule,
-                    ExampleBlockModule,
-                    CodeBlockModule,
-                    AlertModule,
-                    LayoutModule,
-                    TableModule,
-                    RouterTestingModule.withRoutes([
-                        {
-                            path: 'docs/components/v2/layout',
-                            loadChildren: () => import('.././layout-docs-v2/layout-docs-v2.module').then(m => m.LayoutDocsV2Module)
-                        }
-                    ])
-                ]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [LayoutDocsComponent],
+            imports: [
+                DocsMenuModule,
+                ExampleBlockModule,
+                CodeBlockModule,
+                AlertModule,
+                LayoutModule,
+                TableModule,
+                RouterTestingModule.withRoutes([
+                    {
+                        path: 'docs/components/v2/layout',
+                        loadChildren: () => import('.././layout-docs-v2/layout-docs-v2.module').then(m => m.LayoutDocsV2Module)
+                    }
+                ])
+            ]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(LayoutDocsComponent);

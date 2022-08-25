@@ -15,15 +15,13 @@ describe('ModalDocsV2Component', () => {
     let component: ModalDocsV2Component;
     let fixture: ComponentFixture<ModalDocsV2Component>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [ModalDocsV2Component],
-                imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule, NotificationModule, ModalModule, LoaderModule],
-                providers: [{provide: Router, useClass: RouterStub}]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [ModalDocsV2Component],
+            imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule, NotificationModule, ModalModule, LoaderModule],
+            providers: [{provide: Router, useClass: RouterStub}]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(ModalDocsV2Component);

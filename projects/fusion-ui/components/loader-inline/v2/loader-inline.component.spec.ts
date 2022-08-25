@@ -14,15 +14,13 @@ describe('LoaderInlineComponent', () => {
     let component: LoaderInlineComponent;
     let fixture: ComponentFixture<LoaderInlineComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [LoaderInlineComponent],
-                imports: [IconModule],
-                providers: [{provide: ApiService, useClass: MockApiService}]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [LoaderInlineComponent],
+            imports: [IconModule],
+            providers: [{provide: ApiService, useClass: MockApiService}]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(LoaderInlineComponent);

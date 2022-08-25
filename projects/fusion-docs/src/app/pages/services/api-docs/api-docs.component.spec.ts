@@ -10,14 +10,12 @@ describe('ApiDocsComponent', () => {
     let component: ApiDocsComponent;
     let fixture: ComponentFixture<ApiDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [ApiDocsComponent],
-                imports: [RouterModule, ExampleBlockModule, CodeBlockModule, DocsMenuModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [ApiDocsComponent],
+            imports: [RouterModule, ExampleBlockModule, CodeBlockModule, DocsMenuModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(ApiDocsComponent);

@@ -21,31 +21,29 @@ describe('TableCellComponent', () => {
     let component: TableCellComponent;
     let fixture: ComponentFixture<TableCellComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [
-                    IconModule,
-                    InputModule,
-                    InputInlineModule,
-                    LoaderModule,
-                    LoaderInlineModule,
-                    CheckboxModule,
-                    DynamicComponentsModule,
-                    DropdownModule,
-                    MultiDropdownModule,
-                    TooltipModule,
-                    ToggleModule,
-                    ClickOutsideModule,
-                    ReactiveFormsModule,
-                    NotAvailableModule,
-                    GenericPipeModule
-                ],
-                declarations: [TableCellComponent],
-                providers: [TableService]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [
+                IconModule,
+                InputModule,
+                InputInlineModule,
+                LoaderModule,
+                LoaderInlineModule,
+                CheckboxModule,
+                DynamicComponentsModule,
+                DropdownModule,
+                MultiDropdownModule,
+                TooltipModule,
+                ToggleModule,
+                ClickOutsideModule,
+                ReactiveFormsModule,
+                NotAvailableModule,
+                GenericPipeModule
+            ],
+            declarations: [TableCellComponent],
+            providers: [TableService]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TableCellComponent);

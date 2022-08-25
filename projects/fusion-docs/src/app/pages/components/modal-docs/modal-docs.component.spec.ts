@@ -22,25 +22,23 @@ describe('ModalComponent', () => {
     let component: ModalDocsComponent;
     let fixture: ComponentFixture<ModalDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [ModalDocsComponent],
-                imports: [
-                    ModalDocsRoutingModule,
-                    ExampleBlockModule,
-                    CodeBlockModule,
-                    DocsMenuModule,
-                    InputModule,
-                    LoaderModule,
-                    ModalModule,
-                    NotificationModule,
-                    ReactiveFormsModule
-                ],
-                providers: [{provide: Router, useClass: RouterStub}]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [ModalDocsComponent],
+            imports: [
+                ModalDocsRoutingModule,
+                ExampleBlockModule,
+                CodeBlockModule,
+                DocsMenuModule,
+                InputModule,
+                LoaderModule,
+                ModalModule,
+                NotificationModule,
+                ReactiveFormsModule
+            ],
+            providers: [{provide: Router, useClass: RouterStub}]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(ModalDocsComponent);
