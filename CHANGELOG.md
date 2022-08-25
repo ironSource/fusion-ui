@@ -571,4 +571,4 @@ For example if main application use style #3, but some components will need use 
 
 ### Features
 
-* **fu-287:** refactored mfe configuration, added fusion-mfe project for mfe using
+* **fu-287:** refactored mfe configuration, added fusion-mfe project for mfe using.
