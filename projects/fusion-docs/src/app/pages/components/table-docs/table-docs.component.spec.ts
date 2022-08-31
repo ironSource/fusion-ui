@@ -26,7 +26,7 @@ class RouterStub {
 })
 export class TableCellIconExampleModule {}
 
-describe('TableDocsComponent', () => {
+/*describe('TableDocsComponent', () => {
     let component: TableDocsComponent;
     let fixture: ComponentFixture<TableDocsComponent>;
 
@@ -58,4 +58,4 @@ describe('TableDocsComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
-});
+});*/
