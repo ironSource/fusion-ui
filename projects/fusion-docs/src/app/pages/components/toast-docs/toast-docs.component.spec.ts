@@ -1,10 +1,11 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {ToastDocsComponent} from './toast-docs.component';
-import {ButtonModule, ToastModule} from '@ironsource/fusion-ui';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ToastExampleContentModule} from '../../../components/toast-example-content/toast-example-content.module';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
+import {ToastModule} from '@ironsource/fusion-ui/components/toast/v2';
 
 describe('ToastDocsComponent', () => {
     let component: ToastDocsComponent;
