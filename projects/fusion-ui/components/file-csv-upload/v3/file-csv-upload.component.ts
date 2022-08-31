@@ -27,7 +27,7 @@ export class FileCsvUploadComponent {
      * @param value
      */
     @Input() set title(value: string) {
-        this._title = value ?? 'Upload CSV';
+        this._title = value;
     }
     /**
      * General component error
@@ -70,7 +70,7 @@ export class FileCsvUploadComponent {
     get title(): string {
         return this._title;
     }
-    private _title: string;
+    private _title = 'Upload CSV';
 
     get error(): string {
         return this._error;
