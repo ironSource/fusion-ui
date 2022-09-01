@@ -7,16 +7,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### ⚠ BREAKING CHANGES
 
-* **fu-457:** upgrade angular to angular 14
-
-### Features
-
 * **fu-457:** upgrade angular to angular 14 ([b24bbb0](https://github.com/ironSource/fusion-ui/commit/b24bbb00fa218c5cb42f65ce958c66d2c87a6072))
+* **fu-457:** remove support for native, react and vue ([259e14d](https://github.com/ironSource/fusion-ui/commit/259e14d98718cb631731de615e2a261a04d3b14b))
 
-
-### Bug Fixes
-
-* **3.x.x:** fix style in components ([d573bd7](https://github.com/ironSource/fusion-ui/commit/d573bd7e0ec0a9d5e3fb862fc9cac61f27d7c3df))
 
 ### [3.2.4](https://github.com/ironSource/fusion-ui/compare/v3.2.4-rc.0...v3.2.4) (2022-09-01)
 
