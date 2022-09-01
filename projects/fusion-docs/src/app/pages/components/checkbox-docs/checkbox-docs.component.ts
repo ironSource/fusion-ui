@@ -87,7 +87,7 @@ export class CheckboxDocsComponent implements OnInit, OnDestroy {
     // model: any;
 
     formCheckBoxes: FormGroup;
-    checkboxControl = new FormControl({value: true});
+    checkboxControl = new FormControl(true);
     firstCheckbox = new FormControl(true);
     secondCheckbox = new FormControl();
 

@@ -4,8 +4,9 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
-import {LayoutModule, TableModule} from '@ironsource/fusion-ui';
 import {RouterTestingModule} from '@angular/router/testing';
+import {TableModule} from '@ironsource/fusion-ui/components/table/v2';
+import {LayoutModule} from '@ironsource/fusion-ui/components/layout/v2';
 
 describe('LayoutDocsV2Component', () => {
     let component: LayoutDocsV2Component;

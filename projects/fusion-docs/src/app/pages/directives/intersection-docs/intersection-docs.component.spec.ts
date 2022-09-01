@@ -6,7 +6,10 @@ import {CodeBlockModule} from '../../../components/code-block/code-block.module'
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
-import {ButtonModule, InputModule, AlertModule, IntersectionModule} from '@ironsource/fusion-ui';
+import {IntersectionModule} from '@ironsource/fusion-ui';
+import {AlertModule} from '@ironsource/fusion-ui/components/alert/v2';
+import {InputModule} from '@ironsource/fusion-ui/components/input/v2';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
 
 describe('IntersectionDocsComponent', () => {
     let component: IntersectionDocsComponent;

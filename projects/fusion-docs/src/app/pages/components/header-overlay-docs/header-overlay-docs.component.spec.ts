@@ -4,11 +4,12 @@ import {DemoFilterComponent, HeaderOverlayDocsComponent} from './header-overlay-
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
-import {HeaderOverlayModule, IconModule} from '@ironsource/fusion-ui';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {HeaderOverlayModule} from '@ironsource/fusion-ui/components/header-overlay/v2';
 
 @NgModule({
     imports: [CommonModule, ReactiveFormsModule, IconModule],
