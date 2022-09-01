@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.2.4](https://github.com/ironSource/fusion-ui/compare/v3.2.4-rc.0...v3.2.4) (2022-09-01)
+
+
+### Bug Fixes
+
+* **3.x.x:** fix style in components ([44ad365](https://github.com/ironSource/fusion-ui/commit/44ad36505a5ebbee8288a94cc6e81712ed0be0f3))
+
 ### [3.2.4-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.2.3...v3.2.4-rc.0) (2022-08-16)
 
 
