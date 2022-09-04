@@ -50,7 +50,7 @@ export class IntersectionDocsComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.margin.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(val => {
-            this.marginInt = parseInt(val, 10);
+            this.marginInt = parseInt(val.toString(), 10);
         });
     }
 
