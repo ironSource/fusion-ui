@@ -11,7 +11,7 @@ import {
     ViewChild
 } from '@angular/core';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
-import {BehaviorSubject, combineLatest, fromEvent, Observable, Subject} from 'rxjs';
+import {BehaviorSubject, combineLatest, fromEvent, Observable, of, Subject} from 'rxjs';
 import {debounceTime, filter, map, scan, takeUntil, tap} from 'rxjs/operators';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 
@@ -53,6 +53,10 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
         this.searchTerm$.next(data);
     }
 
+    @Input() set suppressSearch(value: boolean) {
+        this.suppressSearchTerm$.next(value);
+    }
+
     @Output() scrollDown = new EventEmitter();
 
     isSelectAllDisabled$ = new BehaviorSubject<boolean>(false);
@@ -74,6 +78,7 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
     private rightPagePagination$ = new BehaviorSubject<number>(1);
     private onDestroy$ = new Subject<void>();
     private searchTerm$ = new BehaviorSubject<string>('');
+    private suppressSearchTerm$ = new BehaviorSubject<boolean>(false);
     private propagateChange = (_: DropdownOption[]) => {};
     private propagateTouched = () => {};
 
@@ -159,7 +164,7 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
 
     private generateOptions(optionToDisplay: string): Observable<DropdownOption[]> {
         const options$ = this.options$.asObservable();
-        const term$ = this.searchTerm$.asObservable();
+        const term$ = this.suppressSearchTerm$.getValue() ? of('') : this.searchTerm$.asObservable();
         const leftPagePagination$ = this.getPaginationObservable('left');
         const rightPagePagination$ = this.getPaginationObservable('right');
         const selected$ = this.selectedItemsWorker$.asObservable();

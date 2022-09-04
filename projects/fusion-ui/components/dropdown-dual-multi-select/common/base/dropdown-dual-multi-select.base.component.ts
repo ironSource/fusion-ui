@@ -36,6 +36,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     @Input() dynamicPlaceholder: DynamicComponentConfiguration;
     @Input() totalItems: number;
     @Input() suppressClickButton: boolean = false;
+    @Input() suppressInnerSearch: boolean = false;
     @Input() title: string;
     @Input() pendingItems: boolean = false;
 
