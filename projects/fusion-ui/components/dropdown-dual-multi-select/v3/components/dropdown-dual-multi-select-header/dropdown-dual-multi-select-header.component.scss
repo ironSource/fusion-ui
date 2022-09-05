@@ -7,13 +7,13 @@ $clearIconColor: #DADADA;
 %clear-icon-position{
     position: absolute;
     right: -13px;
-    top: 2px;
+    top: 0;
 }
 
 %search-icon-position{
     position: absolute;
-    left: -10px;
-    top: 2px;
+    left: 10px;
+    top: 0;
 }
 
 :host {
@@ -27,10 +27,14 @@ $clearIconColor: #DADADA;
         align-items: center;
         .fu-search-holder {
             width: 405px;
-            height: 32px;
+            height: 100%;
             display: flex;
+            border-left: 1px solid $fu-light-400;
             align-items: center;
             .fu-search-bar {
+                display: flex;
+                align-content: center;
+                justify-content: center;
                 position: relative;
                 fusion-icon.fu-icon-search {
                     color: $fu-light-700;
@@ -56,7 +60,7 @@ $clearIconColor: #DADADA;
                     color: $fu-black-500;
                     width: 365px;
                     height: 16px;
-                    padding: 0 8px 0 8px;
+                    padding: 0 25px 0 25px;
                     margin-left: 5px;
                     &::placeholder {
                         color: $fu-light-800;
@@ -66,7 +70,6 @@ $clearIconColor: #DADADA;
             }
         }
         .fu-label-holder {
-            border-right: 1px solid $fu-light-400;
             height: 100%;
             width: fit-content;
             display: flex;
