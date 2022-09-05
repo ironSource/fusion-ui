@@ -50,7 +50,7 @@
         ></fusion-dropdown-dual-multi-select-header>
 
         <fusion-dropdown-dual-multi-select-body
-            [suppressSearch]="suppressInnerSearch"
+            [autoComplete]="autoComplete"
             (scrollDown)="onScrollDown()"
             [formControl]="preSelectedItems"
             [searchTerm]="searchControlTerm.valueChanges | async"

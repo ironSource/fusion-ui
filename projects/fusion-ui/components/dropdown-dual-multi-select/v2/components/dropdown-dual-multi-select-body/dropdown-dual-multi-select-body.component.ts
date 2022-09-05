@@ -53,8 +53,8 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
         this.searchTerm$.next(data);
     }
 
-    @Input() set suppressSearch(value: boolean) {
-        this.suppressSearchTerm$.next(value);
+    @Input() set autoComplete(value: boolean) {
+        this.autoComplete$.next(value);
     }
 
     @Output() scrollDown = new EventEmitter();
@@ -78,7 +78,7 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
     private rightPagePagination$ = new BehaviorSubject<number>(1);
     private onDestroy$ = new Subject<void>();
     private searchTerm$ = new BehaviorSubject<string>('');
-    private suppressSearchTerm$ = new BehaviorSubject<boolean>(false);
+    private autoComplete$ = new BehaviorSubject<boolean>(false);
     private propagateChange = (_: DropdownOption[]) => {};
     private propagateTouched = () => {};
 
@@ -164,7 +164,7 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
 
     private generateOptions(optionToDisplay: string): Observable<DropdownOption[]> {
         const options$ = this.options$.asObservable();
-        const term$ = this.suppressSearchTerm$.getValue() ? of('') : this.searchTerm$.asObservable();
+        const term$ = this.autoComplete$.getValue() ? this.searchTerm$.asObservable() : of('');
         const leftPagePagination$ = this.getPaginationObservable('left');
         const rightPagePagination$ = this.getPaginationObservable('right');
         const selected$ = this.selectedItemsWorker$.asObservable();
