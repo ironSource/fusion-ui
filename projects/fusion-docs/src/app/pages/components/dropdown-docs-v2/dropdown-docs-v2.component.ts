@@ -10,7 +10,7 @@ import {
     MOK_APPLICATIONS,
     MOCK_OPTIONS_V2
 } from './dropdown-docs-v2.config';
-import {delay, takeUntil} from 'rxjs/operators';
+import {catchError, delay, takeUntil} from 'rxjs/operators';
 import {Observable, of, Subject} from 'rxjs';
 import {OPTIONS_GROUPED_SUBGROUP} from '../dropdown-docs/dropdown-docs.config';
 import {Router} from '@angular/router';
@@ -19,9 +19,12 @@ import {DropdownCustomPlaceholderComponent} from '../../../components/dropdown-c
 import {VersionService} from '../../../services/version/version.service';
 import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
-import {DropdownComponent} from '@ironsource/fusion-ui/components/dropdown/v2';
+import {BackendPagination, DropdownComponent} from '@ironsource/fusion-ui/components/dropdown/v2';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 import {ClosedOptions} from '@ironsource/fusion-ui/components/dropdown/entities';
+import {ApiResponseType, ApiService, CacheType} from '@ironsource/fusion-ui';
+
+const URL = `https://platform-api.supersonic.com/uaplatform/optimizer/dashboard`;
 
 @Component({
     selector: 'fusion-dropdown-docs-v2',
@@ -158,7 +161,14 @@ export class DropdownDocsV2Component implements OnInit, OnDestroy {
             }
         }
     };
+
+    // ----
+    dropdownPaginationOptions: BackendPagination;
+    private backendPaginationOptions = this.getBackendPaginationOptions();
+    // ----
+
     constructor(
+        private apiService: ApiService,
         private formBuilder: FormBuilder,
         private versionService: VersionService,
         private router: Router,
@@ -208,6 +218,8 @@ export class DropdownDocsV2Component implements OnInit, OnDestroy {
                 }
             };
         });
+
+        this.setBackendPaginationOptions(null);
     }
 
     ngOnDestroy(): void {
@@ -240,5 +252,66 @@ export class DropdownDocsV2Component implements OnInit, OnDestroy {
 
     onClose(options: ClosedOptions) {
         console.log(options);
+    }
+
+    onCampaignSearchTermChanged(searchTerm) {
+        if (searchTerm?.length > 2) {
+            console.log('onCampaignSearchTermChanged >>>', searchTerm);
+            this.setBackendPaginationOptions(searchTerm);
+        }
+    }
+
+    onCampaignSearchClear() {
+        console.log('onCampaignSearchClear');
+        this.setBackendPaginationOptions(null);
+    }
+
+    private setBackendPaginationOptions(term: string): void {
+        const getOptions = {
+            searchTerm: term || null,
+            pageNumber: 1,
+            resultsBulkSize: 15
+        };
+        const backendGetFunction = this.getPaginationData;
+        const backendPagination = {
+            backendGetFunction,
+            getOptions,
+            ...this.backendPaginationOptions
+        };
+        this.dropdownPaginationOptions = backendPagination;
+    }
+
+    private getPaginationData({searchTerm, pageNumber, resultsBulkSize}): Observable<{items: any[]; totals: number}> {
+        console.log('getPaginationData >>', searchTerm, pageNumber, resultsBulkSize);
+
+        const page = {
+            start: (pageNumber - 1) * resultsBulkSize,
+            end: (pageNumber - 1) * resultsBulkSize + resultsBulkSize - 1
+        };
+        console.log(':', page);
+
+        const allData = !!searchTerm
+            ? MOCK_AUTOCOMPLETE_DATA.filter(item => {
+                  return item.email.includes(searchTerm);
+              })
+            : MOCK_AUTOCOMPLETE_DATA;
+        console.log('>>', searchTerm, allData);
+
+        const mockData = allData.slice(page.start, page.end);
+        console.log(mockData.length, allData.length);
+
+        return of({items: mockData, totals: allData.length});
+    }
+
+    private getBackendPaginationOptions() {
+        return {
+            responseDataPropertyName: 'items',
+            responseTotalCountPropertyName: 'totals',
+            mappingFunction: item => ({
+                id: item.id,
+                displayText: item.email
+            }),
+            sortingFunction: (a, b) => a.id - b.id
+        };
     }
 }

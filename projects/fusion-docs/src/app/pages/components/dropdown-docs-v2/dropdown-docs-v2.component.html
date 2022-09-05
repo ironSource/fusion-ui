@@ -1273,16 +1273,17 @@ document.body.appendChild(dropdown);'
                     ></fusion-multi-dropdown>
                 </div>
                 <div class="col-4">
-                    <label>Apps</label>
+                    <label>Multiselect paginated with search</label>
                     <fusion-multi-dropdown
                         placeholder="Select App"
                         selectAllLabel="Select all"
                         placeholderPrefix="Applications"
-                        [search]="true"
                         [formControl]="multiSelectedAppsSearchControl"
                         [confirm]="true"
-                        [isIconRightPosition]="true"
-                        [options]="applicationList"
+                        [search]="true"
+                        [backendPagination]="dropdownPaginationOptions"
+                        (searchChange)="onCampaignSearchTermChanged($event)"
+                        (searchClear)="onCampaignSearchClear()">
                     ></fusion-multi-dropdown>
                 </div>
                 <div class="col-4">
