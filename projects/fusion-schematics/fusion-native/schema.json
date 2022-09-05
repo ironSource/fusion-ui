@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/schema",
-    "id": "FusionNativeSchematics",
+    "$id": "FusionNativeSchematics",
     "title": "Fusion Native Schematics",
     "type": "object",
     "description": "Fusion Native",
