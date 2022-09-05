@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.3.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v3.3.0-rc.0...v3.3.0-rc.1) (2022-09-05)
+
+## [3.3.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.2.4...v3.3.0-rc.0) (2022-09-05)
+
+
+### Features
+
+* **3.x.x:** add suppressInnerSearch to include exclude component ([ee6d342](https://github.com/ironSource/fusion-ui/commit/ee6d3427f5a95e7a4c92511c33db548c220cec0d))
+
+
+### Bug Fixes
+
+* **3.x.x:** fix style in components ([d573bd7](https://github.com/ironSource/fusion-ui/commit/d573bd7e0ec0a9d5e3fb862fc9cac61f27d7c3df))
+
 ### [3.2.4](https://github.com/ironSource/fusion-ui/compare/v3.2.4-rc.0...v3.2.4) (2022-09-01)
 
 
