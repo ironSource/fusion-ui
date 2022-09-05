@@ -22,9 +22,6 @@ import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dy
 import {BackendPagination, DropdownComponent} from '@ironsource/fusion-ui/components/dropdown/v2';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 import {ClosedOptions} from '@ironsource/fusion-ui/components/dropdown/entities';
-import {ApiResponseType, ApiService, CacheType} from '@ironsource/fusion-ui';
-
-const URL = `https://platform-api.supersonic.com/uaplatform/optimizer/dashboard`;
 
 @Component({
     selector: 'fusion-dropdown-docs-v2',
@@ -168,7 +165,6 @@ export class DropdownDocsV2Component implements OnInit, OnDestroy {
     // ----
 
     constructor(
-        private apiService: ApiService,
         private formBuilder: FormBuilder,
         private versionService: VersionService,
         private router: Router,
@@ -254,14 +250,14 @@ export class DropdownDocsV2Component implements OnInit, OnDestroy {
         console.log(options);
     }
 
-    onCampaignSearchTermChanged(searchTerm) {
+    onSearchTermChanged(searchTerm) {
         if (searchTerm?.length > 2) {
             console.log('onCampaignSearchTermChanged >>>', searchTerm);
             this.setBackendPaginationOptions(searchTerm);
         }
     }
 
-    onCampaignSearchClear() {
+    onSearchClear() {
         console.log('onCampaignSearchClear');
         this.setBackendPaginationOptions(null);
     }
@@ -300,7 +296,7 @@ export class DropdownDocsV2Component implements OnInit, OnDestroy {
         const mockData = allData.slice(page.start, page.end);
         console.log(mockData.length, allData.length);
 
-        return of({items: mockData, totals: allData.length});
+        return of({items: mockData, totals: allData.length}).pipe(delay(2000));
     }
 
     private getBackendPaginationOptions() {

@@ -1282,8 +1282,8 @@ document.body.appendChild(dropdown);'
                         [confirm]="true"
                         [search]="true"
                         [backendPagination]="dropdownPaginationOptions"
-                        (searchChange)="onCampaignSearchTermChanged($event)"
-                        (searchClear)="onCampaignSearchClear()">
+                        (searchChange)="onSearchTermChanged($event)"
+                        (searchClear)="onSearchClear()">
                     ></fusion-multi-dropdown>
                 </div>
                 <div class="col-4">
