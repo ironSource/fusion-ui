@@ -78,7 +78,7 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
     private rightPagePagination$ = new BehaviorSubject<number>(1);
     private onDestroy$ = new Subject<void>();
     private searchTerm$ = new BehaviorSubject<string>('');
-    private autoComplete$ = new BehaviorSubject<boolean>(false);
+    private autoComplete$ = new BehaviorSubject<boolean>(true);
     private propagateChange = (_: DropdownOption[]) => {};
     private propagateTouched = () => {};
 
