@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v3.3.0...v4.0.0-rc.1) (2022-09-06)
+
+
+### Bug Fixes
+
+* **fu-461:** dependencies update ([3c9ffc4](https://github.com/ironSource/fusion-ui/commit/3c9ffc4d577f2d142c64c8c88f886b655bf27ad3))
+
+## [4.0.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.2.4...v4.0.0-rc.0) (2022-09-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* **fu-457:** angular version upgraded to v14
+
+### Features
+
+* **fu-457:** upgrade angular to angular 14 ([b24bbb0](https://github.com/ironSource/fusion-ui/commit/b24bbb00fa218c5cb42f65ce958c66d2c87a6072))
+
+
+### CI
+
+* **upgrade:** update sass, sass-loader and sass-bundle ([a9cbe07](https://github.com/ironSource/fusion-ui/commit/a9cbe07c35d21fa697485da46c722e178d82ef3d))
+
 ## [4.0.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.2.4...v4.0.0-rc.0) (2022-09-01)
 
 
