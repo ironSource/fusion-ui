@@ -22,23 +22,21 @@ describe('HeaderOverlayDocsComponent', () => {
     let component: HeaderOverlayDocsComponent;
     let fixture: ComponentFixture<HeaderOverlayDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [HeaderOverlayDocsComponent],
-                imports: [
-                    ExampleBlockModule,
-                    CodeBlockModule,
-                    DocsMenuModule,
-                    HeaderOverlayModule,
-                    RouterModule,
-                    ReactiveFormsModule,
-                    IconModule,
-                    DemoFilterModule
-                ]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [HeaderOverlayDocsComponent],
+            imports: [
+                ExampleBlockModule,
+                CodeBlockModule,
+                DocsMenuModule,
+                HeaderOverlayModule,
+                RouterModule,
+                ReactiveFormsModule,
+                IconModule,
+                DemoFilterModule
+            ]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(HeaderOverlayDocsComponent);

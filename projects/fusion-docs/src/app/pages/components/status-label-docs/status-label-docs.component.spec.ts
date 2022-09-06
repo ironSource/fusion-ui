@@ -13,14 +13,12 @@ describe('StatusLabelDocsComponent', () => {
     let component: StatusLabelDocsComponent;
     let fixture: ComponentFixture<StatusLabelDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [StatusLabelDocsComponent],
-                imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule, RouterModule, StatusLabelModule, TooltipModule, TableModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [StatusLabelDocsComponent],
+            imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule, RouterModule, StatusLabelModule, TooltipModule, TableModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(StatusLabelDocsComponent);

@@ -10,14 +10,12 @@ describe('CacheDocsComponent', () => {
     let component: CacheDocsComponent;
     let fixture: ComponentFixture<CacheDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [CacheDocsComponent],
-                imports: [RouterModule, ExampleBlockModule, CodeBlockModule, DocsMenuModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [CacheDocsComponent],
+            imports: [RouterModule, ExampleBlockModule, CodeBlockModule, DocsMenuModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(CacheDocsComponent);

@@ -18,15 +18,13 @@ describe('ChartDocsComponent', () => {
     let component: ChartDocsComponent;
     let fixture: ComponentFixture<ChartDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [DocsMenuModule, CodeBlockModule, ExampleBlockModule, ChartModule, ChartLabelsModule, RouterTestingModule],
-                declarations: [ChartDocsComponent],
-                providers: [{provide: Router, useClass: RouterStub}]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [DocsMenuModule, CodeBlockModule, ExampleBlockModule, ChartModule, ChartLabelsModule, RouterTestingModule],
+            declarations: [ChartDocsComponent],
+            providers: [{provide: Router, useClass: RouterStub}]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(ChartDocsComponent);

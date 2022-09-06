@@ -11,14 +11,12 @@ describe('ModalComponent', () => {
     let component: ModalComponent;
     let fixture: ComponentFixture<ModalComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [LoaderModule, ButtonModule, IconModule],
-                declarations: [ModalComponent, ModalFooterComponent, ModalContentComponent, ModalHeaderComponent]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [LoaderModule, ButtonModule, IconModule],
+            declarations: [ModalComponent, ModalFooterComponent, ModalContentComponent, ModalHeaderComponent]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(ModalComponent);

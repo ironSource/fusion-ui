@@ -16,15 +16,13 @@ describe('AlertDocsComponent', () => {
     let component: AlertDocsComponent;
     let fixture: ComponentFixture<AlertDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [AlertDocsComponent],
-                imports: [DocsMenuModule, ExampleBlockModule, CodeBlockModule, AlertModule],
-                providers: [{provide: Router, useClass: RouterStub}]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [AlertDocsComponent],
+            imports: [DocsMenuModule, ExampleBlockModule, CodeBlockModule, AlertModule],
+            providers: [{provide: Router, useClass: RouterStub}]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(AlertDocsComponent);

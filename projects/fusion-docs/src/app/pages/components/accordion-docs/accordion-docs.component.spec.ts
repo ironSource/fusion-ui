@@ -11,14 +11,12 @@ describe('AccordionDocsComponent', () => {
     let component: AccordionDocsComponent;
     let fixture: ComponentFixture<AccordionDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [AccordionDocsComponent],
-                imports: [ExampleBlockModule, DocsMenuModule, CodeBlockModule, AccordionModule, AccordionExampleContentModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [AccordionDocsComponent],
+            imports: [ExampleBlockModule, DocsMenuModule, CodeBlockModule, AccordionModule, AccordionExampleContentModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(AccordionDocsComponent);

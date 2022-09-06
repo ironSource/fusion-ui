@@ -13,22 +13,12 @@ describe('TooltipDocsComponent', () => {
     let component: TooltipDocsComponent;
     let fixture: ComponentFixture<TooltipDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [TooltipDocsComponent],
-                imports: [
-                    ExampleBlockModule,
-                    CodeBlockModule,
-                    DocsMenuModule,
-                    RouterModule,
-                    ReactiveFormsModule,
-                    TooltipModule,
-                    TableModule
-                ]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [TooltipDocsComponent],
+            imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule, RouterModule, ReactiveFormsModule, TooltipModule, TableModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TooltipDocsComponent);

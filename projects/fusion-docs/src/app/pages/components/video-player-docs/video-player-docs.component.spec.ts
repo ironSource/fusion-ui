@@ -19,24 +19,22 @@ describe('VideoPlayerDocsComponent', () => {
     let component: VideoPlayerDocsComponent;
     let fixture: ComponentFixture<VideoPlayerDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [VideoPlayerDocsComponent],
-                imports: [
-                    ExampleBlockModule,
-                    CodeBlockModule,
-                    DocsMenuModule,
-                    RouterModule,
-                    ReactiveFormsModule,
-                    TooltipModule,
-                    ButtonModule,
-                    VideoPlayerModule
-                ],
-                providers: [{provide: Router, useClass: RouterStub}]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [VideoPlayerDocsComponent],
+            imports: [
+                ExampleBlockModule,
+                CodeBlockModule,
+                DocsMenuModule,
+                RouterModule,
+                ReactiveFormsModule,
+                TooltipModule,
+                ButtonModule,
+                VideoPlayerModule
+            ],
+            providers: [{provide: Router, useClass: RouterStub}]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(VideoPlayerDocsComponent);

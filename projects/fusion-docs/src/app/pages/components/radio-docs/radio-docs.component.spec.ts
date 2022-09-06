@@ -15,24 +15,22 @@ describe('RadioDocsComponent', () => {
     let component: RadioDocsComponent;
     let fixture: ComponentFixture<RadioDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [RadioDocsComponent],
-                imports: [
-                    ExampleBlockModule,
-                    CodeBlockModule,
-                    DocsMenuModule,
-                    RouterModule,
-                    ReactiveFormsModule,
-                    RadioGroupModule,
-                    RadioModule,
-                    InputModule,
-                    IconSelectListModule
-                ]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [RadioDocsComponent],
+            imports: [
+                ExampleBlockModule,
+                CodeBlockModule,
+                DocsMenuModule,
+                RouterModule,
+                ReactiveFormsModule,
+                RadioGroupModule,
+                RadioModule,
+                InputModule,
+                IconSelectListModule
+            ]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(RadioDocsComponent);

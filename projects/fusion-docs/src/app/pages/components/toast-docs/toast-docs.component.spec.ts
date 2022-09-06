@@ -11,14 +11,12 @@ describe('ToastDocsComponent', () => {
     let component: ToastDocsComponent;
     let fixture: ComponentFixture<ToastDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [ToastDocsComponent],
-                imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule, ButtonModule, ToastModule, ToastExampleContentModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [ToastDocsComponent],
+            imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule, ButtonModule, ToastModule, ToastExampleContentModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(ToastDocsComponent);

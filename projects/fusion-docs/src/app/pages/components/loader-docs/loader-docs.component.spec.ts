@@ -14,23 +14,21 @@ describe('LoaderDocsComponent', () => {
     let component: LoaderDocsComponent;
     let fixture: ComponentFixture<LoaderDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [LoaderDocsComponent],
-                imports: [
-                    ExampleBlockModule,
-                    CodeBlockModule,
-                    DocsMenuModule,
-                    RouterModule,
-                    ReactiveFormsModule,
-                    LoaderModule,
-                    LoaderInlineModule,
-                    CustomLoaderModule
-                ]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [LoaderDocsComponent],
+            imports: [
+                ExampleBlockModule,
+                CodeBlockModule,
+                DocsMenuModule,
+                RouterModule,
+                ReactiveFormsModule,
+                LoaderModule,
+                LoaderInlineModule,
+                CustomLoaderModule
+            ]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(LoaderDocsComponent);

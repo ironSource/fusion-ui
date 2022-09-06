@@ -25,20 +25,18 @@ describe('DatepickerComponent', () => {
     let dropDownSelectEl: DebugElement;
     let el: HTMLElement;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [IconModule, InputModule, DropdownModule, ClickOutsideModule, ReactiveFormsModule],
-                providers: [
-                    DatePipe,
-                    LogService,
-                    {provide: TimezoneService, useClass: MockTimeZonesService},
-                    {provide: UniqueIdService, useClass: MockUniqueIdService}
-                ],
-                declarations: [DatepickerComponent, DatepickerHeaderComponent, DatepickerSelectionComponent]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [IconModule, InputModule, DropdownModule, ClickOutsideModule, ReactiveFormsModule],
+            providers: [
+                DatePipe,
+                LogService,
+                {provide: TimezoneService, useClass: MockTimeZonesService},
+                {provide: UniqueIdService, useClass: MockUniqueIdService}
+            ],
+            declarations: [DatepickerComponent, DatepickerHeaderComponent, DatepickerSelectionComponent]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(DatepickerComponent);

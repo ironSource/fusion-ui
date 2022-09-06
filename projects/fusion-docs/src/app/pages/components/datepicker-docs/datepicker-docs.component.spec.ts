@@ -12,21 +12,19 @@ import {DatepickerModule} from '@ironsource/fusion-ui/components/datepicker';
     let component: DatepickerDocsComponent;
     let fixture: ComponentFixture<DatepickerDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [DatepickerDocsComponent],
-                imports: [
-                    DatepickerDocsRoutingModule,
-                    ExampleBlockModule,
-                    CodeBlockModule,
-                    DocsMenuModule,
-                    ReactiveFormsModule,
-                    DatepickerModule
-                ]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [DatepickerDocsComponent],
+            imports: [
+                DatepickerDocsRoutingModule,
+                ExampleBlockModule,
+                CodeBlockModule,
+                DocsMenuModule,
+                ReactiveFormsModule,
+                DatepickerModule
+            ]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(DatepickerDocsComponent);

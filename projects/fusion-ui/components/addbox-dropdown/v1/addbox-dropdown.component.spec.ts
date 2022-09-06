@@ -20,40 +20,38 @@ describe('AddboxDropdownComponent', () => {
     let component: AddboxDropdownComponent;
     let fixture: ComponentFixture<AddboxDropdownComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [
-                    ReactiveFormsModule,
-                    InputModule,
-                    ClickOutsideModule,
-                    FilterByFieldModule,
-                    CloneModule,
-                    DropdownLoaderModule,
-                    DropdownOptionModule,
-                    DropdownOptionsListModule
-                ],
-                declarations: [AddboxDropdownComponent],
-                providers: [
-                    FilterByFieldPipe,
-                    ClonePipe,
-                    DropdownService,
-                    {
-                        provide: LogService,
-                        useClass: MockLogService
-                    },
-                    {
-                        provide: UniqueIdService,
-                        useClass: MockUniqueIdService
-                    },
-                    {
-                        provide: ApiService,
-                        useClass: MockApiService
-                    }
-                ]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [
+                ReactiveFormsModule,
+                InputModule,
+                ClickOutsideModule,
+                FilterByFieldModule,
+                CloneModule,
+                DropdownLoaderModule,
+                DropdownOptionModule,
+                DropdownOptionsListModule
+            ],
+            declarations: [AddboxDropdownComponent],
+            providers: [
+                FilterByFieldPipe,
+                ClonePipe,
+                DropdownService,
+                {
+                    provide: LogService,
+                    useClass: MockLogService
+                },
+                {
+                    provide: UniqueIdService,
+                    useClass: MockUniqueIdService
+                },
+                {
+                    provide: ApiService,
+                    useClass: MockApiService
+                }
+            ]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(AddboxDropdownComponent);

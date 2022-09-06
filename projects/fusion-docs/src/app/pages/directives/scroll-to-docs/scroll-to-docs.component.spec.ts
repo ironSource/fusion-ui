@@ -14,23 +14,21 @@ describe('ScrollToDocsComponent', () => {
     let component: ScrollToDocsComponent;
     let fixture: ComponentFixture<ScrollToDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [ScrollToDocsComponent],
-                imports: [
-                    ExampleBlockModule,
-                    CodeBlockModule,
-                    DocsMenuModule,
-                    RouterModule,
-                    ReactiveFormsModule,
-                    ScrollToModule,
-                    InputModule,
-                    ButtonModule
-                ]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [ScrollToDocsComponent],
+            imports: [
+                ExampleBlockModule,
+                CodeBlockModule,
+                DocsMenuModule,
+                RouterModule,
+                ReactiveFormsModule,
+                ScrollToModule,
+                InputModule,
+                ButtonModule
+            ]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(ScrollToDocsComponent);

@@ -11,6 +11,22 @@ All notable changes to this project will be documented in this file. See [standa
 * **fu-457:** remove support for native, react and vue ([259e14d](https://github.com/ironSource/fusion-ui/commit/259e14d98718cb631731de615e2a261a04d3b14b))
 
 
+## [3.3.0](https://github.com/ironSource/fusion-ui/compare/v3.3.0-rc.1...v3.3.0) (2022-09-05)
+
+## [3.3.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v3.3.0-rc.0...v3.3.0-rc.1) (2022-09-05)
+
+## [3.3.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.2.4...v3.3.0-rc.0) (2022-09-05)
+
+
+### Features
+
+* **3.x.x:** add suppressInnerSearch to include exclude component ([ee6d342](https://github.com/ironSource/fusion-ui/commit/ee6d3427f5a95e7a4c92511c33db548c220cec0d))
+
+
+### Bug Fixes
+
+* **3.x.x:** fix style in components ([d573bd7](https://github.com/ironSource/fusion-ui/commit/d573bd7e0ec0a9d5e3fb862fc9cac61f27d7c3df))
+
 ### [3.2.4](https://github.com/ironSource/fusion-ui/compare/v3.2.4-rc.0...v3.2.4) (2022-09-01)
 
 
@@ -595,4 +611,4 @@ For example if main application use style #3, but some components will need use 
 
 ### Features
 
-* **fu-287:** refactored mfe configuration, added fusion-mfe project for mfe using
+* **fu-287:** refactored mfe configuration, added fusion-mfe project for mfe using.

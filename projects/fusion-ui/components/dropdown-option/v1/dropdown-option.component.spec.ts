@@ -11,15 +11,13 @@ describe('DropdownOptionComponent', () => {
     let component: DropdownOptionComponent;
     let fixture: ComponentFixture<DropdownOptionComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [IconModule, TooltipModule, FlagModule, GenericPipeModule],
-                declarations: [DropdownOptionComponent, DropdownOptionDirective],
-                providers: [DropdownService]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [IconModule, TooltipModule, FlagModule, GenericPipeModule],
+            declarations: [DropdownOptionComponent, DropdownOptionDirective],
+            providers: [DropdownService]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(DropdownOptionComponent);

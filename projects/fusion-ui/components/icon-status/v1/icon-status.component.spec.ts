@@ -11,14 +11,12 @@ describe('IconStatusComponent', () => {
     let debugEl: DebugElement;
     let el: HTMLElement;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [IconStatusComponent],
-                imports: [TooltipModule, IconModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [IconStatusComponent],
+            imports: [TooltipModule, IconModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(IconStatusComponent);

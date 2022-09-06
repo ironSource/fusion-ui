@@ -19,24 +19,22 @@ describe('DropdownDocsV2Component', () => {
     let component: DropdownDocsV2Component;
     let fixture: ComponentFixture<DropdownDocsV2Component>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [DropdownDocsV2Component],
-                imports: [
-                    ExampleBlockModule,
-                    CodeBlockModule,
-                    DocsMenuModule,
-                    RouterModule,
-                    ReactiveFormsModule,
-                    DropdownModule,
-                    MultiDropdownModule,
-                    ErrorMessageModule
-                ],
-                providers: [{provide: Router, useClass: RouterStub}]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [DropdownDocsV2Component],
+            imports: [
+                ExampleBlockModule,
+                CodeBlockModule,
+                DocsMenuModule,
+                RouterModule,
+                ReactiveFormsModule,
+                DropdownModule,
+                MultiDropdownModule,
+                ErrorMessageModule
+            ],
+            providers: [{provide: Router, useClass: RouterStub}]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(DropdownDocsV2Component);
