@@ -6,14 +6,12 @@ describe('IconHeaderActionComponent', () => {
     let component: IconHeaderActionComponent;
     let fixture: ComponentFixture<IconHeaderActionComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [IconModule],
-                declarations: [IconHeaderActionComponent]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [IconModule],
+            declarations: [IconHeaderActionComponent]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(IconHeaderActionComponent);

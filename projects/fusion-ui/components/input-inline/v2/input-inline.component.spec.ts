@@ -21,15 +21,13 @@ describe('InputInlineComponent', () => {
     let component: InputInlineComponent;
     let fixture: ComponentFixture<InputInlineComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [InputInlineComponent],
-                providers: [CurrencyPipe, {provide: ApiService, useClass: MockApiService}],
-                imports: [ReactiveFormsModule, LoaderModule, IconModule, InputModule, TooltipModule, ClickOutsideModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [InputInlineComponent],
+            providers: [CurrencyPipe, {provide: ApiService, useClass: MockApiService}],
+            imports: [ReactiveFormsModule, LoaderModule, IconModule, InputModule, TooltipModule, ClickOutsideModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(InputInlineComponent);

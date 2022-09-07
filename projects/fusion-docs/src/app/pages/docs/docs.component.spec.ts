@@ -10,20 +10,18 @@ describe('DocsComponent', () => {
     let component: DocsComponent;
     let fixture: ComponentFixture<DocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [
-                    RouterTestingModule,
-                    LayoutV1Module.forRoot({svgOptions: {assetsPath: ''}}),
-                    LayoutModule.forRoot({svgOptions: {assetsPath: ''}}),
-                    StyleVersionButtonModule,
-                    MenuItemExampleModule
-                ],
-                declarations: [DocsComponent]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [
+                RouterTestingModule,
+                LayoutV1Module.forRoot({svgOptions: {assetsPath: ''}}),
+                LayoutModule.forRoot({svgOptions: {assetsPath: ''}}),
+                StyleVersionButtonModule,
+                MenuItemExampleModule
+            ],
+            declarations: [DocsComponent]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(DocsComponent);

@@ -7,14 +7,12 @@ describe('ToastExampleContentComponent', () => {
     let component: ToastExampleContentComponent;
     let fixture: ComponentFixture<ToastExampleContentComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [ToastExampleContentComponent],
-                imports: [IconModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [ToastExampleContentComponent],
+            imports: [IconModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(ToastExampleContentComponent);

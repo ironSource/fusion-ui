@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/schema",
-    "id": "FusionSchematics",
+    "$id": "FusionSchematics",
     "title": "Fusion Schematics",
     "type": "object",
     "description": "Fusion Frameworks",

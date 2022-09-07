@@ -17,22 +17,13 @@ describe('PopupDocsV2Component', () => {
     let component: PopupDocsV2Component;
     let fixture: ComponentFixture<PopupDocsV2Component>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [PopupDocsV2Component],
-                imports: [
-                    ExampleBlockModule,
-                    CodeBlockModule,
-                    DocsMenuModule,
-                    ButtonModule,
-                    PopupModule,
-                    PopupV2InnerComponentExampleModule
-                ],
-                providers: [{provide: Router, useClass: RouterStub}]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [PopupDocsV2Component],
+            imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule, ButtonModule, PopupModule, PopupV2InnerComponentExampleModule],
+            providers: [{provide: Router, useClass: RouterStub}]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(PopupDocsV2Component);

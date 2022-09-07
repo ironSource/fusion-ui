@@ -6,13 +6,11 @@ describe('StyleVersionButtonComponent', () => {
     let component: StyleVersionButtonComponent;
     let fixture: ComponentFixture<StyleVersionButtonComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [StyleVersionButtonComponent]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [StyleVersionButtonComponent]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(StyleVersionButtonComponent);

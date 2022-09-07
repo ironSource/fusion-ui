@@ -28,24 +28,22 @@ describe('TableDocsComponent', () => {
     let component: TableDocsComponent;
     let fixture: ComponentFixture<TableDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [TableDocsComponent],
-                imports: [
-                    ExampleBlockModule,
-                    CodeBlockModule,
-                    DocsMenuModule,
-                    RouterModule,
-                    ReactiveFormsModule,
-                    TableModule,
-                    IconModule,
-                    AlertModule,
-                    TableCellIconExampleModule
-                ]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [TableDocsComponent],
+            imports: [
+                ExampleBlockModule,
+                CodeBlockModule,
+                DocsMenuModule,
+                RouterModule,
+                ReactiveFormsModule,
+                TableModule,
+                IconModule,
+                AlertModule,
+                TableCellIconExampleModule
+            ]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TableDocsComponent);

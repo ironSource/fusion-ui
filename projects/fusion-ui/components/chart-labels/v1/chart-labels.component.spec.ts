@@ -56,18 +56,16 @@ describe('ChartLabelsComponent', () => {
         el = debugEl.nativeElement;
     };
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [ReactiveFormsModule, CheckboxModule, IconModule, TooltipModule],
-                declarations: [ChartLabelsComponent],
-                providers: [
-                    {provide: UniqueIdService, useClass: MockUniqueIdService},
-                    {provide: ApiService, useClass: MockApiService}
-                ]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [ReactiveFormsModule, CheckboxModule, IconModule, TooltipModule],
+            declarations: [ChartLabelsComponent],
+            providers: [
+                {provide: UniqueIdService, useClass: MockUniqueIdService},
+                {provide: ApiService, useClass: MockApiService}
+            ]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         bindComponentsData(MOCK_DATASETS);

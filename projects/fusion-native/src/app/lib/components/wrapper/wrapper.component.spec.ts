@@ -10,22 +10,20 @@ describe('WrapperComponent', () => {
     let component: WrapperComponent;
     let fixture: ComponentFixture<WrapperComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [ReactiveFormsModule, ButtonModule],
-                declarations: [WrapperComponent],
-                providers: [
-                    {
-                        provide: WRAPPER_TOKEN,
-                        useValue: {
-                            component: ButtonComponent
-                        }
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [ReactiveFormsModule, ButtonModule],
+            declarations: [WrapperComponent],
+            providers: [
+                {
+                    provide: WRAPPER_TOKEN,
+                    useValue: {
+                        component: ButtonComponent
                     }
-                ]
-            }).compileComponents();
-        })
-    );
+                }
+            ]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(WrapperComponent);

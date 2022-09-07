@@ -7,14 +7,12 @@ describe('ColorsDocsV2Component', () => {
     let component: ColorsDocsV3Component;
     let fixture: ComponentFixture<ColorsDocsV3Component>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [ColorsDocsV3Component],
-                imports: [ExampleBlockModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [ColorsDocsV3Component],
+            imports: [ExampleBlockModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(ColorsDocsV3Component);

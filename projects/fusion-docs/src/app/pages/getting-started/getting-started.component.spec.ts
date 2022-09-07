@@ -11,14 +11,12 @@ describe('GettingStartedComponent', () => {
     let component: GettingStartedComponent;
     let fixture: ComponentFixture<GettingStartedComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [RouterTestingModule, CodeBlockModule, CopyToClipboardModule, IconModule, TooltipModule, HttpClientModule],
-                declarations: [GettingStartedComponent]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [RouterTestingModule, CodeBlockModule, CopyToClipboardModule, IconModule, TooltipModule, HttpClientModule],
+            declarations: [GettingStartedComponent]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(GettingStartedComponent);

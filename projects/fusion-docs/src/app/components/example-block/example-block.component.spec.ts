@@ -7,14 +7,12 @@ describe('ExampleBlockComponent', () => {
     let component: ExampleBlockComponent;
     let fixture: ComponentFixture<ExampleBlockComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [ExampleBlockComponent],
-                imports: [IconModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [ExampleBlockComponent],
+            imports: [IconModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(ExampleBlockComponent);
