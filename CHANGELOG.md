@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v4.0.0-rc.1...v4.0.0-rc.2) (2022-09-12)
+
+
+### Features
+
+* **fu-460:** added pagination to dropdown-dual-multi-select ([723c74c](https://github.com/ironSource/fusion-ui/commit/723c74c1ec024caaf50d47b9a60d56e63a4f839d))
+* **fu-460:** fix import ([8fb80ff](https://github.com/ironSource/fusion-ui/commit/8fb80ff7a7cfcf3c11ff30ee77e520ef23fae84c))
+* **fu-460:** fix import ([ec113c7](https://github.com/ironSource/fusion-ui/commit/ec113c76b79b85fa6bd7fe5098ef755e7e7dba22))
+* **fu-460:** fix linting ([1d35d9f](https://github.com/ironSource/fusion-ui/commit/1d35d9f272bf49387c37050be6c350953ed2fe4f))
+
 ## [4.0.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v3.3.0...v4.0.0-rc.1) (2022-09-06)
 
 
