@@ -30,15 +30,17 @@
         <div class="options-wrapper content-col">
             <div class="items-holder" #wrapperLeft>
                 <ul class="options-data-list" #containerLeft>
-                    <li *ngFor="let item of displayOptions$ | async;trackBy: trackById">
-                        <fusion-dropdown-dual-multi-select-body-item
-                            [isSelectedItem]="selectedItemsMapping[item.id]"
-                            [isDisabled]="item.isDisabled"
-                            (changeSelected)="changeSelected($event)"
-                            [item]="item"
-                            [bodySide]="'left'">
-                        </fusion-dropdown-dual-multi-select-body-item>
-                    </li>
+                    <ng-container *ngIf="!isPendingItems">
+                        <li *ngFor="let item of displayOptions$ | async;trackBy: trackById">
+                            <fusion-dropdown-dual-multi-select-body-item
+                                [isSelectedItem]="selectedItemsMapping[item.id]"
+                                [isDisabled]="item.isDisabled"
+                                (changeSelected)="changeSelected($event)"
+                                [item]="item"
+                                [bodySide]="'left'">
+                            </fusion-dropdown-dual-multi-select-body-item>
+                        </li>
+                    </ng-container>
                     <ng-container *ngIf="loadingLeft$ | async" [ngTemplateOutlet]="loadingTemplate"> </ng-container>
                 </ul>
             </div>
@@ -46,20 +48,22 @@
         <div class="selected-list content-col">
             <div class="items-holder" #wrapperRight>
                 <ul class="options-data-list" #containerRight>
-                    <li *ngFor="let selectedItem of selectedOptions$ | async;trackBy: trackById">
-                        <fusion-dropdown-dual-multi-select-body-item
-                            (clearSelect)="clearSelect($event)"
-                            [isDisabled]="selectedItem.isDisabled"
-                            [item]="selectedItem"
-                            [bodySide]="'right'">
-                        </fusion-dropdown-dual-multi-select-body-item>
-                    </li>
+                    <ng-container *ngIf="!isPendingItems">
+                        <li *ngFor="let selectedItem of selectedOptions$ | async;trackBy: trackById">
+                            <fusion-dropdown-dual-multi-select-body-item
+                                (clearSelect)="clearSelect($event)"
+                                [isDisabled]="selectedItem.isDisabled"
+                                [item]="selectedItem"
+                                [bodySide]="'right'">
+                            </fusion-dropdown-dual-multi-select-body-item>
+                        </li>
+                    </ng-container>
                 </ul>
             </div>
         </div>
         <ng-container *ngIf="isPendingItems" [ngTemplateOutlet]="pendingItems"> </ng-container>
     </div>
-    <ng-container *ngIf="(isNoFoundDataToDisplay || (options$ | async)?.length === 0) && !isPendingItems" [ngTemplateOutlet]="noData"> </ng-container>
+    <ng-container *ngIf="(isNoFoundDataToDisplay || ((options$ | async)?.length === 0 && !(loadingLeft$ | async))) && !isPendingItems" [ngTemplateOutlet]="noData"> </ng-container>
 </div>
 
 
