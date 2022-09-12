@@ -1,10 +1,18 @@
 <fusion-notification [data]="notificationService.notification$ | async" (onClose)="onNotificationClose($event)"></fusion-notification>
 <div class="row">
-    <div class="col-9">
-        <!--UI-Component Examples-->
+    <div class="col-12">
+        <fusion-button (click)="openModal()">Show Modal</fusion-button>
+        <fusion-modal *ngIf="modalV3Open"
+            [configuration]="configuration"
+        >
+            <p>Content item placeholder</p>
+        </fusion-modal>
+    </div>
+    <!--<div class="col-9">
+        &lt;!&ndash;UI-Component Examples&ndash;&gt;
         <div class="is-example-title">Types</div>
         <fusion-example-block id="notification" title="Notification">
-            <!--Examples by frameworks-->
+            &lt;!&ndash;Examples by frameworks&ndash;&gt;
             <ng-template fusionExampleBlock="Angular">
                 1. in application "root" component add notification component
                 <fusion-code-block
@@ -265,11 +273,11 @@ const hideNotification = notificationEl => {
                 4. Use helper method show notification
                 <fusion-code-block lang="js" code="showNotification(notification, notificationData);"></fusion-code-block>
             </ng-template>
-            <!--Examples by frameworks-->
+            &lt;!&ndash;Examples by frameworks&ndash;&gt;
 
             <br />
             <div class="is-example-holder as-flex center">
-                <button fusion-button [style.--fu-style-version]="1" (click)="showNotification('Basic')">Basic</button>
+                <button fusion-button [style.&#45;&#45;fu-style-version]="1" (click)="showNotification('Basic')">Basic</button>
 
                 <button fusion-button (click)="showNotification('Info')">Info</button>
 
@@ -284,7 +292,7 @@ const hideNotification = notificationEl => {
         </fusion-example-block>
         <br />
         <fusion-example-block id="dialog" title="Dialog">
-            <!--Examples by frameworks-->
+            &lt;!&ndash;Examples by frameworks&ndash;&gt;
             <ng-template fusionExampleBlock="Angular">
                 1. Add modal to your component
                 <fusion-code-block
@@ -293,9 +301,9 @@ const hideNotification = notificationEl => {
     width="600"
     headerText="Overlay Title"
     (onSave)="saveClicked(`uniqueID`)">
-        <!-- Any modal content -->
+        &lt;!&ndash; Any modal content &ndash;&gt;
         <div> Modal Content </div>
-        <!-- Any modal content -->
+        &lt;!&ndash; Any modal content &ndash;&gt;
 </fusion-modal>'
                 ></fusion-code-block>
                 <br />
@@ -467,7 +475,7 @@ document.body.appendChild(modal);'
 fusion.services.modalService.close("testModal", {emitEvent = false})'
                 ></fusion-code-block>
             </ng-template>
-            <!--Examples by frameworks-->
+            &lt;!&ndash;Examples by frameworks&ndash;&gt;
             <br />
             <div class="is-example-holder as-flex center">
                 <fusion-button (click)="onClickModalOpen('testModal1')" class="stroke">Dialog</fusion-button>
@@ -535,7 +543,7 @@ fusion.services.modalService.close("testModal", {emitEvent = false})'
             </fusion-modal>
         </fusion-example-block>
 
-        <!--UI-Component Configuration Doc-->
+        &lt;!&ndash;UI-Component Configuration Doc&ndash;&gt;
         <div class="is-example-title">Configuration</div>
         <fusion-example-block id="paramsNotification" title="Notification parameters" [collapsible]="false">
             <ng-template fusionExampleBlock="Angular">
@@ -711,8 +719,8 @@ this.modalService.close(modalID, {emitEvent = true}) // emitEvent - false for su
 "
             ></fusion-code-block>
         </fusion-example-block>
-        <!--UI-Component Configuration Doc-->
-    </div>
+        &lt;!&ndash;UI-Component Configuration Doc&ndash;&gt;
+    </div>-->
 
     <div class="col-3 is-right-side-menu-holder">
         <!--<fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>-->

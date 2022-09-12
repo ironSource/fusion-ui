@@ -8,7 +8,7 @@ import {mapTo, switchMap, takeUntil} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
 import {VersionService} from '../../../services/version/version.service';
-import {ModalService} from '@ironsource/fusion-ui/components/modal';
+import {ModalConfiguration, ModalService} from '@ironsource/fusion-ui/components/modal';
 
 @Component({
     selector: 'fusion-modal-docs-v2',
@@ -69,6 +69,15 @@ export class ModalDocsV2Component implements OnInit, OnDestroy {
             ]
         }
     ];
+
+    configuration: ModalConfiguration = {
+        id: 'modalTest',
+        defaultModalState: 'open',
+        width: '485',
+        headerText: 'Label name'
+    };
+
+    modalV3Open = false;
 
     modalClosed$ = new Subject();
     modalButtonClick$ = new Subject();
@@ -162,5 +171,9 @@ export class ModalDocsV2Component implements OnInit, OnDestroy {
 
     closeModal() {
         this.modalClosed$.next();
+    }
+
+    openModal() {
+        this.modalV3Open = !this.modalV3Open;
     }
 }

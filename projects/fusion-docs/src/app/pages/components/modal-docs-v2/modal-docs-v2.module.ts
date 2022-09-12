@@ -8,7 +8,7 @@ import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {LoaderModule} from '@ironsource/fusion-ui/components/loader/v2';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
 import {NotificationModule} from '@ironsource/fusion-ui/components/notification/v2';
-import {ModalModule} from '@ironsource/fusion-ui/components/modal/v2';
+import {ModalModule} from '@ironsource/fusion-ui/components/modal/v3';
 
 const routes: Routes = [{path: '', component: ModalDocsV2Component}];
 
