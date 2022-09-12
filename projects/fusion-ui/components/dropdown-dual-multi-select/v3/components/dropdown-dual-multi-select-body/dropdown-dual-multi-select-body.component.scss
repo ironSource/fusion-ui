@@ -26,10 +26,8 @@ $itemWidth: 252px;
 %loadingDefinition {
     //@extend %font14;
     display: flex;
-    justify-content: space-between;
-    padding: 0 20px 8px 20px;
-    width: 227px;
-    height: 16px;
+    justify-content: center;
+    align-items: center;
     color: #e5e7e9;
 }
 
