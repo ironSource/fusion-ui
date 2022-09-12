@@ -63,7 +63,7 @@
         </div>
         <ng-container *ngIf="isPendingItems" [ngTemplateOutlet]="pendingItems"> </ng-container>
     </div>
-    <ng-container *ngIf="(isNoFoundDataToDisplay || ((options$ | async)?.length === 0 && !(loadingLeft$ | async))) && !isPendingItems" [ngTemplateOutlet]="noData"> </ng-container>
+    <ng-container *ngIf="(isNoFoundDataToDisplay || ((options$ | async)?.length === 0 && (loadingLeft$ | async)===false)) && !isPendingItems" [ngTemplateOutlet]="noData"> </ng-container>
 </div>
 
 
