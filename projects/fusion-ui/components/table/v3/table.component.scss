@@ -52,10 +52,13 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
 
                     &.is-sort{
                         cursor: pointer;
-                        //padding-top: 3px;
+                        .fu-header-text{
+                            display: inline-flex;
+                            line-height: 20px;
+                        }
                         .fu-sort-wrapper{
+                            display:none;
                             vertical-align: middle;
-                            display:inline-flex;
                             flex-direction:column;
                             gap:4px;
                             margin-left: 4px;
@@ -66,7 +69,13 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
                                 @extend %sort-triangle-base;
                             }
                         }
+                        &.desc, &.asc {
+                            .fu-header-text{
+                                padding-top: 1px;
+                            }
+                        }
                         &.desc .fu-sort-wrapper{
+                            display:inline-flex;
                             .fu-sort-up{
                                 border-bottom-color: $fu-light-600;
                             }
@@ -75,6 +84,7 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
                             }
                         }
                         &.asc .fu-sort-wrapper{
+                            display:inline-flex;
                             .fu-sort-up{
                                 border-bottom-color: $fu-black-500;
                             }
