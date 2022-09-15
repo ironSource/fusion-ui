@@ -34,7 +34,7 @@
 
 
 <ng-template #optionTemplate let-item="item">
-    <img [src]="item.image" *ngIf="item.image" alt="item-image" />
+    <img [src]="item.image" *ngIf="item.image" alt="item-image" [class.fu-image-for-two-rows]="item?.subText" />
     <fusion-flag *ngIf="item.flag" [name]="item.flag"></fusion-flag>
     <fusion-icon *ngIf="item.icon" [name]="item.icon" class="icon"></fusion-icon>
     <div class="fu-text-content">
