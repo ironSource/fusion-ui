@@ -92,7 +92,9 @@ export class FileDragAndDropDirective implements OnInit, AfterViewInit, OnDestro
                     target.value = '';
                 }, 1500);
             });
-        this._renderer.appendChild(parent, this.inputElement);
+        if (!parent.querySelector(`#input_file_${this.buttonId}`)) {
+            this._renderer.appendChild(parent, this.inputElement);
+        }
     }
 
     ngOnDestroy() {
