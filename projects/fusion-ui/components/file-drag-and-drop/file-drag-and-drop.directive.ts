@@ -109,7 +109,7 @@ export class FileDragAndDropDirective implements OnInit, AfterViewInit, OnDestro
 
     onDragLeave(event) {
         this.suppressDefaultEvent(event);
-        if (this.isDraggable()) {
+        if (this.isDraggable() && !event.relatedTarget.closest('[fusionfiledraganddrop]')) {
             this._renderer.removeClass(this._element.nativeElement, DRAG_OVER_CSS_CLASS);
         }
     }
