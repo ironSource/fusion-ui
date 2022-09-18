@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.4.0-rc.4](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.3...v3.4.0-rc.4) (2022-09-18)
+
+
+### Features
+
+* **fu-466:** added searchByProperties fro client-side search in fusion-dropdown-dual-multi-select ([dbe16a1](https://github.com/ironSource/fusion-ui/commit/dbe16a175f86715774b4cb564841ffd2a9a0b5b4))
+
+
+### Bug Fixes
+
+* **fu-466:** revert angular version to 13.1.1 from 13.3.10 ([fa4e936](https://github.com/ironSource/fusion-ui/commit/fa4e936ef986087ca639e07249520b8d01486efe))
+
 ## [3.4.0-rc.3](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.2...v3.4.0-rc.3) (2022-09-18)
 
 
