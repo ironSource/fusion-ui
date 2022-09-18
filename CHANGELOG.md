@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.4.0-rc.8](https://github.com/ironSource/fusion-ui/compare/v3.3.1-rc.3...v3.4.0-rc.8) (2022-09-18)
+
+
+### Features
+
+* **3.x.x:** dropdown-dual-multi-select added pagination loading and client-side search by props ([38be085](https://github.com/ironSource/fusion-ui/commit/38be08541e6b41fb69b93da8f1acc99f5bb3727e))
+
 ### [3.3.1-rc.3](https://github.com/ironSource/fusion-ui/compare/v3.3.1-rc.2...v3.3.1-rc.3) (2022-09-18)
 
 
