@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.4.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.1...v3.4.0-rc.2) (2022-09-18)
+
+
+### Bug Fixes
+
+* **fu-466:** change application image size for 2 rows option in dd-dual-multiselect ([d979fbe](https://github.com/ironSource/fusion-ui/commit/d979fbe1054f1505ec2927702db77edbacde95a8))
+* **fu-466:** changed table header state sort and align:right ([9157329](https://github.com/ironSource/fusion-ui/commit/9157329a57023aa33f8566e8837dbe5dc0a426a5))
+* **fu-466:** cr changes ([59cf2ae](https://github.com/ironSource/fusion-ui/commit/59cf2aef63f4a4ace4a918413722225061aeaaa8))
+* **fu-466:** dd-double-side-header search icon will no hide if user type search term ([5d51d0b](https://github.com/ironSource/fusion-ui/commit/5d51d0ba075b4c4dcb61027201afe768957f7107))
+* **fu-466:** fixed drag-and-drop for multiple input file creation ([cd3ae74](https://github.com/ironSource/fusion-ui/commit/cd3ae748f8b22f9f4997810640fa90614fc9a64c))
+* **fu-466:** fixed onDragLeave for inner elements ([3b8f850](https://github.com/ironSource/fusion-ui/commit/3b8f8508316b18631103dbc5a5c08192d475b501))
+* **fu-466:** fixed table cell v3 line-height ([3b6c801](https://github.com/ironSource/fusion-ui/commit/3b6c801abf6830759db078318343fa0369b323f5))
+* **fu-466:** fixed ui for modal header ([6e812a4](https://github.com/ironSource/fusion-ui/commit/6e812a48bf53e52aff87ea72a3d7b9af844da32b))
+
+
+### CI
+
+* **3.x.x:** disabled all natives build (vanilla, react and vue) ([2fb6f18](https://github.com/ironSource/fusion-ui/commit/2fb6f18e6ddf65a57bd5bb0a6f30a6fc5623fb49))
+
 ## [3.4.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.0...v3.4.0-rc.1) (2022-09-12)
 
 ## [3.4.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.3.0...v3.4.0-rc.0) (2022-09-12)
