@@ -70,6 +70,7 @@ const TABLE_COLUMNS_CONFIG: Array<TableColumn> = [
         width: '85px',
         tooltip: 'Also Lorem ipsum dolor sit amet'
     },
+    {key: 'numberCheck', title: 'Number', sort: '', type: TableColumnTypeEnum.Number, headerAlign: 'right'},
     {key: 'email', title: 'Email', sort: ''},
     {key: 'website', title: 'Website'}
 ];
@@ -505,7 +506,8 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
                             website: item.website,
                             live: _index !== 2,
                             bid: fcBid,
-                            bidSecond: fcSecondBid
+                            bidSecond: fcSecondBid,
+                            numberCheck: _index + 13
                         };
                     });
                     this.rowsBig = [...this.rows];
