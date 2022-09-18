@@ -54,6 +54,7 @@
             (scrollDown)="onScrollDown()"
             [formControl]="preSelectedItems"
             [searchTerm]="searchControlTerm.valueChanges | async"
+            [searchByProperties]="searchByProperties"
             [totalItems]="totalItems"
             [items]="items$ | async"
             [isPendingItems]="pendingItems"

@@ -47,6 +47,13 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.defaultPlaceHolder = data;
     }
 
+    @Input() set searchByProperties(value: string[]) {
+        this._searchByProperties = value;
+    }
+    get searchByProperties(): string[] {
+        return this._searchByProperties;
+    }
+
     @Input() set opened(data: boolean) {
         this.opened$.next(data);
     }
@@ -94,6 +101,8 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     private selectedChange: DropdownOption[];
     private parentWithOverflow: HTMLElement;
     private onDestroy$ = new Subject<void>();
+
+    private _searchByProperties: string[];
 
     private backendPaginationState: BackendPagination;
     private backendPaginationTotalResult: number;

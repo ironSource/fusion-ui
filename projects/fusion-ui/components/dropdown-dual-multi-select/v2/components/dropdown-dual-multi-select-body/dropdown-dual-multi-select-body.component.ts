@@ -14,6 +14,7 @@ import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/e
 import {BehaviorSubject, combineLatest, fromEvent, Observable, of, Subject} from 'rxjs';
 import {debounceTime, filter, map, scan, takeUntil, tap} from 'rxjs/operators';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {isNullOrUndefined} from '@ironsource/fusion-ui';
 
 const PAGINATION_CHUNK = 20;
 @Component({
@@ -62,6 +63,8 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
     }
 
     @Input() hasBackendPagination = false;
+
+    @Input() searchByProperties: string[];
 
     @Output() scrollDown = new EventEmitter();
 
@@ -265,10 +268,20 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
         if (term && items) {
             const searchTerm = term.toLowerCase();
             response = items.filter(item => {
-                if (item.title) {
-                    return item.title.toLowerCase().indexOf(searchTerm) !== -1;
+                if (Array.isArray(this.searchByProperties)) {
+                    let found = false;
+                    this.searchByProperties.forEach(property => {
+                        if (!isNullOrUndefined(item[property]) && !found) {
+                            found = item[property].toString().toLowerCase().indexOf(searchTerm) !== -1;
+                        }
+                    });
+                    return found;
                 } else {
-                    return item.displayText.toLowerCase().indexOf(searchTerm) !== -1;
+                    if (item.title) {
+                        return item.title.toLowerCase().indexOf(searchTerm) !== -1;
+                    } else {
+                        return item.displayText.toLowerCase().indexOf(searchTerm) !== -1;
+                    }
                 }
             });
         }
