@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.4.0-rc.3](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.2...v3.4.0-rc.3) (2022-09-18)
+
+
+### Bug Fixes
+
+* **fu-466:** sync angular version to 13.3.10 from 13.1.1 ([94e9901](https://github.com/ironSource/fusion-ui/commit/94e990130240bd0d1ea8f7bb94ccdc88f155e444))
+
 ## [3.4.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.1...v3.4.0-rc.2) (2022-09-18)
 
 
