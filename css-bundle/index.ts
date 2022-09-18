@@ -13,7 +13,7 @@ async function bundleScss() {
         dedupeGlobs.push('./projects/fusion-native/src/style/**/*.scss');
     }
 
-    const {found, bundledContent, imports} = await new Bundler().Bundle(mainPath, dedupeGlobs);
+    const {found, bundledContent, imports} = await new Bundler().bundle(mainPath, dedupeGlobs);
 
     if (imports) {
         const cwd = process.cwd();
