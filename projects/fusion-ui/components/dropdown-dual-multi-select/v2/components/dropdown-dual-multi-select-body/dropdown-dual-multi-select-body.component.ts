@@ -14,7 +14,6 @@ import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/e
 import {BehaviorSubject, combineLatest, fromEvent, Observable, of, Subject} from 'rxjs';
 import {debounceTime, filter, map, scan, takeUntil, tap} from 'rxjs/operators';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {isNullOrUndefined} from '@ironsource/fusion-ui';
 
 const PAGINATION_CHUNK = 20;
 @Component({
@@ -271,7 +270,7 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
                 if (Array.isArray(this.searchByProperties)) {
                     let found = false;
                     this.searchByProperties.forEach(property => {
-                        if (!isNullOrUndefined(item[property]) && !found) {
+                        if (!!item[property] && !found) {
                             found = item[property].toString().toLowerCase().indexOf(searchTerm) !== -1;
                         }
                     });

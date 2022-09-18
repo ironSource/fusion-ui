@@ -21,7 +21,6 @@ import {map, take, takeUntil} from 'rxjs/operators';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {BackendPagination} from '@ironsource/fusion-ui/components/dropdown';
-import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 const CLASS_LIST = [
     'dual-select-button',
@@ -73,7 +72,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     }
 
     get hasBackendPagination(): boolean {
-        return !isNullOrUndefined(this.backendPaginationState);
+        return !!this.backendPaginationState;
     }
 
     @Output() scrollDown = new EventEmitter();
