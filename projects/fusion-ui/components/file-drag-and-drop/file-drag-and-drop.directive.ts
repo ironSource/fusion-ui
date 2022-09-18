@@ -92,7 +92,9 @@ export class FileDragAndDropDirective implements OnInit, AfterViewInit, OnDestro
                     target.value = '';
                 }, 1500);
             });
-        this._renderer.appendChild(parent, this.inputElement);
+        if (!parent.querySelector(`#input_file_${this.buttonId}`)) {
+            this._renderer.appendChild(parent, this.inputElement);
+        }
     }
 
     ngOnDestroy() {
@@ -109,7 +111,7 @@ export class FileDragAndDropDirective implements OnInit, AfterViewInit, OnDestro
 
     onDragLeave(event) {
         this.suppressDefaultEvent(event);
-        if (this.isDraggable()) {
+        if (this.isDraggable() && !event.relatedTarget.closest('[fusionfiledraganddrop]')) {
             this._renderer.removeClass(this._element.nativeElement, DRAG_OVER_CSS_CLASS);
         }
     }
