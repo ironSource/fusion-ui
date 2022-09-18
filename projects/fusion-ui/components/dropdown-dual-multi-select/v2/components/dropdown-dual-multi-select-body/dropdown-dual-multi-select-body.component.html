@@ -27,7 +27,7 @@
     <div class="body-control">
         <div class="options-wrapper content-col">
             <div class="items-holder" #wrapperLeft>
-                <ul class="options-data-list" #containerLeft>
+                <ul *ngIf="!isPendingItems" class="options-data-list" #containerLeft>
                     <li *ngFor="let item of displayOptions$ | async;trackBy: trackById">
                         <fusion-dropdown-dual-multi-select-body-item
                             [isSelectedItem]="selectedItemsMapping[item.id]"
@@ -43,7 +43,7 @@
         </div>
         <div class="selected-list content-col">
             <div class="items-holder" #wrapperRight>
-                <ul class="options-data-list" #containerRight>
+                <ul *ngIf="!isPendingItems" class="options-data-list" #containerRight>
                     <li *ngFor="let selectedItem of selectedOptions$ | async;trackBy: trackById">
                         <fusion-dropdown-dual-multi-select-body-item
                             (clearSelect)="clearSelect($event)"
