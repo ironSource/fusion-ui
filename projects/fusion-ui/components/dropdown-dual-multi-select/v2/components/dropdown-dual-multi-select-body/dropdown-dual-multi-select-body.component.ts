@@ -14,7 +14,7 @@ import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/e
 import {BehaviorSubject, combineLatest, fromEvent, Observable, of, Subject} from 'rxjs';
 import {debounceTime, filter, map, scan, takeUntil, tap} from 'rxjs/operators';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {isNullOrUndefined} from '@ironsource/fusion-ui';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 const PAGINATION_CHUNK = 20;
 @Component({
