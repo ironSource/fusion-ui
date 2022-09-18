@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.4.0-rc.9](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.8...v3.4.0-rc.9) (2022-09-18)
+
+
+### Bug Fixes
+
+* **3.x.x:** dropdown-dual-multi-select-body build fix rel to isNullOrUndefined ([667f31f](https://github.com/ironSource/fusion-ui/commit/667f31fe95cd2a04eef289883cd4921132ae1cac))
+
 ## [3.4.0-rc.8](https://github.com/ironSource/fusion-ui/compare/v3.3.1-rc.3...v3.4.0-rc.8) (2022-09-18)
 
 
