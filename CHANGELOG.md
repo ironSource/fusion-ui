@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.4.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.0...v3.4.0-rc.1) (2022-09-12)
+
+## [3.4.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.3.0...v3.4.0-rc.0) (2022-09-12)
+
+
+### Features
+
+* **fu-460:** added pagination to dropdown-dual-multi-select ([f042bd1](https://github.com/ironSource/fusion-ui/commit/f042bd12828cb2d22f7b2bb824d387e337aeed0d))
+
+
+### Bug Fixes
+
+* **fu-461:** dependencies update ([3c9ffc4](https://github.com/ironSource/fusion-ui/commit/3c9ffc4d577f2d142c64c8c88f886b655bf27ad3))
+
+
+### CI
+
+* **upgrade:** dependencies update pull request [#95](https://github.com/ironSource/fusion-ui/issues/95) from ironSource/fix/arm-8 ([5975f08](https://github.com/ironSource/fusion-ui/commit/5975f080592a5053e85f0c44688b390c3cf13f88))
+* **upgrade:** update sass, sass-loader and sass-bundle ([a9cbe07](https://github.com/ironSource/fusion-ui/commit/a9cbe07c35d21fa697485da46c722e178d82ef3d))
+
 ## [3.3.0](https://github.com/ironSource/fusion-ui/compare/v3.3.0-rc.1...v3.3.0) (2022-09-05)
 
 ## [3.3.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v3.3.0-rc.0...v3.3.0-rc.1) (2022-09-05)

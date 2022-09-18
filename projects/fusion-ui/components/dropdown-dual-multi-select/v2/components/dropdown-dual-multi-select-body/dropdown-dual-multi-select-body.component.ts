@@ -57,6 +57,12 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
         this.autoComplete$.next(value);
     }
 
+    @Input() set loadingLeft(value: boolean) {
+        this.loadingLeft$.next(value);
+    }
+
+    @Input() hasBackendPagination = false;
+
     @Output() scrollDown = new EventEmitter();
 
     isSelectAllDisabled$ = new BehaviorSubject<boolean>(false);
@@ -183,7 +189,7 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
     }
 
     private isDisplayOptionAllDisabled(items: DropdownOption[]): void {
-        this.isSelectAllDisabled$.next(items.filter(item => item.isDisabled).length === items.length);
+        this.isSelectAllDisabled$.next(items.filter(item => item.isDisabled)?.length === items.length);
     }
 
     private isDisplayOptionsEmpty(items: DropdownOption[]): void {

@@ -57,6 +57,8 @@
             [totalItems]="totalItems"
             [items]="items$ | async"
             [isPendingItems]="pendingItems"
+            [loadingLeft]="loadingLeft$ | async"
+            [hasBackendPagination]="hasBackendPagination"
         ></fusion-dropdown-dual-multi-select-body>
 
         <fusion-dropdown-dual-multi-select-footer
