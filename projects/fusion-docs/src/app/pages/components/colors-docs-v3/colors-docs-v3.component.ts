@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {THEME_COLORS_PALETTE_V3} from './colors-docs-config-v3';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
-import {isNullOrUndefined} from '@ironsource/fusion-ui';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Component({
     selector: 'fusion-colors-docs-v2',
