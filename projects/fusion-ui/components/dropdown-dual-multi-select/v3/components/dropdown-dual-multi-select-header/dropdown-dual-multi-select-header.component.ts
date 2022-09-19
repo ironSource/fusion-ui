@@ -49,4 +49,8 @@ export class DropdownDualMultiSelectHeaderComponent implements OnDestroy, Contro
         this.searchControl.setValue('');
         this.input.nativeElement.focus();
     }
+
+    setFocusToInput() {
+        this.input.nativeElement.focus();
+    }
 }
