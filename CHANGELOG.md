@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0-rc.3](https://github.com/ironSource/fusion-ui/compare/v4.0.0-rc.1...v4.0.0-rc.3) (2022-09-19)
+
+
+### Bug Fixes
+
+* **4.x.x:** fix file-drag-and-drop hover ([dd9d11d](https://github.com/ironSource/fusion-ui/commit/dd9d11d18ccb5ea38746c4c25f45fa44a8fd94f8))
+* **4.x.x:** fix modal v3 header ([bab5e47](https://github.com/ironSource/fusion-ui/commit/bab5e4761d66a2aad599d477232220f810cdc913))
+* **4.x.x:** fix v3 table cell text (type date) ([d9444a7](https://github.com/ironSource/fusion-ui/commit/d9444a7cfc05df45d8b73940563035aed5d0b13c))
+* **4.x.x:** fix v3 table header sorted column align right ([8583b97](https://github.com/ironSource/fusion-ui/commit/8583b973131744a66150df627441c1301c6b62b7))
+
 ## [4.0.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v3.3.0...v4.0.0-rc.1) (2022-09-06)
 
 
