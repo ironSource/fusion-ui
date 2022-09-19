@@ -57,6 +57,14 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
         this.autoComplete$.next(value);
     }
 
+    @Input() set loadingLeft(value: boolean) {
+        this.loadingLeft$.next(value);
+    }
+
+    @Input() hasBackendPagination = false;
+
+    @Input() searchByProperties: string[];
+
     @Output() scrollDown = new EventEmitter();
 
     isSelectAllDisabled$ = new BehaviorSubject<boolean>(false);
@@ -183,7 +191,7 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
     }
 
     private isDisplayOptionAllDisabled(items: DropdownOption[]): void {
-        this.isSelectAllDisabled$.next(items.filter(item => item.isDisabled).length === items.length);
+        this.isSelectAllDisabled$.next(items.filter(item => item.isDisabled)?.length === items.length);
     }
 
     private isDisplayOptionsEmpty(items: DropdownOption[]): void {
@@ -259,10 +267,20 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
         if (term && items) {
             const searchTerm = term.toLowerCase();
             response = items.filter(item => {
-                if (item.title) {
-                    return item.title.toLowerCase().indexOf(searchTerm) !== -1;
+                if (Array.isArray(this.searchByProperties)) {
+                    let found = false;
+                    this.searchByProperties.forEach(property => {
+                        if (!!item[property] && !found) {
+                            found = item[property].toString().toLowerCase().indexOf(searchTerm) !== -1;
+                        }
+                    });
+                    return found;
                 } else {
-                    return item.displayText.toLowerCase().indexOf(searchTerm) !== -1;
+                    if (item.title) {
+                        return item.title.toLowerCase().indexOf(searchTerm) !== -1;
+                    } else {
+                        return item.displayText.toLowerCase().indexOf(searchTerm) !== -1;
+                    }
                 }
             });
         }

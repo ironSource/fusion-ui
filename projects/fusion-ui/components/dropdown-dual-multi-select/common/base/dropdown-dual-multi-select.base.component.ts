@@ -17,9 +17,10 @@ import {ControlValueAccessor, FormControl} from '@angular/forms';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
-import {map, takeUntil} from 'rxjs/operators';
+import {map, take, takeUntil} from 'rxjs/operators';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
+import {BackendPagination} from '@ironsource/fusion-ui/components/dropdown';
 
 const CLASS_LIST = [
     'dual-select-button',
@@ -44,11 +45,34 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.placeholder$.next(data);
         this.defaultPlaceHolder = data;
     }
+
+    @Input() set searchByProperties(value: string[]) {
+        this._searchByProperties = value;
+    }
+    get searchByProperties(): string[] {
+        return this._searchByProperties;
+    }
+
     @Input() set opened(data: boolean) {
         this.opened$.next(data);
     }
+
     @Input() set items(data: DropdownOption[]) {
-        this.items$.next(data);
+        this.items$.next(data || []);
+    }
+
+    get items(): DropdownOption[] {
+        return this.items$.getValue();
+    }
+
+    // backend pagination same like in dropdown component
+    @Input() set backendPagination(value: BackendPagination) {
+        this.onBackendPaginationChanged(value);
+        this.backendPaginationState = value;
+    }
+
+    get hasBackendPagination(): boolean {
+        return !!this.backendPaginationState;
     }
 
     @Output() scrollDown = new EventEmitter();
@@ -71,10 +95,18 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     selected$ = new BehaviorSubject<string>('');
     chipDefaultContent: string;
     uid: string;
+    backendPaginationChanged$: Subject<any> = new Subject();
 
     private selectedChange: DropdownOption[];
     private parentWithOverflow: HTMLElement;
     private onDestroy$ = new Subject<void>();
+
+    private _searchByProperties: string[];
+
+    private backendPaginationState: BackendPagination;
+    private backendPaginationTotalResult: number;
+    private backendPaginationPageNumber = 1;
+    loadingLeft$ = new BehaviorSubject<boolean>(false);
 
     constructor(protected element: ElementRef, protected renderer: Renderer2, protected uidService: UniqueIdService) {
         super();
@@ -91,10 +123,37 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.resetState$.complete();
         this.onDestroy$.next();
         this.onDestroy$.complete();
+        this.backendPaginationChanged$.next();
+        this.backendPaginationChanged$.complete();
     }
 
     onScrollDown(): void {
-        this.scrollDown.emit();
+        if (this.hasBackendPagination && this.backendPaginationTotalResult && this.backendPaginationTotalResult > this.items.length) {
+            this.loadingLeft$.next(true);
+            this.backendPaginationState
+                .backendGetFunction({
+                    ...this.backendPaginationState.getOptions,
+                    pageNumber: this.backendPaginationPageNumber + 1
+                })
+                .pipe(take(1))
+                .subscribe(val => {
+                    const responseValue =
+                        val && Array.isArray(val[this.backendPaginationState.responseDataPropertyName])
+                            ? val[this.backendPaginationState.responseDataPropertyName]
+                            : [];
+                    const value = this.backendPaginationState.mappingFunction
+                        ? responseValue.map(this.backendPaginationState.mappingFunction)
+                        : responseValue;
+                    const dropdownOptions = this.sortOptions({
+                        backendPagination: this.backendPaginationState,
+                        leftSideItems: [...value]
+                    });
+                    this.items = [...this.items, ...dropdownOptions];
+                    this.backendPaginationPageNumber++;
+                });
+        } else {
+            this.scrollDown.emit();
+        }
     }
 
     changeConfig(val: string) {
@@ -246,5 +305,47 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
             placeholder = `${placeholderPrefix} selected`;
         }
         this.placeholder$.next(placeholder);
+    }
+
+    private onBackendPaginationChanged(backendPagination: BackendPagination): void {
+        this.backendPaginationChanged$.next();
+        this.backendPaginationTotalResult = null;
+        this.backendPaginationPageNumber = 1;
+        this.items = null;
+        this.loadingLeft$.next(true);
+        if (backendPagination) {
+            backendPagination
+                .backendGetFunction(backendPagination.getOptions)
+                .pipe(takeUntil(this.backendPaginationChanged$))
+                .subscribe(val => {
+                    const value = val ? [...val[backendPagination.responseDataPropertyName]] : null;
+                    this.items = this.sortOptions({
+                        backendPagination,
+                        leftSideItems: value
+                            ? backendPagination.mappingFunction
+                                ? value.map(backendPagination.mappingFunction)
+                                : value
+                            : null
+                    });
+                    this.backendPaginationTotalResult = val ? val[backendPagination.responseTotalCountPropertyName] : null;
+                    this.totalItems = this.backendPaginationTotalResult;
+                    this.loadingLeft$.next(false);
+                    // todo-andyk: check if need it
+                    // this.cdr.markForCheck();
+                });
+        }
+    }
+
+    private sortOptions({
+        backendPagination,
+        leftSideItems
+    }: {
+        backendPagination: BackendPagination;
+        leftSideItems: DropdownOption[];
+    }): DropdownOption[] {
+        if (backendPagination.sortingFunction) {
+            return leftSideItems.sort(backendPagination.sortingFunction);
+        }
+        return leftSideItems;
     }
 }

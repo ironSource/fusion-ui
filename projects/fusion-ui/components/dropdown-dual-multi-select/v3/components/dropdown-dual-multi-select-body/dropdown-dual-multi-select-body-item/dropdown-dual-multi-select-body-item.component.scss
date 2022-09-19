@@ -24,11 +24,15 @@ $leftSidePadding: 6px 8px 6px 8px;
         position: relative;
         gap: 4px;
         img {
-            @include size(20px);
             @extend %image-masked;
+            @include size(20px);
             max-width: 20px;
             border-radius:  4px;
             vertical-align: middle;
+            &.fu-image-for-two-rows {
+                @include size(24px);
+                max-width: 24px;
+            }
         }
         @include icon-style('icon', $fu-light-600, 16px, false, true) {
             @include size(16px);

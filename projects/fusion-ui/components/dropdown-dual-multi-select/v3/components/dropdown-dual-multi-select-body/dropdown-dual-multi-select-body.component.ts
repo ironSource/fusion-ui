@@ -16,6 +16,7 @@ import {debounceTime, filter, map, scan, takeUntil, tap} from 'rxjs/operators';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 const PAGINATION_CHUNK = 20;
+
 @Component({
     selector: 'fusion-dropdown-dual-multi-select-body',
     templateUrl: './dropdown-dual-multi-select-body.component.html',
@@ -49,6 +50,7 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
         this.options$.next(data || []);
         this.isDisplayOptionAllDisabled(data);
     }
+
     @Input() set searchTerm(data: string) {
         this.searchTerm$.next(data);
     }
@@ -56,6 +58,14 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
     @Input() set autoComplete(value: boolean) {
         this.autoComplete$.next(value);
     }
+
+    @Input() set loadingLeft(value: boolean) {
+        this.loadingLeft$.next(value);
+    }
+
+    @Input() hasBackendPagination = false;
+
+    @Input() searchByProperties: string[];
 
     @Output() scrollDown = new EventEmitter();
 
@@ -144,6 +154,7 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
             this.selectedItemsWorker$.getValue() && this.selectedItemsWorker$.getValue().length !== 0 && this.options$.getValue().length > 0
         );
     }
+
     trackById(index, item): any {
         return item.id;
     }
@@ -229,10 +240,14 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
     }
 
     private onLeftScrollReachBottom(): void {
-        const isInputLengthLessThanTotalItem = this.options$.getValue()?.length < this.totalItems;
+        if (this.hasBackendPagination) {
+            this.totalItems = this.totalItems || this.options$?.getValue().length;
+        }
+        const isInputLengthLessThanTotalItem = this.options$?.getValue().length < this.totalItems;
         const isDisplayLengthEqualInputLength = this.displayItemsAmount === this.options$?.getValue().length;
         const isDisplayLengthLessThanInputLength = this.displayItemsAmount < this.options$?.getValue().length;
         const isLoadingLeft = isDisplayLengthEqualInputLength && isInputLengthLessThanTotalItem;
+
         this.loadingLeft$.next(isLoadingLeft);
 
         if (isDisplayLengthLessThanInputLength) {
@@ -259,10 +274,20 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
         if (term && items) {
             const searchTerm = term.toLowerCase();
             response = items.filter(item => {
-                if (item.title) {
-                    return item.title.toLowerCase().indexOf(searchTerm) !== -1;
+                if (Array.isArray(this.searchByProperties)) {
+                    let found = false;
+                    this.searchByProperties.forEach(property => {
+                        if (!!item[property] && !found) {
+                            found = item[property].toString().toLowerCase().indexOf(searchTerm) !== -1;
+                        }
+                    });
+                    return found;
                 } else {
-                    return item.displayText.toLowerCase().indexOf(searchTerm) !== -1;
+                    if (item.title) {
+                        return item.title.toLowerCase().indexOf(searchTerm) !== -1;
+                    } else {
+                        return item.displayText.toLowerCase().indexOf(searchTerm) !== -1;
+                    }
                 }
             });
         }
