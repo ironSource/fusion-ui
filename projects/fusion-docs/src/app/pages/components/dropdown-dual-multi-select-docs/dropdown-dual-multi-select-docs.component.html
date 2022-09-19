@@ -1,4 +1,22 @@
 <div class="row">
+    <div class="col-4"></div>
+
+    <div class="col-4">
+        <div class="is-example-title">Dynamic Component Items With Backend Pagination</div>
+        <fusion-dropdown-dual-multi-select
+            title="Actors"
+            placeholder="Select Actors"
+            [formControl]="paginationItemsControl"
+            [backendPagination]="dropdownPaginationOptions"
+            (viewChange)="isViewChanged($event)"
+            (searchChange)="onSearchChanged($event)"
+        ></fusion-dropdown-dual-multi-select>
+    </div>
+
+    <div class="col-4"></div>
+</div>
+
+<div class="row">
     <div class="col-4">
         <div class="is-example-title">Regular With Application Items</div>
         <fusion-dropdown-dual-multi-select
@@ -46,6 +64,7 @@
         ></fusion-dropdown-dual-multi-select>
     </div>
 </div>
+
 <div class="row">
     <div class="col-4">
         <div class="is-example-title">Pending To Items</div>
