@@ -12,14 +12,12 @@ describe('ColorItemsComponent', () => {
     let component: ColorItemsComponent;
     let fixture: ComponentFixture<ColorItemsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [ColorItemsComponent],
-                imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule, ButtonModule, RouterModule, ReactiveFormsModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [ColorItemsComponent],
+            imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule, ButtonModule, RouterModule, ReactiveFormsModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(ColorItemsComponent);

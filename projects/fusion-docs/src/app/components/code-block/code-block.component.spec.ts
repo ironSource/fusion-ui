@@ -6,13 +6,11 @@ describe('CodeBlockComponent', () => {
     let component: CodeBlockComponent;
     let fixture: ComponentFixture<CodeBlockComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [CodeBlockComponent]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [CodeBlockComponent]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(CodeBlockComponent);

@@ -11,15 +11,13 @@ describe('LayoutComponent', () => {
     let component: LayoutComponent;
     let fixture: ComponentFixture<LayoutComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [HeaderModule, MenuModule, PopupModule, RouterTestingModule],
-                declarations: [LayoutComponent],
-                providers: [CacheService, PopupService]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [HeaderModule, MenuModule, PopupModule, RouterTestingModule],
+            declarations: [LayoutComponent],
+            providers: [CacheService, PopupService]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(LayoutComponent);

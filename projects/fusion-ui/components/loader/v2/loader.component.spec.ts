@@ -14,15 +14,13 @@ describe('LoaderComponent', () => {
     let component: LoaderComponent;
     let fixture: ComponentFixture<LoaderComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [LoaderComponent],
-                imports: [IconModule],
-                providers: [{provide: ApiService, useClass: MockApiService}]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [LoaderComponent],
+            imports: [IconModule],
+            providers: [{provide: ApiService, useClass: MockApiService}]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(LoaderComponent);

@@ -6,13 +6,11 @@ describe('AccordionBoxContentComponent', () => {
     let component: AccordionContentComponent;
     let fixture: ComponentFixture<AccordionContentComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [AccordionContentComponent]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [AccordionContentComponent]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(AccordionContentComponent);

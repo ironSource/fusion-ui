@@ -15,14 +15,12 @@ describe('ColorsDocsComponent', () => {
     let component: ColorsDocsComponent;
     let fixture: ComponentFixture<ColorsDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [ColorsDocsComponent, ColorsPaletteComponent, ColorItemsComponent],
-                imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule, ButtonModule, RouterModule, ReactiveFormsModule, TableModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [ColorsDocsComponent, ColorsPaletteComponent, ColorItemsComponent],
+            imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule, ButtonModule, RouterModule, ReactiveFormsModule, TableModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(ColorsDocsComponent);

@@ -10,14 +10,12 @@ describe('IconStatusDocsComponent', () => {
     let component: IconStatusDocsComponent;
     let fixture: ComponentFixture<IconStatusDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [IconStatusDocsComponent],
-                imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule, IconStatusModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [IconStatusDocsComponent],
+            imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule, IconStatusModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(IconStatusDocsComponent);

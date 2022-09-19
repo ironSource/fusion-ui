@@ -10,14 +10,12 @@ describe('ModalServiceDocComponent', () => {
     let component: ModalServiceDocComponent;
     let fixture: ComponentFixture<ModalServiceDocComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [ModalServiceDocComponent],
-                imports: [RouterModule, ExampleBlockModule, CodeBlockModule, DocsMenuModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [ModalServiceDocComponent],
+            imports: [RouterModule, ExampleBlockModule, CodeBlockModule, DocsMenuModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(ModalServiceDocComponent);
