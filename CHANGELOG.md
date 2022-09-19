@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.4.0-rc.10](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.9...v3.4.0-rc.10) (2022-09-19)
+
+
+### CI
+
+* **3.x.x:** added webpack ([6b626e5](https://github.com/ironSource/fusion-ui/commit/6b626e55112fcd3eed90edd157d82e1f824c9f28))
+* **3.x.x:** remove not needed npm scripts, fix karma-jasmine dependency conflict ([18227e7](https://github.com/ironSource/fusion-ui/commit/18227e78de01b56788b1b63cb344ba9afbe3480a))
+* **3.x.x:** remove sideEffects and exports related to natives ([19e9076](https://github.com/ironSource/fusion-ui/commit/19e9076032ce2973bc8a4475f92722abce0bf73c))
+
 ## [3.4.0-rc.9](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.8...v3.4.0-rc.9) (2022-09-18)
 
 
