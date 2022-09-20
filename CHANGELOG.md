@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.5.0](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.7...v3.5.0) (2022-09-20)
+
+
+### Features
+
+* **3.x.x:** added event 'navigationSync' to the menu-list.component ([0874921](https://github.com/ironSource/fusion-ui/commit/08749214d31d79b1b71cbacafb2bc1a78910229f))
+
 ## [3.4.0-rc.7](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.6...v3.4.0-rc.7) (2022-09-18)
 
 ## [3.4.0-rc.6](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.5...v3.4.0-rc.6) (2022-09-18)
