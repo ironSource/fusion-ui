@@ -63,16 +63,11 @@ export class MenuListComponent implements OnDestroy, OnInit {
                 .subscribe();
         } else {
             merge(fromEvent(window, 'stateChanged'), fromEvent(window, 'popstate'))
-                .pipe(
-                    takeUntil(this.onDestroy$),
-                    tap(() => {
-                        this.routeChanged.emit();
-                        this.menuService.setSelectedByRoute(this.windowService.nativeWindow.location.pathname);
-                        this.changeDetectorRef.detectChanges();
-                    })
-                )
-                .subscribe();
+                .pipe(takeUntil(this.onDestroy$))
+                .subscribe(this.onWindowNavigationSync.bind(this));
         }
+
+        fromEvent(window, 'navigationSync').pipe(takeUntil(this.onDestroy$)).subscribe(this.onWindowNavigationSync.bind(this));
     }
 
     initNativeStateChangeEvent(window: Window) {
@@ -193,5 +188,11 @@ export class MenuListComponent implements OnDestroy, OnInit {
     ngOnDestroy() {
         this.onDestroy$.next();
         this.onDestroy$.complete();
+    }
+
+    onWindowNavigationSync() {
+        this.routeChanged.emit();
+        this.menuService.setSelectedByRoute(this.windowService.nativeWindow.location.pathname);
+        this.changeDetectorRef.detectChanges();
     }
 }
