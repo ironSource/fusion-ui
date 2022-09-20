@@ -1,5 +1,6 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Type} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
+import {HeaderOptions} from '@ironsource/fusion-ui/components/header-overlay/common/base';
 
 @Component({
     selector: 'fusion-demo-filter',
@@ -52,7 +53,7 @@ export class HeaderOverlayDocsComponent implements OnInit {
 
     formGroup: FormGroup;
     headerComponent = DemoFilterComponent;
-    headerPopUpFormControl = new FormControl({isOpen: false, isActive: false});
+    headerPopUpFormControl = new FormControl<HeaderOptions>({isOpen: false, isActive: false});
     bodyInput = new FormControl(false);
 
     ngOnInit() {
