@@ -17,15 +17,13 @@ describe('ListBoxDocsV2Component', () => {
     let component: ListBoxDocsV2Component;
     let fixture: ComponentFixture<ListBoxDocsV2Component>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [ListBoxDocsV2Component],
-                imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule, ReactiveFormsModule, ListBoxModule, MultiDropdownModule],
-                providers: [{provide: Router, useClass: RouterStub}]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [ListBoxDocsV2Component],
+            imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule, ReactiveFormsModule, ListBoxModule, MultiDropdownModule],
+            providers: [{provide: Router, useClass: RouterStub}]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(ListBoxDocsV2Component);

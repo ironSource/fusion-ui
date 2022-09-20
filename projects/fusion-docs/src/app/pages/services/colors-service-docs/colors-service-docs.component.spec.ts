@@ -9,14 +9,12 @@ describe('ColorsServiceDocsComponent', () => {
     let component: ColorsServiceDocsComponent;
     let fixture: ComponentFixture<ColorsServiceDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule],
-                declarations: [ColorsServiceDocsComponent]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule],
+            declarations: [ColorsServiceDocsComponent]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(ColorsServiceDocsComponent);

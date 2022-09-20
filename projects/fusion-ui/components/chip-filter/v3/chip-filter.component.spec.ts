@@ -29,14 +29,12 @@ describe('ChipFilterComponent', () => {
     let debugEl: DebugElement;
     let chipEl: DebugElement;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [IconModule, FlagModule, TooltipModule],
-                declarations: [ChipFilterComponent, TestChipComponent]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [IconModule, FlagModule, TooltipModule],
+            declarations: [ChipFilterComponent, TestChipComponent]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TestChipComponent);

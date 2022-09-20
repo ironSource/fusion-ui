@@ -20,15 +20,13 @@ describe('InputComponent', () => {
     let component: InputComponent;
     let fixture: ComponentFixture<InputComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [InputComponent],
-                providers: [{provide: ApiService, useClass: MockApiService}],
-                imports: [ReactiveFormsModule, IconModule, TooltipModule, LoaderModule, LoaderInlineModule, ClickOutsideModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [InputComponent],
+            providers: [{provide: ApiService, useClass: MockApiService}],
+            imports: [ReactiveFormsModule, IconModule, TooltipModule, LoaderModule, LoaderInlineModule, ClickOutsideModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(InputComponent);

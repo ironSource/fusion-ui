@@ -39,24 +39,22 @@ describe('TagsInputComponent', () => {
     let debugEl: DebugElement;
     let el: HTMLElement;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [
-                    ReactiveFormsModule,
-                    TagModule,
-                    IconModule,
-                    InputModule,
-                    DropdownOptionModule,
-                    DropdownLoaderModule,
-                    ClickOutsideModule,
-                    DropdownOptionsListModule
-                ],
-                declarations: [TagsInputComponent],
-                providers: [FilterByFieldPipe, ClonePipe]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [
+                ReactiveFormsModule,
+                TagModule,
+                IconModule,
+                InputModule,
+                DropdownOptionModule,
+                DropdownLoaderModule,
+                ClickOutsideModule,
+                DropdownOptionsListModule
+            ],
+            declarations: [TagsInputComponent],
+            providers: [FilterByFieldPipe, ClonePipe]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TagsInputComponent);

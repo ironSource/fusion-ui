@@ -7,14 +7,12 @@ describe('PopupV2InnerComponentExampleComponent', () => {
     let component: PopupV2InnerComponentExampleComponent;
     let fixture: ComponentFixture<PopupV2InnerComponentExampleComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [PopupV2InnerComponentExampleComponent],
-                imports: [IconModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [PopupV2InnerComponentExampleComponent],
+            imports: [IconModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(PopupV2InnerComponentExampleComponent);

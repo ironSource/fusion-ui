@@ -12,24 +12,22 @@ describe('IntersectionDocsComponent', () => {
     let component: IntersectionDocsComponent;
     let fixture: ComponentFixture<IntersectionDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [IntersectionDocsComponent],
-                imports: [
-                    ExampleBlockModule,
-                    CodeBlockModule,
-                    DocsMenuModule,
-                    RouterModule,
-                    ReactiveFormsModule,
-                    IntersectionModule,
-                    AlertModule,
-                    InputModule,
-                    ButtonModule
-                ]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [IntersectionDocsComponent],
+            imports: [
+                ExampleBlockModule,
+                CodeBlockModule,
+                DocsMenuModule,
+                RouterModule,
+                ReactiveFormsModule,
+                IntersectionModule,
+                AlertModule,
+                InputModule,
+                ButtonModule
+            ]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(IntersectionDocsComponent);

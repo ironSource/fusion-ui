@@ -11,15 +11,13 @@ describe('DatepickerHeaderComponent', () => {
     let component: DatepickerHeaderComponent;
     let fixture: ComponentFixture<DatepickerHeaderComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [IconModule, InputModule, DropdownModule, ClickOutsideModule],
-                declarations: [DatepickerHeaderComponent],
-                providers: [DatePipe]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [IconModule, InputModule, DropdownModule, ClickOutsideModule],
+            declarations: [DatepickerHeaderComponent],
+            providers: [DatePipe]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(DatepickerHeaderComponent);

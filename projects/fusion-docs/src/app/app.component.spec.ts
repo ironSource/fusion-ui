@@ -7,14 +7,12 @@ import {LayoutModule as LayoutV1Module} from '@ironsource/fusion-ui/components/l
 import {AppRoutingModule} from './app.routing';
 
 describe('AppComponent', () => {
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [AppComponent],
-                imports: [LayoutV1Module, AppRoutingModule, SvgModule, LayoutModule, TooltipModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [AppComponent],
+            imports: [LayoutV1Module, AppRoutingModule, SvgModule, LayoutModule, TooltipModule]
+        }).compileComponents();
+    }));
 
     it('should create the app', () => {
         const fixture = TestBed.createComponent(AppComponent);

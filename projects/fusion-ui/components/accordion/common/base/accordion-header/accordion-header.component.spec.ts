@@ -6,14 +6,12 @@ describe('AccordionBoxTitleComponent', () => {
     let component: AccordionHeaderComponent;
     let fixture: ComponentFixture<AccordionHeaderComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [AccordionHeaderComponent],
-                imports: [IconModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [AccordionHeaderComponent],
+            imports: [IconModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(AccordionHeaderComponent);

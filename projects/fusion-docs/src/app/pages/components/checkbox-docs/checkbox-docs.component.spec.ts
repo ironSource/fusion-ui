@@ -14,24 +14,22 @@ describe('CheckboxDocsComponent', () => {
     let component: CheckboxDocsComponent;
     let fixture: ComponentFixture<CheckboxDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [CheckboxDocsComponent],
-                imports: [
-                    ExampleBlockModule,
-                    CodeBlockModule,
-                    DocsMenuModule,
-                    ButtonModule,
-                    RouterModule,
-                    ReactiveFormsModule,
-                    CheckboxModule,
-                    InputModule,
-                    IconSelectListModule
-                ]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [CheckboxDocsComponent],
+            imports: [
+                ExampleBlockModule,
+                CodeBlockModule,
+                DocsMenuModule,
+                ButtonModule,
+                RouterModule,
+                ReactiveFormsModule,
+                CheckboxModule,
+                InputModule,
+                IconSelectListModule
+            ]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(CheckboxDocsComponent);

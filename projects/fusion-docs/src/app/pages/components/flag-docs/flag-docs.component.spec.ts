@@ -11,14 +11,12 @@ describe('FlagDocsComponent', () => {
     let component: FlagDocsComponent;
     let fixture: ComponentFixture<FlagDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [FlagDocsComponent],
-                imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule, FlagModule, RouterModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [FlagDocsComponent],
+            imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule, FlagModule, RouterModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(FlagDocsComponent);

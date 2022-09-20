@@ -9,14 +9,12 @@ describe('MenuComponent', () => {
     let component: MenuListComponent;
     let fixture: ComponentFixture<MenuListComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [IconModule, RouterTestingModule],
-                declarations: [MenuListComponent, MenuItemComponent]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [IconModule, RouterTestingModule],
+            declarations: [MenuListComponent, MenuItemComponent]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(MenuListComponent);
