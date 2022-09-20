@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.5.1](https://github.com/ironSource/fusion-ui/compare/v3.5.0...v3.5.1) (2022-09-20)
+
+
+### Bug Fixes
+
+* **3.x.x:** added detail.prefix to the custom event ([5c9efd5](https://github.com/ironSource/fusion-ui/commit/5c9efd51bada951e26578feb3c1aa111e79a8acc))
+
 ## [3.5.0](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.7...v3.5.0) (2022-09-20)
 
 
