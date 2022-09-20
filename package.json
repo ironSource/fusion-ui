@@ -30,7 +30,7 @@
     "schm:debug": "node --inspect-brk $(which schematics) ./projects/fusion-schematics/collection.json:fusion-native --debug=false --dry-run true --force --outputDir=dist/fusion-ui/native",
     "schm:build": "tsc -p projects/fusion-schematics/tsconfig.schematics.json",
     "schm:watch": "tsc -p projects/fusion-schematics/tsconfig.schematics.json --watch",
-    "format:check": "prettier --config ./prettier.config.js --check 'projects/**/*{.ts,.json}'",
+    "format:check": "prettier --config ./prettier.config.js --check 'projects/**/*{.ts,.json}' --loglevel error",
     "format:pretty": "prettier --config ./prettier.config.js --write 'projects/**/*{.ts,.json}'",
     "prettier": "prettier",
     "build:mfe:dev": "ng build fusion-mfe -c dev",
