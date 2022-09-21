@@ -194,18 +194,20 @@ export class MenuListComponent implements OnDestroy, OnInit {
 
     onWindowNavigationSync(event: CustomEvent) {
         const prefix = event.detail?.preffix || '';
+        const isNavigate = !!event.detail?.usenavigate;
+        const navigateTo = event.detail?.navigateTo || '';
         const pathname = !!prefix
             ? this.windowService.nativeWindow.location.pathname.replace(prefix, '')
             : this.windowService.nativeWindow.location.pathname;
-        this.menuService.setSelectedByRoute(pathname);
-        this.changeDetectorRef.detectChanges();
 
-        console.log('::', this.router.url);
-        if (!!event.detail?.usenav) {
+        if (navigateTo) {
+            this.router.navigateByUrl(navigateTo);
+        } else if (isNavigate) {
             this.router.navigateByUrl(pathname);
         } else {
-            this.location.go(pathname);
+            this.menuService.setSelectedByRoute(pathname);
+            this.changeDetectorRef.detectChanges();
+            this.routeChanged.emit();
         }
-        this.routeChanged.emit();
     }
 }
