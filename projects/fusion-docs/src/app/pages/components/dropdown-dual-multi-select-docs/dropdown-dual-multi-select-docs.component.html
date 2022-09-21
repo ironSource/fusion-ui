@@ -33,7 +33,7 @@
     </div>
 
     <div class="col-4">
-        <div class="is-example-title">Pre Selected Items</div>
+        <div class="is-example-title">Pre Selected Items (search by ID only)</div>
         <fusion-dropdown-dual-multi-select
             (viewChange)="isViewChanged($event)"
             (searchChange)="isSearchChanged($event)"
@@ -41,6 +41,7 @@
             [totalItems]="totalItems"
             [formControl]="itemsControl"
             [items]="items"
+            [searchByProperties]="['id']"
             title="Actors"
             [pendingItems]="false"
             [opened]="false"
