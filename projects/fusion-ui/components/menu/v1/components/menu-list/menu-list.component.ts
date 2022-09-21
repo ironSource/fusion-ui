@@ -10,7 +10,6 @@ import {
     Output,
     Renderer2
 } from '@angular/core';
-import {Location} from '@angular/common';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {NavigationEnd, Router} from '@angular/router';
 import {filter, takeUntil, tap} from 'rxjs/operators';
@@ -43,8 +42,7 @@ export class MenuListComponent implements OnDestroy, OnInit {
         private menuService: MenuService,
         @Optional() private router: Router,
         private renderer: Renderer2,
-        private windowService: WindowService,
-        private location: Location
+        private windowService: WindowService
     ) {}
 
     ngOnInit() {
