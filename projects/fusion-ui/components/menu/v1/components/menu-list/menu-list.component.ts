@@ -201,9 +201,11 @@ export class MenuListComponent implements OnDestroy, OnInit {
         this.changeDetectorRef.detectChanges();
 
         console.log('::', this.router.url);
-
-        this.location.go(this.windowService.nativeWindow.location.pathname);
-
+        if (!!event.detail?.usenav) {
+            this.router.navigateByUrl(pathname);
+        } else {
+            this.location.go(this.windowService.nativeWindow.location.pathname);
+        }
         this.routeChanged.emit();
     }
 }
