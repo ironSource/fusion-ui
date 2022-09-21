@@ -191,12 +191,15 @@ export class MenuListComponent implements OnDestroy, OnInit {
     }
 
     onWindowNavigationSync(event: CustomEvent) {
-        this.routeChanged.emit();
         const prefix = event.detail?.preffix || '';
         const pathname = !!prefix
             ? this.windowService.nativeWindow.location.pathname.replace(prefix, '')
             : this.windowService.nativeWindow.location.pathname;
         this.menuService.setSelectedByRoute(pathname);
         this.changeDetectorRef.detectChanges();
+
+        console.log('::', this.router.url);
+
+        this.routeChanged.emit();
     }
 }
