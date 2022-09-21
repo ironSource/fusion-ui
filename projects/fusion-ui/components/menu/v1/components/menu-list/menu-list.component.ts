@@ -191,7 +191,7 @@ export class MenuListComponent implements OnDestroy, OnInit {
     }
 
     onWindowNavigationSync(event: CustomEvent) {
-        const prefix = event.detail?.preffix || '';
+        const prefix = event.detail?.prefix || '';
         const isNavigate = !!event.detail?.usenavigate;
         const navigateTo = event.detail?.navigateTo || '';
         const pathname = !!prefix
