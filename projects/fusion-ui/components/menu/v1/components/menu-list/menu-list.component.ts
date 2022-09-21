@@ -204,7 +204,7 @@ export class MenuListComponent implements OnDestroy, OnInit {
         if (!!event.detail?.usenav) {
             this.router.navigateByUrl(pathname);
         } else {
-            this.location.go(this.windowService.nativeWindow.location.pathname);
+            this.location.go(pathname);
         }
         this.routeChanged.emit();
     }
