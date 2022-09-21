@@ -1,18 +1,11 @@
 {
     "name": "@ironsource/fusion-ui",
-    "version": "4.0.0-rc.4",
+    "version": "4.0.0-rc.5",
     "dependencies": {
         "chart.js": "^3.5.1",
         "tslib": "^2.0.0",
         "zone.js": "~0.11.4"
     },
-    "sideEffects": [
-        "react/core.js",
-        "vue/core.js",
-        "vue/v2/core.js",
-        "vue/v3/core.js",
-        "native/core/main.js"
-    ],
     "sharedEntities": [
         "./services/api",
         "./services/cache",
@@ -42,19 +35,5 @@
         "./components/table/v2",
         "./components/table",
         "./pipes/string"
-    ],
-    "exports": {
-        "./react/core": {
-            "default": "./react/core.js"
-        },
-        "./react": {
-            "default": "./react/index.js"
-        },
-        "./vue/core": {
-            "default": "./vue/core.js"
-        },
-        "./vue": {
-            "default": "./vue/index.js"
-        }
-    }
+    ]
 }
