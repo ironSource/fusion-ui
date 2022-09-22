@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.5.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.11...v3.5.0-rc.0) (2022-09-22)
+
+
+### Features
+
+* **3.x.x:** added selected item name for selected placeholder ([d550e93](https://github.com/ironSource/fusion-ui/commit/d550e9309cdc97ed3468ecdaee3cb3862600ba5d))
+
+
+### Bug Fixes
+
+* **3.x.x:** fixed dropdown-dual-multi-select header css ([3a341e2](https://github.com/ironSource/fusion-ui/commit/3a341e2d42bc3609cf46a619706ea81840d9e890))
+* **3.x.x:** fixes after merge from master ([a5103ec](https://github.com/ironSource/fusion-ui/commit/a5103ec79cca8ead1496d79678a2cdd199db4dda))
+* **3.x.x:** prettier running ([22d7d43](https://github.com/ironSource/fusion-ui/commit/22d7d4391e41d32d82b82d1d44a388e01aeb1e59))
+* **3.x.x:** prettier running check ([15c05c4](https://github.com/ironSource/fusion-ui/commit/15c05c4dbb6825f9f0f216a80a6b7e892f2a899e))
+
+
+### Tests
+
+* **3.x.x:** added unit-test for validate selection in dropdown-dual-multi-select ([d6da9a4](https://github.com/ironSource/fusion-ui/commit/d6da9a4ad0cd06595d82e24f55a98748cd29e31b))
+
+## [3.4.0-rc.7](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.6...v3.4.0-rc.7) (2022-09-18)
+
+## [3.4.0-rc.6](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.5...v3.4.0-rc.6) (2022-09-18)
+
+## [3.4.0-rc.5](https://github.com/ironSource/fusion-ui/compare/v3.3.1-rc.2...v3.4.0-rc.5) (2022-09-18)
+
 ## [3.4.0-rc.11](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.9...v3.4.0-rc.11) (2022-09-19)
 
 ## [3.4.0-rc.9](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.8...v3.4.0-rc.9) (2022-09-18)
