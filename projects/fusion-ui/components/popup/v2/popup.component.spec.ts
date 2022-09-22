@@ -15,14 +15,12 @@ describe('PopupComponent', () => {
     let component: PopupComponent;
     let fixture: ComponentFixture<PopupComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [PopupComponent],
-                imports: [ClickOutsideModule, DynamicComponentsModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [PopupComponent],
+            imports: [ClickOutsideModule, DynamicComponentsModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(PopupComponent);

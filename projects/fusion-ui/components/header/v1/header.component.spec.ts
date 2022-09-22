@@ -19,15 +19,13 @@ describe('HeaderComponent', () => {
     let component: HeaderComponent;
     let fixture: ComponentFixture<HeaderComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [HeaderComponent],
-                imports: [DynamicComponentsModule, IconModule, TruncateModule, RouterModule],
-                providers: [{provide: ApiService, useClass: MockApiService}]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [HeaderComponent],
+            imports: [DynamicComponentsModule, IconModule, TruncateModule, RouterModule],
+            providers: [{provide: ApiService, useClass: MockApiService}]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(HeaderComponent);

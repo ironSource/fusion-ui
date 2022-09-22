@@ -2,20 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [3.5.2-rc.5](https://github.com/ironSource/fusion-ui/compare/v3.5.2-rc.4...v3.5.2-rc.5) (2022-09-21)
+### [3.5.2-rc.6](https://github.com/ironSource/fusion-ui/compare/v3.5.0-rc.0...v3.5.2-rc.6) (2022-09-22)
 
-### [3.5.2-rc.4](https://github.com/ironSource/fusion-ui/compare/v3.5.2-rc.3...v3.5.2-rc.4) (2022-09-21)
+### Tests
 
-### [3.5.2-rc.3](https://github.com/ironSource/fusion-ui/compare/v3.5.2-rc.2...v3.5.2-rc.3) (2022-09-21)
+* **3.x.x:** set v3.5.2-rc.5 ([9bb4317](https://github.com/ironSource/fusion-ui/commit/9bb4317d89fb9bd8a8129a279f31a1ee29075c7f))
 
-### [3.5.2-rc.2](https://github.com/ironSource/fusion-ui/compare/v3.5.2-rc.1...v3.5.2-rc.2) (2022-09-21)
+## [3.5.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.11...v3.5.0-rc.0) (2022-09-22)
 
-### [3.5.2-rc.1](https://github.com/ironSource/fusion-ui/compare/v3.5.2-rc.0...v3.5.2-rc.1) (2022-09-21)
 
-### [3.5.2-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.5.1...v3.5.2-rc.0) (2022-09-21)
+### Features
+
+* **3.x.x:** added selected item name for selected placeholder ([d550e93](https://github.com/ironSource/fusion-ui/commit/d550e9309cdc97ed3468ecdaee3cb3862600ba5d))
+
+
+### Bug Fixes
+
+* **3.x.x:** fixed dropdown-dual-multi-select header css ([3a341e2](https://github.com/ironSource/fusion-ui/commit/3a341e2d42bc3609cf46a619706ea81840d9e890))
+* **3.x.x:** fixes after merge from master ([a5103ec](https://github.com/ironSource/fusion-ui/commit/a5103ec79cca8ead1496d79678a2cdd199db4dda))
+* **3.x.x:** prettier running ([22d7d43](https://github.com/ironSource/fusion-ui/commit/22d7d4391e41d32d82b82d1d44a388e01aeb1e59))
+* **3.x.x:** prettier running check ([15c05c4](https://github.com/ironSource/fusion-ui/commit/15c05c4dbb6825f9f0f216a80a6b7e892f2a899e))
+
+
+### Tests
+
+* **3.x.x:** added unit-test for validate selection in dropdown-dual-multi-select ([d6da9a4](https://github.com/ironSource/fusion-ui/commit/d6da9a4ad0cd06595d82e24f55a98748cd29e31b))
 
 ### [3.5.1](https://github.com/ironSource/fusion-ui/compare/v3.5.0...v3.5.1) (2022-09-20)
-
 
 ### Bug Fixes
 
@@ -23,24 +36,43 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [3.5.0](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.7...v3.5.0) (2022-09-20)
 
-
 ### Features
 
 * **3.x.x:** added event 'navigationSync' to the menu-list.component ([0874921](https://github.com/ironSource/fusion-ui/commit/08749214d31d79b1b71cbacafb2bc1a78910229f))
 
 ## [3.4.0-rc.7](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.6...v3.4.0-rc.7) (2022-09-18)
 
-## [3.4.0-rc.6](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.5...v3.4.0-rc.6) (2022-09-18)
+## [3.4.0-rc.5](https://github.com/ironSource/fusion-ui/compare/v3.3.1-rc.2...v3.4.0-rc.5) (2022-09-18)
 
-## [3.4.0-rc.5](https://github.com/ironSource/fusion-ui/compare/v3.3.0...v3.4.0-rc.5) (2022-09-18)
+## [3.4.0-rc.11](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.9...v3.4.0-rc.11) (2022-09-19)
 
-## [3.3.0](https://github.com/ironSource/fusion-ui/compare/v3.3.0-rc.1...v3.3.0) (2022-09-05)
-
-## [3.3.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v3.3.0-rc.0...v3.3.0-rc.1) (2022-09-05)
-
-## [3.3.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.2.4...v3.3.0-rc.0) (2022-09-05)
+## [3.4.0-rc.9](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.8...v3.4.0-rc.9) (2022-09-18)
 
 
+### Bug Fixes
+
+* **3.x.x:** dropdown-dual-multi-select-body build fix rel to isNullOrUndefined ([667f31f](https://github.com/ironSource/fusion-ui/commit/667f31fe95cd2a04eef289883cd4921132ae1cac))
+
+## [3.4.0-rc.8](https://github.com/ironSource/fusion-ui/compare/v3.3.1-rc.3...v3.4.0-rc.8) (2022-09-18)
+
+
+### Features
+
+* **3.x.x:** dropdown-dual-multi-select added pagination loading and client-side search by props ([38be085](https://github.com/ironSource/fusion-ui/commit/38be08541e6b41fb69b93da8f1acc99f5bb3727e))
+
+### [3.3.1-rc.3](https://github.com/ironSource/fusion-ui/compare/v3.3.1-rc.2...v3.3.1-rc.3) (2022-09-18)
+
+
+### Bug Fixes
+
+* **3.x.x:** file-drag-and-drop.directive fix hover ([8b73fd6](https://github.com/ironSource/fusion-ui/commit/8b73fd6e81145475e11970bfaed41ee68107e692))
+* **3.x.x:** modal header ui fix ([22e66a0](https://github.com/ironSource/fusion-ui/commit/22e66a08fb8dbaf197a058632da91fa7d97bdae7))
+* **3.x.x:** table v3 date type cell fix ([ebe4f0e](https://github.com/ironSource/fusion-ui/commit/ebe4f0eddeb2436d5ac872fc096f94cb18c12ef2))
+* **3.x.x:** table v3 header sorted column align-right fix ([df2d018](https://github.com/ironSource/fusion-ui/commit/df2d0184d9f95b30c20284ab73f5e69d7119deae))
+
+### [3.3.1-rc.2](https://github.com/ironSource/fusion-ui/compare/v3.3.1-rc.1...v3.3.1-rc.2) (2022-09-18)
+
+### [3.3.1-rc.1](https://github.com/ironSource/fusion-ui/compare/v3.3.0...v3.3.1-rc.1) (2022-09-18)
 ### Features
 
 * **3.x.x:** add suppressInnerSearch to include exclude component ([ee6d342](https://github.com/ironSource/fusion-ui/commit/ee6d3427f5a95e7a4c92511c33db548c220cec0d))

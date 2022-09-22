@@ -17,15 +17,13 @@ describe('SwitchersDocsV2Component', () => {
     let component: SwitchersDocsV2Component;
     let fixture: ComponentFixture<SwitchersDocsV2Component>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [SwitchersDocsV2Component],
-                imports: [ReactiveFormsModule, DocsMenuModule, ExampleBlockModule, CodeBlockModule, SwitcherModule],
-                providers: [{provide: Router, useClass: RouterStub}]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [SwitchersDocsV2Component],
+            imports: [ReactiveFormsModule, DocsMenuModule, ExampleBlockModule, CodeBlockModule, SwitcherModule],
+            providers: [{provide: Router, useClass: RouterStub}]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(SwitchersDocsV2Component);

@@ -6,14 +6,12 @@ describe('StatusLabelComponent', () => {
     let component: StatusLabelComponent;
     let fixture: ComponentFixture<StatusLabelComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [StatusLabelComponent],
-                imports: [IconModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [StatusLabelComponent],
+            imports: [IconModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(StatusLabelComponent);

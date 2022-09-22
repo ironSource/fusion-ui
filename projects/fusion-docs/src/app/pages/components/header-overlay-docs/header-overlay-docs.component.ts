@@ -1,5 +1,6 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Type} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
+import {HeaderOptions} from '@ironsource/fusion-ui/components/header-overlay/common/base';
 
 @Component({
     selector: 'fusion-demo-filter',

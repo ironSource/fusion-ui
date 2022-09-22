@@ -12,14 +12,12 @@ describe('CopyToClipboardDocsComponent', () => {
     let component: CopyToClipboardDocsComponent;
     let fixture: ComponentFixture<CopyToClipboardDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [CopyToClipboardDocsComponent],
-                imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule, RouterModule, ReactiveFormsModule, CopyToClipboardModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [CopyToClipboardDocsComponent],
+            imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule, RouterModule, ReactiveFormsModule, CopyToClipboardModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(CopyToClipboardDocsComponent);

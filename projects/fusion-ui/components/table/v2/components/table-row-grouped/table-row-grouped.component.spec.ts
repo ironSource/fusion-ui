@@ -25,31 +25,29 @@ describe('TableRowGroupedComponent', () => {
     let component: TableRowGroupedComponent;
     let fixture: ComponentFixture<TableRowGroupedComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [
-                    IconModule,
-                    InputModule,
-                    InputInlineModule,
-                    LoaderModule,
-                    LoaderInlineModule,
-                    CheckboxModule,
-                    DynamicComponentsModule,
-                    DropdownModule,
-                    MultiDropdownModule,
-                    TooltipModule,
-                    ToggleModule,
-                    ClickOutsideModule,
-                    ReactiveFormsModule,
-                    NotAvailableModule,
-                    GenericPipeModule
-                ],
-                declarations: [TableRowGroupedComponent, TableCellComponent, TableEmptyComponent, TableLoadingComponent, TableRowComponent],
-                providers: [TableService]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [
+                IconModule,
+                InputModule,
+                InputInlineModule,
+                LoaderModule,
+                LoaderInlineModule,
+                CheckboxModule,
+                DynamicComponentsModule,
+                DropdownModule,
+                MultiDropdownModule,
+                TooltipModule,
+                ToggleModule,
+                ClickOutsideModule,
+                ReactiveFormsModule,
+                NotAvailableModule,
+                GenericPipeModule
+            ],
+            declarations: [TableRowGroupedComponent, TableCellComponent, TableEmptyComponent, TableLoadingComponent, TableRowComponent],
+            providers: [TableService]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TableRowGroupedComponent);

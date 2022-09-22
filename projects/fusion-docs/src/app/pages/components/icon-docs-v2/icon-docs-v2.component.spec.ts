@@ -8,14 +8,12 @@ describe('IconDocsV2Component', () => {
     let component: IconDocsV2Component;
     let fixture: ComponentFixture<IconDocsV2Component>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [IconDocsV2Component],
-                imports: [ExampleBlockModule, IconModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [IconDocsV2Component],
+            imports: [ExampleBlockModule, IconModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(IconDocsV2Component);

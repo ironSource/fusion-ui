@@ -13,14 +13,12 @@ describe('ListBoxComponent', () => {
     let component: ListBoxComponent;
     let fixture: ComponentFixture<ListBoxComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [IconModule, TooltipModule],
-                declarations: [ListBoxComponent]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [IconModule, TooltipModule],
+            declarations: [ListBoxComponent]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(ListBoxComponent);

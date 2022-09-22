@@ -21,15 +21,13 @@ describe('SwitcherComponent', () => {
     let component: SwitcherComponent;
     let fixture: ComponentFixture<SwitcherComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [SwitcherComponent],
-                imports: [FormsModule],
-                providers: [{provide: UniqueIdService, useClass: MockUniqueIdService}]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [SwitcherComponent],
+            imports: [FormsModule],
+            providers: [{provide: UniqueIdService, useClass: MockUniqueIdService}]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(SwitcherComponent);

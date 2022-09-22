@@ -17,24 +17,22 @@ describe('MobilePreviewerDocsComponent', () => {
     let component: MobilePreviewerDocsComponent;
     let fixture: ComponentFixture<MobilePreviewerDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [MobilePreviewerDocsComponent],
-                imports: [
-                    MobilePreviewerDocsRoutingModule,
-                    ExampleBlockModule,
-                    CodeBlockModule,
-                    DocsMenuModule,
-                    ButtonModule,
-                    MobilePreviewerModule,
-                    PopupModule,
-                    TableModule
-                ],
-                providers: [{provide: Router, useClass: RouterStub}]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [MobilePreviewerDocsComponent],
+            imports: [
+                MobilePreviewerDocsRoutingModule,
+                ExampleBlockModule,
+                CodeBlockModule,
+                DocsMenuModule,
+                ButtonModule,
+                MobilePreviewerModule,
+                PopupModule,
+                TableModule
+            ],
+            providers: [{provide: Router, useClass: RouterStub}]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(MobilePreviewerDocsComponent);

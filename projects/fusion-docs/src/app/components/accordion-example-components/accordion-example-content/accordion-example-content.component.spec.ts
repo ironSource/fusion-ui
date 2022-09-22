@@ -5,13 +5,11 @@ describe('AccordionExampleOpenedComponent', () => {
     let component: AccordionExampleContentComponent;
     let fixture: ComponentFixture<AccordionExampleContentComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [AccordionExampleContentComponent]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [AccordionExampleContentComponent]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(AccordionExampleContentComponent);

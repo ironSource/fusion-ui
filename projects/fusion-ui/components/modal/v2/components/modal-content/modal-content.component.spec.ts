@@ -8,14 +8,12 @@ describe('ModalContentComponent', () => {
     let component: ModalContentComponent;
     let fixture: ComponentFixture<ModalContentComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [LoaderModule, ButtonModule, IconModule],
-                declarations: [ModalContentComponent]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [LoaderModule, ButtonModule, IconModule],
+            declarations: [ModalContentComponent]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(ModalContentComponent);
