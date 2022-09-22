@@ -7,7 +7,7 @@ import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {map, take, takeUntil} from 'rxjs/operators';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
-import {BackendPagination} from '@ironsource/fusion-ui/components/dropdown';
+import {BackendPagination, SelectedItemName} from '@ironsource/fusion-ui/components/dropdown';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 const CLASS_LIST = [
@@ -52,6 +52,14 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     get items(): DropdownOption[] {
         return this.items$.getValue();
     }
+
+    /**
+     * item name for selected placeholder
+     * like "2 Applications selected" (singular)
+     * or "1 Application selected" (plural)
+     * @param value
+     */
+    @Input() selectedItemName: SelectedItemName;
 
     // backend pagination same like in dropdown component
     @Input() set backendPagination(value: BackendPagination) {
@@ -290,7 +298,12 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         if (this.preSelectedItems.value && this.preSelectedItems.value.length > 0 && this.items$.getValue().length > 0) {
             const placeholderPrefix =
                 this.preSelectedItems.value.length === this.items$.getValue().length ? 'All' : `${this.preSelectedItems.value.length}`;
-            placeholder = `${placeholderPrefix} selected`;
+            const itemName = !!this.selectedItemName
+                ? this.preSelectedItems.value.length === 1
+                    ? this.selectedItemName.singular
+                    : this.selectedItemName.plural
+                : '';
+            placeholder = `${placeholderPrefix} ${itemName} selected`;
         }
         this.placeholder$.next(placeholder);
     }

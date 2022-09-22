@@ -6,6 +6,7 @@
         <fusion-dropdown-dual-multi-select
             title="Label name"
             placeholder="Select Actors"
+            [selectedItemName]="{singular: 'Actor', plural: 'Actors'}"
             [formControl]="paginationItemsControl"
             [backendPagination]="dropdownPaginationOptions"
             (viewChange)="isViewChanged($event)"
