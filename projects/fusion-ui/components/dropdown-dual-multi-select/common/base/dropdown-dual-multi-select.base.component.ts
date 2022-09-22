@@ -296,14 +296,16 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     private setLabel(): void {
         let placeholder = this.defaultPlaceHolder;
         if (this.preSelectedItems.value && this.preSelectedItems.value.length > 0 && this.items$.getValue().length > 0) {
-            const placeholderPrefix =
-                this.preSelectedItems.value.length === this.items$.getValue().length ? 'All' : `${this.preSelectedItems.value.length}`;
             const itemName = !!this.selectedItemName
                 ? this.preSelectedItems.value.length === 1
                     ? this.selectedItemName.singular
                     : this.selectedItemName.plural
                 : '';
-            placeholder = `${placeholderPrefix} ${itemName} selected`;
+
+            const placeholderPrefix =
+                this.preSelectedItems.value.length === this.items$.getValue().length ? 'All' : `${this.preSelectedItems.value.length}`;
+
+            placeholder = `${placeholderPrefix + (itemName ? ' ' + itemName : '')} selected`;
         }
         this.placeholder$.next(placeholder);
     }

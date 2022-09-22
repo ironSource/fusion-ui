@@ -15,6 +15,8 @@ import {DropdownDualMultiSelectLoadingModule} from './components/dropdown-dual-m
 import {Component} from '@angular/core';
 import {MOCK_DUAL_ITEMS} from './mock-entities';
 
+const itemNames = {singular: 'Actor', plural: 'Actors'};
+
 @Component({
     template: ` <div class="outside"></div> `
 })
@@ -129,4 +131,49 @@ describe('DropdownDualMultiSelectComponent', () => {
             `${component.preSelectedItems.value.length} selected`
         );
     });
+
+    describe('Should set selected item name if has', () => {
+
+        beforeEach(() => {
+            component = fixture.componentInstance;
+            component.items = MOCK_DUAL_ITEMS;
+            component.placeholder = 'Search Item';
+            component.preSelectedItems.setValue([]);
+            component.selectedItemName = itemNames;
+            fixture.detectChanges();
+        });
+
+        it('Should set placeholder with selected item name', async () => {
+            fixture.debugElement
+                .query(By.css('.dual-select-button'))
+                .triggerEventHandler('click', {target: fixture.debugElement.query(By.css('.dual-select-button')).nativeElement});
+            fixture.detectChanges();
+
+            fixture.debugElement.query(By.css('.is-option-label.left-side')).triggerEventHandler('click', {
+                target: fixture.debugElement.query(By.css('.is-option-label.left-side')).nativeElement
+            });
+            fixture.detectChanges();
+
+            fixture.debugElement.query(By.css('.primary')).triggerEventHandler('click', {
+                target: fixture.debugElement.query(By.css('.primary')).nativeElement
+            });
+            component.writeValue([component.items$.getValue()[0]]);
+            fixture.detectChanges();
+
+            expect(component.opened$.getValue()).toBe(false);
+            expect(fixture.debugElement.query(By.css('.dropdown-dual-multi-select-layout'))).toBeFalsy();
+            expect(fixture.debugElement.query(By.css('.dropdown-dual-multi-select-button')).nativeElement.innerText.trim()).toBe(
+                `${component.preSelectedItems.value.length} ${itemNames.singular} selected`
+            );
+
+            component.writeValue([component.items$.getValue()[0], component.items$.getValue()[1]]);
+            fixture.detectChanges();
+
+            expect(fixture.debugElement.query(By.css('.dropdown-dual-multi-select-layout'))).toBeFalsy();
+            expect(fixture.debugElement.query(By.css('.dropdown-dual-multi-select-button')).nativeElement.innerText.trim()).toBe(
+                `${component.preSelectedItems.value.length} ${itemNames.plural} selected`
+            );
+
+        });
+    })
 });
