@@ -39,6 +39,9 @@ $smallPadding: 4px 6px;
             left: inherit;
             right: 5px;
         }
+        &.fu-input-small .fu-search-icon-holder {
+            top: 6px;
+        }
         .fu-input-units {
             padding: 4px 5px 4px 10px;
             @extend %border;
