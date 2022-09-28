@@ -1,54 +1,97 @@
 @import '../../../src/style/scss/v3/vars/vars';
 @import '../../../src/style/scss/v3/mixins/mixins';
 
-:host{
+:host {
     @extend %border-box-normalize;
-    .fu-wrapper{
+
+    .fu-wrapper {
         margin: 0;
         padding: 0;
         width: fit-content;
         display: flex;
         align-items: center;
         gap: 8px;
-        svg{
+
+        svg {
             @include size(8px);
         }
+
         @extend %font-bodySmall;
         color: $fu-black-500;
-        &.archived:not(.fu-flat){
-            svg *{stroke: $fu-light-500;}
+
+        &.archived {
+            &:not(.fu-flat) {
+                svg * {
+                    stroke: $fu-light-500;
+                }
+            }
+
+            &.fu-flat {
+                svg * {
+                    fill: $fu-light-500;
+                }
+            }
         }
-        &.archived.fu-flat{
-            svg *{fill: $fu-light-500;}
+
+        &.disabled {
+            &:not(.fu-flat) {
+                svg * {
+                    stroke: $fu-light-900;
+                }
+            }
+
+            &.fu-flat {
+                svg * {
+                    fill: $fu-light-900;
+                }
+            }
         }
-        &.disabled:not(.fu-flat){
-            svg *{stroke: $fu-light-900;}
+
+        &.warning {
+            &:not(.fu-flat) {
+                svg * {
+                    stroke: $fu-neutral-500;
+                }
+            }
+
+            &.fu-flat {
+                svg * {
+                    fill: $fu-neutral-500;
+                }
+            }
         }
-        &.disabled.fu-flat{
-            svg *{fill: $fu-light-900;}
+
+        &.error {
+            &:not(.fu-flat) {
+                svg * {
+                    stroke: $fu-negative-500;
+                }
+            }
+
+            &.fu-flat {
+                svg * {
+                    fill: $fu-negative-500;
+                }
+            }
         }
-        &.warning:not(.fu-flat){
-            svg *{stroke: $fu-neutral-500;}
-        }
-        &.warning.fu-flat{
-            svg *{fill: $fu-neutral-500;}
-        }
-        &.error:not(.fu-flat){
-            svg *{stroke: $fu-negative-500;}
-        }
-        &.error.fu-flat{
-            svg *{fill: $fu-negative-500;}
-        }
-        &.success:not(.fu-flat){
-            svg *{stroke: $fu-positive-500;}
-        }
-        &.success.fu-flat{
-            svg *{fill: $fu-positive-500;}
+
+        &.success {
+            &:not(.fu-flat) {
+                svg * {
+                    stroke: $fu-positive-500;
+                }
+            }
+
+            &.fu-flat {
+                svg * {
+                    fill: $fu-positive-500;
+                }
+            }
         }
     }
 
-    &.fu-large{
-        .fu-wrapper svg{
+    &.fu-large {
+        .fu-wrapper svg {
             @include size(12px);
         }
     }
