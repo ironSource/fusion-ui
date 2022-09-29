@@ -9,6 +9,16 @@ All notable changes to this project will be documented in this file. See [standa
 
 * **3.x.x:** added status-label v3 component ([b557801](https://github.com/ironSource/fusion-ui/commit/b5578011361bfc2b8541de8903c928f6fc8d58b7))
 
+Using Example:
+```html
+<fusion-status-label></fusion-status-label>
+or
+<fusion-status-label class="fu-large" [flat]="true" [status]="StatusLabelType.Archived">Archived</fusion-status-label>
+```
+
+
+
+
 
 ### Bug Fixes
 
