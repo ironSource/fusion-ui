@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.6.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.5.2-rc.6...v3.6.0-rc.0) (2022-09-29)
+
+
+### Features
+
+* **3.x.x:** added status-label v3 component ([b557801](https://github.com/ironSource/fusion-ui/commit/b5578011361bfc2b8541de8903c928f6fc8d58b7))
+
+
+### Bug Fixes
+
+* **3.x.x:** fix input v1 small search icon top position ([571ceb8](https://github.com/ironSource/fusion-ui/commit/571ceb87e4f0b006835ed2bf98452d2946ef522a))
+
+### [3.5.2-rc.5](https://github.com/ironSource/fusion-ui/compare/v3.5.2-rc.4...v3.5.2-rc.5) (2022-09-21)
+
+### [3.5.2-rc.4](https://github.com/ironSource/fusion-ui/compare/v3.5.2-rc.3...v3.5.2-rc.4) (2022-09-21)
+
+### [3.5.2-rc.3](https://github.com/ironSource/fusion-ui/compare/v3.5.2-rc.2...v3.5.2-rc.3) (2022-09-21)
+
+### [3.5.2-rc.2](https://github.com/ironSource/fusion-ui/compare/v3.5.2-rc.1...v3.5.2-rc.2) (2022-09-21)
+
+### [3.5.2-rc.1](https://github.com/ironSource/fusion-ui/compare/v3.5.2-rc.0...v3.5.2-rc.1) (2022-09-21)
+
+### [3.5.2-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.5.1...v3.5.2-rc.0) (2022-09-21)
+
+### [3.5.1](https://github.com/ironSource/fusion-ui/compare/v3.5.0...v3.5.1) (2022-09-20)
+
+
+### Bug Fixes
+
+* **3.x.x:** added detail.prefix to the custom event ([5c9efd5](https://github.com/ironSource/fusion-ui/commit/5c9efd51bada951e26578feb3c1aa111e79a8acc))
+
+## [3.5.0](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.11...v3.5.0) (2022-09-20)
+
+
+### Features
+
+* **3.x.x:** added event 'navigationSync' to the menu-list.component ([0874921](https://github.com/ironSource/fusion-ui/commit/08749214d31d79b1b71cbacafb2bc1a78910229f))
+
 ### [3.5.2-rc.6](https://github.com/ironSource/fusion-ui/compare/v3.5.0-rc.0...v3.5.2-rc.6) (2022-09-22)
 
 ### Tests
