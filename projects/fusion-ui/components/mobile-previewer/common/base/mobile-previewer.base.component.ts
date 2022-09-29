@@ -1,7 +1,13 @@
-import {Directive, Input, OnInit} from '@angular/core';
+import {Directive, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MobileOrientation} from './mobile-orientation.enum';
-import {DEVICE_ORIENTATION, MobilePreviewerComponentConfiguration} from './mobile-previewer-component-configuration';
+import {
+    DEVICE_ORIENTATION,
+    HEIGHT_STATIC,
+    MobilePreviewerComponentConfiguration,
+    WIDTH_STATIC
+} from './mobile-previewer-component-configuration';
 import {CapitalizePipe} from '@ironsource/fusion-ui/pipes/string';
+import {isNullOrUndefined} from '@ironsource/fusion-ui';
 
 @Directive()
 export abstract class MobilePreviewerBaseComponent implements OnInit {
@@ -9,6 +15,14 @@ export abstract class MobilePreviewerBaseComponent implements OnInit {
     @Input()
     set configurations(configurations: MobilePreviewerComponentConfiguration) {
         this._configurations = configurations;
+        this.isStaticSize =
+            !isNullOrUndefined(configurations?.staticComponentSize?.height) ||
+            !isNullOrUndefined(configurations?.staticComponentSize?.width);
+        if (this.isStaticSize) {
+            this._configurations.staticComponentSize.width = configurations.staticComponentSize.width || WIDTH_STATIC;
+            this._configurations.staticComponentSize.height = configurations.staticComponentSize.height || HEIGHT_STATIC;
+        }
+
         switch (this._configurations.orientation) {
             case MobileOrientation.PORTRAIT:
                 this.devices = DEVICE_ORIENTATION.filter(device => device.includes('portrait'));
@@ -23,16 +37,27 @@ export abstract class MobilePreviewerBaseComponent implements OnInit {
         }
     }
 
+    @Output() selectDeviceChanged = new EventEmitter();
+
     get configurations(): MobilePreviewerComponentConfiguration {
         return this._configurations;
     }
 
     _selectedDevice = '';
+    isStaticSize = false;
     refresh = true;
     devices: string[];
 
     public get selectedDevice() {
         return this._capitalizePipe.transform(this._selectedDevice.replace('-', ' '));
+    }
+
+    public get staticWidth(): number {
+        return Number(this._configurations?.staticComponentSize?.width);
+    }
+
+    public get staticHeight(): number {
+        return Number(this._configurations?.staticComponentSize?.height);
     }
 
     public get height() {
@@ -92,5 +117,17 @@ export abstract class MobilePreviewerBaseComponent implements OnInit {
     selectDevice(device: string) {
         this._selectedDevice = device;
         this.refresh = !this.refresh;
+        this.calculateAspectRatio({device, width: this.width, height: this.height});
+    }
+
+    private calculateAspectRatio(deviceData: {device: string; width: number; height: number}) {
+        if (this.isStaticSize) {
+            const ratio = deviceData.width / deviceData.height;
+            this.selectDeviceChanged.emit({
+                device: deviceData.device,
+                width: this.staticHeight * ratio,
+                height: this.staticHeight
+            });
+        }
     }
 }

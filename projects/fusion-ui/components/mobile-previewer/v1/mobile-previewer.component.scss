@@ -7,6 +7,19 @@
 :host {
     .mobile-previewer-wrapper {
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+        &.static-size {
+            * {
+                box-sizing: border-box;
+            }
+            box-shadow: none;
+            .mobile-previewer-container {
+                padding: 0 0 0 1px;
+                border: solid 1.3px #f3f5f7;
+            }
+            .deviceSelectionFooter {
+                padding: 3px 8px 3px 10px;
+            }
+        }
     }
 
     .mobile-previewer-container {

@@ -1,5 +1,5 @@
-<div class="mobile-previewer-wrapper" [style.width.px]="width">
-    <div class="mobile-previewer-container" [style.height.px]="height">
+<div class="mobile-previewer-wrapper" [style.width.px]="!isStaticSize ? width : configurations.staticComponentSize.width" [class.static-size]="isStaticSize">
+    <div class="mobile-previewer-container" [style.height.px]="!isStaticSize ? height : configurations.staticComponentSize.height">
         <ng-container *ngIf="configurations.component || configurations.element; else template">
             <!--using refresh variable to refresh iframe when user change device-->
             <fusion-dynamic-components
