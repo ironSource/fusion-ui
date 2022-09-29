@@ -1,30 +1,105 @@
 <div class="row">
     <div class="col-9">
         <div class="is-example-title">Basic</div>
+        <fusion-example-block id="basicStatusLabels" title="Status">
+            <div class="row">
+                <div class="col-3">
+                    <div class="fu-label">Default</div>
+                    <fusion-status-label></fusion-status-label>
+                </div>
+                <div class="col-3">
+                    <div class="fu-label">Large</div>
+                    <fusion-status-label class="fu-large"></fusion-status-label>
+                </div>
+                <div class="col-3">
+                    <div class="fu-label">Default, Flat</div>
+                    <fusion-status-label [flat]="true"></fusion-status-label>
+                </div>
+                <div class="col-3">
+                    <div class="fu-label">Large, Flat</div>
+                    <fusion-status-label class="fu-large" [flat]="true"></fusion-status-label>
+                </div>
+            </div>
+            <br/><br/><br/>
+            <div class="row">
+                <div class="col-2">
+                    <div class="fu-label">Default</div>
+                    <fusion-status-label>Default</fusion-status-label>
+                </div>
+                <div class="col-2">
+                    <div class="fu-label">Archived</div>
+                    <fusion-status-label [status]="StatusLabelType.Archived">Archived</fusion-status-label>
+                </div>
+                <div class="col-2">
+                    <div class="fu-label">Disabled</div>
+                    <fusion-status-label [status]="StatusLabelType.Disabled">Disabled</fusion-status-label>
+                </div>
+                <div class="col-2">
+                    <div class="fu-label">Warning</div>
+                    <fusion-status-label [status]="StatusLabelType.Warning">Warning</fusion-status-label>
+                </div>
+                <div class="col-2">
+                    <div class="fu-label">Error</div>
+                    <fusion-status-label [status]="StatusLabelType.Error">Error</fusion-status-label>
+                </div>
+                <div class="col-2">
+                    <div class="fu-label">Success</div>
+                    <fusion-status-label [status]="StatusLabelType.Success">Success</fusion-status-label>
+                </div>
+            </div>
+            <br/><br/><br/>
+            <div class="row">
+                <div class="col-2">
+                    <div class="fu-label">Default</div>
+                    <fusion-status-label [flat]="true">Default</fusion-status-label>
+                </div>
+                <div class="col-2">
+                    <div class="fu-label">Archived</div>
+                    <fusion-status-label [flat]="true" [status]="StatusLabelType.Archived">Archived</fusion-status-label>
+                </div>
+                <div class="col-2">
+                    <div class="fu-label">Disabled</div>
+                    <fusion-status-label [flat]="true" [status]="StatusLabelType.Disabled">Disabled</fusion-status-label>
+                </div>
+                <div class="col-2">
+                    <div class="fu-label">Warning</div>
+                    <fusion-status-label [flat]="true" [status]="StatusLabelType.Warning">Warning</fusion-status-label>
+                </div>
+                <div class="col-2">
+                    <div class="fu-label">Error</div>
+                    <fusion-status-label [flat]="true" [status]="StatusLabelType.Error">Error</fusion-status-label>
+                </div>
+                <div class="col-2">
+                    <div class="fu-label">Success</div>
+                    <fusion-status-label [flat]="true" [status]="StatusLabelType.Success">Success</fusion-status-label>
+                </div>
+            </div>
+        </fusion-example-block>
+<!--        <div class="is-example-title">Basic</div>
         <fusion-example-block id="basicStatusLabels" title="Status Labels">
             <ng-template fusionExampleBlock="Angular">
                 <fusion-code-block
                     lang="html"
                     class="is-collapsible"
-                    code='<!--Default (success) with icon and tooltip-->
+                    code='&lt;!&ndash;Default (success) with icon and tooltip&ndash;&gt;
 <fusion-status-label [config]="configSuccessIcon" [fusionTooltip]="tooltipContent">High</fusion-status-label>
-<!--Default (success) without icon-->
+&lt;!&ndash;Default (success) without icon&ndash;&gt;
 <fusion-status-label>High</fusion-status-label></div>
-<!--Default (success) rounded without icon-->
+&lt;!&ndash;Default (success) rounded without icon&ndash;&gt;
 <fusion-status-label [config]="configSuccessRounded">High</fusion-status-label>
 
-<!--Warning with icon-->
+&lt;!&ndash;Warning with icon&ndash;&gt;
 <fusion-status-label [config]="configWarningIcon" [fusionTooltip]="tooltipContent">Average</fusion-status-label>
-<!--Warning without icon-->
+&lt;!&ndash;Warning without icon&ndash;&gt;
 <fusion-status-label [config]="configWarning">Average</fusion-status-label>
-<!--Warning rounded-->
+&lt;!&ndash;Warning rounded&ndash;&gt;
 <fusion-status-label [config]="configWarningRounded">Average</fusion-status-label>
 
-<!--Error with icon-->
+&lt;!&ndash;Error with icon&ndash;&gt;
 <fusion-status-label [config]="configErrorIcon" [fusionTooltip]="tooltipContent">Low</fusion-status-label>
-<!--Error without icon-->
+&lt;!&ndash;Error without icon&ndash;&gt;
 <fusion-status-label [config]="configError">Low</fusion-status-label>
-<!--Error rounded-->
+&lt;!&ndash;Error rounded&ndash;&gt;
 <fusion-status-label [config]="configErrorRoundedIcon">Low</fusion-status-label>'
                 ></fusion-code-block>
                 <fusion-code-block
@@ -210,7 +285,7 @@ document.addEventListener("DOMContentLoaded", onLoad, false);'
                     <fusion-status-label [config]="configCustomRounded">8</fusion-status-label>
                 </div>
             </div>
-        </fusion-example-block>
+        </fusion-example-block>-->
         <!--UI-Component Configuration Doc-->
         <div class="is-example-title">Configuration</div>
         <fusion-example-block id="params" title="Parameters" [collapsible]="false">

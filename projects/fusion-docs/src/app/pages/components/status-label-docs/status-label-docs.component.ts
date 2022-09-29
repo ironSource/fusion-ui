@@ -2,9 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table/common/entities';
 import {StatusLabelBorderType, StatusLabelConfig, StatusLabelStatus} from '@ironsource/fusion-ui/components/status-label/common/entities';
-import {TooltipType} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {DomSanitizer} from '@angular/platform-browser';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
+import {StatusLabelType} from '@ironsource/fusion-ui/components/status-label/v3/status-label.entity';
 
 @Component({
     selector: 'fusion-status-label-docs',
@@ -133,6 +133,8 @@ export class StatusLabelDocsComponent implements OnInit {
     tooltipContent = this.sanitizer.bypassSecurityTrustHtml(
         `<div style="margin-bottom: 7px;">Hypercasual</div><div><b>Benchmark: 70.2%-80.5%</b></div>`
     );
+
+    StatusLabelType = StatusLabelType;
 
     constructor(private sanitizer: DomSanitizer, private docLayoutService: DocsLayoutService) {}
 
