@@ -4,7 +4,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [3.5.2-rc.6](https://github.com/ironSource/fusion-ui/compare/v3.5.0-rc.0...v3.5.2-rc.6) (2022-09-22)
 
-
 ### Tests
 
 * **3.x.x:** set v3.5.2-rc.5 ([9bb4317](https://github.com/ironSource/fusion-ui/commit/9bb4317d89fb9bd8a8129a279f31a1ee29075c7f))
@@ -29,9 +28,19 @@ All notable changes to this project will be documented in this file. See [standa
 
 * **3.x.x:** added unit-test for validate selection in dropdown-dual-multi-select ([d6da9a4](https://github.com/ironSource/fusion-ui/commit/d6da9a4ad0cd06595d82e24f55a98748cd29e31b))
 
-## [3.4.0-rc.7](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.6...v3.4.0-rc.7) (2022-09-18)
+### [3.5.1](https://github.com/ironSource/fusion-ui/compare/v3.5.0...v3.5.1) (2022-09-20)
 
-## [3.4.0-rc.6](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.5...v3.4.0-rc.6) (2022-09-18)
+### Bug Fixes
+
+* **3.x.x:** added detail.prefix to the custom event ([5c9efd5](https://github.com/ironSource/fusion-ui/commit/5c9efd51bada951e26578feb3c1aa111e79a8acc))
+
+## [3.5.0](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.7...v3.5.0) (2022-09-20)
+
+### Features
+
+* **3.x.x:** added event 'navigationSync' to the menu-list.component ([0874921](https://github.com/ironSource/fusion-ui/commit/08749214d31d79b1b71cbacafb2bc1a78910229f))
+
+## [3.4.0-rc.7](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.6...v3.4.0-rc.7) (2022-09-18)
 
 ## [3.4.0-rc.5](https://github.com/ironSource/fusion-ui/compare/v3.3.1-rc.2...v3.4.0-rc.5) (2022-09-18)
 
@@ -64,14 +73,6 @@ All notable changes to this project will be documented in this file. See [standa
 ### [3.3.1-rc.2](https://github.com/ironSource/fusion-ui/compare/v3.3.1-rc.1...v3.3.1-rc.2) (2022-09-18)
 
 ### [3.3.1-rc.1](https://github.com/ironSource/fusion-ui/compare/v3.3.0...v3.3.1-rc.1) (2022-09-18)
-
-## [3.3.0](https://github.com/ironSource/fusion-ui/compare/v3.3.0-rc.1...v3.3.0) (2022-09-05)
-
-## [3.3.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v3.3.0-rc.0...v3.3.0-rc.1) (2022-09-05)
-
-## [3.3.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.2.4...v3.3.0-rc.0) (2022-09-05)
-
-
 ### Features
 
 * **3.x.x:** add suppressInnerSearch to include exclude component ([ee6d342](https://github.com/ironSource/fusion-ui/commit/ee6d3427f5a95e7a4c92511c33db548c220cec0d))

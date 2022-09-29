@@ -63,16 +63,11 @@ export class MenuListComponent implements OnDestroy, OnInit {
                 .subscribe();
         } else {
             merge(fromEvent(window, 'stateChanged'), fromEvent(window, 'popstate'))
-                .pipe(
-                    takeUntil(this.onDestroy$),
-                    tap(() => {
-                        this.routeChanged.emit();
-                        this.menuService.setSelectedByRoute(this.windowService.nativeWindow.location.pathname);
-                        this.changeDetectorRef.detectChanges();
-                    })
-                )
-                .subscribe();
+                .pipe(takeUntil(this.onDestroy$))
+                .subscribe(this.onWindowNavigationSync.bind(this));
         }
+
+        fromEvent(window, 'navigationSync').pipe(takeUntil(this.onDestroy$)).subscribe(this.onWindowNavigationSync.bind(this));
     }
 
     initNativeStateChangeEvent(window: Window) {
@@ -193,5 +188,24 @@ export class MenuListComponent implements OnDestroy, OnInit {
     ngOnDestroy() {
         this.onDestroy$.next();
         this.onDestroy$.complete();
+    }
+
+    onWindowNavigationSync(event: CustomEvent) {
+        const prefix = event.detail?.prefix || '';
+        const isNavigate = !!event.detail?.usenavigate;
+        const navigateTo = event.detail?.navigateTo || '';
+        const pathname = !!prefix
+            ? this.windowService.nativeWindow.location.pathname.replace(prefix, '')
+            : this.windowService.nativeWindow.location.pathname;
+
+        if (navigateTo) {
+            this.router.navigateByUrl(navigateTo);
+        } else if (isNavigate) {
+            this.router.navigateByUrl(pathname);
+        } else {
+            this.menuService.setSelectedByRoute(pathname);
+            this.changeDetectorRef.detectChanges();
+            this.routeChanged.emit();
+        }
     }
 }
