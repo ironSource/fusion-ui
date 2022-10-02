@@ -4,8 +4,9 @@
     <div class="col-4">
         <div class="is-example-title">Dynamic Component Items With Backend Pagination</div>
         <fusion-dropdown-dual-multi-select
-            title="Actors"
+            title="Label name"
             placeholder="Select Actors"
+            [selectedItemName]="{singular: 'Actor', plural: 'Actors'}"
             [formControl]="paginationItemsControl"
             [backendPagination]="dropdownPaginationOptions"
             (viewChange)="isViewChanged($event)"

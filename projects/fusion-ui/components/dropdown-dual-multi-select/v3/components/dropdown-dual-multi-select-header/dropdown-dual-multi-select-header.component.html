@@ -1,9 +1,10 @@
 <div class="is-dropdown-dual-multi-select-header">
     <div class="fu-label-holder">
-        <span class="fu-label">
-        {{title}}
-        </span>
+        <span class="fu-label">{{title}}</span>
     </div>
+    <div class="fu-search-holder" (click)="setFocusToInput()">
+        <div class="fu-search-bar">
+            <fusion-icon class="fu-icon-search" [name]="searchIcon"></fusion-icon>
 
     <div class="fu-search-holder" (click)="setFocusToInput()">
         <span class="fu-search-bar">
@@ -14,8 +15,7 @@
                    [placeholder]="'Search'"
                    [formControl]="searchControl"
             />
-
             <fusion-icon class="fu-icon-clear" *ngIf="input.value" [name]="searchClearIcon" (click)="clearSearch()"></fusion-icon>
-    </span>
+        </div>
     </div>
 </div>

@@ -5,3 +5,8 @@ export interface DropdownPlaceholderConfiguration {
     isForcedPlaceholder?: boolean;
     placeholderText: string;
 }
+
+export interface SelectedItemName {
+    singular: string;
+    plural: string;
+}

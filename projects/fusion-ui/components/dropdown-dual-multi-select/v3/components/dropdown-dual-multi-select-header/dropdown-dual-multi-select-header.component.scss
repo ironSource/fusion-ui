@@ -4,46 +4,33 @@
 
 $clearIconColor: #DADADA;
 
-%clear-icon-position{
-    position: absolute;
-    right: -13px;
-    top: 0;
-}
-
-%search-icon-position{
-    position: absolute;
-    left: 10px;
-    top: 0;
-}
-
 :host {
     .is-dropdown-dual-multi-select-header {
         @extend %border-box-normalize;
         height: 55px;
-        width: 545px;
+        width: 100%;
         border-bottom: 1px solid $fu-light-400;
-        display: grid;
-        grid-template-columns: 0.5fr 1.5fr;
+        display: flex;
         align-items: center;
         .fu-search-holder {
-            width: 405px;
             height: 100%;
-            display: flex;
+            width: 100%;
+            flex-grow: 2;
             border-left: 1px solid $fu-light-400;
+            display: flex;
             align-items: center;
             .fu-search-bar {
+                width: 100%;
+                margin: 0 24px 0 16px;
                 display: flex;
                 align-content: center;
-                justify-content: center;
                 position: relative;
                 fusion-icon.fu-icon-search {
                     color: $fu-light-700;
-                    @extend %search-icon-position;
                     @include size(16px);
                 }
                 fusion-icon.fu-icon-clear {
                     color:$fu-light-500;
-                    @extend %clear-icon-position;
                     @include size(16px);
                     cursor: pointer;
                     &:hover{
@@ -58,26 +45,24 @@ $clearIconColor: #DADADA;
                     outline: none;
                     background-color: transparent;
                     color: $fu-black-500;
-                    width: 365px;
                     height: 16px;
-                    padding: 0 25px 0 25px;
-                    margin-left: 5px;
+                    width: calc(100% - 32px);
+                    padding-left: 7px;
                     &::placeholder {
                         color: $fu-light-800;
                     }
                 }
-
             }
         }
         .fu-label-holder {
             height: 100%;
-            width: fit-content;
             display: flex;
             align-items: center;
             .fu-label{
+                white-space: nowrap;
                 color: $fu-black-500;
                 @extend %font-bodyMediumStrong;
-                padding: 0 16px 0 24px;
+                padding: 0 24px;
             }
         }
 

@@ -3,9 +3,10 @@
 :host{
     .row{
         margin-bottom: 20px;
-        label{
+        label, .fu-label{
             @extend %font-label;
             color: $fu-dark-200;
+            margin-bottom: 10px;
         }
     }
 }
