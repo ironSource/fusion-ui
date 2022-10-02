@@ -34,8 +34,8 @@ const popUpBasic: PopupEntity = {
 export class MobilePreviewerDocsComponent implements OnInit, OnDestroy {
     onDestroy$ = new Subject<void>();
     selectedVersion$: Observable<StyleVersion> = this.versionService.styleVersion$.pipe(takeUntil(this.onDestroy$));
-    width = 374;
-    height = 211;
+    width = 370;
+    height = 208;
     MobileOrientation = MobileOrientation;
     rightMenu: Array<any> = [
         {

@@ -52,10 +52,6 @@ export abstract class MobilePreviewerBaseComponent implements OnInit {
         return this._capitalizePipe.transform(this._selectedDevice.replace('-', ' '));
     }
 
-    public get staticWidth(): number {
-        return Number(this._configurations?.staticComponentSize?.width);
-    }
-
     public get staticHeight(): number {
         return Number(this._configurations?.staticComponentSize?.height);
     }
@@ -100,6 +96,8 @@ export abstract class MobilePreviewerBaseComponent implements OnInit {
         return width;
     }
 
+    private borderWidth = 2.6;
+
     constructor(private _capitalizePipe: CapitalizePipe) {}
 
     ngOnInit() {
@@ -125,8 +123,8 @@ export abstract class MobilePreviewerBaseComponent implements OnInit {
             const ratio = deviceData.width / deviceData.height;
             this.selectDeviceChanged.emit({
                 device: deviceData.device,
-                width: this.staticHeight * ratio,
-                height: this.staticHeight
+                width: Math.floor((this.staticHeight - this.borderWidth) * ratio),
+                height: Math.floor(this.staticHeight - this.borderWidth)
             });
         }
     }

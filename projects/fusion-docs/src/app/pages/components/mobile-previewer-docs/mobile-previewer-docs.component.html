@@ -214,11 +214,12 @@ document.addEventListener('DOMContentLoaded', onLoad, false);"></fusion-code-blo
             <div class="row">
                 <div class="col-6">
                     <fusion-mobile-previewer (selectDeviceChanged)="selectionChanged($event)" [configurations]="{orientation: MobileOrientation.ALL, staticComponentSize: {width: '374', height: '211'}}">
-                            <iframe src="http://localhost:4200/docs/components/mobile-previewer" [style.height.px]="height" [style.width.px]="width" style="background-color: white; padding:0px; margin:0px;border:0px;"></iframe>
+                            <iframe src="https://ui-demand.ssacdn.com/demand/mock-dapi/preview.html?creative=aHR0cHM6Ly91aS1kZW1hbmQuc3NhY2RuLmNvbS90ZXN0L0JpbmdvLmh0bWw=" [style.height.px]="height" [style.width.px]="width" style="background-color: white; padding:0px; margin:0px;border:0px;"></iframe>
                     </fusion-mobile-previewer>
                 </div>
             </div>
-
+            <br>
+            <br>
             <div class="row">
                 <div class="col-3">
                     <button fusion-button (click)="openPopup(MobileOrientation.ALL)">All Orientations</button>
