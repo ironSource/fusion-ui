@@ -38,6 +38,7 @@
         "./components/daterange",
         "./components/datepicker/v1",
         "./components/datepicker",
+        "./components/status-label",
         "./components/table/v1",
         "./components/table/v2",
         "./components/table",
