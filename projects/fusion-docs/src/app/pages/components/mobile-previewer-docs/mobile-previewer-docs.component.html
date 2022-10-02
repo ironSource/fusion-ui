@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', onLoad, false);"></fusion-code-blo
             <div class="row">
                 <div class="col-6">
                     <fusion-mobile-previewer (selectDeviceChanged)="selectionChanged($event)" [configurations]="{orientation: MobileOrientation.ALL, staticComponentSize: {width: '374', height: '211'}}">
-                        <div class="preview-container" style="background-color: #d8d8d8; width:100%; height:100%; display: flex; justify-content: center; align-items: center;">
+                        <div class="preview-container" style="width:100%; height:100%; display: flex; justify-content: center; align-items: center;">
                             <iframe src="http://localhost:4200/docs/components/mobile-previewer" [style.height.px]="height" [style.width.px]="width" style="background-color: white; padding:0px; margin:0px;border:0px;">
                             </iframe>
                         </div>
