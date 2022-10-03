@@ -11,7 +11,7 @@ export interface MobilePreviewerComponentConfiguration {
     };
 }
 
-export const WIDTH_STATIC = '374';
-export const HEIGHT_STATIC = '211';
+export const WIDTH_STATIC = '568';
+export const HEIGHT_STATIC = '320';
 export const BORDER_WIDTH = 2.6;
 export const DEVICE_ORIENTATION = ['tablet-portrait', 'tablet-landscape', 'phone-portrait', 'phone-landscape'];
