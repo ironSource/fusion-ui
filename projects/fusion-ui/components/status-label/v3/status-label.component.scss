@@ -3,6 +3,7 @@
 
 :host {
     @extend %border-box-normalize;
+    display: inline-block;
 
     .fu-status-label-wrapper {
         margin: 0;
