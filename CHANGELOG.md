@@ -4,51 +4,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [4.0.0](https://github.com/ironSource/fusion-ui/compare/v4.0.0-rc.8...v4.0.0) (2022-10-03)
 
-## [4.0.0-rc.8](https://github.com/ironSource/fusion-ui/compare/v4.0.0-rc.7...v4.0.0-rc.8) (2022-10-02)
-
-## [4.0.0-rc.7](https://github.com/ironSource/fusion-ui/compare/v3.6.0-rc.2...v4.0.0-rc.7) (2022-10-02)
-
-## [4.0.0-rc.6](https://github.com/ironSource/fusion-ui/compare/v3.5.2-rc.5...v4.0.0-rc.6) (2022-09-21)
-
-## [4.0.0-rc.4](https://github.com/ironSource/fusion-ui/compare/v4.0.0-rc.3...v4.0.0-rc.4) (2022-09-19)
-
-## [4.0.0-rc.3](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.11...v4.0.0-rc.3) (2022-09-19)
-
-
-### Bug Fixes
-
-* **4.x.x:** fix file-drag-and-drop hover ([dd9d11d](https://github.com/ironSource/fusion-ui/commit/dd9d11d18ccb5ea38746c4c25f45fa44a8fd94f8))
-* **4.x.x:** fix modal v3 header ([bab5e47](https://github.com/ironSource/fusion-ui/commit/bab5e4761d66a2aad599d477232220f810cdc913))
-* **4.x.x:** fix v3 table cell text (type date) ([d9444a7](https://github.com/ironSource/fusion-ui/commit/d9444a7cfc05df45d8b73940563035aed5d0b13c))
-* **4.x.x:** fix v3 table header sorted column align right ([8583b97](https://github.com/ironSource/fusion-ui/commit/8583b973131744a66150df627441c1301c6b62b7))
-
-## [4.0.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v3.3.0...v4.0.0-rc.1) (2022-09-06)
-
-
-### Bug Fixes
-
-* **fu-461:** dependencies update ([3c9ffc4](https://github.com/ironSource/fusion-ui/commit/3c9ffc4d577f2d142c64c8c88f886b655bf27ad3))
-
-## [4.0.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.2.4...v4.0.0-rc.0) (2022-09-01)
-
-
-### ⚠ BREAKING CHANGES
-
-* **fu-457:** upgrade angular to angular 14
-
-### Features
-
-* **fu-457:** upgrade angular to angular 14 ([b24bbb0](https://github.com/ironSource/fusion-ui/commit/b24bbb00fa218c5cb42f65ce958c66d2c87a6072))
-
-
-### CI
-
-* **upgrade:** update sass, sass-loader and sass-bundle ([a9cbe07](https://github.com/ironSource/fusion-ui/commit/a9cbe07c35d21fa697485da46c722e178d82ef3d))
-
-## [4.0.0-rc.6](https://github.com/ironSource/fusion-ui/compare/v4.0.0-rc.4...v4.0.0-rc.6) (2022-09-21)
-
-## [4.0.0-rc.4](https://github.com/ironSource/fusion-ui/compare/v4.0.0-rc.3...v4.0.0-rc.4) (2022-09-19)
-
 ## [4.0.0-rc.3](https://github.com/ironSource/fusion-ui/compare/v4.0.0-rc.1...v4.0.0-rc.3) (2022-09-19)
 
 
@@ -82,13 +37,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 * **upgrade:** update sass, sass-loader and sass-bundle ([a9cbe07](https://github.com/ironSource/fusion-ui/commit/a9cbe07c35d21fa697485da46c722e178d82ef3d))
 
-## [4.0.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.2.4...v4.0.0-rc.0) (2022-09-01)
-
-
-### ⚠ BREAKING CHANGES
-
-* **fu-457:** upgrade angular to angular 14 ([b24bbb0](https://github.com/ironSource/fusion-ui/commit/b24bbb00fa218c5cb42f65ce958c66d2c87a6072))
-* **fu-457:** remove support for native, react and vue ([259e14d](https://github.com/ironSource/fusion-ui/commit/259e14d98718cb631731de615e2a261a04d3b14b))
+## [3.6.0](https://github.com/ironSource/fusion-ui/compare/v3.6.0-rc.2...v3.6.0) (2022-10-03)
 
 ## [3.6.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v3.6.0-rc.1...v3.6.0-rc.2) (2022-09-29)
 
@@ -108,9 +57,15 @@ or
 <fusion-status-label class="fu-large" [flat]="true" [status]="StatusLabelType.Archived">Archived</fusion-status-label>
 ```
 
-
-
-
+```
+enum StatusLabelType {
+    Success = 'success', // Positive-500
+    Warning = 'warning', // Neutral-500
+    Error = 'error', // Negative-500
+    Archived = 'archived', // Light-500
+    Disabled = 'disabled' // Light-900
+}
+```
 
 ### Bug Fixes
 
