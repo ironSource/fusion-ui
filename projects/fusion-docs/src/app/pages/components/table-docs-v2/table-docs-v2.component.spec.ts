@@ -16,15 +16,13 @@ describe('TableDocsV2Component', () => {
     let component: TableDocsV2Component;
     let fixture: ComponentFixture<TableDocsV2Component>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [TableDocsV2Component],
-                imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule, TableModule],
-                providers: [{provide: Router, useClass: RouterStub}]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [TableDocsV2Component],
+            imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule, TableModule],
+            providers: [{provide: Router, useClass: RouterStub}]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TableDocsV2Component);

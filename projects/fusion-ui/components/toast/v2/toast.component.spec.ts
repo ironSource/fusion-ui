@@ -47,15 +47,13 @@ describe('ToastComponent', () => {
         fixture.detectChanges();
     };
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [ToastComponent],
-                imports: [IconModule, DynamicComponentsModule],
-                providers: [LogService]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [ToastComponent],
+            imports: [IconModule, DynamicComponentsModule],
+            providers: [LogService]
+        }).compileComponents();
+    }));
 
     it('should create', () => {
         fixture = TestBed.createComponent(ToastComponent);

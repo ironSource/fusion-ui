@@ -28,40 +28,38 @@ describe('TableBasicComponent', () => {
     let component: TableBasicComponent;
     let fixture: ComponentFixture<TableBasicComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [
-                    IconModule,
-                    InputModule,
-                    InputInlineModule,
-                    LoaderModule,
-                    LoaderInlineModule,
-                    CheckboxModule,
-                    DynamicComponentsModule,
-                    DropdownModule,
-                    MultiDropdownModule,
-                    TooltipModule,
-                    ToggleModule,
-                    ClickOutsideModule,
-                    ReactiveFormsModule,
-                    GenericPipeModule,
-                    LoadMoreModule,
-                    NotAvailableModule
-                ],
-                declarations: [
-                    TableBasicComponent,
-                    TableCellComponent,
-                    TableEmptyComponent,
-                    TableGroupedComponent,
-                    TableLoadingComponent,
-                    TableRowComponent,
-                    TableRowGroupedComponent
-                ],
-                providers: [TableService]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [
+                IconModule,
+                InputModule,
+                InputInlineModule,
+                LoaderModule,
+                LoaderInlineModule,
+                CheckboxModule,
+                DynamicComponentsModule,
+                DropdownModule,
+                MultiDropdownModule,
+                TooltipModule,
+                ToggleModule,
+                ClickOutsideModule,
+                ReactiveFormsModule,
+                GenericPipeModule,
+                LoadMoreModule,
+                NotAvailableModule
+            ],
+            declarations: [
+                TableBasicComponent,
+                TableCellComponent,
+                TableEmptyComponent,
+                TableGroupedComponent,
+                TableLoadingComponent,
+                TableRowComponent,
+                TableRowGroupedComponent
+            ],
+            providers: [TableService]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TableBasicComponent);

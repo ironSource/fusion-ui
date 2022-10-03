@@ -12,26 +12,24 @@ describe('InputDocsComponent', () => {
     let component: InputDocsComponent;
     let fixture: ComponentFixture<InputDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [InputDocsComponent],
-                imports: [
-                    ExampleBlockModule,
-                    CodeBlockModule,
-                    DocsMenuModule,
-                    RouterModule,
-                    InputModule,
-                    TextareaModule,
-                    ReactiveFormsModule,
-                    AlertModule,
-                    ErrorMessageModule,
-                    IconModule,
-                    TooltipModule
-                ]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [InputDocsComponent],
+            imports: [
+                ExampleBlockModule,
+                CodeBlockModule,
+                DocsMenuModule,
+                RouterModule,
+                InputModule,
+                TextareaModule,
+                ReactiveFormsModule,
+                AlertModule,
+                ErrorMessageModule,
+                IconModule,
+                TooltipModule
+            ]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(InputDocsComponent);

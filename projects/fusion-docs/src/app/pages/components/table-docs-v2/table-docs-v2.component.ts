@@ -33,7 +33,7 @@ const TABLE_COLUMNS_CONFIG: Array<TableColumn> = [
     {key: 'live', type: TableColumnTypeEnum.ToggleButton, title: '', width: '45px'},
 
     {key: 'name', title: 'Name', sort: 'asc'},
-    {key: 'username', title: 'Username', sort: ''},
+    {key: 'username', title: 'Username', sort: '', headerAlign: 'right', align: 'right'},
     {
         key: 'bid',
         type: TableColumnTypeEnum.InputEdit,

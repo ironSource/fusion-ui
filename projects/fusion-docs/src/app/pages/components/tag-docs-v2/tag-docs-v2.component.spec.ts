@@ -19,15 +19,13 @@ describe('TagDocsV2Component', () => {
     let component: TagDocsV2Component;
     let fixture: ComponentFixture<TagDocsV2Component>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [TagDocsV2Component],
-                imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule, ReactiveFormsModule, TagModule, TagsInputModule, IconModule],
-                providers: [{provide: Router, useClass: RouterStub}, FilterByFieldPipe, ClonePipe]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [TagDocsV2Component],
+            imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule, ReactiveFormsModule, TagModule, TagsInputModule, IconModule],
+            providers: [{provide: Router, useClass: RouterStub}, FilterByFieldPipe, ClonePipe]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TagDocsV2Component);

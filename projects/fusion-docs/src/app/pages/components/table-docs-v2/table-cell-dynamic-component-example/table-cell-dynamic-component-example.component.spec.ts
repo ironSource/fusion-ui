@@ -7,14 +7,12 @@ describe('TableCellDynamicComponentExampleComponent', () => {
     let component: TableCellDynamicComponentExampleComponent;
     let fixture: ComponentFixture<TableCellDynamicComponentExampleComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [TableCellDynamicComponentExampleComponent],
-                imports: [StatusLabelModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [TableCellDynamicComponentExampleComponent],
+            imports: [StatusLabelModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TableCellDynamicComponentExampleComponent);

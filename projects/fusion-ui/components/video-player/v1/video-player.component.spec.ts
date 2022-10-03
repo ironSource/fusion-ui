@@ -16,15 +16,13 @@ describe('VideoPlayerComponent', () => {
     let component: VideoPlayerComponent;
     let fixture: ComponentFixture<VideoPlayerComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [VideoPlayerComponent],
-                imports: [IconModule, SecondsToMinutesModule],
-                providers: [{provide: ApiService, useClass: MockApiService}, LogService]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [VideoPlayerComponent],
+            imports: [IconModule, SecondsToMinutesModule],
+            providers: [{provide: ApiService, useClass: MockApiService}, LogService]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(VideoPlayerComponent);

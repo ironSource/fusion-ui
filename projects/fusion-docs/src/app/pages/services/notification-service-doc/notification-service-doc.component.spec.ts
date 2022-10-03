@@ -10,14 +10,12 @@ describe('NotificationServiceDocComponent', () => {
     let component: NotificationServiceDocComponent;
     let fixture: ComponentFixture<NotificationServiceDocComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [NotificationServiceDocComponent],
-                imports: [RouterModule, ExampleBlockModule, CodeBlockModule, DocsMenuModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [NotificationServiceDocComponent],
+            imports: [RouterModule, ExampleBlockModule, CodeBlockModule, DocsMenuModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(NotificationServiceDocComponent);

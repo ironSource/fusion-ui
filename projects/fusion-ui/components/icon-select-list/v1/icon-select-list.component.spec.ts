@@ -31,15 +31,13 @@ describe('IconSelectListComponent', () => {
     let component: IconSelectListComponent;
     let fixture: ComponentFixture<IconSelectListComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [FormsModule, IconModule, CheckboxModule, RadioModule],
-                declarations: [IconSelectListComponent],
-                providers: [{provide: UniqueIdService, useClass: MockUniqueIdService}]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [FormsModule, IconModule, CheckboxModule, RadioModule],
+            declarations: [IconSelectListComponent],
+            providers: [{provide: UniqueIdService, useClass: MockUniqueIdService}]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(IconSelectListComponent);

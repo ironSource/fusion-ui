@@ -39,7 +39,7 @@
                         [style.top.px]="options?.stickyHeaderTopOffset"
                     >
                         <ng-container>
-                            <span [class.fu-tooltiped]="column.tooltip" [fusionTooltip]="column.tooltip">{{ column.title }}</span>
+                            <div class="fu-header-text" [class.fu-tooltiped]="column.tooltip" [fusionTooltip]="column.tooltip">{{ column.title }}</div>
                             <div class="fu-sort-wrapper">
                                 <div class="fu-sort-up"></div>
                                 <div class="fu-sort-down"></div>

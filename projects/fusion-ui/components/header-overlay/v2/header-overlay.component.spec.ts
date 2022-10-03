@@ -8,14 +8,12 @@ describe('HeaderOverlayComponent', () => {
     let component: HeaderOverlayComponent;
     let fixture: ComponentFixture<HeaderOverlayComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [ModalModule, DynamicComponentsModule, ClickOutsideModule],
-                declarations: [HeaderOverlayComponent]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [ModalModule, DynamicComponentsModule, ClickOutsideModule],
+            declarations: [HeaderOverlayComponent]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(HeaderOverlayComponent);

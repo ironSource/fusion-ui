@@ -10,14 +10,12 @@ describe('DaterangeDocsComponent', () => {
     let component: DaterangeDocsComponent;
     let fixture: ComponentFixture<DaterangeDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [DaterangeDocsComponent],
-                imports: [ReactiveFormsModule, FormsModule, DocsMenuModule, ExampleBlockModule, CodeBlockModule, DaterangeModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [DaterangeDocsComponent],
+            imports: [ReactiveFormsModule, FormsModule, DocsMenuModule, ExampleBlockModule, CodeBlockModule, DaterangeModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(DaterangeDocsComponent);

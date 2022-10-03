@@ -7,15 +7,13 @@ describe('DropdownOptionsListComponent', () => {
     let component: DropdownOptionsListComponent;
     let fixture: ComponentFixture<DropdownOptionsListComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [DropdownOptionsListComponent],
-                imports: [DropdownOptionModule],
-                providers: [DropdownService]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [DropdownOptionsListComponent],
+            imports: [DropdownOptionModule],
+            providers: [DropdownService]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(DropdownOptionsListComponent);

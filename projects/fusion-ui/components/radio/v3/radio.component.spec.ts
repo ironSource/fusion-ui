@@ -6,14 +6,12 @@ describe('RadioComponent', () => {
     let component: RadioComponent;
     let fixture: ComponentFixture<RadioComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [RadioComponent],
-                imports: [IconModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [RadioComponent],
+            imports: [IconModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(RadioComponent);

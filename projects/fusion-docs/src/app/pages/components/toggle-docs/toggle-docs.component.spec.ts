@@ -12,14 +12,12 @@ describe('ToggleDocsComponent', () => {
     let component: ToggleDocsComponent;
     let fixture: ComponentFixture<ToggleDocsComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [ToggleDocsComponent],
-                imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule, RouterModule, ReactiveFormsModule, ToggleModule]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [ToggleDocsComponent],
+            imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule, RouterModule, ReactiveFormsModule, ToggleModule]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(ToggleDocsComponent);

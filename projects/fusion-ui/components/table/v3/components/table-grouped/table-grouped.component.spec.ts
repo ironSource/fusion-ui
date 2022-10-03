@@ -26,39 +26,37 @@ describe('TableGroupedComponent', () => {
     let component: TableGroupedComponent;
     let fixture: ComponentFixture<TableGroupedComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [
-                    IconModule,
-                    InputModule,
-                    InputInlineModule,
-                    LoaderModule,
-                    LoaderInlineModule,
-                    CheckboxModule,
-                    DynamicComponentsModule,
-                    DropdownModule,
-                    MultiDropdownModule,
-                    TooltipModule,
-                    ToggleModule,
-                    ClickOutsideModule,
-                    ReactiveFormsModule,
-                    NotAvailableModule,
-                    GenericPipeModule
-                ],
-                declarations: [
-                    TableGroupedComponent,
-                    TableCellComponent,
-                    TableEmptyComponent,
-                    TableGroupedComponent,
-                    TableLoadingComponent,
-                    TableRowComponent,
-                    TableRowGroupedComponent
-                ],
-                providers: [TableService]
-            }).compileComponents();
-        })
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [
+                IconModule,
+                InputModule,
+                InputInlineModule,
+                LoaderModule,
+                LoaderInlineModule,
+                CheckboxModule,
+                DynamicComponentsModule,
+                DropdownModule,
+                MultiDropdownModule,
+                TooltipModule,
+                ToggleModule,
+                ClickOutsideModule,
+                ReactiveFormsModule,
+                NotAvailableModule,
+                GenericPipeModule
+            ],
+            declarations: [
+                TableGroupedComponent,
+                TableCellComponent,
+                TableEmptyComponent,
+                TableGroupedComponent,
+                TableLoadingComponent,
+                TableRowComponent,
+                TableRowGroupedComponent
+            ],
+            providers: [TableService]
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(TableGroupedComponent);
