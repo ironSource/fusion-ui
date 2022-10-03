@@ -20,9 +20,15 @@ or
 <fusion-status-label class="fu-large" [flat]="true" [status]="StatusLabelType.Archived">Archived</fusion-status-label>
 ```
 
-
-
-
+```
+enum StatusLabelType {
+    Success = 'success', // Positive-500
+    Warning = 'warning', // Neutral-500
+    Error = 'error', // Negative-500
+    Archived = 'archived', // Light-500
+    Disabled = 'disabled' // Light-900
+}
+```
 
 ### Bug Fixes
 
