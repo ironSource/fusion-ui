@@ -1,4 +1,4 @@
-import {Directive, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Directive, ElementRef, Input, OnInit} from '@angular/core';
 import {MobileOrientation} from './mobile-orientation.enum';
 import {
     BORDER_WIDTH,
@@ -8,7 +8,7 @@ import {
     WIDTH_STATIC
 } from './mobile-previewer-component-configuration';
 import {CapitalizePipe} from '@ironsource/fusion-ui/pipes/string';
-import {isNullOrUndefined} from '@ironsource/fusion-ui';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Directive()
 export abstract class MobilePreviewerBaseComponent implements OnInit {
