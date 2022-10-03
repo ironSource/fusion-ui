@@ -1,6 +1,7 @@
-import {Directive, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MobileOrientation} from './mobile-orientation.enum';
 import {
+    BORDER_WIDTH,
     DEVICE_ORIENTATION,
     HEIGHT_STATIC,
     MobilePreviewerComponentConfiguration,
@@ -36,8 +37,6 @@ export abstract class MobilePreviewerBaseComponent implements OnInit {
                 break;
         }
     }
-
-    @Output() selectDeviceChanged = new EventEmitter();
 
     get configurations(): MobilePreviewerComponentConfiguration {
         return this._configurations;
@@ -96,9 +95,17 @@ export abstract class MobilePreviewerBaseComponent implements OnInit {
         return width;
     }
 
-    private borderWidth = 2.6;
+    public get calculatedContentSize() {
+        const ratio = this.width / this.height;
+        return {
+            width: Math.floor((this.staticHeight - this.borderWidth) * ratio),
+            height: Math.floor(this.staticHeight - this.borderWidth)
+        };
+    }
 
-    constructor(private _capitalizePipe: CapitalizePipe) {}
+    private borderWidth = BORDER_WIDTH;
+
+    constructor(private elementRef: ElementRef, private _capitalizePipe: CapitalizePipe) {}
 
     ngOnInit() {
         this._selectedDevice = this.configurations.orientation === MobileOrientation.PORTRAIT ? 'phone-portrait' : 'phone-landscape';
@@ -115,17 +122,5 @@ export abstract class MobilePreviewerBaseComponent implements OnInit {
     selectDevice(device: string) {
         this._selectedDevice = device;
         this.refresh = !this.refresh;
-        this.calculateAspectRatio({device, width: this.width, height: this.height});
-    }
-
-    private calculateAspectRatio(deviceData: {device: string; width: number; height: number}) {
-        if (this.isStaticSize) {
-            const ratio = deviceData.width / deviceData.height;
-            this.selectDeviceChanged.emit({
-                device: deviceData.device,
-                width: Math.floor((this.staticHeight - this.borderWidth) * ratio),
-                height: Math.floor(this.staticHeight - this.borderWidth)
-            });
-        }
     }
 }
