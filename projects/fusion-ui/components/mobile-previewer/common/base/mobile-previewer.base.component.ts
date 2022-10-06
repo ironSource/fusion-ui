@@ -98,7 +98,7 @@ export abstract class MobilePreviewerBaseComponent implements OnInit {
     public get calculatedContentSize() {
         const ratio = this.width / this.height;
         return {
-            width: Math.floor((this.staticHeight - this.borderWidth) * ratio),
+            width: Math.floor((this.staticHeight - this.borderWidth) * ratio) + 1,
             height: Math.floor(this.staticHeight - this.borderWidth)
         };
     }
