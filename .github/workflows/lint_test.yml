@@ -1,0 +1,44 @@
+name: CI-CodeCheck
+
+on:
+  push:
+
+concurrency:
+  group: fusion_ci
+
+jobs:
+  code-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install Node 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - run: npm ci
+
+      - name: Run Formatter Check
+        run: npm run format:check
+
+      - name: Run Linting Check
+        run: npm run lint
+
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install Node 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - run: npm ci
+
+      - name: Run Unit Tests
+        timeout-minutes: 10
+        run: npm run test-ui-ci
