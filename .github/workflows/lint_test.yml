@@ -1,4 +1,4 @@
-name: CI-CodeCheck
+name: CI-CodeQuality
 
 on:
   push:
