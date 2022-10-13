@@ -1,4 +1,4 @@
-name: CI-UnitTests
+name: Step-UnitTests
 
 on:
   workflow_call:

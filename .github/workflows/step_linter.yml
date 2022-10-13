@@ -1,4 +1,4 @@
-name: CI-Linter
+name: Step-Linter
 
 on:
   workflow_call:
