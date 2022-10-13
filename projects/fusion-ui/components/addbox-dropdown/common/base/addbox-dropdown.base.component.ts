@@ -1,4 +1,4 @@
-import {Directive, EventEmitter, Input, Output} from '@angular/core';
+import {Directive, DoCheck, EventEmitter, Input, OnChanges, Output} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {distinctUntilChanged} from 'rxjs/operators';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
@@ -6,7 +6,7 @@ import {DropdownBaseComponent} from '@ironsource/fusion-ui/components/dropdown/c
 
 @Directive()
 // eslint-disable-next-line @angular-eslint/no-conflicting-lifecycle
-export class AddboxDropdownBaseComponent extends DropdownBaseComponent {
+export class AddboxDropdownBaseComponent extends DropdownBaseComponent implements OnChanges, DoCheck {
     @Input() selected: DropdownOption[] = [];
     @Input() autoComplete = true;
     @Input() actionButtonText;

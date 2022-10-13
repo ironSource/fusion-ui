@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {TagBaseComponent} from '@ironsource/fusion-ui/components/tag/common/base';
 
 @Component({
@@ -7,7 +7,7 @@ import {TagBaseComponent} from '@ironsource/fusion-ui/components/tag/common/base
     styleUrls: ['./tag.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TagComponent extends TagBaseComponent {
+export class TagComponent extends TagBaseComponent implements OnInit {
     ngOnInit() {
         super.ngOnInit();
         this.closeIconName$.next({iconName: 'clear-full-circle', iconVersion: 'v1'});
