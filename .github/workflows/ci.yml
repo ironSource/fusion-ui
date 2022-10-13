@@ -20,3 +20,14 @@ jobs:
     uses: ironSource/fusion-ui/.github/workflows/step_unit_tests.yml@master
     with:
       branch_name: ${{ github.ref_name }}
+
+  # --- Do Git Leaks check
+  gitleaks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
