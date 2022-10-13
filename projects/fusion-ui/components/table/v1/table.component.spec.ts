@@ -19,7 +19,7 @@ import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v1';
 import {InputModule} from '@ironsource/fusion-ui/components/input';
 import {LoadMoreModule} from '@ironsource/fusion-ui/directives/load-more';
 import {GenericPipeModule} from '@ironsource/fusion-ui/pipes/generic';
-import {NotAvailableModule} from '@ironsource/fusion-ui/pipes/not-available';
+import {NotAvailablePipe} from '@ironsource/fusion-ui/pipes/not-available';
 import {Observable, of} from 'rxjs';
 
 class MockUniqueIdService extends UniqueIdService {
@@ -130,7 +130,7 @@ describe('Table Component', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [FormsModule, ReactiveFormsModule, InputModule, TooltipModule, LoadMoreModule, GenericPipeModule, NotAvailableModule],
+            imports: [FormsModule, ReactiveFormsModule, InputModule, TooltipModule, LoadMoreModule, GenericPipeModule, NotAvailablePipe],
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
             declarations: [
                 TableComponent,

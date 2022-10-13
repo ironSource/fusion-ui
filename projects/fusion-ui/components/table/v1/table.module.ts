@@ -29,7 +29,7 @@ import {InputInlineModule} from '@ironsource/fusion-ui/components/input-inline/v
 import {LoadMoreModule} from '@ironsource/fusion-ui/directives/load-more';
 import {GenericPipeModule} from '@ironsource/fusion-ui/pipes/generic';
 import {ErrorMessageModule} from '@ironsource/fusion-ui/components/error-message/v1';
-import {NotAvailableModule} from '@ironsource/fusion-ui/pipes/not-available';
+import {NotAvailablePipe} from '@ironsource/fusion-ui/pipes/not-available';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button/v1';
 
 @NgModule({
@@ -62,7 +62,7 @@ import {ButtonModule} from '@ironsource/fusion-ui/components/button/v1';
         GenericPipeModule,
         LoadMoreModule,
         ErrorMessageModule,
-        NotAvailableModule,
+        NotAvailablePipe,
         ButtonModule
     ]
 })
