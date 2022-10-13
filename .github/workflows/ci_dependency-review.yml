@@ -1,0 +1,20 @@
+name: Dependency-Review
+
+on:
+  push:
+
+  permissions:
+    contents: read
+
+jobs:
+  dependency-review:
+    runs-on: [self-hosted, demand]
+    steps:
+      - name: 'Checkout Repository'
+        uses: actions/checkout@v3
+
+      - name: 'Dependency Review'
+        uses: actions/dependency-review-action@v2
+        with:
+          fail-on-severity: high
+          allow-licenses: MIT
