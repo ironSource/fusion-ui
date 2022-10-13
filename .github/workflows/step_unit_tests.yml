@@ -26,10 +26,10 @@ jobs:
         with:
           ref: ${{ env.BRANCH_NAME }}
 
-      - name: Install Node 14
-        uses: actions/setup-node@v2
+      - name: Install Node
+        uses: actions/setup-node@v3
         with:
-          node-version: "14"
+          node-version: "16"
 
       - run: npm ci
 
