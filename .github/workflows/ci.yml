@@ -23,7 +23,6 @@ jobs:
 
   # --- Do Dependency Review
   dependency-review:
-    needs: [code-quality, unit-tests]
     runs-on: [self-hosted, demand]
     name: 'DependencyReview'
     steps:
