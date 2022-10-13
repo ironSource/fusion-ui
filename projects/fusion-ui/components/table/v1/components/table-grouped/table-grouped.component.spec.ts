@@ -20,7 +20,7 @@ import {TableLoadingComponent} from '../table-loading/table-loading.component';
 import {TableRowComponent} from '../table-row/table-row.component';
 import {TableRowGroupedComponent} from '../table-row-grouped/table-row-grouped.component';
 import {NotAvailablePipe} from '@ironsource/fusion-ui/pipes/not-available';
-import {GenericPipeModule} from '@ironsource/fusion-ui/pipes/generic';
+import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 
 describe('TableGroupedComponent', () => {
     let component: TableGroupedComponent;
@@ -43,7 +43,7 @@ describe('TableGroupedComponent', () => {
                 ClickOutsideModule,
                 ReactiveFormsModule,
                 NotAvailablePipe,
-                GenericPipeModule
+                GenericPipe
             ],
             declarations: [
                 TableGroupedComponent,
