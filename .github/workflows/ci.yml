@@ -20,3 +20,10 @@ jobs:
     uses: ironSource/fusion-ui/.github/workflows/step_unit_tests.yml@master
     with:
       branch_name: ${{ github.ref_name }}
+
+  # --- Do dependency-review
+  dependency-review:
+    name: 'DependencyReview'
+    uses: ironSource/fusion-ui/.github/workflows/step_unit_tests.yml@master
+    with:
+      branch_name: ${{ github.ref_name }}

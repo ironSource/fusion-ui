@@ -1,4 +1,4 @@
-name: Step-Linter
+name: Step-Dependency-Review
 
 on:
   workflow_call:
@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       branch_name:
-        description: "Branch name to Test"
+        description: "Branch name to dependency-review"
         required: true
         default: "master"
 
@@ -18,7 +18,7 @@ env:
   BRANCH_NAME: ${{ github.event.inputs.branch_name || inputs.branch_name }}
 
 jobs:
-  code-quality:
+  dependency-review:
     runs-on: [self-hosted, demand]
     steps:
       - name: Checkout Repository
@@ -26,15 +26,8 @@ jobs:
         with:
           ref: ${{ env.BRANCH_NAME }}
 
-      - name: Install Node 14
-        uses: actions/setup-node@v2
+      - name: 'Dependency Review'
+        uses: actions/dependency-review-action@v2
         with:
-          node-version: "14"
-
-      - run: npm ci
-
-      - name: Run Formatter Check
-        run: npm run format:check
-
-      - name: Run Linting Check
-        run: npm run lint
+          fail-on-severity: high
+          allow-licenses: MIT
