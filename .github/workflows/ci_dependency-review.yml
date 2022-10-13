@@ -1,7 +1,8 @@
 name: Dependency-Review
 
 on:
-  pull_request: # push not supported see https://github.com/actions/dependency-review-action/issues/252
+  push:
+#  pull_request: # push not supported see https://github.com/actions/dependency-review-action/issues/252
 
 permissions:
   contents: read
@@ -13,8 +14,14 @@ jobs:
       - name: 'Checkout Repository'
         uses: actions/checkout@v3
 
+      - run: |
+          echo "base: ${{ github.event.before }}"
+          echo "head: ${{ github.sha }}"
+
       - name: 'Dependency Review'
         uses: actions/dependency-review-action@v2
         with:
+          base-ref: ${{ github.event.before }}
+          head-ref: ${{ github.sha }}
           fail-on-severity: high
           allow-licenses: MIT
