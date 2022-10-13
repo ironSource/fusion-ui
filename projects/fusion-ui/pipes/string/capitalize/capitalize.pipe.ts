@@ -1,8 +1,12 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import {Injectable, Pipe, PipeTransform} from '@angular/core';
 import {CapitalizeTransformOptions} from './capitalize-transform-options';
 
+@Injectable({
+    providedIn: 'root'
+})
 @Pipe({
-    name: 'capitalize'
+    name: 'capitalize',
+    standalone: true
 })
 export class CapitalizePipe implements PipeTransform {
     transform(value: string, {allWords, separator = ' ', combineWords, firstCharLower}: CapitalizeTransformOptions = {}): string {

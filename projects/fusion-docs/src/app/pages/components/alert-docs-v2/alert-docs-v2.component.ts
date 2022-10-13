@@ -18,6 +18,8 @@ export class AlertDocsV2Component implements OnInit, OnDestroy {
     private onDestroy$ = new Subject<void>();
     selectedVersion$: Observable<StyleVersion> = this.versionService.styleVersion$.pipe(takeUntil(this.onDestroy$));
 
+    someTestVar = 'test for capitalize pipe';
+
     rightMenu: DocsMenuItem[] = [
         {
             title: 'Type',
