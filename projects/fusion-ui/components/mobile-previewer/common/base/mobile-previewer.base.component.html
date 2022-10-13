@@ -1,6 +1,6 @@
-<div class="mobile-previewer-wrapper" [style.width.px]="width">
-    <div class="mobile-previewer-container" [style.height.px]="height">
-        <ng-container *ngIf="configurations.component || configurations.element; else template">
+<div class="mobile-previewer-wrapper" [style.width.px]="!isStaticSize ? width : configurations.staticComponentSize.width" [class.static-size]="isStaticSize">
+    <div class="mobile-previewer-container" [style.height.px]="!isStaticSize ? height : configurations.staticComponentSize.height">
+        <ng-container *ngIf="configurations.component || configurations.element; else isStaticSize ? staticSizeTemplate : template">
             <!--using refresh variable to refresh iframe when user change device-->
             <fusion-dynamic-components
                 [element]="configurations.element"
@@ -18,6 +18,12 @@
 
         <ng-template #template>
             <ng-content></ng-content>
+        </ng-template>
+
+        <ng-template #staticSizeTemplate>
+            <div class="content-container" [style.width.px]="calculatedContentSize.width" [style.height.px]="calculatedContentSize.height">
+                <ng-content></ng-content>
+            </div>
         </ng-template>
     </div>
 

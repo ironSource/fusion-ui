@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, OnInit, Type} from '@angular/core';
 import {PopupEntity, PopupLocation} from '@ironsource/fusion-ui/components/popup/common/entities';
 import {PopupService} from '@ironsource/fusion-ui/components/popup/common/services';
-import {Observable, Subject} from 'rxjs';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {MobilePreviewerComponent} from '@ironsource/fusion-ui/components/mobile-previewer/v1';
 import {MobileOrientation, MobilePreviewerComponentConfiguration} from '@ironsource/fusion-ui/components/mobile-previewer/common/base';
@@ -34,7 +34,6 @@ const popUpBasic: PopupEntity = {
 export class MobilePreviewerDocsComponent implements OnInit, OnDestroy {
     onDestroy$ = new Subject<void>();
     selectedVersion$: Observable<StyleVersion> = this.versionService.styleVersion$.pipe(takeUntil(this.onDestroy$));
-
     MobileOrientation = MobileOrientation;
     rightMenu: Array<any> = [
         {

@@ -4,9 +4,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [4.0.0](https://github.com/ironSource/fusion-ui/compare/v4.0.0-rc.8...v4.0.0) (2022-10-03)
 
-## [4.0.0-rc.3](https://github.com/ironSource/fusion-ui/compare/v4.0.0-rc.1...v4.0.0-rc.3) (2022-09-19)
-
-
 ### Bug Fixes
 
 * **4.x.x:** fix file-drag-and-drop hover ([dd9d11d](https://github.com/ironSource/fusion-ui/commit/dd9d11d18ccb5ea38746c4c25f45fa44a8fd94f8))
@@ -37,13 +34,14 @@ All notable changes to this project will be documented in this file. See [standa
 
 * **upgrade:** update sass, sass-loader and sass-bundle ([a9cbe07](https://github.com/ironSource/fusion-ui/commit/a9cbe07c35d21fa697485da46c722e178d82ef3d))
 
+## [3.7.0](https://github.com/ironSource/fusion-ui/compare/v3.7.0-rc.1...v3.7.0) (2022-10-12)
+
+
+### Features
+
+* **mobile_preview:** add staticComponentSize to configuration and orientation handle ([966e6ff](https://github.com/ironSource/fusion-ui/commit/966e6ff1edbbe3a8d3d6472125c7663cffcd2f4e))
+
 ## [3.6.0](https://github.com/ironSource/fusion-ui/compare/v3.6.0-rc.2...v3.6.0) (2022-10-03)
-
-## [3.6.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v3.6.0-rc.1...v3.6.0-rc.2) (2022-09-29)
-
-## [3.6.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v3.6.0-rc.0...v3.6.0-rc.1) (2022-09-29)
-
-## [3.6.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.5.2-rc.6...v3.6.0-rc.0) (2022-09-29)
 
 
 ### Features
