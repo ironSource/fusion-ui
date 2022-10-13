@@ -6,7 +6,8 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {isNumber} from '@ironsource/fusion-ui/utils';
 
 @Pipe({
-    name: 'secondsToMinutes'
+    name: 'secondsToMinutes',
+    standalone: true
 })
 export class SecondsToMinutesPipe implements PipeTransform {
     transform(value: number): string {

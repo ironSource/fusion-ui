@@ -2,7 +2,8 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Pipe({
-    name: 'shortNumberScaleSuffix'
+    name: 'shortNumberScaleSuffix',
+    standalone: true
 })
 /**
  * Convert number 'BIG' number to string with "weight" suffix K-kilo, M-mega, etc.
