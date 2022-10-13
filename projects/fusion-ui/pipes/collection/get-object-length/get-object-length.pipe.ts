@@ -1,7 +1,8 @@
 import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
-    name: 'objectLengthWhereValueTrue'
+    name: 'objectLengthWhereValueTrue',
+    standalone: true
 })
 export class GetObjectLengthPipe implements PipeTransform {
     /**

@@ -7,7 +7,7 @@ import {InputModule} from '@ironsource/fusion-ui/components/input';
 import {FlagModule} from '@ironsource/fusion-ui/components/flag/v1';
 import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox/v2';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
-import {FilterByFieldModule} from '@ironsource/fusion-ui/pipes/collection';
+import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
 import {CloneModule} from '@ironsource/fusion-ui/pipes/clone';
 // todo: will chane to v3 after tooltip bug will be fixed
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v3';
@@ -31,7 +31,7 @@ import {DropdownComponent} from './dropdown.component';
         FlagModule,
         CheckboxModule,
         ClickOutsideModule,
-        FilterByFieldModule,
+        FilterByFieldPipe,
         CloneModule,
         TooltipModule,
         DynamicComponentsModule,

@@ -8,6 +8,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ListBoxModule} from '@ironsource/fusion-ui/components/list-box/v2';
 import {MultiDropdownModule} from '@ironsource/fusion-ui/components/multi-dropdown/v2';
+import {FilterByFieldPipe} from "@ironsource/fusion-ui/pipes/collection";
 
 class RouterStub {
     url = '';
@@ -22,7 +23,7 @@ describe('ListBoxDocsV2Component', () => {
         TestBed.configureTestingModule({
             declarations: [ListBoxDocsV2Component],
             imports: [ExampleBlockModule, CodeBlockModule, DocsMenuModule, ReactiveFormsModule, ListBoxModule, MultiDropdownModule],
-            providers: [{provide: Router, useClass: RouterStub}]
+            providers: [{provide: Router, useClass: RouterStub}, FilterByFieldPipe]
         }).compileComponents();
     }));
 
