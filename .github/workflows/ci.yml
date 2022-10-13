@@ -15,7 +15,7 @@ jobs:
       branch_name: ${{ github.ref_name}}
 
   # --- Do Unit-Test check
-  unit-test:
+  unit-tests:
     name: 'UnitTests'
     uses: ironSource/fusion-ui/.github/workflows/step_unit_tests.yml@master
     with:
@@ -24,6 +24,6 @@ jobs:
   # --- Do dependency-review
   dependency-review:
     name: 'DependencyReview'
-    uses: ironSource/fusion-ui/.github/workflows/step_unit_tests.yml@master
+    uses: ironSource/fusion-ui/.github/workflows/step_dependency-review.yml.yml@master
     with:
       branch_name: ${{ github.ref_name }}

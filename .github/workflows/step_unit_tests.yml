@@ -18,7 +18,7 @@ env:
   BRANCH_NAME: ${{ github.event.inputs.branch_name || inputs.branch_name }}
 
 jobs:
-  code-quality:
+  unit-tests:
     runs-on: [self-hosted, demand]
     steps:
       - name: Checkout Repository
