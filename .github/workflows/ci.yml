@@ -24,6 +24,6 @@ jobs:
   # --- Do dependency-review
   dependency-review:
     name: 'DependencyReview'
-    uses: ironSource/fusion-ui/.github/workflows/step_dependency-review.yml.yml@master
+    uses: ironSource/fusion-ui/.github/workflows/step_dependency-review.yml@master
     with:
       branch_name: ${{ github.ref_name }}
