@@ -1,12 +1,21 @@
 name: CI-UnitTests
 
 on:
+  workflow_call:
+    inputs:
+      branch_name:
+        required: true
+        type: string
+
   workflow_dispatch:
     inputs:
       branch_name:
         description: "Branch name to Test"
         required: true
         default: "master"
+
+env:
+  BRANCH_NAME: ${{ github.event.inputs.branch_name || inputs.branch_name }}
 
 jobs:
   code-quality:
@@ -15,7 +24,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.inputs.branch_name }}
+          ref: ${{ env.BRANCH_NAME }}
 
       - name: Install Node 14
         uses: actions/setup-node@v2
