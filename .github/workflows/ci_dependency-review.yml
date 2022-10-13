@@ -2,7 +2,6 @@ name: Dependency-Review
 
 on:
   push:
-#  pull_request: # push not supported see https://github.com/actions/dependency-review-action/issues/252
 
 permissions:
   contents: read
