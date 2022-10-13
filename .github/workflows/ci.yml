@@ -3,11 +3,11 @@ name: CI-Main
 on:
   push:
 
-concurrency:
-  group: fusion_ci
-
 env:
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+
+concurrency:
+  group: fusion_ci
 
 jobs:
   # --- Do Code Formatter and Linter check
