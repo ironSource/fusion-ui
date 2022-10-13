@@ -3,8 +3,8 @@ name: Dependency-Review
 on:
   push:
 
-  permissions:
-    contents: read
+permissions:
+  contents: read
 
 jobs:
   dependency-review:
