@@ -1,0 +1,29 @@
+name: CI-UnitTests
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch_name:
+        description: "Branch name to Test"
+        required: true
+        default: "master"
+
+jobs:
+  code-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.branch_name }}
+
+      - name: Install Node 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - run: npm ci
+
+      - name: Run Unit Tests
+        timeout-minutes: 10
+        run: npm run test-ui-ci

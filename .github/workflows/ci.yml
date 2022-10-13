@@ -1,0 +1,25 @@
+name: CI-Main
+
+on:
+  push:
+
+concurrency:
+  group: fusion_ci
+
+env:
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+
+jobs:
+  # --- Do Code Formatter and Linter check
+  code-quality:
+    name: 'Code Quality Check'
+    uses: ironSource/fusion-ui/.github/workflows/step_linter.yml@main
+    with:
+      branch_name: ${{ env.BRANCH_NAME }}
+
+  # --- Do Unit-Test check
+  unit-test:
+    name: 'UnitTests'
+    uses: ironSource/fusion-ui/.github/workflows/step_unit_tests.yml@main
+    with:
+      branch_name: ${{ env.BRANCH_NAME }}
