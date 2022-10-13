@@ -21,23 +21,19 @@ jobs:
     with:
       branch_name: ${{ github.ref_name }}
 
-  # --- Do Dependency Review
-  dependency-review:
-    runs-on: [self-hosted, demand]
-    name: 'DependencyReview'
+  # --- Do Git Leaks check
+  gitleaks:
+    runs-on: ubuntu-20.04
     steps:
-      - name: 'Checkout Repository'
-        uses: actions/checkout@v3
+      - name: Add Homebrew to $PATH
+        run: echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >> $GITHUB_PATH
 
-      - run: |
-          echo "base: ${{ github.event.before }}"
-          echo "head: ${{ github.sha }}"
+      - uses: actions/checkout@v3
 
-      - name: 'Dependency Review'
-        uses: actions/dependency-review-action@v2
-        with:
-          base-ref: ${{ github.event.before }}
-          head-ref: ${{ github.sha }}
-          fail-on-severity: high
-          allow-licenses: MIT
+      - name: Install GitLeaks
+        run: |
+          brew install gitleaks
 
+      - name: gitleaks-action
+        run: |
+          gitleaks --verbose detect --log-opts --since="2021-11-25"
