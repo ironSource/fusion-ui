@@ -12,6 +12,7 @@ import {TagModule} from '@ironsource/fusion-ui/components/tag/v1';
 import {TagsInputModule} from '@ironsource/fusion-ui/components/tags-input/v1';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v2';
 import {FilterByFieldPipe} from "@ironsource/fusion-ui/pipes/collection";
+import {ClonePipe} from "@ironsource/fusion-ui/pipes/clone";
 
 class RouterStub {
     url = '';
@@ -37,7 +38,7 @@ describe('TagDocsComponent', () => {
                 MultiDropdownModule,
                 TooltipModule
             ],
-            providers: [{provide: Router, useClass: RouterStub}, FilterByFieldPipe]
+            providers: [{provide: Router, useClass: RouterStub}, FilterByFieldPipe, ClonePipe]
         }).compileComponents();
     }));
 

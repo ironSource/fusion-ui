@@ -5,7 +5,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {InputModule} from '@ironsource/fusion-ui/components/input/v1';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
-import {CloneModule} from '@ironsource/fusion-ui/pipes/clone';
+import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
 import {DropdownLoaderModule} from '@ironsource/fusion-ui/components/dropdown-loader/v1';
 import {DropdownOptionModule} from '@ironsource/fusion-ui/components/dropdown-option/v1';
 import {DropdownOptionsListModule} from '@ironsource/fusion-ui/components/dropdown-options-list/v1';
@@ -19,7 +19,7 @@ import {DropdownOptionsListModule} from '@ironsource/fusion-ui/components/dropdo
         InputModule,
         ClickOutsideModule,
         FilterByFieldPipe,
-        CloneModule,
+        ClonePipe,
         DropdownLoaderModule,
         DropdownOptionModule,
         DropdownOptionsListModule

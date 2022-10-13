@@ -4,7 +4,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
-import {CloneModule} from '@ironsource/fusion-ui/pipes/clone';
+import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
 
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components/v1';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
@@ -33,7 +33,7 @@ import {MultiDropdownComponent} from './multi-dropdown.component';
         CheckboxModule,
         ClickOutsideModule,
         FilterByFieldPipe,
-        CloneModule,
+        ClonePipe,
         TooltipModule,
         DynamicComponentsModule,
         DropdownLoaderModule,

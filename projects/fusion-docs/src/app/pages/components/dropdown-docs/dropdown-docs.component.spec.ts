@@ -13,6 +13,7 @@ import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
 import {InputModule} from '@ironsource/fusion-ui/components/input/v2';
 import {DropdownModule} from '@ironsource/fusion-ui/components/dropdown/v2';
 import {FilterByFieldPipe} from "@ironsource/fusion-ui/pipes/collection";
+import {ClonePipe} from "@ironsource/fusion-ui/pipes/clone";
 
 class RouterStub {
     url = '';
@@ -39,7 +40,7 @@ describe('DropdownDocsComponent', () => {
                 MultiDropdownModule,
                 AddboxDropdownModule
             ],
-            providers: [{provide: Router, useClass: RouterStub}, FilterByFieldPipe]
+            providers: [{provide: Router, useClass: RouterStub}, FilterByFieldPipe, ClonePipe]
         }).compileComponents();
     }));
 
