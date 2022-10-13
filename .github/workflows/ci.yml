@@ -1,0 +1,39 @@
+name: CI-Main
+
+on:
+  push:
+
+concurrency:
+  group: fusion_ci
+
+jobs:
+  # --- Do Code Formatter and Linter check
+  code-quality:
+    name: 'Code Quality Check'
+    uses: ironSource/fusion-ui/.github/workflows/step_linter.yml@master
+    with:
+      branch_name: ${{ github.ref_name}}
+
+  # --- Do Unit-Test check
+  unit-tests:
+    name: 'UnitTests'
+    uses: ironSource/fusion-ui/.github/workflows/step_unit_tests.yml@master
+    with:
+      branch_name: ${{ github.ref_name }}
+
+  # --- Do Git Leaks check
+  gitleaks:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Add Homebrew to $PATH
+        run: echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >> $GITHUB_PATH
+
+      - uses: actions/checkout@v3
+
+      - name: Install GitLeaks
+        run: |
+          brew install gitleaks
+
+      - name: gitleaks-action
+        run: |
+          gitleaks --verbose detect --log-opts --since="2021-11-25"

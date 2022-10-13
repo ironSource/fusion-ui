@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, forwardRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef, OnInit} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {ListBoxBaseComponent} from '@ironsource/fusion-ui/components/list-box/common/base';
 
@@ -15,7 +15,7 @@ import {ListBoxBaseComponent} from '@ironsource/fusion-ui/components/list-box/co
         }
     ]
 })
-export class ListBoxComponent extends ListBoxBaseComponent {
+export class ListBoxComponent extends ListBoxBaseComponent implements OnInit {
     ngOnInit() {
         super.ngOnInit();
         this.checkIconName = {iconName: 'check-v-2', iconVersion: 'v2'};
