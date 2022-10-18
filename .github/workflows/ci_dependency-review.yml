@@ -17,4 +17,4 @@ jobs:
         uses: actions/dependency-review-action@v2
         with:
           fail-on-severity: high
-          allow-licenses: MIT
+#          allow-licenses: MIT
