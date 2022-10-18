@@ -1,6 +1,14 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
+
+### [4.0.1-rc.1](https://github.com/ironSource/fusion-ui/compare/v4.0.1-rc.0...v4.0.1-rc.1) (2022-10-18)
+
+
+### CI
+
+* **fu-479:** switch from standard-version to commit-and-tag-version ([29600de](https://github.com/ironSource/fusion-ui/commit/29600ded5b371220badefe4d92e2144e15aa21a5))
+* **fu-479:** switch from standard-version to commit-and-tag-version ([400f711](https://github.com/ironSource/fusion-ui/commit/400f711279ba2a80ee384736d8a1d7faf9afe919))
 
 ## [4.0.0-rc.9](https://github.com/ironSource/fusion-ui/compare/v3.7.0...v4.0.0-rc.9) (2022-10-18)
 
