@@ -4,20 +4,6 @@ All notable changes to this project will be documented in this file. See [commit
 
 ### [4.0.1-rc.1](https://github.com/ironSource/fusion-ui/compare/v4.0.1-rc.0...v4.0.1-rc.1) (2022-10-18)
 
-
-### CI
-
-* **fu-479:** switch from standard-version to commit-and-tag-version ([29600de](https://github.com/ironSource/fusion-ui/commit/29600ded5b371220badefe4d92e2144e15aa21a5))
-* **fu-479:** switch from standard-version to commit-and-tag-version ([400f711](https://github.com/ironSource/fusion-ui/commit/400f711279ba2a80ee384736d8a1d7faf9afe919))
-
-## [4.0.0-rc.9](https://github.com/ironSource/fusion-ui/compare/v3.7.0...v4.0.0-rc.9) (2022-10-18)
-
-
-### Bug Fixes
-
-* **fu-479:** fix version 5.0.0-rc.0 ([0d2d31d](https://github.com/ironSource/fusion-ui/commit/0d2d31d654132adca7d665830e598d8467628edc))
-
-
 ### CI
 
 * **fu-474:** change main ci workflow ([c7ee466](https://github.com/ironSource/fusion-ui/commit/c7ee466790c94313aafc6450a99516c49b8e4601))
