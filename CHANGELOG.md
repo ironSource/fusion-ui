@@ -2,11 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [3.6.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v3.6.0-rc.1...v3.6.0-rc.2) (2022-09-29)
+## [3.7.0](https://github.com/ironSource/fusion-ui/compare/v3.7.0-rc.1...v3.7.0) (2022-10-12)
 
-## [3.6.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v3.6.0-rc.0...v3.6.0-rc.1) (2022-09-29)
 
-## [3.6.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.5.2-rc.6...v3.6.0-rc.0) (2022-09-29)
+### Features
+
+* **mobile_preview:** add staticComponentSize to configuration and orientation handle ([966e6ff](https://github.com/ironSource/fusion-ui/commit/966e6ff1edbbe3a8d3d6472125c7663cffcd2f4e))
+
+## [3.6.0](https://github.com/ironSource/fusion-ui/compare/v3.6.0-rc.2...v3.6.0) (2022-10-03)
 
 
 ### Features
@@ -20,9 +23,15 @@ or
 <fusion-status-label class="fu-large" [flat]="true" [status]="StatusLabelType.Archived">Archived</fusion-status-label>
 ```
 
-
-
-
+```
+enum StatusLabelType {
+    Success = 'success', // Positive-500
+    Warning = 'warning', // Neutral-500
+    Error = 'error', // Negative-500
+    Archived = 'archived', // Light-500
+    Disabled = 'disabled' // Light-900
+}
+```
 
 ### Bug Fixes
 

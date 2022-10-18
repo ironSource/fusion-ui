@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {MobilePreviewerBaseComponent} from '@ironsource/fusion-ui/components/mobile-previewer/common/base';
 import {BehaviorSubject} from 'rxjs';
 
@@ -8,7 +8,7 @@ import {BehaviorSubject} from 'rxjs';
     styleUrls: ['./mobile-previewer.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MobilePreviewerComponent extends MobilePreviewerBaseComponent {
+export class MobilePreviewerComponent extends MobilePreviewerBaseComponent implements OnInit {
     iconPrefix$ = new BehaviorSubject<string>('');
     ngOnInit() {
         super.ngOnInit();

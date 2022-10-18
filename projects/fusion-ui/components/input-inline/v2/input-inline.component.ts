@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, forwardRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef, OnInit} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {CONFIG_INPUT_INLINE_BY_UI_STYLE, InputInlineBaseComponent} from '@ironsource/fusion-ui/components/input-inline/common/base';
 
@@ -15,7 +15,7 @@ import {CONFIG_INPUT_INLINE_BY_UI_STYLE, InputInlineBaseComponent} from '@ironso
         }
     ]
 })
-export class InputInlineComponent extends InputInlineBaseComponent {
+export class InputInlineComponent extends InputInlineBaseComponent implements OnInit {
     ngOnInit() {
         super.ngOnInit();
         this.configByStyle = CONFIG_INPUT_INLINE_BY_UI_STYLE[`style_v2`];

@@ -3,6 +3,7 @@ import {Component, Type} from '@angular/core';
 
 export interface MobilePreviewerComponentConfiguration {
     orientation?: MobileOrientation;
+    staticComponentSize?: {width?: string; height?: string};
     element?: Node;
     component?: {
         type: Type<Component>;
@@ -10,4 +11,7 @@ export interface MobilePreviewerComponentConfiguration {
     };
 }
 
+export const WIDTH_STATIC = '568';
+export const HEIGHT_STATIC = '320';
+export const BORDER_WIDTH = 2.6;
 export const DEVICE_ORIENTATION = ['tablet-portrait', 'tablet-landscape', 'phone-portrait', 'phone-landscape'];

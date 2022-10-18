@@ -1,4 +1,4 @@
-import {Directive, EventEmitter, HostBinding, Input, Output, ViewChild} from '@angular/core';
+import {Directive, EventEmitter, HostBinding, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {FormControl} from '@angular/forms';
 import {map, takeUntil} from 'rxjs/operators';
@@ -15,7 +15,7 @@ import {DropdownBaseComponent} from '@ironsource/fusion-ui/components/dropdown/c
 import {Tag} from '@ironsource/fusion-ui/components/tag/common/entities';
 
 @Directive()
-export abstract class TagsInputBaseComponent extends DropdownBaseComponent {
+export abstract class TagsInputBaseComponent extends DropdownBaseComponent implements OnInit {
     @ViewChild('tagInput') set tagInput(value: InputComponent) {
         if (!!value && !!value.elementRef && !!value.elementRef.nativeElement) {
             if (this.isAddTagsAllowed || this.autoComplete) {

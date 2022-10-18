@@ -1,11 +1,11 @@
-import {Directive, Input, TemplateRef} from '@angular/core';
+import {Directive, Input, OnChanges, OnInit, TemplateRef} from '@angular/core';
 import {DROPDOWN_OPTIONS_WITHOUT_SCROLL, DropdownBaseComponent} from '@ironsource/fusion-ui/components/dropdown/common/base';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 import {Observable} from 'rxjs';
 import {map, startWith, takeUntil} from 'rxjs/operators';
 
 @Directive()
-export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent {
+export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent implements OnInit, OnChanges {
     @Input() confirm = true;
     @Input() selectAllLabel: string;
     @Input() templateRef: TemplateRef<any>;
