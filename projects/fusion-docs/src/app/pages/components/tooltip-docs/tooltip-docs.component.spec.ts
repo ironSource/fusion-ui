@@ -6,7 +6,8 @@ import {CodeBlockModule} from '../../../components/code-block/code-block.module'
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
-import {TableModule, TooltipModule} from '@ironsource/fusion-ui';
+import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v2';
+import {TableModule} from '@ironsource/fusion-ui/components/table/v2';
 
 describe('TooltipDocsComponent', () => {
     let component: TooltipDocsComponent;

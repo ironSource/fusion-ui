@@ -10,7 +10,7 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {MultiDropdownModule} from '@ironsource/fusion-ui/components/multi-dropdown/v1';
 import {TagModule} from '@ironsource/fusion-ui/components/tag/v1';
 import {TagsInputModule} from '@ironsource/fusion-ui/components/tags-input/v1';
-import {TooltipModule} from '@ironsource/fusion-ui';
+import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v2';
 
 class RouterStub {
     url = '';

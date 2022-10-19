@@ -5,8 +5,9 @@ import {ExampleBlockModule} from '../../../components/example-block/example-bloc
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ReactiveFormsModule} from '@angular/forms';
-import {ListBoxModule, MultiDropdownModule} from '@ironsource/fusion-ui';
 import {Router} from '@angular/router';
+import {ListBoxModule} from '@ironsource/fusion-ui/components/list-box/v2';
+import {MultiDropdownModule} from '@ironsource/fusion-ui/components/multi-dropdown/v2';
 
 class RouterStub {
     url = '';

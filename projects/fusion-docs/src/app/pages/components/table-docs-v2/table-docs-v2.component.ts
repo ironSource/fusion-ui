@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {FormControl, Validators} from '@angular/forms';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {delay, take, takeUntil, tap} from 'rxjs/operators';
-import {isNullOrUndefined, isNumber} from '@ironsource/fusion-ui';
+import {isNullOrUndefined, isNumber} from '@ironsource/fusion-ui/utils';
 import {
     TableColumn,
     TableColumnTypeEnum,

@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/ironSource/fusion-ui/compare/v4.0.0-rc.8...v4.0.0) (2022-10-03)
+
+### Bug Fixes
+
+* **4.x.x:** fix file-drag-and-drop hover ([dd9d11d](https://github.com/ironSource/fusion-ui/commit/dd9d11d18ccb5ea38746c4c25f45fa44a8fd94f8))
+* **4.x.x:** fix modal v3 header ([bab5e47](https://github.com/ironSource/fusion-ui/commit/bab5e4761d66a2aad599d477232220f810cdc913))
+* **4.x.x:** fix v3 table cell text (type date) ([d9444a7](https://github.com/ironSource/fusion-ui/commit/d9444a7cfc05df45d8b73940563035aed5d0b13c))
+* **4.x.x:** fix v3 table header sorted column align right ([8583b97](https://github.com/ironSource/fusion-ui/commit/8583b973131744a66150df627441c1301c6b62b7))
+
+## [4.0.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v3.3.0...v4.0.0-rc.1) (2022-09-06)
+
+
+### Bug Fixes
+
+* **fu-461:** dependencies update ([3c9ffc4](https://github.com/ironSource/fusion-ui/commit/3c9ffc4d577f2d142c64c8c88f886b655bf27ad3))
+
+## [4.0.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.2.4...v4.0.0-rc.0) (2022-09-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* **fu-457:** angular version upgraded to v14
+
+### Features
+
+* **fu-457:** upgrade angular to angular 14 ([b24bbb0](https://github.com/ironSource/fusion-ui/commit/b24bbb00fa218c5cb42f65ce958c66d2c87a6072))
+
+
+### CI
+
+* **upgrade:** update sass, sass-loader and sass-bundle ([a9cbe07](https://github.com/ironSource/fusion-ui/commit/a9cbe07c35d21fa697485da46c722e178d82ef3d))
+
 ## [3.7.0](https://github.com/ironSource/fusion-ui/compare/v3.7.0-rc.1...v3.7.0) (2022-10-12)
 
 
@@ -727,4 +759,4 @@ For example if main application use style #3, but some components will need use 
 
 ### Features
 
-* **fu-287:** refactored mfe configuration, added fusion-mfe project for mfe using
+* **fu-287:** refactored mfe configuration, added fusion-mfe project for mfe using.

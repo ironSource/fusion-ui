@@ -6,7 +6,9 @@ import {CodeBlockModule} from '../../../components/code-block/code-block.module'
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {Router, RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
-import {ButtonModule, TooltipModule, VideoPlayerModule} from '@ironsource/fusion-ui';
+import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v2';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
+import {VideoPlayerModule} from '@ironsource/fusion-ui/components/video-player/v1';
 
 class RouterStub {
     url = '';

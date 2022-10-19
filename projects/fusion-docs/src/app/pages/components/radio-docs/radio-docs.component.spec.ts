@@ -6,7 +6,10 @@ import {CodeBlockModule} from '../../../components/code-block/code-block.module'
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
-import {IconSelectListModule, InputModule, RadioGroupModule, RadioModule} from '@ironsource/fusion-ui';
+import {RadioGroupModule} from '@ironsource/fusion-ui/components/radio-group/v2';
+import {RadioModule} from '@ironsource/fusion-ui/components/radio/v2';
+import {InputModule} from '@ironsource/fusion-ui/components/input/v2';
+import {IconSelectListModule} from '@ironsource/fusion-ui/components/icon-select-list/v1';
 
 describe('RadioDocsComponent', () => {
     let component: RadioDocsComponent;

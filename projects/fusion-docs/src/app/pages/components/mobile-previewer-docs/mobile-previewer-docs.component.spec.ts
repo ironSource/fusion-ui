@@ -5,8 +5,11 @@ import {MobilePreviewerDocsRoutingModule} from './mobile-previewer-docs-routing.
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
-import {ButtonModule, MobilePreviewerModule, PopupModule, TableModule} from '@ironsource/fusion-ui';
 import {Router} from '@angular/router';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
+import {MobilePreviewerModule} from '@ironsource/fusion-ui/components/mobile-previewer/v2';
+import {PopupModule} from '@ironsource/fusion-ui/components/popup/v2';
+import {TableModule} from '@ironsource/fusion-ui/components/table/v2';
 
 class RouterStub {
     url = '';

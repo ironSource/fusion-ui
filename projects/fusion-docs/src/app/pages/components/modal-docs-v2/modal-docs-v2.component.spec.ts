@@ -3,8 +3,10 @@ import {ModalDocsV2Component} from './modal-docs-v2.component';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
-import {LoaderModule, ModalModule, NotificationModule} from '@ironsource/fusion-ui';
 import {Router} from '@angular/router';
+import {NotificationModule} from '@ironsource/fusion-ui/components/notification/v2';
+import {ModalModule} from '@ironsource/fusion-ui/components/modal/v2';
+import {LoaderModule} from '@ironsource/fusion-ui/components/loader/v2';
 
 class RouterStub {
     url = '';

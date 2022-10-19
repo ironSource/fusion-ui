@@ -53,7 +53,7 @@ export class HeaderOverlayDocsComponent implements OnInit {
 
     formGroup: FormGroup;
     headerComponent = DemoFilterComponent;
-    headerPopUpFormControl = new FormControl({isOpen: false, isActive: false});
+    headerPopUpFormControl = new FormControl<any>({isOpen: false, isActive: false});
     bodyInput = new FormControl(false);
 
     ngOnInit() {
