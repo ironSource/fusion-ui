@@ -66,14 +66,12 @@ $smallHeight: 32px;
         }
 
         .fu-input-units {
-            border: none;
             box-sizing: border-box;
             align-items: center;
             justify-content: center;
             flex-direction: column;
             display: flex;
             color: $fu-light-800;
-            border-radius: $borderRadius;
             background-color: $fu-light-100;
             padding: $regularPadding;
             height: $regularHeight;
@@ -81,7 +79,6 @@ $smallHeight: 32px;
 
             &.small {
                 border-right: none;
-                display: block;
                 min-width: inherit;
                 height: $smallHeight;
             }
@@ -292,6 +289,15 @@ $smallHeight: 32px;
             width: 100%;
             background-color: $fu-primary-500;
             bottom: 0;
+        }
+
+        &:hover{
+            .fu-input-units{
+                background-color: $fu-light-200;
+            }
+            input{
+                background-color: $fu-light-200;
+            }
         }
     }
 
