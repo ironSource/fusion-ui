@@ -1,6 +1,9 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import {Injectable, Pipe, PipeTransform} from '@angular/core';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
+@Injectable({
+    providedIn: 'root'
+})
 @Pipe({
     name: 'shortNumberScaleSuffix',
     standalone: true

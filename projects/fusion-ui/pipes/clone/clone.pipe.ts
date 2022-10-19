@@ -1,5 +1,8 @@
 import {Injectable, Pipe, PipeTransform} from '@angular/core';
 
+@Injectable({
+    providedIn: 'root'
+})
 @Pipe({
     name: 'clone',
     standalone: true
