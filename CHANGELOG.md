@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.7.1-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.7.0...v3.7.1-rc.0) (2022-10-19)
+
+
+### Bug Fixes
+
+* **isModalOpen:** fix modal closing ([ffb56b0](https://github.com/ironSource/fusion-ui/commit/ffb56b008cd033752734a0eb69642923b4b20af9))
+
+
+### CI
+
+* **fu-474:** change main ci workflow ([c7ee466](https://github.com/ironSource/fusion-ui/commit/c7ee466790c94313aafc6450a99516c49b8e4601))
+
 ## [3.7.0](https://github.com/ironSource/fusion-ui/compare/v3.7.0-rc.1...v3.7.0) (2022-10-12)
 
 
