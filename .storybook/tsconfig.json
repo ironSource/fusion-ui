@@ -1,0 +1,10 @@
+{
+    "extends": "../projects/fusion-ui/tsconfig.lib.prod.json",
+    "compilerOptions": {
+        "types": ["node"],
+        "allowSyntheticDefaultImports": true
+    },
+    "exclude": ["../src/test.ts", "../src/**/*.spec.ts", "../projects/**/*.spec.ts"],
+    "include": ["../stories/**/*", "../projects/fusion-ui/**/*"],
+    "files": ["./typings.d.ts"]
+}
