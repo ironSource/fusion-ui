@@ -56,6 +56,7 @@ $smallHeight: 32px;
         border-radius: $borderRadius;
         overflow: hidden;
 
+
         &.fu-disabled {
             cursor: not-allowed;
             input {
@@ -64,12 +65,63 @@ $smallHeight: 32px;
             }
         }
 
+        .fu-input-units {
+            box-sizing: border-box;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            display: flex;
+            color: $fu-light-800;
+            background-color: $fu-light-100;
+            padding: $regularPadding;
+            height: $regularHeight;
+            @extend %font-bodySmall;
+
+            &.small {
+                border-right: none;
+                min-width: inherit;
+                height: $smallHeight;
+            }
+
+            &.right {
+                order: 99;
+                border-radius: 0 3px 3px 0;
+                border-left-width: 0;
+                border-right-width: 1px;
+                &.small {
+                    border-left: none;
+                    height: $smallHeight;
+                }
+                & + input {
+                    border-right-width: 0;
+                    border-radius: 3px 0 0 3px;
+                    border-left-width: 1px;
+                    padding-right: 0;
+
+                    &.is-underline, &.is-no-border {
+                        border-radius: 0;
+                    }
+                }
+            }
+
+            &:not(.right) + input {
+                border-radius: 0;
+                padding-left: 0;
+            }
+            &.left {
+                 border-radius: 0;
+            }
+
+            &.is-placeholder-units {
+                color: $fu-light-800;
+            }
+        }
+
         input {
             @extend %font-bodySmall;
             letter-spacing: 0.24px;
             border: none;
             box-sizing: border-box;
-            border-radius: $borderRadius;
             background-color: $fu-light-100;
             padding: $regularPadding;
             height: $regularHeight;
@@ -237,6 +289,15 @@ $smallHeight: 32px;
             width: 100%;
             background-color: $fu-primary-500;
             bottom: 0;
+        }
+
+        &:hover{
+            .fu-input-units{
+                background-color: $fu-light-200;
+            }
+            input{
+                background-color: $fu-light-200;
+            }
         }
     }
 

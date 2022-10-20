@@ -34,6 +34,20 @@ All notable changes to this project will be documented in this file. See [standa
 
 * **upgrade:** update sass, sass-loader and sass-bundle ([a9cbe07](https://github.com/ironSource/fusion-ui/commit/a9cbe07c35d21fa697485da46c722e178d82ef3d))
 
+### [3.7.1](https://github.com/ironSource/fusion-ui/compare/v3.7.1-rc.0...v3.7.1) (2022-10-20)
+
+### [3.7.1-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.7.0...v3.7.1-rc.0) (2022-10-19)
+
+
+### Bug Fixes
+
+* **isModalOpen:** fix modal closing ([ffb56b0](https://github.com/ironSource/fusion-ui/commit/ffb56b008cd033752734a0eb69642923b4b20af9))
+
+
+### CI
+
+* **fu-474:** change main ci workflow ([c7ee466](https://github.com/ironSource/fusion-ui/commit/c7ee466790c94313aafc6450a99516c49b8e4601))
+
 ## [3.7.0](https://github.com/ironSource/fusion-ui/compare/v3.7.0-rc.1...v3.7.0) (2022-10-12)
 
 
