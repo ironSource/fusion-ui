@@ -2,13 +2,6 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [5.0.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v3.7.1...v5.0.0-rc.0) (2022-10-26)
-
-
-### Features
-
-* **4.x.x:** changelog changes ([f75eb2b](https://github.com/ironSource/fusion-ui/commit/f75eb2b44334339654d3f5e42f30bbb96dbf486d))
-
 ## [4.0.0](https://github.com/ironSource/fusion-ui/compare/v3.6.0...v4.0.0) (2022-10-03)
 
 ## [4.0.0-rc.8](https://github.com/ironSource/fusion-ui/compare/v4.0.0-rc.7...v4.0.0-rc.8) (2022-10-02)
