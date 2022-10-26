@@ -2,20 +2,7 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [5.0.0](https://github.com/ironSource/fusion-ui/compare/v3.7.1...v5.0.0) (2022-10-26)
-
 ## [4.0.0](https://github.com/ironSource/fusion-ui/compare/v3.6.0...v4.0.0) (2022-10-03)
-
-## [4.0.0-rc.8](https://github.com/ironSource/fusion-ui/compare/v4.0.0-rc.7...v4.0.0-rc.8) (2022-10-02)
-
-## [4.0.0-rc.7](https://github.com/ironSource/fusion-ui/compare/v3.6.0-rc.2...v4.0.0-rc.7) (2022-10-02)
-
-## [4.0.0-rc.6](https://github.com/ironSource/fusion-ui/compare/v3.5.2-rc.5...v4.0.0-rc.6) (2022-09-21)
-
-## [4.0.0-rc.4](https://github.com/ironSource/fusion-ui/compare/v4.0.0-rc.3...v4.0.0-rc.4) (2022-09-19)
-
-## [4.0.0-rc.3](https://github.com/ironSource/fusion-ui/compare/v3.4.0-rc.11...v4.0.0-rc.3) (2022-09-19)
-
 
 ### Bug Fixes
 
