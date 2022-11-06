@@ -2,6 +2,57 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.0.1-rc.1](https://github.com/ironSource/fusion-ui/compare/v4.1.0...v5.0.1-rc.1) (2022-11-06)
+
+
+### Bug Fixes
+
+* **fu-479:** fix version ([6588103](https://github.com/ironSource/fusion-ui/commit/65881038775db9b36e2f7b4bf7e66c1eed490b6f))
+* **fu-479:** fix version ([9a91dd4](https://github.com/ironSource/fusion-ui/commit/9a91dd45320763a627860d9849e5c42fc767cab0))
+
+### [4.0.1-rc.3](https://github.com/ironSource/fusion-ui/compare/v3.7.1...v4.0.1-rc.3) (2022-10-20)
+
+### [4.0.1-rc.2](https://github.com/ironSource/fusion-ui/compare/v3.7.1-rc.0...v4.0.1-rc.2) (2022-10-19)
+
+### [4.0.1-rc.1](https://github.com/ironSource/fusion-ui/compare/v4.0.1-rc.0...v4.0.1-rc.1) (2022-10-18)
+
+
+### CI
+
+* **fu-479:** switch from standard-version to commit-and-tag-version ([29600de](https://github.com/ironSource/fusion-ui/commit/29600ded5b371220badefe4d92e2144e15aa21a5))
+* **fu-479:** switch from standard-version to commit-and-tag-version ([400f711](https://github.com/ironSource/fusion-ui/commit/400f711279ba2a80ee384736d8a1d7faf9afe919))
+
+### [4.0.1-rc.0](https://github.com/ironSource/fusion-ui/compare/v4.0.0-rc.9...v4.0.1-rc.0) (2022-10-18)
+
+
+### Bug Fixes
+
+* **fu-479:** check versioning ([89fe1c2](https://github.com/ironSource/fusion-ui/commit/89fe1c2df078c43cd8f78a0d91603566e15d063c))
+* **fu-479:** update changelog ([c5de3f2](https://github.com/ironSource/fusion-ui/commit/c5de3f206520435dd870327e94eca48b4fa1eaa2))
+
+
+### CI
+
+* **fu-479:** set version 4.0.1-rc.0 ([a0db7b5](https://github.com/ironSource/fusion-ui/commit/a0db7b57bfce26b2b566397d205d40881c95dab4))
+
+## [4.0.0-rc.9](https://github.com/ironSource/fusion-ui/compare/v3.7.0...v4.0.0-rc.9) (2022-10-18)
+
+
+### Bug Fixes
+
+* **fu-479:** fix version 5.0.0-rc.0 ([0d2d31d](https://github.com/ironSource/fusion-ui/commit/0d2d31d654132adca7d665830e598d8467628edc))
+
+
+### Code Refactoring
+
+* **fu-479:** capitalize pipe to standalone with providedIn:root ([0686271](https://github.com/ironSource/fusion-ui/commit/0686271faea6596fe2275e50ef3959640fa775aa))
+* **fu-479:** clone pipes to standalone ([5ae0161](https://github.com/ironSource/fusion-ui/commit/5ae016160b32a40ae04bcd5537cc10767a74e27b))
+* **fu-479:** collection pipes to standalone ([1e0cdca](https://github.com/ironSource/fusion-ui/commit/1e0cdcaae9b7936b69be77f4b37136122e74605c))
+* **fu-479:** generic pipe to standalone ([4445483](https://github.com/ironSource/fusion-ui/commit/444548321226f3a15d5f238918be8240c678d023))
+* **fu-479:** notAvailable pipe to standalone ([5b846a0](https://github.com/ironSource/fusion-ui/commit/5b846a0c535aa69c038d58bac25f23e1203ae67e))
+* **fu-479:** secondsToMinutes and shortNumberScaleSuffix pipes to standalone ([f8024a0](https://github.com/ironSource/fusion-ui/commit/f8024a0228216b4f9c27a2426be57655cd055bc2))
+* **fu-479:** truncate pipe to standalone ([a2410bb](https://github.com/ironSource/fusion-ui/commit/a2410bb9ba97c66e18c2e38be169b28cde71fd2e))
+
 ## [4.1.0](https://github.com/ironSource/fusion-ui/compare/v4.0.0...v4.1.0) (2022-10-26)
 
 ### Features
