@@ -21,6 +21,7 @@ import {WindowService} from '@ironsource/fusion-ui/services/window';
 import {ModalConfiguration} from './modal.entities';
 import {getDefaultCssUnit} from './modal-utils';
 import {takeUntil} from 'rxjs/operators';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Component({
     selector: 'fusion-modal',
@@ -40,14 +41,10 @@ export class ModalComponent implements OnDestroy, OnInit {
     @Input() submitPending = false; // state for submit pending
 
     @Input() set isModalOpen(value: boolean) {
-        if (value) {
+        if (!isNullOrUndefined(value)) {
             this.isClosed$.next(!value);
             this.modalOpenListener$.next(value);
         }
-    }
-
-    @Input() set forcedClose(value: boolean) {
-        this.forcedClosing$.next(value);
     }
 
     @Input() set configuration(config: ModalConfiguration) {
@@ -68,7 +65,6 @@ export class ModalComponent implements OnDestroy, OnInit {
     private _configuration = new BehaviorSubject<ModalConfiguration>(null);
     private isClosed$ = new BehaviorSubject<boolean>(false);
     private modalOpenListener$ = new BehaviorSubject<boolean>(false);
-    private forcedClosing$ = new BehaviorSubject<boolean>(false);
     private onDestroy$ = new Subject<void>();
 
     constructor(
@@ -125,7 +121,7 @@ export class ModalComponent implements OnDestroy, OnInit {
                 }
             });
 
-        this.forcedClosing$
+        this.isClosed$
             .asObservable()
             .pipe(takeUntil(this.onDestroy$))
             .subscribe((val: boolean) => {
