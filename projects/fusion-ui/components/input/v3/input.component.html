@@ -19,6 +19,14 @@
             <fusion-icon [name]="config?.icon?.[1]?.iconData"></fusion-icon>
         </i>
 
+        <span class="fu-input-units {{ config?.unitPos }} {{ config.options?.size }}"
+              *ngIf="config?.units"
+              [class.focused]="focused"
+              [class.fu-error]="config.error"
+              [class.is-placeholder-units]="config?.unitPlaceholder && !inputControl.value">
+                    {{ config?.units }}
+        </span>
+
         <i class="fu-validation-icon-holder"
            *ngIf="config?.errorType && showErrorIcon && !loading"
            [fusionTooltip]="getTooltipErrorsMessage()">
@@ -40,6 +48,7 @@
                autocomplete="off"
                minlength="1"
                [class.fu-type-pass]="config?.type === 'password'"
+               [class.has-units]="config?.units"
                [class.disabled]="disabled$ | async"
                [class.iconed]="config?.icon || loading"
                [class.fu-error]="showErrorClass$ | async"
