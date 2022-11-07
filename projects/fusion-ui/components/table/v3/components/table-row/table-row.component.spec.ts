@@ -7,8 +7,8 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TableService} from '@ironsource/fusion-ui/components/table/common/services';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {By} from '@angular/platform-browser';
-import {NotAvailableModule} from '@ironsource/fusion-ui/pipes/not-available';
-import {GenericPipeModule} from '@ironsource/fusion-ui/pipes/generic';
+import {NotAvailablePipe} from '@ironsource/fusion-ui/pipes/not-available';
+import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 
 // do dummy component - holder
 @Component({
@@ -48,7 +48,7 @@ describe('TableRowComponent', () => {
         TestBed.configureTestingModule({
             schemas: [CUSTOM_ELEMENTS_SCHEMA],
             declarations: [TestTableRowComponent, TableRowComponent, TableCellComponent],
-            imports: [IconModule, TooltipModule, NotAvailableModule, GenericPipeModule],
+            imports: [IconModule, TooltipModule, NotAvailablePipe, GenericPipe],
             providers: [TableService, LogService]
         });
 

@@ -8,6 +8,7 @@ import {ExampleBlockModule} from '../../../components/example-block/example-bloc
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Router} from '@angular/router';
+import {ClonePipe} from "@ironsource/fusion-ui/pipes/clone";
 
 class RouterStub {
     url = '';
@@ -22,7 +23,7 @@ describe('ChartDocsComponent', () => {
         TestBed.configureTestingModule({
             imports: [DocsMenuModule, CodeBlockModule, ExampleBlockModule, ChartModule, ChartLabelsModule, RouterTestingModule],
             declarations: [ChartDocsComponent],
-            providers: [{provide: Router, useClass: RouterStub}]
+            providers: [{provide: Router, useClass: RouterStub}, ClonePipe]
         }).compileComponents();
     }));
 

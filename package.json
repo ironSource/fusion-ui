@@ -1,6 +1,6 @@
 {
   "name": "fusion-ui",
-  "version": "4.1.0",
+  "version": "5.0.1",
   "description": "UI library created by ironSource",
   "license": "MIT",
   "repository": {
@@ -26,7 +26,7 @@
     "prettier": "prettier",
     "build:mfe:dev": "ng build fusion-mfe -c dev",
     "build:mfe": "ng build fusion-mfe",
-    "release": "standard-version"
+    "release": "commit-and-tag-version"
   },
   "lint-staged": {
     "**/*{.ts,.json}": "prettier --config ./prettier.config.js --write"
@@ -69,6 +69,7 @@
     "@types/node": "~12.7.12",
     "@typescript-eslint/eslint-plugin": "4.23.0",
     "@typescript-eslint/parser": "4.23.0",
+    "commit-and-tag-version": "^10.1.0",
     "concurrently": "^5.3.0",
     "eslint": "^7.28.0",
     "husky": "^7.0.4",
@@ -87,7 +88,6 @@
     "sass": "^1.54.5",
     "sass-loader": "^13.0.2",
     "scss-bundle": "^3.1.2",
-    "standard-version": "^9.3.2",
     "ts-node": "^7.0.1",
     "typescript": "4.8.2",
     "watch": "^0.13.0"

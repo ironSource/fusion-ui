@@ -28,9 +28,9 @@ import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside
 import {MultiDropdownModule} from '@ironsource/fusion-ui/components/multi-dropdown/v2';
 import {InputInlineModule} from '@ironsource/fusion-ui/components/input-inline/v2';
 import {LoadMoreModule} from '@ironsource/fusion-ui/directives/load-more';
-import {GenericPipeModule} from '@ironsource/fusion-ui/pipes/generic';
+import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 import {ErrorMessageModule} from '@ironsource/fusion-ui/components/error-message/v3';
-import {NotAvailableModule} from '@ironsource/fusion-ui/pipes/not-available';
+import {NotAvailablePipe} from '@ironsource/fusion-ui/pipes/not-available';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button/v3';
 
 @NgModule({
@@ -60,10 +60,10 @@ import {ButtonModule} from '@ironsource/fusion-ui/components/button/v3';
         ToggleModule,
         ClickOutsideModule,
         ReactiveFormsModule,
-        GenericPipeModule,
+        GenericPipe,
         LoadMoreModule,
         ErrorMessageModule,
-        NotAvailableModule,
+        NotAvailablePipe,
         ButtonModule
     ]
 })

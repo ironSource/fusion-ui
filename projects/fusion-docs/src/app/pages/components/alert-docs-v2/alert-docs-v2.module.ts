@@ -8,6 +8,7 @@ import {CodeBlockModule} from '../../../components/code-block/code-block.module'
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {AlertModule} from '@ironsource/fusion-ui/components/alert/v2';
 import {FileCsvUploadModule} from '@ironsource/fusion-ui/components/file-csv-upload';
+import {CapitalizePipe, TruncatePipe} from '@ironsource/fusion-ui//pipes/string';
 
 const routes: Routes = [{path: '', component: AlertDocsV2Component}];
 
@@ -21,7 +22,9 @@ const routes: Routes = [{path: '', component: AlertDocsV2Component}];
         CodeBlockModule,
         DocsMenuModule,
         AlertModule,
-        FileCsvUploadModule
+        FileCsvUploadModule,
+        CapitalizePipe,
+        TruncatePipe
     ]
 })
 export class AlertDocsV2Module {}
