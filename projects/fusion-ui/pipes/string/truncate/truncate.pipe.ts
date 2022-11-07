@@ -1,7 +1,11 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import {Injectable, Pipe, PipeTransform} from '@angular/core';
 
+@Injectable({
+    providedIn: 'root'
+})
 @Pipe({
-    name: 'truncate'
+    name: 'truncate',
+    standalone: true
 })
 export class TruncatePipe implements PipeTransform {
     transform(value: string, limit: number = 10, trail = '…'): string {

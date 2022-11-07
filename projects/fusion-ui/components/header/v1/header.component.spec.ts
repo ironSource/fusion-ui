@@ -3,10 +3,10 @@ import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {HeaderComponent} from './header.component';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components/v1';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
-import {TruncateModule} from '@ironsource/fusion-ui/pipes/string';
 import {RouterModule} from '@angular/router';
 import {Observable, of} from 'rxjs';
 import {ApiService} from '@ironsource/fusion-ui/services/api';
+import {TruncatePipe} from "@ironsource/fusion-ui/pipes/string";
 
 // Mocking
 class MockApiService {
@@ -22,7 +22,7 @@ describe('HeaderComponent', () => {
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [HeaderComponent],
-            imports: [DynamicComponentsModule, IconModule, TruncateModule, RouterModule],
+            imports: [DynamicComponentsModule, IconModule, RouterModule, TruncatePipe],
             providers: [{provide: ApiService, useClass: MockApiService}]
         }).compileComponents();
     }));

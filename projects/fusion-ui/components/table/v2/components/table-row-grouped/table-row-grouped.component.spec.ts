@@ -17,8 +17,8 @@ import {TableCellComponent} from '../table-cell/table-cell.component';
 import {TableEmptyComponent} from '../table-empty/table-empty.component';
 import {TableLoadingComponent} from '../table-loading/table-loading.component';
 import {TableRowComponent} from '../table-row/table-row.component';
-import {NotAvailableModule} from '@ironsource/fusion-ui/pipes/not-available';
-import {GenericPipeModule} from '@ironsource/fusion-ui/pipes/generic';
+import {NotAvailablePipe} from '@ironsource/fusion-ui/pipes/not-available';
+import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 import {MultiDropdownModule} from '@ironsource/fusion-ui/components/multi-dropdown/v1';
 
 describe('TableRowGroupedComponent', () => {
@@ -41,8 +41,8 @@ describe('TableRowGroupedComponent', () => {
                 ToggleModule,
                 ClickOutsideModule,
                 ReactiveFormsModule,
-                NotAvailableModule,
-                GenericPipeModule
+                NotAvailablePipe,
+                GenericPipe
             ],
             declarations: [TableRowGroupedComponent, TableCellComponent, TableEmptyComponent, TableLoadingComponent, TableRowComponent],
             providers: [TableService]

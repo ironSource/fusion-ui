@@ -6,14 +6,12 @@ import {InputModule} from '@ironsource/fusion-ui/components/input';
 import {FlagModule} from '@ironsource/fusion-ui/components/flag/v1';
 import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox/v1';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
-import {FilterByFieldModule} from '@ironsource/fusion-ui/pipes/collection';
-import {CloneModule} from '@ironsource/fusion-ui/pipes/clone';
+import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
+import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v1';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components/v1';
 import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
-import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
-import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {MockLogService, MockUniqueIdService, MockApiService} from '@ironsource/fusion-ui/services/mocks';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
@@ -65,8 +63,8 @@ describe('DropdownComponent', () => {
                 FlagModule,
                 CheckboxModule,
                 ClickOutsideModule,
-                FilterByFieldModule,
-                CloneModule,
+                FilterByFieldPipe,
+                ClonePipe,
                 TooltipModule,
                 DynamicComponentsModule,
                 DropdownLoaderModule,

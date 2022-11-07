@@ -19,8 +19,8 @@ import {TableEmptyComponent} from '../table-empty/table-empty.component';
 import {TableLoadingComponent} from '../table-loading/table-loading.component';
 import {TableRowComponent} from '../table-row/table-row.component';
 import {TableRowGroupedComponent} from '../table-row-grouped/table-row-grouped.component';
-import {NotAvailableModule} from '@ironsource/fusion-ui/pipes/not-available';
-import {GenericPipeModule} from '@ironsource/fusion-ui/pipes/generic';
+import {NotAvailablePipe} from '@ironsource/fusion-ui/pipes/not-available';
+import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 
 describe('TableGroupedComponent', () => {
     let component: TableGroupedComponent;
@@ -42,8 +42,8 @@ describe('TableGroupedComponent', () => {
                 ToggleModule,
                 ClickOutsideModule,
                 ReactiveFormsModule,
-                NotAvailableModule,
-                GenericPipeModule
+                NotAvailablePipe,
+                GenericPipe
             ],
             declarations: [
                 TableGroupedComponent,

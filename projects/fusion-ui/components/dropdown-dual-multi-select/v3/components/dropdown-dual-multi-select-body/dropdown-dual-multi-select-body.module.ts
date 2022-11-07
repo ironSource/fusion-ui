@@ -9,7 +9,7 @@ import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v3';
 import {LoaderInlineModule} from '@ironsource/fusion-ui/components/loader-inline/v2';
 import {DropdownDualMultiSelectLoadingModule} from '../dropdown-dual-multi-select-loading/dropdown-dual-multi-select-loading.module';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components/v1';
-import {GetObjectLengthModule} from '@ironsource/fusion-ui/pipes/collection';
+import {GetObjectLengthPipe} from '@ironsource/fusion-ui/pipes/collection';
 
 @NgModule({
     declarations: [DropdownDualMultiSelectBodyComponent, DropdownDualMultiSelectBodyItemComponent],
@@ -23,7 +23,7 @@ import {GetObjectLengthModule} from '@ironsource/fusion-ui/pipes/collection';
         LoaderInlineModule,
         DropdownDualMultiSelectLoadingModule,
         DynamicComponentsModule,
-        GetObjectLengthModule
+        GetObjectLengthPipe
     ]
 })
 export class DropdownDualMultiSelectBodyModule {}
