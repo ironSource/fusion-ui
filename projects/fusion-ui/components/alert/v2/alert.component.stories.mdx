@@ -1,9 +1,9 @@
-import {Canvas, Meta, Story } from '@storybook/addon-docs';
+import {Canvas, Meta, Story} from '@storybook/addon-docs';
 import {moduleMetadata} from '@storybook/angular';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {SvgModule} from "../../svg";
 import {IconModule} from "../../icon/v1";
-import { AlertComponent } from './alert.component.ts';
+import {AlertComponent} from './alert.component.ts';
 
 <Meta title="FusionUI/v2/Alert"
       component={AlertComponent}
@@ -12,7 +12,7 @@ import { AlertComponent } from './alert.component.ts';
               declarations: [AlertComponent],
               imports: [CommonModule, SvgModule.forRoot({assetsPath: 'https://fusion.ironsrc.net/assets'}), IconModule]
           })
-      ]}
+          ]}
 />
 
 # Alert
