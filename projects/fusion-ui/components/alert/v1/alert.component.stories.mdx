@@ -1,23 +1,29 @@
-import { Meta, Story } from '@storybook/addon-docs';
+import {Canvas, Meta, Story } from '@storybook/addon-docs';
 import {moduleMetadata} from '@storybook/angular';
 import { CommonModule } from '@angular/common';
+import {SvgModule} from "../../svg";
 import {IconModule} from "../../icon/v1";
 import { AlertComponent } from './alert.component.ts';
 
-<Meta title="FusionUI/Alert"
+<Meta title="FusionUI/v1/Alert"
       component={AlertComponent}
       decorators={[
           moduleMetadata({
               declarations: [AlertComponent],
-              imports: [CommonModule, IconModule]
+              imports: [CommonModule, SvgModule.forRoot({assetsPath: 'https://fusion.ironsrc.net/assets'}), IconModule]
           })
       ]}
 />
 
-<Story name="Primary">
-    {{
-        props: {
-            type: 'warning'
-        },
-    }}
-</Story>
+# Alert
+
+Docs will go here
+
+<Canvas>
+    <Story name="Primary">
+        {{
+            props: {},
+            template: `<fusion-alert><strong>Heads up!</strong> This alert needs your attention, but it’s not super important </fusion-alert>`
+        }}
+    </Story>
+</Canvas>
