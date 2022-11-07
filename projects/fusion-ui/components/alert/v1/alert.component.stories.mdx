@@ -1,0 +1,23 @@
+import { Meta, Story } from '@storybook/addon-docs';
+import {moduleMetadata} from '@storybook/angular';
+import { CommonModule } from '@angular/common';
+import {IconModule} from "../../icon/v1";
+import { AlertComponent } from './alert.component.ts';
+
+<Meta title="FusionUI/Alert"
+      component={AlertComponent}
+      decorators={[
+          moduleMetadata({
+              declarations: [AlertComponent],
+              imports: [CommonModule, IconModule]
+          })
+      ]}
+/>
+
+<Story name="Primary">
+    {{
+        props: {
+            type: 'warning'
+        },
+    }}
+</Story>
