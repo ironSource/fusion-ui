@@ -1,5 +1,6 @@
-import {Canvas, Meta, Story} from '@storybook/addon-docs';
+import {Canvas, Meta, Story, Description, Source} from '@storybook/addon-docs';
 import {moduleMetadata} from '@storybook/angular';
+import {dedent} from 'ts-dedent';
 import {CommonModule} from '@angular/common';
 import {environment} from "/stories/environments/environment";
 import {SvgModule} from "../../svg";
@@ -20,23 +21,33 @@ import {AlertComponent} from './alert.component.ts';
               control: { type: 'radio' }
           },
           mode: {
-              options: ['basic', 'header', 'fc-header', 'large'],
-              control: { type: 'radio' }
+              control: false
           }
       }}
 />
 
 export const Template = (args) => ({
     props: args,
-    template: `<fusion-alert [type]="type" [mode]="mode" [showCloseButton]="showCloseButton"><strong>Heads up!</strong> This alert content example.</fusion-alert>`
+    template: `<fusion-alert [type]="type" [showCloseButton]="showCloseButton"><strong>Heads up!</strong> This alert content example.</fusion-alert>`
 });
 
+<Description markdown={dedent`
 # Alert
+Some alert component description
+`} />
 
-Docs will go here
+## Usage
+
+<Source code={dedent`
+xx
+`} />
+
 
 <Canvas>
-    <Story name="Primary">
+    <Story
+        name="Primary"
+    >
         { Template.bind({})}
     </Story>
 </Canvas>
+
