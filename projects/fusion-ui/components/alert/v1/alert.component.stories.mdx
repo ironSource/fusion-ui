@@ -13,8 +13,24 @@ import {AlertComponent} from './alert.component.ts';
               declarations: [AlertComponent],
               imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule]
           })
-          ]}
+      ]}
+      argTypes={{
+          type: {
+              options: ['info', 'success', 'warning', 'error'],
+              control: { type: 'radio' }
+          },
+          mode: {
+              options: ['basic', 'header', 'fc-header', 'large'],
+              control: { type: 'radio' }
+          }
+      }}
 />
+
+export const Template = (args) => ({
+    props: args,
+    template: `<fusion-alert [type]="type" [mode]="mode" [showCloseButton]="showCloseButton"><strong>Heads up!</strong> This alert content example.</fusion-alert>`
+});
+
 
 # Alert
 
@@ -22,9 +38,6 @@ Docs will go here
 
 <Canvas>
     <Story name="Primary">
-        {{
-            props: {},
-            template: `<fusion-alert><strong>Heads up!</strong> This alert needs your attention, but it’s not super important </fusion-alert>`
-        }}
+        { Template.bind({})}
     </Story>
 </Canvas>
