@@ -16,6 +16,11 @@ export default {
         })
     ],
     argTypes: {
+        type: {
+            options: ['info', 'success', 'warning', 'error'],
+            control: {type: 'select'},
+            defaultValue: 'info'
+        },
         mode: {
             control: false
         }
@@ -50,3 +55,25 @@ Error.args = {
 };
 
 export const Small = AlertSmallTemplate.bind({});
+export const SmallSuccess = AlertSmallTemplate.bind({});
+SmallSuccess.args = {
+    type: 'success'
+};
+export const SmallWarning = AlertSmallTemplate.bind({});
+SmallWarning.args = {
+    type: 'warning'
+};
+export const SmallError = AlertSmallTemplate.bind({});
+SmallError.args = {
+    type: 'error'
+};
+
+export const NoCloseButton = AlertTemplate.bind({});
+NoCloseButton.args = {
+    showCloseButton: false
+};
+
+export const NotShowAgainButton = AlertTemplate.bind({});
+NotShowAgainButton.args = {
+    showDoNotShowAgainButton: true
+};
