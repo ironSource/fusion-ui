@@ -20,11 +20,16 @@ export default {
             control: false
         }
     }
-} as Meta;
+} as Meta<AlertComponent>;
 
 const AlertTemplate: Story<AlertComponent> = (args: AlertComponent) => ({
     props: args,
     template: `<fusion-alert [type]="type" [showCloseButton]="showCloseButton" [showDoNotShowAgainButton]="showDoNotShowAgainButton"><strong>Heads up!</strong> This alert content example. </fusion-alert>`
+});
+
+const AlertSmallTemplate: Story<AlertComponent> = (args: AlertComponent) => ({
+    props: args,
+    template: `<fusion-alert class="small" [type]="type" [showCloseButton]="showCloseButton" [showDoNotShowAgainButton]="showDoNotShowAgainButton"><strong>Heads up!</strong> This alert content example. </fusion-alert>`
 });
 
 export const Default = AlertTemplate.bind({});
@@ -44,5 +49,4 @@ Error.args = {
     type: 'error'
 };
 
-export const Small = AlertTemplate.bind({});
-Small.template = `<fusion-alert class="small" [type]="type" [showCloseButton]="showCloseButton" [showDoNotShowAgainButton]="showDoNotShowAgainButton"><strong>Heads up!</strong> This alert content example. </fusion-alert>`;
+export const Small = AlertSmallTemplate.bind({});
