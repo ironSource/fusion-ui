@@ -1,4 +1,4 @@
-import {Canvas, Meta, Story, Description, Source} from '@storybook/addon-docs';
+import {Canvas, Meta, Story, Description, Source, ArgsTable} from '@storybook/addon-docs';
 import {moduleMetadata} from '@storybook/angular';
 import {dedent} from 'ts-dedent';
 import {CommonModule} from '@angular/common';
@@ -7,47 +7,44 @@ import {SvgModule} from "../../svg";
 import {IconModule} from "../../icon/v1";
 import {AlertComponent} from './alert.component.ts';
 
-<Meta title="FusionUI/Components/Alert/V2"
-      component={AlertComponent}
-      decorators={[
-          moduleMetadata({
-              declarations: [AlertComponent],
-              imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule]
-          }),
-      ]}
-      argTypes={{
-          type: {
-              options: ['info', 'success', 'warning', 'error'],
-              control: { type: 'radio' }
-          },
-          mode: {
-              control: false
-          }
-      }}
-/>
-
-export const Template = (args) => ({
-    props: args,
-    template: `<fusion-alert [type]="type" [showCloseButton]="showCloseButton"><strong>Heads up!</strong> This alert content example.</fusion-alert>`
-});
+<Meta title="Components/Alert/All"/>
 
 <Description markdown={dedent`
 # Alert
 Some alert component description
-`} />
+`}/>
 
 ## Usage
+<Source language="html"
+        code={dedent`
+<fusion-alert [type]="type" [showCloseButton]="showCloseButton" [showDoNotShowAgainButton]="showDoNotShowAgainButton">
+    <strong>Heads up!</strong> This alert content example.
+</fusion-alert>
+`}/>
 
-<Source code={dedent`
-xx
-`} />
-
-
+### Default
 <Canvas>
-    <Story
-        name="Primary"
-    >
-        { Template.bind({})}
-    </Story>
+    <Story id="components-alert--default" />
 </Canvas>
 
+### Success
+<Canvas>
+    <Story id="components-alert--success" />
+</Canvas>
+
+### Warning
+<Canvas>
+    <Story id="components-alert--warning" />
+</Canvas>
+
+### Error
+<Canvas>
+    <Story id="components-alert--error" />
+</Canvas>
+
+### Small
+<Canvas>
+    <Story id="components-alert--small" />
+</Canvas>
+
+<ArgsTable of={AlertComponent}  />
