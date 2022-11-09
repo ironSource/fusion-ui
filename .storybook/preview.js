@@ -12,11 +12,17 @@ export const parameters = {
         }
     },
     docs: {inlineStories: true},
+/*
+    options: {
+        storySort: (a, b) =>
+            a[1].kind === b[1].kind ? 0 : a[1].id.localeCompare(b[1].id, undefined, { numeric: true }),
+    },
+*/
+/*
     options: {
         storySort: {
-            locales: 'en-US',
-            method: 'alphabetical',
-            order: ['Introduction', 'Components', 'Alert', ['All', '*']]
+            order: ['Introduction', 'Components', 'Alert', ['All', 'Default', 'Success', '*']]
         }
     }
+*/
 };
