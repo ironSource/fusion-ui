@@ -101,6 +101,18 @@ Button
 </fusion-button>`
 });
 
+const ButtonIconOnlyTemplate: Story<ButtonComponent> = (args: ButtonComponent) => ({
+    props: args,
+    template: `<fusion-button
+class="{{class_size}} {{class_theme}}"
+[class.fu-icon-right]="class_icon_right"
+[class.transparent]="class_transparent"
+[icon]="icon"
+[disabled]="disabled"
+[loading]="loading"
+[link]="link"></fusion-button>`
+});
+
 export const Default = ButtonTemplate.bind({});
 export const Loading = ButtonTemplate.bind({});
 Loading.args = {loading: true};
@@ -119,9 +131,11 @@ SizeLarge.args = {class_size: 'large'};
 export const IconLeft = ButtonTemplate.bind({});
 IconLeft.args = {icon: 'frame'};
 export const IconRight = ButtonTemplate.bind({});
-IconRight.args = {icon: 'frame', class_icon_right: true};
+IconRight.args = {icon: 'frame', class_icon_right: true, button_label: 'Button'};
 // endregion
 
+export const IconOnly = ButtonIconOnlyTemplate.bind({});
+IconOnly.args = {icon: 'frame'};
 // region Theme
 export const ThemePrimary = ButtonTemplate.bind({});
 export const ThemeSecondary = ButtonTemplate.bind({});
@@ -144,7 +158,7 @@ export const VariantBorder = ButtonTemplate.bind({});
 VariantBorder.args = {class_transparent: true};
 export const VariantGhost = ButtonTemplate.bind({});
 VariantGhost.parameters = {backgrounds: {default: 'dark'}};
-VariantGhost.args = {class_ghost: true};
+VariantGhost.args = {class_ghost: true, class_transparent: true};
 export const VariantLink = ButtonTemplate.bind({});
 VariantLink.args = {link: true};
 // endregion
