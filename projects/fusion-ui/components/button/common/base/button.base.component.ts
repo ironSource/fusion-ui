@@ -17,18 +17,34 @@ import {takeUntil} from 'rxjs/operators';
 
 @Directive()
 export abstract class ButtonBaseComponent implements OnInit, OnDestroy {
+    /** @internal */
     @HostListener('click', ['$event']) onClick($event: any) {
         this.onclick.emit($event);
     }
+
+    /**
+     * Add button icon (IconData = string | Icon)
+     * @param value
+     */
     @Input() set icon(value: IconData) {
         this.iconData = value;
         this.iconName = typeof this.iconData === 'string' ? this.iconData : this.iconData.iconName;
         this.setIconState(!!this.iconName);
     }
+
+    /**
+     * Set disable state
+     * @param value
+     */
     @Input() set disabled(value: boolean) {
         this.isDisabled = value;
         this.setDisableState(value);
     }
+
+    /**
+     * Set loading state
+     * @param value
+     */
     @Input() set loading(value: boolean) {
         this.isLoading$.next(value);
     }
@@ -37,6 +53,10 @@ export abstract class ButtonBaseComponent implements OnInit, OnDestroy {
         return this.isLoading$.getValue();
     }
 
+    /**
+     * Set button as link
+     * @param value
+     */
     @Input() set link(value: boolean) {
         this.isLink = value;
         this.setLinkButtonState(this.isLink);

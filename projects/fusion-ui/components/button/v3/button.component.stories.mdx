@@ -7,16 +7,30 @@ import {ButtonComponent} from "./button.component";
 
 <Description markdown={dedent`
 # Button
-Some alert component description
+Buttons are calls-to-action used to prompt users. They encourage users to interact with us in multiple ways throughout our galaxy, based on what the label of the button indicates. Buttons are clickable elements with label text that describe the action that will happen when the users interact with it.
 `}/>
 
 ## Usage
+
 <Source language="html"
-        code={dedent`<fusion-button>Label</fusion-button>`}/>
+        code={dedent`<fusion-button [icon]="icon" [disabled]="disabled" [loading]="loading" [link]="link">label</fusion-button>`}/>
 
 ### Default
 <Canvas>
     <Story id="components-button--default" />
 </Canvas>
+
+### Loading
+<Canvas>
+    <Story id="components-button--loading" />
+</Canvas>
+
+### Disabled
+<Canvas>
+    <Story id="components-button--disabled" />
+</Canvas>
+
+### Sizes
+
 
 <ArgsTable of={ButtonComponent}  />
