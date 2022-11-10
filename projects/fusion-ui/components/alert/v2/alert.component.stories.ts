@@ -2,8 +2,8 @@ import {Story, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {environment} from 'stories/environments/environment';
-import {SvgModule} from '../../svg';
-import {IconModule} from '../../icon/v1';
+import {SvgModule} from '@ironsource/fusion-ui/components/svg';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {AlertComponent} from './alert.component';
 
 export default {

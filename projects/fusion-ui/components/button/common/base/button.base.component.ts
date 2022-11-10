@@ -44,9 +44,13 @@ export abstract class ButtonBaseComponent implements OnInit, OnDestroy {
 
     @Output() onclick = new EventEmitter();
 
+    /** @internal */
     projectContent: boolean;
+    /** @internal */
     isLink: boolean;
+    /** @internal */
     iconName: string;
+    /** @internal */
     iconData: IconData;
     private isLoading$ = new BehaviorSubject<boolean>(false);
     private isDisabled: boolean;
