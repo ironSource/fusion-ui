@@ -29,12 +29,12 @@ export default {
 
 const AlertTemplate: Story<AlertComponent> = (args: AlertComponent) => ({
     props: args,
-    template: `<fusion-alert [type]="type" [showCloseButton]="showCloseButton" [showDoNotShowAgainButton]="showDoNotShowAgainButton"><strong>Heads up!</strong> This alert content example. </fusion-alert>`
+    template: `<fusion-alert [type]="type" [showCloseButton]="showCloseButton" [showDoNotShowAgainButton]="showDoNotShowAgainButton"><strong>Heads up!</strong> This alert content example.</fusion-alert>`
 });
 
 const AlertSmallTemplate: Story<AlertComponent> = (args: AlertComponent) => ({
     props: args,
-    template: `<fusion-alert class="small" [type]="type" [showCloseButton]="showCloseButton" [showDoNotShowAgainButton]="showDoNotShowAgainButton"><strong>Heads up!</strong> This alert content example. </fusion-alert>`
+    template: `<fusion-alert class="small" [type]="type" [showCloseButton]="showCloseButton" [showDoNotShowAgainButton]="showDoNotShowAgainButton"><strong>Heads up!</strong> This alert content example. &nbsp;</fusion-alert>`
 });
 
 export const Default = AlertTemplate.bind({});

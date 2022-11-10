@@ -13,24 +13,92 @@ Buttons are calls-to-action used to prompt users. They encourage users to intera
 ## Usage
 
 <Source language="html"
-        code={dedent`<fusion-button [icon]="icon" [disabled]="disabled" [loading]="loading" [link]="link">label</fusion-button>`}/>
+        code={dedent`<fusion-button
+    [ngClass]="{small: small, large: large, 'fu-icon-right':iconPositionRight}"
+    [icon]="icon"
+    [disabled]="disabled"
+    [loading]="loading"
+    [link]="link">label
+</fusion-button>
+`}/>
 
 ### Default
 <Canvas>
-    <Story id="components-button--default" />
+    <Story id="components-button--default"/>
 </Canvas>
 
 ### Loading
 <Canvas>
-    <Story id="components-button--loading" />
+    <Story id="components-button--loading"/>
 </Canvas>
 
 ### Disabled
 <Canvas>
-    <Story id="components-button--disabled" />
+    <Story id="components-button--disabled"/>
 </Canvas>
 
 ### Sizes
+<Canvas>
+    <div style={{display: "flex", flexDirection: "row", alignItems: "center", gap: "20px"}}>
+        <Story id="components-button--size-small"/>
+        <Story id="components-button--size-medium"/>
+        <Story id="components-button--size-large"/>
+    </div>
+</Canvas>
+
+### Icons
+<Canvas>
+    <div style={{display: "flex", flexDirection: "row", alignItems: "center", gap: "20px"}}>
+        <Story id="components-button--icon"/>
+        <Story id="components-button--icon-right"/>
+    </div>
+</Canvas>
+
+### Variants
+<Canvas>
+    <div style={{display: "flex", flexDirection: "row", alignItems: "flex-start", gap: "20px"}}>
+        <div>
+            <p className="font-bodySmallStrong" style={{textAlign: "center"}}>Solid</p>
+            <Story id="components-button--variant-solid"/>
+        </div>
+        <div>
+            <p className="font-bodySmallStrong" style={{textAlign: "center"}}>Border</p>
+            <Story id="components-button--variant-border"/>
+        </div>
+        <div>
+            <p className="font-bodySmallStrong" style={{textAlign: "center"}}>Ghost</p>
+            <div style={{backgroundColor: '#53575B', padding: '5px'}}>
+                <Story id="components-button--variant-ghost"/>
+            </div>
+        </div>
+        <div>
+            <p className="font-bodySmallStrong" style={{textAlign: "center"}}>Link</p>
+            <Story id="components-button--variant-link"/>
+        </div>
+    </div>
+</Canvas>
+
+### Themes
+<Canvas>
+    <div style={{display: "flex", flexDirection: "row", alignItems: "center", gap: "20px"}}>
+        <div>
+            <p className="font-bodySmallStrong" style={{textAlign: "center"}}>Primary</p>
+            <Story id="components-button--theme-primary"/>
+        </div>
+        <div>
+            <p className="font-bodySmallStrong" style={{textAlign: "center"}}>Secondary</p>
+            <Story id="components-button--theme-secondary"/>
+        </div>
+        <div>
+            <p className="font-bodySmallStrong" style={{textAlign: "center"}}>Third</p>
+            <Story id="components-button--theme-third"/>
+        </div>
+        <div>
+            <p className="font-bodySmallStrong" style={{textAlign: "center"}}>Danger</p>
+            <Story id="components-button--theme-danger"/>
+        </div>
+    </div>
+</Canvas>
 
 
-<ArgsTable of={ButtonComponent}  />
+<ArgsTable of={ButtonComponent}/>
