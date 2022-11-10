@@ -93,7 +93,6 @@ const ButtonTemplate: Story<ButtonComponent> = (args: ButtonComponent) => ({
 class="{{class_size}} {{class_theme}}"
 [class.fu-icon-right]="class_icon_right"
 [class.transparent]="class_transparent"
-[ngClass]="{transparent: class_ghost, secondary: class_ghost, dark: class_ghost}"
 [icon]="icon"
 [disabled]="disabled"
 [loading]="loading"
@@ -108,17 +107,22 @@ Loading.args = {loading: true};
 export const Disabled = ButtonTemplate.bind({});
 Disabled.args = {disabled: true};
 
+// region Sizes
 export const SizeSmall = ButtonTemplate.bind({});
 SizeSmall.args = {class_size: 'small'};
 export const SizeMedium = ButtonTemplate.bind({});
 export const SizeLarge = ButtonTemplate.bind({});
 SizeLarge.args = {class_size: 'large'};
+// endregion
 
-export const Icon = ButtonTemplate.bind({});
-Icon.args = {icon: 'frame'};
+// region Icon
+export const IconLeft = ButtonTemplate.bind({});
+IconLeft.args = {icon: 'frame'};
 export const IconRight = ButtonTemplate.bind({});
 IconRight.args = {icon: 'frame', class_icon_right: true};
+// endregion
 
+// region Theme
 export const ThemePrimary = ButtonTemplate.bind({});
 export const ThemeSecondary = ButtonTemplate.bind({});
 ThemeSecondary.args = {
@@ -132,16 +136,15 @@ export const ThemeDanger = ButtonTemplate.bind({});
 ThemeDanger.args = {
     class_theme: 'danger'
 };
+// endregion
 
+// region Variant
 export const VariantSolid = ButtonTemplate.bind({});
 export const VariantBorder = ButtonTemplate.bind({});
 VariantBorder.args = {class_transparent: true};
 export const VariantGhost = ButtonTemplate.bind({});
-VariantGhost.parameters = {
-    backgrounds: {default: 'dark'}
-};
-VariantGhost.args = {
-    class_ghost: true
-};
+VariantGhost.parameters = {backgrounds: {default: 'dark'}};
+VariantGhost.args = {class_ghost: true};
 export const VariantLink = ButtonTemplate.bind({});
 VariantLink.args = {link: true};
+// endregion
