@@ -5,6 +5,6 @@
         "allowSyntheticDefaultImports": true
     },
     "exclude": ["../projects/**/*.spec.ts"],
-    "include": ["../projects/fusion-ui/**/*"],
+    "include": ["../projects/fusion-ui/components/**/*"],
     "files": ["./typings.d.ts"]
 }

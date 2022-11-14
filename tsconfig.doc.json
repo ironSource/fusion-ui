@@ -4,7 +4,7 @@
         "outDir": "./dist/doc",
         "types": []
     },
-    "include": ["projects/fusion-ui/**/*"],
+    "include": ["projects/fusion-ui/components/**/*"],
     "exclude": [
         "projects/fusion-ui/**/*.spec.ts",
         /* ignore base for switcher */

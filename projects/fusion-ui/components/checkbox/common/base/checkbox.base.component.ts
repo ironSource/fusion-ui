@@ -7,7 +7,9 @@ import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 @Directive()
 export abstract class CheckboxBaseComponent implements OnInit, ControlValueAccessor {
     @Input() label: string;
+    /** @internal */
     @Input() name: string;
+    /** @internal */
     @Input() value: string;
     @Input() icon: IconData;
     @Input() flag: string;
@@ -17,9 +19,12 @@ export abstract class CheckboxBaseComponent implements OnInit, ControlValueAcces
     @Input() id: string;
     @Input() class: string;
     @Input() backgroundColor: string;
+    /** @internal */
     @Input() tooltipContent: string;
+    /** @internal */
     @Input() tooltipWidth: number;
     @Output() changed = new EventEmitter();
+    /** @internal */
     @HostBinding('class.only-checkbox') isOnlyCheckbox = false;
 
     get toolTip(): string {
@@ -38,6 +43,7 @@ export abstract class CheckboxBaseComponent implements OnInit, ControlValueAcces
         this.isOnlyCheckbox = !this.label && !this.icon && !this.flag;
     }
 
+    /** @ignore */
     change(event: any): void {
         this.propagateTouched();
         this.checked = event.target.checked;
@@ -48,16 +54,19 @@ export abstract class CheckboxBaseComponent implements OnInit, ControlValueAcces
     // Implement ControlValueAccessor methods
     /**
      * Method to call when value has changes.
+     * @ignore
      */
     propagateChange = (_: boolean) => {};
 
     /**
      * Method to call when the component is touched (when it was is clicked).
+     * @ignore
      */
     propagateTouched = () => {};
 
     /**
      * update value from model to the component
+     * @ignore
      */
     writeValue(value: boolean): void {
         if (value === undefined || value === null) {
@@ -73,6 +82,7 @@ export abstract class CheckboxBaseComponent implements OnInit, ControlValueAcces
     /**
      * Informs the outside world about changes.
      * see method propagateChange call - this.propagateChange(this.model);
+     * @ignore
      */
     registerOnChange(fn: any): void {
         this.propagateChange = fn;
@@ -80,6 +90,7 @@ export abstract class CheckboxBaseComponent implements OnInit, ControlValueAcces
 
     /**
      * on click
+     * @ignore
      */
     registerOnTouched(fn: any): void {
         this.propagateTouched = fn;
@@ -88,6 +99,7 @@ export abstract class CheckboxBaseComponent implements OnInit, ControlValueAcces
     /**
      * on set form controll enabled / disabled
      * also do UI Component enabled / disabled
+     * @ignore
      */
     setDisabledState?(isDisabled: boolean): void {
         this.isDisabled = isDisabled;
