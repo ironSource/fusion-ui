@@ -18,13 +18,30 @@ import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
     ]
 })
 export class SwitcherComponent implements OnInit {
+    /**
+     * Configuration:
+     * type SwitcherConfiguration = {
+     *     name?: string;
+     *     size?: 'large';
+     * };
+     */
     @Input() set configuration(value: SwitcherConfiguration) {
         if (value) {
             this.switcherConfiguration = {...this.switcherConfiguration, ...value};
         }
     }
+
+    /**
+     * Switcher options: interface SwitcherItem {
+     *     id: number | string;
+     *     title: string;
+     * }
+     */
     @Input() options: SwitcherItem[] = [];
 
+    /**
+     * On selection changed. But better use formControl
+     */
     @Output() selectedChange: EventEmitter<SwitcherItem> = new EventEmitter();
 
     /** @internal */

@@ -5,6 +5,7 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SwitcherComponent} from './switcher.component';
 
 // data mock
+// const switcherOptions = [{id: '1', title: 'Cardiff'}, {id: '2', title: 'Halifax'}, {id: '3', title: 'London'}];
 const switcherOptions = [
     {id: 1, title: 'omri'},
     {id: 2, title: 'yossi'},
@@ -15,7 +16,7 @@ const switcherOptions = [
     {id: 7, title: 'test4'}
 ];
 
-const selectedSwitch = new FormControl(switcherOptions[1]);
+const selectedSwitch = new FormControl(switcherOptions[2]);
 
 export default {
     title: 'Components/Inputs/Switch',
@@ -27,17 +28,30 @@ export default {
         })
     ],
     argTypes: {
-        control: 'boolean'
+        configuration: {
+            control: 'object'
+        },
+        switcherOptions: {
+            control: 'object'
+        }
     }
 } as Meta<SwitcherComponent>;
 
 const SwitchTemplate: Story<SwitcherComponent> = (args: SwitcherComponent) => ({
     props: args,
-    template: `<fusion-switcher [formControl]="selectedSwitch" [options]="switcherOptions"></fusion-switcher>`
+    template: `<fusion-switcher [configuration]="configuration" [formControl]="selectedSwitch" [options]="switcherOptions"></fusion-switcher>`
 });
 
 export const Default = SwitchTemplate.bind({});
 Default.args = {
     switcherOptions: switcherOptions,
-    selectedSwitch: selectedSwitch
+    selectedSwitch: selectedSwitch,
+    configuration: {}
+};
+
+export const Large = SwitchTemplate.bind({});
+Large.args = {
+    switcherOptions: switcherOptions,
+    selectedSwitch: selectedSwitch,
+    configuration: {size: 'large'}
 };
