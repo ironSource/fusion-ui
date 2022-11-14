@@ -4,7 +4,7 @@
         "types": ["node"],
         "allowSyntheticDefaultImports": true
     },
-    "exclude": ["../src/test.ts", "../src/**/*.spec.ts", "../projects/**/*.spec.ts"],
+    "exclude": ["../projects/**/*.spec.ts"],
     "include": ["../projects/fusion-ui/**/*"],
     "files": ["./typings.d.ts"]
 }

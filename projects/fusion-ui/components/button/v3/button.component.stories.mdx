@@ -3,7 +3,7 @@ import {dedent} from 'ts-dedent';
 
 import {ButtonComponent} from "./button.component";
 
-<Meta title="Components/Button/All"/>
+<Meta title="Components/Buttons/All"/>
 
 <Description markdown={dedent`
 # Button
@@ -28,34 +28,34 @@ Buttons are calls-to-action used to prompt users. They encourage users to intera
 
 ### Default
 <Canvas>
-    <Story id="components-button--default"/>
+    <Story id="components-buttons--default"/>
 </Canvas>
 
 ### Loading
 <Canvas>
-    <Story id="components-button--loading"/>
+    <Story id="components-buttons--loading"/>
 </Canvas>
 
 ### Disabled
 <Canvas>
-    <Story id="components-button--disabled"/>
+    <Story id="components-buttons--disabled"/>
 </Canvas>
 
 ### Sizes
 <Canvas>
     <div style={{display: "flex", flexDirection: "row", alignItems: "center", gap: "20px"}}>
-        <Story id="components-button--size-small"/>
-        <Story id="components-button--size-medium"/>
-        <Story id="components-button--size-large"/>
+        <Story id="components-buttons--size-small"/>
+        <Story id="components-buttons--size-medium"/>
+        <Story id="components-buttons--size-large"/>
     </div>
 </Canvas>
 
 ### Icons
 <Canvas>
     <div style={{display: "flex", flexDirection: "row", alignItems: "center", gap: "20px"}}>
-        <Story id="components-button--icon-left"/>
-        <Story id="components-button--icon-right"/>
-        <Story id="components-button--icon-only"/>
+        <Story id="components-buttons--icon-left"/>
+        <Story id="components-buttons--icon-right"/>
+        <Story id="components-buttons--icon-only"/>
     </div>
 </Canvas>
 
@@ -64,21 +64,21 @@ Buttons are calls-to-action used to prompt users. They encourage users to intera
     <div style={{display: "flex", flexDirection: "row", alignItems: "flex-start", gap: "20px"}}>
         <div>
             <p className="font-bodySmallStrong" style={{textAlign: "center"}}>Solid</p>
-            <Story id="components-button--variant-solid"/>
+            <Story id="components-buttons--variant-solid"/>
         </div>
         <div>
             <p className="font-bodySmallStrong" style={{textAlign: "center"}}>Border</p>
-            <Story id="components-button--variant-border"/>
+            <Story id="components-buttons--variant-border"/>
         </div>
         <div>
             <p className="font-bodySmallStrong" style={{textAlign: "center"}}>Ghost</p>
             <div style={{backgroundColor: '#53575B', padding: '5px'}}>
-                <Story id="components-button--variant-ghost"/>
+                <Story id="components-buttons--variant-ghost"/>
             </div>
         </div>
         <div>
             <p className="font-bodySmallStrong" style={{textAlign: "center"}}>Link</p>
-            <Story id="components-button--variant-link"/>
+            <Story id="components-buttons--variant-link"/>
         </div>
     </div>
 </Canvas>
@@ -88,19 +88,19 @@ Buttons are calls-to-action used to prompt users. They encourage users to intera
     <div style={{display: "flex", flexDirection: "row", alignItems: "center", gap: "20px"}}>
         <div>
             <p className="font-bodySmallStrong" style={{textAlign: "center"}}>Primary</p>
-            <Story id="components-button--theme-primary"/>
+            <Story id="components-buttons--theme-primary"/>
         </div>
         <div>
             <p className="font-bodySmallStrong" style={{textAlign: "center"}}>Secondary</p>
-            <Story id="components-button--theme-secondary"/>
+            <Story id="components-buttons--theme-secondary"/>
         </div>
         <div>
             <p className="font-bodySmallStrong" style={{textAlign: "center"}}>Third</p>
-            <Story id="components-button--theme-third"/>
+            <Story id="components-buttons--theme-third"/>
         </div>
         <div>
             <p className="font-bodySmallStrong" style={{textAlign: "center"}}>Danger</p>
-            <Story id="components-button--theme-danger"/>
+            <Story id="components-buttons--theme-danger"/>
         </div>
     </div>
 </Canvas>

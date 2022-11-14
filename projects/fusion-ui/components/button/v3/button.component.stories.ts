@@ -11,7 +11,7 @@ const sizes = ['', 'small', 'large'];
 const themes = ['primary', 'secondary', 'third', 'danger'];
 
 export default {
-    title: 'Components/Button',
+    title: 'Components/Buttons',
     component: ButtonComponent,
     decorators: [
         moduleMetadata({

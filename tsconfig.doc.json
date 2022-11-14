@@ -1,0 +1,15 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "outDir": "./dist/doc",
+        "types": []
+    },
+    "include": ["projects/fusion-ui/**/*"],
+    "exclude": [
+        "projects/fusion-ui/**/*.spec.ts",
+        /* ignore base for switcher */
+        "projects/fusion-ui/components/switcher/common/**/*",
+        "projects/fusion-ui/components/switcher/v1/**/*",
+        "projects/fusion-ui/components/switcher/v2/**/*"
+    ]
+}
