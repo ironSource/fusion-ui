@@ -74,7 +74,6 @@ export abstract class CheckboxBaseComponent implements OnInit, ControlValueAcces
      * @ignore
      */
     writeValue(value: boolean): void {
-        console.log('>>>', value);
         if (value === undefined || value === null) {
             this.checked = false;
         } else {
