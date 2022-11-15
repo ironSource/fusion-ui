@@ -7,7 +7,7 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {ButtonLoadingModule} from '@ironsource/fusion-ui/components/button/v3/components/button-loading/button-loading.module';
 import {ButtonComponent} from './button.component';
 
-const sizes = ['', 'small', 'large'];
+const sizes = [null, 'small', 'large'];
 const themes = ['primary', 'secondary', 'third', 'danger'];
 
 export default {
@@ -29,11 +29,11 @@ export default {
         icon: {
             type: 'string',
             defaultValue: '',
-            options: ['', 'frame'],
+            options: [null, 'frame'],
             control: {
                 type: 'select',
                 labels: {
-                    '': 'no icon',
+                    null: 'no icon',
                     frame: 'frame'
                 }
             }
@@ -57,7 +57,7 @@ export default {
             control: {
                 type: 'select',
                 labels: {
-                    '': 'medium (default)',
+                    null: 'medium (default)',
                     small: 'small',
                     large: 'large'
                 }

@@ -14,6 +14,7 @@ import {
 import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
 import {BehaviorSubject, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+import {isNullOrUndefined} from '@ironsource/fusion-ui';
 
 @Directive()
 export abstract class ButtonBaseComponent implements OnInit, OnDestroy {
@@ -27,9 +28,13 @@ export abstract class ButtonBaseComponent implements OnInit, OnDestroy {
      * @param value
      */
     @Input() set icon(value: IconData) {
-        this.iconData = value;
-        this.iconName = typeof this.iconData === 'string' ? this.iconData : this.iconData.iconName;
-        this.setIconState(!!this.iconName);
+        if (!isNullOrUndefined(value)) {
+            this.iconData = value;
+            this.iconName = typeof this.iconData === 'string' ? this.iconData : this.iconData.iconName;
+            this.setIconState(!!this.iconName);
+        } else {
+            this.setIconState(false);
+        }
     }
 
     /**
