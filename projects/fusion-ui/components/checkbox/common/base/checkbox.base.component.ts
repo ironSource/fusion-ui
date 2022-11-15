@@ -14,15 +14,20 @@ export abstract class CheckboxBaseComponent implements OnInit, ControlValueAcces
     @Input() icon: IconData;
     @Input() flag: string;
     @Input() isDisabled: boolean;
+    /** @internal */
     @Input() checked: boolean;
     @Input() isIndeterminate: boolean;
+    /** checkbox DOM element id. If not set, will be generated. */
     @Input() id: string;
+    /** slass will be added to the checkbox label */
     @Input() class: string;
+    /** custom fill color for checked or indeterminate stated*/
     @Input() backgroundColor: string;
     /** @internal */
     @Input() tooltipContent: string;
     /** @internal */
     @Input() tooltipWidth: number;
+
     @Output() changed = new EventEmitter();
     /** @internal */
     @HostBinding('class.only-checkbox') isOnlyCheckbox = false;
@@ -69,6 +74,7 @@ export abstract class CheckboxBaseComponent implements OnInit, ControlValueAcces
      * @ignore
      */
     writeValue(value: boolean): void {
+        console.log('>>>', value);
         if (value === undefined || value === null) {
             this.checked = false;
         } else {

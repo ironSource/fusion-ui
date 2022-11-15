@@ -13,7 +13,14 @@ Switches are the preferred way to adjust settings on mobile. The option that the
 ## Usage
 <Source language="html"
         code={dedent`
-<fusion-checkbox label="Hello world" [checked]="false"></fusion-checkbox>
+<fusion-checkbox [label]="label"
+ [icon]="icon"
+ [flag]="flag"
+ [isDisabled]="isDisabled"
+ [isIndeterminate]="isIndeterminate"
+ [backgroundColor]="backgroundColor"
+ [formControl]="checkedFormControl"
+></fusion-checkbox>
 `}/>
 
 ### Normal
