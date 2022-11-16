@@ -126,6 +126,6 @@ WithFlag.args = {
 
 export const WithCustomBackgroundColor = CheckboxTemplate.bind({});
 WithCustomBackgroundColor.args = {
-    backgroundColor: '#000000',
+    backgroundColor: '#459FCA',
     checkedFormControl: checkedFormControl
 };

@@ -27,8 +27,8 @@
     "build:mfe:dev": "ng build fusion-mfe -c dev",
     "build:mfe": "ng build fusion-mfe",
     "release": "standard-version",
-    "docs:show": "compodoc -p ./tsconfig.json -s --disablePrivate --disableProtected --disableLifeCycleHooks --disableInternal",
-    "docs:json": "compodoc -p ./tsconfig.json -e json -d . --disablePrivate --disableProtected --disableLifeCycleHooks --disableInternal",
+    "docs:show": "compodoc -p ./tsconfig.doc.json -s --disablePrivate --disableProtected --disableLifeCycleHooks --disableInternal",
+    "docs:json": "compodoc -p ./tsconfig.doc.json -e json -d . --disablePrivate --disableProtected --disableLifeCycleHooks --disableInternal",
     "storybook": "npm run docs:json && start-storybook -p 6006",
     "build-storybook": "npm run docs:json && build-storybook"
   },

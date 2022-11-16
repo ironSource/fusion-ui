@@ -5,7 +5,7 @@ import {AlertComponent} from './alert.component.ts';
 <Meta title="Components/Alert/All"/>
 
 <Description markdown={dedent`
-# Alert
+# Alert (v2, so it deprecated in v3 - no need stories)
 Some alert component description
 `}/>
 
