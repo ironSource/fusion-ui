@@ -2,12 +2,13 @@ import {Story, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {RadioGroupComponent} from './radio-group.component';
-import {RadioModule} from '../../radio/v3/radio.module';
-import {RadioGroupOptions} from '../common/entities/radio-group.entities';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+
+import {RadioGroupComponent} from './radio-group.component';
+import {RadioModule} from '../../radio/v3/radio.module';
+import {RadioGroupOptions} from '../common/entities/radio-group.entities';
 
 // region mocking
 const radioGroupOptions: RadioGroupOptions[] = [
@@ -74,7 +75,7 @@ export default {
             control: false
         }
     }
-};
+} as Meta<RadioGroupComponent>;
 
 const RadioGroupTemplate: Story<RadioGroupComponent> = (args: RadioGroupComponent) => ({
     props: {...args},
