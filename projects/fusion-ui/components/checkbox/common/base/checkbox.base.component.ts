@@ -27,7 +27,7 @@ export abstract class CheckboxBaseComponent implements OnInit, ControlValueAcces
     @Input() tooltipContent: string;
     /** @internal */
     @Input() tooltipWidth: number;
-
+    /** @internal */
     @Output() changed = new EventEmitter();
     /** @internal */
     @HostBinding('class.only-checkbox') isOnlyCheckbox = false;
