@@ -134,7 +134,8 @@ export abstract class InputParameters {
         this.configuration = {...this._configuration, helperText};
     }
 
+    /** @internal */
     _configuration: InputConfiguration = {};
-
+    /** @internal */
     abstract onConfigurationChanged(value: InputConfiguration): void;
 }

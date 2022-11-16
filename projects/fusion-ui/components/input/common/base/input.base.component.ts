@@ -11,7 +11,9 @@ import {InputConfiguration} from './input-entities';
 
 @Directive()
 export class InputBaseComponent extends InputParameters implements OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
+    /** @internal */
     @ViewChild('input', {static: false}) input: ElementRef;
+    /** @internal */
     @ViewChild('fileInput', {static: false}) fileInput: ElementRef;
 
     @Input() loading: boolean;
@@ -23,13 +25,21 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
     @Output() btnAction = new EventEmitter<MouseEvent>();
     @Output() passHiddenStateChanged = new EventEmitter<boolean>();
 
+    /** @internal */
     onDestroy$ = new Subject<void>();
+    /** @internal */
     inputControl = new FormControl();
+    /** @internal */
     file = new FormControl();
+    /** @internal */
     focused: boolean;
+    /** @internal */
     step: string;
+    /** @internal */
     showErrorClass$ = new BehaviorSubject(false);
+    /** @internal */
     configByStyle$ = new Observable<InputConfigByStyle>();
+    /** @internal */
     disabled$ = new BehaviorSubject(false);
 
     private inputControlValueChanges$: Observable<any>;
@@ -37,7 +47,10 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
     private _isPassHidden = true;
     private onBlur: (args: string) => void;
 
-    constructor(public elementRef: ElementRef) {
+    constructor(
+        /** @internal */
+        public elementRef: ElementRef
+    ) {
         super();
     }
 
@@ -92,6 +105,7 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
         this.onDestroy$.complete();
     }
 
+    /** @internal */
     initChangesTrigger(): void {
         const valueChanges$ =
             this.config.type === 'file'
@@ -102,14 +116,14 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
             this.propagateChange(value);
         });
     }
-
+    /** @internal */
     onConfigurationChanged(value: InputConfiguration): void {
         this.onOptionsChanged({previousValue: this.config.options, currentValue: value.options});
         this.onDisabledChanged({previousValue: this.config.disabled, currentValue: value.disabled});
         this.onErrorChanged({previousValue: this.config.error, currentValue: value.error});
         this._configuration = value;
     }
-
+    /** @internal */
     getHolderClasses(): string[] {
         return [
             this.config.errorType === 'error' && 'fu-error-error',
@@ -122,19 +136,19 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
             !!this.config.options.rounded && 'fu-rounded'
         ].filter(Boolean);
     }
-
+    /** @internal */
     showErrorIcon(): boolean {
         return true;
     }
-
+    /** @internal */
     getErrorIcon(errorType: string, infoIconName: string, warningIconName: string): string {
         return errorType === 'error' ? infoIconName : errorType === 'warning' ? warningIconName : '';
     }
-
+    /** @internal */
     getTooltipErrorsMessage(): string {
         return isString(this.config.error) ? (this.config.error as string) : '';
     }
-
+    /** @internal */
     blur(): void {
         this.focused = false;
         if (this.ngBlur) {
@@ -144,14 +158,14 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
             this.onBlur(this.inputControl.value);
         }
     }
-
+    /** @internal */
     focus(): void {
         this.focused = true;
         if (this.ngFocus) {
             this.ngFocus.emit();
         }
     }
-
+    /** @internal */
     onButtonClicked($event: MouseEvent): void {
         if (this.config.type === 'file') {
             this.fileInput.nativeElement.click();
@@ -159,18 +173,18 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
             this.btnAction.emit($event);
         }
     }
-
+    /** @internal */
     clearInput(isFocused = false): void {
         this.inputControl.setValue('');
         if (isFocused) {
             this.setFocus();
         }
     }
-
+    /** @internal */
     setFocus(): void {
         this.input.nativeElement.focus();
     }
-
+    /** @internal */
     passToggle($event: Event): void {
         const passShownState = this.config.options.hasOwnProperty('isPassHidden') ? this.isPassHidden : true;
         if (!isNullOrUndefined($event)) {
@@ -179,19 +193,19 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
             this.passHiddenStateChanged.emit(!passShownState);
         }
     }
-
+    /** @internal */
     getInputType(): string {
         return this.config.type === 'file' || (this.config.type === 'password' && !this.isPassHidden) ? 'text' : this.config.type;
     }
-
+    /** @internal */
     onPassToggleMouseDown($event: Event): void {
         $event.preventDefault();
     }
-
+    /** @internal */
     toggleErrorClass(error: boolean): void {
         this.showErrorClass$.next(error);
     }
-
+    /** @internal */
     writeValue(value: any): void {
         if (isNullOrUndefined(value)) {
             this.clearInput();
@@ -205,17 +219,18 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
 
     /**
      * Method to call when the input value has changes.
+     * @internal
      */
     propagateChange = (_: string) => {};
-
+    /** @internal */
     registerOnChange(fn: any): void {
         this.propagateChange = fn;
     }
-
+    /** @internal */
     registerOnTouched(fn): void {
         this.onBlur = fn;
     }
-
+    /** @internal */
     setDisabledState?(isDisabled: boolean): void {
         this.disabled$.next(isDisabled);
     }

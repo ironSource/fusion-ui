@@ -12,6 +12,7 @@ import {of} from 'rxjs';
     providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => InputComponent), multi: true}]
 })
 export class InputComponent extends InputBaseComponent implements OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
+    /** @internal */
     showErrorIcon(): boolean {
         return !isNullOrUndefined(this.config.error);
     }
