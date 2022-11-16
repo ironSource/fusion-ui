@@ -15,14 +15,20 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
     @ViewChild('input', {static: false}) input: ElementRef;
     /** @internal */
     @ViewChild('fileInput', {static: false}) fileInput: ElementRef;
-
+    /** @internal */
     @Input() loading: boolean;
     // Todo - think about a way to use it with generic way to listen to all kind of events
+    /** @internal */
     @Output() ngFocus = new EventEmitter<void>();
+    /** @internal */
     @Output() ngBlur = new EventEmitter<void>();
+    /** @internal */
     @Output() ngEnter = new EventEmitter<any>();
+    /** @internal */
     @Output() ngEscape = new EventEmitter<any>();
+    /** @internal */
     @Output() btnAction = new EventEmitter<MouseEvent>();
+    /** @internal */
     @Output() passHiddenStateChanged = new EventEmitter<boolean>();
 
     /** @internal */
