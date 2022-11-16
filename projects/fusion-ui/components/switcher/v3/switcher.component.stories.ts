@@ -3,7 +3,6 @@ import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SwitcherComponent} from './switcher.component';
-import {SwitcherModule} from './switcher.module';
 
 // data mock
 // const switcherOptions = [{id: '1', title: 'Cardiff'}, {id: '2', title: 'Halifax'}, {id: '3', title: 'London'}];
@@ -24,34 +23,38 @@ export default {
     component: SwitcherComponent,
     decorators: [
         moduleMetadata({
-            imports: [CommonModule, FormsModule, ReactiveFormsModule, SwitcherModule]
+            declarations: [SwitcherComponent],
+            imports: [CommonModule, FormsModule, ReactiveFormsModule]
         })
     ],
     argTypes: {
         configuration: {
             control: 'object'
         },
-        switcherOptions: {
+        options: {
             control: 'object'
+        },
+        formControl: {
+            control: false
         }
     }
 } as Meta<SwitcherComponent>;
 
 const SwitchTemplate: Story<SwitcherComponent> = (args: SwitcherComponent) => ({
     props: args,
-    template: `<fusion-switcher [configuration]="configuration" [formControl]="selectedSwitch" [options]="switcherOptions"></fusion-switcher>`
+    template: `<fusion-switcher [configuration]="configuration" [formControl]="formControl" [options]="options"></fusion-switcher>`
 });
 
 export const Default = SwitchTemplate.bind({});
 Default.args = {
-    switcherOptions: switcherOptions,
-    selectedSwitch: selectedSwitch,
+    options: switcherOptions,
+    formControl: selectedSwitch,
     configuration: {}
 };
 
 export const Large = SwitchTemplate.bind({});
 Large.args = {
-    switcherOptions: switcherOptions,
-    selectedSwitch: selectedSwitch,
+    options: switcherOptions,
+    formControl: selectedSwitch,
     configuration: {size: 'large'}
 };

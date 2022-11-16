@@ -12,25 +12,11 @@ Switches are the preferred way to adjust settings on mobile. The option that the
 ## Usage
 <Source language="html"
         code={dedent`
-<!--template-->
 <fusion-switcher
     [configuration]="configuration"
-    [options]="switcherOptions"
-    [formControl]="selectedSwitch"
+    [options]="options"
+    [formControl]="formControl"
 ></fusion-switcher>
-<!--code-->
-<script>
-switcherOptions = [
-    {id: 1, title: 'omri'},
-    {id: 2, title: 'yossi'},
-    {id: 3, title: 'harel'},
-    {id: 4, title: 'test1a2222222'},
-    {id: 5, title: 'test2'},
-    {id: 6, title: 'test3'},
-    {id: 7, title: 'test4'}
-];
-selectedSwitch = new FormControl(switcherOptions[2]);
-</script>
 `}/>
 
 ### Default

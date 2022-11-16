@@ -41,6 +41,7 @@ export class SwitcherComponent implements OnInit {
 
     /**
      * On selection changed. But better use formControl
+     * @internal
      */
     @Output() selectedChange: EventEmitter<SwitcherItem> = new EventEmitter();
 
