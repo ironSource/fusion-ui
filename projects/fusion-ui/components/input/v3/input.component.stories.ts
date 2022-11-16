@@ -8,8 +8,9 @@ import {environment} from '../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 
 import {InputComponent} from './input.component';
+import {TooltipModule} from '../../tooltip/v3/tooltip.module';
 
-const inputFormControl = new FormControl('Some text');
+const inputFormControl = new FormControl('');
 
 export default {
     title: 'Components/Inputs/Input',
@@ -17,7 +18,14 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [InputComponent],
-            imports: [CommonModule, FormsModule, ReactiveFormsModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule]
+            imports: [
+                CommonModule,
+                FormsModule,
+                ReactiveFormsModule,
+                SvgModule.forRoot({assetsPath: environment.assetsPath}),
+                IconModule,
+                TooltipModule
+            ]
         })
     ],
     args: {
@@ -32,7 +40,9 @@ export default {
 
 const InputTemplate: Story<InputComponent> = (args: InputComponent) => ({
     props: {...args},
-    template: `<fusion-input [helperText]="helperText" [placeholder]="placeholder" [formControl]="formControl"></fusion-input>`
+    template: `<div style="width: 300px;">
+    <fusion-input [helperText]="helperText" [fusionTooltip]="tooltipContent" [placeholder]="placeholder" [formControl]="formControl"></fusion-input>
+</div>`
 });
 
 export const Default = InputTemplate.bind({});
