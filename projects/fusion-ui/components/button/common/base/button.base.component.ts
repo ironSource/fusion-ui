@@ -66,7 +66,7 @@ export abstract class ButtonBaseComponent implements OnInit, OnDestroy {
         this.isLink = value;
         this.setLinkButtonState(this.isLink);
     }
-
+    /** @internal */
     @Output() onclick = new EventEmitter();
 
     /** @internal */

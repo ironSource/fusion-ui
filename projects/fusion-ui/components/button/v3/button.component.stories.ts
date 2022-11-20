@@ -120,6 +120,7 @@ class="{{class_size}} {{class_theme}}"
 });
 
 export const Default = ButtonTemplate.bind({});
+
 export const Loading = ButtonTemplate.bind({});
 Loading.args = {loading: true};
 export const Disabled = ButtonTemplate.bind({});
