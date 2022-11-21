@@ -496,7 +496,25 @@
         </div>
 
         <div class="docs-playground" *ngIf="selectedTab.text==='Playground'">
-            sss
+            <div class="docs-component-playground-holder">
+                <fusion-button>
+                    {{button_label}}
+                </fusion-button>
+            </div>
+            <div class="docs-playground-options-holder">
+                <table>
+                    <tr>
+                        <td>Args</td>
+                        <td>Value</td>
+                        <td>Description</td>
+                    </tr>
+                    <tr>
+                        <td>button_label</td>
+                        <td>Button</td>
+                        <td>Inner button content</td>
+                    </tr>
+                </table>
+            </div>
         </div>
 
     </div>

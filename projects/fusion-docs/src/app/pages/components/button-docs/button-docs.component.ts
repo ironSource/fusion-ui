@@ -73,6 +73,8 @@ export class ButtonDocsComponent implements OnInit {
     );
 */
 
+    button_label = 'Button';
+
     pageTabs = {tabs: [{text: 'Variations'}, {text: 'Playground'}], tabWidth: 200};
     selectedTab: TabConfiguration = this.pageTabs.tabs[0];
 
