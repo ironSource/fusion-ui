@@ -35,6 +35,13 @@ export default {
         design: {
             type: 'figma',
             url: 'https://www.figma.com/file/V4eZU3qDgKYPhR4eaTvSwy/%F0%9F%8E%A8-Style-guide-2021-Master?node-id=5459%3A101310'
+        },
+        docs: {
+            description: {
+                component: `Checkboxes can be used to turn an option on or off.
+
+If you have multiple options appearing in a list, you can preserve space by using checkboxes instead of on/off switches. If you have a single option, avoid using a checkbox and use an on/off switch instead.`
+            }
         }
     },
     args: {

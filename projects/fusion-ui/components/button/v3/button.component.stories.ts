@@ -24,16 +24,12 @@ export default {
             type: 'figma',
             url: 'https://www.figma.com/file/V4eZU3qDgKYPhR4eaTvSwy/%F0%9F%8E%A8-Style-guide-2021-Master?node-id=5637%3A97150'
         },
-        /*layout: 'centered',*/
         docs: {
             description: {
                 component:
                     'Buttons are calls-to-action used to prompt users. They encourage users to interact with us in multiple ways throughout our galaxy, based on what the label of the button indicates. Buttons are clickable elements with label text that describe the action that will happen when the users interact with it.'
             }
-        } /*,
-        actions: {
-            handles: ['click fusion-button'],
-        },*/
+        }
     },
     argTypes: {
         icon: {
