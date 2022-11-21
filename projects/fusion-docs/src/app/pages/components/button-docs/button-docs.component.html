@@ -1,4 +1,4 @@
-<!--<div class="row">
+<div class="row">
     <div class="col-1" style="padding: 15px">
         <fusion-button
             icon="frame"
@@ -142,8 +142,8 @@
         </fusion-button>
 
     </div>
-</div>-->
-<div class="row" *ngIf="selectedVersion$ | async as currentStyleVersion">
+</div>
+<!--<div class="row" *ngIf="selectedVersion$ | async as currentStyleVersion">
     <ng-container *ngIf="(styleUpdating$ | async) === false; else inUpdate">
         <div class="col-9">
             <div class="is-example-title">Type</div>
@@ -352,15 +352,15 @@ button.addEventListener("onclick", e => console.log(e));'
                     <fusion-code-block
                         lang="html"
                         class="is-collapsible"
-                        code='<!--Regular-->
+                        code='&lt;!&ndash;Regular&ndash;&gt;
 <a href="#" fusion-button (click)="onClick($event)">Link button</a>
 <a href="#" fusion-button icon="sync" (click)="onClick($event)">Sync</a>
 
-<!--Disabled-->
+&lt;!&ndash;Disabled&ndash;&gt;
 <a href="#" fusion-button disabled (click)="onClick($event)">Link button</a>
 <a href="#" fusion-button [disabled]="true" icon="v2/sync" (click)="onClick($event)">Sync</a>
 
-<!--Loading-->
+&lt;!&ndash;Loading&ndash;&gt;
 <a href="#" fusion-button [loading]="true" (click)="onClick($event)">Link button</a>
 <a href="#" fusion-button [loading]="true" icon="v2/sync" (click)="onClick($event)">Sync</a>
 '
@@ -496,7 +496,7 @@ button.addEventListener("onclick", e => console.log(e));'
                     <fusion-code-block
                         lang="html"
                         class="is-collapsible"
-                        code=' <!--"Transparent" buttons-->
+                        code=' &lt;!&ndash;"Transparent" buttons&ndash;&gt;
 <button fusion-button class="transparent">Apply</button>&nbsp;
 <button fusion-button class="transparent secondary">Cancel</button>&nbsp;
 <button fusion-button class="transparent medium">Apply</button>&nbsp;
@@ -605,7 +605,7 @@ button.addEventListener("onclick", e => console.log(e));'
                         class="is-collapsible"
                         code='<button fusion-button icon="edit">Edit</button>
 
-<button fusion-button icon="edit"></button> <!--Not supported in V2-->
+<button fusion-button icon="edit"></button> &lt;!&ndash;Not supported in V2&ndash;&gt;
 
 <div class="is-btngroup">
   <button fusion-button icon="export-csv"></button>
@@ -614,7 +614,7 @@ button.addEventListener("onclick", e => console.log(e));'
   <button fusion-button icon="country"></button>
 </div>
 
-<!--Icon Buttons in Table-Cell (V2)-->
+&lt;!&ndash;Icon Buttons in Table-Cell (V2)&ndash;&gt;
 <button title="medium" class="in-table" fusion-button
         icon="v2/pen" (click)="onClick($event)"></button>
 <button title="medium" class="in-table" fusion-button
@@ -1146,8 +1146,8 @@ button.addEventListener("onclick", e => console.log(e));'
                 </div>
             </fusion-example-block>
 
-            <!--UI-Component Examples-->
-            <!--UI-Component Configuration Doc-->
+            &lt;!&ndash;UI-Component Examples&ndash;&gt;
+            &lt;!&ndash;UI-Component Configuration Doc&ndash;&gt;
             <div class="is-example-title">Configuration</div>
             <fusion-example-block id="params" title="Parameters" [collapsible]="false">
                 <fusion-code-block
@@ -1165,13 +1165,13 @@ loading: boolean;    // If true - added loading element. Default - not set (fals
 'onclick' // for Native events"
                 ></fusion-code-block>
             </fusion-example-block>
-            <!--UI-Component Configuration Doc-->
+            &lt;!&ndash;UI-Component Configuration Doc&ndash;&gt;
         </div>
     </ng-container>
     <div class="col-3 is-right-side-menu-holder">
-        <!--<fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>-->
+        &lt;!&ndash;<fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>&ndash;&gt;
     </div>
-</div>
+</div>-->
 
 <ng-template #inUpdate>
     <div class="col-9"></div>
