@@ -23,7 +23,17 @@ export default {
         design: {
             type: 'figma',
             url: 'https://www.figma.com/file/V4eZU3qDgKYPhR4eaTvSwy/%F0%9F%8E%A8-Style-guide-2021-Master?node-id=5637%3A97150'
-        }
+        },
+        /*layout: 'centered',*/
+        docs: {
+            description: {
+                component:
+                    'Buttons are calls-to-action used to prompt users. They encourage users to interact with us in multiple ways throughout our galaxy, based on what the label of the button indicates. Buttons are clickable elements with label text that describe the action that will happen when the users interact with it.'
+            }
+        } /*,
+        actions: {
+            handles: ['click fusion-button'],
+        },*/
     },
     argTypes: {
         icon: {
@@ -88,8 +98,12 @@ export default {
         class_icon_right: {
             control: 'boolean',
             defaultValue: false,
-            if: {arg: 'icon', neq: ''}
-        }
+            if: {
+                arg: 'icon',
+                neq: ''
+            }
+        },
+        onclick: {action: 'clicked'}
     }
 } as Meta<ButtonComponent>;
 
@@ -122,12 +136,43 @@ class="{{class_size}} {{class_theme}}"
 export const Default = ButtonTemplate.bind({});
 export const Loading = ButtonTemplate.bind({});
 Loading.args = {loading: true};
+Loading.parameters = {
+    docs: {
+        description: {
+            story: 'Some Loading story **markdown**'
+        }
+    }
+};
+
 export const Disabled = ButtonTemplate.bind({});
 Disabled.args = {disabled: true};
+Disabled.parameters = {
+    docs: {
+        description: {
+            story: 'Some Disabled story **markdown**'
+        },
+        source: {
+            code: `<fusion-button [disabled]="false"></fusion-button>`,
+            language: 'html'
+        }
+    }
+};
 
 // region Sizes
 export const SizeSmall = ButtonTemplate.bind({});
 SizeSmall.args = {class_size: 'small'};
+SizeSmall.parameters = {
+    docs: {
+        description: {
+            story: `SizeSmall description here`
+        }
+    },
+    source: {
+        code: `<fusion-button class="small"></fusion-button>`,
+        language: 'html'
+    }
+};
+
 export const SizeMedium = ButtonTemplate.bind({});
 export const SizeLarge = ButtonTemplate.bind({});
 SizeLarge.args = {class_size: 'large'};
