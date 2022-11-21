@@ -1,17 +1,26 @@
 <div class="row">
     <div class="col-9">
-        <!-- region UI-Component Examples-->
-        <div class="component-description">
-            Buttons are calls-to-action used to prompt users. They encourage users to interact with us in multiple ways throughout our galaxy, based on what the label of the button indicates. Buttons are clickable elements with label text that describe the action that will happen when the users interact with it.
+<!--
+        <div class="docs-tabs-holder">
+            <fusion-tabs [configuration]="pageTabs" [(selected)]="selectedTab"></fusion-tabs>
         </div>
-        <div class="is-example-title">State</div>
-        <fusion-example-block id="typeDefault" title="Default">
-            <!-- region code examples-->
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<div>
+-->
+
+        <div class="docs-variations"  *ngIf="selectedTab.text==='Variations'">
+            <div class="component-description">
+                Buttons are calls-to-action used to prompt users. They encourage users to interact with us in multiple ways
+                throughout our galaxy, based on what the label of the button indicates. Buttons are clickable elements with
+                label text that describe the action that will happen when the users interact with it.
+            </div>
+            <!-- region UI-Component Examples-->
+            <div class="is-example-title">State</div>
+            <fusion-example-block id="typeDefault" title="Default">
+                <!-- region code examples-->
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<div>
     <label>Default</label>
     <fusion-button>Button</fusion-button>
 </div>
@@ -40,59 +49,58 @@
     <fusion-button class="fu-icon-right" icon="frame" [link]="true"></fusion-button>
 </div>
 '
-                ></fusion-code-block>
-                <fusion-code-block
-                    lang="js"
-                    class="is-collapsible"
-                    code="import {ButtonModule} from '@ironsource/fusion-ui/components/button';"
-                ></fusion-code-block>
-            </ng-template>
-            <!-- endregion code examples-->
+                    ></fusion-code-block>
+                    <fusion-code-block
+                        lang="js"
+                        class="is-collapsible"
+                        code="import {ButtonModule} from '@ironsource/fusion-ui/components/button';"
+                    ></fusion-code-block>
+                </ng-template>
+                <!-- endregion code examples-->
 
-            <div class="example-content">
-                <div>
-                    <label>Default</label>
-                    <fusion-button>Button</fusion-button>
+                <div class="example-content">
+                    <div>
+                        <label>Default</label>
+                        <fusion-button>Button</fusion-button>
+                    </div>
+                    <div>
+                        <label>Icon left</label>
+                        <fusion-button icon="frame">Button</fusion-button>
+                    </div>
+                    <div>
+                        <label>Icon right</label>
+                        <fusion-button class="fu-icon-right" icon="frame">Button</fusion-button>
+                    </div>
+                    <div>
+                        <label>Icon only</label>
+                        <fusion-button icon="frame"></fusion-button>
+                    </div>
+                    <div>
+                        <label>Link Button</label>
+                        <fusion-button [link]="true">Link Button</fusion-button>
+                    </div>
+                    <div>
+                        <label>Link icon left Button</label>
+                        <fusion-button icon="frame" [link]="true">Link Button</fusion-button>
+                    </div>
+                    <div>
+                        <label>Link icon right Button</label>
+                        <fusion-button class="fu-icon-right" icon="frame" [link]="true">Link Button</fusion-button>
+                    </div>
+                    <div>
+                        <label>Link icon</label>
+                        <fusion-button class="fu-icon-right" icon="frame" [link]="true"></fusion-button>
+                    </div>
                 </div>
-                <div>
-                    <label>Icon left</label>
-                    <fusion-button icon="frame">Button</fusion-button>
-                </div>
-                <div>
-                    <label>Icon right</label>
-                    <fusion-button class="fu-icon-right" icon="frame">Button</fusion-button>
-                </div>
-                <div>
-                    <label>Icon only</label>
-                    <fusion-button icon="frame"></fusion-button>
-                </div>
-                <div>
-                    <label>Link Button</label>
-                    <fusion-button [link]="true">Link Button</fusion-button>
-                </div>
-                <div>
-                    <label>Link icon left Button</label>
-                    <fusion-button icon="frame" [link]="true">Link Button</fusion-button>
-                </div>
-                <div>
-                    <label>Link icon right Button</label>
-                    <fusion-button class="fu-icon-right" icon="frame" [link]="true">Link Button</fusion-button>
-                </div>
-                <div>
-                    <label>Link icon</label>
-                    <fusion-button class="fu-icon-right" icon="frame" [link]="true"></fusion-button>
-                </div>
-            </div>
 
-        </fusion-example-block>
-
-        <fusion-example-block id="typeDisabled" title="Disable">
-            <!-- region code examples-->
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<div>
+            </fusion-example-block>
+            <fusion-example-block id="typeDisabled" title="Disable">
+                <!-- region code examples-->
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<div>
     <label>Default</label>
     <fusion-button [disabled]="true">Button</fusion-button>
 </div>
@@ -113,42 +121,41 @@
     <fusion-button [link]="true" [disabled]="true">Link Button</fusion-button>
 </div>
 '
-                ></fusion-code-block>
-            </ng-template>
-            <!-- endregion code examples-->
+                    ></fusion-code-block>
+                </ng-template>
+                <!-- endregion code examples-->
 
-            <div class="example-content">
-                <div>
-                    <label>Default</label>
-                    <fusion-button [disabled]="true">Button</fusion-button>
+                <div class="example-content">
+                    <div>
+                        <label>Default</label>
+                        <fusion-button [disabled]="true">Button</fusion-button>
+                    </div>
+                    <div>
+                        <label>Icon left</label>
+                        <fusion-button icon="frame" [disabled]="true">Button</fusion-button>
+                    </div>
+                    <div>
+                        <label>Icon right</label>
+                        <fusion-button class="fu-icon-right" icon="frame" [disabled]="true">Button</fusion-button>
+                    </div>
+                    <div>
+                        <label>Icon only</label>
+                        <fusion-button icon="frame" [disabled]="true"></fusion-button>
+                    </div>
+                    <div>
+                        <label>Link Button</label>
+                        <fusion-button [link]="true" [disabled]="true">Link Button</fusion-button>
+                    </div>
                 </div>
-                <div>
-                    <label>Icon left</label>
-                    <fusion-button icon="frame" [disabled]="true">Button</fusion-button>
-                </div>
-                <div>
-                    <label>Icon right</label>
-                    <fusion-button class="fu-icon-right" icon="frame" [disabled]="true">Button</fusion-button>
-                </div>
-                <div>
-                    <label>Icon only</label>
-                    <fusion-button icon="frame" [disabled]="true"></fusion-button>
-                </div>
-                <div>
-                    <label>Link Button</label>
-                    <fusion-button [link]="true" [disabled]="true">Link Button</fusion-button>
-                </div>
-            </div>
 
-        </fusion-example-block>
-
-        <fusion-example-block id="typeLoading" title="Loading">
-            <!-- region code examples-->
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<div>
+            </fusion-example-block>
+            <fusion-example-block id="typeLoading" title="Loading">
+                <!-- region code examples-->
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<div>
     <label>Default</label>
     <fusion-button [loading]="true">Button</fusion-button>
 </div>
@@ -168,43 +175,42 @@
     <label>Link Button</label>
     <fusion-button [link]="true" [loading]="true">Link Button</fusion-button>
 </div>'
-                ></fusion-code-block>
-            </ng-template>
-            <!-- endregion code examples-->
+                    ></fusion-code-block>
+                </ng-template>
+                <!-- endregion code examples-->
 
-            <div class="example-content">
-                <div>
-                    <label>Default</label>
-                    <fusion-button [loading]="true">Button</fusion-button>
+                <div class="example-content">
+                    <div>
+                        <label>Default</label>
+                        <fusion-button [loading]="true">Button</fusion-button>
+                    </div>
+                    <div>
+                        <label>Icon left</label>
+                        <fusion-button icon="frame" [loading]="true">Button</fusion-button>
+                    </div>
+                    <div>
+                        <label>Icon right</label>
+                        <fusion-button class="fu-icon-right" icon="frame" [loading]="true">Button</fusion-button>
+                    </div>
+                    <div>
+                        <label>Icon only</label>
+                        <fusion-button icon="frame" [loading]="true"></fusion-button>
+                    </div>
+                    <div>
+                        <label>Link Button</label>
+                        <fusion-button [link]="true" [loading]="true">Link Button</fusion-button>
+                    </div>
                 </div>
-                <div>
-                    <label>Icon left</label>
-                    <fusion-button icon="frame" [loading]="true">Button</fusion-button>
-                </div>
-                <div>
-                    <label>Icon right</label>
-                    <fusion-button class="fu-icon-right" icon="frame" [loading]="true">Button</fusion-button>
-                </div>
-                <div>
-                    <label>Icon only</label>
-                    <fusion-button icon="frame" [loading]="true"></fusion-button>
-                </div>
-                <div>
-                    <label>Link Button</label>
-                    <fusion-button [link]="true" [loading]="true">Link Button</fusion-button>
-                </div>
-            </div>
 
-        </fusion-example-block>
-
-        <div class="is-example-title">Variations</div>
-        <fusion-example-block id="typeSizes" title="Sizes">
-            <!-- region code examples-->
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<div>
+            </fusion-example-block>
+            <div class="is-example-title">Variations</div>
+            <fusion-example-block id="typeSizes" title="Sizes">
+                <!-- region code examples-->
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<div>
     <div>
         <label>Small</label>
         <fusion-button class="small">Button</fusion-button>
@@ -218,280 +224,283 @@
         <fusion-button class="large">Button</fusion-button>
     </div>
 </div>'
-                ></fusion-code-block>
-            </ng-template>
-            <!-- endregion code examples-->
+                    ></fusion-code-block>
+                </ng-template>
+                <!-- endregion code examples-->
 
-            <div class="row" style="margin-bottom: 15px">
-                <div class="col-2 font-bodySmallStrong">Small</div>
-                <div class="col-10">
-                    <div class="example-content">
-                        <div>
-                            <label>Default</label>
-                            <fusion-button class="small">Button</fusion-button>
-                        </div>
-                        <div>
-                            <label>Icon left</label>
-                            <fusion-button class="small" icon="frame">Button</fusion-button>
-                        </div>
-                        <div>
-                            <label>Icon right</label>
-                            <fusion-button class="small fu-icon-right" icon="frame">Button</fusion-button>
-                        </div>
-                        <div>
-                            <label>Icon only</label>
-                            <fusion-button class="small" icon="frame"></fusion-button>
-                        </div>
-                        <div>
-                            <label>Link Button</label>
-                            <fusion-button class="small" [link]="true">Link Button</fusion-button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row" style="margin-bottom: 15px">
-                <div class="col-2 font-bodySmallStrong">Medium (Default)</div>
-                <div class="col-10">
-                    <div class="example-content">
-                        <div>
-                            <label>Default</label>
-                            <fusion-button>Button</fusion-button>
-                        </div>
-                        <div>
-                            <label>Icon left</label>
-                            <fusion-button icon="frame">Button</fusion-button>
-                        </div>
-                        <div>
-                            <label>Icon right</label>
-                            <fusion-button class="fu-icon-right" icon="frame">Button</fusion-button>
-                        </div>
-                        <div>
-                            <label>Icon only</label>
-                            <fusion-button icon="frame"></fusion-button>
-                        </div>
-                        <div>
-                            <label>Link Button</label>
-                            <fusion-button [link]="true">Link Button</fusion-button>
+                <div class="row" style="margin-bottom: 15px">
+                    <div class="col-2 font-bodySmallStrong">Small</div>
+                    <div class="col-10">
+                        <div class="example-content">
+                            <div>
+                                <label>Default</label>
+                                <fusion-button class="small">Button</fusion-button>
+                            </div>
+                            <div>
+                                <label>Icon left</label>
+                                <fusion-button class="small" icon="frame">Button</fusion-button>
+                            </div>
+                            <div>
+                                <label>Icon right</label>
+                                <fusion-button class="small fu-icon-right" icon="frame">Button</fusion-button>
+                            </div>
+                            <div>
+                                <label>Icon only</label>
+                                <fusion-button class="small" icon="frame"></fusion-button>
+                            </div>
+                            <div>
+                                <label>Link Button</label>
+                                <fusion-button class="small" [link]="true">Link Button</fusion-button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-2 font-bodySmallStrong">Large</div>
-                <div class="col-10">
-                    <div class="example-content">
-                        <div>
-                            <label>Default</label>
-                            <fusion-button class="large">Button</fusion-button>
-                        </div>
-                        <div>
-                            <label>Icon left</label>
-                            <fusion-button class="large" icon="frame">Button</fusion-button>
-                        </div>
-                        <div>
-                            <label>Icon right</label>
-                            <fusion-button class="large fu-icon-right" icon="frame">Button</fusion-button>
-                        </div>
-                        <div>
-                            <label>Icon only</label>
-                            <fusion-button class="large" icon="frame"></fusion-button>
+                <div class="row" style="margin-bottom: 15px">
+                    <div class="col-2 font-bodySmallStrong">Medium (Default)</div>
+                    <div class="col-10">
+                        <div class="example-content">
+                            <div>
+                                <label>Default</label>
+                                <fusion-button>Button</fusion-button>
+                            </div>
+                            <div>
+                                <label>Icon left</label>
+                                <fusion-button icon="frame">Button</fusion-button>
+                            </div>
+                            <div>
+                                <label>Icon right</label>
+                                <fusion-button class="fu-icon-right" icon="frame">Button</fusion-button>
+                            </div>
+                            <div>
+                                <label>Icon only</label>
+                                <fusion-button icon="frame"></fusion-button>
+                            </div>
+                            <div>
+                                <label>Link Button</label>
+                                <fusion-button [link]="true">Link Button</fusion-button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="col-2 font-bodySmallStrong">Large</div>
+                    <div class="col-10">
+                        <div class="example-content">
+                            <div>
+                                <label>Default</label>
+                                <fusion-button class="large">Button</fusion-button>
+                            </div>
+                            <div>
+                                <label>Icon left</label>
+                                <fusion-button class="large" icon="frame">Button</fusion-button>
+                            </div>
+                            <div>
+                                <label>Icon right</label>
+                                <fusion-button class="large fu-icon-right" icon="frame">Button</fusion-button>
+                            </div>
+                            <div>
+                                <label>Icon only</label>
+                                <fusion-button class="large" icon="frame"></fusion-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        </fusion-example-block>
-        <fusion-example-block id="typeThemes" title="Themes">
-            <!-- region code examples-->
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='<fusion-button class="secondary">Button</fusion-button>
+            </fusion-example-block>
+            <fusion-example-block id="typeThemes" title="Themes">
+                <!-- region code examples-->
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='<fusion-button class="secondary">Button</fusion-button>
 <fusion-button class="third">Button</fusion-button>
 <fusion-button class="danger">Button</fusion-button>'
-                ></fusion-code-block>
-            </ng-template>
-            <!-- endregion code examples-->
+                    ></fusion-code-block>
+                </ng-template>
+                <!-- endregion code examples-->
 
-            <div class="row" style="margin-bottom: 15px">
-                <div class="col-2 font-bodySmallStrong">Secondary</div>
-                <div class="col-10">
-                    <div class="example-content">
-                        <div>
-                            <label>Default</label>
-                            <fusion-button class="secondary">Button</fusion-button>
-                        </div>
-                        <div>
-                            <label>Icon left</label>
-                            <fusion-button class="secondary" icon="frame">Button</fusion-button>
-                        </div>
-                        <div>
-                            <label>Icon right</label>
-                            <fusion-button class="secondary fu-icon-right" icon="frame">Button</fusion-button>
-                        </div>
-                        <div>
-                            <label>Icon only</label>
-                            <fusion-button class="secondary" icon="frame"></fusion-button>
-                        </div>
-                        <div>
-                            <label>Link Button</label>
-                            <fusion-button class="secondary" [link]="true">Link Button</fusion-button>
+                <div class="row" style="margin-bottom: 15px">
+                    <div class="col-2 font-bodySmallStrong">Secondary</div>
+                    <div class="col-10">
+                        <div class="example-content">
+                            <div>
+                                <label>Default</label>
+                                <fusion-button class="secondary">Button</fusion-button>
+                            </div>
+                            <div>
+                                <label>Icon left</label>
+                                <fusion-button class="secondary" icon="frame">Button</fusion-button>
+                            </div>
+                            <div>
+                                <label>Icon right</label>
+                                <fusion-button class="secondary fu-icon-right" icon="frame">Button</fusion-button>
+                            </div>
+                            <div>
+                                <label>Icon only</label>
+                                <fusion-button class="secondary" icon="frame"></fusion-button>
+                            </div>
+                            <div>
+                                <label>Link Button</label>
+                                <fusion-button class="secondary" [link]="true">Link Button</fusion-button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row" style="margin-bottom: 15px">
-                <div class="col-2 font-bodySmallStrong">Third</div>
-                <div class="col-10">
-                    <div class="example-content">
-                        <div>
-                            <label>Default</label>
-                            <fusion-button class="third">Button</fusion-button>
-                        </div>
-                        <div>
-                            <label>Icon left</label>
-                            <fusion-button class="third" icon="frame">Button</fusion-button>
-                        </div>
-                        <div>
-                            <label>Icon right</label>
-                            <fusion-button class="third fu-icon-right" icon="frame">Button</fusion-button>
-                        </div>
-                        <div>
-                            <label>Icon only</label>
-                            <fusion-button class="third" icon="frame"></fusion-button>
-                        </div>
-                        <div>
-                            <label>Link Button</label>
-                            <fusion-button class="third" [link]="true">Link Button</fusion-button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-2 font-bodySmallStrong">Danger</div>
-                <div class="col-10">
-                    <div class="example-content">
-                        <div>
-                            <label>Default</label>
-                            <fusion-button class="danger">Button</fusion-button>
-                        </div>
-                        <div>
-                            <label>Icon left</label>
-                            <fusion-button class="danger" icon="frame">Button</fusion-button>
-                        </div>
-                        <div>
-                            <label>Icon right</label>
-                            <fusion-button class="danger fu-icon-right" icon="frame">Button</fusion-button>
-                        </div>
-                        <div>
-                            <label>Icon only</label>
-                            <fusion-button class="danger" icon="frame"></fusion-button>
+                <div class="row" style="margin-bottom: 15px">
+                    <div class="col-2 font-bodySmallStrong">Third</div>
+                    <div class="col-10">
+                        <div class="example-content">
+                            <div>
+                                <label>Default</label>
+                                <fusion-button class="third">Button</fusion-button>
+                            </div>
+                            <div>
+                                <label>Icon left</label>
+                                <fusion-button class="third" icon="frame">Button</fusion-button>
+                            </div>
+                            <div>
+                                <label>Icon right</label>
+                                <fusion-button class="third fu-icon-right" icon="frame">Button</fusion-button>
+                            </div>
+                            <div>
+                                <label>Icon only</label>
+                                <fusion-button class="third" icon="frame"></fusion-button>
+                            </div>
+                            <div>
+                                <label>Link Button</label>
+                                <fusion-button class="third" [link]="true">Link Button</fusion-button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="col-2 font-bodySmallStrong">Danger</div>
+                    <div class="col-10">
+                        <div class="example-content">
+                            <div>
+                                <label>Default</label>
+                                <fusion-button class="danger">Button</fusion-button>
+                            </div>
+                            <div>
+                                <label>Icon left</label>
+                                <fusion-button class="danger" icon="frame">Button</fusion-button>
+                            </div>
+                            <div>
+                                <label>Icon right</label>
+                                <fusion-button class="danger fu-icon-right" icon="frame">Button</fusion-button>
+                            </div>
+                            <div>
+                                <label>Icon only</label>
+                                <fusion-button class="danger" icon="frame"></fusion-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        </fusion-example-block>
-
-
-        <fusion-example-block id="typeVariants" title="Variants">
-            <!-- region code examples-->
-            <ng-template fusionExampleBlock="Angular">
-                <fusion-code-block
-                    lang="html"
-                    class="is-collapsible"
-                    code='
+            </fusion-example-block>
+            <fusion-example-block id="typeVariants" title="Variants">
+                <!-- region code examples-->
+                <ng-template fusionExampleBlock="Angular">
+                    <fusion-code-block
+                        lang="html"
+                        class="is-collapsible"
+                        code='
 <label>Border</label>
 <fusion-button class="transparent">Button</fusion-button>
 
 <label>Ghost</label>
 <fusion-button class="transparent secondary dark">Button</fusion-button>
 '
-                ></fusion-code-block>
-            </ng-template>
-            <!-- endregion code examples-->
+                    ></fusion-code-block>
+                </ng-template>
+                <!-- endregion code examples-->
 
-            <div class="row" style="margin-bottom: 15px">
-                <div class="col-2 font-bodySmallStrong">Primary (default)</div>
-                <div class="col-10">
-                    <div class="example-content">
-                        <div>
-                            <label>Default</label>
-                            <fusion-button>Button</fusion-button>
-                        </div>
-                        <div>
-                            <label>Icon left</label>
-                            <fusion-button icon="frame">Button</fusion-button>
-                        </div>
-                        <div>
-                            <label>Icon right</label>
-                            <fusion-button class="fu-icon-right" icon="frame">Button</fusion-button>
-                        </div>
-                        <div>
-                            <label>Icon only</label>
-                            <fusion-button icon="frame"></fusion-button>
-                        </div>
-                        <div>
-                            <label>Link Button</label>
-                            <fusion-button [link]="true">Link Button</fusion-button>
+                <div class="row" style="margin-bottom: 15px">
+                    <div class="col-2 font-bodySmallStrong">Primary (default)</div>
+                    <div class="col-10">
+                        <div class="example-content">
+                            <div>
+                                <label>Default</label>
+                                <fusion-button>Button</fusion-button>
+                            </div>
+                            <div>
+                                <label>Icon left</label>
+                                <fusion-button icon="frame">Button</fusion-button>
+                            </div>
+                            <div>
+                                <label>Icon right</label>
+                                <fusion-button class="fu-icon-right" icon="frame">Button</fusion-button>
+                            </div>
+                            <div>
+                                <label>Icon only</label>
+                                <fusion-button icon="frame"></fusion-button>
+                            </div>
+                            <div>
+                                <label>Link Button</label>
+                                <fusion-button [link]="true">Link Button</fusion-button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row" style="margin-bottom: 15px">
-                <div class="col-2 font-bodySmallStrong">Border</div>
-                <div class="col-10">
-                    <div class="example-content">
-                        <div>
-                            <label>Default</label>
-                            <fusion-button class="transparent">Button</fusion-button>
-                        </div>
-                        <div>
-                            <label>Icon left</label>
-                            <fusion-button class="transparent" icon="frame">Button</fusion-button>
-                        </div>
-                        <div>
-                            <label>Icon right</label>
-                            <fusion-button class="transparent fu-icon-right" icon="frame">Button</fusion-button>
-                        </div>
-                        <div>
-                            <label>Icon only</label>
-                            <fusion-button class="transparent" icon="frame"></fusion-button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-2 font-bodySmallStrong">Ghost</div>
-                <div class="col-10" style="background-color: #53575b;">
-                    <div class="example-content dark-bg">
-                        <div>
-                            <label>Default</label>
-                            <fusion-button class="transparent secondary dark">Button</fusion-button>
-                        </div>
-                        <div>
-                            <label>Icon left</label>
-                            <fusion-button class="transparent secondary dark" icon="frame">Button</fusion-button>
-                        </div>
-                        <div>
-                            <label>Icon right</label>
-                            <fusion-button class="transparent secondary dark fu-icon-right" icon="frame">Button</fusion-button>
-                        </div>
-                        <div>
-                            <label>Icon only</label>
-                            <fusion-button class="transparent secondary dark" icon="frame"></fusion-button>
+                <div class="row" style="margin-bottom: 15px">
+                    <div class="col-2 font-bodySmallStrong">Border</div>
+                    <div class="col-10">
+                        <div class="example-content">
+                            <div>
+                                <label>Default</label>
+                                <fusion-button class="transparent">Button</fusion-button>
+                            </div>
+                            <div>
+                                <label>Icon left</label>
+                                <fusion-button class="transparent" icon="frame">Button</fusion-button>
+                            </div>
+                            <div>
+                                <label>Icon right</label>
+                                <fusion-button class="transparent fu-icon-right" icon="frame">Button</fusion-button>
+                            </div>
+                            <div>
+                                <label>Icon only</label>
+                                <fusion-button class="transparent" icon="frame"></fusion-button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="col-2 font-bodySmallStrong">Ghost</div>
+                    <div class="col-10" style="background-color: #53575b;">
+                        <div class="example-content dark-bg">
+                            <div>
+                                <label>Default</label>
+                                <fusion-button class="transparent secondary dark">Button</fusion-button>
+                            </div>
+                            <div>
+                                <label>Icon left</label>
+                                <fusion-button class="transparent secondary dark" icon="frame">Button</fusion-button>
+                            </div>
+                            <div>
+                                <label>Icon right</label>
+                                <fusion-button class="transparent secondary dark fu-icon-right" icon="frame">Button
+                                </fusion-button>
+                            </div>
+                            <div>
+                                <label>Icon only</label>
+                                <fusion-button class="transparent secondary dark" icon="frame"></fusion-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        </fusion-example-block>
+            </fusion-example-block>
+            <!-- endregion UI-Component Examples-->
+        </div>
 
+        <div class="docs-playground" *ngIf="selectedTab.text==='Playground'">
+            sss
+        </div>
 
-        <!-- endregion UI-Component Examples-->
     </div>
-    <div class="col-3 is-right-side-menu-holder">
+    <div *ngIf="selectedTab.text==='Variations'" class="col-3 is-right-side-menu-holder">
         <!--UI-Component Examples menu-->
         <fusion-docs-menu [menuData]="rightMenu"></fusion-docs-menu>
         <!--UI-Component Examples menu-->

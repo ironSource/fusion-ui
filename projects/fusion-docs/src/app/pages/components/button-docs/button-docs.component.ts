@@ -5,6 +5,7 @@ import {DocsLayoutService} from '../../docs/docs-layout.service';
 import {VersionService} from '../../../services/version/version.service';
 import {BehaviorSubject} from 'rxjs';
 import {delay, tap} from 'rxjs/operators';
+import {TabConfiguration} from '@ironsource/fusion-ui/components/tabs/v2';
 
 @Component({
     selector: 'fusion-button-docs',
@@ -52,8 +53,10 @@ export class ButtonDocsComponent implements OnInit {
         }
     ];
 
+    /*
     buttonIcon = 'activate';
     isLoading = false;
+*/
 
     /*
     styleVersion = StyleVersion;
@@ -69,6 +72,9 @@ export class ButtonDocsComponent implements OnInit {
         })
     );
 */
+
+    pageTabs = {tabs: [{text: 'Variations'}, {text: 'Playground'}], tabWidth: 200};
+    selectedTab: TabConfiguration = this.pageTabs.tabs[0];
 
     constructor(/*private versionService: VersionService, */ private docLayoutService: DocsLayoutService) {}
 
