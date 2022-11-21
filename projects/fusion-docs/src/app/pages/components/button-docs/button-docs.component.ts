@@ -16,80 +16,37 @@ export class ButtonDocsComponent implements OnInit {
 
     rightMenu: DocsMenuItem[] = [
         {
-            title: 'Type',
+            title: 'State',
             items: [
                 {
-                    label: 'Regular',
-                    scrollTo: '#typeRegular',
+                    label: 'Default',
+                    scrollTo: '#typeDefault',
                     scrollOffset: 30
                 },
                 {
-                    label: 'Stroke',
-                    scrollTo: '#typeStroke',
-                    scrollOffset: 15,
-                    styleVersions: [1]
-                },
-                {
-                    label: 'Link',
-                    scrollTo: '#typeLink',
-                    scrollOffset: 15,
-                    styleVersions: [2]
-                },
-                {
-                    label: 'Color',
-                    scrollTo: '#typeColor',
-                    scrollOffset: 15
-                },
-                {
-                    label: 'Transparent',
-                    scrollTo: '#typeTransparent',
-                    scrollOffset: 15,
-                    styleVersions: [2]
-                },
-                {
-                    label: 'Icon',
-                    scrollTo: '#typeIcon',
-                    scrollOffset: 15
-                }
-            ]
-        },
-        {
-            title: 'States',
-            items: [
-                {
-                    label: 'Disabled',
-                    scrollTo: '#buttonDisabled',
-                    scrollOffset: 30
+                    label: 'Disable',
+                    scrollTo: '#typeDisabled'
                 },
                 {
                     label: 'Loading',
-                    scrollTo: '#buttonLoading',
-                    scrollOffset: 15
+                    scrollTo: '#typeLoading'
                 }
             ]
         },
         {
-            title: 'Size',
+            title: 'Variations',
             items: [
                 {
-                    label: 'Minimum Width',
-                    scrollTo: '#buttonSize',
-                    scrollOffset: 0
-                }
-            ]
-        },
-        {
-            title: 'Configuration',
-            items: [
-                {
-                    label: 'Parameters',
-                    scrollTo: '#params',
-                    scrollOffset: 30
+                    label: 'Sizes',
+                    scrollTo: '#typeSizes'
                 },
                 {
-                    label: 'Events',
-                    scrollTo: '#events',
-                    scrollOffset: 30
+                    label: 'Themes',
+                    scrollTo: '#typeThemes'
+                },
+                {
+                    label: 'Variants',
+                    scrollTo: '#typeVariants'
                 }
             ]
         }
@@ -98,6 +55,7 @@ export class ButtonDocsComponent implements OnInit {
     buttonIcon = 'activate';
     isLoading = false;
 
+    /*
     styleVersion = StyleVersion;
     styleUpdatingDelay = 0;
     styleUpdating$ = new BehaviorSubject(false);
@@ -110,8 +68,9 @@ export class ButtonDocsComponent implements OnInit {
             this.styleUpdating$.next(false);
         })
     );
+*/
 
-    constructor(private versionService: VersionService, private docLayoutService: DocsLayoutService) {}
+    constructor(/*private versionService: VersionService, */ private docLayoutService: DocsLayoutService) {}
 
     ngOnInit() {
         this.docLayoutService.updateLayoutHeaderTitle({
@@ -119,6 +78,7 @@ export class ButtonDocsComponent implements OnInit {
         });
     }
 
+    /*
     onTestClick() {
         this.buttonIcon = null;
         this.isLoading = true;
@@ -138,4 +98,5 @@ export class ButtonDocsComponent implements OnInit {
             this.isLoading = false;
         }, 2000);
     }
+*/
 }

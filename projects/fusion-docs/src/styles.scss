@@ -1,10 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import './styles/vars.scss';
 
-//* {
-//    box-sizing: border-box;
-//}
-
 body {
     font: 13px/20px $body;
     color: $dark-300;
@@ -14,12 +10,34 @@ body {
 }
 
 
-.doc-page{
-  padding:30px;
+.doc-page {
+    padding: 30px;
 }
 
+.component-description {
+    @extend %font-bodyLarge;
+}
+
+.example-content {
+    display: inline-flex;
+    gap: 20px;
+    padding: 5px 0;
+    label {
+        display: block;
+        @extend %font-bodySmallStrong;
+        padding-left: 5px;
+        margin-bottom: 5px;
+    }
+    &.dark-bg{
+        label {
+            color: $White;
+        }
+    }
+}
+
+
 // override bootstrap grid padding & margin
-.row{
+/*.row{
     padding: 0;
     margin: 0;
 
@@ -34,7 +52,7 @@ body {
             margin-right: 0;
         }
     }
-}
+}*/
 
 
 
