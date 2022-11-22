@@ -11,6 +11,7 @@ module.exports = {
         builder: '@storybook/builder-webpack5'
     },
     features: {
-        babelModeV7: true
+        babelModeV7: true,
+        previewMdx2: true
     }
 };
