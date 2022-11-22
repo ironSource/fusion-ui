@@ -160,7 +160,7 @@ SizeSmall.args = {class_size: 'small'};
 SizeSmall.parameters = {
     docs: {
         description: {
-            story: `SizeSmall description here`
+            story: `SizeSmall description here [See on Stackblitz](https://stackblitz.com/edit/angular-uhtzkd)`
         }
     },
     source: {
