@@ -6,10 +6,13 @@ import {ExampleBlockModule} from '../../../components/example-block/example-bloc
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {AlertModule} from '@ironsource/fusion-ui/components/alert/v2';
 import {Router} from '@angular/router';
+import {CapitalizePipe, TruncatePipe} from "@ironsource/fusion-ui/pipes/string";
 
 class RouterStub {
     url = '';
-    navigate(commands: any[], extras?: any) {}
+
+    navigate(commands: any[], extras?: any) {
+    }
 }
 
 describe('AlertDocsV2Component', () => {
@@ -19,7 +22,7 @@ describe('AlertDocsV2Component', () => {
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [AlertDocsV2Component],
-            imports: [DocsMenuModule, ExampleBlockModule, CodeBlockModule, AlertModule],
+            imports: [DocsMenuModule, ExampleBlockModule, CodeBlockModule, AlertModule, CapitalizePipe, TruncatePipe],
             providers: [{provide: Router, useClass: RouterStub}]
         }).compileComponents();
     }));

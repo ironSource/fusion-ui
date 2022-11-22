@@ -4,7 +4,7 @@ import {Observable, of} from 'rxjs';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {ApiService} from '@ironsource/fusion-ui/services/api';
-import {SecondsToMinutesModule} from '@ironsource/fusion-ui/pipes/numbers';
+import {SecondsToMinutesPipe} from '@ironsource/fusion-ui/pipes/numbers';
 
 class MockApiService {
     get(url): Observable<any> {
@@ -19,7 +19,7 @@ describe('VideoPlayerComponent', () => {
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [VideoPlayerComponent],
-            imports: [IconModule, SecondsToMinutesModule],
+            imports: [IconModule, SecondsToMinutesPipe],
             providers: [{provide: ApiService, useClass: MockApiService}, LogService]
         }).compileComponents();
     }));

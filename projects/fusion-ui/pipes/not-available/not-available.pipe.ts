@@ -1,8 +1,12 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import {Injectable, Pipe, PipeTransform} from '@angular/core';
 import {isNull} from '@ironsource/fusion-ui/utils';
 
+@Injectable({
+    providedIn: 'root'
+})
 @Pipe({
-    name: 'notAvailable'
+    name: 'notAvailable',
+    standalone: true
 })
 export class NotAvailablePipe implements PipeTransform {
     transform(value: any, expectedValue?: string): any {

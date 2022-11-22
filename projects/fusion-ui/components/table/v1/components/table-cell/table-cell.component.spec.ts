@@ -14,8 +14,8 @@ import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside
 import {MultiDropdownModule} from '@ironsource/fusion-ui/components/multi-dropdown/v1';
 import {InputInlineModule} from '@ironsource/fusion-ui/components/input-inline/v1';
 import {TableService} from '@ironsource/fusion-ui/components/table/common/services';
-import {NotAvailableModule} from '@ironsource/fusion-ui/pipes/not-available';
-import {GenericPipeModule} from '@ironsource/fusion-ui/pipes/generic';
+import {NotAvailablePipe} from '@ironsource/fusion-ui/pipes/not-available';
+import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 
 describe('TableCellComponent', () => {
     let component: TableCellComponent;
@@ -37,8 +37,8 @@ describe('TableCellComponent', () => {
                 ToggleModule,
                 ClickOutsideModule,
                 ReactiveFormsModule,
-                NotAvailableModule,
-                GenericPipeModule
+                NotAvailablePipe,
+                GenericPipe
             ],
             declarations: [TableCellComponent],
             providers: [TableService]

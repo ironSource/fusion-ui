@@ -8,10 +8,9 @@ import {ApiOptions, ApiPaginationOptions, ApiRequestOptions, ApiResponseType, Ap
 import {API_OPTIONS_TOKEN} from './api-config';
 import {isObject} from '@ironsource/fusion-ui/utils';
 import {HttpResponseStatusCodesEnum} from './http-response-status-codes.enum';
-import {ApiModule} from './api.module';
 
 @Injectable({
-    providedIn: ApiModule
+    providedIn: 'root'
 })
 export class ApiService {
     public authTokenChange = new EventEmitter();

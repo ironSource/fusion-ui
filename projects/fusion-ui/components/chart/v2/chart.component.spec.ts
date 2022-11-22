@@ -7,8 +7,6 @@ import {ColorsService} from '@ironsource/fusion-ui/services/colors';
 import {ShortNumberScaleSuffixPipe} from '@ironsource/fusion-ui/pipes/numbers';
 import {DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {ShortNumberScaleSuffixModule} from '@ironsource/fusion-ui/pipes/numbers';
-import {CloneModule} from '@ironsource/fusion-ui/pipes/clone';
 import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
 import {ChartDataService, ChartType, ChartData} from '@ironsource/fusion-ui/components/chart/common/base';
 
@@ -57,7 +55,7 @@ describe('ChartComponent', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [LoaderModule, ShortNumberScaleSuffixModule, CloneModule],
+            imports: [LoaderModule, ShortNumberScaleSuffixPipe, ClonePipe],
             declarations: [ChartComponent],
             providers: [
                 ColorsService,

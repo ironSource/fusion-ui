@@ -2,12 +2,10 @@ import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ReactiveFormsModule} from '@angular/forms';
 import {InputModule} from '@ironsource/fusion-ui/components/input/v1';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
-import {FilterByFieldModule} from '@ironsource/fusion-ui/pipes/collection';
-import {CloneModule} from '@ironsource/fusion-ui/pipes/clone';
+import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
+import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {LogService} from '@ironsource/fusion-ui/services/log';
-import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
-import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
 import {ApiService} from '@ironsource/fusion-ui/services/api';
 import {MockLogService, MockUniqueIdService, MockApiService} from '@ironsource/fusion-ui/services/mocks';
 import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/service';
@@ -26,8 +24,8 @@ describe('AddboxDropdownComponent', () => {
                 ReactiveFormsModule,
                 InputModule,
                 ClickOutsideModule,
-                FilterByFieldModule,
-                CloneModule,
+                FilterByFieldPipe,
+                ClonePipe,
                 DropdownLoaderModule,
                 DropdownOptionModule,
                 DropdownOptionsListModule

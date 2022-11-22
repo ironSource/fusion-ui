@@ -9,6 +9,8 @@ import {MultiDropdownModule} from '@ironsource/fusion-ui/components/multi-dropdo
 import {Router, RouterModule} from '@angular/router';
 import {DropdownModule} from '@ironsource/fusion-ui/components/dropdown/v2';
 import {ErrorMessageModule} from '@ironsource/fusion-ui/components/error-message/v2';
+import {FilterByFieldPipe} from "@ironsource/fusion-ui/pipes/collection";
+import {ClonePipe} from "@ironsource/fusion-ui/pipes/clone";
 
 class RouterStub {
     url = '';
@@ -32,7 +34,7 @@ describe('DropdownDocsV2Component', () => {
                 MultiDropdownModule,
                 ErrorMessageModule
             ],
-            providers: [{provide: Router, useClass: RouterStub}]
+            providers: [{provide: Router, useClass: RouterStub}, FilterByFieldPipe, ClonePipe]
         }).compileComponents();
     }));
 

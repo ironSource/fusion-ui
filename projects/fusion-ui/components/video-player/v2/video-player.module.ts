@@ -4,12 +4,12 @@ import {VideoPlayerComponent} from './video-player.component';
 import {VideoPlayerOptions, VIDEO_PLAYER_OPTIONS_DEFUALT_VALUE} from '@ironsource/fusion-ui/components/video-player/common/entities';
 import {SVG_OPTIONS_TOKEN} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
-import {SecondsToMinutesModule} from '@ironsource/fusion-ui/pipes/numbers';
+import {SecondsToMinutesPipe} from '@ironsource/fusion-ui/pipes/numbers';
 
 @NgModule({
     declarations: [VideoPlayerComponent],
     exports: [VideoPlayerComponent],
-    imports: [CommonModule, IconModule, SecondsToMinutesModule]
+    imports: [CommonModule, IconModule, SecondsToMinutesPipe]
 })
 export class VideoPlayerModule {
     static forRoot(options?: VideoPlayerOptions): ModuleWithProviders<VideoPlayerModule> {

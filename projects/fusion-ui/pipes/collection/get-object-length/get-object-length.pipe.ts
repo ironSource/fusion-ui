@@ -1,7 +1,11 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import {Injectable, Pipe, PipeTransform} from '@angular/core';
 
+@Injectable({
+    providedIn: 'root'
+})
 @Pipe({
-    name: 'objectLengthWhereValueTrue'
+    name: 'objectLengthWhereValueTrue',
+    standalone: true
 })
 export class GetObjectLengthPipe implements PipeTransform {
     /**
