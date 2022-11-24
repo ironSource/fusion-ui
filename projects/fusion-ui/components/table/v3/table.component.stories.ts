@@ -38,7 +38,7 @@ export default {
         }
     },
     args: {
-        columns: [],
+        columns: TABLE_DEFAULT_COLUMNS_CONFIG,
         rows: []
     }
 } as Meta<TableComponent>;
