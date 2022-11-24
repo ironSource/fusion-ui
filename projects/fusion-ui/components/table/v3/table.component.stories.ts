@@ -7,6 +7,7 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TableColumn, TableModule, TableOptions} from '@ironsource/fusion-ui/components/table';
 import {TableComponent} from './table.component';
+import {EventEmitter} from '@angular/core';
 
 // region Mocking data
 const TABLE_DEFAULT_OPTIONS: TableOptions = {
@@ -120,7 +121,7 @@ export default {
         },
         docs: {
             description: {
-                component: 'Tables description'
+                component: '**Tables** description'
             }
         }
     },
@@ -148,9 +149,7 @@ NoData.args = {rows: []};
 NoData.parameters = {
     docs: {
         description: {
-            story: dedent`
-            *Empty* table with no data. Input property rows has blank array \`rows:[]\`
-            `
+            story: dedent`**Empty** table with no data. Input property rows has blank array \`rows:[]\``
         }
     }
 };
@@ -161,7 +160,7 @@ Loading.parameters = {
     docs: {
         description: {
             story: dedent`
-            *Loading* table - when data requested, but not arrived yet you can set table to *loading* state.
+            **Loading** table - when data requested, but not arrived yet you can set table to *loading* state.
             **rows** - must be empty array, and property **loading** must be true.
             \`rows:[], loading: true\`
             `
@@ -176,9 +175,38 @@ Sorting.args = {
 Sorting.parameters = {
     docs: {
         description: {
-            story: dedent`*Sortable* table - local sorting supported for columns where has \`sort: ''\` property in column configuration.
+            story: dedent`**Sortable** table - local sorting supported for columns where has \`sort: ''\` property in column configuration.
                 If it set \`sort: 'asc'\` it mean that data in table will be ascending sorted by default.
                 For descending use - "desc".`
+        }
+    }
+};
+
+export const InFrame = TableTemplate.bind({});
+InFrame.args = {
+    options: {
+        ...TABLE_DEFAULT_OPTIONS,
+        ...{
+            tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'},
+            searchOptions: {
+                placeholder: 'Search',
+                onSearch: new EventEmitter()
+            }
+        }
+    }
+};
+InFrame.parameters = {
+    docs: {
+        description: {
+            story: dedent`**Framed** table - table in frame with **frame header** and **frame footer**
+            To show table in frame need to update options with properties *(example)*:
+            \`{
+            tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'},
+            searchOptions: {
+                placeholder: 'Search',
+                onSearch: new EventEmitter()
+            }\`
+            `
         }
     }
 };
