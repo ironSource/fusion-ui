@@ -103,6 +103,10 @@ export default {
         })
     ],
     parameters: {
+        design: {
+            type: 'figma',
+            url: 'https://www.figma.com/file/V4eZU3qDgKYPhR4eaTvSwy/%F0%9F%8E%A8-Style-guide-2021-Master?node-id=5529%3A98551'
+        },
         docs: {
             description: {
                 component: 'Tables description'
@@ -112,7 +116,8 @@ export default {
     args: {
         options: TABLE_DEFAULT_OPTIONS,
         columns: TABLE_DEFAULT_COLUMNS_CONFIG,
-        rows: ROWS_DEFAULT_DATA
+        rows: ROWS_DEFAULT_DATA,
+        loading: false
     }
 } as Meta<TableComponent>;
 

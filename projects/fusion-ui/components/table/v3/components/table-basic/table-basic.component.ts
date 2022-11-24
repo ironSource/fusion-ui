@@ -19,6 +19,7 @@ import {takeUntil} from 'rxjs/operators';
 export class TableBasicComponent implements OnInit, OnDestroy {
     @Input() rows: {[key: string]: any}[];
     @Input() columns: TableColumn[];
+    /** @internal */
     @Input() expandedRows: {[key: string]: boolean};
 
     @Input() set options(value: TableOptions) {
