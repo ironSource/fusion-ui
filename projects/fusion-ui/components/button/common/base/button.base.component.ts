@@ -14,7 +14,7 @@ import {
 import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
 import {BehaviorSubject, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {isNullOrUndefined} from '@ironsource/fusion-ui';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Directive()
 export abstract class ButtonBaseComponent implements OnInit, OnDestroy {
