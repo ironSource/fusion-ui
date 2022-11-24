@@ -1,5 +1,6 @@
 import {Story, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
+import {dedent} from 'ts-dedent';
 import {CommonModule} from '@angular/common';
 import {environment} from 'stories/environments/environment';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
@@ -12,6 +13,7 @@ const TABLE_DEFAULT_OPTIONS: TableOptions = {
     sortingType: 'local',
     noDataSubMessage: 'Try using again with a different filters'
 };
+// region Columnsconfig
 const TABLE_DEFAULT_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'id', title: 'Id'},
     {key: 'name', title: 'Name'},
@@ -19,6 +21,15 @@ const TABLE_DEFAULT_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'email', title: 'Email'},
     {key: 'website', title: 'Website'}
 ];
+const TABLE_SORTING_COLUMNS_CONFIG: TableColumn[] = [
+    {key: 'id', title: 'Id', sort: 'asc'},
+    {key: 'name', title: 'Name', sort: ''},
+    {key: 'username', title: 'Username', sort: ''},
+    {key: 'email', title: 'Email', sort: ''},
+    {key: 'website', title: 'Website'}
+];
+
+// endregion
 const ROWS_DEFAULT_DATA = [
     {
         id: 1,
@@ -116,8 +127,7 @@ export default {
     args: {
         options: TABLE_DEFAULT_OPTIONS,
         columns: TABLE_DEFAULT_COLUMNS_CONFIG,
-        rows: ROWS_DEFAULT_DATA,
-        loading: false
+        rows: ROWS_DEFAULT_DATA
     }
 } as Meta<TableComponent>;
 
@@ -127,7 +137,48 @@ const TableTemplate: Story<TableComponent> = (args: TableComponent) => ({
     [options]="options"
     [columns]="columns"
     [rows]="rows"
+    [loading]="loading"
 ></fusion-table>`
 });
 
 export const Default = TableTemplate.bind({});
+
+export const NoData = TableTemplate.bind({});
+NoData.args = {rows: []};
+NoData.parameters = {
+    docs: {
+        description: {
+            story: dedent`
+            *Empty* table with no data. Input property rows has blank array \`rows:[]\`
+            `
+        }
+    }
+};
+
+export const Loading = TableTemplate.bind({});
+Loading.args = {rows: [], loading: true};
+Loading.parameters = {
+    docs: {
+        description: {
+            story: dedent`
+            *Loading* table - when data requested, but not arrived yet you can set table to *loading* state.
+            **rows** - must be empty array, and property **loading** must be true.
+            \`rows:[], loading: true\`
+            `
+        }
+    }
+};
+
+export const Sorting = TableTemplate.bind({});
+Sorting.args = {
+    columns: TABLE_SORTING_COLUMNS_CONFIG
+};
+Sorting.parameters = {
+    docs: {
+        description: {
+            story: dedent`*Sortable* table - local sorting supported for columns where has \`sort: ''\` property in column configuration.
+                If it set \`sort: 'asc'\` it mean that data in table will be ascending sorted by default.
+                For descending use - "desc".`
+        }
+    }
+};
