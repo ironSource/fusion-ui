@@ -6,6 +6,7 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {ButtonLoadingModule} from '@ironsource/fusion-ui/components/button/v3/components/button-loading/button-loading.module';
 import {ButtonComponent} from './button.component';
+import {ButtonModule} from './button.module';
 
 const sizes = [null, 'small', 'large'];
 const themes = ['primary', 'secondary', 'third', 'danger'];
@@ -15,8 +16,8 @@ export default {
     component: ButtonComponent,
     decorators: [
         moduleMetadata({
-            declarations: [ButtonComponent],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, ButtonLoadingModule]
+            declarations: [],
+            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, ButtonModule, ButtonLoadingModule]
         })
     ],
     parameters: {
