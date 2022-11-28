@@ -96,14 +96,14 @@ WithSearch.parameters = {
                 placeholder: 'Search',
                 onSearch: new EventEmitter()
             }\`
-            Then in your host-component you can add subscribtion for rows sortind
-            \`        this.options.searchOptions.onSearch.pipe(takeUntil(this.onDestroy$)).subscribe(value=>{
+            Then in your host-component you can add subscription for rows sorting
+            \`this.options.searchOptions.onSearch.pipe(takeUntil(this.onDestroy$)).subscribe(value=>{
                 this.tableRows = [
                     ...this._rows.filter(item => {
                         return item.name.includes(value);
                     })
                 ];
-            })\`
+            });\`
             `
         },
         source: {
