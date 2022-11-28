@@ -2,10 +2,9 @@ import {TableColumn, TableColumnTypeEnum, TableOptions} from '@ironsource/fusion
 
 // region Mocking data
 export const TABLE_DEFAULT_OPTIONS: TableOptions = {
-    sortingType: 'local',
     noDataSubMessage: 'Try using again with a different filters'
 };
-// region Columnsconfig
+// region Columns-config
 export const TABLE_DEFAULT_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'id', title: 'Id'},
     {key: 'name', title: 'Name'},
@@ -20,13 +19,13 @@ export const TABLE_SORTING_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'email', title: 'Email', sort: ''},
     {key: 'website', title: 'Website'}
 ];
-export const TABLE_CHECKBOX_COLUMNS_CONFIG: TableColumn[] = [
+export const TABLE_CHECKBOX_COLUMNS_CONFIG = [
     {key: 'selected', type: TableColumnTypeEnum.Checkbox, width: '32px'},
-    {key: 'id', title: 'Id'},
-    {key: 'name', title: 'Name'},
-    {key: 'username', title: 'Username'},
-    {key: 'email', title: 'Email'},
-    {key: 'website', title: 'Website'}
+    ...TABLE_DEFAULT_COLUMNS_CONFIG
+];
+export const TABLE_TOGGLE_COLUMNS_CONFIG = [
+    {key: 'live', type: TableColumnTypeEnum.ToggleButton, title: '', width: '45px'},
+    ...TABLE_DEFAULT_COLUMNS_CONFIG
 ];
 
 // endregion
@@ -103,6 +102,9 @@ export const ROWS_DEFAULT_DATA = [
     }
 ];
 export const ROWS_CHECKBOX_DATA = ROWS_DEFAULT_DATA.map(row => {
-    return {...row, selected: false};
+    return {selected: false, ...row};
+});
+export const ROWS_TOGGLE_DATA = ROWS_DEFAULT_DATA.map(row => {
+    return {live: true, ...row};
 });
 // endregion

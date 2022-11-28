@@ -11,14 +11,17 @@ import {TableComponent} from './table.component';
 import {
     ROWS_CHECKBOX_DATA,
     ROWS_DEFAULT_DATA,
+    ROWS_TOGGLE_DATA,
     TABLE_CHECKBOX_COLUMNS_CONFIG,
     TABLE_DEFAULT_COLUMNS_CONFIG,
     TABLE_DEFAULT_OPTIONS,
-    TABLE_SORTING_COLUMNS_CONFIG
+    TABLE_SORTING_COLUMNS_CONFIG,
+    TABLE_TOGGLE_COLUMNS_CONFIG
 } from '@ironsource/fusion-ui/components/table/v3/stories/table.mock-data';
 
 const actionsData = {
-    selectionChanged: action('selectionChanged')
+    selectionChanged: action('selectionChanged'),
+    rowModelChange: action('rowModelChange')
 };
 
 export default {
@@ -49,21 +52,30 @@ export default {
 } as Meta<TableComponent>;
 
 const TableTemplate: Story<TableComponent> = (args: TableComponent) => ({
-    props: {...args}
+    props: {...args},
+    template: `<fusion-table
+    [options]="options"
+    [columns]="columns"
+    [rows]="rows"
+    [loading]="loading"
+></fusion-table>`
 });
 
 export const Default = TableTemplate.bind({});
-
+// region No Data
 export const NoData = TableTemplate.bind({});
 NoData.args = {rows: []};
 NoData.parameters = {
     docs: {
         description: {
-            story: dedent`**Empty** table with no data. Input property rows has blank array \`rows:[]\``
+            story: dedent`**Empty** table with no data. Input property rows has blank array \`rows:[]\`
+            you can set with table option second **No Data** line text:
+            \`noDataSubMessage: 'Try using again with a different filters'\``
         }
     }
 };
-
+// endregion
+// region Loading
 export const Loading = TableTemplate.bind({});
 Loading.args = {rows: [], loading: true};
 Loading.parameters = {
@@ -77,7 +89,8 @@ Loading.parameters = {
         }
     }
 };
-
+// endregion
+// region Sorting
 export const Sorting = TableTemplate.bind({});
 Sorting.args = {
     columns: TABLE_SORTING_COLUMNS_CONFIG
@@ -91,7 +104,8 @@ Sorting.parameters = {
         }
     }
 };
-
+// endregion
+// region With Checkbox
 const TableCheckboxTemplate: Story<TableComponent> = (args: TableComponent) => ({
     props: {
         ...args,
@@ -119,15 +133,35 @@ WithCheckbox.parameters = {
             and in **row** data add data for checkbox state:
             \`{selected: false, id: 1, name: 'Leanne Graham', username: 'Bret', email: 'Sincere@april.biz', website: 'hildegard.org'}\`
             `
-        },
-        source: {
-            language: 'html',
-            code: dedent`<fusion-table
-    [options]="options"
-    [columns]="columns"
-    [rows]="tableRows"
-    (selectionChanged)="selectionChanged($event)"
-></fusion-table>`
         }
     }
 };
+// endregion
+// region With Toggle
+const TableToggleTemplate: Story<TableComponent> = (args: TableComponent) => ({
+    props: {
+        ...args,
+        rowModelChange: actionsData.rowModelChange
+    },
+    template: `<fusion-table
+    [options]="options"
+    [columns]="columns"
+    [rows]="rows"
+    (rowModelChange)="rowModelChange($event)"
+></fusion-table>`
+});
+export const WithToggle = TableToggleTemplate.bind({});
+WithToggle.args = {
+    columns: TABLE_TOGGLE_COLUMNS_CONFIG,
+    rows: ROWS_TOGGLE_DATA
+};
+WithToggle.parameters = {
+    docs: {
+        description: {
+            story: dedent`
+            **Rows with Toggle** table add possibility add toggle component to the rows.
+            `
+        }
+    }
+};
+// endregion

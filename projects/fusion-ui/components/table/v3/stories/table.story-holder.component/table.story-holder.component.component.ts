@@ -3,6 +3,7 @@ import {TableModule} from '../../table.module';
 import {TableColumn, TableOptions} from '@ironsource/fusion-ui/components/table';
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
+import {isNullOrUndefined} from '@ironsource/fusion-ui';
 
 @Component({
     selector: 'fusion-table-story-holder',
@@ -42,13 +43,15 @@ export class TableStoryHolderComponent implements OnInit, OnDestroy {
     private _rows = [];
 
     ngOnInit() {
-        this.options.searchOptions.onSearch.pipe(takeUntil(this.onDestroy$)).subscribe(value => {
-            this.tableRows = [
-                ...this._rows.filter(item => {
-                    return item.name.includes(value);
-                })
-            ];
-        });
+        if (!isNullOrUndefined(this.options?.searchOptions?.onSearch)) {
+            this.options.searchOptions.onSearch.pipe(takeUntil(this.onDestroy$)).subscribe(value => {
+                this.tableRows = [
+                    ...this._rows.filter(item => {
+                        return item.name.includes(value);
+                    })
+                ];
+            });
+        }
     }
 
     ngOnDestroy(): void {
