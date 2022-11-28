@@ -160,6 +160,20 @@ WithToggle.parameters = {
         description: {
             story: dedent`
             **Rows with Toggle** table add possibility add toggle component to the rows.
+            You need to add method for output event **(rowModelChange)**
+            for example: \`(rowModelChange)="rowModelChange($event)"\`
+            in arguments you get object:
+            \`{rowIndex: 5, rowModel: Object, keyChanged: "live", newValue: false, prevValue: undefined, onRequestDone: Function}\`
+
+            * **rowIndex**:  index for row in **rows** array that was send to the table as input parameter **[rows]**
+            * **rowModel**:  row element from **rows** array related to the event **rowModelChange**
+            * **keyChanged**: key name in element from **rows** array what was changed
+            * **newValue**: new value for this key
+            * **prevValue**: previous (current) value for this key
+
+            Also it has call-back method **onRequestDone** that you need to call on the row data change ended
+            \`onRequestDone(true)\` - in case data was changed successful
+
             `
         }
     }
