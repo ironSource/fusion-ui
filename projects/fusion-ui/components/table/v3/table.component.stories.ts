@@ -1,4 +1,5 @@
 import {Story, Meta} from '@storybook/angular';
+import {action} from '@storybook/addon-actions';
 import {moduleMetadata} from '@storybook/angular';
 import {dedent} from 'ts-dedent';
 import {CommonModule} from '@angular/common';
@@ -8,11 +9,17 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TableModule} from '@ironsource/fusion-ui/components/table';
 import {TableComponent} from './table.component';
 import {
+    ROWS_CHECKBOX_DATA,
     ROWS_DEFAULT_DATA,
+    TABLE_CHECKBOX_COLUMNS_CONFIG,
     TABLE_DEFAULT_COLUMNS_CONFIG,
     TABLE_DEFAULT_OPTIONS,
     TABLE_SORTING_COLUMNS_CONFIG
 } from '@ironsource/fusion-ui/components/table/v3/stories/table.mock-data';
+
+const actionsData = {
+    selectionChanged: action('selectionChanged')
+};
 
 export default {
     title: 'Components/Table',
@@ -84,61 +91,43 @@ Sorting.parameters = {
         }
     }
 };
-/*
 
-const TableInFrameTemplate: Story<TableComponent> = (args: TableComponent) => ({
+const TableCheckboxTemplate: Story<TableComponent> = (args: TableComponent) => ({
     props: {
-        ...args
-    }
+        ...args,
+        selectionChanged: actionsData.selectionChanged
+    },
+    template: `<fusion-table
+    [options]="options"
+    [columns]="columns"
+    [rows]="rows"
+    (selectionChanged)="selectionChanged($event)"
+></fusion-table>`
 });
-
-const onSearchEventEmitter$ = new EventEmitter();
-
-export const InFrame = TableInFrameTemplate.bind({});
-InFrame.args = {
-    options: {
-        ...TABLE_DEFAULT_OPTIONS,
-        ...{
-            tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'},
-            searchOptions: {
-                placeholder: 'Search',
-                onSearch: onSearchEventEmitter$
-            }
-        }
-    }
+export const WithCheckbox = TableCheckboxTemplate.bind({});
+WithCheckbox.args = {
+    columns: TABLE_CHECKBOX_COLUMNS_CONFIG,
+    rows: ROWS_CHECKBOX_DATA
 };
-// fix err with setTimeout:
-//TypeError: Converting circular structure to JSON
-//--> starting at object with constructor 'Subscriber'
-//|     property '_subscriptions' -> object with constructor 'Array'
-//|     index 0 -> object with constructor 'SubjectSubscription'
-//--- property '_parentOrParents' closes the circle
-//at JSON.stringify (<anonymous>)
-
-setTimeout(()=>{
-    onSearchEventEmitter$.subscribe(value=>{
-        console.log('----', InFrame.args.rows);
-        const newRows = ROWS_DEFAULT_DATA.filter(row=>{
-            return row.name.includes(value);
-        });
-        console.log(newRows);
-        InFrame.args.rows = [...newRows];
-        console.log('----', InFrame.args.rows);
-    })
-}, 250);
-InFrame.parameters = {
+WithCheckbox.parameters = {
     docs: {
         description: {
-            story: dedent`**Framed** table - table in frame with **frame header** and **frame footer**
-            To show table in frame need to update options with properties *(example)*:
-            \`{
-            tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'},
-            searchOptions: {
-                placeholder: 'Search',
-                onSearch: new EventEmitter()
-            }\`
+            story: dedent`
+            **Rows Selectable** table add possibility to select all or some rows.
+            you need add to columns configuration column type "Checkbox":
+            \`{key: 'selected', type: TableColumnTypeEnum.Checkbox, width: '32px'},\`
+            and in **row** data add data for checkbox state:
+            \`{selected: false, id: 1, name: 'Leanne Graham', username: 'Bret', email: 'Sincere@april.biz', website: 'hildegard.org'}\`
             `
+        },
+        source: {
+            language: 'html',
+            code: dedent`<fusion-table
+    [options]="options"
+    [columns]="columns"
+    [rows]="tableRows"
+    (selectionChanged)="selectionChanged($event)"
+></fusion-table>`
         }
     }
 };
-*/

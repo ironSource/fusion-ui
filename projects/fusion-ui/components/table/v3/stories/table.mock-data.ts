@@ -1,4 +1,4 @@
-import {TableColumn, TableOptions} from '@ironsource/fusion-ui/components/table';
+import {TableColumn, TableColumnTypeEnum, TableOptions} from '@ironsource/fusion-ui/components/table';
 
 // region Mocking data
 export const TABLE_DEFAULT_OPTIONS: TableOptions = {
@@ -18,6 +18,14 @@ export const TABLE_SORTING_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'name', title: 'Name', sort: ''},
     {key: 'username', title: 'Username', sort: ''},
     {key: 'email', title: 'Email', sort: ''},
+    {key: 'website', title: 'Website'}
+];
+export const TABLE_CHECKBOX_COLUMNS_CONFIG: TableColumn[] = [
+    {key: 'selected', type: TableColumnTypeEnum.Checkbox, width: '32px'},
+    {key: 'id', title: 'Id'},
+    {key: 'name', title: 'Name'},
+    {key: 'username', title: 'Username'},
+    {key: 'email', title: 'Email'},
     {key: 'website', title: 'Website'}
 ];
 
@@ -94,4 +102,7 @@ export const ROWS_DEFAULT_DATA = [
         website: 'ambrose.net'
     }
 ];
+export const ROWS_CHECKBOX_DATA = ROWS_DEFAULT_DATA.map(row => {
+    return {...row, selected: false};
+});
 // endregion
