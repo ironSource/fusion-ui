@@ -7,7 +7,7 @@ import {environment} from 'stories/environments/environment';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TableModule} from '@ironsource/fusion-ui/components/table';
-import {TableComponent} from './table.component';
+import {TableComponent} from '../table.component';
 import {
     ROWS_CHECKBOX_DATA,
     ROWS_DEFAULT_DATA,
