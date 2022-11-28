@@ -139,6 +139,35 @@ WithTotalRow.parameters = {
 };
 
 // endregion
+// region With Remove Row action
+export const WithRemoveRowAction = TableTemplate.bind({});
+WithRemoveRowAction.args = {
+    options: {
+        remove: {
+            active: true
+        }
+    }
+};
+WithRemoveRowAction.parameters = {
+    docs: {
+        description: {
+            story: dedent`
+            **Row remove action** table add possibility to remove row from table
+            Need to add **remove:TableRowRemoveAction** property to the table input **[options]**
+            like: \`remove:{active: true}\` it a minimum needed.
+             For full remove properties see **TableRowRemoveAction**.
+
+            \`interface TableRowRemoveAction {
+                active?: boolean;
+                icon?: IconData;
+                tooltip?: {text: string; width?: string};
+                onRemove?: EventEmitter<{rowIndex: number; rowToRemove: any};
+            }\`
+            `
+        }
+    }
+};
+// endregion
 // region With Checkbox
 const TableCheckboxTemplate: Story<TableComponent> = (args: TableComponent) => ({
     props: {
