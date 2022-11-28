@@ -29,7 +29,7 @@
     "release": "commit-and-tag-version",
     "docs:show": "compodoc -p ./tsconfig.doc.json -s --disablePrivate --disableProtected --disableLifeCycleHooks --disableInternal",
     "docs:json": "compodoc -p ./tsconfig.doc.json -e json -d . --disablePrivate --disableProtected --disableLifeCycleHooks --disableInternal",
-    "storybook": "npm run docs:json && start-storybook -p 6006 --no-manager-cache",
+    "storybook": "npm run docs:json && start-storybook -p 6006",
     "build-storybook": "npm run docs:json && build-storybook"
   },
   "lint-staged": {
