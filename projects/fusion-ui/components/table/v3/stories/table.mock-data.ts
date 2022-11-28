@@ -101,6 +101,15 @@ export const ROWS_DEFAULT_DATA = [
         website: 'ambrose.net'
     }
 ];
+export const ROWS_TOTALS_DATA = [
+    {
+        name: '10 names',
+        username: '10 UserNames',
+        email: '10 E-mails',
+        website: '10 Websites'
+    },
+    ...ROWS_DEFAULT_DATA
+];
 export const ROWS_CHECKBOX_DATA = ROWS_DEFAULT_DATA.map(row => {
     return {selected: false, ...row};
 });

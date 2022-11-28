@@ -12,6 +12,7 @@ import {
     ROWS_CHECKBOX_DATA,
     ROWS_DEFAULT_DATA,
     ROWS_TOGGLE_DATA,
+    ROWS_TOTALS_DATA,
     TABLE_CHECKBOX_COLUMNS_CONFIG,
     TABLE_DEFAULT_COLUMNS_CONFIG,
     TABLE_DEFAULT_OPTIONS,
@@ -105,6 +106,39 @@ Sorting.parameters = {
     }
 };
 // endregion
+// region With "Totals" row
+export const WithTotalRow = TableTemplate.bind({});
+WithTotalRow.args = {
+    options: {hasTotalsRow: true},
+    rows: ROWS_TOTALS_DATA
+};
+WithTotalRow.parameters = {
+    docs: {
+        description: {
+            story: dedent`**Totals row** table - table where first tow is "totals"
+            you need in table **options** input set \`hasTotalsRow: true\`. It mean that in the **rows** array first element (on index '0')
+            it a totals row data. For example:
+            \`rows: [
+                {
+                    name: '10 names',
+                    username: '10 UserNames',
+                    email: '10 E-mails',
+                    website: '10 Websites'
+                },
+                {
+                    id: 1,
+                    name: 'Leanne Graham',
+                    username: 'Bret',
+                    email: 'Sincere@april.biz',
+                    website: 'hildegard.org'
+                },
+                .....\`
+            `
+        }
+    }
+};
+
+// endregion
 // region With Checkbox
 const TableCheckboxTemplate: Story<TableComponent> = (args: TableComponent) => ({
     props: {
@@ -173,7 +207,6 @@ WithToggle.parameters = {
 
             Also it has call-back method **onRequestDone** that you need to call on the row data change ended
             \`onRequestDone(true)\` - in case data was changed successful
-
             `
         }
     }

@@ -7,8 +7,7 @@ import {isNullOrUndefined} from '@ironsource/fusion-ui';
 
 @Component({
     selector: 'fusion-table-story-holder',
-    templateUrl: './table.story-holder.component.component.html',
-    styleUrls: ['./table.story-holder.component.component.scss'],
+    template: `<fusion-table [columns]="columns" [rows]="tableRows" [options]="options" [loading]="loading"></fusion-table>`,
     standalone: true,
     imports: [TableModule]
 })
