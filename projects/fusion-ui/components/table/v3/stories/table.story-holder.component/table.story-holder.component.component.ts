@@ -3,7 +3,7 @@ import {TableModule} from '../../table.module';
 import {TableColumn, TableOptions} from '@ironsource/fusion-ui/components/table';
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
-import {isNullOrUndefined} from '@ironsource/fusion-ui';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Component({
     selector: 'fusion-table-story-holder',
