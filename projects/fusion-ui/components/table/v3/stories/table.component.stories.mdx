@@ -1,0 +1,25 @@
+import {Canvas, Meta, Story, Description, Source, ArgsTable} from '@storybook/addon-docs';
+import {dedent} from 'ts-dedent';
+
+<Meta title="Components/Table/All"/>
+
+<Description markdown={dedent`
+# Table
+Tables are great for presenting information with a clear, repeating structure. Our users are busy and may not want to read long sections of text. Breaking structured data into tables can help them scan it and find what they need to make informed decisions.
+While tables present a clear structure, they are not good for designing layouts. Use them only when data you are presenting calls for a tabular structure, for example prices for various travel dates or multiple options for baggage.
+`}/>
+
+## Basic usage
+<Source language="html"
+        code={dedent`
+<fusion-table
+  [options]="options"
+  [columns]="columns"
+  [rows]="rows"
+></fusion-table>
+`}/>
+
+### Default
+<Canvas>
+    <Story id="components-table--default"/>
+</Canvas>
