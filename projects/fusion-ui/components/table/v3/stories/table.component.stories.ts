@@ -140,15 +140,15 @@ WithTotalRow.parameters = {
 
 // endregion
 // region With Remove Row action
-export const WithRemoveRowAction = TableTemplate.bind({});
-WithRemoveRowAction.args = {
+export const SingleRowAction = TableTemplate.bind({});
+SingleRowAction.args = {
     options: {
         remove: {
             active: true
         }
     }
 };
-WithRemoveRowAction.parameters = {
+SingleRowAction.parameters = {
     docs: {
         description: {
             story: dedent`
