@@ -62,16 +62,171 @@ const TableTemplate: Story<TableComponent> = (args: TableComponent) => ({
 ></fusion-table>`
 });
 
+// region Default
 export const Default = TableTemplate.bind({});
+Default.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+
+import {
+  TableModule,
+  TableColumn,
+  TableOptions,
+} from '@ironsource/fusion-ui/components/table';
+
+@Component({
+  selector: 'fusion-table-wrapper',
+  template: \`<fusion-table
+    [columns]="columns"
+    [rows]="rows"
+    [options]="options"
+  ></fusion-table>\`,
+  standalone: true,
+  imports: [TableModule],
+})
+export class TableWrapperComponent {
+  options: TableOptions = {};
+  columns: TableColumn[] = COLUMNS_CONFIG;
+  rows = ROWS_DATA;
+}
+
+const COLUMNS_CONFIG = [
+    { key: 'id', title: 'Id' },
+    { key: 'name', title: 'Name' },
+    { key: 'username', title: 'Username' },
+    { key: 'email', title: 'Email' },
+    { key: 'website', title: 'Website' },
+];
+
+const ROWS_DATA = [
+  {
+    id: 1,
+    name: 'Leanne Graham',
+    username: 'Bret',
+    email: 'Sincere@april.biz',
+    website: 'hildegard.org',
+  },
+  {
+    id: 2,
+    name: 'Ervin Howell',
+    username: 'Antonette',
+    email: 'Shanna@melissa.tv',
+    website: 'anastasia.net',
+  },
+  {
+    id: 3,
+    name: 'Clementine Bauch',
+    username: 'Samantha',
+    email: 'Nathan@yesenia.net',
+    website: 'ramiro.info',
+  },
+  {
+    id: 4,
+    name: 'Patricia Lebsack',
+    username: 'Karianne',
+    email: 'Julianne.OConner@kory.org',
+    website: 'kale.biz',
+  },
+  {
+    id: 5,
+    name: 'Chelsey Dietrich',
+    username: 'Kamren',
+    email: 'Lucio_Hettinger@annie.ca',
+    website: 'demarco.info',
+  },
+  {
+    id: 6,
+    name: 'Mrs. Dennis Schulist',
+    username: 'Leopoldo_Corkery',
+    email: 'Karley_Dach@jasper.info',
+    website: 'ola.org',
+  },
+  {
+    id: 7,
+    name: 'Kurtis Weissnat',
+    username: 'Elwyn.Skiles',
+    email: 'Telly.Hoeger@billy.biz',
+    website: 'elvis.io',
+  },
+  {
+    id: 8,
+    name: 'Nicholas Runolfsdottir V',
+    username: 'Maxime_Nienow',
+    email: 'Sherwood@rosamond.me',
+    website: 'jacynthe.com',
+  },
+  {
+    id: 9,
+    name: 'Glenna Reichert',
+    username: 'Delphine',
+    email: 'Chaim_McDermott@dana.io',
+    website: 'conrad.com',
+  },
+  {
+    id: 10,
+    name: 'Clementina DuBuque',
+    username: 'Moriah.Stanton',
+    email: 'Rey.Padberg@karina.biz',
+    website: 'ambrose.net',
+  },
+];
+            `,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
 // region No Data
 export const NoData = TableTemplate.bind({});
 NoData.args = {rows: []};
 NoData.parameters = {
     docs: {
         description: {
-            story: dedent`**Empty** table with no data. Input property rows has blank array \`rows:[]\`
-            you can set with table option second **No Data** line text:
-            \`noDataSubMessage: 'Try using again with a different filters'\``
+            story: dedent`**Empty** table with no data.`
+        },
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+
+import {
+  TableModule,
+  TableColumn,
+  TableOptions,
+} from '@ironsource/fusion-ui/components/table';
+
+@Component({
+  selector: 'fusion-table-wrapper',
+  template: \`<fusion-table
+    [columns]="columns"
+    [rows]="rows"
+    [options]="options"
+    [loading]="loading"
+  ></fusion-table>\`,
+  standalone: true,
+  imports: [TableModule],
+})
+export class TableWrapperComponent {
+  options: TableOptions = {};
+  columns: TableColumn[] = COLUMNS_CONFIG;
+  rows = [];
+  loading = false;
+}
+
+const COLUMNS_CONFIG = [
+    { key: 'id', title: 'Id' },
+    { key: 'name', title: 'Name' },
+    { key: 'username', title: 'Username' },
+    { key: 'email', title: 'Email' },
+    { key: 'website', title: 'Website' },
+];
+            `,
+            format: true,
+            type: 'code'
         }
     }
 };
@@ -84,9 +239,47 @@ Loading.parameters = {
         description: {
             story: dedent`
             **Loading** table - when data requested, but not arrived yet you can set table to *loading* state.
-            **rows** - must be empty array, and property **loading** must be true.
-            \`rows:[], loading: true\`
             `
+        },
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+
+import {
+  TableModule,
+  TableColumn,
+  TableOptions,
+} from '@ironsource/fusion-ui/components/table';
+
+@Component({
+  selector: 'fusion-table-wrapper',
+  template: \`<fusion-table
+    [columns]="columns"
+    [rows]="rows"
+    [options]="options"
+    [loading]="loading"
+  ></fusion-table>\`,
+  standalone: true,
+  imports: [TableModule],
+})
+export class TableWrapperComponent {
+  options: TableOptions = {};
+  columns: TableColumn[] = COLUMNS_CONFIG;
+  rows = [];
+  loading = true;
+}
+
+const COLUMNS_CONFIG = [
+    { key: 'id', title: 'Id' },
+    { key: 'name', title: 'Name' },
+    { key: 'username', title: 'Username' },
+    { key: 'email', title: 'Email' },
+    { key: 'website', title: 'Website' },
+];
+            `,
+            format: true,
+            type: 'code'
         }
     }
 };
@@ -101,7 +294,118 @@ Sorting.parameters = {
         description: {
             story: dedent`**Sortable** table - local sorting supported for columns where has \`sort: ''\` property in column configuration.
                 If it set \`sort: 'asc'\` it mean that data in table will be ascending sorted by default.
-                For descending use - "desc".`
+                For descending use - "desc". If property **sort** not added to the column config, this column will not be sortable`
+        },
+        source: {
+            language: 'typescript',
+            format: true,
+            type: 'code',
+            code: dedent`
+import { Component} from '@angular/core';
+
+import {
+  TableModule,
+  TableColumn,
+  TableOptions,
+} from '@ironsource/fusion-ui/components/table';
+
+@Component({
+  selector: 'fusion-table-wrapper',
+  template: \`<fusion-table
+    [columns]="columns"
+    [rows]="rows"
+    [options]="options"
+  ></fusion-table>\`,
+  standalone: true,
+  imports: [TableModule],
+})
+export class TableWrapperComponent {
+  options: TableOptions = {};
+  columns: TableColumn[] = COLUMNS_CONFIG;
+  rows = ROWS_DATA;
+}
+
+const COLUMNS_CONFIG = [
+    {key: 'id', title: 'Id', sort: 'asc'},
+    {key: 'name', title: 'Name', sort: ''},
+    {key: 'username', title: 'Username', sort: ''},
+    {key: 'email', title: 'Email', sort: ''},
+    {key: 'website', title: 'Website'} // not sortable
+];
+
+const ROWS_DATA = [
+  {
+    id: 1,
+    name: 'Leanne Graham',
+    username: 'Bret',
+    email: 'Sincere@april.biz',
+    website: 'hildegard.org',
+  },
+  {
+    id: 2,
+    name: 'Ervin Howell',
+    username: 'Antonette',
+    email: 'Shanna@melissa.tv',
+    website: 'anastasia.net',
+  },
+  {
+    id: 3,
+    name: 'Clementine Bauch',
+    username: 'Samantha',
+    email: 'Nathan@yesenia.net',
+    website: 'ramiro.info',
+  },
+  {
+    id: 4,
+    name: 'Patricia Lebsack',
+    username: 'Karianne',
+    email: 'Julianne.OConner@kory.org',
+    website: 'kale.biz',
+  },
+  {
+    id: 5,
+    name: 'Chelsey Dietrich',
+    username: 'Kamren',
+    email: 'Lucio_Hettinger@annie.ca',
+    website: 'demarco.info',
+  },
+  {
+    id: 6,
+    name: 'Mrs. Dennis Schulist',
+    username: 'Leopoldo_Corkery',
+    email: 'Karley_Dach@jasper.info',
+    website: 'ola.org',
+  },
+  {
+    id: 7,
+    name: 'Kurtis Weissnat',
+    username: 'Elwyn.Skiles',
+    email: 'Telly.Hoeger@billy.biz',
+    website: 'elvis.io',
+  },
+  {
+    id: 8,
+    name: 'Nicholas Runolfsdottir V',
+    username: 'Maxime_Nienow',
+    email: 'Sherwood@rosamond.me',
+    website: 'jacynthe.com',
+  },
+  {
+    id: 9,
+    name: 'Glenna Reichert',
+    username: 'Delphine',
+    email: 'Chaim_McDermott@dana.io',
+    website: 'conrad.com',
+  },
+  {
+    id: 10,
+    name: 'Clementina DuBuque',
+    username: 'Moriah.Stanton',
+    email: 'Rey.Padberg@karina.biz',
+    website: 'ambrose.net',
+  },
+];
+            `
         }
     }
 };
@@ -117,52 +421,291 @@ WithTotalRow.parameters = {
         description: {
             story: dedent`**Totals row** table - table where first tow is "totals"
             you need in table **options** input set \`hasTotalsRow: true\`. It mean that in the **rows** array first element (on index '0')
-            it a totals row data. For example:
-            \`rows: [
-                {
-                    name: '10 names',
-                    username: '10 UserNames',
-                    email: '10 E-mails',
-                    website: '10 Websites'
-                },
-                {
-                    id: 1,
-                    name: 'Leanne Graham',
-                    username: 'Bret',
-                    email: 'Sincere@april.biz',
-                    website: 'hildegard.org'
-                },
-                .....\`
+            it a totals row data.
             `
+        },
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+
+import {
+  TableModule,
+  TableColumn,
+  TableOptions,
+} from '@ironsource/fusion-ui/components/table';
+
+@Component({
+  selector: 'fusion-table-wrapper',
+  template: \`<fusion-table
+    [columns]="columns"
+    [rows]="rows"
+    [options]="options"
+  ></fusion-table>\`,
+  standalone: true,
+  imports: [TableModule],
+})
+export class TableWrapperComponent {
+  options: TableOptions = { hasTotalsRow: true };
+  columns: TableColumn[] = COLUMNS_CONFIG;
+  rows = ROWS_DATA;
+}
+
+const COLUMNS_CONFIG = [
+  { key: 'id', title: 'Id' },
+  { key: 'name', title: 'Name' },
+  { key: 'username', title: 'Username' },
+  { key: 'email', title: 'Email' },
+  { key: 'website', title: 'Website' },
+];
+
+const ROWS_DATA = [
+  {
+    name: '10 names',
+    username: '10 UserNames',
+    email: '10 E-mails',
+    website: '10 Websites',
+  },
+  {
+    id: 1,
+    name: 'Leanne Graham',
+    username: 'Bret',
+    email: 'Sincere@april.biz',
+    website: 'hildegard.org',
+  },
+  {
+    id: 2,
+    name: 'Ervin Howell',
+    username: 'Antonette',
+    email: 'Shanna@melissa.tv',
+    website: 'anastasia.net',
+  },
+  {
+    id: 3,
+    name: 'Clementine Bauch',
+    username: 'Samantha',
+    email: 'Nathan@yesenia.net',
+    website: 'ramiro.info',
+  },
+  {
+    id: 4,
+    name: 'Patricia Lebsack',
+    username: 'Karianne',
+    email: 'Julianne.OConner@kory.org',
+    website: 'kale.biz',
+  },
+  {
+    id: 5,
+    name: 'Chelsey Dietrich',
+    username: 'Kamren',
+    email: 'Lucio_Hettinger@annie.ca',
+    website: 'demarco.info',
+  },
+  {
+    id: 6,
+    name: 'Mrs. Dennis Schulist',
+    username: 'Leopoldo_Corkery',
+    email: 'Karley_Dach@jasper.info',
+    website: 'ola.org',
+  },
+  {
+    id: 7,
+    name: 'Kurtis Weissnat',
+    username: 'Elwyn.Skiles',
+    email: 'Telly.Hoeger@billy.biz',
+    website: 'elvis.io',
+  },
+  {
+    id: 8,
+    name: 'Nicholas Runolfsdottir V',
+    username: 'Maxime_Nienow',
+    email: 'Sherwood@rosamond.me',
+    website: 'jacynthe.com',
+  },
+  {
+    id: 9,
+    name: 'Glenna Reichert',
+    username: 'Delphine',
+    email: 'Chaim_McDermott@dana.io',
+    website: 'conrad.com',
+  },
+  {
+    id: 10,
+    name: 'Clementina DuBuque',
+    username: 'Moriah.Stanton',
+    email: 'Rey.Padberg@karina.biz',
+    website: 'ambrose.net',
+  },
+];
+            `,
+            format: true,
+            type: 'code'
         }
     }
 };
 
 // endregion
 // region With Remove Row action
-export const SingleRowAction = TableTemplate.bind({});
-SingleRowAction.args = {
+export const RemoveRowAction = TableTemplate.bind({});
+RemoveRowAction.args = {
     options: {
         remove: {
             active: true
         }
     }
 };
-SingleRowAction.parameters = {
+RemoveRowAction.parameters = {
     docs: {
         description: {
             story: dedent`
             **Row remove action** table add possibility to remove row from table
             Need to add **remove:TableRowRemoveAction** property to the table input **[options]**
             like: \`remove:{active: true}\` it a minimum needed.
-             For full remove properties see **TableRowRemoveAction**.
+            `
+        },
+        source: {
+            language: 'typescript',
+            format: true,
+            type: 'code',
+            code: dedent`
+import { CommonModule } from '@angular/common';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { EventEmitter } from '@angular/core';
+import { takeUntil } from 'rxjs/operators';
+import { Subject, BehaviorSubject } from 'rxjs';
+import { isNullOrUndefined } from '@ironsource/fusion-ui/utils';
+import {
+  TableModule,
+  TableColumn,
+  TableOptions,
+} from '@ironsource/fusion-ui/components/table';
 
-            \`interface TableRowRemoveAction {
-                active?: boolean;
-                icon?: IconData;
-                tooltip?: {text: string; width?: string};
-                onRemove?: EventEmitter<{rowIndex: number; rowToRemove: any};
-            }\`
+@Component({
+  selector: 'fusion-table-wrapper',
+  template: \`<fusion-table
+    [columns]="columns"
+    [rows]="rows$ | async"
+    [options]="options"
+    [loading]="loading"
+  ></fusion-table>\`,
+  standalone: true,
+  imports: [CommonModule, TableModule],
+})
+export class TableWrapperComponent implements OnInit, OnDestroy {
+  options: TableOptions = TABLE_OPTIONS;
+  columns: TableColumn[] = COLUMNS_CONFIG;
+  rows$ = new BehaviorSubject(ROWS_DATA);
+  loading = false;
+
+  private onDestroy$ = new Subject<void>();
+
+  ngOnInit() {
+    if (!isNullOrUndefined(this.options?.remove?.onRemove)) {
+      this.options.remove.onRemove
+        .pipe(takeUntil(this.onDestroy$))
+        .subscribe((value) => {
+          this.rows$.next(
+            this.rows$.getValue().filter((item, idx) => idx != value.rowIndex)
+          );
+          console.log('Removed row: ', value);
+          console.log('rows:', this.rows$.getValue());
+        });
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.onDestroy$.next();
+    this.onDestroy$.complete();
+  }
+}
+
+const TABLE_OPTIONS = {
+  remove: {
+    active: true,
+    onRemove: new EventEmitter<{ rowIndex: number; rowToRemove: any }>(),
+  },
+};
+
+const COLUMNS_CONFIG = [
+  { key: 'id', title: 'Id' },
+  { key: 'name', title: 'Name' },
+  { key: 'username', title: 'Username' },
+  { key: 'email', title: 'Email' },
+  { key: 'website', title: 'Website' },
+];
+
+const ROWS_DATA = [
+  {
+    id: 1,
+    name: 'Leanne Graham',
+    username: 'Bret',
+    email: 'Sincere@april.biz',
+    website: 'hildegard.org',
+  },
+  {
+    id: 2,
+    name: 'Ervin Howell',
+    username: 'Antonette',
+    email: 'Shanna@melissa.tv',
+    website: 'anastasia.net',
+  },
+  {
+    id: 3,
+    name: 'Clementine Bauch',
+    username: 'Samantha',
+    email: 'Nathan@yesenia.net',
+    website: 'ramiro.info',
+  },
+  {
+    id: 4,
+    name: 'Patricia Lebsack',
+    username: 'Karianne',
+    email: 'Julianne.OConner@kory.org',
+    website: 'kale.biz',
+  },
+  {
+    id: 5,
+    name: 'Chelsey Dietrich',
+    username: 'Kamren',
+    email: 'Lucio_Hettinger@annie.ca',
+    website: 'demarco.info',
+  },
+  {
+    id: 6,
+    name: 'Mrs. Dennis Schulist',
+    username: 'Leopoldo_Corkery',
+    email: 'Karley_Dach@jasper.info',
+    website: 'ola.org',
+  },
+  {
+    id: 7,
+    name: 'Kurtis Weissnat',
+    username: 'Elwyn.Skiles',
+    email: 'Telly.Hoeger@billy.biz',
+    website: 'elvis.io',
+  },
+  {
+    id: 8,
+    name: 'Nicholas Runolfsdottir V',
+    username: 'Maxime_Nienow',
+    email: 'Sherwood@rosamond.me',
+    website: 'jacynthe.com',
+  },
+  {
+    id: 9,
+    name: 'Glenna Reichert',
+    username: 'Delphine',
+    email: 'Chaim_McDermott@dana.io',
+    website: 'conrad.com',
+  },
+  {
+    id: 10,
+    name: 'Clementina DuBuque',
+    username: 'Moriah.Stanton',
+    email: 'Rey.Padberg@karina.biz',
+    website: 'ambrose.net',
+  },
+];
             `
         }
     }
