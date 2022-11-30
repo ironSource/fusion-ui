@@ -2,6 +2,7 @@ import {TableColumn, TableColumnTypeEnum, TableOptions} from '@ironsource/fusion
 
 // region Mocking data
 export const TABLE_DEFAULT_OPTIONS: TableOptions = {
+    tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'},
     noDataSubMessage: 'Try using again with a different filters'
 };
 // region Columns-config
@@ -13,8 +14,8 @@ export const TABLE_DEFAULT_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'website', title: 'Website'}
 ];
 export const TABLE_SORTING_COLUMNS_CONFIG: TableColumn[] = [
-    {key: 'id', title: 'Id', sort: 'asc'},
-    {key: 'name', title: 'Name', sort: ''},
+    {key: 'id', title: 'Id', sort: 'asc', sticky: true},
+    {key: 'name', title: 'Name', sort: '', sticky: true},
     {key: 'username', title: 'Username', sort: ''},
     {key: 'email', title: 'Email', sort: ''},
     {key: 'website', title: 'Website'}
@@ -27,7 +28,13 @@ export const TABLE_TOGGLE_COLUMNS_CONFIG = [
     {key: 'live', type: TableColumnTypeEnum.ToggleButton, title: '', width: '45px'},
     ...TABLE_DEFAULT_COLUMNS_CONFIG
 ];
-
+export const TABLE_STICKY_COLUMNS_CONFIG: TableColumn[] = [
+    {key: 'id', title: 'Id'},
+    {key: 'name', title: 'Name'},
+    {key: 'username', title: 'Username'},
+    {key: 'email', title: 'Email'},
+    {key: 'website', title: 'Website'}
+];
 // endregion
 export const ROWS_DEFAULT_DATA = [
     {

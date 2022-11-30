@@ -19,6 +19,7 @@ import {
     TABLE_SORTING_COLUMNS_CONFIG,
     TABLE_TOGGLE_COLUMNS_CONFIG
 } from '@ironsource/fusion-ui/components/table/v3/stories/table.mock-data';
+import {TableStoryWrapperComponent} from '@ironsource/fusion-ui/components/table/v3/stories/table-story-wrapper.component';
 
 const actionsData = {
     selectionChanged: action('selectionChanged'),
@@ -31,7 +32,13 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, TableModule]
+            imports: [
+                CommonModule,
+                SvgModule.forRoot({assetsPath: environment.assetsPath}),
+                IconModule,
+                TableModule,
+                TableStoryWrapperComponent
+            ]
         })
     ],
     parameters: {
@@ -41,7 +48,9 @@ export default {
         },
         docs: {
             description: {
-                component: '**Tables** description'
+                component: dedent`**Tables** are great for presenting information with a clear, repeating structure. Our users are busy and may not want to read long sections of text. Breaking structured data into tables can help them scan it and find what they need to make informed decisions.
+                    While tables present a clear structure, they are not good for designing layouts. Use them only when data you are presenting calls for a tabular structure, for example prices for various travel dates or multiple options for baggage.
+                    For table frame with label you must set in table **[options]** property \`tableLabel: {text: 'Table label'}\``
             }
         }
     },
@@ -54,12 +63,12 @@ export default {
 
 const TableTemplate: Story<TableComponent> = (args: TableComponent) => ({
     props: {...args},
-    template: `<fusion-table
+    template: `<fusion-table-story-wrapper #wrapper><fusion-table
     [options]="options"
     [columns]="columns"
     [rows]="rows"
     [loading]="loading"
-></fusion-table>`
+></fusion-table></fusion-table-story-wrapper>`
 });
 
 // region Default
@@ -88,7 +97,9 @@ import {
   imports: [TableModule],
 })
 export class TableWrapperComponent {
-  options: TableOptions = {};
+  options: TableOptions = {
+    tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'}
+  };
   columns: TableColumn[] = COLUMNS_CONFIG;
   rows = ROWS_DATA;
 }
@@ -211,7 +222,9 @@ import {
   imports: [TableModule],
 })
 export class TableWrapperComponent {
-  options: TableOptions = {};
+  options: TableOptions = {
+    tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'}
+  };
   columns: TableColumn[] = COLUMNS_CONFIG;
   rows = [];
   loading = false;
@@ -264,7 +277,9 @@ import {
   imports: [TableModule],
 })
 export class TableWrapperComponent {
-  options: TableOptions = {};
+  options: TableOptions = {
+    tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'}
+  };
   columns: TableColumn[] = COLUMNS_CONFIG;
   rows = [];
   loading = true;
@@ -320,7 +335,9 @@ import {
   imports: [TableModule],
 })
 export class TableWrapperComponent {
-  options: TableOptions = {};
+  options: TableOptions = {
+    tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'}
+  };
   columns: TableColumn[] = COLUMNS_CONFIG;
   rows = ROWS_DATA;
 }
@@ -410,10 +427,29 @@ const ROWS_DATA = [
     }
 };
 // endregion
+
+// region Stiky Column
+const TableStikyColumnTemplate: Story<TableComponent> = (args: TableComponent) => ({
+    props: {...args},
+    template: `<div style="width: 600px; margin: 0 auto; overflow-x: scroll">
+    <fusion-table style="width: 1000px"
+        [options]="options"
+        [columns]="columns"
+        [rows]="rows"
+        [loading]="loading"
+    ></fusion-table>
+</div>`
+});
+export const StikyColumn = TableStikyColumnTemplate.bind({});
+StikyColumn.args = {
+    columns: TABLE_SORTING_COLUMNS_CONFIG
+};
+// endregion
+
 // region With "Totals" row
 export const WithTotalRow = TableTemplate.bind({});
 WithTotalRow.args = {
-    options: {hasTotalsRow: true},
+    options: {tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'}, hasTotalsRow: true},
     rows: ROWS_TOTALS_DATA
 };
 WithTotalRow.parameters = {
@@ -446,7 +482,10 @@ import {
   imports: [TableModule],
 })
 export class TableWrapperComponent {
-  options: TableOptions = { hasTotalsRow: true };
+  options: TableOptions = {
+    tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'},
+    hasTotalsRow: true
+  };
   columns: TableColumn[] = COLUMNS_CONFIG;
   rows = ROWS_DATA;
 }
@@ -620,6 +659,7 @@ export class TableWrapperComponent implements OnInit, OnDestroy {
 }
 
 const TABLE_OPTIONS = {
+    tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'},
   remove: {
     active: true,
     onRemove: new EventEmitter<{ rowIndex: number; rowToRemove: any }>(),
