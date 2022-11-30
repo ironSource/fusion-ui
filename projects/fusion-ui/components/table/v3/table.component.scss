@@ -235,17 +235,27 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
             &.fu-stocky-to-external{
                 display: initial;
             }
+            height: calc(100% - 56px - 72px);
+            & + .fu-table-footer{
+                border-top: solid 1px $fu-light-400;
+            }
         }
-        &:after { // fig leaf for hide scroll on header
-            content: '';
-            position:absolute;
-            right: 0;
-            top: 1px;
-            background-color: $White;
-            width: 16px;
-            height: $v3-headerHeight;
-            border-bottom: $v3-headerBottomBorder;
-            box-sizing: border-box;
+        &.fu-no-table-frame{
+            .tableWrap{
+                height: 100%;
+            }
+            &:after { // fig leaf for hide scroll on header
+                content: '';
+                position:absolute;
+                right: 0;
+                top: 1px;
+                background-color: $White;
+                width: 16px;
+                height: $v3-headerHeight;
+                border-bottom: $v3-headerBottomBorder;
+                box-sizing: border-box;
+            }
         }
+
     }
 }
