@@ -14,8 +14,8 @@ export const TABLE_DEFAULT_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'website', title: 'Website'}
 ];
 export const TABLE_SORTING_COLUMNS_CONFIG: TableColumn[] = [
-    {key: 'id', title: 'Id', sort: 'asc', sticky: true},
-    {key: 'name', title: 'Name', sort: '', sticky: true},
+    {key: 'id', title: 'Id', sort: 'asc'},
+    {key: 'name', title: 'Name', sort: ''},
     {key: 'username', title: 'Username', sort: ''},
     {key: 'email', title: 'Email', sort: ''},
     {key: 'website', title: 'Website'}
@@ -29,9 +29,9 @@ export const TABLE_TOGGLE_COLUMNS_CONFIG = [
     ...TABLE_DEFAULT_COLUMNS_CONFIG
 ];
 export const TABLE_STICKY_COLUMNS_CONFIG: TableColumn[] = [
-    {key: 'id', title: 'Id'},
-    {key: 'name', title: 'Name'},
-    {key: 'username', title: 'Username'},
+    {key: 'id', title: 'Id', width: '50px', sticky: true},
+    {key: 'name', title: 'Name', width: '180px', sticky: true, stickyLeftMargin: '62px'},
+    {key: 'username', title: 'Username', width: '230px'},
     {key: 'email', title: 'Email'},
     {key: 'website', title: 'Website'}
 ];

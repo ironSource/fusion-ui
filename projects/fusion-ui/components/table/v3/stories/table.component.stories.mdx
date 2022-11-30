@@ -26,42 +26,31 @@ Default table just render **rows** array by **columns** and **options** can be e
 </Canvas>
 
 ### Loading
-Loading state - when data requested, but not arrived yet you can set table to *loading* state.
 <Canvas>
     <Story id="components-table--loading"/>
 </Canvas>
 
 ### No Data
-Empty state - when no data to show.
 <Canvas>
     <Story id="components-table--no-data"/>
 </Canvas>
 
 ### Search
-Table with search input field in a header.
 <Canvas>
     <Story id="components-table--with-search"/>
 </Canvas>
 
 ### Remove row actions
-Added **remove row** button to the end of each row. Will be shown on row hover.
 <Canvas>
     <Story id="components-table--remove-row-action"/>
 </Canvas>
 
 ### Totals Row
-Totals row table - table where first tow is "totals"
-you need in table **options** input set `hasTotalsRow: true`. It mean that in the **rows** array first element (on index '0')
-it a totals row data.
 <Canvas>
     <Story id="components-table--with-total-row"/>
 </Canvas>
 
 ### Sortable Columns
-Sortable table - local sorting supported for columns where has `sort: ''` property in column configuration.
-If it set `sort: 'asc'` it mean that data in table will be ascending sorted by default.
-For descending use - "desc". If property **sort** not added to the column config, this column will not be sortable.
-In this example last column - **Website** is not sortable
 <Canvas>
     <Story id="components-table--sorting"/>
 </Canvas>
@@ -69,4 +58,9 @@ In this example last column - **Website** is not sortable
 ### Sticky Header
 <Canvas>
     <Story id="components-table--sticky-header"/>
+</Canvas>
+
+### Sticky Columns
+<Canvas>
+    <Story id="components-table--sticky-column"/>
 </Canvas>

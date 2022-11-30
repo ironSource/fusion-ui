@@ -18,6 +18,7 @@ import {
     TABLE_DEFAULT_COLUMNS_CONFIG,
     TABLE_DEFAULT_OPTIONS,
     TABLE_SORTING_COLUMNS_CONFIG,
+    TABLE_STICKY_COLUMNS_CONFIG,
     TABLE_TOGGLE_COLUMNS_CONFIG
 } from './table.mock-data';
 // import {TableStoryWrapperComponent} from './table-story-wrapper.component';
@@ -588,13 +589,11 @@ const ROWS_DATA = [
 };
 // endregion
 
-// region Stiky Column - NOT READY YET!!
-// todo: Need fix in component
-/*
+// region Stiky Column
 const TableStikyColumnTemplate: Story<TableComponent> = (args: TableComponent) => ({
     props: {...args},
-    template: `<div style="width: 600px; margin: 0 auto; overflow-x: scroll">
-    <fusion-table style="width: 1000px"
+    template: `<div style="width: 600px; margin: 0 auto;">
+    <fusion-table
         [options]="options"
         [columns]="columns"
         [rows]="rows"
@@ -602,11 +601,128 @@ const TableStikyColumnTemplate: Story<TableComponent> = (args: TableComponent) =
     ></fusion-table>
 </div>`
 });
-export const StikyColumn = TableStikyColumnTemplate.bind({});
-StikyColumn.args = {
-    columns: TABLE_SORTING_COLUMNS_CONFIG
+export const StickyColumn = TableStikyColumnTemplate.bind({});
+StickyColumn.args = {
+    columns: TABLE_STICKY_COLUMNS_CONFIG
 };
-*/
+StickyColumn.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+
+import {
+  TableModule,
+  TableColumn,
+  TableOptions,
+} from '@ironsource/fusion-ui/components/table';
+
+@Component({
+  selector: 'fusion-table-wrapper',
+  template: \`<div style="width: 600px;"><fusion-table
+    [columns]="columns"
+    [rows]="rows"
+    [options]="options"
+  ></fusion-table></div>\`,
+  standalone: true,
+  imports: [TableModule],
+})
+export class TableWrapperComponent {
+  options: TableOptions = {
+    tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'}
+  };
+  columns: TableColumn[] = COLUMNS_CONFIG;
+  rows = ROWS_DATA;
+}
+
+const COLUMNS_CONFIG = [
+    {key: 'id', title: 'Id', width: '50px', sticky: true},
+    {key: 'name', title: 'Name', width: '180px', sticky: true, stickyLeftMargin: '62px'},
+    {key: 'username', title: 'Username', width: '230px'},
+    {key: 'email', title: 'Email'},
+    {key: 'website', title: 'Website'}
+];
+
+const ROWS_DATA = [
+  {
+    id: 1,
+    name: 'Leanne Graham',
+    username: 'Bret',
+    email: 'Sincere@april.biz',
+    website: 'hildegard.org',
+  },
+  {
+    id: 2,
+    name: 'Ervin Howell',
+    username: 'Antonette',
+    email: 'Shanna@melissa.tv',
+    website: 'anastasia.net',
+  },
+  {
+    id: 3,
+    name: 'Clementine Bauch',
+    username: 'Samantha',
+    email: 'Nathan@yesenia.net',
+    website: 'ramiro.info',
+  },
+  {
+    id: 4,
+    name: 'Patricia Lebsack',
+    username: 'Karianne',
+    email: 'Julianne.OConner@kory.org',
+    website: 'kale.biz',
+  },
+  {
+    id: 5,
+    name: 'Chelsey Dietrich',
+    username: 'Kamren',
+    email: 'Lucio_Hettinger@annie.ca',
+    website: 'demarco.info',
+  },
+  {
+    id: 6,
+    name: 'Mrs. Dennis Schulist',
+    username: 'Leopoldo_Corkery',
+    email: 'Karley_Dach@jasper.info',
+    website: 'ola.org',
+  },
+  {
+    id: 7,
+    name: 'Kurtis Weissnat',
+    username: 'Elwyn.Skiles',
+    email: 'Telly.Hoeger@billy.biz',
+    website: 'elvis.io',
+  },
+  {
+    id: 8,
+    name: 'Nicholas Runolfsdottir V',
+    username: 'Maxime_Nienow',
+    email: 'Sherwood@rosamond.me',
+    website: 'jacynthe.com',
+  },
+  {
+    id: 9,
+    name: 'Glenna Reichert',
+    username: 'Delphine',
+    email: 'Chaim_McDermott@dana.io',
+    website: 'conrad.com',
+  },
+  {
+    id: 10,
+    name: 'Clementina DuBuque',
+    username: 'Moriah.Stanton',
+    email: 'Rey.Padberg@karina.biz',
+    website: 'ambrose.net',
+  },
+];
+            `,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+
 // endregion
 
 // region With Search
