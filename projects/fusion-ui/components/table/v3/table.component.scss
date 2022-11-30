@@ -96,6 +96,12 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
                     &.is-checkbox-holder{
                         text-align: center;
                     }
+                    &.sticky-left{
+                        background-color: $White;
+                        position: sticky;
+                        left: 0;
+                        z-index: getZIndexLayerOffset(normal, 3);
+                    }
 
                     &:after{ // this is border bottom of header
                         border-bottom: $v3-headerBottomBorder;
