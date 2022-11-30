@@ -9,6 +9,7 @@ import {FlagModule} from '@ironsource/fusion-ui/components/flag/v1';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v2';
 
 import {CheckboxComponent} from './checkbox.component';
+import {CheckboxModule} from './checkbox.module';
 
 const checkboxLabel = 'Hello world';
 const formControlChecked = new FormControl(true);
@@ -19,7 +20,7 @@ export default {
     component: CheckboxComponent,
     decorators: [
         moduleMetadata({
-            declarations: [CheckboxComponent],
+            declarations: [],
             imports: [
                 CommonModule,
                 FormsModule,
@@ -27,7 +28,8 @@ export default {
                 SvgModule.forRoot({assetsPath: environment.assetsPath}),
                 IconModule,
                 FlagModule,
-                TooltipModule
+                TooltipModule,
+                CheckboxModule
             ]
         })
     ],
@@ -103,43 +105,57 @@ const CheckboxTemplate: Story<CheckboxComponent> = (args: CheckboxComponent) => 
 ></fusion-checkbox>`
 });
 
+// region Default
 export const Default = CheckboxTemplate.bind({});
 Default.args = {
     formControl: formControlUnchecked
 };
+// endregion
 
+// region Checked
 export const Checked = CheckboxTemplate.bind({});
 Checked.args = {
     formControl: formControlChecked
 };
+// endregion
 
+// region Indeterminate
 export const Indeterminate = CheckboxTemplate.bind({});
 Indeterminate.args = {
     isIndeterminate: true,
     formControl: formControlUnchecked
 };
+// endregion
 
+// region Disabled
 export const Disabled = CheckboxTemplate.bind({});
 Disabled.args = {
     isDisabled: true,
     isIndeterminate: true,
     formControl: formControlUnchecked
 };
+// endregion
 
+// region WithIcon
 export const WithIcon = CheckboxTemplate.bind({});
 WithIcon.args = {
     icon: 'frame',
     formControl: formControlUnchecked
 };
+// endregion
 
+// region WithFlag
 export const WithFlag = CheckboxTemplate.bind({});
 WithFlag.args = {
     flag: 'us',
     formControl: formControlUnchecked
 };
+// endregion
 
-export const WithCustomBackgroundColor = CheckboxTemplate.bind({});
-WithCustomBackgroundColor.args = {
+// region With Custom Background Color
+export const CustomColor = CheckboxTemplate.bind({});
+CustomColor.args = {
     backgroundColor: '#459FCA',
     formControl: formControlChecked
 };
+// endregion

@@ -9,6 +9,7 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {RadioGroupComponent} from './radio-group.component';
 import {RadioModule} from '../../radio/v3/radio.module';
 import {RadioGroupOptions} from '../common/entities/radio-group.entities';
+import {RadioGroupModule} from '../';
 
 // region mocking
 const radioGroupOptions: RadioGroupOptions[] = [
@@ -47,13 +48,14 @@ export default {
     component: RadioGroupComponent,
     decorators: [
         moduleMetadata({
-            declarations: [RadioGroupComponent],
+            declarations: [],
             imports: [
                 CommonModule,
                 FormsModule,
                 ReactiveFormsModule,
                 SvgModule.forRoot({assetsPath: environment.assetsPath}),
                 IconModule,
+                RadioGroupModule,
                 RadioModule
             ]
         })
@@ -113,9 +115,3 @@ IconOptions.args = {
     options: radioGroupIconOptions,
     formControl: formControlSelectedIconOption
 };
-
-/*export const LongLabel = RadioGroupTemplate.bind({});
-LongLabel.args = {
-    options: radioGroupLongLabelOptions,
-    formControl: formControlSelectedLongLabelOption
-}*/

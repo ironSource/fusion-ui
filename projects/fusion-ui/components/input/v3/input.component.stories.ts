@@ -10,6 +10,7 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {InputComponent} from './input.component';
 import {TooltipModule} from '../../tooltip/v3/tooltip.module';
 import {InputConfiguration} from '../common/base/input-entities';
+import {InputModule} from '@ironsource/fusion-ui/components/input';
 
 // region
 const defaultInputConfig: InputConfiguration = {
@@ -25,14 +26,15 @@ export default {
     component: InputComponent,
     decorators: [
         moduleMetadata({
-            declarations: [InputComponent],
+            declarations: [],
             imports: [
                 CommonModule,
                 FormsModule,
                 ReactiveFormsModule,
                 SvgModule.forRoot({assetsPath: environment.assetsPath}),
                 IconModule,
-                TooltipModule
+                TooltipModule,
+                InputModule
             ]
         })
     ],
@@ -57,7 +59,7 @@ export default {
 
 const InputTemplate: Story<InputComponent> = (args: InputComponent) => ({
     props: {...args},
-    template: `<fusion-input [configuration]="configuration" [formControl]="formControl"></fusion-input>`
+    template: `<div style="width: 290px;"><fusion-input [configuration]="configuration" [formControl]="formControl"></fusion-input></div>`
 });
 
 export const Default = InputTemplate.bind({});

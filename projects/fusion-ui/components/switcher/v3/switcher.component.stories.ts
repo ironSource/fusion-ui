@@ -3,6 +3,7 @@ import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SwitcherComponent} from './switcher.component';
+import {SwitcherModule} from '@ironsource/fusion-ui/components/switcher';
 
 // data mock
 // const switcherOptions = [{id: '1', title: 'Cardiff'}, {id: '2', title: 'Halifax'}, {id: '3', title: 'London'}];
@@ -23,8 +24,8 @@ export default {
     component: SwitcherComponent,
     decorators: [
         moduleMetadata({
-            declarations: [SwitcherComponent],
-            imports: [CommonModule, FormsModule, ReactiveFormsModule]
+            declarations: [],
+            imports: [CommonModule, FormsModule, ReactiveFormsModule, SwitcherModule]
         })
     ],
     argTypes: {
