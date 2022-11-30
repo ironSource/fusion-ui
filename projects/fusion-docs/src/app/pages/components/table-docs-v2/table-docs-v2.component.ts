@@ -21,6 +21,7 @@ import {VersionService} from '../../../services/version/version.service';
 import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 
 const TABLE_OPTIONS: TableOptions = {
+    tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'},
     sortingType: 'local',
     remove: {active: true, onRemove: new EventEmitter()},
     noDataSubMessage: 'Try using again with a different filters'
