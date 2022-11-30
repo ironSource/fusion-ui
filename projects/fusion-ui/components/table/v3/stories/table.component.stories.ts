@@ -1,4 +1,5 @@
 import {Story, Meta} from '@storybook/angular';
+import {EventEmitter} from '@angular/core';
 import {action} from '@storybook/addon-actions';
 import {moduleMetadata} from '@storybook/angular';
 import {dedent} from 'ts-dedent';
@@ -18,11 +19,13 @@ import {
     TABLE_DEFAULT_OPTIONS,
     TABLE_SORTING_COLUMNS_CONFIG,
     TABLE_TOGGLE_COLUMNS_CONFIG
-} from '@ironsource/fusion-ui/components/table/v3/stories/table.mock-data';
-import {TableStoryWrapperComponent} from '@ironsource/fusion-ui/components/table/v3/stories/table-story-wrapper.component';
+} from './table.mock-data';
+// import {TableStoryWrapperComponent} from './table-story-wrapper.component';
+import {TableStoryHolderComponent} from './table.story-holder.component/table.story-holder.component.component';
 
 const actionsData = {
     selectionChanged: action('selectionChanged'),
+    searchChanged: action('searchChanged'),
     rowModelChange: action('rowModelChange')
 };
 
@@ -37,7 +40,8 @@ export default {
                 SvgModule.forRoot({assetsPath: environment.assetsPath}),
                 IconModule,
                 TableModule,
-                TableStoryWrapperComponent
+                /*TableStoryWrapperComponent,*/
+                TableStoryHolderComponent
             ]
         })
     ],
@@ -63,12 +67,12 @@ export default {
 
 const TableTemplate: Story<TableComponent> = (args: TableComponent) => ({
     props: {...args},
-    template: `<fusion-table-story-wrapper #wrapper><fusion-table
+    template: `<fusion-table
     [options]="options"
     [columns]="columns"
     [rows]="rows"
     [loading]="loading"
-></fusion-table></fusion-table-story-wrapper>`
+></fusion-table>`
 });
 
 // region Default
@@ -191,6 +195,7 @@ const ROWS_DATA = [
     }
 };
 // endregion
+
 // region No Data
 export const NoData = TableTemplate.bind({});
 NoData.args = {rows: []};
@@ -244,6 +249,7 @@ const COLUMNS_CONFIG = [
     }
 };
 // endregion
+
 // region Loading
 export const Loading = TableTemplate.bind({});
 Loading.args = {rows: [], loading: true};
@@ -299,6 +305,7 @@ const COLUMNS_CONFIG = [
     }
 };
 // endregion
+
 // region Sorting
 export const Sorting = TableTemplate.bind({});
 Sorting.args = {
@@ -428,19 +435,19 @@ const ROWS_DATA = [
 };
 // endregion
 
-// region Stiky Header
-const TableStikyHeaderTemplate: Story<TableComponent> = (args: TableComponent) => ({
+// region Sticky Header
+const TableStickyHeaderTemplate: Story<TableComponent> = (args: TableComponent) => ({
     props: {...args},
     template: `<div style="height: 505px">
-    <fusion-table-story-wrapper #wrapper><fusion-table
+    <fusion-table
         [options]="options"
         [columns]="columns"
         [rows]="rows"
-    ></fusion-table></fusion-table-story-wrapper>
+    ></fusion-table>
 </div>`
 });
-export const StikyHeader = TableStikyHeaderTemplate.bind({});
-StikyHeader.args = {
+export const StickyHeader = TableStickyHeaderTemplate.bind({});
+StickyHeader.args = {
     options: {...TABLE_DEFAULT_OPTIONS, stickyHeader: true},
     rows: [
         ...ROWS_DEFAULT_DATA,
@@ -456,8 +463,13 @@ StikyHeader.args = {
         })
     ]
 };
-StikyHeader.parameters = {
+StickyHeader.parameters = {
     docs: {
+        description: {
+            story: dedent`**Sticky Header** table.
+            In option add property - \`stickyHeader: true\`.
+            `
+        },
         source: {
             language: 'typescript',
             format: true,
@@ -574,7 +586,6 @@ const ROWS_DATA = [
         }
     }
 };
-
 // endregion
 
 // region Stiky Column - NOT READY YET!!
@@ -596,6 +607,179 @@ StikyColumn.args = {
     columns: TABLE_SORTING_COLUMNS_CONFIG
 };
 */
+// endregion
+
+// region With Search
+const TableWithSearchTemplate: Story<TableComponent> = (args: TableComponent) => ({
+    props: {...args},
+    template: `<fusion-table-story-holder
+    [options]="options"
+    [columns]="columns"
+    [rows]="rows"
+></fusion-table-story-holder>`
+});
+export const WithSearch = TableWithSearchTemplate.bind({});
+WithSearch.args = {
+    options: {
+        ...TABLE_DEFAULT_OPTIONS,
+        ...{
+            noDataSubMessage: 'Search again with a different keyword',
+            searchOptions: {
+                placeholder: 'Search',
+                onSearch: new EventEmitter()
+            }
+        }
+    }
+};
+WithSearch.parameters = {
+    docs: {
+        description: {
+            story: dedent`**Search** table - table with search input field in a header
+            Need add to the **[options]** property \`searchOptions: {placeholder: 'Search',onSearch: new EventEmitter()}\`
+            Then in parent component do subscribtion to the event. See example in code snippet.
+            `
+        },
+        source: {
+            language: 'typescript',
+            format: true,
+            type: 'code',
+            code: dedent`
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {EventEmitter} from '@angular/core';
+import {takeUntil} from 'rxjs/operators';
+import {Subject} from 'rxjs';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
+
+import {TableModule, TableColumn, TableOptions} from '@ironsource/fusion-ui/components/table';
+
+@Component({
+    selector: 'fusion-table-wrapper',
+    template: \`<fusion-table [columns]="columns" [rows]="rows" [options]="options"></fusion-table>\`,
+    standalone: true,
+    imports: [TableModule]
+})
+export class TableWrapperComponent implements OnInit, OnDestroy {
+    options: TableOptions = {
+        tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'},
+        searchOptions: {
+            placeholder: 'Search',
+            onSearch: new EventEmitter()
+        },
+        noDataSubMessage: 'Search again with a different keyword',
+    };
+
+    columns: TableColumn[] = COLUMNS_CONFIG;
+
+    allRows: {[key: string]: any}[] = ROWS_DATA;
+
+    rows = [];
+
+    private onDestroy$ = new Subject<void>();
+
+    ngOnInit() {
+        this.rows = [...this.allRows];
+
+        if (!isNullOrUndefined(this.options?.searchOptions?.onSearch)) {
+            this.options.searchOptions.onSearch.pipe(takeUntil(this.onDestroy$)).subscribe(value => {
+                this.rows = [
+                    ...this.allRows.filter(item => {
+                        return item.name.includes(value);
+                    })
+                ];
+            });
+        }
+    }
+
+    ngOnDestroy(): void {
+        this.onDestroy$.next();
+        this.onDestroy$.complete();
+    }
+}
+
+const COLUMNS_CONFIG = [
+  { key: 'id', title: 'Id' },
+  { key: 'name', title: 'Name' },
+  { key: 'username', title: 'Username' },
+  { key: 'email', title: 'Email' },
+  { key: 'website', title: 'Website' },
+];
+
+const ROWS_DATA = [
+  {
+    id: 1,
+    name: 'Leanne Graham',
+    username: 'Bret',
+    email: 'Sincere@april.biz',
+    website: 'hildegard.org',
+  },
+  {
+    id: 2,
+    name: 'Ervin Howell',
+    username: 'Antonette',
+    email: 'Shanna@melissa.tv',
+    website: 'anastasia.net',
+  },
+  {
+    id: 3,
+    name: 'Clementine Bauch',
+    username: 'Samantha',
+    email: 'Nathan@yesenia.net',
+    website: 'ramiro.info',
+  },
+  {
+    id: 4,
+    name: 'Patricia Lebsack',
+    username: 'Karianne',
+    email: 'Julianne.OConner@kory.org',
+    website: 'kale.biz',
+  },
+  {
+    id: 5,
+    name: 'Chelsey Dietrich',
+    username: 'Kamren',
+    email: 'Lucio_Hettinger@annie.ca',
+    website: 'demarco.info',
+  },
+  {
+    id: 6,
+    name: 'Mrs. Dennis Schulist',
+    username: 'Leopoldo_Corkery',
+    email: 'Karley_Dach@jasper.info',
+    website: 'ola.org',
+  },
+  {
+    id: 7,
+    name: 'Kurtis Weissnat',
+    username: 'Elwyn.Skiles',
+    email: 'Telly.Hoeger@billy.biz',
+    website: 'elvis.io',
+  },
+  {
+    id: 8,
+    name: 'Nicholas Runolfsdottir V',
+    username: 'Maxime_Nienow',
+    email: 'Sherwood@rosamond.me',
+    website: 'jacynthe.com',
+  },
+  {
+    id: 9,
+    name: 'Glenna Reichert',
+    username: 'Delphine',
+    email: 'Chaim_McDermott@dana.io',
+    website: 'conrad.com',
+  },
+  {
+    id: 10,
+    name: 'Clementina DuBuque',
+    username: 'Moriah.Stanton',
+    email: 'Rey.Padberg@karina.biz',
+    website: 'ambrose.net',
+  },
+];
+            `
+        }
+    }
+};
 // endregion
 
 // region With "Totals" row
@@ -736,6 +920,7 @@ const ROWS_DATA = [
 };
 
 // endregion
+
 // region With Remove Row action
 export const RemoveRowAction = TableTemplate.bind({});
 RemoveRowAction.args = {
@@ -903,6 +1088,20 @@ const ROWS_DATA = [
     }
 };
 // endregion
+
+// todo: - add story with "Go Top" button
+// todo: - add multiple actions to component
+// todo: - add subheadrs support to component
+// todo: - add story "Horizontal Overflow"
+// todo: - (check with Shai) actions column (last column)
+
+// todo: - add story with expanded rows (maybe other stories file)
+// todo: - add story with infinity scroll
+// todo: - add story with bordered columns
+
+// todo: - do new stories for column tyles in additional file
+/*
+
 // region With Checkbox
 const TableCheckboxTemplate: Story<TableComponent> = (args: TableComponent) => ({
     props: {
@@ -976,3 +1175,4 @@ WithToggle.parameters = {
     }
 };
 // endregion
+*/
