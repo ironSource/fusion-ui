@@ -1208,7 +1208,7 @@ const ROWS_DATA = [
 // region Go Top Button
 const TableGoTopButtonTemplate: Story<TableComponent> = (args: TableComponent) => ({
     props: {...args},
-    template: `<div style="height: 505px">
+    template: `<div style="height: 505px;">
     <fusion-table
         [options]="options"
         [columns]="columns"
@@ -1218,7 +1218,7 @@ const TableGoTopButtonTemplate: Story<TableComponent> = (args: TableComponent) =
 });
 export const GoTopButton = TableGoTopButtonTemplate.bind({});
 GoTopButton.args = {
-    options: {...TABLE_DEFAULT_OPTIONS, stickyHeader: true},
+    options: {...TABLE_DEFAULT_OPTIONS, stickyHeader: true, hasReturnToTopButton: true},
     rows: [
         ...ROWS_DEFAULT_DATA,
         ...Array.from({length: 30}, (_, i) => {
