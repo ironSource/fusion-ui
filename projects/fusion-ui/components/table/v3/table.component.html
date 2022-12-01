@@ -121,7 +121,6 @@
         <div class="is-overlay-loader-holder"><fusion-loader [status]="true" height="150">Loading Please Wait…</fusion-loader></div>
     </ng-container>
     <!--table pagination loading overlay-->
-    <!--todo: Add condition when to show button 'go top'-->
     <ng-container *ngIf="options?.hasReturnToTopButton && (shownGoTopButton$ | async)">
         <div class="fu-button-return-top" fusionTooltip="Return to top" (click)="onClickReturnTop()">
             <fusion-icon class="fu-return-top-icon" [name]="{iconName:'angle-up', iconVersion: 'v3'}"></fusion-icon>

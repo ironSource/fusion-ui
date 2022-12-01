@@ -137,9 +137,9 @@ $tableFrameFooterHeight: 72px;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            position: fixed;
-            right: 81px;
-            bottom: 48px;
+            position: absolute;
+            right: 42px;
+            bottom: calc(24px + #{$tableFrameFooterHeight});
 
             @include icon-style('fu-return-top-icon', $fu-light-800, 32px, false, true){
                 @include size(32px);
@@ -221,6 +221,9 @@ $tableFrameFooterHeight: 72px;
         border-radius: initial;
         .tableWrap {
             height: 100%;
+        }
+        .fu-button-return-top{
+            bottom: 24px;
         }
     }
 
