@@ -5,6 +5,8 @@ $v3-maxCollWidth: 350px;
 $v3-headerHeight: 40px;
 $v3-headerCellPadding: 0 16px;
 $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-light-400);
+$tableFrameHeaderHeight: 56px;
+$tableFrameFooterHeight: 72px;
 
 %sort-triangle-base{
     width: 0;
@@ -23,9 +25,9 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
     border-radius: 16px;
 
     .tableWrap{
-        height: 100%;
+        height: calc(100% - #{$tableFrameHeaderHeight} - #{$tableFrameFooterHeight});
         display: block;
-        overflow-x: auto;
+        overflow: auto;
         @extend %customScroll;
         &::-webkit-scrollbar-track {
             margin-top: $v3-headerHeight;
@@ -168,7 +170,7 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
     }
 
     .fu-table-header{
-        height: 56px;
+        height: $tableFrameHeaderHeight;
         width: 100%;
         display: flex;
         align-items: center;
@@ -208,7 +210,7 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
         }
     }
     .fu-table-footer{
-        height: 72px;
+        height: $tableFrameFooterHeight;
         width: 100%;
         display: flex;
         align-items: center;
@@ -217,6 +219,9 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
     &.fu-no-table-frame{
         border: initial;
         border-radius: initial;
+        .tableWrap {
+            height: 100%;
+        }
     }
 
     &.fixed-table {
@@ -241,7 +246,7 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
             &.fu-stocky-to-external{
                 display: initial;
             }
-            height: calc(100% - 56px - 72px);
+            height: calc(100% - #{$tableFrameHeaderHeight} - #{$tableFrameFooterHeight});
             & + .fu-table-footer{
                 border-top: solid 1px $fu-light-400;
             }
