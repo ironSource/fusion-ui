@@ -1,7 +1,12 @@
 import {Canvas, Meta, Story, Description, Source, ArgsTable} from '@storybook/addon-docs';
 import {dedent} from 'ts-dedent';
 
-<Meta title="Components/Table/All"/>
+<Meta title="Components/Table/All" parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+        canvas: { hidden: true }
+    }
+}}/>
 
 <Description markdown={dedent`
 # Table

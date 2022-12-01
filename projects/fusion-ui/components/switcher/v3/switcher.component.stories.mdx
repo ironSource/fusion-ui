@@ -2,7 +2,12 @@ import {Canvas, Meta, Story, Description, Source, ArgsTable} from '@storybook/ad
 import {dedent} from 'ts-dedent';
 import {SwitcherComponent} from './switcher.component';
 
-<Meta title="Components/Inputs/Switch/All"/>
+<Meta title="Components/Inputs/Switch/All"  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+        canvas: { hidden: true }
+    }
+}}/>
 
 <Description markdown={dedent`
 # Switch
