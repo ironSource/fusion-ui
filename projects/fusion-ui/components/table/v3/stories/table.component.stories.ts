@@ -734,6 +734,7 @@ const ROWS_DATA = [
 };
 // endregion
 
+// todo: - use fusion-input for search input in table frame. (check with Shai)
 // region With Search
 const TableWithHostTemplate: Story<TableComponent> = (args: TableComponent) => ({
     props: {...args},
@@ -908,12 +909,12 @@ const ROWS_DATA = [
 // endregion
 
 // region With "Totals" row
-export const WithTotalRow = TableTemplate.bind({});
-WithTotalRow.args = {
+export const WithTotalsRow = TableTemplate.bind({});
+WithTotalsRow.args = {
     options: {tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'}, hasTotalsRow: true},
     rows: ROWS_TOTALS_DATA
 };
-WithTotalRow.parameters = {
+WithTotalsRow.parameters = {
     docs: {
         description: {
             story: dedent`**Totals row** table - table where first tow is "totals"
@@ -1405,89 +1406,7 @@ ExpandableRows.parameters = {
 // endregion
 
 // todo: - add multiple actions to component
+
 // todo: - add subheadrs support to component
-// todo: - use fusion-input for search input in table frame. (check with Shai)
 
 // todo: - add story with infinity scroll
-// todo: - add story with bordered columns - in columns settings
-
-// todo: - do new stories for column tyles in additional file
-/*
-
-// region With Checkbox
-const TableCheckboxTemplate: Story<TableComponent> = (args: TableComponent) => ({
-    props: {
-        ...args,
-        selectionChanged: actionsData.selectionChanged
-    },
-    template: `<fusion-table
-    [options]="options"
-    [columns]="columns"
-    [rows]="rows"
-    (selectionChanged)="selectionChanged($event)"
-></fusion-table>`
-});
-export const WithCheckbox = TableCheckboxTemplate.bind({});
-WithCheckbox.args = {
-    columns: TABLE_CHECKBOX_COLUMNS_CONFIG,
-    rows: ROWS_CHECKBOX_DATA
-};
-WithCheckbox.parameters = {
-    docs: {
-        description: {
-            story: dedent`
-            **Rows Selectable** table add possibility to select all or some rows.
-            you need add to columns configuration column type "Checkbox":
-            \`{key: 'selected', type: TableColumnTypeEnum.Checkbox, width: '32px'},\`
-            and in **row** data add data for checkbox state:
-            \`{selected: false, id: 1, name: 'Leanne Graham', username: 'Bret', email: 'Sincere@april.biz', website: 'hildegard.org'}\`
-            `
-        }
-    }
-};
-// endregion
-// region With Toggle
-const TableToggleTemplate: Story<TableComponent> = (args: TableComponent) => ({
-    props: {
-        ...args,
-        rowModelChange: actionsData.rowModelChange
-    },
-    template: `<fusion-table
-    [options]="options"
-    [columns]="columns"
-    [rows]="rows"
-    (rowModelChange)="rowModelChange($event)"
-></fusion-table>`
-});
-export const WithToggle = TableToggleTemplate.bind({});
-WithToggle.args = {
-    columns: TABLE_TOGGLE_COLUMNS_CONFIG,
-    rows: ROWS_TOGGLE_DATA
-};
-WithToggle.parameters = {
-    docs: {
-        description: {
-            story: dedent`
-            **Rows with Toggle** table add possibility add toggle component to the rows.
-            You need to add method for output event **(rowModelChange)**
-            for example: \`(rowModelChange)="rowModelChange($event)"\`
-            in arguments you get object:
-            \`{rowIndex: 5, rowModel: Object, keyChanged: "live", newValue: false, prevValue: undefined, onRequestDone: Function}\`
-
-            * **rowIndex**:  index for row in **rows** array that was send to the table as input parameter **[rows]**
-            * **rowModel**:  row element from **rows** array related to the event **rowModelChange**
-            * **keyChanged**: key name in element from **rows** array what was changed
-            * **newValue**: new value for this key
-            * **prevValue**: previous (current) value for this key
-
-            Also it has call-back method **onRequestDone** that you need to call on the row data change ended
-            \`onRequestDone(true)\` - in case data was changed successful
-            `
-        }
-    }
-};
-// endregion
-*/
-
-// todo: - add multiple actions to component
-// todo: - add subheadrs support to component

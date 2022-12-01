@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {TableModule} from '../../table.module';
 import {TableColumn, TableOptions} from '@ironsource/fusion-ui/components/table';
 import {takeUntil} from 'rxjs/operators';
@@ -7,7 +7,13 @@ import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Component({
     selector: 'fusion-table-story-holder',
-    template: `<fusion-table [columns]="columns" [rows]="tableRows" [options]="options" [loading]="loading"></fusion-table>`,
+    template: `<fusion-table
+        [columns]="columns"
+        [rows]="tableRows"
+        [options]="options"
+        [loading]="loading"
+        (rowModelChange)="onRowModelChange($event)"
+    ></fusion-table>`,
     standalone: true,
     imports: [TableModule]
 })
@@ -33,6 +39,8 @@ export class TableStoryHolderComponent implements OnInit, OnDestroy {
         }
     }
 
+    @Output() rowModelChange = new EventEmitter();
+
     /** @ignore */
     @Input() loading = false;
     /** @ignore */
@@ -56,5 +64,15 @@ export class TableStoryHolderComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.onDestroy$.next();
         this.onDestroy$.complete();
+    }
+
+    onRowModelChange($event) {
+        this.rowModelChange.emit($event);
+        setTimeout(() => {
+            if ($event.keyChanged === 'live') {
+                $event.rowModel[$event.keyChanged] = $event.newValue;
+            }
+            $event.onRequestDone(true);
+        }, 2000);
     }
 }
