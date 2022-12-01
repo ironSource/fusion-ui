@@ -8,6 +8,7 @@ import {environment} from 'stories/environments/environment';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TableModule} from '@ironsource/fusion-ui/components/table';
+import {TableStoryHolderComponent} from './table.story-holder.component/table.story-holder.component.component';
 import {TableComponent} from '../table.component';
 import {
     ROWS_CHECKBOX_DATA,
@@ -21,8 +22,6 @@ import {
     TABLE_STICKY_COLUMNS_CONFIG,
     TABLE_TOGGLE_COLUMNS_CONFIG
 } from './table.mock-data';
-// import {TableStoryWrapperComponent} from './table-story-wrapper.component';
-import {TableStoryHolderComponent} from './table.story-holder.component/table.story-holder.component.component';
 
 const actionsData = {
     selectionChanged: action('selectionChanged'),
@@ -41,7 +40,6 @@ export default {
                 SvgModule.forRoot({assetsPath: environment.assetsPath}),
                 IconModule,
                 TableModule,
-                /*TableStoryWrapperComponent,*/
                 TableStoryHolderComponent
             ]
         })
@@ -737,7 +735,7 @@ const ROWS_DATA = [
 // endregion
 
 // region With Search
-const TableWithSearchTemplate: Story<TableComponent> = (args: TableComponent) => ({
+const TableWithHostTemplate: Story<TableComponent> = (args: TableComponent) => ({
     props: {...args},
     template: `<fusion-table-story-holder
     [options]="options"
@@ -745,7 +743,7 @@ const TableWithSearchTemplate: Story<TableComponent> = (args: TableComponent) =>
     [rows]="rows"
 ></fusion-table-story-holder>`
 });
-export const WithSearch = TableWithSearchTemplate.bind({});
+export const WithSearch = TableWithHostTemplate.bind({});
 WithSearch.args = {
     options: {
         ...TABLE_DEFAULT_OPTIONS,
@@ -1383,13 +1381,35 @@ const ROWS_DEFAULT_DATA = [
 };
 // endregion
 
+// todo: - add story parameters for expanded rows (maybe other stories file)
+// region Expandable Rows
+/*export const ExpandableRows = TableWithHostTemplate.bind({});
+ExpandableRows.args = {
+    options: {
+        ...TABLE_DEFAULT_OPTIONS,
+    }
+};
+ExpandableRows.parameters = {
+    docs: {
+        description: {
+            story: dedent`**Expandable Rows** table - table with expandable rows :)`
+        },
+        source: {
+            language: 'typescript',
+            format: true,
+            type: 'code',
+            code: dedent``
+        }
+    }
+};*/
+// endregion
+
 // todo: - add multiple actions to component
 // todo: - add subheadrs support to component
-// todo: - add story "Horizontal Overflow"
+// todo: - use fusion-input for search input in table frame. (check with Shai)
 
-// todo: - add story with expanded rows (maybe other stories file)
 // todo: - add story with infinity scroll
-// todo: - add story with bordered columns
+// todo: - add story with bordered columns - in columns settings
 
 // todo: - do new stories for column tyles in additional file
 /*
@@ -1468,3 +1488,6 @@ WithToggle.parameters = {
 };
 // endregion
 */
+
+// todo: - add multiple actions to component
+// todo: - add subheadrs support to component

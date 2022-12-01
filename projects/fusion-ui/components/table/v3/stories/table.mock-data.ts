@@ -5,6 +5,7 @@ export const TABLE_DEFAULT_OPTIONS: TableOptions = {
     tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'},
     noDataSubMessage: 'Try using again with a different filters'
 };
+
 // region Columns-config
 export const TABLE_DEFAULT_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'id', title: 'Id'},
@@ -35,7 +36,39 @@ export const TABLE_STICKY_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'email', title: 'Email'},
     {key: 'website', title: 'Website'}
 ];
+
+export const TABLE_CUSTOM_WIDTH_COLUMNS_CONFIG: TableColumn[] = [
+    {key: 'id', title: 'Id'},
+    {key: 'name', title: 'Name', width: '150px'},
+    {key: 'username', title: 'Username'},
+    {key: 'email', title: 'Email'},
+    {key: 'website', title: 'Website'}
+];
+export const TABLE_CUSTOM_STYLE_COLUMNS_CONFIG: TableColumn[] = [
+    {key: 'id', title: 'Id', style: {'border-right': 'solid 1px red'}},
+    {key: 'name', title: 'Name'},
+    {key: 'username', title: 'Username'},
+    {key: 'email', title: 'Email'},
+    {key: 'website', title: 'Website'}
+];
+export const TABLE_CUSTOM_ALIGN_COLUMNS_CONFIG: TableColumn[] = [
+    {key: 'id', title: 'Id'},
+    {key: 'name', title: 'Name'},
+    {key: 'username', title: 'Username', align: 'right', headerAlign: 'right'},
+    {key: 'email', title: 'Email'},
+    {key: 'website', title: 'Website'}
+];
+export const TABLE_HEADER_TOOLTIP_COLUMNS_CONFIG: TableColumn[] = [
+    {key: 'id', title: 'Id'},
+    {key: 'name', title: 'Name'},
+    {key: 'username', title: 'Username'},
+    {key: 'email', title: 'Email', tooltip: 'Lorem ipsum dolor.'},
+    {key: 'website', title: 'Website'}
+];
+
 // endregion
+
+// region Rows Data
 export const ROWS_DEFAULT_DATA = [
     {
         id: 1,
@@ -123,4 +156,5 @@ export const ROWS_CHECKBOX_DATA = ROWS_DEFAULT_DATA.map(row => {
 export const ROWS_TOGGLE_DATA = ROWS_DEFAULT_DATA.map(row => {
     return {live: true, ...row};
 });
+// endregion
 // endregion
