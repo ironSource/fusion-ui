@@ -500,7 +500,19 @@ export class TableWrapperComponent {
     stickyHeader: true
   };
   columns: TableColumn[] = COLUMNS_CONFIG;
-  rows = ROWS_DATA;
+  rows = [
+        ...ROWS_DEFAULT_DATA,
+        ...Array.from({length: 30}, (_, i) => {
+            const id = i + 11;
+            return {
+                id: id,
+                name: id + ' name',
+                username: id + ' UserName',
+                email: id + ' E-mail',
+                website: id + ' Website'
+            };
+        })
+    ];
 }
 
 const COLUMNS_CONFIG = [
@@ -1204,7 +1216,6 @@ const ROWS_DATA = [
 };
 // endregion
 
-// todo: - add story with "Go Top" button
 // region Go Top Button
 const TableGoTopButtonTemplate: Story<TableComponent> = (args: TableComponent) => ({
     props: {...args},
@@ -1235,8 +1246,16 @@ GoTopButton.args = {
 };
 GoTopButton.parameters = {
     docs: {
+        description: {
+            story: dedent`**Go Top button** in table. On scroll down will shown "Go Top" button.
+            Table wrapper must have limited height.
+            In option add property - \`hasReturnToTopButton: true\`.
+            `
+        },
         source: {
             language: 'typescript',
+            format: true,
+            type: 'code',
             code: dedent`
 import { Component} from '@angular/core';
 
@@ -1248,20 +1267,34 @@ import {
 
 @Component({
   selector: 'fusion-table-wrapper',
-  template: \`<fusion-table
+  template: \`<div style="height: 505px"><fusion-table
     [columns]="columns"
     [rows]="rows"
     [options]="options"
-  ></fusion-table>\`,
+  ></fusion-table></div>\`,
   standalone: true,
   imports: [TableModule],
 })
 export class TableWrapperComponent {
   options: TableOptions = {
-    tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'}
+    tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'},
+    stickyHeader: true,
+    hasReturnToTopButton: true
   };
   columns: TableColumn[] = COLUMNS_CONFIG;
-  rows = ROWS_DATA;
+  rows = [
+        ...ROWS_DEFAULT_DATA,
+        ...Array.from({length: 30}, (_, i) => {
+            const id = i + 11;
+            return {
+                id: id,
+                name: id + ' name',
+                username: id + ' UserName',
+                email: id + ' E-mail',
+                website: id + ' Website'
+            };
+        })
+    ];
 }
 
 const COLUMNS_CONFIG = [
@@ -1272,7 +1305,7 @@ const COLUMNS_CONFIG = [
     { key: 'website', title: 'Website' },
 ];
 
-const ROWS_DATA = [
+const ROWS_DEFAULT_DATA = [
   {
     id: 1,
     name: 'Leanne Graham',
@@ -1344,9 +1377,7 @@ const ROWS_DATA = [
     website: 'ambrose.net',
   },
 ];
-            `,
-            format: true,
-            type: 'code'
+            `
         }
     }
 };
