@@ -1,6 +1,7 @@
 import {TableColumn, TableColumnTypeEnum, TableOptions} from '@ironsource/fusion-ui/components/table';
 import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline/common/base';
 import {FormControl, Validators} from '@angular/forms';
+import {VideoPlayerComponent} from '@ironsource/fusion-ui/components/video-player';
 
 // region Utils
 const randomDate = (start: Date, end: Date): Date => {
@@ -29,16 +30,15 @@ export const TABLE_SORTING_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'email', title: 'Email', sort: ''},
     {key: 'website', title: 'Website'}
 ];
-export const TABLE_CHECKBOX_COLUMNS_CONFIG = [
+export const TABLE_CHECKBOX_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'selected', type: TableColumnTypeEnum.Checkbox, width: '32px'},
     ...TABLE_DEFAULT_COLUMNS_CONFIG
 ];
-export const TABLE_TOGGLE_COLUMNS_CONFIG = [
+export const TABLE_TOGGLE_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'live', type: TableColumnTypeEnum.ToggleButton, title: '', width: '45px'},
     ...TABLE_DEFAULT_COLUMNS_CONFIG
 ];
-
-export const TABLE_NUMBER_COLUMNS_CONFIG = [
+export const TABLE_NUMBER_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'id', title: 'Id'},
     {key: 'name', title: 'Name', width: '150px'},
     {key: 'amount', type: TableColumnTypeEnum.Number, title: 'Amount', headerAlign: 'right'},
@@ -46,8 +46,7 @@ export const TABLE_NUMBER_COLUMNS_CONFIG = [
     {key: 'email', title: 'Email'},
     {key: 'website', title: 'Website'}
 ];
-
-export const TABLE_CURRENCY_COLUMNS_CONFIG = [
+export const TABLE_CURRENCY_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'id', title: 'Id'},
     {key: 'name', title: 'Name', width: '150px'},
     {key: 'amount', type: TableColumnTypeEnum.Currency, title: 'Amount', headerAlign: 'right'},
@@ -55,8 +54,7 @@ export const TABLE_CURRENCY_COLUMNS_CONFIG = [
     {key: 'email', title: 'Email'},
     {key: 'website', title: 'Website'}
 ];
-
-export const TABLE_PERCENT_COLUMNS_CONFIG = [
+export const TABLE_PERCENT_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'id', title: 'Id'},
     {key: 'name', title: 'Name', width: '150px'},
     {key: 'amount', type: TableColumnTypeEnum.Percent, title: 'Amount', headerAlign: 'right'},
@@ -64,8 +62,7 @@ export const TABLE_PERCENT_COLUMNS_CONFIG = [
     {key: 'email', title: 'Email'},
     {key: 'website', title: 'Website'}
 ];
-
-export const TABLE_DATE_COLUMNS_CONFIG = [
+export const TABLE_DATE_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'id', title: 'Id'},
     {key: 'name', title: 'Name', width: '150px'},
     {key: 'date', type: TableColumnTypeEnum.Date, title: 'Date', ignoreTimeZone: true},
@@ -73,8 +70,15 @@ export const TABLE_DATE_COLUMNS_CONFIG = [
     {key: 'email', title: 'Email'},
     {key: 'website', title: 'Website'}
 ];
-
-export const TABLE_EDITABLE_COLUMNS_CONFIG = [
+export const TABLE_COMPONENT_COLUMNS_CONFIG: TableColumn[] = [
+    {key: 'id', title: 'Id'},
+    {key: 'name', title: 'Name', width: '150px'},
+    {key: 'title', title: 'Title', type: TableColumnTypeEnum.Component, component: VideoPlayerComponent},
+    {key: 'username', title: 'Username'},
+    {key: 'email', title: 'Email'},
+    {key: 'website', title: 'Website'}
+];
+export const TABLE_EDITABLE_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'id', title: 'Id'},
     {key: 'name', title: 'Name', width: '150px'},
     {
@@ -95,7 +99,6 @@ export const TABLE_EDITABLE_COLUMNS_CONFIG = [
     {key: 'email', title: 'Email'},
     {key: 'website', title: 'Website'}
 ];
-
 export const TABLE_STICKY_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'id', title: 'Id', width: '50px', sticky: true},
     {key: 'name', title: 'Name', width: '180px', sticky: true, stickyLeftMargin: '62px'},
@@ -103,7 +106,6 @@ export const TABLE_STICKY_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'email', title: 'Email'},
     {key: 'website', title: 'Website'}
 ];
-
 export const TABLE_CUSTOM_WIDTH_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'id', title: 'Id'},
     {key: 'name', title: 'Name', width: '150px'},
@@ -132,7 +134,6 @@ export const TABLE_HEADER_TOOLTIP_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'email', title: 'Email', tooltip: 'Lorem ipsum dolor.'},
     {key: 'website', title: 'Website'}
 ];
-
 // endregion
 
 // region Rows Data
@@ -233,6 +234,17 @@ export const ROWS_DATE_DATA = ROWS_DEFAULT_DATA.map(row => {
 export const ROWS_EDITABLE_DATA = ROWS_DEFAULT_DATA.map(row => {
     const amountFormControl = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
     return {amount: amountFormControl, ...row};
+});
+
+export const ROWS_COMPONENT_DATA = ROWS_DEFAULT_DATA.map(row => {
+    return {
+        title: {
+            thumbnail: 'https://thumbnails-demand.ssacdn.com/r7m09rxubjmjhtorpsj9.jpg',
+            src: 'https://v.ssacdn.com/demand-creatives/assets/videos/r7m09rxubjmjhtorpsj9.mp4',
+            width: '200px'
+        },
+        ...row
+    };
 });
 
 // endregion

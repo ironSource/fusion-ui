@@ -11,12 +11,14 @@ import {TableStoryHolderComponent} from './table.story-holder.component/table.st
 import {TableComponent} from '../table.component';
 import {
     ROWS_CHECKBOX_DATA,
+    ROWS_COMPONENT_DATA,
     ROWS_DATE_DATA,
     ROWS_DEFAULT_DATA,
     ROWS_EDITABLE_DATA,
     ROWS_NUMBER_DATA,
     ROWS_TOGGLE_DATA,
     TABLE_CHECKBOX_COLUMNS_CONFIG,
+    TABLE_COMPONENT_COLUMNS_CONFIG,
     TABLE_CURRENCY_COLUMNS_CONFIG,
     TABLE_DATE_COLUMNS_CONFIG,
     TABLE_DEFAULT_COLUMNS_CONFIG,
@@ -26,6 +28,7 @@ import {
     TABLE_PERCENT_COLUMNS_CONFIG,
     TABLE_TOGGLE_COLUMNS_CONFIG
 } from '@ironsource/fusion-ui/components/table/v3/stories/table.mock-data';
+import {VideoPlayerModule} from '@ironsource/fusion-ui/components/video-player';
 
 const actionsData = {
     selectionChanged: action('selectionChanged'),
@@ -43,7 +46,8 @@ export default {
                 SvgModule.forRoot({assetsPath: environment.assetsPath}),
                 IconModule,
                 TableModule,
-                TableStoryHolderComponent
+                TableStoryHolderComponent,
+                VideoPlayerModule
             ]
         })
     ],
@@ -1172,6 +1176,208 @@ const ROWS_DATA = [
     email: 'Rey.Padberg@karina.biz',
     website: 'ambrose.net',
     amount: new FormControl(98, [Validators.required, Validators.min(5)]),
+  },
+];
+            `,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region Component
+export const ColumnComponent = TableTemplate.bind({});
+ColumnComponent.args = {
+    columns: TABLE_COMPONENT_COLUMNS_CONFIG,
+    rows: ROWS_COMPONENT_DATA
+};
+ColumnComponent.parameters = {
+    docs: {
+        description: {
+            story: dedent`
+            **Component Column** column type component for use any component in the table cell.
+            for example for using **VideoPlayerComponent** we need add to the column configuration **type** and **component**
+            \`{key: 'title', title: 'Title', type: TableColumnTypeEnum.Component, component: VideoPlayerComponent, width: '100px'},\`
+            And in the row for **title** value - VideoPlayerComponent inputs as Object:
+            \`...title: {thumbnail: 'https://thumbnails-demand.ssacdn.com/r7m09rxubjmjhtorpsj9.jpg',src: 'https://v.ssacdn.com/demand-creatives/assets/videos/r7m09rxubjmjhtorpsj9.mp4'},...\`
+            `
+        },
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+
+import {
+  TableModule,
+  TableColumn,
+  TableOptions,
+  TableColumnTypeEnum,
+} from '@ironsource/fusion-ui/components/table';
+import { VideoPlayerComponent } from '@ironsource/fusion-ui/components/video-player';
+
+@Component({
+  selector: 'fusion-table-wrapper',
+  template: \`<fusion-table
+    [columns]="columns"
+    [rows]="rows"
+    [options]="options"
+  ></fusion-table>\`,
+  standalone: true,
+  imports: [TableModule],
+})
+export class TableWrapperComponent {
+  options: TableOptions = {
+    tableLabel: { text: 'Table label', tooltip: 'lorem ipsum dolor' },
+  };
+  columns: TableColumn[] = COLUMNS_CONFIG;
+  rows = ROWS_DATA;
+}
+
+const COLUMNS_CONFIG = [
+  { key: 'id', title: 'Id' },
+  { key: 'name', title: 'Name' },
+  {
+    key: 'title',
+    title: 'Title',
+    type: TableColumnTypeEnum.Component,
+    component: VideoPlayerComponent
+  },
+  { key: 'username', title: 'Username' },
+  { key: 'email', title: 'Email' },
+  { key: 'website', title: 'Website' },
+];
+
+const ROWS_DATA = [
+  {
+    id: 1,
+    name: 'Leanne Graham',
+    username: 'Bret',
+    email: 'Sincere@april.biz',
+    website: 'hildegard.org',
+    title: {
+      thumbnail:
+        'https://thumbnails-demand.ssacdn.com/r7m09rxubjmjhtorpsj9.jpg',
+      src: 'https://v.ssacdn.com/demand-creatives/assets/videos/r7m09rxubjmjhtorpsj9.mp4',
+      width: '200px'
+    },
+  },
+  {
+    id: 2,
+    name: 'Ervin Howell',
+    username: 'Antonette',
+    email: 'Shanna@melissa.tv',
+    website: 'anastasia.net',
+    title: {
+      thumbnail:
+        'https://thumbnails-demand.ssacdn.com/r7m09rxubjmjhtorpsj9.jpg',
+      src: 'https://v.ssacdn.com/demand-creatives/assets/videos/r7m09rxubjmjhtorpsj9.mp4',
+      width: '200px'
+    },
+  },
+  {
+    id: 3,
+    name: 'Clementine Bauch',
+    username: 'Samantha',
+    email: 'Nathan@yesenia.net',
+    website: 'ramiro.info',
+    title: {
+      thumbnail:
+        'https://thumbnails-demand.ssacdn.com/r7m09rxubjmjhtorpsj9.jpg',
+      src: 'https://v.ssacdn.com/demand-creatives/assets/videos/r7m09rxubjmjhtorpsj9.mp4',
+      width: '200px'
+    },
+  },
+  {
+    id: 4,
+    name: 'Patricia Lebsack',
+    username: 'Karianne',
+    email: 'Julianne.OConner@kory.org',
+    website: 'kale.biz',
+    title: {
+      thumbnail:
+        'https://thumbnails-demand.ssacdn.com/r7m09rxubjmjhtorpsj9.jpg',
+      src: 'https://v.ssacdn.com/demand-creatives/assets/videos/r7m09rxubjmjhtorpsj9.mp4',
+      width: '200px'
+    },
+  },
+  {
+    id: 5,
+    name: 'Chelsey Dietrich',
+    username: 'Kamren',
+    email: 'Lucio_Hettinger@annie.ca',
+    website: 'demarco.info',
+    title: {
+      thumbnail:
+        'https://thumbnails-demand.ssacdn.com/r7m09rxubjmjhtorpsj9.jpg',
+      src: 'https://v.ssacdn.com/demand-creatives/assets/videos/r7m09rxubjmjhtorpsj9.mp4',
+      width: '200px'
+    },
+  },
+  {
+    id: 6,
+    name: 'Mrs. Dennis Schulist',
+    username: 'Leopoldo_Corkery',
+    email: 'Karley_Dach@jasper.info',
+    website: 'ola.org',
+    title: {
+      thumbnail:
+        'https://thumbnails-demand.ssacdn.com/r7m09rxubjmjhtorpsj9.jpg',
+      src: 'https://v.ssacdn.com/demand-creatives/assets/videos/r7m09rxubjmjhtorpsj9.mp4',
+      width: '200px'
+    },
+  },
+  {
+    id: 7,
+    name: 'Kurtis Weissnat',
+    username: 'Elwyn.Skiles',
+    email: 'Telly.Hoeger@billy.biz',
+    website: 'elvis.io',
+    title: {
+      thumbnail:
+        'https://thumbnails-demand.ssacdn.com/r7m09rxubjmjhtorpsj9.jpg',
+      src: 'https://v.ssacdn.com/demand-creatives/assets/videos/r7m09rxubjmjhtorpsj9.mp4',
+      width: '200px'
+    },
+  },
+  {
+    id: 8,
+    name: 'Nicholas Runolfsdottir V',
+    username: 'Maxime_Nienow',
+    email: 'Sherwood@rosamond.me',
+    website: 'jacynthe.com',
+    title: {
+      thumbnail:
+        'https://thumbnails-demand.ssacdn.com/r7m09rxubjmjhtorpsj9.jpg',
+      src: 'https://v.ssacdn.com/demand-creatives/assets/videos/r7m09rxubjmjhtorpsj9.mp4',
+      width: '200px'
+    },
+  },
+  {
+    id: 9,
+    name: 'Glenna Reichert',
+    username: 'Delphine',
+    email: 'Chaim_McDermott@dana.io',
+    website: 'conrad.com',
+    title: {
+      thumbnail:
+        'https://thumbnails-demand.ssacdn.com/r7m09rxubjmjhtorpsj9.jpg',
+      src: 'https://v.ssacdn.com/demand-creatives/assets/videos/r7m09rxubjmjhtorpsj9.mp4',
+      width: '200px'
+    },
+  },
+  {
+    id: 10,
+    name: 'Clementina DuBuque',
+    username: 'Moriah.Stanton',
+    email: 'Rey.Padberg@karina.biz',
+    website: 'ambrose.net',
+    title: {
+      thumbnail:
+        'https://thumbnails-demand.ssacdn.com/r7m09rxubjmjhtorpsj9.jpg',
+      src: 'https://v.ssacdn.com/demand-creatives/assets/videos/r7m09rxubjmjhtorpsj9.mp4',
+      width: '200px'
+    },
   },
 ];
             `,
