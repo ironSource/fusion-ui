@@ -43,7 +43,8 @@
 
         @include icon-style('icon-save', $fu-light-700, 12px, true, true) {
             @extend %absoluteVerticalAlign;
-            right: 13px;
+            right: 20px;
+            top: 24px;
             cursor: pointer;
         }
         @include icon-style('icon-save', $fu-primary-500, 12px, true, true, 0, true);
