@@ -1,5 +1,11 @@
 import {TableColumn, TableColumnTypeEnum, TableOptions} from '@ironsource/fusion-ui/components/table';
 
+// region Utils
+const randomDate = (start: Date, end: Date): Date => {
+    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+};
+// endregion
+
 // region Mocking data
 export const TABLE_DEFAULT_OPTIONS: TableOptions = {
     tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'},
@@ -29,6 +35,43 @@ export const TABLE_TOGGLE_COLUMNS_CONFIG = [
     {key: 'live', type: TableColumnTypeEnum.ToggleButton, title: '', width: '45px'},
     ...TABLE_DEFAULT_COLUMNS_CONFIG
 ];
+
+export const TABLE_NUMBER_COLUMNS_CONFIG = [
+    {key: 'id', title: 'Id'},
+    {key: 'name', title: 'Name', width: '150px'},
+    {key: 'amount', type: TableColumnTypeEnum.Number, title: 'Amount', headerAlign: 'right'},
+    {key: 'username', title: 'Username'},
+    {key: 'email', title: 'Email'},
+    {key: 'website', title: 'Website'}
+];
+
+export const TABLE_CURRENCY_COLUMNS_CONFIG = [
+    {key: 'id', title: 'Id'},
+    {key: 'name', title: 'Name', width: '150px'},
+    {key: 'amount', type: TableColumnTypeEnum.Currency, title: 'Amount', headerAlign: 'right'},
+    {key: 'username', title: 'Username'},
+    {key: 'email', title: 'Email'},
+    {key: 'website', title: 'Website'}
+];
+
+export const TABLE_PERCENT_COLUMNS_CONFIG = [
+    {key: 'id', title: 'Id'},
+    {key: 'name', title: 'Name', width: '150px'},
+    {key: 'amount', type: TableColumnTypeEnum.Percent, title: 'Amount', headerAlign: 'right'},
+    {key: 'username', title: 'Username'},
+    {key: 'email', title: 'Email'},
+    {key: 'website', title: 'Website'}
+];
+
+export const TABLE_DATE_COLUMNS_CONFIG = [
+    {key: 'id', title: 'Id'},
+    {key: 'name', title: 'Name', width: '150px'},
+    {key: 'date', type: TableColumnTypeEnum.Date, title: 'Date', ignoreTimeZone: true},
+    {key: 'username', title: 'Username'},
+    {key: 'email', title: 'Email'},
+    {key: 'website', title: 'Website'}
+];
+
 export const TABLE_STICKY_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'id', title: 'Id', width: '50px', sticky: true},
     {key: 'name', title: 'Name', width: '180px', sticky: true, stickyLeftMargin: '62px'},
@@ -156,5 +199,12 @@ export const ROWS_CHECKBOX_DATA = ROWS_DEFAULT_DATA.map(row => {
 export const ROWS_TOGGLE_DATA = ROWS_DEFAULT_DATA.map(row => {
     return {live: true, ...row};
 });
+export const ROWS_NUMBER_DATA = ROWS_DEFAULT_DATA.map(row => {
+    return {amount: Math.floor(Math.random() * 100), ...row};
+});
+export const ROWS_DATE_DATA = ROWS_DEFAULT_DATA.map(row => {
+    return {date: randomDate(new Date(2012, 0, 1), new Date()), ...row};
+});
+
 // endregion
 // endregion

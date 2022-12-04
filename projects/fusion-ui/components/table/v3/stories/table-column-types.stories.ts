@@ -11,11 +11,17 @@ import {TableStoryHolderComponent} from './table.story-holder.component/table.st
 import {TableComponent} from '../table.component';
 import {
     ROWS_CHECKBOX_DATA,
+    ROWS_DATE_DATA,
     ROWS_DEFAULT_DATA,
+    ROWS_NUMBER_DATA,
     ROWS_TOGGLE_DATA,
     TABLE_CHECKBOX_COLUMNS_CONFIG,
+    TABLE_CURRENCY_COLUMNS_CONFIG,
+    TABLE_DATE_COLUMNS_CONFIG,
     TABLE_DEFAULT_COLUMNS_CONFIG,
     TABLE_DEFAULT_OPTIONS,
+    TABLE_NUMBER_COLUMNS_CONFIG,
+    TABLE_PERCENT_COLUMNS_CONFIG,
     TABLE_TOGGLE_COLUMNS_CONFIG
 } from '@ironsource/fusion-ui/components/table/v3/stories/table.mock-data';
 
@@ -46,7 +52,20 @@ export default {
         },
         docs: {
             description: {
-                component: dedent`**Tables** columns types`
+                component: dedent`**Tables** columns types. Set column type you can with column configuration **TableColumn.type:TableColumnTypeEnum**.
+
+                Types:
+                - String,
+                - Component,
+                - Checkbox,
+                - ToggleButton,
+                - InputEdit,
+                - Date,
+                - Currency,
+                - Number,
+                - Percent
+
+                `
             }
         }
     },
@@ -178,6 +197,575 @@ const ROWS_DATA = [
     username: 'Moriah.Stanton',
     email: 'Rey.Padberg@karina.biz',
     website: 'ambrose.net',
+  },
+];
+            `,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region Number
+export const ColumnNumber = TableTemplate.bind({});
+ColumnNumber.args = {
+    columns: TABLE_NUMBER_COLUMNS_CONFIG,
+    rows: ROWS_NUMBER_DATA
+};
+ColumnNumber.parameters = {
+    docs: {
+        description: {
+            story: dedent`
+            **Number Column** column typer number has align - right in table body by default
+            \`{key: 'amount', type: TableColumnTypeEnum.Number, title: 'Amount', headerAlign: 'right'},\``
+        },
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+
+import {
+  TableModule,
+  TableColumn,
+  TableOptions,
+} from '@ironsource/fusion-ui/components/table';
+
+@Component({
+  selector: 'fusion-table-wrapper',
+  template: \`<fusion-table
+    [columns]="columns"
+    [rows]="rows"
+    [options]="options"
+  ></fusion-table>\`,
+  standalone: true,
+  imports: [TableModule],
+})
+export class TableWrapperComponent {
+  options: TableOptions = {
+    tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'}
+  };
+  columns: TableColumn[] = COLUMNS_CONFIG;
+  rows = ROWS_DATA;
+}
+
+const COLUMNS_CONFIG = [
+    { key: 'id', title: 'Id' },
+    { key: 'name', title: 'Name' },
+    { key: 'amount', type: TableColumnTypeEnum.Number, title: 'Amount', headerAlign: 'right'},
+    { key: 'username', title: 'Username' },
+    { key: 'email', title: 'Email' },
+    { key: 'website', title: 'Website' },
+];
+
+const ROWS_DATA = [
+  {
+    id: 1,
+    name: 'Leanne Graham',
+    username: 'Bret',
+    email: 'Sincere@april.biz',
+    website: 'hildegard.org',
+    amount: 23
+  },
+  {
+    id: 2,
+    name: 'Ervin Howell',
+    username: 'Antonette',
+    email: 'Shanna@melissa.tv',
+    website: 'anastasia.net',
+    amount: 45
+  },
+  {
+    id: 3,
+    name: 'Clementine Bauch',
+    username: 'Samantha',
+    email: 'Nathan@yesenia.net',
+    website: 'ramiro.info',
+    amount: 14
+  },
+  {
+    id: 4,
+    name: 'Patricia Lebsack',
+    username: 'Karianne',
+    email: 'Julianne.OConner@kory.org',
+    website: 'kale.biz',
+    amount: 98
+  },
+  {
+    id: 5,
+    name: 'Chelsey Dietrich',
+    username: 'Kamren',
+    email: 'Lucio_Hettinger@annie.ca',
+    website: 'demarco.info',
+    amount: 5
+  },
+  {
+    id: 6,
+    name: 'Mrs. Dennis Schulist',
+    username: 'Leopoldo_Corkery',
+    email: 'Karley_Dach@jasper.info',
+    website: 'ola.org',
+    amount: 65
+  },
+  {
+    id: 7,
+    name: 'Kurtis Weissnat',
+    username: 'Elwyn.Skiles',
+    email: 'Telly.Hoeger@billy.biz',
+    website: 'elvis.io',
+    amount: 34
+  },
+  {
+    id: 8,
+    name: 'Nicholas Runolfsdottir V',
+    username: 'Maxime_Nienow',
+    email: 'Sherwood@rosamond.me',
+    website: 'jacynthe.com',
+    amount: 76
+  },
+  {
+    id: 9,
+    name: 'Glenna Reichert',
+    username: 'Delphine',
+    email: 'Chaim_McDermott@dana.io',
+    website: 'conrad.com',
+    amount: 12
+  },
+  {
+    id: 10,
+    name: 'Clementina DuBuque',
+    username: 'Moriah.Stanton',
+    email: 'Rey.Padberg@karina.biz',
+    website: 'ambrose.net',
+    amount: 29
+  },
+];
+            `,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region Currency
+export const ColumnCurrency = TableTemplate.bind({});
+ColumnCurrency.args = {
+    columns: TABLE_CURRENCY_COLUMNS_CONFIG,
+    rows: ROWS_NUMBER_DATA
+};
+ColumnCurrency.parameters = {
+    docs: {
+        description: {
+            story: dedent`
+            **Currency Column** column type currency used angular pipe **currency**
+            \`{key: 'amount', type: TableColumnTypeEnum.Currency, title: 'Amount', headerAlign: 'right'},\`
+            also you can use **pipeOptions** to set option for <a href='https://angular.io/api/common/CurrencyPipe' target='blank'>currency pipe</a>
+            `
+        },
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+
+import {
+  TableModule,
+  TableColumn,
+  TableOptions,
+} from '@ironsource/fusion-ui/components/table';
+
+@Component({
+  selector: 'fusion-table-wrapper',
+  template: \`<fusion-table
+    [columns]="columns"
+    [rows]="rows"
+    [options]="options"
+  ></fusion-table>\`,
+  standalone: true,
+  imports: [TableModule],
+})
+export class TableWrapperComponent {
+  options: TableOptions = {
+    tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'}
+  };
+  columns: TableColumn[] = COLUMNS_CONFIG;
+  rows = ROWS_DATA;
+}
+
+const COLUMNS_CONFIG = [
+    { key: 'id', title: 'Id' },
+    { key: 'name', title: 'Name' },
+    { key: 'amount', type: TableColumnTypeEnum.Currency, title: 'Amount', headerAlign: 'right'},
+    { key: 'username', title: 'Username' },
+    { key: 'email', title: 'Email' },
+    { key: 'website', title: 'Website' },
+];
+
+const ROWS_DATA = [
+  {
+    id: 1,
+    name: 'Leanne Graham',
+    username: 'Bret',
+    email: 'Sincere@april.biz',
+    website: 'hildegard.org',
+    amount: 23
+  },
+  {
+    id: 2,
+    name: 'Ervin Howell',
+    username: 'Antonette',
+    email: 'Shanna@melissa.tv',
+    website: 'anastasia.net',
+    amount: 45
+  },
+  {
+    id: 3,
+    name: 'Clementine Bauch',
+    username: 'Samantha',
+    email: 'Nathan@yesenia.net',
+    website: 'ramiro.info',
+    amount: 14
+  },
+  {
+    id: 4,
+    name: 'Patricia Lebsack',
+    username: 'Karianne',
+    email: 'Julianne.OConner@kory.org',
+    website: 'kale.biz',
+    amount: 98
+  },
+  {
+    id: 5,
+    name: 'Chelsey Dietrich',
+    username: 'Kamren',
+    email: 'Lucio_Hettinger@annie.ca',
+    website: 'demarco.info',
+    amount: 5
+  },
+  {
+    id: 6,
+    name: 'Mrs. Dennis Schulist',
+    username: 'Leopoldo_Corkery',
+    email: 'Karley_Dach@jasper.info',
+    website: 'ola.org',
+    amount: 65
+  },
+  {
+    id: 7,
+    name: 'Kurtis Weissnat',
+    username: 'Elwyn.Skiles',
+    email: 'Telly.Hoeger@billy.biz',
+    website: 'elvis.io',
+    amount: 34
+  },
+  {
+    id: 8,
+    name: 'Nicholas Runolfsdottir V',
+    username: 'Maxime_Nienow',
+    email: 'Sherwood@rosamond.me',
+    website: 'jacynthe.com',
+    amount: 76
+  },
+  {
+    id: 9,
+    name: 'Glenna Reichert',
+    username: 'Delphine',
+    email: 'Chaim_McDermott@dana.io',
+    website: 'conrad.com',
+    amount: 12
+  },
+  {
+    id: 10,
+    name: 'Clementina DuBuque',
+    username: 'Moriah.Stanton',
+    email: 'Rey.Padberg@karina.biz',
+    website: 'ambrose.net',
+    amount: 29
+  },
+];
+            `,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region Percent
+export const ColumnPercent = TableTemplate.bind({});
+ColumnPercent.args = {
+    columns: TABLE_PERCENT_COLUMNS_CONFIG,
+    rows: ROWS_NUMBER_DATA
+};
+ColumnPercent.parameters = {
+    docs: {
+        description: {
+            story: dedent`
+            **Percent Column** column type percent used pipe **number** and add sign "%" to the right
+            \`{key: 'amount', type: TableColumnTypeEnum.Percent, title: 'Amount', headerAlign: 'right'},\`
+            `
+        },
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+
+import {
+  TableModule,
+  TableColumn,
+  TableOptions,
+} from '@ironsource/fusion-ui/components/table';
+
+@Component({
+  selector: 'fusion-table-wrapper',
+  template: \`<fusion-table
+    [columns]="columns"
+    [rows]="rows"
+    [options]="options"
+  ></fusion-table>\`,
+  standalone: true,
+  imports: [TableModule],
+})
+export class TableWrapperComponent {
+  options: TableOptions = {
+    tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'}
+  };
+  columns: TableColumn[] = COLUMNS_CONFIG;
+  rows = ROWS_DATA;
+}
+
+const COLUMNS_CONFIG = [
+    { key: 'id', title: 'Id' },
+    { key: 'name', title: 'Name' },
+    { key: 'amount', type: TableColumnTypeEnum.Percent, title: 'Amount', headerAlign: 'right'},
+    { key: 'username', title: 'Username' },
+    { key: 'email', title: 'Email' },
+    { key: 'website', title: 'Website' },
+];
+
+const ROWS_DATA = [
+  {
+    id: 1,
+    name: 'Leanne Graham',
+    username: 'Bret',
+    email: 'Sincere@april.biz',
+    website: 'hildegard.org',
+    amount: 23
+  },
+  {
+    id: 2,
+    name: 'Ervin Howell',
+    username: 'Antonette',
+    email: 'Shanna@melissa.tv',
+    website: 'anastasia.net',
+    amount: 45
+  },
+  {
+    id: 3,
+    name: 'Clementine Bauch',
+    username: 'Samantha',
+    email: 'Nathan@yesenia.net',
+    website: 'ramiro.info',
+    amount: 14
+  },
+  {
+    id: 4,
+    name: 'Patricia Lebsack',
+    username: 'Karianne',
+    email: 'Julianne.OConner@kory.org',
+    website: 'kale.biz',
+    amount: 98
+  },
+  {
+    id: 5,
+    name: 'Chelsey Dietrich',
+    username: 'Kamren',
+    email: 'Lucio_Hettinger@annie.ca',
+    website: 'demarco.info',
+    amount: 5
+  },
+  {
+    id: 6,
+    name: 'Mrs. Dennis Schulist',
+    username: 'Leopoldo_Corkery',
+    email: 'Karley_Dach@jasper.info',
+    website: 'ola.org',
+    amount: 65
+  },
+  {
+    id: 7,
+    name: 'Kurtis Weissnat',
+    username: 'Elwyn.Skiles',
+    email: 'Telly.Hoeger@billy.biz',
+    website: 'elvis.io',
+    amount: 34
+  },
+  {
+    id: 8,
+    name: 'Nicholas Runolfsdottir V',
+    username: 'Maxime_Nienow',
+    email: 'Sherwood@rosamond.me',
+    website: 'jacynthe.com',
+    amount: 76
+  },
+  {
+    id: 9,
+    name: 'Glenna Reichert',
+    username: 'Delphine',
+    email: 'Chaim_McDermott@dana.io',
+    website: 'conrad.com',
+    amount: 12
+  },
+  {
+    id: 10,
+    name: 'Clementina DuBuque',
+    username: 'Moriah.Stanton',
+    email: 'Rey.Padberg@karina.biz',
+    website: 'ambrose.net',
+    amount: 29
+  },
+];
+            `,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region Date
+export const ColumnDate = TableTemplate.bind({});
+ColumnDate.args = {
+    columns: TABLE_DATE_COLUMNS_CONFIG,
+    rows: ROWS_DATE_DATA
+};
+ColumnDate.parameters = {
+    docs: {
+        description: {
+            story: dedent`
+            **Date Column** column type date.
+            \`{key: 'date', type: TableColumnTypeEnum.Date, title: 'Date'},\`
+            You can set date format options in property **dateFormat** (default is - 'd MMM yyyy') and **ignoreTimeZone: true** for ignore time-zone
+            `
+        },
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+
+import {
+  TableModule,
+  TableColumn,
+  TableOptions,
+} from '@ironsource/fusion-ui/components/table';
+
+@Component({
+  selector: 'fusion-table-wrapper',
+  template: \`<fusion-table
+    [columns]="columns"
+    [rows]="rows"
+    [options]="options"
+  ></fusion-table>\`,
+  standalone: true,
+  imports: [TableModule],
+})
+export class TableWrapperComponent {
+  options: TableOptions = {
+    tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'}
+  };
+  columns: TableColumn[] = COLUMNS_CONFIG;
+  rows = ROWS_DATA;
+}
+
+const COLUMNS_CONFIG = [
+    { key: 'id', title: 'Id' },
+    { key: 'name', title: 'Name' },
+    { key: 'date', type: TableColumnTypeEnum.Date, ignoreTimeZone: true, title: 'Date'},
+    { key: 'username', title: 'Username' },
+    { key: 'email', title: 'Email' },
+    { key: 'website', title: 'Website' },
+];
+
+const ROWS_DATA = [
+  {
+    id: 1,
+    name: 'Leanne Graham',
+    username: 'Bret',
+    email: 'Sincere@april.biz',
+    website: 'hildegard.org',
+    date: '02/13/2020'
+  },
+  {
+    id: 2,
+    name: 'Ervin Howell',
+    username: 'Antonette',
+    email: 'Shanna@melissa.tv',
+    website: 'anastasia.net',
+    date: '02/13/2020'
+  },
+  {
+    id: 3,
+    name: 'Clementine Bauch',
+    username: 'Samantha',
+    email: 'Nathan@yesenia.net',
+    website: 'ramiro.info',
+    date: '02/13/2020'
+  },
+  {
+    id: 4,
+    name: 'Patricia Lebsack',
+    username: 'Karianne',
+    email: 'Julianne.OConner@kory.org',
+    website: 'kale.biz',
+    date: '02/13/2020'
+  },
+  {
+    id: 5,
+    name: 'Chelsey Dietrich',
+    username: 'Kamren',
+    email: 'Lucio_Hettinger@annie.ca',
+    website: 'demarco.info',
+    date: '02/13/2020'
+  },
+  {
+    id: 6,
+    name: 'Mrs. Dennis Schulist',
+    username: 'Leopoldo_Corkery',
+    email: 'Karley_Dach@jasper.info',
+    website: 'ola.org',
+    date: '02/13/2020'
+  },
+  {
+    id: 7,
+    name: 'Kurtis Weissnat',
+    username: 'Elwyn.Skiles',
+    email: 'Telly.Hoeger@billy.biz',
+    website: 'elvis.io',
+    date: '02/13/2020'
+  },
+  {
+    id: 8,
+    name: 'Nicholas Runolfsdottir V',
+    username: 'Maxime_Nienow',
+    email: 'Sherwood@rosamond.me',
+    website: 'jacynthe.com',
+    date: '02/13/2020'
+  },
+  {
+    id: 9,
+    name: 'Glenna Reichert',
+    username: 'Delphine',
+    email: 'Chaim_McDermott@dana.io',
+    website: 'conrad.com',
+    date: '02/13/2020'
+  },
+  {
+    id: 10,
+    name: 'Clementina DuBuque',
+    username: 'Moriah.Stanton',
+    email: 'Rey.Padberg@karina.biz',
+    website: 'ambrose.net',
+    date: '02/13/2020'
   },
 ];
             `,
