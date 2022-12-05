@@ -734,7 +734,6 @@ const ROWS_DATA = [
 };
 // endregion
 
-// todo: - use fusion-input for search input in table frame. (check with Shai)
 // region With Search
 const TableWithHostTemplate: Story<TableComponent> = (args: TableComponent) => ({
     props: {...args},
@@ -1382,6 +1381,43 @@ const ROWS_DEFAULT_DATA = [
 };
 // endregion
 
+// todo: - add story with infinity scroll
+// region Infinity scroll
+const TableInfinityScrollTemplate: Story<TableComponent> = (args: TableComponent) => ({
+    props: {...args},
+    template: `<div style="height: 507px;"><fusion-table-story-holder
+    [options]="options"
+    [columns]="columns"
+    [rows]="rows"
+></fusion-table-story-holder></div>`
+});
+export const InfinityScroll = TableInfinityScrollTemplate.bind({});
+InfinityScroll.args = {
+    options: {
+        ...TABLE_DEFAULT_OPTIONS,
+        pagination: {
+            enable: true
+        }
+    }
+};
+InfinityScroll.parameters = {
+    docs: {
+        description: {
+            story: dedent`
+            `
+        },
+        source: {
+            language: 'typescript',
+            format: true,
+            type: 'code',
+            code: dedent`
+            `
+        }
+    }
+};
+// endregion
+
+// -------------------------------------------
 // todo: - add story parameters for expanded rows (maybe other stories file)
 // region Expandable Rows
 /*export const ExpandableRows = TableWithHostTemplate.bind({});
@@ -1408,5 +1444,3 @@ ExpandableRows.parameters = {
 // todo: - add multiple actions to component
 
 // todo: - add subheadrs support to component
-
-// todo: - add story with infinity scroll

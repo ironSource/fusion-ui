@@ -13,6 +13,7 @@ import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
         [options]="options"
         [loading]="loading"
         (rowModelChange)="onRowModelChange($event)"
+        (scrollDown)="onscrollDown()"
     ></fusion-table>`,
     standalone: true,
     imports: [TableModule]
@@ -74,5 +75,25 @@ export class TableStoryHolderComponent implements OnInit, OnDestroy {
             }
             $event.onRequestDone(true);
         }, 2000);
+    }
+
+    onscrollDown() {
+        const shownLength = this._rows.length;
+        const newRows = Array.from({length: 20}, (_, i) => {
+            const id = i + shownLength + 1;
+            return {
+                id: id,
+                name: id + ' name',
+                username: id + ' UserName',
+                email: id + ' E-mail',
+                website: id + ' Website'
+            };
+        });
+
+        setTimeout(() => {
+            this._rows = [...this._rows, ...newRows];
+            this.tableRows = this._rows;
+            this.options = {...this.options, pagination: {enable: true, loading: false}};
+        }, 1000);
     }
 }
