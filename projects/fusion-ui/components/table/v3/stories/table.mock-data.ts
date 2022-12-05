@@ -134,6 +134,14 @@ export const TABLE_HEADER_TOOLTIP_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'email', title: 'Email', tooltip: 'Lorem ipsum dolor.'},
     {key: 'website', title: 'Website'}
 ];
+export const TABLE_SUBHEADER_COLUMNS_CONFIG: TableColumn[] = [
+    {key: 'id', title: 'Id'},
+    {key: 'name', title: 'Name', groupName: 'Section 1'},
+    {key: 'username', title: 'Username'},
+    {key: 'email', title: 'Email', groupName: 'Section 2'},
+    {key: 'website', title: 'Website'}
+];
+
 // endregion
 
 // region Rows Data

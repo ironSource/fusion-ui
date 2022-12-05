@@ -20,6 +20,7 @@ import {
     TABLE_DEFAULT_OPTIONS,
     TABLE_SORTING_COLUMNS_CONFIG,
     TABLE_STICKY_COLUMNS_CONFIG,
+    TABLE_SUBHEADER_COLUMNS_CONFIG,
     TABLE_TOGGLE_COLUMNS_CONFIG
 } from './table.mock-data';
 
@@ -1547,6 +1548,13 @@ const ROWS_DATA = [
 };
 // endregion
 
+// region Subheader
+export const WithSubHeaders = TableTemplate.bind({});
+WithSubHeaders.args = {
+    columns: TABLE_SUBHEADER_COLUMNS_CONFIG
+};
+// endregion
+
 // -------------------------------------------
 // todo: - add story parameters for expanded rows (maybe other stories file)
 // region Expandable Rows
@@ -1572,5 +1580,3 @@ ExpandableRows.parameters = {
 // endregion
 
 // todo: - add multiple actions to component
-
-// todo: - add subheadrs support to component
