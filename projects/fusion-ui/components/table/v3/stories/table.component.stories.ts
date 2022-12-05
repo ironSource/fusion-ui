@@ -1381,7 +1381,6 @@ const ROWS_DEFAULT_DATA = [
 };
 // endregion
 
-// todo: - add story with infinity scroll
 // region Infinity scroll
 const TableInfinityScrollTemplate: Story<TableComponent> = (args: TableComponent) => ({
     props: {...args},
@@ -1404,6 +1403,8 @@ InfinityScroll.parameters = {
     docs: {
         description: {
             story: dedent`
+            **Infinity scroll** table will emit event (scrollDown) and show rows loading in case in table options set \`pagination:{enable: true}\`
+            and table rows will scrolled down. In scrollDown event processing you can add more rows to table rows.
             `
         },
         source: {
@@ -1411,6 +1412,135 @@ InfinityScroll.parameters = {
             format: true,
             type: 'code',
             code: dedent`
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import {
+  TableModule,
+  TableColumn,
+  TableOptions,
+} from '@ironsource/fusion-ui/components/table';
+
+@Component({
+  selector: 'fusion-table-wrapper',
+  template: \`<div style="height: 507px;"><fusion-table [columns]="columns" [rows]="rows" [options]="options" (scrollDown)="onscrollDown()"></fusion-table></div>\`,
+  standalone: true,
+  imports: [CommonModule, TableModule],
+})
+export class TableWrapperComponent {
+  options: TableOptions = {
+    pagination: {
+      enable: true,
+    },
+  };
+
+  columns: TableColumn[] = COLUMNS_CONFIG;
+
+  rows: { [key: string]: any }[] = ROWS_DATA;
+
+  onscrollDown() {
+    const shownLength = this.rows.length;
+    const newRows = Array.from({ length: 20 }, (_, i) => {
+      const id = i + shownLength + 1;
+      return {
+        id: id,
+        name: id + ' name',
+        username: id + ' UserName',
+        email: id + ' E-mail',
+        website: id + ' Website',
+      };
+    });
+
+    setTimeout(() => {
+      this.rows = [...this.rows, ...newRows];
+      this.options = {
+        ...this.options,
+        pagination: { enable: true, loading: false },
+      };
+    }, 1000);
+  }
+}
+
+const COLUMNS_CONFIG = [
+  { key: 'id', title: 'Id' },
+  { key: 'name', title: 'Name' },
+  { key: 'username', title: 'Username' },
+  { key: 'email', title: 'Email' },
+  { key: 'website', title: 'Website' },
+];
+
+const ROWS_DATA = [
+  {
+    id: 1,
+    name: 'Leanne Graham',
+    username: 'Bret',
+    email: 'Sincere@april.biz',
+    website: 'hildegard.org',
+  },
+  {
+    id: 2,
+    name: 'Ervin Howell',
+    username: 'Antonette',
+    email: 'Shanna@melissa.tv',
+    website: 'anastasia.net',
+  },
+  {
+    id: 3,
+    name: 'Clementine Bauch',
+    username: 'Samantha',
+    email: 'Nathan@yesenia.net',
+    website: 'ramiro.info',
+  },
+  {
+    id: 4,
+    name: 'Patricia Lebsack',
+    username: 'Karianne',
+    email: 'Julianne.OConner@kory.org',
+    website: 'kale.biz',
+  },
+  {
+    id: 5,
+    name: 'Chelsey Dietrich',
+    username: 'Kamren',
+    email: 'Lucio_Hettinger@annie.ca',
+    website: 'demarco.info',
+  },
+  {
+    id: 6,
+    name: 'Mrs. Dennis Schulist',
+    username: 'Leopoldo_Corkery',
+    email: 'Karley_Dach@jasper.info',
+    website: 'ola.org',
+  },
+  {
+    id: 7,
+    name: 'Kurtis Weissnat',
+    username: 'Elwyn.Skiles',
+    email: 'Telly.Hoeger@billy.biz',
+    website: 'elvis.io',
+  },
+  {
+    id: 8,
+    name: 'Nicholas Runolfsdottir V',
+    username: 'Maxime_Nienow',
+    email: 'Sherwood@rosamond.me',
+    website: 'jacynthe.com',
+  },
+  {
+    id: 9,
+    name: 'Glenna Reichert',
+    username: 'Delphine',
+    email: 'Chaim_McDermott@dana.io',
+    website: 'conrad.com',
+  },
+  {
+    id: 10,
+    name: 'Clementina DuBuque',
+    username: 'Moriah.Stanton',
+    email: 'Rey.Padberg@karina.biz',
+    website: 'ambrose.net',
+  },
+];
             `
         }
     }
