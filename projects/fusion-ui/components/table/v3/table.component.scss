@@ -104,7 +104,6 @@ $tableFrameFooterHeight: 72px;
                         left: 0;
                         z-index: getZIndexLayerOffset(normal, 3);
                     }
-
                     &:after{ // this is border bottom of header
                         border-bottom: $v3-headerBottomBorder;
                         content:'';
@@ -113,7 +112,17 @@ $tableFrameFooterHeight: 72px;
                         bottom: -1px;
                         width:100%;
                     }
-
+                    &.fu-header-group{
+                        @extend %font-bodyXSmall;
+                        height: 32px;
+                        vertical-align: bottom;
+                        &:after{
+                            display: none;
+                        }
+                    }
+                    &.fu-border-left{
+                        border-left: solid 1px $fu-light-400;
+                    }
                     .fu-tooltiped{
                         cursor: help;
                     }

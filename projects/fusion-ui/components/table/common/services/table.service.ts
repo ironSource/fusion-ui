@@ -114,6 +114,7 @@ export class TableService {
 
     getColumnClasses(col: any, isHeader = false): string[] {
         const classes = [];
+        classes.push(!!col.groupName ? 'fu-border-left' : '');
         if (isHeader) {
             classes.push(this.isColumnSortable(col) ? `is-sort ${col.sort}` : '');
             classes.push(this.getHeaderStickyClass(col));

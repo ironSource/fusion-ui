@@ -18,15 +18,17 @@
     <table [id]="id" #table *ngIf="!tableMainError">
         <ng-container *ngIf="columns && options">
             <thead *ngIf="columns.length" [hidden]="(isEmpty || (loading && !isLoadingOverlay)) && hideHeaderOnEmpty">
-                <tr [ngStyle]="!!options.rowsOptions && !!options.rowsOptions.headerRow ? options.rowsOptions.headerRow.style : null">
-                    <td
-                        *ngIf="!!options?.rowsExpandableOptions"
-                        class="expand-column"
-                        [class.sticky-left]="options?.rowsExpandableOptions?.sticky"
-                        [style.top.px]="options?.stickyHeaderTopOffset"
+                <tr *ngIf="hasSubHeader">
+                    <ng-container *ngIf="!options?.rowsExpandableOptions else headerExpandColumn"></ng-container>
+                    <td *ngFor="let column of columns; trackBy: trackByFunc;"
+                        class="fu-header-group"
+                        [ngClass]="tableService.getColumnClasses(column, true)"
                     >
-                        <span></span>
+                        {{ column.groupName ?? '' }}
                     </td>
+                </tr>
+                <tr [ngStyle]="!!options.rowsOptions && !!options.rowsOptions.headerRow ? options.rowsOptions.headerRow.style : null">
+                    <ng-container *ngIf="!options?.rowsExpandableOptions else headerExpandColumn"></ng-container>
                     <td
                         *ngFor="let column of columns; trackBy: trackByFunc; let isLast = last; let isFirst = first"
                         [attr.data-col-key]="column.key"
@@ -128,3 +130,13 @@
     </ng-container>
 </div>
 <div *ngIf="!noTableFrame" class="fu-table-footer"></div>
+
+<ng-template #headerExpandColumn>
+    <td
+        class="expand-column"
+        [class.sticky-left]="options?.rowsExpandableOptions?.sticky"
+        [style.top.px]="options?.stickyHeaderTopOffset"
+    >
+        <span></span>
+    </td>
+</ng-template>

@@ -78,6 +78,10 @@ $v3-bodyBorder: 1px solid $fu-light-400;
             left: 0;
             z-index: 2;
         }
+        &.fu-border-left{
+            border-left: solid 1px $fu-light-400;
+        }
+
     }
 
     &.is-with-totals {

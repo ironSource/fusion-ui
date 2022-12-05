@@ -47,7 +47,13 @@ export class TableComponent implements OnInit, OnDestroy {
      * Table columns configuration
      * columns: TableColumn[]
      */
-    @Input() columns: TableColumn[] = [];
+    @Input() set columns(value: TableColumn[]) {
+        if (Array.isArray(value)) {
+            this._columns = value;
+            this.hasSubHeader = this._columns.some(item => !!item.groupName);
+        }
+    }
+
     /**
      * Table rows data
      * rows: {[key: string]: any}[]
@@ -154,6 +160,8 @@ export class TableComponent implements OnInit, OnDestroy {
     tableMainError = false;
     /** @internal */
     shownGoTopButton$ = new BehaviorSubject(false);
+    /** @internal */
+    hasSubHeader = false;
 
     get isCheckboxTitleShown(): boolean {
         return this.columns ? this.columns.some(column => column.type === TableColumnTypeEnum.Checkbox && column.title !== '') : false;
@@ -199,12 +207,17 @@ export class TableComponent implements OnInit, OnDestroy {
         return this._rows;
     }
 
+    get columns(): TableColumn[] {
+        return this._columns;
+    }
+
     private lastScrollLeftValue: number;
     private _expandedRows: {[key: string]: boolean} = {};
     private currentExpandedMap: {[key: string]: boolean} = {};
     private ignoredParentSelectorsRowClickEvent: string[];
     private onDestroy$ = new Subject<void>();
     private _rows: any[] | TableRowsGrouped = [];
+    private _columns: TableColumn[] = [];
 
     constructor(
         /** @internal */
