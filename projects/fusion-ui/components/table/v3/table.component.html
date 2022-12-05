@@ -87,6 +87,10 @@
                 #tableBody
             ></tbody>
             <!--Table Body-->
+            <!--table pagination loading overlay-->
+            <ng-container *ngIf="options?.pagination && options.pagination.loading">
+                <tbody [fusionTableLoading]="colsCount"></tbody>
+            </ng-container>
             <!--Grouped Table Body-->
             <tbody
                 *ngIf="options.isGroupedTable && (!loading || isLoadingOverlay) && !isEmpty"
@@ -116,10 +120,6 @@
         ></tbody>
         <!--table empty loading-->
     </table>
-    <!--table pagination loading overlay-->
-    <ng-container *ngIf="options?.pagination && options.pagination.loading">
-        <div class="is-overlay-loader-holder"><fusion-loader [status]="true" height="150">Loading Please Wait…</fusion-loader></div>
-    </ng-container>
     <!--table pagination loading overlay-->
     <ng-container *ngIf="options?.hasReturnToTopButton && (shownGoTopButton$ | async)">
         <div class="fu-button-return-top" fusionTooltip="Return to top" (click)="onClickReturnTop()">
