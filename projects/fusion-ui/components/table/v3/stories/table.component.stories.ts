@@ -745,6 +745,7 @@ const TableWithHostTemplate: Story<TableComponent> = (args: TableComponent) => (
 ></fusion-table-story-holder>`
 });
 export const WithSearch = TableWithHostTemplate.bind({});
+const onSearch = new EventEmitter();
 WithSearch.args = {
     options: {
         ...TABLE_DEFAULT_OPTIONS,
@@ -752,7 +753,7 @@ WithSearch.args = {
             noDataSubMessage: 'Search again with a different keyword',
             searchOptions: {
                 placeholder: 'Search',
-                onSearch: new EventEmitter()
+                onSearch: onSearch
             }
         }
     }
@@ -1051,6 +1052,7 @@ const ROWS_DATA = [
 export const RemoveRowAction = TableTemplate.bind({});
 RemoveRowAction.args = {
     options: {
+        ...TABLE_DEFAULT_OPTIONS,
         remove: {
             active: true
         }
@@ -1122,7 +1124,7 @@ export class TableWrapperComponent implements OnInit, OnDestroy {
 }
 
 const TABLE_OPTIONS = {
-    tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'},
+  tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'},
   remove: {
     active: true,
     onRemove: new EventEmitter<{ rowIndex: number; rowToRemove: any }>(),
