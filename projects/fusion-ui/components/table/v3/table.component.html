@@ -19,7 +19,7 @@
         <ng-container *ngIf="columns && options">
             <thead *ngIf="columns.length" [hidden]="(isEmpty || (loading && !isLoadingOverlay)) && hideHeaderOnEmpty">
                 <tr *ngIf="hasSubHeader">
-                    <ng-container *ngIf="!options?.rowsExpandableOptions else headerExpandColumn"></ng-container>
+                    <ng-container *ngIf="!!options?.rowsExpandableOptions" [ngTemplateOutlet]="headerExpandColumn"></ng-container>
                     <td *ngFor="let column of columns; trackBy: trackByFunc;"
                         class="fu-header-group"
                         [ngClass]="tableService.getColumnClasses(column, true)"
@@ -28,7 +28,7 @@
                     </td>
                 </tr>
                 <tr [ngStyle]="!!options.rowsOptions && !!options.rowsOptions.headerRow ? options.rowsOptions.headerRow.style : null">
-                    <ng-container *ngIf="!options?.rowsExpandableOptions else headerExpandColumn"></ng-container>
+                    <ng-container *ngIf="!!options?.rowsExpandableOptions" [ngTemplateOutlet]="headerExpandColumn"></ng-container>
                     <td
                         *ngFor="let column of columns; trackBy: trackByFunc; let isLast = last; let isFirst = first"
                         [attr.data-col-key]="column.key"
