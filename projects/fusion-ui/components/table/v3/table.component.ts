@@ -50,7 +50,7 @@ export class TableComponent implements OnInit, OnDestroy {
     @Input() set columns(value: TableColumn[]) {
         if (Array.isArray(value)) {
             this._columns = value;
-            this.hasSubHeader = this._columns.some(item => !!item.groupName);
+            this.subHeader = this.getSubHeaders(this._columns);
         }
     }
 
@@ -161,7 +161,7 @@ export class TableComponent implements OnInit, OnDestroy {
     /** @internal */
     shownGoTopButton$ = new BehaviorSubject(false);
     /** @internal */
-    hasSubHeader = false;
+    subHeader: {name: string; colspan: number}[] = [];
 
     get isCheckboxTitleShown(): boolean {
         return this.columns ? this.columns.some(column => column.type === TableColumnTypeEnum.Checkbox && column.title !== '') : false;
@@ -334,6 +334,25 @@ export class TableComponent implements OnInit, OnDestroy {
             this.tableService.initSelectedRows(this.rows as any[]);
         }
         this.doLocalSorting();
+    }
+
+    private getSubHeaders(columns: TableColumn[]): {name: string; colspan: number}[] {
+        if (columns.some(item => !!item.groupName)) {
+            return columns.reduce((groups, column, idx, columns) => {
+                if (column.groupName) {
+                    groups.push({name: column.groupName ?? '&nbsp;', colspan: 1});
+                } else {
+                    if (groups[groups.length - 1] && groups[groups.length - 1].name) {
+                        groups[groups.length - 1].colspan++;
+                    } else {
+                        groups.push({name: ' ', colspan: 1});
+                    }
+                }
+                return groups;
+            }, []);
+        } else {
+            return [];
+        }
     }
 
     private doLocalSorting() {

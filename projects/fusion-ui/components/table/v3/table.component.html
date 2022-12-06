@@ -18,13 +18,13 @@
     <table [id]="id" #table *ngIf="!tableMainError">
         <ng-container *ngIf="columns && options">
             <thead *ngIf="columns.length" [hidden]="(isEmpty || (loading && !isLoadingOverlay)) && hideHeaderOnEmpty">
-                <tr *ngIf="hasSubHeader">
+                <tr *ngIf="subHeader.length">
                     <ng-container *ngIf="!!options?.rowsExpandableOptions" [ngTemplateOutlet]="headerExpandColumn"></ng-container>
-                    <td *ngFor="let column of columns; trackBy: trackByFunc;"
-                        class="fu-header-group"
-                        [ngClass]="tableService.getColumnClasses(column, true)"
+                    <td *ngFor="let subheader of subHeader"
+                        class="fu-header-group fu-border-left"
+                        [attr.colspan]="subheader.colspan"
                     >
-                        {{ column.groupName ?? '' }}
+                        {{ subheader.name}}
                     </td>
                 </tr>
                 <tr [ngStyle]="!!options.rowsOptions && !!options.rowsOptions.headerRow ? options.rowsOptions.headerRow.style : null">
