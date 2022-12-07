@@ -82,9 +82,14 @@ $largeIconSize: 24px;
         padding: 0;
         justify-content: center;
         align-items: center;
-
         & > span {
             gap: 0;
+        }
+        &.large{
+            width: 40px;
+        }
+        &.small{
+            width: 24px;
         }
     }
 
