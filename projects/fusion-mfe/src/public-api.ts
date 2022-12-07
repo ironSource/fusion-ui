@@ -26,6 +26,7 @@ export * from '@ironsource/fusion-ui/components/list-box/v2';
 export * from '@ironsource/fusion-ui/components/loader/v2';
 export * from '@ironsource/fusion-ui/components/loader-inline/v2';
 export * from '@ironsource/fusion-ui/components/menu/v1';
+export * from '@ironsource/fusion-ui/components/menu-drop';
 export * from '@ironsource/fusion-ui/components/mobile-previewer/v2';
 export * from '@ironsource/fusion-ui/components/modal';
 export * from '@ironsource/fusion-ui/components/month-picker/v2';
