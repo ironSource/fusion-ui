@@ -110,6 +110,7 @@ const ButtonTemplate: Story<ButtonComponent> = (args: ButtonComponent) => ({
 class="{{class_size}} {{class_theme}}"
 [class.fu-icon-right]="class_icon_right"
 [class.transparent]="class_transparent"
+[class.ghost]="class_ghost"
 [icon]="icon"
 [disabled]="disabled"
 [loading]="loading"
