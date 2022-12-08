@@ -24,7 +24,7 @@ export class MenuDropComponent {
         }
     }
 
-    @Input() alignDropdown: 'left' | 'right' = 'left';
+    @Input() alignDropdown: 'left' | 'right' = 'right';
 
     @Output() menuItemClicked = new EventEmitter<MenuDropItem>();
 
