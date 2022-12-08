@@ -93,7 +93,10 @@ export class TableComponent implements OnInit, OnDestroy {
      * On scroll down. Used for get new paged data portion
      */
     @Output() scrollDown: EventEmitter<any> = new EventEmitter();
-
+    /**
+     * On Row action clicked
+     */
+    @Output() rowActionClicked = this.tableService.rowActionClicked;
     /**
      * on expand icon clicked. No need in case static data and one expand level
      * @internal

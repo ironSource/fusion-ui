@@ -90,6 +90,13 @@ $v3-cellActionIconSize: 16px;
     .truncate{
         @extend %truncate;
     }
+
+    fusion-menu-drop{
+        display: none;
+        position: absolute;
+        right: 12px;
+        top: 8px;
+    }
 }
 
 :host-context(.is-row-height-big) {
@@ -109,6 +116,11 @@ $v3-cellActionIconSize: 16px;
 :host-context(tr:hover).is-inline-removable {
     div.fu-cell-action-button {
         visibility: visible;
+    }
+}
+:host-context(tr:hover) {
+    fusion-menu-drop{
+        display: block;
     }
 }
 :host-context(tr.is-with-totals) {
