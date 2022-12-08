@@ -31,8 +31,8 @@ export default {
                 - **buttonIcon**: optional, icon in the button. Default "more-vert"
                 - **alignDropdown**: optional, open dropdown align to the button. Default - "right". For left - "left" `
             }
-        },
-        layout: 'centered'
+        }
+        /*        layout: 'centered'*/
     },
     args: {
         menuItems: MOCK_MENU_ITEMS
@@ -43,7 +43,15 @@ export default {
 } as Meta<MenuDropComponent>;
 
 const MenuDropTemplate: Story<MenuDropComponent> = (args: MenuDropComponent) => ({
-    props: {...args}
+    props: {...args},
+    template: `<div style="margin: auto; display: flex; justify-content: center; height: 200px">
+    <fusion-menu-drop
+      [buttonIcon]="buttonIcon"
+      [menuItems]="menuItems"
+      [alignDropdown]="alignDropdown"
+      (menuItemClicked)="menuItemClicked($event)"
+    ></fusion-menu-drop>
+</div>`
 });
 
 export const Default = MenuDropTemplate.bind({});

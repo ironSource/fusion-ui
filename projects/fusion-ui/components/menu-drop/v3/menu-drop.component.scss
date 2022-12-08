@@ -8,6 +8,7 @@ $iconSize: 16px;
     @extend %border-box-normalize;
     @extend %list-reset;
     position: relative;
+    @include size(40px);
 
     .fu-button-holder {
         fusion-button {
