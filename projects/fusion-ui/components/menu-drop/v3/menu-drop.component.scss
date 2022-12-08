@@ -40,6 +40,7 @@ $iconSize: 16px;
             height: 40px;
             padding: 12px 8px;
             margin-top: 4px;
+            @extend %font-bodySmall;
 
             &:first-child {
                 margin-top: 0;
