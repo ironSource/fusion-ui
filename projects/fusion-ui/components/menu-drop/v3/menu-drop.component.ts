@@ -1,5 +1,6 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {MenuDropItem} from './menu-drop.entities';
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
@@ -27,6 +28,10 @@ export class MenuDropComponent {
 
     @Output() menuItemClicked = new EventEmitter<MenuDropItem>();
 
+    @HostBinding('attr.id') get elementId(): string {
+        return 'fu-dmb-' + this.uniqueId;
+    }
+
     get menuItems(): MenuDropItem[] {
         return this._menuItems;
     }
@@ -34,6 +39,9 @@ export class MenuDropComponent {
     shown = false;
 
     private _menuItems: MenuDropItem[];
+    private uniqueId = this.uniqueService.getUniqueId();
+
+    constructor(private uniqueService: UniqueIdService) {}
 
     openMenu() {
         this.shown = true;
@@ -46,7 +54,7 @@ export class MenuDropComponent {
 
     /** @ignore */
     onOutsideClick(target) {
-        if (!target.closest('.fu-menu-drop-button')) {
+        if (!target.closest('#' + this.elementId)) {
             this.shown = false;
         }
     }
