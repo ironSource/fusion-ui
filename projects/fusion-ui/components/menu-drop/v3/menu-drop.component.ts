@@ -24,7 +24,7 @@ export class MenuDropComponent {
         }
     }
 
-    @Input() alignLeft = false;
+    @Input() alignDropdown: 'left' | 'right' = 'left';
 
     @Output() menuItemClicked = new EventEmitter<MenuDropItem>();
 
@@ -36,6 +36,7 @@ export class MenuDropComponent {
         return this._menuItems;
     }
 
+    /** @internal */
     shown = false;
 
     private _menuItems: MenuDropItem[];
@@ -43,10 +44,12 @@ export class MenuDropComponent {
 
     constructor(private uniqueService: UniqueIdService) {}
 
+    /** @internal */
     openMenu() {
         this.shown = true;
     }
 
+    /** @internal */
     itemClicked(menuItem) {
         this.shown = false;
         this.menuItemClicked.emit(menuItem);
