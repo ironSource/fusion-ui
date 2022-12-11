@@ -1,53 +1,40 @@
 import {Directive, OnInit, ElementRef, Input} from '@angular/core';
+import {computePosition, flip, offset, shift} from '@floating-ui/dom';
+import {Placement} from '@floating-ui/core/src/types';
 
 /**
- * Used for dropped elements.  Check position, if has ho place to drop down,
- * Dropped top.
+ * Used @floating-ui/dom (flip()) For flip position of dropped element like drop-menu
  */
 @Directive({
     selector: '[fusionReposition]',
     standalone: true
 })
 export class RepositionDirective implements OnInit {
-    /**
-     * Parent element selector for this element reposition
-     */
-    @Input('fusionReposition') relativeElementSelector: string;
+    @Input('fusionReposition') referenceElementSelector: string;
+    @Input() fusionRepositionOffset: number;
+    @Input() fusionRepositionPlacement: Placement;
 
     private hostElement: HTMLElement = this.elRef.nativeElement;
-    private parentElement: HTMLElement;
+    private referenceElement: HTMLElement;
 
     constructor(private elRef: ElementRef) {}
 
     ngOnInit() {
-        this.parentElement = !!this.relativeElementSelector
-            ? document.querySelector(this.relativeElementSelector)
-            : this.getParentWithOverflow(this.hostElement);
-
+        this.referenceElement = document.querySelector(this.referenceElementSelector);
         this.calcForReposition();
     }
 
     private calcForReposition(): void {
-        if (!!this.parentElement) {
-            const parentOverflowRect = this.parentElement.getBoundingClientRect();
-            const hostHolderRect = this.hostElement.getBoundingClientRect();
-
-            console.log('parent: ', parentOverflowRect);
-            console.log('host: ', hostHolderRect);
+        if (!!this.referenceElement) {
+            computePosition(this.referenceElement, this.hostElement, {
+                placement: this.fusionRepositionPlacement,
+                middleware: [shift(), flip(), !!this.fusionRepositionOffset && offset(this.fusionRepositionOffset ?? 0)].filter(Boolean)
+            }).then(({x, y}) => {
+                Object.assign(this.hostElement.style, {
+                    left: `${x}px`,
+                    top: `${y}px`
+                });
+            });
         }
-    }
-
-    /**
-     * Find first parent element with style overflow in 'auto', 'hidden', 'scroll'
-     * - childEl
-     */
-    private getParentWithOverflow(childEl: HTMLElement): HTMLElement {
-        const parent = childEl.parentElement;
-        let retVal = null;
-        if (parent) {
-            const parentOverflow = window.getComputedStyle(parent).overflow;
-            retVal = ['auto', 'hidden', 'scroll'].includes(parentOverflow) ? parent : this.getParentWithOverflow(parent);
-        }
-        return retVal;
     }
 }
