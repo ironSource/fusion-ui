@@ -2,16 +2,11 @@ name: Storybook Deploy
 
 on:
   workflow_dispatch:
-    inputs:
-      branch_name:
 
 jobs:
   Deploy:
     runs-on: [self-hosted, demand]
     steps:
-      - run: |
-          echo Branch ${{ github.event.inputs.branch_name }}
-
       - uses: actions/checkout@master
       - name: Setup Node.js Enviroment 🛠️
         uses: actions/setup-node@v2
