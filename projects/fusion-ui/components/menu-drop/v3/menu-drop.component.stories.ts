@@ -29,7 +29,7 @@ export default {
                 component: dedent`
                 **Dropdown menu** useful for example for table-rows for multiple actions.
                 - **buttonIcon**: optional, icon in the button. Default "more-vert"
-                - **alignDropdown**: optional, open dropdown align to the button. Default - "right". For left - "left" `
+                - **dropdownPosition: Position**: optional, open dropdown position. (see https://floating-ui.com/ type Position)`
             }
         }
         /*        layout: 'centered'*/
