@@ -132,7 +132,6 @@
 <ng-template #multipleActionsMenu let-menuActions>
     <fusion-menu-drop
         alignDropdown="right"
-        parentForRepositionElSelector="div.tableWrap"
         [menuItems]="menuActions"
         (menuItemClicked)="menuItemClicked($event)"
     ></fusion-menu-drop>
