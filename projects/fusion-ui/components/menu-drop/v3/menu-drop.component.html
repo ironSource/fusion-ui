@@ -1,7 +1,7 @@
 <div class="fu-button-holder">
     <fusion-button class="transparent third fu-menu-drop-button" [icon]="buttonIcon" (click)="openMenu()"></fusion-button>
 </div>
-<ul class="fu-menu-holder" [class.fu-align-left]="(alignDropdown === 'left')" *ngIf="shown" (fusionClickOutside)="onOutsideClick($event)">
+<ul [fusionReposition]="parentForRepositionElSelector" class="fu-menu-holder" [class.fu-align-left]="(alignDropdown === 'left')" *ngIf="shown" (fusionClickOutside)="onOutsideClick($event)">
     <li class="fu-menu-item" *ngFor="let menuItem of menuItems " (click)="itemClicked(menuItem)">
         <fusion-icon class="fu-menu-item-icon" *ngIf="menuItem.icon" [name]="menuItem.icon"></fusion-icon>
         <div>{{menuItem.label}}</div>

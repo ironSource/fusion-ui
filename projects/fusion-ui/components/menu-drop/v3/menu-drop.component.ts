@@ -6,11 +6,12 @@ import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
+import {RepositionDirective} from '@ironsource/fusion-ui/directives/reposition';
 
 @Component({
     selector: 'fusion-menu-drop',
     standalone: true,
-    imports: [CommonModule, ClickOutsideModule, IconModule, ButtonModule],
+    imports: [CommonModule, ClickOutsideModule, IconModule, ButtonModule, RepositionDirective],
     templateUrl: './menu-drop.component.html',
     styleUrls: ['./menu-drop.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -25,6 +26,8 @@ export class MenuDropComponent {
     }
 
     @Input() alignDropdown: 'left' | 'right' = 'right';
+
+    @Input() parentForRepositionElSelector: string;
 
     @Output() menuItemClicked = new EventEmitter<MenuDropItem>();
 
