@@ -1,4 +1,4 @@
-name: Deploy Docs
+name: Storybook Deploy
 on:
   workflow_dispatch:
 
@@ -36,4 +36,4 @@ jobs:
           fi
 
       - name: Deploy to s3 bucket
-        run: '${GITHUB_WORKSPACE}/.github/actions/deploy-docs.sh  ${{ steps.branch_name.outputs.branch }} '
+        run: '${GITHUB_WORKSPACE}/.github/actions/deploy-storybook.sh  ${{ steps.branch_name.outputs.branch }} '
