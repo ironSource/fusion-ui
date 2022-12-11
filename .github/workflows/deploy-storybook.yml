@@ -2,45 +2,39 @@ name: Storybook Deploy
 
 on:
   workflow_dispatch:
-    inputs:
-      branch_name:
 
 jobs:
   Deploy:
     runs-on: [self-hosted, demand]
     steps:
-      - run: |
-          echo Branch ${{ github.event.inputs.branch_name }}
+      - uses: actions/checkout@master
+      - name: Setup Node.js Enviroment 🛠️
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'npm'
 
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y vim jq
 
-#       - uses: actions/checkout@master
-#       - name: Setup Node.js Enviroment 🛠️
-#         uses: actions/setup-node@v2
-#         with:
-#           node-version: '16'
-#           cache: 'npm'
+      - name: Install Dependencies 📦
+        run: |
+          npm ci
 
-#       - name: Install system dependencies
-#         run: |
-#           sudo apt-get update
-#           sudo apt-get install -y vim jq
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: branch_name
 
-#       - name: Install Dependencies 📦
-#         run: |
-#           npm ci
+      - name: Install AWS cli
+        run: |
+          if ! [ -x "$(command -v aws)" ]; then
+            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip" -o "awscliv2.zip"
+            unzip awscliv2.zip
+            sudo  ./aws/install
+          fi
 
-#       - name: Extract branch name
-#         shell: bash
-#         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-#         id: branch_name
-
-#       - name: Install AWS cli
-#         run: |
-#           if ! [ -x "$(command -v aws)" ]; then
-#             curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip" -o "awscliv2.zip"
-#             unzip awscliv2.zip
-#             sudo  ./aws/install
-#           fi
-
-#       - name: Deploy to s3 bucket
-#         run: '${GITHUB_WORKSPACE}/.github/actions/deploy-storybook.sh  ${{ steps.branch_name.outputs.branch }} '
+      - name: Deploy to s3 bucket
+        run: '${GITHUB_WORKSPACE}/.github/actions/deploy-storybook.sh  ${{ steps.branch_name.outputs.branch }} '
