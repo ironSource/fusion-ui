@@ -8,11 +8,12 @@ import {ButtonModule} from '@ironsource/fusion-ui/components/button';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {RepositionDirective} from '@ironsource/fusion-ui/directives/reposition';
 import {Placement} from '@floating-ui/core/src/types';
+import {TeleportingDirective} from '@ironsource/fusion-ui/directives/teleporting';
 
 @Component({
     selector: 'fusion-menu-drop',
     standalone: true,
-    imports: [CommonModule, ClickOutsideModule, IconModule, ButtonModule, RepositionDirective],
+    imports: [CommonModule, ClickOutsideModule, IconModule, ButtonModule, RepositionDirective, TeleportingDirective],
     templateUrl: './menu-drop.component.html',
     styleUrls: ['./menu-drop.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
