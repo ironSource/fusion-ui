@@ -5,7 +5,7 @@ on:
 
 jobs:
   Deploy:
-    runs-on: ubuntu-latest
+    runs-on: [ self-hosted, x64, linux, eks, us, demand, dev ]
     steps:
       - uses: actions/checkout@master
       - name: Setup Node.js Enviroment 🛠️
@@ -36,10 +36,10 @@ jobs:
             sudo  ./aws/install
           fi
 
-#      - name: Configure AWS credentials
-#        uses: aws-actions/configure-aws-credentials@v1
-#        with:
-#          aws-region: us-east-1
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-region: us-east-1
 
       - name: Deploy to s3 bucket
         run: '${GITHUB_WORKSPACE}/.github/actions/deploy-storybook.sh  ${{ steps.branch_name.outputs.branch }} '
