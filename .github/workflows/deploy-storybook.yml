@@ -28,6 +28,9 @@ jobs:
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
         id: branch_name
 
+      - name: Build storybook static
+        run: npm run build-storybook
+
       - name: Install AWS cli
         run: |
           if ! [ -x "$(command -v aws)" ]; then
@@ -41,9 +44,6 @@ jobs:
         with:
           aws-region: us-east-1
 
-
-      - name: Build storybook static
-        run: npm run build-storybook
 
 #      - name: Deploy to s3 bucket
 #        run: '${GITHUB_WORKSPACE}/.github/actions/deploy-storybook.sh  ${{ steps.branch_name.outputs.branch }} '
