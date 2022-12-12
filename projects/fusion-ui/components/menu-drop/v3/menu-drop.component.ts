@@ -7,6 +7,7 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {RepositionDirective} from '@ironsource/fusion-ui/directives/reposition';
+import {Placement} from '@floating-ui/core/src/types';
 
 @Component({
     selector: 'fusion-menu-drop',
@@ -25,7 +26,11 @@ export class MenuDropComponent {
         }
     }
 
-    @Input() alignDropdown: 'left' | 'right' = 'right';
+    @Input() set alignDropdown(value: 'left' | 'right') {
+        this.dropdownPosition = value === 'right' ? 'top-end' : 'top-start';
+    }
+
+    referenceElementSelector: string;
 
     @Input() parentForRepositionElSelector: string;
 
@@ -42,10 +47,15 @@ export class MenuDropComponent {
     /** @internal */
     shown = false;
 
+    /** @internal */
+    dropdownPosition: Placement;
+
     private _menuItems: MenuDropItem[];
     private uniqueId = this.uniqueService.getUniqueId();
 
-    constructor(private uniqueService: UniqueIdService) {}
+    constructor(private uniqueService: UniqueIdService) {
+        this.referenceElementSelector = '#' + this.elementId + ' .fu-button-holder';
+    }
 
     /** @internal */
     openMenu() {
