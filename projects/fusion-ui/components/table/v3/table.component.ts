@@ -24,9 +24,11 @@ import {
     TableRowExpandEmitter,
     CONFIG_TABLE_BY_UI_STYLE,
     ROW_CLICK_SUPPRESS_FOR_PARENT_SELECTORS,
-    TableIconsConfigByStyle
+    TableIconsConfigByStyle,
+    TableRow
 } from '@ironsource/fusion-ui/components/table/common/entities';
 import {TableBasicComponent} from './components/table-basic/table-basic.component';
+import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop/v3/menu-drop.entities';
 
 @Component({
     selector: 'fusion-table',
@@ -96,7 +98,8 @@ export class TableComponent implements OnInit, OnDestroy {
     /**
      * On Row action clicked
      */
-    @Output() rowActionClicked = this.tableService.rowActionClicked;
+    @Output() rowActionClicked: EventEmitter<{action: MenuDropItem; rowIndex: string | number; row: TableRow}> =
+        this.tableService.rowActionClicked;
     /**
      * on expand icon clicked. No need in case static data and one expand level
      * @internal

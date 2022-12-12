@@ -222,7 +222,7 @@ export const ROWS_DEFAULT_DATA = [
         email: 'Rey.Padberg@karina.biz',
         website: 'ambrose.net'
     }
-];
+]; /*.splice(0,2)*/
 export const ROWS_TOTALS_DATA = [
     {
         name: '10 names',

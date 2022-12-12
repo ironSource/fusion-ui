@@ -449,7 +449,13 @@ const TableStickyHeaderTemplate: Story<TableComponent> = (args: TableComponent) 
 });
 export const StickyHeader = TableStickyHeaderTemplate.bind({});
 StickyHeader.args = {
-    options: {...TABLE_DEFAULT_OPTIONS, stickyHeader: true},
+    options: {
+        ...TABLE_DEFAULT_OPTIONS,
+        stickyHeader: true,
+        rowActionsMenu: {
+            actions: MOCK_ROW_ACTIONS
+        }
+    },
     rows: [
         ...ROWS_DEFAULT_DATA,
         ...Array.from({length: 30}, (_, i) => {
