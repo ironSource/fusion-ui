@@ -41,5 +41,9 @@ jobs:
         with:
           aws-region: us-east-1
 
-      - name: Deploy to s3 bucket
-        run: '${GITHUB_WORKSPACE}/.github/actions/deploy-storybook.sh  ${{ steps.branch_name.outputs.branch }} '
+
+      - name: Build storybook static
+        run: npm run build-storybook
+
+#      - name: Deploy to s3 bucket
+#        run: '${GITHUB_WORKSPACE}/.github/actions/deploy-storybook.sh  ${{ steps.branch_name.outputs.branch }} '
