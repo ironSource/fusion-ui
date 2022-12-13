@@ -27,10 +27,16 @@ export class TeleportingDirective implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        if (!!this.host && this.addChildNodes.length) {
+        this.clearAttachedNodes();
+    }
+
+    private clearAttachedNodes() {
+        if (!!this.host && this.host.hasChildNodes() && this.addChildNodes.length) {
             this.addChildNodes.forEach(node => {
-                if (this.host.hasChildNodes()) {
+                try {
                     this.host.removeChild(node);
+                } catch (e) {
+                    console.warn(`teleported : ${e}`);
                 }
             });
         }
