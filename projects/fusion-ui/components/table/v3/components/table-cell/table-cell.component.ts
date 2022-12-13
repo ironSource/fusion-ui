@@ -97,6 +97,8 @@ export class TableCellComponent implements OnInit, OnChanges {
     isNullOrUndefined: (object: any) => boolean = isNullOrUndefined;
     customCellData: DynamicComponentConfiguration;
 
+    shownActionsMenu = false;
+
     // eslint-disable-next-line @typescript-eslint/adjacent-overload-signatures
     get data(): CellDataType {
         if (!isNull(this._data) && this.tableService.isTypeComponent(this.column) && typeof this._data === 'object') {
@@ -301,7 +303,18 @@ export class TableCellComponent implements OnInit, OnChanges {
     }
 
     menuItemClicked(action: MenuDropItem) {
+        this.shownActionsMenu = false;
         this.tableService.rowActionClicked.emit({action: action, rowIndex: this.rowIndex, row: this.row});
+    }
+
+    onActionButtonClicked() {
+        this.shownActionsMenu = true;
+    }
+
+    onActionMenuClickOutSide(target) {
+        if (!target.closest('#actionButton4row_' + this.rowIndex)) {
+            this.shownActionsMenu = false;
+        }
     }
 
     private _getMessage(errorKey, {errorMessageKey = '', textMapping = []}): string {
