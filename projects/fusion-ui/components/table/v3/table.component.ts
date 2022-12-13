@@ -243,6 +243,7 @@ export class TableComponent implements OnInit, OnDestroy {
         }
         const uniqueId = this.uniqueService.getUniqueId();
         this.id = this.id || `isTable${uniqueId}`;
+        this.options.tableId = this.id;
         this.noDataMessage = isNullOrUndefined(this.options.noDataMessage) ? 'No Data to Display' : this.options.noDataMessage;
         this.noDataSubMessage = this.options.noDataSubMessage || '';
         this.hideHeaderOnEmpty = !isNullOrUndefined(this.options.hideHeaderOnEmpty) ? this.options.hideHeaderOnEmpty : false;
