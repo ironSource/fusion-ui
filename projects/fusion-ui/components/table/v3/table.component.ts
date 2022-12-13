@@ -28,7 +28,7 @@ import {
     TableRow
 } from '@ironsource/fusion-ui/components/table/common/entities';
 import {TableBasicComponent} from './components/table-basic/table-basic.component';
-import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop/v3/menu-drop.entities';
+import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
 
 @Component({
     selector: 'fusion-table',

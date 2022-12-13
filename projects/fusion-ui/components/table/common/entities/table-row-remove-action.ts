@@ -1,6 +1,6 @@
 import {EventEmitter} from '@angular/core';
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
-import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop/v3/menu-drop.entities';
+import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
 
 export interface TableRowRemoveAction {
     active?: boolean;

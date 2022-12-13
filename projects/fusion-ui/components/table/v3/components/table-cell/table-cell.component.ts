@@ -36,7 +36,7 @@ import {ERROR_MESSAGES} from '@ironsource/fusion-ui/components/error-message';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
-import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop/v3/menu-drop.entities';
+import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
 
 type CellDataType = Type<Component> | FormControl | string | boolean | undefined | null;
 
