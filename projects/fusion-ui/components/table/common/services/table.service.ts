@@ -11,7 +11,7 @@ import {
     TableRowsExpandableOptions
 } from '@ironsource/fusion-ui/components/table/common/entities';
 import {DEFAULT_EXPANDABLE_LEVEL, MAXIMUM_EXPANDABLE_LEVEL} from '@ironsource/fusion-ui/components/table/common/entities';
-import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop/v3/menu-drop.entities';
+import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
 
 @Injectable()
 export class TableService {

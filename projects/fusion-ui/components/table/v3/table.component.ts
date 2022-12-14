@@ -28,7 +28,7 @@ import {
     TableRow
 } from '@ironsource/fusion-ui/components/table/common/entities';
 import {TableBasicComponent} from './components/table-basic/table-basic.component';
-import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop/v3/menu-drop.entities';
+import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
 
 @Component({
     selector: 'fusion-table',
@@ -243,6 +243,7 @@ export class TableComponent implements OnInit, OnDestroy {
         }
         const uniqueId = this.uniqueService.getUniqueId();
         this.id = this.id || `isTable${uniqueId}`;
+        this.options.tableId = this.id;
         this.noDataMessage = isNullOrUndefined(this.options.noDataMessage) ? 'No Data to Display' : this.options.noDataMessage;
         this.noDataSubMessage = this.options.noDataSubMessage || '';
         this.hideHeaderOnEmpty = !isNullOrUndefined(this.options.hideHeaderOnEmpty) ? this.options.hideHeaderOnEmpty : false;

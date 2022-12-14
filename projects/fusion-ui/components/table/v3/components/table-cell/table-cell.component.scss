@@ -91,11 +91,26 @@ $v3-cellActionIconSize: 16px;
         @extend %truncate;
     }
 
-    fusion-menu-drop{
+    .fu-button-holder{
         display: none;
         position: absolute;
         right: 12px;
         top: 8px;
+        @include size(32px);
+        fusion-button {
+            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.24);
+            border: none;
+            background-color: $White;
+            &:hover{
+                background-color: $fu-light-200;
+            }
+            ::ng-deep fusion-icon{
+                @include size(24px);
+                svg {
+                    @include size(24px);
+                }
+            }
+        }
     }
 }
 
@@ -119,7 +134,7 @@ $v3-cellActionIconSize: 16px;
     }
 }
 :host-context(tr:hover) {
-    fusion-menu-drop{
+    .fu-button-holder{
         display: block;
     }
 }

@@ -16,6 +16,7 @@ export interface TableSearchOptions {
 }
 
 export interface TableOptions {
+    tableId?: string; // auto-generated table id
     tableLabel?: TableLabel; // table label with info tooltip (v3)
     searchOptions?: TableSearchOptions; // table search (v3)
     hasReturnToTopButton?: boolean; // has return to top button

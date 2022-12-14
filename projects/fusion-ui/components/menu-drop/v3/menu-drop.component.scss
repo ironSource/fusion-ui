@@ -7,31 +7,11 @@ $iconSize: 16px;
     display: block;
     @extend %border-box-normalize;
     @extend %list-reset;
-    position: relative;
-    @include size(32px);
 
-    .fu-button-holder {
-        fusion-button {
-            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.24);
-            border: none;
-            background-color: $White;
-            &:hover{
-                background-color: $fu-light-200;
-            }
-            ::ng-deep fusion-icon{
-                @include size(24px);
-                svg {
-                    @include size(24px);
-                }
-            }
-        }
-    }
+    position: absolute;
+    z-index: getZIndexLayerOffset(application, 1);
 
     .fu-menu-holder {
-        position: absolute;
-        z-index: getZIndexLayerOffset(application, 1);
-        top: 0;
-        right: 0;
         background-color: $White;
         padding: 8px;
         box-shadow: 0px 8px 24px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4);
@@ -41,10 +21,6 @@ $iconSize: 16px;
         overflow-x: hidden;
         overflow-y: auto;
         @extend %customScroll;
-
-        &.fu-align-left{
-            left: 0;
-        }
 
         .fu-menu-item {
             width: 100%;

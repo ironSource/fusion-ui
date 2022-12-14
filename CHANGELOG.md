@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.1.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.0.1...v5.1.0-rc.0) (2022-12-13)
+
+
+### Features
+
+* **fu-480-sb-2:** added new component "menu-drop" ([5890998](https://github.com/ironSource/fusion-ui/commit/589099804e139b446bdf53ed7050855f9d22426e))
+* **fu-480-sb-2:** added new table column property - groupName ([7072a1b](https://github.com/ironSource/fusion-ui/commit/7072a1b3803537ff222c58a46316f4ab3c60406d))
+* **fu-480:** added and init storybook to project fusion-ui ([cdc39f5](https://github.com/ironSource/fusion-ui/commit/cdc39f50b3d67ac127984deb97fbf999dcfcedf2))
+
+
+### Bug Fixes
+
+* **fg-84:** fixed teleport on-destroy ([7a9e3a2](https://github.com/ironSource/fusion-ui/commit/7a9e3a2e8e8995d92dcbf7569b4f48ea7dfd574b))
+* **fu-480-2:** fixes for button base and alert story ([47efac5](https://github.com/ironSource/fusion-ui/commit/47efac5538fca33f8946b7444f7ca68d19bc8e48))
+* **fu-480-2:** fixes for checkbox story ([88c643a](https://github.com/ironSource/fusion-ui/commit/88c643af3f9a677a10851f5200fb9cec9714c04c))
+* **fu-480-sb-2:** fixed "go top" button position in framed table ([576241b](https://github.com/ironSource/fusion-ui/commit/576241b81da6c9ece5145eada45025e71de6acb6))
+* **fu-480-sb-2:** fixed button component build ([929105e](https://github.com/ironSource/fusion-ui/commit/929105e74c94539111a64ffc793b98f8f81d0c46))
+* **fu-480-sb-2:** fixed framed table with height (if parent height limited by value) ([cf6c05d](https://github.com/ironSource/fusion-ui/commit/cf6c05dea38af8df8fccf066d2a13381d01f3ef0))
+* **fu-480-sb-2:** fixed rows loading on table v3 with infinity scroll ([de9e9a5](https://github.com/ironSource/fusion-ui/commit/de9e9a54717fa54a9392c6b061f52085f3e6219d))
+* **fu-480-sb-2:** fixed table v3 sticky columns - header ([b75d562](https://github.com/ironSource/fusion-ui/commit/b75d56203ded52a4bc5f86e9d0356541e01b4c93))
+* **fu-480-sb-2:** refactor button v3 css ([58284ed](https://github.com/ironSource/fusion-ui/commit/58284ed75e20b3e5f3d5413de264d7ebcd4c2b55))
+
 ### [5.0.1](https://github.com/ironSource/fusion-ui/compare/v5.0.1-rc.2...v5.0.1) (2022-11-07)
 
 ### [5.0.1-rc.2](https://github.com/ironSource/fusion-ui/compare/v5.0.1-rc.1...v5.0.1-rc.2) (2022-11-07)

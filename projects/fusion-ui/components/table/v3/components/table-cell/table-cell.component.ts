@@ -36,7 +36,7 @@ import {ERROR_MESSAGES} from '@ironsource/fusion-ui/components/error-message';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
-import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop/v3/menu-drop.entities';
+import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
 
 type CellDataType = Type<Component> | FormControl | string | boolean | undefined | null;
 
@@ -96,6 +96,8 @@ export class TableCellComponent implements OnInit, OnChanges {
     isNull: (object: any) => boolean = isNull;
     isNullOrUndefined: (object: any) => boolean = isNullOrUndefined;
     customCellData: DynamicComponentConfiguration;
+
+    shownActionsMenu = false;
 
     // eslint-disable-next-line @typescript-eslint/adjacent-overload-signatures
     get data(): CellDataType {
@@ -301,7 +303,18 @@ export class TableCellComponent implements OnInit, OnChanges {
     }
 
     menuItemClicked(action: MenuDropItem) {
+        this.shownActionsMenu = false;
         this.tableService.rowActionClicked.emit({action: action, rowIndex: this.rowIndex, row: this.row});
+    }
+
+    onActionButtonClicked() {
+        this.shownActionsMenu = true;
+    }
+
+    onActionMenuClickOutSide(target) {
+        if (!target.closest('#actionButton4row_' + this.rowIndex)) {
+            this.shownActionsMenu = false;
+        }
     }
 
     private _getMessage(errorKey, {errorMessageKey = '', textMapping = []}): string {
