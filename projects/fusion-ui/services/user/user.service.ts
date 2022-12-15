@@ -1,87 +1,79 @@
 import {Inject, Injectable, Optional} from '@angular/core';
-import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {ApiService} from '@ironsource/fusion-ui/services/api';
-import {PermissionsService} from '@ironsource/fusion-ui/services/permissions';
-import {LogService} from '@ironsource/fusion-ui/services/log';
-import {Observable, throwError as observableThrowError} from 'rxjs';
-import {ApiRequestOptions, ApiResponseType} from '@ironsource/fusion-ui/services/api';
-import {CacheType, CacheService} from '@ironsource/fusion-ui/services/cache';
-import {catchError, tap} from 'rxjs/operators';
-import {USER_OPTIONS_TOKEN} from './user-config';
-import {UserOptions} from './user-options';
+import {ApiRequestOptions, ApiResponseType, ApiService} from '@ironsource/fusion-ui/services/api';
 
-@Injectable({
-    providedIn: 'root'
-})
+import {BehaviorSubject, Observable, throwError} from 'rxjs';
+import {tap, catchError} from 'rxjs/operators';
+import {CacheType} from '@ironsource/fusion-ui/services/cache';
+import {MFE_SHARED_CONFIG} from '@ironsource/fusion-ui/services/shared-config';
+
+@Injectable({providedIn: 'root'})
 export class UserService {
-    private _userData: any = {};
+    private apiUrl = `${this.config.environment.platformJs}/users/userData`;
     private _fetched = false;
+    public userData$ = new BehaviorSubject({});
     private _fetchUserDataSubject: Observable<any>;
+    private userDataFetched$ = new BehaviorSubject<boolean>(false);
+    public readonly userDataFetchedObservable$ = this.userDataFetched$.asObservable();
 
-    constructor(
-        private apiService: ApiService,
-        private cacheService: CacheService,
-        private permissionsService: PermissionsService,
-        private logService: LogService,
-        @Optional()
-        @Inject(USER_OPTIONS_TOKEN)
-        private readonly userOptions: UserOptions
-    ) {
-        if (!this.userOptions.userDataUrl) {
-            this.logService.error(new Error('userDataUrl is mandatory when using UserService'));
-        }
+    constructor(private _apiService: ApiService, @Inject(MFE_SHARED_CONFIG) @Optional() private config) {}
+
+    public get userUniqueId(): string {
+        return this.userData.actualUser ? `as=${this.userData.userId}_from=${this.userData.actualUser}` : this.userData.userId;
     }
 
-    public get userData() {
-        return this._userData;
+    public get userAdvertiser() {
+        if (this.userData.tracking && this.userData.tracking.advertiserId) {
+            return Object.assign(
+                {id: this.userData.tracking.advertiserId},
+                {
+                    tracking: Object.assign(this.userData.tracking, {
+                        isAdvertiserIndirect: this.isAllowed('isAdvertiserIndirect'),
+                        isImpressionURLRequired: !this.isAllowed('createCampaignsWithoutImpressionURL')
+                    })
+                }
+            );
+        }
+        return {id: 0, tracking: {}};
+    }
+
+    isRouteAllowedByUser(permissions: {[key: string]: string[]}, route: string): boolean {
+        return permissions[route] && permissions[route].length ? permissions[route].every(permission => this.isAllowed(permission)) : true;
     }
 
     clearUserData() {
-        this._userData = {};
+        this.userData$.next({});
         this._fetched = false;
     }
 
-    fetchUserData(refresh?: boolean) {
-        if (refresh || Object.keys(this._userData).length === 0) {
-            const options: ApiRequestOptions = {
-                responseType: ApiResponseType.Json,
-                cache: CacheType.Application,
-                retryStrategy: {maxRetryAttempts: 0}
-            };
-            this._fetchUserDataSubject = this.apiService.get(this.userOptions.userDataUrl, options).pipe(
-                tap((response: {userData: any}) => {
-                    this._userData = response.userData;
-                    this._fetched = true;
-                    return this._userData;
-                }),
-                catchError(err => {
-                    this.clearUserData();
-                    return observableThrowError(err);
-                })
-            );
-            return this._fetchUserDataSubject;
-        } else {
+    isAllowed(permission): boolean {
+        return this.userData?.permissions?.includes(permission);
+    }
+
+    get userData(): any {
+        return this.userData$.getValue();
+    }
+
+    fetchUserData(refresh?: boolean): Observable<any> {
+        const options: ApiRequestOptions = {
+            responseType: ApiResponseType.Json,
+            cache: CacheType.Application,
+            retryStrategy: {maxRetryAttempts: 0}
+        };
+        if (!refresh && Object.keys(this.userData).length !== 0) {
             return this._fetchUserDataSubject;
         }
-    }
 
-    isAllowed(permission): boolean {
-        const userPermissions = this.getUserPermissions();
-        return this.userData && userPermissions && !isNullOrUndefined(userPermissions[permission]) ? !!userPermissions[permission] : false;
-    }
-
-    getUserPermissions() {
-        const permissionsPath = this.userOptions.userDataPermissionsKey.split('.');
-        return permissionsPath.reduce((_, key) => this.userData[key]);
-    }
-
-    /**
-     * check if user authorized to go into specific route
-     * check that at least one permission exists in user data
-     */
-    isRouteAllowedByUser(route: string): boolean {
-        return this.permissionsService.permissions[route] && this.permissionsService.permissions[route].length
-            ? this.permissionsService.permissions[route].every(permission => this.isAllowed(permission))
-            : true;
+        this._fetchUserDataSubject = this._apiService.get(this.apiUrl, options).pipe(
+            tap((response: {userData: any}) => {
+                this.userData$.next(response);
+                this._fetched = true;
+                this.userDataFetched$.next(true);
+                return response;
+            }),
+            catchError(err => {
+                return throwError(err);
+            })
+        );
+        return this._fetchUserDataSubject;
     }
 }
