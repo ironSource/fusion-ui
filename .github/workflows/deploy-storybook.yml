@@ -5,7 +5,7 @@ on:
 
 jobs:
   Deploy:
-    runs-on: [self-hosted, demand, dev]
+    runs-on: [self-hosted, x64, linux, eks, us, demand, dev]
     steps:
       - uses: actions/checkout@master
       - name: Setup Node.js Enviroment 🛠️
