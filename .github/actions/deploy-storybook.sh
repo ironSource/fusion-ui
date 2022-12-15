@@ -6,6 +6,6 @@ folder=$(echo "$branch" | tr / -)
 
 FOLDER=$folder npm run aws:deploy-storybook
 
-#FOLDER=$folder npm run cf:invalidate
+FOLDER=$folder npm run cf:invalidate
 
 exit $lastCode
