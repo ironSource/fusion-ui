@@ -4,11 +4,11 @@
 import {Inject, Injectable, Optional} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot} from '@angular/router';
 import {catchError, map} from 'rxjs/operators';
-import {AuthService} from '../services/auth.service';
 import {of} from 'rxjs';
-import {RedirectService} from '../services/redirect.service';
-import {UserService} from '../services/user.service';
-import {MFE_SHARED_CONFIG, MfeSharedConfig} from '../mfe-shared-config';
+import {AuthService} from '@ironsource/fusion-ui/services/auth';
+import {UserService} from '@ironsource/fusion-ui/services/user';
+import {RedirectService} from '@ironsource/fusion-ui/services/redirect';
+import {MFE_SHARED_CONFIG, MfeSharedConfig} from '@ironsource/fusion-ui/services/shared-config';
 
 @Injectable({
     providedIn: 'root'

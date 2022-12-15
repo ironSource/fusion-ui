@@ -2,9 +2,9 @@ import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot} from '@angular/router';
 import {catchError, map} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
-import {RedirectService} from '../services/redirect.service';
-import {AuthService} from '../services/auth.service';
-import {UserService} from '../services/user.service';
+import {AuthService} from '@ironsource/fusion-ui/services/auth';
+import {UserService} from '@ironsource/fusion-ui';
+import {RedirectService} from '@ironsource/fusion-ui/services/redirect';
 
 @Injectable({
     providedIn: 'root'
