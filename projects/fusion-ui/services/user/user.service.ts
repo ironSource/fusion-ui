@@ -8,7 +8,7 @@ import {MFE_SHARED_CONFIG} from '@ironsource/fusion-ui/services/shared-config';
 
 @Injectable({providedIn: 'root'})
 export class UserService {
-    private apiUrl = `${this.config.environment.platformJs}/users/userData`;
+    private apiUrl = `${this.config?.environment?.platformJs}/users/userData`;
     private _fetched = false;
     public userData$ = new BehaviorSubject({});
     private _fetchUserDataSubject: Observable<any>;
