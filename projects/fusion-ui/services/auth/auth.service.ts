@@ -3,7 +3,7 @@ import {Inject, Injectable, Optional} from '@angular/core';
 import {ApiService, ApiResponseType} from '@ironsource/fusion-ui/services/api';
 
 import {tap} from 'rxjs/operators';
-import {UserService} from '@ironsource/fusion-ui/services/user/user.service';
+import {UserService} from '@ironsource/fusion-ui/services/user';
 import {MFE_SHARED_CONFIG, MfeSharedConfig} from '@ironsource/fusion-ui/services/shared-config';
 
 @Injectable({
