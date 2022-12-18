@@ -52,7 +52,7 @@ jobs:
 
   notify-success:
     needs: Deploy
-    if: ${{ always() && Deploy.publish.result == 'success'}}
+    if: ${{ always() && needs.Deploy.result == 'success'}}
     runs-on: [self-hosted, x64, linux, eks, us, demand, dev]
     steps:
       - name: 'Deploy success notify'
