@@ -55,7 +55,7 @@ jobs:
   notify-success:
     needs: Deploy
     if: ${{ always() && needs.Deploy.result == 'success'}}
-    runs-on: [self-hosted, x64, linux, eks, us, demand, dev]
+    runs-on: ubuntu-latest
     steps:
 
       - name: 'Deploy success notify'
