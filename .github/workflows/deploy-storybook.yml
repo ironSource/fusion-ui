@@ -25,11 +25,11 @@ jobs:
         run: |
           npm ci
 
-#      - name: Extract branch name
-#        shell: bash
-#        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-#        id: branch_name
-#
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: branch_name
+
 #      - name: Build storybook static
 #        run: npm run build-storybook
 #
@@ -55,11 +55,12 @@ jobs:
     if: ${{ always() && needs.Deploy.result == 'success'}}
     runs-on: [self-hosted, x64, linux, eks, us, demand, dev]
     steps:
-      - name: 'Deploy success notify'
-        uses: ironSource/action-slack-notification@v1
-        with:
-          channel: fusion-docs-notifications
-          username: FusionUI-CI
-          icon_url: "https://avatars.githubusercontent.com/t/5433436?s=32&v=4"
-          message: "<!channel> Storybook on branch *${{ needs.Deploy.outputs.branch_name }}* by *${{github.actor}}* published success.\n You can check it on: https://fusion-storybook.ironsrc.mobi/branch_${{ steps.branch_name.outputs.branch }}/"
-          slack_webhook: ${{ secrets.SLACK_PATH }}
+       - run: echo ">> ${{ needs.Deploy.outputs.branch_name }}"
+#      - name: 'Deploy success notify'
+#        uses: ironSource/action-slack-notification@v1
+#        with:
+#          channel: fusion-docs-notifications
+#          username: FusionUI-CI
+#          icon_url: "https://avatars.githubusercontent.com/t/5433436?s=32&v=4"
+#          message: "<!channel> Storybook on branch *${{ needs.Deploy.outputs.branch_name }}* by *${{github.actor}}* published success.\n You can check it on: https://fusion-storybook.ironsrc.mobi/branch_${{ steps.branch_name.outputs.branch }}/"
+#          slack_webhook: ${{ secrets.SLACK_PATH }}
