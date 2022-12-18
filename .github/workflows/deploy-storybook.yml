@@ -6,6 +6,8 @@ on:
 jobs:
   Deploy:
     runs-on: [self-hosted, x64, linux, eks, us, demand, dev]
+    outputs:
+      branch_name: ${{ steps.branch_name.outputs.branch }}
     steps:
       - uses: actions/checkout@master
       - name: Setup Node.js Enviroment 🛠️
@@ -23,30 +25,30 @@ jobs:
         run: |
           npm ci
 
-      - name: Extract branch name
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        id: branch_name
-
-      - name: Build storybook static
-        run: npm run build-storybook
-
-      - name: Install AWS cli
-        run: |
-          if ! [ -x "$(command -v aws)" ]; then
-            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip" -o "awscliv2.zip"
-            unzip awscliv2.zip
-            sudo  ./aws/install
-          fi
-
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-region: us-east-1
-
-
-      - name: Deploy to s3 bucket
-        run: '${GITHUB_WORKSPACE}/.github/actions/deploy-storybook.sh  ${{ steps.branch_name.outputs.branch }} '
+#      - name: Extract branch name
+#        shell: bash
+#        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+#        id: branch_name
+#
+#      - name: Build storybook static
+#        run: npm run build-storybook
+#
+#      - name: Install AWS cli
+#        run: |
+#          if ! [ -x "$(command -v aws)" ]; then
+#            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip" -o "awscliv2.zip"
+#            unzip awscliv2.zip
+#            sudo  ./aws/install
+#          fi
+#
+#      - name: Configure AWS credentials
+#        uses: aws-actions/configure-aws-credentials@v1
+#        with:
+#          aws-region: us-east-1
+#
+#
+#      - name: Deploy to s3 bucket
+#        run: '${GITHUB_WORKSPACE}/.github/actions/deploy-storybook.sh  ${{ steps.branch_name.outputs.branch }} '
 
   notify-success:
     needs: Deploy
@@ -59,5 +61,5 @@ jobs:
           channel: fusion-docs-notifications
           username: FusionUI-CI
           icon_url: "https://avatars.githubusercontent.com/t/5433436?s=32&v=4"
-          message: "<!channel> Storybook on branch *${{ steps.branch_name.outputs.branch }}* by *${{github.actor}}* published success.\n You can check it on: https://fusion-storybook.ironsrc.mobi/branch_${{ steps.branch_name.outputs.branch }}/"
+          message: "<!channel> Storybook on branch *${{ needs.Deploy.outputs.branch_name }}* by *${{github.actor}}* published success.\n You can check it on: https://fusion-storybook.ironsrc.mobi/branch_${{ steps.branch_name.outputs.branch }}/"
           slack_webhook: ${{ secrets.SLACK_PATH }}
