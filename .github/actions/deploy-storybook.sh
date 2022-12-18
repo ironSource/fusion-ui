@@ -1,8 +1,10 @@
 #!/bin/bash
 set -e
 
-branch=$1
-folder=$(echo "$branch" | tr / -)
+#branch=$1
+#folder=$(echo "$branch" | tr / -)
+
+folder=$1
 
 FOLDER=$folder npm run aws:deploy-storybook
 

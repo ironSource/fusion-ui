@@ -7,7 +7,7 @@ jobs:
   Deploy:
     runs-on: [self-hosted, x64, linux, eks, us, demand, dev]
     outputs:
-      branch_name: ${{ steps.branch_name.outputs.branch }}
+      folder_name: ${{ steps.branch_name.outputs.folder }}
     steps:
       - uses: actions/checkout@master
       - name: Setup Node.js Enviroment 🛠️
@@ -32,8 +32,6 @@ jobs:
           echo "##[set-output name=folder;]$(echo ${GITHUB_REF#refs/heads/} | tr / -)"
         id: branch_name
 
-      - run: echo '>> ${{ steps.branch_name.outputs.folder }}'
-
 #      - name: Build storybook static
 #        run: npm run build-storybook
 #
@@ -52,19 +50,19 @@ jobs:
 #
 #
 #      - name: Deploy to s3 bucket
-#        run: '${GITHUB_WORKSPACE}/.github/actions/deploy-storybook.sh  ${{ steps.branch_name.outputs.branch }} '
+#        run: '${GITHUB_WORKSPACE}/.github/actions/deploy-storybook.sh  ${{ steps.branch_name.outputs.folder }} '
 
-#  notify-success:
-#    needs: Deploy
-#    if: ${{ always() && needs.Deploy.result == 'success'}}
-#    runs-on: [self-hosted, x64, linux, eks, us, demand, dev]
-#    steps:
-#
-#      - name: 'Deploy success notify'
-#        uses: ironSource/action-slack-notification@v1
-#        with:
-#          channel: fusion-docs-notifications
-#          username: FusionUI-CI
-#          icon_url: "https://avatars.githubusercontent.com/t/5433436?s=32&v=4"
-#          message: "<!channel> Storybook on branch *${{ needs.Deploy.outputs.branch_name }}* by *${{github.actor}}* published success.\n You can check it on: https://fusion-storybook.ironsrc.mobi/branch_${{ needs.Deploy.outputs.branch_name }}/"
-#          slack_webhook: ${{ secrets.SLACK_PATH }}
+  notify-success:
+    needs: Deploy
+    if: ${{ always() && needs.Deploy.result == 'success'}}
+    runs-on: [self-hosted, x64, linux, eks, us, demand, dev]
+    steps:
+
+      - name: 'Deploy success notify'
+        uses: ironSource/action-slack-notification@v1
+        with:
+          channel: fusion-docs-notifications
+          username: FusionUI-CI
+          icon_url: "https://avatars.githubusercontent.com/t/5433436?s=32&v=4"
+          message: "<!channel> Storybook on branch *${{ needs.Deploy.outputs.branch_name }}* by *${{github.actor}}* published success.\n You can check it on: https://fusion-storybook.ironsrc.mobi/branch_${{ needs.Deploy.outputs.folder_name }}/"
+          slack_webhook: ${{ secrets.SLACK_PATH }}
