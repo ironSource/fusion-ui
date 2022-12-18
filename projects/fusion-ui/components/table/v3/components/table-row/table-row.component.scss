@@ -22,11 +22,14 @@ $v3-bodyBorder: 1px solid $fu-light-400;
         background-color: var(--table-even-row-background-color ,$White);
     }
 
-    &:hover td {
-        background-color: $fu-light-50;
-        &.inner-row,
-        &.sticky-left{
+    &:hover,
+    &:has(.fu-button-holder.fu-row-menu-shown){
+        td {
             background-color: $fu-light-50;
+            &.inner-row,
+            &.sticky-left{
+                background-color: $fu-light-50;
+            }
         }
     }
 

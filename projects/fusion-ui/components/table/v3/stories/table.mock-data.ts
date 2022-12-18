@@ -15,6 +15,13 @@ export const TABLE_DEFAULT_OPTIONS: TableOptions = {
     noDataSubMessage: 'Try using again with a different filters'
 };
 
+export const MOCK_ROW_ACTIONS = [
+    {icon: 'frame', label: 'List item 1'},
+    {icon: 'frame', label: 'List item 2'},
+    {icon: 'frame', label: 'List item 3'},
+    {icon: 'frame', label: 'List item 4'}
+];
+
 // region Columns-config
 export const TABLE_DEFAULT_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'id', title: 'Id'},
@@ -141,7 +148,6 @@ export const TABLE_SUBHEADER_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'email', title: 'Email', groupName: 'Section 2'},
     {key: 'website', title: 'Website'}
 ];
-
 // endregion
 
 // region Rows Data
@@ -216,7 +222,7 @@ export const ROWS_DEFAULT_DATA = [
         email: 'Rey.Padberg@karina.biz',
         website: 'ambrose.net'
     }
-];
+]; /*.splice(0, 2)*/
 export const ROWS_TOTALS_DATA = [
     {
         name: '10 names',

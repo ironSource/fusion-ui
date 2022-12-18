@@ -24,9 +24,11 @@ import {
     TableRowExpandEmitter,
     CONFIG_TABLE_BY_UI_STYLE,
     ROW_CLICK_SUPPRESS_FOR_PARENT_SELECTORS,
-    TableIconsConfigByStyle
+    TableIconsConfigByStyle,
+    TableRow
 } from '@ironsource/fusion-ui/components/table/common/entities';
 import {TableBasicComponent} from './components/table-basic/table-basic.component';
+import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
 
 @Component({
     selector: 'fusion-table',
@@ -93,7 +95,11 @@ export class TableComponent implements OnInit, OnDestroy {
      * On scroll down. Used for get new paged data portion
      */
     @Output() scrollDown: EventEmitter<any> = new EventEmitter();
-
+    /**
+     * On Row action clicked
+     */
+    @Output() rowActionClicked: EventEmitter<{action: MenuDropItem; rowIndex: string | number; row: TableRow}> =
+        this.tableService.rowActionClicked;
     /**
      * on expand icon clicked. No need in case static data and one expand level
      * @internal
@@ -237,6 +243,7 @@ export class TableComponent implements OnInit, OnDestroy {
         }
         const uniqueId = this.uniqueService.getUniqueId();
         this.id = this.id || `isTable${uniqueId}`;
+        this.options.tableId = this.id;
         this.noDataMessage = isNullOrUndefined(this.options.noDataMessage) ? 'No Data to Display' : this.options.noDataMessage;
         this.noDataSubMessage = this.options.noDataSubMessage || '';
         this.hideHeaderOnEmpty = !isNullOrUndefined(this.options.hideHeaderOnEmpty) ? this.options.hideHeaderOnEmpty : false;

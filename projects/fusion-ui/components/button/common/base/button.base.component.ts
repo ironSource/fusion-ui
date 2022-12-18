@@ -78,7 +78,7 @@ export abstract class ButtonBaseComponent implements OnInit, OnDestroy {
     /** @internal */
     iconData: IconData;
     private isLoading$ = new BehaviorSubject<boolean>(false);
-    private isDisabled: boolean;
+    protected isDisabled: boolean;
     private onDestroy$ = new Subject<void>();
 
     constructor(injector: Injector, private element: ElementRef, private renderer: Renderer2) {}
@@ -94,7 +94,7 @@ export abstract class ButtonBaseComponent implements OnInit, OnDestroy {
         this.onDestroy$.complete();
     }
 
-    private setHostClass(add: boolean, className: string) {
+    protected setHostClass(add: boolean, className: string) {
         const method = add ? 'addClass' : 'removeClass';
         this.renderer[method](this.element.nativeElement, className);
     }
@@ -104,12 +104,12 @@ export abstract class ButtonBaseComponent implements OnInit, OnDestroy {
         this.renderer[method](this.element.nativeElement, attributeName, add ? attributeValue : null);
     }
 
-    private setDisableState(disabling: boolean) {
+    protected setDisableState(disabling: boolean) {
         this.setHostClass(disabling, 'disabled');
         this.setHostAttribute(disabling, 'disabled', 'true');
     }
 
-    private setLoadingState(loading: boolean) {
+    protected setLoadingState(loading: boolean) {
         this.setHostClass(loading, 'fu-with-loading');
         if (!this.isDisabled) {
             this.setDisableState(loading);

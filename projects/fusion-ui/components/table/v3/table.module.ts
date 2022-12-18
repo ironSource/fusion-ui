@@ -32,6 +32,9 @@ import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 import {ErrorMessageModule} from '@ironsource/fusion-ui/components/error-message/v3';
 import {NotAvailablePipe} from '@ironsource/fusion-ui/pipes/not-available';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button/v3';
+import {MenuDropComponent} from '@ironsource/fusion-ui/components/menu-drop';
+import {TeleportingDirective} from '@ironsource/fusion-ui/directives/teleporting';
+import {RepositionDirective} from '@ironsource/fusion-ui/directives/reposition';
 
 @NgModule({
     exports: [TableComponent],
@@ -64,7 +67,10 @@ import {ButtonModule} from '@ironsource/fusion-ui/components/button/v3';
         LoadMoreModule,
         ErrorMessageModule,
         NotAvailablePipe,
-        ButtonModule
+        ButtonModule,
+        MenuDropComponent,
+        RepositionDirective,
+        TeleportingDirective
     ]
 })
 export class TableModule {

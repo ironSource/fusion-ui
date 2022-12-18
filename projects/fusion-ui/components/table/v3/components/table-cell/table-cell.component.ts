@@ -29,12 +29,14 @@ import {
     CellPosition,
     TableColumn,
     TableOptions,
-    TableRowHeight
+    TableRowHeight,
+    TableMultipleActions
 } from '@ironsource/fusion-ui/components/table/common/entities';
 import {ERROR_MESSAGES} from '@ironsource/fusion-ui/components/error-message';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
+import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
 
 type CellDataType = Type<Component> | FormControl | string | boolean | undefined | null;
 
@@ -52,6 +54,7 @@ export class TableCellComponent implements OnInit, OnChanges {
 
     @Input() column: TableColumn;
     @Input() row: {[key: string]: any};
+    @Input() rowIndex: string | number;
     @Input() options: TableOptions = null;
     @Input() position: CellPosition;
 
@@ -94,6 +97,8 @@ export class TableCellComponent implements OnInit, OnChanges {
     isNullOrUndefined: (object: any) => boolean = isNullOrUndefined;
     customCellData: DynamicComponentConfiguration;
 
+    shownActionsMenu = false;
+
     // eslint-disable-next-line @typescript-eslint/adjacent-overload-signatures
     get data(): CellDataType {
         if (!isNull(this._data) && this.tableService.isTypeComponent(this.column) && typeof this._data === 'object') {
@@ -135,6 +140,10 @@ export class TableCellComponent implements OnInit, OnChanges {
 
     get cellRemoveActionIcon(): IconData {
         return this.options?.remove && this.options.remove?.icon ? this.options.remove.icon : DEFAULT_REMOVE_ICON_V3;
+    }
+
+    get multipleActions(): TableMultipleActions {
+        return this.options?.rowActionsMenu;
     }
 
     private _data: CellDataType;
@@ -290,6 +299,21 @@ export class TableCellComponent implements OnInit, OnChanges {
                 },
                 element: this.nativeElement
             };
+        }
+    }
+
+    menuItemClicked(action: MenuDropItem) {
+        this.shownActionsMenu = false;
+        this.tableService.rowActionClicked.emit({action: action, rowIndex: this.rowIndex, row: this.row});
+    }
+
+    onActionButtonClicked() {
+        this.shownActionsMenu = true;
+    }
+
+    onActionMenuClickOutSide(target) {
+        if (!target.closest('#actionButton4row_' + this.rowIndex)) {
+            this.shownActionsMenu = false;
         }
     }
 

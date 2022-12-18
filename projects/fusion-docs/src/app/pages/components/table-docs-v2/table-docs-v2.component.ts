@@ -19,11 +19,17 @@ import {DocsLayoutService} from '../../docs/docs-layout.service';
 import {TableCustomNoDataComponent} from '../../../components/table-custom-no-data/table-custom-no-data.component';
 import {VersionService} from '../../../services/version/version.service';
 import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
+import {MOCK_ROW_ACTIONS} from '@ironsource/fusion-ui/components/table/v3/stories/table.mock-data';
 
 const TABLE_OPTIONS: TableOptions = {
     tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'},
     sortingType: 'local',
-    remove: {active: true, onRemove: new EventEmitter()},
+    rowActionsMenu: {
+        actions: [
+            {icon: 'frame', label: 'List item 1'},
+            {icon: 'frame', label: 'List item 2'}
+        ]
+    },
     noDataSubMessage: 'Try using again with a different filters'
 };
 const TABLE_COLUMNS_CONFIG: Array<TableColumn> = [
@@ -319,7 +325,10 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
         }
     };
 
-    tableOptionsWithTotalsRow: TableOptions = {...TABLE_OPTIONS, ...{hasTotalsRow: true}};
+    tableOptionsWithTotalsRow: TableOptions = {
+        ...TABLE_OPTIONS,
+        ...{hasTotalsRow: true, remove: {active: true, onRemove: new EventEmitter()}}
+    };
     // tableBigRowsOptions: TableOptions = {...TABLE_OPTIONS, ...{rowHeight: TableRowHeight.Big}};
     tableBigRowsOptions: TableOptions = {...TABLE_OPTIONS};
     tableSmallRowsOptions: TableOptions = {...TABLE_OPTIONS, ...{rowHeight: TableRowHeight.Small}};
@@ -731,5 +740,9 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
 
     onRowClicked(data: {$event: MouseEvent; rowIndex: string; rowEl: Element; rowData: any}) {
         console.log('onRowClicked: ', data);
+    }
+
+    onRowActionClicked($event) {
+        console.log('onRowActionClicked: ', $event);
     }
 }

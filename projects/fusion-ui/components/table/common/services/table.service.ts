@@ -6,16 +6,19 @@ import {
     TableColumn,
     TableColumnTypeEnum,
     TableOptions,
+    TableRow,
     TableRowChangedData,
     TableRowsExpandableOptions
 } from '@ironsource/fusion-ui/components/table/common/entities';
 import {DEFAULT_EXPANDABLE_LEVEL, MAXIMUM_EXPANDABLE_LEVEL} from '@ironsource/fusion-ui/components/table/common/entities';
+import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
 
 @Injectable()
 export class TableService {
     private selectedRows: any[] = [];
     public selectionChanged = new EventEmitter();
     public rowModelChange: EventEmitter<TableRowChangedData> = new EventEmitter();
+    public rowActionClicked = new EventEmitter<{action: MenuDropItem; rowIndex: string | number; row: TableRow}>();
     public expandLevels: number;
 
     constructor(private sanitizer: DomSanitizer, private logService: LogService) {}
