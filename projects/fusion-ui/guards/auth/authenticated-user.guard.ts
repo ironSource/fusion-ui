@@ -3,7 +3,7 @@ import {ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot} from '@angular
 import {catchError, map} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
 import {AuthService} from '@ironsource/fusion-ui/services/auth';
-import {UserService} from '@ironsource/fusion-ui';
+import {UserService} from '@ironsource/fusion-ui/services/user';
 import {RedirectService} from '@ironsource/fusion-ui/services/redirect';
 
 @Injectable({
