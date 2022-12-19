@@ -70,7 +70,7 @@ import {
 } from '@ironsource/fusion-ui/components/table';
 
 @Component({
-  selector: 'fusion-table-wrapper',
+  selector: 'fusion-story-wrapper',
   template: \`<fusion-table
     [columns]="columns"
     [rows]="rows"
@@ -79,7 +79,7 @@ import {
   standalone: true,
   imports: [TableModule],
 })
-export class TableWrapperComponent {
+export class FusionStoryWrapperComponent {
   options: TableOptions = {
     tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'}
   };
@@ -201,7 +201,7 @@ import {
 } from '@ironsource/fusion-ui/components/table';
 
 @Component({
-  selector: 'fusion-table-wrapper',
+  selector: 'fusion-story-wrapper',
   template: \`<fusion-table
     [columns]="columns"
     [rows]="rows"
@@ -210,7 +210,7 @@ import {
   standalone: true,
   imports: [TableModule],
 })
-export class TableWrapperComponent {
+export class FusionStoryWrapperComponent {
   options: TableOptions = {
     tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'}
   };
@@ -332,7 +332,7 @@ import {
 } from '@ironsource/fusion-ui/components/table';
 
 @Component({
-  selector: 'fusion-table-wrapper',
+  selector: 'fusion-story-wrapper',
   template: \`<fusion-table
     [columns]="columns"
     [rows]="rows"
@@ -341,7 +341,7 @@ import {
   standalone: true,
   imports: [TableModule],
 })
-export class TableWrapperComponent {
+export class FusionStoryWrapperComponent {
   options: TableOptions = {
     tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'}
   };
@@ -464,7 +464,7 @@ import {
 } from '@ironsource/fusion-ui/components/table';
 
 @Component({
-  selector: 'fusion-table-wrapper',
+  selector: 'fusion-story-wrapper',
   template: \`<fusion-table
     [columns]="columns"
     [rows]="rows"
@@ -473,7 +473,7 @@ import {
   standalone: true,
   imports: [TableModule],
 })
-export class TableWrapperComponent {
+export class FusionStoryWrapperComponent {
   options: TableOptions = {
     tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'}
   };
@@ -484,7 +484,7 @@ export class TableWrapperComponent {
 const COLUMNS_CONFIG = [
     {key: 'id', title: 'Id'},
     {key: 'name', title: 'Name'},
-    {key: 'username', title: 'Username', align: 'right', headerAlign: 'right'},
+    {key: 'username', title: 'Username', align: 'right' as 'right' | 'left' | 'center', headerAlign: 'right' as 'right' | 'left' | 'center'},
     {key: 'email', title: 'Email'},
     {key: 'website', title: 'Website'}
 ];
@@ -595,7 +595,7 @@ import {
 } from '@ironsource/fusion-ui/components/table';
 
 @Component({
-  selector: 'fusion-table-wrapper',
+  selector: 'fusion-story-wrapper',
   template: \`<fusion-table
     [columns]="columns"
     [rows]="rows"
@@ -604,7 +604,7 @@ import {
   standalone: true,
   imports: [TableModule],
 })
-export class TableWrapperComponent {
+export class FusionStoryWrapperComponent {
   options: TableOptions = {
     tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'}
   };
