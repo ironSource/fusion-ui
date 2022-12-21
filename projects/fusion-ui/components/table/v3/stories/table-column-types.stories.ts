@@ -108,7 +108,7 @@ import {
 } from '@ironsource/fusion-ui/components/table';
 
 @Component({
-  selector: 'fusion-table-wrapper',
+  selector: 'fusion-story-wrapper',
   template: \`<fusion-table
     [columns]="columns"
     [rows]="rows"
@@ -117,7 +117,7 @@ import {
   standalone: true,
   imports: [TableModule],
 })
-export class TableWrapperComponent {
+export class FusionStoryWrapperComponent {
   options: TableOptions = {
     tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'}
   };
@@ -235,10 +235,11 @@ import {
   TableModule,
   TableColumn,
   TableOptions,
+  TableColumnTypeEnum
 } from '@ironsource/fusion-ui/components/table';
 
 @Component({
-  selector: 'fusion-table-wrapper',
+  selector: 'fusion-story-wrapper',
   template: \`<fusion-table
     [columns]="columns"
     [rows]="rows"
@@ -247,7 +248,7 @@ import {
   standalone: true,
   imports: [TableModule],
 })
-export class TableWrapperComponent {
+export class FusionStoryWrapperComponent {
   options: TableOptions = {
     tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'}
   };
@@ -258,7 +259,7 @@ export class TableWrapperComponent {
 const COLUMNS_CONFIG = [
     { key: 'id', title: 'Id' },
     { key: 'name', title: 'Name' },
-    { key: 'amount', type: TableColumnTypeEnum.Number, title: 'Amount', headerAlign: 'right'},
+    { key: 'amount', type: TableColumnTypeEnum.Number, title: 'Amount', headerAlign: 'right' as "right" | "left" | "center"},
     { key: 'username', title: 'Username' },
     { key: 'email', title: 'Email' },
     { key: 'website', title: 'Website' },
@@ -378,10 +379,11 @@ import {
   TableModule,
   TableColumn,
   TableOptions,
+  TableColumnTypeEnum
 } from '@ironsource/fusion-ui/components/table';
 
 @Component({
-  selector: 'fusion-table-wrapper',
+  selector: 'fusion-story-wrapper',
   template: \`<fusion-table
     [columns]="columns"
     [rows]="rows"
@@ -390,7 +392,7 @@ import {
   standalone: true,
   imports: [TableModule],
 })
-export class TableWrapperComponent {
+export class FusionStoryWrapperComponent {
   options: TableOptions = {
     tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'}
   };
@@ -401,7 +403,7 @@ export class TableWrapperComponent {
 const COLUMNS_CONFIG = [
     { key: 'id', title: 'Id' },
     { key: 'name', title: 'Name' },
-    { key: 'amount', type: TableColumnTypeEnum.Currency, title: 'Amount', headerAlign: 'right'},
+    { key: 'amount', type: TableColumnTypeEnum.Currency, title: 'Amount', headerAlign: 'right' as "right" | "left" | "center"},
     { key: 'username', title: 'Username' },
     { key: 'email', title: 'Email' },
     { key: 'website', title: 'Website' },
@@ -520,10 +522,11 @@ import {
   TableModule,
   TableColumn,
   TableOptions,
+  TableColumnTypeEnum
 } from '@ironsource/fusion-ui/components/table';
 
 @Component({
-  selector: 'fusion-table-wrapper',
+  selector: 'fusion-story-wrapper',
   template: \`<fusion-table
     [columns]="columns"
     [rows]="rows"
@@ -532,7 +535,7 @@ import {
   standalone: true,
   imports: [TableModule],
 })
-export class TableWrapperComponent {
+export class FusionStoryWrapperComponent {
   options: TableOptions = {
     tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'}
   };
@@ -543,7 +546,7 @@ export class TableWrapperComponent {
 const COLUMNS_CONFIG = [
     { key: 'id', title: 'Id' },
     { key: 'name', title: 'Name' },
-    { key: 'amount', type: TableColumnTypeEnum.Percent, title: 'Amount', headerAlign: 'right'},
+    { key: 'amount', type: TableColumnTypeEnum.Percent, title: 'Amount', headerAlign: 'right' as "right" | "left" | "center"},
     { key: 'username', title: 'Username' },
     { key: 'email', title: 'Email' },
     { key: 'website', title: 'Website' },
@@ -663,10 +666,11 @@ import {
   TableModule,
   TableColumn,
   TableOptions,
+  TableColumnTypeEnum
 } from '@ironsource/fusion-ui/components/table';
 
 @Component({
-  selector: 'fusion-table-wrapper',
+  selector: 'fusion-story-wrapper',
   template: \`<fusion-table
     [columns]="columns"
     [rows]="rows"
@@ -675,7 +679,7 @@ import {
   standalone: true,
   imports: [TableModule],
 })
-export class TableWrapperComponent {
+export class FusionStoryWrapperComponent {
   options: TableOptions = {
     tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'}
   };
@@ -866,12 +870,12 @@ import {
 } from '@ironsource/fusion-ui/components/table';
 
 @Component({
-  selector: 'fusion-table-wrapper',
+  selector: 'fusion-story-wrapper',
   template: \`<fusion-table [columns]="columns" [rows]="rows" [options]="options" (rowModelChange)="onRowModelChange($event)"></fusion-table>\`,
   standalone: true,
   imports: [TableModule],
 })
-export class TableWrapperComponent {
+export class FusionStoryWrapperComponent {
   options: TableOptions = {
     tableLabel: { text: 'Table label', tooltip: 'lorem ipsum dolor' },
     searchOptions: {
@@ -1048,12 +1052,12 @@ import { InlineInputType } from '@ironsource/fusion-ui/components/input-inline/c
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'fusion-table-wrapper',
+  selector: 'fusion-story-wrapper',
   template: \`<fusion-table [columns]="columns" [rows]="rows" [options]="options" (rowModelChange)="onRowModelChange($event)"></fusion-table>\`,
   standalone: true,
   imports: [TableModule],
 })
-export class TableWrapperComponent {
+export class FusionStoryWrapperComponent {
   options: TableOptions = {
     tableLabel: { text: 'Table label', tooltip: 'lorem ipsum dolor' },
   };
@@ -1217,7 +1221,7 @@ import {
 import { VideoPlayerComponent } from '@ironsource/fusion-ui/components/video-player';
 
 @Component({
-  selector: 'fusion-table-wrapper',
+  selector: 'fusion-story-wrapper',
   template: \`<fusion-table
     [columns]="columns"
     [rows]="rows"
@@ -1226,7 +1230,7 @@ import { VideoPlayerComponent } from '@ironsource/fusion-ui/components/video-pla
   standalone: true,
   imports: [TableModule],
 })
-export class TableWrapperComponent {
+export class FusionStoryWrapperComponent {
   options: TableOptions = {
     tableLabel: { text: 'Table label', tooltip: 'lorem ipsum dolor' },
   };

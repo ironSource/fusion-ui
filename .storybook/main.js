@@ -1,10 +1,11 @@
 module.exports = {
-    stories: [/*'../stories/!**!/!*.stories.mdx', '../stories/!**!/!*.stories.@(js|jsx|ts|tsx)', */'../projects/fusion-ui/**/*.stories.ts', '../projects/fusion-ui/**/*.stories.mdx'],
+    stories: ['../projects/fusion-ui/**/*.stories.ts', '../projects/fusion-ui/**/*.stories.mdx'],
     addons: [
         '@storybook/addon-links',
         '@storybook/addon-essentials',
         '@storybook/addon-interactions',
-        'storybook-addon-designs'
+        'storybook-addon-designs',
+        '@ironsource-mobile/storybook-addon-stackblitz'
     ],
     framework: '@storybook/angular',
     core: {

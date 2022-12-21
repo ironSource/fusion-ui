@@ -12,6 +12,9 @@ export const parameters = {
         }
     },
     docs: {inlineStories: true},
+    stackblitzAdditionalDependency: {
+        "@ironsource/fusion-ui": '5.1.0-rc.5'
+    },
     options: {
         storySort: (a, b) => {
             return (b[1].id.endsWith('-all--page') || b[1].id.endsWith('--default') )
