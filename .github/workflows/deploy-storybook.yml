@@ -27,6 +27,8 @@ jobs:
           echo @ironsource-mobile:registry=https://npm.pkg.github.com > .npmrc
           echo '//npm.pkg.github.com/:_authToken=${{secrets.NODE_AUTH_TOKEN}}' >> .npmrc
 
+      - run: cat .npmrc
+
       - name: Install Dependencies 📦
         run: |
           npm ci
