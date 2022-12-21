@@ -22,6 +22,13 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y vim jq
 
+      - name: Add Github Packages Credentials
+        run: |
+          echo @ironsource-mobile:https://npm.pkg.github.com/ > .npmrc
+          echo '//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}' >> .npmrc
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
+
       - name: Install Dependencies 📦
         run: |
           npm ci
