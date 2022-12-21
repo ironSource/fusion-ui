@@ -25,12 +25,7 @@ jobs:
       - name: Add Github Packages Credentials
         run: |
           echo @ironsource-mobile:registry=https://npm.pkg.github.com > .npmrc
-          echo '//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}' >> .npmrc
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-
-
-      - run: cat .npmrc
+          echo '//npm.pkg.github.com/:_authToken=${{secrets.NPM_TOKEN}}' >> .npmrc
 
       - name: Install Dependencies 📦
         run: |
