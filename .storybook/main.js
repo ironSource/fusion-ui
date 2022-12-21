@@ -5,7 +5,7 @@ module.exports = {
         '@storybook/addon-essentials',
         '@storybook/addon-interactions',
         'storybook-addon-designs',
-        'storybook-addon-stackblitz'
+        '@ironsource-mobile/storybook-addon-stackblitz'
     ],
     framework: '@storybook/angular',
     core: {
