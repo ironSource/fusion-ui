@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.1.0-rc.6](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.5...v5.1.0-rc.6) (2022-12-21)
+
+
+### Bug Fixes
+
+* table rows default value ([1b21b27](https://github.com/ironSource/fusion-ui/commit/1b21b271d21d531eb6628e4bd1def30b80464d4a))
+
 ## [5.1.0-rc.5](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.4...v5.1.0-rc.5) (2022-12-19)
 
 ## [5.1.0-rc.4](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.3...v5.1.0-rc.4) (2022-12-19)
