@@ -62,7 +62,7 @@ export class TableComponent implements OnInit, OnDestroy {
      */
     @Input() set rows(value: any[] | TableRowsGrouped) {
         if (Array.isArray(value)) {
-            this._rows = (value as any[]).map(row => ({...row})) ?? [];
+            this._rows = ((value as any[]) ?? []).map(row => ({...row}));
             this.initRows();
         }
     }
