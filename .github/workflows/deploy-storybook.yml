@@ -5,14 +5,14 @@ on:
 
 jobs:
   Deploy:
-    runs-on: [self-hosted, x64, linux, eks, us, demand, dev]
+    runs-on: ubuntu-latest
     outputs:
       branch_name: ${{ steps.branch_name.outputs.branch }}
       folder_name: ${{ steps.branch_name.outputs.folder }}
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v3
       - name: Setup Node.js Enviroment 🛠️
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '16'
           cache: 'npm'
