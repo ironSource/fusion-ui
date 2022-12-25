@@ -20,6 +20,7 @@ import {DropdownSelectComponent} from '@ironsource/fusion-ui/components/dropdown
     ]
 })
 export class DropdownComponent extends DropdownBaseComponent {
+    /** @ignore */
     dropdownArrowIconName = {
         iconName: 'arrow-dropdown',
         iconVersion: 'v1'
