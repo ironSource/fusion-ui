@@ -27,8 +27,10 @@ const ARROW_ICON = {
     ]
 })
 export class DropdownComponent extends DropdownBaseComponent {
+    /** @ignore */
     dropdownArrowIconName = ARROW_ICON;
-
+    /** @ignore */
     @ViewChild('searchComponent') searchComponent: DropdownSearchComponent;
+    /** @ignore */
     @ViewChild('selectComponent') selectComponent: DropdownSelectComponent;
 }

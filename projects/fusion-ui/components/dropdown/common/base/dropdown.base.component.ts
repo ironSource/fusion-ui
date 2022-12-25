@@ -54,30 +54,43 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     @Input() selected: DropdownOption[] = [];
     /** @ignore */
     @Output() selectedChange = new EventEmitter<DropdownOption[]>();
+    /** @internal */
     @Input() placeholderPrefix: string;
+    /** @internal */
     @Input() searchPlaceholder = 'Search';
+    /** @internal */
     @Input() placeholderWidth = '';
     /** @ignore - add to story later*/
     @Input() dynamicPlaceholder: DynamicComponentConfiguration;
     /**
      * @deprecated since version 6.0.0
+     * @ignore
      */
     @Input() icon: IconData;
+    /** @internal */
     @Input() filterIconName: string;
+    /** @internal */
     @Input() isIconRightPosition = false;
+    /** @internal */
     @Input() isDisabled: boolean;
+    /** @internal */
     @Input() readonly: boolean;
+    /** @internal */
     @Input() search: boolean;
+    /** @internal */
     @Input() autoComplete: boolean;
+    /** @internal */
     @Input() mappingOptions: any;
+    /** @internal */
     @Input() limitOptions = 10;
+    /** @internal */
     @Input() set placeholderLocation(location: 'right' | 'left') {
         if (location) {
             this._isLocatedLeft = 'left' === location;
             this._isLocatedRight = 'right' === location;
         }
     }
-
+    /** @internal */
     @Input() set loading(value: boolean) {
         this.isLoadingManuallyChanged = true;
         this.loadingState = value;
@@ -88,6 +101,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     @Input() arrowNavigation: boolean;
     /** @ignore */
     @Input() _error = '';
+    /** @internal */
     @Input()
     set error(error: string) {
         this._error = error;
@@ -123,6 +137,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     @Input() isTabMode = false;
     /** @ignore */
     @Input() isMultiRawDisplay = false;
+    /** @internal */
     @Input() set placeholder(value: string | DropdownPlaceholderConfiguration) {
         if (typeof value === 'string') {
             this.placeholderText = value || 'Please Select';
@@ -134,13 +149,15 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     }
     /** @ignore */
     @Input() optionsRenderByHover = true;
+    /** @internal */
     @Input() searchByProperties?: string[] = [];
-
+    /** @internal */
     @Output() searchChange = new EventEmitter();
+    /** @internal */
     @Output() searchClear = new EventEmitter();
-
+    /** @internal */
     @Output() optionCloseIconClicked = new EventEmitter();
-
+    /** @internal */
     @Output() closed = new EventEmitter<ClosedOptions>();
 
     /** @ignore */

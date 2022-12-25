@@ -25,6 +25,8 @@ export class DropdownComponent extends DropdownBaseComponent {
         iconName: 'arrow-dropdown',
         iconVersion: 'v1'
     };
+    /** @ignore */
     @ViewChild('searchComponent') searchComponent: DropdownSearchComponent;
+    /** @ignore */
     @ViewChild('selectComponent') selectComponent: DropdownSelectComponent;
 }

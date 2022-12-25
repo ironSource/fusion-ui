@@ -12,6 +12,7 @@ import {MOCK_OPTIONS} from '@ironsource/fusion-ui/components/dropdown/v3/stories
 import {MultiDropdownModule} from '@ironsource/fusion-ui/components/multi-dropdown';
 import {ErrorMessageModule} from '@ironsource/fusion-ui/components/error-message';
 import {DropdownCustomPlaceholderModule} from '../../../../../fusion-docs/src/app/components/dropdown-custom-placeholder/dropdown-custom-placeholder.module';
+import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 
 const dropdownFormControl = new FormControl([]);
 
@@ -31,7 +32,8 @@ export default {
                 MultiDropdownModule,
                 ErrorMessageModule,
                 DropdownCustomPlaceholderModule
-            ]
+            ],
+            providers: [{provide: ApiBase, useExisting: DropdownComponent}]
         })
     ],
     parameters: {
@@ -47,14 +49,23 @@ export default {
     },
     args: {
         formControl: dropdownFormControl,
-        options: MOCK_OPTIONS
+        options: MOCK_OPTIONS,
+        placeholder: 'Select one'
+    },
+    argTypes: {
+        formControl: {
+            control: false
+        },
+        placeholder: {
+            control: 'text'
+        }
     }
 } as Meta<DropdownComponent>;
 
 const DropdownTemplate: Story<DropdownComponent> = (args: DropdownComponent) => ({
     props: {...args},
-    template: `<div style="width: 250px; margin: auto">
-<fusion-dropdown placeholder="Select option"
+    template: `<div style="height: 300px; width: 250px; margin: auto">
+<fusion-dropdown [placeholder]="placeholder"
      [formControl]="formControl"
      [options]="options"
      ></fusion-dropdown>
@@ -66,5 +77,36 @@ export const Default = DropdownTemplate.bind({});
 Default.args = {
     formControl: dropdownFormControl
 };
+Default.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { DropdownModule } from "@ironsource/fusion-ui/components/dropdown";
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
 
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 300px; width: 250px; margin: auto">
+  <fusion-dropdown [placeholder]="placeholder"
+     [formControl]="dropdownFormControl"
+     [options]="options"
+     ></fusion-dropdown>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, DropdownModule],
+})
+export class FusionStoryWrapperComponent {
+    placeholder = 'Select one';
+    dropdownFormControl = new FormControl();
+    options: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS)};
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
 // endregion
