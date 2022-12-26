@@ -345,6 +345,9 @@ $optionTwoLines: 48px;
             }
         }
     }
+    &.readonly{
+        pointer-events:none;
+    }
 }
 
 :host-context(.fu-items-top){

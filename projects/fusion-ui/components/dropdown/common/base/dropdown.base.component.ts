@@ -99,8 +99,6 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     @Input() strictSearch: boolean;
     /** @ignore */
     @Input() arrowNavigation: boolean;
-    /** @ignore */
-    @Input() _error = '';
     /** @internal */
     @Input()
     set error(error: string) {
@@ -230,6 +228,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     chipDefaultContent: string;
 
     private _optionsTitle: string;
+    protected _error: string;
     private _isLocatedRight = false;
     private _isLocatedLeft = false;
     private initPlaceholder: string;
