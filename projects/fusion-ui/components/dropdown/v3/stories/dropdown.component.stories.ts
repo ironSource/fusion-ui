@@ -14,9 +14,6 @@ import {
     MOCK_OPTIONS_COUNTRIES,
     MOK_APPLICATIONS_OPTIONS
 } from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
-import {MultiDropdownModule} from '@ironsource/fusion-ui/components/multi-dropdown';
-import {ErrorMessageModule} from '@ironsource/fusion-ui/components/error-message';
-import {DropdownCustomPlaceholderModule} from '../../../../../fusion-docs/src/app/components/dropdown-custom-placeholder/dropdown-custom-placeholder.module';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 
 export default {
@@ -31,10 +28,7 @@ export default {
                 ReactiveFormsModule,
                 SvgModule.forRoot({assetsPath: environment.assetsPath}),
                 IconModule,
-                DropdownModule,
-                MultiDropdownModule,
-                ErrorMessageModule,
-                DropdownCustomPlaceholderModule
+                DropdownModule
             ],
             providers: [{provide: ApiBase, useExisting: DropdownComponent}]
         })
