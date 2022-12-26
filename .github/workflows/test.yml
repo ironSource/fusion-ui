@@ -1,14 +1,7 @@
-name: Step-UnitTests
+name: Step-Test
 
 on:
-  workflow_call:
-    inputs:
-      branch_name:
-        required: true
-        type: string
-    secrets:
-      NPM_TOKEN:
-        required: true
+  push:
 
   workflow_dispatch:
     inputs:
@@ -21,8 +14,8 @@ env:
   BRANCH_NAME: ${{ github.event.inputs.branch_name || inputs.branch_name }}
 
 jobs:
-  unit-tests:
-    runs-on: ubuntu-latest
+  code-quality:
+    runs-on: [self-hosted, demand]
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -39,8 +32,6 @@ jobs:
           echo @ironsource-mobile:registry=https://npm.pkg.github.com > .npmrc
           echo '//npm.pkg.github.com/:_authToken=${{secrets.NPM_TOKEN}}' >> .npmrc
 
-      - run: npm ci
+      - run: cat .npmrc
 
-      - name: Run Unit Tests
-        timeout-minutes: 10
-        run: npm run test-ui-ci
+      - run: npm ci
