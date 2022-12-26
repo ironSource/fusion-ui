@@ -17,6 +17,11 @@
     "sharedEntities": [
         "./services/api",
         "./services/cache",
+        "./services/user",
+        "./services/shared-config",
+        "./services/redirect",
+        "./services/pub-sub",
+        "./guards/auth",
         "./components/svg",
         "./components/icon/v1",
         "./components/tooltip/v1",

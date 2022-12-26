@@ -2,6 +2,45 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.1.0-rc.6](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.5...v5.1.0-rc.6) (2022-12-21)
+
+
+### Bug Fixes
+
+* table rows default value ([1b21b27](https://github.com/ironSource/fusion-ui/commit/1b21b271d21d531eb6628e4bd1def30b80464d4a))
+
+## [5.1.0-rc.5](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.4...v5.1.0-rc.5) (2022-12-19)
+
+## [5.1.0-rc.4](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.3...v5.1.0-rc.4) (2022-12-19)
+
+## [5.1.0-rc.3](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.2...v5.1.0-rc.3) (2022-12-18)
+
+
+### Bug Fixes
+
+* add missing imports ([38c8960](https://github.com/ironSource/fusion-ui/commit/38c8960daa1d0bf0f63667a2684275db46da2ac1))
+
+## [5.1.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.1...v5.1.0-rc.2) (2022-12-15)
+
+
+### Bug Fixes
+
+* build errors ([ccc9728](https://github.com/ironSource/fusion-ui/commit/ccc9728e3e0710c918d61afd1555c6776efd5f5b))
+
+## [5.1.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v5.0.1...v5.1.0-rc.1) (2022-12-15)
+
+
+### Features
+
+* add new services to support module federation ([e8dd21f](https://github.com/ironSource/fusion-ui/commit/e8dd21f022a559cb0e35ed3ec6774eca67b609af))
+
+
+### Bug Fixes
+
+* failing test ([7acd048](https://github.com/ironSource/fusion-ui/commit/7acd048bf233a743be9778089a9bdde5a058456a))
+* remove watch flag ([b1a97a9](https://github.com/ironSource/fusion-ui/commit/b1a97a9ab5ab4639665216ccd0b5246f260ebd9d))
+* update services imports ([3492827](https://github.com/ironSource/fusion-ui/commit/349282729951ca930264eebb1d5c8d2b880e99ae))
+
 ## [5.1.0-rc.7](https://github.com/ironSource/fusion-ui/compare/v5.0.1...v5.1.0-rc.7) (2022-12-22)
 
 

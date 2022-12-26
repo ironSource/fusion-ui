@@ -72,5 +72,6 @@ export * from '@ironsource/fusion-ui/directives/copy-to-clipboard';
 export * from '@ironsource/fusion-ui/directives/intersection';
 export * from '@ironsource/fusion-ui/directives/load-more';
 export * from '@ironsource/fusion-ui/directives/scroll-to';
+export * from '@ironsource/fusion-ui/guards/auth';
 export * from '@ironsource/fusion-ui/directives/reposition';
 export * from '@ironsource/fusion-ui/directives/teleporting';
