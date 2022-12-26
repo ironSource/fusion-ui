@@ -23,6 +23,10 @@ export const MOCK_OPTIONS: DropdownOption[] = [
     {id: 20, title: 'Monty Carlo'}
 ];
 
+export const MOCK_OPTIONS_DISABLED = MOCK_OPTIONS.map((item, idx) => {
+    return {...item, isDisabled: idx <= 2};
+});
+
 export const MOCK_ICON_OPTIONS = MOCK_OPTIONS.map(item => ({...item, icon: 'frame'}));
 
 export const MOK_APPLICATIONS_OPTIONS = [
