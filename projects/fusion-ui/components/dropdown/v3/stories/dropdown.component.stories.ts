@@ -377,13 +377,13 @@ export class FusionStoryWrapperComponent {
 };
 // endregion
 
-// region Icon
-export const Icon = DropdownTemplate.bind({});
-Icon.args = {
+// region WithIcon
+export const WithIcon = DropdownTemplate.bind({});
+WithIcon.args = {
     formControl: new FormControl([]),
     options: MOCK_ICON_OPTIONS
 };
-Icon.parameters = {
+WithIcon.parameters = {
     docs: {
         source: {
             language: 'typescript',
@@ -417,13 +417,13 @@ export class FusionStoryWrapperComponent {
 };
 // endregion
 
-// region Flag
-export const Flag = DropdownTemplate.bind({});
-Flag.args = {
+// region WithFlag
+export const WithFlag = DropdownTemplate.bind({});
+WithFlag.args = {
     formControl: new FormControl([]),
     options: MOCK_OPTIONS_COUNTRIES
 };
-Flag.parameters = {
+WithFlag.parameters = {
     docs: {
         source: {
             language: 'typescript',
@@ -457,13 +457,13 @@ export class FusionStoryWrapperComponent {
 };
 // endregion
 
-// region Application
-export const Application = DropdownTemplate.bind({});
-Application.args = {
+// region WithImage
+export const WithImage = DropdownTemplate.bind({});
+WithImage.args = {
     formControl: new FormControl([]),
     options: MOK_APPLICATIONS_OPTIONS.splice(4)
 };
-Application.parameters = {
+WithImage.parameters = {
     docs: {
         source: {
             language: 'typescript',
