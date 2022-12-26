@@ -19,11 +19,12 @@ import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
     ]
 })
 export class MultiDropdownComponent extends MultiDropdownBaseComponent {
+    /** @ignore */
     dropdownArrowIconName = {
         iconName: 'angle-down',
         iconVersion: 'v3'
     };
-
+    /** @ignore */
     getOptionContent(option: DropdownOption): string {
         return this.dropdownService.optionToString(this.selected[0], this.mappingOptions, {dropdownType: 'multi'});
     }
