@@ -7,4 +7,8 @@ import {ButtonBaseComponent} from '@ironsource/fusion-ui/components/button/commo
     styleUrls: ['./button.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ButtonComponent extends ButtonBaseComponent implements OnInit {}
+export class ButtonComponent extends ButtonBaseComponent implements OnInit {
+    protected setLoadingState(loading: boolean) {
+        this.setHostClass(loading, 'fu-with-loading');
+    }
+}

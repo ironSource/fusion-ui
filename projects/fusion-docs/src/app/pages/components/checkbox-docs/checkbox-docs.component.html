@@ -114,7 +114,7 @@ checkbox.addEventListener("changed", $event => {
                                 label="Multiple Choice"
                                 [formControl]="checkboxControl"
                             ></fusion-checkbox>
-                            <fusion-checkbox label="Selected" [formControl]="checkboxControl"></fusion-checkbox>
+                            <fusion-checkbox label="Selected" [tooltipContent]="'test terst'" [formControl]="checkboxControl"></fusion-checkbox>
                             <fusion-checkbox label="Inactive" [checked]="false"></fusion-checkbox>
                         </div>
                         <div class="col-2 fu-flex-column">

@@ -8,6 +8,7 @@ import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v2';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button';
+import {TabsModule} from '@ironsource/fusion-ui/components/tabs/v2';
 
 const routes: Routes = [{path: '', component: ButtonDocsComponent}];
 
@@ -21,7 +22,8 @@ const routes: Routes = [{path: '', component: ButtonDocsComponent}];
         ButtonModule,
         IconModule,
         RouterModule.forChild(routes),
-        TooltipModule
+        TooltipModule,
+        TabsModule
     ]
 })
 export class ButtonDocsModule {}

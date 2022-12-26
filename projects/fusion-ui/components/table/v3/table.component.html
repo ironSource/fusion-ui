@@ -18,15 +18,17 @@
     <table [id]="id" #table *ngIf="!tableMainError">
         <ng-container *ngIf="columns && options">
             <thead *ngIf="columns.length" [hidden]="(isEmpty || (loading && !isLoadingOverlay)) && hideHeaderOnEmpty">
-                <tr [ngStyle]="!!options.rowsOptions && !!options.rowsOptions.headerRow ? options.rowsOptions.headerRow.style : null">
-                    <td
-                        *ngIf="!!options?.rowsExpandableOptions"
-                        class="expand-column"
-                        [class.sticky-left]="options?.rowsExpandableOptions?.sticky"
-                        [style.top.px]="options?.stickyHeaderTopOffset"
+                <tr *ngIf="subHeader.length">
+                    <ng-container *ngIf="!!options?.rowsExpandableOptions" [ngTemplateOutlet]="headerExpandColumn"></ng-container>
+                    <td *ngFor="let subheader of subHeader"
+                        class="fu-header-group fu-border-left"
+                        [attr.colspan]="subheader.colspan"
                     >
-                        <span></span>
+                        {{ subheader.name}}
                     </td>
+                </tr>
+                <tr [ngStyle]="!!options.rowsOptions && !!options.rowsOptions.headerRow ? options.rowsOptions.headerRow.style : null">
+                    <ng-container *ngIf="!!options?.rowsExpandableOptions" [ngTemplateOutlet]="headerExpandColumn"></ng-container>
                     <td
                         *ngFor="let column of columns; trackBy: trackByFunc; let isLast = last; let isFirst = first"
                         [attr.data-col-key]="column.key"
@@ -87,6 +89,10 @@
                 #tableBody
             ></tbody>
             <!--Table Body-->
+            <!--table pagination loading overlay-->
+            <ng-container *ngIf="options?.pagination && options.pagination.loading">
+                <tbody [fusionTableLoading]="colsCount"></tbody>
+            </ng-container>
             <!--Grouped Table Body-->
             <tbody
                 *ngIf="options.isGroupedTable && (!loading || isLoadingOverlay) && !isEmpty"
@@ -117,15 +123,21 @@
         <!--table empty loading-->
     </table>
     <!--table pagination loading overlay-->
-    <ng-container *ngIf="options?.pagination && options.pagination.loading">
-        <div class="is-overlay-loader-holder"><fusion-loader [status]="true" height="150">Loading Please Wait…</fusion-loader></div>
-    </ng-container>
-    <!--table pagination loading overlay-->
-    <!--todo: Add condition when to show button 'go top'-->
     <ng-container *ngIf="options?.hasReturnToTopButton && (shownGoTopButton$ | async)">
         <div class="fu-button-return-top" fusionTooltip="Return to top" (click)="onClickReturnTop()">
             <fusion-icon class="fu-return-top-icon" [name]="{iconName:'angle-up', iconVersion: 'v3'}"></fusion-icon>
         </div>
     </ng-container>
 </div>
+<div id="{{id}}_tableTeleportWrapper"></div>
 <div *ngIf="!noTableFrame" class="fu-table-footer"></div>
+
+<ng-template #headerExpandColumn>
+    <td
+        class="expand-column"
+        [class.sticky-left]="options?.rowsExpandableOptions?.sticky"
+        [style.top.px]="options?.stickyHeaderTopOffset"
+    >
+        <span></span>
+    </td>
+</ng-template>

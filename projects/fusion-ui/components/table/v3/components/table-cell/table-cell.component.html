@@ -115,6 +115,9 @@
     <!--single remove action button-->
     <ng-container *ngIf="isRemove && !isReadOnly" [ngTemplateOutlet]="removeActionButton"></ng-container>
     <!--single remove action button-->
+    <!--multiple actions menu-->
+    <ng-container *ngIf="multipleActions as rowActions" [ngTemplateOutlet]="multipleActionsMenu" [ngTemplateOutletContext]="{$implicit: rowActions.actions}"></ng-container>
+    <!--multiple actions menu-->
 </ng-container>
 
 <ng-template #removeActionButton>
@@ -124,4 +127,21 @@
     >
         <fusion-icon class="fu-table-action-icon" [name]="cellRemoveActionIcon"></fusion-icon>
     </div>
+</ng-template>
+
+<ng-template #multipleActionsMenu let-menuActions>
+    <div id="actionButton4row_{{rowIndex}}" class="fu-button-holder" [class.fu-row-menu-shown]="shownActionsMenu">
+        <fusion-button class="transparent third fu-menu-drop-button" [icon]="'more-vert'" (click)="onActionButtonClicked()"></fusion-button>
+    </div>
+    <ng-container *ngIf="shownActionsMenu">
+        <fusion-menu-drop
+            *fusionTeleporting="'#'+options.tableId+'_tableTeleportWrapper'"
+            [fusionReposition]="'#actionButton4row_' + rowIndex"
+            [fusionRepositionPlacement]="'bottom-end'"
+            [fusionRepositionOffset]="-32"
+            [menuItems]="menuActions"
+            (fusionClickOutside)="onActionMenuClickOutSide($event)"
+            (menuItemClicked)="menuItemClicked($event)"
+        ></fusion-menu-drop>
+    </ng-container>
 </ng-template>
