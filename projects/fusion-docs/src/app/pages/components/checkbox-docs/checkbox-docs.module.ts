@@ -7,7 +7,7 @@ import {ExampleBlockModule} from '../../../components/example-block/example-bloc
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 
-import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox/v3';
+import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox/v1';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button/v3';
 import {InputModule} from '@ironsource/fusion-ui/components/input/v3';
 import {IconSelectListModule} from '@ironsource/fusion-ui/components/icon-select-list/v1';

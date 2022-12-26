@@ -17,6 +17,7 @@ import {BASE_CHECKED_IMAGE} from './checkbox.cusom-svg';
     ]
 })
 export class CheckboxComponent extends CheckboxBaseComponent {
+    /** @internal */
     getBackgroundImage() {
         let svg;
         if (this.backgroundColor && (this.checked || this.isIndeterminate)) {

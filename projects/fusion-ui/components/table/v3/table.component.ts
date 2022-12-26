@@ -24,9 +24,11 @@ import {
     TableRowExpandEmitter,
     CONFIG_TABLE_BY_UI_STYLE,
     ROW_CLICK_SUPPRESS_FOR_PARENT_SELECTORS,
-    TableIconsConfigByStyle
+    TableIconsConfigByStyle,
+    TableRow
 } from '@ironsource/fusion-ui/components/table/common/entities';
 import {TableBasicComponent} from './components/table-basic/table-basic.component';
+import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
 
 @Component({
     selector: 'fusion-table',
@@ -36,35 +38,90 @@ import {TableBasicComponent} from './components/table-basic/table-basic.componen
     providers: [TableService]
 })
 export class TableComponent implements OnInit, OnDestroy {
+    /** @internal */
     @Input() id: string;
+    /**
+     * Table Options (configuration)
+     * @param value: TableOptions
+     */
     @Input() options: TableOptions = {};
-    @Input() columns: TableColumn[] = [];
+    /**
+     * Table columns configuration
+     * columns: TableColumn[]
+     */
+    @Input() set columns(value: TableColumn[]) {
+        if (Array.isArray(value)) {
+            this._columns = value;
+            this.subHeader = this.getSubHeaders(this._columns);
+        }
+    }
+
+    /**
+     * Table rows data
+     * rows: {[key: string]: any}[]
+     */
     @Input() set rows(value: any[] | TableRowsGrouped) {
-        this._rows = ((value as any[]) ?? []).map(row => ({...row}));
-        this.initRows();
+        if (Array.isArray(value)) {
+            this._rows = ((value as any[]) ?? []).map(row => ({...row}));
+            this.initRows();
+        }
     }
     @Input() loading: boolean;
+    /** @internal */
     @Input() sortTableOnDataChanges = false;
+    /** @internal */
     @Input() set expandedRows(value: {[key: string]: boolean}) {
         this.onExternalExpandRowChanged(value);
         this._expandedRows = value;
     }
 
+    /**
+     * On Sort changed
+     */
     @Output() sortChanged: EventEmitter<any> = new EventEmitter();
+    /**
+     * On rows selection changed
+     */
     @Output() selectionChanged = this.tableService.selectionChanged;
+    /**
+     * On Row model (data) changed
+     */
     @Output() rowModelChange = this.tableService.rowModelChange;
+    /**
+     * On Row clicked
+     */
     @Output() rowClicked = new EventEmitter<{$event: MouseEvent; rowIndex: string; rowEl: Element; rowData: any}>();
+    /**
+     * On scroll down. Used for get new paged data portion
+     */
     @Output() scrollDown: EventEmitter<any> = new EventEmitter();
-    // on expand icon clicked. No need in case static data and one expand level
+    /**
+     * On Row action clicked
+     */
+    @Output() rowActionClicked: EventEmitter<{action: MenuDropItem; rowIndex: string | number; row: TableRow}> =
+        this.tableService.rowActionClicked;
+    /**
+     * on expand icon clicked. No need in case static data and one expand level
+     * @internal
+     */
     @Output() expandRow: EventEmitter<TableRowExpandEmitter> = new EventEmitter();
-    // two-way binding for expandedRows map used in case no expandRow subscription in host for sync this value
+    /**
+     * two-way binding for expandedRows map used in case no expandRow subscription in host for sync this value
+     * @internal
+     */
     @Output() expandedRowsChange = new EventEmitter<{[key: string]: boolean}>();
 
+    /** @internal */
     @ViewChild('stringCell') stringCell;
+    /** @internal */
     @ViewChild('checkboxCell') checkboxCell;
+    /** @internal */
     @ViewChild('templateCell') templateCell;
+    /** @internal */
     @ViewChild('table') tableElement: ElementRef;
+    /** @internal */
     @ViewChild('tableWrapper', {static: true}) tableWrapperElement: ElementRef;
+    /** @internal */
     @ViewChild('tableBody') tableBodyComponent: TableBasicComponent;
 
     @HostBinding('class.fixed-table') get isFixedHeader(): boolean {
@@ -82,7 +139,7 @@ export class TableComponent implements OnInit, OnDestroy {
     @HostBinding('class.is-loading') get isLoading(): boolean {
         return this.loading;
     }
-
+    /** @internal */
     @HostBinding('class.on-scroll-right') isScrollRight: boolean;
 
     @HostBinding('class.on-vertical-scroll') get onVerticalScroll(): boolean {
@@ -91,19 +148,26 @@ export class TableComponent implements OnInit, OnDestroy {
         }
     }
 
+    /** @internal */
     isRowsInit = false;
+    /** @internal */
     noDataMessage: string;
+    /** @internal */
     noDataSubMessage: string;
+    /** @internal */
     hideHeaderOnEmpty: boolean;
+    /** @internal */
     isAllRowsSelectable: boolean;
-
+    /** @internal */
     configIconNames: TableIconsConfigByStyle;
-
+    /** @internal */
     wrapperClasses: string[];
-
+    /** @internal */
     tableMainError = false;
-
+    /** @internal */
     shownGoTopButton$ = new BehaviorSubject(false);
+    /** @internal */
+    subHeader: {name: string; colspan: number}[] = [];
 
     get isCheckboxTitleShown(): boolean {
         return this.columns ? this.columns.some(column => column.type === TableColumnTypeEnum.Checkbox && column.title !== '') : false;
@@ -149,14 +213,24 @@ export class TableComponent implements OnInit, OnDestroy {
         return this._rows;
     }
 
+    get columns(): TableColumn[] {
+        return this._columns;
+    }
+
     private lastScrollLeftValue: number;
     private _expandedRows: {[key: string]: boolean} = {};
     private currentExpandedMap: {[key: string]: boolean} = {};
     private ignoredParentSelectorsRowClickEvent: string[];
     private onDestroy$ = new Subject<void>();
     private _rows: any[] | TableRowsGrouped = [];
+    private _columns: TableColumn[] = [];
 
-    constructor(public tableService: TableService, private uniqueService: UniqueIdService, private cdr: ChangeDetectorRef) {}
+    constructor(
+        /** @internal */
+        public tableService: TableService,
+        private uniqueService: UniqueIdService,
+        private cdr: ChangeDetectorRef
+    ) {}
 
     ngOnInit() {
         if (!!this.options.rowsExpandableOptions) {
@@ -169,6 +243,7 @@ export class TableComponent implements OnInit, OnDestroy {
         }
         const uniqueId = this.uniqueService.getUniqueId();
         this.id = this.id || `isTable${uniqueId}`;
+        this.options.tableId = this.id;
         this.noDataMessage = isNullOrUndefined(this.options.noDataMessage) ? 'No Data to Display' : this.options.noDataMessage;
         this.noDataSubMessage = this.options.noDataSubMessage || '';
         this.hideHeaderOnEmpty = !isNullOrUndefined(this.options.hideHeaderOnEmpty) ? this.options.hideHeaderOnEmpty : false;
@@ -191,7 +266,7 @@ export class TableComponent implements OnInit, OnDestroy {
         this.onDestroy$.next();
         this.onDestroy$.complete();
     }
-
+    /** @internal */
     onHeaderClicked(col: any): void {
         if (!this.tableService.isColumnSortable(col)) {
             return;
@@ -203,17 +278,18 @@ export class TableComponent implements OnInit, OnDestroy {
         this.sortChanged.emit(sortKey);
     }
 
+    /** @internal */
     filterColumn(column, filterIn) {
         if (column.filter.changed && column.filter.options) {
             const isAllFiltered = column.filter.options.length === filterIn.length || filterIn.length === 0;
             column.filter.changed.emit(isAllFiltered ? [] : filterIn);
         }
     }
-
+    /** @internal */
     replaceSelectedRows({selectedTableRows, iditicationFunc}: {selectedTableRows: any[]; iditicationFunc: (row: any) => number}): void {
         this.tableService.replaceSelectedRows({selectedTableRows, iditicationFunc});
     }
-
+    /** @internal */
     doExpandRow({rowIndex, row, isExpanded, successCallback, failedCallback, updateMap}: TableRowExpandEmitter) {
         if (!!this.expandRow.observers.length) {
             // has expandRow event subscription in host
@@ -226,17 +302,17 @@ export class TableComponent implements OnInit, OnDestroy {
             this.updateExpandedRowsMap(rowIndex, isExpanded);
         }
     }
-
+    /** @internal */
     trackByFunc(index, column) {
         return column && column.key ? column.key : index;
     }
-
+    /** @internal */
     getTableClientWidth(): number {
         if (this.tableWrapperElement) {
             return this.tableWrapperElement.nativeElement.clientWidth;
         }
     }
-
+    /** @internal */
     onTableBodyClicked($event: MouseEvent) {
         if (!this.isElementChildOfSuppressed($event.target as Element)) {
             const rowEl = ($event.target as Element).closest('tr');
@@ -245,7 +321,7 @@ export class TableComponent implements OnInit, OnDestroy {
             this.rowClicked.emit({$event, rowIndex, rowEl, rowData});
         }
     }
-
+    /** @internal */
     onClickReturnTop() {
         const viewPortElement = this.scrollElement || document.documentElement;
         const currentScroll = viewPortElement.scrollTop || document.body.scrollTop;
@@ -265,6 +341,25 @@ export class TableComponent implements OnInit, OnDestroy {
             this.tableService.initSelectedRows(this.rows as any[]);
         }
         this.doLocalSorting();
+    }
+
+    private getSubHeaders(columns: TableColumn[]): {name: string; colspan: number}[] {
+        if (columns.some(item => !!item.groupName)) {
+            return columns.reduce((groups, column, idx, columns) => {
+                if (column.groupName) {
+                    groups.push({name: column.groupName ?? '&nbsp;', colspan: 1});
+                } else {
+                    if (groups[groups.length - 1] && groups[groups.length - 1].name) {
+                        groups[groups.length - 1].colspan++;
+                    } else {
+                        groups.push({name: ' ', colspan: 1});
+                    }
+                }
+                return groups;
+            }, []);
+        } else {
+            return [];
+        }
     }
 
     private doLocalSorting() {

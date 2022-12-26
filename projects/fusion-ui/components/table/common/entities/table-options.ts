@@ -1,4 +1,4 @@
-import {TableRowRemoveAction} from './table-row-remove-action';
+import {TableMultipleActions, TableRowRemoveAction} from './table-row-remove-action';
 import {TableColumn} from './table-column';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
@@ -16,6 +16,7 @@ export interface TableSearchOptions {
 }
 
 export interface TableOptions {
+    tableId?: string; // auto-generated table id
     tableLabel?: TableLabel; // table label with info tooltip (v3)
     searchOptions?: TableSearchOptions; // table search (v3)
     hasReturnToTopButton?: boolean; // has return to top button
@@ -23,6 +24,7 @@ export interface TableOptions {
     stickyHeaderTopOffset?: number; // offset top (px) for stickyHeader in case scrollElementSelector exist
     sortingType?: string;
     remove?: TableRowRemoveAction;
+    rowActionsMenu?: TableMultipleActions;
     isAllRowsSelectable?: boolean;
     isLoadingOverlayMode?: boolean; // show data main loading as overlay on the whole table (if not set - default as true)
     noDataMessage?: string;

@@ -6,6 +6,9 @@ on:
       branch_name:
         required: true
         type: string
+    secrets:
+      NPM_TOKEN:
+        required: true
 
   workflow_dispatch:
     inputs:
@@ -30,6 +33,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "16"
+
+      - name: Add Github Packages Credentials
+        run: |
+          echo @ironsource-mobile:registry=https://npm.pkg.github.com > .npmrc
+          echo '//npm.pkg.github.com/:_authToken=${{secrets.NPM_TOKEN}}' >> .npmrc
 
       - run: npm ci
 

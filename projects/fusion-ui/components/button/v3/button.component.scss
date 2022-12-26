@@ -2,57 +2,46 @@
 @import '../../../src/style/scss/v3/vars/colors';
 @import '../../../src/style/scss/v3/vars/fonts';
 
-
-// small
-$smallMinWidth: 66px;
-$smallHeight: 24px;
-$smallPadding: 8px 12px;
-
-// medium - default
-$mediumMinWidth: 74px;
-$mediumHeight: 32px;
-$mediumPadding: 8px 16px;
-$mediumPaddingWithIcon: 8px 16px 8px 12px;
-$mediumPaddingWithIconRight: 8px 30px 8px 12px;
-$mediumPaddingWithLoading: 7px 23px 7px;
-
-// large
-$largeMinWidth: 92px;
-$largeHeight: 40px;
-$largePadding: 12px 24px;
-$largePaddingWithIcon: 8px 12px;
-$largePaddingWithIconRight: 7px 40px 8px 16px;
-$largePaddingWithLoading: 10px 30px;
 $buttonBorderRadius: 100px;
 
+// small
+$smallHeight: 24px;
+$smallPadding: 8px 12px;
+$smallIconSize: 16px;
+
+// medium - default
+$mediumHeight: 32px;
+$mediumPadding: 8px 16px;
+$mediumIconSize: 20px;
+
+// large
+$largeHeight: 40px;
+$largePadding: 8px 16px;
+$largeIconSize: 24px;
 
 :host {
     box-sizing: border-box;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
     cursor: pointer;
     border: none;
-
-    @extend %font-bodySmallStrong;
-
-    text-align: center;
     height: $mediumHeight;
     width: fit-content;
     padding: $mediumPadding;
     color: $White;
     background-color: $fu-primary-500;
     border-radius: $buttonBorderRadius;
+    @extend %font-bodySmallStrong;
 
-    &.dark {
-        --fu-button-dark-border-color: #ffff;
-        --fu-button-dark-background-color: transparent;
-        --fu-button-dark-font-color: #ffff;
-        --fu-button-dark-disable-font-color: #8E959D;
-        --fu-button-dark-disable-border-color: #8E959D;
-        --fu-button-dark-border: 1px solid;
-        --fu-button-dark-hover-background-color: rgba(255, 255, 255, 0.15);
+    & > span {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+    }
+
+    @include icon-style('icon', currentColor, $mediumIconSize, false, true) {
+        @include size($mediumIconSize);
     }
 
     &:hover,
@@ -60,81 +49,65 @@ $buttonBorderRadius: 100px;
         background-color: $fu-primary-700;
     }
 
-    &.fu-with-content {
-        & > span {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            & > span {
-                height: 16px;
-                line-height: 16px;
-            }
-        }
-    }
-
+    //region Sizes
     &.small {
         height: $smallHeight;
         padding: $smallPadding;
         @extend %font-bodyXSmallStrong;
+        @include icon-style('icon', currentColor, $smallIconSize, false, true) {
+            @include size($smallIconSize);
+        }
     }
 
-    &.large{
+    &.large {
         height: $largeHeight;
         padding: $largePadding;
-        font-size: 14px;
         @extend %font-bodyMediumStrong;
-        &.fu-with-content {
-            & > span {
-                & > span {
-                    height: 17px;
-                    line-height: 17px;
-                }
-            }
+        @include icon-style('icon', currentColor, $largeIconSize, false, true) {
+            @include size($largeIconSize);
         }
     }
 
-    &.transparent:not(.danger){
-        background-color: transparent;
-        color: $fu-primary-500;
-        border: 1px solid $fu-primary-500;
+    //endregion
 
+    // region icon modify and loading
+    &.fu-icon-right {
+        .icon {
+            order: 2;
+        }
+    }
+
+    &:not(.fu-with-content) {
+        width: 32px;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+        & > span {
+            gap: 0;
+        }
+        &.large{
+            width: 40px;
+        }
+        &.small{
+            width: 24px;
+        }
+    }
+
+    &.fu-with-loading {
+        & > span > span {
+            display: none;
+        }
+        pointer-events: none;
+    }
+    // endregion
+
+    // region Themes
+    &.danger {
+        color: $White;
+        background-color: $fu-negative-500;
         &:hover,
         &:active {
-            color: $White;
-            background-color: $fu-primary-500;
-        }
-
-        &.third{
-            color: $fu-black-500;
-            border-color: $fu-light-500;
-            &:hover,
-            &:active {
-                border-color: transparent;
-                background-color: $fu-light-500;
-            }
-        }
-
-        &.secondary{
-            color: var(--fu-button-dark-font-color, $fu-black-500);
-            border-color: var(--fu-button-dark-border-color, $fu-black-500);
-            background-color: var(--fu-button-dark-background-color, transparent);
-            &:hover,
-            &:active {
-                color: var(--fu-button-dark-font-color, $White);
-                border: var(--fu-button-dark-border,none);
-                background-color: var(--fu-button-dark-hover-background-color, $fu-black-200);
-            }
-        }
-
-        &.disabled {
-            color: $fu-light-600;
-            border: 1px solid $fu-light-600;
-            cursor: initial;
-            pointer-events: none;
-            &:hover,
-            &:active {
-                background-color: transparent;
-            }
+            background-color: $fu-negative-700;
         }
     }
 
@@ -149,354 +122,123 @@ $buttonBorderRadius: 100px;
 
     &.secondary {
         color: $White;
-        background-color: var(--fu-button-dark-background-color, $fu-black-500);
+        background-color: $fu-black-500;
         &:hover,
         &:active {
-            background-color: var(--fu-button-dark-hover-background-color,$fu-black-900);
+            background-color: $fu-black-900;
         }
     }
-
-    &.danger {
-        color: $White;
-        background-color: $fu-negative-500;
-        &:hover,
-        &:active {
-            background-color: $fu-negative-700;
-        }
-    }
+    // endregion
 
     &.disabled {
-        color: var(--fu-button-dark-disable-font-color,$White);
-        border-color: var(--fu-button-dark-disable-border-color, initial);
-        background-color: var(--fu-button-dark-background-color,$fu-light-600);
-        cursor: initial;
+        color: $White;
+        background-color: $fu-light-600;
         pointer-events: none;
     }
 
-    &.fu-with-content {
-        &.fu-iconed {
-            > span > span {
-                padding-left: 4px;
-            }
-
-            position: relative;
-
-            height: $mediumHeight;
-
-            width: fit-content;
-
-            padding: $mediumPaddingWithIcon;
-
-            @include icon-style('icon', currentColor, 16px, false, true){
-                height: 16px;
-            };
-
-            &.fu-icon-right {
-                padding: $mediumPaddingWithIconRight;
-                @include icon-style('icon', currentColor, 16px, false, true){
-                    height: 16px;
-                    position: absolute;
-                    right: 10px;
-                };
-
-                &.small {
-                    > span > span {
-                        padding: 0;
-                    }
-                    @include icon-style('icon', currentColor, 16px, false, true){
-                        right: 10px;
-                        bottom: 4px;
-                    };
-
-                }
-
-                &.large {
-                    padding: $largePaddingWithIconRight;
-                    > span > span {
-                        padding: 0;
-                    }
-                    @include icon-style('icon', currentColor, 17px, false, true){
-                        height: 17px;
-                        right: 14px;
-                        bottom: 11px;
-                    };
-                }
-            }
-
-            &.small {
-                height: $smallHeight;
-                width: fit-content;
-                > span > span {
-                    padding-left: 4px;
-                }
-                @include icon-style('icon', currentColor, 16px, false, true){
-                    height: 16px;
-                    width: 16px;
-                };
-            }
-
-            &.large {
-                padding: $largePaddingWithIcon;
-                height: $largeHeight;
-                width: fit-content;
-                @include icon-style('icon', currentColor, 17px, false, true){
-                    height: 17px;
-                };
-                > span > span {
-                    padding-left: 8px;
-                }
-            }
-        }
-    }
-
-    &.fu-iconed {
-        width: 32px;
-
-        height: 32px;
-
-        padding: 0;
-
-        line-height: 0;
-
-        @include icon-style('icon',currentColor, 16px, false, true) {
-            height: 16px;
-            width: 16px;
-        }
-
-        &.small {
-            width: 24px;
-            height: 24px;
-            @include icon-style('icon', currentColor, 12px, false, true) {
-                height: 12px;
-                width: 12px;
-            }
-        }
-
-        &.large {
-            width: 40px;
-            height: 40px;
-            @include icon-style('icon', currentColor, 20px, false, true) {
-                height: 20px;
-                width: 20px;
-            }
-        }
-
-        &.fu-with-loading {
-            padding: 0;
-            line-height: 0;
-
-            > span {
-                height: 20px;
-                @extend %rotating-icon;
-                > span {
-                    display: none;
-                }
-            }
-
-            @include icon-style('loading-clean', currentColor, 20px, false, true);
-
-            &.large{
-                padding: 0;
-                line-height: 0;
-                > span {
-                    height: 24px;
-                }
-                @include icon-style('loading-clean', currentColor, 24px, false, true);
-            }
-
-            &.small {
-                padding: 0;
-                line-height: 0;
-                > span {
-                    height: 16px;
-                }
-                @include icon-style('loading-clean', currentColor, 16px, false, true);
-            }
-        }
-    }
-
-    &.fu-with-loading {
-        padding: $mediumPaddingWithLoading;
-        color: $White;
-        background-color: $fu-primary-500;
-
-        > span {
-            height: 24px;
-            > span {
-                display: none;
-            }
-        }
-
-        &.fu-with-content {
-            &.fu-iconed {
-                > span {
-                    animation: none;
-                }
-                padding: $mediumPaddingWithLoading;
-                &.transparent:not(.danger) {
-                    background-color: transparent;
-                }
-                &.large {
-                    padding: $largePaddingWithLoading;
-                }
-            }
-        }
-
-        &.transparent:not(.danger) {
-            background-color: transparent;
-            color: $fu-primary-500;
-            border: 1px solid $fu-primary-500;
-        }
-
-        &.third {
-            color: $fu-light-900;
-            background-color: $fu-light-200;
-
-            &.transparent {
-                color: $fu-light-900;
-                border: 1px solid $fu-light-500;
-                background-color: transparent;
-            }
-        }
-
-        &.secondary {
-            color: var(--fu-button-dark-font-color, $White);
-            border: var(--fu-button-dark-border, none);
-            border-color: var(--fu-button-dark-border-color, $fu-black-500);
-            background-color: var(--fu-button-dark-background-color, $fu-black-500);
-            &.transparent {
-                color: var(--fu-button-dark-font-color, $fu-black-500);
-                border-color: var(--fu-button-dark-border-color, $fu-black-500);
-            }
-        }
-
-        &.danger {
-            color: $White;
-            background-color: $fu-negative-500;
-        }
-
-        &.large{
-            padding: $largePaddingWithLoading;
-            > span {
-                height: 32px;
-            }
-        }
-    }
-
-    &.fu-link-button{
+    // region Variants
+    &.fu-link-button {
         border: none;
         letter-spacing: 0.24px;
-        color: $fu-primary-500;
+        color: $fu-primary-300;
         background-color: transparent;
         padding: 0;
         height: 16px;
 
+        &:active,
         &:hover {
-            background-color: transparent;
-        }
-
-        span {
-            display: inline-block;
-        }
-
-        &.third {
-            color: $fu-light-900;
-            span {
-                text-decoration: underline;
-            }
-        }
-
-        &.secondary {
-            color: $fu-black-500;
-            span {
-                text-decoration: underline;
-            }
-        }
-
-        &.disabled {
-            color: $fu-light-800;
-            cursor: initial;
-            pointer-events: none;
-            span {
-                text-decoration: none;
-            }
-        }
-
-        &.fu-with-loading{
-            pointer-events: none;
-            padding: $mediumPadding;
             color: $fu-primary-500;
             background-color: transparent;
-            > span {
-                height: 16px;
-                > span {
-                    display: none;
-                }
-            }
-
         }
-
-        &.fu-iconed {
-            &.fu-with-content {
-                height: inherit;
-                padding: 0 0 0 22px;
-
-                > span > span {
-                    padding: 0;
-                }
-
-                @include icon-style('icon', $fu-primary-500, 16px , false, true) {
-                    height: 16px;
-                    position: absolute;
-                    left: 0;
-                }
-
-                &.third {
-                    color: $fu-light-900;
-                    text-decoration: underline;
-                    @include icon-style('icon', $fu-light-900, 16px , false, true);
-                }
-
-                &.secondary {
-                    color: $fu-black-500;
-                    text-decoration: underline;
-                    @include icon-style('icon', $fu-black-500, 16px , false, true);
-                }
-
-                &.disabled {
-                    color:  $fu-light-800;
-                    pointer-events: none;
-                    @include icon-style('icon',  $fu-light-800, 16px , false, true);
-                }
-
-                &.fu-icon-right {
-                    padding: 0 22px 0 0;
-
-                    > span > span {
-                        padding: 0;
-                    }
-
-                    @include icon-style('icon', $fu-primary-500, 16px, false, true){
-                        left: initial;
-                        right: 0;
-                    };
-
-                    &.third {
-                        @include icon-style('icon', $fu-light-900, 16px , false, true);
-                    }
-
-                    &.secondary {
-                        @include icon-style('icon', $fu-black-500, 16px , false, true);
-                    }
-
-                    &.disabled {
-                        pointer-events: none;
-                        @include icon-style('icon',  $fu-light-800, 16px , false, true);
-                    }
-                }
+        &.secondary{
+            color: $fu-light-600;
+            &:active,
+            &:hover {
+                color: $fu-light-800;
+                background-color: transparent;
+                text-decoration: underline;
             }
+        }
+        &.third{
+            color: $fu-light-700;
+            &:active,
+            &:hover {
+                color: $fu-black-500;
+                background-color: transparent;
+                text-decoration: underline;
+            }
+        }
+        &.danger{
+            color: $fu-negative-500;
+            &:active,
+            &:hover {
+                color: $fu-negative-700;
+                background-color: transparent;
+                text-decoration: underline;
+            }
+        }
+        &.disabled{
+            color: $fu-light-500;
         }
     }
+
+    // region border (Transparent)
+    &.transparent {
+        background-color: transparent;
+        color: $fu-primary-500;
+        border: 1px solid $fu-primary-500;
+
+        &:hover,
+        &:active {
+            color: $White;
+            background-color: $fu-primary-500;
+        }
+        &.danger{
+            color: $fu-negative-500;
+            border-color: $fu-negative-500;
+            &:hover,
+            &:active {
+                color: $White;
+                background-color: $fu-negative-700;
+            }
+        }
+        &.secondary{
+            color: $fu-black-500;
+            border-color: $fu-black-500;
+            &:hover,
+            &:active {
+                color: $White;
+                background-color: $fu-black-500;
+            }
+        }
+        &.third {
+            color: $fu-black-500;
+            border-color: $fu-light-200;
+            &:hover,
+            &:active {
+                background-color: $fu-light-200;
+            }
+        }
+        &.disabled{
+            color: $fu-light-600;
+            border-color: $fu-light-600;
+        }
+    }
+    &.ghost {
+        background-color: transparent;
+        color: $White;
+        border: 1px solid $White;
+        &:hover,
+        &:active {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        &.disabled{
+            color: $fu-light-800;
+            border-color: $fu-light-800;
+        }
+    }
+    // endregion
+    // endregion
 }
 
 :host-context(fusion-modal-footer) {
@@ -504,12 +246,14 @@ $buttonBorderRadius: 100px;
         display: flex;
         align-items: center;
         justify-content: center;
+
         & > span {
             height: 16px;
             line-height: 16px;
         }
     }
-    &.large{
+
+    &.large {
         & > span {
             & > span {
                 height: 17px;

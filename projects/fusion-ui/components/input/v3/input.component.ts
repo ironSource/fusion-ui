@@ -12,10 +12,11 @@ import {of} from 'rxjs';
     providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => InputComponent), multi: true}]
 })
 export class InputComponent extends InputBaseComponent {
+    /** @internal */
     showErrorIcon(): boolean {
         return !isNullOrUndefined(this.config.error);
     }
-
+    /** @internal */
     protected getConfigStyleObservable() {
         return of(CONFIG_INPUT_BY_UI_STYLE['style_v3']);
     }

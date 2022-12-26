@@ -13,6 +13,7 @@ import {isBoolean} from '@ironsource/fusion-ui/utils';
     providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => InputComponent), multi: true}]
 })
 export class InputComponent extends InputBaseComponent implements OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
+    /** @internal */
     showErrorIcon(): boolean {
         return this.config.options.size === 'small' && this.config.error && !isBoolean(this.config.error);
     }

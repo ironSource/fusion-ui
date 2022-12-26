@@ -14,21 +14,42 @@ import {
 import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
 import {BehaviorSubject, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Directive()
 export abstract class ButtonBaseComponent implements OnInit, OnDestroy {
+    /** @internal */
     @HostListener('click', ['$event']) onClick($event: any) {
         this.onclick.emit($event);
     }
+
+    /**
+     * Add button icon (IconData = string | Icon)
+     * @param value
+     */
     @Input() set icon(value: IconData) {
-        this.iconData = value;
-        this.iconName = typeof this.iconData === 'string' ? this.iconData : this.iconData.iconName;
-        this.setIconState(!!this.iconName);
+        if (!isNullOrUndefined(value)) {
+            this.iconData = value;
+            this.iconName = typeof this.iconData === 'string' ? this.iconData : this.iconData.iconName;
+            this.setIconState(!!this.iconName);
+        } else {
+            this.setIconState(false);
+        }
     }
+
+    /**
+     * Set disable state
+     * @param value
+     */
     @Input() set disabled(value: boolean) {
         this.isDisabled = value;
         this.setDisableState(value);
     }
+
+    /**
+     * Set loading state
+     * @param value
+     */
     @Input() set loading(value: boolean) {
         this.isLoading$.next(value);
     }
@@ -37,6 +58,10 @@ export abstract class ButtonBaseComponent implements OnInit, OnDestroy {
         return this.isLoading$.getValue();
     }
 
+    /**
+     * Set button as link
+     * @param value
+     */
     @Input() set link(value: boolean) {
         this.isLink = value;
         this.setLinkButtonState(this.isLink);
@@ -44,12 +69,16 @@ export abstract class ButtonBaseComponent implements OnInit, OnDestroy {
 
     @Output() onclick = new EventEmitter();
 
+    /** @internal */
     projectContent: boolean;
+    /** @internal */
     isLink: boolean;
+    /** @internal */
     iconName: string;
+    /** @internal */
     iconData: IconData;
     private isLoading$ = new BehaviorSubject<boolean>(false);
-    private isDisabled: boolean;
+    protected isDisabled: boolean;
     private onDestroy$ = new Subject<void>();
 
     constructor(injector: Injector, private element: ElementRef, private renderer: Renderer2) {}
@@ -65,7 +94,7 @@ export abstract class ButtonBaseComponent implements OnInit, OnDestroy {
         this.onDestroy$.complete();
     }
 
-    private setHostClass(add: boolean, className: string) {
+    protected setHostClass(add: boolean, className: string) {
         const method = add ? 'addClass' : 'removeClass';
         this.renderer[method](this.element.nativeElement, className);
     }
@@ -75,12 +104,12 @@ export abstract class ButtonBaseComponent implements OnInit, OnDestroy {
         this.renderer[method](this.element.nativeElement, attributeName, add ? attributeValue : null);
     }
 
-    private setDisableState(disabling: boolean) {
+    protected setDisableState(disabling: boolean) {
         this.setHostClass(disabling, 'disabled');
         this.setHostAttribute(disabling, 'disabled', 'true');
     }
 
-    private setLoadingState(loading: boolean) {
+    protected setLoadingState(loading: boolean) {
         this.setHostClass(loading, 'fu-with-loading');
         if (!this.isDisabled) {
             this.setDisableState(loading);

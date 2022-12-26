@@ -18,16 +18,38 @@ import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
     ]
 })
 export class SwitcherComponent implements OnInit {
+    /**
+     * Configuration:
+     * type SwitcherConfiguration = {
+     *     name?: string;
+     *     size?: 'large';
+     * };
+     */
     @Input() set configuration(value: SwitcherConfiguration) {
         if (value) {
             this.switcherConfiguration = {...this.switcherConfiguration, ...value};
         }
     }
+
+    /**
+     * Switcher options: interface SwitcherItem {
+     *     id: number | string;
+     *     title: string;
+     * }
+     */
     @Input() options: SwitcherItem[] = [];
+
+    /**
+     * On selection changed. But better use formControl
+     * @internal
+     */
     @Output() selectedChange: EventEmitter<SwitcherItem> = new EventEmitter();
 
+    /** @internal */
     id: string;
+    /** @internal */
     switcherConfiguration: SwitcherConfiguration = {name: '', size: 'small'};
+    /** @internal */
     selected: SwitcherItem;
 
     constructor(private uniqueService: UniqueIdService, private changeDetectorRef: ChangeDetectorRef) {}
@@ -38,13 +60,14 @@ export class SwitcherComponent implements OnInit {
         this.id = `fuSwitcher${uniq}`;
     }
 
+    /** @internal */
     isSelected(item: SwitcherItem): boolean {
         if (isNullOrUndefined(this.selected) || isNullOrUndefined(this.selected.id)) {
             return false;
         }
         return item.id === this.selected.id;
     }
-
+    /** @internal */
     setSelection(selected: SwitcherItem): void {
         this.propagateTouched();
         if (!isNullOrUndefined(this.selected) && !isNullOrUndefined(this.selected.id) && selected.id === this.selected.id) {
@@ -55,19 +78,23 @@ export class SwitcherComponent implements OnInit {
         this.selectedChange.emit({...selected});
     }
 
+    /** @internal */
     propagateChange = (_: SwitcherItem) => {};
-
+    /** @internal */
     propagateTouched = () => {};
 
+    /** @internal */
     writeValue(value: SwitcherItem): void {
         this.selected = isNullOrUndefined(value) ? {id: '', title: ''} : value;
         this.changeDetectorRef.markForCheck();
     }
 
+    /** @ignore */
     registerOnChange(fn: any): void {
         this.propagateChange = fn;
     }
 
+    /** @ignore */
     registerOnTouched(fn: any): void {
         this.propagateTouched = fn;
     }
