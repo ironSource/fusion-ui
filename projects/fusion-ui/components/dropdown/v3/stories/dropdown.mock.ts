@@ -79,25 +79,11 @@ export const MOK_APPLICATIONS_OPTIONS = [
         image: 'https://lh3.googleusercontent.com/NleNP8mCBQuJSUzc5QFpiniY5biu1JtpV6pgosxyY_-bWGEu15e_vOMPqm3hRmbCdLc=s180'
     },
     {
-        id: 544961,
-        name: 'Mobile Royale MMORPG - Build a Strategy for Battle',
-        displayText: 'Mobile Royale MMORPG - Build a Strategy for Battle',
-        icon: 'android',
-        image: 'https://lh3.googleusercontent.com/VZcAB5sdwGT66yNKUCQ9o4AZ11KzpP1YcNA7_6ZzD8lOoGs-vyyiOx1AR51YGGfLf30=s180'
-    },
-    {
         id: 540129,
         name: 'Most expensive and exclusive calculator',
         displayText: 'Most expensive and exclusive calculator',
         icon: 'android',
         image: 'https://lh3.googleusercontent.com/KYpLlktBqJsjPpgfoIXL_irBfBPJN5DAjsMUTLFJvdrUYDU-xHAQC-SYey7z6XzELw=s180'
-    },
-    {
-        id: 540127,
-        name: 'Ramp Bike Impossible Racing Game',
-        displayText: 'Ramp Bike Impossible Racing Game',
-        icon: 'android',
-        image: 'https://lh3.googleusercontent.com/USRZI9JD5tMqZjtuKPi9tdd0lrWwJkHrse1FPtuv_bk6lxQI6mhARvUZzmD5RiEuBn0=s180'
     }
 ];
 
