@@ -8,13 +8,16 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {DropdownComponent} from '../dropdown.component';
 import {DropdownModule} from '../dropdown.module';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MOCK_OPTIONS} from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
+import {
+    MOCK_ICON_OPTIONS,
+    MOCK_OPTIONS,
+    MOCK_OPTIONS_COUNTRIES,
+    MOK_APPLICATIONS_OPTIONS
+} from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
 import {MultiDropdownModule} from '@ironsource/fusion-ui/components/multi-dropdown';
 import {ErrorMessageModule} from '@ironsource/fusion-ui/components/error-message';
 import {DropdownCustomPlaceholderModule} from '../../../../../fusion-docs/src/app/components/dropdown-custom-placeholder/dropdown-custom-placeholder.module';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
-
-const dropdownFormControl = new FormControl([]);
 
 export default {
     title: 'Components/Dropdown',
@@ -48,7 +51,6 @@ export default {
         }
     },
     args: {
-        formControl: dropdownFormControl,
         options: MOCK_OPTIONS,
         placeholder: 'Select one'
     },
@@ -82,7 +84,7 @@ const DropdownTemplate: Story<DropdownComponent> = (args: DropdownComponent) => 
 // region Default
 export const Default = DropdownTemplate.bind({});
 Default.args = {
-    formControl: dropdownFormControl
+    formControl: new FormControl([])
 };
 Default.parameters = {
     docs: {
@@ -121,7 +123,7 @@ export class FusionStoryWrapperComponent {
 // region Small
 export const Small = DropdownTemplate.bind({});
 Small.args = {
-    formControl: dropdownFormControl,
+    formControl: new FormControl([]),
     sizeSmall: true
 };
 Small.parameters = {
@@ -163,7 +165,7 @@ export class FusionStoryWrapperComponent {
 // region Disabled
 export const Disabled = DropdownTemplate.bind({});
 Disabled.args = {
-    formControl: dropdownFormControl,
+    formControl: new FormControl([]),
     isDisabled: true
 };
 Disabled.parameters = {
@@ -206,7 +208,7 @@ export class FusionStoryWrapperComponent {
 // region Readonly
 export const Readonly = DropdownTemplate.bind({});
 Readonly.args = {
-    formControl: dropdownFormControl,
+    formControl: new FormControl([]),
     readonly: true
 };
 Readonly.parameters = {
@@ -249,7 +251,7 @@ export class FusionStoryWrapperComponent {
 // region Search
 export const Search = DropdownTemplate.bind({});
 Search.args = {
-    formControl: dropdownFormControl,
+    formControl: new FormControl([]),
     search: true
 };
 Search.parameters = {
@@ -292,7 +294,7 @@ export class FusionStoryWrapperComponent {
 // region Error
 export const Error = DropdownTemplate.bind({});
 Error.args = {
-    formControl: dropdownFormControl,
+    formControl: new FormControl([]),
     error: 'Error text.'
 };
 Error.parameters = {
@@ -335,7 +337,7 @@ export class FusionStoryWrapperComponent {
 // region Helper
 export const Helper = DropdownTemplate.bind({});
 Helper.args = {
-    formControl: dropdownFormControl,
+    formControl: new FormControl([]),
     helper: 'Helper text.'
 };
 Helper.parameters = {
@@ -366,6 +368,126 @@ export class FusionStoryWrapperComponent {
     placeholder = 'Select one';
     dropdownFormControl = new FormControl();
     options: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS)};
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region Icon
+export const Icon = DropdownTemplate.bind({});
+Icon.args = {
+    formControl: new FormControl([]),
+    options: MOCK_ICON_OPTIONS
+};
+Icon.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { DropdownModule } from "@ironsource/fusion-ui/components/dropdown";
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 300px; width: 250px; margin: auto">
+  <fusion-dropdown [placeholder]="placeholder"
+     [formControl]="dropdownFormControl"
+     [options]="options"
+     ></fusion-dropdown>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, DropdownModule],
+})
+export class FusionStoryWrapperComponent {
+    placeholder = 'Select one';
+    dropdownFormControl = new FormControl();
+    options: DropdownOption[] = ${JSON.stringify(MOCK_ICON_OPTIONS)};
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region Flag
+export const Flag = DropdownTemplate.bind({});
+Flag.args = {
+    formControl: new FormControl([]),
+    options: MOCK_OPTIONS_COUNTRIES
+};
+Flag.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { DropdownModule } from "@ironsource/fusion-ui/components/dropdown";
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 300px; width: 250px; margin: auto">
+  <fusion-dropdown [placeholder]="placeholder"
+     [formControl]="dropdownFormControl"
+     [options]="options"
+     ></fusion-dropdown>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, DropdownModule],
+})
+export class FusionStoryWrapperComponent {
+    placeholder = 'Select one';
+    dropdownFormControl = new FormControl();
+    options: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS_COUNTRIES)};
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region Application
+export const Application = DropdownTemplate.bind({});
+Application.args = {
+    formControl: new FormControl([]),
+    options: MOK_APPLICATIONS_OPTIONS.splice(4)
+};
+Application.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { DropdownModule } from "@ironsource/fusion-ui/components/dropdown";
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 300px; width: 250px; margin: auto">
+  <fusion-dropdown [placeholder]="placeholder"
+     [formControl]="dropdownFormControl"
+     [options]="options"
+     ></fusion-dropdown>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, DropdownModule],
+})
+export class FusionStoryWrapperComponent {
+    placeholder = 'Select one';
+    dropdownFormControl = new FormControl();
+    options: DropdownOption[] = ${JSON.stringify(MOK_APPLICATIONS_OPTIONS.splice(4))};
 }
 `,
             format: true,
