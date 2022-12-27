@@ -13,6 +13,7 @@ import {
     MOCK_OPTIONS,
     MOCK_OPTIONS_COUNTRIES,
     MOCK_OPTIONS_DISABLED,
+    MOCK_OPTIONS_GROUPED,
     MOK_APPLICATIONS_OPTIONS
 } from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
@@ -613,6 +614,62 @@ export class FusionStoryWrapperComponent {
     placeholder = 'Select one';
     dropdownFormControl = new FormControl();
     options: DropdownOption[] = ${JSON.stringify([...MOK_APPLICATIONS_OPTIONS])}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region GruppedOptions
+const DropdownGruppedTemplate: Story<DropdownComponent> = (args: DropdownComponent) => ({
+    props: {...args},
+    template: `<div style="height: 300px; width: 250px; margin: auto">
+<fusion-dropdown
+     [placeholder]="placeholder"
+     [formControl]="formControl"
+     [optionsGroups]="optionsGroups"
+     ></fusion-dropdown>
+</div>`
+});
+export const GruppedOptions = DropdownGruppedTemplate.bind({});
+GruppedOptions.args = {
+    formControl: new FormControl([]),
+    optionsGroups: MOCK_OPTIONS_GROUPED,
+    options: undefined
+};
+GruppedOptions.argTypes = {
+    options: {
+        control: false
+    }
+};
+GruppedOptions.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { DropdownModule } from "@ironsource/fusion-ui/components/dropdown";
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 300px; width: 250px; margin: auto">
+  <fusion-dropdown [placeholder]="placeholder"
+     [formControl]="dropdownFormControl"
+     [optionsGroups]="optionsGroups"
+     ></fusion-dropdown>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, DropdownModule],
+})
+export class FusionStoryWrapperComponent {
+    placeholder = 'Select one';
+    dropdownFormControl = new FormControl();
+    optionsGroups: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS_GROUPED)};
+}
 `,
             format: true,
             type: 'code'
