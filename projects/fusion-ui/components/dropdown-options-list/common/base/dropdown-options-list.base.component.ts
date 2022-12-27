@@ -19,9 +19,13 @@ export abstract class DropdownOptionsListBaseComponent {
 
     isSelected(option): boolean {
         return (
-            this.selected &&
+            Array.isArray(this.selected) &&
             this.selected.length > 0 &&
             this.selected.some(item => {
+                if (isNullOrUndefined(item)) {
+                    console.error('fusion-ui: item in selected array undefined or null');
+                    return false;
+                }
                 if (!isNullOrUndefined(option.id) && !isNullOrUndefined(item.id)) {
                     return item.id === option.id;
                 } else {
