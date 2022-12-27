@@ -492,11 +492,59 @@ export class FusionStoryWrapperComponent {
 };
 // endregion
 
+// region WithImageAndIcon
+export const WithImageAndIcon = DropdownTemplate.bind({});
+WithImageAndIcon.args = {
+    formControl: new FormControl([]),
+    options: [
+        ...MOK_APPLICATIONS_OPTIONS.slice(4).map(item => {
+            return {id: item.id, displayText: item.displayText, image: item.image, icon: 'frame'};
+        })
+    ]
+};
+WithImageAndIcon.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { DropdownModule } from "@ironsource/fusion-ui/components/dropdown";
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 300px; width: 250px; margin: auto">
+  <fusion-dropdown [placeholder]="placeholder"
+     [formControl]="dropdownFormControl"
+     [options]="options"
+     ></fusion-dropdown>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, DropdownModule],
+})
+export class FusionStoryWrapperComponent {
+    placeholder = 'Select one';
+    dropdownFormControl = new FormControl();
+    options: DropdownOption[] = ${JSON.stringify([...MOK_APPLICATIONS_OPTIONS].slice(4))};
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
 // region WithImage
 export const WithImage = DropdownTemplate.bind({});
 WithImage.args = {
     formControl: new FormControl([]),
-    options: [...MOK_APPLICATIONS_OPTIONS.slice(4)]
+    options: [
+        ...MOK_APPLICATIONS_OPTIONS.slice(4).map(item => {
+            return {id: item.id, displayText: item.displayText, image: item.image};
+        })
+    ]
 };
 WithImage.parameters = {
     docs: {
