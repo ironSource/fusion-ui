@@ -8,7 +8,7 @@ describe('DropdownOptionsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DropdownOptionsComponent ]
+      imports: [ DropdownOptionsComponent ]
     })
     .compileComponents();
 
