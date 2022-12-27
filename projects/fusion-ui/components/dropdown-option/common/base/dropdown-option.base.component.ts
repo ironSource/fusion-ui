@@ -13,7 +13,9 @@ export abstract class DropdownOptionBaseComponent implements OnInit {
     @Input() set isMultiRawDisplay(value: boolean) {
         this.isMultiRawDisplay$.next(value);
     }
-    @Input() optionCloseIcon: boolean;
+    @Input() set optionCloseIcon(value: boolean) {
+        this.showCloseIcon$.next(value);
+    }
 
     @HostBinding('class.multi-raw-display') get shouldDisplayMultiRaw(): boolean {
         return this.isMultiRawDisplay$.getValue();
@@ -26,6 +28,7 @@ export abstract class DropdownOptionBaseComponent implements OnInit {
     }
 
     isMultiRawDisplay$ = new BehaviorSubject<boolean>(false);
+    showCloseIcon$ = new BehaviorSubject<boolean>(false);
     settings: any;
     optionToStringFunc = this.dropdownService.optionToString.bind(this.dropdownService);
 
