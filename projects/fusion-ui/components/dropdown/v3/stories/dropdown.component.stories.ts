@@ -75,6 +75,7 @@ const DropdownTemplate: Story<DropdownComponent> = (args: DropdownComponent) => 
      [isDisabled]="isDisabled"
      [error]="error"
      [helper]="helper"
+     [optionCloseIcon]="optionCloseIcon"
      ></fusion-dropdown>
 </div>`
 });
@@ -661,6 +662,46 @@ export class FusionStoryWrapperComponent {
     placeholder = 'Select one';
     dropdownFormControl = new FormControl();
     optionsGroups: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS_GROUPED)};
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region WithClearButton
+export const WithClearButton = DropdownTemplate.bind({});
+WithClearButton.args = {
+    formControl: new FormControl([]),
+    optionCloseIcon: true
+};
+WithClearButton.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { DropdownModule } from "@ironsource/fusion-ui/components/dropdown";
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 300px; width: 250px; margin: auto">
+  <fusion-dropdown [placeholder]="placeholder"
+     [formControl]="dropdownFormControl"
+     [options]="options"
+     ></fusion-dropdown>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, DropdownModule],
+})
+export class FusionStoryWrapperComponent {
+    placeholder = 'Select one';
+    dropdownFormControl = new FormControl();
+    options: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS)};
 }
 `,
             format: true,
