@@ -164,8 +164,8 @@ $itemWidth: 252px;
             }
             .fu-multiselect-list-loader{
                 position: absolute;
+                top: 0;
                 display: flex;
-                margin-top: 20px;
                 .right-loading{
                     margin-left: 20px;
                 }
