@@ -11,6 +11,7 @@
     justify-content: flex-start;
     align-items: center;
     gap: 4px;
+    @extend %font-bodySmall;
 
     @include icon-style('fu-icon-loading', $fu-light-700, 20px, false, true){
         @include size(20px);
