@@ -14,6 +14,8 @@ import {
     MOCK_OPTIONS_COUNTRIES,
     MOCK_OPTIONS_DISABLED,
     MOCK_OPTIONS_GROUPED,
+    MOCK_OPTIONS_IMAGE,
+    MOCK_OPTIONS_IMAGE_ICONS,
     MOK_APPLICATIONS_OPTIONS
 } from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
@@ -497,11 +499,7 @@ export class FusionStoryWrapperComponent {
 export const WithImageAndIcon = DropdownTemplate.bind({});
 WithImageAndIcon.args = {
     formControl: new FormControl([]),
-    options: [
-        ...MOK_APPLICATIONS_OPTIONS.slice(4).map(item => {
-            return {id: item.id, displayText: item.displayText, image: item.image, icon: 'frame'};
-        })
-    ]
+    options: MOCK_OPTIONS_IMAGE_ICONS
 };
 WithImageAndIcon.parameters = {
     docs: {
@@ -541,11 +539,7 @@ export class FusionStoryWrapperComponent {
 export const WithImage = DropdownTemplate.bind({});
 WithImage.args = {
     formControl: new FormControl([]),
-    options: [
-        ...MOK_APPLICATIONS_OPTIONS.slice(4).map(item => {
-            return {id: item.id, displayText: item.displayText, image: item.image};
-        })
-    ]
+    options: MOCK_OPTIONS_IMAGE
 };
 WithImage.parameters = {
     docs: {

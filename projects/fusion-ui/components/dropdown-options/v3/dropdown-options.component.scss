@@ -1,0 +1,96 @@
+@import '../../../src/style/scss/v3/vars/vars';
+@import '../../../src/style/scss/v3/vars/border';
+@import '../../../src/style/scss/v3/mixins/mixins';
+
+$minWidth: 85px;
+$borderRadius: 8px;
+
+$optionHeight: 32px;
+$optionsToShow: 8;
+$optionGroupHeight: 40px;
+
+$optionTwoLines: 48px;
+
+:host{
+    @extend %reset;
+    @extend %list-reset;
+    z-index: getZIndexLayerOffset(application, 1);
+    position: absolute;
+    //top: calc(100% + 4px);
+    width: 100%;
+    min-width: var(--dropdown-overlay-min-width, 180px);
+    max-height: calc(#{$optionHeight} * #{$optionsToShow} + 8px); // 8 options + padding 2*3 and border 2*1
+    padding: 4px;
+    display: block;
+    //visibility: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: $White;
+    box-shadow: 0px 8px 24px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4);
+    border-radius: $borderRadius;
+
+
+    //@extend %location;
+    .options-holder {
+        padding: 4px;
+        overflow: hidden;
+        @extend %customScroll;
+    }
+
+/*    &.dd-disabled {
+        display: none;
+    }
+    // use search or auto-complete input
+    &.dd-confirm {
+        max-height: calc(#{$optionHeight} * #{($optionsToShow + 1)} + 12px); //  8 options + search + padding 2*3 and border 2*1
+    }
+
+    &.fu-has-search{
+        max-height: calc(#{$optionHeight} * #{$optionsToShow} + 40px);
+    }
+
+    &.fu-has-title{
+        max-height: calc(#{$optionHeight} * #{$optionsToShow} + 48px);
+        &.fu-has-search{
+            max-height: calc(#{$optionHeight} * #{$optionsToShow} + 48px + 40px);
+        }
+    }
+
+    .fu-option-title{
+        height: 48px;
+        @extend %font-bodyMediumStrong;
+        color: $fu-black-500;
+        padding: 12px;
+        border-bottom: solid 1px $fu-light-400;
+        margin: 0 -4px;
+    }
+    .fu-search-holder{
+        height: 40px;
+        padding: 9px 12px 12px;
+        border-bottom: solid 1px $fu-light-400;
+        margin: 0 -4px;
+    }
+
+    .options-holder {
+        // no-result panel (used with search or auto-complete input)
+        .options .no-results {
+            @extend %font-bodySmall;
+            background: none;
+            cursor: default;
+            padding: 8px 10px;
+            height: 32px;
+            color: $fu-light-800;
+        }
+    }
+
+    &.dd-scroll {
+        .options-holder {
+            overflow-y: auto;
+            padding-bottom: 0;
+            height: 100%;
+            max-height: calc(
+                #{$optionHeight} * (#{$optionsToShow} - 1) + (#{$optionHeight} / 2) + 5px
+            ); // 7.5 options + padding 1*3 and border 2*1
+        }
+    }*/
+}

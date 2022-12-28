@@ -1,1 +1,18 @@
-<p>dropdown-options works!</p>
+<div class="options-holder" (scroll)="scroll.emit($event)">
+    <ul class="options">
+        <!--options-->
+        <fusion-dropdown-options-list
+            [displayedOptions]="displayedOptions"
+            [isMultiRawDisplay]="isMultiRawDisplay"
+            [mappingOptions]="mappingOptions"
+            [selected]="selected"
+            [optionCloseIcon]="optionCloseIcon"
+            (closeIconClicked)="closeIconClicked.emit($event)"
+            (changeSelected)="changeSelected.emit($event)"
+        ></fusion-dropdown-options-list>
+        <!--loader holder-->
+        <!--<li [fusionDropdownLoader]="(autoComplete || search) && loading"></li>-->
+        <!--no-result holder-->
+        <!--<li class="no-results" *ngIf="!filteredOptions?.length && !loading">No results found</li>-->
+    </ul>
+</div>

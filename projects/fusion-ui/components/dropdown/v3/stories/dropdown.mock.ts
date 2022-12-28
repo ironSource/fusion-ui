@@ -1,26 +1,26 @@
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
 
 export const MOCK_OPTIONS: DropdownOption[] = [
-    {id: 1, title: 'Mario Speedwagon'},
-    {id: 2, title: 'Petey Cruiser'},
-    {id: 3, title: 'Anna Sthesia'},
-    {id: 4, title: 'Paul Molive'},
-    {id: 5, title: 'Anna Mull'},
-    {id: 6, title: 'Gail Forcewind'},
-    {id: 7, title: 'Paige Turner'},
-    {id: 8, title: 'Bob Frapples'},
-    {id: 9, title: 'Walter Melon'},
-    {id: 10, title: 'Nick R. Bocker'},
-    {id: 11, title: 'Barb Ackue'},
-    {id: 12, title: 'Buck Kinnear'},
-    {id: 13, title: 'Greta Life'},
-    {id: 14, title: 'Ira Membrit'},
-    {id: 15, title: 'Shonda Leer'},
-    {id: 16, title: 'Brock Lee'},
-    {id: 17, title: 'Maya Didas'},
-    {id: 18, title: 'Rick O`Shea'},
-    {id: 19, title: 'Pete Sariya'},
-    {id: 20, title: 'Monty Carlo'}
+    {id: 1, displayText: 'Mario Speedwagon'},
+    {id: 2, displayText: 'Petey Cruiser'},
+    {id: 3, displayText: 'Anna Sthesia'},
+    {id: 4, displayText: 'Paul Molive'},
+    {id: 5, displayText: 'Anna Mull'},
+    {id: 6, displayText: 'Gail Forcewind'},
+    {id: 7, displayText: 'Paige Turner'},
+    {id: 8, displayText: 'Bob Frapples'},
+    {id: 9, displayText: 'Walter Melon'},
+    {id: 10, displayText: 'Nick R. Bocker'},
+    {id: 11, displayText: 'Barb Ackue'},
+    {id: 12, displayText: 'Buck Kinnear'},
+    {id: 13, displayText: 'Greta Life'},
+    {id: 14, displayText: 'Ira Membrit'},
+    {id: 15, displayText: 'Shonda Leer'},
+    {id: 16, displayText: 'Brock Lee'},
+    {id: 17, displayText: 'Maya Didas'},
+    {id: 18, displayText: 'Rick O`Shea'},
+    {id: 19, displayText: 'Pete Sariya'},
+    {id: 20, displayText: 'Monty Carlo'}
 ];
 
 export const MOCK_OPTIONS_DISABLED = MOCK_OPTIONS.map((item, idx) => {
@@ -55,33 +55,45 @@ export const MOK_APPLICATIONS_OPTIONS = [
         id: 545663,
         displayText: 'Kingdom Rush Frontiers',
         icon: 'android',
-        image: 'https://lh3.googleusercontent.com/lqbNkK3Tgw8npbbWNssKVjiI7ZH1-C-8im-NyixTepAGio_xtdnr9ldT8GxBTaDmhwp0=s180'
+        image: 'https://picsum.photos/id/40/50'
     },
     {
         id: 545567,
         displayText: 'Ablo - Make friends worldwide',
         icon: 'ios',
-        image: 'https://lh3.googleusercontent.com/qw50MiIrtOz_DeXNvlIQqFpIk8Den4j5z7bW23eTooSeqFYj_2LXj8HWDzSYrxR0iic=s180'
+        image: 'https://picsum.photos/id/40/50'
     },
     {
         id: 545559,
         displayText: 'NBA LIVE Mobile Basketball',
         icon: 'android',
-        image: 'https://lh3.googleusercontent.com/KW3SuJ-4xWj8xckPOw7llVxvBrnM3NlU6WYif_bEMg44gRCooFgjrYxaAX0lLfvocQ=s180'
+        image: 'https://picsum.photos/id/40/50'
     },
     {
         id: 545429,
         displayText: 'World War Doh: Real Time PvP',
         icon: 'ios',
-        image: 'https://lh3.googleusercontent.com/NleNP8mCBQuJSUzc5QFpiniY5biu1JtpV6pgosxyY_-bWGEu15e_vOMPqm3hRmbCdLc=s180'
+        image: 'https://picsum.photos/id/40/50'
     },
     {
         id: 540129,
         displayText: 'Most expensive and exclusive calculator',
         icon: 'android',
-        image: 'https://lh3.googleusercontent.com/KYpLlktBqJsjPpgfoIXL_irBfBPJN5DAjsMUTLFJvdrUYDU-xHAQC-SYey7z6XzELw=s180'
+        image: 'https://picsum.photos/id/40/50'
     }
 ];
+
+export const MOCK_OPTIONS_IMAGE = MOK_APPLICATIONS_OPTIONS.slice(4).map(item => {
+    return {id: item.id, displayText: item.displayText, image: item.image};
+});
+
+export const MOCK_OPTIONS_IMAGE_ICONS = MOK_APPLICATIONS_OPTIONS.slice(4).map(item => {
+    return {id: item.id, displayText: item.displayText, image: item.image, icon: 'frame'};
+});
+
+export const MOCK_OPTIONS_TWO_LINES = [...MOK_APPLICATIONS_OPTIONS].slice(0, 3).map(item => {
+    return {id: item.id, displayText: item.displayText, subText: item.subText};
+});
 
 export const MOCK_OPTIONS_COUNTRIES = [
     {id: 'AD', flag: 'AD', title: 'Andorra', displayText: 'Andorra'},
