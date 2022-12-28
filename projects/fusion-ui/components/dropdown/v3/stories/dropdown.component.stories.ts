@@ -52,10 +52,18 @@ export default {
     args: {
         options: MOCK_OPTIONS,
         placeholder: 'Select one',
-        optionCloseIcon: false
+        optionCloseIcon: false,
+        loading: false,
+        autoComplete: false
     },
     argTypes: {
         formControl: {
+            control: false
+        },
+        autoComplete: {
+            control: false
+        },
+        loading: {
             control: false
         },
         placeholder: {
@@ -78,6 +86,8 @@ const DropdownTemplate: Story<DropdownComponent> = (args: DropdownComponent) => 
      [error]="error"
      [helper]="helper"
      [optionCloseIcon]="optionCloseIcon"
+     [loading]="loading"
+     [autoComplete]="autoComplete"
      ></fusion-dropdown>
 </div>`
 });
@@ -114,6 +124,52 @@ export class FusionStoryWrapperComponent {
     options: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS)};
 }
 `,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region Loading
+export const Loading = DropdownTemplate.bind({});
+Loading.args = {
+    formControl: new FormControl([]),
+    loading: true,
+    autoComplete: true,
+    options: []
+};
+Loading.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { DropdownModule } from "@ironsource/fusion-ui/components/dropdown";
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 300px; width: 250px; margin: auto">
+  <fusion-dropdown [placeholder]="placeholder"
+     [formControl]="dropdownFormControl"
+     [options]="options"
+     [loading]="loading"
+     [autoComplete]="autoComplete"
+     ></fusion-dropdown>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, DropdownModule],
+})
+export class FusionStoryWrapperComponent {
+    placeholder = 'Select one';
+    dropdownFormControl = new FormControl();
+    options: DropdownOption[] = [];
+    loading = true;
+    autoComplete = true;
+}
+            `,
             format: true,
             type: 'code'
         }
