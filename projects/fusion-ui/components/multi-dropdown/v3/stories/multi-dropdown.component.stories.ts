@@ -8,8 +8,15 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MultiDropdownComponent, MultiDropdownModule} from '@ironsource/fusion-ui/components/multi-dropdown';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
-import {MOCK_OPTIONS} from './multi-dropdown.mock';
-import {MOK_APPLICATIONS_OPTIONS} from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
+import {
+    MOCK_ICON_OPTIONS,
+    MOCK_OPTIONS,
+    MOCK_OPTIONS_COUNTRIES,
+    MOCK_OPTIONS_IMAGE_ICONS,
+    MOCK_OPTIONS_IMAGE_ICONS_SUBTITLE,
+    MOCK_OPTIONS_TWO_LINES,
+    MOK_APPLICATIONS_OPTIONS
+} from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
 
 export default {
     title: 'Components/Dropdown/Multiselect',
@@ -62,6 +69,7 @@ const MultiDropdownTemplate: Story<MultiDropdownComponent> = (args: MultiDropdow
         [formControl]="formControl"
         [options]="options"
         [confirm]="confirm"
+        [search]="search"
         [selectAllLabel]="selectAllLabel"
     ></fusion-multi-dropdown>
 </div>`
@@ -89,7 +97,6 @@ import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option
         [placeholder]="placeholder"
         [formControl]="dropdownFormControl"
         [options]="options"
-        [confirm]="confirm"
     ></fusion-multi-dropdown>
 </div>\`,
   standalone: true,
@@ -99,7 +106,6 @@ export class FusionStoryWrapperComponent {
     placeholder = 'Select items';
     dropdownFormControl = new FormControl();
     options: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS)};
-    confirm: false
 }
 `,
             format: true,
@@ -194,15 +200,13 @@ export class FusionStoryWrapperComponent {
 };
 // endregion
 
-// region WithSubtitle
-export const WithSubtitle = MultiDropdownTemplate.bind({});
-WithSubtitle.args = {
+// region TwoLines
+export const TwoLines = MultiDropdownTemplate.bind({});
+TwoLines.args = {
     formControl: new FormControl([]),
-    options: [...MOK_APPLICATIONS_OPTIONS].slice(0, 3).map(item => {
-        return {id: item.id, displayText: item.displayText, subText: item.subText};
-    })
+    options: MOCK_OPTIONS_TWO_LINES
 };
-WithSubtitle.parameters = {
+TwoLines.parameters = {
     docs: {
         source: {
             language: 'typescript',
@@ -228,14 +232,171 @@ import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option
 export class FusionStoryWrapperComponent {
     placeholder = 'Select items';
     dropdownFormControl = new FormControl();
-    options: DropdownOption[] = ${JSON.stringify(
-        [...MOK_APPLICATIONS_OPTIONS].slice(0, 3).map(item => {
-            return {id: item.id, displayText: item.displayText, subText: item.subText};
-        })
-    )};
+    options: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS_TWO_LINES)};
     confirm: false
 }
 `,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region WithIcon
+export const WithIcon = MultiDropdownTemplate.bind({});
+WithIcon.args = {
+    formControl: new FormControl([]),
+    options: [...MOCK_ICON_OPTIONS]
+};
+WithIcon.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+            import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { MultiDropdownModule } from "@ironsource/fusion-ui/components/multi-dropdown";
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 300px; width: 250px; margin: auto">
+    <fusion-multi-dropdown
+        [placeholder]="placeholder"
+        [formControl]="dropdownFormControl"
+        [options]="options"
+    ></fusion-multi-dropdown>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, MultiDropdownModule],
+})
+export class FusionStoryWrapperComponent {
+    placeholder = 'Select items';
+    dropdownFormControl = new FormControl();
+    options: DropdownOption[] = ${JSON.stringify(MOCK_ICON_OPTIONS)};
+}`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region WithFlag
+export const WithFlag = MultiDropdownTemplate.bind({});
+WithFlag.args = {
+    formControl: new FormControl([]),
+    options: [...MOCK_OPTIONS_COUNTRIES]
+};
+WithFlag.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { MultiDropdownModule } from "@ironsource/fusion-ui/components/multi-dropdown";
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 300px; width: 250px; margin: auto">
+    <fusion-multi-dropdown
+        [placeholder]="placeholder"
+        [formControl]="dropdownFormControl"
+        [options]="options"
+    ></fusion-multi-dropdown>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, MultiDropdownModule],
+})
+export class FusionStoryWrapperComponent {
+    placeholder = 'Select items';
+    dropdownFormControl = new FormControl();
+    options: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS_COUNTRIES)};
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region WithImageAndIcon
+export const WithImageAndIcon = MultiDropdownTemplate.bind({});
+WithImageAndIcon.args = {
+    formControl: new FormControl([]),
+    options: MOCK_OPTIONS_IMAGE_ICONS
+};
+WithImageAndIcon.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { MultiDropdownModule } from "@ironsource/fusion-ui/components/multi-dropdown";
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 300px; width: 250px; margin: auto">
+    <fusion-multi-dropdown
+        [placeholder]="placeholder"
+        [formControl]="dropdownFormControl"
+        [options]="options"
+    ></fusion-multi-dropdown>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, MultiDropdownModule],
+})
+export class FusionStoryWrapperComponent {
+    placeholder = 'Select items';
+    dropdownFormControl = new FormControl();
+    options: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS_IMAGE_ICONS)};
+}`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region Search
+export const Search = MultiDropdownTemplate.bind({});
+Search.args = {
+    formControl: new FormControl([]),
+    search: true
+};
+Search.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { MultiDropdownModule } from "@ironsource/fusion-ui/components/multi-dropdown";
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 300px; width: 250px; margin: auto">
+    <fusion-multi-dropdown
+        [placeholder]="placeholder"
+        [formControl]="dropdownFormControl"
+        [options]="options"
+        [search]="search"
+    ></fusion-multi-dropdown>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, MultiDropdownModule],
+})
+export class FusionStoryWrapperComponent {
+    placeholder = 'Select items';
+    dropdownFormControl = new FormControl();
+    options: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS)};
+    search: true
+}`,
             format: true,
             type: 'code'
         }

@@ -16,6 +16,7 @@ import {
     MOCK_OPTIONS_GROUPED,
     MOCK_OPTIONS_IMAGE,
     MOCK_OPTIONS_IMAGE_ICONS,
+    MOCK_OPTIONS_IMAGE_ICONS_SUBTITLE,
     MOCK_OPTIONS_TWO_LINES
 } from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
@@ -50,7 +51,8 @@ export default {
     },
     args: {
         options: MOCK_OPTIONS,
-        placeholder: 'Select one'
+        placeholder: 'Select one',
+        optionCloseIcon: false
     },
     argTypes: {
         formControl: {
@@ -702,6 +704,47 @@ export class FusionStoryWrapperComponent {
     placeholder = 'Select one';
     dropdownFormControl = new FormControl();
     options: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS)};
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region WithAll
+export const WithAll = DropdownTemplate.bind({});
+WithAll.args = {
+    formControl: new FormControl([]),
+    options: MOCK_OPTIONS_IMAGE_ICONS_SUBTITLE,
+    optionCloseIcon: true
+};
+WithAll.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { DropdownModule } from "@ironsource/fusion-ui/components/dropdown";
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 300px; width: 250px; margin: auto">
+  <fusion-dropdown [placeholder]="placeholder"
+     [formControl]="dropdownFormControl"
+     [options]="options"
+     ></fusion-dropdown>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, DropdownModule],
+})
+export class FusionStoryWrapperComponent {
+    placeholder = 'Select one';
+    dropdownFormControl = new FormControl();
+    options: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS_IMAGE_ICONS_SUBTITLE)};
 }
 `,
             format: true,

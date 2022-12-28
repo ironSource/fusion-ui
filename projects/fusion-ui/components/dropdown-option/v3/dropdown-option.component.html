@@ -9,7 +9,7 @@
             <label>{{ option.subText?.text || option.subText }}</label>
         </div>
     </div>
-    <fusion-icon *ngIf="optionCloseIcon" [name]="closeIcon" class="fu-option-action-icon"></fusion-icon>
+    <fusion-icon *ngIf="shownCloseIcon$ | async" [name]="closeIcon" class="fu-option-action-icon"></fusion-icon>
 </ng-container>
 
 <ng-container *ngIf="hasChildren">

@@ -90,6 +90,9 @@ export const MOCK_OPTIONS_IMAGE = MOK_APPLICATIONS_OPTIONS.slice(4).map(item => 
 export const MOCK_OPTIONS_IMAGE_ICONS = MOK_APPLICATIONS_OPTIONS.slice(4).map(item => {
     return {id: item.id, displayText: item.displayText, image: item.image, icon: 'frame'};
 });
+export const MOCK_OPTIONS_IMAGE_ICONS_SUBTITLE = MOK_APPLICATIONS_OPTIONS.slice(4).map(item => {
+    return {id: item.id, displayText: 'Two-line item', image: item.image, icon: 'frame', subText: 'The future is here'};
+});
 
 export const MOCK_OPTIONS_TWO_LINES = [...MOK_APPLICATIONS_OPTIONS].slice(0, 3).map(item => {
     return {id: item.id, displayText: item.displayText, subText: item.subText};
