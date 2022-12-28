@@ -14,7 +14,9 @@ import {
     MOCK_OPTIONS_COUNTRIES,
     MOCK_OPTIONS_DISABLED,
     MOCK_OPTIONS_GROUPED,
-    MOK_APPLICATIONS_OPTIONS
+    MOCK_OPTIONS_IMAGE,
+    MOCK_OPTIONS_IMAGE_ICONS,
+    MOCK_OPTIONS_TWO_LINES
 } from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 
@@ -497,11 +499,7 @@ export class FusionStoryWrapperComponent {
 export const WithImageAndIcon = DropdownTemplate.bind({});
 WithImageAndIcon.args = {
     formControl: new FormControl([]),
-    options: [
-        ...MOK_APPLICATIONS_OPTIONS.slice(4).map(item => {
-            return {id: item.id, displayText: item.displayText, image: item.image, icon: 'frame'};
-        })
-    ]
+    options: MOCK_OPTIONS_IMAGE_ICONS
 };
 WithImageAndIcon.parameters = {
     docs: {
@@ -527,7 +525,7 @@ import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option
 export class FusionStoryWrapperComponent {
     placeholder = 'Select one';
     dropdownFormControl = new FormControl();
-    options: DropdownOption[] = ${JSON.stringify([...MOK_APPLICATIONS_OPTIONS].slice(4))};
+    options: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS_IMAGE_ICONS)};
 }
 `,
             format: true,
@@ -541,11 +539,7 @@ export class FusionStoryWrapperComponent {
 export const WithImage = DropdownTemplate.bind({});
 WithImage.args = {
     formControl: new FormControl([]),
-    options: [
-        ...MOK_APPLICATIONS_OPTIONS.slice(4).map(item => {
-            return {id: item.id, displayText: item.displayText, image: item.image};
-        })
-    ]
+    options: MOCK_OPTIONS_IMAGE
 };
 WithImage.parameters = {
     docs: {
@@ -571,7 +565,7 @@ import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option
 export class FusionStoryWrapperComponent {
     placeholder = 'Select one';
     dropdownFormControl = new FormControl();
-    options: DropdownOption[] = ${JSON.stringify([...MOK_APPLICATIONS_OPTIONS].slice(4))};
+    options: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS_IMAGE)};
 }
 `,
             format: true,
@@ -585,9 +579,7 @@ export class FusionStoryWrapperComponent {
 export const TwoLines = DropdownTemplate.bind({});
 TwoLines.args = {
     formControl: new FormControl([]),
-    options: [...MOK_APPLICATIONS_OPTIONS].slice(0, 3).map(item => {
-        return {id: item.id, displayText: item.displayText, subText: item.subText};
-    })
+    options: MOCK_OPTIONS_TWO_LINES
 };
 TwoLines.parameters = {
     docs: {
@@ -613,7 +605,7 @@ import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option
 export class FusionStoryWrapperComponent {
     placeholder = 'Select one';
     dropdownFormControl = new FormControl();
-    options: DropdownOption[] = ${JSON.stringify([...MOK_APPLICATIONS_OPTIONS])}
+    options: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS_TWO_LINES)}
 `,
             format: true,
             type: 'code'
