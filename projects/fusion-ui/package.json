@@ -49,7 +49,8 @@
         "./components/table/v2",
         "./components/table",
         "./components/menu-drop",
-        "./pipes/string"
+        "./pipes/string",
+        "./components/api-base/api-base.ts"
     ],
     "exports": {
         "./react/core": {
