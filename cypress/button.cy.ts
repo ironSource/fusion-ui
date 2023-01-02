@@ -1,8 +1,8 @@
-import {ButtonComponent} from '../projects/fusion-ui/components/button/v3/button.component';
+import {ButtonComponent} from '@ironsource/fusion-ui/components/button/v3';
 
 it('uses custom text for the button label', () => {
-    cy.mount('<app-button>Click me!</app-button>', {
+    cy.mount('<fusion-button>Click me!</fusion-button>', {
         declarations: [ButtonComponent]
     });
-    cy.get('button').should('contains.text', 'Click me!');
+    cy.get('span').should('contains.text', 'Click me!');
 });
