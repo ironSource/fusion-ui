@@ -9,7 +9,12 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 import {DropdownDualMultiSelectComponent} from '../dropdown-dual-multi-select.component';
 import {DropdownDualMultiSelectModule} from '../dropdown-dual-multi-select.module';
-import {MOCK_OPTIONS, MOCK_OPTIONS_COUNTRIES} from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
+import {
+    MOCK_OPTIONS,
+    MOCK_OPTIONS_COUNTRIES,
+    MOCK_OPTIONS_IMAGE_ICONS,
+    MOCK_OPTIONS_IMAGE_ICONS_SUBTITLE
+} from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
 
 export default {
     title: 'Components/Dropdown/Include-Exclude',
@@ -40,7 +45,8 @@ export default {
         placeholder: 'Select items',
         selectedItemName: {singular: 'Item', plural: 'Items'},
         items: MOCK_OPTIONS,
-        pendingItems: false
+        pendingItems: false,
+        isDisabled: false
     },
     argTypes: {
         formControl: {
@@ -62,9 +68,10 @@ const DropdownIncludeExcludeTemplate: Story<DropdownDualMultiSelectComponent> = 
     [title]="title"
     [placeholder]="placeholder"
     [selectedItemName]="selectedItemName"
-    [formControl]="paginationItemsControl"
+    [formControl]="formControl"
     [items]="items"
     [pendingItems]="pendingItems"
+    [isDisabled]="isDisabled"
  ></fusion-dropdown-dual-multi-select>
 </div>`
 });
@@ -92,6 +99,7 @@ import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option
     [selectedItemName]="selectedItemName"
     [formControl]="formControl"
     [items]="items"
+    [isDisabled]="isDisabled"
  ></fusion-dropdown-dual-multi-select>\`,
   standalone: true,
   imports: [ReactiveFormsModule, DropdownDualMultiSelectModule],
@@ -102,6 +110,7 @@ export class FusionStoryWrapperComponent {
     selectedItemName = {singular: 'Item', plural: 'Items'};
     formControl = new FormControl();
     items: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS)};
+    isDisabled = false;
 }
             `,
             format: true,
@@ -145,7 +154,7 @@ export class FusionStoryWrapperComponent {
     placeholder = 'Select items';
     selectedItemName = {singular: 'Item', plural: 'Items'};
     formControl = new FormControl();
-    pendingItems: true
+    pendingItems =  true;
     items: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS)};
 }
             `,
@@ -193,6 +202,137 @@ export class FusionStoryWrapperComponent {
     selectedItemName = {singular: 'country', plural: 'countries'};
     formControl = new FormControl();
     items: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS_COUNTRIES)};
+}
+            `,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region WithImageAndIcon
+export const WithImageAndIcon = DropdownIncludeExcludeTemplate.bind({});
+WithImageAndIcon.args = {
+    formControl: new FormControl([]),
+    items: MOCK_OPTIONS_IMAGE_ICONS
+};
+WithImageAndIcon.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { DropdownDualMultiSelectModule } from "@ironsource/fusion-ui/components/dropdown-dual-multi-select";
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<fusion-dropdown-dual-multi-select
+    [title]="title"
+    [placeholder]="placeholder"
+    [selectedItemName]="selectedItemName"
+    [formControl]="formControl"
+    [items]="items"
+ ></fusion-dropdown-dual-multi-select>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, DropdownDualMultiSelectModule],
+})
+export class FusionStoryWrapperComponent {
+    title = 'Label name';
+    placeholder = 'Select items';
+    selectedItemName = {singular: 'Item', plural: 'Items'};
+    formControl = new FormControl();
+    items: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS_IMAGE_ICONS)};
+}
+            `,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region WithTwoLines
+export const WithTwoLines = DropdownIncludeExcludeTemplate.bind({});
+WithTwoLines.args = {
+    formControl: new FormControl([]),
+    items: MOCK_OPTIONS_IMAGE_ICONS_SUBTITLE
+};
+WithTwoLines.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { DropdownDualMultiSelectModule } from "@ironsource/fusion-ui/components/dropdown-dual-multi-select";
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<fusion-dropdown-dual-multi-select
+    [title]="title"
+    [placeholder]="placeholder"
+    [selectedItemName]="selectedItemName"
+    [formControl]="formControl"
+    [items]="items"
+ ></fusion-dropdown-dual-multi-select>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, DropdownDualMultiSelectModule],
+})
+export class FusionStoryWrapperComponent {
+    title = 'Label name';
+    placeholder = 'Select items';
+    selectedItemName = {singular: 'Item', plural: 'Items'};
+    formControl = new FormControl();
+    items: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS_IMAGE_ICONS_SUBTITLE)};
+}
+            `,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region WithNoItems
+export const WithNoItems = DropdownIncludeExcludeTemplate.bind({});
+WithNoItems.args = {
+    formControl: new FormControl([]),
+    items: []
+};
+WithNoItems.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { DropdownDualMultiSelectModule } from "@ironsource/fusion-ui/components/dropdown-dual-multi-select";
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<fusion-dropdown-dual-multi-select
+    [title]="title"
+    [placeholder]="placeholder"
+    [selectedItemName]="selectedItemName"
+    [formControl]="formControl"
+    [items]="items"
+    [isDisabled]="isDisabled"
+ ></fusion-dropdown-dual-multi-select>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, DropdownDualMultiSelectModule],
+})
+export class FusionStoryWrapperComponent {
+    title = 'Label name';
+    placeholder = 'Select items';
+    selectedItemName = {singular: 'Item', plural: 'Items'};
+    formControl = new FormControl();
+    items: DropdownOption[] = [];
+    isDisabled = false;
 }
             `,
             format: true,

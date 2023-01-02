@@ -83,14 +83,14 @@ export const MOK_APPLICATIONS_OPTIONS = [
     }
 ];
 
-export const MOCK_OPTIONS_IMAGE = MOK_APPLICATIONS_OPTIONS.slice(4).map(item => {
+export const MOCK_OPTIONS_IMAGE = MOK_APPLICATIONS_OPTIONS.map(item => {
     return {id: item.id, displayText: item.displayText, image: item.image};
 });
 
-export const MOCK_OPTIONS_IMAGE_ICONS = MOK_APPLICATIONS_OPTIONS.slice(4).map(item => {
+export const MOCK_OPTIONS_IMAGE_ICONS = MOK_APPLICATIONS_OPTIONS.map(item => {
     return {id: item.id, displayText: item.displayText, image: item.image, icon: 'frame'};
 });
-export const MOCK_OPTIONS_IMAGE_ICONS_SUBTITLE = MOK_APPLICATIONS_OPTIONS.slice(4).map(item => {
+export const MOCK_OPTIONS_IMAGE_ICONS_SUBTITLE = MOK_APPLICATIONS_OPTIONS.map(item => {
     return {id: item.id, displayText: 'Two-line item', image: item.image, icon: 'frame', subText: 'The future is here'};
 });
 
