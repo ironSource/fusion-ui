@@ -140,7 +140,6 @@ $selectHolderHeight: 39px;
 }
 
 :host-context(fusion-chip-filter){
-    --fu-chip-max-width: 200px;
     .overlay{
         top: -12px;
     }
@@ -149,7 +148,7 @@ $selectHolderHeight: 39px;
         align-items: center;
         justify-content: center;
         gap: 3px;
-        max-width: var(--fu-chip-max-width);
+        max-width: var(--fu-chip-max-width, 200px);
         .calendar-today{
             margin: 0;
         }
