@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.1.0-rc.8](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.6...v5.1.0-rc.8) (2023-01-02)
+
+
+### Bug Fixes
+
+* add api base to shared entities ([a170fdc](https://github.com/ironSource/fusion-ui/commit/a170fdc21eb5e2c231009d9a2f3ebfa3208575db))
+
 ## [5.1.0-rc.6](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.5...v5.1.0-rc.6) (2022-12-21)
 
 
