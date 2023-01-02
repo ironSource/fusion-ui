@@ -15,7 +15,7 @@ const MOCK_MENU_ITEMS = [
 ];
 
 export default {
-    title: 'Components/Menu Dropdown',
+    title: 'Components/Dropped Menu',
     component: MenuDropComponent,
     decorators: [
         moduleMetadata({
@@ -27,7 +27,7 @@ export default {
         docs: {
             description: {
                 component: dedent`
-                **Dropdown menu** useful for example for table-rows for multiple actions.
+                **Dropped menu** useful for example for table-rows for multiple actions.
                 - **buttonIcon**: optional, icon in the button. Default "more-vert"
                 - **dropdownPosition: Position**: optional, open dropdown position. (see https://floating-ui.com/ type Position)`
             }
@@ -46,9 +46,7 @@ const MenuDropTemplate: Story<MenuDropComponent> = (args: MenuDropComponent) => 
     props: {...args},
     template: `<div style="margin: auto; display: flex; justify-content: center; height: 200px">
     <fusion-menu-drop
-      [buttonIcon]="buttonIcon"
       [menuItems]="menuItems"
-      [alignDropdown]="alignDropdown"
       (menuItemClicked)="menuItemClicked($event)"
     ></fusion-menu-drop>
 </div>`

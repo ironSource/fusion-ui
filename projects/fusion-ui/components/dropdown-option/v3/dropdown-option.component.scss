@@ -38,6 +38,7 @@
         @include size(16px);
         margin-left: auto;
     }
+    @include icon-style('fu-option-action-icon', $fu-light-800, 16px, false, true, 0, true);
 
     &:hover {
         background: $fu-light-50;
@@ -88,6 +89,8 @@
     background-color: $fu-primary-100;
     color: $fu-primary-500;
     @include icon-style('fu-option-icon', $fu-primary-400, 16px, false, true);
+    @include icon-style('fu-option-action-icon', $fu-primary-300, 16px, false, true);
+    @include icon-style('fu-option-action-icon', $fu-primary-500, 16px, false, true, 0, true);
     .sub-text-container{
         label {
             color: $fu-primary-400;

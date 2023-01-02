@@ -22,25 +22,30 @@ const CLASS_LIST = [
 @Directive()
 export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase implements OnInit, ControlValueAccessor, OnDestroy {
     @Input() isDisabled: boolean = false;
+    /** @internal */
     @Input() dynamicPlaceholder: DynamicComponentConfiguration;
+    /** @internal */
     @Input() totalItems: number;
+    /** @internal */
     @Input() suppressClickButton: boolean = false;
+    /** @internal */
     @Input() autoComplete: boolean = true;
     @Input() title: string;
+    /** @internal */
     @Input() pendingItems: boolean = false;
 
     @Input() set placeholder(data: string) {
         this.placeholder$.next(data);
         this.defaultPlaceHolder = data;
     }
-
+    /** @internal */
     @Input() set searchByProperties(value: string[]) {
         this._searchByProperties = value;
     }
     get searchByProperties(): string[] {
         return this._searchByProperties;
     }
-
+    /** @internal */
     @Input() set opened(data: boolean) {
         this.opened$.next(data);
     }
@@ -62,6 +67,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     @Input() selectedItemName: SelectedItemName;
 
     // backend pagination same like in dropdown component
+    /** @internal */
     @Input() set backendPagination(value: BackendPagination) {
         this.onBackendPaginationChanged(value);
         this.backendPaginationState = value;
@@ -74,23 +80,38 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     @Output() scrollDown = new EventEmitter();
     @Output() searchChange = new EventEmitter();
     @Output() viewChange = new EventEmitter();
-
+    /** @internal */
     @ViewChild('chipContent', {static: true}) chipContent: TemplateRef<any>;
+    /** @internal */
     @ViewChild('trigger') trigger: ElementRef;
 
+    /** @internal */
     preSelectedItems = new FormControl();
+    /** @internal */
     searchControlTerm = new FormControl('');
+    /** @internal */
     items$ = new BehaviorSubject<DropdownOption[]>([]);
+    /** @internal */
     opened$ = new BehaviorSubject<boolean>(false);
+    /** @internal */
     placeholder$ = new BehaviorSubject<string>('');
+    /** @internal */
     confirm: boolean = false;
+    /** @internal */
     defaultPlaceHolder: string;
+    /** @internal */
     isPositionLeft: boolean;
+    /** @internal */
     inputSize = InputSize;
+    /** @internal */
     dropdownDualMultiSelectionButtonOptions = {rounded: true, size: this.inputSize.Medium};
+    /** @internal */
     selected$ = new BehaviorSubject<string>('');
+    /** @internal */
     chipDefaultContent: string;
+    /** @internal */
     uid: string;
+    /** @internal */
     backendPaginationChanged$: Subject<any> = new Subject();
 
     private selectedChange: DropdownOption[];
@@ -102,6 +123,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     private backendPaginationState: BackendPagination;
     private backendPaginationTotalResult: number;
     private backendPaginationPageNumber = 1;
+    /** @internal */
     loadingLeft$ = new BehaviorSubject<boolean>(false);
 
     constructor(protected element: ElementRef, protected renderer: Renderer2, protected uidService: UniqueIdService) {
@@ -123,6 +145,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.backendPaginationChanged$.complete();
     }
 
+    /** @internal */
     onScrollDown(): void {
         if (this.hasBackendPagination && this.backendPaginationTotalResult && this.backendPaginationTotalResult > this.items.length) {
             this.loadingLeft$.next(true);
@@ -151,11 +174,11 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
             this.scrollDown.emit();
         }
     }
-
+    /** @internal */
     changeConfig(val: string) {
         this.element.nativeElement.style.setProperty('--fu-chip-max-width', val);
     }
-
+    /** @internal */
     valueSelected(): Observable<{value: string; isSelected: boolean}> {
         return this.selected$.pipe(
             takeUntil(this.onDestroy$),
@@ -166,11 +189,11 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
             )
         );
     }
-
+    /** @internal */
     open() {
         this.trigger.nativeElement.click();
     }
-
+    /** @internal */
     applySelect(apply: boolean = false): void {
         this.opened$.next(!apply);
         this.confirm = true;
@@ -185,7 +208,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.searchControlTerm.setValue('');
         this.viewChange.emit(this.opened$.getValue());
     }
-
+    /** @internal */
     closeDropdownDualSelect(): void {
         this.opened$.next(false);
         this.confirm = false;
@@ -193,7 +216,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.searchControlTerm.setValue('');
         this.viewChange.emit(this.opened$.getValue());
     }
-
+    /** @internal */
     onClickDualMultiSelectButton(): void {
         if (!this.isDisabled && !this.suppressClickButton) {
             this.opened$.next(true);
@@ -201,29 +224,29 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
             this.viewChange.emit(this.opened$.getValue());
         }
     }
-
+    /** @internal */
     propagateChange = (_: DropdownOption[]) => {};
-
+    /** @internal */
     propagateTouched = () => {};
-
+    /** @internal */
     writeValue(value: DropdownOption[]): void {
         this.preSelectedItems.setValue(value);
         this.selectedChange = value;
         this.selected$.next(value?.length === 1 ? value[0]?.displayText || value[0]?.title : this.placeholder$.getValue());
     }
-
+    /** @internal */
     registerOnChange(fn: any): void {
         this.propagateChange = fn;
     }
-
+    /** @internal */
     registerOnTouched(fn: any): void {
         this.propagateTouched = fn;
     }
-
+    /** @internal */
     setDisabledState?(isDisabled: boolean): void {
         this.isDisabled = isDisabled;
     }
-
+    /** @internal */
     onOutsideClick($event): void {
         const regularButtonClicked = !this.dynamicPlaceholder
             ? !($event.closest(`.dual-select-button`)?.id === `${this.uid}-button-regular`)

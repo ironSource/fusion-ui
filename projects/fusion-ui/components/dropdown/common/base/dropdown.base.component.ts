@@ -41,46 +41,65 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
         this.displayedOptions$.next(this.parseOptions(this.optionsState));
     }
 
+    /** @ignore */
     @Input() set optionsGroups(value: Array<any>) {
         if (value) {
             this.options = this.dropdownService.mapGroupedOptions(value);
         }
     }
 
+    /** @ignore */
     @Output() optionsChange = new EventEmitter<DropdownOption[]>();
+    /** @ignore */
     @Input() selected: DropdownOption[] = [];
+    /** @ignore */
     @Output() selectedChange = new EventEmitter<DropdownOption[]>();
+    /** @internal */
     @Input() placeholderPrefix: string;
+    /** @internal */
     @Input() searchPlaceholder = 'Search';
+    /** @internal */
     @Input() placeholderWidth = '';
+    /** @ignore - add to story later*/
     @Input() dynamicPlaceholder: DynamicComponentConfiguration;
     /**
      * @deprecated since version 6.0.0
+     * @ignore
      */
     @Input() icon: IconData;
+    /** @internal */
     @Input() filterIconName: string;
+    /** @internal */
     @Input() isIconRightPosition = false;
+    /** @internal */
     @Input() isDisabled: boolean;
+    /** @internal */
     @Input() readonly: boolean;
+    /** @internal */
     @Input() search: boolean;
+    /** @internal */
     @Input() autoComplete: boolean;
+    /** @internal */
     @Input() mappingOptions: any;
+    /** @internal */
     @Input() limitOptions = 10;
+    /** @internal */
     @Input() set placeholderLocation(location: 'right' | 'left') {
         if (location) {
             this._isLocatedLeft = 'left' === location;
             this._isLocatedRight = 'right' === location;
         }
     }
-
+    /** @internal */
     @Input() set loading(value: boolean) {
         this.isLoadingManuallyChanged = true;
         this.loadingState = value;
     }
-
+    /** @ignore */
     @Input() strictSearch: boolean;
+    /** @ignore */
     @Input() arrowNavigation: boolean;
-    @Input() _error = '';
+    /** @internal */
     @Input()
     set error(error: string) {
         this._error = error;
@@ -90,27 +109,33 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
         return this._error;
     }
 
+    /** @ignore */
     @Input()
     set optionsTitle(value: string) {
         this._optionsTitle = value;
     }
+    /** @ignore */
     get optionsTitle(): string {
         return this._optionsTitle;
     }
-
+    /** @ignore */
     @Input() optionRightHoverText;
+    /** @ignore */
     @Input() changeConfirmation: () => Promise<boolean>;
+    /** @ignore */
     @Input() optionCloseIcon: boolean;
-
+    /** @ignore */
     @Input() helper: string;
-
+    /** @ignore */
     @Input() set backendPagination(value: BackendPagination) {
         this.onBackendPaginationChanged(value);
         this.backendPaginationState = value;
     }
-
+    /** @ignore */
     @Input() isTabMode = false;
+    /** @ignore */
     @Input() isMultiRawDisplay = false;
+    /** @internal */
     @Input() set placeholder(value: string | DropdownPlaceholderConfiguration) {
         if (typeof value === 'string') {
             this.placeholderText = value || 'Please Select';
@@ -120,38 +145,57 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
             this.forcePlaceholderOnSelection = value?.isForcedPlaceholder ? value?.isForcedPlaceholder : this.forcePlaceholderOnSelection;
         }
     }
-
+    /** @ignore */
     @Input() optionsRenderByHover = true;
+    /** @internal */
     @Input() searchByProperties?: string[] = [];
-
+    /** @internal */
     @Output() searchChange = new EventEmitter();
+    /** @internal */
     @Output() searchClear = new EventEmitter();
-
+    /** @internal */
     @Output() optionCloseIconClicked = new EventEmitter();
-
+    /** @internal */
     @Output() closed = new EventEmitter<ClosedOptions>();
 
+    /** @ignore */
     @ViewChild('optionsHolder') optionsHolderElRef: ElementRef;
+    /** @ignore */
     @ViewChild('searchComponent') searchComponent: DropdownSearchComponent;
+    /** @ignore */
     @ViewChild('selectComponent') selectComponent: DropdownSelectComponent;
+    /** @ignore */
     @ViewChild('chipContent', {static: true}) chipContent: TemplateRef<any>;
+    /** @ignore */
     @ViewChild('trigger') trigger: ElementRef;
 
+    /** @ignore */
     onDestroy$ = new Subject<void>();
-
+    /** @ignore */
     forcePlaceholderOnSelection = false;
+    /** @ignore */
     placeholderText = 'Please Select';
+    /** @ignore */
     placeholderIcon: IconData;
-
+    /** @ignore */
     isOpen$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+    /** @ignore */
     id: any;
+    /** @ignore */
     searchValue = new FormControl();
+    /** @ignore */
     subject = new Subject();
+    /** @ignore */
     labelImageSrc: string;
+    /** @ignore */
     labelFlag: string;
+    /** @ignore */
     isPredefinedTags = false; // from tag-input
+    /** @ignore */
     isNotFoundPredefined = false; // from tag-input
+    /** @ignore */
     isLoadingManuallyChanged = false;
+    /** @ignore */
     pagination = {
         latestScrollHeight: null,
         counter: 1,
@@ -159,23 +203,32 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
         percentScrollDown: 0.2,
         oneTimeFlagScroll: false
     };
+    /** @ignore */
     placeholder$: BehaviorSubject<string> = new BehaviorSubject<string>('');
+    /** @ignore */
     searchPlaceholder$: BehaviorSubject<string> = new BehaviorSubject<string>(this.searchPlaceholder);
+    /** @ignore */
     backendPaginationChanged$: Subject<any> = new Subject();
+    /** @ignore */
     displayedOptions$ = new BehaviorSubject<DropdownOption[]>([]);
+    /** @ignore */
     displayedOptionsObservable$: Observable<DropdownOption[]>;
-
+    /** @ignore */
     dropdownArrowIconName = {
         iconName: 'arrow-dropdown',
         iconVersion: 'v1'
     };
-
+    /** @ignore */
     isAllSelected: boolean;
+    /** @ignore */
     isIndeterminate = false;
+    /** @ignore */
     optionSelected$ = new BehaviorSubject<string>('');
+    /** @ignore */
     chipDefaultContent: string;
 
     private _optionsTitle: string;
+    protected _error: string;
     private _isLocatedRight = false;
     private _isLocatedLeft = false;
     private initPlaceholder: string;
@@ -187,6 +240,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     private backendPaginationPageNumber = 1;
     private filteredOptionsState: DropdownOption[] = [];
     protected optionsState: DropdownOption[] = [];
+    /** @ignore */
     public dropdownSelectConfigurations$ = new BehaviorSubject<DropdownSelectConfigurations>(this.getDropdownSelectConfigurations());
 
     private parentWithOverflow: HTMLElement;
@@ -224,11 +278,13 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     }
 
     constructor(
+        /** @ignore */
         public dropdownService: DropdownService,
         protected uniqueIdService: UniqueIdService,
         protected element: ElementRef,
         protected renderer: Renderer2,
         protected filterByFieldPipe: FilterByFieldPipe,
+        /** @ignore */
         public cdr: ChangeDetectorRef,
         protected clonePipe: ClonePipe,
         protected sharedEventsService: SharedEventsService,
@@ -282,8 +338,8 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
 
         this.initListeners();
     }
-
-    getDropdownSelectConfigurations() {
+    /** @ignore */
+    getDropdownSelectConfigurations(): DropdownSelectConfigurations {
         return {
             selectedOption: this.selected,
             dynamicContent: this.dynamicPlaceholder,
@@ -329,7 +385,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
         }
         this.dropdownSelectConfigurations$.next(this.getDropdownSelectConfigurations());
     }
-
+    /** @ignore */
     initListeners() {
         this.dropdownSelectConfigurations$.next(this.getDropdownSelectConfigurations());
         this.searchValue.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(() => {
@@ -346,6 +402,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
 
     /**
      * Subscribe for that search text as been changed
+     * @ignore
      */
     onSearchChange() {
         this.focusedLI = -1;
@@ -357,6 +414,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
 
     /**
      * Open dropdown windows
+     * @ignore
      */
     openDropdown(event: MouseEvent) {
         const forceOpen = !!(event.target as Element).closest('div.dropdown-arrow-container');
@@ -387,6 +445,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
 
     /**
      * Close dropdwn windows
+     * @ignore
      */
     @detectChangesDecorator
     closeDropdown({clickOutside = false}: ClosedOptions = {clickOutside: false}) {
@@ -410,6 +469,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
 
     /**
      * Set a label to dropdown main button
+     * @ignore
      */
     setLabel() {
         this.labelImageSrc = undefined;
@@ -449,7 +509,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
         this.optionSelected$.next(placeholder !== this.initPlaceholder ? placeholder : null);
         this.dropdownSelectConfigurations$.next(this.getDropdownSelectConfigurations());
     }
-
+    /** @ignore */
     getHolderCSSClasses(): string[] {
         return [
             this.isIconRightPosition && 'is-icon-right-position',
@@ -460,7 +520,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
             this.isTabMode && 'is-tab-mode'
         ].filter(Boolean);
     }
-
+    /** @ignore */
     parseOptions(options: DropdownOption[]): DropdownOption[] {
         if (options) {
             let filteredOptions = [...options];
@@ -502,7 +562,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
             return [];
         }
     }
-
+    /** @ignore */
     isSelected(option): boolean {
         return (
             this.selected &&
@@ -519,6 +579,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
 
     /**
      * Add arrows key navigation for the drop-down
+     * @ignore
      */
     @HostListener('keyup', ['$event'])
     keyEvent(event: KeyboardEvent) {
@@ -568,7 +629,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
             }
         }
     }
-
+    /** @ignore */
     onScroll($event) {
         if (this.options) {
             const target = $event.target;
@@ -597,6 +658,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
 
     /**
      * select / remove option from selected list
+     * @ignore
      */
     @detectChangesDecorator
     changeSelected({option, $event}: {option?: any; $event?: any}) {
@@ -625,19 +687,19 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
             this.doChanges(option);
         }
     }
-
+    /** @ignore */
     changeConfig(val: string) {
         this.element.nativeElement.style.setProperty('--fu-chip-max-width', val);
     }
-
+    /** @ignore */
     valueSelected() {
         return this.optionSelected$.asObservable().pipe(map(value => ({value, isSelected: !!value})));
     }
-
+    /** @ignore */
     open() {
         this.trigger.nativeElement.click();
     }
-
+    /** @ignore */
     onCloseIconClicked(option: DropdownOption) {
         this.optionCloseIconClicked.emit(option);
     }
@@ -656,6 +718,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
 
     /**
      * clear all options and notify.
+     * @ignore
      */
     clearOptions() {
         this.options = [];
@@ -665,6 +728,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
 
     /**
      * event from directive on outside component click
+     * @ignore
      */
     onOutsideClick(target?) {
         this.closeDropdown({clickOutside: true});
@@ -825,11 +889,13 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
 
     /**
      * Method to call when the component value has changes.
+     * @ignore
      */
     propagateChange = (_: DropdownOption[]) => {};
 
     /**
      * update value from model to the component
+     * @ignore
      */
     writeValue(value: any): void {
         if (isNullOrUndefined(value) || (Array.isArray(value) && value.length === 0)) {
@@ -839,13 +905,13 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
         }
         this.setOptionsAndLabel();
     }
-
+    /** @ignore */
     registerOnChange(fn: any): void {
         this.propagateChange = fn;
     }
-
+    /** @ignore */
     registerOnTouched(): void {}
-
+    /** @ignore */
     setDisabledState?(isDisabled: boolean): void {
         this.isDisabled = isDisabled;
         this.dropdownSelectConfigurations$.next(this.getDropdownSelectConfigurations());

@@ -11,18 +11,14 @@ import {TableModule} from '@ironsource/fusion-ui/components/table';
 import {TableStoryHolderComponent} from './table.story-holder.component/table.story-holder.component.component';
 import {TableComponent} from '../table.component';
 import {
-    ROWS_CHECKBOX_DATA,
     ROWS_DEFAULT_DATA,
-    ROWS_TOGGLE_DATA,
     ROWS_TOTALS_DATA,
     MOCK_ROW_ACTIONS,
-    TABLE_CHECKBOX_COLUMNS_CONFIG,
     TABLE_DEFAULT_COLUMNS_CONFIG,
     TABLE_DEFAULT_OPTIONS,
     TABLE_SORTING_COLUMNS_CONFIG,
     TABLE_STICKY_COLUMNS_CONFIG,
-    TABLE_SUBHEADER_COLUMNS_CONFIG,
-    TABLE_TOGGLE_COLUMNS_CONFIG
+    TABLE_SUBHEADER_COLUMNS_CONFIG
 } from './table.mock-data';
 
 const actionsData = {
