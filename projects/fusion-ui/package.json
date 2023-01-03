@@ -19,6 +19,7 @@
         "./services/cache",
         "./services/user",
         "./services/shared-config",
+        "./services/auth",
         "./services/redirect",
         "./services/pub-sub",
         "./guards/auth",
