@@ -13,7 +13,7 @@ import {DaterangeModule} from '@ironsource/fusion-ui/components/daterange';
 import {DropdownDualMultiSelectModule} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
 
 export default {
-    title: 'Components/Chip-Filter',
+    title: 'Components/Chip-Filters/Chip',
     component: ChipFilterComponent,
     decorators: [
         moduleMetadata({
@@ -38,7 +38,7 @@ export default {
         },
         docs: {
             description: {
-                component: dedent`**ChipFilter**`
+                component: dedent`**Chip** Chips are compact little units that represent actions, filters or choices. When shown, they allow users to prompt actions, filter content and choose options.`
             }
         }
     },

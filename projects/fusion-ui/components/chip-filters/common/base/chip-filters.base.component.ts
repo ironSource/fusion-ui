@@ -23,7 +23,9 @@ import {SelectedFilters} from './chip-filters-entities';
 
 @Directive()
 export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestroy, OnInit {
+    /** @internal */
     @ContentChildren(ChipFilterComponent) chipFilters!: QueryList<ChipFilterComponent>;
+    /** @internal */
     @ViewChild('addFilter', {static: true}) addFilterComponent: any;
 
     @Input() set disableAddFilter(val: boolean) {
@@ -42,16 +44,17 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
 
     @Output() onRemoveSelection = new EventEmitter<any>();
 
-    showAddFilter$ = new BehaviorSubject<boolean>(null);
-
-    disableAddFilter$ = new BehaviorSubject<boolean>(null);
-
+    /** @internal */
+    showAddFilter$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(null);
+    /** @internal */
+    disableAddFilter$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(null);
+    /** @internal */
     addFilterControl = new FormControl([]);
-
+    /** @internal */
     optionsRef$ = new BehaviorSubject<DropdownOption[]>([]);
-
+    /** @internal */
     options$ = new BehaviorSubject<DropdownOption[]>([]);
-
+    /** @internal */
     addFilterIndex: number;
 
     private selectedFilters: SelectedFilters[] = [];
