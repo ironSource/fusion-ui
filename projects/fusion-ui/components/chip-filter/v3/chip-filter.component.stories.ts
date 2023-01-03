@@ -64,9 +64,12 @@ const ChipFilterTemplate: Story<ChipFilterComponent> = (args: ChipFilterComponen
         <div class="filter-element">
             <fusion-dropdown
                  [title]="title"
+                 [placeholderPrefix]="placeholderPrefix"
                  [placeholder]="placeholder"
                  [formControl]="formControl"
                  [options]="options"
+                 [optionsTitle]="optionsTitle"
+                 [search]="search"
                  >
             </fusion-dropdown>
         </div>
@@ -309,7 +312,160 @@ export class FusionStoryWrapperComponent {
 };
 // endregion
 
-// region WithIconDateRange
+// region DropdownWithLabel
+export const DropdownWithLabel = ChipFilterTemplate.bind({});
+DropdownWithLabel.args = {
+    formControl: new FormControl(),
+    configuration: {mode: 'static', close: true},
+    placeholderPrefix: 'Label'
+};
+DropdownWithLabel.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { ChipFilterModule } from "@ironsource/fusion-ui/components/chip-filter";
+import { DropdownModule } from "@ironsource/fusion-ui/components/dropdown";
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 250px; width: 250px; margin: auto">
+    <fusion-chip-filter [configuration]="{ id: 1, mode: 'static', close: true }">
+        <div class="filter-element">
+            <fusion-dropdown
+                 [placeholderPrefix]="placeholderPrefix"
+                 [placeholder]="placeholder"
+                 [formControl]="formControl"
+                 [options]="options"
+                 >
+            </fusion-dropdown>
+        </div>
+    </fusion-chip-filter>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, ChipFilterModule, DropdownModule],
+})
+export class FusionStoryWrapperComponent {
+    placeholderPrefix = 'Label'
+    placeholder = 'Chip filter';
+    formControl = new FormControl();
+    options: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS)};
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region DropdownWithOptionsTitle
+export const DropdownWithOptionsTitle = ChipFilterTemplate.bind({});
+DropdownWithOptionsTitle.args = {
+    formControl: new FormControl(),
+    configuration: {mode: 'static', close: true},
+    optionsTitle: 'Title'
+};
+DropdownWithOptionsTitle.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { ChipFilterModule } from "@ironsource/fusion-ui/components/chip-filter";
+import { DropdownModule } from "@ironsource/fusion-ui/components/dropdown";
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 250px; width: 250px; margin: auto">
+    <fusion-chip-filter [configuration]="{ id: 1, mode: 'static', close: true }">
+        <div class="filter-element">
+            <fusion-dropdown
+                 [placeholder]="placeholder"
+                 [formControl]="formControl"
+                 [options]="options"
+                 [optionsTitle]="optionsTitle"
+                 >
+            </fusion-dropdown>
+        </div>
+    </fusion-chip-filter>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, ChipFilterModule, DropdownModule],
+})
+export class FusionStoryWrapperComponent {
+    placeholder = 'Chip filter';
+    formControl = new FormControl();
+    optionsTitle = 'Title'
+    options: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS)};
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region DropdownWithOptionsTitleAndSearch
+export const DropdownWithOptionsTitleAndSearch = ChipFilterTemplate.bind({});
+DropdownWithOptionsTitleAndSearch.args = {
+    formControl: new FormControl(),
+    configuration: {mode: 'static', close: true},
+    optionsTitle: 'Title',
+    search: true
+};
+DropdownWithOptionsTitleAndSearch.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { ChipFilterModule } from "@ironsource/fusion-ui/components/chip-filter";
+import { DropdownModule } from "@ironsource/fusion-ui/components/dropdown";
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 250px; width: 250px; margin: auto">
+    <fusion-chip-filter [configuration]="{ id: 1, mode: 'static', close: true }">
+        <div class="filter-element">
+            <fusion-dropdown
+                 [placeholder]="placeholder"
+                 [formControl]="formControl"
+                 [options]="options"
+                 [optionsTitle]="optionsTitle"
+                 [search]="search"
+                 >
+            </fusion-dropdown>
+        </div>
+    </fusion-chip-filter>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, ChipFilterModule, DropdownModule],
+})
+export class FusionStoryWrapperComponent {
+    placeholder = 'Chip filter';
+    formControl = new FormControl();
+    optionsTitle = 'Title'
+    search = true;
+    options: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS)};
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region DateRangeWithIcon
 const ChipFilterIconTemplate: Story<ChipFilterComponent> = (args: ChipFilterComponent) => ({
     props: {...args},
     template: `<div style="height: 350px;">
@@ -320,13 +476,13 @@ const ChipFilterIconTemplate: Story<ChipFilterComponent> = (args: ChipFilterComp
     </fusion-chip-filter>
 </div>`
 });
-export const WithIconDateRange = ChipFilterIconTemplate.bind({});
-WithIconDateRange.args = {
+export const DateRangeWithIcon = ChipFilterIconTemplate.bind({});
+DateRangeWithIcon.args = {
     configuration: {mode: 'static', close: true, maxWidth: 300},
     dateRangeOptions: {chipLabel: 'Date range', placeholder: 'All'},
     fcDateRange: new FormControl()
 };
-WithIconDateRange.parameters = {
+DateRangeWithIcon.parameters = {
     docs: {
         source: {
             language: 'typescript',
@@ -359,7 +515,7 @@ export class FusionStoryWrapperComponent {
 };
 // endregion
 
-// region WithLabelIncludeExclude
+// region IncludeExcludeWithLabel
 const ChipFilterIncludeExcludeTemplate: Story<ChipFilterComponent> = (args: ChipFilterComponent) => ({
     props: {...args},
     template: `<div style="height: 350px; width: 250px;">
@@ -375,13 +531,13 @@ const ChipFilterIncludeExcludeTemplate: Story<ChipFilterComponent> = (args: Chip
     </fusion-chip-filter>
 </div>`
 });
-export const WithLabelIncludeExclude = ChipFilterIncludeExcludeTemplate.bind({});
-WithLabelIncludeExclude.args = {
+export const IncludeExcludeWithLabel = ChipFilterIncludeExcludeTemplate.bind({});
+IncludeExcludeWithLabel.args = {
     formControl: new FormControl([]),
     items: [...MOCK_OPTIONS],
     configuration: {mode: 'static', close: true}
 };
-WithLabelIncludeExclude.parameters = {
+IncludeExcludeWithLabel.parameters = {
     docs: {
         source: {
             language: 'typescript',
