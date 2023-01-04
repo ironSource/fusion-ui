@@ -1,8 +1,6 @@
 name: Step-Test
 
 on:
-  push:
-
   workflow_dispatch:
     inputs:
       branch_name:
