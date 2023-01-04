@@ -20,7 +20,7 @@ import {DaterangeModule, DaterangeOptions} from '@ironsource/fusion-ui/component
 import {DropdownDualMultiSelectModule} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
 
 export default {
-    title: 'Components/Chip-Filters/Filter Panel',
+    title: 'Components/Filters/Filter Panel',
     component: ChipFiltersComponent,
     decorators: [
         moduleMetadata({
