@@ -132,7 +132,7 @@ const ChipFilterTemplate: Story<ChipFiltersComponent> = (args: ChipFiltersCompon
 // region Default
 export const Default = ChipFilterTemplate.bind({});
 Default.args = {
-    addFiltersTitle: 'Add filter by',
+    addFiltersTitle: 'Add filter by:',
     addFilterOptions: [
         {id: 4, displayText: 'Country'},
         {id: 5, displayText: 'Campaigns'}
