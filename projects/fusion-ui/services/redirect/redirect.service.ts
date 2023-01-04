@@ -1,5 +1,5 @@
 import {Inject, Injectable, OnDestroy, Optional} from '@angular/core';
-import {Router} from '@angular/router';
+import {NavigationExtras, Router} from '@angular/router';
 import {UserService} from '@ironsource/fusion-ui/services/user';
 import {MFE_SHARED_CONFIG, MfeSharedConfig} from '@ironsource/fusion-ui/services/shared-config';
 import {AuthService} from '@ironsource/fusion-ui/services/auth';
@@ -15,27 +15,41 @@ export class RedirectService {
         @Inject(MFE_SHARED_CONFIG) @Optional() private config: MfeSharedConfig
     ) {}
 
-    navigateByUrl(url: string): void {
-        this.router.navigateByUrl(this.config.baseRedirectUrl + url);
-    }
-
     redirectToBase() {
         if (this.userService.isAllowed('admin')) {
             this.redirectToPage(this.config.redirectService.redirectToBase.admin);
         } else {
             this.config.environment.isLocalEnv
-                ? this.router.navigateByUrl(this.config.redirectService.redirectToBase.default)
+                ? this.navigateByUrl(this.config.redirectService.redirectToBase.default)
                 : this.redirectToPartners();
         }
     }
 
     redirectToPage(path: string, options?: any): Promise<boolean> {
-        const routeCommand = [path];
+        const routeCommand = [this.config.baseRedirectUrl, path];
         if (options && options.param) {
             routeCommand.push(options.param);
             delete options.param;
         }
-        return this.router.navigate(routeCommand, options);
+        return this.navigate(routeCommand, options);
+    }
+
+    navigateByUrl(url: string, extras?: NavigationExtras): Promise<boolean> {
+        return this.router.navigateByUrl(this.config.baseRedirectUrl + url, extras);
+    }
+
+    navigate(commands: any[], extras?: NavigationExtras): Promise<boolean> {
+        const commandsArray = Array.isArray(commands) ? commands : [commands];
+        const withBase = commandsArray.map((command, index) => {
+            if (index !== 0) {
+                return command;
+            }
+            if (command.includes(this.config.baseRedirectUrl)) {
+                return command;
+            }
+            return `${this.config.baseRedirectUrl}/${command}`;
+        });
+        return this.router.navigate(withBase, extras);
     }
 
     /**
