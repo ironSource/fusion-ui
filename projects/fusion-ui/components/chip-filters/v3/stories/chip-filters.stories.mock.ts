@@ -27,6 +27,137 @@ export const MOCK_STATUS: DropdownOption[] = [
     {id: 2, displayText: 'Inactive'}
 ];
 
+export const MOCK_CAMPAIGNS: DropdownOption[] = [
+    {
+        id: 8533227,
+        displayText: 'COLO_T1_ADR_ALL',
+        subText: {text: '8533227'},
+        icon: 'ios',
+        image: 'https://platform.ssacdn.com/demand-creatives/icons/icon_81da9f477768eca08ad377ed2d8b33c0_transformed_142594.jpeg',
+        title: 'Color Match'
+    },
+    {
+        id: 8533223,
+        displayText: 'COLO_T1_IOS_ALL',
+        subText: {text: '8533223'},
+        icon: 'android',
+        image: 'https://platform.ssacdn.com/demand-creatives/icons/icon_a8956b1da65da1ee252fcf3fa5d4965b_35559.jpeg',
+        title: 'Coloring Match'
+    },
+    {
+        id: 8533153,
+        displayText: 'BRID_T1_ADR_All',
+        subText: {text: '8533153'},
+        icon: 'ios',
+        image: 'https://platform.ssacdn.com/demand-creatives/icons/icon_efd72a9df96c1cd8390bfe9572c3401b_transformed_228268.jpeg',
+        title: 'Bridge Race'
+    },
+    {
+        id: 8533061,
+        displayText: 'MAKE_T1_IOS_ALL (Xpromo)',
+        subText: {text: '8533061'},
+        icon: 'android',
+        image: 'https://platform.ssacdn.com/demand-creatives/icons/icon_d19c29467b269358bd19b096cbc34562_49318.jpeg',
+        title: 'Move People'
+    },
+    {
+        id: 8533057,
+        displayText: 'MYMI_US_ADR_PLA',
+        subText: {text: '8533057'},
+        icon: 'ios',
+        image: 'https://platform.ssacdn.com/demand-creatives/icons/icon_7c914d206b942e8baa4d045407b4f41d_transformed_330314.jpeg',
+        title: 'My Mini Mart'
+    },
+    {
+        id: 8533055,
+        displayText: 'MYMI_T1_ADR_PLA',
+        subText: {text: '8533055'},
+        icon: 'ios',
+        image: 'https://platform.ssacdn.com/demand-creatives/icons/icon_7c914d206b942e8baa4d045407b4f41d_transformed_330314.jpeg',
+        title: 'My Mini Mart'
+    },
+    {
+        id: 8533045,
+        displayText: 'MYMI_US_ADR_VID',
+        subText: {text: '8533045'},
+        icon: 'ios',
+        image: 'https://platform.ssacdn.com/demand-creatives/icons/icon_7c914d206b942e8baa4d045407b4f41d_transformed_330314.jpeg',
+        title: 'My Mini Mart'
+    },
+    {
+        id: 8533037,
+        displayText: 'MYMI_T1_ADR_VID',
+        subText: {text: '8533037'},
+        icon: 'ios',
+        image: 'https://platform.ssacdn.com/demand-creatives/icons/icon_7c914d206b942e8baa4d045407b4f41d_transformed_330314.jpeg',
+        title: 'My Mini Mart'
+    },
+    {
+        id: 8532485,
+        displayText: 'BRID_T1_ADR_All (Xpromo)',
+        subText: {text: '8532485'},
+        icon: 'ios',
+        image: 'https://platform.ssacdn.com/demand-creatives/icons/icon_efd72a9df96c1cd8390bfe9572c3401b_transformed_228268.jpeg',
+        title: 'Bridge Race'
+    },
+    {
+        id: 8531187,
+        displayText: 'BSKT_T1_IOS_ALL',
+        subText: {text: '8531187'},
+        icon: 'android',
+        image: 'https://platform.ssacdn.com/demand-creatives/icons/icon_fffad63f59a2d325c9c9c91f7e67cfcb_61600.jpeg',
+        title: 'Basket Battle'
+    },
+    {
+        id: 8530611,
+        displayText: 'COLO_T1_IOS_ALL (xpromo)',
+        subText: {text: '8530611'},
+        icon: 'android',
+        image: 'https://platform.ssacdn.com/demand-creatives/icons/icon_a8956b1da65da1ee252fcf3fa5d4965b_35559.jpeg',
+        title: 'Coloring Match'
+    },
+    {
+        id: 8527431,
+        displayText: 'FIRS_US_ADR_ALL',
+        subText: {text: '8527431'},
+        icon: 'ios',
+        image: 'https://platform.ssacdn.com/demand-creatives/icons/icon_af30863e3c1198d27843924c247ac414_transformed_164458.jpeg',
+        title: 'First To Life'
+    },
+    {
+        id: 8527429,
+        displayText: 'FIRS_US_IOS_ALL',
+        subText: {text: '8527429'},
+        icon: 'android',
+        image: 'https://platform.ssacdn.com/demand-creatives/icons/icon_3c690deb1961aa1c3698b14d00985aff_50552.jpeg',
+        title: 'First To Life'
+    },
+    {
+        id: 8526369,
+        displayText: 'BRID_T1_IOS_ALL (Xpromo)',
+        subText: {text: '8526369'},
+        icon: 'android',
+        image: 'https://platform.ssacdn.com/demand-creatives/icons/icon_565bc88a61e6a38aaa34d39b4f87cdcd_55163.jpeg',
+        title: 'Bridge Race'
+    },
+    {
+        id: 8526353,
+        displayText: 'BRID_US_IOS_ALL (Xpromo)',
+        subText: {text: '8526353'},
+        icon: 'android',
+        image: 'https://platform.ssacdn.com/demand-creatives/icons/icon_565bc88a61e6a38aaa34d39b4f87cdcd_55163.jpeg',
+        title: 'Bridge Race'
+    },
+    {
+        id: 8526105,
+        displayText: 'BAZO_US_IOS_VID (RV)',
+        subText: {text: '8526105'},
+        icon: 'android',
+        image: 'https://platform.ssacdn.com/demand-creatives/icons/icon_1d37c0a8e03cff1495f47de851225a64_44001.jpeg',
+        title: 'Bazooka Boy'
+    }
+];
+
 export const MOCK_COUNTRIES = [
     {id: 'AD', flag: 'AD', displayText: 'Andorra'},
     {

@@ -9,7 +9,12 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ChipFiltersComponent, ChipFiltersModule} from '@ironsource/fusion-ui/components/chip-filters';
 import {ChipFilterModule} from '@ironsource/fusion-ui/components/chip-filter';
 import {DropdownModule} from '@ironsource/fusion-ui/components/dropdown';
-import {MOCK_COUNTRIES, MOCK_STATUS, MOCK_USERS} from '@ironsource/fusion-ui/components/chip-filters/v3/stories/chip-filters.stories.mock';
+import {
+    MOCK_CAMPAIGNS,
+    MOCK_COUNTRIES,
+    MOCK_STATUS,
+    MOCK_USERS
+} from '@ironsource/fusion-ui/components/chip-filters/v3/stories/chip-filters.stories.mock';
 import {DaterangeModule} from '@ironsource/fusion-ui/components/daterange';
 import {DropdownDualMultiSelectModule} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
 
@@ -64,7 +69,12 @@ const ChipFilterTemplate: Story<ChipFiltersComponent> = (args: ChipFiltersCompon
     props: {...args},
     template: `
 <div style="height: 250px;">
-    <fusion-chip-filters [addFiltersTitle]="addFiltersTitle" [addFilterOptions]="optionsChipsToAdd">
+    <fusion-chip-filters
+        [addFiltersTitle]="addFiltersTitle"
+        [addFilterOptions]="addFilterOptions"
+        [disableAddFilter]="disableAddFilter"
+        [isSearch]="isSearch"
+        >
         <fusion-chip-filter [configuration]="configChip1">
             <div class="filter-element">
                 <fusion-dropdown
@@ -105,6 +115,16 @@ const ChipFilterTemplate: Story<ChipFiltersComponent> = (args: ChipFiltersCompon
                  ></fusion-dropdown-dual-multi-select>
             </div>
         </fusion-chip-filter>
+        <fusion-chip-filter [configuration]="configChip5">
+            <div class="filter-element">
+                <fusion-dropdown-dual-multi-select
+                    [title]="optionsTitleChip5"
+                    [placeholder]="placeholderChip5"
+                    [formControl]="fcChip5"
+                    [items]="optionsChip5"
+                 ></fusion-dropdown-dual-multi-select>
+            </div>
+        </fusion-chip-filter>
     </fusion-chip-filters>
 </div>`
 });
@@ -112,8 +132,13 @@ const ChipFilterTemplate: Story<ChipFiltersComponent> = (args: ChipFiltersCompon
 // region Default
 export const Default = ChipFilterTemplate.bind({});
 Default.args = {
-    addFiltersTitle: 'Filters to add',
-    optionsChipsToAdd: [{id: 5, displayText: 'Application'}],
+    addFiltersTitle: 'Add filter by',
+    addFilterOptions: [
+        {id: 4, displayText: 'Country'},
+        {id: 5, displayText: 'Campaigns'}
+    ],
+    disableAddFilter: false,
+    isSearch: true,
 
     fcChip1: new FormControl(),
     configChip1: {id: 1, mode: 'static', close: true},
@@ -135,8 +160,14 @@ Default.args = {
     dateRangeOptions: {chipLabel: 'Date range', placeholder: 'All'},
 
     fcChip4: new FormControl(),
-    configChip4: {id: 4, mode: 'static', close: true},
+    configChip4: {id: 4, mode: 'dynamic', close: true},
     optionsChip4: MOCK_COUNTRIES,
     placeholderChip4: 'All',
-    optionsTitleChip4: 'Country'
+    optionsTitleChip4: 'Country',
+
+    fcChip5: new FormControl(),
+    configChip5: {id: 5, mode: 'dynamic', close: true},
+    optionsChip5: MOCK_CAMPAIGNS,
+    placeholderChip5: 'All',
+    optionsTitleChip5: 'Campaigns'
 };
