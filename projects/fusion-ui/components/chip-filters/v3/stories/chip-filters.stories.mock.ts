@@ -942,3 +942,11 @@ export const MOCK_COUNTRIES = [
     },
     {id: 'ZW', flag: 'ZW', displayText: 'Zimbabwe'}
 ];
+
+export const MOCK_DUMMY_OPTIONS = Array.from(Array(10).keys()).map(item => {
+    const id = item + 1;
+    return {
+        id: id,
+        displayText: 'Chip filter'
+    };
+});
