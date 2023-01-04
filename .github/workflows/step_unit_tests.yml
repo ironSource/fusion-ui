@@ -34,12 +34,23 @@ jobs:
         with:
           node-version: "16"
 
+      - name: Cache node deps
+        id: cache-deps
+        uses: actions/cache@v3
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
+
       - name: Add Github Packages Credentials
+        if: steps.cache-deps.outputs.cache-hit != 'true'
         run: |
           echo @ironsource-mobile:registry=https://npm.pkg.github.com > .npmrc
           echo '//npm.pkg.github.com/:_authToken=${{secrets.NPM_TOKEN}}' >> .npmrc
 
-      - run: npm ci
+      - name: Install Dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: npm ci
+
 
       - name: Run Unit Tests
         timeout-minutes: 10
