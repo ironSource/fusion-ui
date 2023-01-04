@@ -22,14 +22,22 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y vim jq
 
+      - name: Cache node deps
+        id: cache-deps
+        uses: actions/cache@v3
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
+
       - name: Add Github Packages Credentials
+        if: steps.cache-deps.outputs.cache-hit != 'true'
         run: |
           echo @ironsource-mobile:registry=https://npm.pkg.github.com > .npmrc
           echo '//npm.pkg.github.com/:_authToken=${{secrets.NPM_TOKEN}}' >> .npmrc
 
       - name: Install Dependencies 📦
-        run: |
-          npm ci
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: npm ci
 
       - name: Extract branch name
         shell: bash
