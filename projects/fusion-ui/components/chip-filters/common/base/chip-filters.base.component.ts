@@ -178,8 +178,10 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
                 };
                 this.addedFilters = [...this.addedFilters, newSelection];
                 this.reduceSelectedFiltersOptions();
-                chip.apiBase.open();
-                this.cdr.markForCheck();
+                // for suppress click outside for current chip - do it in other tik
+                setTimeout(() => {
+                    chip.apiBase.open();
+                });
             } else {
                 this.addFilterControl.reset();
             }
