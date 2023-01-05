@@ -1,5 +1,34 @@
 <div class="chip-filters-container">
     <ng-content></ng-content>
+    <ng-container *ngFor="let filter of dynamicFilters" [ngSwitch]="filter.filterType">
+        <fusion-chip-filter *ngSwitchCase="'dropdown'" #dynamics [configuration]="{id: filter.id, mode: 'dynamic', close: true}">
+            <div class="filter-element">
+                <fusion-dropdown
+                    [placeholderPrefix]="filter.title"
+                    [placeholder]="filter.dropdownConfiguration.placeholder"
+                    [formControl]="filter.formControl"
+                    [options]="filter.dropdownConfiguration.options"
+                    [search]="filter.dropdownConfiguration.search"
+                    [optionsTitle]="filter.dropdownConfiguration.optionsTitle"
+                ></fusion-dropdown>
+            </div>
+        </fusion-chip-filter>
+        <fusion-chip-filter *ngSwitchCase="'include-exclude'" #dynamics [configuration]="{id: filter.id, mode: 'dynamic', close: true}">
+            <div class="filter-element">
+                <fusion-dropdown-dual-multi-select
+                    [title]="filter.title"
+                    [placeholder]="filter.includeExcludeConfiguration.placeholder"
+                    [formControl]="filter.formControl"
+                    [items]="filter.includeExcludeConfiguration.items"
+                ></fusion-dropdown-dual-multi-select>
+            </div>
+        </fusion-chip-filter>
+        <fusion-chip-filter *ngSwitchCase="'date-range'" #dynamics [configuration]="{id: filter.id, mode: 'dynamic', close: true}">
+            <div class="filter-element">
+                <fusion-daterange [options]="filter.daterangeConfiguration.options" [formControl]="filter.formControl"> </fusion-daterange>
+            </div>
+        </fusion-chip-filter>
+    </ng-container>
     <ng-container *ngIf="showAddFilter$ | async">
         <fusion-chip-filter [isDynamicContent]="true" [configuration]="{id: addFilterIndex,mode:'add', disabled: (disableAddFilter$ | async)}">
             <div class="fu-chip-content">

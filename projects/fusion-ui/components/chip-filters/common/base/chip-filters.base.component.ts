@@ -11,7 +11,8 @@ import {
     Output,
     QueryList,
     Renderer2,
-    ViewChild
+    ViewChild,
+    ViewChildren
 } from '@angular/core';
 import {ChipFilterComponent} from '@ironsource/fusion-ui/components/chip-filter';
 import {BehaviorSubject, combineLatest, Observable, Subject} from 'rxjs';
@@ -19,12 +20,14 @@ import {takeUntil} from 'rxjs/operators';
 import {ChipType} from '@ironsource/fusion-ui/components/chip-filter/common/base';
 import {FormControl} from '@angular/forms';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
-import {SelectedFilters} from './chip-filters-entities';
+import {DynamicFilter, SelectedFilters} from './chip-filters-entities';
 
 @Directive()
 export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestroy, OnInit {
     /** @internal */
     @ContentChildren(ChipFilterComponent) chipFilters!: QueryList<ChipFilterComponent>;
+    /** @internal */
+    @ViewChildren('dynamics') chipDynamicFilters!: QueryList<ChipFilterComponent>;
     /** @internal */
     @ViewChild('addFilter', {static: true}) addFilterComponent: any;
 
@@ -39,6 +42,15 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
     @Input() addFiltersTitle: string;
 
     @Input() isSearch: boolean = false;
+
+    @Input() set dynamicFilters(value: DynamicFilter[]) {
+        this._dynamicFilters = value;
+        this.addFilterOptions = value.map(filter => ({id: filter.id, displayText: filter.title}));
+    }
+
+    get dynamicFilters(): DynamicFilter[] {
+        return this._dynamicFilters;
+    }
 
     @Output() onSelect = new EventEmitter<any>();
 
@@ -63,6 +75,8 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
 
     private onDestroy$ = new Subject<void>();
 
+    private _dynamicFilters: DynamicFilter[] = [];
+
     constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
 
     ngOnInit() {
@@ -75,6 +89,7 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
     }
 
     ngAfterViewInit() {
+        this.chipFilters.reset([...this.chipFilters.toArray(), ...this.chipDynamicFilters.toArray()]);
         this.addFilterIndex = this.chipFilters.length;
         this.setPreSelectedFilters();
         this.activateAddFilter();
