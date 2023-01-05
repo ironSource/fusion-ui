@@ -11,6 +11,7 @@ import {DropdownModule} from '@ironsource/fusion-ui/components/dropdown';
 import {MOCK_OPTIONS} from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
 import {DaterangeModule} from '@ironsource/fusion-ui/components/daterange';
 import {DropdownDualMultiSelectModule} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
+import {ChipFilterComponentConfigurations} from '@ironsource/fusion-ui/components/chip-filter/common/base';
 
 export default {
     title: 'Components/Filters/Filter (Chip)',
@@ -124,6 +125,59 @@ export class FusionStoryWrapperComponent {
 };
 // endregion
 
+// region WithRightAndLeftIcons
+export const WithRightAndLeftIcons = ChipFilterTemplate.bind({});
+WithRightAndLeftIcons.args = {
+    formControl: new FormControl(),
+    configuration: {
+        mode: 'static',
+        close: true,
+        leftIcon: {icon: 'frame', tooltipText: 'This is LEFT icon'},
+        rightIcon: {icon: 'info', tooltipText: 'This is RIGHT icon'}
+    } as ChipFilterComponentConfigurations
+};
+// todo-andyk: uncomment after version will be deployed
+/*WithRightAndLeftIcons.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { ChipFilterModule } from "@ironsource/fusion-ui/components/chip-filter";
+import { DropdownModule } from "@ironsource/fusion-ui/components/dropdown";
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 250px; width: 250px; margin: auto">
+    <fusion-chip-filter [configuration]="{ id: 1, mode: 'static', close: true, leftIcon: {icon: 'frame', tooltipText: 'This is LEFT icon'}, rightIcon: {icon: 'info', tooltipText: 'This is RIGHT icon'} }">
+        <div class="filter-element">
+            <fusion-dropdown
+                 [placeholder]="placeholder"
+                 [formControl]="formControl"
+                 [options]="options"
+                 >
+            </fusion-dropdown>
+        </div>
+    </fusion-chip-filter>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, ChipFilterModule, DropdownModule],
+})
+export class FusionStoryWrapperComponent {
+    placeholder = 'Chip filter';
+    formControl = new FormControl();
+    options: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS)};
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};*/
+// endregion
+
 // region Disabled
 export const Disabled = ChipFilterTemplate.bind({});
 Disabled.args = {
@@ -169,6 +223,60 @@ export class FusionStoryWrapperComponent {
         }
     }
 };
+// endregion
+
+// region DisabledWithRightAndLeftIcons
+export const DisabledWithRightAndLeftIcons = ChipFilterTemplate.bind({});
+DisabledWithRightAndLeftIcons.args = {
+    formControl: new FormControl(),
+    configuration: {
+        mode: 'static',
+        close: true,
+        disabled: true,
+        leftIcon: {icon: 'frame', tooltipText: 'This is LEFT icon'},
+        rightIcon: {icon: 'info', tooltipText: 'This is RIGHT icon'}
+    } as ChipFilterComponentConfigurations
+};
+// todo-andyk: uncomment after version will be deployed
+/*DisabledWithRightAndLeftIcons.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { ChipFilterModule } from "@ironsource/fusion-ui/components/chip-filter";
+import { DropdownModule } from "@ironsource/fusion-ui/components/dropdown";
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 250px; width: 250px; margin: auto">
+    <fusion-chip-filter [configuration]="{ id: 1, mode: 'static', close: true, disabled: true, leftIcon: {icon: 'frame', tooltipText: 'This is LEFT icon'}, rightIcon: {icon: 'info', tooltipText: 'This is RIGHT icon'} }">
+        <div class="filter-element">
+            <fusion-dropdown
+                 [placeholder]="placeholder"
+                 [formControl]="formControl"
+                 [options]="options"
+                 >
+            </fusion-dropdown>
+        </div>
+    </fusion-chip-filter>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, ChipFilterModule, DropdownModule],
+})
+export class FusionStoryWrapperComponent {
+    placeholder = 'Chip filter';
+    formControl = new FormControl();
+    options: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS)};
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};*/
 // endregion
 
 // region Selected
