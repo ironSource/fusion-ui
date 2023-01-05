@@ -92,7 +92,7 @@ Default.args = {
             filterType: DynamicFilterType.DateRange,
             formControl: new FormControl(),
             daterangeConfiguration: {
-                options: {chipLabel: 'Date range', placeholder: 'All', overlayAlignPosition: 'left'}
+                options: {chipLabel: 'Date range', placeholder: 'All'}
             }
         }
     ] as DynamicFilter[],
