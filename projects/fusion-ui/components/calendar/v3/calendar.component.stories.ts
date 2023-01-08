@@ -15,7 +15,11 @@ const actionsData = {
     daySelected: action('daySelected')
 };
 
-const TODAY = new Date();
+const TODAY: Date = new Date();
+const TOMORROW: Date = new Date(TODAY);
+TOMORROW.setDate(TODAY.getDate() + 1);
+const PREVIOUS_MONTH: Date = new Date(TODAY);
+PREVIOUS_MONTH.setDate(TODAY.getMonth() - 1);
 
 export default {
     title: 'Components/Dates/Calendar',
@@ -33,7 +37,7 @@ export default {
         },
         docs: {
             description: {
-                component: dedent`**Calendar** usually used as part of other date related components like date / date-range for month / day selection.`
+                component: dedent`**Calendar** usually used as part of other date related components like date / date-range for month / day selection. It represent only one, defined in configuration month.`
             }
         }
     }
@@ -99,6 +103,241 @@ export class FusionStoryWrapperComponent {
     console.log('Date selected: ', selectedDate);
   }
 }
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region SelectedToday
+export const SelectedToday = CalendarTemplate.bind({});
+SelectedToday.args = {
+    configuration: {
+        month: TODAY,
+        allowFutureSelection: true,
+        calendarType: CalendarType.DATE_PICKER,
+        selection: {date: TODAY} as DaterangeSelection
+    } as CalendarComponentConfigurations
+};
+SelectedToday.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import {
+  CalendarModule,
+  CalendarType,
+  CalendarComponentConfigurations,
+  Day,
+} from '@ironsource/fusion-ui/components/calendar';
+import { DaterangeSelection } from '@ironsource/fusion-ui/components/daterange';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="width: 250px; margin: auto">
+        <fusion-calendar
+            (daySelected)="daySelected($event)"
+            [configuration]="configuration"
+        >
+        </fusion-calendar>
+</div>\`,
+  standalone: true,
+  imports: [CalendarModule],
+})
+export class FusionStoryWrapperComponent {
+  configuration: CalendarComponentConfigurations = {
+    parentDaterangeId: 'calendar_id_123',
+    allowFutureSelection: true,
+    calendarType: CalendarType.DATE_PICKER,
+    month: TODAY,
+    selection: { date: TODAY } as DaterangeSelection,
+  };
+
+  daySelected(selectedDate: Day) {
+    console.log('Date selected: ', selectedDate);
+  }
+}
+const TODAY: Date = new Date();
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region SelectedTomorrow
+export const SelectedTomorrow = CalendarTemplate.bind({});
+SelectedTomorrow.args = {
+    configuration: {
+        month: TODAY,
+        allowFutureSelection: true,
+        calendarType: CalendarType.DATE_PICKER,
+        selection: {date: TOMORROW} as DaterangeSelection
+    } as CalendarComponentConfigurations
+};
+SelectedTomorrow.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import {
+  CalendarModule,
+  CalendarType,
+  CalendarComponentConfigurations,
+  Day,
+} from '@ironsource/fusion-ui/components/calendar';
+import { DaterangeSelection } from '@ironsource/fusion-ui/components/daterange';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="width: 250px; margin: auto">
+        <fusion-calendar
+            (daySelected)="daySelected($event)"
+            [configuration]="configuration"
+        >
+        </fusion-calendar>
+</div>\`,
+  standalone: true,
+  imports: [CalendarModule],
+})
+export class FusionStoryWrapperComponent {
+  configuration: CalendarComponentConfigurations = {
+    parentDaterangeId: 'calendar_id_123',
+    allowFutureSelection: true,
+    calendarType: CalendarType.DATE_PICKER,
+    month: TODAY,
+    selection: { date: TOMORROW } as DaterangeSelection,
+  };
+
+  daySelected(selectedDate: Day) {
+    console.log('Date selected: ', selectedDate);
+  }
+}
+const TODAY: Date = new Date();
+const TOMORROW: Date = new Date(TODAY);
+TOMORROW.setDate(TODAY.getDate() + 1);
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region FutureSelectionNotAllowed
+export const FutureSelectionNotAllowed = CalendarTemplate.bind({});
+FutureSelectionNotAllowed.args = {
+    configuration: {
+        month: TODAY,
+        allowFutureSelection: false,
+        calendarType: CalendarType.DATE_RANGE,
+        selection: {date: null} as DaterangeSelection
+    } as CalendarComponentConfigurations
+};
+FutureSelectionNotAllowed.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import {
+  CalendarModule,
+  CalendarType,
+  CalendarComponentConfigurations,
+  Day,
+} from '@ironsource/fusion-ui/components/calendar';
+import { DaterangeSelection } from '@ironsource/fusion-ui/components/daterange';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="width: 250px; margin: auto">
+        <fusion-calendar
+            (daySelected)="daySelected($event)"
+            [configuration]="configuration"
+        >
+        </fusion-calendar>
+</div>\`,
+  standalone: true,
+  imports: [CalendarModule],
+})
+export class FusionStoryWrapperComponent {
+  configuration: CalendarComponentConfigurations = {
+    parentDaterangeId: 'calendar_id_123',
+    allowFutureSelection: false,
+    calendarType: CalendarType.DATE_PICKER,
+    month: new Date(),
+    selection: { date: null } as DaterangeSelection,
+  };
+
+  daySelected(selectedDate: Day) {
+    console.log('Date selected: ', selectedDate);
+  }
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region PreviousMonth
+export const PreviouseMonth = CalendarTemplate.bind({});
+PreviouseMonth.args = {
+    configuration: {
+        month: PREVIOUS_MONTH,
+        allowFutureSelection: true,
+        calendarType: CalendarType.DATE_PICKER,
+        selection: {date: null} as DaterangeSelection
+    } as CalendarComponentConfigurations
+};
+PreviouseMonth.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import {
+  CalendarModule,
+  CalendarType,
+  CalendarComponentConfigurations,
+  Day,
+} from '@ironsource/fusion-ui/components/calendar';
+import { DaterangeSelection } from '@ironsource/fusion-ui/components/daterange';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="width: 250px; margin: auto">
+        <fusion-calendar
+            (daySelected)="daySelected($event)"
+            [configuration]="configuration"
+        >
+        </fusion-calendar>
+</div>\`,
+  standalone: true,
+  imports: [CalendarModule],
+})
+export class FusionStoryWrapperComponent {
+  configuration: CalendarComponentConfigurations = {
+    parentDaterangeId: 'calendar_id_123',
+    allowFutureSelection: true,
+    calendarType: CalendarType.DATE_PICKER,
+    month: PREVIOUS_MONTH,
+    selection: { date: null } as DaterangeSelection,
+  };
+
+  daySelected(selectedDate: Day) {
+    console.log('Date selected: ', selectedDate);
+  }
+}
+const PREVIOUS_MONTH: Date = new Date();
+PREVIOUS_MONTH.setDate(TODAY.getMonth() -1 );
+
 `,
             format: true,
             type: 'code'
