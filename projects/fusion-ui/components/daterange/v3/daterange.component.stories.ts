@@ -6,7 +6,17 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
-import {DaterangeComponent, DaterangeModule} from './';
+import {DaterangeComponent, DaterangeCustomPreset, DaterangeModule, DaterangeOptions, DaterangeSelection} from './';
+
+const TODAY: Date = new Date();
+const DAYS_AGO_3: Date = new Date(TODAY);
+DAYS_AGO_3.setDate(TODAY.getDate() - 2);
+
+const CUSTOM_PRESET_LAST_3_DAYS: DaterangeCustomPreset = {
+    label: 'Last 3 days',
+    startDate: DAYS_AGO_3,
+    endDate: TODAY
+};
 
 export default {
     title: 'Components/Dates/Date range',
@@ -43,13 +53,11 @@ export default {
 } as Meta<DaterangeComponent>;
 
 const CalendarTemplate: Story<DaterangeComponent> = (args: DaterangeComponent) => ({
-    props: {...args /*, daySelected: actionsData.daySelected*/},
-    template: `<div style="width: 250px; margin: auto">
+    props: {...args},
+    template: `<div style="height: 380px; width: 250px;">
         <fusion-daterange
             [formControl]="formControl"
-            [minDate]="minDate"
-            [maxDate]="maxDate"
-            [options]="option"
+            [options]="options"
         ></fusion-daterange>
 </div>`
 });
@@ -57,51 +65,136 @@ const CalendarTemplate: Story<DaterangeComponent> = (args: DaterangeComponent) =
 // region Default
 export const Default = CalendarTemplate.bind({});
 Default.args = {
-    formControl: new FormControl()
+    formControl: new FormControl() as FormControl<DaterangeSelection>,
+    options: {} as DaterangeOptions
 };
-/*Default.parameters = {
+Default.parameters = {
     docs: {
         source: {
             language: 'typescript',
             code: dedent`
 import { Component } from '@angular/core';
-import {
-  CalendarModule,
-  CalendarType,
-  CalendarComponentConfigurations,
-  Day,
-} from '@ironsource/fusion-ui/components/calendar';
-import { DaterangeSelection } from '@ironsource/fusion-ui/components/daterange';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { DaterangeModule } from '@ironsource/fusion-ui/components/daterange/v3';
+import { DaterangeSelection } from '@ironsource/fusion-ui/components/daterange/entities';
 
 @Component({
   selector: 'fusion-story-wrapper',
-  template: \`<div style="width: 250px; margin: auto">
-        <fusion-calendar
-            (daySelected)="daySelected($event)"
-            [configuration]="configuration"
-        >
-        </fusion-calendar>
+  template: \`<div style="height: 380px; width: 250px;">
+        <fusion-daterange
+            [formControl]="formControl"
+        ></fusion-daterange>
 </div>\`,
   standalone: true,
-  imports: [CalendarModule],
+  imports: [ReactiveFormsModule, DaterangeModule],
 })
 export class FusionStoryWrapperComponent {
-  configuration: CalendarComponentConfigurations = {
-    parentDaterangeId: 'calendar_id_123',
-    allowFutureSelection: true,
-    calendarType: CalendarType.DATE_PICKER,
-    month: new Date(),
-    selection: { date: null } as DaterangeSelection,
-  };
-
-  daySelected(selectedDate: Day) {
-    console.log('Date selected: ', selectedDate);
-  }
+  formControl: FormControl<DaterangeSelection> = new FormControl();
 }
 `,
             format: true,
             type: 'code'
         }
     }
-};*/
+};
+// endregion
+
+// region WithoutPresets
+export const WithoutPresets = CalendarTemplate.bind({});
+WithoutPresets.args = {
+    formControl: new FormControl() as FormControl<DaterangeSelection>,
+    options: {
+        presets: []
+    } as DaterangeOptions
+};
+WithoutPresets.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { DaterangeModule } from '@ironsource/fusion-ui/components/daterange/v3';
+import { DaterangeSelection, DaterangeOptions } from '@ironsource/fusion-ui/components/daterange/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 380px; width: 250px;">
+        <fusion-daterange
+            [formControl]="formControl"
+            [options]="options"
+        ></fusion-daterange>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, DaterangeModule],
+})
+export class FusionStoryWrapperComponent {
+  formControl: FormControl<DaterangeSelection> = new FormControl();
+  options: DaterangeOptions = {
+        presets: []
+  };
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region WithCustomPresets
+export const WithCustomPresets = CalendarTemplate.bind({});
+WithCustomPresets.args = {
+    formControl: new FormControl() as FormControl<DaterangeSelection>,
+    options: {
+        presets: [CUSTOM_PRESET_LAST_3_DAYS]
+    } as DaterangeOptions
+};
+WithCustomPresets.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { DaterangeModule } from '@ironsource/fusion-ui/components/daterange/v3';
+import {
+  DaterangeSelection,
+  DaterangeOptions,
+  DaterangeCustomPreset,
+} from '@ironsource/fusion-ui/components/daterange/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 380px; width: 250px;">
+        <fusion-daterange
+            [formControl]="formControl"
+            [options]="options"
+        ></fusion-daterange>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, DaterangeModule],
+})
+export class FusionStoryWrapperComponent {
+  formControl: FormControl<DaterangeSelection> = new FormControl();
+  options: DaterangeOptions = {
+    presets: [CUSTOM_PRESET_LAST_3_DAYS],
+  };
+}
+
+const TODAY: Date = new Date();
+const DAYS_AGO_3: Date = new Date(TODAY);
+DAYS_AGO_3.setDate(TODAY.getDate() - 2);
+
+const CUSTOM_PRESET_LAST_3_DAYS: DaterangeCustomPreset = {
+  label: 'Last 3 days',
+  startDate: DAYS_AGO_3,
+  endDate: TODAY,
+};
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
 // endregion

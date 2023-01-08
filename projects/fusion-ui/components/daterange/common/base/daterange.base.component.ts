@@ -24,10 +24,15 @@ import {map, takeUntil} from 'rxjs/operators';
 
 @Directive()
 export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, OnDestroy, ControlValueAccessor {
+    /** @internal */
     @Input() id: string;
+    /** @internal */
     @Input() presetsHeaderTemplate: TemplateRef<any>;
+    /** @internal */
     @Input() minDate: Date;
+    /** @internal */
     @Input() maxDate: Date;
+    /** @internal */
     @Input() extraParams: any;
 
     @Input()
