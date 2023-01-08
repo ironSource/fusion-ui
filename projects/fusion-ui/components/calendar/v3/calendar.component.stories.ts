@@ -21,6 +21,9 @@ TOMORROW.setDate(TODAY.getDate() + 1);
 const PREVIOUS_MONTH: Date = new Date(TODAY);
 PREVIOUS_MONTH.setDate(TODAY.getMonth() - 1);
 
+const START_DATE = new Date(TODAY.getFullYear(), TODAY.getMonth(), 2);
+const END_DATE = new Date(TODAY.getFullYear(), TODAY.getMonth() + 1, -3);
+
 export default {
     title: 'Components/Dates/Calendar',
     component: CalendarComponent,
@@ -344,4 +347,188 @@ PREVIOUS_MONTH.setDate(TODAY.getMonth() -1 );
         }
     }
 };
+// endregion
+
+// region GridMode
+const CalendarGridTemplate: Story<CalendarComponent> = (args: CalendarComponent) => ({
+    props: {...args, daySelected: actionsData.daySelected},
+    template: `<div style="width: 250px; margin: auto">
+        <fusion-calendar class="fu-calendar-grid"
+            (daySelected)="daySelected($event)"
+            [configuration]="configuration"
+        >
+        </fusion-calendar>
+</div>`
+});
+export const GridMode = CalendarGridTemplate.bind({});
+GridMode.args = {
+    configuration: {
+        month: TODAY,
+        allowFutureSelection: true,
+        calendarType: CalendarType.DATE_PICKER,
+        selection: {date: null} as DaterangeSelection
+    } as CalendarComponentConfigurations
+};
+/*GridMode.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import {
+  CalendarModule,
+  CalendarType,
+  CalendarComponentConfigurations,
+  Day,
+} from '@ironsource/fusion-ui/components/calendar';
+import { DaterangeSelection } from '@ironsource/fusion-ui/components/daterange';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="width: 250px; margin: auto">
+        <fusion-calendar class="fu-calendar-grid"
+            (daySelected)="daySelected($event)"
+            [configuration]="configuration"
+        >
+        </fusion-calendar>
+</div>\`,
+  standalone: true,
+  imports: [CalendarModule],
+})
+export class FusionStoryWrapperComponent {
+  configuration: CalendarComponentConfigurations = {
+    parentDaterangeId: 'calendar_id_123',
+    allowFutureSelection: true,
+    calendarType: CalendarType.DATE_PICKER,
+    month: TODAY,
+    selection: { date: TODAY } as DaterangeSelection,
+  };
+
+  daySelected(selectedDate: Day) {
+    console.log('Date selected: ', selectedDate);
+  }
+}
+const TODAY: Date = new Date();
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};*/
+// endregion
+
+// region GridModeSelectedDay
+export const GridModeSelectedDay = CalendarGridTemplate.bind({});
+GridModeSelectedDay.args = {
+    configuration: {
+        month: TODAY,
+        allowFutureSelection: true,
+        calendarType: CalendarType.DATE_PICKER,
+        selection: {date: TODAY} as DaterangeSelection
+    } as CalendarComponentConfigurations
+};
+/*GridModeSelectedDay.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import {
+  CalendarModule,
+  CalendarType,
+  CalendarComponentConfigurations,
+  Day,
+} from '@ironsource/fusion-ui/components/calendar';
+import { DaterangeSelection } from '@ironsource/fusion-ui/components/daterange';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="width: 250px; margin: auto">
+        <fusion-calendar class="fu-calendar-grid"
+            (daySelected)="daySelected($event)"
+            [configuration]="configuration"
+        >
+        </fusion-calendar>
+</div>\`,
+  standalone: true,
+  imports: [CalendarModule],
+})
+export class FusionStoryWrapperComponent {
+  configuration: CalendarComponentConfigurations = {
+    parentDaterangeId: 'calendar_id_123',
+    allowFutureSelection: true,
+    calendarType: CalendarType.DATE_PICKER,
+    month: TODAY,
+    selection: { date: TODAY } as DaterangeSelection,
+  };
+
+  daySelected(selectedDate: Day) {
+    console.log('Date selected: ', selectedDate);
+  }
+}
+const TODAY: Date = new Date();
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};*/
+// endregion
+
+// region GridModeSelectedRange
+export const GridModeSelectedRange = CalendarGridTemplate.bind({});
+GridModeSelectedRange.args = {
+    configuration: {
+        month: TODAY,
+        allowFutureSelection: true,
+        calendarType: CalendarType.DATE_PICKER,
+        selection: {startDate: START_DATE, endDate: END_DATE} as DaterangeSelection
+    } as CalendarComponentConfigurations
+};
+/*GridModeSelectedRange.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import {
+  CalendarModule,
+  CalendarType,
+  CalendarComponentConfigurations,
+  Day,
+} from '@ironsource/fusion-ui/components/calendar';
+import { DaterangeSelection } from '@ironsource/fusion-ui/components/daterange';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="width: 250px; margin: auto">
+        <fusion-calendar class="fu-calendar-grid"
+            (daySelected)="daySelected($event)"
+            [configuration]="configuration"
+        >
+        </fusion-calendar>
+</div>\`,
+  standalone: true,
+  imports: [CalendarModule],
+})
+export class FusionStoryWrapperComponent {
+  configuration: CalendarComponentConfigurations = {
+    parentDaterangeId: 'calendar_id_123',
+    allowFutureSelection: true,
+    calendarType: CalendarType.DATE_PICKER,
+    month: TODAY,
+    selection: { date: TODAY } as DaterangeSelection,
+  };
+
+  daySelected(selectedDate: Day) {
+    console.log('Date selected: ', selectedDate);
+  }
+}
+const TODAY: Date = new Date();
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};*/
 // endregion
