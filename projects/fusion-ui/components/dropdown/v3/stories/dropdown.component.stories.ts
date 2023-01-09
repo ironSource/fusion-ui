@@ -1,5 +1,4 @@
-import {Story, Meta} from '@storybook/angular';
-import {moduleMetadata} from '@storybook/angular';
+import {Story, Meta, moduleMetadata} from '@storybook/angular';
 import {dedent} from 'ts-dedent';
 import {CommonModule} from '@angular/common';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
