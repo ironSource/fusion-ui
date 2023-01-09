@@ -31,7 +31,7 @@ export interface TableOptions {
     noDataSubMessage?: string;
     noDataImageBgUrl?: string; // custom image for empty table as background URL (v3)
     customNoData?: DynamicComponentConfiguration; // user defined "no data" content
-    isGroupedTable?: string;
+    isGroupedTable?: boolean;
     pagination?: TablePaginationOption;
     hasTotalsRow?: boolean;
     stickyHeader?: boolean; // is sticky header table
