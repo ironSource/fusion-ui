@@ -27,10 +27,14 @@ export class TooltipComponent {
     @Input() set fusionTooltipText(value: string) {
         this.tooltipText = value;
     }
+    /** @internal */
     @Input() set tooltipConfiguration(value: tooltipConfiguration) {
+        console.log('ttCong: ', value);
         this.tooltipConfig = {...value};
     }
 
+    /** @internal */
     tooltipConfig: tooltipConfiguration;
+    /** @internal */
     tooltipText: string = '';
 }
