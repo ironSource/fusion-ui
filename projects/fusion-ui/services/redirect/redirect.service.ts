@@ -1,4 +1,4 @@
-import {Inject, Injectable, OnDestroy, Optional} from '@angular/core';
+import {Inject, Injectable, Optional} from '@angular/core';
 import {NavigationExtras, Router} from '@angular/router';
 import {UserService} from '@ironsource/fusion-ui/services/user';
 import {MFE_SHARED_CONFIG, MfeSharedConfig} from '@ironsource/fusion-ui/services/shared-config';
@@ -26,7 +26,7 @@ export class RedirectService {
     }
 
     redirectToPage(path: string, options?: any): Promise<boolean> {
-        const routeCommand = [this.config.baseRedirectUrl, path];
+        const routeCommand = [path];
         if (options && options.param) {
             routeCommand.push(options.param);
             delete options.param;
@@ -35,21 +35,17 @@ export class RedirectService {
     }
 
     navigateByUrl(url: string, extras?: NavigationExtras): Promise<boolean> {
-        return this.router.navigateByUrl(this.config.baseRedirectUrl + url, extras);
+        console.log('navigateByUrl', url);
+        return this.router.navigateByUrl(`${this.config.baseRedirectUrl}${url}`.replace('//', '/'), extras);
     }
 
     navigate(commands: any[], extras?: NavigationExtras): Promise<boolean> {
         const commandsArray = Array.isArray(commands) ? commands : [commands];
-        const withBase = commandsArray.map((command, index) => {
-            if (index !== 0) {
-                return command;
-            }
-            if (command.includes(this.config.baseRedirectUrl)) {
-                return command;
-            }
-            return `${this.config.baseRedirectUrl}/${command}`;
-        });
-        return this.router.navigate(withBase, extras);
+        const [base] = commandsArray;
+        if (base.startsWith('/')) {
+            return this.navigateByUrl(commandsArray.join(''), extras);
+        }
+        return this.router.navigate(commands, extras);
     }
 
     /**
