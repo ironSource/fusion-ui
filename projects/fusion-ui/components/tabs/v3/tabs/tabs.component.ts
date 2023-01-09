@@ -11,9 +11,9 @@ import {TabComponent} from '../tab/tab.component';
 })
 export class TabsComponent implements OnInit, OnDestroy {
     @Output() selectedChange = new EventEmitter<TabSelectedEventData>();
-
+    /** @internal */
     @ContentChildren(TabComponent) tabList: QueryList<TabComponent>;
-
+    /** @internal */
     onDestroy$ = new Subject<void>();
 
     constructor(private _element: ElementRef, private _renderer: Renderer2) {}

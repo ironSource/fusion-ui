@@ -5,7 +5,7 @@ import {CommonModule} from '@angular/common';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
-import {TabComponent, TabsModule} from '@ironsource/fusion-ui/components/tabs/v3';
+import {TabsComponent, TabsModule} from '@ironsource/fusion-ui/components/tabs/v3';
 
 const actionsData = {
     selectedChange: action('selectedChange')
@@ -13,7 +13,7 @@ const actionsData = {
 
 export default {
     title: 'Components/Tabs/Tabs',
-    component: TabComponent,
+    component: TabsComponent,
     decorators: [
         moduleMetadata({
             declarations: [],
@@ -64,9 +64,9 @@ Each tab should contain content that is distinct from other tabs in a set. For e
             }
         }
     }
-} as Meta<TabComponent>;
+} as Meta<TabsComponent>;
 
-const TabsTemplate: Story<TabComponent> = (args: TabComponent) => ({
+const TabsTemplate: Story<TabsComponent> = (args: TabsComponent) => ({
     props: {...args, selectedChange: actionsData.selectedChange},
     template: `<style>
     fusion-tab {background-color: #fff;}
