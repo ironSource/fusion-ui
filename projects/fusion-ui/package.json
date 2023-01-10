@@ -50,7 +50,7 @@
         "./components/table/v2",
         "./components/table",
         "./components/menu-drop",
-        "./components/api-base/",
+        "./components/api-base",
         "./pipes/string"
     ],
     "exports": {

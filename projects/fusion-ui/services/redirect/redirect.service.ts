@@ -35,17 +35,20 @@ export class RedirectService {
     }
 
     navigateByUrl(url: string, extras?: NavigationExtras): Promise<boolean> {
-        console.log('navigateByUrl', url);
-        return this.router.navigateByUrl(`${this.config.baseRedirectUrl}${url}`.replace('//', '/'), extras);
+        if (url.startsWith('/')) {
+            return this.router.navigateByUrl(`${this.config.baseRedirectUrl}${url}`.replace('//', '/'), extras);
+        }
+        return this.router.navigateByUrl(url, extras);
     }
 
     navigate(commands: any[], extras?: NavigationExtras): Promise<boolean> {
         const commandsArray = Array.isArray(commands) ? commands : [commands];
         const [base] = commandsArray;
         if (base.startsWith('/')) {
-            return this.navigateByUrl(commandsArray.join(''), extras);
+            commandsArray[0] = `${this.config.baseRedirectUrl}${commandsArray[0]}`;
+            return this.router.navigate(commandsArray, extras);
         }
-        return this.router.navigate(commands, extras);
+        return this.router.navigate(commandsArray, extras);
     }
 
     /**
