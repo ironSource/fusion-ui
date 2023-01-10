@@ -88,11 +88,6 @@ const TooltipInlineTemplate: Story<TooltipComponent> = (args: TooltipComponent) 
 `
 });
 export const Inline = TooltipInlineTemplate.bind({});
-Inline.args = {
-    tooltipConfiguration: {
-        backgroundColor: '#696A6B'
-    }
-};
 Inline.parameters = {
     docs: {
         description: {
