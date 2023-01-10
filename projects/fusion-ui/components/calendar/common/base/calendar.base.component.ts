@@ -27,10 +27,15 @@ export abstract class CalendarBaseComponent implements OnInit {
 
     @Output() daySelected: EventEmitter<Day> = new EventEmitter();
 
+    /** @internal */
     daysOfTheWeek = DAY_NAMES;
+    /** @internal */
     _configurations: CalendarComponentConfigurations = DEFAULT_CALENDAR_COMPONENT_CONFIGURATION;
 
-    constructor(public calendarService: CalendarService) {}
+    constructor(
+        /** @internal */
+        public calendarService: CalendarService
+    ) {}
 
     ngOnInit() {
         if (this.configuration.month) {
@@ -38,14 +43,15 @@ export abstract class CalendarBaseComponent implements OnInit {
         }
     }
 
+    /** @internal */
     selectDay(day: Day) {
         this.daySelected.emit(day);
     }
-
+    /** @internal */
     isDisabled(day: Day): boolean {
         return !day.date || (day.isInFuture && !this.configuration.allowFutureSelection) || this.isInMInMaxRange(day.date);
     }
-
+    /** @internal */
     isActive(value: Day): boolean {
         if (
             value.date &&
@@ -61,11 +67,11 @@ export abstract class CalendarBaseComponent implements OnInit {
         }
         return false;
     }
-
+    /** @internal */
     dayHovered(day: Day, event: MouseEvent) {}
-
+    /** @internal */
     hoverEnd() {}
-
+    /** @internal */
     getDayClasses(day: Day) {
         const selectedStartDateTimestamp = getDateDayTime(this.configuration.selection.startDate ?? this.configuration.selection.date);
         const selectedEndDateTimestamp = getDateDayTime(this.configuration.selection.endDate ?? this.configuration.selection.date);

@@ -1,7 +1,7 @@
 @import "../../../src/style/scss/v3/vars/vars";
 @import "../../../src/style/scss/v3/mixins/mixins";
 
-$backgroundColor: $fu-black-200;
+$backgroundColor: $fu-black-900;
 
 %arrowBorderVertical{
     content: '';
@@ -28,7 +28,6 @@ $backgroundColor: $fu-black-200;
     border-radius: 8px;
     line-height: 19.5px;
     letter-spacing: 0.24px;
-    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
