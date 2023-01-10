@@ -24,12 +24,12 @@ import {tooltipConfiguration} from '@ironsource/fusion-ui/components/tooltip/com
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TooltipComponent {
+    /** @internal */
     @Input() set fusionTooltipText(value: string) {
         this.tooltipText = value;
     }
     /** @internal */
     @Input() set tooltipConfiguration(value: tooltipConfiguration) {
-        console.log('ttCong: ', value);
         this.tooltipConfig = {...value};
     }
 
