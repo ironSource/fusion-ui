@@ -9,6 +9,10 @@ import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {AlertModule} from '@ironsource/fusion-ui/components/alert/v2';
 import {FileCsvUploadModule} from '@ironsource/fusion-ui/components/file-csv-upload';
 import {CapitalizePipe, TruncatePipe} from '@ironsource/fusion-ui//pipes/string';
+import {ChipFiltersModule} from '@ironsource/fusion-ui/components/chip-filters';
+import {ChipFilterModule} from '@ironsource/fusion-ui/components/chip-filter';
+import {DropdownModule} from '@ironsource/fusion-ui/components/dropdown';
+import {DropdownDualMultiSelectModule} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
 
 const routes: Routes = [{path: '', component: AlertDocsV2Component}];
 
@@ -24,7 +28,11 @@ const routes: Routes = [{path: '', component: AlertDocsV2Component}];
         AlertModule,
         FileCsvUploadModule,
         CapitalizePipe,
-        TruncatePipe
+        TruncatePipe,
+        ChipFiltersModule,
+        ChipFilterModule,
+        DropdownModule,
+        DropdownDualMultiSelectModule
     ]
 })
 export class AlertDocsV2Module {}
