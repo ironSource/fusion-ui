@@ -9,7 +9,6 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ChipFiltersComponent, ChipFiltersModule} from '@ironsource/fusion-ui/components/chip-filters';
 import {ChipFilterModule} from '@ironsource/fusion-ui/components/chip-filter';
 import {DropdownModule} from '@ironsource/fusion-ui/components/dropdown';
-import {DaterangeModule} from '@ironsource/fusion-ui/components/daterange';
 import {DropdownDualMultiSelectModule} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
 import {
     MOCK_CAMPAIGNS,
