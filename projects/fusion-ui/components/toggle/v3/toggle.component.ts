@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {NG_VALUE_ACCESSOR, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {isNullOrUndefined, UniqueIdService} from '@ironsource/fusion-ui';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {BehaviorSubject} from 'rxjs';
 
 @Component({
