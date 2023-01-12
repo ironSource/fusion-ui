@@ -1,7 +1,16 @@
 import {InjectionToken} from '@angular/core';
 
 export interface MfeSharedConfig {
-    baseRedirectUrl?: string;
+    platform: {
+        platformPartners: string;
+        platformPartnersAPI: string;
+        platformPartnersRedirectURL: string;
+        platformJs: string;
+        platformJsApi: string;
+    };
+    assetsPath: string;
+    isLocalEnv?: boolean;
+    baseRedirectUrl: string;
     disablePage?: {
         redirectToPartners?: {
             path: string;
