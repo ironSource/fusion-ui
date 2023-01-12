@@ -1,0 +1,12 @@
+<label>
+    <input type="checkbox"
+        [id]="id"
+        [checked]="checked$ | async"
+        [disabled]="disabled$ | async"
+        (change)="change($event)"
+    />
+  <div class="fu-toggle-slider"></div>
+  <div class="fu-toggle-content"><ng-content></ng-content></div>
+</label>
+<div class="fu-error-msg" *ngIf="error">{{error}}</div>
+<div class="fu-helper-text" *ngIf="helper">{{helper}}</div>
