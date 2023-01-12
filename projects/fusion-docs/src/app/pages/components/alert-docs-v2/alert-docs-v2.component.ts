@@ -14,6 +14,7 @@ import {
     MOCK_USERS
 } from '@ironsource/fusion-ui/components/chip-filters/v3/stories/chip-filters.stories.mock';
 import {ChipFilterComponentConfigurations} from '@ironsource/fusion-ui/components/chip-filter/common/base';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
 
 @Component({
     selector: 'fusion-alert-docs-v2',
@@ -71,13 +72,6 @@ export class AlertDocsV2Component implements OnInit, OnDestroy {
     fileState$ = new BehaviorSubject<FileDragAndDropState>(null);
 
     //------------
-    // region Add Filter Chip props
-    addFiltersTitle = 'Add filter by:';
-    addFilterOptions = [
-        {id: 4, displayText: 'Country'},
-        {id: 5, displayText: 'Campaigns'}
-    ];
-    // endregion
     fcChip1 = new FormControl();
     configChip1: ChipFilterComponentConfigurations = {id: 1, mode: 'static', close: true};
     optionsChip1 = MOCK_USERS;
@@ -104,6 +98,15 @@ export class AlertDocsV2Component implements OnInit, OnDestroy {
             optionsTitleChip: 'Campaigns'
         }
     ];
+
+    // region Add Filter Chip props
+    addFiltersTitle = 'Add filter by:';
+    addFilterOptions: DropdownOption[] = this.dynamicFiltersAll.map(filterDynamic => ({
+        id: filterDynamic.configChip.id,
+        displayText: filterDynamic.optionsTitleChip
+    }));
+    // endregion
+
     /*
 
     // region first chip - Country (dynamic)
