@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.1.0-rc.14](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.13...v5.1.0-rc.14) (2023-01-15)
+
+
+### Bug Fixes
+
+* **fg-106:** fix build for v3 fusion-search component ([2360c50](https://github.com/ironSource/fusion-ui/commit/2360c50c1b27d22564029a0901ae2e01d930f1be))
+
 ## [5.1.0-rc.13](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.6...v5.1.0-rc.13) (2023-01-15)
 
 
