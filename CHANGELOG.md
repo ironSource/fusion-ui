@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.1.0-rc.13](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.6...v5.1.0-rc.13) (2023-01-15)
+
+
+### Features
+
+* **fg-106:** new v3 fusion-search component with stories ([b454f3b](https://github.com/ironSource/fusion-ui/commit/b454f3bc57f45450b66b5ac786f9b3201584c73b))
+
 ## [5.1.0-rc.12](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.6...v5.1.0-rc.12) (2023-01-12)
 
 ## [5.1.0-rc.6](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.5...v5.1.0-rc.6) (2022-12-21)
