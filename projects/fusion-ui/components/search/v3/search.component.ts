@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {FormControl, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {isNullOrUndefined} from '@ironsource/fusion-ui';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 
 @Component({
@@ -122,7 +122,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     }
     // endregion
 
-    private clearInput(withEvent = false): void {
+    clearInput(withEvent = false): void {
         this.searchFormControl.setValue('', {emitEvent: withEvent});
         if (withEvent) {
             this.setFocus();

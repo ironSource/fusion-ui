@@ -6,11 +6,11 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../stories/environments/environment';
 
-import {SearchComponent} from '@ironsource/fusion-ui/components/search';
+import {SearchComponent} from './search.component';
 
 const formControl = new FormControl();
-const formControlWithValue = new FormControl('Typing something');
-const formControlDisabled = new FormControl({value: 'Typing something', disabled: true});
+// const formControlWithValue = new FormControl('Typing something');
+// const formControlDisabled = new FormControl({value: 'Typing something', disabled: true});
 
 export default {
     title: 'Components/Search',
@@ -70,6 +70,35 @@ const TooltipTemplate: Story<SearchComponent> = (args: SearchComponent) => ({
 export const Default = TooltipTemplate.bind({});
 Default.args = {
     formControl: formControl
+};
+Default.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SearchComponent } from '@ironsource/fusion-ui/components/search/v3';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="width: 230px;">
+  <fusion-search
+   [formControl]="formControl"
+  ></fusion-search>
+</div>\`,
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, SearchComponent],
+})
+export class FusionStoryWrapperComponent {
+  formControl = new FormControl();
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
 };
 // endregion
 
