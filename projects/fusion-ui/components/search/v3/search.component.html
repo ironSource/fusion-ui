@@ -1,1 +1,10 @@
-<p>search works!</p>
+<fusion-icon class="fu-search" [name]="searchIcon"></fusion-icon>
+<input #input
+       type="text"
+       autocomplete="off"
+       minlength="1"
+       [placeholder]="placeholder"
+       [formControl]="searchFormControl"
+       [class.fu-has-clear-icon]="showClearIcon"
+/>
+<fusion-icon class="fu-clear" *ngIf="showClearIcon" [name]="clearIcon" (click)="clearInput(true)"></fusion-icon>
