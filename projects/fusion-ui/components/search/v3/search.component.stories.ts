@@ -108,6 +108,37 @@ WithClearIcon.args = {
     formControl: formControl,
     showClearIcon: true
 };
+WithClearIcon.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SearchComponent } from '@ironsource/fusion-ui/components/search/v3';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="width: 230px;">
+  <fusion-search
+   [formControl]="formControl"
+   [showClearIcon]="showClearIcon"
+  ></fusion-search>
+</div>\`,
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, SearchComponent],
+})
+export class FusionStoryWrapperComponent {
+  formControl = new FormControl();
+  showClearIcon = true;
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
 // endregion
 
 // region Small
@@ -115,6 +146,35 @@ export const Small = TooltipTemplate.bind({});
 Small.args = {
     formControl: formControl,
     searchClassName: 'fu-small'
+};
+Small.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SearchComponent } from '@ironsource/fusion-ui/components/search/v3';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="width: 230px;">
+  <fusion-search class="fu-small"
+   [formControl]="formControl"
+  ></fusion-search>
+</div>\`,
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, SearchComponent],
+})
+export class FusionStoryWrapperComponent {
+  formControl = new FormControl();
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
 };
 // endregion
 
@@ -124,6 +184,37 @@ SmallWithClearIcon.args = {
     formControl: formControl,
     searchClassName: 'fu-small',
     showClearIcon: true
+};
+SmallWithClearIcon.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SearchComponent } from '@ironsource/fusion-ui/components/search/v3';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="width: 230px;">
+  <fusion-search  class="fu-small"
+   [formControl]="formControl"
+   [showClearIcon]="showClearIcon"
+  ></fusion-search>
+</div>\`,
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, SearchComponent],
+})
+export class FusionStoryWrapperComponent {
+  formControl = new FormControl();
+  showClearIcon = true;
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
 };
 // endregion
 
@@ -142,6 +233,37 @@ TransparentWithClearIcon.args = {
     transparentClassName: 'fu-transparent',
     showClearIcon: true
 };
+TransparentWithClearIcon.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SearchComponent } from '@ironsource/fusion-ui/components/search/v3';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="width: 230px;">
+  <fusion-search class="fu-transparent"
+   [formControl]="formControl"
+   [showClearIcon]="showClearIcon"
+  ></fusion-search>
+</div>\`,
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, SearchComponent],
+})
+export class FusionStoryWrapperComponent {
+  formControl = new FormControl();
+  showClearIcon = true;
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
 // endregion
 
 // region TransparentSmallWithClearIcon
@@ -151,6 +273,37 @@ TransparentSmallWithClearIcon.args = {
     searchClassName: 'fu-small',
     transparentClassName: 'fu-transparent',
     showClearIcon: true
+};
+TransparentWithClearIcon.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SearchComponent } from '@ironsource/fusion-ui/components/search/v3';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="width: 230px;">
+  <fusion-search class="fu-transparent fu-small"
+   [formControl]="formControl"
+   [showClearIcon]="showClearIcon"
+  ></fusion-search>
+</div>\`,
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, SearchComponent],
+})
+export class FusionStoryWrapperComponent {
+  formControl = new FormControl();
+  showClearIcon = true;
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
 };
 // endregion
 
