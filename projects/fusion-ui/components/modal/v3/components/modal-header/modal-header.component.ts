@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
     selector: 'fusion-modal-header',
@@ -7,6 +8,20 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 })
 export class ModalHeaderComponent {
     @Input() headerText: string;
-    @Input() isHeaderBorder = true;
-    @Output() closed = new EventEmitter();
+    @Input() showCloseButton = true;
+
+    private _infoText: string;
+    @Input() set infoText(value: string) {
+        this._infoText = value;
+    }
+    get infoText(): string {
+        return this._infoText;
+    }
+
+    /** @internal */
+    closeButtonIcon = {iconName: 'close', iconVersion: 'v3'};
+    /** @internal */
+    infoIcon = {iconName: 'info', iconVersion: 'v3'};
+
+    @Output() close = new EventEmitter();
 }
