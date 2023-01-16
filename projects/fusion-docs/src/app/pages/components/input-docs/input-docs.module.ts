@@ -5,13 +5,14 @@ import {Routes, RouterModule} from '@angular/router';
 import {ExampleBlockModule} from '../../../components/example-block/example-block.module';
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
-import {InputModule} from '@ironsource/fusion-ui/components/input/v3';
+import {InputModule} from '@ironsource/fusion-ui/components/input/v1';
 import {ReactiveFormsModule} from '@angular/forms';
 import {TextareaModule} from '@ironsource/fusion-ui/components/textarea/v3';
 import {AlertModule} from '@ironsource/fusion-ui/components/alert/v1';
 import {ErrorMessageModule} from '@ironsource/fusion-ui/components/error-message';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v3';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+import {SearchComponent} from '@ironsource/fusion-ui/components/search';
 
 const routes: Routes = [{path: '', component: InputDocsComponent}];
 
@@ -29,7 +30,8 @@ const routes: Routes = [{path: '', component: InputDocsComponent}];
         AlertModule,
         ErrorMessageModule,
         IconModule,
-        TooltipModule
+        TooltipModule,
+        SearchComponent
     ]
 })
 export class InputDocsModule {}
