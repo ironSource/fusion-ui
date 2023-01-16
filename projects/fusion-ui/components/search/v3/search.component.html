@@ -7,4 +7,4 @@
        [formControl]="searchFormControl"
        [class.fu-has-clear-icon]="showClearIcon"
 />
-<fusion-icon class="fu-clear" *ngIf="showClearIcon" [name]="clearIcon" (click)="clearInput(true)"></fusion-icon>
+<fusion-icon class="fu-clear" *ngIf="showClearIcon && (searchFormControl.valueChanges | async)" [name]="clearIcon" (click)="clearInput(true)"></fusion-icon>

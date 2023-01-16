@@ -45,6 +45,9 @@ export default {
             ]
         }
     },
+    args: {
+        showClearIcon: true
+    },
     argTypes: {
         formControl: {
             control: false
@@ -102,13 +105,13 @@ export class FusionStoryWrapperComponent {
 };
 // endregion
 
-// region WithClearIcon
-export const WithClearIcon = TooltipTemplate.bind({});
-WithClearIcon.args = {
+// region NoClearIcon
+export const NoClearIcon = TooltipTemplate.bind({});
+NoClearIcon.args = {
     formControl: formControl,
-    showClearIcon: true
+    showClearIcon: false
 };
-WithClearIcon.parameters = {
+NoClearIcon.parameters = {
     docs: {
         source: {
             language: 'typescript',
@@ -131,7 +134,7 @@ import { SearchComponent } from '@ironsource/fusion-ui/components/search/v3';
 })
 export class FusionStoryWrapperComponent {
   formControl = new FormControl();
-  showClearIcon = true;
+  showClearIcon = false;
 }
 `,
             format: true,
@@ -178,14 +181,14 @@ export class FusionStoryWrapperComponent {
 };
 // endregion
 
-// region SmallWithClearIcon
-export const SmallWithClearIcon = TooltipTemplate.bind({});
-SmallWithClearIcon.args = {
+// region SmallNoClearIcon
+export const SmallNoClearIcon = TooltipTemplate.bind({});
+SmallNoClearIcon.args = {
     formControl: formControl,
     searchClassName: 'fu-small',
-    showClearIcon: true
+    showClearIcon: false
 };
-SmallWithClearIcon.parameters = {
+SmallNoClearIcon.parameters = {
     docs: {
         source: {
             language: 'typescript',
@@ -208,7 +211,7 @@ import { SearchComponent } from '@ironsource/fusion-ui/components/search/v3';
 })
 export class FusionStoryWrapperComponent {
   formControl = new FormControl();
-  showClearIcon = true;
+  showClearIcon = false;
 }
 `,
             format: true,
@@ -226,14 +229,14 @@ Transparent.args = {
 };
 // endregion
 
-// region TransparentWithClearIcon
-export const TransparentWithClearIcon = TooltipTemplate.bind({});
-TransparentWithClearIcon.args = {
+// region TransparentNoClearIcon
+export const TransparentNoClearIcon = TooltipTemplate.bind({});
+TransparentNoClearIcon.args = {
     formControl: formControl,
     transparentClassName: 'fu-transparent',
-    showClearIcon: true
+    showClearIcon: false
 };
-TransparentWithClearIcon.parameters = {
+TransparentNoClearIcon.parameters = {
     docs: {
         source: {
             language: 'typescript',
@@ -256,7 +259,7 @@ import { SearchComponent } from '@ironsource/fusion-ui/components/search/v3';
 })
 export class FusionStoryWrapperComponent {
   formControl = new FormControl();
-  showClearIcon = true;
+  showClearIcon = false;
 }
 `,
             format: true,
@@ -266,15 +269,15 @@ export class FusionStoryWrapperComponent {
 };
 // endregion
 
-// region TransparentSmallWithClearIcon
-export const TransparentSmallWithClearIcon = TooltipTemplate.bind({});
-TransparentSmallWithClearIcon.args = {
+// region TransparentSmallNoClearIcon
+export const TransparentSmallNoClearIcon = TooltipTemplate.bind({});
+TransparentSmallNoClearIcon.args = {
     formControl: formControl,
     searchClassName: 'fu-small',
     transparentClassName: 'fu-transparent',
-    showClearIcon: true
+    showClearIcon: false
 };
-TransparentWithClearIcon.parameters = {
+TransparentSmallNoClearIcon.parameters = {
     docs: {
         source: {
             language: 'typescript',
@@ -297,7 +300,7 @@ import { SearchComponent } from '@ironsource/fusion-ui/components/search/v3';
 })
 export class FusionStoryWrapperComponent {
   formControl = new FormControl();
-  showClearIcon = true;
+  showClearIcon = false;
 }
 `,
             format: true,
