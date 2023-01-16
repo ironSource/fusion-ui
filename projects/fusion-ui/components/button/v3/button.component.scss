@@ -261,4 +261,11 @@ $largeIconSize: 24px;
             }
         }
     }
+
+    &.fu-with-loading{
+        min-width: 75px;
+        &.small{
+            min-width: 63px;
+        }
+    }
 }

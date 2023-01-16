@@ -69,6 +69,13 @@ const ModalFooterTemplate: Story<ModalFooterComponent> = (args: ModalFooterCompo
 export const Default = ModalFooterTemplate.bind({});
 // endregion
 
+// region PendingPrimaryButton
+export const PendingPrimaryButton = ModalFooterTemplate.bind({});
+PendingPrimaryButton.args = {
+    submitButtonPending: true
+};
+// endregion
+
 // region PrimaryButtonDisable
 export const PrimaryButtonDisable = ModalFooterTemplate.bind({});
 PrimaryButtonDisable.args = {
@@ -83,6 +90,18 @@ PrimaryButtonDisable.args = {
 // region PrimaryAndSecondary
 export const PrimaryAndSecondary = ModalFooterTemplate.bind({});
 PrimaryAndSecondary.args = {
+    cancelButton: {
+        cancelButtonText: 'Button',
+        cancelButtonClass: 'transparent third',
+        cancelButtonHidden: false
+    } as {cancelButtonText?: string; cancelButtonClass?: string; cancelButtonHidden?: boolean}
+};
+// endregion
+
+// region PendingPrimaryAndSecondary
+export const PendingPrimaryAndSecondary = ModalFooterTemplate.bind({});
+PendingPrimaryAndSecondary.args = {
+    submitButtonPending: true,
     cancelButton: {
         cancelButtonText: 'Button',
         cancelButtonClass: 'transparent third',
@@ -118,6 +137,24 @@ Small.args = {
 // region SmallPrimaryAndSecondary
 export const SmallPrimaryAndSecondary = ModalFooterTemplate.bind({});
 SmallPrimaryAndSecondary.args = {
+    footerSizeClassName: 'fu-small',
+    submitButton: {
+        submitButtonText: 'Button',
+        submitButtonClass: 'small',
+        submitButtonDisabled: false
+    } as {submitButtonText?: string; submitButtonClass?: string; submitButtonDisabled?: boolean},
+    cancelButton: {
+        cancelButtonText: 'Button',
+        cancelButtonClass: 'transparent third small',
+        cancelButtonHidden: false
+    } as {cancelButtonText?: string; cancelButtonClass?: string; cancelButtonHidden?: boolean}
+};
+// endregion
+
+// region SmallPendingPrimaryAndSecondary
+export const SmallPendingPrimaryAndSecondary = ModalFooterTemplate.bind({});
+SmallPendingPrimaryAndSecondary.args = {
+    submitButtonPending: true,
     footerSizeClassName: 'fu-small',
     submitButton: {
         submitButtonText: 'Button',
