@@ -57,16 +57,6 @@ hr{
 
 // region Default
 export const Default = ModalTemplate.bind({});
-// endregion
-
-// region WithoutFooter
-export const WithoutFooter = ModalTemplate.bind({});
-WithoutFooter.args = {
-    configuration: {
-        ...DEFAULT_CONFIGURATION,
-        hasFooter: false
-    }
-};
 Default.parameters = {
     docs: {
         source: {
@@ -138,12 +128,166 @@ export class FusionStoryWrapperComponent {
 };
 // endregion
 
+// region WithoutFooter
+export const WithoutFooter = ModalTemplate.bind({});
+WithoutFooter.args = {
+    configuration: {
+        ...DEFAULT_CONFIGURATION,
+        hasFooter: false
+    }
+};
+WithoutFooter.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ButtonModule } from '@ironsource/fusion-ui/components/button/v3';
+import {
+  ModalConfiguration,
+  ModalModule,
+} from '@ironsource/fusion-ui/components/modal/v3';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`
+    <fusion-modal
+      *ngIf="modalShown"
+      [configuration]="modalConfiguration"
+      [submitPending]="submitPending"
+      (close)="onModalClose($event)"
+    >
+    <div class="content-example">Content item placeholder. To be replaced with component</div>
+    <hr/>
+    <div class="content-example">Content item placeholder. To be replaced with component</div>
+    </fusion-modal>
+
+    <fusion-button (click)="showModal()">Show Modal</fusion-button>
+  \`,
+  styles: [\`
+  .content-example{
+    height: 53px;
+    background-color: #F1F3F4;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+  hr{
+    border: solid 1px #DDDFE1;
+    background-color: #DDDFE1;
+    margin: 20px 0;
+}
+  \`],
+  standalone: true,
+  imports: [CommonModule, ButtonModule, ModalModule],
+})
+export class FusionStoryWrapperComponent {
+    submitPending = false;
+    modalConfiguration: ModalConfiguration = ${JSON.stringify({
+        ...DEFAULT_CONFIGURATION,
+        hasFooter: false
+    })};
+
+    modalShown = false;
+
+    showModal() {
+    this.modalShown = true;
+  }
+
+  onModalClose($event) {
+    this.modalShown = false;
+    console.log('Modal closed by', $event);
+  }
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
 // region WithoutHeader
 export const WithoutHeader = ModalTemplate.bind({});
 WithoutHeader.args = {
     configuration: {
         ...DEFAULT_CONFIGURATION,
         headerText: ''
+    }
+};
+WithoutHeader.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ButtonModule } from '@ironsource/fusion-ui/components/button/v3';
+import {
+  ModalConfiguration,
+  ModalModule,
+} from '@ironsource/fusion-ui/components/modal/v3';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`
+    <fusion-modal
+      *ngIf="modalShown"
+      [configuration]="modalConfiguration"
+      [submitPending]="submitPending"
+      (close)="onModalClose($event)"
+    >
+    <div class="content-example">Content item placeholder. To be replaced with component</div>
+    <hr/>
+    <div class="content-example">Content item placeholder. To be replaced with component</div>
+    </fusion-modal>
+
+    <fusion-button (click)="showModal()">Show Modal</fusion-button>
+  \`,
+  styles: [\`
+  .content-example{
+    height: 53px;
+    background-color: #F1F3F4;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+  hr{
+    border: solid 1px #DDDFE1;
+    background-color: #DDDFE1;
+    margin: 20px 0;
+}
+  \`],
+  standalone: true,
+  imports: [CommonModule, ButtonModule, ModalModule],
+})
+export class FusionStoryWrapperComponent {
+    submitPending = false;
+    modalConfiguration: ModalConfiguration = ${JSON.stringify({
+        ...DEFAULT_CONFIGURATION,
+        headerText: ''
+    })};
+
+    modalShown = false;
+
+    showModal() {
+    this.modalShown = true;
+  }
+
+  onModalClose($event) {
+    this.modalShown = false;
+    console.log('Modal closed by', $event);
+  }
+}
+`,
+            format: true,
+            type: 'code'
+        }
     }
 };
 // endregion
@@ -153,6 +297,75 @@ export const WithPrimaryPending = ModalTemplate.bind({});
 WithPrimaryPending.args = {
     submitPending: true
 };
+WithPrimaryPending.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ButtonModule } from '@ironsource/fusion-ui/components/button/v3';
+import {
+  ModalConfiguration,
+  ModalModule,
+} from '@ironsource/fusion-ui/components/modal/v3';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`
+    <fusion-modal
+      *ngIf="modalShown"
+      [configuration]="modalConfiguration"
+      [submitPending]="submitPending"
+      (close)="onModalClose($event)"
+    >
+    <div class="content-example">Content item placeholder. To be replaced with component</div>
+    <hr/>
+    <div class="content-example">Content item placeholder. To be replaced with component</div>
+    </fusion-modal>
+
+    <fusion-button (click)="showModal()">Show Modal</fusion-button>
+  \`,
+  styles: [\`
+  .content-example{
+    height: 53px;
+    background-color: #F1F3F4;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+  hr{
+    border: solid 1px #DDDFE1;
+    background-color: #DDDFE1;
+    margin: 20px 0;
+}
+  \`],
+  standalone: true,
+  imports: [CommonModule, ButtonModule, ModalModule],
+})
+export class FusionStoryWrapperComponent {
+    submitPending = true;
+    modalConfiguration: ModalConfiguration = ${JSON.stringify(DEFAULT_CONFIGURATION)};
+
+    modalShown = false;
+
+    showModal() {
+    this.modalShown = true;
+  }
+
+  onModalClose($event) {
+    this.modalShown = false;
+    console.log('Modal closed by', $event);
+  }
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
 // endregion
 
 // region WithInfoTooltip
@@ -161,6 +374,78 @@ WithInfoTooltip.args = {
     configuration: {
         ...DEFAULT_CONFIGURATION,
         headerInfoText: 'Info tooltip text'
+    }
+};
+WithInfoTooltip.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ButtonModule } from '@ironsource/fusion-ui/components/button/v3';
+import {
+  ModalConfiguration,
+  ModalModule,
+} from '@ironsource/fusion-ui/components/modal/v3';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`
+    <fusion-modal
+      *ngIf="modalShown"
+      [configuration]="modalConfiguration"
+      [submitPending]="submitPending"
+      (close)="onModalClose($event)"
+    >
+    <div class="content-example">Content item placeholder. To be replaced with component</div>
+    <hr/>
+    <div class="content-example">Content item placeholder. To be replaced with component</div>
+    </fusion-modal>
+
+    <fusion-button (click)="showModal()">Show Modal</fusion-button>
+  \`,
+  styles: [\`
+  .content-example{
+    height: 53px;
+    background-color: #F1F3F4;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+  hr{
+    border: solid 1px #DDDFE1;
+    background-color: #DDDFE1;
+    margin: 20px 0;
+}
+  \`],
+  standalone: true,
+  imports: [CommonModule, ButtonModule, ModalModule],
+})
+export class FusionStoryWrapperComponent {
+    submitPending = false;
+    modalConfiguration: ModalConfiguration = ${JSON.stringify({
+        ...DEFAULT_CONFIGURATION,
+        headerInfoText: 'Info tooltip text'
+    })};
+
+    modalShown = false;
+
+    showModal() {
+    this.modalShown = true;
+  }
+
+  onModalClose($event) {
+    this.modalShown = false;
+    console.log('Modal closed by', $event);
+  }
+}
+`,
+            format: true,
+            type: 'code'
+        }
     }
 };
 // endregion
@@ -176,6 +461,81 @@ WithCustomSize.args = {
         }
     }
 };
+WithCustomSize.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ButtonModule } from '@ironsource/fusion-ui/components/button/v3';
+import {
+  ModalConfiguration,
+  ModalModule,
+} from '@ironsource/fusion-ui/components/modal/v3';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`
+    <fusion-modal
+      *ngIf="modalShown"
+      [configuration]="modalConfiguration"
+      [submitPending]="submitPending"
+      (close)="onModalClose($event)"
+    >
+    <div class="content-example">Content item placeholder. To be replaced with component</div>
+    <hr/>
+    <div class="content-example">Content item placeholder. To be replaced with component</div>
+    </fusion-modal>
+
+    <fusion-button (click)="showModal()">Show Modal</fusion-button>
+  \`,
+  styles: [\`
+  .content-example{
+    height: 53px;
+    background-color: #F1F3F4;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+  hr{
+    border: solid 1px #DDDFE1;
+    background-color: #DDDFE1;
+    margin: 20px 0;
+}
+  \`],
+  standalone: true,
+  imports: [CommonModule, ButtonModule, ModalModule],
+})
+export class FusionStoryWrapperComponent {
+    submitPending = false;
+    modalConfiguration: ModalConfiguration = ${JSON.stringify({
+        ...DEFAULT_CONFIGURATION,
+        ...{
+            width: '600px',
+            height: '600px'
+        }
+    })};
+
+    modalShown = false;
+
+    showModal() {
+    this.modalShown = true;
+  }
+
+  onModalClose($event) {
+    this.modalShown = false;
+    console.log('Modal closed by', $event);
+  }
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
 // endregion
 
 // region WithErrorOnFooter
@@ -184,6 +544,78 @@ WithErrorOnFooter.args = {
     configuration: {
         ...DEFAULT_CONFIGURATION,
         error: 'error text'
+    }
+};
+WithErrorOnFooter.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ButtonModule } from '@ironsource/fusion-ui/components/button/v3';
+import {
+  ModalConfiguration,
+  ModalModule,
+} from '@ironsource/fusion-ui/components/modal/v3';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`
+    <fusion-modal
+      *ngIf="modalShown"
+      [configuration]="modalConfiguration"
+      [submitPending]="submitPending"
+      (close)="onModalClose($event)"
+    >
+    <div class="content-example">Content item placeholder. To be replaced with component</div>
+    <hr/>
+    <div class="content-example">Content item placeholder. To be replaced with component</div>
+    </fusion-modal>
+
+    <fusion-button (click)="showModal()">Show Modal</fusion-button>
+  \`,
+  styles: [\`
+  .content-example{
+    height: 53px;
+    background-color: #F1F3F4;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+  hr{
+    border: solid 1px #DDDFE1;
+    background-color: #DDDFE1;
+    margin: 20px 0;
+}
+  \`],
+  standalone: true,
+  imports: [CommonModule, ButtonModule, ModalModule],
+})
+export class FusionStoryWrapperComponent {
+    submitPending = false;
+    modalConfiguration: ModalConfiguration = ${JSON.stringify({
+        ...DEFAULT_CONFIGURATION,
+        error: 'error text'
+    })};
+
+    modalShown = false;
+
+    showModal() {
+    this.modalShown = true;
+  }
+
+  onModalClose($event) {
+    this.modalShown = false;
+    console.log('Modal closed by', $event);
+  }
+}
+`,
+            format: true,
+            type: 'code'
+        }
     }
 };
 // endregion
@@ -204,6 +636,86 @@ WithCustomButtonsText.args = {
         }
     }
 };
+WithCustomButtonsText.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ButtonModule } from '@ironsource/fusion-ui/components/button/v3';
+import {
+  ModalConfiguration,
+  ModalModule,
+} from '@ironsource/fusion-ui/components/modal/v3';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`
+    <fusion-modal
+      *ngIf="modalShown"
+      [configuration]="modalConfiguration"
+      [submitPending]="submitPending"
+      (close)="onModalClose($event)"
+    >
+    <div class="content-example">Content item placeholder. To be replaced with component</div>
+    <hr/>
+    <div class="content-example">Content item placeholder. To be replaced with component</div>
+    </fusion-modal>
+
+    <fusion-button (click)="showModal()">Show Modal</fusion-button>
+  \`,
+  styles: [\`
+  .content-example{
+    height: 53px;
+    background-color: #F1F3F4;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+  hr{
+    border: solid 1px #DDDFE1;
+    background-color: #DDDFE1;
+    margin: 20px 0;
+}
+  \`],
+  standalone: true,
+  imports: [CommonModule, ButtonModule, ModalModule],
+})
+export class FusionStoryWrapperComponent {
+    submitPending = false;
+    modalConfiguration: ModalConfiguration = ${JSON.stringify({
+        ...DEFAULT_CONFIGURATION,
+        ...{
+            submitButton: {
+                submitButtonText: 'Apply',
+                submitButtonDisabled: false
+            },
+            cancelButton: {
+                cancelButtonText: 'Not apply'
+            }
+        }
+    })};
+
+    modalShown = false;
+
+    showModal() {
+    this.modalShown = true;
+  }
+
+  onModalClose($event) {
+    this.modalShown = false;
+    console.log('Modal closed by', $event);
+  }
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
 // endregion
 
 // region WithoutSecondaryButton
@@ -221,6 +733,85 @@ WithoutSecondaryButton.args = {
         }
     }
 };
+WithoutSecondaryButton.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ButtonModule } from '@ironsource/fusion-ui/components/button/v3';
+import {
+  ModalConfiguration,
+  ModalModule,
+} from '@ironsource/fusion-ui/components/modal/v3';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`
+    <fusion-modal
+      *ngIf="modalShown"
+      [configuration]="modalConfiguration"
+      [submitPending]="submitPending"
+      (close)="onModalClose($event)"
+    >
+    <div class="content-example">Content item placeholder. To be replaced with component</div>
+    <hr/>
+    <div class="content-example">Content item placeholder. To be replaced with component</div>
+    </fusion-modal>
+
+    <fusion-button (click)="showModal()">Show Modal</fusion-button>
+  \`,
+  styles: [\`
+  .content-example{
+    height: 53px;
+    background-color: #F1F3F4;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+  hr{
+    border: solid 1px #DDDFE1;
+    background-color: #DDDFE1;
+    margin: 20px 0;
+}
+  \`],
+  standalone: true,
+  imports: [CommonModule, ButtonModule, ModalModule],
+})
+export class FusionStoryWrapperComponent {
+    submitPending = false;
+    modalConfiguration: ModalConfiguration = ${JSON.stringify({
+        ...DEFAULT_CONFIGURATION,
+        ...{
+            submitButton: {
+                submitButtonText: 'Apply'
+            },
+            cancelButton: {
+                cancelButtonHidden: true
+            }
+        }
+    })};
+
+    modalShown = false;
+
+    showModal() {
+    this.modalShown = true;
+  }
+
+  onModalClose($event) {
+    this.modalShown = false;
+    console.log('Modal closed by', $event);
+  }
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
 // endregion
 
 // region WithoutPrimaryButtonDisabled
@@ -233,6 +824,83 @@ WithoutPrimaryButtonDisabled.args = {
                 submitButtonText: 'Apply',
                 submitButtonDisabled: true
             }
+        }
+    }
+};
+WithoutPrimaryButtonDisabled.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ButtonModule } from '@ironsource/fusion-ui/components/button/v3';
+import {
+  ModalConfiguration,
+  ModalModule,
+} from '@ironsource/fusion-ui/components/modal/v3';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`
+    <fusion-modal
+      *ngIf="modalShown"
+      [configuration]="modalConfiguration"
+      [submitPending]="submitPending"
+      (close)="onModalClose($event)"
+    >
+    <div class="content-example">Content item placeholder. To be replaced with component</div>
+    <hr/>
+    <div class="content-example">Content item placeholder. To be replaced with component</div>
+    </fusion-modal>
+
+    <fusion-button (click)="showModal()">Show Modal</fusion-button>
+  \`,
+  styles: [\`
+  .content-example{
+    height: 53px;
+    background-color: #F1F3F4;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+  hr{
+    border: solid 1px #DDDFE1;
+    background-color: #DDDFE1;
+    margin: 20px 0;
+}
+  \`],
+  standalone: true,
+  imports: [CommonModule, ButtonModule, ModalModule],
+})
+export class FusionStoryWrapperComponent {
+    submitPending = false;
+    modalConfiguration: ModalConfiguration = ${JSON.stringify({
+        ...DEFAULT_CONFIGURATION,
+        ...{
+            submitButton: {
+                submitButtonText: 'Apply',
+                submitButtonDisabled: true
+            }
+        }
+    })};
+
+    modalShown = false;
+
+    showModal() {
+    this.modalShown = true;
+  }
+
+  onModalClose($event) {
+    this.modalShown = false;
+    console.log('Modal closed by', $event);
+  }
+}
+`,
+            format: true,
+            type: 'code'
         }
     }
 };
@@ -253,6 +921,85 @@ WithCustomButtonsClass.args = {
         }
     }
 };
+WithCustomButtonsClass.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ButtonModule } from '@ironsource/fusion-ui/components/button/v3';
+import {
+  ModalConfiguration,
+  ModalModule,
+} from '@ironsource/fusion-ui/components/modal/v3';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`
+    <fusion-modal
+      *ngIf="modalShown"
+      [configuration]="modalConfiguration"
+      [submitPending]="submitPending"
+      (close)="onModalClose($event)"
+    >
+    <div class="content-example">Content item placeholder. To be replaced with component</div>
+    <hr/>
+    <div class="content-example">Content item placeholder. To be replaced with component</div>
+    </fusion-modal>
+
+    <fusion-button (click)="showModal()">Show Modal</fusion-button>
+  \`,
+  styles: [\`
+  .content-example{
+    height: 53px;
+    background-color: #F1F3F4;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+  hr{
+    border: solid 1px #DDDFE1;
+    background-color: #DDDFE1;
+    margin: 20px 0;
+}
+  \`],
+  standalone: true,
+  imports: [CommonModule, ButtonModule, ModalModule],
+})
+export class FusionStoryWrapperComponent {
+    submitPending = false;
+    modalConfiguration: ModalConfiguration = ${JSON.stringify({
+        ...DEFAULT_CONFIGURATION,
+        ...{
+            submitButton: {
+                submitButtonClass: 'danger'
+            },
+            cancelButton: {
+                cancelButtonClass: 'third'
+            }
+        }
+    })};
+
+    modalShown = false;
+
+    showModal() {
+    this.modalShown = true;
+  }
+
+  onModalClose($event) {
+    this.modalShown = false;
+    console.log('Modal closed by', $event);
+  }
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
 // endregion
 
 // region WithFooterAlignLeft
@@ -263,6 +1010,78 @@ WithFooterAlignLeft.args = {
         footerAlignLeft: true
     }
 };
+WithFooterAlignLeft.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ButtonModule } from '@ironsource/fusion-ui/components/button/v3';
+import {
+  ModalConfiguration,
+  ModalModule,
+} from '@ironsource/fusion-ui/components/modal/v3';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`
+    <fusion-modal
+      *ngIf="modalShown"
+      [configuration]="modalConfiguration"
+      [submitPending]="submitPending"
+      (close)="onModalClose($event)"
+    >
+    <div class="content-example">Content item placeholder. To be replaced with component</div>
+    <hr/>
+    <div class="content-example">Content item placeholder. To be replaced with component</div>
+    </fusion-modal>
+
+    <fusion-button (click)="showModal()">Show Modal</fusion-button>
+  \`,
+  styles: [\`
+  .content-example{
+    height: 53px;
+    background-color: #F1F3F4;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+  hr{
+    border: solid 1px #DDDFE1;
+    background-color: #DDDFE1;
+    margin: 20px 0;
+}
+  \`],
+  standalone: true,
+  imports: [CommonModule, ButtonModule, ModalModule],
+})
+export class FusionStoryWrapperComponent {
+    submitPending = false;
+    modalConfiguration: ModalConfiguration = ${JSON.stringify({
+        ...DEFAULT_CONFIGURATION,
+        footerAlignLeft: true
+    })};
+
+    modalShown = false;
+
+    showModal() {
+    this.modalShown = true;
+  }
+
+  onModalClose($event) {
+    this.modalShown = false;
+    console.log('Modal closed by', $event);
+  }
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
 // endregion
 
 // region WithFooterSmall
@@ -271,6 +1090,78 @@ WithFooterSmall.args = {
     configuration: {
         ...DEFAULT_CONFIGURATION,
         footerSmall: true
+    }
+};
+WithFooterSmall.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ButtonModule } from '@ironsource/fusion-ui/components/button/v3';
+import {
+  ModalConfiguration,
+  ModalModule,
+} from '@ironsource/fusion-ui/components/modal/v3';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`
+    <fusion-modal
+      *ngIf="modalShown"
+      [configuration]="modalConfiguration"
+      [submitPending]="submitPending"
+      (close)="onModalClose($event)"
+    >
+    <div class="content-example">Content item placeholder. To be replaced with component</div>
+    <hr/>
+    <div class="content-example">Content item placeholder. To be replaced with component</div>
+    </fusion-modal>
+
+    <fusion-button (click)="showModal()">Show Modal</fusion-button>
+  \`,
+  styles: [\`
+  .content-example{
+    height: 53px;
+    background-color: #F1F3F4;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+  hr{
+    border: solid 1px #DDDFE1;
+    background-color: #DDDFE1;
+    margin: 20px 0;
+}
+  \`],
+  standalone: true,
+  imports: [CommonModule, ButtonModule, ModalModule],
+})
+export class FusionStoryWrapperComponent {
+    submitPending = false;
+    modalConfiguration: ModalConfiguration = ${JSON.stringify({
+        ...DEFAULT_CONFIGURATION,
+        footerSmall: true
+    })};
+
+    modalShown = false;
+
+    showModal() {
+    this.modalShown = true;
+  }
+
+  onModalClose($event) {
+    this.modalShown = false;
+    console.log('Modal closed by', $event);
+  }
+}
+`,
+            format: true,
+            type: 'code'
+        }
     }
 };
 // endregion
