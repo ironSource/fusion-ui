@@ -1,0 +1,97 @@
+@import "../../../src/style/scss/v3/vars/vars";
+@import "../../../src/style/scss/v3/mixins/mixins";
+
+$regularBackgroundColor: $fu-light-100;
+$disabledBackgroundColor: $fu-light-100;
+
+// Regular size
+$regularHeight: 40px;
+$regularBorderRadius: 8px;
+
+// Small size
+$smallHeight: 32px;
+
+:host {
+    @extend %reset;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+
+    &.fu-transparent{
+        --fu-search-background-color: transparent;
+        --fu-search-focus-color: transparent;
+        --fu-search-hover-color: transparent;
+        --fu-search-disable-color: transparent;
+    }
+
+    input {
+        @extend %font-bodySmall;
+        border: none;
+        border-radius: $regularBorderRadius;
+        background-color: var(--fu-search-background-color, $White);
+        height: $regularHeight;
+        color: var(--fu-search-color, $fu-black-500);
+        padding: 8px 8px 8px 32px;
+        width: 100%;
+
+        &.fu-has-clear-icon{
+            padding-right: 32px;
+        }
+
+        &::placeholder {
+            color: var(--fu-search-placeholder-color, $fu-light-800);
+        }
+
+        &:active,
+        &:focus {
+            outline: none;
+            background-color: var(--fu-search-focus-color, $regularBackgroundColor);
+        }
+
+        &:hover,
+        &:not(:placeholder-shown) {
+            background-color: var(--fu-search-hover-color, $regularBackgroundColor);
+        }
+
+        &:disabled {
+            color: var(--fu-search-disable-color, $disabledBackgroundColor);
+            pointer-events: none;
+            cursor: default;
+            user-select: none;
+            &:focus {
+                border-bottom: none;
+            }
+        }
+    }
+
+    @include icon-style('fu-search', $fu-light-700, 16px, true, true){
+        position: absolute;
+        top: 13px;
+        left: 8px;
+        @include size(16px);
+    }
+    @include icon-style('fu-clear', $fu-light-500, 16px, true, true){
+        position: absolute;
+        top: 13px;
+        right: 7px;
+        @include size(16px);
+        cursor: pointer;
+    }
+    @include icon-style('fu-clear', $fu-light-800, 16px, true, true, 0, true);
+
+    &:not(.fu-small):has(.fu-clear:hover){
+        input{
+            background-color: $regularBackgroundColor;
+        }
+    }
+
+    &.fu-small{
+        input {
+            height: $smallHeight;
+        }
+        .fu-search,
+        .fu-clear{
+            top: 8px;
+        }
+    }
+}
