@@ -3,7 +3,8 @@
 
 $borderBottom: 1px solid $fu-light-400;
 $height: 56px;
-$padding: 18px 16px 14px 24px;
+$padding: 18px 18px 18px 24px;
+
 
 
 :host {
@@ -20,7 +21,7 @@ $padding: 18px 16px 14px 24px;
 
         @include icon-style('fu-close', $fu-light-600, 20px, true, true) {
             width: 20px;
-            height: 20px;
+            height: 19px;
             cursor: pointer;
             margin-left: auto;
         }
