@@ -1,12 +1,11 @@
 import {
+    AfterViewInit,
     ChangeDetectorRef,
     ContentChildren,
     Directive,
-    ElementRef,
     EventEmitter,
     Input,
     OnDestroy,
-    OnInit,
     Output,
     QueryList,
     Renderer2,
@@ -14,22 +13,24 @@ import {
 } from '@angular/core';
 import {ChipFilterComponent} from '@ironsource/fusion-ui/components/chip-filter';
 import {BehaviorSubject, combineLatest, Observable, Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {delay, filter, takeUntil, tap} from 'rxjs/operators';
 import {ChipType} from '@ironsource/fusion-ui/components/chip-filter/common/base';
 import {FormControl} from '@angular/forms';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 import {SelectedFilters} from './chip-filters-entities';
 
 @Directive()
-export abstract class ChipFiltersBaseComponent implements OnDestroy, OnInit {
+export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestroy {
     /** @internal */
     @ContentChildren(ChipFilterComponent) set chipFilters(value: QueryList<ChipFilterComponent>) {
         this._chipFilters = value;
         this.setChipFilters();
     }
+
     get chipFilters(): QueryList<ChipFilterComponent> {
         return this._chipFilters;
     }
+
     /** @internal */
     @ViewChild('addFilter', {static: true}) addFilterComponent: any;
 
@@ -39,6 +40,7 @@ export abstract class ChipFiltersBaseComponent implements OnDestroy, OnInit {
 
     @Input() set addFilterOptions(options: DropdownOption[]) {
         this.optionsRef$.next(options);
+        this.options$.next(this.optionsRef$.getValue());
     }
 
     @Input() set showAddFilter(value: boolean) {
@@ -80,8 +82,8 @@ export abstract class ChipFiltersBaseComponent implements OnDestroy, OnInit {
 
     constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
 
-    ngOnInit() {
-        this.options$.next(this.optionsRef$.getValue());
+    ngAfterViewInit() {
+        this.initDynamicFiltersListeners();
     }
 
     ngOnDestroy() {
@@ -103,17 +105,26 @@ export abstract class ChipFiltersBaseComponent implements OnDestroy, OnInit {
         this.onSelectedValueListener();
 
         this.onClosedChipListener();
+    }
+
+    private initDynamicFiltersListeners() {
+        this.addFilterControl.valueChanges
+            .pipe(
+                takeUntil(this.onDestroy$),
+                filter(options => Array.isArray(options)),
+                tap(options => this.onDynamicChipSelect.emit(options[0])),
+                delay(50)
+            )
+            .subscribe((options: DropdownOption[]) => {
+                this.openAddedDynamicFilter(options[0]);
+            });
+
         this.options$
             .asObservable()
             .pipe(takeUntil(this.onDestroy$))
             .subscribe((option: DropdownOption[]) => {
                 this.showAddFilter$.next(option.length > 0);
             });
-        this.addFilterControl.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe((option: DropdownOption[]) => {
-            if (option) {
-                this.addChipFilter(option[0]);
-            }
-        });
     }
 
     private activateAddFilter(): void {
@@ -166,28 +177,23 @@ export abstract class ChipFiltersBaseComponent implements OnDestroy, OnInit {
         );
     }
 
-    private addChipFilter(option: DropdownOption): void {
-        this.onDynamicChipSelect.emit(option);
-
-        // need run in next tic because selected filter must be rendered in DOM
-        setTimeout(() => {
-            this.chipFilters.toArray().forEach(chip => {
-                const isSelected = this.addedFilters.some(selectedChip => selectedChip.id === chip['id']);
-                if (chip['id'] === option.id && !isSelected && chip.mode === 'dynamic') {
-                    chip['isVisible'] = true;
-                    const newSelection = {
-                        id: option.id,
-                        value: option,
-                        isSelected: chip.selected
-                    };
-                    this.addedFilters = [...this.addedFilters, newSelection];
-                    this.reduceSelectedFiltersOptions();
-                    chip.apiBase.open();
-                    this.cdr.markForCheck();
-                } else {
-                    this.addFilterControl.reset();
-                }
-            });
+    private openAddedDynamicFilter(option: DropdownOption) {
+        this.chipFilters.toArray().forEach(chip => {
+            const isSelected = this.addedFilters.some(selectedChip => selectedChip.id === chip['id']);
+            if (chip['id'] === option.id && !isSelected && chip.mode === 'dynamic') {
+                chip['isVisible'] = true;
+                const newSelection = {
+                    id: option.id,
+                    value: option,
+                    isSelected: chip.selected
+                };
+                this.addedFilters = [...this.addedFilters, newSelection];
+                this.reduceSelectedFiltersOptions();
+                chip.apiBase.open();
+                this.cdr.markForCheck();
+            } else {
+                this.addFilterControl.reset();
+            }
         });
     }
 
