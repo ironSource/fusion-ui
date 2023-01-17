@@ -34,7 +34,6 @@ const ModalTemplate: Story<ModalComponent> = (args: ModalComponent) => ({
     props: {...args},
     template: `<style>
 .content-example{
-    width: 100%;
     height: 53px;
     background-color: #F1F3F4;
     border-radius: 8px;
@@ -66,6 +65,75 @@ WithoutFooter.args = {
     configuration: {
         ...DEFAULT_CONFIGURATION,
         hasFooter: false
+    }
+};
+Default.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ButtonModule } from '@ironsource/fusion-ui/components/button/v3';
+import {
+  ModalConfiguration,
+  ModalModule,
+} from '@ironsource/fusion-ui/components/modal/v3';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`
+    <fusion-modal
+      *ngIf="modalShown"
+      [configuration]="modalConfiguration"
+      [submitPending]="submitPending"
+      (close)="onModalClose($event)"
+    >
+    <div class="content-example">Content item placeholder. To be replaced with component</div>
+    <hr/>
+    <div class="content-example">Content item placeholder. To be replaced with component</div>
+    </fusion-modal>
+
+    <fusion-button (click)="showModal()">Show Modal</fusion-button>
+  \`,
+  styles: [\`
+  .content-example{
+    height: 53px;
+    background-color: #F1F3F4;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+  hr{
+    border: solid 1px #DDDFE1;
+    background-color: #DDDFE1;
+    margin: 20px 0;
+}
+  \`],
+  standalone: true,
+  imports: [CommonModule, ButtonModule, ModalModule],
+})
+export class FusionStoryWrapperComponent {
+    submitPending = false;
+    modalConfiguration: ModalConfiguration = ${JSON.stringify(DEFAULT_CONFIGURATION)};
+
+    modalShown = false;
+
+    showModal() {
+    this.modalShown = true;
+  }
+
+  onModalClose($event) {
+    this.modalShown = false;
+    console.log('Modal closed by', $event);
+  }
+}
+`,
+            format: true,
+            type: 'code'
+        }
     }
 };
 // endregion
