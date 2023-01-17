@@ -5,7 +5,10 @@ export interface ModalConfiguration {
     defaultModalState?: OpenCloseType;
     error?: string;
     hasFooter?: boolean;
+    footerAlignLeft?: boolean;
+    footerSmall?: boolean;
     headerText?: string;
+    headerInfoText?: string;
     isHeaderBorder?: boolean;
     submitButton?: {
         submitButtonClass?: string;

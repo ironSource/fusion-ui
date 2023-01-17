@@ -31,14 +31,8 @@ $heightSmall: 48px;
     }
     &.fu-alignment-left{
         .modal-footer {
-            .fu-primary-button {
-                order: 1;
-            }
-            .fu-secondary-button{
-                order: 2;
-            }
+            flex-direction: row-reverse;
             .fu-error-message{
-                order: 3;
                 text-align: right;
             }
         }
