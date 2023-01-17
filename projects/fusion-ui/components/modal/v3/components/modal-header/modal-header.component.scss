@@ -5,8 +5,6 @@ $borderBottom: 1px solid $fu-light-400;
 $height: 56px;
 $padding: 18px 18px 18px 24px;
 
-
-
 :host {
     @extend %border-box-normalize;
     .modal-header {
