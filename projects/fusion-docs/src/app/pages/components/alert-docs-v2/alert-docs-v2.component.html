@@ -2,6 +2,44 @@
     <div class="col-9">
         <!--UI-Component Examples-->
         <div class="is-example-title">Type</div>
+        <fusion-example-block [collapsible]="false" id="typeFilter" title="Chip Filters EXAMPLE">
+            <div>
+                <fusion-chip-filters
+                    [addFiltersTitle]="addFiltersTitle"
+                    [addFilterOptions]="addFilterOptions"
+                    [showAddFilter]="!!dynamicFiltersAll.length"
+                    (onDynamicChipSelect)="onDynamicChipSelect($event)"
+                >
+                    <fusion-chip-filter [configuration]="configChip1">
+                        <div class="filter-element">
+                            <fusion-dropdown
+                                [placeholderPrefix]="placeholderPrefixChip1"
+                                [placeholder]="placeholderChip1"
+                                [formControl]="fcChip1"
+                                [options]="optionsChip1"
+                                [search]="searchChip1"
+                                [optionsTitle]="optionsTitleChip1"
+                            >
+                            </fusion-dropdown>
+                        </div>
+                    </fusion-chip-filter>
+
+                    <ng-container *ngFor="let chip of selectedDynamicFilters">
+                        <fusion-chip-filter [configuration]="chip.configChip" (onChipRemove)="onDynamicChipRemove($event)">
+                            <div class="filter-element">
+                                <fusion-dropdown-dual-multi-select
+                                    [title]="chip.optionsTitleChip"
+                                    [placeholder]="chip.placeholderChip"
+                                    [formControl]="chip.fcChip"
+                                    [items]="chip.optionsChip"
+                                ></fusion-dropdown-dual-multi-select>
+                            </div>
+                        </fusion-chip-filter>
+                    </ng-container>
+                </fusion-chip-filters>
+            </div>
+        </fusion-example-block>
+
         <fusion-example-block id="typeBasic" title="Basic">
             <!--Code-Examples-->
             <ng-template fusionExampleBlock="Angular">

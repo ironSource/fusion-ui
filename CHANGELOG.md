@@ -4,12 +4,6 @@ All notable changes to this project will be documented in this file. See [commit
 
 ## [5.1.0-rc.14](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.6...v5.1.0-rc.14) (2023-01-16)
 
-## [5.1.0-rc.16](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.6...v5.1.0-rc.16) (2023-01-16)
-
-## [5.1.0-rc.15](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.14...v5.1.0-rc.15) (2023-01-15)
-
-## [5.1.0-rc.14](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.13...v5.1.0-rc.14) (2023-01-15)
-
 
 ### Bug Fixes
 

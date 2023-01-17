@@ -201,7 +201,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.propagateChange(this.preSelectedItems.value);
         this.selectedChange = this.preSelectedItems.value;
         this.selected$.next(
-            this.preSelectedItems?.value.length === 1
+            this.selectedChange?.length === 1
                 ? this.selectedChange[0]?.displayText || this.selectedChange[0]?.title
                 : this.placeholder$.getValue()
         );

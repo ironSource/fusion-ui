@@ -46,6 +46,22 @@ $paddingChipWithCloseButton: 4px 8px 4px 16px;
     display: inline-block;
     position: relative;
 
+    .fu-chip-filter-container{
+        @include icon-style('fu-chip-left-icon', $fu-black-500, 16px, true, true){
+            @include size(16px);
+        }
+        @include icon-style('fu-chip-right-icon', $fu-black-500, 16px, true, true){
+            @include size(16px);
+        }
+    }
+
+    &.fu-selected{
+        .fu-chip-filter-container{
+            @include icon-style('fu-chip-left-icon', $fu-primary-500, 16px, true, true);
+            @include icon-style('fu-chip-right-icon', $fu-primary-300, 16px, true, true);
+        }
+    }
+
     &.fu-un-removable-filter {
         .fu-chip-filter-container {
             @extend %chip-style;

@@ -15,7 +15,13 @@ import {
     ViewChild
 } from '@angular/core';
 import {BehaviorSubject, fromEvent, merge, Subject} from 'rxjs';
-import {ChipFilterComponentConfigurations, ChipFilterMode, ChipType, ChipTypeToClass} from './chip-filter-component-configurations';
+import {
+    ChipFilterComponentConfigurations,
+    ChipFilterMode,
+    ChipIcon,
+    ChipType,
+    ChipTypeToClass
+} from './chip-filter-component-configurations';
 import {takeUntil} from 'rxjs/operators';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 
@@ -36,6 +42,10 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     defaultContent: TemplateRef<any>;
     /** @internal */
     isDefaultContent: boolean = true;
+    /** @internal */
+    leftIcon: ChipIcon;
+    /** @internal */
+    rightIcon: ChipIcon;
 
     private onDestroy$ = new Subject<void>();
     private restListeners$ = new Subject<void>();
@@ -53,6 +63,8 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
             this.mode = value.mode || 'static';
             this.close = value.close || false;
             this.maxWidth = value.maxWidth || 200;
+            this.rightIcon = value.rightIcon;
+            this.leftIcon = value.leftIcon;
         }
     }
     /** @internal */
@@ -77,8 +89,11 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     @Input() set isDynamicContent(value: boolean) {
         this.isDefaultContent = !value;
     }
-
-    @Output() onRemove = new EventEmitter();
+    /**
+     * On dynamic filter close button clicked (filter removed)
+     * @ignore
+     * */
+    @Output() onChipRemove = new EventEmitter();
 
     @Output() onSelectedChange = new EventEmitter<any>();
 
@@ -127,6 +142,12 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
         return this.isChipSelected;
     }
 
+    /**
+     * used for chip filter removed (not for consumer)
+     * @internal
+     */
+    onRemove = new EventEmitter();
+
     constructor(
         /** @internal */
         public element: ElementRef,
@@ -171,10 +192,13 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
 
         this.selected = false;
         this.setChipType(this.selected);
+        // internal using
         this.onRemove.emit({
             id: this.id,
             isSelected: this.selected
         });
+        // external, for consumer
+        this.onChipRemove.emit(this.id);
         this.apiBase?.resetState$.next();
     }
 
