@@ -22,10 +22,16 @@ export class ModalFooterComponent {
     @Output() onSubmit = new EventEmitter();
     @Output() onCloseButtonClicked = new EventEmitter();
 
+    /** @internal */
     submitButtonText: string;
+    /** @internal */
     submitButtonClass: string;
+    /** @internal */
     submitButtonDisabled = false;
+    /** @internal */
     cancelButtonText: string;
+    /** @internal */
     cancelButtonClass: string;
+    /** @internal */
     cancelButtonHidden: boolean;
 }

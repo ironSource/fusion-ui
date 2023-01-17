@@ -8,8 +8,8 @@ import {
     EventEmitter,
     HostListener,
     Directive,
-    SimpleChanges,
-    OnDestroy
+    OnDestroy,
+    AfterViewInit
 } from '@angular/core';
 import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
 import {BehaviorSubject, Subject} from 'rxjs';
@@ -17,7 +17,7 @@ import {takeUntil} from 'rxjs/operators';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Directive()
-export abstract class ButtonBaseComponent implements OnInit, OnDestroy {
+export abstract class ButtonBaseComponent implements OnInit, AfterViewInit, OnDestroy {
     /** @internal */
     @HostListener('click', ['$event']) onClick($event: any) {
         this.onclick.emit($event);
@@ -84,9 +84,12 @@ export abstract class ButtonBaseComponent implements OnInit, OnDestroy {
     constructor(injector: Injector, private element: ElementRef, private renderer: Renderer2) {}
 
     ngOnInit() {
+        this.isLoading$.asObservable().pipe(takeUntil(this.onDestroy$)).subscribe(this.setLoadingState.bind(this));
+    }
+
+    ngAfterViewInit() {
         this.projectContent = !!this.element.nativeElement.innerText;
         this.setHostClass(this.projectContent, 'fu-with-content');
-        this.isLoading$.asObservable().pipe(takeUntil(this.onDestroy$)).subscribe(this.setLoadingState.bind(this));
     }
 
     ngOnDestroy() {

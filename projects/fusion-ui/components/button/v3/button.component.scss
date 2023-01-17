@@ -82,13 +82,16 @@ $largeIconSize: 24px;
         padding: 0;
         justify-content: center;
         align-items: center;
+
         & > span {
             gap: 0;
         }
-        &.large{
+
+        &.large {
             width: 40px;
         }
-        &.small{
+
+        &.small {
             width: 24px;
         }
     }
@@ -97,14 +100,17 @@ $largeIconSize: 24px;
         & > span > span {
             display: none;
         }
+
         pointer-events: none;
     }
+
     // endregion
 
     // region Themes
     &.danger {
         color: $White;
         background-color: $fu-negative-500;
+
         &:hover,
         &:active {
             background-color: $fu-negative-700;
@@ -114,6 +120,7 @@ $largeIconSize: 24px;
     &.third {
         color: $fu-light-900;
         background-color: $fu-light-200;
+
         &:hover,
         &:active {
             background-color: $fu-light-300;
@@ -123,11 +130,13 @@ $largeIconSize: 24px;
     &.secondary {
         color: $White;
         background-color: $fu-black-500;
+
         &:hover,
         &:active {
             background-color: $fu-black-900;
         }
     }
+
     // endregion
 
     &.disabled {
@@ -150,8 +159,10 @@ $largeIconSize: 24px;
             color: $fu-primary-500;
             background-color: transparent;
         }
-        &.secondary{
+
+        &.secondary {
             color: $fu-light-600;
+
             &:active,
             &:hover {
                 color: $fu-light-800;
@@ -159,8 +170,10 @@ $largeIconSize: 24px;
                 text-decoration: underline;
             }
         }
-        &.third{
+
+        &.third {
             color: $fu-light-700;
+
             &:active,
             &:hover {
                 color: $fu-black-500;
@@ -168,8 +181,10 @@ $largeIconSize: 24px;
                 text-decoration: underline;
             }
         }
-        &.danger{
+
+        &.danger {
             color: $fu-negative-500;
+
             &:active,
             &:hover {
                 color: $fu-negative-700;
@@ -177,7 +192,8 @@ $largeIconSize: 24px;
                 text-decoration: underline;
             }
         }
-        &.disabled{
+
+        &.disabled {
             color: $fu-light-500;
         }
     }
@@ -193,50 +209,61 @@ $largeIconSize: 24px;
             color: $White;
             background-color: $fu-primary-500;
         }
-        &.danger{
+
+        &.danger {
             color: $fu-negative-500;
             border-color: $fu-negative-500;
+
             &:hover,
             &:active {
                 color: $White;
                 background-color: $fu-negative-700;
             }
         }
-        &.secondary{
+
+        &.secondary {
             color: $fu-black-500;
             border-color: $fu-black-500;
+
             &:hover,
             &:active {
                 color: $White;
                 background-color: $fu-black-500;
             }
         }
+
         &.third {
             color: $fu-black-500;
             border-color: $fu-light-200;
+
             &:hover,
             &:active {
                 background-color: $fu-light-200;
             }
         }
-        &.disabled{
+
+        &.disabled {
             color: $fu-light-600;
             border-color: $fu-light-600;
         }
     }
+
     &.ghost {
         background-color: transparent;
         color: $White;
         border: 1px solid $White;
+
         &:hover,
         &:active {
             background-color: rgba(255, 255, 255, 0.15);
         }
-        &.disabled{
+
+        &.disabled {
             color: $fu-light-800;
             border-color: $fu-light-800;
         }
     }
+
     // endregion
     // endregion
 }
@@ -260,5 +287,9 @@ $largeIconSize: 24px;
                 line-height: 17px;
             }
         }
+    }
+
+    &.fu-with-loading {
+        min-width: 63px;
     }
 }

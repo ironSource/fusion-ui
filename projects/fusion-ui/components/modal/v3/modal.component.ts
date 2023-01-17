@@ -37,9 +37,10 @@ import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
     ]
 })
 export class ModalComponent implements OnDestroy, OnInit {
+    /** @internal */
     static activeModals: {[id: string]: ModalComponent} = {};
     @Input() submitPending = false; // state for submit pending
-
+    /** @internal */
     @Input() set isModalOpen(value: boolean) {
         if (!isNullOrUndefined(value)) {
             this.isClosed$.next(!value);
@@ -58,7 +59,9 @@ export class ModalComponent implements OnDestroy, OnInit {
     @Output() open = new EventEmitter();
     @Output() close = new EventEmitter();
 
+    /** @internal */
     @ViewChild('modalBody', {static: true}) modalBody: ElementRef;
+    /** @internal */
     @ViewChild('modalHolder', {static: true}) modalHolder: ElementRef;
 
     private uid: string;
@@ -97,11 +100,12 @@ export class ModalComponent implements OnDestroy, OnInit {
         this.removeModal(this.configuration.id);
     }
 
+    /** @internal */
     onOpen() {
         this.renderer.setStyle(this.elRef.nativeElement, 'display', 'block');
         this.open.emit();
     }
-
+    /** @internal */
     onClose(emitEvent = true, eventType: 'close' | 'submit' = 'close') {
         if (eventType === 'close') {
             this.renderer.setStyle(this.elRef.nativeElement, 'display', 'none');
@@ -159,23 +163,27 @@ export class ModalComponent implements OnDestroy, OnInit {
 
     private setModalConfiguration(config: ModalConfiguration) {
         this._configuration.next({
-            id: config?.id || this.uid,
+            id: config?.id ?? this.uid,
             width: getDefaultCssUnit(config?.width),
             height: getDefaultCssUnit(config?.height),
-            defaultModalState: config?.defaultModalState || 'open',
-            hasFooter: config?.hasFooter || true,
-            error: config?.error || '',
-            headerText: config?.headerText || '',
-            isHeaderBorder: config?.isHeaderBorder || true,
+            defaultModalState: config?.defaultModalState ?? 'open',
+            hasFooter: config?.hasFooter ?? true,
+            footerAlignLeft: config?.footerAlignLeft,
+            footerSmall: config?.footerSmall,
+            error: config?.error ?? '',
+            headerText: config?.headerText ?? '',
+            headerInfoText: config?.headerInfoText,
+            isHeaderBorder: config?.isHeaderBorder ?? true,
             submitButton: {
-                submitButtonText: config?.submitButton?.submitButtonText || 'Save',
-                submitButtonClass: config?.submitButton?.submitButtonClass || '',
-                submitButtonDisabled: config?.submitButton?.submitButtonDisabled || false
+                submitButtonText: config?.submitButton?.submitButtonText ?? 'Save',
+                submitButtonClass: config?.submitButton?.submitButtonClass ?? (config?.footerSmall ? 'small' : ''),
+                submitButtonDisabled: config?.submitButton?.submitButtonDisabled ?? false
             },
             cancelButton: {
-                cancelButtonText: config?.cancelButton?.cancelButtonText || 'Cancel',
-                cancelButtonHidden: config?.cancelButton?.cancelButtonHidden || false,
-                cancelButtonClass: config?.cancelButton?.cancelButtonClass || 'transparent third'
+                cancelButtonText: config?.cancelButton?.cancelButtonText ?? 'Cancel',
+                cancelButtonHidden: config?.cancelButton?.cancelButtonHidden ?? false,
+                cancelButtonClass:
+                    config?.cancelButton?.cancelButtonClass ?? (config?.footerSmall ? 'transparent third small' : 'transparent third')
             }
         });
     }
