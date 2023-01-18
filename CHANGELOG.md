@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.1.0-rc.19](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.18...v5.1.0-rc.19) (2023-01-18)
+
+
+### Features
+
+* **fg-107:** create v3 tag (label in figma) component and it's stories ([e26b0e9](https://github.com/ironSource/fusion-ui/commit/e26b0e9aa6b4d260c53131a152a5fd9aed618742))
+
 ## [5.1.0-rc.18](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.17...v5.1.0-rc.18) (2023-01-18)
 
 
