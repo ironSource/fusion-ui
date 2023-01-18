@@ -39,6 +39,33 @@ const TagTemplate: Story<TagComponent> = (args: TagComponent) => ({
 
 // region Default
 export const Default = TagTemplate.bind({});
+Default.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {TagComponent, TagComponentConfigurations} from '@ironsource/fusion-ui/components/tag';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`
+
+  \`,
+  standalone: true,
+  imports: [CommonModule, IconModule],
+})
+export class FusionStoryWrapperComponent {
+
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
 // endregion
 
 // region WithCloseButton
