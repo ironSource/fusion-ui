@@ -1,7 +1,7 @@
 import {Inject, Injectable, OnDestroy, Optional} from '@angular/core';
 import {Router} from '@angular/router';
 import {UserService} from '@ironsource/fusion-ui/services/user';
-import {MFE_SHARED_CONFIG, MfeSharedConfig} from '@ironsource/fusion-ui/services/shared-config';
+import {MFE_SHARED_CONFIG_TOKEN, MfeSharedConfig} from '@ironsource/fusion-ui/services/shared-config';
 import {AuthService} from '@ironsource/fusion-ui/services/auth';
 
 @Injectable({
@@ -12,20 +12,20 @@ export class RedirectService {
         private userService: UserService,
         private router: Router,
         private authService: AuthService,
-        @Inject(MFE_SHARED_CONFIG) @Optional() private config: MfeSharedConfig
+        @Inject(MFE_SHARED_CONFIG_TOKEN) @Optional() private mfeSharedConfig: MfeSharedConfig
     ) {}
 
     navigateByUrl(url: string): void {
-        this.router.navigateByUrl(this.config.baseRedirectUrl + url);
+        this.router.navigateByUrl(this.mfeSharedConfig.baseHref + url);
     }
 
     redirectToBase() {
         if (this.userService.isAllowed('admin')) {
-            this.redirectToPage(this.config.redirectService.redirectToBase.admin);
+            this.redirectToPage(this.mfeSharedConfig.defaultPageAdminUrl);
         } else {
-            this.config.environment.isLocalEnv
-                ? this.router.navigateByUrl(this.config.redirectService.redirectToBase.default)
-                : this.redirectToPartners();
+            this.mfeSharedConfig.entrancePages.redirectEntrancePages
+                ? this.redirectToPartners()
+                : this.router.navigateByUrl(this.mfeSharedConfig.defaultPageUrl);
         }
     }
 
@@ -61,6 +61,6 @@ export class RedirectService {
             const query = queryParams ? `?${queryParams}` : '';
             url = '/' + routeToRedirect + query;
         }
-        this.redirectToExternal(this.config.environment.platformPartnersRedirectURL + url);
+        this.redirectToExternal(this.mfeSharedConfig.partnersRedirectURL + url);
     }
 }

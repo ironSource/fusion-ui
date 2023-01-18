@@ -5,7 +5,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {CapitalizePipe} from '@ironsource/fusion-ui/pipes/string';
 import {Observable, of} from 'rxjs';
 import {ApiService} from '@ironsource/fusion-ui/services/api';
-import {MFE_SHARED_CONFIG} from "@ironsource/fusion-ui/services/shared-config";
+import {MFE_SHARED_CONFIG_TOKEN} from "@ironsource/fusion-ui/services/shared-config";
 
 class MockApiService {
     get(): Observable<any> {
@@ -22,7 +22,7 @@ describe('UserService', () => {
             providers: [UserService, CapitalizePipe, {
                 provide: ApiService,
                 useClass: MockApiService
-            }, {provide: MFE_SHARED_CONFIG, useValue: {}}]
+            }, {provide: MFE_SHARED_CONFIG_TOKEN, useValue: {}}]
         })
     );
 

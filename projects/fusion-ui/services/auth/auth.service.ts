@@ -4,7 +4,7 @@ import {ApiService, ApiResponseType} from '@ironsource/fusion-ui/services/api';
 
 import {tap} from 'rxjs/operators';
 import {UserService} from '@ironsource/fusion-ui/services/user';
-import {MFE_SHARED_CONFIG, MfeSharedConfig} from '@ironsource/fusion-ui/services/shared-config';
+import {MFE_SHARED_CONFIG_TOKEN, MfeSharedConfig} from '@ironsource/fusion-ui/services/shared-config';
 
 @Injectable({
     providedIn: 'root'
@@ -20,7 +20,7 @@ export class AuthService {
     constructor(
         private _apiService: ApiService,
         private userService: UserService,
-        @Inject(MFE_SHARED_CONFIG) @Optional() private config: MfeSharedConfig
+        @Inject(MFE_SHARED_CONFIG_TOKEN) @Optional() private mfeSharedConfig: MfeSharedConfig
     ) {
         this._authTokenData = null;
         this._authTokenDataMaster = null;
@@ -101,7 +101,7 @@ export class AuthService {
 
     public login(username, password) {
         this.logout();
-        const apiUrl = this.config.auth.loginUrl;
+        const apiUrl = this.mfeSharedConfig.auth.loginApiUrl;
         return this._apiService
             .post(
                 apiUrl,
@@ -128,7 +128,7 @@ export class AuthService {
     }
 
     public signUp(name, userName, password, refId, captchaResponse) {
-        const apiUrl = this.config.auth.signUpUrl;
+        const apiUrl = this.mfeSharedConfig.auth.signupApiUr;
         if (name && userName && password) {
             return this._apiService.post(
                 apiUrl,
@@ -151,7 +151,7 @@ export class AuthService {
     }
 
     public signUpVerification(token) {
-        const apiUrl = this.config.auth?.signUpVerificationUrl?.(token);
+        const apiUrl = `${this.mfeSharedConfig.auth.signupVerificationApiUrl}?token=${token}`;
         if (token) {
             return this._apiService.post(apiUrl, {token: token}, {responseType: ApiResponseType.Json});
         } else {
@@ -160,7 +160,7 @@ export class AuthService {
     }
 
     public resetPassword(userName) {
-        const apiUrl = this.config.auth.forgotUrl;
+        const apiUrl = this.mfeSharedConfig.auth.forgotPasswordApiUrl;
         if (userName) {
             return this._apiService.post(
                 apiUrl,

@@ -8,7 +8,7 @@ import {of} from 'rxjs';
 import {AuthService} from '@ironsource/fusion-ui/services/auth';
 import {UserService} from '@ironsource/fusion-ui/services/user';
 import {RedirectService} from '@ironsource/fusion-ui/services/redirect';
-import {MFE_SHARED_CONFIG, MfeSharedConfig} from '@ironsource/fusion-ui/services/shared-config';
+import {MFE_SHARED_CONFIG_TOKEN, MfeSharedConfig} from '@ironsource/fusion-ui/services/shared-config';
 
 @Injectable({
     providedIn: 'root'
@@ -18,7 +18,7 @@ export class AuthenticationGuard implements CanActivate {
         private authService: AuthService,
         private userService: UserService,
         private redirectService: RedirectService,
-        @Inject(MFE_SHARED_CONFIG) @Optional() private config: MfeSharedConfig
+        @Inject(MFE_SHARED_CONFIG_TOKEN) @Optional() private mfeSharedConfig: MfeSharedConfig
     ) {}
 
     canActivate(_route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
@@ -35,25 +35,23 @@ export class AuthenticationGuard implements CanActivate {
                         return true;
                     }
                 }),
-                catchError(() => of(this.disablePage(state.url)))
+                catchError(() => of(this.redirectToLoginPage(state.url)))
             );
         } else {
-            return this.disablePage(state.url);
+            return this.redirectToLoginPage(state.url);
         }
     }
 
-    disablePage(url) {
-        const options = !this._isBaseRoute(url) ? {queryParams: {returnToUrl: url}} : {};
+    redirectToLoginPage(returnToUrl: string) {
+        const options = !this._isBaseRoute(returnToUrl) ? {queryParams: {returnToUrl}} : {};
+        const {entrancePages} = this.mfeSharedConfig;
 
-        if (this.config.environment.redirectEntrancePages) {
-            const encodedURI = this.encodePathURI(url);
-            const queryParams =
-                typeof this.config.disablePage.redirectToPartners.queryParams === 'function'
-                    ? this.config.disablePage.redirectToPartners.queryParams(encodedURI)
-                    : this.config.disablePage.redirectToPartners.queryParams;
-            this.redirectService.redirectToPartners(this.config.disablePage.redirectToPartners.path, queryParams);
+        if (entrancePages.redirectEntrancePages) {
+            const encodedURI = this.encodePathURI(returnToUrl);
+            const queryParams = entrancePages.returnToQueryParamsFunc(encodedURI);
+            this.redirectService.redirectToPartners(entrancePages.partnersLoginPath, queryParams);
         } else {
-            this.redirectService.redirectToPage(this.config.disablePage.redirectToPage, options);
+            this.redirectService.redirectToPage(entrancePages.loginPath, options);
         }
         return false;
     }

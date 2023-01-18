@@ -4,7 +4,7 @@ import {ApiRequestOptions, ApiResponseType, ApiService} from '@ironsource/fusion
 import {BehaviorSubject, Observable, throwError} from 'rxjs';
 import {tap, catchError} from 'rxjs/operators';
 import {CacheType} from '@ironsource/fusion-ui/services/cache';
-import {MFE_SHARED_CONFIG} from '@ironsource/fusion-ui/services/shared-config';
+import {MFE_SHARED_CONFIG_TOKEN} from '@ironsource/fusion-ui/services/shared-config';
 
 @Injectable({providedIn: 'root'})
 export class UserService {
@@ -15,7 +15,7 @@ export class UserService {
     private userDataFetched$ = new BehaviorSubject<boolean>(false);
     public readonly userDataFetchedObservable$ = this.userDataFetched$.asObservable();
 
-    constructor(private _apiService: ApiService, @Inject(MFE_SHARED_CONFIG) @Optional() private config) {}
+    constructor(private _apiService: ApiService, @Inject(MFE_SHARED_CONFIG_TOKEN) @Optional() private config) {}
 
     public get userUniqueId(): string {
         return this.userData.actualUser ? `as=${this.userData.userId}_from=${this.userData.actualUser}` : this.userData.userId;
