@@ -30,7 +30,7 @@ export class RedirectService {
         return this.router.navigate(commands, extras);
     }
 
-    redirectToBase() {
+    redirectToBase(): void {
         if (this.userService.isAllowed('admin')) {
             this.redirectToPage(this.mfeSharedConfig.defaultPageAdminUrl);
         } else {
