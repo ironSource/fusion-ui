@@ -1,0 +1,9 @@
+<div class="fu-tag">
+    <fusion-icon class="tag-icon" [name]="icon" *ngIf="icon"></fusion-icon>
+    <fusion-flag [name]="flag" *ngIf="flag"></fusion-flag>
+    <img class="fu-tag-image" [src]="image" *ngIf="image" alt="" loading="lazy"/>
+    <div class="truncate" [fusionTooltip]="tooltipContent">{{ title }}<ng-content *ngIf="!title"></ng-content></div>
+    <ng-container *ngIf="closeIconName$ | async as closeIconName">
+        <fusion-icon class="tag-icon-close" *ngIf="close" (click)="closeClicked($event)" [name]="closeIconName"></fusion-icon>
+    </ng-container>
+</div>
