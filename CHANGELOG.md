@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.1.0-rc.17](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.16...v5.1.0-rc.17) (2023-01-18)
+
+
+### Bug Fixes
+
+* update mfe config types ([8ebf530](https://github.com/ironSource/fusion-ui/commit/8ebf530d9db2b8a8e8167c1180688f89deb2201e))
+
 ## [5.1.0-rc.16](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.15...v5.1.0-rc.16) (2023-01-18)
 
 ## [5.1.0-rc.15](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.14...v5.1.0-rc.15) (2023-01-17)
