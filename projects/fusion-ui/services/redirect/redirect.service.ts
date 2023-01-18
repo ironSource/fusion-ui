@@ -1,4 +1,4 @@
-import {Inject, Injectable, OnDestroy, Optional} from '@angular/core';
+import {Inject, Injectable, Optional} from '@angular/core';
 import {Router} from '@angular/router';
 import {UserService} from '@ironsource/fusion-ui/services/user';
 import {MFE_SHARED_CONFIG_TOKEN, MfeSharedConfig} from '@ironsource/fusion-ui/services/shared-config';

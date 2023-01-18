@@ -5,6 +5,7 @@ export interface MfeSharedConfig {
     defaultPageUrl?: string;
     defaultPageAdminUrl?: string;
     partnersRedirectURL?: string;
+    userDataApiUrl?: string;
     entrancePages?: {
         loginPath: string;
         partnersLoginPath: string;
