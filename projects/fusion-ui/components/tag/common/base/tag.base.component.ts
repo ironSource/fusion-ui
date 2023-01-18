@@ -90,6 +90,7 @@ export abstract class TagBaseComponent implements OnInit, OnDestroy {
 
     // eslint-disable-next-line
     @Output() onRemove = new EventEmitter();
+    /** @internal */
     // eslint-disable-next-line
     @Output() onSelectedChange = new EventEmitter<any>();
 

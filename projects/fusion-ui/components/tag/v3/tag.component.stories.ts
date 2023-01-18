@@ -34,7 +34,7 @@ export default {
 
 const TagTemplate: Story<TagComponent> = (args: TagComponent) => ({
     props: {...args},
-    template: `<fusion-tag [class]="customClass" [configuration]="configuration"></fusion-tag>`
+    template: `<fusion-tag [class]="customClass" [configuration]="configuration" (onRemove)="onRemove($event)"></fusion-tag>`
 });
 
 // region Default
@@ -52,13 +52,13 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 @Component({
   selector: 'fusion-story-wrapper',
   template: \`
-
+    <fusion-tag [configuration]="configuration"></fusion-tag>
   \`,
   standalone: true,
-  imports: [CommonModule, IconModule],
+  imports: [CommonModule, IconModule, TagComponent]
 })
 export class FusionStoryWrapperComponent {
-
+    configuration:TagComponentConfigurations = ${JSON.stringify(DEFAULT_CONFIGURATION)};
 }
 `,
             format: true,
@@ -76,6 +76,40 @@ WithCloseButton.args = {
         close: true
     }
 };
+WithCloseButton.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {TagComponent, TagComponentConfigurations} from '@ironsource/fusion-ui/components/tag';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`
+    <fusion-tag [configuration]="configuration" (onRemove)="remove()"></fusion-tag>
+  \`,
+  standalone: true,
+  imports: [CommonModule, IconModule, TagComponent]
+})
+export class FusionStoryWrapperComponent {
+    configuration:TagComponentConfigurations = ${JSON.stringify({
+        ...DEFAULT_CONFIGURATION,
+        close: true
+    })};
+
+    remove(){
+        console.log('remove');
+    }
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
 // endregion
 
 // region Error
@@ -87,6 +121,40 @@ Error.args = {
     },
     customClass: 'fu-tag-error'
 };
+Error.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {TagComponent, TagComponentConfigurations} from '@ironsource/fusion-ui/components/tag';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`
+    <fusion-tag class="fu-tag-error" [configuration]="configuration" (onRemove)="remove()"></fusion-tag>
+  \`,
+  standalone: true,
+  imports: [CommonModule, IconModule, TagComponent]
+})
+export class FusionStoryWrapperComponent {
+    configuration:TagComponentConfigurations = ${JSON.stringify({
+        ...DEFAULT_CONFIGURATION,
+        close: true
+    })};
+
+    remove(){
+        console.log('remove');
+    }
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
 // endregion
 
 // region WithImage
@@ -95,6 +163,36 @@ WithImage.args = {
     configuration: {
         ...DEFAULT_CONFIGURATION,
         image: 'https://lh3.googleusercontent.com/T0yo2MIuoWWrhk7vaNX18MaOOI3StYYNb43Y1V_X8QJiWGu0SgMCAhSqoNc9ei5BHH9b=s180'
+    }
+};
+WithImage.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {TagComponent, TagComponentConfigurations} from '@ironsource/fusion-ui/components/tag';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`
+    <fusion-tag [configuration]="configuration"></fusion-tag>
+  \`,
+  standalone: true,
+  imports: [CommonModule, IconModule, TagComponent]
+})
+export class FusionStoryWrapperComponent {
+    configuration:TagComponentConfigurations = ${JSON.stringify({
+        ...DEFAULT_CONFIGURATION,
+        image: 'https://lh3.googleusercontent.com/T0yo2MIuoWWrhk7vaNX18MaOOI3StYYNb43Y1V_X8QJiWGu0SgMCAhSqoNc9ei5BHH9b=s180'
+    })};
+}
+`,
+            format: true,
+            type: 'code'
+        }
     }
 };
 // endregion
@@ -106,6 +204,41 @@ WithImageAndCloseButton.args = {
         ...DEFAULT_CONFIGURATION,
         close: true,
         image: 'https://lh3.googleusercontent.com/T0yo2MIuoWWrhk7vaNX18MaOOI3StYYNb43Y1V_X8QJiWGu0SgMCAhSqoNc9ei5BHH9b=s180'
+    }
+};
+WithImageAndCloseButton.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {TagComponent, TagComponentConfigurations} from '@ironsource/fusion-ui/components/tag';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`
+    <fusion-tag [configuration]="configuration" (onRemove)="remove()"></fusion-tag>
+  \`,
+  standalone: true,
+  imports: [CommonModule, IconModule, TagComponent]
+})
+export class FusionStoryWrapperComponent {
+    configuration:TagComponentConfigurations = ${JSON.stringify({
+        ...DEFAULT_CONFIGURATION,
+        close: true,
+        image: 'https://lh3.googleusercontent.com/T0yo2MIuoWWrhk7vaNX18MaOOI3StYYNb43Y1V_X8QJiWGu0SgMCAhSqoNc9ei5BHH9b=s180'
+    })};
+
+    remove(){
+        console.log('remove');
+    }
+}
+`,
+            format: true,
+            type: 'code'
+        }
     }
 };
 // endregion
