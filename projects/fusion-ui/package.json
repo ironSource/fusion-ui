@@ -21,6 +21,7 @@
         "./services/shared-config",
         "./services/redirect",
         "./services/pub-sub",
+        "./services/auth",
         "./guards/auth",
         "./components/svg",
         "./components/icon/v1",
@@ -49,6 +50,7 @@
         "./components/table/v2",
         "./components/table",
         "./components/menu-drop",
+        "./components/api-base",
         "./pipes/string"
     ],
     "exports": {

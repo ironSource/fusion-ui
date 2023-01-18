@@ -1,5 +1,5 @@
 import {Inject, Injectable, Optional} from '@angular/core';
-import {Router} from '@angular/router';
+import {NavigationExtras, Router} from '@angular/router';
 import {UserService} from '@ironsource/fusion-ui/services/user';
 import {MFE_SHARED_CONFIG_TOKEN, MfeSharedConfig} from '@ironsource/fusion-ui/services/shared-config';
 import {AuthService} from '@ironsource/fusion-ui/services/auth';
@@ -15,8 +15,19 @@ export class RedirectService {
         @Inject(MFE_SHARED_CONFIG_TOKEN) @Optional() private mfeSharedConfig: MfeSharedConfig
     ) {}
 
-    navigateByUrl(url: string): void {
-        this.router.navigateByUrl(this.mfeSharedConfig.baseHref + url);
+    navigateByUrl(url: string, extras?: NavigationExtras): Promise<boolean> {
+        if (url.startsWith('/')) {
+            return this.router.navigateByUrl(`${this.mfeSharedConfig.baseHref}${url}`, extras);
+        }
+        return this.router.navigateByUrl(url, extras);
+    }
+
+    navigate(commands: any[], extras?: NavigationExtras): Promise<boolean> {
+        if (commands[0].startsWith('/')) {
+            commands[0] = `${this.mfeSharedConfig.baseHref}${commands[0]}`;
+            return this.router.navigate(commands, extras);
+        }
+        return this.router.navigate(commands, extras);
     }
 
     redirectToBase() {
