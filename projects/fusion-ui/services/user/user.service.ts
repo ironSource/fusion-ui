@@ -4,18 +4,17 @@ import {ApiRequestOptions, ApiResponseType, ApiService} from '@ironsource/fusion
 import {BehaviorSubject, Observable, throwError} from 'rxjs';
 import {tap, catchError} from 'rxjs/operators';
 import {CacheType} from '@ironsource/fusion-ui/services/cache';
-import {MFE_SHARED_CONFIG_TOKEN} from '@ironsource/fusion-ui/services/shared-config';
+import {MfeSharedConfig, MFE_SHARED_CONFIG_TOKEN} from '@ironsource/fusion-ui/services/shared-config';
 
 @Injectable({providedIn: 'root'})
 export class UserService {
-    private apiUrl = `${this.config?.environment?.platformJs}/users/userData`;
-    private _fetched = false;
+    private apiUrl = this.mfeSharedConfig.userDataApiUrl;
     public userData$ = new BehaviorSubject({});
     private _fetchUserDataSubject: Observable<any>;
     private userDataFetched$ = new BehaviorSubject<boolean>(false);
     public readonly userDataFetchedObservable$ = this.userDataFetched$.asObservable();
 
-    constructor(private _apiService: ApiService, @Inject(MFE_SHARED_CONFIG_TOKEN) @Optional() private config) {}
+    constructor(private _apiService: ApiService, @Inject(MFE_SHARED_CONFIG_TOKEN) @Optional() private mfeSharedConfig: MfeSharedConfig) {}
 
     public get userUniqueId(): string {
         return this.userData.actualUser ? `as=${this.userData.userId}_from=${this.userData.actualUser}` : this.userData.userId;
@@ -42,7 +41,6 @@ export class UserService {
 
     clearUserData() {
         this.userData$.next({});
-        this._fetched = false;
     }
 
     isAllowed(permission): boolean {
@@ -66,7 +64,6 @@ export class UserService {
         this._fetchUserDataSubject = this._apiService.get(this.apiUrl, options).pipe(
             tap((response: {userData: any}) => {
                 this.userData$.next(response);
-                this._fetched = true;
                 this.userDataFetched$.next(true);
                 return response;
             }),

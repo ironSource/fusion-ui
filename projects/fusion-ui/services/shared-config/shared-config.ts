@@ -5,6 +5,7 @@ export interface MfeSharedConfig {
     defaultPageUrl?: string;
     defaultPageAdminUrl?: string;
     partnersRedirectURL?: string;
+    userDataApiUrl?: string;
     entrancePages?: {
         loginPath: string;
         partnersLoginPath: string;
@@ -21,5 +22,5 @@ export interface MfeSharedConfig {
 
 export const MFE_SHARED_CONFIG_TOKEN = new InjectionToken<MfeSharedConfig>('Config for MFE Shared State', {
     providedIn: 'root',
-    factory: () => ({baseHref: '/'})
+    factory: () => ({baseHref: ''})
 });
