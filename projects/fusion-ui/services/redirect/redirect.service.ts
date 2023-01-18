@@ -16,14 +16,14 @@ export class RedirectService {
     ) {}
 
     navigateByUrl(url: string, extras?: NavigationExtras): Promise<boolean> {
-        if (url.startsWith('/')) {
+        if (url.startsWith('/') && !url.startsWith(this.mfeSharedConfig.baseHref)) {
             return this.router.navigateByUrl(`${this.mfeSharedConfig.baseHref}${url}`, extras);
         }
         return this.router.navigateByUrl(url, extras);
     }
 
     navigate(commands: any[], extras?: NavigationExtras): Promise<boolean> {
-        if (commands[0].startsWith('/')) {
+        if (commands[0].startsWith('/') && !commands[0].startsWith(this.mfeSharedConfig.baseHref)) {
             commands[0] = `${this.mfeSharedConfig.baseHref}${commands[0]}`;
             return this.router.navigate(commands, extras);
         }
