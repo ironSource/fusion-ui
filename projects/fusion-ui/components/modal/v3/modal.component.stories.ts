@@ -23,6 +23,10 @@ export default {
         layout: 'centered',
         backgrounds: {
             default: 'light'
+        },
+        design: {
+            type: 'figma',
+            url: 'https://www.figma.com/file/V4eZU3qDgKYPhR4eaTvSwy/%F0%9F%8E%A8-Style-guide-2021-Master?node-id=5495%3A117996&t=v5iXDyyAgCZADhRr-1'
         }
     },
     args: {
