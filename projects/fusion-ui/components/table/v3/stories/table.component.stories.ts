@@ -10,6 +10,7 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TableModule} from '@ironsource/fusion-ui/components/table';
 import {TableStoryHolderComponent} from './table.story-holder.component/table.story-holder.component.component';
 import {TableComponent} from '../table.component';
+import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
 import {
     ROWS_DEFAULT_DATA,
     ROWS_TOTALS_DATA,
@@ -20,7 +21,6 @@ import {
     TABLE_STICKY_COLUMNS_CONFIG,
     TABLE_SUBHEADER_COLUMNS_CONFIG
 } from './table.mock-data';
-import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
 
 const actionsData = {
     selectionChanged: action('selectionChanged'),
@@ -1839,6 +1839,7 @@ const ROWS_DATA = [
     }
 };
 // endregion
+
 // region Multiple Row Actions (Floating Actions) disabled for some rows
 export const FloatingActionsDisabledForSomeRows = TableTemplate.bind({});
 FloatingActionsDisabledForSomeRows.args = {
@@ -1861,20 +1862,17 @@ FloatingActionsDisabledForSomeRows.parameters = {
 
             Need to add method **isFloatingActionDisabled(row: any, action?: MenuDropItem): boolean;** as property to the table input **[options]**
 
-            See live example on StackBlitz
+            See live example on StackBlitz. Here in rows with e-main end with ".biz" all actions disabled.
             `
-        }
-        /*source: {
+        },
+        source: {
             language: 'typescript',
             format: true,
             type: 'code',
             code: dedent`
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { EventEmitter } from '@angular/core';
-import { takeUntil } from 'rxjs/operators';
-import { Subject, BehaviorSubject } from 'rxjs';
-import { isNullOrUndefined } from '@ironsource/fusion-ui/utils';
+import { BehaviorSubject } from 'rxjs';
 import {
   TableModule,
   TableColumn,
@@ -1998,7 +1996,7 @@ const ROWS_DATA = [
   },
 ];
             `
-        }*/
+        }
     }
 };
 // endregion
@@ -2017,16 +2015,15 @@ SomeFloatingActionDisabledForSomeRows.args = {
     },
     rows: ROWS_DEFAULT_DATA
 };
-/*SomeFloatingActionDisabledForSomeRows.parameters = {
+SomeFloatingActionDisabledForSomeRows.parameters = {
     docs: {
         description: {
             story: dedent`
-            **Floating actions** table row actions
-            Need to add **rowActionsMenu:TableMultipleActions** property to the table input **[options]**
+            **Floating actions disabled** If you need disabled some floating actions for some rows:
 
-            like: \`rowActionsMenu:{actions: [{icon:'frame', label: 'List item 1'}, ...]}\` it a minimum needed.
+            Need to add method **isFloatingActionDisabled(row: any, action?: MenuDropItem): boolean;** as property to the table input **[options]**
 
-            Output event: **rowActionClicked** with \`{action:MenuDropItem, rowIndex:  string | number, row: TableRow}\`
+            See live example on StackBlitz. Here in rows with e-main end with ".biz" actions "List item 2" and "List item 3" disabled.
             `
         },
         source: {
@@ -2036,15 +2033,13 @@ SomeFloatingActionDisabledForSomeRows.args = {
             code: dedent`
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { EventEmitter } from '@angular/core';
-import { takeUntil } from 'rxjs/operators';
-import { Subject, BehaviorSubject } from 'rxjs';
-import { isNullOrUndefined } from '@ironsource/fusion-ui/utils';
+import { BehaviorSubject } from 'rxjs';
 import {
   TableModule,
   TableColumn,
   TableOptions,
 } from '@ironsource/fusion-ui/components/table';
+import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
 
 @Component({
   selector: 'fusion-story-wrapper',
@@ -2076,6 +2071,9 @@ const TABLE_OPTIONS = {
       {icon: 'frame', label: 'List item 3'},
       {icon: 'frame', label: 'List item 4'}
     ]
+  },
+  isFloatingActionDisabled: (row: any, action: MenuDropItem): boolean => {
+    return row['email'].endsWith('.biz') && (action.label === 'List item 2' || action.label === 'List item 3');
   }
 };
 
@@ -2162,7 +2160,7 @@ const ROWS_DATA = [
             `
         }
     }
-};*/
+};
 // endregion
 
 // -------------------------------------------
