@@ -250,7 +250,10 @@ DisabledAllForSomeRows.parameters = {
             **Floating actions disabled** If you need disabled floating actions for some rows:
 
             Need to add method **isFloatingActionDisabled(row: any, action?: MenuDropItem): boolean;** as property to the table input **[options]**
-
+            \`
+            isFloatingActionDisabled: (row: any): boolean => {
+                return row['email'].endsWith('.biz');
+            }\`
             See live example on StackBlitz. Here in rows with e-main end with ".biz" all actions disabled.
             `
         },
@@ -411,7 +414,10 @@ DisabledSomeActionsForSomeRows.parameters = {
             **Floating actions disabled** If you need disabled some floating actions for some rows:
 
             Need to add method **isFloatingActionDisabled(row: any, action?: MenuDropItem): boolean;** as property to the table input **[options]**
-
+            \`
+            isFloatingActionDisabled: (row: any, action: MenuDropItem): boolean => {
+                return row['email'].endsWith('.biz') && (action.label === 'List item 2' || action.label === 'List item 3');
+            },\`
             See live example on StackBlitz. Here in rows with e-main end with ".biz" actions "List item 2" and "List item 3" disabled.
             `
         },
