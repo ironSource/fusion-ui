@@ -1,0 +1,64 @@
+@import '../../../src/style/scss/v3/vars/vars';
+@import '../../../src/style/scss/v3/mixins/mixins';
+
+:host {
+    @extend %reset;
+
+    .fu-tag{
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+
+        height: 24px;
+        min-width: 54px;
+        max-width: 260px;
+        padding: 4px 8px;
+
+        border-radius: 12px;
+        border: solid 1px $fu-light-400;
+
+        @extend %font-bodySmall;
+
+        color: $fu-black-500;
+        background-color: $White;
+
+        .truncate {
+            @extend %truncate;
+        }
+
+        &:hover{
+            border-color: $fu-black-500;
+        }
+
+        &:has(.tag-icon-close){
+            padding: 4px 4px 4px 8px;
+        }
+        &:has(.fu-tag-image) {
+            padding: 4px 8px 4px 4px;
+        }
+        &:has(.fu-tag-image):has(.tag-icon-close) {
+            padding: 4px;
+        }
+
+
+        .fu-tag-image{
+            @include size(16px);
+            border-radius: 16px;
+        }
+
+        @include icon-style('tag-icon-close', $fu-light-500, 16px, true, true){
+            @include size(16px);
+            &:hover{
+                cursor: pointer;
+            }
+        }
+        @include icon-style('tag-icon-close', $fu-light-800, 16px, true, true, 0, true);
+    }
+
+    &.fu-tag-error{
+        .fu-tag,
+        .fu-tag:hover {
+            border-color: $fu-negative-300;
+        }
+    }
+}

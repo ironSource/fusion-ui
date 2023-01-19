@@ -8,6 +8,7 @@ export interface TagComponentConfigurations {
     id?: number | string;
     icon?: IconData;
     flag?: string;
+    image?: string;
     title: string;
     close?: boolean;
     disabled?: boolean;
