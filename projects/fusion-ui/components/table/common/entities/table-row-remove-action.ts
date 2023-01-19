@@ -10,7 +10,5 @@ export interface TableRowRemoveAction {
 }
 
 export interface TableMultipleActions {
-    active?: boolean;
-    icon?: IconData;
     actions: MenuDropItem[];
 }

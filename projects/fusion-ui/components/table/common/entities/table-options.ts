@@ -3,6 +3,7 @@ import {TableColumn} from './table-column';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 import {EventEmitter} from '@angular/core';
+import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
 
 export interface TableLabel {
     text: string;
@@ -50,6 +51,7 @@ export interface TableOptions {
         ignoredParentSelectorsRowClickEvent?: string[];
     };
     notAvailableText?: string;
+    isFloatingActionDisabled?(row: any, action?: MenuDropItem): boolean;
     isRemoveIconHiddenForRow?(row: any): boolean;
     infoIconForRowOnHover?(row: any): string;
 }
