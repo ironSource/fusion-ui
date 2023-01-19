@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.1.0-rc.20](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.18...v5.1.0-rc.20) (2023-01-19)
+
+
+### Features
+
+* add type ([7da99a4](https://github.com/ironSource/fusion-ui/commit/7da99a4c9bad8b327a22f5141eb775ccb35137ee))
+
+
+### Bug Fixes
+
+* update mfe config types redirect service ([42aa0eb](https://github.com/ironSource/fusion-ui/commit/42aa0eb42f7fdb0ad618c20cca1517f0a4b79e4d))
+
 ## [5.1.0-rc.19](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.18...v5.1.0-rc.19) (2023-01-18)
 
 
