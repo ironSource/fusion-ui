@@ -47,6 +47,18 @@ $iconSize: 16px;
                 cursor: pointer;
             }
 
+            &.fu-disabled{
+                pointer-events: none;
+                opacity: .7;
+                &:hover {
+                    background-color: unset;
+                    cursor: default;
+                }
+                .fu-menu-item-icon{
+                    opacity: .7;
+                }
+            }
+
         }
     }
 }

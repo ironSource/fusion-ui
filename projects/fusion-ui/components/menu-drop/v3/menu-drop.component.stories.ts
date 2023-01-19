@@ -4,10 +4,10 @@ import {dedent} from 'ts-dedent';
 import {environment} from 'stories/environments/environment';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
-import {MenuDropComponent} from '@ironsource/fusion-ui/components/menu-drop';
+import {MenuDropComponent, MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
 import {CommonModule} from '@angular/common';
 
-const MOCK_MENU_ITEMS = [
+const MOCK_MENU_ITEMS: MenuDropItem[] = [
     {icon: 'frame', label: 'List item 1'},
     {icon: 'frame', label: 'List item 2'},
     {icon: 'frame', label: 'List item 3'},
@@ -53,3 +53,10 @@ const MenuDropTemplate: Story<MenuDropComponent> = (args: MenuDropComponent) => 
 });
 
 export const Default = MenuDropTemplate.bind({});
+
+export const DisabledItems = MenuDropTemplate.bind({});
+DisabledItems.args = {
+    menuItems: MOCK_MENU_ITEMS.map((item, idx) => {
+        return {...item, disabled: idx >= 2};
+    })
+};
