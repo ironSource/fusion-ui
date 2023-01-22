@@ -329,3 +329,25 @@ $smallHeight: 32px;
         text-align: initial;
     }
 }
+
+:host-context(fusion-input-inline){
+    .fu-input-holder{
+        input {
+            background-color: transparent;
+            padding: 8px;
+        }
+    }
+    &.fu-in-edit{
+        .fu-input-holder{
+            input {
+                background-color: transparent;
+                &:active,
+                &:focus {
+                    background-color: $White;
+                    padding-right: 28px;
+                }
+            }
+        }
+
+    }
+}

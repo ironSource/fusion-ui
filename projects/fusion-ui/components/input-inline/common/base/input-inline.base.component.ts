@@ -25,7 +25,9 @@ import {CurrencyPipeParameters} from './input-inline.config';
 
 @Directive()
 export abstract class InputInlineBaseComponent implements ControlValueAccessor, OnInit, OnChanges, OnDestroy {
+    /** @internal */
     @ViewChild('inputComponent') inputComponent: InputComponent;
+    /** @internal */
     @Input() textClass: string;
     @Input() type: InlineInputType = InlineInputType.Text;
     @Input() loading: boolean;
@@ -36,13 +38,19 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
     @Output() onSave = new EventEmitter();
     // eslint-disable-next-line
     @Output() onCancel = new EventEmitter();
+    /** @internal */
     isEditMode$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+    /** @internal */
     setEditMode$ = new Subject();
+    /** @internal */
     inputControl = new FormControl();
+    /** @internal */
     savedValue: any;
+    /** @internal */
     sanitationRegex: string;
+    /** @internal */
     viewOnlyText: string;
-
+    /** @internal */
     configByStyle: InputInlineConfigByStyle;
 
     private stayInEditMode = false;
@@ -90,6 +98,8 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
         return !isNullOrUndefined(this.currencyPipeParameters) ? this.currencyPipeParameters.digitsInfo : undefined;
     }
 
+    private clickFromSave = false;
+
     constructor(private currencyPipe: CurrencyPipe, private elementRef: ElementRef, private cdr: ChangeDetectorRef) {}
 
     ngOnInit() {
@@ -129,6 +139,7 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
     @HostListener('keydown.enter')
     save() {
         if (this.isEditMode$.getValue()) {
+            this.clickFromSave = true;
             if (this.inputControl.value.toString() !== this.savedValue.toString()) {
                 this.propagateChange(this.inputControl.value);
                 this.onSave.emit({
@@ -140,29 +151,35 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
             }
         }
     }
-
+    /** @internal */
     cancel() {
         if (this.isEditMode$.getValue()) {
             if (!this.stayInEditMode) {
                 this.inputControl.setValue(this.savedValue, {emitEvent: false});
                 this.isEditMode$.next(false);
                 this.onCancel.emit();
+                this.inputComponent.blur();
             } else {
                 this.stayInEditMode = false;
             }
         }
     }
-
+    /** @internal */
     goToEditMode(withValue?: string | number): void {
+        if (this.clickFromSave) {
+            this.clickFromSave = false;
+            return;
+        }
+
         this.inputControl.setValue(!isNullOrUndefined(withValue) ? withValue : this.savedValue);
         this.isEditMode$.next(true);
         setTimeout(() => {
             this.inputComponent.setFocus();
         }, 0);
     }
-
+    /** @internal */
     propagateChange = (_: string) => {};
-
+    /** @internal */
     writeValue(data: string | AdvancedInputInline): void {
         let value: string;
         if (!isNullOrUndefined(data)) {
@@ -176,16 +193,19 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
 
             this.savedValue = value;
             this.inputControl.setValue(value, {emitEvent: false});
+        } else {
+            this.savedValue = '';
+            this.inputControl.setValue('', {emitEvent: false});
         }
         this.isEditMode$.next(false);
     }
-
+    /** @internal */
     registerOnChange(fn: any): void {
         this.propagateChange = fn;
     }
-
+    /** @internal */
     registerOnTouched(): void {}
-
+    /** @internal */
     setDisabledState?(isDisabled: boolean): void {
         const status = isDisabled ? 'disable' : 'enable';
         this.inputControl[status]();

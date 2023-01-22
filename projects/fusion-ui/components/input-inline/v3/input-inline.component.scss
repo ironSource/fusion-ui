@@ -1,0 +1,23 @@
+@import '../../../src/style/scss/v3/vars/vars';
+@import '../../../src/style/scss/v3/mixins/mixins';
+
+$height: 32px;
+
+:host {
+    @extend %border-box-normalize;
+
+    .inline-input-wrapper{
+        @extend %font-bodySmall;
+        position: relative;
+
+        @include icon-style('fu-icon-save', $fu-primary-500, 16px, true, true) {
+            @include  size(16px);
+            position: absolute;
+            right: 8px;
+            top: 8px;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+}

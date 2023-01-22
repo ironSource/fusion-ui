@@ -1,0 +1,19 @@
+<div class="inline-input-wrapper" (click)="goToEditMode()">
+    <fusion-input
+        #inputComponent
+        class="is-underline"
+        unitPos="left"
+        [class.fu-in-edit]="isEditMode$ | async"
+        [placeholder]="savedValueToString"
+        [options]="inputOptions"
+        [units]="inputUnits"
+        [type]="inputType"
+        [sanitationRegex]="sanitationRegex"
+        [error]="error"
+        [fusionTooltip]="error"
+        [isDisabled]="loading"
+        [formControl]="inputControl"
+        (ngEscape)="cancel()"
+    ></fusion-input>
+    <fusion-icon class="fu-icon-save" [name]="saveIcon" (click)="save()" *ngIf="(isEditMode$ | async) && !loading"></fusion-icon>
+</div>
