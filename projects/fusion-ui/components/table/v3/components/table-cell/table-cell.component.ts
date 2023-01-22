@@ -60,6 +60,7 @@ export class TableCellComponent implements OnInit, OnChanges {
 
     @Input() infoIconTooltip: string;
     @Input() isRemove: boolean;
+    @Input() floatingActionsDisabled: boolean;
     @Input() isRowSelected: boolean;
     @Input() isLastColumn: boolean;
     @Input() customClass: {[columnKey: string]: string} = {};
@@ -98,6 +99,10 @@ export class TableCellComponent implements OnInit, OnChanges {
     customCellData: DynamicComponentConfiguration;
 
     shownActionsMenu = false;
+
+    get actionsMenuButtonId(): string {
+        return this.options.tableId + '_' + this.rowIndex;
+    }
 
     // eslint-disable-next-line @typescript-eslint/adjacent-overload-signatures
     get data(): CellDataType {
@@ -143,7 +148,11 @@ export class TableCellComponent implements OnInit, OnChanges {
     }
 
     get multipleActions(): TableMultipleActions {
-        return this.options?.rowActionsMenu;
+        const actionsMenu = this.options?.rowActionsMenu;
+        if (this.options?.rowActionsMenu && Array.isArray(this.options?.rowActionsMenu.actions)) {
+            actionsMenu.actions = this.options?.rowActionsMenu?.actions.map(this.setDisableStateForFloatingAction.bind(this));
+        }
+        return actionsMenu;
     }
 
     private _data: CellDataType;
@@ -312,7 +321,7 @@ export class TableCellComponent implements OnInit, OnChanges {
     }
 
     onActionMenuClickOutSide(target) {
-        if (!target.closest('#actionButton4row_' + this.rowIndex)) {
+        if (!target.closest('#' + this.actionsMenuButtonId)) {
             this.shownActionsMenu = false;
         }
     }
@@ -333,5 +342,11 @@ export class TableCellComponent implements OnInit, OnChanges {
             }
         }
         return errorMessage;
+    }
+
+    setDisableStateForFloatingAction(menuItem: MenuDropItem): MenuDropItem {
+        return this.options?.isFloatingActionDisabled && typeof this.options?.isFloatingActionDisabled === 'function'
+            ? {...menuItem, disabled: this.options.isFloatingActionDisabled(this.row, menuItem)}
+            : menuItem;
     }
 }

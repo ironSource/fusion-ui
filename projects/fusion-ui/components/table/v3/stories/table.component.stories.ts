@@ -1051,7 +1051,9 @@ const ROWS_DATA = [
 
 // endregion
 
+/*
 // region With Remove Row action
+// Deprecated
 export const RemoveRowAction = TableTemplate.bind({});
 RemoveRowAction.args = {
     options: {
@@ -1074,7 +1076,7 @@ RemoveRowAction.parameters = {
             language: 'typescript',
             format: true,
             type: 'code',
-            code: dedent`
+            code: dedent `
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { EventEmitter } from '@angular/core';
@@ -1219,6 +1221,7 @@ const ROWS_DATA = [
     }
 };
 // endregion
+*/
 
 // region Go Top Button
 const TableGoTopButtonTemplate: Story<TableComponent> = (args: TableComponent) => ({
@@ -1676,164 +1679,6 @@ const ROWS_DATA = [
     }
 };
 
-// endregion
-
-// region Multiple Row Actins
-export const FloatingActions = TableTemplate.bind({});
-FloatingActions.args = {
-    options: {
-        ...TABLE_DEFAULT_OPTIONS,
-        rowActionsMenu: {
-            actions: MOCK_ROW_ACTIONS
-        }
-    }
-};
-FloatingActions.parameters = {
-    docs: {
-        description: {
-            story: dedent`
-            **Floating actions** table row actions
-            Need to add **rowActionsMenu:TableMultipleActions** property to the table input **[options]**
-
-            like: \`rowActionsMenu:{actions: [{icon:'frame', label: 'List item 1'}, ...]}\` it a minimum needed.
-
-            Output event: **rowActionClicked** with \`{action:MenuDropItem, rowIndex:  string | number, row: TableRow}\`
-            `
-        },
-        source: {
-            language: 'typescript',
-            format: true,
-            type: 'code',
-            code: dedent`
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { EventEmitter } from '@angular/core';
-import { takeUntil } from 'rxjs/operators';
-import { Subject, BehaviorSubject } from 'rxjs';
-import { isNullOrUndefined } from '@ironsource/fusion-ui/utils';
-import {
-  TableModule,
-  TableColumn,
-  TableOptions,
-} from '@ironsource/fusion-ui/components/table';
-
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<fusion-table
-    [columns]="columns"
-    [rows]="rows$ | async"
-    [options]="options"
-    (rowActionClicked)=onRowActionClicked($event)
-  ></fusion-table>\`,
-  standalone: true,
-  imports: [CommonModule, TableModule],
-})
-export class FusionStoryWrapperComponent {
-  options: TableOptions = TABLE_OPTIONS;
-  columns: TableColumn[] = COLUMNS_CONFIG;
-  rows$ = new BehaviorSubject(ROWS_DATA);
-
-  onRowActionClicked($event){
-    console.log('onRowActionClicked', $event)
-  }
-}
-
-const TABLE_OPTIONS = {
-  tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'},
-  rowActionsMenu: {
-    actions: [
-      {icon: 'frame', label: 'List item 1'},
-      {icon: 'frame', label: 'List item 2'},
-      {icon: 'frame', label: 'List item 3'},
-      {icon: 'frame', label: 'List item 4'}
-    ]
-  }
-};
-
-const COLUMNS_CONFIG = [
-  { key: 'id', title: 'Id' },
-  { key: 'name', title: 'Name' },
-  { key: 'username', title: 'Username' },
-  { key: 'email', title: 'Email' },
-  { key: 'website', title: 'Website' },
-];
-
-const ROWS_DATA = [
-  {
-    id: 1,
-    name: 'Leanne Graham',
-    username: 'Bret',
-    email: 'Sincere@april.biz',
-    website: 'hildegard.org',
-  },
-  {
-    id: 2,
-    name: 'Ervin Howell',
-    username: 'Antonette',
-    email: 'Shanna@melissa.tv',
-    website: 'anastasia.net',
-  },
-  {
-    id: 3,
-    name: 'Clementine Bauch',
-    username: 'Samantha',
-    email: 'Nathan@yesenia.net',
-    website: 'ramiro.info',
-  },
-  {
-    id: 4,
-    name: 'Patricia Lebsack',
-    username: 'Karianne',
-    email: 'Julianne.OConner@kory.org',
-    website: 'kale.biz',
-  },
-  {
-    id: 5,
-    name: 'Chelsey Dietrich',
-    username: 'Kamren',
-    email: 'Lucio_Hettinger@annie.ca',
-    website: 'demarco.info',
-  },
-  {
-    id: 6,
-    name: 'Mrs. Dennis Schulist',
-    username: 'Leopoldo_Corkery',
-    email: 'Karley_Dach@jasper.info',
-    website: 'ola.org',
-  },
-  {
-    id: 7,
-    name: 'Kurtis Weissnat',
-    username: 'Elwyn.Skiles',
-    email: 'Telly.Hoeger@billy.biz',
-    website: 'elvis.io',
-  },
-  {
-    id: 8,
-    name: 'Nicholas Runolfsdottir V',
-    username: 'Maxime_Nienow',
-    email: 'Sherwood@rosamond.me',
-    website: 'jacynthe.com',
-  },
-  {
-    id: 9,
-    name: 'Glenna Reichert',
-    username: 'Delphine',
-    email: 'Chaim_McDermott@dana.io',
-    website: 'conrad.com',
-  },
-  {
-    id: 10,
-    name: 'Clementina DuBuque',
-    username: 'Moriah.Stanton',
-    email: 'Rey.Padberg@karina.biz',
-    website: 'ambrose.net',
-  },
-];
-            `
-        }
-    }
-};
 // endregion
 
 // -------------------------------------------

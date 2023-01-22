@@ -1,5 +1,9 @@
 <ul class="fu-menu-holder">
-    <li class="fu-menu-item" *ngFor="let menuItem of menuItems " (click)="itemClicked(menuItem)">
+    <li class="fu-menu-item"
+        *ngFor="let menuItem of menuItems"
+        [class.fu-disabled]="menuItem.disabled"
+        (click)="itemClicked(menuItem)"
+    >
         <fusion-icon class="fu-menu-item-icon" *ngIf="menuItem.icon" [name]="menuItem.icon"></fusion-icon>
         <div>{{menuItem.label}}</div>
     </li>

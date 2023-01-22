@@ -130,13 +130,13 @@
 </ng-template>
 
 <ng-template #multipleActionsMenu let-menuActions>
-    <div id="actionButton4row_{{rowIndex}}" class="fu-button-holder" [class.fu-row-menu-shown]="shownActionsMenu">
+    <div id="{{actionsMenuButtonId}}" class="fu-button-holder" [class.fu-row-menu-shown]="shownActionsMenu">
         <fusion-button class="transparent third fu-menu-drop-button" [icon]="'more-vert'" (click)="onActionButtonClicked()"></fusion-button>
     </div>
     <ng-container *ngIf="shownActionsMenu">
         <fusion-menu-drop
             *fusionTeleporting="'#'+options.tableId+'_tableTeleportWrapper'"
-            [fusionReposition]="'#actionButton4row_' + rowIndex"
+            [fusionReposition]="'#'+actionsMenuButtonId"
             [fusionRepositionPlacement]="'bottom-end'"
             [fusionRepositionOffset]="-32"
             [menuItems]="menuActions"
