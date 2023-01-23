@@ -26,6 +26,6 @@
         ></fusion-input>
         <fusion-icon class="icon-save" [name]="configByStyle.iconSave" (click)="save()" *ngIf="!loading && !error"></fusion-icon>
         <fusion-icon class="icon-error" [fusionTooltip]="error" [name]="configByStyle.iconError" *ngIf="error && !loading"></fusion-icon>
-        <!--<fusion-loader [status]="loading"></fusion-loader>-->
+        <fusion-loader [status]="loading && !error" size="inline"></fusion-loader>
     </div>
 </div>

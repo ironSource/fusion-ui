@@ -9,6 +9,7 @@ import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {ClickOutsideModule} from '@ironsource/fusion-ui';
 import {InlineInputType, InputInlineComponent} from '@ironsource/fusion-ui/components/input-inline';
 import {CurrencyPipeParameters} from '@ironsource/fusion-ui/components/input-inline/common/base';
+import {dedent} from 'ts-dedent';
 
 export default {
     title: 'Components/Inputs/Input-Inline',
@@ -71,11 +72,89 @@ export const Default = InputTemplate.bind({});
 Default.args = {
     formControl: new FormControl('some text value')
 };
+Default.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
+import {
+  InlineInputType,
+  InputInlineComponent,
+} from '@ironsource/fusion-ui/components/input-inline';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`
+    <div style="width: 155px;">
+<fusion-input-inline #inputInline
+    [type]="type"
+    [formControl]="formControl"
+    [loading]="loading"
+    [readOnly]="readOnly"
+    [error]="error"
+    (onSave)="onSave($event)"
+    (onCancel)="onCancel()"
+></fusion-input-inline>
+</div>
+  \`,
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    IconModule,
+    InputInlineComponent,
+  ],
+})
+export class FusionStoryWrapperComponent {
+  @ViewChild('inputInline') inputInline: InputInlineComponent;
+
+  type = InlineInputType.Text;
+  formControl = new FormControl('some text value');
+
+  loading = false;
+  readOnly = false;
+  error = '';
+
+  onSave($event) {
+    console.log('onSave: ', $event);
+    this.loading = true;
+    setTimeout(() => {
+      // here you can apply validations
+      // some validation
+      this.loading = false;
+      // update value
+      this.formControl.setValue($event.newValue);
+      // exit from edit mode
+      this.inputInline.isEditMode$.next(false);
+    }, 1000);
+  }
+
+  onCancel() {
+    console.log('onCancel');
+  }
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
 
 export const ReadOnly = InputTemplate.bind({});
 ReadOnly.args = {
     formControl: new FormControl('some text value'),
     readOnly: true
+};
+
+export const Pending = InputTemplate.bind({});
+Pending.args = {
+    formControl: new FormControl('some text value'),
+    loading: true
 };
 
 export const Disabled = InputTemplate.bind({});
