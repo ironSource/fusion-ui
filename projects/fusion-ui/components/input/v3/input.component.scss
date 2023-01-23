@@ -368,9 +368,11 @@ $smallHeight: 32px;
             }
         }
 
+        /*
         &:has(input.fu-error) {
             background-color: #0D148C;
         }
+        */
 
         &:not(.fu-readonly)::after {
             position: absolute;

@@ -77,5 +77,8 @@
 
 :host-context(tr:hover) {
     .inline-input-wrapper {
+        .is-label{
+            background-color: $fu-light-200;
+        }
     }
 }
