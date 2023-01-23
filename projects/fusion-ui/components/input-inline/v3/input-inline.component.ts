@@ -10,7 +10,7 @@ import {LoaderModule} from '@ironsource/fusion-ui/components/loader/v2';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {InputModule, InputOptions, InputSize} from '@ironsource/fusion-ui/components/input/v3';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v3';
-import {ClickOutsideModule} from '@ironsource/fusion-ui';
+import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 
 @Component({
     selector: 'fusion-input-inline',
