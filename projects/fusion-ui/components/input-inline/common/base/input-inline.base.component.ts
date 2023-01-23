@@ -52,6 +52,8 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
     viewOnlyText: string;
     /** @internal */
     configByStyle: InputInlineConfigByStyle;
+    /** @internal */
+    disable: boolean;
 
     private stayInEditMode = false;
     private clickOutSideSubscription: Subscription;
@@ -136,6 +138,7 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
         }
     }
 
+    /** @internal */
     @HostListener('keydown.enter')
     save() {
         if (this.isEditMode$.getValue()) {
@@ -210,6 +213,7 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
         const status = isDisabled ? 'disable' : 'enable';
         this.inputControl[status]();
         this.readOnly = isDisabled;
+        this.disable = isDisabled;
     }
 
     private handleClickOutSideListener(value: boolean): void {

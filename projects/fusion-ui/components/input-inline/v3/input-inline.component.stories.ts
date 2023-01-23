@@ -31,14 +31,18 @@ export default {
         design: {
             type: 'figma',
             url: 'https://www.figma.com/file/V4eZU3qDgKYPhR4eaTvSwy/%F0%9F%8E%A8-Style-guide-2021-Master?node-id=12055%3A117675&t=qWZb5OCasX8xRRtF-1'
+        },
+        layout: 'centered',
+        backgrounds: {
+            default: 'light'
         }
     },
     args: {
         type: 0 as InlineInputType, // Text
         loading: false,
         readOnly: false,
-        error: '',
-        currencyPipeParameters: null as CurrencyPipeParameters
+        currencyPipeParameters: null as CurrencyPipeParameters,
+        className: ''
     },
     argTypes: {
         formControl: {
@@ -50,12 +54,12 @@ export default {
 const InputTemplate: Story<InputInlineComponent> = (args: InputInlineComponent) => ({
     props: {...args},
     template: `<div style="width: 155px;">
-<fusion-input-inline
+<fusion-input-inline class="{{className}}"
     [type]="type"
     [formControl]="formControl"
     [loading]="loading"
-    [error]="error"
     [readOnly]="readOnly"
+    [error]="error"
     [currencyPipeParameters]="currencyPipeParameters"
     (onSave)="onSave($event)"
     (onCancel)="onCancel()"
@@ -66,4 +70,27 @@ const InputTemplate: Story<InputInlineComponent> = (args: InputInlineComponent) 
 export const Default = InputTemplate.bind({});
 Default.args = {
     formControl: new FormControl('some text value')
+};
+
+export const ReadOnly = InputTemplate.bind({});
+ReadOnly.args = {
+    formControl: new FormControl('some text value'),
+    readOnly: true
+};
+
+export const Disabled = InputTemplate.bind({});
+Disabled.args = {
+    formControl: new FormControl({value: 'some text value', disabled: true})
+};
+
+export const Error = InputTemplate.bind({});
+Error.args = {
+    formControl: new FormControl('some text value'),
+    error: 'Error message'
+};
+
+export const TextAlignRight = InputTemplate.bind({});
+TextAlignRight.args = {
+    formControl: new FormControl('some text value'),
+    className: 'fu-align-right'
 };
