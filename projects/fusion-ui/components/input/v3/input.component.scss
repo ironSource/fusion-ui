@@ -76,9 +76,9 @@ $smallHeight: 32px;
             justify-content: center;
             flex-direction: column;
             display: flex;
-            color: $fu-light-800;
+            color: $fu-black-500;
             background-color: $fu-light-100;
-            padding: $regularPadding;
+            padding: 0 4px 0 8px;
             height: $regularHeight;
             @extend %font-bodySmall;
 
@@ -135,6 +135,7 @@ $smallHeight: 32px;
             height: $regularHeight;
             color: $fu-black-500;
             width: 100%;
+            margin-top: -1px;
 
             &::placeholder {
                 color: $fu-light-800;
@@ -350,8 +351,8 @@ $smallHeight: 32px;
 :host-context(fusion-input-inline) {
     .fu-input-holder {
         background-color: transparent;
-
         &:hover {
+            .fu-input-units,
             input {
                 background-color: $White;
             }
@@ -370,6 +371,7 @@ $smallHeight: 32px;
         &:has(input.fu-error) {
             background-color: #0D148C;
         }
+
         &:not(.fu-readonly)::after {
             position: absolute;
             content: '';
@@ -388,9 +390,20 @@ $smallHeight: 32px;
             background-color: $fu-negative-500;
             bottom: 0;
         }
+        .fu-input-units,
+        .fu-input-units:hover{
+            background-color: $White;
+        }
     }
 
     .fu-error-msg {
+        display: none;
+    }
+}
+
+:host-context(.is-currency) {
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
         display: none;
     }
 }

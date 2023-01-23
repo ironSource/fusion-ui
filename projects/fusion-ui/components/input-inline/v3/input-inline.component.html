@@ -9,8 +9,8 @@
              [fusionTooltip]="savedValueToString"
         >{{ savedValueToString }}</div>
     </div>
-    <div [hidden]="(isEditMode$ | async) === false"
-         [ngClass]="{'is-edit-mode': isEditMode$ | async, 'is-loading': loading}">
+    <div *ngIf="(isEditMode$ | async)"
+         [ngClass]="{'is-currency': isTypeCurrency, 'is-loading': loading}">
         <fusion-input
             #inputComponent
             class="is-underline"

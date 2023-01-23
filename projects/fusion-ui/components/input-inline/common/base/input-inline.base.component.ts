@@ -1,4 +1,7 @@
 import {
+    ChangeDetectorRef,
+    Directive,
+    ElementRef,
     EventEmitter,
     HostListener,
     Input,
@@ -7,21 +10,17 @@ import {
     OnInit,
     Output,
     SimpleChanges,
-    ViewChild,
-    ElementRef,
-    ChangeDetectorRef,
-    Directive
+    ViewChild
 } from '@angular/core';
 import {isNullOrUndefined, isNumber, isObject, isString} from '@ironsource/fusion-ui/utils';
 import {ControlValueAccessor, FormControl} from '@angular/forms';
 import {InputComponent} from '@ironsource/fusion-ui/components/input';
-import {BehaviorSubject, Subject, fromEvent, Subscription} from 'rxjs';
+import {BehaviorSubject, fromEvent, Subject, Subscription} from 'rxjs';
 import {InlineInputType} from './inline-input-type.enum';
 import {CurrencyPipe} from '@angular/common';
 import {takeUntil} from 'rxjs/operators';
 import {AdvancedInputInline} from './advanced-input-inline';
-import {InputInlineConfigByStyle} from './input-inline.config';
-import {CurrencyPipeParameters} from './input-inline.config';
+import {CurrencyPipeParameters, InputInlineConfigByStyle} from './input-inline.config';
 
 @Directive()
 export abstract class InputInlineBaseComponent implements ControlValueAccessor, OnInit, OnChanges, OnDestroy {
@@ -29,7 +28,7 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
     @ViewChild('inputComponent') inputComponent: InputComponent;
     /** @internal */
     @Input() textClass: string;
-    @Input() type: InlineInputType = InlineInputType.Text;
+    @Input() type: InlineInputType = InlineInputType.Number;
     @Input() loading: boolean;
     @Input() readOnly: boolean;
     @Input() error: string;
@@ -72,9 +71,7 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
         if (this.type !== InlineInputType.Text) {
             if (!this.savedValue) {
                 value = '0';
-            } else if (isNaN(this.savedValue)) {
-                value = this.savedValue;
-            } else {
+            } else if (this.type === InlineInputType.Currency) {
                 value = this.currencyPipe
                     .transform(this.savedValue, this.currencyPipeCurrencyCode, this.currencyPipeDisplay, this.currencyPipeDigitsInfo)
                     .replace(/\.00$/, '');

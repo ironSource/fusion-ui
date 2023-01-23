@@ -38,7 +38,7 @@ export default {
         }
     },
     args: {
-        type: 0 as InlineInputType, // Text
+        type: InlineInputType.Text,
         loading: false,
         readOnly: false,
         currencyPipeParameters: null as CurrencyPipeParameters,
@@ -92,5 +92,24 @@ Error.args = {
 export const TextAlignRight = InputTemplate.bind({});
 TextAlignRight.args = {
     formControl: new FormControl('some text value'),
+    className: 'fu-align-right'
+};
+
+export const ValueNumber = InputTemplate.bind({});
+ValueNumber.args = {
+    formControl: new FormControl(250),
+    type: InlineInputType.Number
+};
+
+export const ValueCurrency = InputTemplate.bind({});
+ValueCurrency.args = {
+    formControl: new FormControl(250),
+    type: InlineInputType.Currency
+};
+
+export const ValueCurrencyAlignRight = InputTemplate.bind({});
+ValueCurrencyAlignRight.args = {
+    formControl: new FormControl(250),
+    type: InlineInputType.Currency,
     className: 'fu-align-right'
 };
