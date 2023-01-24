@@ -2,6 +2,7 @@ import {TableColumn, TableColumnTypeEnum, TableOptions} from '@ironsource/fusion
 import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline/common/base';
 import {FormControl, Validators} from '@angular/forms';
 import {VideoPlayerComponent} from '@ironsource/fusion-ui/components/video-player';
+import {CustomCellEditComponent} from '@ironsource/fusion-ui/components/table/v3/stories/custom-cell-edit/custom-cell-edit.component';
 
 // region Utils
 const randomDate = (start: Date, end: Date): Date => {
@@ -102,6 +103,14 @@ export const TABLE_EDITABLE_COLUMNS_CONFIG: TableColumn[] = [
         title: 'Amount',
         width: '120px'
     },
+    {key: 'username', title: 'Username'},
+    {key: 'email', title: 'Email'},
+    {key: 'website', title: 'Website'}
+];
+export const TABLE_COMPONENT_EDIT_COLUMNS_CONFIG: TableColumn[] = [
+    {key: 'id', title: 'Id'},
+    {key: 'name', title: 'Name', width: '150px'},
+    {key: 'amount', title: 'Amount', type: TableColumnTypeEnum.Component, component: CustomCellEditComponent, width: '180px'},
     {key: 'username', title: 'Username'},
     {key: 'email', title: 'Email'},
     {key: 'website', title: 'Website'}
@@ -244,7 +253,9 @@ export const ROWS_NUMBER_DATA = ROWS_DEFAULT_DATA.map(row => {
 export const ROWS_DATE_DATA = ROWS_DEFAULT_DATA.map(row => {
     return {date: randomDate(new Date(2012, 0, 1), new Date()), ...row};
 });
-
+export const ROWS_COMPONENT_EDIT_DATA = ROWS_DEFAULT_DATA.map(row => {
+    return {amount: {data: Math.floor(Math.random() * 100)}, ...row};
+});
 export const ROWS_EDITABLE_DATA = ROWS_DEFAULT_DATA.map(row => {
     const amountFormControl = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
     return {amount: amountFormControl, ...row};

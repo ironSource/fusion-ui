@@ -12,6 +12,7 @@ import {TableComponent} from '../table.component';
 import {
     ROWS_CHECKBOX_DATA,
     ROWS_COMPONENT_DATA,
+    ROWS_COMPONENT_EDIT_DATA,
     ROWS_DATE_DATA,
     ROWS_DEFAULT_DATA,
     ROWS_EDITABLE_DATA,
@@ -19,6 +20,7 @@ import {
     ROWS_TOGGLE_DATA,
     TABLE_CHECKBOX_COLUMNS_CONFIG,
     TABLE_COMPONENT_COLUMNS_CONFIG,
+    TABLE_COMPONENT_EDIT_COLUMNS_CONFIG,
     TABLE_CURRENCY_COLUMNS_CONFIG,
     TABLE_DATE_COLUMNS_CONFIG,
     TABLE_DEFAULT_COLUMNS_CONFIG,
@@ -65,8 +67,8 @@ export default {
     },
     args: {
         options: TABLE_DEFAULT_OPTIONS,
-        columns: TABLE_EDITABLE_COLUMNS_CONFIG,
-        rows: ROWS_EDITABLE_DATA
+        columns: TABLE_COMPONENT_EDIT_COLUMNS_CONFIG,
+        rows: ROWS_COMPONENT_EDIT_DATA
     }
 } as Meta<TableComponent>;
 

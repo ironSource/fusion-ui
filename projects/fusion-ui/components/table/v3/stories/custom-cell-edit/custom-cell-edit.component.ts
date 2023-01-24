@@ -27,7 +27,7 @@ export class CustomCellEditComponent {
         this.formControl.setValue(value);
     }
 
-    @Output() valueChanged = new EventEmitter();
+    @Output() outputEvent = new EventEmitter();
 
     private errorMessages = {
         required: 'Required!',
@@ -38,7 +38,7 @@ export class CustomCellEditComponent {
         this.inputError$.next('');
         this.isInRequest$.next(true);
         if (this.formControl.valid) {
-            this.valueChanged.emit($event.newValue);
+            this.outputEvent.emit($event.newValue);
         } else {
             const allErrors = this.formControl.errors || {};
             Object.keys(allErrors).forEach(errorKey => {
