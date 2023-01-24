@@ -1,4 +1,7 @@
 import {
+    ChangeDetectorRef,
+    Directive,
+    ElementRef,
     EventEmitter,
     HostListener,
     Input,
@@ -7,27 +10,25 @@ import {
     OnInit,
     Output,
     SimpleChanges,
-    ViewChild,
-    ElementRef,
-    ChangeDetectorRef,
-    Directive
+    ViewChild
 } from '@angular/core';
 import {isNullOrUndefined, isNumber, isObject, isString} from '@ironsource/fusion-ui/utils';
 import {ControlValueAccessor, FormControl} from '@angular/forms';
 import {InputComponent} from '@ironsource/fusion-ui/components/input';
-import {BehaviorSubject, Subject, fromEvent, Subscription} from 'rxjs';
+import {BehaviorSubject, fromEvent, Subject, Subscription} from 'rxjs';
 import {InlineInputType} from './inline-input-type.enum';
 import {CurrencyPipe} from '@angular/common';
 import {takeUntil} from 'rxjs/operators';
 import {AdvancedInputInline} from './advanced-input-inline';
-import {InputInlineConfigByStyle} from './input-inline.config';
-import {CurrencyPipeParameters} from './input-inline.config';
+import {CurrencyPipeParameters, InputInlineConfigByStyle} from './input-inline.config';
 
 @Directive()
 export abstract class InputInlineBaseComponent implements ControlValueAccessor, OnInit, OnChanges, OnDestroy {
+    /** @internal */
     @ViewChild('inputComponent') inputComponent: InputComponent;
+    /** @internal */
     @Input() textClass: string;
-    @Input() type: InlineInputType = InlineInputType.Text;
+    @Input() type: InlineInputType = InlineInputType.Number;
     @Input() loading: boolean;
     @Input() readOnly: boolean;
     @Input() error: string;
@@ -36,14 +37,22 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
     @Output() onSave = new EventEmitter();
     // eslint-disable-next-line
     @Output() onCancel = new EventEmitter();
+    /** @internal */
     isEditMode$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+    /** @internal */
     setEditMode$ = new Subject();
+    /** @internal */
     inputControl = new FormControl();
+    /** @internal */
     savedValue: any;
+    /** @internal */
     sanitationRegex: string;
+    /** @internal */
     viewOnlyText: string;
-
+    /** @internal */
     configByStyle: InputInlineConfigByStyle;
+    /** @internal */
+    disable: boolean;
 
     private stayInEditMode = false;
     private clickOutSideSubscription: Subscription;
@@ -62,9 +71,7 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
         if (this.type !== InlineInputType.Text) {
             if (!this.savedValue) {
                 value = '0';
-            } else if (isNaN(this.savedValue)) {
-                value = this.savedValue;
-            } else {
+            } else if (this.type === InlineInputType.Currency) {
                 value = this.currencyPipe
                     .transform(this.savedValue, this.currencyPipeCurrencyCode, this.currencyPipeDisplay, this.currencyPipeDigitsInfo)
                     .replace(/\.00$/, '');
@@ -89,6 +96,8 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
     get currencyPipeDigitsInfo(): string {
         return !isNullOrUndefined(this.currencyPipeParameters) ? this.currencyPipeParameters.digitsInfo : undefined;
     }
+
+    private clickFromSave = false;
 
     constructor(private currencyPipe: CurrencyPipe, private elementRef: ElementRef, private cdr: ChangeDetectorRef) {}
 
@@ -126,9 +135,11 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
         }
     }
 
+    /** @internal */
     @HostListener('keydown.enter')
     save() {
         if (this.isEditMode$.getValue()) {
+            this.clickFromSave = true;
             if (this.inputControl.value.toString() !== this.savedValue.toString()) {
                 this.propagateChange(this.inputControl.value);
                 this.onSave.emit({
@@ -140,29 +151,35 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
             }
         }
     }
-
+    /** @internal */
     cancel() {
         if (this.isEditMode$.getValue()) {
             if (!this.stayInEditMode) {
                 this.inputControl.setValue(this.savedValue, {emitEvent: false});
                 this.isEditMode$.next(false);
                 this.onCancel.emit();
+                this.inputComponent.blur();
             } else {
                 this.stayInEditMode = false;
             }
         }
     }
-
+    /** @internal */
     goToEditMode(withValue?: string | number): void {
+        if (this.clickFromSave) {
+            this.clickFromSave = false;
+            return;
+        }
+
         this.inputControl.setValue(!isNullOrUndefined(withValue) ? withValue : this.savedValue);
         this.isEditMode$.next(true);
         setTimeout(() => {
             this.inputComponent.setFocus();
         }, 0);
     }
-
+    /** @internal */
     propagateChange = (_: string) => {};
-
+    /** @internal */
     writeValue(data: string | AdvancedInputInline): void {
         let value: string;
         if (!isNullOrUndefined(data)) {
@@ -176,20 +193,24 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
 
             this.savedValue = value;
             this.inputControl.setValue(value, {emitEvent: false});
+        } else {
+            this.savedValue = '';
+            this.inputControl.setValue('', {emitEvent: false});
         }
         this.isEditMode$.next(false);
     }
-
+    /** @internal */
     registerOnChange(fn: any): void {
         this.propagateChange = fn;
     }
-
+    /** @internal */
     registerOnTouched(): void {}
-
+    /** @internal */
     setDisabledState?(isDisabled: boolean): void {
         const status = isDisabled ? 'disable' : 'enable';
         this.inputControl[status]();
         this.readOnly = isDisabled;
+        this.disable = isDisabled;
     }
 
     private handleClickOutSideListener(value: boolean): void {

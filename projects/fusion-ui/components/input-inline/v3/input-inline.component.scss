@@ -1,0 +1,88 @@
+@import '../../../src/style/scss/v3/vars/vars';
+@import '../../../src/style/scss/v3/vars/border';
+@import '../../../src/style/scss/v3/mixins/mixins';
+
+:host {
+    @extend %border-box-normalize;
+
+    .inline-input-wrapper {
+        @extend %font-bodySmall;
+        position: relative;
+
+        & > div {
+            &.is-label {
+                display: flex;
+                align-items: center;
+                padding: 8px;
+                height: 32px;
+                border-radius: 8px;
+
+                &:hover {
+                    background-color: $fu-light-200;
+                }
+
+                &.is-readonly {
+                    cursor: default;
+
+                    &:hover {
+                        background-color: transparent;
+                    }
+                }
+                &.hidden {
+                    display: none;
+                }
+            }
+        }
+
+        .is-currency {
+            & > div::first-letter {
+                padding-right: 0.3em;
+            }
+        }
+
+        .truncate {
+            @extend %truncate;
+        }
+
+        .fu-disable{
+            color: $fu-light-800;
+        }
+
+
+        @include icon-style('icon-save', $fu-primary-300, 16px, true, true) {
+            @include size(16px);
+            position: absolute;
+            right: 8px;
+            top: 8px;
+            cursor: pointer;
+        }
+        @include icon-style('icon-save', $fu-primary-500, 16px, true, true, 0, true);
+
+        @include icon-style('icon-error', $fu-negative-500, 16px, true, true) {
+            @include size(16px);
+            position: absolute;
+            right: 8px;
+            top: 8px;
+            cursor: pointer;
+        }
+        fusion-loader{
+            position: absolute;
+            right: 0;
+            top: 18px;
+        }
+    }
+
+    &.fu-align-right{
+        .is-label .truncate{
+            text-align: right;
+        }
+    }
+}
+
+:host-context(tr:hover) {
+    .inline-input-wrapper {
+        .is-label{
+            background-color: $fu-light-200;
+        }
+    }
+}

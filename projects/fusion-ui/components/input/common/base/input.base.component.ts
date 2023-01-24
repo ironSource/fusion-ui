@@ -157,6 +157,7 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
     /** @internal */
     blur(): void {
         this.focused = false;
+        this.input.nativeElement.blur();
         if (this.ngBlur) {
             this.ngBlur.emit();
         }
