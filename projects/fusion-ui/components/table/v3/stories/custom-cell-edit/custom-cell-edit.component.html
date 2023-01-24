@@ -1,5 +1,7 @@
-<fusion-input-inline [type]="type"
+<fusion-input-inline #inputInline
+                     [type]="type"
                      [formControl]="formControl"
+                     [loading]="isInRequest$ | async"
                      [error]="inputError$ | async"
                      (onSave)="save($event)"
 ></fusion-input-inline>

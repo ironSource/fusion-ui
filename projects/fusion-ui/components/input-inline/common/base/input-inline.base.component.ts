@@ -97,8 +97,6 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
         return !isNullOrUndefined(this.currencyPipeParameters) ? this.currencyPipeParameters.digitsInfo : undefined;
     }
 
-    private clickFromSave = false;
-
     constructor(private currencyPipe: CurrencyPipe, private elementRef: ElementRef, private cdr: ChangeDetectorRef) {}
 
     ngOnInit() {
@@ -112,6 +110,12 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
         });
 
         this.isEditMode$.asObservable().pipe(takeUntil(this.onDestroy$)).subscribe(this.handleClickOutSideListener.bind(this));
+
+        this.inputControl.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(val => {
+            if (!!val && this.error) {
+                this.error = '';
+            }
+        });
     }
 
     ngOnDestroy() {
@@ -139,7 +143,6 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
     @HostListener('keydown.enter')
     save() {
         if (this.isEditMode$.getValue()) {
-            this.clickFromSave = true;
             if (this.inputControl.value.toString() !== this.savedValue.toString()) {
                 this.propagateChange(this.inputControl.value);
                 this.onSave.emit({
@@ -166,11 +169,6 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
     }
     /** @internal */
     goToEditMode(withValue?: string | number): void {
-        if (this.clickFromSave) {
-            this.clickFromSave = false;
-            return;
-        }
-
         this.inputControl.setValue(!isNullOrUndefined(withValue) ? withValue : this.savedValue);
         this.isEditMode$.next(true);
         setTimeout(() => {
