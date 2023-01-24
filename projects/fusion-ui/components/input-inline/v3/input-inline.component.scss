@@ -19,6 +19,7 @@
 
                 &:hover {
                     background-color: $fu-light-200;
+                    cursor: pointer;
                 }
 
                 &.is-readonly {
@@ -26,6 +27,7 @@
 
                     &:hover {
                         background-color: transparent;
+                        cursor: default;
                     }
                 }
                 &.hidden {
