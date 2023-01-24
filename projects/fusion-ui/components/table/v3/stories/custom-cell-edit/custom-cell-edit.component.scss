@@ -3,13 +3,33 @@
 :host{
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    padding: 10px;
+    justify-content: center;
+    gap: 3px;
     max-width: 150px;
+    height: 64px;
+
+    /*border: solid 1px;*/
 
     @extend %font-bodySmall;
 
-    .fu-second-line{
-        padding-left: 8px;
+    .fu-remains{
+        padding: 0 8px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 4px;
+        color: $fu-light-900;
+
+        &.fu-no-remains{
+            color: $fu-negative-700;
+        }
+
+        .fu-remains-value::first-letter {
+            padding-right: 0.3em;
+        }
+    }
+    .fu-unlimited{
+        padding: 0 8px;
+        text-align: right;
     }
 }

@@ -1,8 +1,11 @@
+<div class="fu-unlimited" *ngIf="unlimited">Unlimited</div>
 <fusion-input-inline #inputInline
+                     *ngIf="!unlimited"
+                     class="fu-align-right"
                      [type]="type"
                      [formControl]="formControl"
                      [loading]="isInRequest$ | async"
                      [error]="inputError$ | async"
                      (onSave)="save($event)"
 ></fusion-input-inline>
-<div class="fu-second-line">second line here</div>
+<div *ngIf="hasRemaining && !unlimited" class="fu-remains" [class.fu-no-remains]="remaining<=0"><div class="fu-remains-value">{{remaining | currency}}</div> remains</div>

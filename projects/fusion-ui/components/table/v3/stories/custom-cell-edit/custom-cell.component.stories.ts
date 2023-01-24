@@ -32,6 +32,29 @@ const CustomCellTemplate: Story<CustomCellEditComponent> = (args: CustomCellEdit
 // region Default
 export const Default = CustomCellTemplate.bind({});
 Default.args = {
+    data: 250,
+    remaining: 50
+};
+// endregion
+
+// region Unlimited
+export const Unlimited = CustomCellTemplate.bind({});
+Unlimited.args = {
+    data: null
+};
+// endregion
+
+// region NoRemaining
+export const NoRemaining = CustomCellTemplate.bind({});
+NoRemaining.args = {
     data: 250
+};
+// endregion
+
+// region ZeroRemaining
+export const ZeroRemaining = CustomCellTemplate.bind({});
+ZeroRemaining.args = {
+    data: 50,
+    remaining: 0
 };
 // endregion

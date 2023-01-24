@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {InlineInputType, InputInlineComponent} from '@ironsource/fusion-ui/components/input-inline/v3';
 import {BehaviorSubject} from 'rxjs';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils/';
 
 @Component({
     selector: 'fusion-custom-cell-edit',
@@ -21,10 +22,24 @@ export class CustomCellEditComponent {
     inputError$ = new BehaviorSubject('');
     /** @internal */
     isInRequest$ = new BehaviorSubject(false);
+    /** @internal */
+    unlimited = false;
+    /** @internal */
+    hasRemaining = false;
 
     @Input()
     set data(value: number) {
         this.formControl.setValue(value);
+        this.unlimited = isNullOrUndefined(value);
+    }
+
+    private _remaining: number;
+    @Input() set remaining(value: number) {
+        this._remaining = value;
+        this.hasRemaining = !isNullOrUndefined(value);
+    }
+    get remaining(): number {
+        return this._remaining;
     }
 
     @Output() outputEvent = new EventEmitter();
