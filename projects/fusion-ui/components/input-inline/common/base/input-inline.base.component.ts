@@ -59,19 +59,19 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
     private onDestroy$ = new Subject<void>();
 
     get inputType(): string {
-        return this.type === InlineInputType.Text ? 'text' : 'number';
+        return this.isType(InlineInputType.Text) ? 'text' : 'number';
     }
 
     get inputUnits() {
-        return this.type === InlineInputType.Currency ? '$' : null;
+        return this.isType(InlineInputType.Currency) ? '$' : null;
     }
 
     get savedValueToString() {
         let value = this.savedValue;
-        if (this.type !== InlineInputType.Text) {
+        if (!this.isType(InlineInputType.Text)) {
             if (!this.savedValue) {
                 value = '0';
-            } else if (this.type === InlineInputType.Currency) {
+            } else if (this.isType(InlineInputType.Currency)) {
                 value = this.currencyPipe
                     .transform(this.savedValue, this.currencyPipeCurrencyCode, this.currencyPipeDisplay, this.currencyPipeDigitsInfo)
                     .replace(/\.00$/, '');
@@ -82,7 +82,7 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
     }
 
     get isTypeCurrency(): boolean {
-        return this.type === InlineInputType.Currency && this.savedValue && !isNaN(this.savedValue);
+        return this.isType(InlineInputType.Currency) && this.savedValue && !isNaN(this.savedValue);
     }
 
     get currencyPipeCurrencyCode(): string {
@@ -228,5 +228,9 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
                 this.clickOutSideSubscription.unsubscribe();
             }
         }
+    }
+
+    private isType(type: InlineInputType): boolean {
+        return typeof this.type === 'string' ? this.type === 'InlineInputType.' + InlineInputType[type] : this.type === type;
     }
 }
