@@ -1,0 +1,15 @@
+@import "../../../../../src/style/scss/v3/vars/vars";
+
+:host{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+    max-width: 150px;
+
+    @extend %font-bodySmall;
+
+    .fu-second-line{
+        padding-left: 8px;
+    }
+}
