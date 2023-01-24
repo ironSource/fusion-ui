@@ -368,12 +368,6 @@ $smallHeight: 32px;
             }
         }
 
-        /*
-        &:has(input.fu-error) {
-            background-color: #0D148C;
-        }
-        */
-
         &:not(.fu-readonly)::after {
             position: absolute;
             content: '';
@@ -395,6 +389,15 @@ $smallHeight: 32px;
         .fu-input-units,
         .fu-input-units:hover{
             background-color: $White;
+        }
+        &.fu-disabled{
+            input {
+                background-color: $White;
+            }
+            .fu-input-units,
+            .fu-input-units:hover{
+                color: $fu-light-800;
+            }
         }
     }
 

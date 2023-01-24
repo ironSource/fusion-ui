@@ -48,6 +48,15 @@ export default {
     argTypes: {
         formControl: {
             control: false
+        },
+        type: {
+            control: false
+        },
+        currencyPipeParameters: {
+            control: false
+        },
+        error: {
+            control: 'text'
         }
     }
 } as Meta<InputInlineComponent>;
@@ -614,6 +623,85 @@ ValueCurrency.args = {
     type: InlineInputType.Currency
 };
 ValueCurrency.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
+import {
+  InlineInputType,
+  InputInlineComponent,
+} from '@ironsource/fusion-ui/components/input-inline';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`
+    <div style="width: 155px;">
+<fusion-input-inline #inputInline
+    [type]="type"
+    [formControl]="formControl"
+    [loading]="loading"
+    [readOnly]="readOnly"
+    [error]="error"
+    (onSave)="onSave($event)"
+    (onCancel)="onCancel()"
+></fusion-input-inline>
+</div>
+  \`,
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    IconModule,
+    InputInlineComponent,
+  ],
+})
+export class FusionStoryWrapperComponent {
+  @ViewChild('inputInline') inputInline: InputInlineComponent;
+
+  type = InlineInputType.Currency;
+  formControl = new FormControl(250);
+
+  loading = false;
+  readOnly = false;
+  error = '';
+
+  onSave($event) {
+    console.log('onSave: ', $event);
+    this.loading = true;
+    setTimeout(() => {
+      // here you can apply validations
+
+      this.loading = false;
+      // update value
+      this.formControl.setValue($event.newValue);
+      // exit from edit mode
+      this.inputInline.isEditMode$.next(false);
+    }, 1000);
+  }
+
+  onCancel() {
+    console.log('onCancel');
+  }
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+
+export const PendingValueCurrency = InputTemplate.bind({});
+PendingValueCurrency.args = {
+    formControl: new FormControl(250),
+    loading: true,
+    type: InlineInputType.Currency
+};
+PendingValueCurrency.parameters = {
     docs: {
         source: {
             language: 'typescript',
