@@ -7,7 +7,7 @@ import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Component({
     selector: 'fusion-table-story-holder',
-    template: `<fusion-table
+    template: ` <fusion-table
         [columns]="columns"
         [rows]="tableRows"
         [options]="options"
@@ -29,6 +29,7 @@ export class TableStoryHolderComponent implements OnInit, OnDestroy {
      * @param value: TableOptions
      */
     @Input() options: TableOptions = {};
+
     /**
      * Table rows data
      * rows: {[key: string]: any}[]
@@ -36,7 +37,16 @@ export class TableStoryHolderComponent implements OnInit, OnDestroy {
     @Input() set rows(value: {[key: string]: any}[]) {
         if (Array.isArray(value)) {
             this._rows = value;
-            this.tableRows = this._rows;
+            this.tableRows = this._rows.map(row => {
+                // check for Custom Editable Table Cell
+                if (row.hasOwnProperty('amount')) {
+                    row['amount'] = {
+                        ...row['amount'],
+                        onChange: this.onRowDataChanged$
+                    };
+                }
+                return row;
+            });
         }
     }
 
@@ -50,6 +60,8 @@ export class TableStoryHolderComponent implements OnInit, OnDestroy {
     private onDestroy$ = new Subject<void>();
     private _rows = [];
 
+    private onRowDataChanged$ = new EventEmitter<any>();
+
     ngOnInit() {
         if (!isNullOrUndefined(this.options?.searchOptions?.onSearch)) {
             this.options.searchOptions.onSearch.pipe(takeUntil(this.onDestroy$)).subscribe(value => {
@@ -60,6 +72,7 @@ export class TableStoryHolderComponent implements OnInit, OnDestroy {
                 ];
             });
         }
+        this.onRowDataChanged$.pipe(takeUntil(this.onDestroy$)).subscribe(this.onRowModelChange.bind(this));
     }
 
     ngOnDestroy(): void {
@@ -68,6 +81,7 @@ export class TableStoryHolderComponent implements OnInit, OnDestroy {
     }
 
     onRowModelChange($event) {
+        console.log('onRowModelChange: ', $event);
         this.rowModelChange.emit($event);
         setTimeout(() => {
             if ($event.keyChanged === 'live') {

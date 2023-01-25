@@ -4,12 +4,25 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 3px;
     max-width: 150px;
-    height: 64px;
+    height: 48px;
+    margin: 8px;
+
+    border-radius: 8px;
 
     @extend %font-bodySmall;
 
+    fusion-input-inline{
+        display: none;
+    }
+    .fu-value{
+        padding: 4px 8px 4px 4px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 24px;
+        cursor: pointer;
+    }
     .fu-remains{
         padding: 0 8px;
         display: flex;
@@ -17,17 +30,28 @@
         justify-content: flex-end;
         gap: 4px;
         color: $fu-light-900;
-
         &.fu-no-remains{
             color: $fu-negative-700;
         }
+    }
+    .fu-value::first-letter,
+    .fu-remains-value::first-letter {
+        padding-right: 0.3em;
+    }
 
-        .fu-remains-value::first-letter {
-            padding-right: 0.3em;
+    &.fu-show-edit{
+        fusion-input-inline{
+            display: unset;
+        }
+        .fu-value{
+            display: none;
         }
     }
-    .fu-unlimited{
-        padding: 0 8px;
-        text-align: right;
+}
+
+:host-context(tr:hover) {
+    background-color: $fu-light-200;
+    &.fu-show-edit{
+        background-color: transparent;
     }
 }

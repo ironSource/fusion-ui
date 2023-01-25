@@ -1,8 +1,8 @@
-import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, HostBinding, Input, Output, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {InlineInputType, InputInlineComponent} from '@ironsource/fusion-ui/components/input-inline/v3';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {isNullOrUndefined, isNumber} from '@ironsource/fusion-ui/utils/';
 
 @Component({
@@ -12,31 +12,31 @@ import {isNullOrUndefined, isNumber} from '@ironsource/fusion-ui/utils/';
     templateUrl: './custom-cell-edit.component.html',
     styleUrls: ['./custom-cell-edit.component.scss']
 })
-export class CustomCellEditComponent {
+export class CustomCellEditComponent implements AfterViewInit {
     /** @internal */
     @ViewChild('inputInline') inputInlineComponent: InputInlineComponent;
     /** @internal */
     inputType: InlineInputType = InlineInputType.Currency;
     /** @internal */
-    formControl = new FormControl(null, [Validators.required, Validators.min(2)]);
+    formControl = new FormControl(null, [Validators.min(2)]);
     /** @internal */
     inputError$ = new BehaviorSubject('');
     /** @internal */
     isInRequest$ = new BehaviorSubject(false);
     /** @internal */
-    unlimited = false;
+    editMode$ = new Observable();
     /** @internal */
     hasRemaining = false;
 
     @Input()
     /** @internal */
     set data(value: number) {
-        this.unlimited = isNullOrUndefined(value);
-        if (!this.unlimited) {
+        if (!isNullOrUndefined(value)) {
             this.initInputData = value;
             this.formControl.setValue(value);
         }
     }
+
     /** @internal */
     @Input() cellPosition?: {rowIndex: number; cellIndex: number};
 
@@ -48,11 +48,16 @@ export class CustomCellEditComponent {
             this._remaining = remaining;
         }
     }
+
     get remaining(): number {
         return this._remaining;
     }
 
     @Output() onChange = new EventEmitter();
+
+    @HostBinding('class.fu-show-edit') get showInput(): boolean {
+        return this._showInput;
+    }
 
     private initInputData: number;
     private errorMessages = {
@@ -60,6 +65,17 @@ export class CustomCellEditComponent {
         min: 'Minimum value: 2'
     };
     private keyChanged = 'customCell';
+    private _showInput = false;
+
+    ngAfterViewInit() {
+        this.editMode$ = this.inputInlineComponent.isEditMode$.asObservable();
+    }
+
+    /** @internal */
+    showEdit() {
+        this._showInput = true;
+        this.inputInlineComponent.isEditMode$.next(true);
+    }
 
     saveChanges(valuesOptions: {currentValue: number; newValue: string}) {
         if (this.formControl.valid) {
@@ -73,7 +89,8 @@ export class CustomCellEditComponent {
                     prevValue: prevValue,
                     cellPosition: this.cellPosition,
                     keyChanged: this.keyChanged,
-                    onCellRequestDone: (isSuccess: boolean, error: {message: string; status: number}, stayInEditMode = false) => {
+                    /* Name for callback method in TableStoryHolderComponent */
+                    onRequestDone: (isSuccess: boolean, error: {message: string; status: number}, stayInEditMode = false) => {
                         if (!isSuccess) {
                             if (stayInEditMode) {
                                 inlineInputComponent.setEditMode$.next(newValue);
@@ -96,8 +113,10 @@ export class CustomCellEditComponent {
             });
         }
     }
+
     /** @internal */
     cancelEdit(): void {
         this.inputError$.next('');
+        this._showInput = false;
     }
 }

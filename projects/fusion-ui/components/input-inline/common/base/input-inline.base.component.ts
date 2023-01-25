@@ -18,7 +18,7 @@ import {InputComponent} from '@ironsource/fusion-ui/components/input';
 import {BehaviorSubject, fromEvent, Subject, Subscription} from 'rxjs';
 import {InlineInputType} from './inline-input-type.enum';
 import {CurrencyPipe} from '@angular/common';
-import {takeUntil} from 'rxjs/operators';
+import {filter, takeUntil} from 'rxjs/operators';
 import {AdvancedInputInline} from './advanced-input-inline';
 import {CurrencyPipeParameters, InputInlineConfigByStyle} from './input-inline.config';
 
@@ -109,7 +109,13 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
             }
         });
 
-        this.isEditMode$.asObservable().pipe(takeUntil(this.onDestroy$)).subscribe(this.handleClickOutSideListener.bind(this));
+        this.isEditMode$
+            .asObservable()
+            .pipe(
+                takeUntil(this.onDestroy$),
+                filter(val => val)
+            )
+            .subscribe(this.handleClickOutSideListener.bind(this));
 
         this.inputControl.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(val => {
             if (!!val && this.error) {
@@ -156,13 +162,12 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
     }
     /** @internal */
     cancel() {
-        console.log('cancel::::');
         if (this.isEditMode$.getValue() && !this.loading) {
             if (!this.stayInEditMode) {
                 this.inputControl.setValue(this.savedValue, {emitEvent: false});
+                this.inputComponent.blur();
                 this.isEditMode$.next(false);
                 this.onCancel.emit();
-                this.inputComponent.blur();
             } else {
                 this.stayInEditMode = false;
             }
@@ -212,11 +217,10 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
         this.disable = isDisabled;
     }
 
-    private handleClickOutSideListener(value: boolean): void {
-        if (value && this.error) {
-            this.clickOutSideSubscription = fromEvent(document, 'click').subscribe(event => {
-                const targetElement = event.target;
-                const clickedInside = this.elementRef.nativeElement.contains(targetElement);
+    private handleClickOutSideListener(value: boolean, $event): void {
+        if (value && !this.error) {
+            this.clickOutSideSubscription = fromEvent(document, 'click').subscribe((event: MouseEvent) => {
+                const clickedInside = this.isClickInsideByCoordinates(event);
                 if (!clickedInside && !this.stayInEditMode) {
                     this.cancel();
                     this.cdr.markForCheck();
@@ -227,6 +231,16 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
                 this.clickOutSideSubscription.unsubscribe();
             }
         }
+    }
+
+    private isClickInsideByCoordinates(event: MouseEvent): boolean {
+        const parentRect = this.elementRef.nativeElement.getBoundingClientRect();
+        return (
+            parentRect.left <= event.clientX &&
+            parentRect.right >= event.clientX &&
+            parentRect.top <= event.clientY &&
+            parentRect.bottom >= event.clientY
+        );
     }
 
     private isType(type: InlineInputType): boolean {

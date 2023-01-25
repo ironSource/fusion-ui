@@ -260,7 +260,7 @@ export const ROWS_NUMBER_DATA = ROWS_DEFAULT_DATA.map(row => {
 export const ROWS_DATE_DATA = ROWS_DEFAULT_DATA.map(row => {
     return {date: randomDate(new Date(2012, 0, 1), new Date()), ...row};
 });
-export const ROWS_COMPONENT_EDIT_DATA = ROWS_DEFAULT_DATA.slice(0, 1).map((row, idx) => {
+export const ROWS_COMPONENT_EDIT_DATA = ROWS_DEFAULT_DATA.map((row, idx) => {
     const data = idx == 3 ? null : Math.floor(Math.random() * 100);
     const amountData = {
         data: data,

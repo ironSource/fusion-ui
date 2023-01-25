@@ -38,7 +38,7 @@ const actionsData = {
 };
 
 export default {
-    title: 'Components/Table/Column Custom/Editable Custom Cell',
+    title: 'Components/Table/Column Custom Edit/Editable Custom Cell',
     component: TableComponent,
     decorators: [
         moduleMetadata({
