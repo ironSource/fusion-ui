@@ -156,7 +156,7 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
     }
     /** @internal */
     cancel() {
-        if (this.isEditMode$.getValue()) {
+        if (this.isEditMode$.getValue() && !this.loading) {
             if (!this.stayInEditMode) {
                 this.inputControl.setValue(this.savedValue, {emitEvent: false});
                 this.isEditMode$.next(false);

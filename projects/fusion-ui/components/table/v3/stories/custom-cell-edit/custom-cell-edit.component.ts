@@ -61,7 +61,6 @@ export class CustomCellEditComponent {
     };
     private keyChanged = 'customCell';
 
-    /** @internal */
     saveChanges(valuesOptions: {currentValue: number; newValue: string}) {
         if (this.formControl.valid) {
             const newValue = Number.parseFloat(valuesOptions.newValue);
