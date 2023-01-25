@@ -28,9 +28,6 @@ import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside
     ]
 })
 export class InputInlineComponent extends InputInlineBaseComponent implements OnInit {
-    /** @internal */
-    inputOptions: InputOptions = {size: InputSize.Small};
-
     ngOnInit() {
         super.ngOnInit();
         this.configByStyle = CONFIG_INPUT_INLINE_BY_UI_STYLE[`style_v3`];

@@ -9,32 +9,33 @@
         @extend %font-bodySmall;
         position: relative;
 
-        & > div {
-            &.is-label {
-                display: flex;
-                align-items: center;
-                padding: 8px;
-                height: 32px;
-                border-radius: 8px;
+        .is-label {
+            border: solid 1px;
+            display: flex;
+            align-items: center;
+            padding: 12px 12px 12px 8px;
+            height: 40px;
+            border-radius: 8px;
+
+            &:hover {
+                background-color: $fu-light-200;
+                cursor: pointer;
+            }
+
+            &.is-readonly {
+                cursor: default;
 
                 &:hover {
-                    background-color: $fu-light-200;
-                    cursor: pointer;
-                }
-
-                &.is-readonly {
+                    background-color: transparent;
                     cursor: default;
-
-                    &:hover {
-                        background-color: transparent;
-                        cursor: default;
-                    }
-                }
-                &.hidden {
-                    display: none;
                 }
             }
+
+            &.hidden {
+                display: none;
+            }
         }
+
 
         .is-currency {
             & > div::first-letter {
@@ -46,16 +47,15 @@
             @extend %truncate;
         }
 
-        .fu-disable{
+        .fu-disable {
             color: $fu-light-800;
         }
-
 
         @include icon-style('icon-save', $fu-primary-300, 16px, true, true) {
             @include size(16px);
             position: absolute;
-            right: 8px;
-            top: 8px;
+            right: 12px;
+            top: 12px;
             cursor: pointer;
         }
         @include icon-style('icon-save', $fu-primary-500, 16px, true, true, 0, true);
@@ -67,15 +67,16 @@
             top: 8px;
             cursor: pointer;
         }
-        fusion-loader{
+
+        fusion-loader {
             position: absolute;
             right: 0;
             top: 18px;
         }
     }
 
-    &.fu-align-right{
-        .is-label .truncate{
+    &.fu-align-right {
+        .is-label .truncate {
             text-align: right;
         }
     }
@@ -83,7 +84,7 @@
 
 :host-context(tr:hover) {
     .inline-input-wrapper {
-        .is-label{
+        .is-label {
             background-color: $fu-light-200;
         }
     }

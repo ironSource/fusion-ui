@@ -356,12 +356,14 @@ $smallHeight: 32px;
                 background-color: $White;
             }
         }
-
+        .fu-input-units{
+            padding-left: 9px;
+        }
         input {
             background-color: $White;
-            padding-left: 8px;
-            padding-right: 27px;
-
+            padding-left: 9px;
+            padding-right: 32px;
+            margin-top: -1px;
             &:hover {
                 background-color: $White;
             }
