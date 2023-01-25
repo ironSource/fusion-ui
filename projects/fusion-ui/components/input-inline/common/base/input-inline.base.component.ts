@@ -142,7 +142,7 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
     /** @internal */
     @HostListener('keydown.enter')
     save() {
-        if (this.isEditMode$.getValue()) {
+        if (this.isEditMode$.getValue() && this.inputControl.valid) {
             if (this.inputControl.value.toString() !== this.savedValue.toString()) {
                 this.propagateChange(this.inputControl.value);
                 this.onSave.emit({
@@ -156,6 +156,7 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
     }
     /** @internal */
     cancel() {
+        console.log('cancel::::');
         if (this.isEditMode$.getValue() && !this.loading) {
             if (!this.stayInEditMode) {
                 this.inputControl.setValue(this.savedValue, {emitEvent: false});
@@ -212,7 +213,7 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
     }
 
     private handleClickOutSideListener(value: boolean): void {
-        if (value) {
+        if (value && this.error) {
             this.clickOutSideSubscription = fromEvent(document, 'click').subscribe(event => {
                 const targetElement = event.target;
                 const clickedInside = this.elementRef.nativeElement.contains(targetElement);
