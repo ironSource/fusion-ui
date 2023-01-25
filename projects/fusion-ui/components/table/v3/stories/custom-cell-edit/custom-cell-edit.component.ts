@@ -74,6 +74,7 @@ export class CustomCellEditComponent implements AfterViewInit {
     /** @internal */
     showEdit() {
         this._showInput = true;
+        // set input-inline to edit mode
         this.inputInlineComponent.isEditMode$.next(true);
     }
 
