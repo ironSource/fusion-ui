@@ -43,7 +43,6 @@ Unlimited.args = {
     data: null
 };
 // endregion
-
 // region NoRemaining
 export const NoRemaining = CustomCellTemplate.bind({});
 NoRemaining.args = {

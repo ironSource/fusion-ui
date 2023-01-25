@@ -2,10 +2,11 @@
 <fusion-input-inline #inputInline
                      *ngIf="!unlimited"
                      class="fu-align-right"
-                     [type]="type"
+                     [type]="inputType"
                      [formControl]="formControl"
                      [loading]="isInRequest$ | async"
                      [error]="inputError$ | async"
-                     (onSave)="save($event)"
+                     (onSave)="saveChanges($event)"
+                     (cancel)="cancelEdit()"
 ></fusion-input-inline>
 <div *ngIf="hasRemaining && !unlimited" class="fu-remains" [class.fu-no-remains]="remaining<=0"><div class="fu-remains-value">{{remaining | currency}}</div> remains</div>
