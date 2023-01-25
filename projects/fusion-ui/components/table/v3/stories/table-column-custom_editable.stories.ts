@@ -87,4 +87,179 @@ const TableEditTemplate: Story<TableComponent> = (args: TableComponent) => ({
 
 // region Editable column
 export const Default = TableEditTemplate.bind({});
+/*Default.parameters = {
+    docs: {
+        description: {
+            story: dedent`
+            **Editable column** possibility to edit data in cell. Data type for this cell - FormControl. It also give a possibility to set validation rules.
+            For example - required value, or minimum / maximum value. Like \`cellValue = new FormControl(123, [Validators.required, Validators.min(5)])\`
+            Column configuration:
+            \`{key: 'amount', type: TableColumnTypeEnum.InputEdit, inputType: InlineInputType.Currency,title: 'Amount', width: '120px'},\`
+            For validation error shown you need to add **customErrorMapping** fro this column configuration:
+            \`customErrorMapping: {required: {errorMessageKey: 'required'},min: {errorMessageKey: 'min',textMapping: [{key: 'minValue', value: '5'}]}},\`
+            On save, if validations will ok, it emit event **(rowModelChange)**. And you need add event processing method.
+            Example: \`(rowModelChange)="rowModelChange($event)"\`
+            in arguments you get object:
+            \`{rowIndex: 6, rowModel: Object, keyChanged: "amount", newValue: "44", prevValue: 43}\`
+
+            * **rowIndex**:  index for row in **rows** array that was send to the table as input parameter **[rows]**
+            * **rowModel**:  row element from **rows** array related to the event **rowModelChange**
+            * **keyChanged**: key name in element from **rows** array what was changed
+            * **newValue**: new value for this key
+            * **prevValue**: previous (current) value for this key
+
+            Also it has call-back method **onRequestDone** that you need to call on the row data change ended
+            \`onRequestDone(true)\` - in case data was changed successful
+            `
+        },
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import {
+  TableModule,
+  TableColumn,
+  TableOptions,
+  TableColumnTypeEnum,
+} from '@ironsource/fusion-ui/components/table';
+import { InlineInputType } from '@ironsource/fusion-ui/components/input-inline/common/base';
+import { FormControl, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<fusion-table [columns]="columns" [rows]="rows" [options]="options" (rowModelChange)="onRowModelChange($event)"></fusion-table>\`,
+  standalone: true,
+  imports: [TableModule],
+})
+export class FusionStoryWrapperComponent {
+  options: TableOptions = {
+    tableLabel: { text: 'Table label', tooltip: 'lorem ipsum dolor' },
+  };
+
+  columns: TableColumn[] = COLUMNS_CONFIG;
+
+  rows = ROWS_DATA.map((row) => {
+    return { live: true, ...row };
+  });
+
+  onRowModelChange($event) {
+    setTimeout(() => {
+      if ($event.keyChanged === 'live') {
+        $event.rowModel[$event.keyChanged] = $event.newValue;
+      }
+      $event.onRequestDone(true);
+    }, 2000);
+  }
+}
+
+const COLUMNS_CONFIG: TableColumn[] = [
+  { key: 'id', title: 'Id' },
+  { key: 'name', title: 'Name' },
+  {
+    key: 'amount',
+    type: TableColumnTypeEnum.InputEdit,
+    inputType: InlineInputType.Currency,
+    customErrorMapping: {
+      required: { errorMessageKey: 'required' },
+      min: {
+        errorMessageKey: 'min',
+        textMapping: [{ key: 'minValue', value: '5' }],
+      },
+    },
+    title: 'Amount',
+    width: '120px',
+  },
+  { key: 'username', title: 'Username' },
+  { key: 'email', title: 'Email' },
+  { key: 'website', title: 'Website' },
+];
+
+const ROWS_DATA = [
+  {
+    id: 1,
+    name: 'Leanne Graham',
+    username: 'Bret',
+    email: 'Sincere@april.biz',
+    website: 'hildegard.org',
+    amount: new FormControl(34, [Validators.required, Validators.min(5)]),
+  },
+  {
+    id: 2,
+    name: 'Ervin Howell',
+    username: 'Antonette',
+    email: 'Shanna@melissa.tv',
+    website: 'anastasia.net',
+    amount: new FormControl(45, [Validators.required, Validators.min(5)]),
+  },
+  {
+    id: 3,
+    name: 'Clementine Bauch',
+    username: 'Samantha',
+    email: 'Nathan@yesenia.net',
+    website: 'ramiro.info',
+    amount: new FormControl(23, [Validators.required, Validators.min(5)]),
+  },
+  {
+    id: 4,
+    name: 'Patricia Lebsack',
+    username: 'Karianne',
+    email: 'Julianne.OConner@kory.org',
+    website: 'kale.biz',
+    amount: new FormControl(17, [Validators.required, Validators.min(5)]),
+  },
+  {
+    id: 5,
+    name: 'Chelsey Dietrich',
+    username: 'Kamren',
+    email: 'Lucio_Hettinger@annie.ca',
+    website: 'demarco.info',
+    amount: new FormControl(55, [Validators.required, Validators.min(5)]),
+  },
+  {
+    id: 6,
+    name: 'Mrs. Dennis Schulist',
+    username: 'Leopoldo_Corkery',
+    email: 'Karley_Dach@jasper.info',
+    website: 'ola.org',
+    amount: new FormControl(14, [Validators.required, Validators.min(5)]),
+  },
+  {
+    id: 7,
+    name: 'Kurtis Weissnat',
+    username: 'Elwyn.Skiles',
+    email: 'Telly.Hoeger@billy.biz',
+    website: 'elvis.io',
+    amount: new FormControl(76, [Validators.required, Validators.min(5)]),
+  },
+  {
+    id: 8,
+    name: 'Nicholas Runolfsdottir V',
+    username: 'Maxime_Nienow',
+    email: 'Sherwood@rosamond.me',
+    website: 'jacynthe.com',
+    amount: new FormControl(78, [Validators.required, Validators.min(5)]),
+  },
+  {
+    id: 9,
+    name: 'Glenna Reichert',
+    username: 'Delphine',
+    email: 'Chaim_McDermott@dana.io',
+    website: 'conrad.com',
+    amount: new FormControl(23, [Validators.required, Validators.min(5)]),
+  },
+  {
+    id: 10,
+    name: 'Clementina DuBuque',
+    username: 'Moriah.Stanton',
+    email: 'Rey.Padberg@karina.biz',
+    website: 'ambrose.net',
+    amount: new FormControl(98, [Validators.required, Validators.min(5)]),
+  },
+];
+            `,
+            format: true,
+            type: 'code'
+        }
+    }
+};*/
 // endregion
