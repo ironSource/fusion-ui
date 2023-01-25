@@ -169,7 +169,7 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
     }
     /** @internal */
     goToEditMode(withValue?: string | number): void {
-        this.inputControl.setValue(!isNullOrUndefined(withValue) ? withValue : this.savedValue);
+        this.inputControl.setValue(!isNullOrUndefined(withValue) ? withValue : this.savedValue, {emitEvent: false});
         this.isEditMode$.next(true);
         setTimeout(() => {
             this.inputComponent.setFocus();

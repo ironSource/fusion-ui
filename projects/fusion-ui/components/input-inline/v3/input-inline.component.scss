@@ -10,7 +10,6 @@
         position: relative;
 
         .is-label {
-            border: solid 1px;
             display: flex;
             align-items: center;
             padding: 12px 12px 12px 8px;
@@ -55,7 +54,7 @@
             @include size(16px);
             position: absolute;
             right: 12px;
-            top: 12px;
+            top: 11px;
             cursor: pointer;
         }
         @include icon-style('icon-save', $fu-primary-500, 16px, true, true, 0, true);
@@ -63,15 +62,15 @@
         @include icon-style('icon-error', $fu-negative-500, 16px, true, true) {
             @include size(16px);
             position: absolute;
-            right: 8px;
-            top: 8px;
+            right: 12px;
+            top: 11px;
             cursor: pointer;
         }
 
         fusion-loader {
             position: absolute;
             right: 0;
-            top: 18px;
+            top: 21px;
         }
     }
 
