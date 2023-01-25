@@ -18,7 +18,7 @@ export class CustomCellEditComponent implements AfterViewInit {
     /** @internal */
     inputType: InlineInputType = InlineInputType.Currency;
     /** @internal */
-    formControl = new FormControl(null, [Validators.min(2)]);
+    formControl = new FormControl(null, [Validators.required, Validators.min(2)]);
     /** @internal */
     inputError$ = new BehaviorSubject('');
     /** @internal */
@@ -33,7 +33,7 @@ export class CustomCellEditComponent implements AfterViewInit {
     set data(value: number) {
         if (!isNullOrUndefined(value)) {
             this.initInputData = value;
-            this.formControl.setValue(value);
+            this.formControl.setValue(value, {emitEvent: false});
         }
     }
 
@@ -68,7 +68,7 @@ export class CustomCellEditComponent implements AfterViewInit {
     private _showInput = false;
 
     ngAfterViewInit() {
-        this.editMode$ = this.inputInlineComponent.isEditMode$.asObservable();
+        this.editMode$ = this.inputInlineComponent.isEditMode$;
     }
 
     /** @internal */
@@ -103,6 +103,7 @@ export class CustomCellEditComponent implements AfterViewInit {
                             this.formControl.setValue(newValue, {emitEvent: false});
                         }
                         this.isInRequest$.next(false);
+                        this._showInput = false;
                     }
                 });
             }
