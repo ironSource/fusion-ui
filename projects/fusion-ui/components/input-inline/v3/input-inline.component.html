@@ -1,4 +1,5 @@
-<div class="inline-input-wrapper">
+<div class="inline-input-wrapper"
+[class.fu-small]="inputOptions?.size === 'small'">
     <div class="is-label"
          [ngClass]="{'is-currency': isTypeCurrency, hidden: (isEditMode$ | async) , 'is-readonly': readOnly}"
          (click)="!readOnly && goToEditMode()"
@@ -18,6 +19,7 @@
             [sanitationRegex]="sanitationRegex"
             [units]="inputUnits"
             unitPos="left"
+            [options]="inputOptions"
             [error]="error"
             (ngEscape)="cancel()"
             [isDisabled]="loading"

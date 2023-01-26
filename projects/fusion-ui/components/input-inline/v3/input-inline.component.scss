@@ -72,6 +72,21 @@
             right: 0;
             top: 21px;
         }
+
+        &.fu-small{
+            .is-label{
+                height: 32px;
+                padding: 8px;
+            }
+            .icon-save{
+                right: 8px;
+                top: 8px;
+            }
+            .icon-error{
+                right: 8px;
+                top: 8px;
+            }
+        }
     }
 
     &.fu-align-right {

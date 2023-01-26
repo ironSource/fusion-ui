@@ -14,7 +14,7 @@ import {
 } from '@angular/core';
 import {isNullOrUndefined, isNumber, isObject, isString} from '@ironsource/fusion-ui/utils';
 import {ControlValueAccessor, FormControl} from '@angular/forms';
-import {InputComponent} from '@ironsource/fusion-ui/components/input';
+import {InputComponent, InputOptions} from '@ironsource/fusion-ui/components/input';
 import {BehaviorSubject, fromEvent, Subject, Subscription} from 'rxjs';
 import {InlineInputType} from './inline-input-type.enum';
 import {CurrencyPipe} from '@angular/common';
@@ -33,6 +33,8 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
     @Input() readOnly: boolean;
     @Input() error: string;
     @Input() currencyPipeParameters: CurrencyPipeParameters;
+    @Input() inputOptions: InputOptions;
+
     // eslint-disable-next-line
     @Output() onSave = new EventEmitter();
     // eslint-disable-next-line

@@ -10,6 +10,7 @@ import {ClickOutsideModule} from '@ironsource/fusion-ui';
 import {InlineInputType, InputInlineComponent} from '@ironsource/fusion-ui/components/input-inline';
 import {CurrencyPipeParameters} from '@ironsource/fusion-ui/components/input-inline/common/base';
 import {dedent} from 'ts-dedent';
+import {InputOptions} from '@ironsource/fusion-ui/components/input';
 
 export default {
     title: 'Components/Inputs/Input-Inline',
@@ -65,6 +66,7 @@ const InputTemplate: Story<InputInlineComponent> = (args: InputInlineComponent) 
     props: {...args},
     template: `<div style="width: 155px;">
 <fusion-input-inline class="{{className}}"
+    [inputOptions]="inputOptions"
     [type]="type"
     [formControl]="formControl"
     [loading]="loading"
@@ -100,6 +102,86 @@ import {
   template: \`
     <div style="width: 155px;">
 <fusion-input-inline #inputInline
+    [type]="type"
+    [formControl]="formControl"
+    [loading]="loading"
+    [readOnly]="readOnly"
+    [error]="error"
+    (onSave)="onSave($event)"
+    (onCancel)="onCancel()"
+></fusion-input-inline>
+</div>
+  \`,
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    IconModule,
+    InputInlineComponent,
+  ],
+})
+export class FusionStoryWrapperComponent {
+  @ViewChild('inputInline') inputInline: InputInlineComponent;
+
+  type = InlineInputType.Text;
+  formControl = new FormControl('some text value');
+
+  loading = false;
+  readOnly = false;
+  error = '';
+
+  onSave($event) {
+    console.log('onSave: ', $event);
+    this.loading = true;
+    setTimeout(() => {
+      // here you can apply validations
+
+      this.loading = false;
+      // update value
+      this.formControl.setValue($event.newValue);
+      // exit from edit mode
+      this.inputInline.isEditMode$.next(false);
+    }, 1000);
+  }
+
+  onCancel() {
+    console.log('onCancel');
+  }
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+
+export const SizeSmall = InputTemplate.bind({});
+SizeSmall.args = {
+    formControl: new FormControl('some text value'),
+    inputOptions: {size: 'small'} as InputOptions
+};
+SizeSmall.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
+import {InputOptions} from "@ironsource/fusion-ui/components/input";
+import {
+  InlineInputType,
+  InputInlineComponent,
+} from '@ironsource/fusion-ui/components/input-inline';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`
+    <div style="width: 155px;">
+<fusion-input-inline #inputInline
+    [inputOptions]="inputOptions"
     [type]="type"
     [formControl]="formControl"
     [loading]="loading"
