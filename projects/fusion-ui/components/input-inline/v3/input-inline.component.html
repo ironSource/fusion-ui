@@ -10,7 +10,7 @@
              [fusionTooltip]="savedValueToString"
         >{{ savedValueToString }}</div>
     </div>
-    <div *ngIf="(isEditMode$ | async)"
+    <div *ngIf="(isEditMode$ | async) === true"
          [ngClass]="{'is-currency': isTypeCurrency, 'is-loading': loading}">
         <fusion-input
             #inputComponent
