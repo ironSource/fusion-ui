@@ -1009,14 +1009,17 @@ const TableEditTemplate: Story<TableComponent> = (args: TableComponent) => ({
 ></fusion-table-story-holder>`
 });
 export const Editable = TableToggleTemplate.bind({});
-Editable.args = {
-    columns: TABLE_EDITABLE_COLUMNS_CONFIG,
-    rows: ROWS_EDITABLE_DATA
-};
+// Editable.args = {
+//     columns: TABLE_EDITABLE_COLUMNS_CONFIG,
+//     rows: ROWS_EDITABLE_DATA
+// };
 Editable.parameters = {
     docs: {
         description: {
             story: dedent`
+
+            ##Please see StackBlitz example for this.
+
             **Editable column** possibility to edit data in cell. Data type for this cell - FormControl. It also give a possibility to set validation rules.
             For example - required value, or minimum / maximum value. Like \`cellValue = new FormControl(123, [Validators.required, Validators.min(5)])\`
             Column configuration:
