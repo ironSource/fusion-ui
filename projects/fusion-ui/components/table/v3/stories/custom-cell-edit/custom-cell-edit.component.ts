@@ -1,9 +1,9 @@
 import {AfterViewInit, Component, EventEmitter, HostBinding, Input, Output, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import {InlineInputType, InputInlineComponent} from '@ironsource/fusion-ui/components/input-inline/v3';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {isNullOrUndefined, isNumber} from '../../../../../utils/';
+import {isNullOrUndefined, isNumber} from '@ironsource/fusion-ui/utils';
+import {InlineInputType, InputInlineComponent} from '@ironsource/fusion-ui/components/input-inline/v3';
 
 @Component({
     selector: 'fusion-custom-cell-edit',
