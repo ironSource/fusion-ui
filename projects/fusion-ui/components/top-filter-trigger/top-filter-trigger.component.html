@@ -1,0 +1,16 @@
+<div class="fu-top-filter-trigger-wrapper">
+    <div class="fu-app-image" [style.background-image]="appImage"></div>
+    <fusion-icon *ngIf="icon" class="fu-icon" [name]="icon"></fusion-icon>
+    <div class="fu-content">
+        <div class="fu-label">
+            <div class="truncate">{{label}}</div>
+            <div *ngIf="required" class="fu-required">*</div>
+        </div>
+        <div *ngIf="helper && !error" class="fu-helper">{{helper}}</div>
+        <div *ngIf="error" class="fu-error">{{error}}</div>
+    </div>
+    <div class="fu-trigger">
+        <fusion-icon class="fu-trigger-icon" [name]="triggerIcon"></fusion-icon>
+    </div>
+</div>
+
