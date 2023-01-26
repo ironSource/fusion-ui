@@ -181,7 +181,7 @@ import {
   template: \`
     <div style="width: 155px;">
 <fusion-input-inline #inputInline
-    [inputOptions]="inputOptions"
+    [inputOptions]="{size: 'small'}"
     [type]="type"
     [formControl]="formControl"
     [loading]="loading"
