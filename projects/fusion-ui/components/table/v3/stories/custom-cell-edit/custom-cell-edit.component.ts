@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {InlineInputType, InputInlineComponent} from '@ironsource/fusion-ui/components/input-inline/v3';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {isNullOrUndefined, isNumber} from '@ironsource/fusion-ui/utils/';
+import {isNullOrUndefined, isNumber} from '../../../../../utils/';
 
 @Component({
     selector: 'fusion-custom-cell-edit',
