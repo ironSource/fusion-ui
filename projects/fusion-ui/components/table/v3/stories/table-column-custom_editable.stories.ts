@@ -10,30 +10,12 @@ import {TableModule} from '@ironsource/fusion-ui/components/table';
 import {TableStoryHolderComponent} from './table.story-holder.component/table.story-holder.component.component';
 import {TableComponent} from '../table.component';
 import {
-    ROWS_CHECKBOX_DATA,
-    ROWS_COMPONENT_DATA,
     ROWS_COMPONENT_EDIT_DATA,
-    ROWS_DATE_DATA,
-    ROWS_DEFAULT_DATA,
-    ROWS_EDITABLE_DATA,
-    ROWS_NUMBER_DATA,
-    ROWS_TOGGLE_DATA,
-    TABLE_CHECKBOX_COLUMNS_CONFIG,
-    TABLE_COMPONENT_COLUMNS_CONFIG,
     TABLE_COMPONENT_EDIT_COLUMNS_CONFIG,
-    TABLE_CURRENCY_COLUMNS_CONFIG,
-    TABLE_DATE_COLUMNS_CONFIG,
-    TABLE_DEFAULT_COLUMNS_CONFIG,
-    TABLE_DEFAULT_OPTIONS,
-    TABLE_EDITABLE_COLUMNS_CONFIG,
-    TABLE_NUMBER_COLUMNS_CONFIG,
-    TABLE_PERCENT_COLUMNS_CONFIG,
-    TABLE_TOGGLE_COLUMNS_CONFIG
+    TABLE_DEFAULT_OPTIONS
 } from '@ironsource/fusion-ui/components/table/v3/stories/table.mock-data';
-import {VideoPlayerModule} from '@ironsource/fusion-ui/components/video-player';
 
 const actionsData = {
-    selectionChanged: action('selectionChanged'),
     rowModelChange: action('rowModelChange')
 };
 
@@ -48,8 +30,7 @@ export default {
                 SvgModule.forRoot({assetsPath: environment.assetsPath}),
                 IconModule,
                 TableModule,
-                TableStoryHolderComponent,
-                VideoPlayerModule
+                TableStoryHolderComponent
             ]
         })
     ],
@@ -87,31 +68,8 @@ const TableEditTemplate: Story<TableComponent> = (args: TableComponent) => ({
 
 // region Editable column
 export const Default = TableEditTemplate.bind({});
-/*Default.parameters = {
+Default.parameters = {
     docs: {
-        description: {
-            story: dedent`
-            **Editable column** possibility to edit data in cell. Data type for this cell - FormControl. It also give a possibility to set validation rules.
-            For example - required value, or minimum / maximum value. Like \`cellValue = new FormControl(123, [Validators.required, Validators.min(5)])\`
-            Column configuration:
-            \`{key: 'amount', type: TableColumnTypeEnum.InputEdit, inputType: InlineInputType.Currency,title: 'Amount', width: '120px'},\`
-            For validation error shown you need to add **customErrorMapping** fro this column configuration:
-            \`customErrorMapping: {required: {errorMessageKey: 'required'},min: {errorMessageKey: 'min',textMapping: [{key: 'minValue', value: '5'}]}},\`
-            On save, if validations will ok, it emit event **(rowModelChange)**. And you need add event processing method.
-            Example: \`(rowModelChange)="rowModelChange($event)"\`
-            in arguments you get object:
-            \`{rowIndex: 6, rowModel: Object, keyChanged: "amount", newValue: "44", prevValue: 43}\`
-
-            * **rowIndex**:  index for row in **rows** array that was send to the table as input parameter **[rows]**
-            * **rowModel**:  row element from **rows** array related to the event **rowModelChange**
-            * **keyChanged**: key name in element from **rows** array what was changed
-            * **newValue**: new value for this key
-            * **prevValue**: previous (current) value for this key
-
-            Also it has call-back method **onRequestDone** that you need to call on the row data change ended
-            \`onRequestDone(true)\` - in case data was changed successful
-            `
-        },
         source: {
             language: 'typescript',
             code: dedent`
@@ -261,5 +219,5 @@ const ROWS_DATA = [
             type: 'code'
         }
     }
-};*/
+};
 // endregion
