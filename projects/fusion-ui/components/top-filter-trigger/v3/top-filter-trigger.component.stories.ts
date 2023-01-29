@@ -30,7 +30,17 @@ export default {
 } as Meta<TopFilterTriggerComponent>;
 
 const DefaultTemplate: Story<TopFilterTriggerComponent> = (args: TopFilterTriggerComponent) => ({
-    props: {...args}
+    props: {...args},
+    template: `<fusion-top-filter-trigger
+    [label]="label"
+    [imageApp]="imageApp"
+    [icon]="icon"
+    [helper]="helper"
+    [error]="error"
+    [required]="required"
+    [loading]="loading"
+>
+</fusion-top-filter-trigger>`
 });
 
 // region Default
