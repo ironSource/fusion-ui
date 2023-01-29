@@ -73,3 +73,10 @@ ErrorRequired.args = {
     error: 'Mandatory field'
 };
 // endregion
+
+// region Loading
+export const Loading = DefaultTemplate.bind({});
+Loading.args = {
+    loading: true
+};
+// endregion

@@ -93,6 +93,24 @@
             }
 
         }
+
+        &.fu-loading{
+            .fu-app-image {
+                @include loading($fu-light-300, $fu-light-100, 32px);
+                @include size(32px);
+                mask: none;
+                border-radius: 8px;
+            }
+            .fu-content{
+                div {display: none;}
+                @include loading();
+                width: 218px
+            }
+            .fu-icon,
+            .fu-trigger{
+                display: none;
+            }
+        }
     }
 
 }

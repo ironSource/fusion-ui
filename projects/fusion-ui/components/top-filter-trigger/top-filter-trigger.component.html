@@ -1,5 +1,5 @@
-<div class="fu-top-filter-trigger-wrapper">
-    <div class="fu-app-image" [style.background-image]="appImage"></div>
+<div class="fu-top-filter-trigger-wrapper" [class.fu-loading]="loading">
+    <div class="fu-app-image" [style.background-image]="!loading ? appImage : ''"></div>
     <fusion-icon *ngIf="icon" class="fu-icon" [name]="icon"></fusion-icon>
     <div class="fu-content">
         <div class="fu-label">

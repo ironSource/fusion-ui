@@ -18,6 +18,7 @@ export class TopFilterTriggerComponent {
     @Input() error: string;
     @Input() icon: IconData;
     @Input() imageApp: string;
+    @Input() loading: boolean;
 
     /** @internal */
     triggerIcon: IconData = {iconName: 'angle-down', iconVersion: 'v3'};
