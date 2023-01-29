@@ -3,12 +3,12 @@ import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {dedent} from 'ts-dedent';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
-import {environment} from '../../../../stories/environments/environment';
+import {environment} from '../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
-import {TopFilterTriggerComponent} from '@ironsource/fusion-ui/components/top-filter-trigger/top-filter-trigger.component';
+import {TopFilterTriggerComponent} from '@ironsource/fusion-ui/components/top-filter-trigger/v3/top-filter-trigger.component';
 
 export default {
-    title: 'Components/Top Filter Trigger',
+    title: 'Components/Filters/Top Filter/Trigger',
     component: TopFilterTriggerComponent,
     decorators: [
         moduleMetadata({

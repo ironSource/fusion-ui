@@ -1,1 +1,1 @@
-export * from './top-filter-trigger.component';
+export * from './v3';
