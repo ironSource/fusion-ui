@@ -7,11 +7,11 @@ import {environment} from '../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TopFilterTriggerComponent} from '@ironsource/fusion-ui/components/top-filter-trigger/v3/top-filter-trigger.component';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {DropdownDualMultiSelectModule} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
 import {MOK_APPLICATIONS_OPTIONS} from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
+import {DropdownModule} from '@ironsource/fusion-ui/components/dropdown/v3';
 
 export default {
-    title: 'Components/Filters/Top Filter/Filter',
+    title: 'Components/Filters/Top Filter/Filter Dropdown',
     component: TopFilterTriggerComponent,
     decorators: [
         moduleMetadata({
@@ -22,7 +22,7 @@ export default {
                 ReactiveFormsModule,
                 SvgModule.forRoot({assetsPath: environment.assetsPath}),
                 IconModule,
-                DropdownDualMultiSelectModule
+                DropdownModule
             ]
         })
     ],
@@ -49,7 +49,8 @@ export default {
 
 const DefaultTemplate: Story<TopFilterTriggerComponent> = (args: TopFilterTriggerComponent) => ({
     props: {...args},
-    template: `<fusion-top-filter-trigger
+    template: `<div style="height: 430px">
+<fusion-top-filter-trigger
     [placeholder]="placeholder"
     [imageApp]="imageApp"
     [icon]="icon"
@@ -60,42 +61,25 @@ const DefaultTemplate: Story<TopFilterTriggerComponent> = (args: TopFilterTrigge
     (onSelectedChange)="onSelectedChange($event)"
 >
 <div class="filter-element">
-     <fusion-dropdown-dual-multi-select
-        [title]="title"
-        [placeholder]="placeholder"
-        [formControl]="formControl"
-        [items]="items"
-     ></fusion-dropdown-dual-multi-select>
+    <fusion-dropdown
+         [formControl]="formControl"
+         [options]="options"
+         [optionsTitle]="optionsTitle"
+         [search]="search"
+         >
+    </fusion-dropdown>
 </div>
-</fusion-top-filter-trigger>`
+</fusion-top-filter-trigger>
+</div>`
 });
 
 // region Default
 export const Default = DefaultTemplate.bind({});
 Default.args = {
-    title: 'Applications',
-    items: MOK_APPLICATIONS_OPTIONS,
+    optionsTitle: 'Applications',
+    search: true,
+    options: MOK_APPLICATIONS_OPTIONS,
     formControl: new FormControl(),
-    placeholder: 'Select Application'
-};
-// endregion
-
-// region SelectedOneApplication
-export const SelectedOneApplication = DefaultTemplate.bind({});
-SelectedOneApplication.args = {
-    title: 'Applications',
-    items: MOK_APPLICATIONS_OPTIONS,
-    formControl: new FormControl([MOK_APPLICATIONS_OPTIONS[2]]),
-    placeholder: 'Select Application'
-};
-// endregion
-
-// region SelectedSomeApplications
-export const SelectedSomeApplications = DefaultTemplate.bind({});
-SelectedSomeApplications.args = {
-    title: 'Applications',
-    items: MOK_APPLICATIONS_OPTIONS,
-    formControl: new FormControl([MOK_APPLICATIONS_OPTIONS[2], MOK_APPLICATIONS_OPTIONS[4]]),
     placeholder: 'Select Application'
 };
 // endregion
@@ -104,9 +88,20 @@ SelectedSomeApplications.args = {
 export const Loading = DefaultTemplate.bind({});
 Loading.args = {
     loading: true,
+    optionsTitle: 'Applications',
+    search: true,
+    options: MOK_APPLICATIONS_OPTIONS,
+    formControl: new FormControl(),
+    placeholder: 'Select Application'
+};
+// endregion
+
+// region SelectedApplication
+export const SelectedApplication = DefaultTemplate.bind({});
+SelectedApplication.args = {
     title: 'Applications',
     items: MOK_APPLICATIONS_OPTIONS,
-    formControl: new FormControl(),
+    formControl: new FormControl([MOK_APPLICATIONS_OPTIONS[2]]),
     placeholder: 'Select Application'
 };
 // endregion

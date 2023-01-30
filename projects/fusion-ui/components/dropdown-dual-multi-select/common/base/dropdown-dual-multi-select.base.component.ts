@@ -364,8 +364,6 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
                     this.backendPaginationTotalResult = val ? val[backendPagination.responseTotalCountPropertyName] : null;
                     this.totalItems = this.backendPaginationTotalResult;
                     this.loadingLeft$.next(false);
-                    // todo-andyk: check if need it
-                    // this.cdr.markForCheck();
                 });
         }
     }

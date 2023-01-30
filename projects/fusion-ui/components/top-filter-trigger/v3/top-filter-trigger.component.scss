@@ -8,7 +8,10 @@
 
     &:hover {
         cursor: pointer;
-        &:has(.fu-loading){
+    }
+    &:has(.fu-loading){
+        pointer-events: none;
+        &:hover {
             cursor: default;
         }
     }
@@ -98,7 +101,6 @@
         }
 
         &.fu-loading{
-            pointer-events: none;
             .fu-app-image {
                 @include loading($fu-light-300, $fu-light-100, 32px);
                 @include size(32px);
