@@ -35,6 +35,11 @@ export class TopFilterTriggerComponent implements OnInit, OnDestroy {
     @ViewChild('ref', {static: true}) ref: TemplateRef<any>;
 
     @Input() placeholder = 'Select';
+
+    @Input() set label(value: string) {
+        this.selectedLabel = value;
+    }
+
     @Input() required: boolean;
     @Input() helper: string;
     @Input() error: string;
@@ -61,6 +66,7 @@ export class TopFilterTriggerComponent implements OnInit, OnDestroy {
     ngOnInit() {
         if (this.apiBase) {
             this.apiBase.templateRef = this.ref;
+            this.apiBase.selectedTypeObject = true;
         }
     }
 
@@ -74,7 +80,10 @@ export class TopFilterTriggerComponent implements OnInit, OnDestroy {
     }
 
     private setValueSelectedListener(): void {
-        this.apiBase?.valueSelected().pipe(takeUntil(this.onDestroy$), tap(this.resetSelected)).subscribe(this.setSelected.bind(this));
+        this.apiBase
+            ?.valueSelected()
+            .pipe(takeUntil(this.onDestroy$), tap(this.resetSelected.bind(this)))
+            .subscribe(this.setSelected.bind(this));
     }
 
     private resetSelected() {
@@ -93,7 +102,8 @@ export class TopFilterTriggerComponent implements OnInit, OnDestroy {
             this.helper = selectedItem.subText?.text;
         } else {
             this.selectedLabel = selected.value;
-            this.helper = selected.selectedCount !== 0 ? `${selected.selectedCount} selected` : null;
+            this.helper =
+                !isNullOrUndefined(selected.selectedCount) && selected.selectedCount !== 0 ? `${selected.selectedCount} selected` : null;
         }
         this.onSelectedChange.emit(selected);
     }

@@ -8,6 +8,9 @@
 
     &:hover {
         cursor: pointer;
+        &:has(.fu-loading){
+            cursor: default;
+        }
     }
 
     .fu-top-filter-trigger-wrapper {
@@ -95,6 +98,7 @@
         }
 
         &.fu-loading{
+            pointer-events: none;
             .fu-app-image {
                 @include loading($fu-light-300, $fu-light-100, 32px);
                 @include size(32px);

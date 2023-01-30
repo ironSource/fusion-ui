@@ -183,7 +183,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         return this.selected$.pipe(
             takeUntil(this.onDestroy$),
             map(value =>
-                (value !== this.defaultPlaceHolder && value !== 'All selected') || this.isInTopFilter()
+                (value !== this.defaultPlaceHolder && value !== 'All selected') || this.selectedTypeObject
                     ? {value, isSelected: !!this.selectedChange?.length, selectedCount: this.selectedChange?.length}
                     : {value: null, isSelected: false}
             )
@@ -202,7 +202,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.selectedChange = this.preSelectedItems.value;
         this.selected$.next(
             this.selectedChange?.length === 1
-                ? this.isInTopFilter()
+                ? this.selectedTypeObject
                     ? this.selectedChange[0]
                     : this.selectedChange[0]?.displayText || this.selectedChange[0]?.title
                 : this.placeholder$.getValue()
@@ -236,7 +236,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.selectedChange = value;
         this.selected$.next(
             value?.length === 1
-                ? this.isInTopFilter()
+                ? this.selectedTypeObject
                     ? value[0]
                     : value[0]?.displayText || value[0]?.title
                 : this.placeholder$.getValue()
@@ -285,10 +285,6 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
             return hasSpaceOnLeft && parentOverflowRect.right - hostHolderRect.left < 528;
         }
         return false;
-    }
-
-    private isInTopFilter(): boolean {
-        return !!this.trigger.nativeElement.querySelector('.fu-top-filter-trigger-wrapper');
     }
 
     private getParentWithOverflow(childEl: HTMLElement): HTMLElement {

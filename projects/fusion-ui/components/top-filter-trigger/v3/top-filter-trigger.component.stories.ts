@@ -33,6 +33,7 @@ const DefaultTemplate: Story<TopFilterTriggerComponent> = (args: TopFilterTrigge
     props: {...args},
     template: `<fusion-top-filter-trigger
     [placeholder]="placeholder"
+    [label]="label"
     [imageApp]="imageApp"
     [icon]="icon"
     [helper]="helper"
@@ -58,7 +59,7 @@ SelectedAmountApps.args = {
 // region SingleIOSAppSelected
 export const SingleIOSAppSelected = DefaultTemplate.bind({});
 SingleIOSAppSelected.args = {
-    placeholder: 'Dizzy Diamond Puzzle',
+    label: 'Dizzy Diamond Puzzle',
     helper: 'appKey',
     icon: 'ios',
     imageApp: 'https://is4-ssl.mzstatic.com/image/thumb/Purple123/v4/e5/52/eb/e552eb88-72c7-f284-7622-988200f345bd/source/512x512bb.jpg'
@@ -68,7 +69,7 @@ SingleIOSAppSelected.args = {
 // region SingleAndroidAppSelected
 export const SingleAndroidAppSelected = DefaultTemplate.bind({});
 SingleAndroidAppSelected.args = {
-    placeholder: 'Moy 7 the Virtual Pet Game',
+    label: 'Moy 7 the Virtual Pet Game',
     helper: 'appKey',
     icon: 'android',
     imageApp: 'https://lh3.googleusercontent.com/T0yo2MIuoWWrhk7vaNX18MaOOI3StYYNb43Y1V_X8QJiWGu0SgMCAhSqoNc9ei5BHH9b=s180'

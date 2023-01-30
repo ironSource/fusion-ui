@@ -11,6 +11,8 @@ export abstract class ApiBase {
     /** @internal */
     resetState$ = new Subject<void>();
     /** @internal */
+    selectedTypeObject = false; // for chip-filter selected value-string. for top-filter object
+    /** @internal */
     abstract valueSelected(): Observable<any>;
     /** @internal */
     abstract changeConfig(val: any): void;

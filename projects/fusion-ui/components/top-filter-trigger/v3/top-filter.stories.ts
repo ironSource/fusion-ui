@@ -75,7 +75,38 @@ export const Default = DefaultTemplate.bind({});
 Default.args = {
     title: 'Applications',
     items: MOK_APPLICATIONS_OPTIONS,
-    formControl: new FormControl([]),
+    formControl: new FormControl(),
+    placeholder: 'Select Application'
+};
+// endregion
+
+// region SelectedOneApplication
+export const SelectedOneApplication = DefaultTemplate.bind({});
+SelectedOneApplication.args = {
+    title: 'Applications',
+    items: MOK_APPLICATIONS_OPTIONS,
+    formControl: new FormControl([MOK_APPLICATIONS_OPTIONS[2]]),
+    placeholder: 'Select Application'
+};
+// endregion
+
+// region SelectedSomeApplications
+export const SelectedSomeApplications = DefaultTemplate.bind({});
+SelectedSomeApplications.args = {
+    title: 'Applications',
+    items: MOK_APPLICATIONS_OPTIONS,
+    formControl: new FormControl([MOK_APPLICATIONS_OPTIONS[2], MOK_APPLICATIONS_OPTIONS[4]]),
+    placeholder: 'Select Application'
+};
+// endregion
+
+// region Loading
+export const Loading = DefaultTemplate.bind({});
+Loading.args = {
+    loading: true,
+    title: 'Applications',
+    items: MOK_APPLICATIONS_OPTIONS,
+    formControl: new FormControl(),
     placeholder: 'Select Application'
 };
 // endregion
