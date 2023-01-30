@@ -5,7 +5,7 @@ import {dedent} from 'ts-dedent';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
-import {TopFilterTriggerComponent} from '@ironsource/fusion-ui/components/top-filter-trigger/v3/top-filter-trigger.component';
+import {TopFilterTriggerComponent} from './top-filter-trigger.component';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DropdownDualMultiSelectModule} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
 import {MOK_APPLICATIONS_OPTIONS} from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
@@ -80,6 +80,53 @@ Default.args = {
     formControl: new FormControl(),
     placeholder: 'Select Application'
 };
+Default.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import {TopFilterTriggerComponent} from '@ironsource/fusion-ui/components/top-filter-trigger'
+import { DropdownDualMultiSelectModule } from "@ironsource/fusion-ui/components/dropdown-dual-multi-select";
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 380px">
+<fusion-top-filter-trigger
+    [placeholder]="placeholder"
+    (onSelectedChange)="onSelectedChange($event)"
+>
+<div class="filter-element">
+     <fusion-dropdown-dual-multi-select
+        [title]="title"
+        [placeholder]="placeholder"
+        [formControl]="formControl"
+        [items]="items"
+     ></fusion-dropdown-dual-multi-select>
+</div>
+</fusion-top-filter-trigger>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, TopFilterTriggerComponent, DropdownDualMultiSelectModule],
+})
+export class FusionStoryWrapperComponent {
+    title = 'Applications';
+    placeholder = 'Select Application';
+    formControl = new FormControl();
+    items: DropdownOption[] = ${JSON.stringify(MOK_APPLICATIONS_OPTIONS)};
+
+    onSelectedChange($event){
+        console.log('onSelectedChange', $event);
+    }
+}
+            `,
+            format: true,
+            type: 'code'
+        }
+    }
+};
 // endregion
 
 // region SelectedOneApplication
@@ -89,6 +136,53 @@ SelectedOneApplication.args = {
     items: MOK_APPLICATIONS_OPTIONS,
     formControl: new FormControl([MOK_APPLICATIONS_OPTIONS[2]]),
     placeholder: 'Select Application'
+};
+SelectedOneApplication.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import {TopFilterTriggerComponent} from '@ironsource/fusion-ui/components/top-filter-trigger'
+import { DropdownDualMultiSelectModule } from "@ironsource/fusion-ui/components/dropdown-dual-multi-select";
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 380px">
+<fusion-top-filter-trigger
+    [placeholder]="placeholder"
+    (onSelectedChange)="onSelectedChange($event)"
+>
+<div class="filter-element">
+     <fusion-dropdown-dual-multi-select
+        [title]="title"
+        [placeholder]="placeholder"
+        [formControl]="formControl"
+        [items]="items"
+     ></fusion-dropdown-dual-multi-select>
+</div>
+</fusion-top-filter-trigger>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, TopFilterTriggerComponent, DropdownDualMultiSelectModule],
+})
+export class FusionStoryWrapperComponent {
+    title = 'Applications';
+    placeholder = 'Select Application';
+    items: DropdownOption[] = ${JSON.stringify(MOK_APPLICATIONS_OPTIONS)};
+    formControl = new FormControl([this.items[2]]);
+
+    onSelectedChange($event){
+        console.log('onSelectedChange', $event);
+    }
+}
+            `,
+            format: true,
+            type: 'code'
+        }
+    }
 };
 // endregion
 
@@ -100,6 +194,53 @@ SelectedSomeApplications.args = {
     formControl: new FormControl([MOK_APPLICATIONS_OPTIONS[2], MOK_APPLICATIONS_OPTIONS[4]]),
     placeholder: 'Select Application'
 };
+SelectedSomeApplications.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import {TopFilterTriggerComponent} from '@ironsource/fusion-ui/components/top-filter-trigger'
+import { DropdownDualMultiSelectModule } from "@ironsource/fusion-ui/components/dropdown-dual-multi-select";
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 380px">
+<fusion-top-filter-trigger
+    [placeholder]="placeholder"
+    (onSelectedChange)="onSelectedChange($event)"
+>
+<div class="filter-element">
+     <fusion-dropdown-dual-multi-select
+        [title]="title"
+        [placeholder]="placeholder"
+        [formControl]="formControl"
+        [items]="items"
+     ></fusion-dropdown-dual-multi-select>
+</div>
+</fusion-top-filter-trigger>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, TopFilterTriggerComponent, DropdownDualMultiSelectModule],
+})
+export class FusionStoryWrapperComponent {
+    title = 'Applications';
+    placeholder = 'Select Application';
+    items: DropdownOption[] = ${JSON.stringify(MOK_APPLICATIONS_OPTIONS)};
+    formControl = new FormControl([this.items[2],this.items[4]]);
+
+    onSelectedChange($event){
+        console.log('onSelectedChange', $event);
+    }
+}
+            `,
+            format: true,
+            type: 'code'
+        }
+    }
+};
 // endregion
 
 // region Loading
@@ -110,5 +251,54 @@ Loading.args = {
     items: MOK_APPLICATIONS_OPTIONS,
     formControl: new FormControl(),
     placeholder: 'Select Application'
+};
+Loading.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import {TopFilterTriggerComponent} from '@ironsource/fusion-ui/components/top-filter-trigger'
+import { DropdownDualMultiSelectModule } from "@ironsource/fusion-ui/components/dropdown-dual-multi-select";
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 380px">
+<fusion-top-filter-trigger
+    [placeholder]="placeholder"
+    [loading]="loading"
+    (onSelectedChange)="onSelectedChange($event)"
+>
+<div class="filter-element">
+     <fusion-dropdown-dual-multi-select
+        [title]="title"
+        [placeholder]="placeholder"
+        [formControl]="formControl"
+        [items]="items"
+     ></fusion-dropdown-dual-multi-select>
+</div>
+</fusion-top-filter-trigger>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, TopFilterTriggerComponent, DropdownDualMultiSelectModule],
+})
+export class FusionStoryWrapperComponent {
+    loading = true;
+    title = 'Applications';
+    placeholder = 'Select Application';
+    formControl = new FormControl();
+    items: DropdownOption[] = ${JSON.stringify(MOK_APPLICATIONS_OPTIONS)};
+
+    onSelectedChange($event){
+        console.log('onSelectedChange', $event);
+    }
+}
+            `,
+            format: true,
+            type: 'code'
+        }
+    }
 };
 // endregion
