@@ -6,14 +6,24 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TopFilterTriggerComponent} from '@ironsource/fusion-ui/components/top-filter-trigger/v3/top-filter-trigger.component';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {DropdownDualMultiSelectModule} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
+import {MOK_APPLICATIONS_OPTIONS} from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
 
 export default {
-    title: 'Components/Filters/Top Filter/Trigger',
+    title: 'Components/Filters/Top Filter/Filter',
     component: TopFilterTriggerComponent,
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule]
+            imports: [
+                CommonModule,
+                FormsModule,
+                ReactiveFormsModule,
+                SvgModule.forRoot({assetsPath: environment.assetsPath}),
+                IconModule,
+                DropdownDualMultiSelectModule
+            ]
         })
     ],
     parameters: {
@@ -25,6 +35,14 @@ export default {
         design: {
             type: 'figma',
             url: 'https://www.figma.com/file/V4eZU3qDgKYPhR4eaTvSwy/%F0%9F%8E%A8-Style-guide-2021-Master?node-id=15033%3A122198&t=AkzAq91BGNVsVY4p-1'
+        }
+    },
+    args: {
+        placeholder: 'Select application'
+    },
+    argTypes: {
+        formControl: {
+            control: false
         }
     }
 } as Meta<TopFilterTriggerComponent>;
@@ -39,54 +57,25 @@ const DefaultTemplate: Story<TopFilterTriggerComponent> = (args: TopFilterTrigge
     [error]="error"
     [required]="required"
     [loading]="loading"
+    (onSelectedChange)="onSelectedChange($event)"
 >
+<div class="filter-element">
+     <fusion-dropdown-dual-multi-select
+        [title]="title"
+        [placeholder]="placeholder"
+        [formControl]="formControl"
+        [items]="items"
+     ></fusion-dropdown-dual-multi-select>
+</div>
 </fusion-top-filter-trigger>`
 });
 
 // region Default
 export const Default = DefaultTemplate.bind({});
-// endregion
-
-// region SelectedAmountApps
-export const SelectedAmountApps = DefaultTemplate.bind({});
-SelectedAmountApps.args = {
-    placeholder: 'All Apps selected',
-    helper: '33 applications'
-};
-// endregion
-
-// region SingleIOSAppSelected
-export const SingleIOSAppSelected = DefaultTemplate.bind({});
-SingleIOSAppSelected.args = {
-    placeholder: 'Dizzy Diamond Puzzle',
-    helper: 'appKey',
-    icon: 'ios',
-    imageApp: 'https://is4-ssl.mzstatic.com/image/thumb/Purple123/v4/e5/52/eb/e552eb88-72c7-f284-7622-988200f345bd/source/512x512bb.jpg'
-};
-// endregion
-
-// region SingleAndroidAppSelected
-export const SingleAndroidAppSelected = DefaultTemplate.bind({});
-SingleAndroidAppSelected.args = {
-    placeholder: 'Moy 7 the Virtual Pet Game',
-    helper: 'appKey',
-    icon: 'android',
-    imageApp: 'https://lh3.googleusercontent.com/T0yo2MIuoWWrhk7vaNX18MaOOI3StYYNb43Y1V_X8QJiWGu0SgMCAhSqoNc9ei5BHH9b=s180'
-};
-// endregion
-
-// region ErrorRequired
-export const ErrorRequired = DefaultTemplate.bind({});
-ErrorRequired.args = {
-    placeholder: 'Select App',
-    required: true,
-    error: 'Mandatory field'
-};
-// endregion
-
-// region Loading
-export const Loading = DefaultTemplate.bind({});
-Loading.args = {
-    loading: true
+Default.args = {
+    title: 'Applications',
+    items: MOK_APPLICATIONS_OPTIONS,
+    formControl: new FormControl([]),
+    placeholder: 'Select Application'
 };
 // endregion
