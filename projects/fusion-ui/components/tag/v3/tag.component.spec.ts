@@ -4,7 +4,7 @@ import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {FlagModule} from '@ironsource/fusion-ui/components/flag/v1';
 
-fdescribe('TagComponent', () => {
+describe('TagComponent', () => {
     let component: TagComponent;
     let fixture: ComponentFixture<TagComponent>;
 

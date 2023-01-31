@@ -3,16 +3,18 @@
 @import '../../../src/style/scss/v3/vars/colors';
 
 
-%iconLeft{
+%iconLeft {
     left: 10px;
+
     & + input {
         padding-left: 32px;
         padding-right: 12px;
     }
 }
 
-%iconRight{
+%iconRight {
     right: 10px;
+
     & + input {
         padding-left: 12px;
         padding-right: 32px;
@@ -21,6 +23,7 @@
 
 %secondIconRight {
     right: 10px;
+
     & + input {
         padding-left: 32px;
         padding-right: 32px;
@@ -29,6 +32,7 @@
 
 %secondIconLeft {
     left: 10px;
+
     & + input {
         padding-right: 32px;
         padding-left: 32px;
@@ -59,6 +63,7 @@ $smallHeight: 32px;
 
         &.fu-disabled {
             cursor: not-allowed;
+
             input {
                 border-radius: $borderRadius;
                 background-color: $fu-light-200;
@@ -71,9 +76,9 @@ $smallHeight: 32px;
             justify-content: center;
             flex-direction: column;
             display: flex;
-            color: $fu-light-800;
+            color: $fu-black-500;
             background-color: $fu-light-100;
-            padding: $regularPadding;
+            padding: 0 4px 0 8px;
             height: $regularHeight;
             @extend %font-bodySmall;
 
@@ -88,10 +93,12 @@ $smallHeight: 32px;
                 border-radius: 0 3px 3px 0;
                 border-left-width: 0;
                 border-right-width: 1px;
+
                 &.small {
                     border-left: none;
                     height: $smallHeight;
                 }
+
                 & + input {
                     border-right-width: 0;
                     border-radius: 3px 0 0 3px;
@@ -108,8 +115,9 @@ $smallHeight: 32px;
                 border-radius: 0;
                 padding-left: 0;
             }
+
             &.left {
-                 border-radius: 0;
+                border-radius: 0;
             }
 
             &.is-placeholder-units {
@@ -137,7 +145,7 @@ $smallHeight: 32px;
                 outline: none;
             }
 
-            &:hover{
+            &:hover {
                 background-color: $fu-light-200;
             }
 
@@ -149,7 +157,7 @@ $smallHeight: 32px;
             }
 
             &.disabled,
-            &:disabled{
+            &:disabled {
                 color: $fu-light-800;
                 pointer-events: none;
                 cursor: default;
@@ -179,8 +187,9 @@ $smallHeight: 32px;
                 @extend %iconRight;
             }
 
-            &.loading{
+            &.loading {
                 @extend %iconRight;
+
                 &.left {
                     @extend %iconLeft;
                 }
@@ -222,9 +231,11 @@ $smallHeight: 32px;
             i.fu-input-second-icon {
                 top: 8px;
             }
+
             .fu-toggle-pass {
                 top: 7px;
             }
+
             .fu-validation-icon-holder {
                 top: 10px;
             }
@@ -238,13 +249,15 @@ $smallHeight: 32px;
 
         &.fu-error-error {
             .fu-validation-icon-holder {
-                @include icon-style('icon-validation', $fu-negative-500, 16px, false, true){
+                @include icon-style('icon-validation', $fu-negative-500, 16px, false, true) {
                     @include size(16px);
-                };
+                }
+            ;
             }
 
             input {
                 padding-right: 32px;
+
                 &:focus {
                     padding-right: 10px;
                 }
@@ -253,7 +266,7 @@ $smallHeight: 32px;
 
         &.fu-error-warning {
             .fu-validation-icon-holder {
-                @include icon-style('icon-validation', $fu-neutral-500, 16px, false, true){
+                @include icon-style('icon-validation', $fu-neutral-500, 16px, false, true) {
                     @include size(16px);
                 }
             }
@@ -274,15 +287,17 @@ $smallHeight: 32px;
             cursor: pointer;
             width: 32px;
             height: 14px;
-            .fu-show-pass{
+
+            .fu-show-pass {
                 text-decoration: underline;
                 @extend %font-bodyXSmall;
                 color: $fu-black-500;
             }
+
             @include icon-style(null, $fu-light-700, 16px, false, true);
         }
 
-        &.focused:not(.fu-readonly)::after{
+        &.focused:not(.fu-readonly)::after {
             position: absolute;
             content: '';
             height: 2px;
@@ -291,11 +306,12 @@ $smallHeight: 32px;
             bottom: 0;
         }
 
-        &:hover{
-            .fu-input-units{
+        &:hover {
+            .fu-input-units {
                 background-color: $fu-light-200;
             }
-            input{
+
+            input {
                 background-color: $fu-light-200;
             }
         }
@@ -327,5 +343,79 @@ $smallHeight: 32px;
         height: 16px;
         line-height: 16.5px;
         text-align: initial;
+    }
+
+    &.is-no-spin{
+        .fu-input-holder input{
+            &::-webkit-inner-spin-button,
+            &::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+        }
+    }
+}
+
+
+:host-context(fusion-input-inline) {
+    .fu-input-holder {
+        background-color: transparent;
+        &:hover {
+            .fu-input-units,
+            input {
+                background-color: $White;
+            }
+        }
+        .fu-input-units{
+            padding-left: 8px;
+        }
+        input {
+            background-color: $White;
+            padding-left: 8px;
+            padding-right: 32px;
+            margin-top: -2px;
+            &:hover {
+                background-color: $White;
+            }
+            &.has-units{
+                margin-top: -1px;
+            }
+        }
+
+        &:not(.fu-readonly)::after {
+            position: absolute;
+            content: '';
+            height: 2px;
+            width: 100%;
+            background-color: $fu-primary-500;
+            bottom: 0;
+        }
+
+        &.focused:not(.fu-readonly):has(input.fu-error)::after,
+        &:has(input.fu-error)::after {
+            position: absolute;
+            content: '';
+            height: 2px;
+            width: 100%;
+            background-color: $fu-negative-500;
+            bottom: 0;
+        }
+        .fu-input-units,
+        .fu-input-units:hover{
+            background-color: $White;
+        }
+        &.fu-disabled{
+            input {
+                background-color: $White;
+            }
+            .fu-input-units,
+            .fu-input-units:hover{
+                color: $fu-light-800;
+            }
+        }
+    }
+
+    .fu-error-msg {
+        display: none;
     }
 }
