@@ -5,3 +5,4 @@ export enum StatusLabelType {
     Archived = 'archived', // Light-500
     Disabled = 'disabled' // Light-900
 }
+// default - Primary-500
