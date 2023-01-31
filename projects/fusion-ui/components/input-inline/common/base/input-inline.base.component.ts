@@ -104,26 +104,7 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
     ngOnInit() {
         this.sanitationRegex = this.inputType === 'text' ? '' : '[0-9.]';
 
-        this.setEditMode$.pipe(takeUntil(this.onDestroy$)).subscribe((val: string | number) => {
-            if (val) {
-                this.goToEditMode(val);
-                this.stayInEditMode = true;
-            }
-        });
-
-        this.isEditMode$
-            .asObservable()
-            .pipe(
-                takeUntil(this.onDestroy$),
-                filter(val => val)
-            )
-            .subscribe(this.handleClickOutSideListener.bind(this));
-
-        this.inputControl.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(val => {
-            if (!!val && this.error) {
-                this.error = '';
-            }
-        });
+        this.addListeners();
     }
 
     ngOnDestroy() {
@@ -219,6 +200,20 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
         this.disable = isDisabled;
     }
 
+    private addListeners() {
+        this.setEditMode$.pipe(takeUntil(this.onDestroy$)).subscribe(this.setEditMode.bind(this));
+
+        this.isEditMode$
+            .asObservable()
+            .pipe(
+                takeUntil(this.onDestroy$),
+                filter(val => val)
+            )
+            .subscribe(this.handleClickOutSideListener.bind(this));
+
+        this.inputControl.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(this.clearErrorOnValueChange.bind(this));
+    }
+
     private handleClickOutSideListener(value: boolean, $event): void {
         if (value && !this.error) {
             this.clickOutSideSubscription = fromEvent(document, 'click').subscribe((event: MouseEvent) => {
@@ -245,7 +240,20 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
         );
     }
 
+    private setEditMode(val: string | number) {
+        if (!!val) {
+            this.goToEditMode(val);
+            this.stayInEditMode = true;
+        }
+    }
+
+    private clearErrorOnValueChange(value) {
+        if (!!value && this.error) {
+            this.error = '';
+        }
+    }
+
     private isType(type: InlineInputType): boolean {
-        return typeof this.type === 'string' ? this.type === 'InlineInputType.' + InlineInputType[type] : this.type === type;
+        return this.type === type;
     }
 }

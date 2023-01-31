@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, EventEmitter, HostBinding, Input, Output, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {BehaviorSubject, Observable} from 'rxjs';
@@ -10,7 +10,8 @@ import {InlineInputType, InputInlineComponent} from '@ironsource/fusion-ui/compo
     standalone: true,
     imports: [CommonModule, FormsModule, ReactiveFormsModule, InputInlineComponent],
     templateUrl: './custom-cell-edit.component.html',
-    styleUrls: ['./custom-cell-edit.component.scss']
+    styleUrls: ['./custom-cell-edit.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CustomCellEditComponent implements AfterViewInit {
     /** @internal */
