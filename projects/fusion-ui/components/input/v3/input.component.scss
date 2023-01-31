@@ -344,6 +344,16 @@ $smallHeight: 32px;
         line-height: 16.5px;
         text-align: initial;
     }
+
+    &.is-no-spin{
+        .fu-input-holder input{
+            &::-webkit-inner-spin-button,
+            &::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+        }
+    }
 }
 
 
@@ -406,13 +416,6 @@ $smallHeight: 32px;
     }
 
     .fu-error-msg {
-        display: none;
-    }
-}
-
-:host-context(.is-currency) {
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
         display: none;
     }
 }
