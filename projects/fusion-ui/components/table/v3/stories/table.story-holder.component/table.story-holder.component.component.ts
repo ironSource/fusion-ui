@@ -37,16 +37,7 @@ export class TableStoryHolderComponent implements OnInit, OnDestroy {
     @Input() set rows(value: {[key: string]: any}[]) {
         if (Array.isArray(value)) {
             this._rows = value;
-            this.tableRows = this._rows.map(row => {
-                // check for Custom Editable Table Cell
-                if (row.hasOwnProperty('amount')) {
-                    row['amount'] = {
-                        ...row['amount'],
-                        onChange: this.onRowDataChanged$
-                    };
-                }
-                return row;
-            });
+            this.tableRows = this._rows;
         }
     }
 
