@@ -115,7 +115,7 @@ export const TABLE_COMPONENT_EDIT_COLUMNS_CONFIG: TableColumn[] = [
         title: 'Daily budget',
         type: TableColumnTypeEnum.Component,
         component: CustomCellEditComponent,
-        width: '180px',
+        width: '150px',
         headerAlign: 'right'
     },
     {key: 'username', title: 'Username'},
