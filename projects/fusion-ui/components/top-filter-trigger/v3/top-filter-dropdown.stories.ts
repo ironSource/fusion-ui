@@ -82,6 +82,55 @@ Default.args = {
     formControl: new FormControl(),
     placeholder: 'Select Application'
 };
+Default.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import {TopFilterTriggerComponent} from '@ironsource/fusion-ui/components/top-filter-trigger'
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+import {DropdownModule} from '@ironsource/fusion-ui/components/dropdown/v3';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 380px">
+<fusion-top-filter-trigger
+    [placeholder]="placeholder"
+    (onSelectedChange)="onSelectedChange($event)"
+>
+<div class="filter-element">
+    <fusion-dropdown
+         [formControl]="formControl"
+         [options]="options"
+         [optionsTitle]="optionsTitle"
+         [search]="search"
+         >
+    </fusion-dropdown>
+</div>
+</fusion-top-filter-trigger>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, TopFilterTriggerComponent, DropdownModule],
+})
+export class FusionStoryWrapperComponent {
+    optionsTitle = 'Applications';
+    placeholder = 'Select Application';
+    formControl = new FormControl();
+    search = true;
+    options: DropdownOption[] = ${JSON.stringify(MOK_APPLICATIONS_OPTIONS)};
+
+    onSelectedChange($event){
+        console.log('onSelectedChange', $event);
+    }
+}
+            `,
+            format: true,
+            type: 'code'
+        }
+    }
+};
 // endregion
 
 // region Loading
@@ -94,6 +143,57 @@ Loading.args = {
     formControl: new FormControl(),
     placeholder: 'Select Application'
 };
+Loading.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import {TopFilterTriggerComponent} from '@ironsource/fusion-ui/components/top-filter-trigger'
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+import {DropdownModule} from '@ironsource/fusion-ui/components/dropdown/v3';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 380px">
+<fusion-top-filter-trigger
+    [placeholder]="placeholder"
+    [loading]="loading"
+    (onSelectedChange)="onSelectedChange($event)"
+>
+<div class="filter-element">
+    <fusion-dropdown
+         [formControl]="formControl"
+         [options]="options"
+         [optionsTitle]="optionsTitle"
+         [search]="search"
+         >
+    </fusion-dropdown>
+</div>
+</fusion-top-filter-trigger>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, TopFilterTriggerComponent, DropdownModule],
+})
+export class FusionStoryWrapperComponent {
+    optionsTitle = 'Applications';
+    placeholder = 'Select Application';
+    formControl = new FormControl();
+    search = true;
+    loading = true;
+    options: DropdownOption[] = ${JSON.stringify(MOK_APPLICATIONS_OPTIONS)};
+
+    onSelectedChange($event){
+        console.log('onSelectedChange', $event);
+    }
+}
+            `,
+            format: true,
+            type: 'code'
+        }
+    }
+};
 // endregion
 
 // region SelectedApplication
@@ -103,5 +203,54 @@ SelectedApplication.args = {
     items: MOK_APPLICATIONS_OPTIONS,
     formControl: new FormControl([MOK_APPLICATIONS_OPTIONS[2]]),
     placeholder: 'Select Application'
+};
+SelectedApplication.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import {TopFilterTriggerComponent} from '@ironsource/fusion-ui/components/top-filter-trigger'
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+import {DropdownModule} from '@ironsource/fusion-ui/components/dropdown/v3';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 380px">
+<fusion-top-filter-trigger
+    [placeholder]="placeholder"
+    (onSelectedChange)="onSelectedChange($event)"
+>
+<div class="filter-element">
+    <fusion-dropdown
+         [formControl]="formControl"
+         [options]="options"
+         [optionsTitle]="optionsTitle"
+         [search]="search"
+         >
+    </fusion-dropdown>
+</div>
+</fusion-top-filter-trigger>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, TopFilterTriggerComponent, DropdownModule],
+})
+export class FusionStoryWrapperComponent {
+    optionsTitle = 'Applications';
+    placeholder = 'Select Application';
+    search = true;
+    options: DropdownOption[] = ${JSON.stringify(MOK_APPLICATIONS_OPTIONS)};
+    formControl = new FormControl(this.options[1]);
+
+    onSelectedChange($event){
+        console.log('onSelectedChange', $event);
+    }
+}
+            `,
+            format: true,
+            type: 'code'
+        }
+    }
 };
 // endregion

@@ -63,7 +63,6 @@ const DefaultTemplate: Story<TopFilterTriggerComponent> = (args: TopFilterTrigge
 <div class="filter-element">
      <fusion-dropdown-dual-multi-select
         [title]="title"
-        [placeholder]="placeholder"
         [formControl]="formControl"
         [items]="items"
      ></fusion-dropdown-dual-multi-select>
@@ -101,7 +100,6 @@ import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option
 <div class="filter-element">
      <fusion-dropdown-dual-multi-select
         [title]="title"
-        [placeholder]="placeholder"
         [formControl]="formControl"
         [items]="items"
      ></fusion-dropdown-dual-multi-select>
@@ -158,7 +156,6 @@ import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option
 <div class="filter-element">
      <fusion-dropdown-dual-multi-select
         [title]="title"
-        [placeholder]="placeholder"
         [formControl]="formControl"
         [items]="items"
      ></fusion-dropdown-dual-multi-select>
@@ -215,7 +212,6 @@ import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option
 <div class="filter-element">
      <fusion-dropdown-dual-multi-select
         [title]="title"
-        [placeholder]="placeholder"
         [formControl]="formControl"
         [items]="items"
      ></fusion-dropdown-dual-multi-select>
@@ -274,7 +270,6 @@ import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option
 <div class="filter-element">
      <fusion-dropdown-dual-multi-select
         [title]="title"
-        [placeholder]="placeholder"
         [formControl]="formControl"
         [items]="items"
      ></fusion-dropdown-dual-multi-select>
