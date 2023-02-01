@@ -1,0 +1,32 @@
+<div class="inline-input-wrapper"
+[class.fu-small]="inputOptions?.size === 'small'">
+    <div class="is-label"
+         [ngClass]="{'is-currency': isTypeCurrency, hidden: (isEditMode$ | async) , 'is-readonly': readOnly}"
+         (click)="!readOnly && goToEditMode()"
+    >
+        <div class="truncate"
+             [ngClass]="textClass"
+             [class.fu-disable]="disable"
+             [fusionTooltip]="savedValueToString"
+        >{{ savedValueToString }}</div>
+    </div>
+    <div *ngIf="(isEditMode$ | async) === true"
+         [ngClass]="{'is-currency': isTypeCurrency, 'is-loading': loading}">
+        <fusion-input
+            #inputComponent
+            class="is-underline is-no-spin"
+            [type]="inputType"
+            [sanitationRegex]="sanitationRegex"
+            [units]="inputUnits"
+            unitPos="left"
+            [options]="inputOptions"
+            [error]="error"
+            (ngEscape)="cancel()"
+            [isDisabled]="loading"
+            [formControl]="inputControl"
+        ></fusion-input>
+        <fusion-icon class="icon-save" [name]="configByStyle.iconSave" (click)="save()" *ngIf="!loading && !error"></fusion-icon>
+        <fusion-icon class="icon-error" [fusionTooltip]="error" [name]="configByStyle.iconError" *ngIf="error && !loading"></fusion-icon>
+        <fusion-loader [status]="loading" size="inline"></fusion-loader>
+    </div>
+</div>

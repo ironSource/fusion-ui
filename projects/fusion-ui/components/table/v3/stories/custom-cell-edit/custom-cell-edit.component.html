@@ -1,0 +1,16 @@
+<fusion-input-inline #inputInline
+                     class="fu-large fu-align-right"
+                     [type]="inputType"
+                     [formControl]="formControl"
+                     [loading]="isInRequest$ | async"
+                     [error]="inputError$ | async"
+                     (onSave)="saveChanges($event)"
+                     (onCancel)="cancelEdit()"
+></fusion-input-inline>
+<div class="fu-value" (click)="showEdit()">
+    {{formControl.value ? (formControl.value | currency) : 'Unlimited'}}
+</div>
+<ng-container *ngIf="formControl.value && ((editMode$ | async)===false || (editMode$ | async)===null)">
+    <div *ngIf="hasRemaining" class="fu-remains" [class.fu-no-remains]="remaining<=0"><div class="fu-remains-value">{{remaining | currency}}</div> remains</div>
+</ng-container>
+

@@ -1,0 +1,58 @@
+@import "../../../../../src/style/scss/v3/vars/vars";
+
+:host{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 150px;
+    height: 48px;
+    margin: 8px;
+    min-width: 140px;
+
+    border-radius: 8px;
+
+    @extend %font-bodySmall;
+
+    fusion-input-inline{
+        display: none;
+    }
+    .fu-value{
+        padding: 4px 8px 4px 4px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 24px;
+        cursor: pointer;
+    }
+    .fu-remains{
+        padding: 0 8px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 4px;
+        color: $fu-light-900;
+        &.fu-no-remains{
+            color: $fu-negative-700;
+        }
+    }
+    .fu-value::first-letter,
+    .fu-remains-value::first-letter {
+        padding-right: 0.3em;
+    }
+
+    &.fu-show-edit{
+        fusion-input-inline{
+            display: unset;
+        }
+        .fu-value{
+            display: none;
+        }
+    }
+}
+
+:host-context(tr:hover) {
+    background-color: $fu-light-200;
+    &.fu-show-edit{
+        background-color: transparent;
+    }
+}

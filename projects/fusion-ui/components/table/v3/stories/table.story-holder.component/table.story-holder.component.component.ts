@@ -7,7 +7,7 @@ import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Component({
     selector: 'fusion-table-story-holder',
-    template: `<fusion-table
+    template: ` <fusion-table
         [columns]="columns"
         [rows]="tableRows"
         [options]="options"
@@ -29,6 +29,7 @@ export class TableStoryHolderComponent implements OnInit, OnDestroy {
      * @param value: TableOptions
      */
     @Input() options: TableOptions = {};
+
     /**
      * Table rows data
      * rows: {[key: string]: any}[]
@@ -50,6 +51,8 @@ export class TableStoryHolderComponent implements OnInit, OnDestroy {
     private onDestroy$ = new Subject<void>();
     private _rows = [];
 
+    private onRowDataChanged$ = new EventEmitter<any>();
+
     ngOnInit() {
         if (!isNullOrUndefined(this.options?.searchOptions?.onSearch)) {
             this.options.searchOptions.onSearch.pipe(takeUntil(this.onDestroy$)).subscribe(value => {
@@ -60,6 +63,7 @@ export class TableStoryHolderComponent implements OnInit, OnDestroy {
                 ];
             });
         }
+        this.onRowDataChanged$.pipe(takeUntil(this.onDestroy$)).subscribe(this.onRowModelChange.bind(this));
     }
 
     ngOnDestroy(): void {
