@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.1.0-rc.22](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.21...v5.1.0-rc.22) (2023-02-01)
+
+
+### Features
+
+* **fg-115:** add features for status-label v3 component ([#163](https://github.com/ironSource/fusion-ui/issues/163)) ([c743e07](https://github.com/ironSource/fusion-ui/commit/c743e073203d16d7040d9f3e054f22437f8e17db))
+
 ## [5.1.0-rc.21](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.20...v5.1.0-rc.21) (2023-01-22)
 
 ## [5.1.0-rc.21](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.20...v5.1.0-rc.21) (2023-01-19)
