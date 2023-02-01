@@ -14,22 +14,33 @@
         gap: 8px;
 
         svg {
-            @include size(8px);
+            @include size(var(--fu-status-label-size, 8px));
+        }
+
+        &:not(.fu-flat) {
+            svg * {
+                stroke: var(--fu-status-label-color, $fu-primary-500);
+            }
+        }
+        &.fu-flat {
+            svg * {
+                fill: var(--fu-status-label-color, $fu-primary-500);
+            }
         }
 
         @extend %font-bodySmall;
-        color: $fu-black-500;
+        color: var(--fu-status-label-text-color, $fu-black-500);;
 
         &.archived {
             &:not(.fu-flat) {
                 svg * {
-                    stroke: $fu-light-500;
+                    stroke: var(--fu-status-label-archived, $fu-light-500);
                 }
             }
 
             &.fu-flat {
                 svg * {
-                    fill: $fu-light-500;
+                    fill: var(--fu-status-label-archived, $fu-light-500);
                 }
             }
         }
@@ -37,13 +48,13 @@
         &.disabled {
             &:not(.fu-flat) {
                 svg * {
-                    stroke: $fu-light-900;
+                    stroke: var(--fu-status-label-disabled, $fu-light-900);
                 }
             }
 
             &.fu-flat {
                 svg * {
-                    fill: $fu-light-900;
+                    fill: var(--fu-status-label-disabled, $fu-light-900);
                 }
             }
         }
@@ -51,13 +62,13 @@
         &.warning {
             &:not(.fu-flat) {
                 svg * {
-                    stroke: $fu-neutral-500;
+                    stroke: var(--fu-status-label-warning, $fu-neutral-500);
                 }
             }
 
             &.fu-flat {
                 svg * {
-                    fill: $fu-neutral-500;
+                    fill: var(--fu-status-label-warning, $fu-neutral-500);
                 }
             }
         }
@@ -65,13 +76,13 @@
         &.error {
             &:not(.fu-flat) {
                 svg * {
-                    stroke: $fu-negative-500;
+                    stroke: var(--fu-status-label-error, $fu-negative-500);
                 }
             }
 
             &.fu-flat {
                 svg * {
-                    fill: $fu-negative-500;
+                    fill: var(--fu-status-label-error, $fu-negative-500);
                 }
             }
         }
@@ -79,13 +90,13 @@
         &.success {
             &:not(.fu-flat) {
                 svg * {
-                    stroke: $fu-positive-500;
+                    stroke: var(--fu-status-label-success, $fu-positive-500);
                 }
             }
 
             &.fu-flat {
                 svg * {
-                    fill: $fu-positive-500;
+                    fill: var(--fu-status-label-success, $fu-positive-500);
                 }
             }
         }
@@ -93,7 +104,7 @@
 
     &.fu-large {
         .fu-status-label-wrapper svg {
-            @include size(12px);
+            @include size(var(--fu-status-label-large-size, 12px));
         }
     }
 }
