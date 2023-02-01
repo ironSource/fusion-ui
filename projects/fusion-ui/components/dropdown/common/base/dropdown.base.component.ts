@@ -223,7 +223,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     /** @ignore */
     isIndeterminate = false;
     /** @ignore */
-    optionSelected$ = new BehaviorSubject<string>('');
+    optionSelected$ = new BehaviorSubject<any>('');
     /** @ignore */
     chipDefaultContent: string;
 
@@ -506,9 +506,16 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
 
         this.placeholder$.next(placeholder);
         this.searchPlaceholder$.next(placeholderForSearch);
-        this.optionSelected$.next(placeholder !== this.initPlaceholder ? placeholder : null);
+        this.optionSelected$.next(
+            placeholder !== this.initPlaceholder
+                ? this.selectedTypeObject && Array.isArray(this.selected) && this.selected.length
+                    ? this.selected[0]
+                    : placeholder
+                : null
+        );
         this.dropdownSelectConfigurations$.next(this.getDropdownSelectConfigurations());
     }
+
     /** @ignore */
     getHolderCSSClasses(): string[] {
         return [

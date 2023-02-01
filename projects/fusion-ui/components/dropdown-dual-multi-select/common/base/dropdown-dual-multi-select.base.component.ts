@@ -106,7 +106,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     /** @internal */
     dropdownDualMultiSelectionButtonOptions = {rounded: true, size: this.inputSize.Medium};
     /** @internal */
-    selected$ = new BehaviorSubject<string>('');
+    selected$ = new BehaviorSubject<any>('');
     /** @internal */
     chipDefaultContent: string;
     /** @internal */
@@ -179,12 +179,12 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.element.nativeElement.style.setProperty('--fu-chip-max-width', val);
     }
     /** @internal */
-    valueSelected(): Observable<{value: string; isSelected: boolean}> {
+    valueSelected(): Observable<{value: string; isSelected: boolean; selectedCount?: number}> {
         return this.selected$.pipe(
             takeUntil(this.onDestroy$),
             map(value =>
-                value !== this.defaultPlaceHolder && value !== 'All selected'
-                    ? {value, isSelected: !!value}
+                (value !== this.defaultPlaceHolder && value !== 'All selected') || this.selectedTypeObject
+                    ? {value, isSelected: !!this.selectedChange?.length, selectedCount: this.selectedChange?.length}
                     : {value: null, isSelected: false}
             )
         );
@@ -202,7 +202,9 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.selectedChange = this.preSelectedItems.value;
         this.selected$.next(
             this.selectedChange?.length === 1
-                ? this.selectedChange[0]?.displayText || this.selectedChange[0]?.title
+                ? this.selectedTypeObject
+                    ? this.selectedChange[0]
+                    : this.selectedChange[0]?.displayText || this.selectedChange[0]?.title
                 : this.placeholder$.getValue()
         );
         this.searchControlTerm.setValue('');
@@ -232,7 +234,13 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     writeValue(value: DropdownOption[]): void {
         this.preSelectedItems.setValue(value);
         this.selectedChange = value;
-        this.selected$.next(value?.length === 1 ? value[0]?.displayText || value[0]?.title : this.placeholder$.getValue());
+        this.selected$.next(
+            value?.length === 1
+                ? this.selectedTypeObject
+                    ? value[0]
+                    : value[0]?.displayText || value[0]?.title
+                : this.placeholder$.getValue()
+        );
     }
     /** @internal */
     registerOnChange(fn: any): void {
@@ -356,8 +364,6 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
                     this.backendPaginationTotalResult = val ? val[backendPagination.responseTotalCountPropertyName] : null;
                     this.totalItems = this.backendPaginationTotalResult;
                     this.loadingLeft$.next(false);
-                    // todo-andyk: check if need it
-                    // this.cdr.markForCheck();
                 });
         }
     }
