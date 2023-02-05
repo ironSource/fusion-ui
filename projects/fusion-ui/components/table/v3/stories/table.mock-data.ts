@@ -164,6 +164,17 @@ export const TABLE_SUBHEADER_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'email', title: 'Email', groupName: 'Section 2'},
     {key: 'website', title: 'Website'}
 ];
+export const TABLE_ROWSPAN_COLUMNS_CONFIG: TableColumn[] = [
+    {key: 'id', title: 'Id'},
+    {key: 'name', title: 'Name'},
+    {key: 'us_row', title: '', groupName: 'Configuration'},
+    {key: 'margin', title: 'Margin'},
+    {key: 'margin_target', title: 'Target margin'},
+    {key: 'profitizer', title: 'Profitizer'},
+    {key: 'username', title: 'Username', groupName: ' '},
+    {key: 'email', title: 'Email'},
+    {key: 'website', title: 'Website'}
+];
 // endregion
 
 // region Rows Data
@@ -281,6 +292,16 @@ export const ROWS_COMPONENT_DATA = ROWS_DEFAULT_DATA.map(row => {
             width: '200px'
         },
         ...row
+    };
+});
+
+export const ROWS_ROWSPAN_DATA = ROWS_DEFAULT_DATA.map(row => {
+    return {
+        ...row,
+        us_row: ['US', 'ROW'],
+        margin: Math.floor(Math.random() * 100),
+        margin_target: Math.floor(Math.random() * 100),
+        profitizer: Math.floor(Math.random() * 100)
     };
 });
 

@@ -16,6 +16,13 @@
         [ngStyle]="!!options.rowsOptions && !!options.rowsOptions.global ? options.rowsOptions.global.style : null"
     ></tr>
     <!--First parent row END-->
+    <!--Rowspan rows if any-->
+    <ng-container *ngIf="row[rowRowspanKeyName] as rowSpanData"
+                  [ngTemplateOutlet]="multiRowColumns"
+                  [ngTemplateOutletContext]="{$implicit: row, rowIndex: rowIndex, rowSpanData: rowSpanData}">
+
+    </ng-container>
+    <!--Rowspan rows if any END-->
     <!--Child rows-->
     <ng-container
         *ngIf="displayExpandableRows(rowIndex)"
@@ -77,4 +84,20 @@
         </tr>
     </ng-template>
     <!--Recursive template for child rows render END-->
+    <!--additional row-span rows-->
+    <ng-template #multiRowColumns let-row let-rowIndex="rowIndex" let-rowSpanData=rowSpanData>
+        <ng-container *ngFor="let idx of getRowspanIndexes(rowSpanData[maxRowspanAmountKeyName])">
+            <tr
+                fusionTableRow
+                [rowIndex]="rowIndex"
+                [rowSpanIndex]="idx"
+                [row]="row"
+                [columns]="columns"
+                [options]="options"
+                [ngClass]="getRowClass.bind(this) | generic:row:rowIndex"
+                [ngStyle]="!!options.rowsOptions && !!options.rowsOptions.global ? options.rowsOptions.global.style : null"
+            ></tr>
+        </ng-container>
+    </ng-template>
+    <!--additional rows END`-->
 </ng-container>

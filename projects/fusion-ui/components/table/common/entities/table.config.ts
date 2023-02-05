@@ -44,3 +44,6 @@ export const ROW_CLICK_SUPPRESS_FOR_PARENT_SELECTORS = [
     '[fusion-button]',
     'li.fu-menu-item'
 ];
+
+export const ROW_ROWSPAN_KEY_NAME = '_rowspanColumns';
+export const ROW_MAX_ROWSPAN_AMOUNT_KEY_NAME = '_maxRowSpan';

@@ -10,7 +10,14 @@ import {
     Output,
     SimpleChanges
 } from '@angular/core';
-import {TableColumn, TableOptions, TableRowExpandEmitter, TableRowMetaData} from '@ironsource/fusion-ui/components/table/common/entities';
+import {
+    ROW_MAX_ROWSPAN_AMOUNT_KEY_NAME,
+    ROW_ROWSPAN_KEY_NAME,
+    TableColumn,
+    TableOptions,
+    TableRowExpandEmitter,
+    TableRowMetaData
+} from '@ironsource/fusion-ui/components/table/common/entities';
 import {TableService} from '@ironsource/fusion-ui/components/table/common/services';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {Observable, of} from 'rxjs';
@@ -27,6 +34,7 @@ import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
 })
 export class TableRowComponent implements OnInit, OnChanges {
     @Input() rowIndex: string | number;
+    @Input() rowSpanIndex: number;
     @Input() row: TableRow;
     @Input() options: TableOptions;
     @Input() columns: TableColumn[];
@@ -162,6 +170,28 @@ export class TableRowComponent implements OnInit, OnChanges {
             return expandLevel + 1 - this.tableService.getExpandLevelByRowIndex(this.rowIndex);
         }
         return cellColspan;
+    }
+
+    getAttrRowspan(columnKey: string): number {
+        let rowSpan: number;
+        const multiRowsKeys = this.row[ROW_ROWSPAN_KEY_NAME];
+        const maxRowspan = multiRowsKeys[ROW_MAX_ROWSPAN_AMOUNT_KEY_NAME];
+        if (multiRowsKeys) {
+            if (isNullOrUndefined(this.rowSpanIndex)) {
+                rowSpan = maxRowspan - multiRowsKeys[columnKey];
+            }
+        }
+        return rowSpan > 0 ? rowSpan : null;
+    }
+
+    /**
+     * Show regular cell "isNullOrUndefined(this.rowSpanIndex)"
+     * or if cell has rowspan index "!isNullOrUndefined(this.rowSpanIndex)" and key for multirow
+     * @internal
+     */
+    showCell(columnKey: string): boolean {
+        const multiRowsKeys = this.row[ROW_ROWSPAN_KEY_NAME];
+        return isNullOrUndefined(this.rowSpanIndex) || (!isNullOrUndefined(this.rowSpanIndex) && multiRowsKeys[columnKey]);
     }
 
     private getColumnsData(columns: TableColumn[], options: TableOptions, row: TableRow): ColumnData[] {

@@ -3,7 +3,9 @@ import {
     TableColumn,
     TableOptions,
     TableRowClassesEnum,
-    TableRowExpandEmitter
+    TableRowExpandEmitter,
+    ROW_ROWSPAN_KEY_NAME,
+    ROW_MAX_ROWSPAN_AMOUNT_KEY_NAME
 } from '@ironsource/fusion-ui/components/table/common/entities';
 import {TableService} from '@ironsource/fusion-ui/components/table/common/services';
 import {Subject} from 'rxjs';
@@ -53,6 +55,9 @@ export class TableBasicComponent implements OnInit, OnDestroy {
     childRowOptions: TableOptions;
     loadingChildRows: {[key: number]: boolean} = {};
     failedChildRows: {[key: number]: boolean} = {};
+
+    rowRowspanKeyName = ROW_ROWSPAN_KEY_NAME;
+    maxRowspanAmountKeyName = ROW_MAX_ROWSPAN_AMOUNT_KEY_NAME;
 
     private _halfTableClientWidth = 0;
     private tableOptions;
@@ -133,6 +138,10 @@ export class TableBasicComponent implements OnInit, OnDestroy {
 
     hasAfterSticky(isLast, hasMore, rowIndex): boolean {
         return isLast && (hasMore || this.loadingChildRows[rowIndex] || this.failedChildRows[rowIndex]);
+    }
+
+    getRowspanIndexes(maxAmount: number): number[] {
+        return [...Array(maxAmount).keys()].filter(Boolean);
     }
 
     private onExpendRowSuccess(rowIndex: number): () => void {

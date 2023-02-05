@@ -25,7 +25,9 @@ import {
     CONFIG_TABLE_BY_UI_STYLE,
     ROW_CLICK_SUPPRESS_FOR_PARENT_SELECTORS,
     TableIconsConfigByStyle,
-    TableRow
+    TableRow,
+    ROW_ROWSPAN_KEY_NAME,
+    ROW_MAX_ROWSPAN_AMOUNT_KEY_NAME
 } from '@ironsource/fusion-ui/components/table/common/entities';
 import {TableBasicComponent} from './components/table-basic/table-basic.component';
 import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
@@ -341,6 +343,40 @@ export class TableComponent implements OnInit, OnDestroy {
             this.tableService.initSelectedRows(this.rows as any[]);
         }
         this.doLocalSorting();
+
+        // check for rowspan columns
+        this.setRowspanRows();
+    }
+
+    /**
+     * Check rows for rowspan
+     * @param rows
+     * @private
+     */
+    private setRowspanRows() {
+        const columnsKeys = this._columns.map(col => col.key);
+        (this.rows as []).forEach(row => {
+            if (Object.values(row).some(val => Array.isArray(val))) {
+                (row[ROW_ROWSPAN_KEY_NAME] as {[key: string]: number}) = this.getRowspanColumns(row, columnsKeys);
+            }
+        });
+    }
+
+    private getRowspanColumns(row: any, columnsKeys: string[]): {[key: string]: number} {
+        const multiRows = {};
+        let maxRowspan = 2;
+        columnsKeys.forEach(cell => {
+            if (Array.isArray(row[cell])) {
+                multiRows[cell] = (row[cell] as []).length;
+                if (multiRows[cell] > maxRowspan) {
+                    maxRowspan = multiRows[cell];
+                }
+            } else {
+                multiRows[cell] = 0;
+            }
+        });
+        multiRows[ROW_MAX_ROWSPAN_AMOUNT_KEY_NAME] = maxRowspan;
+        return multiRows;
     }
 
     private getSubHeaders(columns: TableColumn[]): {name: string; colspan: number}[] {

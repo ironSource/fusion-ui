@@ -15,31 +15,33 @@
         </fusion-icon>
     </td>
 </ng-container>
-
-<td
-    *ngFor="let column of columns; trackBy: trackByFn; let columnIndex = index; let isLast = last;"
-    fusionTableCell
-    [fusionTooltip]="columnsData[columnIndex]?.tooltip"
-    [data]="row[column.key]"
-    [row]="row"
-    [rowIndex]="rowIndex"
-    [column]="column"
-    [options]="options"
-    [position]="{x: rowIndex, y: columnIndex}"
-    [isRemove]="columnsData[columnIndex]?.isRemove"
-    [infoIconTooltip]="columnsData[columnIndex]?.infoIconOnHoverTooltip"
-    [isRowSelected]="isRowSelected"
-    [isLastColumn]="isLast"
-    [isReadOnly]="isRowReadOnly"
-    [customClass]="row['customClass']"
-    [ngClass]="columnsData[columnIndex]?.classes"
-    [class.cell-tooltip]="columnsData[columnIndex]?.hasTooltip"
-    [class.after-sticky]="hasAfterSticky"
-    [class.inner-row]="isInnerRow"
-    [ngStyle]="columnsData[columnIndex]?.styles"
-    [style.width]="columnsData[columnIndex]?.width"
-    [attr.colspan]="columnsData[columnIndex]?.colspan"
-    (remove)="rowRemoved.emit()"
-    (selectedChange)="selectedChange.emit($event)"
-    (dataChange)="onDataChange($event, column.key)"
-></td>
+<ng-container *ngFor="let column of columns; trackBy: trackByFn; let columnIndex = index; let isLast = last;">
+    <td *ngIf="showCell(column.key)"
+        fusionTableCell
+        [fusionTooltip]="columnsData[columnIndex]?.tooltip"
+        [data]="row[column.key]"
+        [row]="row"
+        [rowIndex]="rowIndex"
+        [rowSpanIndex]="rowSpanIndex"
+        [column]="column"
+        [options]="options"
+        [position]="{x: rowIndex, y: columnIndex}"
+        [isRemove]="columnsData[columnIndex]?.isRemove"
+        [infoIconTooltip]="columnsData[columnIndex]?.infoIconOnHoverTooltip"
+        [isRowSelected]="isRowSelected"
+        [isLastColumn]="isLast"
+        [isReadOnly]="isRowReadOnly"
+        [customClass]="row['customClass']"
+        [ngClass]="columnsData[columnIndex]?.classes"
+        [class.cell-tooltip]="columnsData[columnIndex]?.hasTooltip"
+        [class.after-sticky]="hasAfterSticky"
+        [class.inner-row]="isInnerRow"
+        [ngStyle]="columnsData[columnIndex]?.styles"
+        [style.width]="columnsData[columnIndex]?.width"
+        [attr.colspan]="columnsData[columnIndex]?.colspan"
+        [attr.rowspan]="getAttrRowspan(column.key)"
+        (remove)="rowRemoved.emit()"
+        (selectedChange)="selectedChange.emit($event)"
+        (dataChange)="onDataChange($event, column.key)"
+    ></td>
+</ng-container>
