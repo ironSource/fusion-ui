@@ -32,7 +32,7 @@ export default {
     parameters: {
         design: {
             type: 'figma',
-            url: 'https://www.figma.com/file/V4eZU3qDgKYPhR4eaTvSwy/%F0%9F%8E%A8-Style-guide-2021-Master?node-id=12055%3A117675&t=qWZb5OCasX8xRRtF-1'
+            url: 'https://www.figma.com/file/V4eZU3qDgKYPhR4eaTvSwy/%F0%9F%8E%A8-Style-guide-2021-Master?node-id=15237%3A122332&t=xvhBicbaJD4brwUH-4'
         },
         layout: 'centered',
         backgrounds: {
