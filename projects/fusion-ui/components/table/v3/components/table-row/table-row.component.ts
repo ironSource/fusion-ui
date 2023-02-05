@@ -173,12 +173,14 @@ export class TableRowComponent implements OnInit, OnChanges {
     }
 
     getAttrRowspan(columnKey: string): number {
-        let rowSpan: number;
-        const multiRowsKeys = this.row[ROW_ROWSPAN_KEY_NAME];
-        const maxRowspan = multiRowsKeys[ROW_MAX_ROWSPAN_AMOUNT_KEY_NAME];
-        if (multiRowsKeys) {
-            if (isNullOrUndefined(this.rowSpanIndex)) {
-                rowSpan = maxRowspan - multiRowsKeys[columnKey];
+        let rowSpan = 0;
+        if (!isNullOrUndefined(this.row[ROW_ROWSPAN_KEY_NAME])) {
+            const multiRowsKeys = this.row[ROW_ROWSPAN_KEY_NAME];
+            const maxRowspan = multiRowsKeys[ROW_MAX_ROWSPAN_AMOUNT_KEY_NAME];
+            if (multiRowsKeys) {
+                if (isNullOrUndefined(this.rowSpanIndex)) {
+                    rowSpan = maxRowspan - multiRowsKeys[columnKey];
+                }
             }
         }
         return rowSpan > 0 ? rowSpan : null;
