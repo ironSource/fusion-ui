@@ -357,6 +357,7 @@ export class TableComponent implements OnInit, OnDestroy {
         const columnsKeys = this._columns.map(col => col.key);
         (this.rows as []).forEach(row => {
             if (Object.values(row).some(val => Array.isArray(val))) {
+                // set rowspan row metadata`
                 (row[ROW_ROWSPAN_KEY_NAME] as {[key: string]: number}) = this.getRowspanColumns(row, columnsKeys);
                 this.tableService.hasRowspanRows = true;
             }

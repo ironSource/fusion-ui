@@ -49,10 +49,6 @@ export class TableRowComponent implements OnInit, OnChanges {
 
     @HostBinding('attr.data-row-idx') dataRowIndex: string | number;
 
-    @HostBinding('class.is-row-in-request') get isRowInRequest(): boolean {
-        return this.inRequest;
-    }
-
     @HostBinding('class.is-row-expanded') get isRowExpanded(): boolean {
         return this.isExpanded;
     }
@@ -74,7 +70,6 @@ export class TableRowComponent implements OnInit, OnChanges {
         return this.tableService.isRowReadOnly(this.row);
     }
 
-    private inRequest = false;
     expandArrowIconName: IconData;
     columnsData: ColumnData[] = [];
 
@@ -129,15 +124,16 @@ export class TableRowComponent implements OnInit, OnChanges {
     }
 
     onDataChange(options: any, rowKey): void {
-        this.inRequest = true;
+        this.tableService.toggleRowInRequest(this.row, true);
         this.tableService.rowModelChange.emit({
             rowIndex: this.rowIndex,
+            rowSpanIndex: this.rowSpanIndex ?? 0,
             rowModel: this.row,
             keyChanged: rowKey,
             newValue: options.newValue,
             prevValue: options.prevValue,
             onRequestDone: (state: boolean, error: {message: string; status: number}, stayInEditOnCancel = false) => {
-                this.inRequest = false;
+                this.tableService.toggleRowInRequest(this.row, false);
                 if (options.onCellRequestDone) {
                     options.onCellRequestDone(state, error, stayInEditOnCancel);
                 }

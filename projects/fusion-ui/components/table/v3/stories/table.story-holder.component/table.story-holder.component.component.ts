@@ -85,6 +85,7 @@ export class TableStoryHolderComponent implements OnInit, OnDestroy {
     }
 
     onRowModelChange($event) {
+        console.log('onRowModelChange >>', $event);
         this.rowModelChange.emit($event);
         setTimeout(() => {
             if ($event.keyChanged === 'live') {

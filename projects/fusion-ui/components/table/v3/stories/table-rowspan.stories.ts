@@ -56,7 +56,6 @@ const TableTemplate: Story<TableComponent> = (args: TableComponent) => ({
     [options]="options"
     [columns]="columns"
     [rows]="rows"
-    (rowModelChange)="rowModelChange($event)"
 ></fusion-table-story-holder>`
 });
 

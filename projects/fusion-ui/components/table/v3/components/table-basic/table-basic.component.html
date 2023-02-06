@@ -9,6 +9,7 @@
         [isRowSelected]="tableService.isRowSelected(row)"
         [isExpanded]="isExpanded(rowIndex)"
         [isInnerRow]="false"
+        [class.is-row-in-request]="tableService.isRowInRequest(row)"
         (rowRemoved)="tableService.removeRow({rows: rows, rowIndex: rowIndex, row: row, options: options})"
         (selectedChange)="tableService.onRowSelectChanged($event, row)"
         (expandRow)="onExpandRow($event)"
@@ -94,6 +95,7 @@
                 [row]="row"
                 [columns]="columns"
                 [options]="options"
+                [class.is-row-in-request]="tableService.isRowInRequest(row)"
                 [ngClass]="getRowClass.bind(this) | generic:row:rowIndex"
                 [ngStyle]="!!options.rowsOptions && !!options.rowsOptions.global ? options.rowsOptions.global.style : null"
             ></tr>

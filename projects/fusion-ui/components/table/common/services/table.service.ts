@@ -133,6 +133,17 @@ export class TableService {
         return this.isInSelected(row) !== -1;
     }
 
+    toggleRowInRequest(row: any, isInRequest) {
+        if (isNullOrUndefined(row.rowMetaData)) {
+            row.rowMetaData = {};
+        }
+        row.rowMetaData.inRequest = isInRequest;
+    }
+
+    isRowInRequest(row: any): boolean {
+        return row.rowMetaData?.inRequest;
+    }
+
     isColumnSortable(col: any): boolean {
         return !isUndefined(col.sort);
     }
