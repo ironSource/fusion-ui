@@ -268,6 +268,7 @@ export class TableService {
                 // set rowspan row metadata
                 this.hasRowspanRows = true;
                 row.rowMetaData.rowspanColumnsData = this.getRowspanColumns(row, columnsKeys);
+                row.rowMetaData.maxRowspanInColumn = Math.max(...(Object.values(row.rowMetaData.rowspanColumnsData) as number[]));
             }
         });
     }
@@ -277,9 +278,7 @@ export class TableService {
     }
 
     getMaxRowspanInColumn(row: any): number {
-        return typeof row.rowMetaData?.rowspanColumnsData === 'object'
-            ? Math.max(...(Object.values(row.rowMetaData.rowspanColumnsData) as number[]))
-            : 0;
+        return row.rowMetaData.maxRowspanInColumn ?? 0;
     }
 
     private insureRowMetaData(row: any) {

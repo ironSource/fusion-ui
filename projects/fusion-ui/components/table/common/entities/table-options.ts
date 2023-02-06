@@ -72,6 +72,7 @@ export interface TableRowMetaData {
     disabled?: boolean;
     cellToolTip?: {[columnKey: string]: string};
     rowspanColumnsData?: {[key: string]: number};
+    maxRowspanInColumn?: number;
 }
 
 export interface TableRowsExpandableOptions {
