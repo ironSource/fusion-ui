@@ -47,3 +47,4 @@ export const ROW_CLICK_SUPPRESS_FOR_PARENT_SELECTORS = [
 
 export const ROW_ROWSPAN_KEY_NAME = '_rowspanColumns';
 export const ROW_MAX_ROWSPAN_AMOUNT_KEY_NAME = '_maxRowSpan';
+export const ROW_HOVERED_CLASS_NAME = 'fu-hovered';

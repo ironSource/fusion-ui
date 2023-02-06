@@ -12,6 +12,7 @@ import {
     TABLE_ROWSPAN_COLUMNS_CONFIG,
     ROWS_ROWSPAN_DATA
 } from '@ironsource/fusion-ui/components/table/v3/stories/table.mock-data';
+import {TableStoryHolderComponent} from '@ironsource/fusion-ui/components/table/v3/stories/table.story-holder.component/table.story-holder.component.component';
 
 export default {
     title: 'Components/Table/Rowspan',
@@ -19,7 +20,13 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, TableModule]
+            imports: [
+                CommonModule,
+                SvgModule.forRoot({assetsPath: environment.assetsPath}),
+                IconModule,
+                TableModule,
+                TableStoryHolderComponent
+            ]
         })
     ],
     parameters: {
@@ -45,12 +52,12 @@ export default {
 
 const TableTemplate: Story<TableComponent> = (args: TableComponent) => ({
     props: {...args},
-    template: `<fusion-table
+    template: `<fusion-table-story-holder
     [options]="options"
     [columns]="columns"
     [rows]="rows"
-    [loading]="loading"
-></fusion-table>`
+    (rowModelChange)="rowModelChange($event)"
+></fusion-table-story-holder>`
 });
 
 // region Default

@@ -15,6 +15,19 @@ import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
         (rowModelChange)="onRowModelChange($event)"
         (scrollDown)="onscrollDown()"
     ></fusion-table>`,
+    styles: [
+        `
+            ::ng-deep tbody tr td.fu-badge div {
+                width: unset !important;
+                height: 20px;
+                display: flex;
+                align-items: center;
+                padding: 2px 4px;
+                border-radius: 4px;
+                background-color: #edeff0;
+            }
+        `
+    ],
     standalone: true,
     imports: [TableModule]
 })

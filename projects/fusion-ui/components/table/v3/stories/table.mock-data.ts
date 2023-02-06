@@ -167,10 +167,56 @@ export const TABLE_SUBHEADER_COLUMNS_CONFIG: TableColumn[] = [
 export const TABLE_ROWSPAN_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'id', title: 'Id'},
     {key: 'name', title: 'Name'},
-    {key: 'us_row', title: '', groupName: 'Configuration'},
-    {key: 'margin', title: 'Margin'},
-    {key: 'margin_target', title: 'Target margin'},
-    {key: 'profitizer', title: 'Profitizer'},
+    {key: 'us_row', title: '', groupName: 'Configuration', class: 'fu-badge'},
+    {
+        key: 'margin',
+        title: 'Margin',
+        align: 'right',
+        headerAlign: 'right',
+        type: TableColumnTypeEnum.InputEdit,
+        inputType: InlineInputType.Currency,
+        customErrorMapping: {
+            required: {errorMessageKey: 'required'},
+            min: {
+                errorMessageKey: 'min',
+                textMapping: [{key: 'minValue', value: '5'}]
+            }
+        },
+        width: '120px'
+    },
+    {
+        key: 'margin_target',
+        title: 'Target margin',
+        align: 'right',
+        headerAlign: 'right',
+        type: TableColumnTypeEnum.InputEdit,
+        inputType: InlineInputType.Currency,
+        customErrorMapping: {
+            required: {errorMessageKey: 'required'},
+            min: {
+                errorMessageKey: 'min',
+                textMapping: [{key: 'minValue', value: '5'}]
+            }
+        },
+        width: '120px'
+    },
+    {
+        key: 'profitizer',
+        title: 'Profitizer',
+        align: 'right',
+        headerAlign: 'right',
+        style: {'border-left': 'solid 1px #DDDFE1'},
+        type: TableColumnTypeEnum.InputEdit,
+        inputType: InlineInputType.Currency,
+        customErrorMapping: {
+            required: {errorMessageKey: 'required'},
+            min: {
+                errorMessageKey: 'min',
+                textMapping: [{key: 'minValue', value: '5'}]
+            }
+        },
+        width: '120px'
+    },
     {key: 'username', title: 'Username', groupName: ' '},
     {key: 'email', title: 'Email'},
     {key: 'website', title: 'Website'}
@@ -295,13 +341,18 @@ export const ROWS_COMPONENT_DATA = ROWS_DEFAULT_DATA.map(row => {
     };
 });
 
-export const ROWS_ROWSPAN_DATA = ROWS_DEFAULT_DATA.map(row => {
+export const ROWS_ROWSPAN_DATA = ROWS_DEFAULT_DATA.map((row, idx) => {
+    const marginFormControl1 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+    const marginFormControl2 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+    const marginTargetFormControl1 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+    const marginTargetFormControl2 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+    const profitizerFormControl = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
     return {
         ...row,
         us_row: ['US', 'ROW'],
-        margin: Math.floor(Math.random() * 100),
-        margin_target: Math.floor(Math.random() * 100),
-        profitizer: Math.floor(Math.random() * 100)
+        margin: [marginFormControl1, marginFormControl2],
+        margin_target: [marginTargetFormControl1, marginTargetFormControl2],
+        profitizer: profitizerFormControl
     };
 });
 

@@ -20,6 +20,7 @@ export class TableService {
     public rowModelChange: EventEmitter<TableRowChangedData> = new EventEmitter();
     public rowActionClicked = new EventEmitter<{action: MenuDropItem; rowIndex: string | number; row: TableRow}>();
     public expandLevels: number;
+    public hasRowspanRows = false;
 
     constructor(private sanitizer: DomSanitizer, private logService: LogService) {}
 
