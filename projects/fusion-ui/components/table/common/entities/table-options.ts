@@ -71,6 +71,7 @@ export interface TableRowMetaData {
     inRequest?: boolean;
     disabled?: boolean;
     cellToolTip?: {[columnKey: string]: string};
+    rowspanColumnsData?: {[key: string]: number};
 }
 
 export interface TableRowsExpandableOptions {

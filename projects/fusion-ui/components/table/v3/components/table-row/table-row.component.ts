@@ -10,14 +10,7 @@ import {
     Output,
     SimpleChanges
 } from '@angular/core';
-import {
-    ROW_MAX_ROWSPAN_AMOUNT_KEY_NAME,
-    ROW_ROWSPAN_KEY_NAME,
-    TableColumn,
-    TableOptions,
-    TableRowExpandEmitter,
-    TableRowMetaData
-} from '@ironsource/fusion-ui/components/table/common/entities';
+import {TableColumn, TableOptions, TableRowExpandEmitter, TableRowMetaData} from '@ironsource/fusion-ui/components/table/common/entities';
 import {TableService} from '@ironsource/fusion-ui/components/table/common/services';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {Observable, of} from 'rxjs';
@@ -170,13 +163,11 @@ export class TableRowComponent implements OnInit, OnChanges {
 
     getAttrRowspan(columnKey: string): number {
         let rowSpan = 0;
-        if (!isNullOrUndefined(this.row[ROW_ROWSPAN_KEY_NAME])) {
-            const multiRowsKeys = this.row[ROW_ROWSPAN_KEY_NAME];
-            const maxRowspan = multiRowsKeys[ROW_MAX_ROWSPAN_AMOUNT_KEY_NAME];
-            if (multiRowsKeys) {
-                if (isNullOrUndefined(this.rowSpanIndex)) {
-                    rowSpan = maxRowspan - multiRowsKeys[columnKey];
-                }
+        const multiRowsKeys = this.tableService.getRowspanColumnsData(this.row);
+        if (!isNullOrUndefined(multiRowsKeys)) {
+            const maxRowspan = this.tableService.getMaxRowspanInColumn(this.row);
+            if (isNullOrUndefined(this.rowSpanIndex)) {
+                rowSpan = maxRowspan - multiRowsKeys[columnKey];
             }
         }
         return rowSpan > 0 ? rowSpan : null;
@@ -188,8 +179,8 @@ export class TableRowComponent implements OnInit, OnChanges {
      * @internal
      */
     showCell(columnKey: string): boolean {
-        const multiRowsKeys = this.row[ROW_ROWSPAN_KEY_NAME];
-        return isNullOrUndefined(this.rowSpanIndex) || (!isNullOrUndefined(this.rowSpanIndex) && multiRowsKeys[columnKey]);
+        const multiRowsKeys = this.tableService.getRowspanColumnsData(this.row);
+        return isNullOrUndefined(this.rowSpanIndex) || (!isNullOrUndefined(this.rowSpanIndex) && multiRowsKeys[columnKey] !== 0);
     }
 
     private getColumnsData(columns: TableColumn[], options: TableOptions, row: TableRow): ColumnData[] {

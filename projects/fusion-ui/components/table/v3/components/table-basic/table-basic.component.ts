@@ -16,8 +16,6 @@ import {
     TableOptions,
     TableRowClassesEnum,
     TableRowExpandEmitter,
-    ROW_ROWSPAN_KEY_NAME,
-    ROW_MAX_ROWSPAN_AMOUNT_KEY_NAME,
     ROW_HOVERED_CLASS_NAME
 } from '@ironsource/fusion-ui/components/table/common/entities';
 import {TableService} from '@ironsource/fusion-ui/components/table/common/services';
@@ -68,9 +66,6 @@ export class TableBasicComponent implements OnInit, OnDestroy, AfterViewInit {
     childRowOptions: TableOptions;
     loadingChildRows: {[key: number]: boolean} = {};
     failedChildRows: {[key: number]: boolean} = {};
-
-    rowRowspanKeyName = ROW_ROWSPAN_KEY_NAME;
-    maxRowspanAmountKeyName = ROW_MAX_ROWSPAN_AMOUNT_KEY_NAME;
 
     private _halfTableClientWidth = 0;
     private tableOptions;
@@ -164,8 +159,8 @@ export class TableBasicComponent implements OnInit, OnDestroy, AfterViewInit {
         return isLast && (hasMore || this.loadingChildRows[rowIndex] || this.failedChildRows[rowIndex]);
     }
 
-    getRowspanIndexes(maxAmount: number): number[] {
-        return [...Array(maxAmount).keys()].filter(Boolean);
+    getRowspanIndexes(row): number[] {
+        return [...Array(this.tableService.getMaxRowspanInColumn(row)).keys()].filter(Boolean);
     }
 
     private setHoverForRowspan() {

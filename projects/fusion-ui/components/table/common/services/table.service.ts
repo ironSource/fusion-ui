@@ -133,17 +133,6 @@ export class TableService {
         return this.isInSelected(row) !== -1;
     }
 
-    toggleRowInRequest(row: any, isInRequest) {
-        if (isNullOrUndefined(row.rowMetaData)) {
-            row.rowMetaData = {};
-        }
-        row.rowMetaData.inRequest = isInRequest;
-    }
-
-    isRowInRequest(row: any): boolean {
-        return row.rowMetaData?.inRequest;
-    }
-
     isColumnSortable(col: any): boolean {
         return !isUndefined(col.sort);
     }
@@ -260,7 +249,59 @@ export class TableService {
     }
 
     isRowReadOnly(row: any): boolean {
-        return !!row.rowMetaData && !!row.rowMetaData.readonly;
+        return !!row.rowMetaData?.readonly;
+    }
+
+    isRowInRequest(row: any): boolean {
+        return row.rowMetaData?.inRequest;
+    }
+
+    toggleRowInRequest(row: any, isInRequest) {
+        this.insureRowMetaData(row);
+        row.rowMetaData.inRequest = isInRequest;
+    }
+
+    setRowspanColumnsData(rows: any[], columnsKeys: string[]) {
+        rows.forEach(row => {
+            this.insureRowMetaData(row);
+            if (Object.values(row).some(val => Array.isArray(val))) {
+                // set rowspan row metadata
+                this.hasRowspanRows = true;
+                row.rowMetaData.rowspanColumnsData = this.getRowspanColumns(row, columnsKeys);
+            }
+        });
+    }
+
+    getRowspanColumnsData(row: any): {[key: string]: number} {
+        return row.rowMetaData?.rowspanColumnsData;
+    }
+
+    getMaxRowspanInColumn(row: any): number {
+        return typeof row.rowMetaData?.rowspanColumnsData === 'object'
+            ? Math.max(...(Object.values(row.rowMetaData.rowspanColumnsData) as number[]))
+            : 0;
+    }
+
+    private insureRowMetaData(row: any) {
+        if (isNullOrUndefined(row.rowMetaData)) {
+            row.rowMetaData = {};
+        }
+    }
+
+    private getRowspanColumns(row: any, columnsKeys: string[]): {[key: string]: number} {
+        const multiRows = {};
+        let maxRowspan = 2;
+        columnsKeys.forEach(cell => {
+            if (Array.isArray(row[cell])) {
+                multiRows[cell] = (row[cell] as []).length;
+                if (multiRows[cell] > maxRowspan) {
+                    maxRowspan = multiRows[cell];
+                }
+            } else {
+                multiRows[cell] = 0;
+            }
+        });
+        return multiRows;
     }
 
     private setRowSelectionState(isChecked: boolean, row: any) {

@@ -18,7 +18,7 @@
     ></tr>
     <!--First parent row END-->
     <!--Rowspan rows if any-->
-    <ng-container *ngIf="row[rowRowspanKeyName] as rowSpanData"
+    <ng-container *ngIf="tableService.getRowspanColumnsData(row) as rowSpanData"
                   [ngTemplateOutlet]="multiRowColumns"
                   [ngTemplateOutletContext]="{$implicit: row, rowIndex: rowIndex, rowSpanData: rowSpanData}">
 
@@ -87,7 +87,7 @@
     <!--Recursive template for child rows render END-->
     <!--additional row-span rows-->
     <ng-template #multiRowColumns let-row let-rowIndex="rowIndex" let-rowSpanData=rowSpanData>
-        <ng-container *ngFor="let idx of getRowspanIndexes(rowSpanData[maxRowspanAmountKeyName])">
+        <ng-container *ngFor="let idx of getRowspanIndexes(row)">
             <tr
                 fusionTableRow
                 [rowIndex]="rowIndex"
