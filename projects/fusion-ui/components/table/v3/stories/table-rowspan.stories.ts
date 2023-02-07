@@ -61,16 +61,14 @@ const TableTemplate: Story<TableComponent> = (args: TableComponent) => ({
 
 // region Default
 export const Default = TableTemplate.bind({});
-/*Default.parameters = {
+Default.parameters = {
     docs: {
         source: {
             language: 'typescript',
             code: dedent`
-import { Component, OnInit, OnDestroy, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
-
+import { InlineInputType } from '@ironsource/fusion-ui/components/input-inline/common/base';
 import {
   TableModule,
   TableColumn,
@@ -81,34 +79,34 @@ import {
 @Component({
   selector: 'fusion-story-wrapper',
   template: \`<fusion-table [columns]="columns" [rows]="rows" [options]="options" (rowModelChange)="onRowModelChange($event)"></fusion-table>\`,
+  styles: [
+    \`
+          ::ng-deep tbody tr td.fu-badge div {
+              width: unset !important;
+              height: 20px;
+              line-height: 20px;
+              display: flex;
+              align-items: center;
+              padding: 2px 4px;
+              border-radius: 4px;
+              background-color: #edeff0;
+          }
+      \`,
+  ],
   standalone: true,
   imports: [TableModule],
 })
-export class FusionStoryWrapperComponent implements OnInit, OnDestroy {
-  private onDestroy$ = new Subject<void>();
-
+export class FusionStoryWrapperComponent {
   options: TableOptions = {
     tableLabel: { text: 'Table label', tooltip: 'lorem ipsum dolor' },
   };
 
   columns: TableColumn[] = COLUMNS_CONFIG;
 
-  rows = [];
-
-  private onRowDataChanged$ = new EventEmitter<any>();
-
-  ngOnInit() {
-    this.onRowDataChanged$
-      .pipe(takeUntil(this.onDestroy$))
-      .subscribe(this.onRowModelChange.bind(this));
-  }
-
-  ngOnDestroy(): void {
-    this.onDestroy$.next();
-    this.onDestroy$.complete();
-  }
+  rows: any[] = ROWS_DATA;
 
   onRowModelChange($event) {
+    console.log('onRowModelChange: ', $event);
     setTimeout(() => {
       $event.onRequestDone(true);
     }, 2000);
@@ -264,5 +262,5 @@ const ROWS_DATA = [
             type: 'code'
         }
     }
-};*/
+};
 // endregion
