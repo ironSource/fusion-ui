@@ -119,6 +119,9 @@ $tableFrameFooterHeight: 72px;
                         &:after{
                             display: none;
                         }
+                        &:first-of-type{
+                            border-left: none;
+                        }
                     }
                     &.fu-border-left{
                         border-left: solid 1px $fu-light-400;
