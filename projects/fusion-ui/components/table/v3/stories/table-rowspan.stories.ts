@@ -36,7 +36,7 @@ export default {
         },
         docs: {
             description: {
-                component: dedent`**Tables** rowspan.
+                component: dedent`**Tables** "rowspan".
                 Table where some columns has more than one row, so other cells must have attribute rowspan and will not render in additional rows.
 
                 Data for this cell must be set as array it a sign that here "multirow" cell`
