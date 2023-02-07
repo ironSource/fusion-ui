@@ -289,13 +289,9 @@ export class TableService {
 
     private getRowspanColumns(row: any, columnsKeys: string[]): {[key: string]: number} {
         const multiRows = {};
-        let maxRowspan = 2;
         columnsKeys.forEach(cell => {
             if (Array.isArray(row[cell])) {
                 multiRows[cell] = (row[cell] as []).length;
-                if (multiRows[cell] > maxRowspan) {
-                    maxRowspan = multiRows[cell];
-                }
             } else {
                 multiRows[cell] = 0;
             }
