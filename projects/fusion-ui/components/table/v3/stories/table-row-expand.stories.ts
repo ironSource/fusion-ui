@@ -10,8 +10,10 @@ import {TableComponent} from '../table.component';
 import {TableStoryHolderComponent} from './table.story-holder.component/table.story-holder.component.component';
 import {
     ROWS_DEFAULT_DATA,
+    ROWS_EXPAND_ROWSPAN_DATA,
     TABLE_DEFAULT_COLUMNS_CONFIG,
-    TABLE_DEFAULT_OPTIONS
+    TABLE_DEFAULT_OPTIONS,
+    TABLE_ROWSPAN_COLUMNS_CONFIG
 } from '@ironsource/fusion-ui/components/table/v3/stories/table.mock-data';
 
 export default {
@@ -64,4 +66,8 @@ const TableTemplate: Story<TableComponent> = (args: TableComponent) => ({
 
 // region Default
 export const Default = TableTemplate.bind({});
+// endregion
+
+// region WithRowspan
+export const WithRowspan = TableTemplate.bind({});
 // endregion
