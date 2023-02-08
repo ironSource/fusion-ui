@@ -1,13 +1,26 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {
+    AfterViewInit,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ElementRef,
+    EventEmitter,
+    Input,
+    OnDestroy,
+    OnInit,
+    Output,
+    Renderer2
+} from '@angular/core';
 import {
     TableColumn,
     TableOptions,
     TableRowClassesEnum,
-    TableRowExpandEmitter
+    TableRowExpandEmitter,
+    ROW_HOVERED_CLASS_NAME
 } from '@ironsource/fusion-ui/components/table/common/entities';
 import {TableService} from '@ironsource/fusion-ui/components/table/common/services';
-import {Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {fromEvent, Subject, from} from 'rxjs';
+import {filter, mergeMap, takeUntil} from 'rxjs/operators';
 
 @Component({
     // eslint-disable-next-line
@@ -16,7 +29,7 @@ import {takeUntil} from 'rxjs/operators';
     styleUrls: ['./table-basic.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TableBasicComponent implements OnInit, OnDestroy {
+export class TableBasicComponent implements OnInit, OnDestroy, AfterViewInit {
     @Input() rows: {[key: string]: any}[];
     @Input() columns: TableColumn[];
     /** @internal */
@@ -58,7 +71,12 @@ export class TableBasicComponent implements OnInit, OnDestroy {
     private tableOptions;
     private onDestroy$ = new Subject();
 
-    constructor(public tableService: TableService, private cdr: ChangeDetectorRef) {}
+    constructor(
+        public tableService: TableService,
+        private cdr: ChangeDetectorRef,
+        private elementRef: ElementRef,
+        private renderer: Renderer2
+    ) {}
 
     ngOnInit(): void {
         this.tableService.selectionChanged.pipe(takeUntil(this.onDestroy$)).subscribe(val => {
@@ -69,6 +87,12 @@ export class TableBasicComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.onDestroy$.next();
         this.onDestroy$.complete();
+    }
+
+    ngAfterViewInit() {
+        if (this.tableService.hasRowspanRows) {
+            this.setHoverForRowspan();
+        }
     }
 
     trackByRowInvoke() {
@@ -133,6 +157,46 @@ export class TableBasicComponent implements OnInit, OnDestroy {
 
     hasAfterSticky(isLast, hasMore, rowIndex): boolean {
         return isLast && (hasMore || this.loadingChildRows[rowIndex] || this.failedChildRows[rowIndex]);
+    }
+
+    getRowspanIndexes(row): number[] {
+        return [...Array(this.tableService.getMaxRowspanInColumn(row)).keys()].filter(Boolean);
+    }
+
+    private setHoverForRowspan() {
+        const rowElements = this.elementRef.nativeElement.querySelectorAll('tr[data-row-idx]');
+        const events = ['mouseenter', 'mouseleave'];
+        from(events)
+            .pipe(
+                takeUntil(this.onDestroy$),
+                mergeMap(event => fromEvent(rowElements, event)),
+                filter((event: MouseEvent) => {
+                    return (
+                        (event.type === 'mouseenter' && !(event.target as HTMLElement).classList.contains(ROW_HOVERED_CLASS_NAME)) ||
+                        (event.type === 'mouseleave' && (event.target as HTMLElement).classList.contains(ROW_HOVERED_CLASS_NAME))
+                    );
+                })
+            )
+            .subscribe(this.toggleHoverClassForRowspan.bind(this));
+    }
+
+    private toggleHoverClassForRowspan(event: MouseEvent) {
+        const eventType = event.type;
+        const rowIndex = (event.target as HTMLElement).dataset.rowIdx;
+        const sameRowIndexSelector = 'tr[data-row-idx="' + rowIndex + '"]';
+        const rows = [...this.elementRef.nativeElement.querySelectorAll(sameRowIndexSelector)];
+        switch (eventType) {
+            case 'mouseenter':
+                rows.forEach(row => {
+                    this.renderer.addClass(row, ROW_HOVERED_CLASS_NAME);
+                });
+                break;
+            case 'mouseleave':
+                rows.forEach(row => {
+                    this.renderer.removeClass(row, ROW_HOVERED_CLASS_NAME);
+                });
+                break;
+        }
     }
 
     private onExpendRowSuccess(rowIndex: number): () => void {

@@ -19,6 +19,19 @@ import {ROWS_DEFAULT_DATA} from '@ironsource/fusion-ui/components/table/v3/stori
         (scrollDown)="onscrollDown()"
         (expandRow)="onExpandRow($event)"
     ></fusion-table>`,
+    styles: [
+        `
+            ::ng-deep tbody tr td.fu-badge div {
+                width: unset !important;
+                height: 20px;
+                display: flex;
+                align-items: center;
+                padding: 2px 4px;
+                border-radius: 4px;
+                background-color: #edeff0;
+            }
+        `
+    ],
     standalone: true,
     imports: [TableModule]
 })
@@ -78,6 +91,7 @@ export class TableStoryHolderComponent implements OnInit, OnDestroy {
     }
 
     onRowModelChange($event) {
+        console.log('onRowModelChange >>', $event);
         this.rowModelChange.emit($event);
         setTimeout(() => {
             if ($event.keyChanged === 'live') {

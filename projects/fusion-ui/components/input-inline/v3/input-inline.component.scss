@@ -96,7 +96,8 @@
     }
 }
 
-:host-context(tr:hover) {
+:host-context(tr:hover),
+:host-context(tr.fu-hovered){ // tr.fu-hovered for rowspan rows
     .inline-input-wrapper {
         .is-label {
             background-color: $fu-light-200;

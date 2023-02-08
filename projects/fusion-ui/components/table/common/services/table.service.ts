@@ -20,6 +20,7 @@ export class TableService {
     public rowModelChange: EventEmitter<TableRowChangedData> = new EventEmitter();
     public rowActionClicked = new EventEmitter<{action: MenuDropItem; rowIndex: string | number; row: TableRow}>();
     public expandLevels: number;
+    public hasRowspanRows = false;
 
     constructor(private sanitizer: DomSanitizer, private logService: LogService) {}
 
@@ -248,7 +249,54 @@ export class TableService {
     }
 
     isRowReadOnly(row: any): boolean {
-        return !!row.rowMetaData && !!row.rowMetaData.readonly;
+        return !!row.rowMetaData?.readonly;
+    }
+
+    isRowInRequest(row: any): boolean {
+        return row.rowMetaData?.inRequest;
+    }
+
+    toggleRowInRequest(row: any, isInRequest) {
+        this.insureRowMetaData(row);
+        row.rowMetaData.inRequest = isInRequest;
+    }
+
+    setRowspanColumnsData(rows: any[], columnsKeys: string[]) {
+        rows.forEach(row => {
+            this.insureRowMetaData(row);
+            if (Object.values(row).some(val => Array.isArray(val))) {
+                // set rowspan row metadata
+                this.hasRowspanRows = true;
+                row.rowMetaData.rowspanColumnsData = this.getRowspanColumns(row, columnsKeys);
+                row.rowMetaData.maxRowspanInColumn = Math.max(...(Object.values(row.rowMetaData.rowspanColumnsData) as number[]));
+            }
+        });
+    }
+
+    getRowspanColumnsData(row: any): {[key: string]: number} {
+        return row.rowMetaData?.rowspanColumnsData;
+    }
+
+    getMaxRowspanInColumn(row: any): number {
+        return row.rowMetaData.maxRowspanInColumn ?? 0;
+    }
+
+    private insureRowMetaData(row: any) {
+        if (isNullOrUndefined(row.rowMetaData)) {
+            row.rowMetaData = {};
+        }
+    }
+
+    private getRowspanColumns(row: any, columnsKeys: string[]): {[key: string]: number} {
+        const multiRows = {};
+        columnsKeys.forEach(cell => {
+            if (Array.isArray(row[cell])) {
+                multiRows[cell] = (row[cell] as []).length;
+            } else {
+                multiRows[cell] = 0;
+            }
+        });
+        return multiRows;
     }
 
     private setRowSelectionState(isChecked: boolean, row: any) {

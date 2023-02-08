@@ -27,6 +27,7 @@ import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
 })
 export class TableRowComponent implements OnInit, OnChanges {
     @Input() rowIndex: string | number;
+    @Input() rowSpanIndex: number;
     @Input() row: TableRow;
     @Input() options: TableOptions;
     @Input() columns: TableColumn[];
@@ -40,10 +41,6 @@ export class TableRowComponent implements OnInit, OnChanges {
     @Output() expandRow = new EventEmitter<TableRowExpandEmitter>();
 
     @HostBinding('attr.data-row-idx') dataRowIndex: string | number;
-
-    @HostBinding('class.is-row-in-request') get isRowInRequest(): boolean {
-        return this.inRequest;
-    }
 
     @HostBinding('class.is-row-expanded') get isRowExpanded(): boolean {
         return this.isExpanded;
@@ -66,7 +63,6 @@ export class TableRowComponent implements OnInit, OnChanges {
         return this.tableService.isRowReadOnly(this.row);
     }
 
-    private inRequest = false;
     expandArrowIconName: IconData;
     columnsData: ColumnData[] = [];
 
@@ -121,15 +117,16 @@ export class TableRowComponent implements OnInit, OnChanges {
     }
 
     onDataChange(options: any, rowKey): void {
-        this.inRequest = true;
+        this.tableService.toggleRowInRequest(this.row, true);
         this.tableService.rowModelChange.emit({
             rowIndex: this.rowIndex,
+            rowSpanIndex: this.rowSpanIndex ?? 0,
             rowModel: this.row,
             keyChanged: rowKey,
             newValue: options.newValue,
             prevValue: options.prevValue,
             onRequestDone: (state: boolean, error: {message: string; status: number}, stayInEditOnCancel = false) => {
-                this.inRequest = false;
+                this.tableService.toggleRowInRequest(this.row, false);
                 if (options.onCellRequestDone) {
                     options.onCellRequestDone(state, error, stayInEditOnCancel);
                 }
@@ -162,6 +159,28 @@ export class TableRowComponent implements OnInit, OnChanges {
             return expandLevel + 1 - this.tableService.getExpandLevelByRowIndex(this.rowIndex);
         }
         return cellColspan;
+    }
+
+    getAttrRowspan(columnKey: string): number {
+        let rowSpan = 0;
+        const multiRowsKeys = this.tableService.getRowspanColumnsData(this.row);
+        if (!isNullOrUndefined(multiRowsKeys)) {
+            const maxRowspan = this.tableService.getMaxRowspanInColumn(this.row);
+            if (isNullOrUndefined(this.rowSpanIndex)) {
+                rowSpan = maxRowspan - multiRowsKeys[columnKey];
+            }
+        }
+        return rowSpan > 0 ? rowSpan : null;
+    }
+
+    /**
+     * Show regular cell "isNullOrUndefined(this.rowSpanIndex)"
+     * or if cell has rowspan index "!isNullOrUndefined(this.rowSpanIndex)" and key for multirow
+     * @internal
+     */
+    showCell(columnKey: string): boolean {
+        const multiRowsKeys = this.tableService.getRowspanColumnsData(this.row);
+        return isNullOrUndefined(this.rowSpanIndex) || (!isNullOrUndefined(this.rowSpanIndex) && multiRowsKeys[columnKey] !== 0);
     }
 
     private getColumnsData(columns: TableColumn[], options: TableOptions, row: TableRow): ColumnData[] {

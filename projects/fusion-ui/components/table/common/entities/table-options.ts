@@ -68,8 +68,11 @@ export interface TableRowOptions {
 
 export interface TableRowMetaData {
     readonly?: boolean;
+    inRequest?: boolean;
     disabled?: boolean;
     cellToolTip?: {[columnKey: string]: string};
+    rowspanColumnsData?: {[key: string]: number};
+    maxRowspanInColumn?: number;
 }
 
 export interface TableRowsExpandableOptions {

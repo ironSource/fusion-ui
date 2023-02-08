@@ -341,6 +341,12 @@ export class TableComponent implements OnInit, OnDestroy {
             this.tableService.initSelectedRows(this.rows as any[]);
         }
         this.doLocalSorting();
+
+        // check for rowspan columns
+        this.tableService.setRowspanColumnsData(
+            this.rows as [],
+            this._columns.map(col => col.key)
+        );
     }
 
     private getSubHeaders(columns: TableColumn[]): {name: string; colspan: number}[] {
