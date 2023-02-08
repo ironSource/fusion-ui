@@ -272,7 +272,6 @@ export const ROWS_EDITABLE_DATA = ROWS_DEFAULT_DATA.map(row => {
     const amountFormControl = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
     return {amount: amountFormControl, ...row};
 });
-
 export const ROWS_COMPONENT_DATA = ROWS_DEFAULT_DATA.map(row => {
     return {
         title: {
