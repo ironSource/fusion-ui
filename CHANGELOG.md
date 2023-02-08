@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.1.0-rc.23](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.22...v5.1.0-rc.23) (2023-02-08)
+
+
+### Features
+
+* **5.x.x:** update fusion-ui version for stackblitz ion storybook ([32314f6](https://github.com/ironSource/fusion-ui/commit/32314f6735dfb3752e8cd31a06a27c0ffd7a6da0))
+
+
+### Bug Fixes
+
+* **5.x.x:** fixed inline-input for currency with 'Unlimited' in value ([70b0dab](https://github.com/ironSource/fusion-ui/commit/70b0dab989a37dedca1fd861f4c6c40b26fe456f))
+* **5.x.x:** fixed inline-input v3 base color ([adae82b](https://github.com/ironSource/fusion-ui/commit/adae82bfc44c9f9789401c7f06ec7966eae4cfd2))
+* **5.x.x:** fixed table v3 header - search input width ([cadfd3c](https://github.com/ironSource/fusion-ui/commit/cadfd3c1a61ba403874f250c044e93469d47a918))
+* **5.x.x:** fixed top-filter trigger height ([fd19ab5](https://github.com/ironSource/fusion-ui/commit/fd19ab54dc378ac1e0f368d82cdd91643d9ba919))
+
 ## [5.1.0-rc.22](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.21...v5.1.0-rc.22) (2023-02-01)
 
 
