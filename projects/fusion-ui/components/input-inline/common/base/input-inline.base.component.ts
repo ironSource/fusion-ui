@@ -73,6 +73,8 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
         if (!this.isType(InlineInputType.Text)) {
             if (!this.savedValue) {
                 value = '0';
+            } else if (isNaN(this.savedValue)) {
+                value = this.savedValue;
             } else if (this.isType(InlineInputType.Currency)) {
                 value = this.currencyPipe
                     .transform(this.savedValue, this.currencyPipeCurrencyCode, this.currencyPipeDisplay, this.currencyPipeDigitsInfo)
