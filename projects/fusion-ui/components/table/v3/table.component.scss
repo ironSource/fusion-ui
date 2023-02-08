@@ -119,6 +119,9 @@ $tableFrameFooterHeight: 72px;
                         &:after{
                             display: none;
                         }
+                        &:first-of-type{
+                            border-left: none;
+                        }
                     }
                     &.fu-border-left{
                         border-left: solid 1px $fu-light-400;
@@ -194,6 +197,7 @@ $tableFrameFooterHeight: 72px;
             }
         }
         .fu-search-holder{
+            flex-grow: 2;
             height: 100%;
             border-left: solid 1px $fu-light-400;
             padding-left: 19px;
@@ -203,6 +207,7 @@ $tableFrameFooterHeight: 72px;
                 @include size(16px);
             }
             input{
+                width: calc(100% - 30px);
                 border: none;
                 box-sizing: border-box;
                 padding: 10px;
