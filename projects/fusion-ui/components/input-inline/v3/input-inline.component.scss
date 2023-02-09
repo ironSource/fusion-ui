@@ -7,13 +7,13 @@
 
     .inline-input-wrapper {
         @extend %font-bodySmall;
+        line-height: 16px;
         position: relative;
-
+        height: 40px;
         .is-label {
             display: flex;
             align-items: center;
             padding: 12px 12px 12px 8px;
-            height: 40px;
             border-radius: 8px;
             color: $fu-black-500;
 
