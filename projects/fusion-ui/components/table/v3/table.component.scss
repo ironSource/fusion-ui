@@ -197,30 +197,11 @@ $tableFrameFooterHeight: 72px;
             }
         }
         .fu-search-holder{
-            flex-grow: 2;
             height: 100%;
             border-left: solid 1px $fu-light-400;
-            padding-left: 19px;
+            padding-left: 8px;
             display: flex;
             align-items: center;
-            @include icon-style('fu-search-icon', $fu-light-700, 16px, false, true){
-                @include size(16px);
-            }
-            input{
-                width: calc(100% - 30px);
-                border: none;
-                box-sizing: border-box;
-                padding: 10px;
-                color: $fu-black-500;
-                &::placeholder {
-                    color: $fu-light-800;
-                    @extend %font-bodySmall;
-                }
-                &:active,
-                &:focus {
-                    outline: none;
-                }
-            }
         }
     }
     .fu-table-footer{

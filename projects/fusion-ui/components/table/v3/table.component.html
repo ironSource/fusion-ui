@@ -7,11 +7,10 @@
         </div>
     </ng-container>
     <div class="fu-search-holder" *ngIf="options?.searchOptions as searchOptions">
-        <fusion-icon class="fu-search-icon" [name]="{iconName: 'search-bold', iconVersion: 'v3'}"></fusion-icon>
-        <input
+        <fusion-search style="width: 300px;"
+            [formControl]="searchFormControl"
             [placeholder]="searchOptions.placeholder"
-            (input)="searchOptions.onSearch.emit($any($event.target).value)"
-        />
+        ></fusion-search>
     </div>
 </div>
 <div class="tableWrap" [ngClass]="wrapperClasses" #tableWrapper>
