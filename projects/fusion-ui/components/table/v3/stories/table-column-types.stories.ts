@@ -23,7 +23,7 @@ import {
     TABLE_DATE_COLUMNS_CONFIG,
     TABLE_DEFAULT_COLUMNS_CONFIG,
     TABLE_DEFAULT_OPTIONS,
-    TABLE_EDITABLE_COLUMNS_CONFIG,
+    TABLE_EDITABLE_CURRENCY_COLUMNS_CONFIG,
     TABLE_NUMBER_COLUMNS_CONFIG,
     TABLE_PERCENT_COLUMNS_CONFIG,
     TABLE_TOGGLE_COLUMNS_CONFIG
@@ -1010,7 +1010,7 @@ const TableEditTemplate: Story<TableComponent> = (args: TableComponent) => ({
 });
 export const Editable = TableToggleTemplate.bind({});
 Editable.args = {
-    columns: TABLE_EDITABLE_COLUMNS_CONFIG,
+    columns: TABLE_EDITABLE_CURRENCY_COLUMNS_CONFIG,
     rows: ROWS_EDITABLE_DATA
 };
 Editable.parameters = {
