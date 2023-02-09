@@ -70,4 +70,15 @@ export const Default = TableTemplate.bind({});
 
 // region WithRowspan
 export const WithRowspan = TableTemplate.bind({});
+WithRowspan.args = {
+    options: {
+        ...TABLE_DEFAULT_OPTIONS,
+        rowsExpandableOptions: {
+            key: 'children',
+            columns: TABLE_ROWSPAN_COLUMNS_CONFIG
+        }
+    } as TableOptions,
+    columns: TABLE_ROWSPAN_COLUMNS_CONFIG,
+    rows: ROWS_EXPAND_ROWSPAN_DATA
+};
 // endregion
