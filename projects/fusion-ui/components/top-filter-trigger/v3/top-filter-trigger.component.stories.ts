@@ -51,8 +51,16 @@ export const Default = DefaultTemplate.bind({});
 // region SelectedAmountApps
 export const SelectedAmountApps = DefaultTemplate.bind({});
 SelectedAmountApps.args = {
+    placeholder: '33 apps selected',
+    helper: 'Dizzy Diamond and 32 more'
+};
+// endregion
+
+// region SelectedAllApps
+export const SelectedAllApps = DefaultTemplate.bind({});
+SelectedAllApps.args = {
     placeholder: 'All Apps selected',
-    helper: '33 applications'
+    helper: '65 applications'
 };
 // endregion
 
@@ -62,7 +70,7 @@ SingleIOSAppSelected.args = {
     label: 'Dizzy Diamond Puzzle',
     helper: 'appKey',
     icon: 'ios',
-    imageApp: 'https://is4-ssl.mzstatic.com/image/thumb/Purple123/v4/e5/52/eb/e552eb88-72c7-f284-7622-988200f345bd/source/512x512bb.jpg'
+    imageApp: 'https://fusion-storybook.ironsrc.mobi/branch_demo-assets/4_app.png'
 };
 // endregion
 
@@ -72,7 +80,7 @@ SingleAndroidAppSelected.args = {
     label: 'Moy 7 the Virtual Pet Game',
     helper: 'appKey',
     icon: 'android',
-    imageApp: 'https://lh3.googleusercontent.com/T0yo2MIuoWWrhk7vaNX18MaOOI3StYYNb43Y1V_X8QJiWGu0SgMCAhSqoNc9ei5BHH9b=s180'
+    imageApp: 'https://fusion-storybook.ironsrc.mobi/branch_demo-assets/12_app.png'
 };
 // endregion
 

@@ -38,13 +38,16 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.placeholder$.next(data);
         this.defaultPlaceHolder = data;
     }
+
     /** @internal */
     @Input() set searchByProperties(value: string[]) {
         this._searchByProperties = value;
     }
+
     get searchByProperties(): string[] {
         return this._searchByProperties;
     }
+
     /** @internal */
     @Input() set opened(data: boolean) {
         this.opened$.next(data);
@@ -174,25 +177,44 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
             this.scrollDown.emit();
         }
     }
+
     /** @internal */
     changeConfig(val: string) {
         this.element.nativeElement.style.setProperty('--fu-chip-max-width', val);
     }
+
     /** @internal */
-    valueSelected(): Observable<{value: string; isSelected: boolean; selectedCount?: number}> {
+    valueSelected(): Observable<{
+        value: string;
+        isSelected: boolean;
+        selectedCount?: number;
+        partialSelect?: {firstSelected?: DropdownOption; totalAmount?: number};
+    }> {
         return this.selected$.pipe(
             takeUntil(this.onDestroy$),
-            map(value =>
-                (value !== this.defaultPlaceHolder && value !== 'All selected') || this.selectedTypeObject
-                    ? {value, isSelected: !!this.selectedChange?.length, selectedCount: this.selectedChange?.length}
-                    : {value: null, isSelected: false}
-            )
+            map(value => {
+                const partialSelect = {};
+                if (!isNullOrUndefined(value) && !value.toString().toLowerCase().startsWith('all ') && !!this.selectedChange?.length) {
+                    partialSelect['firstSelected'] = this.selectedChange[0];
+                    partialSelect['totalAmount'] = this.totalItems ?? this.items$.getValue().length;
+                }
+                return (value !== this.defaultPlaceHolder && value !== 'All selected') || this.selectedTypeObject
+                    ? {
+                          value,
+                          isSelected: !!this.selectedChange?.length,
+                          selectedCount: this.selectedChange?.length,
+                          partialSelect
+                      }
+                    : {value: null, isSelected: false};
+            })
         );
     }
+
     /** @internal */
     open() {
         this.trigger.nativeElement.click();
     }
+
     /** @internal */
     applySelect(apply: boolean = false): void {
         this.opened$.next(!apply);
@@ -210,6 +232,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.searchControlTerm.setValue('');
         this.viewChange.emit(this.opened$.getValue());
     }
+
     /** @internal */
     closeDropdownDualSelect(): void {
         this.opened$.next(false);
@@ -218,6 +241,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.searchControlTerm.setValue('');
         this.viewChange.emit(this.opened$.getValue());
     }
+
     /** @internal */
     onClickDualMultiSelectButton(): void {
         if (!this.isDisabled && !this.suppressClickButton) {
@@ -226,10 +250,12 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
             this.viewChange.emit(this.opened$.getValue());
         }
     }
+
     /** @internal */
     propagateChange = (_: DropdownOption[]) => {};
     /** @internal */
     propagateTouched = () => {};
+
     /** @internal */
     writeValue(value: DropdownOption[]): void {
         this.preSelectedItems.setValue(value);
@@ -242,18 +268,22 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
                 : this.placeholder$.getValue()
         );
     }
+
     /** @internal */
     registerOnChange(fn: any): void {
         this.propagateChange = fn;
     }
+
     /** @internal */
     registerOnTouched(fn: any): void {
         this.propagateTouched = fn;
     }
+
     /** @internal */
     setDisabledState?(isDisabled: boolean): void {
         this.isDisabled = isDisabled;
     }
+
     /** @internal */
     onOutsideClick($event): void {
         const regularButtonClicked = !this.dynamicPlaceholder

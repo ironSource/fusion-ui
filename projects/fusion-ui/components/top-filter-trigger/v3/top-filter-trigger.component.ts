@@ -18,7 +18,7 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 import {Subject} from 'rxjs';
 import {takeUntil, tap} from 'rxjs/operators';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
-import {isNullOrUndefined, isObject} from '@ironsource/fusion-ui/utils';
+import {isNullOrUndefined, isObject, isString} from '@ironsource/fusion-ui/utils';
 import {DEFAULT_IMAGE_HOLDER, TRIGGER_ICON} from './top-filter-trigger.config';
 
 @Component({
@@ -94,7 +94,12 @@ export class TopFilterTriggerComponent implements OnInit, OnDestroy {
         this.helper = null;
     }
 
-    private setSelected(selected: {value: any; isSelected: boolean; selectedCount?: number}) {
+    private setSelected(selected: {
+        value: any;
+        isSelected: boolean;
+        selectedCount?: number;
+        partialSelect?: {firstSelected?: DropdownOption; totalAmount?: number};
+    }) {
         if (!isNullOrUndefined(selected.value) && isObject(selected.value)) {
             const selectedItem = selected.value as DropdownOption;
             this.selectedLabel = selectedItem.displayText || selectedItem.title;
@@ -103,8 +108,19 @@ export class TopFilterTriggerComponent implements OnInit, OnDestroy {
             this.helper = selectedItem.subText?.text;
         } else {
             this.selectedLabel = selected.value;
-            this.helper =
-                !isNullOrUndefined(selected.selectedCount) && selected.selectedCount !== 0 ? `${selected.selectedCount} selected` : null;
+            if (isString(selected.value) && !selected.value.toLowerCase().startsWith('all ')) {
+                this.helper =
+                    selected.partialSelect.firstSelected.title ??
+                    selected.partialSelect.firstSelected.displayText +
+                        ' and ' +
+                        (selected.partialSelect.totalAmount - selected.selectedCount) +
+                        ' more';
+            } else {
+                this.helper =
+                    !isNullOrUndefined(selected.selectedCount) && selected.selectedCount !== 0
+                        ? `${selected.selectedCount} selected`
+                        : null;
+            }
         }
         this.onSelectedChange.emit(selected);
     }
