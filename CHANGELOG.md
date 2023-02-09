@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.1.0-rc.24](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.23...v5.1.0-rc.24) (2023-02-09)
+
+
+### Bug Fixes
+
+* **5.x.x:** fixes for inline-edit in table ([ea04b9d](https://github.com/ironSource/fusion-ui/commit/ea04b9d1037ac2e6cbbeb7e7c3ae0f9fa412a664))
+* **5.x.x:** search in table header update to fusion-search component ([1556891](https://github.com/ironSource/fusion-ui/commit/1556891175de95685014786368a67ba39ec95e76))
+
 ## [5.1.0-rc.23](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.22...v5.1.0-rc.23) (2023-02-08)
 
 
