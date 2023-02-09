@@ -417,10 +417,10 @@ $smallHeight: 32px;
     }
 }
 
-/*:host-context(div.inputType){
+:host-context(div.inputType){
     .fu-input-holder {
-        input {
-            margin-top: -1px;
+        input[type="number"] {
+            margin-top: 0;
         }
     }
-}*/
+}

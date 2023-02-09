@@ -323,9 +323,11 @@ export class TableComponent implements OnInit, OnDestroy {
     onTableBodyClicked($event: MouseEvent) {
         if (!this.isElementChildOfSuppressed($event.target as Element)) {
             const rowEl = ($event.target as Element).closest('tr');
-            const rowIndex = rowEl.dataset.rowIdx;
-            const rowData = this.rows[rowIndex];
-            this.rowClicked.emit({$event, rowIndex, rowEl, rowData});
+            if (!isNullOrUndefined(rowEl)) {
+                const rowIndex = rowEl.dataset.rowIdx;
+                const rowData = this.rows[rowIndex];
+                this.rowClicked.emit({$event, rowIndex, rowEl, rowData});
+            }
         }
     }
     /** @internal */

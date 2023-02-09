@@ -15,6 +15,7 @@ import {
     ROWS_DATE_DATA,
     ROWS_DEFAULT_DATA,
     ROWS_EDITABLE_DATA,
+    ROWS_EDITABLE_DISABLED_DATA,
     ROWS_EDITABLE_TEXT_DATA,
     ROWS_NUMBER_DATA,
     ROWS_TOGGLE_DATA,
@@ -65,13 +66,13 @@ export default {
             **Editable column** possibility to edit data in cell. Data type for this cell - FormControl. It also give a possibility to set validation rules.
             For example - required value, or minimum / maximum value. Like \`cellValue = new FormControl(123, [Validators.required, Validators.min(5)])\`
             Column configuration:
-            \`{key: 'amount', type: TableColumnTypeEnum.InputEdit, inputType: InlineInputType.Currency,title: 'Amount', width: '120px'},\`
+            \`{key: 'text', type: TableColumnTypeEnum.InputEdit, inputType: InlineInputType.Text, title: 'Text', width: '120px'},\`
             For validation error shown you need to add **customErrorMapping** fro this column configuration:
-            \`customErrorMapping: {required: {errorMessageKey: 'required'},min: {errorMessageKey: 'min',textMapping: [{key: 'minValue', value: '5'}]}},\`
+            \`customErrorMapping: {required: {errorMessageKey: 'required'}},\`
             On save, if validations will ok, it emit event **(rowModelChange)**. And you need add event processing method.
             Example: \`(rowModelChange)="rowModelChange($event)"\`
             in arguments you get object:
-            \`{rowIndex: 6, rowModel: Object, keyChanged: "amount", newValue: "44", prevValue: 43}\`
+            \`{rowIndex: 6, rowModel: Object, keyChanged: "text", newValue: "edited 6 text", prevValue: "some 6 text"}\`
 
             * **rowIndex**:  index for row in **rows** array that was send to the table as input parameter **[rows]**
             * **rowModel**:  row element from **rows** array related to the event **rowModelChange**
@@ -600,6 +601,174 @@ const ROWS_DATA = [
     email: 'Rey.Padberg@karina.biz',
     website: 'ambrose.net',
     amount: new FormControl(98, [Validators.required, Validators.min(5)]),
+  },
+];
+            `,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region Disabled column
+export const Disabled = TableEditTemplate.bind({});
+Disabled.args = {
+    columns: TABLE_EDITABLE_CURRENCY_COLUMNS_CONFIG,
+    rows: ROWS_EDITABLE_DISABLED_DATA
+};
+Disabled.parameters = {
+    docs: {
+        description: {
+            story: dedent`
+            **Disable Editable column** as we are using FormControl for set editable cell value - we can just set form control disabled for disable input.
+
+            Like: \` new FormControl({value: 150, disabled: true}, [Validators.required, Validators.min(5)]);\`
+
+            `
+        },
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import {
+  TableModule,
+  TableColumn,
+  TableOptions,
+  TableColumnTypeEnum,
+} from '@ironsource/fusion-ui/components/table';
+import { InlineInputType } from '@ironsource/fusion-ui/components/input-inline/common/base';
+import { FormControl, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<fusion-table [columns]="columns" [rows]="rows" [options]="options" (rowModelChange)="onRowModelChange($event)"></fusion-table>\`,
+  standalone: true,
+  imports: [TableModule],
+})
+export class FusionStoryWrapperComponent {
+  options: TableOptions = {
+    tableLabel: { text: 'Table label', tooltip: 'lorem ipsum dolor' },
+  };
+
+  columns: TableColumn[] = COLUMNS_CONFIG;
+
+  rows = ROWS_DATA.map((row) => {
+    return { live: true, ...row };
+  });
+
+  onRowModelChange($event) {
+    setTimeout(() => {
+      if ($event.keyChanged === 'live') {
+        $event.rowModel[$event.keyChanged] = $event.newValue;
+      }
+      $event.onRequestDone(true);
+    }, 2000);
+  }
+}
+
+const COLUMNS_CONFIG: TableColumn[] = [
+  { key: 'id', title: 'Id' },
+  { key: 'name', title: 'Name' },
+  {
+    key: 'amount',
+    type: TableColumnTypeEnum.InputEdit,
+    inputType: InlineInputType.Currency,
+    customErrorMapping: {
+      required: { errorMessageKey: 'required' },
+      min: {
+        errorMessageKey: 'min',
+        textMapping: [{ key: 'minValue', value: '5' }],
+      },
+    },
+    title: 'Amount',
+    width: '120px',
+  },
+  { key: 'username', title: 'Username' },
+  { key: 'email', title: 'Email' },
+  { key: 'website', title: 'Website' },
+];
+
+const ROWS_DATA = [
+  {
+    id: 1,
+    name: 'Leanne Graham',
+    username: 'Bret',
+    email: 'Sincere@april.biz',
+    website: 'hildegard.org',
+    amount: new FormControl({value:34, disabled: true}, [Validators.required, Validators.min(5)]),
+  },
+  {
+    id: 2,
+    name: 'Ervin Howell',
+    username: 'Antonette',
+    email: 'Shanna@melissa.tv',
+    website: 'anastasia.net',
+    amount: new FormControl({value:45, disabled: true}, [Validators.required, Validators.min(5)]),
+  },
+  {
+    id: 3,
+    name: 'Clementine Bauch',
+    username: 'Samantha',
+    email: 'Nathan@yesenia.net',
+    website: 'ramiro.info',
+    amount: new FormControl({value:23, disabled: true}, [Validators.required, Validators.min(5)]),
+  },
+  {
+    id: 4,
+    name: 'Patricia Lebsack',
+    username: 'Karianne',
+    email: 'Julianne.OConner@kory.org',
+    website: 'kale.biz',
+    amount: new FormControl({value:17, disabled: true}, [Validators.required, Validators.min(5)]),
+  },
+  {
+    id: 5,
+    name: 'Chelsey Dietrich',
+    username: 'Kamren',
+    email: 'Lucio_Hettinger@annie.ca',
+    website: 'demarco.info',
+    amount: new FormControl({value:55, disabled: true}, [Validators.required, Validators.min(5)]),
+  },
+  {
+    id: 6,
+    name: 'Mrs. Dennis Schulist',
+    username: 'Leopoldo_Corkery',
+    email: 'Karley_Dach@jasper.info',
+    website: 'ola.org',
+    amount: new FormControl({value:14, disabled: true}, [Validators.required, Validators.min(5)]),
+  },
+  {
+    id: 7,
+    name: 'Kurtis Weissnat',
+    username: 'Elwyn.Skiles',
+    email: 'Telly.Hoeger@billy.biz',
+    website: 'elvis.io',
+    amount: new FormControl({value:76, disabled: true}, [Validators.required, Validators.min(5)]),
+  },
+  {
+    id: 8,
+    name: 'Nicholas Runolfsdottir V',
+    username: 'Maxime_Nienow',
+    email: 'Sherwood@rosamond.me',
+    website: 'jacynthe.com',
+    amount: new FormControl({value:78, disabled: true}, [Validators.required, Validators.min(5)]),
+  },
+  {
+    id: 9,
+    name: 'Glenna Reichert',
+    username: 'Delphine',
+    email: 'Chaim_McDermott@dana.io',
+    website: 'conrad.com',
+    amount: new FormControl({value:23, disabled: true}, [Validators.required, Validators.min(5)]),
+  },
+  {
+    id: 10,
+    name: 'Clementina DuBuque',
+    username: 'Moriah.Stanton',
+    email: 'Rey.Padberg@karina.biz',
+    website: 'ambrose.net',
+    amount: new FormControl({value:98, disabled: true}, [Validators.required, Validators.min(5)]),
   },
 ];
             `,

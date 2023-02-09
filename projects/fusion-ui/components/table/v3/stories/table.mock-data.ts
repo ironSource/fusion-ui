@@ -97,7 +97,7 @@ export const TABLE_EDITABLE_COLUMNS_CONFIG: TableColumn[] = [
             required: {errorMessageKey: 'required'}
         },
         title: 'Text',
-        width: '120px'
+        width: '220px'
     },
     {key: 'username', title: 'Username'},
     {key: 'email', title: 'Email'},
@@ -310,6 +310,14 @@ export const ROWS_EDITABLE_TEXT_DATA = ROWS_DEFAULT_DATA.map((row, idx) => {
 
 export const ROWS_EDITABLE_DATA = ROWS_DEFAULT_DATA.map(row => {
     const amountFormControl = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+    return {amount: amountFormControl, ...row};
+});
+
+export const ROWS_EDITABLE_DISABLED_DATA = ROWS_DEFAULT_DATA.map(row => {
+    const amountFormControl = new FormControl({value: Math.floor(Math.random() * 100), disabled: true}, [
+        Validators.required,
+        Validators.min(5)
+    ]);
     return {amount: amountFormControl, ...row};
 });
 

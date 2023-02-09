@@ -16,6 +16,7 @@
             padding: 12px 12px 12px 8px;
             border-radius: 8px;
             color: $fu-black-500;
+            user-select: none;
 
             &:hover {
                 background-color: $fu-light-200;
@@ -100,6 +101,10 @@
     .inline-input-wrapper {
         .is-label {
             background-color: $fu-light-200;
+            &.is-readonly,
+            &:has(.fu-disable){
+                background-color: transparent;
+            }
         }
     }
 }
