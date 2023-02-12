@@ -280,7 +280,8 @@ export class TableCellComponent implements OnInit, OnChanges {
                 this.inputError$.next(
                     this._getMessage(
                         errorKey,
-                        !isNullOrUndefined(this.column.customErrorMapping) ? this.column.customErrorMapping[errorKey] ?? {} : {}
+                        !isNullOrUndefined(this.column.customErrorMapping) ? this.column.customErrorMapping[errorKey] ?? {} : {},
+                        allErrors[errorKey]
                     )
                 );
             });
@@ -335,7 +336,7 @@ export class TableCellComponent implements OnInit, OnChanges {
         }
     }
 
-    private _getMessage(errorKey, {errorMessageKey = '', textMapping = []}): string {
+    private _getMessage(errorKey, {errorMessageKey = '', textMapping = []}, errorDefaults?: any): string {
         const tableModuleOptions = !isNullOrUndefined(this.tableModuleOptions) ? this.tableModuleOptions : {errorMessages: ERROR_MESSAGES};
         if (!tableModuleOptions.errorMessages) {
             tableModuleOptions.errorMessages = ERROR_MESSAGES;
