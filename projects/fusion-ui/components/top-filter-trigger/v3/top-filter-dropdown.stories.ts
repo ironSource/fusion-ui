@@ -7,7 +7,7 @@ import {environment} from '../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TopFilterTriggerComponent} from '@ironsource/fusion-ui/components/top-filter-trigger/v3/top-filter-trigger.component';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MOK_APPLICATIONS_OPTIONS} from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
+import {MOK_APPLICATIONS_ONE_LINE_OPTIONS} from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
 import {DropdownModule} from '@ironsource/fusion-ui/components/dropdown/v3';
 
 export default {
@@ -78,7 +78,7 @@ export const Default = DefaultTemplate.bind({});
 Default.args = {
     optionsTitle: 'Applications',
     search: true,
-    options: MOK_APPLICATIONS_OPTIONS,
+    options: MOK_APPLICATIONS_ONE_LINE_OPTIONS,
     formControl: new FormControl(),
     placeholder: 'Select Application'
 };
@@ -119,7 +119,7 @@ export class FusionStoryWrapperComponent {
     placeholder = 'Select Application';
     formControl = new FormControl();
     search = true;
-    options: DropdownOption[] = ${JSON.stringify(MOK_APPLICATIONS_OPTIONS)};
+    options: DropdownOption[] = ${JSON.stringify(MOK_APPLICATIONS_ONE_LINE_OPTIONS)};
 
     onSelectedChange($event){
         console.log('onSelectedChange', $event);
@@ -139,7 +139,7 @@ Loading.args = {
     loading: true,
     optionsTitle: 'Applications',
     search: true,
-    options: MOK_APPLICATIONS_OPTIONS,
+    options: MOK_APPLICATIONS_ONE_LINE_OPTIONS,
     formControl: new FormControl(),
     placeholder: 'Select Application'
 };
@@ -182,7 +182,7 @@ export class FusionStoryWrapperComponent {
     formControl = new FormControl();
     search = true;
     loading = true;
-    options: DropdownOption[] = ${JSON.stringify(MOK_APPLICATIONS_OPTIONS)};
+    options: DropdownOption[] = ${JSON.stringify(MOK_APPLICATIONS_ONE_LINE_OPTIONS)};
 
     onSelectedChange($event){
         console.log('onSelectedChange', $event);
@@ -200,8 +200,8 @@ export class FusionStoryWrapperComponent {
 export const SelectedApplication = DefaultTemplate.bind({});
 SelectedApplication.args = {
     title: 'Applications',
-    items: MOK_APPLICATIONS_OPTIONS,
-    formControl: new FormControl([MOK_APPLICATIONS_OPTIONS[2]]),
+    options: MOK_APPLICATIONS_ONE_LINE_OPTIONS,
+    formControl: new FormControl([MOK_APPLICATIONS_ONE_LINE_OPTIONS[2]]),
     placeholder: 'Select Application'
 };
 SelectedApplication.parameters = {
@@ -240,7 +240,7 @@ export class FusionStoryWrapperComponent {
     optionsTitle = 'Applications';
     placeholder = 'Select Application';
     search = true;
-    options: DropdownOption[] = ${JSON.stringify(MOK_APPLICATIONS_OPTIONS)};
+    options: DropdownOption[] = ${JSON.stringify(MOK_APPLICATIONS_ONE_LINE_OPTIONS)};
     formControl = new FormControl(this.options[1]);
 
     onSelectedChange($event){

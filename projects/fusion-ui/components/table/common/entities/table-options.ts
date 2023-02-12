@@ -43,6 +43,7 @@ export interface TableOptions {
     rowHeight?: TableRowHeight;
     rowTrackingOption?: string;
     headerRowStyle?: any;
+    hasRowSpan?: boolean;
     rowsExpandableOptions?: TableRowsExpandableOptions;
     rowsOptions?: {
         [rowNumber: number]: TableRowOptions;

@@ -8,7 +8,10 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TopFilterTriggerComponent} from './top-filter-trigger.component';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DropdownDualMultiSelectModule} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
-import {MOK_APPLICATIONS_OPTIONS} from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
+import {
+    MOK_APPLICATIONS_ONE_LINE_OPTIONS,
+    MOK_APPLICATIONS_OPTIONS
+} from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
 
 export default {
     title: 'Components/Filters/Top Filter/Filter Include-Exclude',
@@ -75,7 +78,7 @@ const DefaultTemplate: Story<TopFilterTriggerComponent> = (args: TopFilterTrigge
 export const Default = DefaultTemplate.bind({});
 Default.args = {
     title: 'Applications',
-    items: MOK_APPLICATIONS_OPTIONS,
+    items: MOK_APPLICATIONS_ONE_LINE_OPTIONS,
     formControl: new FormControl(),
     placeholder: 'Select Application'
 };
@@ -131,8 +134,8 @@ export class FusionStoryWrapperComponent {
 export const SelectedOneApplication = DefaultTemplate.bind({});
 SelectedOneApplication.args = {
     title: 'Applications',
-    items: MOK_APPLICATIONS_OPTIONS,
-    formControl: new FormControl([MOK_APPLICATIONS_OPTIONS[2]]),
+    items: MOK_APPLICATIONS_ONE_LINE_OPTIONS,
+    formControl: new FormControl([MOK_APPLICATIONS_ONE_LINE_OPTIONS[2]]),
     placeholder: 'Select Application'
 };
 SelectedOneApplication.parameters = {
@@ -187,8 +190,8 @@ export class FusionStoryWrapperComponent {
 export const SelectedSomeApplications = DefaultTemplate.bind({});
 SelectedSomeApplications.args = {
     title: 'Applications',
-    items: MOK_APPLICATIONS_OPTIONS,
-    formControl: new FormControl([MOK_APPLICATIONS_OPTIONS[2], MOK_APPLICATIONS_OPTIONS[4]]),
+    items: MOK_APPLICATIONS_ONE_LINE_OPTIONS,
+    formControl: new FormControl([MOK_APPLICATIONS_ONE_LINE_OPTIONS[2], MOK_APPLICATIONS_ONE_LINE_OPTIONS[4]]),
     placeholder: 'Select Application'
 };
 SelectedSomeApplications.parameters = {
@@ -244,7 +247,7 @@ export const Loading = DefaultTemplate.bind({});
 Loading.args = {
     loading: true,
     title: 'Applications',
-    items: MOK_APPLICATIONS_OPTIONS,
+    items: MOK_APPLICATIONS_ONE_LINE_OPTIONS,
     formControl: new FormControl(),
     placeholder: 'Select Application'
 };

@@ -35,6 +35,7 @@ import {ButtonModule} from '@ironsource/fusion-ui/components/button/v3';
 import {MenuDropComponent} from '@ironsource/fusion-ui/components/menu-drop';
 import {TeleportingDirective} from '@ironsource/fusion-ui/directives/teleporting';
 import {RepositionDirective} from '@ironsource/fusion-ui/directives/reposition';
+import {SearchComponent} from '@ironsource/fusion-ui/components/search';
 
 @NgModule({
     exports: [TableComponent],
@@ -70,7 +71,8 @@ import {RepositionDirective} from '@ironsource/fusion-ui/directives/reposition';
         ButtonModule,
         MenuDropComponent,
         RepositionDirective,
-        TeleportingDirective
+        TeleportingDirective,
+        SearchComponent
     ]
 })
 export class TableModule {

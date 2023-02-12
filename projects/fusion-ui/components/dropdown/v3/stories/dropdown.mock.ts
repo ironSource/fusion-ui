@@ -83,6 +83,57 @@ export const MOK_APPLICATIONS_OPTIONS = [
     }
 ];
 
+export const MOK_APPLICATIONS_ONE_LINE_OPTIONS = [
+    {
+        id: 553251,
+        displayText: 'Moy 7 the Virtual Pet Game',
+        icon: 'android',
+        image: 'https://fusion-storybook.ironsrc.mobi/branch_demo-assets/1_app.png'
+    },
+    {
+        id: 551615,
+        displayText: '夢幻模擬戰',
+        icon: 'ios',
+        image: 'https://fusion-storybook.ironsrc.mobi/branch_demo-assets/2_app.png'
+    },
+    {
+        id: 549109,
+        displayText: 'Helix Crush - Fruit Slices',
+        icon: 'ios',
+        image: 'https://fusion-storybook.ironsrc.mobi/branch_demo-assets/3_app.png'
+    },
+    {
+        id: 545663,
+        displayText: 'Kingdom Rush Frontiers',
+        icon: 'android',
+        image: 'https://fusion-storybook.ironsrc.mobi/branch_demo-assets/4_app.png'
+    },
+    {
+        id: 545567,
+        displayText: 'Ablo - Make friends worldwide',
+        icon: 'ios',
+        image: 'https://fusion-storybook.ironsrc.mobi/branch_demo-assets/5_app.png'
+    },
+    {
+        id: 545559,
+        displayText: 'NBA LIVE Mobile Basketball',
+        icon: 'android',
+        image: 'https://fusion-storybook.ironsrc.mobi/branch_demo-assets/6_app.png'
+    },
+    {
+        id: 545429,
+        displayText: 'World War Doh: Real Time PvP',
+        icon: 'ios',
+        image: 'https://fusion-storybook.ironsrc.mobi/branch_demo-assets/7_app.png'
+    },
+    {
+        id: 540129,
+        displayText: 'Most expensive and exclusive calculator',
+        icon: 'android',
+        image: 'https://fusion-storybook.ironsrc.mobi/branch_demo-assets/8_app.png'
+    }
+];
+
 export const MOCK_OPTIONS_IMAGE = MOK_APPLICATIONS_OPTIONS.map(item => {
     return {id: item.id, displayText: item.displayText, image: item.image};
 });

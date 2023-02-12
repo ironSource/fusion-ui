@@ -23,6 +23,7 @@
         justify-content: flex-end;
         height: 24px;
         cursor: pointer;
+        user-select: none;
     }
     .fu-remains{
         padding: 0 8px;
@@ -31,6 +32,8 @@
         justify-content: flex-end;
         gap: 4px;
         color: $fu-light-900;
+        user-select: none;
+        line-height: 14px;
         &.fu-no-remains{
             color: $fu-negative-700;
         }
@@ -38,6 +41,7 @@
     .fu-value::first-letter,
     .fu-remains-value::first-letter {
         padding-right: 0.3em;
+        user-select: none;
     }
 
     &.fu-show-edit{
