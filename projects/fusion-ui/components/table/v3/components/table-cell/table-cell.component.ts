@@ -277,7 +277,12 @@ export class TableCellComponent implements OnInit, OnChanges {
         } else {
             const allErrors = formControl.errors || {};
             Object.keys(allErrors).forEach(errorKey => {
-                this.inputError$.next(this._getMessage(errorKey, this.column.customErrorMapping[errorKey] || {}));
+                this.inputError$.next(
+                    this._getMessage(
+                        errorKey,
+                        !isNullOrUndefined(this.column.customErrorMapping) ? this.column.customErrorMapping[errorKey] ?? {} : {}
+                    )
+                );
             });
         }
     }

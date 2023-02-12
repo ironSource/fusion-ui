@@ -200,7 +200,7 @@ $tableFrameFooterHeight: 72px;
             flex-grow: 2;
             height: 100%;
             border-left: solid 1px $fu-light-400;
-            padding-left: 19px;
+            padding-left: 8px;
             display: flex;
             align-items: center;
             @include icon-style('fu-search-icon', $fu-light-700, 16px, false, true){

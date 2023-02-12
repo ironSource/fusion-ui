@@ -90,6 +90,41 @@ export const TABLE_EDITABLE_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'id', title: 'Id'},
     {key: 'name', title: 'Name', width: '150px'},
     {
+        key: 'text',
+        type: TableColumnTypeEnum.InputEdit,
+        inputType: InlineInputType.Text,
+        customErrorMapping: {
+            required: {errorMessageKey: 'required'}
+        },
+        title: 'Text',
+        width: '220px'
+    },
+    {key: 'username', title: 'Username'},
+    {key: 'email', title: 'Email'},
+    {key: 'website', title: 'Website'}
+];
+export const TABLE_EDITABLE_MAX_WIDTH_COLUMNS_CONFIG: TableColumn[] = [
+    {key: 'id', title: 'Id'},
+    {key: 'name', title: 'Name', width: '150px'},
+    {
+        key: 'text',
+        type: TableColumnTypeEnum.InputEdit,
+        inputType: InlineInputType.Text,
+        customErrorMapping: {
+            required: {errorMessageKey: 'required'}
+        },
+        title: 'Text',
+        width: '100px',
+        style: {'max-width': '115px'}
+    },
+    {key: 'username', title: 'Username'},
+    {key: 'email', title: 'Email'},
+    {key: 'website', title: 'Website'}
+];
+export const TABLE_EDITABLE_CURRENCY_COLUMNS_CONFIG: TableColumn[] = [
+    {key: 'id', title: 'Id'},
+    {key: 'name', title: 'Name', width: '150px'},
+    {
         key: 'amount',
         type: TableColumnTypeEnum.InputEdit,
         inputType: InlineInputType.Currency,
@@ -325,8 +360,21 @@ export const ROWS_COMPONENT_EDIT_DATA = ROWS_DEFAULT_DATA.map((row, idx) => {
     };
     return {amount: amountData, ...row};
 });
+export const ROWS_EDITABLE_TEXT_DATA = ROWS_DEFAULT_DATA.map((row, idx) => {
+    const textFormControl = new FormControl('some ' + idx + ' text', [Validators.required]);
+    return {text: textFormControl, ...row};
+});
+
 export const ROWS_EDITABLE_DATA = ROWS_DEFAULT_DATA.map(row => {
     const amountFormControl = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+    return {amount: amountFormControl, ...row};
+});
+
+export const ROWS_EDITABLE_DISABLED_DATA = ROWS_DEFAULT_DATA.map(row => {
+    const amountFormControl = new FormControl({value: Math.floor(Math.random() * 100), disabled: true}, [
+        Validators.required,
+        Validators.min(5)
+    ]);
     return {amount: amountFormControl, ...row};
 });
 

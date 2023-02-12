@@ -29,6 +29,7 @@ import {
 } from '@ironsource/fusion-ui/components/table/common/entities';
 import {TableBasicComponent} from './components/table-basic/table-basic.component';
 import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
+import {FormControl} from '@angular/forms';
 
 @Component({
     selector: 'fusion-table',
@@ -168,6 +169,8 @@ export class TableComponent implements OnInit, OnDestroy {
     shownGoTopButton$ = new BehaviorSubject(false);
     /** @internal */
     subHeader: {name: string; colspan: number}[] = [];
+    /** @internal */
+    searchFormControl = new FormControl('');
 
     get isCheckboxTitleShown(): boolean {
         return this.columns ? this.columns.some(column => column.type === TableColumnTypeEnum.Checkbox && column.title !== '') : false;
@@ -260,6 +263,10 @@ export class TableComponent implements OnInit, OnDestroy {
         if (this.sortTableOnDataChanges && this.columns.find(col => !!col.sort)) {
             this.doLocalSorting();
         }
+
+        this.searchFormControl.valueChanges.pipe(takeUntil(this.onDestroy$), debounceTime(500)).subscribe(value => {
+            this.options?.searchOptions.onSearch.emit(value);
+        });
     }
 
     ngOnDestroy() {
@@ -316,9 +323,11 @@ export class TableComponent implements OnInit, OnDestroy {
     onTableBodyClicked($event: MouseEvent) {
         if (!this.isElementChildOfSuppressed($event.target as Element)) {
             const rowEl = ($event.target as Element).closest('tr');
-            const rowIndex = rowEl.dataset.rowIdx;
-            const rowData = this.rows[rowIndex];
-            this.rowClicked.emit({$event, rowIndex, rowEl, rowData});
+            if (!isNullOrUndefined(rowEl)) {
+                const rowIndex = rowEl.dataset.rowIdx;
+                const rowData = this.rows[rowIndex];
+                this.rowClicked.emit({$event, rowIndex, rowEl, rowData});
+            }
         }
     }
     /** @internal */
