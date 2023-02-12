@@ -6,10 +6,10 @@
         [row]="row"
         [columns]="columns"
         [options]="options"
-        [isRowSelected]="tableService.isRowSelected(row)"
+        [isRowSelected]="isRowSelected.bind(this) | generic:row"
         [isExpanded]="isExpanded(rowIndex)"
         [isInnerRow]="false"
-        [class.is-row-in-request]="tableService.isRowInRequest(row)"
+        [class.is-row-in-request]="tableService.rowsMetadata[row['_rowId']]?.inRequest"
         (rowRemoved)="tableService.removeRow({rows: rows, rowIndex: rowIndex, row: row, options: options})"
         (selectedChange)="tableService.onRowSelectChanged($event, row)"
         (expandRow)="onExpandRow($event)"
@@ -18,7 +18,7 @@
     ></tr>
     <!--First parent row END-->
     <!--Rowspan rows if any-->
-    <ng-container *ngIf="tableService.getRowspanColumnsData(row) as rowSpanData"
+    <ng-container *ngIf="tableService.rowsMetadata[row['_rowId']]?.rowspanColumnsData as rowSpanData"
                   [ngTemplateOutlet]="multiRowColumns"
                   [ngTemplateOutletContext]="{$implicit: row, rowIndex: rowIndex, rowSpanData: rowSpanData}">
 
@@ -87,7 +87,7 @@
     <!--Recursive template for child rows render END-->
     <!--additional row-span rows-->
     <ng-template #multiRowColumns let-row let-rowIndex="rowIndex" let-rowSpanData=rowSpanData>
-        <ng-container *ngFor="let idx of getRowspanIndexes(row)">
+        <ng-container *ngFor="let idx of getRowspanIndexes.bind(this) | generic:row">
             <tr
                 fusionTableRow
                 [rowIndex]="rowIndex"
@@ -95,7 +95,7 @@
                 [row]="row"
                 [columns]="columns"
                 [options]="options"
-                [class.is-row-in-request]="tableService.isRowInRequest(row)"
+                [class.is-row-in-request]="tableService.rowsMetadata[row['_rowId']]?.inRequest"
                 [ngClass]="getRowClass.bind(this) | generic:row:rowIndex"
                 [ngStyle]="!!options.rowsOptions && !!options.rowsOptions.global ? options.rowsOptions.global.style : null"
             ></tr>

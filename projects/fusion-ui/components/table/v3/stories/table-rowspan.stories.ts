@@ -45,7 +45,7 @@ export default {
         }
     },
     args: {
-        options: TABLE_DEFAULT_OPTIONS,
+        options: {...TABLE_DEFAULT_OPTIONS, hasRowSpan: true},
         columns: TABLE_ROWSPAN_COLUMNS_CONFIG,
         rows: ROWS_ROWSPAN_DATA
     }

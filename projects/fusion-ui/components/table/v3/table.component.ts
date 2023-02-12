@@ -45,7 +45,15 @@ export class TableComponent implements OnInit, OnDestroy {
      * Table Options (configuration)
      * @param value: TableOptions
      */
-    @Input() options: TableOptions = {};
+    @Input() set options(value: TableOptions) {
+        if (!isNullOrUndefined(value)) {
+            this._options = value;
+            this.tableService.hasRowspanRows = value.hasRowSpan ?? false;
+        }
+    }
+    get options(): TableOptions {
+        return this._options;
+    }
     /**
      * Table columns configuration
      * columns: TableColumn[]
@@ -63,7 +71,7 @@ export class TableComponent implements OnInit, OnDestroy {
      */
     @Input() set rows(value: any[] | TableRowsGrouped) {
         if (Array.isArray(value)) {
-            this._rows = ((value as any[]) ?? []).map(row => ({...row}));
+            this._rows = this.tableService.setRowsMetadata((value as any[]) ?? []);
             this.initRows();
         }
     }
@@ -225,6 +233,7 @@ export class TableComponent implements OnInit, OnDestroy {
     private currentExpandedMap: {[key: string]: boolean} = {};
     private ignoredParentSelectorsRowClickEvent: string[];
     private onDestroy$ = new Subject<void>();
+    private _options: TableOptions = {};
     private _rows: any[] | TableRowsGrouped = [];
     private _columns: TableColumn[] = [];
 

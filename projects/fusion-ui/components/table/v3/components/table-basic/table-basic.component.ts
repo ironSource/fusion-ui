@@ -108,6 +108,10 @@ export class TableBasicComponent implements OnInit, OnDestroy, AfterViewInit {
         return row._options && row._options.some(options => 'disabled');
     }
 
+    isRowSelected(row: any): boolean {
+        return this.tableService.isRowSelected(row);
+    }
+
     getRowClass(row, rowIndex) {
         const rowClasses = this.options.rowsOptions || {};
         const classes = {};
@@ -168,14 +172,14 @@ export class TableBasicComponent implements OnInit, OnDestroy, AfterViewInit {
         const events = ['mouseenter', 'mouseleave'];
         from(events)
             .pipe(
-                takeUntil(this.onDestroy$),
                 mergeMap(event => fromEvent(rowElements, event)),
                 filter((event: MouseEvent) => {
                     return (
                         (event.type === 'mouseenter' && !(event.target as HTMLElement).classList.contains(ROW_HOVERED_CLASS_NAME)) ||
                         (event.type === 'mouseleave' && (event.target as HTMLElement).classList.contains(ROW_HOVERED_CLASS_NAME))
                     );
-                })
+                }),
+                takeUntil(this.onDestroy$)
             )
             .subscribe(this.toggleHoverClassForRowspan.bind(this));
     }
