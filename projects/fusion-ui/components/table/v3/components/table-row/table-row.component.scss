@@ -23,6 +23,7 @@ $v3-bodyBorder: 1px solid $fu-light-400;
     }
 
     &:hover,
+    &.fu-hovered, //for rowspan rows
     &:has(.fu-button-holder.fu-row-menu-shown){
         td {
             background-color: $fu-light-50;

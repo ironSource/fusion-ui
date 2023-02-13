@@ -137,7 +137,8 @@ $v3-cellActionIconSize: 16px;
         visibility: visible;
     }
 }
-:host-context(tr:hover) {
+:host-context(tr:hover),
+:host-context(tr.fu-hovered){ // tr.fu-hovered for rowspan rows
     .fu-button-holder{
         display: block;
     }

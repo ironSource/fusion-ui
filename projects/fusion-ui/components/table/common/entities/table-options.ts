@@ -43,6 +43,7 @@ export interface TableOptions {
     rowHeight?: TableRowHeight;
     rowTrackingOption?: string;
     headerRowStyle?: any;
+    hasRowSpan?: boolean;
     rowsExpandableOptions?: TableRowsExpandableOptions;
     rowsOptions?: {
         [rowNumber: number]: TableRowOptions;
@@ -68,8 +69,11 @@ export interface TableRowOptions {
 
 export interface TableRowMetaData {
     readonly?: boolean;
+    inRequest?: boolean;
     disabled?: boolean;
     cellToolTip?: {[columnKey: string]: string};
+    rowspanColumnsData?: {[key: string]: number};
+    maxRowspanInColumn?: number;
 }
 
 export interface TableRowsExpandableOptions {

@@ -8,10 +8,12 @@ import {
     TableOptions,
     TableRow,
     TableRowChangedData,
+    TableRowMetaData,
     TableRowsExpandableOptions
 } from '@ironsource/fusion-ui/components/table/common/entities';
 import {DEFAULT_EXPANDABLE_LEVEL, MAXIMUM_EXPANDABLE_LEVEL} from '@ironsource/fusion-ui/components/table/common/entities';
 import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 
 @Injectable()
 export class TableService {
@@ -20,8 +22,10 @@ export class TableService {
     public rowModelChange: EventEmitter<TableRowChangedData> = new EventEmitter();
     public rowActionClicked = new EventEmitter<{action: MenuDropItem; rowIndex: string | number; row: TableRow}>();
     public expandLevels: number;
+    public hasRowspanRows = false;
+    public rowsMetadata: {[rowId: string]: TableRowMetaData} = {};
 
-    constructor(private sanitizer: DomSanitizer, private logService: LogService) {}
+    constructor(private sanitizer: DomSanitizer, private logService: LogService, private uniqueService: UniqueIdService) {}
 
     onRowsSelectChanged(isGroupedTable, rows, isChecked: boolean): void {
         if (isGroupedTable) {
@@ -76,6 +80,14 @@ export class TableService {
         this.selectedRows = [];
         rows.forEach(row => {
             this.setRowSelectionState(row.checkbox, row);
+        });
+    }
+
+    setRowsMetadata(rows: any[]): any[] {
+        return rows.map((row, idx) => {
+            const rowId = idx + '_' + this.uniqueService.getUniqueId();
+            this.rowsMetadata[rowId] = {};
+            return {...row, _rowId: rowId};
         });
     }
 
@@ -248,7 +260,46 @@ export class TableService {
     }
 
     isRowReadOnly(row: any): boolean {
-        return !!row.rowMetaData && !!row.rowMetaData.readonly;
+        return !!this.rowsMetadata[row['_rowId']]?.readonly;
+    }
+
+    toggleRowInRequest(row: any, isInRequest) {
+        this.rowsMetadata[row['_rowId']].inRequest = isInRequest;
+    }
+
+    setRowspanColumnsData(rows: any[], columnsKeys: string[]) {
+        rows.forEach(row => {
+            if (Object.values(row).some(val => Array.isArray(val))) {
+                if (!this.hasRowspanRows) {
+                    this.hasRowspanRows = true;
+                }
+                const rowId = row['_rowId'];
+                this.rowsMetadata[rowId].rowspanColumnsData = this.getRowspanColumns(row, columnsKeys);
+                this.rowsMetadata[rowId].maxRowspanInColumn = Math.max(
+                    ...(Object.values(this.rowsMetadata[rowId].rowspanColumnsData) as number[])
+                );
+            }
+        });
+    }
+
+    getRowspanColumnsData(row: any): {[key: string]: number} {
+        return this.rowsMetadata[row['_rowId']]?.rowspanColumnsData;
+    }
+
+    getMaxRowspanInColumn(row: any): number {
+        return this.rowsMetadata[row['_rowId']]?.maxRowspanInColumn ?? 0;
+    }
+
+    private getRowspanColumns(row: any, columnsKeys: string[]): {[key: string]: number} {
+        const multiRows = {};
+        columnsKeys.forEach(cell => {
+            if (Array.isArray(row[cell])) {
+                multiRows[cell] = (row[cell] as []).length;
+            } else {
+                multiRows[cell] = 0;
+            }
+        });
+        return multiRows;
     }
 
     private setRowSelectionState(isChecked: boolean, row: any) {

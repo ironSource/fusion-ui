@@ -55,6 +55,7 @@ export class TableCellComponent implements OnInit, OnChanges {
     @Input() column: TableColumn;
     @Input() row: {[key: string]: any};
     @Input() rowIndex: string | number;
+    @Input() rowSpanIndex: number;
     @Input() options: TableOptions = null;
     @Input() position: CellPosition;
 
@@ -104,13 +105,16 @@ export class TableCellComponent implements OnInit, OnChanges {
         return this.options.tableId + '_' + this.rowIndex;
     }
 
-    // eslint-disable-next-line @typescript-eslint/adjacent-overload-signatures
     get data(): CellDataType {
-        if (!isNull(this._data) && this.tableService.isTypeComponent(this.column) && typeof this._data === 'object') {
-            // eslint-disable-next-line dot-notation, @typescript-eslint/dot-notation
-            this._data['cellPosition'] = this.position;
+        let data = this._data;
+        if (Array.isArray(data)) {
+            data = data[this.rowSpanIndex ?? 0];
         }
-        return this._data;
+        if (!isNull(data) && this.tableService.isTypeComponent(this.column) && typeof data === 'object') {
+            // eslint-disable-next-line dot-notation, @typescript-eslint/dot-notation
+            data['cellPosition'] = this.position;
+        }
+        return data;
     }
 
     get cellStringData(): string {
