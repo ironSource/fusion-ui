@@ -163,10 +163,12 @@ export class TableRowComponent implements OnInit, OnChanges {
 
     getAttrRowspan(columnKey: string): number {
         let rowSpan = 0;
-        const multiRowsKeys = this.tableService.getRowspanColumnsData(this.row);
-        if (!isNullOrUndefined(multiRowsKeys)) {
-            const maxRowspan = this.tableService.getMaxRowspanInColumn(this.row);
-            if (isNullOrUndefined(this.rowSpanIndex)) {
+        const maxRowspan = this.tableService.getMaxRowspanInColumn(this.row);
+        if (columnKey === 'cell-expand') {
+            rowSpan = maxRowspan;
+        } else {
+            const multiRowsKeys = this.tableService.getRowspanColumnsData(this.row);
+            if (!isNullOrUndefined(multiRowsKeys) && isNullOrUndefined(this.rowSpanIndex)) {
                 rowSpan = maxRowspan - multiRowsKeys[columnKey];
             }
         }
@@ -179,6 +181,9 @@ export class TableRowComponent implements OnInit, OnChanges {
      * @internal
      */
     showCell(columnKey: string): boolean {
+        if (columnKey.startsWith('cell-expand')) {
+            return isNullOrUndefined(this.rowSpanIndex);
+        }
         const multiRowsKeys = this.tableService.getRowspanColumnsData(this.row);
         return isNullOrUndefined(this.rowSpanIndex) || (!isNullOrUndefined(this.rowSpanIndex) && multiRowsKeys[columnKey] !== 0);
     }

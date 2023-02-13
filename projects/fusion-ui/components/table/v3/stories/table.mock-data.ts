@@ -426,7 +426,7 @@ export const ROWS_ROWSPAN_DIFF_DATA = ROWS_DEFAULT_DATA.map((row, idx) => {
     };
 });
 
-export const ROWS_EXPAND_ROWSPAN_DATA = ROWS_DEFAULT_DATA.map((row, idx) => {
+export const ROWS_EXPAND_ROWSPAN_DATA = ROWS_DEFAULT_DATA.slice(0, 5).map((row, idx) => {
     const marginFormControl1 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
     const marginFormControl2 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
     const marginTargetFormControl1 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);

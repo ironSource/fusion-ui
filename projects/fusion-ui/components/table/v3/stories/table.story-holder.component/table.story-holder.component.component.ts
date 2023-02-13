@@ -21,7 +21,7 @@ import {ROWS_DEFAULT_DATA} from '@ironsource/fusion-ui/components/table/v3/stori
     ></fusion-table>`,
     styles: [
         `
-            ::ng-deep tbody tr td.fu-badge div {
+            ::ng-deep tbody tr td.fu-badge:not(.inner-row) div {
                 width: unset !important;
                 height: 20px;
                 display: flex;
@@ -138,17 +138,7 @@ export class TableStoryHolderComponent implements OnInit, OnDestroy {
             .subscribe(data => {
                 if (isNullOrUndefined(childExisted)) {
                     // if was no children, set arrived data as children
-                    const children = !!data
-                        ? data.map((item, _index) => {
-                              return {
-                                  id: item.id,
-                                  name: item.name,
-                                  username: item.username,
-                                  email: item.email,
-                                  website: item.website
-                              };
-                          })
-                        : [];
+                    const children = !!data ? data : [];
 
                     // update row by index with children
                     tableRows.splice(parseInt(rowIndex as string, 10), 1, {...row, children});
@@ -165,8 +155,22 @@ export class TableStoryHolderComponent implements OnInit, OnDestroy {
      */
     private getExpandedData(rowIndex) {
         if (isNumber(rowIndex)) {
-            return of(ROWS_DEFAULT_DATA.slice(5, 7)).pipe(delay(1000));
+            return of(
+                ROWS_DEFAULT_DATA.slice(5, 7).map(item => {
+                    if (!this.options.hasRowSpan) {
+                        return item;
+                    } else {
+                        return {
+                            ...item,
+                            id: '',
+                            margin: new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]),
+                            margin_target: new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]),
+                            profitizer: new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)])
+                        };
+                    }
+                })
+            ).pipe(delay(1000));
         }
-        return of(ROWS_DEFAULT_DATA.slice(7, 10)).pipe(delay(1000));
+        return of([]).pipe(delay(1000));
     }
 }
