@@ -53,26 +53,27 @@ $v3-bodyBorder: 1px solid $fu-light-400;
 
     /*&.is-row-selected,*/
     &.is-row-expanded{
-        background-color: $fu-light-200;
+        //background-color: $fu-light-200;
     }
 
     td {
         &.inner-row {
-            background-color: rgba(229, 231, 233, 0.4);
+            //background-color: rgba(229, 231, 233, 0.4);
         }
         &.expand-cell {
             width: 24px;
             text-align: center;
             border-top: $v3-bodyBorder;
             border-bottom: $v3-bodyBorder;
-            @include icon-style('icon-expand', $fu-dark-200, (height: 8px, width: 5px), true, true) {
+            @include icon-style('icon-expand', $fu-black-500, 16px, true, true) {
+                @include size(16px);
                 cursor: pointer;
             }
             &.expanded {
-                @include icon-style('icon-expand', $fu-dark-200, (height: 8px, width: 5px), true, true, 90);
+                @include icon-style('icon-expand', $fu-black-500, 16px, true, true, 90);
             }
             &.inner-row {
-                border: none;
+                //border: none;
             }
         }
 
@@ -104,11 +105,12 @@ $v3-bodyBorder: 1px solid $fu-light-400;
                 background-color: $fu-light-200;
             }
         }
-        &:hover{
-            td{
-                background-color: $fu-light-100;
-            }
-        }
+        //&.fu-hovered, //for rowspan rows
+        //&:hover{
+        //    td{
+        //        background-color: $fu-light-100;
+        //    }
+        //}
     }
 }
 

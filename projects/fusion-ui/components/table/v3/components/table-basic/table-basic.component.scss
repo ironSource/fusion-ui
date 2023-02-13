@@ -9,7 +9,7 @@ $failedCellHeight: 27px;
     @extend %link-reset;
     .full-cell{
         height: $fullCellHeight;
-        background-color: $fu-light-100;
+        //background-color: $fu-light-100;
         &.load-more, &.failed{
             height: $failedCellHeight;
             p{

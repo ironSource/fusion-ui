@@ -200,6 +200,7 @@ export const TABLE_SUBHEADER_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'email', title: 'Email', groupName: 'Section 2'},
     {key: 'website', title: 'Website'}
 ];
+
 export const TABLE_ROWSPAN_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'id', title: 'Id'},
     {key: 'name', title: 'Name'},
@@ -425,5 +426,19 @@ export const ROWS_ROWSPAN_DIFF_DATA = ROWS_DEFAULT_DATA.map((row, idx) => {
     };
 });
 
+export const ROWS_EXPAND_ROWSPAN_DATA = ROWS_DEFAULT_DATA.slice(0, 5).map((row, idx) => {
+    const marginFormControl1 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+    const marginFormControl2 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+    const marginTargetFormControl1 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+    const marginTargetFormControl2 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+    const profitizerFormControl = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+    return {
+        ...row,
+        us_row: ['US', 'ROW'],
+        margin: [marginFormControl1, marginFormControl2],
+        margin_target: [marginTargetFormControl1, marginTargetFormControl2],
+        profitizer: profitizerFormControl
+    };
+});
 // endregion
 // endregion

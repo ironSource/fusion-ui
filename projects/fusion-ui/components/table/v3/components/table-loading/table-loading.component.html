@@ -1,3 +1,8 @@
-<tr *ngFor="let r of rowsToShow">
-  <td class="fu-table-cell-loading" *ngFor="let c of colsToShow"><div>&nbsp;</div></td>
-</tr>
+<ng-container *ngIf="fusionTableLoadingExpanding">
+    <td class="fu-table-cell-loading fu-expanding-loader" *ngFor="let c of colsToShow"><div>&nbsp;</div></td>
+</ng-container>
+<ng-container *ngIf="!fusionTableLoadingExpanding">
+    <tr *ngFor="let r of rowsToShow">
+        <td class="fu-table-cell-loading" *ngFor="let c of colsToShow"><div>&nbsp;</div></td>
+    </tr>
+</ng-container>

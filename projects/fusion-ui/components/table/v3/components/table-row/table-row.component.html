@@ -1,10 +1,11 @@
 <ng-container *ngFor="let expandCell of expandCellCount | async; let isLast = last">
-    <td
+    <td *ngIf="cellShown | generic:'cell-expand'"
         class="expand-cell"
         [class.total-row]="isRowTotal"
         [class.expanded]="isExpanded"
         [class.inner-row]="isInnerRow"
         [class.sticky-left]="options?.rowsExpandableOptions?.sticky"
+        [attr.rowspan]="attrRowspan | generic:'cell-expand'"
     >
         <fusion-icon
             *ngIf="isLast && showExpandIcon()"
@@ -32,7 +33,7 @@
         [isLastColumn]="isLast"
         [isReadOnly]="isRowReadOnly"
         [customClass]="row['customClass']"
-        [ngClass]="columnsData[columnIndex]?.classes"
+        [class]="columnsData[columnIndex]?.classes"
         [class.cell-tooltip]="columnsData[columnIndex]?.hasTooltip"
         [class.after-sticky]="hasAfterSticky"
         [class.inner-row]="isInnerRow"

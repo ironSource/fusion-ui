@@ -17,15 +17,19 @@
     <table [id]="id" #table *ngIf="!tableMainError">
         <ng-container *ngIf="columns && options">
             <thead *ngIf="columns.length" [hidden]="(isEmpty || (loading && !isLoadingOverlay)) && hideHeaderOnEmpty">
+                <!--SubHeader-->
                 <tr *ngIf="subHeader.length">
-                    <ng-container *ngIf="!!options?.rowsExpandableOptions" [ngTemplateOutlet]="headerExpandColumn"></ng-container>
-                    <td *ngFor="let subheader of subHeader"
-                        class="fu-header-group fu-border-left"
+                    <ng-container *ngIf="!!options?.rowsExpandableOptions" [ngTemplateOutlet]="headerExpandColumn" [ngTemplateOutletContext]="{$implicit: true}"></ng-container>
+                    <td *ngFor="let subheader of subHeader let isFirst = first"
+                        class="fu-header-group"
+                        [class.fu-border-left]="!isFirst"
                         [attr.colspan]="subheader.colspan"
                     >
                         {{ subheader.name}}
                     </td>
                 </tr>
+                <!--SubHeader-->
+                <!--Header-->
                 <tr [ngStyle]="!!options.rowsOptions && !!options.rowsOptions.headerRow ? options.rowsOptions.headerRow.style : null">
                     <ng-container *ngIf="!!options?.rowsExpandableOptions" [ngTemplateOutlet]="headerExpandColumn"></ng-container>
                     <td
@@ -70,6 +74,7 @@
                         </fusion-checkbox>
                     </td>
                 </tr>
+                <!--Header-->
             </thead>
 
             <tbody *ngIf="loading && !isLoadingOverlay" [fusionTableLoading]="colsCount"></tbody>
@@ -131,9 +136,10 @@
 <div id="{{id}}_tableTeleportWrapper"></div>
 <div *ngIf="!noTableFrame" class="fu-table-footer"></div>
 
-<ng-template #headerExpandColumn>
+<ng-template #headerExpandColumn let-isSubHeader>
     <td
         class="expand-column"
+        [class.fu-header-group]="isSubHeader"
         [class.sticky-left]="options?.rowsExpandableOptions?.sticky"
         [style.top.px]="options?.stickyHeaderTopOffset"
     >

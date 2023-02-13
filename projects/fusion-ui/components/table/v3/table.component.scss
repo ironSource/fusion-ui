@@ -104,7 +104,7 @@ $tableFrameFooterHeight: 72px;
                         left: 0;
                         z-index: getZIndexLayerOffset(normal, 3);
                     }
-                    &:after{ // this is border bottom of header
+                    &:not(.fu-header-group):after{ // this is border bottom of header
                         border-bottom: $v3-headerBottomBorder;
                         content:'';
                         position:absolute;
@@ -116,9 +116,6 @@ $tableFrameFooterHeight: 72px;
                         @extend %font-bodyXSmall;
                         height: 32px;
                         vertical-align: bottom;
-                        &:after{
-                            display: none;
-                        }
                         &:first-of-type{
                             border-left: none;
                         }
