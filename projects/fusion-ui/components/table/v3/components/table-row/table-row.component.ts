@@ -66,6 +66,9 @@ export class TableRowComponent implements OnInit, OnChanges {
     expandArrowIconName: IconData;
     columnsData: ColumnData[] = [];
 
+    cellShown = this.showCell.bind(this);
+    attrRowspan = this.getAttrRowspan.bind(this);
+
     get expandCellCount(): Observable<number[]> {
         if (!!this.options && !!this.options.rowsExpandableOptions && !!this.tableService.expandLevels) {
             const expandLevelsByIndex = this.tableService.getExpandLevelByRowIndex(this.rowIndex);
