@@ -123,7 +123,7 @@ export class TableService {
             classes.push(this.getHeaderStickyClass(col));
             classes.push(this.isTypeCheckbox(col) ? 'is-checkbox-holder' : '');
         } else {
-            classes.push(`${col.class || ''} ${this.isColumnSortable(col) ? 'is-sorted' : ''}`);
+            classes.push(`${col.class || ''} ${this.isColumnSortable(col) ? 'is-sorted' : ''}`.trim());
         }
         return classes.filter(Boolean);
     }
