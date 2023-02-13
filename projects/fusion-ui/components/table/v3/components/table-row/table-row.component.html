@@ -17,7 +17,7 @@
     </td>
 </ng-container>
 <ng-container *ngFor="let column of columns; trackBy: trackByFn; let columnIndex = index; let isLast = last;">
-    <td *ngIf="showCell.bind(this) | generic:column.key"
+    <td *ngIf="cellShown | generic:column.key"
         fusionTableCell
         [fusionTooltip]="columnsData[columnIndex]?.tooltip"
         [data]="row[column.key]"
@@ -40,7 +40,7 @@
         [ngStyle]="columnsData[columnIndex]?.styles"
         [style.width]="columnsData[columnIndex]?.width"
         [attr.colspan]="columnsData[columnIndex]?.colspan"
-        [attr.rowspan]="getAttrRowspan.bind(this) | generic:column.key"
+        [attr.rowspan]="attrRowspan | generic:column.key"
         (remove)="rowRemoved.emit()"
         (selectedChange)="selectedChange.emit($event)"
         (dataChange)="onDataChange($event, column.key)"

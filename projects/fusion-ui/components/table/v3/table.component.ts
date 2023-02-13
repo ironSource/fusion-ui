@@ -71,7 +71,7 @@ export class TableComponent implements OnInit, OnDestroy {
      */
     @Input() set rows(value: any[] | TableRowsGrouped) {
         if (Array.isArray(value)) {
-            this._rows = this.tableService.setRowsMetadata((value as any[]) ?? []);
+            this._rows = this.tableService.setRowsMetadata([...value]);
             this.initRows();
         }
     }

@@ -67,6 +67,10 @@ export class TableBasicComponent implements OnInit, OnDestroy, AfterViewInit {
     loadingChildRows: {[key: number]: boolean} = {};
     failedChildRows: {[key: number]: boolean} = {};
 
+    rowIsSelected = this.isRowSelected.bind(this);
+    rowClass = this.getRowClass.bind(this);
+    rowRowspanIndexes = this.getRowspanIndexes.bind(this);
+
     private _halfTableClientWidth = 0;
     private tableOptions;
     private onDestroy$ = new Subject();

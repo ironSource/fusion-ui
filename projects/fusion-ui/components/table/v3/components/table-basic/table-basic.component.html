@@ -6,14 +6,14 @@
         [row]="row"
         [columns]="columns"
         [options]="options"
-        [isRowSelected]="isRowSelected.bind(this) | generic:row"
+        [isRowSelected]="rowIsSelected | generic:row"
         [isExpanded]="isExpanded(rowIndex)"
         [isInnerRow]="false"
         [class.is-row-in-request]="tableService.rowsMetadata[row['_rowId']]?.inRequest"
         (rowRemoved)="tableService.removeRow({rows: rows, rowIndex: rowIndex, row: row, options: options})"
         (selectedChange)="tableService.onRowSelectChanged($event, row)"
         (expandRow)="onExpandRow($event)"
-        [ngClass]="getRowClass.bind(this) | generic:row:rowIndex"
+        [ngClass]="rowClass | generic:row:rowIndex"
         [ngStyle]="!!options.rowsOptions && !!options.rowsOptions.global ? options.rowsOptions.global.style : null"
     ></tr>
     <!--First parent row END-->
@@ -47,7 +47,7 @@
                     [options]="childRowOptions"
                     [isExpanded]="isExpanded(parentIndex + '_' + innerRowIndex)"
                     [isInnerRow]="true"
-                    [ngClass]="getRowClass.bind(this) | generic:innerRow:innerRowIndex"
+                    [ngClass]="rowClass | generic:innerRow:innerRowIndex"
                     [hasAfterSticky]="hasAfterSticky(last, hasMore$ | async, parentIndex + '_' + innerRowIndex)"
                     [ngStyle]="!!options.rowsOptions && !!options.rowsOptions.global ? options.rowsOptions.global.style : null"
                     (expandRow)="onExpandRow($event)"
@@ -84,7 +84,7 @@
     <!--Recursive template for child rows render END-->
     <!--additional row-span rows-->
     <ng-template #multiRowColumns let-row let-rowIndex="rowIndex" let-rowSpanData=rowSpanData>
-        <ng-container *ngFor="let idx of getRowspanIndexes.bind(this) | generic:row">
+        <ng-container *ngFor="let idx of rowRowspanIndexes | generic:row">
             <tr
                 fusionTableRow
                 [rowIndex]="rowIndex"
@@ -93,7 +93,7 @@
                 [columns]="columns"
                 [options]="options"
                 [class.is-row-in-request]="tableService.rowsMetadata[row['_rowId']]?.inRequest"
-                [ngClass]="getRowClass.bind(this) | generic:row:rowIndex"
+                [ngClass]="rowClass | generic:row:rowIndex"
                 [ngStyle]="!!options.rowsOptions && !!options.rowsOptions.global ? options.rowsOptions.global.style : null"
             ></tr>
         </ng-container>
