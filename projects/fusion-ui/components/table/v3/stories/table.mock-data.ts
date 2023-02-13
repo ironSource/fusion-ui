@@ -390,7 +390,42 @@ export const ROWS_COMPONENT_DATA = ROWS_DEFAULT_DATA.map(row => {
     };
 });
 
-export const ROWS_EXPAND_ROWSPAN_DATA = ROWS_DEFAULT_DATA.slice(0, 5).map((row, idx) => {
+export const ROWS_ROWSPAN_DATA = ROWS_DEFAULT_DATA.map((row, idx) => {
+    const marginFormControl1 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+    const marginFormControl2 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+    const marginTargetFormControl1 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+    const marginTargetFormControl2 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+    const profitizerFormControl = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+    return {
+        ...row,
+        us_row: ['US', 'ROW'],
+        margin: [marginFormControl1, marginFormControl2],
+        margin_target: [marginTargetFormControl1, marginTargetFormControl2],
+        profitizer: profitizerFormControl
+    };
+});
+
+export const ROWS_ROWSPAN_DIFF_DATA = ROWS_DEFAULT_DATA.map((row, idx) => {
+    const marginFormControl1 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+    const marginFormControl2 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+    const marginFormControl3 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+    const marginTargetFormControl1 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+    const marginTargetFormControl2 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+    const marginTargetFormControl3 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+    const profitizerFormControl = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+    return {
+        ...row,
+        us_row: idx == 2 ? ['US', 'IL', 'ROW'] : ['US', 'ROW'],
+        margin: idx == 2 ? [marginFormControl1, marginFormControl2, marginFormControl3] : [marginFormControl1, marginFormControl2],
+        margin_target:
+            idx == 2
+                ? [marginTargetFormControl1, marginTargetFormControl2, marginTargetFormControl3]
+                : [marginTargetFormControl1, marginTargetFormControl2],
+        profitizer: profitizerFormControl
+    };
+});
+
+export const ROWS_EXPAND_ROWSPAN_DATA = ROWS_DEFAULT_DATA.map((row, idx) => {
     const marginFormControl1 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
     const marginFormControl2 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
     const marginTargetFormControl1 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
