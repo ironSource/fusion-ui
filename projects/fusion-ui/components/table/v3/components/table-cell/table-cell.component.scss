@@ -82,6 +82,10 @@ $v3-cellActionIconSize: 16px;
         top: 8px;
     }
 
+    &.is-editable{
+        padding: 0 8px;
+    }
+
     .loader-holder {
         position: relative;
         top: 9px;
