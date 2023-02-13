@@ -69,12 +69,9 @@
                 </ng-container>
             </ng-container>
         </ng-container>
-        <tr class="full-cell loader" *ngIf="loadingChildRows[parentIndex]">
-            <td [attr.colspan]="fullCellColspan">
-                <fusion-loader-inline [style.margin-left.px]="getHalfTableClientWidth" [status]="true" text="Loading...">
-                </fusion-loader-inline>
-            </td>
-        </tr>
+        <ng-container *ngIf="loadingChildRows[parentIndex]">
+            <tr [fusionTableLoading]="fullCellColspan" [fusionTableLoadingExpanding]="true"></tr>
+        </ng-container>
         <tr class="full-cell failed" *ngIf="failedChildRows[parentIndex]">
             <td [attr.colspan]="fullCellColspan">
                 <p [style.margin-left.px]="getHalfTableClientWidth - 80">
