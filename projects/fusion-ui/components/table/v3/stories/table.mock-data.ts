@@ -150,6 +150,7 @@ export const TABLE_COMPONENT_EDIT_COLUMNS_CONFIG: TableColumn[] = [
         title: 'Daily budget',
         type: TableColumnTypeEnum.Component,
         component: CustomCellEditComponent,
+        class: 'is-editable',
         width: '150px',
         headerAlign: 'right'
     },
