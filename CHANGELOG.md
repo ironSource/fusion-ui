@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.1.0-rc.25](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.24...v5.1.0-rc.25) (2023-02-13)
+
+
+### Features
+
+* **5.x.x:** fixed input-inline v3 color and figma link in story ([8fef279](https://github.com/ironSource/fusion-ui/commit/8fef279441635ad4e714ca6d8cb3f4c2c040cf53))
+* **fg-116:** added possibility for base rowspan in table component ([f0b1641](https://github.com/ironSource/fusion-ui/commit/f0b16414fda2f4afcca7685831c11162757bf463))
+
+
+### Bug Fixes
+
+* **5.x.x:** fix cell <td> custom class applying ([c555051](https://github.com/ironSource/fusion-ui/commit/c5550511bea216681a89e80806e300f314bce955))
+* **5.x.x:** fix cell padding for edit-in-pace 0 8px instead 0 16px as on other ([b60ffd1](https://github.com/ironSource/fusion-ui/commit/b60ffd15fe9eb31e5a0a16c82ea4469affe74a68))
+* **5.x.x:** fixed input-inline v3 color and figma link in story ([cb33b0a](https://github.com/ironSource/fusion-ui/commit/cb33b0a0faab211fc420f8be27e7a74d8e70c56a))
+
 ## [5.1.0-rc.24](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.23...v5.1.0-rc.24) (2023-02-09)
 
 
