@@ -101,7 +101,7 @@ export class TableRowComponent implements OnInit, OnChanges {
 
     ngOnInit(): void {
         this.dataRowIndex = this.rowIndex;
-        this.expandArrowIconName = {iconName: 'arrow-right', iconVersion: 'v2'};
+        this.expandArrowIconName = {iconName: 'arrow-right', iconVersion: 'v3'};
         if (this.isRowTotal) {
             Object.assign(this.row, {isRowTotal: true});
         }
