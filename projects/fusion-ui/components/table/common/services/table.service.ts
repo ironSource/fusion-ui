@@ -23,6 +23,7 @@ export class TableService {
     public rowActionClicked = new EventEmitter<{action: MenuDropItem; rowIndex: string | number; row: TableRow}>();
     public expandLevels: number;
     public hasRowspanRows = false;
+    public rowsExpandableKey: string;
     public rowsMetadata: {[rowId: string]: TableRowMetaData} = {};
 
     constructor(private sanitizer: DomSanitizer, private logService: LogService, private uniqueService: UniqueIdService) {}
@@ -87,6 +88,9 @@ export class TableService {
         return rows.map((row, idx) => {
             const rowId = idx + '_' + this.uniqueService.getUniqueId();
             this.rowsMetadata[rowId] = {};
+            if (!!this.rowsExpandableKey && row[this.rowsExpandableKey]) {
+                row[this.rowsExpandableKey] = this.setRowsMetadata(row[this.rowsExpandableKey]);
+            }
             return {...row, _rowId: rowId};
         });
     }

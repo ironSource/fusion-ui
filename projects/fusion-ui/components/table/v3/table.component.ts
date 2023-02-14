@@ -49,6 +49,7 @@ export class TableComponent implements OnInit, OnDestroy {
         if (!isNullOrUndefined(value)) {
             this._options = value;
             this.tableService.hasRowspanRows = value.hasRowSpan ?? false;
+            this.tableService.rowsExpandableKey = value.rowsExpandableOptions?.key;
         }
     }
     get options(): TableOptions {

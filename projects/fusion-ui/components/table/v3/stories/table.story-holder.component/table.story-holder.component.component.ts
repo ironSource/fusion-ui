@@ -98,7 +98,7 @@ export class TableStoryHolderComponent implements OnInit, OnDestroy {
                 $event.rowModel[$event.keyChanged] = $event.newValue;
             }
             $event.onRequestDone(true);
-        }, 20000);
+        }, 2000);
     }
 
     onscrollDown() {
