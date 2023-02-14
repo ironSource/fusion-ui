@@ -28,7 +28,7 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
     @ViewChild('inputComponent') inputComponent: InputComponent;
     /** @internal */
     @Input() textClass: string;
-    @Input() type: InlineInputType = InlineInputType.Number;
+    @Input() type: InlineInputType = InlineInputType.Text;
     @Input() loading: boolean;
     @Input() readOnly: boolean;
     @Input() error: string;
