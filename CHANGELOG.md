@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.1.0](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.25...v5.1.0) (2023-02-14)
+
+
+### Features
+
+* **fg-117:** update loading for expanded rows ([ac01c06](https://github.com/ironSource/fusion-ui/commit/ac01c0652e64be4eb559b238c37ba899c1e5b69c))
+
+
+### Bug Fixes
+
+* **5.x.x:** fixed expanded rows with rowspan and remove colors for expanded rows ([b1640ff](https://github.com/ironSource/fusion-ui/commit/b1640ffddc6b69c89b57ee3343937dad49914394))
+* **5.x.x:** remove bg-color from loader in expanded table-rows ([d9a18a3](https://github.com/ironSource/fusion-ui/commit/d9a18a38c254dab94bb09c901d991d33d4bd146e))
+* **fg-117:** fix expand-rows + rowspan table header for "expand-column" ([0769013](https://github.com/ironSource/fusion-ui/commit/0769013bbc1f494c6d1c71014f24e3f88d40bebe))
+
 ## [5.1.0-rc.25](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.24...v5.1.0-rc.25) (2023-02-13)
 
 
