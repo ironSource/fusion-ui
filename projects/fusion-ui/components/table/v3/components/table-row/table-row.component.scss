@@ -34,8 +34,7 @@ $v3-bodyBorder: 1px solid $fu-light-400;
         }
     }
 
-    // todo-shai: commented by request from Shai Keren
-    /*&.is-row-in-request,*/
+    &.is-row-in-request,
     &.is-row-disabled {
         td {
             position: relative;
@@ -47,7 +46,7 @@ $v3-bodyBorder: 1px solid $fu-light-400;
                 top: 0;
                 left: 0;
                 position: absolute;
-                opacity: 0.7;
+                opacity: 0.3;
             }
         }
     }
@@ -64,19 +63,27 @@ $v3-bodyBorder: 1px solid $fu-light-400;
             //background-color: rgba(229, 231, 233, 0.4);
         }
         &.expand-cell {
-            width: 24px;
+            width: 32px;
+            padding-left: 16px;
             text-align: center;
             border-top: $v3-bodyBorder;
             border-bottom: $v3-bodyBorder;
             @include icon-style('icon-expand', $fu-black-500, 16px, true, true) {
                 @include size(16px);
                 cursor: pointer;
+                display: block;
+                margin-top: 3px;
             }
             &.expanded {
                 @include icon-style('icon-expand', $fu-black-500, 16px, true, true, 90);
             }
             &.inner-row {
+                // todo-shai: commented by request from Shai Keren
                 //border: none;
+            }
+            & + td{
+                padding-left: 8px;
+                border-left: none;
             }
         }
 

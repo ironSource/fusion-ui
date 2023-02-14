@@ -25,10 +25,10 @@ export const MOCK_ROW_ACTIONS = [
 
 // region Columns-config
 export const TABLE_DEFAULT_COLUMNS_CONFIG: TableColumn[] = [
-    {key: 'id', title: 'Id'},
+    {key: 'id', title: 'Id', groupName: 'Section 1'},
     {key: 'name', title: 'Name'},
     {key: 'username', title: 'Username'},
-    {key: 'email', title: 'Email'},
+    {key: 'email', title: 'Email', groupName: 'Section 2'},
     {key: 'website', title: 'Website'}
 ];
 export const TABLE_SORTING_COLUMNS_CONFIG: TableColumn[] = [
