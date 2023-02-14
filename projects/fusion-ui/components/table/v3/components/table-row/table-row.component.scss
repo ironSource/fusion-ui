@@ -34,8 +34,9 @@ $v3-bodyBorder: 1px solid $fu-light-400;
         }
     }
 
-    &.is-row-disabled,
-    &.is-row-in-request {
+    // todo-shai: commented by request from Shai Keren
+    /*&.is-row-in-request,*/
+    &.is-row-disabled {
         td {
             position: relative;
             &::after{
@@ -51,6 +52,7 @@ $v3-bodyBorder: 1px solid $fu-light-400;
         }
     }
 
+    // todo-shai: commented by request from Shai Keren
     /*&.is-row-selected,*/
     &.is-row-expanded{
         //background-color: $fu-light-200;
@@ -58,6 +60,7 @@ $v3-bodyBorder: 1px solid $fu-light-400;
 
     td {
         &.inner-row {
+            // todo-shai: commented by request from Shai Keren
             //background-color: rgba(229, 231, 233, 0.4);
         }
         &.expand-cell {
@@ -105,6 +108,7 @@ $v3-bodyBorder: 1px solid $fu-light-400;
                 background-color: $fu-light-200;
             }
         }
+        // todo-shai: commented by request from Shai Keren
         //&.fu-hovered, //for rowspan rows
         //&:hover{
         //    td{
