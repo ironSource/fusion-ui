@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.1.1-rc.3](https://github.com/ironSource/fusion-ui/compare/v5.1.1-rc.2...v5.1.1-rc.3) (2023-02-15)
+
+
+### Bug Fixes
+
+* **fg-124:**  fixed table is read only prop ([f585aa3](https://github.com/ironSource/fusion-ui/commit/f585aa3820324aa4c4f1d225a16760ae96d554f6))
+
 ### [5.1.1-rc.2](https://github.com/ironSource/fusion-ui/compare/v5.1.1-rc.1...v5.1.1-rc.2) (2023-02-14)
 
 ### [5.1.1-rc.1](https://github.com/ironSource/fusion-ui/compare/v5.1.1-rc.0...v5.1.1-rc.1) (2023-02-14)
