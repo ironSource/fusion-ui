@@ -87,7 +87,7 @@ export class TableService {
     setRowsMetadata(rows: any[]): any[] {
         return rows.map((row, idx) => {
             const rowId = idx + '_' + this.uniqueService.getUniqueId();
-            this.rowsMetadata[rowId] = {};
+            this.rowsMetadata[rowId] = row.rowMetaData ?? {};
             if (!!this.rowsExpandableKey && row[this.rowsExpandableKey]) {
                 row[this.rowsExpandableKey] = this.setRowsMetadata(row[this.rowsExpandableKey]);
             }
@@ -264,7 +264,9 @@ export class TableService {
     }
 
     isRowReadOnly(row: any): boolean {
-        return !!this.rowsMetadata[row['_rowId']]?.readonly;
+        return row.hasOwnProperty('_rowId')
+            ? !!this.rowsMetadata[row['_rowId']]?.readonly // for style v1 and 2
+            : !!row.rowMetaData?.readonly; // for style v3
     }
 
     toggleRowInRequest(row: any, isInRequest) {
