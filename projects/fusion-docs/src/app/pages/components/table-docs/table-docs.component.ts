@@ -659,11 +659,10 @@ export class TableDocsComponent implements OnInit, OnDestroy {
 
     // Grouped Table
     optionsGroupedTable = {
-        isGroupedTable: true,
-        remove: 'delete'
+        isGroupedTable: true
     };
     groupedTableRows = {
-        value: 'DANIEL',
+        value: 'ANDYK',
         children: [
             {
                 value: 'Non-Incent-Video1',
@@ -732,7 +731,7 @@ export class TableDocsComponent implements OnInit, OnDestroy {
         ]
     };
     groupedTableColumns: any[] = [
-        {key: 'danielName', title: 'Daniel Name'},
+        {key: 'danielName', title: 'Name'},
         {key: 'CampaignDistribution', title: 'Campaign Distribution'},
         {key: 'Geo', title: 'Geo'},
         {key: 'DeviceType', title: 'Device Type'},
@@ -775,6 +774,7 @@ export class TableDocsComponent implements OnInit, OnDestroy {
         this.options.remove.onRemove.pipe(takeUntil(this.onDestroy$)).subscribe(rowRemoved => {
             console.log(`row removed`, rowRemoved);
         });
+        /*
         this.selectedVersion$.subscribe((styleVersion: StyleVersion) => {
             if (styleVersion === StyleVersion.V2) {
                 this.router.navigate(['docs/components/v2/table']);
@@ -782,6 +782,7 @@ export class TableDocsComponent implements OnInit, OnDestroy {
                 this.router.navigate(['docs/components/v3/table']);
             }
         });
+*/
     }
 
     ngOnDestroy() {

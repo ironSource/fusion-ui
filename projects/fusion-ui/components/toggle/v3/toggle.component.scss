@@ -1,0 +1,79 @@
+@import "../../../src/style/scss/v3/vars/vars";
+@import "../../../src/style/scss/v3/mixins/mixins";
+
+:host {
+    @extend %reset;
+    label{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        .fu-toggle-content{
+            @extend %font-bodySmall;
+            color: $fu-black-500;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .fu-toggle-slider {
+            vertical-align: middle;
+            background: $fu-light-500;
+            display: inline-block;
+            width: 28px;
+            height: 16px;
+            border-radius: 8px;
+            position: relative;
+            @include trn(background-color);
+            &:hover {
+                cursor: pointer;
+            }
+            &:before {
+                content: "";
+                display: block;
+                @include size(12px);
+                background: #fff;
+                position: absolute;
+                top: 2px;
+                left: 2px;
+                border-radius: 6px;
+                @include trn(left);
+            }
+        }
+        input[type="checkbox"] {
+            display: none;
+            &:checked {
+                & + .fu-toggle-slider {
+                    background-color: var(--checked-bg-color, $fu-primary-500);
+                    &:before {
+                        left: 14px;
+                    }
+                }
+            }
+        }
+        input[type="checkbox"]:disabled {
+            & ~ .fu-toggle-slider {
+                opacity: 75%;
+                pointer-events: unset;
+                &:hover {
+                    cursor: default;
+                }
+            }
+            & ~ .fu-toggle-content{
+                color: $fu-light-800;
+                &:hover {
+                    cursor: default;
+                }
+            }
+        }
+    }
+
+    .fu-error-msg,
+    .fu-helper-text {
+        @extend %font-caption;
+        color: $fu-negative-700;
+    }
+    .fu-helper-text {
+        color: $fu-black-200;
+    }
+}

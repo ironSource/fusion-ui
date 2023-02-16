@@ -7,7 +7,7 @@ export abstract class AlertBaseComponent {
     @Input() shown = true;
     @Input() showCloseButton = true;
     @Input() showDoNotShowAgainButton: boolean;
-    @Output() closed = new EventEmitter();
+    @Output() closed = new EventEmitter<{dontShowAgain: boolean}>();
 
     get alertIcon(): string {
         return this.type.toLowerCase() !== 'error' ? this.type.toLowerCase() : 'alert-error';
@@ -17,11 +17,13 @@ export abstract class AlertBaseComponent {
         return [this.mode.toLowerCase(), this.type.toLowerCase(), this.showCloseButton && 'has-close-button'].filter(Boolean);
     }
 
+    /** @internal */
     onCloseClicked(isDontShowAgain = false): void {
         this.shown = false;
         this.closed.emit({dontShowAgain: isDontShowAgain});
     }
 
+    /** @internal */
     onDontShowClicked($event): void {
         $event.preventDefault();
         this.onCloseClicked(true);

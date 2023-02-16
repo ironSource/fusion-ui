@@ -2,6 +2,304 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.1.1](https://github.com/ironSource/fusion-ui/compare/v5.1.1-rc.3...v5.1.1) (2023-02-16)
+
+### [5.1.1-rc.3](https://github.com/ironSource/fusion-ui/compare/v5.1.1-rc.2...v5.1.1-rc.3) (2023-02-15)
+
+
+### Bug Fixes
+
+* **fg-124:**  fixed table is read only prop ([f585aa3](https://github.com/ironSource/fusion-ui/commit/f585aa3820324aa4c4f1d225a16760ae96d554f6))
+
+### [5.1.1-rc.2](https://github.com/ironSource/fusion-ui/compare/v5.1.1-rc.1...v5.1.1-rc.2) (2023-02-14)
+
+### [5.1.1-rc.1](https://github.com/ironSource/fusion-ui/compare/v5.1.1-rc.0...v5.1.1-rc.1) (2023-02-14)
+
+
+### Bug Fixes
+
+* **fg-122:** fixed default input-inline type ([006442a](https://github.com/ironSource/fusion-ui/commit/006442a25207227d81828a74210e97c07eb12ddc))
+
+### [5.1.1-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.1.0...v5.1.1-rc.0) (2023-02-14)
+
+## [5.1.0](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.25...v5.1.0) (2023-02-14)
+
+
+### Features
+
+* **fg-117:** update loading for expanded rows ([ac01c06](https://github.com/ironSource/fusion-ui/commit/ac01c0652e64be4eb559b238c37ba899c1e5b69c))
+
+
+### Bug Fixes
+
+* **5.x.x:** fixed expanded rows with rowspan and remove colors for expanded rows ([b1640ff](https://github.com/ironSource/fusion-ui/commit/b1640ffddc6b69c89b57ee3343937dad49914394))
+* **5.x.x:** remove bg-color from loader in expanded table-rows ([d9a18a3](https://github.com/ironSource/fusion-ui/commit/d9a18a38c254dab94bb09c901d991d33d4bd146e))
+* **fg-117:** fix expand-rows + rowspan table header for "expand-column" ([0769013](https://github.com/ironSource/fusion-ui/commit/0769013bbc1f494c6d1c71014f24e3f88d40bebe))
+
+## [5.1.0-rc.25](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.24...v5.1.0-rc.25) (2023-02-13)
+
+
+### Features
+
+* **5.x.x:** fixed input-inline v3 color and figma link in story ([8fef279](https://github.com/ironSource/fusion-ui/commit/8fef279441635ad4e714ca6d8cb3f4c2c040cf53))
+* **fg-116:** added possibility for base rowspan in table component ([f0b1641](https://github.com/ironSource/fusion-ui/commit/f0b16414fda2f4afcca7685831c11162757bf463))
+
+
+### Bug Fixes
+
+* **5.x.x:** fix cell <td> custom class applying ([c555051](https://github.com/ironSource/fusion-ui/commit/c5550511bea216681a89e80806e300f314bce955))
+* **5.x.x:** fix cell padding for edit-in-pace 0 8px instead 0 16px as on other ([b60ffd1](https://github.com/ironSource/fusion-ui/commit/b60ffd15fe9eb31e5a0a16c82ea4469affe74a68))
+* **5.x.x:** fixed input-inline v3 color and figma link in story ([cb33b0a](https://github.com/ironSource/fusion-ui/commit/cb33b0a0faab211fc420f8be27e7a74d8e70c56a))
+
+## [5.1.0-rc.24](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.23...v5.1.0-rc.24) (2023-02-09)
+
+
+### Bug Fixes
+
+* **5.x.x:** fixes for inline-edit in table ([ea04b9d](https://github.com/ironSource/fusion-ui/commit/ea04b9d1037ac2e6cbbeb7e7c3ae0f9fa412a664))
+* **5.x.x:** search in table header update to fusion-search component ([1556891](https://github.com/ironSource/fusion-ui/commit/1556891175de95685014786368a67ba39ec95e76))
+
+## [5.1.0-rc.23](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.22...v5.1.0-rc.23) (2023-02-08)
+
+
+### Features
+
+* **5.x.x:** update fusion-ui version for stackblitz ion storybook ([32314f6](https://github.com/ironSource/fusion-ui/commit/32314f6735dfb3752e8cd31a06a27c0ffd7a6da0))
+
+
+### Bug Fixes
+
+* **5.x.x:** fixed inline-input for currency with 'Unlimited' in value ([70b0dab](https://github.com/ironSource/fusion-ui/commit/70b0dab989a37dedca1fd861f4c6c40b26fe456f))
+* **5.x.x:** fixed inline-input v3 base color ([adae82b](https://github.com/ironSource/fusion-ui/commit/adae82bfc44c9f9789401c7f06ec7966eae4cfd2))
+* **5.x.x:** fixed table v3 header - search input width ([cadfd3c](https://github.com/ironSource/fusion-ui/commit/cadfd3c1a61ba403874f250c044e93469d47a918))
+* **5.x.x:** fixed top-filter trigger height ([fd19ab5](https://github.com/ironSource/fusion-ui/commit/fd19ab54dc378ac1e0f368d82cdd91643d9ba919))
+
+## [5.1.0-rc.22](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.21...v5.1.0-rc.22) (2023-02-01)
+
+
+### Features
+
+* **fg-115:** add features for status-label v3 component ([#163](https://github.com/ironSource/fusion-ui/issues/163)) ([c743e07](https://github.com/ironSource/fusion-ui/commit/c743e073203d16d7040d9f3e054f22437f8e17db))
+
+## [5.1.0-rc.21](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.20...v5.1.0-rc.21) (2023-01-22)
+
+## [5.1.0-rc.21](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.20...v5.1.0-rc.21) (2023-01-19)
+
+## [5.1.0-rc.20](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.18...v5.1.0-rc.20) (2023-01-19)
+
+
+### Features
+
+* add type ([7da99a4](https://github.com/ironSource/fusion-ui/commit/7da99a4c9bad8b327a22f5141eb775ccb35137ee))
+
+
+### Bug Fixes
+
+* update mfe config types redirect service ([42aa0eb](https://github.com/ironSource/fusion-ui/commit/42aa0eb42f7fdb0ad618c20cca1517f0a4b79e4d))
+
+## [5.1.0-rc.19](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.18...v5.1.0-rc.19) (2023-01-18)
+
+
+### Features
+
+* **fg-107:** create v3 tag (label in figma) component and it's stories ([e26b0e9](https://github.com/ironSource/fusion-ui/commit/e26b0e9aa6b4d260c53131a152a5fd9aed618742))
+
+## [5.1.0-rc.18](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.17...v5.1.0-rc.18) (2023-01-18)
+
+
+### Bug Fixes
+
+* update mfe config types ([ddd0040](https://github.com/ironSource/fusion-ui/commit/ddd0040047740ba3c80bc456050008b8da453534))
+
+## [5.1.0-rc.17](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.16...v5.1.0-rc.17) (2023-01-18)
+
+
+### Bug Fixes
+
+* update mfe config types ([8ebf530](https://github.com/ironSource/fusion-ui/commit/8ebf530d9db2b8a8e8167c1180688f89deb2201e))
+
+## [5.1.0-rc.16](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.15...v5.1.0-rc.16) (2023-01-18)
+
+## [5.1.0-rc.15](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.14...v5.1.0-rc.15) (2023-01-17)
+
+## [5.1.0-rc.14](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.6...v5.1.0-rc.14) (2023-01-16)
+
+
+### Bug Fixes
+
+* **fg-106:** fix build for v3 fusion-search component ([2360c50](https://github.com/ironSource/fusion-ui/commit/2360c50c1b27d22564029a0901ae2e01d930f1be))
+
+## [5.1.0-rc.13](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.6...v5.1.0-rc.13) (2023-01-15)
+
+
+### Features
+
+* **fg-106:** new v3 fusion-search component with stories ([b454f3b](https://github.com/ironSource/fusion-ui/commit/b454f3bc57f45450b66b5ac786f9b3201584c73b))
+
+## [5.1.0-rc.12](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.6...v5.1.0-rc.12) (2023-01-12)
+
+## [5.1.0-rc.6](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.5...v5.1.0-rc.6) (2022-12-21)
+
+
+### Bug Fixes
+
+* table rows default value ([1b21b27](https://github.com/ironSource/fusion-ui/commit/1b21b271d21d531eb6628e4bd1def30b80464d4a))
+
+## [5.1.0-rc.5](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.4...v5.1.0-rc.5) (2022-12-19)
+
+## [5.1.0-rc.4](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.3...v5.1.0-rc.4) (2022-12-19)
+
+## [5.1.0-rc.3](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.2...v5.1.0-rc.3) (2022-12-18)
+
+
+### Bug Fixes
+
+* add missing imports ([38c8960](https://github.com/ironSource/fusion-ui/commit/38c8960daa1d0bf0f63667a2684275db46da2ac1))
+
+## [5.1.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v5.1.0-rc.1...v5.1.0-rc.2) (2022-12-15)
+
+
+### Bug Fixes
+
+* build errors ([ccc9728](https://github.com/ironSource/fusion-ui/commit/ccc9728e3e0710c918d61afd1555c6776efd5f5b))
+
+## [5.1.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v5.0.1...v5.1.0-rc.1) (2022-12-15)
+
+
+### Features
+
+* add new services to support module federation ([e8dd21f](https://github.com/ironSource/fusion-ui/commit/e8dd21f022a559cb0e35ed3ec6774eca67b609af))
+
+
+### Bug Fixes
+
+* failing test ([7acd048](https://github.com/ironSource/fusion-ui/commit/7acd048bf233a743be9778089a9bdde5a058456a))
+* remove watch flag ([b1a97a9](https://github.com/ironSource/fusion-ui/commit/b1a97a9ab5ab4639665216ccd0b5246f260ebd9d))
+* update services imports ([3492827](https://github.com/ironSource/fusion-ui/commit/349282729951ca930264eebb1d5c8d2b880e99ae))
+
+## [5.1.0-rc.7](https://github.com/ironSource/fusion-ui/compare/v5.0.1...v5.1.0-rc.7) (2022-12-22)
+
+
+### Features
+
+* **fg-86:** storybook-addon-stackblitz ([#135](https://github.com/ironSource/fusion-ui/issues/135)) ([d403d8a](https://github.com/ironSource/fusion-ui/commit/d403d8a0c389be78db69a4851d8b9e0976cef71b))
+* **fu-480-sb-2:** added new component "menu-drop" ([5890998](https://github.com/ironSource/fusion-ui/commit/589099804e139b446bdf53ed7050855f9d22426e))
+* **fu-480-sb-2:** added new table column property - groupName ([7072a1b](https://github.com/ironSource/fusion-ui/commit/7072a1b3803537ff222c58a46316f4ab3c60406d))
+* **fu-480:** added and init storybook to project fusion-ui ([cdc39f5](https://github.com/ironSource/fusion-ui/commit/cdc39f50b3d67ac127984deb97fbf999dcfcedf2))
+
+
+### Bug Fixes
+
+* **fu-480-2:** fixes for button base and alert story ([47efac5](https://github.com/ironSource/fusion-ui/commit/47efac5538fca33f8946b7444f7ca68d19bc8e48))
+* **fu-480-2:** fixes for checkbox story ([88c643a](https://github.com/ironSource/fusion-ui/commit/88c643af3f9a677a10851f5200fb9cec9714c04c))
+* **fu-480-sb-2:** add --no-manager-cache option to the storybook cli ([eb9f9af](https://github.com/ironSource/fusion-ui/commit/eb9f9afe625712658aa8d9a1f94e79bb3b3f6a0a))
+* **fu-480-sb-2:** add storybook-static folder to gitignore ([09a3a21](https://github.com/ironSource/fusion-ui/commit/09a3a2108d9e0a87819ad7daff40750496b8bd1d))
+* **fu-480-sb-2:** added 'framed' table example ([806a167](https://github.com/ironSource/fusion-ui/commit/806a167f8f84caeb29e271256383752ad04a3d27))
+* **fu-480-sb-2:** added 'no data', 'loading' and sorting table examples ([baa722e](https://github.com/ironSource/fusion-ui/commit/baa722e03ac3c72ac25bfe49d01713bd966b14c6))
+* **fu-480-sb-2:** added table with checkbox story. added actionsData ([27e3cd4](https://github.com/ironSource/fusion-ui/commit/27e3cd4cfc6441bd6d2dd2f22bf3ce27fb6c9fd0))
+* **fu-480-sb-2:** added table with removable row ([958a18c](https://github.com/ironSource/fusion-ui/commit/958a18c544849cfdc3da3be3cecae9e84a43e089))
+* **fu-480-sb-2:** added table with toggle story ([7c69aab](https://github.com/ironSource/fusion-ui/commit/7c69aab5b316414246a46a6571bec106e5754015))
+* **fu-480-sb-2:** added table with toggle story ([0b2ff73](https://github.com/ironSource/fusion-ui/commit/0b2ff7382412f4c31efc46c626421878ed5539b0))
+* **fu-480-sb-2:** added table with totals row ([524d968](https://github.com/ironSource/fusion-ui/commit/524d968f28b1440cb414198873beb567b1e9eee4))
+* **fu-480-sb-2:** added to old docs table - frame with table label ([2c8bba9](https://github.com/ironSource/fusion-ui/commit/2c8bba91193434bed1d12fcdd5f9a7b2f0b00f29))
+* **fu-480-sb-2:** compudoc set exclude files under v1 and v2 folders ([830618f](https://github.com/ironSource/fusion-ui/commit/830618f32617b75284ff35b88d6596d4336d2296))
+* **fu-480-sb-2:** default table story done ([49e9d13](https://github.com/ironSource/fusion-ui/commit/49e9d1335fb60059e47f8eaad956814b85ca9b63))
+* **fu-480-sb-2:** fixed "go top" button position in framed table ([576241b](https://github.com/ironSource/fusion-ui/commit/576241b81da6c9ece5145eada45025e71de6acb6))
+* **fu-480-sb-2:** fixed button component build ([929105e](https://github.com/ironSource/fusion-ui/commit/929105e74c94539111a64ffc793b98f8f81d0c46))
+* **fu-480-sb-2:** fixed framed table with height (if parent height limited by value) ([cf6c05d](https://github.com/ironSource/fusion-ui/commit/cf6c05dea38af8df8fccf066d2a13381d01f3ef0))
+* **fu-480-sb-2:** fixed rows loading on table v3 with infinity scroll ([de9e9a5](https://github.com/ironSource/fusion-ui/commit/de9e9a54717fa54a9392c6b061f52085f3e6219d))
+* **fu-480-sb-2:** fixed table v3 sticky columns - header ([b75d562](https://github.com/ironSource/fusion-ui/commit/b75d56203ded52a4bc5f86e9d0356541e01b4c93))
+* **fu-480-sb-2:** mdx-2 all good state ([4e580b5](https://github.com/ironSource/fusion-ui/commit/4e580b5f41c8a8ca2ba87ca8cf6240ebd97ac4da))
+* **fu-480-sb-2:** move table stories to folder stories in table folder ([1213022](https://github.com/ironSource/fusion-ui/commit/1213022cc8b82ed0b356159dab7d19e26f2133c9))
+* **fu-480-sb-2:** refactor button v3 css ([58284ed](https://github.com/ironSource/fusion-ui/commit/58284ed75e20b3e5f3d5413de264d7ebcd4c2b55))
+* **fu-480-sb-2:** remove --no-manager-cache option from the storybook cli ([464871f](https://github.com/ironSource/fusion-ui/commit/464871f4729aff08f3adc11f6375a781d4333c0a))
+* **fu-480-sb-2:** remove declaration and add ButtonModule ([f59ca5e](https://github.com/ironSource/fusion-ui/commit/f59ca5e09f3344b446770bea506abb3744a88876))
+* **fu-480-sb-2:** rename "Buttons" to "Button" in stories ([aefba97](https://github.com/ironSource/fusion-ui/commit/aefba97f7ffaa54de0bb542efb3a7c0121dfe445))
+* **fu-480-sb-2:** set [@internal](https://github.com/internal) to unused in storybook  data ([60dbfca](https://github.com/ironSource/fusion-ui/commit/60dbfca07c50ff7e74eced47c14c5f4113218600))
+* **fu-480-sb-2:** set font-family: "Helvetica Neue" to body ([d88734d](https://github.com/ironSource/fusion-ui/commit/d88734d4a29fb76645a0cdc9932f3377878ea971))
+* **fu-480-sb-2:** start with table stories ([20c15da](https://github.com/ironSource/fusion-ui/commit/20c15dad511cab7b0c54eb56caec076e29d4063d))
+* **fu-480-sb-2:** table stories - added columns config ([77f2e5e](https://github.com/ironSource/fusion-ui/commit/77f2e5eb0343321478bda620713fc561910b6e60))
+* **fu-480-sb-2:** table stories added table in frame story ([e139849](https://github.com/ironSource/fusion-ui/commit/e1398491d79e6abfa0e8d9db8321424b03adff6e))
+* **fu-480-sb-2:** table stories added table in frame story ([b512caf](https://github.com/ironSource/fusion-ui/commit/b512caf1bb113dc1f01f2c60fac0780e9a2046f0))
+* **fu-480-sb-2:** table stories fix typo ([2c35c4b](https://github.com/ironSource/fusion-ui/commit/2c35c4b6f4117342d688e4dd96f85c35f777ddb9))
+* **fu-480-sb-2:** uncomment button.component.stories.mdx ([a528a02](https://github.com/ironSource/fusion-ui/commit/a528a02681d8996db5e76881e34412ca8548fa57))
+* **fu-480-sb-2:** uncomment xxx.stories.mdx files ([bfc4eb3](https://github.com/ironSource/fusion-ui/commit/bfc4eb3e357f6a96fe524c942048d11353d2f84d))
+* **fu-480-sb-2:** update gitignore ([d73a0a0](https://github.com/ironSource/fusion-ui/commit/d73a0a0b77a06a60ba147f4b4d6fa2baf0055885))
+* **fu-480-sb-2:** update stories sorting for "-page--all" and "--default" first ([297f111](https://github.com/ironSource/fusion-ui/commit/297f111a75a65a8a4fc2085d698495b91000c74b))
+* **fu-480-sb-2:** update table in frame story ([62b05fc](https://github.com/ironSource/fusion-ui/commit/62b05fccc627fee6fd833fb51e0d5ae552161c8e))
+* **fu-480-sb-2:** update table stories with wrapper and added table frame to all tables ([e77f444](https://github.com/ironSource/fusion-ui/commit/e77f444da128f6ba75875a99f44e5ce0f79641b1))
+* **fu-480-sb-2:** update tables-all mdx. and stories source code ([ad06635](https://github.com/ironSource/fusion-ui/commit/ad06635af93fa34f1ef7c02d90aaf92d805f309c))
+* **fu-480-sb-2:** update tables-all mdx. rename some table stories ([b6d872e](https://github.com/ironSource/fusion-ui/commit/b6d872ed31418154c7d006c76ee685d80ce7387e))
+* **fu-480:** add story for small ([1fbfccc](https://github.com/ironSource/fusion-ui/commit/1fbfccc1ec91016f4a3cb08478690548b7f50300))
+* **fu-480:** added figma integration ([af12a47](https://github.com/ironSource/fusion-ui/commit/af12a472af4325d356d923c15fca9b289ff3f95d))
+* **fu-480:** added icon only stories for buttons ([aac2f26](https://github.com/ironSource/fusion-ui/commit/aac2f26816767ef5ff315869f1f893f81f502508))
+* **fu-480:** added preview-head.html with common css file ([f9cbe68](https://github.com/ironSource/fusion-ui/commit/f9cbe68df6ab40da8aad529f9fb1af1f9bb377c7))
+* **fu-480:** added preview-head.html with common css file ([9335e9d](https://github.com/ironSource/fusion-ui/commit/9335e9de04231e1be4968273601a80d579338d34))
+* **fu-480:** added some storybook and compodoc config options, start with button component ([4065919](https://github.com/ironSource/fusion-ui/commit/4065919707db495ad7363f46700602141f9afeed))
+* **fu-480:** added sort method for put '/All' first ([b2923e1](https://github.com/ironSource/fusion-ui/commit/b2923e17a9aad556070a4792f0c6bff8ae959ff0))
+* **fu-480:** added stories for checkbox ([90e5ea0](https://github.com/ironSource/fusion-ui/commit/90e5ea0d55ea1600e320bbebb273559accdfcc4b))
+* **fu-480:** added ts-dedent package to the dev section ([6b398fc](https://github.com/ironSource/fusion-ui/commit/6b398fc5a13468cc1f8fcad415431f1df8351ffb))
+* **fu-480:** alert in process ([39e1b9e](https://github.com/ironSource/fusion-ui/commit/39e1b9ea5f02ce5c30cedcf187a72706c519f490))
+* **fu-480:** alert v1 storybook mdx added svg module ([1e20d60](https://github.com/ironSource/fusion-ui/commit/1e20d60e0e2d47d853ed27bdd2c6be9265369e6f))
+* **fu-480:** alert v1, v2 formatter ([0c3a30a](https://github.com/ironSource/fusion-ui/commit/0c3a30a871646f88baf1aad4903e88ee1e5431e3))
+* **fu-480:** alert v2 storybook mdx added ([0d18bc2](https://github.com/ironSource/fusion-ui/commit/0d18bc2fcca91e254bf60194dc14b89925fe3973))
+* **fu-480:** commented alert story for now change color for custom checkbox ([2dc732d](https://github.com/ironSource/fusion-ui/commit/2dc732dc9fea2a988147d7543d71eb7c901513fb))
+* **fu-480:** disable style version switcher in docs header ([86ed81c](https://github.com/ironSource/fusion-ui/commit/86ed81c7bb43986bdf2e647b808aa00f794c5628))
+* **fu-480:** done radio stories ([e25f9cb](https://github.com/ironSource/fusion-ui/commit/e25f9cbf731419cca7d7f362026015515ef5333a))
+* **fu-480:** done radio stories ([ae5b55d](https://github.com/ironSource/fusion-ui/commit/ae5b55d784fa52cf5f94f0b57205ed36196b51cf))
+* **fu-480:** done radio stories ([c74bc78](https://github.com/ironSource/fusion-ui/commit/c74bc78b668a948d1419fe9ab6aa33107d10a58f))
+* **fu-480:** done stories for buttons ([f534428](https://github.com/ironSource/fusion-ui/commit/f53442816352e34483ddc57907cae47e0a3ceec5))
+* **fu-480:** done with input component ([76f3553](https://github.com/ironSource/fusion-ui/commit/76f355318b484d3312c1354248917a191818007a))
+* **fu-480:** done with stories for switcher ([96265a8](https://github.com/ironSource/fusion-ui/commit/96265a88004c5e56d6d523c490a4f8c0f1632efe))
+* **fu-480:** fixed checkbox stories ([d832cf7](https://github.com/ironSource/fusion-ui/commit/d832cf7f8b40e566d2216ab64e81f7eba63944b6))
+* **fu-480:** fixed switcher stories ([bcedd70](https://github.com/ironSource/fusion-ui/commit/bcedd7037836def8cecabe2a299d73618ba03ffa))
+* **fu-480:** input stories in process ([742ec2a](https://github.com/ironSource/fusion-ui/commit/742ec2ab5a27d3d391678ae3f802f687ffe31d1e))
+* **fu-480:** input stories in process ([81f5481](https://github.com/ironSource/fusion-ui/commit/81f5481b35779df18482609ef10085e75bb72082))
+* **fu-480:** play with compodoc ([29c5aea](https://github.com/ironSource/fusion-ui/commit/29c5aea4e4a04b1cf5484f3e8a954844045ba780))
+* **fu-480:** prepare button docs page for playground ([8908db3](https://github.com/ironSource/fusion-ui/commit/8908db32a4a74887e14b874a266d04224a9a8fd5))
+* **fu-480:** prepare button docs page for playground ([1c09cc6](https://github.com/ironSource/fusion-ui/commit/1c09cc6bf1a8a3c611a2e4e7bb68d2ec3434f417))
+* **fu-480:** re-factor button docs page ([22d3011](https://github.com/ironSource/fusion-ui/commit/22d301174f68223c49d7533edc18c68dae79c85f))
+* **fu-480:** remove babelModeV7 and previewMdx2 from storybook config ([08fcc36](https://github.com/ironSource/fusion-ui/commit/08fcc36f4d941c576a87e2fa50289ed090f0fdb0))
+* **fu-480:** restore babelModeV7 and previewMdx2 from storybook config ([f6f5594](https://github.com/ironSource/fusion-ui/commit/f6f5594c76e0205e5d28ae2071b9ebc433c52c2b))
+* **fu-480:** set in storybook manager panel - shown and position - bottom ([e160f2d](https://github.com/ironSource/fusion-ui/commit/e160f2de5d85f14a53bf38df43a8c1bd462510e3))
+* **fu-480:** set storybook to mdx2 support ([1fcd089](https://github.com/ironSource/fusion-ui/commit/1fcd089fce55b5e712b8bf21c9451fc49d1f00c9))
+* **fu-480:** sorting changed for 'default' firts ([dc4cf5f](https://github.com/ironSource/fusion-ui/commit/dc4cf5f8c7b11050811f7525607f72feb34de135))
+* **fu-480:** start with input ([5651818](https://github.com/ironSource/fusion-ui/commit/5651818657c4afb0c6aa9103a14553f2cfbc4a00))
+* **fu-480:** start with stories for switcher, added tsconfig.doc.json ([ecd9529](https://github.com/ironSource/fusion-ui/commit/ecd95297a6ad86aed29b3545de4e36e2065cad82))
+* **fu-480:** stop with mdx 2 ([41b6484](https://github.com/ironSource/fusion-ui/commit/41b6484fb0a5a59344189ada00540ff40ef073d6))
+* **fu-480:** stop with mdx 2 ([4bf8344](https://github.com/ironSource/fusion-ui/commit/4bf83442b68b3c09164a543fdf8f37090f72265b))
+* **fu-480:** stop with mdx 2 ([dfa7c90](https://github.com/ironSource/fusion-ui/commit/dfa7c901c39115c53a68c8ba44ab1b276124e737))
+* **fu-480:** story checkbox fixes ([96ac872](https://github.com/ironSource/fusion-ui/commit/96ac872e4331fa0930d8bacdf72c1ebfcff4bcc2))
+* **fu-480:** story for button in process ([f1dfc64](https://github.com/ironSource/fusion-ui/commit/f1dfc6468073fd202e1f2689848ad20d097ca0b4))
+* **fu-480:** story for button in process on 90% ([59ce885](https://github.com/ironSource/fusion-ui/commit/59ce88578b8829b4f3a70b0b8a5eabb37528b153))
+* **fu-480:** storybook alert in process ([e1b3858](https://github.com/ironSource/fusion-ui/commit/e1b3858882b54652ef06512bb3a2cf271d9c9ac8))
+* **fu-480:** storybook commons and alert in process ([48f65fe](https://github.com/ironSource/fusion-ui/commit/48f65fe5e8df767f3e01cf45bd6d4161d728812f))
+* **fu-480:** tray to sort stories ([baac2c5](https://github.com/ironSource/fusion-ui/commit/baac2c5427118b37c7a5a835977bd9c71c17c10a))
+* **fu-480:** work with alert storybook mdx ([f409003](https://github.com/ironSource/fusion-ui/commit/f409003db7dd220e0f93c4ab32ceee2169b0ca15))
+* table rows default value ([1b21b27](https://github.com/ironSource/fusion-ui/commit/1b21b271d21d531eb6628e4bd1def30b80464d4a))
+
+## [5.1.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.0.1...v5.1.0-rc.0) (2022-12-13)
+
+
+### Features
+
+* **fu-480-sb-2:** added new component "menu-drop" ([5890998](https://github.com/ironSource/fusion-ui/commit/589099804e139b446bdf53ed7050855f9d22426e))
+* **fu-480-sb-2:** added new table column property - groupName ([7072a1b](https://github.com/ironSource/fusion-ui/commit/7072a1b3803537ff222c58a46316f4ab3c60406d))
+* **fu-480:** added and init storybook to project fusion-ui ([cdc39f5](https://github.com/ironSource/fusion-ui/commit/cdc39f50b3d67ac127984deb97fbf999dcfcedf2))
+
+
+### Bug Fixes
+
+* **fg-84:** fixed teleport on-destroy ([7a9e3a2](https://github.com/ironSource/fusion-ui/commit/7a9e3a2e8e8995d92dcbf7569b4f48ea7dfd574b))
+* **fu-480-2:** fixes for button base and alert story ([47efac5](https://github.com/ironSource/fusion-ui/commit/47efac5538fca33f8946b7444f7ca68d19bc8e48))
+* **fu-480-2:** fixes for checkbox story ([88c643a](https://github.com/ironSource/fusion-ui/commit/88c643af3f9a677a10851f5200fb9cec9714c04c))
+* **fu-480-sb-2:** fixed "go top" button position in framed table ([576241b](https://github.com/ironSource/fusion-ui/commit/576241b81da6c9ece5145eada45025e71de6acb6))
+* **fu-480-sb-2:** fixed button component build ([929105e](https://github.com/ironSource/fusion-ui/commit/929105e74c94539111a64ffc793b98f8f81d0c46))
+* **fu-480-sb-2:** fixed framed table with height (if parent height limited by value) ([cf6c05d](https://github.com/ironSource/fusion-ui/commit/cf6c05dea38af8df8fccf066d2a13381d01f3ef0))
+* **fu-480-sb-2:** fixed rows loading on table v3 with infinity scroll ([de9e9a5](https://github.com/ironSource/fusion-ui/commit/de9e9a54717fa54a9392c6b061f52085f3e6219d))
+* **fu-480-sb-2:** fixed table v3 sticky columns - header ([b75d562](https://github.com/ironSource/fusion-ui/commit/b75d56203ded52a4bc5f86e9d0356541e01b4c93))
+* **fu-480-sb-2:** refactor button v3 css ([58284ed](https://github.com/ironSource/fusion-ui/commit/58284ed75e20b3e5f3d5413de264d7ebcd4c2b55))
+
 ### [5.0.1](https://github.com/ironSource/fusion-ui/compare/v5.0.1-rc.2...v5.0.1) (2022-11-07)
 
 ### [5.0.1-rc.2](https://github.com/ironSource/fusion-ui/compare/v5.0.1-rc.1...v5.0.1-rc.2) (2022-11-07)

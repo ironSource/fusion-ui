@@ -9,5 +9,10 @@
         div{
             @include loading();
         }
+        &.fu-expanding-loader:first-of-type{
+            div{
+                display: none;
+            }
+        }
     }
 }

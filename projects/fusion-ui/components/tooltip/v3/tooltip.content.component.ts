@@ -11,8 +11,11 @@ import {TooltipComponentStyleConfiguration, TooltipPosition} from '@ironsource/f
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TooltipContentComponent {
+    /** @internal */
     tooltipInnerText: string;
+    /** @internal */
     position: string;
+    /** @internal */
     temp: TemplateRef<any>;
 
     @Input() set tooltipTextContent(text: string) {
@@ -21,6 +24,7 @@ export class TooltipContentComponent {
         }
     }
 
+    /** @internal */
     @Input() set templateRef(template: TemplateRef<any>) {
         this.temp = template;
     }
@@ -36,7 +40,11 @@ export class TooltipContentComponent {
         }
     }
 
-    constructor(public elementRef: ElementRef, private renderer: Renderer2) {}
+    constructor(
+        /** @internal */
+        public elementRef: ElementRef,
+        private renderer: Renderer2
+    ) {}
 
     private setTooltipStyle(propertyValue: {[key: string]: string}) {
         Object.keys(propertyValue).forEach(val => {

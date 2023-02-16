@@ -7,26 +7,31 @@
         </div>
     </ng-container>
     <div class="fu-search-holder" *ngIf="options?.searchOptions as searchOptions">
-        <fusion-icon class="fu-search-icon" [name]="{iconName: 'search-bold', iconVersion: 'v3'}"></fusion-icon>
-        <input
+        <fusion-search style="width: 300px;"
+            [formControl]="searchFormControl"
             [placeholder]="searchOptions.placeholder"
-            (input)="searchOptions.onSearch.emit($any($event.target).value)"
-        />
+        ></fusion-search>
     </div>
 </div>
 <div class="tableWrap" [ngClass]="wrapperClasses" #tableWrapper>
     <table [id]="id" #table *ngIf="!tableMainError">
         <ng-container *ngIf="columns && options">
             <thead *ngIf="columns.length" [hidden]="(isEmpty || (loading && !isLoadingOverlay)) && hideHeaderOnEmpty">
-                <tr [ngStyle]="!!options.rowsOptions && !!options.rowsOptions.headerRow ? options.rowsOptions.headerRow.style : null">
-                    <td
-                        *ngIf="!!options?.rowsExpandableOptions"
-                        class="expand-column"
-                        [class.sticky-left]="options?.rowsExpandableOptions?.sticky"
-                        [style.top.px]="options?.stickyHeaderTopOffset"
+                <!--SubHeader-->
+                <tr *ngIf="subHeader.length">
+                    <!--<ng-container *ngIf="!!options?.rowsExpandableOptions" [ngTemplateOutlet]="headerExpandColumn" [ngTemplateOutletContext]="{$implicit: true}"></ng-container>-->
+                    <td *ngFor="let subheader of subHeader let isFirst = first"
+                        class="fu-header-group"
+                        [class.fu-border-left]="!isFirst"
+                        [attr.colspan]="(isFirst && !!options?.rowsExpandableOptions) ? subheader.colspan + 1 : subheader.colspan"
                     >
-                        <span></span>
+                        {{ subheader.name}}
                     </td>
+                </tr>
+                <!--SubHeader-->
+                <!--Header-->
+                <tr [ngStyle]="!!options.rowsOptions && !!options.rowsOptions.headerRow ? options.rowsOptions.headerRow.style : null">
+                    <!--<ng-container *ngIf="!!options?.rowsExpandableOptions" [ngTemplateOutlet]="headerExpandColumn"></ng-container>-->
                     <td
                         *ngFor="let column of columns; trackBy: trackByFunc; let isLast = last; let isFirst = first"
                         [attr.data-col-key]="column.key"
@@ -35,7 +40,7 @@
                         (click)="onHeaderClicked(column)"
                         [style.width]="tableService.setWidth(isLast, column.width)"
                         [style.text-align]="column.headerAlign"
-                        [attr.colspan]="isFirst ? tableService.expandLevels : undefined"
+                        [attr.colspan]="isFirst ? (tableService.expandLevels + 1) : undefined"
                         [style.top.px]="options?.stickyHeaderTopOffset"
                     >
                         <ng-container>
@@ -69,6 +74,7 @@
                         </fusion-checkbox>
                     </td>
                 </tr>
+                <!--Header-->
             </thead>
 
             <tbody *ngIf="loading && !isLoadingOverlay" [fusionTableLoading]="colsCount"></tbody>
@@ -87,6 +93,10 @@
                 #tableBody
             ></tbody>
             <!--Table Body-->
+            <!--table pagination loading overlay-->
+            <ng-container *ngIf="options?.pagination && options.pagination.loading">
+                <tbody [fusionTableLoading]="colsCount"></tbody>
+            </ng-container>
             <!--Grouped Table Body-->
             <tbody
                 *ngIf="options.isGroupedTable && (!loading || isLoadingOverlay) && !isEmpty"
@@ -117,15 +127,22 @@
         <!--table empty loading-->
     </table>
     <!--table pagination loading overlay-->
-    <ng-container *ngIf="options?.pagination && options.pagination.loading">
-        <div class="is-overlay-loader-holder"><fusion-loader [status]="true" height="150">Loading Please Wait…</fusion-loader></div>
-    </ng-container>
-    <!--table pagination loading overlay-->
-    <!--todo: Add condition when to show button 'go top'-->
     <ng-container *ngIf="options?.hasReturnToTopButton && (shownGoTopButton$ | async)">
         <div class="fu-button-return-top" fusionTooltip="Return to top" (click)="onClickReturnTop()">
             <fusion-icon class="fu-return-top-icon" [name]="{iconName:'angle-up', iconVersion: 'v3'}"></fusion-icon>
         </div>
     </ng-container>
 </div>
+<div id="{{id}}_tableTeleportWrapper"></div>
 <div *ngIf="!noTableFrame" class="fu-table-footer"></div>
+
+<ng-template #headerExpandColumn let-isSubHeader>
+    <td
+        class="expand-column"
+        [class.fu-header-group]="isSubHeader"
+        [class.sticky-left]="options?.rowsExpandableOptions?.sticky"
+        [style.top.px]="options?.stickyHeaderTopOffset"
+    >
+        <span></span>
+    </td>
+</ng-template>

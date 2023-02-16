@@ -1,9 +1,18 @@
+import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
+
+export interface ChipIcon {
+    icon: IconData;
+    tooltipText?: string;
+}
+
 export interface ChipFilterComponentConfigurations {
     id: number | string;
     disabled?: boolean;
     mode?: ChipFilterMode;
     close?: boolean;
     maxWidth?: number;
+    leftIcon?: ChipIcon;
+    rightIcon?: ChipIcon;
 }
 
 export enum ChipTypeToClass {

@@ -41,5 +41,8 @@ export const ROW_CLICK_SUPPRESS_FOR_PARENT_SELECTORS = [
     'fusion-icon.icon-edit',
     'fusion-icon.icon-save',
     'fusion-button',
-    '[fusion-button]'
+    '[fusion-button]',
+    'li.fu-menu-item'
 ];
+
+export const ROW_HOVERED_CLASS_NAME = 'fu-hovered';

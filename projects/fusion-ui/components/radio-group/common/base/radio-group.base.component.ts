@@ -6,12 +6,33 @@ import {RadioGroupOptions} from '@ironsource/fusion-ui/components/radio-group/co
 
 @Directive()
 export abstract class RadioGroupBaseComponent implements OnInit, ControlValueAccessor {
-    @Input() name: string; // radio buttons group name
-    @Input() inline: boolean; // is inline
-    @Input() isDisabled: boolean; // is disabled (all group) but can be some of options
-    @Input() options: Array<RadioGroupOptions>; // options
+    /**
+     * radio buttons group name
+     */
+    @Input() name: string;
+    /**
+     * radiobutton inline direction
+     */
+    @Input() inline: boolean;
+    /**
+     * disabled (all group)
+     */
+    @Input() isDisabled: boolean;
+    /**
+     * radiobutton option: interface RadioGroupOptions {
+     *     id: string | number;
+     *     label: string;
+     *     icon?: IconData;
+     *     tooltip?: string;
+     *     disabled?: boolean;
+     * }
+     */
+    @Input() options: RadioGroupOptions[]; // options
+    /** @internal */
     @Input() selected: any; // selected option
+    /** @internal */
     @Output() selectedChange = new EventEmitter();
+    /** @internal */
     id: string; // radio buttons group id
 
     constructor(private uniqueIdService: UniqueIdService, protected logService: LogService, private cdr: ChangeDetectorRef) {}
@@ -40,10 +61,11 @@ export abstract class RadioGroupBaseComponent implements OnInit, ControlValueAcc
         }
     }
 
+    /** @internal */
     isSelected(option) {
         return option === this.selected || (option && this.selected && option.id === this.selected.id);
     }
-
+    /** @internal */
     setSelected(selectedValue: any) {
         this.selected = this.options.find(item => item.id === selectedValue);
         this.selectedChange.emit(this.selected);
@@ -52,16 +74,19 @@ export abstract class RadioGroupBaseComponent implements OnInit, ControlValueAcc
 
     /**
      * Method to call when value has changes.
+     * @internal
      */
     propagateChange = (_: any) => {};
 
     /**
      * Method to call when the component is touched (when it was is clicked).
+     * @internal
      */
     propagateTouched = () => {};
 
     /**
      * update value from model to the component
+     * @internal
      */
     writeValue(value: string): void {
         this.selected = value;
@@ -71,6 +96,7 @@ export abstract class RadioGroupBaseComponent implements OnInit, ControlValueAcc
     /**
      * Informs the outside world about changes.
      * see method propagateChange call - this.propagateChange(this.model);
+     * @internal
      */
     registerOnChange(fn: any): void {
         this.propagateChange = fn;
@@ -78,6 +104,7 @@ export abstract class RadioGroupBaseComponent implements OnInit, ControlValueAcc
 
     /**
      * on click
+     * @internal
      */
     registerOnTouched(fn: any): void {
         this.propagateTouched = fn;
@@ -86,6 +113,7 @@ export abstract class RadioGroupBaseComponent implements OnInit, ControlValueAcc
     /**
      * on set form controll enabled / disabled
      * also do UI Component enabled / disabled
+     * @internal
      */
     setDisabledState?(isDisabled: boolean): void {
         this.isDisabled = isDisabled;

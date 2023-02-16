@@ -26,12 +26,16 @@ import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v3';
 import {ToggleModule} from '@ironsource/fusion-ui/components/toggle/v2';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {MultiDropdownModule} from '@ironsource/fusion-ui/components/multi-dropdown/v2';
-import {InputInlineModule} from '@ironsource/fusion-ui/components/input-inline/v2';
+import {InputInlineComponent} from '@ironsource/fusion-ui/components/input-inline/v3';
 import {LoadMoreModule} from '@ironsource/fusion-ui/directives/load-more';
 import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 import {ErrorMessageModule} from '@ironsource/fusion-ui/components/error-message/v3';
 import {NotAvailablePipe} from '@ironsource/fusion-ui/pipes/not-available';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button/v3';
+import {MenuDropComponent} from '@ironsource/fusion-ui/components/menu-drop';
+import {TeleportingDirective} from '@ironsource/fusion-ui/directives/teleporting';
+import {RepositionDirective} from '@ironsource/fusion-ui/directives/reposition';
+import {SearchComponent} from '@ironsource/fusion-ui/components/search';
 
 @NgModule({
     exports: [TableComponent],
@@ -49,7 +53,7 @@ import {ButtonModule} from '@ironsource/fusion-ui/components/button/v3';
         CommonModule,
         IconModule,
         InputModule,
-        InputInlineModule,
+        InputInlineComponent,
         LoaderModule,
         LoaderInlineModule,
         CheckboxModule,
@@ -64,7 +68,11 @@ import {ButtonModule} from '@ironsource/fusion-ui/components/button/v3';
         LoadMoreModule,
         ErrorMessageModule,
         NotAvailablePipe,
-        ButtonModule
+        ButtonModule,
+        MenuDropComponent,
+        RepositionDirective,
+        TeleportingDirective,
+        SearchComponent
     ]
 })
 export class TableModule {

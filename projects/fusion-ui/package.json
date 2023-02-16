@@ -1,8 +1,9 @@
 {
     "name": "@ironsource/fusion-ui",
-    "version": "5.0.1",
+    "version": "5.1.1",
     "dependencies": {
         "chart.js": "^3.5.1",
+        "@floating-ui/dom": "^1.0.9",
         "tslib": "^2.0.0",
         "zone.js": "~0.11.4"
     },
@@ -16,6 +17,12 @@
     "sharedEntities": [
         "./services/api",
         "./services/cache",
+        "./services/user",
+        "./services/shared-config",
+        "./services/redirect",
+        "./services/pub-sub",
+        "./services/auth",
+        "./guards/auth",
         "./components/svg",
         "./components/icon/v1",
         "./components/tooltip/v1",
@@ -42,6 +49,8 @@
         "./components/table/v1",
         "./components/table/v2",
         "./components/table",
+        "./components/menu-drop",
+        "./components/api-base",
         "./pipes/string"
     ],
     "exports": {

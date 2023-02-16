@@ -149,9 +149,11 @@ export class DocsComponent implements OnInit, OnDestroy {
     private setLayoutConfigurationObservable(): void {
         const layoutHeader: LayoutHeaderComponentConfiguration = {
             content: {
+                /*
                 component: {
                     type: StyleVersionButtonComponent as Type<Component>
                 }
+*/
             },
             menuItems: [
                 {

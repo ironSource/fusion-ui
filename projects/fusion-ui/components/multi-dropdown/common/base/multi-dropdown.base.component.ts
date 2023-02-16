@@ -6,14 +6,19 @@ import {map, startWith, takeUntil} from 'rxjs/operators';
 
 @Directive()
 export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent implements OnInit, OnChanges {
+    /** @ignore */
     @Input() confirm = true;
+    /** @ignore */
     @Input() selectAllLabel: string;
+    /** @ignore */
     @Input() templateRef: TemplateRef<any>;
-
+    /** @ignore */
     tempSelected: DropdownOption[];
+    /** @ignore */
     tempOptions: DropdownOption[];
-
+    /** @ignore */
     optionsWithoutScroll = DROPDOWN_OPTIONS_WITHOUT_SCROLL;
+    /** @ignore */
     hasSearchValue$: Observable<boolean> = new Observable<boolean>();
 
     get isMulti(): boolean {
@@ -54,10 +59,11 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
         this.dropdownSelectConfigurations$.next(this.getDropdownSelectConfigurations());
     }
 
+    /** @ignore */
     getHolderCSSClasses(): string[] {
         return [...super.getHolderCSSClasses(), ...[this.confirm && 'is-with-confirm']].filter(Boolean);
     }
-
+    /** @ignore */
     getOptionClasses(option: DropdownOption) {
         return {
             [option.class]: option.class,
@@ -68,6 +74,7 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
 
     /**
      * Open dropdown windows
+     * @internal
      */
     openDropdown(event: MouseEvent) {
         this.tempSelected = this.cloneArray(this.selected);
@@ -78,6 +85,7 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
 
     /**
      * Set to clear / select all by the given default action button
+     * @internal
      */
     selectAll(checked?: boolean) {
         if (checked) {
@@ -126,6 +134,7 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
 
     /**
      * Saving selected options
+     * @internal
      */
     applySelect(close = false): void {
         this.selected = this.tempSelected;
@@ -146,6 +155,7 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
 
     /**
      * select / remove option from selected list
+     * @internal
      */
     changeSelected(option): void {
         const objSelectedIndex = this.getSelectedIndex(option);
@@ -160,6 +170,7 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
         }
     }
 
+    /** @ignore */
     isSelected(option: DropdownOption): boolean {
         return this.tempSelected && this.tempSelected.findIndex(item => item.id === option.id) !== -1;
     }
@@ -167,6 +178,7 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
     /**
      * Check if dropdown is in default button mode.
      * If all options selected Or if none of the options selected.
+     * @internal
      */
     isInSelectAllAction() {
         const tempOptionsList = this.tempOptions.reduce((acc, option) => {
@@ -186,6 +198,7 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
 
     /**
      * @returns number - index of selected in options array or -1 if not selected
+     * @internal
      */
     getSelectedIndex(option) {
         let optionSelectedIndex = -1;
@@ -200,6 +213,7 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
         return optionSelectedIndex;
     }
 
+    /** @ignore */
     optionParentClicked($event) {
         const targetEl = $event.currentTarget;
         const targetClassList = targetEl.classList;
@@ -220,6 +234,7 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
         return [...array];
     }
 
+    /** @ignore */
     writeValue(value: any): void {
         super.writeValue(value);
         this.tempSelected = this.selected;

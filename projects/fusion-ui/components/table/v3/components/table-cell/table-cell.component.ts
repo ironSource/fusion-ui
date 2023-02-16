@@ -29,12 +29,14 @@ import {
     CellPosition,
     TableColumn,
     TableOptions,
-    TableRowHeight
+    TableRowHeight,
+    TableMultipleActions
 } from '@ironsource/fusion-ui/components/table/common/entities';
 import {ERROR_MESSAGES} from '@ironsource/fusion-ui/components/error-message';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
+import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
 
 type CellDataType = Type<Component> | FormControl | string | boolean | undefined | null;
 
@@ -52,11 +54,14 @@ export class TableCellComponent implements OnInit, OnChanges {
 
     @Input() column: TableColumn;
     @Input() row: {[key: string]: any};
+    @Input() rowIndex: string | number;
+    @Input() rowSpanIndex: number;
     @Input() options: TableOptions = null;
     @Input() position: CellPosition;
 
     @Input() infoIconTooltip: string;
     @Input() isRemove: boolean;
+    @Input() floatingActionsDisabled: boolean;
     @Input() isRowSelected: boolean;
     @Input() isLastColumn: boolean;
     @Input() customClass: {[columnKey: string]: string} = {};
@@ -94,13 +99,22 @@ export class TableCellComponent implements OnInit, OnChanges {
     isNullOrUndefined: (object: any) => boolean = isNullOrUndefined;
     customCellData: DynamicComponentConfiguration;
 
-    // eslint-disable-next-line @typescript-eslint/adjacent-overload-signatures
+    shownActionsMenu = false;
+
+    get actionsMenuButtonId(): string {
+        return this.options.tableId + '_' + this.rowIndex;
+    }
+
     get data(): CellDataType {
-        if (!isNull(this._data) && this.tableService.isTypeComponent(this.column) && typeof this._data === 'object') {
-            // eslint-disable-next-line dot-notation, @typescript-eslint/dot-notation
-            this._data['cellPosition'] = this.position;
+        let data = this._data;
+        if (Array.isArray(data)) {
+            data = data[this.rowSpanIndex ?? 0];
         }
-        return this._data;
+        if (!isNull(data) && this.tableService.isTypeComponent(this.column) && typeof data === 'object') {
+            // eslint-disable-next-line dot-notation, @typescript-eslint/dot-notation
+            data['cellPosition'] = this.position;
+        }
+        return data;
     }
 
     get cellStringData(): string {
@@ -135,6 +149,14 @@ export class TableCellComponent implements OnInit, OnChanges {
 
     get cellRemoveActionIcon(): IconData {
         return this.options?.remove && this.options.remove?.icon ? this.options.remove.icon : DEFAULT_REMOVE_ICON_V3;
+    }
+
+    get multipleActions(): TableMultipleActions {
+        const actionsMenu = this.options?.rowActionsMenu;
+        if (this.options?.rowActionsMenu && Array.isArray(this.options?.rowActionsMenu.actions)) {
+            actionsMenu.actions = this.options?.rowActionsMenu?.actions.map(this.setDisableStateForFloatingAction.bind(this));
+        }
+        return actionsMenu;
     }
 
     private _data: CellDataType;
@@ -255,7 +277,13 @@ export class TableCellComponent implements OnInit, OnChanges {
         } else {
             const allErrors = formControl.errors || {};
             Object.keys(allErrors).forEach(errorKey => {
-                this.inputError$.next(this._getMessage(errorKey, this.column.customErrorMapping[errorKey] || {}));
+                this.inputError$.next(
+                    this._getMessage(
+                        errorKey,
+                        !isNullOrUndefined(this.column.customErrorMapping) ? this.column.customErrorMapping[errorKey] ?? {} : {},
+                        allErrors[errorKey]
+                    )
+                );
             });
         }
     }
@@ -293,7 +321,22 @@ export class TableCellComponent implements OnInit, OnChanges {
         }
     }
 
-    private _getMessage(errorKey, {errorMessageKey = '', textMapping = []}): string {
+    menuItemClicked(action: MenuDropItem) {
+        this.shownActionsMenu = false;
+        this.tableService.rowActionClicked.emit({action: action, rowIndex: this.rowIndex, row: this.row});
+    }
+
+    onActionButtonClicked() {
+        this.shownActionsMenu = true;
+    }
+
+    onActionMenuClickOutSide(target) {
+        if (!target.closest('#' + this.actionsMenuButtonId)) {
+            this.shownActionsMenu = false;
+        }
+    }
+
+    private _getMessage(errorKey, {errorMessageKey = '', textMapping = []}, errorDefaults?: any): string {
         const tableModuleOptions = !isNullOrUndefined(this.tableModuleOptions) ? this.tableModuleOptions : {errorMessages: ERROR_MESSAGES};
         if (!tableModuleOptions.errorMessages) {
             tableModuleOptions.errorMessages = ERROR_MESSAGES;
@@ -309,5 +352,11 @@ export class TableCellComponent implements OnInit, OnChanges {
             }
         }
         return errorMessage;
+    }
+
+    setDisableStateForFloatingAction(menuItem: MenuDropItem): MenuDropItem {
+        return this.options?.isFloatingActionDisabled && typeof this.options?.isFloatingActionDisabled === 'function'
+            ? {...menuItem, disabled: this.options.isFloatingActionDisabled(this.row, menuItem)}
+            : menuItem;
     }
 }

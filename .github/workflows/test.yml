@@ -1,7 +1,6 @@
 name: Test-For dev checks
 
 on:
-
   workflow_dispatch:
     inputs:
       branch_name:

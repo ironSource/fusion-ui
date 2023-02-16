@@ -8,6 +8,7 @@ import {Component, Input} from '@angular/core';
 })
 export class TableLoadingComponent {
     @Input() fusionTableLoading: number;
+    @Input() fusionTableLoadingExpanding = false;
 
     get rowsToShow(): number[] {
         return [...Array(3).keys()];

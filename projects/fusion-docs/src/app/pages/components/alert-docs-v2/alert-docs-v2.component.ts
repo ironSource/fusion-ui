@@ -7,6 +7,14 @@ import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
 import {VersionService} from '../../../services/version/version.service';
 import {FileDragAndDropState} from '@ironsource/fusion-ui/components/file-drag-and-drop';
+import {FormControl} from '@angular/forms';
+import {
+    MOCK_CAMPAIGNS,
+    MOCK_COUNTRIES,
+    MOCK_USERS
+} from '@ironsource/fusion-ui/components/chip-filters/v3/stories/chip-filters.stories.mock';
+import {ChipFilterComponentConfigurations} from '@ironsource/fusion-ui/components/chip-filter/common/base';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
 
 @Component({
     selector: 'fusion-alert-docs-v2',
@@ -63,6 +71,63 @@ export class AlertDocsV2Component implements OnInit, OnDestroy {
 
     fileState$ = new BehaviorSubject<FileDragAndDropState>(null);
 
+    //------------
+    fcChip1 = new FormControl();
+    configChip1: ChipFilterComponentConfigurations = {id: 1, mode: 'static', close: true};
+    optionsChip1 = MOCK_USERS;
+    placeholderPrefixChip1 = 'User';
+    placeholderChip1 = 'All';
+    searchChip1 = true;
+    optionsTitleChip1 = 'User';
+
+    selectedDynamicFilters = [];
+
+    dynamicFiltersAll = [
+        {
+            fcChip: new FormControl(),
+            configChip: {id: 4, mode: 'dynamic', close: true},
+            optionsChip: MOCK_COUNTRIES,
+            placeholderChip: 'All',
+            optionsTitleChip: 'Country'
+        },
+        {
+            fcChip: new FormControl(),
+            configChip: {id: 5, mode: 'dynamic', close: true},
+            optionsChip: MOCK_CAMPAIGNS,
+            placeholderChip: 'All',
+            optionsTitleChip: 'Campaigns'
+        }
+    ];
+
+    // region Add Filter Chip props
+    addFiltersTitle = 'Add filter by:';
+    addFilterOptions: DropdownOption[] = this.dynamicFiltersAll.map(filterDynamic => ({
+        id: filterDynamic.configChip.id,
+        displayText: filterDynamic.optionsTitleChip
+    }));
+    // endregion
+
+    /*
+
+    // region first chip - Country (dynamic)
+    fcChip4= new FormControl();
+    configChip4: ChipFilterComponentConfigurations= {id: 4, mode: 'dynamic', close: true};
+    optionsChip4= MOCK_COUNTRIES;
+    placeholderChip4= 'All';
+    optionsTitleChip4= 'Country';
+    // endregion
+
+    // region first chip - Campaigns (dynamic)
+    fcChip5= new FormControl();
+    configChip5: ChipFilterComponentConfigurations= {id: 5, mode: 'dynamic', close: true};
+    optionsChip5= MOCK_CAMPAIGNS;
+    placeholderChip5= 'All';
+    optionsTitleChip5= 'Campaigns';
+    // endregion
+*/
+
+    //------------
+
     constructor(private versionService: VersionService, private router: Router, private docLayoutService: DocsLayoutService) {}
 
     ngOnInit() {
@@ -113,5 +178,18 @@ export class AlertDocsV2Component implements OnInit, OnDestroy {
         setTimeout(_ => {
             this.fileInUpload$.next(false);
         }, 1000);
+    }
+
+    onDynamicChipSelect(selected) {
+        console.log('::', selected);
+        const index = this.dynamicFiltersAll.findIndex(item => item.configChip.id === selected.id);
+        this.selectedDynamicFilters = [...this.selectedDynamicFilters, ...[this.dynamicFiltersAll[index]]];
+        console.log('==', this.dynamicFiltersAll, this.selectedDynamicFilters);
+    }
+
+    onDynamicChipRemove(chipIdToRemove) {
+        console.log('remove', chipIdToRemove);
+        this.selectedDynamicFilters = [...this.selectedDynamicFilters.filter(chip => chip.configChip.id !== chipIdToRemove)];
+        console.log('<<<<', this.selectedDynamicFilters);
     }
 }

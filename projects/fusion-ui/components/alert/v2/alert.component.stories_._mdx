@@ -1,0 +1,66 @@
+import {Canvas, Meta, Story, Description, Source, ArgsTable} from '@storybook/addon-docs';
+import {dedent} from 'ts-dedent';
+import {AlertComponent} from './alert.component.ts';
+
+<Meta title="Components/Alert/All"/>
+
+<Description markdown={dedent`
+# Alert (v2, so it deprecated in v3 - no need stories)
+Some alert component description
+`}/>
+
+## Usage
+<Source language="html"
+        code={dedent`
+<fusion-alert [type]="type" [showCloseButton]="showCloseButton" [showDoNotShowAgainButton]="showDoNotShowAgainButton">
+    <strong>Heads up!</strong> This alert content example.
+</fusion-alert>
+`}/>
+
+### Default
+<Canvas>
+    <Story storyName="Default" id="components-alert--default" />
+</Canvas>
+
+### Success
+<Canvas>
+    <Story storyName="Success" id="components-alert--success" />
+</Canvas>
+
+### Warning
+<Canvas>
+    <Story id="components-alert--warning" />
+</Canvas>
+
+### Error
+<Canvas>
+    <Story id="components-alert--error" />
+</Canvas>
+
+### Small
+<Canvas>
+    <Story id="components-alert--small" />
+</Canvas>
+
+### Variants Small
+<Canvas>
+    <div style={{display: "flex", flexDirection: "row", flexWrap: "wrap", alignItems: "center", gap: "20px"}}>
+        <Story id="components-alert--small" />
+        <Story id="components-alert--small-success" />
+        <Story id="components-alert--small-warning" />
+        <Story id="components-alert--small-error" />
+    </div>
+</Canvas>
+
+### No Close Button
+<Canvas>
+    <Story id="components-alert--no-close-button" />
+</Canvas>
+
+### With Do Not Show Again Button
+<Canvas>
+    <Story id="components-alert--not-show-again-button" />
+</Canvas>
+
+
+<ArgsTable of={AlertComponent}  />

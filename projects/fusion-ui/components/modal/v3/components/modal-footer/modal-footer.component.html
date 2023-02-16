@@ -1,20 +1,18 @@
 <div class="modal-footer">
-    <div class="footer">
-        <span class="fu-error-message">{{ error }}</span>
-        <fusion-button
-            [class]="cancelButtonClass"
-            (click)="onCloseButtonClicked.emit()"
-            *ngIf="!cancelButtonHidden"
-        >
-            {{ cancelButtonText }}
-        </fusion-button>
-        <fusion-button
-            [class]="submitButtonClass"
-            [loading]="submitButtonPending"
-            [disabled]="submitButtonDisabled || !!error"
-            (click)="onSubmit.emit()"
-        >
-            {{ submitButtonText }}
-        </fusion-button>
-    </div>
+    <span class="fu-error-message">{{ error }}</span>
+    <fusion-button class="fu-secondary-button"
+        [class]="cancelButtonClass"
+        (click)="onCloseButtonClicked.emit()"
+        *ngIf="!cancelButtonHidden"
+    >
+        {{ cancelButtonText }}
+    </fusion-button>
+    <fusion-button class="fu-primary-button"
+        [class]="submitButtonClass"
+        [loading]="submitButtonPending"
+        [disabled]="submitButtonDisabled || !!error"
+        (click)="onSubmit.emit()"
+    >
+        {{ submitButtonText }}
+    </fusion-button>
 </div>

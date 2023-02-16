@@ -2,6 +2,8 @@
 @import '../../../src/style/scss/v3/mixins/mixins';
 @import '../../../src/style/scss/v3/vars/border';
 
+$gridBorderBottom: solid 4px #F5F5F5;
+
 @mixin calendar-circle($color, $border-radius) {
     position: absolute;
     content: '';
@@ -141,6 +143,28 @@
             pointer-events: none;
             &:not(.selected) {
                 color: $fu-light-700;
+            }
+        }
+    }
+    &.fu-calendar-grid{
+        table.calendar{
+            border-spacing:0;
+            thead th,
+            tbody td{
+                border-bottom: $gridBorderBottom;
+                height: 36px;
+            }
+            .day.oneDaySelection,
+            .day.selectedStart,
+            .day.selectedEnd{
+                &:before{
+                    top: 0;
+                }
+            }
+            .day.selected{
+                .selected-range{
+                    top: 0;
+                }
             }
         }
     }

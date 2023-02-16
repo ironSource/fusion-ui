@@ -1,37 +1,35 @@
-@import '../../../../../src/style/scss/v3/vars/fonts';
-@import '../../../../../src/style/scss/v3/mixins/mixins';
-@import '../../../../../src/style/scss/v3/vars/colors';
-@import '../../modal_vars';
-
-%border-box-normalize{
-    * {
-        box-sizing: border-box;
-    }
-}
+@import "../../../../../src/style/scss/v3/vars/vars";
+@import "../../../../../src/style/scss/v3/mixins/mixins";
 
 $borderBottom: 1px solid $fu-light-400;
-$height: $modalHeaderHeight;
-$padding: 18px 16px 14px 24px;
-
+$height: 56px;
+$padding: 18px 18px 18px 24px;
 
 :host {
     @extend %border-box-normalize;
     .modal-header {
-        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        gap: 4px;
         @extend %font-bodyMediumStrong;
         color: $fu-black-500;
         height: $height;
         padding: $padding;
         border-bottom: $borderBottom;
 
-        @include icon-style('close', $fu-light-500, 20px, true, true) {
+        @include icon-style('fu-close', $fu-light-600, 20px, true, true) {
             width: 20px;
-            height: 20px;
+            height: 19px;
             cursor: pointer;
-            position: absolute;
-            right: 18px;
-            top: 19px;
+            margin-left: auto;
         }
-        @include icon-style('close', $fu-light-800, 20px, true, true, 0, true);
+        @include icon-style('fu-close', $fu-light-800, 20px, true, true, 0, true);
+
+        @include icon-style('fu-info', $fu-light-500, 16px, true, true) {
+            width: 16px;
+            height: 18px;
+            cursor: pointer;
+        }
+
     }
 }

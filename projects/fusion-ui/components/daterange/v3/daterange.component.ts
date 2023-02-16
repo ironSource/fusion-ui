@@ -20,10 +20,12 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
     ]
 })
 export class DaterangeComponent extends DaterangeBaseComponent {
+    /** @internal */
     dropdownSelectConfigurations$ = new BehaviorSubject<DropdownSelectConfigurations>({
         dropdownArrowIconName: {iconName: 'angle-down', iconVersion: 'v3'}
     });
-
+    /** @internal */
     pevIconName = {iconName: 'angle-left', iconVersion: 'v3'};
+    /** @internal */
     nextIconName = {iconName: 'angle-right', iconVersion: 'v3'};
 }

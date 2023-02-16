@@ -82,6 +82,10 @@ $v3-cellActionIconSize: 16px;
         top: 8px;
     }
 
+    &.is-editable{
+        padding: 0 8px;
+    }
+
     .loader-holder {
         position: relative;
         top: 9px;
@@ -89,6 +93,28 @@ $v3-cellActionIconSize: 16px;
     }
     .truncate{
         @extend %truncate;
+    }
+
+    .fu-button-holder{
+        display: none;
+        position: absolute;
+        right: 12px;
+        top: 8px;
+        @include size(32px);
+        fusion-button {
+            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.24);
+            border: none;
+            background-color: $White;
+            &:hover{
+                background-color: $fu-light-200;
+            }
+            ::ng-deep fusion-icon{
+                @include size(24px);
+                svg {
+                    @include size(24px);
+                }
+            }
+        }
     }
 }
 
@@ -109,6 +135,12 @@ $v3-cellActionIconSize: 16px;
 :host-context(tr:hover).is-inline-removable {
     div.fu-cell-action-button {
         visibility: visible;
+    }
+}
+:host-context(tr:hover),
+:host-context(tr.fu-hovered){ // tr.fu-hovered for rowspan rows
+    .fu-button-holder{
+        display: block;
     }
 }
 :host-context(tr.is-with-totals) {

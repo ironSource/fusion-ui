@@ -1,0 +1,26 @@
+<ng-template #ref>
+    <ng-container *ngIf="apiBase" [ngTemplateOutlet]="chipComponent"></ng-container>
+</ng-template>
+
+<ng-content select=".filter-element"></ng-content>
+
+<ng-container *ngIf="!apiBase" [ngTemplateOutlet]="chipComponent"></ng-container>
+
+<ng-template #chipComponent>
+    <div class="fu-top-filter-trigger-wrapper" [class.fu-loading]="loading">
+        <div class="fu-app-image" [style.background-image]="!loading ? appImage : ''"></div>
+        <fusion-icon *ngIf="icon" class="fu-icon" [name]="icon"></fusion-icon>
+        <div class="fu-content">
+            <div class="fu-label">
+                <div *ngIf="selectedLabel" class="truncate">{{selectedLabel}}</div>
+                <div *ngIf="!selectedLabel && placeholder">{{placeholder}}</div>
+                <div *ngIf="required" class="fu-required">*</div>
+            </div>
+            <div *ngIf="helper && !error" class="fu-helper">{{helper}}</div>
+            <div *ngIf="error" class="fu-error">{{error}}</div>
+        </div>
+        <div class="fu-trigger">
+            <fusion-icon class="fu-trigger-icon" [name]="triggerIcon"></fusion-icon>
+        </div>
+    </div>
+</ng-template>

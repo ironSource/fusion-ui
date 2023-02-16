@@ -1,8 +1,9 @@
-import {TableRowRemoveAction} from './table-row-remove-action';
+import {TableMultipleActions, TableRowRemoveAction} from './table-row-remove-action';
 import {TableColumn} from './table-column';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 import {EventEmitter} from '@angular/core';
+import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
 
 export interface TableLabel {
     text: string;
@@ -16,6 +17,7 @@ export interface TableSearchOptions {
 }
 
 export interface TableOptions {
+    tableId?: string; // auto-generated table id
     tableLabel?: TableLabel; // table label with info tooltip (v3)
     searchOptions?: TableSearchOptions; // table search (v3)
     hasReturnToTopButton?: boolean; // has return to top button
@@ -23,13 +25,14 @@ export interface TableOptions {
     stickyHeaderTopOffset?: number; // offset top (px) for stickyHeader in case scrollElementSelector exist
     sortingType?: string;
     remove?: TableRowRemoveAction;
+    rowActionsMenu?: TableMultipleActions;
     isAllRowsSelectable?: boolean;
     isLoadingOverlayMode?: boolean; // show data main loading as overlay on the whole table (if not set - default as true)
     noDataMessage?: string;
     noDataSubMessage?: string;
     noDataImageBgUrl?: string; // custom image for empty table as background URL (v3)
     customNoData?: DynamicComponentConfiguration; // user defined "no data" content
-    isGroupedTable?: string;
+    isGroupedTable?: boolean;
     pagination?: TablePaginationOption;
     hasTotalsRow?: boolean;
     stickyHeader?: boolean; // is sticky header table
@@ -40,6 +43,7 @@ export interface TableOptions {
     rowHeight?: TableRowHeight;
     rowTrackingOption?: string;
     headerRowStyle?: any;
+    hasRowSpan?: boolean;
     rowsExpandableOptions?: TableRowsExpandableOptions;
     rowsOptions?: {
         [rowNumber: number]: TableRowOptions;
@@ -48,6 +52,7 @@ export interface TableOptions {
         ignoredParentSelectorsRowClickEvent?: string[];
     };
     notAvailableText?: string;
+    isFloatingActionDisabled?(row: any, action?: MenuDropItem): boolean;
     isRemoveIconHiddenForRow?(row: any): boolean;
     infoIconForRowOnHover?(row: any): string;
 }
@@ -64,8 +69,11 @@ export interface TableRowOptions {
 
 export interface TableRowMetaData {
     readonly?: boolean;
+    inRequest?: boolean;
     disabled?: boolean;
     cellToolTip?: {[columnKey: string]: string};
+    rowspanColumnsData?: {[key: string]: number};
+    maxRowspanInColumn?: number;
 }
 
 export interface TableRowsExpandableOptions {

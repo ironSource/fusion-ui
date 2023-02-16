@@ -1,9 +1,11 @@
-@import '../../../src/style/scss/v3/vars/vars';
-@import '../../../src/style/scss/v3/mixins/mixins';
-@import '../../../src/style/scss/v3/vars/border';
-@import './modal_vars';
+@import "../../../src/style/scss/v3/vars/vars";
+@import "../../../src/style/scss/v3/mixins/mixins";
 
-$box-shadow: 0 0 20px 0 rgba(30, 30, 30, 0.05);
+$modalHeaderHeight: 56px;
+$modalFooterHeight: 56px;
+$modalFooterSmallHeight: 48px;
+
+$box-shadow: 0px 32px 32px -8px rgba(0, 0, 0, 0.08), 0px 0px 32px -8px rgba(0, 0, 0, 0.12);
 $borderRadius: 16px;
 
 
@@ -42,6 +44,24 @@ $borderRadius: 16px;
             &.has-footer.has-header{
                 grid-template-rows: $modalHeaderHeight 1fr $modalFooterHeight;
             }
+
+            &:has(fusion-modal-footer.fu-small){
+                &.has-footer{
+                    grid-template-rows: 20px 1fr $modalFooterSmallHeight;
+                }
+                &.has-footer.has-header{
+                    grid-template-rows: $modalHeaderHeight 1fr $modalFooterSmallHeight;
+                }
+            }
         }
+    }
+}
+
+// for storybook docs mode
+:host-context(.docs-story){
+    position: unset;
+    .modal {
+        height: unset;
+        overflow: unset;
     }
 }

@@ -15,20 +15,37 @@ import {
     ViewChild
 } from '@angular/core';
 import {BehaviorSubject, fromEvent, merge, Subject} from 'rxjs';
-import {ChipFilterComponentConfigurations, ChipFilterMode, ChipType, ChipTypeToClass} from './chip-filter-component-configurations';
+import {
+    ChipFilterComponentConfigurations,
+    ChipFilterMode,
+    ChipIcon,
+    ChipType,
+    ChipTypeToClass
+} from './chip-filter-component-configurations';
 import {takeUntil} from 'rxjs/operators';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 
 @Directive()
 export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, OnDestroy, AfterContentInit {
+    /** @internal */
     @ContentChild(ApiBase, {static: true}) apiBase: ApiBase;
+    /** @internal */
     @ViewChild('ref', {static: true}) ref: TemplateRef<any>;
 
+    /** @internal */
     id: number | string;
+    /** @internal */
     chipType$ = new BehaviorSubject<ChipType>(null);
+    /** @internal */
     isCloseIcon$ = new BehaviorSubject<boolean>(false);
+    /** @internal */
     defaultContent: TemplateRef<any>;
+    /** @internal */
     isDefaultContent: boolean = true;
+    /** @internal */
+    leftIcon: ChipIcon;
+    /** @internal */
+    rightIcon: ChipIcon;
 
     private onDestroy$ = new Subject<void>();
     private restListeners$ = new Subject<void>();
@@ -46,9 +63,11 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
             this.mode = value.mode || 'static';
             this.close = value.close || false;
             this.maxWidth = value.maxWidth || 200;
+            this.rightIcon = value.rightIcon;
+            this.leftIcon = value.leftIcon;
         }
     }
-
+    /** @internal */
     @Input() set isSelected(value: boolean) {
         this.selected = value || false;
         if (value) {
@@ -58,7 +77,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
             };
         }
     }
-
+    /** @internal */
     @Input() set isVisible(value: boolean) {
         if (!value) {
             this.renderer.setStyle(this.element.nativeElement, 'display', 'none');
@@ -66,12 +85,15 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
             this.renderer.setStyle(this.element.nativeElement, 'display', 'block');
         }
     }
-
+    /** @internal */
     @Input() set isDynamicContent(value: boolean) {
         this.isDefaultContent = !value;
     }
-
-    @Output() onRemove = new EventEmitter();
+    /**
+     * On dynamic filter close button clicked (filter removed)
+     * @ignore
+     * */
+    @Output() onChipRemove = new EventEmitter();
 
     @Output() onSelectedChange = new EventEmitter<any>();
 
@@ -120,7 +142,18 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
         return this.isChipSelected;
     }
 
-    constructor(public element: ElementRef, private renderer: Renderer2, private cdr: ChangeDetectorRef) {}
+    /**
+     * used for chip filter removed (not for consumer)
+     * @internal
+     */
+    onRemove = new EventEmitter();
+
+    constructor(
+        /** @internal */
+        public element: ElementRef,
+        private renderer: Renderer2,
+        private cdr: ChangeDetectorRef
+    ) {}
 
     ngOnInit() {
         if (!this.apiBase && !this.disabled) {
@@ -150,7 +183,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
         this.onDestroy$.complete();
         this.restListeners$.complete();
     }
-
+    /** @internal */
     closeClicked($event) {
         $event.stopPropagation();
         if (this.mode === 'dynamic') {
@@ -159,10 +192,13 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
 
         this.selected = false;
         this.setChipType(this.selected);
+        // internal using
         this.onRemove.emit({
             id: this.id,
             isSelected: this.selected
         });
+        // external, for consumer
+        this.onChipRemove.emit(this.id);
         this.apiBase?.resetState$.next();
     }
 

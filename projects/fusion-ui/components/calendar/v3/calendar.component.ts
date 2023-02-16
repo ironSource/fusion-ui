@@ -12,13 +12,19 @@ import {CalendarService} from '@ironsource/fusion-ui/components/calendar/common/
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CalendarComponent extends CalendarBaseComponent implements OnDestroy, OnInit {
-    onDestroy$ = new Subject<void>();
-
+    private onDestroy$ = new Subject<void>();
+    /** @internal */
     @ViewChildren('date', {read: ElementRef}) dateList: QueryList<ElementRef>;
 
+    /** @internal */
     daysOfTheWeek = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
-    constructor(calendarService: CalendarService, public renderer: Renderer2) {
+    constructor(
+        /** @internal */
+        calendarService: CalendarService,
+        /** @internal */
+        public renderer: Renderer2
+    ) {
         super(calendarService);
     }
 
@@ -32,6 +38,7 @@ export class CalendarComponent extends CalendarBaseComponent implements OnDestro
         this.onDestroy$.complete();
     }
 
+    /** @internal */
     initListeners() {
         this.calendarService.dayHoverStart
             .pipe(
@@ -63,7 +70,7 @@ export class CalendarComponent extends CalendarBaseComponent implements OnDestro
                 });
             });
     }
-
+    /** @internal */
     dayHovered(day: Day, event: MouseEvent) {
         if (
             this.configuration.calendarType === CalendarType.DATE_PICKER ||
@@ -92,12 +99,12 @@ export class CalendarComponent extends CalendarBaseComponent implements OnDestro
             }
         }
     }
-
+    /** @internal */
     selectDay(day: Day) {
         super.selectDay(day);
         this.hoverEnd();
     }
-
+    /** @internal */
     hoverEnd() {
         if (this.configuration.calendarType === CalendarType.DATE_RANGE) {
             this.calendarService.dayHoverEnd.emit({parentDaterangeId: this.configuration.parentDaterangeId});

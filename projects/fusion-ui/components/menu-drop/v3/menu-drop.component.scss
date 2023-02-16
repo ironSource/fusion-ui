@@ -1,0 +1,64 @@
+@import '../../../src/style/scss/v3/vars/vars';
+@import '../../../src/style/scss/v3/mixins/mixins';
+
+$iconSize: 16px;
+
+:host {
+    display: block;
+    @extend %border-box-normalize;
+    @extend %list-reset;
+
+    position: absolute;
+    z-index: getZIndexLayerOffset(application, 1);
+
+    .fu-menu-holder {
+        background-color: $White;
+        padding: 8px;
+        box-shadow: 0px 8px 24px -6px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.4);
+        border-radius: 8px;
+        width: 215px;
+        max-height: calc(40px * 5 + 36px);
+        overflow-x: hidden;
+        overflow-y: auto;
+        @extend %customScroll;
+
+        .fu-menu-item {
+            width: 100%;
+            height: 40px;
+            padding: 12px 8px;
+            margin-top: 4px;
+            @extend %font-bodySmall;
+
+            &:first-child {
+                margin-top: 0;
+            }
+
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: $fu-black-900;
+            border-radius: 8px;
+            @include icon-style('fu-menu-item-icon', $fu-light-600, $iconSize, false, true) {
+                @include size($iconSize);
+            }
+
+            &:hover {
+                background-color: $fu-light-50;
+                cursor: pointer;
+            }
+
+            &.fu-disabled{
+                pointer-events: none;
+                opacity: .7;
+                &:hover {
+                    background-color: unset;
+                    cursor: default;
+                }
+                .fu-menu-item-icon{
+                    opacity: .7;
+                }
+            }
+
+        }
+    }
+}

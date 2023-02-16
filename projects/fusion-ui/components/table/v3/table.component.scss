@@ -5,6 +5,8 @@ $v3-maxCollWidth: 350px;
 $v3-headerHeight: 40px;
 $v3-headerCellPadding: 0 16px;
 $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-light-400);
+$tableFrameHeaderHeight: 56px;
+$tableFrameFooterHeight: 72px;
 
 %sort-triangle-base{
     width: 0;
@@ -23,9 +25,9 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
     border-radius: 16px;
 
     .tableWrap{
-        height: 100%;
+        height: calc(100% - #{$tableFrameHeaderHeight} - #{$tableFrameFooterHeight});
         display: block;
-        overflow-x: auto;
+        overflow: auto;
         @extend %customScroll;
         &::-webkit-scrollbar-track {
             margin-top: $v3-headerHeight;
@@ -96,8 +98,13 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
                     &.is-checkbox-holder{
                         text-align: center;
                     }
-
-                    &:after{ // this is border bottom of header
+                    &.sticky-left{
+                        background-color: $White;
+                        position: sticky;
+                        left: 0;
+                        z-index: getZIndexLayerOffset(normal, 3);
+                    }
+                    &:not(.fu-header-group):after{ // this is border bottom of header
                         border-bottom: $v3-headerBottomBorder;
                         content:'';
                         position:absolute;
@@ -105,7 +112,20 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
                         bottom: -1px;
                         width:100%;
                     }
-
+                    &.fu-header-group{
+                        @extend %font-bodyXSmall;
+                        height: 32px;
+                        vertical-align: bottom;
+                        &:first-of-type{
+                            border-left: none;
+                        }
+                    }
+                    &.fu-border-left{
+                        border-left: solid 1px $fu-light-400;
+                        &:first-of-type{
+                            border-left: none;
+                        }
+                    }
                     .fu-tooltiped{
                         cursor: help;
                     }
@@ -129,9 +149,9 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            position: fixed;
-            right: 81px;
-            bottom: 48px;
+            position: absolute;
+            right: 42px;
+            bottom: calc(24px + #{$tableFrameFooterHeight});
 
             @include icon-style('fu-return-top-icon', $fu-light-800, 32px, false, true){
                 @include size(32px);
@@ -162,7 +182,7 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
     }
 
     .fu-table-header{
-        height: 56px;
+        height: $tableFrameHeaderHeight;
         width: 100%;
         display: flex;
         align-items: center;
@@ -177,15 +197,17 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
             }
         }
         .fu-search-holder{
+            flex-grow: 2;
             height: 100%;
             border-left: solid 1px $fu-light-400;
-            padding-left: 19px;
+            padding-left: 8px;
             display: flex;
             align-items: center;
             @include icon-style('fu-search-icon', $fu-light-700, 16px, false, true){
                 @include size(16px);
             }
             input{
+                width: calc(100% - 30px);
                 border: none;
                 box-sizing: border-box;
                 padding: 10px;
@@ -202,7 +224,7 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
         }
     }
     .fu-table-footer{
-        height: 72px;
+        height: $tableFrameFooterHeight;
         width: 100%;
         display: flex;
         align-items: center;
@@ -211,6 +233,12 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
     &.fu-no-table-frame{
         border: initial;
         border-radius: initial;
+        .tableWrap {
+            height: 100%;
+        }
+        .fu-button-return-top{
+            bottom: 24px;
+        }
     }
 
     &.fixed-table {
@@ -235,17 +263,27 @@ $v3-headerBottomBorder: 2px solid var(--table-header-bottom-border-color, $fu-li
             &.fu-stocky-to-external{
                 display: initial;
             }
+            height: calc(100% - #{$tableFrameHeaderHeight} - #{$tableFrameFooterHeight});
+            & + .fu-table-footer{
+                border-top: solid 1px $fu-light-400;
+            }
         }
-        &:after { // fig leaf for hide scroll on header
-            content: '';
-            position:absolute;
-            right: 0;
-            top: 1px;
-            background-color: $White;
-            width: 16px;
-            height: $v3-headerHeight;
-            border-bottom: $v3-headerBottomBorder;
-            box-sizing: border-box;
+        &.fu-no-table-frame{
+            .tableWrap{
+                height: 100%;
+            }
+            &:after { // fig leaf for hide scroll on header
+                content: '';
+                position:absolute;
+                right: 0;
+                top: 1px;
+                background-color: $White;
+                width: 16px;
+                height: $v3-headerHeight;
+                border-bottom: $v3-headerBottomBorder;
+                box-sizing: border-box;
+            }
         }
+
     }
 }

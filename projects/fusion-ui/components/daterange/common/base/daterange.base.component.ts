@@ -24,10 +24,15 @@ import {map, takeUntil} from 'rxjs/operators';
 
 @Directive()
 export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, OnDestroy, ControlValueAccessor {
+    /** @internal */
     @Input() id: string;
+    /** @internal */
     @Input() presetsHeaderTemplate: TemplateRef<any>;
+    /** @internal */
     @Input() minDate: Date;
+    /** @internal */
     @Input() maxDate: Date;
+    /** @internal */
     @Input() extraParams: any;
 
     @Input()
@@ -40,36 +45,57 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
         return this.daterangeOptions;
     }
 
+    /** @internal */
     @Output() closed = new EventEmitter();
+    /** @internal */
     @Output() applied = new EventEmitter();
+    /** @internal */
     @Output() daySelected = new EventEmitter<DaterangeSelection>();
 
+    /** @internal */
     @ViewChild('overlay') overlay: ElementRef;
+    /** @internal */
     @ViewChild('chipContent', {static: true}) chipContent: TemplateRef<any>;
+    /** @internal */
     @ViewChild('trigger') trigger: ElementRef;
 
+    /** @internal */
     dropdownSelectConfigurations$ = new BehaviorSubject<DropdownSelectConfigurations>({});
-
+    /** @internal */
     pevIconName: IconData;
+    /** @internal */
     nextIconName: IconData;
 
+    /** @internal */
     isOpen$ = new BehaviorSubject<boolean>(false);
+    /** @internal */
     error = '';
+    /** @internal */
     currentMonths: Date[] = [];
+    /** @internal */
     defaultOptions: DaterangeOptions = {
         calendarAmount: 2,
         format: DEFAULT_DATE_FORMAT,
         presets: [],
         size: 'medium'
     };
+    /** @internal */
     selection: DaterangeSelection = {startDate: null, endDate: null};
+    /** @internal */
     currentSelectionFormatted: string;
+    /** @internal */
     selectionStarted: Day = null;
+    /** @internal */
     originalSelection: DaterangeSelection = null;
+    /** @internal */
     currentPreset: DaterangePresets | DaterangeCustomPreset = null;
+    /** @internal */
     overlayAlign$ = new BehaviorSubject<string>('');
+    /** @internal */
     selected$ = new BehaviorSubject<string>('');
+    /** @internal */
     defaultPlaceholder = DEFAULT_PLACEHOLDER_TEXT;
+
     protected daterangeOptions: DaterangeOptions;
 
     public get isPresetsShown(): boolean {
@@ -85,6 +111,7 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     private onDestroy$ = new Subject<void>();
 
     constructor(
+        /** @internal */
         public daterangeService: DaterangeService,
         private calendarService: CalendarService,
         private elemRef: ElementRef,
@@ -116,11 +143,11 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
         this.onDestroy$.next();
         this.onDestroy$.complete();
     }
-
+    /** @internal */
     changeConfig(val: string) {
         this.elemRef.nativeElement.style.setProperty('--fu-chip-max-width', val);
     }
-
+    /** @internal */
     valueSelected() {
         return this.selected$
             .asObservable()
@@ -132,17 +159,17 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
                 )
             );
     }
-
+    /** @internal */
     open() {
         this.trigger.nativeElement.click();
     }
-
+    /** @internal */
     selectPreset(preset, cohort?: number) {
         this.selection = this.daterangeService.getPresetRange(preset, cohort);
         this.currentPreset = preset;
         this.initMonth(this.selection.endDate);
     }
-
+    /** @internal */
     getCalendarConfigurations(month: Date): CalendarComponentConfigurations {
         return {
             parentDaterangeId: this.id,
@@ -154,7 +181,7 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
             calendarType: this.isSingleDatePicker ? CalendarType.DATE_PICKER : CalendarType.DATE_RANGE
         };
     }
-
+    /** @internal */
     toggle() {
         if (!this.isOpen$.getValue() && !this.isComponentDisabled$.getValue()) {
             this.calculateOverlayAlignPosition();
@@ -165,14 +192,14 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
             this.close();
         }
     }
-
+    /** @internal */
     onOutsideClick(target: HTMLElement) {
         // if (this.validateClickOutside(target) && !target.closest('fusion-dropdown-option')) {
         if (this.validateClickOutside(target)) {
             this.close();
         }
     }
-
+    /** @internal */
     apply() {
         if (this.isOpen$.getValue()) {
             this.isOpen$.next(false);
@@ -194,7 +221,7 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
             this.clearRangeDaysLimit();
         }
     }
-
+    /** @internal */
     close() {
         if (this.isOpen$.getValue()) {
             this.isOpen$.next(false);
@@ -210,7 +237,7 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
             this.setPlaceholder({isOpen: false});
         }
     }
-
+    /** @internal */
     onMonthChange(direction: string) {
         let newMonth = null;
         switch (direction) {
@@ -230,7 +257,7 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
             }
         }
     }
-
+    /** @internal */
     onSelectDay(day: Day) {
         this.currentPreset = null;
 
@@ -249,7 +276,7 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
             this.apply();
         }
     }
-
+    /** @internal */
     getCurrentSelectionFormatted() {
         let textToDisplay = this.daterangeOptions?.placeholder ?? DEFAULT_PLACEHOLDER_TEXT;
         const preset = this.determinePreset(this.originalSelection);
@@ -266,7 +293,7 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
         this.currentSelectionFormatted = textToDisplay;
         return textToDisplay;
     }
-
+    /** @internal */
     onWriteValue(value: DaterangeSelection): void {
         if (value?.date || value?.startDate || value?.endDate) {
             if (this.isSingleDatePicker) {
@@ -292,7 +319,7 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
         this.selected$.next(this.getCurrentSelectionFormatted());
         this.setPlaceholder();
     }
-
+    /** @internal */
     setPlaceholder(configurations: DropdownSelectConfigurations = {}) {
         this.dropdownSelectConfigurations$.next({
             ...this.dropdownSelectConfigurations$.getValue(),
@@ -375,16 +402,16 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
             this.maxDate = !isNullOrUndefined(this.originalMaxDate) ? this.originalMaxDate : null;
         }
     }
-
+    /** @internal */
     propagateChange = (_: DaterangeSelection) => {};
-
+    /** @internal */
     writeValue(value: DaterangeSelection): void {
         this.onWriteValue(value);
     }
-
+    /** @internal */
     registerOnChange(fn: any): void {
         this.propagateChange = fn;
     }
-
+    /** @internal */
     registerOnTouched(): void {}
 }

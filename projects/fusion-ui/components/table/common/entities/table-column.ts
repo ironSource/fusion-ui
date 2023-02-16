@@ -8,6 +8,7 @@ import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
 export interface TableColumn {
     key: string;
     title?: string;
+    groupName?: string;
     type?: TableColumnTypeEnum;
     inputType?: InlineInputType;
     totalRowTypeAsString?: boolean; // data type represent in total string. default true
