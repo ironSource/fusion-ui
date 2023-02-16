@@ -22,7 +22,7 @@ env:
 
 jobs:
   code-quality:
-    runs-on: [self-hosted, demand]
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
