@@ -371,7 +371,8 @@ $smallHeight: 32px;
             @extend %font-bodySmall;
             &.right{
                 align-items: flex-start;
-                width: 75px;
+                min-width: 50px;
+                width: 50px;
             }
         }
         input {
