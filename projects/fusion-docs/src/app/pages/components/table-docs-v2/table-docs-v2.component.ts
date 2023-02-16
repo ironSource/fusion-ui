@@ -515,7 +515,10 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
                             website: item.website,
                             live: _index !== 2,
                             bid: fcBid,
-                            bidSecond: fcSecondBid
+                            bidSecond: fcSecondBid,
+                            rowMetaData: {
+                                readonly: _index === 3
+                            }
                         };
                     });
                     this.rowsBig = [...this.rows];
