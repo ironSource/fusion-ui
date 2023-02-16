@@ -4,8 +4,6 @@ All notable changes to this project will be documented in this file. See [commit
 
 ### [5.1.1](https://github.com/ironSource/fusion-ui/compare/v5.1.1-rc.3...v5.1.1) (2023-02-16)
 
-### [5.1.1-rc.3](https://github.com/ironSource/fusion-ui/compare/v5.1.1-rc.2...v5.1.1-rc.3) (2023-02-15)
-
 
 ### Bug Fixes
 
