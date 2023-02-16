@@ -46,6 +46,36 @@ export const TABLE_TOGGLE_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'live', type: TableColumnTypeEnum.ToggleButton, title: '', width: '45px'},
     ...TABLE_DEFAULT_COLUMNS_CONFIG
 ];
+
+export const TABLE_TOGGLE_EDIT_COLUMNS_CONFIG: TableColumn[] = [
+    {key: 'id', title: 'Id'},
+    {key: 'live', type: TableColumnTypeEnum.ToggleButton, title: '', width: '45px'},
+    {
+        key: 'amount',
+        type: TableColumnTypeEnum.InputEdit,
+        inputType: InlineInputType.Currency,
+        customErrorMapping: {
+            required: {errorMessageKey: 'required'},
+            min: {
+                errorMessageKey: 'min',
+                textMapping: [{key: 'minValue', value: '5'}]
+            },
+            max: {
+                errorMessageKey: 'max',
+                textMapping: [{key: 'maxValue', value: '500'}]
+            }
+        },
+        title: 'Amount',
+        width: '90px',
+        align: 'right',
+        headerAlign: 'right'
+    },
+    {key: 'name', title: 'Name'},
+    {key: 'username', title: 'Username'},
+    {key: 'email', title: 'Email'},
+    {key: 'website', title: 'Website'}
+];
+
 export const TABLE_NUMBER_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'id', title: 'Id'},
     {key: 'name', title: 'Name', width: '150px'},
@@ -351,6 +381,24 @@ export const ROWS_TOGGLE_DATA = ROWS_DEFAULT_DATA.map(row => {
 export const ROWS_NUMBER_DATA = ROWS_DEFAULT_DATA.map(row => {
     return {amount: Math.floor(Math.random() * 100), ...row};
 });
+
+export const ROWS_READONLY_ROW_DATA = ROWS_DEFAULT_DATA.map((row, idx) => {
+    const amountFormControl = new FormControl(Math.floor(Math.random() * 100), [
+        Validators.required,
+        Validators.min(5),
+        Validators.max(500)
+    ]);
+    return {
+        ...row,
+        name: idx === 4 ? '>>READ ONLY ROW<<' : row.name,
+        live: idx > 3,
+        amount: amountFormControl,
+        rowMetaData: {
+            readonly: idx === 4
+        }
+    };
+});
+
 export const ROWS_DATE_DATA = ROWS_DEFAULT_DATA.map(row => {
     return {date: randomDate(new Date(2012, 0, 1), new Date()), ...row};
 });

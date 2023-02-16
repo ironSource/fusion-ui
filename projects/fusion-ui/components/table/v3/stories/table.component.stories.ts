@@ -18,7 +18,9 @@ import {
     TABLE_DEFAULT_OPTIONS,
     TABLE_SORTING_COLUMNS_CONFIG,
     TABLE_STICKY_COLUMNS_CONFIG,
-    TABLE_SUBHEADER_COLUMNS_CONFIG
+    TABLE_SUBHEADER_COLUMNS_CONFIG,
+    ROWS_READONLY_ROW_DATA,
+    TABLE_TOGGLE_EDIT_COLUMNS_CONFIG
 } from './table.mock-data';
 
 const actionsData = {
@@ -1051,6 +1053,107 @@ const ROWS_DATA = [
 
 // endregion
 
+// region With "Totals" row
+export const WithReadOnlyRow = TableWithHostTemplate.bind({});
+WithReadOnlyRow.args = {
+    options: {tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'}},
+    columns: TABLE_TOGGLE_EDIT_COLUMNS_CONFIG,
+    rows: ROWS_READONLY_ROW_DATA
+};
+WithReadOnlyRow.parameters = {
+    docs: {
+        description: {
+            story: dedent`**Read Only row** table - table where has "read only" rows.
+
+            For this rows need to add one more property - \`row{...rowMetaData: {readonly: true}}\`
+            `
+        },
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import {
+  TableModule,
+  TableColumn,
+  TableOptions,
+  TableColumnTypeEnum,
+} from '@ironsource/fusion-ui/components/table';
+import { InlineInputType } from '@ironsource/fusion-ui/components/input-inline/common/base';
+import { FormControl, Validators } from '@angular/forms';
+
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<fusion-table
+    [columns]="columns"
+    [rows]="rows"
+    [options]="options"
+    (rowModelChange)="onRowModelChange($event)"
+  ></fusion-table>\`,
+  standalone: true,
+  imports: [TableModule],
+})
+export class FusionStoryWrapperComponent {
+  options: TableOptions = {
+    tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'},
+    hasTotalsRow: true
+  };
+  columns: TableColumn[] = COLUMNS_CONFIG;
+  rows = ROWS_DATA;
+
+  onRowModelChange($event) {
+  console.log('onRowModelChange: ', $event)
+    setTimeout(() => {
+      if ($event.keyChanged === 'live') {
+        $event.rowModel[$event.keyChanged] = $event.newValue;
+      }
+      $event.onRequestDone(true);
+    }, 2000);
+  }
+}
+
+const COLUMNS_CONFIG: TableColumn[] = [
+    {key: 'id', title: 'Id'},
+    {key: 'live', type: TableColumnTypeEnum.ToggleButton, title: '', width: '45px'},
+    {key: 'amount', type: TableColumnTypeEnum.InputEdit, inputType: InlineInputType.Currency,
+        customErrorMapping: {
+            required: {errorMessageKey: 'required'},
+            min: {
+                errorMessageKey: 'min',
+                textMapping: [{key: 'minValue', value: '5'}]
+            },
+            max: {
+                errorMessageKey: 'max',
+                textMapping: [{key: 'maxValue', value: '500'}]
+            }
+        },
+        title: 'Amount', width: '90px', align: 'right', headerAlign: "right"},
+    {key: 'name', title: 'Name'},
+    {key: 'username', title: 'Username'},
+    {key: 'email', title: 'Email'},
+    {key: 'website', title: 'Website'}
+];
+
+const ROWS_DATA = ${JSON.stringify(ROWS_DEFAULT_DATA)}.map((row, idx) => {
+    const amountFormControl = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5), Validators.max(500)]);
+    return {
+        ...row,
+        name: (idx === 4) ? '>>READ ONLY ROW<<' : row.name,
+        live: idx > 3,
+        amount: amountFormControl,
+        rowMetaData:{
+            readonly: idx === 4
+        }
+    };
+});
+            `,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
 /*
 // region With Remove Row action
 // Deprecated
@@ -1679,28 +1782,4 @@ const ROWS_DATA = [
     }
 };
 
-// endregion
-
-// -------------------------------------------
-// todo: - add story parameters for expanded rows (maybe other stories file)
-// region Expandable Rows
-/*export const ExpandableRows = TableWithHostTemplate.bind({});
-ExpandableRows.args = {
-    options: {
-        ...TABLE_DEFAULT_OPTIONS,
-    }
-};
-ExpandableRows.parameters = {
-    docs: {
-        description: {
-            story: dedent`**Expandable Rows** table - table with expandable rows :)`
-        },
-        source: {
-            language: 'typescript',
-            format: true,
-            type: 'code',
-            code: dedent``
-        }
-    }
-};*/
 // endregion

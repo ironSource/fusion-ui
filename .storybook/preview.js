@@ -13,7 +13,7 @@ export const parameters = {
     },
     docs: {inlineStories: true},
     stackblitzAdditionalDependency: {
-        "@ironsource/fusion-ui": '5.1.1-rc.0'
+        "@ironsource/fusion-ui": '5.1.1'
     },
     options: {
         storySort: (a, b) => {
