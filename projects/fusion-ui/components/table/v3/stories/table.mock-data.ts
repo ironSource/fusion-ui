@@ -172,6 +172,27 @@ export const TABLE_EDITABLE_CURRENCY_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'email', title: 'Email'},
     {key: 'website', title: 'Website'}
 ];
+export const TABLE_EDITABLE_PERCENT_COLUMNS_CONFIG: TableColumn[] = [
+    {key: 'id', title: 'Id'},
+    {key: 'name', title: 'Name', width: '150px'},
+    {
+        key: 'amount',
+        type: TableColumnTypeEnum.InputEdit,
+        inputType: InlineInputType.Percent,
+        customErrorMapping: {
+            required: {errorMessageKey: 'required'},
+            min: {
+                errorMessageKey: 'min',
+                textMapping: [{key: 'minValue', value: '5'}]
+            }
+        },
+        title: 'Percent',
+        width: '100px'
+    },
+    {key: 'username', title: 'Username'},
+    {key: 'email', title: 'Email'},
+    {key: 'website', title: 'Website'}
+];
 export const TABLE_COMPONENT_EDIT_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'id', title: 'Id'},
     {key: 'name', title: 'Name', width: '150px'},

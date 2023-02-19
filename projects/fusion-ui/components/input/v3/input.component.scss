@@ -368,6 +368,12 @@ $smallHeight: 32px;
         }
         .fu-input-units{
             padding-left: 8px;
+            @extend %font-bodySmall;
+            &.right{
+                align-items: flex-start;
+                min-width: 50px;
+                width: 50px;
+            }
         }
         input {
             background-color: $White;

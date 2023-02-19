@@ -1783,3 +1783,13 @@ const ROWS_DATA = [
 };
 
 // endregion
+
+// region WithoutFooter
+export const WithoutFooter = TableTemplate.bind({});
+WithoutFooter.args = {
+    options: {
+        ...TABLE_DEFAULT_OPTIONS,
+        noTableFooter: true
+    }
+};
+// endregion

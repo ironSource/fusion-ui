@@ -65,7 +65,11 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
     }
 
     get inputUnits() {
-        return this.isType(InlineInputType.Currency) ? '$' : null;
+        return this.isType(InlineInputType.Currency) ? '$' : this.isType(InlineInputType.Percent) ? '%' : null;
+    }
+
+    get inputUnitsPosition() {
+        return this.isType(InlineInputType.Currency) ? 'left' : this.isType(InlineInputType.Percent) ? 'right' : null;
     }
 
     get savedValueToString() {
@@ -79,6 +83,8 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
                 value = this.currencyPipe
                     .transform(this.savedValue, this.currencyPipeCurrencyCode, this.currencyPipeDisplay, this.currencyPipeDigitsInfo)
                     .replace(/\.00$/, '');
+            } else if (this.isType(InlineInputType.Percent)) {
+                value = this.savedValue + ' %';
             }
         }
 
