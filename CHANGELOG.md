@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.1.2-rc.1](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.0...v5.1.2-rc.1) (2023-02-19)
+
+
+### Bug Fixes
+
+* **5.x.x:** fixed table floating action button vertical center position with any row height ([ba3d9da](https://github.com/ironSource/fusion-ui/commit/ba3d9da083469771222800883f046b9a65c9b269))
+
 ### [5.1.2-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.1.1...v5.1.2-rc.0) (2023-02-16)
 
 ### [5.1.1](https://github.com/ironSource/fusion-ui/compare/v5.1.1-rc.3...v5.1.1) (2023-02-16)
