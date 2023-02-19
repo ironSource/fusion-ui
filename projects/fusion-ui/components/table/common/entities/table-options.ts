@@ -19,6 +19,7 @@ export interface TableSearchOptions {
 export interface TableOptions {
     tableId?: string; // auto-generated table id
     tableLabel?: TableLabel; // table label with info tooltip (v3)
+    noTableFooter?: boolean; // no display table footer
     searchOptions?: TableSearchOptions; // table search (v3)
     hasReturnToTopButton?: boolean; // has return to top button
     scrollElementSelector?: string; // for vertically scroll listener - default table wrapper (v3)

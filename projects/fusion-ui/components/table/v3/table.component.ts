@@ -142,6 +142,10 @@ export class TableComponent implements OnInit, OnDestroy {
         return !(!!this.options?.tableLabel || !!this.options?.searchOptions);
     }
 
+    @HostBinding('class.fu-no-table-footer') get noTableFooter(): boolean {
+        return !this.noTableFrame && this.options?.noTableFooter;
+    }
+
     @HostBinding('class.is-empty') get isEmpty(): boolean {
         return this.tableService.isTableEmpty(this.rows, this.options.isGroupedTable, this.options.hasTotalsRow);
     }
