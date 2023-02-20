@@ -131,6 +131,10 @@ $itemWidth: 252px;
                         }
                         .fu-content-loading {
                             @extend %loadingDefinition;
+                            // todo: check from where in has this props for this class if component i n SB
+                            left: unset;
+                            position: unset;
+                            top: unset;
                         }
                     }
                 }

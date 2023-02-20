@@ -9,6 +9,7 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {BackendPagination, SelectedItemName} from '@ironsource/fusion-ui/components/dropdown';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
+import {DropdownDualMultiSelectOptions} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select/common/base/dropdown-dual-multi-select.base.entity';
 
 const CLASS_LIST = [
     'dual-select-button',
@@ -75,6 +76,8 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.onBackendPaginationChanged(value);
         this.backendPaginationState = value;
     }
+
+    @Input() options: DropdownDualMultiSelectOptions;
 
     get hasBackendPagination(): boolean {
         return !isNullOrUndefined(this.backendPaginationState);
