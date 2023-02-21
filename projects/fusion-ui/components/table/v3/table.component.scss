@@ -298,4 +298,10 @@ $tableFrameFooterHeight: 72px;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
     }
+
+    &.is-empty{
+        .fu-table-footer{
+            border-top: 1px solid $fu-light-400;
+        }
+    }
 }
