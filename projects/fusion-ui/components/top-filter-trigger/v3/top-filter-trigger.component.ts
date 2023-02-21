@@ -20,11 +20,12 @@ import {takeUntil, tap} from 'rxjs/operators';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
 import {isNullOrUndefined, isObject, isString} from '@ironsource/fusion-ui/utils';
 import {DEFAULT_IMAGE_HOLDER, TRIGGER_ICON} from './top-filter-trigger.config';
+import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 
 @Component({
     selector: 'fusion-top-filter-trigger',
     standalone: true,
-    imports: [CommonModule, IconModule],
+    imports: [CommonModule, IconModule, TooltipModule],
     templateUrl: './top-filter-trigger.component.html',
     styleUrls: ['./top-filter-trigger.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
