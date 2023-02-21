@@ -112,10 +112,7 @@ export class TopFilterTriggerComponent implements OnInit, OnDestroy {
             if (isString(selected.value) && !selected.value.toLowerCase().startsWith('all ')) {
                 this.helper =
                     selected.partialSelect.firstSelected.title ??
-                    selected.partialSelect.firstSelected.displayText +
-                        ' and ' +
-                        (selected.partialSelect.totalAmount - selected.selectedCount) +
-                        ' more';
+                    selected.partialSelect.firstSelected.displayText + ' and ' + (selected.selectedCount - 1) + ' more';
             } else {
                 this.helper =
                     !isNullOrUndefined(selected.selectedCount) && selected.selectedCount !== 0
