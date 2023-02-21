@@ -606,7 +606,7 @@ const ROWS_DEFAULT_DATA = [
 // endregion
 
 // region Stiky Column
-const TableStikyColumnTemplate: Story<TableComponent> = (args: TableComponent) => ({
+const TableStickyColumnTemplate: Story<TableComponent> = (args: TableComponent) => ({
     props: {...args},
     template: `<div style="width: 600px; margin: 0 auto;">
     <fusion-table
@@ -617,7 +617,7 @@ const TableStikyColumnTemplate: Story<TableComponent> = (args: TableComponent) =
     ></fusion-table>
 </div>`
 });
-export const StickyColumn = TableStikyColumnTemplate.bind({});
+export const StickyColumn = TableStickyColumnTemplate.bind({});
 StickyColumn.args = {
     columns: TABLE_STICKY_COLUMNS_CONFIG
 };
@@ -737,6 +737,41 @@ const ROWS_DATA = [
             type: 'code'
         }
     }
+};
+// endregion
+
+// region Sticky Column and Header
+const TableStickyColumnHeaderTemplate: Story<TableComponent> = (args: TableComponent) => ({
+    props: {...args},
+    template: `<div style="width: 600px; height: 523px; margin: 0 auto;">
+    <fusion-table
+        [options]="options"
+        [columns]="columns"
+        [rows]="rows"
+        [loading]="loading"
+    ></fusion-table>
+</div>`
+});
+export const StickyColumnAndHeader = TableStickyColumnHeaderTemplate.bind({});
+StickyColumnAndHeader.args = {
+    options: {
+        ...TABLE_DEFAULT_OPTIONS,
+        stickyHeader: true
+    },
+    columns: TABLE_STICKY_COLUMNS_CONFIG,
+    rows: [
+        ...ROWS_DEFAULT_DATA,
+        ...Array.from({length: 30}, (_, i) => {
+            const id = i + 11;
+            return {
+                id: id,
+                name: id + ' name',
+                username: id + ' UserName',
+                email: id + ' E-mail',
+                website: id + ' Website'
+            };
+        })
+    ]
 };
 // endregion
 
