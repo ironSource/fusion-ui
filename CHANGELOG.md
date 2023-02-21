@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.1.2-rc.2](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.1...v5.1.2-rc.2) (2023-02-21)
+
+
+### Bug Fixes
+
+* **5.x.x:** empty table footer fixed ([daae93f](https://github.com/ironSource/fusion-ui/commit/daae93f7fa0402523fcea86e5da686f5601606bc))
+* **5.x.x:** table header "fig leaf" for hide scroll on header fixed for framed table ([abc76c1](https://github.com/ironSource/fusion-ui/commit/abc76c1dbba7e54c8f486f098ca7ba9a925cb2ca))
+* **5.x.x:** top-filter-trigger fixed number in helper row for some selected ([93184db](https://github.com/ironSource/fusion-ui/commit/93184dbab44093f13cdc8f18747575b1e837b4cb))
+
 ### [5.1.2-rc.1](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.0...v5.1.2-rc.1) (2023-02-19)
 
 
