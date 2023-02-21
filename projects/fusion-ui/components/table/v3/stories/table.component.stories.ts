@@ -437,7 +437,7 @@ const ROWS_DATA = [
 // region Sticky Header
 const TableStickyHeaderTemplate: Story<TableComponent> = (args: TableComponent) => ({
     props: {...args},
-    template: `<div style="height: 505px">
+    template: `<div style="height: 523px">
     <fusion-table
         [options]="options"
         [columns]="columns"
