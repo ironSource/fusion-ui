@@ -1785,6 +1785,7 @@ import {
 })
 export class FusionStoryWrapperComponent {
   options: TableOptions = {
+    tableLabel: { text: 'Table label', tooltip: 'lorem ipsum dolor' },
     pagination: {
       enable: true,
     },
