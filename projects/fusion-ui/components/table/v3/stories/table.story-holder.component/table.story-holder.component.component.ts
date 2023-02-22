@@ -1,23 +1,25 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {TableModule} from '../../table.module';
 import {TableColumn, TableOptions, TableRowExpandEmitter} from '@ironsource/fusion-ui/components/table';
-import {delay, take, takeUntil, tap} from 'rxjs/operators';
+import {delay, finalize, map, take, takeUntil, tap} from 'rxjs/operators';
 import {BehaviorSubject, of, Subject} from 'rxjs';
 import {isNullOrUndefined, isNumber} from '@ironsource/fusion-ui/utils';
 import {FormControl, Validators} from '@angular/forms';
 import {ROWS_DEFAULT_DATA} from '@ironsource/fusion-ui/components/table/v3/stories/table.mock-data';
+import {CommonModule} from '@angular/common';
 
 @Component({
     selector: 'fusion-table-story-holder',
-    template: ` <fusion-table
+    template: `<fusion-table
         [columns]="columns"
         [rows]="tableRows"
         [options]="options"
-        [loading]="loading"
+        [loading]="tableLoading$ | async"
         [(expandedRows)]="expandedRows"
         (rowModelChange)="onRowModelChange($event)"
         (scrollDown)="onscrollDown()"
         (expandRow)="onExpandRow($event)"
+        (sortChanged)="onSortChanged($event)"
     ></fusion-table>`,
     styles: [
         `
@@ -33,7 +35,7 @@ import {ROWS_DEFAULT_DATA} from '@ironsource/fusion-ui/components/table/v3/stori
         `
     ],
     standalone: true,
-    imports: [TableModule]
+    imports: [CommonModule, TableModule]
 })
 export class TableStoryHolderComponent implements OnInit, OnDestroy {
     /**
@@ -61,9 +63,13 @@ export class TableStoryHolderComponent implements OnInit, OnDestroy {
     @Output() rowModelChange = new EventEmitter();
 
     /** @ignore */
-    @Input() loading = false;
+    @Input() set loading(value: boolean) {
+        this.tableLoading$.next(value);
+    }
     /** @ignore */
     tableRows = [];
+    /** @ignore */
+    tableLoading$ = new BehaviorSubject(false);
     /** @ignore */
     expandedRows: {[key: string]: boolean} = {}; // maf expanded rows - {1: true} mean that row with index 1 - expanded
 
@@ -121,6 +127,37 @@ export class TableStoryHolderComponent implements OnInit, OnDestroy {
         }, 1000);
     }
 
+    onSortChanged(sortByKey) {
+        let sortDirection: 'asc' | 'desc';
+        this.columns = this.columns.map(column => {
+            if (column.key === sortByKey) {
+                sortDirection = column.sort === 'asc' ? 'desc' : 'asc';
+                column.sort = sortDirection;
+            } else {
+                column.sort = '';
+            }
+            return column;
+        });
+
+        console.log('onSortChanged: ', sortByKey, sortDirection);
+
+        this.tableLoading$.next(true);
+        of(this._rows)
+            .pipe(
+                takeUntil(this.onDestroy$),
+                map(rows => {
+                    return this.doRowsSort(rows, sortByKey, sortDirection);
+                }),
+                delay(1000),
+                finalize(() => {
+                    this.tableLoading$.next(false);
+                })
+            )
+            .subscribe(rows => {
+                this.tableRows = [...rows];
+            });
+    }
+
     onExpandRow({rowIndex, row, isExpanded, successCallback, failedCallback, updateMap}: TableRowExpandEmitter): void {
         // updateMap - in case external expand call it must be false because map will be already updated.
         const tableRows = this.tableRows;
@@ -172,5 +209,14 @@ export class TableStoryHolderComponent implements OnInit, OnDestroy {
             ).pipe(delay(1000));
         }
         return of([]).pipe(delay(1000));
+    }
+
+    private doRowsSort(rows: any[], sortKey: string, sortDirection: 'asc' | 'desc'): any[] {
+        return rows.sort((a, b) => {
+            if (isNumber(a[sortKey])) {
+                return sortDirection === 'asc' ? a[sortKey] - b[sortKey] : b[sortKey] - a[sortKey];
+            }
+            return sortDirection === 'asc' ? a[sortKey].localeCompare(b[sortKey]) : b[sortKey].localeCompare(a[sortKey]);
+        });
     }
 }

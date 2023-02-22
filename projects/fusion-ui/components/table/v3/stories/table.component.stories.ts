@@ -74,6 +74,15 @@ const TableTemplate: Story<TableComponent> = (args: TableComponent) => ({
 ></fusion-table>`
 });
 
+const TableWithHostTemplate: Story<TableComponent> = (args: TableComponent) => ({
+    props: {...args},
+    template: `<fusion-table-story-holder
+    [options]="options"
+    [columns]="columns"
+    [rows]="rows"
+></fusion-table-story-holder>`
+});
+
 // region Default
 export const Default = TableTemplate.bind({});
 Default.parameters = {
@@ -354,6 +363,214 @@ const COLUMNS_CONFIG = [
     {key: 'username', title: 'Username', sort: ''},
     {key: 'email', title: 'Email', sort: ''},
     {key: 'website', title: 'Website'} // not sortable
+];
+
+const ROWS_DATA = [
+  {
+    id: 1,
+    name: 'Leanne Graham',
+    username: 'Bret',
+    email: 'Sincere@april.biz',
+    website: 'hildegard.org',
+  },
+  {
+    id: 2,
+    name: 'Ervin Howell',
+    username: 'Antonette',
+    email: 'Shanna@melissa.tv',
+    website: 'anastasia.net',
+  },
+  {
+    id: 3,
+    name: 'Clementine Bauch',
+    username: 'Samantha',
+    email: 'Nathan@yesenia.net',
+    website: 'ramiro.info',
+  },
+  {
+    id: 4,
+    name: 'Patricia Lebsack',
+    username: 'Karianne',
+    email: 'Julianne.OConner@kory.org',
+    website: 'kale.biz',
+  },
+  {
+    id: 5,
+    name: 'Chelsey Dietrich',
+    username: 'Kamren',
+    email: 'Lucio_Hettinger@annie.ca',
+    website: 'demarco.info',
+  },
+  {
+    id: 6,
+    name: 'Mrs. Dennis Schulist',
+    username: 'Leopoldo_Corkery',
+    email: 'Karley_Dach@jasper.info',
+    website: 'ola.org',
+  },
+  {
+    id: 7,
+    name: 'Kurtis Weissnat',
+    username: 'Elwyn.Skiles',
+    email: 'Telly.Hoeger@billy.biz',
+    website: 'elvis.io',
+  },
+  {
+    id: 8,
+    name: 'Nicholas Runolfsdottir V',
+    username: 'Maxime_Nienow',
+    email: 'Sherwood@rosamond.me',
+    website: 'jacynthe.com',
+  },
+  {
+    id: 9,
+    name: 'Glenna Reichert',
+    username: 'Delphine',
+    email: 'Chaim_McDermott@dana.io',
+    website: 'conrad.com',
+  },
+  {
+    id: 10,
+    name: 'Clementina DuBuque',
+    username: 'Moriah.Stanton',
+    email: 'Rey.Padberg@karina.biz',
+    website: 'ambrose.net',
+  },
+];
+            `
+        }
+    }
+};
+// endregion
+
+// region SortingBackend
+export const SortingBackend = TableWithHostTemplate.bind({});
+SortingBackend.args = {
+    options: {
+        ...TABLE_DEFAULT_OPTIONS,
+        sortingType: 'external',
+        isLoadingOverlayMode: false
+    },
+    columns: TABLE_SORTING_COLUMNS_CONFIG
+};
+SortingBackend.parameters = {
+    docs: {
+        description: {
+            story: dedent`**Sortable** table - sorting supported for columns where has \`sort: ''\` property in column configuration.
+                If it set \`sort: 'asc'\` it mean that data in table will be ascending sorted by default.
+                For descending use - "desc". If property **sort** not added to the column config, this column will not be sortable
+
+                For external (backend) sorting need in options set \`sortingType: 'external', isLoadingOverlayMode: false\`
+                isLoadingOverlayMode: false - (no table overlay loading in v3)
+
+                Event \`(sortChanged)="onSortChanged($event)"\` will emitted. $event - column key for sorting.
+
+                See stackblitz example:
+                `
+        },
+        source: {
+            language: 'typescript',
+            format: true,
+            type: 'code',
+            code: dedent`
+import { Component, OnDestroy } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { BehaviorSubject, of, Subject } from 'rxjs';
+import { delay, finalize, map, takeUntil } from 'rxjs/operators';
+import { isNumber } from '@ironsource/fusion-ui/utils';
+import {
+  TableModule,
+  TableColumn,
+  TableOptions,
+} from '@ironsource/fusion-ui/components/table';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<fusion-table
+    [columns]="columns"
+    [rows]="rows"
+    [options]="options"
+    [loading]="tableLoading$ | async"
+    (sortChanged)="onSortChanged($event)"
+  ></fusion-table>\`,
+  standalone: true,
+  imports: [CommonModule, TableModule],
+})
+export class FusionStoryWrapperComponent implements OnDestroy {
+  private onDestroy$ = new Subject<void>();
+
+  options: TableOptions = {
+    tableLabel: { text: 'Table label', tooltip: 'lorem ipsum dolor' },
+    sortingType: 'external',
+    isLoadingOverlayMode: false,
+  };
+
+  tableLoading$ = new BehaviorSubject(false);
+
+  columns: TableColumn[] = COLUMNS_CONFIG;
+  rows = ROWS_DATA;
+
+  ngOnDestroy(): void {
+    this.onDestroy$.next();
+    this.onDestroy$.complete();
+  }
+
+  onSortChanged(sortByKey) {
+    let sortDirection: 'asc' | 'desc';
+    this.columns = this.columns.map((column) => {
+      if (column.key === sortByKey) {
+        sortDirection = column.sort === 'asc' ? 'desc' : 'asc';
+        column.sort = sortDirection;
+      } else {
+        column.sort = '';
+      }
+      return column;
+    });
+
+    console.log('onSortChanged: ', sortByKey, sortDirection);
+
+    this.tableLoading$.next(true);
+
+    of(this.rows)
+      .pipe(
+        takeUntil(this.onDestroy$),
+        map((rows) => {
+          return this.doRowsSort(rows, sortByKey, sortDirection);
+        }),
+        delay(1000),
+        finalize(() => {
+          this.tableLoading$.next(false);
+        })
+      )
+      .subscribe((rows) => {
+        this.rows = [...rows];
+      });
+  }
+
+  private doRowsSort(
+    rows: any[],
+    sortKey: string,
+    sortDirection: 'asc' | 'desc'
+  ): any[] {
+    return rows.sort((a, b) => {
+      if (isNumber(a[sortKey])) {
+        return sortDirection === 'asc'
+          ? a[sortKey] - b[sortKey]
+          : b[sortKey] - a[sortKey];
+      }
+      return sortDirection === 'asc'
+        ? a[sortKey].localeCompare(b[sortKey])
+        : b[sortKey].localeCompare(a[sortKey]);
+    });
+  }
+}
+
+const COLUMNS_CONFIG = [
+  { key: 'id', title: 'Id', sort: 'asc' },
+  { key: 'name', title: 'Name', sort: '' },
+  { key: 'username', title: 'Username', sort: '' },
+  { key: 'email', title: 'Email', sort: '' },
+  { key: 'website', title: 'Website' }, // not sortable
 ];
 
 const ROWS_DATA = [
@@ -776,14 +993,6 @@ StickyColumnAndHeader.args = {
 // endregion
 
 // region With Search
-const TableWithHostTemplate: Story<TableComponent> = (args: TableComponent) => ({
-    props: {...args},
-    template: `<fusion-table-story-holder
-    [options]="options"
-    [columns]="columns"
-    [rows]="rows"
-></fusion-table-story-holder>`
-});
 export const WithSearch = TableWithHostTemplate.bind({});
 const onSearch = new EventEmitter();
 WithSearch.args = {
@@ -1576,6 +1785,7 @@ import {
 })
 export class FusionStoryWrapperComponent {
   options: TableOptions = {
+    tableLabel: { text: 'Table label', tooltip: 'lorem ipsum dolor' },
     pagination: {
       enable: true,
     },
