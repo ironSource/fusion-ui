@@ -70,6 +70,8 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
 
     @Output() scrollDown = new EventEmitter();
 
+    @Output() toggleSelectAll = new EventEmitter<boolean>();
+
     isSelectAllDisabled$ = new BehaviorSubject<boolean>(false);
     selectedItemsNumber: number;
     selectedControl = new FormControl([]);
@@ -118,11 +120,13 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
     selectAll(checked?: boolean): void {
         this.isAllSelected = checked;
         this.isIndeterminate = false;
+        // console.log('body-selectAll: ', this.isAllSelected, this.options$.getValue().filter(item => !item.isDisabled || this.selectedItemsMapping[item.id]));
         this.selectedControl.setValue(this.options$.getValue().filter(item => !item.isDisabled || this.selectedItemsMapping[item.id]));
 
         if (!checked) {
             this.clearAll();
         }
+        this.toggleSelectAll.emit(this.isAllSelected);
     }
 
     changeSelected(item: DropdownOption): void {
@@ -237,6 +241,9 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
         this.selectedItemsWorker$.next(items || []);
         this.isIndeterminate = items?.length > 0 && items?.length < this.options$?.getValue().length;
         this.isAllSelected = this.isSelectAllDisabled$.getValue() ? this.isAllSelected : items?.length === this.options$?.getValue().length;
+
+        this.toggleSelectAll.emit(this.isAllSelected);
+
         this.propagateChange(items || []);
     }
 

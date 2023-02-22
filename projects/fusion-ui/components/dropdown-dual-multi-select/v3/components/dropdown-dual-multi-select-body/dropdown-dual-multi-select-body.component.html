@@ -17,7 +17,7 @@
         <div class="content-col-right">
             <div class="body-header">
                 <label class="fu-select-label">
-                    {{(selectedItemsMapping ? selectedItemsMapping : {}) | objectLengthWhereValueTrue}} selected
+                    {{(isAllSelected ? totalItems : (selectedItemsMapping ? selectedItemsMapping : {}) | objectLengthWhereValueTrue)}} selected
                 </label>
                 <div
                     *ngIf="showClearAllButton()"

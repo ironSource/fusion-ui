@@ -12,7 +12,7 @@ import {DropdownDualMultiSelectModule} from '../dropdown-dual-multi-select.modul
 import {DropdownIncludeExcludeDemoWrapperComponent} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select/v3/stories/dropdown-include-exclude-demo-wrapper/dropdown-include-exclude-demo-wrapper.component';
 
 export default {
-    title: 'Components/Dropdown/Include-Exclude/Pagination',
+    title: 'Components/Dropdown/Include-Exclude/BackEnd Pagination',
     component: DropdownDualMultiSelectComponent,
     decorators: [
         moduleMetadata({

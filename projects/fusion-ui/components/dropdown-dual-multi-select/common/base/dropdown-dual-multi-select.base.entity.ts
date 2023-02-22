@@ -1,8 +1,4 @@
-export interface DropdownDualMultiSelectOptions {
-    allowBlacklist?: boolean;
-}
-
-export interface DropdownDualMultiSelectBlacklist {
-    isInclude: boolean;
+export interface DropdownDualMultiSelectAllowBlacklist {
+    includeMode: boolean;
     data: any[];
 }

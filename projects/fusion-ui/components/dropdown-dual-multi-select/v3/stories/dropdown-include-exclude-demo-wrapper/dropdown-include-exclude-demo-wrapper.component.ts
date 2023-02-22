@@ -30,7 +30,7 @@ export class DropdownIncludeExcludeDemoWrapperComponent implements OnInit, OnDes
     selectedItemName = {singular: 'Item', plural: 'Items'};
     pendingItems = false; // main component loader. set it true
 
-    formControl = new FormControl<DropdownOption[]>([]); // regular
+    formControl = new FormControl([]); // regular
 
     dropdownPaginationOptions: BackendPagination;
     private backendPaginationOptions = this.getBackendPaginationOptions();
@@ -62,10 +62,11 @@ export class DropdownIncludeExcludeDemoWrapperComponent implements OnInit, OnDes
         };
         const backendGetFunction = this.getPaginationData.bind(this);
 
-        const backendPagination = {
+        const backendPagination: BackendPagination = {
             backendGetFunction,
             getOptions,
-            ...this.backendPaginationOptions
+            ...this.backendPaginationOptions,
+            allowBlacklist: true
         };
         this.dropdownPaginationOptions = backendPagination;
     }
@@ -75,17 +76,15 @@ export class DropdownIncludeExcludeDemoWrapperComponent implements OnInit, OnDes
             startIndex: (pageNumber - 1) * resultsBulkSize,
             endIndex: (pageNumber - 1) * resultsBulkSize + resultsBulkSize
         };
-
-        console.log('getPaginationData >>>', page, searchTerm);
-
         // back-end request example
         return this.apiService
             .get('https://jsonplaceholder.typicode.com/photos') // in real request add searchTerm
             .pipe(
                 takeUntil(this.onDestroy$),
-                delay(2000),
+                delay(1000),
                 map((data: any[]) => {
                     const pageData = data.slice(page.startIndex, page.endIndex);
+                    console.log('WRAPPER: ', pageNumber, page, pageData, pageData[0].id);
                     return {items: pageData, totals: data.length};
                 })
             );

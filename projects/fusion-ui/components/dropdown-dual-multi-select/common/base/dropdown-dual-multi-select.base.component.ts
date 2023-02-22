@@ -9,7 +9,8 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {BackendPagination, SelectedItemName} from '@ironsource/fusion-ui/components/dropdown';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {DropdownDualMultiSelectOptions} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select/common/base/dropdown-dual-multi-select.base.entity';
+import {DropdownDualMultiSelectBodyComponent} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select/v3/components/dropdown-dual-multi-select-body/dropdown-dual-multi-select-body.component';
+import {DropdownDualMultiSelectAllowBlacklist} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select/common/base/dropdown-dual-multi-select.base.entity';
 
 const CLASS_LIST = [
     'dual-select-button',
@@ -77,8 +78,6 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.backendPaginationState = value;
     }
 
-    @Input() options: DropdownDualMultiSelectOptions;
-
     get hasBackendPagination(): boolean {
         return !isNullOrUndefined(this.backendPaginationState);
     }
@@ -90,6 +89,9 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     @ViewChild('chipContent', {static: true}) chipContent: TemplateRef<any>;
     /** @internal */
     @ViewChild('trigger') trigger: ElementRef;
+
+    /** @internal */
+    @ViewChild('dualMultiSelectBodyComponent') dualMultiSelectBodyComponent: DropdownDualMultiSelectBodyComponent;
 
     /** @internal */
     preSelectedItems = new FormControl();
@@ -119,6 +121,11 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     uid: string;
     /** @internal */
     backendPaginationChanged$: Subject<any> = new Subject();
+    /** @internal */
+    selectAllowBlacklist: DropdownDualMultiSelectAllowBlacklist = {
+        includeMode: true,
+        data: []
+    };
 
     private selectedChange: DropdownOption[];
     private parentWithOverflow: HTMLElement;
@@ -154,14 +161,17 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     /** @internal */
     onScrollDown(): void {
         if (this.hasBackendPagination && this.backendPaginationTotalResult && this.backendPaginationTotalResult > this.items.length) {
+            // console.log('onScrollDown with BP>>');
             this.loadingLeft$.next(true);
+            this.backendPaginationPageNumber++;
             this.backendPaginationState
                 .backendGetFunction({
                     ...this.backendPaginationState.getOptions,
-                    pageNumber: this.backendPaginationPageNumber + 1
+                    pageNumber: this.backendPaginationPageNumber
                 })
                 .pipe(take(1))
                 .subscribe(val => {
+                    // console.log('0: val: ', backendPaginationPageNumber, val);
                     const responseValue =
                         val && Array.isArray(val[this.backendPaginationState.responseDataPropertyName])
                             ? val[this.backendPaginationState.responseDataPropertyName]
@@ -169,15 +179,32 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
                     const value = this.backendPaginationState.mappingFunction
                         ? responseValue.map(this.backendPaginationState.mappingFunction)
                         : responseValue;
+                    // console.log('0-1: mapped value: ', value);
                     const dropdownOptions = this.sortOptions({
                         backendPagination: this.backendPaginationState,
                         leftSideItems: [...value]
                     });
+                    // console.log('1: base - backendPaginationState subscription page: ', this.backendPaginationPageNumber);
+                    // console.log('2: --', this.items.length, dropdownOptions)
+
                     this.items = [...this.items, ...dropdownOptions];
-                    this.backendPaginationPageNumber++;
+
+                    // console.log('3: ==', this.items.length, this.items);
+
+                    // todo: check it.
+                    // this.updateSelectedOnBackendPagination();
+
+                    this.loadingLeft$.next(false);
                 });
         } else {
             this.scrollDown.emit();
+        }
+    }
+    /** @internal */
+    toggleSelectAll(isSelectAllChecked) {
+        if (this.backendPaginationState?.allowBlacklist) {
+            this.selectAllowBlacklist.includeMode = !isSelectAllChecked;
+            this.selectAllowBlacklist.data = [];
         }
     }
 
@@ -223,7 +250,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.opened$.next(!apply);
         this.confirm = true;
         this.setLabel();
-        this.propagateChange(this.preSelectedItems.value);
+        this.propagateChange(this.getPropagateChangeValue());
         this.selectedChange = this.preSelectedItems.value;
         this.selected$.next(
             this.selectedChange?.length === 1
@@ -255,12 +282,14 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     }
 
     /** @internal */
-    propagateChange = (_: DropdownOption[]) => {};
+    propagateChange = (_: DropdownOption[] | DropdownDualMultiSelectAllowBlacklist) => {};
     /** @internal */
     propagateTouched = () => {};
 
     /** @internal */
     writeValue(value: DropdownOption[]): void {
+        console.log('writeValue', value);
+
         this.preSelectedItems.setValue(value);
         this.selectedChange = value;
         this.selected$.next(
@@ -302,6 +331,19 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         if (isClickOutSide && addFilterOptionClicked && !$event.closest('.clear-all-btn') && !$event.closest('.icon-clear')) {
             this.closeDropdownDualSelect();
             this.viewChange.emit(this.opened$.getValue());
+        }
+    }
+
+    private getPropagateChangeValue(): DropdownOption[] | DropdownDualMultiSelectAllowBlacklist {
+        if (this.backendPaginationState?.allowBlacklist) {
+            if (this.dualMultiSelectBodyComponent.isAllSelected) {
+                this.selectAllowBlacklist.data = [];
+            } else {
+                this.selectAllowBlacklist.data = this.preSelectedItems.value;
+            }
+            return this.selectAllowBlacklist;
+        } else {
+            return this.preSelectedItems.value;
         }
     }
 
@@ -379,7 +421,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.backendPaginationTotalResult = null;
         this.backendPaginationPageNumber = 1;
         this.items = null;
-        this.loadingLeft$.next(true);
+        this.pendingItems = true; // it first page request, so use main pending
         if (backendPagination) {
             backendPagination
                 .backendGetFunction(backendPagination.getOptions)
@@ -396,7 +438,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
                     });
                     this.backendPaginationTotalResult = val ? val[backendPagination.responseTotalCountPropertyName] : null;
                     this.totalItems = this.backendPaginationTotalResult;
-                    this.loadingLeft$.next(false);
+                    this.pendingItems = false;
                 });
         }
     }
@@ -413,4 +455,19 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         }
         return leftSideItems;
     }
+
+    // todo: check it. how to implement with right side. (add to selected array or live blank if select all - blacklist mode)
+    // private updateSelectedOnBackendPagination(){
+    //     if(this.dualMultiSelectBodyComponent.isAllSelected){
+    //         // update selected with new portion of items
+    //         this.dualMultiSelectBodyComponent.selectedControl
+    //             .setValue(
+    //                 this.dualMultiSelectBodyComponent.options$
+    //                     .getValue()
+    //                     .filter(item => (
+    //                         !item.isDisabled
+    //                         || this.dualMultiSelectBodyComponent.selectedItemsMapping[item.id]
+    //                     )));
+    //     }
+    // }
 }

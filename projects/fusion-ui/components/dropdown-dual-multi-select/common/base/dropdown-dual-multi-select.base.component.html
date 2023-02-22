@@ -49,7 +49,7 @@
             [title]="title"
         ></fusion-dropdown-dual-multi-select-header>
 
-        <fusion-dropdown-dual-multi-select-body
+        <fusion-dropdown-dual-multi-select-body #dualMultiSelectBodyComponent
             [autoComplete]="autoComplete"
             (scrollDown)="onScrollDown()"
             [formControl]="preSelectedItems"
@@ -60,6 +60,7 @@
             [isPendingItems]="pendingItems"
             [loadingLeft]="loadingLeft$ | async"
             [hasBackendPagination]="hasBackendPagination"
+            (toggleSelectAll)="toggleSelectAll($event)"
         ></fusion-dropdown-dual-multi-select-body>
 
         <fusion-dropdown-dual-multi-select-footer

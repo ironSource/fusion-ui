@@ -8,4 +8,5 @@ export interface BackendPagination {
     getOptions: ApiPaginationOptions;
     responseDataPropertyName: string;
     responseTotalCountPropertyName: string;
+    allowBlacklist?: boolean;
 }
