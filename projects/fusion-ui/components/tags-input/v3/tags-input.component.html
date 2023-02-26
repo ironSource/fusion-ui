@@ -1,0 +1,30 @@
+<div class="fu-tags-input-wrapper">
+    <div class="fu-tags-holder">
+        <!--Tags-list-->
+        <fusion-tag *ngFor="let tag of (displayedTags$ | async)"
+                    [configuration]="tag"
+                    [removeEventOnly]="true"
+                    [class.fu-tag-error]="!!tag.error"
+                    (onRemove)="tagRemoved($event)"
+        ></fusion-tag>
+        <!--Tags-list-->
+        <!--Input new tag and search in existed-->
+        <div class="search-container">
+            <fusion-input #tagInput
+                          [placeholder]="inputPlaceholder"
+                          (ngEnter)="enterNewTag($event)"
+                          [options]="inputOptions"
+            ></fusion-input>
+        </div>
+        <!--Input new tag and search in existed-->
+    </div>
+</div>
+<div class="fu-error-msg"
+     *ngIf="error"
+     [innerHTML]="error">
+</div>
+<div class="fu-helper-text"
+     *ngIf="helper"
+     [hidden]="!!error"
+     [innerHTML]="helper">
+</div>
