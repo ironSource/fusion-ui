@@ -39,7 +39,7 @@ export default {
 
 const TagsInputTemplate: Story<TagsInputComponent> = (args: TagsInputComponent) => ({
     props: {...args, addNewTag: actionsData.addNewTag, removeTag: actionsData.removeTag},
-    template: `<div style="width: 576px; height: 380px">
+    template: `<div style="width: 576px">
     <fusion-tags-input
         [inputPlaceholder]="inputPlaceholder"
         [tags]="tags"
