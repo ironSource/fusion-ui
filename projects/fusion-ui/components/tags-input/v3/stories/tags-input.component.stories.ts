@@ -54,38 +54,72 @@ const TagsInputTemplate: Story<TagsInputComponent> = (args: TagsInputComponent) 
 
 // region Default
 export const Default = TagsInputTemplate.bind({});
-/*Default.parameters = {
+Default.parameters = {
     docs: {
         source: {
             language: 'typescript',
             code: dedent`
 import { Component } from '@angular/core';
-import { TooltipModule } from '@ironsource/fusion-ui/components/tooltip/v3';
+import {CommonModule} from '@angular/common';
+import {TagsInputComponent} from '@ironsource/fusion-ui/components/tags-input';
+import {TagComponentConfigurations} from '@ironsource/fusion-ui/components/tag';
 
 @Component({
   selector: 'fusion-story-wrapper',
-  template: \`
-  <fusion-tags-input
+  template: \`<fusion-tags-input
         [inputPlaceholder]="inputPlaceholder"
         [tags]="tags"
         [error]="error"
         [helper]="helper"
         (addNewTag)="onAddNewTag($event)"
         (removeTag)="onRemoveTag($event)"
-    ></fusion-tags-input>
-  \`,
+    ></fusion-tags-input>\`,
   standalone: true,
-  imports: [TooltipModule],
+  imports: [CommonModule, TagsInputComponent],
 })
 export class FusionStoryWrapperComponent {
-  tooltipText = 'Well done! You successfully read this alert message';
+  inputPlaceholder = 'Placeholder text';
+  tags: TagComponentConfigurations[] = TAG_MOCK;
+
+  error: string = '';
+  helper: string = 'Please enter e-mail list';
+
+  onAddNewTag(tagText) {
+    console.log('addNewTag: ', tagText);
+    // emulate new tag add
+
+    // check if it removable
+    const newTag = { title: tagText };
+    // some e-mail validation....
+    const isValid = /^[A-Za-z0-9_!#$%&'*+\\/=?\`{|}~^.-]+@[A-Za-z0-9.-]+$/gm.test(
+      tagText
+    );
+    if (!isValid) {
+      // set tag error
+      newTag['error'] = 'Invalid e-mail';
+      // if it has error will add close button
+      newTag['close'] = true;
+    }
+    // add 'closable if needed'
+    if (this.tags[0] && this.tags[0].hasOwnProperty('close')) {
+      newTag['close'] = true;
+    }
+    this.tags.push(newTag);
+  }
+
+  onRemoveTag(tagToRemove) {
+    console.log('removeTag: ', tagToRemove);
+    // emulate new tag remove
+    this.tags = [...this.tags.filter((item) => item !== tagToRemove)];
+  }
 }
+const TAG_MOCK = ${JSON.stringify(TAGS_MOCK)}
 `,
             format: true,
             type: 'code'
         }
     }
-}*/
+};
 // endregion
 
 // region Removable
@@ -93,12 +127,144 @@ export const Removable = TagsInputTemplate.bind({});
 Removable.args = {
     tags: TAGS_CLOSE_BUTTON_MOCK
 };
+Removable.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {TagsInputComponent} from '@ironsource/fusion-ui/components/tags-input';
+import {TagComponentConfigurations} from '@ironsource/fusion-ui/components/tag';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<fusion-tags-input
+        [inputPlaceholder]="inputPlaceholder"
+        [tags]="tags"
+        [error]="error"
+        [helper]="helper"
+        (addNewTag)="onAddNewTag($event)"
+        (removeTag)="onRemoveTag($event)"
+    ></fusion-tags-input>\`,
+  standalone: true,
+  imports: [CommonModule, TagsInputComponent],
+})
+export class FusionStoryWrapperComponent {
+  inputPlaceholder = 'Placeholder text';
+  tags: TagComponentConfigurations[] = TAG_MOCK;
+
+  error: string = '';
+  helper: string = 'Please enter e-mail list';
+
+  onAddNewTag(tagText) {
+    console.log('addNewTag: ', tagText);
+    // emulate new tag add
+
+    // check if it removable
+    const newTag = { title: tagText };
+    // some e-mail validation....
+    const isValid = /^[A-Za-z0-9_!#$%&'*+\\/=?\`{|}~^.-]+@[A-Za-z0-9.-]+$/gm.test(
+      tagText
+    );
+    if (!isValid) {
+      // set tag error
+      newTag['error'] = 'Invalid e-mail';
+      // if it has error will add close button
+      newTag['close'] = true;
+    }
+    // add 'closable if needed'
+    if (this.tags[0] && this.tags[0].hasOwnProperty('close')) {
+      newTag['close'] = true;
+    }
+    this.tags.push(newTag);
+  }
+
+  onRemoveTag(tagToRemove) {
+    console.log('removeTag: ', tagToRemove);
+    // emulate new tag remove
+    this.tags = [...this.tags.filter((item) => item !== tagToRemove)];
+  }
+}
+const TAG_MOCK = ${JSON.stringify(TAGS_CLOSE_BUTTON_MOCK)}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
 // endregion
 
 // region ErrorTag
 export const ErrorTag = TagsInputTemplate.bind({});
 ErrorTag.args = {
     tags: TAGS_ERROR_MOCK
+};
+ErrorTag.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {TagsInputComponent} from '@ironsource/fusion-ui/components/tags-input';
+import {TagComponentConfigurations} from '@ironsource/fusion-ui/components/tag';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<fusion-tags-input
+        [inputPlaceholder]="inputPlaceholder"
+        [tags]="tags"
+        [error]="error"
+        [helper]="helper"
+        (addNewTag)="onAddNewTag($event)"
+        (removeTag)="onRemoveTag($event)"
+    ></fusion-tags-input>\`,
+  standalone: true,
+  imports: [CommonModule, TagsInputComponent],
+})
+export class FusionStoryWrapperComponent {
+  inputPlaceholder = 'Placeholder text';
+  tags: TagComponentConfigurations[] = TAG_MOCK;
+
+  error: string = '';
+  helper: string = 'Please enter e-mail list';
+
+  onAddNewTag(tagText) {
+    console.log('addNewTag: ', tagText);
+    // emulate new tag add
+
+    // check if it removable
+    const newTag = { title: tagText };
+    // some e-mail validation....
+    const isValid = /^[A-Za-z0-9_!#$%&'*+\\/=?\`{|}~^.-]+@[A-Za-z0-9.-]+$/gm.test(
+      tagText
+    );
+    if (!isValid) {
+      // set tag error
+      newTag['error'] = 'Invalid e-mail';
+      // if it has error will add close button
+      newTag['close'] = true;
+    }
+    // add 'closable if needed'
+    if (this.tags[0] && this.tags[0].hasOwnProperty('close')) {
+      newTag['close'] = true;
+    }
+    this.tags.push(newTag);
+  }
+
+  onRemoveTag(tagToRemove) {
+    console.log('removeTag: ', tagToRemove);
+    // emulate new tag remove
+    this.tags = [...this.tags.filter((item) => item !== tagToRemove)];
+  }
+}
+const TAG_MOCK = ${JSON.stringify(TAGS_ERROR_MOCK)}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
 };
 // endregion
 
@@ -108,6 +274,72 @@ MainError.args = {
     tags: TAGS_CLOSE_BUTTON_MOCK,
     error: 'Error text'
 };
+MainError.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {TagsInputComponent} from '@ironsource/fusion-ui/components/tags-input';
+import {TagComponentConfigurations} from '@ironsource/fusion-ui/components/tag';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<fusion-tags-input
+        [inputPlaceholder]="inputPlaceholder"
+        [tags]="tags"
+        [error]="error"
+        [helper]="helper"
+        (addNewTag)="onAddNewTag($event)"
+        (removeTag)="onRemoveTag($event)"
+    ></fusion-tags-input>\`,
+  standalone: true,
+  imports: [CommonModule, TagsInputComponent],
+})
+export class FusionStoryWrapperComponent {
+  inputPlaceholder = 'Placeholder text';
+  tags: TagComponentConfigurations[] = TAG_MOCK;
+
+  error: string = 'Error text';
+  helper: string = 'Please enter e-mail list';
+
+  onAddNewTag(tagText) {
+    console.log('addNewTag: ', tagText);
+    // emulate new tag add
+
+    // check if it removable
+    const newTag = { title: tagText };
+    // some e-mail validation....
+    const isValid = /^[A-Za-z0-9_!#$%&'*+\\/=?\`{|}~^.-]+@[A-Za-z0-9.-]+$/gm.test(
+      tagText
+    );
+    if (!isValid) {
+      // set tag error
+      newTag['error'] = 'Invalid e-mail';
+      // if it has error will add close button
+      newTag['close'] = true;
+    }
+    // add 'closable if needed'
+    if (this.tags[0] && this.tags[0].hasOwnProperty('close')) {
+      newTag['close'] = true;
+    }
+    this.tags.push(newTag);
+  }
+
+  onRemoveTag(tagToRemove) {
+    console.log('removeTag: ', tagToRemove);
+    // emulate new tag remove
+    this.tags = [...this.tags.filter((item) => item !== tagToRemove)];
+  }
+}
+const TAG_MOCK = ${JSON.stringify(TAGS_CLOSE_BUTTON_MOCK)}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
 // endregion
 
 // region MainHelper
@@ -115,5 +347,71 @@ export const MainHelper = TagsInputTemplate.bind({});
 MainHelper.args = {
     tags: TAGS_CLOSE_BUTTON_MOCK,
     helper: 'Helper text'
+};
+MainHelper.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {TagsInputComponent} from '@ironsource/fusion-ui/components/tags-input';
+import {TagComponentConfigurations} from '@ironsource/fusion-ui/components/tag';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<fusion-tags-input
+        [inputPlaceholder]="inputPlaceholder"
+        [tags]="tags"
+        [error]="error"
+        [helper]="helper"
+        (addNewTag)="onAddNewTag($event)"
+        (removeTag)="onRemoveTag($event)"
+    ></fusion-tags-input>\`,
+  standalone: true,
+  imports: [CommonModule, TagsInputComponent],
+})
+export class FusionStoryWrapperComponent {
+  inputPlaceholder = 'Placeholder text';
+  tags: TagComponentConfigurations[] = TAG_MOCK;
+
+  error: string = '';
+  helper: string = 'Please enter e-mail list';
+
+  onAddNewTag(tagText) {
+    console.log('addNewTag: ', tagText);
+    // emulate new tag add
+
+    // check if it removable
+    const newTag = { title: tagText };
+    // some e-mail validation....
+    const isValid = /^[A-Za-z0-9_!#$%&'*+\\/=?\`{|}~^.-]+@[A-Za-z0-9.-]+$/gm.test(
+      tagText
+    );
+    if (!isValid) {
+      // set tag error
+      newTag['error'] = 'Invalid e-mail';
+      // if it has error will add close button
+      newTag['close'] = true;
+    }
+    // add 'closable if needed'
+    if (this.tags[0] && this.tags[0].hasOwnProperty('close')) {
+      newTag['close'] = true;
+    }
+    this.tags.push(newTag);
+  }
+
+  onRemoveTag(tagToRemove) {
+    console.log('removeTag: ', tagToRemove);
+    // emulate new tag remove
+    this.tags = [...this.tags.filter((item) => item !== tagToRemove)];
+  }
+}
+const TAG_MOCK = ${JSON.stringify(TAGS_CLOSE_BUTTON_MOCK)}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
 };
 // endregion
