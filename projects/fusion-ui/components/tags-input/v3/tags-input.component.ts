@@ -91,7 +91,8 @@ export class TagsInputComponent implements OnInit, AfterViewInit, OnDestroy {
 
     /** @internal */
     enterNewTag(newTag: string) {
-        if (newTag.trim()) {
+        newTag = newTag.trim();
+        if (newTag) {
             this.addNewTag.emit(newTag);
         }
         this.tagInput.clearInput();
