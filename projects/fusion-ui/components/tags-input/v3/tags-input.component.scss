@@ -5,7 +5,6 @@
     @extend %reset;
     .fu-tags-input-wrapper{
         width: 100%;
-        min-height: 40px;
         position: relative;
         display: inline-block;
         border-radius: 8px;
@@ -24,6 +23,8 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 4px;
+
+            min-height: 40px;
 
             &:hover{
                 background-color: $fu-light-200;
