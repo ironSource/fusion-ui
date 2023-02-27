@@ -7,7 +7,7 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TagsInputComponent} from '@ironsource/fusion-ui/components/tags-input';
 import {MOK_APPLICATIONS_ONE_LINE_OPTIONS} from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DropdownDualMultiSelectModule} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
 import {TagsInputStoryIncludeExcludeWrapperComponent} from '@ironsource/fusion-ui/components/tags-input/v3/stories/tags-input-include-exclude-story-wrapper.component';
 
@@ -65,4 +65,89 @@ const TagsInputTemplate: Story<TagsInputComponent> = (args: TagsInputComponent) 
 
 // region Default
 export const Default = TagsInputTemplate.bind({});
+Default.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { TagsInputComponent } from '@ironsource/fusion-ui/components/tags-input';
+import { TagComponentConfigurations } from '@ironsource/fusion-ui/components/tag';
+import { DropdownDualMultiSelectModule } from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<fusion-tags-input [placeholder]="placeholder" [tags]="tags" [error]="error" [helper]="helper">
+  <div class="filter-element">
+      <fusion-dropdown-dual-multi-select
+          [title]="title"
+          [formControl]="formControl"
+          [items]="items"
+      ></fusion-dropdown-dual-multi-select>
+  </div>
+</fusion-tags-input>\`,
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TagsInputComponent,
+    DropdownDualMultiSelectModule,
+  ],
+})
+export class FusionStoryWrapperComponent implements OnInit, OnDestroy {
+  placeholder = 'Select applications';
+  error = '';
+  helper = '';
+
+  items: DropdownOption[] = ITEMS_MOCK;
+
+  tags: TagComponentConfigurations[];
+  formControl = new FormControl();
+  title = 'Applications';
+
+  private onDestroy$ = new Subject<void>();
+
+  ngOnInit() {
+    this.formControl.valueChanges
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((selected) => {
+        if (Array.isArray(selected) && selected.length) {
+          //check for all apps selected
+          if (selected.length === this.items.length) {
+            this.tags = [];
+            this.placeholder = 'All applications';
+          } else {
+            this.placeholder = '';
+            this.tags = selected.map((option: DropdownOption) => ({
+              id: option.id,
+              title: option.displayText,
+              image: option.image,
+            }));
+          }
+        } else {
+          this.placeholder = 'Select applications';
+          this.tags = [];
+        }
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.onDestroy$.next();
+    this.onDestroy$.complete();
+  }
+}
+
+const ITEMS_MOCK = ${JSON.stringify(MOK_APPLICATIONS_ONE_LINE_OPTIONS)};
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
 // endregion

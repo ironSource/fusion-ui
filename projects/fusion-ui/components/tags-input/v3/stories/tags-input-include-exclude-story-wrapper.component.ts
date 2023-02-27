@@ -12,7 +12,7 @@ import {Subject} from 'rxjs';
     selector: 'fusion-tags-input-include-exclude-wrapper',
     standalone: true,
     imports: [CommonModule, FormsModule, ReactiveFormsModule, TagsInputComponent, DropdownDualMultiSelectModule],
-    template: ` <fusion-tags-input [placeholder]="placeholder" [tags]="tags" [error]="error" [helper]="helper">
+    template: `<fusion-tags-input [placeholder]="placeholder" [tags]="tags" [error]="error" [helper]="helper">
         <div class="filter-element">
             <fusion-dropdown-dual-multi-select
                 [title]="title"
