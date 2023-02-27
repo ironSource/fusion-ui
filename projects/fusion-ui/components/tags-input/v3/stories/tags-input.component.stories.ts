@@ -54,6 +54,38 @@ const TagsInputTemplate: Story<TagsInputComponent> = (args: TagsInputComponent) 
 
 // region Default
 export const Default = TagsInputTemplate.bind({});
+/*Default.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { TooltipModule } from '@ironsource/fusion-ui/components/tooltip/v3';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`
+  <fusion-tags-input
+        [inputPlaceholder]="inputPlaceholder"
+        [tags]="tags"
+        [error]="error"
+        [helper]="helper"
+        (addNewTag)="onAddNewTag($event)"
+        (removeTag)="onRemoveTag($event)"
+    ></fusion-tags-input>
+  \`,
+  standalone: true,
+  imports: [TooltipModule],
+})
+export class FusionStoryWrapperComponent {
+  tooltipText = 'Well done! You successfully read this alert message';
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+}*/
 // endregion
 
 // region Removable
