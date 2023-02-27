@@ -2,7 +2,6 @@ import {
     AfterViewInit,
     Component,
     ContentChild,
-    ElementRef,
     EventEmitter,
     Input,
     OnDestroy,
@@ -14,9 +13,7 @@ import {
 import {CommonModule} from '@angular/common';
 import {InputComponent, InputModule, InputOptions, InputSize} from '@ironsource/fusion-ui/components/input/v3';
 import {TagComponent, TagComponentConfigurations} from '@ironsource/fusion-ui/components/tag';
-import {debounceTime, distinctUntilChanged, takeUntil} from 'rxjs/operators';
 import {BehaviorSubject, Subject} from 'rxjs';
-import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 
 @Component({
@@ -26,7 +23,7 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
     templateUrl: './tags-input.component.html',
     styleUrls: ['./tags-input.component.scss']
 })
-export class TagsInputComponent implements OnInit, AfterViewInit, OnDestroy {
+export class TagsInputComponent implements OnInit, OnDestroy {
     /** Placeholder for input used for add new tag */
     @Input() inputPlaceholder = 'add...';
     /** Placeholder for using with drop-down */
@@ -35,7 +32,6 @@ export class TagsInputComponent implements OnInit, AfterViewInit, OnDestroy {
     /** Tags */
     @Input() set tags(value: TagComponentConfigurations[]) {
         if (Array.isArray(value)) {
-            this.allTags = value;
             this.displayedTags$.next(value);
         }
     }
@@ -64,23 +60,12 @@ export class TagsInputComponent implements OnInit, AfterViewInit, OnDestroy {
     displayedTags$ = new BehaviorSubject<TagComponentConfigurations[]>([]);
 
     private onDestroy$ = new Subject();
-    private allTags: TagComponentConfigurations[] = [];
-
-    constructor(protected filterByFieldPipe: FilterByFieldPipe) {}
+    constructor() {}
 
     ngOnInit(): void {
         if (this.apiBase) {
             this.apiBase.templateRef = this.apiBaseTriggerTemplate;
             this.apiBase.selectedTypeObject = true;
-        }
-    }
-
-    ngAfterViewInit() {
-        if (!this.apiBase) {
-            // todo: check with Shai for search with add new - custom.
-            this.tagInput.inputControl.valueChanges
-                .pipe(debounceTime(1000), distinctUntilChanged(), takeUntil(this.onDestroy$))
-                .subscribe(this.searchTag.bind(this));
         }
     }
 
@@ -101,10 +86,5 @@ export class TagsInputComponent implements OnInit, AfterViewInit, OnDestroy {
     /** @internal */
     tagRemoved(tagRemoved: TagComponentConfigurations) {
         this.removeTag.emit(tagRemoved);
-    }
-
-    private searchTag(searchTerm: string) {
-        const filtered = this.filterByFieldPipe.transform(this.allTags, ['title'], searchTerm.trim(), {caseSensitive: false});
-        this.displayedTags$.next(filtered);
     }
 }

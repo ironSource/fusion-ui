@@ -28,12 +28,15 @@ export class TagsInputStoryWrapperComponent {
     onAddNewTag(tagText) {
         console.log('addNewTag: ', tagText);
         // emulate new tag add
+
         // check if it removable
         const newTag = {title: tagText};
         // some e-mail validation....
         const isValid = /^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/gm.test(tagText);
         if (!isValid) {
             newTag['error'] = 'Invalid e-mail';
+            // if it has error will add close button
+            newTag['close'] = true;
         }
         // add 'closable if needed'
         if (this.tags[0] && this.tags[0].hasOwnProperty('close')) {

@@ -52,6 +52,7 @@ export class TagsInputStoryIncludeExcludeWrapperComponent implements OnInit, OnD
                 }
             } else {
                 this.placeholder = 'Select applications';
+                this.tags = [];
             }
         });
     }
