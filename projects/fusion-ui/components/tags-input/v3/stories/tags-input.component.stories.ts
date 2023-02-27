@@ -8,7 +8,7 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TagsInputComponent} from '@ironsource/fusion-ui/components/tags-input';
 import {TAGS_CLOSE_BUTTON_MOCK, TAGS_ERROR_MOCK, TAGS_MOCK} from './tag.component.stories.mock';
-import {TagsInputStoryWrapperComponent} from '@ironsource/fusion-ui/components/tags-input/v3/stories/tags-input.story-wrapper.component.component';
+import {TagsInputStoryWrapperComponent} from '@ironsource/fusion-ui/components/tags-input/v3/stories/tags-input-story-wrapper.component';
 
 const actionsData = {
     addNewTag: action('addNewTag'),
