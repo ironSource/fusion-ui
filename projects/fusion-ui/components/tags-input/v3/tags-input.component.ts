@@ -1,10 +1,23 @@
-import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
+import {
+    AfterViewInit,
+    Component,
+    ContentChild,
+    ElementRef,
+    EventEmitter,
+    Input,
+    OnDestroy,
+    OnInit,
+    Output,
+    TemplateRef,
+    ViewChild
+} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {InputComponent, InputModule, InputOptions, InputSize} from '@ironsource/fusion-ui/components/input/v3';
 import {TagComponent, TagComponentConfigurations} from '@ironsource/fusion-ui/components/tag';
 import {debounceTime, distinctUntilChanged, takeUntil} from 'rxjs/operators';
 import {BehaviorSubject, Subject} from 'rxjs';
 import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
+import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 
 @Component({
     selector: 'fusion-tags-input',
@@ -16,6 +29,8 @@ import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
 export class TagsInputComponent implements OnInit, AfterViewInit, OnDestroy {
     /** Placeholder for input used for add new tag */
     @Input() inputPlaceholder = 'add...';
+    /** Placeholder for using with drop-down */
+    @Input() placeholder: string;
 
     /** Tags */
     @Input() set tags(value: TagComponentConfigurations[]) {
@@ -37,6 +52,10 @@ export class TagsInputComponent implements OnInit, AfterViewInit, OnDestroy {
     @Output() removeTag = new EventEmitter<TagComponentConfigurations>();
 
     /** @internal */
+    @ContentChild(ApiBase, {static: true}) apiBase: ApiBase;
+    /** @internal */
+    @ViewChild('apiBaseTriggerTemplate', {static: true}) apiBaseTriggerTemplate: TemplateRef<any>;
+    /** @internal */
     @ViewChild('tagInput') private tagInput: InputComponent;
 
     /** @internal */
@@ -49,12 +68,20 @@ export class TagsInputComponent implements OnInit, AfterViewInit, OnDestroy {
 
     constructor(protected filterByFieldPipe: FilterByFieldPipe) {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        if (this.apiBase) {
+            this.apiBase.templateRef = this.apiBaseTriggerTemplate;
+            this.apiBase.selectedTypeObject = true;
+        }
+    }
 
     ngAfterViewInit() {
-        this.tagInput.inputControl.valueChanges
-            .pipe(debounceTime(300), distinctUntilChanged(), takeUntil(this.onDestroy$))
-            .subscribe(this.searchTag.bind(this));
+        if (!this.apiBase) {
+            // todo: check with Shai for search with add new - custom.
+            this.tagInput.inputControl.valueChanges
+                .pipe(debounceTime(1000), distinctUntilChanged(), takeUntil(this.onDestroy$))
+                .subscribe(this.searchTag.bind(this));
+        }
     }
 
     ngOnDestroy(): void {

@@ -3,12 +3,12 @@ import {Story, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {action} from '@storybook/addon-actions';
 import {dedent} from 'ts-dedent';
-import {environment} from '../../../../../stories/environments/environment';
+import {environment} from '../../../../../../stories/environments/environment';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TagsInputComponent} from '@ironsource/fusion-ui/components/tags-input';
-import {TagComponent} from '@ironsource/fusion-ui/components/tag';
 import {TAGS_CLOSE_BUTTON_MOCK, TAGS_ERROR_MOCK, TAGS_MOCK} from './tag.component.stories.mock';
+import {TagsInputStoryWrapperComponent} from '@ironsource/fusion-ui/components/tags-input/v3/stories/tags-input.story-wrapper.component.component';
 
 const actionsData = {
     addNewTag: action('addNewTag'),
@@ -21,7 +21,7 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, TagComponent]
+            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, TagsInputStoryWrapperComponent]
         })
     ],
     parameters: {
@@ -40,14 +40,14 @@ export default {
 const TagsInputTemplate: Story<TagsInputComponent> = (args: TagsInputComponent) => ({
     props: {...args, addNewTag: actionsData.addNewTag, removeTag: actionsData.removeTag},
     template: `<div style="width: 576px">
-    <fusion-tags-input
+    <fusion-tags-input-wrapper
         [inputPlaceholder]="inputPlaceholder"
         [tags]="tags"
         [error]="error"
         [helper]="helper"
         (addNewTag)="addNewTag($event)"
         (removeTag)="removeTag($event)"
-    ></fusion-tags-input>
+    ></fusion-tags-input-wrapper>
 </div>
 `
 });

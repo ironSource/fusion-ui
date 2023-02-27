@@ -9,7 +9,11 @@
         position: relative;
         display: inline-block;
         border-radius: 8px;
-        overflow: hidden;
+        overflow-x: hidden;
+
+        &.fu-trigger{
+            cursor: pointer;
+        }
 
         .fu-tags-holder{
             background-color: $fu-light-100;
@@ -42,6 +46,11 @@
 
             .search-container{
                 flex-grow: 1;
+            }
+
+            .fu-tags-input-placeholder{
+                @extend %font-bodySmall;
+                color: $fu-black-500;
             }
         }
     }
