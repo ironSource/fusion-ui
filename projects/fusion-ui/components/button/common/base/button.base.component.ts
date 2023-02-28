@@ -9,7 +9,8 @@ import {
     HostListener,
     Directive,
     OnDestroy,
-    AfterViewInit
+    AfterViewInit,
+    ViewChild
 } from '@angular/core';
 import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
 import {BehaviorSubject, Subject} from 'rxjs';
@@ -69,6 +70,8 @@ export abstract class ButtonBaseComponent implements OnInit, AfterViewInit, OnDe
 
     @Output() onclick = new EventEmitter();
 
+    @ViewChild('contentRef') contentRef: ElementRef;
+
     /** @internal */
     projectContent: boolean;
     /** @internal */
@@ -88,7 +91,7 @@ export abstract class ButtonBaseComponent implements OnInit, AfterViewInit, OnDe
     }
 
     ngAfterViewInit() {
-        this.projectContent = !!this.element.nativeElement.innerText.trim();
+        this.projectContent = !!this.contentRef.nativeElement.innerText.trim();
         this.setHostClass(this.projectContent, 'fu-with-content');
     }
 
