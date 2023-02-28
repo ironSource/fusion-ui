@@ -10,9 +10,6 @@
         border-radius: 8px;
         overflow-x: hidden;
 
-        // todo: check with Shai for max height
-        //max-height: 105px;
-
         .fu-tags-holder{
             background-color: $fu-light-100;
             border-radius: 8px;
@@ -24,6 +21,12 @@
             gap: 4px;
 
             min-height: 40px;
+
+            // todo: check with Shai for max height
+            //max-height: 105px;
+            //overflow-y: auto;
+            //@extend %customScroll;
+
 
             &:hover{
                 background-color: $fu-light-200;
