@@ -118,7 +118,6 @@ export class FusionStoryWrapperComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.onDestroy$))
       .subscribe((selected) => {
         if (Array.isArray(selected) && selected.length) {
-          //check for all apps selected
           if (selected.length === this.items.length) {
             this.tags = [];
             this.placeholder = 'All applications';
