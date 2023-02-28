@@ -58,6 +58,7 @@ const TagsInputTemplate: Story<TagsInputComponent> = (args: TagsInputComponent) 
     [error]="error"
     [helper]="helper"
     [items]="items"
+    [preselectedItems]="preselectedItems"
     ></fusion-tags-input-include-exclude-wrapper>
 </div>
 `
@@ -108,7 +109,7 @@ export class FusionStoryWrapperComponent implements OnInit, OnDestroy {
   items: DropdownOption[] = ITEMS_MOCK;
 
   tags: TagComponentConfigurations[];
-  formControl = new FormControl();
+  formControl = new FormControl<DropdownOption[]>([]);
   title = 'Applications';
 
   private onDestroy$ = new Subject<void>();
@@ -116,29 +117,125 @@ export class FusionStoryWrapperComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.formControl.valueChanges
       .pipe(takeUntil(this.onDestroy$))
-      .subscribe((selected) => {
-        if (Array.isArray(selected) && selected.length) {
-          if (selected.length === this.items.length) {
-            this.tags = [];
-            this.placeholder = 'All applications';
-          } else {
-            this.placeholder = '';
-            this.tags = selected.map((option: DropdownOption) => ({
-              id: option.id,
-              title: option.displayText,
-              image: option.image,
-            }));
-          }
-        } else {
-          this.placeholder = 'Select applications';
-          this.tags = [];
-        }
-      });
+      .subscribe(this.setTags.bind(this));
   }
 
   ngOnDestroy(): void {
     this.onDestroy$.next();
     this.onDestroy$.complete();
+  }
+
+  private setTags(selected: DropdownOption[]){
+    if (Array.isArray(selected) && selected.length) {
+        if (selected.length === this.items.length) {
+            this.tags = [];
+            this.placeholder = 'All applications';
+        } else {
+            this.placeholder = '';
+            this.tags = selected.map((option: DropdownOption) => ({
+                id: option.id,
+                title: option.displayText,
+                image: option.image
+            }));
+        }
+    } else {
+        this.placeholder = 'Select applications';
+        this.tags = [];
+    }
+  }
+}
+
+const ITEMS_MOCK = ${JSON.stringify(MOK_APPLICATIONS_ONE_LINE_OPTIONS)};
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region Preselected
+export const Preselected = TagsInputTemplate.bind({});
+Preselected.args = {
+    preselectedItems: MOK_APPLICATIONS_ONE_LINE_OPTIONS.slice(1, 5)
+};
+Preselected.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { TagsInputComponent } from '@ironsource/fusion-ui/components/tags-input';
+import { TagComponentConfigurations } from '@ironsource/fusion-ui/components/tag';
+import { DropdownDualMultiSelectModule } from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<fusion-tags-input [placeholder]="placeholder" [tags]="tags" [error]="error" [helper]="helper">
+  <div class="filter-element">
+      <fusion-dropdown-dual-multi-select
+          [title]="title"
+          [formControl]="formControl"
+          [items]="items"
+      ></fusion-dropdown-dual-multi-select>
+  </div>
+</fusion-tags-input>\`,
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TagsInputComponent,
+    DropdownDualMultiSelectModule,
+  ],
+})
+export class FusionStoryWrapperComponent implements OnInit, OnDestroy {
+  placeholder = 'Select applications';
+  error = '';
+  helper = '';
+
+  items: DropdownOption[] = ITEMS_MOCK;
+
+  tags: TagComponentConfigurations[];
+  formControl = new FormControl<DropdownOption[]>(ITEMS_MOCK.slice(1, 5));
+  title = 'Applications';
+
+  private onDestroy$ = new Subject<void>();
+
+  ngOnInit() {
+    this.setTags(this.formControl.value);
+    this.formControl.valueChanges
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe(this.setTags.bind(this));
+  }
+
+  ngOnDestroy(): void {
+    this.onDestroy$.next();
+    this.onDestroy$.complete();
+  }
+
+  private setTags(selected: DropdownOption[]){
+    if (Array.isArray(selected) && selected.length) {
+        if (selected.length === this.items.length) {
+            this.tags = [];
+            this.placeholder = 'All applications';
+        } else {
+            this.placeholder = '';
+            this.tags = selected.map((option: DropdownOption) => ({
+                id: option.id,
+                title: option.displayText,
+                image: option.image
+            }));
+        }
+    } else {
+        this.placeholder = 'Select applications';
+        this.tags = [];
+    }
   }
 }
 

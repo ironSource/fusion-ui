@@ -29,36 +29,44 @@ export class TagsInputStoryIncludeExcludeWrapperComponent implements OnInit, OnD
 
     @Input() items: DropdownOption[];
 
+    @Input() set preselectedItems(value: DropdownOption[]) {
+        if (Array.isArray(value)) {
+            this.formControl.setValue(value);
+        }
+    }
+
     tags: TagComponentConfigurations[];
-    formControl = new FormControl();
+    formControl = new FormControl<DropdownOption[]>([]);
     title = 'Applications';
 
     private onDestroy$ = new Subject<void>();
 
     ngOnInit() {
-        this.formControl.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(selected => {
-            if (Array.isArray(selected) && selected.length) {
-                //check for all apps selected
-                if (selected.length === this.items.length) {
-                    this.tags = [];
-                    this.placeholder = 'All applications';
-                } else {
-                    this.placeholder = '';
-                    this.tags = selected.map((option: DropdownOption) => ({
-                        id: option.id,
-                        title: option.displayText,
-                        image: option.image
-                    }));
-                }
-            } else {
-                this.placeholder = 'Select applications';
-                this.tags = [];
-            }
-        });
+        this.setTags(this.formControl.value);
+        this.formControl.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(this.setTags.bind(this));
     }
 
     ngOnDestroy(): void {
         this.onDestroy$.next();
         this.onDestroy$.complete();
+    }
+
+    private setTags(selected: DropdownOption[]) {
+        if (Array.isArray(selected) && selected.length) {
+            if (selected.length === this.items.length) {
+                this.tags = [];
+                this.placeholder = 'All applications';
+            } else {
+                this.placeholder = '';
+                this.tags = selected.map((option: DropdownOption) => ({
+                    id: option.id,
+                    title: option.displayText,
+                    image: option.image
+                }));
+            }
+        } else {
+            this.placeholder = 'Select applications';
+            this.tags = [];
+        }
     }
 }
