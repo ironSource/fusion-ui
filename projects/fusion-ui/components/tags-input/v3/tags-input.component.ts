@@ -35,6 +35,8 @@ export class TagsInputComponent implements OnInit, OnDestroy {
             this.displayedTags$.next(value);
         }
     }
+    /** Loading state */
+    @Input() loading: boolean;
 
     /** Error message */
     @Input() error: string;

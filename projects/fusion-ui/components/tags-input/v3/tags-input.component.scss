@@ -10,9 +10,8 @@
         border-radius: 8px;
         overflow-x: hidden;
 
-        &.fu-trigger{
-            cursor: pointer;
-        }
+        // todo: check with Shai for max height
+        //max-height: 105px;
 
         .fu-tags-holder{
             background-color: $fu-light-100;
@@ -45,7 +44,7 @@
                 }
             }
 
-            .search-container{
+            .input-container{
                 flex-grow: 1;
             }
 
@@ -53,6 +52,15 @@
                 @extend %font-bodySmall;
                 color: $fu-black-500;
             }
+        }
+
+        &.fu-trigger{
+            cursor: pointer;
+        }
+
+        .fu-load-block{
+            width: 33%;
+            @extend %loading-block;
         }
     }
     .fu-error-msg {
