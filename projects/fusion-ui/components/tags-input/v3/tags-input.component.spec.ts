@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TagsInputComponent } from './tags-input.component';
 
-fdescribe('TagsInputComponent', () => {
+describe('TagsInputComponent', () => {
   let component: TagsInputComponent;
   let fixture: ComponentFixture<TagsInputComponent>;
 
