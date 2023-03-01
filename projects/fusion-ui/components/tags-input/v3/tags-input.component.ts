@@ -26,7 +26,7 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 })
 export class TagsInputComponent implements OnInit, OnDestroy {
     /** Placeholder for input used for add new tag */
-    @Input() inputPlaceholder = 'add...';
+    @Input() inputPlaceholder = '...';
     /** Placeholder for using with drop-down */
     @Input() placeholder: string;
 

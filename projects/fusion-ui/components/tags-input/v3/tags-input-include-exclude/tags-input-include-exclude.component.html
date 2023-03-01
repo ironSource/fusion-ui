@@ -1,0 +1,14 @@
+<fusion-tags-input
+    [placeholder]="tagInputPlaceholder"
+    [tags]="tags"
+    [error]="error"
+    [helper]="helper"
+>
+    <div class="filter-element">
+        <fusion-dropdown-dual-multi-select
+            [title]="title"
+            [formControl]="formControlIncludeExclude"
+            [items]="items"
+        ></fusion-dropdown-dual-multi-select>
+    </div>
+</fusion-tags-input>
