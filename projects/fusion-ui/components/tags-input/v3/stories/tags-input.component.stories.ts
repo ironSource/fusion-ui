@@ -45,7 +45,6 @@ const TagsInputTemplate: Story<TagsInputComponent> = (args: TagsInputComponent) 
         [tags]="tags"
         [error]="error"
         [helper]="helper"
-        [loading]="loading"
         (addNewTag)="addNewTag($event)"
         (removeTag)="removeTag($event)"
     ></fusion-tags-input-wrapper>
@@ -409,82 +408,6 @@ export class FusionStoryWrapperComponent {
   }
 }
 const TAG_MOCK = ${JSON.stringify(TAGS_CLOSE_BUTTON_MOCK)}
-`,
-            format: true,
-            type: 'code'
-        }
-    }
-};
-// endregion
-
-// region Loading
-export const Loading = TagsInputTemplate.bind({});
-Loading.args = {
-    loading: true
-};
-Loading.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {TagsInputComponent} from '@ironsource/fusion-ui/components/tags-input';
-import {TagComponentConfigurations} from '@ironsource/fusion-ui/components/tag';
-
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<fusion-tags-input
-        [inputPlaceholder]="inputPlaceholder"
-        [tags]="tags"
-        [error]="error"
-        [helper]="helper"
-        [loading]="loading"
-        (addNewTag)="onAddNewTag($event)"
-        (removeTag)="onRemoveTag($event)"
-    ></fusion-tags-input>\`,
-  standalone: true,
-  imports: [CommonModule, TagsInputComponent],
-})
-export class FusionStoryWrapperComponent {
-  inputPlaceholder = 'Placeholder text';
-  tags: TagComponentConfigurations[] = TAG_MOCK;
-
-  error: string = '';
-  helper: string = 'Please enter e-mail list';
-
-  loading: true;
-
-  onAddNewTag(tagText) {
-    console.log('addNewTag: ', tagText);
-    // emulate new tag add
-
-    // check if it removable
-    const newTag = { title: tagText };
-    // some e-mail validation....
-    const isValid = /^[A-Za-z0-9_!#$%&'*+\\/=?\`{|}~^.-]+@[A-Za-z0-9.-]+$/gm.test(
-      tagText
-    );
-    if (!isValid) {
-      // set tag error
-      newTag['error'] = 'Invalid e-mail';
-      // if it has error will add close button
-      newTag['close'] = true;
-    }
-    // add 'closable if needed'
-    if (this.tags[0] && this.tags[0].hasOwnProperty('close')) {
-      newTag['close'] = true;
-    }
-    this.tags.push(newTag);
-  }
-
-  onRemoveTag(tagToRemove) {
-    console.log('removeTag: ', tagToRemove);
-    // emulate new tag remove
-    this.tags = [...this.tags.filter((item) => item !== tagToRemove)];
-  }
-}
-const TAG_MOCK = ${JSON.stringify(TAGS_MOCK)}
 `,
             format: true,
             type: 'code'

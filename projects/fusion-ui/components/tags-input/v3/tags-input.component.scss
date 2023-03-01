@@ -10,6 +10,10 @@
         border-radius: 8px;
         overflow-x: hidden;
 
+        &.fu-trigger{
+            cursor: pointer;
+        }
+
         .fu-tags-holder{
             background-color: $fu-light-100;
             border-radius: 8px;
@@ -55,15 +59,6 @@
                 @extend %font-bodySmall;
                 color: $fu-black-500;
             }
-        }
-
-        &.fu-trigger{
-            cursor: pointer;
-        }
-
-        .fu-load-block{
-            width: 33%;
-            @extend %loading-block;
         }
     }
     .fu-error-msg {

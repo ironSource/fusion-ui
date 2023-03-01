@@ -12,7 +12,6 @@ import {TagComponentConfigurations} from '@ironsource/fusion-ui/components/tag';
         [tags]="tags"
         [error]="error"
         [helper]="helper"
-        [loading]="loading"
         (addNewTag)="onAddNewTag($event)"
         (removeTag)="onRemoveTag($event)"
     ></fusion-tags-input>`
@@ -22,7 +21,6 @@ export class TagsInputStoryWrapperComponent {
     @Input() error: string;
     @Input() helper: string;
     @Input() tags: TagComponentConfigurations[];
-    @Input() loading: boolean;
 
     @Output() addNewTag = new EventEmitter<string>();
     @Output() removeTag = new EventEmitter<TagComponentConfigurations>();

@@ -7,13 +7,6 @@
 <ng-template #triggerComponent>
     <div class="fu-tags-input-wrapper" [class.fu-trigger]="apiBase">
         <div class="fu-tags-holder">
-            <ng-container *ngIf="loading">
-                <!--Loading State-->
-                <div class="fu-load-block"><div class="shine-overlay" style="animation-delay: 0s"></div></div>
-                <div class="fu-load-block"><div class="shine-overlay" style="animation-delay: 0s"></div></div>
-                <!--Loading State-->
-            </ng-container>
-            <ng-container *ngIf="!loading">
                 <!--Tags-list-->
                 <fusion-tag *ngFor="let tag of (displayedTags$ | async)"
                             [configuration]="tag"
@@ -22,8 +15,8 @@
                             (onRemove)="tagRemoved($event)"
                 ></fusion-tag>
                 <!--Tags-list-->
-            </ng-container>
-            <ng-container *ngIf="!apiBase && !loading">
+
+            <ng-container *ngIf="!apiBase">
                 <!--Input new tag and search in existed-->
                 <div class="input-container" >
                     <fusion-input #tagInput
