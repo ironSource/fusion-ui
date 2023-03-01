@@ -41,8 +41,9 @@ export class TagsInputIncludeExcludeComponent implements OnInit, OnDestroy {
     formControlIncludeExclude = new FormControl<DropdownOption[]>([]);
     /** @internal */
     tagInputPlaceholder: string;
+    /** @internal */
+    tags: TagComponentConfigurations[] = [];
 
-    private tags: TagComponentConfigurations[] = [];
     private initPlaceholder: string;
 
     private onDestroy$ = new Subject<void>();

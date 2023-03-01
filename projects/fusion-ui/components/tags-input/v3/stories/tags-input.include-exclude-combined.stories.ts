@@ -27,7 +27,18 @@ export default {
         },
         docs: {
             description: {
-                component: dedent`**TagsInputIncludeExcludeComponent** combined component that include DropdownDualMultiSelectComponent.`
+                component: dedent`**TagsInputIncludeExcludeComponent** combined component that include DropdownDualMultiSelectComponent.
+
+        Example of using:
+        \`<fusion-tags-input-include-exclude
+            [placeholder]="placeholder"     <!-- string -->
+            [error]="error"                 <!-- string -->
+            [helper]="helper"               <!-- string -->
+            [title]="title"                 <!-- string -->
+            [items]="items"                 <!-- DropdownOption[] all -->
+            [formControl]="formControl"     <!-- DropdownOption[] selected -->
+        ></fusion-tags-input-include-exclude>\`
+                `
             }
         }
     },
