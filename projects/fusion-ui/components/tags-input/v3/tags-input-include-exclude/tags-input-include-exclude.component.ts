@@ -1,12 +1,12 @@
 import {ChangeDetectionStrategy, Component, forwardRef, Input, OnDestroy, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
-import {TagsInputComponent} from '@ironsource/fusion-ui/components/tags-input';
-import {DropdownDualMultiSelectModule} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
-import {TagComponentConfigurations} from '@ironsource/fusion-ui/components/tag';
-import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+import {DropdownDualMultiSelectModule} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select/v3';
+import {TagComponentConfigurations} from '@ironsource/fusion-ui/components/tag';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
+import {TagsInputComponent} from '../tags-input.component';
 
 /**
  * Combined component Tags-Input with Dropdown-Include-Exclude
