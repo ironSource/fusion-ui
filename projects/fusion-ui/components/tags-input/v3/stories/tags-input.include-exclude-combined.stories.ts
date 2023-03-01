@@ -86,29 +86,25 @@ import { CommonModule } from '@angular/common';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { TagsInputComponent } from '@ironsource/fusion-ui/components/tags-input';
-import { TagComponentConfigurations } from '@ironsource/fusion-ui/components/tag';
-import { DropdownDualMultiSelectModule } from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
+import { TagsInputIncludeExcludeComponent } from '@ironsource/fusion-ui/components/tags-input';
 import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option';
 
 @Component({
   selector: 'fusion-story-wrapper',
-  template: \`<fusion-tags-input [placeholder]="placeholder" [tags]="tags" [error]="error" [helper]="helper">
-  <div class="filter-element">
-      <fusion-dropdown-dual-multi-select
-          [title]="title"
-          [formControl]="formControl"
-          [items]="items"
-      ></fusion-dropdown-dual-multi-select>
-  </div>
-</fusion-tags-input>\`,
+  template: \`<fusion-tags-input-include-exclude
+  [placeholder]="placeholder"
+  [error]="error"
+  [helper]="helper"
+  [title]="title"
+  [items]="items"
+  [formControl]="formControl"
+></fusion-tags-input-include-exclude>\`,
   standalone: true,
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    TagsInputComponent,
-    DropdownDualMultiSelectModule,
+    TagsInputIncludeExcludeComponent,
   ],
 })
 export class FusionStoryWrapperComponent implements OnInit, OnDestroy {
@@ -118,7 +114,6 @@ export class FusionStoryWrapperComponent implements OnInit, OnDestroy {
 
   items: DropdownOption[] = ITEMS_MOCK;
 
-  tags: TagComponentConfigurations[];
   formControl = new FormControl<DropdownOption[]>([]);
   title = 'Applications';
 
@@ -127,34 +122,16 @@ export class FusionStoryWrapperComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.formControl.valueChanges
       .pipe(takeUntil(this.onDestroy$))
-      .subscribe(this.setTags.bind(this));
+      .subscribe((selected) => {
+        console.log('Selected:', selected);
+      });
   }
 
   ngOnDestroy(): void {
     this.onDestroy$.next();
     this.onDestroy$.complete();
   }
-
-  private setTags(selected: DropdownOption[]){
-    if (Array.isArray(selected) && selected.length) {
-        if (selected.length === this.items.length) {
-            this.tags = [];
-            this.placeholder = 'All applications';
-        } else {
-            this.placeholder = '';
-            this.tags = selected.map((option: DropdownOption) => ({
-                id: option.id,
-                title: option.displayText,
-                image: option.image
-            }));
-        }
-    } else {
-        this.placeholder = 'Select applications';
-        this.tags = [];
-    }
-  }
 }
-
 const ITEMS_MOCK = ${JSON.stringify(MOK_APPLICATIONS_ONE_LINE_OPTIONS)};
 `,
             format: true,
@@ -168,5 +145,68 @@ const ITEMS_MOCK = ${JSON.stringify(MOK_APPLICATIONS_ONE_LINE_OPTIONS)};
 export const Preselected = TagsInputTemplate.bind({});
 Preselected.args = {
     formControl: new FormControl<DropdownOption[]>(MOK_APPLICATIONS_ONE_LINE_OPTIONS.slice(1, 4))
+};
+Preselected.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { TagsInputIncludeExcludeComponent } from '@ironsource/fusion-ui/components/tags-input';
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<fusion-tags-input-include-exclude
+  [placeholder]="placeholder"
+  [error]="error"
+  [helper]="helper"
+  [title]="title"
+  [items]="items"
+  [formControl]="formControl"
+></fusion-tags-input-include-exclude>\`,
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TagsInputIncludeExcludeComponent,
+  ],
+})
+export class FusionStoryWrapperComponent implements OnInit, OnDestroy {
+  placeholder = 'Select applications';
+  error = '';
+  helper = '';
+
+  items: DropdownOption[] = ITEMS_MOCK;
+
+  formControl = new FormControl<DropdownOption[]>(ITEMS_MOCK.slice(1,4));
+  title = 'Applications';
+
+  private onDestroy$ = new Subject<void>();
+
+  ngOnInit() {
+    this.formControl.valueChanges
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe((selected) => {
+        console.log('Selected:', selected);
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.onDestroy$.next();
+    this.onDestroy$.complete();
+  }
+}
+const ITEMS_MOCK = ${JSON.stringify(MOK_APPLICATIONS_ONE_LINE_OPTIONS)};
+`,
+            format: true,
+            type: 'code'
+        }
+    }
 };
 // endregion
