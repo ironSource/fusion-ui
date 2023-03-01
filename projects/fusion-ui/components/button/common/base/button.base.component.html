@@ -1,7 +1,7 @@
 <span [ngClass]="{'is-icon-text': iconName && projectContent}">
     <fusion-icon *ngIf="iconName && !loading" class="icon" [name]="iconData"></fusion-icon>
     <fusion-button-loading *ngIf="loading" [buttonWithIcon]="!!iconName" [projectContent]="projectContent"></fusion-button-loading>
-    <span><ng-content></ng-content></span>
+    <span #contentRef><ng-content></ng-content></span>
 </span>
 
 

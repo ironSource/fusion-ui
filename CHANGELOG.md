@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.1.2-rc.4](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.3...v5.1.2-rc.4) (2023-02-28)
+
+
+### Bug Fixes
+
+* **fu-129:** fixed button v3 loading state (not horizontal centered) in dialog footer ([05829ed](https://github.com/ironSource/fusion-ui/commit/05829edd15564217da6bff80edcd10c98b6a23de))
+
+### [5.1.2-rc.3](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.2...v5.1.2-rc.3) (2023-02-28)
+
+
+### Bug Fixes
+
+* **fu-129:** fixed button v3 with content in initial state loading ([a6c1c6f](https://github.com/ironSource/fusion-ui/commit/a6c1c6f00c44ae6bff07c6e2849b65505b10dc66))
+
 ### [5.1.2-rc.2](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.1...v5.1.2-rc.2) (2023-02-21)
 
 
