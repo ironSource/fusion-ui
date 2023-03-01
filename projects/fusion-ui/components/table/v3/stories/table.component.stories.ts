@@ -668,6 +668,7 @@ StickyHeader.args = {
         ...TABLE_DEFAULT_OPTIONS,
         stickyHeader: true,
         rowActionsMenu: {
+            useTeleporting: true,
             actions: MOCK_ROW_ACTIONS
         }
     },

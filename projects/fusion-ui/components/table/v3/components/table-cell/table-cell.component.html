@@ -135,7 +135,7 @@
     </div>
     <ng-container *ngIf="shownActionsMenu">
         <fusion-menu-drop
-            *fusionTeleporting="'#'+options.tableId+'_tableTeleportWrapper'"
+            *fusionTeleporting="(options?.rowActionsMenu?.useTeleporting ? '#'+options.tableId+'_tableTeleportWrapper' : null)"
             [fusionReposition]="'#'+actionsMenuButtonId"
             [fusionRepositionPlacement]="'bottom-end'"
             [fusionRepositionOffset]="-32"

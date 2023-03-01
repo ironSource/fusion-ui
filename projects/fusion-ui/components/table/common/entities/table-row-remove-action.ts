@@ -10,5 +10,6 @@ export interface TableRowRemoveAction {
 }
 
 export interface TableMultipleActions {
+    useTeleporting?: boolean;
     actions: MenuDropItem[];
 }
