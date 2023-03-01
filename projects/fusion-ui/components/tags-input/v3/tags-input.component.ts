@@ -1,5 +1,5 @@
 import {
-    AfterViewInit,
+    ChangeDetectionStrategy,
     Component,
     ContentChild,
     EventEmitter,
@@ -21,7 +21,8 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
     standalone: true,
     imports: [CommonModule, InputModule, TagComponent],
     templateUrl: './tags-input.component.html',
-    styleUrls: ['./tags-input.component.scss']
+    styleUrls: ['./tags-input.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TagsInputComponent implements OnInit, OnDestroy {
     /** Placeholder for input used for add new tag */
