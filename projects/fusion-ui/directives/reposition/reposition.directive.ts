@@ -1,6 +1,6 @@
 import {AfterViewInit, Directive, ElementRef, Input, OnInit} from '@angular/core';
 import {IShiftPosition, TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
-import {RepositionOffset} from '@ironsource/fusion-ui/directives/reposition/reposition.entities';
+import {RepositionOffset} from './reposition.entities';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 /**
