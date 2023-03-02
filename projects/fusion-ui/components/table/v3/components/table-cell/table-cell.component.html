@@ -138,6 +138,7 @@
             *fusionTeleporting="'#'+options.tableId+'_tableTeleportWrapper'"
             [fusionReposition]="'#'+actionsMenuButtonId"
             [fusionRepositionPlacement]="floatingMenuPosition"
+            [fusionRepositionOffset]="{y:-32}"
             [menuItems]="menuActions"
             (fusionClickOutside)="onActionMenuClickOutSide($event)"
             (menuItemClicked)="menuItemClicked($event)"

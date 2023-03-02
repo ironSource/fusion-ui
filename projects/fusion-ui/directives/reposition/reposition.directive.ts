@@ -1,5 +1,7 @@
 import {AfterViewInit, Directive, ElementRef, Input, OnInit} from '@angular/core';
 import {IShiftPosition, TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
+import {RepositionOffset} from '@ironsource/fusion-ui/directives/reposition/reposition.entities';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 /**
  * Used @floating-ui/dom (flip()) For flip position of dropped element like drop-menu
@@ -10,6 +12,7 @@ import {IShiftPosition, TooltipPosition} from '@ironsource/fusion-ui/components/
 })
 export class RepositionDirective implements OnInit, AfterViewInit {
     @Input('fusionReposition') referenceElementSelector: string;
+    @Input() fusionRepositionOffset: RepositionOffset;
     @Input() fusionRepositionPlacement: TooltipPosition = TooltipPosition.Bottom;
 
     private hostElement: HTMLElement = this.elRef.nativeElement;
@@ -32,6 +35,7 @@ export class RepositionDirective implements OnInit, AfterViewInit {
             const rectHost = this.hostElement.getBoundingClientRect();
 
             shiftPosition = this.calcPosition(this.fusionRepositionPlacement, rectHost, rectReference);
+            shiftPosition = this.applyOffset(shiftPosition);
 
             Object.assign(this.hostElement.style, {
                 left: `${shiftPosition.left}px`,
@@ -45,37 +49,42 @@ export class RepositionDirective implements OnInit, AfterViewInit {
         const commonY = refRect.y + refRect.height / 2 - hostRect.height / 2;
         let position: IShiftPosition = {top: refRect.y, left: refRect.x};
 
-        console.log('pos: ', pos);
-        console.log('refRect: ', refRect);
-        console.log('hostRect: ', hostRect);
-
         switch (pos) {
             case TooltipPosition.Top:
-                position = {left: commonX, top: refRect.y - refRect.height / 2};
+                position = {left: commonX, top: refRect.y - hostRect.height};
                 break;
             case TooltipPosition.TopRight:
-                position = {left: refRect.x - hostRect.width + refRect.width / 2, top: refRect.y - refRect.height / 2};
+                position = {left: refRect.x - hostRect.width + refRect.width, top: refRect.y - hostRect.height};
                 break;
             case TooltipPosition.TopLeft:
-                position = {left: refRect.x - refRect.width / 2, top: refRect.y - refRect.height / 2};
+                position = {left: refRect.x, top: refRect.y - hostRect.height};
                 break;
             case TooltipPosition.Bottom:
-                position = {left: commonX, top: refRect.y + refRect.height / 2};
+                position = {left: commonX, top: refRect.y + refRect.height};
                 break;
             case TooltipPosition.BottomRight:
-                position = {left: refRect.x - hostRect.width + refRect.width / 2, top: refRect.y + refRect.height / 2};
+                position = {left: refRect.x - hostRect.width + refRect.width, top: refRect.y + refRect.height};
                 break;
             case TooltipPosition.BottomLeft:
-                position = {left: refRect.x - refRect.width / 2, top: refRect.y + refRect.height / 2};
+                position = {left: refRect.x, top: refRect.y + refRect.height};
                 break;
             case TooltipPosition.Right:
-                position = {left: refRect.x + refRect.width - refRect.width / 2, top: commonY};
+                position = {left: refRect.x + refRect.width, top: commonY};
                 break;
             case TooltipPosition.Left:
-                position = {left: refRect.x - hostRect.width - refRect.width / 2, top: commonY};
+                position = {left: refRect.x - hostRect.width, top: commonY};
                 break;
         }
-        console.log('position', position);
+        return position;
+    }
+
+    private applyOffset(position: IShiftPosition): IShiftPosition {
+        if (!isNullOrUndefined(this.fusionRepositionOffset?.y)) {
+            position.top = position.top + this.fusionRepositionOffset.y;
+        }
+        if (!isNullOrUndefined(this.fusionRepositionOffset?.x)) {
+            position.left = position.left + this.fusionRepositionOffset.x;
+        }
         return position;
     }
 }

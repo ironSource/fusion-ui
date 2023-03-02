@@ -99,7 +99,7 @@ export class TableCellComponent implements OnInit, OnChanges {
     isNull: (object: any) => boolean = isNull;
     isNullOrUndefined: (object: any) => boolean = isNullOrUndefined;
     customCellData: DynamicComponentConfiguration;
-    floatingMenuPosition = TooltipPosition.TopRight;
+    floatingMenuPosition = TooltipPosition.BottomRight;
 
     shownActionsMenu = false;
 
