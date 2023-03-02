@@ -45,6 +45,10 @@ export class RepositionDirective implements OnInit, AfterViewInit {
         const commonY = refRect.y + refRect.height / 2 - hostRect.height / 2;
         let position: IShiftPosition = {top: refRect.y, left: refRect.x};
 
+        console.log('pos: ', pos);
+        console.log('refRect: ', refRect);
+        console.log('hostRect: ', hostRect);
+
         switch (pos) {
             case TooltipPosition.Top:
                 position = {left: commonX, top: refRect.y - refRect.height / 2};
@@ -71,6 +75,7 @@ export class RepositionDirective implements OnInit, AfterViewInit {
                 position = {left: refRect.x - hostRect.width - refRect.width / 2, top: commonY};
                 break;
         }
+        console.log('position', position);
         return position;
     }
 }
