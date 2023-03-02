@@ -37,6 +37,7 @@ import {LogService} from '@ironsource/fusion-ui/services/log';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
+import {TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
 
 type CellDataType = Type<Component> | FormControl | string | boolean | undefined | null;
 
@@ -98,6 +99,7 @@ export class TableCellComponent implements OnInit, OnChanges {
     isNull: (object: any) => boolean = isNull;
     isNullOrUndefined: (object: any) => boolean = isNullOrUndefined;
     customCellData: DynamicComponentConfiguration;
+    floatingMenuPosition = TooltipPosition.TopRight;
 
     shownActionsMenu = false;
 

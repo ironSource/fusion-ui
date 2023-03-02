@@ -53,7 +53,6 @@
         "@angular/platform-browser": "^14.2.0",
         "@angular/platform-browser-dynamic": "^14.2.0",
         "@angular/router": "^14.2.0",
-        "@floating-ui/dom": "^1.0.9",
         "chart.js": "^3.6.2",
         "prismjs": "^1.22.0",
         "rxjs": "^6.6.3",
