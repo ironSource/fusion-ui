@@ -26,15 +26,19 @@ export class RepositionDirective implements OnInit {
 
     private calcForReposition(): void {
         if (!!this.referenceElement) {
-            computePosition(this.referenceElement, this.hostElement, {
-                placement: this.fusionRepositionPlacement,
-                middleware: [shift(), flip(), !!this.fusionRepositionOffset && offset(this.fusionRepositionOffset ?? 0)].filter(Boolean)
-            }).then(({x, y}) => {
-                Object.assign(this.hostElement.style, {
-                    left: `${x}px`,
-                    top: `${y}px`
+            try {
+                computePosition(this.referenceElement, this.hostElement, {
+                    placement: this.fusionRepositionPlacement,
+                    middleware: [shift(), flip(), !!this.fusionRepositionOffset && offset(this.fusionRepositionOffset ?? 0)].filter(Boolean)
+                }).then(({x, y}) => {
+                    Object.assign(this.hostElement.style, {
+                        left: `${x}px`,
+                        top: `${y}px`
+                    });
                 });
-            });
+            } catch (e) {
+                console.error(e);
+            }
         }
     }
 }
