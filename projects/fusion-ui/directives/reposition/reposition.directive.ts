@@ -10,7 +10,7 @@ import {IShiftPosition, TooltipPosition} from '@ironsource/fusion-ui/components/
 })
 export class RepositionDirective implements OnInit, AfterViewInit {
     @Input('fusionReposition') referenceElementSelector: string;
-    @Input() fusionRepositionPlacement: TooltipPosition = TooltipPosition.TopRight;
+    @Input() fusionRepositionPlacement: TooltipPosition = TooltipPosition.Bottom;
 
     private hostElement: HTMLElement = this.elRef.nativeElement;
     private referenceElement: HTMLElement;
