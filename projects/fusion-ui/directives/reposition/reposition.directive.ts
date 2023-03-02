@@ -17,6 +17,7 @@ export class RepositionDirective implements OnInit, AfterViewInit {
 
     private hostElement: HTMLElement = this.elRef.nativeElement;
     private referenceElement: HTMLElement;
+    private clientHeight = document.body.clientHeight;
 
     constructor(private elRef: ElementRef) {}
 
@@ -36,6 +37,8 @@ export class RepositionDirective implements OnInit, AfterViewInit {
 
             shiftPosition = this.calcPosition(this.fusionRepositionPlacement, rectHost, rectReference);
             shiftPosition = this.applyOffset(shiftPosition);
+
+            shiftPosition = this.checkForFlip(this.fusionRepositionPlacement, shiftPosition, rectHost, rectReference);
 
             Object.assign(this.hostElement.style, {
                 left: `${shiftPosition.left}px`,
@@ -85,6 +88,26 @@ export class RepositionDirective implements OnInit, AfterViewInit {
         if (!isNullOrUndefined(this.fusionRepositionOffset?.x)) {
             position.left = position.left + this.fusionRepositionOffset.x;
         }
+        return position;
+    }
+
+    private checkForFlip(pos: TooltipPosition, position: IShiftPosition, hostRect: DOMRect, rectReference: DOMRect): IShiftPosition {
+        switch (pos) {
+            case TooltipPosition.Bottom:
+            case TooltipPosition.BottomLeft:
+            case TooltipPosition.BottomRight:
+                if (this.clientHeight - (position.top + hostRect.height) < 0) {
+                    pos =
+                        pos === TooltipPosition.Bottom
+                            ? TooltipPosition.Top
+                            : pos === TooltipPosition.BottomLeft
+                            ? TooltipPosition.TopLeft
+                            : TooltipPosition.TopRight;
+                    position = this.calcPosition(pos, hostRect, rectReference);
+                }
+                break;
+        }
+
         return position;
     }
 }
