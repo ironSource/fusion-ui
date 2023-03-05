@@ -8,7 +8,7 @@ $iconSize: 16px;
     @extend %border-box-normalize;
     @extend %list-reset;
 
-    position: absolute;
+    position: fixed;
     z-index: getZIndexLayerOffset(application, 1);
 
     .fu-menu-holder {

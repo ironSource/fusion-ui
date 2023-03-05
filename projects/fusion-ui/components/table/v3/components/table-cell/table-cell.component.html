@@ -137,8 +137,8 @@
         <fusion-menu-drop
             *fusionTeleporting="'#'+options.tableId+'_tableTeleportWrapper'"
             [fusionReposition]="'#'+actionsMenuButtonId"
-            [fusionRepositionPlacement]="'bottom-end'"
-            [fusionRepositionOffset]="-32"
+            [fusionRepositionPlacement]="floatingMenuPosition"
+            [fusionRepositionOffset]="{y:-32}"
             [menuItems]="menuActions"
             (fusionClickOutside)="onActionMenuClickOutSide($event)"
             (menuItemClicked)="menuItemClicked($event)"
