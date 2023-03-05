@@ -356,7 +356,6 @@ $smallHeight: 32px;
     }
 }
 
-
 :host-context(fusion-input-inline) {
     .fu-input-holder {
         background-color: transparent;
@@ -422,6 +421,25 @@ $smallHeight: 32px;
         display: none;
     }
 }
+
+:host-context(fusion-tags-input){
+    .fu-input-holder{
+        &.focused::after {
+            display: none;
+        }
+        .fu-input {
+            border: none;
+            background-color: transparent;
+            padding: 0;
+            height: 20px;
+            margin: 2px;
+            &:hover {
+                background-color: transparent;
+            }
+        }
+    }
+}
+
 
 /*
 :host-context(div.inputType){

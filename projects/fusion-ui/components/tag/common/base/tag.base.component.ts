@@ -33,8 +33,16 @@ export abstract class TagBaseComponent implements OnInit, OnDestroy {
             this.selected = value.selected;
             this.tooltipContent = value.tooltipContent ?? value.title;
             this.tooltipWidth = value.tooltipWidth;
+
+            this._tag = value;
         }
     }
+    private _tag: TagComponentConfigurations;
+
+    /**
+     * Flag for suppress remove from DOM, just emit remove event to parent.
+     */
+    @Input() removeEventOnly: boolean;
 
     // deprecated inputs
     /** @internal */
@@ -89,7 +97,7 @@ export abstract class TagBaseComponent implements OnInit, OnDestroy {
     }
 
     // eslint-disable-next-line
-    @Output() onRemove = new EventEmitter();
+    @Output() onRemove = new EventEmitter<TagComponentConfigurations>();
     /** @internal */
     // eslint-disable-next-line
     @Output() onSelectedChange = new EventEmitter<any>();
@@ -98,14 +106,6 @@ export abstract class TagBaseComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.width = this.element.nativeElement.offsetWidth;
-        // this.selectedVersion$.subscribe(styleVersion => {
-        //     this.closeIconName$.next(
-        //         styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3
-        //             ? 'close'
-        //             : {iconName: 'clear-full-circle', iconVersion: 'v1'}
-        //     );
-        // });
-
         if (!this.close && !this.disabled) {
             this.setClickListener();
         }
@@ -117,8 +117,10 @@ export abstract class TagBaseComponent implements OnInit, OnDestroy {
     }
     /** @internal */
     closeClicked($event) {
-        this.renderer.removeChild(this.renderer.parentNode(this.element.nativeElement), this.element.nativeElement);
-        this.onRemove.emit();
+        if (!this.removeEventOnly) {
+            this.renderer.removeChild(this.renderer.parentNode(this.element.nativeElement), this.element.nativeElement);
+        }
+        this.onRemove.emit(this._tag);
         if (this.suppressClickOnRemove) {
             $event.stopPropagation();
         }

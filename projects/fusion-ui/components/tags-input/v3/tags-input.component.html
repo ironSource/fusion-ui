@@ -1,0 +1,50 @@
+<ng-template #apiBaseTriggerTemplate>
+    <ng-container *ngIf="apiBase" [ngTemplateOutlet]="triggerComponent"></ng-container>
+</ng-template>
+<ng-container *ngIf="!apiBase" [ngTemplateOutlet]="triggerComponent"></ng-container>
+<ng-content select=".filter-element"></ng-content>
+
+<ng-template #triggerComponent>
+    <div class="fu-tags-input-wrapper" [class.fu-trigger]="apiBase">
+        <div class="fu-tags-holder">
+                <!--Tags-list-->
+                <fusion-tag *ngFor="let tag of (displayedTags$ | async)"
+                            [configuration]="tag"
+                            [removeEventOnly]="true"
+                            [class.fu-tag-error]="!!tag.error"
+                            (onRemove)="tagRemoved($event)"
+                ></fusion-tag>
+                <!--Tags-list-->
+
+            <ng-container *ngIf="!apiBase">
+                <!--Input new tag and search in existed-->
+                <div class="input-container" >
+                    <fusion-input #tagInput
+                                  [placeholder]="inputPlaceholder"
+                                  (ngEnter)="enterNewTag($event)"
+                                  [options]="inputOptions"
+                    ></fusion-input>
+                </div>
+                <!--Input new tag and search in existed-->
+            </ng-container>
+
+            <ng-container *ngIf="apiBase">
+                <!--dropdown (include-exclude, multiselect)-->
+                <div *ngIf="placeholder" class="fu-tags-input-placeholder">{{placeholder}}</div>
+                <!--<ng-content select=".filter-element"></ng-content>-->
+                <!--dropdown (include-exclude, multiselect)-->
+            </ng-container>
+
+        </div>
+    </div>
+</ng-template>
+
+<div class="fu-error-msg"
+     *ngIf="error"
+     [innerHTML]="error">
+</div>
+<div class="fu-helper-text"
+     *ngIf="helper"
+     [hidden]="!!error"
+     [innerHTML]="helper">
+</div>

@@ -13,6 +13,7 @@ export interface TagComponentConfigurations {
     close?: boolean;
     disabled?: boolean;
     selected?: boolean;
+    error?: string;
     role?: TagRole;
     tooltipContent?: string;
     tooltipWidth?: number;
