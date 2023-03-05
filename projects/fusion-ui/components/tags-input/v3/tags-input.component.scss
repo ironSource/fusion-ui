@@ -1,0 +1,83 @@
+@import '../../../src/style/scss/v3/vars/vars';
+@import '../../../src/style/scss/v3/mixins/mixins';
+
+:host {
+    @extend %reset;
+    .fu-tags-input-wrapper{
+        width: 100%;
+        position: relative;
+        display: inline-block;
+        border-radius: 8px;
+        overflow-x: hidden;
+
+        &.fu-trigger{
+            cursor: pointer;
+        }
+
+        .fu-tags-holder{
+            background-color: $fu-light-100;
+            border-radius: 8px;
+            padding: 8px;
+
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 4px;
+
+            min-height: 40px;
+
+            // todo: check with Shai for max height
+            //max-height: 105px;
+            //overflow-y: auto;
+            //@extend %customScroll;
+
+
+            &:hover{
+                background-color: $fu-light-200;
+            }
+            &::after {
+                position: absolute;
+                content: '';
+                height: 2px;
+                width: 100%;
+                background-color: $fu-primary-500;
+                bottom: 0;
+                left: 0;
+                display: none;
+            }
+            &:has(input:focus){
+                &::after{
+                    display: unset;
+                }
+            }
+
+            .input-container{
+                flex-grow: 1;
+            }
+
+            .fu-tags-input-placeholder{
+                @extend %font-bodySmall;
+                color: $fu-black-500;
+            }
+        }
+    }
+    .fu-error-msg {
+        @extend %font-caption;
+        color: $fu-negative-700;
+        margin-top: 4px;
+        margin-left: 2px;
+        height: 16px;
+        line-height: 16.5px;
+        text-align: initial;
+    }
+
+    .fu-helper-text {
+        @extend %font-caption;
+        color: $fu-black-200;
+        margin-top: 4px;
+        margin-left: 2px;
+        height: 16px;
+        line-height: 16.5px;
+        text-align: initial;
+    }
+}

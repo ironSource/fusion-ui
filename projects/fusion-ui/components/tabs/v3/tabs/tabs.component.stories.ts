@@ -51,12 +51,11 @@ Each tab should contain content that is distinct from other tabs in a set. For e
     },
     argTypes: {
         tabSize: {
-            defaultValue: '',
             options: ['fu-size-sm', null, 'fu-size-lg', 'fu-size-xl'],
             control: {
                 type: 'select',
                 labels: {
-                    null: 'MD',
+                    null: 'MD - default',
                     'fu-size-sm': 'SM',
                     'fu-size-lg': 'LG',
                     'fu-size-xl': 'XL'
