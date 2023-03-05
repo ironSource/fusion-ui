@@ -1,0 +1,9 @@
+@import './mixins/mixins';
+@import './vars/vars';
+
+@include margin-padding(margin, $marginDouble, Double);
+@include margin-padding(margin, $marginOneThird, OneThird);
+@include margin-padding(margin, $marginHalf, Half);
+@include margin-padding(margin, $margin, '');
+@include margin-padding(margin, $marginThird, Third);
+@include margin-padding(margin, $marginTwoThird, TwoThird);

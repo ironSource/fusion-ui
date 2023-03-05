@@ -1,4 +1,9 @@
-<ng-container *ngIf="!useNewLayout; else layoutV2">
+
+<ng-container [ngSwitch]="useLayoutName">
+    <ng-container *ngSwitchCase="'layoutV4'" [ngTemplateOutlet]="layoutV4"></ng-container>
+</ng-container>
+
+<!--<ng-container *ngIf="!useNewLayout; else layoutV2">
     <fusion-layout-v1
         userName="fusion@ironsource.com"
         [headerPrimaryMenuIconName]="{iconName: 'user-circle', iconVersion: 'v1'}"
@@ -25,7 +30,13 @@
     >
         <router-outlet></router-outlet>
     </fusion-layout>
+</ng-template>-->
+<ng-template #layoutV4>
+    UNITY LAYOUT
 </ng-template>
+
+<!--
 <ng-template #sidebarDynamicContent>
-    <!--<div style="color: #fff; border: solid 1px red; height: 100%; text-align: center">Dynamic content</div>-->
+    &lt;!&ndash;<div style="color: #fff; border: solid 1px red; height: 100%; text-align: center">Dynamic content</div>&ndash;&gt;
 </ng-template>
+-->

@@ -1,0 +1,191 @@
+/*
+$baseSDN: 'https://fusion.ironsrc.net/assets';
+
+@font-face {
+    font-family: 'NHaasGroteskDSPro';
+    src: url('#{$baseSDN}/fonts/NHaasGroteskDSPro-75Bd.eot'); !* IE9 Compat Modes *!
+    src: url('#{$baseSDN}/fonts/NHaasGroteskDSPro-75Bd.eot?#iefix') format('embedded-opentype'), !* IE6-IE8 *!
+    url('#{$baseSDN}/fonts/NHaasGroteskDSPro-75Bd.woff2') format('woff2'), !* Super Modern Browsers *!
+    url('#{$baseSDN}/fonts/NHaasGroteskDSPro-75Bd.woff') format('woff'), !* Pretty Modern Browsers *!
+    url('#{$baseSDN}/fonts/NHaasGroteskDSPro-75Bd.ttf') format('truetype'); !* Safari, Android, iOS *!
+}
+
+@font-face {
+    font-family: 'NHaasGroteskDSPro-65Md';
+    src: url('#{$baseSDN}/fonts/NHaasGroteskDSPro-65Md.eot'); !* IE9 Compat Modes *!
+    src: url('#{$baseSDN}/fonts/NHaasGroteskDSPro-65Md.eot?#iefix') format('embedded-opentype'), !* IE6-IE8 *!
+    url('#{$baseSDN}/fonts/NHaasGroteskDSPro-65Md.woff2') format('woff2'), !* Super Modern Browsers *!
+    url('#{$baseSDN}/fonts/NHaasGroteskDSPro-65Md.woff') format('woff'), !* Pretty Modern Browsers *!
+    url('#{$baseSDN}/fonts/NHaasGroteskDSPro-65Md.ttf') format('truetype'); !* Safari, Android, iOS *!
+}
+
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url('#{$baseSDN}/fonts/HelveticaNeue.eot');
+    src: url('#{$baseSDN}/fonts/HelveticaNeue.eot?#iefix') format('embedded-opentype'),
+    url('#{$baseSDN}/fonts/HelveticaNeue.woff2') format('woff2'),
+    url('#{$baseSDN}/fonts/HelveticaNeue.woff') format('woff'),
+    url('#{$baseSDN}/fonts/HelveticaNeue.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'HelveticaNeue-Medium';
+    src: url('#{$baseSDN}/fonts/HelveticaNeue-Medium.eot');
+    src: url('#{$baseSDN}/fonts/HelveticaNeue-Medium.eot?#iefix') format('embedded-opentype'),
+    url('#{$baseSDN}/fonts/HelveticaNeue-Medium.woff2') format('woff2'),
+    url('#{$baseSDN}/fonts/HelveticaNeue-Medium.woff') format('woff'),
+    url('#{$baseSDN}/fonts/HelveticaNeue-Medium.ttf') format('truetype');
+}
+
+// font-family
+$groteskDSPro: 'NHaasGroteskDSPro', sans-serif;
+$groteskDSPro65Md: 'NHaasGroteskDSPro-65Md', sans-serif;
+$helveticaNueMd: 'HelveticaNeue-Medium', helvetica, sans-serif;
+$helveticaNue: 'HelveticaNeue', helvetica, sans-serif;
+
+// region heading fonts
+// region base for heading
+%font-heading {
+    font-family: $groteskDSPro;
+}
+// endregion
+
+%font-heading-1 {
+    font-size: 60px;
+    @extend %font-heading;
+}
+%font-heading-2 {
+    font-size: 32px;
+    @extend %font-heading;
+}
+%font-heading-3 {
+    font-size: 22px;
+    @extend %font-heading;
+}
+%font-heading-4 {
+    font-size: 18px;
+    @extend %font-heading;
+}
+%font-heading-5 {
+    font-size: 15px;
+    @extend %font-heading;
+}
+%font-heading-6 {
+    font-size: 13px;
+    @extend %font-heading;
+}
+%font-heading-label {
+    font-size: 11px;
+    font-family: $groteskDSPro65Md;
+    letter-spacing: 0.25px;
+}
+// endregion
+
+// region body fonts
+// region base for body
+%font-body{
+    font-family: $helveticaNue;
+    line-height: 1.5;
+}
+%font-bodyStrong{
+    font-family: $helveticaNueMd;
+    line-height: 1.5;
+}
+// endregion
+
+%font-bodyLarge {
+    @extend %font-body;
+    font-size: 16px;
+}
+%font-bodyLargeStrong {
+    @extend %font-bodyStrong;
+    font-size: 16px;
+}
+%font-bodyMedium {
+    font-size: 14px;
+    @extend %font-body;
+}
+%font-bodyMediumStrong {
+    font-size: 14px;
+    @extend %font-bodyStrong;
+}
+%font-bodySmall {
+    font-size: 13px;
+    letter-spacing: 0.24px;
+    @extend %font-body;
+}
+%font-bodySmallStrong {
+    @extend %font-bodyStrong;
+    font-size: 13px;
+    letter-spacing: 0.24px;
+}
+%font-bodyXSmall {
+    font-size: 12px;
+    letter-spacing: 0.24px;
+    @extend %font-body;
+}
+%font-bodyXSmallStrong {
+    @extend %font-bodyStrong;
+    font-size: 12px;
+    letter-spacing: 0.24px;
+}
+
+%font-caption {
+    font-size: 11px;
+    @extend %font-body;
+}
+// endregion
+
+// region CSS Clases
+.font-heading-1{
+    @extend %font-heading-1;
+}
+.font-heading-2{
+    @extend %font-heading-2;
+}
+.font-heading-3{
+    @extend %font-heading-3;
+}
+.font-heading-4{
+    @extend %font-heading-4;
+}
+.font-heading-5{
+    @extend %font-heading-5;
+}
+.font-heading-6{
+    @extend %font-heading-6;
+}
+.font-heading-label{
+    @extend %font-heading-label;
+}
+
+.font-bodyLarge {
+    @extend %font-bodyLarge;
+}
+.font-bodyLargeStrong {
+    @extend %font-bodyLargeStrong;
+}
+.font-bodyMedium {
+    @extend %font-bodyMedium;
+}
+.font-bodyMediumStrong {
+    @extend %font-bodyMediumStrong;
+}
+.font-bodySmall {
+    @extend %font-bodySmall;
+}
+.font-bodySmallStrong {
+    @extend %font-bodySmallStrong;
+}
+.font-bodyXSmall {
+    @extend %font-bodyXSmall;
+}
+.font-bodyXSmallStrong {
+    @extend %font-bodyXSmallStrong;
+}
+
+.font-caption {
+    @extend %font-caption;
+}
+// endregion
+*/
