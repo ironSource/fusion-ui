@@ -91,7 +91,7 @@ export abstract class ButtonBaseComponent implements OnInit, AfterViewInit, OnDe
     }
 
     ngAfterViewInit() {
-        this.projectContent = !!this.contentRef.nativeElement.innerText.trim();
+        this.projectContent = !!this.contentRef?.nativeElement?.innerText?.trim();
         this.setHostClass(this.projectContent, 'fu-with-content');
     }
 
