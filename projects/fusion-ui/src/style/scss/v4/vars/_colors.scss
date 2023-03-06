@@ -1,6 +1,27 @@
-/*
-!* Colors V3 *!
+/* Colors V4 */
 $White: var(--fu-white, #ffffff);
+
+// region colors Navigation
+// background
+$fu-nav-primary-ironsource: #0D148C;
+$fu-nav-primary-unity: #202020;
+$fu-nav-secondary: #FAFAFA;
+// text
+$fu-nav-text-primary: #202020;
+$fu-nav-text-secondary: #757575;
+//white - transparent
+$fu-nav-menu-white-100: #ffffff;
+$fu-nav-menu-white-80: rgba(255, 255, 255, 0.8);
+$fu-nav-menu-white-20: rgba(255, 255, 255, 0.2);
+$fu-nav-menu-white-16: rgba(255, 255, 255, 0.16);
+$fu-nav-menu-white-12: rgba(255, 255, 255, 0.12);
+//black - transparent
+$fu-nav-menu-black-8:  rgba(0, 0, 0, 0.08);
+$fu-nav-menu-black-5:  rgba(0, 0, 0, 0.05);
+// end region
+
+
+/*
 
 // region BLACK
 $fu-black-200: var(--fu-black-200, #696A6B);

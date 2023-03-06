@@ -7,16 +7,18 @@ import {LayoutModule as LayoutV1Module} from '@ironsource/fusion-ui/components/l
 import {environment} from '../../../environments/environment';
 import {StyleVersionButtonModule} from '../../components/style-version-button/style-version-button.module';
 import {MenuItemExampleModule} from '../../components/menu-item-example/menu-item-example.module';
+import {LayoutComponent} from '@ironsource/fusion-ui/components/layout/v4';
 
 @NgModule({
     declarations: [DocsComponent],
     imports: [
         CommonModule,
         DocsRoutingModule,
+        LayoutComponent
         // LayoutV1Module.forRoot({svgOptions: {assetsPath: environment.assetsPath}}),
-        LayoutModule.forRoot({svgOptions: {assetsPath: environment.assetsPath}}),
-        StyleVersionButtonModule,
-        MenuItemExampleModule
+        /*LayoutModule.forRoot({svgOptions: {assetsPath: environment.assetsPath}}),*/
+        /*StyleVersionButtonModule,*/
+        /*MenuItemExampleModule*/
     ]
 })
 export class DocsModule {}

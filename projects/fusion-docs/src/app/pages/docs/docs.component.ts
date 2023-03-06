@@ -11,6 +11,7 @@ import {DocsLayoutService} from './docs-layout.service';
 import {VersionService} from '../../services/version/version.service';
 import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {LayoutComponentConfiguration, LayoutHeaderComponentConfiguration} from '@ironsource/fusion-ui/components/layout/v2';
+import {NAVIGATION_MENU_MOCK} from '@ironsource/fusion-ui/components/navigation-menu/v4/stories/navigation-menu.mock';
 
 @Component({
     selector: 'fusion-docs',
@@ -37,6 +38,8 @@ export class DocsComponent implements OnInit, OnDestroy {
     // region for layout "v2"
     layoutConfiguration$ = this.docsLayoutService.layoutConfig$;
     // endregion
+
+    unityMenuItems = NAVIGATION_MENU_MOCK;
 
     private onDestroy$ = new Subject<void>();
     private selectedVersion$ = this.versionService.styleVersion$;

@@ -1,0 +1,11 @@
+@import '../../../src/style/scss/v4/app';
+
+:host{
+    @extend %reset;
+    height: 100%;
+    width: 276px;
+    .fu-navigation-menu{
+        display: block;
+        height: 100%;
+    }
+}

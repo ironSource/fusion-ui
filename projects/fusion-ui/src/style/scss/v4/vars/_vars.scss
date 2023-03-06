@@ -1,11 +1,12 @@
 @import 'fonts';
 @import 'colors';
+@import 'screen';
 
 %border-box-normalize {
     * {box-sizing: border-box;}
 }
 
-// resets
+// region resets
 %reset {
     @extend %border-box-normalize; // add box-sizing
     margin: 0;
@@ -23,34 +24,4 @@
         }
     }
 }
-
-%link-reset{
-    a{
-        @extend %font-bodyStrong;
-        text-decoration: none;
-        color:$fu-primary-500;
-        cursor: pointer;
-
-        &:link,
-        &:visited,
-        &:hover,
-        &:active{
-            color:$fu-primary-500;
-        }
-    }
-}
-
-%no-pointer-events{
-    pointer-events: none;
-    cursor: default;
-    touch-callout: none;
-    user-select: none;
-}
-
-%truncate{
-    width: 100%;
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden !important;
-    text-overflow: ellipsis;
-}
+// endregion

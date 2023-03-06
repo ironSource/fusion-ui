@@ -1,0 +1,106 @@
+@import '../../../../src/style/scss/v4/mixins/mixins';
+@import '../../../../src/style/scss/v4/app';
+
+$navButtonSize: 40px;
+$toggleButtonSize: 32px;
+$navBarIconSize: 24px;
+
+:host{
+    @extend %reset;
+    display: block;
+    height: 100%;
+    width: 64px;
+    background-color: var(--fu-navbar-background-color, $fu-nav-primary-unity);
+    .fu-navigation-bar-holder{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+
+        .fu-navigation-bar-item{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            &.fu-home{
+                height: 64px;
+            }
+            &.fu-network{
+                height: 80px;
+                .fu-navigation-bar-button{
+                    @include icon-style('fu-navigation-bar-button-icon', $fu-nav-menu-white-100, $navBarIconSize, true, true) {
+                        @include size($navBarIconSize);
+                    }
+                }
+            }
+            &.fu-bottom-block{
+                height: 48px;
+                &:last-of-type{
+                    padding-bottom: 8px;
+                }
+            }
+        }
+
+        .fu-navigation-bar-bottom-items{
+            width: 100%;
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+
+            .fu-menu-toggle-button-holder{
+                height: 48px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                border-top: solid 1px $fu-nav-menu-white-12;
+                background-color: var(--fu-navbar-toggle-button-background-color, $fu-nav-menu-white-16);
+            }
+        }
+
+        .fu-navigation-bar-network-name{
+            color: var(--fu-navbar-text-color, $fu-nav-menu-white-80);
+            height: 18px;
+            line-height: 18px;
+            // todo: check font with Moran
+            @extend %font-heading-label;
+        }
+
+        .fu-navigation-bar-button{
+            @include size($navButtonSize);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            @include icon-style('fu-navigation-bar-button-icon', $fu-nav-menu-white-80, $navBarIconSize, true, true) {
+                @include size($navBarIconSize);
+            }
+
+            &:hover{
+                background-color: var(--fu-navbar-button-hover-background-color, $fu-nav-menu-white-20);
+                cursor: pointer;
+                @include icon-style('fu-navigation-bar-button-icon', $fu-nav-menu-white-100, $navBarIconSize, true, true)
+            }
+            &.fu-selected{
+                border: solid 1px var(--fu-navbar-button-selected-border-color, $fu-nav-menu-white-20);
+                background-color: var(--fu-navbar-button-hover-background-color, $fu-nav-menu-white-20);
+                pointer-events: none;
+                @include icon-style('fu-navigation-bar-button-icon', $fu-nav-menu-white-100, $navBarIconSize, true, true);
+                &:hover{
+                    cursor: default;
+                }
+            }
+            &.fu-menu-toggle{
+                @include size($toggleButtonSize);
+                background-color: var(--fu-navbar-button-toggle-hover-background-color, $fu-nav-menu-white-12);
+                &:hover{
+                    background-color: var(--fu-navbar-button-toggle-hover-background-color, $fu-nav-menu-white-20);
+                }
+
+            }
+        }
+    }
+}
