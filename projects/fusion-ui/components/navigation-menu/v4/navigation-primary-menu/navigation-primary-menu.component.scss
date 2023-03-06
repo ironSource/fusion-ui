@@ -65,7 +65,7 @@ $navBarIconSize: 24px;
             height: 18px;
             line-height: 18px;
             // todo: check font with Moran
-            @extend %font-heading-label;
+            @extend %font-caption-3;
         }
 
         .fu-navigation-bar-button{

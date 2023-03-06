@@ -1,5 +1,5 @@
 <div class="fu-navigation-bar-holder">
-    <div *ngIf="homeItem" class="fu-navigation-bar-item fu-home">
+    <div *ngIf="homeItem" class="fu-navigation-bar-item fu-home" [fusionTooltip]="homeItem.menuTooltip">
         <div class="fu-navigation-bar-button" [class.fu-selected]="homeItem === selectedBarItem" (click)="networkItemClicked(null)">
             <fusion-icon *ngIf="homeItem.menuIcon"
                          class="fu-navigation-bar-button-icon"
@@ -8,7 +8,7 @@
         </div>
     </div>
     <ng-container *ngIf="(networkItems$ | async) as networkItems">
-        <div class="fu-navigation-bar-item fu-network" *ngFor="let networkItem of networkItems">
+        <div class="fu-navigation-bar-item fu-network" *ngFor="let networkItem of networkItems" [fusionTooltip]="networkItem.menuTooltip">
             <div class="fu-navigation-bar-button" [class.fu-selected]="networkItem === selectedBarItem" (click)="networkItemClicked(networkItem)">
                 <fusion-icon *ngIf="networkItem.menuIcon" class="fu-navigation-bar-button-icon" [name]="networkItem.menuIcon"></fusion-icon>
             </div>
@@ -17,12 +17,12 @@
     </ng-container>
     <ng-container *ngIf="(bottomItems$ | async) as bottomItems">
         <div class="fu-navigation-bar-bottom-items">
-            <div class="fu-navigation-bar-item fu-bottom-block" *ngFor="let bottomItem of bottomItems">
+            <div class="fu-navigation-bar-item fu-bottom-block" *ngFor="let bottomItem of bottomItems" [fusionTooltip]="bottomItem.menuTooltip">
                 <div class="fu-navigation-bar-button">
                     <fusion-icon *ngIf="bottomItem.menuIcon" class="fu-navigation-bar-button-icon" [name]="bottomItem.menuIcon"></fusion-icon>
                 </div>
             </div>
-            <div class="fu-menu-toggle-button-holder" *ngIf="selectedBarItem">
+            <div class="fu-menu-toggle-button-holder" *ngIf="selectedBarItem" [fusionTooltip]="menuToggleButtonTooltip">
                 <div class="fu-navigation-bar-button fu-menu-toggle">
                     <fusion-icon *ngIf="menuCollapsed" class="fu-navigation-bar-button-icon" [name]="menuCollapsedIcon"></fusion-icon>
                     <fusion-icon *ngIf="!menuCollapsed" class="fu-navigation-bar-button-icon" [name]="menuExpandedIcon"></fusion-icon>

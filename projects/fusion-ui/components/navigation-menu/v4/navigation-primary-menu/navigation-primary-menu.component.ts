@@ -1,13 +1,14 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {NavigationMenuBarItem} from '@ironsource/fusion-ui/components/navigation-menu/v4/navigation-menu.entities';
+import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 
 @Component({
     selector: 'fusion-navigation-primary-menu',
     standalone: true,
-    imports: [CommonModule, IconModule],
+    imports: [CommonModule, IconModule, TooltipModule],
     templateUrl: './navigation-primary-menu.component.html',
     styleUrls: ['./navigation-primary-menu.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -26,6 +27,7 @@ export class NavigationPrimaryMenuComponent implements OnInit {
     menuCollapsed = new BehaviorSubject<boolean>(false);
     menuCollapsedIcon = {iconName: 'arrowLineRight', iconVersion: 'v4'};
     menuExpandedIcon = {iconName: 'arrowLineLeft', iconVersion: 'v4'};
+    menuToggleButtonTooltip = 'Collapse side nav';
 
     constructor() {}
 
