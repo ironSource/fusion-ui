@@ -69,7 +69,7 @@ export class RepositionDirective implements OnInit, AfterViewInit {
                 position = {left: refRect.x - hostRect.width + refRect.width, top: refRect.y + refRect.height};
                 break;
             case TooltipPosition.BottomLeft:
-                position = {left: refRect.x, top: refRect.y + refRect.height};
+                position = {left: refRect.x, top: refRect.y + refRect.height - hostRect.height};
                 break;
             case TooltipPosition.Right:
                 position = {left: refRect.x + refRect.width, top: commonY};
