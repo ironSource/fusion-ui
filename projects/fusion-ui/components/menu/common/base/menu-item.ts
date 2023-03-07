@@ -17,4 +17,7 @@ export interface MenuItem {
     children?: MenuItem[];
     platformMenuPath?: string;
     content?: DynamicComponentConfiguration;
+
+    order?: number;
+    executeBeforeNavigation?: () => void;
 }
