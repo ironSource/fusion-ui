@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {NavigationPrimaryMenuComponent} from './navigation-primary-menu/navigation-primary-menu.component';
 import {NavigationMenuBarItem} from '@ironsource/fusion-ui/components/navigation-menu/v4/navigation-menu.entities';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
     selector: 'fusion-navigation-menu',
@@ -15,6 +16,8 @@ import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 export class NavigationMenuComponent implements OnInit {
     @Input() menuItems: NavigationMenuBarItem[];
 
+    secondaryMenuCollapsed = new BehaviorSubject<boolean>(false);
+
     constructor(private elementRef: ElementRef) {}
 
     ngOnInit(): void {}
@@ -25,6 +28,11 @@ export class NavigationMenuComponent implements OnInit {
                 this.setNetworkTheme(selectedNetwork?.cssTheme);
             }
         }
+    }
+
+    toggleMenu() {
+        this.secondaryMenuCollapsed.next(!this.secondaryMenuCollapsed.getValue());
+        console.log('collapsed', this.secondaryMenuCollapsed.getValue());
     }
 
     private setNetworkTheme(theme: {[key: string]: string}) {

@@ -2,8 +2,8 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output}
 import {CommonModule} from '@angular/common';
 import {BehaviorSubject} from 'rxjs';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
-import {NavigationMenuBarItem} from '@ironsource/fusion-ui/components/navigation-menu/v4/navigation-menu.entities';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
+import {NavigationBarItemType, NavigationMenuBarItem} from '@ironsource/fusion-ui/components/navigation-menu/v4/navigation-menu.entities';
 
 @Component({
     selector: 'fusion-navigation-primary-menu',
@@ -17,8 +17,10 @@ export class NavigationPrimaryMenuComponent implements OnInit {
     @Input() set menuBarItems(value: NavigationMenuBarItem[]) {
         this.parseNavigationBarItems(value);
     }
+    @Input() menuCollapsed = false;
 
     @Output() networkSelected = new EventEmitter<NavigationMenuBarItem>();
+    @Output() toggleMenu = new EventEmitter();
 
     homeItem: NavigationMenuBarItem;
 
@@ -26,7 +28,6 @@ export class NavigationPrimaryMenuComponent implements OnInit {
     bottomItems$ = new BehaviorSubject<NavigationMenuBarItem[]>([]);
 
     selectedBarItem: NavigationMenuBarItem;
-    menuCollapsed = new BehaviorSubject<boolean>(false);
     menuCollapsedIcon = {iconName: 'arrowLineRight', iconVersion: 'v4'};
     menuExpandedIcon = {iconName: 'arrowLineLeft', iconVersion: 'v4'};
     menuToggleButtonTooltip = 'Collapse side nav';
@@ -45,13 +46,13 @@ export class NavigationPrimaryMenuComponent implements OnInit {
         const bottomItems = [];
         value.forEach((barItem: NavigationMenuBarItem) => {
             switch (barItem.type) {
-                case 'home':
+                case NavigationBarItemType.Home:
                     this.homeItem = barItem;
                     break;
-                case 'network':
+                case NavigationBarItemType.Main:
                     networkItems.push(barItem);
                     break;
-                case 'bottom':
+                case NavigationBarItemType.Bottom:
                     bottomItems.push(barItem);
                     break;
             }

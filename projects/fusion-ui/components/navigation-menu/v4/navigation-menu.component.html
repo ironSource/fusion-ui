@@ -1,3 +1,8 @@
 <div class="fu-navigation-menu">
-    <fusion-navigation-primary-menu [menuBarItems]="menuItems" (networkSelected)="networkSelected($event)"></fusion-navigation-primary-menu>
+    <fusion-navigation-primary-menu
+        [menuBarItems]="menuItems"
+        [menuCollapsed]="secondaryMenuCollapsed | async"
+        (networkSelected)="networkSelected($event)"
+        (toggleMenu)="toggleMenu()"
+    ></fusion-navigation-primary-menu>
 </div>

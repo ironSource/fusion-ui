@@ -1,7 +1,11 @@
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 
-export type NavigationBarItemType = 'home' | 'network' | 'bottom';
+export enum NavigationBarItemType {
+    Home = 'home',
+    Main = 'main',
+    Bottom = 'bottom'
+}
 
 export interface NavigationMenuBarItem {
     type: NavigationBarItemType;

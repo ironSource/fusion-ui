@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="fu-menu-toggle-button-holder" *ngIf="selectedBarItem" [fusionTooltip]="menuToggleButtonTooltip">
-                <div class="fu-navigation-bar-button fu-menu-toggle">
+                <div class="fu-navigation-bar-button fu-menu-toggle" (click)="toggleMenu.emit()">
                     <fusion-icon *ngIf="menuCollapsed" class="fu-navigation-bar-button-icon" [name]="menuCollapsedIcon"></fusion-icon>
                     <fusion-icon *ngIf="!menuCollapsed" class="fu-navigation-bar-button-icon" [name]="menuExpandedIcon"></fusion-icon>
                 </div>

@@ -1,14 +1,14 @@
-import {NavigationMenuBarItem} from '@ironsource/fusion-ui/components/navigation-menu/v4/navigation-menu.entities';
+import {NavigationBarItemType, NavigationMenuBarItem} from '@ironsource/fusion-ui/components/navigation-menu/v4/navigation-menu.entities';
 
 export const NAVIGATION_MENU_MOCK: NavigationMenuBarItem[] = [
     {
-        type: 'home',
+        type: NavigationBarItemType.Home,
         menuIcon: {iconName: 'house', iconVersion: 'v4'},
         menuTooltip: 'Dashboard',
         route: '/'
     },
     {
-        type: 'network',
+        type: NavigationBarItemType.Main,
         menuIcon: {iconName: 'unity', iconVersion: 'v4'},
         menuTitle: 'LevelPlay',
         menuTooltip: 'Unity LevelPlay',
@@ -17,7 +17,7 @@ export const NAVIGATION_MENU_MOCK: NavigationMenuBarItem[] = [
         }
     },
     {
-        type: 'network',
+        type: NavigationBarItemType.Main,
         menuIcon: {iconName: 'ironSource', iconVersion: 'v4'},
         menuTitle: 'Network',
         menuTooltip: 'ironSource network',
@@ -26,14 +26,14 @@ export const NAVIGATION_MENU_MOCK: NavigationMenuBarItem[] = [
         }
     },
     {
-        type: 'bottom',
+        type: NavigationBarItemType.Bottom,
         menuIcon: {iconName: 'question', iconVersion: 'v4'},
         menuTooltip: 'Knowledge Center',
         redirect: 'https://platform.ironsrc.com/',
         target: '_blank'
     },
     {
-        type: 'bottom',
+        type: NavigationBarItemType.Bottom,
         menuIcon: {iconName: 'userCircle', iconVersion: 'v4'},
         menuTooltip: 'Account'
     }
