@@ -81,12 +81,20 @@ export class RepositionDirective implements OnInit, AfterViewInit {
         return position;
     }
 
-    private applyOffset(position: IShiftPosition): IShiftPosition {
+    private applyOffset(position: IShiftPosition, afterFlip = false): IShiftPosition {
         if (!isNullOrUndefined(this.fusionRepositionOffset?.y)) {
-            position.top = position.top + this.fusionRepositionOffset.y;
+            if (afterFlip) {
+                position.top = position.top + this.fusionRepositionOffset.y * -1;
+            } else {
+                position.top = position.top + this.fusionRepositionOffset.y;
+            }
         }
         if (!isNullOrUndefined(this.fusionRepositionOffset?.x)) {
-            position.left = position.left + this.fusionRepositionOffset.x;
+            if (afterFlip) {
+                position.left = position.left + (this.fusionRepositionOffset.x - 1);
+            } else {
+                position.left = position.left + this.fusionRepositionOffset.x;
+            }
         }
         return position;
     }
@@ -103,7 +111,8 @@ export class RepositionDirective implements OnInit, AfterViewInit {
                             : pos === TooltipPosition.BottomLeft
                             ? TooltipPosition.TopLeft
                             : TooltipPosition.TopRight;
-                    position = this.calcPosition(pos, hostRect, rectReference);
+
+                    position = this.applyOffset(this.calcPosition(pos, hostRect, rectReference), true);
                 }
                 break;
         }
