@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BehaviorSubject} from 'rxjs';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
@@ -18,6 +18,8 @@ export class NavigationPrimaryMenuComponent implements OnInit {
         this.parseNavigationBarItems(value);
     }
 
+    @Output() networkSelected = new EventEmitter<NavigationMenuBarItem>();
+
     homeItem: NavigationMenuBarItem;
 
     networkItems$ = new BehaviorSubject<NavigationMenuBarItem[]>([]);
@@ -35,7 +37,7 @@ export class NavigationPrimaryMenuComponent implements OnInit {
 
     networkItemClicked(item) {
         this.selectedBarItem = item;
-        // todo: add secondary menu
+        this.networkSelected.emit(item);
     }
 
     private parseNavigationBarItems(value: NavigationMenuBarItem[]) {

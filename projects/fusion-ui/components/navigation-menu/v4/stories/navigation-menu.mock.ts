@@ -11,19 +11,26 @@ export const NAVIGATION_MENU_MOCK: NavigationMenuBarItem[] = [
         type: 'network',
         menuIcon: {iconName: 'unity', iconVersion: 'v4'},
         menuTitle: 'LevelPlay',
-        menuTooltip: 'Unity LevelPlay'
+        menuTooltip: 'Unity LevelPlay',
+        cssTheme: {
+            'fu-navbar-background-color': '#202020'
+        }
     },
     {
         type: 'network',
         menuIcon: {iconName: 'ironSource', iconVersion: 'v4'},
         menuTitle: 'Network',
-        menuTooltip: 'ironSource network'
+        menuTooltip: 'ironSource network',
+        cssTheme: {
+            'fu-navbar-background-color': '#0D148C'
+        }
     },
     {
         type: 'bottom',
         menuIcon: {iconName: 'question', iconVersion: 'v4'},
         menuTooltip: 'Knowledge Center',
-        route: '/'
+        redirect: 'https://platform.ironsrc.com/',
+        target: '_blank'
     },
     {
         type: 'bottom',
