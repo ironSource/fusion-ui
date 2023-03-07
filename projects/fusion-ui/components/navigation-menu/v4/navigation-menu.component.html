@@ -1,6 +1,7 @@
 <div class="fu-navigation-menu">
     <fusion-navigation-primary-menu
         [menuBarItems]="menuItems"
+        [layoutUser]="layoutUser"
         [menuCollapsed]="secondaryMenuCollapsed | async"
         (networkSelected)="networkSelected($event)"
         (toggleMenu)="toggleMenu()"

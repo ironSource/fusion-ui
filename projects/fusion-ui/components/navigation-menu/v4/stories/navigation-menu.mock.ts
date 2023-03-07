@@ -1,4 +1,35 @@
 import {NavigationBarItemType, NavigationMenuBarItem} from '@ironsource/fusion-ui/components/navigation-menu/v4/navigation-menu.entities';
+import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
+
+export const USER_PROFILE_MENU_ITEMS: MenuItem[] = [
+    {
+        cssClass: 'item-in-group_first',
+        name: 'Account',
+        route: '/'
+    },
+    {
+        cssClass: 'item-in-group',
+        name: 'User Management',
+        route: '/'
+    },
+    {
+        cssClass: 'item-in-group_last',
+        name: 'Company Info',
+        route: '/'
+    },
+    {
+        name: 'Payment',
+        route: '/'
+    },
+    {
+        name: 'Contact Us',
+        route: '/'
+    },
+    {
+        name: 'Logout',
+        route: '/'
+    }
+];
 
 export const NAVIGATION_MENU_MOCK: NavigationMenuBarItem[] = [
     {
@@ -33,8 +64,9 @@ export const NAVIGATION_MENU_MOCK: NavigationMenuBarItem[] = [
         target: '_blank'
     },
     {
-        type: NavigationBarItemType.Bottom,
+        type: NavigationBarItemType.User,
         menuIcon: {iconName: 'userCircle', iconVersion: 'v4'},
-        menuTooltip: 'Account'
+        menuTooltip: 'Account',
+        menuItems: USER_PROFILE_MENU_ITEMS
     }
 ];

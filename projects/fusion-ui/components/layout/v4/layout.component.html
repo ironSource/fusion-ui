@@ -1,7 +1,7 @@
 <div class="fu-layout">
     <!--navigation-->
     <div class="fu-left-navigation">
-        <fusion-navigation-menu [menuItems]="menuItems"></fusion-navigation-menu>
+        <fusion-navigation-menu [layoutUser]="layoutUser$ | async" [menuItems]="navigationMenu$ | async"></fusion-navigation-menu>
     </div>
     <!--navigation-->
     <div class="fu-main-page">

@@ -12,6 +12,7 @@ import {VersionService} from '../../services/version/version.service';
 import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {LayoutComponentConfiguration, LayoutHeaderComponentConfiguration} from '@ironsource/fusion-ui/components/layout/v2';
 import {NAVIGATION_MENU_MOCK} from '@ironsource/fusion-ui/components/navigation-menu/v4/stories/navigation-menu.mock';
+import {LayoutConfiguration} from '@ironsource/fusion-ui/components/layout/v4/layout.entities';
 
 @Component({
     selector: 'fusion-docs',
@@ -39,7 +40,16 @@ export class DocsComponent implements OnInit, OnDestroy {
     layoutConfiguration$ = this.docsLayoutService.layoutConfig$;
     // endregion
 
-    unityMenuItems = NAVIGATION_MENU_MOCK;
+    // region for layout "v4"
+    layoutConfiguration: LayoutConfiguration = {
+        navigationMenuItems: NAVIGATION_MENU_MOCK,
+        layoutUser: {
+            icon: {iconName: 'userCircle', iconVersion: 'v4'},
+            name: 'Example Username',
+            email: 'test@irontest.com'
+        }
+    };
+    // endregion
 
     private onDestroy$ = new Subject<void>();
     private selectedVersion$ = this.versionService.styleVersion$;

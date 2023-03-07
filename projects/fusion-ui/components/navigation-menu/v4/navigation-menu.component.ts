@@ -4,6 +4,7 @@ import {NavigationPrimaryMenuComponent} from './navigation-primary-menu/navigati
 import {NavigationMenuBarItem} from '@ironsource/fusion-ui/components/navigation-menu/v4/navigation-menu.entities';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {BehaviorSubject} from 'rxjs';
+import {LayoutUser} from '@ironsource/fusion-ui/entities';
 
 @Component({
     selector: 'fusion-navigation-menu',
@@ -15,6 +16,7 @@ import {BehaviorSubject} from 'rxjs';
 })
 export class NavigationMenuComponent implements OnInit {
     @Input() menuItems: NavigationMenuBarItem[];
+    @Input() layoutUser: LayoutUser;
 
     secondaryMenuCollapsed = new BehaviorSubject<boolean>(false);
 

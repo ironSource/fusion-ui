@@ -5,6 +5,7 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {NavigationBarItemType, NavigationMenuBarItem} from '@ironsource/fusion-ui/components/navigation-menu/v4/navigation-menu.entities';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
+import {LayoutUser} from '@ironsource/fusion-ui/entities';
 
 @Component({
     selector: 'fusion-navigation-primary-menu',
@@ -20,6 +21,7 @@ export class NavigationPrimaryMenuComponent implements OnInit {
             this.parseNavigationBarItems(value);
         }
     }
+    @Input() layoutUser: LayoutUser;
     @Input() menuCollapsed = false;
 
     @Output() networkSelected = new EventEmitter<NavigationMenuBarItem>();
@@ -55,7 +57,7 @@ export class NavigationPrimaryMenuComponent implements OnInit {
                 case NavigationBarItemType.Main:
                     networkItems.push(barItem);
                     break;
-                case NavigationBarItemType.Bottom:
+                default:
                     bottomItems.push(barItem);
                     break;
             }
