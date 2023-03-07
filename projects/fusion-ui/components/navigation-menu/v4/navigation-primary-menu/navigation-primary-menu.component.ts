@@ -4,6 +4,7 @@ import {BehaviorSubject} from 'rxjs';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {NavigationBarItemType, NavigationMenuBarItem} from '@ironsource/fusion-ui/components/navigation-menu/v4/navigation-menu.entities';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Component({
     selector: 'fusion-navigation-primary-menu',
@@ -15,7 +16,9 @@ import {NavigationBarItemType, NavigationMenuBarItem} from '@ironsource/fusion-u
 })
 export class NavigationPrimaryMenuComponent implements OnInit {
     @Input() set menuBarItems(value: NavigationMenuBarItem[]) {
-        this.parseNavigationBarItems(value);
+        if (!isNullOrUndefined(value)) {
+            this.parseNavigationBarItems(value);
+        }
     }
     @Input() menuCollapsed = false;
 
