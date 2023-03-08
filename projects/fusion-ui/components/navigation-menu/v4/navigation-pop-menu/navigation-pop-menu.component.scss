@@ -82,7 +82,7 @@ $menuItemHoverColor: #F5F5F5;
                 @extend %font-body-1;
                 color: $fu-nav-text-primary;
 
-                @include icon-style('fu-pop-menu-icon', null, $menuItemIconSize, true, true) {
+                @include icon-style('fu-pop-menu-icon', $fu-icon-drop, $menuItemIconSize, true, true) {
                     @include size($menuItemIconSize);
                 }
 

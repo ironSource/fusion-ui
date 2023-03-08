@@ -32,11 +32,15 @@ export class NavigationMenuComponent implements OnInit {
         this.menuItemClicked.emit(menuItem);
     }
 
-    networkSelected(selectedNetwork: NavigationMenuBarItem) {
+    onPrimaryMainMenuItemClicked(selectedNetwork: NavigationMenuBarItem) {
         if (!isNullOrUndefined(selectedNetwork)) {
-            if (selectedNetwork?.cssTheme) {
-                this.setNetworkTheme(selectedNetwork?.cssTheme);
-            }
+            // todo: Set child (secondary menu) if has
+        }
+    }
+
+    onChangeColorTheme(cssTheme: {[key: string]: string}) {
+        if (!isNullOrUndefined(cssTheme)) {
+            this.setNetworkTheme(cssTheme);
         }
     }
 

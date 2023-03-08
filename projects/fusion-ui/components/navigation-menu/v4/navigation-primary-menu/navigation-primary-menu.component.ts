@@ -32,7 +32,8 @@ export class NavigationPrimaryMenuComponent implements OnInit {
 
     @Output() menuItemClick = new EventEmitter<MenuItem>();
 
-    @Output() networkSelected = new EventEmitter<NavigationMenuBarItem>();
+    @Output() primaryMenuItemClicked = new EventEmitter<NavigationMenuBarItem>();
+    @Output() changeColorTheme = new EventEmitter<{[key: string]: string}>();
     @Output() toggleMenu = new EventEmitter();
 
     homeItem: NavigationMenuBarItem;
@@ -48,6 +49,8 @@ export class NavigationPrimaryMenuComponent implements OnInit {
 
     popMenuPosition = TooltipPosition.BottomLeft;
 
+    defaultCssTheme: {[key: string]: string};
+
     constructor() {}
 
     ngOnInit(): void {}
@@ -59,10 +62,15 @@ export class NavigationPrimaryMenuComponent implements OnInit {
                 break;
             case NavigationBarItemType.Home:
                 this.selectedBarItem = null;
+                this.primaryMenuItemClicked.emit(item);
+                this.resetColorTheme();
                 break;
             case NavigationBarItemType.Main:
                 this.selectedBarItem = item;
-                this.networkSelected.emit(item);
+                this.primaryMenuItemClicked.emit(item);
+                if (item?.cssTheme) {
+                    this.changeColorTheme.emit(item?.cssTheme);
+                }
         }
     }
 
@@ -75,6 +83,14 @@ export class NavigationPrimaryMenuComponent implements OnInit {
     onPopMenuItemClicked(menuItem) {
         this.menuItemClick.emit(menuItem);
         this.showPopMenu$.next(false);
+        this.selectedBarItem = null;
+        this.resetColorTheme();
+    }
+
+    private resetColorTheme() {
+        if (this.defaultCssTheme) {
+            this.changeColorTheme.emit(this.defaultCssTheme);
+        }
     }
 
     private parseNavigationBarItems(value: NavigationMenuBarItem[]) {
@@ -84,6 +100,9 @@ export class NavigationPrimaryMenuComponent implements OnInit {
             switch (barItem.type) {
                 case NavigationBarItemType.Home:
                     this.homeItem = barItem;
+                    if (!isNullOrUndefined(barItem.cssTheme)) {
+                        this.defaultCssTheme = barItem.cssTheme;
+                    }
                     break;
                 case NavigationBarItemType.Main:
                     networkItems.push(barItem);

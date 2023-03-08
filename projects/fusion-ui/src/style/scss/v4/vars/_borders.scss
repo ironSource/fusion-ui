@@ -1,6 +1,8 @@
+@import 'colors';
+
 $borderRadius: var(--fu-border-radius, 8px);
 $boxShadow: 0px 16px 27px 2px rgba(44, 45, 45, 0.14), inset 0px 0px 0px 1px #EBEBEB;
-$borderLine: 1px solid #E0E0E0;
+$borderLine: 1px solid $fu-divider;
 
 
 %noBorderRadiusTR{

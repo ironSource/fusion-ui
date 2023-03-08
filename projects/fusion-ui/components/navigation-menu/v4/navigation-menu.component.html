@@ -4,7 +4,8 @@
         [layoutUser]="layoutUser"
         [menuCollapsed]="secondaryMenuCollapsed | async"
         (menuItemClick)="onMenuItemClicked($event)"
-        (networkSelected)="networkSelected($event)"
+        (primaryMenuItemClicked)="onPrimaryMainMenuItemClicked($event)"
+        (changeColorTheme)="onChangeColorTheme($event)"
         (toggleMenu)="toggleMenu()"
     ></fusion-navigation-primary-menu>
 </div>

@@ -21,7 +21,7 @@ export const USER_PROFILE_MENU_ITEMS: MenuItem[] = [
     },
     {
         withTopDelimiter: true,
-        icon: {iconName: 'mail-outline', iconVersion: 'v4'},
+        icon: {iconName: 'mail_outline', iconVersion: 'v4'},
         name: 'Contact Us',
         route: '/'
     },
@@ -37,7 +37,10 @@ export const NAVIGATION_MENU_MOCK: NavigationMenuBarItem[] = [
         type: NavigationBarItemType.Home,
         menuIcon: {iconName: 'house', iconVersion: 'v4'},
         menuTooltip: 'Dashboard',
-        route: '/'
+        route: '/',
+        cssTheme: {
+            'fu-navbar-background-color': '#202020'
+        }
     },
     {
         type: NavigationBarItemType.Main,
