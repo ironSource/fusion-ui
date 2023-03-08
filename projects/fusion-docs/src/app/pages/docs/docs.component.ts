@@ -146,6 +146,13 @@ export class DocsComponent implements OnInit, OnDestroy {
         }
     }
 
+    onMenuItemClick(menuItem: MenuItem) {
+        console.log('DOC onMenuItemClick>>>', menuItem);
+        if (menuItem.redirect) {
+            location.href = menuItem.redirect;
+        }
+    }
+
     onLayoutUserLogout(user) {
         console.log('Layout 2 user logout: ', user);
         this.isLightTheme = !this.isLightTheme;

@@ -1,9 +1,10 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BehaviorSubject} from 'rxjs';
 import {NavigationMenuBarItem, NavigationMenuComponent} from '@ironsource/fusion-ui/components/navigation-menu/v4';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
 import {LayoutConfiguration} from './layout.entities';
+import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 
 @Component({
     selector: 'fusion-layout',
@@ -21,10 +22,16 @@ export class LayoutComponent implements OnInit {
         this.layoutUser$.next(value?.layoutUser ?? null);
     }
 
+    @Output() menuItemClick = new EventEmitter<MenuItem>();
+
     navigationMenu$ = new BehaviorSubject<NavigationMenuBarItem[]>([]);
     layoutUser$ = new BehaviorSubject<LayoutUser>(null);
 
     constructor() {}
 
     ngOnInit(): void {}
+
+    onMenuItemClick(item: MenuItem) {
+        this.menuItemClick.emit(item);
+    }
 }

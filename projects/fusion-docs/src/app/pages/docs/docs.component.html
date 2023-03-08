@@ -32,7 +32,10 @@
     </fusion-layout>
 </ng-template>-->
 <ng-template #layoutV4>
-    <fusion-layout [configuration]="layoutConfiguration"></fusion-layout>
+    <fusion-layout
+        [configuration]="layoutConfiguration"
+        (menuItemClick)="onMenuItemClick($event)"
+    ></fusion-layout>
 </ng-template>
 
 <!--

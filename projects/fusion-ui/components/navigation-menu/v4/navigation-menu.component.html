@@ -3,6 +3,7 @@
         [menuBarItems]="menuItems"
         [layoutUser]="layoutUser"
         [menuCollapsed]="secondaryMenuCollapsed | async"
+        (menuItemClick)="onMenuItemClicked($event)"
         (networkSelected)="networkSelected($event)"
         (toggleMenu)="toggleMenu()"
     ></fusion-navigation-primary-menu>

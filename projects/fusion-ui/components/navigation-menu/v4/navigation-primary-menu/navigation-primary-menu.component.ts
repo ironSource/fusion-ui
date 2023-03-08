@@ -10,6 +10,7 @@ import {TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/b
 import {RepositionDirective} from '@ironsource/fusion-ui/directives/reposition';
 import {NavigationBarItemType, NavigationMenuBarItem} from '../navigation-menu.entities';
 import {NavigationPopMenuComponent} from '../navigation-pop-menu/navigation-pop-menu.component';
+import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 
 @Component({
     selector: 'fusion-navigation-primary-menu',
@@ -28,6 +29,8 @@ export class NavigationPrimaryMenuComponent implements OnInit {
 
     @Input() layoutUser: LayoutUser;
     @Input() menuCollapsed = false;
+
+    @Output() menuItemClick = new EventEmitter<MenuItem>();
 
     @Output() networkSelected = new EventEmitter<NavigationMenuBarItem>();
     @Output() toggleMenu = new EventEmitter();
@@ -67,6 +70,11 @@ export class NavigationPrimaryMenuComponent implements OnInit {
         if (!target.closest('.fu-with-pop-menu')) {
             this.showPopMenu$.next(false);
         }
+    }
+
+    onPopMenuItemClicked(menuItem) {
+        this.menuItemClick.emit(menuItem);
+        this.showPopMenu$.next(false);
     }
 
     private parseNavigationBarItems(value: NavigationMenuBarItem[]) {
