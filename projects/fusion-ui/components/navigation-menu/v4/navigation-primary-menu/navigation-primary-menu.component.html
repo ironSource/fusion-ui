@@ -1,33 +1,57 @@
 <div class="fu-navigation-bar-holder">
+    <!--region home item-->
     <div *ngIf="homeItem" class="fu-navigation-bar-item fu-home" [fusionTooltip]="homeItem.menuTooltip">
-        <div class="fu-navigation-bar-button" [class.fu-selected]="homeItem === selectedBarItem" (click)="networkItemClicked(null)">
-            <fusion-icon *ngIf="homeItem.menuIcon"
-                         class="fu-navigation-bar-button-icon"
-                         [name]="homeItem.menuIcon"
-            ></fusion-icon>
-        </div>
+        <ng-container [ngTemplateOutlet]="navigationButton" [ngTemplateOutletContext]="{item: homeItem, selectedItem: false}"></ng-container>
     </div>
+    <!--endregion home item-->
+    <!--region main items-->
     <ng-container *ngIf="(networkItems$ | async) as networkItems">
         <div class="fu-navigation-bar-item fu-network" *ngFor="let networkItem of networkItems" [fusionTooltip]="networkItem.menuTooltip">
-            <div class="fu-navigation-bar-button" [class.fu-selected]="networkItem === selectedBarItem" (click)="networkItemClicked(networkItem)">
-                <fusion-icon *ngIf="networkItem.menuIcon" class="fu-navigation-bar-button-icon" [name]="networkItem.menuIcon"></fusion-icon>
-            </div>
+            <ng-container [ngTemplateOutlet]="navigationButton" [ngTemplateOutletContext]="{item: networkItem, selectedItem: (networkItem === selectedBarItem)}"></ng-container>
             <div *ngIf="networkItem.menuTitle" class="fu-navigation-bar-network-name">{{networkItem.menuTitle}}</div>
         </div>
     </ng-container>
+    <!--endregion main items-->
+    <!--region bottom items-->
     <ng-container *ngIf="(bottomItems$ | async) as bottomItems">
         <div class="fu-navigation-bar-bottom-items">
-            <div class="fu-navigation-bar-item fu-bottom-block" *ngFor="let bottomItem of bottomItems" [fusionTooltip]="bottomItem.menuTooltip">
-                <div class="fu-navigation-bar-button">
-                    <fusion-icon *ngIf="bottomItem.menuIcon" class="fu-navigation-bar-button-icon" [name]="bottomItem.menuIcon"></fusion-icon>
+            <ng-container *ngFor="let bottomItem of bottomItems; let bottomItemIndex = index;">
+                <div class="fu-navigation-bar-item fu-bottom-block"  [fusionTooltip]="bottomItem.menuTooltip">
+                    <!--region item with link.href-->
+                    <ng-container *ngIf="!!bottomItem.redirect">
+                        <a href="{{bottomItem.redirect}}" target="{{bottomItem.target}}">
+                            <ng-container [ngTemplateOutlet]="navigationButton" [ngTemplateOutletContext]="{item: bottomItem}"></ng-container>
+                        </a>
+                    </ng-container>
+                    <!--endregion item with a.href-->
+                    <!--region item with menu-->
+                    <ng-container *ngIf="!bottomItem.redirect" [ngTemplateOutlet]="navigationButton" [ngTemplateOutletContext]="{item: bottomItem, selectedItem: false, popMenu: bottomItem.menuItems, index: bottomItemIndex  }"></ng-container>
+                    <!--endregion item with menu-->
                 </div>
-            </div>
+                <ng-container *ngIf="bottomItem.menuItems && showPopMenu$ | async">
+                    <fusion-navigation-pop-menu
+                        [layoutUser]="bottomItem.type === 'user' ? layoutUser : null"
+                        [menuItems]="bottomItem.menuItems"
+                        [fusionReposition]="'#fu-bottom-nav-item-btn_'+bottomItemIndex"
+                        [fusionRepositionPlacement]="popMenuPosition"
+                        (fusionClickOutside)="onPopMenuOutsideClick($event)"></fusion-navigation-pop-menu>
+                </ng-container>
+            </ng-container>
+            <!--region toggle secondary menu button-->
             <div class="fu-menu-toggle-button-holder" *ngIf="selectedBarItem" [fusionTooltip]="menuToggleButtonTooltip">
                 <div class="fu-navigation-bar-button fu-menu-toggle" (click)="toggleMenu.emit()">
                     <fusion-icon *ngIf="menuCollapsed" class="fu-navigation-bar-button-icon" [name]="menuCollapsedIcon"></fusion-icon>
                     <fusion-icon *ngIf="!menuCollapsed" class="fu-navigation-bar-button-icon" [name]="menuExpandedIcon"></fusion-icon>
                 </div>
             </div>
+            <!--endregion toggle secondary menu button-->
         </div>
     </ng-container>
+    <!--endregion bottom items-->
 </div>
+
+<ng-template #navigationButton let-item="item" let-selectedItem="selectedItem" let-popMenu="popMenu" let-index=index>
+    <div class="fu-navigation-bar-button" id="fu-bottom-nav-item-btn_{{index}}" [class.fu-selected]="selectedItem" [class.fu-with-pop-menu]="popMenu" (click)="networkItemClicked(item)">
+        <fusion-icon *ngIf="item.menuIcon" class="fu-navigation-bar-button-icon" [name]="item.menuIcon"></fusion-icon>
+    </div>
+</ng-template>

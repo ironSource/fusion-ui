@@ -1,32 +1,33 @@
-import {NavigationBarItemType, NavigationMenuBarItem} from '@ironsource/fusion-ui/components/navigation-menu/v4/navigation-menu.entities';
+import {NavigationBarItemType, NavigationMenuBarItem} from '../navigation-menu.entities';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 
 export const USER_PROFILE_MENU_ITEMS: MenuItem[] = [
     {
-        cssClass: 'item-in-group_first',
         name: 'Account',
         route: '/'
     },
     {
-        cssClass: 'item-in-group',
         name: 'User Management',
         route: '/'
     },
     {
-        cssClass: 'item-in-group_last',
         name: 'Company Info',
         route: '/'
     },
     {
+        withTopDelimiter: true,
         name: 'Payment',
         route: '/'
     },
     {
+        withTopDelimiter: true,
+        icon: {iconName: 'mail-outline', iconVersion: 'v4'},
         name: 'Contact Us',
         route: '/'
     },
     {
         name: 'Logout',
+        icon: {iconName: 'logout', iconVersion: 'v4'},
         route: '/'
     }
 ];

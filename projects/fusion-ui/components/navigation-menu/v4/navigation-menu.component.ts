@@ -1,10 +1,10 @@
 import {ChangeDetectionStrategy, Component, ElementRef, Input, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {NavigationPrimaryMenuComponent} from './navigation-primary-menu/navigation-primary-menu.component';
-import {NavigationMenuBarItem} from '@ironsource/fusion-ui/components/navigation-menu/v4/navigation-menu.entities';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {BehaviorSubject} from 'rxjs';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
+import {NavigationPrimaryMenuComponent} from './navigation-primary-menu/navigation-primary-menu.component';
+import {NavigationMenuBarItem} from './navigation-menu.entities';
 
 @Component({
     selector: 'fusion-navigation-menu',

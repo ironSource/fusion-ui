@@ -1,10 +1,9 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {NavigationMenuComponent} from '@ironsource/fusion-ui/components/navigation-menu/v4/navigation-menu.component';
-import {LayoutConfiguration} from '@ironsource/fusion-ui/components/layout/v4/layout.entities';
 import {BehaviorSubject} from 'rxjs';
-import {NavigationMenuBarItem} from '@ironsource/fusion-ui/components/navigation-menu/v4/navigation-menu.entities';
+import {NavigationMenuBarItem, NavigationMenuComponent} from '@ironsource/fusion-ui/components/navigation-menu/v4';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
+import {LayoutConfiguration} from './layout.entities';
 
 @Component({
     selector: 'fusion-layout',

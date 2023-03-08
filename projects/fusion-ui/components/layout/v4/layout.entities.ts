@@ -1,5 +1,5 @@
-import {LayoutUser} from '@ironsource/fusion-ui';
-import {NavigationMenuBarItem} from '@ironsource/fusion-ui/components/navigation-menu/v4/navigation-menu.entities';
+import {LayoutUser} from '@ironsource/fusion-ui/entities';
+import {NavigationMenuBarItem} from '@ironsource/fusion-ui/components/navigation-menu/v4';
 
 export interface LayoutConfiguration {
     navigationMenuItems?: NavigationMenuBarItem[];

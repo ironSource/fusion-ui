@@ -1,0 +1,21 @@
+<div class="fu-pop-menu">
+    <div class="fu-pop-menu-header" *ngIf="layoutUser">
+        <div class="fu-user-icon-holder" >
+            <div *ngIf="layoutUser.avatar" class="fu-user-avatar" [style.background-image]="'url(' + layoutUser.avatar + ')'"></div>
+            <fusion-icon *ngIf="!layoutUser.avatar" class="fu-user-icon" [name]="userIcon"></fusion-icon>
+        </div>
+        <div class="fu-user-data-holder">
+            <div class="fu-user-name">{{layoutUser.name}}</div>
+            <div class="fu-user-email">{{layoutUser.email}}</div>
+        </div>
+    </div>
+    <div class="fu-pop-menu-items">
+        <ng-container *ngFor="let menuItem of menuItems">
+            <div *ngIf="menuItem.withTopDelimiter" class="fu-pop-menu-item-delimiter"></div>
+            <div class="fu-pop-menu-item {{menuItem.cssClass}}" >
+                <fusion-icon class="fu-pop-menu-icon" *ngIf="menuItem.icon" [name]="menuItem.icon"></fusion-icon>
+                <div class="fu-pop-menu-text">{{menuItem.name}}</div>
+            </div>
+        </ng-container>
+    </div>
+</div>

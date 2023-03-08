@@ -1,16 +1,20 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BehaviorSubject} from 'rxjs';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
-import {NavigationBarItemType, NavigationMenuBarItem} from '@ironsource/fusion-ui/components/navigation-menu/v4/navigation-menu.entities';
-import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
+import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
+import {TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
+import {RepositionDirective} from '@ironsource/fusion-ui/directives/reposition';
+import {NavigationBarItemType, NavigationMenuBarItem} from '../navigation-menu.entities';
+import {NavigationPopMenuComponent} from '../navigation-pop-menu/navigation-pop-menu.component';
 
 @Component({
     selector: 'fusion-navigation-primary-menu',
     standalone: true,
-    imports: [CommonModule, IconModule, TooltipModule],
+    imports: [CommonModule, IconModule, TooltipModule, ClickOutsideModule, RepositionDirective, NavigationPopMenuComponent],
     templateUrl: './navigation-primary-menu.component.html',
     styleUrls: ['./navigation-primary-menu.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -21,6 +25,7 @@ export class NavigationPrimaryMenuComponent implements OnInit {
             this.parseNavigationBarItems(value);
         }
     }
+
     @Input() layoutUser: LayoutUser;
     @Input() menuCollapsed = false;
 
@@ -31,19 +36,37 @@ export class NavigationPrimaryMenuComponent implements OnInit {
 
     networkItems$ = new BehaviorSubject<NavigationMenuBarItem[]>([]);
     bottomItems$ = new BehaviorSubject<NavigationMenuBarItem[]>([]);
+    showPopMenu$ = new BehaviorSubject<boolean>(false);
 
     selectedBarItem: NavigationMenuBarItem;
     menuCollapsedIcon = {iconName: 'arrowLineRight', iconVersion: 'v4'};
     menuExpandedIcon = {iconName: 'arrowLineLeft', iconVersion: 'v4'};
     menuToggleButtonTooltip = 'Collapse side nav';
 
+    popMenuPosition = TooltipPosition.BottomLeft;
+
     constructor() {}
 
     ngOnInit(): void {}
 
     networkItemClicked(item) {
-        this.selectedBarItem = item;
-        this.networkSelected.emit(item);
+        switch (item?.type) {
+            case NavigationBarItemType.User:
+                this.showPopMenu$.next(true);
+                break;
+            case NavigationBarItemType.Home:
+                this.selectedBarItem = null;
+                break;
+            case NavigationBarItemType.Main:
+                this.selectedBarItem = item;
+                this.networkSelected.emit(item);
+        }
+    }
+
+    onPopMenuOutsideClick(target: HTMLElement) {
+        if (!target.closest('.fu-with-pop-menu')) {
+            this.showPopMenu$.next(false);
+        }
     }
 
     private parseNavigationBarItems(value: NavigationMenuBarItem[]) {

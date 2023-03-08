@@ -10,6 +10,7 @@ export interface MenuItem {
     redirect?: string; // in case has value here - route will be suppressed
     abstract?: boolean;
     cssClass?: string;
+    withTopDelimiter?: boolean; // user in pop-menu. if item first in items group - add top delimiter
     customCSS?: {[key: string]: string | number};
     target?: string; // for open in new tab named as target
     showNewWindowIcon?: boolean;
