@@ -48,6 +48,13 @@ export class NavigationMenuComponent implements OnInit {
         this.secondaryMenuCollapsed.next(!this.secondaryMenuCollapsed.getValue());
     }
 
+    resetSecondaryMenu() {
+        this.secondaryMenuItems.next([]);
+        this.secondaryMenuName.next('');
+        this.secondaryMenuLogoSrc.next('');
+        this.secondaryMenuCollapsed.next(true);
+    }
+
     private setSecondaryMenu(selectedNetwork: NavigationMenuBarItem) {
         this.secondaryMenuItems.next(selectedNetwork?.menuItems ?? []);
         this.secondaryMenuName.next(selectedNetwork?.menuTitle ?? '');

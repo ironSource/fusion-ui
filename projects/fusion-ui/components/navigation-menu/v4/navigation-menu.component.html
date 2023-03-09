@@ -7,6 +7,7 @@
         (primaryMenuItemClicked)="onPrimaryMainMenuItemClicked($event)"
         (changeColorTheme)="onChangeColorTheme($event)"
         (toggleMenu)="toggleMenu()"
+        (resetSecondaryMenu)="resetSecondaryMenu()"
     ></fusion-navigation-primary-menu>
     <fusion-navigation-secondary-menu
         [class.fu-menu-expanded]="!(secondaryMenuCollapsed | async)"

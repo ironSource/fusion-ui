@@ -35,6 +35,7 @@ export class NavigationPrimaryMenuComponent implements OnInit {
     @Output() primaryMenuItemClicked = new EventEmitter<NavigationMenuBarItem>();
     @Output() changeColorTheme = new EventEmitter<{[key: string]: string}>();
     @Output() toggleMenu = new EventEmitter();
+    @Output() resetSecondaryMenu = new EventEmitter<void>();
 
     homeItem: NavigationMenuBarItem;
 
@@ -61,12 +62,12 @@ export class NavigationPrimaryMenuComponent implements OnInit {
                 this.showPopMenu$.next(true);
                 break;
             case NavigationBarItemType.Home:
-                this.selectedBarItem = null;
+                this.setSelectedBarItem(null);
                 this.primaryMenuItemClicked.emit(item);
                 this.resetColorTheme();
                 break;
             case NavigationBarItemType.Main:
-                this.selectedBarItem = item;
+                this.setSelectedBarItem(item);
                 this.primaryMenuItemClicked.emit(item);
                 if (item?.cssTheme) {
                     this.changeColorTheme.emit(item?.cssTheme);
@@ -83,8 +84,15 @@ export class NavigationPrimaryMenuComponent implements OnInit {
     onPopMenuItemClicked(menuItem) {
         this.menuItemClick.emit(menuItem);
         this.showPopMenu$.next(false);
-        this.selectedBarItem = null;
+        this.setSelectedBarItem(null);
         this.resetColorTheme();
+    }
+
+    private setSelectedBarItem(barItem: NavigationMenuBarItem) {
+        this.selectedBarItem = barItem;
+        if (!barItem) {
+            this.resetSecondaryMenu.emit();
+        }
     }
 
     private resetColorTheme() {
