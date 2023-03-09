@@ -1,1 +1,54 @@
-<p>navigation-secondary-menu works!</p>
+<div class="fu-secondary-menu-holder">
+    <div class="fu-logo-holder">
+        <img *ngIf="menuLogoSrc" src="{{menuLogoSrc}}" alt="{{menuName}}">
+    </div>
+    <div class="fu-secondary-menu">
+        <ng-container *ngFor="let item of menuItems">
+            <ng-container *ngTemplateOutlet="menuItem;context: {item: item}"></ng-container>
+        </ng-container>
+    </div>
+</div>
+
+
+<!--region menu items templating-->
+<ng-template #menuItem let-item="item">
+    <div class="fu-secondary-menu-item-holder"
+         [ngClass]="item.cssClass"
+         [class.fu-has-sub-items]="!!item.children"
+         [class.fu-secondary-menu-item-selected]="item===selectedMenuItem"
+         (click)="onMenuItemClicked($event, item)"
+    >
+        <ng-container *ngTemplateOutlet="menuItemLink; context: {item: item}"></ng-container>
+    </div>
+    <!--region submenu items-->
+    <!--
+            <div class="fu-secondary-menu-sub-items-holder">
+                <ng-container *ngIf="item?.children && item === (showedItem$ | async)">
+                    <ng-container *ngFor="let itemChild of item.children">
+                        <ng-container
+                            *ngTemplateOutlet="
+                            itemChild.children ? menuSubItemTitle : menuSubItem;
+                            context: {itemChild: itemChild, additionalAction: itemChild.additionalAction}
+                        "
+                        ></ng-container>
+                    </ng-container>
+                </ng-container>
+            </div>
+    -->
+    <!--endregion submenu items-->
+</ng-template>
+<!--endregion menu items templating-->
+
+<!--region menu item link-->
+<ng-template #menuItemLink let-item="item">
+    <div class="fu-secondary-menu-item-icon-holder">
+        <fusion-icon *ngIf="item.icon" class="fu-secondary-menu-item-icon" [name]="item.icon"></fusion-icon>
+    </div>
+    <div class="fu-secondary-menu-item-label">{{item.name}}</div>
+    <fusion-icon *ngIf="!!item.children"
+                 class="fu-secondary-menu-item-parent-icon-toggle"
+                 [name]="itemChildToggleIcon"
+                 (click)="toggleChildItems($event)"
+    ></fusion-icon>
+</ng-template>
+<!--endregion menu item link-->

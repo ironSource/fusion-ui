@@ -8,4 +8,10 @@
         (changeColorTheme)="onChangeColorTheme($event)"
         (toggleMenu)="toggleMenu()"
     ></fusion-navigation-primary-menu>
+    <fusion-navigation-secondary-menu
+        [class.fu-menu-expanded]="!(secondaryMenuCollapsed | async)"
+        [menuItems]="secondaryMenuItems | async"
+        [menuName]="secondaryMenuName | async"
+        [menuLogoSrc]="secondaryMenuLogoSrc | async"
+    ></fusion-navigation-secondary-menu>
 </div>

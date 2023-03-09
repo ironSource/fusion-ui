@@ -32,6 +32,36 @@ export const USER_PROFILE_MENU_ITEMS: MenuItem[] = [
     }
 ];
 
+export const UNITY_MENU_ITEMS: MenuItem[] = [
+    {
+        icon: {iconName: 'add', iconVersion: 'v4'},
+        name: 'Add App'
+    },
+    {
+        name: 'Mediation',
+        cssClass: 'fu-nav-menu-title-item'
+    },
+    {
+        icon: {iconName: 'chart_line_up', iconVersion: 'v4'},
+        name: 'Reports',
+        children: [
+            {
+                name: 'Performance',
+                route: '/performance'
+            },
+            {
+                name: 'User Activity',
+                route: '/User+Activity'
+            },
+            {
+                name: 'Real Time Pivot',
+                redirect: 'https:/google.com',
+                target: '_blank'
+            }
+        ]
+    }
+];
+
 export const NAVIGATION_MENU_MOCK: NavigationMenuBarItem[] = [
     {
         type: NavigationBarItemType.Home,
@@ -47,18 +77,17 @@ export const NAVIGATION_MENU_MOCK: NavigationMenuBarItem[] = [
         menuIcon: {iconName: 'unity', iconVersion: 'v4'},
         menuTitle: 'LevelPlay',
         menuTooltip: 'Unity LevelPlay',
-        cssTheme: {
-            'fu-navbar-background-color': '#202020'
-        }
+        menuLogoSrc: 'https://fusion.ironsrc.net/assets/images/v4/unionLevelPlay.png',
+        cssTheme: {'fu-navbar-background-color': '#202020'},
+        menuItems: UNITY_MENU_ITEMS
     },
     {
         type: NavigationBarItemType.Main,
         menuIcon: {iconName: 'ironSource', iconVersion: 'v4'},
         menuTitle: 'Network',
         menuTooltip: 'ironSource network',
-        cssTheme: {
-            'fu-navbar-background-color': '#0D148C'
-        }
+        menuLogoSrc: 'https://fusion.ironsrc.net/assets/images/v4/isNetwork.png',
+        cssTheme: {'fu-navbar-background-color': '#0D148C'}
     },
     {
         type: NavigationBarItemType.Bottom,

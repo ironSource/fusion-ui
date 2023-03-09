@@ -11,6 +11,7 @@ export enum NavigationBarItemType {
 export interface NavigationMenuBarItem {
     type: NavigationBarItemType;
     menuIcon?: IconData;
+    menuLogoSrc?: string; // url to image that will be used as logo on top of secondary menu
     menuTitle?: string;
     menuTooltip?: string;
     menuItems?: MenuItem[];

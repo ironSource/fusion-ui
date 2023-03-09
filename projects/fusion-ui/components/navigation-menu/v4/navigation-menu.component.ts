@@ -3,14 +3,15 @@ import {CommonModule} from '@angular/common';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {BehaviorSubject} from 'rxjs';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
-import {NavigationPrimaryMenuComponent} from './navigation-primary-menu/navigation-primary-menu.component';
-import {NavigationMenuBarItem} from './navigation-menu.entities';
+import {NavigationBarItemType, NavigationMenuBarItem} from './navigation-menu.entities';
 import {MenuItem, MenuItemAdditionalData} from '@ironsource/fusion-ui/components/menu/common/base';
+import {NavigationPrimaryMenuComponent} from './navigation-primary-menu/navigation-primary-menu.component';
+import {NavigationSecondaryMenuComponent} from './navigation-secondary-menu/navigation-secondary-menu.component';
 
 @Component({
     selector: 'fusion-navigation-menu',
     standalone: true,
-    imports: [CommonModule, NavigationPrimaryMenuComponent],
+    imports: [CommonModule, NavigationPrimaryMenuComponent, NavigationSecondaryMenuComponent],
     templateUrl: './navigation-menu.component.html',
     styleUrls: ['./navigation-menu.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -22,7 +23,10 @@ export class NavigationMenuComponent implements OnInit {
     @Output() menuAdditionalItemClicked = new EventEmitter<MenuItemAdditionalData>();
     @Output() menuItemClicked = new EventEmitter<MenuItem>();
 
-    secondaryMenuCollapsed = new BehaviorSubject<boolean>(false);
+    secondaryMenuItems = new BehaviorSubject<MenuItem[]>([]);
+    secondaryMenuName = new BehaviorSubject<string>('');
+    secondaryMenuLogoSrc = new BehaviorSubject<string>('');
+    secondaryMenuCollapsed = new BehaviorSubject<boolean>(true);
 
     constructor(private elementRef: ElementRef) {}
 
@@ -33,25 +37,32 @@ export class NavigationMenuComponent implements OnInit {
     }
 
     onPrimaryMainMenuItemClicked(selectedNetwork: NavigationMenuBarItem) {
-        if (!isNullOrUndefined(selectedNetwork)) {
-            // todo: Set child (secondary menu) if has
-        }
+        this.setSecondaryMenu(selectedNetwork);
     }
 
     onChangeColorTheme(cssTheme: {[key: string]: string}) {
-        if (!isNullOrUndefined(cssTheme)) {
-            this.setNetworkTheme(cssTheme);
-        }
+        this.setNetworkTheme(cssTheme);
     }
 
     toggleMenu() {
         this.secondaryMenuCollapsed.next(!this.secondaryMenuCollapsed.getValue());
-        console.log('collapsed', this.secondaryMenuCollapsed.getValue());
+    }
+
+    private setSecondaryMenu(selectedNetwork: NavigationMenuBarItem) {
+        if (Array.isArray(selectedNetwork?.menuItems)) {
+            this.secondaryMenuItems.next(selectedNetwork?.menuItems);
+        }
+        this.secondaryMenuName.next(selectedNetwork?.menuTitle ?? '');
+        this.secondaryMenuLogoSrc.next(selectedNetwork?.menuLogoSrc ?? '');
+
+        this.secondaryMenuCollapsed.next(selectedNetwork.type !== NavigationBarItemType.Main);
     }
 
     private setNetworkTheme(theme: {[key: string]: string}) {
-        Object.keys(theme).forEach(key => {
-            this.elementRef.nativeElement.style.setProperty(`--${key}`, theme[key]);
-        });
+        if (!isNullOrUndefined(theme)) {
+            Object.keys(theme).forEach(key => {
+                this.elementRef.nativeElement.style.setProperty(`--${key}`, theme[key]);
+            });
+        }
     }
 }
