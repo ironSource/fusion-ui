@@ -13,5 +13,6 @@
         [menuItems]="secondaryMenuItems | async"
         [menuName]="secondaryMenuName | async"
         [menuLogoSrc]="secondaryMenuLogoSrc | async"
+        (menuItemClick)="onMenuItemClicked($event)"
     ></fusion-navigation-secondary-menu>
 </div>

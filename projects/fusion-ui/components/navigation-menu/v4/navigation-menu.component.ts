@@ -49,9 +49,7 @@ export class NavigationMenuComponent implements OnInit {
     }
 
     private setSecondaryMenu(selectedNetwork: NavigationMenuBarItem) {
-        if (Array.isArray(selectedNetwork?.menuItems)) {
-            this.secondaryMenuItems.next(selectedNetwork?.menuItems);
-        }
+        this.secondaryMenuItems.next(selectedNetwork?.menuItems ?? []);
         this.secondaryMenuName.next(selectedNetwork?.menuTitle ?? '');
         this.secondaryMenuLogoSrc.next(selectedNetwork?.menuLogoSrc ?? '');
 
