@@ -333,7 +333,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
 
     private initializeListeners(): void {
         this.searchControlTerm.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(this.changeTerm.bind(this));
-        //  this.preSelectedItems.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(this.checkSelectItemsChanged.bind(this));
+        this.preSelectedItems.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(this.checkSelectItemsChanged.bind(this));
         this.resetState$
             .asObservable()
             .pipe(takeUntil(this.onDestroy$))
@@ -348,9 +348,10 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     }
 
     private checkSelectItemsChanged(item: any): void {
-        if (JSON.stringify(item) !== JSON.stringify(this.selectedChange) && this.confirm) {
-            this.selectedChange = item;
-        }
+        // commented bny fix https://ironsrc-mobile.atlassian.net/browse/FU-484
+        // if (JSON.stringify(item) !== JSON.stringify(this.selectedChange) && this.confirm) {
+        //     this.selectedChange = item;
+        // }
         this.setLabel();
     }
 
