@@ -44,7 +44,6 @@ export class DocsComponent implements OnInit, OnDestroy {
     layoutConfiguration: LayoutConfiguration = {
         navigationMenuItems: NAVIGATION_MENU_MOCK,
         layoutUser: {
-            avatar: 'https://sun9-4.userapi.com/s/v1/ig2/i3zRyZawSlkjGmRtl4YPf3_X2fNQ2-jCw1ihgX7sRc7NxP33-eWlX1iqWvPtOEMA1k3CgiWQTrDC_EN0RYi9WCj1.jpg?size=50x50&quality=96&crop=112,32,255,255&ava=1',
             name: 'Jonny Kim',
             email: 'jonny.kim@supercell.com'
         }
