@@ -10,7 +10,7 @@
         (resetSecondaryMenu)="resetSecondaryMenu()"
     ></fusion-navigation-primary-menu>
     <fusion-navigation-secondary-menu
-        [class.fu-menu-expanded]="!(secondaryMenuCollapsed | async)"
+        [class.fu-menu-expanded]="(secondaryMenuCollapsed | async) === false"
         [menuItems]="secondaryMenuItems | async"
         [menuName]="secondaryMenuName | async"
         [menuLogoSrc]="secondaryMenuLogoSrc | async"
