@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
 // font-family
 $inter: 'Inter', sans-serif;
@@ -6,7 +6,7 @@ $inter: 'Inter', sans-serif;
 // region heading
 %font-heading {
     font-family: $inter;
-    letter-spacing: -2%;
+    letter-spacing: -0.02em;
     font-weight: 600;
 }
 %font-heading-1 {
@@ -28,7 +28,7 @@ $inter: 'Inter', sans-serif;
     font-size: 18px;
     line-height: 24px;
     @extend %font-heading;
-    letter-spacing: -1.4%;
+    letter-spacing: -0.014em;
 }
 // endregion
 
@@ -37,7 +37,7 @@ $inter: 'Inter', sans-serif;
     font-family: $inter;
     font-size: 16px;
     line-height: 24px;
-    letter-spacing: -1.1%;
+    letter-spacing: -0.011em;
 }
 %font-title-1 {
     @extend %font-title;
@@ -58,7 +58,7 @@ $inter: 'Inter', sans-serif;
     font-family: $inter;
     font-size: 14px;
     line-height: 24px;
-    letter-spacing: -0.6%;
+    letter-spacing: -0.006em;
 }
 %font-subtitle-1 {
     @extend %font-subtitle;
@@ -79,7 +79,7 @@ $inter: 'Inter', sans-serif;
     font-family: $inter;
     font-size: 13px;
     line-height: 20px;
-    letter-spacing: -0.3%;
+    letter-spacing: -0.003em;
 }
 %font-body-1 {
     @extend %font-body;
@@ -100,7 +100,7 @@ $inter: 'Inter', sans-serif;
     font-family: $inter;
     font-size: 12px;
     line-height: 16px;
-    letter-spacing: -0.3%;
+    letter-spacing: -0.003em;
 }
 %font-caption-1 {
     @extend %font-caption;
