@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output}
 import {CommonModule} from '@angular/common';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
     selector: 'fusion-navigation-secondary-menu',
@@ -21,6 +22,8 @@ export class NavigationSecondaryMenuComponent implements OnInit {
     itemChildToggleIcon: IconData = {iconName: 'caret_right', iconVersion: 'v4'};
     selectedMenuItem: MenuItem;
 
+    openedMenuItem$ = new BehaviorSubject<MenuItem>(null);
+
     constructor() {}
 
     ngOnInit(): void {}
@@ -30,11 +33,12 @@ export class NavigationSecondaryMenuComponent implements OnInit {
             this.menuItemClick.emit(menuItem);
             this.selectedMenuItem = menuItem;
         } else {
-            this.toggleChildItems($event);
+            this.toggleChildItems($event, menuItem);
         }
     }
 
-    private toggleChildItems($event) {
+    private toggleChildItems($event, menuItem: MenuItem) {
         $event.currentTarget?.closest('.fu-secondary-menu-item-holder').classList?.toggle('fu-sub-items-opened');
+        this.openedMenuItem$.next(this.openedMenuItem$.getValue() === menuItem ? null : menuItem);
     }
 }

@@ -12,30 +12,35 @@
 
 <!--region menu items templating-->
 <ng-template #menuItem let-item="item">
-    <div class="fu-secondary-menu-item-holder"
-         [ngClass]="item.cssClass"
-         [class.fu-has-sub-items]="!!item.children"
-         [class.fu-secondary-menu-item-selected]="item===selectedMenuItem"
-         (click)="onMenuItemClicked($event, item)"
-    >
-        <ng-container *ngTemplateOutlet="menuItemLink; context: {item: item}"></ng-container>
-    </div>
-    <!--region submenu items-->
-    <!--
+    <!--region menu item-->
+    <div class="fu-secondary-menu-item-wrapper">
+        <!--region menu first level item-->
+        <div class="fu-secondary-menu-item-holder"
+             [ngClass]="item.cssClass"
+             [class.fu-has-sub-items]="!!item.children"
+             [class.fu-secondary-menu-item-selected]="item===selectedMenuItem"
+             (click)="onMenuItemClicked($event, item)"
+        >
+            <ng-container *ngTemplateOutlet="menuItemLink; context: {item: item}"></ng-container>
+        </div>
+        <!--endregion menu first level item-->
+        <!--region second level (child) items-->
+        <ng-container *ngIf="item?.children && item === (openedMenuItem$ | async)">
             <div class="fu-secondary-menu-sub-items-holder">
-                <ng-container *ngIf="item?.children && item === (showedItem$ | async)">
-                    <ng-container *ngFor="let itemChild of item.children">
-                        <ng-container
-                            *ngTemplateOutlet="
-                            itemChild.children ? menuSubItemTitle : menuSubItem;
-                            context: {itemChild: itemChild, additionalAction: itemChild.additionalAction}
-                        "
-                        ></ng-container>
-                    </ng-container>
-                </ng-container>
+                <div *ngFor="let itemChild of item.children"
+                     class="fu-secondary-menu-item-holder"
+                     [ngClass]="itemChild.cssClass"
+                     [class.fu-has-sub-items]="!!itemChild.children"
+                     [class.fu-secondary-menu-item-selected]="itemChild===selectedMenuItem"
+                     (click)="onMenuItemClicked($event, itemChild)"
+                >
+                    <ng-container *ngTemplateOutlet="menuItemLink; context: {item: itemChild}"></ng-container>
+                </div>
             </div>
-    -->
-    <!--endregion submenu items-->
+        </ng-container>
+        <!--endregion submenu items-->
+    </div>
+    <!--endregion menu item-->
 </ng-template>
 <!--endregion menu items templating-->
 
@@ -48,7 +53,6 @@
     <fusion-icon *ngIf="!!item.children"
                  class="fu-secondary-menu-item-parent-icon-toggle"
                  [name]="itemChildToggleIcon"
-                 (click)="toggleChildItems($event)"
     ></fusion-icon>
 </ng-template>
 <!--endregion menu item link-->

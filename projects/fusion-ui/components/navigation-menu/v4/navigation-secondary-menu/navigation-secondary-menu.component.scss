@@ -40,75 +40,86 @@ $secondaryMenuItemOpenCloseIconSize: 12px;
             align-items: flex-start;
             padding: 0px 12px 24px;
 
-            .fu-secondary-menu-item-holder {
+            .fu-secondary-menu-item-wrapper{
                 width: 100%;
-                height: $secondaryMenuItemHeight;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                padding: 4px 8px;
-                gap: 14px;
-                cursor: pointer;
-                margin-bottom: 2px;
-                border: solid 1px transparent;
+                .fu-secondary-menu-item-holder {
+                    width: 100%;
+                    height: $secondaryMenuItemHeight;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    padding: 4px 8px;
+                    gap: 14px;
+                    cursor: pointer;
+                    margin-bottom: 2px;
+                    border: solid 1px transparent;
 
-                &.fu-secondary-menu-item-selected {
-                    border: solid 1px $fu-nav-menu-black-8;
-                    border-radius: 4px;
-                    background-color: $fu-nav-menu-black-5;
-                    cursor: default;
-                    pointer-events: none;
-                }
-
-                &.fu-nav-menu-title-item {
-                    height: $secondaryMenuItemTitleHeight;
-                    cursor: default;
-                    pointer-events: none;
-
-                    .fu-secondary-menu-item-label {
-                        @extend %font-caption-3;
-                        color: $fu-nav-text-secondary;
+                    &.fu-secondary-menu-item-selected {
+                        border: solid 1px $fu-nav-menu-black-8;
+                        border-radius: 4px;
+                        background-color: $fu-nav-menu-black-5;
+                        cursor: default;
+                        pointer-events: none;
                     }
-                }
 
-                &:hover {
-                    border-radius: 4px;
-                    background-color: $fu-nav-menu-black-5;
-                }
+                    &.fu-nav-menu-title-item {
+                        height: $secondaryMenuItemTitleHeight;
+                        cursor: default;
+                        pointer-events: none;
 
-                &.fu-has-sub-items {
-                    gap: 12px;
-                    cursor: default;
-                    .fu-secondary-menu-item-icon-holder {
-                        @include size($secondaryMenuItemParentIconSize);
-                        @include icon-style('fu-secondary-menu-item-icon', $fu-nav-text-primary, $secondaryMenuItemParentIconSize, true, true) {
-                            @include size($secondaryMenuItemParentIconSize);
+                        .fu-secondary-menu-item-label {
+                            @extend %font-caption-3;
+                            color: $fu-nav-text-secondary;
                         }
                     }
 
-                }
+                    &:hover {
+                        border-radius: 4px;
+                        background-color: $fu-nav-menu-black-5;
+                    }
 
-                .fu-secondary-menu-item-icon-holder {
-                    @include size($secondaryMenuItemIconSize);
-                    @include icon-style('fu-secondary-menu-item-icon', $fu-nav-text-primary, $secondaryMenuItemIconSize, true, true) {
+                    &.fu-has-sub-items {
+                        gap: 12px;
+                        .fu-secondary-menu-item-icon-holder {
+                            @include size($secondaryMenuItemParentIconSize);
+                            @include icon-style('fu-secondary-menu-item-icon', $fu-nav-text-primary, $secondaryMenuItemParentIconSize, true, true) {
+                                @include size($secondaryMenuItemParentIconSize);
+                            }
+                        }
+
+                    }
+
+                    .fu-secondary-menu-item-icon-holder {
                         @include size($secondaryMenuItemIconSize);
+                        @include icon-style('fu-secondary-menu-item-icon', $fu-nav-text-primary, $secondaryMenuItemIconSize, true, true) {
+                            @include size($secondaryMenuItemIconSize);
+                        }
+                    }
+
+                    .fu-secondary-menu-item-label {
+                        @extend %font-body-2;
+                        color: $fu-nav-text-primary;
+                    }
+
+                    @include icon-style('fu-secondary-menu-item-parent-icon-toggle', $fu-nav-text-primary, $secondaryMenuItemOpenCloseIconSize, true, true){
+                        @include size($secondaryMenuItemOpenCloseIconSize);
+                        margin-left: auto;
+                        cursor: pointer;
+                        margin-top: -4px;
+                    }
+                    &.fu-sub-items-opened {
+                        @include icon-style('fu-secondary-menu-item-parent-icon-toggle', $fu-nav-text-primary, $secondaryMenuItemOpenCloseIconSize, true, true, 90)
                     }
                 }
-
-                .fu-secondary-menu-item-label {
-                    @extend %font-body-2;
-                    color: $fu-nav-text-primary;
-                }
-
-
-                @include icon-style('fu-secondary-menu-item-parent-icon-toggle', $fu-nav-text-primary, $secondaryMenuItemOpenCloseIconSize, true, true){
-                    @include size($secondaryMenuItemOpenCloseIconSize);
-                    margin-left: auto;
-                    cursor: pointer;
-                    margin-top: -4px;
-                }
-                &.fu-sub-items-opened {
-                    @include icon-style('fu-secondary-menu-item-parent-icon-toggle', $fu-nav-text-primary, $secondaryMenuItemOpenCloseIconSize, true, true, 90)
+                .fu-secondary-menu-sub-items-holder{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    .fu-secondary-menu-item-holder{
+                        .fu-secondary-menu-item-label {
+                            @extend %font-body-1;
+                        }
+                    }
                 }
             }
         }

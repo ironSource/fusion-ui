@@ -148,9 +148,9 @@ export class DocsComponent implements OnInit, OnDestroy {
 
     onMenuItemClick(menuItem: MenuItem) {
         console.log('DOC onMenuItemClick>>>', menuItem);
-        if (menuItem.redirect) {
-            location.href = menuItem.redirect;
-        }
+        // if (menuItem.redirect) {
+        //     location.href = menuItem.redirect;
+        // }
     }
 
     onLayoutUserLogout(user) {

@@ -35,7 +35,8 @@ export const USER_PROFILE_MENU_ITEMS: MenuItem[] = [
 export const UNITY_MENU_ITEMS: MenuItem[] = [
     {
         icon: {iconName: 'add', iconVersion: 'v4'},
-        name: 'Add App'
+        name: 'Add App',
+        route: '/Add+app'
     },
     {
         name: 'Mediation',
