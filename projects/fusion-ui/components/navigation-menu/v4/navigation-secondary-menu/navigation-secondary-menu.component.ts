@@ -3,11 +3,12 @@ import {CommonModule} from '@angular/common';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {BehaviorSubject} from 'rxjs';
+import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 
 @Component({
     selector: 'fusion-navigation-secondary-menu',
     standalone: true,
-    imports: [CommonModule, IconModule],
+    imports: [CommonModule, IconModule, TooltipModule],
     templateUrl: './navigation-secondary-menu.component.html',
     styleUrls: ['./navigation-secondary-menu.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -21,8 +22,8 @@ export class NavigationSecondaryMenuComponent implements OnInit {
 
     itemChildToggleIcon: IconData = {iconName: 'caret_right', iconVersion: 'v4'};
     itemNewTabIcon: IconData = {iconName: 'arrow_square_out', iconVersion: 'v4'};
-    selectedMenuItem: MenuItem;
 
+    selectedMenuItem$ = new BehaviorSubject<MenuItem>(null);
     openedMenuItem$ = new BehaviorSubject<MenuItem>(null);
 
     constructor() {}
@@ -32,14 +33,13 @@ export class NavigationSecondaryMenuComponent implements OnInit {
     onMenuItemClicked($event: Event, menuItem: MenuItem) {
         if (!menuItem.children) {
             this.menuItemClick.emit(menuItem);
-            this.selectedMenuItem = menuItem;
+            this.selectedMenuItem$.next(menuItem);
         } else {
             this.toggleChildItems($event, menuItem);
         }
     }
 
     private toggleChildItems($event, menuItem: MenuItem) {
-        $event.currentTarget?.closest('.fu-secondary-menu-item-holder').classList?.toggle('fu-sub-items-opened');
         this.openedMenuItem$.next(this.openedMenuItem$.getValue() === menuItem ? null : menuItem);
     }
 }

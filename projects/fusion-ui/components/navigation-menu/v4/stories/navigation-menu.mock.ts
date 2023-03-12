@@ -71,6 +71,133 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
                 name: 'Activity Logs',
                 route: '/Activity+Logs'
             }
+            // region for scroll ----------------------------
+            /*{
+                name: 'Performance',
+                route: '/performance'
+            },
+            {
+                name: 'User Activity',
+                route: '/User+Activity'
+            },
+            {
+                name: 'Real Time Pivot',
+                redirect: 'https:/google.com',
+                target: '_blank'
+            },
+            {
+                name: 'Cohort',
+                route: '/cohort'
+            },
+            {
+                name: 'Report Generator',
+                route: '/Report+Generator'
+            },
+            {
+                name: 'Activity Logs',
+                route: '/Activity+Logs'
+            },
+            {
+                name: 'Performance',
+                route: '/performance'
+            },
+            {
+                name: 'User Activity',
+                route: '/User+Activity'
+            },
+            {
+                name: 'Real Time Pivot',
+                redirect: 'https:/google.com',
+                target: '_blank'
+            },
+            {
+                name: 'Cohort',
+                route: '/cohort'
+            },
+            {
+                name: 'Report Generator',
+                route: '/Report+Generator'
+            },
+            {
+                name: 'Activity Logs',
+                route: '/Activity+Logs'
+            },
+            {
+                name: 'Performance',
+                route: '/performance'
+            },
+            {
+                name: 'User Activity',
+                route: '/User+Activity'
+            },
+            {
+                name: 'Real Time Pivot',
+                redirect: 'https:/google.com',
+                target: '_blank'
+            },
+            {
+                name: 'Cohort',
+                route: '/cohort'
+            },
+            {
+                name: 'Report Generator',
+                route: '/Report+Generator'
+            },
+            {
+                name: 'Activity Logs',
+                route: '/Activity+Logs'
+            },
+            {
+                name: 'Performance',
+                route: '/performance'
+            },
+            {
+                name: 'User Activity',
+                route: '/User+Activity'
+            },
+            {
+                name: 'Real Time Pivot',
+                redirect: 'https:/google.com',
+                target: '_blank'
+            },
+            {
+                name: 'Cohort',
+                route: '/cohort'
+            },
+            {
+                name: 'Report Generator',
+                route: '/Report+Generator'
+            },
+            {
+                name: 'Activity Logs',
+                route: '/Activity+Logs'
+            },
+            {
+                name: 'Performance',
+                route: '/performance'
+            },
+            {
+                name: 'User Activity',
+                route: '/User+Activity'
+            },
+            {
+                name: 'Real Time Pivot',
+                redirect: 'https:/google.com',
+                target: '_blank'
+            },
+            {
+                name: 'Cohort',
+                route: '/cohort'
+            },
+            {
+                name: 'Report Generator',
+                route: '/Report+Generator'
+            },
+            {
+                name: 'Activity Logs',
+                route: '/Activity+Logs'
+            }*/
+            // endregion
         ]
     },
     {
@@ -93,15 +220,28 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
         children: [
             {
                 name: 'Ad Units',
-                route: 'Ad+Units'
+                route: '/Ad+Units'
             },
             {
                 name: 'SDK Networks',
-                route: 'SDK+Networks'
+                route: '/SDK+Networks'
             },
             {
-                name: 'SDK Networks',
-                route: 'SDK+Networks'
+                name: 'Segments',
+                route: '/Segments'
+            },
+            {
+                name: 'Unity Ads',
+                redirect: 'https:/google.com',
+                target: '_blank'
+            },
+            {
+                name: 'Testing',
+                route: '/Testing'
+            },
+            {
+                name: 'Offerwall',
+                route: '/Offerwall'
             }
         ]
     },
@@ -112,12 +252,93 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
     {
         icon: {iconName: 'medal', iconVersion: 'v4'},
         name: 'Review',
-        children: []
+        children: [
+            {
+                name: 'Analysis',
+                route: '/Analysis'
+            },
+            {
+                name: 'Creatives',
+                route: '/Creatives'
+            },
+            {
+                name: 'User Journey',
+                route: '/User+Journey'
+            },
+            {
+                name: 'Notifications',
+                route: '/Notifications'
+            }
+        ]
     },
     {
         icon: {iconName: 'faders', iconVersion: 'v4'},
         name: 'Manage',
-        children: []
+        children: [
+            {
+                name: 'Manage Rule',
+                route: '/Manage+Rule'
+            }
+        ]
+    }
+];
+
+export const IS_MENU_ITEMS: MenuItem[] = [
+    {
+        icon: {iconName: 'add', iconVersion: 'v4'},
+        name: 'Add App',
+        route: '/Add+app'
+    },
+    {
+        icon: {iconName: 'chart_line_up', iconVersion: 'v4'},
+        name: 'Reports',
+        children: [
+            {
+                name: 'Performance',
+                route: '/performance'
+            }
+        ]
+    },
+    {
+        icon: {iconName: 'wrench', iconVersion: 'v4'},
+        name: 'Setup',
+        children: [
+            {
+                name: 'Instances',
+                route: '/Instances'
+            },
+            {
+                name: 'Offerwall',
+                route: '/Offerwall'
+            },
+            {
+                name: 'Testing',
+                route: '/Testing'
+            }
+        ]
+    },
+    {
+        icon: {iconName: 'add', iconVersion: 'v4'},
+        name: 'Add Campaign',
+        route: '/Add+Campaign'
+    },
+    {
+        icon: {iconName: 'rocket_launch', iconVersion: 'v4'},
+        name: 'Campaigns',
+        children: [
+            {
+                name: 'MMP',
+                route: '/MMP'
+            },
+            {
+                name: 'SKAdNetwork',
+                route: '/SKAdNetwork'
+            },
+            {
+                name: 'Optimizer',
+                route: '/Optimizer'
+            }
+        ]
     }
 ];
 
@@ -146,7 +367,8 @@ export const NAVIGATION_MENU_MOCK: NavigationMenuBarItem[] = [
         menuTitle: 'Network',
         menuTooltip: 'ironSource network',
         menuLogoSrc: 'https://fusion.ironsrc.net/assets/images/v4/isNetwork.png',
-        cssTheme: {'fu-navbar-background-color': '#0D148C'}
+        cssTheme: {'fu-navbar-background-color': '#0D148C'},
+        menuItems: IS_MENU_ITEMS
     },
     {
         type: NavigationBarItemType.Bottom,

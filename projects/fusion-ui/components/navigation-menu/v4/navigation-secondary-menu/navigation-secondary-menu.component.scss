@@ -10,16 +10,20 @@ $secondaryMenuItemParentIconSize: 20px;
 $secondaryMenuItemOpenCloseIconSize: 12px;
 $secondaryMenuItemNewTabIconSize: 16px;
 
+$blockMaxHeight: 950px;
+
 :host {
     @extend %reset;
     display: block;
     width: 0px;
     max-width: $secondaryMenuWidth;
     background-color: var(--fu-secondary-menu-background-color, $fu-nav-secondary);
-    overflow-y: auto;
 
+    transition: all .45s ease-out;
+    opacity: 0;
     &.fu-menu-expanded {
         width: $secondaryMenuWidth;
+        opacity: 1;
     }
 
     .fu-secondary-menu-holder {
@@ -40,6 +44,11 @@ $secondaryMenuItemNewTabIconSize: 16px;
             flex-direction: column;
             align-items: flex-start;
             padding: 0px 12px 24px;
+
+            overflow-y: auto;
+            overflow-x: hidden;
+            max-height: calc(100vh - $secondaryMenuLogoHolderHeight);
+            @extend %customScroll;
 
             .fu-secondary-menu-item-wrapper{
                 width: 100%;
@@ -104,32 +113,44 @@ $secondaryMenuItemNewTabIconSize: 16px;
                         color: $fu-nav-text-primary;
                     }
 
-
                     @include icon-style('fu-secondary-menu-item-new-tab-icon', $fu-nav-text-primary, $secondaryMenuItemNewTabIconSize, true, true){
-                    @include size($secondaryMenuItemNewTabIconSize);
-                    margin-left: -10px;
-                }
-
+                        @include size($secondaryMenuItemNewTabIconSize);
+                        margin-left: -10px;
+                    }
                     @include icon-style('fu-secondary-menu-item-parent-icon-toggle', $fu-nav-text-primary, $secondaryMenuItemOpenCloseIconSize, true, true){
                         @include size($secondaryMenuItemOpenCloseIconSize);
                         margin-left: auto;
                         cursor: pointer;
                         margin-top: -4px;
                     }
+
                     &.fu-sub-items-opened {
-                        @include icon-style('fu-secondary-menu-item-parent-icon-toggle', $fu-nav-text-primary, $secondaryMenuItemOpenCloseIconSize, true, true, 90)
+                        @include icon-style('fu-secondary-menu-item-parent-icon-toggle', $fu-nav-text-primary, $secondaryMenuItemOpenCloseIconSize, true, true, 90);
                     }
                 }
                 .fu-secondary-menu-sub-items-holder{
                     display: flex;
                     flex-direction: column;
                     align-items: flex-start;
+
+                    transition: max-height, .45s ease-out;
+                    max-height: 0px;
+                    overflow-y: hidden;
+                    &.fu-secondary-menu-sub-items-opened{
+                        max-height: $blockMaxHeight;
+                    }
+
                     .fu-secondary-menu-item-holder{
                         .fu-secondary-menu-item-label {
                             @extend %font-body-1;
                         }
                     }
+
                 }
+            }
+
+            .truncate {
+                @extend %truncate;
             }
         }
 
