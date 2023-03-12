@@ -40,7 +40,7 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
     },
     {
         name: 'Mediation',
-        cssClass: 'fu-nav-menu-title-item'
+        isGroupName: true
     },
     {
         icon: {iconName: 'chart_line_up', iconVersion: 'v4'},
@@ -58,8 +58,66 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
                 name: 'Real Time Pivot',
                 redirect: 'https:/google.com',
                 target: '_blank'
+            },
+            {
+                name: 'Cohort',
+                route: '/cohort'
+            },
+            {
+                name: 'Report Generator',
+                route: '/Report+Generator'
+            },
+            {
+                name: 'Activity Logs',
+                route: '/Activity+Logs'
             }
         ]
+    },
+    {
+        icon: {iconName: 'mediation', iconVersion: 'v4'},
+        name: 'Management',
+        children: [
+            {
+                name: 'Mediation',
+                route: '/mediation'
+            },
+            {
+                name: 'A/B',
+                route: '/ab'
+            }
+        ]
+    },
+    {
+        icon: {iconName: 'wrench', iconVersion: 'v4'},
+        name: 'Setup',
+        children: [
+            {
+                name: 'Ad Units',
+                route: 'Ad+Units'
+            },
+            {
+                name: 'SDK Networks',
+                route: 'SDK+Networks'
+            },
+            {
+                name: 'SDK Networks',
+                route: 'SDK+Networks'
+            }
+        ]
+    },
+    {
+        name: 'Ad Quality',
+        isGroupName: true
+    },
+    {
+        icon: {iconName: 'medal', iconVersion: 'v4'},
+        name: 'Review',
+        children: []
+    },
+    {
+        icon: {iconName: 'faders', iconVersion: 'v4'},
+        name: 'Manage',
+        children: []
     }
 ];
 

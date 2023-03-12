@@ -8,6 +8,7 @@ $secondaryMenuItemTitleHeight: 36px;
 $secondaryMenuItemIconSize: 18px;
 $secondaryMenuItemParentIconSize: 20px;
 $secondaryMenuItemOpenCloseIconSize: 12px;
+$secondaryMenuItemNewTabIconSize: 16px;
 
 :host {
     @extend %reset;
@@ -66,7 +67,9 @@ $secondaryMenuItemOpenCloseIconSize: 12px;
                         height: $secondaryMenuItemTitleHeight;
                         cursor: default;
                         pointer-events: none;
-
+                        .fu-secondary-menu-item-icon-holder{
+                            display: none;
+                        }
                         .fu-secondary-menu-item-label {
                             @extend %font-caption-3;
                             color: $fu-nav-text-secondary;
@@ -100,6 +103,12 @@ $secondaryMenuItemOpenCloseIconSize: 12px;
                         @extend %font-body-2;
                         color: $fu-nav-text-primary;
                     }
+
+
+                    @include icon-style('fu-secondary-menu-item-new-tab-icon', $fu-nav-text-primary, $secondaryMenuItemNewTabIconSize, true, true){
+                    @include size($secondaryMenuItemNewTabIconSize);
+                    margin-left: -10px;
+                }
 
                     @include icon-style('fu-secondary-menu-item-parent-icon-toggle', $fu-nav-text-primary, $secondaryMenuItemOpenCloseIconSize, true, true){
                         @include size($secondaryMenuItemOpenCloseIconSize);

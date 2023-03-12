@@ -17,6 +17,7 @@
         <!--region menu first level item-->
         <div class="fu-secondary-menu-item-holder"
              [ngClass]="item.cssClass"
+             [class.fu-nav-menu-title-item]="item.isGroupName"
              [class.fu-has-sub-items]="!!item.children"
              [class.fu-secondary-menu-item-selected]="item===selectedMenuItem"
              (click)="onMenuItemClicked($event, item)"
@@ -30,6 +31,7 @@
                 <div *ngFor="let itemChild of item.children"
                      class="fu-secondary-menu-item-holder"
                      [ngClass]="itemChild.cssClass"
+                     [class.fu-nav-menu-title-item]="item.isGroupName"
                      [class.fu-has-sub-items]="!!itemChild.children"
                      [class.fu-secondary-menu-item-selected]="itemChild===selectedMenuItem"
                      (click)="onMenuItemClicked($event, itemChild)"
@@ -53,6 +55,10 @@
     <fusion-icon *ngIf="!!item.children"
                  class="fu-secondary-menu-item-parent-icon-toggle"
                  [name]="itemChildToggleIcon"
+    ></fusion-icon>
+    <fusion-icon *ngIf="!!item.target"
+                 class="fu-secondary-menu-item-new-tab-icon"
+                 [name]="itemNewTabIcon"
     ></fusion-icon>
 </ng-template>
 <!--endregion menu item link-->
