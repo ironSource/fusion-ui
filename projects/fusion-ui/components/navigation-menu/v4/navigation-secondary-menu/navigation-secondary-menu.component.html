@@ -20,7 +20,7 @@
              [class.fu-nav-menu-title-item]="item.isGroupName"
              [class.fu-has-sub-items]="!!item.children"
              [class.fu-secondary-menu-item-selected]="item === (selectedMenuItem$ | async)"
-             [class.fu-sub-items-opened]="(openedMenuItem$ | async) === item"
+             [class.fu-sub-items-opened]="!item.closed"
              (click)="onMenuItemClicked($event, item)"
         >
             <ng-container *ngTemplateOutlet="menuItemLink; context: {item: item}"></ng-container>
@@ -28,7 +28,7 @@
         <!--endregion menu first level item-->
         <!--region second level (child) items-->
         <ng-container *ngIf="item?.children">
-            <div class="fu-secondary-menu-sub-items-holder" [class.fu-secondary-menu-sub-items-opened]="(openedMenuItem$ | async) === item">
+            <div class="fu-secondary-menu-sub-items-holder" [class.fu-secondary-menu-sub-items-opened]="!item.closed">
                 <div *ngFor="let itemChild of item.children"
                      class="fu-secondary-menu-item-holder"
                      [ngClass]="itemChild.cssClass"

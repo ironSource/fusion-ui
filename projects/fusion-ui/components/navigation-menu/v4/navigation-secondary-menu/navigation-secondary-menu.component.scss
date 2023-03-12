@@ -18,6 +18,7 @@ $blockMaxHeight: 950px;
     width: 0px;
     max-width: $secondaryMenuWidth;
     background-color: var(--fu-secondary-menu-background-color, $fu-nav-secondary);
+    border-right: solid 1px $fu-divider;
 
     transition: all .45s ease-out;
     opacity: 0;
@@ -48,7 +49,7 @@ $blockMaxHeight: 950px;
             overflow-y: auto;
             overflow-x: hidden;
             max-height: calc(100vh - $secondaryMenuLogoHolderHeight);
-            @extend %customScroll;
+            @extend %customNavBarScroll;
 
             .fu-secondary-menu-item-wrapper{
                 width: 100%;
@@ -136,6 +137,7 @@ $blockMaxHeight: 950px;
                     transition: max-height, .45s ease-out;
                     max-height: 0px;
                     overflow-y: hidden;
+
                     &.fu-secondary-menu-sub-items-opened{
                         max-height: $blockMaxHeight;
                     }
@@ -151,6 +153,7 @@ $blockMaxHeight: 950px;
 
             .truncate {
                 @extend %truncate;
+                width: initial;
             }
         }
 

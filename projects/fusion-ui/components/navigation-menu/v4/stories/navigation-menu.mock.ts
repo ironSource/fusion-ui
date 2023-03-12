@@ -71,32 +71,7 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
                 name: 'Activity Logs',
                 route: '/Activity+Logs'
             }
-            // region for scroll ----------------------------
-            /*{
-                name: 'Performance',
-                route: '/performance'
-            },
-            {
-                name: 'User Activity',
-                route: '/User+Activity'
-            },
-            {
-                name: 'Real Time Pivot',
-                redirect: 'https:/google.com',
-                target: '_blank'
-            },
-            {
-                name: 'Cohort',
-                route: '/cohort'
-            },
-            {
-                name: 'Report Generator',
-                route: '/Report+Generator'
-            },
-            {
-                name: 'Activity Logs',
-                route: '/Activity+Logs'
-            },
+            /*// region for scroll ----------------------------
             {
                 name: 'Performance',
                 route: '/performance'
@@ -196,8 +171,33 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
             {
                 name: 'Activity Logs',
                 route: '/Activity+Logs'
-            }*/
-            // endregion
+            },
+            {
+                name: 'Performance',
+                route: '/performance'
+            },
+            {
+                name: 'User Activity',
+                route: '/User+Activity'
+            },
+            {
+                name: 'Real Time Pivot',
+                redirect: 'https:/google.com',
+                target: '_blank'
+            },
+            {
+                name: 'Cohort',
+                route: '/cohort'
+            },
+            {
+                name: 'Report Generator',
+                route: '/Report+Generator'
+            },
+            {
+                name: 'Activity Logs',
+                route: '/Activity+Logs'
+            }
+            // endregion*/
         ]
     },
     {

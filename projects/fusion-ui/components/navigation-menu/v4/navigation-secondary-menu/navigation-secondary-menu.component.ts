@@ -4,6 +4,7 @@ import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {BehaviorSubject} from 'rxjs';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
+import {secondaryMenuItem} from './navigation-secondary-menu.entities';
 
 @Component({
     selector: 'fusion-navigation-secondary-menu',
@@ -14,7 +15,14 @@ import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavigationSecondaryMenuComponent implements OnInit {
-    @Input() menuItems: MenuItem[];
+    @Input() set menuItems(value: MenuItem[]) {
+        if (Array.isArray(value)) {
+            this._menuItems = [...value];
+        }
+    }
+    get menuItems(): secondaryMenuItem[] {
+        return this._menuItems;
+    }
     @Input() menuName: string;
     @Input() menuLogoSrc: string;
 
@@ -23,14 +31,15 @@ export class NavigationSecondaryMenuComponent implements OnInit {
     itemChildToggleIcon: IconData = {iconName: 'caret_right', iconVersion: 'v4'};
     itemNewTabIcon: IconData = {iconName: 'arrow_square_out', iconVersion: 'v4'};
 
-    selectedMenuItem$ = new BehaviorSubject<MenuItem>(null);
-    openedMenuItem$ = new BehaviorSubject<MenuItem>(null);
+    selectedMenuItem$ = new BehaviorSubject<secondaryMenuItem>(null);
+
+    private _menuItems: secondaryMenuItem[] = [];
 
     constructor() {}
 
     ngOnInit(): void {}
 
-    onMenuItemClicked($event: Event, menuItem: MenuItem) {
+    onMenuItemClicked($event: Event, menuItem: secondaryMenuItem) {
         if (!menuItem.children) {
             this.menuItemClick.emit(menuItem);
             this.selectedMenuItem$.next(menuItem);
@@ -39,7 +48,7 @@ export class NavigationSecondaryMenuComponent implements OnInit {
         }
     }
 
-    private toggleChildItems($event, menuItem: MenuItem) {
-        this.openedMenuItem$.next(this.openedMenuItem$.getValue() === menuItem ? null : menuItem);
+    private toggleChildItems($event, menuItem: secondaryMenuItem) {
+        menuItem.closed = !menuItem.closed;
     }
 }
