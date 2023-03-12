@@ -1,7 +1,7 @@
 <div class="fu-navigation-bar-holder">
     <!--region home item-->
     <div *ngIf="homeItem" class="fu-navigation-bar-item fu-home" [fusionTooltip]="homeItem.menuTooltip">
-        <ng-container [ngTemplateOutlet]="navigationButton" [ngTemplateOutletContext]="{item: homeItem, selectedItem: false}"></ng-container>
+        <ng-container [ngTemplateOutlet]="navigationButton" [ngTemplateOutletContext]="{item: homeItem, selectedItem: (homeItem === selectedBarItem)}"></ng-container>
     </div>
     <!--endregion home item-->
     <!--region main items-->

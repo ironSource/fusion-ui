@@ -62,16 +62,11 @@ export class NavigationPrimaryMenuComponent implements OnInit {
                 this.showPopMenu$.next(true);
                 break;
             case NavigationBarItemType.Home:
-                this.setSelectedBarItem(null);
-                this.primaryMenuItemClicked.emit(item);
-                this.resetColorTheme();
-                break;
             case NavigationBarItemType.Main:
                 this.setSelectedBarItem(item);
                 this.primaryMenuItemClicked.emit(item);
-                if (item?.cssTheme) {
-                    this.changeColorTheme.emit(item?.cssTheme);
-                }
+                this.setColorTheme(item?.cssTheme);
+                break;
         }
     }
 
@@ -85,7 +80,7 @@ export class NavigationPrimaryMenuComponent implements OnInit {
         this.menuItemClick.emit(menuItem);
         this.showPopMenu$.next(false);
         this.setSelectedBarItem(null);
-        this.resetColorTheme();
+        this.setColorTheme(null);
     }
 
     private setSelectedBarItem(barItem: NavigationMenuBarItem) {
@@ -95,8 +90,10 @@ export class NavigationPrimaryMenuComponent implements OnInit {
         }
     }
 
-    private resetColorTheme() {
-        if (this.defaultCssTheme) {
+    private setColorTheme(cssTheme: {[key: string]: string}) {
+        if (!isNullOrUndefined(cssTheme)) {
+            this.changeColorTheme.emit(cssTheme);
+        } else if (this.defaultCssTheme) {
             this.changeColorTheme.emit(this.defaultCssTheme);
         }
     }
@@ -120,6 +117,9 @@ export class NavigationPrimaryMenuComponent implements OnInit {
                     break;
             }
         });
+        if (isNullOrUndefined(this.selectedBarItem)) {
+            this.setSelectedBarItem(this.homeItem);
+        }
         this.networkItems$.next(networkItems);
         this.bottomItems$.next(bottomItems);
     }
