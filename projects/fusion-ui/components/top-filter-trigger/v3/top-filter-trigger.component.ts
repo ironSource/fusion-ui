@@ -8,7 +8,8 @@ import {
     OnInit,
     Output,
     TemplateRef,
-    ViewChild
+    ViewChild,
+    ChangeDetectorRef
 } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
@@ -63,7 +64,7 @@ export class TopFilterTriggerComponent implements OnInit, OnDestroy {
         return this.sanitizer.bypassSecurityTrustStyle(this.imageApp ? `url(${this.imageApp})` : this.imageHolderBack);
     }
 
-    constructor(private sanitizer: DomSanitizer) {}
+    constructor(private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef) {}
 
     ngOnInit() {
         if (this.apiBase) {
@@ -120,6 +121,7 @@ export class TopFilterTriggerComponent implements OnInit, OnDestroy {
                         : null;
             }
         }
+        this.cdr.detectChanges();
         this.onSelectedChange.emit(selected);
     }
 }

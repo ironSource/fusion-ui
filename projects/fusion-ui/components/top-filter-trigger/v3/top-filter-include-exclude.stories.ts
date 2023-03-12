@@ -143,7 +143,7 @@ SelectedOneApplication.parameters = {
         source: {
             language: 'typescript',
             code: dedent`
-import { Component} from '@angular/core';
+import { Component, ChangeDetectionStrategy} from '@angular/core';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import {TopFilterTriggerComponent} from '@ironsource/fusion-ui/components/top-filter-trigger'
 import { DropdownDualMultiSelectModule } from "@ironsource/fusion-ui/components/dropdown-dual-multi-select";
@@ -151,6 +151,7 @@ import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option
 
 @Component({
   selector: 'fusion-story-wrapper',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: \`<div style="height: 380px">
 <fusion-top-filter-trigger
     [placeholder]="placeholder"

@@ -120,5 +120,7 @@ export class CustomCellEditComponent implements AfterViewInit {
     cancelEdit(): void {
         this.inputError$.next('');
         this._showInput = false;
+        // Temp solution - need to fix inline input behavior
+        this.formControl.setValue(this.inputInlineComponent.inputControl.value, {emitEvent: false});
     }
 }

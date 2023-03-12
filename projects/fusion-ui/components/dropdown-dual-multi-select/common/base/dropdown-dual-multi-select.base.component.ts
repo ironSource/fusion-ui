@@ -221,7 +221,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.confirm = true;
         this.setLabel();
         this.propagateChange(this.preSelectedItems.value);
-        this.selectedChange = this.preSelectedItems.value;
+        this.selectedChange = Array.isArray(this.preSelectedItems.value) ? [...this.preSelectedItems.value] : this.preSelectedItems.value;
         this.selected$.next(
             this.selectedChange?.length === 1
                 ? this.selectedTypeObject
@@ -333,7 +333,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
 
     private initializeListeners(): void {
         this.searchControlTerm.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(this.changeTerm.bind(this));
-        this.preSelectedItems.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(this.checkSelectItemsChanged.bind(this));
+        //  this.preSelectedItems.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(this.checkSelectItemsChanged.bind(this));
         this.resetState$
             .asObservable()
             .pipe(takeUntil(this.onDestroy$))
