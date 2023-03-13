@@ -18,6 +18,7 @@ $pageHeaderHeight: 64px;
         .fu-main-page{
             .fu-page-header{
                 height: $pageHeaderHeight;
+                border-bottom: solid 1px $fu-divider;
             }
             .fu-page-content{
 

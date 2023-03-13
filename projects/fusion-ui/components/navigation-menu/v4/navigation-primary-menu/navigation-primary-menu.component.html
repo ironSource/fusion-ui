@@ -30,7 +30,7 @@
                 </div>
                 <ng-container *ngIf="bottomItem.menuItems && showPopMenu$ | async">
                     <fusion-navigation-pop-menu
-                        [layoutUser]="bottomItem.type === 'user' ? layoutUser : null"
+                        [layoutUser]="bottomItem?.type === 'user' ? layoutUser : null"
                         [menuItems]="bottomItem.menuItems"
                         [fusionReposition]="'#fu-bottom-nav-item-btn_'+bottomItemIndex"
                         [fusionRepositionPlacement]="popMenuPosition"
@@ -39,7 +39,7 @@
                 </ng-container>
             </ng-container>
             <!--region toggle secondary menu button-->
-            <div class="fu-menu-toggle-button-holder" *ngIf="selectedBarItem.type === 'main'" [fusionTooltip]="menuToggleButtonTooltip">
+            <div class="fu-menu-toggle-button-holder" *ngIf="selectedBarItem?.type === 'main'" [fusionTooltip]="menuToggleButtonTooltip">
                 <div class="fu-navigation-bar-button fu-menu-toggle" (click)="toggleMenu.emit()">
                     <fusion-icon *ngIf="menuCollapsed" class="fu-navigation-bar-button-icon" [name]="menuCollapsedIcon"></fusion-icon>
                     <fusion-icon *ngIf="!menuCollapsed" class="fu-navigation-bar-button-icon" [name]="menuExpandedIcon"></fusion-icon>
