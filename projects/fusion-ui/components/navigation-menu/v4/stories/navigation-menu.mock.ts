@@ -7,22 +7,22 @@ export const USER_PROFILE_MENU_ITEMS: MenuItem[] = [
         route: '/'
     },
     {
-        name: 'User Management',
+        name: 'User management',
         route: '/'
     },
     {
-        name: 'Company Info',
+        name: 'Company info',
         route: '/'
     },
     {
         withTopDelimiter: true,
-        name: 'Payment',
+        name: 'Payments',
         route: '/'
     },
     {
         withTopDelimiter: true,
         icon: {iconName: 'mail_outline', iconVersion: 'v4'},
-        name: 'Contact Us',
+        name: 'Contact us',
         route: '/'
     },
     {
@@ -285,6 +285,10 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
 
 export const IS_MENU_ITEMS: MenuItem[] = [
     {
+        name: 'Mediation',
+        isGroupName: true
+    },
+    {
         icon: {iconName: 'add', iconVersion: 'v4'},
         name: 'Add App',
         route: '/Add+app'
@@ -316,6 +320,10 @@ export const IS_MENU_ITEMS: MenuItem[] = [
                 route: '/Testing'
             }
         ]
+    },
+    {
+        name: 'Promote',
+        isGroupName: true
     },
     {
         icon: {iconName: 'add', iconVersion: 'v4'},
@@ -356,7 +364,7 @@ export const NAVIGATION_MENU_MOCK: NavigationMenuBarItem[] = [
         type: NavigationBarItemType.Main,
         menuIconPath: 'v4/unity',
         menuTitle: 'LevelPlay',
-        menuTooltip: 'Unity LevelPlay',
+        /*menuTooltip: 'Unity LevelPlay',*/
         menuLogoSrc: 'https://fusion.ironsrc.net/assets/images/v4/unionLevelPlay.png',
         cssTheme: {'fu-navbar-background-color': '#202020'},
         menuItems: UNITY_MENU_ITEMS
@@ -365,7 +373,7 @@ export const NAVIGATION_MENU_MOCK: NavigationMenuBarItem[] = [
         type: NavigationBarItemType.Main,
         menuIcon: {iconName: 'ironSource', iconVersion: 'v4'},
         menuTitle: 'Network',
-        menuTooltip: 'ironSource network',
+        /*menuTooltip: 'ironSource Network',*/
         menuLogoSrc: 'https://fusion.ironsrc.net/assets/images/v4/isNetwork.png',
         cssTheme: {'fu-navbar-background-color': '#0D148C'},
         menuItems: IS_MENU_ITEMS
@@ -373,14 +381,14 @@ export const NAVIGATION_MENU_MOCK: NavigationMenuBarItem[] = [
     {
         type: NavigationBarItemType.Bottom,
         menuIcon: {iconName: 'question', iconVersion: 'v4'},
-        menuTooltip: 'Knowledge Center',
-        redirect: 'https://platform.ironsrc.com/',
+        /*menuTooltip: 'Knowledge Center',*/
+        redirect: 'https://developers.is.com/',
         target: '_blank'
     },
     {
         type: NavigationBarItemType.User,
         menuIcon: {iconName: 'userCircle', iconVersion: 'v4'},
-        menuTooltip: 'Account',
+        /*menuTooltip: 'Account',*/
         menuItems: USER_PROFILE_MENU_ITEMS
     }
 ];

@@ -128,7 +128,6 @@ $secondaryMenuItemNewTabIconSize: 16px;
                         @include size($secondaryMenuItemOpenCloseIconSize);
                         margin-left: auto;
                         cursor: pointer;
-                        margin-top: -4px;
                     }
 
                     &.fu-sub-items-opened {
