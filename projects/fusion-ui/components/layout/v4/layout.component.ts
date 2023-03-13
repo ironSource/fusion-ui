@@ -3,13 +3,14 @@ import {CommonModule} from '@angular/common';
 import {BehaviorSubject} from 'rxjs';
 import {NavigationMenuBarItem, NavigationMenuComponent} from '@ironsource/fusion-ui/components/navigation-menu/v4';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
-import {LayoutConfiguration} from './layout.entities';
+import {LayoutConfiguration, LayoutHeaderConfiguration} from './layout.entities';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
+import {LayoutHeaderComponent} from './components/layout-header/layout-header.component';
 
 @Component({
     selector: 'fusion-layout',
     standalone: true,
-    imports: [CommonModule, NavigationMenuComponent],
+    imports: [CommonModule, LayoutHeaderComponent, NavigationMenuComponent],
     templateUrl: './layout.component.html',
     styleUrls: ['./layout.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -19,13 +20,17 @@ export class LayoutComponent implements OnInit {
         if (Array.isArray(value?.navigationMenuItems)) {
             this.navigationMenu$.next(value.navigationMenuItems);
         }
-        this.layoutUser$.next(value?.layoutUser ?? null);
+
+        this.layoutUser = {...value?.layoutUser} ?? null;
     }
 
     @Output() menuItemClick = new EventEmitter<MenuItem>();
 
+    loading$ = new BehaviorSubject<boolean>(false);
     navigationMenu$ = new BehaviorSubject<NavigationMenuBarItem[]>([]);
-    layoutUser$ = new BehaviorSubject<LayoutUser>(null);
+    layoutUser: LayoutUser;
+
+    headerConfiguration: LayoutHeaderConfiguration;
 
     constructor() {}
 
