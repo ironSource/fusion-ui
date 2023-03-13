@@ -354,7 +354,7 @@ export const NAVIGATION_MENU_MOCK: NavigationMenuBarItem[] = [
     },
     {
         type: NavigationBarItemType.Main,
-        menuIcon: {iconName: 'unity', iconVersion: 'v4'},
+        menuIconPath: 'v4/unity',
         menuTitle: 'LevelPlay',
         menuTooltip: 'Unity LevelPlay',
         menuLogoSrc: 'https://fusion.ironsrc.net/assets/images/v4/unionLevelPlay.png',

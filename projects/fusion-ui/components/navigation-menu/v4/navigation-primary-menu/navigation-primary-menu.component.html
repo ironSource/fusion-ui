@@ -53,6 +53,7 @@
 
 <ng-template #navigationButton let-item="item" let-selectedItem="selectedItem" let-popMenu="popMenu" let-index=index>
     <div class="fu-navigation-bar-button" id="fu-bottom-nav-item-btn_{{index}}" [class.fu-selected]="selectedItem" [class.fu-with-pop-menu]="popMenu" (click)="networkItemClicked(item)">
+        <fusion-svg  *ngIf="item.menuIconPath" class="fu-navigation-bar-button-icon-wrapper" [path]="item.menuIconPath"></fusion-svg>
         <fusion-icon *ngIf="item.menuIcon" class="fu-navigation-bar-button-icon" [name]="item.menuIcon"></fusion-icon>
     </div>
 </ng-template>

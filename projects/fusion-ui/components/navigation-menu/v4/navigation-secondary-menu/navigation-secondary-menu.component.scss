@@ -10,8 +10,6 @@ $secondaryMenuItemParentIconSize: 20px;
 $secondaryMenuItemOpenCloseIconSize: 12px;
 $secondaryMenuItemNewTabIconSize: 16px;
 
-$blockMaxHeight: 950px;
-
 :host {
     @extend %reset;
     display: block;
@@ -139,7 +137,7 @@ $blockMaxHeight: 950px;
                     overflow-y: hidden;
 
                     &.fu-secondary-menu-sub-items-opened{
-                        max-height: $blockMaxHeight;
+                        max-height: calc(100vh - $secondaryMenuItemHeight);
                     }
 
                     .fu-secondary-menu-item-holder{

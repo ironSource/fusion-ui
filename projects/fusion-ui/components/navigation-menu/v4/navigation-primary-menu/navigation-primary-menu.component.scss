@@ -33,6 +33,9 @@ $navBarIconSize: 24px;
                     @include icon-style('fu-navigation-bar-button-icon', $fu-nav-menu-white-100, $navBarIconSize, true, true) {
                         @include size($navBarIconSize);
                     }
+                    .fu-navigation-bar-button-icon-wrapper{
+                        @include size($navBarIconSize);
+                    }
                 }
             }
             &.fu-bottom-block{

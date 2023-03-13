@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output}
 import {CommonModule} from '@angular/common';
 import {BehaviorSubject} from 'rxjs';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
+import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
@@ -15,7 +16,7 @@ import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 @Component({
     selector: 'fusion-navigation-primary-menu',
     standalone: true,
-    imports: [CommonModule, IconModule, TooltipModule, ClickOutsideModule, RepositionDirective, NavigationPopMenuComponent],
+    imports: [CommonModule, SvgModule, IconModule, TooltipModule, ClickOutsideModule, RepositionDirective, NavigationPopMenuComponent],
     templateUrl: './navigation-primary-menu.component.html',
     styleUrls: ['./navigation-primary-menu.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -64,8 +65,8 @@ export class NavigationPrimaryMenuComponent implements OnInit {
             case NavigationBarItemType.Home:
             case NavigationBarItemType.Main:
                 this.setSelectedBarItem(item);
-                this.primaryMenuItemClicked.emit(item);
                 this.setColorTheme(item?.cssTheme);
+                this.primaryMenuItemClicked.emit(item);
                 break;
         }
     }
