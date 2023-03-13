@@ -18,12 +18,14 @@ $secondaryMenuItemNewTabIconSize: 16px;
     max-width: $secondaryMenuWidth;
     background-color: var(--fu-secondary-menu-background-color, $fu-nav-secondary);
     border-right: solid 1px $fu-divider;
+    margin-left: -1px;
 
     transition: all .45s ease-out;
     opacity: 0;
     &.fu-menu-expanded {
         width: $secondaryMenuWidth;
         opacity: 1;
+        margin-left: 0;
     }
 
     &.fu-menu-showed{
