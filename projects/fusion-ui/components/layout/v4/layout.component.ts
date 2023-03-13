@@ -32,11 +32,17 @@ export class LayoutComponent implements OnInit {
 
     headerConfiguration: LayoutHeaderConfiguration;
 
+    // todo: remove this header-title update
+    title: string = 'Home';
+
     constructor() {}
 
     ngOnInit(): void {}
 
     onMenuItemClick(item: MenuItem) {
         this.menuItemClick.emit(item);
+
+        // todo: remove this header-title update
+        this.title = item.name;
     }
 }

@@ -365,7 +365,7 @@ export const NAVIGATION_MENU_MOCK: NavigationMenuBarItem[] = [
         menuIconPath: 'v4/unity',
         menuTitle: 'LevelPlay',
         /*menuTooltip: 'Unity LevelPlay',*/
-        menuLogoSrc: 'https://fusion.ironsrc.net/assets/images/v4/unionLevelPlay.png',
+        menuLogoSrc: 'v4/unityLevelPlay',
         cssTheme: {'fu-navbar-background-color': '#202020'},
         menuItems: UNITY_MENU_ITEMS
     },
@@ -374,7 +374,7 @@ export const NAVIGATION_MENU_MOCK: NavigationMenuBarItem[] = [
         menuIcon: {iconName: 'ironSource', iconVersion: 'v4'},
         menuTitle: 'Network',
         /*menuTooltip: 'ironSource Network',*/
-        menuLogoSrc: 'https://fusion.ironsrc.net/assets/images/v4/isNetwork.png',
+        menuLogoSrc: 'v4/isNetwork',
         cssTheme: {'fu-navbar-background-color': '#0D148C'},
         menuItems: IS_MENU_ITEMS
     },

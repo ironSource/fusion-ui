@@ -1,6 +1,6 @@
 <div class="fu-secondary-menu-holder">
     <div class="fu-logo-holder">
-        <img *ngIf="menuLogoSrc" src="{{menuLogoSrc}}" alt="{{menuName}}">
+        <fusion-svg *ngIf="menuLogoSrc" [path]="menuLogoSrc"></fusion-svg>
     </div>
     <div class="fu-secondary-menu">
         <ng-container *ngFor="let item of menuItems">

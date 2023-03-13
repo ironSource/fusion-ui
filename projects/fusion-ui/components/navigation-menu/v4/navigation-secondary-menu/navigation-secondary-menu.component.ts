@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
+import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {BehaviorSubject} from 'rxjs';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
@@ -9,7 +10,7 @@ import {secondaryMenuItem} from './navigation-secondary-menu.entities';
 @Component({
     selector: 'fusion-navigation-secondary-menu',
     standalone: true,
-    imports: [CommonModule, IconModule, TooltipModule],
+    imports: [CommonModule, IconModule, TooltipModule, SvgModule],
     templateUrl: './navigation-secondary-menu.component.html',
     styleUrls: ['./navigation-secondary-menu.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush

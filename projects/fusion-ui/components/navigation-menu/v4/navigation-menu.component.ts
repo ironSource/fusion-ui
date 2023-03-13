@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BehaviorSubject, fromEvent, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -18,6 +18,8 @@ import {NavigationSecondaryMenuComponent} from './navigation-secondary-menu/navi
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavigationMenuComponent implements OnInit {
+    @ViewChild('primaryMenu', {static: true}) primaryMenu: NavigationPrimaryMenuComponent;
+
     @Input() menuItems: NavigationMenuBarItem[];
     @Input() layoutUser: LayoutUser;
 
@@ -85,8 +87,8 @@ export class NavigationMenuComponent implements OnInit {
         this.secondaryMenuItems.next(selectedNetwork?.menuItems ?? []);
         this.secondaryMenuName.next(selectedNetwork?.menuTitle ?? '');
         this.secondaryMenuLogoSrc.next(selectedNetwork?.menuLogoSrc ?? '');
-
         this.secondaryMenuClosed.next(selectedNetwork.type !== NavigationBarItemType.Main);
+        this.primaryMenu.setColorTheme(selectedNetwork?.cssTheme ?? null);
     }
 
     private setNetworkTheme(theme: {[key: string]: string}) {

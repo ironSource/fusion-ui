@@ -62,7 +62,7 @@ export class NavigationPrimaryMenuComponent implements OnInit {
                 this.showPopMenu$.next(true);
                 break;
             case NavigationBarItemType.Home:
-            case NavigationBarItemType.Main:
+                /*case NavigationBarItemType.Main:*/
                 this.setSelectedBarItem(item);
                 this.setColorTheme(item?.cssTheme);
                 this.primaryMenuItemClicked.emit(item);
@@ -83,18 +83,18 @@ export class NavigationPrimaryMenuComponent implements OnInit {
         this.setColorTheme(null);
     }
 
-    private setSelectedBarItem(barItem: NavigationMenuBarItem) {
-        this.selectedBarItem = barItem;
-        if (!barItem) {
-            this.resetSecondaryMenu.emit();
-        }
-    }
-
-    private setColorTheme(cssTheme: {[key: string]: string}) {
+    setColorTheme(cssTheme: {[key: string]: string}) {
         if (!isNullOrUndefined(cssTheme)) {
             this.changeColorTheme.emit(cssTheme);
         } else if (this.defaultCssTheme) {
             this.changeColorTheme.emit(this.defaultCssTheme);
+        }
+    }
+
+    private setSelectedBarItem(barItem: NavigationMenuBarItem) {
+        this.selectedBarItem = barItem;
+        if (!barItem) {
+            this.resetSecondaryMenu.emit();
         }
     }
 
