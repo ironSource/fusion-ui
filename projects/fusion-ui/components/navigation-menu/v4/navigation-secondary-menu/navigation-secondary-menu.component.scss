@@ -1,6 +1,7 @@
 @import '../../../../src/style/scss/v4/mixins/mixins';
 @import '../../../../src/style/scss/v4/vars/vars';
 
+$primaryMenuWidth: 64px;
 $secondaryMenuWidth: 212px;
 $secondaryMenuLogoHolderHeight: 64px;
 $secondaryMenuItemHeight: 28px;
@@ -23,6 +24,13 @@ $secondaryMenuItemNewTabIconSize: 16px;
     &.fu-menu-expanded {
         width: $secondaryMenuWidth;
         opacity: 1;
+    }
+
+    &.fu-menu-showed{
+        position: fixed;
+        top: 0;
+        left: $primaryMenuWidth;
+        height: 100vh;
     }
 
     .fu-secondary-menu-holder {

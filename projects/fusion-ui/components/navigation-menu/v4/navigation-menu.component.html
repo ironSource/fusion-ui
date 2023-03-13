@@ -2,18 +2,20 @@
     <fusion-navigation-primary-menu
         [menuBarItems]="menuItems"
         [layoutUser]="layoutUser"
-        [menuCollapsed]="secondaryMenuCollapsed | async"
+        [menuCollapsed]="secondaryMenuClosed | async"
         (menuItemClick)="onMenuItemClicked($event)"
         (primaryMenuItemClicked)="onPrimaryMainMenuItemClicked($event)"
+        (primaryMenuItemMouseEnter)="onPrimaryMainMenuItemMouseEnter($event)"
         (changeColorTheme)="onChangeColorTheme($event)"
         (toggleMenu)="toggleMenu()"
         (resetSecondaryMenu)="resetSecondaryMenu()"
     ></fusion-navigation-primary-menu>
     <fusion-navigation-secondary-menu
-        [class.fu-menu-expanded]="(secondaryMenuCollapsed | async) === false"
         [menuItems]="secondaryMenuItems | async"
         [menuName]="secondaryMenuName | async"
         [menuLogoSrc]="secondaryMenuLogoSrc | async"
+        [class.fu-menu-showed]="(secondaryMenuExpanded | async) === true"
+        [class.fu-menu-expanded]="(secondaryMenuClosed | async) === false"
         (menuItemClick)="onMenuItemClicked($event)"
     ></fusion-navigation-secondary-menu>
 </div>
