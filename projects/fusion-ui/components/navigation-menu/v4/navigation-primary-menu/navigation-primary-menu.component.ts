@@ -48,8 +48,6 @@ export class NavigationPrimaryMenuComponent implements OnInit {
     selectedBarItem: NavigationMenuBarItem;
     menuCollapsedIcon = {iconName: 'arrowLineRight', iconVersion: 'v4'};
     menuExpandedIcon = {iconName: 'arrowLineLeft', iconVersion: 'v4'};
-    menuToggleButtonTooltip = 'Collapse side nav';
-
     popMenuPosition = TooltipPosition.BottomLeft;
 
     defaultCssTheme: {[key: string]: string};
