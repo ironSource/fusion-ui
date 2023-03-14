@@ -4,8 +4,8 @@ import {BehaviorSubject, fromEvent, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
-import {NavigationBarItemType, PrimaryMenuItem} from './navigation-menu.entities';
 import {MenuItem, MenuItemAdditionalData} from '@ironsource/fusion-ui/components/menu/common/base';
+import {NavigationBarItemType, PrimaryMenuItem} from './navigation-menu.entities';
 import {NavigationPrimaryMenuComponent} from './navigation-primary-menu/navigation-primary-menu.component';
 import {NavigationSecondaryMenuComponent} from './navigation-secondary-menu/navigation-secondary-menu.component';
 
