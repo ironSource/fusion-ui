@@ -33,6 +33,7 @@ $secondaryMenuItemNewTabIconSize: 16px;
         top: 0;
         left: $primaryMenuWidth;
         height: 100vh;
+        z-index: getZIndexLayerOffset(application, 3);
     }
 
     .fu-secondary-menu-holder {
@@ -154,7 +155,6 @@ $secondaryMenuItemNewTabIconSize: 16px;
                             @extend %font-body-1;
                         }
                     }
-
                 }
             }
 

@@ -8,7 +8,7 @@ $navBarIconSize: 24px;
 :host{
     @extend %reset;
     display: block;
-    height: 100%;
+    height: 100vh;
     width: 64px;
     background-color: var(--fu-navbar-background-color, $fu-nav-primary-unity);
 
@@ -27,6 +27,9 @@ $navBarIconSize: 24px;
             &.fu-home{
                 height: 64px;
                 margin-bottom: 8px;
+                .fu-navigation-bar-button:hover{
+                    cursor: pointer;
+                }
             }
             &.fu-network{
                 height: 80px;
@@ -85,7 +88,6 @@ $navBarIconSize: 24px;
 
             &:hover{
                 background-color: var(--fu-navbar-button-hover-background-color, $fu-nav-menu-white-20);
-                cursor: pointer;
                 @include icon-style('fu-navigation-bar-button-icon', $fu-nav-menu-white-100, $navBarIconSize, true, true)
             }
             &.fu-selected{
@@ -102,8 +104,11 @@ $navBarIconSize: 24px;
                 background-color: var(--fu-navbar-button-toggle-hover-background-color, $fu-nav-menu-white-12);
                 &:hover{
                     background-color: var(--fu-navbar-button-toggle-hover-background-color, $fu-nav-menu-white-20);
+                    cursor: pointer;
                 }
-
+            }
+            &.fu-with-pop-menu{
+                cursor: pointer;
             }
         }
     }

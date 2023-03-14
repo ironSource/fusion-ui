@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BehaviorSubject} from 'rxjs';
-import {NavigationMenuBarItem, NavigationMenuComponent} from '@ironsource/fusion-ui/components/navigation-menu/v4';
+import {PrimaryMenuItem, NavigationMenuComponent} from '@ironsource/fusion-ui/components/navigation-menu/v4';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
 import {LayoutConfiguration, LayoutHeaderConfiguration} from './layout.entities';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
@@ -27,13 +27,13 @@ export class LayoutComponent implements OnInit {
     @Output() menuItemClick = new EventEmitter<MenuItem>();
 
     loading$ = new BehaviorSubject<boolean>(false);
-    navigationMenu$ = new BehaviorSubject<NavigationMenuBarItem[]>([]);
+    navigationMenu$ = new BehaviorSubject<PrimaryMenuItem[]>([]);
     layoutUser: LayoutUser;
 
     headerConfiguration: LayoutHeaderConfiguration;
 
     // todo: remove this header-title update
-    title: string = 'Home';
+    title$ = new BehaviorSubject<string>('Dashboard');
 
     constructor() {}
 
@@ -43,6 +43,6 @@ export class LayoutComponent implements OnInit {
         this.menuItemClick.emit(item);
 
         // todo: remove this header-title update
-        this.title = item.name;
+        this.title$.next(item.name);
     }
 }

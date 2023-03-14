@@ -6,6 +6,7 @@ import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {BehaviorSubject} from 'rxjs';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {secondaryMenuItem} from './navigation-secondary-menu.entities';
+import {PrimaryMenuItem} from '@ironsource/fusion-ui/components/navigation-menu/v4';
 
 @Component({
     selector: 'fusion-navigation-secondary-menu',
@@ -24,6 +25,7 @@ export class NavigationSecondaryMenuComponent implements OnInit {
     get menuItems(): secondaryMenuItem[] {
         return this._menuItems;
     }
+    @Input() primaryMenuItem: PrimaryMenuItem;
     @Input() menuName: string;
     @Input() menuLogoSrc: string;
 

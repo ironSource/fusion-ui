@@ -1,4 +1,4 @@
-import {NavigationBarItemType, NavigationMenuBarItem} from '../navigation-menu.entities';
+import {NavigationBarItemType, PrimaryMenuItem} from '../navigation-menu.entities';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 
 export const USER_PROFILE_MENU_ITEMS: MenuItem[] = [
@@ -278,6 +278,10 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
             {
                 name: 'Manage Rule',
                 route: '/Manage+Rule'
+            },
+            {
+                name: 'UX Personalization',
+                route: '/UX+Personalization'
             }
         ]
     }
@@ -285,7 +289,7 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
 
 export const IS_MENU_ITEMS: MenuItem[] = [
     {
-        name: 'Mediation',
+        name: 'Monetize',
         isGroupName: true
     },
     {
@@ -347,14 +351,33 @@ export const IS_MENU_ITEMS: MenuItem[] = [
                 route: '/Optimizer'
             }
         ]
+    },
+    {
+        icon: {iconName: 'chart_line_up', iconVersion: 'v4'},
+        name: 'Reports',
+        children: [
+            {
+                name: 'Overview',
+                route: '/overview'
+            },
+            {
+                name: 'Analysis',
+                route: '/analysis'
+            },
+            {
+                name: 'Budget',
+                route: '/budget'
+            }
+        ]
     }
 ];
 
-export const NAVIGATION_MENU_MOCK: NavigationMenuBarItem[] = [
+export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
     {
         type: NavigationBarItemType.Home,
         menuIcon: {iconName: 'house', iconVersion: 'v4'},
-        menuTooltip: 'Dashboard',
+        menuTitle: 'Dashboard',
+        /*menuTooltip: 'Dashboard',*/
         route: '/',
         cssTheme: {
             'fu-navbar-background-color': '#202020'

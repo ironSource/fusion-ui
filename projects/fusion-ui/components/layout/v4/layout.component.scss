@@ -20,9 +20,14 @@ $pageHeaderHeight: 64px;
                 height: $pageHeaderHeight;
                 border-bottom: solid 1px $fu-divider;
             }
-            .fu-page-content{
-
-
+            .main-content{
+                height: calc(100vh - var(--lauout-header-height, #{$pageHeaderHeight}));
+                overflow-y: auto;
+                .page-view {
+                    .app-route-content-holder{
+                        height: 100%;
+                    }
+                }
             }
         }
     }

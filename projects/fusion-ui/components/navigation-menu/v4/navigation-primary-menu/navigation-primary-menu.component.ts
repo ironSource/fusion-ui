@@ -9,7 +9,7 @@ import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
 import {TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {RepositionDirective} from '@ironsource/fusion-ui/directives/reposition';
-import {NavigationBarItemType, NavigationMenuBarItem} from '../navigation-menu.entities';
+import {NavigationBarItemType, PrimaryMenuItem} from '../navigation-menu.entities';
 import {NavigationPopMenuComponent} from '../navigation-pop-menu/navigation-pop-menu.component';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 
@@ -22,7 +22,7 @@ import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavigationPrimaryMenuComponent implements OnInit {
-    @Input() set menuBarItems(value: NavigationMenuBarItem[]) {
+    @Input() set menuBarItems(value: PrimaryMenuItem[]) {
         if (!isNullOrUndefined(value)) {
             this.parseNavigationBarItems(value);
         }
@@ -33,19 +33,21 @@ export class NavigationPrimaryMenuComponent implements OnInit {
 
     @Output() menuItemClick = new EventEmitter<MenuItem>();
 
-    @Output() primaryMenuItemClicked = new EventEmitter<NavigationMenuBarItem>();
-    @Output() primaryMenuItemMouseEnter = new EventEmitter<NavigationMenuBarItem>();
+    @Output() primaryMenuItemClicked = new EventEmitter<PrimaryMenuItem>();
+    @Output() primaryMenuItemMouseEnter = new EventEmitter<PrimaryMenuItem>();
+
     @Output() changeColorTheme = new EventEmitter<{[key: string]: string}>();
     @Output() toggleMenu = new EventEmitter();
     @Output() resetSecondaryMenu = new EventEmitter<void>();
 
-    homeItem: NavigationMenuBarItem;
+    homeItem: PrimaryMenuItem;
 
-    networkItems$ = new BehaviorSubject<NavigationMenuBarItem[]>([]);
-    bottomItems$ = new BehaviorSubject<NavigationMenuBarItem[]>([]);
+    networkItems$ = new BehaviorSubject<PrimaryMenuItem[]>([]);
+    bottomItems$ = new BehaviorSubject<PrimaryMenuItem[]>([]);
     showPopMenu$ = new BehaviorSubject<boolean>(false);
 
-    selectedBarItem: NavigationMenuBarItem;
+    selectedBarItem$ = new BehaviorSubject<PrimaryMenuItem>(null);
+
     menuCollapsedIcon = {iconName: 'arrowLineRight', iconVersion: 'v4'};
     menuExpandedIcon = {iconName: 'arrowLineLeft', iconVersion: 'v4'};
     popMenuPosition = TooltipPosition.BottomLeft;
@@ -62,9 +64,6 @@ export class NavigationPrimaryMenuComponent implements OnInit {
                 this.showPopMenu$.next(true);
                 break;
             case NavigationBarItemType.Home:
-                /*case NavigationBarItemType.Main:*/
-                this.setSelectedBarItem(item);
-                this.setColorTheme(item?.cssTheme);
                 this.primaryMenuItemClicked.emit(item);
                 break;
         }
@@ -79,7 +78,7 @@ export class NavigationPrimaryMenuComponent implements OnInit {
     onPopMenuItemClicked(menuItem) {
         this.menuItemClick.emit(menuItem);
         this.showPopMenu$.next(false);
-        this.setSelectedBarItem(null);
+        this.setSelectedPrimaryMenuItem(null);
         this.setColorTheme(null);
     }
 
@@ -91,17 +90,17 @@ export class NavigationPrimaryMenuComponent implements OnInit {
         }
     }
 
-    private setSelectedBarItem(barItem: NavigationMenuBarItem) {
-        this.selectedBarItem = barItem;
-        if (!barItem) {
+    setSelectedPrimaryMenuItem(menuItem: PrimaryMenuItem) {
+        this.selectedBarItem$.next(menuItem);
+        if (!menuItem) {
             this.resetSecondaryMenu.emit();
         }
     }
 
-    private parseNavigationBarItems(value: NavigationMenuBarItem[]) {
+    private parseNavigationBarItems(value: PrimaryMenuItem[]) {
         const networkItems = [];
         const bottomItems = [];
-        value.forEach((barItem: NavigationMenuBarItem) => {
+        value.forEach((barItem: PrimaryMenuItem) => {
             switch (barItem.type) {
                 case NavigationBarItemType.Home:
                     this.homeItem = barItem;
@@ -117,8 +116,8 @@ export class NavigationPrimaryMenuComponent implements OnInit {
                     break;
             }
         });
-        if (isNullOrUndefined(this.selectedBarItem)) {
-            this.setSelectedBarItem(this.homeItem);
+        if (isNullOrUndefined(this.selectedBarItem$.getValue())) {
+            this.setSelectedPrimaryMenuItem(this.homeItem);
         }
         this.networkItems$.next(networkItems);
         this.bottomItems$.next(bottomItems);

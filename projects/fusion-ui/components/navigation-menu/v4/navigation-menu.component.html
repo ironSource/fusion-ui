@@ -2,20 +2,20 @@
     <fusion-navigation-primary-menu #primaryMenu
         [menuBarItems]="menuItems"
         [layoutUser]="layoutUser"
-        [menuCollapsed]="secondaryMenuClosed | async"
-        (menuItemClick)="onMenuItemClicked($event)"
+        [menuCollapsed]="secondaryMenuCollapsed$ | async"
         (primaryMenuItemClicked)="onPrimaryMainMenuItemClicked($event)"
         (primaryMenuItemMouseEnter)="onPrimaryMainMenuItemMouseEnter($event)"
         (changeColorTheme)="onChangeColorTheme($event)"
         (toggleMenu)="toggleMenu()"
         (resetSecondaryMenu)="resetSecondaryMenu()"
+        (menuItemClick)="onMenuItemClicked($event)"
     ></fusion-navigation-primary-menu>
     <fusion-navigation-secondary-menu
-        [menuItems]="secondaryMenuItems | async"
-        [menuName]="secondaryMenuName | async"
-        [menuLogoSrc]="secondaryMenuLogoSrc | async"
-        [class.fu-menu-showed]="(secondaryMenuExpanded | async) === true"
-        [class.fu-menu-expanded]="(secondaryMenuClosed | async) === false"
+        [menuItems]="secondaryMenuItems$ | async"
+        [menuName]="secondaryMenuName$ | async"
+        [menuLogoSrc]="secondaryMenuLogoSrc$ | async"
+        [class.fu-menu-showed]="secondaryMenuShowed$ | async"
+        [class.fu-menu-expanded]="(secondaryMenuCollapsed$ | async) === false"
         (menuItemClick)="onMenuItemClicked($event)"
     ></fusion-navigation-secondary-menu>
 </div>

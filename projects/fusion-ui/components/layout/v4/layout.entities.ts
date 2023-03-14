@@ -1,9 +1,9 @@
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
-import {NavigationMenuBarItem} from '@ironsource/fusion-ui/components/navigation-menu/v4';
+import {PrimaryMenuItem} from '@ironsource/fusion-ui/components/navigation-menu/v4';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 
 export interface LayoutConfiguration {
-    navigationMenuItems?: NavigationMenuBarItem[];
+    navigationMenuItems?: PrimaryMenuItem[];
     layoutUser?: LayoutUser;
 }
 

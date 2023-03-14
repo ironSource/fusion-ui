@@ -13,7 +13,7 @@ $menuItemHoverColor: #F5F5F5;
     @extend %reset;
     display: block;
     position: absolute;
-    z-index: getZIndexLayerOffset(application, 1);
+    z-index: getZIndexLayerOffset(application, 4);
     bottom: 0;
     left: 0;
     .fu-pop-menu{
