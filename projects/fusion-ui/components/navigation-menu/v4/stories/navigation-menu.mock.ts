@@ -327,7 +327,7 @@ export const IS_MENU_ITEMS: MenuItem[] = [
         ]
     },
     {
-        name: 'Promote',
+        name: 'Grow',
         isGroupName: true
     },
     {
