@@ -27,17 +27,14 @@ export class NavigationMenuComponent implements OnInit {
     @Output() menuItemClicked = new EventEmitter<MenuItem>();
 
     secondaryMenuItems$ = new BehaviorSubject<MenuItem[]>([]);
-
     secondaryMenuName$ = new BehaviorSubject<string>('');
     secondaryMenuLogoSrc$ = new BehaviorSubject<string>('');
-
     secondaryMenuCollapsed$ = new BehaviorSubject<boolean>(true);
     secondaryMenuShowed$ = new BehaviorSubject<boolean>(false);
 
     private onDestroy$ = new Subject<void>();
-    private isSecondaryMenuExpandable = true; // for secondary menu
+    private isSecondaryMenuExpandable = true;
     private preSelectedPrimaryMenuItem: PrimaryMenuItem;
-
     private selectedPrimaryMenuItem: PrimaryMenuItem;
     private selectedSecondaryMenuItem: MenuItem;
 
