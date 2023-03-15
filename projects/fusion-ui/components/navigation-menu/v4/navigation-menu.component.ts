@@ -109,7 +109,6 @@ export class NavigationMenuComponent implements OnInit {
     private setPrimaryItemAndOpenSecondaryMenu() {
         this.primaryMenu.setSelectedPrimaryMenuItem(this.selectedPrimaryMenuItem);
         this.secondaryMenuCollapsed$.next(false);
-        this.secondaryMenuShowed$.next(true);
     }
 
     private setSecondaryMenu(selectedNetwork: PrimaryMenuItem) {
