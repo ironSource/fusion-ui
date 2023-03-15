@@ -1,16 +1,12 @@
 import {Story, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
-import {action} from '@storybook/addon-actions';
 import {CommonModule} from '@angular/common';
 import {LayoutComponent} from '../layout.component';
 import {NAVIGATION_MENU_MOCK} from '@ironsource/fusion-ui/components/navigation-menu/v4/stories/navigation-menu.mock';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
-
-const actionsData = {
-    onMenuItemClick: action('onMenuItemClick')
-};
+import {LayoutStoryWrapperComponent} from './layout-story-wrapper.component';
 
 export default {
     title: 'Components/Layout',
@@ -18,7 +14,7 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule]
+            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, LayoutStoryWrapperComponent]
         })
     ],
     parameters: {
@@ -28,7 +24,7 @@ export default {
         },
         docs: {
             description: {
-                component: '***Navigation Bar*** is a part of main navigation menu'
+                component: '***Layout v4*** description will be here'
             }
         },
         layout: 'fullscreen'
@@ -45,11 +41,8 @@ export default {
 } as Meta<LayoutComponent>;
 
 const DefaultTemplate: Story<LayoutComponent> = (args: LayoutComponent) => ({
-    props: {...args, onMenuItemClick: actionsData.onMenuItemClick},
-    template: `<fusion-layout
-        [configuration]="layoutConfiguration"
-        (menuItemClick)="onMenuItemClick($event)"
-    ></fusion-layout>
+    props: {...args},
+    template: `<fusion-layout-story-wrapper [layoutConfiguration]="layoutConfiguration"></fusion-layout-story-wrapper>
 `
 });
 
