@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {BehaviorSubject} from 'rxjs';
 import {PrimaryMenuItem, NavigationMenuComponent} from '@ironsource/fusion-ui/components/navigation-menu/v4';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
-import {LayoutConfiguration, LayoutHeaderConfiguration} from './layout.entities';
+import {HeaderState, LayoutConfiguration} from './layout.entities';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 import {LayoutHeaderComponent} from './components/layout-header/layout-header.component';
 
@@ -30,7 +30,7 @@ export class LayoutComponent implements OnInit {
     navigationMenu$ = new BehaviorSubject<PrimaryMenuItem[]>([]);
     layoutUser: LayoutUser;
 
-    headerConfiguration: LayoutHeaderConfiguration;
+    headerState: HeaderState;
 
     // todo: remove this header-title update
     title$ = new BehaviorSubject<string>('Dashboard');

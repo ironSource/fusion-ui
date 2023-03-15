@@ -1,19 +1,15 @@
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
 import {PrimaryMenuItem} from '@ironsource/fusion-ui/components/navigation-menu/v4';
-import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
+import {Type} from '@angular/core';
 
 export interface LayoutConfiguration {
     navigationMenuItems?: PrimaryMenuItem[];
     layoutUser?: LayoutUser;
 }
 
-export interface LayoutHeaderContentTitle {
-    text: string;
-    content?: DynamicComponentConfiguration;
-    type?: 'static' | 'page' | 'fixed';
-}
-
-export interface LayoutHeaderConfiguration {
-    title?: LayoutHeaderContentTitle;
-    content?: DynamicComponentConfiguration; // header dynamic content
+export interface HeaderState {
+    title?: string;
+    actionComponent?: Type<any>;
+    actionData?: any;
+    element?: Node;
 }

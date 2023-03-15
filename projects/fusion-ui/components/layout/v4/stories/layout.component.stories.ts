@@ -1,11 +1,16 @@
 import {Story, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
+import {action} from '@storybook/addon-actions';
 import {CommonModule} from '@angular/common';
 import {LayoutComponent} from '../layout.component';
 import {NAVIGATION_MENU_MOCK} from '@ironsource/fusion-ui/components/navigation-menu/v4/stories/navigation-menu.mock';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+
+const actionsData = {
+    onMenuItemClick: action('onMenuItemClick')
+};
 
 export default {
     title: 'Components/Layout',
@@ -29,7 +34,7 @@ export default {
         layout: 'fullscreen'
     },
     args: {
-        configuration: {
+        layoutConfiguration: {
             navigationMenuItems: NAVIGATION_MENU_MOCK,
             layoutUser: {
                 name: 'Jonny Kim',
@@ -40,7 +45,12 @@ export default {
 } as Meta<LayoutComponent>;
 
 const DefaultTemplate: Story<LayoutComponent> = (args: LayoutComponent) => ({
-    props: args
+    props: {...args, onMenuItemClick: actionsData.onMenuItemClick},
+    template: `<fusion-layout
+        [configuration]="layoutConfiguration"
+        (menuItemClick)="onMenuItemClick($event)"
+    ></fusion-layout>
+`
 });
 
 export const Default = DefaultTemplate.bind({});
