@@ -3,6 +3,7 @@ import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dy
 import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
 
 export interface MenuItem {
+    id?: string;
     icon?: IconData;
     name: string;
     route?: string;

@@ -9,6 +9,7 @@ export enum NavigationBarItemType {
 }
 
 export interface PrimaryMenuItem {
+    id?: string;
     type: NavigationBarItemType;
     menuIcon?: IconData;
     menuIconPath?: string; // instead menuIcon it use fusion-svg component
