@@ -7,9 +7,14 @@ export interface LayoutConfiguration {
     layoutUser?: LayoutUser;
 }
 
-export interface HeaderState {
+export interface TeleportWrapperElement {
+    id: string; // must be unique value
+    isOnRight?: boolean; // will align to right
+}
+
+export interface HeaderContent {
     title?: string;
     actionComponent?: Type<any>;
     actionData?: any;
-    element?: Node;
+    teleportElements?: TeleportWrapperElement[];
 }
