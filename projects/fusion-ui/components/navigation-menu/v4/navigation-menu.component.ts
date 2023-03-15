@@ -68,13 +68,11 @@ export class NavigationMenuComponent implements OnInit {
     }
 
     onNavigationMenuMouseLeave() {
-        if (this.needRestoreSelectedState) {
-            this.primaryMenu.setColorTheme(this.selectedPrimaryMenuItem?.cssTheme ?? null);
-        }
         if (this.isSecondaryMenuExpandable) {
             this.secondaryMenuShowed$.next(false);
             this.secondaryMenuCollapsed$.next(true);
-        } else if (this.needRestoreSelectedState) {
+        }
+        if (this.needRestoreSelectedState) {
             this.setSecondaryMenu(this.selectedPrimaryMenuItem);
         }
     }
@@ -112,7 +110,7 @@ export class NavigationMenuComponent implements OnInit {
     }
 
     private setSecondaryMenu(selectedNetwork: PrimaryMenuItem) {
-        if (selectedNetwork.type === NavigationBarItemType.Main) {
+        if (selectedNetwork.type === NavigationBarItemType.Main || selectedNetwork.type === NavigationBarItemType.Home) {
             this.secondaryMenuItems$.next(selectedNetwork?.menuItems ?? []);
             this.secondaryMenuName$.next(selectedNetwork?.menuTitle ?? '');
             this.secondaryMenuLogoSrc$.next(selectedNetwork?.menuLogoSrc ?? '');
