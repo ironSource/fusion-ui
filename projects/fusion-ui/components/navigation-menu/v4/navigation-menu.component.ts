@@ -70,7 +70,7 @@ export class NavigationMenuComponent implements OnInit {
             this.secondaryMenuCollapsed$.next(true);
         }
         if (this.needRestoreSelectedState) {
-            this.setSecondaryMenu(this.selectedPrimaryMenuItem);
+            this.setSecondaryMenu(this.selectedPrimaryMenuItem, false);
         }
     }
 
@@ -106,15 +106,17 @@ export class NavigationMenuComponent implements OnInit {
         this.secondaryMenuCollapsed$.next(false);
     }
 
-    private setSecondaryMenu(selectedNetwork: PrimaryMenuItem) {
+    private setSecondaryMenu(selectedNetwork: PrimaryMenuItem, setSecondaryMenuCollapseState = true) {
         if (selectedNetwork.type === NavigationBarItemType.Main || selectedNetwork.type === NavigationBarItemType.Home) {
             this.secondaryMenuItems$.next(selectedNetwork?.menuItems ?? []);
             this.secondaryMenuName$.next(selectedNetwork?.menuTitle ?? '');
             this.secondaryMenuLogoSrc$.next(selectedNetwork?.menuLogoSrc ?? '');
             this.preSelectedPrimaryMenuItem = selectedNetwork;
         }
-        this.secondaryMenuCollapsed$.next(selectedNetwork.type !== NavigationBarItemType.Main);
         this.primaryMenu.setColorTheme(selectedNetwork?.cssTheme ?? null);
+        if (setSecondaryMenuCollapseState) {
+            this.secondaryMenuCollapsed$.next(selectedNetwork.type !== NavigationBarItemType.Main);
+        }
     }
 
     private setNetworkTheme(theme: {[key: string]: string}) {
