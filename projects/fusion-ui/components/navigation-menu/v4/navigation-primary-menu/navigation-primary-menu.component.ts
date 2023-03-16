@@ -29,7 +29,7 @@ export class NavigationPrimaryMenuComponent implements OnInit {
     }
 
     @Input() layoutUser: LayoutUser;
-    @Input() menuCollapsed = false;
+    @Input() menuOpened = false;
 
     @Output() menuItemClick = new EventEmitter<MenuItem>();
 
@@ -58,12 +58,14 @@ export class NavigationPrimaryMenuComponent implements OnInit {
 
     ngOnInit(): void {}
 
-    networkItemClicked(item) {
+    networkItemClicked(item: PrimaryMenuItem) {
         switch (item?.type) {
             case NavigationBarItemType.User:
                 this.showPopMenu$.next(true);
                 break;
             case NavigationBarItemType.Home:
+            case NavigationBarItemType.Main:
+                this.setColorTheme(item.cssTheme);
                 this.primaryMenuItemClicked.emit(item);
                 break;
         }

@@ -40,6 +40,9 @@ $navBarIconSize: 24px;
                     .fu-navigation-bar-button-icon-wrapper{
                         @include size($navBarIconSize);
                     }
+                    &:hover{
+                        cursor: pointer;
+                    }
                 }
             }
             &.fu-bottom-block{
