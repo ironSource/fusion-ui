@@ -87,6 +87,9 @@ export class NavigationMenuComponent implements OnInit {
 
     onPrimaryMainMenuItemMouseEnter(selectedNetwork: PrimaryMenuItem) {
         this.preSelectedPrimaryMenuItem = selectedNetwork;
+
+        this.primaryMenu.setColorTheme(selectedNetwork?.cssTheme ?? null);
+
         if (selectedNetwork.type === NavigationBarItemType.Main) {
             this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, true);
             this.setSecondaryMenu(selectedNetwork);
