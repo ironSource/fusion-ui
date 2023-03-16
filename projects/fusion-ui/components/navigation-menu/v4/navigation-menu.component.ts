@@ -65,6 +65,9 @@ export class NavigationMenuComponent implements OnInit {
         fromEvent(this.elementRef.nativeElement, 'mouseleave')
             .pipe(takeUntil(this.onDestroy$))
             .subscribe(this.onNavigationMenuMouseLeave.bind(this));
+
+        // pre-select first
+        this.selectedPrimaryMenuItem = this.menuItems[0];
     }
 
     onMenuItemClicked(menuItem, popMenuItem = false) {
@@ -97,6 +100,7 @@ export class NavigationMenuComponent implements OnInit {
     }
 
     onNavigationMenuMouseLeave() {
+        console.log('!!!!', this.selectedPrimaryMenuItem);
         if (this.needRestoreSelectedState) {
             this.setSecondaryMenu(this.selectedPrimaryMenuItem);
             this.primaryMenu.setColorTheme(this.selectedPrimaryMenuItem?.cssTheme ?? null);
