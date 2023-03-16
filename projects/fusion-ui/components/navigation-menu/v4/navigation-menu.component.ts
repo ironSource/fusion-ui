@@ -67,7 +67,7 @@ export class NavigationMenuComponent implements OnInit {
             .subscribe(this.onNavigationMenuMouseLeave.bind(this));
 
         // pre-select first
-        this.selectedPrimaryMenuItem = this.menuItems[0];
+        this.selectedPrimaryMenuItem = this.menuItems?.length ? this.menuItems[0] : null;
     }
 
     onMenuItemClicked(menuItem, popMenuItem = false) {
