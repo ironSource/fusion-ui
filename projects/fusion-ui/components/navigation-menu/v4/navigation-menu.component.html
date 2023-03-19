@@ -9,11 +9,10 @@
         (resetSecondaryMenu)="resetSecondaryMenu()"
         (menuItemClick)="onMenuItemClicked($event, true)"
     ></fusion-navigation-primary-menu>
-    <fusion-navigation-secondary-menu
+    <fusion-navigation-secondary-menu #secondaryMenu
         [menuItems]="secondaryMenuItems$ | async"
         [menuName]="secondaryMenuName$ | async"
         [menuLogoSrc]="secondaryMenuLogoSrc$ | async"
-        [selectedMenuItem]="secondaryMenuItemSelected$ | async"
         [class.fu-menu-expanded]="secondaryMenuExpanded$ | async"
         [class.fu-menu-open]="(secondaryMenuOpen$ | async)"
         (menuItemClick)="onMenuItemClicked($event)"

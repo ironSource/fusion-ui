@@ -25,9 +25,6 @@ export class NavigationSecondaryMenuComponent implements OnInit {
     get menuItems(): secondaryMenuItem[] {
         return this._menuItems;
     }
-    @Input() set selectedMenuItem(value: MenuItem) {
-        this.selectedMenuItem$.next(value);
-    }
     @Input() menuName: string;
     @Input() menuLogoSrc: string;
 
@@ -51,6 +48,10 @@ export class NavigationSecondaryMenuComponent implements OnInit {
         } else {
             this.toggleChildItems($event, menuItem);
         }
+    }
+
+    setSelected(menuItem: secondaryMenuItem) {
+        this.selectedMenuItem$.next(menuItem);
     }
 
     private toggleChildItems($event, menuItem: secondaryMenuItem) {
