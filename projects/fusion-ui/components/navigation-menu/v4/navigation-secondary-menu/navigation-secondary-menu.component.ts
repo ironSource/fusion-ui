@@ -25,6 +25,9 @@ export class NavigationSecondaryMenuComponent implements OnInit {
     get menuItems(): secondaryMenuItem[] {
         return this._menuItems;
     }
+    @Input() set selectedMenuItem(value: MenuItem) {
+        this.selectedMenuItem$.next(value);
+    }
     @Input() menuName: string;
     @Input() menuLogoSrc: string;
 

@@ -39,6 +39,7 @@ export class NavigationMenuComponent implements OnInit {
 
     secondaryMenuOpen$ = new BehaviorSubject<boolean>(this.cacheService.get(CacheType.SessionStorage, MENU_CACHE_KEY) ?? false);
     secondaryMenuExpanded$ = new BehaviorSubject<boolean>(false);
+    secondaryMenuItemSelected$ = new BehaviorSubject<MenuItem>(null);
 
     private onDestroy$ = new Subject<void>();
     private preSelectedPrimaryMenuItem: PrimaryMenuItem;
@@ -112,6 +113,9 @@ export class NavigationMenuComponent implements OnInit {
             this.primaryMenu.setSelectedPrimaryMenuItem(this.selectedPrimaryMenuItem);
             this.menuItemClicked.emit({name: selectedNetwork.menuTitle, route: selectedNetwork.route});
         } else {
+            if (this.selectedPrimaryMenuItem === selectedNetwork && !isNullOrUndefined(this.selectedSecondaryMenuItem)) {
+                this.secondaryMenuItemSelected$.next(this.selectedSecondaryMenuItem);
+            }
             this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, true);
         }
     }

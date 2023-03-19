@@ -13,6 +13,7 @@
         [menuItems]="secondaryMenuItems$ | async"
         [menuName]="secondaryMenuName$ | async"
         [menuLogoSrc]="secondaryMenuLogoSrc$ | async"
+        [selectedMenuItem]="secondaryMenuItemSelected$ | async"
         [class.fu-menu-expanded]="secondaryMenuExpanded$ | async"
         [class.fu-menu-open]="(secondaryMenuOpen$ | async)"
         (menuItemClick)="onMenuItemClicked($event)"
