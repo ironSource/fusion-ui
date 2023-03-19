@@ -107,12 +107,16 @@ $navBarIconSize: 24px;
                 background-color: var(--fu-navbar-button-hover-background-color, $fu-nav-menu-white-20);
                 @include icon-style('fu-navigation-bar-button-icon', $fu-nav-menu-white-100, $navBarIconSize, true, true)
             }
-            &.fu-selected{
+            &.fu-selected {
                 border: solid 1px var(--fu-navbar-button-selected-border-color, $fu-nav-menu-white-20);
                 background-color: var(--fu-navbar-button-hover-background-color, $fu-nav-menu-white-20);
                 @include icon-style('fu-navigation-bar-button-icon', $fu-nav-menu-white-100, $navBarIconSize, true, true);
-                &:hover{
+
+                &:hover {
                     cursor: default;
+                }
+                & + .fu-navigation-bar-network-name {
+                    color: var(--fu-navbar-text-color, $fu-nav-menu-white-100);
                 }
             }
             &.fu-menu-toggle{
