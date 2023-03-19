@@ -41,6 +41,8 @@ export class NavigationMenuComponent implements OnInit {
     secondaryMenuOpen$ = new BehaviorSubject<boolean>(this.cacheService.get(CacheType.SessionStorage, MENU_CACHE_KEY) ?? false);
     secondaryMenuExpanded$ = new BehaviorSubject<boolean>(false);
 
+    menuOpenForPrimaryMenuItem$ = new BehaviorSubject<PrimaryMenuItem>(null);
+
     private onDestroy$ = new Subject<void>();
     private preSelectedPrimaryMenuItem: PrimaryMenuItem;
     private selectedPrimaryMenuItem: PrimaryMenuItem;
@@ -114,11 +116,6 @@ export class NavigationMenuComponent implements OnInit {
             this.menuItemClicked.emit({name: selectedNetwork.menuTitle, route: selectedNetwork.route});
         } else {
             this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, true);
-            if (this.selectedPrimaryMenuItem === selectedNetwork && !isNullOrUndefined(this.selectedSecondaryMenuItem)) {
-                setTimeout(() => {
-                    this.secondaryMenu.setSelected(this.selectedSecondaryMenuItem);
-                });
-            }
         }
     }
 
@@ -137,10 +134,21 @@ export class NavigationMenuComponent implements OnInit {
         this.secondaryMenuLogoSrc$.next('');
     }
 
-    private setSecondaryMenu(selectedNetwork: PrimaryMenuItem, setSecondaryMenuCollapseState = true) {
+    private setSecondaryMenu(selectedNetwork: PrimaryMenuItem) {
         this.secondaryMenuItems$.next(selectedNetwork?.menuItems ?? []);
         this.secondaryMenuName$.next(selectedNetwork?.menuTitle ?? '');
         this.secondaryMenuLogoSrc$.next(selectedNetwork?.menuLogoSrc ?? '');
+
+        this.menuOpenForPrimaryMenuItem$.next(selectedNetwork);
+        this.selectSecondaryMenuItem(selectedNetwork);
+    }
+
+    private selectSecondaryMenuItem(selectedNetwork: PrimaryMenuItem) {
+        if (this.selectedPrimaryMenuItem === selectedNetwork && !isNullOrUndefined(this.selectedSecondaryMenuItem)) {
+            setTimeout(() => {
+                this.secondaryMenu.setSelected(this.selectedSecondaryMenuItem);
+            });
+        }
     }
 
     private setSecondaryMenuVisibilityState(showed: boolean, open: boolean) {
