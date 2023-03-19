@@ -19,6 +19,7 @@ export class NavigationSecondaryMenuComponent implements OnInit {
     @Input() set menuItems(value: MenuItem[]) {
         if (Array.isArray(value)) {
             this._menuItems = [...value];
+            this.selectedMenuItem$.next(null);
         }
     }
     get menuItems(): secondaryMenuItem[] {
