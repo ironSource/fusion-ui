@@ -96,7 +96,6 @@ $navBarIconSize: 24px;
             &.fu-selected{
                 border: solid 1px var(--fu-navbar-button-selected-border-color, $fu-nav-menu-white-20);
                 background-color: var(--fu-navbar-button-hover-background-color, $fu-nav-menu-white-20);
-                pointer-events: none;
                 @include icon-style('fu-navigation-bar-button-icon', $fu-nav-menu-white-100, $navBarIconSize, true, true);
                 &:hover{
                     cursor: default;
