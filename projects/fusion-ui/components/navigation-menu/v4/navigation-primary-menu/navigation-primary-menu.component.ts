@@ -64,6 +64,7 @@ export class NavigationPrimaryMenuComponent implements OnInit {
         switch (item?.type) {
             case NavigationBarItemType.User:
                 this.showPopMenu$.next(true);
+                this.primaryMenuItemClicked.emit(null);
                 break;
             case NavigationBarItemType.Home:
                 this.setColorTheme(item.cssTheme);

@@ -107,15 +107,19 @@ export class NavigationMenuComponent implements OnInit {
     }
 
     onPrimaryMainMenuItemClicked(selectedNetwork: PrimaryMenuItem) {
-        this.preSelectedPrimaryMenuItem = selectedNetwork;
-        this.setSecondaryMenu(selectedNetwork);
-        if (!isNullOrUndefined(selectedNetwork.route)) {
-            this.setSecondaryMenuVisibilityState(false, false);
-            this.selectedPrimaryMenuItem = this.preSelectedPrimaryMenuItem;
-            this.primaryMenu.setSelectedPrimaryMenuItem(this.selectedPrimaryMenuItem);
-            this.menuItemClicked.emit({name: selectedNetwork.menuTitle, route: selectedNetwork.route});
+        if (isNullOrUndefined(selectedNetwork)) {
+            this.onNavigationMenuMouseLeave();
         } else {
-            this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, true);
+            this.preSelectedPrimaryMenuItem = selectedNetwork;
+            this.setSecondaryMenu(selectedNetwork);
+            if (!isNullOrUndefined(selectedNetwork.route)) {
+                this.setSecondaryMenuVisibilityState(false, false);
+                this.selectedPrimaryMenuItem = this.preSelectedPrimaryMenuItem;
+                this.primaryMenu.setSelectedPrimaryMenuItem(this.selectedPrimaryMenuItem);
+                this.menuItemClicked.emit({name: selectedNetwork.menuTitle, route: selectedNetwork.route});
+            } else {
+                this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, true);
+            }
         }
     }
 
