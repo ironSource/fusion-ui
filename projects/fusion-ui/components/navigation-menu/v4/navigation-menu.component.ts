@@ -65,6 +65,10 @@ export class NavigationMenuComponent implements OnInit {
         fromEvent(this.elementRef.nativeElement, 'mouseleave')
             .pipe(takeUntil(this.onDestroy$))
             .subscribe(this.onNavigationMenuMouseLeave.bind(this));
+
+        if (this.selectedPrimaryMenuItem?.type !== NavigationBarItemType.Main && this.secondaryMenuOpen$.getValue()) {
+            this.secondaryMenuOpen$.next(false);
+        }
     }
 
     onMenuItemClicked(menuItem, popMenuItem = false) {
@@ -83,14 +87,6 @@ export class NavigationMenuComponent implements OnInit {
             this.setSecondaryMenuVisibilityState(false, false);
         }
         this.menuItemClicked.emit(menuItem);
-    }
-
-    onPrimaryMainMenuItemMouseEnter(selectedNetwork: PrimaryMenuItem) {
-        this.preSelectedPrimaryMenuItem = selectedNetwork;
-        if (selectedNetwork.type === NavigationBarItemType.Main) {
-            this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, true);
-            this.setSecondaryMenu(selectedNetwork);
-        }
     }
 
     onNavigationMenuMouseLeave() {
