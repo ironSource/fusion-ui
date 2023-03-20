@@ -35,6 +35,7 @@ export class NavigationPrimaryMenuComponent implements OnInit {
     @Output() menuItemClick = new EventEmitter<MenuItem>();
 
     @Output() primaryMenuItemClicked = new EventEmitter<PrimaryMenuItem>();
+    @Output() primaryMenuItemMouseEnter = new EventEmitter<PrimaryMenuItem>();
 
     @Output() changeColorTheme = new EventEmitter<{[key: string]: string}>();
     @Output() toggleMenu = new EventEmitter();

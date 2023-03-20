@@ -5,6 +5,7 @@
         [menuOpened]="secondaryMenuOpen$ | async"
         [menuOpenForPrimaryMenuItem]="menuOpenForPrimaryMenuItem$ | async"
         (primaryMenuItemClicked)="onPrimaryMainMenuItemClicked($event)"
+        (primaryMenuItemMouseEnter)="onPrimaryMainMenuItemMouseEnter($event)"
         (changeColorTheme)="onChangeColorTheme($event)"
         (toggleMenu)="toggleMenu()"
         (resetSecondaryMenu)="resetSecondaryMenu()"

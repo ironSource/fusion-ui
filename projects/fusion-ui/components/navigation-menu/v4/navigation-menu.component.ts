@@ -92,6 +92,12 @@ export class NavigationMenuComponent implements OnInit {
         this.menuItemClicked.emit(menuItem);
     }
 
+    onPrimaryMainMenuItemMouseEnter(selectedNetwork: PrimaryMenuItem) {
+        if (this.isSecondaryMenuExpandable) {
+            this.onPrimaryMainMenuItemClicked(selectedNetwork);
+        }
+    }
+
     onNavigationMenuMouseLeave() {
         if (this.needRestoreSelectedState) {
             this.setSecondaryMenu(this.selectedPrimaryMenuItem);

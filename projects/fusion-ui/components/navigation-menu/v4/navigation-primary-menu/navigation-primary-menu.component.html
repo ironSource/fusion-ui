@@ -6,7 +6,7 @@
     <!--endregion home item-->
     <!--region main items-->
     <ng-container *ngIf="(networkItems$ | async) as networkItems">
-        <div class="fu-navigation-bar-item fu-network" *ngFor="let networkItem of networkItems" [fusionTooltip]="networkItem.menuTooltip" >
+        <div class="fu-navigation-bar-item fu-network" *ngFor="let networkItem of networkItems" [fusionTooltip]="networkItem.menuTooltip" (mouseenter)="primaryMenuItemMouseEnter.emit(networkItem)">
             <ng-container [ngTemplateOutlet]="navigationButton" [ngTemplateOutletContext]="{item: networkItem, selectedItem: (networkItem === (selectedBarItem$ |async))}"></ng-container>
             <div *ngIf="networkItem.menuTitle" class="fu-navigation-bar-network-name">{{networkItem.menuTitle}}</div>
         </div>
