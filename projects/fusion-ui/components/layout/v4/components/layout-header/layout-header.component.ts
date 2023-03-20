@@ -1,24 +1,22 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components/v1';
+import {HeaderContent} from '../../layout.entities';
 
 @Component({
     selector: 'fusion-layout-header',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, DynamicComponentsModule],
     templateUrl: './layout-header.component.html',
     styleUrls: ['./layout-header.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LayoutHeaderComponent implements OnInit {
-    @Input() set title(value: string) {
-        this._title = value;
+export class LayoutHeaderComponent {
+    @Input() set headerContent(value: HeaderContent) {
+        this._headerContent = value;
     }
-    get title(): string {
-        return this._title;
+    get headerContent(): HeaderContent {
+        return this._headerContent;
     }
-    private _title: string;
-
-    constructor() {}
-
-    ngOnInit(): void {}
+    private _headerContent: HeaderContent;
 }

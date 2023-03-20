@@ -29,12 +29,12 @@ export class NavigationPrimaryMenuComponent implements OnInit {
     }
 
     @Input() layoutUser: LayoutUser;
-    @Input() menuCollapsed = false;
+    @Input() menuOpened = false;
+    @Input() menuOpenForPrimaryMenuItem: PrimaryMenuItem;
 
     @Output() menuItemClick = new EventEmitter<MenuItem>();
 
     @Output() primaryMenuItemClicked = new EventEmitter<PrimaryMenuItem>();
-    @Output() primaryMenuItemMouseEnter = new EventEmitter<PrimaryMenuItem>();
 
     @Output() changeColorTheme = new EventEmitter<{[key: string]: string}>();
     @Output() toggleMenu = new EventEmitter();
@@ -52,19 +52,27 @@ export class NavigationPrimaryMenuComponent implements OnInit {
     menuExpandedIcon = {iconName: 'arrowLineLeft', iconVersion: 'v4'};
     popMenuPosition = TooltipPosition.BottomLeft;
 
+    private primaryMenuOpenedItem: PrimaryMenuItem;
+
     defaultCssTheme: {[key: string]: string};
 
     constructor() {}
 
     ngOnInit(): void {}
 
-    networkItemClicked(item) {
+    networkItemClicked(item: PrimaryMenuItem) {
         switch (item?.type) {
             case NavigationBarItemType.User:
                 this.showPopMenu$.next(true);
+                this.primaryMenuItemClicked.emit(null);
                 break;
             case NavigationBarItemType.Home:
+                this.setColorTheme(item.cssTheme);
                 this.primaryMenuItemClicked.emit(item);
+                break;
+            case NavigationBarItemType.Main:
+                this.primaryMenuItemClicked.emit(item);
+                this.primaryMenuOpenedItem = item;
                 break;
         }
     }

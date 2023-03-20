@@ -2,11 +2,12 @@ import {Story, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {LayoutComponent} from '../layout.component';
-import {NAVIGATION_MENU_MOCK} from '@ironsource/fusion-ui/components/navigation-menu/v4/stories/navigation-menu.mock';
+import {HEADER_CONTENT_MOCK, NAVIGATION_MENU_MOCK} from '@ironsource/fusion-ui/components/navigation-menu/v4/stories/navigation-menu.mock';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {LayoutStoryWrapperComponent} from './layout-story-wrapper.component';
+import {HeaderContent} from '@ironsource/fusion-ui/components/layout/v4/layout.entities';
 
 export default {
     title: 'Components/Layout',
@@ -30,6 +31,7 @@ export default {
         layout: 'fullscreen'
     },
     args: {
+        headerContent: HEADER_CONTENT_MOCK,
         layoutConfiguration: {
             navigationMenuItems: NAVIGATION_MENU_MOCK,
             layoutUser: {
@@ -42,7 +44,7 @@ export default {
 
 const DefaultTemplate: Story<LayoutComponent> = (args: LayoutComponent) => ({
     props: {...args},
-    template: `<fusion-layout-story-wrapper [layoutConfiguration]="layoutConfiguration"></fusion-layout-story-wrapper>
+    template: `<fusion-layout-story-wrapper [headerContent]="headerContent" [layoutConfiguration]="layoutConfiguration"></fusion-layout-story-wrapper>
 `
 });
 

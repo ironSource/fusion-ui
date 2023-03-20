@@ -1,1 +1,11 @@
-<div class="fu-page-title">{{ title }}</div>
+<div class="fu-page-title">{{ headerContent?.title }}</div>
+<div class="fu-header-action-wrapper" *ngIf="headerContent?.actionComponent">
+    <fusion-dynamic-components
+        [component]="headerContent.actionComponent"
+        [componentData]="headerContent.actionData">
+    </fusion-dynamic-components>
+</div>
+<ng-container *ngIf="headerContent?.teleportElements?.length">
+    <div class="fu-header"></div>
+</ng-container>
+

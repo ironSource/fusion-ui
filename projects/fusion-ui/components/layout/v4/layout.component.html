@@ -11,13 +11,15 @@
     <div class="fu-main-page">
         <!--main header-->
         <div class="fu-page-header">
-            <fusion-layout-header [title]="title$ | async"></fusion-layout-header>
+            <fusion-layout-header
+                [headerContent]="headerContent"
+            ></fusion-layout-header>
         </div>
         <!--main header-->
         <!--main content-->
         <div #mainContent class="main-content" id="main-view">
             <div class="page-view">
-                <div class="app-route-content-holder" [hidden]="loading$ | async">
+                <div class="app-route-content-holder">
                     <ng-content></ng-content>
                 </div>
             </div>

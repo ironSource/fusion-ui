@@ -19,6 +19,7 @@ export class NavigationSecondaryMenuComponent implements OnInit {
     @Input() set menuItems(value: MenuItem[]) {
         if (Array.isArray(value)) {
             this._menuItems = [...value];
+            this.selectedMenuItem$.next(null);
         }
     }
     get menuItems(): secondaryMenuItem[] {
@@ -31,7 +32,6 @@ export class NavigationSecondaryMenuComponent implements OnInit {
 
     itemChildToggleIcon: IconData = {iconName: 'caret_right', iconVersion: 'v4'};
     itemNewTabIcon: IconData = {iconName: 'arrow_square_out', iconVersion: 'v4'};
-
     selectedMenuItem$ = new BehaviorSubject<secondaryMenuItem>(null);
 
     private _menuItems: secondaryMenuItem[] = [];
@@ -47,6 +47,10 @@ export class NavigationSecondaryMenuComponent implements OnInit {
         } else {
             this.toggleChildItems($event, menuItem);
         }
+    }
+
+    setSelected(menuItem: secondaryMenuItem) {
+        this.selectedMenuItem$.next(menuItem);
     }
 
     private toggleChildItems($event, menuItem: secondaryMenuItem) {

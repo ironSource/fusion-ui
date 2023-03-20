@@ -1,5 +1,6 @@
 import {NavigationBarItemType, PrimaryMenuItem} from '../navigation-menu.entities';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
+import {HeaderContent} from '@ironsource/fusion-ui/components/layout/v4/layout.entities';
 
 export const USER_PROFILE_MENU_ITEMS: MenuItem[] = [
     {
@@ -326,7 +327,7 @@ export const IS_MENU_ITEMS: MenuItem[] = [
         ]
     },
     {
-        name: 'Promote',
+        name: 'Grow',
         isGroupName: true
     },
     {
@@ -415,3 +416,7 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
         menuItems: USER_PROFILE_MENU_ITEMS
     }
 ];
+
+export const HEADER_CONTENT_MOCK: HeaderContent = {
+    title: 'Dashboard'
+};

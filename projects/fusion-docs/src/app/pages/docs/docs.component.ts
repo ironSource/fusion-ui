@@ -12,7 +12,7 @@ import {VersionService} from '../../services/version/version.service';
 import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {LayoutComponentConfiguration, LayoutHeaderComponentConfiguration} from '@ironsource/fusion-ui/components/layout/v2';
 import {NAVIGATION_MENU_MOCK} from '@ironsource/fusion-ui/components/navigation-menu/v4/stories/navigation-menu.mock';
-import {LayoutConfiguration} from '@ironsource/fusion-ui/components/layout/v4/layout.entities';
+import {HeaderContent, LayoutConfiguration} from '@ironsource/fusion-ui/components/layout/v4/layout.entities';
 
 @Component({
     selector: 'fusion-docs',
@@ -41,6 +41,9 @@ export class DocsComponent implements OnInit, OnDestroy {
     // endregion
 
     // region for layout "v4"
+    headerContent: HeaderContent = {
+        title: 'Dashboard'
+    };
     layoutConfiguration: LayoutConfiguration = {
         navigationMenuItems: NAVIGATION_MENU_MOCK,
         layoutUser: {
@@ -147,6 +150,9 @@ export class DocsComponent implements OnInit, OnDestroy {
 
     onMenuItemClick(menuItem: MenuItem) {
         console.log('DOC onMenuItemClick>>>', menuItem);
+
+        this.headerContent = {...this.headerContent, title: menuItem.name};
+
         // if (menuItem.redirect) {
         //     location.href = menuItem.redirect;
         // }

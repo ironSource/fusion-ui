@@ -22,13 +22,13 @@ $secondaryMenuItemNewTabIconSize: 16px;
 
     transition: all .45s ease-out;
     opacity: 0;
-    &.fu-menu-expanded {
+    &.fu-menu-open {
         width: $secondaryMenuWidth;
         opacity: 1;
         margin-left: 0;
     }
 
-    &.fu-menu-showed{
+    &.fu-menu-expanded{
         position: fixed;
         top: 0;
         left: $primaryMenuWidth;
