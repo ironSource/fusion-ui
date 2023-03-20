@@ -63,9 +63,7 @@ $itemWidth: 252px;
                         display: flex;
                         align-items: center;
                         color: $fu-black-500;
-                        .fu-options-label {
-                            margin: 5px;
-                        }
+                        gap: 8px;
                         .fu-check-all{
                             margin-left: 2px;
                             width: 16px;
