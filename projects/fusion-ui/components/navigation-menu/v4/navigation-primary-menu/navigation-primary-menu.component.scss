@@ -33,6 +33,7 @@ $navBarIconSize: 24px;
             }
             &.fu-network{
                 height: 80px;
+                position: relative;
                 .fu-navigation-bar-button{
                     @include icon-style('fu-navigation-bar-button-icon', $fu-nav-menu-white-100, $navBarIconSize, true, true) {
                         @include size($navBarIconSize);
@@ -42,6 +43,19 @@ $navBarIconSize: 24px;
                     }
                     &:hover{
                         cursor: pointer;
+                    }
+                    &.fu-triangle{
+                        &:after {
+                            content:'';
+                            position: absolute;
+                            top: 23px;
+                            right: 0;
+                            width: 0;
+                            height: 0;
+                            border-top: 8px solid transparent;
+                            border-right: 6px solid $fu-nav-secondary;
+                            border-bottom: 8px solid transparent;
+                        }
                     }
                 }
             }
@@ -93,13 +107,16 @@ $navBarIconSize: 24px;
                 background-color: var(--fu-navbar-button-hover-background-color, $fu-nav-menu-white-20);
                 @include icon-style('fu-navigation-bar-button-icon', $fu-nav-menu-white-100, $navBarIconSize, true, true)
             }
-            &.fu-selected{
+            &.fu-selected {
                 border: solid 1px var(--fu-navbar-button-selected-border-color, $fu-nav-menu-white-20);
                 background-color: var(--fu-navbar-button-hover-background-color, $fu-nav-menu-white-20);
-                pointer-events: none;
                 @include icon-style('fu-navigation-bar-button-icon', $fu-nav-menu-white-100, $navBarIconSize, true, true);
-                &:hover{
+
+                &:hover {
                     cursor: default;
+                }
+                & + .fu-navigation-bar-network-name {
+                    color: var(--fu-navbar-text-color, $fu-nav-menu-white-100);
                 }
             }
             &.fu-menu-toggle{

@@ -22,6 +22,7 @@ const MENU_CACHE_KEY = 'fusionMenuCollapsed';
 })
 export class NavigationMenuComponent implements OnInit {
     @ViewChild('primaryMenu', {static: true}) primaryMenu: NavigationPrimaryMenuComponent;
+    @ViewChild('secondaryMenu', {static: true}) secondaryMenu: NavigationSecondaryMenuComponent;
 
     @Input() menuItems: PrimaryMenuItem[];
     @Input() layoutUser: LayoutUser;
@@ -39,6 +40,8 @@ export class NavigationMenuComponent implements OnInit {
 
     secondaryMenuOpen$ = new BehaviorSubject<boolean>(this.cacheService.get(CacheType.SessionStorage, MENU_CACHE_KEY) ?? false);
     secondaryMenuExpanded$ = new BehaviorSubject<boolean>(false);
+
+    menuOpenForPrimaryMenuItem$ = new BehaviorSubject<PrimaryMenuItem>(null);
 
     private onDestroy$ = new Subject<void>();
     private preSelectedPrimaryMenuItem: PrimaryMenuItem;
@@ -65,6 +68,10 @@ export class NavigationMenuComponent implements OnInit {
         fromEvent(this.elementRef.nativeElement, 'mouseleave')
             .pipe(takeUntil(this.onDestroy$))
             .subscribe(this.onNavigationMenuMouseLeave.bind(this));
+
+        if (this.selectedPrimaryMenuItem?.type !== NavigationBarItemType.Main && this.secondaryMenuOpen$.getValue()) {
+            this.secondaryMenuOpen$.next(false);
+        }
     }
 
     onMenuItemClicked(menuItem, popMenuItem = false) {
@@ -85,14 +92,6 @@ export class NavigationMenuComponent implements OnInit {
         this.menuItemClicked.emit(menuItem);
     }
 
-    onPrimaryMainMenuItemMouseEnter(selectedNetwork: PrimaryMenuItem) {
-        this.preSelectedPrimaryMenuItem = selectedNetwork;
-        if (selectedNetwork.type === NavigationBarItemType.Main) {
-            this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, true);
-            this.setSecondaryMenu(selectedNetwork);
-        }
-    }
-
     onNavigationMenuMouseLeave() {
         if (this.needRestoreSelectedState) {
             this.setSecondaryMenu(this.selectedPrimaryMenuItem);
@@ -108,15 +107,19 @@ export class NavigationMenuComponent implements OnInit {
     }
 
     onPrimaryMainMenuItemClicked(selectedNetwork: PrimaryMenuItem) {
-        this.preSelectedPrimaryMenuItem = selectedNetwork;
-        this.setSecondaryMenu(selectedNetwork);
-        if (!isNullOrUndefined(selectedNetwork.route)) {
-            this.setSecondaryMenuVisibilityState(false, false);
-            this.selectedPrimaryMenuItem = this.preSelectedPrimaryMenuItem;
-            this.primaryMenu.setSelectedPrimaryMenuItem(this.selectedPrimaryMenuItem);
-            this.menuItemClicked.emit({name: selectedNetwork.menuTitle, route: selectedNetwork.route});
+        if (isNullOrUndefined(selectedNetwork)) {
+            this.onNavigationMenuMouseLeave();
         } else {
-            this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, true);
+            this.preSelectedPrimaryMenuItem = selectedNetwork;
+            this.setSecondaryMenu(selectedNetwork);
+            if (!isNullOrUndefined(selectedNetwork.route)) {
+                this.setSecondaryMenuVisibilityState(false, false);
+                this.selectedPrimaryMenuItem = this.preSelectedPrimaryMenuItem;
+                this.primaryMenu.setSelectedPrimaryMenuItem(this.selectedPrimaryMenuItem);
+                this.menuItemClicked.emit({name: selectedNetwork.menuTitle, route: selectedNetwork.route});
+            } else {
+                this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, true);
+            }
         }
     }
 
@@ -135,10 +138,21 @@ export class NavigationMenuComponent implements OnInit {
         this.secondaryMenuLogoSrc$.next('');
     }
 
-    private setSecondaryMenu(selectedNetwork: PrimaryMenuItem, setSecondaryMenuCollapseState = true) {
+    private setSecondaryMenu(selectedNetwork: PrimaryMenuItem) {
         this.secondaryMenuItems$.next(selectedNetwork?.menuItems ?? []);
         this.secondaryMenuName$.next(selectedNetwork?.menuTitle ?? '');
         this.secondaryMenuLogoSrc$.next(selectedNetwork?.menuLogoSrc ?? '');
+
+        this.menuOpenForPrimaryMenuItem$.next(selectedNetwork);
+        this.selectSecondaryMenuItem(selectedNetwork);
+    }
+
+    private selectSecondaryMenuItem(selectedNetwork: PrimaryMenuItem) {
+        if (this.selectedPrimaryMenuItem === selectedNetwork && !isNullOrUndefined(this.selectedSecondaryMenuItem)) {
+            setTimeout(() => {
+                this.secondaryMenu.setSelected(this.selectedSecondaryMenuItem);
+            });
+        }
     }
 
     private setSecondaryMenuVisibilityState(showed: boolean, open: boolean) {

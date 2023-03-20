@@ -1,12 +1,12 @@
 <div class="fu-navigation-bar-holder">
     <!--region home item-->
-    <div *ngIf="homeItem" class="fu-navigation-bar-item fu-home" [fusionTooltip]="homeItem.menuTooltip" (mouseenter)="primaryMenuItemMouseEnter.emit(homeItem)">
+    <div *ngIf="homeItem" class="fu-navigation-bar-item fu-home" [fusionTooltip]="homeItem.menuTooltip">
         <ng-container [ngTemplateOutlet]="navigationButton" [ngTemplateOutletContext]="{item: homeItem, selectedItem: (homeItem === (selectedBarItem$ |async))}"></ng-container>
     </div>
     <!--endregion home item-->
     <!--region main items-->
     <ng-container *ngIf="(networkItems$ | async) as networkItems">
-        <div class="fu-navigation-bar-item fu-network" *ngFor="let networkItem of networkItems" [fusionTooltip]="networkItem.menuTooltip" (mouseenter)="primaryMenuItemMouseEnter.emit(networkItem)">
+        <div class="fu-navigation-bar-item fu-network" *ngFor="let networkItem of networkItems" [fusionTooltip]="networkItem.menuTooltip" >
             <ng-container [ngTemplateOutlet]="navigationButton" [ngTemplateOutletContext]="{item: networkItem, selectedItem: (networkItem === (selectedBarItem$ |async))}"></ng-container>
             <div *ngIf="networkItem.menuTitle" class="fu-navigation-bar-network-name">{{networkItem.menuTitle}}</div>
         </div>
@@ -51,7 +51,12 @@
 </div>
 
 <ng-template #navigationButton let-item="item" let-selectedItem="selectedItem" let-popMenu="popMenu" let-index=index>
-    <div class="fu-navigation-bar-button" id="fu-bottom-nav-item-btn_{{index}}" [class.fu-selected]="selectedItem" [class.fu-with-pop-menu]="popMenu" (click)="networkItemClicked(item)">
+    <div class="fu-navigation-bar-button" id="fu-bottom-nav-item-btn_{{index}}"
+         [class.fu-selected]="selectedItem"
+         [class.fu-with-pop-menu]="popMenu"
+         [class.fu-triangle]="menuOpened && (item === menuOpenForPrimaryMenuItem)"
+         (click)="networkItemClicked(item)"
+    >
         <fusion-svg  *ngIf="item.menuIconPath" class="fu-navigation-bar-button-icon-wrapper" [path]="item.menuIconPath"></fusion-svg>
         <fusion-icon *ngIf="item.menuIcon" class="fu-navigation-bar-button-icon" [name]="item.menuIcon"></fusion-icon>
     </div>

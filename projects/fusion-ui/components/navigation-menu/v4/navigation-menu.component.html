@@ -3,14 +3,14 @@
         [menuBarItems]="menuItems"
         [layoutUser]="layoutUser"
         [menuOpened]="secondaryMenuOpen$ | async"
+        [menuOpenForPrimaryMenuItem]="menuOpenForPrimaryMenuItem$ | async"
         (primaryMenuItemClicked)="onPrimaryMainMenuItemClicked($event)"
-        (primaryMenuItemMouseEnter)="onPrimaryMainMenuItemMouseEnter($event)"
         (changeColorTheme)="onChangeColorTheme($event)"
         (toggleMenu)="toggleMenu()"
         (resetSecondaryMenu)="resetSecondaryMenu()"
         (menuItemClick)="onMenuItemClicked($event, true)"
     ></fusion-navigation-primary-menu>
-    <fusion-navigation-secondary-menu
+    <fusion-navigation-secondary-menu #secondaryMenu
         [menuItems]="secondaryMenuItems$ | async"
         [menuName]="secondaryMenuName$ | async"
         [menuLogoSrc]="secondaryMenuLogoSrc$ | async"
