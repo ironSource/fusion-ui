@@ -84,10 +84,10 @@ $itemWidth: 252px;
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
-                    opacity: 0.7;
                     color: $fu-light-900;
                     .fu-select-label {
                         padding: 4px 4px 5px 5px;
+                        color: $fu-black-500;
                     }
                     .clear-all-btn {
                         margin-left: auto;
