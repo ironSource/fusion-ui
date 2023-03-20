@@ -63,6 +63,7 @@
                 line-height: 16px;
                 display: flex;
                 gap: 4px;
+                color: $fu-black-900;
                 .truncate {
                     @extend %truncate;
                     max-width: 140px;
