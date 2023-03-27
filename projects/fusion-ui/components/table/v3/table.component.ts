@@ -183,7 +183,7 @@ export class TableComponent implements OnInit, OnDestroy {
     /** @internal */
     subHeader: {name: string; colspan: number}[] = [];
     /** @internal */
-    searchFormControl = new FormControl('');
+    searchFormControl: FormControl<string>;
 
     get isCheckboxTitleShown(): boolean {
         return this.columns ? this.columns.some(column => column.type === TableColumnTypeEnum.Checkbox && column.title !== '') : false;
@@ -250,6 +250,8 @@ export class TableComponent implements OnInit, OnDestroy {
     ) {}
 
     ngOnInit() {
+        this.searchFormControl = new FormControl(this.options?.searchOptions?.initalValue || '');
+
         if (!!this.options.rowsExpandableOptions) {
             try {
                 this.tableService.setExpandLevelByExpandOptions(this.options.rowsExpandableOptions);

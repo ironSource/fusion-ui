@@ -221,7 +221,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.confirm = true;
         this.setLabel();
         this.propagateChange(this.preSelectedItems.value);
-        this.selectedChange = this.preSelectedItems.value;
+        this.selectedChange = Array.isArray(this.preSelectedItems.value) ? [...this.preSelectedItems.value] : this.preSelectedItems.value;
         this.selected$.next(
             this.selectedChange?.length === 1
                 ? this.selectedTypeObject
@@ -348,9 +348,10 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     }
 
     private checkSelectItemsChanged(item: any): void {
-        if (JSON.stringify(item) !== JSON.stringify(this.selectedChange) && this.confirm) {
-            this.selectedChange = item;
-        }
+        // commented bny fix https://ironsrc-mobile.atlassian.net/browse/FU-484
+        // if (JSON.stringify(item) !== JSON.stringify(this.selectedChange) && this.confirm) {
+        //     this.selectedChange = item;
+        // }
         this.setLabel();
     }
 
