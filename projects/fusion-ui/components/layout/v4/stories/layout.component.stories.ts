@@ -49,3 +49,11 @@ const DefaultTemplate: Story<LayoutComponent> = (args: LayoutComponent) => ({
 });
 
 export const Default = DefaultTemplate.bind({});
+
+export const WithHeaderTeleportElements = DefaultTemplate.bind({});
+WithHeaderTeleportElements.args = {
+    headerContent: {
+        ...HEADER_CONTENT_MOCK,
+        teleportElements: [{id: 'fuHeaderTeleport1'}, {id: 'fuHeaderTeleport2'}, {id: 'fuHeaderTeleport3', isOnRight: true}]
+    }
+};
