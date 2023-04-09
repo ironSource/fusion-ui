@@ -14,6 +14,7 @@ export interface TableLabel {
 export interface TableSearchOptions {
     placeholder?: string;
     onSearch?: EventEmitter<string>;
+    initalValue?: string;
 }
 
 export interface TableOptions {

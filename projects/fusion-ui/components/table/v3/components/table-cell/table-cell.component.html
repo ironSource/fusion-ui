@@ -70,7 +70,7 @@
             ? ($any(data)
                 | currency
                 : column?.currencyPipeParameters?.currencyCode || undefined
-                    : column?.currencyPipeParameters?.display || (column?.currencyPipeParameters ? undefined : '$ ')
+                    : column?.currencyPipeParameters?.display || (column?.currencyPipeParameters ? undefined : '$')
                     : column?.currencyPipeParameters?.digitsInfo || undefined)
             : (data | notAvailable: notAvailableText)
         }}

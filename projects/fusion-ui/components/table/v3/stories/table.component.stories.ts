@@ -206,7 +206,14 @@ const ROWS_DATA = [
 
 // region No Data
 export const NoData = TableTemplate.bind({});
-NoData.args = {rows: []};
+NoData.args = {
+    options: {
+        ...TABLE_DEFAULT_OPTIONS,
+        noDataMessage: "We couldn't find any campaigns",
+        noDataSubMessage: 'Try using again with a different filters'
+    },
+    rows: []
+};
 NoData.parameters = {
     docs: {
         description: {

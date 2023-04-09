@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.1.2](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.11...v5.1.2) (2023-03-27)
+
+### [5.1.2-rc.11](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.10...v5.1.2-rc.11) (2023-03-20)
+
+
+### Bug Fixes
+
+* **fu-484:** fixed color on top-filter trigger label ([4c6ba30](https://github.com/ironSource/fusion-ui/commit/4c6ba3033f51b76dd73c07de5a51e5545424276a))
+* **fu-484:** fixed gap between select all checkbox and it's label ([1c22b47](https://github.com/ironSource/fusion-ui/commit/1c22b475b7e2003b00d93b04fa0fe8144be71b38))
+* **fu-484:** fixed hover - removed bg color on table floating action button ([bd8294f](https://github.com/ironSource/fusion-ui/commit/bd8294f73be1422a656b4a4e1e4771d2c54ad53a))
+* **fu-484:** fixed icon-holder size for trigger in top-filter-trigger component ([eb812cb](https://github.com/ironSource/fusion-ui/commit/eb812cb62c9fad385bf99146e3682e8a2662f259))
+* **fu-484:** fixed include-exclude popup position related to top-filter-trigger component ([bba5fd7](https://github.com/ironSource/fusion-ui/commit/bba5fd7ce514e51c612d2fc9a17184233bf5e0d2))
+* **fu-484:** fixed include-exclude popup shadow ([20ad2d9](https://github.com/ironSource/fusion-ui/commit/20ad2d95cee5cd4eb2e613258a5473898fd90fa2))
+* **fu-484:** fixed selected label color on header of include-exclude ([1f1a0de](https://github.com/ironSource/fusion-ui/commit/1f1a0de4af734a38275449bae47175c0f8b4a452))
+* **fu-484:** fixed table v3 no-data content position (update story) ([a9c894d](https://github.com/ironSource/fusion-ui/commit/a9c894d74ce17d104984ebbde17b9ddde8845a00))
+* **fu-484:** remove gap between "$" sign and number in column type currency (not editable) ([a646d7c](https://github.com/ironSource/fusion-ui/commit/a646d7cd7a68626014dbe7348331ab6a8b0134d0))
+* **fu-484:** remove gap between "$" sign and number in view mode of input-inline compinent ([8287ac2](https://github.com/ironSource/fusion-ui/commit/8287ac2da96bf64c608ebb3ab6d03f500684fe30))
+
+### [5.1.2-rc.10](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.9...v5.1.2-rc.10) (2023-03-12)
+
+
+### Bug Fixes
+
+* fixed behavior issues ([549f441](https://github.com/ironSource/fusion-ui/commit/549f4413f6b287bbac5e45db6893c316f8198893))
+
+### [5.1.2-rc.9](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.8...v5.1.2-rc.9) (2023-03-05)
+
+### [5.1.2-rc.8](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.2...v5.1.2-rc.8) (2023-03-05)
+
 ### [5.1.2-rc.7](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.6...v5.1.2-rc.7) (2023-03-02)
 
 ### [5.1.2-rc.6](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.2...v5.1.2-rc.6) (2023-03-02)

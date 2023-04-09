@@ -107,9 +107,6 @@ $v3-cellActionIconSize: 16px;
             box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.24);
             border: none;
             background-color: $White;
-            &:hover{
-                background-color: $fu-light-200;
-            }
             ::ng-deep fusion-icon{
                 @include size(24px);
                 svg {
