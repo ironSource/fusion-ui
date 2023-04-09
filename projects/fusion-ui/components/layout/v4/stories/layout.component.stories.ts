@@ -7,7 +7,8 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {LayoutStoryWrapperComponent} from './layout-story-wrapper.component';
-import {HeaderContent} from '@ironsource/fusion-ui/components/layout/v4/layout.entities';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button';
+import {TeleportingDirective} from '@ironsource/fusion-ui/directives/teleporting';
 
 export default {
     title: 'Components/Layout',
@@ -15,7 +16,14 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, LayoutStoryWrapperComponent]
+            imports: [
+                CommonModule,
+                SvgModule.forRoot({assetsPath: environment.assetsPath}),
+                IconModule,
+                LayoutStoryWrapperComponent,
+                ButtonModule,
+                TeleportingDirective
+            ]
         })
     ],
     parameters: {
@@ -50,7 +58,14 @@ const DefaultTemplate: Story<LayoutComponent> = (args: LayoutComponent) => ({
 
 export const Default = DefaultTemplate.bind({});
 
-export const WithHeaderTeleportElements = DefaultTemplate.bind({});
+const HeaderTeleportTemplate: Story<LayoutComponent> = (args: LayoutComponent) => ({
+    props: {...args},
+    template: `<fusion-layout-story-wrapper [headerContent]="headerContent" [layoutConfiguration]="layoutConfiguration"></fusion-layout-story-wrapper>
+    <fusion-button *fusionTeleporting="'#fuHeaderTeleport3'">Button-3</fusion-button>
+`
+});
+
+export const WithHeaderTeleportElements = HeaderTeleportTemplate.bind({});
 WithHeaderTeleportElements.args = {
     headerContent: {
         ...HEADER_CONTENT_MOCK,

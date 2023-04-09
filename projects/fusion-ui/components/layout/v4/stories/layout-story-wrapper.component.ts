@@ -3,17 +3,17 @@ import {CommonModule} from '@angular/common';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 import {HeaderContent, LayoutConfiguration} from '../layout.entities';
 import {LayoutComponent} from '../layout.component';
-import {ButtonModule} from '@ironsource/fusion-ui/components/button';
-import {TeleportingDirective} from '@ironsource/fusion-ui/directives/teleporting';
 
 @Component({
     selector: 'fusion-layout-story-wrapper',
     standalone: true,
-    imports: [CommonModule, LayoutComponent, ButtonModule, TeleportingDirective],
+    imports: [CommonModule, LayoutComponent],
     template: `
-        <fusion-layout [configuration]="layoutConfiguration" [headerContent]="headerContent" (menuItemClick)="onMenuItemClick($event)">
-            <fusion-button *fusionTeleporting="'#' + headerContent?.teleportElements[2].id">Button-3</fusion-button>
-        </fusion-layout>
+        <fusion-layout
+            [configuration]="layoutConfiguration"
+            [headerContent]="headerContent"
+            (menuItemClick)="onMenuItemClick($event)"
+        ></fusion-layout>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
