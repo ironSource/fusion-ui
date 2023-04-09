@@ -61,7 +61,9 @@ export const Default = DefaultTemplate.bind({});
 const HeaderTeleportTemplate: Story<LayoutComponent> = (args: LayoutComponent) => ({
     props: {...args},
     template: `<fusion-layout-story-wrapper [headerContent]="headerContent" [layoutConfiguration]="layoutConfiguration"></fusion-layout-story-wrapper>
-    <fusion-button *fusionTeleporting="'#fuHeaderTeleport3'">Button-3</fusion-button>
+    <fusion-button *fusionTeleporting="'#fuHeaderTeleport3'" style="margin-right: 15px;">Teleported-3</fusion-button>
+    <fusion-button *fusionTeleporting="'#fuHeaderTeleport1'" style="margin-right: 15px;">Teleported-1</fusion-button>
+    <fusion-button *fusionTeleporting="'#fuHeaderTeleport2'" style="margin-right: 15px;">Teleported-2</fusion-button>
 `
 });
 
