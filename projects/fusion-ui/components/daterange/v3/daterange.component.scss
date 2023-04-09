@@ -166,3 +166,7 @@ $selectHolderHeight: 39px;
         }
     }
 }
+
+:host-context(.fu-page-header){
+    min-width: 250px;
+}

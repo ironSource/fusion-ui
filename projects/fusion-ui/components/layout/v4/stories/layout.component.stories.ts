@@ -9,6 +9,8 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {LayoutStoryWrapperComponent} from './layout-story-wrapper.component';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button';
 import {TeleportingDirective} from '@ironsource/fusion-ui/directives/teleporting';
+import {DaterangeComponent, DaterangeModule, DaterangeOptions, DaterangeSelection} from '@ironsource/fusion-ui/components/daterange';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 export default {
     title: 'Components/Layout',
@@ -18,11 +20,14 @@ export default {
             declarations: [],
             imports: [
                 CommonModule,
+                FormsModule,
+                ReactiveFormsModule,
                 SvgModule.forRoot({assetsPath: environment.assetsPath}),
                 IconModule,
                 LayoutStoryWrapperComponent,
                 ButtonModule,
-                TeleportingDirective
+                TeleportingDirective,
+                DaterangeModule
             ]
         })
     ],
@@ -58,15 +63,30 @@ const DefaultTemplate: Story<LayoutComponent> = (args: LayoutComponent) => ({
 
 export const Default = DefaultTemplate.bind({});
 
+/*export const WithHeaderDynamicComponent = DefaultTemplate.bind({});
+WithHeaderDynamicComponent.args = {
+    headerContent: {
+        ...HEADER_CONTENT_MOCK,
+        actionComponent: DaterangeComponent,
+        actionData: {
+            formControl: new FormControl() as FormControl<DaterangeSelection>,
+            options: {
+                placeholder: 'Select Daterange',
+                presets: []
+            } as DaterangeOptions
+        }
+    }
+}*/
+
 const HeaderTeleportTemplate: Story<LayoutComponent> = (args: LayoutComponent) => ({
     props: {...args},
     template: `<fusion-layout-story-wrapper [headerContent]="headerContent" [layoutConfiguration]="layoutConfiguration"></fusion-layout-story-wrapper>
+
     <fusion-button *fusionTeleporting="'#fuHeaderTeleport3'" style="margin-right: 15px;">Teleported-3</fusion-button>
     <fusion-button *fusionTeleporting="'#fuHeaderTeleport1'" style="margin-right: 15px;">Teleported-1</fusion-button>
     <fusion-button *fusionTeleporting="'#fuHeaderTeleport2'" style="margin-right: 15px;">Teleported-2</fusion-button>
 `
 });
-
 export const WithHeaderTeleportElements = HeaderTeleportTemplate.bind({});
 WithHeaderTeleportElements.args = {
     headerContent: {

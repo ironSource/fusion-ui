@@ -7,7 +7,7 @@ $headerHeight: 64px;
     @extend %reset;
     height: $headerHeight;
     max-height: $headerHeight;
-    overflow: hidden;
+    //overflow: hidden;
 
     display: flex;
     flex-direction: row;
