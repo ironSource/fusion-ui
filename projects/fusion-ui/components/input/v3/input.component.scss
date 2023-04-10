@@ -171,6 +171,33 @@ $smallHeight: 32px;
             &.fu-type-pass {
                 padding-right: 30px;
             }
+
+            &[type="time"]::-webkit-calendar-picker-indicator {
+                display: none;
+            }
+
+            &[type="time"]::-webkit-datetime-edit-fields-wrapper {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+            }
+
+            // todo: custom placeholder - check with studio
+/*            &[type="time"]:before {
+                content: 'hh : mm';
+                color: $fu-light-800;
+                background-color: $fu-light-100;
+                position: absolute;
+                left: 0;
+                right: 0;
+                text-align: center;
+            }
+
+            &[type="time"]:focus:before {
+                width: 0;
+                content: '';
+            }*/
         }
 
         i.fu-input-icon {
@@ -345,8 +372,8 @@ $smallHeight: 32px;
         text-align: initial;
     }
 
-    &.is-no-spin{
-        .fu-input-holder input{
+    &.is-no-spin {
+        .fu-input-holder input {
             &::-webkit-inner-spin-button,
             &::-webkit-outer-spin-button {
                 -webkit-appearance: none;
@@ -359,26 +386,31 @@ $smallHeight: 32px;
 :host-context(fusion-input-inline) {
     .fu-input-holder {
         background-color: transparent;
+
         &:hover {
             .fu-input-units,
             input {
                 background-color: $White;
             }
         }
-        .fu-input-units{
+
+        .fu-input-units {
             padding-left: 8px;
             @extend %font-bodySmall;
-            &.right{
+
+            &.right {
                 align-items: flex-start;
                 min-width: 50px;
                 width: 50px;
             }
         }
+
         input {
             background-color: $White;
             padding-left: 8px;
             padding-right: 32px;
             margin-top: -1px;
+
             &:hover {
                 background-color: $White;
             }
@@ -402,16 +434,19 @@ $smallHeight: 32px;
             background-color: $fu-negative-500;
             bottom: 0;
         }
+
         .fu-input-units,
-        .fu-input-units:hover{
+        .fu-input-units:hover {
             background-color: $White;
         }
-        &.fu-disabled{
+
+        &.fu-disabled {
             input {
                 background-color: $White;
             }
+
             .fu-input-units,
-            .fu-input-units:hover{
+            .fu-input-units:hover {
                 color: $fu-light-800;
             }
         }
@@ -422,17 +457,19 @@ $smallHeight: 32px;
     }
 }
 
-:host-context(fusion-tags-input){
-    .fu-input-holder{
+:host-context(fusion-tags-input) {
+    .fu-input-holder {
         &.focused::after {
             display: none;
         }
+
         .fu-input {
             border: none;
             background-color: transparent;
             padding: 0;
             height: 20px;
             margin: 2px;
+
             &:hover {
                 background-color: transparent;
             }

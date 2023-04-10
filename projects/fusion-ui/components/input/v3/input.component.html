@@ -64,6 +64,7 @@
                [formControl]="inputControl"
                [ngStyle]="config.options?.style"
                [attr.autofocus]="config?.autofocus"
+               [pattern]="config?.type === 'time' ? '[0-9]{2}:[0-9]{2}' : null"
                (focus)="focus()"
                (blur)="blur()"
         />
