@@ -84,7 +84,7 @@ const HeaderTeleportTemplate: Story<LayoutComponent> = (args: LayoutComponent) =
     template: `<fusion-layout-story-wrapper [headerContent]="headerContent" [layoutConfiguration]="layoutConfiguration"></fusion-layout-story-wrapper>
 
     <fusion-button *fusionTeleporting="'#fuHeaderTeleport3'" style="margin-right: 15px;">Teleported-3</fusion-button>
-    <fusion-button *fusionTeleporting="'#fuHeaderTeleport1'" style="margin-right: 15px;">Teleported-1</fusion-button>
+    <fusion-button *fusionTeleporting="'#fuHeaderTeleport1'" style="margin: 0 15px;">Teleported-1</fusion-button>
     <fusion-button *fusionTeleporting="'#fuHeaderTeleport2'" style="margin-right: 15px;">Teleported-2</fusion-button>
 `
 });
@@ -92,6 +92,21 @@ export const WithHeaderTeleportElements = HeaderTeleportTemplate.bind({});
 WithHeaderTeleportElements.args = {
     headerContent: {
         ...HEADER_CONTENT_MOCK,
+        teleportElements: [{id: 'fuHeaderTeleport1'}, {id: 'fuHeaderTeleport2'}, {id: 'fuHeaderTeleport3', isOnRight: true}]
+    }
+};
+
+export const WithHeaderElements = HeaderTeleportTemplate.bind({});
+WithHeaderElements.args = {
+    headerContent: {
+        ...HEADER_CONTENT_MOCK,
+        actionComponent: TopFilterIncludeExcludeComponent,
+        actionData: {
+            placeholder: 'Select application',
+            formControl: new FormControl() as FormControl<DropdownOption[]>,
+            title: 'Applications',
+            items: MOK_APPLICATIONS_ONE_LINE_OPTIONS
+        },
         teleportElements: [{id: 'fuHeaderTeleport1'}, {id: 'fuHeaderTeleport2'}, {id: 'fuHeaderTeleport3', isOnRight: true}]
     }
 };
