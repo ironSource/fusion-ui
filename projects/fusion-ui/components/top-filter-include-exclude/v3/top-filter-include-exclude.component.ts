@@ -28,25 +28,21 @@ export class TopFilterIncludeExcludeComponent implements OnInit, OnDestroy {
     @Input() placeholder: string;
     @Input() helper: string;
     @Input() error: string;
-    @Input() icon: IconData;
-    @Input() imageApp: string;
     @Input() loading: boolean = false;
     @Input() required: boolean = false;
-
     @Input() title: string;
     @Input() items: DropdownOption[] = [];
 
-    private onDestroy$ = new Subject<void>();
-
-    // @Output() onSelectedChange = new EventEmitter<any>();
-
+    /** @internal */
     formControlIncludeExclude: FormControl = new FormControl();
+
+    private onDestroy$ = new Subject<void>();
 
     constructor() {}
 
     ngOnInit(): void {
         this.formControlIncludeExclude.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(value => {
-            console.log('===', value);
+            this.propagateChange(value);
         });
     }
 
@@ -55,36 +51,19 @@ export class TopFilterIncludeExcludeComponent implements OnInit, OnDestroy {
         this.onDestroy$.complete();
     }
 
-    // Implement ControlValueAccessor methods
-    /**
-     * Method to call when value has changes.
-     */
+    /** @internal */
     propagateChange = (_: DropdownOption[]) => {};
-
-    /**
-     * Method to call when the component is touched (when it was is clicked).
-     */
+    /** @internal */
     propagateTouched = () => {};
-
-    /**
-     * update value from model to the component
-     */
+    /** @internal */
     writeValue(value: DropdownOption[]): void {
-        console.log('>>', value);
-        this.formControlIncludeExclude.setValue(value, {emitEvent: false});
+        this.formControlIncludeExclude.setValue(value ?? [], {emitEvent: false});
     }
-
-    /**
-     * Informs the outside world about changes.
-     * see method propagateChange call - this.propagateChange(this.model);
-     */
+    /** @internal */
     registerOnChange(fn: any): void {
         this.propagateChange = fn;
     }
-
-    /**
-     * on click
-     */
+    /** @internal */
     registerOnTouched(fn: any): void {
         this.propagateTouched = fn;
     }

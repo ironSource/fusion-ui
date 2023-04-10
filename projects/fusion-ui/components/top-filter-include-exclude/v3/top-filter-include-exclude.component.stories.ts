@@ -7,10 +7,7 @@ import {environment} from '../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TopFilterIncludeExcludeComponent} from './top-filter-include-exclude.component';
-import {
-    MOK_APPLICATIONS_ONE_LINE_OPTIONS,
-    MOK_APPLICATIONS_OPTIONS
-} from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
+import {MOK_APPLICATIONS_ONE_LINE_OPTIONS} from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
 
 export default {
     title: 'Components/Filters/Top Filter/Include-Exclude (combined)',
@@ -43,7 +40,19 @@ export default {
 } as Meta<TopFilterIncludeExcludeComponent>;
 
 const DefaultTemplate: Story<TopFilterIncludeExcludeComponent> = (args: TopFilterIncludeExcludeComponent) => ({
-    props: {...args}
+    props: {...args},
+    template: `<div style="height: 380px">
+    <fusion-top-filter-include-exclude
+        [placeholder]="placeholder"
+        [helper]="helper"
+        [error]="error"
+        [required]="required"
+        [loading]="loading"
+        [title]="title"
+        [items]="items"
+        [formControl]="formControl"
+    ></fusion-top-filter-include-exclude>
+</div>`
 });
 
 // region Default
@@ -51,6 +60,24 @@ export const Default = DefaultTemplate.bind({});
 Default.args = {
     title: 'Applications',
     items: MOK_APPLICATIONS_ONE_LINE_OPTIONS,
-    formControl: new FormControl(),
-    placeholder: 'Select Application'
+    formControl: new FormControl()
 };
+// endregion
+
+// region PreselectedOneItem
+export const PreselectedOneItem = DefaultTemplate.bind({});
+PreselectedOneItem.args = {
+    title: 'Applications',
+    items: MOK_APPLICATIONS_ONE_LINE_OPTIONS,
+    formControl: new FormControl([MOK_APPLICATIONS_ONE_LINE_OPTIONS[2]])
+};
+// endregion
+
+// region PreselectedSomeItems
+export const PreselectedSomeItems = DefaultTemplate.bind({});
+PreselectedSomeItems.args = {
+    title: 'Applications',
+    items: MOK_APPLICATIONS_ONE_LINE_OPTIONS,
+    formControl: new FormControl(MOK_APPLICATIONS_ONE_LINE_OPTIONS.slice(2, 6))
+};
+// endregion
