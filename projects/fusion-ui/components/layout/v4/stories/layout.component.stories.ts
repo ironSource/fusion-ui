@@ -9,8 +9,10 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {LayoutStoryWrapperComponent} from './layout-story-wrapper.component';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button';
 import {TeleportingDirective} from '@ironsource/fusion-ui/directives/teleporting';
-import {DaterangeComponent, DaterangeModule, DaterangeOptions, DaterangeSelection} from '@ironsource/fusion-ui/components/daterange';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {TopFilterIncludeExcludeComponent} from '@ironsource/fusion-ui/components/top-filter-include-exclude';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
+import {MOK_APPLICATIONS_ONE_LINE_OPTIONS} from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
 
 export default {
     title: 'Components/Layout',
@@ -27,7 +29,7 @@ export default {
                 LayoutStoryWrapperComponent,
                 ButtonModule,
                 TeleportingDirective,
-                DaterangeModule
+                TopFilterIncludeExcludeComponent
             ]
         })
     ],
@@ -63,20 +65,19 @@ const DefaultTemplate: Story<LayoutComponent> = (args: LayoutComponent) => ({
 
 export const Default = DefaultTemplate.bind({});
 
-/*export const WithHeaderDynamicComponent = DefaultTemplate.bind({});
+export const WithHeaderDynamicComponent = DefaultTemplate.bind({});
 WithHeaderDynamicComponent.args = {
     headerContent: {
         ...HEADER_CONTENT_MOCK,
-        actionComponent: DaterangeComponent,
+        actionComponent: TopFilterIncludeExcludeComponent,
         actionData: {
-            formControl: new FormControl() as FormControl<DaterangeSelection>,
-            options: {
-                placeholder: 'Select Daterange',
-                presets: []
-            } as DaterangeOptions
+            placeholder: 'Select application',
+            formControl: new FormControl() as FormControl<DropdownOption[]>,
+            title: 'Applications',
+            items: MOK_APPLICATIONS_ONE_LINE_OPTIONS
         }
     }
-}*/
+};
 
 const HeaderTeleportTemplate: Story<LayoutComponent> = (args: LayoutComponent) => ({
     props: {...args},

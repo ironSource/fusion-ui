@@ -1,11 +1,9 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, forwardRef, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef, Input, OnDestroy, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TopFilterTriggerComponent} from '@ironsource/fusion-ui/components/top-filter-trigger/v3';
 import {DropdownDualMultiSelectModule} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
 import {FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
-import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
-import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 
@@ -14,7 +12,6 @@ import {takeUntil} from 'rxjs/operators';
     standalone: true,
     imports: [CommonModule, ReactiveFormsModule, TopFilterTriggerComponent, DropdownDualMultiSelectModule],
     templateUrl: './top-filter-include-exclude.component.html',
-    styleUrls: ['./top-filter-include-exclude.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
