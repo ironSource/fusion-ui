@@ -15,30 +15,14 @@
     <!--region menu item-->
     <div class="fu-secondary-menu-item-wrapper">
         <!--region menu first level item-->
-        <div class="fu-secondary-menu-item-holder"
-             [ngClass]="item.cssClass"
-             [class.fu-nav-menu-title-item]="item.isGroupName"
-             [class.fu-has-sub-items]="!!item.children"
-             [class.fu-secondary-menu-item-selected]="item === (selectedMenuItem$ | async)"
-             [class.fu-sub-items-opened]="!item.closed"
-             (click)="onMenuItemClicked($event, item)"
-        >
-            <ng-container *ngTemplateOutlet="menuItemLink; context: {item: item}"></ng-container>
-        </div>
+        <ng-container  *ngTemplateOutlet="(item.route || item.redirect) ? menuItemLink : menuItemDiv; context: {item: item}"></ng-container>
         <!--endregion menu first level item-->
         <!--region second level (child) items-->
         <ng-container *ngIf="item?.children">
             <div class="fu-secondary-menu-sub-items-holder" [class.fu-secondary-menu-sub-items-opened]="!item.closed">
-                <div *ngFor="let itemChild of item.children"
-                     class="fu-secondary-menu-item-holder"
-                     [ngClass]="itemChild.cssClass"
-                     [class.fu-nav-menu-title-item]="item.isGroupName"
-                     [class.fu-has-sub-items]="!!itemChild.children"
-                     [class.fu-secondary-menu-item-selected]="itemChild === (selectedMenuItem$ | async)"
-                     (click)="onMenuItemClicked($event, itemChild)"
-                >
-                    <ng-container *ngTemplateOutlet="menuItemLink; context: {item: itemChild}"></ng-container>
-                </div>
+                <ng-container  *ngFor="let itemChild of item.children">
+                    <ng-container  *ngTemplateOutlet="(itemChild.route || itemChild.redirect) ? menuItemLink : menuItemDiv; context: {item: itemChild}"></ng-container>
+                </ng-container>
             </div>
         </ng-container>
         <!--endregion submenu items-->
@@ -47,8 +31,40 @@
 </ng-template>
 <!--endregion menu items templating-->
 
-<!--region menu item link-->
-<ng-template #menuItemLink let-item="item">
+<!--region menuitem-->
+<ng-template #menuItemDiv  let-item="item">
+    <div class="fu-secondary-menu-item-holder"
+         [ngClass]="item.cssClass"
+         [class.fu-nav-menu-title-item]="item.isGroupName"
+         [class.fu-has-sub-items]="!!item.children"
+         [class.fu-secondary-menu-item-selected]="item === (selectedMenuItem$ | async)"
+         [class.fu-sub-items-opened]="!item.closed"
+         (click)="onMenuItemClicked($event, item)"
+    >
+        <ng-container *ngTemplateOutlet="menuItemInnerContent; context: {item: item}"></ng-container>
+    </div>
+</ng-template>
+<!--endregion menuitem-->
+
+<!--region menuitem with navigation-->
+<ng-template #menuItemLink  let-item="item">
+    <a class="fu-secondary-menu-item-holder"
+         [href]="item.route || item.redirect"
+         [target]="item.target"
+         [ngClass]="item.cssClass"
+         [class.fu-nav-menu-title-item]="item.isGroupName"
+         [class.fu-has-sub-items]="!!item.children"
+         [class.fu-secondary-menu-item-selected]="item === (selectedMenuItem$ | async)"
+         [class.fu-sub-items-opened]="!item.closed"
+         (click)="onMenuItemClicked($event, item)"
+    >
+        <ng-container *ngTemplateOutlet="menuItemInnerContent; context: {item: item}"></ng-container>
+    </a>
+</ng-template>
+<!--endregion menuitem with navigation-->
+
+<!--region menu item elements-->
+<ng-template #menuItemInnerContent let-item="item">
     <div class="fu-secondary-menu-item-icon-holder">
         <fusion-icon *ngIf="item.icon" class="fu-secondary-menu-item-icon" [name]="item.icon"></fusion-icon>
     </div>
@@ -62,4 +78,4 @@
                  [name]="itemNewTabIcon"
     ></fusion-icon>
 </ng-template>
-<!--endregion menu item link-->
+<!--endregion menu item elements-->

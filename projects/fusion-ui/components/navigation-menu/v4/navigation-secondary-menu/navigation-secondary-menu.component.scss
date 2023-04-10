@@ -73,6 +73,7 @@ $secondaryMenuItemNewTabIconSize: 16px;
                     cursor: pointer;
                     margin-bottom: 2px;
                     border: solid 1px transparent;
+                    text-decoration: none;
 
                     &.fu-secondary-menu-item-selected {
                         border: solid 1px $fu-nav-menu-black-8;

@@ -41,7 +41,11 @@ export class NavigationSecondaryMenuComponent implements OnInit {
     ngOnInit(): void {}
 
     onMenuItemClicked($event: Event, menuItem: secondaryMenuItem) {
-        if (!menuItem.children) {
+        if ($event && !menuItem.target) {
+            $event.preventDefault();
+            $event.stopPropagation();
+        }
+        if (!menuItem.children && !menuItem.target) {
             this.menuItemClick.emit(menuItem);
             this.selectedMenuItem$.next(menuItem);
         } else {
