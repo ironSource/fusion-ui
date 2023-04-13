@@ -16,6 +16,11 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TopFilterIncludeExcludeComponent} from '@ironsource/fusion-ui/components/top-filter-include-exclude';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
 import {MOK_APPLICATIONS_ONE_LINE_OPTIONS} from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
+import {action} from '@storybook/addon-actions';
+
+const actionsData = {
+    pageBackButtonClicked: action('pageBackButtonClicked')
+};
 
 export default {
     title: 'Components/Layout',
@@ -76,6 +81,22 @@ WithHeaderDynamicComponent.args = {
         actionData: {
             placeholder: 'Select application',
             formControl: new FormControl() as FormControl<DropdownOption[]>,
+            title: 'Applications',
+            items: MOK_APPLICATIONS_ONE_LINE_OPTIONS
+        }
+    }
+};
+
+export const WithHeaderBackButtonSubTitleAndDynamicComponent = DefaultTemplate.bind({});
+WithHeaderBackButtonSubTitleAndDynamicComponent.args = {
+    headerContent: {
+        ...LAYOUT_HEADER_CONTENT_MOCK,
+        hasBackButton: true,
+        subTitle: 'Updated 1 hour ago',
+        actionComponent: TopFilterIncludeExcludeComponent,
+        actionData: {
+            placeholder: 'Select application',
+            formControl: new FormControl(MOK_APPLICATIONS_ONE_LINE_OPTIONS.slice(2, 4)) as FormControl<DropdownOption[]>,
             title: 'Applications',
             items: MOK_APPLICATIONS_ONE_LINE_OPTIONS
         }
