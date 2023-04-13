@@ -4,7 +4,7 @@
         <fusion-navigation-menu
             [layoutUser]="layoutUser"
             [menuItems]="navigationMenu$ | async"
-            (menuItemClicked)="onMenuItemClick($event)"
+            (menuItemClicked)="menuItemClick.emit($event)"
         ></fusion-navigation-menu>
     </div>
     <!--navigation-->
@@ -13,6 +13,7 @@
         <div class="fu-page-header">
             <fusion-layout-header
                 [headerContent]="headerContent"
+                (backButtonClicked)="pageBackButtonClicked.emit($event)"
             ></fusion-layout-header>
         </div>
         <!--main header-->

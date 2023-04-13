@@ -24,12 +24,11 @@ export class LayoutComponent {
     }
     @Input() headerContent: HeaderContent;
 
+    @Output() pageBackButtonClicked = new EventEmitter<MouseEvent>();
     @Output() menuItemClick = new EventEmitter<MenuItem>();
 
+    /** @internal */
     navigationMenu$ = new BehaviorSubject<PrimaryMenuItem[]>([]);
+    /** @internal */
     layoutUser: LayoutUser;
-
-    onMenuItemClick(item: MenuItem) {
-        this.menuItemClick.emit(item);
-    }
 }

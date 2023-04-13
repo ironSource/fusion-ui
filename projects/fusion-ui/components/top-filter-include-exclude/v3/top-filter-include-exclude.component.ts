@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, forwardRef, Input, OnDestroy, OnInit
 import {CommonModule} from '@angular/common';
 import {TopFilterTriggerComponent} from '@ironsource/fusion-ui/components/top-filter-trigger/v3';
 import {DropdownDualMultiSelectModule} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
-import {FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
+import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -21,7 +21,7 @@ import {takeUntil} from 'rxjs/operators';
         }
     ]
 })
-export class TopFilterIncludeExcludeComponent implements OnInit, OnDestroy {
+export class TopFilterIncludeExcludeComponent implements OnInit, OnDestroy, ControlValueAccessor {
     @Input() placeholder: string;
     @Input() helper: string;
     @Input() error: string;
@@ -39,7 +39,8 @@ export class TopFilterIncludeExcludeComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.formControlIncludeExclude.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(value => {
-            this.propagateChange(value);
+            console.log('--', value, this.propagateChange);
+            this.propagateChange([...value]);
         });
     }
 
@@ -58,6 +59,7 @@ export class TopFilterIncludeExcludeComponent implements OnInit, OnDestroy {
     }
     /** @internal */
     registerOnChange(fn: any): void {
+        console.log('=======');
         this.propagateChange = fn;
     }
     /** @internal */
