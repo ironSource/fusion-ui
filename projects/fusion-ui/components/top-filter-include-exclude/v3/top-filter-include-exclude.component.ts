@@ -39,7 +39,6 @@ export class TopFilterIncludeExcludeComponent implements OnInit, OnDestroy, Cont
 
     ngOnInit(): void {
         this.formControlIncludeExclude.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(value => {
-            console.log('--', value, this.propagateChange);
             this.propagateChange([...value]);
         });
     }
@@ -59,7 +58,6 @@ export class TopFilterIncludeExcludeComponent implements OnInit, OnDestroy, Cont
     }
     /** @internal */
     registerOnChange(fn: any): void {
-        console.log('=======');
         this.propagateChange = fn;
     }
     /** @internal */
