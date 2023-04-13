@@ -27,6 +27,8 @@ export class NavigationPopMenuComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit() {
         const popupHeight = this.element.nativeElement.querySelector('.fu-pop-menu')?.offsetHeight;
-        this.element.nativeElement.style.height = `${popupHeight}px`;
+        if (!!popupHeight) {
+            this.element.nativeElement.style.height = `${popupHeight}px`;
+        }
     }
 }
