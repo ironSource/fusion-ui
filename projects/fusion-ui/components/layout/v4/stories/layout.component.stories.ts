@@ -107,16 +107,19 @@ const HeaderTeleportTemplate: Story<LayoutComponent> = (args: LayoutComponent) =
     props: {...args},
     template: `<fusion-layout-story-wrapper [headerContent]="headerContent" [layoutConfiguration]="layoutConfiguration"></fusion-layout-story-wrapper>
 
-    <fusion-button *fusionTeleporting="'#fuHeaderTeleport3'" style="margin-right: 15px;">Teleported-3</fusion-button>
-    <fusion-button *fusionTeleporting="'#fuHeaderTeleport1'" style="margin: 0 15px;">Teleported-1</fusion-button>
-    <fusion-button *fusionTeleporting="'#fuHeaderTeleport2'" style="margin-right: 15px;">Teleported-2</fusion-button>
+    <ng-container *fusionTeleporting="'#fuHeaderTeleport'">
+    <div style="display: flex; gap:8px; margin-right: 24px;">
+        <fusion-button class="transparent">Button</fusion-button>
+        <fusion-button>Button</fusion-button>
+    </div>
+    </ng-container>
 `
 });
 export const WithHeaderTeleportElements = HeaderTeleportTemplate.bind({});
 WithHeaderTeleportElements.args = {
     headerContent: {
         ...LAYOUT_HEADER_CONTENT_MOCK,
-        teleportElements: [{id: 'fuHeaderTeleport1'}, {id: 'fuHeaderTeleport2'}, {id: 'fuHeaderTeleport3', isOnRight: true}]
+        teleportElements: [{id: 'fuHeaderTeleport', isOnRight: true}]
     }
 };
 
@@ -131,6 +134,6 @@ WithHeaderElements.args = {
             title: 'Applications',
             items: MOK_APPLICATIONS_ONE_LINE_OPTIONS
         },
-        teleportElements: [{id: 'fuHeaderTeleport1'}, {id: 'fuHeaderTeleport2'}, {id: 'fuHeaderTeleport3', isOnRight: true}]
+        teleportElements: [{id: 'fuHeaderTeleport', isOnRight: true}]
     }
 };

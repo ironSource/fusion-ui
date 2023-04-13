@@ -232,7 +232,7 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
                 route: '/Segments'
             },
             {
-                name: 'Unity ads',
+                name: 'Unity Ads',
                 redirect: 'https:/google.com',
                 target: '_blank'
             },
@@ -277,8 +277,8 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
         name: 'Manage',
         children: [
             {
-                name: 'Manage rule',
-                route: '/Manage+Rule'
+                name: 'Manage rules',
+                route: '/Manage+Rules'
             },
             {
                 name: 'UX personalization',
