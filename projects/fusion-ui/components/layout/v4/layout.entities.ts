@@ -14,6 +14,7 @@ export interface TeleportWrapperElement {
 
 export interface HeaderContent {
     title?: string;
+    subTitle?: string;
     actionComponent?: Type<any>;
     actionData?: any;
     teleportElements?: TeleportWrapperElement[];

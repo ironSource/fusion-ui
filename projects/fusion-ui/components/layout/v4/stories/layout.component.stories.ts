@@ -2,7 +2,10 @@ import {Story, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {LayoutComponent} from '../layout.component';
-import {HEADER_CONTENT_MOCK, NAVIGATION_MENU_MOCK} from '@ironsource/fusion-ui/components/navigation-menu/v4/stories/navigation-menu.mock';
+import {
+    LAYOUT_HEADER_CONTENT_MOCK,
+    NAVIGATION_MENU_MOCK
+} from '@ironsource/fusion-ui/components/navigation-menu/v4/stories/navigation-menu.mock';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
@@ -46,7 +49,7 @@ export default {
         layout: 'fullscreen'
     },
     args: {
-        headerContent: HEADER_CONTENT_MOCK,
+        headerContent: LAYOUT_HEADER_CONTENT_MOCK,
         layoutConfiguration: {
             navigationMenuItems: NAVIGATION_MENU_MOCK,
             layoutUser: {
@@ -68,7 +71,7 @@ export const Default = DefaultTemplate.bind({});
 export const WithHeaderDynamicComponent = DefaultTemplate.bind({});
 WithHeaderDynamicComponent.args = {
     headerContent: {
-        ...HEADER_CONTENT_MOCK,
+        ...LAYOUT_HEADER_CONTENT_MOCK,
         actionComponent: TopFilterIncludeExcludeComponent,
         actionData: {
             placeholder: 'Select application',
@@ -91,7 +94,7 @@ const HeaderTeleportTemplate: Story<LayoutComponent> = (args: LayoutComponent) =
 export const WithHeaderTeleportElements = HeaderTeleportTemplate.bind({});
 WithHeaderTeleportElements.args = {
     headerContent: {
-        ...HEADER_CONTENT_MOCK,
+        ...LAYOUT_HEADER_CONTENT_MOCK,
         teleportElements: [{id: 'fuHeaderTeleport1'}, {id: 'fuHeaderTeleport2'}, {id: 'fuHeaderTeleport3', isOnRight: true}]
     }
 };
@@ -99,7 +102,7 @@ WithHeaderTeleportElements.args = {
 export const WithHeaderElements = HeaderTeleportTemplate.bind({});
 WithHeaderElements.args = {
     headerContent: {
-        ...HEADER_CONTENT_MOCK,
+        ...LAYOUT_HEADER_CONTENT_MOCK,
         actionComponent: TopFilterIncludeExcludeComponent,
         actionData: {
             placeholder: 'Select application',

@@ -417,6 +417,10 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
     }
 ];
 
-export const HEADER_CONTENT_MOCK: HeaderContent = {
+export const LAYOUT_HEADER_CONTENT_MOCK: HeaderContent = {
     title: 'Dashboard'
+};
+
+export const HEADER_CONTENT_MOCK: HeaderContent = {
+    title: 'Title'
 };

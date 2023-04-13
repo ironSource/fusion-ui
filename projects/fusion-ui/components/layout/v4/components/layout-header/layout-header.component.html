@@ -1,4 +1,8 @@
-<div class="fu-page-title">{{ headerContent?.title }}</div>
+<div class="fu-page-title" [class.fu-page-has-subtitle]="headerContent?.subTitle">{{ headerContent?.title }}</div>
+<ng-container *ngIf="headerContent?.subTitle">
+    <div class="fu-header-delimiter"></div>
+    <div class="fu-page-subtitle">{{headerContent?.subTitle}}</div>
+</ng-container>
 <div class="fu-header-action-wrapper" *ngIf="headerContent?.actionComponent">
     <fusion-dynamic-components
         [component]="headerContent.actionComponent"

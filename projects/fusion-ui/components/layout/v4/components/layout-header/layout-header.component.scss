@@ -15,11 +15,27 @@ $headerHeight: 64px;
     justify-items: center;
 
     .fu-page-title {
-        @extend %font-heading-4;
+        @extend %font-heading-3;
         margin-left: 24px;
-        margin-right: 32px ;
+        margin-right: 32px;
+        color: $fu-nav-text-primary;
+
+        &.fu-page-has-subtitle{
+            margin-right: 10px;
+        }
+    }
+    .fu-header-delimiter{
+        @include size(3px);
+        border-radius: 2px;
+        background-color: $fu-nav-text-primary;
+        margin-right: 8px;
+    }
+    .fu-page-subtitle{
+        @extend %font-body-2;
+        margin-right: 32px;
         color: $fu-nav-text-primary;
     }
+
     .fu-flex-align-right{
         margin-left: auto;
     }
