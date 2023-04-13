@@ -14,6 +14,19 @@ $headerHeight: 64px;
     align-items: center;
     justify-items: center;
 
+    .fu-header-back-button{
+        @include size(40px);
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        margin-left: 24px;
+        @include icon-style('fu-header-back-button-icon', $fu-nav-text-secondary, 24px, true, true){
+            @include size(24px);
+        }
+        .fu-header-back-button-icon:hover{
+            cursor: pointer;
+        }
+    }
     .fu-page-title {
         @extend %font-heading-3;
         margin-left: 24px;
@@ -22,6 +35,9 @@ $headerHeight: 64px;
 
         &.fu-page-has-subtitle{
             margin-right: 10px;
+        }
+        &.fu-page-has-button-back{
+            margin-left: 4px;
         }
     }
     .fu-header-delimiter{

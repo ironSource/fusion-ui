@@ -1,4 +1,10 @@
-<div class="fu-page-title" [class.fu-page-has-subtitle]="headerContent?.subTitle">{{ headerContent?.title }}</div>
+<div class="fu-header-back-button" *ngIf="headerContent?.hasBackButton">
+    <fusion-icon class="fu-header-back-button-icon" [name]="{iconName:'arrow-back', iconVersion:'v3'}" (click)="backButtonClicked.emit($event)"></fusion-icon>
+</div>
+<div class="fu-page-title"
+     [class.fu-page-has-subtitle]="headerContent?.subTitle"
+     [class.fu-page-has-button-back]="headerContent?.hasBackButton"
+>{{ headerContent?.title }}</div>
 <ng-container *ngIf="headerContent?.subTitle">
     <div class="fu-header-delimiter"></div>
     <div class="fu-page-subtitle">{{headerContent?.subTitle}}</div>

@@ -1,5 +1,6 @@
 import {Story, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
+import {action} from '@storybook/addon-actions';
 import {CommonModule} from '@angular/common';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../../../stories/environments/environment';
@@ -10,6 +11,10 @@ import {TopFilterIncludeExcludeComponent} from '@ironsource/fusion-ui/components
 import {FormControl} from '@angular/forms';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
 import {MOK_APPLICATIONS_ONE_LINE_OPTIONS} from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
+
+const actionsData = {
+    backButtonClicked: action('backButtonClicked')
+};
 
 export default {
     title: 'Components/Layout/Header',
@@ -38,9 +43,9 @@ export default {
 } as Meta<LayoutHeaderComponent>;
 
 const DefaultTemplate: Story<LayoutHeaderComponent> = (args: LayoutHeaderComponent) => ({
-    props: {...args},
+    props: {...args, backButtonClicked: actionsData.backButtonClicked},
     template: `<div style="border-bottom: solid 1px #E0E0E0; max-height: 64px;">
-    <fusion-layout-header [headerContent]="headerContent"></fusion-layout-header>
+    <fusion-layout-header [headerContent]="headerContent" (backButtonClicked)="backButtonClicked($event)"></fusion-layout-header>
 </div>`
 });
 
@@ -64,6 +69,22 @@ export const WithSubTitle = DefaultTemplate.bind({});
 WithSubTitle.args = {
     headerContent: {
         ...HEADER_CONTENT_MOCK,
+        subTitle: 'Updated 1 hour ago',
+        actionComponent: TopFilterIncludeExcludeComponent,
+        actionData: {
+            placeholder: 'Select application',
+            formControl: new FormControl() as FormControl<DropdownOption[]>,
+            title: 'Applications',
+            items: MOK_APPLICATIONS_ONE_LINE_OPTIONS
+        }
+    }
+};
+
+export const WithBackButton = DefaultTemplate.bind({});
+WithBackButton.args = {
+    headerContent: {
+        ...HEADER_CONTENT_MOCK,
+        hasBackButton: true,
         subTitle: 'Updated 1 hour ago',
         actionComponent: TopFilterIncludeExcludeComponent,
         actionData: {
