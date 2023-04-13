@@ -36,7 +36,7 @@ export const USER_PROFILE_MENU_ITEMS: MenuItem[] = [
 export const UNITY_MENU_ITEMS: MenuItem[] = [
     {
         icon: {iconName: 'add', iconVersion: 'v4'},
-        name: 'Add App',
+        name: 'Add app',
         route: '/Add+app'
     },
     {
@@ -52,11 +52,11 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
                 route: '/performance'
             },
             {
-                name: 'User Activity',
+                name: 'User activity',
                 route: '/User+Activity'
             },
             {
-                name: 'Real Time Pivot',
+                name: 'Real time pivot',
                 redirect: 'https:/google.com',
                 target: '_blank'
             },
@@ -65,11 +65,11 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
                 route: '/cohort'
             },
             {
-                name: 'Report Generator',
+                name: 'Report generator',
                 route: '/Report+Generator'
             },
             {
-                name: 'Activity Logs',
+                name: 'Activity logs',
                 route: '/Activity+Logs'
             }
             /*// region for scroll ----------------------------
@@ -220,11 +220,11 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
         name: 'Setup',
         children: [
             {
-                name: 'Ad Units',
+                name: 'Ad units',
                 route: '/Ad+Units'
             },
             {
-                name: 'SDK Networks',
+                name: 'SDK networks',
                 route: '/SDK+Networks'
             },
             {
@@ -232,7 +232,7 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
                 route: '/Segments'
             },
             {
-                name: 'Unity Ads',
+                name: 'Unity ads',
                 redirect: 'https:/google.com',
                 target: '_blank'
             },
@@ -263,7 +263,7 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
                 route: '/Creatives'
             },
             {
-                name: 'User Journey',
+                name: 'User journey',
                 route: '/User+Journey'
             },
             {
@@ -277,11 +277,11 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
         name: 'Manage',
         children: [
             {
-                name: 'Manage Rule',
+                name: 'Manage rule',
                 route: '/Manage+Rule'
             },
             {
-                name: 'UX Personalization',
+                name: 'UX personalization',
                 route: '/UX+Personalization'
             }
         ]
@@ -295,7 +295,7 @@ export const IS_MENU_ITEMS: MenuItem[] = [
     },
     {
         icon: {iconName: 'add', iconVersion: 'v4'},
-        name: 'Add App',
+        name: 'Add app',
         route: '/Add+app'
     },
     {
@@ -332,7 +332,7 @@ export const IS_MENU_ITEMS: MenuItem[] = [
     },
     {
         icon: {iconName: 'add', iconVersion: 'v4'},
-        name: 'Add Campaign',
+        name: 'Add campaign',
         route: '/Add+Campaign'
     },
     {
@@ -396,9 +396,9 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
     {
         type: NavigationBarItemType.Main,
         menuIcon: {iconName: 'ironSource', iconVersion: 'v4'},
-        menuTitle: 'Network',
+        menuTitle: 'Ads',
         /*menuTooltip: 'ironSource Network',*/
-        menuLogoSrc: 'v4/isNetwork',
+        menuLogoSrc: 'v4/isAdsLogo',
         cssTheme: {'fu-navbar-background-color': '#0D148C'},
         menuItems: IS_MENU_ITEMS
     },
