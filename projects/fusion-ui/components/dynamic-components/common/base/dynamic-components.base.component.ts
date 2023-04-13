@@ -94,8 +94,19 @@ export abstract class DynamicComponentsBaseComponent implements OnChanges, OnIni
 
     onComponentChanges() {
         if (this.componentData) {
+            console.log('onComponentChanges');
             Object.keys(this.componentData).forEach(key => {
                 this.cmpRef.instance[key] = this.componentData[key];
+                // region fix for dynamic component with formControl
+                if (key === 'formControl' && typeof this.cmpRef?.instance['registerOnChange'] === 'function') {
+                    this.cmpRef.instance['registerOnChange']((val: any) => {
+                        this.componentData.formControl.setValue(val);
+                    });
+                    if (typeof this.cmpRef?.instance['writeValue'] === 'function') {
+                        this.cmpRef.instance['writeValue'](this.componentData.formControl.value);
+                    }
+                }
+                // endregion
             });
         }
     }
