@@ -13,6 +13,10 @@ import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {LayoutComponentConfiguration, LayoutHeaderComponentConfiguration} from '@ironsource/fusion-ui/components/layout/v2';
 import {NAVIGATION_MENU_MOCK} from '@ironsource/fusion-ui/components/navigation-menu/v4/stories/navigation-menu.mock';
 import {HeaderContent, LayoutConfiguration} from '@ironsource/fusion-ui/components/layout/v4/layout.entities';
+import {TopFilterIncludeExcludeComponent} from '@ironsource/fusion-ui/components/top-filter-include-exclude';
+import {FormControl} from '@angular/forms';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
+import {MOK_APPLICATIONS_ONE_LINE_OPTIONS} from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
 
 @Component({
     selector: 'fusion-docs',
@@ -41,8 +45,16 @@ export class DocsComponent implements OnInit, OnDestroy {
     // endregion
 
     // region for layout "v4"
+    appSelectFormControl = new FormControl(MOK_APPLICATIONS_ONE_LINE_OPTIONS.slice(1, 5)) as FormControl<DropdownOption[]>;
     headerContent: HeaderContent = {
-        title: 'Dashboard'
+        title: 'Dashboard',
+        actionComponent: TopFilterIncludeExcludeComponent,
+        actionData: {
+            placeholder: 'Select application',
+            formControl: this.appSelectFormControl,
+            title: 'Applications',
+            items: MOK_APPLICATIONS_ONE_LINE_OPTIONS
+        }
     };
     layoutConfiguration: LayoutConfiguration = {
         navigationMenuItems: NAVIGATION_MENU_MOCK,
@@ -53,6 +65,11 @@ export class DocsComponent implements OnInit, OnDestroy {
     };
     // endregion
 
+    placeholder = 'Select application';
+    formControl = new FormControl(MOK_APPLICATIONS_ONE_LINE_OPTIONS.slice(1, 4));
+    title = 'Applications';
+    items = MOK_APPLICATIONS_ONE_LINE_OPTIONS;
+
     private onDestroy$ = new Subject<void>();
     private selectedVersion$ = this.versionService.styleVersion$;
 
@@ -62,6 +79,14 @@ export class DocsComponent implements OnInit, OnDestroy {
         // region set layout "v2"
         this.setLayoutConfigurationObservable();
         // endregion
+
+        this.formControl.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(val => {
+            console.log('11111', val);
+        });
+
+        this.appSelectFormControl.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(val => {
+            console.log(':::::', val);
+        });
 
         this.selectedVersion$.pipe(takeUntil(this.onDestroy$)).subscribe(value => {
             const menuItemsAll = JSON.parse(JSON.stringify(this.useNewLayout ? MENU_ITEMS_V2 : MENU_ITEMS));

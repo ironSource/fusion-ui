@@ -37,7 +37,18 @@
         [headerContent]="headerContent"
         (menuItemClick)="onMenuItemClick($event)"
     >
-        <!--<router-outlet></router-outlet>-->
+        <router-outlet></router-outlet>
+<!--
+        <div style="padding: 40px;">
+            <fusion-top-filter-include-exclude
+                [placeholder]="placeholder"
+                [title]="title"
+                [items]="items"
+                [formControl]="formControl"
+            ></fusion-top-filter-include-exclude>
+
+        </div>
+-->
     </fusion-layout>
 </ng-template>
 
