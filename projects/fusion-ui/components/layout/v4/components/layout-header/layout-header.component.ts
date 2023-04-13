@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components/v1';
 import {HeaderContent} from '../../layout.entities';
@@ -12,7 +12,7 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
     styleUrls: ['./layout-header.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LayoutHeaderComponent implements OnInit {
+export class LayoutHeaderComponent {
     @Input() set headerContent(value: HeaderContent) {
         this._headerContent = value;
     }
@@ -21,13 +21,4 @@ export class LayoutHeaderComponent implements OnInit {
     }
     @Output() backButtonClicked = new EventEmitter();
     private _headerContent: HeaderContent;
-
-    ngOnInit() {
-        if (!!this._headerContent?.actionData?.formControl) {
-            console.log('==', this._headerContent);
-            this._headerContent?.actionData?.formControl.valueChanges.subscribe(val => {
-                console.log(':::::', val);
-            });
-        }
-    }
 }
