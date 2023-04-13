@@ -16,19 +16,19 @@ $headerHeight: 64px;
 
     .fu-header-back-button{
         @include size(40px);
-        display: flex;
-        align-items: center;
-        justify-items: center;
+        padding: 8px;
         margin-left: 24px;
+        border-radius: 20px;
         @include icon-style('fu-header-back-button-icon', $fu-nav-text-secondary, 24px, true, true){
             @include size(24px);
         }
-        .fu-header-back-button-icon:hover{
+        &:hover{
+            background-color: $fu-light-100;
             cursor: pointer;
         }
     }
     .fu-page-title {
-        @extend %font-heading-3;
+        @extend %font-heading-4;
         margin-left: 24px;
         margin-right: 32px;
         color: $fu-nav-text-primary;
@@ -37,7 +37,7 @@ $headerHeight: 64px;
             margin-right: 10px;
         }
         &.fu-page-has-button-back{
-            margin-left: 4px;
+            margin-left: 12px;
         }
     }
     .fu-header-delimiter{
