@@ -256,3 +256,34 @@ const OPTIONS_CAMPAIGNS: DropdownOption[] = ${JSON.stringify(MOCK_CAMPAIGNS)};
     }
 };
 // endregion
+
+// region pre-selected dynamic filters
+export const PreselectedDynamicFilters = FilterPanelDefaultTemplate.bind({});
+PreselectedDynamicFilters.args = {
+    addFiltersTitle: 'Add filter by:',
+    addFilterOptions: [
+        {id: 2, displayText: 'Country'},
+        {id: 3, displayText: 'Campaigns'}
+    ],
+
+    fcChip1: new FormControl(),
+    configChip1: {id: 1, mode: 'static', close: true} as ChipFilterComponentConfigurations,
+    optionsChip1: MOCK_USERS,
+    placeholderPrefixChip1: 'User',
+    placeholderChip1: 'All',
+    searchChip1: true,
+    optionsTitleChip1: 'User',
+
+    fcChip2: new FormControl(MOCK_COUNTRIES.slice(1, 2)),
+    configChip2: {id: 2, mode: 'dynamic', close: true} as ChipFilterComponentConfigurations,
+    optionsChip2: MOCK_COUNTRIES,
+    placeholderChip2: 'All',
+    optionsTitleChip2: 'Country',
+
+    fcChip3: new FormControl(),
+    configChip3: {id: 3, mode: 'dynamic', close: true} as ChipFilterComponentConfigurations,
+    optionsChip3: MOCK_CAMPAIGNS,
+    placeholderChip3: 'All',
+    optionsTitleChip3: 'Campaigns'
+};
+// endregion

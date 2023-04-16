@@ -71,6 +71,7 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
     addFilterIndex: number;
 
     private selectedFilters: SelectedFilters[] = [];
+    private preSelectedDynamicOptions: DropdownOption[] = [];
 
     private addedFilters = [];
 
@@ -84,6 +85,7 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
 
     ngAfterViewInit() {
         this.initDynamicFiltersListeners();
+        this.checkForPreSelectedDynamic();
     }
 
     ngOnDestroy() {
@@ -105,6 +107,20 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
         this.onSelectedValueListener();
 
         this.onClosedChipListener();
+    }
+
+    private checkForPreSelectedDynamic() {
+        this.preSelectedDynamicOptions = this.chipFilters
+            .filter(chip => !!chip['chipSelectValue'] && chip.mode === 'dynamic')
+            .map(chip => {
+                const dynamicOptions = this.options$.getValue().filter(option => {
+                    return chip['chipSelectValue'].id === option.id;
+                });
+                return dynamicOptions.length ? dynamicOptions[0] : null;
+            })
+            .filter(Boolean);
+
+        this.addFilterControl.setValue(this.preSelectedDynamicOptions);
     }
 
     private initDynamicFiltersListeners() {
@@ -181,6 +197,7 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
         this.chipFilters.toArray().forEach(chip => {
             const isSelected = this.addedFilters.some(selectedChip => selectedChip.id === chip['id']);
             if (chip['id'] === option.id && !isSelected && chip.mode === 'dynamic') {
+                const isPreSelected = this.preSelectedDynamicOptions.some(item => item.id === option.id);
                 chip['isVisible'] = true;
                 const newSelection = {
                     id: option.id,
@@ -189,12 +206,16 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
                 };
                 this.addedFilters = [...this.addedFilters, newSelection];
                 this.reduceSelectedFiltersOptions();
-                chip.apiBase.open();
-                this.cdr.markForCheck();
+                if (!isPreSelected) {
+                    chip.apiBase.open();
+                    this.cdr.markForCheck();
+                }
             } else {
                 this.addFilterControl.reset();
             }
         });
+        // clear pre-selected
+        this.preSelectedDynamicOptions = [];
     }
 
     private orderChipFilters(chipFilters: QueryList<ChipFilterComponent>): void {
