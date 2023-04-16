@@ -129,10 +129,12 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
                 takeUntil(this.onDestroy$),
                 filter(options => Array.isArray(options)),
                 tap(options => this.onDynamicChipSelect.emit(options[0])),
-                delay(50)
+                delay(5)
             )
             .subscribe((options: DropdownOption[]) => {
-                this.openAddedDynamicFilter(options[0]);
+                options.forEach(option => {
+                    this.openAddedDynamicFilter(option);
+                });
             });
 
         this.options$
@@ -209,13 +211,13 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
                 if (!isPreSelected) {
                     chip.apiBase.open();
                     this.cdr.markForCheck();
+                } else {
+                    this.preSelectedDynamicOptions = this.preSelectedDynamicOptions.filter(item => item.id !== option.id);
                 }
             } else {
                 this.addFilterControl.reset();
             }
         });
-        // clear pre-selected
-        this.preSelectedDynamicOptions = [];
     }
 
     private orderChipFilters(chipFilters: QueryList<ChipFilterComponent>): void {
