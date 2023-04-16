@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.2.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v5.1.2...v5.2.0-rc.1) (2023-04-16)
+
+
+### Features
+
+* **fg-147:** dynamic filters pre-selected in chip-filters ([ffb23c0](https://github.com/ironSource/fusion-ui/commit/ffb23c0424cc87251c8e4d15e7a04e400fe7c172))
+
 ### [5.1.2](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.11...v5.1.2) (2023-03-27)
 
 ### [5.1.2-rc.11](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.10...v5.1.2-rc.11) (2023-03-20)
