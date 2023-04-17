@@ -165,10 +165,12 @@ export class FusionStoryWrapperComponent {
     selectedDynamicFilters = [];
 
     onDynamicChipSelect(selected) {
-        this.selectedDynamicFilters = [
-            ...this.selectedDynamicFilters,
-            ...this.dynamicFiltersAll.filter((chipFilter) => (chipFilter.configChip.id === selected.id))
-        ];
+        if (!this.selectedDynamicFilters.some(item => selected.id === item.configChip.id)) {
+            this.selectedDynamicFilters = [
+                ...this.selectedDynamicFilters,
+                ...this.dynamicFiltersAll.filter((chipFilter) => (chipFilter.configChip.id === selected.id))
+            ];
+        }
     }
 
     onDynamicChipRemove(chipIdToRemove) {
@@ -316,10 +318,12 @@ export class FusionStoryWrapperComponent {
     });
 
     onDynamicChipSelect(selected) {
-        this.selectedDynamicFilters = [
-            ...this.selectedDynamicFilters,
-            ...this.dynamicFiltersAll.filter((chipFilter) => (chipFilter.configChip.id === selected.id))
-        ];
+        if (!this.selectedDynamicFilters.some(item => selected.id === item.configChip.id)) {
+            this.selectedDynamicFilters = [
+                ...this.selectedDynamicFilters,
+                ...this.dynamicFiltersAll.filter((chipFilter) => (chipFilter.configChip.id === selected.id))
+            ];
+        }
     }
 
     onDynamicChipRemove(chipIdToRemove) {
@@ -468,10 +472,12 @@ export class FusionStoryWrapperComponent {
 
 
     onDynamicChipSelect(selected) {
-        this.selectedDynamicFilters = [
-            ...this.selectedDynamicFilters,
-            ...this.dynamicFiltersAll.filter((chipFilter) => (chipFilter.configChip.id === selected.id))
-        ];
+        if (!this.selectedDynamicFilters.some(item => selected.id === item.configChip.id)) {
+            this.selectedDynamicFilters = [
+                ...this.selectedDynamicFilters,
+                ...this.dynamicFiltersAll.filter((chipFilter) => (chipFilter.configChip.id === selected.id))
+            ];
+        }
     }
 
     onDynamicChipRemove(chipIdToRemove) {
