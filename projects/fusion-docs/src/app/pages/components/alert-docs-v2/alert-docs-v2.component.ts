@@ -106,26 +106,6 @@ export class AlertDocsV2Component implements OnInit, OnDestroy {
         displayText: filterDynamic.optionsTitleChip
     }));
     // endregion
-
-    /*
-
-    // region first chip - Country (dynamic)
-    fcChip4= new FormControl();
-    configChip4: ChipFilterComponentConfigurations= {id: 4, mode: 'dynamic', close: true};
-    optionsChip4= MOCK_COUNTRIES;
-    placeholderChip4= 'All';
-    optionsTitleChip4= 'Country';
-    // endregion
-
-    // region first chip - Campaigns (dynamic)
-    fcChip5= new FormControl();
-    configChip5: ChipFilterComponentConfigurations= {id: 5, mode: 'dynamic', close: true};
-    optionsChip5= MOCK_CAMPAIGNS;
-    placeholderChip5= 'All';
-    optionsTitleChip5= 'Campaigns';
-    // endregion
-*/
-
     //------------
 
     constructor(private versionService: VersionService, private router: Router, private docLayoutService: DocsLayoutService) {}
@@ -138,6 +118,8 @@ export class AlertDocsV2Component implements OnInit, OnDestroy {
         });
 
         this.docLayoutService.updateLayoutHeaderTitle({text: 'Alerts', type: 'static'});
+
+        this.selectedDynamicFilters = [...this.dynamicFiltersAll];
     }
 
     ngOnDestroy() {
@@ -181,14 +163,12 @@ export class AlertDocsV2Component implements OnInit, OnDestroy {
     }
 
     onDynamicChipSelect(selected) {
-        console.log('::', selected);
         const index = this.dynamicFiltersAll.findIndex(item => item.configChip.id === selected.id);
         this.selectedDynamicFilters = [...this.selectedDynamicFilters, ...[this.dynamicFiltersAll[index]]];
         console.log('==', this.dynamicFiltersAll, this.selectedDynamicFilters);
     }
 
     onDynamicChipRemove(chipIdToRemove) {
-        console.log('remove', chipIdToRemove);
         this.selectedDynamicFilters = [...this.selectedDynamicFilters.filter(chip => chip.configChip.id !== chipIdToRemove)];
         console.log('<<<<', this.selectedDynamicFilters);
     }

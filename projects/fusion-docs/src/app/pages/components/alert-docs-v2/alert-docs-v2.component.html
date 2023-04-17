@@ -23,7 +23,6 @@
                             </fusion-dropdown>
                         </div>
                     </fusion-chip-filter>
-
                     <ng-container *ngFor="let chip of selectedDynamicFilters">
                         <fusion-chip-filter [configuration]="chip.configChip" (onChipRemove)="onDynamicChipRemove($event)">
                             <div class="filter-element">

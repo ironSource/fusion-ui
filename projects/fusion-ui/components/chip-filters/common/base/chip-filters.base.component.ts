@@ -120,7 +120,9 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
             })
             .filter(Boolean);
 
-        this.addFilterControl.setValue(this.preSelectedDynamicOptions);
+        if (this.preSelectedDynamicOptions.length) {
+            this.addFilterControl.setValue(this.preSelectedDynamicOptions);
+        }
     }
 
     private initDynamicFiltersListeners() {
