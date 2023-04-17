@@ -7,7 +7,6 @@
                 <fusion-chip-filters
                     [addFiltersTitle]="addFiltersTitle"
                     [addFilterOptions]="addFilterOptions"
-                    [showAddFilter]="!!dynamicFiltersAll.length"
                     (onDynamicChipSelect)="onDynamicChipSelect($event)"
                 >
                     <fusion-chip-filter [configuration]="configChip1">
@@ -23,6 +22,7 @@
                             </fusion-dropdown>
                         </div>
                     </fusion-chip-filter>
+
                     <ng-container *ngFor="let chip of selectedDynamicFilters">
                         <fusion-chip-filter [configuration]="chip.configChip" (onChipRemove)="onDynamicChipRemove($event)">
                             <div class="filter-element">
@@ -39,27 +39,27 @@
             </div>
         </fusion-example-block>
 
-        <fusion-example-block id="typeBasic" title="Basic">
-            <!--Code-Examples-->
+<!--        <fusion-example-block id="typeBasic" title="Basic">
+            &lt;!&ndash;Code-Examples&ndash;&gt;
             <ng-template fusionExampleBlock="Angular">
                 <fusion-code-block
                     lang="html"
                     class="is-collapsible"
-                    code='<!--type: "info" - Default-->
+                    code='&lt;!&ndash;type: "info" - Default&ndash;&gt;
 <fusion-alert><strong>Heads up!</strong> This alert needs your attention, but it’s not super important
 <a href="#" (click)="linkClicked($event)">Link</a></fusion-alert>
 
-<!--type: "success"-->
+&lt;!&ndash;type: "success"&ndash;&gt;
 <fusion-alert type="success"><strong>Well done!</strong> You successfully read this important alert message
     <a href="#" (click)="linkClicked($event)">Link</a>
 </fusion-alert>
 
-<!--type: "warning"-->
+&lt;!&ndash;type: "warning"&ndash;&gt;
 <fusion-alert type="warning"><strong>Warning!</strong> Better check yourself, you’re not looking too good
     <a href="#" (click)="linkClicked($event)">Link</a>
 </fusion-alert>
 
-<!--type: "error"-->
+&lt;!&ndash;type: "error"&ndash;&gt;
 <fusion-alert type="error"><strong>Oh snap!</strong> Change a few things up and try submitting again
  <a href="#" (click)="linkClicked($event)">Link</a></fusion-alert>
 '
@@ -142,11 +142,11 @@ alert.appendChild(textNode);'
                 >
                 </fusion-code-block>
             </ng-template>
-            <!--Code-Examples-->
+            &lt;!&ndash;Code-Examples&ndash;&gt;
             <div><b>Capitalize pipe:</b> {{someTestVar | capitalize}}</div>
             <div><b>Truncate 10 pipe:</b> {{someTestVar | truncate: 10}}</div>
             <br /><hr/><br />
-            <!--files selector example holder-->
+            &lt;!&ndash;files selector example holder&ndash;&gt;
             <div style="width: 620px; height: 196px; display: block">
                 <fusion-file-csv-upload
                     [loading]="fileInUpload$ | async"
@@ -156,7 +156,7 @@ alert.appendChild(textNode);'
                     (deleteFile)="onFileDelete($event)"
                 ></fusion-file-csv-upload>
             </div>
-            <!--files selector example holder-->
+            &lt;!&ndash;files selector example holder&ndash;&gt;
             <br /><hr/><br />
             <div>
                 <fusion-file-csv-upload class="small"
@@ -207,21 +207,21 @@ alert.appendChild(textNode);'
         </fusion-example-block>
         <br />
         <fusion-example-block id="typeNoClose" title="Without 'close' button">
-            <!--Code-Examples-->
+            &lt;!&ndash;Code-Examples&ndash;&gt;
             <ng-template fusionExampleBlock="Angular">
                 <fusion-code-block
                     lang="html"
                     class="is-collapsible"
-                    code='<!--type: "info" - Default-->
+                    code='&lt;!&ndash;type: "info" - Default&ndash;&gt;
 <fusion-alert [showCloseButton]="false"><strong>Heads up!</strong> This alert needs your attention, but it’s not super important</fusion-alert>
 
-<!--type: "success"-->
+&lt;!&ndash;type: "success"&ndash;&gt;
 <fusion-alert type="success" [showCloseButton]="false"><strong>Well done!</strong> You successfully read this important alert message</fusion-alert>
 
-<!--type: "warning"-->
+&lt;!&ndash;type: "warning"&ndash;&gt;
 <fusion-alert type="warning" [showCloseButton]="false"><strong>Warning!</strong> Better check yourself, you’re not looking too good</fusion-alert>
 
-<!--type: "error"-->
+&lt;!&ndash;type: "error"&ndash;&gt;
 <fusion-alert type="error" [showCloseButton]="false"><strong>Oh snap!</strong> Change a few things up and try submitting again</fusion-alert>
 '
                 ></fusion-code-block>
@@ -306,7 +306,7 @@ alert.appendChild(textNode);'
                 >
                 </fusion-code-block>
             </ng-template>
-            <!--Code-Examples-->
+            &lt;!&ndash;Code-Examples&ndash;&gt;
 
             <div class="row">
                 <div class="col-6">
@@ -342,32 +342,32 @@ alert.appendChild(textNode);'
         </fusion-example-block>
         <br />
         <fusion-example-block id="typeSmall" title="Size Small">
-            <!--Code-Examples-->
+            &lt;!&ndash;Code-Examples&ndash;&gt;
             <ng-template fusionExampleBlock="Angular">
                 <fusion-code-block
                     lang="html"
                     class="is-collapsible"
-                    code='<!--type: "info" - Default-->
+                    code='&lt;!&ndash;type: "info" - Default&ndash;&gt;
 <fusion-alert class="small"><strong>Heads up!</strong> This alert needs your attention, but it’s not super important
 <a href="#" (click)="linkClicked($event)">Link</a></fusion-alert>
 
-<!--type: "success"-->
+&lt;!&ndash;type: "success"&ndash;&gt;
 <fusion-alert class="small" type="success"><strong>Well done!</strong> You successfully read this important alert message
     <a href="#" (click)="linkClicked($event)">Link</a>
 </fusion-alert>
 
-<!--type: "warning"-->
+&lt;!&ndash;type: "warning"&ndash;&gt;
 <fusion-alert class="small" type="warning"><strong>Warning!</strong> Better check yourself, you’re not looking too good
     <a href="#" (click)="linkClicked($event)">Link</a>
 </fusion-alert>
 
-<!--type: "error"-->
+&lt;!&ndash;type: "error"&ndash;&gt;
 <fusion-alert class="small" type="error"><strong>Oh snap!</strong> Change a few things up and try submitting again
  <a href="#" (click)="linkClicked($event)">Link</a></fusion-alert>
 '
                 ></fusion-code-block>
             </ng-template>
-            <!--<ng-template fusionExampleBlock="React">
+            &lt;!&ndash;<ng-template fusionExampleBlock="React">
                 <fusion-code-block
                     lang="js"
                     class="is-collapsible"
@@ -443,8 +443,8 @@ document.body.appendChild(alert);
 alert.appendChild(textNode);'
                 >
                 </fusion-code-block>
-            </ng-template>-->
-            <!--Code-Examples-->
+            </ng-template>&ndash;&gt;
+            &lt;!&ndash;Code-Examples&ndash;&gt;
 
             <div class="row">
                 <div class="col-6">
@@ -503,9 +503,9 @@ alert.appendChild(textNode);'
             </div>
         </fusion-example-block>
 
-        <!--UI-Component Examples-->
+        &lt;!&ndash;UI-Component Examples&ndash;&gt;
 
-        <!--UI-Component Configuration Doc-->
+        &lt;!&ndash;UI-Component Configuration Doc&ndash;&gt;
         <div class="is-example-title">Configuration</div>
         <fusion-example-block id="params" title="Parameters" [collapsible]="false">
             <fusion-code-block
@@ -516,7 +516,7 @@ showCloseButton: boolean                            // default - true"
         </fusion-example-block>
         <fusion-example-block id="events" title="Events" [collapsible]="false">
             <fusion-code-block lang="js" code="closed()"></fusion-code-block>
-        </fusion-example-block>
+        </fusion-example-block>-->
         <!--UI-Component Configuration Doc-->
     </div>
 
