@@ -2,7 +2,7 @@ import {Directive, ElementRef, HostBinding, Inject, Input, OnDestroy, Renderer2}
 import {ITooltipData, TooltipPosition, TooltipType} from './tooltip.entities';
 import {TooltipService} from './tooltip.base.service';
 import {Subject, fromEvent, merge, Observable} from 'rxjs';
-import {filter, take, takeUntil, tap} from 'rxjs/operators';
+import {filter, take, takeUntil} from 'rxjs/operators';
 import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
 import {DOCUMENT} from '@angular/common';
 
@@ -109,7 +109,7 @@ export abstract class TooltipBaseDirective implements OnDestroy {
                     return this.haveToBeClosed(event);
                 })
             )
-            .subscribe((event: MouseEvent) => {
+            .subscribe(() => {
                 this.onHoverEnds();
                 this.clearListeners$.next();
             });
