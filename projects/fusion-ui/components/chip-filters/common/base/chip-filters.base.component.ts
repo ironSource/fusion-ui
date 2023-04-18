@@ -122,7 +122,7 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
                 takeUntil(this.onDestroy$),
                 filter(options => Array.isArray(options)),
                 tap(options => this.onDynamicChipSelect.emit(options[0])),
-                delay(5)
+                delay(50)
             )
             .subscribe((options: DropdownOption[]) => {
                 options.forEach(option => {
