@@ -182,22 +182,6 @@ $smallHeight: 32px;
                 justify-content: center;
                 gap: 8px;
             }
-
-            // todo: custom placeholder - check with studio
-/*            &[type="time"]:before {
-                content: 'hh : mm';
-                color: $fu-light-800;
-                background-color: $fu-light-100;
-                position: absolute;
-                left: 0;
-                right: 0;
-                text-align: center;
-            }
-
-            &[type="time"]:focus:before {
-                width: 0;
-                content: '';
-            }*/
         }
 
         i.fu-input-icon {
