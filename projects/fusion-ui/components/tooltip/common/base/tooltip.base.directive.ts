@@ -1,9 +1,10 @@
-import {Directive, ElementRef, HostBinding, Input, OnDestroy, Renderer2} from '@angular/core';
+import {Directive, ElementRef, HostBinding, Inject, Input, OnDestroy, Renderer2} from '@angular/core';
 import {ITooltipData, TooltipPosition, TooltipType} from './tooltip.entities';
 import {TooltipService} from './tooltip.base.service';
 import {Subject, fromEvent, merge, Observable} from 'rxjs';
-import {take, takeUntil} from 'rxjs/operators';
+import {filter, take, takeUntil, tap} from 'rxjs/operators';
 import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
+import {DOCUMENT} from '@angular/common';
 
 @Directive()
 export abstract class TooltipBaseDirective implements OnDestroy {
@@ -21,6 +22,7 @@ export abstract class TooltipBaseDirective implements OnDestroy {
     @Input() tooltipType: TooltipType = TooltipType.Html;
     @Input() tooltipComponentData: ITooltipData = {};
     @Input() tooltipIcon: IconData;
+    @Input() tooltipPreventToClose = false;
     @HostBinding('attr.title') emptyTooltip = ''; // remove existed title from parent element
 
     private visible = false;
@@ -32,7 +34,12 @@ export abstract class TooltipBaseDirective implements OnDestroy {
     private onMouseEnterObservable$: Observable<MouseEvent>;
     private fusionTooltipContent = '';
 
-    constructor(private elementRef: ElementRef, private tooltipService: TooltipService, private renderer: Renderer2) {}
+    constructor(
+        private elementRef: ElementRef,
+        private tooltipService: TooltipService,
+        private renderer: Renderer2,
+        @Inject(DOCUMENT) private document: Document
+    ) {}
 
     ngOnDestroy() {
         if (this.visible) {
@@ -96,8 +103,13 @@ export abstract class TooltipBaseDirective implements OnDestroy {
     private setMouseListeners(): void {
         fromEvent(this.elementRef.nativeElement, 'click').pipe(takeUntil(this.takeUntil$)).subscribe(this.onClick.bind(this));
         fromEvent(this.elementRef.nativeElement, 'mouseleave')
-            .pipe(take(1))
-            .subscribe(() => {
+            .pipe(
+                take(1),
+                filter((event: MouseEvent) => {
+                    return this.haveToBeClosed(event);
+                })
+            )
+            .subscribe((event: MouseEvent) => {
                 this.onHoverEnds();
                 this.clearListeners$.next();
             });
@@ -109,5 +121,29 @@ export abstract class TooltipBaseDirective implements OnDestroy {
         }
         const nativeElement = this.elementRef.nativeElement;
         return !(nativeElement.className.includes('truncate') && nativeElement.clientWidth >= nativeElement.scrollWidth);
+    }
+
+    haveToBeClosed(event: MouseEvent): boolean {
+        const marginSize = 10;
+        const tooltipEl = this.document.querySelector('fusion-tooltip');
+        let haveToBeClosed = true;
+        if (this.tooltipPreventToClose && !!tooltipEl) {
+            const rectTooltip = tooltipEl.getBoundingClientRect();
+            haveToBeClosed = !(
+                event.x >= rectTooltip.left - marginSize &&
+                event.x <= rectTooltip.right + marginSize &&
+                event.y >= rectTooltip.top - marginSize &&
+                event.y <= rectTooltip.bottom + marginSize
+            );
+            if (!haveToBeClosed) {
+                fromEvent(tooltipEl, 'mouseleave')
+                    .pipe(take(1))
+                    .subscribe(() => {
+                        this.onHoverEnds();
+                        this.clearListeners$.next();
+                    });
+            }
+        }
+        return haveToBeClosed;
     }
 }

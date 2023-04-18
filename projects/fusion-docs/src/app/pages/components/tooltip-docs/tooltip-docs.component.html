@@ -324,7 +324,7 @@ document.addEventListener('DOMContentLoaded', onLoad, false);"
             <div class="row">
                 <div class="col-3">
                     <div class="is-tooltip-example-holder">
-                        <div [tooltipType]="tooltipTypeHtml" fusionTooltip="<div style='color: red'>Here's a tooltip!</div>" [tooltipIcon]="'success'">Tooltip on top</div>
+                        <div [tooltipType]="tooltipTypeHtml" tooltipPreventToClose="true" fusionTooltip="<div style='color: red'>Here's a tooltip!</div>" [tooltipIcon]="'success'">Tooltip on top</div>
                     </div>
                 </div>
                 <div class="col-3">
@@ -338,6 +338,7 @@ document.addEventListener('DOMContentLoaded', onLoad, false);"
                             fusionTooltip="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
                             [tooltipPosition]="tooltipPosition.Left"
                             tooltipWidth="250"
+                            tooltipPreventToClose="true"
                         >
                             Tooltip on left
                         </div>
@@ -351,6 +352,7 @@ document.addEventListener('DOMContentLoaded', onLoad, false);"
             </div>
         </fusion-example-block>
 
+<!--
         <fusion-example-block id="truncate" title="ToolTip With Truncate">
             <fusion-code-block
                 lang="html"
@@ -369,13 +371,13 @@ document.addEventListener('DOMContentLoaded', onLoad, false);"
                         <div fusionTooltip="Tooltip Is Shown" class="truncate" [style.width.px]="60">With Truncate & Small Width</div>
                     </div>
                 </div>
-                <!--<div class="col-6">
+                &lt;!&ndash;<div class="col-6">
                     <div class="is-tooltip-example-holder">
                         <div fusionTooltip="No Tooltip Shown" class="truncate">
                             With Truncate & Full Width
                         </div>
                     </div>
-                </div>-->
+                </div>&ndash;&gt;
             </div>
         </fusion-example-block>
 
@@ -390,8 +392,8 @@ document.addEventListener('DOMContentLoaded', onLoad, false);"
                 class="is-collapsible"
                 code="
 fusion-tooltip {
-    --tooltip-background-color: white;
-    --tooltip-text-color: grey;
+    &#45;&#45;tooltip-background-color: white;
+    &#45;&#45;tooltip-text-color: grey;
 }
                            "
             ></fusion-code-block>
@@ -431,7 +433,7 @@ fusion-tooltip {
                 </div>
             </div>
         </fusion-example-block>
-        <!--UI-Component Configuration Doc-->
+        &lt;!&ndash;UI-Component Configuration Doc&ndash;&gt;
         <div class="is-example-title">Configuration</div>
         <fusion-example-block id="params" title="Parameters" [collapsible]="false">
             <fusion-code-block
@@ -471,6 +473,7 @@ interface ITooltipData {
         <fusion-example-block id="customProperties" title="CSS Custom Properties" [collapsible]="false">
             <fusion-table [columns]="customPropertiesTable.columns" [rows]="customPropertiesTable.rows"> </fusion-table>
         </fusion-example-block>
+-->
     </div>
     </ng-container>
 
