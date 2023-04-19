@@ -1,8 +1,8 @@
 import {Directive, ElementRef, HostBinding, Inject, Input, OnDestroy, Renderer2} from '@angular/core';
 import {ITooltipData, TooltipPosition, TooltipType} from './tooltip.entities';
 import {TooltipService} from './tooltip.base.service';
-import {Subject, fromEvent, merge, Observable} from 'rxjs';
-import {filter, take, takeUntil} from 'rxjs/operators';
+import {Subject, fromEvent, merge, Observable, of} from 'rxjs';
+import {switchMap, take, takeUntil} from 'rxjs/operators';
 import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
 import {DOCUMENT} from '@angular/common';
 
@@ -104,10 +104,10 @@ export abstract class TooltipBaseDirective implements OnDestroy {
         fromEvent(this.elementRef.nativeElement, 'click').pipe(takeUntil(this.takeUntil$)).subscribe(this.onClick.bind(this));
         fromEvent(this.elementRef.nativeElement, 'mouseleave')
             .pipe(
-                take(1),
-                filter((event: MouseEvent) => {
+                switchMap((event: MouseEvent) => {
                     return this.haveToBeClosed(event);
-                })
+                }),
+                take(1)
             )
             .subscribe(() => {
                 this.onHoverEnds();
@@ -123,7 +123,7 @@ export abstract class TooltipBaseDirective implements OnDestroy {
         return !(nativeElement.className.includes('truncate') && nativeElement.clientWidth >= nativeElement.scrollWidth);
     }
 
-    haveToBeClosed(event: MouseEvent): boolean {
+    haveToBeClosed(event: MouseEvent): Observable<Event> {
         const marginSize = 10;
         const tooltipEl = this.document.querySelector('fusion-tooltip');
         let haveToBeClosed = true;
@@ -135,15 +135,7 @@ export abstract class TooltipBaseDirective implements OnDestroy {
                 event.y >= rectTooltip.top - marginSize &&
                 event.y <= rectTooltip.bottom + marginSize
             );
-            if (!haveToBeClosed) {
-                fromEvent(tooltipEl, 'mouseleave')
-                    .pipe(take(1))
-                    .subscribe(() => {
-                        this.onHoverEnds();
-                        this.clearListeners$.next();
-                    });
-            }
         }
-        return haveToBeClosed;
+        return haveToBeClosed ? of(event) : fromEvent(tooltipEl, 'mouseleave');
     }
 }

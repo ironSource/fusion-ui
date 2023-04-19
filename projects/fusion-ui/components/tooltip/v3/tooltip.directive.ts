@@ -11,8 +11,8 @@ import {
 } from '@angular/core';
 import {TooltipContentComponent} from './tooltip.content.component';
 import {IShiftPosition, tooltipConfiguration, TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
-import {fromEvent, Subject} from 'rxjs';
-import {filter, take, takeUntil} from 'rxjs/operators';
+import {fromEvent, Observable, of, Subject} from 'rxjs';
+import {switchMap, takeUntil} from 'rxjs/operators';
 import {TooltipContentDirective} from './tooltip-content.directive';
 
 @Directive({selector: '[fusionTooltip]'})
@@ -72,7 +72,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
         fromEvent(this.tooltipElement, 'mouseleave')
             .pipe(
                 takeUntil(this.onDestroy$),
-                filter((event: MouseEvent) => {
+                switchMap((event: MouseEvent) => {
                     return this.haveToBeClosed(event);
                 })
             )
@@ -226,7 +226,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
         return {tooltipLeft: posLeft, pos: newPosition};
     }
 
-    haveToBeClosed(event: MouseEvent): boolean {
+    haveToBeClosed(event: MouseEvent): Observable<Event> {
         const marginSize = 10;
         let haveToBeClosed = true;
         const tooltipEl = this.elementRef.nativeElement.querySelector('fusion-tooltip-content');
@@ -238,14 +238,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
                 event.y >= rectTooltip.top - marginSize &&
                 event.y <= rectTooltip.bottom + marginSize
             );
-            if (!haveToBeClosed) {
-                fromEvent(tooltipEl, 'mouseleave')
-                    .pipe(take(1))
-                    .subscribe(() => {
-                        this.hideTooltip();
-                    });
-            }
         }
-        return haveToBeClosed;
+        return haveToBeClosed ? of(event) : fromEvent(tooltipEl, 'mouseleave');
     }
 }
