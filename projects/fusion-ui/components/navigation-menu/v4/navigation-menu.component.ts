@@ -65,6 +65,8 @@ export class NavigationMenuComponent implements OnInit {
     constructor(private elementRef: ElementRef, protected cacheService: CacheService) {}
 
     ngOnInit(): void {
+        this.cacheService.set(CacheType.SessionStorage, MENU_CACHE_KEY, false);
+
         fromEvent(this.elementRef.nativeElement, 'mouseleave')
             .pipe(takeUntil(this.onDestroy$))
             .subscribe(this.onNavigationMenuMouseLeave.bind(this));
