@@ -28,7 +28,7 @@ export class LayoutStoryWrapperComponent implements OnInit, OnDestroy {
     private onDestroy$ = new Subject<void>();
 
     ngOnInit() {
-        if (!!this.headerContent.actionData.formControl) {
+        if (!!this.headerContent?.actionData?.formControl) {
             (this.headerContent.actionData.formControl as FormControl).valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(value => {
                 console.log('Header Dynamic Component value changed: ', value);
             });
