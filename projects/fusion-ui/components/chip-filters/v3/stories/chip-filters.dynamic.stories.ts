@@ -222,6 +222,12 @@ export class FusionStoryWrapperComponent {
 
     onDynamicChipRemove(chipIdToRemove) {
         this.selectedDynamicFilters = [...this.selectedDynamicFilters.filter((chip) => (chip.configChip.id !== chipIdToRemove))];
+        this.addFilterOptions = this.dynamicFiltersAll
+          .filter((filter) => (!this.selectedDynamicFilters.some((item) => item.configChip.id === filter.configChip.id)))
+          .map((filterDynamic) => ({
+            id: filterDynamic.configChip.id,
+            displayText: filterDynamic.optionsTitleChip,
+          }));
     }
 }
 const OPTIONS_USERS: DropdownOption[] = ${JSON.stringify(MOCK_USERS)};
@@ -370,6 +376,12 @@ export class FusionStoryWrapperComponent {
 
     onDynamicChipRemove(chipIdToRemove) {
         this.selectedDynamicFilters = [...this.selectedDynamicFilters.filter((chip) => (chip.configChip.id !== chipIdToRemove))];
+        this.addFilterOptions = this.dynamicFiltersAll
+          .filter((filter) => (!this.selectedDynamicFilters.some((item) => item.configChip.id === filter.configChip.id)))
+          .map((filterDynamic) => ({
+            id: filterDynamic.configChip.id,
+            displayText: filterDynamic.optionsTitleChip,
+          }));
     }
 }
 const OPTIONS_USERS: DropdownOption[] = ${JSON.stringify(MOCK_USERS)};
