@@ -2,14 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.2.0-rc.5](https://github.com/ironSource/fusion-ui/compare/v5.1.2...v5.2.0-rc.5) (2023-04-20)
+
+### Features
+
+* **fg-150:** tooltip v1 add prevent to close parameter ([8d04512](https://github.com/ironSource/fusion-ui/commit/8d04512e3ebffb44abd41e6a97330f35a5d6fb7d))
+
 ## [5.2.0-rc.4](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.3...v5.2.0-rc.4) (2023-04-17)
-
-## [5.2.0-rc.3](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.2...v5.2.0-rc.3) (2023-04-17)
-
-## [5.2.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.1...v5.2.0-rc.2) (2023-04-16)
-
-## [5.2.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v5.1.2...v5.2.0-rc.1) (2023-04-16)
-
 
 ### Features
 
