@@ -44,6 +44,17 @@
                     <fusion-icon class="icon-next" [name]="nextIconName"></fusion-icon>
                 </div>
             </div>
+            <div *ngIf="options?.withTimeSelect" class="fu-time-selector">
+                <fusion-checkbox label="Add hours" [formControl]="fcHasTimeSelector"></fusion-checkbox>
+                <div class="fu-time-select-wrapper" *ngIf="fcHasTimeSelector.value">
+                    <div class="fu-start-time-wrapper">
+                        Start <fusion-input [configuration]="inputTimeOptions" [error]="!fcStartTime.valid ? 'required': ''" [formControl]="fcStartTime"></fusion-input>
+                    </div>
+                    <div class="fu-end-time-wrapper">
+                        End <fusion-input [configuration]="inputTimeOptions" [error]="!fcEndTime.valid ? 'required': ''" [formControl]="fcEndTime"></fusion-input>
+                    </div>
+                </div>
+            </div>
             <div *ngIf="!isSingleDatePicker" class="calendarsFooter">
                 <fusion-button class="transparent third small" (click)="close()">Cancel</fusion-button>
                 <fusion-button class="primary small" (click)="apply()">Apply</fusion-button>

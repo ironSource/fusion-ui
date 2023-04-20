@@ -99,6 +99,52 @@ export class FusionStoryWrapperComponent {
 };
 // endregion
 
+// region WithTimeSelector
+const CalendarTimeTemplate: Story<DaterangeComponent> = (args: DaterangeComponent) => ({
+    props: {...args},
+    template: `<div style="height: 380px; width: 320px;">
+        <fusion-daterange
+            [formControl]="formControl"
+            [options]="options"
+        ></fusion-daterange>
+</div>`
+});
+export const WithTimeSelector = CalendarTimeTemplate.bind({});
+WithTimeSelector.args = {
+    formControl: new FormControl() as FormControl<DaterangeSelection>,
+    options: {withTimeSelect: true} as DaterangeOptions
+};
+/*WithTimeSelector.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { DaterangeModule } from '@ironsource/fusion-ui/components/daterange/v3';
+import { DaterangeSelection } from '@ironsource/fusion-ui/components/daterange/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 380px; width: 250px;">
+        <fusion-daterange
+            [formControl]="formControl"
+        ></fusion-daterange>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, DaterangeModule],
+})
+export class FusionStoryWrapperComponent {
+  formControl: FormControl<DaterangeSelection> = new FormControl();
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};*/
+// endregion
+
 // region WithoutPresets
 export const WithoutPresets = CalendarTemplate.bind({});
 WithoutPresets.args = {

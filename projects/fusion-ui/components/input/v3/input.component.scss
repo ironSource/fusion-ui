@@ -461,6 +461,12 @@ $smallHeight: 32px;
     }
 }
 
+:host-context(.fu-time-selector){
+    .fu-error-msg{
+        position: absolute;
+        margin-top: 0;
+    }
+}
 
 /*
 :host-context(div.inputType){

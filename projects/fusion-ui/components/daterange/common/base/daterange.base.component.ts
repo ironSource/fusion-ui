@@ -1,5 +1,5 @@
 import {Directive, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
-import {ControlValueAccessor} from '@angular/forms';
+import {ControlValueAccessor, FormControl, Validators} from '@angular/forms';
 import {DatePipe} from '@angular/common';
 import {BehaviorSubject, Subject} from 'rxjs';
 import {isNullOrUndefined, isSameDates} from '@ironsource/fusion-ui/utils';
@@ -21,6 +21,7 @@ import {DaterangeService} from './daterange.service';
 import {DEFAULT_PLACEHOLDER_TEXT} from './daterange.configuration';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 import {map, takeUntil} from 'rxjs/operators';
+import {InputConfiguration, InputSize} from '@ironsource/fusion-ui/components/input';
 
 @Directive()
 export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, OnDestroy, ControlValueAccessor {
@@ -95,6 +96,15 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     selected$ = new BehaviorSubject<string>('');
     /** @internal */
     defaultPlaceholder = DEFAULT_PLACEHOLDER_TEXT;
+
+    /** @internal for time selector */
+    fcHasTimeSelector = new FormControl<boolean>(false);
+    /** @internal */
+    fcStartTime = new FormControl('00:00', [Validators.required]);
+    /** @internal */
+    fcEndTime = new FormControl('00:00', [Validators.required]);
+    /** @internal */
+    inputTimeOptions: InputConfiguration = {type: 'time', options: {width: '82px', size: 'small' as InputSize}};
 
     protected daterangeOptions: DaterangeOptions;
 
@@ -201,11 +211,12 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     }
     /** @internal */
     apply() {
-        if (this.isOpen$.getValue()) {
+        if (this.isOpen$.getValue() && this.isTimeSelectorValid()) {
             this.isOpen$.next(false);
             if (this.selection?.endDate) {
                 this.selection.endDate;
             }
+
             this.originalSelection = {...this.selection};
             this.setPlaceholder({isOpen: false});
             this.selectionStarted = null;
@@ -214,9 +225,10 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
             const valueToPropagate = this.isSingleDatePicker
                 ? {date: this.originalSelection.startDate}
                 : this.originalSelection?.startDate && this.originalSelection?.endDate
-                ? this.originalSelection
+                ? this.setValueToPropagate(this.originalSelection)
                 : null;
             this.selected$.next(this.getCurrentSelectionFormatted());
+
             this.propagateChange(valueToPropagate);
             this.clearRangeDaysLimit();
         }
@@ -286,9 +298,13 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
             const datePipe = new DatePipe('en-US');
             const startDate = datePipe.transform(this.originalSelection.startDate, this.options.format);
             const endDate = datePipe.transform(this.originalSelection.endDate, this.options.format);
+
+            const startTime = this.fcHasTimeSelector.value ? this.fcStartTime.value : '';
+            const endTime = this.fcHasTimeSelector.value ? this.fcEndTime.value : '';
+
             textToDisplay = isSameDates(this.originalSelection.startDate, this.originalSelection.endDate)
-                ? startDate
-                : `${startDate} - ${endDate}`;
+                ? `${startDate}${startTime ? ' start at  ' + startTime : ''}${endTime ? ' end at ' + endTime : ''}`
+                : `${startDate}${startTime ? ' at ' + startTime : ''} - ${endDate}${endTime ? ' at ' + endTime : ''}`;
         }
         this.currentSelectionFormatted = textToDisplay;
         return textToDisplay;
@@ -402,6 +418,23 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
             this.maxDate = !isNullOrUndefined(this.originalMaxDate) ? this.originalMaxDate : null;
         }
     }
+
+    private isTimeSelectorValid(): boolean {
+        if (this.options?.withTimeSelect) {
+            if (this.fcHasTimeSelector.value) {
+                return this.fcStartTime.valid && this.fcEndTime.valid;
+            }
+        }
+        return true;
+    }
+
+    setValueToPropagate(value: DaterangeSelection): DaterangeSelection {
+        if (this.fcHasTimeSelector.value) {
+            return {...value, startTime: this.fcStartTime.value, endTime: this.fcEndTime.value};
+        }
+        return value;
+    }
+
     /** @internal */
     propagateChange = (_: DaterangeSelection) => {};
     /** @internal */
