@@ -102,7 +102,7 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     /** @internal */
     fcStartTime = new FormControl('00:00', [Validators.required]);
     /** @internal */
-    fcEndTime = new FormControl('00:00', [Validators.required]);
+    fcEndTime = new FormControl('23:59', [Validators.required]);
     /** @internal */
     inputTimeOptions: InputConfiguration = {type: 'time', options: {width: '82px', size: 'small' as InputSize}};
 
