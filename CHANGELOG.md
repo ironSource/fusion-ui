@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.2.0-rc.7](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.6...v5.2.0-rc.7) (2023-04-20)
+
+
+### Features
+
+* **fg-144:** added start time and end time (optionally) for date-range selector ([ca2002a](https://github.com/ironSource/fusion-ui/commit/ca2002a4c1f9ff870a80afdde728cacacdc5f212))
+
 ## [5.2.0-rc.6](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.5...v5.2.0-rc.6) (2023-04-20)
 
 ## [5.2.0-rc.4](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.3...v5.2.0-rc.4) (2023-04-17)
