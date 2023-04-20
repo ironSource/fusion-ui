@@ -122,20 +122,21 @@ WithTimeSelector.parameters = {
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import { DaterangeModule } from '@ironsource/fusion-ui/components/daterange/v3';
-import { DaterangeSelection } from '@ironsource/fusion-ui/components/daterange/entities';
+import { DaterangeSelection, DaterangeOptions } from '@ironsource/fusion-ui/components/daterange/entities';
 
 @Component({
   selector: 'fusion-story-wrapper',
   template: \`<div style="height: 380px; width: 250px;">
         <fusion-daterange
             [formControl]="formControl"
-            [options]="{withTimeSelect: true}"
+            [options]="options"
         ></fusion-daterange>
 </div>\`,
   standalone: true,
   imports: [ReactiveFormsModule, DaterangeModule],
 })
 export class FusionStoryWrapperComponent {
+  options: DaterangeOptions = {withTimeSelect: true};
   formControl: FormControl<DaterangeSelection> = new FormControl();
 }
 `,
@@ -155,7 +156,7 @@ WithTimeSelectorPreselected.args = {
     }) as FormControl<DaterangeSelection>,
     options: {withTimeSelect: true} as DaterangeOptions
 };
-/*WithTimeSelectorPreselected.parameters = {
+WithTimeSelectorPreselected.parameters = {
     docs: {
         source: {
             language: 'typescript',
@@ -163,28 +164,40 @@ WithTimeSelectorPreselected.args = {
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import { DaterangeModule } from '@ironsource/fusion-ui/components/daterange/v3';
-import { DaterangeSelection } from '@ironsource/fusion-ui/components/daterange/entities';
+import { DaterangeSelection, DaterangeOptions } from '@ironsource/fusion-ui/components/daterange/entities';
+
+const TODAY: Date = new Date();
+const DAYS_AGO_3: Date = new Date(TODAY);
+DAYS_AGO_3.setDate(TODAY.getDate() - 2);
+const PRE_SET_OBJECT = {
+  startDate: DAYS_AGO_3,
+  endDate: TODAY,
+  startTime: '12:34',
+  endTime: '18:55',
+};
+
 
 @Component({
   selector: 'fusion-story-wrapper',
   template: \`<div style="height: 380px; width: 250px;">
         <fusion-daterange
             [formControl]="formControl"
-            [options]="{withTimeSelect: true}"
+            [options]="options"
         ></fusion-daterange>
 </div>\`,
   standalone: true,
   imports: [ReactiveFormsModule, DaterangeModule],
 })
 export class FusionStoryWrapperComponent {
-  formControl: FormControl<DaterangeSelection> = new FormControl();
+  options: DaterangeOptions = {withTimeSelect: true};
+  formControl: FormControl<DaterangeSelection> = new FormControl(PRE_SET_OBJECT);
 }
 `,
             format: true,
             type: 'code'
         }
     }
-};*/
+};
 
 // endregion
 
