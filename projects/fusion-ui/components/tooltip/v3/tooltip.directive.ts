@@ -11,8 +11,8 @@ import {
 } from '@angular/core';
 import {TooltipContentComponent} from './tooltip.content.component';
 import {IShiftPosition, tooltipConfiguration, TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
-import {fromEvent, Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {fromEvent, Observable, of, Subject} from 'rxjs';
+import {switchMap, takeUntil} from 'rxjs/operators';
 import {TooltipContentDirective} from './tooltip-content.directive';
 
 @Directive({selector: '[fusionTooltip]'})
@@ -37,8 +37,9 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     backgroundColor: string;
     preventTooltipToClose: boolean = false;
 
+    private visible = false;
     private onDestroy$ = new Subject<void>();
-    private tooltipElementRef: HTMLElement;
+    private tooltipElement: HTMLElement;
     private position = TooltipPosition.Top;
     private tooltipPosition: {
         position: TooltipPosition;
@@ -52,7 +53,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
 
     ngAfterViewInit() {
         this.viewContainerRef = this.viewTriggerContainer ? this.viewTriggerContainer : this.vcr;
-        this.tooltipElementRef = this.preventTooltipToClose
+        this.tooltipElement = this.preventTooltipToClose
             ? this.elementRef.nativeElement
             : !!this.tooltipTriggerElement?.nativeElement
             ? this.tooltipTriggerElement?.nativeElement
@@ -66,14 +67,21 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     }
 
     initListeners() {
-        fromEvent(this.tooltipElementRef, 'mouseenter').pipe(takeUntil(this.onDestroy$)).subscribe(this.showTooltip.bind(this));
+        fromEvent(this.tooltipElement, 'mouseenter').pipe(takeUntil(this.onDestroy$)).subscribe(this.showTooltip.bind(this));
 
-        fromEvent(this.tooltipElementRef, 'mouseleave').pipe(takeUntil(this.onDestroy$)).subscribe(this.hideTooltip.bind(this));
+        fromEvent(this.tooltipElement, 'mouseleave')
+            .pipe(
+                takeUntil(this.onDestroy$),
+                switchMap((event: MouseEvent) => {
+                    return this.haveToBeClosed(event);
+                })
+            )
+            .subscribe(this.hideTooltip.bind(this));
     }
 
     private showTooltip(): void {
         const needToShow = this.calcTruncate();
-        if (!needToShow) {
+        if (!needToShow || this.visible) {
             return;
         }
         if (this.directiveRef && !this.fusionTooltip) {
@@ -90,14 +98,13 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
         const rectTooltip = this.tooltipComponentRef.instance.elementRef.nativeElement.getBoundingClientRect();
         this.setTooltipPosition(this.position, rectTooltip);
         this.setTooltipConfiguration();
+        this.visible = true;
     }
 
     private hideTooltip(): void {
-        const needToHide = this.calcTruncate();
-        if (!needToHide) {
+        if (!this.visible) {
             return;
         }
-
         if (this.directiveRef && !this.fusionTooltip) {
             this.directiveRef.destroy();
             this.tooltipComponentRef = null;
@@ -107,6 +114,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
         } else {
             return;
         }
+        this.visible = false;
     }
 
     private adjustTooltipPosition(position: TooltipPosition, tooltipWidth: number, tooltipHeight: number, hostRect: any): TooltipPosition {
@@ -216,5 +224,21 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
         }
 
         return {tooltipLeft: posLeft, pos: newPosition};
+    }
+
+    haveToBeClosed(event: MouseEvent): Observable<Event> {
+        const marginSize = 10;
+        let haveToBeClosed = true;
+        const tooltipEl = this.elementRef.nativeElement.querySelector('fusion-tooltip-content');
+        if (this.preventTooltipToClose && this.visible && !!tooltipEl) {
+            const rectTooltip = tooltipEl.getBoundingClientRect();
+            haveToBeClosed = !(
+                event.x >= rectTooltip.left - marginSize &&
+                event.x <= rectTooltip.right + marginSize &&
+                event.y >= rectTooltip.top - marginSize &&
+                event.y <= rectTooltip.bottom + marginSize
+            );
+        }
+        return haveToBeClosed ? of(event) : fromEvent(tooltipEl, 'mouseleave');
     }
 }

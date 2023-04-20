@@ -1,6 +1,6 @@
 <div class="chip-filters-container">
     <ng-content></ng-content>
-    <ng-container *ngIf="showAddFilter$ | async">
+    <ng-container *ngIf="(options$ | async).length">
         <fusion-chip-filter [isDynamicContent]="true" [configuration]="{id: addFilterIndex,mode:'add', disabled: (disableAddFilter$ | async)}">
             <div class="fu-chip-content">
                 <span>
