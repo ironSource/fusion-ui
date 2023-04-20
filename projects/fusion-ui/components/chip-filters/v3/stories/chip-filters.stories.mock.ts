@@ -1,4 +1,7 @@
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
+import {FormControl} from '@angular/forms';
+import {ChipFilterComponentConfigurations} from '@ironsource/fusion-ui/components/chip-filter/common/base';
+
 export const MOCK_USERS: DropdownOption[] = [
     {id: 1, displayText: 'Mario Speedwagon'},
     {id: 2, displayText: 'Petey Cruiser'},
@@ -950,3 +953,37 @@ export const MOCK_DUMMY_OPTIONS = Array.from(Array(10).keys()).map(item => {
         displayText: 'Chip filter'
     };
 });
+
+export const MOCK_DYNAMIC_FILTERS = [
+    {
+        fcChip: new FormControl(),
+        configChip: {id: 2, mode: 'dynamic', close: true} as ChipFilterComponentConfigurations,
+        optionsChip: MOCK_COUNTRIES,
+        placeholderChip: 'All',
+        optionsTitleChip: 'Country'
+    },
+    {
+        fcChip: new FormControl(),
+        configChip: {id: 3, mode: 'dynamic', close: true} as ChipFilterComponentConfigurations,
+        optionsChip: MOCK_CAMPAIGNS,
+        placeholderChip: 'All',
+        optionsTitleChip: 'Campaigns'
+    }
+];
+
+export const MOCK_DYNAMIC_PRESELECT_FILTERS = [
+    {
+        fcChip: new FormControl(MOCK_COUNTRIES.slice(2, 5)),
+        configChip: {id: 2, mode: 'dynamic', close: true} as ChipFilterComponentConfigurations,
+        optionsChip: MOCK_COUNTRIES,
+        placeholderChip: 'All',
+        optionsTitleChip: 'Country'
+    },
+    {
+        fcChip: new FormControl(),
+        configChip: {id: 3, mode: 'dynamic', close: true} as ChipFilterComponentConfigurations,
+        optionsChip: MOCK_CAMPAIGNS,
+        placeholderChip: 'All',
+        optionsTitleChip: 'Campaigns'
+    }
+];
