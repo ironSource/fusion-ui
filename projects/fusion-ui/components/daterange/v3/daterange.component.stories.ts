@@ -114,7 +114,7 @@ WithTimeSelector.args = {
     formControl: new FormControl() as FormControl<DaterangeSelection>,
     options: {withTimeSelect: true} as DaterangeOptions
 };
-/*WithTimeSelector.parameters = {
+WithTimeSelector.parameters = {
     docs: {
         source: {
             language: 'typescript',
@@ -129,6 +129,48 @@ import { DaterangeSelection } from '@ironsource/fusion-ui/components/daterange/e
   template: \`<div style="height: 380px; width: 250px;">
         <fusion-daterange
             [formControl]="formControl"
+            [options]="{withTimeSelect: true}"
+        ></fusion-daterange>
+</div>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, DaterangeModule],
+})
+export class FusionStoryWrapperComponent {
+  formControl: FormControl<DaterangeSelection> = new FormControl();
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+
+export const WithTimeSelectorPreselected = CalendarTimeTemplate.bind({});
+WithTimeSelectorPreselected.args = {
+    formControl: new FormControl({
+        startDate: DAYS_AGO_3,
+        endDate: TODAY,
+        startTime: '12:34',
+        endTime: '18:55'
+    }) as FormControl<DaterangeSelection>,
+    options: {withTimeSelect: true} as DaterangeOptions
+};
+/*WithTimeSelectorPreselected.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { DaterangeModule } from '@ironsource/fusion-ui/components/daterange/v3';
+import { DaterangeSelection } from '@ironsource/fusion-ui/components/daterange/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<div style="height: 380px; width: 250px;">
+        <fusion-daterange
+            [formControl]="formControl"
+            [options]="{withTimeSelect: true}"
         ></fusion-daterange>
 </div>\`,
   standalone: true,
@@ -143,6 +185,7 @@ export class FusionStoryWrapperComponent {
         }
     }
 };*/
+
 // endregion
 
 // region WithoutPresets

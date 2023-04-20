@@ -321,6 +321,12 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
                 }
             }
 
+            if (this.options.withTimeSelect && !!value.startTime && !!value.endTime) {
+                this.fcHasTimeSelector.setValue(true);
+                this.fcStartTime.setValue(value.startTime);
+                this.fcEndTime.setValue(value.endTime);
+            }
+
             this.selection = {...value};
 
             if (!!this.selection?.endDate) {
@@ -431,6 +437,8 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     setValueToPropagate(value: DaterangeSelection): DaterangeSelection {
         if (this.fcHasTimeSelector.value) {
             return {...value, startTime: this.fcStartTime.value, endTime: this.fcEndTime.value};
+        } else if (this.options.withTimeSelect) {
+            return {startDate: value.startDate, endDate: value.endDate};
         }
         return value;
     }
