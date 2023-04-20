@@ -4,30 +4,10 @@ All notable changes to this project will be documented in this file. See [commit
 
 ## [5.2.0-rc.6](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.5...v5.2.0-rc.6) (2023-04-20)
 
-## [5.2.0-rc.4](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.3...v5.2.0-rc.4) (2023-04-17)
-
-## [5.2.0-rc.3](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.2...v5.2.0-rc.3) (2023-04-17)
-
-## [5.2.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.1...v5.2.0-rc.2) (2023-04-16)
-
-## [5.2.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v5.1.2...v5.2.0-rc.1) (2023-04-16)
-
-
 ### Features
 
 * **fg-147:** dynamic filters pre-selected in chip-filters ([ffb23c0](https://github.com/ironSource/fusion-ui/commit/ffb23c0424cc87251c8e4d15e7a04e400fe7c172))
-
-## [5.2.0-rc.5](https://github.com/ironSource/fusion-ui/compare/v5.1.2...v5.2.0-rc.5) (2023-04-20)
-
-### Features
-
 * **fg-150:** tooltip v1 add prevent to close parameter ([8d04512](https://github.com/ironSource/fusion-ui/commit/8d04512e3ebffb44abd41e6a97330f35a5d6fb7d))
-
-## [5.2.0-rc.4](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.3...v5.2.0-rc.4) (2023-04-17)
-
-### Features
-
-* **fg-147:** dynamic filters pre-selected in chip-filters ([ffb23c0](https://github.com/ironSource/fusion-ui/commit/ffb23c0424cc87251c8e4d15e7a04e400fe7c172))
 
 ### [5.1.2](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.11...v5.1.2) (2023-03-27)
 
