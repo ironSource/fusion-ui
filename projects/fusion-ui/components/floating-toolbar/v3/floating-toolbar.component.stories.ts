@@ -41,7 +41,8 @@ export default {
     },
     args: {
         counter: 3,
-        label: 'Hello world'
+        label: 'Label',
+        shown: false
     }
 } as Meta<FloatingToolbarComponent>;
 
@@ -49,7 +50,8 @@ const DropdownTemplate: Story<FloatingToolbarComponent> = (args: FloatingToolbar
     props: {...args},
     template: `<fusion-button (click)="shown = !shown"><span>Toggle toolbar</span></fusion-button>
 
-<fusion-floating-toolbar *ngIf="shown"
+<fusion-floating-toolbar
+    [shown]="shown"
     [counter]="counter"
     [label]="label"
     (closeButtonClicked)="shown = false"
@@ -63,7 +65,7 @@ const DropdownTemplate: Story<FloatingToolbarComponent> = (args: FloatingToolbar
 
 // region Default
 export const Default = DropdownTemplate.bind({});
-Default.parameters = {
+/*Default.parameters = {
     docs: {
         source: {
             language: 'typescript',
@@ -95,4 +97,4 @@ export class FusionStoryWrapperComponent {
             type: 'code'
         }
     }
-};
+};*/

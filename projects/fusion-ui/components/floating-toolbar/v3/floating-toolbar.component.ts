@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, OnInit, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 
@@ -13,11 +13,21 @@ import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 export class FloatingToolbarComponent implements OnInit {
     @Input() counter: number;
     @Input() label: string;
-    @Output() closeButtonClicked = new EventEmitter();
+    @Input() shown: boolean;
+
+    @Output() closeButtonClicked = new EventEmitter<boolean>();
+
+    @HostBinding('class.fu-open') get isOpen(): boolean {
+        return this.shown;
+    }
 
     closeIcon: IconData = {iconName: 'close', iconVersion: 'v3'};
 
     constructor() {}
 
     ngOnInit(): void {}
+
+    onCloseClicked() {
+        this.closeButtonClicked.emit(this.shown);
+    }
 }
