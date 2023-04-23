@@ -10,9 +10,9 @@ $bottomPosition: 2.5rem;
     @extend %reset;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: var(--floating-toolbar-gap, 8px);
     height: $floatingToolbarHeight;
-    background-color: $fu-black-900;
+    background-color: var(--floating-toolbar-background-color, $fu-black-900);
     box-shadow: $boxShadow;
     border-radius: 12px;
     overflow: hidden;
@@ -22,26 +22,28 @@ $bottomPosition: 2.5rem;
     bottom: $bottomPosition;
     left: 50%;
 
-
     .fu-floating-bar-counter{
-        @include size(32px);
+        height: 32px;
+        min-width: 32px;
+        padding: 0 5px;
         display: flex;
         align-items: center;
         justify-content: center;
         border-radius: 16px;
-        background-color: $fu-black-500;
-        color: $White;
+        background-color: var(--floating-toolbar-counter-background-color, $fu-black-500);
+        color: var(--floating-toolbar-counter-color, $White);
     }
 
     .fu-floating-bar-label{
         @extend %font-bodyMediumStrong;
-        color: $White;
+        color: var(--floating-toolbar-label-color, $White);
     }
 
     .fu-floating-bar-content{
         display: flex;
         align-items: center;
         justify-content: center;
+        gap: var(--floating-toolbar-gap, 8px);
     }
 
     .fu-floating-bar-close{
@@ -49,14 +51,14 @@ $bottomPosition: 2.5rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        @include icon-style('fu-floating-bar-close-icon', $fu-light-600, 1rem, true, true){
+        @include icon-style('fu-floating-bar-close-icon', var(--floating-toolbar-close-icon-color, $fu-light-600), 1rem, true, true){
             @include size(1em);
         };
         &:hover{
             cursor: pointer;
-            @include icon-style('fu-floating-bar-close-icon', $fu-light-100, 1rem, true, true)
+            @include icon-style('fu-floating-bar-close-icon', var(--floating-toolbar-close-icon-hover-color, $fu-light-100), 1rem, true, true)
         }
-        border-left: solid 1px #000000;
+        border-left: solid 1px var(--floating-toolbar-close-inner-border-color, #000000);
         position: relative;
         &::before{
             position: absolute;
@@ -64,7 +66,7 @@ $bottomPosition: 2.5rem;
             content: '';
             height: 3.5rem;
             width: 1px;
-            background-color: white;
+            background-color: var(--floating-toolbar-close-external-border-color, $White);
             opacity: .2;
         }
     }

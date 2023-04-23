@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 
@@ -11,6 +11,9 @@ import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FloatingToolbarComponent implements OnInit {
+    @Input() counter: number;
+    @Input() label: string;
+
     closeIcon: IconData = {iconName: 'close', iconVersion: 'v3'};
 
     constructor() {}

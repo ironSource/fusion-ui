@@ -22,14 +22,37 @@ export default {
         },
         docs: {
             description: {
-                component: dedent`**Floating toolbar** Floating bar is a context floating toolbar. It saves space from constantly showing contextual toolbar or confirmation footer in some components. In others like table it’s almost unreplaceble when you need to apply multi-actions to the selected items. In some cases it’s simply good to have.`
+                component: dedent`**Floating toolbar** Floating bar is a context floating toolbar. It saves space from constantly showing contextual toolbar or confirmation footer in some components. In others like table it’s almost unreplaceble when you need to apply multi-actions to the selected items. In some cases it’s simply good to have.
+
+                CSS Variables:
+                - ***--floating-toolbar-gap*** (8px);
+                - ***--floating-toolbar-background-color*** $fu-black-900 (#41454D);
+                - ***--floating-toolbar-counter-background-color*** $fu-black-500 (#53575B);
+                - ***--floating-toolbar-counter-color*** $White (#ffffff);
+                - ***--floating-toolbar-label-color*** $White (#ffffff);
+                - ***--floating-toolbar-close-icon-color*** $fu-light-600 (#B7BBC0);
+                - ***--floating-toolbar-close-icon-hover-color*** $fu-light-100 (#F1F3F4);
+                - ***--floating-toolbar-close-inner-border-color*** #000000;
+                - ***--floating-toolbar-close-external-border-color*** $White (#ffffff);
+                `
             }
         }
+    },
+    args: {
+        counter: 3,
+        label: 'Hello world'
     }
 } as Meta<FloatingToolbarComponent>;
 
 const DropdownTemplate: Story<FloatingToolbarComponent> = (args: FloatingToolbarComponent) => ({
-    props: {...args}
+    props: {...args},
+    template: `
+<fusion-floating-toolbar
+    [counter]="counter"
+    [label]="label"
+>
+
+</fusion-floating-toolbar>`
 });
 
 // region Default
