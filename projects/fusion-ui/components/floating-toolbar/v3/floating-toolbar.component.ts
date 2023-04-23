@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 
@@ -10,7 +10,7 @@ import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
     styleUrls: ['./floating-toolbar.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FloatingToolbarComponent implements OnInit {
+export class FloatingToolbarComponent {
     @Input() counter: number;
     @Input() label: string;
     @Input() shown: boolean;
@@ -22,10 +22,6 @@ export class FloatingToolbarComponent implements OnInit {
     }
 
     closeIcon: IconData = {iconName: 'close', iconVersion: 'v3'};
-
-    constructor() {}
-
-    ngOnInit(): void {}
 
     onCloseClicked() {
         this.closeButtonClicked.emit(this.shown);
