@@ -65,18 +65,21 @@ const DropdownTemplate: Story<FloatingToolbarComponent> = (args: FloatingToolbar
 
 // region Default
 export const Default = DropdownTemplate.bind({});
-/*Default.parameters = {
+Default.parameters = {
     docs: {
         source: {
             language: 'typescript',
             code: dedent`
 import { Component } from '@angular/core';
+import { ButtonModule } from '@ironsource/fusion-ui/components/button';
+import { FloatingToolbarComponent } from '@ironsource/fusion-ui/components/floating-toolbar';
 
 @Component({
   selector: 'fusion-story-wrapper',
   template: \`<fusion-button (click)="shown = !shown"><span>Toggle toolbar</span></fusion-button>
 
-<fusion-floating-toolbar *ngIf="shown"
+<fusion-floating-toolbar
+    [shown]="shown"
     [counter]="counter"
     [label]="label"
     (closeButtonClicked)="shown = false"
@@ -87,14 +90,16 @@ import { Component } from '@angular/core';
     <fusion-button icon="frame" class="transparent ghost"></fusion-button>
 </fusion-floating-toolbar>\`,
   standalone: true,
-  imports: [ReactiveFormsModule, DaterangeModule],
+  imports: [ButtonModule, FloatingToolbarComponent],
 })
 export class FusionStoryWrapperComponent {
-
+    shown = false;
+    counter = 3;
+    label = 'Label';
 }
 `,
             format: true,
             type: 'code'
         }
     }
-};*/
+};
