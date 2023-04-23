@@ -5,6 +5,7 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {FloatingToolbarComponent} from '@ironsource/fusion-ui/components/floating-toolbar';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button';
 
 export default {
     title: 'Components/Floating toolbar',
@@ -12,7 +13,7 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule]
+            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, ButtonModule]
         })
     ],
     parameters: {
@@ -46,14 +47,52 @@ export default {
 
 const DropdownTemplate: Story<FloatingToolbarComponent> = (args: FloatingToolbarComponent) => ({
     props: {...args},
-    template: `
-<fusion-floating-toolbar
+    template: `<fusion-button (click)="shown = !shown"><span>Toggle toolbar</span></fusion-button>
+
+<fusion-floating-toolbar *ngIf="shown"
     [counter]="counter"
     [label]="label"
+    (closeButtonClicked)="shown = false"
 >
-
+    <fusion-button icon="frame" class="transparent ghost"><span>Button</span></fusion-button>
+    <fusion-button icon="frame" class="transparent ghost"><span>Button</span></fusion-button>
+    <fusion-button icon="frame" class="transparent ghost"><span>Button</span></fusion-button>
+    <fusion-button icon="frame" class="transparent ghost"></fusion-button>
 </fusion-floating-toolbar>`
 });
 
 // region Default
 export const Default = DropdownTemplate.bind({});
+Default.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<fusion-button (click)="shown = !shown"><span>Toggle toolbar</span></fusion-button>
+
+<fusion-floating-toolbar *ngIf="shown"
+    [counter]="counter"
+    [label]="label"
+    (closeButtonClicked)="shown = false"
+>
+    <fusion-button icon="frame" class="transparent ghost"><span>Button</span></fusion-button>
+    <fusion-button icon="frame" class="transparent ghost"><span>Button</span></fusion-button>
+    <fusion-button icon="frame" class="transparent ghost"><span>Button</span></fusion-button>
+    <fusion-button icon="frame" class="transparent ghost"></fusion-button>
+</fusion-floating-toolbar>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, DaterangeModule],
+})
+export class FusionStoryWrapperComponent {
+
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};

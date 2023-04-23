@@ -2,7 +2,6 @@
 @import '../../../src/style/scss/v3/vars/border';
 @import '../../../src/style/scss/v3/mixins/mixins';
 
-
 $floatingToolbarHeight: 3.5rem;
 $bottomPosition: 2.5rem;
 
@@ -17,12 +16,15 @@ $bottomPosition: 2.5rem;
     border-radius: 12px;
     overflow: hidden;
     padding: 12px 0 12px 12px;
+
     position: fixed;
     z-index: getZIndexLayerOffset(system, 10);
     bottom: $bottomPosition;
     left: 50%;
+    transform: translate(-50%, 0);
 
     .fu-floating-bar-counter{
+        @extend %font-bodyMediumStrong;
         height: 32px;
         min-width: 32px;
         padding: 0 5px;
@@ -44,6 +46,8 @@ $bottomPosition: 2.5rem;
         align-items: center;
         justify-content: center;
         gap: var(--floating-toolbar-gap, 8px);
+        margin-left: 8px;
+        margin-right: 17px;
     }
 
     .fu-floating-bar-close{
