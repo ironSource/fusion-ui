@@ -39,6 +39,7 @@ export * from '@ironsource/fusion-ui/components/sidebar/v2';
 export * from '@ironsource/fusion-ui/components/status-label';
 export * from '@ironsource/fusion-ui/components/fusion-base';
 export * from '@ironsource/fusion-ui/components/svg';
+export * from '@ironsource/fusion-ui/components/floating-toolbar';
 export * from '@ironsource/fusion-ui/components/switcher';
 export * from '@ironsource/fusion-ui/components/table';
 export * from '@ironsource/fusion-ui/components/tabs';
