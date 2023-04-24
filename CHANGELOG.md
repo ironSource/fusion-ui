@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.2.0-rc.8](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.7...v5.2.0-rc.8) (2023-04-24)
+
+
+### Features
+
+* **fg-140:** added new component - floating toolbar ([b8f6783](https://github.com/ironSource/fusion-ui/commit/b8f67837f4dba9b90cc3227364c555c3715b80b2))
+* **fg-140:** added new component - floating toolbar ([a805cbf](https://github.com/ironSource/fusion-ui/commit/a805cbfacad9e966577fc66aa604a993ce988c65))
+
 ## [5.2.0-rc.7](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.6...v5.2.0-rc.7) (2023-04-20)
 
 
