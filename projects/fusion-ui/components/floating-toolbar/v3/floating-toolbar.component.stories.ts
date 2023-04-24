@@ -84,10 +84,10 @@ import { FloatingToolbarComponent } from '@ironsource/fusion-ui/components/float
     [label]="label"
     (closeButtonClicked)="shown = false"
 >
-    <fusion-button icon="frame" class="transparent ghost"><span>Button</span></fusion-button>
-    <fusion-button icon="frame" class="transparent ghost"><span>Button</span></fusion-button>
-    <fusion-button icon="frame" class="transparent ghost"><span>Button</span></fusion-button>
-    <fusion-button icon="frame" class="transparent ghost"></fusion-button>
+    <fusion-button icon="frame" class="transparent ghost" (click)="onActionClicked(1)"><span>Button</span></fusion-button>
+    <fusion-button icon="frame" class="transparent ghost" (click)="onActionClicked(2)"><span>Button</span></fusion-button>
+    <fusion-button icon="frame" class="transparent ghost" (click)="onActionClicked(3)"><span>Button</span></fusion-button>
+    <fusion-button icon="frame" class="transparent ghost" (click)="onActionClicked(4)"></fusion-button>
 </fusion-floating-toolbar>\`,
   standalone: true,
   imports: [ButtonModule, FloatingToolbarComponent],
@@ -96,6 +96,10 @@ export class FusionStoryWrapperComponent {
     shown = false;
     counter = 3;
     label = 'Label';
+
+    onActionClicked(actionNumber: number){
+        console.log('Action button ' + actionNumber + ' clicked');
+    }
 }
 `,
             format: true,

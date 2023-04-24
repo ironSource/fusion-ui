@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, OnInit, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 
@@ -21,9 +21,11 @@ export class FloatingToolbarComponent {
         return this.shown;
     }
 
+    /** @internal */
     closeIcon: IconData = {iconName: 'close', iconVersion: 'v3'};
 
-    onCloseClicked() {
+    /** @internal */
+    closeClicked() {
         this.closeButtonClicked.emit(this.shown);
     }
 }

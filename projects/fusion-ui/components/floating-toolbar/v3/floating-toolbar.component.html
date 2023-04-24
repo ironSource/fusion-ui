@@ -2,7 +2,7 @@
     <div class="fu-floating-bar-counter" *ngIf="!!counter">{{counter}}</div>
     <div class="fu-floating-bar-label" *ngIf="label">{{label}}</div>
     <div class="fu-floating-bar-content"><ng-content></ng-content></div>
-    <div class="fu-floating-bar-close" (click)="onCloseClicked()">
+    <div class="fu-floating-bar-close" (click)="closeClicked()">
         <fusion-icon class="fu-floating-bar-close-icon" [name]="closeIcon"></fusion-icon>
     </div>
 </div>
