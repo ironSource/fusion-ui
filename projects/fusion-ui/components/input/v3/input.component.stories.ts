@@ -17,6 +17,7 @@ const defaultInputConfig: InputConfiguration = {
     placeholder: 'Placeholder text'
 };
 const inputFormControl = new FormControl();
+const inputTimeFormControl = new FormControl('14:34');
 const inputFormControlWithValue = new FormControl('Hello world!');
 const inputFormControlPassword = new FormControl('qwerty');
 // endregion
@@ -132,6 +133,16 @@ TypePassword.args = {
 export const TypeNumber = InputTemplate.bind({});
 TypeNumber.args = {
     configuration: {...defaultInputConfig, ...{type: 'number'}},
+    formControl: inputFormControl
+};
+
+const InputTimeTemplate: Story<InputComponent> = (args: InputComponent) => ({
+    props: {...args},
+    template: `<fusion-input [configuration]="configuration" [formControl]="formControl"></fusion-input>`
+});
+export const TypeTime = InputTimeTemplate.bind({});
+TypeTime.args = {
+    configuration: {type: 'time', options: {width: '82px'}},
     formControl: inputFormControl
 };
 

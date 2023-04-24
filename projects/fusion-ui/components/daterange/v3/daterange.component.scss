@@ -78,6 +78,30 @@ $selectHolderHeight: 39px;
             .next {
                 right: 4px;
             }
+
+            .fu-time-selector{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                color: $fu-black-500;
+                margin-bottom: 16px;
+                padding-left: 9px;
+                padding-right: 9px;
+                min-height: 32px;
+                .fu-time-select-wrapper{
+                    display: flex;
+                    margin-left: auto;
+                    gap: 24px;
+                    .fu-start-time-wrapper,
+                    .fu-end-time-wrapper{
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        gap: 8px;
+                        @extend %font-bodySmall;
+                    }
+                }
+            }
         }
 
         .presetsWrap {
