@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.2.0-rc.9](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.8...v5.2.0-rc.9) (2023-04-25)
+
+
+### Features
+
+* **fg-152:** add state disabled for dropdown v1 option ([9ee6093](https://github.com/ironSource/fusion-ui/commit/9ee60931e147ac59bac9975af762654d27d67b9a))
+
 ## [5.2.0-rc.8](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.7...v5.2.0-rc.8) (2023-04-24)
 
 

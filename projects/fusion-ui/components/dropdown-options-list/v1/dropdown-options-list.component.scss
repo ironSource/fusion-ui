@@ -19,5 +19,8 @@
             @extend %font13;
             color: $light-800;
         }
+        &.is-disabled{
+            pointer-events: none;
+        }
     }
 }
