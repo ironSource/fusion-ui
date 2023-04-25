@@ -2,7 +2,7 @@
     <div class="header-control">
         <div class="content-col-left">
             <div class="body-header">
-                <label class="option-header-body" *ngIf="!isPendingItems">
+                <label class="option-header-body" *ngIf="!isPendingItems && hasSelectAll">
                     <fusion-checkbox
                         class="fu-check-all"
                         [isIndeterminate]="isIndeterminate"
