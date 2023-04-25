@@ -185,3 +185,7 @@
 :host-context(li.option.is-focused)dropdown-option.component.ts {
     background: $light-100;
 }
+
+:host-context(li.option.is-disabled){
+    color: $light-800;
+}
