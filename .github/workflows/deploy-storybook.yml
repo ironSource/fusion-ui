@@ -49,10 +49,6 @@ jobs:
       - name: Build storybook static
         run: npm run build-storybook
 
-      - name: Check AWS cli
-        run: |
-          echo "$(command -v aws)"
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
