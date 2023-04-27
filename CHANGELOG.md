@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.2.0-rc.10](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.9...v5.2.0-rc.10) (2023-04-27)
+
+
+### Features
+
+* **fg-145-146:** add option "hasSelectAll" to the dropdown-dual-multi-select component (v2 and v3) ([fcdba57](https://github.com/ironSource/fusion-ui/commit/fcdba578dc151b557cf76c0e25e7dc9307db471f))
+* **fg-145-146:** add story for option "hasSelectAll" to the dropdown-dual-multi-select ([d1eccde](https://github.com/ironSource/fusion-ui/commit/d1eccde0f11a40ee27ec0aae9af93f7f24f6115a))
+* **fg-145-146:** add story for option "isAllRowsSelectable" to the table ([44c2274](https://github.com/ironSource/fusion-ui/commit/44c227441d364f07348a5c2d9407d8b684f9c975))
+
 ## [5.2.0-rc.9](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.8...v5.2.0-rc.9) (2023-04-25)
 
 
