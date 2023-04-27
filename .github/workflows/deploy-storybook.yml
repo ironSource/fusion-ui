@@ -52,10 +52,7 @@ jobs:
       - name: Install AWS cli
         run: |
           if ! [ -x "$(command -v aws)" ]; then
-             echo "AWS Installed"
-#            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip" -o "awscliv2.zip"
-#            unzip awscliv2.zip
-#            sudo  ./aws/install
+             echo "AWS NOT Installed"
           fi
 
       - name: Configure AWS credentials
