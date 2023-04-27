@@ -802,8 +802,7 @@ const TableCheckboxTemplate: Story<TableComponent> = (args: TableComponent) => (
 export const Checkbox = TableCheckboxTemplate.bind({});
 Checkbox.args = {
     columns: TABLE_CHECKBOX_COLUMNS_CONFIG,
-    rows: ROWS_CHECKBOX_DATA,
-    options: {...TABLE_DEFAULT_OPTIONS, isAllRowsSelectable: false}
+    rows: ROWS_CHECKBOX_DATA
 };
 Checkbox.parameters = {
     docs: {
@@ -824,21 +823,9 @@ Checkbox.parameters = {
 export const CheckboxWithoutSelectAll = TableCheckboxTemplate.bind({});
 CheckboxWithoutSelectAll.args = {
     columns: TABLE_CHECKBOX_COLUMNS_CONFIG,
-    rows: ROWS_CHECKBOX_DATA
+    rows: ROWS_CHECKBOX_DATA,
+    options: {...TABLE_DEFAULT_OPTIONS, isAllRowsSelectable: false}
 };
-/*CheckboxWithoutSelectAll.parameters = {
-    docs: {
-        description: {
-            story: dedent`
-            **Rows Selectable** table add possibility to select all or some rows.
-            you need add to columns configuration column type "Checkbox":
-            \`{key: 'selected', type: TableColumnTypeEnum.Checkbox, width: '32px'},\`
-            and in **row** data add data for checkbox state:
-            \`{selected: false, id: 1, name: 'Leanne Graham', username: 'Bret', email: 'Sincere@april.biz', website: 'hildegard.org'}\`
-            `
-        }
-    }
-};*/
 // endregion
 
 // region With Toggle
