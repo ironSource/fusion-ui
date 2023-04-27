@@ -33,6 +33,15 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     @Input() title: string;
     /** @internal */
     @Input() pendingItems: boolean = false;
+    /** @internal */
+    @Input() set hasSelectAll(value: boolean) {
+        if (!isNullOrUndefined(value)) {
+            this._hasSelectAll = value;
+        }
+    }
+    get hasSelectAll(): boolean {
+        return this._hasSelectAll;
+    }
 
     @Input() set placeholder(data: string) {
         this.placeholder$.next(data);
@@ -126,6 +135,8 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     private backendPaginationState: BackendPagination;
     private backendPaginationTotalResult: number;
     private backendPaginationPageNumber = 1;
+    private _hasSelectAll = true;
+
     /** @internal */
     loadingLeft$ = new BehaviorSubject<boolean>(false);
 

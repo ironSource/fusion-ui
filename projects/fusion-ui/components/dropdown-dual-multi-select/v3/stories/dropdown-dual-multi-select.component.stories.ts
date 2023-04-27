@@ -71,6 +71,7 @@ const DropdownIncludeExcludeTemplate: Story<DropdownDualMultiSelectComponent> = 
     [formControl]="formControl"
     [items]="items"
     [pendingItems]="pendingItems"
+    [hasSelectAll]="hasSelectAll"
     [isDisabled]="isDisabled"
  ></fusion-dropdown-dual-multi-select>
 </div>`
@@ -333,6 +334,53 @@ export class FusionStoryWrapperComponent {
     formControl = new FormControl();
     items: DropdownOption[] = [];
     isDisabled = false;
+}
+            `,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion
+
+// region WithoutSelectAll
+export const WithoutSelectAll = DropdownIncludeExcludeTemplate.bind({});
+WithoutSelectAll.args = {
+    formControl: new FormControl([]),
+    hasSelectAll: false
+};
+WithoutSelectAll.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { DropdownDualMultiSelectModule } from "@ironsource/fusion-ui/components/dropdown-dual-multi-select";
+import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<fusion-dropdown-dual-multi-select
+    [title]="title"
+    [placeholder]="placeholder"
+    [selectedItemName]="selectedItemName"
+    [formControl]="formControl"
+    [items]="items"
+    [isDisabled]="isDisabled"
+    [hasSelectAll]="hasSelectAll"
+ ></fusion-dropdown-dual-multi-select>\`,
+  standalone: true,
+  imports: [ReactiveFormsModule, DropdownDualMultiSelectModule],
+})
+export class FusionStoryWrapperComponent {
+    title = 'Label name';
+    placeholder = 'Select items';
+    selectedItemName = {singular: 'Item', plural: 'Items'};
+    formControl = new FormControl();
+    items: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS)};
+    isDisabled = false;
+    hasSelectAll = false;
 }
             `,
             format: true,
