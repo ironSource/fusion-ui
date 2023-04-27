@@ -49,8 +49,16 @@ jobs:
       - name: Build storybook static
         run: npm run build-storybook
 
+      - name: Install AWS cli
+        run: |
+          if ! [ -x "$(command -v aws)" ]; then
+            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip" -o "awscliv2.zip"
+            unzip awscliv2.zip
+            sudo  ./aws/install
+          fi
+
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
+        uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-region: us-east-1
 
