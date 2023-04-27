@@ -49,12 +49,6 @@ jobs:
       - name: Build storybook static
         run: npm run build-storybook
 
-      - name: Install AWS cli
-        run: |
-          if ! [ -x "$(command -v aws)" ]; then
-             echo "AWS NOT Installed"
-          fi
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
