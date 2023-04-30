@@ -76,9 +76,6 @@ export class NavigationMenuComponent implements OnInit {
 
     onMenuItemClicked(menuItem, popMenuItem = false) {
         if (!popMenuItem) {
-            if (isNullOrUndefined(this.selectedPrimaryMenuItem)) {
-                this.isSecondaryMenuExpandable = false;
-            }
             if (this.selectedPrimaryMenuItem !== this.preSelectedPrimaryMenuItem) {
                 this.selectedPrimaryMenuItem = this.preSelectedPrimaryMenuItem;
                 this.selectedSecondaryMenuItem = menuItem;
@@ -117,6 +114,9 @@ export class NavigationMenuComponent implements OnInit {
                 this.selectedPrimaryMenuItem = this.preSelectedPrimaryMenuItem;
                 this.primaryMenu.setSelectedPrimaryMenuItem(this.selectedPrimaryMenuItem);
                 this.menuItemClicked.emit({name: selectedNetwork.menuTitle, route: selectedNetwork.route});
+                if (selectedNetwork.type === NavigationBarItemType.Home) {
+                    this.cacheService.remove(CacheType.SessionStorage, MENU_CACHE_KEY);
+                }
             } else {
                 this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, true);
             }
