@@ -24,6 +24,7 @@ $pageHeaderHeight: 64px;
                 height: calc(100vh - var(--lauout-header-height, #{$pageHeaderHeight}));
                 overflow-y: auto;
                 .page-view {
+                    height: 100%;
                     .app-route-content-holder{
                         height: 100%;
                     }
