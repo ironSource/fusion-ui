@@ -2,6 +2,52 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.2.0-rc.11](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.10...v5.2.0-rc.11) (2023-04-30)
+
+
+### Features
+
+* **fg-153:** set search input in focus on dropdown include-exclude ([fe597c8](https://github.com/ironSource/fusion-ui/commit/fe597c8e478d6aafb9e75c9e301ddb2cdead70ad))
+
+## [5.2.0-rc.10](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.9...v5.2.0-rc.10) (2023-04-27)
+
+
+### Features
+
+* **fg-145-146:** add option "hasSelectAll" to the dropdown-dual-multi-select component (v2 and v3) ([fcdba57](https://github.com/ironSource/fusion-ui/commit/fcdba578dc151b557cf76c0e25e7dc9307db471f))
+* **fg-145-146:** add story for option "hasSelectAll" to the dropdown-dual-multi-select ([d1eccde](https://github.com/ironSource/fusion-ui/commit/d1eccde0f11a40ee27ec0aae9af93f7f24f6115a))
+* **fg-145-146:** add story for option "isAllRowsSelectable" to the table ([44c2274](https://github.com/ironSource/fusion-ui/commit/44c227441d364f07348a5c2d9407d8b684f9c975))
+
+## [5.2.0-rc.9](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.8...v5.2.0-rc.9) (2023-04-25)
+
+
+### Features
+
+* **fg-152:** add state disabled for dropdown v1 option ([9ee6093](https://github.com/ironSource/fusion-ui/commit/9ee60931e147ac59bac9975af762654d27d67b9a))
+
+## [5.2.0-rc.8](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.7...v5.2.0-rc.8) (2023-04-24)
+
+
+### Features
+
+* **fg-140:** added new component - floating toolbar ([b8f6783](https://github.com/ironSource/fusion-ui/commit/b8f67837f4dba9b90cc3227364c555c3715b80b2))
+* **fg-140:** added new component - floating toolbar ([a805cbf](https://github.com/ironSource/fusion-ui/commit/a805cbfacad9e966577fc66aa604a993ce988c65))
+
+## [5.2.0-rc.7](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.6...v5.2.0-rc.7) (2023-04-20)
+
+
+### Features
+
+* **fg-144:** added start time and end time (optionally) for date-range selector ([ca2002a](https://github.com/ironSource/fusion-ui/commit/ca2002a4c1f9ff870a80afdde728cacacdc5f212))
+
+## [5.2.0-rc.6](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.5...v5.2.0-rc.6) (2023-04-20)
+
+### Features
+
+* **fg-147:** dynamic filters pre-selected in chip-filters ([ffb23c0](https://github.com/ironSource/fusion-ui/commit/ffb23c0424cc87251c8e4d15e7a04e400fe7c172))
+* **fg-150:** tooltip v1 add prevent to close parameter ([8d04512](https://github.com/ironSource/fusion-ui/commit/8d04512e3ebffb44abd41e6a97330f35a5d6fb7d))
+
+
 ## [5.2.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.1.2...v5.2.0-rc.0) (2023-04-13)
 
 

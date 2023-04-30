@@ -78,14 +78,6 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
         }
     }
     /** @internal */
-    @Input() set isVisible(value: boolean) {
-        if (!value) {
-            this.renderer.setStyle(this.element.nativeElement, 'display', 'none');
-        } else {
-            this.renderer.setStyle(this.element.nativeElement, 'display', 'block');
-        }
-    }
-    /** @internal */
     @Input() set isDynamicContent(value: boolean) {
         this.isDefaultContent = !value;
     }
@@ -165,10 +157,6 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
             this.apiBase.templateRef = this.ref;
             this.apiBase.isComponentDisabled$.next(this.disabled);
         }
-
-        if (this.mode === 'dynamic') {
-            this.renderer.setStyle(this.element.nativeElement, 'display', 'none');
-        }
     }
 
     ngAfterViewInit() {
@@ -186,9 +174,6 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     /** @internal */
     closeClicked($event) {
         $event.stopPropagation();
-        if (this.mode === 'dynamic') {
-            this.renderer.setStyle(this.element.nativeElement, 'display', 'none');
-        }
 
         this.selected = false;
         this.setChipType(this.selected);

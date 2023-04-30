@@ -10,6 +10,8 @@ import {DaterangeService} from '@ironsource/fusion-ui/components/daterange/commo
 import {CalendarModule} from '@ironsource/fusion-ui/components/calendar/v3';
 import {DropdownSelectModule} from '@ironsource/fusion-ui/components/dropdown-select/v3';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v3';
+import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox';
+import {InputModule} from '@ironsource/fusion-ui/components/input';
 
 @NgModule({
     declarations: [DaterangeComponent],
@@ -21,7 +23,9 @@ import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v3';
         CalendarModule,
         ButtonModule,
         DropdownSelectModule,
-        TooltipModule
+        TooltipModule,
+        CheckboxModule,
+        InputModule
     ],
     providers: [DaterangeService],
     exports: [DaterangeComponent]

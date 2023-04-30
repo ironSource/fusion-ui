@@ -405,3 +405,48 @@ export class FusionStoryWrapperComponent {
     }
 };
 // endregion
+
+// region WithCustomCheckedColor
+const TooltipCustomColorTemplate: Story<ToggleComponent> = (args: ToggleComponent) => ({
+    props: {...args},
+    template: `<fusion-toggle style="--checked-bg-color:#FFB424;"
+    [formControl]="formControl"
+    [disabled]="disabled"
+    [error]="error"
+    [helper]="helper"
+    >{{label}}</fusion-toggle>`
+});
+export const WithCustomCheckedColor = TooltipCustomColorTemplate.bind({});
+WithCustomCheckedColor.args = {
+    formControl: formControlChecked,
+    label: 'Item name'
+};
+WithCustomCheckedColor.parameters = {
+    docs: {
+        source: {
+            language: 'typescript',
+            code: dedent`
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToggleComponent } from '@ironsource/fusion-ui/components/toggle/v3';
+
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`<fusion-toggle style="--checked-bg-color:#FFB424;"
+    [formControl]="formControl"
+    >{{label}}</fusion-toggle>\`,
+  standalone: true,
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, ToggleComponent],
+})
+export class FusionStoryWrapperComponent {
+  formControl = new FormControl(true);
+  label = 'Item name';
+}
+`,
+            format: true,
+            type: 'code'
+        }
+    }
+};
+// endregion

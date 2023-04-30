@@ -475,7 +475,7 @@ document.addEventListener('DOMContentLoaded', onLoad, false);"
 
             <div class="row">
                 <div class="col-3">
-                    <fusion-daterange [formControl]="daterangeDefault"></fusion-daterange>
+                    <fusion-daterange [options]="{withTimeSelect : true}" [formControl]="daterangeDefault"></fusion-daterange>
                 </div>
             </div>
         </fusion-example-block>

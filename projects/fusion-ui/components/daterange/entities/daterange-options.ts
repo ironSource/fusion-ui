@@ -11,4 +11,5 @@ export interface DaterangeOptions {
     allowFutureSelection?: boolean;
     maxDaysInSelectedRange?: number;
     chipLabel?: string;
+    withTimeSelect?: boolean;
 }
