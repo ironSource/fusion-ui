@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, forwardRef, OnDestroy, ViewChild, ElementRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, forwardRef, OnDestroy, ViewChild, ElementRef, AfterViewInit} from '@angular/core';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {debounceTime, distinctUntilChanged, takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
@@ -17,7 +17,7 @@ import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
         }
     ]
 })
-export class DropdownDualMultiSelectHeaderComponent implements OnDestroy, ControlValueAccessor {
+export class DropdownDualMultiSelectHeaderComponent implements OnDestroy, AfterViewInit, ControlValueAccessor {
     @ViewChild('input') input?: ElementRef;
 
     @Input() title: string;
@@ -33,6 +33,10 @@ export class DropdownDualMultiSelectHeaderComponent implements OnDestroy, Contro
     ngOnDestroy(): void {
         this.onDestroy$.next();
         this.onDestroy$.complete();
+    }
+
+    ngAfterViewInit() {
+        this.setFocusToInput();
     }
 
     writeValue(value: string): void {
