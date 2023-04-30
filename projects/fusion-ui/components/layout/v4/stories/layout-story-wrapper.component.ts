@@ -44,7 +44,7 @@ import {takeUntil} from 'rxjs/operators';
         '.div8 { grid-area: 4 / 2 / 5 / 3; }',
         '.div9 { grid-area: 4 / 3 / 5 / 4; }',
         '.div10 { grid-area: 4 / 4 / 5 / 5; }',
-        '.parent div{background: #F7F7F7; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 4px; display: flex; align-items: center; justify-content: center}'
+        '.parent div{color: #a7a7a7; background: #F7F7F7; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 4px; display: flex; align-items: center; justify-content: center}'
     ],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
