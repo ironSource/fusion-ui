@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.2.0-rc.11](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.10...v5.2.0-rc.11) (2023-04-30)
+
+
+### Features
+
+* **fg-153:** set search input in focus on dropdown include-exclude ([fe597c8](https://github.com/ironSource/fusion-ui/commit/fe597c8e478d6aafb9e75c9e301ddb2cdead70ad))
+
 ## [5.2.0-rc.10](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.9...v5.2.0-rc.10) (2023-04-27)
 
 
