@@ -18,7 +18,7 @@ import {takeUntil} from 'rxjs/operators';
             (menuItemClick)="onMenuItemClick($event)"
             (pageBackButtonClicked)="onPageBackButtonClicked($event)"
         >
-            <div class="parent">
+            <div class="parent" [class.layout1]="isLayout1">
                 <div class="div1">1</div>
                 <div class="div2">2</div>
                 <div class="div3">3</div>
@@ -44,6 +44,16 @@ import {takeUntil} from 'rxjs/operators';
         '.div8 { grid-area: 4 / 2 / 5 / 3; }',
         '.div9 { grid-area: 4 / 3 / 5 / 4; }',
         '.div10 { grid-area: 4 / 4 / 5 / 5; }',
+        '.parent.layout1 .div1 { grid-area: 1 / 1 / 2 / 2; }',
+        '.parent.layout1 .div2 { grid-area: 2 / 1 / 3 / 2; }',
+        '.parent.layout1 .div3 { grid-area: 3 / 1 / 4 / 2; }',
+        '.parent.layout1 .div4 { grid-area: 4 / 1 / 5 / 2; }',
+        '.parent.layout1 .div5 { grid-area: 1 / 4 / 2 / 5; }',
+        '.parent.layout1 .div6 { grid-area: 2 / 4 / 3 / 5; }',
+        '.parent.layout1 .div7 { grid-area: 3 / 4 / 4 / 5; }',
+        '.parent.layout1 .div8 { grid-area: 4 / 4 / 5 / 5; }',
+        '.parent.layout1 .div9 { grid-area: 1 / 2 / 3 / 4; }',
+        '.parent.layout1 .div10 { grid-area: 3 / 2 / 5 / 4; }',
         '.parent div{color: #a7a7a7; background: #F7F7F7; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 4px; display: flex; align-items: center; justify-content: center}'
     ],
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -51,6 +61,8 @@ import {takeUntil} from 'rxjs/operators';
 export class LayoutStoryWrapperComponent implements OnInit, OnDestroy {
     @Input() layoutConfiguration: LayoutConfiguration;
     @Input() headerContent: HeaderContent;
+
+    isLayout1 = false;
 
     private onDestroy$ = new Subject<void>();
 
@@ -74,5 +86,6 @@ export class LayoutStoryWrapperComponent implements OnInit, OnDestroy {
     onMenuItemClick(menuItem: MenuItem) {
         console.log('MnuItem Clicked: ', menuItem);
         this.headerContent = {...this.headerContent, title: menuItem.name};
+        this.isLayout1 = !this.isLayout1;
     }
 }
