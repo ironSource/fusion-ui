@@ -58,7 +58,7 @@ jobs:
           fi
 
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-region: us-east-1
 
@@ -68,7 +68,7 @@ jobs:
   notify-success:
     needs: Deploy
     if: ${{ always() && needs.Deploy.result == 'success'}}
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, x64, linux, eks, us, demand, dev]
     steps:
 
       - name: 'Deploy success notify'

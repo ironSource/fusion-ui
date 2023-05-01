@@ -6,7 +6,7 @@ on:
 
 jobs:
   notify:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, x64, linux, eks, us, demand, dev]
     steps:
       - uses: actions/checkout@v2
 
