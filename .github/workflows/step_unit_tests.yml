@@ -22,7 +22,7 @@ env:
 
 jobs:
   unit-tests:
-    runs-on: [self-hosted, x64, linux, eks, us, demand, dev]
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
