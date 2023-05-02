@@ -2,9 +2,127 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
-### [5.1.1](https://github.com/ironSource/fusion-ui/compare/v5.1.1-rc.3...v5.1.1) (2023-02-16)
+## [5.2.0](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.12...v5.2.0) (2023-05-02)
 
-### [5.1.1-rc.3](https://github.com/ironSource/fusion-ui/compare/v5.1.1-rc.2...v5.1.1-rc.3) (2023-02-15)
+## [5.2.0-rc.12](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.11...v5.2.0-rc.12) (2023-05-01)
+
+## [5.2.0-rc.11](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.10...v5.2.0-rc.11) (2023-04-30)
+
+
+### Features
+
+* **fg-153:** set search input in focus on dropdown include-exclude ([fe597c8](https://github.com/ironSource/fusion-ui/commit/fe597c8e478d6aafb9e75c9e301ddb2cdead70ad))
+
+## [5.2.0-rc.10](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.9...v5.2.0-rc.10) (2023-04-27)
+
+
+### Features
+
+* **fg-145-146:** add option "hasSelectAll" to the dropdown-dual-multi-select component (v2 and v3) ([fcdba57](https://github.com/ironSource/fusion-ui/commit/fcdba578dc151b557cf76c0e25e7dc9307db471f))
+* **fg-145-146:** add story for option "hasSelectAll" to the dropdown-dual-multi-select ([d1eccde](https://github.com/ironSource/fusion-ui/commit/d1eccde0f11a40ee27ec0aae9af93f7f24f6115a))
+* **fg-145-146:** add story for option "isAllRowsSelectable" to the table ([44c2274](https://github.com/ironSource/fusion-ui/commit/44c227441d364f07348a5c2d9407d8b684f9c975))
+
+## [5.2.0-rc.9](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.8...v5.2.0-rc.9) (2023-04-25)
+
+
+### Features
+
+* **fg-152:** add state disabled for dropdown v1 option ([9ee6093](https://github.com/ironSource/fusion-ui/commit/9ee60931e147ac59bac9975af762654d27d67b9a))
+
+## [5.2.0-rc.8](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.7...v5.2.0-rc.8) (2023-04-24)
+
+
+### Features
+
+* **fg-140:** added new component - floating toolbar ([b8f6783](https://github.com/ironSource/fusion-ui/commit/b8f67837f4dba9b90cc3227364c555c3715b80b2))
+* **fg-140:** added new component - floating toolbar ([a805cbf](https://github.com/ironSource/fusion-ui/commit/a805cbfacad9e966577fc66aa604a993ce988c65))
+
+## [5.2.0-rc.7](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.6...v5.2.0-rc.7) (2023-04-20)
+
+
+### Features
+
+* **fg-144:** added start time and end time (optionally) for date-range selector ([ca2002a](https://github.com/ironSource/fusion-ui/commit/ca2002a4c1f9ff870a80afdde728cacacdc5f212))
+
+## [5.2.0-rc.6](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.5...v5.2.0-rc.6) (2023-04-20)
+
+### Features
+
+* **fg-147:** dynamic filters pre-selected in chip-filters ([ffb23c0](https://github.com/ironSource/fusion-ui/commit/ffb23c0424cc87251c8e4d15e7a04e400fe7c172))
+* **fg-150:** tooltip v1 add prevent to close parameter ([8d04512](https://github.com/ironSource/fusion-ui/commit/8d04512e3ebffb44abd41e6a97330f35a5d6fb7d))
+
+### [5.1.2](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.11...v5.1.2) (2023-03-27)
+
+### [5.1.2-rc.11](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.10...v5.1.2-rc.11) (2023-03-20)
+
+
+### Bug Fixes
+
+* **fu-484:** fixed color on top-filter trigger label ([4c6ba30](https://github.com/ironSource/fusion-ui/commit/4c6ba3033f51b76dd73c07de5a51e5545424276a))
+* **fu-484:** fixed gap between select all checkbox and it's label ([1c22b47](https://github.com/ironSource/fusion-ui/commit/1c22b475b7e2003b00d93b04fa0fe8144be71b38))
+* **fu-484:** fixed hover - removed bg color on table floating action button ([bd8294f](https://github.com/ironSource/fusion-ui/commit/bd8294f73be1422a656b4a4e1e4771d2c54ad53a))
+* **fu-484:** fixed icon-holder size for trigger in top-filter-trigger component ([eb812cb](https://github.com/ironSource/fusion-ui/commit/eb812cb62c9fad385bf99146e3682e8a2662f259))
+* **fu-484:** fixed include-exclude popup position related to top-filter-trigger component ([bba5fd7](https://github.com/ironSource/fusion-ui/commit/bba5fd7ce514e51c612d2fc9a17184233bf5e0d2))
+* **fu-484:** fixed include-exclude popup shadow ([20ad2d9](https://github.com/ironSource/fusion-ui/commit/20ad2d95cee5cd4eb2e613258a5473898fd90fa2))
+* **fu-484:** fixed selected label color on header of include-exclude ([1f1a0de](https://github.com/ironSource/fusion-ui/commit/1f1a0de4af734a38275449bae47175c0f8b4a452))
+* **fu-484:** fixed table v3 no-data content position (update story) ([a9c894d](https://github.com/ironSource/fusion-ui/commit/a9c894d74ce17d104984ebbde17b9ddde8845a00))
+* **fu-484:** remove gap between "$" sign and number in column type currency (not editable) ([a646d7c](https://github.com/ironSource/fusion-ui/commit/a646d7cd7a68626014dbe7348331ab6a8b0134d0))
+* **fu-484:** remove gap between "$" sign and number in view mode of input-inline compinent ([8287ac2](https://github.com/ironSource/fusion-ui/commit/8287ac2da96bf64c608ebb3ab6d03f500684fe30))
+
+### [5.1.2-rc.10](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.9...v5.1.2-rc.10) (2023-03-12)
+
+
+### Bug Fixes
+
+* fixed behavior issues ([549f441](https://github.com/ironSource/fusion-ui/commit/549f4413f6b287bbac5e45db6893c316f8198893))
+
+### [5.1.2-rc.9](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.8...v5.1.2-rc.9) (2023-03-05)
+
+### [5.1.2-rc.8](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.2...v5.1.2-rc.8) (2023-03-05)
+
+### [5.1.2-rc.7](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.6...v5.1.2-rc.7) (2023-03-02)
+
+### [5.1.2-rc.6](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.2...v5.1.2-rc.6) (2023-03-02)
+
+### [5.1.2-rc.4](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.3...v5.1.2-rc.4) (2023-02-28)
+
+
+### Bug Fixes
+
+* **fu-129:** fixed button v3 loading state (not horizontal centered) in dialog footer ([05829ed](https://github.com/ironSource/fusion-ui/commit/05829edd15564217da6bff80edcd10c98b6a23de))
+
+### [5.1.2-rc.3](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.2...v5.1.2-rc.3) (2023-02-28)
+
+
+### Bug Fixes
+
+* **fu-129:** fixed button v3 with content in initial state loading ([a6c1c6f](https://github.com/ironSource/fusion-ui/commit/a6c1c6f00c44ae6bff07c6e2849b65505b10dc66))
+
+### [5.1.2-rc.2](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.1...v5.1.2-rc.2) (2023-02-21)
+
+
+### Bug Fixes
+
+* **5.x.x:** empty table footer fixed ([daae93f](https://github.com/ironSource/fusion-ui/commit/daae93f7fa0402523fcea86e5da686f5601606bc))
+* **5.x.x:** table header "fig leaf" for hide scroll on header fixed for framed table ([abc76c1](https://github.com/ironSource/fusion-ui/commit/abc76c1dbba7e54c8f486f098ca7ba9a925cb2ca))
+* **5.x.x:** top-filter-trigger fixed number in helper row for some selected ([93184db](https://github.com/ironSource/fusion-ui/commit/93184dbab44093f13cdc8f18747575b1e837b4cb))
+
+### [5.1.2-rc.1](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.0...v5.1.2-rc.1) (2023-02-19)
+
+
+### Bug Fixes
+
+* **5.x.x:** fixed table floating action button vertical center position with any row height ([ba3d9da](https://github.com/ironSource/fusion-ui/commit/ba3d9da083469771222800883f046b9a65c9b269))
+
+### Features
+
+* **fg-118:** added '%' unit to the input-inline component
+* **5.x.x:** added option for table in frame no-footer.
+
+
+### [5.1.2-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.1.1...v5.1.2-rc.0) (2023-02-16)
+
+### [5.1.1](https://github.com/ironSource/fusion-ui/compare/v5.1.1-rc.3...v5.1.1) (2023-02-16)
 
 
 ### Bug Fixes

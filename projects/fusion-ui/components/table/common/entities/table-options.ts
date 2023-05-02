@@ -14,16 +14,18 @@ export interface TableLabel {
 export interface TableSearchOptions {
     placeholder?: string;
     onSearch?: EventEmitter<string>;
+    initalValue?: string;
 }
 
 export interface TableOptions {
     tableId?: string; // auto-generated table id
     tableLabel?: TableLabel; // table label with info tooltip (v3)
+    noTableFooter?: boolean; // no display table footer
     searchOptions?: TableSearchOptions; // table search (v3)
     hasReturnToTopButton?: boolean; // has return to top button
     scrollElementSelector?: string; // for vertically scroll listener - default table wrapper (v3)
     stickyHeaderTopOffset?: number; // offset top (px) for stickyHeader in case scrollElementSelector exist
-    sortingType?: string;
+    sortingType?: string; // 'external' for back-end sorting
     remove?: TableRowRemoveAction;
     rowActionsMenu?: TableMultipleActions;
     isAllRowsSelectable?: boolean;

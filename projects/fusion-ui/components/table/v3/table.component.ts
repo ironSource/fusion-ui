@@ -142,6 +142,10 @@ export class TableComponent implements OnInit, OnDestroy {
         return !(!!this.options?.tableLabel || !!this.options?.searchOptions);
     }
 
+    @HostBinding('class.fu-no-table-footer') get noTableFooter(): boolean {
+        return !this.noTableFrame && this.options?.noTableFooter;
+    }
+
     @HostBinding('class.is-empty') get isEmpty(): boolean {
         return this.tableService.isTableEmpty(this.rows, this.options.isGroupedTable, this.options.hasTotalsRow);
     }
@@ -179,7 +183,7 @@ export class TableComponent implements OnInit, OnDestroy {
     /** @internal */
     subHeader: {name: string; colspan: number}[] = [];
     /** @internal */
-    searchFormControl = new FormControl('');
+    searchFormControl: FormControl<string>;
 
     get isCheckboxTitleShown(): boolean {
         return this.columns ? this.columns.some(column => column.type === TableColumnTypeEnum.Checkbox && column.title !== '') : false;
@@ -246,6 +250,8 @@ export class TableComponent implements OnInit, OnDestroy {
     ) {}
 
     ngOnInit() {
+        this.searchFormControl = new FormControl(this.options?.searchOptions?.initalValue || '');
+
         if (!!this.options.rowsExpandableOptions) {
             try {
                 this.tableService.setExpandLevelByExpandOptions(this.options.rowsExpandableOptions);

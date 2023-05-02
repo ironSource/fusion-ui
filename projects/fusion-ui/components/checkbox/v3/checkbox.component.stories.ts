@@ -52,7 +52,6 @@ If you have multiple options appearing in a list, you can preserve space by usin
     argTypes: {
         icon: {
             type: 'string',
-            defaultValue: '',
             options: [null, 'frame'],
             control: {
                 type: 'select',
@@ -64,7 +63,6 @@ If you have multiple options appearing in a list, you can preserve space by usin
         },
         flag: {
             type: 'string',
-            defaultValue: null,
             options: [null, 'us', 'il', 'ua'],
             control: {
                 type: 'select',

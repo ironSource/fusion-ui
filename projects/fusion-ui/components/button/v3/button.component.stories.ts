@@ -35,7 +35,6 @@ export default {
     argTypes: {
         icon: {
             type: 'string',
-            defaultValue: '',
             options: [null, 'frame'],
             control: {
                 type: 'select',
@@ -46,20 +45,16 @@ export default {
             }
         },
         disabled: {
-            control: 'boolean',
-            defaultValue: false
+            control: 'boolean'
         },
         loading: {
-            control: 'boolean',
-            defaultValue: false
+            control: 'boolean'
         },
         link: {
-            control: 'boolean',
-            defaultValue: false
+            control: 'boolean'
         },
         class_size: {
             type: 'string',
-            defaultValue: '',
             options: sizes,
             control: {
                 type: 'select',
@@ -72,7 +67,6 @@ export default {
         },
         class_theme: {
             type: 'string',
-            defaultValue: '',
             options: themes,
             control: {
                 type: 'select',
@@ -85,16 +79,13 @@ export default {
             }
         },
         class_transparent: {
-            control: 'boolean',
-            defaultValue: false
+            control: 'boolean'
         },
         class_ghost: {
-            control: 'boolean',
-            defaultValue: false
+            control: 'boolean'
         },
         class_icon_right: {
             control: 'boolean',
-            defaultValue: false,
             if: {
                 arg: 'icon',
                 neq: ''

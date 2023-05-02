@@ -7,12 +7,12 @@
         @extend %font-bodyLargeStrong;
         text-align: center;
         color: $fu-black-200;
-        padding: 65px 0;
+        padding: 48px 0;
         &:hover{
             background-color: $White;
         }
         .is-nodata-sub{
-            padding-top: 8px;
+            padding-top: 5px;
             @extend %font-bodySmall;
         }
         .icon-container{

@@ -819,6 +819,15 @@ Checkbox.parameters = {
 };
 // endregion
 
+// region Column Checkbox without Select aAll
+export const CheckboxWithoutSelectAll = TableCheckboxTemplate.bind({});
+CheckboxWithoutSelectAll.args = {
+    columns: TABLE_CHECKBOX_COLUMNS_CONFIG,
+    rows: ROWS_CHECKBOX_DATA,
+    options: {...TABLE_DEFAULT_OPTIONS, isAllRowsSelectable: false}
+};
+// endregion
+
 // region With Toggle
 const TableToggleTemplate: Story<TableComponent> = (args: TableComponent) => ({
     props: {

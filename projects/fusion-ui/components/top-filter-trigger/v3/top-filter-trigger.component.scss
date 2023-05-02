@@ -63,6 +63,7 @@
                 line-height: 16px;
                 display: flex;
                 gap: 4px;
+                color: $fu-black-900;
                 .truncate {
                     @extend %truncate;
                     max-width: 140px;
@@ -79,6 +80,11 @@
                 @extend %font-bodyXSmall;
                 line-height: 14px;
                 color: $fu-light-900;
+
+                &.truncate{
+                    @extend %truncate;
+                    max-width: 180px;
+                }
             }
 
             .fu-error {
@@ -87,7 +93,7 @@
         }
 
         .fu-trigger {
-            @include size(32px);
+            @include size(24px);
             background-color: $fu-light-200;
             border-radius: 16px;
             margin-left: auto;

@@ -8,7 +8,8 @@ import {
     OnInit,
     Output,
     TemplateRef,
-    ViewChild
+    ViewChild,
+    ChangeDetectorRef
 } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
@@ -20,11 +21,12 @@ import {takeUntil, tap} from 'rxjs/operators';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
 import {isNullOrUndefined, isObject, isString} from '@ironsource/fusion-ui/utils';
 import {DEFAULT_IMAGE_HOLDER, TRIGGER_ICON} from './top-filter-trigger.config';
+import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 
 @Component({
     selector: 'fusion-top-filter-trigger',
     standalone: true,
-    imports: [CommonModule, IconModule],
+    imports: [CommonModule, IconModule, TooltipModule],
     templateUrl: './top-filter-trigger.component.html',
     styleUrls: ['./top-filter-trigger.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -62,7 +64,7 @@ export class TopFilterTriggerComponent implements OnInit, OnDestroy {
         return this.sanitizer.bypassSecurityTrustStyle(this.imageApp ? `url(${this.imageApp})` : this.imageHolderBack);
     }
 
-    constructor(private sanitizer: DomSanitizer) {}
+    constructor(private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef) {}
 
     ngOnInit() {
         if (this.apiBase) {
@@ -111,10 +113,7 @@ export class TopFilterTriggerComponent implements OnInit, OnDestroy {
             if (isString(selected.value) && !selected.value.toLowerCase().startsWith('all ')) {
                 this.helper =
                     selected.partialSelect.firstSelected.title ??
-                    selected.partialSelect.firstSelected.displayText +
-                        ' and ' +
-                        (selected.partialSelect.totalAmount - selected.selectedCount) +
-                        ' more';
+                    selected.partialSelect.firstSelected.displayText + ' and ' + (selected.selectedCount - 1) + ' more';
             } else {
                 this.helper =
                     !isNullOrUndefined(selected.selectedCount) && selected.selectedCount !== 0
@@ -122,6 +121,7 @@ export class TopFilterTriggerComponent implements OnInit, OnDestroy {
                         : null;
             }
         }
+        this.cdr.detectChanges();
         this.onSelectedChange.emit(selected);
     }
 }

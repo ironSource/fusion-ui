@@ -33,6 +33,15 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     @Input() title: string;
     /** @internal */
     @Input() pendingItems: boolean = false;
+    /** @internal */
+    @Input() set hasSelectAll(value: boolean) {
+        if (!isNullOrUndefined(value)) {
+            this._hasSelectAll = value;
+        }
+    }
+    get hasSelectAll(): boolean {
+        return this._hasSelectAll;
+    }
 
     @Input() set placeholder(data: string) {
         this.placeholder$.next(data);
@@ -126,6 +135,8 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     private backendPaginationState: BackendPagination;
     private backendPaginationTotalResult: number;
     private backendPaginationPageNumber = 1;
+    private _hasSelectAll = true;
+
     /** @internal */
     loadingLeft$ = new BehaviorSubject<boolean>(false);
 
@@ -221,7 +232,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.confirm = true;
         this.setLabel();
         this.propagateChange(this.preSelectedItems.value);
-        this.selectedChange = this.preSelectedItems.value;
+        this.selectedChange = Array.isArray(this.preSelectedItems.value) ? [...this.preSelectedItems.value] : this.preSelectedItems.value;
         this.selected$.next(
             this.selectedChange?.length === 1
                 ? this.selectedTypeObject
@@ -348,9 +359,10 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     }
 
     private checkSelectItemsChanged(item: any): void {
-        if (JSON.stringify(item) !== JSON.stringify(this.selectedChange) && this.confirm) {
-            this.selectedChange = item;
-        }
+        // commented bny fix https://ironsrc-mobile.atlassian.net/browse/FU-484
+        // if (JSON.stringify(item) !== JSON.stringify(this.selectedChange) && this.confirm) {
+        //     this.selectedChange = item;
+        // }
         this.setLabel();
     }
 

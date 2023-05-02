@@ -192,6 +192,10 @@ $tableFrameFooterHeight: 72px;
             @extend %font-bodyMediumStrong;
             color: $fu-black-500;
             padding: 19px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            line-height: 16px;
             @include icon-style('fu-info-icon', $fu-light-500, 16px, false, true){
                 @include size(16px);
             }
@@ -268,22 +272,36 @@ $tableFrameFooterHeight: 72px;
                 border-top: solid 1px $fu-light-400;
             }
         }
+        &:after { // fig leaf for hide scroll on header
+            content: '';
+            position:absolute;
+            right: 0;
+            top: 57px; // with table frame header
+            background-color: transparent;
+            width: 16px;
+            height: $v3-headerHeight;
+            border-bottom: $v3-headerBottomBorder;
+            box-sizing: border-box;
+        }
         &.fu-no-table-frame{
             .tableWrap{
                 height: 100%;
             }
             &:after { // fig leaf for hide scroll on header
-                content: '';
-                position:absolute;
-                right: 0;
                 top: 1px;
-                background-color: $White;
-                width: 16px;
-                height: $v3-headerHeight;
-                border-bottom: $v3-headerBottomBorder;
-                box-sizing: border-box;
             }
         }
 
+    }
+
+    &.fu-no-table-footer{
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    &.is-empty{
+        .fu-table-footer{
+            border-top: 1px solid $fu-light-400;
+        }
     }
 }

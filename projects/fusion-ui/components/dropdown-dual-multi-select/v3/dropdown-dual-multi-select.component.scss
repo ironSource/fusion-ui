@@ -24,14 +24,13 @@
             position: absolute;
             background-color: #fff;
             color: #7b838c;
-            box-shadow: 0 2px 4px 0 #00000026;
+            box-shadow: $boxShadow;
             border-radius: 8px;
             overflow: hidden;
             width: 545px;
             max-width: 545px;
             height: 361px;
             max-height: 361px;
-            border: 1px solid $fu-light-400;
         }
         .dropdown-dual-multi-select-button {
             cursor: pointer;
@@ -91,5 +90,12 @@
                 @extend %font-bodySmall;
             }
         }
+    }
+}
+
+:host-context(fusion-top-filter-trigger) {
+    .dropdown-dual-multi-select-layout {
+        top: 12px;
+        left: 13px;
     }
 }

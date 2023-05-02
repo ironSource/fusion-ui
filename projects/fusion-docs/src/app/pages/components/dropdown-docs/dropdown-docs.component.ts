@@ -164,7 +164,7 @@ export class DropdownDocsComponent implements OnInit, OnDestroy {
     optionsAutoCompleteSelected: Array<any>;
     optionsAutoComplete: Array<any>;
     options: Array<any>;
-    optionsNoIcons: Array<any>;
+    optionsNoIcons: Array<DropdownOption>;
     optionsNoIconsWithImages: Array<any>;
     loading: boolean;
     optionsNoScroll2: Array<any>;
@@ -526,7 +526,8 @@ export class DropdownDocsComponent implements OnInit, OnDestroy {
                 icon: 'monetize',
                 title: 'Item 3',
                 displayText: 'Item Name C',
-                id: 3
+                id: 3,
+                isDisabled: true
             },
             {
                 icon: 'monetize',

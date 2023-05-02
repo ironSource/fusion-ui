@@ -98,16 +98,15 @@ $v3-cellActionIconSize: 16px;
     .fu-button-holder{
         display: none;
         position: absolute;
+        margin: auto;
         right: 12px;
-        top: 8px;
+        top: 0;
+        bottom: 0;
         @include size(32px);
         fusion-button {
             box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.24);
             border: none;
             background-color: $White;
-            &:hover{
-                background-color: $fu-light-200;
-            }
             ::ng-deep fusion-icon{
                 @include size(24px);
                 svg {
