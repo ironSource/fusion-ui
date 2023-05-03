@@ -32,6 +32,44 @@
                             "projects/fusion-ui/**/*.html"
                         ]
                     }
+                },
+                "storybook": {
+                    "builder": "@storybook/angular:start-storybook",
+                    "options": {
+                        "configDir": ".storybook",
+                        "browserTarget": "fusion-ui:build",
+                        "port": 6008,
+                        "compodoc": true,
+                        "compodocArgs": [
+                            "-e",
+                            "json",
+                            "-d",
+                            ".",
+                            "--disablePrivate",
+                            "--disableProtected",
+                            "--disableLifeCycleHooks",
+                            "--disableInternal"
+                        ]
+                    }
+                },
+                "build-storybook": {
+                    "builder": "@storybook/angular:build-storybook",
+                    "options": {
+                        "configDir": ".storybook",
+                        "browserTarget": "fusion-ui:build",
+                        "outputDir": "dist/storybook/fusion-ui",
+                        "compodoc": true,
+                        "compodocArgs": [
+                            "-e",
+                            "json",
+                            "-d",
+                            ".",
+                            "--disablePrivate",
+                            "--disableProtected",
+                            "--disableLifeCycleHooks",
+                            "--disableInternal"
+                        ]
+                    }
                 }
             },
             "schematics": {

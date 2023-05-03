@@ -33,5 +33,6 @@
             "extends": ["plugin:@angular-eslint/template/recommended"],
             "rules": {}
         }
-    ]
+    ],
+    "extends": [null, "plugin:storybook/recommended"]
 }
