@@ -32,10 +32,7 @@
             "files": ["*.html"],
             "extends": ["plugin:@angular-eslint/template/recommended"],
             "rules": {}
-        },
-        {
-            "files": ["*.stories.ts"],
-            "extends": ["plugin:storybook/recommended"]
         }
-    ]
+    ],
+    "extends": ["plugin:storybook/recommended"]
 }
