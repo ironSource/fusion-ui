@@ -1,6 +1,5 @@
 /** @type { import('@storybook/angular').StorybookConfig } */
 const config = {
-    /*stories: ['../projects/fusion-ui/!**!/!*.stories.ts', '../projects/fusion-ui/!**!/!*.stories.mdx'],*/
     stories: [{directory: '../projects/fusion-ui', files: '**/*.stories.@(mdx|ts)'}],
     addons: [
         '@storybook/addon-links',
@@ -14,7 +13,7 @@ const config = {
         options: {enableIvy: true}
     },
     docs: {
-        autodocs: false // auto generate mdx dox story
+        autodocs: true // auto generate mdx dox story
     }
 };
 
