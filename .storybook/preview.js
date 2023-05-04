@@ -13,7 +13,6 @@ const preview = {
                 date: /Date$/
             }
         },
-        docs: {inlineStories: true},
         stackblitzAdditionalDependency: {
             "@ironsource/fusion-ui": '5.2.0'
         },
