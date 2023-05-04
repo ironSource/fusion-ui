@@ -1,6 +1,6 @@
 /** @type { import('@storybook/angular').StorybookConfig } */
 const config = {
-    stories: [{directory: '../projects/fusion-ui', files: '**/*.stories.@(mdx|ts)'}],
+    stories: ['../projects/fusion-ui/**/*.stories.ts', '../projects/fusion-ui/**/*.mdx'],
     addons: [
         '@storybook/addon-links',
         '@storybook/addon-essentials',
