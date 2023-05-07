@@ -1,4 +1,4 @@
-import {Story, Meta, moduleMetadata} from '@storybook/angular';
+import {StoryFn, Meta, moduleMetadata} from '@storybook/angular';
 import {dedent} from 'ts-dedent';
 import {CommonModule} from '@angular/common';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
@@ -46,7 +46,7 @@ export default {
     }
 } as Meta<FloatingToolbarComponent>;
 
-const DropdownTemplate: Story<FloatingToolbarComponent> = (args: FloatingToolbarComponent) => ({
+const DropdownTemplate: StoryFn<FloatingToolbarComponent> = (args: FloatingToolbarComponent) => ({
     props: {...args},
     template: `<fusion-button (click)="shown = !shown"><span>Toggle toolbar</span></fusion-button>
 
@@ -63,47 +63,49 @@ const DropdownTemplate: Story<FloatingToolbarComponent> = (args: FloatingToolbar
 </fusion-floating-toolbar>`
 });
 
-// region Default
-export const Default = DropdownTemplate.bind({});
-Default.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { ButtonModule } from '@ironsource/fusion-ui/components/button';
-import { FloatingToolbarComponent } from '@ironsource/fusion-ui/components/floating-toolbar';
+export const Default = {
+    render: DropdownTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<fusion-button (click)="shown = !shown"><span>Toggle toolbar</span></fusion-button>
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { ButtonModule } from '@ironsource/fusion-ui/components/button';
+    import { FloatingToolbarComponent } from '@ironsource/fusion-ui/components/floating-toolbar';
 
-<fusion-floating-toolbar
-    [shown]="shown"
-    [counter]="counter"
-    [label]="label"
-    (closeButtonClicked)="shown = false"
->
-    <fusion-button icon="frame" class="transparent ghost" (click)="onActionClicked(1)"><span>Button</span></fusion-button>
-    <fusion-button icon="frame" class="transparent ghost" (click)="onActionClicked(2)"><span>Button</span></fusion-button>
-    <fusion-button icon="frame" class="transparent ghost" (click)="onActionClicked(3)"><span>Button</span></fusion-button>
-    <fusion-button icon="frame" class="transparent ghost" (click)="onActionClicked(4)"></fusion-button>
-</fusion-floating-toolbar>\`,
-  standalone: true,
-  imports: [ButtonModule, FloatingToolbarComponent],
-})
-export class FusionStoryWrapperComponent {
-    shown = false;
-    counter = 3;
-    label = 'Label';
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<fusion-button (click)="shown = !shown"><span>Toggle toolbar</span></fusion-button>
 
-    onActionClicked(actionNumber: number){
-        console.log('Action button ' + actionNumber + ' clicked');
+    <fusion-floating-toolbar
+        [shown]="shown"
+        [counter]="counter"
+        [label]="label"
+        (closeButtonClicked)="shown = false"
+    >
+        <fusion-button icon="frame" class="transparent ghost" (click)="onActionClicked(1)"><span>Button</span></fusion-button>
+        <fusion-button icon="frame" class="transparent ghost" (click)="onActionClicked(2)"><span>Button</span></fusion-button>
+        <fusion-button icon="frame" class="transparent ghost" (click)="onActionClicked(3)"><span>Button</span></fusion-button>
+        <fusion-button icon="frame" class="transparent ghost" (click)="onActionClicked(4)"></fusion-button>
+    </fusion-floating-toolbar>\`,
+      standalone: true,
+      imports: [ButtonModule, FloatingToolbarComponent],
+    })
+    export class FusionStoryWrapperComponent {
+        shown = false;
+        counter = 3;
+        label = 'Label';
+
+        onActionClicked(actionNumber: number){
+            console.log('Action button ' + actionNumber + ' clicked');
+        }
     }
-}
-`,
-            format: true,
-            type: 'code'
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };

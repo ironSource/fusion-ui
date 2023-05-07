@@ -1,4 +1,4 @@
-import {Story, Meta} from '@storybook/angular';
+import {StoryFn, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {action} from '@storybook/addon-actions';
 import {CommonModule} from '@angular/common';
@@ -51,7 +51,7 @@ export default {
     }
 } as Meta<ModalFooterComponent>;
 
-const ModalFooterTemplate: Story<ModalFooterComponent> = (args: ModalFooterComponent) => ({
+const ModalFooterTemplate: StoryFn<ModalFooterComponent> = (args: ModalFooterComponent) => ({
     props: {...args, onCloseButtonClicked: actionsData.onCloseButtonClicked},
     template: `<div style="width: 500px; background-color: #ffffff;">
     <fusion-modal-footer class="{{footerSizeClassName}} {{footerAlignmentClassName}}"
@@ -65,163 +65,175 @@ const ModalFooterTemplate: Story<ModalFooterComponent> = (args: ModalFooterCompo
 </div>`
 });
 
-// region Default
-export const Default = ModalFooterTemplate.bind({});
-// endregion
-
-// region PendingPrimaryButton
-export const PendingPrimaryButton = ModalFooterTemplate.bind({});
-PendingPrimaryButton.args = {
-    submitButtonPending: true
+export const Default = {
+    render: ModalFooterTemplate
 };
-// endregion
 
-// region PrimaryButtonDisable
-export const PrimaryButtonDisable = ModalFooterTemplate.bind({});
-PrimaryButtonDisable.args = {
-    submitButton: {
-        submitButtonText: 'Button',
-        submitButtonClass: '',
-        submitButtonDisabled: true
-    } as {submitButtonText?: string; submitButtonClass?: string; submitButtonDisabled?: boolean}
-};
-// endregion
+export const PendingPrimaryButton = {
+    render: ModalFooterTemplate,
 
-// region PrimaryAndSecondary
-export const PrimaryAndSecondary = ModalFooterTemplate.bind({});
-PrimaryAndSecondary.args = {
-    cancelButton: {
-        cancelButtonText: 'Button',
-        cancelButtonClass: 'transparent third',
-        cancelButtonHidden: false
-    } as {cancelButtonText?: string; cancelButtonClass?: string; cancelButtonHidden?: boolean}
+    args: {
+        submitButtonPending: true
+    }
 };
-// endregion
 
-// region PendingPrimaryAndSecondary
-export const PendingPrimaryAndSecondary = ModalFooterTemplate.bind({});
-PendingPrimaryAndSecondary.args = {
-    submitButtonPending: true,
-    cancelButton: {
-        cancelButtonText: 'Button',
-        cancelButtonClass: 'transparent third',
-        cancelButtonHidden: false
-    } as {cancelButtonText?: string; cancelButtonClass?: string; cancelButtonHidden?: boolean}
-};
-// endregion
+export const PrimaryButtonDisable = {
+    render: ModalFooterTemplate,
 
-// region PrimaryAndSecondaryAndError
-export const PrimaryAndSecondaryAndError = ModalFooterTemplate.bind({});
-PrimaryAndSecondaryAndError.args = {
-    cancelButton: {
-        cancelButtonText: 'Button',
-        cancelButtonClass: 'transparent third',
-        cancelButtonHidden: false
-    } as {cancelButtonText?: string; cancelButtonClass?: string; cancelButtonHidden?: boolean},
-    error: 'Error message...'
+    args: {
+        submitButton: {
+            submitButtonText: 'Button',
+            submitButtonClass: '',
+            submitButtonDisabled: true
+        } as {submitButtonText?: string; submitButtonClass?: string; submitButtonDisabled?: boolean}
+    }
 };
-// endregion
 
-// region Small
-export const Small = ModalFooterTemplate.bind({});
-Small.args = {
-    footerSizeClassName: 'fu-small',
-    submitButton: {
-        submitButtonText: 'Button',
-        submitButtonClass: 'small',
-        submitButtonDisabled: false
-    } as {submitButtonText?: string; submitButtonClass?: string; submitButtonDisabled?: boolean}
-};
-// endregion
+export const PrimaryAndSecondary = {
+    render: ModalFooterTemplate,
 
-// region SmallPrimaryAndSecondary
-export const SmallPrimaryAndSecondary = ModalFooterTemplate.bind({});
-SmallPrimaryAndSecondary.args = {
-    footerSizeClassName: 'fu-small',
-    submitButton: {
-        submitButtonText: 'Button',
-        submitButtonClass: 'small',
-        submitButtonDisabled: false
-    } as {submitButtonText?: string; submitButtonClass?: string; submitButtonDisabled?: boolean},
-    cancelButton: {
-        cancelButtonText: 'Button',
-        cancelButtonClass: 'transparent third small',
-        cancelButtonHidden: false
-    } as {cancelButtonText?: string; cancelButtonClass?: string; cancelButtonHidden?: boolean}
+    args: {
+        cancelButton: {
+            cancelButtonText: 'Button',
+            cancelButtonClass: 'transparent third',
+            cancelButtonHidden: false
+        } as {cancelButtonText?: string; cancelButtonClass?: string; cancelButtonHidden?: boolean}
+    }
 };
-// endregion
 
-// region SmallPendingPrimaryAndSecondary
-export const SmallPendingPrimaryAndSecondary = ModalFooterTemplate.bind({});
-SmallPendingPrimaryAndSecondary.args = {
-    submitButtonPending: true,
-    footerSizeClassName: 'fu-small',
-    submitButton: {
-        submitButtonText: 'Button',
-        submitButtonClass: 'small',
-        submitButtonDisabled: false
-    } as {submitButtonText?: string; submitButtonClass?: string; submitButtonDisabled?: boolean},
-    cancelButton: {
-        cancelButtonText: 'Button',
-        cancelButtonClass: 'transparent third small',
-        cancelButtonHidden: false
-    } as {cancelButtonText?: string; cancelButtonClass?: string; cancelButtonHidden?: boolean}
-};
-// endregion
+export const PendingPrimaryAndSecondary = {
+    render: ModalFooterTemplate,
 
-// region SmallPrimaryAndSecondaryAndError
-export const SmallPrimaryAndSecondaryAndError = ModalFooterTemplate.bind({});
-SmallPrimaryAndSecondaryAndError.args = {
-    footerSizeClassName: 'fu-small',
-    submitButton: {
-        submitButtonText: 'Button',
-        submitButtonClass: 'small',
-        submitButtonDisabled: false
-    } as {submitButtonText?: string; submitButtonClass?: string; submitButtonDisabled?: boolean},
-    cancelButton: {
-        cancelButtonText: 'Button',
-        cancelButtonClass: 'transparent third small',
-        cancelButtonHidden: false
-    } as {cancelButtonText?: string; cancelButtonClass?: string; cancelButtonHidden?: boolean},
-    error: 'Error message...'
+    args: {
+        submitButtonPending: true,
+        cancelButton: {
+            cancelButtonText: 'Button',
+            cancelButtonClass: 'transparent third',
+            cancelButtonHidden: false
+        } as {cancelButtonText?: string; cancelButtonClass?: string; cancelButtonHidden?: boolean}
+    }
 };
-// endregion
 
-// region AlignmentLeft
-export const AlignmentLeft = ModalFooterTemplate.bind({});
-AlignmentLeft.args = {
-    footerAlignmentClassName: 'fu-alignment-left'
-};
-// endregion
+export const PrimaryAndSecondaryAndError = {
+    render: ModalFooterTemplate,
 
-// region AlignmentLeftPrimaryAndSecondaryAndError
-export const AlignmentLeftPrimaryAndSecondaryAndError = ModalFooterTemplate.bind({});
-AlignmentLeftPrimaryAndSecondaryAndError.args = {
-    cancelButton: {
-        cancelButtonText: 'Button',
-        cancelButtonClass: 'transparent third',
-        cancelButtonHidden: false
-    } as {cancelButtonText?: string; cancelButtonClass?: string; cancelButtonHidden?: boolean},
-    error: 'Error message...',
-    footerAlignmentClassName: 'fu-alignment-left'
+    args: {
+        cancelButton: {
+            cancelButtonText: 'Button',
+            cancelButtonClass: 'transparent third',
+            cancelButtonHidden: false
+        } as {cancelButtonText?: string; cancelButtonClass?: string; cancelButtonHidden?: boolean},
+        error: 'Error message...'
+    }
 };
-// endregion
 
-// region AlignmentLeftPrimaryAndSecondaryAndErrorSmall
-export const AlignmentLeftPrimaryAndSecondaryAndErrorSmall = ModalFooterTemplate.bind({});
-AlignmentLeftPrimaryAndSecondaryAndErrorSmall.args = {
-    submitButton: {
-        submitButtonText: 'Button',
-        submitButtonClass: 'small',
-        submitButtonDisabled: false
-    } as {submitButtonText?: string; submitButtonClass?: string; submitButtonDisabled?: boolean},
-    cancelButton: {
-        cancelButtonText: 'Button',
-        cancelButtonClass: 'transparent third small',
-        cancelButtonHidden: false
-    } as {cancelButtonText?: string; cancelButtonClass?: string; cancelButtonHidden?: boolean},
-    error: 'Error message...',
-    footerAlignmentClassName: 'fu-alignment-left',
-    footerSizeClassName: 'fu-small'
+export const Small = {
+    render: ModalFooterTemplate,
+
+    args: {
+        footerSizeClassName: 'fu-small',
+        submitButton: {
+            submitButtonText: 'Button',
+            submitButtonClass: 'small',
+            submitButtonDisabled: false
+        } as {submitButtonText?: string; submitButtonClass?: string; submitButtonDisabled?: boolean}
+    }
 };
-// endregion
+
+export const SmallPrimaryAndSecondary = {
+    render: ModalFooterTemplate,
+
+    args: {
+        footerSizeClassName: 'fu-small',
+        submitButton: {
+            submitButtonText: 'Button',
+            submitButtonClass: 'small',
+            submitButtonDisabled: false
+        } as {submitButtonText?: string; submitButtonClass?: string; submitButtonDisabled?: boolean},
+        cancelButton: {
+            cancelButtonText: 'Button',
+            cancelButtonClass: 'transparent third small',
+            cancelButtonHidden: false
+        } as {cancelButtonText?: string; cancelButtonClass?: string; cancelButtonHidden?: boolean}
+    }
+};
+
+export const SmallPendingPrimaryAndSecondary = {
+    render: ModalFooterTemplate,
+
+    args: {
+        submitButtonPending: true,
+        footerSizeClassName: 'fu-small',
+        submitButton: {
+            submitButtonText: 'Button',
+            submitButtonClass: 'small',
+            submitButtonDisabled: false
+        } as {submitButtonText?: string; submitButtonClass?: string; submitButtonDisabled?: boolean},
+        cancelButton: {
+            cancelButtonText: 'Button',
+            cancelButtonClass: 'transparent third small',
+            cancelButtonHidden: false
+        } as {cancelButtonText?: string; cancelButtonClass?: string; cancelButtonHidden?: boolean}
+    }
+};
+
+export const SmallPrimaryAndSecondaryAndError = {
+    render: ModalFooterTemplate,
+
+    args: {
+        footerSizeClassName: 'fu-small',
+        submitButton: {
+            submitButtonText: 'Button',
+            submitButtonClass: 'small',
+            submitButtonDisabled: false
+        } as {submitButtonText?: string; submitButtonClass?: string; submitButtonDisabled?: boolean},
+        cancelButton: {
+            cancelButtonText: 'Button',
+            cancelButtonClass: 'transparent third small',
+            cancelButtonHidden: false
+        } as {cancelButtonText?: string; cancelButtonClass?: string; cancelButtonHidden?: boolean},
+        error: 'Error message...'
+    }
+};
+
+export const AlignmentLeft = {
+    render: ModalFooterTemplate,
+
+    args: {
+        footerAlignmentClassName: 'fu-alignment-left'
+    }
+};
+
+export const AlignmentLeftPrimaryAndSecondaryAndError = {
+    render: ModalFooterTemplate,
+
+    args: {
+        cancelButton: {
+            cancelButtonText: 'Button',
+            cancelButtonClass: 'transparent third',
+            cancelButtonHidden: false
+        } as {cancelButtonText?: string; cancelButtonClass?: string; cancelButtonHidden?: boolean},
+        error: 'Error message...',
+        footerAlignmentClassName: 'fu-alignment-left'
+    }
+};
+
+export const AlignmentLeftPrimaryAndSecondaryAndErrorSmall = {
+    render: ModalFooterTemplate,
+
+    args: {
+        submitButton: {
+            submitButtonText: 'Button',
+            submitButtonClass: 'small',
+            submitButtonDisabled: false
+        } as {submitButtonText?: string; submitButtonClass?: string; submitButtonDisabled?: boolean},
+        cancelButton: {
+            cancelButtonText: 'Button',
+            cancelButtonClass: 'transparent third small',
+            cancelButtonHidden: false
+        } as {cancelButtonText?: string; cancelButtonClass?: string; cancelButtonHidden?: boolean},
+        error: 'Error message...',
+        footerAlignmentClassName: 'fu-alignment-left',
+        footerSizeClassName: 'fu-small'
+    }
+};

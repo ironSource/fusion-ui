@@ -1,4 +1,4 @@
-import {Story, Meta} from '@storybook/angular';
+import {StoryFn, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {action} from '@storybook/addon-actions';
 import {CommonModule} from '@angular/common';
@@ -37,7 +37,7 @@ export default {
     }
 } as Meta<ModalHeaderComponent>;
 
-const ModalHeaderTemplate: Story<ModalHeaderComponent> = (args: ModalHeaderComponent) => ({
+const ModalHeaderTemplate: StoryFn<ModalHeaderComponent> = (args: ModalHeaderComponent) => ({
     props: {...args, close: actionsData.close},
     template: `<div style="width: 500px; background-color: #ffffff;">
     <fusion-modal-header
@@ -49,28 +49,31 @@ const ModalHeaderTemplate: Story<ModalHeaderComponent> = (args: ModalHeaderCompo
 </div>`
 });
 
-// region Default
-export const Default = ModalHeaderTemplate.bind({});
-// endregion
-
-// region NoCloseButton
-export const NoCloseButton = ModalHeaderTemplate.bind({});
-NoCloseButton.args = {
-    showCloseButton: false
+export const Default = {
+    render: ModalHeaderTemplate
 };
-// endregion
 
-// region WithInfoTooltip
-export const WithInfoTooltip = ModalHeaderTemplate.bind({});
-WithInfoTooltip.args = {
-    infoText: 'Info tooltip text.',
-    showCloseButton: false
-};
-// endregion
+export const NoCloseButton = {
+    render: ModalHeaderTemplate,
 
-// region WithInfoTooltipAndCloseButton
-export const WithInfoTooltipAndCloseButton = ModalHeaderTemplate.bind({});
-WithInfoTooltipAndCloseButton.args = {
-    infoText: 'Info tooltip text.'
+    args: {
+        showCloseButton: false
+    }
 };
-// endregion
+
+export const WithInfoTooltip = {
+    render: ModalHeaderTemplate,
+
+    args: {
+        infoText: 'Info tooltip text.',
+        showCloseButton: false
+    }
+};
+
+export const WithInfoTooltipAndCloseButton = {
+    render: ModalHeaderTemplate,
+
+    args: {
+        infoText: 'Info tooltip text.'
+    }
+};

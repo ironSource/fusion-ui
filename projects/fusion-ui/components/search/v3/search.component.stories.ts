@@ -1,4 +1,4 @@
-import {Story, Meta} from '@storybook/angular';
+import {StoryFn, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {dedent} from 'ts-dedent';
@@ -64,257 +64,261 @@ export default {
     }
 } as Meta<SearchComponent>;
 
-const TooltipTemplate: Story<SearchComponent> = (args: SearchComponent) => ({
+const TooltipTemplate: StoryFn<SearchComponent> = (args: SearchComponent) => ({
     props: {...args},
     template: `<div style="width: 230px;"><fusion-search class="{{searchClassName}} {{transparentClassName}}" [showClearIcon]="showClearIcon" [placeholder]="placeholder" [formControl]="formControl"></fusion-search></div>`
 });
 
-// region Default
-export const Default = TooltipTemplate.bind({});
-Default.args = {
-    formControl: formControl
-};
-Default.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SearchComponent } from '@ironsource/fusion-ui/components/search/v3';
+export const Default = {
+    render: TooltipTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div style="width: 230px;">
-  <fusion-search
-   [formControl]="formControl"
-  ></fusion-search>
-</div>\`,
-  standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, SearchComponent],
-})
-export class FusionStoryWrapperComponent {
-  formControl = new FormControl();
-}
-`,
-            format: true,
-            type: 'code'
+    args: {
+        formControl: formControl
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { CommonModule } from '@angular/common';
+    import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+    import { SearchComponent } from '@ironsource/fusion-ui/components/search/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div style="width: 230px;">
+      <fusion-search
+       [formControl]="formControl"
+      ></fusion-search>
+    </div>\`,
+      standalone: true,
+      imports: [CommonModule, FormsModule, ReactiveFormsModule, SearchComponent],
+    })
+    export class FusionStoryWrapperComponent {
+      formControl = new FormControl();
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-// endregion
 
-// region NoClearIcon
-export const NoClearIcon = TooltipTemplate.bind({});
-NoClearIcon.args = {
-    formControl: formControl,
-    showClearIcon: false
-};
-NoClearIcon.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SearchComponent } from '@ironsource/fusion-ui/components/search/v3';
+export const NoClearIcon = {
+    render: TooltipTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div style="width: 230px;">
-  <fusion-search
-   [formControl]="formControl"
-   [showClearIcon]="showClearIcon"
-  ></fusion-search>
-</div>\`,
-  standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, SearchComponent],
-})
-export class FusionStoryWrapperComponent {
-  formControl = new FormControl();
-  showClearIcon = false;
-}
-`,
-            format: true,
-            type: 'code'
+    args: {
+        formControl: formControl,
+        showClearIcon: false
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { CommonModule } from '@angular/common';
+    import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+    import { SearchComponent } from '@ironsource/fusion-ui/components/search/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div style="width: 230px;">
+      <fusion-search
+       [formControl]="formControl"
+       [showClearIcon]="showClearIcon"
+      ></fusion-search>
+    </div>\`,
+      standalone: true,
+      imports: [CommonModule, FormsModule, ReactiveFormsModule, SearchComponent],
+    })
+    export class FusionStoryWrapperComponent {
+      formControl = new FormControl();
+      showClearIcon = false;
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-// endregion
 
-// region Small
-export const Small = TooltipTemplate.bind({});
-Small.args = {
-    formControl: formControl,
-    searchClassName: 'fu-small'
-};
-Small.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SearchComponent } from '@ironsource/fusion-ui/components/search/v3';
+export const Small = {
+    render: TooltipTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div style="width: 230px;">
-  <fusion-search class="fu-small"
-   [formControl]="formControl"
-  ></fusion-search>
-</div>\`,
-  standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, SearchComponent],
-})
-export class FusionStoryWrapperComponent {
-  formControl = new FormControl();
-}
-`,
-            format: true,
-            type: 'code'
+    args: {
+        formControl: formControl,
+        searchClassName: 'fu-small'
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { CommonModule } from '@angular/common';
+    import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+    import { SearchComponent } from '@ironsource/fusion-ui/components/search/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div style="width: 230px;">
+      <fusion-search class="fu-small"
+       [formControl]="formControl"
+      ></fusion-search>
+    </div>\`,
+      standalone: true,
+      imports: [CommonModule, FormsModule, ReactiveFormsModule, SearchComponent],
+    })
+    export class FusionStoryWrapperComponent {
+      formControl = new FormControl();
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-// endregion
 
-// region SmallNoClearIcon
-export const SmallNoClearIcon = TooltipTemplate.bind({});
-SmallNoClearIcon.args = {
-    formControl: formControl,
-    searchClassName: 'fu-small',
-    showClearIcon: false
-};
-SmallNoClearIcon.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SearchComponent } from '@ironsource/fusion-ui/components/search/v3';
+export const SmallNoClearIcon = {
+    render: TooltipTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div style="width: 230px;">
-  <fusion-search  class="fu-small"
-   [formControl]="formControl"
-   [showClearIcon]="showClearIcon"
-  ></fusion-search>
-</div>\`,
-  standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, SearchComponent],
-})
-export class FusionStoryWrapperComponent {
-  formControl = new FormControl();
-  showClearIcon = false;
-}
-`,
-            format: true,
-            type: 'code'
+    args: {
+        formControl: formControl,
+        searchClassName: 'fu-small',
+        showClearIcon: false
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { CommonModule } from '@angular/common';
+    import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+    import { SearchComponent } from '@ironsource/fusion-ui/components/search/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div style="width: 230px;">
+      <fusion-search  class="fu-small"
+       [formControl]="formControl"
+       [showClearIcon]="showClearIcon"
+      ></fusion-search>
+    </div>\`,
+      standalone: true,
+      imports: [CommonModule, FormsModule, ReactiveFormsModule, SearchComponent],
+    })
+    export class FusionStoryWrapperComponent {
+      formControl = new FormControl();
+      showClearIcon = false;
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-// endregion
 
-// region Transparent
-export const Transparent = TooltipTemplate.bind({});
-Transparent.args = {
-    formControl: formControl,
-    transparentClassName: 'fu-transparent'
+export const Transparent = {
+    render: TooltipTemplate,
+
+    args: {
+        formControl: formControl,
+        transparentClassName: 'fu-transparent'
+    }
 };
-// endregion
 
-// region TransparentNoClearIcon
-export const TransparentNoClearIcon = TooltipTemplate.bind({});
-TransparentNoClearIcon.args = {
-    formControl: formControl,
-    transparentClassName: 'fu-transparent',
-    showClearIcon: false
-};
-TransparentNoClearIcon.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SearchComponent } from '@ironsource/fusion-ui/components/search/v3';
+export const TransparentNoClearIcon = {
+    render: TooltipTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div style="width: 230px;">
-  <fusion-search class="fu-transparent"
-   [formControl]="formControl"
-   [showClearIcon]="showClearIcon"
-  ></fusion-search>
-</div>\`,
-  standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, SearchComponent],
-})
-export class FusionStoryWrapperComponent {
-  formControl = new FormControl();
-  showClearIcon = false;
-}
-`,
-            format: true,
-            type: 'code'
+    args: {
+        formControl: formControl,
+        transparentClassName: 'fu-transparent',
+        showClearIcon: false
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { CommonModule } from '@angular/common';
+    import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+    import { SearchComponent } from '@ironsource/fusion-ui/components/search/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div style="width: 230px;">
+      <fusion-search class="fu-transparent"
+       [formControl]="formControl"
+       [showClearIcon]="showClearIcon"
+      ></fusion-search>
+    </div>\`,
+      standalone: true,
+      imports: [CommonModule, FormsModule, ReactiveFormsModule, SearchComponent],
+    })
+    export class FusionStoryWrapperComponent {
+      formControl = new FormControl();
+      showClearIcon = false;
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-// endregion
 
-// region TransparentSmallNoClearIcon
-export const TransparentSmallNoClearIcon = TooltipTemplate.bind({});
-TransparentSmallNoClearIcon.args = {
-    formControl: formControl,
-    searchClassName: 'fu-small',
-    transparentClassName: 'fu-transparent',
-    showClearIcon: false
-};
-TransparentSmallNoClearIcon.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SearchComponent } from '@ironsource/fusion-ui/components/search/v3';
+export const TransparentSmallNoClearIcon = {
+    render: TooltipTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div style="width: 230px;">
-  <fusion-search class="fu-transparent fu-small"
-   [formControl]="formControl"
-   [showClearIcon]="showClearIcon"
-  ></fusion-search>
-</div>\`,
-  standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, SearchComponent],
-})
-export class FusionStoryWrapperComponent {
-  formControl = new FormControl();
-  showClearIcon = false;
-}
-`,
-            format: true,
-            type: 'code'
+    args: {
+        formControl: formControl,
+        searchClassName: 'fu-small',
+        transparentClassName: 'fu-transparent',
+        showClearIcon: false
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { CommonModule } from '@angular/common';
+    import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+    import { SearchComponent } from '@ironsource/fusion-ui/components/search/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div style="width: 230px;">
+      <fusion-search class="fu-transparent fu-small"
+       [formControl]="formControl"
+       [showClearIcon]="showClearIcon"
+      ></fusion-search>
+    </div>\`,
+      standalone: true,
+      imports: [CommonModule, FormsModule, ReactiveFormsModule, SearchComponent],
+    })
+    export class FusionStoryWrapperComponent {
+      formControl = new FormControl();
+      showClearIcon = false;
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-// endregion
-
-// region Disabled - wait for design for Shai
-/*
-export const Disabled = TooltipTemplate.bind({});
-Disabled.args = {
-    formControl: formControlDisabled
-};
-*/
-// endregion

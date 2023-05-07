@@ -1,4 +1,4 @@
-import {Story, Meta} from '@storybook/angular';
+import {StoryFn, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {dedent} from 'ts-dedent';
 import {environment} from 'stories/environments/environment';
@@ -42,7 +42,7 @@ export default {
     }
 } as Meta<MenuDropComponent>;
 
-const MenuDropTemplate: Story<MenuDropComponent> = (args: MenuDropComponent) => ({
+const MenuDropTemplate: StoryFn<MenuDropComponent> = (args: MenuDropComponent) => ({
     props: {...args},
     template: `<div style="margin: auto; display: flex; justify-content: center; height: 200px">
     <fusion-menu-drop
@@ -52,11 +52,16 @@ const MenuDropTemplate: Story<MenuDropComponent> = (args: MenuDropComponent) => 
 </div>`
 });
 
-export const Default = MenuDropTemplate.bind({});
+export const Default = {
+    render: MenuDropTemplate
+};
 
-export const DisabledItems = MenuDropTemplate.bind({});
-DisabledItems.args = {
-    menuItems: MOCK_MENU_ITEMS.map((item, idx) => {
-        return {...item, disabled: idx >= 2};
-    })
+export const DisabledItems = {
+    render: MenuDropTemplate,
+
+    args: {
+        menuItems: MOCK_MENU_ITEMS.map((item, idx) => {
+            return {...item, disabled: idx >= 2};
+        })
+    }
 };

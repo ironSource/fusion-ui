@@ -1,4 +1,4 @@
-import {Story, Meta} from '@storybook/angular';
+import {StoryFn, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -91,7 +91,7 @@ If you have multiple options appearing in a list, you can preserve space by usin
     }
 } as Meta<CheckboxComponent>;
 
-const CheckboxTemplate: Story<CheckboxComponent> = (args: CheckboxComponent) => ({
+const CheckboxTemplate: StoryFn<CheckboxComponent> = (args: CheckboxComponent) => ({
     props: {...args},
     template: `<fusion-checkbox [label]="label"
  [icon]="icon"
@@ -103,57 +103,64 @@ const CheckboxTemplate: Story<CheckboxComponent> = (args: CheckboxComponent) => 
 ></fusion-checkbox>`
 });
 
-// region Default
-export const Default = CheckboxTemplate.bind({});
-Default.args = {
-    formControl: formControlUnchecked
-};
-// endregion
+export const Default = {
+    render: CheckboxTemplate,
 
-// region Checked
-export const Checked = CheckboxTemplate.bind({});
-Checked.args = {
-    formControl: formControlChecked
+    args: {
+        formControl: formControlUnchecked
+    }
 };
-// endregion
 
-// region Indeterminate
-export const Indeterminate = CheckboxTemplate.bind({});
-Indeterminate.args = {
-    isIndeterminate: true,
-    formControl: formControlUnchecked
-};
-// endregion
+export const Checked = {
+    render: CheckboxTemplate,
 
-// region Disabled
-export const Disabled = CheckboxTemplate.bind({});
-Disabled.args = {
-    isDisabled: true,
-    isIndeterminate: true,
-    formControl: formControlUnchecked
+    args: {
+        formControl: formControlChecked
+    }
 };
-// endregion
 
-// region WithIcon
-export const WithIcon = CheckboxTemplate.bind({});
-WithIcon.args = {
-    icon: 'frame',
-    formControl: formControlUnchecked
-};
-// endregion
+export const Indeterminate = {
+    render: CheckboxTemplate,
 
-// region WithFlag
-export const WithFlag = CheckboxTemplate.bind({});
-WithFlag.args = {
-    flag: 'us',
-    formControl: formControlUnchecked
+    args: {
+        isIndeterminate: true,
+        formControl: formControlUnchecked
+    }
 };
-// endregion
 
-// region With Custom Background Color
-export const CustomColor = CheckboxTemplate.bind({});
-CustomColor.args = {
-    backgroundColor: '#459FCA',
-    formControl: formControlChecked
+export const Disabled = {
+    render: CheckboxTemplate,
+
+    args: {
+        isDisabled: true,
+        isIndeterminate: true,
+        formControl: formControlUnchecked
+    }
 };
-// endregion
+
+export const WithIcon = {
+    render: CheckboxTemplate,
+
+    args: {
+        icon: 'frame',
+        formControl: formControlUnchecked
+    }
+};
+
+export const WithFlag = {
+    render: CheckboxTemplate,
+
+    args: {
+        flag: 'us',
+        formControl: formControlUnchecked
+    }
+};
+
+export const CustomColor = {
+    render: CheckboxTemplate,
+
+    args: {
+        backgroundColor: '#459FCA',
+        formControl: formControlChecked
+    }
+};

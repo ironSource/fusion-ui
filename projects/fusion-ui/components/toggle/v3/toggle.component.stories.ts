@@ -1,4 +1,4 @@
-import {Story, Meta} from '@storybook/angular';
+import {StoryFn, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {dedent} from 'ts-dedent';
@@ -38,7 +38,7 @@ export default {
     }
 } as Meta<ToggleComponent>;
 
-const TooltipTemplate: Story<ToggleComponent> = (args: ToggleComponent) => ({
+const TooltipTemplate: StoryFn<ToggleComponent> = (args: ToggleComponent) => ({
     props: {...args},
     template: `<fusion-toggle
     [formControl]="formControl"
@@ -48,366 +48,388 @@ const TooltipTemplate: Story<ToggleComponent> = (args: ToggleComponent) => ({
     >{{label}}</fusion-toggle>`
 });
 
-// region Default
-export const Default = TooltipTemplate.bind({});
-Default.args = {
-    formControl: formControlUnchecked
-};
-Default.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ToggleComponent } from '@ironsource/fusion-ui/components/toggle/v3';
+export const Default = {
+    render: TooltipTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<fusion-toggle
-    [formControl]="formControl"
-    ></fusion-toggle>\`,
-  standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, ToggleComponent],
-})
-export class FusionStoryWrapperComponent {
-  formControl = new FormControl(false);
-}
-`,
-            format: true,
-            type: 'code'
+    args: {
+        formControl: formControlUnchecked
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { CommonModule } from '@angular/common';
+    import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+    import { ToggleComponent } from '@ironsource/fusion-ui/components/toggle/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<fusion-toggle
+        [formControl]="formControl"
+        ></fusion-toggle>\`,
+      standalone: true,
+      imports: [CommonModule, FormsModule, ReactiveFormsModule, ToggleComponent],
+    })
+    export class FusionStoryWrapperComponent {
+      formControl = new FormControl(false);
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-// endregion
 
-// region Checked
-export const Checked = TooltipTemplate.bind({});
-Checked.args = {
-    formControl: formControlChecked
-};
-Checked.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ToggleComponent } from '@ironsource/fusion-ui/components/toggle/v3';
+export const Checked = {
+    render: TooltipTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<fusion-toggle
-    [formControl]="formControl"
-    ></fusion-toggle>\`,
-  standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, ToggleComponent],
-})
-export class FusionStoryWrapperComponent {
-  formControl = new FormControl(true);
-}
-`,
-            format: true,
-            type: 'code'
+    args: {
+        formControl: formControlChecked
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { CommonModule } from '@angular/common';
+    import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+    import { ToggleComponent } from '@ironsource/fusion-ui/components/toggle/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<fusion-toggle
+        [formControl]="formControl"
+        ></fusion-toggle>\`,
+      standalone: true,
+      imports: [CommonModule, FormsModule, ReactiveFormsModule, ToggleComponent],
+    })
+    export class FusionStoryWrapperComponent {
+      formControl = new FormControl(true);
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-// endregion
 
-// region DisabledUnchecked
-export const DisabledUnchecked = TooltipTemplate.bind({});
-DisabledUnchecked.args = {
-    formControl: formControlUncheckedDisabled
-};
-DisabledUnchecked.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ToggleComponent } from '@ironsource/fusion-ui/components/toggle/v3';
+export const DisabledUnchecked = {
+    render: TooltipTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<fusion-toggle
-    [formControl]="formControl"
-    ></fusion-toggle>\`,
-  standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, ToggleComponent],
-})
-export class FusionStoryWrapperComponent {
-  formControl = new FormControl({value: false, disabled: true});
-}
-`,
-            format: true,
-            type: 'code'
+    args: {
+        formControl: formControlUncheckedDisabled
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { CommonModule } from '@angular/common';
+    import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+    import { ToggleComponent } from '@ironsource/fusion-ui/components/toggle/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<fusion-toggle
+        [formControl]="formControl"
+        ></fusion-toggle>\`,
+      standalone: true,
+      imports: [CommonModule, FormsModule, ReactiveFormsModule, ToggleComponent],
+    })
+    export class FusionStoryWrapperComponent {
+      formControl = new FormControl({value: false, disabled: true});
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-// endregion
 
-// region DisabledChecked
-export const DisabledChecked = TooltipTemplate.bind({});
-DisabledChecked.args = {
-    formControl: formControlCheckedDisabled
-};
-DisabledChecked.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ToggleComponent } from '@ironsource/fusion-ui/components/toggle/v3';
+export const DisabledChecked = {
+    render: TooltipTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<fusion-toggle
-    [formControl]="formControl"
-    ></fusion-toggle>\`,
-  standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, ToggleComponent],
-})
-export class FusionStoryWrapperComponent {
-  formControl = new FormControl({value: true, disabled: true});
-}
-`,
-            format: true,
-            type: 'code'
+    args: {
+        formControl: formControlCheckedDisabled
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { CommonModule } from '@angular/common';
+    import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+    import { ToggleComponent } from '@ironsource/fusion-ui/components/toggle/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<fusion-toggle
+        [formControl]="formControl"
+        ></fusion-toggle>\`,
+      standalone: true,
+      imports: [CommonModule, FormsModule, ReactiveFormsModule, ToggleComponent],
+    })
+    export class FusionStoryWrapperComponent {
+      formControl = new FormControl({value: true, disabled: true});
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-// endregion
 
-// region WithLabel
-export const WithLabel = TooltipTemplate.bind({});
-WithLabel.args = {
-    formControl: formControlUnchecked,
-    label: 'Item name'
-};
-WithLabel.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ToggleComponent } from '@ironsource/fusion-ui/components/toggle/v3';
+export const WithLabel = {
+    render: TooltipTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<fusion-toggle
-    [formControl]="formControl"
-    >{{label}}</fusion-toggle>\`,
-  standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, ToggleComponent],
-})
-export class FusionStoryWrapperComponent {
-  formControl = new FormControl(false);
-  label = 'Item name';
-}
-`,
-            format: true,
-            type: 'code'
+    args: {
+        formControl: formControlUnchecked,
+        label: 'Item name'
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { CommonModule } from '@angular/common';
+    import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+    import { ToggleComponent } from '@ironsource/fusion-ui/components/toggle/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<fusion-toggle
+        [formControl]="formControl"
+        >{{label}}</fusion-toggle>\`,
+      standalone: true,
+      imports: [CommonModule, FormsModule, ReactiveFormsModule, ToggleComponent],
+    })
+    export class FusionStoryWrapperComponent {
+      formControl = new FormControl(false);
+      label = 'Item name';
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-// endregion
 
-// region WithLabelChecked
-export const WithLabelChecked = TooltipTemplate.bind({});
-WithLabelChecked.args = {
-    formControl: formControlChecked,
-    label: 'Item name'
-};
-WithLabelChecked.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ToggleComponent } from '@ironsource/fusion-ui/components/toggle/v3';
+export const WithLabelChecked = {
+    render: TooltipTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<fusion-toggle
-    [formControl]="formControl"
-    >{{label}}</fusion-toggle>\`,
-  standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, ToggleComponent],
-})
-export class FusionStoryWrapperComponent {
-  formControl = new FormControl(true);
-  label = 'Item name';
-}
-`,
-            format: true,
-            type: 'code'
+    args: {
+        formControl: formControlChecked,
+        label: 'Item name'
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { CommonModule } from '@angular/common';
+    import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+    import { ToggleComponent } from '@ironsource/fusion-ui/components/toggle/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<fusion-toggle
+        [formControl]="formControl"
+        >{{label}}</fusion-toggle>\`,
+      standalone: true,
+      imports: [CommonModule, FormsModule, ReactiveFormsModule, ToggleComponent],
+    })
+    export class FusionStoryWrapperComponent {
+      formControl = new FormControl(true);
+      label = 'Item name';
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-// endregion
 
-// region WithLabelDisabled
-export const WithLabelDisabled = TooltipTemplate.bind({});
-WithLabelDisabled.args = {
-    formControl: formControlUncheckedDisabled,
-    label: 'Item name'
-};
-WithLabelDisabled.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ToggleComponent } from '@ironsource/fusion-ui/components/toggle/v3';
+export const WithLabelDisabled = {
+    render: TooltipTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<fusion-toggle
-    [formControl]="formControl"
-    >{{label}}</fusion-toggle>\`,
-  standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, ToggleComponent],
-})
-export class FusionStoryWrapperComponent {
-  formControl = new FormControl({value: false, disabled: true});
-  label = 'Item name';
-}
-`,
-            format: true,
-            type: 'code'
+    args: {
+        formControl: formControlUncheckedDisabled,
+        label: 'Item name'
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { CommonModule } from '@angular/common';
+    import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+    import { ToggleComponent } from '@ironsource/fusion-ui/components/toggle/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<fusion-toggle
+        [formControl]="formControl"
+        >{{label}}</fusion-toggle>\`,
+      standalone: true,
+      imports: [CommonModule, FormsModule, ReactiveFormsModule, ToggleComponent],
+    })
+    export class FusionStoryWrapperComponent {
+      formControl = new FormControl({value: false, disabled: true});
+      label = 'Item name';
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-// endregion
 
-// region WithLabelCheckedDisabled
-export const WithLabelCheckedDisabled = TooltipTemplate.bind({});
-WithLabelCheckedDisabled.args = {
-    formControl: formControlCheckedDisabled,
-    label: 'Item name'
-};
-WithLabelCheckedDisabled.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ToggleComponent } from '@ironsource/fusion-ui/components/toggle/v3';
+export const WithLabelCheckedDisabled = {
+    render: TooltipTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<fusion-toggle
-    [formControl]="formControl"
-    >{{label}}</fusion-toggle>\`,
-  standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, ToggleComponent],
-})
-export class FusionStoryWrapperComponent {
-  formControl = new FormControl({value: true, disabled: true});
-  label = 'Item name';
-}
-`,
-            format: true,
-            type: 'code'
+    args: {
+        formControl: formControlCheckedDisabled,
+        label: 'Item name'
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { CommonModule } from '@angular/common';
+    import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+    import { ToggleComponent } from '@ironsource/fusion-ui/components/toggle/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<fusion-toggle
+        [formControl]="formControl"
+        >{{label}}</fusion-toggle>\`,
+      standalone: true,
+      imports: [CommonModule, FormsModule, ReactiveFormsModule, ToggleComponent],
+    })
+    export class FusionStoryWrapperComponent {
+      formControl = new FormControl({value: true, disabled: true});
+      label = 'Item name';
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-// endregion
 
-// region WithLabelHelperText
-export const WithLabelHelperText = TooltipTemplate.bind({});
-WithLabelHelperText.args = {
-    formControl: formControlChecked,
-    label: 'Item name',
-    helper: 'Helper text'
-};
-WithLabelHelperText.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ToggleComponent } from '@ironsource/fusion-ui/components/toggle/v3';
+export const WithLabelHelperText = {
+    render: TooltipTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<fusion-toggle
-    [formControl]="formControl"
-    [helper]="helper"
-    >{{label}}</fusion-toggle>\`,
-  standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, ToggleComponent],
-})
-export class FusionStoryWrapperComponent {
-  formControl = new FormControl(true);
-  label = 'Item name';
-  helper = 'Helper text';
-}
-`,
-            format: true,
-            type: 'code'
+    args: {
+        formControl: formControlChecked,
+        label: 'Item name',
+        helper: 'Helper text'
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { CommonModule } from '@angular/common';
+    import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+    import { ToggleComponent } from '@ironsource/fusion-ui/components/toggle/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<fusion-toggle
+        [formControl]="formControl"
+        [helper]="helper"
+        >{{label}}</fusion-toggle>\`,
+      standalone: true,
+      imports: [CommonModule, FormsModule, ReactiveFormsModule, ToggleComponent],
+    })
+    export class FusionStoryWrapperComponent {
+      formControl = new FormControl(true);
+      label = 'Item name';
+      helper = 'Helper text';
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-// endregion
 
-// region WithLabelErrorText
-export const WithLabelErrorText = TooltipTemplate.bind({});
-WithLabelErrorText.args = {
-    formControl: formControlChecked,
-    label: 'Item name',
-    error: 'Error text'
-};
-WithLabelErrorText.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ToggleComponent } from '@ironsource/fusion-ui/components/toggle/v3';
+export const WithLabelErrorText = {
+    render: TooltipTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<fusion-toggle
-    [formControl]="formControl"
-    [error]="error"
-    >{{label}}</fusion-toggle>\`,
-  standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, ToggleComponent],
-})
-export class FusionStoryWrapperComponent {
-  formControl = new FormControl(true);
-  label = 'Item name';
-  error = 'Error text';
-}
-`,
-            format: true,
-            type: 'code'
+    args: {
+        formControl: formControlChecked,
+        label: 'Item name',
+        error: 'Error text'
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { CommonModule } from '@angular/common';
+    import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+    import { ToggleComponent } from '@ironsource/fusion-ui/components/toggle/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<fusion-toggle
+        [formControl]="formControl"
+        [error]="error"
+        >{{label}}</fusion-toggle>\`,
+      standalone: true,
+      imports: [CommonModule, FormsModule, ReactiveFormsModule, ToggleComponent],
+    })
+    export class FusionStoryWrapperComponent {
+      formControl = new FormControl(true);
+      label = 'Item name';
+      error = 'Error text';
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
+
 // endregion
 
 // region WithCustomCheckedColor
-const TooltipCustomColorTemplate: Story<ToggleComponent> = (args: ToggleComponent) => ({
+const TooltipCustomColorTemplate: StoryFn<ToggleComponent> = (args: ToggleComponent) => ({
     props: {...args},
     template: `<fusion-toggle style="--checked-bg-color:#FFB424;"
     [formControl]="formControl"
@@ -416,37 +438,41 @@ const TooltipCustomColorTemplate: Story<ToggleComponent> = (args: ToggleComponen
     [helper]="helper"
     >{{label}}</fusion-toggle>`
 });
-export const WithCustomCheckedColor = TooltipCustomColorTemplate.bind({});
-WithCustomCheckedColor.args = {
-    formControl: formControlChecked,
-    label: 'Item name'
-};
-WithCustomCheckedColor.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ToggleComponent } from '@ironsource/fusion-ui/components/toggle/v3';
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<fusion-toggle style="--checked-bg-color:#FFB424;"
-    [formControl]="formControl"
-    >{{label}}</fusion-toggle>\`,
-  standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, ToggleComponent],
-})
-export class FusionStoryWrapperComponent {
-  formControl = new FormControl(true);
-  label = 'Item name';
-}
-`,
-            format: true,
-            type: 'code'
+export const WithCustomCheckedColor = {
+    render: TooltipCustomColorTemplate,
+
+    args: {
+        formControl: formControlChecked,
+        label: 'Item name'
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { CommonModule } from '@angular/common';
+    import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+    import { ToggleComponent } from '@ironsource/fusion-ui/components/toggle/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<fusion-toggle style="--checked-bg-color:#FFB424;"
+        [formControl]="formControl"
+        >{{label}}</fusion-toggle>\`,
+      standalone: true,
+      imports: [CommonModule, FormsModule, ReactiveFormsModule, ToggleComponent],
+    })
+    export class FusionStoryWrapperComponent {
+      formControl = new FormControl(true);
+      label = 'Item name';
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-// endregion

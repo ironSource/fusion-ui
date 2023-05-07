@@ -1,4 +1,4 @@
-import {Story, Meta} from '@storybook/angular';
+import {StoryFn, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {TooltipComponent, TooltipModule} from './';
@@ -29,7 +29,7 @@ export default {
     }
 } as Meta<TooltipComponent>;
 
-const TooltipTemplate: Story<TooltipComponent> = (args: TooltipComponent) => ({
+const TooltipTemplate: StoryFn<TooltipComponent> = (args: TooltipComponent) => ({
     props: args,
     template: `
 <style>
@@ -45,35 +45,38 @@ const TooltipTemplate: Story<TooltipComponent> = (args: TooltipComponent) => ({
 `
 });
 
-// region Directive
-export const Directive = TooltipTemplate.bind({});
-Directive.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { TooltipModule } from '@ironsource/fusion-ui/components/tooltip/v3';
+export const Directive = {
+    render: TooltipTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div [fusionTooltip]="tooltipText" style="width: max-content; margin: auto;">Element with tooltip</div>\`,
-  standalone: true,
-  imports: [TooltipModule],
-})
-export class FusionStoryWrapperComponent {
-  tooltipText = 'Well done! You successfully read this alert message';
-}
-`,
-            format: true,
-            type: 'code'
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { TooltipModule } from '@ironsource/fusion-ui/components/tooltip/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div [fusionTooltip]="tooltipText" style="width: max-content; margin: auto;">Element with tooltip</div>\`,
+      standalone: true,
+      imports: [TooltipModule],
+    })
+    export class FusionStoryWrapperComponent {
+      tooltipText = 'Well done! You successfully read this alert message';
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
+
 // endregion
 
 // region Inline
-const TooltipInlineTemplate: Story<TooltipComponent> = (args: TooltipComponent) => ({
+const TooltipInlineTemplate: StoryFn<TooltipComponent> = (args: TooltipComponent) => ({
     props: args,
     template: `
 <fusion-tooltip [tooltipConfiguration]="tooltipConfiguration">
@@ -87,46 +90,50 @@ const TooltipInlineTemplate: Story<TooltipComponent> = (args: TooltipComponent) 
 </fusion-tooltip>
 `
 });
-export const Inline = TooltipInlineTemplate.bind({});
-Inline.parameters = {
-    docs: {
-        description: {
-            story: dedent`**Tooltip component** Use ***TooltipComponent*** (<fusion-tooltip>). In this case you can put in tooltip ***any*** content.
-* Inner element with class ***"fusionTooltipTrigger"*** has trigger for tooltip.
-* Inner element with class ***"fusionTooltipContent"*** has tooltip content.
-`
-        },
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { TooltipModule } from '@ironsource/fusion-ui/components/tooltip/v3';
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div style="width:150px; margin:auto; margin-top: 100px"><fusion-tooltip>
-    <div class="fusionTooltipTrigger">
-        <div>Element with tooltip</div>
-    </div>
-    <div class="fusionTooltipContent">
-        <div style="margin-bottom: 5px; font-size: 14px">Tooltip title</div>
-        <div>Well done! You successfully read this alert message</div>
-    </div>
-</fusion-tooltip></div>\`,
-  standalone: true,
-  imports: [TooltipModule],
-})
-export class FusionStoryWrapperComponent {
-  tooltipText = 'Well done! You successfully read this alert message';
-}
-`,
-            format: true,
-            type: 'code'
+export const Inline = {
+    render: TooltipInlineTemplate,
+
+    parameters: {
+        docs: {
+            description: {
+                story: dedent`**Tooltip component** Use ***TooltipComponent*** (<fusion-tooltip>). In this case you can put in tooltip ***any*** content.
+    * Inner element with class ***"fusionTooltipTrigger"*** has trigger for tooltip.
+    * Inner element with class ***"fusionTooltipContent"*** has tooltip content.
+    `
+            },
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { TooltipModule } from '@ironsource/fusion-ui/components/tooltip/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div style="width:150px; margin:auto; margin-top: 100px"><fusion-tooltip>
+        <div class="fusionTooltipTrigger">
+            <div>Element with tooltip</div>
+        </div>
+        <div class="fusionTooltipContent">
+            <div style="margin-bottom: 5px; font-size: 14px">Tooltip title</div>
+            <div>Well done! You successfully read this alert message</div>
+        </div>
+    </fusion-tooltip></div>\`,
+      standalone: true,
+      imports: [TooltipModule],
+    })
+    export class FusionStoryWrapperComponent {
+      tooltipText = 'Well done! You successfully read this alert message';
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
 
-const TooltipInlineWithLinkTemplate: Story<TooltipComponent> = (args: TooltipComponent) => ({
+const TooltipInlineWithLinkTemplate: StoryFn<TooltipComponent> = (args: TooltipComponent) => ({
     props: args,
     template: `
 <fusion-tooltip [tooltipConfiguration]="tooltipConfiguration">
@@ -140,93 +147,101 @@ const TooltipInlineWithLinkTemplate: Story<TooltipComponent> = (args: TooltipCom
 </fusion-tooltip>
 `
 });
-export const InlinePreventToClose = TooltipInlineWithLinkTemplate.bind({});
-InlinePreventToClose.args = {
-    tooltipConfiguration: {
-        preventTooltipToClose: true
+
+export const InlinePreventToClose = {
+    render: TooltipInlineWithLinkTemplate,
+
+    args: {
+        tooltipConfiguration: {
+            preventTooltipToClose: true
+        }
+    },
+
+    parameters: {
+        docs: {
+            description: {
+                story: dedent`**Tooltip component** with link in tooltip content
+
+                In this case need "prevent" hide tooltip on "tooltiped" element "mouseleave" event.
+                For this need to add to the tooltipConfiguration \`preventTooltipToClose: true\`
+                `
+            },
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { TooltipModule } from '@ironsource/fusion-ui/components/tooltip/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div style="width:150px; margin:auto; margin-top: 100px">
+      <fusion-tooltip [tooltipConfiguration]="{preventTooltipToClose: true}">
+        <div class="fusionTooltipTrigger">
+            <div>Element with tooltip</div>
+        </div>
+        <div class="fusionTooltipContent">
+            <div style="margin-bottom: 5px; font-size: 14px">Tooltip title</div>
+            <div>Well done! You successfully read this alert message <a href="https://fusion.ironsrc.net/" target="_blank" style="color: #ffffff">click me</a></div>
+        </div>
+    </fusion-tooltip>
+    </div>\`,
+      standalone: true,
+      imports: [TooltipModule],
+    })
+    export class FusionStoryWrapperComponent {
+      tooltipText = 'Well done! You successfully read this alert message';
     }
-};
-InlinePreventToClose.parameters = {
-    docs: {
-        description: {
-            story: dedent`**Tooltip component** with link in tooltip content
-
-            In this case need "prevent" hide tooltip on "tooltiped" element "mouseleave" event.
-            For this need to add to the tooltipConfiguration \`preventTooltipToClose: true\`
-            `
-        },
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { TooltipModule } from '@ironsource/fusion-ui/components/tooltip/v3';
-
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div style="width:150px; margin:auto; margin-top: 100px">
-  <fusion-tooltip [tooltipConfiguration]="{preventTooltipToClose: true}">
-    <div class="fusionTooltipTrigger">
-        <div>Element with tooltip</div>
-    </div>
-    <div class="fusionTooltipContent">
-        <div style="margin-bottom: 5px; font-size: 14px">Tooltip title</div>
-        <div>Well done! You successfully read this alert message <a href="https://fusion.ironsrc.net/" target="_blank" style="color: #ffffff">click me</a></div>
-    </div>
-</fusion-tooltip>
-</div>\`,
-  standalone: true,
-  imports: [TooltipModule],
-})
-export class FusionStoryWrapperComponent {
-  tooltipText = 'Well done! You successfully read this alert message';
-}
-`,
-            format: true,
-            type: 'code'
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
 
-export const InlineCustomization = TooltipInlineTemplate.bind({});
-InlineCustomization.args = {
-    tooltipConfiguration: {
-        backgroundColor: '#3083FF'
-    }
-};
-InlineCustomization.parameters = {
-    docs: {
-        description: {
-            story: dedent`**Tooltip customization** Use ***[tooltipConfiguration]*** for change tooltip default background color`
-        },
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { TooltipModule } from '@ironsource/fusion-ui/components/tooltip/v3';
+export const InlineCustomization = {
+    render: TooltipInlineTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div style="width:150px; margin:auto; margin-top: 100px">
-    <fusion-tooltip [tooltipConfiguration]="{backgroundColor: '#3083FF'}">
-    <div class="fusionTooltipTrigger">
-        <div>Element with tooltip</div>
-    </div>
-    <div class="fusionTooltipContent">
-        <div style="margin-bottom: 5px; font-size: 14px">Tooltip title</div>
-        <div>Well done! You successfully read this alert message</div>
-    </div>
-  </fusion-tooltip>
-</div>\`,
-  standalone: true,
-  imports: [TooltipModule],
-})
-export class FusionStoryWrapperComponent {
-  tooltipText = 'Well done! You successfully read this alert message';
-}
-`,
-            format: true,
-            type: 'code'
+    args: {
+        tooltipConfiguration: {
+            backgroundColor: '#3083FF'
+        }
+    },
+
+    parameters: {
+        docs: {
+            description: {
+                story: dedent`**Tooltip customization** Use ***[tooltipConfiguration]*** for change tooltip default background color`
+            },
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { TooltipModule } from '@ironsource/fusion-ui/components/tooltip/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div style="width:150px; margin:auto; margin-top: 100px">
+        <fusion-tooltip [tooltipConfiguration]="{backgroundColor: '#3083FF'}">
+        <div class="fusionTooltipTrigger">
+            <div>Element with tooltip</div>
+        </div>
+        <div class="fusionTooltipContent">
+            <div style="margin-bottom: 5px; font-size: 14px">Tooltip title</div>
+            <div>Well done! You successfully read this alert message</div>
+        </div>
+      </fusion-tooltip>
+    </div>\`,
+      standalone: true,
+      imports: [TooltipModule],
+    })
+    export class FusionStoryWrapperComponent {
+      tooltipText = 'Well done! You successfully read this alert message';
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-// endregion

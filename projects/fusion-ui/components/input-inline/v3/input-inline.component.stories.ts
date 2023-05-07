@@ -1,4 +1,4 @@
-import {Story, Meta} from '@storybook/angular';
+import {StoryFn, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -62,7 +62,7 @@ export default {
     }
 } as Meta<InputInlineComponent>;
 
-const InputTemplate: Story<InputInlineComponent> = (args: InputInlineComponent) => ({
+const InputTemplate: StoryFn<InputInlineComponent> = (args: InputInlineComponent) => ({
     props: {...args},
     template: `<div style="width: 155px;">
 <fusion-input-inline class="{{className}}"
@@ -79,936 +79,984 @@ const InputTemplate: Story<InputInlineComponent> = (args: InputInlineComponent) 
 </div>`
 });
 
-export const Default = InputTemplate.bind({});
-Default.args = {
-    formControl: new FormControl('some text value')
-};
-Default.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
-import {
-  InlineInputType,
-  InputInlineComponent,
-} from '@ironsource/fusion-ui/components/input-inline';
+export const Default = {
+    render: InputTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`
-    <div style="width: 155px;">
-<fusion-input-inline #inputInline
-    [type]="type"
-    [formControl]="formControl"
-    [loading]="loading"
-    [readOnly]="readOnly"
-    [error]="error"
-    (onSave)="onSave($event)"
-    (onCancel)="onCancel()"
-></fusion-input-inline>
-</div>
-  \`,
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    IconModule,
+    args: {
+        formControl: new FormControl('some text value')
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+  import { Component, ViewChild } from '@angular/core';
+  import { CommonModule } from '@angular/common';
+  import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+  import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
+  import {
+    InlineInputType,
     InputInlineComponent,
-  ],
-})
-export class FusionStoryWrapperComponent {
-  @ViewChild('inputInline') inputInline: InputInlineComponent;
+  } from '@ironsource/fusion-ui/components/input-inline';
 
-  type = InlineInputType.Text;
-  formControl = new FormControl('some text value');
+  @Component({
+    selector: 'fusion-story-wrapper',
+    template: \`
+      <div style="width: 155px;">
+  <fusion-input-inline #inputInline
+      [type]="type"
+      [formControl]="formControl"
+      [loading]="loading"
+      [readOnly]="readOnly"
+      [error]="error"
+      (onSave)="onSave($event)"
+      (onCancel)="onCancel()"
+  ></fusion-input-inline>
+  </div>
+    \`,
+    standalone: true,
+    imports: [
+      CommonModule,
+      FormsModule,
+      ReactiveFormsModule,
+      IconModule,
+      InputInlineComponent,
+    ],
+  })
+  export class FusionStoryWrapperComponent {
+    @ViewChild('inputInline') inputInline: InputInlineComponent;
 
-  loading = false;
-  readOnly = false;
-  error = '';
+    type = InlineInputType.Text;
+    formControl = new FormControl('some text value');
 
-  onSave($event) {
-    console.log('onSave: ', $event);
-    this.loading = true;
-    setTimeout(() => {
-      // here you can apply validations
+    loading = false;
+    readOnly = false;
+    error = '';
 
-      this.loading = false;
-      // update value
-      this.formControl.setValue($event.newValue);
-      // exit from edit mode
-      this.inputInline.isEditMode$.next(false);
-    }, 1000);
+    onSave($event) {
+      console.log('onSave: ', $event);
+      this.loading = true;
+      setTimeout(() => {
+        // here you can apply validations
+
+        this.loading = false;
+        // update value
+        this.formControl.setValue($event.newValue);
+        // exit from edit mode
+        this.inputInline.isEditMode$.next(false);
+      }, 1000);
+    }
+
+    onCancel() {
+      console.log('onCancel');
+    }
   }
-
-  onCancel() {
-    console.log('onCancel');
-  }
-}
-`,
-            format: true,
-            type: 'code'
+  `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
 
-export const SizeSmall = InputTemplate.bind({});
-SizeSmall.args = {
-    formControl: new FormControl('some text value'),
-    inputOptions: {size: 'small'} as InputOptions
-};
-SizeSmall.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
-import {InputOptions} from "@ironsource/fusion-ui/components/input";
-import {
-  InlineInputType,
-  InputInlineComponent,
-} from '@ironsource/fusion-ui/components/input-inline';
+export const SizeSmall = {
+    render: InputTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`
-    <div style="width: 155px;">
-<fusion-input-inline #inputInline
-    [inputOptions]="{size: 'small'}"
-    [type]="type"
-    [formControl]="formControl"
-    [loading]="loading"
-    [readOnly]="readOnly"
-    [error]="error"
-    (onSave)="onSave($event)"
-    (onCancel)="onCancel()"
-></fusion-input-inline>
-</div>
-  \`,
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    IconModule,
+    args: {
+        formControl: new FormControl('some text value'),
+        inputOptions: {size: 'small'} as InputOptions
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+  import { Component, ViewChild } from '@angular/core';
+  import { CommonModule } from '@angular/common';
+  import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+  import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
+  import {InputOptions} from "@ironsource/fusion-ui/components/input";
+  import {
+    InlineInputType,
     InputInlineComponent,
-  ],
-})
-export class FusionStoryWrapperComponent {
-  @ViewChild('inputInline') inputInline: InputInlineComponent;
+  } from '@ironsource/fusion-ui/components/input-inline';
 
-  type = InlineInputType.Text;
-  formControl = new FormControl('some text value');
+  @Component({
+    selector: 'fusion-story-wrapper',
+    template: \`
+      <div style="width: 155px;">
+  <fusion-input-inline #inputInline
+      [inputOptions]="{size: 'small'}"
+      [type]="type"
+      [formControl]="formControl"
+      [loading]="loading"
+      [readOnly]="readOnly"
+      [error]="error"
+      (onSave)="onSave($event)"
+      (onCancel)="onCancel()"
+  ></fusion-input-inline>
+  </div>
+    \`,
+    standalone: true,
+    imports: [
+      CommonModule,
+      FormsModule,
+      ReactiveFormsModule,
+      IconModule,
+      InputInlineComponent,
+    ],
+  })
+  export class FusionStoryWrapperComponent {
+    @ViewChild('inputInline') inputInline: InputInlineComponent;
 
-  loading = false;
-  readOnly = false;
-  error = '';
+    type = InlineInputType.Text;
+    formControl = new FormControl('some text value');
 
-  onSave($event) {
-    console.log('onSave: ', $event);
-    this.loading = true;
-    setTimeout(() => {
-      // here you can apply validations
+    loading = false;
+    readOnly = false;
+    error = '';
 
-      this.loading = false;
-      // update value
-      this.formControl.setValue($event.newValue);
-      // exit from edit mode
-      this.inputInline.isEditMode$.next(false);
-    }, 1000);
+    onSave($event) {
+      console.log('onSave: ', $event);
+      this.loading = true;
+      setTimeout(() => {
+        // here you can apply validations
+
+        this.loading = false;
+        // update value
+        this.formControl.setValue($event.newValue);
+        // exit from edit mode
+        this.inputInline.isEditMode$.next(false);
+      }, 1000);
+    }
+
+    onCancel() {
+      console.log('onCancel');
+    }
   }
-
-  onCancel() {
-    console.log('onCancel');
-  }
-}
-`,
-            format: true,
-            type: 'code'
+  `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
 
-export const ReadOnly = InputTemplate.bind({});
-ReadOnly.args = {
-    formControl: new FormControl('some text value'),
-    readOnly: true
-};
-ReadOnly.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
-import {
-  InlineInputType,
-  InputInlineComponent,
-} from '@ironsource/fusion-ui/components/input-inline';
+export const ReadOnly = {
+    render: InputTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`
-    <div style="width: 155px;">
-<fusion-input-inline #inputInline
-    [type]="type"
-    [formControl]="formControl"
-    [loading]="loading"
-    [readOnly]="readOnly"
-    [error]="error"
-    (onSave)="onSave($event)"
-    (onCancel)="onCancel()"
-></fusion-input-inline>
-</div>
-  \`,
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    IconModule,
+    args: {
+        formControl: new FormControl('some text value'),
+        readOnly: true
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+  import { Component, ViewChild } from '@angular/core';
+  import { CommonModule } from '@angular/common';
+  import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+  import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
+  import {
+    InlineInputType,
     InputInlineComponent,
-  ],
-})
-export class FusionStoryWrapperComponent {
-  @ViewChild('inputInline') inputInline: InputInlineComponent;
+  } from '@ironsource/fusion-ui/components/input-inline';
 
-  type = InlineInputType.Text;
-  formControl = new FormControl('some text value');
+  @Component({
+    selector: 'fusion-story-wrapper',
+    template: \`
+      <div style="width: 155px;">
+  <fusion-input-inline #inputInline
+      [type]="type"
+      [formControl]="formControl"
+      [loading]="loading"
+      [readOnly]="readOnly"
+      [error]="error"
+      (onSave)="onSave($event)"
+      (onCancel)="onCancel()"
+  ></fusion-input-inline>
+  </div>
+    \`,
+    standalone: true,
+    imports: [
+      CommonModule,
+      FormsModule,
+      ReactiveFormsModule,
+      IconModule,
+      InputInlineComponent,
+    ],
+  })
+  export class FusionStoryWrapperComponent {
+    @ViewChild('inputInline') inputInline: InputInlineComponent;
 
-  loading = false;
-  readOnly = true;
-  error = '';
+    type = InlineInputType.Text;
+    formControl = new FormControl('some text value');
 
-  onSave($event) {
-    console.log('onSave: ', $event);
-    this.loading = true;
-    setTimeout(() => {
-      // here you can apply validations
+    loading = false;
+    readOnly = true;
+    error = '';
 
-      this.loading = false;
-      // update value
-      this.formControl.setValue($event.newValue);
-      // exit from edit mode
-      this.inputInline.isEditMode$.next(false);
-    }, 1000);
+    onSave($event) {
+      console.log('onSave: ', $event);
+      this.loading = true;
+      setTimeout(() => {
+        // here you can apply validations
+
+        this.loading = false;
+        // update value
+        this.formControl.setValue($event.newValue);
+        // exit from edit mode
+        this.inputInline.isEditMode$.next(false);
+      }, 1000);
+    }
+
+    onCancel() {
+      console.log('onCancel');
+    }
   }
-
-  onCancel() {
-    console.log('onCancel');
-  }
-}
-`,
-            format: true,
-            type: 'code'
+  `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
 
-export const Pending = InputTemplate.bind({});
-Pending.args = {
-    formControl: new FormControl('some text value'),
-    loading: true
-};
-Pending.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
-import {
-  InlineInputType,
-  InputInlineComponent,
-} from '@ironsource/fusion-ui/components/input-inline';
+export const Pending = {
+    render: InputTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`
-    <div style="width: 155px;">
-<fusion-input-inline #inputInline
-    [type]="type"
-    [formControl]="formControl"
-    [loading]="loading"
-    [readOnly]="readOnly"
-    [error]="error"
-    (onSave)="onSave($event)"
-    (onCancel)="onCancel()"
-></fusion-input-inline>
-</div>
-  \`,
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    IconModule,
+    args: {
+        formControl: new FormControl('some text value'),
+        loading: true
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+  import { Component, ViewChild } from '@angular/core';
+  import { CommonModule } from '@angular/common';
+  import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+  import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
+  import {
+    InlineInputType,
     InputInlineComponent,
-  ],
-})
-export class FusionStoryWrapperComponent {
-  @ViewChild('inputInline') inputInline: InputInlineComponent;
+  } from '@ironsource/fusion-ui/components/input-inline';
 
-  type = InlineInputType.Text;
-  formControl = new FormControl('some text value');
+  @Component({
+    selector: 'fusion-story-wrapper',
+    template: \`
+      <div style="width: 155px;">
+  <fusion-input-inline #inputInline
+      [type]="type"
+      [formControl]="formControl"
+      [loading]="loading"
+      [readOnly]="readOnly"
+      [error]="error"
+      (onSave)="onSave($event)"
+      (onCancel)="onCancel()"
+  ></fusion-input-inline>
+  </div>
+    \`,
+    standalone: true,
+    imports: [
+      CommonModule,
+      FormsModule,
+      ReactiveFormsModule,
+      IconModule,
+      InputInlineComponent,
+    ],
+  })
+  export class FusionStoryWrapperComponent {
+    @ViewChild('inputInline') inputInline: InputInlineComponent;
 
-  loading = false;
-  readOnly = false;
-  error = '';
+    type = InlineInputType.Text;
+    formControl = new FormControl('some text value');
 
-  onSave($event) {
-    console.log('onSave: ', $event);
-    this.loading = true;
-    setTimeout(() => {
-      // here you can apply validations
+    loading = false;
+    readOnly = false;
+    error = '';
 
-      this.loading = false;
-      // update value
-      this.formControl.setValue($event.newValue);
-      // exit from edit mode
-      this.inputInline.isEditMode$.next(false);
-    }, 1000);
+    onSave($event) {
+      console.log('onSave: ', $event);
+      this.loading = true;
+      setTimeout(() => {
+        // here you can apply validations
+
+        this.loading = false;
+        // update value
+        this.formControl.setValue($event.newValue);
+        // exit from edit mode
+        this.inputInline.isEditMode$.next(false);
+      }, 1000);
+    }
+
+    onCancel() {
+      console.log('onCancel');
+    }
   }
-
-  onCancel() {
-    console.log('onCancel');
-  }
-}
-`,
-            format: true,
-            type: 'code'
+  `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
 
-export const Disabled = InputTemplate.bind({});
-Disabled.args = {
-    formControl: new FormControl({value: 'some text value', disabled: true})
-};
-Disabled.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
-import {
-  InlineInputType,
-  InputInlineComponent,
-} from '@ironsource/fusion-ui/components/input-inline';
+export const Disabled = {
+    render: InputTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`
-    <div style="width: 155px;">
-<fusion-input-inline #inputInline
-    [type]="type"
-    [formControl]="formControl"
-    [loading]="loading"
-    [readOnly]="readOnly"
-    [error]="error"
-    (onSave)="onSave($event)"
-    (onCancel)="onCancel()"
-></fusion-input-inline>
-</div>
-  \`,
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    IconModule,
+    args: {
+        formControl: new FormControl({value: 'some text value', disabled: true})
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+  import { Component, ViewChild } from '@angular/core';
+  import { CommonModule } from '@angular/common';
+  import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+  import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
+  import {
+    InlineInputType,
     InputInlineComponent,
-  ],
-})
-export class FusionStoryWrapperComponent {
-  @ViewChild('inputInline') inputInline: InputInlineComponent;
+  } from '@ironsource/fusion-ui/components/input-inline';
 
-  type = InlineInputType.Text;
-  formControl = new FormControl({value: 'some text value', disabled: true});
+  @Component({
+    selector: 'fusion-story-wrapper',
+    template: \`
+      <div style="width: 155px;">
+  <fusion-input-inline #inputInline
+      [type]="type"
+      [formControl]="formControl"
+      [loading]="loading"
+      [readOnly]="readOnly"
+      [error]="error"
+      (onSave)="onSave($event)"
+      (onCancel)="onCancel()"
+  ></fusion-input-inline>
+  </div>
+    \`,
+    standalone: true,
+    imports: [
+      CommonModule,
+      FormsModule,
+      ReactiveFormsModule,
+      IconModule,
+      InputInlineComponent,
+    ],
+  })
+  export class FusionStoryWrapperComponent {
+    @ViewChild('inputInline') inputInline: InputInlineComponent;
 
-  loading = false;
-  readOnly = false;
-  error = '';
+    type = InlineInputType.Text;
+    formControl = new FormControl({value: 'some text value', disabled: true});
 
-  onSave($event) {
-    console.log('onSave: ', $event);
-    this.loading = true;
-    setTimeout(() => {
-      // here you can apply validations
+    loading = false;
+    readOnly = false;
+    error = '';
 
-      this.loading = false;
-      // update value
-      this.formControl.setValue($event.newValue);
-      // exit from edit mode
-      this.inputInline.isEditMode$.next(false);
-    }, 1000);
+    onSave($event) {
+      console.log('onSave: ', $event);
+      this.loading = true;
+      setTimeout(() => {
+        // here you can apply validations
+
+        this.loading = false;
+        // update value
+        this.formControl.setValue($event.newValue);
+        // exit from edit mode
+        this.inputInline.isEditMode$.next(false);
+      }, 1000);
+    }
+
+    onCancel() {
+      console.log('onCancel');
+    }
   }
-
-  onCancel() {
-    console.log('onCancel');
-  }
-}
-`,
-            format: true,
-            type: 'code'
+  `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
 
-export const Error = InputTemplate.bind({});
-Error.args = {
-    formControl: new FormControl('some text value'),
-    error: 'Error message'
-};
-Error.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
-import {
-  InlineInputType,
-  InputInlineComponent,
-} from '@ironsource/fusion-ui/components/input-inline';
+export const Error = {
+    render: InputTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`
-    <div style="width: 155px;">
-<fusion-input-inline #inputInline
-    [type]="type"
-    [formControl]="formControl"
-    [loading]="loading"
-    [readOnly]="readOnly"
-    [error]="error"
-    (onSave)="onSave($event)"
-    (onCancel)="onCancel()"
-></fusion-input-inline>
-</div>
-  \`,
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    IconModule,
+    args: {
+        formControl: new FormControl('some text value'),
+        error: 'Error message'
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+  import { Component, ViewChild } from '@angular/core';
+  import { CommonModule } from '@angular/common';
+  import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+  import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
+  import {
+    InlineInputType,
     InputInlineComponent,
-  ],
-})
-export class FusionStoryWrapperComponent {
-  @ViewChild('inputInline') inputInline: InputInlineComponent;
+  } from '@ironsource/fusion-ui/components/input-inline';
 
-  type = InlineInputType.Text;
-  formControl = new FormControl('some text value');
+  @Component({
+    selector: 'fusion-story-wrapper',
+    template: \`
+      <div style="width: 155px;">
+  <fusion-input-inline #inputInline
+      [type]="type"
+      [formControl]="formControl"
+      [loading]="loading"
+      [readOnly]="readOnly"
+      [error]="error"
+      (onSave)="onSave($event)"
+      (onCancel)="onCancel()"
+  ></fusion-input-inline>
+  </div>
+    \`,
+    standalone: true,
+    imports: [
+      CommonModule,
+      FormsModule,
+      ReactiveFormsModule,
+      IconModule,
+      InputInlineComponent,
+    ],
+  })
+  export class FusionStoryWrapperComponent {
+    @ViewChild('inputInline') inputInline: InputInlineComponent;
 
-  loading = false;
-  readOnly = false;
-  error = '';
+    type = InlineInputType.Text;
+    formControl = new FormControl('some text value');
 
-  onSave($event) {
-    console.log('onSave: ', $event);
-    this.loading = true;
-    setTimeout(() => {
-      // here you can apply validations
-      this.error = 'Error occur...';
-      this.loading = false;
-    }, 1000);
+    loading = false;
+    readOnly = false;
+    error = '';
+
+    onSave($event) {
+      console.log('onSave: ', $event);
+      this.loading = true;
+      setTimeout(() => {
+        // here you can apply validations
+        this.error = 'Error occur...';
+        this.loading = false;
+      }, 1000);
+    }
+
+    onCancel() {
+      console.log('onCancel');
+    }
   }
-
-  onCancel() {
-    console.log('onCancel');
-  }
-}
-`,
-            format: true,
-            type: 'code'
+  `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
 
-export const TextAlignRight = InputTemplate.bind({});
-TextAlignRight.args = {
-    formControl: new FormControl('some text value'),
-    className: 'fu-align-right'
-};
-TextAlignRight.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
-import {
-  InlineInputType,
-  InputInlineComponent,
-} from '@ironsource/fusion-ui/components/input-inline';
+export const TextAlignRight = {
+    render: InputTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`
-    <div style="width: 155px;">
-<fusion-input-inline #inputInline class="fu-align-right"
-    [type]="type"
-    [formControl]="formControl"
-    [loading]="loading"
-    [readOnly]="readOnly"
-    [error]="error"
-    (onSave)="onSave($event)"
-    (onCancel)="onCancel()"
-></fusion-input-inline>
-</div>
-  \`,
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    IconModule,
+    args: {
+        formControl: new FormControl('some text value'),
+        className: 'fu-align-right'
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+  import { Component, ViewChild } from '@angular/core';
+  import { CommonModule } from '@angular/common';
+  import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+  import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
+  import {
+    InlineInputType,
     InputInlineComponent,
-  ],
-})
-export class FusionStoryWrapperComponent {
-  @ViewChild('inputInline') inputInline: InputInlineComponent;
+  } from '@ironsource/fusion-ui/components/input-inline';
 
-  type = InlineInputType.Text;
-  formControl = new FormControl('some text value');
+  @Component({
+    selector: 'fusion-story-wrapper',
+    template: \`
+      <div style="width: 155px;">
+  <fusion-input-inline #inputInline class="fu-align-right"
+      [type]="type"
+      [formControl]="formControl"
+      [loading]="loading"
+      [readOnly]="readOnly"
+      [error]="error"
+      (onSave)="onSave($event)"
+      (onCancel)="onCancel()"
+  ></fusion-input-inline>
+  </div>
+    \`,
+    standalone: true,
+    imports: [
+      CommonModule,
+      FormsModule,
+      ReactiveFormsModule,
+      IconModule,
+      InputInlineComponent,
+    ],
+  })
+  export class FusionStoryWrapperComponent {
+    @ViewChild('inputInline') inputInline: InputInlineComponent;
 
-  loading = false;
-  readOnly = false;
-  error = '';
+    type = InlineInputType.Text;
+    formControl = new FormControl('some text value');
 
-  onSave($event) {
-    console.log('onSave: ', $event);
-    this.loading = true;
-    setTimeout(() => {
-      // here you can apply validations
+    loading = false;
+    readOnly = false;
+    error = '';
 
-      this.loading = false;
-      // update value
-      this.formControl.setValue($event.newValue);
-      // exit from edit mode
-      this.inputInline.isEditMode$.next(false);
-    }, 1000);
+    onSave($event) {
+      console.log('onSave: ', $event);
+      this.loading = true;
+      setTimeout(() => {
+        // here you can apply validations
+
+        this.loading = false;
+        // update value
+        this.formControl.setValue($event.newValue);
+        // exit from edit mode
+        this.inputInline.isEditMode$.next(false);
+      }, 1000);
+    }
+
+    onCancel() {
+      console.log('onCancel');
+    }
   }
-
-  onCancel() {
-    console.log('onCancel');
-  }
-}
-`,
-            format: true,
-            type: 'code'
+  `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
 
-export const ValueNumber = InputTemplate.bind({});
-ValueNumber.args = {
-    formControl: new FormControl(250),
-    type: InlineInputType.Number
-};
-ValueNumber.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
-import {
-  InlineInputType,
-  InputInlineComponent,
-} from '@ironsource/fusion-ui/components/input-inline';
+export const ValueNumber = {
+    render: InputTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`
-    <div style="width: 155px;">
-<fusion-input-inline #inputInline
-    [type]="type"
-    [formControl]="formControl"
-    [loading]="loading"
-    [readOnly]="readOnly"
-    [error]="error"
-    (onSave)="onSave($event)"
-    (onCancel)="onCancel()"
-></fusion-input-inline>
-</div>
-  \`,
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    IconModule,
+    args: {
+        formControl: new FormControl(250),
+        type: InlineInputType.Number
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+  import { Component, ViewChild } from '@angular/core';
+  import { CommonModule } from '@angular/common';
+  import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+  import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
+  import {
+    InlineInputType,
     InputInlineComponent,
-  ],
-})
-export class FusionStoryWrapperComponent {
-  @ViewChild('inputInline') inputInline: InputInlineComponent;
+  } from '@ironsource/fusion-ui/components/input-inline';
 
-  type = InlineInputType.Number;
-  formControl = new FormControl(50);
+  @Component({
+    selector: 'fusion-story-wrapper',
+    template: \`
+      <div style="width: 155px;">
+  <fusion-input-inline #inputInline
+      [type]="type"
+      [formControl]="formControl"
+      [loading]="loading"
+      [readOnly]="readOnly"
+      [error]="error"
+      (onSave)="onSave($event)"
+      (onCancel)="onCancel()"
+  ></fusion-input-inline>
+  </div>
+    \`,
+    standalone: true,
+    imports: [
+      CommonModule,
+      FormsModule,
+      ReactiveFormsModule,
+      IconModule,
+      InputInlineComponent,
+    ],
+  })
+  export class FusionStoryWrapperComponent {
+    @ViewChild('inputInline') inputInline: InputInlineComponent;
 
-  loading = false;
-  readOnly = false;
-  error = '';
+    type = InlineInputType.Number;
+    formControl = new FormControl(50);
 
-  onSave($event) {
-    console.log('onSave: ', $event);
-    this.loading = true;
-    setTimeout(() => {
-      // here you can apply validations
+    loading = false;
+    readOnly = false;
+    error = '';
 
-      this.loading = false;
-      // update value
-      this.formControl.setValue($event.newValue);
-      // exit from edit mode
-      this.inputInline.isEditMode$.next(false);
-    }, 1000);
+    onSave($event) {
+      console.log('onSave: ', $event);
+      this.loading = true;
+      setTimeout(() => {
+        // here you can apply validations
+
+        this.loading = false;
+        // update value
+        this.formControl.setValue($event.newValue);
+        // exit from edit mode
+        this.inputInline.isEditMode$.next(false);
+      }, 1000);
+    }
+
+    onCancel() {
+      console.log('onCancel');
+    }
   }
-
-  onCancel() {
-    console.log('onCancel');
-  }
-}
-`,
-            format: true,
-            type: 'code'
+  `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
 
-export const ValueCurrency = InputTemplate.bind({});
-ValueCurrency.args = {
-    formControl: new FormControl(250),
-    type: InlineInputType.Currency
-};
-ValueCurrency.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
-import {
-  InlineInputType,
-  InputInlineComponent,
-} from '@ironsource/fusion-ui/components/input-inline';
+export const ValueCurrency = {
+    render: InputTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`
-    <div style="width: 155px;">
-<fusion-input-inline #inputInline
-    [type]="type"
-    [formControl]="formControl"
-    [loading]="loading"
-    [readOnly]="readOnly"
-    [error]="error"
-    (onSave)="onSave($event)"
-    (onCancel)="onCancel()"
-></fusion-input-inline>
-</div>
-  \`,
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    IconModule,
+    args: {
+        formControl: new FormControl(250),
+        type: InlineInputType.Currency
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+  import { Component, ViewChild } from '@angular/core';
+  import { CommonModule } from '@angular/common';
+  import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+  import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
+  import {
+    InlineInputType,
     InputInlineComponent,
-  ],
-})
-export class FusionStoryWrapperComponent {
-  @ViewChild('inputInline') inputInline: InputInlineComponent;
+  } from '@ironsource/fusion-ui/components/input-inline';
 
-  type = InlineInputType.Currency;
-  formControl = new FormControl(250);
+  @Component({
+    selector: 'fusion-story-wrapper',
+    template: \`
+      <div style="width: 155px;">
+  <fusion-input-inline #inputInline
+      [type]="type"
+      [formControl]="formControl"
+      [loading]="loading"
+      [readOnly]="readOnly"
+      [error]="error"
+      (onSave)="onSave($event)"
+      (onCancel)="onCancel()"
+  ></fusion-input-inline>
+  </div>
+    \`,
+    standalone: true,
+    imports: [
+      CommonModule,
+      FormsModule,
+      ReactiveFormsModule,
+      IconModule,
+      InputInlineComponent,
+    ],
+  })
+  export class FusionStoryWrapperComponent {
+    @ViewChild('inputInline') inputInline: InputInlineComponent;
 
-  loading = false;
-  readOnly = false;
-  error = '';
+    type = InlineInputType.Currency;
+    formControl = new FormControl(250);
 
-  onSave($event) {
-    console.log('onSave: ', $event);
-    this.loading = true;
-    setTimeout(() => {
-      // here you can apply validations
+    loading = false;
+    readOnly = false;
+    error = '';
 
-      this.loading = false;
-      // update value
-      this.formControl.setValue($event.newValue);
-      // exit from edit mode
-      this.inputInline.isEditMode$.next(false);
-    }, 1000);
+    onSave($event) {
+      console.log('onSave: ', $event);
+      this.loading = true;
+      setTimeout(() => {
+        // here you can apply validations
+
+        this.loading = false;
+        // update value
+        this.formControl.setValue($event.newValue);
+        // exit from edit mode
+        this.inputInline.isEditMode$.next(false);
+      }, 1000);
+    }
+
+    onCancel() {
+      console.log('onCancel');
+    }
   }
-
-  onCancel() {
-    console.log('onCancel');
-  }
-}
-`,
-            format: true,
-            type: 'code'
+  `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
 
-export const PendingValueCurrency = InputTemplate.bind({});
-PendingValueCurrency.args = {
-    formControl: new FormControl(250),
-    loading: true,
-    type: InlineInputType.Currency
-};
-PendingValueCurrency.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
-import {
-  InlineInputType,
-  InputInlineComponent,
-} from '@ironsource/fusion-ui/components/input-inline';
+export const PendingValueCurrency = {
+    render: InputTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`
-    <div style="width: 155px;">
-<fusion-input-inline #inputInline
-    [type]="type"
-    [formControl]="formControl"
-    [loading]="loading"
-    [readOnly]="readOnly"
-    [error]="error"
-    (onSave)="onSave($event)"
-    (onCancel)="onCancel()"
-></fusion-input-inline>
-</div>
-  \`,
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    IconModule,
+    args: {
+        formControl: new FormControl(250),
+        loading: true,
+        type: InlineInputType.Currency
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+  import { Component, ViewChild } from '@angular/core';
+  import { CommonModule } from '@angular/common';
+  import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+  import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
+  import {
+    InlineInputType,
     InputInlineComponent,
-  ],
-})
-export class FusionStoryWrapperComponent {
-  @ViewChild('inputInline') inputInline: InputInlineComponent;
+  } from '@ironsource/fusion-ui/components/input-inline';
 
-  type = InlineInputType.Currency;
-  formControl = new FormControl(250);
+  @Component({
+    selector: 'fusion-story-wrapper',
+    template: \`
+      <div style="width: 155px;">
+  <fusion-input-inline #inputInline
+      [type]="type"
+      [formControl]="formControl"
+      [loading]="loading"
+      [readOnly]="readOnly"
+      [error]="error"
+      (onSave)="onSave($event)"
+      (onCancel)="onCancel()"
+  ></fusion-input-inline>
+  </div>
+    \`,
+    standalone: true,
+    imports: [
+      CommonModule,
+      FormsModule,
+      ReactiveFormsModule,
+      IconModule,
+      InputInlineComponent,
+    ],
+  })
+  export class FusionStoryWrapperComponent {
+    @ViewChild('inputInline') inputInline: InputInlineComponent;
 
-  loading = false;
-  readOnly = false;
-  error = '';
+    type = InlineInputType.Currency;
+    formControl = new FormControl(250);
 
-  onSave($event) {
-    console.log('onSave: ', $event);
-    this.loading = true;
-    setTimeout(() => {
-      // here you can apply validations
+    loading = false;
+    readOnly = false;
+    error = '';
 
-      this.loading = false;
-      // update value
-      this.formControl.setValue($event.newValue);
-      // exit from edit mode
-      this.inputInline.isEditMode$.next(false);
-    }, 1000);
+    onSave($event) {
+      console.log('onSave: ', $event);
+      this.loading = true;
+      setTimeout(() => {
+        // here you can apply validations
+
+        this.loading = false;
+        // update value
+        this.formControl.setValue($event.newValue);
+        // exit from edit mode
+        this.inputInline.isEditMode$.next(false);
+      }, 1000);
+    }
+
+    onCancel() {
+      console.log('onCancel');
+    }
   }
-
-  onCancel() {
-    console.log('onCancel');
-  }
-}
-`,
-            format: true,
-            type: 'code'
+  `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
 
-export const ValueCurrencyAlignRight = InputTemplate.bind({});
-ValueCurrencyAlignRight.args = {
-    formControl: new FormControl(250),
-    type: InlineInputType.Currency,
-    className: 'fu-align-right'
-};
-ValueCurrencyAlignRight.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
-import {
-  InlineInputType,
-  InputInlineComponent,
-} from '@ironsource/fusion-ui/components/input-inline';
+export const ValueCurrencyAlignRight = {
+    render: InputTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`
-    <div style="width: 155px;">
-<fusion-input-inline #inputInline class="fu-align-right"
-    [type]="type"
-    [formControl]="formControl"
-    [loading]="loading"
-    [readOnly]="readOnly"
-    [error]="error"
-    (onSave)="onSave($event)"
-    (onCancel)="onCancel()"
-></fusion-input-inline>
-</div>
-  \`,
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    IconModule,
+    args: {
+        formControl: new FormControl(250),
+        type: InlineInputType.Currency,
+        className: 'fu-align-right'
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+  import { Component, ViewChild } from '@angular/core';
+  import { CommonModule } from '@angular/common';
+  import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+  import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
+  import {
+    InlineInputType,
     InputInlineComponent,
-  ],
-})
-export class FusionStoryWrapperComponent {
-  @ViewChild('inputInline') inputInline: InputInlineComponent;
+  } from '@ironsource/fusion-ui/components/input-inline';
 
-  type = InlineInputType.Currency;
-  formControl = new FormControl(250);
+  @Component({
+    selector: 'fusion-story-wrapper',
+    template: \`
+      <div style="width: 155px;">
+  <fusion-input-inline #inputInline class="fu-align-right"
+      [type]="type"
+      [formControl]="formControl"
+      [loading]="loading"
+      [readOnly]="readOnly"
+      [error]="error"
+      (onSave)="onSave($event)"
+      (onCancel)="onCancel()"
+  ></fusion-input-inline>
+  </div>
+    \`,
+    standalone: true,
+    imports: [
+      CommonModule,
+      FormsModule,
+      ReactiveFormsModule,
+      IconModule,
+      InputInlineComponent,
+    ],
+  })
+  export class FusionStoryWrapperComponent {
+    @ViewChild('inputInline') inputInline: InputInlineComponent;
 
-  loading = false;
-  readOnly = false;
-  error = '';
+    type = InlineInputType.Currency;
+    formControl = new FormControl(250);
 
-  onSave($event) {
-    console.log('onSave: ', $event);
-    this.loading = true;
-    setTimeout(() => {
-      // here you can apply validations
+    loading = false;
+    readOnly = false;
+    error = '';
 
-      this.loading = false;
-      // update value
-      this.formControl.setValue($event.newValue);
-      // exit from edit mode
-      this.inputInline.isEditMode$.next(false);
-    }, 1000);
+    onSave($event) {
+      console.log('onSave: ', $event);
+      this.loading = true;
+      setTimeout(() => {
+        // here you can apply validations
+
+        this.loading = false;
+        // update value
+        this.formControl.setValue($event.newValue);
+        // exit from edit mode
+        this.inputInline.isEditMode$.next(false);
+      }, 1000);
+    }
+
+    onCancel() {
+      console.log('onCancel');
+    }
   }
-
-  onCancel() {
-    console.log('onCancel');
-  }
-}
-`,
-            format: true,
-            type: 'code'
+  `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
 
-export const ValuePercent = InputTemplate.bind({});
-ValuePercent.args = {
-    formControl: new FormControl(50),
-    type: InlineInputType.Percent
-};
-ValuePercent.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
-import {
-  InlineInputType,
-  InputInlineComponent,
-} from '@ironsource/fusion-ui/components/input-inline';
+export const ValuePercent = {
+    render: InputTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`
-    <div style="width: 155px;">
-<fusion-input-inline #inputInline
-    [type]="type"
-    [formControl]="formControl"
-    [loading]="loading"
-    [readOnly]="readOnly"
-    [error]="error"
-    (onSave)="onSave($event)"
-    (onCancel)="onCancel()"
-></fusion-input-inline>
-</div>
-  \`,
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    IconModule,
+    args: {
+        formControl: new FormControl(50),
+        type: InlineInputType.Percent
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+  import { Component, ViewChild } from '@angular/core';
+  import { CommonModule } from '@angular/common';
+  import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+  import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
+  import {
+    InlineInputType,
     InputInlineComponent,
-  ],
-})
-export class FusionStoryWrapperComponent {
-  @ViewChild('inputInline') inputInline: InputInlineComponent;
+  } from '@ironsource/fusion-ui/components/input-inline';
 
-  type = InlineInputType.Percent;
-  formControl = new FormControl(50);
+  @Component({
+    selector: 'fusion-story-wrapper',
+    template: \`
+      <div style="width: 155px;">
+  <fusion-input-inline #inputInline
+      [type]="type"
+      [formControl]="formControl"
+      [loading]="loading"
+      [readOnly]="readOnly"
+      [error]="error"
+      (onSave)="onSave($event)"
+      (onCancel)="onCancel()"
+  ></fusion-input-inline>
+  </div>
+    \`,
+    standalone: true,
+    imports: [
+      CommonModule,
+      FormsModule,
+      ReactiveFormsModule,
+      IconModule,
+      InputInlineComponent,
+    ],
+  })
+  export class FusionStoryWrapperComponent {
+    @ViewChild('inputInline') inputInline: InputInlineComponent;
 
-  loading = false;
-  readOnly = false;
-  error = '';
+    type = InlineInputType.Percent;
+    formControl = new FormControl(50);
 
-  onSave($event) {
-    console.log('onSave: ', $event);
-    this.loading = true;
-    setTimeout(() => {
-      // here you can apply validations
+    loading = false;
+    readOnly = false;
+    error = '';
 
-      this.loading = false;
-      // update value
-      this.formControl.setValue($event.newValue);
-      // exit from edit mode
-      this.inputInline.isEditMode$.next(false);
-    }, 1000);
+    onSave($event) {
+      console.log('onSave: ', $event);
+      this.loading = true;
+      setTimeout(() => {
+        // here you can apply validations
+
+        this.loading = false;
+        // update value
+        this.formControl.setValue($event.newValue);
+        // exit from edit mode
+        this.inputInline.isEditMode$.next(false);
+      }, 1000);
+    }
+
+    onCancel() {
+      console.log('onCancel');
+    }
   }
-
-  onCancel() {
-    console.log('onCancel');
-  }
-}
-`,
-            format: true,
-            type: 'code'
+  `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };

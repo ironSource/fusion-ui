@@ -1,4 +1,4 @@
-import {Story, Meta} from '@storybook/angular';
+import {StoryFn, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -17,7 +17,6 @@ const defaultInputConfig: InputConfiguration = {
     placeholder: 'Placeholder text'
 };
 const inputFormControl = new FormControl();
-const inputTimeFormControl = new FormControl('14:34');
 const inputFormControlWithValue = new FormControl('Hello world!');
 const inputFormControlPassword = new FormControl('qwerty');
 // endregion
@@ -58,102 +57,145 @@ export default {
     }
 } as Meta<InputComponent>;
 
-const InputTemplate: Story<InputComponent> = (args: InputComponent) => ({
+const InputTemplate: StoryFn<InputComponent> = (args: InputComponent) => ({
     props: {...args},
     template: `<div style="width: 290px;"><fusion-input [configuration]="configuration" [formControl]="formControl"></fusion-input></div>`
 });
 
-export const Default = InputTemplate.bind({});
-Default.args = {
-    formControl: inputFormControl
+export const Default = {
+    render: InputTemplate,
+
+    args: {
+        formControl: inputFormControl
+    }
 };
 
-export const Small = InputTemplate.bind({});
-Small.args = {
-    configuration: {...defaultInputConfig, ...{options: {size: 'small'}}},
-    formControl: inputFormControl
+export const Small = {
+    render: InputTemplate,
+
+    args: {
+        configuration: {...defaultInputConfig, ...{options: {size: 'small'}}},
+        formControl: inputFormControl
+    }
 };
 
-export const Disabled = InputTemplate.bind({});
-Disabled.args = {
-    configuration: {...defaultInputConfig, ...{disabled: true}},
-    formControl: inputFormControlWithValue
+export const Disabled = {
+    render: InputTemplate,
+
+    args: {
+        configuration: {...defaultInputConfig, ...{disabled: true}},
+        formControl: inputFormControlWithValue
+    }
 };
 
-export const ViewOnly = InputTemplate.bind({});
-ViewOnly.args = {
-    configuration: {...defaultInputConfig, ...{readonly: true}},
-    formControl: inputFormControlWithValue
+export const ViewOnly = {
+    render: InputTemplate,
+
+    args: {
+        configuration: {...defaultInputConfig, ...{readonly: true}},
+        formControl: inputFormControlWithValue
+    }
 };
 
-export const HelpText = InputTemplate.bind({});
-HelpText.args = {
-    configuration: {...defaultInputConfig, ...{helperText: 'Help me please!'}},
-    formControl: inputFormControlWithValue
+export const HelpText = {
+    render: InputTemplate,
+
+    args: {
+        configuration: {...defaultInputConfig, ...{helperText: 'Help me please!'}},
+        formControl: inputFormControlWithValue
+    }
 };
 
-export const ErrorText = InputTemplate.bind({});
-ErrorText.args = {
-    configuration: {...defaultInputConfig, ...{error: 'This is an error!'}},
-    formControl: inputFormControlWithValue
+export const ErrorText = {
+    render: InputTemplate,
+
+    args: {
+        configuration: {...defaultInputConfig, ...{error: 'This is an error!'}},
+        formControl: inputFormControlWithValue
+    }
 };
 
-export const IconLeft = InputTemplate.bind({});
-IconLeft.args = {
-    configuration: {...defaultInputConfig, ...{icon: {iconData: 'frame', iconPos: 'left'}}},
-    formControl: inputFormControlWithValue
+export const IconLeft = {
+    render: InputTemplate,
+
+    args: {
+        configuration: {...defaultInputConfig, ...{icon: {iconData: 'frame', iconPos: 'left'}}},
+        formControl: inputFormControlWithValue
+    }
 };
 
-export const IconRight = InputTemplate.bind({});
-IconRight.args = {
-    configuration: {...defaultInputConfig, ...{icon: {iconData: 'frame', iconPos: 'right'}}},
-    formControl: inputFormControlWithValue
+export const IconRight = {
+    render: InputTemplate,
+
+    args: {
+        configuration: {...defaultInputConfig, ...{icon: {iconData: 'frame', iconPos: 'right'}}},
+        formControl: inputFormControlWithValue
+    }
 };
 
-export const IconLeftAndRight = InputTemplate.bind({});
-IconLeftAndRight.args = {
-    configuration: {
-        ...defaultInputConfig,
-        ...{
-            icon: [
-                {iconData: 'frame', iconPos: 'left'},
-                {iconData: 'frame', iconPos: 'right'}
-            ]
-        }
-    },
-    formControl: inputFormControlWithValue
+export const IconLeftAndRight = {
+    render: InputTemplate,
+
+    args: {
+        configuration: {
+            ...defaultInputConfig,
+            ...{
+                icon: [
+                    {iconData: 'frame', iconPos: 'left'},
+                    {iconData: 'frame', iconPos: 'right'}
+                ]
+            }
+        },
+        formControl: inputFormControlWithValue
+    }
 };
 
-export const TypePassword = InputTemplate.bind({});
-TypePassword.args = {
-    configuration: {...defaultInputConfig, ...{type: 'password'}},
-    formControl: inputFormControlPassword
+export const TypePassword = {
+    render: InputTemplate,
+
+    args: {
+        configuration: {...defaultInputConfig, ...{type: 'password'}},
+        formControl: inputFormControlPassword
+    }
 };
 
-export const TypeNumber = InputTemplate.bind({});
-TypeNumber.args = {
-    configuration: {...defaultInputConfig, ...{type: 'number'}},
-    formControl: inputFormControl
+export const TypeNumber = {
+    render: InputTemplate,
+
+    args: {
+        configuration: {...defaultInputConfig, ...{type: 'number'}},
+        formControl: inputFormControl
+    }
 };
 
-const InputTimeTemplate: Story<InputComponent> = (args: InputComponent) => ({
+const InputTimeTemplate: StoryFn<InputComponent> = (args: InputComponent) => ({
     props: {...args},
     template: `<fusion-input [configuration]="configuration" [formControl]="formControl"></fusion-input>`
 });
-export const TypeTime = InputTimeTemplate.bind({});
-TypeTime.args = {
-    configuration: {type: 'time', options: {width: '82px'}},
-    formControl: inputFormControl
+
+export const TypeTime = {
+    render: InputTimeTemplate,
+
+    args: {
+        configuration: {type: 'time', options: {width: '82px'}},
+        formControl: inputFormControl
+    }
 };
 
-export const MaxLength = InputTemplate.bind({});
-MaxLength.args = {
-    configuration: {...defaultInputConfig, ...{maxlength: 25}},
-    formControl: inputFormControl
+export const MaxLength = {
+    render: InputTemplate,
+
+    args: {
+        configuration: {...defaultInputConfig, ...{maxlength: 25}},
+        formControl: inputFormControl
+    }
 };
 
-export const Sanitation = InputTemplate.bind({});
-Sanitation.args = {
-    configuration: {...defaultInputConfig, ...{sanitationRegex: '[a-z]'}},
-    formControl: inputFormControl
+export const Sanitation = {
+    render: InputTemplate,
+
+    args: {
+        configuration: {...defaultInputConfig, ...{sanitationRegex: '[a-z]'}},
+        formControl: inputFormControl
+    }
 };

@@ -1,7 +1,7 @@
-import {Story, Meta} from '@storybook/angular';
+import {StoryFn, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
-import {TooltipComponent, TooltipContentComponent, TooltipModule} from './';
+import {TooltipContentComponent, TooltipModule} from './';
 import {TooltipComponentStyleConfiguration, TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {dedent} from 'ts-dedent';
 
@@ -23,102 +23,122 @@ export default {
     }
 } as Meta<TooltipContentComponent>;
 
-const TooltipTemplate: Story<TooltipContentComponent> = (args: TooltipContentComponent) => ({
+const TooltipTemplate: StoryFn<TooltipContentComponent> = (args: TooltipContentComponent) => ({
     props: args,
     template: `<fusion-tooltip-content style="position: unset;" [tooltipTextContent]="tooltipTextContent" [tooltipPositionClass]="tooltipPositionClass" [tooltipStyleConfiguration]="tooltipStyleConfiguration"></fusion-tooltip-content>`
 });
 
-// region Default
-export const Default = TooltipTemplate.bind({});
-Default.args = {
-    tooltipTextContent: 'This is a single line tooltip with no wrapping text'
-};
-// endregion
+export const Default = {
+    render: TooltipTemplate,
 
-// region Tops
-export const Top = TooltipTemplate.bind({});
-Top.args = {
-    tooltipTextContent: 'This is a single line tooltip with no wrapping text',
-    tooltipPositionClass: TooltipPosition.Top
+    args: {
+        tooltipTextContent: 'This is a single line tooltip with no wrapping text'
+    }
 };
 
-export const TopLeft = TooltipTemplate.bind({});
-TopLeft.args = {
-    tooltipTextContent: 'This is a single line tooltip with no wrapping text',
-    tooltipPositionClass: TooltipPosition.TopLeft
+export const Top = {
+    render: TooltipTemplate,
+
+    args: {
+        tooltipTextContent: 'This is a single line tooltip with no wrapping text',
+        tooltipPositionClass: TooltipPosition.Top
+    }
 };
 
-export const TopRight = TooltipTemplate.bind({});
-TopRight.args = {
-    tooltipTextContent: 'This is a single line tooltip with no wrapping text',
-    tooltipPositionClass: TooltipPosition.TopRight
-};
-// endregion
+export const TopLeft = {
+    render: TooltipTemplate,
 
-// region Bottoms
-export const Bottom = TooltipTemplate.bind({});
-Bottom.args = {
-    tooltipTextContent: 'This is a single line tooltip with no wrapping text',
-    tooltipPositionClass: TooltipPosition.Bottom
+    args: {
+        tooltipTextContent: 'This is a single line tooltip with no wrapping text',
+        tooltipPositionClass: TooltipPosition.TopLeft
+    }
 };
 
-export const BottomLeft = TooltipTemplate.bind({});
-BottomLeft.args = {
-    tooltipTextContent: 'This is a single line tooltip with no wrapping text',
-    tooltipPositionClass: TooltipPosition.BottomLeft
+export const TopRight = {
+    render: TooltipTemplate,
+
+    args: {
+        tooltipTextContent: 'This is a single line tooltip with no wrapping text',
+        tooltipPositionClass: TooltipPosition.TopRight
+    }
 };
 
-export const BottomRight = TooltipTemplate.bind({});
-BottomRight.args = {
-    tooltipTextContent: 'This is a single line tooltip with no wrapping text',
-    tooltipPositionClass: TooltipPosition.BottomRight
-};
-// endregion
+export const Bottom = {
+    render: TooltipTemplate,
 
-// region Left
-export const Left = TooltipTemplate.bind({});
-Left.args = {
-    tooltipTextContent: 'This is a single line tooltip with no wrapping text',
-    tooltipPositionClass: TooltipPosition.Left
+    args: {
+        tooltipTextContent: 'This is a single line tooltip with no wrapping text',
+        tooltipPositionClass: TooltipPosition.Bottom
+    }
 };
-// endregion
 
-// region Left
-export const Right = TooltipTemplate.bind({});
-Right.args = {
-    tooltipTextContent: 'This is a single line tooltip with no wrapping text',
-    tooltipPositionClass: TooltipPosition.Right
-};
-// endregion
+export const BottomLeft = {
+    render: TooltipTemplate,
 
-// region WithCustomWidth
-export const WithCustomWidth = TooltipTemplate.bind({});
-WithCustomWidth.args = {
-    tooltipTextContent: 'Well done! You successfully read this alert message.',
-    tooltipStyleConfiguration: {
-        width: '150px'
-    } as TooltipComponentStyleConfiguration
+    args: {
+        tooltipTextContent: 'This is a single line tooltip with no wrapping text',
+        tooltipPositionClass: TooltipPosition.BottomLeft
+    }
 };
-// endregion
 
-// region WithCustomWidthAndContentCentered
-export const WithCustomWidthAndContentCentered = TooltipTemplate.bind({});
-WithCustomWidthAndContentCentered.args = {
-    tooltipTextContent: 'Well done! You successfully read this alert message.',
-    tooltipStyleConfiguration: {
-        width: '150px',
-        'text-align': 'center'
-    } as TooltipComponentStyleConfiguration
-};
-// endregion
+export const BottomRight = {
+    render: TooltipTemplate,
 
-// region WithCustomBackground
-export const WithCustomBackground = TooltipTemplate.bind({});
-WithCustomBackground.args = {
-    tooltipTextContent: 'Well done! You successfully read this alert message.',
-    tooltipStyleConfiguration: {
-        width: '150px',
-        backgroundColor: '#3083FF'
-    } as TooltipComponentStyleConfiguration
+    args: {
+        tooltipTextContent: 'This is a single line tooltip with no wrapping text',
+        tooltipPositionClass: TooltipPosition.BottomRight
+    }
 };
-// endregion
+
+export const Left = {
+    render: TooltipTemplate,
+
+    args: {
+        tooltipTextContent: 'This is a single line tooltip with no wrapping text',
+        tooltipPositionClass: TooltipPosition.Left
+    }
+};
+
+export const Right = {
+    render: TooltipTemplate,
+
+    args: {
+        tooltipTextContent: 'This is a single line tooltip with no wrapping text',
+        tooltipPositionClass: TooltipPosition.Right
+    }
+};
+
+export const WithCustomWidth = {
+    render: TooltipTemplate,
+
+    args: {
+        tooltipTextContent: 'Well done! You successfully read this alert message.',
+        tooltipStyleConfiguration: {
+            width: '150px'
+        } as TooltipComponentStyleConfiguration
+    }
+};
+
+export const WithCustomWidthAndContentCentered = {
+    render: TooltipTemplate,
+
+    args: {
+        tooltipTextContent: 'Well done! You successfully read this alert message.',
+        tooltipStyleConfiguration: {
+            width: '150px',
+            'text-align': 'center'
+        } as TooltipComponentStyleConfiguration
+    }
+};
+
+export const WithCustomBackground = {
+    render: TooltipTemplate,
+
+    args: {
+        tooltipTextContent: 'Well done! You successfully read this alert message.',
+        tooltipStyleConfiguration: {
+            width: '150px',
+            backgroundColor: '#3083FF'
+        } as TooltipComponentStyleConfiguration
+    }
+};
