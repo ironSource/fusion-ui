@@ -7,6 +7,7 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../stories/environments/environment';
 
 import {SearchComponent} from './search.component';
+import {ApiService} from '@ironsource/fusion-ui';
 
 const formControl = new FormControl();
 // const formControlWithValue = new FormControl('Typing something');
@@ -18,7 +19,8 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), FormsModule, ReactiveFormsModule]
+            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), FormsModule, ReactiveFormsModule],
+            providers: [ApiService]
         })
     ],
     parameters: {

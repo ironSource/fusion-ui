@@ -11,6 +11,7 @@ import {InputComponent} from './input.component';
 import {TooltipModule} from '../../tooltip/v3/tooltip.module';
 import {InputConfiguration} from '../common/base/input-entities';
 import {InputModule} from '@ironsource/fusion-ui/components/input';
+import {ApiService} from '@ironsource/fusion-ui';
 
 // region
 const defaultInputConfig: InputConfiguration = {
@@ -35,7 +36,8 @@ export default {
                 IconModule,
                 TooltipModule,
                 InputModule
-            ]
+            ],
+            providers: [ApiService]
         })
     ],
     parameters: {

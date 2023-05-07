@@ -12,6 +12,7 @@ import {
     MOK_APPLICATIONS_ONE_LINE_OPTIONS,
     MOK_APPLICATIONS_OPTIONS
 } from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
+import {ApiService} from '@ironsource/fusion-ui';
 
 export default {
     title: 'Components/Filters/Top Filter/Filter Include-Exclude',
@@ -26,7 +27,8 @@ export default {
                 SvgModule.forRoot({assetsPath: environment.assetsPath}),
                 IconModule,
                 DropdownDualMultiSelectModule
-            ]
+            ],
+            providers: [ApiService]
         })
     ],
     parameters: {

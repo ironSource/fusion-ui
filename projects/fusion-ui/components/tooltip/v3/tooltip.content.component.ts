@@ -30,7 +30,7 @@ export class TooltipContentComponent {
     }
 
     @Input() set tooltipPositionClass(pos: TooltipPosition) {
-        this.position = TooltipPosition[pos].toLowerCase();
+        this.position = TooltipPosition[pos]?.toLowerCase();
         this.renderer.addClass(this.elementRef.nativeElement, 'fu-tooltip-' + this.position);
     }
 

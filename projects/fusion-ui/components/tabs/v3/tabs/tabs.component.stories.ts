@@ -6,6 +6,7 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TabsComponent, TabsModule} from '@ironsource/fusion-ui/components/tabs/v3';
+import {ApiService} from '@ironsource/fusion-ui';
 
 const actionsData = {
     selectedChange: action('selectedChange')
@@ -17,7 +18,8 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, TabsModule]
+            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, TabsModule],
+            providers: [ApiService]
         })
     ],
     parameters: {

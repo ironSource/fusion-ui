@@ -10,6 +10,7 @@ import {CalendarModule} from './calendar.module';
 import {CalendarComponent} from './calendar.component';
 import {CalendarComponentConfigurations, CalendarType} from '@ironsource/fusion-ui/components/calendar';
 import {DaterangeSelection} from '@ironsource/fusion-ui/components/daterange';
+import {ApiService} from '@ironsource/fusion-ui';
 
 const actionsData = {
     daySelected: action('daySelected')
@@ -30,7 +31,8 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, CalendarModule]
+            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, CalendarModule],
+            providers: [ApiService]
         })
     ],
     parameters: {

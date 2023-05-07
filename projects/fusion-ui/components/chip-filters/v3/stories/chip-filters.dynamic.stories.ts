@@ -18,6 +18,7 @@ import {
     MOCK_USERS
 } from '@ironsource/fusion-ui/components/chip-filters/v3/stories/chip-filters.stories.mock';
 import {ChipFilterComponentConfigurations} from '@ironsource/fusion-ui/components/chip-filter/common/base';
+import {ApiService} from '@ironsource/fusion-ui';
 
 export default {
     title: 'Components/Filters/Filter Panel Dynamic',
@@ -35,7 +36,8 @@ export default {
                 ChipFilterModule,
                 DropdownModule,
                 DropdownDualMultiSelectModule
-            ]
+            ],
+            providers: [ApiService]
         })
     ],
     parameters: {

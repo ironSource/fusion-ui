@@ -7,6 +7,7 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {DaterangeComponent, DaterangeModule, DaterangeOptions, DaterangeSelection} from './';
+import {ApiService} from '@ironsource/fusion-ui';
 
 export default {
     title: 'Components/Dates/DatePicker',
@@ -21,7 +22,8 @@ export default {
                 SvgModule.forRoot({assetsPath: environment.assetsPath}),
                 IconModule,
                 DaterangeModule
-            ]
+            ],
+            providers: [ApiService]
         })
     ],
     parameters: {

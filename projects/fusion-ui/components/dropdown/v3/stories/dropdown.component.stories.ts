@@ -19,6 +19,7 @@ import {
     MOCK_OPTIONS_TWO_LINES
 } from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
+import {ApiService} from '@ironsource/fusion-ui';
 
 export default {
     title: 'Components/Dropdown',
@@ -34,7 +35,7 @@ export default {
                 IconModule,
                 DropdownModule
             ],
-            providers: [{provide: ApiBase, useExisting: DropdownComponent}]
+            providers: [{provide: ApiBase, useExisting: DropdownComponent}, ApiService]
         })
     ],
     parameters: {

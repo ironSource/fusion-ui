@@ -10,6 +10,7 @@ import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v2';
 
 import {CheckboxComponent} from './checkbox.component';
 import {CheckboxModule} from './checkbox.module';
+import {ApiService} from '@ironsource/fusion-ui';
 
 const checkboxLabel = 'Hello world';
 const formControlChecked = new FormControl(true);
@@ -30,7 +31,8 @@ export default {
                 FlagModule,
                 TooltipModule,
                 CheckboxModule
-            ]
+            ],
+            providers: [ApiService]
         })
     ],
     parameters: {

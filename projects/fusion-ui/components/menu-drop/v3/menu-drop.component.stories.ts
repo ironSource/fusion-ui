@@ -6,6 +6,7 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {MenuDropComponent, MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
 import {CommonModule} from '@angular/common';
+import {ApiService} from '@ironsource/fusion-ui';
 
 const MOCK_MENU_ITEMS: MenuDropItem[] = [
     {icon: 'frame', label: 'List item 1'},
@@ -20,7 +21,8 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule]
+            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule],
+            providers: [ApiService]
         })
     ],
     parameters: {

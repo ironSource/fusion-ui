@@ -9,6 +9,7 @@ import {TopFilterTriggerComponent} from '@ironsource/fusion-ui/components/top-fi
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MOK_APPLICATIONS_ONE_LINE_OPTIONS} from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
 import {DropdownModule} from '@ironsource/fusion-ui/components/dropdown/v3';
+import {ApiService} from '@ironsource/fusion-ui';
 
 export default {
     title: 'Components/Filters/Top Filter/Filter Dropdown',
@@ -23,7 +24,8 @@ export default {
                 SvgModule.forRoot({assetsPath: environment.assetsPath}),
                 IconModule,
                 DropdownModule
-            ]
+            ],
+            providers: [ApiService]
         })
     ],
     parameters: {

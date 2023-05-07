@@ -5,6 +5,7 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../../../stories/environments/environment';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button/v3';
 import {ModalContentComponent} from '@ironsource/fusion-ui/components/modal';
+import {ApiService} from '@ironsource/fusion-ui';
 
 export default {
     title: 'Components/Dialog/Content',

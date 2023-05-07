@@ -12,6 +12,7 @@ import {TableStoryHolderComponent} from './table.story-holder.component/table.st
 import {TableComponent} from '../table.component';
 import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
 import {ROWS_DEFAULT_DATA, MOCK_ROW_ACTIONS, TABLE_DEFAULT_COLUMNS_CONFIG, TABLE_DEFAULT_OPTIONS} from './table.mock-data';
+import {ApiService} from '@ironsource/fusion-ui';
 
 const actionsData = {
     selectionChanged: action('selectionChanged'),
@@ -31,7 +32,8 @@ export default {
                 IconModule,
                 TableModule,
                 TableStoryHolderComponent
-            ]
+            ],
+            providers: [ApiService]
         })
     ],
     parameters: {
