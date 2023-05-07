@@ -1,0 +1,70 @@
+import {Canvas, Meta, Story, Description, Source, ArgsTable} from '@storybook/blocks';
+import {dedent} from 'ts-dedent';
+import * as RadioGroupComponentStories from './radio-group.component.stories';
+
+import {RadioGroupComponent} from './radio-group.component';
+
+<Meta of={RadioGroupComponentStories} />
+
+<Description
+  markdown={dedent`
+  # RadioButton
+  Radio buttons allow the user to select one option from a set. Use radio buttons when the user needs to see all available options. Radio buttons should have the most commonly used option selected by default.
+  ## RadioGroup
+  *RadioGroup* is a helpful wrapper used to group *Radio* components that provides an easier API.
+  `}
+/>
+
+<Source
+  language="html"
+  code={dedent`
+  <fusion-radio-group
+   [inline]="inline"
+   [isDisabled]="isDisabled"
+   [options]="options"
+   [formControl]="formControl"
+  ></fusion-radio-group>
+  `}
+/>
+
+### Default
+
+<Canvas>
+  {/* <Story id="components-inputs-radio--default" /> is deprecated, please migrate it to <Story of={referenceToStory} /> see: https://storybook.js.org/migration-guides/7.0 */}
+
+  <Story id="components-inputs-radio--default" />
+</Canvas>
+
+### Inline direction
+
+<Canvas>
+  {/* <Story id="components-inputs-radio--row" /> is deprecated, please migrate it to <Story of={referenceToStory} /> see: https://storybook.js.org/migration-guides/7.0 */}
+
+  <Story id="components-inputs-radio--row" />
+</Canvas>
+
+### Disabled RadioGroup
+
+<Canvas>
+  {/* <Story id="components-inputs-radio--disabled" /> is deprecated, please migrate it to <Story of={referenceToStory} /> see: https://storybook.js.org/migration-guides/7.0 */}
+
+  <Story id="components-inputs-radio--disabled" />
+</Canvas>
+
+### Disabled some Radio in RadioGroup
+
+<Canvas>
+  {/* <Story id="components-inputs-radio--disabled-option" /> is deprecated, please migrate it to <Story of={referenceToStory} /> see: https://storybook.js.org/migration-guides/7.0 */}
+
+  <Story id="components-inputs-radio--disabled-option" />
+</Canvas>
+
+### Radio with Icon
+
+<Canvas>
+  {/* <Story id="components-inputs-radio--icon-options" /> is deprecated, please migrate it to <Story of={referenceToStory} /> see: https://storybook.js.org/migration-guides/7.0 */}
+
+  <Story id="components-inputs-radio--icon-options" />
+</Canvas>
+
+<ArgsTable of={RadioGroupComponent} />

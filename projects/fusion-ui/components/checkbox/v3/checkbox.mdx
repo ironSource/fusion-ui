@@ -1,0 +1,36 @@
+import { Meta, Story, Markdown, Source,  ArgsTable} from '@storybook/blocks';
+import * as ComponentStories from './checkbox.component.stories';
+import {CheckboxComponent} from "./checkbox.component";
+
+<Meta title="Components/Inputs/Checkbox/All"/>
+
+# Checkbox
+Switches are the preferred way to adjust settings on mobile. The option that the switch controls, as well as the state it's in, should be made clear from the corresponding inline label.
+
+## Usage
+<Source language="html"
+        code={`
+<fusion-checkbox [label]="label"
+ [icon]="icon"
+ [flag]="flag"
+ [isDisabled]="isDisabled"
+ [isIndeterminate]="isIndeterminate"
+ [backgroundColor]="backgroundColor"
+ [formControl]="formControl"
+></fusion-checkbox>
+`}/>
+
+
+## Examples
+
+##### Default
+<Story of={ComponentStories.Default} />
+#####  Checked
+<Story of={ComponentStories.Checked} />
+#####  Indeterminate
+<Story of={ComponentStories.Indeterminate} />
+#####  With Flag
+<Story of={ComponentStories.WithFlag} />
+
+<ArgsTable of={CheckboxComponent}/>
+
