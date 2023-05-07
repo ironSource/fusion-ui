@@ -57,18 +57,7 @@
                     "options": {
                         "configDir": ".storybook",
                         "browserTarget": "fusion-ui:build",
-                        "outputDir": "dist/storybook/fusion-ui",
-                        "compodoc": true,
-                        "compodocArgs": [
-                            "-e",
-                            "json",
-                            "-d",
-                            ".",
-                            "--disablePrivate",
-                            "--disableProtected",
-                            "--disableLifeCycleHooks",
-                            "--disableInternal"
-                        ]
+                        "outputDir": "storybook-static"
                     }
                 }
             },
