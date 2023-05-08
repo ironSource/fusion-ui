@@ -16,11 +16,14 @@ const preview = {
         stackblitzAdditionalDependency: {
             "@ironsource/fusion-ui": '5.2.0'
         },
+        viewMode: 'story',
+        docs: {inlineStories: true},
         options: {
             storySort: (a, b) => {
-                return (b.id.endsWith('-all--page') || b.id.endsWith('--default') || b.id.endsWith('-description--page') )
-                    ? 1
-                    : (a.title === b.title ? 0 : a.id.localeCompare(b.id, undefined, { numeric: false }))
+                const comparer = a.title === b.title
+                    ? 0
+                    : a.id.localeCompare(b.id, undefined, { numeric: true });;
+                return comparer;
             }
         }
     },
