@@ -3,6 +3,10 @@ name: Storybook Deploy
 on:
   workflow_dispatch:
 
+permissions:
+  id-token: write
+  contents: read
+  
 jobs:
   Deploy:
     runs-on: [self-hosted, x64, linux, eks, us, demand, dev]
