@@ -65,8 +65,8 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-region: us-east-1
-          role-to-assume: arn:aws:iam::032106861074:role/github-runners-demand-team-role
-          role-duration-seconds: 3600
+#          role-to-assume: arn:aws:iam::032106861074:role/github-runners-demand-team-role
+#          role-duration-seconds: 3600
 
 #      - name: Setup AWS
 #        uses: ironsource-mobile/github-actions-and-workflows/.github/actions/setup-aws@main
