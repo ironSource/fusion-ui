@@ -53,18 +53,23 @@ jobs:
       - name: Build storybook static
         run: npm run build-storybook
 
-      - name: Install AWS cli
-        run: |
-          if ! [ -x "$(command -v aws)" ]; then
-            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip" -o "awscliv2.zip"
-            unzip awscliv2.zip
-            sudo  ./aws/install
-          fi
+#      - name: Install AWS cli
+#        run: |
+#          if ! [ -x "$(command -v aws)" ]; then
+#            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip" -o "awscliv2.zip"
+#            unzip awscliv2.zip
+#            sudo  ./aws/install
+#          fi
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
+#      - name: Configure AWS credentials
+#        uses: aws-actions/configure-aws-credentials@v2
+#        with:
+#          aws-region: us-east-1
+
+      - name: Setup AWS
+        uses: ironsource-mobile/github-actions-and-workflows/.github/actions/setup-aws@main
         with:
-          aws-region: us-east-1
+          aws_role_arn: arn:aws:iam::032106861074:role/github-runners-demand-team-role
 
       - name: Deploy to s3 bucket
         run: '${GITHUB_WORKSPACE}/.github/actions/deploy-storybook.sh  ${{ steps.branch_name.outputs.folder }} '
