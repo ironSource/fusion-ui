@@ -61,10 +61,10 @@ jobs:
             sudo  ./aws/install
           fi
 
-      - name: Setup AWS
-        uses: ironsource-mobile/github-actions-and-workflows/.github/actions/setup-aws@main
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-            aws_role_arn: arn:aws:iam::032106861074:role/github-runners-demand-team-role
+          aws-region: us-east-1
 
       - name: Deploy to s3 bucket
         run: '${GITHUB_WORKSPACE}/.github/actions/deploy-storybook.sh  ${{ steps.branch_name.outputs.folder }} '
