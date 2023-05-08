@@ -38,6 +38,7 @@ export default {
             providers: [{provide: ApiBase, useExisting: DropdownComponent}, ApiService]
         })
     ],
+    tags: ['autodocs'],
     parameters: {
         design: {
             type: 'figma',

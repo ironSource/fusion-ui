@@ -18,6 +18,7 @@ export default {
             providers: [ApiService]
         })
     ],
+    tags: ['autodocs'],
     parameters: {
         docs: {
             description: {

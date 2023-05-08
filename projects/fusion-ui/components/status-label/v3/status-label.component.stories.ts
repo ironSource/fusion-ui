@@ -13,6 +13,7 @@ export default {
             imports: [CommonModule]
         })
     ],
+    tags: ['autodocs'],
     parameters: {
         layout: 'centered',
         docs: {
@@ -103,6 +104,7 @@ export const WithTwoLines = {
 
     parameters: {
         docs: {
+            disable: true,
             description: {
                 story: `You can add any inner content: \`<fusion-status-label [flat]="true">
       <div>

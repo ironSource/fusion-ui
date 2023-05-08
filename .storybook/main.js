@@ -13,7 +13,8 @@ const config = {
         options: {enableIvy: true}
     },
     docs: {
-        autodocs: true // auto generate mdx dox story
+        /*autodocs: true // auto generate mdx dox story*/
+        autodocs: 'tag' // autogenerate only for stories with tag: 'autodoc'
     }
 };
 

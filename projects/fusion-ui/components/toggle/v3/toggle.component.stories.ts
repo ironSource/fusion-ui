@@ -19,6 +19,7 @@ export default {
             imports: [CommonModule, FormsModule, ReactiveFormsModule]
         })
     ],
+    tags: ['autodocs'],
     parameters: {
         docs: {
             description: {

@@ -14,6 +14,7 @@ export default {
             imports: [CommonModule, TooltipModule]
         })
     ],
+    tags: ['autodocs'],
     parameters: {
         docs: {
             description: {

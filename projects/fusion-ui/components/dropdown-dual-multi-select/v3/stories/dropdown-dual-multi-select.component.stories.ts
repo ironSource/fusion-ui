@@ -34,6 +34,7 @@ export default {
             providers: [{provide: ApiBase, useExisting: DropdownDualMultiSelectComponent}, ApiService]
         })
     ],
+    tags: ['autodocs'],
     parameters: {
         docs: {
             description: {

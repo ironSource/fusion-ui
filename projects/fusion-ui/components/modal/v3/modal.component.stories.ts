@@ -21,6 +21,7 @@ export default {
             providers: [ApiService]
         })
     ],
+    tags: ['autodocs'],
     parameters: {
         layout: 'centered',
         backgrounds: {

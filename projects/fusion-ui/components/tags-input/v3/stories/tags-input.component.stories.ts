@@ -24,6 +24,7 @@ export default {
             imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, TagsInputStoryWrapperComponent]
         })
     ],
+    tags: ['autodocs'],
     parameters: {
         layout: 'centered',
         design: {

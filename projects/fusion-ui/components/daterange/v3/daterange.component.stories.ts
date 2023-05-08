@@ -36,6 +36,7 @@ export default {
             providers: [ApiService]
         })
     ],
+    tags: ['autodocs'],
     parameters: {
         design: {
             type: 'figma',
@@ -56,7 +57,7 @@ export default {
 
 const CalendarTemplate: StoryFn<DaterangeComponent> = (args: DaterangeComponent) => ({
     props: {...args},
-    template: `<div style="height: 380px; width: 250px;">
+    template: `<div style="height: 390px; width: 250px;">
         <fusion-daterange
             [formControl]="formControl"
             [options]="options"
@@ -108,7 +109,7 @@ export const Default = {
 // region WithTimeSelector
 const CalendarTimeTemplate: StoryFn<DaterangeComponent> = (args: DaterangeComponent) => ({
     props: {...args},
-    template: `<div style="height: 380px; width: 320px;">
+    template: `<div style="height: 445px; width: 320px;">
         <fusion-daterange
             [formControl]="formControl"
             [options]="options"

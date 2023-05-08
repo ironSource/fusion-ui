@@ -28,6 +28,7 @@ export default {
             imports: [CommonModule, FormsModule, ReactiveFormsModule, SwitcherModule]
         })
     ],
+    tags: ['autodocs'],
     argTypes: {
         configuration: {
             control: 'object'
