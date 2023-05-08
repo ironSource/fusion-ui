@@ -61,25 +61,11 @@ jobs:
             sudo  ./aws/install
           fi
 
-      - name: Check IAM role
-        run: aws sts get-caller-identity
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-region: us-east-1
           role-to-assume: arn:aws:iam::032106861074:role/github-runners-demand-team-role
-
-      - name: Check IAM role
-        run: aws sts get-caller-identity
-
-      - name: Check S3 bucket access
-        run: |
-          if aws s3 ls s3://fusion-storybook/; then
-            echo "Access to S3 bucket is successful"
-          else
-            echo "Access to S3 bucket failed"
-          fi
 
       - name: Deploy to s3 bucket
         run: '${GITHUB_WORKSPACE}/.github/actions/deploy-storybook.sh  ${{ steps.branch_name.outputs.folder }} '
