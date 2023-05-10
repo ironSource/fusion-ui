@@ -22,7 +22,7 @@ const preview = {
             storySort: (a, b) => {
                 const comparer = a.title === b.title
                     ? 0
-                    : a.id.localeCompare(b.id, undefined, { numeric: true });;
+                    : a.id.localeCompare(b.id, undefined, { numeric: true });
                 return comparer;
             }
         }
