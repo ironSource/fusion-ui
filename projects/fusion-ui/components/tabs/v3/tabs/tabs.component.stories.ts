@@ -1,4 +1,4 @@
-import {Meta, moduleMetadata, Story} from '@storybook/angular';
+import {Meta, moduleMetadata, StoryFn} from '@storybook/angular';
 import {dedent} from 'ts-dedent';
 import {action} from '@storybook/addon-actions';
 import {CommonModule} from '@angular/common';
@@ -6,6 +6,7 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TabsComponent, TabsModule} from '@ironsource/fusion-ui/components/tabs/v3';
+import {ApiService} from '@ironsource/fusion-ui';
 
 const actionsData = {
     selectedChange: action('selectedChange')
@@ -17,9 +18,11 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, TabsModule]
+            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, TabsModule],
+            providers: [ApiService]
         })
     ],
+    tags: ['autodocs'],
     parameters: {
         design: {
             type: 'figma',
@@ -65,7 +68,7 @@ Each tab should contain content that is distinct from other tabs in a set. For e
     }
 } as Meta<TabsComponent>;
 
-const TabsTemplate: Story<TabsComponent> = (args: TabsComponent) => ({
+const TabsTemplate: StoryFn<TabsComponent> = (args: TabsComponent) => ({
     props: {...args, selectedChange: actionsData.selectedChange},
     template: `<style>
     fusion-tab {background-color: #fff;}
@@ -84,164 +87,182 @@ const TabsTemplate: Story<TabsComponent> = (args: TabsComponent) => ({
 </div>`
 });
 
-export const Default = TabsTemplate.bind({});
-Default.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
-import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
+export const Default = {
+    render: TabsTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div style="width: 300px;">
-    <fusion-tabs (selectedChange)="selectedChange($event)">
-      <fusion-tab [selected]="true">
-        <fusion-icon class="fu-tab-icon" name="bullhorn"></fusion-icon>
-        First Tab
-      </fusion-tab>
-      <fusion-tab>
-        <fusion-icon class="fu-tab-icon" name="group"></fusion-icon>
-        Second Tab
-      </fusion-tab>
-    </fusion-tabs>
-</div>\`,
-  standalone: true,
-  imports: [IconModule, TabsModule],
-})
-export class FusionStoryWrapperComponent {
-  selectedChange($event) {
-    console.log('Selected Tab: ', $event, $event.tabElement.innerText);
-  }
-}
-`,
-            format: true,
-            type: 'code'
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
+    import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div style="width: 300px;">
+        <fusion-tabs (selectedChange)="selectedChange($event)">
+          <fusion-tab [selected]="true">
+            <fusion-icon class="fu-tab-icon" name="bullhorn"></fusion-icon>
+            First Tab
+          </fusion-tab>
+          <fusion-tab>
+            <fusion-icon class="fu-tab-icon" name="group"></fusion-icon>
+            Second Tab
+          </fusion-tab>
+        </fusion-tabs>
+    </div>\`,
+      standalone: true,
+      imports: [IconModule, TabsModule],
+    })
+    export class FusionStoryWrapperComponent {
+      selectedChange($event) {
+        console.log('Selected Tab: ', $event, $event.tabElement.innerText);
+      }
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-export const Small = TabsTemplate.bind({});
-Small.args = {
-    tabSize: 'fu-size-sm'
-};
-Small.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
-import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div style="width: 300px;">
-    <fusion-tabs class="fu-size-sm" (selectedChange)="selectedChange($event)">
-      <fusion-tab [selected]="true">
-        <fusion-icon class="fu-tab-icon" name="bullhorn"></fusion-icon>
-        First Tab
-      </fusion-tab>
-      <fusion-tab>
-        <fusion-icon class="fu-tab-icon" name="group"></fusion-icon>
-        Second Tab
-      </fusion-tab>
-    </fusion-tabs>
-</div>\`,
-  standalone: true,
-  imports: [IconModule, TabsModule],
-})
-export class FusionStoryWrapperComponent {
-  selectedChange($event) {
-    console.log('Selected Tab: ', $event, $event.tabElement.innerText);
-  }
-}
-`,
-            format: true,
-            type: 'code'
+export const Small = {
+    render: TabsTemplate,
+
+    args: {
+        tabSize: 'fu-size-sm'
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
+    import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div style="width: 300px;">
+        <fusion-tabs class="fu-size-sm" (selectedChange)="selectedChange($event)">
+          <fusion-tab [selected]="true">
+            <fusion-icon class="fu-tab-icon" name="bullhorn"></fusion-icon>
+            First Tab
+          </fusion-tab>
+          <fusion-tab>
+            <fusion-icon class="fu-tab-icon" name="group"></fusion-icon>
+            Second Tab
+          </fusion-tab>
+        </fusion-tabs>
+    </div>\`,
+      standalone: true,
+      imports: [IconModule, TabsModule],
+    })
+    export class FusionStoryWrapperComponent {
+      selectedChange($event) {
+        console.log('Selected Tab: ', $event, $event.tabElement.innerText);
+      }
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-export const Large = TabsTemplate.bind({});
-Large.args = {
-    tabSize: 'fu-size-lg'
-};
-Large.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
-import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div style="width: 300px;">
-    <fusion-tabs class="fu-size-lg" (selectedChange)="selectedChange($event)">
-      <fusion-tab [selected]="true">
-        <fusion-icon class="fu-tab-icon" name="bullhorn"></fusion-icon>
-        First Tab
-      </fusion-tab>
-      <fusion-tab>
-        <fusion-icon class="fu-tab-icon" name="group"></fusion-icon>
-        Second Tab
-      </fusion-tab>
-    </fusion-tabs>
-</div>\`,
-  standalone: true,
-  imports: [IconModule, TabsModule],
-})
-export class FusionStoryWrapperComponent {
-  selectedChange($event) {
-    console.log('Selected Tab: ', $event, $event.tabElement.innerText);
-  }
-}
-`,
-            format: true,
-            type: 'code'
+export const Large = {
+    render: TabsTemplate,
+
+    args: {
+        tabSize: 'fu-size-lg'
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
+    import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div style="width: 300px;">
+        <fusion-tabs class="fu-size-lg" (selectedChange)="selectedChange($event)">
+          <fusion-tab [selected]="true">
+            <fusion-icon class="fu-tab-icon" name="bullhorn"></fusion-icon>
+            First Tab
+          </fusion-tab>
+          <fusion-tab>
+            <fusion-icon class="fu-tab-icon" name="group"></fusion-icon>
+            Second Tab
+          </fusion-tab>
+        </fusion-tabs>
+    </div>\`,
+      standalone: true,
+      imports: [IconModule, TabsModule],
+    })
+    export class FusionStoryWrapperComponent {
+      selectedChange($event) {
+        console.log('Selected Tab: ', $event, $event.tabElement.innerText);
+      }
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-export const ExtraLarge = TabsTemplate.bind({});
-ExtraLarge.args = {
-    tabSize: 'fu-size-xl'
-};
-ExtraLarge.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
-import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div style="width: 300px;">
-    <fusion-tabs class="fu-size-xl" (selectedChange)="selectedChange($event)">
-      <fusion-tab [selected]="true">
-        <fusion-icon class="fu-tab-icon" name="bullhorn"></fusion-icon>
-        First Tab
-      </fusion-tab>
-      <fusion-tab>
-        <fusion-icon class="fu-tab-icon" name="group"></fusion-icon>
-        Second Tab
-      </fusion-tab>
-    </fusion-tabs>
-</div>\`,
-  standalone: true,
-  imports: [IconModule, TabsModule],
-})
-export class FusionStoryWrapperComponent {
-  selectedChange($event) {
-    console.log('Selected Tab: ', $event, $event.tabElement.innerText);
-  }
-}
-`,
-            format: true,
-            type: 'code'
+export const ExtraLarge = {
+    render: TabsTemplate,
+
+    args: {
+        tabSize: 'fu-size-xl'
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
+    import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div style="width: 300px;">
+        <fusion-tabs class="fu-size-xl" (selectedChange)="selectedChange($event)">
+          <fusion-tab [selected]="true">
+            <fusion-icon class="fu-tab-icon" name="bullhorn"></fusion-icon>
+            First Tab
+          </fusion-tab>
+          <fusion-tab>
+            <fusion-icon class="fu-tab-icon" name="group"></fusion-icon>
+            Second Tab
+          </fusion-tab>
+        </fusion-tabs>
+    </div>\`,
+      standalone: true,
+      imports: [IconModule, TabsModule],
+    })
+    export class FusionStoryWrapperComponent {
+      selectedChange($event) {
+        console.log('Selected Tab: ', $event, $event.tabElement.innerText);
+      }
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };

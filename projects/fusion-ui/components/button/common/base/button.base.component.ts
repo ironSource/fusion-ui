@@ -70,6 +70,7 @@ export abstract class ButtonBaseComponent implements OnInit, AfterViewInit, OnDe
 
     @Output() onclick = new EventEmitter();
 
+    /** @internal */
     @ViewChild('contentRef') contentRef: ElementRef;
 
     /** @internal */

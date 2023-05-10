@@ -1,4 +1,4 @@
-import {Story, Meta} from '@storybook/angular';
+import {StoryFn, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {dedent} from 'ts-dedent';
 import {CommonModule} from '@angular/common';
@@ -6,7 +6,8 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
-import {DaterangeComponent, DaterangeCustomPreset, DaterangeModule, DaterangeOptions, DaterangeSelection} from './';
+import {DaterangeComponent, DaterangeModule, DaterangeOptions, DaterangeSelection} from './';
+import {ApiService} from '@ironsource/fusion-ui';
 
 export default {
     title: 'Components/Dates/DatePicker',
@@ -21,9 +22,11 @@ export default {
                 SvgModule.forRoot({assetsPath: environment.assetsPath}),
                 IconModule,
                 DaterangeModule
-            ]
+            ],
+            providers: [ApiService]
         })
     ],
+    tags: ['autodocs'],
     parameters: {
         design: {
             type: 'figma',
@@ -42,7 +45,7 @@ export default {
     }
 } as Meta<DaterangeComponent>;
 
-const CalendarTemplate: Story<DaterangeComponent> = (args: DaterangeComponent) => ({
+const CalendarTemplate: StoryFn<DaterangeComponent> = (args: DaterangeComponent) => ({
     props: {...args},
     template: `<div style="height: 380px; width: 250px;">
         <fusion-daterange
@@ -52,190 +55,198 @@ const CalendarTemplate: Story<DaterangeComponent> = (args: DaterangeComponent) =
 </div>`
 });
 
-// region Default
-export const Default = CalendarTemplate.bind({});
-Default.args = {
-    formControl: new FormControl() as FormControl<DaterangeSelection>,
-    options: {
-        calendarAmount: 1,
-        presets: []
-    } as DaterangeOptions
-};
-Default.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { ReactiveFormsModule, FormControl } from '@angular/forms';
-import { DaterangeModule } from '@ironsource/fusion-ui/components/daterange/v3';
-import { DaterangeSelection, DaterangeOptions } from '@ironsource/fusion-ui/components/daterange/entities';
+export const Default = {
+    render: CalendarTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div style="height: 380px; width: 250px;">
-        <fusion-daterange
-            [formControl]="formControl"
-            [options]="options"
-        ></fusion-daterange>
-</div>\`,
-  standalone: true,
-  imports: [ReactiveFormsModule, DaterangeModule],
-})
-export class FusionStoryWrapperComponent {
-  formControl: FormControl<DaterangeSelection> = new FormControl();
-  options:DaterangeOptions = {
-    calendarAmount: 1,
-    presets: [],
-  };
-}
-`,
-            format: true,
-            type: 'code'
+    args: {
+        formControl: new FormControl() as FormControl<DaterangeSelection>,
+        options: {
+            calendarAmount: 1,
+            presets: []
+        } as DaterangeOptions
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { ReactiveFormsModule, FormControl } from '@angular/forms';
+    import { DaterangeModule } from '@ironsource/fusion-ui/components/daterange/v3';
+    import { DaterangeSelection, DaterangeOptions } from '@ironsource/fusion-ui/components/daterange/entities';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div style="height: 380px; width: 250px;">
+            <fusion-daterange
+                [formControl]="formControl"
+                [options]="options"
+            ></fusion-daterange>
+    </div>\`,
+      standalone: true,
+      imports: [ReactiveFormsModule, DaterangeModule],
+    })
+    export class FusionStoryWrapperComponent {
+      formControl: FormControl<DaterangeSelection> = new FormControl();
+      options:DaterangeOptions = {
+        calendarAmount: 1,
+        presets: [],
+      };
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-// endregion
 
-// region AllowFutureDateSelect
-export const AllowFutureDateSelect = CalendarTemplate.bind({});
-AllowFutureDateSelect.args = {
-    formControl: new FormControl() as FormControl<DaterangeSelection>,
-    options: {
+export const AllowFutureDateSelect = {
+    render: CalendarTemplate,
+
+    args: {
+        formControl: new FormControl() as FormControl<DaterangeSelection>,
+        options: {
+            calendarAmount: 1,
+            presets: [],
+            allowFutureSelection: true
+        } as DaterangeOptions
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { ReactiveFormsModule, FormControl } from '@angular/forms';
+    import { DaterangeModule } from '@ironsource/fusion-ui/components/daterange/v3';
+    import { DaterangeSelection, DaterangeOptions } from '@ironsource/fusion-ui/components/daterange/entities';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div style="height: 380px; width: 250px;">
+            <fusion-daterange
+                [formControl]="formControl"
+                [options]="options"
+            ></fusion-daterange>
+    </div>\`,
+      standalone: true,
+      imports: [ReactiveFormsModule, DaterangeModule],
+    })
+    export class FusionStoryWrapperComponent {
+      formControl: FormControl<DaterangeSelection> = new FormControl();
+      options:DaterangeOptions = {
         calendarAmount: 1,
         presets: [],
         allowFutureSelection: true
-    } as DaterangeOptions
-};
-AllowFutureDateSelect.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { ReactiveFormsModule, FormControl } from '@angular/forms';
-import { DaterangeModule } from '@ironsource/fusion-ui/components/daterange/v3';
-import { DaterangeSelection, DaterangeOptions } from '@ironsource/fusion-ui/components/daterange/entities';
-
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div style="height: 380px; width: 250px;">
-        <fusion-daterange
-            [formControl]="formControl"
-            [options]="options"
-        ></fusion-daterange>
-</div>\`,
-  standalone: true,
-  imports: [ReactiveFormsModule, DaterangeModule],
-})
-export class FusionStoryWrapperComponent {
-  formControl: FormControl<DaterangeSelection> = new FormControl();
-  options:DaterangeOptions = {
-    calendarAmount: 1,
-    presets: [],
-    allowFutureSelection: true
-  };
-}
-`,
-            format: true,
-            type: 'code'
+      };
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-// endregion
 
-// region WithCustomPlaceholder
-export const WithCustomPlaceholder = CalendarTemplate.bind({});
-WithCustomPlaceholder.args = {
-    formControl: new FormControl() as FormControl<DaterangeSelection>,
-    options: {
+export const WithCustomPlaceholder = {
+    render: CalendarTemplate,
+
+    args: {
+        formControl: new FormControl() as FormControl<DaterangeSelection>,
+        options: {
+            calendarAmount: 1,
+            presets: [],
+            placeholder: 'Date of birth'
+        } as DaterangeOptions
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { ReactiveFormsModule, FormControl } from '@angular/forms';
+    import { DaterangeModule } from '@ironsource/fusion-ui/components/daterange/v3';
+    import { DaterangeSelection, DaterangeOptions } from '@ironsource/fusion-ui/components/daterange/entities';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div style="height: 380px; width: 250px;">
+            <fusion-daterange
+                [formControl]="formControl"
+                [options]="options"
+            ></fusion-daterange>
+    </div>\`,
+      standalone: true,
+      imports: [ReactiveFormsModule, DaterangeModule],
+    })
+    export class FusionStoryWrapperComponent {
+      formControl: FormControl<DaterangeSelection> = new FormControl();
+      options:DaterangeOptions = {
         calendarAmount: 1,
         presets: [],
         placeholder: 'Date of birth'
-    } as DaterangeOptions
-};
-WithCustomPlaceholder.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { ReactiveFormsModule, FormControl } from '@angular/forms';
-import { DaterangeModule } from '@ironsource/fusion-ui/components/daterange/v3';
-import { DaterangeSelection, DaterangeOptions } from '@ironsource/fusion-ui/components/daterange/entities';
-
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div style="height: 380px; width: 250px;">
-        <fusion-daterange
-            [formControl]="formControl"
-            [options]="options"
-        ></fusion-daterange>
-</div>\`,
-  standalone: true,
-  imports: [ReactiveFormsModule, DaterangeModule],
-})
-export class FusionStoryWrapperComponent {
-  formControl: FormControl<DaterangeSelection> = new FormControl();
-  options:DaterangeOptions = {
-    calendarAmount: 1,
-    presets: [],
-    placeholder: 'Date of birth'
-  };
-}
-`,
-            format: true,
-            type: 'code'
+      };
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-// endregion
 
-// region WithCustomDateFormatInPlaceholder
-export const WithCustomDateFormatInPlaceholder = CalendarTemplate.bind({});
-WithCustomDateFormatInPlaceholder.args = {
-    formControl: new FormControl() as FormControl<DaterangeSelection>,
-    options: {
+export const WithCustomDateFormatInPlaceholder = {
+    render: CalendarTemplate,
+
+    args: {
+        formControl: new FormControl() as FormControl<DaterangeSelection>,
+        options: {
+            calendarAmount: 1,
+            presets: [],
+            placeholder: 'Date of birth',
+            format: 'EEEE, MMMM d, y'
+        } as DaterangeOptions
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { ReactiveFormsModule, FormControl } from '@angular/forms';
+    import { DaterangeModule } from '@ironsource/fusion-ui/components/daterange/v3';
+    import { DaterangeSelection, DaterangeOptions } from '@ironsource/fusion-ui/components/daterange/entities';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div style="height: 380px; width: 250px;">
+            <fusion-daterange
+                [formControl]="formControl"
+                [options]="options"
+            ></fusion-daterange>
+    </div>\`,
+      standalone: true,
+      imports: [ReactiveFormsModule, DaterangeModule],
+    })
+    export class FusionStoryWrapperComponent {
+      formControl: FormControl<DaterangeSelection> = new FormControl();
+      options:DaterangeOptions = {
         calendarAmount: 1,
         presets: [],
         placeholder: 'Date of birth',
         format: 'EEEE, MMMM d, y'
-    } as DaterangeOptions
-};
-WithCustomDateFormatInPlaceholder.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { ReactiveFormsModule, FormControl } from '@angular/forms';
-import { DaterangeModule } from '@ironsource/fusion-ui/components/daterange/v3';
-import { DaterangeSelection, DaterangeOptions } from '@ironsource/fusion-ui/components/daterange/entities';
-
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div style="height: 380px; width: 250px;">
-        <fusion-daterange
-            [formControl]="formControl"
-            [options]="options"
-        ></fusion-daterange>
-</div>\`,
-  standalone: true,
-  imports: [ReactiveFormsModule, DaterangeModule],
-})
-export class FusionStoryWrapperComponent {
-  formControl: FormControl<DaterangeSelection> = new FormControl();
-  options:DaterangeOptions = {
-    calendarAmount: 1,
-    presets: [],
-    placeholder: 'Date of birth',
-    format: 'EEEE, MMMM d, y'
-  };
-}
-`,
-            format: true,
-            type: 'code'
+      };
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-// endregion

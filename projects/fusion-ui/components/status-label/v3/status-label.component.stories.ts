@@ -1,4 +1,4 @@
-import {Story, Meta} from '@storybook/angular';
+import {StoryFn, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {dedent} from 'ts-dedent';
@@ -13,6 +13,7 @@ export default {
             imports: [CommonModule]
         })
     ],
+    tags: ['autodocs'],
     parameters: {
         layout: 'centered',
         docs: {
@@ -47,16 +48,18 @@ export default {
     }
 } as Meta<StatusLabelComponent>;
 
-const StatusLabelTemplate: Story<StatusLabelComponent> = (args: StatusLabelComponent) => ({
+const StatusLabelTemplate: StoryFn<StatusLabelComponent> = (args: StatusLabelComponent) => ({
     props: {...args}
 });
 
-// region Default
-export const Default = StatusLabelTemplate.bind({});
+export const Default = {
+    render: StatusLabelTemplate
+};
+
 // endregion
 
 // region WithLabel
-const StatusLabelWithLabelTemplate: Story<StatusLabelComponent> = (args: StatusLabelComponent) => ({
+const StatusLabelWithLabelTemplate: StoryFn<StatusLabelComponent> = (args: StatusLabelComponent) => ({
     props: {...args},
     template: `<fusion-status-label
   [status]="status"
@@ -65,20 +68,25 @@ const StatusLabelWithLabelTemplate: Story<StatusLabelComponent> = (args: StatusL
   {{label}}
 </fusion-status-label>`
 });
-export const WithLabel = StatusLabelWithLabelTemplate.bind({});
-WithLabel.parameters = {
-    docs: {
-        description: {
-            story: `For label - just add text inside:
-        \`<fusion-status-label>Text Label</fusion-status-label>\`
-`
+
+export const WithLabel = {
+    render: StatusLabelWithLabelTemplate,
+
+    parameters: {
+        docs: {
+            description: {
+                story: `For label - just add text inside:
+            \`<fusion-status-label>Text Label</fusion-status-label>\`
+    `
+            }
         }
     }
 };
+
 // endregion
 
 // region WithTwoLines
-const StatusLabelWithTwoLinesTemplate: Story<StatusLabelComponent> = (args: StatusLabelComponent) => ({
+const StatusLabelWithTwoLinesTemplate: StoryFn<StatusLabelComponent> = (args: StatusLabelComponent) => ({
     props: {...args},
     template: `<fusion-status-label
   [status]="status"
@@ -90,18 +98,22 @@ const StatusLabelWithTwoLinesTemplate: Story<StatusLabelComponent> = (args: Stat
   </div>
 </fusion-status-label>`
 });
-export const WithTwoLines = StatusLabelWithTwoLinesTemplate.bind({});
-WithTwoLines.parameters = {
-    docs: {
-        description: {
-            story: `You can add any inner content: \`<fusion-status-label [flat]="true">
-  <div>
-    <div>Test Label</div>
-    <div class="font-bodyXSmall" style="color: #7B838C">helper text</div>
-  </div>
-</fusion-status-label>\`
-`
+
+export const WithTwoLines = {
+    render: StatusLabelWithTwoLinesTemplate,
+
+    parameters: {
+        docs: {
+            disable: true,
+            description: {
+                story: `You can add any inner content: \`<fusion-status-label [flat]="true">
+      <div>
+        <div>Test Label</div>
+        <div class="font-bodyXSmall" style="color: #7B838C">helper text</div>
+      </div>
+    </fusion-status-label>\`
+    `
+            }
         }
     }
 };
-// endregion

@@ -1,4 +1,4 @@
-import {Story, Meta} from '@storybook/angular';
+import {StoryFn, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {dedent} from 'ts-dedent';
 import {CommonModule} from '@angular/common';
@@ -18,6 +18,7 @@ import {
     MOCK_USERS
 } from '@ironsource/fusion-ui/components/chip-filters/v3/stories/chip-filters.stories.mock';
 import {ChipFilterComponentConfigurations} from '@ironsource/fusion-ui/components/chip-filter/common/base';
+import {ApiService} from '@ironsource/fusion-ui';
 
 export default {
     title: 'Components/Filters/Filter Panel Dynamic',
@@ -35,9 +36,11 @@ export default {
                 ChipFilterModule,
                 DropdownModule,
                 DropdownDualMultiSelectModule
-            ]
+            ],
+            providers: [ApiService]
         })
     ],
+    tags: ['autodocs'],
     parameters: {
         design: {
             type: 'figma',
@@ -51,7 +54,7 @@ export default {
     }
 } as Meta<ChipFiltersComponent>;
 
-const FilterPanelDefaultTemplate: Story<ChipFiltersComponent> = (args: ChipFiltersComponent) => ({
+const FilterPanelDefaultTemplate: StoryFn<ChipFiltersComponent> = (args: ChipFiltersComponent) => ({
     props: {...args},
     template: `
 <div style="height: 350px;">
@@ -89,308 +92,313 @@ const FilterPanelDefaultTemplate: Story<ChipFiltersComponent> = (args: ChipFilte
     </fusion-chip-filters>
 </div>`
 });
-// region Default
-export const Default = FilterPanelDefaultTemplate.bind({});
-Default.args = {
-    addFiltersTitle: 'Add filter by:',
-    addFilterOptions: [
-        {id: 2, displayText: 'Country'},
-        {id: 3, displayText: 'Campaigns'}
-    ],
 
-    fcChip1: new FormControl(),
-    configChip1: {id: 1, mode: 'static', close: true} as ChipFilterComponentConfigurations,
-    optionsChip1: MOCK_USERS,
-    placeholderPrefixChip1: 'User',
-    placeholderChip1: 'All',
-    searchChip1: true,
-    optionsTitleChip1: 'User',
+export const Default = {
+    render: FilterPanelDefaultTemplate,
 
-    selectedDynamicFilters: MOCK_DYNAMIC_FILTERS.filter(filter => filter.fcChip.value)
-};
-Default.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormControl } from '@angular/forms';
-import { ChipFiltersModule } from '@ironsource/fusion-ui/components/chip-filters';
-import { ChipFilterModule } from '@ironsource/fusion-ui/components/chip-filter';
-import { ChipFilterComponentConfigurations, ChipFilterMode } from '@ironsource/fusion-ui/components/chip-filter/common/base';
-import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
-import { DropdownModule } from '@ironsource/fusion-ui/components/dropdown';
-import { DropdownDualMultiSelectModule } from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
+    args: {
+        addFiltersTitle: 'Add filter by:',
+        addFilterOptions: [
+            {id: 2, displayText: 'Country'},
+            {id: 3, displayText: 'Campaigns'}
+        ],
 
-@Component({
-    selector: 'fusion-story-wrapper',
-    template: \`<div style="height: 350px;">
-    <fusion-chip-filters
-        [addFiltersTitle]="addFiltersTitle"
-        [addFilterOptions]="addFilterOptions"
-        [disableAddFilter]="disableAddFilter"
-        [isSearch]="isSearch"
-        (onDynamicChipSelect)="onDynamicChipSelect($event)"
-        >
-        <fusion-chip-filter [configuration]="configChip1">
-            <div class="filter-element">
-                <fusion-dropdown
-                     [placeholderPrefix]="placeholderPrefixChip1"
-                     [placeholder]="placeholderChip1"
-                     [formControl]="fcChip1"
-                     [options]="optionsChip1"
-                     [search]="searchChip1"
-                     [optionsTitle]="optionsTitleChip1"
-                     >
-                </fusion-dropdown>
-            </div>
-        </fusion-chip-filter>
+        fcChip1: new FormControl(),
+        configChip1: {id: 1, mode: 'static', close: true} as ChipFilterComponentConfigurations,
+        optionsChip1: MOCK_USERS,
+        placeholderPrefixChip1: 'User',
+        placeholderChip1: 'All',
+        searchChip1: true,
+        optionsTitleChip1: 'User',
 
-        <ng-container *ngFor="let chip of selectedDynamicFilters">
-            <fusion-chip-filter [configuration]="chip.configChip" (onChipRemove)="onDynamicChipRemove($event)">
+        selectedDynamicFilters: MOCK_DYNAMIC_FILTERS.filter(filter => filter.fcChip.value)
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { CommonModule } from '@angular/common';
+    import { ReactiveFormsModule, FormControl } from '@angular/forms';
+    import { ChipFiltersModule } from '@ironsource/fusion-ui/components/chip-filters';
+    import { ChipFilterModule } from '@ironsource/fusion-ui/components/chip-filter';
+    import { ChipFilterComponentConfigurations, ChipFilterMode } from '@ironsource/fusion-ui/components/chip-filter/common/base';
+    import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+    import { DropdownModule } from '@ironsource/fusion-ui/components/dropdown';
+    import { DropdownDualMultiSelectModule } from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
+
+    @Component({
+        selector: 'fusion-story-wrapper',
+        template: \`<div style="height: 350px;">
+        <fusion-chip-filters
+            [addFiltersTitle]="addFiltersTitle"
+            [addFilterOptions]="addFilterOptions"
+            [disableAddFilter]="disableAddFilter"
+            [isSearch]="isSearch"
+            (onDynamicChipSelect)="onDynamicChipSelect($event)"
+            >
+            <fusion-chip-filter [configuration]="configChip1">
                 <div class="filter-element">
-                    <fusion-dropdown-dual-multi-select
-                        [title]="chip.optionsTitleChip"
-                        [placeholder]="chip.placeholderChip"
-                        [formControl]="chip.fcChip"
-                        [items]="chip.optionsChip"
-                    ></fusion-dropdown-dual-multi-select>
+                    <fusion-dropdown
+                         [placeholderPrefix]="placeholderPrefixChip1"
+                         [placeholder]="placeholderChip1"
+                         [formControl]="fcChip1"
+                         [options]="optionsChip1"
+                         [search]="searchChip1"
+                         [optionsTitle]="optionsTitleChip1"
+                         >
+                    </fusion-dropdown>
                 </div>
             </fusion-chip-filter>
-        </ng-container>
 
-    </fusion-chip-filters>
-</div>\`,
-    standalone: true,
-    imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        ChipFiltersModule,
-        ChipFilterModule,
-        DropdownModule,
-        DropdownDualMultiSelectModule
-    ]
-})
-export class FusionStoryWrapperComponent {
-    // Add Filter Chip props
+            <ng-container *ngFor="let chip of selectedDynamicFilters">
+                <fusion-chip-filter [configuration]="chip.configChip" (onChipRemove)="onDynamicChipRemove($event)">
+                    <div class="filter-element">
+                        <fusion-dropdown-dual-multi-select
+                            [title]="chip.optionsTitleChip"
+                            [placeholder]="chip.placeholderChip"
+                            [formControl]="chip.fcChip"
+                            [items]="chip.optionsChip"
+                        ></fusion-dropdown-dual-multi-select>
+                    </div>
+                </fusion-chip-filter>
+            </ng-container>
 
-    // first chip - User
-    fcChip1 = new FormControl();
-    configChip1: ChipFilterComponentConfigurations = {id: 1,mode: 'static',close: true};
-    optionsChip1 = OPTIONS_USERS;
-    placeholderPrefixChip1 = 'User';
-    placeholderChip1 = 'All';
-    searchChip1 = true;
-    optionsTitleChip1 = 'User';
+        </fusion-chip-filters>
+    </div>\`,
+        standalone: true,
+        imports: [
+            CommonModule,
+            ReactiveFormsModule,
+            ChipFiltersModule,
+            ChipFilterModule,
+            DropdownModule,
+            DropdownDualMultiSelectModule
+        ]
+    })
+    export class FusionStoryWrapperComponent {
+        // Add Filter Chip props
 
-    // Dynamic filters
-    dynamicFiltersAll = [
-        {
-            fcChip: new FormControl(),
-            configChip: { id: 2, mode: 'dynamic' as ChipFilterMode, close: true },
-            optionsChip: OPTIONS_COUNTRIES,
-            placeholderChip: 'All',
-            optionsTitleChip: 'Country',
-        },
-        {
-            fcChip: new FormControl(),
-            configChip: { id: 3, mode: 'dynamic' as ChipFilterMode, close: true },
-            optionsChip: OPTIONS_CAMPAIGNS,
-            placeholderChip: 'All',
-            optionsTitleChip: 'Campaigns',
+        // first chip - User
+        fcChip1 = new FormControl();
+        configChip1: ChipFilterComponentConfigurations = {id: 1,mode: 'static',close: true};
+        optionsChip1 = OPTIONS_USERS;
+        placeholderPrefixChip1 = 'User';
+        placeholderChip1 = 'All';
+        searchChip1 = true;
+        optionsTitleChip1 = 'User';
+
+        // Dynamic filters
+        dynamicFiltersAll = [
+            {
+                fcChip: new FormControl(),
+                configChip: { id: 2, mode: 'dynamic' as ChipFilterMode, close: true },
+                optionsChip: OPTIONS_COUNTRIES,
+                placeholderChip: 'All',
+                optionsTitleChip: 'Country',
+            },
+            {
+                fcChip: new FormControl(),
+                configChip: { id: 3, mode: 'dynamic' as ChipFilterMode, close: true },
+                optionsChip: OPTIONS_CAMPAIGNS,
+                placeholderChip: 'All',
+                optionsTitleChip: 'Campaigns',
+            }
+        ];
+
+        // Fitlers panel
+        addFiltersTitle = 'Add filter by:';
+        addFilterOptions: DropdownOption[] = this.dynamicFiltersAll.map(filterDynamic=>({id: filterDynamic.configChip.id, displayText: filterDynamic.optionsTitleChip}));
+        disableAddFilter = false;
+        isSearch = true;
+
+
+        selectedDynamicFilters = [];
+
+        onDynamicChipSelect(selected) {
+             if (!this.selectedDynamicFilters.some(item => selected.id === item.configChip.id)) {
+                this.selectedDynamicFilters = [
+                    ...this.selectedDynamicFilters,
+                    ...this.dynamicFiltersAll.filter((chipFilter) => (chipFilter.configChip.id === selected.id))
+                ];
+             }
         }
-    ];
 
-    // Fitlers panel
-    addFiltersTitle = 'Add filter by:';
-    addFilterOptions: DropdownOption[] = this.dynamicFiltersAll.map(filterDynamic=>({id: filterDynamic.configChip.id, displayText: filterDynamic.optionsTitleChip}));
-    disableAddFilter = false;
-    isSearch = true;
-
-
-    selectedDynamicFilters = [];
-
-    onDynamicChipSelect(selected) {
-         if (!this.selectedDynamicFilters.some(item => selected.id === item.configChip.id)) {
-            this.selectedDynamicFilters = [
-                ...this.selectedDynamicFilters,
-                ...this.dynamicFiltersAll.filter((chipFilter) => (chipFilter.configChip.id === selected.id))
-            ];
-         }
+        onDynamicChipRemove(chipIdToRemove) {
+            this.selectedDynamicFilters = [...this.selectedDynamicFilters.filter((chip) => (chip.configChip.id !== chipIdToRemove))];
+            this.addFilterOptions = this.dynamicFiltersAll
+              .filter((filter) => (!this.selectedDynamicFilters.some((item) => item.configChip.id === filter.configChip.id)))
+              .map((filterDynamic) => ({
+                id: filterDynamic.configChip.id,
+                displayText: filterDynamic.optionsTitleChip,
+              }));
+        }
     }
-
-    onDynamicChipRemove(chipIdToRemove) {
-        this.selectedDynamicFilters = [...this.selectedDynamicFilters.filter((chip) => (chip.configChip.id !== chipIdToRemove))];
-        this.addFilterOptions = this.dynamicFiltersAll
-          .filter((filter) => (!this.selectedDynamicFilters.some((item) => item.configChip.id === filter.configChip.id)))
-          .map((filterDynamic) => ({
-            id: filterDynamic.configChip.id,
-            displayText: filterDynamic.optionsTitleChip,
-          }));
-    }
-}
-const OPTIONS_USERS: DropdownOption[] = ${JSON.stringify(MOCK_USERS)};
-const OPTIONS_COUNTRIES: DropdownOption[] = ${JSON.stringify(MOCK_COUNTRIES)};
-const OPTIONS_CAMPAIGNS: DropdownOption[] = ${JSON.stringify(MOCK_CAMPAIGNS)};
-`,
-            format: true,
-            type: 'code'
+    const OPTIONS_USERS: DropdownOption[] = ${JSON.stringify(MOCK_USERS)};
+    const OPTIONS_COUNTRIES: DropdownOption[] = ${JSON.stringify(MOCK_COUNTRIES)};
+    const OPTIONS_CAMPAIGNS: DropdownOption[] = ${JSON.stringify(MOCK_CAMPAIGNS)};
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-// endregion
 
-// region WithDynamicPreselected
-export const WithDynamicPreselected = FilterPanelDefaultTemplate.bind({});
-WithDynamicPreselected.args = {
-    addFiltersTitle: 'Add filter by:',
-    addFilterOptions: [
-        {id: 2, displayText: 'Country'},
-        {id: 3, displayText: 'Campaigns'}
-    ],
+export const WithDynamicPreselected = {
+    render: FilterPanelDefaultTemplate,
 
-    fcChip1: new FormControl(),
-    configChip1: {id: 1, mode: 'static', close: true} as ChipFilterComponentConfigurations,
-    optionsChip1: MOCK_USERS,
-    placeholderPrefixChip1: 'User',
-    placeholderChip1: 'All',
-    searchChip1: true,
-    optionsTitleChip1: 'User',
+    args: {
+        addFiltersTitle: 'Add filter by:',
+        addFilterOptions: [
+            {id: 2, displayText: 'Country'},
+            {id: 3, displayText: 'Campaigns'}
+        ],
 
-    selectedDynamicFilters: MOCK_DYNAMIC_PRESELECT_FILTERS.filter(filter => filter.fcChip.value)
-};
-WithDynamicPreselected.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormControl } from '@angular/forms';
-import { ChipFiltersModule } from '@ironsource/fusion-ui/components/chip-filters';
-import { ChipFilterModule } from '@ironsource/fusion-ui/components/chip-filter';
-import { ChipFilterComponentConfigurations, ChipFilterMode } from '@ironsource/fusion-ui/components/chip-filter/common/base';
-import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
-import { DropdownModule } from '@ironsource/fusion-ui/components/dropdown';
-import { DropdownDualMultiSelectModule } from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
+        fcChip1: new FormControl(),
+        configChip1: {id: 1, mode: 'static', close: true} as ChipFilterComponentConfigurations,
+        optionsChip1: MOCK_USERS,
+        placeholderPrefixChip1: 'User',
+        placeholderChip1: 'All',
+        searchChip1: true,
+        optionsTitleChip1: 'User',
 
-@Component({
-    selector: 'fusion-story-wrapper',
-    template: \`<div style="height: 350px;">
-    <fusion-chip-filters
-        [addFiltersTitle]="addFiltersTitle"
-        [addFilterOptions]="addFilterOptions"
-        [disableAddFilter]="disableAddFilter"
-        [isSearch]="isSearch"
-        (onDynamicChipSelect)="onDynamicChipSelect($event)"
-        >
-        <fusion-chip-filter [configuration]="configChip1">
-            <div class="filter-element">
-                <fusion-dropdown
-                     [placeholderPrefix]="placeholderPrefixChip1"
-                     [placeholder]="placeholderChip1"
-                     [formControl]="fcChip1"
-                     [options]="optionsChip1"
-                     [search]="searchChip1"
-                     [optionsTitle]="optionsTitleChip1"
-                     >
-                </fusion-dropdown>
-            </div>
-        </fusion-chip-filter>
+        selectedDynamicFilters: MOCK_DYNAMIC_PRESELECT_FILTERS.filter(filter => filter.fcChip.value)
+    },
 
-        <ng-container *ngFor="let chip of selectedDynamicFilters">
-            <fusion-chip-filter [configuration]="chip.configChip" (onChipRemove)="onDynamicChipRemove($event)">
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { CommonModule } from '@angular/common';
+    import { ReactiveFormsModule, FormControl } from '@angular/forms';
+    import { ChipFiltersModule } from '@ironsource/fusion-ui/components/chip-filters';
+    import { ChipFilterModule } from '@ironsource/fusion-ui/components/chip-filter';
+    import { ChipFilterComponentConfigurations, ChipFilterMode } from '@ironsource/fusion-ui/components/chip-filter/common/base';
+    import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+    import { DropdownModule } from '@ironsource/fusion-ui/components/dropdown';
+    import { DropdownDualMultiSelectModule } from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
+
+    @Component({
+        selector: 'fusion-story-wrapper',
+        template: \`<div style="height: 350px;">
+        <fusion-chip-filters
+            [addFiltersTitle]="addFiltersTitle"
+            [addFilterOptions]="addFilterOptions"
+            [disableAddFilter]="disableAddFilter"
+            [isSearch]="isSearch"
+            (onDynamicChipSelect)="onDynamicChipSelect($event)"
+            >
+            <fusion-chip-filter [configuration]="configChip1">
                 <div class="filter-element">
-                    <fusion-dropdown-dual-multi-select
-                        [title]="chip.optionsTitleChip"
-                        [placeholder]="chip.placeholderChip"
-                        [formControl]="chip.fcChip"
-                        [items]="chip.optionsChip"
-                    ></fusion-dropdown-dual-multi-select>
+                    <fusion-dropdown
+                         [placeholderPrefix]="placeholderPrefixChip1"
+                         [placeholder]="placeholderChip1"
+                         [formControl]="fcChip1"
+                         [options]="optionsChip1"
+                         [search]="searchChip1"
+                         [optionsTitle]="optionsTitleChip1"
+                         >
+                    </fusion-dropdown>
                 </div>
             </fusion-chip-filter>
-        </ng-container>
 
-    </fusion-chip-filters>
-</div>\`,
-    standalone: true,
-    imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        ChipFiltersModule,
-        ChipFilterModule,
-        DropdownModule,
-        DropdownDualMultiSelectModule
-    ]
-})
-export class FusionStoryWrapperComponent {
-    // Add Filter Chip props
+            <ng-container *ngFor="let chip of selectedDynamicFilters">
+                <fusion-chip-filter [configuration]="chip.configChip" (onChipRemove)="onDynamicChipRemove($event)">
+                    <div class="filter-element">
+                        <fusion-dropdown-dual-multi-select
+                            [title]="chip.optionsTitleChip"
+                            [placeholder]="chip.placeholderChip"
+                            [formControl]="chip.fcChip"
+                            [items]="chip.optionsChip"
+                        ></fusion-dropdown-dual-multi-select>
+                    </div>
+                </fusion-chip-filter>
+            </ng-container>
 
-    // first chip - User
-    fcChip1 = new FormControl();
-    configChip1: ChipFilterComponentConfigurations = {id: 1,mode: 'static',close: true};
-    optionsChip1 = OPTIONS_USERS;
-    placeholderPrefixChip1 = 'User';
-    placeholderChip1 = 'All';
-    searchChip1 = true;
-    optionsTitleChip1 = 'User';
+        </fusion-chip-filters>
+    </div>\`,
+        standalone: true,
+        imports: [
+            CommonModule,
+            ReactiveFormsModule,
+            ChipFiltersModule,
+            ChipFilterModule,
+            DropdownModule,
+            DropdownDualMultiSelectModule
+        ]
+    })
+    export class FusionStoryWrapperComponent {
+        // Add Filter Chip props
 
-    // Dynamic filters
-    dynamicFiltersAll = [
-        {
-            fcChip: new FormControl(OPTIONS_COUNTRIES.slice(2,5)),
-            configChip: { id: 2, mode: 'dynamic' as ChipFilterMode, close: true },
-            optionsChip: OPTIONS_COUNTRIES,
-            placeholderChip: 'All',
-            optionsTitleChip: 'Country',
-        },
-        {
-            fcChip: new FormControl(),
-            configChip: { id: 3, mode: 'dynamic' as ChipFilterMode, close: true },
-            optionsChip: OPTIONS_CAMPAIGNS,
-            placeholderChip: 'All',
-            optionsTitleChip: 'Campaigns',
+        // first chip - User
+        fcChip1 = new FormControl();
+        configChip1: ChipFilterComponentConfigurations = {id: 1,mode: 'static',close: true};
+        optionsChip1 = OPTIONS_USERS;
+        placeholderPrefixChip1 = 'User';
+        placeholderChip1 = 'All';
+        searchChip1 = true;
+        optionsTitleChip1 = 'User';
+
+        // Dynamic filters
+        dynamicFiltersAll = [
+            {
+                fcChip: new FormControl(OPTIONS_COUNTRIES.slice(2,5)),
+                configChip: { id: 2, mode: 'dynamic' as ChipFilterMode, close: true },
+                optionsChip: OPTIONS_COUNTRIES,
+                placeholderChip: 'All',
+                optionsTitleChip: 'Country',
+            },
+            {
+                fcChip: new FormControl(),
+                configChip: { id: 3, mode: 'dynamic' as ChipFilterMode, close: true },
+                optionsChip: OPTIONS_CAMPAIGNS,
+                placeholderChip: 'All',
+                optionsTitleChip: 'Campaigns',
+            }
+        ];
+
+        // Fitlers panel
+        addFiltersTitle = 'Add filter by:';
+        addFilterOptions: DropdownOption[] = this.dynamicFiltersAll
+            .filter(filter=>(!filter.fcChip.value))
+            .map(filterDynamic=>({id: filterDynamic.configChip.id, displayText: filterDynamic.optionsTitleChip}));
+        disableAddFilter = false;
+        isSearch = true;
+
+
+        selectedDynamicFilters = this.dynamicFiltersAll.filter(filter=>(!!filter.fcChip.value));
+
+        onDynamicChipSelect(selected) {
+             if (!this.selectedDynamicFilters.some(item => selected.id === item.configChip.id)) {
+                this.selectedDynamicFilters = [
+                    ...this.selectedDynamicFilters,
+                    ...this.dynamicFiltersAll.filter((chipFilter) => (chipFilter.configChip.id === selected.id))
+                ];
+             }
         }
-    ];
 
-    // Fitlers panel
-    addFiltersTitle = 'Add filter by:';
-    addFilterOptions: DropdownOption[] = this.dynamicFiltersAll
-        .filter(filter=>(!filter.fcChip.value))
-        .map(filterDynamic=>({id: filterDynamic.configChip.id, displayText: filterDynamic.optionsTitleChip}));
-    disableAddFilter = false;
-    isSearch = true;
-
-
-    selectedDynamicFilters = this.dynamicFiltersAll.filter(filter=>(!!filter.fcChip.value));
-
-    onDynamicChipSelect(selected) {
-         if (!this.selectedDynamicFilters.some(item => selected.id === item.configChip.id)) {
-            this.selectedDynamicFilters = [
-                ...this.selectedDynamicFilters,
-                ...this.dynamicFiltersAll.filter((chipFilter) => (chipFilter.configChip.id === selected.id))
-            ];
-         }
+        onDynamicChipRemove(chipIdToRemove) {
+            this.selectedDynamicFilters = [...this.selectedDynamicFilters.filter((chip) => (chip.configChip.id !== chipIdToRemove))];
+            this.addFilterOptions = this.dynamicFiltersAll
+              .filter((filter) => (!this.selectedDynamicFilters.some((item) => item.configChip.id === filter.configChip.id)))
+              .map((filterDynamic) => ({
+                id: filterDynamic.configChip.id,
+                displayText: filterDynamic.optionsTitleChip,
+              }));
+        }
     }
-
-    onDynamicChipRemove(chipIdToRemove) {
-        this.selectedDynamicFilters = [...this.selectedDynamicFilters.filter((chip) => (chip.configChip.id !== chipIdToRemove))];
-        this.addFilterOptions = this.dynamicFiltersAll
-          .filter((filter) => (!this.selectedDynamicFilters.some((item) => item.configChip.id === filter.configChip.id)))
-          .map((filterDynamic) => ({
-            id: filterDynamic.configChip.id,
-            displayText: filterDynamic.optionsTitleChip,
-          }));
-    }
-}
-const OPTIONS_USERS: DropdownOption[] = ${JSON.stringify(MOCK_USERS)};
-const OPTIONS_COUNTRIES: DropdownOption[] = ${JSON.stringify(MOCK_COUNTRIES)};
-const OPTIONS_CAMPAIGNS: DropdownOption[] = ${JSON.stringify(MOCK_CAMPAIGNS)};
-`,
-            format: true,
-            type: 'code'
+    const OPTIONS_USERS: DropdownOption[] = ${JSON.stringify(MOCK_USERS)};
+    const OPTIONS_COUNTRIES: DropdownOption[] = ${JSON.stringify(MOCK_COUNTRIES)};
+    const OPTIONS_CAMPAIGNS: DropdownOption[] = ${JSON.stringify(MOCK_CAMPAIGNS)};
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-// endregion

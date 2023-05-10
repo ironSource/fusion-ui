@@ -1,4 +1,4 @@
-import {Story, Meta} from '@storybook/angular';
+import {StoryFn, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {dedent} from 'ts-dedent';
 import {environment} from 'stories/environments/environment';
@@ -6,6 +6,7 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {MenuDropComponent, MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
 import {CommonModule} from '@angular/common';
+import {ApiService} from '@ironsource/fusion-ui';
 
 const MOCK_MENU_ITEMS: MenuDropItem[] = [
     {icon: 'frame', label: 'List item 1'},
@@ -20,7 +21,8 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule]
+            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule],
+            providers: [ApiService]
         })
     ],
     parameters: {
@@ -42,7 +44,7 @@ export default {
     }
 } as Meta<MenuDropComponent>;
 
-const MenuDropTemplate: Story<MenuDropComponent> = (args: MenuDropComponent) => ({
+const MenuDropTemplate: StoryFn<MenuDropComponent> = (args: MenuDropComponent) => ({
     props: {...args},
     template: `<div style="margin: auto; display: flex; justify-content: center; height: 200px">
     <fusion-menu-drop
@@ -52,11 +54,16 @@ const MenuDropTemplate: Story<MenuDropComponent> = (args: MenuDropComponent) => 
 </div>`
 });
 
-export const Default = MenuDropTemplate.bind({});
+export const Default = {
+    render: MenuDropTemplate
+};
 
-export const DisabledItems = MenuDropTemplate.bind({});
-DisabledItems.args = {
-    menuItems: MOCK_MENU_ITEMS.map((item, idx) => {
-        return {...item, disabled: idx >= 2};
-    })
+export const DisabledItems = {
+    render: MenuDropTemplate,
+
+    args: {
+        menuItems: MOCK_MENU_ITEMS.map((item, idx) => {
+            return {...item, disabled: idx >= 2};
+        })
+    }
 };
