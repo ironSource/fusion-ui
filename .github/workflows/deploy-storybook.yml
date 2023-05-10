@@ -3,6 +3,10 @@ name: Storybook Deploy
 on:
   workflow_dispatch:
 
+permissions:
+  id-token: write
+  contents: read
+  
 jobs:
   Deploy:
     runs-on: [self-hosted, x64, linux, eks, us, demand, dev]
@@ -61,6 +65,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-region: us-east-1
+          role-to-assume: arn:aws:iam::032106861074:role/github-runners-demand-team-role
 
       - name: Deploy to s3 bucket
         run: '${GITHUB_WORKSPACE}/.github/actions/deploy-storybook.sh  ${{ steps.branch_name.outputs.folder }} '

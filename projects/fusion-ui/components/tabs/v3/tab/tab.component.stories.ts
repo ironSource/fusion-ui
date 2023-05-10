@@ -1,10 +1,11 @@
-import {Meta, moduleMetadata, Story} from '@storybook/angular';
+import {Meta, moduleMetadata, StoryFn} from '@storybook/angular';
 import {dedent} from 'ts-dedent';
 import {CommonModule} from '@angular/common';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TabComponent, TabsModule} from '@ironsource/fusion-ui/components/tabs/v3';
+import {ApiService} from '@ironsource/fusion-ui';
 
 export default {
     title: 'Components/Tabs/Tab',
@@ -12,9 +13,11 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, TabsModule]
+            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, TabsModule],
+            providers: [ApiService]
         })
     ],
+    tags: ['autodocs'],
     parameters: {
         design: {
             type: 'figma',
@@ -47,141 +50,156 @@ Each tab should contain content that is distinct from other tabs in a set. For e
     }
 } as Meta<TabComponent>;
 
-const TabTemplate: Story<TabComponent> = (args: TabComponent) => ({
+const TabTemplate: StoryFn<TabComponent> = (args: TabComponent) => ({
     props: args,
     template: `<div style="width: 50px;">
     <fusion-tab [selected]="selected" [disabled]="disabled">$link</fusion-tab>
 </div>`
 });
 
-// region Text tab
-export const Default = TabTemplate.bind({});
-Default.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component} from '@angular/core';
-import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
+export const Default = {
+    render: TabTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div style="width: 50px;">
-    <fusion-tab [selected]="selected" [disabled]="disabled">$link</fusion-tab>
-</div>\`,
-  standalone: true,
-  imports: [TabsModule],
-})
-export class FusionStoryWrapperComponent {
-    selected = false;
-    disabled = false;
-}
-`,
-            format: true,
-            type: 'code'
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component} from '@angular/core';
+    import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div style="width: 50px;">
+        <fusion-tab [selected]="selected" [disabled]="disabled">$link</fusion-tab>
+    </div>\`,
+      standalone: true,
+      imports: [TabsModule],
+    })
+    export class FusionStoryWrapperComponent {
+        selected = false;
+        disabled = false;
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
 
-export const Selected = TabTemplate.bind({});
-Selected.args = {
-    disabled: false,
-    selected: true
-};
-Selected.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component} from '@angular/core';
-import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
+export const Selected = {
+    render: TabTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div style="width: 50px;">
-    <fusion-tab [selected]="selected" [disabled]="disabled">$link</fusion-tab>
-</div>\`,
-  standalone: true,
-  imports: [TabsModule],
-})
-export class FusionStoryWrapperComponent {
-    selected = true;
-    disabled = false;
-}
-`,
-            format: true,
-            type: 'code'
+    args: {
+        disabled: false,
+        selected: true
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component} from '@angular/core';
+    import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div style="width: 50px;">
+        <fusion-tab [selected]="selected" [disabled]="disabled">$link</fusion-tab>
+    </div>\`,
+      standalone: true,
+      imports: [TabsModule],
+    })
+    export class FusionStoryWrapperComponent {
+        selected = true;
+        disabled = false;
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
 
-export const Disabled = TabTemplate.bind({});
-Disabled.args = {
-    disabled: true,
-    selected: false
-};
-Disabled.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component} from '@angular/core';
-import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
+export const Disabled = {
+    render: TabTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div style="width: 50px;">
-    <fusion-tab [selected]="selected" [disabled]="disabled">$link</fusion-tab>
-</div>\`,
-  standalone: true,
-  imports: [TabsModule],
-})
-export class FusionStoryWrapperComponent {
-    selected = false;
-    disabled = true;
-}
-`,
-            format: true,
-            type: 'code'
+    args: {
+        disabled: true,
+        selected: false
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component} from '@angular/core';
+    import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div style="width: 50px;">
+        <fusion-tab [selected]="selected" [disabled]="disabled">$link</fusion-tab>
+    </div>\`,
+      standalone: true,
+      imports: [TabsModule],
+    })
+    export class FusionStoryWrapperComponent {
+        selected = false;
+        disabled = true;
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
 
-export const SelectedDisabled = TabTemplate.bind({});
-SelectedDisabled.args = {
-    selected: true,
-    disabled: true
-};
-SelectedDisabled.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component} from '@angular/core';
-import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
+export const SelectedDisabled = {
+    render: TabTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div style="width: 50px;">
-    <fusion-tab [selected]="selected" [disabled]="disabled">$link</fusion-tab>
-</div>\`,
-  standalone: true,
-  imports: [TabsModule],
-})
-export class FusionStoryWrapperComponent {
-    selected = true;
-    disabled = true;
-}
-`,
-            format: true,
-            type: 'code'
+    args: {
+        selected: true,
+        disabled: true
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component} from '@angular/core';
+    import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div style="width: 50px;">
+        <fusion-tab [selected]="selected" [disabled]="disabled">$link</fusion-tab>
+    </div>\`,
+      standalone: true,
+      imports: [TabsModule],
+    })
+    export class FusionStoryWrapperComponent {
+        selected = true;
+        disabled = true;
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
+
 // endregion
 
 // region IconLeft Tab
-const TabIconLeftTemplate: Story<TabComponent> = (args: TabComponent) => ({
+const TabIconLeftTemplate: StoryFn<TabComponent> = (args: TabComponent) => ({
     props: args,
     template: `<div style="width: 100px;">
     <fusion-tab [selected]="selected" [disabled]="disabled">
@@ -189,106 +207,121 @@ const TabIconLeftTemplate: Story<TabComponent> = (args: TabComponent) => ({
     </fusion-tab>
 </div>`
 });
-export const WithIconLeftDefault = TabIconLeftTemplate.bind({});
-WithIconLeftDefault.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component} from '@angular/core';
-import { IconModule } from "@ironsource/fusion-ui/components/icon/v1";
-import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div style="width: 50px;">
-    <fusion-tab [selected]="selected" [disabled]="disabled">
-        <fusion-icon class="fu-tab-icon" name="frame"></fusion-icon> $link
-    </fusion-tab>
-</div>\`,
-  standalone: true,
-  imports: [IconModule, TabsModule],
-})
-export class FusionStoryWrapperComponent {
-    selected = false;
-    disabled = false;
-}
-`,
-            format: true,
-            type: 'code'
+export const WithIconLeftDefault = {
+    render: TabIconLeftTemplate,
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component} from '@angular/core';
+    import { IconModule } from "@ironsource/fusion-ui/components/icon/v1";
+    import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div style="width: 50px;">
+        <fusion-tab [selected]="selected" [disabled]="disabled">
+            <fusion-icon class="fu-tab-icon" name="frame"></fusion-icon> $link
+        </fusion-tab>
+    </div>\`,
+      standalone: true,
+      imports: [IconModule, TabsModule],
+    })
+    export class FusionStoryWrapperComponent {
+        selected = false;
+        disabled = false;
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-export const WithIconLeftSelected = TabIconLeftTemplate.bind({});
-WithIconLeftSelected.args = {
-    selected: true
-};
-WithIconLeftSelected.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component} from '@angular/core';
-import { IconModule } from "@ironsource/fusion-ui/components/icon/v1";
-import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div style="width: 50px;">
-    <fusion-tab [selected]="selected" [disabled]="disabled">
-        <fusion-icon class="fu-tab-icon" name="frame"></fusion-icon> $link
-    </fusion-tab>
-</div>\`,
-  standalone: true,
-  imports: [IconModule, TabsModule],
-})
-export class FusionStoryWrapperComponent {
-    selected = true;
-    disabled = false;
-}
-`,
-            format: true,
-            type: 'code'
+export const WithIconLeftSelected = {
+    render: TabIconLeftTemplate,
+
+    args: {
+        selected: true
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component} from '@angular/core';
+    import { IconModule } from "@ironsource/fusion-ui/components/icon/v1";
+    import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div style="width: 50px;">
+        <fusion-tab [selected]="selected" [disabled]="disabled">
+            <fusion-icon class="fu-tab-icon" name="frame"></fusion-icon> $link
+        </fusion-tab>
+    </div>\`,
+      standalone: true,
+      imports: [IconModule, TabsModule],
+    })
+    export class FusionStoryWrapperComponent {
+        selected = true;
+        disabled = false;
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-export const WithIconLeftDisabled = TabIconLeftTemplate.bind({});
-WithIconLeftDisabled.args = {
-    disabled: true
-};
-WithIconLeftDisabled.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component} from '@angular/core';
-import { IconModule } from "@ironsource/fusion-ui/components/icon/v1";
-import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div style="width: 50px;">
-    <fusion-tab [selected]="selected" [disabled]="disabled">
-        <fusion-icon class="fu-tab-icon" name="frame"></fusion-icon> $link
-    </fusion-tab>
-</div>\`,
-  standalone: true,
-  imports: [IconModule, TabsModule],
-})
-export class FusionStoryWrapperComponent {
-    selected = false;
-    disabled = true;
-}
-`,
-            format: true,
-            type: 'code'
+export const WithIconLeftDisabled = {
+    render: TabIconLeftTemplate,
+
+    args: {
+        disabled: true
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component} from '@angular/core';
+    import { IconModule } from "@ironsource/fusion-ui/components/icon/v1";
+    import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div style="width: 50px;">
+        <fusion-tab [selected]="selected" [disabled]="disabled">
+            <fusion-icon class="fu-tab-icon" name="frame"></fusion-icon> $link
+        </fusion-tab>
+    </div>\`,
+      standalone: true,
+      imports: [IconModule, TabsModule],
+    })
+    export class FusionStoryWrapperComponent {
+        selected = false;
+        disabled = true;
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
+
 // endregion
 
 // region Icon Only Tab
-const TabIconOnlyTemplate: Story<TabComponent> = (args: TabComponent) => ({
+const TabIconOnlyTemplate: StoryFn<TabComponent> = (args: TabComponent) => ({
     props: args,
     template: `<div style="width: 50px;">
     <fusion-tab [selected]="selected" [disabled]="disabled">
@@ -296,100 +329,113 @@ const TabIconOnlyTemplate: Story<TabComponent> = (args: TabComponent) => ({
     </fusion-tab>
 </div>`
 });
-export const WithIconOnlyDefault = TabIconOnlyTemplate.bind({});
-WithIconOnlyDefault.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component} from '@angular/core';
-import { IconModule } from "@ironsource/fusion-ui/components/icon/v1";
-import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div style="width: 50px;">
-    <fusion-tab [selected]="selected" [disabled]="disabled">
-        <fusion-icon class="fu-tab-icon" name="frame"></fusion-icon>
-    </fusion-tab>
-</div>\`,
-  standalone: true,
-  imports: [IconModule, TabsModule],
-})
-export class FusionStoryWrapperComponent {
-    selected = false;
-    disabled = false;
-}
-`,
-            format: true,
-            type: 'code'
+export const WithIconOnlyDefault = {
+    render: TabIconOnlyTemplate,
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component} from '@angular/core';
+    import { IconModule } from "@ironsource/fusion-ui/components/icon/v1";
+    import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div style="width: 50px;">
+        <fusion-tab [selected]="selected" [disabled]="disabled">
+            <fusion-icon class="fu-tab-icon" name="frame"></fusion-icon>
+        </fusion-tab>
+    </div>\`,
+      standalone: true,
+      imports: [IconModule, TabsModule],
+    })
+    export class FusionStoryWrapperComponent {
+        selected = false;
+        disabled = false;
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-export const WithIconOnlySelected = TabIconOnlyTemplate.bind({});
-WithIconOnlySelected.args = {
-    selected: true
-};
-WithIconOnlySelected.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component} from '@angular/core';
-import { IconModule } from "@ironsource/fusion-ui/components/icon/v1";
-import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div style="width: 50px;">
-    <fusion-tab [selected]="selected" [disabled]="disabled">
-        <fusion-icon class="fu-tab-icon" name="frame"></fusion-icon>
-    </fusion-tab>
-</div>\`,
-  standalone: true,
-  imports: [IconModule, TabsModule],
-})
-export class FusionStoryWrapperComponent {
-    selected = true;
-    disabled = false;
-}
-`,
-            format: true,
-            type: 'code'
+export const WithIconOnlySelected = {
+    render: TabIconOnlyTemplate,
+
+    args: {
+        selected: true
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component} from '@angular/core';
+    import { IconModule } from "@ironsource/fusion-ui/components/icon/v1";
+    import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div style="width: 50px;">
+        <fusion-tab [selected]="selected" [disabled]="disabled">
+            <fusion-icon class="fu-tab-icon" name="frame"></fusion-icon>
+        </fusion-tab>
+    </div>\`,
+      standalone: true,
+      imports: [IconModule, TabsModule],
+    })
+    export class FusionStoryWrapperComponent {
+        selected = true;
+        disabled = false;
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-export const WithIconOnlyDisabled = TabIconOnlyTemplate.bind({});
-WithIconOnlyDisabled.args = {
-    disabled: true
-};
-WithIconOnlyDisabled.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component} from '@angular/core';
-import { IconModule } from "@ironsource/fusion-ui/components/icon/v1";
-import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<div style="width: 50px;">
-    <fusion-tab [selected]="selected" [disabled]="disabled">
-        <fusion-icon class="fu-tab-icon" name="frame"></fusion-icon>
-    </fusion-tab>
-</div>\`,
-  standalone: true,
-  imports: [IconModule, TabsModule],
-})
-export class FusionStoryWrapperComponent {
-    selected = false;
-    disabled = true;
-}
-`,
-            format: true,
-            type: 'code'
+export const WithIconOnlyDisabled = {
+    render: TabIconOnlyTemplate,
+
+    args: {
+        disabled: true
+    },
+
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component} from '@angular/core';
+    import { IconModule } from "@ironsource/fusion-ui/components/icon/v1";
+    import { TabsModule } from '@ironsource/fusion-ui/components/tabs/v3';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div style="width: 50px;">
+        <fusion-tab [selected]="selected" [disabled]="disabled">
+            <fusion-icon class="fu-tab-icon" name="frame"></fusion-icon>
+        </fusion-tab>
+    </div>\`,
+      standalone: true,
+      imports: [IconModule, TabsModule],
+    })
+    export class FusionStoryWrapperComponent {
+        selected = false;
+        disabled = true;
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-// endregion

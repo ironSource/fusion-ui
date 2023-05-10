@@ -1,4 +1,4 @@
-import {Story, Meta} from '@storybook/angular';
+import {StoryFn, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -28,6 +28,7 @@ export default {
             imports: [CommonModule, FormsModule, ReactiveFormsModule, SwitcherModule]
         })
     ],
+    tags: ['autodocs'],
     argTypes: {
         configuration: {
             control: 'object'
@@ -41,21 +42,27 @@ export default {
     }
 } as Meta<SwitcherComponent>;
 
-const SwitchTemplate: Story<SwitcherComponent> = (args: SwitcherComponent) => ({
+const SwitchTemplate: StoryFn<SwitcherComponent> = (args: SwitcherComponent) => ({
     props: args,
     template: `<fusion-switcher [configuration]="configuration" [formControl]="formControl" [options]="options"></fusion-switcher>`
 });
 
-export const Default = SwitchTemplate.bind({});
-Default.args = {
-    options: switcherOptions,
-    formControl: selectedSwitch,
-    configuration: {}
+export const Default = {
+    render: SwitchTemplate,
+
+    args: {
+        options: switcherOptions,
+        formControl: selectedSwitch,
+        configuration: {}
+    }
 };
 
-export const Large = SwitchTemplate.bind({});
-Large.args = {
-    options: switcherOptions,
-    formControl: selectedSwitch,
-    configuration: {size: 'large'}
+export const Large = {
+    render: SwitchTemplate,
+
+    args: {
+        options: switcherOptions,
+        formControl: selectedSwitch,
+        configuration: {size: 'large'}
+    }
 };

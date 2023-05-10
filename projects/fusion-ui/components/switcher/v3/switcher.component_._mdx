@@ -1,0 +1,44 @@
+import {Canvas, Meta, Story, Description, Source, ArgsTable} from '@storybook/blocks';
+import {dedent} from 'ts-dedent';
+import {SwitcherComponent} from './switcher.component';
+import * as SwitcherComponentStories from './switcher.component.stories';
+
+<Meta of={SwitcherComponentStories} />
+
+<Description
+  markdown={dedent`
+  # Switch
+  Switches are the preferred way to adjust settings on mobile. The option that the switch controls, as well as the state it's in, should be made clear from the corresponding inline label.
+  `}
+/>
+
+## Usage
+
+<Source
+  language="html"
+  code={dedent`
+  <fusion-switcher
+   [configuration]="configuration"
+   [options]="options"
+   [formControl]="formControl"
+  ></fusion-switcher>
+  `}
+/>
+
+### Default
+
+<Canvas>
+  {/* <Story id="components-inputs-switch--default" /> is deprecated, please migrate it to <Story of={referenceToStory} /> see: https://storybook.js.org/migration-guides/7.0 */}
+
+  <Story id="components-inputs-switch--default" />
+</Canvas>
+
+### Large
+
+<Canvas>
+  {/* <Story id="components-inputs-switch--large" /> is deprecated, please migrate it to <Story of={referenceToStory} /> see: https://storybook.js.org/migration-guides/7.0 */}
+
+  <Story id="components-inputs-switch--large" />
+</Canvas>
+
+<ArgsTable of={SwitcherComponent} />

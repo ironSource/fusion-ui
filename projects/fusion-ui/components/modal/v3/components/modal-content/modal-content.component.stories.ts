@@ -1,10 +1,11 @@
-import {Story, Meta} from '@storybook/angular';
+import {StoryFn, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../../../stories/environments/environment';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button/v3';
 import {ModalContentComponent} from '@ironsource/fusion-ui/components/modal';
+import {ApiService} from '@ironsource/fusion-ui';
 
 export default {
     title: 'Components/Dialog/Content',
@@ -26,7 +27,7 @@ export default {
     }
 } as Meta<ModalContentComponent>;
 
-const ModalContentTemplate: Story<ModalContentComponent> = (args: ModalContentComponent) => ({
+const ModalContentTemplate: StoryFn<ModalContentComponent> = (args: ModalContentComponent) => ({
     props: {...args},
     template: `<div style="background-color: #ffffff;">
     <style>
@@ -54,13 +55,14 @@ const ModalContentTemplate: Story<ModalContentComponent> = (args: ModalContentCo
 </div>`
 });
 
-// region Default
-export const Default = ModalContentTemplate.bind({});
-// endregion
-
-// region Pending
-export const Pending = ModalContentTemplate.bind({});
-Pending.args = {
-    pending: true
+export const Default = {
+    render: ModalContentTemplate
 };
-// endregion
+
+export const Pending = {
+    render: ModalContentTemplate,
+
+    args: {
+        pending: true
+    }
+};

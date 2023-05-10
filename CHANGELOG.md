@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.3.0-rc.3](https://github.com/ironSource/fusion-ui/compare/v5.3.0-rc.2...v5.3.0-rc.3) (2023-05-09)
+
+## [5.3.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v5.3.0-rc.1...v5.3.0-rc.2) (2023-05-09)
+
+## [5.3.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v5.3.0-rc.0...v5.3.0-rc.1) (2023-05-09)
+
+## [5.3.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.2.0...v5.3.0-rc.0) (2023-05-09)
+
+
+### Features
+
+* **fg-149:** do base migration from storybook 6.5 to 7.0 ([06a08bd](https://github.com/ironSource/fusion-ui/commit/06a08bd4e9f61476ea8c010b97d0e026e815734a)), closes [/github.com/storybookjs/storybook/blob/next/MIGRATION.md#from-version-65x-to-700](https://github.com/ironSource//github.com/storybookjs/storybook/blob/next/MIGRATION.md/issues/from-version-65x-to-700)
+
 ## [5.2.0](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.12...v5.2.0) (2023-05-02)
 
 ## [5.2.0-rc.12](https://github.com/ironSource/fusion-ui/compare/v5.2.0-rc.11...v5.2.0-rc.12) (2023-05-01)
