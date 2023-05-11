@@ -23,24 +23,36 @@ export abstract class ToastBaseComponent implements OnInit, AfterViewInit {
 
     @Output() toastClosed = new EventEmitter();
 
+    /** @internal */
     type: ToastType;
+    /** @internal */
     text: string;
+    /** @internal */
     iconName: IconData;
+    /** @internal */
     icon: string;
+    /** @internal */
     image: string;
+    /** @internal */
     duration: number;
+    /** @internal */
     location: ToastLocation;
+    /** @internal */
     locationClass: string;
+    /** @internal */
     custom: DynamicComponentConfiguration;
+    /** @internal */
     shownByService = false; // util set from service
-
+    /** @internal */
     hasIconHolder = true;
+    /** @internal */
     hasIcon = true;
-
+    /** @internal */
     @ViewChild('toast') toastView;
 
     constructor(private logService: LogService, private renderer: Renderer2) {}
 
+    /** @internal */
     onCloseClicked() {
         this.closeToast();
     }
