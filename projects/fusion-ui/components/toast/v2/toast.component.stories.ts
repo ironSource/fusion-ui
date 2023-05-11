@@ -27,9 +27,9 @@ const meta: Meta<ToastComponent> = {
                 component: dedent`**Toast** is a web component that provides a simple way to display non-intrusive notifications or messages to users. It can be easily added to a webpage by importing the Toast component and passing in the necessary configuration properties. Toast can be customized to display different types of notifications with various styles, durations, and positions on the screen. It is a useful tool for enhancing user experience and providing feedback to users about their actions on the web page.
                 <br/><br/>**Basic Usage:**
 
-                \`<fusion-toast [configuration]="toastConfiguration" (toastClosed)="onToastClose($)"></fusion-toast>\`
+\`<fusion-toast [configuration]="toastConfiguration" (toastClosed)="onToastClose($)"></fusion-toast>\`
 
-                configuration: ToastEntity
+\` toastConfiguration: ToastEntity\`
 
 \`
 interface ToastEntity {
