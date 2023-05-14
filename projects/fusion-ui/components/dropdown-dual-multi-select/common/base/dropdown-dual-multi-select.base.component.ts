@@ -437,7 +437,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     }
 
     private setAttribution() {
-        this.attributionService.prefix = 'filter-v3';
+        this.attributionService.prefix = 'dual-multi-select-v3';
         this.attributionService.name = this._title;
 
         this.attributionName = this.attributionService.name;
