@@ -13,3 +13,4 @@ export * from './shared-config';
 export * from './pub-sub';
 export * from './window';
 export * from './auth';
+export * from './attribution';
