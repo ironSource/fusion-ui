@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
+import {AttributionService} from '@ironsource/fusion-ui/services/attribution';
 
 @Component({
     selector: 'fusion-dropdown-dual-multi-select-body-item',
@@ -16,7 +17,7 @@ export class DropdownDualMultiSelectBodyItemComponent {
     @Output() changeSelected = new EventEmitter();
     @Output() clearSelect = new EventEmitter();
 
-    constructor() {}
+    constructor(protected attributionService: AttributionService) {}
 
     changeSelectedItem(item: DropdownOption): void {
         this.changeSelected.emit(item);

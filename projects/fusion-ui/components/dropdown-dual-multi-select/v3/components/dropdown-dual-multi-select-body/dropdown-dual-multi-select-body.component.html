@@ -9,6 +9,7 @@
                         [checked]="isAllSelected"
                         (changed)="selectAll($event)"
                         [isDisabled]="isSelectAllDisabled$ | async"
+                        [attr.automation-tests]="attributionService.prefix + '-select-all-' + attributionService.name"
                     ></fusion-checkbox>
                     <span class="fu-options-label">Select all</span>
                 </label>
@@ -16,12 +17,12 @@
         </div>
         <div class="content-col-right">
             <div class="body-header">
-                <label class="fu-select-label">
+                <label class="fu-select-label" [attr.automation-tests]="attributionService.prefix + '-selected-amount-' + attributionService.name">
                     {{(selectedItemsMapping ? selectedItemsMapping : {}) | objectLengthWhereValueTrue}} selected
                 </label>
                 <div
                     *ngIf="showClearAllButton()"
-                    (click)="clearAll()" class="clear-all-btn">Clear all</div>
+                    (click)="clearAll()" class="clear-all-btn" [attr.automation-tests]="attributionService.prefix + '-clear-all-button-' + attributionService.name">Clear all</div>
             </div>
         </div>
         <ng-container *ngIf="isPendingItems" [ngTemplateOutlet]="pendingHeadControl"></ng-container>

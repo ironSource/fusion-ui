@@ -15,6 +15,7 @@ import {BehaviorSubject, combineLatest, fromEvent, Observable, of, Subject} from
 import {debounceTime, filter, map, scan, takeUntil, tap} from 'rxjs/operators';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
+import {AttributionService} from '@ironsource/fusion-ui/services/attribution';
 
 const PAGINATION_CHUNK = 20;
 
@@ -94,7 +95,7 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
     private propagateChange = (_: DropdownOption[]) => {};
     private propagateTouched = () => {};
 
-    constructor() {}
+    constructor(protected attributionService: AttributionService) {}
 
     ngOnInit(): void {
         this.displayOptions$ = this.generateOptions('left').pipe(

@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
+import {AttributionService} from '@ironsource/fusion-ui/services/attribution';
 
 @Component({
     selector: 'fusion-dropdown-dual-multi-select-footer',
@@ -10,7 +11,7 @@ export class DropdownDualMultiSelectFooterComponent {
     @Output() applySelect = new EventEmitter<boolean>();
     @Output() closeSelect = new EventEmitter();
 
-    constructor() {}
+    constructor(protected attributionService: AttributionService) {}
 
     applySelectItems(close: boolean): void {
         this.applySelect.emit(close);

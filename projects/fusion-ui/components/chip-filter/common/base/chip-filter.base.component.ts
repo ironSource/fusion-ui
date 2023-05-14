@@ -187,6 +187,12 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
         this.apiBase?.resetState$.next();
     }
 
+    getAttribution(elementName: string): string {
+        return !!this.apiBase?.attributionName && !!this.apiBase?.attributionPrefix
+            ? this.apiBase?.attributionPrefix + elementName + this.apiBase?.attributionName
+            : null;
+    }
+
     private setValueSelectedListener(): void {
         this.apiBase
             ?.valueSelected()

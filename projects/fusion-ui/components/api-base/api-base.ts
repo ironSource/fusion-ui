@@ -13,6 +13,10 @@ export abstract class ApiBase {
     /** @internal */
     selectedTypeObject = false; // for chip-filter selected value-string. for top-filter object
     /** @internal */
+    attributionName: string;
+    /** @internal */
+    attributionPrefix: string;
+    /** @internal */
     abstract valueSelected(): Observable<any>;
     /** @internal */
     abstract changeConfig(val: any): void;

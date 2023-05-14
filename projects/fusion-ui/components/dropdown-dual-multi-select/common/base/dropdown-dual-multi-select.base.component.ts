@@ -9,6 +9,7 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {BackendPagination, SelectedItemName} from '@ironsource/fusion-ui/components/dropdown';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
+import {AttributionService} from '@ironsource/fusion-ui/services/attribution';
 
 const CLASS_LIST = [
     'dual-select-button',
@@ -30,7 +31,13 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     @Input() suppressClickButton: boolean = false;
     /** @internal */
     @Input() autoComplete: boolean = true;
-    @Input() title: string;
+    @Input() set title(value: string) {
+        this._title = value;
+        this.setAttribution();
+    }
+    get title(): string {
+        return this._title;
+    }
     /** @internal */
     @Input() pendingItems: boolean = false;
     /** @internal */
@@ -136,11 +143,17 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     private backendPaginationTotalResult: number;
     private backendPaginationPageNumber = 1;
     private _hasSelectAll = true;
+    private _title: string;
 
     /** @internal */
     loadingLeft$ = new BehaviorSubject<boolean>(false);
 
-    constructor(protected element: ElementRef, protected renderer: Renderer2, protected uidService: UniqueIdService) {
+    constructor(
+        protected element: ElementRef,
+        protected renderer: Renderer2,
+        protected uidService: UniqueIdService,
+        protected attributionService: AttributionService
+    ) {
         super();
         this.uid = this.uidService.getUniqueId().toString();
     }
@@ -421,5 +434,13 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
             return leftSideItems.sort(backendPagination.sortingFunction);
         }
         return leftSideItems;
+    }
+
+    private setAttribution() {
+        this.attributionService.prefix = 'filter-v3';
+        this.attributionService.name = this._title;
+
+        this.attributionName = this.attributionService.name;
+        this.attributionPrefix = this.attributionService.prefix;
     }
 }

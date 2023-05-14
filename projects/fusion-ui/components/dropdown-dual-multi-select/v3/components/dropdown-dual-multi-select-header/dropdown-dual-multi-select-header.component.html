@@ -1,6 +1,6 @@
 <div class="is-dropdown-dual-multi-select-header">
     <div class="fu-label-holder">
-        <span class="fu-label">{{title}}</span>
+        <span class="fu-label" [attr.automation-tests]="attributionService.prefix + '-type-' + attributionService.name">{{title}}</span>
     </div>
     <div class="fu-search-holder" (click)="setFocusToInput()">
         <div class="fu-search-bar">
@@ -10,6 +10,7 @@
                    minlength="1"
                    [placeholder]="'Search'"
                    [formControl]="searchControl"
+                   [attr.automation-tests]="attributionService.prefix + '-search-' + attributionService.name"
             />
             <fusion-icon class="fu-icon-clear" *ngIf="input.value" [name]="searchClearIcon" (click)="clearSearch()"></fusion-icon>
         </div>

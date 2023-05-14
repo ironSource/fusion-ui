@@ -4,12 +4,14 @@
 <ng-template #leftSide let-item="item">
     <label
         [for]="item.id"
-        class="is-option-label left-side">
+        class="is-option-label left-side"
+        [attr.automation-tests]="attributionService.prefix + '-option-' + attributionService.name">
         <fusion-checkbox
             class="item-check"
             [id]="item.id"
             [isDisabled]="isDisabled"
             [checked]="isSelectedItem"
+            [attr.automation-tests]="attributionService.prefix + '-checkbox-' + attributionService.name"
             (changed)="changeSelectedItem(item)"
         ></fusion-checkbox>
         <ng-container [ngTemplateOutlet]="item?.content ? dynamicItem : optionTemplate" [ngTemplateOutletContext]="{item: item}">
@@ -19,9 +21,9 @@
 
 
 <ng-template #rightSide let-item="item" >
-    <label class="is-option-label right-side">
+    <label class="is-option-label right-side" [attr.automation-tests]="attributionService.prefix + '-selected-option-' + attributionService.name">
         <ng-container [ngTemplateOutlet]="item?.content ? dynamicItem : optionTemplate" [ngTemplateOutletContext]="{item: item}"></ng-container>
-        <fusion-icon *ngIf="!isDisabled" (click)="clearSelectItem(item)" class="icon-clear" [name]="{iconName: 'close-bold', iconVersion: 'v3'}"></fusion-icon>
+        <fusion-icon *ngIf="!isDisabled" (click)="clearSelectItem(item)" class="icon-clear" [name]="{iconName: 'close-bold', iconVersion: 'v3'}" [attr.automation-tests]="attributionService.prefix + '-remove-selected-option-' + attributionService.name"></fusion-icon>
     </label>
 </ng-template>
 

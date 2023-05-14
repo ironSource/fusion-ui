@@ -3,6 +3,7 @@ import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/for
 import {debounceTime, distinctUntilChanged, takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
+import {AttributionService} from '@ironsource/fusion-ui/services/attribution';
 
 @Component({
     selector: 'fusion-dropdown-dual-multi-select-header',
@@ -28,7 +29,7 @@ export class DropdownDualMultiSelectHeaderComponent implements OnDestroy, AfterV
 
     private onDestroy$ = new Subject<void>();
 
-    constructor() {}
+    constructor(protected attributionService: AttributionService) {}
 
     ngOnDestroy(): void {
         this.onDestroy$.next();
