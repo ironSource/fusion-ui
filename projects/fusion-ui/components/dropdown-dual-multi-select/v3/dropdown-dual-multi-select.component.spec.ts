@@ -14,6 +14,7 @@ import {DropdownDualMultiSelectFooterModule} from './components/dropdown-dual-mu
 import {DropdownDualMultiSelectLoadingModule} from './components/dropdown-dual-multi-select-loading/dropdown-dual-multi-select-loading.module';
 import {Component} from '@angular/core';
 import {MOCK_DUAL_ITEMS} from './mock-entities';
+import {AttributionService} from "@ironsource/fusion-ui";
 
 const itemNames = {singular: 'Actor', plural: 'Actors'};
 
@@ -45,7 +46,8 @@ describe('DropdownDualMultiSelectComponent', () => {
                 DropdownDualMultiSelectHeaderModule,
                 DropdownDualMultiSelectFooterModule,
                 DropdownDualMultiSelectLoadingModule
-            ]
+            ],
+            providers: [AttributionService]
         }).compileComponents();
     });
 

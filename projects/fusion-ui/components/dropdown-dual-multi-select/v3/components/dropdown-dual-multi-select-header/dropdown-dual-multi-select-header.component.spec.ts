@@ -1,6 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {DropdownDualMultiSelectHeaderComponent} from './dropdown-dual-multi-select-header.component';
+import {AttributionService} from "@ironsource/fusion-ui";
 
 describe('DropdownDualMultiSelectHeaderComponent', () => {
     let component: DropdownDualMultiSelectHeaderComponent;
@@ -8,7 +9,8 @@ describe('DropdownDualMultiSelectHeaderComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [DropdownDualMultiSelectHeaderComponent]
+            declarations: [DropdownDualMultiSelectHeaderComponent],
+            providers: [AttributionService]
         }).compileComponents();
     });
 
