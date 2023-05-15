@@ -1,4 +1,4 @@
-import {StoryFn, Meta, StoryObj} from '@storybook/angular';
+import {Meta, StoryObj} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {dedent} from 'ts-dedent';
 import {CommonModule} from '@angular/common';
