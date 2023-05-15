@@ -1,4 +1,4 @@
-import {Meta, StoryObj} from '@storybook/angular';
+import {componentWrapperDecorator, Meta, StoryObj} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {dedent} from 'ts-dedent';
 import {CommonModule} from '@angular/common';
@@ -20,34 +20,25 @@ const meta: Meta<FileCsvUploadComponent> = {
             providers: [ApiService]
         })
     ],
-    tags: ['autodocs']
-    /*    parameters: {
+    tags: ['autodocs'],
+    parameters: {
         docs: {
             description: {
-                component: dedent`**Toast** is a web component that provides a simple way to display non-intrusive notifications or messages to users. It can be easily added to a webpage by importing the Toast component and passing in the necessary configuration properties. Toast can be customized to display different types of notifications with various styles, durations, and positions on the screen. It is a useful tool for enhancing user experience and providing feedback to users about their actions on the web page.
+                component: dedent`A ***CSV file upload*** Angular component allows users to upload CSV (comma-separated values) files from their local computer or device to an Angular application.
                 <br/><br/>**Basic Usage:**
 
-\`<fusion-toast [configuration]="toastConfiguration" (toastClosed)="onToastClose($)"></fusion-toast>\`
-
-\` toastConfiguration: ToastEntity\`
-
-\`
-interface ToastEntity {
-    text?: string;
-    type?: ToastType; // 'success' | 'alert' | 'error' | 'warning'
-    icon?: IconData; // icon name that will used inserted of type icon. Type must be not defined
-    image?: string; // image URL that will used inserted of type icon. Type must be not defined
-    custom?: DynamicComponentConfiguration; // toast dynamic content
-    duration?: number; // shown duration in seconds. default null.
-    location?: ToastLocation; // 'top-right' | 'top-left' | 'top-center' | 'bottom-right' | 'bottom-left' | 'bottom-center';
-    //(default 'top-right')
-}
-\`
-
-                `
+\`<fusion-file-csv-upload class="small"
+    [loading]="fileInUpload$ | async"
+    [disabled]="fileUploadDisabled$ | async"
+    [fileState]="fileState$ | async"
+    (handleFiles)="onFilesSelected($event)"
+    (replaceFile)="onFileReplace($event)"
+    (deleteFile)="onFileDelete($event)"
+></fusion-file-csv-upload>\`
+`
             }
         }
-    }*/
+    }
 };
 export default meta;
 type CSVFileUploaderStory = StoryObj<FileCsvUploadComponent>;
@@ -57,44 +48,162 @@ export const BasicUsage: CSVFileUploaderStory = {
         loading: false,
         disabled: false,
         fileState: defaultFileState
-    } /*,
-    /*    args: {
-        configuration: {
-            text: 'No type, icon or image set for this toast.'
-        } as ToastEntity
-    }*/
+    },
+    decorators: [componentWrapperDecorator(story => `<div style="width: 620px; height: 196px; display: block;">${story}</div>`)],
     parameters: {
         docs: {
             source: {
                 language: 'typescript',
                 code: dedent`
-    import { Component } from '@angular/core';
-    import { CommonModule } from '@angular/common';
-    import { ToastModule } from '@ironsource/fusion-ui/components/toast/v2';
-    import { ToastEntity } from '@ironsource/fusion-ui/components/toast/common/entities';
+import { Component, OnDestroy } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Subject, BehaviorSubject, of } from 'rxjs';
+import { delay, finalize, takeUntil, tap } from 'rxjs/operators';
 
-    @Component({
-      selector: 'fusion-story-wrapper',
-      template: \`<fusion-toast *ngIf="shown"
-                    [configuration]="toastConfig"
-                    (toastClosed)="onToastClose('baseToast')"
-                ></fusion-toast>\`,
-      standalone: true,
-      imports: [CommonModule, ToastModule],
-    })
-    export class FusionStoryWrapperComponent {
-      shown = true;
-      toastConfig: ToastEntity = {text: 'No type, icon or image set for this toast.'};
+import { FileDragAndDropState } from '@ironsource/fusion-ui/components/file-drag-and-drop';
+import { FileCsvUploadModule } from '@ironsource/fusion-ui/components/file-csv-upload';
 
-      onToastClose(toastKey: string) {
-        console.log('Toast to close: ', toastKey);
-        this.shown = false;
-      }
-    }
-    `,
+@Component({
+  selector: 'fusion-story-wrapper',
+  template: \`
+  <div style="width: 620px; height: 196px; display: block">
+      <fusion-file-csv-upload
+          [loading]="fileInUpload$ | async"
+          [disabled]="fileUploadDisabled$ | async"
+          [fileState]="fileState$ | async"
+          (handleFiles)="onFilesSelected($event)"
+          (deleteFile)="onFileDelete($event)"
+      ></fusion-file-csv-upload>
+  </div>
+  \`,
+  standalone: true,
+  imports: [CommonModule, FileCsvUploadModule],
+})
+export class FusionStoryWrapperComponent implements OnDestroy {
+  fileInUpload$ = new BehaviorSubject(false);
+  fileUploadDisabled$ = new BehaviorSubject(false);
+  fileState$ = new BehaviorSubject<FileDragAndDropState>(null);
+
+  private onDestroy$ = new Subject<void>();
+
+  ngOnDestroy() {
+    this.onDestroy$.next();
+    this.onDestroy$.complete();
+  }
+
+  onFilesSelected($event: Event) {
+    console.log('onFilesSelected>>', $event);
+    // of(files.item(0))
+    //   .pipe(
+    //     takeUntil(this.onDestroy$),
+    //     tap((file: File) => {
+    //       this.fileInUpload$.next(true);
+    //       this.fileState$.next({ name: file.name });
+    //     }),
+    //     delay(2000),
+    //     finalize(() => {
+    //       this.fileInUpload$.next(false);
+    //     })
+    //   )
+    //   .subscribe(
+    //     (file: File) => {
+    //       this.fileState$.next({ name: file.name, state: 'success' });
+    //     },
+    //     (error) => {
+    //       this.fileState$.next({
+    //         ...this.fileState$.getValue(),
+    //         state: 'error',
+    //         message: error.errorMessage,
+    //       });
+    //     }
+    //   );
+  }
+
+  onFileDelete($event) {
+    // console.log('delete file', fileName);
+    // this.fileInUpload$.next(true);
+    // setTimeout((_) => {
+    //   this.fileInUpload$.next(false);
+    // }, 1000);
+  }
+}
+
+                `,
                 format: true,
                 type: 'code'
             }
         }
-    }*/
+    }
+};
+
+export const Disabled: CSVFileUploaderStory = {
+    ...BasicUsage,
+    args: {
+        disabled: true,
+        fileState: defaultFileState
+    }
+};
+
+export const Pending: CSVFileUploaderStory = {
+    ...BasicUsage,
+    args: {
+        loading: true,
+        fileState: defaultFileState
+    }
+};
+
+export const CustomTitle: CSVFileUploaderStory = {
+    ...BasicUsage,
+    args: {
+        title: 'Upload files',
+        fileState: defaultFileState
+    }
+};
+
+export const FilesUploadedSuccess: CSVFileUploaderStory = {
+    ...BasicUsage,
+    args: {
+        fileState: {
+            name: 'example.csv',
+            state: 'success'
+        } as FileDragAndDropState
+    }
+};
+
+export const FilesUploadedError: CSVFileUploaderStory = {
+    ...BasicUsage,
+    args: {
+        fileState: {
+            name: 'example.csv',
+            state: 'error',
+            message: 'Invalid file format'
+        } as FileDragAndDropState
+    }
+};
+
+export const FilesUploadSelected: CSVFileUploaderStory = {
+    ...BasicUsage,
+    args: {
+        fileState: {
+            name: 'example.csv',
+            state: 'selected'
+        } as FileDragAndDropState
+    }
+};
+
+export const SizeSmall: CSVFileUploaderStory = {
+    ...BasicUsage,
+    render: args => ({
+        props: {...args, title: undefined},
+        template: `<fusion-file-csv-upload class="small"
+            [loading]="loading"
+            [disabled]="disabled"
+            [fileState]="fileState"
+            [error]="error"
+            [helper]="helper"
+            [title]="title"
+            (handleFiles)="onFilesSelected($event)"
+            (deleteFile)="onFileDelete($event)"
+        ></fusion-file-csv-upload>`
+    })
 };
