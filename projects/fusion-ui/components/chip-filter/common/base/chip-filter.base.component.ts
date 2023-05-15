@@ -188,9 +188,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     }
 
     getAttribution(elementName: string): string {
-        return !!this.apiBase?.attributionName && !!this.apiBase?.attributionPrefix
-            ? this.apiBase?.attributionPrefix + elementName + this.apiBase?.attributionName
-            : null;
+        return !!this.apiBase?.attributionName ? elementName + '-' + this.apiBase?.attributionName : null;
     }
 
     private setValueSelectedListener(): void {

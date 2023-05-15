@@ -71,7 +71,7 @@
 </ng-template>
 
 <ng-template #chipContent>
-    <div class="fu-chip-content-default" [attr.automation-tests]="attributionService.prefix + '-' + attributionService.name">
-        <div [fusionTooltip]="chipDefaultContent" class="truncate fu-chip-text" [attr.automation-tests]="attributionService.prefix + '-label-' + attributionService.name"><span *ngIf="title" class="fu-chip-label">{{ title + ': ' }}</span>{{ selected$ | async }}</div>
+    <div class="fu-chip-content-default" [attr.automation-tests]="'chip-filter-v3-' + attributionService.name">
+        <div [fusionTooltip]="chipDefaultContent" class="truncate fu-chip-text" [attr.automation-tests]="'chip-filter-v3-label-' + attributionService.name"><span *ngIf="title" class="fu-chip-label">{{ title + ': ' }}</span>{{ selected$ | async }}</div>
     </div>
 </ng-template>

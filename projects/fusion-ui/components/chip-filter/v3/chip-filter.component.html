@@ -14,7 +14,7 @@
             <ng-container *ngIf="apiBase && isDefaultContent" [ngTemplateOutlet]="defaultContent"></ng-container>
         </div>
         <fusion-icon class="fu-chip-right-icon" *ngIf="rightIcon" [name]="rightIcon.icon" [fusionTooltip]="rightIcon.tooltipText"></fusion-icon>
-        <fusion-icon class="fu-icon-close" *ngIf="isCloseIcon$ | async" (click)="closeClicked($event)" [name]="'close-bold'" [attr.automation-tests]="getAttribution('clear-filter')"></fusion-icon>
+        <fusion-icon class="fu-icon-close" *ngIf="isCloseIcon$ | async" (click)="closeClicked($event)" [name]="'close-bold'" [attr.automation-tests]="'chip-filter-v3-'+getAttribution('clear-filter')"></fusion-icon>
     </div>
 </ng-template>
 

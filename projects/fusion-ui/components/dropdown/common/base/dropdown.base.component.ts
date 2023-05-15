@@ -33,6 +33,7 @@ import {DropdownSelectConfigurations} from '@ironsource/fusion-ui/components/dro
 import {DROPDOWN_DEBOUNCE_TIME, DROPDOWN_OPTIONS_WITHOUT_SCROLL} from './dropdown-config';
 import {BackendPagination, ClosedOptions, DropdownPlaceholderConfiguration} from '@ironsource/fusion-ui/components/dropdown/entities';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
+import {AttributionService} from '@ironsource/fusion-ui';
 
 @Directive()
 export abstract class DropdownBaseComponent extends ApiBase implements OnInit, OnDestroy, OnChanges, ControlValueAccessor {
@@ -113,6 +114,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     @Input()
     set optionsTitle(value: string) {
         this._optionsTitle = value;
+        this.setAttribution();
     }
     /** @ignore */
     get optionsTitle(): string {
@@ -288,7 +290,8 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
         public cdr: ChangeDetectorRef,
         protected clonePipe: ClonePipe,
         protected sharedEventsService: SharedEventsService,
-        protected injector: Injector
+        protected injector: Injector,
+        protected attributionService: AttributionService
     ) {
         super();
     }
@@ -953,5 +956,11 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
                 this.writeValue(null);
                 this.propagateChange(null);
             });
+    }
+
+    private setAttribution() {
+        this.attributionService.prefix = 'dropdown-v3';
+        this.attributionService.name = this._optionsTitle;
+        this.attributionName = this.attributionService.name;
     }
 }

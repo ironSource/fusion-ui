@@ -441,6 +441,5 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         this.attributionService.name = this._title;
 
         this.attributionName = this.attributionService.name;
-        this.attributionPrefix = this.attributionService.prefix;
     }
 }

@@ -15,8 +15,6 @@ export abstract class ApiBase {
     /** @internal */
     attributionName: string;
     /** @internal */
-    attributionPrefix: string;
-    /** @internal */
     abstract valueSelected(): Observable<any>;
     /** @internal */
     abstract changeConfig(val: any): void;

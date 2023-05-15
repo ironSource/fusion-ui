@@ -22,6 +22,7 @@ import {DEFAULT_PLACEHOLDER_TEXT} from './daterange.configuration';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 import {map, takeUntil} from 'rxjs/operators';
 import {InputConfiguration, InputSize} from '@ironsource/fusion-ui/components/input';
+import {AttributionService} from '@ironsource/fusion-ui';
 
 @Directive()
 export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, OnDestroy, ControlValueAccessor {
@@ -126,7 +127,8 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
         private calendarService: CalendarService,
         private elemRef: ElementRef,
         private logService: LogService,
-        private uniqueIdService: UniqueIdService
+        private uniqueIdService: UniqueIdService,
+        protected attributionService: AttributionService
     ) {
         super();
         this.defaultOptions.presets = [...this.daterangeService.defaultPresetList];
@@ -139,6 +141,7 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
             this.originalMaxDate = this.maxDate;
         }
         this.onOptionsChanges();
+        this.setAttribution();
         this.resetState$
             .asObservable()
             .pipe(takeUntil(this.onDestroy$))
@@ -432,6 +435,12 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
             }
         }
         return true;
+    }
+
+    private setAttribution() {
+        this.attributionService.prefix = 'daterange-v3';
+        this.attributionService.name = 'daterange';
+        this.attributionName = this.attributionService.name;
     }
 
     setValueToPropagate(value: DaterangeSelection): DaterangeSelection {

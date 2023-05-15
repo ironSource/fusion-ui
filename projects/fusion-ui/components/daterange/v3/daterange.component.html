@@ -63,10 +63,10 @@
     </div>
 </div>
 <ng-template #chipContent>
-    <div class="fu-chip-content-default">
+    <div class="fu-chip-content-default" [attr.automation-tests]="'chip-filter-v3-' + attributionService.name">
         <ng-container *ngIf="(selected$ | async) as selected">
             <fusion-icon *ngIf="selected !== (options?.placeholder || defaultPlaceholder)" name="calendar-today"></fusion-icon>
-            <div [fusionTooltip]="selected" class="truncate fu-chip-text"><span *ngIf="options?.chipLabel" class="fu-chip-label">{{options?.chipLabel + ': '}}</span>{{ selected }}</div>
+            <div [fusionTooltip]="selected" class="truncate fu-chip-text" [attr.automation-tests]="'chip-filter-v3-label-' + attributionService.name"><span *ngIf="options?.chipLabel" class="fu-chip-label">{{options?.chipLabel + ': '}}</span>{{ selected }}</div>
         </ng-container>
     </div>
 </ng-template>

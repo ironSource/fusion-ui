@@ -5,6 +5,7 @@ import {DropdownBaseComponent} from '@ironsource/fusion-ui/components/dropdown/c
 import {DropdownSearchComponent} from '@ironsource/fusion-ui/components/dropdown-search/v3';
 import {DropdownSelectComponent} from '@ironsource/fusion-ui/components/dropdown-select/v3';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
+import {AttributionService} from '@ironsource/fusion-ui';
 
 const ARROW_ICON = {
     iconName: 'angle-down',
@@ -18,6 +19,7 @@ const ARROW_ICON = {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         DropdownService,
+        AttributionService,
         {provide: ApiBase, useExisting: DropdownComponent},
         {
             provide: NG_VALUE_ACCESSOR,
