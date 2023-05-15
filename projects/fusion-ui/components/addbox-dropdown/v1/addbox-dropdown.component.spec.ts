@@ -13,6 +13,7 @@ import {DropdownLoaderModule} from '@ironsource/fusion-ui/components/dropdown-lo
 import {DropdownOptionModule} from '@ironsource/fusion-ui/components/dropdown-option/v1';
 import {DropdownOptionsListModule} from '@ironsource/fusion-ui/components/dropdown-options-list/v1';
 import {AddboxDropdownComponent} from './addbox-dropdown.component';
+import {AttributionService} from "@ironsource/fusion-ui/services/attribution";
 
 describe('AddboxDropdownComponent', () => {
     let component: AddboxDropdownComponent;
@@ -34,6 +35,7 @@ describe('AddboxDropdownComponent', () => {
             providers: [
                 FilterByFieldPipe,
                 ClonePipe,
+                AttributionService,
                 DropdownService,
                 {
                     provide: LogService,

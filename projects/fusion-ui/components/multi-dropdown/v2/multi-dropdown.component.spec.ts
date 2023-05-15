@@ -23,6 +23,7 @@ import {DropdownSearchModule} from '@ironsource/fusion-ui/components/dropdown-se
 import {DropdownSelectModule} from '@ironsource/fusion-ui/components/dropdown-select/v2';
 import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/service';
 import {MultiDropdownComponent} from './multi-dropdown.component';
+import {AttributionService} from "@ironsource/fusion-ui/services/attribution";
 
 const optionMock = [
     {
@@ -76,6 +77,7 @@ describe('MultiDropdownComponent', () => {
             providers: [
                 FilterByFieldPipe,
                 ClonePipe,
+                AttributionService,
                 DropdownService,
                 {
                     provide: LogService,

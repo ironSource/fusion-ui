@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TagsInputComponent } from './tags-input.component';
+import {AttributionService} from "@ironsource/fusion-ui/services/attribution";
 
 describe('TagsInputComponent', () => {
   let component: TagsInputComponent;
@@ -8,7 +9,8 @@ describe('TagsInputComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ TagsInputComponent ]
+      imports: [ TagsInputComponent ],
+        providers:[AttributionService]
     })
     .compileComponents();
 

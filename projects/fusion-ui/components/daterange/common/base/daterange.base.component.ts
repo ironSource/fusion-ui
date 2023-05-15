@@ -22,7 +22,7 @@ import {DEFAULT_PLACEHOLDER_TEXT} from './daterange.configuration';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 import {map, takeUntil} from 'rxjs/operators';
 import {InputConfiguration, InputSize} from '@ironsource/fusion-ui/components/input';
-import {AttributionService} from '@ironsource/fusion-ui';
+import {AttributionService} from '@ironsource/fusion-ui/services/attribution';
 
 @Directive()
 export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, OnDestroy, ControlValueAccessor {

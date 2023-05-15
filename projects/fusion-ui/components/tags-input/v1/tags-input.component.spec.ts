@@ -12,6 +12,7 @@ import {InputModule} from '@ironsource/fusion-ui/components/input/v1';
 import {DropdownOptionModule} from '@ironsource/fusion-ui/components/dropdown-option/v1';
 import {DropdownLoaderModule} from '@ironsource/fusion-ui/components/dropdown-loader/v1';
 import {DropdownOptionsListModule} from '@ironsource/fusion-ui/components/dropdown-options-list/v1';
+import {AttributionService} from "@ironsource/fusion-ui/services/attribution";
 
 const MOCK_TAGLIST_OPTIONS = [
     'Art & Design',
@@ -52,7 +53,7 @@ describe('TagsInputComponent', () => {
                 DropdownOptionsListModule
             ],
             declarations: [TagsInputComponent],
-            providers: [FilterByFieldPipe, ClonePipe]
+            providers: [FilterByFieldPipe, ClonePipe, AttributionService]
         }).compileComponents();
     }));
 
