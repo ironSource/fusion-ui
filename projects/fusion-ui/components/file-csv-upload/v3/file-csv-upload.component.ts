@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FileDragAndDropState} from '@ironsource/fusion-ui/components/file-drag-and-drop';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Component({
     selector: 'fusion-file-csv-upload',
@@ -27,7 +28,9 @@ export class FileCsvUploadComponent {
      * @param value
      */
     @Input() set title(value: string) {
-        this._title = value;
+        if (!isNullOrUndefined(value)) {
+            this._title = value;
+        }
     }
     /**
      * General component error
@@ -64,7 +67,9 @@ export class FileCsvUploadComponent {
      */
     @Output() deleteFile = new EventEmitter<string>();
 
+    /** @internal */
     successIcon: IconData = {iconName: 'success-full', iconVersion: 'v3'};
+    /** @internal */
     errorIcon: IconData = {iconName: 'error', iconVersion: 'v3'};
 
     get title(): string {
@@ -103,7 +108,7 @@ export class FileCsvUploadComponent {
     constructor(private uniqueId: UniqueIdService) {
         this.buttonId = 'fu_' + this.uniqueId.getUniqueId();
     }
-
+    /** @internal */
     handleSelectedFiles(files: FileList) {
         this.resetFileState();
         if (files.length === 1 && files.item(0).type == 'text/csv') {
@@ -112,12 +117,12 @@ export class FileCsvUploadComponent {
             this.error = 'Please select one *.csv file.';
         }
     }
-
+    /** @internal */
     onReplace() {
         this.replaceFile.emit(this.fileState.name);
         this.resetFileState();
     }
-
+    /** @internal */
     onDelete() {
         this.deleteFile.emit(this.fileState.name);
         this.resetFileState();

@@ -14,7 +14,7 @@ const preview = {
             }
         },
         stackblitzAdditionalDependency: {
-            "@ironsource/fusion-ui": '5.2.0'
+            "@ironsource/fusion-ui": '5.3.0'
         },
         viewMode: 'story',
         docs: {inlineStories: true},
@@ -22,7 +22,7 @@ const preview = {
             storySort: (a, b) => {
                 const comparer = a.title === b.title
                     ? 0
-                    : a.id.localeCompare(b.id, undefined, { numeric: true });;
+                    : a.id.localeCompare(b.id, undefined, { numeric: true });
                 return comparer;
             }
         }

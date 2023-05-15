@@ -1,0 +1,120 @@
+import {Meta, Typeset} from '@storybook/addon-docs';
+
+<Meta title="Stylegyide/Typography"/>
+
+export const typographyHeading = {
+    type: {
+        primary: '"NHaasGroteskDSPro", "Helvetica Neue", Arial, sans-serif',
+    },
+    weight: {
+        regular: '400'
+    },
+    size: {
+        'h1': 60,
+        'h2': 32,
+        'h3': 22,
+        'h4': 18,
+        'h5': 15,
+        'h6': 13,
+        'label': 11
+    },
+};
+
+export const typographyBody = {
+    type: {
+        primary: '"Helvetica Neue", Arial, sans-serif',
+    },
+    weight: {
+        regular: '400'
+    },
+    size: {
+        'large': 16,
+        'medium': 14,
+        'small': 13,
+        'xsmal': 12,
+        'caption': 11
+    },
+};
+export const typographyBodyStrong = {
+    type: {
+        primary: '"HelveticaNeue-Medium", Arial, sans-serif',
+    },
+    weight: {
+        regular: '400'
+    },
+    size: {
+        'large': 16,
+        'medium': 14,
+        'small': 13,
+        'xsmal': 12
+    },
+};
+
+export const sampleText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+
+# Typography
+
+Typography can help you create clear hierarchies, organize information, and guide users through a product or experience. Each page, modal pop-up, or widget must contain a title to structure the page. It is important to help users quickly identify where they are, and to introduce the subject of the page.
+
+You can be access and download our fonts from the ironSource GitHub Repo
+
+
+### Webkit-font-smoothing:
+Before you start insert this -webkit-font-smoothing
+```-webkit-font-smoothing: antialiased;```
+
+**NHaasGroteskDSPro** is the primary brand typeface for ironSource and **Helvetica Neue** is our supporting font.
+
+```font-family: "NHaasGroteskDSPro", "Helvetica Neue", Arial, sans-serif;```
+
+## Type scale
+
+**Font:** NHaasGroteskDSPro
+
+Heading 1 - 6 and Heading label
+
+<Typeset
+    fontSizes={[
+        Number(typographyHeading.size.h1),
+        Number(typographyHeading.size.h2),
+        Number(typographyHeading.size.h3),
+        Number(typographyHeading.size.h4),
+        Number(typographyHeading.size.h5),
+        Number(typographyHeading.size.h6),
+        Number(typographyHeading.size.label),
+    ]}
+    fontWeight={400}
+    sampleText={sampleText}
+    fontFamily={typographyHeading.type.primary}
+/>
+
+**Font:** Helvetica Neue
+
+bodyLarge, bodyMedium, bodySmall, bodyXSmall, caption
+<Typeset
+    fontSizes={[
+        Number(typographyBody.size.large),
+        Number(typographyBody.size.medium),
+        Number(typographyBody.size.small),
+        Number(typographyBody.size.xsmal),
+        Number(typographyBody.size.caption)
+    ]}
+    fontWeight={400}
+    sampleText={sampleText}
+    fontFamily={typographyBody.type.primary}
+/>
+
+**Font:** HelveticaNeue-Medium
+
+bodyLargeStrong, bodyMediumStrong, bodySmallStrong, bodyXSmallStrong
+<Typeset
+    fontSizes={[
+        Number(typographyBodyStrong.size.large),
+        Number(typographyBodyStrong.size.medium),
+        Number(typographyBodyStrong.size.small),
+        Number(typographyBodyStrong.size.xsmal)
+    ]}
+    fontWeight={400}
+    sampleText={sampleText}
+    fontFamily={typographyBodyStrong.type.primary}
+/>

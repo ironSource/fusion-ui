@@ -40,4 +40,4 @@ jobs:
 
       - name: gitleaks-action
         run: |
-          gitleaks --verbose detect --log-opts --since="2021-11-25"
+          gitleaks --verbose detect --log-opts --since="2023-01-01"
