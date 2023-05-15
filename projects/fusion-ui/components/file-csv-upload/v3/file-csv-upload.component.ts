@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FileDragAndDropState} from '@ironsource/fusion-ui/components/file-drag-and-drop';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
-import {isNullOrUndefined} from '@ironsource/fusion-ui';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Component({
     selector: 'fusion-file-csv-upload',
