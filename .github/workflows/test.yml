@@ -20,16 +20,26 @@ jobs:
         with:
           ref: ${{ env.BRANCH_NAME }}
 
-      - name: Install Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: "16"
+#      - name: Install Node
+#        uses: actions/setup-node@v3
+#        with:
+#          node-version: "16"
 
-      - name: Add Github Packages Credentials
+      - name: Get Commit Summary
+        id: commit_summary
         run: |
-          echo @ironsource-mobile:registry=https://npm.pkg.github.com > .npmrc
-          echo '//npm.pkg.github.com/:_authToken=${{secrets.NPM_TOKEN}}' >> .npmrc
+          previousTag=$(git tag --sort=-creatordate | sed -n 2p)
+          echo "previousTag : $previousTag"
+          echo "COMMIT_SUMMARY=$(git log $previousTag..${{ env.BRANCH_NAME }})" >> $GITHUB_OUTPUT
 
-      - run: cat .npmrc
+      - run: |
+          echo "test ${{ steps.commit_summary.outputs.COMMIT_SUMMARY }}"
 
-      - run: npm ci
+#      - name: Add Github Packages Credentials
+#        run: |
+#          echo @ironsource-mobile:registry=https://npm.pkg.github.com > .npmrc
+#          echo '//npm.pkg.github.com/:_authToken=${{secrets.NPM_TOKEN}}' >> .npmrc
+#
+#      - run: cat .npmrc
+#
+#      - run: npm ci
