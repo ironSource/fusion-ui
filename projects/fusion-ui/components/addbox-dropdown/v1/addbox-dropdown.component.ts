@@ -3,6 +3,7 @@ import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/service';
 import {AddboxDropdownBaseComponent} from '@ironsource/fusion-ui/components/addbox-dropdown/common/base';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
+import {AttributionService} from '@ironsource/fusion-ui/services/attribution';
 
 @Component({
     selector: 'fusion-addbox-dropdown',
@@ -11,6 +12,7 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         DropdownService,
+        AttributionService,
         {provide: ApiBase, useExisting: AddboxDropdownComponent},
         {
             provide: NG_VALUE_ACCESSOR,

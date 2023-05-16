@@ -5,6 +5,7 @@ import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
 import {InputComponent} from '@ironsource/fusion-ui/components/input/v1';
 import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/service';
 import {TagsInputBaseComponent} from '@ironsource/fusion-ui/components/tags-input/common/base';
+import {AttributionService} from '@ironsource/fusion-ui/services/attribution';
 
 @Component({
     selector: 'fusion-tags-input',
@@ -14,6 +15,7 @@ import {TagsInputBaseComponent} from '@ironsource/fusion-ui/components/tags-inpu
         ClonePipe,
         FilterByFieldPipe,
         DropdownService,
+        AttributionService,
         {
             provide: NG_VALUE_ACCESSOR,
             useExisting: forwardRef(() => TagsInputComponent),
