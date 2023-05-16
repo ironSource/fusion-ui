@@ -30,10 +30,11 @@ jobs:
         run: |
           previousTag=$(git tag --sort=-creatordate | sed -n 2p)
           echo "previousTag : $previousTag"
+          echo $(git log $previousTag..${{ env.BRANCH_NAME }})
           echo "COMMIT_SUMMARY=$(git log $previousTag..${{ env.BRANCH_NAME }})" >> $GITHUB_OUTPUT
 
       - run: |
-          echo "test ${{ steps.commit_summary.outputs.COMMIT_SUMMARY }}"
+          echo "test >${{ steps.commit_summary.outputs.COMMIT_SUMMARY }}<"
 
 #      - name: Add Github Packages Credentials
 #        run: |
