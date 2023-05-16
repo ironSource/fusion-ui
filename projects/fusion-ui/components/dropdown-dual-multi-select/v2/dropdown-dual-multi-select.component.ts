@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, forwardRef} from '@angular/core';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {DropdownDualMultiSelectBaseComponent} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select/common/base';
+import {AttributionService} from '@ironsource/fusion-ui/services/attribution';
 
 @Component({
     selector: 'fusion-dropdown-dual-multi-select',
@@ -12,7 +13,8 @@ import {DropdownDualMultiSelectBaseComponent} from '@ironsource/fusion-ui/compon
             provide: NG_VALUE_ACCESSOR,
             useExisting: forwardRef(() => DropdownDualMultiSelectComponent),
             multi: true
-        }
+        },
+        AttributionService
     ]
 })
 export class DropdownDualMultiSelectComponent extends DropdownDualMultiSelectBaseComponent {}
