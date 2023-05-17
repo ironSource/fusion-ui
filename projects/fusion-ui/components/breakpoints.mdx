@@ -1,0 +1,57 @@
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="Styleguide/Breakpoints"/>
+
+# Breakpoints
+Use this set of standard breakpoints to maintain layout integrity across screen sizes. For best results, test designs and code at each of these standard breakpoints.
+
+<div class="fu-grid-example-wrapper sb-unstyled" style={{display: 'flex', justifyContent: "center"}}>
+    <img src="https://fusion.ironsrc.net/assets/images/grid-breakpoints@2x.webp" height="226" width="634"/>
+</div>
+
+<br/><br/>
+
+<div class="sb-unstyled" style={{color: 'rgb(13, 20, 140)', fontSize: 14}}>
+    <div class="row fu-breakpoint">
+        <div class="col-1" style={{display: "flex", justifyContent: "center"}}><div class="fu-breakpoint_xl">&nbsp;</div></div>
+        <div class="col-1" ><div class="fu-breakpoint-name">xl</div></div>
+        <div class="col-3 fu-breakpoint-description" >Desktop</div>
+        <div class="col-7" >1920px and up</div>
+    </div>
+    <div class="row fu-breakpoint">
+        <div class="col-1" style={{display: "flex", justifyContent: "center"}}><div class="fu-breakpoint_lg">&nbsp;</div></div>
+        <div class="col-1" ><div class="fu-breakpoint-name">lg</div></div>
+        <div class="col-3 fu-breakpoint-description" >Large laptop</div>
+        <div class="col-7" >1440px - 1919px</div>
+    </div>
+    <div class="row fu-breakpoint">
+        <div class="col-1" style={{display: "flex", justifyContent: "center"}}><div class="fu-breakpoint_md">&nbsp;</div></div>
+        <div class="col-1" ><div class="fu-breakpoint-name">md</div></div>
+        <div class="col-3 fu-breakpoint-description" >Small laptop</div>
+        <div class="col-7" >1280px - 1439px</div>
+    </div>
+    <div class="row fu-breakpoint">
+        <div class="col-1" style={{display: "flex", justifyContent: "center"}}><div class="fu-breakpoint_sm">&nbsp;</div></div>
+        <div class="col-1" ><div class="fu-breakpoint-name">sm</div></div>
+        <div class="col-3 fu-breakpoint-description" >Tablet landscape</div>
+        <div class="col-7" >1024px - 1279px</div>
+    </div>
+    <div class="row fu-breakpoint">
+        <div class="col-1" style={{display: "flex", justifyContent: "center"}}><div class="fu-breakpoint_xs">&nbsp;</div></div>
+        <div class="col-1" ><div class="fu-breakpoint-name">xs</div></div>
+        <div class="col-3 fu-breakpoint-description" >Tablet portrait</div>
+        <div class="col-7" >768px - 1023px</div>
+    </div>
+    <div class="row fu-breakpoint">
+        <div class="col-1" style={{display: "flex", justifyContent: "center"}}><div class="fu-breakpoint_xxs">&nbsp;</div></div>
+        <div class="col-1" ><div class="fu-breakpoint-name">xxs</div></div>
+        <div class="col-3 fu-breakpoint-description" >Phones</div>
+        <div class="col-7" >768px and below</div>
+    </div>
+</div>
+
+To start using breakpoints mixins, you need to import fusionUI `mixins/_breakpoints.scss` to your scss.
+
+```css
+  @import '~@ironsource/fusion-ui/style/mixins/breakpoints';
+```

@@ -1,0 +1,289 @@
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="Styleguide/Grid system"/>
+
+# Grid system
+
+The Grid layout is here to help you align blocks and widgets into columns and rows in a specific area.
+By following a pattern made of containers with CSS classes, you can easily design your customized tab content, keeping a visual consistency, readability, and adaptability between screens.
+
+To start using the grid, you need to import fusionUI grid to your project.
+```css
+    @import '~@ironsource/fusion-ui/style/grid.css';
+```
+
+<div class="fu-grid-example-wrapper sb-unstyled">
+    <div class="row">
+        <div class="col-1">
+            <div class="col-inner-content">1</div>
+        </div>
+        <div class="col-1">
+            <div class="col-inner-content">2</div>
+        </div>
+        <div class="col-1">
+            <div class="col-inner-content">3</div>
+        </div>
+        <div class="col-1">
+            <div class="col-inner-content">4</div>
+        </div>
+        <div class="col-1">
+            <div class="col-inner-content">5</div>
+        </div>
+        <div class="col-1">
+            <div class="col-inner-content">6</div>
+        </div>
+        <div class="col-1">
+            <div class="col-inner-content">7</div>
+        </div>
+        <div class="col-1">
+            <div class="col-inner-content">8</div>
+        </div>
+        <div class="col-1">
+            <div class="col-inner-content">9</div>
+        </div>
+        <div class="col-1">
+            <div class="col-inner-content">10</div>
+        </div>
+        <div class="col-1">
+            <div class="col-inner-content">11</div>
+        </div>
+        <div class="col-1">
+            <div class="col-inner-content">12</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <div class="col-inner-content">col-2</div>
+        </div>
+        <div class="col-2">
+            <div class="col-inner-content">col-2</div>
+        </div>
+        <div class="col-2">
+            <div class="col-inner-content">col-2</div>
+        </div>
+        <div class="col-2">
+            <div class="col-inner-content">col-2</div>
+        </div>
+        <div class="col-2">
+            <div class="col-inner-content">col-2</div>
+        </div>
+        <div class="col-2">
+            <div class="col-inner-content">col-2</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <div class="col-inner-content">col-3</div>
+        </div>
+        <div class="col-3">
+            <div class="col-inner-content">col-3</div>
+        </div>
+        <div class="col-3">
+            <div class="col-inner-content">col-3</div>
+        </div>
+        <div class="col-3">
+            <div class="col-inner-content">col-3</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div class="col-inner-content">col-4</div>
+        </div>
+        <div class="col-4">
+            <div class="col-inner-content">col-4</div>
+        </div>
+        <div class="col-4">
+            <div class="col-inner-content">col-4</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="col-inner-content">col-6</div>
+        </div>
+        <div class="col-6">
+            <div class="col-inner-content">col-6</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="col-inner-content">col-12</div>
+        </div>
+    </div>
+</div>
+
+<br/><br/>
+
+#### Example for 12 columns row :
+```html
+<div class="row">
+    <div class="col-1"><div class="col-inner-content">1</div></div>
+    <div class="col-1"><div class="col-inner-content">2</div></div>
+    <div class="col-1"><div class="col-inner-content">3</div></div>
+    <div class="col-1"><div class="col-inner-content">4</div></div>
+    <div class="col-1"><div class="col-inner-content">5</div></div>
+    <div class="col-1"><div class="col-inner-content">6</div></div>
+    <div class="col-1"><div class="col-inner-content">7</div></div>
+    <div class="col-1"><div class="col-inner-content">8</div></div>
+    <div class="col-1"><div class="col-inner-content">9</div></div>
+    <div class="col-1"><div class="col-inner-content">10</div></div>
+    <div class="col-1"><div class="col-inner-content">11</div></div>
+    <div class="col-1"><div class="col-inner-content">12</div></div>
+</div>
+```
+
+### Grid gap
+Our grid columns have a 16px padding on either side that results in a 32px gutter between columns and a 16px gutter on the grid edges. Even though our columns are fluid, the gutter remains constant.
+
+`$gridColumnGap: 32px !default;`
+
+<div class="fu-gap-example-holder">
+    <div class="row">
+        <div class="col-2">
+            <div class="col-inner"></div>
+        </div>
+        <div class="col-2">
+            <div class="col-inner"></div>
+        </div>
+        <div class="col-2">
+            <div class="col-inner"></div>
+        </div>
+        <div class="col-2">
+            <div class="col-inner"></div>
+        </div>
+        <div class="col-2">
+            <div class="col-inner"></div>
+        </div>
+        <div class="col-2">
+            <div class="col-inner"></div>
+        </div>
+    </div>
+</div>
+
+### Offsetting columns
+Move columns to the right using `.offset-*` classes. These classes increase the left margin of a column by * columns. For example, `.offset-4` moves `.col-4` over four columns.
+
+<div class="fu-grid-example-wrapper sb-unstyled">
+    <div class="row">
+        <div class="col-4">
+            <div class="col-inner-content">.col-4</div>
+        </div>
+        <div class="col-4 offset-4">
+            <div class="col-inner-content">.col-4.offset-4</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3 offset-3">
+            <div class="col-inner-content">.col-3.offset-3</div>
+        </div>
+        <div class="col-3 offset-3">
+            <div class="col-inner-content">.col-3.offset-3</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="col-inner-content">.col-6.offset-3</div>
+        </div>
+    </div>
+</div>
+
+<div class="fu-grid-example-wrapper sb-unstyled">
+    <div class="row">
+        <div class="col-4">
+            <div class="col-inner-content">.col-4</div>
+        </div>
+        <div class="col-4 offset-4">
+            <div class="col-inner-content">.col-4.offset-4</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3 offset-3">
+            <div class="col-inner-content">.col-3.offset-3</div>
+        </div>
+        <div class="col-3 offset-3">
+            <div class="col-inner-content">.col-3.offset-3</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="col-inner-content">.col-6.offset-3</div>
+        </div>
+    </div>
+</div>
+
+#### Example for offset columns :
+```html
+<div class="row">
+    <div class="col-4">
+        <div class="col-inner-content">.col-4</div>
+    </div>
+    <div class="col-4 offset-4">
+        <div class="col-inner-content">.col-4.offset-4</div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3 offset-3">
+        <div class="col-inner-content">.col-3.offset-3</div>
+    </div>
+    <div class="col-3 offset-3">
+        <div class="col-inner-content">.col-3.offset-3</div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="col-inner-content">.col-6.offset-3</div>
+    </div>
+</div>
+```
+# Breakpoints
+Use this set of standard breakpoints to maintain layout integrity across screen sizes. For best results, test designs and code at each of these standard breakpoints.
+
+<div class="fu-grid-example-wrapper sb-unstyled" style={{display: 'flex', justifyContent: "center"}}>
+    <img src="https://fusion.ironsrc.net/assets/images/grid-breakpoints@2x.webp" height="226" width="634"/>
+</div>
+
+<br/><br/>
+
+<div class="sb-unstyled" style={{color: 'rgb(13, 20, 140)', fontSize: 14}}>
+    <div class="row fu-breakpoint">
+        <div class="col-1" style={{display: "flex", justifyContent: "center"}}><div class="fu-breakpoint_xl">&nbsp;</div></div>
+        <div class="col-1" ><div class="fu-breakpoint-name">xl</div></div>
+        <div class="col-3 fu-breakpoint-description" >Desktop</div>
+        <div class="col-7" >1920px and up</div>
+    </div>
+    <div class="row fu-breakpoint">
+        <div class="col-1" style={{display: "flex", justifyContent: "center"}}><div class="fu-breakpoint_lg">&nbsp;</div></div>
+        <div class="col-1" ><div class="fu-breakpoint-name">lg</div></div>
+        <div class="col-3 fu-breakpoint-description" >Large laptop</div>
+        <div class="col-7" >1440px - 1919px</div>
+    </div>
+    <div class="row fu-breakpoint">
+        <div class="col-1" style={{display: "flex", justifyContent: "center"}}><div class="fu-breakpoint_md">&nbsp;</div></div>
+        <div class="col-1" ><div class="fu-breakpoint-name">md</div></div>
+        <div class="col-3 fu-breakpoint-description" >Small laptop</div>
+        <div class="col-7" >1280px - 1439px</div>
+    </div>
+    <div class="row fu-breakpoint">
+        <div class="col-1" style={{display: "flex", justifyContent: "center"}}><div class="fu-breakpoint_sm">&nbsp;</div></div>
+        <div class="col-1" ><div class="fu-breakpoint-name">sm</div></div>
+        <div class="col-3 fu-breakpoint-description" >Tablet landscape</div>
+        <div class="col-7" >1024px - 1279px</div>
+    </div>
+    <div class="row fu-breakpoint">
+        <div class="col-1" style={{display: "flex", justifyContent: "center"}}><div class="fu-breakpoint_xs">&nbsp;</div></div>
+        <div class="col-1" ><div class="fu-breakpoint-name">xs</div></div>
+        <div class="col-3 fu-breakpoint-description" >Tablet portrait</div>
+        <div class="col-7" >768px - 1023px</div>
+    </div>
+    <div class="row fu-breakpoint">
+        <div class="col-1" style={{display: "flex", justifyContent: "center"}}><div class="fu-breakpoint_xxs">&nbsp;</div></div>
+        <div class="col-1" ><div class="fu-breakpoint-name">xxs</div></div>
+        <div class="col-3 fu-breakpoint-description" >Phones</div>
+        <div class="col-7" >768px and below</div>
+    </div>
+</div>
+
+To start using breakpoints mixins, you need to import fusionUI `mixins/_breakpoints.scss` to your scss.
+
+```css
+  @import '~@ironsource/fusion-ui/style/mixins/breakpoints';
+```
