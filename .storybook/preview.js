@@ -20,7 +20,7 @@ const preview = {
         docs: {inlineStories: true},
         options: {
             storySort: {
-                order: ['Introduction', 'Styleguide', 'Components'],
+                order: ['Introduction', 'Styleguide', ['Colors', 'Typography', 'Iconography', 'Grid system', '*'], 'Components'],
                 method: 'alphabetical',
                 locales: 'en-Us'
             },
