@@ -19,12 +19,11 @@ const preview = {
         viewMode: 'story',
         docs: {inlineStories: true},
         options: {
-            storySort: (a, b) => {
-                const comparer = a.title === b.title
-                    ? 0
-                    : a.id.localeCompare(b.id, undefined, { numeric: true });
-                return comparer;
-            }
+            storySort: {
+                order: ['Introduction', 'Styleguide', 'Components'],
+                method: 'alphabetical',
+                locales: 'en-Us'
+            },
         }
     },
 };
