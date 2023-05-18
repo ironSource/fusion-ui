@@ -27,8 +27,9 @@ export class DocsComponent implements OnInit, OnDestroy {
     userProfileMenuItems: MenuItem[] = USER_PROFILE_MENU_ITEMS;
     helpMenuItems: MenuItem[] = [];
     commonState: HeaderState = {
-        title: '',
-        actionComponent: StyleVersionButtonComponent,
+        title: 'Analysis',
+        subtitle: 'Updated 7 hours ago',
+        /*actionComponent: StyleVersionButtonComponent,*/
         actionData: null
     };
     // endregion

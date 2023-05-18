@@ -119,7 +119,7 @@ export class AlertDocsV2Component implements OnInit, OnDestroy {
             }
         });
 
-        this.docLayoutService.updateLayoutHeaderTitle({text: 'Alerts', type: 'static'});
+        this.docLayoutService.updateLayoutHeaderTitle({text: 'Alerts', subtitle: 'Updated 7 hours ago', type: 'static'});
     }
 
     ngOnDestroy() {

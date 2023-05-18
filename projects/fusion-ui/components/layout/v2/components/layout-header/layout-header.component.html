@@ -7,6 +7,7 @@
     <!--header title-->
     <div class="fu-header-title">
         <div *ngIf="titleText" class="fu-header-title-text">{{ titleText }}</div>
+        <div *ngIf="subtitleText" class="fu-header-subtitle-text">{{ subtitleText }}</div>
         <div *ngIf="titleContent && showPageHeaderContent" class="fu-header-title-content">
             <fusion-dynamic-components [configuration]="titleContent"></fusion-dynamic-components>
         </div>

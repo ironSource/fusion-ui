@@ -1,5 +1,5 @@
 <ng-container *ngIf="!useNewLayout; else layoutV2">
-    <fusion-layout-v1
+    <fusion-layout
         userName="fusion@ironsource.com"
         [headerPrimaryMenuIconName]="{iconName: 'user-circle', iconVersion: 'v1'}"
         [headerPrimaryMenuItems]="userProfileMenuItems"
@@ -11,7 +11,7 @@
         [scrollTopOnRouteChange]="true"
     >
         <router-outlet></router-outlet>
-    </fusion-layout-v1>
+    </fusion-layout>
 </ng-container>
 <ng-template #layoutV2>
     <fusion-layout
