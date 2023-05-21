@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.3.1](https://github.com/ironSource/fusion-ui/compare/v5.2.0...v5.3.1) (2023-05-21)
+
+### [5.3.1-rc.3](https://github.com/ironSource/fusion-ui/compare/v5.2.0...v5.3.1-rc.3) (2023-05-18)
+
+### Features
+
+* **fg-162:** added layout header subtitle for layout v1 and v2 ([9008525](https://github.com/ironSource/fusion-ui/commit/90085256fa687f87ce2b436bb5fc7c2609c42ca5))
+
+
 ## [5.3.0](https://github.com/ironSource/fusion-ui/compare/v5.2.0...v5.3.0) (2023-05-10)
 
 ### Features

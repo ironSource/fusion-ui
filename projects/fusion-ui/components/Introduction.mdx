@@ -11,3 +11,62 @@ Our library provides a wide range of UI components, including buttons, forms, ta
 Fusion-UI also comes with built-in accessibility features, ensuring that your application is usable by all users, regardless of their abilities or disabilities. Our library is regularly updated with new features and improvements to ensure that you always have access to the latest and greatest in web development.
 
 Whether you're building a simple website or a complex web application, Fusion-UI is the perfect choice for your UI needs. Get started today and experience the power and simplicity of Fusion-UI!
+
+#### FusionUI installation:
+```bash
+    npm install --save @ironsource/fusion-ui
+```
+
+All FusionUI components were built in Angular (Version 14), which means you'll get all Angular abilities by working with FusionUI & Angular.
+
+Import the required FusionUI module and add it to your module imports array:
+
+```ts
+import {CommonModule} from '@angular/common';
+import { ToastModule } from '@ironsource/fusion-ui/components/toast/v2';
+
+@NgModule({
+    declarations: [ExampleComponent],
+    imports: [CommonModule, ToastModule]
+})
+export class ExampleModule {}
+```
+Then you can add the component tag into the template:
+
+```html
+<fusion-toast *ngIf="shown"
+    [configuration]="toastConfig"
+    (toastClosed)="onToastClose('baseToast')"
+></fusion-toast>
+```
+For standalone component:
+
+```ts
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ToastModule } from '@ironsource/fusion-ui/components/toast/v2';
+import { ToastEntity } from '@ironsource/fusion-ui/components/toast/common/entities';
+
+@Component({
+  selector: 'your-standalone-component',
+  template: `<fusion-toast *ngIf="shown"
+                [configuration]="toastConfig"
+                (toastClosed)="onToastClose('warningToast')"
+            ></fusion-toast>`,
+  standalone: true,
+  imports: [CommonModule, ToastModule],
+})
+export class FusionStoryWrapperComponent {
+  shown = true;
+  toastConfig: ToastEntity = {
+        type: 'warning',
+        text: 'Better check yourself, you’re not looking good'
+    };
+
+  onToastClose(toastKey: string) {
+    console.log('Toast to close: ', toastKey);
+    this.shown = false;
+  }
+}
+```
+
