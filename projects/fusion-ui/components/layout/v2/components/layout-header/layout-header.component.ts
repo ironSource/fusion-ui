@@ -33,6 +33,7 @@ export class LayoutHeaderComponent {
     sidebarIconName: IconData = SIDEBAR_TOGGLE_ICON.regular;
 
     titleText: string;
+    subtitleText: string;
     titleContent: DynamicComponentConfiguration;
     customHeader: DynamicComponentConfiguration;
 
@@ -76,6 +77,7 @@ export class LayoutHeaderComponent {
 
     private setPageHeader(value: LayoutHeaderComponentConfiguration) {
         this.titleText = value?.title?.text;
+        this.subtitleText = value?.title?.subtitle;
         // relevant only for type - page
         this.titleContent = value?.title?.type === 'page' ? value?.title?.content : null;
     }
