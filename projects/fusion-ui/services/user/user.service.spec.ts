@@ -87,8 +87,17 @@ describe('UserService', () => {
             expect(service.isAllowed('monetizer')).toBeTruthy()
         });
 
-        it('must allow user without permission "monetizerTester"', () => {
+        it('must not allow permission "xxx-xxx"', () => {
+            expect(service.isAllowed('xxx-xxx')).toBeFalse()
+        });
+
+        it('must allow user without invert permission "monetizerTester"', () => {
             expect(service.isAllowed('!monetizerTester')).toBeTruthy()
         });
+
+        it('must allow user without permission "monetizerTester"', () => {
+            expect(service.isAllowed('monetizerTester')).toBeTruthy()
+        });
+
     });
 });
