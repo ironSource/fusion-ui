@@ -55,7 +55,7 @@ class MockApiService {
 
 // private _apiService: ApiService, @Inject(MFE_SHARED_CONFIG) @Optional() private config
 
-fdescribe('UserService', () => {
+describe('UserService', () => {
     beforeEach(() =>
         TestBed.configureTestingModule({
             imports: [HttpClientModule],
@@ -76,15 +76,19 @@ fdescribe('UserService', () => {
         expect(service).toBeTruthy();
     });
 
-    it('must allow permission "monetizer"', () => {
-        const service: UserService = TestBed.inject(UserService);
-        service.userData$.next(USER_MOCK);
-        expect(service.isAllowed('monetizer')).toBeTruthy()
-    });
+    describe('must check user permissions', () => {
+        let service: UserService;
+        beforeEach(() => {
+            service = TestBed.inject(UserService);
+            service.userData$.next(USER_MOCK);
+        });
 
-    it('must allow user without permission "monetizerTester"', () => {
-        const service: UserService = TestBed.inject(UserService);
-        service.userData$.next(USER_MOCK);
-        expect(service.isAllowed('!monetizerTester')).toBeTruthy()
+        it('must allow permission "monetizer"', () => {
+            expect(service.isAllowed('monetizer')).toBeTruthy()
+        });
+
+        it('must allow user without permission "monetizerTester"', () => {
+            expect(service.isAllowed('!monetizerTester')).toBeTruthy()
+        });
     });
 });
