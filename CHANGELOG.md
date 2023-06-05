@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.4.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.2.0...v5.4.0-rc.0) (2023-06-04)
+
+
+### Features
+
+* **5.x.x:** add support for for "!" (inverse) prefix in user permission user service ([227e40a](https://github.com/ironSource/fusion-ui/commit/227e40ac18d083c87651e5e00e8a208fbefe9326))
+
+
+### Tests
+
+* **fg-168:** add unit test for user permissions check ([8e20769](https://github.com/ironSource/fusion-ui/commit/8e20769eb9d9127dae4843b91212d5577f4d32e3))
+
 ## [5.3.1](https://github.com/ironSource/fusion-ui/compare/v5.2.0...v5.3.1) (2023-05-21)
 
 ### Features
