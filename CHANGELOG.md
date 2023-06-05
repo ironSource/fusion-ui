@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file. See [commit
 ## [5.4.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.2.0...v5.4.0-rc.0) (2023-06-04)
 
 
-### Features
+### Features 
 
 * **5.x.x:** add support for for "!" (inverse) prefix in user permission user service ([227e40a](https://github.com/ironSource/fusion-ui/commit/227e40ac18d083c87651e5e00e8a208fbefe9326))
 
