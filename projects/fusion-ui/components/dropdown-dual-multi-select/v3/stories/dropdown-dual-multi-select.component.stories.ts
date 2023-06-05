@@ -75,6 +75,7 @@ const DropdownIncludeExcludeTemplate: StoryFn<DropdownDualMultiSelectComponent> 
     [pendingItems]="pendingItems"
     [hasSelectAll]="hasSelectAll"
     [isDisabled]="isDisabled"
+    [searchByProperties]="searchByProperties"
  ></fusion-dropdown-dual-multi-select>
 </div>`
 });
@@ -211,6 +212,63 @@ export const WithFlag = {
         selectedItemName = {singular: 'country', plural: 'countries'};
         formControl = new FormControl();
         items: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS_COUNTRIES)};
+    }
+                `,
+                format: true,
+                type: 'code'
+            }
+        }
+    }
+};
+
+export const SearchByKeyName = {
+    render: DropdownIncludeExcludeTemplate,
+
+    args: {
+        formControl: new FormControl([]),
+        title: 'Countries',
+        placeholder: 'Select countries',
+        selectedItemName: {singular: 'country', plural: 'countries'},
+        searchByProperties: ['flag'],
+        items: MOCK_OPTIONS_COUNTRIES
+    },
+
+    parameters: {
+        docs: {
+            description: {
+                story: dedent`For search on loaded options (client side) by option (item) property (key) name you can use
+                input **searchByProperties: string[]**.
+                For example search country by country code you can use **searchByProperties = ['flag']** for item like
+                \`{id: 'AD', flag: 'AD', title: 'Andorra', displayText: 'Andorra'},\` type ***'ad'*** in search`
+            },
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component} from '@angular/core';
+    import { ReactiveFormsModule, FormControl } from '@angular/forms';
+    import { DropdownDualMultiSelectModule } from "@ironsource/fusion-ui/components/dropdown-dual-multi-select";
+    import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option/entities';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<fusion-dropdown-dual-multi-select
+        [title]="title"
+        [placeholder]="placeholder"
+        [selectedItemName]="selectedItemName"
+        [formControl]="formControl"
+        [items]="items"
+        [searchByProperties]="searchByProperties"
+     ></fusion-dropdown-dual-multi-select>\`,
+      standalone: true,
+      imports: [ReactiveFormsModule, DropdownDualMultiSelectModule],
+    })
+    export class FusionStoryWrapperComponent {
+        title = 'Countries';
+        placeholder = 'Select countries';
+        selectedItemName = {singular: 'country', plural: 'countries'};
+        formControl = new FormControl();
+        items: DropdownOption[] = ${JSON.stringify(MOCK_OPTIONS_COUNTRIES)};
+        searchByProperties: string[]=['flag'];
     }
                 `,
                 format: true,

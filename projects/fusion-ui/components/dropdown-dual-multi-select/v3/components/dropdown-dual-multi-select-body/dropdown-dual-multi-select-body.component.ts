@@ -276,7 +276,7 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
         if (term && items) {
             const searchTerm = term.toLowerCase();
             response = items.filter(item => {
-                if (Array.isArray(this.searchByProperties)) {
+                if (Array.isArray(this.searchByProperties) && !!this.searchByProperties.length) {
                     let found = false;
                     this.searchByProperties.forEach(property => {
                         if (!isNullOrUndefined(item[property]) && !found) {
