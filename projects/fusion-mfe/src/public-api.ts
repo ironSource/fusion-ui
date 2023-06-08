@@ -58,7 +58,6 @@ export * from '@ironsource/fusion-ui/services/colors';
 export * from '@ironsource/fusion-ui/services/events-handler';
 export * from '@ironsource/fusion-ui/services/log';
 export * from '@ironsource/fusion-ui/services/mocks';
-export * from '@ironsource/fusion-ui/services/permissions';
 export * from '@ironsource/fusion-ui/services/timezone';
 export * from '@ironsource/fusion-ui/services/unique-id';
 export * from '@ironsource/fusion-ui/services/user';
