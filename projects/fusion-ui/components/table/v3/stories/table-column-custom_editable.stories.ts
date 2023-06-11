@@ -14,7 +14,6 @@ import {
     TABLE_COMPONENT_EDIT_COLUMNS_CONFIG,
     TABLE_DEFAULT_OPTIONS
 } from '@ironsource/fusion-ui/components/table/v3/stories/table.mock-data';
-import {ApiService} from '@ironsource/fusion-ui';
 
 const actionsData = {
     rowModelChange: action('rowModelChange')
@@ -32,8 +31,7 @@ export default {
                 IconModule,
                 TableModule,
                 TableStoryHolderComponent
-            ],
-            providers: [ApiService]
+            ]
         })
     ],
     tags: ['autodocs'],

@@ -29,7 +29,6 @@ import {
     TABLE_TOGGLE_COLUMNS_CONFIG
 } from '@ironsource/fusion-ui/components/table/v3/stories/table.mock-data';
 import {VideoPlayerModule} from '@ironsource/fusion-ui/components/video-player';
-import {ApiService} from '@ironsource/fusion-ui';
 
 const actionsData = {
     selectionChanged: action('selectionChanged'),
@@ -49,8 +48,7 @@ export default {
                 TableModule,
                 TableStoryHolderComponent,
                 VideoPlayerModule
-            ],
-            providers: [ApiService]
+            ]
         })
     ],
     tags: ['autodocs'],

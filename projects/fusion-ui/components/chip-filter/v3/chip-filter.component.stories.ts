@@ -12,7 +12,6 @@ import {MOCK_OPTIONS} from '@ironsource/fusion-ui/components/dropdown/v3/stories
 import {DaterangeModule} from '@ironsource/fusion-ui/components/daterange';
 import {DropdownDualMultiSelectModule} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
 import {ChipFilterComponentConfigurations} from '@ironsource/fusion-ui/components/chip-filter/common/base';
-import {ApiService} from '@ironsource/fusion-ui';
 
 export default {
     title: 'Components/Filters/Filter (Chip)',
@@ -30,8 +29,7 @@ export default {
                 DropdownModule,
                 DaterangeModule,
                 DropdownDualMultiSelectModule
-            ],
-            providers: [ApiService]
+            ]
         })
     ],
     tags: ['autodocs'],

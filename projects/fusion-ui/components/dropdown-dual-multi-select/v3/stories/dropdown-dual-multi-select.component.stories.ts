@@ -15,7 +15,6 @@ import {
     MOCK_OPTIONS_IMAGE_ICONS,
     MOCK_OPTIONS_IMAGE_ICONS_SUBTITLE
 } from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
-import {ApiService} from '@ironsource/fusion-ui';
 
 export default {
     title: 'Components/Dropdown/Include-Exclude',
@@ -31,7 +30,7 @@ export default {
                 IconModule,
                 DropdownDualMultiSelectModule
             ],
-            providers: [{provide: ApiBase, useExisting: DropdownDualMultiSelectComponent}, ApiService]
+            providers: [{provide: ApiBase, useExisting: DropdownDualMultiSelectComponent}]
         })
     ],
     tags: ['autodocs'],

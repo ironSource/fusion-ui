@@ -10,7 +10,6 @@ import {RadioGroupComponent} from './radio-group.component';
 import {RadioModule} from '../../radio/v3/radio.module';
 import {RadioGroupOptions} from '../common/entities/radio-group.entities';
 import {RadioGroupModule} from '../';
-import {ApiService} from '@ironsource/fusion-ui';
 
 // region mocking
 const radioGroupOptions: RadioGroupOptions[] = [
@@ -58,8 +57,7 @@ export default {
                 IconModule,
                 RadioGroupModule,
                 RadioModule
-            ],
-            providers: [ApiService]
+            ]
         })
     ],
     tags: ['autodocs'],

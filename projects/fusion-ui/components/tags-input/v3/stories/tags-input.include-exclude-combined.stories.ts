@@ -9,7 +9,6 @@ import {TagsInputIncludeExcludeComponent} from '@ironsource/fusion-ui/components
 import {MOK_APPLICATIONS_ONE_LINE_OPTIONS} from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
-import {ApiService} from '@ironsource/fusion-ui';
 
 export default {
     title: 'Components/Tag/Tags Input Include-Exclude Combined',
@@ -17,8 +16,7 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, FormsModule, ReactiveFormsModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule],
-            providers: [ApiService]
+            imports: [CommonModule, FormsModule, ReactiveFormsModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule]
         })
     ],
     tags: ['autodocs'],

@@ -6,7 +6,7 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
-import {ApiService, ClickOutsideModule} from '@ironsource/fusion-ui';
+import {ClickOutsideModule} from '@ironsource/fusion-ui';
 import {InlineInputType, InputInlineComponent} from '@ironsource/fusion-ui/components/input-inline';
 import {CurrencyPipeParameters} from '@ironsource/fusion-ui/components/input-inline/common/base';
 import {dedent} from 'ts-dedent';
@@ -26,8 +26,7 @@ export default {
                 IconModule,
                 TooltipModule,
                 ClickOutsideModule
-            ],
-            providers: [ApiService]
+            ]
         })
     ],
     tags: ['autodocs'],

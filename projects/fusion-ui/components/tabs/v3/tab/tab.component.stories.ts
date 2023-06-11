@@ -5,7 +5,6 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TabComponent, TabsModule} from '@ironsource/fusion-ui/components/tabs/v3';
-import {ApiService} from '@ironsource/fusion-ui';
 
 export default {
     title: 'Components/Tabs/Tab',
@@ -13,8 +12,7 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, TabsModule],
-            providers: [ApiService]
+            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, TabsModule]
         })
     ],
     tags: ['autodocs'],

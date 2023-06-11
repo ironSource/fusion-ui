@@ -6,7 +6,6 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../stories/environments/environment';
 import {TagComponent, TagComponentConfigurations} from '@ironsource/fusion-ui/components/tag';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
-import {ApiService} from '@ironsource/fusion-ui';
 
 const DEFAULT_CONFIGURATION: TagComponentConfigurations = {
     title: 'Your label'
@@ -18,8 +17,7 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule],
-            providers: [ApiService]
+            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule]
         })
     ],
     tags: ['autodocs'],

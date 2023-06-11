@@ -6,7 +6,6 @@ import {environment} from '../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {FloatingToolbarComponent} from '@ironsource/fusion-ui/components/floating-toolbar';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button';
-import {ApiService} from '@ironsource/fusion-ui';
 
 export default {
     title: 'Components/Floating toolbar',
@@ -14,8 +13,7 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, ButtonModule],
-            providers: [ApiService]
+            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, ButtonModule]
         })
     ],
     tags: ['autodocs'],

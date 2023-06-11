@@ -30,7 +30,6 @@ import {ErrorMessageModule} from '@ironsource/fusion-ui/components/error-message
 import {ToggleModule} from '@ironsource/fusion-ui/components/toggle/v1';
 import {AccordionModule} from '@ironsource/fusion-ui/components/accordion/v2';
 import {VideoPlayerModule} from '@ironsource/fusion-ui/components/video-player/v1';
-import {CACHE_OPTIONS_TOKEN, CacheService} from '@ironsource/fusion-ui';
 
 @NgModule({
     declarations: [PlaygroundComponent],
@@ -67,14 +66,6 @@ import {CACHE_OPTIONS_TOKEN, CacheService} from '@ironsource/fusion-ui';
         ToggleModule,
         AccordionModule,
         VideoPlayerModule
-    ],
-    providers: [
-        // override cache service 'CACHE_OPTIONS'
-        CacheService,
-        {
-            provide: CACHE_OPTIONS_TOKEN,
-            useFactory: () => ({isLocalEnv: true, persistentKeyPrefix: '123'})
-        }
     ]
 })
 export class PlaygroundModule {}

@@ -22,7 +22,6 @@ import {
     ROWS_READONLY_ROW_DATA,
     TABLE_TOGGLE_EDIT_COLUMNS_CONFIG
 } from './table.mock-data';
-import {ApiService} from '@ironsource/fusion-ui';
 
 const onSearch = new EventEmitter();
 
@@ -44,8 +43,7 @@ export default {
                 IconModule,
                 TableModule,
                 TableStoryHolderComponent
-            ],
-            providers: [ApiService]
+            ]
         })
     ],
     tags: ['autodocs'],
