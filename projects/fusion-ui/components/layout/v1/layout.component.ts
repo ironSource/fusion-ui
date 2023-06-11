@@ -1,10 +1,9 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, OnDestroy, ViewChild, ElementRef} from '@angular/core';
 import {HeaderState} from '@ironsource/fusion-ui/components/header/common/base';
-import {CacheType} from '@ironsource/fusion-ui/services/cache';
-import {CacheService} from '@ironsource/fusion-ui/services/cache';
 import {Subject} from 'rxjs';
 import {MenuItem, MenuItemAdditionalData} from '@ironsource/fusion-ui/components/menu/common/base';
 import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
+import {WindowService} from '@ironsource/fusion-ui/services/window';
 
 @Component({
     selector: 'fusion-layout',
@@ -31,10 +30,10 @@ export class LayoutComponent implements OnDestroy {
     @ViewChild('mainContent', {static: true}) mainContent: ElementRef;
 
     public isMenuOpened: boolean;
-    public isMainMenuCollapsed: boolean = this.cacheService.get(CacheType.SessionStorage, 'menuCollapsed') || false;
+    public isMainMenuCollapsed: boolean = JSON.parse(this.windowRef.nativeWindow.sessionStorage.getItem('menuCollapsed') ?? 'false');
     private onDestroy$ = new Subject();
 
-    constructor(private cacheService: CacheService) {}
+    constructor(private windowRef: WindowService) {}
 
     onMenuItemClicked(item: MenuItem) {
         this.menuItemClick.emit(item);
@@ -46,7 +45,7 @@ export class LayoutComponent implements OnDestroy {
 
     onMenuStateChanged(isMainMenuCollapsed) {
         this.isMainMenuCollapsed = isMainMenuCollapsed;
-        this.cacheService.set(CacheType.SessionStorage, 'menuCollapsed', this.isMainMenuCollapsed);
+        this.windowRef.nativeWindow.sessionStorage.setItem('menuCollapsed', JSON.stringify(this.isMainMenuCollapsed));
         this.menuStateChanged.emit(this.isMainMenuCollapsed);
     }
 

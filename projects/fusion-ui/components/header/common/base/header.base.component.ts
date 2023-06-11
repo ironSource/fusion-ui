@@ -3,6 +3,7 @@ import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 import {HeaderState} from './header-state';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
+import {WindowService} from '@ironsource/fusion-ui/services/window';
 
 @Directive()
 export abstract class HeaderBaseComponent {
@@ -39,11 +40,11 @@ export abstract class HeaderBaseComponent {
     private _state: HeaderState;
     private _menuAction: ElementRef;
 
-    constructor(private cacheService: CacheService, private renderer: Renderer2) {}
+    constructor(private renderer: Renderer2, private windowRef: WindowService) {}
 
     changeMenuState() {
         this.isMainMenuCollapsed = !this.isMainMenuCollapsed;
-        this.cacheService.set(CacheType.SessionStorage, 'menuCollapsed', this.isMainMenuCollapsed);
+        this.windowRef.nativeWindow.sessionStorage.setItem('menuCollapsed', JSON.stringify(this.isMainMenuCollapsed));
         this.menuStateChanged.emit(this.isMainMenuCollapsed);
     }
 
