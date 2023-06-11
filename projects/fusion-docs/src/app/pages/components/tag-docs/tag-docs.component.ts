@@ -301,7 +301,7 @@ export class TagDocsComponent implements OnInit, OnDestroy {
         }
         this.inSearch = true;
         this.httpClient
-            .get('https://jsonplaceholder.typicode.com/comments')
+            .get('https://jsonplaceholder.typicode.com/comments', {responseType: 'json'})
             .pipe(
                 takeUntil(this.onDestroy$),
                 map((data: any[]) => {

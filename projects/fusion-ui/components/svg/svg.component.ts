@@ -15,7 +15,7 @@ import {SVG_OPTIONS_TOKEN} from './svg-config';
 import {SvgOptions} from './svg-entities';
 import {HttpClient} from '@angular/common/http';
 import {Subject} from 'rxjs';
-import {map, takeUntil, tap} from 'rxjs/operators';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
     selector: 'fusion-svg',
@@ -73,26 +73,14 @@ export class SvgComponent implements AfterViewInit, OnDestroy {
     loadSvg() {
         const svgUrl = this.getUrlPath();
         if (svgUrl) {
-            console.log('::', svgUrl);
             this.httpClient
-                .get<string>(svgUrl)
-                .pipe(
-                    map((data: any) => {
-                        console.log('>>', data);
-                        return data;
-                    })
-                    /*
-                    takeUntil(this.onDestroy$),
-                    tap(data=>console.log)
-*/
-                )
+                .get(svgUrl, {responseType: 'text'})
+                .pipe(takeUntil(this.onDestroy$))
                 .subscribe(
                     response => {
-                        console.log('>>', response);
                         this.elementRef.nativeElement.innerHTML = response;
                     },
                     err => {
-                        console.error('>>', err.message);
                         this.logService.error(new Error(`Error Fetching Svg: ${svgUrl}, ${JSON.stringify(err)}`));
                     }
                 );
