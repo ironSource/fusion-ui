@@ -18,7 +18,7 @@ import {LayoutComponentConfiguration, LayoutHeaderComponentConfiguration} from '
     styleUrls: ['./docs.component.scss']
 })
 export class DocsComponent implements OnInit, OnDestroy {
-    useNewLayout = true; // switch to new layout
+    useNewLayout = false; // switch to new layout
     menuItems: MenuItem[] | SidebarMenuItem[] = this.useNewLayout ? MENU_ITEMS_V2 : MENU_ITEMS;
 
     // region for layout-v1 v1

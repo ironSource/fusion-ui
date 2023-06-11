@@ -13,8 +13,8 @@ import {MenuItemExampleModule} from '../../components/menu-item-example/menu-ite
     imports: [
         CommonModule,
         DocsRoutingModule,
-        // LayoutV1Module.forRoot({svgOptions: {assetsPath: environment.assetsPath}}),
-        LayoutModule.forRoot({svgOptions: {assetsPath: environment.assetsPath}}),
+        LayoutV1Module.forRoot({svgOptions: {assetsPath: environment.assetsPath}}),
+        // LayoutModule.forRoot({svgOptions: {assetsPath: environment.assetsPath}}),
         StyleVersionButtonModule,
         MenuItemExampleModule
     ]
