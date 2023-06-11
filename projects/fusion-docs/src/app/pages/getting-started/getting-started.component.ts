@@ -13,24 +13,24 @@ export class GettingStartedComponent implements OnInit {
     text = GETTING_STARTED_PAGE_TEXTS;
     team = [
         {
-            name: 'Yossi Barda',
-            email: 'yossi.bard@ironsrc.com',
-            image: `${ASSET_PATH}/team/yossi.png`
-        },
-        {
             name: 'Daniel Brazg',
-            email: 'daniel.brazg@ironsrc.com',
-            image: `${ASSET_PATH}/team/daniel.png`
+            email: 'daniel.brazg@is.com',
+            image: `${ASSET_PATH}/people/daniel.jpeg`
         },
         {
             name: 'Chen Levin',
-            email: 'chen.levin@ironsrc.com',
-            image: `${ASSET_PATH}/team/chen.png`
+            email: 'chen.levin@is.com',
+            image: `${ASSET_PATH}/people/chen.jpeg`
         },
         {
             name: 'Andy Kononenko',
-            email: 'andyk@ironsrc.com',
-            image: `${ASSET_PATH}/team/andy.png`
+            email: 'andyk@is.com',
+            image: `${ASSET_PATH}/people/andy.jpeg`
+        },
+        {
+            name: 'Amit Mor',
+            email: 'amit.mor@is.com',
+            image: `${ASSET_PATH}/people/amit.png`
         }
     ];
     constructor(private http: HttpClient, private docLayoutService: DocsLayoutService) {}
@@ -43,15 +43,5 @@ export class GettingStartedComponent implements OnInit {
 
     copyToClipboard(text) {
         return () => text;
-    }
-
-    download(download) {
-        this.http.get(download.path, {responseType: 'blob'}).subscribe(data => {
-            const blob = new Blob([data], {type: download.type});
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = download.name;
-            a.click();
-        });
     }
 }

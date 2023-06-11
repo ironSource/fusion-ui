@@ -240,7 +240,7 @@ export class TagDocsComponent implements OnInit, OnDestroy {
         this.initForm();
         this.selectedVersion$.subscribe((styleVersion: StyleVersion) => {
             if (styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3) {
-                this.router.navigate(['docs/components/v2/tag']);
+                // this.router.navigate(['docs/components/v2/tag']);
             }
         });
     }
@@ -318,7 +318,6 @@ export class TagDocsComponent implements OnInit, OnDestroy {
             .subscribe(
                 data => {
                     this.inSearch = false;
-                    console.log('ret: ', data);
                     if (Array.isArray(data)) {
                         const selectedTags: Tag[] = this.bulkInsertedTags.value;
                         this.bulkInsertedTags.setValue([
