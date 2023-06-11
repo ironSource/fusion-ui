@@ -5,15 +5,8 @@ import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {RouterModule} from '@angular/router';
 import {Observable, of} from 'rxjs';
-import {ApiService} from '@ironsource/fusion-ui/services/api';
 import {TruncatePipe} from "@ironsource/fusion-ui/pipes/string";
 
-// Mocking
-class MockApiService {
-    get(): Observable<any> {
-        return of('');
-    }
-}
 
 describe('HeaderComponent', () => {
     let component: HeaderComponent;
@@ -22,8 +15,7 @@ describe('HeaderComponent', () => {
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [HeaderComponent],
-            imports: [DynamicComponentsModule, IconModule, RouterModule, TruncatePipe],
-            providers: [{provide: ApiService, useClass: MockApiService}]
+            imports: [DynamicComponentsModule, IconModule, RouterModule, TruncatePipe]
         }).compileComponents();
     }));
 

@@ -1,16 +1,8 @@
 import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {VideoPlayerComponent} from './video-player.component';
-import {Observable, of} from 'rxjs';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {LogService} from '@ironsource/fusion-ui/services/log';
-import {ApiService} from '@ironsource/fusion-ui/services/api';
 import {SecondsToMinutesPipe} from '@ironsource/fusion-ui/pipes/numbers';
-
-class MockApiService {
-    get(url): Observable<any> {
-        return of('');
-    }
-}
 
 describe('VideoPlayerComponent', () => {
     let component: VideoPlayerComponent;
@@ -20,7 +12,7 @@ describe('VideoPlayerComponent', () => {
         TestBed.configureTestingModule({
             declarations: [VideoPlayerComponent],
             imports: [IconModule, SecondsToMinutesPipe],
-            providers: [{provide: ApiService, useClass: MockApiService}, LogService]
+            providers: [LogService]
         }).compileComponents();
     }));
 

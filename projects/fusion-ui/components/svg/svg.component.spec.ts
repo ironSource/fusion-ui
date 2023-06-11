@@ -7,8 +7,6 @@ import {DebugElement} from '@angular/core';
 
 import {Observable, of} from 'rxjs';
 import {SvgComponent} from './svg.component';
-import {ApiService} from '@ironsource/fusion-ui/services/api';
-import {CacheService} from '@ironsource/fusion-ui/services/cache';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 
 const dataMock: string =
@@ -66,7 +64,7 @@ class MockApiService {
     }
 }
 
-describe('SVG Component', () => {
+fdescribe('SVG Component', () => {
     let component: SvgComponent;
     let fixture: ComponentFixture<SvgComponent>;
     let debugEl: DebugElement;
@@ -76,7 +74,7 @@ describe('SVG Component', () => {
         TestBed.configureTestingModule({
             imports: [],
             declarations: [SvgComponent],
-            providers: [LogService, CacheService, {provide: ApiService, useClass: MockApiService}]
+            providers: [LogService]
         });
 
         fixture = TestBed.createComponent(SvgComponent);

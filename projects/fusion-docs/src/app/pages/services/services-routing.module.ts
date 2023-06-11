@@ -6,14 +6,6 @@ export const routes: Routes = [
         path: '',
         children: [
             {
-                path: 'api',
-                loadChildren: () => import('./api-docs/api-docs.module').then(m => m.ApiDocsModule)
-            },
-            {
-                path: 'cache',
-                loadChildren: () => import('./cache-docs/cache-docs.module').then(m => m.CacheDocsModule)
-            },
-            {
                 path: 'log',
                 loadChildren: () => import('./log-docs/log-docs.module').then(m => m.LogDocsModule)
             },
