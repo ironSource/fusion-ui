@@ -67,14 +67,6 @@ const MENU_ITEMS_MOCK: SidebarMenuItem[] = [
         name: 'Services',
         children: [
             {
-                name: 'Api',
-                route: '/docs/services/api'
-            },
-            {
-                name: 'Cache',
-                route: '/docs/services/cache'
-            },
-            {
                 name: 'Log',
                 route: '/docs/services/log'
             }
