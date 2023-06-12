@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [6.0.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.4.1...v6.0.0-rc.0) (2023-06-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* **fg-169:** remove services:
+ - ali
+ - auth
+ - cache
+ - pub-sub
+ - redirect
+ - shared-config
+ - user
+ removed guard:
+ - auth
+
+### Features
+
+* **fg-169:** services and guards removing ([54be40b](https://github.com/ironSource/fusion-ui/commit/54be40b2f069fc59b327e99f697f28a4fabd0c71))
+
+
+### Bug Fixes
+
+* **fg-169:** fixed unit-tests ([2c91b19](https://github.com/ironSource/fusion-ui/commit/2c91b19f2f47d80f9fa039c8c693a96c4395f421))
+
 ### [5.4.1](https://github.com/ironSource/fusion-ui/compare/v5.2.0...v5.4.1) (2023-06-05)
 
 
