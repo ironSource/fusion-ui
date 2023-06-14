@@ -3,7 +3,7 @@ import {HeaderState} from '@ironsource/fusion-ui/components/header/common/base';
 import {Subject} from 'rxjs';
 import {MenuItem, MenuItemAdditionalData} from '@ironsource/fusion-ui/components/menu/common/base';
 import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
-import {WindowService} from '@ironsource/fusion-ui/services/window';
+import {StorageService, StorageType} from '@ironsource/fusion-ui/services/stogare';
 
 @Component({
     selector: 'fusion-layout',
@@ -30,10 +30,10 @@ export class LayoutComponent implements OnDestroy {
     @ViewChild('mainContent', {static: true}) mainContent: ElementRef;
 
     public isMenuOpened: boolean;
-    public isMainMenuCollapsed: boolean = JSON.parse(this.windowRef.nativeWindow.sessionStorage.getItem('menuCollapsed') ?? 'false');
+    public isMainMenuCollapsed: boolean = this.storageService.get(StorageType.SessionStorage, 'menuCollapsed') ?? false;
     private onDestroy$ = new Subject();
 
-    constructor(private windowRef: WindowService) {}
+    constructor(private storageService: StorageService) {}
 
     onMenuItemClicked(item: MenuItem) {
         this.menuItemClick.emit(item);
@@ -45,7 +45,7 @@ export class LayoutComponent implements OnDestroy {
 
     onMenuStateChanged(isMainMenuCollapsed) {
         this.isMainMenuCollapsed = isMainMenuCollapsed;
-        this.windowRef.nativeWindow.sessionStorage.setItem('menuCollapsed', JSON.stringify(this.isMainMenuCollapsed));
+        this.storageService.set(StorageType.SessionStorage, 'menuCollapsed', this.isMainMenuCollapsed);
         this.menuStateChanged.emit(this.isMainMenuCollapsed);
     }
 
