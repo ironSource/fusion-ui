@@ -6,6 +6,8 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TextareaComponent} from '@ironsource/fusion-ui/components/textarea';
 import {InputComponent} from '@ironsource/fusion-ui/components/input';
 
+const formControlNoValue = new FormControl();
+
 const formControlWithValue = new FormControl(
     'Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.'
 );
@@ -44,6 +46,9 @@ const InputTemplate: StoryFn<InputComponent> = (args: InputComponent) => ({
 
 export const Default = {
     render: InputTemplate,
+    args: {
+        formControl: formControlNoValue
+    },
     parameters: {
         docs: {
             source: {
