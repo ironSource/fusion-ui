@@ -378,7 +378,6 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
         type: NavigationBarItemType.Home,
         menuIcon: {iconName: 'house', iconVersion: 'v4'},
         menuTitle: 'Dashboard',
-        /*menuTooltip: 'Dashboard',*/
         route: '/',
         cssTheme: {
             'fu-navbar-background-color': '#202020'
@@ -388,7 +387,6 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
         type: NavigationBarItemType.Main,
         menuIconPath: 'v4/unity',
         menuTitle: 'LevelPlay',
-        /*menuTooltip: 'Unity LevelPlay',*/
         menuLogoSrc: 'v4/unityLevelPlay',
         cssTheme: {'fu-navbar-background-color': '#202020'},
         menuItems: UNITY_MENU_ITEMS
@@ -397,7 +395,6 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
         type: NavigationBarItemType.Main,
         menuIcon: {iconName: 'ironSource', iconVersion: 'v4'},
         menuTitle: 'Ads',
-        /*menuTooltip: 'ironSource Network',*/
         menuLogoSrc: 'v4/isAdsLogo',
         cssTheme: {'fu-navbar-background-color': '#0D148C'},
         menuItems: IS_MENU_ITEMS
@@ -405,14 +402,12 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
     {
         type: NavigationBarItemType.Bottom,
         menuIcon: {iconName: 'question', iconVersion: 'v4'},
-        /*menuTooltip: 'Knowledge Center',*/
         redirect: 'https://developers.is.com/',
         target: '_blank'
     },
     {
         type: NavigationBarItemType.User,
         menuIcon: {iconName: 'userCircle', iconVersion: 'v4'},
-        /*menuTooltip: 'Account',*/
         menuItems: USER_PROFILE_MENU_ITEMS
     }
 ];
