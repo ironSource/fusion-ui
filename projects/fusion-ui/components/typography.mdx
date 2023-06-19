@@ -1,0 +1,163 @@
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="Styleguide/Typography"/>
+
+# Typography
+
+Typography can help you create clear hierarchies, organize information, and guide users through a product or experience. Each page, modal pop-up, or widget must contain a title to structure the page. It is important to help users quickly identify where they are, and to introduce the subject of the page.
+
+**Webkit-font-smoothing:**
+The font-smoothing CSS property controls the application of anti-aliasing when fonts are rendered.
+`font-smoothing: antialiased;`
+
+To use our typography add in your styles.scss
+```css
+  @import '~@ironsource/fusion-ui/style/fonts.css';
+```
+
+
+## Our typefaces.
+<div class="sb-unstyled">
+    <div class="font-heading-4" style={{color: '#0d148c', lineHeight: '40px'}}>NHaasGroteskDSPro.</div>
+    <div class="font-bodyLargeStrong" style={{'font-size': 18, color: '#0d148c', lineHeight: '40px'}}>Helvetica Neue Strong</div>
+    <div class="font-bodyLarge" style={{'font-size': 18, color: '#0d148c', lineHeight: '40px'}}>Helvetica Neue</div>
+</div>
+
+## Type scale Heading
+<div class="sb-unstyled">
+    <div class="row fu-typeface-row">
+        <div class="col-6 col-sm-5">
+            <div class="fu-css-class-name">.font-heading-1</div>
+            <div class="font-bodyMedium">**font-family:** NHaasGroteskDSPro;</div>
+            <div class="font-bodyMedium">**font-size:** 60px;`</div>
+        </div>
+        <div class="col-6 col-sm-6 fu-font-example font-heading-1">Heading 1</div>
+    </div>
+    <div class="row fu-typeface-row">
+        <div class="col-6 col-sm-5">
+            <div class="fu-css-class-name">.font-heading-2</div>
+            <div class="font-bodyMedium">**font-family:** NHaasGroteskDSPro;</div>
+            <div class="font-bodyMedium">**font-size:** 32px;`</div>
+        </div>
+        <div class="col-6 col-sm-6 fu-font-example font-heading-2">Heading 2</div>
+    </div>
+    <div class="row fu-typeface-row">
+        <div class="col-6 col-sm-5">
+            <div class="fu-css-class-name">.font-heading-3</div>
+            <div class="font-bodyMedium">**font-family:** NHaasGroteskDSPro;</div>
+            <div class="font-bodyMedium">**font-size:** 22px;`</div>
+        </div>
+        <div class="col-6 col-sm-6 fu-font-example font-heading-3">Heading 3</div>
+    </div>
+    <div class="row fu-typeface-row">
+        <div class="col-6 col-sm-5">
+            <div class="fu-css-class-name">.font-heading-4</div>
+            <div class="font-bodyMedium">**font-family:** NHaasGroteskDSPro;</div>
+            <div class="font-bodyMedium">**font-size:** 18px;`</div>
+        </div>
+        <div class="col-6 col-sm-6 fu-font-example font-heading-4">Heading 5</div>
+    </div>
+    <div class="row fu-typeface-row">
+        <div class="col-6 col-sm-5">
+            <div class="fu-css-class-name">.font-heading-5</div>
+            <div class="font-bodyMedium">**font-family:** NHaasGroteskDSPro;</div>
+            <div class="font-bodyMedium">**font-size:** 15px;`</div>
+        </div>
+        <div class="col-6 col-sm-6 fu-font-example font-heading-5">Heading 5</div>
+    </div>
+    <div class="row fu-typeface-row">
+        <div class="col-6 col-sm-5">
+            <div class="fu-css-class-name">.font-heading-6</div>
+            <div class="font-bodyMedium">**font-family:** NHaasGroteskDSPro;</div>
+            <div class="font-bodyMedium">**font-size:** 13px;`</div>
+        </div>
+        <div class="col-6 col-sm-6 fu-font-example font-heading-6">Heading 6</div>
+    </div>
+    <div class="row fu-typeface-row">
+        <div class="col-6 col-sm-5">
+            <div class="fu-css-class-name">.font-heading-label</div>
+            <div class="font-bodyMedium">**font-family:** NHaasGroteskDSPro;</div>
+            <div class="font-bodyMedium">**font-size:** 11px;</div>
+            <div class="font-bodyMedium">**letter-spacing:** 0.25px;</div>
+        </div>
+        <div class="col-6 col-sm-6 fu-font-example font-heading-label">Heading label</div>
+    </div>
+    <br/>
+    <br/>
+    ## Type scale Body
+    <div class="row fu-typeface-row">
+        <div class="col-6 col-sm-5">
+            <div class="fu-css-class-name">.font-bodyLarge</div>
+            <div class="font-bodyMedium">**font-family:** HelveticaNeue;</div>
+            <div class="font-bodyMedium">**font-size:** 16px;</div>
+        </div>
+        <div class="col-6 col-sm-6 fu-font-example font-bodyLarge">Body large</div>
+    </div>
+    <div class="row fu-typeface-row">
+        <div class="col-6 col-sm-5">
+            <div class="fu-css-class-name">.font-bodyLargeStrong</div>
+            <div class="font-bodyMedium">**font-family:** HelveticaNeue-Medium;</div>
+            <div class="font-bodyMedium">**font-size:** 16px;</div>
+        </div>
+        <div class="col-6 col-sm-6 fu-font-example font-bodyLargeStrong">Body large</div>
+    </div>
+    <div class="row fu-typeface-row">
+        <div class="col-6 col-sm-5">
+            <div class="fu-css-class-name">.font-heading-bodyMedium</div>
+            <div class="font-bodyMedium">**font-family:** HelveticaNeue;</div>
+            <div class="font-bodyMedium">**font-size:** 14px;</div>
+        </div>
+        <div class="col-6 col-sm-6 fu-font-example font-bodyMedium">Body medium</div>
+    </div>
+    <div class="row fu-typeface-row">
+        <div class="col-6 col-sm-5">
+            <div class="fu-css-class-name">.font-heading-bodyMediumStrong</div>
+            <div class="font-bodyMedium">**font-family:** HelveticaNeue-Medium;</div>
+            <div class="font-bodyMedium">**font-size:** 14px;</div>
+        </div>
+        <div class="col-6 col-sm-6 fu-font-example font-bodyMediumStrong">Body medium strong</div>
+    </div>
+    <div class="row fu-typeface-row">
+        <div class="col-6 col-sm-5">
+            <div class="fu-css-class-name">.font-heading-bodySmall</div>
+            <div class="font-bodyMedium">**font-family:** HelveticaNeue;</div>
+            <div class="font-bodyMedium">**font-size:** 13px;</div>
+        </div>
+        <div class="col-6 col-sm-6 fu-font-example font-bodySmall">Body small</div>
+    </div>
+    <div class="row fu-typeface-row">
+        <div class="col-6 col-sm-5">
+            <div class="fu-css-class-name">.font-heading-bodySmallStrong</div>
+            <div class="font-bodyMedium">**font-family:** HelveticaNeue-Medium;</div>
+            <div class="font-bodyMedium">**font-size:** 13px;</div>
+        </div>
+        <div class="col-6 col-sm-6 fu-font-example font-bodySmallStrong">Body small strong</div>
+    </div>
+    <div class="row fu-typeface-row">
+        <div class="col-6 col-sm-5">
+            <div class="fu-css-class-name">.font-heading-bodyXSmall</div>
+            <div class="font-bodyMedium">**font-family:** HelveticaNeue;</div>
+            <div class="font-bodyMedium">**font-size:** 12px;</div>
+            <div class="font-bodyMedium">**letter-spacing:** 0.24px;</div>
+        </div>
+        <div class="col-6 col-sm-6 fu-font-example font-bodyXSmall">Body x-small</div>
+    </div>
+    <div class="row fu-typeface-row">
+        <div class="col-6 col-sm-5">
+            <div class="fu-css-class-name">.font-heading-bodyXSmallStrong</div>
+            <div class="font-bodyMedium">**font-family:** HelveticaNeue-Medium;</div>
+            <div class="font-bodyMedium">**font-size:** 12px;</div>
+            <div class="font-bodyMedium">**letter-spacing:** 0.24px;</div>
+        </div>
+        <div class="col-6 col-sm-6 fu-font-example font-bodyXSmallStrong">Body x-small strong</div>
+    </div>
+    <div class="row fu-typeface-row">
+        <div class="col-6 col-sm-5">
+            <div class="fu-css-class-name">.font-caption</div>
+            <div class="font-bodyMedium">**font-family:** HelveticaNeue;</div>
+            <div class="font-bodyMedium">**font-size:** 11px;</div>
+        </div>
+        <div class="col-6 col-sm-6 fu-font-example font-caption">Caption</div>
+    </div>
+</div>
+

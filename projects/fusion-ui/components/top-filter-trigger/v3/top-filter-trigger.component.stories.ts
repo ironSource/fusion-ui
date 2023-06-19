@@ -1,4 +1,4 @@
-import {Story, Meta} from '@storybook/angular';
+import {StoryFn, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {dedent} from 'ts-dedent';
@@ -6,6 +6,7 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TopFilterTriggerComponent} from '@ironsource/fusion-ui/components/top-filter-trigger/v3/top-filter-trigger.component';
+import {ApiService} from '@ironsource/fusion-ui';
 
 export default {
     title: 'Components/Filters/Top Filter/Trigger',
@@ -13,9 +14,11 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule]
+            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule],
+            providers: [ApiService]
         })
     ],
+    tags: ['autodocs'],
     parameters: {
         docs: {
             description: {
@@ -29,7 +32,7 @@ export default {
     }
 } as Meta<TopFilterTriggerComponent>;
 
-const DefaultTemplate: Story<TopFilterTriggerComponent> = (args: TopFilterTriggerComponent) => ({
+const DefaultTemplate: StoryFn<TopFilterTriggerComponent> = (args: TopFilterTriggerComponent) => ({
     props: {...args},
     template: `<fusion-top-filter-trigger
     [placeholder]="placeholder"
@@ -44,58 +47,64 @@ const DefaultTemplate: Story<TopFilterTriggerComponent> = (args: TopFilterTrigge
 </fusion-top-filter-trigger>`
 });
 
-// region Default
-export const Default = DefaultTemplate.bind({});
-// endregion
-
-// region SelectedAmountApps
-export const SelectedAmountApps = DefaultTemplate.bind({});
-SelectedAmountApps.args = {
-    placeholder: '33 apps selected',
-    helper: 'Dizzy Diamond and 32 more'
+export const Default = {
+    render: DefaultTemplate
 };
-// endregion
 
-// region SelectedAllApps
-export const SelectedAllApps = DefaultTemplate.bind({});
-SelectedAllApps.args = {
-    placeholder: 'All Apps selected',
-    helper: '65 applications'
-};
-// endregion
+export const SelectedAmountApps = {
+    render: DefaultTemplate,
 
-// region SingleIOSAppSelected
-export const SingleIOSAppSelected = DefaultTemplate.bind({});
-SingleIOSAppSelected.args = {
-    label: 'Dizzy Diamond Puzzle',
-    helper: 'appKey',
-    icon: 'ios',
-    imageApp: 'https://fusion-storybook.ironsrc.mobi/branch_demo-assets/4_app.png'
+    args: {
+        placeholder: '33 apps selected',
+        helper: 'Dizzy Diamond and 32 more'
+    }
 };
-// endregion
 
-// region SingleAndroidAppSelected
-export const SingleAndroidAppSelected = DefaultTemplate.bind({});
-SingleAndroidAppSelected.args = {
-    label: 'Moy 7 the Virtual Pet Game',
-    helper: 'appKey',
-    icon: 'android',
-    imageApp: 'https://fusion-storybook.ironsrc.mobi/branch_demo-assets/12_app.png'
-};
-// endregion
+export const SelectedAllApps = {
+    render: DefaultTemplate,
 
-// region ErrorRequired
-export const ErrorRequired = DefaultTemplate.bind({});
-ErrorRequired.args = {
-    placeholder: 'Select App',
-    required: true,
-    error: 'Mandatory field'
+    args: {
+        placeholder: 'All Apps selected',
+        helper: '65 applications'
+    }
 };
-// endregion
 
-// region Loading
-export const Loading = DefaultTemplate.bind({});
-Loading.args = {
-    loading: true
+export const SingleIOSAppSelected = {
+    render: DefaultTemplate,
+
+    args: {
+        label: 'Dizzy Diamond Puzzle',
+        helper: 'appKey',
+        icon: 'ios',
+        imageApp: 'https://fusion-storybook.ironsrc.mobi/branch_demo-assets/4_app.png'
+    }
 };
-// endregion
+
+export const SingleAndroidAppSelected = {
+    render: DefaultTemplate,
+
+    args: {
+        label: 'Moy 7 the Virtual Pet Game',
+        helper: 'appKey',
+        icon: 'android',
+        imageApp: 'https://fusion-storybook.ironsrc.mobi/branch_demo-assets/12_app.png'
+    }
+};
+
+export const ErrorRequired = {
+    render: DefaultTemplate,
+
+    args: {
+        placeholder: 'Select App',
+        required: true,
+        error: 'Mandatory field'
+    }
+};
+
+export const Loading = {
+    render: DefaultTemplate,
+
+    args: {
+        loading: true
+    }
+};

@@ -45,6 +45,20 @@ $iconMoreSize: 16px;
                 @extend %font-headlineMedium;
                 white-space: nowrap;
             }
+            .fu-header-subtitle-text{
+                position: relative;
+                font-size: .813rem;
+                color: var(--layout-header-title-color, $fu-dark-300);
+                margin-left: -3px;
+                &:before{
+                    position: absolute;
+                    color: var(--layout-header-title-color, $fu-dark-300);
+                    left: -9px;
+                    content: '•';
+                    font-size: .68rem;
+                }
+
+            }
             .fu-header-title-content{
                 flex-grow: 1;
             }

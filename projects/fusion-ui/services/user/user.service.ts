@@ -43,8 +43,11 @@ export class UserService {
         this.userData$.next({});
     }
 
+    // Check if allow by user permissions
     isAllowed(permission): boolean {
-        return this.userData?.permissions?.includes(permission);
+        return permission.startsWith('!')
+            ? !this.userData?.permissions?.includes(permission.replace(/^!/, ''))
+            : this.userData?.permissions?.includes(permission);
     }
 
     get userData(): any {

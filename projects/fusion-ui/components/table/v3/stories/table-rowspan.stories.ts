@@ -1,4 +1,4 @@
-import {Story, Meta} from '@storybook/angular';
+import {StoryFn, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {dedent} from 'ts-dedent';
 import {CommonModule} from '@angular/common';
@@ -14,6 +14,7 @@ import {
     ROWS_ROWSPAN_DIFF_DATA
 } from '@ironsource/fusion-ui/components/table/v3/stories/table.mock-data';
 import {TableStoryHolderComponent} from '@ironsource/fusion-ui/components/table/v3/stories/table.story-holder.component/table.story-holder.component.component';
+import {ApiService} from '@ironsource/fusion-ui';
 
 export default {
     title: 'Components/Table/Rowspan',
@@ -27,9 +28,11 @@ export default {
                 IconModule,
                 TableModule,
                 TableStoryHolderComponent
-            ]
+            ],
+            providers: [ApiService]
         })
     ],
+    tags: ['autodocs'],
     parameters: {
         design: {
             type: 'figma',
@@ -51,7 +54,7 @@ export default {
     }
 } as Meta<TableComponent>;
 
-const TableTemplate: Story<TableComponent> = (args: TableComponent) => ({
+const TableTemplate: StoryFn<TableComponent> = (args: TableComponent) => ({
     props: {...args},
     template: `<fusion-table-story-holder
     [options]="options"
@@ -60,425 +63,428 @@ const TableTemplate: Story<TableComponent> = (args: TableComponent) => ({
 ></fusion-table-story-holder>`
 });
 
-// region Default
-export const Default = TableTemplate.bind({});
-Default.parameters = {
-    docs: {
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
-import { InlineInputType } from '@ironsource/fusion-ui/components/input-inline/common/base';
-import {
-  TableModule,
-  TableColumn,
-  TableOptions,
-  TableColumnTypeEnum,
-} from '@ironsource/fusion-ui/components/table';
+export const Default = {
+    render: TableTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<fusion-table [columns]="columns" [rows]="rows" [options]="options" (rowModelChange)="onRowModelChange($event)"></fusion-table>\`,
-  styles: [
-    \`
-          ::ng-deep tbody tr td.fu-badge div {
-              width: unset !important;
-              height: 20px;
-              line-height: 20px;
-              display: flex;
-              align-items: center;
-              padding: 2px 4px;
-              border-radius: 4px;
-              background-color: #edeff0;
-          }
-      \`,
-  ],
-  standalone: true,
-  imports: [TableModule],
-})
-export class FusionStoryWrapperComponent {
-  options: TableOptions = {
-    tableLabel: { text: 'Table label', tooltip: 'lorem ipsum dolor' },
-  };
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import {FormControl, Validators} from '@angular/forms';
+    import { InlineInputType } from '@ironsource/fusion-ui/components/input-inline/common/base';
+    import {
+      TableModule,
+      TableColumn,
+      TableOptions,
+      TableColumnTypeEnum,
+    } from '@ironsource/fusion-ui/components/table';
 
-  columns: TableColumn[] = COLUMNS_CONFIG;
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<fusion-table [columns]="columns" [rows]="rows" [options]="options" (rowModelChange)="onRowModelChange($event)"></fusion-table>\`,
+      styles: [
+        \`
+              ::ng-deep tbody tr td.fu-badge div {
+                  width: unset !important;
+                  height: 20px;
+                  line-height: 20px;
+                  display: flex;
+                  align-items: center;
+                  padding: 2px 4px;
+                  border-radius: 4px;
+                  background-color: #edeff0;
+              }
+          \`,
+      ],
+      standalone: true,
+      imports: [TableModule],
+    })
+    export class FusionStoryWrapperComponent {
+      options: TableOptions = {
+        tableLabel: { text: 'Table label', tooltip: 'lorem ipsum dolor' },
+      };
 
-  rows: any[] = ROWS_DATA;
+      columns: TableColumn[] = COLUMNS_CONFIG;
 
-  onRowModelChange($event) {
-    console.log('onRowModelChange: ', $event);
-    setTimeout(() => {
-      $event.onRequestDone(true);
-    }, 2000);
-  }
+      rows: any[] = ROWS_DATA;
 
-}
+      onRowModelChange($event) {
+        console.log('onRowModelChange: ', $event);
+        setTimeout(() => {
+          $event.onRequestDone(true);
+        }, 2000);
+      }
 
-const COLUMNS_CONFIG: TableColumn[] = [
-    {key: 'id', title: 'Id'},
-    {key: 'name', title: 'Name'},
-    {key: 'us_row', title: '', groupName: 'Configuration', class: 'fu-badge'},
-    {
-        key: 'margin',
-        title: 'Margin',
-        align: 'right',
-        headerAlign: 'right',
-        type: TableColumnTypeEnum.InputEdit,
-        inputType: InlineInputType.Currency,
-        customErrorMapping: {
-            required: {errorMessageKey: 'required'},
-            min: {
-                errorMessageKey: 'min',
-                textMapping: [{key: 'minValue', value: '5'}]
-            }
+    }
+
+    const COLUMNS_CONFIG: TableColumn[] = [
+        {key: 'id', title: 'Id'},
+        {key: 'name', title: 'Name'},
+        {key: 'us_row', title: '', groupName: 'Configuration', class: 'fu-badge'},
+        {
+            key: 'margin',
+            title: 'Margin',
+            align: 'right',
+            headerAlign: 'right',
+            type: TableColumnTypeEnum.InputEdit,
+            inputType: InlineInputType.Currency,
+            customErrorMapping: {
+                required: {errorMessageKey: 'required'},
+                min: {
+                    errorMessageKey: 'min',
+                    textMapping: [{key: 'minValue', value: '5'}]
+                }
+            },
+            width: '120px'
         },
-        width: '120px'
-    },
-    {
-        key: 'margin_target',
-        title: 'Target margin',
-        align: 'right',
-        headerAlign: 'right',
-        type: TableColumnTypeEnum.InputEdit,
-        inputType: InlineInputType.Currency,
-        customErrorMapping: {
-            required: {errorMessageKey: 'required'},
-            min: {
-                errorMessageKey: 'min',
-                textMapping: [{key: 'minValue', value: '5'}]
-            }
+        {
+            key: 'margin_target',
+            title: 'Target margin',
+            align: 'right',
+            headerAlign: 'right',
+            type: TableColumnTypeEnum.InputEdit,
+            inputType: InlineInputType.Currency,
+            customErrorMapping: {
+                required: {errorMessageKey: 'required'},
+                min: {
+                    errorMessageKey: 'min',
+                    textMapping: [{key: 'minValue', value: '5'}]
+                }
+            },
+            width: '120px'
         },
-        width: '120px'
-    },
-    {
-        key: 'profitizer',
-        title: 'Profitizer',
-        align: 'right',
-        headerAlign: 'right',
-        style: {'border-left': 'solid 1px #DDDFE1'},
-        type: TableColumnTypeEnum.InputEdit,
-        inputType: InlineInputType.Currency,
-        customErrorMapping: {
-            required: {errorMessageKey: 'required'},
-            min: {
-                errorMessageKey: 'min',
-                textMapping: [{key: 'minValue', value: '5'}]
-            }
+        {
+            key: 'profitizer',
+            title: 'Profitizer',
+            align: 'right',
+            headerAlign: 'right',
+            style: {'border-left': 'solid 1px #DDDFE1'},
+            type: TableColumnTypeEnum.InputEdit,
+            inputType: InlineInputType.Currency,
+            customErrorMapping: {
+                required: {errorMessageKey: 'required'},
+                min: {
+                    errorMessageKey: 'min',
+                    textMapping: [{key: 'minValue', value: '5'}]
+                }
+            },
+            width: '120px'
         },
-        width: '120px'
-    },
-    {key: 'username', title: 'Username', groupName: ' '},
-    {key: 'email', title: 'Email'},
-    {key: 'website', title: 'Website'}
-];
+        {key: 'username', title: 'Username', groupName: ' '},
+        {key: 'email', title: 'Email'},
+        {key: 'website', title: 'Website'}
+    ];
 
-const ROWS_DATA = [
-  {
-    id: 1,
-    name: 'Leanne Graham',
-    username: 'Bret',
-    email: 'Sincere@april.biz',
-    website: 'hildegard.org',
-  },
-  {
-    id: 2,
-    name: 'Ervin Howell',
-    username: 'Antonette',
-    email: 'Shanna@melissa.tv',
-    website: 'anastasia.net',
-  },
-  {
-    id: 3,
-    name: 'Clementine Bauch',
-    username: 'Samantha',
-    email: 'Nathan@yesenia.net',
-    website: 'ramiro.info',
-  },
-  {
-    id: 4,
-    name: 'Patricia Lebsack',
-    username: 'Karianne',
-    email: 'Julianne.OConner@kory.org',
-    website: 'kale.biz',
-  },
-  {
-    id: 5,
-    name: 'Chelsey Dietrich',
-    username: 'Kamren',
-    email: 'Lucio_Hettinger@annie.ca',
-    website: 'demarco.info',
-  },
-  {
-    id: 6,
-    name: 'Mrs. Dennis Schulist',
-    username: 'Leopoldo_Corkery',
-    email: 'Karley_Dach@jasper.info',
-    website: 'ola.org',
-  },
-  {
-    id: 7,
-    name: 'Kurtis Weissnat',
-    username: 'Elwyn.Skiles',
-    email: 'Telly.Hoeger@billy.biz',
-    website: 'elvis.io',
-  },
-  {
-    id: 8,
-    name: 'Nicholas Runolfsdottir V',
-    username: 'Maxime_Nienow',
-    email: 'Sherwood@rosamond.me',
-    website: 'jacynthe.com',
-  },
-  {
-    id: 9,
-    name: 'Glenna Reichert',
-    username: 'Delphine',
-    email: 'Chaim_McDermott@dana.io',
-    website: 'conrad.com',
-  },
-  {
-    id: 10,
-    name: 'Clementina DuBuque',
-    username: 'Moriah.Stanton',
-    email: 'Rey.Padberg@karina.biz',
-    website: 'ambrose.net',
-  },
-].map((row, idx) => {
-    const marginFormControl1 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
-    const marginFormControl2 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
-    const marginTargetFormControl1 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
-    const marginTargetFormControl2 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
-    const profitizerFormControl = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
-    return {
-        ...row,
-        us_row: ['US', 'ROW'],
-        margin: [marginFormControl1, marginFormControl2],
-        margin_target: [marginTargetFormControl1, marginTargetFormControl2],
-        profitizer: profitizerFormControl
-    };
-});
-            `,
-            format: true,
-            type: 'code'
+    const ROWS_DATA = [
+      {
+        id: 1,
+        name: 'Leanne Graham',
+        username: 'Bret',
+        email: 'Sincere@april.biz',
+        website: 'hildegard.org',
+      },
+      {
+        id: 2,
+        name: 'Ervin Howell',
+        username: 'Antonette',
+        email: 'Shanna@melissa.tv',
+        website: 'anastasia.net',
+      },
+      {
+        id: 3,
+        name: 'Clementine Bauch',
+        username: 'Samantha',
+        email: 'Nathan@yesenia.net',
+        website: 'ramiro.info',
+      },
+      {
+        id: 4,
+        name: 'Patricia Lebsack',
+        username: 'Karianne',
+        email: 'Julianne.OConner@kory.org',
+        website: 'kale.biz',
+      },
+      {
+        id: 5,
+        name: 'Chelsey Dietrich',
+        username: 'Kamren',
+        email: 'Lucio_Hettinger@annie.ca',
+        website: 'demarco.info',
+      },
+      {
+        id: 6,
+        name: 'Mrs. Dennis Schulist',
+        username: 'Leopoldo_Corkery',
+        email: 'Karley_Dach@jasper.info',
+        website: 'ola.org',
+      },
+      {
+        id: 7,
+        name: 'Kurtis Weissnat',
+        username: 'Elwyn.Skiles',
+        email: 'Telly.Hoeger@billy.biz',
+        website: 'elvis.io',
+      },
+      {
+        id: 8,
+        name: 'Nicholas Runolfsdottir V',
+        username: 'Maxime_Nienow',
+        email: 'Sherwood@rosamond.me',
+        website: 'jacynthe.com',
+      },
+      {
+        id: 9,
+        name: 'Glenna Reichert',
+        username: 'Delphine',
+        email: 'Chaim_McDermott@dana.io',
+        website: 'conrad.com',
+      },
+      {
+        id: 10,
+        name: 'Clementina DuBuque',
+        username: 'Moriah.Stanton',
+        email: 'Rey.Padberg@karina.biz',
+        website: 'ambrose.net',
+      },
+    ].map((row, idx) => {
+        const marginFormControl1 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+        const marginFormControl2 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+        const marginTargetFormControl1 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+        const marginTargetFormControl2 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+        const profitizerFormControl = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+        return {
+            ...row,
+            us_row: ['US', 'ROW'],
+            margin: [marginFormControl1, marginFormControl2],
+            margin_target: [marginTargetFormControl1, marginTargetFormControl2],
+            profitizer: profitizerFormControl
+        };
+    });
+                `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-// endregion
 
-// region DifferentRowspanInRow
-export const DifferentRowspanInRow = TableTemplate.bind({});
-DifferentRowspanInRow.args = {
-    rows: ROWS_ROWSPAN_DIFF_DATA
-};
-DifferentRowspanInRow.parameters = {
-    docs: {
-        description: {
-            story: dedent`**Tables** "rowspan".
-                Possible to show different "rowspan" in row. For example here in third main row, id# 3 you see 3 sub-rows
-                You just need set data in array. See example on stackblitz.
-                `
-        },
-        source: {
-            language: 'typescript',
-            code: dedent`
-import { Component } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
-import { InlineInputType } from '@ironsource/fusion-ui/components/input-inline/common/base';
-import {
-  TableModule,
-  TableColumn,
-  TableOptions,
-  TableColumnTypeEnum,
-} from '@ironsource/fusion-ui/components/table';
+export const DifferentRowspanInRow = {
+    render: TableTemplate,
 
-@Component({
-  selector: 'fusion-story-wrapper',
-  template: \`<fusion-table [columns]="columns" [rows]="rows" [options]="options" (rowModelChange)="onRowModelChange($event)"></fusion-table>\`,
-  styles: [
-    \`
-          ::ng-deep tbody tr td.fu-badge div {
-              width: unset !important;
-              height: 20px;
-              line-height: 20px;
-              display: flex;
-              align-items: center;
-              padding: 2px 4px;
-              border-radius: 4px;
-              background-color: #edeff0;
-          }
-      \`,
-  ],
-  standalone: true,
-  imports: [TableModule],
-})
-export class FusionStoryWrapperComponent {
-  options: TableOptions = {
-    tableLabel: { text: 'Table label', tooltip: 'lorem ipsum dolor' },
-  };
-
-  columns: TableColumn[] = COLUMNS_CONFIG;
-
-  rows: any[] = ROWS_DATA;
-
-  onRowModelChange($event) {
-    console.log('onRowModelChange: ', $event);
-    setTimeout(() => {
-      $event.onRequestDone(true);
-    }, 2000);
-  }
-
-}
-
-const COLUMNS_CONFIG: TableColumn[] = [
-    {key: 'id', title: 'Id'},
-    {key: 'name', title: 'Name'},
-    {key: 'us_row', title: '', groupName: 'Configuration', class: 'fu-badge'},
-    {
-        key: 'margin',
-        title: 'Margin',
-        align: 'right',
-        headerAlign: 'right',
-        type: TableColumnTypeEnum.InputEdit,
-        inputType: InlineInputType.Currency,
-        customErrorMapping: {
-            required: {errorMessageKey: 'required'},
-            min: {
-                errorMessageKey: 'min',
-                textMapping: [{key: 'minValue', value: '5'}]
-            }
-        },
-        width: '120px'
+    args: {
+        rows: ROWS_ROWSPAN_DIFF_DATA
     },
-    {
-        key: 'margin_target',
-        title: 'Target margin',
-        align: 'right',
-        headerAlign: 'right',
-        type: TableColumnTypeEnum.InputEdit,
-        inputType: InlineInputType.Currency,
-        customErrorMapping: {
-            required: {errorMessageKey: 'required'},
-            min: {
-                errorMessageKey: 'min',
-                textMapping: [{key: 'minValue', value: '5'}]
-            }
-        },
-        width: '120px'
-    },
-    {
-        key: 'profitizer',
-        title: 'Profitizer',
-        align: 'right',
-        headerAlign: 'right',
-        style: {'border-left': 'solid 1px #DDDFE1'},
-        type: TableColumnTypeEnum.InputEdit,
-        inputType: InlineInputType.Currency,
-        customErrorMapping: {
-            required: {errorMessageKey: 'required'},
-            min: {
-                errorMessageKey: 'min',
-                textMapping: [{key: 'minValue', value: '5'}]
-            }
-        },
-        width: '120px'
-    },
-    {key: 'username', title: 'Username', groupName: ' '},
-    {key: 'email', title: 'Email'},
-    {key: 'website', title: 'Website'}
-];
 
-const ROWS_DATA = [
-  {
-    id: 1,
-    name: 'Leanne Graham',
-    username: 'Bret',
-    email: 'Sincere@april.biz',
-    website: 'hildegard.org',
-  },
-  {
-    id: 2,
-    name: 'Ervin Howell',
-    username: 'Antonette',
-    email: 'Shanna@melissa.tv',
-    website: 'anastasia.net',
-  },
-  {
-    id: 3,
-    name: 'Clementine Bauch',
-    username: 'Samantha',
-    email: 'Nathan@yesenia.net',
-    website: 'ramiro.info',
-  },
-  {
-    id: 4,
-    name: 'Patricia Lebsack',
-    username: 'Karianne',
-    email: 'Julianne.OConner@kory.org',
-    website: 'kale.biz',
-  },
-  {
-    id: 5,
-    name: 'Chelsey Dietrich',
-    username: 'Kamren',
-    email: 'Lucio_Hettinger@annie.ca',
-    website: 'demarco.info',
-  },
-  {
-    id: 6,
-    name: 'Mrs. Dennis Schulist',
-    username: 'Leopoldo_Corkery',
-    email: 'Karley_Dach@jasper.info',
-    website: 'ola.org',
-  },
-  {
-    id: 7,
-    name: 'Kurtis Weissnat',
-    username: 'Elwyn.Skiles',
-    email: 'Telly.Hoeger@billy.biz',
-    website: 'elvis.io',
-  },
-  {
-    id: 8,
-    name: 'Nicholas Runolfsdottir V',
-    username: 'Maxime_Nienow',
-    email: 'Sherwood@rosamond.me',
-    website: 'jacynthe.com',
-  },
-  {
-    id: 9,
-    name: 'Glenna Reichert',
-    username: 'Delphine',
-    email: 'Chaim_McDermott@dana.io',
-    website: 'conrad.com',
-  },
-  {
-    id: 10,
-    name: 'Clementina DuBuque',
-    username: 'Moriah.Stanton',
-    email: 'Rey.Padberg@karina.biz',
-    website: 'ambrose.net',
-  },
-].map((row, idx) => {
-    const marginFormControl1 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
-    const marginFormControl2 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
-    const marginFormControl3 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
-    const marginTargetFormControl1 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
-    const marginTargetFormControl2 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
-    const marginTargetFormControl3 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
-    const profitizerFormControl = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
-    return {
-        ...row,
-        us_row: idx==2 ? ['US', 'IL', 'ROW'] : ['US', 'ROW'],
-        margin: idx==2 ? [marginFormControl1, marginFormControl2, marginFormControl3] : [marginFormControl1, marginFormControl2],
-        margin_target: idx==2 ? [marginTargetFormControl1, marginTargetFormControl2, marginTargetFormControl3] : [marginTargetFormControl1, marginTargetFormControl2],
-        profitizer: profitizerFormControl
-    };
-});
-            `,
-            format: true,
-            type: 'code'
+    parameters: {
+        docs: {
+            description: {
+                story: dedent`**Tables** "rowspan".
+                    Possible to show different "rowspan" in row. For example here in third main row, id# 3 you see 3 sub-rows
+                    You just need set data in array. See example on stackblitz.
+                    `
+            },
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import {FormControl, Validators} from '@angular/forms';
+    import { InlineInputType } from '@ironsource/fusion-ui/components/input-inline/common/base';
+    import {
+      TableModule,
+      TableColumn,
+      TableOptions,
+      TableColumnTypeEnum,
+    } from '@ironsource/fusion-ui/components/table';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<fusion-table [columns]="columns" [rows]="rows" [options]="options" (rowModelChange)="onRowModelChange($event)"></fusion-table>\`,
+      styles: [
+        \`
+              ::ng-deep tbody tr td.fu-badge div {
+                  width: unset !important;
+                  height: 20px;
+                  line-height: 20px;
+                  display: flex;
+                  align-items: center;
+                  padding: 2px 4px;
+                  border-radius: 4px;
+                  background-color: #edeff0;
+              }
+          \`,
+      ],
+      standalone: true,
+      imports: [TableModule],
+    })
+    export class FusionStoryWrapperComponent {
+      options: TableOptions = {
+        tableLabel: { text: 'Table label', tooltip: 'lorem ipsum dolor' },
+      };
+
+      columns: TableColumn[] = COLUMNS_CONFIG;
+
+      rows: any[] = ROWS_DATA;
+
+      onRowModelChange($event) {
+        console.log('onRowModelChange: ', $event);
+        setTimeout(() => {
+          $event.onRequestDone(true);
+        }, 2000);
+      }
+
+    }
+
+    const COLUMNS_CONFIG: TableColumn[] = [
+        {key: 'id', title: 'Id'},
+        {key: 'name', title: 'Name'},
+        {key: 'us_row', title: '', groupName: 'Configuration', class: 'fu-badge'},
+        {
+            key: 'margin',
+            title: 'Margin',
+            align: 'right',
+            headerAlign: 'right',
+            type: TableColumnTypeEnum.InputEdit,
+            inputType: InlineInputType.Currency,
+            customErrorMapping: {
+                required: {errorMessageKey: 'required'},
+                min: {
+                    errorMessageKey: 'min',
+                    textMapping: [{key: 'minValue', value: '5'}]
+                }
+            },
+            width: '120px'
+        },
+        {
+            key: 'margin_target',
+            title: 'Target margin',
+            align: 'right',
+            headerAlign: 'right',
+            type: TableColumnTypeEnum.InputEdit,
+            inputType: InlineInputType.Currency,
+            customErrorMapping: {
+                required: {errorMessageKey: 'required'},
+                min: {
+                    errorMessageKey: 'min',
+                    textMapping: [{key: 'minValue', value: '5'}]
+                }
+            },
+            width: '120px'
+        },
+        {
+            key: 'profitizer',
+            title: 'Profitizer',
+            align: 'right',
+            headerAlign: 'right',
+            style: {'border-left': 'solid 1px #DDDFE1'},
+            type: TableColumnTypeEnum.InputEdit,
+            inputType: InlineInputType.Currency,
+            customErrorMapping: {
+                required: {errorMessageKey: 'required'},
+                min: {
+                    errorMessageKey: 'min',
+                    textMapping: [{key: 'minValue', value: '5'}]
+                }
+            },
+            width: '120px'
+        },
+        {key: 'username', title: 'Username', groupName: ' '},
+        {key: 'email', title: 'Email'},
+        {key: 'website', title: 'Website'}
+    ];
+
+    const ROWS_DATA = [
+      {
+        id: 1,
+        name: 'Leanne Graham',
+        username: 'Bret',
+        email: 'Sincere@april.biz',
+        website: 'hildegard.org',
+      },
+      {
+        id: 2,
+        name: 'Ervin Howell',
+        username: 'Antonette',
+        email: 'Shanna@melissa.tv',
+        website: 'anastasia.net',
+      },
+      {
+        id: 3,
+        name: 'Clementine Bauch',
+        username: 'Samantha',
+        email: 'Nathan@yesenia.net',
+        website: 'ramiro.info',
+      },
+      {
+        id: 4,
+        name: 'Patricia Lebsack',
+        username: 'Karianne',
+        email: 'Julianne.OConner@kory.org',
+        website: 'kale.biz',
+      },
+      {
+        id: 5,
+        name: 'Chelsey Dietrich',
+        username: 'Kamren',
+        email: 'Lucio_Hettinger@annie.ca',
+        website: 'demarco.info',
+      },
+      {
+        id: 6,
+        name: 'Mrs. Dennis Schulist',
+        username: 'Leopoldo_Corkery',
+        email: 'Karley_Dach@jasper.info',
+        website: 'ola.org',
+      },
+      {
+        id: 7,
+        name: 'Kurtis Weissnat',
+        username: 'Elwyn.Skiles',
+        email: 'Telly.Hoeger@billy.biz',
+        website: 'elvis.io',
+      },
+      {
+        id: 8,
+        name: 'Nicholas Runolfsdottir V',
+        username: 'Maxime_Nienow',
+        email: 'Sherwood@rosamond.me',
+        website: 'jacynthe.com',
+      },
+      {
+        id: 9,
+        name: 'Glenna Reichert',
+        username: 'Delphine',
+        email: 'Chaim_McDermott@dana.io',
+        website: 'conrad.com',
+      },
+      {
+        id: 10,
+        name: 'Clementina DuBuque',
+        username: 'Moriah.Stanton',
+        email: 'Rey.Padberg@karina.biz',
+        website: 'ambrose.net',
+      },
+    ].map((row, idx) => {
+        const marginFormControl1 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+        const marginFormControl2 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+        const marginFormControl3 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+        const marginTargetFormControl1 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+        const marginTargetFormControl2 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+        const marginTargetFormControl3 = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+        const profitizerFormControl = new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]);
+        return {
+            ...row,
+            us_row: idx==2 ? ['US', 'IL', 'ROW'] : ['US', 'ROW'],
+            margin: idx==2 ? [marginFormControl1, marginFormControl2, marginFormControl3] : [marginFormControl1, marginFormControl2],
+            margin_target: idx==2 ? [marginTargetFormControl1, marginTargetFormControl2, marginTargetFormControl3] : [marginTargetFormControl1, marginTargetFormControl2],
+            profitizer: profitizerFormControl
+        };
+    });
+                `,
+                format: true,
+                type: 'code'
+            }
         }
     }
 };
-// endregion

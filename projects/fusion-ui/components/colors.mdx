@@ -1,0 +1,63 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
+
+<Meta title="Styleguide/Colors" />
+
+# Color Palette
+
+The palette allows you to modify the color of the components to suit your brand.
+
+You can explore the default values of FusionUI color palette or adjust the colors by using CSS variables to fit you project theme.
+<br/>
+## Usage
+Just put ```@import '@ironsource/fusion-ui/style/v3/vars/_colors';``` in your ***styles.scss***
+Use as scss variable with prefix "$fu-...".
+
+For example **$fu-dark-500**.
+<hr/>
+<br/>
+<ColorPalette>
+    <ColorItem
+        title="Dark"
+        subtitle="Dark colors"
+        colors={{ 'dark-100': '#CFD0E8', 'dark-200': '#B6B9DD', 'dark-300': '#313D91', 'dark-400': '#212791',
+            'dark-500': '#0D148C', 'dark-600': '#021074', 'dark-700': '#1D1C64', 'dark-800': '#070A46'}}
+    />
+    <ColorItem
+        title="Black"
+        subtitle="Black colors"
+        colors={{ 'black-200': '#696A6B', 'black-500': '#53575B', 'black-900': '#41454D' }}
+    />
+    <ColorItem
+        title="light"
+        subtitle="light colors"
+        colors={{ 'light-50': '#F7F8F9', 'light-100': '#F1F3F4', 'light-200': '#EDEFF0',
+            'light-300': '#E5E7E9', 'light-400': '#DDDFE1', 'light-500': '#D2D5D8',
+            'light-600': '#B7BBC0', 'light-700': '#A9AFB4', 'light-800': '#8E959D', 'light-900': '#7B838C', 'light-1000': '#626970'}}
+    />
+    <ColorItem
+        title="Primary"
+        subtitle="Primary colors"
+        colors={{ 'primary-100': '#E2EEFF', 'primary-200': '#C9DFFF', 'primary-300': '#96C0FF', 'primary-400': '#68A5FF',
+            'primary-500': '#3083FF', 'primary-600': '#2B76E6', 'primary-700': '#005BE2', 'primary-800': '#0051C9', 'primary-900': '#0046AF'}}
+    />
+    <ColorItem
+        title="Secondary"
+        subtitle="Secondary colors"
+        colors={{ 'secondary-100': '#E1FBFC', 'secondary-200': '#BFF2F5', 'secondary-300': '#91E2E7', 'secondary-500': '#00CCD7'}}
+    />
+    <ColorItem
+        title="Positive"
+        subtitle="Positive colors"
+        colors={{ 'positive-100': '#DAF5EC', 'positive-200': '#B4E9D2', 'positive-300': '#78DDBC', 'positive-400': '#5CD6AD', 'positive-500': '#22C891', 'positive-600': '#1EB281', 'positive-700': '#1B9C71'}}
+    />
+    <ColorItem
+        title="Negative"
+        subtitle="Negative colors"
+        colors={{ 'negative-100': '#FFEFEE', 'negative-200': '#FFCBCE', 'negative-300': '#FF9B96', 'negative-400': '#FF827C', 'negative-500': '#FF6A63', 'negative-600': '#EC5D56', 'negative-700': '#DA564F'}}
+    />
+    <ColorItem
+        title="Neutral"
+        subtitle="Neutral colors"
+        colors={{ 'neutral-100': '#FFF8E2', 'neutral-200': '#FFE0A3', 'neutral-500': '#FFB424', 'neutral-700': '#FEA222', 'neutral-900': '#D8840D'}}
+    />
+</ColorPalette>

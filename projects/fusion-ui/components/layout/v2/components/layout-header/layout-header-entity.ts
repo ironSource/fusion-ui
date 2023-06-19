@@ -7,7 +7,8 @@ import {LayoutUser} from '@ironsource/fusion-ui/entities';
 import {SidebarMenuItem} from '@ironsource/fusion-ui/components/sidebar/common/entities';
 
 export interface LayoutHeaderContentTitle {
-    text: string;
+    text?: string;
+    subtitle?: string;
     content?: DynamicComponentConfiguration;
     type?: 'static' | 'page' | 'fixed';
 }

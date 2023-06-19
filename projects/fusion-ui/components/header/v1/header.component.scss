@@ -76,6 +76,20 @@ $logoTransition: width .4s;
     font-size: 22px;
     @extend %font1;
 }
+.page-sub-title{
+    @extend %font5;
+    line-height: 1.125rem;
+    float: left;
+    margin-top: 23px;
+    margin-left: 12px;
+    position: relative;
+    &:before{
+        position: absolute;
+        left: -8px;
+        content: '•';
+        font-size: 1rem;
+    }
+}
 
 .top-header__panel {
     .menu-icon {

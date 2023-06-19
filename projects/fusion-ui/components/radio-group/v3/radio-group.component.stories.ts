@@ -1,4 +1,4 @@
-import {Story, Meta} from '@storybook/angular';
+import {StoryFn, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -10,6 +10,7 @@ import {RadioGroupComponent} from './radio-group.component';
 import {RadioModule} from '../../radio/v3/radio.module';
 import {RadioGroupOptions} from '../common/entities/radio-group.entities';
 import {RadioGroupModule} from '../';
+import {ApiService} from '@ironsource/fusion-ui';
 
 // region mocking
 const radioGroupOptions: RadioGroupOptions[] = [
@@ -57,9 +58,11 @@ export default {
                 IconModule,
                 RadioGroupModule,
                 RadioModule
-            ]
+            ],
+            providers: [ApiService]
         })
     ],
+    tags: ['autodocs'],
     parameters: {
         design: {
             type: 'figma',
@@ -79,7 +82,7 @@ export default {
     }
 } as Meta<RadioGroupComponent>;
 
-const RadioGroupTemplate: Story<RadioGroupComponent> = (args: RadioGroupComponent) => ({
+const RadioGroupTemplate: StoryFn<RadioGroupComponent> = (args: RadioGroupComponent) => ({
     props: {...args},
     template: `<div style="width: 300px;"><fusion-radio-group
     [inline]="inline"
@@ -89,29 +92,46 @@ const RadioGroupTemplate: Story<RadioGroupComponent> = (args: RadioGroupComponen
 ></fusion-radio-group></div>`
 });
 
-export const Default = RadioGroupTemplate.bind({});
-Default.args = {
-    formControl: formControlSelectedOption
-};
-export const Row = RadioGroupTemplate.bind({});
-Row.args = {
-    inline: true,
-    formControl: formControlSelectedOption
-};
-export const Disabled = RadioGroupTemplate.bind({});
-Disabled.args = {
-    isDisabled: true,
-    formControl: formControlSelectedOption
+export const Default = {
+    render: RadioGroupTemplate,
+
+    args: {
+        formControl: formControlSelectedOption
+    }
 };
 
-export const DisabledOption = RadioGroupTemplate.bind({});
-DisabledOption.args = {
-    options: radioGroupDisabledOptions,
-    formControl: formControlSelectedDisabledOption
+export const Row = {
+    render: RadioGroupTemplate,
+
+    args: {
+        inline: true,
+        formControl: formControlSelectedOption
+    }
 };
 
-export const IconOptions = RadioGroupTemplate.bind({});
-IconOptions.args = {
-    options: radioGroupIconOptions,
-    formControl: formControlSelectedIconOption
+export const Disabled = {
+    render: RadioGroupTemplate,
+
+    args: {
+        isDisabled: true,
+        formControl: formControlSelectedOption
+    }
+};
+
+export const DisabledOption = {
+    render: RadioGroupTemplate,
+
+    args: {
+        options: radioGroupDisabledOptions,
+        formControl: formControlSelectedDisabledOption
+    }
+};
+
+export const IconOptions = {
+    render: RadioGroupTemplate,
+
+    args: {
+        options: radioGroupIconOptions,
+        formControl: formControlSelectedIconOption
+    }
 };

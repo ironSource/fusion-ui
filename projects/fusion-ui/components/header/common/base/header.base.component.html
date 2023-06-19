@@ -5,6 +5,7 @@
     <div class="top-header__panel">
         <i class="menu-icon icon-x white" (click)="changeMenuState()"></i>
         <span class="page-title">{{ state?.title }}</span>
+        <span *ngIf="state?.subtitle" class="page-sub-title">{{ state?.subtitle }}</span>
     </div>
     <div class="menu-action" *ngIf="state?.actionComponent" [ngClass]="{'no-help-menu': !secondaryMenuItems?.length}" #menuAction>
         <fusion-dynamic-components *ngIf="state.actionComponent" [component]="state.actionComponent" [componentData]="state.actionData">

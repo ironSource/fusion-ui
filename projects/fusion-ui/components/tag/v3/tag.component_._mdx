@@ -1,0 +1,48 @@
+import {Meta, Description, Source, ArgsTable} from '@storybook/blocks';
+import {dedent} from 'ts-dedent';
+import * as TagComponentStories from './tag.component.stories';
+
+import {TagComponent} from "./tag.component";
+
+<Meta of={TagComponentStories} />
+
+<Description
+  markdown={dedent`
+  # Tag label
+  Use tags to label, categorize, or organize items using keywords that describe them.
+
+  Multiple or single tags can be used to categorize items.
+  `}
+/>
+
+## Usage
+
+<Source
+  language="html"
+  code={dedent`
+  <fusion-tag [configuration]="configuration"></fusion-tag>
+  `}
+/>
+
+## TagComponentConfigurations
+
+<Source
+  language="ts"
+  code={dedent`
+  interface TagComponentConfigurations {
+   id?: number | string;
+   icon?: IconData;
+   flag?: string;
+   title: string;
+   image?: string;
+   close?: boolean;
+   disabled?: boolean;
+   selected?: boolean;
+   role?: TagRole;
+   tooltipContent?: string;
+   tooltipWidth?: number;
+  }
+  `}
+/>
+
+<ArgsTable of={TagComponent} />

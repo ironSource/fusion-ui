@@ -304,7 +304,7 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
 
     // for base table will NOT use select column
     columnsBasic: Array<TableColumn> = TABLE_COLUMNS_CONFIG;
-    columnsSmall: Array<TableColumn> = TABLE_COLUMNS_CONFIG.filter(cel => cel.key !== 'bid');
+    columnsSmall: Array<TableColumn> = TABLE_COLUMNS_CONFIG.filter(cel => cel.key !== 'bid' && cel.key !== 'checkbox');
     columnsWithoutCheckbox: Array<TableColumn> = TABLE_COLUMNS_CONFIG.filter(cel => cel.key !== 'checkbox');
     columnsExpandable: Array<TableColumn> = [...this.columnsWithoutCheckbox];
 
@@ -507,7 +507,7 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
                             Validators.min(10)
                         ]);
                         return {
-                            checkbox: false,
+                            checkbox: _index == 2,
                             id: item.id,
                             name: item.name,
                             username: item.username,
@@ -739,6 +739,10 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
 
     onSelectedChanged(selectedRows) {
         console.log('onSelectedChanged:', selectedRows);
+        this.rowsBig = this.rowsBig.map(item => {
+            item.checkbox = selectedRows.some(row => row.id === item.id);
+            return item;
+        });
     }
 
     onRowClicked(data: {$event: MouseEvent; rowIndex: string; rowEl: Element; rowData: any}) {
