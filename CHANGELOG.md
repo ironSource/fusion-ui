@@ -4,14 +4,11 @@ All notable changes to this project will be documented in this file. See [commit
 
 ## [5.5.0](https://github.com/ironSource/fusion-ui/compare/v5.4.1...v5.5.0) (2023-06-19)
 
-## [5.5.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.4.1...v5.5.0-rc.0) (2023-06-19)
-
-## [5.2.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.1.2...v5.2.0-rc.0) (2023-04-13)
-
-
 ### Features
 
 * **fg-131:** added new "combined" component top-filter-include-exclude ([93be90c](https://github.com/ironSource/fusion-ui/commit/93be90c38b54023bfbf5048807cc88699295112e))
+* **fg-131:** added new Layout component for style v4
+* **fg-131:** added new Navigation menu component for style v4
 
 
 ### Bug Fixes
