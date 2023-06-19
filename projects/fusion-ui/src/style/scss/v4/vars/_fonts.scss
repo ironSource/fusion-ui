@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+// font-family
+$inter: 'Inter', sans-serif;
+
+// region heading
+%font-heading {
+    font-family: $inter;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+}
+%font-heading-1 {
+    font-size: 40px;
+    line-height: 40px;
+    @extend %font-heading;
+}
+%font-heading-2 {
+    font-size: 24px;
+    line-height: 28px;
+    @extend %font-heading;
+}
+%font-heading-3 {
+    font-size: 20px;
+    line-height: 24px;
+    @extend %font-heading;
+}
+%font-heading-4 {
+    font-size: 18px;
+    line-height: 24px;
+    @extend %font-heading;
+    letter-spacing: -0.014em;
+}
+// endregion
+
+// region title
+%font-title{
+    font-family: $inter;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.011em;
+}
+%font-title-1 {
+    @extend %font-title;
+    font-weight: 400;
+}
+%font-title-2 {
+    @extend %font-title;
+    font-weight: 500;
+}
+%font-title-3 {
+    @extend %font-title;
+    font-weight: 600;
+}
+// endregion
+
+// region subtitle
+%font-subtitle{
+    font-family: $inter;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.006em;
+}
+%font-subtitle-1 {
+    @extend %font-subtitle;
+    font-weight: 400;
+}
+%font-subtitle-2 {
+    @extend %font-subtitle;
+    font-weight: 500;
+}
+%font-subtitle-3 {
+    @extend %font-subtitle;
+    font-weight: 600;
+}
+// endregion
+
+// region body
+%font-body{
+    font-family: $inter;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: -0.003em;
+}
+%font-body-1 {
+    @extend %font-body;
+    font-weight: 400;
+}
+%font-body-2 {
+    @extend %font-body;
+    font-weight: 500;
+}
+%font-body-3 {
+    @extend %font-body;
+    font-weight: 600;
+}
+// endregion
+
+// region caption
+%font-caption{
+    font-family: $inter;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.003em;
+}
+%font-caption-1 {
+    @extend %font-caption;
+    font-weight: 400;
+}
+%font-caption-2 {
+    @extend %font-caption;
+    font-weight: 500;
+}
+%font-caption-3 {
+    @extend %font-caption;
+    font-weight: 600;
+}
+// endregion
+
+// region Misc fonts
+%font-primary-menu{
+    font-family: $inter;
+    font-size: 11.5px;
+    line-height: 18px;
+    font-weight: 600;
+}
+// endregion

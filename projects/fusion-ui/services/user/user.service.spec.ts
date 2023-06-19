@@ -55,7 +55,7 @@ class MockApiService {
 
 // private _apiService: ApiService, @Inject(MFE_SHARED_CONFIG) @Optional() private config
 
-fdescribe('UserService', () => {
+describe('UserService', () => {
     beforeEach(() =>
         TestBed.configureTestingModule({
             imports: [HttpClientModule],

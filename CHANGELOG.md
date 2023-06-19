@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.5.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.4.1...v5.5.0-rc.0) (2023-06-19)
+
+## [5.2.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.1.2...v5.2.0-rc.0) (2023-04-13)
+
+
+### Features
+
+* **fg-131:** added new "combined" component top-filter-include-exclude ([93be90c](https://github.com/ironSource/fusion-ui/commit/93be90c38b54023bfbf5048807cc88699295112e))
+
+
+### Bug Fixes
+
+* **fg-131:** fix dynamic-components.base for component with 'form control' ([96c09fc](https://github.com/ironSource/fusion-ui/commit/96c09fcb3ef38df3a6d60d814866a6e479783b33))
+* **fg-131:** update teleport directive ([f04a10b](https://github.com/ironSource/fusion-ui/commit/f04a10b2372818cbb9c1dadfff5d31e3ef56d3aa))
+
 ### [5.4.1](https://github.com/ironSource/fusion-ui/compare/v5.2.0...v5.4.1) (2023-06-05)
 
 
@@ -84,6 +99,20 @@ All notable changes to this project will be documented in this file. See [commit
 
 * **fg-147:** dynamic filters pre-selected in chip-filters ([ffb23c0](https://github.com/ironSource/fusion-ui/commit/ffb23c0424cc87251c8e4d15e7a04e400fe7c172))
 * **fg-150:** tooltip v1 add prevent to close parameter ([8d04512](https://github.com/ironSource/fusion-ui/commit/8d04512e3ebffb44abd41e6a97330f35a5d6fb7d))
+
+
+## [5.2.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.1.2...v5.2.0-rc.0) (2023-04-13)
+
+
+### Features
+
+* **fg-131:** added new "combined" component top-filter-include-exclude ([93be90c](https://github.com/ironSource/fusion-ui/commit/93be90c38b54023bfbf5048807cc88699295112e))
+
+
+### Bug Fixes
+
+* **fg-131:** fix dynamic-components.base for component with 'form control' ([96c09fc](https://github.com/ironSource/fusion-ui/commit/96c09fcb3ef38df3a6d60d814866a6e479783b33))
+* **fg-131:** update teleport directive ([f04a10b](https://github.com/ironSource/fusion-ui/commit/f04a10b2372818cbb9c1dadfff5d31e3ef56d3aa))
 
 ### [5.1.2](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.11...v5.1.2) (2023-03-27)
 

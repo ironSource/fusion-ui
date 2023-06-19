@@ -1,33 +1,44 @@
-import {Directive, EmbeddedViewRef, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef} from '@angular/core';
+import {AfterViewInit, Directive, EmbeddedViewRef, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef} from '@angular/core';
 
 @Directive({
     selector: '[fusionTeleporting]',
     standalone: true
 })
-export class TeleportingDirective implements OnInit, OnDestroy {
+export class TeleportingDirective implements OnInit, OnDestroy, AfterViewInit {
     @Input('fusionTeleporting') selector: string;
 
     private host: Element;
     private viewRef: EmbeddedViewRef<any>;
     private addChildNodes: Element[] = [];
 
+    private hasTeleported = false;
+
     constructor(private templateRef: TemplateRef<any>, private vcr: ViewContainerRef) {}
 
     ngOnInit() {
         this.viewRef = this.vcr.createEmbeddedView(this.templateRef);
-        if (this.selector) {
+        this.teleportingView();
+    }
+
+    ngAfterViewInit() {
+        this.teleportingView();
+    }
+
+    ngOnDestroy() {
+        this.clearAttachedNodes();
+    }
+
+    private teleportingView() {
+        if (this.selector && !this.hasTeleported) {
             this.host = document.querySelector(this.selector);
             if (this.host) {
                 this.viewRef.rootNodes.forEach(node => {
                     this.host.appendChild(node);
                     this.addChildNodes.push(node);
                 });
+                this.hasTeleported = true;
             }
         }
-    }
-
-    ngOnDestroy() {
-        this.clearAttachedNodes();
     }
 
     private clearAttachedNodes() {
