@@ -3,7 +3,6 @@
 
 :host {
     @extend %border-box-normalize;
-
     display: inline-block;
 
     &:hover {
@@ -18,9 +17,7 @@
 
     .fu-top-filter-trigger-wrapper {
         width: 287px;
-        height: 100%;
-        min-height: 60px;
-        max-height: 64px;
+        height: 64px;
 
         background-color: $White;
 

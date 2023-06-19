@@ -1,0 +1,36 @@
+@import '../../../src/style/scss/v4/app';
+
+$navigationPanelMaxWidth: 276px;
+$pageHeaderHeight: 64px;
+
+:host{
+    @extend %reset;
+    .fu-layout{
+        display: grid;
+        grid-template-columns: min-content 1fr;
+        width: 100vw;
+        height: 100vh;
+        .fu-left-navigation{
+            display: block;
+            height: 100%;
+            max-width: $navigationPanelMaxWidth;
+        }
+        .fu-main-page{
+            .fu-page-header{
+                height: $pageHeaderHeight;
+                border-bottom: solid 1px $fu-divider;
+            }
+            .main-content{
+                height: calc(100vh - var(--lauout-header-height, #{$pageHeaderHeight}));
+                overflow-y: auto;
+                .page-view {
+                    height: 100%;
+                    .app-route-content-holder{
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+

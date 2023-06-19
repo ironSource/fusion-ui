@@ -1,0 +1,21 @@
+<div class="fu-header-back-button" *ngIf="headerContent?.hasBackButton">
+    <fusion-icon class="fu-header-back-button-icon" [name]="{iconName:'arrow-back', iconVersion:'v3'}" (click)="backButtonClicked.emit($event)"></fusion-icon>
+</div>
+<div class="fu-page-title"
+     [class.fu-page-has-subtitle]="headerContent?.subTitle"
+     [class.fu-page-has-button-back]="headerContent?.hasBackButton"
+>{{ headerContent?.title }}</div>
+<ng-container *ngIf="headerContent?.subTitle">
+    <div class="fu-header-delimiter"></div>
+    <div class="fu-page-subtitle">{{headerContent?.subTitle}}</div>
+</ng-container>
+<div class="fu-header-action-wrapper" *ngIf="headerContent?.actionComponent">
+    <fusion-dynamic-components
+        [component]="headerContent.actionComponent"
+        [componentData]="headerContent.actionData">
+    </fusion-dynamic-components>
+</div>
+<ng-container *ngIf="headerContent?.teleportElements?.length">
+    <div *ngFor="let teleportItem of headerContent?.teleportElements" [id]="teleportItem.id" class="fu-header-teleport-host" [class.fu-flex-align-right]="teleportItem.isOnRight"></div>
+</ng-container>
+

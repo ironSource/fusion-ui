@@ -1,0 +1,169 @@
+@import '../../../../src/style/scss/v4/mixins/mixins';
+@import '../../../../src/style/scss/v4/vars/vars';
+
+$primaryMenuWidth: 64px;
+$secondaryMenuWidth: 212px;
+$secondaryMenuLogoHolderHeight: 64px;
+$secondaryMenuItemHeight: 28px;
+$secondaryMenuItemTitleHeight: 36px;
+$secondaryMenuItemIconSize: 18px;
+$secondaryMenuItemParentIconSize: 20px;
+$secondaryMenuItemOpenCloseIconSize: 12px;
+$secondaryMenuItemNewTabIconSize: 16px;
+
+:host {
+    @extend %reset;
+    display: block;
+    width: 0px;
+    max-width: $secondaryMenuWidth;
+    background-color: var(--fu-secondary-menu-background-color, $fu-nav-secondary);
+    border-right: solid 1px $fu-divider;
+    margin-left: -1px;
+
+    transition: all .45s ease-out;
+    opacity: 0;
+    &.fu-menu-open {
+        width: $secondaryMenuWidth;
+        opacity: 1;
+        margin-left: 0;
+    }
+
+    &.fu-menu-expanded{
+        position: fixed;
+        top: 0;
+        left: $primaryMenuWidth;
+        height: 100vh;
+        z-index: getZIndexLayerOffset(application, 3);
+    }
+
+    .fu-secondary-menu-holder {
+        .fu-logo-holder {
+            height: $secondaryMenuLogoHolderHeight;
+            display: flex;
+            align-items: center;
+            padding-left: 20px;
+
+            img {
+                max-width: $secondaryMenuWidth;
+                max-height: $secondaryMenuLogoHolderHeight;
+            }
+        }
+
+        .fu-secondary-menu {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0px 12px 24px;
+
+            overflow-y: auto;
+            overflow-x: hidden;
+            max-height: calc(100vh - $secondaryMenuLogoHolderHeight);
+            @extend %customNavBarScroll;
+
+            .fu-secondary-menu-item-wrapper{
+                width: 100%;
+                .fu-secondary-menu-item-holder {
+                    width: 100%;
+                    height: $secondaryMenuItemHeight;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    padding: 4px 8px;
+                    gap: 14px;
+                    cursor: pointer;
+                    margin-bottom: 2px;
+                    border: solid 1px transparent;
+                    text-decoration: none;
+
+                    &.fu-secondary-menu-item-selected {
+                        border: solid 1px $fu-nav-menu-black-8;
+                        border-radius: 4px;
+                        background-color: $fu-nav-menu-black-5;
+                        cursor: default;
+                        pointer-events: none;
+                    }
+
+                    &.fu-nav-menu-title-item {
+                        height: $secondaryMenuItemTitleHeight;
+                        cursor: default;
+                        pointer-events: none;
+                        .fu-secondary-menu-item-icon-holder{
+                            display: none;
+                        }
+                        .fu-secondary-menu-item-label {
+                            @extend %font-caption-3;
+                            color: $fu-nav-text-secondary;
+                        }
+                    }
+
+                    &:hover {
+                        border-radius: 4px;
+                        background-color: $fu-nav-menu-black-5;
+                    }
+
+                    &.fu-has-sub-items {
+                        gap: 12px;
+                        .fu-secondary-menu-item-icon-holder {
+                            @include size($secondaryMenuItemParentIconSize);
+                            @include icon-style('fu-secondary-menu-item-icon', $fu-nav-text-primary, $secondaryMenuItemParentIconSize, true, true) {
+                                @include size($secondaryMenuItemParentIconSize);
+                            }
+                        }
+
+                    }
+
+                    .fu-secondary-menu-item-icon-holder {
+                        @include size($secondaryMenuItemIconSize);
+                        @include icon-style('fu-secondary-menu-item-icon', $fu-nav-text-primary, $secondaryMenuItemIconSize, true, true) {
+                            @include size($secondaryMenuItemIconSize);
+                        }
+                    }
+
+                    .fu-secondary-menu-item-label {
+                        @extend %font-body-2;
+                        color: $fu-nav-text-primary;
+                    }
+
+                    @include icon-style('fu-secondary-menu-item-new-tab-icon', $fu-nav-text-primary, $secondaryMenuItemNewTabIconSize, true, true){
+                        @include size($secondaryMenuItemNewTabIconSize);
+                        margin-left: -10px;
+                    }
+                    @include icon-style('fu-secondary-menu-item-parent-icon-toggle', $fu-nav-text-primary, $secondaryMenuItemOpenCloseIconSize, true, true){
+                        @include size($secondaryMenuItemOpenCloseIconSize);
+                        margin-left: auto;
+                        cursor: pointer;
+                    }
+
+                    &.fu-sub-items-opened {
+                        @include icon-style('fu-secondary-menu-item-parent-icon-toggle', $fu-nav-text-primary, $secondaryMenuItemOpenCloseIconSize, true, true, 90);
+                    }
+                }
+                .fu-secondary-menu-sub-items-holder{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+
+                    transition: max-height, .45s ease-out;
+                    max-height: 0px;
+                    overflow-y: hidden;
+
+                    &.fu-secondary-menu-sub-items-opened{
+                        max-height: calc(100vh - $secondaryMenuItemHeight);
+                    }
+
+                    .fu-secondary-menu-item-holder{
+                        .fu-secondary-menu-item-label {
+                            @extend %font-body-1;
+                        }
+                    }
+                }
+            }
+
+            .truncate {
+                @extend %truncate;
+                width: initial;
+            }
+        }
+
+    }
+}

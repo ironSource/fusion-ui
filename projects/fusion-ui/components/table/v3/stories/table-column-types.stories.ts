@@ -806,12 +806,12 @@ const TableCheckboxTemplate: StoryFn<TableComponent> = (args: TableComponent) =>
         ...args,
         selectionChanged: actionsData.selectionChanged
     },
-    template: `<fusion-table
+    template: `<fusion-table-story-holder
     [options]="options"
     [columns]="columns"
     [rows]="rows"
     (selectionChanged)="selectionChanged($event)"
-></fusion-table>`
+></fusion-table-story-holder>`
 });
 
 export const Checkbox = {
@@ -832,6 +832,52 @@ export const Checkbox = {
               and in **row** data add data for checkbox state:
               \`{selected: false, id: 1, name: 'Leanne Graham', username: 'Bret', email: 'Sincere@april.biz', website: 'hildegard.org'}\`
               `
+            },
+            source: {
+                language: 'typescript',
+                code: dedent`
+  import { Component} from '@angular/core';
+
+  import {
+    TableModule,
+    TableColumn,
+    TableOptions,
+    TableColumnTypeEnum
+  } from '@ironsource/fusion-ui/components/table';
+
+  @Component({
+    selector: 'fusion-story-wrapper',
+    template: \`<fusion-table
+      [columns]="columns"
+      [rows]="rows"
+      [options]="options"
+      (selectionChanged)="onSelectedChanged($event)"
+    ></fusion-table>\`,
+    standalone: true,
+    imports: [TableModule],
+  })
+  export class FusionStoryWrapperComponent {
+    options: TableOptions = {
+      tableLabel: {text: 'Table label', tooltip: 'lorem ipsum dolor'}
+    };
+    columns: TableColumn[] = COLUMNS_CONFIG;
+    rows: any[] = ROWS_DATA;
+
+    onSelectedChanged(selectedRows) {
+        console.log('onSelectedChanged:', selectedRows);
+        this.rows = this.rows.map(item => {
+            item.checkbox = selectedRows.some(row => row.id === item.id);
+            return item;
+        });
+    }
+  }
+
+  const COLUMNS_CONFIG = ${JSON.stringify(TABLE_CHECKBOX_COLUMNS_CONFIG, null, 2)};
+
+  const ROWS_DATA = ${JSON.stringify(ROWS_CHECKBOX_DATA, null, 2)};
+              `,
+                format: true,
+                type: 'code'
             }
         }
     }

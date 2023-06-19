@@ -1,0 +1,15 @@
+<fusion-top-filter-trigger
+    [placeholder]="placeholder"
+    [helper]="helper"
+    [error]="error"
+    [required]="required"
+    [loading]="loading"
+>
+    <div class="filter-element">
+        <fusion-dropdown-dual-multi-select
+            [title]="title"
+            [formControl]="formControlIncludeExclude"
+            [items]="items"
+        ></fusion-dropdown-dual-multi-select>
+    </div>
+</fusion-top-filter-trigger>

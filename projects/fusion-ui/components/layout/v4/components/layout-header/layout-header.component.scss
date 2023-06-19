@@ -1,0 +1,58 @@
+@import '../../../../../src/style/scss/v4/mixins/mixins';
+@import '../../../../../src/style/scss/v4/vars/vars';
+
+$headerHeight: 64px;
+
+:host {
+    @extend %reset;
+    height: $headerHeight;
+    max-height: $headerHeight;
+    //overflow: hidden;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+
+    .fu-header-back-button{
+        @include size(40px);
+        padding: 8px;
+        margin-left: 16px;
+        border-radius: 20px;
+        @include icon-style('fu-header-back-button-icon', $fu-nav-text-secondary, 24px, true, true){
+            @include size(24px);
+        }
+        &:hover{
+            background-color: $fu-light-100;
+            cursor: pointer;
+        }
+    }
+    .fu-page-title {
+        @extend %font-heading-4;
+        margin-left: 24px;
+        margin-right: 32px;
+        color: $fu-nav-text-primary;
+
+        &.fu-page-has-subtitle{
+            margin-right: 10px;
+        }
+        &.fu-page-has-button-back{
+            margin-left: 12px;
+        }
+    }
+    .fu-header-delimiter{
+        @include size(3px);
+        border-radius: 2px;
+        background-color: $fu-nav-text-primary;
+        margin-right: 8px;
+    }
+    .fu-page-subtitle{
+        @extend %font-body-2;
+        margin-right: 32px;
+        color: $fu-nav-text-primary;
+    }
+
+    .fu-flex-align-right{
+        margin-left: auto;
+    }
+}
