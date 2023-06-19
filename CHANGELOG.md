@@ -158,7 +158,7 @@ All notable changes to this project will be documented in this file. See [commit
 ### [5.1.2-rc.3](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.2...v5.1.2-rc.3) (2023-02-28)
 
 
-### Bug Fixes 
+### Bug Fixes  
 
 * **fu-129:** fixed button v3 with content in initial state loading ([a6c1c6f](https://github.com/ironSource/fusion-ui/commit/a6c1c6f00c44ae6bff07c6e2849b65505b10dc66))
 
