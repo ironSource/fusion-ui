@@ -79,7 +79,7 @@ export const Default = {
     parameters: {
         docs: {
             description: {
-                story: dedent`<a href="https://stackblitz.com/edit/angular-goeobr?file=src%2Fapp%2Fwrapper.component.ts" target="_blank">Example on stackblits</a>`
+                story: dedent`<a href="https://stackblitz.com/edit/angular-goeobr?file=src%2Fapp%2Fwrapper.component.ts" target="_blank">Example on Stackblitz</a>`
             },
             source: {
                 language: 'typescript',
