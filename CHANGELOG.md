@@ -2,7 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.5.2](https://github.com/ironSource/fusion-ui/compare/v5.2.0...v5.5.2) (2023-06-20)
+
+### [5.5.2-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.2.0...v5.5.2-rc.0) (2023-06-20)
+
+
+### Bug Fixes
+
+* **fgc-172:** fixed preselected placeholder text dropdown include/exclude with BackendPagination ([a586ca1](https://github.com/ironSource/fusion-ui/commit/a586ca188059ff15b9969d39a47e8d75c00de7b2))
+
 ### [5.5.1](https://github.com/ironSource/fusion-ui/compare/v5.5.0...v5.5.1) (2023-06-19)
+
+Just update for testing
 
 ## [5.5.0](https://github.com/ironSource/fusion-ui/compare/v5.4.1...v5.5.0) (2023-06-19)
 
