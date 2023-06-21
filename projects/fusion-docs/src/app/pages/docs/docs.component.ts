@@ -11,6 +11,7 @@ import {DocsLayoutService} from './docs-layout.service';
 import {VersionService} from '../../services/version/version.service';
 import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {LayoutComponentConfiguration, LayoutHeaderComponentConfiguration} from '@ironsource/fusion-ui/components/layout/v2';
+
 import {NAVIGATION_MENU_MOCK} from '@ironsource/fusion-ui/components/navigation-menu/v4/stories/navigation-menu.mock';
 import {HeaderContent, LayoutConfiguration} from '@ironsource/fusion-ui/components/layout/v4/layout.entities';
 import {TopFilterIncludeExcludeComponent} from '@ironsource/fusion-ui/components/top-filter-include-exclude';
@@ -24,8 +25,8 @@ import {MOK_APPLICATIONS_ONE_LINE_OPTIONS} from '@ironsource/fusion-ui/component
     styleUrls: ['./docs.component.scss']
 })
 export class DocsComponent implements OnInit, OnDestroy {
-    useNewLayout = true; // switch to new layout
-    useLayoutName = 'layoutV4'; // 'layoutV1', 'layoutV2'
+    useNewLayout = false; // switch to new layout
+    useLayoutName = 'layoutV1'; // 'layoutV1', 'layoutV2', 'layoutV4'
     menuItems: MenuItem[] | SidebarMenuItem[] = this.useNewLayout ? MENU_ITEMS_V2 : MENU_ITEMS;
 
     // region for layout-v1 v1
