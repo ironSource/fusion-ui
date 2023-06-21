@@ -51,24 +51,20 @@ export class LayoutComponent implements OnInit {
         let primaryItemFound: PrimaryMenuItem = null;
         if (menuPrimary.length) {
             menuPrimary.forEach((primaryMenuItem: PrimaryMenuItem) => {
-                if (itemFound) {
-                    return;
-                }
                 if (primaryMenuItem?.menuItems?.length && !itemFound) {
                     primaryMenuItem.menuItems.forEach((menuItem: MenuItem) => {
-                        if (itemFound) {
-                            return;
-                        }
-                        if (menuItem.children?.length) {
-                            menuItem.children.forEach((childMenuItem: MenuItem) => {
-                                if (!itemFound && this.isActiveMenuItem(childMenuItem, currentPath)) {
-                                    itemFound = childMenuItem;
-                                    primaryItemFound = primaryMenuItem;
-                                }
-                            });
-                        } else if (menuItem.route && this.isActiveMenuItem(menuItem, currentPath)) {
-                            itemFound = menuItem;
-                            primaryItemFound = primaryMenuItem;
+                        if (!itemFound) {
+                            if (menuItem.children?.length) {
+                                menuItem.children.forEach((childMenuItem: MenuItem) => {
+                                    if (!itemFound && this.isActiveMenuItem(childMenuItem, currentPath)) {
+                                        itemFound = childMenuItem;
+                                        primaryItemFound = primaryMenuItem;
+                                    }
+                                });
+                            } else if (menuItem.route && this.isActiveMenuItem(menuItem, currentPath)) {
+                                itemFound = menuItem;
+                                primaryItemFound = primaryMenuItem;
+                            }
                         }
                     });
                 }
