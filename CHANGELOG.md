@@ -5,9 +5,7 @@ All notable changes to this project will be documented in this file. See [commit
 ### [5.5.3-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.2.0...v5.5.3-rc.0) (2023-06-21)
 
 
-### Bug Fixes
-
-* increse fusion version ([324d034](https://github.com/ironSource/fusion-ui/commit/324d0345f8e122bb14127803bd29f12b84115499))
+* **fgc-173:** added pre-selected menu by current location path in layout v4 ([71ab38c](https://github.com/ironSource/fusion-ui/pull/218/commits/71ab38c87c04697d5bae081094bc01187278121b))
 
 ### [5.5.2](https://github.com/ironSource/fusion-ui/compare/v5.2.0...v5.5.2) (2023-06-20)
 
