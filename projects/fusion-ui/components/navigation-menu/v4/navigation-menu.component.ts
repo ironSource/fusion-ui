@@ -78,9 +78,9 @@ export class NavigationMenuComponent implements OnInit {
         if (!popMenuItem) {
             if (this.selectedPrimaryMenuItem !== this.preSelectedPrimaryMenuItem) {
                 this.selectedPrimaryMenuItem = this.preSelectedPrimaryMenuItem;
-                this.selectedSecondaryMenuItem = menuItem;
                 this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, true);
             }
+            this.selectedSecondaryMenuItem = menuItem;
             this.primaryMenu.setSelectedPrimaryMenuItem(this.selectedPrimaryMenuItem);
             this.primaryMenu.setColorTheme(this.selectedPrimaryMenuItem?.cssTheme ?? null);
         } else {
