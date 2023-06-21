@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BehaviorSubject} from 'rxjs';
-import {WindowService} from '@ironsource/fusion-ui';
+import {WindowService} from '@ironsource/fusion-ui/services/window';
 import {NavigationMenuComponent, PrimaryMenuItem} from '@ironsource/fusion-ui/components/navigation-menu/v4';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
 import {HeaderContent, LayoutConfiguration} from './layout.entities';
