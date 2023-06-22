@@ -5,7 +5,7 @@ import {TooltipComponent, TooltipModule} from './';
 import {dedent} from 'ts-dedent';
 
 export default {
-    title: 'Components/Tooltip/Implementation',
+    title: 'Components/Tooltip/v3/Implementation',
     component: TooltipComponent,
     decorators: [
         moduleMetadata({
