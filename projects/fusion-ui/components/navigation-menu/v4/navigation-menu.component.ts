@@ -78,9 +78,9 @@ export class NavigationMenuComponent implements OnInit {
         if (!popMenuItem) {
             if (this.selectedPrimaryMenuItem !== this.preSelectedPrimaryMenuItem) {
                 this.selectedPrimaryMenuItem = this.preSelectedPrimaryMenuItem;
-                this.selectedSecondaryMenuItem = menuItem;
                 this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, true);
             }
+            this.selectedSecondaryMenuItem = menuItem;
             this.primaryMenu.setSelectedPrimaryMenuItem(this.selectedPrimaryMenuItem);
             this.primaryMenu.setColorTheme(this.selectedPrimaryMenuItem?.cssTheme ?? null);
         } else {
@@ -136,6 +136,15 @@ export class NavigationMenuComponent implements OnInit {
         this.secondaryMenuItems$.next([]);
         this.secondaryMenuName$.next('');
         this.secondaryMenuLogoSrc$.next('');
+    }
+
+    setActiveMenu(primary: PrimaryMenuItem, secondary: MenuItem) {
+        this.selectedPrimaryMenuItem = primary;
+        this.preSelectedPrimaryMenuItem = primary;
+        this.selectedSecondaryMenuItem = secondary;
+        this.setSecondaryMenu(primary);
+        this.primaryMenu.setSelectedPrimaryMenuItem(primary);
+        this.primaryMenu.setColorTheme(primary?.cssTheme ?? null);
     }
 
     private setSecondaryMenu(selectedNetwork: PrimaryMenuItem) {

@@ -2,12 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.5.3](https://github.com/ironSource/fusion-ui/compare/v5.5.3-rc.1...v5.5.3) (2023-06-22)
+
+### [5.5.3-rc.1](https://github.com/ironSource/fusion-ui/compare/v5.5.3-rc.0...v5.5.3-rc.1) (2023-06-21)
+
+### [5.5.3-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.2.0...v5.5.3-rc.0) (2023-06-21)
+
+
+* **fgc-173:** added pre-selected menu by current location path in layout v4 ([71ab38c](https://github.com/ironSource/fusion-ui/pull/218/commits/71ab38c87c04697d5bae081094bc01187278121b))
+
 ### [5.5.2](https://github.com/ironSource/fusion-ui/compare/v5.2.0...v5.5.2) (2023-06-20)
 
 ### [5.5.2-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.2.0...v5.5.2-rc.0) (2023-06-20)
 
 
-### Bug Fixes
+### Bug Fixes 
 
 * **fgc-172:** fixed preselected placeholder text dropdown include/exclude with BackendPagination ([a586ca1](https://github.com/ironSource/fusion-ui/commit/a586ca188059ff15b9969d39a47e8d75c00de7b2))
 
