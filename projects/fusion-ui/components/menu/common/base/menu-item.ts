@@ -7,6 +7,7 @@ export interface MenuItem {
     icon?: IconData;
     name: string;
     route?: string;
+    subRoutes?: string[]; // array of routes also can be used for menu item set to active
     permissions?: string[];
     redirect?: string; // in case has value here - route will be suppressed
     abstract?: boolean;
