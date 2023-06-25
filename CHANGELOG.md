@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.6.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.2.0...v5.6.0-rc.0) (2023-06-25)
+
+
+### Features
+
+* **fgc-175:** added support for menu item to be selected depend on other nested routes ([1152458](https://github.com/ironSource/fusion-ui/commit/1152458d22e865c2b762fe2db05c83548042b51f))
+
+
+### Bug Fixes
+
+* increse fusion version ([324d034](https://github.com/ironSource/fusion-ui/commit/324d0345f8e122bb14127803bd29f12b84115499))
+
 ### [5.5.3](https://github.com/ironSource/fusion-ui/compare/v5.5.3-rc.1...v5.5.3) (2023-06-22)
 
 ### [5.5.3-rc.1](https://github.com/ironSource/fusion-ui/compare/v5.5.3-rc.0...v5.5.3-rc.1) (2023-06-21)
