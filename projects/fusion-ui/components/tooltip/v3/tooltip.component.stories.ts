@@ -6,7 +6,7 @@ import {TooltipComponentStyleConfiguration, TooltipPosition} from '@ironsource/f
 import {dedent} from 'ts-dedent';
 
 export default {
-    title: 'Components/Tooltip/Tooltip',
+    title: 'Components/Tooltip/v3/Tooltip',
     component: TooltipContentComponent,
     decorators: [
         moduleMetadata({
