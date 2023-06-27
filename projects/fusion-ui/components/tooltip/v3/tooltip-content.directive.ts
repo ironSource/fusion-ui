@@ -14,11 +14,13 @@ export class TooltipContentDirective {
         return this.componentRef;
     }
 
-    create(theme: string) {
+    create(theme?: string) {
         if (!this.componentRef) {
             this.componentRef = this.viewContainerRef.createComponent(TooltipContentComponent);
             this.componentRef.instance.templateRef = this.templateRef;
-            this.componentRef.instance.tooltipStyleConfiguration = {themeClass: theme} as TooltipComponentStyleConfiguration;
+            if (theme) {
+                this.componentRef.instance.tooltipStyleConfiguration = {themeClass: theme} as TooltipComponentStyleConfiguration;
+            }
         }
     }
 
