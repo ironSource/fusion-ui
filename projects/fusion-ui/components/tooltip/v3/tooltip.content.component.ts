@@ -31,7 +31,9 @@ export class TooltipContentComponent {
 
     @Input() set tooltipPositionClass(pos: TooltipPosition) {
         this.position = TooltipPosition[pos]?.toLowerCase();
-        this.renderer.addClass(this.elementRef.nativeElement, 'fu-tooltip-' + this.position);
+        if (this.position) {
+            this.renderer.addClass(this.elementRef.nativeElement, 'fu-tooltip-' + this.position);
+        }
     }
 
     @Input() set tooltipStyleConfiguration(config: TooltipComponentStyleConfiguration) {
@@ -48,7 +50,9 @@ export class TooltipContentComponent {
 
     private setTooltipStyle(propertyValue: {[key: string]: string}) {
         Object.keys(propertyValue).forEach(val => {
-            if (val === 'backgroundColor' && !!propertyValue[val]) {
+            if (val === 'themeClass' && !!propertyValue[val]) {
+                this.renderer.addClass(this.elementRef.nativeElement, propertyValue[val]);
+            } else if (val === 'backgroundColor' && !!propertyValue[val]) {
                 this.elementRef.nativeElement.style.setProperty('--fu-tooltip-background-color', propertyValue[val]);
             } else {
                 this.renderer.setStyle(this.elementRef.nativeElement, val, propertyValue[val]);

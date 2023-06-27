@@ -39,6 +39,7 @@ export type TooltipComponentStyleConfiguration = {
     height?: string;
     'text-align'?: string;
     backgroundColor?: string;
+    themeClass?: string;
 };
 
 export type tooltipConfiguration = {
