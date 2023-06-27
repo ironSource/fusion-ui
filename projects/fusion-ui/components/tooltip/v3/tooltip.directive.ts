@@ -10,7 +10,12 @@ import {
     ViewContainerRef
 } from '@angular/core';
 import {TooltipContentComponent} from './tooltip.content.component';
-import {IShiftPosition, tooltipConfiguration, TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
+import {
+    IShiftPosition,
+    TooltipComponentStyleConfiguration,
+    tooltipConfiguration,
+    TooltipPosition
+} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {fromEvent, Observable, of, Subject} from 'rxjs';
 import {switchMap, takeUntil} from 'rxjs/operators';
 import {TooltipContentDirective} from './tooltip-content.directive';
@@ -23,12 +28,15 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     @ContentChild('tooltipTriggerElement', {static: true, read: ViewContainerRef}) viewTriggerContainer!: ViewContainerRef;
 
     @Input() fusionTooltip = '';
+    @Input() fusionTooltipStyleConfiguration: TooltipComponentStyleConfiguration;
+    // this used for "inline" mode
     @Input() set configuration(config: tooltipConfiguration) {
         if (config) {
             this.width = config?.width;
             this.height = config?.height;
             this.backgroundColor = config?.backgroundColor;
             this.preventTooltipToClose = config?.preventTooltipToClose;
+            this.themeClass = config?.themeClass;
         }
     }
 
@@ -36,6 +44,7 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
     height: number;
     backgroundColor: string;
     preventTooltipToClose: boolean = false;
+    themeClass: string;
 
     private visible = false;
     private onDestroy$ = new Subject<void>();
@@ -85,11 +94,12 @@ export class TooltipDirective implements OnDestroy, AfterViewInit {
             return;
         }
         if (this.directiveRef && !this.fusionTooltip) {
-            this.directiveRef.create();
+            this.directiveRef.create(this.themeClass);
             this.tooltipComponentRef = this.directiveRef.tooltipComponentRef;
         } else if (this.fusionTooltip) {
             this.tooltipComponentRef = this.viewContainerRef.createComponent(TooltipContentComponent);
             this.tooltipComponentRef.instance.tooltipTextContent = this.fusionTooltip;
+            this.tooltipComponentRef.instance.tooltipStyleConfiguration = this.fusionTooltipStyleConfiguration;
         } else {
             return;
         }

@@ -5,7 +5,7 @@ import {TooltipComponent, TooltipModule} from './';
 import {dedent} from 'ts-dedent';
 
 export default {
-    title: 'Components/Tooltip/Implementation',
+    title: 'Components/Tooltip/v4/Implementation',
     component: TooltipComponent,
     decorators: [
         moduleMetadata({
@@ -18,6 +18,7 @@ export default {
         docs: {
             description: {
                 component: dedent`**Tooltip directive** Use directive ***[fusionTooltip]*** to set tooltip text for element.
+                for style v4 please add ***themeClass: 'fusion-unity-theme'*** prop to the **[fusionTooltipStyleConfiguration]** directive input.
                 If element has class mane 'truncate', but element content entered to place, tooltip will not shown.
 
                 Position will calculated automatically`
@@ -26,7 +27,10 @@ export default {
         layout: 'centered'
     },
     args: {
-        fusionTooltip: 'Well done! You successfully read this alert message'
+        fusionTooltip: 'Well done! You successfully read this alert message',
+        fusionTooltipStyleConfiguration: {
+            themeClass: 'fusion-unity-theme'
+        }
     }
 } as Meta<TooltipComponent>;
 
@@ -42,7 +46,7 @@ const TooltipTemplate: StoryFn<TooltipComponent> = (args: TooltipComponent) => (
        text-overflow: ellipsis;
     }
 </style>
-<div class="truncate" [fusionTooltip]="fusionTooltip" style="width: 100px;">Element with tooltip</div>
+<div class="truncate" [fusionTooltip]="fusionTooltip" [fusionTooltipStyleConfiguration]="fusionTooltipStyleConfiguration" style="width: 100px;">Element with tooltip</div>
 `
 });
 
@@ -59,12 +63,13 @@ export const Directive = {
 
     @Component({
       selector: 'fusion-story-wrapper',
-      template: \`<div [fusionTooltip]="tooltipText" style="width: max-content; margin: auto;">Element with tooltip</div>\`,
+      template: \`<div [fusionTooltip]="tooltipText" [fusionTooltipStyleConfiguration]="fusionTooltipStyleConfiguration" style="width: max-content; margin: auto;">Element with tooltip</div>\`,
       standalone: true,
       imports: [TooltipModule],
     })
     export class FusionStoryWrapperComponent {
       tooltipText = 'Well done! You successfully read this alert message';
+      fusionTooltipStyleConfiguration = {themeClass: 'fusion-unity-theme'}
     }
     `,
                 format: true,
@@ -85,7 +90,7 @@ const TooltipInlineTemplate: StoryFn<TooltipComponent> = (args: TooltipComponent
         <div>Element with tooltip</div>
     </div>
     <div class="fusionTooltipContent">
-        <div style="margin-bottom: 5px; font-size: 14px">Tooltip title</div>
+        <div style="margin-bottom: 5px; font-size: 16px; font-weight:bold;">Tooltip title!</div>
         <div>{{fusionTooltip}}</div>
     </div>
 </fusion-tooltip>
@@ -95,12 +100,20 @@ const TooltipInlineTemplate: StoryFn<TooltipComponent> = (args: TooltipComponent
 export const Inline = {
     render: TooltipInlineTemplate,
 
+    args: {
+        tooltipConfiguration: {
+            themeClass: 'fusion-unity-theme'
+        }
+    },
+
     parameters: {
         docs: {
             description: {
                 story: dedent`**Tooltip component** Use ***TooltipComponent*** (<fusion-tooltip>). In this case you can put in tooltip ***any*** content.
     * Inner element with class ***"fusionTooltipTrigger"*** has trigger for tooltip.
     * Inner element with class ***"fusionTooltipContent"*** has tooltip content.
+
+    For style v4 add ***themeClass: 'fusion-unity-theme'*** prop to the **[tooltipConfiguration]** <fusion-tooltip/>. input.
     `
             },
             source: {
@@ -111,7 +124,7 @@ export const Inline = {
 
     @Component({
       selector: 'fusion-story-wrapper',
-      template: \`<div style="width:150px; margin:auto; margin-top: 100px"><fusion-tooltip>
+      template: \`<div style="width:150px; margin:auto; margin-top: 100px"><fusion-tooltip [tooltipConfiguration]="tooltipConfiguration">
         <div class="fusionTooltipTrigger">
             <div>Element with tooltip</div>
         </div>
@@ -125,6 +138,7 @@ export const Inline = {
     })
     export class FusionStoryWrapperComponent {
       tooltipText = 'Well done! You successfully read this alert message';
+      tooltipConfiguration = {themeClass: 'fusion-unity-theme'}
     }
     `,
                 format: true,
@@ -154,6 +168,7 @@ export const InlinePreventToClose = {
 
     args: {
         tooltipConfiguration: {
+            themeClass: 'fusion-unity-theme',
             preventTooltipToClose: true
         }
     },
@@ -176,7 +191,7 @@ export const InlinePreventToClose = {
     @Component({
       selector: 'fusion-story-wrapper',
       template: \`<div style="width:150px; margin:auto; margin-top: 100px">
-      <fusion-tooltip [tooltipConfiguration]="{preventTooltipToClose: true}">
+      <fusion-tooltip [tooltipConfiguration]="{preventTooltipToClose: true, themeClass: 'fusion-unity-theme'}">
         <div class="fusionTooltipTrigger">
             <div>Element with tooltip</div>
         </div>
@@ -205,6 +220,7 @@ export const InlineCustomization = {
 
     args: {
         tooltipConfiguration: {
+            themeClass: 'fusion-unity-theme',
             backgroundColor: '#3083FF'
         }
     },
@@ -223,7 +239,7 @@ export const InlineCustomization = {
     @Component({
       selector: 'fusion-story-wrapper',
       template: \`<div style="width:150px; margin:auto; margin-top: 100px">
-        <fusion-tooltip [tooltipConfiguration]="{backgroundColor: '#3083FF'}">
+        <fusion-tooltip [tooltipConfiguration]="{backgroundColor: '#3083FF', themeClass: 'fusion-unity-theme'}">
         <div class="fusionTooltipTrigger">
             <div>Element with tooltip</div>
         </div>

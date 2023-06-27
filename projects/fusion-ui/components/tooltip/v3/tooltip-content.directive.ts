@@ -1,5 +1,6 @@
-import {ComponentRef, Directive, TemplateRef, ViewContainerRef} from '@angular/core';
+import {ComponentRef, Directive, Input, TemplateRef, ViewContainerRef} from '@angular/core';
 import {TooltipContentComponent} from './tooltip.content.component';
+import {TooltipComponentStyleConfiguration} from '@ironsource/fusion-ui/components/tooltip/common/base';
 
 @Directive({
     selector: `[fusionTooltipContent]`
@@ -13,10 +14,11 @@ export class TooltipContentDirective {
         return this.componentRef;
     }
 
-    create() {
+    create(theme: string) {
         if (!this.componentRef) {
             this.componentRef = this.viewContainerRef.createComponent(TooltipContentComponent);
             this.componentRef.instance.templateRef = this.templateRef;
+            this.componentRef.instance.tooltipStyleConfiguration = {themeClass: theme} as TooltipComponentStyleConfiguration;
         }
     }
 
