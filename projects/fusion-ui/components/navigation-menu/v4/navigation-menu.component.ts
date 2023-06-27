@@ -38,7 +38,7 @@ export class NavigationMenuComponent implements OnInit {
     secondaryMenuName$ = new BehaviorSubject<string>('');
     secondaryMenuLogoSrc$ = new BehaviorSubject<string>('');
 
-    secondaryMenuOpen$ = new BehaviorSubject<boolean>(this.cacheService.get(CacheType.SessionStorage, MENU_CACHE_KEY) ?? false);
+    secondaryMenuOpen$ = new BehaviorSubject<boolean>(false);
     secondaryMenuExpanded$ = new BehaviorSubject<boolean>(false);
 
     menuOpenForPrimaryMenuItem$ = new BehaviorSubject<PrimaryMenuItem>(null);
@@ -76,15 +76,19 @@ export class NavigationMenuComponent implements OnInit {
 
     onMenuItemClicked(menuItem, popMenuItem = false) {
         if (!popMenuItem) {
-            if (this.selectedPrimaryMenuItem !== this.preSelectedPrimaryMenuItem) {
-                this.selectedPrimaryMenuItem = this.preSelectedPrimaryMenuItem;
-                this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, true);
-            }
+            this.selectedPrimaryMenuItem = this.preSelectedPrimaryMenuItem;
+            this.isSecondaryMenuExpandable = false;
+            this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, true);
+
             this.selectedSecondaryMenuItem = menuItem;
             this.primaryMenu.setSelectedPrimaryMenuItem(this.selectedPrimaryMenuItem);
             this.primaryMenu.setColorTheme(this.selectedPrimaryMenuItem?.cssTheme ?? null);
         } else {
-            this.setSecondaryMenuVisibilityState(false, false);
+            this.preSelectedPrimaryMenuItem = null;
+            this.selectedSecondaryMenuItem = menuItem;
+            this.cacheService.remove(CacheType.SessionStorage, MENU_CACHE_KEY);
+            this.isSecondaryMenuExpandable = true;
+            this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, false);
         }
         this.menuItemClicked.emit(menuItem);
     }
@@ -110,7 +114,8 @@ export class NavigationMenuComponent implements OnInit {
             this.preSelectedPrimaryMenuItem = selectedNetwork;
             this.setSecondaryMenu(selectedNetwork);
             if (!isNullOrUndefined(selectedNetwork.route)) {
-                this.setSecondaryMenuVisibilityState(false, false);
+                this.isSecondaryMenuExpandable = true;
+                this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, false);
                 this.selectedPrimaryMenuItem = this.preSelectedPrimaryMenuItem;
                 this.primaryMenu.setSelectedPrimaryMenuItem(this.selectedPrimaryMenuItem);
                 this.menuItemClicked.emit({name: selectedNetwork.menuTitle, route: selectedNetwork.route});
@@ -164,8 +169,8 @@ export class NavigationMenuComponent implements OnInit {
         }
     }
 
-    private setSecondaryMenuVisibilityState(showed: boolean, open: boolean) {
-        this.secondaryMenuExpanded$.next(showed);
+    private setSecondaryMenuVisibilityState(expanded: boolean, open: boolean) {
+        this.secondaryMenuExpanded$.next(expanded);
         this.secondaryMenuOpen$.next(open);
     }
 
