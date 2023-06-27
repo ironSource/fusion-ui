@@ -1,4 +1,4 @@
-import {ComponentRef, Directive, Input, TemplateRef, ViewContainerRef} from '@angular/core';
+import {ComponentRef, Directive, TemplateRef, ViewContainerRef} from '@angular/core';
 import {TooltipContentComponent} from './tooltip.content.component';
 import {TooltipComponentStyleConfiguration} from '@ironsource/fusion-ui/components/tooltip/common/base';
 
