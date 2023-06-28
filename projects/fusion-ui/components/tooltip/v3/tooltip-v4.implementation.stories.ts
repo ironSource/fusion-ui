@@ -89,7 +89,7 @@ const TooltipInlineTemplate: StoryFn<TooltipComponent> = (args: TooltipComponent
     <div class="fusionTooltipTrigger">
         <div>Element with tooltip</div>
     </div>
-    <div class="fusionTooltipContent">
+    <div style="width: 215px;" class="fusionTooltipContent">
         <div style="margin-bottom: 5px; font-size: 16px; font-weight:bold;">Tooltip title!</div>
         <div>{{fusionTooltip}}</div>
     </div>
@@ -155,8 +155,8 @@ const TooltipInlineWithLinkTemplate: StoryFn<TooltipComponent> = (args: TooltipC
     <div class="fusionTooltipTrigger">
         <div>Element with tooltip</div>
     </div>
-    <div class="fusionTooltipContent">
-        <div style="margin-bottom: 5px; font-size: 14px">Tooltip title</div>
+    <div style="width: 215px;" class="fusionTooltipContent">
+        <div style="margin-bottom: 5px; font-size: 16px; font-weight:bold;">Tooltip title!</div>
         <div>{{fusionTooltip}} <a href="https://fusion.ironsrc.net/" target="_blank" style="color: #ffffff">click me</a></div>
     </div>
 </fusion-tooltip>

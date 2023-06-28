@@ -34,7 +34,7 @@ export const Default = {
     render: TooltipTemplate,
 
     args: {
-        tooltipTextContent: 'This is a single line tooltip with no wrapping text',
+        tooltipTextContent: `Here's a tooltip!`,
         tooltipStyleConfiguration: {
             themeClass: 'fusion-unity-theme'
         }
@@ -134,7 +134,7 @@ export const WithCustomWidthAndContentCentered = {
         tooltipPositionClass: TooltipPosition.Top,
         tooltipStyleConfiguration: {
             themeClass: 'fusion-unity-theme',
-            width: '150px',
+            width: '215px',
             'text-align': 'center'
         } as TooltipComponentStyleConfiguration
     }
@@ -148,7 +148,7 @@ export const WithCustomBackground = {
         tooltipPositionClass: TooltipPosition.Top,
         tooltipStyleConfiguration: {
             themeClass: 'fusion-unity-theme',
-            width: '150px',
+            width: '215px',
             backgroundColor: '#3083FF'
         } as TooltipComponentStyleConfiguration
     }
