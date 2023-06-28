@@ -8,7 +8,7 @@ import {MenuItem, MenuItemAdditionalData} from '@ironsource/fusion-ui/components
 import {NavigationBarItemType, PrimaryMenuItem} from './navigation-menu.entities';
 import {NavigationPrimaryMenuComponent} from './navigation-primary-menu/navigation-primary-menu.component';
 import {NavigationSecondaryMenuComponent} from './navigation-secondary-menu/navigation-secondary-menu.component';
-import {CacheService, CacheType} from '@ironsource/fusion-ui/services/cache';
+import {StorageService, StorageType} from '@ironsource/fusion-ui/services/stogare';
 
 const MENU_CACHE_KEY = 'fusionMenuCollapsed';
 
@@ -38,7 +38,7 @@ export class NavigationMenuComponent implements OnInit {
     secondaryMenuName$ = new BehaviorSubject<string>('');
     secondaryMenuLogoSrc$ = new BehaviorSubject<string>('');
 
-    secondaryMenuOpen$ = new BehaviorSubject<boolean>(this.cacheService.get(CacheType.SessionStorage, MENU_CACHE_KEY) ?? false);
+    secondaryMenuOpen$ = new BehaviorSubject<boolean>(this.storageService.get(StorageType.SessionStorage, MENU_CACHE_KEY) ?? false);
     secondaryMenuExpanded$ = new BehaviorSubject<boolean>(false);
 
     menuOpenForPrimaryMenuItem$ = new BehaviorSubject<PrimaryMenuItem>(null);
@@ -58,11 +58,11 @@ export class NavigationMenuComponent implements OnInit {
     }
 
     get isSecondaryMenuExpandable(): boolean {
-        const storedOpenState = this.cacheService.get(CacheType.SessionStorage, MENU_CACHE_KEY);
+        const storedOpenState = this.storageService.get(StorageType.SessionStorage, MENU_CACHE_KEY);
         return isNullOrUndefined(storedOpenState) ? this._isSecondaryMenuExpandable : !storedOpenState;
     }
 
-    constructor(private elementRef: ElementRef, protected cacheService: CacheService) {}
+    constructor(private elementRef: ElementRef, protected storageService: StorageService) {}
 
     ngOnInit(): void {
         fromEvent(this.elementRef.nativeElement, 'mouseleave')
@@ -115,7 +115,7 @@ export class NavigationMenuComponent implements OnInit {
                 this.primaryMenu.setSelectedPrimaryMenuItem(this.selectedPrimaryMenuItem);
                 this.menuItemClicked.emit({name: selectedNetwork.menuTitle, route: selectedNetwork.route});
                 if (selectedNetwork.type === NavigationBarItemType.Home) {
-                    this.cacheService.remove(CacheType.SessionStorage, MENU_CACHE_KEY);
+                    this.storageService.remove(StorageType.SessionStorage, MENU_CACHE_KEY);
                 }
             } else {
                 this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, true);
@@ -129,7 +129,7 @@ export class NavigationMenuComponent implements OnInit {
 
     toggleMenu() {
         this.secondaryMenuOpen$.next(!this.secondaryMenuOpen$.getValue());
-        this.cacheService.set(CacheType.SessionStorage, MENU_CACHE_KEY, this.secondaryMenuOpen$.getValue());
+        this.storageService.set(StorageType.SessionStorage, MENU_CACHE_KEY, this.secondaryMenuOpen$.getValue());
     }
 
     resetSecondaryMenu() {
