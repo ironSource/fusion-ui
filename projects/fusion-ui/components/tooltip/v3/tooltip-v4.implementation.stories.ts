@@ -27,7 +27,7 @@ export default {
         layout: 'centered'
     },
     args: {
-        fusionTooltip: 'Well done! You successfully read this alert message',
+        fusionTooltip: `Here's a tooltip!`,
         fusionTooltipStyleConfiguration: {
             themeClass: 'fusion-unity-theme'
         }
