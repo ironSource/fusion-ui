@@ -20,6 +20,7 @@ import {CommonModule} from '@angular/common';
         (scrollDown)="onscrollDown()"
         (expandRow)="onExpandRow($event)"
         (sortChanged)="onSortChanged($event)"
+        (selectionChanged)="onSelectedChanged($event)"
     ></fusion-table>`,
     styles: [
         `
@@ -61,6 +62,7 @@ export class TableStoryHolderComponent implements OnInit, OnDestroy {
     }
 
     @Output() rowModelChange = new EventEmitter();
+    @Output() selectionChanged = new EventEmitter();
 
     /** @ignore */
     @Input() set loading(value: boolean) {
@@ -105,6 +107,15 @@ export class TableStoryHolderComponent implements OnInit, OnDestroy {
             }
             $event.onRequestDone(true);
         }, 2000);
+    }
+
+    onSelectedChanged($event) {
+        console.log('onSelectedChanged >>', $event);
+        this.tableRows = this.tableRows.map(item => {
+            item.checkbox = $event.some(row => row.id === item.id);
+            return item;
+        });
+        this.selectionChanged.emit($event);
     }
 
     onscrollDown() {

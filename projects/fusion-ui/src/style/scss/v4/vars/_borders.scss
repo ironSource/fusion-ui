@@ -1,0 +1,44 @@
+@import 'colors';
+
+$borderRadius: var(--fu-border-radius, 8px);
+$boxShadow: 0px 16px 27px 2px rgba(44, 45, 45, 0.14), inset 0px 0px 0px 1px #EBEBEB;
+$borderLine: 1px solid $fu-divider;
+
+
+%noBorderRadiusTR{
+    border-top-right-radius: 0 !important;
+}
+%noBorderRadiusTL{
+    border-top-left-radius: 0 !important;
+}
+%noBorderRadiusBR{
+    border-bottom-right-radius: 0 !important;
+}
+%noBorderRadiusBL{
+    border-bottom-left-radius: 0 !important;
+}
+
+%noBorderLeft{
+    @extend %noBorderRadiusTL;
+    @extend %noBorderRadiusBL;
+    border-left: none;
+}
+
+%noBorderRight{
+    @extend %noBorderRadiusTR;
+    @extend %noBorderRadiusBR;
+    border-right: none;
+}
+
+%noBorderBottom{
+    @extend %noBorderRadiusBL;
+    @extend %noBorderRadiusBR;
+    border-bottom: none;
+}
+
+%noBorderTop{
+    @extend %noBorderRadiusTL;
+    @extend %noBorderRadiusTR;
+    border-top: none;
+}
+

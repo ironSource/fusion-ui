@@ -3,6 +3,7 @@ import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dy
 import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
 
 export interface MenuItem {
+    id?: string;
     icon?: IconData;
     name: string;
     route?: string;
@@ -10,6 +11,7 @@ export interface MenuItem {
     redirect?: string; // in case has value here - route will be suppressed
     abstract?: boolean;
     cssClass?: string;
+    withTopDelimiter?: boolean; // user in pop-menu. if item first in items group - add top delimiter
     customCSS?: {[key: string]: string | number};
     target?: string; // for open in new tab named as target
     showNewWindowIcon?: boolean;
@@ -17,4 +19,7 @@ export interface MenuItem {
     children?: MenuItem[];
     platformMenuPath?: string;
     content?: DynamicComponentConfiguration;
+    isGroupName?: boolean;
+    order?: number;
+    executeBeforeNavigation?: () => void;
 }

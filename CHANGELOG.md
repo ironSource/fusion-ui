@@ -1,7 +1,6 @@
 # Changelog
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
-
 ## [6.0.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v6.0.0-rc.1...v6.0.0-rc.2) (2023-06-14)
 
 ## [6.0.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v6.0.0-rc.0...v6.0.0-rc.1) (2023-06-14)
@@ -12,15 +11,15 @@ All notable changes to this project will be documented in this file. See [commit
 ### ⚠ BREAKING CHANGES
 
 * **fg-169:** remove services:
- - ali
- - auth
- - cache
- - pub-sub
- - redirect
- - shared-config
- - user
- removed guard:
- - auth
+- ali
+- auth
+- cache
+- pub-sub
+- redirect
+- shared-config
+- user
+  removed guard:
+- auth
 
 ### Features
 
@@ -30,6 +29,42 @@ All notable changes to this project will be documented in this file. See [commit
 ### Bug Fixes
 
 * **fg-169:** fixed unit-tests ([2c91b19](https://github.com/ironSource/fusion-ui/commit/2c91b19f2f47d80f9fa039c8c693a96c4395f421))
+
+### [5.5.3](https://github.com/ironSource/fusion-ui/compare/v5.5.3-rc.1...v5.5.3) (2023-06-22)
+
+### [5.5.3-rc.1](https://github.com/ironSource/fusion-ui/compare/v5.5.3-rc.0...v5.5.3-rc.1) (2023-06-21)
+
+### [5.5.3-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.2.0...v5.5.3-rc.0) (2023-06-21)
+
+
+* **fgc-173:** added pre-selected menu by current location path in layout v4 ([71ab38c](https://github.com/ironSource/fusion-ui/pull/218/commits/71ab38c87c04697d5bae081094bc01187278121b))
+
+### [5.5.2](https://github.com/ironSource/fusion-ui/compare/v5.2.0...v5.5.2) (2023-06-20)
+
+### [5.5.2-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.2.0...v5.5.2-rc.0) (2023-06-20)
+
+
+### Bug Fixes 
+
+* **fgc-172:** fixed preselected placeholder text dropdown include/exclude with BackendPagination ([a586ca1](https://github.com/ironSource/fusion-ui/commit/a586ca188059ff15b9969d39a47e8d75c00de7b2))
+
+### [5.5.1](https://github.com/ironSource/fusion-ui/compare/v5.5.0...v5.5.1) (2023-06-19)
+
+Just update for testing
+
+## [5.5.0](https://github.com/ironSource/fusion-ui/compare/v5.4.1...v5.5.0) (2023-06-19)
+
+### Features
+
+* **fg-131:** added new "combined" component top-filter-include-exclude ([93be90c](https://github.com/ironSource/fusion-ui/commit/93be90c38b54023bfbf5048807cc88699295112e))
+* **fg-131:** added new Layout component for style v4
+* **fg-131:** added new Navigation menu component for style v4
+
+
+### Bug Fixes
+
+* **fg-131:** fix dynamic-components.base for component with 'form control' ([96c09fc](https://github.com/ironSource/fusion-ui/commit/96c09fcb3ef38df3a6d60d814866a6e479783b33))
+* **fg-131:** update teleport directive ([f04a10b](https://github.com/ironSource/fusion-ui/commit/f04a10b2372818cbb9c1dadfff5d31e3ef56d3aa))
 
 ### [5.4.1](https://github.com/ironSource/fusion-ui/compare/v5.2.0...v5.4.1) (2023-06-05)
 
@@ -114,6 +149,20 @@ All notable changes to this project will be documented in this file. See [commit
 * **fg-147:** dynamic filters pre-selected in chip-filters ([ffb23c0](https://github.com/ironSource/fusion-ui/commit/ffb23c0424cc87251c8e4d15e7a04e400fe7c172))
 * **fg-150:** tooltip v1 add prevent to close parameter ([8d04512](https://github.com/ironSource/fusion-ui/commit/8d04512e3ebffb44abd41e6a97330f35a5d6fb7d))
 
+
+## [5.2.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.1.2...v5.2.0-rc.0) (2023-04-13)
+
+
+### Features
+
+* **fg-131:** added new "combined" component top-filter-include-exclude ([93be90c](https://github.com/ironSource/fusion-ui/commit/93be90c38b54023bfbf5048807cc88699295112e))
+
+
+### Bug Fixes
+
+* **fg-131:** fix dynamic-components.base for component with 'form control' ([96c09fc](https://github.com/ironSource/fusion-ui/commit/96c09fcb3ef38df3a6d60d814866a6e479783b33))
+* **fg-131:** update teleport directive ([f04a10b](https://github.com/ironSource/fusion-ui/commit/f04a10b2372818cbb9c1dadfff5d31e3ef56d3aa))
+
 ### [5.1.2](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.11...v5.1.2) (2023-03-27)
 
 ### [5.1.2-rc.11](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.10...v5.1.2-rc.11) (2023-03-20)
@@ -157,7 +206,7 @@ All notable changes to this project will be documented in this file. See [commit
 ### [5.1.2-rc.3](https://github.com/ironSource/fusion-ui/compare/v5.1.2-rc.2...v5.1.2-rc.3) (2023-02-28)
 
 
-### Bug Fixes 
+### Bug Fixes  
 
 * **fu-129:** fixed button v3 with content in initial state loading ([a6c1c6f](https://github.com/ironSource/fusion-ui/commit/a6c1c6f00c44ae6bff07c6e2849b65505b10dc66))
 

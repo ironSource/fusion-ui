@@ -1,0 +1,105 @@
+@import '../../../../src/style/scss/v4/mixins/mixins';
+@import '../../../../src/style/scss/v4/vars/vars';
+@import '../../../../src/style/scss/v4/vars/borders';
+
+$menuWidth: 296px;
+$userIconSize: 32px;
+$menuItemHeight: 32px;
+$menuItemIconSize: 20px;
+$menuItemHoverColor: #F5F5F5;
+
+
+:host{
+    @extend %reset;
+    display: block;
+    position: absolute;
+    z-index: getZIndexLayerOffset(application, 4);
+    bottom: 0;
+    left: 0;
+    .fu-pop-menu{
+        display: block;
+        width: $menuWidth;
+        padding: 0 8px;
+        background-color: $fu-nav-menu-white-100;
+        box-shadow: $boxShadow;
+        border-radius: $borderRadius;
+
+        .fu-pop-menu-header{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 14px 16px 14px 8px;
+            gap: 16px;
+            border-bottom: $borderLine;
+
+            .fu-user-icon-holder{
+                display: flex;
+                align-items: center;
+                justify-items: center;
+                @include icon-style('fu-user-icon', $fu-nav-text-primary, $userIconSize, true, true) {
+                    @include size($userIconSize);
+                }
+                .fu-user-avatar{
+                    @include size($userIconSize);
+                    border: solid 1px $fu-nav-text-primary;
+                    border-radius: 50%;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                }
+            }
+            .fu-user-data-holder{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+                .fu-user-name{
+                    @extend %font-subtitle-3;
+                    color: $fu-nav-text-primary;
+                }
+                .fu-user-email{
+                    @extend %font-caption-1;
+                    color: $fu-nav-text-secondary;
+                }
+            }
+        }
+
+        .fu-pop-menu-items{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 8px 0px;
+            gap: 2px;
+            .fu-pop-menu-item{
+                height: $menuItemHeight;
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                padding: 6px 12px;
+                gap: 8px;
+                border-radius: 4px;
+
+                @extend %font-body-1;
+                color: $fu-nav-text-primary;
+
+                @include icon-style('fu-pop-menu-icon', $fu-icon-drop, $menuItemIconSize, true, true) {
+                    @include size($menuItemIconSize);
+                }
+
+                &:hover{
+                    background-color: $menuItemHoverColor;
+                }
+            }
+            .fu-pop-menu-item-delimiter{
+                content: '';
+                height: 6px;
+                width: 100%;
+                border-bottom: $borderLine;
+                margin-bottom: 6px;
+            }
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+}
