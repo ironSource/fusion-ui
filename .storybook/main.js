@@ -6,7 +6,7 @@ const config = {
         '@storybook/addon-links',
         '@storybook/addon-essentials',
         '@storybook/addon-interactions',
-        '@ironsource-mobile/storybook-addon-stackblitz',
+        '@ironsource/storybook-addon-stackblitz',
         '@storybook/addon-mdx-gfm'
     ],
     framework: {
