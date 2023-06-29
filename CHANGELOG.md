@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.6.2](https://github.com/ironSource/fusion-ui/compare/v5.6.1...v5.6.2) (2023-06-29)
+
+
+### Docs
+
+* addon storybook-addon-stackblitz moved from [@ironsource-mobile](https://github.com/ironsource-mobile) to [@ironsource](https://github.com/ironsource) ([283bf01](https://github.com/ironSource/fusion-ui/commit/283bf017d6c441f7953d1f3de78182f8194886fe))
+
 ### [5.6.1](https://github.com/ironSource/fusion-ui/compare/v5.6.0...v5.6.1) (2023-06-26)
 
 ## [5.6.0](https://github.com/ironSource/fusion-ui/compare/v5.6.0-rc.0...v5.6.0) (2023-06-25)
