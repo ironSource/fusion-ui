@@ -49,7 +49,11 @@ export class NavigationMenuComponent implements OnInit {
     private selectedSecondaryMenuItem: MenuItem;
 
     get needRestoreSelectedState(): boolean {
-        return !!this.selectedPrimaryMenuItem && this.selectedPrimaryMenuItem?.menuTitle !== this.preSelectedPrimaryMenuItem?.menuTitle;
+        return (
+            !!this.selectedPrimaryMenuItem &&
+            !!this.preSelectedPrimaryMenuItem &&
+            this.selectedPrimaryMenuItem?.menuTitle !== this.preSelectedPrimaryMenuItem?.menuTitle
+        );
     }
 
     private _isSecondaryMenuExpandable = true;
