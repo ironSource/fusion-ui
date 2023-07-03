@@ -37,7 +37,7 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
     {
         icon: {iconName: 'add', iconVersion: 'v4'},
         name: 'Add app',
-        route: '/Add+app'
+        route: '/docs/components/v2/alert'
     },
     {
         name: 'Mediation',
@@ -378,7 +378,7 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
         type: NavigationBarItemType.Home,
         menuIcon: {iconName: 'house', iconVersion: 'v4'},
         menuTitle: 'Dashboard',
-        route: '/',
+        route: '/docs/getting-started',
         cssTheme: {
             'fu-navbar-background-color': '#202020'
         }

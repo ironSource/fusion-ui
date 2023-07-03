@@ -20,10 +20,14 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         FormsModule,
         ReactiveFormsModule,
         DocsRoutingModule,
-        LayoutV1Module.forRoot({svgOptions: {assetsPath: environment.assetsPath}}),
+        // for layout v4
+        LayoutComponent,
+        TopFilterIncludeExcludeComponent
+        // ---- end of layout v4: for layout v1 and v2 ----
+        // LayoutV1Module.forRoot({svgOptions: {assetsPath: environment.assetsPath}}),
         // LayoutModule.forRoot({svgOptions: {assetsPath: environment.assetsPath}}),
-        StyleVersionButtonModule,
-        MenuItemExampleModule
+        // StyleVersionButtonModule,
+        // MenuItemExampleModule
     ]
 })
 export class DocsModule {}

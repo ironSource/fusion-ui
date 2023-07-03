@@ -26,7 +26,7 @@ import {MOK_APPLICATIONS_ONE_LINE_OPTIONS} from '@ironsource/fusion-ui/component
 })
 export class DocsComponent implements OnInit, OnDestroy {
     useNewLayout = false; // switch to new layout
-    useLayoutName = 'layoutV1'; // 'layoutV1', 'layoutV2', 'layoutV4'
+    useLayoutName = 'layoutV4'; // 'layoutV1', 'layoutV2', 'layoutV4'
     menuItems: MenuItem[] | SidebarMenuItem[] = this.useNewLayout ? MENU_ITEMS_V2 : MENU_ITEMS;
 
     // region for layout-v1 v1
@@ -49,7 +49,8 @@ export class DocsComponent implements OnInit, OnDestroy {
     // region for layout "v4"
     appSelectFormControl = new FormControl(MOK_APPLICATIONS_ONE_LINE_OPTIONS.slice(1, 5)) as FormControl<DropdownOption[]>;
     headerContent: HeaderContent = {
-        title: 'Dashboard',
+        title: 'Dashboard'
+        /*
         actionComponent: TopFilterIncludeExcludeComponent,
         actionData: {
             placeholder: 'Select application',
@@ -57,6 +58,7 @@ export class DocsComponent implements OnInit, OnDestroy {
             title: 'Applications',
             items: MOK_APPLICATIONS_ONE_LINE_OPTIONS
         }
+*/
     };
     layoutConfiguration: LayoutConfiguration = {
         navigationMenuItems: NAVIGATION_MENU_MOCK,
@@ -176,9 +178,20 @@ export class DocsComponent implements OnInit, OnDestroy {
     }
 
     onMenuItemClick(menuItem: MenuItem) {
-        console.log('DOC onMenuItemClick>>>', menuItem);
-
-        this.headerContent = {...this.headerContent, title: menuItem.name};
+        if (menuItem.route) {
+            this.router
+                .navigate([menuItem.route])
+                .then(navigationSucceeds => {
+                    if (navigationSucceeds) {
+                        // on navigation Ok
+                        console.log('onMenuItemClick>>> navigationSucceeds', navigationSucceeds);
+                        this.headerContent = {...this.headerContent, title: menuItem.name};
+                    }
+                })
+                .catch(err => {
+                    console.log('onMenuItemClick>>> router error', err.message);
+                });
+        }
 
         // if (menuItem.redirect) {
         //     location.href = menuItem.redirect;
