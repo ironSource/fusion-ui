@@ -419,7 +419,7 @@ export const IS_ADMIN_MENU_ITEMS: MenuItem[] = [
         children: [
             {
                 name: 'Manage companies',
-                route: '/iframe.html'
+                route: '/branch_'
             }
         ]
     },
