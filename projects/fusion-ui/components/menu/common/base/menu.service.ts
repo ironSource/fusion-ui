@@ -25,7 +25,7 @@ export class MenuService {
                 let itemFound: MenuItem = null;
                 items.forEach((curItem: MenuItem) => {
                     if (!itemFound) {
-                        if (path.indexOf(curItem.route) === 0 || path.indexOf(curItem.redirect) === 0) {
+                        if (path.startsWith(curItem.route) || this.checkBySubRoutes(curItem, path) || path.startsWith(curItem.redirect)) {
                             itemFound = curItem;
                         }
                         if (curItem.children && !itemFound) {
@@ -44,6 +44,13 @@ export class MenuService {
                 this.selectedItem = null;
             }
         }
+    }
+
+    private checkBySubRoutes(item: MenuItem, route: string): boolean {
+        if (Array.isArray(item.subRoutes)) {
+            return item.subRoutes.some(subRoute => route.startsWith(subRoute));
+        }
+        return false;
     }
 
     /**

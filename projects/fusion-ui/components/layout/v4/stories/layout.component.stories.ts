@@ -10,6 +10,7 @@ import {LayoutComponent} from '../layout.component';
 import {
     IS_MENU_ITEMS,
     LAYOUT_HEADER_CONTENT_MOCK,
+    NAVIGATION_ADMIN_MENU_MOCK,
     NAVIGATION_MENU_MOCK,
     UNITY_MENU_ITEMS,
     USER_PROFILE_MENU_ITEMS
@@ -175,6 +176,20 @@ const NAVIGATION_MENU_MOCK = ${JSON.stringify(NAVIGATION_MENU_MOCK)};
 `,
                 format: true,
                 type: 'code'
+            }
+        }
+    }
+};
+
+export const ExampleAdmin = {
+    render: LayoutTemplate,
+
+    args: {
+        layoutConfiguration: {
+            navigationMenuItems: NAVIGATION_ADMIN_MENU_MOCK,
+            layoutUser: {
+                name: 'Jonny Kim',
+                email: 'jonny.kim@supercell.com'
             }
         }
     }

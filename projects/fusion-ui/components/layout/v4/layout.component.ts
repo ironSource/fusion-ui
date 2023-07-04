@@ -42,7 +42,18 @@ export class LayoutComponent implements OnInit {
     }
 
     private isActiveMenuItem(menuItem: MenuItem, currentPath: string): boolean {
-        return menuItem.route && menuItem.route !== '/' && currentPath.indexOf(menuItem.route) === 0;
+        return (
+            menuItem.route &&
+            menuItem.route !== '/' &&
+            (currentPath.startsWith(menuItem.route) || this.checkBySubRoutes(menuItem, currentPath))
+        );
+    }
+
+    private checkBySubRoutes(item: MenuItem, route: string): boolean {
+        if (Array.isArray(item.subRoutes)) {
+            return item.subRoutes.some(subRoute => route.startsWith(subRoute));
+        }
+        return false;
     }
 
     private setSelectedMenuByPath(menuPrimary: PrimaryMenuItem[]) {
