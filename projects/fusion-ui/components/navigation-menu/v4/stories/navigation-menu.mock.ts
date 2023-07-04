@@ -376,6 +376,7 @@ export const IS_MENU_ITEMS: MenuItem[] = [
 export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
     {
         type: NavigationBarItemType.Home,
+        menuTooltip: 'Dashboard',
         menuIcon: {iconName: 'house', iconVersion: 'v4'},
         menuTitle: 'Dashboard',
         route: '/docs/getting-started',
@@ -385,6 +386,7 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
     },
     {
         type: NavigationBarItemType.Main,
+        menuTooltip: 'Unity LevelPlay',
         menuIconPath: 'v4/unity',
         menuTitle: 'LevelPlay',
         menuLogoSrc: 'v4/unityLevelPlay',
@@ -393,6 +395,7 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
     },
     {
         type: NavigationBarItemType.Main,
+        menuTooltip: 'ironSource Ads',
         menuIcon: {iconName: 'ironSource', iconVersion: 'v4'},
         menuTitle: 'Ads',
         menuLogoSrc: 'v4/isAdsLogo',

@@ -1,12 +1,12 @@
 <div class="fu-navigation-bar-holder">
     <!--region home item-->
-    <div *ngIf="homeItem" class="fu-navigation-bar-item fu-home" [fusionTooltip]="homeItem.menuTooltip">
+    <div *ngIf="homeItem" class="fu-navigation-bar-item fu-home" [fusionTooltip]="homeItem.menuTooltip" [fusionTooltipStyleConfiguration]="{themeClass: 'fusion-unity-theme'}">
         <ng-container [ngTemplateOutlet]="navigationButton" [ngTemplateOutletContext]="{item: homeItem, selectedItem: (homeItem === (selectedBarItem$ |async))}"></ng-container>
     </div>
     <!--endregion home item-->
     <!--region main items-->
     <ng-container *ngIf="(networkItems$ | async) as networkItems">
-        <div class="fu-navigation-bar-item fu-network" *ngFor="let networkItem of networkItems" [fusionTooltip]="networkItem.menuTooltip" >
+        <div class="fu-navigation-bar-item fu-network" *ngFor="let networkItem of networkItems" [fusionTooltip]="networkItem.menuTooltip" [fusionTooltipStyleConfiguration]="{themeClass: 'fusion-unity-theme'}" >
             <ng-container [ngTemplateOutlet]="navigationButton" [ngTemplateOutletContext]="{item: networkItem, selectedItem: (networkItem === (selectedBarItem$ |async))}"></ng-container>
             <div *ngIf="networkItem.menuTitle" class="fu-navigation-bar-network-name">{{networkItem.menuTitle}}</div>
         </div>
@@ -16,7 +16,7 @@
     <ng-container *ngIf="(bottomItems$ | async) as bottomItems">
         <div class="fu-navigation-bar-bottom-items">
             <ng-container *ngFor="let bottomItem of bottomItems; let bottomItemIndex = index;">
-                <div class="fu-navigation-bar-item fu-bottom-block"  [fusionTooltip]="bottomItem.menuTooltip">
+                <div class="fu-navigation-bar-item fu-bottom-block"  [fusionTooltip]="bottomItem.menuTooltip" [fusionTooltipStyleConfiguration]="{themeClass: 'fusion-unity-theme'}">
                     <!--region item with link.href-->
                     <ng-container *ngIf="!!bottomItem.redirect">
                         <a href="{{bottomItem.redirect}}" target="{{bottomItem.target}}">

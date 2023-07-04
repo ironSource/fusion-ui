@@ -4,7 +4,7 @@ import {BehaviorSubject} from 'rxjs';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
-import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
+import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v3';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
 import {TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
