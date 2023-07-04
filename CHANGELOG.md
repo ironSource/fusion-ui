@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.6.3-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.6.2...v5.6.3-rc.0) (2023-07-03)
+
+
+### Bug Fixes
+
+* **fgc-176:** layout v4 fixed set for color theme on popup menu (user) selected ([c5409d1](https://github.com/ironSource/fusion-ui/commit/c5409d11bf286d5ed5ae8227105726d2008003a1))
+* **fgc-176:** layout v4 sidebar menu - change secondary collapsed / expanded behaviour ([73563bc](https://github.com/ironSource/fusion-ui/commit/73563bc7fe24babfaa7bd85b26cbe3133b36d8d6))
+
+### [5.6.2](https://github.com/ironSource/fusion-ui/compare/v5.6.1...v5.6.2) (2023-06-29)
+
+
+### Docs
+
+* addon storybook-addon-stackblitz moved from [@ironsource-mobile](https://github.com/ironsource-mobile) to [@ironsource](https://github.com/ironsource) ([283bf01](https://github.com/ironSource/fusion-ui/commit/283bf017d6c441f7953d1f3de78182f8194886fe))
+
 ### [5.6.1](https://github.com/ironSource/fusion-ui/compare/v5.6.0...v5.6.1) (2023-06-26)
 
 ## [5.6.0](https://github.com/ironSource/fusion-ui/compare/v5.6.0-rc.0...v5.6.0) (2023-06-25)

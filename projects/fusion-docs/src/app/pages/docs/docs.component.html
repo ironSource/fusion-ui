@@ -1,11 +1,9 @@
 
-<!--
 <ng-container [ngSwitch]="useLayoutName">
     <ng-container *ngSwitchCase="'layoutV4'" [ngTemplateOutlet]="layoutV4"></ng-container>
 </ng-container>
--->
 
-<ng-container *ngIf="!useNewLayout; else layoutV2">
+<!--<ng-container *ngIf="!useNewLayout; else layoutV2">
     <fusion-layout
         userName="fusion@ironsource.com"
         [headerPrimaryMenuIconName]="{iconName: 'user-circle', iconVersion: 'v1'}"
@@ -32,16 +30,16 @@
     >
         <router-outlet></router-outlet>
     </fusion-layout>
-</ng-template>
+</ng-template>-->
 
-<!--<ng-template #layoutV4>
+<ng-template #layoutV4>
     <fusion-layout
         [configuration]="layoutConfiguration"
         [headerContent]="headerContent"
         (menuItemClick)="onMenuItemClick($event)"
     >
         <router-outlet></router-outlet>
-        &lt;!&ndash;
+<!--
                 <div style="padding: 40px;">
                     <fusion-top-filter-include-exclude
                         [placeholder]="placeholder"
@@ -51,9 +49,9 @@
                     ></fusion-top-filter-include-exclude>
 
                 </div>
-        &ndash;&gt;
+-->
     </fusion-layout>
-</ng-template>-->
+</ng-template>
 
 <ng-template #sidebarDynamicContent>
     <!--<div style="color: #fff; border: solid 1px red; height: 100%; text-align: center">Dynamic content</div>-->
