@@ -412,6 +412,161 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
     }
 ];
 
+export const IS_ADMIN_MENU_ITEMS: MenuItem[] = [
+    {
+        icon: {iconName: 'bank', iconVersion: 'v4'},
+        name: 'General',
+        children: [
+            {
+                name: 'Manage companies',
+                route: '/iframe.html'
+            }
+        ]
+    },
+    {
+        icon: {iconName: 'rocket_launch', iconVersion: 'v4'},
+        name: 'Demand',
+        children: [
+            {
+                name: 'Click URL validation',
+                route: '/ClickURLValidation'
+            },
+            {
+                name: 'Manage invoices',
+                route: '/ManageInvoices'
+            },
+            {
+                name: 'Approve invoices',
+                route: '/ApproveInvoices'
+            },
+            {
+                name: 'Back office',
+                route: '/Backoffice'
+            },
+            {
+                name: 'Optimizer rollback',
+                route: '/OptimizerRollback'
+            }
+        ]
+    },
+    {
+        icon: {iconName: 'sketch-logo', iconVersion: 'v4'},
+        name: 'Supply',
+        children: [
+            {
+                name: 'Back office',
+                route: '/BackOffice'
+            },
+            {
+                name: 'Publisher back office',
+                route: '/PublisherBackOffice'
+            },
+            {
+                name: 'Internal A/B test tool',
+                route: '/InternalABTestTool'
+            },
+            {
+                name: 'Manage corporates',
+                route: '/ManageCorporates'
+            }
+        ]
+    },
+    {
+        icon: {iconName: 'mediation', iconVersion: 'v4'},
+        name: 'Networks OPS',
+        children: [
+            {
+                name: 'Promote management',
+                route: '/PromoteManagement'
+            },
+            {
+                name: 'Campaign promotions',
+                route: '/CampaignPromotions'
+            },
+            {
+                name: 'SK genre config',
+                route: '/SKGenreConfig'
+            },
+            {
+                name: 'SK advertiser config',
+                route: '/SKAdvertiserConfig'
+            },
+            {
+                name: 'Profit manager',
+                route: '/ProfitManager'
+            }
+        ]
+    },
+    {
+        icon: {iconName: 'wrench', iconVersion: 'v4'},
+        name: 'Customer support',
+        children: [
+            {
+                name: 'CS platform',
+                route: '/CSPlatform'
+            }
+        ]
+    },
+    {
+        icon: {iconName: 'lightning', iconVersion: 'v4'},
+        name: 'Internal',
+        children: [
+            {
+                name: 'User management',
+                route: '/UserManagement'
+            },
+            {
+                name: 'Internal roles',
+                route: '/InternalRoles'
+            }
+        ]
+    },
+    {
+        icon: {iconName: 'currency-circle-dollar', iconVersion: 'v4'},
+        name: 'Finance',
+        children: [
+            {
+                name: 'Manage billing',
+                route: '/ManageBilling'
+            },
+            {
+                name: 'Approve billing',
+                route: '/ApproveBilling'
+            },
+            {
+                name: 'Manage payments',
+                route: '/ManagePayments'
+            },
+            {
+                name: 'Priority sync',
+                route: '/Priority sync'
+            }
+        ]
+    }
+];
+
+export const NAVIGATION_ADMIN_MENU_MOCK: PrimaryMenuItem[] = [
+    {
+        type: NavigationBarItemType.Main,
+        menuIcon: {iconName: 'ironSource', iconVersion: 'v4'},
+        menuTitle: 'Ads',
+        menuLogoSrc: 'v4/isAdsLogo',
+        cssTheme: {'fu-navbar-background-color': '#0D148C'},
+        menuItems: IS_ADMIN_MENU_ITEMS
+    },
+    {
+        type: NavigationBarItemType.Bottom,
+        menuIcon: {iconName: 'question', iconVersion: 'v4'},
+        redirect: 'https://developers.is.com/',
+        target: '_blank'
+    },
+    {
+        type: NavigationBarItemType.User,
+        menuIcon: {iconName: 'userCircle', iconVersion: 'v4'},
+        menuItems: USER_PROFILE_MENU_ITEMS
+    }
+];
+
 export const LAYOUT_HEADER_CONTENT_MOCK: HeaderContent = {
     title: 'Dashboard'
 };
