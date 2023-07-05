@@ -345,7 +345,7 @@ export const IS_MENU_ITEMS: MenuItem[] = [
             },
             {
                 name: 'SKAdNetwork',
-                route: '/SKAdNetwork'
+                route: '/iframe.html'
             },
             {
                 name: 'Optimizer',
