@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.6.4](https://github.com/ironSource/fusion-ui/compare/v5.6.3...v5.6.4) (2023-07-05)
+
+
+### Bug Fixes
+
+* **fgc-177:** fixed defaultCssTheme set ([d7f068b](https://github.com/ironSource/fusion-ui/commit/d7f068b9d3e7f2af439e7849546ba83c5d51a313))
+* **fgc-177:** fixed menu selection by route (input setter, route event) ([1f3ba76](https://github.com/ironSource/fusion-ui/commit/1f3ba7637ef1db91f473aef2b70a75ca8c9f6612))
+
 ### [5.6.3](https://github.com/ironSource/fusion-ui/compare/v5.6.3-rc.0...v5.6.3) (2023-07-04)
 
 ### [5.6.3-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.6.2...v5.6.3-rc.0) (2023-07-03)

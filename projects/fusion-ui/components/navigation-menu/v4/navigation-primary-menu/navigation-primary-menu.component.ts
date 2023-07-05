@@ -90,7 +90,7 @@ export class NavigationPrimaryMenuComponent implements OnInit {
         this.setColorTheme(null);
     }
 
-    setColorTheme(cssTheme: {[key: string]: string}) {
+    setColorTheme(cssTheme?: {[key: string]: string}) {
         if (!isNullOrUndefined(cssTheme)) {
             this.changeColorTheme.emit(cssTheme);
         } else if (this.defaultCssTheme) {
@@ -118,6 +118,10 @@ export class NavigationPrimaryMenuComponent implements OnInit {
                     break;
                 case NavigationBarItemType.Main:
                     networkItems.push(barItem);
+                    if (isNullOrUndefined(this.defaultCssTheme) && !isNullOrUndefined(barItem.cssTheme)) {
+                        this.defaultCssTheme = barItem.cssTheme;
+                        this.setColorTheme();
+                    }
                     break;
                 default:
                     bottomItems.push(barItem);

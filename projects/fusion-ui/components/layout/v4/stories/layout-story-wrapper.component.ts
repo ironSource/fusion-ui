@@ -16,6 +16,7 @@ import {takeUntil} from 'rxjs/operators';
             [configuration]="layoutConfiguration"
             [headerContent]="headerContent"
             (menuItemClick)="onMenuItemClick($event)"
+            (menuItemSelectedByRoute)="onMenuItemSelectedByRoute($event)"
             (pageBackButtonClicked)="onPageBackButtonClicked($event)"
         >
             <div class="parent" [class.layout1]="isLayout1">
@@ -62,6 +63,7 @@ export class LayoutStoryWrapperComponent implements OnInit, OnDestroy {
     @Input() layoutConfiguration: LayoutConfiguration;
     @Input() headerContent: HeaderContent;
 
+    // used just for update style in layout's inner content
     isLayout1 = false;
 
     private onDestroy$ = new Subject<void>();
@@ -87,5 +89,10 @@ export class LayoutStoryWrapperComponent implements OnInit, OnDestroy {
         console.log('MnuItem Clicked: ', menuItem);
         this.headerContent = {...this.headerContent, title: menuItem.name};
         this.isLayout1 = !this.isLayout1;
+    }
+
+    onMenuItemSelectedByRoute(menuItem: MenuItem) {
+        console.log('MnuItem Selected By Route: ', menuItem);
+        this.headerContent = {...this.headerContent, title: menuItem.name};
     }
 }
