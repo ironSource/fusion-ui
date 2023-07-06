@@ -53,11 +53,11 @@ $menuItemHoverColor: #F5F5F5;
                 align-items: flex-start;
                 gap: 4px;
                 .fu-user-name{
-                    @extend %font-subtitle-3;
+                    @extend %font-v4-heading-4;
                     color: $fu-nav-text-primary;
                 }
                 .fu-user-email{
-                    @extend %font-caption-1;
+                    @extend %font-v4-caption;
                     color: $fu-nav-text-secondary;
                 }
             }
@@ -79,7 +79,7 @@ $menuItemHoverColor: #F5F5F5;
                 gap: 8px;
                 border-radius: 4px;
 
-                @extend %font-body-1;
+                @extend %font-v4-body-2;
                 color: $fu-nav-text-primary;
 
                 @include icon-style('fu-pop-menu-icon', $fu-icon-drop, $menuItemIconSize, true, true) {
