@@ -46,7 +46,7 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
     {
         icon: {iconName: 'dashboard', iconVersion: 'v4'},
         name: 'Dashboard',
-        route: '/iframe.html'
+        route: '/branch_'
     },
     {
         icon: {iconName: 'chart_line_up', iconVersion: 'v4'},
