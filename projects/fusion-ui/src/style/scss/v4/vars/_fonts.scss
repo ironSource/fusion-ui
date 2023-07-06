@@ -1,126 +1,160 @@
+/**
+ * Style v4 Typography
+ * -----------------------------------------------------------------------------
+ */
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
 // font-family
 $inter: 'Inter', sans-serif;
 
+%font-v4-bold {
+    font-family: $inter;
+    font-weight: 700;
+}
+%font-v4-semibold {
+    font-family: $inter;
+    font-weight: 600;
+}
+%font-v4-medium {
+    font-family: $inter;
+    font-weight: 500;
+}
+%font-v4-regular {
+    font-family: $inter;
+    font-weight: 400;
+}
+
 // region heading
-%font-heading {
-    font-family: $inter;
-    letter-spacing: -0.02em;
-    font-weight: 600;
+%font-v4-title {
+    font-size: 2.5rem;
+    line-height: 3rem;
+    letter-spacing: -0.055rem;
+    @extend %font-v4-semibold;
 }
-%font-heading-1 {
-    font-size: 40px;
-    line-height: 40px;
-    @extend %font-heading;
+%font-v4-heading-1 {
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+    letter-spacing: -0.0285rem;
+    @extend %font-v4-semibold;
 }
-%font-heading-2 {
-    font-size: 24px;
-    line-height: 28px;
-    @extend %font-heading;
+%font-v4-heading-2 {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    letter-spacing: -0.01575rem;
+    @extend %font-v4-semibold;
 }
-%font-heading-3 {
-    font-size: 20px;
-    line-height: 24px;
-    @extend %font-heading;
+%font-v4-heading-3 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.011rem;
+    @extend %font-v4-semibold;
 }
-%font-heading-4 {
-    font-size: 18px;
-    line-height: 24px;
-    @extend %font-heading;
-    letter-spacing: -0.014em;
+%font-v4-heading-4 {
+    font-size: 0.875rem;
+    line-height: 1rem;
+    letter-spacing: unset;
+    @extend %font-v4-semibold;
 }
-// endregion
-
-// region title
-%font-title{
-    font-family: $inter;
-    font-size: 16px;
-    line-height: 24px;
-    letter-spacing: -0.011em;
+%font-v4-heading-5 {
+    font-size: 0.8125rem;
+    line-height: 16px;
+    letter-spacing: unset;
+    @extend %font-v4-semibold;
 }
-%font-title-1 {
-    @extend %font-title;
-    font-weight: 400;
-}
-%font-title-2 {
-    @extend %font-title;
-    font-weight: 500;
-}
-%font-title-3 {
-    @extend %font-title;
-    font-weight: 600;
-}
-// endregion
-
-// region subtitle
-%font-subtitle{
-    font-family: $inter;
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: -0.006em;
-}
-%font-subtitle-1 {
-    @extend %font-subtitle;
-    font-weight: 400;
-}
-%font-subtitle-2 {
-    @extend %font-subtitle;
-    font-weight: 500;
-}
-%font-subtitle-3 {
-    @extend %font-subtitle;
-    font-weight: 600;
+%font-v4-heading-6 {
+    font-size: 0.75rem;
+    line-height: 0.75rem;
+    letter-spacing: 0;
+    @extend %font-v4-semibold;
 }
 // endregion
 
 // region body
-%font-body{
-    font-family: $inter;
-    font-size: 13px;
-    line-height: 20px;
-    letter-spacing: -0.003em;
+%font-v4-body-1 {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: -0.00525rem;
+    @extend %font-v4-regular;
 }
-%font-body-1 {
-    @extend %font-body;
-    font-weight: 400;
-}
-%font-body-2 {
-    @extend %font-body;
-    font-weight: 500;
-}
-%font-body-3 {
-    @extend %font-body;
-    font-weight: 600;
+%font-v4-body-2 {
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    letter-spacing: -0.00244rem;
+    @extend %font-v4-regular;
 }
 // endregion
 
-// region caption
-%font-caption{
-    font-family: $inter;
-    font-size: 12px;
-    line-height: 16px;
-    letter-spacing: -0.003em;
+// region subtitle
+%font-v4-subtitle-1 {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: -0.00525rem;
+    @extend %font-v4-medium;
 }
-%font-caption-1 {
-    @extend %font-caption;
-    font-weight: 400;
-}
-%font-caption-2 {
-    @extend %font-caption;
-    font-weight: 500;
-}
-%font-caption-3 {
-    @extend %font-caption;
-    font-weight: 600;
+%font-v4-subtitle-2 {
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    letter-spacing: -0.00244rem;
+    @extend %font-v4-medium;
 }
 // endregion
 
-// region Misc fonts
-%font-primary-menu{
-    font-family: $inter;
-    font-size: 11.5px;
-    line-height: 18px;
-    font-weight: 600;
+// region chart
+%font-v4-chart-1 {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.015rem;
+    @extend %font-v4-bold;
+}
+%font-v4-chart-2 {
+    font-size: 1.25rem;
+    line-height: 1.25rem;
+    letter-spacing: -0.0125rem;
+    @extend %font-v4-bold;
+}
+// endregion
+
+
+// region other
+%font-v4-button {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: 0.00875rem;
+    @extend %font-v4-semibold;
+}
+%font-v4-overline {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    letter-spacing: 0.045rem;
+    text-transform: uppercase;
+    @extend %font-v4-medium;
+}
+%font-v4-caption {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    @extend %font-v4-regular;
+}
+%font-v4-table-header {
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    letter-spacing: 0.00813rem;
+    @extend %font-v4-semibold;
+}
+%font-v4-input-label {
+    font-size: 0.8125rem;
+    line-height: 1rem;
+    letter-spacing: 0.00813rem;
+    @extend %font-v4-medium;
+}
+%font-v4-tab-label {
+    font-size: 0.875rem;
+    line-height: 1rem;
+    @extend %font-v4-medium;
+}
+%font-v4-chip-label {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    @extend %font-v4-semibold;
 }
 // endregion
