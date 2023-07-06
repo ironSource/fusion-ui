@@ -27,10 +27,6 @@ export class NavigationMenuComponent implements OnInit {
     @Input() menuItems: PrimaryMenuItem[];
     @Input() layoutUser: LayoutUser;
 
-    @Input() set menuCollapsed(value: boolean) {
-        this.secondaryMenuOpen$.next(!value);
-    }
-
     @Output() menuAdditionalItemClicked = new EventEmitter<MenuItemAdditionalData>();
     @Output() menuItemClicked = new EventEmitter<MenuItem>();
 

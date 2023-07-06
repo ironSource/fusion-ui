@@ -23,6 +23,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
         if (Array.isArray(value?.navigationMenuItems)) {
             this.navigationMenu$.next(value.navigationMenuItems);
             this.setSelectedMenuByPath(this.navigationMenu$.getValue());
+            this.navigationMenu.toggleMenu();
         }
         this.layoutUser = {...value?.layoutUser} ?? null;
     }
