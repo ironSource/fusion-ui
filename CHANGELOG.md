@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.6.5](https://github.com/ironSource/fusion-ui/compare/v5.6.5-rc.0...v5.6.5) (2023-07-06)
+
+### [5.6.5-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.6.4...v5.6.5-rc.0) (2023-07-06)
+
+
+### Bug Fixes
+
+* **fgc-177:** fixed bug for fusion-icon with rendered fusion-svg component ([d33b82b](https://github.com/ironSource/fusion-ui/commit/d33b82b3d42f2ebd71a31a4ea7c5c0fddbb96ec9))
+
 ### [5.6.4](https://github.com/ironSource/fusion-ui/compare/v5.6.3...v5.6.4) (2023-07-05)
 
 
