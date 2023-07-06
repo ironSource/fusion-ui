@@ -26,7 +26,6 @@ $navBarIconSize: 24px;
             width: 100%;
             &.fu-home{
                 height: 64px;
-                margin-bottom: 8px;
                 .fu-navigation-bar-button:hover{
                     cursor: pointer;
                 }
@@ -57,6 +56,9 @@ $navBarIconSize: 24px;
                             border-bottom: 8px solid transparent;
                         }
                     }
+                }
+                &:first-child{
+                    margin-top: 8px;
                 }
             }
             &.fu-bottom-block{

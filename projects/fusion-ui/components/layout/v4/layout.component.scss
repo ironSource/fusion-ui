@@ -5,6 +5,7 @@ $pageHeaderHeight: 64px;
 
 :host{
     @extend %reset;
+    @extend %font-body;
     .fu-layout{
         display: grid;
         grid-template-columns: min-content 1fr;
