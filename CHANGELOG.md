@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.6.6-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.6.5-rc.1...v5.6.6-rc.0) (2023-07-09)
+
+
+### Bug Fixes
+
+* **menu-v4:** after merge from release/5.x.x ([711f36f](https://github.com/ironSource/fusion-ui/commit/711f36f9855547702a3dfdecd60138408910951f))
+* **menu-v4:** update networks logo in secondary menu ([6ce5504](https://github.com/ironSource/fusion-ui/commit/6ce55040a37ace6c8c704482ab5d8662f686956a))
+
+### [5.6.5](https://github.com/ironSource/fusion-ui/compare/v5.6.5-rc.0...v5.6.5) (2023-07-06)
+
 ### [5.6.5-rc.1](https://github.com/ironSource/fusion-ui/compare/v5.6.5-rc.0...v5.6.5-rc.1) (2023-07-09)
 
 
