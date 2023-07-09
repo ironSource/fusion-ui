@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.6.6-rc.1](https://github.com/ironSource/fusion-ui/compare/v5.6.6-rc.0...v5.6.6-rc.1) (2023-07-09)
+
+
+### Bug Fixes
+
+* **menu-v4:** bottom menu button click behaviour fixed ([b0868d5](https://github.com/ironSource/fusion-ui/commit/b0868d590becf325893bc50ddb4ad56acdc887d6))
+* **menu-v4:** menu sizes css changes ([d021b8d](https://github.com/ironSource/fusion-ui/commit/d021b8d4426f919790e5ad662053c87d22cb80a9))
+* **menu-v4:** remove change css theme bg color on primary item in case user menu clicked ([65b5fe6](https://github.com/ironSource/fusion-ui/commit/65b5fe63dde246efd74e4b6a1e92dd0b84993447))
+
 ### [5.6.6-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.6.5-rc.1...v5.6.6-rc.0) (2023-07-09)
 
 
