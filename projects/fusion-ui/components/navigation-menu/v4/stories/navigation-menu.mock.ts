@@ -44,6 +44,11 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
         isGroupName: true
     },
     {
+        icon: {iconName: 'dashboard', iconVersion: 'v4'},
+        name: 'Dashboard',
+        route: '/branch_'
+    },
+    {
         icon: {iconName: 'chart_line_up', iconVersion: 'v4'},
         name: 'Reports',
         children: [
@@ -300,13 +305,8 @@ export const IS_MENU_ITEMS: MenuItem[] = [
     },
     {
         icon: {iconName: 'chart_line_up', iconVersion: 'v4'},
-        name: 'Reports',
-        children: [
-            {
-                name: 'Performance',
-                route: '/performance'
-            }
-        ]
+        name: 'Performance',
+        route: '/performance'
     },
     {
         icon: {iconName: 'wrench', iconVersion: 'v4'},
@@ -317,12 +317,12 @@ export const IS_MENU_ITEMS: MenuItem[] = [
                 route: '/Instances'
             },
             {
-                name: 'Offerwall',
-                route: '/Offerwall'
-            },
-            {
                 name: 'Testing',
                 route: '/Testing'
+            },
+            {
+                name: 'Offerwall',
+                route: '/Offerwall'
             }
         ]
     },
@@ -345,11 +345,7 @@ export const IS_MENU_ITEMS: MenuItem[] = [
             },
             {
                 name: 'SKAdNetwork',
-                route: '/iframe.html'
-            },
-            {
-                name: 'Optimizer',
-                route: '/Optimizer'
+                route: '/SKAdNetwork '
             }
         ]
     },
@@ -362,8 +358,12 @@ export const IS_MENU_ITEMS: MenuItem[] = [
                 route: '/overview'
             },
             {
-                name: 'Analysis',
-                route: '/analysis'
+                name: 'Report generator',
+                route: '/ReportGenerator'
+            },
+            {
+                name: 'Optimizer',
+                route: '/Optimizer'
             },
             {
                 name: 'Budget',
@@ -374,15 +374,15 @@ export const IS_MENU_ITEMS: MenuItem[] = [
 ];
 
 export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
-    {
-        type: NavigationBarItemType.Home,
-        menuIcon: {iconName: 'house', iconVersion: 'v4'},
-        menuTitle: 'Dashboard',
-        route: '/docs/getting-started',
-        cssTheme: {
-            'fu-navbar-background-color': '#202020'
-        }
-    },
+    // {
+    //     type: NavigationBarItemType.Home,
+    //     menuIcon: {iconName: 'house', iconVersion: 'v4'},
+    //     menuTitle: 'Dashboard',
+    //     route: '/docs/getting-started',
+    //     cssTheme: {
+    //         'fu-navbar-background-color': '#202020'
+    //     }
+    // },
     {
         type: NavigationBarItemType.Main,
         menuIconPath: 'v4/unity',
@@ -395,7 +395,7 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
         type: NavigationBarItemType.Main,
         menuIcon: {iconName: 'ironSource', iconVersion: 'v4'},
         menuTitle: 'Ads',
-        menuLogoSrc: 'v4/isAdsLogo',
+        menuLogoSrc: 'v4/is_ads_logo',
         cssTheme: {'fu-navbar-background-color': '#0D148C'},
         menuItems: IS_MENU_ITEMS
     },

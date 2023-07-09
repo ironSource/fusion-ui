@@ -2,7 +2,7 @@
 @import '../../../../src/style/scss/v4/vars/vars';
 
 $primaryMenuWidth: 64px;
-$secondaryMenuWidth: 212px;
+$secondaryMenuWidth: 200px;
 $secondaryMenuLogoHolderHeight: 64px;
 $secondaryMenuItemHeight: 28px;
 $secondaryMenuItemTitleHeight: 36px;
@@ -91,7 +91,7 @@ $secondaryMenuItemNewTabIconSize: 16px;
                             display: none;
                         }
                         .fu-secondary-menu-item-label {
-                            @extend %font-caption-3;
+                            @extend %font-v4-chip-label;
                             color: $fu-nav-text-secondary;
                         }
                     }
@@ -120,7 +120,7 @@ $secondaryMenuItemNewTabIconSize: 16px;
                     }
 
                     .fu-secondary-menu-item-label {
-                        @extend %font-body-2;
+                        @extend %font-v4-subtitle-2;
                         color: $fu-nav-text-primary;
                     }
 
@@ -130,7 +130,8 @@ $secondaryMenuItemNewTabIconSize: 16px;
                     }
                     @include icon-style('fu-secondary-menu-item-parent-icon-toggle', $fu-nav-text-primary, $secondaryMenuItemOpenCloseIconSize, true, true){
                         @include size($secondaryMenuItemOpenCloseIconSize);
-                        margin-top: -2px;
+                        display: flex;
+                        align-items: center;
                         margin-left: auto;
                         cursor: pointer;
                     }
@@ -154,7 +155,7 @@ $secondaryMenuItemNewTabIconSize: 16px;
 
                     .fu-secondary-menu-item-holder{
                         .fu-secondary-menu-item-label {
-                            @extend %font-body-1;
+                            @extend %font-v4-body-2;
                         }
                     }
                 }

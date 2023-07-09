@@ -11,6 +11,7 @@ $navBarIconSize: 24px;
     height: 100vh;
     width: 64px;
     background-color: var(--fu-navbar-background-color, $fu-nav-primary-unity);
+    transition: background-color .8s;
 
     .fu-navigation-bar-holder{
         height: 100%;
@@ -26,7 +27,6 @@ $navBarIconSize: 24px;
             width: 100%;
             &.fu-home{
                 height: 64px;
-                margin-bottom: 8px;
                 .fu-navigation-bar-button:hover{
                     cursor: pointer;
                 }
@@ -58,11 +58,14 @@ $navBarIconSize: 24px;
                         }
                     }
                 }
+                &:first-child{
+                    margin-top: 8px;
+                }
             }
             &.fu-bottom-block{
                 height: 48px;
                 &:last-of-type{
-                    padding-bottom: 8px;
+                    padding-bottom: 16px;
                 }
             }
         }
@@ -82,14 +85,16 @@ $navBarIconSize: 24px;
                 border-top: solid 1px $fu-nav-menu-white-12;
                 background-color: var(--fu-navbar-toggle-button-background-color, $fu-nav-menu-white-16);
                 margin-top: 8px;
+                gap: 2px;
             }
         }
 
         .fu-navigation-bar-network-name{
             color: var(--fu-navbar-text-color, $fu-nav-menu-white-80);
             height: 18px;
-            line-height: 18px;
-            @extend %font-primary-menu;
+            font-size: 0.71875rem;
+            line-height: 1.125rem;
+            @extend %font-v4-semibold;
         }
 
         .fu-navigation-bar-button{

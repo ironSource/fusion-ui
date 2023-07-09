@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BehaviorSubject, fromEvent, Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {filter, takeUntil} from 'rxjs/operators';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
 import {MenuItem, MenuItemAdditionalData} from '@ironsource/fusion-ui/components/menu/common/base';
@@ -26,10 +26,6 @@ export class NavigationMenuComponent implements OnInit {
 
     @Input() menuItems: PrimaryMenuItem[];
     @Input() layoutUser: LayoutUser;
-
-    @Input() set menuCollapsed(value: boolean) {
-        this.secondaryMenuOpen$.next(!value);
-    }
 
     @Output() menuAdditionalItemClicked = new EventEmitter<MenuItemAdditionalData>();
     @Output() menuItemClicked = new EventEmitter<MenuItem>();
@@ -69,6 +65,21 @@ export class NavigationMenuComponent implements OnInit {
     constructor(private elementRef: ElementRef, protected cacheService: CacheService) {}
 
     ngOnInit(): void {
+        this.initListeners();
+    }
+
+    initListeners() {
+        fromEvent(this.primaryMenu.nativeElement, 'mouseenter')
+            .pipe(
+                takeUntil(this.onDestroy$),
+                filter((event: MouseEvent) => {
+                    const isMainSelected = this.primaryMenu.selectedBarItem$.getValue()?.type === 'main';
+                    const isNotOverBottomItems = event.clientY < this.primaryMenu.bottomItemsTopPosition;
+                    return isMainSelected && this.isSecondaryMenuExpandable && isNotOverBottomItems;
+                })
+            )
+            .subscribe(this.onPrimaryMenuMainMouseEnter.bind(this));
+
         fromEvent(this.elementRef.nativeElement, 'mouseleave')
             .pipe(takeUntil(this.onDestroy$))
             .subscribe(this.onNavigationMenuMouseLeave.bind(this));
@@ -95,6 +106,10 @@ export class NavigationMenuComponent implements OnInit {
             this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, false);
         }
         this.menuItemClicked.emit(menuItem);
+    }
+
+    onPrimaryMenuMainMouseEnter($event) {
+        this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, true);
     }
 
     onNavigationMenuMouseLeave() {
@@ -137,7 +152,9 @@ export class NavigationMenuComponent implements OnInit {
     }
 
     toggleMenu() {
-        this.secondaryMenuOpen$.next(!this.secondaryMenuOpen$.getValue());
+        if (!(this.secondaryMenuOpen$.getValue() && this.secondaryMenuExpanded$.getValue())) {
+            this.secondaryMenuOpen$.next(!this.secondaryMenuOpen$.getValue());
+        }
         this.cacheService.set(CacheType.SessionStorage, MENU_CACHE_KEY, this.secondaryMenuOpen$.getValue());
         if (this.secondaryMenuOpen$.getValue()) {
             this.secondaryMenuExpanded$.next(false);

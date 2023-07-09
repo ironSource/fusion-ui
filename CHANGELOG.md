@@ -2,7 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.6.6-rc.1](https://github.com/ironSource/fusion-ui/compare/v5.6.6-rc.0...v5.6.6-rc.1) (2023-07-09)
+
+
+### Bug Fixes
+
+* **menu-v4:** bottom menu button click behaviour fixed ([b0868d5](https://github.com/ironSource/fusion-ui/commit/b0868d590becf325893bc50ddb4ad56acdc887d6))
+* **menu-v4:** menu sizes css changes ([d021b8d](https://github.com/ironSource/fusion-ui/commit/d021b8d4426f919790e5ad662053c87d22cb80a9))
+* **menu-v4:** remove change css theme bg color on primary item in case user menu clicked ([65b5fe6](https://github.com/ironSource/fusion-ui/commit/65b5fe63dde246efd74e4b6a1e92dd0b84993447))
+
+### [5.6.6-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.6.5-rc.1...v5.6.6-rc.0) (2023-07-09)
+
+
+### Bug Fixes
+
+* **menu-v4:** after merge from release/5.x.x ([711f36f](https://github.com/ironSource/fusion-ui/commit/711f36f9855547702a3dfdecd60138408910951f))
+* **menu-v4:** update networks logo in secondary menu ([6ce5504](https://github.com/ironSource/fusion-ui/commit/6ce55040a37ace6c8c704482ab5d8662f686956a))
+
 ### [5.6.5](https://github.com/ironSource/fusion-ui/compare/v5.6.5-rc.0...v5.6.5) (2023-07-06)
+
+### [5.6.5-rc.1](https://github.com/ironSource/fusion-ui/compare/v5.6.5-rc.0...v5.6.5-rc.1) (2023-07-09)
+
+
+### Bug Fixes
+
+* **menu-v4:** add layout default font, first primary menu item 8px margin-top, menu mock changes ([d654e2d](https://github.com/ironSource/fusion-ui/commit/d654e2dbb9648c6ce6d5fb3774f7769932a47796))
+* **menu-v4:** added secondary menu expand on hover at primary menu except bottom elements ([71aca5e](https://github.com/ironSource/fusion-ui/commit/71aca5e36d38524ad2c124d63ed369f96b3db85e))
+* **menu-v4:** set secondary menu default expanded ([f5756cd](https://github.com/ironSource/fusion-ui/commit/f5756cdaea15e7cde09541e7807ddc76c83cb3be))
+* **menu-v4:** typography v4 added to build css ([a0f8288](https://github.com/ironSource/fusion-ui/commit/a0f8288349e698c006ce7e389ae8b30d33badc5f))
+* **menu-v4:** update fonts (v4) in layout v4 - navigation menu ([b4da485](https://github.com/ironSource/fusion-ui/commit/b4da4853eb087d6c1baf90d1ff02ace6c5846851))
 
 ### [5.6.5-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.6.4...v5.6.5-rc.0) (2023-07-06)
 

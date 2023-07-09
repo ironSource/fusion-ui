@@ -28,7 +28,7 @@ $headerHeight: 64px;
         }
     }
     .fu-page-title {
-        @extend %font-heading-4;
+        @extend %font-v4-heading-2;
         margin-left: 24px;
         margin-right: 32px;
         color: $fu-nav-text-primary;
@@ -47,7 +47,7 @@ $headerHeight: 64px;
         margin-right: 8px;
     }
     .fu-page-subtitle{
-        @extend %font-body-2;
+        @extend %font-v4-body-2;
         margin-right: 32px;
         color: $fu-nav-text-primary;
     }

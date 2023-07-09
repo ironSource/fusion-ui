@@ -1,10 +1,11 @@
-@import '../../../src/style/scss/v4/app';
+@import '../../../src/style/scss/v4/vars/vars';
 
 $navigationPanelMaxWidth: 276px;
 $pageHeaderHeight: 64px;
 
 :host{
     @extend %reset;
+    @extend %font-v4-regular;
     .fu-layout{
         display: grid;
         grid-template-columns: min-content 1fr;
