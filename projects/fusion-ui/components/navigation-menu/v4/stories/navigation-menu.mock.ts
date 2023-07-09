@@ -46,7 +46,7 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
     {
         icon: {iconName: 'dashboard', iconVersion: 'v4'},
         name: 'Dashboard',
-        route: '/iframe'
+        route: '/branch_'
     },
     {
         icon: {iconName: 'chart_line_up', iconVersion: 'v4'},
@@ -419,7 +419,7 @@ export const IS_ADMIN_MENU_ITEMS: MenuItem[] = [
         children: [
             {
                 name: 'Manage companies',
-                route: '/iframe'
+                route: '/branch_'
             }
         ]
     },
