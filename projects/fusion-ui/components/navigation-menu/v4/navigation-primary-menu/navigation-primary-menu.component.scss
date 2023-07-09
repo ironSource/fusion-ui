@@ -84,15 +84,16 @@ $navBarIconSize: 24px;
                 border-top: solid 1px $fu-nav-menu-white-12;
                 background-color: var(--fu-navbar-toggle-button-background-color, $fu-nav-menu-white-16);
                 margin-top: 8px;
+                gap: 2px;
             }
         }
 
         .fu-navigation-bar-network-name{
             color: var(--fu-navbar-text-color, $fu-nav-menu-white-80);
             height: 18px;
-            font-size: 0.71875rem;
+            font-size: 0.656rem;
             line-height: 1.125rem;
-            @extend %font-v4-semibold;
+            @extend %font-v4-bold;
         }
 
         .fu-navigation-bar-button{
