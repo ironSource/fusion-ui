@@ -158,3 +158,31 @@ $inter: 'Inter', sans-serif;
     @extend %font-v4-semibold;
 }
 // endregion
+
+// region css classes
+.font-v4-bold {@extend %font-v4-bold;}
+.font-v4-semibold {@extend %font-v4-semibold; }
+.font-v4-medium {@extend %font-v4-medium;}
+.font-v4-regular {@extend %font-v4-regular;}
+.font-v4-title {@extend %font-v4-title;}
+.font-v4-heading-1 {@extend %font-v4-heading-1;}
+.font-v4-heading-2 {@extend %font-v4-heading-2;}
+.font-v4-heading-3 {@extend %font-v4-heading-3;}
+.font-v4-heading-4 {@extend %font-v4-heading-4;}
+.font-v4-heading-5 {@extend %font-v4-heading-5;}
+.font-v4-heading-6 {@extend %font-v4-heading-6;}
+.font-v4-body-1 {@extend %font-v4-body-1;}
+.font-v4-body-2 {@extend %font-v4-body-2;}
+.font-v4-subtitle-1 {@extend %font-v4-subtitle-1;}
+.font-v4-subtitle-2 {@extend %font-v4-subtitle-2;}
+.font-v4-chart-1 {@extend %font-v4-chart-1;}
+.font-v4-chart-2 {@extend %font-v4-chart-2;}
+.font-v4-button {@extend %font-v4-button;}
+.font-v4-overline {@extend %font-v4-overline;}
+.font-v4-caption {@extend %font-v4-caption;}
+.font-v4-table-header {@extend %font-v4-table-header;}
+.font-v4-input-label {@extend %font-v4-input-label;}
+.font-v4-tab-label {@extend %font-v4-tab-label;}
+.font-v4-chip-label {@extend %font-v4-chip-label;}
+// endregion
+
