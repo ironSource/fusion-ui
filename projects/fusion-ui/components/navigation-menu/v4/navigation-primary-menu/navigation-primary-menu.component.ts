@@ -94,7 +94,6 @@ export class NavigationPrimaryMenuComponent implements OnInit {
         this.menuItemClick.emit(menuItem);
         this.showPopMenu$.next(false);
         this.setSelectedPrimaryMenuItem(null);
-        this.setColorTheme(null);
     }
 
     setColorTheme(cssTheme?: {[key: string]: string}) {
