@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.6.5-rc.1](https://github.com/ironSource/fusion-ui/compare/v5.6.5-rc.0...v5.6.5-rc.1) (2023-07-09)
+
+
+### Bug Fixes
+
+* **menu-v4:** add layout default font, first primary menu item 8px margin-top, menu mock changes ([d654e2d](https://github.com/ironSource/fusion-ui/commit/d654e2dbb9648c6ce6d5fb3774f7769932a47796))
+* **menu-v4:** added secondary menu expand on hover at primary menu except bottom elements ([71aca5e](https://github.com/ironSource/fusion-ui/commit/71aca5e36d38524ad2c124d63ed369f96b3db85e))
+* **menu-v4:** set secondary menu default expanded ([f5756cd](https://github.com/ironSource/fusion-ui/commit/f5756cdaea15e7cde09541e7807ddc76c83cb3be))
+* **menu-v4:** typography v4 added to build css ([a0f8288](https://github.com/ironSource/fusion-ui/commit/a0f8288349e698c006ce7e389ae8b30d33badc5f))
+* **menu-v4:** update fonts (v4) in layout v4 - navigation menu ([b4da485](https://github.com/ironSource/fusion-ui/commit/b4da4853eb087d6c1baf90d1ff02ace6c5846851))
+
 ### [5.6.5-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.6.4...v5.6.5-rc.0) (2023-07-06)
 
 
