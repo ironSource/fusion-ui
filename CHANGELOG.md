@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.6.6](https://github.com/ironSource/fusion-ui/compare/v5.6.6-rc.1...v5.6.6) (2023-07-09)
+
+
+### Bug Fixes
+
+* **menu-v4:** added .8s transition to primary menu bg color change ([18b4a0c](https://github.com/ironSource/fusion-ui/commit/18b4a0c2f470f3f71df2ead1dd0c0c0fcd5d259a))
+* **menu-v4:** primary menu changes ([4917ef5](https://github.com/ironSource/fusion-ui/commit/4917ef5c2e767e57ad4c52f3e7c17258c833602a))
+
 ### [5.6.6-rc.1](https://github.com/ironSource/fusion-ui/compare/v5.6.6-rc.0...v5.6.6-rc.1) (2023-07-09)
 
 
