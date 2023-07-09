@@ -387,7 +387,7 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
         type: NavigationBarItemType.Main,
         menuIconPath: 'v4/unity',
         menuTitle: 'LevelPlay',
-        menuLogoSrc: 'v4/unityLevelPlay',
+        menuLogoSrc: 'v4/unity_levelplay_logo',
         cssTheme: {'fu-navbar-background-color': '#202020'},
         menuItems: UNITY_MENU_ITEMS
     },
@@ -395,7 +395,7 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
         type: NavigationBarItemType.Main,
         menuIcon: {iconName: 'ironSource', iconVersion: 'v4'},
         menuTitle: 'Ads',
-        menuLogoSrc: 'v4/isAdsLogo',
+        menuLogoSrc: 'v4/is_ads_logo',
         cssTheme: {'fu-navbar-background-color': '#0D148C'},
         menuItems: IS_MENU_ITEMS
     },

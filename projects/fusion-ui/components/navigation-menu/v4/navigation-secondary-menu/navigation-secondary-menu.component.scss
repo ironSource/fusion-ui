@@ -130,7 +130,8 @@ $secondaryMenuItemNewTabIconSize: 16px;
                     }
                     @include icon-style('fu-secondary-menu-item-parent-icon-toggle', $fu-nav-text-primary, $secondaryMenuItemOpenCloseIconSize, true, true){
                         @include size($secondaryMenuItemOpenCloseIconSize);
-                        margin-top: -2px;
+                        display: flex;
+                        align-items: center;
                         margin-left: auto;
                         cursor: pointer;
                     }
