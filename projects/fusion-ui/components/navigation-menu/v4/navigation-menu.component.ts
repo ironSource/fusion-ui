@@ -152,7 +152,9 @@ export class NavigationMenuComponent implements OnInit {
     }
 
     toggleMenu() {
-        this.secondaryMenuOpen$.next(!this.secondaryMenuOpen$.getValue());
+        if (!(this.secondaryMenuOpen$.getValue() && this.secondaryMenuExpanded$.getValue())) {
+            this.secondaryMenuOpen$.next(!this.secondaryMenuOpen$.getValue());
+        }
         this.cacheService.set(CacheType.SessionStorage, MENU_CACHE_KEY, this.secondaryMenuOpen$.getValue());
         if (this.secondaryMenuOpen$.getValue()) {
             this.secondaryMenuExpanded$.next(false);
