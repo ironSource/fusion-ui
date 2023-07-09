@@ -157,6 +157,9 @@ export class NavigationMenuComponent implements OnInit {
         }
         this.cacheService.set(CacheType.SessionStorage, MENU_CACHE_KEY, this.secondaryMenuOpen$.getValue());
         if (this.secondaryMenuOpen$.getValue()) {
+            if (this.needRestoreSelectedState) {
+                this.setSecondaryMenu(this.selectedPrimaryMenuItem);
+            }
             this.secondaryMenuExpanded$.next(false);
         }
     }
