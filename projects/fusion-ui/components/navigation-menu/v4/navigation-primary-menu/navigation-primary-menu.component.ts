@@ -55,8 +55,9 @@ export class NavigationPrimaryMenuComponent implements OnInit {
 
     selectedBarItem$ = new BehaviorSubject<PrimaryMenuItem>(null);
 
-    menuCollapsedIcon = {iconName: 'arrowLineRight', iconVersion: 'v4'};
-    menuExpandedIcon = {iconName: 'arrowLineLeft', iconVersion: 'v4'};
+    menuToggleCollapsed = false;
+    menuCollapsedIcon = {iconName: 'arrowLineLeft', iconVersion: 'v4'};
+    menuExpandedIcon = {iconName: 'arrowLineRight', iconVersion: 'v4'};
     popMenuPosition = TooltipPosition.BottomLeft;
 
     private primaryMenuOpenedItem: PrimaryMenuItem;
@@ -109,6 +110,12 @@ export class NavigationPrimaryMenuComponent implements OnInit {
         if (!menuItem) {
             this.resetSecondaryMenu.emit();
         }
+    }
+
+    menuToggleButtonClicked(event: MouseEvent) {
+        event.stopPropagation();
+        this.menuToggleCollapsed = !this.menuToggleCollapsed;
+        this.toggleMenu.emit();
     }
 
     private parseNavigationBarItems(value: PrimaryMenuItem[]) {

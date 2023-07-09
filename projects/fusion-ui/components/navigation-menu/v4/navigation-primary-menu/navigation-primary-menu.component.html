@@ -40,8 +40,8 @@
             </ng-container>
             <!--region toggle secondary menu button-->
             <div class="fu-menu-toggle-button-holder" *ngIf="(selectedBarItem$ | async)?.type === 'main'" >
-                <div class="fu-navigation-bar-button fu-menu-toggle" (click)="toggleMenu.emit()">
-                    <fusion-icon class="fu-navigation-bar-button-icon" [name]=" menuOpened ? menuExpandedIcon : menuCollapsedIcon"></fusion-icon>
+                <div class="fu-navigation-bar-button fu-menu-toggle" (click)="menuToggleButtonClicked($event)">
+                    <fusion-icon class="fu-navigation-bar-button-icon" [name]=" menuToggleCollapsed ? menuExpandedIcon : menuCollapsedIcon"></fusion-icon>
                 </div>
             </div>
             <!--endregion toggle secondary menu button-->

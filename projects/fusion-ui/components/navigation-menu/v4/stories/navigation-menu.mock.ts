@@ -46,7 +46,7 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
     {
         icon: {iconName: 'dashboard', iconVersion: 'v4'},
         name: 'Dashboard',
-        route: '/branch_'
+        route: '/iframe'
     },
     {
         icon: {iconName: 'chart_line_up', iconVersion: 'v4'},
@@ -387,7 +387,7 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
         type: NavigationBarItemType.Main,
         menuIconPath: 'v4/unity',
         menuTitle: 'LevelPlay',
-        menuLogoSrc: 'v4/unity_levelplay_logo',
+        menuLogoSrc: 'v4/unityLevelPlay',
         cssTheme: {'fu-navbar-background-color': '#202020'},
         menuItems: UNITY_MENU_ITEMS
     },
@@ -419,7 +419,7 @@ export const IS_ADMIN_MENU_ITEMS: MenuItem[] = [
         children: [
             {
                 name: 'Manage companies',
-                route: '/branch_'
+                route: '/iframe'
             }
         ]
     },
