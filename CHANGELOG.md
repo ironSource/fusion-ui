@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.6.9](https://github.com/ironSource/fusion-ui/compare/v5.6.8...v5.6.9) (2023-07-10)
+
+
+### Bug Fixes
+
+* **menu-v4:** try to fix layout inner content width (ad quality issue) ([9cdb8a3](https://github.com/ironSource/fusion-ui/commit/9cdb8a37136f36624eb27b672d36edd1ce0733ac))
+
 ### [5.6.8](https://github.com/ironSource/fusion-ui/compare/v5.6.7...v5.6.8) (2023-07-10)
 
 
