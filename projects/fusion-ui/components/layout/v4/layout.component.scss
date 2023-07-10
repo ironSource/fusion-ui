@@ -1,7 +1,10 @@
 @import '../../../src/style/scss/v4/vars/vars';
 
-$navigationPanelMaxWidth: 276px;
+$navigationPanelMaxWidth: 265px;
 $pageHeaderHeight: 64px;
+
+$menuPrimaryWidth: 64px;
+$menuSecondaryWidth: 200px;
 
 :host{
     @extend %reset;
@@ -26,6 +29,11 @@ $pageHeaderHeight: 64px;
                 overflow-y: auto;
                 .page-view {
                     height: 100%;
+                    width: calc(100vw - #{$menuPrimaryWidth} - #{$menuSecondaryWidth});
+                    transition: width .45s ease-out;
+                    &.fu-menu-collapsed{
+                        width: calc(100vw - #{$menuPrimaryWidth});
+                    }
                     .app-route-content-holder{
                         height: 100%;
                     }

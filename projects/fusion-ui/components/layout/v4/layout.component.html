@@ -19,7 +19,7 @@
         <!--main header-->
         <!--main content-->
         <div #mainContent class="main-content" id="main-view">
-            <div class="page-view">
+            <div class="page-view" [class.fu-menu-collapsed]="navigationMenu.isSecondaryMenuExpandable">
                 <div class="app-route-content-holder">
                     <ng-content></ng-content>
                 </div>
