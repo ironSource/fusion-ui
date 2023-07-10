@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 import {HeaderContent, LayoutConfiguration} from '../layout.entities';
@@ -68,12 +68,23 @@ export class LayoutStoryWrapperComponent implements OnInit, OnDestroy {
 
     private onDestroy$ = new Subject<void>();
 
+    constructor(private changeDetectorRef: ChangeDetectorRef) {}
+
     ngOnInit() {
         if (!!this.headerContent?.actionData?.formControl) {
             (this.headerContent.actionData.formControl as FormControl).valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(value => {
                 console.log('Header Dynamic Component value changed: ', value);
             });
         }
+        // const temp = this.layoutConfiguration.navigationMenuItems
+        // this.layoutConfiguration.navigationMenuItems = [];
+
+        // setTimeout(() => {
+        //     this.layoutConfiguration.navigationMenuItems = temp;
+        //     this.layoutConfiguration = {...this.layoutConfiguration};
+        //     console.log('changes UP')
+        //     this.changeDetectorRef.detectChanges();
+        // }, 2000);
     }
 
     ngOnDestroy() {

@@ -8,7 +8,7 @@ import {HeaderContent, LayoutConfiguration} from './layout.entities';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 import {LayoutHeaderComponent} from './components/layout-header/layout-header.component';
 import {NavigationEnd, Router} from '@angular/router';
-import {filter, takeUntil, tap} from 'rxjs/operators';
+import {filter, takeUntil} from 'rxjs/operators';
 
 @Component({
     selector: 'fusion-layout',
@@ -20,10 +20,10 @@ import {filter, takeUntil, tap} from 'rxjs/operators';
 })
 export class LayoutComponent implements OnInit, OnDestroy {
     @Input() set configuration(value: LayoutConfiguration) {
-        if (Array.isArray(value?.navigationMenuItems)) {
+        if (Array.isArray(value?.navigationMenuItems) && value.navigationMenuItems.length > 0) {
             this.navigationMenu$.next(value.navigationMenuItems);
             this.setSelectedMenuByPath(this.navigationMenu$.getValue());
-            this.navigationMenu.toggleMenu();
+            this.toggleMenu();
         }
         this.layoutUser = {...value?.layoutUser} ?? null;
     }
@@ -45,6 +45,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     layoutUser: LayoutUser;
 
     private onDestroy$ = new Subject();
+    private isMenuToggled = false;
 
     constructor(private windowRef: WindowService, private router: Router) {}
 
@@ -81,6 +82,13 @@ export class LayoutComponent implements OnInit, OnDestroy {
             return item.subRoutes.some(subRoute => route.startsWith(subRoute));
         }
         return false;
+    }
+
+    private toggleMenu() {
+        if (!this.isMenuToggled) {
+            this.navigationMenu.toggleMenu();
+            this.isMenuToggled = true;
+        }
     }
 
     private setSelectedMenuByPath(menuPrimary: PrimaryMenuItem[]) {
