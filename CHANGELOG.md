@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.6.8](https://github.com/ironSource/fusion-ui/compare/v5.6.7...v5.6.8) (2023-07-10)
+
+
+### Bug Fixes
+
+* **menu-v4:** fixed menu toggle bug on loading ([6ac979c](https://github.com/ironSource/fusion-ui/commit/6ac979c0f61fa2c84b86561e29db19b7ba70e5fe))
+
 ### [5.6.7](https://github.com/ironSource/fusion-ui/compare/v5.6.6...v5.6.7) (2023-07-09)
 
 
