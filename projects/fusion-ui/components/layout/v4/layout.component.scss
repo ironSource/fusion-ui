@@ -1,8 +1,6 @@
 @import '../../../src/style/scss/v4/vars/vars';
 
-$navigationPanelMaxWidth: 265px;
 $pageHeaderHeight: 64px;
-
 $menuPrimaryWidth: 64px;
 $menuSecondaryWidth: 200px;
 
@@ -17,7 +15,7 @@ $menuSecondaryWidth: 200px;
         .fu-left-navigation{
             display: block;
             height: 100%;
-            max-width: $navigationPanelMaxWidth;
+            max-width: calc(#{$menuPrimaryWidth} + #{$menuSecondaryWidth});
         }
         .fu-main-page{
             .fu-page-header{
