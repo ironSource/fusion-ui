@@ -65,7 +65,7 @@ $navBarIconSize: 24px;
             &.fu-bottom-block{
                 height: 48px;
                 &:last-of-type{
-                    padding-bottom: 16px;
+                    padding-bottom: 8px;
                 }
             }
         }
@@ -75,6 +75,7 @@ $navBarIconSize: 24px;
             margin-top: auto;
             display: flex;
             flex-direction: column;
+            margin-bottom: 8px;
 
             .fu-menu-toggle-button-holder{
                 height: 48px;
@@ -85,6 +86,7 @@ $navBarIconSize: 24px;
                 border-top: solid 1px $fu-nav-menu-white-12;
                 background-color: var(--fu-navbar-toggle-button-background-color, $fu-nav-menu-white-16);
                 margin-top: 8px;
+                margin-bottom: -8px;
                 gap: 2px;
             }
         }
