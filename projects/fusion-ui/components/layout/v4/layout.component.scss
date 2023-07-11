@@ -23,15 +23,16 @@ $menuSecondaryWidth: 200px;
                 border-bottom: solid 1px $fu-divider;
             }
             .main-content{
-                height: calc(100vh - var(--lauout-header-height, #{$pageHeaderHeight}));
-                overflow-y: auto;
+                --layout-header-height: #{$pageHeaderHeight};
+                height: calc(100vh - var(--layout-header-height, #{$pageHeaderHeight}));
+                overflow: auto;
+                width: calc(100vw - #{$menuPrimaryWidth} - #{$menuSecondaryWidth});
+                transition: width .45s ease-out;
+                &.fu-menu-collapsed{
+                    width: calc(100vw - #{$menuPrimaryWidth});
+                }
                 .page-view {
                     height: 100%;
-                    width: calc(100vw - #{$menuPrimaryWidth} - #{$menuSecondaryWidth});
-                    transition: width .45s ease-out;
-                    &.fu-menu-collapsed{
-                        width: calc(100vw - #{$menuPrimaryWidth});
-                    }
                     .app-route-content-holder{
                         height: 100%;
                     }

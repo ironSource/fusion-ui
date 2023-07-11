@@ -20,7 +20,7 @@
 
         // header holder
         .fu-header-holder{
-            height: var(--lauout-header-height, $headerHeight);
+            height: var(--layout-header-height, $headerHeight);
             transition: padding-left .3s ease-out;
 
             &.fu-sidebar-closed-hovered{
@@ -30,7 +30,7 @@
 
         // main content holder
         .fu-content-holder{
-            height: calc(100vh - var(--lauout-header-height, #{$headerHeight}) - 1px);
+            height: calc(100vh - var(--layout-header-height, #{$headerHeight}) - 1px);
             margin-top: 1px;
             overflow-y: auto;
 
