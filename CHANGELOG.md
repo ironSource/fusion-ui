@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.6.10](https://github.com/ironSource/fusion-ui/compare/v5.6.9...v5.6.10) (2023-07-11)
+
+
+### Bug Fixes
+
+* **fgc-181:** add css var --layout-header-height with value, move width calculation to main-content ([4fc0816](https://github.com/ironSource/fusion-ui/commit/4fc08168a8d1f1cfd97ec74e292ad5656a399edc))
+
 ### [5.6.9](https://github.com/ironSource/fusion-ui/compare/v5.6.8...v5.6.9) (2023-07-10)
 
 
