@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.6.11](https://github.com/ironSource/fusion-ui/compare/v5.6.10...v5.6.11) (2023-07-12)
+
+
+### Bug Fixes
+
+* **fgc-181:** move teleportElements to layout input ([b83d0ec](https://github.com/ironSource/fusion-ui/commit/b83d0ecf9c528fc49157def2dca51d1664d6080a))
+
 ### [5.6.10](https://github.com/ironSource/fusion-ui/compare/v5.6.9...v5.6.10) (2023-07-11)
 
 
