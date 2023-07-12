@@ -15,7 +15,7 @@
         [componentData]="headerContent.actionData">
     </fusion-dynamic-components>
 </div>
-<ng-container *ngIf="headerContent?.teleportElements?.length">
-    <div *ngFor="let teleportItem of headerContent?.teleportElements" [id]="teleportItem.id" class="fu-header-teleport-host" [class.fu-flex-align-right]="teleportItem.isOnRight"></div>
+<ng-container *ngIf="teleportElements?.length">
+    <div *ngFor="let teleportItem of teleportElements" [id]="teleportItem.id" class="fu-header-teleport-host" [class.fu-flex-align-right]="teleportItem.isOnRight"></div>
 </ng-container>
 

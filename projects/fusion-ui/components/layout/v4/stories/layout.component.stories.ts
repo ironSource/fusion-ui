@@ -334,7 +334,11 @@ const MOK_APPLICATIONS_ONE_LINE_OPTIONS = ${JSON.stringify(MOK_APPLICATIONS_ONE_
 
 const HeaderTeleportTemplate: StoryFn<LayoutComponent> = (args: LayoutComponent) => ({
     props: {...args},
-    template: `<fusion-layout-story-wrapper [headerContent]="headerContent" [layoutConfiguration]="layoutConfiguration"></fusion-layout-story-wrapper>
+    template: `<fusion-layout-story-wrapper
+    [headerContent]="headerContent"
+    [teleportElements]="teleportElements"
+    [layoutConfiguration]="layoutConfiguration"
+></fusion-layout-story-wrapper>
 
     <ng-container *fusionTeleporting="'#fuHeaderTeleport'">
         <div style="display: flex; gap:8px; margin-right: 24px;">
@@ -351,8 +355,8 @@ export const WithHeaderTeleportElements = {
     args: {
         headerContent: {
             ...LAYOUT_HEADER_CONTENT_MOCK,
-            teleportElements: [{id: 'fuHeaderTeleport', isOnRight: true}]
-        }
+        },
+        teleportElements: [{id: 'fuHeaderTeleport', isOnRight: true}]
     },
 };
 */
@@ -368,9 +372,9 @@ export const WithHeaderTeleportElementsAndDynamicComponent = {
                 formControl: new FormControl() as FormControl<DropdownOption[]>,
                 title: 'Applications',
                 items: MOK_APPLICATIONS_ONE_LINE_OPTIONS
-            },
-            teleportElements: [{id: 'fuHeaderTeleport', isOnRight: true}]
-        }
+            }
+        },
+        teleportElements: [{id: 'fuHeaderTeleport', isOnRight: true}]
     },
     parameters: {
         docs: {
@@ -389,6 +393,7 @@ import { MenuItem } from '@ironsource/fusion-ui/components/menu/common/base';
 import {
   HeaderContent,
   LayoutConfiguration,
+  TeleportWrapperElement
 } from '@ironsource/fusion-ui/components/layout/v4/layout.entities';
 import { NavigationBarItemType } from '@ironsource/fusion-ui/components/navigation-menu/v4';
 import { TopFilterIncludeExcludeComponent } from '@ironsource/fusion-ui/components/top-filter-include-exclude';
@@ -400,6 +405,7 @@ import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option
   <fusion-layout
   [configuration]="layoutConfiguration"
   [headerContent]="headerContent"
+  [teleportElements]="teleportElements"
   (menuItemClick)="onMenuItemClick($event)"
   (pageBackButtonClicked)="onPageBackButtonClicked($event)"
 >
@@ -470,8 +476,8 @@ export class FusionStoryWrapperComponent {
         MOK_APPLICATIONS_ONE_LINE_OPTIONS.slice(2, 4)
       ),
     },
-    teleportElements: [{ id: 'fuHeaderTeleport', isOnRight: true }],
   };
+  teleportElements: TeleportWrapperElement = [{ id: 'fuHeaderTeleport', isOnRight: true }];
   layoutConfiguration: LayoutConfiguration = {
     navigationMenuItems: NAVIGATION_MENU_MOCK,
     layoutUser: {

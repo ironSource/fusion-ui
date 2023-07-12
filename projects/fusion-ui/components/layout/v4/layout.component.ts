@@ -4,7 +4,7 @@ import {BehaviorSubject, Subject} from 'rxjs';
 import {WindowService} from '@ironsource/fusion-ui/services/window';
 import {NavigationMenuComponent, PrimaryMenuItem} from '@ironsource/fusion-ui/components/navigation-menu/v4';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
-import {HeaderContent, LayoutConfiguration} from './layout.entities';
+import {HeaderContent, LayoutConfiguration, TeleportWrapperElement} from './layout.entities';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 import {LayoutHeaderComponent} from './components/layout-header/layout-header.component';
 import {NavigationEnd, Router} from '@angular/router';
@@ -28,6 +28,12 @@ export class LayoutComponent implements OnInit, OnDestroy {
         this.layoutUser = {...value?.layoutUser} ?? null;
     }
     @Input() headerContent: HeaderContent;
+    @Input() set teleportElements(value: TeleportWrapperElement[]) {
+        this._teleportElements = value;
+    }
+    get teleportElements(): TeleportWrapperElement[] {
+        return this._teleportElements ?? [];
+    }
 
     @Output() pageBackButtonClicked = new EventEmitter<MouseEvent>();
     @Output() menuItemClick = new EventEmitter<MenuItem>();
@@ -46,6 +52,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
 
     private onDestroy$ = new Subject();
     private isMenuToggled = false;
+    private _teleportElements: TeleportWrapperElement[];
 
     constructor(private windowRef: WindowService, private router: Router) {}
 
