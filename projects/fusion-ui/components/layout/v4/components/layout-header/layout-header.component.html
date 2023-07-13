@@ -9,7 +9,11 @@
     <div class="fu-header-delimiter"></div>
     <div class="fu-page-subtitle">{{headerContent?.subTitle}}</div>
 </ng-container>
-<div class="fu-header-action-wrapper" *ngIf="headerContent?.actionComponent">
+<div *ngIf="headerContent?.actionComponent"
+     class="fu-header-action-wrapper"
+     [class.fu-action-wrapper-after-teleports]="headerContent?.actionAlignRight"
+     [class.fu-flex-align-right]="headerContent?.actionAlignRight && !hasTeleportAlignRight"
+>
     <fusion-dynamic-components
         [component]="headerContent.actionComponent"
         [componentData]="headerContent.actionData">

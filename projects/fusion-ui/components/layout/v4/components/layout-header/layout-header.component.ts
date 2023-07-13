@@ -26,6 +26,11 @@ export class LayoutHeaderComponent {
         return this._teleportElements ?? [];
     }
     @Output() backButtonClicked = new EventEmitter();
+
+    get hasTeleportAlignRight(): boolean {
+        return this.teleportElements.some(element => element.isOnRight);
+    }
+
     private _headerContent: HeaderContent;
     private _teleportElements: TeleportWrapperElement[];
 }

@@ -52,6 +52,10 @@ $headerHeight: 64px;
         color: $fu-nav-text-primary;
     }
 
+    .fu-action-wrapper-after-teleports{
+        order: 1;
+    }
+
     .fu-flex-align-right{
         margin-left: auto;
     }
