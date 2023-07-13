@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.6.12](https://github.com/ironSource/fusion-ui/compare/v5.6.11...v5.6.12) (2023-07-13)
+
+
+### Bug Fixes
+
+* **fgc-181:** added new optional property "actionAlignRight" to the header content ([7553fce](https://github.com/ironSource/fusion-ui/commit/7553fce14d43ff099e480e2ff53011c310300a00))
+* **fgc-181:** fixed main-view width calculation without secondary menu ([fe2b0cb](https://github.com/ironSource/fusion-ui/commit/fe2b0cb555e8a24ccc3e560109547f8af4d1f76d))
+
 ### [5.6.11](https://github.com/ironSource/fusion-ui/compare/v5.6.10...v5.6.11) (2023-07-12)
 
 
