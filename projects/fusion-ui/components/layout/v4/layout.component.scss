@@ -29,7 +29,7 @@ $menuSecondaryWidth: 200px;
                 overflow: auto;
                 width: calc(100vw - #{$menuPrimaryWidth});
                 transition: width .45s ease-out;
-                &.fu-menu-expanded{
+                &.fu-menu-expanded-opened{
                     width: calc(100vw - #{$menuPrimaryWidth} - #{$menuSecondaryWidth});
                 }
                 .page-view {
