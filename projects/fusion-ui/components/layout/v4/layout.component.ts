@@ -22,8 +22,9 @@ export class LayoutComponent implements OnInit, OnDestroy {
     @Input() set configuration(value: LayoutConfiguration) {
         if (Array.isArray(value?.navigationMenuItems) && value.navigationMenuItems.length > 0) {
             this.navigationMenu$.next(value.navigationMenuItems);
-            this.setSelectedMenuByPath(this.navigationMenu$.getValue());
-            this.toggleMenu();
+            if (this.setSelectedMenuByPath(this.navigationMenu$.getValue())) {
+                this.toggleMenu();
+            }
         }
         this.layoutUser = {...value?.layoutUser} ?? null;
     }
@@ -98,7 +99,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
         }
     }
 
-    private setSelectedMenuByPath(menuPrimary: PrimaryMenuItem[]) {
+    private setSelectedMenuByPath(menuPrimary: PrimaryMenuItem[]): boolean {
         const currentPath = this.windowRef.nativeWindow.location.pathname;
         let itemFound: MenuItem = null;
         let primaryItemFound: PrimaryMenuItem = null;
@@ -127,5 +128,6 @@ export class LayoutComponent implements OnInit, OnDestroy {
             this.navigationMenu.setActiveMenu(primaryItemFound, itemFound);
             this.menuItemSelectedByRoute.emit(itemFound);
         }
+        return !!itemFound;
     }
 }
