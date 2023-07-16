@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.6.13](https://github.com/ironSource/fusion-ui/compare/v5.6.12...v5.6.13) (2023-07-16)
+
+
+### Bug Fixes
+
+* **fgc-181:** extend header content -> has back button prop type ([4a17c05](https://github.com/ironSource/fusion-ui/commit/4a17c054a0245e49c89936766018c0343735155c))
+* **fgc-181:** extend header content -> has back button prop type + open secondary menu without items ([ac86040](https://github.com/ironSource/fusion-ui/commit/ac8604083c9a11c84fe86e35fa367e39f771ca3c))
+
 ### [5.6.12](https://github.com/ironSource/fusion-ui/compare/v5.6.11...v5.6.12) (2023-07-13)
 
 
