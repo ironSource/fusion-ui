@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.6.14](https://github.com/ironSource/fusion-ui/compare/v5.6.13...v5.6.14) (2023-07-16)
+
+
+### Bug Fixes
+
+* **fgc-181:** fixed class fu-menu-expanded set in layout for main-view ([0f34c1d](https://github.com/ironSource/fusion-ui/commit/0f34c1db8bd108f282b1c4cffdaf77742aff2c25))
+
 ### [5.6.13](https://github.com/ironSource/fusion-ui/compare/v5.6.12...v5.6.13) (2023-07-16)
 
 
