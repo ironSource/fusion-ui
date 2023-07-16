@@ -94,8 +94,12 @@ export class LayoutStoryWrapperComponent implements OnInit, OnDestroy {
         this.onDestroy$.complete();
     }
 
-    onPageBackButtonClicked($event) {
-        console.log('Page Back button clicked');
+    onPageBackButtonClicked(BackButtonData) {
+        if (typeof BackButtonData === 'string') {
+            console.log('Page Back button clicked, Navigate to', BackButtonData);
+        } else {
+            console.log('Page Back button clicked', BackButtonData);
+        }
     }
 
     onMenuItemClick(menuItem: MenuItem) {

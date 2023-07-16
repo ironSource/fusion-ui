@@ -1,5 +1,5 @@
 <div class="fu-header-back-button" *ngIf="headerContent?.hasBackButton">
-    <fusion-icon class="fu-header-back-button-icon" [name]="{iconName:'arrow-back', iconVersion:'v3'}" (click)="backButtonClicked.emit($event)"></fusion-icon>
+    <fusion-icon class="fu-header-back-button-icon" [name]="{iconName:'arrow-back', iconVersion:'v3'}" (click)="backButtonClicked.emit(headerContent?.hasBackButton)"></fusion-icon>
 </div>
 <div class="fu-page-title"
      [class.fu-page-has-subtitle]="headerContent?.subTitle"

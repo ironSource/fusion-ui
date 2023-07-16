@@ -13,7 +13,7 @@ export interface TeleportWrapperElement {
 }
 
 export interface HeaderContent {
-    hasBackButton?: boolean;
+    hasBackButton?: boolean | string;
     title?: string;
     subTitle?: string;
     actionComponent?: Type<any>;

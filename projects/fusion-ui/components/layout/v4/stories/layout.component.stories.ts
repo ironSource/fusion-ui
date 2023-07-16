@@ -202,7 +202,7 @@ export const WithHeaderBackButtonSubTitleAndDynamicComponent = {
     args: {
         headerContent: {
             ...LAYOUT_HEADER_CONTENT_MOCK,
-            hasBackButton: true,
+            hasBackButton: '/back-route',
             subTitle: 'Updated 1 hour ago',
             actionComponent: TopFilterIncludeExcludeComponent,
             actionData: {
