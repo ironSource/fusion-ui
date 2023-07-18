@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.6.16](https://github.com/ironSource/fusion-ui/compare/v5.6.15...v5.6.16) (2023-07-18)
+
+
+### Bug Fixes
+
+* **fgc-181:** remove secondary menu items opacity transition ([5275bf5](https://github.com/ironSource/fusion-ui/commit/5275bf5f04a73a359909b2964ec447cd0324ccd1))
+
 ### [5.6.15](https://github.com/ironSource/fusion-ui/compare/v5.6.14...v5.6.15) (2023-07-18)
 
 
