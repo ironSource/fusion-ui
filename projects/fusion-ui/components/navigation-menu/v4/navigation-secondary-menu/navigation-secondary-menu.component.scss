@@ -14,30 +14,21 @@ $secondaryMenuItemNewTabIconSize: 16px;
 :host {
     @extend %reset;
     display: block;
-    width: 0px;
-    max-width: $secondaryMenuWidth;
     background-color: var(--fu-secondary-menu-background-color, $fu-nav-secondary);
     border-right: solid 1px $fu-divider;
     margin-left: -1px;
-
-    transition: all .45s ease-out;
-    opacity: 0;
-    &.fu-menu-open {
-        width: $secondaryMenuWidth;
-        opacity: 1;
-        margin-left: 0;
-    }
-
-    &.fu-menu-expanded{
-        position: fixed;
-        top: 0;
-        left: $primaryMenuWidth;
-        height: 100vh;
-        z-index: getZIndexLayerOffset(application, 3);
-    }
+    width: 0px;
+    max-width: $secondaryMenuWidth;
+    transition: width .45s ease-out;
 
     .fu-secondary-menu-holder {
         .fu-logo-holder {
+            position: fixed;
+            z-index: getZIndexLayerOffset(application, 2);
+            top: 0px;
+            left: calc(-1 * $secondaryMenuWidth);
+            transition: left .45s ease-out;
+
             height: $secondaryMenuLogoHolderHeight;
             display: flex;
             align-items: center;
@@ -50,10 +41,14 @@ $secondaryMenuItemNewTabIconSize: 16px;
         }
 
         .fu-secondary-menu {
+            opacity: 0;
+            transition: opacity .25s ease-out;
+
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             padding: 0px 12px 24px;
+            margin-top: 64px;
 
             overflow-y: auto;
             overflow-x: hidden;
@@ -168,5 +163,25 @@ $secondaryMenuItemNewTabIconSize: 16px;
             }
         }
 
+    }
+
+    &.fu-menu-open {
+        width: $secondaryMenuWidth;
+        .fu-secondary-menu-holder {
+            .fu-logo-holder {
+                left: $primaryMenuWidth;
+            }
+            .fu-secondary-menu {
+                opacity: 1;
+            }
+        }
+    }
+
+    &.fu-menu-expanded{
+        position: fixed;
+        top: 0;
+        left: $primaryMenuWidth;
+        height: 100vh;
+        z-index: getZIndexLayerOffset(application, 3);
     }
 }
