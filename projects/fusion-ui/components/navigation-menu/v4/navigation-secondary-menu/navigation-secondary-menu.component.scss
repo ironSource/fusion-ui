@@ -26,6 +26,7 @@ $secondaryMenuItemNewTabIconSize: 16px;
         z-index: getZIndexLayerOffset(application, 2);
         top: 0px;
         left: calc(-1 * $secondaryMenuWidth);
+        max-width: $secondaryMenuWidth;
         transition: left .45s ease-out;
         .fu-logo-holder {
             height: $secondaryMenuLogoHolderHeight;
@@ -45,6 +46,7 @@ $secondaryMenuItemNewTabIconSize: 16px;
             align-items: flex-start;
             padding: 0px 12px 24px;
 
+            width: $secondaryMenuWidth;
             overflow-y: hidden;
             overflow-x: hidden;
             max-height: calc(100vh - $secondaryMenuLogoHolderHeight);
@@ -163,7 +165,7 @@ $secondaryMenuItemNewTabIconSize: 16px;
     &.fu-menu-open {
         width: $secondaryMenuWidth;
         .fu-secondary-menu-holder {
-            left: calc($primaryMenuWidth + 6px);
+            left: $primaryMenuWidth;
             .fu-secondary-menu{
                 overflow-y: auto;
             }
