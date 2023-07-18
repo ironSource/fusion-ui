@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.6.15](https://github.com/ironSource/fusion-ui/compare/v5.6.14...v5.6.15) (2023-07-18)
+
+
+### Bug Fixes
+
+* **fgc-181:** fixed secondary menu item delayed collapse children items ([48106f1](https://github.com/ironSource/fusion-ui/commit/48106f1a3f7b751acd19aeb945e1d49cb15183d3))
+* **fgc-181:** fixed secondary menu loading menu items from popup menu by route (user-menu) ([e49f1a9](https://github.com/ironSource/fusion-ui/commit/e49f1a91adf009bd45bdfe4c96626056b12f0bc0))
+* **fgc-181:** remove secondary menu logo opacity transition ([1aa4ba5](https://github.com/ironSource/fusion-ui/commit/1aa4ba5926ad75290b21e95ae217d4ba845139cb))
+
 ### [5.6.14](https://github.com/ironSource/fusion-ui/compare/v5.6.13...v5.6.14) (2023-07-16)
 
 
