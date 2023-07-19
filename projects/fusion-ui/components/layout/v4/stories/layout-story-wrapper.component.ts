@@ -78,6 +78,9 @@ export class LayoutStoryWrapperComponent implements OnInit, OnDestroy {
                 console.log('Header Dynamic Component value changed: ', value);
             });
         }
+
+        this.headerContent.hasBackButton = this.testMethod.bind(this);
+
         // const temp = this.layoutConfiguration.navigationMenuItems
         // this.layoutConfiguration.navigationMenuItems = [];
 
@@ -94,9 +97,16 @@ export class LayoutStoryWrapperComponent implements OnInit, OnDestroy {
         this.onDestroy$.complete();
     }
 
+    testMethod() {
+        console.log('Back To custom method');
+    }
+
     onPageBackButtonClicked(BackButtonData) {
         if (typeof BackButtonData === 'string') {
             console.log('Page Back button clicked, Navigate to', BackButtonData);
+        } else if (typeof BackButtonData === 'function') {
+            console.log('Page Back button clicked, Use custom method');
+            BackButtonData();
         } else {
             console.log('Page Back button clicked', BackButtonData);
         }
