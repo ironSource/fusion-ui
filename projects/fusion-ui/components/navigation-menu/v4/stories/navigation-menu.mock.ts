@@ -402,12 +402,14 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
     {
         type: NavigationBarItemType.Bottom,
         menuIcon: {iconName: 'question', iconVersion: 'v4'},
+        menuTooltip: 'Knowledge Center',
         redirect: 'https://developers.is.com/',
         target: '_blank'
     },
     {
         type: NavigationBarItemType.User,
         menuIcon: {iconName: 'userCircle', iconVersion: 'v4'},
+        menuTooltip: 'Account',
         menuItems: USER_PROFILE_MENU_ITEMS
     }
 ];
