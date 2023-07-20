@@ -25,7 +25,7 @@ $secondaryMenuItemNewTabIconSize: 16px;
         position: fixed;
         z-index: getZIndexLayerOffset(application, 2);
         top: 0px;
-        left: calc(-1 * $secondaryMenuWidth);
+        left: calc(-1 * ($secondaryMenuWidth - $primaryMenuWidth));
         max-width: $secondaryMenuWidth;
         transition: left .45s ease-out;
         .fu-logo-holder {

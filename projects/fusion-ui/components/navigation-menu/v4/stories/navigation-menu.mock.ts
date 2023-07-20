@@ -314,7 +314,7 @@ export const IS_MENU_ITEMS: MenuItem[] = [
         children: [
             {
                 name: 'Instances',
-                route: '/Instances'
+                route: '/iframe'
             },
             {
                 name: 'Testing',
