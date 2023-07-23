@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.6.20](https://github.com/ironSource/fusion-ui/compare/v5.6.19...v5.6.20) (2023-07-23)
+
+
+### Bug Fixes
+
+* **fgc-181:** fixed secondary menu open (if found) by route ([ecc54d7](https://github.com/ironSource/fusion-ui/commit/ecc54d71442445ee05164aee0f30ed3b936a8251))
+
 ### [5.6.19](https://github.com/ironSource/fusion-ui/compare/v5.6.18...v5.6.19) (2023-07-20)
 
 ### [5.6.18](https://github.com/ironSource/fusion-ui/compare/v5.6.17...v5.6.18) (2023-07-19)
