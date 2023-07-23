@@ -73,7 +73,9 @@ export class LayoutComponent implements OnInit, OnDestroy {
                 filter(event => event instanceof NavigationEnd)
             )
             .subscribe((event: NavigationEnd) => {
-                this.setSelectedMenuByPath(this.navigationMenu$.getValue());
+                if (this.setSelectedMenuByPath(this.navigationMenu$.getValue())) {
+                    this.toggleMenu();
+                }
             });
     }
 
