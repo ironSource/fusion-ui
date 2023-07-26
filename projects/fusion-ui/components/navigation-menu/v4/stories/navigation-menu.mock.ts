@@ -411,8 +411,8 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
         type: NavigationBarItemType.Main,
         menuIcon: {iconName: 'tapjoy', iconVersion: 'v4'},
         menuTitle: 'Tapjoy',
-        menuLogoSrc: 'v4/tapjoy_logo',
-        cssTheme: {'fu-navbar-background-color': '#202020'},
+        menuLogoSrc: 'v4/tapjoy_logo_color',
+        cssTheme: {'fu-navbar-background-color': '#d82327'},
         menuItems: TAPJOY_MENU_ITEMS
     },
     {
