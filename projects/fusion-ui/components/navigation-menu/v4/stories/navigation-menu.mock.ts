@@ -373,6 +373,14 @@ export const IS_MENU_ITEMS: MenuItem[] = [
     }
 ];
 
+export const TAPJOY_MENU_ITEMS: MenuItem[] = [
+    {
+        icon: {iconName: 'dashboard', iconVersion: 'v4'},
+        name: 'Dashboard',
+        route: '/dashboard'
+    }
+];
+
 export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
     // {
     //     type: NavigationBarItemType.Home,
@@ -398,6 +406,14 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
         menuLogoSrc: 'v4/is_ads_logo',
         cssTheme: {'fu-navbar-background-color': '#0D148C'},
         menuItems: IS_MENU_ITEMS
+    },
+    {
+        type: NavigationBarItemType.Main,
+        menuIcon: {iconName: 'tapjoy', iconVersion: 'v4'},
+        menuTitle: 'Tapjoy',
+        menuLogoSrc: 'v4/tapjoy_logo',
+        cssTheme: {'fu-navbar-background-color': '#202020'},
+        menuItems: TAPJOY_MENU_ITEMS
     },
     {
         type: NavigationBarItemType.Bottom,
