@@ -10,4 +10,12 @@ export class MenuItemComponent {
     @Input() item: MenuItem;
 
     constructor() {}
+
+    onMenuItemClicked($event: MouseEvent) {
+        if (!$event.metaKey) {
+            $event.preventDefault();
+        } else {
+            $event.stopPropagation();
+        }
+    }
 }

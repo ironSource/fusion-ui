@@ -1,3 +1,4 @@
+@import '../../../../../src/style/scss/v1/vars/vars';
 @import '../../../../../src/style/scss/v2/mixins/mixins';
 
 :host {
@@ -5,14 +6,20 @@
         position: absolute;
         right: 21px;
     }
-
-    label{
-        cursor: pointer;
+    a {
+        text-decoration: none;
+        color: var(--layout-menu-item-color,$light-100);
+        label{
+            cursor: pointer;
+        }
     }
 
     &.active{
-        label{
-            cursor: default;
+        a{
+            color: var(--layout-menu-item-active-color, $primary);
+            label{
+                cursor: default;
+            }
         }
     }
 
