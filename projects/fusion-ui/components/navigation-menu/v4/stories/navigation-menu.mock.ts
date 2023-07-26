@@ -393,9 +393,9 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
     // },
     {
         type: NavigationBarItemType.Main,
-        menuIconPath: 'v4/unity',
+        menuIconPath: 'v4/unity_flat',
         menuTitle: 'LevelPlay',
-        menuLogoSrc: 'v4/unityLevelPlay',
+        menuLogoSrc: 'v4/unity_logo_flat',
         cssTheme: {'fu-navbar-background-color': '#202020'},
         menuItems: UNITY_MENU_ITEMS
     },
