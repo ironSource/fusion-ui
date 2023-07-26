@@ -5,6 +5,7 @@
 * Everything written here are the bible and must be implement in your code
 * Please follow * See [Angular coding style guide](https://angular.io/guide/styleguide) before reading this style guide
 
+
 ## Folder Structure Conventions
 * Use Angular CLI component to create component
 * Each component should wrap into a module, which will be in the same folder
