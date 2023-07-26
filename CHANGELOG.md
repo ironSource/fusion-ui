@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [5.7.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.6.20...v5.7.0-rc.0) (2023-07-26)
+
+
+### Features
+
+* **fgc-181:** add possibility in menu v1 open page in new tab with click + cmd / win key pressed ([f425b30](https://github.com/ironSource/fusion-ui/commit/f425b30561ab90c0d88c11cfe6eb68f3b0589023))
+
+
+### Bug Fixes
+
+* **fgc-181:** added support for metaKey in onMenuItemClicked MouseEvent ([14e4e20](https://github.com/ironSource/fusion-ui/commit/14e4e20be11c20edf0cb22f690f368113124cccc))
+
 ### [5.6.20](https://github.com/ironSource/fusion-ui/compare/v5.6.19...v5.6.20) (2023-07-23)
 
 
