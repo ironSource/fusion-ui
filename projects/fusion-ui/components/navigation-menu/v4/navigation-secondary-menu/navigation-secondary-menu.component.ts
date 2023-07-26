@@ -40,7 +40,10 @@ export class NavigationSecondaryMenuComponent implements OnInit {
 
     ngOnInit(): void {}
 
-    onMenuItemClicked($event: Event, menuItem: secondaryMenuItem) {
+    onMenuItemClicked($event: MouseEvent, menuItem: secondaryMenuItem) {
+        if ($event && $event.metaKey) {
+            return;
+        }
         if ($event && !menuItem.target) {
             $event.preventDefault();
             $event.stopPropagation();
