@@ -2,6 +2,7 @@
 <a [href]="item.route || item.redirect"
    [target]="item.target ?? '_self'"
    (click)="onMenuItemClicked($event)"
+   class="fu-menu-item-link"
 >
     <label>{{item.name}}</label>
 </a>
