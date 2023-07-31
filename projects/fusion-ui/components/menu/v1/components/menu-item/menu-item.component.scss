@@ -6,18 +6,18 @@
         position: absolute;
         right: 21px;
     }
-    a {
+    a.fu-menu-item-link {
         text-decoration: none;
         color: var(--layout-menu-item-color,$light-100);
+        font-size: 13px;
+        font-weight: 400;
         label{
             cursor: pointer;
-            font-size: 13px;
-            font-weight: 400;
         }
     }
 
     &.active{
-        a{
+        a.fu-menu-item-link{
             color: var(--layout-menu-item-active-color, $primary);
             label{
                 cursor: default;
