@@ -11,6 +11,8 @@
         color: var(--layout-menu-item-color,$light-100);
         label{
             cursor: pointer;
+            font-size: 13px;
+            font-weight: 400;
         }
     }
 
