@@ -6,8 +6,8 @@
             <fusion-icon *ngIf="!layoutUser.avatar" class="fu-user-icon" [name]="userIcon"></fusion-icon>
         </div>
         <div class="fu-user-data-holder">
-            <div class="fu-user-name">{{layoutUser.name}}</div>
-            <div class="fu-user-email">{{layoutUser.email}}</div>
+            <div class="fu-user-name truncate" [fusionTooltip]="layoutUser.name">{{layoutUser.name}}</div>
+            <div class="fu-user-email truncate" [fusionTooltip]="layoutUser.email">{{layoutUser.email}}</div>
         </div>
     </div>
     <!--endregion logged user info-->

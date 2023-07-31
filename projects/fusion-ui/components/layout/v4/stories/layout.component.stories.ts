@@ -63,6 +63,12 @@ const meta: Meta<LayoutStoryWrapperComponent> = {
                 name: 'Jonny Kim',
                 email: 'jonny.kim@supercell.com'
             }
+            /*
+            layoutUser: {
+                name: 'testUser_testAdTestSettingsTester1',
+                email: 'testUser_testAdTestSettingsTester1@itonsrc.com'
+            }
+*/
         }
     }
 };

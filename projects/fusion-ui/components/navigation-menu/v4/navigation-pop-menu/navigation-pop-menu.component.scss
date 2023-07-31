@@ -24,6 +24,10 @@ $menuItemHoverColor: #F5F5F5;
         box-shadow: $boxShadow;
         border-radius: $borderRadius;
 
+        .truncate{
+            @extend %truncate;
+        }
+
         .fu-pop-menu-header{
             display: flex;
             flex-direction: row;
@@ -52,11 +56,14 @@ $menuItemHoverColor: #F5F5F5;
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 4px;
+                width: calc(#{$menuWidth} - 2*8px - 64px);
                 .fu-user-name{
+                    cursor: default;
                     @extend %font-v4-heading-4;
                     color: $fu-nav-text-primary;
                 }
                 .fu-user-email{
+                    cursor: default;
                     @extend %font-v4-caption;
                     color: $fu-nav-text-secondary;
                 }
