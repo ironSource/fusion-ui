@@ -1,6 +1,6 @@
 {
     "name": "@ironsource/fusion-ui",
-    "version": "5.7.3",
+    "version": "5.7.4",
     "dependencies": {
         "chart.js": "^3.5.1",
         "@floating-ui/dom": "^1.0.9",
