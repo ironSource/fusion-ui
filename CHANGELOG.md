@@ -17,7 +17,6 @@ All notable changes to this project will be documented in this file. See [commit
 ## [5.7.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.6.20...v5.7.0-rc.0) (2023-07-26)
 
 
-
 ### Features
 
 * **fgc-181:** add possibility in menu v1 open page in new tab with click + cmd / win key pressed ([f425b30](https://github.com/ironSource/fusion-ui/commit/f425b30561ab90c0d88c11cfe6eb68f3b0589023))
