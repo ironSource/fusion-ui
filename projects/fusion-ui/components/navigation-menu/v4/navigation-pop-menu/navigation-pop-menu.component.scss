@@ -56,7 +56,7 @@ $menuItemHoverColor: #F5F5F5;
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 4px;
-                width: calc(#{$menuWidth} - 2*8px - 64px);
+                width: calc(#{$menuWidth} - 88px); // 88px = 8px +8px + 32px + 16px + 16px + 8px
                 .fu-user-name{
                     cursor: default;
                     @extend %font-v4-heading-4;
