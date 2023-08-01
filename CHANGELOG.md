@@ -2,6 +2,174 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.7.7](https://github.com/ironSource/fusion-ui/compare/v5.7.6...v5.7.7) (2023-07-31)
+
+### [5.7.6](https://github.com/ironSource/fusion-ui/compare/v5.7.5...v5.7.6) (2023-07-31)
+
+### [5.7.5](https://github.com/ironSource/fusion-ui/compare/v5.7.4...v5.7.5) (2023-07-31)
+
+### [5.7.4](https://github.com/ironSource/fusion-ui/compare/v5.7.3...v5.7.4) (2023-07-31)
+
+### [5.7.3](https://github.com/ironSource/fusion-ui/compare/v5.7.2...v5.7.3) (2023-07-27)
+
+### [5.7.2](https://github.com/ironSource/fusion-ui/compare/v5.7.1...v5.7.2) (2023-07-27)
+
+### [5.7.1](https://github.com/ironSource/fusion-ui/compare/v5.7.0...v5.7.1) (2023-07-26)
+
+## [5.7.0](https://github.com/ironSource/fusion-ui/compare/v5.7.0-rc.0...v5.7.0) (2023-07-26)
+
+## [5.7.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.6.20...v5.7.0-rc.0) (2023-07-26)
+
+
+### Features
+
+* **fgc-181:** add possibility in menu v1 open page in new tab with click + cmd / win key pressed ([f425b30](https://github.com/ironSource/fusion-ui/commit/f425b30561ab90c0d88c11cfe6eb68f3b0589023))
+
+
+### Bug Fixes
+
+* **fgc-181:** added support for metaKey in onMenuItemClicked MouseEvent ([14e4e20](https://github.com/ironSource/fusion-ui/commit/14e4e20be11c20edf0cb22f690f368113124cccc))
+
+### [5.6.20](https://github.com/ironSource/fusion-ui/compare/v5.6.19...v5.6.20) (2023-07-23)
+
+
+### Bug Fixes
+
+* **fgc-181:** fixed secondary menu open (if found) by route ([ecc54d7](https://github.com/ironSource/fusion-ui/commit/ecc54d71442445ee05164aee0f30ed3b936a8251))
+
+### [5.6.19](https://github.com/ironSource/fusion-ui/compare/v5.6.18...v5.6.19) (2023-07-20)
+
+### [5.6.18](https://github.com/ironSource/fusion-ui/compare/v5.6.17...v5.6.18) (2023-07-19)
+
+### [5.6.17](https://github.com/ironSource/fusion-ui/compare/v5.6.16...v5.6.17) (2023-07-18)
+
+### [5.6.16](https://github.com/ironSource/fusion-ui/compare/v5.6.15...v5.6.16) (2023-07-18)
+
+
+### Bug Fixes
+
+* **fgc-181:** remove secondary menu items opacity transition ([5275bf5](https://github.com/ironSource/fusion-ui/commit/5275bf5f04a73a359909b2964ec447cd0324ccd1))
+
+### [5.6.15](https://github.com/ironSource/fusion-ui/compare/v5.6.14...v5.6.15) (2023-07-18)
+
+
+### Bug Fixes
+
+* **fgc-181:** fixed secondary menu item delayed collapse children items ([48106f1](https://github.com/ironSource/fusion-ui/commit/48106f1a3f7b751acd19aeb945e1d49cb15183d3))
+* **fgc-181:** fixed secondary menu loading menu items from popup menu by route (user-menu) ([e49f1a9](https://github.com/ironSource/fusion-ui/commit/e49f1a91adf009bd45bdfe4c96626056b12f0bc0))
+* **fgc-181:** remove secondary menu logo opacity transition ([1aa4ba5](https://github.com/ironSource/fusion-ui/commit/1aa4ba5926ad75290b21e95ae217d4ba845139cb))
+
+### [5.6.14](https://github.com/ironSource/fusion-ui/compare/v5.6.13...v5.6.14) (2023-07-16)
+
+
+### Bug Fixes
+
+* **fgc-181:** fixed class fu-menu-expanded set in layout for main-view ([0f34c1d](https://github.com/ironSource/fusion-ui/commit/0f34c1db8bd108f282b1c4cffdaf77742aff2c25))
+
+### [5.6.13](https://github.com/ironSource/fusion-ui/compare/v5.6.12...v5.6.13) (2023-07-16)
+
+
+### Bug Fixes
+
+* **fgc-181:** extend header content -> has back button prop type ([4a17c05](https://github.com/ironSource/fusion-ui/commit/4a17c054a0245e49c89936766018c0343735155c))
+* **fgc-181:** extend header content -> has back button prop type + open secondary menu without items ([ac86040](https://github.com/ironSource/fusion-ui/commit/ac8604083c9a11c84fe86e35fa367e39f771ca3c))
+
+### [5.6.12](https://github.com/ironSource/fusion-ui/compare/v5.6.11...v5.6.12) (2023-07-13)
+
+
+### Bug Fixes
+
+* **fgc-181:** added new optional property "actionAlignRight" to the header content ([7553fce](https://github.com/ironSource/fusion-ui/commit/7553fce14d43ff099e480e2ff53011c310300a00))
+* **fgc-181:** fixed main-view width calculation without secondary menu ([fe2b0cb](https://github.com/ironSource/fusion-ui/commit/fe2b0cb555e8a24ccc3e560109547f8af4d1f76d))
+
+### [5.6.11](https://github.com/ironSource/fusion-ui/compare/v5.6.10...v5.6.11) (2023-07-12)
+
+
+### Bug Fixes
+
+* **fgc-181:** move teleportElements to layout input ([b83d0ec](https://github.com/ironSource/fusion-ui/commit/b83d0ecf9c528fc49157def2dca51d1664d6080a))
+
+### [5.6.10](https://github.com/ironSource/fusion-ui/compare/v5.6.9...v5.6.10) (2023-07-11)
+
+
+### Bug Fixes
+
+* **fgc-181:** add css var --layout-header-height with value, move width calculation to main-content ([4fc0816](https://github.com/ironSource/fusion-ui/commit/4fc08168a8d1f1cfd97ec74e292ad5656a399edc))
+
+### [5.6.9](https://github.com/ironSource/fusion-ui/compare/v5.6.8...v5.6.9) (2023-07-10)
+
+
+### Bug Fixes
+
+* **menu-v4:** try to fix layout inner content width (ad quality issue) ([9cdb8a3](https://github.com/ironSource/fusion-ui/commit/9cdb8a37136f36624eb27b672d36edd1ce0733ac))
+
+### [5.6.8](https://github.com/ironSource/fusion-ui/compare/v5.6.7...v5.6.8) (2023-07-10)
+
+
+### Bug Fixes
+
+* **menu-v4:** fixed menu toggle bug on loading ([6ac979c](https://github.com/ironSource/fusion-ui/commit/6ac979c0f61fa2c84b86561e29db19b7ba70e5fe))
+
+### [5.6.7](https://github.com/ironSource/fusion-ui/compare/v5.6.6...v5.6.7) (2023-07-09)
+
+
+### Bug Fixes
+
+* **menu-v4:** fixed secondary menu restore on toggle ([b46d2f9](https://github.com/ironSource/fusion-ui/commit/b46d2f927df8c384b3d8f3e325cfc208a5d927af))
+
+### [5.6.6](https://github.com/ironSource/fusion-ui/compare/v5.6.6-rc.1...v5.6.6) (2023-07-09)
+
+
+### Bug Fixes
+
+* **menu-v4:** added .8s transition to primary menu bg color change ([18b4a0c](https://github.com/ironSource/fusion-ui/commit/18b4a0c2f470f3f71df2ead1dd0c0c0fcd5d259a))
+* **menu-v4:** primary menu changes ([4917ef5](https://github.com/ironSource/fusion-ui/commit/4917ef5c2e767e57ad4c52f3e7c17258c833602a))
+
+### [5.6.6-rc.1](https://github.com/ironSource/fusion-ui/compare/v5.6.6-rc.0...v5.6.6-rc.1) (2023-07-09)
+
+
+### Bug Fixes
+
+* **menu-v4:** bottom menu button click behaviour fixed ([b0868d5](https://github.com/ironSource/fusion-ui/commit/b0868d590becf325893bc50ddb4ad56acdc887d6))
+* **menu-v4:** menu sizes css changes ([d021b8d](https://github.com/ironSource/fusion-ui/commit/d021b8d4426f919790e5ad662053c87d22cb80a9))
+* **menu-v4:** remove change css theme bg color on primary item in case user menu clicked ([65b5fe6](https://github.com/ironSource/fusion-ui/commit/65b5fe63dde246efd74e4b6a1e92dd0b84993447))
+
+### [5.6.6-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.6.5-rc.1...v5.6.6-rc.0) (2023-07-09)
+
+
+### Bug Fixes
+
+* **menu-v4:** after merge from release/5.x.x ([711f36f](https://github.com/ironSource/fusion-ui/commit/711f36f9855547702a3dfdecd60138408910951f))
+* **menu-v4:** update networks logo in secondary menu ([6ce5504](https://github.com/ironSource/fusion-ui/commit/6ce55040a37ace6c8c704482ab5d8662f686956a))
+
+### [5.6.5](https://github.com/ironSource/fusion-ui/compare/v5.6.5-rc.0...v5.6.5) (2023-07-06)
+
+### [5.6.5-rc.1](https://github.com/ironSource/fusion-ui/compare/v5.6.5-rc.0...v5.6.5-rc.1) (2023-07-09)
+
+
+### Bug Fixes
+
+* **menu-v4:** add layout default font, first primary menu item 8px margin-top, menu mock changes ([d654e2d](https://github.com/ironSource/fusion-ui/commit/d654e2dbb9648c6ce6d5fb3774f7769932a47796))
+* **menu-v4:** added secondary menu expand on hover at primary menu except bottom elements ([71aca5e](https://github.com/ironSource/fusion-ui/commit/71aca5e36d38524ad2c124d63ed369f96b3db85e))
+* **menu-v4:** set secondary menu default expanded ([f5756cd](https://github.com/ironSource/fusion-ui/commit/f5756cdaea15e7cde09541e7807ddc76c83cb3be))
+* **menu-v4:** typography v4 added to build css ([a0f8288](https://github.com/ironSource/fusion-ui/commit/a0f8288349e698c006ce7e389ae8b30d33badc5f))
+* **menu-v4:** update fonts (v4) in layout v4 - navigation menu ([b4da485](https://github.com/ironSource/fusion-ui/commit/b4da4853eb087d6c1baf90d1ff02ace6c5846851))
+
+### [5.6.5-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.6.4...v5.6.5-rc.0) (2023-07-06)
+
+
+### Bug Fixes
+
+* **fgc-177:** fixed bug for fusion-icon with rendered fusion-svg component ([d33b82b](https://github.com/ironSource/fusion-ui/commit/d33b82b3d42f2ebd71a31a4ea7c5c0fddbb96ec9))
+
+### [5.6.4](https://github.com/ironSource/fusion-ui/compare/v5.6.3...v5.6.4) (2023-07-05)
+
+
+### Bug Fixes
+
+* **fgc-177:** fixed defaultCssTheme set ([d7f068b](https://github.com/ironSource/fusion-ui/commit/d7f068b9d3e7f2af439e7849546ba83c5d51a313))
+* **fgc-177:** fixed menu selection by route (input setter, route event) ([1f3ba76](https://github.com/ironSource/fusion-ui/commit/1f3ba7637ef1db91f473aef2b70a75ca8c9f6612))
+
 ### [5.6.3](https://github.com/ironSource/fusion-ui/compare/v5.6.3-rc.0...v5.6.3) (2023-07-04)
 
 ### [5.6.3-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.6.2...v5.6.3-rc.0) (2023-07-03)
@@ -49,7 +217,7 @@ All notable changes to this project will be documented in this file. See [commit
 ### [5.5.2-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.2.0...v5.5.2-rc.0) (2023-06-20)
 
 
-### Bug Fixes 
+### Bug Fixes
 
 * **fgc-172:** fixed preselected placeholder text dropdown include/exclude with BackendPagination ([a586ca1](https://github.com/ironSource/fusion-ui/commit/a586ca188059ff15b9969d39a47e8d75c00de7b2))
 

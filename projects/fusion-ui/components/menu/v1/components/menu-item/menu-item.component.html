@@ -1,5 +1,11 @@
 <fusion-icon class="item-icon" *ngIf="item.icon" [name]="item.icon"></fusion-icon>
-<label>{{item.name}}</label>
+<a [href]="item.route || item.redirect"
+   [target]="item.target ?? '_self'"
+   (click)="onMenuItemClicked($event)"
+   class="fu-menu-item-link"
+>
+    <label>{{item.name}}</label>
+</a>
 <i class="icon-expand" *ngIf="item.children">
-  <fusion-icon [name]="{iconName: 'arrow-right', iconVersion: 'v1'}"></fusion-icon>
+    <fusion-icon [name]="{iconName: 'arrow-right', iconVersion: 'v1'}"></fusion-icon>
 </i>

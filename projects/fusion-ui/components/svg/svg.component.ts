@@ -24,8 +24,6 @@ import {SvgOptions} from './svg-entities';
 @Component({
     selector: 'fusion-svg',
     templateUrl: './svg.component.html',
-    styleUrls: ['./svg.component.scss'],
-    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SvgComponent implements AfterViewInit {

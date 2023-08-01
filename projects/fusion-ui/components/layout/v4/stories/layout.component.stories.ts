@@ -10,7 +10,6 @@ import {LayoutComponent} from '../layout.component';
 import {
     IS_MENU_ITEMS,
     LAYOUT_HEADER_CONTENT_MOCK,
-    NAVIGATION_ADMIN_MENU_MOCK,
     NAVIGATION_MENU_MOCK,
     UNITY_MENU_ITEMS,
     USER_PROFILE_MENU_ITEMS
@@ -181,20 +180,6 @@ const NAVIGATION_MENU_MOCK = ${JSON.stringify(NAVIGATION_MENU_MOCK)};
     }
 };
 
-export const ExampleAdmin = {
-    render: LayoutTemplate,
-
-    args: {
-        layoutConfiguration: {
-            navigationMenuItems: NAVIGATION_ADMIN_MENU_MOCK,
-            layoutUser: {
-                name: 'Jonny Kim',
-                email: 'jonny.kim@supercell.com'
-            }
-        }
-    }
-};
-
 // because of auto-docs can't show more than 4 not inline stories on docs page we just comment it
 /*export const WithHeaderDynamicComponent = {
     render: LayoutTemplate,
@@ -349,7 +334,11 @@ const MOK_APPLICATIONS_ONE_LINE_OPTIONS = ${JSON.stringify(MOK_APPLICATIONS_ONE_
 
 const HeaderTeleportTemplate: StoryFn<LayoutComponent> = (args: LayoutComponent) => ({
     props: {...args},
-    template: `<fusion-layout-story-wrapper [headerContent]="headerContent" [layoutConfiguration]="layoutConfiguration"></fusion-layout-story-wrapper>
+    template: `<fusion-layout-story-wrapper
+    [headerContent]="headerContent"
+    [teleportElements]="teleportElements"
+    [layoutConfiguration]="layoutConfiguration"
+></fusion-layout-story-wrapper>
 
     <ng-container *fusionTeleporting="'#fuHeaderTeleport'">
         <div style="display: flex; gap:8px; margin-right: 24px;">
@@ -366,8 +355,8 @@ export const WithHeaderTeleportElements = {
     args: {
         headerContent: {
             ...LAYOUT_HEADER_CONTENT_MOCK,
-            teleportElements: [{id: 'fuHeaderTeleport', isOnRight: true}]
-        }
+        },
+        teleportElements: [{id: 'fuHeaderTeleport', isOnRight: true}]
     },
 };
 */
@@ -383,9 +372,9 @@ export const WithHeaderTeleportElementsAndDynamicComponent = {
                 formControl: new FormControl() as FormControl<DropdownOption[]>,
                 title: 'Applications',
                 items: MOK_APPLICATIONS_ONE_LINE_OPTIONS
-            },
-            teleportElements: [{id: 'fuHeaderTeleport', isOnRight: true}]
-        }
+            }
+        },
+        teleportElements: [{id: 'fuHeaderTeleport', isOnRight: true}]
     },
     parameters: {
         docs: {
@@ -404,6 +393,7 @@ import { MenuItem } from '@ironsource/fusion-ui/components/menu/common/base';
 import {
   HeaderContent,
   LayoutConfiguration,
+  TeleportWrapperElement
 } from '@ironsource/fusion-ui/components/layout/v4/layout.entities';
 import { NavigationBarItemType } from '@ironsource/fusion-ui/components/navigation-menu/v4';
 import { TopFilterIncludeExcludeComponent } from '@ironsource/fusion-ui/components/top-filter-include-exclude';
@@ -415,6 +405,7 @@ import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option
   <fusion-layout
   [configuration]="layoutConfiguration"
   [headerContent]="headerContent"
+  [teleportElements]="teleportElements"
   (menuItemClick)="onMenuItemClick($event)"
   (pageBackButtonClicked)="onPageBackButtonClicked($event)"
 >
@@ -485,8 +476,8 @@ export class FusionStoryWrapperComponent {
         MOK_APPLICATIONS_ONE_LINE_OPTIONS.slice(2, 4)
       ),
     },
-    teleportElements: [{ id: 'fuHeaderTeleport', isOnRight: true }],
   };
+  teleportElements: TeleportWrapperElement = [{ id: 'fuHeaderTeleport', isOnRight: true }];
   layoutConfiguration: LayoutConfiguration = {
     navigationMenuItems: NAVIGATION_MENU_MOCK,
     layoutUser: {

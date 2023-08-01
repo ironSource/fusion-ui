@@ -10,10 +10,16 @@ $navBarIconSize: 24px;
     display: block;
     height: 100vh;
     width: 64px;
-    background-color: var(--fu-navbar-background-color, $fu-nav-primary-unity);
 
     .fu-navigation-bar-holder{
+        position: fixed;
+        z-index: getZIndexLayerOffset(application, 4);
+        background-color: var(--fu-navbar-background-color, $fu-nav-primary-unity);
+        transition: background-color .8s;
+
+
         height: 100%;
+        width: 64px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -26,7 +32,6 @@ $navBarIconSize: 24px;
             width: 100%;
             &.fu-home{
                 height: 64px;
-                margin-bottom: 8px;
                 .fu-navigation-bar-button:hover{
                     cursor: pointer;
                 }
@@ -58,6 +63,9 @@ $navBarIconSize: 24px;
                         }
                     }
                 }
+                &:first-child{
+                    margin-top: 8px;
+                }
             }
             &.fu-bottom-block{
                 height: 48px;
@@ -72,6 +80,7 @@ $navBarIconSize: 24px;
             margin-top: auto;
             display: flex;
             flex-direction: column;
+            margin-bottom: 8px;
 
             .fu-menu-toggle-button-holder{
                 height: 48px;
@@ -82,14 +91,17 @@ $navBarIconSize: 24px;
                 border-top: solid 1px $fu-nav-menu-white-12;
                 background-color: var(--fu-navbar-toggle-button-background-color, $fu-nav-menu-white-16);
                 margin-top: 8px;
+                margin-bottom: -8px;
+                gap: 2px;
             }
         }
 
         .fu-navigation-bar-network-name{
             color: var(--fu-navbar-text-color, $fu-nav-menu-white-80);
             height: 18px;
-            line-height: 18px;
-            @extend %font-primary-menu;
+            font-size: 0.71875rem;
+            line-height: 1.125rem;
+            @extend %font-v4-semibold;
         }
 
         .fu-navigation-bar-button{

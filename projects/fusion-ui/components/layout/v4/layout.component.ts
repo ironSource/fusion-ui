@@ -1,12 +1,14 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 import {WindowService} from '@ironsource/fusion-ui/services/window';
 import {NavigationMenuComponent, PrimaryMenuItem} from '@ironsource/fusion-ui/components/navigation-menu/v4';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
-import {HeaderContent, LayoutConfiguration} from './layout.entities';
+import {HeaderContent, LayoutConfiguration, TeleportWrapperElement} from './layout.entities';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 import {LayoutHeaderComponent} from './components/layout-header/layout-header.component';
+import {NavigationEnd, Router} from '@angular/router';
+import {filter, takeUntil} from 'rxjs/operators';
 
 @Component({
     selector: 'fusion-layout',
@@ -16,17 +18,31 @@ import {LayoutHeaderComponent} from './components/layout-header/layout-header.co
     styleUrls: ['./layout.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LayoutComponent implements OnInit {
+export class LayoutComponent implements OnInit, OnDestroy {
     @Input() set configuration(value: LayoutConfiguration) {
-        if (Array.isArray(value?.navigationMenuItems)) {
+        if (Array.isArray(value?.navigationMenuItems) && value.navigationMenuItems.length > 0) {
             this.navigationMenu$.next(value.navigationMenuItems);
+            if (this.setSelectedMenuByPath(this.navigationMenu$.getValue())) {
+                this.toggleMenu();
+            }
         }
         this.layoutUser = {...value?.layoutUser} ?? null;
     }
     @Input() headerContent: HeaderContent;
+    @Input() set teleportElements(value: TeleportWrapperElement[]) {
+        this._teleportElements = value;
+    }
+    get teleportElements(): TeleportWrapperElement[] {
+        return this._teleportElements ?? [];
+    }
 
     @Output() pageBackButtonClicked = new EventEmitter<MouseEvent>();
     @Output() menuItemClick = new EventEmitter<MenuItem>();
+
+    /** @internal
+     * Used in additional from selected menu item by route
+     * */
+    @Output() menuItemSelectedByRoute = new EventEmitter<MenuItem>();
 
     @ViewChild('navigationMenu', {static: true}) navigationMenu: NavigationMenuComponent;
 
@@ -35,10 +51,32 @@ export class LayoutComponent implements OnInit {
     /** @internal */
     layoutUser: LayoutUser;
 
-    constructor(private windowRef: WindowService) {}
+    private onDestroy$ = new Subject();
+    private isMenuToggled = false;
+    private _teleportElements: TeleportWrapperElement[];
 
-    ngOnInit(): void {
-        this.setSelectedMenuByPath(this.navigationMenu$.getValue());
+    constructor(private windowRef: WindowService, private router: Router) {}
+
+    ngOnInit() {
+        this.initNavigationEvents();
+    }
+
+    ngOnDestroy() {
+        this.onDestroy$.next();
+        this.onDestroy$.complete();
+    }
+
+    private initNavigationEvents() {
+        this.router.events
+            .pipe(
+                takeUntil(this.onDestroy$),
+                filter(event => event instanceof NavigationEnd)
+            )
+            .subscribe((event: NavigationEnd) => {
+                if (this.setSelectedMenuByPath(this.navigationMenu$.getValue())) {
+                    this.toggleMenu();
+                }
+            });
     }
 
     private isActiveMenuItem(menuItem: MenuItem, currentPath: string): boolean {
@@ -56,7 +94,14 @@ export class LayoutComponent implements OnInit {
         return false;
     }
 
-    private setSelectedMenuByPath(menuPrimary: PrimaryMenuItem[]) {
+    private toggleMenu() {
+        if (!this.isMenuToggled) {
+            this.navigationMenu.toggleMenu();
+            this.isMenuToggled = true;
+        }
+    }
+
+    private setSelectedMenuByPath(menuPrimary: PrimaryMenuItem[]): boolean {
         const currentPath = this.windowRef.nativeWindow.location.pathname;
         let itemFound: MenuItem = null;
         let primaryItemFound: PrimaryMenuItem = null;
@@ -83,7 +128,8 @@ export class LayoutComponent implements OnInit {
         }
         if (itemFound) {
             this.navigationMenu.setActiveMenu(primaryItemFound, itemFound);
-            this.headerContent.title = itemFound.name;
+            this.menuItemSelectedByRoute.emit(itemFound);
         }
+        return !!itemFound;
     }
 }

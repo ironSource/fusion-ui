@@ -44,6 +44,11 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
         isGroupName: true
     },
     {
+        icon: {iconName: 'dashboard', iconVersion: 'v4'},
+        name: 'Dashboard',
+        route: '/branch_'
+    },
+    {
         icon: {iconName: 'chart_line_up', iconVersion: 'v4'},
         name: 'Reports',
         children: [
@@ -300,13 +305,8 @@ export const IS_MENU_ITEMS: MenuItem[] = [
     },
     {
         icon: {iconName: 'chart_line_up', iconVersion: 'v4'},
-        name: 'Reports',
-        children: [
-            {
-                name: 'Performance',
-                route: '/performance'
-            }
-        ]
+        name: 'Performance',
+        route: '/performance'
     },
     {
         icon: {iconName: 'wrench', iconVersion: 'v4'},
@@ -314,15 +314,15 @@ export const IS_MENU_ITEMS: MenuItem[] = [
         children: [
             {
                 name: 'Instances',
-                route: '/Instances'
-            },
-            {
-                name: 'Offerwall',
-                route: '/Offerwall'
+                route: '/iframe'
             },
             {
                 name: 'Testing',
                 route: '/Testing'
+            },
+            {
+                name: 'Offerwall',
+                route: '/Offerwall'
             }
         ]
     },
@@ -345,11 +345,7 @@ export const IS_MENU_ITEMS: MenuItem[] = [
             },
             {
                 name: 'SKAdNetwork',
-                route: '/SKAdNetwork'
-            },
-            {
-                name: 'Optimizer',
-                route: '/Optimizer'
+                route: '/SKAdNetwork '
             }
         ]
     },
@@ -362,8 +358,12 @@ export const IS_MENU_ITEMS: MenuItem[] = [
                 route: '/overview'
             },
             {
-                name: 'Analysis',
-                route: '/analysis'
+                name: 'Report generator',
+                route: '/ReportGenerator'
+            },
+            {
+                name: 'Optimizer',
+                route: '/Optimizer'
             },
             {
                 name: 'Budget',
@@ -373,21 +373,29 @@ export const IS_MENU_ITEMS: MenuItem[] = [
     }
 ];
 
-export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
+export const TAPJOY_MENU_ITEMS: MenuItem[] = [
     {
-        type: NavigationBarItemType.Home,
-        menuIcon: {iconName: 'house', iconVersion: 'v4'},
-        menuTitle: 'Dashboard',
-        route: '/docs/getting-started',
-        cssTheme: {
-            'fu-navbar-background-color': '#202020'
-        }
-    },
+        icon: {iconName: 'dashboard', iconVersion: 'v4'},
+        name: 'Dashboard',
+        route: '/dashboard'
+    }
+];
+
+export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
+    // {
+    //     type: NavigationBarItemType.Home,
+    //     menuIcon: {iconName: 'house', iconVersion: 'v4'},
+    //     menuTitle: 'Dashboard',
+    //     route: '/docs/getting-started',
+    //     cssTheme: {
+    //         'fu-navbar-background-color': '#202020'
+    //     }
+    // },
     {
         type: NavigationBarItemType.Main,
-        menuIconPath: 'v4/unity',
+        menuIcon: {iconName: 'unity_flat', iconVersion: 'v4'},
         menuTitle: 'LevelPlay',
-        menuLogoSrc: 'v4/unityLevelPlay',
+        menuLogoSrc: 'v4/unity_logo_flat',
         cssTheme: {'fu-navbar-background-color': '#202020'},
         menuItems: UNITY_MENU_ITEMS
     },
@@ -395,19 +403,29 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
         type: NavigationBarItemType.Main,
         menuIcon: {iconName: 'ironSource', iconVersion: 'v4'},
         menuTitle: 'Ads',
-        menuLogoSrc: 'v4/isAdsLogo',
+        menuLogoSrc: 'v4/is_ads_logo',
         cssTheme: {'fu-navbar-background-color': '#0D148C'},
         menuItems: IS_MENU_ITEMS
     },
     {
+        type: NavigationBarItemType.Main,
+        menuIcon: {iconName: 'tapjoy', iconVersion: 'v4'},
+        menuTitle: 'Tapjoy',
+        menuLogoSrc: 'v4/tapjoy_logo',
+        cssTheme: {'fu-navbar-background-color': '#202020'},
+        menuItems: TAPJOY_MENU_ITEMS
+    },
+    {
         type: NavigationBarItemType.Bottom,
         menuIcon: {iconName: 'question', iconVersion: 'v4'},
+        menuTooltip: 'Knowledge Center',
         redirect: 'https://developers.is.com/',
         target: '_blank'
     },
     {
         type: NavigationBarItemType.User,
         menuIcon: {iconName: 'userCircle', iconVersion: 'v4'},
+        menuTooltip: 'Account',
         menuItems: USER_PROFILE_MENU_ITEMS
     }
 ];
