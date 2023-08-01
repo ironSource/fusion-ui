@@ -52,12 +52,17 @@ cp -R projects/fusion-ui/src/style/scss/v4/grid.scss dist/fusion-ui/style/v4/gri
 sass dist/fusion-ui/style/v4/grid.scss dist/fusion-ui/style/v4/grid.css -s compressed
 
 # compile fonts by version
+echo  -e "${GREEN}-- copy and compile fonts by versions ${NOCOLOR}"
 sass projects/fusion-ui/src/style/scss/v1/fonts.scss dist/fusion-ui/style/v1/fonts.css -s compressed
 sass projects/fusion-ui/src/style/scss/v2/fonts.scss dist/fusion-ui/style/v2/fonts.css -s compressed
 sass projects/fusion-ui/src/style/scss/v3/vars/_fonts.scss dist/fusion-ui/style/v3/fonts.css -s compressed
 sass projects/fusion-ui/src/style/scss/v4/vars/_fonts.scss dist/fusion-ui/style/v4/fonts.css -s compressed
 
+# compile shadows (only v4)
+echo  -e "${GREEN}-- copy and compile shadows v4 ${NOCOLOR}"
+sass projects/fusion-ui/src/style/scss/v4/shadows.scss dist/fusion-ui/style/v4/shadows.css -s compressed
 
+# copy and compile defaults fonts and grid versions - v3
 echo  -e "${GREEN}-- copy and compile default fonts and grid by last (v3) versions ${NOCOLOR}"
 # compile default fonts (last version default - 3 )
 sass projects/fusion-ui/src/style/scss/v3/vars/_fonts.scss dist/fusion-ui/style/fonts.css -s compressed

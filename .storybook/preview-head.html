@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://fusion.ironsrc.net/Angular_14/v26/styles.5859cbb869f0ab3e.css">
-<link rel="stylesheet" href="https://fusion-ui.s3.eu-west-1.amazonaws.com/release/5.6.8/style/v4/fonts.css">
+<link rel="stylesheet" href="https://fusion-ui.s3.eu-west-1.amazonaws.com/release/5.7.7/style/v4/fonts.css">
 
 <style>
     body {
@@ -60,6 +60,36 @@
     }
     /* endregion */
 
+    /* region shadows */
+    .fu-shadow-xs{box-shadow:0px 1px 2px 0px rgba(16,24,40,.05)}.fu-shadow-sm{box-shadow:0px 1px 3px 0px rgba(16,24,40,.1),0px 1px 2px 0px rgba(16,24,40,.06)}.fu-shadow-md{box-shadow:0px 4px 8px -2px rgba(16,24,40,.1),0px 2px 4px -2px rgba(16,24,40,.06)}.fu-shadow-lg{box-shadow:0px 12px 16px -4px rgba(16,24,40,.08),0px 4px 6px -2px rgba(16,24,40,.03)}.fu-shadow-xl{box-shadow:0px 20px 24px -6px rgba(16,24,40,.08),0px 8px 8px -4px rgba(16,24,40,.03)}.fu-shadow-xxl{box-shadow:0px 24px 48px -12px rgba(16,24,40,.18)}.fu-shadow-xxxl{box-shadow:0px 19px 32px 2px rgba(44,45,45,.14)}.fu-shadow-slg{box-shadow:0px 27px 27px 2px rgba(44,45,45,.14)}
+
+    .fu-shadow-examples{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 38px;
+        padding: 80px;
+        background-color: #EDEDED;
+    }
+    .fu-shadow-example {
+        width: 124px;
+        height: 124px;
+        background-color: #fff;
+        border-radius: 16px;
+        display: flex;
+        gap: 8px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+    }
+    .fu-shadow-hr{
+        flex-basis: 100%;
+    }
+    /* endregion */
+
+    /* region grid */
     .fu-grid-example-wrapper{
         padding: 16px;
         border-radius: 16px;
@@ -102,7 +132,9 @@
         height: 32px;
         background-color: rgba(150, 192, 255, 0.3);
     }
+    /* endregion */
 
+    /*region breackpoints*/
     .fu-breakpoint_xl{
         background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 48 43\'%3E%3Cpath d=\'M44 0H4C1.792 0 0 1.806 0 4.031v24.188c0 2.225 1.792 4.031 4 4.031h16l-2 8.063h-6c-.733 0-1.333.604-1.333 1.343 0 .74.6 1.344 1.333 1.344h24c.733 0 1.333-.605 1.333-1.344 0-.739-.6-1.343-1.333-1.343h-6l-2-8.063h16c2.208 0 4-1.806 4-4.031V4.031C48 1.806 46.208 0 44 0zM20.75 40.313l1.333-5.376h3.834l1.333 5.376h-6.5zm24.583-12.094c0 .739-.6 1.343-1.333 1.343H4a1.342 1.342 0 01-1.333-1.343V4.031c0-.739.6-1.343 1.333-1.343h40c.733 0 1.333.604 1.333 1.343v24.188z\' fill=\'%23C2CDD7\' fill-rule=\'nonzero\'/%3E%3C/svg%3E');
         width: 48px;
@@ -149,4 +181,5 @@
         font-family: monospace, monospace;
         width: fit-content;
     }
+    /*endregion*/
 </style>
