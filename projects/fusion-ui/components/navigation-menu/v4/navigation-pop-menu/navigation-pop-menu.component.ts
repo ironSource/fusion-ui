@@ -3,11 +3,12 @@ import {CommonModule} from '@angular/common';
 import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
+import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 
 @Component({
     selector: 'fusion-navigation-pop-menu',
     standalone: true,
-    imports: [CommonModule, IconModule],
+    imports: [CommonModule, IconModule, TooltipModule],
     templateUrl: './navigation-pop-menu.component.html',
     styleUrls: ['./navigation-pop-menu.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
