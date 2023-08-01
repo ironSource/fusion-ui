@@ -153,7 +153,7 @@ export class NavigationMenuComponent implements OnInit {
 
     toggleMenu() {
         if (!(this.secondaryMenuOpen$.getValue() && this.secondaryMenuExpanded$.getValue())) {
-            this.secondaryMenuOpen$.next(!this.secondaryMenuOpen$.getValue());
+            this.secondaryMenuOpen$.next(!this.secondaryMenuOpen$.getValue() && this.secondaryMenuItems$.getValue().length > 0);
         }
         this.cacheService.set(CacheType.SessionStorage, MENU_CACHE_KEY, this.secondaryMenuOpen$.getValue());
         if (this.secondaryMenuOpen$.getValue()) {
@@ -180,12 +180,14 @@ export class NavigationMenuComponent implements OnInit {
     }
 
     private setSecondaryMenu(selectedNetwork: PrimaryMenuItem) {
-        this.secondaryMenuItems$.next(selectedNetwork?.menuItems ?? []);
-        this.secondaryMenuName$.next(selectedNetwork?.menuTitle ?? '');
-        this.secondaryMenuLogoSrc$.next(selectedNetwork?.menuLogoSrc ?? '');
+        if (selectedNetwork?.type === NavigationBarItemType.Main) {
+            this.secondaryMenuItems$.next(selectedNetwork?.menuItems ?? []);
+            this.secondaryMenuName$.next(selectedNetwork?.menuTitle ?? '');
+            this.secondaryMenuLogoSrc$.next(selectedNetwork?.menuLogoSrc ?? '');
 
-        this.menuOpenForPrimaryMenuItem$.next(selectedNetwork);
-        this.selectSecondaryMenuItem(selectedNetwork);
+            this.menuOpenForPrimaryMenuItem$.next(selectedNetwork);
+            this.selectSecondaryMenuItem(selectedNetwork);
+        }
     }
 
     private selectSecondaryMenuItem(selectedNetwork: PrimaryMenuItem) {

@@ -314,7 +314,7 @@ export const IS_MENU_ITEMS: MenuItem[] = [
         children: [
             {
                 name: 'Instances',
-                route: '/Instances'
+                route: '/iframe'
             },
             {
                 name: 'Testing',
@@ -373,6 +373,14 @@ export const IS_MENU_ITEMS: MenuItem[] = [
     }
 ];
 
+export const TAPJOY_MENU_ITEMS: MenuItem[] = [
+    {
+        icon: {iconName: 'dashboard', iconVersion: 'v4'},
+        name: 'Dashboard',
+        route: '/dashboard'
+    }
+];
+
 export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
     // {
     //     type: NavigationBarItemType.Home,
@@ -385,9 +393,9 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
     // },
     {
         type: NavigationBarItemType.Main,
-        menuIconPath: 'v4/unity',
+        menuIcon: {iconName: 'unity_flat', iconVersion: 'v4'},
         menuTitle: 'LevelPlay',
-        menuLogoSrc: 'v4/unityLevelPlay',
+        menuLogoSrc: 'v4/unity_logo_flat',
         cssTheme: {'fu-navbar-background-color': '#202020'},
         menuItems: UNITY_MENU_ITEMS
     },
@@ -400,14 +408,24 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
         menuItems: IS_MENU_ITEMS
     },
     {
+        type: NavigationBarItemType.Main,
+        menuIcon: {iconName: 'tapjoy', iconVersion: 'v4'},
+        menuTitle: 'Tapjoy',
+        menuLogoSrc: 'v4/tapjoy_logo',
+        cssTheme: {'fu-navbar-background-color': '#202020'},
+        menuItems: TAPJOY_MENU_ITEMS
+    },
+    {
         type: NavigationBarItemType.Bottom,
         menuIcon: {iconName: 'question', iconVersion: 'v4'},
+        menuTooltip: 'Knowledge Center',
         redirect: 'https://developers.is.com/',
         target: '_blank'
     },
     {
         type: NavigationBarItemType.User,
         menuIcon: {iconName: 'userCircle', iconVersion: 'v4'},
+        menuTooltip: 'Account',
         menuItems: USER_PROFILE_MENU_ITEMS
     }
 ];

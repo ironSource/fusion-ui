@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
-import {HeaderContent, LayoutConfiguration} from '../layout.entities';
+import {HeaderContent, LayoutConfiguration, TeleportWrapperElement} from '../layout.entities';
 import {LayoutComponent} from '../layout.component';
 import {Subject} from 'rxjs';
 import {FormControl} from '@angular/forms';
@@ -15,6 +15,7 @@ import {takeUntil} from 'rxjs/operators';
         <fusion-layout
             [configuration]="layoutConfiguration"
             [headerContent]="headerContent"
+            [teleportElements]="teleportElements"
             (menuItemClick)="onMenuItemClick($event)"
             (menuItemSelectedByRoute)="onMenuItemSelectedByRoute($event)"
             (pageBackButtonClicked)="onPageBackButtonClicked($event)"
@@ -62,6 +63,7 @@ import {takeUntil} from 'rxjs/operators';
 export class LayoutStoryWrapperComponent implements OnInit, OnDestroy {
     @Input() layoutConfiguration: LayoutConfiguration;
     @Input() headerContent: HeaderContent;
+    @Input() teleportElements: TeleportWrapperElement[];
 
     // used just for update style in layout's inner content
     isLayout1 = false;
@@ -76,6 +78,9 @@ export class LayoutStoryWrapperComponent implements OnInit, OnDestroy {
                 console.log('Header Dynamic Component value changed: ', value);
             });
         }
+
+        this.headerContent.hasBackButton = this.testMethod.bind(this);
+
         // const temp = this.layoutConfiguration.navigationMenuItems
         // this.layoutConfiguration.navigationMenuItems = [];
 
@@ -92,8 +97,19 @@ export class LayoutStoryWrapperComponent implements OnInit, OnDestroy {
         this.onDestroy$.complete();
     }
 
-    onPageBackButtonClicked($event) {
-        console.log('Page Back button clicked');
+    testMethod() {
+        console.log('Back To custom method');
+    }
+
+    onPageBackButtonClicked(BackButtonData) {
+        if (typeof BackButtonData === 'string') {
+            console.log('Page Back button clicked, Navigate to', BackButtonData);
+        } else if (typeof BackButtonData === 'function') {
+            console.log('Page Back button clicked, Use custom method');
+            BackButtonData();
+        } else {
+            console.log('Page Back button clicked', BackButtonData);
+        }
     }
 
     onMenuItemClick(menuItem: MenuItem) {

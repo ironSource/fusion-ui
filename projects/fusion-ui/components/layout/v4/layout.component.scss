@@ -7,6 +7,8 @@ $menuSecondaryWidth: 200px;
 :host{
     @extend %reset;
     @extend %font-v4-regular;
+    --layout-header-height: #{$pageHeaderHeight};
+
     .fu-layout{
         display: grid;
         grid-template-columns: min-content 1fr;
@@ -23,13 +25,12 @@ $menuSecondaryWidth: 200px;
                 border-bottom: solid 1px $fu-divider;
             }
             .main-content{
-                --layout-header-height: #{$pageHeaderHeight};
                 height: calc(100vh - var(--layout-header-height, #{$pageHeaderHeight}));
                 overflow: auto;
-                width: calc(100vw - #{$menuPrimaryWidth} - #{$menuSecondaryWidth});
+                width: calc(100vw - #{$menuPrimaryWidth});
                 transition: width .45s ease-out;
-                &.fu-menu-collapsed{
-                    width: calc(100vw - #{$menuPrimaryWidth});
+                &.fu-menu-expanded-opened{
+                    width: calc(100vw - #{$menuPrimaryWidth} - #{$menuSecondaryWidth});
                 }
                 .page-view {
                     height: 100%;

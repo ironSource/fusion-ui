@@ -14,29 +14,20 @@ $secondaryMenuItemNewTabIconSize: 16px;
 :host {
     @extend %reset;
     display: block;
-    width: 0px;
-    max-width: $secondaryMenuWidth;
     background-color: var(--fu-secondary-menu-background-color, $fu-nav-secondary);
     border-right: solid 1px $fu-divider;
     margin-left: -1px;
-
-    transition: all .45s ease-out;
-    opacity: 0;
-    &.fu-menu-open {
-        width: $secondaryMenuWidth;
-        opacity: 1;
-        margin-left: 0;
-    }
-
-    &.fu-menu-expanded{
-        position: fixed;
-        top: 0;
-        left: $primaryMenuWidth;
-        height: 100vh;
-        z-index: getZIndexLayerOffset(application, 3);
-    }
+    width: 0px;
+    max-width: $secondaryMenuWidth;
+    transition: width .45s ease-out;
 
     .fu-secondary-menu-holder {
+        position: fixed;
+        z-index: getZIndexLayerOffset(application, 2);
+        top: 0px;
+        left: calc(-1 * ($secondaryMenuWidth - $primaryMenuWidth));
+        max-width: $secondaryMenuWidth;
+        transition: left .45s ease-out;
         .fu-logo-holder {
             height: $secondaryMenuLogoHolderHeight;
             display: flex;
@@ -55,7 +46,8 @@ $secondaryMenuItemNewTabIconSize: 16px;
             align-items: flex-start;
             padding: 0px 12px 24px;
 
-            overflow-y: auto;
+            width: $secondaryMenuWidth;
+            overflow-y: hidden;
             overflow-x: hidden;
             max-height: calc(100vh - $secondaryMenuLogoHolderHeight);
             @extend %customNavBarScroll;
@@ -145,12 +137,13 @@ $secondaryMenuItemNewTabIconSize: 16px;
                     flex-direction: column;
                     align-items: flex-start;
 
-                    transition: max-height, .45s ease-out;
+                    transition: max-height, .45s cubic-bezier(0, 1, 0, 1);
                     max-height: 0px;
                     overflow-y: hidden;
 
                     &.fu-secondary-menu-sub-items-opened{
                         max-height: calc(100vh - $secondaryMenuItemHeight);
+                        transition: max-height, 1s ease-out;
                     }
 
                     .fu-secondary-menu-item-holder{
@@ -167,5 +160,23 @@ $secondaryMenuItemNewTabIconSize: 16px;
             }
         }
 
+    }
+
+    &.fu-menu-open {
+        width: $secondaryMenuWidth;
+        .fu-secondary-menu-holder {
+            left: $primaryMenuWidth;
+            .fu-secondary-menu{
+                overflow-y: auto;
+            }
+        }
+    }
+
+    &.fu-menu-expanded{
+        position: fixed;
+        top: 0;
+        left: $primaryMenuWidth;
+        height: 100vh;
+        z-index: getZIndexLayerOffset(application, 3);
     }
 }

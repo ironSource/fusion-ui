@@ -4,7 +4,7 @@ import {BehaviorSubject, Subject} from 'rxjs';
 import {WindowService} from '@ironsource/fusion-ui/services/window';
 import {NavigationMenuComponent, PrimaryMenuItem} from '@ironsource/fusion-ui/components/navigation-menu/v4';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
-import {HeaderContent, LayoutConfiguration} from './layout.entities';
+import {HeaderContent, LayoutConfiguration, TeleportWrapperElement} from './layout.entities';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 import {LayoutHeaderComponent} from './components/layout-header/layout-header.component';
 import {NavigationEnd, Router} from '@angular/router';
@@ -22,12 +22,19 @@ export class LayoutComponent implements OnInit, OnDestroy {
     @Input() set configuration(value: LayoutConfiguration) {
         if (Array.isArray(value?.navigationMenuItems) && value.navigationMenuItems.length > 0) {
             this.navigationMenu$.next(value.navigationMenuItems);
-            this.setSelectedMenuByPath(this.navigationMenu$.getValue());
-            this.toggleMenu();
+            if (this.setSelectedMenuByPath(this.navigationMenu$.getValue())) {
+                this.toggleMenu();
+            }
         }
         this.layoutUser = {...value?.layoutUser} ?? null;
     }
     @Input() headerContent: HeaderContent;
+    @Input() set teleportElements(value: TeleportWrapperElement[]) {
+        this._teleportElements = value;
+    }
+    get teleportElements(): TeleportWrapperElement[] {
+        return this._teleportElements ?? [];
+    }
 
     @Output() pageBackButtonClicked = new EventEmitter<MouseEvent>();
     @Output() menuItemClick = new EventEmitter<MenuItem>();
@@ -46,6 +53,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
 
     private onDestroy$ = new Subject();
     private isMenuToggled = false;
+    private _teleportElements: TeleportWrapperElement[];
 
     constructor(private windowRef: WindowService, private router: Router) {}
 
@@ -65,7 +73,9 @@ export class LayoutComponent implements OnInit, OnDestroy {
                 filter(event => event instanceof NavigationEnd)
             )
             .subscribe((event: NavigationEnd) => {
-                this.setSelectedMenuByPath(this.navigationMenu$.getValue());
+                if (this.setSelectedMenuByPath(this.navigationMenu$.getValue())) {
+                    this.toggleMenu();
+                }
             });
     }
 
@@ -91,7 +101,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
         }
     }
 
-    private setSelectedMenuByPath(menuPrimary: PrimaryMenuItem[]) {
+    private setSelectedMenuByPath(menuPrimary: PrimaryMenuItem[]): boolean {
         const currentPath = this.windowRef.nativeWindow.location.pathname;
         let itemFound: MenuItem = null;
         let primaryItemFound: PrimaryMenuItem = null;
@@ -120,5 +130,6 @@ export class LayoutComponent implements OnInit, OnDestroy {
             this.navigationMenu.setActiveMenu(primaryItemFound, itemFound);
             this.menuItemSelectedByRoute.emit(itemFound);
         }
+        return !!itemFound;
     }
 }
