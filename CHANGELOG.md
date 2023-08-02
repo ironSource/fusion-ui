@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.7.8](https://github.com/ironSource/fusion-ui/compare/v5.7.7...v5.7.8) (2023-08-02)
+
+
+### Bug Fixes
+
+* **fgc-183:** add tooltip for the long username, email popup menu layout 4 ([9ec1629](https://github.com/ironSource/fusion-ui/commit/9ec162941ad3f6483c2d20409bd32c4981e7058e))
+
+
+### CI
+
+* **5.x.x:** init after master merge with 5.7.7 ([481125b](https://github.com/ironSource/fusion-ui/commit/481125b09741985e9175faea0f6aecec54148c51))
+
+
+### Docs
+
+* **5.x.x:** added shadows page to the storybook ([ef90afb](https://github.com/ironSource/fusion-ui/commit/ef90afb7e9cba5885d453f5fd5bf5b7015afb696))
+* **fgc-178:** added typography doc story for style v4 ([1669881](https://github.com/ironSource/fusion-ui/commit/1669881be8912ac97c75e101136df0e7fb66f602))
+
 ### [5.7.7](https://github.com/ironSource/fusion-ui/compare/v5.7.6...v5.7.7) (2023-07-31)
 
 ### [5.7.6](https://github.com/ironSource/fusion-ui/compare/v5.7.5...v5.7.6) (2023-07-31)
