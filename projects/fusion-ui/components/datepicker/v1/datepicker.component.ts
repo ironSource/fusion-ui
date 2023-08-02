@@ -115,8 +115,8 @@ export class DatepickerComponent implements OnInit, OnDestroy, OnChanges, AfterV
     ngOnChanges(changes) {
         if (
             this.selectedDate &&
-            ((changes.minDate && changes.minDate.currentValue !== changes.minDate.previousValue) ||
-                (changes.maxDate && changes.maxDate.currentValue !== changes.maxDate.previousValue))
+            ((changes.minDate && changes.minDate.currentValue.getTime() !== changes.minDate.previousValue.getTime()) ||
+                (changes.maxDate && changes.maxDate.currentValue.getTime() !== changes.maxDate.previousValue.getTime()))
         ) {
             this.setWeeks(this.selectedDate.date ? this.selectedDate.date : this.today);
         }
@@ -275,6 +275,7 @@ export class DatepickerComponent implements OnInit, OnDestroy, OnChanges, AfterV
      */
     private setWeeks(date: Date) {
         this.weeks = this.getCalendar(date.getMonth(), date.getFullYear());
+        console.log('setWeeks', this.weeks);
     }
 
     getCalendar(month, year) {
@@ -358,6 +359,7 @@ export class DatepickerComponent implements OnInit, OnDestroy, OnChanges, AfterV
     onMonthChangeClicked(direction: number = 0) {
         if (direction !== 0) {
             this.calendarDate = new Date(this.calendarDate.setMonth(this.calendarDate.getMonth() + direction));
+            console.log('calendarDate>>', this.calendarDate);
             this.setWeeks(this.calendarDate);
         }
     }
