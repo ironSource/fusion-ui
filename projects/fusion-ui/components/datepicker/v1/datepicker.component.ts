@@ -275,7 +275,6 @@ export class DatepickerComponent implements OnInit, OnDestroy, OnChanges, AfterV
      */
     private setWeeks(date: Date) {
         this.weeks = this.getCalendar(date.getMonth(), date.getFullYear());
-        console.log('setWeeks', this.weeks);
     }
 
     getCalendar(month, year) {
@@ -359,7 +358,6 @@ export class DatepickerComponent implements OnInit, OnDestroy, OnChanges, AfterV
     onMonthChangeClicked(direction: number = 0) {
         if (direction !== 0) {
             this.calendarDate = new Date(this.calendarDate.setMonth(this.calendarDate.getMonth() + direction));
-            console.log('calendarDate>>', this.calendarDate);
             this.setWeeks(this.calendarDate);
         }
     }
