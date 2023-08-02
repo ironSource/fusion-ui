@@ -165,6 +165,11 @@ export class DatepickerComponent implements OnInit, OnDestroy, OnChanges, AfterV
                 timezone: this.defaultTimezone
             };
         }
+        if (!isNullOrUndefined(value) && !isUndefined(value.date) && this.isDate(value.date)) {
+            this.calendarDate = new Date(this.selectedDate.date);
+            this.setWeeks(this.calendarDate);
+        }
+
         this.cdr.markForCheck();
     }
 
@@ -206,8 +211,8 @@ export class DatepickerComponent implements OnInit, OnDestroy, OnChanges, AfterV
         }
         if (!isNullOrUndefined(value) && this.isDate(value)) {
             this.selectedDate.date = this.calendarService.getDateAsUTC(new Date(value));
-            this.setWeeks(this.selectedDate.date);
-            this.calendarDate = this.selectedDate.date;
+            this.calendarDate = new Date(this.selectedDate.date);
+            this.setWeeks(this.calendarDate);
         } else {
             this.selectedDate.date = null;
             // set calendar for today in this case
