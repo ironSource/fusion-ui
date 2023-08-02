@@ -94,8 +94,8 @@ export class DatepickerDocsComponent implements OnInit {
         endDate: new Date(Date.UTC(2022, 4, 17))
 */
     });
-    daterangeMinDate = new Date(Date.UTC(2022, 3, 5));
-    daterangeMaxDate = new Date(Date.UTC(2022, 5, 25));
+    daterangeMinDate = new Date(Date.UTC(2023, 6, 5));
+    daterangeMaxDate = new Date(Date.UTC(2023, 8, 2));
 
     optionDatePicker$ = new BehaviorSubject<DaterangeOptions>({});
 
@@ -113,6 +113,9 @@ export class DatepickerDocsComponent implements OnInit {
             endDate: lastday
         };
     };
+
+    minimumDate = new Date(Date.UTC(this.dateNow.getFullYear(), this.dateNow.getMonth(), this.dateNow.getDate() - 20));
+    maximumDate = new Date();
 
     customDateRangePresets: DaterangeCustomPreset[] = [
         {
@@ -142,6 +145,7 @@ export class DatepickerDocsComponent implements OnInit {
         presets: this.customDateRangePresets,
         maxDaysInSelectedRange: 5
     });
+
     // endregion
 
     constructor(private versionService: VersionService, private formBuilder: FormBuilder) {}
@@ -150,12 +154,37 @@ export class DatepickerDocsComponent implements OnInit {
         this.formInit();
     }
 
+    get endDateValue(): Date {
+        return this.formDatePicker.get('dateEnd').value.date;
+    }
+
+    get startDateValue(): Date {
+        const date = this.formDatePicker.get('dateStart').value.date;
+        return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate() - 1));
+    }
+
+    getMaxEndDate(startDate: Date): Date {
+        return this.getMaximumEndDate(startDate);
+    }
+
+    getMaximumEndDate(startDate) {
+        const currentDate: Date = new Date(new Date().toUTCString());
+
+        const maxRangeDate: Date = new Date(Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + 30));
+
+        const maximumDate: Date = new Date(Math.min(currentDate.getTime(), maxRangeDate.getTime()));
+
+        return new Date(Date.UTC(maximumDate.getFullYear(), maximumDate.getMonth(), maximumDate.getDate()));
+    }
+
     formInit(): void {
         this.formDatePicker = this.formBuilder.group({
             datePickerRequired: [null, [Validators.required]],
             datePickerBasic: [{date: new Date()}],
             datePickerFull: [{date: new Date(), timezone: 'UTC'}],
-            datePickerDisabled: [{value: {date: new Date()}, disabled: true}]
+            datePickerDisabled: [{value: {date: new Date()}, disabled: true}],
+            dateStart: [{date: new Date()}],
+            dateEnd: [{date: new Date()}]
         });
 
         this.formDatePicker.valueChanges.subscribe(val => {
@@ -163,5 +192,7 @@ export class DatepickerDocsComponent implements OnInit {
 
             this.errorMessage = val.datePickerRequired ? '' : 'This is a mandatory field';
         });
+
+        console.log('minDate>', this.minimumDate);
     }
 }

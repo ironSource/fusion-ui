@@ -7,14 +7,16 @@ import {ExampleBlockModule} from '../../../components/example-block/example-bloc
 import {CodeBlockModule} from '../../../components/code-block/code-block.module';
 import {DocsMenuModule} from '../../../components/docs-menu/docs-menu.module';
 import {ReactiveFormsModule} from '@angular/forms';
-import {DatepickerModule} from '@ironsource/fusion-ui/components/datepicker/v3';
+import {DatepickerModule} from '@ironsource/fusion-ui/components/datepicker/v1';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {DaterangeModule} from '@ironsource/fusion-ui/components/daterange/v3';
+import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 
 @NgModule({
     declarations: [DatepickerDocsComponent],
     imports: [
         CommonModule,
+        GenericPipe,
         IconModule,
         DatepickerDocsRoutingModule,
         ExampleBlockModule,

@@ -1,24 +1,24 @@
 <div class="row">
     <ng-container *ngIf="(styleUpdating$ | async) === false; else inUpdate">
         <div class="col-9">
-        <form [formGroup]="formDatePicker" novalidate>
-            <!--UI-Component Examples-->
-            <div class="is-example-title">Type</div>
+            <form [formGroup]="formDatePicker" novalidate>
+                <!--UI-Component Examples-->
+                <div class="is-example-title">Type</div>
 
-            <fusion-example-block id="typeBasic" title="Basic">
-                <ng-template fusionExampleBlock="Angular">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<fusion-datepicker formControlName="controlName"></fusion-datepicker>'
-                    ></fusion-code-block>
-                </ng-template>
+                <fusion-example-block id="typeBasic" title="Basic">
+                    <ng-template fusionExampleBlock="Angular">
+                        <fusion-code-block
+                            lang="html"
+                            class="is-collapsible"
+                            code='<fusion-datepicker formControlName="controlName"></fusion-datepicker>'
+                        ></fusion-code-block>
+                    </ng-template>
 
-                <ng-template fusionExampleBlock="React">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='class App extends React.Component {
+                    <ng-template fusionExampleBlock="React">
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -41,24 +41,24 @@
   }
 }
 export default App;'
-                    ></fusion-code-block>
-                </ng-template>
+                        ></fusion-code-block>
+                    </ng-template>
 
-                <ng-template fusionExampleBlock="Vue">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<template>
+                    <ng-template fusionExampleBlock="Vue">
+                        <fusion-code-block
+                            lang="html"
+                            class="is-collapsible"
+                            code='<template>
     <div id="app">
         <FusionDatepicker :config="datepicker" @controlValueChange="e => handleChange(e, &#39;datepicker&#39;)" />
     </div>
   </template>'
-                    ></fusion-code-block>
+                        ></fusion-code-block>
 
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='<script>
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='<script>
 import {FusionDatepicker} from "@ironsource/fusion-ui/native/vue";
 
 export default {
@@ -81,14 +81,14 @@ export default {
   }
 }
 </script>'
-                    ></fusion-code-block>
-                </ng-template>
+                        ></fusion-code-block>
+                    </ng-template>
 
-                <ng-template fusionExampleBlock="Native">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='const datepicker = document.createElement("native-fusion-datepicker");
+                    <ng-template fusionExampleBlock="Native">
+                        <fusion-code-block
+                            lang="js"
+                            class="is-collapsible"
+                            code='const datepicker = document.createElement("native-fusion-datepicker");
 datepicker.config = {
     placeholder: "Select date",
     controlValue: {date: new Date()}
@@ -96,432 +96,449 @@ datepicker.config = {
 
 document.body.appendChild(datepicker);
 datepicker.addEventListener("controlValueChange", e => console.log(e.detail));'
-                    ></fusion-code-block>
-                </ng-template>
+                        ></fusion-code-block>
+                    </ng-template>
 
 
-                <div class="row">
-                    <div class="col-3"><fusion-datepicker formControlName="datePickerBasic" [options]="optionDatePicker$ | async"></fusion-datepicker></div>
-                    <div class="col-3"><fusion-daterange [minDate]="daterangeMinDate" [maxDate]="daterangeMaxDate"
-                                                     [formControl]="daterangeDates"
-                                                     [options]="optionDateRange$ | async"></fusion-daterange></div>
-                </div>
+                    <div class="row">
+                        <div class="col-3">
+                            <fusion-datepicker formControlName="dateStart" [minDate]="minimumDate" [maxDate]="endDateValue"></fusion-datepicker>
+                        </div>
+                        <div class="col-3">
+                            <fusion-datepicker formControlName="dateEnd" [minDate]="startDateValue" [maxDate]="getMaxEndDate.bind(this) | generic:startDateValue"></fusion-datepicker>
 
-            </fusion-example-block>
-<!--
-            <fusion-example-block id="typeComboBox" title="ComboBox">
-                <ng-template fusionExampleBlock="Angular">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<fusion-datepicker formControlName="controlName" style="combo-box"></fusion-datepicker>'
-                    ></fusion-code-block>
-                </ng-template>
-
-                <ng-template fusionExampleBlock="React">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      datepicker: {
-        placeholder: "Select Date",
-        controlValue: {date: new Date()},
-        style: "combo-box"
-      }
-    }
-  }
-
-  handleChange(name, value) {
-    this.setState({[name]: {...this.state[name], controlValue: value}})
-  }
-
-  render() {
-    return (
-      <FusionDatePicker config={this.state.datepicker}
-                        controlValueChange={this.handleChange.bind(this, "datepicker")} />
-    )
-  }
-}
-export default App;'
-                    ></fusion-code-block>
-                </ng-template>
-
-                <ng-template fusionExampleBlock="Vue">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<template>
-    <div id="app">
-        <FusionDatepicker :config="datepicker" @controlValueChange="e => handleChange(e, &#39;datepicker&#39;)" />
-    </div>
-  </template>'
-                    ></fusion-code-block>
-
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='<script>
-import {FusionDatepicker} from "@ironsource/fusion-ui/native/vue";
-
-export default {
-  name: "app",
-  data() {
-    return {
-      datepicker: {
-        placeholder: "Select Date",
-        controlValue: {date: new Date()},
-        style: "combo-box"
-      }
-    }
-  },
-  components: {
-    FusionDatepicker
-  },
-  methods: {
-    handleChange: function(value, key){
-      this[key] = {...this[key], controlValue: value};
-    }
-  }
-}
-</script>'
-                    ></fusion-code-block>
-                </ng-template>
-
-                <ng-template fusionExampleBlock="Native">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='const datepicker = document.createElement("native-fusion-datepicker");
-datepicker.config = {
-  placeholder: "Select date",
-  controlValue: {date: new Date()},
-  style: "combo-box"
-}
-
-document.body.appendChild(datepicker);
-datepicker.addEventListener("controlValueChange", e => console.log(e.detail));'
-                    ></fusion-code-block>
-                </ng-template>
-
-                <div class="row">
-                    <div class="col-3">
-                        <fusion-datepicker formControlName="datePickerBasic" [style]="'combo-box'"></fusion-datepicker>
+                            <!--
+                                                        <fusion-daterange [minDate]="daterangeMinDate" [maxDate]="daterangeMaxDate"
+                                                                          [formControl]="daterangeDates"
+                                                                          [options]="optionDateRange$ | async"></fusion-daterange>
+                            -->
+                        </div>
+                        <div class="col-4">
+                            <p>Start: {{(formDatePicker.get('dateStart').value | json)}}</p>
+                            <p>start min date: {{(minimumDate | json)}}</p>
+                            <p>start max date: {{(endDateValue | json)}}</p>
+                            <hr/>
+                            <p>End: {{(formDatePicker.get('dateEnd').value | json)}}</p>
+                            <p>end min date: {{(startDateValue | json)}}</p>
+                            <p>end max date: {{(getMaxEndDate.bind(this) | generic:startDateValue | json)}}</p>
+                        </div>
                     </div>
-                </div>
-            </fusion-example-block>
 
-            <div class="is-example-title">Variations</div>
+                </fusion-example-block>
+                <!--
+                            <fusion-example-block id="typeComboBox" title="ComboBox">
+                                <ng-template fusionExampleBlock="Angular">
+                                    <fusion-code-block
+                                        lang="html"
+                                        class="is-collapsible"
+                                        code='<fusion-datepicker formControlName="controlName" style="combo-box"></fusion-datepicker>'
+                                    ></fusion-code-block>
+                                </ng-template>
 
-            <fusion-example-block id="variationsTime" title="Including Time Picker">
-                <ng-template fusionExampleBlock="Angular">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<fusion-datepicker formControlName="controlName" isTimePicker="true" isTimeZonePicker="true"></fusion-datepicker>'
-                    ></fusion-code-block>
-                </ng-template>
+                                <ng-template fusionExampleBlock="React">
+                                    <fusion-code-block
+                                        lang="js"
+                                        class="is-collapsible"
+                                        code='class App extends React.Component {
+                  constructor(props) {
+                    super(props);
+                    this.state = {
+                      datepicker: {
+                        placeholder: "Select Date",
+                        controlValue: {date: new Date()},
+                        style: "combo-box"
+                      }
+                    }
+                  }
 
-                <ng-template fusionExampleBlock="React">
+                  handleChange(name, value) {
+                    this.setState({[name]: {...this.state[name], controlValue: value}})
+                  }
+
+                  render() {
+                    return (
+                      <FusionDatePicker config={this.state.datepicker}
+                                        controlValueChange={this.handleChange.bind(this, "datepicker")} />
+                    )
+                  }
+                }
+                export default App;'
+                                    ></fusion-code-block>
+                                </ng-template>
+
+                                <ng-template fusionExampleBlock="Vue">
+                                    <fusion-code-block
+                                        lang="html"
+                                        class="is-collapsible"
+                                        code='<template>
+                    <div id="app">
+                        <FusionDatepicker :config="datepicker" @controlValueChange="e => handleChange(e, &#39;datepicker&#39;)" />
+                    </div>
+                  </template>'
+                                    ></fusion-code-block>
+
+                                    <fusion-code-block
+                                        lang="js"
+                                        class="is-collapsible"
+                                        code='<script>
+                import {FusionDatepicker} from "@ironsource/fusion-ui/native/vue";
+
+                export default {
+                  name: "app",
+                  data() {
+                    return {
+                      datepicker: {
+                        placeholder: "Select Date",
+                        controlValue: {date: new Date()},
+                        style: "combo-box"
+                      }
+                    }
+                  },
+                  components: {
+                    FusionDatepicker
+                  },
+                  methods: {
+                    handleChange: function(value, key){
+                      this[key] = {...this[key], controlValue: value};
+                    }
+                  }
+                }
+                </script>'
+                                    ></fusion-code-block>
+                                </ng-template>
+
+                                <ng-template fusionExampleBlock="Native">
+                                    <fusion-code-block
+                                        lang="js"
+                                        class="is-collapsible"
+                                        code='const datepicker = document.createElement("native-fusion-datepicker");
+                datepicker.config = {
+                  placeholder: "Select date",
+                  controlValue: {date: new Date()},
+                  style: "combo-box"
+                }
+
+                document.body.appendChild(datepicker);
+                datepicker.addEventListener("controlValueChange", e => console.log(e.detail));'
+                                    ></fusion-code-block>
+                                </ng-template>
+
+                                <div class="row">
+                                    <div class="col-3">
+                                        <fusion-datepicker formControlName="datePickerBasic" [style]="'combo-box'"></fusion-datepicker>
+                                    </div>
+                                </div>
+                            </fusion-example-block>
+
+                            <div class="is-example-title">Variations</div>
+
+                            <fusion-example-block id="variationsTime" title="Including Time Picker">
+                                <ng-template fusionExampleBlock="Angular">
+                                    <fusion-code-block
+                                        lang="html"
+                                        class="is-collapsible"
+                                        code='<fusion-datepicker formControlName="controlName" isTimePicker="true" isTimeZonePicker="true"></fusion-datepicker>'
+                                    ></fusion-code-block>
+                                </ng-template>
+
+                                <ng-template fusionExampleBlock="React">
+                                    <fusion-code-block
+                                        lang="js"
+                                        class="is-collapsible"
+                                        code='class App extends React.Component {
+                  constructor(props) {
+                    super(props);
+                    this.state = {
+                      datepicker: {
+                        placeholder: "Select Date",
+                        controlValue: {date: new Date()},
+                        isTimePicker: true,
+                        isTimeZonePicker: true
+                      }
+                    }
+                  }
+
+                  handleChange(name, value) {
+                    this.setState({[name]: {...this.state[name], controlValue: value}})
+                  }
+
+                  render() {
+                    return (
+                      <FusionDatePicker config={this.state.datepicker}
+                                        controlValueChange={this.handleChange.bind(this, "datepicker")} />
+                    )
+                  }
+                }
+                export default App;'
+                                    ></fusion-code-block>
+                                </ng-template>
+
+                                <ng-template fusionExampleBlock="Vue">
+                                    <fusion-code-block
+                                        lang="html"
+                                        class="is-collapsible"
+                                        code='<template>
+                    <div id="app">
+                        <FusionDatepicker :config="datepicker" @controlValueChange="e => handleChange(e, &#39;datepicker&#39;)" />
+                    </div>
+                  </template>'
+                                    ></fusion-code-block>
+
+                                    <fusion-code-block
+                                        lang="js"
+                                        class="is-collapsible"
+                                        code='<script>
+                import {FusionDatepicker} from "@ironsource/fusion-ui/native/vue";
+
+                export default {
+                  name: "app",
+                  data() {
+                    return {
+                      datepicker: {
+                        placeholder: "Select Date",
+                        controlValue: {date: new Date()},
+                        isTimePicker: true,
+                        isTimeZonePicker: true
+                      }
+                    }
+                  },
+                  components: {
+                    FusionDatepicker
+                  },
+                  methods: {
+                    handleChange: function(value, key){
+                      this[key] = {...this[key], controlValue: value};
+                    }
+                  }
+                }
+                </script>'
+                                    ></fusion-code-block>
+                                </ng-template>
+
+                                <ng-template fusionExampleBlock="Native">
+                                    <fusion-code-block
+                                        lang="js"
+                                        class="is-collapsible"
+                                        code='const datepicker = document.createElement("native-fusion-datepicker");
+                datepicker.config = {
+                  placeholder: "Select date",
+                  controlValue: {date: new Date()},
+                  isTimePicker: true,
+                  isTimeZonePicker: true
+                }
+
+                document.body.appendChild(datepicker);
+                datepicker.addEventListener("controlValueChange", e => console.log(e.detail));'
+                                    ></fusion-code-block>
+                                </ng-template>
+
+                                <fusion-datepicker formControlName="datePickerFull" isTimePicker="true" isTimeZonePicker="true"></fusion-datepicker>
+                            </fusion-example-block>
+                            <div class="is-example-title">States</div>
+
+                            <fusion-example-block id="stateDisabled" title="Disabled">
+                                <ng-template fusionExampleBlock="Angular">
+                                    <fusion-code-block
+                                        lang="html"
+                                        class="is-collapsible"
+                                        code='<fusion-datepicker formControlName="controlName" isDisabled="true"></fusion-datepicker>'
+                                    ></fusion-code-block>
+                                </ng-template>
+
+                                <ng-template fusionExampleBlock="React">
+                                    <fusion-code-block
+                                        lang="js"
+                                        class="is-collapsible"
+                                        code='class App extends React.Component {
+                  constructor(props) {
+                    super(props);
+                    this.state = {
+                      datepicker: {
+                        placeholder: "Select Date",
+                        controlValue: {date: new Date()},
+                        isDisabled: true
+                      }
+                    }
+                  }
+
+                  handleChange(name, value) {
+                    this.setState({[name]: {...this.state[name], controlValue: value}})
+                  }
+
+                  render() {
+                    return (
+                      <FusionDatePicker config={this.state.datepicker}
+                                        controlValueChange={this.handleChange.bind(this, "datepicker")} />
+                    )
+                  }
+                }
+                export default App;'
+                                    ></fusion-code-block>
+                                </ng-template>
+
+                                <ng-template fusionExampleBlock="Vue">
+                                    <fusion-code-block
+                                        lang="html"
+                                        class="is-collapsible"
+                                        code='<template>
+                    <div id="app">
+                        <FusionDatepicker :config="datepicker" @controlValueChange="e => handleChange(e, &#39;datepicker&#39;)" />
+                    </div>
+                  </template>'
+                                    ></fusion-code-block>
+
+                                    <fusion-code-block
+                                        lang="js"
+                                        class="is-collapsible"
+                                        code='<script>
+                import {FusionDatepicker} from "@ironsource/fusion-ui/native/vue";
+
+                export default {
+                  name: "app",
+                  data() {
+                    return {
+                      datepicker: {
+                        placeholder: "Select Date",
+                        controlValue: {date: new Date()},
+                        isDisabled: true
+                      }
+                    }
+                  },
+                  components: {
+                    FusionDatepicker
+                  },
+                  methods: {
+                    handleChange: function(value, key){
+                      this[key] = {...this[key], controlValue: value};
+                    }
+                  }
+                }
+                </script>'
+                                    ></fusion-code-block>
+                                </ng-template>
+
+                                <ng-template fusionExampleBlock="Native">
+                                    <fusion-code-block
+                                        lang="js"
+                                        class="is-collapsible"
+                                        code='const datepicker = document.createElement("native-fusion-datepicker");
+                datepicker.config = {
+                  placeholder: "Select date",
+                  controlValue: {date: new Date()},
+                  isDisabled: true
+                }
+                document.body.appendChild(datepicker);
+                datepicker.addEventListener("controlValueChange", e => console.log(e.detail));'
+                                    ></fusion-code-block>
+                                </ng-template>
+
+                                <fusion-datepicker formControlName="datePickerDisabled"></fusion-datepicker>
+                            </fusion-example-block>
+
+                            <fusion-example-block id="stateError" title="Invalid">
+                                <ng-template fusionExampleBlock="Angular">
+                                    <fusion-code-block
+                                        lang="html"
+                                        class="is-collapsible"
+                                        code='<fusion-datepicker formControlName="controlName" [error]="errorMessage"></fusion-datepicker>'
+                                    ></fusion-code-block>
+                                </ng-template>
+
+                                <ng-template fusionExampleBlock="React">
+                                    <fusion-code-block
+                                        lang="js"
+                                        class="is-collapsible"
+                                        code='class App extends React.Component {
+                constructor(props) {
+                  super(props);
+                  this.state = {
+                    datepicker: {
+                      placeholder: "Select Date",
+                      error: "This is a mandatory field"
+                    }
+                  }
+                }
+
+                handleChange(name, value) {
+                  this.setState({[name]: {...this.state[name], controlValue: value}})
+                }
+
+                render() {
+                  return (
+                    <FusionDatePicker config={this.state.datepicker}
+                                      controlValueChange={this.handleChange.bind(this, "datepicker")} />
+                  )
+                }
+                }
+                export default App;'
+                                    ></fusion-code-block>
+                                </ng-template>
+
+                                <ng-template fusionExampleBlock="Vue">
+                                    <fusion-code-block
+                                        lang="html"
+                                        class="is-collapsible"
+                                        code='<template>
+                    <div id="app">
+                        <FusionDatepicker :config="datepicker" @controlValueChange="e => handleChange(e, &#39;datepicker&#39;)" />
+                    </div>
+                  </template>'
+                                    ></fusion-code-block>
+
+                                    <fusion-code-block
+                                        lang="js"
+                                        class="is-collapsible"
+                                        code='<script>
+                import {FusionDatepicker} from "@ironsource/fusion-ui/native/vue";
+
+                export default {
+                  name: "app",
+                  data() {
+                    return {
+                      datepicker: {
+                        placeholder: "Select Date",
+                        error: "This is a mandatory field"
+                      }
+                    }
+                  },
+                  components: {
+                    FusionDatepicker
+                  },
+                  methods: {
+                    handleChange: function(value, key){
+                      this[key] = {...this[key], controlValue: value};
+                    }
+                  }
+                }
+                </script>'
+                                    ></fusion-code-block>
+                                </ng-template>
+
+                                <ng-template fusionExampleBlock="Native">
+                                    <fusion-code-block
+                                        lang="js"
+                                        class="is-collapsible"
+                                        code='const datepicker = document.createElement("native-fusion-datepicker");
+                datepicker.config = {
+                  placeholder: "Select date",
+                  controlValue: { date: null },
+                  error: "This is a mandatory field"
+                }
+                document.body.appendChild(datepicker);
+                datepicker.addEventListener("controlValueChange", e => console.log(e.detail));'
+                                    ></fusion-code-block>
+                                </ng-template>
+
+                                <fusion-datepicker formControlName="datePickerRequired" [error]="errorMessage"></fusion-datepicker>
+                            </fusion-example-block>-->
+
+                <!--UI-Component Examples-->
+                <!--UI-Component Configuration Doc-->
+                <div class="is-example-title">Configuration</div>
+                <fusion-example-block id="params" title="Parameters" [collapsible]="false">
                     <fusion-code-block
                         lang="js"
-                        class="is-collapsible"
-                        code='class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      datepicker: {
-        placeholder: "Select Date",
-        controlValue: {date: new Date()},
-        isTimePicker: true,
-        isTimeZonePicker: true
-      }
-    }
-  }
-
-  handleChange(name, value) {
-    this.setState({[name]: {...this.state[name], controlValue: value}})
-  }
-
-  render() {
-    return (
-      <FusionDatePicker config={this.state.datepicker}
-                        controlValueChange={this.handleChange.bind(this, "datepicker")} />
-    )
-  }
-}
-export default App;'
-                    ></fusion-code-block>
-                </ng-template>
-
-                <ng-template fusionExampleBlock="Vue">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<template>
-    <div id="app">
-        <FusionDatepicker :config="datepicker" @controlValueChange="e => handleChange(e, &#39;datepicker&#39;)" />
-    </div>
-  </template>'
-                    ></fusion-code-block>
-
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='<script>
-import {FusionDatepicker} from "@ironsource/fusion-ui/native/vue";
-
-export default {
-  name: "app",
-  data() {
-    return {
-      datepicker: {
-        placeholder: "Select Date",
-        controlValue: {date: new Date()},
-        isTimePicker: true,
-        isTimeZonePicker: true
-      }
-    }
-  },
-  components: {
-    FusionDatepicker
-  },
-  methods: {
-    handleChange: function(value, key){
-      this[key] = {...this[key], controlValue: value};
-    }
-  }
-}
-</script>'
-                    ></fusion-code-block>
-                </ng-template>
-
-                <ng-template fusionExampleBlock="Native">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='const datepicker = document.createElement("native-fusion-datepicker");
-datepicker.config = {
-  placeholder: "Select date",
-  controlValue: {date: new Date()},
-  isTimePicker: true,
-  isTimeZonePicker: true
-}
-
-document.body.appendChild(datepicker);
-datepicker.addEventListener("controlValueChange", e => console.log(e.detail));'
-                    ></fusion-code-block>
-                </ng-template>
-
-                <fusion-datepicker formControlName="datePickerFull" isTimePicker="true" isTimeZonePicker="true"></fusion-datepicker>
-            </fusion-example-block>
-            <div class="is-example-title">States</div>
-
-            <fusion-example-block id="stateDisabled" title="Disabled">
-                <ng-template fusionExampleBlock="Angular">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<fusion-datepicker formControlName="controlName" isDisabled="true"></fusion-datepicker>'
-                    ></fusion-code-block>
-                </ng-template>
-
-                <ng-template fusionExampleBlock="React">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      datepicker: {
-        placeholder: "Select Date",
-        controlValue: {date: new Date()},
-        isDisabled: true
-      }
-    }
-  }
-
-  handleChange(name, value) {
-    this.setState({[name]: {...this.state[name], controlValue: value}})
-  }
-
-  render() {
-    return (
-      <FusionDatePicker config={this.state.datepicker}
-                        controlValueChange={this.handleChange.bind(this, "datepicker")} />
-    )
-  }
-}
-export default App;'
-                    ></fusion-code-block>
-                </ng-template>
-
-                <ng-template fusionExampleBlock="Vue">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<template>
-    <div id="app">
-        <FusionDatepicker :config="datepicker" @controlValueChange="e => handleChange(e, &#39;datepicker&#39;)" />
-    </div>
-  </template>'
-                    ></fusion-code-block>
-
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='<script>
-import {FusionDatepicker} from "@ironsource/fusion-ui/native/vue";
-
-export default {
-  name: "app",
-  data() {
-    return {
-      datepicker: {
-        placeholder: "Select Date",
-        controlValue: {date: new Date()},
-        isDisabled: true
-      }
-    }
-  },
-  components: {
-    FusionDatepicker
-  },
-  methods: {
-    handleChange: function(value, key){
-      this[key] = {...this[key], controlValue: value};
-    }
-  }
-}
-</script>'
-                    ></fusion-code-block>
-                </ng-template>
-
-                <ng-template fusionExampleBlock="Native">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='const datepicker = document.createElement("native-fusion-datepicker");
-datepicker.config = {
-  placeholder: "Select date",
-  controlValue: {date: new Date()},
-  isDisabled: true
-}
-document.body.appendChild(datepicker);
-datepicker.addEventListener("controlValueChange", e => console.log(e.detail));'
-                    ></fusion-code-block>
-                </ng-template>
-
-                <fusion-datepicker formControlName="datePickerDisabled"></fusion-datepicker>
-            </fusion-example-block>
-
-            <fusion-example-block id="stateError" title="Invalid">
-                <ng-template fusionExampleBlock="Angular">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<fusion-datepicker formControlName="controlName" [error]="errorMessage"></fusion-datepicker>'
-                    ></fusion-code-block>
-                </ng-template>
-
-                <ng-template fusionExampleBlock="React">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='class App extends React.Component {
-constructor(props) {
-  super(props);
-  this.state = {
-    datepicker: {
-      placeholder: "Select Date",
-      error: "This is a mandatory field"
-    }
-  }
-}
-
-handleChange(name, value) {
-  this.setState({[name]: {...this.state[name], controlValue: value}})
-}
-
-render() {
-  return (
-    <FusionDatePicker config={this.state.datepicker}
-                      controlValueChange={this.handleChange.bind(this, "datepicker")} />
-  )
-}
-}
-export default App;'
-                    ></fusion-code-block>
-                </ng-template>
-
-                <ng-template fusionExampleBlock="Vue">
-                    <fusion-code-block
-                        lang="html"
-                        class="is-collapsible"
-                        code='<template>
-    <div id="app">
-        <FusionDatepicker :config="datepicker" @controlValueChange="e => handleChange(e, &#39;datepicker&#39;)" />
-    </div>
-  </template>'
-                    ></fusion-code-block>
-
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='<script>
-import {FusionDatepicker} from "@ironsource/fusion-ui/native/vue";
-
-export default {
-  name: "app",
-  data() {
-    return {
-      datepicker: {
-        placeholder: "Select Date",
-        error: "This is a mandatory field"
-      }
-    }
-  },
-  components: {
-    FusionDatepicker
-  },
-  methods: {
-    handleChange: function(value, key){
-      this[key] = {...this[key], controlValue: value};
-    }
-  }
-}
-</script>'
-                    ></fusion-code-block>
-                </ng-template>
-
-                <ng-template fusionExampleBlock="Native">
-                    <fusion-code-block
-                        lang="js"
-                        class="is-collapsible"
-                        code='const datepicker = document.createElement("native-fusion-datepicker");
-datepicker.config = {
-  placeholder: "Select date",
-  controlValue: { date: null },
-  error: "This is a mandatory field"
-}
-document.body.appendChild(datepicker);
-datepicker.addEventListener("controlValueChange", e => console.log(e.detail));'
-                    ></fusion-code-block>
-                </ng-template>
-
-                <fusion-datepicker formControlName="datePickerRequired" [error]="errorMessage"></fusion-datepicker>
-            </fusion-example-block>-->
-
-            <!--UI-Component Examples-->
-            <!--UI-Component Configuration Doc-->
-            <div class="is-example-title">Configuration</div>
-            <fusion-example-block id="params" title="Parameters" [collapsible]="false">
-                <fusion-code-block
-                    lang="js"
-                    code="interface Datepicker {
+                        code="interface Datepicker {
     date: Date;
     timezone?: string;
 }
@@ -546,19 +563,19 @@ prefix: string;
 mode:DatepickerMode;                 // Default - 'Regular'
 formControlName: {date: new Date()}; // Angular - only
 controlValue: {date: new Date()};    // Native / React / Vue - only"
-                ></fusion-code-block>
-            </fusion-example-block>
+                    ></fusion-code-block>
+                </fusion-example-block>
 
-            <fusion-example-block id="events" title="Events" [collapsible]="false">
-                <fusion-code-block
-                    lang="js"
-                    code="formControl                                             // Angular
+                <fusion-example-block id="events" title="Events" [collapsible]="false">
+                    <fusion-code-block
+                        lang="js"
+                        code="formControl                                             // Angular
 controlValueChange(controlValue: {date: new Date()})    // in Native"
-                ></fusion-code-block>
-            </fusion-example-block>
-            <!--UI-Component Configuration Doc-->
-        </form>
-    </div>
+                    ></fusion-code-block>
+                </fusion-example-block>
+                <!--UI-Component Configuration Doc-->
+            </form>
+        </div>
     </ng-container>
 
     <div class="col-3 is-right-side-menu-holder">
