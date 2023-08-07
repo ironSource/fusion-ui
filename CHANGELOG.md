@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.7.10](https://github.com/ironSource/fusion-ui/compare/v5.7.10-rc.0...v5.7.10) (2023-08-07)
+
 ### [5.7.10-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.7.9...v5.7.10-rc.0) (2023-08-02)
 
 
