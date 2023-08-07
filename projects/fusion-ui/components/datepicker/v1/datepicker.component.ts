@@ -115,8 +115,8 @@ export class DatepickerComponent implements OnInit, OnDestroy, OnChanges, AfterV
     ngOnChanges(changes) {
         if (
             this.selectedDate &&
-            ((changes.minDate && changes.minDate.currentValue.getTime() !== changes.minDate.previousValue.getTime()) ||
-                (changes.maxDate && changes.maxDate.currentValue.getTime() !== changes.maxDate.previousValue.getTime()))
+            ((!!changes.minDate && changes.minDate?.currentValue?.getTime() !== changes.minDate?.previousValue?.getTime()) ||
+                (!!changes.maxDate && changes.maxDate?.currentValue?.getTime() !== changes.maxDate?.previousValue?.getTime()))
         ) {
             this.setWeeks(this.selectedDate.date ? this.selectedDate.date : this.today);
         }
