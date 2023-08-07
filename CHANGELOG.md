@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.7.11](https://github.com/ironSource/fusion-ui/compare/v5.7.10...v5.7.11) (2023-08-07)
+
+
+### Bug Fixes
+
+* **fgc-185:** fixed datepicker v1 ([75a23c3](https://github.com/ironSource/fusion-ui/commit/75a23c3cd09be41c17fc4bd0ff614a15879cd788))
+
 ### [5.7.10](https://github.com/ironSource/fusion-ui/compare/v5.7.10-rc.0...v5.7.10) (2023-08-07)
 
 ### [5.7.10-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.7.9...v5.7.10-rc.0) (2023-08-02)
