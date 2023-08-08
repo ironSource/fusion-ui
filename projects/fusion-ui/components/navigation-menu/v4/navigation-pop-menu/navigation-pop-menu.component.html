@@ -15,10 +15,14 @@
         <!--region menu items-->
         <ng-container *ngFor="let menuItem of menuItems">
             <div *ngIf="menuItem.withTopDelimiter" class="fu-pop-menu-item-delimiter"></div>
-            <div class="fu-pop-menu-item {{menuItem.cssClass}}" (click)="menuItemClicked.emit(menuItem)">
+            <a class="fu-pop-menu-item {{menuItem.cssClass}}"
+               [href]="menuItem.route || menuItem.redirect"
+               [target]="menuItem.target ?? '_self'"
+               (click)="onMenuItemClicked($event,menuItem)"
+            >
                 <fusion-icon class="fu-pop-menu-icon" *ngIf="menuItem.icon" [name]="menuItem.icon"></fusion-icon>
                 <div class="fu-pop-menu-text">{{menuItem.name}}</div>
-            </div>
+            </a>
         </ng-container>
         <!--endregion menu items-->
     </div>
