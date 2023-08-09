@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.7.13](https://github.com/ironSource/fusion-ui/compare/v5.7.12...v5.7.13) (2023-08-08)
+
+### [5.7.12](https://github.com/ironSource/fusion-ui/compare/v5.7.11...v5.7.12) (2023-08-08)
+
+
+### Bug Fixes
+
+* **fgc-186:** layout v2 pop menu open page in new tab fixed ([465caf6](https://github.com/ironSource/fusion-ui/commit/465caf64fcfa5d31a8ca62538e114604f0b7c32a))
+
 ### [5.7.11](https://github.com/ironSource/fusion-ui/compare/v5.7.10...v5.7.11) (2023-08-07)
 
 

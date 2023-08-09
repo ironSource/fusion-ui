@@ -32,4 +32,15 @@ export class NavigationPopMenuComponent implements OnInit, AfterViewInit {
             this.element.nativeElement.style.height = `${popupHeight}px`;
         }
     }
+
+    onMenuItemClicked($event: MouseEvent, menuItem: MenuItem) {
+        if ($event && $event.metaKey) {
+            return;
+        }
+        if ($event && !menuItem.target) {
+            $event.preventDefault();
+            $event.stopPropagation();
+            this.menuItemClicked.emit(menuItem);
+        }
+    }
 }

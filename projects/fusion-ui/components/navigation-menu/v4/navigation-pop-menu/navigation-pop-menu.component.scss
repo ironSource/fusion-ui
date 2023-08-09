@@ -70,6 +70,9 @@ $menuItemHoverColor: #F5F5F5;
             }
         }
 
+        a {
+            text-decoration: none;
+        }
         .fu-pop-menu-items{
             display: flex;
             flex-direction: column;

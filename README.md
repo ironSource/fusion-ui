@@ -14,4 +14,5 @@ Whether you're building a simple website or a complex web application, Fusion-UI
 
 **FusionUI installation:** 
 
-```npm install --save @ironsource/fusion-ui```
+```npm install --save @ironsource/fusion-ui``` 
+
