@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.7.14](https://github.com/ironSource/fusion-ui/compare/v5.7.13...v5.7.14) (2023-08-13)
+
+
+### Bug Fixes
+
+* **fgc-187:** unselect selected menu item by navigation end if was related not found ([76a76ad](https://github.com/ironSource/fusion-ui/commit/76a76ad26d2b6cf182efa15ad93e772c2ce73d76))
+
 ### [5.7.13](https://github.com/ironSource/fusion-ui/compare/v5.7.12...v5.7.13) (2023-08-08)
 
 ### [5.7.12](https://github.com/ironSource/fusion-ui/compare/v5.7.11...v5.7.12) (2023-08-08)
