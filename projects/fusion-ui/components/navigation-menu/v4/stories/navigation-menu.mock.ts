@@ -342,7 +342,7 @@ export const IS_MENU_ITEMS: MenuItem[] = [
         children: [
             {
                 name: 'MMP',
-                route: '/MMP'
+                route: '/docs/components/checkbox'
             },
             {
                 name: 'SKAdNetwork',

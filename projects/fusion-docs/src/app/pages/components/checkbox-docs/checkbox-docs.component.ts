@@ -7,6 +7,7 @@ import {IconSelectItem} from '@ironsource/fusion-ui/components/icon-select-list/
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
 import {VersionService} from '../../../services/version/version.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'fusion-checkbox-docs',
@@ -171,7 +172,12 @@ export class CheckboxDocsComponent implements OnInit, OnDestroy {
         })
     );
 
-    constructor(private _formBuilder: FormBuilder, private versionService: VersionService, private docLayoutService: DocsLayoutService) {}
+    constructor(
+        private _formBuilder: FormBuilder,
+        private versionService: VersionService,
+        private docLayoutService: DocsLayoutService,
+        private router: Router
+    ) {}
 
     ngOnDestroy(): void {
         this.onDestroy$.next();
@@ -212,5 +218,9 @@ export class CheckboxDocsComponent implements OnInit, OnDestroy {
 
     onConnectionTypeSelectionChanged(selected: IconSelectItem[]): void {
         console.log('Selected', selected);
+    }
+
+    reNavigate(): void {
+        this.router.navigate(['/docs/components/v2/dropdown']);
     }
 }

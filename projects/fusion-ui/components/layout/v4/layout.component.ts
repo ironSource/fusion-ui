@@ -129,6 +129,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
         if (itemFound) {
             this.navigationMenu.setActiveMenu(primaryItemFound, itemFound);
             this.menuItemSelectedByRoute.emit(itemFound);
+        } else {
+            this.navigationMenu.setActiveMenu(null, null);
         }
         return !!itemFound;
     }
