@@ -121,7 +121,6 @@ export class NavigationPrimaryMenuComponent implements OnInit {
     }
 
     menuToggleButtonClicked(event: MouseEvent) {
-        event.stopPropagation();
         this.menuToggleCollapsed = !this.menuToggleCollapsed;
         this.toggleMenu.emit();
     }
