@@ -10,7 +10,7 @@ import {NavigationPrimaryMenuComponent} from './navigation-primary-menu/navigati
 import {NavigationSecondaryMenuComponent} from './navigation-secondary-menu/navigation-secondary-menu.component';
 import {CacheService, CacheType} from '@ironsource/fusion-ui/services/cache';
 
-const MENU_CACHE_KEY = 'fusionMenuCollapsed';
+const MENU_CACHE_KEY = 'persistent_fusionMenuCollapsed';
 
 @Component({
     selector: 'fusion-navigation-menu',

@@ -8,7 +8,7 @@ import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
 import {TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
-import {RepositionDirective} from '@ironsource/fusion-ui/directives/reposition';
+import {RepositionDirective, RepositionOffset} from '@ironsource/fusion-ui/directives/reposition';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 import {NavigationBarItemType, PrimaryMenuItem} from '../navigation-menu.entities';
 import {NavigationPopMenuComponent} from '../navigation-pop-menu/navigation-pop-menu.component';
@@ -59,6 +59,7 @@ export class NavigationPrimaryMenuComponent implements OnInit {
     menuCollapsedIcon = {iconName: 'arrowLineLeft', iconVersion: 'v4'};
     menuExpandedIcon = {iconName: 'arrowLineRight', iconVersion: 'v4'};
     popMenuPosition = TooltipPosition.BottomLeft;
+    popMenuOffset: RepositionOffset = {x: 64, y: 48};
 
     private primaryMenuOpenedItem: PrimaryMenuItem;
 

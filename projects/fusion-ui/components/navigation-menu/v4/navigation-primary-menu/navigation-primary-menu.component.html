@@ -34,6 +34,7 @@
                         [menuItems]="bottomItem.menuItems"
                         [fusionReposition]="'#fu-bottom-nav-item-btn_'+bottomItemIndex"
                         [fusionRepositionPlacement]="popMenuPosition"
+                        [fusionRepositionOffset]="popMenuOffset"
                         (menuItemClicked)="onPopMenuItemClicked($event)"
                         (fusionClickOutside)="onPopMenuOutsideClick($event)"></fusion-navigation-pop-menu>
                 </ng-container>
@@ -54,6 +55,7 @@
     <div class="fu-navigation-bar-button" id="fu-bottom-nav-item-btn_{{index}}"
          [class.fu-selected]="selectedItem"
          [class.fu-with-pop-menu]="popMenu"
+         [class.fu-selected]="popMenu && (showPopMenu$ | async)"
          [class.fu-triangle]="menuOpened && (item === menuOpenForPrimaryMenuItem)"
          (click)="networkItemClicked(item)"
     >
