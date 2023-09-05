@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
@@ -8,10 +8,11 @@ import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
 import {TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
-import {RepositionDirective} from '@ironsource/fusion-ui/directives/reposition';
+import {RepositionDirective, RepositionOffset} from '@ironsource/fusion-ui/directives/reposition';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 import {NavigationBarItemType, PrimaryMenuItem} from '../navigation-menu.entities';
 import {NavigationPopMenuComponent} from '../navigation-pop-menu/navigation-pop-menu.component';
+import {map} from 'rxjs/operators';
 
 @Component({
     selector: 'fusion-navigation-primary-menu',
@@ -43,6 +44,7 @@ export class NavigationPrimaryMenuComponent implements OnInit {
     get nativeElement(): HTMLElement {
         return this.elementRef.nativeElement;
     }
+
     get bottomItemsTopPosition(): number {
         return (this.nativeElement.querySelector('.fu-navigation-bar-bottom-items > div:first-child') as HTMLElement)?.offsetTop ?? 0;
     }
@@ -59,6 +61,12 @@ export class NavigationPrimaryMenuComponent implements OnInit {
     menuCollapsedIcon = {iconName: 'arrowLineLeft', iconVersion: 'v4'};
     menuExpandedIcon = {iconName: 'arrowLineRight', iconVersion: 'v4'};
     popMenuPosition = TooltipPosition.BottomLeft;
+
+    popMenuOffset$: Observable<RepositionOffset> = this.selectedBarItem$.asObservable().pipe(
+        map((selectedBarItem: PrimaryMenuItem) => {
+            return selectedBarItem?.type === NavigationBarItemType.Main ? {x: 64, y: 48} : {x: 64};
+        })
+    );
 
     private primaryMenuOpenedItem: PrimaryMenuItem;
 
@@ -113,7 +121,6 @@ export class NavigationPrimaryMenuComponent implements OnInit {
     }
 
     menuToggleButtonClicked(event: MouseEvent) {
-        event.stopPropagation();
         this.menuToggleCollapsed = !this.menuToggleCollapsed;
         this.toggleMenu.emit();
     }
