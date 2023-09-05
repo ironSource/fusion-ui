@@ -34,7 +34,7 @@
                         [menuItems]="bottomItem.menuItems"
                         [fusionReposition]="'#fu-bottom-nav-item-btn_'+bottomItemIndex"
                         [fusionRepositionPlacement]="popMenuPosition"
-                        [fusionRepositionOffset]="popMenuOffset"
+                        [fusionRepositionOffset]="popMenuOffset$ | async"
                         (menuItemClicked)="onPopMenuItemClicked($event)"
                         (fusionClickOutside)="onPopMenuOutsideClick($event)"></fusion-navigation-pop-menu>
                 </ng-container>
