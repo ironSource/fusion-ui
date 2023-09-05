@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.7.16](https://github.com/ironSource/fusion-ui/compare/v5.7.15...v5.7.16) (2023-09-05)
+
+
+### Bug Fixes
+
+* **new_layout:** added prefix persistent_ to session var fusionMenuCollapsed ([98f6418](https://github.com/ironSource/fusion-ui/commit/98f641871e2f6547baf5b82ed4f0fefaecf591cb))
+
 ### [5.7.15](https://github.com/ironSource/fusion-ui/compare/v5.7.14...v5.7.15) (2023-08-13)
 
 ### [5.7.14](https://github.com/ironSource/fusion-ui/compare/v5.7.13...v5.7.14) (2023-08-13) 
