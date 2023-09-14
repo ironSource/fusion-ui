@@ -30,6 +30,7 @@ export class SidebarMenuService {
         menuItems.forEach(item => {
             if (
                 (item.route && activeRoute.startsWith(item.route)) ||
+                this.checkBySubRoutes(item, activeRoute) ||
                 (item.additionalAction?.route && activeRoute.startsWith(item.additionalAction.route))
             ) {
                 this.setMenuItemsState(item, rootItem ?? item, rootItem ?? item);
@@ -38,6 +39,13 @@ export class SidebarMenuService {
                 this.setMenuByActiveRoute(item.children, activeRoute, deepLevel === 1 ? item : rootItem, deepLevel);
             }
         });
+    }
+
+    private checkBySubRoutes(item: SidebarMenuItem, route: string): boolean {
+        if (Array.isArray(item.subRoutes)) {
+            return item.subRoutes.some(subRoute => route.startsWith(subRoute));
+        }
+        return false;
     }
 
     private setMenuItemsState(active: SidebarMenuItem, selected: SidebarMenuItem, opened: SidebarMenuItem) {

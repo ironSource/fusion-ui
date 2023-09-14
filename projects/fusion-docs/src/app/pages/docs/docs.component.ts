@@ -19,6 +19,7 @@ import {LayoutComponentConfiguration, LayoutHeaderComponentConfiguration} from '
 })
 export class DocsComponent implements OnInit, OnDestroy {
     useNewLayout = false; // switch to new layout
+    useLayoutName = 'layoutV4'; // 'layoutV1', 'layoutV2', 'layoutV4'
     menuItems: MenuItem[] | SidebarMenuItem[] = this.useNewLayout ? MENU_ITEMS_V2 : MENU_ITEMS;
 
     // region for layout-v1 v1
@@ -37,6 +38,34 @@ export class DocsComponent implements OnInit, OnDestroy {
     // region for layout "v2"
     layoutConfiguration$ = this.docsLayoutService.layoutConfig$;
     // endregion
+
+    // region for layout "v4"
+    appSelectFormControl = new FormControl(MOK_APPLICATIONS_ONE_LINE_OPTIONS.slice(1, 5)) as FormControl<DropdownOption[]>;
+    headerContent: HeaderContent = {
+        title: 'Dashboard'
+        /*
+        actionComponent: TopFilterIncludeExcludeComponent,
+        actionData: {
+            placeholder: 'Select application',
+            formControl: this.appSelectFormControl,
+            title: 'Applications',
+            items: MOK_APPLICATIONS_ONE_LINE_OPTIONS
+        }
+*/
+    };
+    layoutConfiguration: LayoutConfiguration = {
+        navigationMenuItems: NAVIGATION_MENU_MOCK,
+        layoutUser: {
+            name: 'Jonny Kim',
+            email: 'jonny.kim@supercell.com'
+        }
+    };
+    // endregion
+
+    placeholder = 'Select application';
+    formControl = new FormControl(MOK_APPLICATIONS_ONE_LINE_OPTIONS.slice(1, 4));
+    title = 'Applications';
+    items = MOK_APPLICATIONS_ONE_LINE_OPTIONS;
 
     private onDestroy$ = new Subject<void>();
     private selectedVersion$ = this.versionService.styleVersion$;
@@ -133,6 +162,27 @@ export class DocsComponent implements OnInit, OnDestroy {
         if (menuItem.redirect) {
             location.href = menuItem.redirect;
         }
+    }
+
+    onMenuItemClick(menuItem: MenuItem) {
+        if (menuItem.route) {
+            this.router
+                .navigate([menuItem.route])
+                .then(navigationSucceeds => {
+                    if (navigationSucceeds) {
+                        // on navigation Ok
+                        console.log('onMenuItemClick>>> navigationSucceeds', navigationSucceeds);
+                        this.headerContent = {...this.headerContent, title: menuItem.name};
+                    }
+                })
+                .catch(err => {
+                    console.log('onMenuItemClick>>> router error', err.message);
+                });
+        }
+
+        // if (menuItem.redirect) {
+        //     location.href = menuItem.redirect;
+        // }
     }
 
     onLayoutUserLogout(user) {

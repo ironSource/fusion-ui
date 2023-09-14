@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BehaviorSubject} from 'rxjs';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
@@ -40,6 +40,13 @@ export class NavigationPrimaryMenuComponent implements OnInit {
     @Output() toggleMenu = new EventEmitter();
     @Output() resetSecondaryMenu = new EventEmitter<void>();
 
+    get nativeElement(): HTMLElement {
+        return this.elementRef.nativeElement;
+    }
+    get bottomItemsTopPosition(): number {
+        return (this.nativeElement.querySelector('.fu-navigation-bar-bottom-items > div:first-child') as HTMLElement)?.offsetTop ?? 0;
+    }
+
     homeItem: PrimaryMenuItem;
 
     networkItems$ = new BehaviorSubject<PrimaryMenuItem[]>([]);
@@ -48,15 +55,16 @@ export class NavigationPrimaryMenuComponent implements OnInit {
 
     selectedBarItem$ = new BehaviorSubject<PrimaryMenuItem>(null);
 
-    menuCollapsedIcon = {iconName: 'arrowLineRight', iconVersion: 'v4'};
-    menuExpandedIcon = {iconName: 'arrowLineLeft', iconVersion: 'v4'};
+    menuToggleCollapsed = false;
+    menuCollapsedIcon = {iconName: 'arrowLineLeft', iconVersion: 'v4'};
+    menuExpandedIcon = {iconName: 'arrowLineRight', iconVersion: 'v4'};
     popMenuPosition = TooltipPosition.BottomLeft;
 
     private primaryMenuOpenedItem: PrimaryMenuItem;
 
     defaultCssTheme: {[key: string]: string};
 
-    constructor() {}
+    constructor(private elementRef: ElementRef) {}
 
     ngOnInit(): void {}
 
@@ -87,10 +95,9 @@ export class NavigationPrimaryMenuComponent implements OnInit {
         this.menuItemClick.emit(menuItem);
         this.showPopMenu$.next(false);
         this.setSelectedPrimaryMenuItem(null);
-        this.setColorTheme(null);
     }
 
-    setColorTheme(cssTheme: {[key: string]: string}) {
+    setColorTheme(cssTheme?: {[key: string]: string}) {
         if (!isNullOrUndefined(cssTheme)) {
             this.changeColorTheme.emit(cssTheme);
         } else if (this.defaultCssTheme) {
@@ -103,6 +110,12 @@ export class NavigationPrimaryMenuComponent implements OnInit {
         if (!menuItem) {
             this.resetSecondaryMenu.emit();
         }
+    }
+
+    menuToggleButtonClicked(event: MouseEvent) {
+        event.stopPropagation();
+        this.menuToggleCollapsed = !this.menuToggleCollapsed;
+        this.toggleMenu.emit();
     }
 
     private parseNavigationBarItems(value: PrimaryMenuItem[]) {
@@ -118,6 +131,10 @@ export class NavigationPrimaryMenuComponent implements OnInit {
                     break;
                 case NavigationBarItemType.Main:
                     networkItems.push(barItem);
+                    if (isNullOrUndefined(this.defaultCssTheme) && !isNullOrUndefined(barItem.cssTheme)) {
+                        this.defaultCssTheme = barItem.cssTheme;
+                        this.setColorTheme();
+                    }
                     break;
                 default:
                     bottomItems.push(barItem);

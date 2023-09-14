@@ -1,7 +1,7 @@
-import {ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
-import {HeaderContent, LayoutConfiguration} from '../layout.entities';
+import {HeaderContent, LayoutConfiguration, TeleportWrapperElement} from '../layout.entities';
 import {LayoutComponent} from '../layout.component';
 import {Subject} from 'rxjs';
 import {FormControl} from '@angular/forms';
@@ -15,7 +15,9 @@ import {takeUntil} from 'rxjs/operators';
         <fusion-layout
             [configuration]="layoutConfiguration"
             [headerContent]="headerContent"
+            [teleportElements]="teleportElements"
             (menuItemClick)="onMenuItemClick($event)"
+            (menuItemSelectedByRoute)="onMenuItemSelectedByRoute($event)"
             (pageBackButtonClicked)="onPageBackButtonClicked($event)"
         >
             <div class="parent" [class.layout1]="isLayout1">
@@ -61,10 +63,14 @@ import {takeUntil} from 'rxjs/operators';
 export class LayoutStoryWrapperComponent implements OnInit, OnDestroy {
     @Input() layoutConfiguration: LayoutConfiguration;
     @Input() headerContent: HeaderContent;
+    @Input() teleportElements: TeleportWrapperElement[];
 
+    // used just for update style in layout's inner content
     isLayout1 = false;
 
     private onDestroy$ = new Subject<void>();
+
+    constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
     ngOnInit() {
         if (!!this.headerContent?.actionData?.formControl) {
@@ -72,6 +78,18 @@ export class LayoutStoryWrapperComponent implements OnInit, OnDestroy {
                 console.log('Header Dynamic Component value changed: ', value);
             });
         }
+
+        this.headerContent.hasBackButton = this.testMethod.bind(this);
+
+        // const temp = this.layoutConfiguration.navigationMenuItems
+        // this.layoutConfiguration.navigationMenuItems = [];
+
+        // setTimeout(() => {
+        //     this.layoutConfiguration.navigationMenuItems = temp;
+        //     this.layoutConfiguration = {...this.layoutConfiguration};
+        //     console.log('changes UP')
+        //     this.changeDetectorRef.detectChanges();
+        // }, 2000);
     }
 
     ngOnDestroy() {
@@ -79,13 +97,29 @@ export class LayoutStoryWrapperComponent implements OnInit, OnDestroy {
         this.onDestroy$.complete();
     }
 
-    onPageBackButtonClicked($event) {
-        console.log('Page Back button clicked');
+    testMethod() {
+        console.log('Back To custom method');
+    }
+
+    onPageBackButtonClicked(BackButtonData) {
+        if (typeof BackButtonData === 'string') {
+            console.log('Page Back button clicked, Navigate to', BackButtonData);
+        } else if (typeof BackButtonData === 'function') {
+            console.log('Page Back button clicked, Use custom method');
+            BackButtonData();
+        } else {
+            console.log('Page Back button clicked', BackButtonData);
+        }
     }
 
     onMenuItemClick(menuItem: MenuItem) {
         console.log('MnuItem Clicked: ', menuItem);
         this.headerContent = {...this.headerContent, title: menuItem.name};
         this.isLayout1 = !this.isLayout1;
+    }
+
+    onMenuItemSelectedByRoute(menuItem: MenuItem) {
+        console.log('MnuItem Selected By Route: ', menuItem);
+        this.headerContent = {...this.headerContent, title: menuItem.name};
     }
 }

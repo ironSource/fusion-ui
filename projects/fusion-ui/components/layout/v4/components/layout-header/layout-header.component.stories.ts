@@ -37,7 +37,7 @@ export default meta;
 const LayoutHeaderTemplate: StoryFn<LayoutHeaderComponent> = (args: LayoutHeaderComponent) => ({
     props: {...args, backButtonClicked: actionsData.backButtonClicked},
     template: `<div style="border-bottom: solid 1px #E0E0E0; max-height: 64px;">
-    <fusion-layout-header [headerContent]="headerContent" (backButtonClicked)="backButtonClicked($event)"></fusion-layout-header>
+    <fusion-layout-header [headerContent]="headerContent" [teleportElements]="teleportElements" (backButtonClicked)="backButtonClicked($event)"></fusion-layout-header>
 </div>`
 });
 
@@ -57,6 +57,23 @@ export const WithHeaderDynamicComponent = {
                 title: 'Applications',
                 items: MOK_APPLICATIONS_ONE_LINE_OPTIONS
             }
+        }
+    }
+};
+
+export const WithHeaderDynamicComponentOnRight = {
+    render: LayoutHeaderTemplate,
+    args: {
+        headerContent: {
+            ...HEADER_CONTENT_MOCK,
+            actionComponent: TopFilterIncludeExcludeComponent,
+            actionData: {
+                placeholder: 'Select application',
+                formControl: new FormControl() as FormControl<DropdownOption[]>,
+                title: 'Applications',
+                items: MOK_APPLICATIONS_ONE_LINE_OPTIONS
+            },
+            actionAlignRight: true
         }
     }
 };

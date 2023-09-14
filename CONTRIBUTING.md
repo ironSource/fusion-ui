@@ -12,7 +12,6 @@ As a contributor, here are the guidelines we would like you to follow:
 - [Commit Message Guidelines](#commit)
 - [Signing the CLA](#cla)
 
-
 ## <a name="coc"></a> Code of Conduct
 
 Help us keep FusionUI open and inclusive.

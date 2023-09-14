@@ -33,12 +33,6 @@ jobs:
           path: ./node_modules
           key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
 
-      - name: Add Github Packages Credentials
-        if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: |
-          echo @ironsource-mobile:registry=https://npm.pkg.github.com > .npmrc
-          echo '//npm.pkg.github.com/:_authToken=${{secrets.NPM_TOKEN}}' >> .npmrc
-
       - name: Install Dependencies 📦
         if: steps.cache-deps.outputs.cache-hit != 'true'
         run: npm ci

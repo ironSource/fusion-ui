@@ -189,6 +189,10 @@ const routes: Routes = [
                 loadChildren: () => import('./chart-docs-v2/chart-docs-v2.module').then(m => m.ChartDocsV2Module)
             },
             {
+                path: 'v2/area-chart',
+                loadChildren: () => import('./chart-docs-v2/chart-docs-v2.module').then(m => m.ChartDocsV2Module)
+            },
+            {
                 path: 'icon-status',
                 loadChildren: () => import('./icon-status-docs/icon-status-docs.module').then(m => m.IconStatusDocsModule)
             },

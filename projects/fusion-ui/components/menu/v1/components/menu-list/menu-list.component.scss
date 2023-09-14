@@ -138,6 +138,7 @@ $blockMaxHeight: 950px;
 
                                     &:hover {
                                         color: var(--layout-menu-item-active-color, $primary);
+                                        --layout-menu-item-color: $primary;
                                     }
                                 }
                             }

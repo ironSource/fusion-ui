@@ -1,10 +1,14 @@
-@import '../../../src/style/scss/v4/app';
+@import '../../../src/style/scss/v4/vars/vars';
 
-$navigationPanelMaxWidth: 276px;
 $pageHeaderHeight: 64px;
+$menuPrimaryWidth: 64px;
+$menuSecondaryWidth: 200px;
 
 :host{
     @extend %reset;
+    @extend %font-v4-regular;
+    --layout-header-height: #{$pageHeaderHeight};
+
     .fu-layout{
         display: grid;
         grid-template-columns: min-content 1fr;
@@ -13,7 +17,7 @@ $pageHeaderHeight: 64px;
         .fu-left-navigation{
             display: block;
             height: 100%;
-            max-width: $navigationPanelMaxWidth;
+            max-width: calc(#{$menuPrimaryWidth} + #{$menuSecondaryWidth});
         }
         .fu-main-page{
             .fu-page-header{
@@ -21,12 +25,19 @@ $pageHeaderHeight: 64px;
                 border-bottom: solid 1px $fu-divider;
             }
             .main-content{
-                height: calc(100vh - var(--lauout-header-height, #{$pageHeaderHeight}));
-                overflow-y: auto;
+                height: calc(100vh - var(--layout-header-height, #{$pageHeaderHeight}));
+                overflow: auto;
+                width: calc(100vw - #{$menuPrimaryWidth});
+                transition: width .45s ease-out;
+                &.fu-menu-expanded-opened{
+                    width: calc(100vw - #{$menuPrimaryWidth} - #{$menuSecondaryWidth});
+                }
                 .page-view {
                     height: 100%;
+                    width: 100%;
                     .app-route-content-holder{
                         height: 100%;
+                        width: 100%;
                     }
                 }
             }

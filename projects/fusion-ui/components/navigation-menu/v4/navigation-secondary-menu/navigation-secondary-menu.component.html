@@ -50,7 +50,7 @@
 <ng-template #menuItemLink  let-item="item">
     <a class="fu-secondary-menu-item-holder"
          [href]="item.route || item.redirect"
-         [target]="item.target"
+         [target]="item.target ?? '_self'"
          [ngClass]="item.cssClass"
          [class.fu-nav-menu-title-item]="item.isGroupName"
          [class.fu-has-sub-items]="!!item.children"

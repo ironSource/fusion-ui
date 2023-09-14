@@ -37,11 +37,16 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
     {
         icon: {iconName: 'add', iconVersion: 'v4'},
         name: 'Add app',
-        route: '/Add+app'
+        route: '/docs/components/v2/alert'
     },
     {
         name: 'Mediation',
         isGroupName: true
+    },
+    {
+        icon: {iconName: 'dashboard', iconVersion: 'v4'},
+        name: 'Dashboard',
+        route: '/branch_'
     },
     {
         icon: {iconName: 'chart_line_up', iconVersion: 'v4'},
@@ -300,13 +305,8 @@ export const IS_MENU_ITEMS: MenuItem[] = [
     },
     {
         icon: {iconName: 'chart_line_up', iconVersion: 'v4'},
-        name: 'Reports',
-        children: [
-            {
-                name: 'Performance',
-                route: '/performance'
-            }
-        ]
+        name: 'Performance',
+        route: '/performance'
     },
     {
         icon: {iconName: 'wrench', iconVersion: 'v4'},
@@ -314,15 +314,15 @@ export const IS_MENU_ITEMS: MenuItem[] = [
         children: [
             {
                 name: 'Instances',
-                route: '/Instances'
-            },
-            {
-                name: 'Offerwall',
-                route: '/Offerwall'
+                route: '/iframe'
             },
             {
                 name: 'Testing',
                 route: '/Testing'
+            },
+            {
+                name: 'Offerwall',
+                route: '/Offerwall'
             }
         ]
     },
@@ -345,11 +345,7 @@ export const IS_MENU_ITEMS: MenuItem[] = [
             },
             {
                 name: 'SKAdNetwork',
-                route: '/SKAdNetwork'
-            },
-            {
-                name: 'Optimizer',
-                route: '/Optimizer'
+                route: '/SKAdNetwork '
             }
         ]
     },
@@ -362,8 +358,12 @@ export const IS_MENU_ITEMS: MenuItem[] = [
                 route: '/overview'
             },
             {
-                name: 'Analysis',
-                route: '/analysis'
+                name: 'Report generator',
+                route: '/ReportGenerator'
+            },
+            {
+                name: 'Optimizer',
+                route: '/Optimizer'
             },
             {
                 name: 'Budget',
@@ -373,21 +373,29 @@ export const IS_MENU_ITEMS: MenuItem[] = [
     }
 ];
 
-export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
+export const TAPJOY_MENU_ITEMS: MenuItem[] = [
     {
-        type: NavigationBarItemType.Home,
-        menuIcon: {iconName: 'house', iconVersion: 'v4'},
-        menuTitle: 'Dashboard',
-        route: '/',
-        cssTheme: {
-            'fu-navbar-background-color': '#202020'
-        }
-    },
+        icon: {iconName: 'dashboard', iconVersion: 'v4'},
+        name: 'Dashboard',
+        route: '/dashboard'
+    }
+];
+
+export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
+    // {
+    //     type: NavigationBarItemType.Home,
+    //     menuIcon: {iconName: 'house', iconVersion: 'v4'},
+    //     menuTitle: 'Dashboard',
+    //     route: '/docs/getting-started',
+    //     cssTheme: {
+    //         'fu-navbar-background-color': '#202020'
+    //     }
+    // },
     {
         type: NavigationBarItemType.Main,
-        menuIconPath: 'v4/unity',
+        menuIcon: {iconName: 'unity_flat', iconVersion: 'v4'},
         menuTitle: 'LevelPlay',
-        menuLogoSrc: 'v4/unityLevelPlay',
+        menuLogoSrc: 'v4/unity_logo_flat',
         cssTheme: {'fu-navbar-background-color': '#202020'},
         menuItems: UNITY_MENU_ITEMS
     },
@@ -395,9 +403,174 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
         type: NavigationBarItemType.Main,
         menuIcon: {iconName: 'ironSource', iconVersion: 'v4'},
         menuTitle: 'Ads',
-        menuLogoSrc: 'v4/isAdsLogo',
+        menuLogoSrc: 'v4/is_ads_logo',
         cssTheme: {'fu-navbar-background-color': '#0D148C'},
         menuItems: IS_MENU_ITEMS
+    },
+    {
+        type: NavigationBarItemType.Main,
+        menuIcon: {iconName: 'tapjoy', iconVersion: 'v4'},
+        menuTitle: 'Tapjoy',
+        menuLogoSrc: 'v4/tapjoy_logo',
+        cssTheme: {'fu-navbar-background-color': '#202020'},
+        menuItems: TAPJOY_MENU_ITEMS
+    },
+    {
+        type: NavigationBarItemType.Bottom,
+        menuIcon: {iconName: 'question', iconVersion: 'v4'},
+        menuTooltip: 'Knowledge Center',
+        redirect: 'https://developers.is.com/',
+        target: '_blank'
+    },
+    {
+        type: NavigationBarItemType.User,
+        menuIcon: {iconName: 'userCircle', iconVersion: 'v4'},
+        menuTooltip: 'Account',
+        menuItems: USER_PROFILE_MENU_ITEMS
+    }
+];
+
+export const IS_ADMIN_MENU_ITEMS: MenuItem[] = [
+    {
+        icon: {iconName: 'bank', iconVersion: 'v4'},
+        name: 'General',
+        children: [
+            {
+                name: 'Manage companies',
+                route: '/branch_'
+            }
+        ]
+    },
+    {
+        icon: {iconName: 'rocket_launch', iconVersion: 'v4'},
+        name: 'Demand',
+        children: [
+            {
+                name: 'Click URL validation',
+                route: '/ClickURLValidation'
+            },
+            {
+                name: 'Manage invoices',
+                route: '/ManageInvoices'
+            },
+            {
+                name: 'Approve invoices',
+                route: '/ApproveInvoices'
+            },
+            {
+                name: 'Back office',
+                route: '/Backoffice'
+            },
+            {
+                name: 'Optimizer rollback',
+                route: '/OptimizerRollback'
+            }
+        ]
+    },
+    {
+        icon: {iconName: 'sketch-logo', iconVersion: 'v4'},
+        name: 'Supply',
+        children: [
+            {
+                name: 'Back office',
+                route: '/BackOffice'
+            },
+            {
+                name: 'Publisher back office',
+                route: '/PublisherBackOffice'
+            },
+            {
+                name: 'Internal A/B test tool',
+                route: '/InternalABTestTool'
+            },
+            {
+                name: 'Manage corporates',
+                route: '/ManageCorporates'
+            }
+        ]
+    },
+    {
+        icon: {iconName: 'mediation', iconVersion: 'v4'},
+        name: 'Networks OPS',
+        children: [
+            {
+                name: 'Promote management',
+                route: '/PromoteManagement'
+            },
+            {
+                name: 'Campaign promotions',
+                route: '/CampaignPromotions'
+            },
+            {
+                name: 'SK genre config',
+                route: '/SKGenreConfig'
+            },
+            {
+                name: 'SK advertiser config',
+                route: '/SKAdvertiserConfig'
+            },
+            {
+                name: 'Profit manager',
+                route: '/ProfitManager'
+            }
+        ]
+    },
+    {
+        icon: {iconName: 'wrench', iconVersion: 'v4'},
+        name: 'Customer support',
+        children: [
+            {
+                name: 'CS platform',
+                route: '/CSPlatform'
+            }
+        ]
+    },
+    {
+        icon: {iconName: 'lightning', iconVersion: 'v4'},
+        name: 'Internal',
+        children: [
+            {
+                name: 'User management',
+                route: '/UserManagement'
+            },
+            {
+                name: 'Internal roles',
+                route: '/InternalRoles'
+            }
+        ]
+    },
+    {
+        icon: {iconName: 'currency-circle-dollar', iconVersion: 'v4'},
+        name: 'Finance',
+        children: [
+            {
+                name: 'Manage billing',
+                route: '/ManageBilling'
+            },
+            {
+                name: 'Approve billing',
+                route: '/ApproveBilling'
+            },
+            {
+                name: 'Manage payments',
+                route: '/ManagePayments'
+            },
+            {
+                name: 'Priority sync',
+                route: '/Priority sync'
+            }
+        ]
+    }
+];
+
+export const NAVIGATION_ADMIN_MENU_MOCK: PrimaryMenuItem[] = [
+    {
+        type: NavigationBarItemType.Main,
+        menuIcon: {iconName: 'ironSource', iconVersion: 'v4'},
+        menuTitle: 'Ads',
+        menuLogoSrc: 'v4/isAdsLogo',
+        cssTheme: {'fu-navbar-background-color': '#0D148C'},
+        menuItems: IS_ADMIN_MENU_ITEMS
     },
     {
         type: NavigationBarItemType.Bottom,

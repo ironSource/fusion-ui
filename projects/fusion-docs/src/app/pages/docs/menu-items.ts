@@ -59,7 +59,8 @@ export const MENU_ITEMS: MenuItem[] = [
             },
             {
                 name: 'Charts',
-                route: '/docs/components/v2/charts'
+                route: '/docs/components/v2/charts',
+                subRoutes: ['/docs/components/v2/area-chart']
             },
             {
                 name: 'Checkbox',

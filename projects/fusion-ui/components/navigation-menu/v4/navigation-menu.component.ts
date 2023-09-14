@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BehaviorSubject, fromEvent, Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {filter, takeUntil} from 'rxjs/operators';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
 import {MenuItem, MenuItemAdditionalData} from '@ironsource/fusion-ui/components/menu/common/base';
@@ -27,10 +27,6 @@ export class NavigationMenuComponent implements OnInit {
     @Input() menuItems: PrimaryMenuItem[];
     @Input() layoutUser: LayoutUser;
 
-    @Input() set menuCollapsed(value: boolean) {
-        this.secondaryMenuOpen$.next(!value);
-    }
-
     @Output() menuAdditionalItemClicked = new EventEmitter<MenuItemAdditionalData>();
     @Output() menuItemClicked = new EventEmitter<MenuItem>();
 
@@ -49,7 +45,11 @@ export class NavigationMenuComponent implements OnInit {
     private selectedSecondaryMenuItem: MenuItem;
 
     get needRestoreSelectedState(): boolean {
-        return !!this.selectedPrimaryMenuItem && this.selectedPrimaryMenuItem?.menuTitle !== this.preSelectedPrimaryMenuItem?.menuTitle;
+        return (
+            !!this.selectedPrimaryMenuItem &&
+            !!this.preSelectedPrimaryMenuItem &&
+            this.selectedPrimaryMenuItem?.menuTitle !== this.preSelectedPrimaryMenuItem?.menuTitle
+        );
     }
 
     private _isSecondaryMenuExpandable = true;
@@ -65,6 +65,21 @@ export class NavigationMenuComponent implements OnInit {
     constructor(private elementRef: ElementRef, protected storageService: StorageService) {}
 
     ngOnInit(): void {
+        this.initListeners();
+    }
+
+    initListeners() {
+        fromEvent(this.primaryMenu.nativeElement, 'mouseenter')
+            .pipe(
+                takeUntil(this.onDestroy$),
+                filter((event: MouseEvent) => {
+                    const isMainSelected = this.primaryMenu.selectedBarItem$.getValue()?.type === 'main';
+                    const isNotOverBottomItems = event.clientY < this.primaryMenu.bottomItemsTopPosition;
+                    return isMainSelected && this.isSecondaryMenuExpandable && isNotOverBottomItems;
+                })
+            )
+            .subscribe(this.onPrimaryMenuMainMouseEnter.bind(this));
+
         fromEvent(this.elementRef.nativeElement, 'mouseleave')
             .pipe(takeUntil(this.onDestroy$))
             .subscribe(this.onNavigationMenuMouseLeave.bind(this));
@@ -76,17 +91,25 @@ export class NavigationMenuComponent implements OnInit {
 
     onMenuItemClicked(menuItem, popMenuItem = false) {
         if (!popMenuItem) {
-            if (this.selectedPrimaryMenuItem !== this.preSelectedPrimaryMenuItem) {
-                this.selectedPrimaryMenuItem = this.preSelectedPrimaryMenuItem;
-                this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, true);
-            }
+            this.selectedPrimaryMenuItem = this.preSelectedPrimaryMenuItem;
+            this.isSecondaryMenuExpandable = false;
+            this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, true);
+
             this.selectedSecondaryMenuItem = menuItem;
             this.primaryMenu.setSelectedPrimaryMenuItem(this.selectedPrimaryMenuItem);
             this.primaryMenu.setColorTheme(this.selectedPrimaryMenuItem?.cssTheme ?? null);
         } else {
-            this.setSecondaryMenuVisibilityState(false, false);
+            this.preSelectedPrimaryMenuItem = null;
+            this.selectedSecondaryMenuItem = menuItem;
+            this.storageService.remove(StorageType.SessionStorage, MENU_CACHE_KEY);
+            this.isSecondaryMenuExpandable = true;
+            this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, false);
         }
         this.menuItemClicked.emit(menuItem);
+    }
+
+    onPrimaryMenuMainMouseEnter($event) {
+        this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, true);
     }
 
     onNavigationMenuMouseLeave() {
@@ -98,7 +121,7 @@ export class NavigationMenuComponent implements OnInit {
             this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, false);
         } else if (this.selectedPrimaryMenuItem?.type === NavigationBarItemType.Main) {
             if (this.isSecondaryMenuExpandable) {
-                this.setSecondaryMenuVisibilityState(false, false);
+                this.setSecondaryMenuVisibilityState(true, false);
             }
         }
     }
@@ -110,7 +133,8 @@ export class NavigationMenuComponent implements OnInit {
             this.preSelectedPrimaryMenuItem = selectedNetwork;
             this.setSecondaryMenu(selectedNetwork);
             if (!isNullOrUndefined(selectedNetwork.route)) {
-                this.setSecondaryMenuVisibilityState(false, false);
+                this.isSecondaryMenuExpandable = true;
+                this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, false);
                 this.selectedPrimaryMenuItem = this.preSelectedPrimaryMenuItem;
                 this.primaryMenu.setSelectedPrimaryMenuItem(this.selectedPrimaryMenuItem);
                 this.menuItemClicked.emit({name: selectedNetwork.menuTitle, route: selectedNetwork.route});
@@ -128,8 +152,16 @@ export class NavigationMenuComponent implements OnInit {
     }
 
     toggleMenu() {
-        this.secondaryMenuOpen$.next(!this.secondaryMenuOpen$.getValue());
+        if (!(this.secondaryMenuOpen$.getValue() && this.secondaryMenuExpanded$.getValue())) {
+            this.secondaryMenuOpen$.next(!this.secondaryMenuOpen$.getValue() && this.secondaryMenuItems$.getValue().length > 0);
+        }
         this.storageService.set(StorageType.SessionStorage, MENU_CACHE_KEY, this.secondaryMenuOpen$.getValue());
+        if (this.secondaryMenuOpen$.getValue()) {
+            if (this.needRestoreSelectedState) {
+                this.setSecondaryMenu(this.selectedPrimaryMenuItem);
+            }
+            this.secondaryMenuExpanded$.next(false);
+        }
     }
 
     resetSecondaryMenu() {
@@ -148,12 +180,14 @@ export class NavigationMenuComponent implements OnInit {
     }
 
     private setSecondaryMenu(selectedNetwork: PrimaryMenuItem) {
-        this.secondaryMenuItems$.next(selectedNetwork?.menuItems ?? []);
-        this.secondaryMenuName$.next(selectedNetwork?.menuTitle ?? '');
-        this.secondaryMenuLogoSrc$.next(selectedNetwork?.menuLogoSrc ?? '');
+        if (selectedNetwork?.type === NavigationBarItemType.Main) {
+            this.secondaryMenuItems$.next(selectedNetwork?.menuItems ?? []);
+            this.secondaryMenuName$.next(selectedNetwork?.menuTitle ?? '');
+            this.secondaryMenuLogoSrc$.next(selectedNetwork?.menuLogoSrc ?? '');
 
-        this.menuOpenForPrimaryMenuItem$.next(selectedNetwork);
-        this.selectSecondaryMenuItem(selectedNetwork);
+            this.menuOpenForPrimaryMenuItem$.next(selectedNetwork);
+            this.selectSecondaryMenuItem(selectedNetwork);
+        }
     }
 
     private selectSecondaryMenuItem(selectedNetwork: PrimaryMenuItem) {
@@ -164,8 +198,8 @@ export class NavigationMenuComponent implements OnInit {
         }
     }
 
-    private setSecondaryMenuVisibilityState(showed: boolean, open: boolean) {
-        this.secondaryMenuExpanded$.next(showed);
+    private setSecondaryMenuVisibilityState(expanded: boolean, open: boolean) {
+        this.secondaryMenuExpanded$.next(expanded);
         this.secondaryMenuOpen$.next(open);
     }
 

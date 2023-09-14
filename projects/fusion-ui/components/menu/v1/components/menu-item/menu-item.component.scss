@@ -1,3 +1,4 @@
+@import '../../../../../src/style/scss/v1/vars/vars';
 @import '../../../../../src/style/scss/v2/mixins/mixins';
 
 :host {
@@ -5,14 +6,22 @@
         position: absolute;
         right: 21px;
     }
-
-    label{
-        cursor: pointer;
+    a.fu-menu-item-link {
+        text-decoration: none;
+        color: var(--layout-menu-item-color,$light-100);
+        font-size: 13px;
+        font-weight: 400;
+        label{
+            cursor: pointer;
+        }
     }
 
     &.active{
-        label{
-            cursor: default;
+        a.fu-menu-item-link{
+            color: var(--layout-menu-item-active-color, $primary);
+            label{
+                cursor: default;
+            }
         }
     }
 
