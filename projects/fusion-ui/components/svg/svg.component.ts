@@ -1,21 +1,11 @@
-import {
-    Component,
-    Input,
-    ChangeDetectionStrategy,
-    ElementRef,
-    Renderer2,
-    Inject,
-    Optional,
-    AfterViewInit,
-    ViewEncapsulation,
-    OnDestroy
-} from '@angular/core';
+import {Component, Input, ChangeDetectionStrategy, ElementRef, Renderer2, Inject, Optional, AfterViewInit, OnDestroy} from '@angular/core';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {SVG_OPTIONS_TOKEN} from './svg-config';
 import {SvgOptions} from './svg-entities';
 import {HttpClient} from '@angular/common/http';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+import {StorageService, StorageType} from '@ironsource/fusion-ui/services/stogare';
 
 @Component({
     selector: 'fusion-svg',
@@ -38,6 +28,7 @@ export class SvgComponent implements AfterViewInit, OnDestroy {
         public elementRef: ElementRef,
         public renderer: Renderer2,
         protected logService: LogService,
+        protected storageService: StorageService,
         @Optional() @Inject(SVG_OPTIONS_TOKEN) public svgOptions: SvgOptions
     ) {}
 
@@ -71,17 +62,23 @@ export class SvgComponent implements AfterViewInit, OnDestroy {
     loadSvg() {
         const svgUrl = this.getUrlPath();
         if (svgUrl) {
-            this.httpClient
-                .get(svgUrl, {responseType: 'text'})
-                .pipe(takeUntil(this.onDestroy$))
-                .subscribe(
-                    response => {
-                        this.elementRef.nativeElement.innerHTML = response;
-                    },
-                    err => {
-                        this.logService.error(new Error(`Error Fetching Svg: ${svgUrl}, ${JSON.stringify(err)}`));
-                    }
-                );
+            const cachedData = this.storageService.get(StorageType.SessionStorage, `${svgUrl}`);
+            if (!!cachedData) {
+                this.elementRef.nativeElement.innerHTML = cachedData;
+            } else {
+                this.httpClient
+                    .get(svgUrl, {responseType: 'text'})
+                    .pipe(takeUntil(this.onDestroy$))
+                    .subscribe(
+                        response => {
+                            this.storageService.set(StorageType.SessionStorage, `${svgUrl}`, response);
+                            this.elementRef.nativeElement.innerHTML = response;
+                        },
+                        err => {
+                            this.logService.error(new Error(`Error Fetching Svg: ${svgUrl}, ${JSON.stringify(err)}`));
+                        }
+                    );
+            }
         }
     }
 
