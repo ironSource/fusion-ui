@@ -1,0 +1,27 @@
+@import './vars/shadows';
+
+.fu-shadow-xs {
+    @extend %shadow-v4-xs;
+}
+.fu-shadow-sm {
+    @extend %shadow-v4-sm;
+}
+.fu-shadow-md {
+    @extend %shadow-v4-md;
+}
+.fu-shadow-lg {
+    @extend %shadow-v4-lg;
+}
+.fu-shadow-xl {
+    @extend %shadow-v4-xl;
+}
+.fu-shadow-xxl {
+    @extend %shadow-v4-xxl;
+}
+.fu-shadow-xxxl {
+    @extend %shadow-v4-xxxl;
+}
+.fu-shadow-slg {
+    @extend %shadow-v4-slg;
+}
+

@@ -1,4 +1,4 @@
-import {Meta} from '@storybook/addon-docs';
+import {Meta, Source} from '@storybook/addon-docs';
 
 <Meta title="Styleguide/V4/Typography"/>
 
@@ -37,6 +37,8 @@ Or Import css file for *.css
 <div class="sb-unstyled">
     <div class="fu-typeface-v4-row fu-typeface-v4-row-title">
         <div class="fu-typeface-v4-col font-v4-subtitle-1">Name</div>
+        <div class="fu-typeface-v4-col font-v4-subtitle-1">CSS class name</div>
+        <div class="fu-typeface-v4-col font-v4-subtitle-1">SCSS name</div>
         <div class="fu-typeface-v4-col font-v4-subtitle-1">Weight</div>
         <div class="fu-typeface-v4-col font-v4-subtitle-1">Size</div>
         <div class="fu-typeface-v4-col font-v4-subtitle-1">Line height</div>
@@ -45,6 +47,8 @@ Or Import css file for *.css
 
     <div class="fu-typeface-v4-row">
         <div class="fu-typeface-v4-col font-v4-title">title</div>
+        <div class="fu-typeface-v4-col font-v4-subtitle-1">.font-v4-title</div>
+        <div class="fu-typeface-v4-col font-v4-subtitle-1">%font-v4-title</div>
         <div class="fu-typeface-v4-col font-v4-body-1">Semibold (600)</div>
         <div class="fu-typeface-v4-col font-v4-body-1">40px</div>
         <div class="fu-typeface-v4-col font-v4-body-1">48px</div>
@@ -53,6 +57,8 @@ Or Import css file for *.css
 
     <div class="fu-typeface-v4-row">
         <div class="fu-typeface-v4-col font-v4-heading-1">h1</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">.font-v4-heading-1</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">%font-v4-heading-1</div>
         <div class="fu-typeface-v4-col font-v4-body-1">Semibold (600)</div>
         <div class="fu-typeface-v4-col font-v4-body-1">24px</div>
         <div class="fu-typeface-v4-col font-v4-body-1">28px</div>
@@ -60,6 +66,8 @@ Or Import css file for *.css
     </div>
     <div class="fu-typeface-v4-row">
         <div class="fu-typeface-v4-col font-v4-heading-2">h2</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">.font-v4-heading-2</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">%font-v4-heading-2</div>
         <div class="fu-typeface-v4-col font-v4-body-1">Semibold (600)</div>
         <div class="fu-typeface-v4-col font-v4-body-1">18px</div>
         <div class="fu-typeface-v4-col font-v4-body-1">28px</div>
@@ -67,6 +75,8 @@ Or Import css file for *.css
     </div>
     <div class="fu-typeface-v4-row">
         <div class="fu-typeface-v4-col font-v4-heading-3">h3</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">.font-v4-heading-3</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">%font-v4-heading-3</div>
         <div class="fu-typeface-v4-col font-v4-body-1">Semibold (600)</div>
         <div class="fu-typeface-v4-col font-v4-body-1">16px</div>
         <div class="fu-typeface-v4-col font-v4-body-1">24px</div>
@@ -74,6 +84,8 @@ Or Import css file for *.css
     </div>
     <div class="fu-typeface-v4-row">
         <div class="fu-typeface-v4-col font-v4-heading-4">h4</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">.font-v4-heading-4</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">%font-v4-heading-4</div>
         <div class="fu-typeface-v4-col font-v4-body-1">Semibold (600)</div>
         <div class="fu-typeface-v4-col font-v4-body-1">14px</div>
         <div class="fu-typeface-v4-col font-v4-body-1">20px</div>
@@ -81,6 +93,8 @@ Or Import css file for *.css
     </div>
     <div class="fu-typeface-v4-row">
         <div class="fu-typeface-v4-col font-v4-heading-5">h5</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">.font-v4-heading-5</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">%font-v4-heading-5</div>
         <div class="fu-typeface-v4-col font-v4-body-1">Semibold (600)</div>
         <div class="fu-typeface-v4-col font-v4-body-1">13px</div>
         <div class="fu-typeface-v4-col font-v4-body-1">16px</div>
@@ -88,6 +102,8 @@ Or Import css file for *.css
     </div>
     <div class="fu-typeface-v4-row">
         <div class="fu-typeface-v4-col font-v4-heading-6">h6</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">.font-v4-heading-6</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">%font-v4-heading-6</div>
         <div class="fu-typeface-v4-col font-v4-body-1">Semibold (600)</div>
         <div class="fu-typeface-v4-col font-v4-body-1">12px</div>
         <div class="fu-typeface-v4-col font-v4-body-1">12px</div>
@@ -96,6 +112,8 @@ Or Import css file for *.css
 
     <div class="fu-typeface-v4-row">
         <div class="fu-typeface-v4-col font-v4-body-1">body1</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">.font-v4-body-1</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">%font-v4-body-1</div>
         <div class="fu-typeface-v4-col font-v4-body-1">Regular (400)</div>
         <div class="fu-typeface-v4-col font-v4-body-1">14px</div>
         <div class="fu-typeface-v4-col font-v4-body-1">20px</div>
@@ -103,6 +121,8 @@ Or Import css file for *.css
     </div>
     <div class="fu-typeface-v4-row">
         <div class="fu-typeface-v4-col font-v4-body-2">body2</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">.font-v4-body-2</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">%font-v4-body-2</div>
         <div class="fu-typeface-v4-col font-v4-body-1">Regular (400)</div>
         <div class="fu-typeface-v4-col font-v4-body-1">13px</div>
         <div class="fu-typeface-v4-col font-v4-body-1">20px</div>
@@ -111,6 +131,8 @@ Or Import css file for *.css
 
     <div class="fu-typeface-v4-row">
         <div class="fu-typeface-v4-col font-v4-subtitle-1">subtitle1</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">.font-v4-subtitle-1</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">%font-v4-subtitle-1</div>
         <div class="fu-typeface-v4-col font-v4-body-1">Medium (500)</div>
         <div class="fu-typeface-v4-col font-v4-body-1">14px</div>
         <div class="fu-typeface-v4-col font-v4-body-1">20px</div>
@@ -118,6 +140,8 @@ Or Import css file for *.css
     </div>
     <div class="fu-typeface-v4-row">
         <div class="fu-typeface-v4-col font-v4-subtitle-2">subtitle2</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">.font-v4-subtitle-2</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">%font-v4-subtitle-2</div>
         <div class="fu-typeface-v4-col font-v4-body-1">Medium (500)</div>
         <div class="fu-typeface-v4-col font-v4-body-1">13px</div>
         <div class="fu-typeface-v4-col font-v4-body-1">20px</div>
@@ -126,6 +150,8 @@ Or Import css file for *.css
 
     <div class="fu-typeface-v4-row">
         <div class="fu-typeface-v4-col font-v4-button">button</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">.font-v4-button</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">%font-v4-button</div>
         <div class="fu-typeface-v4-col font-v4-body-1">Semibold (600)</div>
         <div class="fu-typeface-v4-col font-v4-body-1">14px</div>
         <div class="fu-typeface-v4-col font-v4-body-1">20px</div>
@@ -134,6 +160,8 @@ Or Import css file for *.css
 
     <div class="fu-typeface-v4-row">
         <div class="fu-typeface-v4-col font-v4-overline">overline</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">.font-v4-overline)</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">%font-v4-overline</div>
         <div class="fu-typeface-v4-col font-v4-body-1">Medium (500)</div>
         <div class="fu-typeface-v4-col font-v4-body-1">12px</div>
         <div class="fu-typeface-v4-col font-v4-body-1">16px</div>
@@ -142,6 +170,8 @@ Or Import css file for *.css
 
     <div class="fu-typeface-v4-row">
         <div class="fu-typeface-v4-col font-v4-caption">caption</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">.font-v4-caption</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">%font-v4-caption</div>
         <div class="fu-typeface-v4-col font-v4-body-1">Regular (400)</div>
         <div class="fu-typeface-v4-col font-v4-body-1">12px</div>
         <div class="fu-typeface-v4-col font-v4-body-1">16px</div>
@@ -150,6 +180,8 @@ Or Import css file for *.css
 
     <div class="fu-typeface-v4-row">
         <div class="fu-typeface-v4-col font-v4-table-header">table header</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">.font-v4-table-header</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">%font-v4-table-header</div>
         <div class="fu-typeface-v4-col font-v4-body-1">Semibold (600)</div>
         <div class="fu-typeface-v4-col font-v4-body-1">13px</div>
         <div class="fu-typeface-v4-col font-v4-body-1">20px</div>
@@ -158,6 +190,8 @@ Or Import css file for *.css
 
     <div class="fu-typeface-v4-row">
         <div class="fu-typeface-v4-col font-v4-chip-label">chip label</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">.font-v4-chip-label</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">%font-v4-chip-label</div>
         <div class="fu-typeface-v4-col font-v4-body-1">Semibold (600)</div>
         <div class="fu-typeface-v4-col font-v4-body-1">12px</div>
         <div class="fu-typeface-v4-col font-v4-body-1">16px</div>
@@ -166,6 +200,8 @@ Or Import css file for *.css
 
     <div class="fu-typeface-v4-row">
         <div class="fu-typeface-v4-col font-v4-chart-1">chart1</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">.font-v4-chart-1</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">%font-v4-chart-1</div>
         <div class="fu-typeface-v4-col font-v4-body-1">Bold (700)</div>
         <div class="fu-typeface-v4-col font-v4-body-1">24px</div>
         <div class="fu-typeface-v4-col font-v4-body-1">24px</div>
@@ -173,11 +209,67 @@ Or Import css file for *.css
     </div>
     <div class="fu-typeface-v4-row">
         <div class="fu-typeface-v4-col font-v4-chart-2">chart2</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">.font-v4-chart-2</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">%font-v4-chart-2</div>
         <div class="fu-typeface-v4-col font-v4-body-1">Bold (700)</div>
         <div class="fu-typeface-v4-col font-v4-body-1">20px</div>
         <div class="fu-typeface-v4-col font-v4-body-1">20px</div>
         <div class="fu-typeface-v4-col font-v4-body-1">-0.24px</div>
     </div>
 </div>
+
+<br/><br/>
+
+## Code example for CSS classes.
+<Source code={`
+<div class="font-v4-title">Title</div>
+<div class="font-v4-heading-1">Heading 1</div>
+<div class="font-v4-heading-2">Heading 2</div>
+<div class="font-v4-heading-3">Heading 3</div>
+<div class="font-v4-heading-4">Heading 4</div>
+<div class="font-v4-heading-5">Heading 5</div>
+<div class="font-v4-heading-6">Heading 6</div>
+<div class="font-v4-body-1">Body 1</div>
+<div class="font-v4-body-2">Body 2</div>
+<div class="font-v4-subtitle-1">Subtitle 1</div>
+<div class="font-v4-subtitle-2">Subtitle 2</div>
+<div class="font-v4-button">Button</div>
+<div class="font-v4-overline">Overline</div>
+<div class="font-v4-caption">Caption</div>
+<div class="font-v4-table-header">Table header</div>
+<div class="font-v4-chip-label">chip label</div>
+<div class="font-v4-chart-1">Chart 1</div>
+<div class="font-v4-chart-2">chart 2</div>
+`} />
+
+## Code example for SCSS.
+<Source language="css" code={`
+@import '~@ironsource/fusion-ui/style/v4/vars/fonts';
+
+.font-v4-bold {@extend %font-v4-bold;}
+.font-v4-semibold {@extend %font-v4-semibold; }
+.font-v4-medium {@extend %font-v4-medium;}
+.font-v4-regular {@extend %font-v4-regular;}
+.font-v4-title {@extend %font-v4-title;}
+.font-v4-heading-1 {@extend %font-v4-heading-1;}
+.font-v4-heading-2 {@extend %font-v4-heading-2;}
+.font-v4-heading-3 {@extend %font-v4-heading-3;}
+.font-v4-heading-4 {@extend %font-v4-heading-4;}
+.font-v4-heading-5 {@extend %font-v4-heading-5;}
+.font-v4-heading-6 {@extend %font-v4-heading-6;}
+.font-v4-body-1 {@extend %font-v4-body-1;}
+.font-v4-body-2 {@extend %font-v4-body-2;}
+.font-v4-subtitle-1 {@extend %font-v4-subtitle-1;}
+.font-v4-subtitle-2 {@extend %font-v4-subtitle-2;}
+.font-v4-chart-1 {@extend %font-v4-chart-1;}
+.font-v4-chart-2 {@extend %font-v4-chart-2;}
+.font-v4-button {@extend %font-v4-button;}
+.font-v4-overline {@extend %font-v4-overline;}
+.font-v4-caption {@extend %font-v4-caption;}
+.font-v4-table-header {@extend %font-v4-table-header;}
+.font-v4-input-label {@extend %font-v4-input-label;}
+.font-v4-tab-label {@extend %font-v4-tab-label;}
+.font-v4-chip-label {@extend %font-v4-chip-label;}
+`} />
 
 
