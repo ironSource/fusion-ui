@@ -23,7 +23,7 @@ All notable changes to this project will be documented in this file. See [commit
 ### ⚠ BREAKING CHANGES
 
 * **fg-169:** remove services:
- - ali
+ - api
  - auth
  - cache
  - pub-sub
