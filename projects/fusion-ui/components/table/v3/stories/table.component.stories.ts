@@ -20,7 +20,9 @@ import {
     TABLE_STICKY_COLUMNS_CONFIG,
     TABLE_SUBHEADER_COLUMNS_CONFIG,
     ROWS_READONLY_ROW_DATA,
-    TABLE_TOGGLE_EDIT_COLUMNS_CONFIG
+    TABLE_TOGGLE_EDIT_COLUMNS_CONFIG,
+    TABLE_CHECKBOX_COLUMNS_CONFIG,
+    ROWS_CHECKBOX_DATA
 } from './table.mock-data';
 
 const onSearch = new EventEmitter();
@@ -1798,6 +1800,8 @@ export const InfinityScroll = {
     render: TableInfinityScrollTemplate,
 
     args: {
+        columns: TABLE_CHECKBOX_COLUMNS_CONFIG,
+        rows: ROWS_CHECKBOX_DATA,
         options: {
             ...TABLE_DEFAULT_OPTIONS,
             pagination: {
