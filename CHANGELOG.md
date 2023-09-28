@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [5.7.20-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.7.19...v5.7.20-rc.0) (2023-09-28)
+
+
+### Bug Fixes
+
+* **isct-59:** fixed table component preselected rows ([77a2fdd](https://github.com/ironSource/fusion-ui/commit/77a2fdde095d42413f71818e714136f4ed542881))
+
 ### [5.7.19](https://github.com/ironSource/fusion-ui/compare/v5.7.18...v5.7.19) (2023-09-05)
 
 ### [5.7.18](https://github.com/ironSource/fusion-ui/compare/v5.7.17...v5.7.18) (2023-09-05)
