@@ -123,6 +123,7 @@ export class TableStoryHolderComponent implements OnInit, OnDestroy {
         const newRows = Array.from({length: 20}, (_, i) => {
             const id = i + shownLength + 1;
             return {
+                checkbox: false,
                 id: id,
                 name: id + ' name',
                 username: id + ' UserName',

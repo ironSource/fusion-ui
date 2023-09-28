@@ -39,7 +39,7 @@ export const TABLE_SORTING_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'website', title: 'Website'}
 ];
 export const TABLE_CHECKBOX_COLUMNS_CONFIG: TableColumn[] = [
-    {key: 'selected', type: TableColumnTypeEnum.Checkbox, width: '32px'},
+    {key: 'checkbox', type: TableColumnTypeEnum.Checkbox, width: '32px'},
     ...TABLE_DEFAULT_COLUMNS_CONFIG
 ];
 export const TABLE_TOGGLE_COLUMNS_CONFIG: TableColumn[] = [
@@ -393,8 +393,8 @@ export const ROWS_TOTALS_DATA = [
     },
     ...ROWS_DEFAULT_DATA
 ];
-export const ROWS_CHECKBOX_DATA = ROWS_DEFAULT_DATA.map(row => {
-    return {selected: false, ...row};
+export const ROWS_CHECKBOX_DATA = ROWS_DEFAULT_DATA.map((row, idx) => {
+    return {checkbox: idx == 3, ...row};
 });
 export const ROWS_TOGGLE_DATA = ROWS_DEFAULT_DATA.map(row => {
     return {live: true, ...row};

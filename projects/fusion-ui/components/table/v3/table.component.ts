@@ -247,7 +247,9 @@ export class TableComponent implements OnInit, OnDestroy {
         public tableService: TableService,
         private uniqueService: UniqueIdService,
         private cdr: ChangeDetectorRef
-    ) {}
+    ) {
+        this.tableService.clearSelectedRows();
+    }
 
     ngOnInit() {
         this.searchFormControl = new FormControl(this.options?.searchOptions?.initalValue || '');
@@ -267,7 +269,6 @@ export class TableComponent implements OnInit, OnDestroy {
         this.noDataSubMessage = this.options.noDataSubMessage || '';
         this.hideHeaderOnEmpty = !isNullOrUndefined(this.options.hideHeaderOnEmpty) ? this.options.hideHeaderOnEmpty : false;
         this.isAllRowsSelectable = typeof this.options.isAllRowsSelectable === 'undefined' ? true : this.options.isAllRowsSelectable;
-        this.tableService.clearSelectedRows();
         this.scrollListeners();
         this.configIconNames = CONFIG_TABLE_BY_UI_STYLE[`style_v2`];
         this.wrapperClasses = this.getWrapperClasses();
