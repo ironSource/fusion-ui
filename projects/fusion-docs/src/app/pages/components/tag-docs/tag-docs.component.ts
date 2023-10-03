@@ -1,6 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
-import {ApiService, ApiResponseType} from '@ironsource/fusion-ui';
 import {Tag} from '@ironsource/fusion-ui/components/tag/common/entities';
 import {map, delay, takeUntil} from 'rxjs/operators';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
@@ -8,6 +7,7 @@ import {Router} from '@angular/router';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {VersionService} from '../../../services/version/version.service';
 import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
     selector: 'fusion-tag-docs',
@@ -230,7 +230,7 @@ export class TagDocsComponent implements OnInit, OnDestroy {
     bulkInsertedTags = new FormControl([]);
 
     constructor(
-        private apiService: ApiService,
+        private httpClient: HttpClient,
         private formBuilder: FormBuilder,
         private versionService: VersionService,
         private router: Router
@@ -240,7 +240,7 @@ export class TagDocsComponent implements OnInit, OnDestroy {
         this.initForm();
         this.selectedVersion$.subscribe((styleVersion: StyleVersion) => {
             if (styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3) {
-                this.router.navigate(['docs/components/v2/tag']);
+                // this.router.navigate(['docs/components/v2/tag']);
             }
         });
     }
@@ -300,11 +300,10 @@ export class TagDocsComponent implements OnInit, OnDestroy {
             return;
         }
         this.inSearch = true;
-        this.apiService
-            .get('https://jsonplaceholder.typicode.com/comments', {
-                responseType: ApiResponseType.Json
-            })
+        this.httpClient
+            .get('https://jsonplaceholder.typicode.com/comments', {responseType: 'json'})
             .pipe(
+                takeUntil(this.onDestroy$),
                 map((data: any[]) => {
                     return data
                         .filter(item => {
@@ -316,11 +315,18 @@ export class TagDocsComponent implements OnInit, OnDestroy {
                 }),
                 delay(1000)
             )
-
             .subscribe(
                 data => {
                     this.inSearch = false;
-                    this.tagsOptions = data;
+                    if (Array.isArray(data)) {
+                        const selectedTags: Tag[] = this.bulkInsertedTags.value;
+                        this.bulkInsertedTags.setValue([
+                            ...selectedTags,
+                            ...data.filter((item: Tag) => {
+                                return !selectedTags.some(tag => tag.id === item.id);
+                            })
+                        ]);
+                    }
                 },
                 error => {
                     console.error(error);
@@ -331,11 +337,10 @@ export class TagDocsComponent implements OnInit, OnDestroy {
 
     onBulkInsert(value: string[]) {
         this.inSearch = true;
-        this.apiService
-            .get('https://jsonplaceholder.typicode.com/comments', {
-                responseType: ApiResponseType.Json
-            })
+        this.httpClient
+            .get('https://jsonplaceholder.typicode.com/comments')
             .pipe(
+                takeUntil(this.onDestroy$),
                 map((data: any[]) => {
                     return data
                         .filter(item => {
@@ -347,7 +352,6 @@ export class TagDocsComponent implements OnInit, OnDestroy {
                 }),
                 delay(1000)
             )
-
             .subscribe(
                 data => {
                     this.inSearch = false;

@@ -13,9 +13,8 @@ import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-
 import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
 import {LogService} from '@ironsource/fusion-ui/services/log';
-import {MockLogService, MockUniqueIdService, MockApiService} from '@ironsource/fusion-ui/services/mocks';
+import {MockLogService, MockUniqueIdService} from '@ironsource/fusion-ui/services/mocks';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
-import {ApiService} from '@ironsource/fusion-ui/services/api';
 import {DropdownLoaderModule} from '@ironsource/fusion-ui/components/dropdown-loader/v1';
 import {DropdownOptionsListModule} from '@ironsource/fusion-ui/components/dropdown-options-list/v1';
 import {DropdownOptionModule} from '@ironsource/fusion-ui/components/dropdown-option/v1';
@@ -85,10 +84,6 @@ describe('DropdownComponent', () => {
                 {
                     provide: UniqueIdService,
                     useClass: MockUniqueIdService
-                },
-                {
-                    provide: ApiService,
-                    useClass: MockApiService
                 }
             ]
         }).compileComponents();

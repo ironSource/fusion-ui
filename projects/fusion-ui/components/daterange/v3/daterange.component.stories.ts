@@ -7,7 +7,6 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {DaterangeComponent, DaterangeCustomPreset, DaterangeModule, DaterangeOptions, DaterangeSelection} from './';
-import {ApiService} from '@ironsource/fusion-ui';
 
 const TODAY: Date = new Date();
 const DAYS_AGO_3: Date = new Date(TODAY);
@@ -32,8 +31,7 @@ export default {
                 SvgModule.forRoot({assetsPath: environment.assetsPath}),
                 IconModule,
                 DaterangeModule
-            ],
-            providers: [ApiService]
+            ]
         })
     ],
     tags: ['autodocs'],

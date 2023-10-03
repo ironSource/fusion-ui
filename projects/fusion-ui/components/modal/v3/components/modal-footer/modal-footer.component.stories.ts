@@ -6,7 +6,6 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../../../stories/environments/environment';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button/v3';
 import {ModalFooterComponent} from '@ironsource/fusion-ui/components/modal';
-import {ApiService} from '@ironsource/fusion-ui';
 
 const actionsData = {
     onCloseButtonClicked: action('onCloseButtonClicked'),
@@ -19,8 +18,7 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), ButtonModule],
-            providers: [ApiService]
+            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), ButtonModule]
         })
     ],
     parameters: {

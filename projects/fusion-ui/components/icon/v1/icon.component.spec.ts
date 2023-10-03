@@ -4,13 +4,11 @@
 
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {DebugElement} from '@angular/core';
-import {Observable, of} from 'rxjs';
 import {IconComponent} from './icon.component';
-
-// import {environment} from '../../../../environments/environment';
-import {ApiService} from '@ironsource/fusion-ui/services/api';
-import {CacheService} from '@ironsource/fusion-ui/services/cache';
 import {LogService} from '@ironsource/fusion-ui/services/log';
+import {HttpClient} from "@angular/common/http";
+import {Observable, of} from "rxjs";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 const dataMock: string =
     '<?xml version="1.0" encoding="UTF-8"?><svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1"' +
@@ -75,9 +73,9 @@ describe('IconComponent', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [],
+            imports: [HttpClientTestingModule],
             declarations: [IconComponent],
-            providers: [LogService, CacheService, {provide: ApiService, useClass: MockApiService}]
+            providers: [LogService, {provide: HttpClient, useClass: MockApiService}]
         });
 
         fixture = TestBed.createComponent(IconComponent);

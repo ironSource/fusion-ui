@@ -2,7 +2,6 @@ import {componentWrapperDecorator, Meta, StoryObj} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {dedent} from 'ts-dedent';
 import {CommonModule} from '@angular/common';
-import {ApiService} from '@ironsource/fusion-ui';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../stories/environments/environment';
 import {FileCsvUploadComponent, FileCsvUploadModule} from '@ironsource/fusion-ui/components/file-csv-upload';
@@ -16,8 +15,7 @@ const meta: Meta<FileCsvUploadComponent> = {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), FileCsvUploadModule],
-            providers: [ApiService]
+            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), FileCsvUploadModule]
         })
     ],
     tags: ['autodocs'],

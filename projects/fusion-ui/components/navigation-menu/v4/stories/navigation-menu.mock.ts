@@ -24,7 +24,8 @@ export const USER_PROFILE_MENU_ITEMS: MenuItem[] = [
         withTopDelimiter: true,
         icon: {iconName: 'mail_outline', iconVersion: 'v4'},
         name: 'Contact us',
-        route: '/'
+        redirect: 'https://ironsrc.formtitan.com/contact-us',
+        target: '_contactUs'
     },
     {
         name: 'Logout',
@@ -341,7 +342,7 @@ export const IS_MENU_ITEMS: MenuItem[] = [
         children: [
             {
                 name: 'MMP',
-                route: '/MMP'
+                route: '/docs/components/checkbox'
             },
             {
                 name: 'SKAdNetwork',

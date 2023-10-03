@@ -7,7 +7,6 @@ import {DebugElement} from '@angular/core';
 import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox/v2';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
-import {ApiService} from '@ironsource/fusion-ui/services/api';
 import {By} from '@angular/platform-browser';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 
@@ -35,12 +34,6 @@ class MockUniqueIdService extends UniqueIdService {
     }
 }
 
-class MockApiService {
-    get(): Observable<any> {
-        return of('<svg></svg>');
-    }
-}
-
 describe('ChartLabelsComponent', () => {
     let component: ChartLabelsComponent;
     let fixture: ComponentFixture<ChartLabelsComponent>;
@@ -61,8 +54,7 @@ describe('ChartLabelsComponent', () => {
             imports: [ReactiveFormsModule, CheckboxModule, IconModule, TooltipModule],
             declarations: [ChartLabelsComponent],
             providers: [
-                {provide: UniqueIdService, useClass: MockUniqueIdService},
-                {provide: ApiService, useClass: MockApiService}
+                {provide: UniqueIdService, useClass: MockUniqueIdService}
             ]
         }).compileComponents();
     }));

@@ -1,6 +1,6 @@
 {
     "name": "@ironsource/fusion-ui",
-    "version": "5.7.7",
+    "version": "6.0.1",
     "dependencies": {
         "chart.js": "^3.5.1",
         "@floating-ui/dom": "^1.0.9",
@@ -15,14 +15,6 @@
         "native/core/main.js"
     ],
     "sharedEntities": [
-        "./services/api",
-        "./services/cache",
-        "./services/user",
-        "./services/shared-config",
-        "./services/redirect",
-        "./services/pub-sub",
-        "./services/auth",
-        "./guards/auth",
         "./components/svg",
         "./components/icon/v1",
         "./components/tooltip/v1",

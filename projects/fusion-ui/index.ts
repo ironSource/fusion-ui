@@ -3,5 +3,4 @@ export * from './directives';
 export * from './entities';
 export * from './pipes';
 export * from './services';
-export * from './guards';
 export * from './utils';

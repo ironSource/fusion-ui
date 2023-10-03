@@ -15,7 +15,6 @@ import {
     TABLE_DEFAULT_OPTIONS,
     TABLE_ROWSPAN_COLUMNS_CONFIG
 } from '@ironsource/fusion-ui/components/table/v3/stories/table.mock-data';
-import {ApiService} from '@ironsource/fusion-ui';
 
 export default {
     title: 'Components/Table/Expandable Rows',
@@ -29,8 +28,7 @@ export default {
                 IconModule,
                 TableModule,
                 TableStoryHolderComponent
-            ],
-            providers: [ApiService]
+            ]
         })
     ],
     tags: ['autodocs'],

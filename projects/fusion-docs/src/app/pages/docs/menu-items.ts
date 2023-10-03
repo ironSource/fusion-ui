@@ -221,14 +221,6 @@ export const MENU_ITEMS: MenuItem[] = [
         name: 'Services',
         children: [
             {
-                name: 'Api',
-                route: '/docs/services/api'
-            },
-            {
-                name: 'Cache',
-                route: '/docs/services/cache'
-            },
-            {
                 name: 'Log',
                 route: '/docs/services/log'
             },

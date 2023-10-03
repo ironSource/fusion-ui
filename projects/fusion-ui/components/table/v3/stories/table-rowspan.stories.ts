@@ -14,7 +14,6 @@ import {
     ROWS_ROWSPAN_DIFF_DATA
 } from '@ironsource/fusion-ui/components/table/v3/stories/table.mock-data';
 import {TableStoryHolderComponent} from '@ironsource/fusion-ui/components/table/v3/stories/table.story-holder.component/table.story-holder.component.component';
-import {ApiService} from '@ironsource/fusion-ui';
 
 export default {
     title: 'Components/Table/Rowspan',
@@ -28,8 +27,7 @@ export default {
                 IconModule,
                 TableModule,
                 TableStoryHolderComponent
-            ],
-            providers: [ApiService]
+            ]
         })
     ],
     tags: ['autodocs'],

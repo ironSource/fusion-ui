@@ -8,7 +8,7 @@ import {MenuItem, MenuItemAdditionalData} from '@ironsource/fusion-ui/components
 import {NavigationBarItemType, PrimaryMenuItem} from './navigation-menu.entities';
 import {NavigationPrimaryMenuComponent} from './navigation-primary-menu/navigation-primary-menu.component';
 import {NavigationSecondaryMenuComponent} from './navigation-secondary-menu/navigation-secondary-menu.component';
-import {CacheService, CacheType} from '@ironsource/fusion-ui/services/cache';
+import {StorageService, StorageType} from '@ironsource/fusion-ui/services/stogare';
 
 const MENU_CACHE_KEY = 'fusionMenuCollapsed';
 
@@ -34,7 +34,7 @@ export class NavigationMenuComponent implements OnInit {
     secondaryMenuName$ = new BehaviorSubject<string>('');
     secondaryMenuLogoSrc$ = new BehaviorSubject<string>('');
 
-    secondaryMenuOpen$ = new BehaviorSubject<boolean>(false);
+    secondaryMenuOpen$ = new BehaviorSubject<boolean>(this.storageService.get(StorageType.SessionStorage, MENU_CACHE_KEY) ?? false);
     secondaryMenuExpanded$ = new BehaviorSubject<boolean>(false);
 
     menuOpenForPrimaryMenuItem$ = new BehaviorSubject<PrimaryMenuItem>(null);
@@ -58,11 +58,11 @@ export class NavigationMenuComponent implements OnInit {
     }
 
     get isSecondaryMenuExpandable(): boolean {
-        const storedOpenState = this.cacheService.get(CacheType.SessionStorage, MENU_CACHE_KEY);
+        const storedOpenState = this.storageService.get(StorageType.SessionStorage, MENU_CACHE_KEY);
         return isNullOrUndefined(storedOpenState) ? this._isSecondaryMenuExpandable : !storedOpenState;
     }
 
-    constructor(private elementRef: ElementRef, protected cacheService: CacheService) {}
+    constructor(private elementRef: ElementRef, protected storageService: StorageService) {}
 
     ngOnInit(): void {
         this.initListeners();
@@ -101,7 +101,7 @@ export class NavigationMenuComponent implements OnInit {
         } else {
             this.preSelectedPrimaryMenuItem = null;
             this.selectedSecondaryMenuItem = menuItem;
-            this.cacheService.remove(CacheType.SessionStorage, MENU_CACHE_KEY);
+            this.storageService.remove(StorageType.SessionStorage, MENU_CACHE_KEY);
             this.isSecondaryMenuExpandable = true;
             this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, false);
         }
@@ -139,7 +139,7 @@ export class NavigationMenuComponent implements OnInit {
                 this.primaryMenu.setSelectedPrimaryMenuItem(this.selectedPrimaryMenuItem);
                 this.menuItemClicked.emit({name: selectedNetwork.menuTitle, route: selectedNetwork.route});
                 if (selectedNetwork.type === NavigationBarItemType.Home) {
-                    this.cacheService.remove(CacheType.SessionStorage, MENU_CACHE_KEY);
+                    this.storageService.remove(StorageType.SessionStorage, MENU_CACHE_KEY);
                 }
             } else {
                 this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, true);
@@ -155,7 +155,7 @@ export class NavigationMenuComponent implements OnInit {
         if (!(this.secondaryMenuOpen$.getValue() && this.secondaryMenuExpanded$.getValue())) {
             this.secondaryMenuOpen$.next(!this.secondaryMenuOpen$.getValue() && this.secondaryMenuItems$.getValue().length > 0);
         }
-        this.cacheService.set(CacheType.SessionStorage, MENU_CACHE_KEY, this.secondaryMenuOpen$.getValue());
+        this.storageService.set(StorageType.SessionStorage, MENU_CACHE_KEY, this.secondaryMenuOpen$.getValue());
         if (this.secondaryMenuOpen$.getValue()) {
             if (this.needRestoreSelectedState) {
                 this.setSecondaryMenu(this.selectedPrimaryMenuItem);
@@ -171,12 +171,18 @@ export class NavigationMenuComponent implements OnInit {
     }
 
     setActiveMenu(primary: PrimaryMenuItem, secondary: MenuItem) {
-        this.selectedPrimaryMenuItem = primary;
-        this.preSelectedPrimaryMenuItem = primary;
-        this.selectedSecondaryMenuItem = secondary;
-        this.setSecondaryMenu(primary);
-        this.primaryMenu.setSelectedPrimaryMenuItem(primary);
-        this.primaryMenu.setColorTheme(primary?.cssTheme ?? null);
+        if (isNullOrUndefined(primary) || isNullOrUndefined(secondary)) {
+            this.secondaryMenu.setSelected(null);
+        } else {
+            this.selectedPrimaryMenuItem = primary;
+            this.preSelectedPrimaryMenuItem = primary;
+            this.selectedSecondaryMenuItem = secondary;
+            this.setSecondaryMenu(primary);
+            this.primaryMenu.setSelectedPrimaryMenuItem(primary);
+            setTimeout(() => {
+                this.primaryMenu.setColorTheme(primary?.cssTheme ?? null);
+            });
+        }
     }
 
     private setSecondaryMenu(selectedNetwork: PrimaryMenuItem) {

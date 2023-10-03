@@ -5,15 +5,15 @@
     <div class="why-fusion">
         <h1>Why Fusion?</h1>
         <h3>
-            <fusion-icon name="check-v-1"></fusion-icon>
+            <fusion-icon [name]="{iconName: 'check-v-1', iconVersion: 'v1'}"></fusion-icon>
             Don’t reinvent the wheel - cut down developer hours
         </h3>
         <h3>
-            <fusion-icon name="check-v-1"></fusion-icon>
+            <fusion-icon [name]="{iconName: 'check-v-1', iconVersion: 'v1'}"></fusion-icon>
             Tested for quality and stability - we QAed it all
         </h3>
         <h3>
-            <fusion-icon name="check-v-1"></fusion-icon>
+            <fusion-icon [name]="{iconName: 'check-v-1', iconVersion: 'v1'}"></fusion-icon>
             Don’t worry about design implementation - less moving of pixels around
         </h3>
     </div>
@@ -28,14 +28,14 @@
             <fusion-code-block lang="html"
                                class="is-collapsible"
                                code='{{text.npmRegistry}}'></fusion-code-block>
-            <fusion-icon name="squares"
+            <fusion-icon [name]="{iconName: 'squares', iconVersion: 'v1'}"
                          [fusionCopyToClipboard]="copyToClipboard(text.npmRegistry)"></fusion-icon>
         </div>
         <div class="code-container">
             <fusion-code-block lang="html"
                                class="is-collapsible"
                                code='{{text.npmRegistrySetConfig}}'></fusion-code-block>
-            <fusion-icon name="squares"
+            <fusion-icon [name]="{iconName: 'squares', iconVersion: 'v1'}"
                          [fusionCopyToClipboard]="copyToClipboard(text.npmRegistrySetConfig)"></fusion-icon>
         </div>
 
@@ -43,7 +43,7 @@
             <fusion-code-block lang="js"
                                class="is-collapsible"
                                code='{{text.npm}}'></fusion-code-block>
-            <fusion-icon name="squares"
+            <fusion-icon [name]="{iconName: 'squares', iconVersion: 'v1'}"
                          [fusionCopyToClipboard]="copyToClipboard(text.npm)"></fusion-icon>
         </div>
 
@@ -55,7 +55,7 @@
                 <fusion-code-block lang="css"
                                    class="is-collapsible"
                                    code='{{text.scss}}'></fusion-code-block>
-                <fusion-icon name="squares"
+                <fusion-icon [name]="{iconName: 'squares', iconVersion: 'v1'}"
                              [fusionCopyToClipboard]="copyToClipboard(text.scss)"></fusion-icon>
             </div>
             <p>Import required fusion module on demand and add it to imports array</p>
@@ -63,7 +63,7 @@
                 <fusion-code-block lang="js"
                                    class="is-collapsible"
                                    code='{{text.importModule}}'></fusion-code-block>
-                <fusion-icon name="squares"
+                <fusion-icon [name]="{iconName: 'squares', iconVersion: 'v1'}"
                              [fusionCopyToClipboard]='copyToClipboard(text.importModule)'></fusion-icon>
             </div>
             <p>use it on required template</p>
@@ -73,7 +73,7 @@
                                    code='<fusion-alert>
   <span>This alert needs your attention, but it’s not super important</span>
 </fusion-alert>'></fusion-code-block>
-                <fusion-icon name="squares"
+                <fusion-icon [name]="{iconName: 'squares', iconVersion: 'v1'}"
                              [fusionCopyToClipboard]='copyToClipboard(text.fusionAlert)'></fusion-icon>
             </div>
 
@@ -87,7 +87,7 @@
                 <fusion-code-block lang="js"
                                    class="is-collapsible"
                                    code='{{text.mainReact}}'></fusion-code-block>
-                <fusion-icon name="squares"
+                <fusion-icon [name]="{iconName: 'squares', iconVersion: 'v1'}"
                              [fusionCopyToClipboard]="copyToClipboard(text.mainReact)"></fusion-icon>
             </div>
             <p>Import required fusion component on demand</p>
@@ -95,7 +95,7 @@
                 <fusion-code-block lang="js"
                                    class="is-collapsible"
                                    code='{{text.importReact}}'></fusion-code-block>
-                <fusion-icon name="squares"
+                <fusion-icon [name]="{iconName: 'squares', iconVersion: 'v1'}"
                              [fusionCopyToClipboard]='copyToClipboard(text.importReact)'></fusion-icon>
             </div>
             <p>use it on required template</p>
@@ -103,7 +103,7 @@
                 <fusion-code-block lang="html"
                                    class="is-collapsible"
                                    code={{text.fusionAlertReact}}></fusion-code-block>
-                <fusion-icon name="squares"
+                <fusion-icon [name]="{iconName: 'squares', iconVersion: 'v1'}"
                              [fusionCopyToClipboard]='copyToClipboard(text.fusionAlertReact)'></fusion-icon>
             </div>
 
@@ -117,7 +117,7 @@
                 <fusion-code-block lang="js"
                                    class="is-collapsible"
                                    code='{{text.mainVue}}'></fusion-code-block>
-                <fusion-icon name="squares"
+                <fusion-icon [name]="{iconName: 'squares', iconVersion: 'v1'}"
                              [fusionCopyToClipboard]="copyToClipboard(text.mainVue)"></fusion-icon>
             </div>
             <p>Import required fusion component on demand</p>
@@ -125,14 +125,14 @@
                 <fusion-code-block lang="js"
                                    class="is-collapsible"
                                    code='{{text.importVue}}'></fusion-code-block>
-                <fusion-icon name="squares"
+                <fusion-icon [name]="{iconName: 'squares', iconVersion: 'v1'}"
                              [fusionCopyToClipboard]='copyToClipboard(text.importVue)'></fusion-icon>
             </div>
             <div class="code-container">
                 <fusion-code-block lang="js"
                                    class="is-collapsible"
                                    code='{{text.importVue3}}'></fusion-code-block>
-                <fusion-icon name="squares"
+                <fusion-icon [name]="{iconName: 'squares', iconVersion: 'v1'}"
                              [fusionCopyToClipboard]='copyToClipboard(text.importVue3)'></fusion-icon>
             </div>
             <p>use it on required template</p>
@@ -140,7 +140,7 @@
                 <fusion-code-block lang="html"
                                    class="is-collapsible"
                                    code={{text.fusionAlertVue}}></fusion-code-block>
-                <fusion-icon name="squares"
+                <fusion-icon [name]="{iconName: 'squares', iconVersion: 'v1'}"
                              [fusionCopyToClipboard]='copyToClipboard(text.fusionAlertVue)'></fusion-icon>
             </div>
 
@@ -155,7 +155,7 @@
                 <fusion-code-block lang="html"
                                    class="is-collapsible"
                                    code='{{text.native}}'></fusion-code-block>
-                <fusion-icon name="squares"
+                <fusion-icon [name]="{iconName: 'squares', iconVersion: 'v1'}"
                              [fusionCopyToClipboard]='copyToClipboard(text.native)'></fusion-icon>
             </div>
 
@@ -164,7 +164,7 @@
                 <fusion-code-block lang="js"
                                    class="is-collapsible"
                                    code="{{text.fusionAlertNative}}"></fusion-code-block>
-                <fusion-icon name="squares"
+                <fusion-icon [name]="{iconName: 'squares', iconVersion: 'v1'}"
                              [fusionCopyToClipboard]='copyToClipboard(text.fusionAlertNative)'></fusion-icon>
             </div>
 

@@ -2,7 +2,6 @@ import {Meta, StoryFn} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {dedent} from 'ts-dedent';
 import {CommonModule} from '@angular/common';
-import {ApiService} from '@ironsource/fusion-ui';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
@@ -38,8 +37,7 @@ const meta: Meta<LayoutStoryWrapperComponent> = {
                 ButtonModule,
                 TeleportingDirective,
                 TopFilterIncludeExcludeComponent
-            ],
-            providers: [ApiService]
+            ]
         })
     ],
     tags: ['autodocs'],

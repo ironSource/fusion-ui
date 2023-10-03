@@ -1,32 +1,18 @@
-/**
- * Base SVG asset file loader
- *
- * Created by andyk on 01/06/2017.
- */
-
-import {
-    Component,
-    Input,
-    ChangeDetectionStrategy,
-    ElementRef,
-    Renderer2,
-    Inject,
-    Optional,
-    AfterViewInit,
-    ViewEncapsulation
-} from '@angular/core';
-import {ApiService, ApiResponseType} from '@ironsource/fusion-ui/services/api';
+import {Component, Input, ChangeDetectionStrategy, ElementRef, Renderer2, Inject, Optional, AfterViewInit, OnDestroy} from '@angular/core';
 import {LogService} from '@ironsource/fusion-ui/services/log';
-import {CacheType} from '@ironsource/fusion-ui/services/cache';
 import {SVG_OPTIONS_TOKEN} from './svg-config';
 import {SvgOptions} from './svg-entities';
+import {HttpClient} from '@angular/common/http';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
+import {StorageService, StorageType} from '@ironsource/fusion-ui/services/stogare';
 
 @Component({
     selector: 'fusion-svg',
     templateUrl: './svg.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SvgComponent implements AfterViewInit {
+export class SvgComponent implements AfterViewInit, OnDestroy {
     // inputs
     @Input() set path(value: string) {
         this.onPathChanged(value);
@@ -35,14 +21,21 @@ export class SvgComponent implements AfterViewInit {
     libVersion = 'v3';
     svgPath = '';
 
-    // class constructor
+    private onDestroy$ = new Subject<void>();
+
     constructor(
-        public apiService: ApiService,
+        private httpClient: HttpClient,
         public elementRef: ElementRef,
         public renderer: Renderer2,
         protected logService: LogService,
+        protected storageService: StorageService,
         @Optional() @Inject(SVG_OPTIONS_TOKEN) public svgOptions: SvgOptions
     ) {}
+
+    ngOnDestroy() {
+        this.onDestroy$.next();
+        this.onDestroy$.complete();
+    }
 
     public getUrlPath() {
         let assetPath = '';
@@ -69,21 +62,23 @@ export class SvgComponent implements AfterViewInit {
     loadSvg() {
         const svgUrl = this.getUrlPath();
         if (svgUrl) {
-            this.apiService
-                .get(svgUrl, {
-                    cache: CacheType.SessionStorage,
-                    noAuthHeader: true,
-                    responseType: ApiResponseType.Text,
-                    retryStrategy: {maxRetryAttempts: 0}
-                })
-                .subscribe(
-                    response => {
-                        this.elementRef.nativeElement.innerHTML = response;
-                    },
-                    err => {
-                        this.logService.error(new Error(`Error Fetching Svg: ${svgUrl}, ${JSON.stringify(err)}`));
-                    }
-                );
+            const cachedData = this.storageService.get(StorageType.SessionStorage, `${svgUrl}`);
+            if (!!cachedData) {
+                this.elementRef.nativeElement.innerHTML = cachedData;
+            } else {
+                this.httpClient
+                    .get(svgUrl, {responseType: 'text'})
+                    .pipe(takeUntil(this.onDestroy$))
+                    .subscribe(
+                        response => {
+                            this.storageService.set(StorageType.SessionStorage, `${svgUrl}`, response);
+                            this.elementRef.nativeElement.innerHTML = response;
+                        },
+                        err => {
+                            this.logService.error(new Error(`Error Fetching Svg: ${svgUrl}, ${JSON.stringify(err)}`));
+                        }
+                    );
+            }
         }
     }
 

@@ -7,7 +7,6 @@ import {environment} from '../../../../../../../stories/environments/environment
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v3';
 import {ModalHeaderComponent} from '@ironsource/fusion-ui/components/modal';
-import {ApiService} from '@ironsource/fusion-ui';
 
 const actionsData = {
     close: action('close')
@@ -19,8 +18,7 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, TooltipModule],
-            providers: [ApiService]
+            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, TooltipModule]
         })
     ],
     parameters: {

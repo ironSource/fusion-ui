@@ -1,12 +1,12 @@
 import {Directive, ElementRef, EventEmitter, HostBinding, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
-import {CacheService, CacheType} from '@ironsource/fusion-ui/services/cache';
 import {BehaviorSubject, fromEvent, merge, Subject, Subscription} from 'rxjs';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {takeUntil} from 'rxjs/operators';
 import {SidebarMenuItem, SidebarConfiguration} from '@ironsource/fusion-ui/components/sidebar/common/entities';
 import {SidebarMenuService} from '@ironsource/fusion-ui/components/sidebar/common/services';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
+import {WindowService} from '@ironsource/fusion-ui/services/window';
 
 @Directive()
 export abstract class SidebarBaseComponent implements OnInit, OnDestroy {
@@ -53,7 +53,7 @@ export abstract class SidebarBaseComponent implements OnInit, OnDestroy {
 
     private onDestroy$ = new Subject();
 
-    constructor(private cacheService: CacheService, private elementRef: ElementRef, private sidebarMenuService: SidebarMenuService) {}
+    constructor(private windowRef: WindowService, private elementRef: ElementRef, private sidebarMenuService: SidebarMenuService) {}
 
     ngOnInit() {
         // emit state to host
@@ -63,7 +63,7 @@ export abstract class SidebarBaseComponent implements OnInit, OnDestroy {
         this.listenHostMouseEvents$.asObservable().pipe(takeUntil(this.onDestroy$)).subscribe(this.initHostMouseEventListeners.bind(this));
 
         if (!this.saveSidebarState) {
-            this.cacheService.remove(CacheType.LocalStorage, 'sidebarState');
+            this.windowRef.nativeWindow.localStorage.removeItem('sidebarState');
         }
     }
 
@@ -114,14 +114,14 @@ export abstract class SidebarBaseComponent implements OnInit, OnDestroy {
     private setSidebarState(isOpen: boolean) {
         this.isSidebarOpen = isNullOrUndefined(isOpen) ? this.getSidebarState() : isOpen;
         if (this.saveSidebarState) {
-            this.cacheService.set(CacheType.LocalStorage, 'sidebarState', this.isSidebarOpen);
+            this.windowRef.nativeWindow.localStorage.setItem('sidebarState', JSON.stringify(this.isSidebarOpen));
         }
         // activate sidebar mouse listeners
         this.listenHostMouseEvents$.next(!this.isSidebarOpen);
     }
 
     private getSidebarState(): boolean {
-        const storedState = this.cacheService.get(CacheType.LocalStorage, 'sidebarState');
+        const storedState = JSON.parse(this.windowRef.nativeWindow.localStorage.getItem('sidebarState') ?? 'true');
         return !isNullOrUndefined(storedState) ? storedState : true;
     }
 }

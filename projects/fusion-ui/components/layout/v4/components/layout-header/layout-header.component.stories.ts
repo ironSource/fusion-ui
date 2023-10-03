@@ -11,7 +11,6 @@ import {TopFilterIncludeExcludeComponent} from '@ironsource/fusion-ui/components
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
 import {MOK_APPLICATIONS_ONE_LINE_OPTIONS} from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
-import {ApiService} from '@ironsource/fusion-ui';
 
 const actionsData = {
     backButtonClicked: action('backButtonClicked')
@@ -23,8 +22,7 @@ const meta: Meta<LayoutHeaderComponent> = {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, FormsModule, ReactiveFormsModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule],
-            providers: [ApiService]
+            imports: [CommonModule, FormsModule, ReactiveFormsModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule]
         })
     ],
     parameters: {

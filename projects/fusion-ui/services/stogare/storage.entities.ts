@@ -1,13 +1,4 @@
-export interface CacheOptions {
-    isLocalEnv: boolean;
-    persistentKeyPrefix: string;
-}
-
-export interface CacheEntities {
-    persistent?: boolean;
-}
-
-export enum CacheType {
+export enum StorageType {
     /**
      * No Cache
      */

@@ -123,21 +123,23 @@ export class DocsComponent implements OnInit, OnDestroy {
                 });
             }
 
-            // region for layout "v2" set update in layout configuration for new layout
-            // add subheader to menu just for test
-            // @ts-ignore
-            this.menuItems[1].children = this.menuItems[1].children.reduce(
-                (acc, item) => {
-                    acc[0].children.push(item);
-                    return acc;
-                },
-                [
-                    {
-                        name: 'Subheader',
-                        children: []
-                    }
-                ]
-            );
+            if (this.useNewLayout) {
+                // region for layout "v2" set update in layout configuration for new layout
+                // add subheader to menu just for test
+                // @ts-ignore
+                this.menuItems[1].children = this.menuItems[1].children.reduce(
+                    (acc, item) => {
+                        acc[0].children.push(item);
+                        return acc;
+                    },
+                    [
+                        {
+                            name: 'Subheader',
+                            children: []
+                        }
+                    ]
+                );
+            }
 
             this.docsLayoutService.updateLayoutConfig({sidebarMenuItems: this.menuItems});
             // endregion

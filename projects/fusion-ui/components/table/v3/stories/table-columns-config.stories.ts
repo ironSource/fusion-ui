@@ -16,7 +16,6 @@ import {
     TABLE_DEFAULT_OPTIONS,
     TABLE_HEADER_TOOLTIP_COLUMNS_CONFIG
 } from '@ironsource/fusion-ui/components/table/v3/stories/table.mock-data';
-import {ApiService} from '@ironsource/fusion-ui';
 
 export default {
     title: 'Components/Table/Columns Configuration',
@@ -24,8 +23,7 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, TableModule],
-            providers: [ApiService]
+            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, TableModule]
         })
     ],
     tags: ['autodocs'],

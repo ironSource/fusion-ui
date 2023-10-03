@@ -2,6 +2,88 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [6.0.1](https://github.com/ironSource/fusion-ui/compare/v6.0.1-rc.0...v6.0.1) (2023-10-01)
+
+### [6.0.1-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.0.0...v6.0.1-rc.0) (2023-09-28)
+
+
+### Bug Fixes
+
+* **isct-59:** table component preselected rows ([bf2b075](https://github.com/ironSource/fusion-ui/commit/bf2b075c9d20e9f3bd2c11c56cfef706a767ece0))
+
+## [6.0.0](https://github.com/ironSource/fusion-ui/compare/v6.0.0-rc.5...v6.0.0) (2023-09-27)
+
+## [6.0.0-rc.5](https://github.com/ironSource/fusion-ui/compare/v5.7.7...v6.0.0-rc.5) (2023-09-20)
+
+
+### Docs
+
+* **fgc-178:** added typography doc story for style v4 ([1669881](https://github.com/ironSource/fusion-ui/commit/1669881be8912ac97c75e101136df0e7fb66f602))
+
+## [6.0.0-rc.3](https://github.com/ironSource/fusion-ui/compare/v5.6.1...v6.0.0-rc.3) (2023-06-28)
+
+## [6.0.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v6.0.0-rc.1...v6.0.0-rc.2) (2023-06-14)
+
+## [6.0.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v6.0.0-rc.0...v6.0.0-rc.1) (2023-06-14)
+
+## [6.0.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.4.1...v6.0.0-rc.0) (2023-06-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* **fg-169:** remove services:
+ - api
+ - auth
+ - cache
+ - pub-sub
+ - redirect
+ - shared-config
+ - user
+ removed guard:
+ - auth
+
+### Features
+
+* **fg-169:** services and guards removing ([54be40b](https://github.com/ironSource/fusion-ui/commit/54be40b2f069fc59b327e99f697f28a4fabd0c71))
+
+
+### Bug Fixes
+
+* **fg-169:** fixed unit-tests ([2c91b19](https://github.com/ironSource/fusion-ui/commit/2c91b19f2f47d80f9fa039c8c693a96c4395f421))
+
+### [5.4.1](https://github.com/ironSource/fusion-ui/compare/v5.2.0...v5.4.1) (2023-06-05)
+
+## [6.0.0-rc.3](https://github.com/ironSource/fusion-ui/compare/v6.0.0-rc.2...v6.0.0-rc.3) (2023-06-28)
+
+## [6.0.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v6.0.0-rc.1...v6.0.0-rc.2) (2023-06-14)
+
+## [6.0.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v6.0.0-rc.0...v6.0.0-rc.1) (2023-06-14)
+
+## [6.0.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v5.4.1...v6.0.0-rc.0) (2023-06-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* **fg-169:** remove services:
+- ali
+- auth
+- cache
+- pub-sub
+- redirect
+- shared-config
+- user
+  removed guard:
+- auth
+
+### Features
+
+* **fg-169:** services and guards removing ([54be40b](https://github.com/ironSource/fusion-ui/commit/54be40b2f069fc59b327e99f697f28a4fabd0c71))
+
+
+### Bug Fixes
+
+* **fg-169:** fixed unit-tests ([2c91b19](https://github.com/ironSource/fusion-ui/commit/2c91b19f2f47d80f9fa039c8c693a96c4395f421))
+
 ### [5.7.7](https://github.com/ironSource/fusion-ui/compare/v5.7.6...v5.7.7) (2023-07-31)
 
 ### [5.7.6](https://github.com/ironSource/fusion-ui/compare/v5.7.5...v5.7.6) (2023-07-31)

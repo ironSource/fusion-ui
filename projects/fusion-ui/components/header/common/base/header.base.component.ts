@@ -1,23 +1,26 @@
 import {EventEmitter, Input, Output, ViewChild, ElementRef, Renderer2, Directive} from '@angular/core';
-import {CacheService, CacheType} from '@ironsource/fusion-ui/services/cache';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 import {HeaderState} from './header-state';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
+import {StorageService, StorageType} from '@ironsource/fusion-ui/services/stogare';
 
 @Directive()
 export abstract class HeaderBaseComponent {
     @ViewChild('menuAction', {read: ElementRef}) set menuAction(value: ElementRef) {
         this.onMenuActionChanged(value);
     }
+
     @Input() primaryMenuIconName: IconData = {iconName: 'user', iconVersion: 'v1'};
     @Input() primaryMenuItems: MenuItem[];
     @Input() secondaryMenuItems: MenuItem[];
     @Input() userName: string;
     @Input() headerMenuUserNameIcon: string;
+
     @Input() set state(value: HeaderState) {
         this.onStateChanged(value);
     }
+
     @Input() isMainMenuCollapsed: boolean;
     @Output() menuItemClick = new EventEmitter<MenuItem>();
     @Output() menuStateChanged = new EventEmitter();
@@ -40,11 +43,12 @@ export abstract class HeaderBaseComponent {
     private _state: HeaderState;
     private _menuAction: ElementRef;
 
-    constructor(private cacheService: CacheService, private renderer: Renderer2) {}
+    constructor(private renderer: Renderer2, private storageService: StorageService) {}
 
     changeMenuState() {
         this.isMainMenuCollapsed = !this.isMainMenuCollapsed;
-        this.cacheService.set(CacheType.SessionStorage, 'menuCollapsed', this.isMainMenuCollapsed);
+        this.storageService.set(StorageType.SessionStorage, 'menuCollapsed', this.isMainMenuCollapsed);
+        // this.windowRef.nativeWindow.sessionStorage.setItem('menuCollapsed', JSON.stringify(this.isMainMenuCollapsed));
         this.menuStateChanged.emit(this.isMainMenuCollapsed);
     }
 
