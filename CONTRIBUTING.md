@@ -18,7 +18,7 @@ Help us keep FusionUI open and inclusive.
 Please read and follow our [Code of Conduct][coc].
 
 
-## <a name="question"></a> Got a Question or Problem?
+## <a name="question"></a> Got a Question or Problem? 
 
 Do not open issues for general support questions as we want to keep GitHub issues for bug reports and feature requests.
 Instead, we recommend email us to [fusion@is.com](mailto://fusion@is.com) or contact us on our Slack channel: [fusion-ui-community](https://superops.slack.com/app_redirect?channel=CR47GLKHQ)
