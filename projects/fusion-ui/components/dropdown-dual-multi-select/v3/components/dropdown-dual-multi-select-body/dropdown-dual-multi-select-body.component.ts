@@ -17,7 +17,7 @@ import {debounceTime, filter, map, scan, takeUntil, tap} from 'rxjs/operators';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {IncludeExcludeTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui/services';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 const PAGINATION_CHUNK = 20;
 
