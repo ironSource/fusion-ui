@@ -74,6 +74,6 @@
 
 <ng-template #chipContent>
     <div class="fu-chip-content-default">
-        <div [fusionTooltip]="chipDefaultContent" class="truncate fu-chip-text"><span *ngIf="title" class="fu-chip-label" [attr.data-testid]="testId+'--'+testIdIncludeExcludeModifiers.CHIP_FILTER_LABEL">{{ title + ': ' }}</span><span [attr.data-testid]="testId+'--'+testIdIncludeExcludeModifiers.CHIP_FILTER_VALUE">{{ selected$ | async }}</span></div>
+        <div [fusionTooltip]="chipDefaultContent" class="truncate fu-chip-text"><span *ngIf="title" class="fu-chip-label" [attr.data-testid]="testIdsService.getTestAttribute(testId, testIdIncludeExcludeModifiers.CHIP_FILTER_LABEL)">{{ title + ': ' }}</span><span [attr.data-testid]="testIdsService.getTestAttribute(testId, testIdIncludeExcludeModifiers.CHIP_FILTER_VALUE)">{{ selected$ | async }}</span></div>
     </div>
 </ng-template>

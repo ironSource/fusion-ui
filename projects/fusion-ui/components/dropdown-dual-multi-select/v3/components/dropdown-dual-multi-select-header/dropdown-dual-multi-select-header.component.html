@@ -6,7 +6,7 @@
         <div class="fu-search-bar">
             <fusion-icon class="fu-icon-search" [name]="searchIcon"></fusion-icon>
             <input #input
-                   [attr.data-testid]="testId+'--'+testIdIncludeExcludeModifiers.SEARCH_INPUT"
+                   [attr.data-testid]="testIdsService.getTestAttribute(testId, testIdIncludeExcludeModifiers.SEARCH_INPUT)"
                    autocomplete="off"
                    minlength="1"
                    [placeholder]="'Search'"

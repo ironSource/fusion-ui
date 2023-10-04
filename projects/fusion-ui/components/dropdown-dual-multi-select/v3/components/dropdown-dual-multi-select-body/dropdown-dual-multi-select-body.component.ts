@@ -4,6 +4,7 @@ import {
     ElementRef,
     EventEmitter,
     forwardRef,
+    Injector,
     Input,
     OnDestroy,
     OnInit,
@@ -15,7 +16,8 @@ import {BehaviorSubject, combineLatest, fromEvent, Observable, of, Subject} from
 import {debounceTime, filter, map, scan, takeUntil, tap} from 'rxjs/operators';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {IncludeExcludeTestIdModifiers} from '@ironsource/fusion-ui';
+import {IncludeExcludeTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TestIdsService} from '@ironsource/fusion-ui/services';
 
 const PAGINATION_CHUNK = 20;
 
@@ -74,6 +76,7 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
     @Output() scrollDown = new EventEmitter();
 
     testIdIncludeExcludeModifiers: typeof IncludeExcludeTestIdModifiers = IncludeExcludeTestIdModifiers;
+    testIdsService: TestIdsService = this.injector.get(TestIdsService);
 
     isSelectAllDisabled$ = new BehaviorSubject<boolean>(false);
     selectedItemsNumber: number;
@@ -98,7 +101,7 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
     private propagateChange = (_: DropdownOption[]) => {};
     private propagateTouched = () => {};
 
-    constructor() {}
+    constructor(private injector: Injector) {}
 
     ngOnInit(): void {
         this.displayOptions$ = this.generateOptions('left').pipe(

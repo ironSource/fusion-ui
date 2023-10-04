@@ -6,6 +6,7 @@ import {
     Directive,
     ElementRef,
     EventEmitter,
+    Injector,
     Input,
     OnDestroy,
     OnInit,
@@ -24,7 +25,8 @@ import {
 } from './chip-filter-component-configurations';
 import {takeUntil} from 'rxjs/operators';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
-import {ChipFilterTestIdModifiers} from '@ironsource/fusion-ui';
+import {ChipFilterTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TestIdsService} from '@ironsource/fusion-ui/services';
 
 @Directive()
 export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, OnDestroy, AfterContentInit {
@@ -50,6 +52,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     rightIcon: ChipIcon;
 
     testIdChipFilterModifiers: typeof ChipFilterTestIdModifiers = ChipFilterTestIdModifiers;
+    testIdsService: TestIdsService = this.injector.get(TestIdsService);
 
     private onDestroy$ = new Subject<void>();
     private restListeners$ = new Subject<void>();
@@ -148,7 +151,8 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
         /** @internal */
         public element: ElementRef,
         private renderer: Renderer2,
-        private cdr: ChangeDetectorRef
+        private cdr: ChangeDetectorRef,
+        private injector: Injector
     ) {}
 
     ngOnInit() {

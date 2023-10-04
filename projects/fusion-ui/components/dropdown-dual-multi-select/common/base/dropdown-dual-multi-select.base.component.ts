@@ -1,4 +1,16 @@
-import {Directive, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2, TemplateRef, ViewChild} from '@angular/core';
+import {
+    Directive,
+    ElementRef,
+    EventEmitter,
+    Injector,
+    Input,
+    OnDestroy,
+    OnInit,
+    Output,
+    Renderer2,
+    TemplateRef,
+    ViewChild
+} from '@angular/core';
 import {InputSize} from '@ironsource/fusion-ui/components/input/common/base';
 import {ControlValueAccessor, FormControl} from '@angular/forms';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
@@ -10,6 +22,7 @@ import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {BackendPagination, SelectedItemName} from '@ironsource/fusion-ui/components/dropdown';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {IncludeExcludeTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TestIdsService} from '@ironsource/fusion-ui/services';
 
 const CLASS_LIST = [
     'dual-select-button',
@@ -46,6 +59,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     }
 
     testIdIncludeExcludeModifiers: typeof IncludeExcludeTestIdModifiers = IncludeExcludeTestIdModifiers;
+    testIdsService: TestIdsService = this.injector.get(TestIdsService);
 
     @Input() set placeholder(data: string) {
         this.placeholder$.next(data);
@@ -144,7 +158,12 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     /** @internal */
     loadingLeft$ = new BehaviorSubject<boolean>(false);
 
-    constructor(protected element: ElementRef, protected renderer: Renderer2, protected uidService: UniqueIdService) {
+    constructor(
+        protected element: ElementRef,
+        protected renderer: Renderer2,
+        protected uidService: UniqueIdService,
+        private injector: Injector
+    ) {
         super();
         this.uid = this.uidService.getUniqueId().toString();
     }
