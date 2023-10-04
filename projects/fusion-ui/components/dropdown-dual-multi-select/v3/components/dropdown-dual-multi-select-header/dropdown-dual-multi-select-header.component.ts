@@ -3,6 +3,7 @@ import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/for
 import {debounceTime, distinctUntilChanged, takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
+import {IncludeExcludeTestIdModifiers} from '@ironsource/fusion-ui';
 
 @Component({
     selector: 'fusion-dropdown-dual-multi-select-header',
@@ -21,7 +22,9 @@ export class DropdownDualMultiSelectHeaderComponent implements OnDestroy, AfterV
     @ViewChild('input') input?: ElementRef;
 
     @Input() title: string;
+    @Input() testId: string;
 
+    testIdIncludeExcludeModifiers: typeof IncludeExcludeTestIdModifiers = IncludeExcludeTestIdModifiers;
     searchIcon?: IconData = {iconName: 'search-bold', iconVersion: 'v3'};
     searchClearIcon?: IconData = {iconName: 'cancel', iconVersion: 'v3'};
     searchControl = new FormControl();

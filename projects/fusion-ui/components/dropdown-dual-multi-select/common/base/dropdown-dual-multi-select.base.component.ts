@@ -9,6 +9,7 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {BackendPagination, SelectedItemName} from '@ironsource/fusion-ui/components/dropdown';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
+import {IncludeExcludeTestIdModifiers} from '@ironsource/fusion-ui/entities';
 
 const CLASS_LIST = [
     'dual-select-button',
@@ -31,6 +32,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     /** @internal */
     @Input() autoComplete: boolean = true;
     @Input() title: string;
+    @Input() testId: string;
     /** @internal */
     @Input() pendingItems: boolean = false;
     /** @internal */
@@ -42,6 +44,8 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     get hasSelectAll(): boolean {
         return this._hasSelectAll;
     }
+
+    testIdIncludeExcludeModifiers: typeof IncludeExcludeTestIdModifiers = IncludeExcludeTestIdModifiers;
 
     @Input() set placeholder(data: string) {
         this.placeholder$.next(data);

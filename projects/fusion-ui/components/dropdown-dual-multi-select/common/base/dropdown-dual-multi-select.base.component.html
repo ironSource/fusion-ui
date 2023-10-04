@@ -47,6 +47,7 @@
         <fusion-dropdown-dual-multi-select-header
             [formControl]="searchControlTerm"
             [title]="title"
+            [testId]="testId"
         ></fusion-dropdown-dual-multi-select-header>
 
         <fusion-dropdown-dual-multi-select-body
@@ -61,6 +62,7 @@
             [hasSelectAll]="hasSelectAll"
             [loadingLeft]="loadingLeft$ | async"
             [hasBackendPagination]="hasBackendPagination"
+            [testId]="testId"
         ></fusion-dropdown-dual-multi-select-body>
 
         <fusion-dropdown-dual-multi-select-footer
@@ -72,6 +74,6 @@
 
 <ng-template #chipContent>
     <div class="fu-chip-content-default">
-        <div [fusionTooltip]="chipDefaultContent" class="truncate fu-chip-text"><span *ngIf="title" class="fu-chip-label">{{ title + ': ' }}</span>{{ selected$ | async }}</div>
+        <div [fusionTooltip]="chipDefaultContent" class="truncate fu-chip-text"><span *ngIf="title" class="fu-chip-label" [attr.data-testid]="testId+'--'+testIdIncludeExcludeModifiers.CHIP_FILTER_LABEL">{{ title + ': ' }}</span><span [attr.data-testid]="testId+'--'+testIdIncludeExcludeModifiers.CHIP_FILTER_VALUE">{{ selected$ | async }}</span></div>
     </div>
 </ng-template>

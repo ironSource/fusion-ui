@@ -21,6 +21,7 @@
                 </label>
                 <div
                     *ngIf="showClearAllButton()"
+                    [attr.data-testid]="testId+'--'+testIdIncludeExcludeModifiers.CLEAR_ALL_BUTTON"
                     (click)="clearAll()" class="clear-all-btn">Clear all</div>
             </div>
         </div>

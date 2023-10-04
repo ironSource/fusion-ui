@@ -24,9 +24,11 @@ import {
 } from './chip-filter-component-configurations';
 import {takeUntil} from 'rxjs/operators';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
+import {ChipFilterTestIdModifiers} from '@ironsource/fusion-ui';
 
 @Directive()
 export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, OnDestroy, AfterContentInit {
+    @Input() testId: string;
     /** @internal */
     @ContentChild(ApiBase, {static: true}) apiBase: ApiBase;
     /** @internal */
@@ -46,6 +48,8 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     leftIcon: ChipIcon;
     /** @internal */
     rightIcon: ChipIcon;
+
+    testIdChipFilterModifiers: typeof ChipFilterTestIdModifiers = ChipFilterTestIdModifiers;
 
     private onDestroy$ = new Subject<void>();
     private restListeners$ = new Subject<void>();
