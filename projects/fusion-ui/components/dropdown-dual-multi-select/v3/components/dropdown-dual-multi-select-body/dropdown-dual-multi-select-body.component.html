@@ -5,6 +5,7 @@
                 <label class="option-header-body" *ngIf="!isPendingItems && hasSelectAll">
                     <fusion-checkbox
                         class="fu-check-all"
+                        [attr.data-testid]="testIdsService.getTestAttribute(testId,testIdIncludeExcludeModifiers.SELECT_ALL)"
                         [isIndeterminate]="isIndeterminate"
                         [checked]="isAllSelected"
                         (changed)="selectAll($event)"
@@ -16,7 +17,7 @@
         </div>
         <div class="content-col-right">
             <div class="body-header">
-                <label class="fu-select-label">
+                <label class="fu-select-label" [attr.data-testid]="testIdsService.getTestAttribute(testId,testIdIncludeExcludeModifiers.SELECTED_AMOUNT)">
                     {{(selectedItemsMapping ? selectedItemsMapping : {}) | objectLengthWhereValueTrue}} selected
                 </label>
                 <div
@@ -34,6 +35,7 @@
                     <ng-container *ngIf="!isPendingItems">
                         <li *ngFor="let item of displayOptions$ | async;trackBy: trackById">
                             <fusion-dropdown-dual-multi-select-body-item
+                                [testId]="testId"
                                 [isSelectedItem]="selectedItemsMapping[item.id]"
                                 [isDisabled]="item.isDisabled"
                                 (changeSelected)="changeSelected($event)"

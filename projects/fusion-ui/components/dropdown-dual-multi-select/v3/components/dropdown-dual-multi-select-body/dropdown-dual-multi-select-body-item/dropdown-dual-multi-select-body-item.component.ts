@@ -1,5 +1,6 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Injector, Input, Output} from '@angular/core';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
+import {IncludeExcludeTestIdModifiers, TestIdsService} from '@ironsource/fusion-ui';
 
 @Component({
     selector: 'fusion-dropdown-dual-multi-select-body-item',
@@ -12,11 +13,15 @@ export class DropdownDualMultiSelectBodyItemComponent {
     @Input() item: DropdownOption;
     @Input() isDisabled: boolean;
     @Input() isSelectedItem: boolean;
+    @Input() testId: string;
 
     @Output() changeSelected = new EventEmitter();
     @Output() clearSelect = new EventEmitter();
 
-    constructor() {}
+    testIdIncludeExcludeModifiers: typeof IncludeExcludeTestIdModifiers = IncludeExcludeTestIdModifiers;
+    testIdsService: TestIdsService = this.injector.get(TestIdsService);
+
+    constructor(private injector: Injector) {}
 
     changeSelectedItem(item: DropdownOption): void {
         this.changeSelected.emit(item);
