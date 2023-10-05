@@ -30,12 +30,13 @@
     </div>
     <div class="body-control">
         <div class="options-wrapper content-col">
-            <div class="items-holder" #wrapperLeft>
+            <div class="items-holder" #wrapperLeft [attr.data-testid]="testIdsService.getTestAttribute(testId, testIdIncludeExcludeModifiers.OPTIONS_LIST)">
                 <ul class="options-data-list" #containerLeft>
                     <ng-container *ngIf="!isPendingItems">
                         <li *ngFor="let item of displayOptions$ | async;trackBy: trackById">
                             <fusion-dropdown-dual-multi-select-body-item
                                 [testId]="testId"
+                                [attr.data-testid]="testIdsService.getTestAttribute(testId, testIdIncludeExcludeModifiers.OPTION)"
                                 [isSelectedItem]="selectedItemsMapping[item.id]"
                                 [isDisabled]="item.isDisabled"
                                 (changeSelected)="changeSelected($event)"
@@ -49,15 +50,17 @@
             </div>
         </div>
         <div class="selected-list content-col">
-            <div class="items-holder" #wrapperRight>
+            <div class="items-holder" #wrapperRight  [attr.data-testid]="testIdsService.getTestAttribute(testId, testIdIncludeExcludeModifiers.SELECTED_OPTIONS_LIST)">
                 <ul class="options-data-list" #containerRight>
                     <ng-container *ngIf="!isPendingItems">
                         <li *ngFor="let selectedItem of selectedOptions$ | async;trackBy: trackById">
                             <fusion-dropdown-dual-multi-select-body-item
-                                (clearSelect)="clearSelect($event)"
+                                [testId]="testId"
+                                [attr.data-testid]="testIdsService.getTestAttribute(testId, testIdIncludeExcludeModifiers.SELECTED_OPTION)"
                                 [isDisabled]="selectedItem.isDisabled"
                                 [item]="selectedItem"
                                 [bodySide]="'right'">
+                                (clearSelect)="clearSelect($event)"
                             </fusion-dropdown-dual-multi-select-body-item>
                         </li>
                     </ng-container>

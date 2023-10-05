@@ -12,10 +12,10 @@ export enum IncludeExcludeTestIdModifiers {
     SEARCH_INPUT = 'ie-search-input',
     SELECT_ALL = 'ie-select-all',
     SELECTED_AMOUNT = 'ie-selected-amount',
+    OPTIONS_LIST = 'ie-options-list',
     OPTION = 'ie-option',
-    CHECKBOX = 'ie-checkbox',
+    SELECTED_OPTIONS_LIST = 'ie-selected-options-list',
     SELECTED_OPTION = 'ie-selected-option',
-    REMOVE_SELECTED_OPTION = 'ie-remove-selected-option',
     CANCEL_BUTTON = 'ie-cancel-button',
     APPLY_BUTTON = 'ie-apply-button'
 }

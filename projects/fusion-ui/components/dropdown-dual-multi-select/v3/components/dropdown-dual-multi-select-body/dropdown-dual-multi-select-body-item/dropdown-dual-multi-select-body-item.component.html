@@ -4,10 +4,9 @@
 <ng-template #leftSide let-item="item">
     <label
         [for]="item.id"
-        class="is-option-label left-side" [attr.data-testid]="testIdsService.getTestAttribute(testId, testIdIncludeExcludeModifiers.OPTION)">
+        class="is-option-label left-side">
         <fusion-checkbox
             class="item-check"
-            [attr.data-testid]="testIdsService.getTestAttribute(testId, testIdIncludeExcludeModifiers.CHECKBOX)"
             [id]="item.id"
             [isDisabled]="isDisabled"
             [checked]="isSelectedItem"
@@ -20,9 +19,9 @@
 
 
 <ng-template #rightSide let-item="item" >
-    <label class="is-option-label right-side" [attr.data-testid]="testIdsService.getTestAttribute(testId, testIdIncludeExcludeModifiers.SELECTED_OPTION)">
+    <label class="is-option-label right-side">
         <ng-container [ngTemplateOutlet]="item?.content ? dynamicItem : optionTemplate" [ngTemplateOutletContext]="{item: item}"></ng-container>
-        <fusion-icon *ngIf="!isDisabled" (click)="clearSelectItem(item)" class="icon-clear" [name]="{iconName: 'close-bold', iconVersion: 'v3'}" [attr.data-testid]="testIdsService.getTestAttribute(testId, testIdIncludeExcludeModifiers.REMOVE_SELECTED_OPTION)"></fusion-icon>
+        <fusion-icon *ngIf="!isDisabled" (click)="clearSelectItem(item)" class="icon-clear" [name]="{iconName: 'close-bold', iconVersion: 'v3'}"></fusion-icon>
     </label>
 </ng-template>
 
