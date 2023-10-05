@@ -5,6 +5,7 @@ import {
     EventEmitter,
     forwardRef,
     Inject,
+    Injector,
     Input,
     OnDestroy,
     OnInit,
@@ -22,6 +23,8 @@ import {ModalConfiguration} from './modal.entities';
 import {getDefaultCssUnit} from './modal-utils';
 import {takeUntil} from 'rxjs/operators';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
+import {ModalTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-modal',
@@ -56,6 +59,8 @@ export class ModalComponent implements OnDestroy, OnInit {
         return this._configuration.getValue();
     }
 
+    @Input() testId: string;
+
     @Output() open = new EventEmitter();
     @Output() close = new EventEmitter();
 
@@ -63,6 +68,9 @@ export class ModalComponent implements OnDestroy, OnInit {
     @ViewChild('modalBody', {static: true}) modalBody: ElementRef;
     /** @internal */
     @ViewChild('modalHolder', {static: true}) modalHolder: ElementRef;
+
+    modalTestIdModifiers: typeof ModalTestIdModifiers = ModalTestIdModifiers;
+    testIdsService: TestIdsService = this.injector.get(TestIdsService);
 
     private uid: string;
     private _configuration = new BehaviorSubject<ModalConfiguration>(null);
@@ -76,7 +84,8 @@ export class ModalComponent implements OnDestroy, OnInit {
         private elRef: ElementRef,
         private windowRef: WindowService,
         private logService: LogService,
-        private renderer: Renderer2
+        private renderer: Renderer2,
+        private injector: Injector
     ) {
         this.uid = this.uidService.getUniqueId().toString();
     }

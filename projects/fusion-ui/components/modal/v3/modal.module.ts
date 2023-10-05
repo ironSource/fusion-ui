@@ -8,10 +8,11 @@ import {LoaderModule} from '@ironsource/fusion-ui/components/loader/v2';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button/v3';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v3';
+import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 
 @NgModule({
     declarations: [ModalComponent, ModalFooterComponent, ModalContentComponent, ModalHeaderComponent],
     exports: [ModalComponent, ModalFooterComponent, ModalContentComponent, ModalHeaderComponent],
-    imports: [CommonModule, LoaderModule, ButtonModule, IconModule, TooltipModule]
+    imports: [CommonModule, LoaderModule, ButtonModule, IconModule, TooltipModule, GenericPipe]
 })
 export class ModalModule {}
