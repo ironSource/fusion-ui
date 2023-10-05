@@ -13,6 +13,7 @@ import {DropdownDualMultiSelectBodyModule} from './components/dropdown-dual-mult
 import {DropdownDualMultiSelectHeaderModule} from './components/dropdown-dual-multi-select-header/dropdown-dual-multi-select-header.module';
 import {DropdownDualMultiSelectFooterModule} from './components/dropdown-dual-multi-select-footer/dropdown-dual-multi-select-footer.module';
 import {DropdownDualMultiSelectLoadingModule} from './components/dropdown-dual-multi-select-loading/dropdown-dual-multi-select-loading.module';
+import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 @NgModule({
     declarations: [DropdownDualMultiSelectComponent],
     exports: [DropdownDualMultiSelectComponent],
@@ -29,7 +30,8 @@ import {DropdownDualMultiSelectLoadingModule} from './components/dropdown-dual-m
         DropdownDualMultiSelectBodyModule,
         DropdownDualMultiSelectHeaderModule,
         DropdownDualMultiSelectFooterModule,
-        DropdownDualMultiSelectLoadingModule
+        DropdownDualMultiSelectLoadingModule,
+        GenericPipe
     ]
 })
 export class DropdownDualMultiSelectModule {}

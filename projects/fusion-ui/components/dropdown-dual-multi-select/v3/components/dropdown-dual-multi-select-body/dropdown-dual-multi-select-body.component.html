@@ -5,7 +5,7 @@
                 <label class="option-header-body" *ngIf="!isPendingItems && hasSelectAll">
                     <fusion-checkbox
                         class="fu-check-all"
-                        [attr.data-testid]="testIdsService.getTestAttribute(testId,testIdIncludeExcludeModifiers.SELECT_ALL)"
+                        [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdIncludeExcludeModifiers.SELECT_ALL"
                         [isIndeterminate]="isIndeterminate"
                         [checked]="isAllSelected"
                         (changed)="selectAll($event)"
@@ -17,12 +17,12 @@
         </div>
         <div class="content-col-right">
             <div class="body-header">
-                <label class="fu-select-label" [attr.data-testid]="testIdsService.getTestAttribute(testId,testIdIncludeExcludeModifiers.SELECTED_AMOUNT)">
+                <label class="fu-select-label" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdIncludeExcludeModifiers.SELECTED_AMOUNT">
                     {{(selectedItemsMapping ? selectedItemsMapping : {}) | objectLengthWhereValueTrue}} selected
                 </label>
                 <div
                     *ngIf="showClearAllButton()"
-                    [attr.data-testid]="testIdsService.getTestAttribute(testId,testIdIncludeExcludeModifiers.CLEAR_ALL_BUTTON)"
+                    [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdIncludeExcludeModifiers.CLEAR_ALL_BUTTON"
                     (click)="clearAll()" class="clear-all-btn">Clear all</div>
             </div>
         </div>
@@ -30,7 +30,7 @@
     </div>
     <div class="body-control">
         <div class="options-wrapper content-col">
-            <div class="items-holder" #wrapperLeft [attr.data-testid]="testIdsService.getTestAttribute(testId, testIdIncludeExcludeModifiers.OPTIONS_LIST)">
+            <div class="items-holder" #wrapperLeft [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdIncludeExcludeModifiers.OPTIONS_LIST">
                 <ul class="options-data-list" #containerLeft>
                     <ng-container *ngIf="!isPendingItems">
                         <li *ngFor="let item of displayOptions$ | async;trackBy: trackById">
@@ -50,13 +50,13 @@
             </div>
         </div>
         <div class="selected-list content-col">
-            <div class="items-holder" #wrapperRight  [attr.data-testid]="testIdsService.getTestAttribute(testId, testIdIncludeExcludeModifiers.SELECTED_OPTIONS_LIST)">
+            <div class="items-holder" #wrapperRight  [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdIncludeExcludeModifiers.SELECTED_OPTIONS_LIST">
                 <ul class="options-data-list" #containerRight>
                     <ng-container *ngIf="!isPendingItems">
                         <li *ngFor="let selectedItem of selectedOptions$ | async;trackBy: trackById">
                             <fusion-dropdown-dual-multi-select-body-item
                                 [testId]="testId"
-                                [attr.data-testid]="testIdsService.getTestAttribute(testId, testIdIncludeExcludeModifiers.SELECTED_OPTION)"
+                                [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdIncludeExcludeModifiers.SELECTED_OPTION"
                                 [isDisabled]="selectedItem.isDisabled"
                                 [item]="selectedItem"
                                 [bodySide]="'right'">

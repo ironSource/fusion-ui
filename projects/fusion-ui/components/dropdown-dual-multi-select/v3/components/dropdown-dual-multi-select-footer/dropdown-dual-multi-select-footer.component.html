@@ -1,8 +1,8 @@
 <div class="is-dropdown-dual-multi-select-footer">
-    <fusion-button class="small transparent third" (click)="closeSelectItems()" [attr.data-testid]="testIdsService.getTestAttribute(testId, testIdIncludeExcludeModifiers.CANCEL_BUTTON)">
+    <fusion-button class="small transparent third" (click)="closeSelectItems()" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdIncludeExcludeModifiers.CANCEL_BUTTON">
         <span>Cancel</span>
     </fusion-button>
-    <fusion-button class="small primary" (click)="applySelectItems(true)" [attr.data-testid]="testIdsService.getTestAttribute(testId, testIdIncludeExcludeModifiers.APPLY_BUTTON)">
+    <fusion-button class="small primary" (click)="applySelectItems(true)" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdIncludeExcludeModifiers.APPLY_BUTTON">
         <span>Apply</span>
     </fusion-button>
 </div>
