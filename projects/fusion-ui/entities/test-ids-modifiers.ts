@@ -1,8 +1,10 @@
 export enum ChipFilterTestIdModifiers {
+    CHIP_FILTER = 'chf',
     RESET_BUTTON = 'chf-reset-button'
 }
 
 export enum IncludeExcludeTestIdModifiers {
+    INCLUDE_EXCLUDE = 'ie',
     CHIP_FILTER_LABEL = 'ie-chf-label',
     CHIP_FILTER_VALUE = 'ie-chf-value',
     CLEAR_ALL_BUTTON = 'ie-clear-all-button',

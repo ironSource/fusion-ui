@@ -2,6 +2,7 @@ import {
     Directive,
     ElementRef,
     EventEmitter,
+    HostBinding,
     Injector,
     Input,
     OnDestroy,
@@ -105,6 +106,10 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
 
     get hasBackendPagination(): boolean {
         return !isNullOrUndefined(this.backendPaginationState);
+    }
+
+    @HostBinding('attr.data-testid') get testAttribute(): string {
+        return this.testIdsService.getTestAttribute(this.testId, this.testIdIncludeExcludeModifiers.INCLUDE_EXCLUDE);
     }
 
     @Output() scrollDown = new EventEmitter();

@@ -6,6 +6,7 @@ import {
     Directive,
     ElementRef,
     EventEmitter,
+    HostBinding,
     Injector,
     Input,
     OnDestroy,
@@ -88,6 +89,11 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     @Input() set isDynamicContent(value: boolean) {
         this.isDefaultContent = !value;
     }
+
+    @HostBinding('attr.data-testid') get testAttribute(): string {
+        return this.testIdsService.getTestAttribute(this.testId, this.testIdChipFilterModifiers.CHIP_FILTER);
+    }
+
     /**
      * On dynamic filter close button clicked (filter removed)
      * @ignore
