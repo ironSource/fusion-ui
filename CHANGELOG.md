@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [6.1.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v6.1.0-rc.0...v6.1.0-rc.1) (2023-10-05)
+
+
+### CI
+
+* **isct-13:** add attributes to the include-exclude component ([d9ff283](https://github.com/ironSource/fusion-ui/commit/d9ff28364312f0f864a16ad64a125c626f6a1aab))
+
 ## [6.1.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.0.1...v6.1.0-rc.0) (2023-10-04)
 
 
