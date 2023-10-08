@@ -2,21 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
-## [6.1.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v6.1.0-rc.1...v6.1.0-rc.2) (2023-10-05)
+### [6.1.1](https://github.com/ironSource/fusion-ui/compare/v6.1.0...v6.1.1) (2023-10-08)
 
-## [6.1.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v6.1.0-rc.0...v6.1.0-rc.1) (2023-10-05)
-
-
-### CI
-
-* **isct-13:** add attributes to the include-exclude component ([d9ff283](https://github.com/ironSource/fusion-ui/commit/d9ff28364312f0f864a16ad64a125c626f6a1aab))
-
-## [6.1.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.0.1...v6.1.0-rc.0) (2023-10-04)
+## [6.1.0](https://github.com/ironSource/fusion-ui/compare/v6.0.1...v6.1.0) (2023-10-08)
 
 
 ### Features
 
-* **storybook:** up storybook version ([960ab61](https://github.com/ironSource/fusion-ui/commit/960ab61a736bac42a51e671369a59b1a0f48b9e8))
 * **storybook:** up storybook version ([936f9ae](https://github.com/ironSource/fusion-ui/commit/936f9ae864c4a9d0f0471c9687764525baa508b1))
 * **storybook:** up storybook version ([8caa520](https://github.com/ironSource/fusion-ui/commit/8caa520a4021fdb11b411771d4b5c2d90897c85d))
 
