@@ -1,4 +1,5 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Injector, Input, Output} from '@angular/core';
+import {ModalTestIdModifiers, TestIdsService} from '@ironsource/fusion-ui';
 
 @Component({
     selector: 'fusion-modal-footer',
@@ -18,9 +19,15 @@ export class ModalFooterComponent {
         this.submitButtonDisabled = config?.submitButtonDisabled;
     }
     @Input() error;
+    @Input() testId: string;
 
     @Output() onSubmit = new EventEmitter();
     @Output() onCloseButtonClicked = new EventEmitter();
+
+    /** @internal */
+    modalTestIdModifiers: typeof ModalTestIdModifiers = ModalTestIdModifiers;
+    /** @internal */
+    testIdsService: TestIdsService = this.injector.get(TestIdsService);
 
     /** @internal */
     submitButtonText: string;
@@ -34,4 +41,6 @@ export class ModalFooterComponent {
     cancelButtonClass: string;
     /** @internal */
     cancelButtonHidden: boolean;
+
+    constructor(private injector: Injector) {}
 }

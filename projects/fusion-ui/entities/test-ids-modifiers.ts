@@ -22,11 +22,10 @@ export enum IncludeExcludeTestIdModifiers {
 
 export enum ModalTestIdModifiers {
     MODAL = 'modal',
-    MODAL_HEADER = 'modal-header',
     MODAL_TITLE = 'modal-title',
     MODAL_CLOSE_BUTTON = 'modal-close-button',
     MODAL_CONTENT = 'modal-content',
-    MODAL_FOOTER = 'modal-footer',
     MODAL_SUBMIT_BUTTON = 'modal-submit-button',
-    MODAL_CANCEL_BUTTON = 'modal-cancel-button'
+    MODAL_CANCEL_BUTTON = 'modal-cancel-button',
+    MODAL_ERROR = 'modal-error'
 }
