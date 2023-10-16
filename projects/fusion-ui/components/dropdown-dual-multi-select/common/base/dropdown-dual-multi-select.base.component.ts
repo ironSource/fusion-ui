@@ -46,6 +46,7 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     /** @internal */
     @Input() autoComplete: boolean = true;
     @Input() title: string;
+    /** @internal */
     @Input() testId: string;
     /** @internal */
     @Input() pendingItems: boolean = false;
@@ -59,7 +60,9 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
         return this._hasSelectAll;
     }
 
+    /** @internal */
     testIdIncludeExcludeModifiers: typeof IncludeExcludeTestIdModifiers = IncludeExcludeTestIdModifiers;
+    /** @internal */
     testIdsService: TestIdsService = this.injector.get(TestIdsService);
 
     @Input() set placeholder(data: string) {

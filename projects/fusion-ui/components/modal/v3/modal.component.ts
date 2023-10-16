@@ -58,7 +58,7 @@ export class ModalComponent implements OnDestroy, OnInit {
     get configuration(): ModalConfiguration {
         return this._configuration.getValue();
     }
-
+    /** @internal */
     @Input() testId: string;
 
     @Output() open = new EventEmitter();
@@ -69,7 +69,9 @@ export class ModalComponent implements OnDestroy, OnInit {
     /** @internal */
     @ViewChild('modalHolder', {static: true}) modalHolder: ElementRef;
 
+    /** @internal */
     modalTestIdModifiers: typeof ModalTestIdModifiers = ModalTestIdModifiers;
+    /** @internal */
     testIdsService: TestIdsService = this.injector.get(TestIdsService);
 
     private uid: string;

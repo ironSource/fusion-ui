@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Injector, Input, Output} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
-import {ModalTestIdModifiers, TestIdsService} from '@ironsource/fusion-ui';
+import {ModalTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-modal-header',
@@ -10,6 +10,7 @@ import {ModalTestIdModifiers, TestIdsService} from '@ironsource/fusion-ui';
 export class ModalHeaderComponent {
     @Input() headerText: string;
     @Input() showCloseButton = true;
+    /** @internal */
     @Input() testId: string;
 
     private _infoText: string;

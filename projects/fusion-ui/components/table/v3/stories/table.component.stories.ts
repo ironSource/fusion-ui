@@ -65,7 +65,8 @@ export default {
     args: {
         options: TABLE_DEFAULT_OPTIONS,
         columns: TABLE_DEFAULT_COLUMNS_CONFIG,
-        rows: ROWS_DEFAULT_DATA
+        rows: ROWS_DEFAULT_DATA,
+        testId: 'test-id'
     }
 } as Meta<TableComponent>;
 
@@ -76,6 +77,7 @@ const TableTemplate: StoryFn<TableComponent> = (args: TableComponent) => ({
     [columns]="columns"
     [rows]="rows"
     [loading]="loading"
+    [testId]="testId"
 ></fusion-table>`
 });
 
@@ -85,6 +87,7 @@ const TableWithHostTemplate: StoryFn<TableComponent> = (args: TableComponent) =>
     [options]="options"
     [columns]="columns"
     [rows]="rows"
+    [testId]="testId"
 ></fusion-table-story-holder>`
 });
 

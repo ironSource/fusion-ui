@@ -9,11 +9,14 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownDualMultiSelectFooterComponent {
+    /** @internal */
     @Input() testId: string;
     @Output() applySelect = new EventEmitter<boolean>();
     @Output() closeSelect = new EventEmitter();
 
+    /** @internal */
     testIdIncludeExcludeModifiers: typeof IncludeExcludeTestIdModifiers = IncludeExcludeTestIdModifiers;
+    /** @internal */
     testIdsService: TestIdsService = this.injector.get(TestIdsService);
 
     constructor(private injector: Injector) {}

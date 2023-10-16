@@ -14,12 +14,15 @@ export class DropdownDualMultiSelectBodyItemComponent {
     @Input() item: DropdownOption;
     @Input() isDisabled: boolean;
     @Input() isSelectedItem: boolean;
+    /** @internal */
     @Input() testId: string;
 
     @Output() changeSelected = new EventEmitter();
     @Output() clearSelect = new EventEmitter();
 
+    /** @internal */
     testIdIncludeExcludeModifiers: typeof IncludeExcludeTestIdModifiers = IncludeExcludeTestIdModifiers;
+    /** @internal */
     testIdsService: TestIdsService = this.injector.get(TestIdsService);
 
     constructor(private injector: Injector) {}

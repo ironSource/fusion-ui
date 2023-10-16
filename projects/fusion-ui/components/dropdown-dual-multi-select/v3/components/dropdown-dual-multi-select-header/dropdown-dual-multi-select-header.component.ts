@@ -33,9 +33,12 @@ export class DropdownDualMultiSelectHeaderComponent implements OnDestroy, AfterV
     @ViewChild('input') input?: ElementRef;
 
     @Input() title: string;
+    /** @internal */
     @Input() testId: string;
 
+    /** @internal */
     testIdIncludeExcludeModifiers: typeof IncludeExcludeTestIdModifiers = IncludeExcludeTestIdModifiers;
+    /** @internal */
     testIdsService: TestIdsService = this.injector.get(TestIdsService);
 
     searchIcon?: IconData = {iconName: 'search-bold', iconVersion: 'v3'};

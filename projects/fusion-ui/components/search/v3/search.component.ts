@@ -1,10 +1,13 @@
-import {ChangeDetectionStrategy, Component, ElementRef, forwardRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, forwardRef, Injector, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormControl, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
+import {SearchTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-search',
@@ -12,7 +15,7 @@ import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
     styleUrls: ['./search.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [CommonModule, FormsModule, ReactiveFormsModule, IconModule],
+    imports: [CommonModule, FormsModule, ReactiveFormsModule, IconModule, GenericPipe],
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
@@ -46,6 +49,9 @@ export class SearchComponent implements OnInit, OnDestroy {
     }
 
     /** @internal */
+    @Input() testId: string;
+
+    /** @internal */
     searchFormControl = new FormControl();
     /** @internal */
     onDestroy$ = new Subject<void>();
@@ -53,6 +59,13 @@ export class SearchComponent implements OnInit, OnDestroy {
     searchIcon: IconData = {iconName: 'search-bold', iconVersion: 'v3'};
     /** @internal */
     clearIcon: IconData = {iconName: 'cancel', iconVersion: 'v3'};
+
+    /** @internal */
+    searchTestIdModifiers: typeof SearchTestIdModifiers = SearchTestIdModifiers;
+    /** @internal */
+    testIdsService: TestIdsService = this.injector.get(TestIdsService);
+
+    constructor(private injector: Injector) {}
 
     ngOnInit() {
         this.searchFormControl.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(value => {

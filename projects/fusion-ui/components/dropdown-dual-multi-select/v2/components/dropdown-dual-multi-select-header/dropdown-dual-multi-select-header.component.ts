@@ -19,6 +19,7 @@ import {Subject} from 'rxjs';
 })
 export class DropdownDualMultiSelectHeaderComponent implements OnDestroy, ControlValueAccessor {
     @Input() title: string;
+    /** @internal */
     @Input() testId: string;
 
     inputSize = InputSize;

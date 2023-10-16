@@ -50,6 +50,7 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
     @Input() totalItems: number;
     @Input() isPendingItems: boolean;
     @Input() hasSelectAll: boolean = true;
+    /** @internal */
     @Input() testId: string;
 
     @Input() set items(data: DropdownOption[]) {
@@ -75,7 +76,9 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
 
     @Output() scrollDown = new EventEmitter();
 
+    /** @internal */
     testIdIncludeExcludeModifiers: typeof IncludeExcludeTestIdModifiers = IncludeExcludeTestIdModifiers;
+    /** @internal */
     testIdsService: TestIdsService = this.injector.get(TestIdsService);
 
     isSelectAllDisabled$ = new BehaviorSubject<boolean>(false);

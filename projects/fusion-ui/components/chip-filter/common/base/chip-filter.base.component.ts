@@ -31,6 +31,7 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Directive()
 export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, OnDestroy, AfterContentInit {
+    /** @internal */
     @Input() testId: string;
     /** @internal */
     @ContentChild(ApiBase, {static: true}) apiBase: ApiBase;
@@ -52,7 +53,9 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     /** @internal */
     rightIcon: ChipIcon;
 
+    /** @internal */
     testIdChipFilterModifiers: typeof ChipFilterTestIdModifiers = ChipFilterTestIdModifiers;
+    /** @internal */
     testIdsService: TestIdsService = this.injector.get(TestIdsService);
 
     private onDestroy$ = new Subject<void>();

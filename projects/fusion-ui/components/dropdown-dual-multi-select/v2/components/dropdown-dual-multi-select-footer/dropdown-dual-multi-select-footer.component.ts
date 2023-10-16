@@ -7,6 +7,7 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownDualMultiSelectFooterComponent {
+    /** @internal */
     @Input() testId: string;
     @Output() applySelect = new EventEmitter<boolean>();
     @Output() closeSelect = new EventEmitter();

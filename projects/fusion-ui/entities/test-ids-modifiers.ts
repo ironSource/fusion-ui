@@ -29,3 +29,20 @@ export enum ModalTestIdModifiers {
     MODAL_CANCEL_BUTTON = 'modal-cancel-button',
     MODAL_ERROR = 'modal-error'
 }
+
+export enum SearchTestIdModifiers {
+    INPUT = 'search-input',
+    CLEAR_BUTTON = 'search-clear-button'
+}
+
+export enum TableTestIdModifiers {
+    LABEL = 'table-label',
+    COLUMN_HEADER = 'table-header-c',
+    COLUMN_TITLE = 'table-column-title-c',
+    COLUMN_SORT_UP = 'table-column-sort-up-c',
+    COLUMN_SORT_DOWN = 'table-column-sort-down-c',
+    COLUMN_HEADER_SELECT_ALL = 'table-header-select-all',
+    CELL = 'table-cell',
+
+    BUTTON_GO_TOP = 'table-button-go-top'
+}
