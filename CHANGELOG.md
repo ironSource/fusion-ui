@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [6.1.1](https://github.com/ironSource/fusion-ui/compare/v6.1.0...v6.1.1) (2023-10-08)
+
+## [6.1.0](https://github.com/ironSource/fusion-ui/compare/v6.0.1...v6.1.0) (2023-10-08)
+
+
+### Features
+
+* **storybook:** up storybook version ([936f9ae](https://github.com/ironSource/fusion-ui/commit/936f9ae864c4a9d0f0471c9687764525baa508b1))
+* **storybook:** up storybook version ([8caa520](https://github.com/ironSource/fusion-ui/commit/8caa520a4021fdb11b411771d4b5c2d90897c85d))
+
 ### [6.0.1](https://github.com/ironSource/fusion-ui/compare/v6.0.1-rc.0...v6.0.1) (2023-10-01)
 
 ### [6.0.1-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.0.0...v6.0.1-rc.0) (2023-09-28)
