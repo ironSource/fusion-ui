@@ -1,12 +1,13 @@
-<div class="modal" #modalHolder>
+<div class="modal" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:modalTestIdModifiers.MODAL" #modalHolder>
     <div class="modal-body" [class.has-footer]="configuration?.hasFooter" [class.has-header]="configuration?.headerText" [style.width]="configuration?.width" [style.height]="configuration?.height" #modalBody>
 
-        <fusion-modal-header [headerText]="configuration?.headerText" [infoText]="configuration?.headerInfoText" (close)="onClose(true, 'close')"></fusion-modal-header>
+        <fusion-modal-header [testId]="testId" [headerText]="configuration?.headerText" [infoText]="configuration?.headerInfoText" (close)="onClose(true, 'close')"></fusion-modal-header>
 
         <fusion-modal-content
             *ngIf="configuration?.headerText || configuration?.hasFooter"
             [pending]="submitPending"
             [ngClass]="{'fu-has-height': !!configuration?.height}"
+            [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:modalTestIdModifiers.MODAL_CONTENT"
         >
             <ng-container *ngTemplateOutlet="content"></ng-container>
         </fusion-modal-content>
@@ -29,6 +30,7 @@
             (onSubmit)="onClose(true, 'submit')"
             (onCloseButtonClicked)="onClose(true, 'close')"
             [submitButtonPending]="submitPending"
+            [testId]="testId"
         ></fusion-modal-footer>
 
     </div>

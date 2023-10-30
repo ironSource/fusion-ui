@@ -574,13 +574,14 @@ export const DateRangeWithIcon = {
 const ChipFilterIncludeExcludeTemplate: StoryFn<ChipFilterComponent> = (args: ChipFilterComponent) => ({
     props: {...args},
     template: `<div style="height: 350px; width: 250px;">
-    <fusion-chip-filter [configuration]="configuration">
+    <fusion-chip-filter [configuration]="configuration" [testId]="testId">
         <div class="filter-element">
              <fusion-dropdown-dual-multi-select
                 [title]="title"
                 [placeholder]="placeholder"
                 [formControl]="formControl"
                 [items]="items"
+                [testId]="testId"
              ></fusion-dropdown-dual-multi-select>
         </div>
     </fusion-chip-filter>

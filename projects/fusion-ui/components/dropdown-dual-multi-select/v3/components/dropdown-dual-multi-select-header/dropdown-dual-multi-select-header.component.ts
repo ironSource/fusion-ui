@@ -1,8 +1,20 @@
-import {ChangeDetectionStrategy, Component, Input, forwardRef, OnDestroy, ViewChild, ElementRef, AfterViewInit} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Input,
+    forwardRef,
+    OnDestroy,
+    ViewChild,
+    ElementRef,
+    AfterViewInit,
+    Injector
+} from '@angular/core';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {debounceTime, distinctUntilChanged, takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
+import {IncludeExcludeTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-dropdown-dual-multi-select-header',
@@ -21,6 +33,13 @@ export class DropdownDualMultiSelectHeaderComponent implements OnDestroy, AfterV
     @ViewChild('input') input?: ElementRef;
 
     @Input() title: string;
+    /** @internal */
+    @Input() testId: string;
+
+    /** @internal */
+    testIdIncludeExcludeModifiers: typeof IncludeExcludeTestIdModifiers = IncludeExcludeTestIdModifiers;
+    /** @internal */
+    testIdsService: TestIdsService = this.injector.get(TestIdsService);
 
     searchIcon?: IconData = {iconName: 'search-bold', iconVersion: 'v3'};
     searchClearIcon?: IconData = {iconName: 'cancel', iconVersion: 'v3'};
@@ -28,7 +47,7 @@ export class DropdownDualMultiSelectHeaderComponent implements OnDestroy, AfterV
 
     private onDestroy$ = new Subject<void>();
 
-    constructor() {}
+    constructor(private injector: Injector) {}
 
     ngOnDestroy(): void {
         this.onDestroy$.next();

@@ -1,11 +1,12 @@
 <div class="is-dropdown-dual-multi-select-header">
     <div class="fu-label-holder">
-        <span class="fu-label">{{title}}</span>
+        <span class="fu-label" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdIncludeExcludeModifiers.TYPE_TITLE">{{title}}</span>
     </div>
     <div class="fu-search-holder" (click)="setFocusToInput()">
         <div class="fu-search-bar">
             <fusion-icon class="fu-icon-search" [name]="searchIcon"></fusion-icon>
             <input #input
+                   [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdIncludeExcludeModifiers.SEARCH_INPUT"
                    autocomplete="off"
                    minlength="1"
                    [placeholder]="'Search'"

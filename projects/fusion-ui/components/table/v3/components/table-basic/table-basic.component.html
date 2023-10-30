@@ -10,6 +10,7 @@
         [isExpanded]="isExpanded(rowIndex)"
         [isInnerRow]="false"
         [class.is-row-in-request]="tableService.rowsMetadata[row['_rowId']]?.inRequest"
+        [testId]="testId"
         (rowRemoved)="tableService.removeRow({rows: rows, rowIndex: rowIndex, row: row, options: options})"
         (selectedChange)="tableService.onRowSelectChanged($event, row)"
         (expandRow)="onExpandRow($event)"

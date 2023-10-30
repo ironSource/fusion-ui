@@ -408,7 +408,7 @@ const FilterPanelTemplate: StoryFn<ChipFiltersComponent> = (args: ChipFiltersCom
         [disableAddFilter]="disableAddFilter"
         [isSearch]="isSearch"
         >
-        <fusion-chip-filter [configuration]="configChip1">
+        <fusion-chip-filter [configuration]="configChip1" testId="test-chip-1" testId="test-chip-users">
             <div class="filter-element">
                 <fusion-dropdown
                      [placeholderPrefix]="placeholderPrefixChip1"
@@ -421,7 +421,7 @@ const FilterPanelTemplate: StoryFn<ChipFiltersComponent> = (args: ChipFiltersCom
                 </fusion-dropdown>
             </div>
         </fusion-chip-filter>
-        <fusion-chip-filter [configuration]="configChip2">
+        <fusion-chip-filter [configuration]="configChip2" testId="test-chip-status">
             <div class="filter-element">
                 <fusion-dropdown
                      [placeholderPrefix]="placeholderPrefixChip2"
@@ -433,14 +433,15 @@ const FilterPanelTemplate: StoryFn<ChipFiltersComponent> = (args: ChipFiltersCom
                 </fusion-dropdown>
             </div>
         </fusion-chip-filter>
-        <fusion-chip-filter [configuration]="configChip3">
+        <fusion-chip-filter [configuration]="configChip3"  testId="test-chip-dates">
             <div class="filter-element">
                 <fusion-daterange [options]="dateRangeOptions" [formControl]="fcChip3"> </fusion-daterange>
             </div>
         </fusion-chip-filter>
-        <fusion-chip-filter [configuration]="configChip4">
+        <fusion-chip-filter [configuration]="configChip4" testId="test-chip-country">
             <div class="filter-element">
                 <fusion-dropdown-dual-multi-select
+                    testId="test-chip-country"
                     [title]="optionsTitleChip4"
                     [placeholder]="placeholderChip4"
                     [formControl]="fcChip4"
@@ -448,9 +449,10 @@ const FilterPanelTemplate: StoryFn<ChipFiltersComponent> = (args: ChipFiltersCom
                  ></fusion-dropdown-dual-multi-select>
             </div>
         </fusion-chip-filter>
-        <fusion-chip-filter [configuration]="configChip5">
+        <fusion-chip-filter [configuration]="configChip5" testId="test-chip-campaign">
             <div class="filter-element">
                 <fusion-dropdown-dual-multi-select
+                    testId="test-chip-campaign"
                     [title]="optionsTitleChip5"
                     [placeholder]="placeholderChip5"
                     [formControl]="fcChip5"

@@ -1,6 +1,6 @@
 <div *ngIf="!noTableFrame" class="fu-table-header">
     <ng-container *ngIf="options?.tableLabel as tableLabel">
-        <div class="fu-table-label">{{tableLabel.text}}
+        <div class="fu-table-label" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:tableTestIdModifiers.LABEL">{{tableLabel.text}}
         <ng-container *ngIf="tableLabel.tooltip">
             <fusion-icon [fusionTooltip]="tableLabel.tooltip" class="fu-info-icon" [name]="tableLabel.icon ?? {iconName: 'info', iconVersion: 'v3'}"></fusion-icon>
         </ng-container>
@@ -10,6 +10,7 @@
         <fusion-search style="width: 300px;"
             [formControl]="searchFormControl"
             [placeholder]="searchOptions.placeholder"
+            [testId]="testId"
         ></fusion-search>
     </div>
 </div>
@@ -33,7 +34,7 @@
                 <tr [ngStyle]="!!options.rowsOptions && !!options.rowsOptions.headerRow ? options.rowsOptions.headerRow.style : null">
                     <!--<ng-container *ngIf="!!options?.rowsExpandableOptions" [ngTemplateOutlet]="headerExpandColumn"></ng-container>-->
                     <td
-                        *ngFor="let column of columns; trackBy: trackByFunc; let isLast = last; let isFirst = first"
+                        *ngFor="let column of columns; trackBy: trackByFunc; let isLast = last; let isFirst = first; let idx = index"
                         [attr.data-col-key]="column.key"
                         [ngClass]="tableService.getColumnClasses(column, true)"
                         [ngStyle]="tableService.getColumnStyle(column)"
@@ -42,12 +43,16 @@
                         [style.text-align]="column.headerAlign"
                         [attr.colspan]="isFirst ? (tableService.expandLevels + 1) : undefined"
                         [style.top.px]="options?.stickyHeaderTopOffset"
+                        [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.COLUMN_HEADER+idx)"
                     >
                         <ng-container>
-                            <div class="fu-header-text" [class.fu-tooltiped]="column.tooltip" [fusionTooltip]="column.tooltip">{{ column.title }}</div>
+                            <div class="fu-header-text"
+                                 [class.fu-tooltiped]="column.tooltip" [fusionTooltip]="column.tooltip"
+                                 [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.COLUMN_TITLE+idx)"
+                            >{{ column.title }}</div>
                             <div class="fu-sort-wrapper">
-                                <div class="fu-sort-up"></div>
-                                <div class="fu-sort-down"></div>
+                                <div class="fu-sort-up" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.COLUMN_SORT_UP+idx)"></div>
+                                <div class="fu-sort-down" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.COLUMN_SORT_DOWN+idx)"></div>
                             </div>
                         </ng-container>
                         <fusion-multi-dropdown
@@ -70,6 +75,7 @@
                             [isIndeterminate]="tableService.isPartialSelected(rows)"
                             (changed)="tableService.onRowsSelectChanged(options.isGroupedTable, rows, $event)"
                             [name]="'rows_all'"
+                            [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:tableTestIdModifiers.COLUMN_HEADER_SELECT_ALL"
                         >
                         </fusion-checkbox>
                     </td>
@@ -87,6 +93,7 @@
                 [options]="options"
                 [tableClientWidth]="getTableClientWidth()"
                 [expandedRows]="expandedRows"
+                [testId]="testId"
                 (rowSelected)="selectionChanged.emit($event)"
                 (expandRow)="doExpandRow($event)"
                 (click)="onTableBodyClicked($event)"
@@ -128,7 +135,7 @@
     </table>
     <!--table pagination loading overlay-->
     <ng-container *ngIf="options?.hasReturnToTopButton && (shownGoTopButton$ | async)">
-        <div class="fu-button-return-top" fusionTooltip="Return to top" (click)="onClickReturnTop()">
+        <div class="fu-button-return-top" fusionTooltip="Return to top" (click)="onClickReturnTop()" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:tableTestIdModifiers.BUTTON_GO_TOP">
             <fusion-icon class="fu-return-top-icon" [name]="{iconName:'angle-up', iconVersion: 'v3'}"></fusion-icon>
         </div>
     </ng-container>

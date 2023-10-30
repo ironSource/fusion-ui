@@ -6,5 +6,11 @@
        [placeholder]="placeholder"
        [formControl]="searchFormControl"
        [class.fu-has-clear-icon]="showClearIcon"
+       [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:searchTestIdModifiers.INPUT"
 />
-<fusion-icon class="fu-clear" *ngIf="showClearIcon && (searchFormControl.valueChanges | async)" [name]="clearIcon" (click)="clearInput(true)"></fusion-icon>
+<fusion-icon class="fu-clear"
+             *ngIf="showClearIcon && (searchFormControl.valueChanges | async)"
+             [name]="clearIcon"
+             [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:searchTestIdModifiers.CLEAR_BUTTON"
+             (click)="clearInput(true)"
+></fusion-icon>

@@ -1,6 +1,7 @@
 <div class="modal-footer">
-    <span class="fu-error-message">{{ error }}</span>
+    <span class="fu-error-message" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:modalTestIdModifiers.MODAL_ERROR">{{ error }}</span>
     <fusion-button class="fu-secondary-button"
+        [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:modalTestIdModifiers.MODAL_CANCEL_BUTTON"
         [class]="cancelButtonClass"
         (click)="onCloseButtonClicked.emit()"
         *ngIf="!cancelButtonHidden"
@@ -8,6 +9,7 @@
         {{ cancelButtonText }}
     </fusion-button>
     <fusion-button class="fu-primary-button"
+        [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:modalTestIdModifiers.MODAL_SUBMIT_BUTTON"
         [class]="submitButtonClass"
         [loading]="submitButtonPending"
         [disabled]="submitButtonDisabled || !!error"

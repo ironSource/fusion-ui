@@ -1,6 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {DropdownDualMultiSelectFooterComponent} from './dropdown-dual-multi-select-footer.component';
+import {GenericPipe} from "@ironsource/fusion-ui/pipes/generic";
 
 describe('DropdownDualMultiSelectFooterComponent', () => {
     let component: DropdownDualMultiSelectFooterComponent;
@@ -8,7 +9,8 @@ describe('DropdownDualMultiSelectFooterComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [DropdownDualMultiSelectFooterComponent]
+            declarations: [DropdownDualMultiSelectFooterComponent],
+            imports: [GenericPipe]
         }).compileComponents();
     });
 

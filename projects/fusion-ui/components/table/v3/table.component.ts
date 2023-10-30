@@ -9,7 +9,8 @@ import {
     ChangeDetectorRef,
     Component,
     ChangeDetectionStrategy,
-    OnDestroy
+    OnDestroy,
+    Injector
 } from '@angular/core';
 import {BehaviorSubject, defer, fromEvent, Subject} from 'rxjs';
 import {debounceTime, takeUntil, tap} from 'rxjs/operators';
@@ -30,6 +31,8 @@ import {
 import {TableBasicComponent} from './components/table-basic/table-basic.component';
 import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
 import {FormControl} from '@angular/forms';
+import {TableTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-table',
@@ -84,6 +87,9 @@ export class TableComponent implements OnInit, OnDestroy {
         this.onExternalExpandRowChanged(value);
         this._expandedRows = value;
     }
+
+    /** @internal */
+    @Input() testId: string;
 
     /**
      * On Sort changed
@@ -185,6 +191,11 @@ export class TableComponent implements OnInit, OnDestroy {
     /** @internal */
     searchFormControl: FormControl<string>;
 
+    /** @internal */
+    tableTestIdModifiers: typeof TableTestIdModifiers = TableTestIdModifiers;
+    /** @internal */
+    testIdsService: TestIdsService = this.injector.get(TestIdsService);
+
     get isCheckboxTitleShown(): boolean {
         return this.columns ? this.columns.some(column => column.type === TableColumnTypeEnum.Checkbox && column.title !== '') : false;
     }
@@ -246,7 +257,8 @@ export class TableComponent implements OnInit, OnDestroy {
         /** @internal */
         public tableService: TableService,
         private uniqueService: UniqueIdService,
-        private cdr: ChangeDetectorRef
+        private cdr: ChangeDetectorRef,
+        private injector: Injector
     ) {
         this.tableService.clearSelectedRows();
     }

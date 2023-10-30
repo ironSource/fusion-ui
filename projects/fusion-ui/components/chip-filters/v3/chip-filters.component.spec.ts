@@ -8,6 +8,7 @@ import {By} from '@angular/platform-browser';
 import {Component, DebugElement, Input} from '@angular/core';
 import {ChipFilterComponentConfigurations} from '@ironsource/fusion-ui/components/chip-filter/common/base';
 import {ChipFiltersComponent} from '@ironsource/fusion-ui/components/chip-filters';
+import {GenericPipe} from "@ironsource/fusion-ui/pipes/generic";
 
 const innerText = 'Test Chip';
 
@@ -44,7 +45,7 @@ describe('ChipFiltersComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [IconModule, FlagModule],
+            imports: [IconModule, FlagModule, GenericPipe],
             declarations: [ChipFilterComponent, TestChipComponent, ChipFiltersComponent]
         }).compileComponents();
     }));
