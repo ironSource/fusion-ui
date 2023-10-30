@@ -5,6 +5,7 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {ModalFooterComponent} from './components/modal-footer/modal-footer.component';
 import {ModalContentComponent} from './components/modal-content/modal-content.component';
 import {ModalHeaderComponent} from './components/modal-header/modal-header.component';
+import {GenericPipe} from "@ironsource/fusion-ui/pipes/generic";
 
 describe('ModalComponent', () => {
     let component: ModalComponent;
@@ -12,7 +13,7 @@ describe('ModalComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [ButtonModule, IconModule],
+            imports: [ButtonModule, IconModule, GenericPipe],
             declarations: [ModalComponent, ModalFooterComponent, ModalContentComponent, ModalHeaderComponent]
         }).compileComponents();
     }));

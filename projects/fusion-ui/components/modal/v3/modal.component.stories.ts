@@ -31,7 +31,8 @@ export default {
         }
     },
     args: {
-        configuration: DEFAULT_CONFIGURATION
+        configuration: DEFAULT_CONFIGURATION,
+        testId: 'modal-test-id'
     }
 } as Meta<ModalComponent>;
 
@@ -53,7 +54,7 @@ hr{
     margin: 20px 0;
 }
 </style>
-<fusion-modal [configuration]="configuration" [submitPending]="submitPending">
+<fusion-modal [configuration]="configuration" [submitPending]="submitPending" [testId]="testId">
 <div class="content-example">Content item placeholder. To be replaced with component</div>
 <hr/>
 <div class="content-example">Content item placeholder. To be replaced with component</div>

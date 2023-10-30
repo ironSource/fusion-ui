@@ -2,6 +2,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {DropdownDualMultiSelectBodyComponent} from './dropdown-dual-multi-select-body.component';
 import {GetObjectLengthPipe} from '@ironsource/fusion-ui/pipes/collection';
+import {GenericPipe} from "@ironsource/fusion-ui/pipes/generic";
 
 describe('DropdownDualMultiSelectBodyComponent', () => {
     let component: DropdownDualMultiSelectBodyComponent;
@@ -10,7 +11,7 @@ describe('DropdownDualMultiSelectBodyComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             declarations: [DropdownDualMultiSelectBodyComponent],
-            imports: [GetObjectLengthPipe]
+            imports: [GetObjectLengthPipe, GenericPipe]
         }).compileComponents();
     });
 

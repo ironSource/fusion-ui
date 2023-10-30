@@ -1,5 +1,5 @@
 <div class="modal-header" *ngIf="headerText">
-    <div>{{ headerText }}</div>
+    <div class="modal-header-title" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:modalTestIdModifiers.MODAL_TITLE">{{ headerText }}</div>
     <fusion-icon class="fu-info"
                  *ngIf="infoText"
                  [name]="infoIcon"
@@ -8,6 +8,7 @@
     <fusion-icon class="fu-close"
                  *ngIf="showCloseButton"
                  [name]="closeButtonIcon"
+                 [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:modalTestIdModifiers.MODAL_CLOSE_BUTTON"
                  (click)="close.emit()"
     ></fusion-icon>
 </div>

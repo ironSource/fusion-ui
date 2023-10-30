@@ -1,4 +1,17 @@
-import {Directive, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, Renderer2, TemplateRef, ViewChild} from '@angular/core';
+import {
+    Directive,
+    ElementRef,
+    EventEmitter,
+    HostBinding,
+    Injector,
+    Input,
+    OnDestroy,
+    OnInit,
+    Output,
+    Renderer2,
+    TemplateRef,
+    ViewChild
+} from '@angular/core';
 import {InputSize} from '@ironsource/fusion-ui/components/input/common/base';
 import {ControlValueAccessor, FormControl} from '@angular/forms';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
@@ -9,6 +22,8 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {BackendPagination, SelectedItemName} from '@ironsource/fusion-ui/components/dropdown';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
+import {IncludeExcludeTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 const CLASS_LIST = [
     'dual-select-button',
@@ -32,6 +47,8 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     @Input() autoComplete: boolean = true;
     @Input() title: string;
     /** @internal */
+    @Input() testId: string;
+    /** @internal */
     @Input() pendingItems: boolean = false;
     /** @internal */
     @Input() set hasSelectAll(value: boolean) {
@@ -42,6 +59,11 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     get hasSelectAll(): boolean {
         return this._hasSelectAll;
     }
+
+    /** @internal */
+    testIdIncludeExcludeModifiers: typeof IncludeExcludeTestIdModifiers = IncludeExcludeTestIdModifiers;
+    /** @internal */
+    testIdsService: TestIdsService = this.injector.get(TestIdsService);
 
     @Input() set placeholder(data: string) {
         this.placeholder$.next(data);
@@ -87,6 +109,10 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
 
     get hasBackendPagination(): boolean {
         return !isNullOrUndefined(this.backendPaginationState);
+    }
+
+    @HostBinding('attr.data-testid') get testAttribute(): string {
+        return this.testIdsService.getTestAttribute(this.testId, this.testIdIncludeExcludeModifiers.INCLUDE_EXCLUDE);
     }
 
     @Output() scrollDown = new EventEmitter();
@@ -140,7 +166,12 @@ export abstract class DropdownDualMultiSelectBaseComponent extends ApiBase imple
     /** @internal */
     loadingLeft$ = new BehaviorSubject<boolean>(false);
 
-    constructor(protected element: ElementRef, protected renderer: Renderer2, protected uidService: UniqueIdService) {
+    constructor(
+        protected element: ElementRef,
+        protected renderer: Renderer2,
+        protected uidService: UniqueIdService,
+        private injector: Injector
+    ) {
         super();
         this.uid = this.uidService.getUniqueId().toString();
     }

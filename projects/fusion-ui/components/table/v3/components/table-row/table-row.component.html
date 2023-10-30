@@ -1,4 +1,4 @@
-<ng-container *ngFor="let expandCell of expandCellCount | async; let isLast = last">
+<ng-container *ngFor="let expandCell of expandCellCount | async; let isLast = last; let idx=index">
     <td *ngIf="cellShown | generic:'cell-expand'"
         class="expand-cell"
         [class.total-row]="isRowTotal"
@@ -6,6 +6,7 @@
         [class.inner-row]="isInnerRow"
         [class.sticky-left]="options?.rowsExpandableOptions?.sticky"
         [attr.rowspan]="attrRowspan | generic:'cell-expand'"
+        [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.CELL+'-r'+rowIndex+'-c'+idx)"
     >
         <fusion-icon
             *ngIf="isLast && showExpandIcon()"
@@ -16,7 +17,7 @@
         </fusion-icon>
     </td>
 </ng-container>
-<ng-container *ngFor="let column of columns; trackBy: trackByFn; let columnIndex = index; let isLast = last;">
+<ng-container *ngFor="let column of columns; trackBy: trackByFn; let columnIndex = index; let isLast = last; let idx=index">
     <td *ngIf="cellShown | generic:column.key"
         fusionTableCell
         [fusionTooltip]="columnsData[columnIndex]?.tooltip"
@@ -41,6 +42,7 @@
         [style.width]="columnsData[columnIndex]?.width"
         [attr.colspan]="columnsData[columnIndex]?.colspan"
         [attr.rowspan]="attrRowspan | generic:column.key"
+        [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.CELL+'-r'+rowIndex+'-c'+idx)"
         (remove)="rowRemoved.emit()"
         (selectedChange)="selectedChange.emit($event)"
         (dataChange)="onDataChange($event, column.key)"

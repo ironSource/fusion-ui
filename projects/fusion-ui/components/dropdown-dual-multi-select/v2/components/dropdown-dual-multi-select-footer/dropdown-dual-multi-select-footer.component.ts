@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
     selector: 'fusion-dropdown-dual-multi-select-footer',
@@ -7,6 +7,8 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownDualMultiSelectFooterComponent {
+    /** @internal */
+    @Input() testId: string;
     @Output() applySelect = new EventEmitter<boolean>();
     @Output() closeSelect = new EventEmitter();
 

@@ -4,6 +4,7 @@ import {
     Component,
     EventEmitter,
     HostBinding,
+    Injector,
     Input,
     OnChanges,
     OnInit,
@@ -17,6 +18,8 @@ import {Observable, of} from 'rxjs';
 import {ColumnData} from './column-data';
 import {TableRow} from '@ironsource/fusion-ui/components/table/common/entities';
 import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
+import {TableTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     // eslint-disable-next-line
@@ -36,6 +39,10 @@ export class TableRowComponent implements OnInit, OnChanges {
     @Input() isExpanded: boolean;
     @Input() isInnerRow: boolean;
     @Input() hasAfterSticky: boolean;
+
+    /** @internal */
+    @Input() testId: string;
+
     @Output() rowRemoved = new EventEmitter();
     @Output() selectedChange = new EventEmitter();
     @Output() expandRow = new EventEmitter<TableRowExpandEmitter>();
@@ -69,6 +76,11 @@ export class TableRowComponent implements OnInit, OnChanges {
     cellShown = this.showCell.bind(this);
     attrRowspan = this.getAttrRowspan.bind(this);
 
+    /** @internal */
+    tableTestIdModifiers: typeof TableTestIdModifiers = TableTestIdModifiers;
+    /** @internal */
+    testIdsService: TestIdsService = this.injector.get(TestIdsService);
+
     get expandCellCount(): Observable<number[]> {
         if (!!this.options && !!this.options.rowsExpandableOptions && !!this.tableService.expandLevels) {
             const expandLevelsByIndex = this.tableService.getExpandLevelByRowIndex(this.rowIndex);
@@ -100,7 +112,7 @@ export class TableRowComponent implements OnInit, OnChanges {
         };
     }
 
-    constructor(public tableService: TableService, private cdRef: ChangeDetectorRef) {}
+    constructor(public tableService: TableService, private cdRef: ChangeDetectorRef, private injector: Injector) {}
 
     ngOnInit(): void {
         this.dataRowIndex = this.rowIndex;

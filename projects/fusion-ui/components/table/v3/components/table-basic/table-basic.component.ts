@@ -5,6 +5,7 @@ import {
     Component,
     ElementRef,
     EventEmitter,
+    Injector,
     Input,
     OnDestroy,
     OnInit,
@@ -21,6 +22,8 @@ import {
 import {TableService} from '@ironsource/fusion-ui/components/table/common/services';
 import {fromEvent, Subject, from} from 'rxjs';
 import {filter, mergeMap, takeUntil} from 'rxjs/operators';
+import {TableTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     // eslint-disable-next-line
@@ -43,6 +46,9 @@ export class TableBasicComponent implements OnInit, OnDestroy, AfterViewInit {
     @Input() set tableClientWidth(value: number) {
         this._halfTableClientWidth = value ? value / 2 : 0;
     }
+
+    /** @internal */
+    @Input() testId: string;
 
     @Output() rowSelected = new EventEmitter();
     @Output() expandRow = new EventEmitter<TableRowExpandEmitter>();
@@ -71,6 +77,11 @@ export class TableBasicComponent implements OnInit, OnDestroy, AfterViewInit {
     rowClass = this.getRowClass.bind(this);
     rowRowspanIndexes = this.getRowspanIndexes.bind(this);
 
+    /** @internal */
+    tableTestIdModifiers: typeof TableTestIdModifiers = TableTestIdModifiers;
+    /** @internal */
+    testIdsService: TestIdsService = this.injector.get(TestIdsService);
+
     private _halfTableClientWidth = 0;
     private tableOptions;
     private onDestroy$ = new Subject();
@@ -79,7 +90,8 @@ export class TableBasicComponent implements OnInit, OnDestroy, AfterViewInit {
         public tableService: TableService,
         private cdr: ChangeDetectorRef,
         private elementRef: ElementRef,
-        private renderer: Renderer2
+        private renderer: Renderer2,
+        private injector: Injector
     ) {}
 
     ngOnInit(): void {

@@ -6,6 +6,8 @@ import {
     Directive,
     ElementRef,
     EventEmitter,
+    HostBinding,
+    Injector,
     Input,
     OnDestroy,
     OnInit,
@@ -24,9 +26,13 @@ import {
 } from './chip-filter-component-configurations';
 import {takeUntil} from 'rxjs/operators';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
+import {ChipFilterTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Directive()
 export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, OnDestroy, AfterContentInit {
+    /** @internal */
+    @Input() testId: string;
     /** @internal */
     @ContentChild(ApiBase, {static: true}) apiBase: ApiBase;
     /** @internal */
@@ -46,6 +52,11 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     leftIcon: ChipIcon;
     /** @internal */
     rightIcon: ChipIcon;
+
+    /** @internal */
+    testIdChipFilterModifiers: typeof ChipFilterTestIdModifiers = ChipFilterTestIdModifiers;
+    /** @internal */
+    testIdsService: TestIdsService = this.injector.get(TestIdsService);
 
     private onDestroy$ = new Subject<void>();
     private restListeners$ = new Subject<void>();
@@ -81,6 +92,11 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     @Input() set isDynamicContent(value: boolean) {
         this.isDefaultContent = !value;
     }
+
+    @HostBinding('attr.data-testid') get testAttribute(): string {
+        return this.testIdsService.getTestAttribute(this.testId, this.testIdChipFilterModifiers.CHIP_FILTER);
+    }
+
     /**
      * On dynamic filter close button clicked (filter removed)
      * @ignore
@@ -144,7 +160,8 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
         /** @internal */
         public element: ElementRef,
         private renderer: Renderer2,
-        private cdr: ChangeDetectorRef
+        private cdr: ChangeDetectorRef,
+        private injector: Injector
     ) {}
 
     ngOnInit() {

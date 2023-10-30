@@ -46,6 +46,8 @@ export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, 
     @Input() totalItems: number;
     @Input() isPendingItems: boolean;
     @Input() hasSelectAll: boolean = true;
+    /** @internal */
+    @Input() testId: string;
 
     @Input() set items(data: DropdownOption[]) {
         this.options$.next(data || []);
