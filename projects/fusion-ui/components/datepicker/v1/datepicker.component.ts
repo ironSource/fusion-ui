@@ -326,7 +326,7 @@ export class DatepickerComponent implements OnInit, OnDestroy, OnChanges, AfterV
                     new Date(dateA.getFullYear(), dateA.getMonth()).getTime() === new Date(dateB.getFullYear(), dateB.getMonth()).getTime()
                 );
             }
-        } else if (isDate(dateA) || isDate(dateB)) {
+        } else if ((!isDate(dateA) && isDate(dateB)) || (isDate(dateA) && !isDate(dateB))) {
             return false;
         } else {
             return true;
