@@ -43,6 +43,7 @@ export class DatepickerComponent implements OnInit, OnDestroy, OnChanges, AfterV
     @Input() set isOpened(value: boolean) {
         this.isOpen$.next(!isNullOrUndefined(value) ? value : false);
     }
+
     @Input() isTimePicker = false;
     @Input() isTimeZonePicker = false;
     @Input() isDisabled = false;
@@ -114,12 +115,8 @@ export class DatepickerComponent implements OnInit, OnDestroy, OnChanges, AfterV
 
     ngOnChanges(changes) {
         if (
-            (this.selectedDate &&
-                isDate(changes?.minDate?.currentValue) &&
-                isDate(changes?.minDate?.previousValue) &&
-                !this.isDatesEqual(changes?.minDate?.currentValue, changes?.minDate?.previousValue, 'day')) ||
-            (isDate(changes?.maxDate?.currentValue) &&
-                isDate(changes?.maxDate?.previousValue) &&
+            this.selectedDate &&
+            (!this.isDatesEqual(changes?.minDate?.currentValue, changes?.minDate?.previousValue, 'day') ||
                 !this.isDatesEqual(changes?.maxDate?.currentValue, changes?.maxDate?.previousValue, 'day'))
         ) {
             this.setWeeks(this.selectedDate.date ? this.selectedDate.date : this.today);
@@ -317,14 +314,22 @@ export class DatepickerComponent implements OnInit, OnDestroy, OnChanges, AfterV
     }
 
     private isDatesEqual(dateA: Date, dateB: Date, granularity: 'month' | 'day'): boolean {
-        dateA = new Date(dateA);
-        dateB = new Date(dateB);
-        dateA.setHours(0, 0, 0, 0);
-        dateB.setHours(0, 0, 0, 0);
-        if (granularity === 'day') {
-            return dateA.getTime() === dateB.getTime();
-        } else if (granularity === 'month') {
-            return new Date(dateA.getFullYear(), dateA.getMonth()).getTime() === new Date(dateB.getFullYear(), dateB.getMonth()).getTime();
+        if (isDate(dateA) && isDate(dateB)) {
+            dateA = new Date(dateA);
+            dateB = new Date(dateB);
+            dateA.setHours(0, 0, 0, 0);
+            dateB.setHours(0, 0, 0, 0);
+            if (granularity === 'day') {
+                return dateA.getTime() === dateB.getTime();
+            } else if (granularity === 'month') {
+                return (
+                    new Date(dateA.getFullYear(), dateA.getMonth()).getTime() === new Date(dateB.getFullYear(), dateB.getMonth()).getTime()
+                );
+            }
+        } else if (isDate(dateA) || isDate(dateB)) {
+            return false;
+        } else {
+            return true;
         }
     }
 
