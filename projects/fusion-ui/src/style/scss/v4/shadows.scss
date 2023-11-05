@@ -2,40 +2,40 @@
 
 /* region css variables */
 .fusion-v4 {
-    --fu-shadow-v4-xs: #{$boxShadowXS};
-    --fu-shadow-v4-sm: #{$boxShadowSM};
-    --fu-shadow-v4-md: #{$boxShadowMD};
-    --fu-shadow-v4-lg: #{$boxShadowLG};
-    --fu-shadow-v4-xl: #{$boxShadowXL};
-    --fu-shadow-v4-xxl: #{$boxShadowXXL};
-    --fu-shadow-v4-xxxl: #{$boxShadowXXXL};
-    --fu-shadow-v4-slg: #{$boxShadowSLG};
+    --fu-shadow-v4-xs: #{$boxShadowV4-XS};
+    --fu-shadow-v4-sm: #{$boxShadowV4-SM};
+    --fu-shadow-v4-md: #{$boxShadowV4-MD};
+    --fu-shadow-v4-lg: #{$boxShadowV4-LG};
+    --fu-shadow-v4-xl: #{$boxShadowV4-XL};
+    --fu-shadow-v4-xxl: #{$boxShadowV4-XXL};
+    --fu-shadow-v4-xxxl: #{$boxShadowV4-XXXL};
+    --fu-shadow-v4-slg: #{$boxShadowV4-SLG};
 }
 /* endregion css variables */
 
 /* region css classes */
 .fu-shadow-v4-xs {
-    box-shadow: var(--fu-shadow-v4-xs);
+    box-shadow: var(--fu-shadow-v4-xs, #{$boxShadowV4-XS});
 }
 .fu-shadow-v4-sm {
-    box-shadow: var(--fu-shadow-v4-sm);
+    box-shadow: var(--fu-shadow-v4-sm, #{$boxShadowV4-SM});
 }
 .fu-shadow-v4-md {
-    box-shadow: var(--fu-shadow-v4-md);
+    box-shadow: var(--fu-shadow-v4-md, #{$boxShadowV4-MD});
 }
 .fu-shadow-v4-lg {
-    box-shadow: var(--fu-shadow-v4-lg);
+    box-shadow: var(--fu-shadow-v4-lg, #{$boxShadowV4-LG});
 }
 .fu-shadow-v4-xl {
-    box-shadow: var(--fu-shadow-v4-xl);
+    box-shadow: var(--fu-shadow-v4-xl, #{$boxShadowV4-XL});
 }
 .fu-shadow-v4-xxl {
-    box-shadow: var(--fu-shadow-v4-xxl);
+    box-shadow: var(--fu-shadow-v4-xxl, #{$boxShadowV4-XXL});
 }
 .fu-shadow-v4-xxxl {
-    box-shadow: var(--fu-shadow-v4-xxxl);
+    box-shadow: var(--fu-shadow-v4-xxxl, #{$boxShadowV4-XXXL});
 }
 .fu-shadow-v4-slg {
-    box-shadow: var(--fu-shadow-v4-slg);
+    box-shadow: var(--fu-shadow-v4-slg, #{$boxShadowV4-SLG});
 }
 /* endregion css classes */
