@@ -1,27 +1,41 @@
 @import './vars/shadows';
 
-.fu-shadow-xs {
-    @extend %shadow-v4-xs;
+/* region css variables */
+.fusion-v4 {
+    --fu-shadow-v4-xs: #{$boxShadowXS};
+    --fu-shadow-v4-sm: #{$boxShadowSM};
+    --fu-shadow-v4-md: #{$boxShadowMD};
+    --fu-shadow-v4-lg: #{$boxShadowLG};
+    --fu-shadow-v4-xl: #{$boxShadowXL};
+    --fu-shadow-v4-xxl: #{$boxShadowXXL};
+    --fu-shadow-v4-xxxl: #{$boxShadowXXXL};
+    --fu-shadow-v4-slg: #{$boxShadowSLG};
 }
-.fu-shadow-sm {
-    @extend %shadow-v4-sm;
-}
-.fu-shadow-md {
-    @extend %shadow-v4-md;
-}
-.fu-shadow-lg {
-    @extend %shadow-v4-lg;
-}
-.fu-shadow-xl {
-    @extend %shadow-v4-xl;
-}
-.fu-shadow-xxl {
-    @extend %shadow-v4-xxl;
-}
-.fu-shadow-xxxl {
-    @extend %shadow-v4-xxxl;
-}
-.fu-shadow-slg {
-    @extend %shadow-v4-slg;
-}
+/* endregion css variables */
 
+/* region css classes */
+.fu-shadow-v4-xs {
+    box-shadow: var(--fu-shadow-v4-xs);
+}
+.fu-shadow-v4-sm {
+    box-shadow: var(--fu-shadow-v4-sm);
+}
+.fu-shadow-v4-md {
+    box-shadow: var(--fu-shadow-v4-md);
+}
+.fu-shadow-v4-lg {
+    box-shadow: var(--fu-shadow-v4-lg);
+}
+.fu-shadow-v4-xl {
+    box-shadow: var(--fu-shadow-v4-xl);
+}
+.fu-shadow-v4-xxl {
+    box-shadow: var(--fu-shadow-v4-xxl);
+}
+.fu-shadow-v4-xxxl {
+    box-shadow: var(--fu-shadow-v4-xxxl);
+}
+.fu-shadow-v4-slg {
+    box-shadow: var(--fu-shadow-v4-slg);
+}
+/* endregion css classes */

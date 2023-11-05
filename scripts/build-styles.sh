@@ -57,6 +57,9 @@ sass projects/fusion-ui/src/style/scss/v2/fonts.scss dist/fusion-ui/style/v2/fon
 sass projects/fusion-ui/src/style/scss/v3/vars/_fonts.scss dist/fusion-ui/style/v3/fonts.css -s compressed
 sass projects/fusion-ui/src/style/scss/v4/vars/_fonts.scss dist/fusion-ui/style/v4/fonts.css -s compressed
 
+# copy and compile shadows v4
+sass projects/fusion-ui/src/style/scss/v4/shadows.scss dist/fusion-ui/style/v4/shadows.css -s compressed
+
 
 echo  -e "${GREEN}-- copy and compile default fonts and grid by last (v3) versions ${NOCOLOR}"
 # compile default fonts (last version default - 3 )
