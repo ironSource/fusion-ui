@@ -5,6 +5,17 @@
             <!--UI-Component Examples-->
             <div class="is-example-title">Type</div>
 
+<!--            <fusion-example-block id="typeBugFix" title="BugFix" [formGroup]="form">
+                <div class="row">
+                    <div class="row">
+                        <fusion-datepicker formControlName="startDate" [minDate]="minimumDate"
+                                           [maxDate]="endDateValue"></fusion-datepicker>
+                        <fusion-datepicker formControlName="endDate" [minDate]="startDateValue"
+                                           [maxDate]="getMaxEndDate.bind(this) | generic:startDateValue"></fusion-datepicker>
+                    </div>
+                </div>
+            </fusion-example-block>-->
+
             <fusion-example-block id="typeBasic" title="Basic">
                 <ng-template fusionExampleBlock="Angular">
                     <fusion-code-block

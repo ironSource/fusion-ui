@@ -9,25 +9,25 @@ import {StyleVersionButtonModule} from '../../components/style-version-button/st
 import {MenuItemExampleModule} from '../../components/menu-item-example/menu-item-example.module';
 
 // for layout v4
-import {LayoutComponent} from '@ironsource/fusion-ui/components/layout/v4';
-import {TopFilterIncludeExcludeComponent} from '@ironsource/fusion-ui/components/top-filter-include-exclude';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+// import {LayoutComponent} from '@ironsource/fusion-ui/components/layout/v4';
+// import {TopFilterIncludeExcludeComponent} from '@ironsource/fusion-ui/components/top-filter-include-exclude';
+// import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
     declarations: [DocsComponent],
     imports: [
         CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
+        // FormsModule,
+        // ReactiveFormsModule,
         DocsRoutingModule,
         // for layout v4
-        LayoutComponent,
-        TopFilterIncludeExcludeComponent
+        // LayoutComponent,
+        // TopFilterIncludeExcludeComponent
         // ---- end of layout v4: for layout v1 and v2 ----
-        // LayoutV1Module.forRoot({svgOptions: {assetsPath: environment.assetsPath}}),
+        LayoutV1Module.forRoot({svgOptions: {assetsPath: environment.assetsPath}}),
         // LayoutModule.forRoot({svgOptions: {assetsPath: environment.assetsPath}}),
-        // StyleVersionButtonModule,
-        // MenuItemExampleModule
+        StyleVersionButtonModule,
+        MenuItemExampleModule
     ]
 })
 export class DocsModule {}

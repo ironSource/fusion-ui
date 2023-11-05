@@ -7,7 +7,7 @@ export function isRegExp(object: any) {
 }
 
 export function isDate(object: any): boolean {
-    return object instanceof Date;
+    return object instanceof Date && isFinite(+object);
 }
 
 export function isError(object: any): boolean {
