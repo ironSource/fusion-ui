@@ -12,7 +12,7 @@ const actionsData = {
 };
 
 export default {
-    title: 'Components/Tabs/Tabs',
+    title: 'V3/Components/Tabs/Tabs',
     component: TabsComponent,
     decorators: [
         moduleMetadata({

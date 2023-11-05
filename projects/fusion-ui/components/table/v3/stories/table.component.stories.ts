@@ -34,7 +34,7 @@ const actionsData = {
 };
 
 export default {
-    title: 'Components/Table',
+    title: 'V3/Components/Table',
     component: TableComponent,
     decorators: [
         moduleMetadata({

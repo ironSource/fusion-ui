@@ -12,7 +12,7 @@ const DEFAULT_CONFIGURATION: TagComponentConfigurations = {
 };
 
 export default {
-    title: 'Components/Tag',
+    title: 'V3/Components/Tag',
     component: TagComponent,
     decorators: [
         moduleMetadata({

@@ -10,7 +10,7 @@ import {TopFilterIncludeExcludeComponent} from './top-filter-include-exclude.com
 import {MOK_APPLICATIONS_ONE_LINE_OPTIONS} from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
 
 const meta: Meta<TopFilterIncludeExcludeComponent> = {
-    title: 'Components/Filters/Top Filter/Include-Exclude (combined)',
+    title: 'V3/Components/Filters/Top Filter/Include-Exclude (combined)',
     component: TopFilterIncludeExcludeComponent,
     decorators: [
         moduleMetadata({

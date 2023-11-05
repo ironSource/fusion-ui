@@ -5,7 +5,7 @@ import {dedent} from 'ts-dedent';
 import {StatusLabelComponent} from './status-label.component';
 
 export default {
-    title: 'Components/Stats Label',
+    title: 'V3/Components/Stats Label',
     component: StatusLabelComponent,
     decorators: [
         moduleMetadata({

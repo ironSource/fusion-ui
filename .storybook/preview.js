@@ -20,7 +20,39 @@ const preview = {
         docs: {inlineStories: true},
         options: {
             storySort: {
-                order: ['Introduction', 'Styleguide', ['Colors', 'Typography', 'Iconography', 'Grid system', '*'], 'Components'],
+                order: [
+                    'Introduction',
+                    'V4',
+                    [
+                        'Foundation',
+                        [
+                            'Typography',
+                            'Palette color',
+                            'Elevations',
+                            'Border radius',
+                            'Spacing',
+                            'Grid',
+                            'Breakpoints',
+                        ],
+                        'Components',
+                        '*',
+                    ],
+                    'V3',
+                    [
+                        'Foundation',
+                        [
+                            'Typography',
+                            'Palette color',
+                            'Elevations',
+                            'Border radius',
+                            'Spacing',
+                            'Grid',
+                            'Breakpoints',
+                        ],
+                        'Components',
+                        '*',
+                    ],
+                ],
                 method: 'alphabetical',
                 locales: 'en-Us'
             },

@@ -13,7 +13,7 @@ import {dedent} from 'ts-dedent';
 import {InputOptions} from '@ironsource/fusion-ui/components/input';
 
 export default {
-    title: 'Components/Inputs/Input-Inline',
+    title: 'V3/Components/Inputs/Input-Inline',
     component: InputInlineComponent,
     decorators: [
         moduleMetadata({

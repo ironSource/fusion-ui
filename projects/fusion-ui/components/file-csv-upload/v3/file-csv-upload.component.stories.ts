@@ -10,7 +10,7 @@ import {FileDragAndDropState} from '@ironsource/fusion-ui/components/file-drag-a
 const defaultFileState: FileDragAndDropState = {name: ''};
 
 const meta: Meta<FileCsvUploadComponent> = {
-    title: 'Components/CSV File Uploader',
+    title: 'V3/Components/CSV File Uploader',
     component: FileCsvUploadComponent,
     decorators: [
         moduleMetadata({

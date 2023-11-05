@@ -13,7 +13,7 @@ const actionsData = {
 };
 
 export default {
-    title: 'Components/Dialog/Header',
+    title: 'V3/Components/Dialog/Header',
     component: ModalHeaderComponent,
     decorators: [
         moduleMetadata({

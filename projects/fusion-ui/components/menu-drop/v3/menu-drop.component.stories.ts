@@ -15,7 +15,7 @@ const MOCK_MENU_ITEMS: MenuDropItem[] = [
 ];
 
 export default {
-    title: 'Components/Dropped Menu',
+    title: 'V3/Components/Dropped Menu',
     component: MenuDropComponent,
     decorators: [
         moduleMetadata({

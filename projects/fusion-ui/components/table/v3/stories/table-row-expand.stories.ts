@@ -17,7 +17,7 @@ import {
 } from '@ironsource/fusion-ui/components/table/v3/stories/table.mock-data';
 
 export default {
-    title: 'Components/Table/Expandable Rows',
+    title: 'V3/Components/Table/Expandable Rows',
     component: TableComponent,
     decorators: [
         moduleMetadata({

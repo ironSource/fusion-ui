@@ -22,7 +22,7 @@ const inputFormControlPassword = new FormControl('qwerty');
 // endregion
 
 export default {
-    title: 'Components/Inputs/Input',
+    title: 'V3/Components/Inputs/Input',
     component: InputComponent,
     decorators: [
         moduleMetadata({

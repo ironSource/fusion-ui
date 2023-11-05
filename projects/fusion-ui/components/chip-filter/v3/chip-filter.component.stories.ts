@@ -14,7 +14,7 @@ import {DropdownDualMultiSelectModule} from '@ironsource/fusion-ui/components/dr
 import {ChipFilterComponentConfigurations} from '@ironsource/fusion-ui/components/chip-filter/common/base';
 
 export default {
-    title: 'Components/Filters/Filter (Chip)',
+    title: 'V3/Components/Filters/Filter (Chip)',
     component: ChipFilterComponent,
     decorators: [
         moduleMetadata({

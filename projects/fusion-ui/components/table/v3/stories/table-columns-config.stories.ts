@@ -18,7 +18,7 @@ import {
 } from '@ironsource/fusion-ui/components/table/v3/stories/table.mock-data';
 
 export default {
-    title: 'Components/Table/Columns Configuration',
+    title: 'V3/Components/Table/Columns Configuration',
     component: TableComponent,
     decorators: [
         moduleMetadata({
