@@ -6,6 +6,7 @@ import {delay, tap} from 'rxjs/operators';
 import {VersionService} from '../../../services/version/version.service';
 import {DaterangeCustomPreset} from '@ironsource/fusion-ui/components/daterange/entities/daterange-custom-presets';
 import {DaterangeOptions} from '@ironsource/fusion-ui/components/daterange/entities';
+import {Datepicker} from '@ironsource/fusion-ui/components/datepicker/v1';
 
 @Component({
     selector: 'fusion-datepicker-docs',
@@ -15,6 +16,7 @@ import {DaterangeOptions} from '@ironsource/fusion-ui/components/daterange/entit
 })
 export class DatepickerDocsComponent implements OnInit {
     formDatePicker: FormGroup;
+    form: FormGroup;
 
     rightMenu: DocsMenuItem[] = [
         {
@@ -144,6 +146,38 @@ export class DatepickerDocsComponent implements OnInit {
     });
     // endregion
 
+    // bug fix ISCT-98 --------------------
+    maxDaysSelection: number;
+    startDate?: Datepicker = {date: new Date()};
+    endDate?: Datepicker = {date: new Date()};
+
+    minimumDate: Date;
+
+    get endDateValue(): Date {
+        return this.form.get('endDate').value.date;
+    }
+    get startDateValue(): Date {
+        const date = this.form.get('startDate').value.date;
+        return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate() - 1));
+    }
+    getMaximumEndDate(startDate) {
+        const currentDate: Date = new Date(new Date().toUTCString());
+
+        const maxRangeDate: Date = new Date(
+            Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + this.maxDaysSelection)
+        );
+
+        const maximumDate: Date = new Date(Math.min(currentDate.getTime(), maxRangeDate.getTime()));
+
+        return new Date(Date.UTC(maximumDate.getFullYear(), maximumDate.getMonth(), maximumDate.getDate()));
+    }
+
+    getMaxEndDate(startDate: Date): Date {
+        return this.getMaximumEndDate(startDate);
+    }
+
+    // ----------------------
+
     constructor(private versionService: VersionService, private formBuilder: FormBuilder) {}
 
     ngOnInit() {
@@ -156,6 +190,11 @@ export class DatepickerDocsComponent implements OnInit {
             datePickerBasic: [{date: new Date()}],
             datePickerFull: [{date: new Date(), timezone: 'UTC'}],
             datePickerDisabled: [{value: {date: new Date()}, disabled: true}]
+        });
+
+        this.form = this.formBuilder.group({
+            startDate: [this.startDate],
+            endDate: [this.endDate]
         });
 
         this.formDatePicker.valueChanges.subscribe(val => {

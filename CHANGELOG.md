@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [6.2.1](https://github.com/ironSource/fusion-ui/compare/v6.2.1-rc.1...v6.2.1) (2023-11-05)
+
+### [6.2.1-rc.1](https://github.com/ironSource/fusion-ui/compare/v6.2.1-rc.0...v6.2.1-rc.1) (2023-11-02)
+
+### [6.2.1-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.2.0...v6.2.1-rc.0) (2023-11-02)
+
+
+### Bug Fixes
+
+* **isct-98:** fix datepicker v1 ([4d0bec0](https://github.com/ironSource/fusion-ui/commit/4d0bec00d49c4dd71fc681e6ad11b1ecea2e6696))
+
 ## [6.2.0](https://github.com/ironSource/fusion-ui/compare/v6.2.0-rc.0...v6.2.0) (2023-10-30)
 
 ## [6.2.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.1.1...v6.2.0-rc.0) (2023-10-16)
