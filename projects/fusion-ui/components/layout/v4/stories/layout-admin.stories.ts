@@ -19,7 +19,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TopFilterIncludeExcludeComponent} from '@ironsource/fusion-ui/components/top-filter-include-exclude';
 
 const meta: Meta<LayoutStoryWrapperComponent> = {
-    title: 'V3/Components/Layout/One Main Parent',
+    title: 'V4/Components/Layout/One Main Parent',
     component: LayoutComponent,
     decorators: [
         moduleMetadata({

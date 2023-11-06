@@ -1,0 +1,10 @@
+import {Meta} from '@storybook/addon-docs';
+import { Source } from '@storybook/blocks';
+
+<Meta title="V4/Foundation/Palette color"/>
+
+# Palette color
+
+Radix Colors scales are just simple JavaScript objects, so you can use them with your preferred styling solution easily. [radix-ui.com](https://www.radix-ui.com/colors)
+
+<div>Oppa</div>
