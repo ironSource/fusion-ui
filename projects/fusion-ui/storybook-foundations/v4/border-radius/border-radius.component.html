@@ -1,0 +1,18 @@
+<div class="border-radius-wrapper">
+    <div *ngFor="let borderRadius of borderRadiusData"
+        class="border-radius-item"
+    >
+        <div
+            class="border-radius-example"
+            [style.border-radius]="borderRadius.borderRadius"
+            [title]="borderRadius.cssVarName"
+        >
+            <Typography variant="caption"
+            >{{ borderRadius.borderRadius }}
+            </Typography>
+        </div>
+        <div class="border-radius-label">
+            <Typography variant="h4">{{ borderRadius.name }}</Typography>
+        </div>
+    </div>
+</div>

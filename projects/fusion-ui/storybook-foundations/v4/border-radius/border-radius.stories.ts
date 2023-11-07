@@ -1,11 +1,11 @@
 import type {Meta, StoryObj} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
-import {ColorsPaletteComponent} from './colors-palette.component';
+import {BorderRadiusComponent} from './border-radius.component';
 
-const meta: Meta<ColorsPaletteComponent> = {
-    title: 'V4/Foundation/Palette colors',
-    component: ColorsPaletteComponent,
+const meta: Meta<BorderRadiusComponent> = {
+    title: 'V4/Foundation/Border radius',
+    component: BorderRadiusComponent,
     decorators: [
         moduleMetadata({
             declarations: [],
@@ -15,8 +15,8 @@ const meta: Meta<ColorsPaletteComponent> = {
 };
 
 export default meta;
-type Story = StoryObj<ColorsPaletteComponent>;
+type Story = StoryObj<BorderRadiusComponent>;
 
 export const Palette: Story = {
-    name: 'Palette colors'
+    name: 'Border radius'
 };
