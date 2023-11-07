@@ -27,7 +27,7 @@ export const colorPaletteLight = {
     },
     default: {
         light: 'hsl(0, 0%, 89.5%)',
-        main: 'hsl(0, 0%, 86.8%)',
+        main: 'hsl(0 0% 94.51%)',
         dark: 'hsl(0, 0%, 92.0%)',
         outlinedBorder: 'hsl(0, 0%, 73.2%)',
         contrastText: 'hsl(0, 0%, 12.5%)',
@@ -44,7 +44,7 @@ export const colorPaletteLight = {
     text: {
         primary: 'hsl(0, 0%, 12.5%)',
         secondary: 'hsl(0, 0%, 39.3%)',
-        disabled: 'hsl(0, 0%, 50.3%)'
+        disabled: 'hsl(0 0% 73.33%)'
     },
     primary: {
         lighter: 'hsl(209, 100%, 96.5%)',
