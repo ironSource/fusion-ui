@@ -21,31 +21,31 @@ Or Import css file for *.css with shadow classes
     <div class="fu-shadow-examples fusion-v4">
         <div className="fu-shadow-example-holder">
             <div className="fu-shadow-example-label font-v4-heading-4">xsmall</div>
-            <div className="fu-shadow-example fu-shadow-v4-xs"></div>
+            <div className="fu-shadow-example" style={{boxShadow: `var(--box-shadow-xs)`}}></div>
         </div>
         <div className="fu-shadow-example-holder">
             <div className="fu-shadow-example-label font-v4-heading-4">small</div>
-            <div className="fu-shadow-example fu-shadow-v4-sm"></div>
+            <div className="fu-shadow-example" style={{boxShadow: `var(--box-shadow-sm)`}}></div>
         </div>
         <div className="fu-shadow-example-holder">
             <div className="fu-shadow-example-label font-v4-heading-4">medium</div>
-            <div className="fu-shadow-example fu-shadow-v4-md"></div>
+            <div className="fu-shadow-example" style={{boxShadow: `var(--box-shadow-md)`}}></div>
         </div>
         <div className="fu-shadow-example-holder">
             <div className="fu-shadow-example-label font-v4-heading-4">large</div>
-            <div className="fu-shadow-example fu-shadow-v4-lg"></div>
+            <div className="fu-shadow-example" style={{boxShadow: `var(--box-shadow-lg)`}}></div>
         </div>
         <div className="fu-shadow-example-holder">
             <div className="fu-shadow-example-label font-v4-heading-4">xlarge</div>
-            <div className="fu-shadow-example fu-shadow-v4-xl"></div>
+            <div className="fu-shadow-example" style={{boxShadow: `var(--box-shadow-xl)`}}></div>
         </div>
         <div className="fu-shadow-example-holder">
             <div className="fu-shadow-example-label font-v4-heading-4">xxlarge</div>
-            <div className="fu-shadow-example fu-shadow-v4-xxl"></div>
+            <div className="fu-shadow-example" style={{boxShadow: `var(--box-shadow-xxl)`}}></div>
         </div>
         <div className="fu-shadow-example-holder">
             <div className="fu-shadow-example-label font-v4-heading-4">xxxlarge</div>
-            <div className="fu-shadow-example fu-shadow-v4-xxxl"></div>
+            <div className="fu-shadow-example" style={{boxShadow: `var(--box-shadow-xxxl)`}}></div>
         </div>
         <div className="fu-shadow-example-holder">
             <div className="fu-shadow-example-label font-v4-heading-4">slarge</div>
@@ -54,7 +54,8 @@ Or Import css file for *.css with shadow classes
     </div>
 </div>
 
-## used CSS variables and classes.
+<br/><br/><br/>
+### CSS variables
 <Source language="css" code={`
 .fusion-v4 {
     --box-shadow-xs: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
@@ -68,7 +69,8 @@ Or Import css file for *.css with shadow classes
 }
 `} />
 
-## SCSS.
+<br/><br/><br/>
+### SCSS variables
 <Source language="css" code={`
 $boxShadowV4-XS: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
 $boxShadowV4-SM: 0px 1px 3px 0px rgba(16, 24, 40, 0.10), 0px 1px 2px 0px rgba(16, 24, 40, 0.06);
