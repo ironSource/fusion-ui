@@ -27,7 +27,7 @@ const preview = {
                         'Foundation',
                         [
                             'Typography',
-                            'Palette color',
+                            'Palette colors',
                             'Elevations',
                             'Border radius',
                             'Spacing',

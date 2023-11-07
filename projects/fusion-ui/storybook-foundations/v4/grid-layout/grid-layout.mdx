@@ -1,0 +1,168 @@
+import {Meta} from '@storybook/addon-docs';
+
+<Meta title="V4/Foundation/Grid"/>
+
+# Grid
+The Grid layout is here to help you align blocks and widgets into columns and rows in a specific area. By following a pattern made of containers with CSS classes, you can easily design your customized tab content, keeping a visual consistency, readability, and adaptability between screens.
+
+Import style-guide.css file for css variables
+```css
+@import '~@ironsource/fusion-ui/style/v4/style-guide.css';
+```
+
+### Grid gap
+Our grid columns have a 12px padding on either side that results in a 24px gutter between columns and a 12px gutter on the grid edges. Even though our columns are fluid, the gutter remains constant.
+
+
+<style>
+    {
+        `
+.grid-story-wrapper{
+    padding: var(--spacing-300);
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--common-divider);
+    margin: 32px auto;
+}
+.row {
+    margin-bottom: var(--spacing-200, 16px);
+}
+.row:last-child{
+   margin-bottom: 0;
+}
+.col-inner-content {
+    height: 36px;
+    color: var(--primary-contrast-text);
+    background-color: var(--primary-main-8-p);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+`
+    }
+</style>
+
+<div class="sb-unstyled grid-story-wrapper fusion-v4">
+    <div class="row">
+        <div class="col-1">
+            <div class="col-inner-content font-v4-subtitle-2">1</div>
+        </div>
+        <div class="col-1">
+            <div class="col-inner-content font-v4-subtitle-2">2</div>
+        </div>
+        <div class="col-1">
+            <div class="col-inner-content font-v4-subtitle-2">3</div>
+        </div>
+        <div class="col-1">
+            <div class="col-inner-content font-v4-subtitle-2">4</div>
+        </div>
+        <div class="col-1">
+            <div class="col-inner-content font-v4-subtitle-2">5</div>
+        </div>
+        <div class="col-1">
+            <div class="col-inner-content font-v4-subtitle-2">6</div>
+        </div>
+        <div class="col-1">
+            <div class="col-inner-content font-v4-subtitle-2">7</div>
+        </div>
+        <div class="col-1">
+            <div class="col-inner-content font-v4-subtitle-2">8</div>
+        </div>
+        <div class="col-1">
+            <div class="col-inner-content font-v4-subtitle-2">9</div>
+        </div>
+        <div class="col-1">
+            <div class="col-inner-content font-v4-subtitle-2">10</div>
+        </div>
+        <div class="col-1">
+            <div class="col-inner-content font-v4-subtitle-2">11</div>
+        </div>
+        <div class="col-1">
+            <div class="col-inner-content font-v4-subtitle-2">12</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <div class="col-inner-content font-v4-subtitle-2">col-2</div>
+        </div>
+        <div class="col-2">
+            <div class="col-inner-content font-v4-subtitle-2">col-2</div>
+        </div>
+        <div class="col-2">
+            <div class="col-inner-content font-v4-subtitle-2">col-2</div>
+        </div>
+        <div class="col-2">
+            <div class="col-inner-content font-v4-subtitle-2">col-2</div>
+        </div>
+        <div class="col-2">
+            <div class="col-inner-content font-v4-subtitle-2">col-2</div>
+        </div>
+        <div class="col-2">
+            <div class="col-inner-content font-v4-subtitle-2">col-2</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <div class="col-inner-content font-v4-subtitle-2">col-3</div>
+        </div>
+        <div class="col-3">
+            <div class="col-inner-content font-v4-subtitle-2">col-3</div>
+        </div>
+        <div class="col-3">
+            <div class="col-inner-content font-v4-subtitle-2">col-3</div>
+        </div>
+        <div class="col-3">
+            <div class="col-inner-content font-v4-subtitle-2">col-3</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div class="col-inner-content font-v4-subtitle-2">col-4</div>
+        </div>
+        <div class="col-4">
+            <div class="col-inner-content font-v4-subtitle-2">col-4</div>
+        </div>
+        <div class="col-4">
+            <div class="col-inner-content font-v4-subtitle-2">col-4</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="col-inner-content font-v4-subtitle-2">col-6</div>
+        </div>
+        <div class="col-6">
+            <div class="col-inner-content font-v4-subtitle-2">col-6</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="col-inner-content font-v4-subtitle-2">col-12</div>
+        </div>
+    </div>
+</div>
+
+### Grid offset
+<div class="sb-unstyled grid-story-wrapper fusion-v4">
+    <div class="row" >
+        <div class="col-4" >
+            <div class="col-inner-content font-v4-subtitle-2" >.col-4</div>
+        </div>
+        <div class="col-4 offset-4" >
+            <div class="col-inner-content font-v4-subtitle-2" >.col-4.offset-4</div>
+        </div>
+    </div>
+    <div class="row" >
+        <div class="col-3 offset-3" >
+            <div class="col-inner-content font-v4-subtitle-2" >.col-3.offset-3</div>
+        </div>
+        <div class="col-3 offset-3" >
+            <div class="col-inner-content font-v4-subtitle-2" >.col-3.offset-3</div>
+        </div>
+    </div>
+    <div class="row" >
+        <div class="col-6 offset-3" >
+            <div class="col-inner-content font-v4-subtitle-2" >.col-6.offset-3</div>
+        </div>
+    </div>
+</div>
+
