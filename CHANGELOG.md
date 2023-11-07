@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [6.2.2-rc.3](https://github.com/ironSource/fusion-ui/compare/v6.2.2-rc.2...v6.2.2-rc.3) (2023-11-07)
+
 ### [6.2.2-rc.2](https://github.com/ironSource/fusion-ui/compare/v6.2.2-rc.1...v6.2.2-rc.2) (2023-11-07)
 
 ### [6.2.2-rc.1](https://github.com/ironSource/fusion-ui/compare/v6.2.2-rc.0...v6.2.2-rc.1) (2023-11-05)
