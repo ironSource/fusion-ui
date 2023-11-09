@@ -38,22 +38,7 @@ Put ```import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';``` a
 ```imports: [CommonModule, IconModule,.....``` in your static component or module
 ```<fusion-icon name="ICON_NAME"></fusion-icon>``` in your template.
 
-**ICON_NAME** here it path to icon, for example: ```<fusion-icon name="v4/arrowLineLeft"></fusion-icon>```
-
-<div class='sb-unstyled icons-title fusion-v4 font-v4-subtitle-1'>Icons <div class="font-v4-cap">(icon name prefix: "v4")</div></div>
-<div class="sb-unstyled icons-wrapper fusion-v4">
-<IconGallery style={{marginTop: '24px'}}>
-    {
-        iconsData.map(icon=>{
-            return (
-                <IconItem name={icon.name} key={icon.name}>
-                    <img src={assetsPath + icon.path} alt={icon.name} style={{width: '24px', height: '24px'}}/>
-                </IconItem>
-            )
-        })
-    }
-</IconGallery>
-</div>
+**ICON_NAME** here it path to icon, for example: ```<fusion-icon name="v4/branded/web-app"></fusion-icon>```
 
 <div class='sb-unstyled icons-title fusion-v4 font-v4-subtitle-1'>Branded <div class="font-v4-cap">(icon name prefix: "v4/branded")</div></div>
 <div class="sb-unstyled icons-wrapper fusion-v4">

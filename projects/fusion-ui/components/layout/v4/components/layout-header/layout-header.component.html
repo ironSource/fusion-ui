@@ -5,6 +5,9 @@
      [class.fu-page-has-subtitle]="headerContent?.subTitle"
      [class.fu-page-has-button-back]="headerContent?.hasBackButton"
 >{{ headerContent?.title }}</div>
+
+<fusion-icon name="v4/arrowLineLeft"></fusion-icon>
+
 <ng-container *ngIf="headerContent?.subTitle">
     <div class="fu-header-delimiter"></div>
     <div class="fu-page-subtitle">{{headerContent?.subTitle}}</div>

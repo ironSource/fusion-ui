@@ -1,5 +1,8 @@
 export const assetsPath = 'https://fusion.ironsrc.net/assets/icons/';
-export const iconsData = [
+
+/* todo: This icons that has on V4 CDN from Phosphor icons library. We start use it fo the new layout (sidebar, header, etc.)
+ *   Add to the  the task ISCT part about update this icons using from Phosphor and remove it from V4*/
+/*export const iconsData = [
     {
         name: 'add',
         path: 'v4/add.svg'
@@ -92,7 +95,7 @@ export const iconsData = [
         name: 'wrench',
         path: 'v4/wrench.svg'
     }
-];
+];*/
 
 export const iconsBrandedData = [
     {
