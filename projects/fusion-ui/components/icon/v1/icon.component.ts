@@ -12,7 +12,8 @@ import {SvgComponent} from '@ironsource/fusion-ui/components/svg';
 export class IconComponent extends SvgComponent {
     @Input() set name(val: IconData) {
         if (typeof val === 'string') {
-            this.onNameChanged(val);
+            this.setLibPath(val);
+            this.onNameChanged(this.iconName ?? val);
         } else {
             this.libVersion = val.iconVersion;
             this.onNameChanged(val.iconName);
@@ -25,7 +26,7 @@ export class IconComponent extends SvgComponent {
         if (!this.iconName) {
             throw new Error(`Asset path-name '${this.svgPath}' not set`);
         } else {
-            if (this.svgOptions && this.svgOptions.assetsPath) {
+            if (this.svgOptions?.assetsPath) {
                 this.svgPath =
                     this.svgOptions.assetsPath === 'https://fusion.ironsrc.net/assets'
                         ? `${this.libVersion}/${this.iconName}`
@@ -33,6 +34,14 @@ export class IconComponent extends SvgComponent {
             }
         }
         return super.getUrlPath();
+    }
+
+    private setLibPath(value: string): void {
+        if (typeof value === 'string' && value.includes('/')) {
+            const lastIndex = value.lastIndexOf('/');
+            this.libVersion = value.substring(0, lastIndex);
+            this.iconName = value.substring(lastIndex + 1);
+        }
     }
 
     private onNameChanged(value: string): void {
