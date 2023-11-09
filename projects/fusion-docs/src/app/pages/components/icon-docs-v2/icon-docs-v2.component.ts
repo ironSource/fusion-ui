@@ -37,6 +37,7 @@ export class IconDocsV2Component implements OnInit {
 
     private getIcons$(): Observable<string[]> {
         const iconNames$ = of(ICON_NAMES); // possible from API service
+        // const iconNames$ = of( Array(1000).fill('analytics')  /*ICON_NAMES.filter(icon=>icon==='analytics')*/); // possible from API service
         const search$ = this.searchKey.valueChanges.pipe(startWith(''), debounceTime(100), distinctUntilChanged());
 
         return combineLatest([iconNames$, search$]).pipe(
