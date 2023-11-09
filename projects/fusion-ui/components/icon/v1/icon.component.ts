@@ -41,6 +41,10 @@ export class IconComponent extends SvgComponent {
             const lastIndex = value.lastIndexOf('/');
             this.libVersion = value.substring(0, lastIndex);
             this.iconName = value.substring(lastIndex + 1);
+            // for phosphor regular icons
+            if (this.libVersion === 'ph') {
+                this.libVersion += '/regular';
+            }
         }
     }
 
