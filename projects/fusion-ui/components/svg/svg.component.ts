@@ -24,7 +24,7 @@ export class SvgComponent implements AfterViewInit, OnDestroy {
 
     private onDestroy$ = new Subject<void>();
 
-    static cache: any = {};
+    static cache: {[key: string]: Observable<any>} = {};
 
     constructor(
         private httpClient: HttpClient,
