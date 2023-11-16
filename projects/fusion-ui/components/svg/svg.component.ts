@@ -20,7 +20,6 @@ export class SvgComponent implements AfterViewInit, OnDestroy {
 
     libVersion = 'v3';
     svgPath = '';
-    requestedToLoad = false;
 
     private onDestroy$ = new Subject<void>();
 
@@ -59,14 +58,11 @@ export class SvgComponent implements AfterViewInit, OnDestroy {
     }
 
     ngAfterViewInit() {
-        if (!this.requestedToLoad) {
-            this.loadSvg();
-        }
+        this.loadSvg();
     }
 
     loadSvg() {
         const svgUrl = this.getUrlPath();
-        this.requestedToLoad = true;
         if (svgUrl) {
             const cachedData = this.storageService.get(StorageType.SessionStorage, `${svgUrl}`);
             if (!!cachedData) {
@@ -101,7 +97,7 @@ export class SvgComponent implements AfterViewInit, OnDestroy {
 
     private onPathChanged(value: string): void {
         this.svgPath = value;
-        if (this.elementRef?.nativeElement && !this.requestedToLoad) {
+        if (this.elementRef?.nativeElement) {
             this.loadSvg();
         }
     }
