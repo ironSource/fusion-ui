@@ -96,7 +96,6 @@ describe('IconComponent', () => {
 
     it('Must call ngAfterViewInit method', () => {
         const spyAfterInit = spyOn(component, 'loadSvg');
-        component.requestedToLoad = false
         fixture.detectChanges();
         expect(spyAfterInit.calls.any()).toBe(true);
     });
