@@ -11,7 +11,7 @@ import {MOK_APPLICATIONS_ONE_LINE_OPTIONS} from '@ironsource/fusion-ui/component
 import {DropdownModule} from '@ironsource/fusion-ui/components/dropdown/v3';
 
 export default {
-    title: 'Components/Filters/Top Filter/Filter Dropdown',
+    title: 'V3/Components/Filters/Top Filter/Filter Dropdown',
     component: TopFilterTriggerComponent,
     decorators: [
         moduleMetadata({

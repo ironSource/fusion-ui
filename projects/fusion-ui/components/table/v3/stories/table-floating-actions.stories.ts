@@ -20,7 +20,7 @@ const actionsData = {
 };
 
 export default {
-    title: 'Components/Table/Floating actions',
+    title: 'V3/Components/Table/Floating actions',
     component: TableComponent,
     decorators: [
         moduleMetadata({

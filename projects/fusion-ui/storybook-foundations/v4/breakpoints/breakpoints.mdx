@@ -1,0 +1,106 @@
+import {Meta, Source} from '@storybook/addon-docs';
+import {breakpointsData} from './breakpointsData';
+
+<Meta title="V4/Foundation/Breakpoints"/>
+
+# Breakpoints
+
+Use this set of standard breakpoints to maintain layout integrity across screen sizes. For best results, test designs and code at each of these standard breakpoints.
+
+To start using breakpoints mixins, you need to import our `@import '~@ironsource/fusion-ui/style/v4/mixins/breakpoints` to your project and use mixins.
+
+
+<style>
+    {
+        `
+.breakpoints-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.breakpoint-row {
+    display: flex;
+    padding: var(--spacing-300) var(--spacing-200);
+    align-items: center;
+    gap: var(--spacing-300);
+    align-self: stretch;
+    border-bottom: 1px solid var(--common-divider);
+    color: var(--text-primary);
+}
+.breakpoint-name {
+    width: 150px;
+}
+.breakpoint-text {
+    flex: 1 0 0;
+    color: var(--text-secondary);
+}
+.breakpoint-type {
+    display: flex;
+    padding: var(--spacing-50) var(--spacing-100);
+    align-items: center;
+    gap: var(--spacing-50);
+    border-radius: var(--border-radius-md);
+    background: var(--background-paper-elevation-2);
+}
+`
+    }
+</style>
+
+<div class="sb-unstyled breakpoints-wrapper fusion-v4">
+    {
+        breakpointsData.map(breakpoint => {
+            return (
+                <div class="breakpoint-row">
+                    <div class="breakpoint-name font-v4-subtitle-2">
+                        {breakpoint.name}
+                    </div>
+                    <div class="breakpoint-text font-v4-body-2">
+                        {breakpoint.text}
+                    </div>
+                    <div class="breakpoint-type font-v4-chip-label">
+                        {breakpoint.type}
+                    </div>
+                </div>
+            )
+        })
+    }
+</div>
+
+<br/><br/><br/><br/>
+#### Using breakpoints mixins:
+Media of at least the minimum breakpoint width. No query for the smallest breakpoint. Makes the @content apply to the given breakpoint and wider.
+
+<Source language="css" code={`
+@include media-breakpoint-min('sm') {
+    .your-content{
+        display: none
+    }
+}
+`}/>
+
+Media of at most the maximum breakpoint width. No query for the largest breakpoint. Makes the @content apply to the given breakpoint and narrower.
+
+<Source language="css" code={`
+@include media-breakpoint-min('sm') {
+    .your-content{
+        display: none
+    }
+}
+`}/>
+
+Media that spans multiple breakpoint widths. Makes the @content apply between the min and max breakpoints
+<Source language="css" code={`
+@include media-breakpoint-between('sm','md') {
+    .your-content{
+        display: none
+    }
+}
+`}/>
+
+No minimum for the smallest breakpoint, and no maximum for the largest one. Makes the @content apply only to the given breakpoint, not viewports any wider or narrower.
+<Source language="css" code={`
+@include media-breakpoint-only('sm') {
+    .your-content{
+        display: none
+    }
+}
+`}/>

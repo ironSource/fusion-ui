@@ -10,7 +10,7 @@ import {ToastComponent} from './toast.component';
 import {ToastModule} from './toast.module';
 
 const meta: Meta<ToastComponent> = {
-    title: 'Components/Toast',
+    title: 'V3/Components/Toast',
     component: ToastComponent,
     decorators: [
         moduleMetadata({

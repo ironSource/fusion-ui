@@ -36,7 +36,7 @@ const actionsData = {
 };
 
 export default {
-    title: 'Components/Table/Column Types',
+    title: 'V3/Components/Table/Column Types',
     component: TableComponent,
     decorators: [
         moduleMetadata({

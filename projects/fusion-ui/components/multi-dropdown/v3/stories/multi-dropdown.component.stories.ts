@@ -17,7 +17,7 @@ import {
 } from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
 
 export default {
-    title: 'Components/Dropdown/Multiselect',
+    title: 'V3/Components/Dropdown/Multiselect',
     component: MultiDropdownComponent,
     decorators: [
         moduleMetadata({

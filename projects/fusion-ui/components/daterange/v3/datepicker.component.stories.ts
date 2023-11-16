@@ -9,7 +9,7 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {DaterangeComponent, DaterangeModule, DaterangeOptions, DaterangeSelection} from './';
 
 export default {
-    title: 'Components/Dates/DatePicker',
+    title: 'V3/Components/Dates/DatePicker',
     component: DaterangeComponent,
     decorators: [
         moduleMetadata({

@@ -1,0 +1,11 @@
+@import './vars/border-radius';
+
+/* region css variables */
+.fusion-v4 {
+    --border-radius-xs: #{$borderRadiusV4-xs};
+    --border-radius-sm: #{$borderRadiusV4-sm};
+    --border-radius-md: #{$borderRadiusV4-md};
+    --border-radius-lg: #{$borderRadiusV4-lg};
+    --border-radius-xl: #{$borderRadiusV4-xl};
+    --border-radius-full: #{$borderRadiusV4-full};
+}

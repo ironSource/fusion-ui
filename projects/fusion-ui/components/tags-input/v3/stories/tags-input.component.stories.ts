@@ -16,7 +16,7 @@ const actionsData = {
 };
 
 export default {
-    title: 'Components/Tag/Tags Input',
+    title: 'V3/Components/Tag/Tags Input',
     component: TagsInputComponent,
     decorators: [
         moduleMetadata({

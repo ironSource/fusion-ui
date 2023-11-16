@@ -8,7 +8,7 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TopFilterTriggerComponent} from '@ironsource/fusion-ui/components/top-filter-trigger/v3/top-filter-trigger.component';
 
 export default {
-    title: 'Components/Filters/Top Filter/Trigger',
+    title: 'V3/Components/Filters/Top Filter/Trigger',
     component: TopFilterTriggerComponent,
     decorators: [
         moduleMetadata({

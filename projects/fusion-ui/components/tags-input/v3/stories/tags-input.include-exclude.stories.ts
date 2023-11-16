@@ -12,7 +12,7 @@ import {DropdownDualMultiSelectModule} from '@ironsource/fusion-ui/components/dr
 import {TagsInputStoryIncludeExcludeWrapperComponent} from '@ironsource/fusion-ui/components/tags-input/v3/stories/tags-input-include-exclude-story-wrapper.component';
 
 export default {
-    title: 'Components/Tag/Tags Input include-exclude',
+    title: 'V3/Components/Tag/Tags Input include-exclude',
     component: TagsInputComponent,
     decorators: [
         moduleMetadata({

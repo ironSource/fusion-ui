@@ -7,7 +7,7 @@ import {ButtonModule} from '@ironsource/fusion-ui/components/button/v3';
 import {ModalContentComponent} from '@ironsource/fusion-ui/components/modal';
 
 export default {
-    title: 'Components/Dialog/Content',
+    title: 'V3/Components/Dialog/Content',
     component: ModalContentComponent,
     decorators: [
         moduleMetadata({

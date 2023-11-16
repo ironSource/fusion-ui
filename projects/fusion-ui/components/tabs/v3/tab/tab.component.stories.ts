@@ -7,7 +7,7 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TabComponent, TabsModule} from '@ironsource/fusion-ui/components/tabs/v3';
 
 export default {
-    title: 'Components/Tabs/Tab',
+    title: 'V3/Components/Tabs/Tab',
     component: TabComponent,
     decorators: [
         moduleMetadata({

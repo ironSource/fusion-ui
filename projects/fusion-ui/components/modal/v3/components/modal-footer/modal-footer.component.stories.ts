@@ -13,7 +13,7 @@ const actionsData = {
 };
 
 export default {
-    title: 'Components/Dialog/Footer',
+    title: 'V3/Components/Dialog/Footer',
     component: ModalFooterComponent,
     decorators: [
         moduleMetadata({

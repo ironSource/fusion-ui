@@ -25,7 +25,7 @@ const START_DATE = new Date(TODAY.getFullYear(), TODAY.getMonth(), 2);
 const END_DATE = new Date(TODAY.getFullYear(), TODAY.getMonth() + 1, -3);
 
 export default {
-    title: 'Components/Dates/Calendar',
+    title: 'V3/Components/Dates/Calendar',
     component: CalendarComponent,
     decorators: [
         moduleMetadata({

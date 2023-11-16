@@ -13,7 +13,7 @@ const formControlWithValue = new FormControl(
 );
 
 const meta: Meta<TextareaComponent> = {
-    title: 'Components/Inputs/Textarea',
+    title: 'V3/Components/Inputs/Textarea',
     component: TextareaComponent,
     decorators: [
         moduleMetadata({

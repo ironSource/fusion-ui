@@ -8,7 +8,7 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {CustomCellEditComponent} from './custom-cell-edit.component';
 
 export default {
-    title: 'Components/Table/Column Custom Edit/Custom Cell Component',
+    title: 'V3/Components/Table/Column Custom Edit/Custom Cell Component',
     component: CustomCellEditComponent,
     decorators: [
         moduleMetadata({

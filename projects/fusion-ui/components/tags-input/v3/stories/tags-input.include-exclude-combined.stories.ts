@@ -11,7 +11,7 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
 
 export default {
-    title: 'Components/Tag/Tags Input Include-Exclude Combined',
+    title: 'V3/Components/Tag/Tags Input Include-Exclude Combined',
     component: TagsInputIncludeExcludeComponent,
     decorators: [
         moduleMetadata({

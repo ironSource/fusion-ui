@@ -5,6 +5,6 @@
         "allowSyntheticDefaultImports": true
     },
     "exclude": ["../projects/**/*.spec.ts"],
-    "include": ["../projects/fusion-ui/components/**/*"],
+    "include": ["../projects/fusion-ui/components/**/*", "../projects/fusion-ui/storybook-foundations/**/*"],
     "files": ["./typings.d.ts"]
 }

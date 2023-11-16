@@ -11,7 +11,7 @@ const DEFAULT_CONFIGURATION = {
 } as ModalConfiguration;
 
 export default {
-    title: 'Components/Dialog',
+    title: 'V3/Components/Dialog',
     component: ModalComponent,
     decorators: [
         moduleMetadata({
