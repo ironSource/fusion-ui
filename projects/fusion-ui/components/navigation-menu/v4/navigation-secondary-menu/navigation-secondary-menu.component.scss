@@ -1,7 +1,7 @@
 @import '../../../../src/style/scss/v4/mixins/mixins';
 @import '../../../../src/style/scss/v4/vars/vars';
 
-$primaryMenuWidth: 64px;
+$navBarPrimaryWidth: 56px;
 $secondaryMenuWidth: 200px;
 $secondaryMenuLogoHolderHeight: 64px;
 $secondaryMenuItemHeight: 28px;
@@ -15,7 +15,7 @@ $secondaryMenuItemNewTabIconSize: 16px;
     @extend %reset;
     display: block;
     background-color: var(--fu-secondary-menu-background-color, $fu-nav-secondary);
-    border-right: solid 1px $fu-divider;
+    border-right: solid 1px $color-v4-common-divider;
     margin-left: -1px;
     width: 0px;
     max-width: $secondaryMenuWidth;
@@ -25,7 +25,7 @@ $secondaryMenuItemNewTabIconSize: 16px;
         position: fixed;
         z-index: getZIndexLayerOffset(application, 2);
         top: 0px;
-        left: calc(-1 * ($secondaryMenuWidth - $primaryMenuWidth));
+        left: calc(-1 * ($secondaryMenuWidth - $navBarPrimaryWidth));
         max-width: $secondaryMenuWidth;
         transition: left .45s ease-out;
         .fu-logo-holder {
@@ -165,7 +165,7 @@ $secondaryMenuItemNewTabIconSize: 16px;
     &.fu-menu-open {
         width: $secondaryMenuWidth;
         .fu-secondary-menu-holder {
-            left: $primaryMenuWidth;
+            left: $navBarPrimaryWidth;
             .fu-secondary-menu{
                 overflow-y: auto;
             }
@@ -175,7 +175,7 @@ $secondaryMenuItemNewTabIconSize: 16px;
     &.fu-menu-expanded{
         position: fixed;
         top: 0;
-        left: $primaryMenuWidth;
+        left: $navBarPrimaryWidth;
         height: 100vh;
         z-index: getZIndexLayerOffset(application, 3);
     }

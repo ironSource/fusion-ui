@@ -2,7 +2,7 @@
 @import 'colors';
 
 $borderRadius: $borderRadiusV4-lg;
-$borderLine: 1px solid $fu-divider;
+$borderLine: 1px solid $color-v4-common-divider;
 
 %noBorderRadiusTR{
     border-top-right-radius: 0 !important;

@@ -22,7 +22,7 @@ $menuSecondaryWidth: 200px;
         .fu-main-page{
             .fu-page-header{
                 height: $pageHeaderHeight;
-                border-bottom: solid 1px $fu-divider;
+                border-bottom: solid 1px $color-v4-common-divider;
             }
             .main-content{
                 height: calc(100vh - var(--layout-header-height, #{$pageHeaderHeight}));

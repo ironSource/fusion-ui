@@ -22,14 +22,14 @@ export const USER_PROFILE_MENU_ITEMS: MenuItem[] = [
     },
     {
         withTopDelimiter: true,
-        icon: {iconName: 'mail_outline', iconVersion: 'v4'},
+        icon: 'ph/envelope-simple-open',
         name: 'Contact us',
         redirect: 'https://ironsrc.formtitan.com/contact-us',
         target: '_contactUs'
     },
     {
         name: 'Logout',
-        icon: {iconName: 'logout', iconVersion: 'v4'},
+        icon: 'ph/sign-out',
         route: '/'
     }
 ];
@@ -394,15 +394,15 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
     // },
     {
         type: NavigationBarItemType.Main,
-        menuIcon: {iconName: 'unity_flat', iconVersion: 'v4'},
+        menuIcon: 'v4/branded/unity',
         menuTitle: 'LevelPlay',
         menuLogoSrc: 'v4/unity_logo_flat',
-        cssTheme: {'fu-navbar-background-color': '#202020'},
+        cssTheme: {'fu-navbar-background-color': '#181818'},
         menuItems: UNITY_MENU_ITEMS
     },
     {
         type: NavigationBarItemType.Main,
-        menuIcon: {iconName: 'ironSource', iconVersion: 'v4'},
+        menuIcon: 'v4/branded/ironsource',
         menuTitle: 'Ads',
         menuLogoSrc: 'v4/is_ads_logo',
         cssTheme: {'fu-navbar-background-color': '#0D148C'},
@@ -410,22 +410,22 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
     },
     {
         type: NavigationBarItemType.Main,
-        menuIcon: {iconName: 'tapjoy', iconVersion: 'v4'},
+        menuIcon: 'v4/branded/tapjoy',
         menuTitle: 'Tapjoy',
         menuLogoSrc: 'v4/tapjoy_logo',
-        cssTheme: {'fu-navbar-background-color': '#202020'},
+        cssTheme: {'fu-navbar-background-color': '#181818'},
         menuItems: TAPJOY_MENU_ITEMS
     },
     {
         type: NavigationBarItemType.Bottom,
-        menuIcon: {iconName: 'question', iconVersion: 'v4'},
+        menuIcon: 'ph/question',
         menuTooltip: 'Knowledge Center',
         redirect: 'https://developers.is.com/',
         target: '_blank'
     },
     {
         type: NavigationBarItemType.User,
-        menuIcon: {iconName: 'userCircle', iconVersion: 'v4'},
+        menuIcon: 'ph/user-circle',
         menuTooltip: 'Account',
         menuItems: USER_PROFILE_MENU_ITEMS
     }

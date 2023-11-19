@@ -35,12 +35,13 @@ $menuItemHoverColor: #F5F5F5;
             padding: 14px 16px 14px 8px;
             gap: 16px;
             border-bottom: $borderLine;
+            height: 72px;
 
             .fu-user-icon-holder{
                 display: flex;
                 align-items: center;
                 justify-items: center;
-                @include icon-style('fu-user-icon', $fu-nav-text-primary, $userIconSize, true, true) {
+                @include icon-style('fu-user-icon', $color-v4-action-active, $userIconSize, true, true) {
                     @include size($userIconSize);
                 }
                 .fu-user-avatar{
@@ -60,12 +61,12 @@ $menuItemHoverColor: #F5F5F5;
                 .fu-user-name{
                     cursor: default;
                     @extend %font-v4-heading-4;
-                    color: $fu-nav-text-primary;
+                    color: $color-v4-text-primary;
                 }
                 .fu-user-email{
                     cursor: default;
                     @extend %font-v4-caption;
-                    color: $fu-nav-text-secondary;
+                    color: $color-v4-text-secondary;
                 }
             }
         }
@@ -90,7 +91,7 @@ $menuItemHoverColor: #F5F5F5;
                 border-radius: 4px;
 
                 @extend %font-v4-body-2;
-                color: $fu-nav-text-primary;
+                color: $color-v4-text-primary;
 
                 @include icon-style('fu-pop-menu-icon', $fu-icon-drop, $menuItemIconSize, true, true) {
                     @include size($menuItemIconSize);
