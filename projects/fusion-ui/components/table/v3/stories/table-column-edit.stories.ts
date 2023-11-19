@@ -29,7 +29,7 @@ const actionsData = {
 };
 
 export default {
-    title: 'Components/Table/Column Editable',
+    title: 'V3/Components/Table/Column Editable',
     component: TableComponent,
     decorators: [
         moduleMetadata({

@@ -1,0 +1,85 @@
+import {Meta, Source} from '@storybook/addon-docs';
+import {borderRadiusData} from './borderRadiusData';
+
+<Meta title="V4/Foundation/Border radius"/>
+
+# Elevations (shadows)
+
+CSS **box-shadow** is a style property used to add a shadow effect to an element's box (such as a div or an image) on a web page. The property allows you to create a visually appealing 3D-like effect, making the element appear elevated or floating.
+
+To use scss variable add in your *.scss
+```css
+@import '~@ironsource/fusion-ui/style/v4/vars/border-radius';
+```
+
+Or import css file for css variables
+```css
+@import '~@ironsource/fusion-ui/style/v4/style-guide.css';
+```
+
+<style>
+{
+ `
+.border-radius-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-300);
+    align-items: flex-start;
+    gap: 32px;
+    align-self: stretch;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--common-divider, #E4E4E4);
+}
+.border-radius-item {
+    display: flex;
+    padding: var(--spacing-tokenset);
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+.border-radius-example {
+    display: flex;
+    width: var(--spacing-800);
+    height: var(--spacing-800);
+    padding: var(--spacing-300);
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    color: var(--text-secondary);
+    background: var(--background-default);
+    border: 1px solid var(--action-primary);
+}
+`
+}
+</style>
+
+<div class="sb-unstyled border-radius-wrapper fusion-v4">
+    {
+        borderRadiusData.map(borderRadius => {
+            return (
+                <div class="border-radius-item">
+                    <div class="border-radius-example font-v4-caption" style={{borderRadius: borderRadius.borderRadius}}>
+                        {borderRadius.borderRadius}
+                    </div>
+                    <div class="border-radius-item font-v4-heading-4">
+                        {borderRadius.name}
+                    </div>
+                </div>
+            )
+        })
+    }
+</div>
+
+<br/><br/><br/>
+### CSS variables
+from `@ironsource/fusion-ui/style/v4/style-guide.css`
+<Source code={`
+.fusion-v4 {
+    --border-radius-xs: 2px;
+    --border-radius-sm: 4px;
+    --border-radius-md: 6px;
+    --border-radius-lg: 8px;
+    --border-radius-xl: 16px;
+    --border-radius-full: 100px
+}
+`} language={'css'}/>

@@ -8,7 +8,7 @@ import {FloatingToolbarComponent} from '@ironsource/fusion-ui/components/floatin
 import {ButtonModule} from '@ironsource/fusion-ui/components/button';
 
 export default {
-    title: 'Components/Floating toolbar',
+    title: 'V3/Components/Floating toolbar',
     component: FloatingToolbarComponent,
     decorators: [
         moduleMetadata({

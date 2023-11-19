@@ -16,7 +16,7 @@ import {
 import {TableStoryHolderComponent} from '@ironsource/fusion-ui/components/table/v3/stories/table.story-holder.component/table.story-holder.component.component';
 
 export default {
-    title: 'Components/Table/Rowspan',
+    title: 'V3/Components/Table/Rowspan',
     component: TableComponent,
     decorators: [
         moduleMetadata({

@@ -21,7 +21,7 @@ import {
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 
 export default {
-    title: 'Components/Dropdown',
+    title: 'V3/Components/Dropdown',
     component: DropdownComponent,
     decorators: [
         moduleMetadata({

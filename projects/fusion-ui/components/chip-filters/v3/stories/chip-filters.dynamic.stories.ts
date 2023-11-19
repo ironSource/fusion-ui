@@ -20,7 +20,7 @@ import {
 import {ChipFilterComponentConfigurations} from '@ironsource/fusion-ui/components/chip-filter/common/base';
 
 export default {
-    title: 'Components/Filters/Filter Panel Dynamic',
+    title: 'V3/Components/Filters/Filter Panel Dynamic',
     component: ChipFiltersComponent,
     decorators: [
         moduleMetadata({

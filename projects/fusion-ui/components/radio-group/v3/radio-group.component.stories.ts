@@ -44,7 +44,7 @@ const formControlSelectedLongLabelOption = new FormControl(radioGroupLongLabelOp
 // endregion
 
 export default {
-    title: 'Components/Inputs/Radio',
+    title: 'V3/Components/Inputs/Radio',
     component: RadioGroupComponent,
     decorators: [
         moduleMetadata({

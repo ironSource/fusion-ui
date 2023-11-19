@@ -1,6 +1,6 @@
 import {Meta, Source} from '@storybook/addon-docs';
 
-<Meta title="Styleguide/V4/Typography"/>
+<Meta title="V4/Foundation/Typography"/>
 
 # Typography
 
@@ -179,13 +179,43 @@ Or Import css file for *.css
     </div>
 
     <div class="fu-typeface-v4-row">
-        <div class="fu-typeface-v4-col font-v4-table-header">table header</div>
-        <div class="fu-typeface-v4-col font-v4-body-1">.font-v4-table-header</div>
-        <div class="fu-typeface-v4-col font-v4-body-1">%font-v4-table-header</div>
+        <div class="fu-typeface-v4-col font-v4-table-label">tableLabel</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">.font-v4-table-label</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">%font-v4-table-label</div>
         <div class="fu-typeface-v4-col font-v4-body-1">Semibold (600)</div>
         <div class="fu-typeface-v4-col font-v4-body-1">13px</div>
         <div class="fu-typeface-v4-col font-v4-body-1">20px</div>
         <div class="fu-typeface-v4-col font-v4-body-1">0.13px</div>
+    </div>
+
+    <div class="fu-typeface-v4-row">
+        <div class="fu-typeface-v4-col font-v4-input-label">inputLabel</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">.font-v4-input-label</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">%font-v4-input-label</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">Medium (500)</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">13px</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">16px</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">0.13px</div>
+    </div>
+
+    <div class="fu-typeface-v4-row">
+        <div class="fu-typeface-v4-col font-v4-tab-label-1">tabLabel1</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">.font-v4-tab-label-1</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">%font-v4-tab-label-1</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">Medium (500)</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">14px</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">16px</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">---</div>
+    </div>
+
+    <div class="fu-typeface-v4-row">
+        <div class="fu-typeface-v4-col font-v4-tab-label-2">tabLabel2</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">.font-v4-tab-label-2</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">%font-v4-tab-label-2</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">Bold (700)</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">14px</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">16px</div>
+        <div class="fu-typeface-v4-col font-v4-body-1">---</div>
     </div>
 
     <div class="fu-typeface-v4-row">
@@ -236,8 +266,11 @@ Or Import css file for *.css
 <div class="font-v4-button">Button</div>
 <div class="font-v4-overline">Overline</div>
 <div class="font-v4-caption">Caption</div>
-<div class="font-v4-table-header">Table header</div>
-<div class="font-v4-chip-label">chip label</div>
+<div class="font-v4-table-label">Table label</div>
+<div class="font-v4-input-label">Input label</div>
+<div class="font-v4-tab-label-1">Tab label 1</div>
+<div class="font-v4-tab-label-2">Tab label 2</div>
+<div class="font-v4-chip-label">Chip label</div>
 <div class="font-v4-chart-1">Chart 1</div>
 <div class="font-v4-chart-2">chart 2</div>
 `} />
@@ -250,6 +283,7 @@ Or Import css file for *.css
 .font-v4-semibold {@extend %font-v4-semibold; }
 .font-v4-medium {@extend %font-v4-medium;}
 .font-v4-regular {@extend %font-v4-regular;}
+
 .font-v4-title {@extend %font-v4-title;}
 .font-v4-heading-1 {@extend %font-v4-heading-1;}
 .font-v4-heading-2 {@extend %font-v4-heading-2;}
@@ -268,8 +302,11 @@ Or Import css file for *.css
 .font-v4-caption {@extend %font-v4-caption;}
 .font-v4-table-header {@extend %font-v4-table-header;}
 .font-v4-input-label {@extend %font-v4-input-label;}
-.font-v4-tab-label {@extend %font-v4-tab-label;}
+.font-v4-tab-label-1 {@extend %font-v4-tab-label-1;}
+.font-v4-tab-label-2 {@extend %font-v4-tab-label-2;}
 .font-v4-chip-label {@extend %font-v4-chip-label;}
+.font-v4-chart-1 {@extend %font-v4-chart-1;}
+.font-v4-chart-2 {@extend %font-v4-chart-2;}
 `} />
 
 

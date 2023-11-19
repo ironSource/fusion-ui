@@ -11,7 +11,7 @@ const formControlUnchecked = new FormControl(false);
 const formControlUncheckedDisabled = new FormControl({value: false, disabled: true});
 
 export default {
-    title: 'Components/Toggle',
+    title: 'V3/Components/Toggle',
     component: ToggleComponent,
     decorators: [
         moduleMetadata({

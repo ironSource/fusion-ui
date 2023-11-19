@@ -1,0 +1,106 @@
+@import './vars/colors';
+
+/* region css variables */
+.fusion-v4 {
+    --background-default: #{$color-v4-background-default};
+    --background-paper: #{$color-v4-background-paper};
+    --background-model-elevation: #{$color-v4-background-model-elevation};
+    --background-backdrop: #{$color-v4-background-backdrop};
+    --background-paper-elevation-0: #{$color-v4-background-paper-elevation-0};
+    --background-paper-elevation-1: #{$color-v4-background-paper-elevation-1};
+    --background-paper-elevation-2: #{$color-v4-background-paper-elevation-2};
+    --background-paper-elevation-3: #{$color-v4-background-paper-elevation-3};
+    --background-paper-elevation-4: #{$color-v4-background-paper-elevation-4};
+    --background-paper-elevation-5: #{$color-v4-background-paper-elevation-5};
+    --background-paper-elevation-6: #{$color-v4-background-paper-elevation-6};
+    --background-paper-elevation-7: #{$color-v4-background-paper-elevation-7};
+    --background-paper-elevation-8: #{$color-v4-background-paper-elevation-8};
+    --background-paper-elevation-9: #{$color-v4-background-paper-elevation-9};
+
+    --action-primary: #{$color-v4-action-primary};
+    --action-active: #{$color-v4-action-active};
+    --action-hover: #{$color-v4-action-hover};
+    --action-selected: #{$color-v4-action-selected};
+    --action-disabled: #{$color-v4-action-disabled};
+    --action-disabled-background: #{$color-v4-action-disabled-background};
+    --action-focus: #{$color-v4-action-focus};
+    --action-outlined-border: #{$color-v4-action-outlined-border};
+
+    --default-light: #{$color-v4-default-light};
+    --default-main: #{$color-v4-default-main};
+    --default-dark: #{$color-v4-default-dark};
+    --default-outlined-border: #{$color-v4-default-outlined-border};
+    --default-contrast-text: #{$color-v4-default-contrast-text};
+    --default-button-contrast-text: #{$color-v4-default-button-contrast-text};
+
+    --common-white: #{$color-v4-common-white};
+    --common-black: #{$color-v4-common-black};
+    --common-inverse-white: #{$color-v4-common-inverse-white};
+    --common-inverse-black: #{$color-v4-common-inverse-black};
+    --common-divider: #{$color-v4-common-divider};
+    --common-divider-elevation-0: #{$color-v4-common-divider-elevation-0};
+
+    --text-primary: #{$color-v4-text-primary};
+    --text-secondary: #{$color-v4-text-secondary};
+    --text-disabled: #{$color-v4-text-disabled};
+
+    --primary-lighter: #{$color-v4-primary-lighter};
+    --primary-light: #{$color-v4-primary-light};
+    --primary-main: #{$color-v4-primary-main};
+    --primary-main-8-p: #{$color-v4-primary-main-8-p};
+    --primary-main-50-p: #{$color-v4-primary-main-50-p};
+    --primary-dark: #{$color-v4-primary-dark};
+    --primary-darker: #{$color-v4-primary-darker};
+    --primary-outlined-border: #{$color-v4-primary-outlined-border};
+    --primary-contrast-text: #{$color-v4-primary-contrast-text};
+    --primary-button-contrast-text: #{$color-v4-primary-button-contrast-text};
+
+    --info-lighter: #{$color-v4-info-lighter};
+    --info-light: #{$color-v4-info-light};
+    --info-main: #{$color-v4-info-main};
+    --info-main-8-p: #{$color-v4-info-main-8-p};
+    --info-main-50-p: #{$color-v4-info-main-50-p};
+    --info-dark: #{$color-v4-info-dark};
+    --info-darker: #{$color-v4-info-darker};
+    --info-outlined-border: #{$color-v4-info-outlined-border};
+    --info-contrast-text: #{$color-v4-info-contrast-text};
+    --info-button-contrast-text: #{$color-v4-info-button-contrast-text};
+
+    --success-lighter: #{$color-v4-success-lighter};
+    --success-light: #{$color-v4-success-light};
+    --success-main: #{$color-v4-success-main};
+    --success-main-8-p: #{$color-v4-success-main-8-p};
+    --success-main-50-p: #{$color-v4-success-main-50-p};
+    --success-dark: #{$color-v4-success-dark};
+    --success-darker: #{$color-v4-success-darker};
+    --success-outlined-border: #{$color-v4-success-outlined-border};
+    --success-contrast-text: #{$color-v4-success-contrast-text};
+    --success-button-contrast-text: #{$color-v4-success-button-contrast-text};
+
+    --warning-lighter: #{$color-v4-warning-lighter};
+    --warning-light: #{$color-v4-warning-light};
+    --warning-main: #{$color-v4-warning-main};
+    --warning-main-8-p: #{$color-v4-warning-main-8-p};
+    --warning-main-50-p: #{$color-v4-warning-main-50-p};
+    --warning-dark: #{$color-v4-warning-dark};
+    --warning-darker: #{$color-v4-warning-darker};
+    --warning-outlined-border: #{$color-v4-warning-outlined-border};
+    --warning-contrast-text: #{$color-v4-warning-contrast-text};
+    --warning-button-contrast-text: #{$color-v4-warning-button-contrast-text};
+
+    --error-lighter: #{$color-v4-error-lighter};
+    --error-light: #{$color-v4-error-light};
+    --error-main: #{$color-v4-error-main};
+    --error-main-8-p: #{$color-v4-error-main-8-p};
+    --error-main-50-p: #{$color-v4-error-main-50-p};
+    --error-dark: #{$color-v4-error-dark};
+    --error-darker: #{$color-v4-error-darker};
+    --error-outlined-border: #{$color-v4-error-outlined-border};
+    --error-contrast-text: #{$color-v4-error-contrast-text};
+    --error-button-contrast-text: #{$color-v4-error-button-contrast-text};
+
+    --aba: #{$color-v4-aba};
+    --abb: #{$color-v4-abb};
+}
+/* endregion css variables */
+

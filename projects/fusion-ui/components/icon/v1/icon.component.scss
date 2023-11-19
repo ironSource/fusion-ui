@@ -5,14 +5,18 @@ fusion-icon {
         max-height: 100%;
         width: inherit;
         height: inherit;
-        * {
-            fill: currentColor;
-        }
     }
     &.loading {
         svg{
             * {
                 fill: none !important;
+            }
+        }
+    }
+    &:not(.fu-colored) {
+        svg {
+            * {
+                fill: currentColor;
             }
         }
     }

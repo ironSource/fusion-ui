@@ -13,7 +13,7 @@ const formControl = new FormControl();
 // const formControlDisabled = new FormControl({value: 'Typing something', disabled: true});
 
 export default {
-    title: 'Components/Search',
+    title: 'V3/Components/Search',
     component: SearchComponent,
     decorators: [
         moduleMetadata({

@@ -1,0 +1,339 @@
+import {Meta, Source} from '@storybook/addon-docs';
+import {colorPaletteLight} from './colorsData';
+
+<Meta title="V4/Foundation/Palette colors"/>
+
+# Palette color
+
+Radix Colors scales are just simple JavaScript objects, so you can use them with your preferred styling solution easily. [radix-ui.com](https://www.radix-ui.com/colors)
+
+To use our colors scss variable add in your *.scss
+`@import '~@ironsource/fusion-ui/style/v4/vars/_colors.scss';`
+
+Or import css variable for *.css
+`@import '~@ironsource/fusion-ui/style/v4/style-guide.css';`
+
+<style>
+{
+`
+.colors-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    margin: 32px auto;
+}
+.color-block {
+    width: 425px;
+    background-color: var(--background-default);
+}
+.color-label {
+    padding: 1.5rem 1rem 0.75rem 1rem;
+    color: var(--text-primary);
+    border: solid 1px var(--common-divider);
+}
+.color-label:first-letter {
+    text-transform: uppercase;
+}
+.color-title {
+    display: flex;
+    color: var(--text-primary);
+    border: solid 1px var(--common-divider);
+    border-top: 0px;
+}
+.color-title div {
+    padding: 0.25rem 1rem;
+    width: 50%;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+}
+.color-row {
+    display: flex;
+    color: var(--text-primary);
+}
+.color-row > div {
+    border: solid 1px var(--common-divider);
+    border-top: 0px;
+    display: flex;
+    align-items: center;
+    height: 2.5rem;
+    padding: 0.25rem 1rem;
+    width: 50%;
+}
+.color-row .color-name {
+    display: flex;
+    gap: 0.5rem;
+}
+.color-row .color-value {
+    display: flex;
+    gap: 0.5rem;
+    border-left: none;
+}
+.icon-holder {
+    padding: 0;
+    margin: 0;
+    width: 16px;
+    height: 16px;
+    border: none;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 16 16'%3E%3Cpath fill='gray' d='M12.548 3.368A6.454 6.454 0 0 0 8 1.5h-.067A6.5 6.5 0 0 0 1.5 8c0 2.688 1.661 4.941 4.335 5.886A2 2 0 0 0 8.5 12a1 1 0 0 1 1-1h2.888a1.988 1.988 0 0 0 1.95-1.555c.112-.492.166-.995.162-1.5a6.457 6.457 0 0 0-1.952-4.577Zm.813 5.857a.993.993 0 0 1-.973.775H9.5a2 2 0 0 0-2 2 1 1 0 0 1-1.332.942C3.906 12.144 2.5 10.25 2.5 8a5.5 5.5 0 0 1 5.443-5.5H8a5.522 5.522 0 0 1 5.5 5.453c.004.428-.042.855-.136 1.272h-.002ZM8.75 4.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM6 6.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm0 3.5a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm5.5-3.5a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.color-example {
+    padding: 0;
+    margin: 0;
+    width: 16px;
+    height: 16px;
+    border: solid 1px var(--common-divider);
+    border-radius: 0.1875rem;
+}
+
+`
+}
+</style>
+
+
+<div class="sb-unstyled colors-wrapper fusion-v4">
+    {
+        Object.entries(colorPaletteLight).map(colorGroup=>{
+            return (
+                <div class="color-block">
+                    <div class="color-label font-v4-heading-1">{ colorGroup[0] }</div>
+                    <div class="colors-holder">
+                        <div class="color-title font-v4-table-label">
+                            <div>Name</div>
+                            <div>Value</div>
+                        </div>
+                        {
+                            Object.entries(colorGroup[1]).map(token=>{
+                                return (
+                                    <div class="color-row font-v4-caption">
+                                        <div class="color-name"><div class="icon-holder"></div>{ token[0] }</div>
+                                        <div class="color-value" title={token[1]}>
+                                            <div class="color-example" style={{backgroundColor: token[1]}}></div>
+                                            { token[1] }
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                </div>
+            )
+        })
+    }
+</div>
+
+
+#### CSS variables
+from `@ironsource/fusion-ui/style/v4/style-guide.css`
+
+<Source code={`
+.fusion-v4 {
+    --background-default: #FFFFFF;
+    --background-paper: hsl(0deg, 0%, 99%);
+    --background-model-elevation: #FFFFFF;
+    --background-backdrop: hsla(0deg, 0%, 0%, 0.11);
+    --background-paper-elevation-0: hsl(0deg, 0%, 97.5%);
+    --background-paper-elevation-1: hsl(0deg, 0%, 94.6%);
+    --background-paper-elevation-2: hsl(0deg, 0%, 92%);
+    --background-paper-elevation-3: hsl(0deg, 0%, 89.5%);
+    --background-paper-elevation-4: hsl(0deg, 0%, 86.8%);
+    --background-paper-elevation-5: hsl(0deg, 0%, 83%);
+    --background-paper-elevation-6: hsl(0deg, 0%, 73.2%);
+    --background-paper-elevation-7: hsl(0deg, 0%, 55.2%);
+    --background-paper-elevation-8: hsl(0deg, 0%, 50.3%);
+    --background-paper-elevation-9: hsl(0deg, 0%, 39.3%);
+
+    --action-primary: hsl(0deg, 0%, 12.5%);
+    --action-active: hsl(0deg, 0%, 50.3%);
+    --action-hover: hsla(0deg, 0%, 0%, 0.05);
+    --action-selected: hsl(0deg, 0%, 92%);
+    --action-disabled: hsl(0deg, 0%, 87%);
+    --action-disabled-background: hsl(0deg, 0%, 95%);
+    --action-focus: hsl(0deg, 0%, 92%);
+    --action-outlined-border: hsl(0deg, 0%, 73%);
+
+    --default-light: hsl(0deg, 0%, 89.5%);
+    --default-main: hsl(0 0% 94.51%);
+    --default-dark: hsl(0deg, 0%, 92%);
+    --default-outlined-border: hsl(0deg, 0%, 73.2%);
+    --default-contrast-text: hsl(0deg, 0%, 12.5%);
+    --default-button-contrast-text: hsl(0deg, 0%, 0%);
+
+    --common-white: #FFFFFF;
+    --common-black: #000000;
+    --common-inverse-white: #FFFFFF;
+    --common-inverse-black: #000000;
+    --common-divider: hsl(0deg, 0%, 86.8%);
+    --common-divider-elevation-0: hsl(0deg, 0%, 89%);
+
+    --text-primary: hsl(0deg, 0%, 12.5%);
+    --text-secondary: hsl(0deg, 0%, 39.3%);
+    --text-disabled: hsl(0deg, 0%, 73.33%);
+
+    --primary-lighter: hsl(209deg, 100%, 96.5%);
+    --primary-light: hsl(209deg, 95%, 90.1%);
+    --primary-main: hsl(206deg, 100%, 50%);
+    --primary-main-8-p: hsla(206deg, 100%, 50%, 0.08);
+    --primary-main-50-p: hsla(206deg, 100%, 50%, 0.5);
+    --primary-dark: hsl(208deg, 93.5%, 47.4%);
+    --primary-darker: hsl(211deg, 90%, 42%);
+    --primary-outlined-border: hsl(206deg, 100%, 50%);
+    --primary-contrast-text: hsl(216deg, 71%, 23%);
+    --primary-button-contrast-text: hsl(0deg, 0%, 100%);
+
+    --info-lighter: hsl(223deg, 98.4%, 97.1%);
+    --info-light: hsl(224deg, 87.1%, 92%);
+    --info-main: hsl(226deg, 70%, 55.5%);
+    --info-main-8-p: hsla(226deg, 70%, 55.5%, 0.08);
+    --info-main-50-p: hsla(226deg, 70%, 55.5%, 0.5);
+    --info-dark: hsl(226deg, 58.6%, 51.3%);
+    --info-darker: hsl(226deg, 55%, 45%);
+    --info-outlined-border: hsl(226deg, 70%, 55.5%);
+    --info-contrast-text: hsl(226deg, 50%, 24%);
+    --info-button-contrast-text: hsl(0deg, 0%, 100%);
+
+    --success-lighter: hsl(139deg, 55.2%, 94.5%);
+    --success-light: hsl(141deg, 43.7%, 86%);
+    --success-main: hsl(151deg, 55%, 41.5%);
+    --success-main-8-p: hsla(151deg, 55%, 41.5%, 0.08);
+    --success-main-50-p: hsla(151deg, 55%, 41.5%, 0.5);
+    --success-dark: hsl(152deg, 57.5%, 37.6%);
+    --success-darker: hsl(153deg, 67%, 28.5%);
+    --success-outlined-border: hsl(151deg, 55%, 41.5%);
+    --success-contrast-text: hsl(155deg, 40%, 16.5%);
+    --success-button-contrast-text: hsl(0deg, 0%, 100%);
+
+    --warning-lighter: hsl(45deg, 100%, 90.8%);
+    --warning-light: hsl(40deg, 100%, 81.5%);
+    --warning-main: hsl(42deg, 100%, 62%);
+    --warning-main-8-p: hsla(42deg, 100%, 62%, 0.08);
+    --warning-main-50-p: hsla(42deg, 100%, 62%, 0.5);
+    --warning-dark: hsl(42deg, 100%, 55%);
+    --warning-darker: hsl(25deg, 50%, 38%);
+    --warning-outlined-border: hsl(42deg, 100%, 62%);
+    --warning-contrast-text: hsl(25deg, 40%, 22%);
+    --warning-button-contrast-text: hsl(24deg, 40%, 22%);
+
+    --error-lighter: hsl(0deg, 100%, 96.8%);
+    --error-light: hsl(0deg, 90.2%, 91.9%);
+    --error-main: hsl(358deg, 75%, 59%);
+    --error-main-8-p: hsla(358deg, 75%, 59%, 0.08);
+    --error-main-50-p: hsla(358deg, 75%, 59%, 0.5);
+    --error-dark: hsl(358deg, 67.4%, 54.6%);
+    --error-darker: hsl(358deg, 65%, 47%);
+    --error-outlined-border: hsl(358deg, 75%, 59%);
+    --error-contrast-text: hsl(350deg, 63%, 24%);
+    --error-button-contrast-text: hsl(0deg, 0%, 100%);
+
+    --aba: #FFC134;
+    --abb: #4F4FF5
+}
+`} language={'css'}/>
+
+#### SCSS variables
+from `@ironsource/fusion-ui/style/v4/vars/_colors.scss`
+
+<Source code={`
+$color-v4-background-default: #FFFFFF;
+$color-v4-background-paper: hsl(0, 0%, 99.0%);
+$color-v4-background-model-elevation: #FFFFFF;
+$color-v4-background-backdrop: hsla(0, 0%, 0%, 0.11);
+$color-v4-background-paper-elevation-0: hsl(0, 0%, 97.5%);
+$color-v4-background-paper-elevation-1: hsl(0, 0%, 94.6%);
+$color-v4-background-paper-elevation-2: hsl(0, 0%, 92.0%);
+$color-v4-background-paper-elevation-3: hsl(0, 0%, 89.5%);
+$color-v4-background-paper-elevation-4: hsl(0, 0%, 86.8%);
+$color-v4-background-paper-elevation-5: hsl(0, 0%, 83.0%);
+$color-v4-background-paper-elevation-6: hsl(0, 0%, 73.2%);
+$color-v4-background-paper-elevation-7: hsl(0, 0%, 55.2%);
+$color-v4-background-paper-elevation-8: hsl(0, 0%, 50.3%);
+$color-v4-background-paper-elevation-9: hsl(0, 0%, 39.3%);
+
+$color-v4-action-primary: hsl(0, 0%, 12.5%);
+$color-v4-action-active: hsl(0, 0%, 50.3%);
+$color-v4-action-hover: hsla(0, 0%, 0%, 0.05);
+$color-v4-action-selected: hsla(0, 0%, 92%, 1);
+$color-v4-action-disabled: hsla(0, 0%, 87%, 1);
+$color-v4-action-disabled-background: hsla(0, 0%, 95%, 1);
+$color-v4-action-focus: hsl(0, 0%, 92.0%);
+$color-v4-action-outlined-border  : hsla(0, 0%, 73%, 1);
+
+$color-v4-default-light: hsl(0, 0%, 89.5%);
+$color-v4-default-main: hsl(0 0% 94.51%);
+$color-v4-default-dark: hsl(0, 0%, 92.0%);
+$color-v4-default-outlined-border: hsl(0, 0%, 73.2%);
+$color-v4-default-contrast-text: hsl(0, 0%, 12.5%);
+$color-v4-default-button-contrast-text: hsla(0, 0%, 0%, 1);
+
+$color-v4-common-white: #FFFFFF;
+$color-v4-common-black: #000000;
+$color-v4-common-inverse-white: #FFFFFF;
+$color-v4-common-inverse-black: #000000;
+$color-v4-common-divider: hsl(0, 0%, 86.8%);
+$color-v4-common-divider-elevation-0: hsla(0, 0%, 89%, 1);
+
+$color-v4-text-primary: hsl(0, 0%, 12.5%);
+$color-v4-text-secondary: hsl(0, 0%, 39.3%);
+$color-v4-text-disabled: hsl(0 0% 73.33%);
+
+$color-v4-primary-lighter: hsl(209, 100%, 96.5%);
+$color-v4-primary-light: hsl(209, 95.0%, 90.1%);
+$color-v4-primary-main: hsl(206, 100%, 50.0%);
+$color-v4-primary-main-8-p: hsla(206, 100%, 50%, 0.08);
+$color-v4-primary-main-50-p: hsla(206, 100%, 50%, 0.5);
+$color-v4-primary-dark: hsl(208, 93.5%, 47.4%);
+$color-v4-primary-darker: hsl(211, 90.0%, 42.0%);
+$color-v4-primary-outlined-border: hsl(206, 100%, 50.0%);
+$color-v4-primary-contrast-text: hsl(216, 71.0%, 23.0%);
+$color-v4-primary-button-contrast-text: hsla(0, 0%, 100%, 1);
+
+$color-v4-info-lighter: hsl(223, 98.4%, 97.1%);
+$color-v4-info-light: hsl(224, 87.1%, 92.0%);
+$color-v4-info-main: hsl(226, 70.0%, 55.5%);
+$color-v4-info-main-8-p: hsla(226, 70%, 55.5%, 0.08);
+$color-v4-info-main-50-p: hsla(226, 70%, 55.5%, 0.5);
+$color-v4-info-dark: hsl(226, 58.6%, 51.3%);
+$color-v4-info-darker: hsl(226, 55.0%, 45.0%);
+$color-v4-info-outlined-border: hsl(226, 70.0%, 55.5%);
+$color-v4-info-contrast-text: hsl(226, 50.0%, 24.0%);
+$color-v4-info-button-contrast-text: hsla(0, 0%, 100%, 1);
+
+$color-v4-success-lighter: hsl(139, 55.2%, 94.5%);
+$color-v4-success-light: hsl(141, 43.7%, 86.0%);
+$color-v4-success-main: hsl(151, 55.0%, 41.5%);
+$color-v4-success-main-8-p: hsla(151, 55%, 41.5%, 0.08);
+$color-v4-success-main-50-p: hsla(151, 55%, 41.5%, 0.5);
+$color-v4-success-dark: hsl(152, 57.5%, 37.6%);
+$color-v4-success-darker: hsl(153, 67.0%, 28.5%);
+$color-v4-success-outlined-border: hsl(151, 55.0%, 41.5%);
+$color-v4-success-contrast-text: hsl(155, 40.0%, 16.5%);
+$color-v4-success-button-contrast-text: hsla(0, 0%, 100%, 1);
+
+$color-v4-warning-lighter: hsl(45, 100%, 90.8%);
+$color-v4-warning-light: hsl(40, 100%, 81.5%);
+$color-v4-warning-main: hsl(42, 100%, 62.0%);
+$color-v4-warning-main-8-p: hsla(42, 100%, 62%, 0.08);
+$color-v4-warning-main-50-p: hsla(42, 100%, 62%, 0.5);
+$color-v4-warning-dark: hsl(42, 100%, 55.0%);
+$color-v4-warning-darker: hsl(25, 50.0%, 38.0%);
+$color-v4-warning-outlined-border: hsl(42, 100%, 62.0%);
+$color-v4-warning-contrast-text: hsl(25, 40.0%, 22.0%);
+$color-v4-warning-button-contrast-text: hsla(24, 40%, 22%, 1);
+
+$color-v4-error-lighter: hsl(360, 100%, 96.8%);
+$color-v4-error-light: hsl(360, 90.2%, 91.9%);
+$color-v4-error-main: hsl(358, 75.0%, 59.0%);
+$color-v4-error-main-8-p: hsla(358, 75%, 59%, 0.08);
+$color-v4-error-main-50-p: hsla(358, 75%, 59%, 0.5);
+$color-v4-error-dark: hsl(358, 67.4%, 54.6%);
+$color-v4-error-darker: hsl(358, 65.0%, 47.0%);
+$color-v4-error-outlined-border: hsl(358, 75.0%, 59.0%);
+$color-v4-error-contrast-text: hsl(350, 63.0%, 24.0%);
+$color-v4-error-button-contrast-text: hsla(0, 0%, 100%, 1);
+
+$color-v4-aba: #FFC134;
+$color-v4-abb: #4F4FF5;
+`} language={'css'}/>

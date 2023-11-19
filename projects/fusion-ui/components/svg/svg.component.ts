@@ -3,8 +3,8 @@ import {LogService} from '@ironsource/fusion-ui/services/log';
 import {SVG_OPTIONS_TOKEN} from './svg-config';
 import {SvgOptions} from './svg-entities';
 import {HttpClient} from '@angular/common/http';
-import {Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {Observable, Subject} from 'rxjs';
+import {finalize, publishReplay, refCount, takeUntil} from 'rxjs/operators';
 import {StorageService, StorageType} from '@ironsource/fusion-ui/services/stogare';
 
 @Component({
@@ -22,6 +22,8 @@ export class SvgComponent implements AfterViewInit, OnDestroy {
     svgPath = '';
 
     private onDestroy$ = new Subject<void>();
+
+    static cache: {[key: string]: Observable<any>} = {};
 
     constructor(
         private httpClient: HttpClient,
@@ -66,25 +68,36 @@ export class SvgComponent implements AfterViewInit, OnDestroy {
             if (!!cachedData) {
                 this.elementRef.nativeElement.innerHTML = cachedData;
             } else {
-                this.httpClient
-                    .get(svgUrl, {responseType: 'text'})
-                    .pipe(takeUntil(this.onDestroy$))
-                    .subscribe(
-                        response => {
-                            this.storageService.set(StorageType.SessionStorage, `${svgUrl}`, response);
-                            this.elementRef.nativeElement.innerHTML = response;
-                        },
-                        err => {
-                            this.logService.error(new Error(`Error Fetching Svg: ${svgUrl}, ${JSON.stringify(err)}`));
-                        }
-                    );
+                this.getSvgData(svgUrl).subscribe(
+                    response => {
+                        this.storageService.set(StorageType.SessionStorage, `${svgUrl}`, response);
+                        this.elementRef.nativeElement.innerHTML = response;
+                    },
+                    err => {
+                        this.logService.error(new Error(`Error Fetching Svg: ${svgUrl}, ${JSON.stringify(err)}`));
+                    }
+                );
             }
         }
     }
 
+    private getSvgData(svgUrl: string): Observable<any> {
+        if (!SvgComponent.cache[svgUrl]) {
+            SvgComponent.cache[svgUrl] = this.httpClient.get(svgUrl, {responseType: 'text'}).pipe(
+                takeUntil(this.onDestroy$),
+                publishReplay(1),
+                refCount(),
+                finalize(() => {
+                    delete SvgComponent.cache[svgUrl];
+                })
+            );
+        }
+        return SvgComponent.cache[svgUrl];
+    }
+
     private onPathChanged(value: string): void {
         this.svgPath = value;
-        if (this.elementRef && this.elementRef.nativeElement) {
+        if (this.elementRef?.nativeElement) {
             this.loadSvg();
         }
     }

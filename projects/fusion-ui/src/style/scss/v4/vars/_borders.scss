@@ -1,6 +1,7 @@
+@import "border-radius";
 @import 'colors';
 
-$borderRadius: var(--fu-border-radius, 8px);
+$borderRadius: $borderRadiusV4-lg;
 $borderLine: 1px solid $fu-divider;
 
 %noBorderRadiusTR{

@@ -16,7 +16,7 @@ const formControlChecked = new FormControl(true);
 const formControlUnchecked = new FormControl(false);
 
 export default {
-    title: 'Components/Inputs/Checkbox',
+    title: 'V3/Components/Inputs/Checkbox',
     component: CheckboxComponent,
     decorators: [
         moduleMetadata({

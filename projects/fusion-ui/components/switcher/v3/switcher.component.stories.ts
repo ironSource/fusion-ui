@@ -20,7 +20,7 @@ const switcherOptions = [
 const selectedSwitch = new FormControl(switcherOptions[2]);
 
 export default {
-    title: 'Components/Inputs/Switch',
+    title: 'V3/Components/Inputs/Switch',
     component: SwitcherComponent,
     decorators: [
         moduleMetadata({

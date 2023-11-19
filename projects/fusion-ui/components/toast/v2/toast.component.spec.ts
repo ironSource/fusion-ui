@@ -241,7 +241,7 @@ describe('ToastComponent', () => {
         const assertMessage = TOAST_MOCK_DATA.customIconToastConfig.text;
         const assertTypeIconClass =
             typeof TOAST_MOCK_DATA.customIconToastConfig.icon === 'string'
-                ? TOAST_MOCK_DATA.customIconToastConfig.icon.replace('/', '-')
+                ? TOAST_MOCK_DATA.customIconToastConfig.icon.substring(TOAST_MOCK_DATA.customIconToastConfig.icon.lastIndexOf('/') + 1).replace('/', '-')
                 : TOAST_MOCK_DATA.customIconToastConfig.icon.iconName.replace('/', '-');
 
         // toast type icon holder
@@ -252,6 +252,9 @@ describe('ToastComponent', () => {
         // toast type icon
         const toastTypeIconEl = typedIconHolder.query(By.css('fusion-icon'));
         expect(toastTypeIconEl).toBeTruthy();
+
+        console.log('>>', toastTypeIconEl)
+
         expect(toastTypeIconEl.nativeElement.classList).toContain(assertTypeIconClass);
 
         // content

@@ -19,7 +19,7 @@ const CUSTOM_PRESET_LAST_3_DAYS: DaterangeCustomPreset = {
 };
 
 export default {
-    title: 'Components/Dates/Date range',
+    title: 'V3/Components/Dates/Date range',
     component: DaterangeComponent,
     decorators: [
         moduleMetadata({

@@ -14,7 +14,7 @@ import {
 } from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
 
 export default {
-    title: 'Components/Filters/Top Filter/Filter Include-Exclude',
+    title: 'V3/Components/Filters/Top Filter/Filter Include-Exclude',
     component: TopFilterTriggerComponent,
     decorators: [
         moduleMetadata({

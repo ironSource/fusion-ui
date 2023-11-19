@@ -3,7 +3,7 @@
  * -----------------------------------------------------------------------------
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 // font-family
 $inter: 'Inter', sans-serif;
@@ -135,7 +135,7 @@ $inter: 'Inter', sans-serif;
     line-height: 1rem;
     @extend %font-v4-regular;
 }
-%font-v4-table-header {
+%font-v4-table-label {
     font-size: 0.8125rem;
     line-height: 1.25rem;
     letter-spacing: 0.00813rem;
@@ -147,10 +147,15 @@ $inter: 'Inter', sans-serif;
     letter-spacing: 0.00813rem;
     @extend %font-v4-medium;
 }
-%font-v4-tab-label {
+%font-v4-tab-label-1 {
     font-size: 0.875rem;
     line-height: 1rem;
     @extend %font-v4-medium;
+}
+%font-v4-tab-label-2 {
+    font-size: 0.875rem;
+    line-height: 1rem;
+    @extend %font-v4-bold;
 }
 %font-v4-chip-label {
     font-size: 0.75rem;
@@ -164,6 +169,7 @@ $inter: 'Inter', sans-serif;
 .font-v4-semibold {@extend %font-v4-semibold; }
 .font-v4-medium {@extend %font-v4-medium;}
 .font-v4-regular {@extend %font-v4-regular;}
+
 .font-v4-title {@extend %font-v4-title;}
 .font-v4-heading-1 {@extend %font-v4-heading-1;}
 .font-v4-heading-2 {@extend %font-v4-heading-2;}
@@ -175,14 +181,15 @@ $inter: 'Inter', sans-serif;
 .font-v4-body-2 {@extend %font-v4-body-2;}
 .font-v4-subtitle-1 {@extend %font-v4-subtitle-1;}
 .font-v4-subtitle-2 {@extend %font-v4-subtitle-2;}
-.font-v4-chart-1 {@extend %font-v4-chart-1;}
-.font-v4-chart-2 {@extend %font-v4-chart-2;}
 .font-v4-button {@extend %font-v4-button;}
 .font-v4-overline {@extend %font-v4-overline;}
 .font-v4-caption {@extend %font-v4-caption;}
-.font-v4-table-header {@extend %font-v4-table-header;}
+.font-v4-table-label {@extend %font-v4-table-label;}
 .font-v4-input-label {@extend %font-v4-input-label;}
-.font-v4-tab-label {@extend %font-v4-tab-label;}
+.font-v4-tab-label-1 {@extend %font-v4-tab-label-1;}
+.font-v4-tab-label-2 {@extend %font-v4-tab-label-2;}
 .font-v4-chip-label {@extend %font-v4-chip-label;}
+.font-v4-chart-1 {@extend %font-v4-chart-1;}
+.font-v4-chart-2 {@extend %font-v4-chart-2;}
 // endregion
 
