@@ -385,7 +385,7 @@ export const TAPJOY_MENU_ITEMS: MenuItem[] = [
 export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
     // {
     //     type: NavigationBarItemType.Home,
-    //     menuIcon: {iconName: 'house', iconVersion: 'v4'},
+    //     menuIcon: 'ph/house',
     //     menuTitle: 'Dashboard',
     //     route: '/docs/getting-started',
     //     cssTheme: {

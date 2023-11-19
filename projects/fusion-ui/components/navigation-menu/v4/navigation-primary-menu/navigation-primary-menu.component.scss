@@ -36,7 +36,7 @@ $navBarPrimaryWidth: 56px;
                 }
             }
             &.fu-network{
-                height: 80px;
+                height: 64px;
                 position: relative;
                 .fu-navigation-bar-button{
                     @include icon-style('fu-navigation-bar-button-icon', $fu-nav-menu-white-100, $navBarIconSize, true, true) {
@@ -67,7 +67,7 @@ $navBarPrimaryWidth: 56px;
                 }
             }
             &.fu-bottom-block{
-                height: 48px;
+                height: 40px;
                 &:last-of-type{
                     padding-bottom: 8px;
                 }
