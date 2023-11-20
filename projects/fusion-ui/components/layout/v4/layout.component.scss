@@ -1,8 +1,5 @@
 @import '../../../src/style/scss/v4/vars/vars';
-
-$pageHeaderHeight: 64px;
-$menuPrimaryWidth: 56px;
-$menuSecondaryWidth: 200px;
+@import '../../../src/style/scss/v4/vars/layout';
 
 :host{
     @extend %reset;
@@ -17,20 +14,20 @@ $menuSecondaryWidth: 200px;
         .fu-left-navigation{
             display: block;
             height: 100%;
-            max-width: calc(#{$menuPrimaryWidth} + #{$menuSecondaryWidth});
+            max-width: calc(#{$navBarPrimaryWidth} + #{$navBarSecondaryWidth});
         }
         .fu-main-page{
             .fu-page-header{
                 height: $pageHeaderHeight;
-                border-bottom: solid 1px $color-v4-common-divider;
+                border-bottom: solid 1px var(--common-divider, #{$color-v4-common-divider});
             }
             .main-content{
                 height: calc(100vh - var(--layout-header-height, #{$pageHeaderHeight}));
                 overflow: auto;
-                width: calc(100vw - #{$menuPrimaryWidth});
+                width: calc(100vw - #{$navBarPrimaryWidth});
                 transition: width .45s ease-out;
                 &.fu-menu-expanded-opened{
-                    width: calc(100vw - #{$menuPrimaryWidth} - #{$menuSecondaryWidth});
+                    width: calc(100vw - #{$navBarPrimaryWidth} - #{$navBarSecondaryWidth});
                 }
                 .page-view {
                     height: 100%;

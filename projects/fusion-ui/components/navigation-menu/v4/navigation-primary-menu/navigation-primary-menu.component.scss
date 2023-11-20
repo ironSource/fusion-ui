@@ -1,9 +1,6 @@
 @import '../../../../src/style/scss/v4/mixins/mixins';
 @import '../../../../src/style/scss/v4/vars/vars';
-
-$navButtonSize: 32px;
-$navBarIconSize: 20px;
-$navBarPrimaryWidth: 56px;
+@import '../../../../src/style/scss/v4/vars/layout';
 
 :host{
     @extend %reset;
@@ -52,12 +49,12 @@ $navBarPrimaryWidth: 56px;
                         &:after {
                             content:'';
                             position: absolute;
-                            top: 23px;
+                            top: 17px;
                             right: 0;
                             width: 0;
                             height: 0;
                             border-top: 8px solid transparent;
-                            border-right: 6px solid $fu-nav-secondary;
+                            border-right: 6px solid var(--background-paper, #{$color-v4-background-paper});
                             border-bottom: 8px solid transparent;
                         }
                     }
@@ -96,7 +93,7 @@ $navBarPrimaryWidth: 56px;
         }
 
         .fu-navigation-bar-network-name{
-            color: var(--fu-navbar-text-color, $fu-nav-menu-white-80);
+            color: $fu-nav-menu-white-80;
             font-size: 10px;
             line-height: 16px;
             @extend %font-v4-semibold;
@@ -104,7 +101,7 @@ $navBarPrimaryWidth: 56px;
 
         .fu-navigation-bar-button{
             @include size($navButtonSize);
-            border-radius: 8px;
+            border-radius: $borderRadiusV4-md;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -130,7 +127,7 @@ $navBarPrimaryWidth: 56px;
                     cursor: default;
                 }
                 & + .fu-navigation-bar-network-name {
-                    color: var(--fu-navbar-text-color, $fu-nav-menu-white-100);
+                    color: $fu-nav-menu-white-100;
                 }
             }
             &.fu-menu-toggle{

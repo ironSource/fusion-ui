@@ -1,13 +1,11 @@
 @import '../../../../../src/style/scss/v4/mixins/mixins';
 @import '../../../../../src/style/scss/v4/vars/vars';
-
-$headerHeight: 64px;
+@import '../../../../../src/style/scss/v4/vars/layout';
 
 :host {
     @extend %reset;
-    height: $headerHeight;
-    max-height: $headerHeight;
-    //overflow: hidden;
+    height: $pageHeaderHeight;
+    max-height: $pageHeaderHeight;
 
     display: flex;
     flex-direction: row;
@@ -19,7 +17,7 @@ $headerHeight: 64px;
         padding: 8px;
         margin-left: 16px;
         border-radius: 20px;
-        @include icon-style('fu-header-back-button-icon', $fu-nav-text-secondary, 24px, true, true){
+        @include icon-style('fu-header-back-button-icon', var(--text-secondary, #{$color-v4-text-secondary}), 24px, true, true){
             @include size(24px);
         }
         &:hover{
@@ -31,7 +29,7 @@ $headerHeight: 64px;
         @extend %font-v4-heading-2;
         margin-left: 24px;
         margin-right: 32px;
-        color: $fu-nav-text-primary;
+        color: var(--text-primary, #{$color-v4-text-primary});
 
         &.fu-page-has-subtitle{
             margin-right: 10px;
@@ -43,13 +41,13 @@ $headerHeight: 64px;
     .fu-header-delimiter{
         @include size(3px);
         border-radius: 2px;
-        background-color: $fu-nav-text-primary;
+        background-color: var(--text-primary, #{$color-v4-text-primary});
         margin-right: 8px;
     }
     .fu-page-subtitle{
         @extend %font-v4-body-2;
         margin-right: 32px;
-        color: $fu-nav-text-primary;
+        color: var(--text-primary, #{$color-v4-text-primary});
     }
 
     .fu-action-wrapper-after-teleports{
