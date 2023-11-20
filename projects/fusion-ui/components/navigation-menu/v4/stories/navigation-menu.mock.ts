@@ -36,7 +36,7 @@ export const USER_PROFILE_MENU_ITEMS: MenuItem[] = [
 
 export const UNITY_MENU_ITEMS: MenuItem[] = [
     {
-        icon: {iconName: 'add', iconVersion: 'v4'},
+        icon: 'ph/bold/plus',
         name: 'Add app',
         route: '/docs/components/v2/alert'
     },
@@ -45,12 +45,12 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
         isGroupName: true
     },
     {
-        icon: {iconName: 'dashboard', iconVersion: 'v4'},
+        icon: 'ph/layout',
         name: 'Dashboard',
         route: '/branch_'
     },
     {
-        icon: {iconName: 'chart_line_up', iconVersion: 'v4'},
+        icon: 'ph/chart-line-up',
         name: 'Reports',
         children: [
             {
@@ -208,7 +208,7 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
         ]
     },
     {
-        icon: {iconName: 'mediation', iconVersion: 'v4'},
+        icon: 'ph/tree-structure',
         name: 'Management',
         children: [
             {
@@ -222,7 +222,7 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
         ]
     },
     {
-        icon: {iconName: 'wrench', iconVersion: 'v4'},
+        icon: 'ph/gear',
         name: 'Setup',
         children: [
             {
@@ -257,7 +257,7 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
         isGroupName: true
     },
     {
-        icon: {iconName: 'medal', iconVersion: 'v4'},
+        icon: 'ph/medal',
         name: 'Review',
         children: [
             {
@@ -279,7 +279,7 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
         ]
     },
     {
-        icon: {iconName: 'faders', iconVersion: 'v4'},
+        icon: 'ph/sliders',
         name: 'Manage',
         children: [
             {
@@ -300,17 +300,17 @@ export const IS_MENU_ITEMS: MenuItem[] = [
         isGroupName: true
     },
     {
-        icon: {iconName: 'add', iconVersion: 'v4'},
+        icon: 'ph/bold/plus',
         name: 'Add app',
         route: '/Add+app'
     },
     {
-        icon: {iconName: 'chart_line_up', iconVersion: 'v4'},
+        icon: 'ph/chart-line-up',
         name: 'Performance',
         route: '/performance'
     },
     {
-        icon: {iconName: 'wrench', iconVersion: 'v4'},
+        icon: 'ph/gear',
         name: 'Setup',
         children: [
             {
@@ -332,12 +332,12 @@ export const IS_MENU_ITEMS: MenuItem[] = [
         isGroupName: true
     },
     {
-        icon: {iconName: 'add', iconVersion: 'v4'},
+        icon: 'ph/bold/plus',
         name: 'Add campaign',
         route: '/Add+Campaign'
     },
     {
-        icon: {iconName: 'rocket_launch', iconVersion: 'v4'},
+        icon: 'ph/rocket-launch',
         name: 'Campaigns',
         children: [
             {
@@ -351,7 +351,7 @@ export const IS_MENU_ITEMS: MenuItem[] = [
         ]
     },
     {
-        icon: {iconName: 'chart_line_up', iconVersion: 'v4'},
+        icon: 'ph/chart-bar',
         name: 'Reports',
         children: [
             {
@@ -376,7 +376,7 @@ export const IS_MENU_ITEMS: MenuItem[] = [
 
 export const TAPJOY_MENU_ITEMS: MenuItem[] = [
     {
-        icon: {iconName: 'dashboard', iconVersion: 'v4'},
+        icon: 'ph/layout',
         name: 'Dashboard',
         route: '/dashboard'
     }
@@ -433,7 +433,7 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
 
 export const IS_ADMIN_MENU_ITEMS: MenuItem[] = [
     {
-        icon: {iconName: 'bank', iconVersion: 'v4'},
+        icon: 'ph/bank',
         name: 'General',
         children: [
             {
@@ -443,7 +443,7 @@ export const IS_ADMIN_MENU_ITEMS: MenuItem[] = [
         ]
     },
     {
-        icon: {iconName: 'rocket_launch', iconVersion: 'v4'},
+        icon: 'ph/rocket-launch',
         name: 'Demand',
         children: [
             {
@@ -491,7 +491,7 @@ export const IS_ADMIN_MENU_ITEMS: MenuItem[] = [
         ]
     },
     {
-        icon: {iconName: 'mediation', iconVersion: 'v4'},
+        icon: 'ph/tree-structure',
         name: 'Networks OPS',
         children: [
             {
@@ -517,7 +517,7 @@ export const IS_ADMIN_MENU_ITEMS: MenuItem[] = [
         ]
     },
     {
-        icon: {iconName: 'wrench', iconVersion: 'v4'},
+        icon: 'ph/gear',
         name: 'Customer support',
         children: [
             {
@@ -527,7 +527,7 @@ export const IS_ADMIN_MENU_ITEMS: MenuItem[] = [
         ]
     },
     {
-        icon: {iconName: 'lightning', iconVersion: 'v4'},
+        icon: 'ph/lightning',
         name: 'Internal',
         children: [
             {
@@ -541,7 +541,7 @@ export const IS_ADMIN_MENU_ITEMS: MenuItem[] = [
         ]
     },
     {
-        icon: {iconName: 'currency-circle-dollar', iconVersion: 'v4'},
+        icon: 'ph/currency-circle-dollar',
         name: 'Finance',
         children: [
             {
