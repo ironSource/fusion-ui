@@ -44,6 +44,8 @@ export class IconComponent extends SvgComponent {
             // for phosphor regular icons
             if (this.libVersion === 'ph') {
                 this.libVersion += '/regular';
+            } else if (this.libVersion === 'ph/bold') {
+                this.iconName += '-bold';
             }
         }
     }
