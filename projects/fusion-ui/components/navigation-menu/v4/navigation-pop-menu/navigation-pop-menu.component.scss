@@ -36,7 +36,7 @@
                 display: flex;
                 align-items: center;
                 justify-items: center;
-                @include icon-style('fu-user-icon', $color-v4-action-active, $userIconSize, true, true) {
+                @include icon-style('fu-user-icon', var(--action-active, #{$color-v4-action-active}), $userIconSize, true, true) {
                     @include size($userIconSize);
                 }
                 .fu-user-avatar{
@@ -88,7 +88,7 @@
                 @extend %font-v4-body-2;
                 color: var(--text-primary, #{$color-v4-text-primary});
 
-                @include icon-style('fu-pop-menu-icon', var(--text-secondary, #{$color-v4-text-secondary}), $menuItemIconSize, true, true) {
+                @include icon-style('fu-pop-menu-icon', var(--action-active, #{$color-v4-action-active}), $menuItemIconSize, true, true) {
                     @include size($menuItemIconSize);
                 }
 
