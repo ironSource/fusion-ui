@@ -21,7 +21,7 @@
             @include size(24px);
         }
         &:hover{
-            background-color: $fu-light-100;
+            background-color: var(--action-hover, #{$color-v4-action-hover});
             cursor: pointer;
         }
     }
