@@ -396,7 +396,7 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
         type: NavigationBarItemType.Main,
         menuIcon: 'v4/branded/unity',
         menuTitle: 'LevelPlay',
-        menuLogoSrc: 'v4/unity_logo_flat',
+        menuLogoSrc: 'v4/unity_logo_flat_1',
         cssTheme: {'fu-navbar-background-color': '#181818'},
         menuItems: UNITY_MENU_ITEMS
     },
@@ -404,7 +404,7 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
         type: NavigationBarItemType.Main,
         menuIcon: 'v4/branded/ironsource',
         menuTitle: 'Ads',
-        menuLogoSrc: 'v4/is_ads_logo',
+        menuLogoSrc: 'v4/is_ads_logo_1',
         cssTheme: {'fu-navbar-background-color': '#0D148C'},
         menuItems: IS_MENU_ITEMS
     },

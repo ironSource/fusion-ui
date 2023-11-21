@@ -23,7 +23,7 @@
             height: $navBarSecondaryLogoHolderHeight;
             display: flex;
             align-items: center;
-            padding-left: 20px;
+            padding: var(--spacing-200, #{$spacingV4-200});
 
             img {
                 max-width: $navBarSecondaryWidth;
@@ -35,7 +35,7 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            padding: 0px 12px 24px;
+            padding: 0px var(--spacing-100, #{$spacingV4-100}) var(--spacing-300, #{$spacingV4-300});
 
             width: $navBarSecondaryWidth;
             overflow-y: hidden;
@@ -51,25 +51,29 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    padding: 4px 8px;
-                    gap: 14px;
+                    padding: 4px 8px 4px 12px;
+                    gap: 4px;
                     cursor: pointer;
-                    margin-bottom: 2px;
+                    margin-bottom: 4px;
                     border: solid 1px transparent;
                     text-decoration: none;
 
                     &.fu-secondary-menu-item-selected {
-                        border: solid 1px $fu-nav-menu-black-8;
+                        border: solid 1px var(--common-divider, #{$color-v4-common-divider});
                         border-radius: 4px;
-                        background-color: $fu-nav-menu-black-5;
+                        background-color: var(--action-hover, #{$color-v4-action-hover});
                         cursor: default;
                         pointer-events: none;
+                        .fu-secondary-menu-item-icon-holder{
+                            @include icon-style('fu-secondary-menu-item-icon', var(--action-primary, #{$color-v4-action-primary}), $navBarSecondaryItemIconSize, true, true)
+                        }
                     }
 
                     &.fu-nav-menu-title-item {
                         height: $navBarSecondaryItemTitleHeight;
                         cursor: default;
                         pointer-events: none;
+                        padding: 10px 8px;
                         .fu-secondary-menu-item-icon-holder{
                             display: none;
                         }
@@ -81,23 +85,17 @@
 
                     &:hover {
                         border-radius: 4px;
-                        background-color: $fu-nav-menu-black-5;
-                    }
-
-                    &.fu-has-sub-items {
-                        gap: 12px;
-                        .fu-secondary-menu-item-icon-holder {
-                            @include size($navBarSecondaryItemParentIconSize);
-                            @include icon-style('fu-secondary-menu-item-icon', var(--text-primary, #{$color-v4-text-primary}), $navBarSecondaryItemParentIconSize, true, true) {
-                                @include size($navBarSecondaryItemParentIconSize);
-                            }
+                        background-color: var(--action-hover, #{$color-v4-action-hover});
+                        .fu-secondary-menu-item-icon-holder{
+                            @include icon-style('fu-secondary-menu-item-icon', var(--action-primary, #{$color-v4-action-primary}), $navBarSecondaryItemIconSize, true, true)
                         }
-
                     }
 
                     .fu-secondary-menu-item-icon-holder {
-                        @include size($navBarSecondaryItemIconSize);
-                        @include icon-style('fu-secondary-menu-item-icon', var(--text-primary, #{$color-v4-text-primary}), $navBarSecondaryItemIconSize, true, true) {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        @include icon-style('fu-secondary-menu-item-icon', var(--action-active, #{$color-v4-action-active}), $navBarSecondaryItemIconSize, true, true) {
                             @include size($navBarSecondaryItemIconSize);
                         }
                     }
@@ -107,11 +105,10 @@
                         color: var(--text-primary, #{$color-v4-text-primary});
                     }
 
-                    @include icon-style('fu-secondary-menu-item-new-tab-icon', var(--text-primary, #{$color-v4-text-primary}), $navBarSecondaryItemNewTabIconSize, true, true){
+                    @include icon-style('fu-secondary-menu-item-new-tab-icon', var(--action-active, #{$color-v4-action-active}), $navBarSecondaryItemNewTabIconSize, true, true){
                         @include size($navBarSecondaryItemNewTabIconSize);
-                        margin-left: -10px;
                     }
-                    @include icon-style('fu-secondary-menu-item-parent-icon-toggle', var(--text-primary, #{$color-v4-text-primary}), $navBarSecondaryItemOpenCloseIconSize, true, true){
+                    @include icon-style('fu-secondary-menu-item-parent-icon-toggle', var(--action-active, #{$color-v4-action-active}), $navBarSecondaryItemOpenCloseIconSize, true, true){
                         @include size($navBarSecondaryItemOpenCloseIconSize);
                         display: flex;
                         align-items: center;
@@ -120,10 +117,11 @@
                     }
 
                     &.fu-sub-items-opened {
-                        @include icon-style('fu-secondary-menu-item-parent-icon-toggle', var(--text-primary, #{$color-v4-text-primary}), $navBarSecondaryItemOpenCloseIconSize, true, true, 90);
+                        @include icon-style('fu-secondary-menu-item-parent-icon-toggle', var(--action-active, #{$color-v4-action-active}), $navBarSecondaryItemOpenCloseIconSize, true, true, 90);
                     }
                 }
                 .fu-secondary-menu-sub-items-holder{
+                    margin-left: 12px;
                     display: flex;
                     flex-direction: column;
                     align-items: flex-start;
@@ -138,6 +136,7 @@
                     }
 
                     .fu-secondary-menu-item-holder{
+                        margin-bottom: 2px;
                         .fu-secondary-menu-item-label {
                             @extend %font-v4-body-2;
                         }
