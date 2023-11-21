@@ -36,7 +36,7 @@ export const USER_PROFILE_MENU_ITEMS: MenuItem[] = [
 
 export const UNITY_MENU_ITEMS: MenuItem[] = [
     {
-        icon: 'ph/bold/plus',
+        icon: 'ph/plus',
         name: 'Add app',
         route: '/docs/components/v2/alert'
     },
@@ -300,7 +300,7 @@ export const IS_MENU_ITEMS: MenuItem[] = [
         isGroupName: true
     },
     {
-        icon: 'ph/bold/plus',
+        icon: 'ph/plus',
         name: 'Add app',
         route: '/Add+app'
     },
@@ -332,7 +332,7 @@ export const IS_MENU_ITEMS: MenuItem[] = [
         isGroupName: true
     },
     {
-        icon: 'ph/bold/plus',
+        icon: 'ph/plus',
         name: 'Add campaign',
         route: '/Add+Campaign'
     },
