@@ -2,32 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
-## [6.3.0](https://github.com/ironSource/fusion-ui/compare/v6.3.0-rc.0...v6.3.0) (2023-11-16)
+### [6.3.1](https://github.com/ironSource/fusion-ui/compare/v6.3.1-rc.0...v6.3.1) (2023-11-23)
 
-## [6.3.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.2.2-rc.5...v6.3.0-rc.0) (2023-11-16)
+### [6.3.1-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.3.0...v6.3.1-rc.0) (2023-11-21)
+
+
+### Bug Fixes
+
+* **isct-126:** fixed icon component on icon name change ([3224eb9](https://github.com/ironSource/fusion-ui/commit/3224eb94d4307bf78f729809763bf0bad0530e04))
+
+## [6.3.0](https://github.com/ironSource/fusion-ui/compare/v6.3.0-rc.0...v6.3.0) (2023-11-16)
 
 
 ### Features
 
 * **isct-97:** add support for ui style v4 ([be3a8a2](https://github.com/ironSource/fusion-ui/commit/be3a8a247f608975d0ab25619e0177e6516a584a))
 
-### [6.2.2-rc.5](https://github.com/ironSource/fusion-ui/compare/v6.2.2-rc.4...v6.2.2-rc.5) (2023-11-16)
-
-### [6.2.2-rc.4](https://github.com/ironSource/fusion-ui/compare/v6.2.2-rc.3...v6.2.2-rc.4) (2023-11-09)
-
-### [6.2.2-rc.3](https://github.com/ironSource/fusion-ui/compare/v6.2.2-rc.2...v6.2.2-rc.3) (2023-11-07)
-
-### [6.2.2-rc.2](https://github.com/ironSource/fusion-ui/compare/v6.2.2-rc.1...v6.2.2-rc.2) (2023-11-07)
-
-### [6.2.2-rc.1](https://github.com/ironSource/fusion-ui/compare/v6.2.2-rc.0...v6.2.2-rc.1) (2023-11-05)
-
-### [6.2.2-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.2.1...v6.2.2-rc.0) (2023-11-05)
-
 ### [6.2.1](https://github.com/ironSource/fusion-ui/compare/v6.2.1-rc.1...v6.2.1) (2023-11-05)
-
-### [6.2.1-rc.1](https://github.com/ironSource/fusion-ui/compare/v6.2.1-rc.0...v6.2.1-rc.1) (2023-11-02)
-
-### [6.2.1-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.2.0...v6.2.1-rc.0) (2023-11-02)
 
 
 ### Bug Fixes
@@ -35,12 +26,6 @@ All notable changes to this project will be documented in this file. See [commit
 * **isct-98:** fix datepicker v1 ([4d0bec0](https://github.com/ironSource/fusion-ui/commit/4d0bec00d49c4dd71fc681e6ad11b1ecea2e6696))
 
 ## [6.2.0](https://github.com/ironSource/fusion-ui/compare/v6.2.0-rc.0...v6.2.0) (2023-10-30)
-
-## [6.2.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.1.1...v6.2.0-rc.0) (2023-10-16)
-
-## [6.1.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v6.1.0-rc.1...v6.1.0-rc.2) (2023-10-05)
-
-## [6.1.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v6.1.0-rc.0...v6.1.0-rc.1) (2023-10-05)
 
 
 ### CI
