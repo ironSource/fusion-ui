@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file. See [commit
 
 * **isct-115:** update css for sidebar v4 primary and popup menu (storybook) ([d3748dd](https://github.com/ironSource/fusion-ui/commit/d3748dd832c0ea84608cec997aad7169b99fa605))
 
+### [6.3.1](https://github.com/ironSource/fusion-ui/compare/v6.3.1-rc.0...v6.3.1) (2023-11-23)
 
 ### Bug Fixes
 
