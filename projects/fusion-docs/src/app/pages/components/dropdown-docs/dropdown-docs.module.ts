@@ -13,6 +13,7 @@ import {DropdownModule} from '@ironsource/fusion-ui/components/dropdown/v1';
 import {MultiDropdownModule} from '@ironsource/fusion-ui/components/multi-dropdown/v1';
 import {AddboxDropdownModule} from '@ironsource/fusion-ui/components/addbox-dropdown/v1';
 import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox/v1';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 
 const routes: Routes = [{path: '', component: DropdownDocsComponent}];
 
@@ -31,7 +32,8 @@ const routes: Routes = [{path: '', component: DropdownDocsComponent}];
         DropdownModule,
         MultiDropdownModule,
         AddboxDropdownModule,
-        AbTestOptionModule
+        AbTestOptionModule,
+        IconModule
     ]
 })
 export class DropdownDocsModule {}

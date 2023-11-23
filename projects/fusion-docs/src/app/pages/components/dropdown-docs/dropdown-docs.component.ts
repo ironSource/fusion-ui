@@ -3,7 +3,7 @@ import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {of, Observable, Subject} from 'rxjs';
 import {delay, finalize, takeUntil} from 'rxjs/operators';
-import {EXISTED_TITLES, OPTIONS_COUNTRIES, OPTIONS_GROUPED, OPTIONS_GROUPED_SUBGROUP} from './dropdown-docs.config';
+import {EXISTED_TITLES, MOK_APPLICATIONS, OPTIONS_COUNTRIES, OPTIONS_GROUPED, OPTIONS_GROUPED_SUBGROUP} from './dropdown-docs.config';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {Router} from '@angular/router';
 import {AbTestOptionComponent} from '../../../components/ab-test-option/ab-test-option.component';
@@ -165,6 +165,7 @@ export class DropdownDocsComponent implements OnInit, OnDestroy {
     optionsAutoComplete: Array<any>;
     options: Array<any>;
     optionsNoIcons: Array<DropdownOption>;
+    optionsApplications: Array<DropdownOption>;
     optionsNoIconsWithImages: Array<any>;
     loading: boolean;
     optionsNoScroll2: Array<any>;
@@ -504,7 +505,7 @@ export class DropdownDocsComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.selectedVersion$.subscribe((styleVersion: StyleVersion) => {
             if (styleVersion === StyleVersion.V2 || styleVersion === StyleVersion.V3) {
-                this.router.navigate(['docs/components/v2/dropdown']);
+                // this.router.navigate(['docs/components/v2/dropdown']);
             }
         });
 
@@ -650,6 +651,16 @@ export class DropdownDocsComponent implements OnInit, OnDestroy {
         this.optionsInlineDropDownSelected = [this.optionsInlineDropDown[1]];
 
         this.countriesOptions = [this.allCountriesOption, ...this.countriesOptions];
+
+        this.optionsApplications = MOK_APPLICATIONS.map(item => {
+            return {
+                id: item.id,
+                title: item.name,
+                displayText: item.name,
+                icon: item.platform.toLowerCase(),
+                image: item.icon
+            };
+        });
 
         this.optionsNoScroll2 = [...this.optionsNoIcons.filter((item, idx) => idx < 8)];
         this.formInit();

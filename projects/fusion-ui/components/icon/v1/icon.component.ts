@@ -37,6 +37,7 @@ export class IconComponent extends SvgComponent {
     }
 
     private setLibPath(value: string): void {
+        this.removeCssClass();
         if (typeof value === 'string' && value.includes('/')) {
             const lastIndex = value.lastIndexOf('/');
             this.libVersion = value.substring(0, lastIndex);
@@ -50,11 +51,14 @@ export class IconComponent extends SvgComponent {
         }
     }
 
+    private removeCssClass(): void {
+        if (!!this.iconName) {
+            this.renderer.removeClass(this.elementRef.nativeElement, this.iconName.replace(/[\/,_, ]/gi, '-'));
+        }
+        this.iconName = null;
+    }
+
     private onNameChanged(value: string): void {
-        this.renderer.removeClass(
-            this.elementRef.nativeElement,
-            !!this.iconName ? this.iconName.replace(/[\/,_, ]/gi, '-') : this.iconName
-        );
         if (!!value) {
             this.renderer.addClass(this.elementRef.nativeElement, value.replace(/[\/,_, ]/gi, '-'));
         }
