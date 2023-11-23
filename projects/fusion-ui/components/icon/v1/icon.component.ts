@@ -47,6 +47,8 @@ export class IconComponent extends SvgComponent {
                 this.libVersion += '/regular';
             } else if (this.libVersion === 'ph/bold') {
                 this.iconName += '-bold';
+            } else if (this.libVersion === 'ph/fill') {
+                this.iconName += '-fill';
             }
         }
     }
