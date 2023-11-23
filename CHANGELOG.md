@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [6.4.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v6.3.1...v6.4.0-rc.1) (2023-11-23)
+
+## [6.4.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.3.1-rc.0...v6.4.0-rc.0) (2023-11-23)
+
+
+### Features
+
+* **isct-115:** update css for sidebar v4 primary and popup menu (storybook) ([d3748dd](https://github.com/ironSource/fusion-ui/commit/d3748dd832c0ea84608cec997aad7169b99fa605))
+
+
+### Bug Fixes
+
+* **isct-115:** fix for phosphor bold icons ([06dbea4](https://github.com/ironSource/fusion-ui/commit/06dbea42872b197690462d3158e46d65eef80aa7))
+
 ## [6.4.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.3.1-rc.0...v6.4.0-rc.0) (2023-11-23)
 
 
