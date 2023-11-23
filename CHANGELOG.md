@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [6.3.1-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.3.0...v6.3.1-rc.0) (2023-11-21)
+
+
+### Bug Fixes
+
+* **isct-126:** fixed icon component on icon name change ([3224eb9](https://github.com/ironSource/fusion-ui/commit/3224eb94d4307bf78f729809763bf0bad0530e04))
+
 ## [6.3.0](https://github.com/ironSource/fusion-ui/compare/v6.3.0-rc.0...v6.3.0) (2023-11-16)
 
 
