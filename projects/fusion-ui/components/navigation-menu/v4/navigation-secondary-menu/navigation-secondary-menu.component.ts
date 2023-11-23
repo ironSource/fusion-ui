@@ -30,7 +30,7 @@ export class NavigationSecondaryMenuComponent implements OnInit {
 
     @Output() menuItemClick = new EventEmitter<MenuItem>();
 
-    itemChildToggleIcon: string = 'ph/caret-right';
+    itemChildToggleIcon: string = 'ph/bold/caret-right';
     itemNewTabIcon: string = 'ph/arrow-square-out';
     selectedMenuItem$ = new BehaviorSubject<secondaryMenuItem>(null);
 
