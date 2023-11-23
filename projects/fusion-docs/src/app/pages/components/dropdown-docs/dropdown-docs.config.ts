@@ -1165,3 +1165,79 @@ export const OPTIONS_COUNTRIES = [
     },
     {id: 'ZW', flag: 'ZW', title: 'Zimbabwe', displayText: 'Zimbabwe'}
 ];
+
+export const MOK_APPLICATIONS = [
+    {
+        id: 553251,
+        name: 'Moy 7 the Virtual Pet Game',
+        displayText: 'Moy 7 the Virtual Pet Game',
+        platform: 'android',
+        icon: 'https://lh3.googleusercontent.com/T0yo2MIuoWWrhk7vaNX18MaOOI3StYYNb43Y1V_X8QJiWGu0SgMCAhSqoNc9ei5BHH9b=s180',
+        subText: {text: '12421542'}
+    },
+    {
+        id: 551615,
+        name: '夢幻模擬戰',
+        displayText: '夢幻模擬戰',
+        platform: 'ios',
+        icon: 'https://is5-ssl.mzstatic.com/image/thumb/Purple124/v4/82/ce/6f/82ce6f3a-ed24-e4f8-bf28-830560af691d/source/512x512bb.jpg',
+        subText: {text: '112455'}
+    },
+    {
+        id: 549109,
+        name: 'Helix Crush - Fruit Slices',
+        displayText: 'Helix Crush - Fruit Slices',
+        platform: 'ios',
+        icon: 'https://is4-ssl.mzstatic.com/image/thumb/Purple123/v4/e5/52/eb/e552eb88-72c7-f284-7622-988200f345bd/source/512x512bb.jpg',
+        subText: {text: '167722'}
+    },
+    {
+        id: 545663,
+        name: 'Kingdom Rush Frontiers',
+        displayText: 'Kingdom Rush Frontiers',
+        platform: 'android',
+        icon: 'https://lh3.googleusercontent.com/lqbNkK3Tgw8npbbWNssKVjiI7ZH1-C-8im-NyixTepAGio_xtdnr9ldT8GxBTaDmhwp0=s180'
+    },
+    {
+        id: 545567,
+        name: 'Ablo - Make friends worldwide',
+        displayText: 'Ablo - Make friends worldwide',
+        platform: 'android',
+        icon: 'https://lh3.googleusercontent.com/qw50MiIrtOz_DeXNvlIQqFpIk8Den4j5z7bW23eTooSeqFYj_2LXj8HWDzSYrxR0iic=s180'
+    },
+    {
+        id: 545559,
+        name: 'NBA LIVE Mobile Basketball',
+        displayText: 'NBA LIVE Mobile Basketball',
+        platform: 'android',
+        icon: 'https://lh3.googleusercontent.com/KW3SuJ-4xWj8xckPOw7llVxvBrnM3NlU6WYif_bEMg44gRCooFgjrYxaAX0lLfvocQ=s180'
+    },
+    {
+        id: 545429,
+        name: 'World War Doh: Real Time PvP',
+        displayText: 'World War Doh: Real Time PvP',
+        platform: 'android',
+        icon: 'https://lh3.googleusercontent.com/NleNP8mCBQuJSUzc5QFpiniY5biu1JtpV6pgosxyY_-bWGEu15e_vOMPqm3hRmbCdLc=s180'
+    },
+    {
+        id: 544961,
+        name: 'Mobile Royale MMORPG - Build a Strategy for Battle',
+        displayText: 'Mobile Royale MMORPG - Build a Strategy for Battle',
+        platform: 'android',
+        icon: 'https://lh3.googleusercontent.com/VZcAB5sdwGT66yNKUCQ9o4AZ11KzpP1YcNA7_6ZzD8lOoGs-vyyiOx1AR51YGGfLf30=s180'
+    },
+    {
+        id: 540129,
+        name: 'Most expensive and exclusive calculator',
+        displayText: 'Most expensive and exclusive calculator',
+        platform: 'android',
+        icon: 'https://lh3.googleusercontent.com/KYpLlktBqJsjPpgfoIXL_irBfBPJN5DAjsMUTLFJvdrUYDU-xHAQC-SYey7z6XzELw=s180'
+    },
+    {
+        id: 540127,
+        name: 'Ramp Bike Impossible Racing Game',
+        displayText: 'Ramp Bike Impossible Racing Game',
+        platform: 'android',
+        icon: 'https://lh3.googleusercontent.com/USRZI9JD5tMqZjtuKPi9tdd0lrWwJkHrse1FPtuv_bk6lxQI6mhARvUZzmD5RiEuBn0=s180'
+    }
+];
