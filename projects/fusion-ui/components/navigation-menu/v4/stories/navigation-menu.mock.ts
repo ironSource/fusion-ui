@@ -569,7 +569,7 @@ export const NAVIGATION_ADMIN_MENU_MOCK: PrimaryMenuItem[] = [
         type: NavigationBarItemType.Main,
         menuIcon: 'v4/branded/ironsource',
         menuTitle: 'Ads',
-        menuLogoSrc: 'v4/isAdsLogo',
+        menuLogoSrc: 'v4/is_ads_logo',
         cssTheme: {'fu-navbar-background-color': '#0D148C'},
         menuItems: IS_ADMIN_MENU_ITEMS
     },
