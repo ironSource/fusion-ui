@@ -9,6 +9,6 @@
                  *ngIf="showCloseButton"
                  [name]="closeButtonIcon"
                  [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:modalTestIdModifiers.MODAL_CLOSE_BUTTON"
-                 (click)="close.emit()"
+                 (click)="closeModal.emit()"
     ></fusion-icon>
 </div>
