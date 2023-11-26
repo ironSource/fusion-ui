@@ -3,8 +3,5 @@
     "compilerOptions": {
         "declarationMap": false
     },
-    "angularCompilerOptions": {
-        "enableIvy": true
-    },
     "exclude": ["**/*.stories.*"]
 }
