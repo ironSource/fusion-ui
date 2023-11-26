@@ -23,8 +23,8 @@ export class ModalFooterComponent {
     /** @internal */
     @Input() testId: string;
 
-    @Output() onSubmit = new EventEmitter();
-    @Output() onCloseButtonClicked = new EventEmitter();
+    @Output() primaryButtonClicked = new EventEmitter();
+    @Output() closeButtonClicked = new EventEmitter();
 
     /** @internal */
     modalTestIdModifiers: typeof ModalTestIdModifiers = ModalTestIdModifiers;

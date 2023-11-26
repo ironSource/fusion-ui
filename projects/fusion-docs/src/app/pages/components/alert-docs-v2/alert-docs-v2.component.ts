@@ -162,7 +162,7 @@ export class AlertDocsV2Component implements OnInit, OnDestroy {
         }, 1000);
     }
 
-    onDynamicChipSelect(selected) {
+    dynamicChipSelect(selected) {
         if (!this.selectedDynamicFilters.some(item => selected.id === item.configChip.id)) {
             const index = this.dynamicFiltersAll.findIndex(item => item.configChip.id === selected.id);
             this.selectedDynamicFilters = [...this.selectedDynamicFilters, ...[this.dynamicFiltersAll[index]]];

@@ -31,7 +31,7 @@ export class ModalHeaderComponent {
     /** @internal */
     infoIcon = {iconName: 'info', iconVersion: 'v3'};
 
-    @Output() close = new EventEmitter();
+    @Output() closeModal = new EventEmitter();
 
     constructor(private injector: Injector) {}
 }

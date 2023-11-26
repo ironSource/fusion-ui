@@ -318,7 +318,7 @@ document.addEventListener("DOMContentLoaded", onLoad, false);'
                         [loading]="loading$ | async"
                         (rowModelChange)="onBasicRowModelChange($event)"
                         (sortChanged)="onBasicSortChanged($event)"
-                        (selectionChanged)="onSelectedChanged($event)"
+                        (selectionChanged)="selectedChanged($event)"
                         (rowClicked)="onRowClicked($event)"
                     ></fusion-table>
                 </div>
@@ -581,7 +581,7 @@ document.addEventListener("DOMContentLoaded", onLoad, false);'
                         [loading]="loading$ | async"
                         (rowModelChange)="onBasicRowModelChange($event)"
                         (sortChanged)="onBasicSortChanged($event)"
-                        (selectionChanged)="onSelectedChanged($event)"
+                        (selectionChanged)="selectedChanged($event)"
                     ></fusion-table>
                 </div>
             </div>

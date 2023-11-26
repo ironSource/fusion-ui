@@ -1,7 +1,7 @@
 <div class="modal" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:modalTestIdModifiers.MODAL" #modalHolder>
     <div class="modal-body" [class.has-footer]="configuration?.hasFooter" [class.has-header]="configuration?.headerText" [style.width]="configuration?.width" [style.height]="configuration?.height" #modalBody>
 
-        <fusion-modal-header [testId]="testId" [headerText]="configuration?.headerText" [infoText]="configuration?.headerInfoText" (close)="onClose(true, 'close')"></fusion-modal-header>
+        <fusion-modal-header [testId]="testId" [headerText]="configuration?.headerText" [infoText]="configuration?.headerInfoText" (closeModal)="onClose(true, 'close')"></fusion-modal-header>
 
         <fusion-modal-content
             *ngIf="configuration?.headerText || configuration?.hasFooter"
@@ -27,8 +27,8 @@
             [error]="configuration?.error"
             [submitButton]="configuration?.submitButton"
             [cancelButton]="configuration?.cancelButton"
-            (onSubmit)="onClose(true, 'submit')"
-            (onCloseButtonClicked)="onClose(true, 'close')"
+            (primaryButtonClicked)="onClose(true, 'submit')"
+            (closeButtonClicked)="onClose(true, 'close')"
             [submitButtonPending]="submitPending"
             [testId]="testId"
         ></fusion-modal-footer>

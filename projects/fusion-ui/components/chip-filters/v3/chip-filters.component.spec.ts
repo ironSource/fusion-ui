@@ -13,7 +13,7 @@ import {GenericPipe} from "@ironsource/fusion-ui/pipes/generic";
 const innerText = 'Test Chip';
 
 @Component({
-    template: ` <fusion-chip-filters (onSelect)="chipChanged($event)" (onRemoveSelection)="removeChip($event)">
+    template: ` <fusion-chip-filters (selectFilter)="chipChanged($event)" (removeSelection)="removeChip($event)">
         <fusion-chip-filter [configuration]="chipConfig">
             <div class="fu-chip-content">${innerText}</div>
         </fusion-chip-filter>

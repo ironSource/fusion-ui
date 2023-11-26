@@ -7,7 +7,7 @@
                 <fusion-chip-filters
                     [addFiltersTitle]="addFiltersTitle"
                     [addFilterOptions]="addFilterOptions"
-                    (onDynamicChipSelect)="onDynamicChipSelect($event)"
+                    (dynamicChipSelect)="dynamicChipSelect($event)"
                 >
                     <fusion-chip-filter [configuration]="configChip1">
                         <div class="filter-element">
@@ -24,7 +24,7 @@
                     </fusion-chip-filter>
 
                     <ng-container *ngFor="let chip of selectedDynamicFilters">
-                        <fusion-chip-filter [configuration]="chip.configChip" (onChipRemove)="onDynamicChipRemove($event)">
+                        <fusion-chip-filter [configuration]="chip.configChip" (chipRemove)="onDynamicChipRemove($event)">
                             <div class="filter-element">
                                 <fusion-dropdown-dual-multi-select
                                     [title]="chip.optionsTitleChip"

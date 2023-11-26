@@ -61,8 +61,8 @@ export class ModalComponent implements OnDestroy, OnInit {
     /** @internal */
     @Input() testId: string;
 
-    @Output() open = new EventEmitter();
-    @Output() close = new EventEmitter();
+    @Output() openModal = new EventEmitter();
+    @Output() closeModal = new EventEmitter();
 
     /** @internal */
     @ViewChild('modalBody', {static: true}) modalBody: ElementRef;
@@ -114,7 +114,7 @@ export class ModalComponent implements OnDestroy, OnInit {
     /** @internal */
     onOpen() {
         this.renderer.setStyle(this.elRef.nativeElement, 'display', 'block');
-        this.open.emit();
+        this.openModal.emit();
     }
     /** @internal */
     onClose(emitEvent = true, eventType: 'close' | 'submit' = 'close') {
@@ -122,7 +122,7 @@ export class ModalComponent implements OnDestroy, OnInit {
             this.renderer.setStyle(this.elRef.nativeElement, 'display', 'none');
         }
         if (emitEvent) {
-            this.close.emit(eventType);
+            this.closeModal.emit(eventType);
         }
     }
 

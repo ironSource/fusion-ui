@@ -101,9 +101,9 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
      * On dynamic filter close button clicked (filter removed)
      * @ignore
      * */
-    @Output() onChipRemove = new EventEmitter();
+    @Output() chipRemove = new EventEmitter();
 
-    @Output() onSelectedChange = new EventEmitter<any>();
+    @Output() selectedChange = new EventEmitter<any>();
 
     set maxWidth(width: number) {
         this._maxWidth = width;
@@ -200,7 +200,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
             isSelected: this.selected
         });
         // external, for consumer
-        this.onChipRemove.emit(this.id);
+        this.chipRemove.emit(this.id);
         this.apiBase?.resetState$.next();
     }
 
@@ -216,7 +216,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
                         id: this.id,
                         ...selected
                     };
-                    this.onSelectedChange.emit(this.chipSelectValue);
+                    this.selectedChange.emit(this.chipSelectValue);
                 } else {
                     this.selected = selected?.isSelected;
                     this.setChipType(this.selected);
@@ -239,7 +239,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
                     id: this.id,
                     isSelected: this.selected
                 };
-                this.onSelectedChange.emit(this.chipSelectValue);
+                this.selectedChange.emit(this.chipSelectValue);
             });
     }
 

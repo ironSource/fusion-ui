@@ -44,7 +44,7 @@ const ModalHeaderTemplate: StoryFn<ModalHeaderComponent> = (args: ModalHeaderCom
         [headerText]="headerText"
         [showCloseButton]="showCloseButton"
         [infoText]="infoText"
-        (close)="close($event)"
+        (closeModal)="close($event)"
       ></fusion-modal-header>
 </div>`
 });

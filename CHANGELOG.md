@@ -1235,8 +1235,8 @@ enum StatusLabelType {
 ### Features
 * **fu-400:** add ChipFilter and ChipFilters component with v3 style ([a1c107d](https://github.com/ironSource/fusion-ui/commit/a1c107d99058a22d4f80cc7008dd866be686332f))
     * ChipFilters component expose two events: 
-        * onSelect - when chip is selected return {id: number; value: any; isSelected: boolean}
-        * onRemoveSelection - when chip selection canceled return {id: number; isSelected: boolean}
+        * selectFilter - when chip is selected return {id: number; value: any; isSelected: boolean}
+        * removeSelection - when chip selection canceled return {id: number; isSelected: boolean}
     * ChipFilters has three inputs that relate to a dynamic filters:
         * isSearch - boolean type to determine if the dropdown in AddFilter chip will have a search bar
         * addFilterOptions - DropdownOption[] type to pass the filters options.
@@ -1257,7 +1257,7 @@ enum StatusLabelType {
         * isVisible - boolean type to determine visibility of chip.
     * Usage:
         ```html
-      <fusion-chip-filters [isSearch]="true" [addFiltersTitle]="'Countries'" [addFilterOptions]="optionsFilter" (onSelect)="chipChanged($event)" (onRemoveSelection)="removeChip($event)">
+      <fusion-chip-filters [isSearch]="true" [addFiltersTitle]="'Countries'" [addFilterOptions]="optionsFilter" (selectFilter)="chipChanged($event)" (removeSelection)="removeChip($event)">
             <fusion-chip-filter [configuration]="{ id: 2, mode: 'dynamic' }">
                 <div class="fu-chip-content">{{ value }}</div>
                 <div class="filter-element">
@@ -1403,7 +1403,7 @@ enum StatusLabelType {
   * Remove ModalService in V3 modal component, example of usage: 
     ```html
     <fusion-button (click)="onClickModalOpen()" class="stroke">Open Modal</fusion-button>
-    <fusion-modal (close)="onModalClosed($event)" [isModalOpen]="openModal$ | async" [configuration]="{defaultModalState: 'close',id: 'testModal1',width: '600',headerText: 'Overlay Title'}">
+    <fusion-modal (closeModal)="onModalClosed($event)" [isModalOpen]="openModal$ | async" [configuration]="{defaultModalState: 'close',id: 'testModal1',width: '600',headerText: 'Overlay Title'}">
         <div>
             <p>Modal content</p>
         </div>

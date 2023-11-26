@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
@@ -13,7 +13,7 @@ import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
     styleUrls: ['./navigation-pop-menu.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NavigationPopMenuComponent implements OnInit, AfterViewInit {
+export class NavigationPopMenuComponent implements AfterViewInit {
     @Input() layoutUser: LayoutUser;
     @Input() menuItems: MenuItem[];
 
@@ -23,8 +23,6 @@ export class NavigationPopMenuComponent implements OnInit, AfterViewInit {
     userIcon: IconData = {iconName: 'userCircle', iconVersion: 'v4'};
 
     constructor(private element: ElementRef) {}
-
-    ngOnInit(): void {}
 
     ngAfterViewInit() {
         const popupHeight = this.element.nativeElement.querySelector('.fu-pop-menu')?.offsetHeight;
