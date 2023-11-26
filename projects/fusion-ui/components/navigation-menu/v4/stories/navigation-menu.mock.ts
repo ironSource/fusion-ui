@@ -567,7 +567,7 @@ export const IS_ADMIN_MENU_ITEMS: MenuItem[] = [
 export const NAVIGATION_ADMIN_MENU_MOCK: PrimaryMenuItem[] = [
     {
         type: NavigationBarItemType.Main,
-        menuIcon: {iconName: 'ironSource', iconVersion: 'v4'},
+        menuIcon: 'v4/branded/ironsource',
         menuTitle: 'Ads',
         menuLogoSrc: 'v4/isAdsLogo',
         cssTheme: {'fu-navbar-background-color': '#0D148C'},
@@ -575,13 +575,13 @@ export const NAVIGATION_ADMIN_MENU_MOCK: PrimaryMenuItem[] = [
     },
     {
         type: NavigationBarItemType.Bottom,
-        menuIcon: {iconName: 'question', iconVersion: 'v4'},
+        menuIcon: 'ph/question',
         redirect: 'https://developers.is.com/',
         target: '_blank'
     },
     {
         type: NavigationBarItemType.User,
-        menuIcon: {iconName: 'userCircle', iconVersion: 'v4'},
+        menuIcon: 'ph/user-circle',
         menuItems: USER_PROFILE_MENU_ITEMS
     }
 ];
