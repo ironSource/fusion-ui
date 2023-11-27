@@ -1,14 +1,4 @@
-import {
-    ComponentFactoryResolver,
-    ComponentRef,
-    Directive,
-    EmbeddedViewRef,
-    HostBinding,
-    Input,
-    OnChanges,
-    Renderer2,
-    ViewContainerRef
-} from '@angular/core';
+import {ComponentRef, Directive, EmbeddedViewRef, HostBinding, inject, Input, OnChanges, Renderer2, ViewContainerRef} from '@angular/core';
 import {DropdownLoaderComponent} from './dropdown-loader.component';
 
 @Directive({
@@ -18,12 +8,9 @@ export class DropdownLoaderDirective implements OnChanges {
     @HostBinding('class.is-hidden') isOptionHidden = false;
     @Input() fusionDropdownLoader: boolean;
     private loaderComponentRef: ComponentRef<DropdownLoaderComponent>;
+    viewContainerRef = inject(ViewContainerRef);
 
-    constructor(
-        public viewContainerRef: ViewContainerRef,
-        private componentFactoryResolver: ComponentFactoryResolver,
-        private renderer: Renderer2
-    ) {}
+    constructor(private renderer: Renderer2) {}
 
     ngOnChanges() {
         this.isOptionHidden = !this.fusionDropdownLoader;
@@ -32,12 +19,12 @@ export class DropdownLoaderDirective implements OnChanges {
 
     loadContent() {
         if (!this.isOptionHidden) {
-            const componentFactory = this.componentFactoryResolver.resolveComponentFactory(DropdownLoaderComponent);
-            this.loaderComponentRef = this.viewContainerRef.createComponent(componentFactory);
+            this.viewContainerRef.clear();
+            this.loaderComponentRef = this.viewContainerRef.createComponent(DropdownLoaderComponent);
             const loaderViewRef = this.loaderComponentRef.hostView as EmbeddedViewRef<any>;
             this.renderer.appendChild(this.viewContainerRef.element.nativeElement, loaderViewRef.rootNodes[0]);
         } else {
-            this.viewContainerRef.element.nativeElement.innerHTML = '';
+            this.viewContainerRef.clear();
         }
     }
 }
