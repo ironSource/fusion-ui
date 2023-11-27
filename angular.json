@@ -27,6 +27,7 @@
                 "lint": {
                     "builder": "@angular-eslint/builder:lint",
                     "options": {
+                        "cache": true,
                         "lintFilePatterns": [
                             "projects/fusion-ui/**/*.ts",
                             "projects/fusion-ui/**/*.html"
@@ -198,6 +199,7 @@
                 "lint": {
                     "builder": "@angular-eslint/builder:lint",
                     "options": {
+                        "cache": true,
                         "lintFilePatterns": [
                             "projects/fusion-docs//**/*.ts",
                             "projects/fusion-docs//**/*.html"
@@ -318,6 +320,7 @@
                 "lint": {
                     "builder": "@angular-eslint/builder:lint",
                     "options": {
+                        "cache": true,
                         "lintFilePatterns": [
                             "projects/fusion-mfe/**/*.ts",
                             "projects/fusion-mfe/**/*.html"
