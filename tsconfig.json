@@ -18,5 +18,6 @@
             "@ironsource/fusion-ui": ["projects/fusion-ui"]
         },
         "useDefineForClassFields": false
-    }
+    },
+    "exclude": ["node_modules", "dist"]
 }
