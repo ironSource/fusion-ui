@@ -161,22 +161,22 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "fusion-docs:build"
+                      "buildTarget": "fusion-docs:build"
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "fusion-docs:build:production"
+                          "buildTarget": "fusion-docs:build:production"
                         },
                         "hmr": {
                             "hmr": true,
-                            "browserTarget": "fusion-docs:build:hmr"
+                            "buildTarget": "fusion-docs:build:hmr"
                         }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "fusion-docs:build"
+                      "buildTarget": "fusion-docs:build"
                     }
                 },
                 "test": {
@@ -285,10 +285,10 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "fusion-mfe:build:production"
+                          "buildTarget": "fusion-mfe:build:production"
                         },
                         "development": {
-                            "browserTarget": "fusion-mfe:build:development"
+                          "buildTarget": "fusion-mfe:build:development"
                         }
                     },
                     "defaultConfiguration": "development"
@@ -296,7 +296,7 @@
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "fusion-mfe:build"
+                      "buildTarget": "fusion-mfe:build"
                     }
                 },
                 "test": {
