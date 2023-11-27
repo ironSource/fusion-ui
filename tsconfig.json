@@ -17,7 +17,8 @@
             "@ironsource/fusion-ui/*": ["projects/fusion-ui/*"],
             "@ironsource/fusion-ui": ["projects/fusion-ui"]
         },
-        "useDefineForClassFields": false
+        "useDefineForClassFields": false,
+        "skipLibCheck": true
     },
     "exclude": ["node_modules", "dist"]
 }
