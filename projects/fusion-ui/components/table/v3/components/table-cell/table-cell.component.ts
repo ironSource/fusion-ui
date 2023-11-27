@@ -113,7 +113,6 @@ export class TableCellComponent implements OnInit, OnChanges {
             data = data[this.rowSpanIndex ?? 0];
         }
         if (!isNull(data) && this.tableService.isTypeComponent(this.column) && typeof data === 'object') {
-            // eslint-disable-next-line dot-notation, @typescript-eslint/dot-notation
             data['cellPosition'] = this.position;
         }
         return data;
