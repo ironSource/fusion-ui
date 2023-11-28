@@ -77,7 +77,6 @@
     "@commitlint/cli": "^14.1.0",
     "@commitlint/config-conventional": "^14.1.0",
     "@compodoc/compodoc": "^1.1.19",
-    "@ironsource/storybook-addon-stackblitz": "^0.1.5",
     "@mdx-js/react": "^2.1.5",
     "@storybook/addon-actions": "^7.5.3",
     "@storybook/addon-essentials": "^7.5.3",
