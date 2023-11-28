@@ -7,6 +7,9 @@
     "type": "git",
     "url": "https://github.com/ironSource/fusion-ui.git"
   },
+  "engines": {
+    "node": ">=18.13.0"
+  },
   "scripts": {
     "ng": "ng",
     "prepare": "husky install",
