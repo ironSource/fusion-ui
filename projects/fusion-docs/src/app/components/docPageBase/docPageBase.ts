@@ -1,13 +1,14 @@
 /*
  * Created on 2020.10.11 By Andy Kononenko (andyk@ironsrc.com)
  */
-import {OnInit, OnDestroy} from '@angular/core';
+import {OnInit, OnDestroy, Injectable} from '@angular/core';
 import {takeUntil} from 'rxjs/operators';
 import {Observable, Subject} from 'rxjs';
 import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 import {Router} from '@angular/router';
 import {VersionService} from '../../services/version/version.service';
 
+@Injectable()
 export abstract class DocPageBase implements OnInit, OnDestroy {
     protected onDestroy$ = new Subject<void>();
     protected selectedVersion$: Observable<StyleVersion> = this.versionService.styleVersion$.pipe(takeUntil(this.onDestroy$));
