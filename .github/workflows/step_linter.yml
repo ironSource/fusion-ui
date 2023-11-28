@@ -25,14 +25,14 @@ jobs:
     runs-on: [self-hosted, x64, linux, eks, us, demand, dev]
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: ${{ env.BRANCH_NAME }}
 
       - name: Install Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: "16"
+          node-version: ">=18.13"
 
       - name: Cache node deps
         id: cache-deps
