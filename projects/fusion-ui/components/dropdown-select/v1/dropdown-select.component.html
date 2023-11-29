@@ -24,7 +24,7 @@
                 configurations.placeholder?.prefix
                 }}</span>
             <span class="placeholderText" [innerHTML]="configurations.placeholder?.value"></span>
-            <fusion-icon class="icon-arrow-0" *ngIf="!configurations.isTabMode && !!configurations.dropdownArrowIconName" [name]="configurations.dropdownArrowIconName"></fusion-icon>
+            <fusion-icon class="icon-arrow" *ngIf="!configurations.isTabMode && !!configurations.dropdownArrowIconName" [name]="configurations.dropdownArrowIconName"></fusion-icon>
             <div *ngIf="configurations.isTabMode" class="dropdown-arrow-container" #dropdownArrowContainer>
                 <fusion-icon class="icon-arrow" [name]="configurations.dropdownArrowIconName"></fusion-icon>
             </div>

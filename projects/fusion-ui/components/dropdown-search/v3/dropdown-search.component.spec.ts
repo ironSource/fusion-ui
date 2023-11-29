@@ -2,6 +2,8 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {DropdownSearchComponent} from './dropdown-search.component';
 import {InputModule} from "@ironsource/fusion-ui/components/input/v3";
+import {ReactiveFormsModule} from "@angular/forms";
+import {IconModule} from "@ironsource/fusion-ui/components/icon/v1";
 
 describe('DropdownSearchComponent', () => {
     let component: DropdownSearchComponent;
@@ -10,7 +12,7 @@ describe('DropdownSearchComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             declarations: [DropdownSearchComponent],
-            imports: [InputModule]
+            imports: [ReactiveFormsModule, InputModule, IconModule]
         }).compileComponents();
     });
 
