@@ -7,7 +7,6 @@ import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
     selector: 'fusion-dropdown-search',
     templateUrl: './dropdown-search.component.html',
     styleUrls: ['./dropdown-search.component.scss'],
-    host: {'ui-version': '3'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

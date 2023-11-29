@@ -6,8 +6,7 @@ const ATTRIBUTE_DISABLED = 'tab-disabled';
 @Component({
     selector: 'fusion-tab',
     template: '<div class="fu-tab-content"><ng-content></ng-content></div>',
-    styleUrls: ['./tab.component.scss'],
-    host: {'ui-version': '3'}
+    styleUrls: ['./tab.component.scss']
 })
 export class TabComponent implements AfterViewInit {
     @Input() set selected(value: boolean) {

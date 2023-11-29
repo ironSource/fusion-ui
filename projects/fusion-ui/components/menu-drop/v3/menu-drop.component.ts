@@ -10,7 +10,6 @@ import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside
     imports: [CommonModule, IconModule],
     templateUrl: './menu-drop.component.html',
     styleUrls: ['./menu-drop.component.scss'],
-    host: {'ui-version': '3'},
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MenuDropComponent {

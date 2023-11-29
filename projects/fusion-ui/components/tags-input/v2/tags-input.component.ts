@@ -9,7 +9,6 @@ import {TagsInputBaseComponent} from '@ironsource/fusion-ui/components/tags-inpu
     selector: 'fusion-tags-input',
     templateUrl: './tags-input.component.html',
     styleUrls: ['./tags-input.component.scss'],
-    host: {'ui-version': '2'},
     providers: [
         ClonePipe,
         FilterByFieldPipe,

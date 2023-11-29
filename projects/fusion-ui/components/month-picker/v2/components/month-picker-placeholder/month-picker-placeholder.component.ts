@@ -5,7 +5,6 @@ import {MONTH_PICKER_PLACEHOLDER, MonthPicker, MonthPickerPlaceholder} from '@ir
     selector: 'fusion-month-picker-placeholder',
     templateUrl: './month-picker-placeholder.component.html',
     styleUrls: ['./month-picker-placeholder.component.scss', './month-picker-placeholder-v2.component.scss'],
-    host: {'ui-version': '2'},
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MonthPickerPlaceholderComponent {

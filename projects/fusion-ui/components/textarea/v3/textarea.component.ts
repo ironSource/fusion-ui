@@ -5,7 +5,6 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
     selector: 'fusion-textarea',
     templateUrl: './textarea.component.html',
     styleUrls: ['./textarea.component.scss'],
-    host: {'ui-version': '3'},
     changeDetection: ChangeDetectionStrategy.Default,
     providers: [
         {

@@ -6,7 +6,6 @@ import {SwitcherBaseComponent} from '@ironsource/fusion-ui/components/switcher/c
     selector: 'fusion-switcher',
     templateUrl: '../common/base/switcher.base.component.html',
     styleUrls: ['./switcher.component.scss'],
-    host: {'ui-version': '1'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

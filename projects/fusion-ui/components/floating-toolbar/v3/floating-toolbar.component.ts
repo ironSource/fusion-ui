@@ -8,7 +8,6 @@ import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
     imports: [CommonModule, IconModule],
     templateUrl: './floating-toolbar.component.html',
     styleUrls: ['./floating-toolbar.component.scss'],
-    host: {'ui-version': '3'},
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FloatingToolbarComponent {

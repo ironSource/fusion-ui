@@ -25,7 +25,6 @@ const PAGINATION_CHUNK = 20;
     selector: 'fusion-dropdown-dual-multi-select-body',
     templateUrl: './dropdown-dual-multi-select-body.component.html',
     styleUrls: ['./dropdown-dual-multi-select-body.component.scss'],
-    host: {'ui-version': '3'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

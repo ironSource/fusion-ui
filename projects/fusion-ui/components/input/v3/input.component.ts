@@ -8,7 +8,6 @@ import {of} from 'rxjs';
     selector: 'fusion-input',
     templateUrl: './input.component.html',
     styleUrls: ['./input.component.scss'],
-    host: {'ui-version': '3'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => InputComponent), multi: true}]
 })

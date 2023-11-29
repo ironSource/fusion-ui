@@ -12,7 +12,6 @@ import {takeUntil} from 'rxjs/operators';
     standalone: true,
     imports: [CommonModule, ReactiveFormsModule, TopFilterTriggerComponent, DropdownDualMultiSelectModule],
     templateUrl: './top-filter-include-exclude.component.html',
-    host: {'ui-version': '3'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

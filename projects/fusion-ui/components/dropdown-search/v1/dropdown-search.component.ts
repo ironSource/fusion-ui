@@ -6,7 +6,6 @@ import {NG_VALUE_ACCESSOR} from '@angular/forms';
     selector: 'fusion-dropdown-search',
     templateUrl: '../common/base/dropdown-search.base.component.html',
     styleUrls: ['./dropdown-search.component.scss'],
-    host: {'ui-version': '1'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

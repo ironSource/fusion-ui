@@ -22,7 +22,6 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
     imports: [CommonModule, InputModule, TagComponent],
     templateUrl: './tags-input.component.html',
     styleUrls: ['./tags-input.component.scss'],
-    host: {'ui-version': '3'},
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TagsInputComponent implements OnInit, OnDestroy {

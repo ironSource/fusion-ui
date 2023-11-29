@@ -21,7 +21,6 @@ import {tooltipConfiguration} from '@ironsource/fusion-ui/components/tooltip/com
             }
         `
     ],
-    host: {'ui-version': '3'},
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TooltipComponent {

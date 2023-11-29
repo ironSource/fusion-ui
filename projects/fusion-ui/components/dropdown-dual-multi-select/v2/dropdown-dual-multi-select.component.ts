@@ -6,7 +6,6 @@ import {DropdownDualMultiSelectBaseComponent} from '@ironsource/fusion-ui/compon
     selector: 'fusion-dropdown-dual-multi-select',
     templateUrl: '../common/base/dropdown-dual-multi-select.base.component.html',
     styleUrls: ['./dropdown-dual-multi-select.component.scss'],
-    host: {'ui-version': '2'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

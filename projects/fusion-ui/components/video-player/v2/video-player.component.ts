@@ -5,7 +5,6 @@ import {VideoPlayerBaseComponent} from '@ironsource/fusion-ui/components/video-p
     selector: 'fusion-video-player',
     templateUrl: './video-player.component.html',
     styleUrls: ['./video-player.component.scss'],
-    host: {'ui-version': '2'},
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class VideoPlayerComponent extends VideoPlayerBaseComponent {

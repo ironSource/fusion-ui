@@ -30,7 +30,6 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
     selector: 'fusion-modal',
     templateUrl: './modal.component.html',
     styleUrls: ['./modal.component.scss'],
-    host: {'ui-version': '3'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

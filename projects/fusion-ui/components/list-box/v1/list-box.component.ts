@@ -6,7 +6,6 @@ import {ListBoxBaseComponent} from '@ironsource/fusion-ui/components/list-box/co
     selector: 'fusion-list-box',
     templateUrl: '../common/base/list-box.base.component.html',
     styleUrls: ['./list-box.component.scss'],
-    host: {'ui-version': '1'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

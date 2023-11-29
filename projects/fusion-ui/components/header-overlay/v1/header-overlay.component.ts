@@ -6,7 +6,6 @@ import {HeaderOverlayBaseComponent} from '@ironsource/fusion-ui/components/heade
     selector: 'fusion-header-overlay',
     templateUrl: '../common/base/header-overlay.base.component.html',
     styleUrls: ['./header-overlay.component.scss'],
-    host: {'ui-version': '1'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

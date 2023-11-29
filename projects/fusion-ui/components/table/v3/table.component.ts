@@ -38,7 +38,6 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
     selector: 'fusion-table',
     templateUrl: './table.component.html',
     styleUrls: ['./table.component.scss'],
-    host: {'ui-version': '3'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TableService]
 })

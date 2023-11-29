@@ -6,7 +6,6 @@ import {NotificationBaseComponent} from '@ironsource/fusion-ui/components/notifi
     selector: 'fusion-notification',
     templateUrl: '../common/base/notification.base.component.html',
     styleUrls: ['./notification.component.scss'],
-    host: {'ui-version': '2'},
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NotificationComponent extends NotificationBaseComponent implements OnInit {

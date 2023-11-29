@@ -5,8 +5,7 @@ import {DropdownSearchComponent} from '@ironsource/fusion-ui/components/dropdown
 @Component({
     selector: 'fusion-dropdown-select',
     templateUrl: './dropdown-select.component.html',
-    styleUrls: ['./dropdown-select.component.scss'],
-    host: {'ui-version': '3'}
+    styleUrls: ['./dropdown-select.component.scss']
 })
 export class DropdownSelectComponent extends DropdownSelectBaseComponent {
     @ViewChild('searchComponent') searchComponent: DropdownSearchComponent;

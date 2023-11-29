@@ -5,7 +5,6 @@ import {HeaderBaseComponent} from '@ironsource/fusion-ui/components/header/commo
     selector: 'fusion-header',
     templateUrl: '../common/base/header.base.component.html',
     styleUrls: ['./header.component.scss'],
-    host: {'ui-version': '1'},
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent extends HeaderBaseComponent {}

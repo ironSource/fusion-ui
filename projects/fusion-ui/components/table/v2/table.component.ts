@@ -32,7 +32,6 @@ import {TableBasicComponent} from './components/table-basic/table-basic.componen
     selector: 'fusion-table',
     templateUrl: './table.component.html',
     styleUrls: ['./table.component.scss'],
-    host: {'ui-version': '2'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TableService]
 })

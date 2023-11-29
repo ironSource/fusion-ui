@@ -4,7 +4,6 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@
     selector: 'fusion-dropdown-dual-multi-select-footer',
     templateUrl: './dropdown-dual-multi-select-footer.component.html',
     styleUrls: ['./dropdown-dual-multi-select-footer.component.scss'],
-    host: {'ui-version': '2'},
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownDualMultiSelectFooterComponent {

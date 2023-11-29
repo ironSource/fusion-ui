@@ -6,7 +6,6 @@ import {ModalBaseComponent} from '@ironsource/fusion-ui/components/modal/common/
     selector: 'fusion-modal',
     templateUrl: '../common/base/modal.base.component.html',
     styleUrls: ['./modal.component.scss'],
-    host: {'ui-version': '2'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

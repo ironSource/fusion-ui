@@ -7,7 +7,6 @@ import {BASE_CHECKED_IMAGE} from './checkbox.cusom-svg';
     selector: 'fusion-checkbox',
     templateUrl: './checkbox.component.html',
     styleUrls: ['./checkbox.component.scss'],
-    host: {'ui-version': '1'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

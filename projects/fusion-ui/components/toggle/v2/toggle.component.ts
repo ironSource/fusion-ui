@@ -6,7 +6,6 @@ import {ToggleBaseComponent} from '@ironsource/fusion-ui/components/toggle/commo
     selector: 'fusion-toggle',
     templateUrl: '../common/base/toggle.base.component.html',
     styleUrls: ['./toggle.component.scss'],
-    host: {'ui-version': '2'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

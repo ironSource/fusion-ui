@@ -5,7 +5,6 @@ import {CalendarBaseComponent} from '@ironsource/fusion-ui/components/calendar/c
     selector: 'fusion-calendar',
     templateUrl: '../common/base/calendar.base.component.html',
     styleUrls: ['./calendar.component.scss'],
-    host: {'ui-version': '1'},
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CalendarComponent extends CalendarBaseComponent {}

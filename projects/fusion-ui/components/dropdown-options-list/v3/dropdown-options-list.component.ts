@@ -9,7 +9,6 @@ const CLOSE_ACTION_SELECTOR = '.fu-option-action-icon';
     selector: 'fusion-dropdown-options-list',
     templateUrl: '../common/base/dropdown-options-list.base.component.html',
     styleUrls: ['./dropdown-options-list.component.scss'],
-    host: {'ui-version': '3'},
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownOptionsListComponent extends DropdownOptionsListBaseComponent {

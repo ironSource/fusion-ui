@@ -8,7 +8,6 @@ import {Subject} from 'rxjs';
     selector: 'fusion-dropdown-dual-multi-select-header',
     templateUrl: './dropdown-dual-multi-select-header.component.html',
     styleUrls: ['./dropdown-dual-multi-select-header.component.scss'],
-    host: {'ui-version': '2'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
