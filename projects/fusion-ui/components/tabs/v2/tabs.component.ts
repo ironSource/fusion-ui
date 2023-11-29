@@ -9,6 +9,7 @@ import {PopupService} from '@ironsource/fusion-ui/components/popup/common/servic
     selector: 'fusion-tabs',
     templateUrl: './tabs.component.html',
     styleUrls: ['./tabs.component.scss'],
+    host: {'ui-version': '2'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [PopupService]
 })

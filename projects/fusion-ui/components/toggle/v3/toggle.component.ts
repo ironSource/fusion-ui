@@ -8,6 +8,7 @@ import {BehaviorSubject} from 'rxjs';
     selector: 'fusion-toggle',
     templateUrl: './toggle.component.html',
     styleUrls: ['./toggle.component.scss'],
+    host: {'ui-version': '3'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [CommonModule, FormsModule, ReactiveFormsModule],

@@ -6,6 +6,7 @@ import {IconSelectListBaseComponent} from '@ironsource/fusion-ui/components/icon
     selector: 'fusion-icon-select-list',
     templateUrl: '../common/base/icon-select-list.base.component.html',
     styleUrls: ['./icon-select-list.component.scss'],
+    host: {'ui-version': '1'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

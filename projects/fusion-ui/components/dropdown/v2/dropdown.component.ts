@@ -9,6 +9,7 @@ import {DropdownSelectComponent} from '@ironsource/fusion-ui/components/dropdown
     selector: 'fusion-dropdown',
     templateUrl: './dropdown.component.html',
     styleUrls: ['./dropdown.component.scss'],
+    host: {'ui-version': '2'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         DropdownService,

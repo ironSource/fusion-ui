@@ -6,6 +6,7 @@ import {RadioGroupBaseComponent} from '@ironsource/fusion-ui/components/radio-gr
     selector: 'fusion-radio-group',
     templateUrl: '../common/base/radio-group.base.component.html',
     styleUrls: ['./radio-group.component.scss'],
+    host: {'ui-version': '2'},
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

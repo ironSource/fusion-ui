@@ -6,6 +6,7 @@ import {CONFIG_INPUT_INLINE_BY_UI_STYLE, InputInlineBaseComponent} from '@ironso
     selector: 'fusion-input-inline',
     templateUrl: '../common/base/input-inline.base.component.html',
     styleUrls: ['./input-inline.component.scss'],
+    host: {'ui-version': '1'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

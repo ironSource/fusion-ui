@@ -9,6 +9,7 @@ import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v3';
     selector: 'fusion-tag',
     templateUrl: './tag.component.html',
     styleUrls: ['./tag.component.scss'],
+    host: {'ui-version': '3'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [CommonModule, IconModule, FlagModule, TooltipModule]

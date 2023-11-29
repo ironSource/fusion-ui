@@ -37,6 +37,7 @@ import {DEFAULT_TIMEZONE_OPTIONS} from './datepicker.config';
             multi: true
         }
     ],
+    host: {'ui-version': '1'},
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DatepickerComponent implements OnInit, OnDestroy, OnChanges, AfterViewInit, ControlValueAccessor {

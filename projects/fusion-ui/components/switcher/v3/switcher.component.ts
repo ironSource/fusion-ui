@@ -8,6 +8,7 @@ import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
     selector: 'fusion-switcher',
     templateUrl: './switcher.component.html',
     styleUrls: ['./switcher.component.scss'],
+    host: {'ui-version': '3'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

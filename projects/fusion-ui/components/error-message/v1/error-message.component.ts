@@ -4,6 +4,7 @@ import {ErrorMessageBaseComponent} from '@ironsource/fusion-ui/components/error-
 @Component({
     selector: 'fusion-error-message',
     templateUrl: '../common/base/error-message.base.component.html',
-    styleUrls: ['./error-message.component.scss']
+    styleUrls: ['./error-message.component.scss'],
+    host: {'ui-version': '1'}
 })
 export class ErrorMessageComponent extends ErrorMessageBaseComponent {}

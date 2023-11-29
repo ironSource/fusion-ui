@@ -9,6 +9,7 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
     selector: 'fusion-daterange',
     templateUrl: './daterange.component.html',
     styleUrls: ['./daterange.component.scss'],
+    host: {'ui-version': '3'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {provide: ApiBase, useExisting: DaterangeComponent},

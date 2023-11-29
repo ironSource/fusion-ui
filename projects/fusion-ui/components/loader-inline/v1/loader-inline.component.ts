@@ -5,6 +5,7 @@ import {LoaderInlineBaseComponent} from '@ironsource/fusion-ui/components/loader
     selector: 'fusion-loader-inline',
     templateUrl: '../common/base/loader-inline.base.component.html',
     styleUrls: ['./loader-inline.component.scss'],
+    host: {'ui-version': '1'},
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoaderInlineComponent extends LoaderInlineBaseComponent {}

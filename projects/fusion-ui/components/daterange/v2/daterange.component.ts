@@ -8,6 +8,7 @@ import {DaterangeBaseComponent} from '@ironsource/fusion-ui/components/daterange
     selector: 'fusion-daterange',
     templateUrl: './daterange.component.html',
     styleUrls: ['./daterange.component.scss'],
+    host: {'ui-version': '2'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

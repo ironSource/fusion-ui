@@ -7,7 +7,8 @@ import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 @Component({
     selector: 'fusion-file-csv-upload',
     templateUrl: './file-csv-upload.component.html',
-    styleUrls: ['./file-csv-upload.component.scss']
+    styleUrls: ['./file-csv-upload.component.scss'],
+    host: {'ui-version': '3'}
 })
 export class FileCsvUploadComponent {
     /**

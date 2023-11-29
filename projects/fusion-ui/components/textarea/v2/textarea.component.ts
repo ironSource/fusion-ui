@@ -6,6 +6,7 @@ import {TextareaBaseComponent} from '@ironsource/fusion-ui/components/textarea/c
     selector: 'fusion-textarea',
     templateUrl: '../common/base/textarea.base.component.html',
     styleUrls: ['./textarea.component.scss'],
+    host: {'ui-version': '2'},
     changeDetection: ChangeDetectionStrategy.Default,
     providers: [
         {

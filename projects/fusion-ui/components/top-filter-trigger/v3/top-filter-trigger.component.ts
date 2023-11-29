@@ -30,6 +30,7 @@ import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
     imports: [CommonModule, IconModule, TooltipModule],
     templateUrl: './top-filter-trigger.component.html',
     styleUrls: ['./top-filter-trigger.component.scss'],
+    host: {'ui-version': '3'},
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TopFilterTriggerComponent implements OnInit, OnDestroy, AfterViewInit {

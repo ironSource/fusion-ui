@@ -4,6 +4,7 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
     selector: 'fusion-dropdown-dual-multi-select-loading',
     templateUrl: './dropdown-dual-multi-select-loading.component.html',
     styleUrls: ['./dropdown-dual-multi-select-loading.component.scss'],
+    host: {'ui-version': '3'},
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownDualMultiSelectLoadingComponent {

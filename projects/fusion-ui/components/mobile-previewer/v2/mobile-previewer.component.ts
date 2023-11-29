@@ -6,6 +6,7 @@ import {BehaviorSubject} from 'rxjs';
     selector: 'fusion-mobile-previewer',
     templateUrl: '../common/base/mobile-previewer.base.component.html',
     styleUrls: ['./mobile-previewer.component.scss'],
+    host: {'ui-version': '2'},
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MobilePreviewerComponent extends MobilePreviewerBaseComponent implements OnInit {

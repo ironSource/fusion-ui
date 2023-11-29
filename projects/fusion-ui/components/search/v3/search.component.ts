@@ -13,6 +13,7 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
     selector: 'fusion-search',
     templateUrl: './search.component.html',
     styleUrls: ['./search.component.scss'],
+    host: {'ui-version': '3'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [CommonModule, FormsModule, ReactiveFormsModule, IconModule, GenericPipe],

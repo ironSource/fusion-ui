@@ -15,6 +15,7 @@ const ARROW_ICON = {
     selector: 'fusion-dropdown',
     templateUrl: './dropdown.component.html',
     styleUrls: ['./dropdown.component.scss'],
+    host: {'ui-version': '3'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         DropdownService,

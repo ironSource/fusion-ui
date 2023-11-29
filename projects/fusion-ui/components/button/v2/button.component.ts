@@ -5,6 +5,7 @@ import {ButtonBaseComponent} from '@ironsource/fusion-ui/components/button/commo
     selector: 'fusion-button,[fusion-button]',
     templateUrl: '../common/base/button.base.component.html',
     styleUrls: ['./button.component.scss'],
+    host: {'ui-version': '2'},
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ButtonComponent extends ButtonBaseComponent implements OnInit {}

@@ -18,6 +18,7 @@ const MENU_CACHE_KEY = 'persistent_fusionMenuCollapsed';
     imports: [CommonModule, NavigationPrimaryMenuComponent, NavigationSecondaryMenuComponent],
     templateUrl: './navigation-menu.component.html',
     styleUrls: ['./navigation-menu.component.scss'],
+    host: {'ui-version': '4'},
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavigationMenuComponent implements OnInit {

@@ -4,6 +4,7 @@ import {IconHeaderActionBaseComponent} from '@ironsource/fusion-ui/components/ic
 @Component({
     selector: 'fusion-icon-header-action',
     templateUrl: '../common/base/icon-header-action.base.component.html',
-    styleUrls: ['./icon-header-action.component.scss']
+    styleUrls: ['./icon-header-action.component.scss'],
+    host: {'ui-version': '1'}
 })
 export class IconHeaderActionComponent extends IconHeaderActionBaseComponent {}

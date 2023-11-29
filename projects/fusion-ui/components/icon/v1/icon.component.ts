@@ -6,6 +6,7 @@ import {SvgComponent} from '@ironsource/fusion-ui/components/svg';
     selector: 'fusion-icon',
     template: '<span></span>',
     styleUrls: ['./icon.component.scss'],
+    host: {'ui-version': '1'},
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })

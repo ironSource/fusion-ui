@@ -5,6 +5,7 @@ import {DropdownOptionBaseComponent} from '@ironsource/fusion-ui/components/drop
     selector: 'fusion-dropdown-option',
     templateUrl: '../common/base/dropdown-option.base.component.html',
     styleUrls: ['./dropdown-option.component.scss'],
+    host: {'ui-version': '2'},
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownOptionComponent extends DropdownOptionBaseComponent {

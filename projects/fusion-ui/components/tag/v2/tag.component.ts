@@ -5,6 +5,7 @@ import {TagBaseComponent} from '@ironsource/fusion-ui/components/tag/common/base
     selector: 'fusion-tag',
     templateUrl: '../common/base/tag.base.component.html',
     styleUrls: ['./tag.component.scss'],
+    host: {'ui-version': '2'},
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TagComponent extends TagBaseComponent implements OnInit {

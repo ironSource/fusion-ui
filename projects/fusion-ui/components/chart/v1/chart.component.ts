@@ -37,6 +37,7 @@ Chart.register(
     selector: 'fusion-chart',
     templateUrl: '../common/base/chart.base.component.html',
     styleUrls: ['./chart.component-common.scss', './chart.component.scss'],
+    host: {'ui-version': '1'},
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChartComponent extends ChartBaseComponent {

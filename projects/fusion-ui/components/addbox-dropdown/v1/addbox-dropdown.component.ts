@@ -8,6 +8,7 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
     selector: 'fusion-addbox-dropdown',
     templateUrl: '../common/base/addbox-dropdown.base.component.html',
     styleUrls: ['./addbox-dropdown.component.scss'],
+    host: {'ui-version': '1'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         DropdownService,

@@ -1,6 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {FileDragAndDropComponent} from './file-drag-and-drop.component';
+import {NO_ERRORS_SCHEMA} from "@angular/core";
 
 describe('FileDragAndDropComponent', () => {
     let component: FileDragAndDropComponent;
@@ -8,7 +9,8 @@ describe('FileDragAndDropComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [FileDragAndDropComponent]
+            declarations: [FileDragAndDropComponent],
+            schemas: [NO_ERRORS_SCHEMA],
         }).compileComponents();
     });
 

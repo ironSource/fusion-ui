@@ -6,6 +6,7 @@ import {RadioBaseComponent} from '@ironsource/fusion-ui/components/radio/common/
     selector: 'fusion-radio',
     templateUrl: '../common/base/radio.base.component.html',
     styleUrls: ['./radio.component.scss'],
+    host: {'ui-version': '1'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

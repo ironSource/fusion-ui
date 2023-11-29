@@ -8,6 +8,7 @@ import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
     selector: 'fusion-multi-dropdown',
     templateUrl: './multi-dropdown.component.html',
     styleUrls: ['./multi-dropdown.component.scss'],
+    host: {'ui-version': '3'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         DropdownService,

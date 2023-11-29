@@ -5,6 +5,7 @@ import {ToastBaseComponent} from '@ironsource/fusion-ui/components/toast/common/
     selector: 'fusion-toast',
     templateUrl: '../common/base/toast.base.component.html',
     styleUrls: ['./toast.component.scss'],
+    host: {'ui-version': '2'},
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ToastComponent extends ToastBaseComponent {}

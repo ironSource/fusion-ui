@@ -6,6 +6,7 @@ import {MonthPickerBaseComponent} from '@ironsource/fusion-ui/components/month-p
     selector: 'fusion-month-picker',
     templateUrl: '../common/base/month-picker.base.component.html',
     styleUrls: ['./month-picker.component.scss'],
+    host: {'ui-version': '2'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

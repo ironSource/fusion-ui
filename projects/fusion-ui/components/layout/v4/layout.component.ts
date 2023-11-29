@@ -16,6 +16,7 @@ import {filter, takeUntil} from 'rxjs/operators';
     imports: [CommonModule, LayoutHeaderComponent, NavigationMenuComponent],
     templateUrl: './layout.component.html',
     styleUrls: ['./layout.component.scss'],
+    host: {'ui-version': '4'},
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LayoutComponent implements OnInit, OnDestroy {
