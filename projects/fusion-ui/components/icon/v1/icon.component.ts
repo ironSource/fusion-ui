@@ -25,7 +25,7 @@ export class IconComponent extends SvgComponent {
 
     public getUrlPath() {
         if (!this.iconName) {
-            throw new Error(`Asset path-name '${this.svgPath ?? 'unknown'}' not set`);
+            throw new Error(`Asset path-name '${this.svgPath}' not set`);
         } else {
             if (this.svgOptions?.assetsPath) {
                 this.svgPath =

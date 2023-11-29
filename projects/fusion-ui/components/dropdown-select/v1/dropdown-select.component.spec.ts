@@ -4,7 +4,7 @@ import {DropdownSelectComponent} from './dropdown-select.component';
 import {IconModule} from "@ironsource/fusion-ui/components/icon/v1";
 import {TooltipModule} from "@ironsource/fusion-ui/components/tooltip/v1";
 
-describe('DropdownSelectComponent', () => {
+fdescribe('DropdownSelectComponent', () => {
     let component: DropdownSelectComponent;
     let fixture: ComponentFixture<DropdownSelectComponent>;
 
