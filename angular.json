@@ -5,7 +5,7 @@
     "projects": {
         "fusion-ui": {
             "root": "projects/fusion-ui",
-            "sourceRoot": "projects/fusion-ui/src",
+            "sourceRoot": "projects/fusion-ui",
             "projectType": "library",
             "prefix": "fusion",
             "architect": {
@@ -19,7 +19,10 @@
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
-                        "main": "projects/fusion-ui/test.ts",
+                        "polyfills": [
+                            "zone.js",
+                            "zone.js/testing"
+                        ],
                         "tsConfig": "projects/fusion-ui/tsconfig.spec.json",
                         "karmaConfig": "projects/fusion-ui/karma.conf.js"
                     }
