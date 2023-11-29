@@ -16,8 +16,8 @@ export class IconComponent extends SvgComponent {
             this.setLibPath(val);
             this.onNameChanged(this.iconName ?? val);
         } else {
-            this.libVersion = val.iconVersion;
-            this.onNameChanged(val.iconName);
+            this.libVersion = val?.iconVersion;
+            this.onNameChanged(val?.iconName);
         }
     }
 
@@ -25,7 +25,7 @@ export class IconComponent extends SvgComponent {
 
     public getUrlPath() {
         if (!this.iconName) {
-            throw new Error(`Asset path-name '${this.svgPath}' not set`);
+            throw new Error(`Asset path-name '${this.svgPath ?? 'unknown'}' not set`);
         } else {
             if (this.svgOptions?.assetsPath) {
                 this.svgPath =

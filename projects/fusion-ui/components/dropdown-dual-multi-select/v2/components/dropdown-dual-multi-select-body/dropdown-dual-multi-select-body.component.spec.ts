@@ -3,7 +3,6 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {DropdownDualMultiSelectBodyComponent} from './dropdown-dual-multi-select-body.component';
 import {GetObjectLengthPipe} from '@ironsource/fusion-ui/pipes/collection';
 import {GenericPipe} from "@ironsource/fusion-ui/pipes/generic";
-import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from "@angular/core";
 import {CheckboxModule} from "@ironsource/fusion-ui/components/checkbox/v2";
 
 describe('DropdownDualMultiSelectBodyComponent', () => {
@@ -13,8 +12,7 @@ describe('DropdownDualMultiSelectBodyComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             declarations: [DropdownDualMultiSelectBodyComponent],
-            imports: [GetObjectLengthPipe, GenericPipe, CheckboxModule],
-            schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+            imports: [GetObjectLengthPipe, GenericPipe, CheckboxModule]
         }).compileComponents();
     });
 

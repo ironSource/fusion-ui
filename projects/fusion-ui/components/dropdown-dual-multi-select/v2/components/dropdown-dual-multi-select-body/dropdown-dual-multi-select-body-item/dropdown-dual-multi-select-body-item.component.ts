@@ -5,6 +5,7 @@ import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/e
     selector: 'fusion-dropdown-dual-multi-select-body-item',
     templateUrl: './dropdown-dual-multi-select-body-item.component.html',
     styleUrls: ['./dropdown-dual-multi-select-body-item.component.scss'],
+    host: {'ui-version': '2'},
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownDualMultiSelectBodyItemComponent {

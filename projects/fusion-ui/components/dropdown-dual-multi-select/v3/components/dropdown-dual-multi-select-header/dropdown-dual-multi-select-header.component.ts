@@ -20,6 +20,7 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
     selector: 'fusion-dropdown-dual-multi-select-header',
     templateUrl: './dropdown-dual-multi-select-header.component.html',
     styleUrls: ['./dropdown-dual-multi-select-header.component.scss'],
+    host: {'ui-version': '3'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

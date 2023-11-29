@@ -7,6 +7,7 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
     selector: 'fusion-dropdown-dual-multi-select-body-item',
     templateUrl: './dropdown-dual-multi-select-body-item.component.html',
     styleUrls: ['./dropdown-dual-multi-select-body-item.component.scss'],
+    host: {'ui-version': '3'},
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownDualMultiSelectBodyItemComponent {

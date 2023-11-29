@@ -6,6 +6,7 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
     selector: 'fusion-dropdown-dual-multi-select-footer',
     templateUrl: './dropdown-dual-multi-select-footer.component.html',
     styleUrls: ['./dropdown-dual-multi-select-footer.component.scss'],
+    host: {'ui-version': '3'},
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownDualMultiSelectFooterComponent {
