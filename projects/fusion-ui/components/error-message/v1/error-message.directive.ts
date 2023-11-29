@@ -4,7 +4,6 @@ import {
     Directive,
     ElementRef,
     Host,
-    inject,
     Input,
     OnChanges,
     OnDestroy,
@@ -30,9 +29,6 @@ export class ErrorMessageDirective implements OnInit, OnDestroy, OnChanges {
     @Input() customMessages: {[key: string]: string};
     @Input() customMapping: {[key: string]: string};
     @Input() errorStyles = {};
-
-    viewContainerRef = inject(ViewContainerRef);
-
     private errorMessageComponent: ComponentRef<ErrorMessageComponent>;
     private formControl: AbstractControl;
     private isTooltipMessage: boolean;
@@ -40,6 +36,7 @@ export class ErrorMessageDirective implements OnInit, OnDestroy, OnChanges {
 
     constructor(
         private elementRef: ElementRef,
+        private viewContainerRef: ViewContainerRef,
         private changeDetectorRef: ChangeDetectorRef,
         private fg: ControlContainer,
         @Optional() @Host() private inputComponent: InputComponent,
