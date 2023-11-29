@@ -8,6 +8,23 @@ All notable changes to this project will be documented in this file. See [commit
 ### ⚠ BREAKING CHANGES
 
 * **isct-120:** Upgrade to Angular 17
+* Minimum node version is 18.13.0
+* Changes in components output events:
+* - ChipFilterComponent: 
+    - `onChipRemove` to `chipRemove`
+    - `onSelectedChange` to `selectedChange`
+* - ChipFiltersComponent:
+    - `onSelectFilter` to `selectFilter`
+    - `onDynamicChipSelect` to `dynamicChipSelect`
+    - `onRemoveSelection` to `removeSelection`
+* - ModalFooterComponent:
+    - `onSubmit` to `primaryButtonClicked`
+    - `onCloseButtonClicked` to `closeButtonClicked`
+* - ModalHeaderComponent:
+    - `close` to `closeModal`
+    - `open` to `openModal`
+* - CustomCellEditComponent:
+    - `onChange` to `dataChange`
 
 ### Features
 
