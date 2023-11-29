@@ -6,6 +6,7 @@ import {CheckboxBaseComponent} from '@ironsource/fusion-ui/components/checkbox/c
     selector: 'fusion-checkbox',
     templateUrl: './checkbox.component.html',
     styleUrls: ['./checkbox.component.scss'],
+    host: {'ui-version': '3'},
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
