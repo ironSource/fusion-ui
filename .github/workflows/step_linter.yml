@@ -32,7 +32,7 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v4
         with:
-          node-version: ">=18.13"
+          node-version: "20"
 
       - name: Cache node deps
         id: cache-deps
