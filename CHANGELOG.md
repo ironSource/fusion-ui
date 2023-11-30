@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [7.0.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.0...v7.0.0-rc.1) (2023-11-30)
+
+
+### CI
+
+* **isct-120:** update node version to 20 in gh actions ([257ece6](https://github.com/ironSource/fusion-ui/commit/257ece6936011bb2d4db39875c1f93e3a21f8add))
+
 ## [7.0.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.3.1...v7.0.0-rc.0) (2023-11-29)
 
 
