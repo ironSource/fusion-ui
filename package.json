@@ -55,6 +55,7 @@
     "@angular/platform-browser": "^17.0.4",
     "@angular/platform-browser-dynamic": "^17.0.4",
     "@angular/router": "^17.0.4",
+    "@ironsource/storybook-addon-stackblitz-angular": "1.0.1--canary.69b3aa9.0",
     "chart.js": "^3.6.2",
     "prismjs": "^1.22.0",
     "rxjs": "^6.6.3",
