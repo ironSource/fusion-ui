@@ -21,7 +21,6 @@
     "build:lib:dev": "npm run build -- dev",
     "build:lib:prod": "npm run build -- production",
     "build:fusion-ui": "ng build fusion-ui",
-    "styles": "ts-node -P css-bundle/tsconfig.styles.bundle.json css-bundle",
     "build-styles": "bash scripts/build-styles.sh",
     "lint": "ng lint",
     "format:check": "prettier --config ./prettier.config.js --check 'projects/**/*{.ts,.json}'",
