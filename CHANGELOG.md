@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [7.0.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.1...v7.0.0-rc.2) (2023-12-11)
+
+
+### CI
+
+* **isct-133:** added @ironsource/storybook-addon-stackblitz-angular ([19afd88](https://github.com/ironSource/fusion-ui/commit/19afd8825692c75d02287cc51978e32586a732d9))
+* **isct-133:** regen package-lock.json, remove @ironsource/storybook-addon-stackblitz addon ([66a24da](https://github.com/ironSource/fusion-ui/commit/66a24dae26be622c29c855ee68314cfbe75ddcfa))
+* **isct-133:** up version for @ironsource/storybook-addon-stackblitz-angular ([242a6d1](https://github.com/ironSource/fusion-ui/commit/242a6d115ff2b860708136d599c567e92fe09a95))
+* **isct-133:** upgrade to storybook 7.6 ([f6fd5d6](https://github.com/ironSource/fusion-ui/commit/f6fd5d6b10c653ee7c793000331fd7782eeb0940))
+
 ## [7.0.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.0...v7.0.0-rc.1) (2023-11-30)
 
 
