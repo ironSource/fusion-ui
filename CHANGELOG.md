@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [7.0.0-rc.3](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.2...v7.0.0-rc.3) (2023-12-11)
+
+
+### Bug Fixes
+
+* **isct-120:** input-inline read only state in table angular 17 ([18d4969](https://github.com/ironSource/fusion-ui/commit/18d49699045a3072528e73b505ce2642691a7401))
+
 ## [7.0.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.1...v7.0.0-rc.2) (2023-12-11)
 
 
