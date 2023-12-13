@@ -84,3 +84,18 @@ export const Variants = {
     render: ButtonVariantTemplate,
     args: {color: 'primary'}
 };
+
+const ButtonSizesTemplate: StoryFn<ButtonComponent> = (args: ButtonComponent) => ({
+    props: args,
+    template: `<div style="display: flex; gap: 14px; align-items: center">
+    <fusion-button [color]="color" [variant]="variant" [disabled]="disabled" size="small">Small</fusion-button>
+    <fusion-button [color]="color" [variant]="variant" [disabled]="disabled">Medium (default)</fusion-button>
+    <fusion-button [color]="color" [variant]="variant" [disabled]="disabled" size="large">Large</fusion-button>
+    <fusion-button [color]="color" [variant]="variant" [disabled]="disabled" size="extraLarge">Extra Large</fusion-button>
+</div>`
+});
+
+export const Sizes = {
+    render: ButtonSizesTemplate,
+    args: {color: 'primary', variant: 'contained'}
+};

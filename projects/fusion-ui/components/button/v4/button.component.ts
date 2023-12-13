@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ButtonColor, ButtonVariant} from '@ironsource/fusion-ui/components/button/v4/button.entities';
+import {ButtonColor, ButtonSize, ButtonVariant} from '@ironsource/fusion-ui/components/button/v4/button.entities';
 import {isNullOrUndefined} from '@ironsource/fusion-ui';
 
 @Component({
@@ -30,6 +30,14 @@ export class ButtonComponent {
     }
 
     /**
+     * Set button size
+     * @param value
+     */
+    @Input() set size(value: ButtonSize) {
+        this._size = value || 'medium';
+    }
+
+    /**
      * Set button disabled state
      * @param value
      */
@@ -38,7 +46,7 @@ export class ButtonComponent {
     }
 
     get buttonClass(): string {
-        return `${this.colorClass} ${this.variantClass}`;
+        return `${this.colorClass} ${this.variantClass} ${this.sizeClass}`;
     }
 
     get colorClass(): string {
@@ -46,8 +54,11 @@ export class ButtonComponent {
     }
 
     get variantClass(): string {
-        console.log('>>', this._variant);
         return 'fu-' + this._variant;
+    }
+
+    get sizeClass(): string {
+        return 'fu-' + this._size;
     }
 
     get disabled(): boolean {
@@ -56,5 +67,6 @@ export class ButtonComponent {
 
     private _color: ButtonColor = 'default';
     private _variant: ButtonVariant = 'contained';
+    private _size: ButtonSize = 'medium';
     private _disabled: boolean = false;
 }

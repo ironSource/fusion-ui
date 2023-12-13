@@ -7,8 +7,9 @@
 :host {
     margin: 0;
     padding: 0;
-    // region button default styles
+
     button {
+        // region button default styles
         box-sizing: border-box;
         display: flex;
         padding: var(--spacing-50) var(--spacing-100);
@@ -36,6 +37,7 @@
         &:hover:focus {
             padding: var(--spacing-50) var(--spacing-100);
         }
+
         &.fu-outlined  {
             color: var(--text-primary);
             border: 1px solid var(--default-outlined-border);
@@ -79,12 +81,10 @@
         &.fu-primary {
             color: var(--primary-button-contrast-text);
             background: var(--primary-main);
-
             &:focus {
                 background: var(--primary-main);
                 outline-color: var(--primary-main-50-p);
             }
-
             &:hover {
                 background: var(--primary-darker);
             }
@@ -298,6 +298,121 @@
             }
         }
         // endregion
+
+        // region button sizes
+        &.fu-small {
+            padding: var(--spacing-25) var(--spacing-75);
+            &:focus {
+                padding: 0 var(--spacing-50);
+            }
+            &:hover{
+                padding: var(--spacing-25) var(--spacing-75);
+            }
+        }
+        &.fu-large {
+            padding: var(--spacing-75) var(--spacing-100);
+            &:focus {
+                padding: var(--spacing-50) var(--spacing-75);
+            }
+            &:hover{
+                padding: var(--spacing-75) var(--spacing-100);
+            }
+        }
+        &.fu-extraLarge {
+            padding: var(--spacing-125) var(--spacing-150);
+            &:focus {
+                padding: calc(var(--spacing-125) - 2px) calc(var(--spacing-150) - 2px);
+            }
+            &:hover{
+                padding: var(--spacing-125) var(--spacing-150);
+            }
+        }
+
+        &.fu-outlined {
+            // region sizes
+            &.fu-small {
+                padding: calc(var(--spacing-25) - 1px) calc(var(--spacing-75) - 1px);
+                &:focus {
+                    padding: 0 var(--spacing-50);
+                }
+                &:hover{
+                    padding: calc(var(--spacing-25) - 1px) calc(var(--spacing-75) - 1px);
+                    &:focus {
+                        border-width: 1px;
+                    }
+                }
+            }
+            &.fu-large {
+                padding: calc(var(--spacing-75) - 1px) calc(var(--spacing-100) - 1px);
+                &:focus {
+                    padding: var(--spacing-50) var(--spacing-75);
+                }
+                &:hover{
+                    padding: calc(var(--spacing-75) - 1px) calc(var(--spacing-100) - 1px);
+                    &:focus {
+                        border-width: 1px;
+                    }
+                }
+            }
+            &.fu-extraLarge {
+                padding: calc(var(--spacing-125) - 1px) calc(var(--spacing-150) - 1px);
+                &:focus {
+                    padding: var(--spacing-100) var(--spacing-125);
+                }
+                &:hover{
+                    padding: calc(var(--spacing-125) - 1px) calc(var(--spacing-150) - 1px);
+                    &:focus {
+                        border-width: 1px;
+                    }
+                }
+            }
+            //endregion
+        }
+        &.fu-text {
+            // region button sizes
+            &.fu-small {
+                padding: var(--spacing-25) var(--spacing-75);
+                &:focus {
+                    border-width: 2px;
+                    padding: 0 var(--spacing-50);
+                }
+                &:hover{
+                    padding: var(--spacing-25) var(--spacing-75);
+                    &:focus {
+                        border-width: 0;
+                        padding: var(--spacing-25) var(--spacing-75);
+                    }
+                }
+            }
+            &.fu-large {
+                padding: var(--spacing-75) var(--spacing-100);
+                &:focus {
+                    border-width: 2px;
+                    padding: var(--spacing-50) var(--spacing-75);
+                }
+                &:hover{
+                    padding: var(--spacing-75) var(--spacing-100);
+                    &:focus {
+                        padding: var(--spacing-75) var(--spacing-100);
+                    }
+                }
+            }
+            &.fu-extraLarge {
+                padding: var(--spacing-125) var(--spacing-150);
+                &:focus {
+                    border-width: 2px;
+                    padding: var(--spacing-100) var(--spacing-125);
+                }
+                &:hover{
+                    padding: var(--spacing-125) var(--spacing-150);
+                    &:focus {
+                        padding: var(--spacing-125) var(--spacing-150);
+                    }
+                }
+            }
+            //endregion
+        }
+        //endregion
 
         // region disable state for all colors and variants
         &:disabled {
