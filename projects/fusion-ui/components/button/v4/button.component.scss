@@ -1,0 +1,359 @@
+@import '../../../src/style/scss/v4/colors';
+@import '../../../src/style/scss/v4/spacings';
+@import '../../../src/style/scss/v4/border-radius';
+@import '../../../src/style/scss/v4/vars/fonts';
+
+
+:host {
+    margin: 0;
+    padding: 0;
+    // region button default styles
+    button {
+        box-sizing: border-box;
+        display: flex;
+        padding: var(--spacing-50) var(--spacing-100);
+        justify-content: center;
+        align-items: center;
+        gap: var(--spacing-100);
+        color: var(--default-button-contrast-text);
+        background: var(--default-main);
+        border: none;
+        border-radius: var(--border-radius-md);
+        @extend %font-v4-button;
+
+        &:focus {
+            background: var(--default-main);
+            padding: var(--spacing-25) var(--spacing-75);
+            margin: var(--spacing-25);
+            outline: 2px solid var(--primary-main-50-p);
+        }
+        &:hover {
+            cursor: pointer;
+            background: var(--default-light);
+            outline: none;
+            margin: 0;
+        }
+        &:hover:focus {
+            padding: var(--spacing-50) var(--spacing-100);
+        }
+        &.fu-outlined  {
+            color: var(--text-primary);
+            border: 1px solid var(--default-outlined-border);
+            padding: calc(var(--spacing-50) - 1px) calc(var(--spacing-100) - 1px);
+            background: none;
+            &:focus {
+                outline: none;
+                border: 2px solid var(--primary-main-50-p);
+                padding: var(--spacing-25) var(--spacing-75);
+                margin: 0;
+            }
+            &:hover {
+                border: 1px solid var(--action-active);
+                background: var(--action-hover);
+            }
+            &:hover:focus {
+                padding: calc(var(--spacing-50) - 1px) calc(var(--spacing-100) - 1px);
+            }
+        }
+        &.fu-text  {
+            color: var(--text-primary);
+            background: none;
+            &:focus {
+                outline: none;
+                border: 2px solid var(--primary-main-50-p);
+                padding: var(--spacing-25) var(--spacing-75);
+                background: var(--primary-lighter);
+                margin: 0;
+            }
+            &:hover {
+                background: var(--action-hover);
+            }
+            &:hover:focus {
+                border: none;
+                padding: var(--spacing-50) var(--spacing-100);
+            }
+        }
+        // endregion
+
+        // region button primary styles
+        &.fu-primary {
+            color: var(--primary-button-contrast-text);
+            background: var(--primary-main);
+
+            &:focus {
+                background: var(--primary-main);
+                outline-color: var(--primary-main-50-p);
+            }
+
+            &:hover {
+                background: var(--primary-darker);
+            }
+            &.fu-outlined {
+                color: var(--primary-main);
+                border: 1px solid var(--primary-main);
+                background: none;
+                padding: calc(var(--spacing-50) - 1px) calc(var(--spacing-100) - 1px);
+
+                &:focus {
+                    outline: none;
+                    border: 2px solid var(--primary-main-50-p);
+                    padding: var(--spacing-25) var(--spacing-75);
+                    margin: 0;
+                }
+
+                &:hover {
+                    background: var(--primary-light);
+                }
+            }
+            &.fu-text {
+                color: var(--primary-main);
+                background: none;
+                &:focus {
+                    border: 2px solid var(--primary-main-50-p);
+                    background: var(--primary-lighter);
+                }
+                &:hover {
+                    background: var(--primary-lighter);
+                    &:focus {
+                        border: none;
+                        padding: var(--spacing-50) var(--spacing-100);
+                    }
+                }
+            }
+        }
+        // endregion
+
+        // region button danger styles
+        &.fu-danger {
+            color: var(--error-button-contrast-text);
+            background: var(--error-main);
+            &:focus {
+                background: var(--error-main);
+                outline-color: var(--error-main-50-p);
+            }
+            &:hover {
+                background: var(--error-dark);
+            }
+            &.fu-outlined {
+                color: var(--error-main);
+                border: 1px solid var(--error-main);
+                background: none;
+                padding: calc(var(--spacing-50) - 1px) calc(var(--spacing-100) - 1px);
+                &:focus {
+                    outline: none;
+                    border: 2px solid var(--error-main-50-p);
+                    padding: var(--spacing-25) var(--spacing-75);
+                    margin: 0;
+                }
+                &:hover {
+                    background: var(--error-lighter );
+                }
+            }
+            &.fu-text {
+                color: var(--error-main);
+                background: none;
+                &:focus {
+                    border: 2px solid var(--error-main-50-p);
+                    background: var(--error-main-8-p);
+                }
+                &:hover {
+                    background: var(--error-lighter);
+                    &:focus {
+                        border: none;
+                        padding: var(--spacing-50) var(--spacing-100);
+                    }
+                }
+            }
+        }
+        // endregion
+
+        // region button info styles
+        &.fu-info {
+            color: var(--info-button-contrast-text);
+            background: var(--info-main);
+            &:focus {
+                background: var(--info-main);
+                outline-color: var(--info-main-50-p);
+            }
+            &:hover {
+                background: var(--info-dark);
+            }
+            &.fu-outlined {
+                color: var(--info-main);
+                border: 1px solid var(--info-main   );
+                background: none;
+                padding: calc(var(--spacing-50) - 1px) calc(var(--spacing-100) - 1px);
+                &:focus {
+                    outline: none;
+                    border: 2px solid var(--info-main-50-p);
+                    padding: var(--spacing-25) var(--spacing-75);
+                    margin: 0;
+                }
+                &:hover {
+                    background: var(--info-lighter);
+                }
+            }
+            &.fu-text {
+                color: var(--info-main);
+                background: none;
+                &:focus {
+                    border: 2px solid var(--info-main-50-p);
+                    background: var(--info-main-8-p);
+                }
+                &:hover {
+                    background: var(--info-lighter);
+                    &:focus {
+                        border: none;
+                        padding: var(--spacing-50) var(--spacing-100);
+                    }
+                }
+            }
+        }
+        // endregion
+
+        // region button success styles
+        &.fu-success {
+            color: var(--success-button-contrast-text);
+            background: var(--success-main);
+            &:focus {
+                background: var(--success-main);
+                outline-color: var(--success-main-50-p);
+            }
+            &:hover {
+                background: var(--success-dark);
+            }
+            &.fu-outlined {
+                color: var(--success-main);
+                border: 1px solid var(--success-main );
+                background: none;
+                padding: calc(var(--spacing-50) - 1px) calc(var(--spacing-100) - 1px);
+                &:focus {
+                    outline: none;
+                    border: 2px solid var(--success-main-50-p);
+                    padding: var(--spacing-25) var(--spacing-75);
+                    margin: 0;
+                }
+                &:hover {
+                    background: var(--success-lighter);
+                }
+            }
+            &.fu-text {
+                color: var(--success-main);
+                background: none;
+                &:focus {
+                    border: 2px solid var(--success-main-50-p);
+                    background: var(--success-main-8-p);
+                }
+                &:hover {
+                    background: var(--success-lighter);
+                    &:focus {
+                        border: none;
+                        padding: var(--spacing-50) var(--spacing-100);
+                    }
+                }
+            }
+        }
+        // endregion
+
+        // region button warning styles
+        &.fu-warning {
+            color: var(--warning-button-contrast-text);
+            background: var(--warning-main);
+            &:focus {
+                background: var(--warning-main);
+                outline-color: var(--warning-main-50-p);
+            }
+            &:hover {
+                background: var(--warning-dark);
+            }
+            &.fu-outlined {
+                color: var(--warning-darker);
+                border: 1px solid var(--warning-darker);
+                background: none;
+                padding: calc(var(--spacing-50) - 1px) calc(var(--spacing-100) - 1px);
+                &:focus {
+                    outline: none;
+                    border: 2px solid var(--warning-main-50-p );
+                    padding: var(--spacing-25) var(--spacing-75);
+                    margin: 0;
+                }
+                &:hover {
+                    background: var(--warning-lighter);
+                }
+            }
+            &.fu-text {
+                color: var(--warning-darker);
+                background: none;
+                &:focus {
+                    border: 2px solid var(--warning-main-50-p);
+                    background: var(--warning-main-8-p);
+                }
+                &:hover {
+                    background: var(--warning-lighter);
+                    &:focus {
+                        border: none;
+                        padding: var(--spacing-50) var(--spacing-100);
+                    }
+                }
+            }
+        }
+        // endregion
+
+        // region disable state for all colors and variants
+        &:disabled {
+            color: var(--text-disabled);
+            background: var(--action-disabled-background);
+            &:focus {
+                background: var(--action-disabled-background);
+                outline: none
+            }
+            &:hover {
+                background: var(--action-disabled-background);
+                cursor: default;
+                margin: 0;
+            }
+        }
+        &.fu-outlined:disabled,
+        &.fu-primary.fu-outlined:disabled,
+        &.fu-danger.fu-outlined:disabled,
+        &.fu-info.fu-outlined:disabled,
+        &.fu-success.fu-outlined:disabled,
+        &.fu-warning.fu-outlined:disabled
+        {
+            color: var(--text-disabled);
+            border: 1px solid var(--default-outlined-border);
+            background: none;
+            &:focus {
+                background: none;
+                outline: none
+            }
+            &:hover {
+                background: none;
+                cursor: default;
+                margin: 0;
+            }
+        }
+
+        &.fu-text:disabled,
+        &.fu-primary.fu-text:disabled,
+        &.fu-danger.fu-text:disabled,
+        &.fu-info.fu-text:disabled,
+        &.fu-success.fu-text:disabled,
+        &.fu-warning.fu-text:disabled
+        {
+            color: var(--text-disabled);
+            border: none;
+            background: none;
+            &:focus {
+                background: none;
+                outline: none
+            }
+            &:hover {
+                background: none;
+                cursor: default;
+                margin: 0;
+            }
+        }
+        // endregion
+    }
+}
