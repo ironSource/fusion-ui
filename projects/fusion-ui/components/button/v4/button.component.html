@@ -1,3 +1,6 @@
-<button [class]="buttonClass" [disabled]="disabled">
-    <ng-content></ng-content>
+<button [class]="buttonClass" [class.fu-loading]="loading" [disabled]="disabled || loading">
+    <div class="fu-button-content"><ng-content></ng-content></div>
+    <div class="fu-button-loading">
+        <svg class="fu-circle-svg" width="16" height="16" style="padding: 2px;"><circle cx="50%" cy="50%" r="43.75%" style="stroke-width: 2;"></circle></svg>
+    </div>
 </button>

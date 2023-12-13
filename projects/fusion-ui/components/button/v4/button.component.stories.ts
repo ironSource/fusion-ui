@@ -23,6 +23,7 @@ export default {
     },
     args: {
         disabled: false,
+        loading: false,
         color: 'primary',
         variant: 'contained'
     },
@@ -44,7 +45,7 @@ export default {
 
 const ButtonTemplate: StoryFn<ButtonComponent> = (args: ButtonComponent) => ({
     props: args,
-    template: `<fusion-button color="primary" [disabled]="disabled">
+    template: `<fusion-button color="primary" [disabled]="disabled" [loading]="loading">
     {{content}}
 </fusion-button>`
 });
@@ -57,12 +58,12 @@ export const Basic = {
 const ButtonColorTemplate: StoryFn<ButtonComponent> = (args: ButtonComponent) => ({
     props: args,
     template: `<div style="display: flex; gap: 14px;">
-    <fusion-button color="primary" [disabled]="disabled" [variant]="variant">Primary</fusion-button>
-    <fusion-button [disabled]="disabled" [variant]="variant">Default</fusion-button>
-    <fusion-button color="danger" [variant]="variant" [disabled]="disabled">Danger</fusion-button>
-    <fusion-button color="info" [variant]="variant" [disabled]="disabled">Info</fusion-button>
-    <fusion-button color="success" [variant]="variant" [disabled]="disabled">Success</fusion-button>
-    <fusion-button color="warning" [variant]="variant" [disabled]="disabled">Warning</fusion-button>
+    <fusion-button color="primary" [disabled]="disabled" [loading]="loading" [variant]="variant">Primary</fusion-button>
+    <fusion-button [disabled]="disabled" [loading]="loading" [variant]="variant">Default</fusion-button>
+    <fusion-button color="danger" [variant]="variant" [disabled]="disabled" [loading]="loading">Danger</fusion-button>
+    <fusion-button color="info" [variant]="variant" [disabled]="disabled" [loading]="loading">Info</fusion-button>
+    <fusion-button color="success" [variant]="variant" [disabled]="disabled" [loading]="loading">Success</fusion-button>
+    <fusion-button color="warning" [variant]="variant" [disabled]="disabled" [loading]="loading">Warning</fusion-button>
 </div>`
 });
 
@@ -74,9 +75,9 @@ export const Colors = {
 const ButtonVariantTemplate: StoryFn<ButtonComponent> = (args: ButtonComponent) => ({
     props: args,
     template: `<div style="display: flex; gap: 14px;">
-    <fusion-button [color]="color" [disabled]="disabled">Contained</fusion-button>
-    <fusion-button [color]="color" variant="outlined" [disabled]="disabled">Outlined</fusion-button>
-    <fusion-button [color]="color" variant="text" [disabled]="disabled">Text</fusion-button>
+    <fusion-button [color]="color" [disabled]="disabled" [loading]="loading">Contained</fusion-button>
+    <fusion-button [color]="color" variant="outlined" [disabled]="disabled" [loading]="loading">Outlined</fusion-button>
+    <fusion-button [color]="color" variant="text" [disabled]="disabled" [loading]="loading">Text</fusion-button>
 </div>`
 });
 
@@ -88,10 +89,10 @@ export const Variants = {
 const ButtonSizesTemplate: StoryFn<ButtonComponent> = (args: ButtonComponent) => ({
     props: args,
     template: `<div style="display: flex; gap: 14px; align-items: center">
-    <fusion-button [color]="color" [variant]="variant" [disabled]="disabled" size="small">Small</fusion-button>
-    <fusion-button [color]="color" [variant]="variant" [disabled]="disabled">Medium (default)</fusion-button>
-    <fusion-button [color]="color" [variant]="variant" [disabled]="disabled" size="large">Large</fusion-button>
-    <fusion-button [color]="color" [variant]="variant" [disabled]="disabled" size="extraLarge">Extra Large</fusion-button>
+    <fusion-button [color]="color" [variant]="variant" [disabled]="disabled" [loading]="loading" size="small">Small</fusion-button>
+    <fusion-button [color]="color" [variant]="variant" [disabled]="disabled" [loading]="loading">Medium (default)</fusion-button>
+    <fusion-button [color]="color" [variant]="variant" [disabled]="disabled" [loading]="loading" size="large">Large</fusion-button>
+    <fusion-button [color]="color" [variant]="variant" [disabled]="disabled" [loading]="loading" size="extraLarge">Extra Large</fusion-button>
 </div>`
 });
 

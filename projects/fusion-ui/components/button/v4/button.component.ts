@@ -45,6 +45,10 @@ export class ButtonComponent {
         this._disabled = value ?? false;
     }
 
+    @Input() set loading(value: boolean) {
+        this._loading = value ?? false;
+    }
+
     get buttonClass(): string {
         return `${this.colorClass} ${this.variantClass} ${this.sizeClass}`;
     }
@@ -65,8 +69,13 @@ export class ButtonComponent {
         return this._disabled;
     }
 
+    get loading(): boolean {
+        return this._loading;
+    }
+
     private _color: ButtonColor = 'default';
     private _variant: ButtonVariant = 'contained';
     private _size: ButtonSize = 'medium';
     private _disabled: boolean = false;
+    private _loading: boolean = false;
 }

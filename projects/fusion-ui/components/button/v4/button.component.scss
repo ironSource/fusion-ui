@@ -3,11 +3,11 @@
 @import '../../../src/style/scss/v4/border-radius';
 @import '../../../src/style/scss/v4/vars/fonts';
 
+$pi: 3.14159265358979;
 
 :host {
     margin: 0;
     padding: 0;
-
     button {
         // region button default styles
         box-sizing: border-box;
@@ -21,6 +21,12 @@
         border: none;
         border-radius: var(--border-radius-md);
         @extend %font-v4-button;
+        transition: background-color 0.2s ease;
+        position: relative;
+
+        .fu-button-loading {
+            display: none;
+        }
 
         &:focus {
             background: var(--default-main);
@@ -468,6 +474,48 @@
                 cursor: default;
                 margin: 0;
             }
+        }
+        // endregion
+
+        // region button loading state
+        &.fu-loading {
+            .fu-button-content {
+                visibility: hidden;
+            }
+            .fu-button-loading{
+                display: block;
+                position: absolute;
+                // region loading spinner
+                .fu-circle-svg{
+                    margin: 0 auto;
+                    box-sizing: content-box;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                    circle {
+                        stroke: currentColor;
+                        fill: transparent;
+                        transform-origin: center;
+                        stroke-dasharray: 314.159265359%;
+                        animation: spinner 1.4s linear 0s infinite normal none running;
+                    }
+                }
+                @keyframes spinner {
+                    from {
+                        stroke-dashoffset: calc($pi * 50% * 2);
+                        transform: rotateZ(0deg);
+                    }
+                    to {
+                        stroke-dashoffset: calc(calc($pi * 50% * 2) * -1);
+                        transform: rotateZ(390deg);
+                    }
+                }
+                // endregion
+            }
+        }
+        &.fu-outlined.fu-loading:disabled{
+            background: var(--action-disabled-background);
         }
         // endregion
     }
