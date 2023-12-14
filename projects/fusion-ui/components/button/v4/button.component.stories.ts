@@ -15,6 +15,7 @@ export default {
             imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule]
         })
     ],
+    tags: ['autodocs'],
     parameters: {
         options: {
             showPanel: true,
@@ -29,6 +30,9 @@ export default {
     },
     argsTypes: {
         disabled: {
+            control: 'boolean'
+        },
+        loading: {
             control: 'boolean'
         },
         color: {
