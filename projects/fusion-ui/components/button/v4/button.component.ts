@@ -1,12 +1,12 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ButtonColor, ButtonSize, ButtonVariant} from '@ironsource/fusion-ui/components/button/v4/button.entities';
-import {isNullOrUndefined} from '@ironsource/fusion-ui';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 
 @Component({
     selector: 'fusion-button',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, IconModule],
     templateUrl: './button.component.html',
     styleUrls: ['./button.component.scss'],
     host: {class: 'fusion-v4'},
@@ -45,8 +45,20 @@ export class ButtonComponent {
         this._disabled = value ?? false;
     }
 
+    /**
+     * Set button loading state
+     * @param value
+     */
     @Input() set loading(value: boolean) {
         this._loading = value ?? false;
+    }
+
+    @Input() set startIconName(value: string) {
+        this._startIconName = value.trim();
+    }
+
+    @Input() set endIconName(value: string) {
+        this._endIconName = value.trim();
     }
 
     get buttonClass(): string {
@@ -73,9 +85,19 @@ export class ButtonComponent {
         return this._loading;
     }
 
+    get startIconName(): string {
+        return this._startIconName;
+    }
+
+    get endIconName(): string {
+        return this._endIconName;
+    }
+
     private _color: ButtonColor = 'default';
     private _variant: ButtonVariant = 'contained';
     private _size: ButtonSize = 'medium';
     private _disabled: boolean = false;
     private _loading: boolean = false;
+    private _startIconName: string;
+    private _endIconName: string;
 }

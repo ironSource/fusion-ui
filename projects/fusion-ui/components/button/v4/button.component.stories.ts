@@ -104,3 +104,18 @@ export const Sizes = {
     render: ButtonSizesTemplate,
     args: {color: 'primary', variant: 'contained'}
 };
+
+const ButtonIconsTemplate: StoryFn<ButtonComponent> = (args: ButtonComponent) => ({
+    props: args,
+    template: `<div style="display: flex; gap: 14px; align-items: center">
+    <fusion-button [color]="color" [variant]="variant" [disabled]="disabled" [loading]="loading" [endIconName]="endIconName">With end icon</fusion-button>
+    <fusion-button [color]="color" [variant]="variant" [disabled]="disabled" [loading]="loading" [startIconName]="startIconName">With start icon</fusion-button>
+    <fusion-button [color]="color" [variant]="variant" [disabled]="disabled" [loading]="loading" [startIconName]="startIconName" [endIconName]="endIconName">With both icons</fusion-button>
+    <fusion-button [color]="color" [variant]="variant" [disabled]="disabled" [loading]="loading" startIconName="ph/fill/plus" endIconName="ph/fill/caret-down">With fill icons type</fusion-button>
+</div>`
+});
+
+export const Icons = {
+    render: ButtonIconsTemplate,
+    args: {color: 'primary', variant: 'contained', startIconName: 'ph/bold/plus', endIconName: 'ph/caret-down'}
+};

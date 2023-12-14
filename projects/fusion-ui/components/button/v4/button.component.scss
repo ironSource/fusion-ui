@@ -513,9 +513,21 @@ $pi: 3.14159265358979;
                 }
                 // endregion
             }
+            .fu-button-start-icon,
+            .fu-button-end-icon {
+                visibility: hidden;
+            }
         }
         &.fu-outlined.fu-loading:disabled{
             background: var(--action-disabled-background, #{$color-v4-action-disabled-background});
+        }
+        // endregion
+
+        // region button icons
+        .fu-button-start-icon,
+        .fu-button-end-icon {
+            width: 16px;
+            height: 16px;
         }
         // endregion
     }
