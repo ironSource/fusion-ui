@@ -1,5 +1,5 @@
 import {Directive, Input} from '@angular/core';
-import {ButtonColor, ButtonSize, ButtonVariant} from '@ironsource/fusion-ui/components/button/v4/button.entities';
+import {ButtonColor, ButtonSize, ButtonVariant} from './button.entities';
 
 @Directive()
 export class ButtonBaseComponent {

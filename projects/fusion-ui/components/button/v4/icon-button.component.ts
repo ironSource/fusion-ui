@@ -1,9 +1,9 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ButtonBaseComponent} from '@ironsource/fusion-ui/components/button/v4/button.base.component';
+import {ButtonBaseComponent} from './button.base.component';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
-import {IconButtonVariant} from '@ironsource/fusion-ui/components/button/v4/button.entities';
 import {LoaderComponent} from '@ironsource/fusion-ui/components/loader/v4';
+import {IconButtonVariant} from './button.entities';
 
 @Component({
     selector: 'fusion-icon-button',
@@ -34,6 +34,9 @@ export class IconButtonComponent extends ButtonBaseComponent {
     get iconName(): string {
         return this._iconName;
     }
+
+    startIconName: string;
+    endIconName: string;
 
     private _iconName: string;
     private _variantIcon: IconButtonVariant;
