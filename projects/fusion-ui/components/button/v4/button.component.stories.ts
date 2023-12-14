@@ -26,7 +26,9 @@ export default {
         disabled: false,
         loading: false,
         color: 'primary',
-        variant: 'contained'
+        variant: 'contained',
+        startIconName: '',
+        endIconName: ''
     },
     argsTypes: {
         disabled: {
