@@ -1,0 +1,41 @@
+$pi: 3.14159265358979;
+
+:host {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+
+    box-sizing: border-box;
+    position: relative;
+    color: #ccc;
+
+    .fu-circle-svg {
+        margin: 0 auto;
+        box-sizing: content-box;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .fu-circle-svg circle {
+        stroke: currentColor;
+        fill: transparent;
+        transform-origin: center;
+        stroke-dasharray: calc($pi * 50% * 2);
+        animation: spinner linear 0s infinite normal none running;
+        animation-duration: 1.4s
+    }
+
+    @keyframes spinner {
+        from {
+            stroke-dashoffset: calc($pi * 50% * 2);
+            transform: rotateZ(0deg);
+        }
+        to {
+            stroke-dashoffset: calc(calc($pi * 50% * 2) * -1);
+            transform: rotateZ(390deg);
+        }
+    }
+}

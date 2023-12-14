@@ -3,11 +3,12 @@ import {CommonModule} from '@angular/common';
 import {ButtonBaseComponent} from '@ironsource/fusion-ui/components/button/v4/button.base.component';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {IconButtonVariant} from '@ironsource/fusion-ui/components/button/v4/button.entities';
+import {LoaderComponent} from '@ironsource/fusion-ui/components/loader/v4';
 
 @Component({
     selector: 'fusion-icon-button',
     standalone: true,
-    imports: [CommonModule, IconModule],
+    imports: [CommonModule, IconModule, LoaderComponent],
     templateUrl: './button.component.html',
     styleUrls: ['./button.component.scss', './icon-button.component.scss'],
     host: {class: 'fusion-v4'},

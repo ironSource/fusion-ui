@@ -2,11 +2,12 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {ButtonBaseComponent} from '@ironsource/fusion-ui/components/button/v4/button.base.component';
+import {LoaderComponent} from '@ironsource/fusion-ui/components/loader/v4';
 
 @Component({
     selector: 'fusion-button',
     standalone: true,
-    imports: [CommonModule, IconModule],
+    imports: [CommonModule, IconModule, LoaderComponent],
     templateUrl: './button.component.html',
     styleUrls: ['./button.component.scss'],
     host: {class: 'fusion-v4'},
