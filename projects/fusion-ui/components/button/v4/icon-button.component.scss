@@ -1,0 +1,36 @@
+@import '../../../src/style/scss/v4/spacings';
+
+:host {
+    margin: 0;
+    padding: 0;
+    button {
+        padding: var(--spacing-50, #{$spacingV4-50}) !important;
+        gap: 0;
+        .fu-button-icon{
+            width: 20px;
+            height: 20px;
+        }
+        &.fu-outlined{
+            padding: calc(var(--spacing-50, #{$spacingV4-50}) - 1px) !important;
+        }
+        &.fu-small {
+            padding: var(--spacing-25, #{$spacingV4-25}) !important;
+            &.fu-outlined{
+                padding: calc(var(--spacing-25, #{$spacingV4-25}) - 1px) !important;
+            }
+        }
+        &.fu-extraLarge{
+            padding: var(--spacing-100, #{$spacingV4-100}) !important;
+            &.fu-outlined{
+                padding: calc(var(--spacing-100, #{$spacingV4-100}) - 1px) !important;
+            }
+        }
+        &.fu-large,
+        &.fu-extraLarge{
+            .fu-button-icon{
+                width: 24px;
+                height: 24px;
+            }
+        }
+    }
+}
