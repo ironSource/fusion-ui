@@ -25,7 +25,7 @@ export default {
     args: {
         disabled: false,
         loading: false,
-        color: 'primary',
+        color: 'default',
         variant: 'contained',
         startIconName: '',
         endIconName: ''
@@ -51,25 +51,25 @@ export default {
 
 const ButtonTemplate: StoryFn<ButtonComponent> = (args: ButtonComponent) => ({
     props: args,
-    template: `<fusion-button color="primary" [disabled]="disabled" [loading]="loading">
+    template: `<fusion-button [color]="color" [variant]="variant" [size]="size" [disabled]="disabled" [loading]="loading">
     {{content}}
 </fusion-button>`
 });
 
 export const Basic = {
     render: ButtonTemplate,
-    args: {content: 'Primary'}
+    args: {content: 'Default'}
 };
 
 const ButtonColorTemplate: StoryFn<ButtonComponent> = (args: ButtonComponent) => ({
     props: args,
     template: `<div style="display: flex; gap: 14px;">
-    <fusion-button color="primary" [disabled]="disabled" [loading]="loading" [variant]="variant">Primary</fusion-button>
-    <fusion-button [disabled]="disabled" [loading]="loading" [variant]="variant">Default</fusion-button>
-    <fusion-button color="danger" [variant]="variant" [disabled]="disabled" [loading]="loading">Danger</fusion-button>
-    <fusion-button color="info" [variant]="variant" [disabled]="disabled" [loading]="loading">Info</fusion-button>
-    <fusion-button color="success" [variant]="variant" [disabled]="disabled" [loading]="loading">Success</fusion-button>
-    <fusion-button color="warning" [variant]="variant" [disabled]="disabled" [loading]="loading">Warning</fusion-button>
+    <fusion-button color="primary" [size]="size" [disabled]="disabled" [loading]="loading" [variant]="variant">Primary</fusion-button>
+    <fusion-button [size]="size" [disabled]="disabled" [loading]="loading" [variant]="variant">Default</fusion-button>
+    <fusion-button color="danger" [size]="size" [variant]="variant" [disabled]="disabled" [loading]="loading">Danger</fusion-button>
+    <fusion-button color="info" [size]="size" [variant]="variant" [disabled]="disabled" [loading]="loading">Info</fusion-button>
+    <fusion-button color="success" [size]="size" [variant]="variant" [disabled]="disabled" [loading]="loading">Success</fusion-button>
+    <fusion-button color="warning" [size]="size" [variant]="variant" [disabled]="disabled" [loading]="loading">Warning</fusion-button>
 </div>`
 });
 
@@ -81,9 +81,9 @@ export const Colors = {
 const ButtonVariantTemplate: StoryFn<ButtonComponent> = (args: ButtonComponent) => ({
     props: args,
     template: `<div style="display: flex; gap: 14px;">
-    <fusion-button [color]="color" [disabled]="disabled" [loading]="loading">Contained</fusion-button>
-    <fusion-button [color]="color" variant="outlined" [disabled]="disabled" [loading]="loading">Outlined</fusion-button>
-    <fusion-button [color]="color" variant="text" [disabled]="disabled" [loading]="loading">Text</fusion-button>
+    <fusion-button [color]="color" [size]="size" [disabled]="disabled" [loading]="loading">Contained</fusion-button>
+    <fusion-button variant="outlined" [color]="color" [size]="size" [disabled]="disabled" [loading]="loading">Outlined</fusion-button>
+    <fusion-button variant="text" [color]="color" [size]="size" [disabled]="disabled" [loading]="loading">Text</fusion-button>
 </div>`
 });
 
@@ -95,10 +95,10 @@ export const Variants = {
 const ButtonSizesTemplate: StoryFn<ButtonComponent> = (args: ButtonComponent) => ({
     props: args,
     template: `<div style="display: flex; gap: 14px; align-items: center">
-    <fusion-button [color]="color" [variant]="variant" [disabled]="disabled" [loading]="loading" size="small">Small</fusion-button>
+    <fusion-button size="small" [color]="color" [variant]="variant" [disabled]="disabled" [loading]="loading">Small</fusion-button>
     <fusion-button [color]="color" [variant]="variant" [disabled]="disabled" [loading]="loading">Medium (default)</fusion-button>
-    <fusion-button [color]="color" [variant]="variant" [disabled]="disabled" [loading]="loading" size="large">Large</fusion-button>
-    <fusion-button [color]="color" [variant]="variant" [disabled]="disabled" [loading]="loading" size="extraLarge">Extra Large</fusion-button>
+    <fusion-button size="large" [color]="color" [variant]="variant" [disabled]="disabled" [loading]="loading">Large</fusion-button>
+    <fusion-button size="extraLarge" [color]="color" [variant]="variant" [disabled]="disabled" [loading]="loading">Extra Large</fusion-button>
 </div>`
 });
 
@@ -110,10 +110,10 @@ export const Sizes = {
 const ButtonIconsTemplate: StoryFn<ButtonComponent> = (args: ButtonComponent) => ({
     props: args,
     template: `<div style="display: flex; gap: 14px; align-items: center">
-    <fusion-button [color]="color" [variant]="variant" [disabled]="disabled" [loading]="loading" [endIconName]="endIconName">With end icon</fusion-button>
-    <fusion-button [color]="color" [variant]="variant" [disabled]="disabled" [loading]="loading" [startIconName]="startIconName">With start icon</fusion-button>
-    <fusion-button [color]="color" [variant]="variant" [disabled]="disabled" [loading]="loading" [startIconName]="startIconName" [endIconName]="endIconName">With both icons</fusion-button>
-    <fusion-button [color]="color" [variant]="variant" [disabled]="disabled" [loading]="loading" startIconName="ph/fill/plus" endIconName="ph/fill/caret-down">With fill icons type</fusion-button>
+    <fusion-button [color]="color" [size]="size" [variant]="variant" [disabled]="disabled" [loading]="loading" [endIconName]="endIconName">With end icon</fusion-button>
+    <fusion-button [color]="color" [size]="size" [variant]="variant" [disabled]="disabled" [loading]="loading" [startIconName]="startIconName">With start icon</fusion-button>
+    <fusion-button [color]="color" [size]="size" [variant]="variant" [disabled]="disabled" [loading]="loading" [startIconName]="startIconName" [endIconName]="endIconName">With both icons</fusion-button>
+    <fusion-button [color]="color" [size]="size" [variant]="variant" [disabled]="disabled" [loading]="loading" startIconName="ph/fill/plus" endIconName="ph/fill/caret-down">With fill icons type</fusion-button>
 </div>`
 });
 

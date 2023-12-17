@@ -29,7 +29,7 @@ export class ButtonComponent extends ButtonBaseComponent {
     get endIconName(): string {
         return this._endIconName;
     }
-
+    /** @internal */
     iconName: string;
 
     private _startIconName: string;

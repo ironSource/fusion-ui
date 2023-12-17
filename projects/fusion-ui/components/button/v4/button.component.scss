@@ -3,9 +3,30 @@
 @import '../../../src/style/scss/v4/border-radius';
 @import '../../../src/style/scss/v4/vars/fonts';
 
+
+@mixin setButtonColor($color, $bg-color, $bg-color-hover, $outline-color, $outline-bg-color-hover){
+    color: $color;
+    background-color: $bg-color;
+    &:hover {
+        background-color: $bg-color-hover;
+    }
+    &.fu-outlined,
+    &.fu-text {
+        color: $outline-color;
+        background: none;
+        &:hover {
+            background-color: $outline-bg-color-hover;
+        }
+    }
+    &.fu-outlined {
+        border-color: $outline-color;
+    }
+}
+
 :host {
     margin: 0;
     padding: 0;
+
     button {
         // region button default styles
         box-sizing: border-box;
@@ -15,9 +36,9 @@
         align-items: center;
         gap: var(--spacing-100, #{$spacingV4-100});
         color: var(--default-button-contrast-text, #{$color-v4-default-button-contrast-text});
-        background: var(--default-main, #{$color-v4-default-main});
+        background-color: var(--default-main, #{$color-v4-default-main});
         border: none;
-        border-radius:  var(--border-radius-md, #{$borderRadiusV4-md});
+        border-radius: var(--border-radius-md, #{$borderRadiusV4-md});
         @extend %font-v4-button;
         transition: background-color 0.2s ease;
         position: relative;
@@ -28,268 +49,151 @@
 
         &:hover {
             cursor: pointer;
-            background: var(--default-light, #{$color-v4-default-light});
+            background-color: var(--default-light, #{$color-v4-default-light});
             outline: none;
-            margin: 0;
+            //margin: 0;
         }
-        &.fu-outlined  {
+
+        &.fu-outlined {
             color: var(--text-primary, #{$color-v4-text-primary});
             border: 1px solid var(--default-outlined-border, #{$color-v4-default-outlined-border});
             padding: calc(var(--spacing-50, #{$spacingV4-50}) - 1px) calc(var(--spacing-100, #{$spacingV4-100}) - 1px);
             background: none;
+
             &:hover {
-                border: 1px solid var(--action-active, #{$color-v4-action-active});
-                background: var(--action-hover, #{$color-v4-action-hover});
+                border-color: var(--action-active, #{$color-v4-action-active});
+                background-color: var(--action-hover, #{$color-v4-action-hover});
             }
         }
-        &.fu-text  {
+
+        &.fu-text {
             color: var(--text-primary, #{$color-v4-text-primary});
             background: none;
             &:hover {
-                background: var(--action-hover, #{$color-v4-action-hover});
+                background-color: var(--action-hover, #{$color-v4-action-hover});
             }
         }
         // endregion
 
         // region button primary styles
         &.fu-primary {
-            color: var(--primary-button-contrast-text, #{$color-v4-primary-button-contrast-text});
-            background: var(--primary-main, #{$color-v4-primary-main});
-            &:hover {
-                background: var(--primary-darker, #{$color-v4-primary-darker});
-            }
-            &.fu-outlined {
-                color: var(--primary-main, #{$color-v4-primary-main});
-                border: 1px solid var(--primary-main, #{$color-v4-primary-main});
-                background: none;
-                padding: calc(var(--spacing-50, #{$spacingV4-50}) - 1px) calc(var(--spacing-100, #{$spacingV4-100}) - 1px);
-                &:hover {
-                    background: var(--primary-light, #{$color-v4-primary-light});
-                }
-            }
-            &.fu-text {
-                color: var(--primary-main, #{$color-v4-primary-main});
-                background: none;
-                &:hover {
-                    background: var(--primary-lighter, #{$color-v4-primary-lighter});
-                }
-            }
+            @include setButtonColor(
+                    var(--primary-button-contrast-text, #{$color-v4-primary-button-contrast-text}),
+                    var(--primary-main, #{$color-v4-primary-main}),
+                    var(--primary-dark, #{$color-v4-primary-dark}),
+                    var(--primary-darker, #{$color-v4-primary-darker}),
+                    var(--primary-lighter, #{$color-v4-primary-lighter})
+            );
         }
         // endregion
 
         // region button danger styles
         &.fu-danger {
-            color: var(--error-button-contrast-text, #{$color-v4-error-button-contrast-text});
-            background: var(--error-main, #{$color-v4-error-main});
-            &:hover {
-                background: var(--error-dark, #{$color-v4-error-dark});
-            }
-            &.fu-outlined {
-                color: var(--error-main, #{$color-v4-error-main});
-                border: 1px solid var(--error-main, #{$color-v4-error-main});
-                background: none;
-                padding: calc(var(--spacing-50, #{$spacingV4-50}) - 1px) calc(var(--spacing-100, #{$spacingV4-100}) - 1px);
-                &:hover {
-                    background: var(--error-lighter, #{$color-v4-error-lighter});
-                }
-            }
-            &.fu-text {
-                color: var(--error-main, #{$color-v4-error-main});
-                background: none;
-                &:hover {
-                    background: var(--error-lighter, #{$color-v4-error-lighter});
-                }
-            }
+            @include setButtonColor(
+                    var(--error-button-contrast-text, #{$color-v4-error-button-contrast-text}),
+                    var(--error-main, #{$color-v4-error-main}),
+                    var(--error-dark, #{$color-v4-error-dark}),
+                    var(--error-darker, #{$color-v4-error-darker}),
+                    var(--error-lighter, #{$color-v4-error-lighter})
+            );
         }
         // endregion
 
         // region button info styles
         &.fu-info {
-            color: var(--info-button-contrast-text, #{$color-v4-info-button-contrast-text});
-            background: var(--info-main, #{$color-v4-info-main});
-            &:hover {
-                background: var(--info-dark, #{$color-v4-info-dark});
-            }
-            &.fu-outlined {
-                color: var(--info-main, #{$color-v4-info-main});
-                border: 1px solid var(--info-main, #{$color-v4-info-main});
-                background: none;
-                padding: calc(var(--spacing-50, #{$spacingV4-50}) - 1px) calc(var(--spacing-100, #{$spacingV4-100}) - 1px);
-                &:hover {
-                    background: var(--info-lighter, #{$color-v4-info-lighter});
-                }
-            }
-            &.fu-text {
-                color: var(--info-main, #{$color-v4-info-main});
-                background: none;
-                &:hover {
-                    background: var(--info-lighter, #{$color-v4-info-lighter});
-                }
-            }
+            @include setButtonColor(
+                    var(--info-button-contrast-text, #{$color-v4-info-button-contrast-text}),
+                    var(--info-main, #{$color-v4-info-main}),
+                    var(--info-dark, #{$color-v4-info-dark}),
+                    var(--info-darker, #{$color-v4-info-darker}),
+                    var(--info-lighter, #{$color-v4-info-lighter})
+            );
         }
         // endregion
 
         // region button success styles
         &.fu-success {
-            color: var(--success-button-contrast-text, #{$color-v4-success-button-contrast-text});
-            background: var(--success-main, #{$color-v4-success-main});
-            &:hover {
-                background: var(--success-dark, #{$color-v4-success-dark});
-            }
-            &.fu-outlined {
-                color: var(--success-main, #{$color-v4-success-main});
-                border: 1px solid var(--success-main, #{$color-v4-success-main});
-                background: none;
-                padding: calc(var(--spacing-50, #{$spacingV4-50}) - 1px) calc(var(--spacing-100, #{$spacingV4-100}) - 1px);
-                &:hover {
-                    background:var(--success-lighter, #{$color-v4-success-lighter});
-                }
-            }
-            &.fu-text {
-                color: var(--success-main, #{$color-v4-success-main});
-                background: none;
-                &:hover {
-                    background:var(--success-lighter, #{$color-v4-success-lighter});
-                }
-            }
+            @include setButtonColor(
+                    var(--success-button-contrast-text, #{$color-v4-success-button-contrast-text}),
+                    var(--success-main, #{$color-v4-success-main}),
+                    var(--success-dark, #{$color-v4-success-dark}),
+                    var(--success-darker, #{$color-v4-success-darker}),
+                    var(--success-lighter, #{$color-v4-success-lighter})
+            );
         }
         // endregion
 
         // region button warning styles
         &.fu-warning {
-            color: var(--warning-button-contrast-text, #{$color-v4-warning-button-contrast-text});
-            background: var(--warning-main, #{$color-v4-warning-main});
-            &:hover {
-                background: var(--warning-dark, #{$color-v4-warning-dark});
-            }
-            &.fu-outlined {
-                color: var(--warning-darker, #{$color-v4-warning-darker});
-                border: 1px solid var(--warning-darker, #{$color-v4-warning-darker});
-                background: none;
-                padding: calc(var(--spacing-50, #{$spacingV4-50}) - 1px) calc(var(--spacing-100, #{$spacingV4-100}) - 1px);
-                &:hover {
-                    background: var(--warning-lighter, #{$color-v4-warning-lighter});
-                }
-            }
-            &.fu-text {
-                color: var(--warning-darker, #{$color-v4-warning-darker});
-                background: none;
-                &:hover {
-                    background: var(--warning-lighter, #{$color-v4-warning-lighter});
-                }
-            }
+            @include setButtonColor(
+                var(--warning-button-contrast-text, #{$color-v4-warning-button-contrast-text}),
+                var(--warning-main, #{$color-v4-warning-main}),
+                var(--warning-dark, #{$color-v4-warning-dark}),
+                var(--warning-darker, #{$color-v4-warning-darker}),
+                var(--warning-lighter, #{$color-v4-warning-lighter})
+            );
         }
+
         // endregion
 
         // region button sizes
         &.fu-small {
             padding: var(--spacing-25, #{$spacingV4-25}) var(--spacing-75, #{$spacingV4-75});
-            &:hover{
-                padding: var(--spacing-25, #{$spacingV4-25}) var(--spacing-75, #{$spacingV4-75});
-            }
         }
+
         &.fu-large {
             padding: var(--spacing-75, #{$spacingV4-75}) var(--spacing-100, #{$spacingV4-100});
-            &:hover{
-                padding: var(--spacing-75, #{$spacingV4-75}) var(--spacing-100, #{$spacingV4-100});
-            }
         }
+
         &.fu-extraLarge {
             padding: var(--spacing-125, #{$spacingV4-125}) var(--spacing-150, #{$spacingV4-150});
-            &:hover{
-                padding: var(--spacing-125, #{$spacingV4-125}) var(--spacing-150, #{$spacingV4-150});
-            }
         }
 
         &.fu-outlined {
             // region sizes
             &.fu-small {
                 padding: calc(var(--spacing-25, #{$spacingV4-25}) - 1px) calc(var(--spacing-75, #{$spacingV4-75}) - 1px);
-                &:hover{
-                    padding: calc(var(--spacing-25, #{$spacingV4-25}) - 1px) calc(var(--spacing-75, #{$spacingV4-75}) - 1px);
-                }
             }
+
             &.fu-large {
                 padding: calc(var(--spacing-75, #{$spacingV4-75}) - 1px) calc(var(--spacing-100, #{$spacingV4-100}) - 1px);
-                &:hover{
-                    padding: calc(var(--spacing-75, #{$spacingV4-75}) - 1px) calc(var(--spacing-100, #{$spacingV4-100}) - 1px);
-                }
             }
+
             &.fu-extraLarge {
                 padding: calc(var(--spacing-125, #{$spacingV4-125}) - 1px) calc(var(--spacing-150, #{$spacingV4-150}) - 1px);
-                &:hover{
-                    padding: calc(var(--spacing-125, #{$spacingV4-125}) - 1px) calc(var(--spacing-150, #{$spacingV4-150}) - 1px);
-                }
             }
+
             //endregion
         }
-        &.fu-text {
-            // region button sizes
-            &.fu-small {
-                padding: var(--spacing-25, #{$spacingV4-25}) var(--spacing-75, #{$spacingV4-75});
-                &:hover{
-                    padding: var(--spacing-25, #{$spacingV4-25}) var(--spacing-75, #{$spacingV4-75});
-                }
-            }
-            &.fu-large {
-                padding: var(--spacing-75, #{$spacingV4-75}) var(--spacing-100, #{$spacingV4-100});
-                &:hover{
-                    padding: var(--spacing-75, #{$spacingV4-75}) var(--spacing-100, #{$spacingV4-100});
-                }
-            }
-            &.fu-extraLarge {
-                padding: var(--spacing-125, #{$spacingV4-125}) var(--spacing-150, #{$spacingV4-150});
-                &:hover{
-                    padding: var(--spacing-125, #{$spacingV4-125}) var(--spacing-150, #{$spacingV4-150});
-                }
-            }
-            //endregion
-        }
+
         //endregion
 
-        // region disable state for all colors and variants
+        // region disable state
         &:disabled {
+            cursor: default;
             color: var(--text-disabled, #{$color-v4-text-disabled});
-            background: var(--action-disabled-background, #{$color-v4-action-disabled-background});
+            background-color: var(--action-disabled-background, #{$color-v4-action-disabled-background});
             &:hover {
-                background: var(--action-disabled-background, #{$color-v4-action-disabled-background});
-                cursor: default;
-                margin: 0;
+                background-color: var(--action-disabled-background, #{$color-v4-action-disabled-background});
             }
         }
-        &.fu-outlined:disabled,
-        &.fu-primary.fu-outlined:disabled,
-        &.fu-danger.fu-outlined:disabled,
-        &.fu-info.fu-outlined:disabled,
-        &.fu-success.fu-outlined:disabled,
-        &.fu-warning.fu-outlined:disabled
-        {
+        &.fu-outlined:disabled {
             color: var(--text-disabled, #{$color-v4-text-disabled});
-            border: 1px solid var(--default-outlined-border, #{$color-v4-default-outlined-border});
+            border-color: var(--default-outlined-border, #{$color-v4-default-outlined-border});
+            background: none !important;
+            &:hover {
+                background-color: var(--action-disabled-background, #{$color-v4-action-disabled-background});
+            }
+        }
+        &.fu-text:disabled {
             background: none;
+            color: var(--text-disabled, #{$color-v4-text-disabled});
+
             &:hover {
                 background: none;
-                cursor: default;
-                margin: 0;
             }
         }
 
-        &.fu-text:disabled,
-        &.fu-primary.fu-text:disabled,
-        &.fu-danger.fu-text:disabled,
-        &.fu-info.fu-text:disabled,
-        &.fu-success.fu-text:disabled,
-        &.fu-warning.fu-text:disabled
-        {
-            color: var(--text-disabled, #{$color-v4-text-disabled});
-            border: none;
-            background: none;
-            &:hover {
-                background: none;
-                cursor: default;
-                margin: 0;
-            }
-        }
         // endregion
 
         // region button loading state
@@ -297,19 +201,23 @@
             .fu-button-content {
                 visibility: hidden;
             }
+
             .fu-button-loading {
                 display: block;
                 position: absolute;
             }
+
             .fu-button-start-icon,
             .fu-button-end-icon,
             .fu-button-icon {
                 visibility: hidden;
             }
         }
-        &.fu-outlined.fu-loading:disabled{
+
+        &.fu-outlined.fu-loading:disabled {
             background: var(--action-disabled-background, #{$color-v4-action-disabled-background});
         }
+
         // endregion
 
         // region button icons
@@ -318,6 +226,7 @@
             width: 16px;
             height: 16px;
         }
+
         // endregion
     }
 }

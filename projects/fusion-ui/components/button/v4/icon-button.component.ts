@@ -35,7 +35,9 @@ export class IconButtonComponent extends ButtonBaseComponent {
         return this._iconName;
     }
 
+    /** @internal */
     startIconName: string;
+    /** @internal */
     endIconName: string;
 
     private _iconName: string;
