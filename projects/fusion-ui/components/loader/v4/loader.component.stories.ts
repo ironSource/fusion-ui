@@ -33,8 +33,8 @@ A loader web component is a visual element designed to indicate that content or 
         }
     },
     args: {
-        size: '100px',
-        strokeWidth: 2
+        size: '50px',
+        strokeWidth: 3
     }
 } as Meta<LoaderComponent>;
 
