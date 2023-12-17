@@ -172,4 +172,8 @@ export class AlertDocsV2Component implements OnInit, OnDestroy {
     onDynamicChipRemove(chipIdToRemove) {
         this.selectedDynamicFilters = [...this.selectedDynamicFilters.filter(chip => chip.configChip.id !== chipIdToRemove)];
     }
+
+    onButtonClicked($event) {
+        console.log('button clicked', $event);
+    }
 }

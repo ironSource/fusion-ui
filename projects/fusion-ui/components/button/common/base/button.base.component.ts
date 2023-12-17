@@ -27,6 +27,7 @@ export abstract class ButtonBaseComponent implements OnInit, AfterViewInit, OnDe
     /**
      * Add button icon (IconData = string | Icon)
      * @param value
+     * @internal
      */
     @Input() set icon(value: IconData) {
         if (!isNullOrUndefined(value)) {
@@ -41,6 +42,7 @@ export abstract class ButtonBaseComponent implements OnInit, AfterViewInit, OnDe
     /**
      * Set disable state
      * @param value
+     * @internal
      */
     @Input() set disabled(value: boolean) {
         this.isDisabled = value;
@@ -50,6 +52,7 @@ export abstract class ButtonBaseComponent implements OnInit, AfterViewInit, OnDe
     /**
      * Set loading state
      * @param value
+     * @internal
      */
     @Input() set loading(value: boolean) {
         this.isLoading$.next(value);
@@ -62,12 +65,16 @@ export abstract class ButtonBaseComponent implements OnInit, AfterViewInit, OnDe
     /**
      * Set button as link
      * @param value
+     * @internal
      */
     @Input() set link(value: boolean) {
         this.isLink = value;
         this.setLinkButtonState(this.isLink);
     }
 
+    /**
+     * @internal
+     */
     @Output() onclick = new EventEmitter();
 
     /** @internal */
