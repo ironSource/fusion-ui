@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {defaultStrokeWidth} from './loader.configuration';
 
 @Component({
     selector: 'fusion-loader',
@@ -15,7 +16,7 @@ export class LoaderComponent {
     }
 
     get strokeWidth(): number {
-        return this._strokeWidth ?? 2;
+        return this._strokeWidth ?? defaultStrokeWidth;
     }
 
     private _strokeWidth: number;
