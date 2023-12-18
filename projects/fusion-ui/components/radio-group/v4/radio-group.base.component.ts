@@ -94,9 +94,7 @@ export abstract class RadioGroupBaseComponent implements OnInit, ControlValueAcc
      */
     writeValue(value: RadioGroupOptions): void {
         this._selected = value;
-        console.log('--', value);
         if (this._selected?.disabled) {
-            console.log('>>>>>>');
             this._disabled = true;
         }
     }
