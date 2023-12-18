@@ -28,7 +28,7 @@ export default {
         color: 'primary',
         variant: 'text',
         size: 'medium',
-        iconName: 'ph/pencil'
+        iconName: 'ph/pencil-simple'
     },
     argsTypes: {
         disabled: {

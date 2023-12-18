@@ -81,7 +81,7 @@
                     var(--primary-button-contrast-text, #{$color-v4-primary-button-contrast-text}),
                     var(--primary-main, #{$color-v4-primary-main}),
                     var(--primary-dark, #{$color-v4-primary-dark}),
-                    var(--primary-darker, #{$color-v4-primary-darker}),
+                    var(--primary-main, #{$color-v4-primary-main}),
                     var(--primary-lighter, #{$color-v4-primary-lighter})
             );
         }
@@ -93,7 +93,7 @@
                     var(--error-button-contrast-text, #{$color-v4-error-button-contrast-text}),
                     var(--error-main, #{$color-v4-error-main}),
                     var(--error-dark, #{$color-v4-error-dark}),
-                    var(--error-darker, #{$color-v4-error-darker}),
+                    var(--error-main, #{$color-v4-error-main}),
                     var(--error-lighter, #{$color-v4-error-lighter})
             );
         }
@@ -105,7 +105,7 @@
                     var(--info-button-contrast-text, #{$color-v4-info-button-contrast-text}),
                     var(--info-main, #{$color-v4-info-main}),
                     var(--info-dark, #{$color-v4-info-dark}),
-                    var(--info-darker, #{$color-v4-info-darker}),
+                    var(--info-main, #{$color-v4-info-main}),
                     var(--info-lighter, #{$color-v4-info-lighter})
             );
         }
@@ -117,7 +117,7 @@
                     var(--success-button-contrast-text, #{$color-v4-success-button-contrast-text}),
                     var(--success-main, #{$color-v4-success-main}),
                     var(--success-dark, #{$color-v4-success-dark}),
-                    var(--success-darker, #{$color-v4-success-darker}),
+                    var(--success-main, #{$color-v4-success-main}),
                     var(--success-lighter, #{$color-v4-success-lighter})
             );
         }
