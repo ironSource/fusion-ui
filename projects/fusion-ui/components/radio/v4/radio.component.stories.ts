@@ -4,14 +4,9 @@ import {CommonModule} from '@angular/common';
 import {environment} from 'stories/environments/environment';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FlagModule} from '@ironsource/fusion-ui/components/flag/v1';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v2';
-import {RadioComponent} from '@ironsource/fusion-ui/components/radio/v4/radio.component';
-
-const radioLabel = 'Label';
-const formControlSelected = new FormControl(true);
-const formControlUnselected = new FormControl(false);
+import {RadioComponent} from './radio.component';
 
 export default {
     title: 'V4/Components/Inputs/RadioButton',
@@ -19,15 +14,7 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [
-                CommonModule,
-                FormsModule,
-                ReactiveFormsModule,
-                SvgModule.forRoot({assetsPath: environment.assetsPath}),
-                IconModule,
-                FlagModule,
-                TooltipModule
-            ]
+            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, FlagModule, TooltipModule]
         })
     ],
     tags: ['autodocs'],
@@ -38,13 +25,15 @@ export default {
         }
     },
     args: {
-        label: radioLabel,
-        disabled: false,
-        formControl: formControlUnselected
+        label: 'Label',
+        name: 'radioName',
+        value: 'radioValue',
+        selected: false,
+        disabled: false
     },
     argTypes: {
-        formControl: {
-            control: false
+        value: {
+            control: 'text'
         }
     }
 } as Meta<RadioComponent>;
@@ -57,9 +46,39 @@ export const Basic: Story = {
         template: `
     <fusion-radio
         [label]="label"
+        [name]="name"
+        [value]="value"
+        [selected]="selected"
         [disabled]="disabled"
-        [formControl]="formControl"
     ></fusion-radio>
 `
+    })
+};
+
+export const States: Story = {
+    render: args => ({
+        props: args,
+        template: `<div style="width: 700px; display: flex; flex-direction: row; justify-content: flex-start; align-items: center; gap: 16px">
+    <fusion-radio
+        label="Regular"
+        name="Regular"
+    ></fusion-radio>
+    <fusion-radio
+        label="Selected"
+        name="Selected"
+        [selected]="true"
+    ></fusion-radio>
+    <fusion-radio
+        label="Disabled"
+        label="Disabled"
+        [disabled]="true"
+    ></fusion-radio>
+    <fusion-radio
+        label="Disabled selected"
+        name="DisabledSelected"
+        [disabled]="true"
+        [selected]="true"
+    ></fusion-radio>
+</div>`
     })
 };

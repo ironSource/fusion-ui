@@ -1,8 +1,7 @@
-import {ChangeDetectionStrategy, Component, forwardRef, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {RadioBaseComponent} from './radio.base.component';
-import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
+import {RadioBaseComponent} from './radio.base.component';
 
 @Component({
     selector: 'fusion-radio',
@@ -11,13 +10,6 @@ import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
     templateUrl: './radio.component.html',
     styleUrls: ['./radio.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'fusion-v4'},
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => RadioComponent),
-            multi: true
-        }
-    ]
+    host: {class: 'fusion-v4'}
 })
 export class RadioComponent extends RadioBaseComponent {}
