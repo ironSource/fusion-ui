@@ -8,7 +8,6 @@
         (change)="checkStateChange($event)"
     />
     <span class="fu-label-checkbox">&nbsp;</span>
-    <fusion-icon class="fu-checkbox-icon" *ngIf="icon" [name]="icon"></fusion-icon>
-    <fusion-flag class="fu-checkbox-flag" *ngIf="flag" [name]="flag"></fusion-flag>
+    <ng-content></ng-content>
     <span *ngIf="label" [fusionTooltip]="label" class="fu-label-text truncate">{{ label }}</span>
 </label>

@@ -44,16 +44,6 @@ export default {
         formControl: formControlUnchecked
     },
     argTypes: {
-        changed: {action: 'changed'},
-        icon: {
-            options: ['default', 'iOS', 'Android', 'Pizza'],
-            mapping: {
-                default: null,
-                iOS: 'ph/fill/apple-logo',
-                Android: 'ph/fill/android-logo',
-                Pizza: 'ph/pizza'
-            }
-        },
         formControl: {
             control: false
         }
@@ -68,8 +58,6 @@ export const Basic: Story = {
         template: `
     <fusion-checkbox
         [label]="label"
-        [icon]="icon"
-        [flag]="flag"
         [disabled]="disabled"
         [isIndeterminate]="isIndeterminate"
         [formControl]="formControl"

@@ -37,13 +37,6 @@
             cursor: pointer;
         }
 
-        .fu-checkbox-icon{
-            width: 20px;
-            height: 20px;
-        }
-        .fu-checkbox-flag{
-        }
-
         &:hover{
             input[type='checkbox']:not(:checked):not(:disabled):not(:indeterminate) + span.fu-label-checkbox {
                 background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3E%3Crect width='15' height='15' x='.5' y='.5' fill='%23000' fill-opacity='.05' rx='3.5'/%3E%3Crect width='15' height='15' x='.5' y='.5' stroke='gray' rx='3.5'/%3E%3C/svg%3E");

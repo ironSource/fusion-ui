@@ -1,7 +1,6 @@
 import {Directive, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ControlValueAccessor} from '@angular/forms';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
-import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 
 @Directive()
 export abstract class CheckboxBaseComponent implements OnInit, ControlValueAccessor {
@@ -18,14 +17,6 @@ export abstract class CheckboxBaseComponent implements OnInit, ControlValueAcces
         this._isIndeterminate = value ?? false;
     }
 
-    @Input() set icon(value: IconData) {
-        this._icon = !!value ? value : undefined;
-    }
-
-    @Input() set flag(value: string) {
-        this._flag = value;
-    }
-
     @Input() set disabled(value: boolean) {
         this._disabled = value ?? false;
     }
@@ -35,16 +26,6 @@ export abstract class CheckboxBaseComponent implements OnInit, ControlValueAcces
     /** @internal */
     get label(): string {
         return this._label;
-    }
-
-    /** @internal */
-    get icon(): IconData {
-        return this._icon;
-    }
-
-    /** @internal */
-    get flag(): string {
-        return this._flag;
     }
 
     /** @internal */
@@ -63,8 +44,6 @@ export abstract class CheckboxBaseComponent implements OnInit, ControlValueAcces
     }
 
     private _label: string;
-    private _icon: IconData;
-    private _flag: string;
     private _disabled = false;
     private _checked = false;
     private _isIndeterminate = false;
