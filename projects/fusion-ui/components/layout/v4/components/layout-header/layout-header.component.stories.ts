@@ -17,7 +17,7 @@ const actionsData = {
 };
 
 const meta: Meta<LayoutHeaderComponent> = {
-    title: 'V4/Components/Layout/Header',
+    title: 'V3/Components/Layout/Header',
     component: LayoutHeaderComponent,
     decorators: [
         moduleMetadata({
