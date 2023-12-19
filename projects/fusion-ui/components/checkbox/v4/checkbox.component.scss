@@ -1,0 +1,67 @@
+@import '../../../src/style/scss/v4/colors';
+@import '../../../src/style/scss/v4/spacings';
+@import '../../../src/style/scss/v4/border-radius';
+@import '../../../src/style/scss/v4/vars/fonts';
+
+:host {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    input[type='checkbox'] {
+        display: none;
+    }
+    .fu-checkbox-wrapper {
+        user-select: none;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-100, #{$spacingV4-100});
+        cursor: pointer;
+        color: var(--text-primary, #{$color-v4-text-primary});
+        .fu-label-text{
+            @extend %font-v4-body-2;
+            &.truncate{
+                white-space: nowrap;
+                overflow-x: hidden;
+                text-overflow: ellipsis;
+                flex: auto;
+            }
+        }
+        span.fu-label-checkbox {
+            height: 16px;
+            width: 16px;
+            box-sizing: border-box;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3E%3Crect width='15' height='15' x='.5' y='.5' fill='%23EBEBEB' rx='3.5'/%3E%3Crect width='15' height='15' x='.5' y='.5' stroke='%23BBB' rx='3.5'/%3E%3C/svg%3E") left center no-repeat;
+            background-size: contain;
+        }
+
+        &:hover{
+            cursor: pointer;
+            input[type='checkbox']:not(:checked):not(:disabled):not(:indeterminate) + span.fu-label-checkbox {
+                background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3E%3Crect width='15' height='15' x='.5' y='.5' fill='%23000' fill-opacity='.05' rx='3.5'/%3E%3Crect width='15' height='15' x='.5' y='.5' stroke='gray' rx='3.5'/%3E%3C/svg%3E");
+            }
+        }
+        input[type='checkbox']:checked + span.fu-label-checkbox {
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3E%3Crect width='15' height='15' x='.5' y='.5' fill='%230091FF' rx='3.5'/%3E%3Crect width='15' height='15' x='.5' y='.5' stroke='%230880EA' rx='3.5'/%3E%3Cpath stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m12.125 5.375-5.25 5.25L4.25 8'/%3E%3C/svg%3E");
+        }
+        input[type='checkbox']:indeterminate + span.fu-label-checkbox {
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3E%3Crect width='15' height='15' x='.5' y='.5' fill='%230091FF' rx='3.5'/%3E%3Crect width='15' height='15' x='.5' y='.5' stroke='%230880EA' rx='3.5'/%3E%3Cpath stroke='%23fff' stroke-linecap='round' stroke-width='1.5' d='M4.75 8.25h6.5'/%3E%3C/svg%3E");
+        }
+
+        // region disabled
+        &.fu-disabled{
+            cursor: default;
+            color: var(--text-disabled, #{$color-v4-text-disabled});
+            span.fu-label-checkbox {
+                background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23F1F1F1' rx='4'/%3E%3Crect width='15' height='15' x='.5' y='.5' stroke='%23000' stroke-opacity='.05' rx='3.5'/%3E%3C/svg%3E") ;
+            }
+            input[type='checkbox']:checked:disabled + span.fu-label-checkbox {
+                background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23CEE7FE' rx='4'/%3E%3Crect width='15' height='15' x='.5' y='.5' stroke='%230091FF' stroke-opacity='.5' rx='3.5'/%3E%3Cpath stroke='%230091FF' stroke-linecap='round' stroke-linejoin='round' stroke-opacity='.5' stroke-width='1.5' d='m12.125 5.375-5.25 5.25L4.25 8'/%3E%3C/svg%3E");
+            }
+            input[type='checkbox']:indeterminate:disabled + span.fu-label-checkbox {
+                background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23CEE7FE' rx='4'/%3E%3Crect width='15' height='15' x='.5' y='.5' stroke='%230091FF' stroke-opacity='.5' rx='3.5'/%3E%3Cpath stroke='%230091FF' stroke-linecap='round' stroke-opacity='.5' stroke-width='1.5' d='M4.75 8.25h6.5'/%3E%3C/svg%3E");
+            }
+
+        }
+        // endregion
+    }
+}

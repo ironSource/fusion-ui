@@ -7,8 +7,9 @@
                 <fusion-button [disabled]="true" [loading]="false" (click)="onButtonClicked($event)">
                     Click me
                 </fusion-button>
-
                 <br>
+                <fusion-checkbox [formControl]="chbFormControl" label="checkbox"></fusion-checkbox>
+                <br><br>
                 <div style="display: flex; gap: 14px;">
                     <fusion-button color="primary" [disabled]="false" [loading]="false" >Primary</fusion-button>
                     <fusion-button [disabled]="false" [loading]="false" >Default</fusion-button>

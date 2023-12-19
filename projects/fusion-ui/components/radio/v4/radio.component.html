@@ -1,0 +1,14 @@
+<label class="fu-radio-wrapper" [class.fu-disabled]="disabled">
+    <input
+        type="radio"
+        [id]="id"
+        [name]="name"
+        [value]="value"
+        [checked]="selected"
+        [disabled]="disabled"
+        (change)="selectStateChange($event)"
+    />
+    <span class="fu-label-radio">&nbsp;</span>
+    <ng-content></ng-content>
+    <span *ngIf="label" [fusionTooltip]="label" class="fu-label-text truncate">{{ label }}</span>
+</label>
