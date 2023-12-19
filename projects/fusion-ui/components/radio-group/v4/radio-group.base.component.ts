@@ -26,13 +26,7 @@ export abstract class RadioGroupBaseComponent implements OnInit, ControlValueAcc
         this._disabled = value;
     }
     /**
-     * radiobutton option: interface RadioGroupOptions {
-     *     id: string | number;
-     *     label: string;
-     *     icon?: IconData;
-     *     tooltip?: string;
-     *     disabled?: boolean;
-     * }
+     * radiobutton option: interface RadioGroupOptions
      */
     @Input() set options(value: RadioGroupOptions[]) {
         this._options = value;
