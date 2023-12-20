@@ -38,9 +38,6 @@ const LayoutHeaderTemplate: StoryFn<LayoutHeaderComponent> = (args: LayoutHeader
 </div>`
 });
 
-export const Default = {
-    render: LayoutHeaderTemplate
-};
 export const MainTitleLine = {
     render: LayoutHeaderTemplate,
     args: {
