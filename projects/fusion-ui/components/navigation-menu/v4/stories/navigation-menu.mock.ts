@@ -1,6 +1,6 @@
 import {NavigationBarItemType, PrimaryMenuItem} from '../navigation-menu.entities';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
-import {HeaderContent, HeaderMultilineConfig} from '@ironsource/fusion-ui/components/layout/v4/layout.entities';
+import {HeaderContent} from '@ironsource/fusion-ui/components/layout/v4/layout.entities';
 
 export const USER_PROFILE_MENU_ITEMS: MenuItem[] = [
     {
@@ -592,21 +592,4 @@ export const LAYOUT_HEADER_CONTENT_MOCK: HeaderContent = {
 
 export const HEADER_CONTENT_MOCK: HeaderContent = {
     title: 'Title'
-};
-
-export const HEADER_TITLE_LINE_MOCK: HeaderMultilineConfig = {
-    titleLine: true
-};
-export const HEADER_TITLE_TOP_LINE_MOCK: HeaderMultilineConfig = {
-    topLine: true
-};
-export const HEADER_TITLE_BOTTOM_LINE_MOCK: HeaderMultilineConfig = {
-    topLine: true,
-    bottomLine: true
-};
-
-export const HEADER_NO_TITLE_MOCK: HeaderMultilineConfig = {
-    noTitle: true,
-    topLine: true,
-    bottomLine: true
 };

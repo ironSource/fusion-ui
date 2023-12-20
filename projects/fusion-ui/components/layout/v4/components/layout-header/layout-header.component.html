@@ -1,5 +1,7 @@
 <div class="fu-header-top-row" [hidden]="!hasTopLine">
     <div id="pageHeaderTopTeleportSlot"></div>
+    <div *ngFor="let teleportItem of teleportTopRowElements" [id]="teleportItem.id" class="fu-header-top-teleport-host"
+         [class.fu-flex-align-right]="teleportItem.isOnRight"></div>
 </div>
 <div class="fu-header-main-row" [class.fu-header-no-title]="isNoTitle">
     <div class="fu-header-back-button" *ngIf="headerContent?.hasBackButton">
@@ -32,5 +34,7 @@
 </div>
 <div class="fu-header-bottom-row" [hidden]="!hasBottomLine">
     <div id="pageHeaderBottomTeleportSlot"></div>
+    <div *ngFor="let teleportItem of bottomTopRowElements" [id]="teleportItem.id" class="fu-header-bottom-teleport-host"
+         [class.fu-flex-align-right]="teleportItem.isOnRight"></div>
 </div>
 

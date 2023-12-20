@@ -19,11 +19,13 @@ export interface HeaderContent {
     actionComponent?: Type<any>;
     actionData?: any;
     actionAlignRight?: boolean;
-}
 
-export interface HeaderMultilineConfig {
-    topLine?: boolean;
-    titleLine?: boolean;
-    bottomLine?: boolean;
+    multiline?: boolean;
     noTitle?: boolean;
+    topLineContent?: {
+        teleportElements?: TeleportWrapperElement[];
+    };
+    bottomLineContent?: {
+        teleportElements?: TeleportWrapperElement[];
+    };
 }

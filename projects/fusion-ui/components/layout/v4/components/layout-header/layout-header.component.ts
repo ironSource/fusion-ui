@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components/v1';
-import {HeaderContent, HeaderMultilineConfig, TeleportWrapperElement} from '../../layout.entities';
+import {HeaderContent, TeleportWrapperElement} from '../../layout.entities';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 
 @Component({
@@ -13,13 +13,6 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LayoutHeaderComponent {
-    @Input() set multilineData(value: HeaderMultilineConfig) {
-        this._multilineData = Object.keys(value).length ? value : undefined;
-    }
-    get multilineData(): HeaderMultilineConfig {
-        return this._multilineData;
-    }
-
     @Input() set headerContent(value: HeaderContent) {
         this._headerContent = value;
     }
@@ -27,7 +20,6 @@ export class LayoutHeaderComponent {
         return this._headerContent;
     }
     @Input() set teleportElements(value: TeleportWrapperElement[]) {
-        console.log('teleportElements', value);
         this._teleportElements = value;
     }
     get teleportElements(): TeleportWrapperElement[] {
@@ -39,17 +31,26 @@ export class LayoutHeaderComponent {
         return this.teleportElements.some(element => element.isOnRight);
     }
 
-    get hasTopLine(): boolean {
-        return this.multilineData?.topLine ?? false;
-    }
-    get hasBottomLine(): boolean {
-        return this.multilineData?.bottomLine ?? false;
-    }
-    get isNoTitle(): boolean {
-        return this.multilineData?.noTitle ?? false;
+    @HostBinding('class.fu-multiline-header') get isMultiline(): boolean {
+        return this._headerContent?.multiline ?? false;
     }
 
-    private _multilineData: HeaderMultilineConfig;
+    get hasTopLine(): boolean {
+        return this.isMultiline && !!this._headerContent?.topLineContent;
+    }
+    get teleportTopRowElements(): TeleportWrapperElement[] {
+        return this._headerContent?.topLineContent?.teleportElements ?? [];
+    }
+    get hasBottomLine(): boolean {
+        return this.isMultiline && !!this._headerContent?.bottomLineContent;
+    }
+    get bottomTopRowElements(): TeleportWrapperElement[] {
+        return this._headerContent?.bottomLineContent?.teleportElements ?? [];
+    }
+    get isNoTitle(): boolean {
+        return this.isMultiline && (this._headerContent?.noTitle ?? false);
+    }
+
     private _headerContent: HeaderContent;
     private _teleportElements: TeleportWrapperElement[];
 }

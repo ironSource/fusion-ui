@@ -12,6 +12,7 @@
         <!--main header-->
         <div class="fu-page-header">
             <fusion-layout-header
+                [class.fu-multiline-header]="headerContent?.multiline"
                 [headerContent]="headerContent"
                 [teleportElements]="teleportElements"
                 (backButtonClicked)="pageBackButtonClicked.emit($event)"

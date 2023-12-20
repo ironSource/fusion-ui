@@ -24,7 +24,8 @@ $noTitleHeight: 112px;
 
 :host {
     @extend %reset;
-    &:not(.fusion-v4){
+    background: var(--background-default, #{$color-v4-background-default});
+    &:not(.fu-multiline-header){
         .fu-header-main-row{
             height: $pageHeaderHeight;
             max-height: $pageHeaderHeight;
@@ -66,7 +67,7 @@ $noTitleHeight: 112px;
             }
         }
     }
-    &.fusion-v4{
+    &.fu-multiline-header{
         .fu-header-main-row{
             display: flex;
             padding: 36px 24px 8px 24px;
@@ -154,17 +155,24 @@ $noTitleHeight: 112px;
     }
     #pageHeaderTopTeleportSlot{
         &:after{
-            content: 'Top line teleport slot';
+            content: '#pageHeaderTopTeleportSlot';
         }
     }
-    #pageHeaderTopTeleportSlot{
+    .fu-header-top-teleport-host{
+        color: #005BE2;
         &:after{
-            content: '#pageHeaderTopTeleportSlot';
+            content: 'teleport slot';
         }
     }
     #pageHeaderBottomTeleportSlot{
         &:after{
             content: '#pageHeaderBottomTeleportSlot';
+        }
+    }
+    .fu-header-bottom-teleport-host{
+        color: #005BE2;
+        &:after{
+            content: 'teleport slot';
         }
     }
 }
