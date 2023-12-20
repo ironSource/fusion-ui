@@ -1,6 +1,6 @@
+import {Type} from '@angular/core';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
 import {PrimaryMenuItem} from '@ironsource/fusion-ui/components/navigation-menu/v4';
-import {Type} from '@angular/core';
 
 export interface LayoutConfiguration {
     navigationMenuItems?: PrimaryMenuItem[];
@@ -19,4 +19,11 @@ export interface HeaderContent {
     actionComponent?: Type<any>;
     actionData?: any;
     actionAlignRight?: boolean;
+}
+
+export interface HeaderMultilineConfig {
+    topLine?: boolean;
+    titleLine?: boolean;
+    bottomLine?: boolean;
+    noTitle?: boolean;
 }

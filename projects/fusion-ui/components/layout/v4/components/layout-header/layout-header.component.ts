@@ -1,7 +1,7 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components/v1';
-import {HeaderContent, TeleportWrapperElement} from '../../layout.entities';
+import {HeaderContent, HeaderMultilineConfig, TeleportWrapperElement} from '../../layout.entities';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 
 @Component({
@@ -13,6 +13,13 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LayoutHeaderComponent {
+    @Input() set multilineData(value: HeaderMultilineConfig) {
+        this._multilineData = Object.keys(value).length ? value : undefined;
+    }
+    get multilineData(): HeaderMultilineConfig {
+        return this._multilineData;
+    }
+
     @Input() set headerContent(value: HeaderContent) {
         this._headerContent = value;
     }
@@ -20,6 +27,7 @@ export class LayoutHeaderComponent {
         return this._headerContent;
     }
     @Input() set teleportElements(value: TeleportWrapperElement[]) {
+        console.log('teleportElements', value);
         this._teleportElements = value;
     }
     get teleportElements(): TeleportWrapperElement[] {
@@ -31,6 +39,11 @@ export class LayoutHeaderComponent {
         return this.teleportElements.some(element => element.isOnRight);
     }
 
+    @HostBinding('class.fu-title-line') get hasTitleLine(): boolean {
+        return this.multilineData?.titleLine ?? false;
+    }
+
+    private _multilineData: HeaderMultilineConfig;
     private _headerContent: HeaderContent;
     private _teleportElements: TeleportWrapperElement[];
 }

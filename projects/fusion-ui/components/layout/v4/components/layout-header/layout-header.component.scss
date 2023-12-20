@@ -4,57 +4,97 @@
 
 :host {
     @extend %reset;
-    height: $pageHeaderHeight;
-    max-height: $pageHeaderHeight;
+    &:not(.fu-multiline-header){
+        height: $pageHeaderHeight;
+        max-height: $pageHeaderHeight;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-items: center;
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-items: center;
-
-    .fu-header-back-button{
-        @include size(40px);
-        padding: 8px;
-        margin-left: 16px;
-        border-radius: 20px;
-        @include icon-style('fu-header-back-button-icon', var(--text-secondary, #{$color-v4-text-secondary}), 24px, true, true){
-            @include size(24px);
+        .fu-header-back-button{
+            @include size(40px);
+            padding: 8px;
+            margin-left: 16px;
+            border-radius: 20px;
+            @include icon-style('fu-header-back-button-icon', var(--text-secondary, #{$color-v4-text-secondary}), 24px, true, true){
+                @include size(24px);
+            }
+            &:hover{
+                background-color: var(--action-hover, #{$color-v4-action-hover});
+                cursor: pointer;
+            }
         }
-        &:hover{
-            background-color: var(--action-hover, #{$color-v4-action-hover});
-            cursor: pointer;
+        .fu-page-title {
+            @extend %font-v4-heading-2;
+            margin-left: 24px;
+            margin-right: 32px;
+            color: var(--text-primary, #{$color-v4-text-primary});
+
+            &.fu-page-has-subtitle{
+                margin-right: 10px;
+            }
+            &.fu-page-has-button-back{
+                margin-left: 12px;
+            }
+        }
+        .fu-header-delimiter{
+            @include size(3px);
+            border-radius: 2px;
+            background-color: var(--text-primary, #{$color-v4-text-primary});
+            margin-right: 8px;
+        }
+        .fu-page-subtitle{
+            @extend %font-v4-body-2;
+            margin-right: 32px;
+            color: var(--text-primary, #{$color-v4-text-primary});
+        }
+
+        .fu-action-wrapper-after-teleports{
+            order: 1;
+        }
+
+        .fu-flex-align-right{
+            margin-left: auto;
         }
     }
-    .fu-page-title {
-        @extend %font-v4-heading-2;
-        margin-left: 24px;
-        margin-right: 32px;
-        color: var(--text-primary, #{$color-v4-text-primary});
+    &.fu-multiline-header{
+        .fu-header-main-row{
+            display: flex;
+            padding: 36px 24px 8px 24px;
+            flex-direction: row;
+            align-items: center;
+            gap: 24px;
+            .fu-header-back-button,
+            .fu-page-subtitle,
+            .fu-header-delimiter,
+            .fu-header-action-wrapper{
+                display: none;
+            }
+            .fu-page-title{
+                @extend %font-v4-heading-2;
+                color: var(--text-primary, #{$color-v4-text-primary});
+            }
 
-        &.fu-page-has-subtitle{
-            margin-right: 10px;
         }
-        &.fu-page-has-button-back{
-            margin-left: 12px;
+    }
+}
+
+// for storybook
+:host-context(storybook-root){
+    .fu-header-teleport-host{
+        display: flex;
+        &.fu-flex-align-right{
+            width: 200px;
+            margin-left: auto;
+            &:after{
+                content: 'teleport host right';
+                margin: auto;
+            }
         }
-    }
-    .fu-header-delimiter{
-        @include size(3px);
-        border-radius: 2px;
-        background-color: var(--text-primary, #{$color-v4-text-primary});
-        margin-right: 8px;
-    }
-    .fu-page-subtitle{
-        @extend %font-v4-body-2;
-        margin-right: 32px;
-        color: var(--text-primary, #{$color-v4-text-primary});
-    }
-
-    .fu-action-wrapper-after-teleports{
-        order: 1;
-    }
-
-    .fu-flex-align-right{
-        margin-left: auto;
+        &:after{
+            content: 'teleport host';
+            margin: auto;
+        }
     }
 }
