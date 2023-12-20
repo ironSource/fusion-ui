@@ -598,6 +598,15 @@ export const HEADER_TITLE_LINE_MOCK: HeaderMultilineConfig = {
     titleLine: true
 };
 export const HEADER_TITLE_TOP_LINE_MOCK: HeaderMultilineConfig = {
-    titleLine: true,
     topLine: true
+};
+export const HEADER_TITLE_BOTTOM_LINE_MOCK: HeaderMultilineConfig = {
+    topLine: true,
+    bottomLine: true
+};
+
+export const HEADER_NO_TITLE_MOCK: HeaderMultilineConfig = {
+    noTitle: true,
+    topLine: true,
+    bottomLine: true
 };

@@ -39,8 +39,14 @@ export class LayoutHeaderComponent {
         return this.teleportElements.some(element => element.isOnRight);
     }
 
-    @HostBinding('class.fu-title-line') get hasTitleLine(): boolean {
-        return this.multilineData?.titleLine ?? false;
+    get hasTopLine(): boolean {
+        return this.multilineData?.topLine ?? false;
+    }
+    get hasBottomLine(): boolean {
+        return this.multilineData?.bottomLine ?? false;
+    }
+    get isNoTitle(): boolean {
+        return this.multilineData?.noTitle ?? false;
     }
 
     private _multilineData: HeaderMultilineConfig;

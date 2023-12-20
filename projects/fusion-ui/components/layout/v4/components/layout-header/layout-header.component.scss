@@ -1,64 +1,72 @@
 @import '../../../../../src/style/scss/v4/mixins/mixins';
 @import '../../../../../src/style/scss/v4/vars/vars';
 @import '../../../../../src/style/scss/v4/vars/layout';
+@import '../../../../../src/style/scss/v4/colors';
+@import '../../../../../src/style/scss/v4/spacings';
+
+$topRowPadding: 8px 18px;
+$topRowHeight: 56px;
+$noTitleHeight: 112px;
+
+%backButton {
+    @include size(40px);
+    padding: 8px;
+    margin-left: 16px;
+    border-radius: 20px;
+    @include icon-style('fu-header-back-button-icon', var(--text-secondary, #{$color-v4-text-secondary}), 24px, true, true){
+        @include size(24px);
+    }
+    &:hover{
+        background-color: var(--action-hover, #{$color-v4-action-hover});
+        cursor: pointer;
+    }
+}
 
 :host {
     @extend %reset;
-    &:not(.fu-multiline-header){
-        height: $pageHeaderHeight;
-        max-height: $pageHeaderHeight;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-items: center;
+    &:not(.fusion-v4){
+        .fu-header-main-row{
+            height: $pageHeaderHeight;
+            max-height: $pageHeaderHeight;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-items: center;
 
-        .fu-header-back-button{
-            @include size(40px);
-            padding: 8px;
-            margin-left: 16px;
-            border-radius: 20px;
-            @include icon-style('fu-header-back-button-icon', var(--text-secondary, #{$color-v4-text-secondary}), 24px, true, true){
-                @include size(24px);
+            .fu-header-back-button{
+                @extend %backButton;
             }
-            &:hover{
-                background-color: var(--action-hover, #{$color-v4-action-hover});
-                cursor: pointer;
-            }
-        }
-        .fu-page-title {
-            @extend %font-v4-heading-2;
-            margin-left: 24px;
-            margin-right: 32px;
-            color: var(--text-primary, #{$color-v4-text-primary});
+            .fu-page-title {
+                @extend %font-v4-heading-2;
+                margin-left: 24px;
+                margin-right: 32px;
+                color: var(--text-primary, #{$color-v4-text-primary});
 
-            &.fu-page-has-subtitle{
-                margin-right: 10px;
+                &.fu-page-has-subtitle{
+                    margin-right: 10px;
+                }
+                &.fu-page-has-button-back{
+                    margin-left: 12px;
+                }
             }
-            &.fu-page-has-button-back{
-                margin-left: 12px;
+            .fu-header-delimiter{
+                @include size(3px);
+                border-radius: 2px;
+                background-color: var(--text-primary, #{$color-v4-text-primary});
+                margin-right: 8px;
             }
-        }
-        .fu-header-delimiter{
-            @include size(3px);
-            border-radius: 2px;
-            background-color: var(--text-primary, #{$color-v4-text-primary});
-            margin-right: 8px;
-        }
-        .fu-page-subtitle{
-            @extend %font-v4-body-2;
-            margin-right: 32px;
-            color: var(--text-primary, #{$color-v4-text-primary});
-        }
+            .fu-page-subtitle{
+                @extend %font-v4-body-2;
+                margin-right: 32px;
+                color: var(--text-primary, #{$color-v4-text-primary});
+            }
 
-        .fu-action-wrapper-after-teleports{
-            order: 1;
-        }
-
-        .fu-flex-align-right{
-            margin-left: auto;
+            .fu-action-wrapper-after-teleports{
+                order: 1;
+            }
         }
     }
-    &.fu-multiline-header{
+    &.fusion-v4{
         .fu-header-main-row{
             display: flex;
             padding: 36px 24px 8px 24px;
@@ -76,8 +84,58 @@
                 color: var(--text-primary, #{$color-v4-text-primary});
             }
 
+            &.fu-header-no-title{
+                height: $noTitleHeight;
+                max-height: $noTitleHeight;
+                padding: 0 24px;
+                gap: 16px;
+                .fu-header-back-button{
+                    display: initial;
+                    @extend %backButton;
+                    margin-left: 0;
+                }
+                .fu-page-title{
+                    display: none;
+                }
+
+            }
+
+
+        }
+        .fu-header-top-row{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: var(---spacing-150, #{$spacingV4-150});
+            height: $topRowHeight;
+            padding: $topRowPadding;
+            border-bottom: 1px solid var(--common-divider, #{$color-v4-common-divider});
+            &[hidden]{
+                display: none;
+            }
+        }
+        .fu-header-bottom-row{
+            display: flex;
+            align-items: center;
+            align-content: center;
+            gap: var(---spacing-50, #{$spacingV4-50});
+            flex-wrap: wrap;
+            padding: 0px var(---spacing-300, #{$spacingV4-300}) var(---spacing-200, #{$spacingV4-200});
+            &[hidden]{
+                display: none;
+            }
+        }
+        &:has(.fu-header-main-row.fu-header-no-title){
+            .fu-header-top-row,
+            .fu-header-bottom-row{
+                display: none;
+            }
         }
     }
+    .fu-flex-align-right{
+        margin-left: auto;
+    }
+
 }
 
 // for storybook
@@ -85,16 +143,28 @@
     .fu-header-teleport-host{
         display: flex;
         &.fu-flex-align-right{
-            width: 200px;
-            margin-left: auto;
             &:after{
-                content: 'teleport host right';
+                content: 'teleport slot right';
                 margin: auto;
             }
         }
         &:after{
-            content: 'teleport host';
-            margin: auto;
+            content: 'teleport slot';
+        }
+    }
+    #pageHeaderTopTeleportSlot{
+        &:after{
+            content: 'Top line teleport slot';
+        }
+    }
+    #pageHeaderTopTeleportSlot{
+        &:after{
+            content: '#pageHeaderTopTeleportSlot';
+        }
+    }
+    #pageHeaderBottomTeleportSlot{
+        &:after{
+            content: '#pageHeaderBottomTeleportSlot';
         }
     }
 }

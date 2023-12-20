@@ -1,4 +1,7 @@
-<div class="fu-header-main-row">
+<div class="fu-header-top-row" [hidden]="!hasTopLine">
+    <div id="pageHeaderTopTeleportSlot"></div>
+</div>
+<div class="fu-header-main-row" [class.fu-header-no-title]="isNoTitle">
     <div class="fu-header-back-button" *ngIf="headerContent?.hasBackButton">
         <fusion-icon class="fu-header-back-button-icon" [name]="{iconName:'arrow-back', iconVersion:'v3'}"
                      (click)="backButtonClicked.emit(headerContent?.hasBackButton)"></fusion-icon>
@@ -27,3 +30,7 @@
              [class.fu-flex-align-right]="teleportItem.isOnRight"></div>
     </ng-container>
 </div>
+<div class="fu-header-bottom-row" [hidden]="!hasBottomLine">
+    <div id="pageHeaderBottomTeleportSlot"></div>
+</div>
+
