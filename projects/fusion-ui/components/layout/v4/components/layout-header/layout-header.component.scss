@@ -85,7 +85,7 @@ $noTitleHeight: 112px;
                 color: var(--text-primary, #{$color-v4-text-primary});
             }
 
-            &.fu-header-no-title{
+            &.fu-header-drilldown{
                 height: $noTitleHeight;
                 max-height: $noTitleHeight;
                 padding: 0 24px;
@@ -126,7 +126,7 @@ $noTitleHeight: 112px;
                 display: none;
             }
         }
-        &:has(.fu-header-main-row.fu-header-no-title){
+        &:has(.fu-header-main-row.fu-header-drilldown){
             .fu-header-top-row,
             .fu-header-bottom-row{
                 display: none;

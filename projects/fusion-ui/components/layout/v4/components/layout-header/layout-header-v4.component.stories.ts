@@ -33,8 +33,11 @@ export default meta;
 
 const LayoutHeaderTemplate: StoryFn<LayoutHeaderComponent> = (args: LayoutHeaderComponent) => ({
     props: {...args, backButtonClicked: actionsData.backButtonClicked},
-    template: `<div [style]="!headerContent?.multiline ? 'border-bottom: solid 1px #E0E0E0; max-height: 64px;' : 'border-bottom: solid 1px #E0E0E0;'">
+    template: `<div class="display: flex; flex-direction: column;">
+<div [style]="!headerContent?.multiline ? 'border-bottom: solid 1px #E0E0E0; max-height: 64px;' : ''">
     <fusion-layout-header [headerContent]="headerContent" [teleportElements]="teleportElements" (backButtonClicked)="backButtonClicked($event)"></fusion-layout-header>
+</div>
+<div style="display: flex; align-items: center; justify-content: center; height: 100vh; background-color: #eeeeee;">main content</div>
 </div>`
 });
 
@@ -56,7 +59,7 @@ export const WithTopLine = {
         headerContent: {
             ...HEADER_CONTENT_MOCK,
             multiline: true,
-            topLineContent: {
+            topRowContent: {
                 teleportElements: [{id: 'fuHeaderTopTeleport'}]
             }
         }
@@ -69,17 +72,17 @@ export const WithBottomLine = {
         headerContent: {
             ...HEADER_CONTENT_MOCK,
             multiline: true,
-            topLineContent: {
+            topRowContent: {
                 teleportElements: [{id: 'fuHeaderTopTeleport'}]
             },
-            bottomLineContent: {
+            bottomRowContent: {
                 teleportElements: [{id: 'fuHeaderBottomTeleport'}]
             }
         }
     }
 };
 
-export const MainNoTitleTeleport = {
+export const MainDrilldownTeleport = {
     render: LayoutHeaderTemplate,
     args: {
         teleportElements: [{id: 'fuHeaderTeleportOne'}, {id: 'fuHeaderTeleportTwo'}, {id: 'fuHeaderTeleport', isOnRight: true}],
@@ -87,7 +90,7 @@ export const MainNoTitleTeleport = {
             ...HEADER_CONTENT_MOCK,
             hasBackButton: true,
             multiline: true,
-            noTitle: true
+            drilldown: true
         }
     }
 };

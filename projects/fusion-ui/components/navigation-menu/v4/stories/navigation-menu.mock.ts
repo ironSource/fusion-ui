@@ -590,6 +590,11 @@ export const LAYOUT_HEADER_CONTENT_MOCK: HeaderContent = {
     title: 'Dashboard'
 };
 
+export const LAYOUT_HEADER_MULTILINE_CONTENT_MOCK: HeaderContent = {
+    title: 'Dashboard',
+    multiline: true
+};
+
 export const HEADER_CONTENT_MOCK: HeaderContent = {
     title: 'Title'
 };

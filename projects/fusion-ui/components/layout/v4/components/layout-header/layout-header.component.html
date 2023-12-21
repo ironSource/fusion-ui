@@ -3,7 +3,7 @@
     <div *ngFor="let teleportItem of teleportTopRowElements" [id]="teleportItem.id" class="fu-header-top-teleport-host"
          [class.fu-flex-align-right]="teleportItem.isOnRight"></div>
 </div>
-<div class="fu-header-main-row" [class.fu-header-no-title]="isNoTitle">
+<div class="fu-header-main-row" [class.fu-header-drilldown]="isDrilldown">
     <div class="fu-header-back-button" *ngIf="headerContent?.hasBackButton">
         <fusion-icon class="fu-header-back-button-icon" [name]="{iconName:'arrow-back', iconVersion:'v3'}"
                      (click)="backButtonClicked.emit(headerContent?.hasBackButton)"></fusion-icon>

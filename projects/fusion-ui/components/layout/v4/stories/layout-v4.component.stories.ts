@@ -8,7 +8,7 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {LayoutComponent} from '../layout.component';
 import {
     IS_MENU_ITEMS,
-    LAYOUT_HEADER_CONTENT_MOCK,
+    LAYOUT_HEADER_MULTILINE_CONTENT_MOCK,
     NAVIGATION_MENU_MOCK,
     UNITY_MENU_ITEMS,
     USER_PROFILE_MENU_ITEMS
@@ -54,7 +54,7 @@ const meta: Meta<LayoutStoryWrapperComponent> = {
         layout: 'fullscreen'
     },
     args: {
-        headerContent: LAYOUT_HEADER_CONTENT_MOCK,
+        headerContent: LAYOUT_HEADER_MULTILINE_CONTENT_MOCK,
         layoutConfiguration: {
             navigationMenuItems: NAVIGATION_MENU_MOCK,
             layoutUser: {
@@ -73,7 +73,6 @@ const LayoutTemplate: StoryFn<LayoutComponent> = (args: LayoutComponent) => ({
 
 export const Default = {
     render: LayoutTemplate,
-
     parameters: {
         docs: {
             description: {
@@ -178,8 +177,10 @@ const NAVIGATION_MENU_MOCK = ${JSON.stringify(NAVIGATION_MENU_MOCK)};
     }
 };
 
+/*
+
 // because of auto-docs can't show more than 4 not inline stories on docs page we just comment it
-/*export const WithHeaderDynamicComponent = {
+/!*export const WithHeaderDynamicComponent = {
     render: LayoutTemplate,
     args: {
         headerContent: {
@@ -193,7 +194,7 @@ const NAVIGATION_MENU_MOCK = ${JSON.stringify(NAVIGATION_MENU_MOCK)};
             }
         }
     }
-};*/
+};*!/
 
 export const WithHeaderBackButtonSubTitleAndDynamicComponent = {
     render: LayoutTemplate,
@@ -347,7 +348,7 @@ const HeaderTeleportTemplate: StoryFn<LayoutComponent> = (args: LayoutComponent)
 `
 });
 // because of auto-docs can't show more than 4 not inline stories on docs page we just comment it
-/*
+/!*
 export const WithHeaderTeleportElements = {
     render: HeaderTeleportTemplate,
     args: {
@@ -357,7 +358,7 @@ export const WithHeaderTeleportElements = {
         teleportElements: [{id: 'fuHeaderTeleport', isOnRight: true}]
     },
 };
-*/
+*!/
 
 export const WithHeaderTeleportElementsAndDynamicComponent = {
     render: HeaderTeleportTemplate,
@@ -509,3 +510,4 @@ const MOK_APPLICATIONS_ONE_LINE_OPTIONS = ${JSON.stringify(MOK_APPLICATIONS_ONE_
         }
     }
 };
+*/

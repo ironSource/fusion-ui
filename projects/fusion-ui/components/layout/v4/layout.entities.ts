@@ -21,11 +21,11 @@ export interface HeaderContent {
     actionAlignRight?: boolean;
 
     multiline?: boolean;
-    noTitle?: boolean;
-    topLineContent?: {
+    drilldown?: boolean;
+    topRowContent?: {
         teleportElements?: TeleportWrapperElement[];
     };
-    bottomLineContent?: {
+    bottomRowContent?: {
         teleportElements?: TeleportWrapperElement[];
     };
 }

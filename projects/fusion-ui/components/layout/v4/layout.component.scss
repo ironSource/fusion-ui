@@ -20,6 +20,10 @@
             .fu-page-header{
                 height: $pageHeaderHeight;
                 border-bottom: solid 1px var(--common-divider, #{$color-v4-common-divider});
+                &.fu-page-header-multiline{
+                    height: inherit;
+                    border-bottom: none;
+                }
             }
             .main-content{
                 height: calc(100vh - var(--layout-header-height, #{$pageHeaderHeight}));

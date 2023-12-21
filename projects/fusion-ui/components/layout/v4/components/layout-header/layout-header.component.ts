@@ -36,19 +36,19 @@ export class LayoutHeaderComponent {
     }
 
     get hasTopLine(): boolean {
-        return this.isMultiline && !!this._headerContent?.topLineContent;
+        return this.isMultiline && !!this._headerContent?.topRowContent;
     }
     get teleportTopRowElements(): TeleportWrapperElement[] {
-        return this._headerContent?.topLineContent?.teleportElements ?? [];
+        return this._headerContent?.topRowContent?.teleportElements ?? [];
     }
     get hasBottomLine(): boolean {
-        return this.isMultiline && !!this._headerContent?.bottomLineContent;
+        return this.isMultiline && !!this._headerContent?.bottomRowContent;
     }
     get bottomTopRowElements(): TeleportWrapperElement[] {
-        return this._headerContent?.bottomLineContent?.teleportElements ?? [];
+        return this._headerContent?.bottomRowContent?.teleportElements ?? [];
     }
-    get isNoTitle(): boolean {
-        return this.isMultiline && (this._headerContent?.noTitle ?? false);
+    get isDrilldown(): boolean {
+        return this.isMultiline && (this._headerContent?.drilldown ?? false);
     }
 
     private _headerContent: HeaderContent;
