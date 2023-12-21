@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [6.4.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v6.4.0-rc.1...v6.4.0-rc.2) (2023-12-21)
+
+
+### Features
+
+* **isct-171:** added support to the "multiline" header ([71aa19e](https://github.com/ironSource/fusion-ui/commit/71aa19e96218cd65be29ec9323456e037c6af488))
+
 ## [6.4.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v6.3.1...v6.4.0-rc.1) (2023-11-23)
 
 ## [6.4.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.3.1-rc.0...v6.4.0-rc.0) (2023-11-23)
