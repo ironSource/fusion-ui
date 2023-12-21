@@ -100,8 +100,9 @@ $noTitleHeight: 112px;
                 }
 
             }
-
-
+            &.fu-has-top-row{
+                padding-top: 16px;
+            }
         }
         .fu-header-top-row{
             display: flex;
@@ -145,34 +146,26 @@ $noTitleHeight: 112px;
         display: flex;
         &.fu-flex-align-right{
             &:after{
-                content: 'teleport slot right';
+                content: '#fuHeaderTeleportRight';
                 margin: auto;
+                color: #005BE2;
             }
         }
         &:after{
-            content: 'teleport slot';
+            content: '#fuHeaderTeleport';
+            color: #005BE2;
         }
     }
     #pageHeaderTopTeleportSlot{
         &:after{
             content: '#pageHeaderTopTeleportSlot';
-        }
-    }
-    .fu-header-top-teleport-host{
-        color: #005BE2;
-        &:after{
-            content: 'teleport slot';
+            color: #005BE2;
         }
     }
     #pageHeaderBottomTeleportSlot{
         &:after{
             content: '#pageHeaderBottomTeleportSlot';
-        }
-    }
-    .fu-header-bottom-teleport-host{
-        color: #005BE2;
-        &:after{
-            content: 'teleport slot';
+            color: #005BE2;
         }
     }
 }

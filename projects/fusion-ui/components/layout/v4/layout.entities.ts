@@ -12,6 +12,11 @@ export interface TeleportWrapperElement {
     isOnRight?: boolean;
 }
 
+export interface HeaderAdditionalRowContent {
+    show: boolean;
+    teleportElements?: TeleportWrapperElement[];
+}
+
 export interface HeaderContent {
     hasBackButton?: boolean | Function;
     title?: string;
@@ -21,11 +26,7 @@ export interface HeaderContent {
     actionAlignRight?: boolean;
 
     multiline?: boolean;
+    topRowContent?: HeaderAdditionalRowContent;
+    bottomRowContent?: HeaderAdditionalRowContent;
     drilldown?: boolean;
-    topRowContent?: {
-        teleportElements?: TeleportWrapperElement[];
-    };
-    bottomRowContent?: {
-        teleportElements?: TeleportWrapperElement[];
-    };
 }

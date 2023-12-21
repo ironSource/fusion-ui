@@ -48,7 +48,7 @@ export const Default = {
 export const MainTitleLine = {
     render: LayoutHeaderTemplate,
     args: {
-        teleportElements: [{id: 'fuHeaderTeleport', isOnRight: true}],
+        teleportElements: [{id: 'fuHeaderTeleport'}, {id: 'fuHeaderTeleportRight', isOnRight: true}],
         headerContent: {
             ...HEADER_CONTENT_MOCK,
             multiline: true
@@ -59,12 +59,12 @@ export const MainTitleLine = {
 export const WithTopLine = {
     render: LayoutHeaderTemplate,
     args: {
-        teleportElements: [{id: 'fuHeaderTeleport', isOnRight: true}],
+        teleportElements: [{id: 'fuHeaderTeleport'}, {id: 'fuHeaderTeleportRight', isOnRight: true}],
         headerContent: {
             ...HEADER_CONTENT_MOCK,
             multiline: true,
             topRowContent: {
-                teleportElements: [{id: 'fuHeaderTopTeleport'}]
+                show: true
             }
         }
     }
@@ -72,15 +72,15 @@ export const WithTopLine = {
 export const WithBottomLine = {
     render: LayoutHeaderTemplate,
     args: {
-        teleportElements: [{id: 'fuHeaderTeleport', isOnRight: true}],
+        teleportElements: [{id: 'fuHeaderTeleport'}, {id: 'fuHeaderTeleportRight', isOnRight: true}],
         headerContent: {
             ...HEADER_CONTENT_MOCK,
             multiline: true,
             topRowContent: {
-                teleportElements: [{id: 'fuHeaderTopTeleport'}]
+                show: true
             },
             bottomRowContent: {
-                teleportElements: [{id: 'fuHeaderBottomTeleport'}]
+                show: true
             }
         }
     }
@@ -89,7 +89,7 @@ export const WithBottomLine = {
 export const MainDrilldownTeleport = {
     render: LayoutHeaderTemplate,
     args: {
-        teleportElements: [{id: 'fuHeaderTeleportOne'}, {id: 'fuHeaderTeleportTwo'}, {id: 'fuHeaderTeleport', isOnRight: true}],
+        teleportElements: [{id: 'fuHeaderTeleportOne'}, {id: 'fuHeaderTeleport', isOnRight: true}],
         headerContent: {
             ...HEADER_CONTENT_MOCK,
             hasBackButton: true,

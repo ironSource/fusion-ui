@@ -382,16 +382,48 @@ export const TAPJOY_MENU_ITEMS: MenuItem[] = [
     }
 ];
 
+export const NAVIGATION_MENU_HOME_MOCK: PrimaryMenuItem[] = [
+    {
+        type: NavigationBarItemType.Home,
+        menuIcon: 'ph/house',
+        menuTitle: 'Dashboard',
+        route: '/dashboard',
+        cssTheme: {
+            'fu-navbar-background-color': '#202020'
+        }
+    },
+    {
+        type: NavigationBarItemType.Main,
+        menuIcon: 'v4/branded/unity',
+        menuTitle: 'LevelPlay',
+        menuLogoSrc: 'v4/unity_logo_flat',
+        cssTheme: {'fu-navbar-background-color': '#181818'},
+        menuItems: UNITY_MENU_ITEMS
+    },
+    {
+        type: NavigationBarItemType.Main,
+        menuIcon: 'v4/branded/ironsource',
+        menuTitle: 'Ads',
+        menuLogoSrc: 'v4/is_ads_logo',
+        cssTheme: {'fu-navbar-background-color': '#0D148C'},
+        menuItems: IS_MENU_ITEMS
+    },
+    {
+        type: NavigationBarItemType.Bottom,
+        menuIcon: 'ph/question',
+        menuTooltip: 'Knowledge Center',
+        redirect: 'https://developers.is.com/',
+        target: '_blank'
+    },
+    {
+        type: NavigationBarItemType.User,
+        menuIcon: 'ph/user-circle',
+        menuTooltip: 'Account',
+        menuItems: USER_PROFILE_MENU_ITEMS
+    }
+];
+
 export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
-    // {
-    //     type: NavigationBarItemType.Home,
-    //     menuIcon: 'ph/bold/house',
-    //     menuTitle: 'Dashboard',
-    //     route: '/docs/getting-started',
-    //     cssTheme: {
-    //         'fu-navbar-background-color': '#202020'
-    //     }
-    // },
     {
         type: NavigationBarItemType.Main,
         menuIcon: 'v4/branded/unity',
@@ -591,7 +623,6 @@ export const LAYOUT_HEADER_CONTENT_MOCK: HeaderContent = {
 };
 
 export const LAYOUT_HEADER_MULTILINE_CONTENT_MOCK: HeaderContent = {
-    title: 'Dashboard',
     multiline: true
 };
 
