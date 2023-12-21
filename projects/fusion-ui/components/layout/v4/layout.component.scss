@@ -4,8 +4,6 @@
 :host{
     @extend %reset;
     @extend %font-v4-regular;
-    --layout-header-height: #{$pageHeaderHeight};
-
     .fu-layout{
         display: grid;
         grid-template-columns: min-content 1fr;
@@ -17,16 +15,17 @@
             max-width: calc(#{$navBarPrimaryWidth} + #{$navBarSecondaryWidth});
         }
         .fu-main-page{
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
             .fu-page-header{
-                height: $pageHeaderHeight;
                 border-bottom: solid 1px var(--common-divider, #{$color-v4-common-divider});
                 &.fu-page-header-multiline{
-                    height: inherit;
                     border-bottom: none;
                 }
             }
             .main-content{
-                height: calc(100vh - var(--layout-header-height, #{$pageHeaderHeight}));
+                height: 100%;
                 overflow: auto;
                 width: calc(100vw - #{$navBarPrimaryWidth});
                 transition: width .45s ease-out;
@@ -45,4 +44,3 @@
         }
     }
 }
-

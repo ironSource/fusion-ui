@@ -8,8 +8,8 @@ export interface LayoutConfiguration {
 }
 
 export interface TeleportWrapperElement {
-    id: string; // must be unique value
-    isOnRight?: boolean; // will align to right
+    id: string;
+    isOnRight?: boolean;
 }
 
 export interface HeaderContent {

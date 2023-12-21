@@ -139,8 +139,8 @@ $noTitleHeight: 112px;
 
 }
 
-// for storybook
-:host-context(storybook-root){
+// for header storybook
+:host-context(.header-only-story){
     .fu-header-teleport-host{
         display: flex;
         &.fu-flex-align-right{
