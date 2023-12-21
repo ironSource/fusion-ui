@@ -383,15 +383,15 @@ export const TAPJOY_MENU_ITEMS: MenuItem[] = [
 ];
 
 export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
-    // {
-    //     type: NavigationBarItemType.Home,
-    //     menuIcon: 'ph/house',
-    //     menuTitle: 'Dashboard',
-    //     route: '/docs/getting-started',
-    //     cssTheme: {
-    //         'fu-navbar-background-color': '#202020'
-    //     }
-    // },
+    {
+        type: NavigationBarItemType.Home,
+        menuIcon: 'ph/bold/house',
+        menuTitle: 'Dashboard',
+        route: '/docs/getting-started',
+        cssTheme: {
+            'fu-navbar-background-color': '#202020'
+        }
+    },
     {
         type: NavigationBarItemType.Main,
         menuIcon: 'v4/branded/unity',
