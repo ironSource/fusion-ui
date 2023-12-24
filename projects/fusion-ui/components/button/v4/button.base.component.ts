@@ -1,5 +1,5 @@
 import {Directive, Input} from '@angular/core';
-import {ButtonColor, ButtonSize, ButtonVariant, IconButtonVariant} from './button.entities';
+import {ButtonColor, ButtonSize, ButtonVariant, IconButtonColor, IconButtonVariant} from './button.entities';
 
 @Directive()
 export class ButtonBaseComponent {
@@ -7,7 +7,7 @@ export class ButtonBaseComponent {
      * Set button color type
      * @param value
      */
-    @Input() set color(value: ButtonColor) {
+    @Input() set color(value: ButtonColor | IconButtonColor) {
         this._color = value || 'default';
     }
 
@@ -67,7 +67,7 @@ export class ButtonBaseComponent {
         return this._loading;
     }
 
-    private _color: ButtonColor = 'default';
+    private _color: ButtonColor | IconButtonColor = 'default';
     private _variant: ButtonVariant | IconButtonVariant = 'contained';
     private _size: ButtonSize = 'medium';
     private _disabled: boolean = false;
