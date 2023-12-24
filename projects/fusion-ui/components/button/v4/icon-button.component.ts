@@ -24,11 +24,11 @@ export class IconButtonComponent extends ButtonBaseComponent {
      * @param value
      */
     @Input() set variant(value: IconButtonVariant) {
-        this._variantIcon = value || 'text';
+        this._variantIcon = value || 'default';
     }
 
     get variantClass(): string {
-        return 'fu-' + this._variantIcon || 'text';
+        return 'fu-' + this._variantIcon || 'default';
     }
 
     get iconName(): string {

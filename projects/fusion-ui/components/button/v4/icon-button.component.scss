@@ -1,39 +1,192 @@
 @import '../../../src/style/scss/v4/spacings';
+@import '../../../src/style/scss/v4/colors';
 
 :host {
     margin: 0;
     padding: 0;
+
     button {
-        padding: var(--spacing-50, #{$spacingV4-50});
-        gap: 0;
-        .fu-button-icon{
-            width: 20px;
-            height: 20px;
+        &.fu-default,
+        &.fu-primary,
+        &.fu-danger,
+        &.fu-info,
+        &.fu-success,
+        &.fu-warning {
+            padding: var(--spacing-50, #{$spacingV4-50});
+            gap: 0;
+            .fu-button-icon {
+                width: 20px;
+                height: 20px;
+            }
         }
-        &.fu-outlined{
-            padding: calc(var(--spacing-50, #{$spacingV4-50}) - 1px);
+        &.fu-default{
+            color: var(--action-active, #{$color-v4-action-active});
+            background-color: transparent;
+            &:hover {
+                color: var(--default-contrast-text, #{$color-v4-default-contrast-text});
+                background-color: var(--action-hover, #{$color-v4-action-hover});
+            }
+            &.fu-outlined {
+                padding: calc(var(--spacing-50, #{$spacingV4-50}) - 1px);
+                color: var(--action-active, #{$color-v4-action-active});
+                border-color: var(--action-outlined-border, #{$color-v4-action-outlined-border});
+                &:hover {
+                    color: var(--default-contrast-text, #{$color-v4-default-contrast-text});
+                    border-color: var(--action-active, #{$color-v4-action-active});
+                    background-color: var(--action-hover, #{$color-v4-action-hover});
+                }
+                &:disabled {
+                    border-color: var(--action-disabled, #{$color-v4-action-disabled});
+                }
+            }
+            &:disabled {
+                color: var(--action-disabled, #{$color-v4-action-disabled});
+                &:hover {
+                    color: var(--action-disabled, #{$color-v4-action-disabled});
+                    background-color: transparent;
+                }
+            }
         }
+
+        &.fu-primary {
+            color: var(--primary-main, #{$color-v4-primary-main});
+            background-color: transparent;
+            &:hover {
+                color: var(--primary-main, #{$color-v4-primary-main});
+                background-color: var(--primary-main-8-p, #{$color-v4-primary-main-8-p});
+            }
+            &.fu-outlined {
+                padding: calc(var(--spacing-50, #{$spacingV4-50}) - 1px);
+                color: var(--primary-main, #{$color-v4-primary-main});
+                border-color: var(--primary-main, #{$color-v4-primary-main});
+                &:hover {
+                    color: var(--primary-main, #{$color-v4-primary-main});
+                    border-color: var(--primary-main, #{$color-v4-primary-main});
+                    background-color: var(--primary-main-8-p, #{$color-v4-primary-main-8-p});
+                }
+                &:disabled {
+                    color: var(--action-disabled, #{$color-v4-action-disabled});
+                    border-color: var(--action-disabled, #{$color-v4-action-disabled});
+                }
+            }
+        }
+
+        &.fu-danger {
+            color: var(--error-main, #{$color-v4-error-main});
+            background-color: transparent;
+            &:hover {
+                color: var(--error-main, #{$color-v4-error-main});
+                background-color: var(--error-main-8-p, #{$color-v4-error-main-8-p});
+            }
+            &.fu-outlined {
+                padding: calc(var(--spacing-50, #{$spacingV4-50}) - 1px);
+                color: var(--error-main, #{$color-v4-error-main});
+                border-color: var(--error-main, #{$color-v4-error-main});
+                &:hover {
+                    color: var(--error-main, #{$color-v4-error-main});
+                    border-color: var(--error-main, #{$color-v4-error-main});
+                    background-color: var(--error-main-8-p, #{$color-v4-error-main-8-p});
+                }
+                &:disabled {
+                    color: var(--action-disabled, #{$color-v4-action-disabled});
+                    border-color: var(--action-disabled, #{$color-v4-action-disabled});
+                }
+            }
+        }
+
+        &.fu-info {
+            color: var(--info-main, #{$color-v4-info-main});
+            background-color: transparent;
+            &:hover {
+                color: var(--info-main, #{$color-v4-info-main});
+                background-color: var(--info-main-8-p, #{$color-v4-info-main-8-p});
+            }
+            &.fu-outlined {
+                padding: calc(var(--spacing-50, #{$spacingV4-50}) - 1px);
+                color: var(--info-main, #{$color-v4-info-main});
+                border-color: var(--info-main, #{$color-v4-info-main});
+                &:hover {
+                    color: var(--info-main, #{$color-v4-info-main});
+                    border-color: var(--info-main, #{$color-v4-info-main});
+                    background-color: var(--info-main-8-p, #{$color-v4-info-main-8-p});
+                }
+                &:disabled {
+                    color: var(--action-disabled, #{$color-v4-action-disabled});
+                    border-color: var(--action-disabled, #{$color-v4-action-disabled});
+                }
+            }
+        }
+
+        &.fu-success {
+            color: var(--success-main, #{$color-v4-success-main});
+            background-color: transparent;
+            &:hover {
+                color: var(--success-main, #{$color-v4-success-main});
+                background-color: var(--success-main-8-p, #{$color-v4-success-main-8-p});
+            }
+            &.fu-outlined {
+                padding: calc(var(--spacing-50, #{$spacingV4-50}) - 1px);
+                color: var(--success-main, #{$color-v4-success-main});
+                border-color: var(--success-main, #{$color-v4-success-main});
+                &:hover {
+                    color: var(--success-main, #{$color-v4-success-main});
+                    border-color: var(--success-main, #{$color-v4-success-main});
+                    background-color: var(--success-main-8-p, #{$color-v4-success-main-8-p});
+                }
+                &:disabled {
+                    color: var(--action-disabled, #{$color-v4-action-disabled});
+                    border-color: var(--action-disabled, #{$color-v4-action-disabled});
+                }
+            }
+        }
+
+        &.fu-warning {
+            color: var(--warning-main, #{$color-v4-warning-main});
+            background-color: transparent;
+            &:hover {
+                color: var(--warning-main, #{$color-v4-warning-main});
+                background-color: var(--warning-main-8-p, #{$color-v4-warning-main-8-p});
+            }
+            &.fu-outlined {
+                padding: calc(var(--spacing-50, #{$spacingV4-50}) - 1px);
+                color: var(--warning-main, #{$color-v4-warning-main});
+                border-color: var(--warning-main, #{$color-v4-warning-main});
+                &:hover {
+                    color: var(--warning-main, #{$color-v4-warning-main});
+                    border-color: var(--warning-main, #{$color-v4-warning-main});
+                    background-color: var(--warning-main-8-p, #{$color-v4-warning-main-8-p});
+                }
+                &:disabled {
+                    color: var(--action-disabled, #{$color-v4-action-disabled});
+                    border-color: var(--action-disabled, #{$color-v4-action-disabled});
+                }
+            }
+        }
+
         &.fu-small {
             padding: var(--spacing-25, #{$spacingV4-25});
-            &.fu-outlined{
+
+            &.fu-outlined {
                 padding: calc(var(--spacing-25, #{$spacingV4-25}) - 1px);
             }
         }
-        &.fu-large{
+        &.fu-large {
             padding: var(--spacing-50, #{$spacingV4-50});
-            &.fu-outlined{
+
+            &.fu-outlined {
                 padding: calc(var(--spacing-50, #{$spacingV4-50}) - 1px);
             }
         }
-        &.fu-extraLarge{
+        &.fu-extraLarge {
             padding: var(--spacing-100, #{$spacingV4-100});
-            &.fu-outlined{
+
+            &.fu-outlined {
                 padding: calc(var(--spacing-100, #{$spacingV4-100}) - 1px);
             }
         }
         &.fu-large,
-        &.fu-extraLarge{
-            .fu-button-icon{
+        &.fu-extraLarge {
+            .fu-button-icon {
                 width: 24px;
                 height: 24px;
             }

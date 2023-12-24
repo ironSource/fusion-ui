@@ -25,8 +25,8 @@ export default {
     args: {
         disabled: false,
         loading: false,
-        color: 'primary',
-        variant: 'text',
+        color: 'default',
+        variant: 'default',
         size: 'medium',
         iconName: 'ph/pencil-simple'
     },
@@ -38,13 +38,13 @@ export default {
             control: 'boolean'
         },
         color: {
-            options: ['default', 'primary', 'danger', 'info', 'success', 'warning']
+            options: ['default', 'primary', 'danger']
         },
         size: {
             options: ['small', 'medium', 'large', 'extraLarge']
         },
         variant: {
-            options: ['outlined', 'text']
+            options: ['default', 'outlined']
         }
     }
 } as Meta<IconButtonComponent>;
@@ -61,12 +61,9 @@ export const Basic = {
 const ButtonColorTemplate: StoryFn<IconButtonComponent> = (args: IconButtonComponent) => ({
     props: args,
     template: `<div style="display: flex; gap: 14px;">
-    <fusion-icon-button color="primary" [iconName]="iconName" [disabled]="disabled" [loading]="loading" [size]="size" [variant]="variant">Primary</fusion-icon-button>
     <fusion-icon-button [iconName]="iconName" [disabled]="disabled"  [loading]="loading" [size]="size" [variant]="variant">Default</fusion-icon-button>
+    <fusion-icon-button color="primary" [iconName]="iconName" [disabled]="disabled" [loading]="loading" [size]="size" [variant]="variant">Primary</fusion-icon-button>
     <fusion-icon-button color="danger" [iconName]="iconName" [variant]="variant" [disabled]="disabled" [size]="size" [loading]="loading">Danger</fusion-icon-button>
-    <fusion-icon-button color="info" [iconName]="iconName" [variant]="variant" [disabled]="disabled" [size]="size" [loading]="loading">Info</fusion-icon-button>
-    <fusion-icon-button color="success" [iconName]="iconName" [variant]="variant" [disabled]="disabled" [size]="size" [loading]="loading">Success</fusion-icon-button>
-    <fusion-icon-button color="warning" [iconName]="iconName" [variant]="variant" [disabled]="disabled" [size]="size" [loading]="loading">Warning</fusion-icon-button>
 </div>`
 });
 
@@ -84,8 +81,7 @@ const ButtonVariantTemplate: StoryFn<IconButtonComponent> = (args: IconButtonCom
 });
 
 export const Variants = {
-    render: ButtonVariantTemplate,
-    args: {color: 'primary'}
+    render: ButtonVariantTemplate
 };
 
 const ButtonSizesTemplate: StoryFn<IconButtonComponent> = (args: IconButtonComponent) => ({
@@ -100,5 +96,5 @@ const ButtonSizesTemplate: StoryFn<IconButtonComponent> = (args: IconButtonCompo
 
 export const Sizes = {
     render: ButtonSizesTemplate,
-    args: {color: 'primary', variant: 'text'}
+    args: {variant: 'outlined'}
 };
