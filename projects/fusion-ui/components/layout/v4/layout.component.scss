@@ -19,13 +19,14 @@
             display: flex;
             flex-direction: column;
             .fu-page-header{
+                flex-grow: 0;
                 border-bottom: solid 1px var(--common-divider, #{$color-v4-common-divider});
                 &.fu-page-header-multiline{
                     border-bottom: none;
                 }
             }
             .main-content{
-                height: 100%;
+                flex-grow: 1;
                 overflow: auto;
                 width: calc(100vw - #{$navBarPrimaryWidth});
                 transition: width .45s ease-out;

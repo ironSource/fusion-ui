@@ -81,7 +81,7 @@ $noTitleHeight: 112px;
                 display: none;
             }
             .fu-page-title{
-                @extend %font-v4-heading-2;
+                @extend %font-v4-heading-1;
                 color: var(--text-primary, #{$color-v4-text-primary});
             }
 
@@ -101,7 +101,7 @@ $noTitleHeight: 112px;
 
             }
             &.fu-has-top-row{
-                padding-top: 16px;
+                padding-top: 20px;
             }
         }
         .fu-header-top-row{
@@ -115,6 +115,10 @@ $noTitleHeight: 112px;
             &[hidden]{
                 display: none;
             }
+            #pageHeaderTopTeleportSlot{
+                display: flex;
+                width: 100%;
+            }
         }
         .fu-header-bottom-row{
             display: flex;
@@ -125,6 +129,10 @@ $noTitleHeight: 112px;
             padding: 0px var(---spacing-300, #{$spacingV4-300}) var(---spacing-200, #{$spacingV4-200});
             &[hidden]{
                 display: none;
+            }
+            #pageHeaderBottomTeleportSlot{
+                display: flex;
+                width: 100%;
             }
         }
         &:has(.fu-header-main-row.fu-header-drilldown){
