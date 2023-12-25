@@ -5,24 +5,35 @@ import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
 
 @Directive()
 export abstract class LoaderBaseComponent implements AfterViewInit {
+    /** @internal */
     @ViewChild('customLoader', {read: ElementRef}) customLoader: ElementRef;
 
+    /** @internal */
     @Input() height: number; // has position static, with min-height
+    /** @internal */
     @Input() status: boolean;
+    /** @internal */
     @Input() text: string;
+    /** @internal */
     @Input() position: LoaderPosition = 'center';
+    /** @internal */
     @Input() size: LoaderSize = 'large';
+    /** @internal */
     @Input() color: LoaderColor = 'grey';
+    /** @internal */
     @HostBinding('style.top.px') top: number; // distance from top
 
+    /** @internal */
     public get loaderPosition() {
         return `position-${this.position}`;
     }
+    /** @internal */
     public loaderIconName: IconData;
 
     constructor(
         private elementRef: ElementRef,
         private renderer: Renderer2,
+        /** @internal */
         @Optional() @Inject(LOADER_COMPONENT_TYPE_TOKEN) public componentType
     ) {
         this.size = this.size || 'large';

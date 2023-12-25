@@ -1,0 +1,232 @@
+@import '../../../src/style/scss/v4/colors';
+@import '../../../src/style/scss/v4/spacings';
+@import '../../../src/style/scss/v4/border-radius';
+@import '../../../src/style/scss/v4/vars/fonts';
+
+
+@mixin setButtonColor($color, $bg-color, $bg-color-hover, $outline-color, $outline-bg-color-hover){
+    color: $color;
+    background-color: $bg-color;
+    &:hover {
+        background-color: $bg-color-hover;
+    }
+    &.fu-outlined,
+    &.fu-text {
+        color: $outline-color;
+        background: none;
+        &:hover {
+            background-color: $outline-bg-color-hover;
+        }
+    }
+    &.fu-outlined {
+        border-color: $outline-color;
+    }
+}
+
+:host {
+    margin: 0;
+    padding: 0;
+
+    button {
+        // region button default styles
+        box-sizing: border-box;
+        display: flex;
+        padding: var(--spacing-50, #{$spacingV4-50}) var(--spacing-100, #{$spacingV4-100});
+        justify-content: center;
+        align-items: center;
+        gap: var(--spacing-100, #{$spacingV4-100});
+        color: var(--default-button-contrast-text, #{$color-v4-default-button-contrast-text});
+        background-color: var(--default-main, #{$color-v4-default-main});
+        border: none;
+        border-radius: var(--border-radius-md, #{$borderRadiusV4-md});
+        @extend %font-v4-button;
+        transition: background-color 0.2s ease;
+        position: relative;
+
+        .fu-button-loading {
+            display: none;
+        }
+
+        &:hover {
+            cursor: pointer;
+            background-color: var(--default-light, #{$color-v4-default-light});
+            outline: none;
+            //margin: 0;
+        }
+
+        &.fu-outlined {
+            color: var(--text-primary, #{$color-v4-text-primary});
+            border: 1px solid var(--default-outlined-border, #{$color-v4-default-outlined-border});
+            padding: calc(var(--spacing-50, #{$spacingV4-50}) - 1px) calc(var(--spacing-100, #{$spacingV4-100}) - 1px);
+            background: none;
+
+            &:hover {
+                border-color: var(--action-active, #{$color-v4-action-active});
+                background-color: var(--action-hover, #{$color-v4-action-hover});
+            }
+        }
+
+        &.fu-text {
+            color: var(--text-primary, #{$color-v4-text-primary});
+            background: none;
+            &:hover {
+                background-color: var(--action-hover, #{$color-v4-action-hover});
+            }
+        }
+        // endregion
+
+        // region button primary styles
+        &.fu-primary {
+            @include setButtonColor(
+                    var(--primary-button-contrast-text, #{$color-v4-primary-button-contrast-text}),
+                    var(--primary-main, #{$color-v4-primary-main}),
+                    var(--primary-dark, #{$color-v4-primary-dark}),
+                    var(--primary-main, #{$color-v4-primary-main}),
+                    var(--primary-lighter, #{$color-v4-primary-lighter})
+            );
+        }
+        // endregion
+
+        // region button danger styles
+        &.fu-danger {
+            @include setButtonColor(
+                    var(--error-button-contrast-text, #{$color-v4-error-button-contrast-text}),
+                    var(--error-main, #{$color-v4-error-main}),
+                    var(--error-dark, #{$color-v4-error-dark}),
+                    var(--error-main, #{$color-v4-error-main}),
+                    var(--error-lighter, #{$color-v4-error-lighter})
+            );
+        }
+        // endregion
+
+        // region button info styles
+        &.fu-info {
+            @include setButtonColor(
+                    var(--info-button-contrast-text, #{$color-v4-info-button-contrast-text}),
+                    var(--info-main, #{$color-v4-info-main}),
+                    var(--info-dark, #{$color-v4-info-dark}),
+                    var(--info-main, #{$color-v4-info-main}),
+                    var(--info-lighter, #{$color-v4-info-lighter})
+            );
+        }
+        // endregion
+
+        // region button success styles
+        &.fu-success {
+            @include setButtonColor(
+                    var(--success-button-contrast-text, #{$color-v4-success-button-contrast-text}),
+                    var(--success-main, #{$color-v4-success-main}),
+                    var(--success-dark, #{$color-v4-success-dark}),
+                    var(--success-main, #{$color-v4-success-main}),
+                    var(--success-lighter, #{$color-v4-success-lighter})
+            );
+        }
+        // endregion
+
+        // region button warning styles
+        &.fu-warning {
+            @include setButtonColor(
+                var(--warning-button-contrast-text, #{$color-v4-warning-button-contrast-text}),
+                var(--warning-main, #{$color-v4-warning-main}),
+                var(--warning-dark, #{$color-v4-warning-dark}),
+                var(--warning-darker, #{$color-v4-warning-darker}),
+                var(--warning-lighter, #{$color-v4-warning-lighter})
+            );
+        }
+
+        // endregion
+
+        // region button sizes
+        &.fu-small {
+            padding: var(--spacing-25, #{$spacingV4-25}) var(--spacing-75, #{$spacingV4-75});
+        }
+
+        &.fu-large {
+            padding: var(--spacing-75, #{$spacingV4-75}) var(--spacing-100, #{$spacingV4-100});
+        }
+
+        &.fu-extraLarge {
+            padding: var(--spacing-125, #{$spacingV4-125}) var(--spacing-150, #{$spacingV4-150});
+        }
+
+        &.fu-outlined {
+            // region sizes
+            &.fu-small {
+                padding: calc(var(--spacing-25, #{$spacingV4-25}) - 1px) calc(var(--spacing-75, #{$spacingV4-75}) - 1px);
+            }
+
+            &.fu-large {
+                padding: calc(var(--spacing-75, #{$spacingV4-75}) - 1px) calc(var(--spacing-100, #{$spacingV4-100}) - 1px);
+            }
+
+            &.fu-extraLarge {
+                padding: calc(var(--spacing-125, #{$spacingV4-125}) - 1px) calc(var(--spacing-150, #{$spacingV4-150}) - 1px);
+            }
+
+            //endregion
+        }
+
+        //endregion
+
+        // region disable state
+        &:disabled {
+            cursor: default;
+            color: var(--text-disabled, #{$color-v4-text-disabled});
+            background-color: var(--action-disabled-background, #{$color-v4-action-disabled-background});
+            &:hover {
+                background-color: var(--action-disabled-background, #{$color-v4-action-disabled-background});
+            }
+        }
+        &.fu-outlined:disabled {
+            color: var(--text-disabled, #{$color-v4-text-disabled});
+            border-color: var(--default-outlined-border, #{$color-v4-default-outlined-border});
+            background: none !important;
+            &:hover {
+                background-color: var(--action-disabled-background, #{$color-v4-action-disabled-background});
+            }
+        }
+        &.fu-text:disabled {
+            background: none;
+            color: var(--text-disabled, #{$color-v4-text-disabled});
+
+            &:hover {
+                background: none;
+            }
+        }
+
+        // endregion
+
+        // region button loading state
+        &.fu-loading {
+            .fu-button-content {
+                visibility: hidden;
+            }
+
+            .fu-button-loading {
+                display: block;
+                position: absolute;
+            }
+
+            .fu-button-start-icon,
+            .fu-button-end-icon,
+            .fu-button-icon {
+                visibility: hidden;
+            }
+        }
+
+        &.fu-outlined.fu-loading:disabled {
+            background: var(--action-disabled-background, #{$color-v4-action-disabled-background});
+        }
+
+        // endregion
+
+        // region button icons
+        .fu-button-start-icon,
+        .fu-button-end-icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        // endregion
+    }
+}
