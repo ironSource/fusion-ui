@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
-import {ButtonBaseComponent} from './button.base.component';
+import {ButtonBaseComponent} from '../common/button.base.component';
 import {LoaderComponent} from '@ironsource/fusion-ui/components/loader/v4';
 
 @Component({

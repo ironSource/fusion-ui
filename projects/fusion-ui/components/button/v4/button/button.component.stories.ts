@@ -1,7 +1,7 @@
 import {StoryFn, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
-import {environment} from 'stories/environments/environment';
+import {environment} from '../../../../../../stories/environments/environment';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {ButtonComponent} from './button.component';

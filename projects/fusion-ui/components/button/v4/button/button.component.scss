@@ -1,7 +1,7 @@
-@import '../../../src/style/scss/v4/colors';
-@import '../../../src/style/scss/v4/spacings';
-@import '../../../src/style/scss/v4/border-radius';
-@import '../../../src/style/scss/v4/vars/fonts';
+@import '../../../../src/style/scss/v4/colors';
+@import '../../../../src/style/scss/v4/spacings';
+@import '../../../../src/style/scss/v4/border-radius';
+@import '../../../../src/style/scss/v4/vars/fonts';
 
 
 @mixin setButtonColor($color, $bg-color, $bg-color-hover, $outline-color, $outline-bg-color-hover){
