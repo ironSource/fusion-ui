@@ -139,21 +139,16 @@ ul li{
 When used correctly, UI icons can speed up user interactions by being immediately recognizable, and they can also add style and visual interest to your user interface designs.
 
 <h1 class="subtitle-border-bottom">Usage</h1>
-<div class="text-block">Put ```import { Icon } from '@/components/icon/v4';``` in your component script block</div>
-<div class="text-block">and ```<Icon name="palette" size="16px" color="blue" />``` in your template for use phosphor regular "palette" icon.</div>
+<div class="text-block">Put ```import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';``` in your component / module script block</div>
+<div class="text-block">Add it to your component (if it standalone component) or module import  ```imports: [CommonModule, IconModule],```</div>
+<div class="text-block">and ```<fusion-icon [name]="iconName"></fusion-icon>``` in your components template.</div>
 
 <h1 class="subtitle-border-bottom">Props</h1>
-- name (string) - icon name;
-- size (string) - icon size;
-- color (string) - icon color *("currentColor" by default)*;
-- type ('regular' | 'bold'  | 'fill' | 'branded' | 'ad-unit' | 'ab-test') - icon type (phosphor "regular" by default);
+- name (string) - icon name with icon type as prefix of name property (e.g. 'ph/regular/arrow-left' or 'v4/branded/ironsource');
+    - types('ph/regular' | 'ph/bold'  | 'ph/fill' | 'v4/branded' | 'v4/ad-unit' | 'v4ab-test');
+- size you can set as style property
+- color icon get as currentColor from wrapper component
 
-<div class="info-block">
-    <h4>Note:</h4>
-    - Phosphor icons default type regular, no need set it. ```<Icon name="calendar" size="16px" />```. <br/> If you need use other type ("bold" or "fill"), set it: ```<Icon type="bold" name="calendar" size="16px" />```
-    - Monochrome icons get current color of element-wrapper by default, or use "color" property to set it.
-    - Colored icons, like on A/B test section, don't put "color" property to component: ```<Icon type="ab-test" name="ab" />```.
-</div>
 
 <h1 class="subtitle-border-bottom">Stories</h1>
 

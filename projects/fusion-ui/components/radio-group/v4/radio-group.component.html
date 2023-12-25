@@ -1,0 +1,12 @@
+<div class="fu-radio-group-wrapper" [attr.id]="id" [class.fu-direction-row]="inline">
+    <fusion-radio
+        *ngFor="let option of options"
+        [name]="name"
+        [value]="option.id"
+        [label]="option.label"
+        [selected]="isSelected(option)"
+        [disabled]="disabled || option.disabled"
+        (changed)="setSelected($event, option)"
+    ></fusion-radio>
+</div>
+
