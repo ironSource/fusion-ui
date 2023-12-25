@@ -25,8 +25,12 @@ export default {
     args: {
         label: 'Spend',
         disabled: false,
+        hasCaretIcon: true,
+        selected: false,
+        light: false,
         startIconName: '',
-        endIconName: ''
+        endIconName: '',
+        size: 'md'
     }
 } as Meta<TriggerButtonComponent>;
 
@@ -36,7 +40,7 @@ export const Basic: TriggerButtonStory = {
     render: args => ({
         props: args,
         template: `
-<fusion-trigger-button>{{label}}</fusion-trigger-button>
+<fusion-trigger-button [size]="size" [disabled]="disabled" [selected]="selected" [light]="light" [hasCaretIcon]="hasCaretIcon">{{label}}</fusion-trigger-button>
     `
     })
 };
