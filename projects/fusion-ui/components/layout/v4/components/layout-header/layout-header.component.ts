@@ -3,11 +3,12 @@ import {CommonModule} from '@angular/common';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components/v1';
 import {HeaderContent, TeleportWrapperElement} from '../../layout.entities';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+import {IconButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
 
 @Component({
     selector: 'fusion-layout-header',
     standalone: true,
-    imports: [CommonModule, DynamicComponentsModule, IconModule],
+    imports: [CommonModule, DynamicComponentsModule, IconModule, IconButtonComponent],
     templateUrl: './layout-header.component.html',
     styleUrls: ['./layout-header.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
