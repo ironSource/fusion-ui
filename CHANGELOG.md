@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [6.4.0-rc.5](https://github.com/ironSource/fusion-ui/compare/v6.4.0-rc.4...v6.4.0-rc.5) (2023-12-25)
+
+
+### Features
+
+* **isct-137:** added icon button component v4 ([5d0dc50](https://github.com/ironSource/fusion-ui/commit/5d0dc50b609e3e44dadadba294b4ab2e5cc5a2f3))
+* **isct-137:** added loader component v4 ([f0b4158](https://github.com/ironSource/fusion-ui/commit/f0b41583027cdcd418b9e78e2f3b403513177533))
+* **isct-137:** button component v4 ([e1fbbd9](https://github.com/ironSource/fusion-ui/commit/e1fbbd9b045b735808016f78d6a9c8f2f7417ac1))
+
 ## [6.4.0-rc.4](https://github.com/ironSource/fusion-ui/compare/v6.4.0-rc.3...v6.4.0-rc.4) (2023-12-24)
 
 ## [6.4.0-rc.3](https://github.com/ironSource/fusion-ui/compare/v6.4.0-rc.2...v6.4.0-rc.3) (2023-12-21)
