@@ -1,0 +1,41 @@
+@import '../../../../src/style/scss/v4/colors';
+@import '../../../../src/style/scss/v4/spacings';
+@import '../../../../src/style/scss/v4/border-radius';
+@import '../../../../src/style/scss/v4/vars/fonts';
+
+:host {
+    margin: 0;
+    padding: 0;
+    button{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: var(--spacing-100, #{$spacingV4-100});
+        padding: var(--spacing-50, #{$spacingV4-50}) var(--spacing-100, #{$spacingV4-100});
+        border-radius: var(--spacing-75, #{$spacingV4-75});
+        border: 1px solid var(--default-outlined-border, #{$color-v4-default-outlined-border});
+        background-color: transparent;
+        color: var(--text-primary, #{$color-v4-text-primary});
+        @extend %font-v4-button;
+
+
+        &:hover{
+            cursor: pointer;
+            background: var(--action-hover, #{$color-v4-action-hover});
+        }
+
+        &:disabled{
+            cursor: default;
+            color: var(--text-disabled, #{$color-v4-text-disabled});
+        }
+
+
+        // region button icons
+        .fu-button-start-icon,
+        .fu-button-end-icon {
+            width: 16px;
+            height: 16px;
+        }
+        // endregion
+    }
+}
