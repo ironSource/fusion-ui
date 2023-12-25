@@ -10,16 +10,17 @@ import {TriggerButtonSize} from '@ironsource/fusion-ui/components/button/v4';
     imports: [CommonModule, IconModule, LoaderComponent],
     templateUrl: './trigger-button.component.html',
     styleUrls: ['./trigger-button.component.scss'],
+    host: {class: 'fusion-v4'},
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TriggerButtonComponent {
     @Input() set startIconName(value: string) {
-        this._startIconName = value.trim();
+        this._startIconName = value;
     }
 
     /** @internal */
     @Input() set endIconName(value: string) {
-        this._endIconName = value.trim();
+        this._endIconName = value;
     }
     @Input() set hasCaretIcon(value: boolean) {
         this._hasCaretIcon = value ?? false;
