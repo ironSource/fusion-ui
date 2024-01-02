@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, HostBinding, Inject, Input, Optional} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FlagBaseComponent} from './flag-base.component';
 

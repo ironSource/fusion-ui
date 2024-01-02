@@ -1,5 +1,4 @@
-import {ChangeDetectionStrategy, Component, Directive, HostBinding, Inject, Input, Optional} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {Directive, HostBinding, Inject, Input, Optional} from '@angular/core';
 import {SVG_OPTIONS_TOKEN, SvgOptions} from '@ironsource/fusion-ui/components/svg';
 import {CountryCode} from '@ironsource/fusion-ui/components/flag/v4/flag.entities';
 
@@ -45,7 +44,7 @@ export class FlagBaseComponent {
     }
     /** @internal */
     get flagUrl(): string {
-        return `${this.svgOptions.assetsPath}/flags/${this._version}/${this._countryCode}.svg`;
+        return `${this.svgOptions?.assetsPath}/flags/${this._version}/${this._countryCode}.svg`;
     }
 
     @HostBinding('style.width.px') get width(): number {
