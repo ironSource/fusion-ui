@@ -1,7 +1,7 @@
 import {Component, ContentChildren, ElementRef, EventEmitter, OnDestroy, OnInit, Output, QueryList, Renderer2} from '@angular/core';
 import {fromEvent, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {TabSelectedEventData} from '../tabs.entities';
+import {TabSelectedEventData} from '../../common/tabs.entities';
 import {TabComponent} from '../tab/tab.component';
 
 @Component({
