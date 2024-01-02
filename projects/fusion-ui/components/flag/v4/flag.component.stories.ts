@@ -26,7 +26,7 @@ export default {
                 ***Inputs:***
                 - \`countryCode\`: ISO 3166-1-alpha-2 (lower case) code of a country. https://www.iso.org/obp/ui/#search/code/
                 - \`size\`: flag size in pixels. Default value is 16.
-                - \`rounded\`: flag border radius. Default value is true.
+                - \`rounded\`: flag rounded or not. Default value is true.
                 - \`borderRadius\`: border radius of the flag. Default value is 50% if rounded = true.
 
                 minimum code in template require to display flag:
