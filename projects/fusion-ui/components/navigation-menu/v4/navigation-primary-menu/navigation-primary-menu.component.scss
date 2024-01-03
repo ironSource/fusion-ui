@@ -27,9 +27,12 @@
             align-items: center;
             width: 100%;
             &.fu-home{
-                height: 64px;
+                height: 48px;
                 .fu-navigation-bar-button:hover{
                     cursor: pointer;
+                }
+                &:first-child{
+                    margin-top: 8px;
                 }
             }
             &.fu-network{
