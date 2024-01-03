@@ -6,7 +6,7 @@
 
 $topRowPadding: 8px 18px;
 $topRowHeight: 56px;
-$noTitleHeight: 112px;
+$drilldownHeight: 72px;
 
 %backButton {
     @include size(40px);
@@ -86,22 +86,17 @@ $noTitleHeight: 112px;
             }
 
             &.fu-header-drilldown{
-                height: $noTitleHeight;
-                max-height: $noTitleHeight;
-                padding: 0 24px;
-                gap: 16px;
+                height: $drilldownHeight;
+                max-height: $drilldownHeight;
+                gap: 8px;
                 .fu-header-back-button{
                     display: initial;
                     @extend %backButton;
                     margin-left: 0;
                 }
-                .fu-page-title{
-                    display: none;
-                }
-
             }
             &.fu-has-top-row{
-                padding-top: 20px;
+                padding-top: 28px;
             }
         }
         .fu-header-top-row{
