@@ -4,6 +4,22 @@
         <div class="is-example-title">Type</div>
         <fusion-example-block [collapsible]="false" id="typeFilter" title="Chip Filters EXAMPLE">
             <div>
+                <fusion-button [disabled]="true" [loading]="false" (click)="onButtonClicked($event)">
+                    Click me
+                </fusion-button>
+                <br>
+                <fusion-checkbox [formControl]="chbFormControl" label="checkbox"></fusion-checkbox>
+                <br><br>
+                <div style="display: flex; gap: 14px;">
+                    <fusion-button color="primary" [disabled]="false" [loading]="false" >Primary</fusion-button>
+                    <fusion-button [disabled]="false" [loading]="false" >Default</fusion-button>
+                    <fusion-button color="danger"  [disabled]="false" [loading]="false">Danger</fusion-button>
+                    <fusion-button color="info"  [disabled]="false" [loading]="false">Info</fusion-button>
+                    <fusion-button color="success"  [disabled]="false" [loading]="false">Success</fusion-button>
+                    <fusion-button color="warning"  [disabled]="false" [loading]="false">Warning</fusion-button>
+                </div>
+                <br>
+
                 <fusion-chip-filters
                     [addFiltersTitle]="addFiltersTitle"
                     [addFilterOptions]="addFilterOptions"

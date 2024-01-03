@@ -1,0 +1,9 @@
+<button [class]="buttonClass" [class.fu-loading]="loading" [disabled]="disabled || loading">
+    <fusion-icon *ngIf="startIconName" class="fu-button-start-icon" [name]="startIconName"></fusion-icon>
+    <fusion-icon *ngIf="iconName" class="fu-button-icon" [name]="iconName"></fusion-icon>
+    <div *ngIf="!iconName" class="fu-button-content"><ng-content></ng-content></div>
+    <fusion-icon *ngIf="endIconName" class="fu-button-end-icon" [name]="endIconName"></fusion-icon>
+    <div class="fu-button-loading">
+        <fusion-loader style="width: 16px; height: 16px"></fusion-loader>
+    </div>
+</button>

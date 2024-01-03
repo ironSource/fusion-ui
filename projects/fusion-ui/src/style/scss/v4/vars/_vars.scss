@@ -2,6 +2,8 @@
 @import 'colors';
 @import 'screen';
 @import "shadows";
+@import "border-radius";
+@import "spacings";
 
 %border-box-normalize {
     * {box-sizing: border-box;}

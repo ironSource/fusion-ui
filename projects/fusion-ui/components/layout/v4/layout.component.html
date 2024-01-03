@@ -10,8 +10,9 @@
     <!--navigation-->
     <div class="fu-main-page">
         <!--main header-->
-        <div class="fu-page-header">
+        <div class="fu-page-header" [class.fu-page-header-multiline]="headerContent?.multiline">
             <fusion-layout-header
+                [class.fu-multiline-header]="headerContent?.multiline"
                 [headerContent]="headerContent"
                 [teleportElements]="teleportElements"
                 (backButtonClicked)="pageBackButtonClicked.emit($event)"

@@ -28,7 +28,12 @@ export class LayoutComponent implements OnInit, OnDestroy {
         }
         this.layoutUser = {...value?.layoutUser} ?? null;
     }
-    @Input() headerContent: HeaderContent;
+    @Input() set headerContent(value: HeaderContent) {
+        this._headerContent = value;
+    }
+    get headerContent(): HeaderContent {
+        return this._headerContent;
+    }
     @Input() set teleportElements(value: TeleportWrapperElement[]) {
         this._teleportElements = value;
     }
@@ -53,6 +58,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
 
     private onDestroy$ = new Subject();
     private isMenuToggled = false;
+    private _headerContent: HeaderContent;
     private _teleportElements: TeleportWrapperElement[];
 
     constructor(private windowRef: WindowService, private router: Router) {}

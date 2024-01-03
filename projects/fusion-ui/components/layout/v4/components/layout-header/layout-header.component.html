@@ -1,25 +1,41 @@
-<div class="fu-header-back-button" *ngIf="headerContent?.hasBackButton">
-    <fusion-icon class="fu-header-back-button-icon" [name]="{iconName:'arrow-back', iconVersion:'v3'}" (click)="backButtonClicked.emit(headerContent?.hasBackButton)"></fusion-icon>
+<div class="fu-header-top-row" [hidden]="!hasTopLine">
+    <div id="pageHeaderTopTeleportSlot"></div>
+    <div *ngFor="let teleportItem of teleportTopRowElements" [id]="teleportItem.id" class="fu-header-top-teleport-host"
+         [class.fu-flex-align-right]="teleportItem.isOnRight"></div>
 </div>
-<div class="fu-page-title"
-     [class.fu-page-has-subtitle]="headerContent?.subTitle"
-     [class.fu-page-has-button-back]="headerContent?.hasBackButton"
->{{ headerContent?.title }}</div>
-<ng-container *ngIf="headerContent?.subTitle">
-    <div class="fu-header-delimiter"></div>
-    <div class="fu-page-subtitle">{{headerContent?.subTitle}}</div>
-</ng-container>
-<div *ngIf="headerContent?.actionComponent"
-     class="fu-header-action-wrapper"
-     [class.fu-action-wrapper-after-teleports]="headerContent?.actionAlignRight"
-     [class.fu-flex-align-right]="headerContent?.actionAlignRight && !hasTeleportAlignRight"
->
-    <fusion-dynamic-components
-        [component]="headerContent.actionComponent"
-        [componentData]="headerContent.actionData">
-    </fusion-dynamic-components>
+<div class="fu-header-main-row" [class.fu-header-drilldown]="isDrilldown" [class.fu-has-top-row]="hasTopLine">
+    <fusion-icon-button *ngIf="isMultiline && headerContent?.hasBackButton && isDrilldown" iconName="ph/arrow-left" size="large"></fusion-icon-button>
+    <div class="fu-header-back-button" *ngIf="!isMultiline && headerContent?.hasBackButton">
+        <fusion-icon class="fu-header-back-button-icon" [name]="{iconName:'arrow-back', iconVersion:'v3'}"
+                     (click)="backButtonClicked.emit(headerContent?.hasBackButton)"></fusion-icon>
+    </div>
+    <div class="fu-page-title"
+         [class.fu-page-has-subtitle]="headerContent?.subTitle"
+         [class.fu-page-has-button-back]="headerContent?.hasBackButton"
+    >{{ headerContent?.title }}
+    </div>
+    <ng-container *ngIf="headerContent?.subTitle">
+        <div class="fu-header-delimiter"></div>
+        <div class="fu-page-subtitle">{{ headerContent?.subTitle }}</div>
+    </ng-container>
+    <div *ngIf="headerContent?.actionComponent"
+         class="fu-header-action-wrapper"
+         [class.fu-action-wrapper-after-teleports]="headerContent?.actionAlignRight"
+         [class.fu-flex-align-right]="headerContent?.actionAlignRight && !hasTeleportAlignRight"
+    >
+        <fusion-dynamic-components
+            [component]="headerContent.actionComponent"
+            [componentData]="headerContent.actionData">
+        </fusion-dynamic-components>
+    </div>
+    <ng-container *ngIf="teleportElements?.length">
+        <div *ngFor="let teleportItem of teleportElements" [id]="teleportItem.id" class="fu-header-teleport-host"
+             [class.fu-flex-align-right]="teleportItem.isOnRight"></div>
+    </ng-container>
 </div>
-<ng-container *ngIf="teleportElements?.length">
-    <div *ngFor="let teleportItem of teleportElements" [id]="teleportItem.id" class="fu-header-teleport-host" [class.fu-flex-align-right]="teleportItem.isOnRight"></div>
-</ng-container>
+<div class="fu-header-bottom-row" [hidden]="!hasBottomLine">
+    <div id="pageHeaderBottomTeleportSlot"></div>
+    <div *ngFor="let teleportItem of bottomTopRowElements" [id]="teleportItem.id" class="fu-header-bottom-teleport-host"
+         [class.fu-flex-align-right]="teleportItem.isOnRight"></div>
+</div>
 

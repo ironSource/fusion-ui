@@ -22,21 +22,21 @@ export const USER_PROFILE_MENU_ITEMS: MenuItem[] = [
     },
     {
         withTopDelimiter: true,
-        icon: {iconName: 'mail_outline', iconVersion: 'v4'},
+        icon: 'ph/envelope-simple-open',
         name: 'Contact us',
         redirect: 'https://ironsrc.formtitan.com/contact-us',
         target: '_contactUs'
     },
     {
         name: 'Logout',
-        icon: {iconName: 'logout', iconVersion: 'v4'},
+        icon: 'ph/sign-out',
         route: '/'
     }
 ];
 
 export const UNITY_MENU_ITEMS: MenuItem[] = [
     {
-        icon: {iconName: 'add', iconVersion: 'v4'},
+        icon: 'ph/plus',
         name: 'Add app',
         route: '/docs/components/v2/alert'
     },
@@ -45,12 +45,12 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
         isGroupName: true
     },
     {
-        icon: {iconName: 'dashboard', iconVersion: 'v4'},
+        icon: 'ph/layout',
         name: 'Dashboard',
         route: '/branch_'
     },
     {
-        icon: {iconName: 'chart_line_up', iconVersion: 'v4'},
+        icon: 'ph/chart-bar',
         name: 'Reports',
         children: [
             {
@@ -208,7 +208,7 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
         ]
     },
     {
-        icon: {iconName: 'mediation', iconVersion: 'v4'},
+        icon: 'ph/tree-structure',
         name: 'Management',
         children: [
             {
@@ -222,7 +222,7 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
         ]
     },
     {
-        icon: {iconName: 'wrench', iconVersion: 'v4'},
+        icon: 'ph/gear',
         name: 'Setup',
         children: [
             {
@@ -257,7 +257,7 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
         isGroupName: true
     },
     {
-        icon: {iconName: 'medal', iconVersion: 'v4'},
+        icon: 'ph/medal',
         name: 'Review',
         children: [
             {
@@ -279,7 +279,7 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
         ]
     },
     {
-        icon: {iconName: 'faders', iconVersion: 'v4'},
+        icon: 'ph/sliders',
         name: 'Manage',
         children: [
             {
@@ -300,17 +300,17 @@ export const IS_MENU_ITEMS: MenuItem[] = [
         isGroupName: true
     },
     {
-        icon: {iconName: 'add', iconVersion: 'v4'},
+        icon: 'ph/plus',
         name: 'Add app',
         route: '/Add+app'
     },
     {
-        icon: {iconName: 'chart_line_up', iconVersion: 'v4'},
+        icon: 'ph/chart-line-up',
         name: 'Performance',
         route: '/performance'
     },
     {
-        icon: {iconName: 'wrench', iconVersion: 'v4'},
+        icon: 'ph/gear',
         name: 'Setup',
         children: [
             {
@@ -332,12 +332,12 @@ export const IS_MENU_ITEMS: MenuItem[] = [
         isGroupName: true
     },
     {
-        icon: {iconName: 'add', iconVersion: 'v4'},
+        icon: 'ph/plus',
         name: 'Add campaign',
         route: '/Add+Campaign'
     },
     {
-        icon: {iconName: 'rocket_launch', iconVersion: 'v4'},
+        icon: 'ph/rocket-launch',
         name: 'Campaigns',
         children: [
             {
@@ -351,7 +351,7 @@ export const IS_MENU_ITEMS: MenuItem[] = [
         ]
     },
     {
-        icon: {iconName: 'chart_line_up', iconVersion: 'v4'},
+        icon: 'ph/chart-bar',
         name: 'Reports',
         children: [
             {
@@ -376,33 +376,65 @@ export const IS_MENU_ITEMS: MenuItem[] = [
 
 export const TAPJOY_MENU_ITEMS: MenuItem[] = [
     {
-        icon: {iconName: 'dashboard', iconVersion: 'v4'},
+        icon: 'ph/layout',
         name: 'Dashboard',
         route: '/dashboard'
     }
 ];
 
-export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
-    // {
-    //     type: NavigationBarItemType.Home,
-    //     menuIcon: {iconName: 'house', iconVersion: 'v4'},
-    //     menuTitle: 'Dashboard',
-    //     route: '/docs/getting-started',
-    //     cssTheme: {
-    //         'fu-navbar-background-color': '#202020'
-    //     }
-    // },
+export const NAVIGATION_MENU_HOME_MOCK: PrimaryMenuItem[] = [
+    {
+        type: NavigationBarItemType.Home,
+        menuIcon: 'ph/house',
+        menuTitle: 'Dashboard',
+        route: '/dashboard',
+        cssTheme: {
+            'fu-navbar-background-color': '#202020'
+        }
+    },
     {
         type: NavigationBarItemType.Main,
-        menuIcon: {iconName: 'unity_flat', iconVersion: 'v4'},
+        menuIcon: 'v4/branded/unity',
         menuTitle: 'LevelPlay',
         menuLogoSrc: 'v4/unity_logo_flat',
-        cssTheme: {'fu-navbar-background-color': '#202020'},
+        cssTheme: {'fu-navbar-background-color': '#181818'},
         menuItems: UNITY_MENU_ITEMS
     },
     {
         type: NavigationBarItemType.Main,
-        menuIcon: {iconName: 'ironSource', iconVersion: 'v4'},
+        menuIcon: 'v4/branded/ironsource',
+        menuTitle: 'Ads',
+        menuLogoSrc: 'v4/is_ads_logo',
+        cssTheme: {'fu-navbar-background-color': '#0D148C'},
+        menuItems: IS_MENU_ITEMS
+    },
+    {
+        type: NavigationBarItemType.Bottom,
+        menuIcon: 'ph/question',
+        menuTooltip: 'Knowledge Center',
+        redirect: 'https://developers.is.com/',
+        target: '_blank'
+    },
+    {
+        type: NavigationBarItemType.User,
+        menuIcon: 'ph/user-circle',
+        menuTooltip: 'Account',
+        menuItems: USER_PROFILE_MENU_ITEMS
+    }
+];
+
+export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
+    {
+        type: NavigationBarItemType.Main,
+        menuIcon: 'v4/branded/unity',
+        menuTitle: 'LevelPlay',
+        menuLogoSrc: 'v4/unity_logo_flat',
+        cssTheme: {'fu-navbar-background-color': '#181818'},
+        menuItems: UNITY_MENU_ITEMS
+    },
+    {
+        type: NavigationBarItemType.Main,
+        menuIcon: 'v4/branded/ironsource',
         menuTitle: 'Ads',
         menuLogoSrc: 'v4/is_ads_logo',
         cssTheme: {'fu-navbar-background-color': '#0D148C'},
@@ -410,22 +442,22 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
     },
     {
         type: NavigationBarItemType.Main,
-        menuIcon: {iconName: 'tapjoy', iconVersion: 'v4'},
+        menuIcon: 'v4/branded/tapjoy',
         menuTitle: 'Tapjoy',
         menuLogoSrc: 'v4/tapjoy_logo',
-        cssTheme: {'fu-navbar-background-color': '#202020'},
+        cssTheme: {'fu-navbar-background-color': '#181818'},
         menuItems: TAPJOY_MENU_ITEMS
     },
     {
         type: NavigationBarItemType.Bottom,
-        menuIcon: {iconName: 'question', iconVersion: 'v4'},
+        menuIcon: 'ph/question',
         menuTooltip: 'Knowledge Center',
         redirect: 'https://developers.is.com/',
         target: '_blank'
     },
     {
         type: NavigationBarItemType.User,
-        menuIcon: {iconName: 'userCircle', iconVersion: 'v4'},
+        menuIcon: 'ph/user-circle',
         menuTooltip: 'Account',
         menuItems: USER_PROFILE_MENU_ITEMS
     }
@@ -433,7 +465,7 @@ export const NAVIGATION_MENU_MOCK: PrimaryMenuItem[] = [
 
 export const IS_ADMIN_MENU_ITEMS: MenuItem[] = [
     {
-        icon: {iconName: 'bank', iconVersion: 'v4'},
+        icon: 'ph/bank',
         name: 'General',
         children: [
             {
@@ -443,7 +475,7 @@ export const IS_ADMIN_MENU_ITEMS: MenuItem[] = [
         ]
     },
     {
-        icon: {iconName: 'rocket_launch', iconVersion: 'v4'},
+        icon: 'ph/rocket-launch',
         name: 'Demand',
         children: [
             {
@@ -491,7 +523,7 @@ export const IS_ADMIN_MENU_ITEMS: MenuItem[] = [
         ]
     },
     {
-        icon: {iconName: 'mediation', iconVersion: 'v4'},
+        icon: 'ph/tree-structure',
         name: 'Networks OPS',
         children: [
             {
@@ -517,7 +549,7 @@ export const IS_ADMIN_MENU_ITEMS: MenuItem[] = [
         ]
     },
     {
-        icon: {iconName: 'wrench', iconVersion: 'v4'},
+        icon: 'ph/gear',
         name: 'Customer support',
         children: [
             {
@@ -527,7 +559,7 @@ export const IS_ADMIN_MENU_ITEMS: MenuItem[] = [
         ]
     },
     {
-        icon: {iconName: 'lightning', iconVersion: 'v4'},
+        icon: 'ph/lightning',
         name: 'Internal',
         children: [
             {
@@ -541,7 +573,7 @@ export const IS_ADMIN_MENU_ITEMS: MenuItem[] = [
         ]
     },
     {
-        icon: {iconName: 'currency-circle-dollar', iconVersion: 'v4'},
+        icon: 'ph/currency-circle-dollar',
         name: 'Finance',
         children: [
             {
@@ -567,27 +599,31 @@ export const IS_ADMIN_MENU_ITEMS: MenuItem[] = [
 export const NAVIGATION_ADMIN_MENU_MOCK: PrimaryMenuItem[] = [
     {
         type: NavigationBarItemType.Main,
-        menuIcon: {iconName: 'ironSource', iconVersion: 'v4'},
+        menuIcon: 'v4/branded/ironsource',
         menuTitle: 'Ads',
-        menuLogoSrc: 'v4/isAdsLogo',
+        menuLogoSrc: 'v4/is_ads_logo',
         cssTheme: {'fu-navbar-background-color': '#0D148C'},
         menuItems: IS_ADMIN_MENU_ITEMS
     },
     {
         type: NavigationBarItemType.Bottom,
-        menuIcon: {iconName: 'question', iconVersion: 'v4'},
+        menuIcon: 'ph/question',
         redirect: 'https://developers.is.com/',
         target: '_blank'
     },
     {
         type: NavigationBarItemType.User,
-        menuIcon: {iconName: 'userCircle', iconVersion: 'v4'},
+        menuIcon: 'ph/user-circle',
         menuItems: USER_PROFILE_MENU_ITEMS
     }
 ];
 
 export const LAYOUT_HEADER_CONTENT_MOCK: HeaderContent = {
     title: 'Dashboard'
+};
+
+export const LAYOUT_HEADER_MULTILINE_CONTENT_MOCK: HeaderContent = {
+    multiline: true
 };
 
 export const HEADER_CONTENT_MOCK: HeaderContent = {

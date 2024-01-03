@@ -4,8 +4,8 @@ import {assetsPath, iconsBrandedData, iconsADUnitData, iconsABTestData} from "./
 <Meta title="V4/Foundation/Icons"/>
 
 <style>
-{
-`
+    {
+        `
 .sbdocs-title{
     margin-bottom: 8px
     color: var(--text-primary, hsl(0,0%,12.5%));
@@ -133,27 +133,22 @@ ul li{
     margin-bottom: 0;
 }
 `
-}
+    }
 </style>
 <h1 class="sbdocs-title">Icons</h1>
 When used correctly, UI icons can speed up user interactions by being immediately recognizable, and they can also add style and visual interest to your user interface designs.
 
 <h1 class="subtitle-border-bottom">Usage</h1>
-<div class="text-block">Put ```import { Icon } from '@/components/icon/v4';``` in your component script block</div>
-<div class="text-block">and ```<Icon name="palette" size="16px" color="blue" />``` in your template for use phosphor regular "palette" icon.</div>
+<div class="text-block">Put ```import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';``` in your component / module script block</div>
+<div class="text-block">Add it to your component (if it standalone component) or module import  ```imports: [CommonModule, IconModule],```</div>
+<div class="text-block">and ```<fusion-icon [name]="iconName"></fusion-icon>``` in your components template.</div>
 
 <h1 class="subtitle-border-bottom">Props</h1>
-- name (string) - icon name;
-- size (string) - icon size;
-- color (string) - icon color *("currentColor" by default)*;
-- type ('regular' | 'bold'  | 'fill' | 'branded' | 'ad-unit' | 'ab-test') - icon type (phosphor "regular" by default);
+- name (string) - icon name with icon type as prefix of name property (e.g. 'ph/regular/arrow-left' or 'v4/branded/ironsource');
+    - types('ph/regular' | 'ph/bold'  | 'ph/fill' | 'v4/branded' | 'v4/ad-unit' | 'v4ab-test');
+- size you can set as style property
+- color icon get as currentColor from wrapper component
 
-<div class="info-block">
-    <h4>Note:</h4>
-    - Phosphor icons default type regular, no need set it. ```<Icon name="calendar" size="16px" />```. <br/> If you need use other type ("bold" or "fill"), set it: ```<Icon type="bold" name="calendar" size="16px" />```
-    - Monochrome icons get current color of element-wrapper by default, or use "color" property to set it.
-    - Colored icons, like on A/B test section, don't put "color" property to component: ```<Icon type="ab-test" name="ab" />```.
-</div>
 
 <h1 class="subtitle-border-bottom">Stories</h1>
 
@@ -164,58 +159,58 @@ When used correctly, UI icons can speed up user interactions by being immediatel
         <img src="https://fusion.ironsrc.net/assets/images/v4/phosphor-logo.svg" alt="Phosphor" style={{width: '32px', height: '32px'}}/>
         <div>**<a href="https://phosphoricons.com/" target="_blank">View in Phosphor</a>**</div>
     </div>
-<div style={{display: 'flex', alignItems: 'center', gap: '12px'}}>
+    <div style={{display: 'flex', alignItems: 'center', gap: '12px'}}>
         <img src="https://fusion.ironsrc.net/assets/images/v4/figma-logo.svg" alt="Figma" style={{width: '32px', height: '32px'}}/>
-    <div>**<a href="https://www.figma.com/community/file/903830135544202908/phosphor-icons" target="_blank">View in Figma</a>**</div>
-</div>
+        <div>**<a href="https://www.figma.com/community/file/903830135544202908/phosphor-icons" target="_blank">View in Figma</a>**</div>
+    </div>
 </div>
 
 <div class="text-block">In additional to the icons provided by Phosphor, we also provide a set of icons that are commonly used.</div>
 <br/>
 <div class="icons-title">Brand</div>
 <div class="icons-wrapper">
-<IconGallery style={{marginTop: '24px'}}>
-    {
-        iconsBrandedData.map(icon=>{
-            return (
-                <IconItem name={icon.name} key={icon.name}>
-                    <img src={assetsPath + icon.path} alt={icon.name} style={{width: '24px', height: '24px'}}/>
-                </IconItem>
-            )
-        })
-    }
-</IconGallery>
+    <IconGallery style={{marginTop: '24px'}}>
+        {
+            iconsBrandedData.map(icon=>{
+                return (
+                    <IconItem name={icon.name} key={icon.name}>
+                        <img src={assetsPath + icon.path} alt={icon.name} style={{width: '24px', height: '24px'}}/>
+                    </IconItem>
+                )
+            })
+        }
+    </IconGallery>
     <div class="icons-wrapper-notes">icon type: "branded"</div>
 </div>
 
 <div class="icons-title">Ad Unit</div>
 <div class="icons-wrapper">
-<IconGallery style={{marginTop: '24px'}}>
-    {
-        iconsADUnitData.map(icon=>{
-            return (
-                <IconItem name={icon.name} key={icon.name}>
-                    <img src={assetsPath + icon.path} alt={icon.name} style={{width: '24px', height: '24px'}}/>
-                </IconItem>
-            )
-        })
-    }
-</IconGallery>
+    <IconGallery style={{marginTop: '24px'}}>
+        {
+            iconsADUnitData.map(icon=>{
+                return (
+                    <IconItem name={icon.name} key={icon.name}>
+                        <img src={assetsPath + icon.path} alt={icon.name} style={{width: '24px', height: '24px'}}/>
+                    </IconItem>
+                )
+            })
+        }
+    </IconGallery>
     <div class="icons-wrapper-notes">icon type: "ad-unit"</div>
 </div>
 
 <div class="icons-title">A/B test</div>
 <div class="icons-wrapper icons-ab-test-wrapper">
-<IconGallery style={{marginTop: '24px'}}>
-    {
-        iconsABTestData.map(icon=>{
-            return (
-                <IconItem name={icon.name} key={icon.name}>
-                    <img src={assetsPath + icon.path} alt={icon.name} style={{width: '38px', height: '38px'}}/>
-                </IconItem>
-            )
-        })
-    }
-</IconGallery>
+    <IconGallery style={{marginTop: '24px'}}>
+        {
+            iconsABTestData.map(icon=>{
+                return (
+                    <IconItem name={icon.name} key={icon.name}>
+                        <img src={assetsPath + icon.path} alt={icon.name} style={{width: '38px', height: '38px'}}/>
+                    </IconItem>
+                )
+            })
+        }
+    </IconGallery>
     <div class="icons-wrapper-notes">icon type: "ab-test"</div>
 </div>
