@@ -1,4 +1,16 @@
-import {Component, ContentChildren, ElementRef, EventEmitter, OnDestroy, OnInit, Output, QueryList, Renderer2} from '@angular/core';
+import {
+    Component,
+    ContentChildren,
+    ElementRef,
+    EventEmitter,
+    HostBinding,
+    Input,
+    OnDestroy,
+    OnInit,
+    Output,
+    QueryList,
+    Renderer2
+} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TabSelectedEventData} from '@ironsource/fusion-ui/components/tabs';
 import {fromEvent, Subject} from 'rxjs';
@@ -9,10 +21,17 @@ import {TabComponent} from '@ironsource/fusion-ui/components/tabs/v4';
     selector: 'fusion-tabs',
     standalone: true,
     imports: [CommonModule],
+    host: {class: 'fusion-v4'},
     template: '<ng-content></ng-content>',
     styleUrls: ['./tabs.component.scss']
 })
 export class TabsComponent implements OnInit, OnDestroy {
+    @Input() variant: 'card' | 'page' = 'card';
+
+    @HostBinding('class.fu-tabs-page') get isPage(): boolean {
+        return this.variant === 'page';
+    }
+
     @Output() selectedChange = new EventEmitter<TabSelectedEventData>();
     /** @internal */
     @ContentChildren(TabComponent) tabList: QueryList<TabComponent>;

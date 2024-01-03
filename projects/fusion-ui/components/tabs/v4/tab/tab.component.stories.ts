@@ -31,8 +31,7 @@ export default {
     },
     args: {
         disabled: false,
-        selected: false,
-        pageMode: false
+        selected: false
     }
 } as Meta<TabComponent>;
 
@@ -43,7 +42,7 @@ export const Default: Story = {
         props: args,
         template: `
 <div>
-    <fusion-tab [selected]="selected" [disabled]="disabled" [pageMode]="pageMode">Tab</fusion-tab>
+    <fusion-tab [selected]="selected" [disabled]="disabled">Tab</fusion-tab>
 </div>
 `
     })
@@ -54,7 +53,7 @@ export const Disabled: Story = {
         props: {...args, disabled: true},
         template: `
 <div>
-    <fusion-tab [selected]="selected" [disabled]="disabled" [pageMode]="pageMode">Tab</fusion-tab>
+    <fusion-tab [selected]="selected" [disabled]="disabled">Tab</fusion-tab>
 </div>
 `
     })
@@ -65,29 +64,31 @@ export const Active: Story = {
         props: {...args, selected: true},
         template: `
 <div>
-    <fusion-tab [selected]="selected" [disabled]="disabled" [pageMode]="pageMode">Tab</fusion-tab>
+    <fusion-tab [selected]="selected" [disabled]="disabled">Tab</fusion-tab>
 </div>
 `
     })
 };
 
+/*
 export const ActivePageMode: Story = {
     render: args => ({
         props: {...args, selected: true, pageMode: true},
         template: `
 <div>
-    <fusion-tab [selected]="selected" [disabled]="disabled" [pageMode]="pageMode">Tab</fusion-tab>
+    <fusion-tab [selected]="selected" [disabled]="disabled">Tab</fusion-tab>
 </div>
 `
     })
 };
+*/
 
 export const WithIcon: Story = {
     render: args => ({
         props: args,
         template: `
 <div>
-    <fusion-tab [selected]="selected" [disabled]="disabled" [pageMode]="pageMode">
+    <fusion-tab [selected]="selected" [disabled]="disabled">
         <fusion-icon style="width: 16px; height: 16px" name="v4/branded/ios"></fusion-icon> Tab
     </fusion-tab>
 </div>
@@ -100,7 +101,7 @@ export const WithIconDisabled: Story = {
         props: {...args, disabled: true},
         template: `
 <div>
-    <fusion-tab [selected]="selected" [disabled]="disabled" [pageMode]="pageMode">
+    <fusion-tab [selected]="selected" [disabled]="disabled">
         <fusion-icon style="width: 16px; height: 16px" name="v4/branded/ios"></fusion-icon> Tab
     </fusion-tab>
 </div>
@@ -113,7 +114,7 @@ export const WithIconActive: Story = {
         props: {...args, selected: true},
         template: `
 <div>
-    <fusion-tab [selected]="selected" [disabled]="disabled" [pageMode]="pageMode">
+    <fusion-tab [selected]="selected" [disabled]="disabled">
         <fusion-icon style="width: 16px; height: 16px" name="v4/branded/ios"></fusion-icon> Tab
     </fusion-tab>
 </div>
@@ -121,15 +122,15 @@ export const WithIconActive: Story = {
     })
 };
 
-export const WithIconActivePageMode: Story = {
+/*export const WithIconActivePageMode: Story = {
     render: args => ({
         props: {...args, selected: true, pageMode: true},
         template: `
 <div>
-    <fusion-tab [selected]="selected" [disabled]="disabled" [pageMode]="pageMode">
+    <fusion-tab [selected]="selected" [disabled]="disabled">
         <fusion-icon style="width: 16px; height: 16px" name="v4/branded/ios"></fusion-icon> Tab
     </fusion-tab>
 </div>
 `
     })
-};
+};*/

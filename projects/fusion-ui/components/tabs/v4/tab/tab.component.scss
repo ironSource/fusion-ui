@@ -10,6 +10,8 @@ $tabInnerGap: 8px;
 :host {
     margin: 0;
     padding: 0;
+    user-select: none;
+
     .fu-tab-content{
         width: fit-content;
         display: flex;
@@ -28,9 +30,14 @@ $tabInnerGap: 8px;
             padding: $paddingVerticalOnly;
         }
     }
+    &[tab-disabled],
+    &[tab-selected]{
+        pointer-events: none;
+        touch-callout: none;
+    }
+
     &[tab-disabled] .fu-tab-content{
         color: var(--action-disabled, #{$color-v4-action-disabled});
-        pointer-events: none;
         cursor: default;
     }
     &[tab-selected] .fu-tab-content{
@@ -38,7 +45,6 @@ $tabInnerGap: 8px;
         @extend %font-v4-tab-label-2;
         color: var(--text-primary, #{$color-v4-text-primary});
         border-bottom: 2px solid var(--primary-main, #{$color-v4-primary-main});
-        pointer-events: none;
         cursor: default;
     }
 }
