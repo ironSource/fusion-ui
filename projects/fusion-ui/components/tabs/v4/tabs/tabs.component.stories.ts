@@ -43,23 +43,7 @@ export const Basic: TabsStory = {
         props: args,
         template: `
 <div>
-    <fusion-tabs (selectedChange)="selectedChange($event)">
-      <fusion-tab [selected]="true">First</fusion-tab>
-      <fusion-tab>Second</fusion-tab>
-      <fusion-tab>Third</fusion-tab>
-      <fusion-tab [disabled]="true">Disabled</fusion-tab>
-    </fusion-tabs>
-</div>
-`
-    })
-};
-
-export const Card: TabsStory = {
-    render: args => ({
-        props: args,
-        template: `
-<div>
-    <fusion-tabs (selectedChange)="selectedChange($event)">
+    <fusion-tabs [variant]="variant" (selectedChange)="selectedChange($event)">
       <fusion-tab [selected]="true">First</fusion-tab>
       <fusion-tab>Second</fusion-tab>
       <fusion-tab>Third</fusion-tab>
@@ -72,10 +56,10 @@ export const Card: TabsStory = {
 
 export const Page: TabsStory = {
     render: args => ({
-        props: args,
+        props: {...args, variant: 'page'},
         template: `
 <div>
-    <fusion-tabs variant="page" (selectedChange)="selectedChange($event)">
+    <fusion-tabs [variant]="variant" (selectedChange)="selectedChange($event)">
       <fusion-tab [selected]="true">First</fusion-tab>
       <fusion-tab>Second</fusion-tab>
       <fusion-tab>Third</fusion-tab>
@@ -91,23 +75,24 @@ export const Icons: TabsStory = {
         props: args,
         template: `
 <div>
-    <fusion-tabs (selectedChange)="selectedChange($event)">
-      <fusion-tab [selected]="true">First</fusion-tab>
-      <fusion-tab>Second</fusion-tab>
-      <fusion-tab>Third</fusion-tab>
-      <fusion-tab [disabled]="true">Disabled</fusion-tab>
+    <fusion-tabs [variant]="variant" (selectedChange)="selectedChange($event)">
+      <fusion-tab [selected]="true"><fusion-icon style="width: 16px; height: 16px" name="ph/placeholder"></fusion-icon> First</fusion-tab>
+      <fusion-tab><fusion-icon style="width: 16px; height: 16px" name="ph/placeholder"></fusion-icon> Second</fusion-tab>
+      <fusion-tab><fusion-icon style="width: 16px; height: 16px" name="ph/placeholder"></fusion-icon> Third</fusion-tab>
+      <fusion-tab [disabled]="true"><fusion-icon style="width: 16px; height: 16px" name="ph/placeholder"></fusion-icon> Disabled</fusion-tab>
     </fusion-tabs>
 </div>
 `
     })
 };
 
+/*
 export const ABTest: TabsStory = {
     render: args => ({
         props: args,
         template: `
 <div>
-    <fusion-tabs (selectedChange)="selectedChange($event)">
+    <fusion-tabs [variant]="variant" (selectedChange)="selectedChange($event)">
       <fusion-tab [selected]="true">First</fusion-tab>
       <fusion-tab>Second</fusion-tab>
       <fusion-tab>Third</fusion-tab>
@@ -117,3 +102,4 @@ export const ABTest: TabsStory = {
 `
     })
 };
+*/

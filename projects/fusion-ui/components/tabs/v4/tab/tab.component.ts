@@ -6,6 +6,7 @@ import {TabBaseComponent} from '@ironsource/fusion-ui/components/tabs/common/tab
     selector: 'fusion-tab',
     standalone: true,
     imports: [CommonModule],
+    host: {class: 'fusion-v4'},
     template: '<div class="fu-tab-content"><ng-content></ng-content></div>',
     styleUrls: ['./tab.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush

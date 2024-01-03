@@ -3,31 +3,23 @@
 @import '../../../../src/style/scss/v4/border-radius';
 @import '../../../../src/style/scss/v4/vars/fonts';
 
-$paddingAll: 16px 24px;
-$paddingVerticalOnly: 16px 0;
-$tabInnerGap: 8px;
-
 :host {
     margin: 0;
     padding: 0;
     user-select: none;
-
     .fu-tab-content{
         width: fit-content;
         display: flex;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
-        gap: $tabInnerGap;
-
-        padding: $paddingAll;
+        gap: var(--spacing-100);
+        padding: var(--spacing-200) var(--spacing-300);
         @extend %font-v4-tab-label-1;
         color: var(--action-active, #{$color-v4-action-active});
         &:hover{
             cursor: pointer;
             color: var(--text-primary, #{$color-v4-text-primary});
-        }
-        &.fu-on-page{
-            padding: $paddingVerticalOnly;
         }
     }
     &[tab-disabled],
@@ -41,10 +33,20 @@ $tabInnerGap: 8px;
         cursor: default;
     }
     &[tab-selected] .fu-tab-content{
-        padding-bottom: 14px;
         @extend %font-v4-tab-label-2;
         color: var(--text-primary, #{$color-v4-text-primary});
         border-bottom: 2px solid var(--primary-main, #{$color-v4-primary-main});
         cursor: default;
+        padding-bottom: calc(var(--spacing-200) - 2px);
+    }
+}
+
+:host-context(.fu-tabs-page) {
+    margin-bottom: -1px;
+    .fu-tab-content{
+        padding: var(--spacing-200) 0;
+    }
+    &[tab-selected] .fu-tab-content{
+        padding-bottom: calc(var(--spacing-200) - 2px);
     }
 }

@@ -41,7 +41,7 @@ export const Default: Story = {
     render: args => ({
         props: args,
         template: `
-<div>
+<div style="border: solid 1px red;">
     <fusion-tab [selected]="selected" [disabled]="disabled">Tab</fusion-tab>
 </div>
 `
@@ -89,7 +89,7 @@ export const WithIcon: Story = {
         template: `
 <div>
     <fusion-tab [selected]="selected" [disabled]="disabled">
-        <fusion-icon style="width: 16px; height: 16px" name="v4/branded/ios"></fusion-icon> Tab
+        <fusion-icon style="width: 16px; height: 16px" name="ph/placeholder"></fusion-icon> Tab
     </fusion-tab>
 </div>
 `
@@ -102,7 +102,7 @@ export const WithIconDisabled: Story = {
         template: `
 <div>
     <fusion-tab [selected]="selected" [disabled]="disabled">
-        <fusion-icon style="width: 16px; height: 16px" name="v4/branded/ios"></fusion-icon> Tab
+        <fusion-icon style="width: 16px; height: 16px" name="ph/placeholder"></fusion-icon> Tab
     </fusion-tab>
 </div>
 `
@@ -115,7 +115,7 @@ export const WithIconActive: Story = {
         template: `
 <div>
     <fusion-tab [selected]="selected" [disabled]="disabled">
-        <fusion-icon style="width: 16px; height: 16px" name="v4/branded/ios"></fusion-icon> Tab
+        <fusion-icon style="width: 16px; height: 16px" name="ph/placeholder"></fusion-icon> Tab
     </fusion-tab>
 </div>
 `
