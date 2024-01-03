@@ -1,0 +1,67 @@
+@import '../../../../src/style/scss/v4/colors';
+@import '../../../../src/style/scss/v4/spacings';
+@import '../../../../src/style/scss/v4/border-radius';
+@import '../../../../src/style/scss/v4/vars/fonts';
+
+:host {
+    margin: 0;
+    padding: 0;
+    button{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: var(--spacing-100, #{$spacingV4-100});
+        padding: calc(var(--spacing-50, #{$spacingV4-50}) - 1px)  calc(var(--spacing-100, #{$spacingV4-100}) - 1px);
+        border-radius: var(--spacing-75, #{$spacingV4-75});
+        border: 1px solid var(--default-outlined-border, #{$color-v4-default-outlined-border});
+        background-color: transparent;
+        color: var(--text-primary, #{$color-v4-text-primary});
+        @extend %font-v4-button;
+
+        &:hover{
+            cursor: pointer;
+            background: var(--action-hover, #{$color-v4-action-hover});
+            border-color: var(--action-active, #{$color-v4-action-active});
+            .fu-button-end-icon {
+                color: var(--action-active, #{$color-v4-action-active});
+            }
+        }
+
+        &.fu-selected{
+            background-color: var(--action-selected, #{$color-v4-action-selected});
+            border-color: var(--action-active, #{$color-v4-action-active});
+        }
+        &.fu-size-sm{
+            padding: calc(var(--spacing-25, #{$spacingV4-25}) - 1px) calc(var(--spacing-75, #{$spacingV4-75}) - 1px);
+        }
+
+        &.fu-light{
+            @extend %font-v4-chip-label;
+            padding: calc(var(--spacing-75, #{$spacingV4-75}) - 1px);
+            &.fu-size-sm{
+                padding: calc(var(--spacing-50, #{$spacingV4-50}) - 1px) calc(var(--spacing-75, #{$spacingV4-75}) - 1px);
+            }
+        }
+
+
+        &:disabled,
+        &:disabled:hover {
+            cursor: default;
+            background-color: transparent;
+            color: var(--text-disabled, #{$color-v4-text-disabled});
+            border-color: var(--text-disabled, #{$color-v4-text-disabled});
+            .fu-button-start-icon,
+            .fu-button-end-icon {
+                color: var(--text-disabled, #{$color-v4-text-disabled});
+            }
+        }
+
+        // region button icons
+        .fu-button-start-icon,
+        .fu-button-end-icon {
+            width: 16px;
+            height: 16px;
+        }
+        // endregion
+    }
+}

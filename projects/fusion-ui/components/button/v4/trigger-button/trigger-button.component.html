@@ -1,0 +1,5 @@
+<button [class]="sizeClass" [disabled]="disabled" [class.fu-selected]="selected" [class.fu-light]="light">
+    <fusion-icon *ngIf="startIconName" class="fu-button-start-icon" [name]="startIconName"></fusion-icon>
+    <div class="fu-button-content"><ng-content></ng-content></div>
+    <fusion-icon *ngIf="endIconName && hasCaretIcon " class="fu-button-end-icon" [name]="endIconName"></fusion-icon>
+</button>
