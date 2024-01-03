@@ -2,12 +2,13 @@ import {ContentChildren, Directive, ElementRef, EventEmitter, OnDestroy, OnInit,
 import {fromEvent, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {TabSelectedEventData} from './tabs.entities';
+import {TabComponent} from '../v3/tab/tab.component';
 
 @Directive()
 export class TabsBaseComponent implements OnInit, OnDestroy {
     @Output() selectedChange = new EventEmitter<TabSelectedEventData>();
     /** @internal */
-    // @ContentChildren(TabComponent) tabList: QueryList<TabComponent>;
+    @ContentChildren(TabComponent) tabList: QueryList<TabComponent>;
     /** @internal */
     onDestroy$ = new Subject<void>();
 
@@ -32,14 +33,14 @@ export class TabsBaseComponent implements OnInit, OnDestroy {
 
     private setSelectedAndGetIndex(tabElementToSelect: HTMLElement): number {
         let selectedTabIndex;
-        // this.tabList.forEach((tab: TabComponent, idx) => {
-        //     if (tab.selected) {
-        //         tab.selected = false;
-        //     } else if (tab.nativeElement === tabElementToSelect) {
-        //         tab.selected = true;
-        //         selectedTabIndex = idx;
-        //     }
-        // });
+        this.tabList.forEach((tab: TabComponent, idx) => {
+            if (tab.selected) {
+                tab.selected = false;
+            } else if (tab.nativeElement === tabElementToSelect) {
+                tab.selected = true;
+                selectedTabIndex = idx;
+            }
+        });
         return selectedTabIndex;
     }
 }
