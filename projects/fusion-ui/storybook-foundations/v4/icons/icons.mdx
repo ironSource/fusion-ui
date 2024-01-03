@@ -4,8 +4,8 @@ import {assetsPath, iconsBrandedData, iconsADUnitData, iconsABTestData} from "./
 <Meta title="V4/Foundation/Icons"/>
 
 <style>
-{
-`
+    {
+        `
 .sbdocs-title{
     margin-bottom: 8px
     color: var(--text-primary, hsl(0,0%,12.5%));
@@ -133,7 +133,7 @@ ul li{
     margin-bottom: 0;
 }
 `
-}
+    }
 </style>
 <h1 class="sbdocs-title">Icons</h1>
 When used correctly, UI icons can speed up user interactions by being immediately recognizable, and they can also add style and visual interest to your user interface designs.
@@ -159,58 +159,58 @@ When used correctly, UI icons can speed up user interactions by being immediatel
         <img src="https://fusion.ironsrc.net/assets/images/v4/phosphor-logo.svg" alt="Phosphor" style={{width: '32px', height: '32px'}}/>
         <div>**<a href="https://phosphoricons.com/" target="_blank">View in Phosphor</a>**</div>
     </div>
-<div style={{display: 'flex', alignItems: 'center', gap: '12px'}}>
+    <div style={{display: 'flex', alignItems: 'center', gap: '12px'}}>
         <img src="https://fusion.ironsrc.net/assets/images/v4/figma-logo.svg" alt="Figma" style={{width: '32px', height: '32px'}}/>
-    <div>**<a href="https://www.figma.com/community/file/903830135544202908/phosphor-icons" target="_blank">View in Figma</a>**</div>
-</div>
+        <div>**<a href="https://www.figma.com/community/file/903830135544202908/phosphor-icons" target="_blank">View in Figma</a>**</div>
+    </div>
 </div>
 
 <div class="text-block">In additional to the icons provided by Phosphor, we also provide a set of icons that are commonly used.</div>
 <br/>
 <div class="icons-title">Brand</div>
 <div class="icons-wrapper">
-<IconGallery style={{marginTop: '24px'}}>
-    {
-        iconsBrandedData.map(icon=>{
-            return (
-                <IconItem name={icon.name} key={icon.name}>
-                    <img src={assetsPath + icon.path} alt={icon.name} style={{width: '24px', height: '24px'}}/>
-                </IconItem>
-            )
-        })
-    }
-</IconGallery>
+    <IconGallery style={{marginTop: '24px'}}>
+        {
+            iconsBrandedData.map(icon=>{
+                return (
+                    <IconItem name={icon.name} key={icon.name}>
+                        <img src={assetsPath + icon.path} alt={icon.name} style={{width: '24px', height: '24px'}}/>
+                    </IconItem>
+                )
+            })
+        }
+    </IconGallery>
     <div class="icons-wrapper-notes">icon type: "branded"</div>
 </div>
 
 <div class="icons-title">Ad Unit</div>
 <div class="icons-wrapper">
-<IconGallery style={{marginTop: '24px'}}>
-    {
-        iconsADUnitData.map(icon=>{
-            return (
-                <IconItem name={icon.name} key={icon.name}>
-                    <img src={assetsPath + icon.path} alt={icon.name} style={{width: '24px', height: '24px'}}/>
-                </IconItem>
-            )
-        })
-    }
-</IconGallery>
+    <IconGallery style={{marginTop: '24px'}}>
+        {
+            iconsADUnitData.map(icon=>{
+                return (
+                    <IconItem name={icon.name} key={icon.name}>
+                        <img src={assetsPath + icon.path} alt={icon.name} style={{width: '24px', height: '24px'}}/>
+                    </IconItem>
+                )
+            })
+        }
+    </IconGallery>
     <div class="icons-wrapper-notes">icon type: "ad-unit"</div>
 </div>
 
 <div class="icons-title">A/B test</div>
 <div class="icons-wrapper icons-ab-test-wrapper">
-<IconGallery style={{marginTop: '24px'}}>
-    {
-        iconsABTestData.map(icon=>{
-            return (
-                <IconItem name={icon.name} key={icon.name}>
-                    <img src={assetsPath + icon.path} alt={icon.name} style={{width: '38px', height: '38px'}}/>
-                </IconItem>
-            )
-        })
-    }
-</IconGallery>
+    <IconGallery style={{marginTop: '24px'}}>
+        {
+            iconsABTestData.map(icon=>{
+                return (
+                    <IconItem name={icon.name} key={icon.name}>
+                        <img src={assetsPath + icon.path} alt={icon.name} style={{width: '38px', height: '38px'}}/>
+                    </IconItem>
+                )
+            })
+        }
+    </IconGallery>
     <div class="icons-wrapper-notes">icon type: "ab-test"</div>
 </div>

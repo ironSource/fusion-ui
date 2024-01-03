@@ -22,7 +22,7 @@ import {MOK_APPLICATIONS_ONE_LINE_OPTIONS} from '@ironsource/fusion-ui/component
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 
 const meta: Meta<LayoutStoryWrapperComponent> = {
-    title: 'V4/Components/Layout',
+    title: 'V3/Components/Layout',
     component: LayoutComponent,
     decorators: [
         moduleMetadata({
@@ -44,7 +44,7 @@ const meta: Meta<LayoutStoryWrapperComponent> = {
     parameters: {
         docs: {
             description: {
-                component: dedent`***Layout v4*** description will be here`
+                component: dedent`***Layout v3*** description will be here`
             },
             story: {
                 inline: false,

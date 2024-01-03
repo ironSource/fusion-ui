@@ -1,6 +1,6 @@
+import {Type} from '@angular/core';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
 import {PrimaryMenuItem} from '@ironsource/fusion-ui/components/navigation-menu/v4';
-import {Type} from '@angular/core';
 
 export interface LayoutConfiguration {
     navigationMenuItems?: PrimaryMenuItem[];
@@ -8,8 +8,13 @@ export interface LayoutConfiguration {
 }
 
 export interface TeleportWrapperElement {
-    id: string; // must be unique value
-    isOnRight?: boolean; // will align to right
+    id: string;
+    isOnRight?: boolean;
+}
+
+export interface HeaderAdditionalRowContent {
+    show: boolean;
+    teleportElements?: TeleportWrapperElement[];
 }
 
 export interface HeaderContent {
@@ -19,4 +24,9 @@ export interface HeaderContent {
     actionComponent?: Type<any>;
     actionData?: any;
     actionAlignRight?: boolean;
+
+    multiline?: boolean;
+    topRowContent?: HeaderAdditionalRowContent;
+    bottomRowContent?: HeaderAdditionalRowContent;
+    drilldown?: boolean;
 }
