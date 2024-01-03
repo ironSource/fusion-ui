@@ -33,6 +33,14 @@ Each tab should contain content that is distinct from other tabs in a set. For e
     },
     args: {
         variant: 'card'
+    },
+    argsTypes: {
+        variant: {
+            control: {
+                type: 'select',
+                options: ['card', 'page']
+            }
+        }
     }
 } as Meta<TabsComponent>;
 
@@ -86,20 +94,20 @@ export const Icons: TabsStory = {
     })
 };
 
-/*
 export const ABTest: TabsStory = {
     render: args => ({
         props: args,
         template: `
 <div>
     <fusion-tabs [variant]="variant" (selectedChange)="selectedChange($event)">
-      <fusion-tab [selected]="true">First</fusion-tab>
-      <fusion-tab>Second</fusion-tab>
-      <fusion-tab>Third</fusion-tab>
-      <fusion-tab [disabled]="true">Disabled</fusion-tab>
+      <fusion-tab [selected]="true">
+        <fusion-icon class="fu-colored" style="height: 28px" name="v4/ab-test/ab"></fusion-icon>First
+      </fusion-tab>
+      <fusion-tab>
+          <fusion-icon class="fu-colored" style="height: 28px" name="v4/ab-test/ab-gray"></fusion-icon>Second
+      </fusion-tab>
     </fusion-tabs>
 </div>
 `
     })
 };
-*/

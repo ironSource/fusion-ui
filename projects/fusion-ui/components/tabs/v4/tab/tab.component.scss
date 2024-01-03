@@ -8,6 +8,7 @@
     padding: 0;
     user-select: none;
     .fu-tab-content{
+        min-height: var(--spacing-600);
         width: fit-content;
         display: flex;
         flex-direction: row;
