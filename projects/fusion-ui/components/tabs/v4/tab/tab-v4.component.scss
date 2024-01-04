@@ -8,14 +8,15 @@
     padding: 0;
     user-select: none;
     .fu-tab-content{
-        min-height: var(--spacing-600);
+        box-sizing: border-box;
+        min-height: var(--spacing-600, #{$spacingV4-600});
         width: fit-content;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        gap: var(--spacing-100);
-        padding: var(--spacing-200) var(--spacing-300);
+        gap: var(--spacing-100, #{$spacingV4-100});
+        padding: var(--spacing-200, #{$spacingV4-200}) var(--spacing-300, #{$spacingV4-300});
         @extend %font-v4-tab-label-1;
         color: var(--action-active, #{$color-v4-action-active});
         &:hover{
@@ -38,16 +39,16 @@
         color: var(--text-primary, #{$color-v4-text-primary});
         border-bottom: 2px solid var(--primary-main, #{$color-v4-primary-main});
         cursor: default;
-        padding-bottom: calc(var(--spacing-200) - 2px);
+        padding-bottom: calc(var(--spacing-200, #{$spacingV4-200}) - 2px);
     }
 }
 
 :host-context(.fu-tabs-page) {
     margin-bottom: -1px;
     .fu-tab-content{
-        padding: var(--spacing-200) 0;
+        padding: var(--spacing-200, #{$spacingV4-200}) 0;
     }
     &[tab-selected] .fu-tab-content{
-        padding-bottom: calc(var(--spacing-200) - 2px);
+        padding-bottom: calc(var(--spacing-200, #{$spacingV4-200}) - 2px);
     }
 }
