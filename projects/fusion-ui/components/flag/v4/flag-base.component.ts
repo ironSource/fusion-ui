@@ -1,6 +1,6 @@
 import {Directive, HostBinding, Inject, Input, Optional} from '@angular/core';
 import {SVG_OPTIONS_TOKEN, SvgOptions} from '@ironsource/fusion-ui/components/svg';
-import {CountryCode} from '@ironsource/fusion-ui/components/flag/v4/flag.entities';
+import {CountryCode} from './flag.entities';
 
 @Directive()
 export class FlagBaseComponent {

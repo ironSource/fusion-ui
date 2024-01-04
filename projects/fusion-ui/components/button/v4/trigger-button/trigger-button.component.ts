@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {LoaderComponent} from '@ironsource/fusion-ui/components/loader/v4';
-import {TriggerButtonSize} from '@ironsource/fusion-ui/components/button/v4';
+import {TriggerButtonSize} from './trigger-button.entities';
 
 @Component({
     selector: 'fusion-trigger-button',
