@@ -28,21 +28,6 @@ export default {
                 component: dedent`***TabsComponent*** Use tabs to allow users to navigate easily between views within the same context.
 
 Each tab should contain content that is distinct from other tabs in a set. For example, tabs can present different sections of news, different genres of music, or different themes of documents.
-
-####Usage:
-\`\`\`ts
-import {TabV4Component} from '@ironsource/fusion-ui/components/tabs/v4';
-import {TabsV4Component} from '@ironsource/fusion-ui/components/tabs/v4';
-\`\`\`
-\`\`\`html
-<fusion-tabs [variant]="variant" (selectedChange)="selectedChange($event)">
-  <fusion-tab>First</fusion-tab>
-  <fusion-tab>Second</fusion-tab>
-  <fusion-tab>Third</fusion-tab>
-  <fusion-tab [disabled]="true">Disabled</fusion-tab>
-</fusion-tabs>
-\`\`\`
-
 `
             }
         }
@@ -75,7 +60,40 @@ export const Basic: TabsStory = {
     </fusion-tabs>
 </div>
 `
+    }),
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
+    import { TabComponent, TabsComponent } from '@ironsource/fusion-ui/components/tabs/v4';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div>
+<fusion-tabs [variant]="variant" (selectedChange)="selectedChange($event)">
+  <fusion-tab [selected]="true">First</fusion-tab>
+  <fusion-tab>Second</fusion-tab>
+  <fusion-tab>Third</fusion-tab>
+  <fusion-tab [disabled]="true">Disabled</fusion-tab>
+</fusion-tabs>
+    </div>\`,
+      standalone: true,
+      imports: [IconModule, TabsModule],
     })
+    export class FusionStoryWrapperComponent {
+      selectedChange($event) {
+        console.log('Selected Tab: ', $event, $event.tabElement.innerText);
+      }
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
+        }
+    }
 };
 
 export const Page: TabsStory = {

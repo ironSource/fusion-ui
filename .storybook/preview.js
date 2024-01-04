@@ -14,7 +14,7 @@ const preview = {
             }
         },
         stackblitzAdditionalDependency: {
-            "@ironsource/fusion-ui": '6.0.1'
+            "@ironsource/fusion-ui": '6.4.1-test.1'
         },
         viewMode: 'story',
         docs: {inlineStories: true},
