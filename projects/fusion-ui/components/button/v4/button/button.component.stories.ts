@@ -7,7 +7,7 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {ButtonComponent} from './button.component';
 
 export default {
-    title: 'V4/Components/Button',
+    title: 'V4/Components/Buttons/Button',
     component: ButtonComponent,
     decorators: [
         moduleMetadata({

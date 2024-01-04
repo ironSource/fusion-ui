@@ -5,6 +5,13 @@ setCompodocJson(docJson);
 
 /** @type { import('@storybook/angular').Preview } */
 const preview = {
+    globals: {
+        stackblitzGlobals: {
+            stackblitzAdditionalDependency: {
+                '@ironsource/fusion-ui': '6.4.0'
+            }
+        }
+    },
     parameters: {
         actions: { argTypesRegex: '^on[A-Z].*' },
         controls: {
