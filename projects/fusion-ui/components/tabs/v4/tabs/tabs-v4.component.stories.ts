@@ -27,7 +27,23 @@ export default {
             description: {
                 component: dedent`***TabsComponent*** Use tabs to allow users to navigate easily between views within the same context.
 
-Each tab should contain content that is distinct from other tabs in a set. For example, tabs can present different sections of news, different genres of music, or different themes of documents.`
+Each tab should contain content that is distinct from other tabs in a set. For example, tabs can present different sections of news, different genres of music, or different themes of documents.
+
+####Usage:
+\`\`\`ts
+import {TabV4Component} from '@ironsource/fusion-ui/components/tabs/v4';
+import {TabsV4Component} from '@ironsource/fusion-ui/components/tabs/v4';
+\`\`\`
+\`\`\`html
+<fusion-tabs [variant]="variant" (selectedChange)="selectedChange($event)">
+  <fusion-tab>First</fusion-tab>
+  <fusion-tab>Second</fusion-tab>
+  <fusion-tab>Third</fusion-tab>
+  <fusion-tab [disabled]="true">Disabled</fusion-tab>
+</fusion-tabs>
+\`\`\`
+
+`
             }
         }
     },
