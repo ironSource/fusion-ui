@@ -46,4 +46,5 @@ export type tooltipConfiguration = {
     height?: number;
     backgroundColor?: string;
     preventTooltipToClose?: boolean;
+    position?: TooltipPosition;
 };
