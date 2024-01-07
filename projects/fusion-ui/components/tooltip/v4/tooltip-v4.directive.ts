@@ -14,7 +14,7 @@ import {fromEvent, Observable, of, Subject} from 'rxjs';
 import {switchMap, takeUntil} from 'rxjs/operators';
 import {TooltipContentV4Directive} from './tooltip-content-v4.directive';
 import {TooltipContentV4Component} from './tooltip-content-v4.component';
-import {isNullOrUndefined} from '@ironsource/fusion-ui';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 const POSITION_SHIFTING = 10;
 

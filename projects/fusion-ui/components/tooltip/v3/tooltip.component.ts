@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {TooltipBaseComponent} from '../common/v3-v4/tooltip-base.component';
+import {tooltipConfiguration} from '@ironsource/fusion-ui/components/tooltip/common/base';
 
 @Component({
     selector: 'fusion-tooltip',
@@ -23,4 +23,18 @@ import {TooltipBaseComponent} from '../common/v3-v4/tooltip-base.component';
     ],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TooltipComponent extends TooltipBaseComponent {}
+export class TooltipComponent {
+    /** @internal */
+    @Input() set fusionTooltipText(value: string) {
+        this.tooltipText = value;
+    }
+    /** @internal */
+    @Input() set tooltipConfiguration(value: tooltipConfiguration) {
+        this.tooltipConfig = {...value};
+    }
+
+    /** @internal */
+    tooltipConfig: tooltipConfiguration;
+    /** @internal */
+    tooltipText: string = '';
+}
