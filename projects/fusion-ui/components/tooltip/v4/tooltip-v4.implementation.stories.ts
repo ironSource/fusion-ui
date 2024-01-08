@@ -21,7 +21,6 @@ export default {
                 SvgModule.forRoot({assetsPath: environment.assetsPath}),
                 IconModule,
                 TooltipV4Directive,
-                TooltipContentV4Directive,
                 ButtonComponent
             ]
         })
