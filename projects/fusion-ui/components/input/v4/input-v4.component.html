@@ -1,0 +1,34 @@
+<label *ngIf="labelText" for="{{id}}" class="fu-label">{{ labelText }}</label>
+<div class="fu-input-wrapper fu-size-{{size}}">
+    <div class="fu-start-icon-wrapper">
+
+    </div>
+    <input #input
+           [id]="id"
+           class="fu-input"
+           autocomplete="off"
+           minlength="1"
+           [type]="type"
+           [attr.maxlength]="maxLength"
+           [attr.step]="step"
+           [attr.min]="min"
+           [attr.max]="max"
+           [attr.placeholder]="placeholder"
+           [disabled]="(disabled$ | async) || viewOnly"
+
+    />
+    <div class="fu-end-icon-wrapper">
+
+    </div>
+    <div class="fu-clear-button-wrapper" *ngIf="showClear">
+
+    </div>
+    <div class="fu-apply-button-wrapper" *ngIf="showApply">
+
+    </div>
+</div>
+<div class="fu-input-underline" style="display: none">
+    <div>icon</div>
+    <div>text</div>
+    <div>right</div>
+</div>
