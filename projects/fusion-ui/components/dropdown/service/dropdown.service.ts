@@ -74,22 +74,25 @@ export class DropdownService {
         {dropdownType, lastSearchValue}: {dropdownType?: string; lastSearchValue?: string} = {},
         withoutHTMLInString: boolean = false
     ): string {
+        if (isNullOrUndefined(option)) {
+            return '';
+        }
         if (dropdownType === 'tags') {
             return option.displayText ? option.displayText : option.title;
         } else {
             let optionToString;
             if (isString(option)) {
                 optionToString = option;
-            } else if (option.displayText) {
+            } else if (option?.displayText) {
                 optionToString = option.displayText;
             } else {
                 mappingOptions = mappingOptions ? mappingOptions : {id: 'id', title: 'title'};
                 if (withoutHTMLInString) {
-                    return `${option[mappingOptions.id]} ${option[mappingOptions.title]}`;
+                    return `${option[mappingOptions.id]} ${option[mappingOptions?.title]}`;
                 } else {
                     // eslint-disable-next-line
-                    return `<span class="is-id">${option[mappingOptions.id]}</span> <span class="is-title">${this.highlightSearchTerm(
-                        option[mappingOptions.title],
+                    return `<span class="is-id">${option[mappingOptions?.id]}</span> <span class="is-title">${this.highlightSearchTerm(
+                        option[mappingOptions?.title],
                         lastSearchValue
                     )}</span>`;
                 }

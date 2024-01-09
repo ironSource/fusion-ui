@@ -28,11 +28,11 @@ export abstract class DropdownOptionBaseComponent implements OnInit {
     }
     /** @internal */
     @HostBinding('class.is-has-children') get hasChildren(): boolean {
-        return Array.isArray(this.option.childOptions);
+        return Array.isArray(this.option?.childOptions);
     }
     /** @internal */
     @HostBinding('class.is-open') get isOpen(): boolean {
-        return this.option.isOpen;
+        return this.option?.isOpen;
     }
 
     /** @internal */
