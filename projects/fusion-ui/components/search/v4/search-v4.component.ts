@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 import {InputComponent, InputSize} from '@ironsource/fusion-ui/components/input/v4';
 import {FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
 import {Subject} from 'rxjs';
-import {isNullOrUndefined} from '@ironsource/fusion-ui';
 import {takeUntil} from 'rxjs/operators';
 
 @Component({
