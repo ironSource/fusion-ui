@@ -155,7 +155,6 @@ export class InputV4Component implements OnInit, OnDestroy {
         this._showClear = value;
     }
     get showClear() {
-        console.log('>>', this._showClear && this._inputValue?.length > 0);
         return this._showClear && this._inputValue?.length > 0;
     }
     private _showClear: boolean = false;
@@ -278,9 +277,8 @@ export class InputV4Component implements OnInit, OnDestroy {
     // region ControlValueAccessor
     /** @internal */
     writeValue(value: any): void {
-        console.log('>>>', value);
         if (isNullOrUndefined(value)) {
-            // this.clearInput();
+            this.clearInput();
         } else {
             this._inputValue = value;
             this.inputControl.setValue(this._inputValue, {emitEvent: false});
@@ -311,9 +309,7 @@ export class InputV4Component implements OnInit, OnDestroy {
 
     /** @internal */
     setDisabledState?(isDisabled: boolean): void {
-        console.log('setDisabledState: ', isDisabled);
         this.disabled$.next(isDisabled);
-        console.log('setDisabledState: ', this.disabled$.getValue());
     }
 
     // endregion
