@@ -58,13 +58,13 @@ export class NavigationPrimaryMenuComponent implements OnInit {
     selectedBarItem$ = new BehaviorSubject<PrimaryMenuItem>(null);
 
     menuToggleCollapsed = false;
-    menuCollapsedIcon = {iconName: 'arrowLineLeft', iconVersion: 'v4'};
-    menuExpandedIcon = {iconName: 'arrowLineRight', iconVersion: 'v4'};
+    menuCollapsedIcon = 'ph/arrow-line-left';
+    menuExpandedIcon = 'ph/arrow-line-right';
     popMenuPosition = TooltipPosition.BottomLeft;
 
     popMenuOffset$: Observable<RepositionOffset> = this.selectedBarItem$.asObservable().pipe(
         map((selectedBarItem: PrimaryMenuItem) => {
-            return selectedBarItem?.type === NavigationBarItemType.Main ? {x: 64, y: 48} : {x: 64};
+            return selectedBarItem?.type === NavigationBarItemType.Main ? {x: 56, y: 48} : {x: 56};
         })
     );
 

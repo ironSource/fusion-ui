@@ -1,13 +1,7 @@
 @import '../../../../src/style/scss/v4/mixins/mixins';
 @import '../../../../src/style/scss/v4/vars/vars';
 @import '../../../../src/style/scss/v4/vars/borders';
-
-$menuWidth: 296px;
-$userIconSize: 32px;
-$menuItemHeight: 32px;
-$menuItemIconSize: 20px;
-$menuItemHoverColor: #F5F5F5;
-
+@import '../../../../src/style/scss/v4/vars/layout';
 
 :host{
     @extend %reset;
@@ -21,8 +15,9 @@ $menuItemHoverColor: #F5F5F5;
         width: $menuWidth;
         padding: 0 8px;
         background-color: $fu-nav-menu-white-100;
-        box-shadow: $boxShadowV4-LG;
-        border-radius: $borderRadius;
+        box-shadow: $boxShadowV4-XL;
+        border-radius: $borderRadiusV4-md;
+        border: 1px solid var(--common-divider-elevation-0, #{$color-v4-common-divider-elevation-0});
 
         .truncate{
             @extend %truncate;
@@ -34,18 +29,19 @@ $menuItemHoverColor: #F5F5F5;
             align-items: center;
             padding: 14px 16px 14px 8px;
             gap: 16px;
-            border-bottom: $borderLine;
+            border-bottom: 1px solid var(--common-divider, #{$color-v4-common-divider});
+            height: 72px;
 
             .fu-user-icon-holder{
                 display: flex;
                 align-items: center;
                 justify-items: center;
-                @include icon-style('fu-user-icon', $fu-nav-text-primary, $userIconSize, true, true) {
+                @include icon-style('fu-user-icon', var(--action-active, #{$color-v4-action-active}), $userIconSize, true, true) {
                     @include size($userIconSize);
                 }
                 .fu-user-avatar{
                     @include size($userIconSize);
-                    border: solid 1px $fu-nav-text-primary;
+                    border: solid 1px var(--text-primary, #{$color-v4-text-primary});
                     border-radius: 50%;
                     background-size: contain;
                     background-repeat: no-repeat;
@@ -60,12 +56,12 @@ $menuItemHoverColor: #F5F5F5;
                 .fu-user-name{
                     cursor: default;
                     @extend %font-v4-heading-4;
-                    color: $fu-nav-text-primary;
+                    color: var(--text-primary, #{$color-v4-text-primary});
                 }
                 .fu-user-email{
                     cursor: default;
                     @extend %font-v4-caption;
-                    color: $fu-nav-text-secondary;
+                    color: var(--text-secondary, #{$color-v4-text-secondary});
                 }
             }
         }
@@ -90,21 +86,21 @@ $menuItemHoverColor: #F5F5F5;
                 border-radius: 4px;
 
                 @extend %font-v4-body-2;
-                color: $fu-nav-text-primary;
+                color: var(--text-primary, #{$color-v4-text-primary});
 
-                @include icon-style('fu-pop-menu-icon', $fu-icon-drop, $menuItemIconSize, true, true) {
+                @include icon-style('fu-pop-menu-icon', var(--action-active, #{$color-v4-action-active}), $menuItemIconSize, true, true) {
                     @include size($menuItemIconSize);
                 }
 
                 &:hover{
-                    background-color: $menuItemHoverColor;
+                    background-color: var(--action-hover, #{$color-v4-action-hover});
                 }
             }
             .fu-pop-menu-item-delimiter{
                 content: '';
                 height: 6px;
                 width: 100%;
-                border-bottom: $borderLine;
+                border-bottom: 1px solid var(--common-divider, #{$color-v4-common-divider});
                 margin-bottom: 6px;
             }
             &:hover{

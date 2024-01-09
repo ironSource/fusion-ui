@@ -65,8 +65,8 @@
 
 <!--region menu item elements-->
 <ng-template #menuItemInnerContent let-item="item">
-    <div class="fu-secondary-menu-item-icon-holder">
-        <fusion-icon *ngIf="item.icon" class="fu-secondary-menu-item-icon" [name]="item.icon"></fusion-icon>
+    <div class="fu-secondary-menu-item-icon-holder" *ngIf="item.icon">
+        <fusion-icon class="fu-secondary-menu-item-icon" [name]="item.icon"></fusion-icon>
     </div>
     <div class="fu-secondary-menu-item-label truncate" [fusionTooltip]="item.name">{{item.name}}</div>
     <fusion-icon *ngIf="!!item.children"
