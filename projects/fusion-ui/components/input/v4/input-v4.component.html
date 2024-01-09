@@ -1,34 +1,29 @@
 <label *ngIf="labelText" for="{{id}}" class="fu-label">{{ labelText }}</label>
 <div class="fu-input-wrapper fu-size-{{size}}">
-    <div class="fu-start-icon-wrapper">
-
-    </div>
+    <fusion-icon *ngIf="startIcon" class="fu-start-icon" [name]="startIcon"></fusion-icon>
+    <div *ngIf="prefix" class="fu-input-prefix">{{prefix}}</div>
     <input #input
            [id]="id"
            class="fu-input"
            autocomplete="off"
            minlength="1"
+           [class.fu-hide-step-arrows]="hideNumberArrows"
            [type]="type"
            [attr.maxlength]="maxLength"
            [attr.step]="step"
            [attr.min]="min"
            [attr.max]="max"
            [attr.placeholder]="placeholder"
-           [disabled]="(disabled$ | async) || viewOnly"
-
+           [attr.disabled]="((disabled$ | async) || viewOnly) ? 'disabled' : null"
+           [formControl]="inputControl"
     />
-    <div class="fu-end-icon-wrapper">
-
-    </div>
-    <div class="fu-clear-button-wrapper" *ngIf="showClear">
-
-    </div>
-    <div class="fu-apply-button-wrapper" *ngIf="showApply">
-
-    </div>
+    <div *ngIf="suffix" class="fu-input-suffix">{{suffix}}</div>
+    <fusion-icon *ngIf="showClear" class="fu-clear-button" name="ph/fill/x-circle" (click)="clearButtonClicked()"></fusion-icon>
+    <fusion-icon *ngIf="showApply" class="fu-apply-button" name="ph/check" (click)="applyButtonClicked.emit()"></fusion-icon>
+    <fusion-icon *ngIf="endIcon" class="fu-end-icon" [name]="endIcon"></fusion-icon>
+    <fusion-icon *ngIf="inlineErrorText" [fusionTooltip]="inlineErrorText" class="fu-inline-error-icon" name="ph/info"></fusion-icon>
 </div>
-<div class="fu-input-underline" style="display: none">
-    <div>icon</div>
-    <div>text</div>
-    <div>right</div>
+<div class="fu-input-underline">
+    <!-- Add FieldHelperComponent here -->
+    <div *ngIf="showLengthCounter" class="fu-max-length-counter">{{(valueLength$ | async)}} <ng-container *ngIf="maxLength">/{{maxLength}}</ng-container></div>
 </div>
