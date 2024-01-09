@@ -64,6 +64,9 @@ export class InputV4Component implements OnInit, OnDestroy {
     @Input()
     set type(value: InputType) {
         this._type = value;
+        if (this.showPasswordToggleButton$.getValue() === null) {
+            this.showPasswordToggleButton$.next(this._type === 'password');
+        }
     }
     get type() {
         return this._type;
@@ -229,6 +232,8 @@ export class InputV4Component implements OnInit, OnDestroy {
     /** @internal */
     disabled$ = new BehaviorSubject(false);
     /** @internal */
+    showPasswordToggleButton$ = new BehaviorSubject<boolean>(null);
+    /** @internal */
     valueLength$ = new BehaviorSubject(0);
 
     private inputControlValueChanges$: Observable<any>;
@@ -264,6 +269,10 @@ export class InputV4Component implements OnInit, OnDestroy {
     /** @internal */
     setFocus(): void {
         this.input.nativeElement.focus();
+    }
+
+    togglePasswordShown() {
+        this.type = this.type === 'password' ? 'text' : 'password';
     }
 
     // region ControlValueAccessor

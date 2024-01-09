@@ -9,6 +9,7 @@ import {InputV4Component} from './input-v4.component';
 
 const formControl = new FormControl();
 const formControlDisabled = new FormControl({value: 'Disabled', disabled: true});
+const formControlPassword = new FormControl('qwerty123456');
 
 export default {
     title: 'V4/Components/Inputs/TextField',
@@ -163,4 +164,21 @@ export const WithLengthCounter: Story = {
         showLengthCounter: true,
         maxLength: 15
     }
+};
+
+export const Password: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            type: 'password',
+            formControl: formControlPassword
+        },
+        template: `
+<fusion-input
+    [formControl]="formControl"
+    [type]="type"
+    [viewOnly]="viewOnly"
+  ></fusion-input>
+`
+    })
 };

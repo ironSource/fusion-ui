@@ -34,8 +34,11 @@
             outline-color: var(--action-outlined-border, #{$color-v4-action-outlined-border});
             background-color: var(--action-disabled-background, #{$color-v4-action-disabled-background});
 
+            .fu-start-icon,
+            .fu-end-icon,
             .fu-input-prefix,
             .fu-input-suffix,
+            .fu-show-password-button,
             .fu-clear-button,
             .fu-apply-button {
                 color: var(--text-disabled, #{$color-v4-text-disabled});
@@ -46,6 +49,7 @@
         // region icons
         .fu-start-icon,
         .fu-end-icon,
+        .fu-show-password-button,
         .fu-inline-error-icon{
             width: 16px;
             height: 16px;
