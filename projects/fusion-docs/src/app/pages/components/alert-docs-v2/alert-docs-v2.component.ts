@@ -113,6 +113,9 @@ export class AlertDocsV2Component implements OnInit, OnDestroy {
     // region input v4
     formControlInput = new FormControl({value: 'test', disabled: true});
     // endregion
+    // region search v4
+    formControlSearch = new FormControl();
+    // endregion
 
     chbFormControl = new FormControl({value: true, disabled: true});
 
@@ -131,6 +134,10 @@ export class AlertDocsV2Component implements OnInit, OnDestroy {
 
         this.formControlInput.valueChanges.subscribe(value => {
             console.log('Input value >>', value);
+        });
+
+        this.formControlSearch.valueChanges.subscribe(value => {
+            console.log('Search value >>', value);
         });
     }
 

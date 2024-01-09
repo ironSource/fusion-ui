@@ -30,6 +30,11 @@
                     </div>
                     <div>Val: {{ formControlInput.valueChanges | async }}</div>
                 </div>
+                <br>
+                <fusion-search
+                    [formControl]="formControlSearch"
+                    placeholder="Search"
+                ></fusion-search>
 
                 <br>
 

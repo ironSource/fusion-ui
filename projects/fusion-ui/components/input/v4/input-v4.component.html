@@ -24,7 +24,7 @@
     <fusion-icon *ngIf="endIcon" class="fu-end-icon" [name]="endIcon"></fusion-icon>
     <fusion-icon *ngIf="inlineErrorText" [fusionTooltip]="inlineErrorText" class="fu-inline-error-icon" name="ph/info"></fusion-icon>
 </div>
-<div class="fu-input-underline">
+<div *ngIf="showLengthCounter" class="fu-input-underline">
     <!-- Add FieldHelperComponent here -->
     <div *ngIf="showLengthCounter" class="fu-max-length-counter">{{(valueLength$ | async)}} <ng-container *ngIf="maxLength">/{{maxLength}}</ng-container></div>
 </div>
