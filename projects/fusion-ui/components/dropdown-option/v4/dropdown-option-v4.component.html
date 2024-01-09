@@ -1,0 +1,19 @@
+<div class="fu-list-option-wrapper" [class.fu-disabled]="option.isDisabled">
+    <ng-container *ngIf="!option.content; else customContentOption">
+        <fusion-flag *ngIf="option.flag" size="16" [rounded]="true" [countryCode]="option.flag"></fusion-flag>
+        <img class="fu-option-image" [src]="option.image" *ngIf="option.image" alt="" loading="lazy"/>
+        <fusion-icon *ngIf="option.icon" [name]="option.icon" class="fu-option-icon"></fusion-icon>
+        <div [id]="option.id" class="fu-text-content truncate"
+             fusionTooltip="{{ optionToStringFunc | generic: option:mappingOptions:settings }}">
+            <span innerHTML="{{ optionToStringFunc | generic: option:mappingOptions:settings }}"></span>
+            <div *ngIf="option.subText" class="sub-text-container">
+                <label>{{ option.subText?.text || option.subText }}</label>
+            </div>
+        </div>
+    </ng-container>
+</div>
+
+<ng-template #customContentOption>
+    <fusion-dynamic-components [configuration]="option.content"></fusion-dynamic-components>
+</ng-template>
+

@@ -1,0 +1,47 @@
+@import '../../../src/style/scss/v4/vars/vars';
+@import '../../../src/style/scss/v4/colors';
+@import '../../../src/style/scss/v4/spacings';
+@import '../../../src/style/scss/v4/border-radius';
+@import '../../../src/style/scss/v4/vars/fonts';
+
+:host{
+    margin: 0;
+    padding: 0;
+    .fu-list-option-wrapper{
+        display: flex;
+        gap: 8px;
+        flex-direction: row;
+        align-items: center;
+        padding: 6px 8px;
+        @extend %font-v4-body-2;
+        color: var(--text-primary, #{$color-v4-text-primary});
+        border-radius: var(--border-radius-lg, #{$borderRadiusV4-lg});
+        .fu-text-content {
+            @extend %truncate-flex-child;
+        }
+        .fu-option-image{
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+        }
+        .fu-option-icon{
+            width: 16px;
+            height: 16px;
+            color: var(--action-active, #{$color-v4-action-active});
+        }
+        .sub-text-container{
+            color: var(--text-secondary, #{$color-v4-text-secondary});
+        }
+        &:hover{
+            background-color: var(--action-hover, #{$color-v4-action-hover});
+            cursor: pointer;
+        }
+        &.fu-disabled{
+            color: var(--text-disabled, #{$color-v4-text-disabled});
+            pointer-events: none;
+        }
+
+
+
+    }
+}
