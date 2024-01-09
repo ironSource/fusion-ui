@@ -1,0 +1,48 @@
+@import '../../src/style/scss/v4/colors';
+@import '../../src/style/scss/v4/spacings';
+@import '../../src/style/scss/v4/border-radius';
+@import '../../src/style/scss/v4/vars/fonts';
+
+:host {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    width: fit-content;
+    .fu-trend-chip{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0;
+        padding: 2px 4px;
+        border-radius: var(--border-radius-sm, #{$borderRadiusV4-sm});
+        @extend %font-v4-chip-label;
+
+        color: var(--text-secondary, #{$color-v4-text-secondary});
+        background-color: var(--default-light, #{$color-v4-default-light});
+        .fu-trend-icon{
+            width: 12px;
+            height: 12px;
+        }
+        &.fu-trend-up{
+            color: var(--success-contrast-text, #{$color-v4-success-contrast-text});
+            background-color: var(--success-light, #{$color-v4-success-light});
+            .fu-trend-icon{
+                color: var(--success-darker, #{$color-v4-success-darker});
+            }
+        }
+        &.fu-trend-down{
+            color: var(--error-contrast-text, #{$color-v4-error-contrast-text});
+            background-color: var(--error-light, #{$color-v4-error-light});
+            .fu-trend-icon{
+                color: var(--error-dark, #{$color-v4-error-dark});
+            }
+        }
+
+        &.fu-icon-only{
+            padding: 4px;
+        }
+        &.fu-no-background{
+            background-color: transparent;
+        }
+    }
+}
