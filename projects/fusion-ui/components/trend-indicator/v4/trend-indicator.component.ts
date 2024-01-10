@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {TrendStatus} from '@ironsource/fusion-ui/components/trend-indicator/trend-indicator.entities';
+import {TrendStatus} from '@ironsource/fusion-ui/components/trend-indicator/v4/trend-indicator.entities';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 
 @Component({

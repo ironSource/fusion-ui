@@ -1,7 +1,7 @@
 import {Meta, StoryObj, moduleMetadata} from '@storybook/angular';
 import {dedent} from 'ts-dedent';
 import {CommonModule} from '@angular/common';
-import {environment} from '../../../../stories/environments/environment';
+import {environment} from '../../../../../stories/environments/environment';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TrendIndicatorComponent} from './trend-indicator.component';
