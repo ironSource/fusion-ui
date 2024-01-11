@@ -1,11 +1,18 @@
 import {Meta, StoryObj, moduleMetadata} from '@storybook/angular';
 import {dedent} from 'ts-dedent';
 import {CommonModule} from '@angular/common';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {environment} from '../../../../../stories/environments/environment';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {ToggleButtonGroupComponent} from './toggle-button-group.component';
 import {ToggleButtonGroupOption} from '@ironsource/fusion-ui/components/toggle-button-group/v4/toggle-button-group.entities';
+
+const formControl = new FormControl({
+    id: 1,
+    label: 'Pie',
+    icon: 'ph/chart-pie'
+});
 
 export default {
     title: 'V4/Components/Buttons/ToggleButton',
@@ -13,7 +20,7 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule]
+            imports: [CommonModule, FormsModule, ReactiveFormsModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule]
         })
     ],
     tags: ['autodocs'],
@@ -47,7 +54,13 @@ export default {
                 icon: 'ph/chart-bar'
             }
         ] as ToggleButtonGroupOption[],
-        size: 'medium'
+        size: 'medium',
+        formControl: formControl
+    },
+    argTypes: {
+        formControl: {
+            control: false
+        }
     }
 } as Meta<ToggleButtonGroupComponent>;
 
@@ -62,11 +75,11 @@ export const Color: Story = {
         <div style="display: flex; flex-direction: column; gap: 24px;">
             <div style="display: flex; flex-direction: column; gap: 12px">
                 <div>Default</div>
-                <fusion-toggle-button-group color="default" [options]="options"></fusion-toggle-button-group>
+                <fusion-toggle-button-group color="default" [options]="options" [formControl]="formControl"></fusion-toggle-button-group>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px">
                 <div>Primary</div>
-                <fusion-toggle-button-group color="primary" [options]="options"></fusion-toggle-button-group>
+                <fusion-toggle-button-group color="primary" [options]="options" [formControl]="formControl"></fusion-toggle-button-group>
             </div>
          </div>
         `
@@ -110,15 +123,15 @@ export const Variants: Story = {
         <div style="display: flex; flex-direction: column; gap: 24px;">
             <div style="display: flex; flex-direction: column; gap: 12px">
                 <div>Icon</div>
-                <fusion-toggle-button-group [options]="optionsIcon"></fusion-toggle-button-group>
+                <fusion-toggle-button-group [options]="optionsIcon" [formControl]="formControl"></fusion-toggle-button-group>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px">
                 <div>Text</div>
-                <fusion-toggle-button-group [options]="optionsText"></fusion-toggle-button-group>
+                <fusion-toggle-button-group [options]="optionsText" [formControl]="formControl"></fusion-toggle-button-group>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px">
                 <div>Icon and text</div>
-                <fusion-toggle-button-group [options]="options"></fusion-toggle-button-group>
+                <fusion-toggle-button-group [options]="options" [formControl]="formControl"></fusion-toggle-button-group>
             </div>
          </div>
         `
@@ -132,19 +145,19 @@ export const Sizes: Story = {
         <div style="display: flex; flex-direction: column; gap: 24px;">
             <div style="display: flex; flex-direction: column; gap: 12px">
                 <div>Small</div>
-                <fusion-toggle-button-group size="small" [options]="options"></fusion-toggle-button-group>
+                <fusion-toggle-button-group size="small" [options]="options" [formControl]="formControl"></fusion-toggle-button-group>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px">
                 <div>Medium</div>
-                <fusion-toggle-button-group size="medium" [options]="options"></fusion-toggle-button-group>
+                <fusion-toggle-button-group size="medium" [options]="options" [formControl]="formControl"></fusion-toggle-button-group>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px">
                 <div>Large</div>
-                <fusion-toggle-button-group size="large" [options]="options"></fusion-toggle-button-group>
+                <fusion-toggle-button-group size="large" [options]="options" [formControl]="formControl"></fusion-toggle-button-group>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px">
                 <div>Extra Large</div>
-                <fusion-toggle-button-group size="xlarge" [options]="options"></fusion-toggle-button-group>
+                <fusion-toggle-button-group size="xlarge" [options]="options" [formControl]="formControl"></fusion-toggle-button-group>
             </div>
          </div>
         `
