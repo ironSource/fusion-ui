@@ -6,12 +6,16 @@
 $borderRadius: var(--border-radius-md, #{$borderRadiusV4-md});
 $paddingSmall: calc(var(--spacing-50, #{$spacingV4-50}) - 1px) var(--spacing-50, #{$spacingV4-50});
 $paddingSmallWithIcon: calc(var(--spacing-25, #{$spacingV4-25}) - 1px) var(--spacing-50, #{$spacingV4-50});
+$paddingSmallWithIconOnly: calc(var(--spacing-25, #{$spacingV4-25}) - 1px) var(--spacing25, #{$spacingV4-25});
 $paddingMedium: calc(var(--spacing-75, #{$spacingV4-75}) - 1px) var(--spacing-100, #{$spacingV4-100});
 $paddingMediumWithIcon: calc(var(--spacing-50, #{$spacingV4-50}) - 1px) var(--spacing-100, #{$spacingV4-100});
+$paddingMediumWithIconOnly: calc(var(--spacing-50, #{$spacingV4-50}) - 1px) var(--spacing-50, #{$spacingV4-50});
 $paddingLarge: calc(var(--spacing-75, #{$spacingV4-75}) - 1px) var(--spacing-100, #{$spacingV4-100});
 $paddingLargeWithIcon: calc(var(--spacing-50, #{$spacingV4-50}) - 1px) var(--spacing-100, #{$spacingV4-100});
+$paddingLargeWithIconOnly: calc(var(--spacing-50, #{$spacingV4-50}) - 1px) var(--spacing-50, #{$spacingV4-50});
 $paddingXLarge: calc(var(--spacing-125, #{$spacingV4-125}) - 1px) var(--spacing-100, #{$spacingV4-100});
 $paddingXLargeWithIcon: calc(var(--spacing-100, #{$spacingV4-100}) - 1px) var(--spacing-100, #{$spacingV4-100});
+$paddingXLargeWithIconOnly: calc(var(--spacing-100, #{$spacingV4-100}) - 1px) var(--spacing-100, #{$spacingV4-100});
 
 %optionIconSize {
     width: 20px;
@@ -42,11 +46,14 @@ $paddingXLargeWithIcon: calc(var(--spacing-100, #{$spacingV4-100}) - 1px) var(--
             background-color: var(--default-main, #{$color-v4-default-main});
             border: solid 1px var(--default-outlined-border, #{$color-v4-default-outlined-border});
             border-left: none;
+
             padding: $paddingMedium;
             &:has(fusion-icon) {
                 padding: $paddingMediumWithIcon;
             }
-
+            &:has(fusion-icon):not(:has(.fu-option-label-text)) {
+                padding: $paddingMediumWithIconOnly;
+            }
 
             input {
                 display: none;
@@ -69,7 +76,7 @@ $paddingXLargeWithIcon: calc(var(--spacing-100, #{$spacingV4-100}) - 1px) var(--
 
             &:hover {
                 color: var(--text-primary, #{$color-v4-text-primary});
-                background-color: white;
+                background-color: var(--default-dark, #{$color-v4-default-dark});
                 cursor: pointer;
             }
 
@@ -105,6 +112,9 @@ $paddingXLargeWithIcon: calc(var(--spacing-100, #{$spacingV4-100}) - 1px) var(--
                 &:has(fusion-icon) {
                     padding: $paddingSmallWithIcon;
                 }
+                &:has(fusion-icon):not(:has(.fu-option-label-text)) {
+                    padding: $paddingSmallWithIconOnly;
+                }
             }
         }
 
@@ -118,6 +128,9 @@ $paddingXLargeWithIcon: calc(var(--spacing-100, #{$spacingV4-100}) - 1px) var(--
                 &:has(fusion-icon) {
                     padding: $paddingLargeWithIcon;
                 }
+                &:has(fusion-icon):not(:has(.fu-option-label-text)) {
+                    padding: $paddingLargeWithIconOnly;
+                }
             }
         }
 
@@ -130,6 +143,9 @@ $paddingXLargeWithIcon: calc(var(--spacing-100, #{$spacingV4-100}) - 1px) var(--
                 }
                 &:has(fusion-icon) {
                     padding: $paddingXLargeWithIcon;
+                }
+                &:has(fusion-icon):not(:has(.fu-option-label-text)) {
+                    padding: $paddingXLargeWithIconOnly;
                 }
             }
         }

@@ -24,7 +24,7 @@ import {NG_VALUE_ACCESSOR} from '@angular/forms';
 export class ToggleButtonGroupComponent {
     @Input() name: string = 'fu-btn-grp-' + this.uniqueService.getUniqueId();
     @Input() options: ToggleButtonGroupOption[] = [];
-    @Input() size: ToggleButtonGroupSize = 'small';
+    @Input() size: ToggleButtonGroupSize = 'medium';
     @Input() color: ToggleButtonGroupColor = 'default';
     // endregion
 

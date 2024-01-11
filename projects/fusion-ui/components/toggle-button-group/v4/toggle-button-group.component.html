@@ -6,6 +6,6 @@
                [checked]="option.id === selected?.id"
                (change)="setSelected(option)" />
         <fusion-icon *ngIf="option.icon" [name]="option.icon"></fusion-icon>
-        <div>{{ option.label }}</div>
+        <div *ngIf="option.label" class="fu-option-label-text">{{ option.label }}</div>
     </label>
 </div>
