@@ -13,33 +13,9 @@ import {TrendStatus} from './trend-indicator.entities';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TrendIndicatorComponent {
-    // region Inputs - status
-    @Input() set status(value: TrendStatus) {
-        this._status = value;
-    }
-    get status(): TrendStatus {
-        return this._status;
-    }
-    private _status: TrendStatus = 'neutral';
-    // endregion
-    // region Inputs - value
-    @Input() set value(value: string) {
-        this._value = value;
-    }
-    get value(): string {
-        return this._value;
-    }
-    private _value: string = '';
-    // endregion
-    // region Inputs - hasBackground
-    @Input() set hasBackground(value: boolean) {
-        this._hasBackground = value;
-    }
-    get hasBackground(): boolean {
-        return this._hasBackground;
-    }
-    private _hasBackground = true;
-    // endregion
+    @Input() status: TrendStatus = 'neutral';
+    @Input() value: string = '';
+    @Input() hasBackground: boolean = true;
 
     get showTrendIcon(): boolean {
         return this.status !== 'neutral' || !this.value;
