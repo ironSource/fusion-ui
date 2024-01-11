@@ -76,7 +76,7 @@ $paddingXLargeWithIconOnly: calc(var(--spacing-100, #{$spacingV4-100}) - 1px) va
 
             &:hover {
                 color: var(--text-primary, #{$color-v4-text-primary});
-                background-color: var(--default-dark, #{$color-v4-default-dark});
+                background-color: var(--default-light, #{$color-v4-default-light});
                 cursor: pointer;
             }
 
