@@ -94,3 +94,21 @@ $scrollBarColor: rgba(83, 87, 91, 0.3);
     }
 }
 
+%cloudUiScroll {
+    &::-webkit-scrollbar, & *::-webkit-scrollbar {
+        background-color: rgba(0, 0, 0, 0.024);
+        width: 8px;
+        border-radius: 8px;
+    }
+    &::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        background-color: rgb(187, 187, 187);
+        min-height: 24px;
+    }
+    &::-webkit-scrollbar-thumb:hover, & *::-webkit-scrollbar-thumb:hover{
+        background-color: rgb(128, 128, 128);
+    }
+    &::-webkit-scrollbar-corner, & *::-webkit-scrollbar-corner {
+        background-color: rgb(255, 255, 255);
+    }
+}
