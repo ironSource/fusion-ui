@@ -21,7 +21,7 @@ export default {
     parameters: {
         docs: {
             description: {
-                component: dedent`***SearchComponent***.
+                component: dedent`***DropdownOptionComponent***.
                 `
             }
         },
@@ -51,6 +51,31 @@ export const Disabled: Story = {
             isDisabled: true
         } as DropdownOption
     }
+};
+
+export const Selected: Story = {
+    render: args => ({
+        props: args,
+        template: `
+<style>
+    ul{
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+    li{
+        margin: 0;
+        padding: 0;
+        display: list-item;
+    }
+</style>
+<ul>
+    <li class="option is-selected">
+        <fusion-dropdown-option [option]="option"></fusion-dropdown-option>
+    </li>
+</ul>
+    `
+    })
 };
 
 export const Icon: Story = {

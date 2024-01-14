@@ -1,0 +1,40 @@
+@import '../../../src/style/scss/v4/vars/vars';
+@import '../../../src/style/scss/v4/colors';
+@import '../../../src/style/scss/v4/spacings';
+@import '../../../src/style/scss/v4/shadows';
+@import '../../../src/style/scss/v4/border-radius';
+
+$maxHeight: 325px;
+
+:host {
+  margin: 0;
+  padding: 0;
+  display: block;
+
+  .fu-dropdown-list-wrapper {
+    display: flex;
+    gap: var(--spacing-100, #{$spacingV4-100});
+    flex-direction: column;
+    padding: var(--spacing-100, #{$spacingV4-100});
+    border-radius: var(--border-radius-lg, #{$borderRadiusV4-lg});
+    border: solid 1px var(--common-divider, #{$color-v4-common-divider});
+    background-color: var(--background-default, #{$color-v4-background-default});
+    box-shadow: var(--box-shadow-lg, #{$boxShadowV4-LG});
+    max-height: $maxHeight;
+
+    ul{
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      overflow-y: auto;
+      // todo: get custom scroll from studio
+      //@extend %customScroll;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-50, #{$spacingV4-50});
+      li{
+
+      }
+    }
+  }
+}

@@ -40,8 +40,12 @@
             color: var(--text-disabled, #{$color-v4-text-disabled});
             pointer-events: none;
         }
+    }
+}
 
-
-
+:host-context(li.option.is-selected){
+    .fu-list-option-wrapper{
+        background-color: var(--action-selected, #{$color-v4-action-selected});
+        pointer-events: none;
     }
 }
