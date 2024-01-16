@@ -68,6 +68,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     private _maxWidth: number;
 
     @Input() set configuration(value: ChipFilterComponentConfigurations) {
+        console.log('>>>>', value);
         if (!!value) {
             this.id = value.id;
             this.disabled = value.disabled || false;

@@ -22,5 +22,5 @@ export class DropdownSelectV4Component {
     @Input() validationState: 'error' | 'warning' | 'success' | null = null;
     @Input() imageUrl: string;
     @Input() icon: string;
-    @Input() country: CountryCode;
+    @Input() country: CountryCode | string;
 }

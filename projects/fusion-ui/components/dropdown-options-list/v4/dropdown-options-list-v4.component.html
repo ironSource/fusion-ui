@@ -1,20 +1,13 @@
-<div class="fu-dropdown-list-wrapper">
-    <div class="fu-search-wrapper" *ngIf="isSearchable">
-        <fusion-search size="small" [formControl]="formControlSearchValue"></fusion-search>
-    </div>
-    <ul class="fu-options-wrapper">
-        <ng-container *ngFor="let option of displayedOptions; trackBy: trackByFunc">
-            <li class="option" *ngIf="!option.isGroup; else groupOption">
-                <fusion-dropdown-option [option]="option"></fusion-dropdown-option>
-            </li>
-            <ng-template #groupOption>
-                <li class="option">
-                    <div class="fu-dd-group">
-                        {{dropdownService.optionToString(option)}}
-                    </div>
-                </li>
-            </ng-template>
-        </ng-container>
-    </ul>
-</div>
+<ng-container *ngFor="let option of displayedOptions; trackBy: trackByFunc">
+    <li class="option" *ngIf="!option.isGroup; else groupOption" [class.fu-selected]="isSelected(option)">
+        <fusion-dropdown-option  [option]="option" (click)="onChangeSelected(option, $event)"></fusion-dropdown-option>
+    </li>
+    <ng-template #groupOption>
+        <li class="option">
+            <div class="fu-dd-group">
+                {{ dropdownService.optionToString(option) }}
+            </div>
+        </li>
+    </ng-template>
+</ng-container>
 

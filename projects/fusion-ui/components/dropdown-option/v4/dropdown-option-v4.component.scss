@@ -43,7 +43,7 @@
     }
 }
 
-:host-context(li.option.is-selected){
+:host-context(li.option.fu-selected){
     .fu-list-option-wrapper{
         background-color: var(--action-selected, #{$color-v4-action-selected});
         pointer-events: none;

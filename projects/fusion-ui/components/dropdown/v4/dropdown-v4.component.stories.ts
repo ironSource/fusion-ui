@@ -34,7 +34,8 @@ export default {
         }
     },
     args: {
-        displayedOptions: longOptionsList
+        options: longOptionsList,
+        search: true
     }
 } as Meta<DropdownV4Component>;
 

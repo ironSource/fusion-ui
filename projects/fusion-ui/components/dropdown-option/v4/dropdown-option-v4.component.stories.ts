@@ -70,7 +70,7 @@ export const Selected: Story = {
     }
 </style>
 <ul>
-    <li class="option is-selected">
+    <li class="option fu-selected">
         <fusion-dropdown-option [option]="option"></fusion-dropdown-option>
     </li>
 </ul>

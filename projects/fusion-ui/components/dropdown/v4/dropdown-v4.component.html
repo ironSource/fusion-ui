@@ -1,1 +1,74 @@
-<p>dropdown-v4 works!</p>
+<div class="fu-dropdown"
+        [id]="id"
+        [clickOutsideActivate]="isOpen$ | async"
+        (fusionClickOutside)="onOutsideClick($event)"
+        [ngClass]="getHolderCSSClasses()"
+>
+<!--    <div *ngIf="templateRef" #trigger  (click)="openDropdown($event)">-->
+<!--        <ng-container [ngTemplateOutlet]="templateRef"></ng-container>-->
+<!--    </div>-->
+
+    <ng-container *ngIf="!templateRef" [ngTemplateOutlet]="defaultTrigger"></ng-container>
+
+    <ng-template #defaultTrigger>
+        <fusion-dropdown-select *ngIf="(dropdownSelectConfigurations$ | async) as triggerConfiguration"
+            #selectComponent
+            [placeholder]="triggerConfiguration.placeholder"
+            [disabled]="triggerConfiguration.disabled"
+            [isOpen]="triggerConfiguration.isOpen"
+            [icon]="triggerConfiguration.icon"
+            [imageUrl]="triggerConfiguration.labelImage"
+            [country]="triggerConfiguration.labelFlag"
+            (click)="openDropdown($event)"
+        ></fusion-dropdown-select>
+    </ng-template>
+
+    <ng-container *ngIf="(dropdownSelectConfigurations$ | async) as configurations">
+        <div class="options-dropdown"
+             [class.fu-has-title]="templateRef && optionsTitle"
+             [class.fu-has-search]="templateRef && configurations.isSearch"
+             [class.options-locate-left]="isLocatedLeft"
+             [class.options-locate-right]="isLocatedRight"
+             [ngClass]="{'dd-disabled': isDisabled, 'dd-confirm': search || autoComplete, 'dd-scroll': hasScroll}"
+        >
+            <!--dropdown options holder-->
+            <!--elements shown without selector-->
+            <ng-container>
+                <!--search input-->
+                <ng-container>
+                    <div class="fu-search-holder" *ngIf="configurations.isSearch && configurations.isOpen">
+                        <fusion-dropdown-search class="fu-search-in-options"
+                                                [formControl]="searchValue"
+                                                [placeholder]="configurations.placeholder?.search"
+                                                #searchComponent
+                        ></fusion-dropdown-search>
+                    </div>
+                </ng-container>
+                <!--search input-->
+            </ng-container>
+            <!--elements shown without selector-->
+            <div class="options-holder" (scroll)="onScroll($event)" #optionsHolder>
+                <ul class="options">
+                    <fusion-dropdown-options-list
+                            [displayedOptions]="displayedOptionsObservable$ | async"
+                            [selectedOptions]="selected"
+                            (changeSelected)="changeSelected($event)"
+                    ></fusion-dropdown-options-list>
+                    <!--loader holder-->
+                    <!--<li [fusionDropdownLoader]="(autoComplete || search) && loading"></li>-->
+                    <!--no-result holder-->
+                    <li class="no-results" *ngIf="!filteredOptions?.length && !loading">No results found</li>
+                </ul>
+            </div>
+        </div>
+    </ng-container>
+</div>
+
+<ng-template #chipContent>
+    <div class="fu-chip-content-default">
+        <div [fusionTooltip]="chipDefaultContent" class="truncate fu-chip-text">
+            <span *ngIf="placeholderPrefix" class="fu-chip-label">{{ placeholderPrefix + ': '}}</span>
+            {{ placeholder$ | async }}
+        </div>
+    </div>
+</ng-template>

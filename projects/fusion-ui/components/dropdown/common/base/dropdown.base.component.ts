@@ -180,7 +180,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     /** @ignore */
     isOpen$: BehaviorSubject<boolean> = new BehaviorSubject(false);
     /** @ignore */
-    id: any;
+    id: any = this.uniqueIdService.getUniqueId().toString();
     /** @ignore */
     searchValue = new FormControl();
     /** @ignore */
@@ -326,6 +326,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
         // clear '3' and then type again '3'. instead of '3' requests will be only 1.
         this.subject.pipe(takeUntil(this.onDestroy$), debounceTime(DROPDOWN_DEBOUNCE_TIME), distinctUntilChanged()).subscribe(() => {
             if (this.searchValue.value && this.searchValue.value.trim().length !== 0) {
+                console.log('emit searchChange');
                 this.searchChange.emit(this.searchValue.value);
             } else {
                 if (this.autoComplete) {
@@ -405,6 +406,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
      * @ignore
      */
     onSearchChange() {
+        console.log('onSearchChange');
         this.focusedLI = -1;
         if (!isNullOrUndefined(this.searchValue.value) && !this.searchValue.value.trim().length && this.autoComplete) {
             this.clearOptions();
@@ -449,9 +451,11 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
      */
     @detectChangesDecorator
     closeDropdown({clickOutside = false}: ClosedOptions = {clickOutside: false}) {
+        console.log('closeDropdown', clickOutside);
+
         this.isOpen$.next(false);
         this.searchValue.reset('');
-        if (this.selectComponent) {
+        if (!!this.selectComponent?.resetSearch) {
             this.selectComponent.resetSearch();
         }
         this.focusedLI = -1;

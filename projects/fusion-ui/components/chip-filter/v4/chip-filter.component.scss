@@ -1,0 +1,40 @@
+@import '../../../src/style/scss/v4/mixins/mixins';
+@import '../../../src/style/scss/v4/vars/vars';
+@import '../../../src/style/scss/v4/colors';
+@import '../../../src/style/scss/v4/spacings';
+@import '../../../src/style/scss/v4/shadows';
+@import '../../../src/style/scss/v4/border-radius';
+
+
+$chipPadding: 6px 6px 6px 8px;
+
+
+:host {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  position: relative;
+
+  .fu-chip-filter-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    align-items: center;
+
+    padding: $chipPadding;
+    //width: fit-content;
+    //height: $chipHeight;
+    @extend %font-v4-chip-label;
+    border-radius: 100px;
+    border: 1px solid var(--default-outlined-border, #{$color-v4-default-outlined-border});
+    background-color: var(--background-default, #{$color-v4-background-default});
+    color: var(--text-primary, #{$color-v4-text-primary});
+
+    .fu-chip-left-icon,
+    .fu-chip-right-icon,
+    .fu-icon-close{
+      @include size(16px);
+    }
+  }
+}

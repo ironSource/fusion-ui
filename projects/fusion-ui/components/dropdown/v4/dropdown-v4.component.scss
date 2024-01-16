@@ -1,0 +1,73 @@
+@import '../../../src/style/scss/v4/mixins/mixins';
+@import '../../../src/style/scss/v4/vars/vars';
+@import '../../../src/style/scss/v4/colors';
+@import '../../../src/style/scss/v4/fonts';
+@import '../../../src/style/scss/v4/spacings';
+@import '../../../src/style/scss/v4/shadows';
+@import '../../../src/style/scss/v4/border-radius';
+
+$optionsMaxHeight: 300px;
+$searchHeight: 28px;
+
+:host {
+  margin: 0;
+  padding: 0;
+
+  .fu-dropdown {
+    position: relative;
+
+    // dropdown options base
+    .options-dropdown {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: calc(100% + 4px);
+      min-width: var(--dropdown-overlay-min-width, 180px);
+      max-height: 0;
+      display: none;
+      gap: var(--spacing-50, #{$spacingV4-50});
+      flex-direction: column;
+      padding: var(--spacing-100, #{$spacingV4-100});
+      border-radius: var(--border-radius-lg, #{$borderRadiusV4-lg});
+      border: solid 1px var(--common-divider, #{$color-v4-common-divider});
+      background-color: var(--background-default, #{$color-v4-background-default});
+      box-shadow: var(--box-shadow-lg, #{$boxShadowV4-LG});
+
+      .options-holder {
+        overflow-y: auto;
+        overflow-x: hidden;
+        @extend %cloudUiScroll;
+        max-height: calc($optionsMaxHeight - (var(--spacing-100, #{$spacingV4-100}) * 2));
+
+        ul {
+          margin: 0;
+          list-style-type: none;
+          display: flex;
+          flex-direction: column;
+          gap: var(--spacing-50, #{$spacingV4-50});
+          padding: 0 var(--spacing-50, #{$spacingV4-50}) 0 0;
+
+          .no-results {
+            color: var(--text-disabled, #{$color-v4-text-disabled});
+            @extend %font-v4-body-2;
+            padding: 6px 8px;
+          }
+        }
+      }
+
+      &:has(.fu-search-holder) {
+        .options-holder {
+          max-height: calc(#{$optionsMaxHeight} - (var(--spacing-100, #{$spacingV4-100}) * 2) - #{$searchHeight});
+        }
+      }
+    }
+
+    &.dd-opened {
+      .options-dropdown {
+        display: flex;
+        z-index: 100;
+        max-height: $optionsMaxHeight;
+      }
+    }
+  }
+}
