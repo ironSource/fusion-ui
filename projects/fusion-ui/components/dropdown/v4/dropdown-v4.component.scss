@@ -50,7 +50,7 @@ $searchHeight: 28px;
           .no-results {
             color: var(--text-disabled, #{$color-v4-text-disabled});
             @extend %font-v4-body-2;
-            padding: 6px 8px;
+            padding: var(--spacing-75, #{$spacingV4-75}) var(--spacing-100, #{$spacingV4-100});
           }
         }
       }
