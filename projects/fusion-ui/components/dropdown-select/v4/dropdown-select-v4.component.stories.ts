@@ -55,16 +55,16 @@ export const WithAppAndBrandIcon: Story = {
 <div style="display: flex; gap: 16px; flex-direction: column">
     <div style="display: flex; flex-direction: column; gap: 4px;">
         <div class="font-v4-input-label">Application</div>
-        <fusion-dropdown-select imageUrl="https://platform.ssacdn.com/demand-creatives/icons/icon_43609a8611f49ebe8c8e5eeef199112b_51b1115a8ee50c907e46d380d88ce4a9.jpeg" icon="v4/branded/android"></fusion-dropdown-select>
+        <fusion-dropdown-select imageUrl="https://fusion.ironsrc.net/assets/images/v4/app_mock/Bobbie_Friends_Cat_Life_Simulator.png" icon="v4/branded/android"></fusion-dropdown-select>
     </div>
 <!--
     <div style="display: flex; flex-direction: column; gap: 4px;">
         <div class="font-v4-input-label">Application</div>    
-        <fusion-dropdown-select imageUrl="https://platform.ssacdn.com/demand-creatives/icons/icon_43609a8611f49ebe8c8e5eeef199112b_51b1115a8ee50c907e46d380d88ce4a9.jpeg" icon="v4/branded/android" size="medium"></fusion-dropdown-select>
+        <fusion-dropdown-select imageUrl="https://fusion.ironsrc.net/assets/images/v4/app_mock/Bobbie_Friends_Cat_Life_Simulator.png" icon="v4/branded/android" size="medium"></fusion-dropdown-select>
     </div>
     <div style="display: flex; flex-direction: column; gap: 4px;">
         <div class="font-v4-input-label">Application</div>    
-        <fusion-dropdown-select imageUrl="https://platform.ssacdn.com/demand-creatives/icons/icon_43609a8611f49ebe8c8e5eeef199112b_51b1115a8ee50c907e46d380d88ce4a9.jpeg" icon="v4/branded/android" size="large"></fusion-dropdown-select>
+        <fusion-dropdown-select imageUrl="https://fusion.ironsrc.net/assets/images/v4/app_mock/Bobbie_Friends_Cat_Life_Simulator.png" icon="v4/branded/android" size="large"></fusion-dropdown-select>
     </div>
 -->
 </div>       

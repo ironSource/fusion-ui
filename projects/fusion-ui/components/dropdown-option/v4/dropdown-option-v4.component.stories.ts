@@ -94,7 +94,7 @@ export const AppAndIcon: Story = {
         option: {
             id: '1',
             displayText: 'Label',
-            image: 'https://platform.ssacdn.com/demand-creatives/icons/icon_43609a8611f49ebe8c8e5eeef199112b_51b1115a8ee50c907e46d380d88ce4a9.jpeg',
+            image: 'https://fusion.ironsrc.net/assets/images/v4/app_mock/Bobbie_Friends_Cat_Life_Simulator.png',
             icon: 'v4/branded/android',
             isDisabled: false
         } as DropdownOption
@@ -106,7 +106,7 @@ export const App: Story = {
         option: {
             id: '1',
             displayText: 'Label',
-            image: 'https://platform.ssacdn.com/demand-creatives/icons/icon_43609a8611f49ebe8c8e5eeef199112b_51b1115a8ee50c907e46d380d88ce4a9.jpeg',
+            image: 'https://fusion.ironsrc.net/assets/images/v4/app_mock/Bobbie_Friends_Cat_Life_Simulator.png',
             isDisabled: false
         } as DropdownOption
     }
@@ -139,7 +139,7 @@ export const WithAppIconAndCaption: Story = {
         option: {
             id: '1',
             displayText: 'Label',
-            image: 'https://platform.ssacdn.com/demand-creatives/icons/icon_43609a8611f49ebe8c8e5eeef199112b_51b1115a8ee50c907e46d380d88ce4a9.jpeg',
+            image: 'https://fusion.ironsrc.net/assets/images/v4/app_mock/Bobbie_Friends_Cat_Life_Simulator.png',
             icon: 'v4/branded/android',
             subText: {text: 'Caption'},
             isDisabled: false
