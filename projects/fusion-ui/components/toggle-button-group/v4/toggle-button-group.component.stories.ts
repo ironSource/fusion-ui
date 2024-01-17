@@ -55,6 +55,7 @@ export default {
             }
         ] as ToggleButtonGroupOption[],
         size: 'medium',
+        color: 'default',
         formControl: formControl
     },
     argTypes: {
@@ -66,7 +67,14 @@ export default {
 
 type Story = StoryObj<ToggleButtonGroupComponent>;
 
-export const Default: Story = {};
+export const Default: Story = {
+    render: args => ({
+        props: args,
+        template: `
+        <fusion-toggle-button-group color="default" [size]="size" [color]="color" [options]="options" [formControl]="formControl"></fusion-toggle-button-group>
+        `
+    })
+};
 
 export const Color: Story = {
     render: args => ({
@@ -74,11 +82,11 @@ export const Color: Story = {
         template: `
         <div style="display: flex; flex-direction: column; gap: 24px;">
             <div style="display: flex; flex-direction: column; gap: 12px">
-                <div>Default</div>
+                <div style="font-size: 13px; color: hsl(0, 0%, 39.3%)">Default</div>
                 <fusion-toggle-button-group color="default" [options]="options" [formControl]="formControl"></fusion-toggle-button-group>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px">
-                <div>Primary</div>
+                <div style="font-size: 13px; color: hsl(0, 0%, 39.3%)">Primary</div>
                 <fusion-toggle-button-group color="primary" [options]="options" [formControl]="formControl"></fusion-toggle-button-group>
             </div>
          </div>
@@ -122,15 +130,15 @@ export const Variants: Story = {
         template: `
         <div style="display: flex; flex-direction: column; gap: 24px;">
             <div style="display: flex; flex-direction: column; gap: 12px">
-                <div>Icon</div>
+                <div style="font-size: 13px; color: hsl(0, 0%, 39.3%)">Icon</div>
                 <fusion-toggle-button-group [options]="optionsIcon" [formControl]="formControl"></fusion-toggle-button-group>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px">
-                <div>Text</div>
+                <div style="font-size: 13px; color: hsl(0, 0%, 39.3%)">Text</div>
                 <fusion-toggle-button-group [options]="optionsText" [formControl]="formControl"></fusion-toggle-button-group>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px">
-                <div>Icon and text</div>
+                <div style="font-size: 13px; color: hsl(0, 0%, 39.3%)">Icon and text</div>
                 <fusion-toggle-button-group [options]="options" [formControl]="formControl"></fusion-toggle-button-group>
             </div>
          </div>
@@ -144,19 +152,19 @@ export const Sizes: Story = {
         template: `
         <div style="display: flex; flex-direction: column; gap: 24px;">
             <div style="display: flex; flex-direction: column; gap: 12px">
-                <div>Small</div>
+                <div style="font-size: 13px; color: hsl(0, 0%, 39.3%)">Small</div>
                 <fusion-toggle-button-group size="small" [options]="options" [formControl]="formControl"></fusion-toggle-button-group>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px">
-                <div>Medium</div>
+                <div style="font-size: 13px; color: hsl(0, 0%, 39.3%)">Medium</div>
                 <fusion-toggle-button-group size="medium" [options]="options" [formControl]="formControl"></fusion-toggle-button-group>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px">
-                <div>Large</div>
+                <div style="font-size: 13px; color: hsl(0, 0%, 39.3%)">Large</div>
                 <fusion-toggle-button-group size="large" [options]="options" [formControl]="formControl"></fusion-toggle-button-group>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px">
-                <div>Extra Large</div>
+                <div style="font-size: 13px; color: hsl(0, 0%, 39.3%)">Extra Large</div>
                 <fusion-toggle-button-group size="xlarge" [options]="options" [formControl]="formControl"></fusion-toggle-button-group>
             </div>
          </div>
