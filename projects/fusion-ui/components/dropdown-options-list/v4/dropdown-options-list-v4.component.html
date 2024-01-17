@@ -3,8 +3,8 @@
         <fusion-dropdown-option  [option]="option" (click)="onChangeSelected(option, $event)"></fusion-dropdown-option>
     </li>
     <ng-template #groupOption>
-        <li class="option">
-            <div class="fu-dd-group">
+        <li class="option fu-dd-group">
+            <div class="fu-group-name">
                 {{ dropdownService.optionToString(option) }}
             </div>
         </li>

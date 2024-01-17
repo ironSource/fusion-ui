@@ -10,11 +10,16 @@
   gap: var(--spacing-50, #{$spacingV4-50});
 
   .option {
-    .fu-dd-group {
-      @extend %font-v4-heading-6;
-      color: var(--text-secondary, #{$color-v4-text-secondary});
-      padding: 6px 8px;
+    &.fu-dd-group {
+      &:not(:first-child) {
+        margin-top: var(--spacing-150, #{$spacingV4-150});
+      }
 
+      .fu-group-name {
+        @extend %font-v4-heading-6;
+        color: var(--text-secondary, #{$color-v4-text-secondary});
+        padding: 6px 8px;
+      }
     }
   }
 }
