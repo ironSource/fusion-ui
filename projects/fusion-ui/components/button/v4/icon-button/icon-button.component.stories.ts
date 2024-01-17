@@ -5,6 +5,7 @@ import {environment} from '../../../../../../stories/environments/environment';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {IconButtonComponent} from '@ironsource/fusion-ui/components/button/v4/icon-button/icon-button.component';
+import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
 
 export default {
     title: 'V4/Components/Buttons/IconButton',
@@ -12,7 +13,7 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule]
+            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, TooltipDirective]
         })
     ],
     tags: ['autodocs'],
@@ -28,7 +29,8 @@ export default {
         color: 'default',
         variant: 'default',
         size: 'medium',
-        iconName: 'ph/pencil-simple'
+        iconName: 'ph/pencil-simple',
+        tooltipText: 'Edit'
     },
     argsTypes: {
         disabled: {
@@ -51,7 +53,7 @@ export default {
 
 const ButtonTemplate: StoryFn<IconButtonComponent> = (args: IconButtonComponent) => ({
     props: args,
-    template: `<fusion-icon-button [color]="color" [variant]="variant" [size]="size" [iconName]="iconName" [disabled]="disabled" [loading]="loading"></fusion-icon-button>`
+    template: `<fusion-icon-button [fusionTooltip]="tooltipText"  [color]="color" [variant]="variant" [size]="size" [iconName]="iconName" [disabled]="disabled" [loading]="loading"></fusion-icon-button>`
 });
 
 export const Basic = {
@@ -61,9 +63,9 @@ export const Basic = {
 const ButtonColorTemplate: StoryFn<IconButtonComponent> = (args: IconButtonComponent) => ({
     props: args,
     template: `<div style="display: flex; gap: 14px;">
-    <fusion-icon-button [iconName]="iconName" [disabled]="disabled"  [loading]="loading" [size]="size" [variant]="variant">Default</fusion-icon-button>
-    <fusion-icon-button color="primary" [iconName]="iconName" [disabled]="disabled" [loading]="loading" [size]="size" [variant]="variant">Primary</fusion-icon-button>
-    <fusion-icon-button color="danger" [iconName]="iconName" [variant]="variant" [disabled]="disabled" [size]="size" [loading]="loading">Danger</fusion-icon-button>
+    <fusion-icon-button [fusionTooltip]="tooltipText" [iconName]="iconName" [disabled]="disabled"  [loading]="loading" [size]="size" [variant]="variant">Default</fusion-icon-button>
+    <fusion-icon-button [fusionTooltip]="tooltipText" color="primary" [iconName]="iconName" [disabled]="disabled" [loading]="loading" [size]="size" [variant]="variant">Primary</fusion-icon-button>
+    <fusion-icon-button [fusionTooltip]="tooltipText" color="danger" [iconName]="iconName" [variant]="variant" [disabled]="disabled" [size]="size" [loading]="loading">Danger</fusion-icon-button>
 </div>`
 });
 
@@ -75,8 +77,8 @@ export const Colors = {
 const ButtonVariantTemplate: StoryFn<IconButtonComponent> = (args: IconButtonComponent) => ({
     props: args,
     template: `<div style="display: flex; gap: 14px;">
-    <fusion-icon-button [color]="color" variant="text" [iconName]="iconName" [disabled]="disabled" [loading]="loading"></fusion-icon-button>
-    <fusion-icon-button [color]="color" variant="outlined" [iconName]="iconName" [disabled]="disabled" [loading]="loading"></fusion-icon-button>
+    <fusion-icon-button [fusionTooltip]="tooltipText" [color]="color" variant="text" [iconName]="iconName" [disabled]="disabled" [loading]="loading"></fusion-icon-button>
+    <fusion-icon-button [fusionTooltip]="tooltipText" [color]="color" variant="outlined" [iconName]="iconName" [disabled]="disabled" [loading]="loading"></fusion-icon-button>
 </div>`
 });
 
@@ -87,10 +89,10 @@ export const Variants = {
 const ButtonSizesTemplate: StoryFn<IconButtonComponent> = (args: IconButtonComponent) => ({
     props: args,
     template: `<div style="display: flex; gap: 14px; align-items: center">
-    <fusion-icon-button [color]="color" [iconName]="iconName" [variant]="variant" [disabled]="disabled" [loading]="loading" size="small"></fusion-icon-button>
-    <fusion-icon-button [color]="color" [iconName]="iconName" [variant]="variant" [disabled]="disabled" [loading]="loading"></fusion-icon-button>
-    <fusion-icon-button [color]="color" [iconName]="iconName" [variant]="variant" [disabled]="disabled" [loading]="loading" size="large"></fusion-icon-button>
-    <fusion-icon-button [color]="color" [iconName]="iconName" [variant]="variant" [disabled]="disabled" [loading]="loading" size="extraLarge"></fusion-icon-button>
+    <fusion-icon-button [fusionTooltip]="tooltipText" [color]="color" [iconName]="iconName" [variant]="variant" [disabled]="disabled" [loading]="loading" size="small"></fusion-icon-button>
+    <fusion-icon-button [fusionTooltip]="tooltipText" [color]="color" [iconName]="iconName" [variant]="variant" [disabled]="disabled" [loading]="loading"></fusion-icon-button>
+    <fusion-icon-button [fusionTooltip]="tooltipText" [color]="color" [iconName]="iconName" [variant]="variant" [disabled]="disabled" [loading]="loading" size="large"></fusion-icon-button>
+    <fusion-icon-button [fusionTooltip]="tooltipText" [color]="color" [iconName]="iconName" [variant]="variant" [disabled]="disabled" [loading]="loading" size="extraLarge"></fusion-icon-button>
 </div>`
 });
 

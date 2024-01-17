@@ -4,7 +4,6 @@ import {dedent} from 'ts-dedent';
 import {TooltipV4Component} from './tooltip-v4.component';
 import {TooltipV4Directive} from '@ironsource/fusion-ui/components/tooltip/v4/tooltip-v4.directive';
 import {ButtonComponent} from '@ironsource/fusion-ui/components/button/v4/button/button.component';
-import {TooltipContentV4Directive} from '@ironsource/fusion-ui/components/tooltip/v4/tooltip-content-v4.directive';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';

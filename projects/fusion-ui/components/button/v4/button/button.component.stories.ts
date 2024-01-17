@@ -25,7 +25,7 @@ export default {
     args: {
         disabled: false,
         loading: false,
-        color: 'default',
+        color: 'primary',
         variant: 'contained',
         startIconName: '',
         endIconName: ''
