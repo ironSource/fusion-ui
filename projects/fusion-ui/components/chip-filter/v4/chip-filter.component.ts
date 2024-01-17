@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ChipFilterBaseComponent} from '@ironsource/fusion-ui/components/chip-filter/common/base';
-import {GenericPipe} from '@ironsource/fusion-ui';
+import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
 

@@ -5,7 +5,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {DropdownOptionComponent} from '@ironsource/fusion-ui/components/dropdown-option/v4';
 import {DropdownService} from '@ironsource/fusion-ui/components/dropdown';
 import {SearchComponent} from '@ironsource/fusion-ui/components/search/v4';
-import {isNullOrUndefined} from '@ironsource/fusion-ui';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Component({
     selector: 'fusion-dropdown-options-list',

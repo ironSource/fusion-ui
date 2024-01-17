@@ -57,6 +57,7 @@ export const WithAppAndBrandIcon: Story = {
         <div class="font-v4-input-label">Application</div>
         <fusion-dropdown-select imageUrl="https://platform.ssacdn.com/demand-creatives/icons/icon_43609a8611f49ebe8c8e5eeef199112b_51b1115a8ee50c907e46d380d88ce4a9.jpeg" icon="v4/branded/android"></fusion-dropdown-select>
     </div>
+<!--
     <div style="display: flex; flex-direction: column; gap: 4px;">
         <div class="font-v4-input-label">Application</div>    
         <fusion-dropdown-select imageUrl="https://platform.ssacdn.com/demand-creatives/icons/icon_43609a8611f49ebe8c8e5eeef199112b_51b1115a8ee50c907e46d380d88ce4a9.jpeg" icon="v4/branded/android" size="medium"></fusion-dropdown-select>
@@ -65,6 +66,7 @@ export const WithAppAndBrandIcon: Story = {
         <div class="font-v4-input-label">Application</div>    
         <fusion-dropdown-select imageUrl="https://platform.ssacdn.com/demand-creatives/icons/icon_43609a8611f49ebe8c8e5eeef199112b_51b1115a8ee50c907e46d380d88ce4a9.jpeg" icon="v4/branded/android" size="large"></fusion-dropdown-select>
     </div>
+-->
 </div>       
 `
     }),
@@ -80,6 +82,7 @@ export const WithIcon: Story = {
         <div class="font-v4-input-label">Label</div>
         <fusion-dropdown-select icon="ph/hamburger"></fusion-dropdown-select>
     </div>
+<!--
     <div style="display: flex; flex-direction: column; gap: 4px;">
         <div class="font-v4-input-label">Label</div>    
         <fusion-dropdown-select icon="ph/hamburger" size="medium"></fusion-dropdown-select>
@@ -88,6 +91,7 @@ export const WithIcon: Story = {
         <div class="font-v4-input-label">Label</div>    
         <fusion-dropdown-select icon="ph/hamburger" size="large"></fusion-dropdown-select>
     </div>
+-->
 </div>       
 `
     }),
@@ -103,6 +107,7 @@ export const WithFlags: Story = {
         <div class="font-v4-input-label">Country</div>
         <fusion-dropdown-select country="us" [placeholder]="{value: 'United States'}"></fusion-dropdown-select>
     </div>
+<!--
     <div style="display: flex; flex-direction: column; gap: 4px;">
         <div class="font-v4-input-label">Country</div>    
         <fusion-dropdown-select country="us" size="medium" [placeholder]="{value: 'United States'}"></fusion-dropdown-select>
@@ -111,6 +116,7 @@ export const WithFlags: Story = {
         <div class="font-v4-input-label">Country</div>    
         <fusion-dropdown-select  country="us" size="large" [placeholder]="{value: 'United States'}"></fusion-dropdown-select>
     </div>
+-->
 </div>       
 `
     }),

@@ -13,7 +13,6 @@
   .fu-dropdown-select-wrapper {
     display: flex;
     align-items: center;
-
     gap: 4px;
     @extend %font-v4-body-1;
     color: var(--text-primary, #{$color-v4-text-primary});

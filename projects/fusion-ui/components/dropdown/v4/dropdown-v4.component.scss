@@ -46,7 +46,23 @@ $searchHeight: 28px;
           flex-direction: column;
           gap: var(--spacing-50, #{$spacingV4-50});
           padding: 0 var(--spacing-50, #{$spacingV4-50}) 0 0;
+          &.fu-loading{
+            gap: 0;
+          }
 
+          .fu-loader-holder{
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            height: 30px;
+            fusion-loader{
+              width: 20px;
+              height: 20px;
+            }
+            color: var(--text-disabled, #{$color-v4-text-disabled});
+            @extend %font-v4-body-2;
+            padding: var(--spacing-75, #{$spacingV4-75}) var(--spacing-100, #{$spacingV4-100});
+          }
           .no-results {
             color: var(--text-disabled, #{$color-v4-text-disabled});
             @extend %font-v4-body-2;

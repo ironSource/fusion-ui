@@ -19,6 +19,7 @@
             [icon]="triggerConfiguration.icon"
             [imageUrl]="triggerConfiguration.labelImage"
             [country]="triggerConfiguration.labelFlag"
+            [size]="size"
             (click)="openDropdown($event)"
         ></fusion-dropdown-select>
     </ng-template>
@@ -48,14 +49,16 @@
             </ng-container>
             <!--elements shown without selector-->
             <div class="options-holder" (scroll)="onScroll($event)" #optionsHolder>
-                <ul class="options">
+                <ul class="options" [class.fu-loading]="loading">
                     <fusion-dropdown-options-list
                             [displayedOptions]="displayedOptionsObservable$ | async"
                             [selectedOptions]="selected"
                             (changeSelected)="changeSelected($event)"
                     ></fusion-dropdown-options-list>
                     <!--loader holder-->
-                    <!--<li [fusionDropdownLoader]="(autoComplete || search) && loading"></li>-->
+                    <li *ngIf="(autoComplete && search) || loading">
+                        <div class="fu-loader-holder"><fusion-loader></fusion-loader><div>Loading...</div></div>
+                    </li>
                     <!--no-result holder-->
                     <li class="no-results" *ngIf="!filteredOptions?.length && !loading">No results found</li>
                 </ul>
