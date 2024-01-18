@@ -171,3 +171,60 @@ export const Sizes: Story = {
         `
     })
 };
+
+export const Steps: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            optionsIcon2: [
+                {
+                    id: 1,
+                    icon: 'ph/chart-pie'
+                },
+                {
+                    id: 2,
+                    icon: 'ph/chart-line-up'
+                }
+            ] as ToggleButtonGroupOption[],
+            optionsIcon3: [
+                {
+                    id: 1,
+                    icon: 'ph/chart-pie'
+                },
+                {
+                    id: 2,
+                    icon: 'ph/chart-line-up'
+                },
+                {
+                    id: 3,
+                    icon: 'ph/chart-bar'
+                }
+            ] as ToggleButtonGroupOption[],
+            optionsIcon4: [
+                {
+                    id: 1,
+                    icon: 'ph/chart-pie'
+                },
+                {
+                    id: 2,
+                    icon: 'ph/chart-line-up'
+                },
+                {
+                    id: 3,
+                    icon: 'ph/chart-bar'
+                },
+                {
+                    id: 4,
+                    icon: 'ph/chart-scatter'
+                }
+            ] as ToggleButtonGroupOption[]
+        },
+        template: `
+        <div style="display: flex; flex-direction: row; gap: 24px;">
+            <fusion-toggle-button-group [options]="optionsIcon2" [formControl]="formControl"></fusion-toggle-button-group>
+            <fusion-toggle-button-group [options]="optionsIcon3" [formControl]="formControl"></fusion-toggle-button-group>
+            <fusion-toggle-button-group [options]="optionsIcon4" [formControl]="formControl"></fusion-toggle-button-group>
+        </div>
+        `
+    })
+};
