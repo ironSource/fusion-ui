@@ -146,7 +146,7 @@ const templateCommonOneDropdown = `
 // endregion
 
 export default {
-    title: 'V4/Components/Dropdown/Dropdown',
+    title: 'V4/Components/Dropdown/SingleSelection',
     component: DropdownV4Component,
     decorators: [
         moduleMetadata({
