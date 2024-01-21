@@ -28,6 +28,10 @@
             width: 16px;
             height: 16px;
             color: var(--action-active, #{$color-v4-action-active});
+            &.phosphor-icon{
+                width: 20px;
+                height: 20px;
+            }
         }
         .sub-text-container{
             color: var(--text-secondary, #{$color-v4-text-secondary});

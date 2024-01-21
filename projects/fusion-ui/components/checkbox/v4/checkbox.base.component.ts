@@ -8,17 +8,21 @@ export abstract class CheckboxBaseComponent implements OnInit, ControlValueAcces
      * @internal
      * */
     @Input() id: string;
-
     @Input() set label(value: string) {
         this._label = value;
     }
-
     @Input() set isIndeterminate(value: boolean) {
         this._isIndeterminate = value ?? false;
     }
-
     @Input() set disabled(value: boolean) {
         this._disabled = value ?? false;
+    }
+
+    /** @internal */
+    @Input() value: string;
+    /** @internal */
+    @Input() set checked(val: boolean) {
+        this._checked = val ?? false;
     }
 
     @Output() changed = new EventEmitter<boolean>();

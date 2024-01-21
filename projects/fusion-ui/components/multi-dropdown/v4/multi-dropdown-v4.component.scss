@@ -1,0 +1,178 @@
+@import '../../../src/style/scss/v4/mixins/mixins';
+@import '../../../src/style/scss/v4/vars/vars';
+@import '../../../src/style/scss/v4/colors';
+@import '../../../src/style/scss/v4/fonts';
+@import '../../../src/style/scss/v4/spacings';
+@import '../../../src/style/scss/v4/shadows';
+@import '../../../src/style/scss/v4/border-radius';
+
+$optionsMaxHeight: 300px;
+$searchHeight: 28px;
+
+:host {
+  margin: 0;
+  padding: 0;
+
+  .fu-dropdown {
+    position: relative;
+
+    // dropdown options base
+    .options-dropdown {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: calc(100% + 4px);
+      min-width: var(--dropdown-overlay-min-width, 180px);
+      //max-height: 0;
+      //display: none;
+      gap: var(--spacing-50, #{$spacingV4-50});
+      flex-direction: column;
+      padding: var(--spacing-100, #{$spacingV4-100});
+      border-radius: var(--border-radius-lg, #{$borderRadiusV4-lg});
+      border: solid 1px var(--common-divider, #{$color-v4-common-divider});
+      background-color: var(--background-default, #{$color-v4-background-default});
+      box-shadow: var(--box-shadow-lg, #{$boxShadowV4-LG});
+
+      .options-holder {
+        overflow-y: auto;
+        overflow-x: hidden;
+        @extend %cloudUiScroll;
+        max-height: calc($optionsMaxHeight - (var(--spacing-100, #{$spacingV4-100}) * 2));
+
+        ul {
+          margin: 0;
+          list-style-type: none;
+          display: flex;
+          flex-direction: column;
+          gap: var(--spacing-50, #{$spacingV4-50});
+          padding: 0 var(--spacing-50, #{$spacingV4-50}) 0 0;
+          &.fu-subgroup-options{
+            margin-bottom: 12px;
+          }
+          &.fu-loading{
+            gap: 0;
+          }
+          li {
+            padding: 0;
+            label{
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              padding: 6px 8px;
+              border-radius: 8px;
+              color: var(--text-primary, #{$color-v4-text-primary});
+              @extend %font-v4-body-2;
+              .fu-option-image{
+                width: 20px;
+                height: 20px;
+                border-radius: 4px;
+              }
+              .fu-option-icon{
+                color: var(--action-active, #{$color-v4-action-active});
+                width: 16px;
+                height: 16px;
+                &.phosphor-icon{
+                  width: 20px;
+                  height: 20px;
+                }
+              }
+              &:hover{
+                background-color: var(--action-hover, #{$color-v4-action-hover});
+                cursor: pointer;
+              }
+            }
+            &.fu-selected label{
+              background-color: var(--action-selected, #{$color-v4-action-selected});
+            }
+            &.fu-disabled label{
+                color: var(--text-disabled, #{$color-v4-text-disabled});
+                pointer-events: none;
+            }
+
+            &.fu-has-children{
+              .fu-parent{
+                padding: 6px 8px;
+                @extend %font-v4-heading-6;
+                color: var(--text-secondary, #{$color-v4-text-secondary});
+                &:first-of-type{
+                  margin-top: 4px;
+                }
+              }
+            }
+
+            &.option.fu-group {
+              .fu-group-name {
+                @extend %font-v4-heading-6;
+                color: var(--text-secondary, #{$color-v4-text-secondary});
+                padding: var(--spacing-75, #{$spacingV4-75}) var(--spacing-100, #{$spacingV4-100});
+              }
+              margin-top: var(--spacing-150, #{$spacingV4-150});
+              &.fu-group-first{
+                margin-top: var(--spacing-50, #{$spacingV4-50});
+              }
+            }
+
+            .fu-text-content{
+              .fu-sub-text-container{
+                @extend %font-v4-caption;
+                color: var(--text-secondary, #{$color-v4-text-secondary});
+              }
+            }
+          }
+
+          // region loader and no-result holder
+          .fu-loader-holder{
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            height: 30px;
+            fusion-loader{
+              width: 20px;
+              height: 20px;
+            }
+            color: var(--text-disabled, #{$color-v4-text-disabled});
+            @extend %font-v4-body-2;
+            padding: var(--spacing-75, #{$spacingV4-75}) var(--spacing-100, #{$spacingV4-100});
+          }
+          .no-results {
+            color: var(--text-disabled, #{$color-v4-text-disabled});
+            @extend %font-v4-body-2;
+            padding: var(--spacing-75, #{$spacingV4-75}) var(--spacing-100, #{$spacingV4-100});
+          }
+          // endregion
+        }
+      }
+
+      &:has(.fu-search-holder) {
+        .options-holder {
+          max-height: calc(#{$optionsMaxHeight} - (var(--spacing-100, #{$spacingV4-100}) * 2) - #{$searchHeight});
+        }
+      }
+
+      // region action buttons
+      .fu-dd-actions{
+        margin-top: 4px;
+        border-top: 1px solid var(--common-divider, #E4E4E4);
+        padding: 8px 8px 0px 0px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 4px;
+        .fu-clear-all-btn{
+          flex-grow: 1;
+          display: flex;
+          align-items: flex-start;
+        }
+      }
+      // endregion action buttons
+    }
+
+    &.dd-opened {
+      .options-dropdown {
+        display: flex;
+        z-index: 100;
+        max-height: $optionsMaxHeight;
+      }
+    }
+  }
+}

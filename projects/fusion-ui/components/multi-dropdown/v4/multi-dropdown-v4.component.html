@@ -1,0 +1,167 @@
+<div class="fu-dropdown fu-multiselect"
+     [id]="id"
+     [clickOutsideActivate]="isOpen$ | async"
+     (fusionClickOutside)="onOutsideClick($event)"
+     [ngClass]="getHolderCSSClasses()"
+>
+    <!--    <div *ngIf="templateRef" #trigger  (click)="openDropdown($event)">-->
+    <!--        <ng-container [ngTemplateOutlet]="templateRef"></ng-container>-->
+    <!--    </div>-->
+
+    <ng-container *ngIf="!templateRef" [ngTemplateOutlet]="defaultTrigger"></ng-container>
+
+    <ng-template #defaultTrigger>
+        <fusion-dropdown-select *ngIf="(dropdownSelectConfigurations$ | async) as triggerConfiguration"
+                                #selectComponent
+                                [placeholder]="triggerConfiguration.placeholder"
+                                [disabled]="triggerConfiguration.disabled"
+                                [isOpen]="triggerConfiguration.isOpen"
+                                [icon]="triggerConfiguration.icon"
+                                [imageUrl]="triggerConfiguration.labelImage"
+                                [country]="triggerConfiguration.labelFlag"
+                                [size]="size"
+                                (click)="openDropdown($event)"
+        ></fusion-dropdown-select>
+    </ng-template>
+    <div class="options-dropdown">
+        <!-- region dropdown options holder -->
+        <div class="options-holder" (scroll)="onScroll($event)" #optionsHolder>
+            <ul class="options multi">
+                <!--search input-->
+                <li class="fu-search-holder" *ngIf="search">
+                    <fusion-dropdown-search class="fu-search-in-options"
+                                            [formControl]="searchValue"
+                                            [placeholder]="searchPlaceholder"
+                                            #searchComponent
+                    ></fusion-dropdown-search>
+                </li>
+                <!--search input-->
+                <!--select all option checkbox-->
+                <li *ngIf="selectAllLabel && !loading && (hasSearchValue$ | async) === false && filteredOptions?.length !== 0">
+                    <!--select all option-->
+                    <label class="fu-option-select-all" [for]="id + '-select-all'">
+                        <fusion-checkbox
+                                [id]="id + '-select-all'"
+                                [checked]="isAllSelected"
+                                [value]="id + '-select-all'"
+                                [isIndeterminate]="isIndeterminate"
+                                (changed)="selectAll($event)"
+                                #selectAllCheckbox
+                        ></fusion-checkbox>
+                        <span [innerHTML]="selectAllLabel"></span>
+                    </label>
+                </li>
+                <!--options-->
+                <li class="option"
+                    [class.fu-option-two-lines]="!!option.subText"
+                    [class.fu-has-children]="option.childOptions"
+                    (click)="optionParentClicked($event)"
+                    [ngClass]="getOptionClasses(option, i)"
+                    *ngFor="let option of displayedOptions$ | async; index as i">
+                    <!--option regular or parent for check-->
+                    <ng-container *ngIf="!option.childOptions" [ngTemplateOutlet]="regularOption"
+                                  [ngTemplateOutletContext]="{option: option}"></ng-container>
+                    <ng-container *ngIf="option.childOptions" [ngTemplateOutlet]="parentOption"
+                                  [ngTemplateOutletContext]="{option: option}"></ng-container>
+                </li>
+                <!--loader holder-->
+                <!--<li [fusionDropdownLoader]="(autoComplete || search) && loading"></li>-->
+                <!--no-result holder-->
+                <li class="no-results" *ngIf="!filteredOptions?.length && !loading && searchValue?.value">No results
+                    found
+                </li>
+            </ul>
+        </div>
+        <!-- endregion -->
+        <!--action "confirm" buttons holder-->
+        <div class="fu-dd-actions" *ngIf="confirm && filteredOptions?.length">
+            <fusion-button
+                    class="fu-clear-all-btn"
+                    variant="text"
+                    size="small"
+                    color="primary"
+                    [disabled]="loading"
+                    (click)="clearAll()"
+            >Clear all
+            </fusion-button>
+            <fusion-button
+                    size="small"
+                    color="primary"
+                    variant="outlined"
+                    (click)="closeDropdown()"
+                    [disabled]="loading"
+            >
+                Cancel
+            </fusion-button>
+            <fusion-button
+                    color="primary"
+                    size="small"
+                    (click)="applySelect(true)"
+                    [disabled]="loading"
+            >
+                Apply
+            </fusion-button>
+        </div>
+    </div>
+</div>
+
+<!--INNER TEMPLATES-->
+<!--regular option-->
+<ng-template #regularOption let-option="option">
+    <ng-container *ngIf="!option.isGroup; else groupOption">
+        <label
+                class="truncate"
+                [id]="option.id"
+                [for]="id + '-' + option.id"
+                [ngClass]="{'has-icon': option.icon}"
+                [fusionTooltip]="dropdownService.optionToString(option, mappingOptions, {dropdownType: 'multi'})"
+        >
+            <fusion-checkbox
+                    [id]="id + '-' + option.id"
+                    [checked]="isSelected(option)"
+                    [value]="option.id"
+                    (changed)="changeSelected(option)"
+            ></fusion-checkbox>
+            <ng-container [ngTemplateOutlet]="templateRef || basicTemplate"
+                          [ngTemplateOutletContext]="{option: option}">
+            </ng-container>
+        </label>
+    </ng-container>
+    <ng-template #groupOption>
+        <div class="fu-group-name">
+            {{ dropdownService.optionToString(option, {dropdownType: 'multi'}) }}
+        </div>
+    </ng-template>
+</ng-template>
+
+<!--parent option-->
+<ng-template #parentOption let-option="option">
+    <div [id]="option.id" class="fu-parent truncate"
+         [fusionTooltip]="dropdownService.optionToString(option, mappingOptions, {dropdownType: 'multi'})">
+        <span innerHTML="{{ dropdownService.optionToString(option, {dropdownType: 'multi'}) }}"></span>
+    </div>
+<!--
+    <fusion-icon class="option-icon-arrow"
+                 [name]="dropdownArrowIconName"></fusion-icon>
+    <div class="fu-flex-row-break"></div>
+-->
+    <ul class="fu-subgroup-options">
+        <li class="option" *ngFor="let childOption of option.childOptions; index as i">
+            <ng-container [ngTemplateOutlet]="regularOption"
+                          [ngTemplateOutletContext]="{option: childOption}"></ng-container>
+        </li>
+    </ul>
+</ng-template>
+
+<!--option basic content-->
+<ng-template #basicTemplate let-option="option">
+    <img class="fu-option-image" [src]="option.image" *ngIf="option.image" alt="" loading="lazy"/>
+    <fusion-flag *ngIf="option.flag" [countryCode]="option.flag"></fusion-flag>
+    <fusion-icon *ngIf="option.icon" [name]="option.icon" class="fu-option-icon" [ngClass]="{'phosphor-icon': option?.icon?.startsWith('ph/')}"></fusion-icon>
+    <div class="fu-text-content"
+         *ngIf="dropdownService.optionToString(option, mappingOptions, {dropdownType: 'multi'}) as optionContent">
+        <div class="fu-text-container truncate" [fusionTooltip]="optionContent" [innerHTML]="optionContent"></div>
+        <div *ngIf="option.subText" class="fu-sub-text-container">{{ option.subText?.text || option.subText }}</div>
+    </div>
+</ng-template>
+

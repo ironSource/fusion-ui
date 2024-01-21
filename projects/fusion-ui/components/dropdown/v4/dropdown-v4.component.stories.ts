@@ -122,7 +122,6 @@ const optionsWithCategories: DropdownOption[] = [
 
 // region formControls
 const formControlOptionsList = new FormControl();
-const formControlOptionsLongList = new FormControl();
 // endregion
 
 // region templated
