@@ -136,8 +136,6 @@ const groupedCountriesOptions: DropdownOption[] = ((allCountries: any[]): Dropdo
     return groupedCountries;
 })(MOCK_OPTIONS_COUNTRIES);
 
-console.log(groupedCountriesOptions);
-
 const formControl = new FormControl();
 
 const templateCommon = `
