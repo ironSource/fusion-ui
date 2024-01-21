@@ -47,11 +47,6 @@ export class MultiDropdownV4Component extends MultiDropdownBaseComponent {
 
     /** @ignore */
     getOptionContent(option: DropdownOption): string {
-        console.log(
-            'getOptionContent',
-            this.dropdownService.optionToString(this.selected[0], this.mappingOptions, {dropdownType: 'multi'})
-        );
-
         return this.dropdownService.optionToString(this.selected[0], this.mappingOptions, {dropdownType: 'multi'});
     }
 }
