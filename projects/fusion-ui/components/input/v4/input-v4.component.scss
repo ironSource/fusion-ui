@@ -59,6 +59,11 @@
         .fu-inline-error-icon{
             color: var(--error-main, #{$color-v4-error-main});
         }
+        .fu-start-icon,
+        .fu-end-icon,
+        .fu-show-password-button{
+            color: var(--action-active, #{$color-v4-action-active});
+        }
         // endregion
 
         // region clear button
