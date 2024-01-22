@@ -121,7 +121,7 @@ export class InputV4Component implements OnInit, OnDestroy {
     get size() {
         return this._size;
     }
-    private _size: InputSize = 'medium';
+    private _size: InputSize = 'small';
     // endregion
     // region Inputs - maxLength
     @Input() set maxLength(value: number) {
