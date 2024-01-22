@@ -165,8 +165,6 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     ) {}
 
     ngOnInit() {
-        console.log('onInit chip', this.apiBase);
-
         if (!this.apiBase && !this.disabled) {
             this.setClickListener();
         }
