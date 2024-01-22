@@ -21,6 +21,7 @@
         outline-offset: -1px;
         padding: 0 var(--spacing-100, #{$spacingV4-100});
 
+
         &:hover {
             outline-color: var(--action-active, #{$color-v4-action-active});
             background-color: var(--action-hover, #{$color-v4-action-hover});
@@ -113,7 +114,7 @@
             width: 100%;
             border: none;
             background: transparent;
-            color: var(--text-secondary, #{$color-v4-text-secondary});
+            color: var(--text-primary, #{$color-v4-text-primary});
             @extend %font-v4-body-1;
             line-height: 20px;
             &::placeholder {
