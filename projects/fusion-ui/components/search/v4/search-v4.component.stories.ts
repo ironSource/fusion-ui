@@ -34,7 +34,7 @@ export default {
     },
     args: {
         placeholder: 'Search',
-        size: 'medium',
+        size: 'small',
         formControl: formControl
     },
     argTypes: {
@@ -50,9 +50,9 @@ type Story = StoryObj<SearchV4Component>;
 
 export const Default: Story = {};
 
-export const SmallSize: Story = {
+export const MediumSize: Story = {
     args: {
-        size: 'small'
+        size: 'medium'
     }
 };
 
