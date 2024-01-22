@@ -1,0 +1,42 @@
+/**
+  * Layout include header and sidebar menus variables
+ */
+
+
+// region Layout sizes
+$pageHeaderHeight: 64px;
+// endregion
+
+// region navigation menu sizes
+// primary menu
+$navBarPrimaryWidth: 56px;
+$navButtonSize: 32px;
+$navBarIconSize: 20px;
+
+// secondary menu
+$navBarSecondaryWidth: 200px;
+$navBarSecondaryLogoHolderHeight: $pageHeaderHeight;
+$navBarSecondaryItemHeight: 28px;
+$navBarSecondaryItemTitleHeight: 36px;
+$navBarSecondaryItemIconSize: 20px;
+$navBarSecondaryItemOpenCloseIconSize: 12px;
+$navBarSecondaryItemNewTabIconSize: 16px;
+// endregion
+
+// region pop menu
+$menuWidth: 296px;
+$userIconSize: 32px;
+$menuItemHeight: 32px;
+$menuItemIconSize: 20px;
+$menuItemHoverColor: #F5F5F5;
+// endregion
+
+// region navigation menu colors
+
+// white - transparent
+$fu-nav-menu-white-100: #ffffff;
+$fu-nav-menu-white-80: rgba(255, 255, 255, 0.82);
+$fu-nav-menu-white-16: rgba(255, 255, 255, 0.16);
+$fu-nav-menu-white-12: rgba(255, 255, 255, 0.12);
+
+// endregion

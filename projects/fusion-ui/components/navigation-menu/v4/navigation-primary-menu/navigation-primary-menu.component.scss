@@ -1,25 +1,21 @@
 @import '../../../../src/style/scss/v4/mixins/mixins';
 @import '../../../../src/style/scss/v4/vars/vars';
-
-$navButtonSize: 40px;
-$toggleButtonSize: 32px;
-$navBarIconSize: 24px;
+@import '../../../../src/style/scss/v4/vars/layout';
 
 :host{
     @extend %reset;
     display: block;
     height: 100vh;
-    width: 64px;
-
+    width: $navBarPrimaryWidth;
     .fu-navigation-bar-holder{
         position: fixed;
         z-index: getZIndexLayerOffset(application, 4);
-        background-color: var(--fu-navbar-background-color, $fu-nav-primary-unity);
+        background-color: var(--fu-navbar-background-color, #0D148C);
         transition: background-color .8s;
 
 
         height: 100%;
-        width: 64px;
+        width: $navBarPrimaryWidth;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -31,13 +27,16 @@ $navBarIconSize: 24px;
             align-items: center;
             width: 100%;
             &.fu-home{
-                height: 64px;
+                height: 48px;
                 .fu-navigation-bar-button:hover{
                     cursor: pointer;
                 }
+                &:first-child{
+                    margin-top: 8px;
+                }
             }
             &.fu-network{
-                height: 80px;
+                height: 64px;
                 position: relative;
                 .fu-navigation-bar-button{
                     @include icon-style('fu-navigation-bar-button-icon', $fu-nav-menu-white-100, $navBarIconSize, true, true) {
@@ -53,13 +52,13 @@ $navBarIconSize: 24px;
                         &:after {
                             content:'';
                             position: absolute;
-                            top: 23px;
+                            top: 17px;
                             right: 0;
                             width: 0;
                             height: 0;
-                            border-top: 8px solid transparent;
-                            border-right: 6px solid $fu-nav-secondary;
-                            border-bottom: 8px solid transparent;
+                            border-top: 7px solid transparent;
+                            border-right: 6px solid var(--background-paper, #{$color-v4-background-paper});
+                            border-bottom: 7px solid transparent;
                         }
                     }
                 }
@@ -68,7 +67,7 @@ $navBarIconSize: 24px;
                 }
             }
             &.fu-bottom-block{
-                height: 48px;
+                height: 40px;
                 &:last-of-type{
                     padding-bottom: 8px;
                 }
@@ -89,7 +88,7 @@ $navBarIconSize: 24px;
                 justify-content: center;
                 align-items: center;
                 border-top: solid 1px $fu-nav-menu-white-12;
-                background-color: var(--fu-navbar-toggle-button-background-color, $fu-nav-menu-white-16);
+                background-color: $fu-nav-menu-white-16;
                 margin-top: 8px;
                 margin-bottom: -8px;
                 gap: 2px;
@@ -97,46 +96,48 @@ $navBarIconSize: 24px;
         }
 
         .fu-navigation-bar-network-name{
-            color: var(--fu-navbar-text-color, $fu-nav-menu-white-80);
-            height: 18px;
-            font-size: 0.71875rem;
-            line-height: 1.125rem;
+            color: $fu-nav-menu-white-80;
+            font-size: 10px;
+            line-height: 16px;
             @extend %font-v4-semibold;
         }
 
         .fu-navigation-bar-button{
             @include size($navButtonSize);
-            border-radius: 8px;
+            border-radius: $borderRadiusV4-md;
             display: flex;
             align-items: center;
             justify-content: center;
-
-            @include icon-style('fu-navigation-bar-button-icon', $fu-nav-menu-white-80, $navBarIconSize, true, true) {
+            @include icon-style('fu-navigation-bar-button-icon', $fu-nav-menu-white-100, $navBarIconSize, true, true) {
                 @include size($navBarIconSize);
+                opacity: 0.82;
             }
 
             &:hover{
-                background-color: var(--fu-navbar-button-hover-background-color, $fu-nav-menu-white-20);
-                @include icon-style('fu-navigation-bar-button-icon', $fu-nav-menu-white-100, $navBarIconSize, true, true)
+                background-color: $fu-nav-menu-white-16;
+                @include icon-style('fu-navigation-bar-button-icon', $fu-nav-menu-white-100, $navBarIconSize, true, true){
+                    opacity: 1;
+                }
             }
             &.fu-selected {
-                border: solid 1px var(--fu-navbar-button-selected-border-color, $fu-nav-menu-white-20);
-                background-color: var(--fu-navbar-button-hover-background-color, $fu-nav-menu-white-20);
-                @include icon-style('fu-navigation-bar-button-icon', $fu-nav-menu-white-100, $navBarIconSize, true, true);
+                border: solid 1px $fu-nav-menu-white-12;
+                background-color: $fu-nav-menu-white-16;
+                @include icon-style('fu-navigation-bar-button-icon', $fu-nav-menu-white-100, $navBarIconSize, true, true){
+                    opacity: 1;
+                }
 
                 &:hover {
                     cursor: default;
                 }
                 & + .fu-navigation-bar-network-name {
-                    color: var(--fu-navbar-text-color, $fu-nav-menu-white-100);
+                    color: $fu-nav-menu-white-100;
                 }
             }
             &.fu-menu-toggle{
-                @include size($toggleButtonSize);
-                background-color: var(--fu-navbar-button-toggle-hover-background-color, $fu-nav-menu-white-12);
+                @include size($navButtonSize);
                 &:hover{
-                    background-color: var(--fu-navbar-button-toggle-hover-background-color, $fu-nav-menu-white-20);
                     cursor: pointer;
+                    background-color: $fu-nav-menu-white-16;
                 }
             }
             &.fu-with-pop-menu{

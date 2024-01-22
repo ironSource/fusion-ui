@@ -1,14 +1,9 @@
 @import '../../../src/style/scss/v4/vars/vars';
-
-$pageHeaderHeight: 64px;
-$menuPrimaryWidth: 64px;
-$menuSecondaryWidth: 200px;
+@import '../../../src/style/scss/v4/vars/layout';
 
 :host{
     @extend %reset;
     @extend %font-v4-regular;
-    --layout-header-height: #{$pageHeaderHeight};
-
     .fu-layout{
         display: grid;
         grid-template-columns: min-content 1fr;
@@ -17,20 +12,26 @@ $menuSecondaryWidth: 200px;
         .fu-left-navigation{
             display: block;
             height: 100%;
-            max-width: calc(#{$menuPrimaryWidth} + #{$menuSecondaryWidth});
+            max-width: calc(#{$navBarPrimaryWidth} + #{$navBarSecondaryWidth});
         }
         .fu-main-page{
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
             .fu-page-header{
-                height: $pageHeaderHeight;
-                border-bottom: solid 1px $fu-divider;
+                flex-grow: 0;
+                border-bottom: solid 1px var(--common-divider, #{$color-v4-common-divider});
+                &.fu-page-header-multiline{
+                    border-bottom: none;
+                }
             }
             .main-content{
-                height: calc(100vh - var(--layout-header-height, #{$pageHeaderHeight}));
+                flex-grow: 1;
                 overflow: auto;
-                width: calc(100vw - #{$menuPrimaryWidth});
+                width: calc(100vw - #{$navBarPrimaryWidth});
                 transition: width .45s ease-out;
                 &.fu-menu-expanded-opened{
-                    width: calc(100vw - #{$menuPrimaryWidth} - #{$menuSecondaryWidth});
+                    width: calc(100vw - #{$navBarPrimaryWidth} - #{$navBarSecondaryWidth});
                 }
                 .page-view {
                     height: 100%;
@@ -44,4 +45,3 @@ $menuSecondaryWidth: 200px;
         }
     }
 }
-

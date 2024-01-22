@@ -1,42 +1,37 @@
 @import '../../../../src/style/scss/v4/mixins/mixins';
 @import '../../../../src/style/scss/v4/vars/vars';
-
-$primaryMenuWidth: 64px;
-$secondaryMenuWidth: 200px;
-$secondaryMenuLogoHolderHeight: 64px;
-$secondaryMenuItemHeight: 28px;
-$secondaryMenuItemTitleHeight: 36px;
-$secondaryMenuItemIconSize: 18px;
-$secondaryMenuItemParentIconSize: 20px;
-$secondaryMenuItemOpenCloseIconSize: 12px;
-$secondaryMenuItemNewTabIconSize: 16px;
+@import '../../../../src/style/scss/v4/vars/layout';
 
 :host {
     @extend %reset;
     display: block;
-    background-color: var(--fu-secondary-menu-background-color, $fu-nav-secondary);
-    border-right: solid 1px $fu-divider;
+    background-color: var(--background-paper, #{$color-v4-background-paper});
+    border-right: solid 1px var(--common-divider, #{$color-v4-common-divider});
     margin-left: -1px;
     width: 0px;
-    max-width: $secondaryMenuWidth;
+    max-width: $navBarSecondaryWidth;
     transition: width .45s ease-out;
 
     .fu-secondary-menu-holder {
         position: fixed;
         z-index: getZIndexLayerOffset(application, 2);
         top: 0px;
-        left: calc(-1 * ($secondaryMenuWidth - $primaryMenuWidth));
-        max-width: $secondaryMenuWidth;
+        left: calc(-1 * (#{$navBarSecondaryWidth} - #{$navBarPrimaryWidth}));
+        max-width: $navBarSecondaryWidth;
         transition: left .45s ease-out;
         .fu-logo-holder {
-            height: $secondaryMenuLogoHolderHeight;
+            height: $navBarSecondaryLogoHolderHeight;
             display: flex;
             align-items: center;
-            padding-left: 20px;
+            padding: var(--spacing-200, #{$spacingV4-200});
+            padding-left: var(--spacing-250, #{$spacingV4-250});
 
-            img {
-                max-width: $secondaryMenuWidth;
-                max-height: $secondaryMenuLogoHolderHeight;
+            fusion-svg {
+                height: 100%;
+                max-width: $navBarSecondaryWidth;
+                max-height: $navBarSecondaryLogoHolderHeight;
+                display: flex;
+                align-items: center;
             }
         }
 
@@ -44,84 +39,81 @@ $secondaryMenuItemNewTabIconSize: 16px;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            padding: 0px 12px 24px;
+            padding: 0px var(--spacing-100, #{$spacingV4-100}) var(--spacing-300, #{$spacingV4-300});
 
-            width: $secondaryMenuWidth;
+            width: $navBarSecondaryWidth;
             overflow-y: hidden;
             overflow-x: hidden;
-            max-height: calc(100vh - $secondaryMenuLogoHolderHeight);
+            max-height: calc(100vh - #{$navBarSecondaryLogoHolderHeight});
             @extend %customNavBarScroll;
 
             .fu-secondary-menu-item-wrapper{
                 width: 100%;
                 .fu-secondary-menu-item-holder {
                     width: 100%;
-                    height: $secondaryMenuItemHeight;
+                    height: $navBarSecondaryItemHeight;
                     display: flex;
                     flex-direction: row;
                     align-items: center;
                     padding: 4px 8px;
-                    gap: 14px;
+                    gap: 8px;
                     cursor: pointer;
-                    margin-bottom: 2px;
+                    margin-bottom: 4px;
                     border: solid 1px transparent;
                     text-decoration: none;
 
                     &.fu-secondary-menu-item-selected {
-                        border: solid 1px $fu-nav-menu-black-8;
+                        border: solid 1px var(--common-divider, #{$color-v4-common-divider});
                         border-radius: 4px;
-                        background-color: $fu-nav-menu-black-5;
+                        background-color: var(--action-hover, #{$color-v4-action-hover});
                         cursor: default;
                         pointer-events: none;
+                        .fu-secondary-menu-item-icon-holder{
+                            @include icon-style('fu-secondary-menu-item-icon', var(--action-primary, #{$color-v4-action-primary}), $navBarSecondaryItemIconSize, true, true)
+                        }
                     }
 
                     &.fu-nav-menu-title-item {
-                        height: $secondaryMenuItemTitleHeight;
+                        height: $navBarSecondaryItemTitleHeight;
                         cursor: default;
                         pointer-events: none;
+                        padding: 10px 8px;
                         .fu-secondary-menu-item-icon-holder{
                             display: none;
                         }
                         .fu-secondary-menu-item-label {
                             @extend %font-v4-chip-label;
-                            color: $fu-nav-text-secondary;
+                            color: var(--text-secondary, #{$color-v4-text-secondary});
                         }
                     }
 
                     &:hover {
                         border-radius: 4px;
-                        background-color: $fu-nav-menu-black-5;
-                    }
-
-                    &.fu-has-sub-items {
-                        gap: 12px;
-                        .fu-secondary-menu-item-icon-holder {
-                            @include size($secondaryMenuItemParentIconSize);
-                            @include icon-style('fu-secondary-menu-item-icon', $fu-nav-text-primary, $secondaryMenuItemParentIconSize, true, true) {
-                                @include size($secondaryMenuItemParentIconSize);
-                            }
+                        background-color: var(--action-hover, #{$color-v4-action-hover});
+                        .fu-secondary-menu-item-icon-holder{
+                            @include icon-style('fu-secondary-menu-item-icon', var(--action-primary, #{$color-v4-action-primary}), $navBarSecondaryItemIconSize, true, true)
                         }
-
                     }
 
                     .fu-secondary-menu-item-icon-holder {
-                        @include size($secondaryMenuItemIconSize);
-                        @include icon-style('fu-secondary-menu-item-icon', $fu-nav-text-primary, $secondaryMenuItemIconSize, true, true) {
-                            @include size($secondaryMenuItemIconSize);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        @include icon-style('fu-secondary-menu-item-icon', var(--action-active, #{$color-v4-action-active}), $navBarSecondaryItemIconSize, true, true) {
+                            @include size($navBarSecondaryItemIconSize);
                         }
                     }
 
                     .fu-secondary-menu-item-label {
                         @extend %font-v4-subtitle-2;
-                        color: $fu-nav-text-primary;
+                        color: var(--text-primary, #{$color-v4-text-primary});
                     }
 
-                    @include icon-style('fu-secondary-menu-item-new-tab-icon', $fu-nav-text-primary, $secondaryMenuItemNewTabIconSize, true, true){
-                        @include size($secondaryMenuItemNewTabIconSize);
-                        margin-left: -10px;
+                    @include icon-style('fu-secondary-menu-item-new-tab-icon', var(--action-active, #{$color-v4-action-active}), $navBarSecondaryItemNewTabIconSize, true, true){
+                        @include size($navBarSecondaryItemNewTabIconSize);
                     }
-                    @include icon-style('fu-secondary-menu-item-parent-icon-toggle', $fu-nav-text-primary, $secondaryMenuItemOpenCloseIconSize, true, true){
-                        @include size($secondaryMenuItemOpenCloseIconSize);
+                    @include icon-style('fu-secondary-menu-item-parent-icon-toggle', var(--action-active, #{$color-v4-action-active}), $navBarSecondaryItemOpenCloseIconSize, true, true){
+                        @include size($navBarSecondaryItemOpenCloseIconSize);
                         display: flex;
                         align-items: center;
                         margin-left: auto;
@@ -129,10 +121,11 @@ $secondaryMenuItemNewTabIconSize: 16px;
                     }
 
                     &.fu-sub-items-opened {
-                        @include icon-style('fu-secondary-menu-item-parent-icon-toggle', $fu-nav-text-primary, $secondaryMenuItemOpenCloseIconSize, true, true, 90);
+                        @include icon-style('fu-secondary-menu-item-parent-icon-toggle', var(--action-active, #{$color-v4-action-active}), $navBarSecondaryItemOpenCloseIconSize, true, true, 90);
                     }
                 }
                 .fu-secondary-menu-sub-items-holder{
+                    margin-left: 12px;
                     display: flex;
                     flex-direction: column;
                     align-items: flex-start;
@@ -142,11 +135,14 @@ $secondaryMenuItemNewTabIconSize: 16px;
                     overflow-y: hidden;
 
                     &.fu-secondary-menu-sub-items-opened{
-                        max-height: calc(100vh - $secondaryMenuItemHeight);
+                        max-height: calc(100vh - $navBarSecondaryItemHeight);
                         transition: max-height, 1s ease-out;
                     }
 
                     .fu-secondary-menu-item-holder{
+                        margin-bottom: 2px;
+                        gap: 4px;
+                        padding: 4px 8px 4px 12px;
                         .fu-secondary-menu-item-label {
                             @extend %font-v4-body-2;
                         }
@@ -163,9 +159,9 @@ $secondaryMenuItemNewTabIconSize: 16px;
     }
 
     &.fu-menu-open {
-        width: $secondaryMenuWidth;
+        width: $navBarSecondaryWidth;
         .fu-secondary-menu-holder {
-            left: $primaryMenuWidth;
+            left: $navBarPrimaryWidth;
             .fu-secondary-menu{
                 overflow-y: auto;
             }
@@ -175,7 +171,7 @@ $secondaryMenuItemNewTabIconSize: 16px;
     &.fu-menu-expanded{
         position: fixed;
         top: 0;
-        left: $primaryMenuWidth;
+        left: $navBarPrimaryWidth;
         height: 100vh;
         z-index: getZIndexLayerOffset(application, 3);
     }

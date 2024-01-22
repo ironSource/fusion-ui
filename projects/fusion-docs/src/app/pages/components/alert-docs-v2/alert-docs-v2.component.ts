@@ -110,6 +110,8 @@ export class AlertDocsV2Component implements OnInit, OnDestroy {
     // endregion
     //------------
 
+    chbFormControl = new FormControl({value: true, disabled: true});
+
     constructor(private versionService: VersionService, private router: Router, private docLayoutService: DocsLayoutService) {}
 
     ngOnInit() {
@@ -118,7 +120,9 @@ export class AlertDocsV2Component implements OnInit, OnDestroy {
                 this.router.navigate(['docs/components/alert']);
             }
         });
-
+        this.chbFormControl.valueChanges.subscribe(value => {
+            console.log('>>', value);
+        });
         this.docLayoutService.updateLayoutHeaderTitle({text: 'Alerts', subtitle: 'Updated 7 hours ago', type: 'static'});
     }
 
@@ -171,5 +175,9 @@ export class AlertDocsV2Component implements OnInit, OnDestroy {
 
     onDynamicChipRemove(chipIdToRemove) {
         this.selectedDynamicFilters = [...this.selectedDynamicFilters.filter(chip => chip.configChip.id !== chipIdToRemove)];
+    }
+
+    onButtonClicked($event) {
+        console.log('button clicked', $event);
     }
 }

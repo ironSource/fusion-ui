@@ -1,94 +1,216 @@
 import {Meta, IconGallery, IconItem} from '@storybook/addon-docs';
-import {assetsPath, iconsData, iconsBrandedData, iconsADUnitData, iconsABTestData} from "./iconsData";
+import {assetsPath, iconsBrandedData, iconsADUnitData, iconsABTestData} from "./iconsData";
 
 <Meta title="V4/Foundation/Icons"/>
 
 <style>
-{
-`
-.icons-title{
-    color: var(--text-primary);
-    margin-bottom: 8px;
-    margin-top: 32px;
-    display: flex;
-    gap: var(--spacing-400);
+    {
+        `
+.sbdocs-title{
+    margin-bottom: 8px
+    color: var(--text-primary, hsl(0,0%,12.5%));
+    font-family: Inter;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 48px; /* 120% */
+    letter-spacing: -0.88px;
 }
-.icons-title div{
-    color: var(--text-secondary);
+.subtitle-border-bottom{
+    border-bottom: 1px solid var(--common-divider, hsl(0, 0%, 86.8%));
+    padding-bottom: 8px;
+    margin: 32px 0;
+    color: var(--text-primary, hsl(0,0%,12.5%));
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px; /* 116.667% */
+    letter-spacing: -0.456px;
+}
+.icons-title{
+    color: var(--text-secondary, #646464);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: -0.084px;
+    margin-bottom: 8px;
 }
 .icons-wrapper {
+    margin-bottom: 32px;
     padding: 32px;
-    border: 1px solid var(--common-divider);
+    border: 1px solid var(--common-divider, hsl(0, 0%, 86.8%));
+}
+.icons-wrapper-notes{
+    margin-top: -10px;
+    padding-top: 14px;
+    color: var(--text-primary, #202020);
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.039px;
+    border-top: 1px solid var(--common-divider, hsl(0, 0%, 86.8%));
+}
+.icons-ab-test-wrapper .css-15erloe {
+    width: 54px;
+    height: 54px;
+}
+a {
+    color: #029CFD;
+    text-decoration: none;
+}
+p {
+    margin: 16px 0;
+    color: var(--text-secondary, #646464);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px
+}
+.text-block{
+    color: var(--text-primary, #202020);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.084px;
+    margin-bottom: var(--spacing-100, 8px);
+}
+code {
+    display: inline-table;
+    line-height: 20px;
+    margin: 0 2px;
+    padding: 2px 4px;
+    white-space: nowrap;
+    border-radius: 4px;
+    font-size: 14px;
+    letter-spacing: -0.072px;
+    color: var(--text-primary, #202020);
+    background: var(--background-paper-elevation-2, #EBEBEB);
+}
+h4{
+    margin-bottom: 10px;
+}
+ul{
+    margin-left: 16px;
+    padding-left: 8px;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.084px;
+}
+ul li{
+    margin: 5px 0;
+    color: var(--text-primary, #202020);
+}
+.info-block{
+    margin: 32px 0;
+    display: flex;
+    padding: var(--spacing-300, 24px);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    align-self: stretch;
+    border-radius: 4px;
+    background: var(--background-paper-elevation-0, #F9F9F9);
+}
+.info-block h4 {
+    color: var(--text-secondary, #646464);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: -0.084px;
+    margin-bottom: 0;
 }
 `
-}
+    }
 </style>
-# Icons
+<h1 class="sbdocs-title">Icons</h1>
+When used correctly, UI icons can speed up user interactions by being immediately recognizable, and they can also add style and visual interest to your user interface designs.
 
-**<a href="https://phosphoricons.com/" target="_blank">Phosphor</a>** (v2.0.0) provides a set of commonly used interface icons you can use in your project.
-<div style={{display: 'flex', alignItems: 'center', gap: '12px'}}>
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="32" height="32" viewBox="0 0 32 32"><rect width="32" height="32" fill="#1E1E1E" rx="16"/><g clip-path="url(#a)"><path fill="#1ABCFE" d="M16 16.178a3.378 3.378 0 1 1 6.756 0 3.378 3.378 0 0 1-6.756 0Z"/><path fill="#0ACF83" d="M9.244 22.933a3.378 3.378 0 0 1 3.378-3.378H16v3.378a3.378 3.378 0 0 1-6.756 0Z"/><path fill="#FF7262" d="M16 6.044V12.8h3.378a3.378 3.378 0 0 0 0-6.756H16Z"/><path fill="#F24E1E" d="M9.244 9.422a3.378 3.378 0 0 0 3.378 3.378H16V6.044h-3.378a3.378 3.378 0 0 0-3.378 3.378Z"/><path fill="#A259FF" d="M9.244 16.178a3.378 3.378 0 0 0 3.378 3.378H16V12.8h-3.378a3.378 3.378 0 0 0-3.378 3.378Z"/></g><defs><clipPath id="a"><path fill="#fff" d="M9.244 6.044h13.511v20.267H9.245z"/></clipPath></defs></svg>
-    <div>**<a href="https://www.figma.com/community/file/903830135544202908/phosphor-icons" target="_blank">View in Figma</a>**</div>
+<h1 class="subtitle-border-bottom">Usage</h1>
+<div class="text-block">Put ```import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';``` in your component / module script block</div>
+<div class="text-block">Add it to your component (if it standalone component) or module import  ```imports: [CommonModule, IconModule],```</div>
+<div class="text-block">and ```<fusion-icon [name]="iconName"></fusion-icon>``` in your components template.</div>
+
+<h1 class="subtitle-border-bottom">Props</h1>
+- name (string) - icon name with icon type as prefix of name property (e.g. 'ph/regular/arrow-left' or 'v4/branded/ironsource');
+    - types('ph/regular' | 'ph/bold'  | 'ph/fill' | 'v4/branded' | 'v4/ad-unit' | 'v4ab-test');
+- size you can set as style property
+- color icon get as currentColor from wrapper component
+
+
+<h1 class="subtitle-border-bottom">Stories</h1>
+
+
+<div class="icons-title">Phosphor</div>
+<div class="icons-wrapper">
+    <div style={{display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '14px'}}>
+        <img src="https://fusion.ironsrc.net/assets/images/v4/phosphor-logo.svg" alt="Phosphor" style={{width: '32px', height: '32px'}}/>
+        <div>**<a href="https://phosphoricons.com/" target="_blank">View in Phosphor</a>**</div>
+    </div>
+    <div style={{display: 'flex', alignItems: 'center', gap: '12px'}}>
+        <img src="https://fusion.ironsrc.net/assets/images/v4/figma-logo.svg" alt="Figma" style={{width: '32px', height: '32px'}}/>
+        <div>**<a href="https://www.figma.com/community/file/903830135544202908/phosphor-icons" target="_blank">View in Figma</a>**</div>
+    </div>
 </div>
 
-In additional to the icons provided by Phosphor, we also provide a set of icons that are commonly used in our **V4 style** components.
-
-### Usage
-Put ```import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';``` and
-```imports: [CommonModule, IconModule,.....``` in your static component or module
-```<fusion-icon name="ICON_NAME"></fusion-icon>``` in your template.
-
-**ICON_NAME** here it path to icon, for example: ```<fusion-icon name="v4/branded/web-app"></fusion-icon>```
-
-**Phosphor icons** use name prefix "ph".
-For example: ```<fusion-icon name="ph/arrow-left"></fusion-icon>```
-
-**Monochrome icons** get current color of element-wrapper.
-
-**Colored icons**, like on **A/B test** section, need add class **"fu-colored"** to the icon component: ```<fusion-icon class="fu-colored" name="v4/ab-test/ab"></fusion-icon>```.
-
-
-<div class='sb-unstyled icons-title fusion-v4 font-v4-subtitle-1'>Branded <div class="font-v4-cap">(icon name prefix: "v4/branded")</div></div>
-<div class="sb-unstyled icons-wrapper fusion-v4">
-<IconGallery style={{marginTop: '24px'}}>
-    {
-        iconsBrandedData.map(icon=>{
-            return (
-                <IconItem name={icon.name} key={icon.name}>
-                    <img src={assetsPath + icon.path} alt={icon.name} style={{width: '24px', height: '24px'}}/>
-                </IconItem>
-            )
-        })
-    }
-</IconGallery>
+<div class="text-block">In additional to the icons provided by Phosphor, we also provide a set of icons that are commonly used.</div>
+<br/>
+<div class="icons-title">Brand</div>
+<div class="icons-wrapper">
+    <IconGallery style={{marginTop: '24px'}}>
+        {
+            iconsBrandedData.map(icon=>{
+                return (
+                    <IconItem name={icon.name} key={icon.name}>
+                        <img src={assetsPath + icon.path} alt={icon.name} style={{width: '24px', height: '24px'}}/>
+                    </IconItem>
+                )
+            })
+        }
+    </IconGallery>
+    <div class="icons-wrapper-notes">icon type: "branded"</div>
 </div>
 
-<div class='sb-unstyled icons-title fusion-v4 font-v4-subtitle-1'>Ad Unit <div class="font-v4-cap">(icon name prefix: "v4/ad-unit")</div></div>
-<div class="sb-unstyled icons-wrapper fusion-v4">
-<IconGallery style={{marginTop: '24px'}}>
-    {
-        iconsADUnitData.map(icon=>{
-            return (
-                <IconItem name={icon.name} key={icon.name}>
-                    <img src={assetsPath + icon.path} alt={icon.name} style={{width: '24px', height: '24px'}}/>
-                </IconItem>
-            )
-        })
-    }
-</IconGallery>
+<div class="icons-title">Ad Unit</div>
+<div class="icons-wrapper">
+    <IconGallery style={{marginTop: '24px'}}>
+        {
+            iconsADUnitData.map(icon=>{
+                return (
+                    <IconItem name={icon.name} key={icon.name}>
+                        <img src={assetsPath + icon.path} alt={icon.name} style={{width: '24px', height: '24px'}}/>
+                    </IconItem>
+                )
+            })
+        }
+    </IconGallery>
+    <div class="icons-wrapper-notes">icon type: "ad-unit"</div>
 </div>
 
-<div class='sb-unstyled icons-title fusion-v4 font-v4-subtitle-1'>A/B test <div class="font-v4-cap">(icon name prefix: "v4/ab-test")</div></div>
-<div class="sb-unstyled icons-wrapper fusion-v4">
-<IconGallery style={{marginTop: '24px'}}>
-    {
-        iconsABTestData.map(icon=>{
-            return (
-                <IconItem name={icon.name} key={icon.name}>
-                    <img src={assetsPath + icon.path} alt={icon.name} style={{width: '38px', height: '38px'}}/>
-                </IconItem>
-            )
-        })
-    }
-</IconGallery>
+<div class="icons-title">A/B test</div>
+<div class="icons-wrapper icons-ab-test-wrapper">
+    <IconGallery style={{marginTop: '24px'}}>
+        {
+            iconsABTestData.map(icon=>{
+                return (
+                    <IconItem name={icon.name} key={icon.name}>
+                        <img src={assetsPath + icon.path} alt={icon.name} style={{width: '38px', height: '38px'}}/>
+                    </IconItem>
+                )
+            })
+        }
+    </IconGallery>
+    <div class="icons-wrapper-notes">icon type: "ab-test"</div>
 </div>

@@ -1,0 +1,13 @@
+<label class="fu-checkbox-wrapper" [class.fu-disabled]="disabled" [class.fu-checked]="checked">
+    <input
+        type="checkbox"
+        [id]="id"
+        [checked]="checked"
+        [disabled]="disabled"
+        [indeterminate]="isIndeterminate"
+        (change)="checkStateChange($event)"
+    />
+    <span class="fu-label-checkbox">&nbsp;</span>
+    <ng-content></ng-content>
+    <span *ngIf="label" [fusionTooltip]="label" class="fu-label-text truncate">{{ label }}</span>
+</label>
