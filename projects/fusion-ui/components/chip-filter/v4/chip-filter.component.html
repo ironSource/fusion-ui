@@ -15,7 +15,7 @@
             <ng-container *ngIf="apiBase && isDefaultContent" [ngTemplateOutlet]="defaultContent"></ng-container>
         </div>
         <fusion-icon class="fu-chip-right-icon" *ngIf="rightIcon" [name]="rightIcon.icon" [fusionTooltip]="rightIcon.tooltipText"></fusion-icon>
-        <fusion-icon class="fu-icon-close" *ngIf="isCloseIcon$ | async" (click)="closeClicked($event)" name="ph/caret-down"></fusion-icon>
+        <fusion-icon class="fu-icon-close" *ngIf="isCloseIcon$ | async" (click)="closeClicked($event)" [name]="selected ? 'ph/fill/x-circle' : 'ph/caret-down'"></fusion-icon>
     </div>
 </ng-template>
 

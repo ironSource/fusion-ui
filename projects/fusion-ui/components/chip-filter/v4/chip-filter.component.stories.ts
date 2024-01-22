@@ -8,8 +8,35 @@ import {MOCK_OPTIONS} from '@ironsource/fusion-ui/components/dropdown/v3/stories
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {DropdownComponent} from '@ironsource/fusion-ui/components/dropdown/v4';
 import {ChipFilterComponent} from './chip-filter.component';
+import {MultiDropdownComponent} from '@ironsource/fusion-ui/components/multi-dropdown/v4';
 
 const formControl = new FormControl();
+const baseTemplate = `
+    <fusion-chip-filter [configuration]="configuration">
+        <div class="filter-element">
+            <fusion-dropdown
+                 [placeholderPrefix]="placeholderPrefix"
+                 [placeholder]="placeholder"
+                 [formControl]="formControl"
+                 [options]="options"
+                 [optionsTitle]="optionsTitle"
+                 [search]="search"
+                 >
+            </fusion-dropdown>
+        </div>
+    </fusion-chip-filter>
+`;
+const baseTemplateMultiselect = `
+    <fusion-chip-filter [configuration]="configuration">
+        <div class="filter-element">
+            <fusion-multi-dropdown
+                [placeholder]="placeholder"
+                [formControl]="formControl"
+                [options]="options"
+            ></fusion-multi-dropdown>
+        </div>
+    </fusion-chip-filter>
+`;
 
 export default {
     title: 'V4/Components/Dropdown/Triggers/ChipFilter',
@@ -23,7 +50,8 @@ export default {
                 ReactiveFormsModule,
                 SvgModule.forRoot({assetsPath: environment.assetsPath}),
                 IconModule,
-                DropdownComponent
+                DropdownComponent,
+                MultiDropdownComponent
             ]
         }),
         componentWrapperDecorator(story => `<div style="width: 300px; height: 200px;">${story}</div>`)
@@ -32,7 +60,7 @@ export default {
     parameters: {
         docs: {
             description: {
-                component: dedent`***DropdownSelectComponent***.`
+                component: dedent`***ChipTriggerComponent***.`
             }
         },
         options: {
@@ -43,8 +71,7 @@ export default {
     args: {
         formControl: formControl,
         placeholder: 'Chip filter',
-        options: MOCK_OPTIONS,
-        title: 'Label'
+        options: MOCK_OPTIONS
     },
     argTypes: {
         formControl: {
@@ -57,25 +84,30 @@ type Story = StoryObj<ChipFilterComponent>;
 
 export const Default: Story = {
     render: args => ({
-        props: args,
-        template: `
-    <fusion-chip-filter [configuration]="configuration">
-        <div class="filter-element">
-            <fusion-dropdown
-                 [title]="title"
-                 [placeholderPrefix]="placeholderPrefix"
-                 [placeholder]="placeholder"
-                 [formControl]="formControl"
-                 [options]="options"
-                 [optionsTitle]="optionsTitle"
-                 [search]="search"
-                 >
-            </fusion-dropdown>
-        </div>
-    </fusion-chip-filter>
-`
+        props: {...args},
+        template: baseTemplate
     }),
     args: {
         configuration: {id: 1, mode: 'static', close: true}
+    }
+};
+
+export const Multiselect: Story = {
+    render: args => ({
+        props: {...args},
+        template: baseTemplateMultiselect
+    }),
+    args: {
+        configuration: {id: 1, mode: 'static', close: true}
+    }
+};
+
+export const Disabled: Story = {
+    render: args => ({
+        props: {...args},
+        template: baseTemplate
+    }),
+    args: {
+        configuration: {id: 1, mode: 'static', close: true, disabled: true}
     }
 };
