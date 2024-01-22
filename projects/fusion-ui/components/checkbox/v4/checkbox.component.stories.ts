@@ -102,7 +102,7 @@ export const States: Story = {
     ></fusion-checkbox>
 
     <fusion-checkbox
-        label="Disabled"
+        label="Disabled Mixed"
         [isIndeterminate]="true"
         [disabled]="true"
         [formControl]="formControl"
