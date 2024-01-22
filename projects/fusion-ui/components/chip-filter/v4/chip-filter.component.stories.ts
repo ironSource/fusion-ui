@@ -53,7 +53,7 @@ export default {
                 MultiDropdownComponent
             ]
         }),
-        componentWrapperDecorator(story => `<div style="width: 300px; height: 200px;">${story}</div>`)
+        componentWrapperDecorator(story => `<div style="width: 300px; height: 350px;">${story}</div>`)
     ],
     tags: ['autodocs'],
     parameters: {
