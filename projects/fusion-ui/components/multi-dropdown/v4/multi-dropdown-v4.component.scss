@@ -8,6 +8,7 @@
 
 $optionsMaxHeight: 300px;
 $searchHeight: 28px;
+$optionsMinWidth: 225px;
 
 :host {
   margin: 0;
@@ -24,6 +25,7 @@ $searchHeight: 28px;
       top: calc(100% + 4px);
       min-width: var(--dropdown-overlay-min-width, 180px);
       max-height: 0;
+      min-width: $optionsMinWidth;
       display: none;
       gap: var(--spacing-50, #{$spacingV4-50});
       flex-direction: column;

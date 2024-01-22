@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, forwardRef, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef, Input, TemplateRef} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DropdownService} from '@ironsource/fusion-ui/components/dropdown';
 import {NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
@@ -13,6 +13,7 @@ import {CheckboxComponent} from '@ironsource/fusion-ui/components/checkbox/v4';
 import {ButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
 import {FlagComponent} from '@ironsource/fusion-ui/components/flag/v4';
 import {DropdownSearchComponent} from '@ironsource/fusion-ui/components/dropdown-search/v4';
+import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 
 @Component({
     selector: 'fusion-multi-dropdown',
@@ -35,6 +36,7 @@ import {DropdownSearchComponent} from '@ironsource/fusion-ui/components/dropdown
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         DropdownService,
+        {provide: ApiBase, useExisting: MultiDropdownV4Component},
         {
             provide: NG_VALUE_ACCESSOR,
             useExisting: forwardRef(() => MultiDropdownV4Component),
@@ -44,6 +46,7 @@ import {DropdownSearchComponent} from '@ironsource/fusion-ui/components/dropdown
 })
 export class MultiDropdownV4Component extends MultiDropdownBaseComponent {
     @Input() size: DropdownTriggerSize = 'medium';
+    @Input() optionTemplateRef: TemplateRef<any>;
 
     /** @ignore */
     getOptionContent(option: DropdownOption): string {

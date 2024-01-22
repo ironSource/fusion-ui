@@ -11,7 +11,7 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
     /** @ignore */
     @Input() selectAllLabel: string;
     /** @ignore */
-    @Input() templateRef: TemplateRef<any>;
+    @Input() templateRef: TemplateRef<any>; // todo: rename it to optionTemplate ref. Just in use in demand
     /** @ignore */
     tempSelected: DropdownOption[];
     /** @ignore */

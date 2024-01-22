@@ -4,12 +4,12 @@
      (fusionClickOutside)="onOutsideClick($event)"
      [ngClass]="getHolderCSSClasses()"
 >
-    <!--    <div *ngIf="templateRef" #trigger  (click)="openDropdown($event)">-->
-    <!--        <ng-container [ngTemplateOutlet]="templateRef"></ng-container>-->
-    <!--    </div>-->
-
+    <!--custom trigger-->
+    <div *ngIf="templateRef" #trigger (click)="openDropdown($event)">
+        <ng-container [ngTemplateOutlet]="templateRef"></ng-container>
+    </div>
+    <!--default trigger-->
     <ng-container *ngIf="!templateRef" [ngTemplateOutlet]="defaultTrigger"></ng-container>
-
     <ng-template #defaultTrigger>
         <fusion-dropdown-select *ngIf="(dropdownSelectConfigurations$ | async) as triggerConfiguration"
                                 #selectComponent
@@ -23,6 +23,7 @@
                                 (click)="openDropdown($event)"
         ></fusion-dropdown-select>
     </ng-template>
+
     <div class="options-dropdown">
         <!-- region dropdown options holder -->
         <div class="options-holder" (scroll)="onScroll($event)" #optionsHolder>
@@ -122,7 +123,7 @@
                     [value]="option.id"
                     (changed)="changeSelected(option)"
             ></fusion-checkbox>
-            <ng-container [ngTemplateOutlet]="templateRef || basicTemplate"
+            <ng-container [ngTemplateOutlet]="optionTemplateRef || basicTemplate"
                           [ngTemplateOutletContext]="{option: option}">
             </ng-container>
         </label>
@@ -133,18 +134,17 @@
         </div>
     </ng-template>
 </ng-template>
-
 <!--parent option-->
 <ng-template #parentOption let-option="option">
     <div [id]="option.id" class="fu-parent truncate"
          [fusionTooltip]="dropdownService.optionToString(option, mappingOptions, {dropdownType: 'multi'})">
         <span innerHTML="{{ dropdownService.optionToString(option, {dropdownType: 'multi'}) }}"></span>
     </div>
-<!--
-    <fusion-icon class="option-icon-arrow"
-                 [name]="dropdownArrowIconName"></fusion-icon>
-    <div class="fu-flex-row-break"></div>
--->
+    <!--
+        <fusion-icon class="option-icon-arrow"
+                     [name]="dropdownArrowIconName"></fusion-icon>
+        <div class="fu-flex-row-break"></div>
+    -->
     <ul class="fu-subgroup-options">
         <li class="option" *ngFor="let childOption of option.childOptions; index as i">
             <ng-container [ngTemplateOutlet]="regularOption"
@@ -152,12 +152,12 @@
         </li>
     </ul>
 </ng-template>
-
 <!--option basic content-->
 <ng-template #basicTemplate let-option="option">
     <img class="fu-option-image" [src]="option.image" *ngIf="option.image" alt="" loading="lazy"/>
     <fusion-flag *ngIf="option.flag" [countryCode]="option.flag"></fusion-flag>
-    <fusion-icon *ngIf="option.icon" [name]="option.icon" class="fu-option-icon" [ngClass]="{'phosphor-icon': option?.icon?.startsWith('ph/')}"></fusion-icon>
+    <fusion-icon *ngIf="option.icon" [name]="option.icon" class="fu-option-icon"
+                 [ngClass]="{'phosphor-icon': option?.icon?.startsWith('ph/')}"></fusion-icon>
     <div class="fu-text-content"
          *ngIf="dropdownService.optionToString(option, mappingOptions, {dropdownType: 'multi'}) as optionContent">
         <div class="fu-text-container truncate" [fusionTooltip]="optionContent" [innerHTML]="optionContent"></div>
@@ -165,3 +165,12 @@
     </div>
 </ng-template>
 
+<!--ChipFilter Trigger  template-->
+<ng-template #chipContent>
+    <div class="fu-chip-content-default">
+        <div [fusionTooltip]="chipDefaultContent" class="truncate fu-chip-text">
+            <span *ngIf="placeholderPrefix" class="fu-chip-label">{{ placeholderPrefix + ': '}}</span>
+            {{ placeholder$ | async }}
+        </div>
+    </div>
+</ng-template>
