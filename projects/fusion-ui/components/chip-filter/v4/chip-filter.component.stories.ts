@@ -10,7 +10,6 @@ import {DropdownComponent} from '@ironsource/fusion-ui/components/dropdown/v4';
 import {ChipFilterComponent} from './chip-filter.component';
 import {MultiDropdownComponent} from '@ironsource/fusion-ui/components/multi-dropdown/v4';
 
-const formControl = new FormControl();
 const baseTemplate = `
     <fusion-chip-filter [configuration]="configuration">
         <div class="filter-element">
@@ -69,9 +68,9 @@ export default {
         }
     },
     args: {
-        formControl: formControl,
         placeholder: 'Chip filter',
-        options: MOCK_OPTIONS
+        options: MOCK_OPTIONS,
+        configuration: {id: 1, mode: 'static', close: true}
     },
     argTypes: {
         formControl: {
@@ -84,30 +83,20 @@ type Story = StoryObj<ChipFilterComponent>;
 
 export const Default: Story = {
     render: args => ({
-        props: {...args},
+        props: {
+            ...args,
+            formControl: new FormControl()
+        },
         template: baseTemplate
-    }),
-    args: {
-        configuration: {id: 1, mode: 'static', close: true}
-    }
+    })
 };
 
 export const Multiselect: Story = {
     render: args => ({
-        props: {...args},
+        props: {
+            ...args,
+            formControl: new FormControl()
+        },
         template: baseTemplateMultiselect
-    }),
-    args: {
-        configuration: {id: 1, mode: 'static', close: true}
-    }
-};
-
-export const Disabled: Story = {
-    render: args => ({
-        props: {...args},
-        template: baseTemplate
-    }),
-    args: {
-        configuration: {id: 1, mode: 'static', close: true, disabled: true}
-    }
+    })
 };
