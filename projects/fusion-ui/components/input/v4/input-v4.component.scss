@@ -28,6 +28,7 @@
 
         &:has(input:focus) {
             outline-color: var(--primary-main, #{$color-v4-primary-main});
+            outline-width: 2px;
             background-color: var(--action-hover, #{$color-v4-action-hover});
         }
         &:has(input[disabled="disabled"]) {
