@@ -10,6 +10,7 @@ import {DropdownComponent} from '@ironsource/fusion-ui/components/dropdown/v4';
 import {MultiDropdownComponent} from '@ironsource/fusion-ui/components/multi-dropdown/v4';
 import {ChipFilterButtonComponent} from './chip-filter-button.component';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
+import {DaterangeModule} from '@ironsource/fusion-ui/components/daterange/v3';
 
 const MOCK_OPTIONS_TYPE: DropdownOption[] = [
     {
@@ -23,6 +24,24 @@ const MOCK_OPTIONS_TYPE: DropdownOption[] = [
     {
         id: 3,
         displayText: 'eCPI'
+    }
+];
+const MOCK_OPTIONS_PERIOD: DropdownOption[] = [
+    {
+        id: 1,
+        displayText: 'Yesterday vs. same day last week'
+    },
+    {
+        id: 2,
+        displayText: 'Last 7 days vs. previous 7 days'
+    },
+    {
+        id: 3,
+        displayText: 'Last 14 days vs. previous 14 days'
+    },
+    {
+        id: 4,
+        displayText: 'Last 30 days vs. previous 30 days'
     }
 ];
 
@@ -66,7 +85,8 @@ export default {
                 SvgModule.forRoot({assetsPath: environment.assetsPath}),
                 IconModule,
                 DropdownComponent,
-                MultiDropdownComponent
+                MultiDropdownComponent,
+                DaterangeModule
             ]
         }),
         componentWrapperDecorator(story => `<div style="width: 300px; height: 350px;">${story}</div>`)
@@ -245,4 +265,16 @@ export const Icon: Story = {
 `
     }),
     decorators: [componentWrapperDecorator(story => `<div style="width: 800px; height: 350px;">${story}</div>`)]
+};
+
+export const DatePeriodPicker: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            options: MOCK_OPTIONS_PERIOD,
+            formControl: new FormControl([MOCK_OPTIONS_PERIOD[1]]),
+            configuration: {id: 1, mode: 'static', close: true, leftIcon: {icon: 'ph/calendar-blank'}}
+        },
+        template: baseTemplate
+    })
 };
