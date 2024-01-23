@@ -52,6 +52,8 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     leftIcon: ChipIcon;
     /** @internal */
     rightIcon: ChipIcon;
+    /** @internal */
+    isRoleButton = false;
 
     /** @internal */
     testIdChipFilterModifiers: typeof ChipFilterTestIdModifiers = ChipFilterTestIdModifiers;
