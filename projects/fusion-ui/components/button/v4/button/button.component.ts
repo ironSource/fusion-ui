@@ -15,11 +15,11 @@ import {ButtonBaseComponent} from '../common/button.base.component';
 })
 export class ButtonComponent extends ButtonBaseComponent {
     @Input() set startIconName(value: string) {
-        this._startIconName = value.trim();
+        this._startIconName = value?.trim();
     }
 
     @Input() set endIconName(value: string) {
-        this._endIconName = value.trim();
+        this._endIconName = value?.trim();
     }
 
     get startIconName(): string {

@@ -1,0 +1,20 @@
+
+:host {
+  .fu-snackbar-impl-wrapper {
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    background: rgb(252, 252, 252);
+    border: 1px solid rgb(232, 230, 230);
+    border-radius: 8px;
+  }
+}
+/*
+
+.fu-snackbar-holder{
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 9999;
+}
+*/
