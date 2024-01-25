@@ -9,7 +9,7 @@ import {SnackbarService} from './snackbar.service';
 import {SnackbarType} from '@ironsource/fusion-ui/components/snackbar/v4/snackbar.entities';
 
 export default {
-    title: 'V4/Components/Snackbar/Implementation',
+    title: 'V4/Components/Snackbar',
     component: SnackbarStoryWrapperComponent,
     decorators: [
         moduleMetadata({

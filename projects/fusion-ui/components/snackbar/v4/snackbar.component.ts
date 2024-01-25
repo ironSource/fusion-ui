@@ -11,11 +11,11 @@ import {
     ViewChild
 } from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {fromEvent} from 'rxjs';
+import {take} from 'rxjs/operators';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {SnackActionButton, SnackbarIconByType, SnackbarLocation, SnackbarType} from './snackbar.entities';
 import {ButtonComponent, IconButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
-import {fromEvent} from 'rxjs';
-import {take} from 'rxjs/operators';
 
 @Component({
     selector: 'fusion-snackbar',
@@ -73,7 +73,6 @@ export class SnackbarComponent implements OnInit, AfterViewInit {
         fromEvent(this.snackbarView.nativeElement, 'animationend')
             .pipe(take(1))
             .subscribe(data => {
-                console.log('closed');
                 this.closed.emit();
             });
     }

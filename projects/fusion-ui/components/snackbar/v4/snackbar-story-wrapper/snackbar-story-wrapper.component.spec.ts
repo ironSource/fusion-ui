@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SnackbarStoryWrapperComponent } from './snackbar-story-wrapper.component';
+import {SnackbarService} from "../snackbar.service";
 
 describe('SnackbarStoryWrapperComponent', () => {
   let component: SnackbarStoryWrapperComponent;
@@ -8,7 +9,8 @@ describe('SnackbarStoryWrapperComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ SnackbarStoryWrapperComponent ]
+      imports: [ SnackbarStoryWrapperComponent ],
+      providers: [SnackbarService]
     })
     .compileComponents();
 

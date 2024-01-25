@@ -1,9 +1,9 @@
 import {ApplicationRef, ComponentRef, EmbeddedViewRef, Inject, Injectable, Injector, Renderer2, ViewContainerRef} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
+import {take} from 'rxjs/operators';
 import {SnackbarEntity, SnackbarLocation} from './snackbar.entities';
 import {SNACKBAR_HOLDER_CLASS_NAME, SNACKBAR_LOCATION_STYLE_MAP} from './snackbar.configuration';
-import {SnackbarComponent} from '@ironsource/fusion-ui/components/snackbar/v4/snackbar.component';
-import {take} from 'rxjs/operators';
+import {SnackbarComponent} from './snackbar.component';
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +13,6 @@ export class SnackbarService {
         private renderer: Renderer2,
         private appRef: ApplicationRef,
         private vcr: ViewContainerRef,
-        private injector: Injector,
         @Inject(DOCUMENT) private document: Document
     ) {}
 

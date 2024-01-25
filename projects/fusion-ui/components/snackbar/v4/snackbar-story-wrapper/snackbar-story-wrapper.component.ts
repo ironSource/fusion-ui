@@ -9,6 +9,7 @@ import {SnackbarService} from '../snackbar.service';
     selector: 'fusion-snackbar-story-wrapper',
     standalone: true,
     imports: [CommonModule, TeleportingDirective, ButtonComponent, SnackbarComponent],
+    providers: [SnackbarService],
     templateUrl: './snackbar-story-wrapper.component.html',
     styleUrls: ['./snackbar-story-wrapper.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
