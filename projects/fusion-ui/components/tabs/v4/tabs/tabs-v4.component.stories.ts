@@ -96,11 +96,61 @@ export const Basic: TabsStory = {
     }
 };
 
+export const Card: TabsStory = {
+    render: args => ({
+        props: args,
+        template: `
+<div>
+    <fusion-tabs [variant]="variant" (selectedChange)="selectedChange($event)">
+      <fusion-tab [selected]="true">First</fusion-tab>
+      <fusion-tab>Second</fusion-tab>
+      <fusion-tab>Third</fusion-tab>
+      <fusion-tab [disabled]="true">Disabled</fusion-tab>
+    </fusion-tabs>
+</div>
+`
+    }),
+    parameters: {
+        docs: {
+            source: {
+                language: 'typescript',
+                code: dedent`
+    import { Component } from '@angular/core';
+    import { IconModule } from '@ironsource/fusion-ui/components/icon/v1';
+    import { TabComponent, TabsComponent } from '@ironsource/fusion-ui/components/tabs/v4';
+
+    @Component({
+      selector: 'fusion-story-wrapper',
+      template: \`<div>
+<fusion-tabs [variant]="variant" (selectedChange)="selectedChange($event)">
+  <fusion-tab [selected]="true">First</fusion-tab>
+  <fusion-tab>Second</fusion-tab>
+  <fusion-tab>Third</fusion-tab>
+  <fusion-tab [disabled]="true">Disabled</fusion-tab>
+</fusion-tabs>
+    </div>\`,
+      standalone: true,
+      imports: [IconModule, TabsModule],
+    })
+    export class FusionStoryWrapperComponent {
+      selectedChange($event) {
+        console.log('Selected Tab: ', $event, $event.tabElement.innerText);
+      }
+    }
+    `,
+                format: true,
+                type: 'code'
+            }
+        }
+    }
+};
+
 export const Page: TabsStory = {
     render: args => ({
         props: {...args, variant: 'page'},
         template: `
 <div>
+    <h1 class="font-v4-heading-1" style="margin: 10px 0px; color: var(--text-primary);"> Title page </h1>
     <fusion-tabs [variant]="variant" (selectedChange)="selectedChange($event)">
       <fusion-tab [selected]="true">First</fusion-tab>
       <fusion-tab>Second</fusion-tab>
