@@ -49,6 +49,7 @@
 
             .fu-secondary-menu-item-wrapper{
                 width: 100%;
+                position: relative;
                 .fu-secondary-menu-item-holder {
                     width: 100%;
                     height: $navBarSecondaryItemHeight;
@@ -147,6 +148,11 @@
                             @extend %font-v4-body-2;
                         }
                     }
+                }
+                .fu-secondary-menu-quick-action{
+                    position: absolute;
+                    right: 8px;
+                    top: 2px;
                 }
             }
 

@@ -17,6 +17,11 @@
         <!--region menu first level item-->
         <ng-container  *ngTemplateOutlet="(item.route || item.redirect) ? menuItemLink : menuItemDiv; context: {item: item}"></ng-container>
         <!--endregion menu first level item-->
+        <fusion-icon-button *ngIf="item.additionalAction"
+                            class="fu-secondary-menu-quick-action"
+                            size="small" iconName="ph/plus"
+                            (click)="onMenuItemClicked($event, item.additionalAction)"
+        ></fusion-icon-button>
         <!--region second level (child) items-->
         <ng-container *ngIf="item?.children">
             <div class="fu-secondary-menu-sub-items-holder" [class.fu-secondary-menu-sub-items-opened]="!item.closed">

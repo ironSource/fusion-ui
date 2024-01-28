@@ -6,11 +6,12 @@ import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {BehaviorSubject} from 'rxjs';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {secondaryMenuItem} from './navigation-secondary-menu.entities';
+import {IconButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
 
 @Component({
     selector: 'fusion-navigation-secondary-menu',
     standalone: true,
-    imports: [CommonModule, IconModule, TooltipModule, SvgModule],
+    imports: [CommonModule, IconModule, TooltipModule, SvgModule, IconButtonComponent],
     templateUrl: './navigation-secondary-menu.component.html',
     styleUrls: ['./navigation-secondary-menu.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
