@@ -10,7 +10,7 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
 
 export default {
-    title: 'V4/Components/Tooltip/Implementation',
+    title: 'V4/Components/Tooltip',
     component: TooltipV4Component,
     decorators: [
         moduleMetadata({
