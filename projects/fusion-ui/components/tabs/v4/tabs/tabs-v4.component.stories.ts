@@ -135,10 +135,10 @@ export const ABTest: TabsStory = {
 <div>
     <fusion-tabs [variant]="variant" (selectedChange)="selectedChange($event)">
       <fusion-tab [selected]="true">
-        <fusion-icon class="fu-colored" style="height: 28px" name="v4/ab-test/ab"></fusion-icon>First
+        <fusion-icon class="fu-colored" style="height: 28px" name="v4/ab-test/ab"></fusion-icon>Control group
       </fusion-tab>
       <fusion-tab>
-          <fusion-icon class="fu-colored" style="height: 28px" name="v4/ab-test/ab-gray"></fusion-icon>Second
+          <fusion-icon class="fu-colored" style="height: 28px" name="v4/ab-test/ab-gray"></fusion-icon>Test group
       </fusion-tab>
     </fusion-tabs>
 </div>
