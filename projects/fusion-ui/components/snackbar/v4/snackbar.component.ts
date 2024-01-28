@@ -40,6 +40,7 @@ export class SnackbarComponent implements OnInit, AfterViewInit {
 
     /** @internal */
     @ViewChild('snackbar') snackbarView: ElementRef;
+
     /** @internal */
     get statusIcon(): string {
         return SnackbarIconByType[this.type];

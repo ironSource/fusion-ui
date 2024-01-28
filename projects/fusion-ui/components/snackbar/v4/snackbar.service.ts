@@ -21,8 +21,6 @@ export class SnackbarService {
         const snackbarHostElement = this.ensureHostElement(snackbarLocation);
         const snackbarComponentRef = this.createToastComponentRef({...configuration, ...{location: snackbarLocation}});
 
-        // this.appRef.attachView(snackbarComponentRef.hostView);
-
         this.appendElementLocation(
             snackbarLocation,
             snackbarHostElement,
@@ -32,7 +30,8 @@ export class SnackbarService {
     }
 
     private ensureHostElement(location: SnackbarLocation): HTMLElement {
-        let snackbarHolderElement: HTMLElement = this.document.body.querySelector(`.${SNACKBAR_HOLDER_CLASS_NAME}`);
+        const selector = `.${SNACKBAR_HOLDER_CLASS_NAME}.${location}`;
+        let snackbarHolderElement: HTMLElement = this.document.body.querySelector(selector);
         let useLocation: SnackbarLocation = location;
         if (!snackbarHolderElement) {
             snackbarHolderElement = this.renderer.createElement('div');

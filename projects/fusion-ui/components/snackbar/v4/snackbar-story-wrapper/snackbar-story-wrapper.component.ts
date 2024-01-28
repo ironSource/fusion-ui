@@ -27,10 +27,12 @@ export class SnackbarStoryWrapperComponent {
 
     constructor(private snackbarService: SnackbarService) {}
 
+    private snackCount = 0;
+
     /** @internal */
     showSnack() {
         this.snackbarService.show({
-            title: this.title,
+            title: this.title + ' ' + this.snackCount++,
             message: this.message,
             type: this.type,
             location: this.location,
@@ -53,7 +55,7 @@ export class SnackbarStoryWrapperComponent {
     /** @internal */
     showSnackByPosition(position: SnackbarLocation) {
         this.snackbarService.show({
-            title: this.title,
+            title: this.title + ' ' + this.snackCount++,
             message: this.message,
             type: this.type,
             location: position,
