@@ -17,7 +17,7 @@
         border-radius: var(--border-radius-sm, #{$borderRadiusV4-sm});
         @extend %font-v4-chip-label;
 
-        color: var(--text-secondary, #{$color-v4-text-secondary});
+        color: var(--default-contrast-text, #{$color-v4-default-contrast-text});
         background-color: var(--default-light, #{$color-v4-default-light});
         .fu-trend-icon{
             width: 12px;
