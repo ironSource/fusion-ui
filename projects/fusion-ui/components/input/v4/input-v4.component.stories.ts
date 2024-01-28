@@ -81,19 +81,7 @@ export const Size: Story = {
 <div style="display: flex; flex-direction: column; gap: 16px">
     <fusion-input
         [formControl]="formControl"
-        placeholder="Small (default)"        
-        [viewOnly]="viewOnly"
-        [type]="type"
-        [step]="step"
-        [hideNumberArrows]="hideNumberArrows"
-        [min]="min"
-        [max]="max"
-        [maxLength]="maxLength"
-      ></fusion-input>
-    <fusion-input
-        [formControl]="formControl"
-        placeholder="Medium"
-        size="medium"
+        placeholder="Medium (default)"        
         [viewOnly]="viewOnly"
         [type]="type"
         [step]="step"
@@ -106,6 +94,18 @@ export const Size: Story = {
         [formControl]="formControl"
         placeholder="Large"
         size="large"
+        [viewOnly]="viewOnly"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+      ></fusion-input>
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Extra Large"
+        size="xlarge"
         [viewOnly]="viewOnly"
         [type]="type"
         [step]="step"

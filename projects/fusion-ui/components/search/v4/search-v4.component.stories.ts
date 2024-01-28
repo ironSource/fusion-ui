@@ -34,7 +34,7 @@ export default {
     },
     args: {
         placeholder: 'Search',
-        size: 'small',
+        size: 'medium',
         formControl: formControl
     },
     argTypes: {
