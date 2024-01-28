@@ -129,16 +129,16 @@ export const Size: Story = {
         template: `
 <div style="display: flex; gap: 16px;">
     <div style="width: 200px; display: flex; flex-direction: column; gap: 16px;">
-        <div class="font-v4-heading-5">Small (default)</div>
-        <fusion-dropdown-select [size]="'small'"></fusion-dropdown-select>
-    </div>
-    <div style="width: 200px; display: flex; flex-direction: column; gap: 16px;">
-        <div class="font-v4-heading-5">Medium</div>    
-        <fusion-dropdown-select [size]="'medium'"></fusion-dropdown-select>
+        <div class="font-v4-heading-5">Medium (default)</div>
+        <fusion-dropdown-select></fusion-dropdown-select>
     </div>
     <div style="width: 200px; display: flex; flex-direction: column; gap: 16px;">
         <div class="font-v4-heading-5">Large</div>    
-        <fusion-dropdown-select [size]="'large'"></fusion-dropdown-select>
+        <fusion-dropdown-select size="large"></fusion-dropdown-select>
+    </div>
+    <div style="width: 200px; display: flex; flex-direction: column; gap: 16px;">
+        <div class="font-v4-heading-5">Extra Large</div>    
+        <fusion-dropdown-select size="xlarge"></fusion-dropdown-select>
     </div>
 </div>       
 `

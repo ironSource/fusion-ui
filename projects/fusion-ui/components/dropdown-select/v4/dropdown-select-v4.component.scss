@@ -77,7 +77,7 @@
       border-color: var(--warning-main, #{$color-v4-warning-main});
     }
 
-    &.fu-size-medium {
+    &.fu-size-large {
       height: 32px;
       padding: 6px 8px;
       .fu-dropdown-select-icon {
@@ -88,7 +88,7 @@
         border-radius: 4px;
       }
     }
-    &.fu-size-large {
+    &.fu-size-xlarge {
       height: 40px;
       padding: 10px 8px;
       .fu-dropdown-select-icon {

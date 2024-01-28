@@ -17,7 +17,7 @@ import {CountryCode, FlagComponent} from '@ironsource/fusion-ui/components/flag/
 export class DropdownSelectV4Component {
     @Input() placeholder: DropdownPlaceholder = {value: 'Select'};
     @Input() isOpen: boolean = false;
-    @Input() size: 'small' | 'medium' | 'large' = 'small';
+    @Input() size: 'medium' | 'large' | 'xlarge' = 'medium';
     @Input() disabled: boolean = false;
     @Input() validationState: 'error' | 'warning' | 'success' | null = null;
     @Input() imageUrl: string;
