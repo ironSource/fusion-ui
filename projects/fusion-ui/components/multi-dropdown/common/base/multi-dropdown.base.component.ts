@@ -67,7 +67,6 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
     getOptionClasses(option: DropdownOption, index?: number) {
         return {
             [option.class]: option.class,
-            'fu-selected': option.checked,
             'fu-group': option.isGroup && !option.childOptions,
             'fu-group-first': option.isGroup && !option.childOptions && index === 0
         };

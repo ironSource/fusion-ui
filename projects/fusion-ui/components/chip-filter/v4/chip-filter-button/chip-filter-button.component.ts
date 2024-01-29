@@ -19,8 +19,6 @@ export class ChipFilterButtonComponent extends ChipFilterBaseComponent {
     @Input() size: ChipFilterButtonSize = 'medium';
     @Input() weight: ChipFilterButtonWeight = 'light';
 
-    isRoleButton = true;
-
     @HostBinding('class') get chipFilterButtonClass(): string {
         return [this.size === 'small' && 'fu-size-small', this.weight === 'bold' && 'fu-size-bold'].filter(Boolean).join(' ');
     }
