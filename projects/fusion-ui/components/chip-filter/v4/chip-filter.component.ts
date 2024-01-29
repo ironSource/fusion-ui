@@ -14,4 +14,7 @@ import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
     styleUrls: ['./chip-filter.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChipFilterComponent extends ChipFilterBaseComponent {}
+export class ChipFilterComponent extends ChipFilterBaseComponent {
+    /** @internal */
+    placeholderChipV4Mode = true;
+}

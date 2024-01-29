@@ -54,6 +54,8 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     rightIcon: ChipIcon;
     /** @internal */
     isRoleButton = false;
+    /** @internal */
+    placeholderChipV4Mode = false;
 
     /** @internal */
     testIdChipFilterModifiers: typeof ChipFilterTestIdModifiers = ChipFilterTestIdModifiers;
@@ -175,6 +177,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
             this.apiBase.changeConfig(`${this.maxWidth}px`);
             this.apiBase.templateRef = this.ref;
             this.apiBase.isComponentDisabled$.next(this.disabled);
+            this.apiBase.placeholderChipV4Mode = this.placeholderChipV4Mode;
         }
     }
 

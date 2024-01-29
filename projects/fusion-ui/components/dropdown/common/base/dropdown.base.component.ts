@@ -479,9 +479,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
         this.labelFlag = '';
         if (this.selected && this.selected.length > 0 && !this.forcePlaceholderOnSelection) {
             if (this.selected.length === 1) {
-                placeholder = this.selected[0].titleText
-                    ? this.selected[0].titleText
-                    : this.dropdownService.optionToString(this.selected[0], this.mappingOptions);
+                placeholder = this.getFirstSelectedLabel();
                 placeholderForSearch = this.selected[0].titleText
                     ? this.selected[0].titleText
                     : this.dropdownService.optionToString(this.selected[0], this.mappingOptions, {}, true);
@@ -498,9 +496,16 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
                 }
             } else {
                 const placeholderPrefix = this.isAllSelected ? 'All' : `${this.selected.length}`;
-                placeholderForSearch = placeholder = this.placeholderPrefix
-                    ? `${placeholderPrefix} ${this.placeholderPrefix} ${placeholderPrefix !== 'All' ? 'selected' : ''}`
-                    : `${this.selected.length} selected`;
+                if (this.placeholderChipV4Mode) {
+                    placeholderForSearch = placeholder =
+                        placeholderPrefix === 'All'
+                            ? `${placeholderPrefix}`
+                            : `${this.getFirstSelectedLabel()}, +${this.selected.length - 1}`;
+                } else {
+                    placeholderForSearch = placeholder = this.placeholderPrefix
+                        ? `${placeholderPrefix} ${this.placeholderPrefix} ${placeholderPrefix !== 'All' ? 'selected' : ''}`
+                        : `${this.selected.length} selected`;
+                }
             }
         }
 
@@ -739,6 +744,12 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
      */
     onOutsideClick(target?) {
         this.closeDropdown({clickOutside: true});
+    }
+
+    private getFirstSelectedLabel(): string {
+        return this.selected[0].titleText
+            ? this.selected[0].titleText
+            : this.dropdownService.optionToString(this.selected[0], this.mappingOptions);
     }
 
     private cloneOptions(options: DropdownOption[]): DropdownOption[] {
