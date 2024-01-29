@@ -1,0 +1,14 @@
+@import '../../../src/style/scss/v4/spacings';
+
+:host{
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+
+  .chip-filters-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-50, #{$spacingV4-50});
+  }
+}
