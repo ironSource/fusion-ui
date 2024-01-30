@@ -1,5 +1,6 @@
 import {ContentChildren, Directive, ElementRef, EventEmitter, HostListener, Input, Output, QueryList} from '@angular/core';
 import {DragAndDropSortableService} from './drag-and-drop-sortable.service';
+import {DragAndDropConfiguration} from '@ironsource/fusion-ui/directives/drag-and-drop-sortable/common/drag-and-drop-sortable.entities';
 
 @Directive({
     selector: '[isDragAndDropSortable]',
@@ -13,6 +14,7 @@ export class DragAndDropSortableDirective {
     }
 
     @Input() sortableModal: any[];
+    @Input() dragAndDropConfiguration: DragAndDropConfiguration;
 
     @Output() sortableModalChange = new EventEmitter<any[]>();
     @Output() onDragElementDrop = new EventEmitter<any>();
@@ -58,7 +60,9 @@ export class DragAndDropSortableDirective {
         }
         this.dragAndDropStableService.onDragToEdgeOfScrollableContainer({
             dragElement: this.dragElement,
-            containerElement: this.hostElement.nativeElement
+            containerElement: this.hostElement.nativeElement,
+            elementHeight: this.dragAndDropConfiguration.itemHeight || 30,
+            scrollDistance: this.dragAndDropConfiguration.autoScrollingDistance || 10
         });
         this.sortableModal = [...this.hostElement.nativeElement.children].map(childEl => childEl.id);
     }

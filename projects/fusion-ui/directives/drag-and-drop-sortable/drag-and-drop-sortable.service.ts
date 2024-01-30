@@ -16,7 +16,17 @@ export class DragAndDropSortableService {
         ).element;
     }
 
-    onDragToEdgeOfScrollableContainer({dragElement, containerElement}: {dragElement: HTMLElement; containerElement: HTMLElement}) {
+    onDragToEdgeOfScrollableContainer({
+        dragElement,
+        containerElement,
+        elementHeight,
+        scrollDistance
+    }: {
+        dragElement: HTMLElement;
+        containerElement: HTMLElement;
+        elementHeight: number;
+        scrollDistance: number;
+    }) {
         let pageY = 0;
         let distanceFromTopOfContainer = 0;
         if (dragElement) {
@@ -24,18 +34,26 @@ export class DragAndDropSortableService {
             distanceFromTopOfContainer = pageY - containerElement.getBoundingClientRect().top;
 
             if (distanceFromTopOfContainer < 30) {
-                this.scrollEntities({containerElement, action: 'scrollUp'});
-            } else if (distanceFromTopOfContainer > containerElement.clientHeight - 30) {
-                this.scrollEntities({containerElement, action: 'scrollDown'});
+                this.scrollEntities({containerElement, action: 'scrollUp', scrollDistance});
+            } else if (distanceFromTopOfContainer > containerElement.clientHeight - elementHeight) {
+                this.scrollEntities({containerElement, action: 'scrollDown', scrollDistance});
             }
         }
     }
 
-    private scrollEntities({containerElement, action}: {containerElement: HTMLElement; action: string}) {
+    private scrollEntities({
+        containerElement,
+        action,
+        scrollDistance
+    }: {
+        containerElement: HTMLElement;
+        action: string;
+        scrollDistance: number;
+    }) {
         if (action === 'scrollDown') {
-            containerElement.scrollTop += 10;
+            containerElement.scrollTop += scrollDistance;
         } else if (action === 'scrollUp') {
-            containerElement.scrollTop -= 10;
+            containerElement.scrollTop -= scrollDistance;
         }
     }
 }
