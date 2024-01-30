@@ -1,0 +1,13 @@
+<div class="fu-dropdown-select-wrapper fu-size-{{size}}"
+    [class.fu-disabled]="disabled"
+    [class.fu-open]="isOpen"
+    [class.fu-error]="validationState === 'error'"
+    [class.fu-success]="validationState === 'success'"
+    [class.fu-warning]="validationState === 'warning'"
+>
+    <img class="fu-dropdown-select-image" *ngIf="imageUrl" src="{{imageUrl}}" alt="" />
+    <fusion-flag class="fu-dropdown-select-flag" *ngIf="country" [countryCode]="country"></fusion-flag>
+    <fusion-icon class="fu-dropdown-select-icon" *ngIf="icon" name="{{icon}}"></fusion-icon>
+    <div class="fu-placeholder-text truncate" [fusionTooltip]="placeholder?.value" [innerHTML]="placeholder?.value"></div>
+    <fusion-icon class="fu-arrow-icon" name="ph/caret-down"></fusion-icon>
+</div>

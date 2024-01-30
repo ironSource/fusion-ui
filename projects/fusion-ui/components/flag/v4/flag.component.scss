@@ -1,0 +1,15 @@
+:host{
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    display: inline-block;
+    svg.fu-flag {
+        fill: currentcolor;
+        flex-shrink: 0;
+        transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        image{
+            width: 100%;
+            height: auto;
+        }
+    }
+}

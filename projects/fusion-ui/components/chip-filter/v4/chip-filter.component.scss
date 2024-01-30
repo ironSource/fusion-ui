@@ -1,0 +1,129 @@
+@import '../../../src/style/scss/v4/mixins/mixins';
+@import '../../../src/style/scss/v4/vars/vars';
+@import '../../../src/style/scss/v4/colors';
+@import '../../../src/style/scss/v4/spacings';
+@import '../../../src/style/scss/v4/shadows';
+@import '../../../src/style/scss/v4/border-radius';
+
+
+$chipPadding: 6px 6px 6px 8px;
+$chipPaddingOpened: 6px 5px 6px 7px;
+$chipHeight: 28px;
+
+
+:host {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  position: relative;
+
+  .fu-chip-filter-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    align-items: center;
+
+    padding: $chipPadding;
+    width: fit-content;
+    height: $chipHeight;
+    @extend %font-v4-chip-label;
+    border-radius: 100px;
+    border: 1px solid var(--default-outlined-border, #{$color-v4-default-outlined-border});
+    background-color: var(--background-default, #{$color-v4-background-default});
+    color: var(--text-primary, #{$color-v4-text-primary});
+
+    .fu-chip-left-icon,
+    .fu-chip-right-icon,
+    .fu-icon-close{
+      @include size(16px);
+    }
+    .fu-icon-close{
+      color: var(--action-active, #{$color-v4-action-active});
+    }
+
+    &:hover {
+      border-color: var(--action-hover, #{$color-v4-action-hover});
+      background-color: var(--action-hover, #{$color-v4-action-hover});
+      cursor: pointer;
+    }
+  }
+
+  &.fu-add-filter{
+    .fu-chip-filter-container {
+      border-radius: var(--spacing-75, #{$spacingV4-75});
+    }
+    &.fu-selected{
+      .fu-chip-filter-container {
+        background-color: var(--background-default, #{$color-v4-background-default});
+        color: var(--text-primary, #{$color-v4-text-primary});
+        border: 1px solid var(--default-outlined-border, #{$color-v4-default-outlined-border});
+      }
+      &:hover {
+        .fu-chip-filter-container {
+          border-color: var(--action-hover, #{$color-v4-action-hover});
+          background-color: var(--action-hover, #{$color-v4-action-hover});
+          cursor: pointer;
+        }
+      }
+      &:has(.fu-dropdown.dd-opened){
+        .fu-chip-filter-container {
+          border: 2px solid var(--action-active, #{$color-v4-action-active});
+          background: var(--action-selected, #{$color-v4-action-selected});
+          padding: $chipPaddingOpened;
+        }
+      }
+    }
+  }
+
+  // opened
+  &:has(.fu-dropdown.dd-opened){
+    .fu-chip-filter-container{
+      border: 2px solid var(--action-active, #{$color-v4-action-active});
+      background: var(--action-selected, #{$color-v4-action-selected});
+      padding: $chipPaddingOpened;
+    }
+  }
+  // selected
+  &.fu-selected {
+    .fu-chip-filter-container {
+      background-color: var(--primary-light, #{$color-v4-primary-light});
+      color: var(--primary-contrast-text, #{$color-v4-primary-contrast-text});
+      border-color:  var(--primary-light, #{$color-v4-primary-light});
+      .fu-icon-close{
+        color: var(--primary-dark, #{$color-v4-primary-dark});
+        &:hover{
+          color: var(--primary-darker, #{$color-v4-primary-darker});
+        }
+      }
+      &:hover {
+        background-color: var(--primary-light, #{$color-v4-primary-light});
+        border: solid 1px var(--primary-main-50-p, #{$color-v4-primary-main-50-p});
+      }
+    }
+  }
+  // selected - opened
+  &.fu-selected:has(.fu-dropdown.dd-opened){
+    .fu-chip-filter-container{
+      background-color: var(--primary-light, #{$color-v4-primary-light});
+      border-color:  var(--primary-main-50-p, #{$color-v4-primary-main-50-p});
+      border-width: 2px;
+      padding: $chipPaddingOpened;
+    }
+  }
+
+  // disabled
+  &.fu-disabled{
+    pointer-events: none;
+    user-select: none;
+    .fu-chip-filter-container{
+      color: var(--text-disabled, #{$color-v4-text-disabled});
+      border-color: var(--action-outlined-border, #{$color-v4-action-outlined-border});
+      .fu-icon-close{
+        color: var(--text-disabled, #{$color-v4-text-disabled} );
+      }
+
+    }
+  }
+}
+
