@@ -12,6 +12,14 @@ export abstract class ApiBase {
     resetState$ = new Subject<void>();
     /** @internal */
     selectedTypeObject = false; // for chip-filter selected value-string. for top-filter object
+
+    /** @ignore
+     * used for placeholder generation in chip mode
+     * "All" - when all options selected (without Chip label)
+     * "Item + x selected" - when some options selected
+     * */
+    placeholderChipV4Mode = false;
+
     /** @internal */
     abstract valueSelected(): Observable<any>;
     /** @internal */

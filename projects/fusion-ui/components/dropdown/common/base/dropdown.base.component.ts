@@ -138,9 +138,9 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     /** @internal */
     @Input() set placeholder(value: string | DropdownPlaceholderConfiguration) {
         if (typeof value === 'string') {
-            this.placeholderText = value || 'Please Select';
+            this.placeholderText = value ?? 'Select';
         } else {
-            this.placeholderText = value?.placeholderText || 'Please Select';
+            this.placeholderText = value?.placeholderText || 'Select';
             this.placeholderIcon = value?.icon;
             this.forcePlaceholderOnSelection = value?.isForcedPlaceholder ? value?.isForcedPlaceholder : this.forcePlaceholderOnSelection;
         }
@@ -174,13 +174,13 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     /** @ignore */
     forcePlaceholderOnSelection = false;
     /** @ignore */
-    placeholderText = 'Please Select';
+    placeholderText = 'Select';
     /** @ignore */
     placeholderIcon: IconData;
     /** @ignore */
     isOpen$: BehaviorSubject<boolean> = new BehaviorSubject(false);
     /** @ignore */
-    id: any;
+    id: any = this.uniqueIdService.getUniqueId().toString();
     /** @ignore */
     searchValue = new FormControl();
     /** @ignore */
@@ -381,7 +381,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
             this.placeholder$.next(this.placeholderText);
         }
         if (changes.options && !this.isLoadingManuallyChanged) {
-            this.loadingState = !this.options;
+            this.loadingState = !this.options || this.options?.length === 0;
         }
         this.dropdownSelectConfigurations$.next(this.getDropdownSelectConfigurations());
     }
@@ -451,7 +451,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     closeDropdown({clickOutside = false}: ClosedOptions = {clickOutside: false}) {
         this.isOpen$.next(false);
         this.searchValue.reset('');
-        if (this.selectComponent) {
+        if (!!this.selectComponent?.resetSearch) {
             this.selectComponent.resetSearch();
         }
         this.focusedLI = -1;
@@ -479,9 +479,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
         this.labelFlag = '';
         if (this.selected && this.selected.length > 0 && !this.forcePlaceholderOnSelection) {
             if (this.selected.length === 1) {
-                placeholder = this.selected[0].titleText
-                    ? this.selected[0].titleText
-                    : this.dropdownService.optionToString(this.selected[0], this.mappingOptions);
+                placeholder = this.getFirstSelectedLabel();
                 placeholderForSearch = this.selected[0].titleText
                     ? this.selected[0].titleText
                     : this.dropdownService.optionToString(this.selected[0], this.mappingOptions, {}, true);
@@ -498,9 +496,16 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
                 }
             } else {
                 const placeholderPrefix = this.isAllSelected ? 'All' : `${this.selected.length}`;
-                placeholderForSearch = placeholder = this.placeholderPrefix
-                    ? `${placeholderPrefix} ${this.placeholderPrefix} ${placeholderPrefix !== 'All' ? 'selected' : ''}`
-                    : `${this.selected.length} selected`;
+                if (this.placeholderChipV4Mode) {
+                    placeholderForSearch = placeholder =
+                        placeholderPrefix === 'All'
+                            ? `${placeholderPrefix}`
+                            : `${this.getFirstSelectedLabel()}, +${this.selected.length - 1}`;
+                } else {
+                    placeholderForSearch = placeholder = this.placeholderPrefix
+                        ? `${placeholderPrefix} ${this.placeholderPrefix} ${placeholderPrefix !== 'All' ? 'selected' : ''}`
+                        : `${this.selected.length} selected`;
+                }
             }
         }
 
@@ -739,6 +744,12 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
      */
     onOutsideClick(target?) {
         this.closeDropdown({clickOutside: true});
+    }
+
+    private getFirstSelectedLabel(): string {
+        return this.selected[0].titleText
+            ? this.selected[0].titleText
+            : this.dropdownService.optionToString(this.selected[0], this.mappingOptions);
     }
 
     private cloneOptions(options: DropdownOption[]): DropdownOption[] {

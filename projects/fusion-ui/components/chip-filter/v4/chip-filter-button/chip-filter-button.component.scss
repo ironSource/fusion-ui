@@ -1,0 +1,90 @@
+@import '../../../../src/style/scss/v4/mixins/mixins';
+@import '../../../../src/style/scss/v4/vars/vars';
+@import '../../../../src/style/scss/v4/colors';
+@import '../../../../src/style/scss/v4/fonts';
+@import '../../../../src/style/scss/v4/spacings';
+@import '../../../../src/style/scss/v4/shadows';
+@import '../../../../src/style/scss/v4/border-radius';
+
+$chipPadding: 6px;
+$chipPaddingOpened: 6px 5px;
+$chipSmallPadding: 4px 6px;
+
+:host {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  position: relative;
+
+  .fu-chip-filter-container {
+    padding: $chipPadding;
+    border-radius: var(--border-radius-md);
+    color: var(--text-primary, #{$color-v4-text-primary});
+
+    .fu-icon-close{
+      color: var(--action-active, #{$color-v4-action-active});
+    }
+
+    &:hover{
+      border-color: var(--action-active, #{$color-v4-action-active});
+      background-color: var(--action-hover, #{$color-v4-action-hover});
+      cursor: pointer;
+    }
+  }
+
+  // selected + opened
+  &.fu-selected,
+  &.fu-selected:has(.fu-dropdown.dd-opened),
+  &:has(.fu-dropdown.dd-opened) {
+    .fu-chip-filter-container {
+      color: var(--text-primary, #{$color-v4-text-primary});
+      border: 2px solid var(--action-active, #{$color-v4-action-active});
+      background: var(--action-selected, #{$color-v4-action-selected});
+      padding: $chipPaddingOpened;
+
+      .fu-icon-close {
+        color: var(--action-active, #{$color-v4-action-active});
+      }
+
+      &:hover {
+        border-color: var(--action-active, #{$color-v4-action-active});
+        border-width: 1px;
+        background-color: var(--action-hover, #{$color-v4-action-hover});
+        cursor: pointer;
+        padding: $chipPadding;
+        .fu-icon-close {
+          color: var(--action-active, #{$color-v4-action-active});
+        }
+      }
+    }
+  }
+
+  // variant bold
+  &.fu-size-bold{
+    .fu-chip-filter-container {
+      @extend %font-v4-button;
+    }
+  }
+
+  // size small
+  &.fu-size-small {
+    .fu-chip-filter-container {
+      padding: $chipSmallPadding;
+      height: 24px;
+      &:hover {
+        padding: $chipSmallPadding;
+      }
+    }
+    &.fu-selected,
+    &.fu-selected:has(.fu-dropdown.dd-opened) {
+      .fu-chip-filter-container:hover {
+        padding: 4px 7px;
+      }
+    }
+    &:has(.fu-dropdown.dd-opened){
+      .fu-chip-filter-container:hover {
+        padding: 4px 6px;
+      }
+    }
+  }
+}

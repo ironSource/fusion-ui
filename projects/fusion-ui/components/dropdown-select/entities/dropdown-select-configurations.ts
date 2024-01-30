@@ -2,17 +2,19 @@ import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dy
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 
+export interface DropdownPlaceholder {
+    search?: string;
+    prefix?: string;
+    value?: string;
+    width?: string;
+    forcePlaceholderOnSelection?: boolean;
+    overlayLocation?: string;
+}
+
 export interface DropdownSelectConfigurations {
     selectedOption?: DropdownOption[];
     dynamicContent?: DynamicComponentConfiguration;
-    placeholder?: {
-        search?: string;
-        prefix?: string;
-        value?: string;
-        width?: string;
-        forcePlaceholderOnSelection?: boolean;
-        overlayLocation?: string;
-    };
+    placeholder?: DropdownPlaceholder;
     disabled?: boolean;
     readonly?: boolean;
     isTabMode?: boolean;
