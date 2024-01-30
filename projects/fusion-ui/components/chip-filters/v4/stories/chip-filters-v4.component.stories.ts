@@ -8,7 +8,7 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DropdownComponent} from '@ironsource/fusion-ui/components/dropdown/v4';
 import {MultiDropdownComponent} from '@ironsource/fusion-ui/components/multi-dropdown/v4';
-import {ChipFilterComponent} from '@ironsource/fusion-ui/components/chip-filter/v4';
+import {ChipFilterButtonComponent, ChipFilterComponent} from '@ironsource/fusion-ui/components/chip-filter/v4';
 import {ChipFiltersV4Component} from '../chip-filters-v4.component';
 import {
     AD_FORMAT_OPTIONS,
@@ -79,7 +79,7 @@ const basicTemplate = `
 `;
 const datePickerTemplate = `
 <fusion-chip-filters>
-        <fusion-chip-filter [configuration]="configChip1">
+        <fusion-chip-filter-button [configuration]="configChip1">
             <div class="filter-element">
                  <fusion-dropdown
                     [placeholderPrefix]="placeholderPrefixChip1"
@@ -88,7 +88,7 @@ const datePickerTemplate = `
                     [options]="optionsChip1">
                 </fusion-dropdown>
             </div>
-        </fusion-chip-filter>
+        </fusion-chip-filter-button>
         <fusion-chip-filter [configuration]="configChip2">
             <div class="filter-element">
                 <fusion-multi-dropdown
@@ -190,6 +190,7 @@ export default {
                 SvgModule.forRoot({assetsPath: environment.assetsPath}),
                 IconModule,
                 ChipFilterComponent,
+                ChipFilterButtonComponent,
                 DropdownComponent,
                 MultiDropdownComponent
             ]
