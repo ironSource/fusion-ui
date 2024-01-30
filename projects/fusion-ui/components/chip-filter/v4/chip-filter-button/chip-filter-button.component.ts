@@ -26,4 +26,13 @@ export class ChipFilterButtonComponent extends ChipFilterBaseComponent {
     get closeIconName(): string {
         return 'ph/caret-down';
     }
+
+    get showClose(): boolean {
+        return this.chipType$.getValue() !== 'AddFilter' && this.isCloseIcon$.getValue() && this.selected;
+    }
+    get showCaretDown(): boolean {
+        return (
+            this.chipType$.getValue() !== 'AddFilter' && ((this.isCloseIcon$.getValue() && !this.selected) || !this.isCloseIcon$.getValue())
+        );
+    }
 }
