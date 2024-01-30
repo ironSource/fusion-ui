@@ -35,7 +35,7 @@ export class NavigationSecondaryMenuComponent implements OnInit {
     itemChildToggleIcon: string = 'ph/bold/caret-right';
     itemNewTabIcon: string = 'ph/arrow-square-out';
     selectedMenuItem$ = new BehaviorSubject<secondaryMenuItem>(null);
-    quickActionTooltipConfiguration = {position: TooltipPosition.Right};
+    quickActionTooltipConfiguration = {position: TooltipPosition.Right, suppressPositionArrow: true};
 
     private _menuItems: secondaryMenuItem[] = [];
 
