@@ -46,7 +46,7 @@ const MOCK_OPTIONS_PERIOD: DropdownOption[] = [
 ];
 
 const baseTemplate = `
-    <fusion-chip-filter-button [size]="size" [weight]="weight" [configuration]="configuration">
+    <fusion-chip-filter-button [showCaretIcon]="showCaretIcon" [size]="size" [weight]="weight" [configuration]="configuration">
         <div class="filter-element">
             <fusion-dropdown
                  [placeholderPrefix]="placeholderPrefix"
@@ -162,6 +162,18 @@ export const WithIconLeft: Story = {
     })
 };
 
+export const WithoutCaretIcon: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            formControl: new FormControl(),
+            showCaretIcon: false,
+            configuration: {id: 1, mode: 'static', close: true, leftIcon: {icon: 'ph/calendar-blank'}}
+        },
+        template: baseTemplate
+    })
+};
+
 export const Sizes: Story = {
     render: args => ({
         props: {
@@ -201,6 +213,45 @@ export const Sizes: Story = {
     })
 };
 
+export const Weight: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            formControl: new FormControl(),
+            configuration: {id: 1, mode: 'static'}
+        },
+        template: `
+<div style="display: flex; gap: 16px;">
+        <fusion-chip-filter-button [configuration]="configuration">
+            <div class="filter-element">
+                <fusion-dropdown
+                     placeholder="Light"
+                     [formControl]="formControl"
+                     [options]="options"
+                     [optionsTitle]="optionsTitle"
+                     [search]="search"
+                     >
+                </fusion-dropdown>
+            </div>
+        </fusion-chip-filter-button>
+        
+        <fusion-chip-filter-button weight="bold" [configuration]="configuration">
+            <div class="filter-element">
+                <fusion-dropdown
+                     placeholder="Bold"
+                     [formControl]="formControl"
+                     [options]="options"
+                     [optionsTitle]="optionsTitle"
+                     [search]="search"
+                     >
+                </fusion-dropdown>
+            </div>
+        </fusion-chip-filter-button>
+</div>
+`
+    })
+};
+
 export const Icon: Story = {
     render: args => ({
         props: {
@@ -210,10 +261,10 @@ export const Icon: Story = {
         },
         template: `
 <div style="display: flex; gap: 16px;">
-        <fusion-chip-filter-button [weight]="weight" [configuration]="configuration">
+        <fusion-chip-filter-button [showCaretIcon]="false" [weight]="weight" [configuration]="configuration">
             <div class="filter-element">
                 <fusion-dropdown
-                     placeholder="None"
+                     placeholder="No icons"
                      [formControl]="formControl"
                      [options]="options"
                      [optionsTitle]="optionsTitle"
@@ -223,7 +274,7 @@ export const Icon: Story = {
             </div>
         </fusion-chip-filter-button>
 
-        <fusion-chip-filter-button [weight]="weight" [configuration]="{id: 2, mode: 'static', leftIcon: {icon: 'ph/calendar-blank'}}">
+        <fusion-chip-filter-button [showCaretIcon]="false" [weight]="weight" [configuration]="{id: 2, mode: 'static', leftIcon: {icon: 'ph/calendar-blank'}}">
             <div class="filter-element">
                 <fusion-dropdown
                      placeholder="With start icon"
@@ -239,7 +290,7 @@ export const Icon: Story = {
         <fusion-chip-filter-button [weight]="weight" [configuration]="{id: 2, mode: 'static', close: true}">
             <div class="filter-element">
                 <fusion-dropdown
-                     placeholder="With end icon"
+                     placeholder="With caret icon (default)"
                      [formControl]="formControl"
                      [options]="options"
                      [optionsTitle]="optionsTitle"
@@ -261,7 +312,7 @@ export const Icon: Story = {
                 </fusion-dropdown>
             </div>
         </fusion-chip-filter-button>
-</div>
+    </div>
 `
     }),
     decorators: [componentWrapperDecorator(story => `<div style="width: 800px; height: 350px;">${story}</div>`)]
