@@ -14,7 +14,7 @@ export class DragAndDropSortableDirective {
     }
 
     @Input() sortableModal: any[];
-    @Input() dragAndDropConfiguration: DragAndDropConfiguration;
+    @Input() dragAndDropConfiguration: DragAndDropConfiguration = {itemHeight: 30, autoScrollingDistance: 10};
 
     @Output() sortableModalChange = new EventEmitter<any[]>();
     @Output() onDragElementDrop = new EventEmitter<any>();
@@ -61,8 +61,8 @@ export class DragAndDropSortableDirective {
         this.dragAndDropStableService.onDragToEdgeOfScrollableContainer({
             dragElement: this.dragElement,
             containerElement: this.hostElement.nativeElement,
-            elementHeight: this.dragAndDropConfiguration.itemHeight || 30,
-            scrollDistance: this.dragAndDropConfiguration.autoScrollingDistance || 10
+            elementHeight: this.dragAndDropConfiguration.itemHeight,
+            scrollDistance: this.dragAndDropConfiguration.autoScrollingDistance
         });
         this.sortableModal = [...this.hostElement.nativeElement.children].map(childEl => childEl.id);
     }
