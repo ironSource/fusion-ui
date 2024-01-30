@@ -41,6 +41,12 @@ export const CATEGORY_OPTIONS = [
     {id: '5', displayText: 'Beauty'}
 ];
 
+export const DATERANGE_OPTIONS = [
+    {id: '1', displayText: 'Last day vs. previous day'},
+    {id: '2', displayText: 'Last 7 days vs. previous 7 days'},
+    {id: '3', displayText: 'Last 30 days vs. previous 30 days'}
+];
+
 export const MOCK_USERS: DropdownOption[] = [
     {id: 1, displayText: 'Mario Speedwagon'},
     {id: 2, displayText: 'Petey Cruiser'},

@@ -10,7 +10,14 @@ import {DropdownComponent} from '@ironsource/fusion-ui/components/dropdown/v4';
 import {MultiDropdownComponent} from '@ironsource/fusion-ui/components/multi-dropdown/v4';
 import {ChipFilterComponent} from '@ironsource/fusion-ui/components/chip-filter/v4';
 import {ChipFiltersV4Component} from '../chip-filters-v4.component';
-import {AD_FORMAT_OPTIONS, AD_TYPE_OPTIONS, CATEGORY_OPTIONS, PLATFORM_OPTIONS, STATUS_OPTIONS} from './chip-filters-v4.stories.mock';
+import {
+    AD_FORMAT_OPTIONS,
+    AD_TYPE_OPTIONS,
+    CATEGORY_OPTIONS,
+    DATERANGE_OPTIONS,
+    PLATFORM_OPTIONS,
+    STATUS_OPTIONS
+} from './chip-filters-v4.stories.mock';
 
 const basicTemplate = `
 <fusion-chip-filters>
@@ -66,6 +73,105 @@ const basicTemplate = `
                     [formControl]="fcChip5"
                     [options]="optionsChip5">
                 </fusion-dropdown>
+            </div>
+        </fusion-chip-filter>        
+    </fusion-chip-filters>
+`;
+const datePickerTemplate = `
+<fusion-chip-filters>
+        <fusion-chip-filter [configuration]="configChip1">
+            <div class="filter-element">
+                 <fusion-dropdown
+                    [placeholderPrefix]="placeholderPrefixChip1"
+                    [placeholder]="placeholderChip1"
+                    [formControl]="fcChip1"
+                    [options]="optionsChip1">
+                </fusion-dropdown>
+            </div>
+        </fusion-chip-filter>
+        <fusion-chip-filter [configuration]="configChip2">
+            <div class="filter-element">
+                <fusion-multi-dropdown
+                    [placeholderPrefix]="placeholderPrefixChip2"
+                    [placeholder]="placeholderChip2"
+                    [formControl]="fcChip2"
+                    [options]="optionsChip2"
+                    selectAllLabel="Select all"
+                ></fusion-multi-dropdown>
+            </div>
+        </fusion-chip-filter>
+        <fusion-chip-filter [configuration]="configChip3">
+            <div class="filter-element">
+                <fusion-multi-dropdown
+                    [placeholderPrefix]="placeholderPrefixChip3"
+                    [placeholder]="placeholderChip3"
+                    [formControl]="fcChip3"
+                    [options]="optionsChip3"
+                    selectAllLabel="Select all"
+                ></fusion-multi-dropdown>
+            </div>
+        </fusion-chip-filter>
+        <fusion-chip-filter [configuration]="configChip4">
+            <div class="filter-element">
+               <fusion-multi-dropdown
+                    [placeholderPrefix]="placeholderPrefixChip4"
+                    [placeholder]="placeholderChip4"
+                    [formControl]="fcChip4"
+                    [options]="optionsChip4"
+                    selectAllLabel="Select all"
+                ></fusion-multi-dropdown>
+            </div>
+        </fusion-chip-filter>
+    </fusion-chip-filters>
+`;
+const addFilterTemplate = `
+<fusion-chip-filters
+        [addFilterOptions]="addFilterOptions"
+        [disableAddFilter]="disableAddFilter"
+        [isSearch]="isSearch"
+        >
+        <fusion-chip-filter [configuration]="configChip1">
+            <div class="filter-element">
+                <fusion-multi-dropdown
+                    [placeholderPrefix]="placeholderPrefixChip1"
+                    [placeholder]="placeholderChip1"
+                    [formControl]="fcChip1"
+                    [options]="optionsChip1"
+                    selectAllLabel="Select all"
+                ></fusion-multi-dropdown>
+            </div>
+        </fusion-chip-filter>
+        <fusion-chip-filter [configuration]="configChip2">
+            <div class="filter-element">
+                <fusion-multi-dropdown
+                    [placeholderPrefix]="placeholderPrefixChip2"
+                    [placeholder]="placeholderChip2"
+                    [formControl]="fcChip2"
+                    [options]="optionsChip2"
+                    selectAllLabel="Select all"
+                ></fusion-multi-dropdown>
+            </div>
+        </fusion-chip-filter>
+        <fusion-chip-filter [configuration]="configChip3">
+            <div class="filter-element">
+                <fusion-multi-dropdown
+                    [placeholderPrefix]="placeholderPrefixChip3"
+                    [placeholder]="placeholderChip3"
+                    [formControl]="fcChip3"
+                    [options]="optionsChip3"
+                    selectAllLabel="Select all"
+                ></fusion-multi-dropdown>
+            </div>
+        </fusion-chip-filter>
+        <fusion-chip-filter [configuration]="configChip4">
+            <div class="filter-element">
+               <fusion-multi-dropdown
+                    [placeholderPrefix]="placeholderPrefixChip4"
+                    [placeholder]="placeholderChip4"
+                    [formControl]="fcChip4"
+                    [options]="optionsChip4"
+                    selectAllLabel="Select all"
+                ></fusion-multi-dropdown>
             </div>
         </fusion-chip-filter>        
     </fusion-chip-filters>
@@ -139,3 +245,120 @@ export const Default: Story = {
         template: basicTemplate
     })
 };
+
+export const WithDatePicker: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            fcChip1: new FormControl([DATERANGE_OPTIONS[1]]),
+            configChip1: {id: 1, mode: 'static', leftIcon: {icon: 'ph/calendar-blank'}, close: false},
+            optionsChip1: DATERANGE_OPTIONS,
+            placeholderPrefixChip1: '',
+            placeholderChip1: '',
+
+            fcChip2: new FormControl(),
+            configChip2: {id: 2, mode: 'static', close: true},
+            optionsChip2: PLATFORM_OPTIONS,
+            placeholderPrefixChip2: 'Platform',
+            placeholderChip2: '',
+
+            fcChip3: new FormControl(),
+            configChip3: {id: 3, mode: 'static', close: true},
+            optionsChip3: AD_FORMAT_OPTIONS,
+            placeholderPrefixChip3: 'Ad format',
+            placeholderChip3: '',
+
+            fcChip4: new FormControl(),
+            configChip4: {id: 4, mode: 'static', close: true},
+            optionsChip4: AD_TYPE_OPTIONS,
+            placeholderPrefixChip4: 'Ad type',
+            placeholderChip4: ''
+        },
+        template: datePickerTemplate
+    })
+};
+
+export const WithAddFilters: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            addFilterOptions: [
+                {id: 3, displayText: 'Ad format'},
+                {id: 4, displayText: 'Ad type'}
+            ],
+            disableAddFilter: false,
+            isSearch: false,
+
+            fcChip1: new FormControl(),
+            configChip1: {id: 1, mode: 'static', close: true},
+            optionsChip1: STATUS_OPTIONS,
+            placeholderPrefixChip1: 'Status',
+            placeholderChip1: '',
+
+            fcChip2: new FormControl(),
+            configChip2: {id: 2, mode: 'static', close: true},
+            optionsChip2: PLATFORM_OPTIONS,
+            placeholderPrefixChip2: 'Platform',
+            placeholderChip2: '',
+
+            fcChip3: new FormControl(),
+            configChip3: {id: 3, mode: 'dynamic', close: true},
+            optionsChip3: AD_FORMAT_OPTIONS,
+            placeholderPrefixChip3: 'Ad format',
+            placeholderChip3: '',
+
+            fcChip4: new FormControl(),
+            configChip4: {id: 4, mode: 'dynamic', close: true},
+            optionsChip4: AD_TYPE_OPTIONS,
+            placeholderPrefixChip4: 'Ad type',
+            placeholderChip4: ''
+        },
+        template: addFilterTemplate
+    })
+};
+
+// region Add filter button alone
+/*export const AddFilterButton: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            addFiltersTitle: 'Add filter by:',
+            addFilterOptions: [
+                {id: 4, displayText: 'Country'},
+                {id: 5, displayText: 'Campaigns'}
+            ],
+            disableAddFilter: false,
+            isSearch: true
+        },
+        template: `<fusion-chip-filters
+        [addFiltersTitle]="addFiltersTitle"
+        [addFilterOptions]="addFilterOptions"
+        [disableAddFilter]="disableAddFilter"
+        [isSearch]="isSearch"
+        >
+    </fusion-chip-filters>`
+    })
+};
+
+export const AddFilterButtonDisabled: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            addFiltersTitle: 'Add filter by:',
+            addFilterOptions: [
+                {id: 4, displayText: 'Country'},
+                {id: 5, displayText: 'Campaigns'}
+            ],
+            disableAddFilter: true,
+            isSearch: true
+        },
+        template: `<fusion-chip-filters
+        [addFiltersTitle]="addFiltersTitle"
+        [addFilterOptions]="addFilterOptions"
+        [disableAddFilter]="disableAddFilter"
+        [isSearch]="isSearch"
+        >
+    </fusion-chip-filters>`
+    })
+};*/
+// endregion

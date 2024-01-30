@@ -4,7 +4,7 @@
         <fusion-chip-filter [isDynamicContent]="true" [configuration]="{id: addFilterIndex,mode:'add', disabled: (disableAddFilter$ | async)}">
             <div class="fu-chip-content">
                 <span>
-                    <fusion-icon name="tune"></fusion-icon>
+                    <fusion-icon [name]="addFilterIcon"></fusion-icon>
                     Add filters
                 </span>
             </div>

@@ -16,6 +16,6 @@
         </div>
         <fusion-icon class="fu-chip-right-icon" *ngIf="rightIcon" [name]="rightIcon.icon" [fusionTooltip]="rightIcon.tooltipText"></fusion-icon>
         <fusion-icon class="fu-icon-close" *ngIf="(isCloseIcon$ | async) && selected" (click)="closeClicked($event)" name="ph/fill/x-circle"></fusion-icon>
-        <fusion-icon class="fu-icon-close" *ngIf="(isCloseIcon$ | async) && !selected" name="ph/caret-down"></fusion-icon>
+        <fusion-icon class="fu-icon-close" *ngIf="((isCloseIcon$ | async) && !selected) || !(isCloseIcon$ | async)" name="ph/caret-down"></fusion-icon>
     </div>
 </ng-template>

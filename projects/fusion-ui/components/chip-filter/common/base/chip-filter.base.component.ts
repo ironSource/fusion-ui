@@ -84,7 +84,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     }
     /** @internal */
     @Input() set isSelected(value: boolean) {
-        this.selected = value || false;
+        this.selected = value ?? false;
         if (value) {
             this.chipSelectValue = {
                 id: this.id,
@@ -230,6 +230,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
                         isSelected: this.selected
                     });
                 }
+                this.cdr.detectChanges();
             });
     }
 
