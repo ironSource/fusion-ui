@@ -54,6 +54,8 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     rightIcon: ChipIcon;
     /** @internal */
     isRoleButton = false;
+    /** @internal */
+    placeholderChipV4Mode = false;
 
     /** @internal */
     testIdChipFilterModifiers: typeof ChipFilterTestIdModifiers = ChipFilterTestIdModifiers;
@@ -82,7 +84,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     }
     /** @internal */
     @Input() set isSelected(value: boolean) {
-        this.selected = value || false;
+        this.selected = value ?? false;
         if (value) {
             this.chipSelectValue = {
                 id: this.id,
@@ -175,6 +177,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
             this.apiBase.changeConfig(`${this.maxWidth}px`);
             this.apiBase.templateRef = this.ref;
             this.apiBase.isComponentDisabled$.next(this.disabled);
+            this.apiBase.placeholderChipV4Mode = this.placeholderChipV4Mode;
         }
     }
 
@@ -227,6 +230,7 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
                         isSelected: this.selected
                     });
                 }
+                this.cdr.detectChanges();
             });
     }
 

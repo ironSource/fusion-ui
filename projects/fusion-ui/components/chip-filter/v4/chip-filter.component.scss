@@ -49,6 +49,33 @@ $chipHeight: 28px;
     }
   }
 
+  &.fu-add-filter{
+    .fu-chip-filter-container {
+      border-radius: var(--spacing-75, #{$spacingV4-75});
+    }
+    &.fu-selected{
+      .fu-chip-filter-container {
+        background-color: var(--background-default, #{$color-v4-background-default});
+        color: var(--text-primary, #{$color-v4-text-primary});
+        border: 1px solid var(--default-outlined-border, #{$color-v4-default-outlined-border});
+      }
+      &:hover {
+        .fu-chip-filter-container {
+          border-color: var(--action-hover, #{$color-v4-action-hover});
+          background-color: var(--action-hover, #{$color-v4-action-hover});
+          cursor: pointer;
+        }
+      }
+      &:has(.fu-dropdown.dd-opened){
+        .fu-chip-filter-container {
+          border: 2px solid var(--action-active, #{$color-v4-action-active});
+          background: var(--action-selected, #{$color-v4-action-selected});
+          padding: $chipPaddingOpened;
+        }
+      }
+    }
+  }
+
   // opened
   &:has(.fu-dropdown.dd-opened){
     .fu-chip-filter-container{
