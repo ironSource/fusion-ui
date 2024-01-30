@@ -88,8 +88,7 @@ export default {
                 MultiDropdownComponent,
                 DaterangeModule
             ]
-        }),
-        componentWrapperDecorator(story => `<div style="width: 300px; height: 350px;">${story}</div>`)
+        })
     ],
     tags: ['autodocs'],
     parameters: {
@@ -127,7 +126,8 @@ export const Default: Story = {
             options: MOCK_OPTIONS_TYPE
         },
         template: baseTemplate
-    })
+    }),
+    decorators: [componentWrapperDecorator(story => `<div style="width: 300px; height: 150px;">${story}</div>`)]
 };
 
 export const Disabled: Story = {
@@ -148,7 +148,8 @@ export const Multiselect: Story = {
             formControl: new FormControl()
         },
         template: baseTemplateMultiselect
-    })
+    }),
+    decorators: [componentWrapperDecorator(story => `<div style="height: 350px;">${story}</div>`)]
 };
 
 export const WithIconLeft: Story = {
@@ -159,7 +160,8 @@ export const WithIconLeft: Story = {
             configuration: {id: 1, mode: 'static', close: true, leftIcon: {icon: 'ph/calendar-blank'}}
         },
         template: baseTemplate
-    })
+    }),
+    decorators: [componentWrapperDecorator(story => `<div style="height: 350px;">${story}</div>`)]
 };
 
 export const WithoutCaretIcon: Story = {
@@ -171,7 +173,8 @@ export const WithoutCaretIcon: Story = {
             configuration: {id: 1, mode: 'static', close: true, leftIcon: {icon: 'ph/calendar-blank'}}
         },
         template: baseTemplate
-    })
+    }),
+    decorators: [componentWrapperDecorator(story => `<div style="height: 350px;">${story}</div>`)]
 };
 
 export const Sizes: Story = {
@@ -210,7 +213,8 @@ export const Sizes: Story = {
         </fusion-chip-filter-button>
 </div>
 `
-    })
+    }),
+    decorators: [componentWrapperDecorator(story => `<div style="height: 350px;">${story}</div>`)]
 };
 
 export const Weight: Story = {
@@ -249,7 +253,8 @@ export const Weight: Story = {
         </fusion-chip-filter-button>
 </div>
 `
-    })
+    }),
+    decorators: [componentWrapperDecorator(story => `<div style="height: 350px;">${story}</div>`)]
 };
 
 export const Icon: Story = {
@@ -327,5 +332,6 @@ export const DatePeriodPicker: Story = {
             configuration: {id: 1, mode: 'static', close: true, leftIcon: {icon: 'ph/calendar-blank'}}
         },
         template: baseTemplate
-    })
+    }),
+    decorators: [componentWrapperDecorator(story => `<div style="height: 200px;">${story}</div>`)]
 };
