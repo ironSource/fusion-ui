@@ -4,12 +4,10 @@ import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {BehaviorSubject} from 'rxjs';
-// import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {secondaryMenuItem} from './navigation-secondary-menu.entities';
 import {IconButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
 import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
 import {TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
-// import {TooltipPosition} from "@ironsource/fusion-ui/components/tooltip/common/base";
 
 @Component({
     selector: 'fusion-navigation-secondary-menu',
