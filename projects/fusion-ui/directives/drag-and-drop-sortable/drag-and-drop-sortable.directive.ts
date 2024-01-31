@@ -1,6 +1,6 @@
 import {ContentChildren, Directive, ElementRef, EventEmitter, HostListener, Input, Output, QueryList} from '@angular/core';
 import {DragAndDropSortableService} from './drag-and-drop-sortable.service';
-import {DragAndDropConfiguration} from '@ironsource/fusion-ui/directives/drag-and-drop-sortable/common/drag-and-drop-sortable.entities';
+import {DragAndDropConfiguration} from './common/drag-and-drop-sortable.entities';
 
 @Directive({
     selector: '[isDragAndDropSortable]',
