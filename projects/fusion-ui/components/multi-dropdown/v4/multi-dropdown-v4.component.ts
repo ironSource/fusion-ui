@@ -4,7 +4,7 @@ import {DropdownService} from '@ironsource/fusion-ui/components/dropdown';
 import {NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
 import {MultiDropdownBaseComponent} from '@ironsource/fusion-ui/components/multi-dropdown/common/base';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
-import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
+import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {DropdownSelectComponent} from '@ironsource/fusion-ui/components/dropdown-select/v4';
 import {DropdownTriggerSize} from '@ironsource/fusion-ui/components/dropdown/v4';
@@ -21,7 +21,7 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        TooltipModule,
+        TooltipDirective,
         ClickOutsideModule,
         DropdownSelectComponent,
         IconModule,
