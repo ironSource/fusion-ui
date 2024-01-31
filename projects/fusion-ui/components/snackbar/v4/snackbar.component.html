@@ -1,0 +1,19 @@
+<div #snackbar class="fu-snackbar-wrapper fu-state-{{type}}">
+    <div class="fu-title">
+        <fusion-icon class="fu-state-icon" [name]="statusIcon"></fusion-icon>
+        <div class="fu-title-text">{{title}}</div>
+        <fusion-icon-button class="fu-close-button" size="small" iconName="ph/x" (click)="onCloseClicked()"></fusion-icon-button>
+    </div>
+    <div *ngIf="message" class="fu-description">{{message}}</div>
+    <div class="fu-content">
+        <fusion-button *ngFor="let button of actionButtons"
+                       [color]="button.color"
+                       [variant]="button.variant"
+                       [size]="button.size"
+                       [disabled]="button.disabled"
+                       [startIconName]="button.startIcon"
+                       [endIconName]="button.endIcon"
+                       (click)="actionButtonsClicked(button)"
+        >{{button.label}}</fusion-button>
+    </div>
+</div>
