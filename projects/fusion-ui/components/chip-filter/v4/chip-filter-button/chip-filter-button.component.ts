@@ -18,6 +18,7 @@ import {ChipFilterButtonSize, ChipFilterButtonWeight} from './chip-filter-button
 export class ChipFilterButtonComponent extends ChipFilterBaseComponent {
     @Input() size: ChipFilterButtonSize = 'medium';
     @Input() weight: ChipFilterButtonWeight = 'light';
+    @Input() showCaretIcon = true;
 
     @HostBinding('class') get chipFilterButtonClass(): string {
         return [this.size === 'small' && 'fu-size-small', this.weight === 'bold' && 'fu-size-bold'].filter(Boolean).join(' ');
@@ -26,13 +27,13 @@ export class ChipFilterButtonComponent extends ChipFilterBaseComponent {
     get closeIconName(): string {
         return 'ph/caret-down';
     }
-
     get showClose(): boolean {
-        return this.chipType$.getValue() !== 'AddFilter' && this.isCloseIcon$.getValue() && this.selected;
+        return false;
     }
     get showCaretDown(): boolean {
-        return (
-            this.chipType$.getValue() !== 'AddFilter' && ((this.isCloseIcon$.getValue() && !this.selected) || !this.isCloseIcon$.getValue())
-        );
+        return this.showCaretIcon;
     }
+
+    /** @internal */
+    placeholderChipV4Mode = true;
 }

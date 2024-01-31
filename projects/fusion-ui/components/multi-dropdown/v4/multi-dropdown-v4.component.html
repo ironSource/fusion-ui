@@ -25,18 +25,18 @@
     </ng-template>
 
     <div class="options-dropdown">
+        <!--search input-->
+        <div class="fu-search-holder" *ngIf="search">
+            <fusion-dropdown-search class="fu-search-in-options"
+                                    [formControl]="searchValue"
+                                    [placeholder]="searchPlaceholder"
+                                    #searchComponent
+            ></fusion-dropdown-search>
+        </div>
+        <!--search input-->
         <!-- region dropdown options holder -->
         <div class="options-holder" (scroll)="onScroll($event)" #optionsHolder>
             <ul class="options multi">
-                <!--search input-->
-                <li class="fu-search-holder" *ngIf="search">
-                    <fusion-dropdown-search class="fu-search-in-options"
-                                            [formControl]="searchValue"
-                                            [placeholder]="searchPlaceholder"
-                                            #searchComponent
-                    ></fusion-dropdown-search>
-                </li>
-                <!--search input-->
                 <!--select all option checkbox-->
                 <li *ngIf="selectAllLabel && !loading && (hasSearchValue$ | async) === false && filteredOptions?.length !== 0">
                     <!--select all option-->
