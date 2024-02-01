@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [6.5.0-rc.5](https://github.com/ironSource/fusion-ui/compare/v6.5.0-rc.2...v6.5.0-rc.5) (2024-02-01)
+
+
+### Features
+
+* **ISCT-250:** add configuration to sortable drag and drop directive ([290d585](https://github.com/ironSource/fusion-ui/commit/290d585c8f69ad63e9fc568b3f0024a4d3a9efa8))
+* **ISCT-250:** add sortable item list drag and drop directive ([0e263a8](https://github.com/ironSource/fusion-ui/commit/0e263a8a02d766d795d3bc0c1f3af58844b55922))
+* **ISCT-250:** fix pr ([63bbb9e](https://github.com/ironSource/fusion-ui/commit/63bbb9e1d084287b19a9d0b334f944b71f893e24))
+* **ISCT-250:** fix pr ([c0b3683](https://github.com/ironSource/fusion-ui/commit/c0b36834292bef5342be4ec2ebd755a21104b676))
+
 ## [6.5.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v6.5.0-rc.1...v6.5.0-rc.2) (2024-02-01)
 
 ## [6.5.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v6.4.1-rc.7...v6.5.0-rc.1) (2024-01-31)
