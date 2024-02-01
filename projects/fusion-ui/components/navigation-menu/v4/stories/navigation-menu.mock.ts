@@ -300,9 +300,13 @@ export const IS_MENU_ITEMS: MenuItem[] = [
         isGroupName: true
     },
     {
-        icon: 'ph/plus',
-        name: 'Add app',
-        route: '/Add+app'
+        icon: 'ph/circles-four',
+        name: 'Apps',
+        route: '/Add+app',
+        additionalAction: {
+            name: 'Add app',
+            route: '/Add+app'
+        }
     },
     {
         icon: 'ph/chart-line-up',

@@ -50,6 +50,19 @@ export const Basic: Story = {
     }
 };
 
+export const WithoutArrow: Story = {
+    render: args => ({
+        props: args,
+        template: `<fusion-button color="primary" fusionTooltip="I am tooltip!" [configuration]="tooltipConfiguration">Hover me</fusion-button>`
+    }),
+    args: {
+        tooltipText: 'Tooltip: You successfully read this alert message',
+        tooltipConfiguration: {
+            suppressPositionArrow: true
+        }
+    }
+};
+
 export const Placement: Story = {
     render: args => ({
         props: args,

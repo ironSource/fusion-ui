@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {LoaderComponent} from '@ironsource/fusion-ui/components/loader/v4';
 import {ButtonBaseComponent} from '../common/button.base.component';
-import {IconButtonColor, IconButtonVariant} from '../common/button.entities';
+import {ButtonSize, IconButtonColor, IconButtonSize, IconButtonVariant} from '../common/button.entities';
 
 @Component({
     selector: 'fusion-icon-button',
@@ -33,6 +33,10 @@ export class IconButtonComponent extends ButtonBaseComponent {
      */
     @Input() set variant(value: IconButtonVariant) {
         this._variantIcon = value ?? 'default';
+    }
+
+    @Input() set size(value: IconButtonSize) {
+        this._size = value ?? 'medium';
     }
 
     get variantClass(): string {

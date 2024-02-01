@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [6.5.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v6.5.0-rc.1...v6.5.0-rc.2) (2024-02-01)
+
+## [6.5.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v6.4.1-rc.7...v6.5.0-rc.1) (2024-01-31)
+
+## [6.5.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.4.1-rc.3...v6.5.0-rc.0) (2024-01-28)
+
+
+### Features
+
+* **isct-233:** add "quick action" for the sidebar menu item (v4) ([07b9f74](https://github.com/ironSource/fusion-ui/commit/07b9f7464753e9e335d67fa9a291f88b32c9033e))
+
+## [6.5.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.4.0...v6.5.0-rc.0) (2024-01-28)
+
+
+### Features
+
+* **isct-233:** add "quick action" for the sidebar menu item (v4) ([07b9f74](https://github.com/ironSource/fusion-ui/commit/07b9f7464753e9e335d67fa9a291f88b32c9033e))
+
 ### [6.4.1-rc.5](https://github.com/ironSource/fusion-ui/compare/v6.4.1-rc.4...v6.4.1-rc.5) (2024-01-30)
 
 ### [6.4.1-rc.4](https://github.com/ironSource/fusion-ui/compare/v6.4.1-rc.3...v6.4.1-rc.4) (2024-01-29)

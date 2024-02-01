@@ -64,6 +64,9 @@ $optionsMinWidth: 225px;
               border-radius: 8px;
               color: var(--text-primary, #{$color-v4-text-primary});
               @extend %font-v4-body-2;
+              fusion-flag{
+                min-width: 16px;
+              }
               .fu-option-image{
                 width: 20px;
                 height: 20px;
@@ -114,7 +117,11 @@ $optionsMinWidth: 225px;
               }
             }
 
-            .fu-text-content{
+            .fu-text-content {
+              overflow: hidden;
+              .truncate{
+                @extend %truncate-flex-child;
+              }
               .fu-sub-text-container{
                 @extend %font-v4-caption;
                 color: var(--text-secondary, #{$color-v4-text-secondary});

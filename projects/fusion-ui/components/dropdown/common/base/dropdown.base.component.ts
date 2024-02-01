@@ -138,9 +138,9 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     /** @internal */
     @Input() set placeholder(value: string | DropdownPlaceholderConfiguration) {
         if (typeof value === 'string') {
-            this.placeholderText = value ?? 'Select';
+            this.placeholderText = value ?? 'Please Select';
         } else {
-            this.placeholderText = value?.placeholderText || 'Select';
+            this.placeholderText = value?.placeholderText || 'Please Select';
             this.placeholderIcon = value?.icon;
             this.forcePlaceholderOnSelection = value?.isForcedPlaceholder ? value?.isForcedPlaceholder : this.forcePlaceholderOnSelection;
         }
@@ -174,7 +174,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     /** @ignore */
     forcePlaceholderOnSelection = false;
     /** @ignore */
-    placeholderText = 'Select';
+    placeholderText = 'Please Select';
     /** @ignore */
     placeholderIcon: IconData;
     /** @ignore */
