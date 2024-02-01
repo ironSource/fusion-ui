@@ -32,6 +32,7 @@ export class TooltipV4Directive implements OnDestroy, AfterViewInit {
             this.backgroundColor = config?.backgroundColor;
             this.preventTooltipToClose = config?.preventTooltipToClose;
             this.position = config?.position || TooltipPosition.Top;
+            this.suppressPositionArrow = config?.suppressPositionArrow;
         }
     }
 
@@ -39,6 +40,7 @@ export class TooltipV4Directive implements OnDestroy, AfterViewInit {
     height: number;
     backgroundColor: string;
     preventTooltipToClose: boolean = false;
+    suppressPositionArrow: boolean = false;
 
     private visible = false;
     private onDestroy$ = new Subject<void>();
@@ -188,6 +190,7 @@ export class TooltipV4Directive implements OnDestroy, AfterViewInit {
             backgroundColor: this.backgroundColor
         };
         this.tooltipComponentRef.instance.tooltipPositionClass = this.tooltipPosition.position;
+        this.tooltipComponentRef.instance.suppressTooltipArrow(this.suppressPositionArrow);
     }
 
     private setPositionLeftRight(pos: 'left' | 'right', tooltipWidth: number, tooltipHeight: number): {top: number; left: number} {

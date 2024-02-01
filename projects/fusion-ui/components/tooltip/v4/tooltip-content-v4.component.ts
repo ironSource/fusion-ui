@@ -35,7 +35,9 @@ export class TooltipContentV4Component {
 
     @Input() set tooltipPositionClass(pos: TooltipPosition) {
         this.position = TooltipPosition[pos]?.toLowerCase();
-        this.renderer.addClass(this.elementRef.nativeElement, 'fu-tooltip-' + this.position);
+        if (!!this.position) {
+            this.renderer.addClass(this.elementRef.nativeElement, 'fu-tooltip-' + this.position);
+        }
     }
 
     @Input() set tooltipStyleConfiguration(config: TooltipComponentStyleConfiguration) {
@@ -49,6 +51,12 @@ export class TooltipContentV4Component {
         public elementRef: ElementRef,
         private renderer: Renderer2
     ) {}
+
+    suppressTooltipArrow(suppressPositionArrow: boolean) {
+        if (suppressPositionArrow) {
+            this.renderer.addClass(this.elementRef.nativeElement, 'fu-tooltip-no-arrow');
+        }
+    }
 
     private setTooltipStyle(propertyValue: {[key: string]: string}) {
         Object.keys(propertyValue).forEach(val => {

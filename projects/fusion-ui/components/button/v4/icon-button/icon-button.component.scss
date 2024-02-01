@@ -162,7 +162,16 @@
                 }
             }
         }
-
+        &.fu-extraSmall {
+            padding: var(--spacing-25, #{$spacingV4-25});
+            &.fu-outlined {
+                padding: calc(var(--spacing-25, #{$spacingV4-25}) - 1px);
+            }
+            .fu-button-icon {
+                width: 16px;
+                height: 16px;
+            }
+        }
         &.fu-small {
             padding: var(--spacing-25, #{$spacingV4-25});
 
