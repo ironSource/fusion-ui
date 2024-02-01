@@ -106,7 +106,7 @@ describe('DropdownComponent', () => {
 
     it('Must render DOM Elements', () => {
         expect(fixture.debugElement.query(By.css('.is-dropdown-select'))).toBeTruthy();
-        expect(fixture.debugElement.query(By.css('.is-dropdown-select label')).nativeElement.innerText.trim()).toBe('Select');
+        expect(fixture.debugElement.query(By.css('.is-dropdown-select label')).nativeElement.innerText.trim()).toBe('Please Select');
 
         expect(fixture.debugElement.query(By.css('.options-dropdown'))).toBeTruthy();
 

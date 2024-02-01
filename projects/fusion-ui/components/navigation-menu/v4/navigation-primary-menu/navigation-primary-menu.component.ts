@@ -4,7 +4,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
-import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
+import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
 import {TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
@@ -17,7 +17,7 @@ import {map} from 'rxjs/operators';
 @Component({
     selector: 'fusion-navigation-primary-menu',
     standalone: true,
-    imports: [CommonModule, SvgModule, IconModule, TooltipModule, ClickOutsideModule, RepositionDirective, NavigationPopMenuComponent],
+    imports: [CommonModule, SvgModule, IconModule, TooltipDirective, ClickOutsideModule, RepositionDirective, NavigationPopMenuComponent],
     templateUrl: './navigation-primary-menu.component.html',
     styleUrls: ['./navigation-primary-menu.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush

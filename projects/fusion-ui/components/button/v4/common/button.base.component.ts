@@ -1,5 +1,5 @@
 import {Directive, Input} from '@angular/core';
-import {ButtonColor, ButtonSize, ButtonVariant, IconButtonColor, IconButtonVariant} from './button.entities';
+import {ButtonColor, ButtonSize, ButtonVariant, IconButtonColor, IconButtonSize, IconButtonVariant} from './button.entities';
 
 @Directive()
 export class ButtonBaseComponent {
@@ -23,7 +23,7 @@ export class ButtonBaseComponent {
      * Set button size
      * @param value
      */
-    @Input() set size(value: ButtonSize) {
+    @Input() set size(value: ButtonSize | IconButtonSize) {
         this._size = value || 'medium';
     }
 
@@ -69,7 +69,7 @@ export class ButtonBaseComponent {
 
     private _color: ButtonColor | IconButtonColor = 'default';
     private _variant: ButtonVariant | IconButtonVariant = 'contained';
-    private _size: ButtonSize = 'medium';
+    protected _size: ButtonSize | IconButtonSize = 'medium';
     private _disabled: boolean = false;
     private _loading: boolean = false;
 }

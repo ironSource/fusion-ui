@@ -113,4 +113,10 @@ $arrowWidth: 16px;
             transform: rotate(180deg) translateX(50%);
         }
     }
+
+    &.fu-tooltip-no-arrow{
+        .fu-tooltip-component .fu-tooltip-arrow {
+            display: none;
+        }
+    }
 }

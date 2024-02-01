@@ -4,13 +4,15 @@ import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {BehaviorSubject} from 'rxjs';
-import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {secondaryMenuItem} from './navigation-secondary-menu.entities';
+import {IconButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
+import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
+import {TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
 
 @Component({
     selector: 'fusion-navigation-secondary-menu',
     standalone: true,
-    imports: [CommonModule, IconModule, TooltipModule, SvgModule],
+    imports: [CommonModule, IconModule, TooltipDirective, SvgModule, IconButtonComponent],
     templateUrl: './navigation-secondary-menu.component.html',
     styleUrls: ['./navigation-secondary-menu.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -33,6 +35,7 @@ export class NavigationSecondaryMenuComponent implements OnInit {
     itemChildToggleIcon: string = 'ph/bold/caret-right';
     itemNewTabIcon: string = 'ph/arrow-square-out';
     selectedMenuItem$ = new BehaviorSubject<secondaryMenuItem>(null);
+    quickActionTooltipConfiguration = {position: TooltipPosition.Right, suppressPositionArrow: true};
 
     private _menuItems: secondaryMenuItem[] = [];
 
