@@ -17,6 +17,7 @@ $chipSmallPadding: 4px 6px;
   position: relative;
 
   .fu-chip-filter-container {
+    width: 100%;
     padding: $chipPadding;
     border-radius: var(--border-radius-md);
     color: var(--text-primary, #{$color-v4-text-primary});

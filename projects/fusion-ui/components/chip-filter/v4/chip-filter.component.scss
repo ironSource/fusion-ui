@@ -40,6 +40,7 @@ $chipHeight: 28px;
     }
     .fu-icon-close{
       color: var(--action-active, #{$color-v4-action-active});
+      margin-left: auto;
     }
 
     &:hover {
