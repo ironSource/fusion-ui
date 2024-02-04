@@ -327,7 +327,6 @@ export const Drilldown: LayoutV4Story = {
             ...args,
             headerContent: {
                 ...LAYOUT_HEADER_MULTILINE_CONTENT_MOCK,
-                drilldown: true,
                 hasBackButton: true
             },
             teleportElements: [{id: 'fuHeaderDrilldownTeleport'}, {id: 'fuHeaderTeleport', isOnRight: true}]
