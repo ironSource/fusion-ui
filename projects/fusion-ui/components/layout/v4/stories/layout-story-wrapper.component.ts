@@ -80,7 +80,9 @@ export class LayoutStoryWrapperComponent implements OnInit, OnDestroy {
             });
         }
 
-        this.headerContent.hasBackButton = this.testMethod.bind(this);
+        if (!!this.headerContent?.hasBackButton) {
+            this.headerContent.hasBackButton = this.testMethod.bind(this);
+        }
 
         // const temp = this.layoutConfiguration.navigationMenuItems
         // this.layoutConfiguration.navigationMenuItems = [];
