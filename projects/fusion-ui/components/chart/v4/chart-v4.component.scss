@@ -1,0 +1,7 @@
+
+:host {
+  .fu-chart-wrapper{
+    height: var(--chart-canvas-height, 100%);
+    position: relative;
+  }
+}

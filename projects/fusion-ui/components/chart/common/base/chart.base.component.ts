@@ -68,6 +68,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
 
     pieDataSum: number;
     pieSumLabel: string;
+    componentVersion = 2;
 
     protected _data: ChartData | FusionChartPieData;
     protected ctx: HTMLCanvasElement;
@@ -154,7 +155,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
 
     addDatasetStyleOptions(isLastDotted = true) {
         const palette: string[] = this.getColors();
-        const datasetOptions = this.getDataSetOptionsByStyleVersion();
+        const datasetOptions = this.getDataSetOptionsByStyleVersion(this.componentVersion);
         const bgOpacity = datasetOptions.fillOpacity;
 
         if (this.type === ChartType.Line) {
@@ -167,7 +168,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     }
 
     protected getColors(): string[] {
-        const palette = this.colorsService.getColorPalette(2);
+        const palette = this.colorsService.getColorPalette(this.componentVersion);
         const legends = (this._data as ChartData).legends;
         const customPalette = legends
             ? legends.map((legend, idx) => {
@@ -246,11 +247,16 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
 
     private addDatasetBarStyleOptions(datasetOptions, palette, bgOpacity) {
         const barOptions = datasetOptions.barOptions;
-        // add colors
         this.chartData.datasets = this.chartData.datasets.map(item => {
-            for (let i = 0; i < item.data.length; i++) {
-                barOptions.borderColor.push(palette[i]);
-                barOptions.backgroundColor.push(this.colorsService.toRgba(palette[i], bgOpacity));
+            // todo: add colors by group
+            if (this.componentVersion === 4) {
+                barOptions.borderColor.push(palette[0]);
+                barOptions.backgroundColor.push(this.colorsService.toRgba(palette[0], bgOpacity));
+            } else {
+                for (let i = 0; i < item.data.length; i++) {
+                    barOptions.borderColor.push(palette[i]);
+                    barOptions.backgroundColor.push(this.colorsService.toRgba(palette[i], bgOpacity));
+                }
             }
             return Object.assign(item, barOptions);
         });
@@ -284,18 +290,23 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         return null;
     }
 
-    protected getDataSetOptionsByStyleVersion(): ChartBaseDatasetOptions {
-        return {
-            ...BASE_DATASET_OPTIONS.style_v2
-        };
+    protected getDataSetOptionsByStyleVersion(versionNumber = 2): ChartBaseDatasetOptions {
+        const options = BASE_DATASET_OPTIONS[`style_v${versionNumber}`]
+            ? BASE_DATASET_OPTIONS[`style_v${versionNumber}`]
+            : BASE_DATASET_OPTIONS.style_v2;
+        return {...options};
     }
 
-    protected getChartOptionsByStyleVersion(): any {
-        return this.clonePipe.transform(CHART_CONFIGURATIONS.style_v2);
+    protected getChartOptionsByStyleVersion(versionNumber = 2): any {
+        const options = CHART_CONFIGURATIONS[`style_v${versionNumber}`]
+            ? CHART_CONFIGURATIONS[`style_v${versionNumber}`]
+            : CHART_CONFIGURATIONS.style_v2;
+
+        return this.clonePipe.transform(options);
     }
 
     private applyOptions() {
-        const baseOptions = this.getChartOptionsByStyleVersion();
+        const baseOptions = this.getChartOptionsByStyleVersion(this.componentVersion);
         Object.keys(baseOptions).forEach(key => {
             if (!!this.options && this.options[key]) {
                 Object.assign(baseOptions[key], this.options[key]);
@@ -395,6 +406,8 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         const val = context.parsed.y ?? context.formattedValue;
         const format = context.dataset.displayFormat;
 
+        console.log('getTooltipLabel', ` ${label}: ${!!format ? this.getFormatted(val, format) : val}`);
+
         return ` ${label}: ${!!format ? this.getFormatted(val, format) : val}`;
     }
 
@@ -404,6 +417,8 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             data: this.chartData,
             options: this.chartOptions
         };
+
+        console.log('render: ', opts);
         return new Chart(ctx, opts);
     }
 

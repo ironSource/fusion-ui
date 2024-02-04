@@ -39,6 +39,25 @@ export const BASE_DATASET_OPTIONS: {[key: string]: ChartBaseDatasetOptions} = {
         pieOptions: {
             backgroundColor: []
         }
+    },
+    style_v4: {
+        colorSettings: ['backgroundColor', 'borderColor', 'pointBorderColor', 'pointBackgroundColor'],
+        fillOpacity: 100,
+        seriesToShow: 7,
+        lineOptions: {
+            fill: false,
+            hidden: false,
+            pointBackgroundColor: '#ffffff'
+        },
+        barOptions: {
+            borderRadius: 4,
+            borderWidth: 0,
+            backgroundColor: [],
+            borderColor: []
+        },
+        pieOptions: {
+            backgroundColor: []
+        }
     }
 };
 

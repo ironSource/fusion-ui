@@ -39,7 +39,8 @@ export const COLORS_PALETTE = {
         '#0051c9',
         '#a718a7',
         '#f62f91'
-    ]
+    ],
+    style_v4: ['#67B7DC', '#6794DC', '#6771DC', '#7B5FDF', '#A367DC']
 };
 
 export const PIE_COLORS_PALETTE = ['#005be2', '#3083ff', '#68a5ff', '#96c0ff', '#c9dfff', '#e2eeff'];
