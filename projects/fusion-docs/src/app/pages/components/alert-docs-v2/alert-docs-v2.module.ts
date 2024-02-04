@@ -15,6 +15,8 @@ import {DropdownModule} from '@ironsource/fusion-ui/components/dropdown';
 import {DropdownDualMultiSelectModule} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
 import {ButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
 import {CheckboxComponent} from '@ironsource/fusion-ui/components/checkbox/v4';
+import {InputComponent} from '@ironsource/fusion-ui/components/input/v4';
+import {SearchComponent} from '@ironsource/fusion-ui/components/search/v4';
 
 const routes: Routes = [{path: '', component: AlertDocsV2Component}];
 
@@ -36,7 +38,9 @@ const routes: Routes = [{path: '', component: AlertDocsV2Component}];
         DropdownModule,
         DropdownDualMultiSelectModule,
         ButtonComponent,
-        CheckboxComponent
+        CheckboxComponent,
+        InputComponent,
+        SearchComponent
     ]
 })
 export class AlertDocsV2Module {}

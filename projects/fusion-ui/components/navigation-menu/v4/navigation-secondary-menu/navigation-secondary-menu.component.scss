@@ -2,6 +2,14 @@
 @import '../../../../src/style/scss/v4/vars/vars';
 @import '../../../../src/style/scss/v4/vars/layout';
 
+%menuItemHoverState {
+    border-radius: 4px;
+    background-color: var(--action-hover, #{$color-v4-action-hover});
+    .fu-secondary-menu-item-icon-holder{
+        @include icon-style('fu-secondary-menu-item-icon', var(--action-primary, #{$color-v4-action-primary}), $navBarSecondaryItemIconSize, true, true)
+    }
+}
+
 :host {
     @extend %reset;
     display: block;
@@ -49,6 +57,14 @@
 
             .fu-secondary-menu-item-wrapper{
                 width: 100%;
+                position: relative;
+
+                &:has(fusion-icon-button:hover){
+                    .fu-secondary-menu-item-holder{
+                        @extend %menuItemHoverState;
+                    }
+                }
+
                 .fu-secondary-menu-item-holder {
                     width: 100%;
                     height: $navBarSecondaryItemHeight;
@@ -88,11 +104,7 @@
                     }
 
                     &:hover {
-                        border-radius: 4px;
-                        background-color: var(--action-hover, #{$color-v4-action-hover});
-                        .fu-secondary-menu-item-icon-holder{
-                            @include icon-style('fu-secondary-menu-item-icon', var(--action-primary, #{$color-v4-action-primary}), $navBarSecondaryItemIconSize, true, true)
-                        }
+                        @extend %menuItemHoverState;
                     }
 
                     .fu-secondary-menu-item-icon-holder {
@@ -147,6 +159,11 @@
                             @extend %font-v4-body-2;
                         }
                     }
+                }
+                .fu-secondary-menu-quick-action{
+                    position: absolute;
+                    right: 5px;
+                    top: 4px;
                 }
             }
 

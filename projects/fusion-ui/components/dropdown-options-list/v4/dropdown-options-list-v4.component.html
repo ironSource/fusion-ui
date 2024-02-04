@@ -1,0 +1,13 @@
+<ng-container *ngFor="let option of displayedOptions; trackBy: trackByFunc">
+    <li class="option" *ngIf="!option.isGroup; else groupOption" [class.fu-selected]="isSelected(option)">
+        <fusion-dropdown-option  [option]="option" (click)="onChangeSelected(option, $event)"></fusion-dropdown-option>
+    </li>
+    <ng-template #groupOption>
+        <li class="option fu-dd-group">
+            <div class="fu-group-name">
+                {{ dropdownService.optionToString(option) }}
+            </div>
+        </li>
+    </ng-template>
+</ng-container>
+
