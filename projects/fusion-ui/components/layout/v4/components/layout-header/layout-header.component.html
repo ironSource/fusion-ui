@@ -4,7 +4,10 @@
          [class.fu-flex-align-right]="teleportItem.isOnRight"></div>
 </div>
 <div class="fu-header-main-row" [class.fu-header-drilldown]="isDrilldown" [class.fu-has-top-row]="hasTopLine">
-    <fusion-icon-button *ngIf="isMultiline && headerContent?.hasBackButton && isDrilldown" iconName="ph/arrow-left" size="large"></fusion-icon-button>
+    <fusion-icon-button *ngIf="isMultiline && headerContent?.hasBackButton"
+                        iconName="ph/arrow-left"
+                        size="large"
+                        (click)="backButtonClicked.emit(headerContent?.hasBackButton)"></fusion-icon-button>
     <div class="fu-header-back-button" *ngIf="!isMultiline && headerContent?.hasBackButton">
         <fusion-icon class="fu-header-back-button-icon" [name]="{iconName:'arrow-back', iconVersion:'v3'}"
                      (click)="backButtonClicked.emit(headerContent?.hasBackButton)"></fusion-icon>

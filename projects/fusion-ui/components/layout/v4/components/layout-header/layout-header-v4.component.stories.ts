@@ -93,8 +93,7 @@ export const MainDrilldownTeleport = {
         headerContent: {
             ...HEADER_CONTENT_MOCK,
             hasBackButton: true,
-            multiline: true,
-            drilldown: true
+            multiline: true
         }
     }
 };
