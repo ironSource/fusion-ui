@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [6.5.1](https://github.com/ironSource/fusion-ui/compare/v6.5.0...v6.5.1) (2024-02-05)
+
+
+### Bug Fixes
+
+* **isct-256:** fixed back button functionality on multiline header ([44aa176](https://github.com/ironSource/fusion-ui/commit/44aa1766c7b3a57fa9cce7b1f705fc402df2186d))
+
 ## [6.5.0](https://github.com/ironSource/fusion-ui/compare/v6.5.0-rc.2...v6.5.0) (2024-02-04)
 
 ## [6.5.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v6.5.0-rc.1...v6.5.0-rc.2) (2024-02-01)
