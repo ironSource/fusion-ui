@@ -33,6 +33,7 @@ import {
     ChartData as ChartJsData,
     ChartOptions as ChartJsOptions
 } from 'chart.js';
+import {calculateTotals} from '../../v4/chart-v4.tooltip';
 
 Chart.register(
     ArcElement,
@@ -51,13 +52,15 @@ Chart.register(
 
 @Directive()
 export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges {
+    /** @internal */
     @Input() id: string;
+    /** @internal */
     @Input() type: ChartType;
 
     @Input() set data(value: ChartData | FusionChartPieData) {
         this._data = {...value};
     }
-
+    /** @internal */
     @Input() options: any = {
         yAxisLines: 4
     };
@@ -66,8 +69,11 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     @Input() noData: boolean;
     @Output() afterDatasetInit: EventEmitter<ChartDataset[]> = new EventEmitter();
 
+    /** @internal */
     pieDataSum: number;
+    /** @internal */
     pieSumLabel: string;
+    /** @internal */
     componentVersion = 2;
 
     protected _data: ChartData | FusionChartPieData;
@@ -100,6 +106,9 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         if (this.type === ChartType.StackedLine) {
             this.type = ChartType.Line;
             this.isStacked = true;
+        } else if (this.type === ChartType.StackedBar) {
+            this.type = ChartType.Bar;
+            this.isStacked = true;
         }
 
         if (this.type === ChartType.Doughnut) {
@@ -129,8 +138,9 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
 
     private setChart(data, type): void {
         this.yAxesFormat = this.getDisplayFormat(data);
-        this.chartData = this.dataParseService.parseChartData(data, type);
+        this.chartData = this.dataParseService.parseChartData(data, type, this.isStacked);
         this.chartOptions = this.getChartOptions();
+
         if (!isNullOrUndefined(this.chart)) {
             this.chart.destroy();
         }
@@ -138,7 +148,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
 
         this.afterDatasetInit.emit(this.chartData.datasets as ChartDataset[]);
     }
-
+    /** @internal */
     toggleDataset(label: ChartLabel, recalculateYMax = false): void {
         this.chart.data.datasets
             .filter(item => item.label === label.label && (item as any).id === label.id)
@@ -153,6 +163,11 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         this.chart.update();
     }
 
+    triggerHover(label: ChartLabel) {
+        console.log('triggerHover', label);
+    }
+
+    /** @internal */
     addDatasetStyleOptions(isLastDotted = true) {
         const palette: string[] = this.getColors();
         const datasetOptions = this.getDataSetOptionsByStyleVersion(this.componentVersion);
@@ -247,11 +262,11 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
 
     private addDatasetBarStyleOptions(datasetOptions, palette, bgOpacity) {
         const barOptions = datasetOptions.barOptions;
-        this.chartData.datasets = this.chartData.datasets.map(item => {
-            // todo: add colors by group
+        this.chartData.datasets = this.chartData.datasets.map((item, idx) => {
+            // todo: add colors by dataset
             if (this.componentVersion === 4) {
-                barOptions.borderColor.push(palette[0]);
-                barOptions.backgroundColor.push(this.colorsService.toRgba(palette[0], bgOpacity));
+                barOptions.borderColor = palette[idx];
+                barOptions.backgroundColor = this.colorsService.toRgba(palette[idx], bgOpacity);
             } else {
                 for (let i = 0; i < item.data.length; i++) {
                     barOptions.borderColor.push(palette[i]);
@@ -366,12 +381,21 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
 
     private setBarChartOptions(options) {
         this.calcYAxes(options.scales.y);
-        // apply label
-        this.chartData.datasets.forEach(dataset => {
-            Object.assign(dataset, {
-                label: this.chartSubject
-            });
-        });
+        if (!this.isStacked) {
+            if (this.chartSubject) {
+                this.chartData.datasets.forEach(dataset => {
+                    Object.assign(dataset, {
+                        label: this.chartSubject
+                    });
+                });
+            }
+        } else {
+            options.scales.x.stacked = true;
+            options.scales.y.stacked = true;
+            options.interaction = {
+                mode: 'index'
+            };
+        }
     }
 
     private setPieChartOptions(options) {
@@ -406,8 +430,6 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         const val = context.parsed.y ?? context.formattedValue;
         const format = context.dataset.displayFormat;
 
-        console.log('getTooltipLabel', ` ${label}: ${!!format ? this.getFormatted(val, format) : val}`);
-
         return ` ${label}: ${!!format ? this.getFormatted(val, format) : val}`;
     }
 
@@ -417,8 +439,6 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             data: this.chartData,
             options: this.chartOptions
         };
-
-        console.log('render: ', opts);
         return new Chart(ctx, opts);
     }
 

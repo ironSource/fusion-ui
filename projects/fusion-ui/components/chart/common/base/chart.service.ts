@@ -8,7 +8,7 @@ import {ChartType} from './entities/chart-type.enum';
 
 @Injectable()
 export class ChartDataService {
-    parseChartData(data: ChartData, type: ChartType): ChartJsData {
+    parseChartData(data: ChartData, type: ChartType, isStacked = false): ChartJsData {
         let parsed: ChartJsData = void 0; // void 0 returns undefined and can not be overwritten while undefined can be overwritten.
         switch (type) {
             case ChartType.Line:
@@ -18,7 +18,7 @@ export class ChartDataService {
                 };
                 break;
             case ChartType.Bar:
-                parsed = this.getTotals(data);
+                parsed = this.getGroupedDataSet(data);
                 break;
             case ChartType.Doughnut:
             case ChartType.Pie:
@@ -73,6 +73,25 @@ export class ChartDataService {
             );
         });
         return dataset;
+    }
+
+    private getGroupedDataSet(data: ChartData): ChartJsData {
+        const legends: Array<string> = [];
+        const dataset: Array<any> = [];
+        data.legends.forEach((label: ChartLegend, idx) => {
+            legends.push(label.displayName);
+        });
+        Object.keys(data.data).forEach((key: string) => {
+            dataset.push({
+                label: key,
+                data: data.data[key]
+            });
+        });
+
+        return {
+            labels: legends,
+            datasets: dataset
+        };
     }
 
     private getLegends(data: ChartData): string[] {

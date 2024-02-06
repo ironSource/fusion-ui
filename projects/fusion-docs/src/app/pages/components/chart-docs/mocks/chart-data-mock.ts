@@ -37,6 +37,22 @@ export const CHART_DATA_MOCK: ChartData = {
     ]
 };
 
+export const CHART_BAR_DATA_MOCK: ChartData = {
+    data: {
+        '2017-04-13': [8048.16, 1588.59, 1583.47, 1037.83, 899.56, 1582.28, 726.11, 385.66]
+    },
+    legends: [
+        {id: 'totals', displayName: 'Sum', displayFormat: 'currency'},
+        {id: 9930, displayName: 'AdColony', displayFormat: 'currency'},
+        {id: 9928, displayName: 'Vungle', displayFormat: 'currency'},
+        {id: 9935, displayName: 'AppLovin', displayFormat: 'currency'},
+        {id: 9936, displayName: 'Chartboost', displayFormat: 'currency'},
+        {id: 9899, displayName: 'ironSource', displayFormat: 'currency'},
+        {id: 9917, displayName: 'UnityAds', displayFormat: 'currency'},
+        {id: 9929, displayName: 'Flurry', displayFormat: 'currency'}
+    ]
+};
+
 export const CHART_DATA_STACKEDLINE_MOCK: ChartData = {
     data: {
         '2017-04-13': [3172.06, 1588.59, 1583.47],

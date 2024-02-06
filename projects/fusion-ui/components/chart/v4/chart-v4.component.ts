@@ -45,5 +45,6 @@ Chart.register(
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChartV4Component extends ChartBaseComponent {
+    /** @internal */
     componentVersion = 4;
 }

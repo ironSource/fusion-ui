@@ -2,7 +2,7 @@ import {ChartLegend} from './chart-legend';
 
 export interface ChartData {
     legends: ChartLegend[];
-    data: {[index: string]: number[]}; // [index: string] must be in regex: /^\d{4}-\d{2}-\d{2}$/i
+    data: {[index: string]: number[]};
 }
 
 export interface FusionChartPieData {
