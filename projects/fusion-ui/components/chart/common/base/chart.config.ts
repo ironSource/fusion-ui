@@ -47,8 +47,7 @@ export const BASE_DATASET_OPTIONS: {[key: string]: ChartBaseDatasetOptions} = {
         seriesToShow: 7,
         lineOptions: {
             fill: false,
-            hidden: false,
-            pointBackgroundColor: '#ffffff'
+            hidden: false
         },
         barOptions: {
             borderRadius: 4,
@@ -271,9 +270,9 @@ export const CHART_CONFIGURATIONS: any = {
                 tension: 0
             },
             point: {
-                borderWidth: 2,
                 radius: 3,
-                hoverRadius: 4,
+                borderWidth: 3,
+                hoverRadius: 3,
                 hitRadius: 3
             }
         },

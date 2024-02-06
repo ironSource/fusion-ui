@@ -350,7 +350,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             this.setPieChartOptions(options);
         }
 
-        // set formatted tooltip
+        // todo: check it set formatted tooltip
         options.plugins.tooltip = {
             callbacks: {
                 label: this.getTooltipLabel.bind(this)
@@ -367,7 +367,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         if (Array.isArray(this.chartData.datasets) && this.chartData.datasets.length !== 0 && this.chartData.datasets[0].data.length > 50) {
             options.elements.point.pointRadius = 0;
         } else {
-            options.elements.point.pointRadius = 3;
+            options.elements.point.pointRadius = this.componentVersion === 4 ? 0 : 3;
         }
         this.calcYAxes(options.scales.y);
         if (this.isStacked) {
@@ -439,6 +439,9 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             data: this.chartData,
             options: this.chartOptions
         };
+
+        console.log('----opts', opts);
+
         return new Chart(ctx, opts);
     }
 
