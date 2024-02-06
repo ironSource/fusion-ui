@@ -33,7 +33,6 @@ import {
     ChartData as ChartJsData,
     ChartOptions as ChartJsOptions
 } from 'chart.js';
-import {calculateTotals} from '../../v4/chart-v4.tooltip';
 
 Chart.register(
     ArcElement,
@@ -163,7 +162,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         this.chart.update();
     }
 
-    triggerHover(label: ChartLabel) {
+    highlightDataset(label: ChartLabel) {
         console.log('triggerHover', label);
     }
 
@@ -359,6 +358,8 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             ...(isLastDotted ? {filter: this.filterTooltip.bind(this)} : {})
         };
 
+        console.log('options', options);
+
         return options;
     }
 
@@ -426,6 +427,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     }
 
     private getTooltipLabel(context) {
+        console.log('..', context);
         const label = context.dataset.label ?? context.label ?? '';
         const val = context.parsed.y ?? context.formattedValue;
         const format = context.dataset.displayFormat;

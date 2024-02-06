@@ -15,7 +15,7 @@ import {ChartV4Component} from '../chart-v4.component';
             <fusion-chart #fusionChart [data]="data" [type]="type" (afterDatasetInit)="onChartInit($event)"></fusion-chart>
         </div>
         <div class="fusion-chart-labels-wrapper" *ngIf="data">
-            <fusion-chart-labels [labels]="chartDataLabels$ | async"></fusion-chart-labels>
+            <fusion-chart-labels [labels]="chartDataLabels$ | async" (labelHover)="labelHovered($event)"></fusion-chart-labels>
         </div>
         <div *ngIf="!data" class="fu-empty-state">
             <div class="fu-empty-state-icon"></div>
@@ -29,7 +29,7 @@ export class ChartV4WrapperComponent {
     @Input() data: ChartData;
     @Input() type: ChartType;
 
-    @ViewChild('fusionChart', {static: true}) fusionChart: ChartV4Component;
+    @ViewChild('fusionChart') fusionChart: ChartV4Component;
 
     chartDataLabels$ = new BehaviorSubject<ChartLabel[]>([]);
 
@@ -44,5 +44,10 @@ export class ChartV4WrapperComponent {
         });
 
         this.chartDataLabels$.next(chartDataLabels);
+    }
+
+    labelHovered(label: ChartLabel): void {
+        console.log('mouseover label: ', this.fusionChart);
+        this.fusionChart?.highlightDataset(label);
     }
 }

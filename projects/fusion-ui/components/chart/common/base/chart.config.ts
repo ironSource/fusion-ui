@@ -2,7 +2,7 @@
  * Base ChartJS dataset options used for data render
  */
 import {ChartBaseDatasetOptions} from './entities/chart-options';
-import {calculateTotals, externalV4TooltipHandler} from '../../v4/chart-v4.tooltip';
+import {calculateTotals, externalV4TooltipHandler} from './chart-v4.tooltip';
 
 export const BASE_DATASET_OPTIONS: {[key: string]: ChartBaseDatasetOptions} = {
     style_v1: {

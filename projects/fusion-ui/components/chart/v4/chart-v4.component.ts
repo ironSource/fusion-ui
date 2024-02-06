@@ -17,7 +17,7 @@ import {
 } from 'chart.js';
 
 import {ChartBaseComponent, ChartDataService} from '@ironsource/fusion-ui/components/chart/common/base';
-import {ShortNumberScaleSuffixPipe} from '@ironsource/fusion-ui';
+import {ShortNumberScaleSuffixPipe} from '@ironsource/fusion-ui/pipes/numbers';
 
 Chart.register(
     ArcElement,
