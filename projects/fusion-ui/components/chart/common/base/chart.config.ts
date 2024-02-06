@@ -254,12 +254,10 @@ export const CHART_CONFIGURATIONS: any = {
             },
             tooltip: {
                 enabled: false,
-                external: externalV4TooltipHandler
-                /*
-                callbacks:{
+                external: externalV4TooltipHandler,
+                callbacks: {
                     footer: calculateTotals
                 }
-*/
             }
         },
         layout: {

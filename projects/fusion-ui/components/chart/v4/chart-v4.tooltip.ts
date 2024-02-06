@@ -478,6 +478,5 @@ export function externalV4TooltipHandler(context) {
 }
 
 export function calculateTotals(tooltipItem: any[]) {
-    console.log('tooltipItem', tooltipItem);
     return `Total: ${tooltipItem.reduce((acc, val) => acc + val.raw, 0)}`;
 }
