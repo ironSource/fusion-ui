@@ -27,6 +27,7 @@ export const BASE_DATASET_OPTIONS: {[key: string]: ChartBaseDatasetOptions} = {
         colorSettings: ['backgroundColor', 'borderColor', 'pointBorderColor', 'pointBackgroundColor'],
         fillOpacity: 40, // in %
         seriesToShow: 7,
+        dateFormat: 'MMM dd, yyyy',
         lineOptions: {
             fill: false,
             hidden: false,
@@ -43,8 +44,9 @@ export const BASE_DATASET_OPTIONS: {[key: string]: ChartBaseDatasetOptions} = {
     },
     style_v4: {
         colorSettings: ['backgroundColor', 'borderColor', 'pointBorderColor', 'pointBackgroundColor'],
-        fillOpacity: 100,
+        fillOpacity: 70,
         seriesToShow: 7,
+        dateFormat: 'MMM dd',
         lineOptions: {
             fill: false,
             hidden: false
@@ -253,6 +255,7 @@ export const CHART_CONFIGURATIONS: any = {
             },
             tooltip: {
                 enabled: false,
+                position: 'nearest',
                 external: externalV4TooltipHandler,
                 callbacks: {
                     footer: calculateTotals

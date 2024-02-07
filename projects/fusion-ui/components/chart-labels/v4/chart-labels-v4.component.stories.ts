@@ -28,7 +28,7 @@ const CART_LABELS_ICONS_MOCK: ChartLabel[] = [
     {
         color: CHART_COLORS[1],
         label: 'Label 2',
-        icon: 'v4/branded/android'
+        icon: 'v4/branded/ios'
     }
 ];
 

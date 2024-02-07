@@ -6,6 +6,7 @@ export interface ChartBaseDatasetOptions {
     colorSettings: string[];
     fillOpacity: number; // in %
     seriesToShow: number;
+    dateFormat?: string; // default MMM dd, yyyy
     lineOptions: ChartLineOptions;
     barOptions: ChartBarOptions;
     pieOptions: ChartPieOptions;

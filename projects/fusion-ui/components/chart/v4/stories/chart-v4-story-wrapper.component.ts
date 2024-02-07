@@ -36,7 +36,7 @@ export class ChartV4WrapperComponent {
     onChartInit(chartDatasets: ChartDataset[]): void {
         const chartDataLabels = chartDatasets.map((dataSet, idx) => {
             const dataLabel: ChartLabel = {
-                id: dataSet.id ?? idx,
+                id: idx,
                 label: dataSet.label,
                 color: dataSet.borderColor
             };
@@ -47,7 +47,6 @@ export class ChartV4WrapperComponent {
     }
 
     labelHovered(label: ChartLabel): void {
-        console.log('mouseover label: ', this.fusionChart);
         this.fusionChart?.highlightDataset(label);
     }
 }

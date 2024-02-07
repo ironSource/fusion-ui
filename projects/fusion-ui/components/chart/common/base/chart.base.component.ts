@@ -59,6 +59,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     @Input() set data(value: ChartData | FusionChartPieData) {
         this._data = {...value};
     }
+
     /** @internal */
     @Input() options: any = {
         yAxisLines: 4
@@ -147,6 +148,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
 
         this.afterDatasetInit.emit(this.chartData.datasets as ChartDataset[]);
     }
+
     /** @internal */
     toggleDataset(label: ChartLabel, recalculateYMax = false): void {
         this.chart.data.datasets
@@ -163,7 +165,18 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     }
 
     highlightDataset(label: ChartLabel) {
-        console.log('triggerHover', label);
+        if (this.chart?.getActiveElements()?.length) {
+            this.chart?.setActiveElements([]);
+        } else {
+            if (!isNullOrUndefined(label)) {
+                const activeElements = this.chart?.getDatasetMeta(0)?.data?.map((item, idx) => ({
+                    datasetIndex: label.id as number,
+                    index: idx
+                }));
+                this.chart?.setActiveElements(activeElements);
+            }
+        }
+        this.chart.update();
     }
 
     /** @internal */
@@ -200,6 +213,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         const colorKeys = datasetOptions.colorSettings;
         const seriesToShow = datasetOptions.seriesToShow;
         const lineOptions = datasetOptions.lineOptions;
+        const dateFormat = datasetOptions.dateFormat ?? 'MMM dd, yyyy';
 
         // set bg fill options
         lineOptions.fill = this.isStacked;
@@ -237,7 +251,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         });
         // format xAxis (dates)
         this.chartData.labels = this.chartData.labels.map(lbl => {
-            return isDateString(lbl as string) ? this.datePipe.transform(lbl as any, 'MMM dd, yyyy') : lbl;
+            return isDateString(lbl as string) ? this.datePipe.transform(lbl as any, dateFormat) : lbl;
         });
         // support for last point (if last point - today) - dotted line type
         if (isLastDotted) {
@@ -262,10 +276,10 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     private addDatasetBarStyleOptions(datasetOptions, palette, bgOpacity) {
         const barOptions = datasetOptions.barOptions;
         this.chartData.datasets = this.chartData.datasets.map((item, idx) => {
-            // todo: add colors by dataset
             if (this.componentVersion === 4) {
                 barOptions.borderColor = palette[idx];
                 barOptions.backgroundColor = this.colorsService.toRgba(palette[idx], bgOpacity);
+                barOptions.hoverBackgroundColor = this.colorsService.toRgba(palette[idx], 100);
             } else {
                 for (let i = 0; i < item.data.length; i++) {
                     barOptions.borderColor.push(palette[i]);
@@ -358,7 +372,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             ...(isLastDotted ? {filter: this.filterTooltip.bind(this)} : {})
         };
 
-        console.log('options', options);
+        // console.log('options', options);
 
         return options;
     }
@@ -381,6 +395,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     }
 
     private setBarChartOptions(options) {
+        console.log('options', options);
         this.calcYAxes(options.scales.y);
         if (!this.isStacked) {
             if (this.chartSubject) {
@@ -394,7 +409,13 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             options.scales.x.stacked = true;
             options.scales.y.stacked = true;
             options.interaction = {
-                mode: 'index'
+                intersect: true,
+                mode: 'index',
+                axis: 'xy'
+            };
+            options.plugins.tooltip = {
+                ...options.plugins.tooltip,
+                position: 'average'
             };
         }
     }
@@ -427,7 +448,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     }
 
     private getTooltipLabel(context) {
-        console.log('..', context);
+        // console.log('.getTooltipLabel.', context);
         const label = context.dataset.label ?? context.label ?? '';
         const val = context.parsed.y ?? context.formattedValue;
         const format = context.dataset.displayFormat;
