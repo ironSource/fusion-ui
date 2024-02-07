@@ -311,7 +311,12 @@ export const IS_MENU_ITEMS: MenuItem[] = [
     {
         icon: 'ph/chart-line-up',
         name: 'Performance',
-        route: '/performance'
+        route: '/performance',
+        additionalAction: {
+            name: 'Get Report',
+            route: '/Add+app',
+            icon: 'ph/bold/article'
+        }
     },
     {
         icon: 'ph/gear',
