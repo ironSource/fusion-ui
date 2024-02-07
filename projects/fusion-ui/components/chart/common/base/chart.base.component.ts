@@ -217,6 +217,8 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
 
         // set bg fill options
         lineOptions.fill = this.isStacked;
+        // lineOptions.borderWidth = this.isStacked ? 10 : lineOptions.borderWidth;
+        bgOpacity = this.componentVersion === 4 ? bgOpacity : bgOpacity / 2;
 
         this.chartData.datasets = this.chartData.datasets.map((item, idx) => {
             // set color options
@@ -224,7 +226,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
                 const color = (this._data as ChartData)?.legends[idx]?.color || palette[idx];
                 switch (colorOption) {
                     case 'backgroundColor':
-                        resultOptions[colorOption] = this.colorsService.toRgba(color, bgOpacity / 2);
+                        resultOptions[colorOption] = this.colorsService.toRgba(color, bgOpacity);
                         break;
                     case 'pointBackgroundColor':
                         resultOptions[colorOption] = lineOptions[colorOption] ? lineOptions[colorOption] : color;
@@ -381,9 +383,9 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         // calculate line-point options (if more than 50 points on char)
         if (Array.isArray(this.chartData.datasets) && this.chartData.datasets.length !== 0 && this.chartData.datasets[0].data.length > 50) {
             options.elements.point.pointRadius = 0;
-        } else {
-            options.elements.point.pointRadius = this.componentVersion === 4 ? 0 : 3;
-        }
+        } /* else {
+            options.elements.point.pointRadius = options.elements.point.pointRadius ?? 3;
+        }*/
         this.calcYAxes(options.scales.y);
         if (this.isStacked) {
             this.chartData.datasets.forEach(dataset => {
@@ -395,7 +397,6 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     }
 
     private setBarChartOptions(options) {
-        console.log('options', options);
         this.calcYAxes(options.scales.y);
         if (!this.isStacked) {
             if (this.chartSubject) {
