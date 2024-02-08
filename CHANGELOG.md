@@ -2,6 +2,61 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [7.0.0-rc.5](https://github.com/ironSource/fusion-ui/compare/v6.5.2...v7.0.0-rc.5) (2024-02-08)
+
+
+### Features
+
+* **ISCT-120:** merge 6.x.x ([5cbc028](https://github.com/ironSource/fusion-ui/commit/5cbc028fd7875e266fbdb5ab3263eb2f2f40e620))
+
+## [7.0.0-rc.4](https://github.com/ironSource/fusion-ui/compare/v6.4.1-rc.3...v7.0.0-rc.4) (2024-01-23)
+
+## [7.0.0-rc.3](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.2...v7.0.0-rc.3) (2023-12-11)
+
+
+### Bug Fixes
+
+* **isct-120:** input-inline read only state in table angular 17 ([18d4969](https://github.com/ironSource/fusion-ui/commit/18d49699045a3072528e73b505ce2642691a7401))
+
+## [7.0.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.1...v7.0.0-rc.2) (2023-12-11)
+
+
+### CI
+
+* **isct-133:** added @ironsource/storybook-addon-stackblitz-angular ([19afd88](https://github.com/ironSource/fusion-ui/commit/19afd8825692c75d02287cc51978e32586a732d9))
+* **isct-133:** regen package-lock.json, remove @ironsource/storybook-addon-stackblitz addon ([66a24da](https://github.com/ironSource/fusion-ui/commit/66a24dae26be622c29c855ee68314cfbe75ddcfa))
+* **isct-133:** up version for @ironsource/storybook-addon-stackblitz-angular ([242a6d1](https://github.com/ironSource/fusion-ui/commit/242a6d115ff2b860708136d599c567e92fe09a95))
+* **isct-133:** upgrade to storybook 7.6 ([f6fd5d6](https://github.com/ironSource/fusion-ui/commit/f6fd5d6b10c653ee7c793000331fd7782eeb0940))
+
+## [7.0.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.0...v7.0.0-rc.1) (2023-11-30)
+
+
+### CI
+
+* **isct-120:** update node version to 20 in gh actions ([257ece6](https://github.com/ironSource/fusion-ui/commit/257ece6936011bb2d4db39875c1f93e3a21f8add))
+
+## [7.0.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.4.0-rc.1...v7.0.0-rc.0) (2023-11-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* **isct-120:** Upgrade to Angular 17
+
+### Features
+
+* **isct-120:** up to angular 17 ([c69ed77](https://github.com/ironSource/fusion-ui/commit/c69ed77e989be8b74afe61e21baebd317b2a2ee1))
+
+
+### Bug Fixes
+
+* **isct-120:** fix serve-docs ([4ebd4a0](https://github.com/ironSource/fusion-ui/commit/4ebd4a044549970b2f045f1750a74e7a3dcecac9))
+
+
+### CI
+
+* **isct-120:** remove @ironsource/storybook-addon-stackblitz package till it will be update ([ee02d1a](https://github.com/ironSource/fusion-ui/commit/ee02d1abe0347a3fb73ad714c4460193f5116fea))
+* **isct-120:** update gh actions for use node >=18.13 for angular 17 ([1ccf445](https://github.com/ironSource/fusion-ui/commit/1ccf4455f90905f82f65a298ca45a2c6e2ebbce7))
+
 ## [7.0.0-rc.4](https://github.com/ironSource/fusion-ui/compare/v6.4.0...v7.0.0-rc.4) (2024-01-23)
 
 ## [7.0.0-rc.3](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.2...v7.0.0-rc.3) (2023-12-11)
