@@ -47,10 +47,32 @@ export const Stack: Story = {
     render: args => ({
         props: {
             data: {...CHART_DATA_MOCK},
-            type: ChartType.StackedLine
+            type: ChartType.StackedLine,
+            options: {
+                interaction: {
+                    mode: 'index'
+                }
+            }
         },
         template: `
-            <fusion-chart-wrapper [data]="data" [type]="type"></fusion-chart-wrapper>
+            <fusion-chart-wrapper [data]="data" [type]="type" [options]="options"></fusion-chart-wrapper>
+        `
+    })
+};
+
+export const WithTotal: Story = {
+    render: args => ({
+        props: {
+            data: {...CHART_DATA_MOCK},
+            type: ChartType.Line,
+            options: {
+                interaction: {
+                    mode: 'index'
+                }
+            }
+        },
+        template: `
+            <fusion-chart-wrapper [data]="data" [type]="type" [options]="options"></fusion-chart-wrapper>
         `
     })
 };

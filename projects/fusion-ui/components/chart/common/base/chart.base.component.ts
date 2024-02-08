@@ -61,9 +61,16 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     }
 
     /** @internal */
-    @Input() options: any = {
-        yAxisLines: 4
-    };
+    @Input() set options(value: {}) {
+        if (!!value) {
+            this._options = {...this._options, ...value};
+        }
+    }
+    /** @internal */
+    get options(): any {
+        return this._options;
+    }
+
     @Input() chartSubject: string; // user in tooltip for BAR chart type
     @Input() loading: boolean;
     @Input() noData: boolean;
@@ -75,6 +82,10 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     pieSumLabel: string;
     /** @internal */
     componentVersion = 2;
+
+    private _options: {} = {
+        yAxisLines: 4
+    };
 
     protected _data: ChartData | FusionChartPieData;
     protected ctx: HTMLCanvasElement;
@@ -217,6 +228,10 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
 
         // set bg fill options
         lineOptions.fill = this.isStacked;
+        if (this.componentVersion === 4 && this.isStacked) {
+            lineOptions.borderWidth = 0;
+            lineOptions.pointRadius = 0;
+        }
         // lineOptions.borderWidth = this.isStacked ? 10 : lineOptions.borderWidth;
         bgOpacity = this.componentVersion === 4 ? bgOpacity : bgOpacity / 2;
 
@@ -336,7 +351,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     }
 
     private applyOptions() {
-        const baseOptions = this.getChartOptionsByStyleVersion(this.componentVersion);
+        const baseOptions = {...this.getChartOptionsByStyleVersion(this.componentVersion), ...this.options};
         Object.keys(baseOptions).forEach(key => {
             if (!!this.options && this.options[key]) {
                 Object.assign(baseOptions[key], this.options[key]);
@@ -373,8 +388,6 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             ...options.plugins.tooltip,
             ...(isLastDotted ? {filter: this.filterTooltip.bind(this)} : {})
         };
-
-        // console.log('options', options);
 
         return options;
     }
@@ -449,7 +462,6 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     }
 
     private getTooltipLabel(context) {
-        // console.log('.getTooltipLabel.', context);
         const label = context.dataset.label ?? context.label ?? '';
         const val = context.parsed.y ?? context.formattedValue;
         const format = context.dataset.displayFormat;
@@ -463,8 +475,6 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             data: this.chartData,
             options: this.chartOptions
         };
-
-        console.log('----opts', opts);
 
         return new Chart(ctx, opts);
     }

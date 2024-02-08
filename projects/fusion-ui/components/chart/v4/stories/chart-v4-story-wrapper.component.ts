@@ -12,7 +12,13 @@ import {ChartV4Component} from '../chart-v4.component';
     host: {class: 'fusion-v4'},
     template: `
         <div class="fusion-chart-wrapper" *ngIf="data">
-            <fusion-chart #fusionChart [data]="data" [type]="type" (afterDatasetInit)="onChartInit($event)"></fusion-chart>
+            <fusion-chart
+                #fusionChart
+                [data]="data"
+                [type]="type"
+                [options]="options"
+                (afterDatasetInit)="onChartInit($event)"
+            ></fusion-chart>
         </div>
         <div class="fusion-chart-labels-wrapper" *ngIf="data">
             <fusion-chart-labels [labels]="chartDataLabels$ | async" (labelHover)="labelHovered($event)"></fusion-chart-labels>
@@ -28,6 +34,7 @@ import {ChartV4Component} from '../chart-v4.component';
 export class ChartV4WrapperComponent {
     @Input() data: ChartData;
     @Input() type: ChartType;
+    @Input() options: any;
 
     @ViewChild('fusionChart') fusionChart: ChartV4Component;
 
