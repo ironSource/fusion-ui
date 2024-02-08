@@ -2,7 +2,7 @@
  * Base ChartJS dataset options used for data render
  */
 import {ChartBaseDatasetOptions} from './entities/chart-options';
-import {calculateTotals, externalV4TooltipHandler} from './chart-v4.tooltip';
+import {externalV4TooltipHandler} from './chart-v4.tooltip';
 
 export const BASE_DATASET_OPTIONS: {[key: string]: ChartBaseDatasetOptions} = {
     style_v1: {
@@ -257,10 +257,7 @@ export const CHART_CONFIGURATIONS: any = {
             tooltip: {
                 enabled: false,
                 position: 'nearest',
-                external: externalV4TooltipHandler,
-                callbacks: {
-                    footer: calculateTotals
-                }
+                external: externalV4TooltipHandler
             }
         },
         layout: {

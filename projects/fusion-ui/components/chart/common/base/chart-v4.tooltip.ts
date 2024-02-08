@@ -356,8 +356,7 @@ function generateTooltipHeaderElement(title) {
 function generateTooltipFooterElement(footer) {
     const parsedBody = footer.split(': ');
     const label = parsedBody[0];
-    const parsedNumber = Number(parsedBody[1].replace(',', ''));
-    const val = transform(parsedNumber);
+    const val = parsedBody[1];
 
     const tr = document.createElement('tr');
     const th = document.createElement('th');
@@ -398,8 +397,7 @@ function generateTooltipBodyRow({tooltip, i, bodyLines, body}) {
     const parsedBody = body[0].split(': ');
     const label = parsedBody[0];
 
-    const parsedNumber = Number(parsedBody[1].replace(',', ''));
-    const val = transform(parsedNumber);
+    const val = parsedBody[1];
 
     const labelTd = document.createElement('td');
     labelTd.innerText = label;
@@ -476,8 +474,4 @@ export function externalV4TooltipHandler(context) {
     tooltipEl.style.top = positionY + tooltip.caretY + yPositionAdjustment + 'px';
     tooltipEl.style.font = tooltip.options.bodyFont.string;
     tooltipEl.style.padding = tooltip.options.padding + 'px ' + tooltip.options.padding + 'px';
-}
-
-export function calculateTotals(tooltipItem: any[]) {
-    return `Total: ${tooltipItem.reduce((acc, val) => acc + val.raw, 0)}`;
 }

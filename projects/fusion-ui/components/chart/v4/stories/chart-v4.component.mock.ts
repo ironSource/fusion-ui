@@ -5,11 +5,11 @@ export const CHART_BAR_DATA_MOCK: ChartData = {
         'Unity Ads': [804.16, 1688.59, 1383.47, 1037.83, 899.56]
     },
     legends: [
-        {id: 9930, displayName: 'Australia', displayFormat: 'currency'},
-        {id: 9928, displayName: 'United States', displayFormat: 'currency'},
-        {id: 9935, displayName: 'Germany', displayFormat: 'currency'},
-        {id: 9936, displayName: 'United Kingdom', displayFormat: 'currency'},
-        {id: 9899, displayName: 'China', displayFormat: 'currency'}
+        {id: 9930, displayName: 'Australia', displayFormat: 'shortCurrency'},
+        {id: 9928, displayName: 'United States', displayFormat: 'shortCurrency'},
+        {id: 9935, displayName: 'Germany', displayFormat: 'shortCurrency'},
+        {id: 9936, displayName: 'United Kingdom', displayFormat: 'shortCurrency'},
+        {id: 9899, displayName: 'China', displayFormat: 'shortCurrency'}
     ]
 };
 
@@ -19,11 +19,11 @@ export const CHART_BAR_GROUPED_DATA_MOCK: ChartData = {
         'ironSource Ads': [456.16, 1290.59, 678.47, 659.83, 344.56]
     },
     legends: [
-        {id: 9930, displayName: 'Australia', displayFormat: 'currency'},
-        {id: 9928, displayName: 'United States', displayFormat: 'currency'},
-        {id: 9935, displayName: 'Germany', displayFormat: 'currency'},
-        {id: 9936, displayName: 'United Kingdom', displayFormat: 'currency'},
-        {id: 9899, displayName: 'China', displayFormat: 'currency'}
+        {id: 9930, displayName: 'Australia', displayFormat: 'shortCurrency'},
+        {id: 9928, displayName: 'United States', displayFormat: 'shortCurrency'},
+        {id: 9935, displayName: 'Germany', displayFormat: 'shortCurrency'},
+        {id: 9936, displayName: 'United Kingdom', displayFormat: 'shortCurrency'},
+        {id: 9899, displayName: 'China', displayFormat: 'shortCurrency'}
     ]
 };
 
@@ -38,7 +38,7 @@ export const CHART_DATA_MOCK: ChartData = {
         '2023-12-17': [2049.24, 1563.08]
     },
     legends: [
-        {id: 9930, displayName: 'Unity Ads'},
-        {id: 9928, displayName: 'ironSource Ads'}
+        {id: 9930, displayName: 'Unity Ads', displayFormat: 'shortCurrency'},
+        {id: 9928, displayName: 'ironSource Ads', displayFormat: 'shortCurrency'}
     ]
 };

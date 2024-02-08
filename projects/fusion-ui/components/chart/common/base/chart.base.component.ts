@@ -13,6 +13,7 @@ import {ShortNumberScaleSuffixPipe} from '@ironsource/fusion-ui/pipes/numbers';
 import {ChartBaseDatasetOptions} from './entities/chart-options';
 import {ChartType} from './entities/chart-type.enum';
 import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
+import {HoverVerticalLine} from './hoverVerticalLine.plugin';
 
 // Chart.js 3 is tree-shakeable, so it is necessary to import and register the controllers, elements, scales and plugins you are going to use.
 import {
@@ -46,7 +47,8 @@ Chart.register(
     CategoryScale,
     LinearScale,
     Filler,
-    Tooltip
+    Tooltip,
+    HoverVerticalLine
 );
 
 @Directive()
@@ -351,13 +353,28 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     }
 
     private applyOptions() {
-        const baseOptions = {...this.getChartOptionsByStyleVersion(this.componentVersion), ...this.options};
-        Object.keys(baseOptions).forEach(key => {
-            if (!!this.options && this.options[key]) {
-                Object.assign(baseOptions[key], this.options[key]);
+        return this.deepMerge(this.getChartOptionsByStyleVersion(this.componentVersion), this.options);
+    }
+
+    private deepMerge(target, source) {
+        for (const key of Object.keys(source)) {
+            const currentTarget = target[key];
+            const currentSource = source[key];
+
+            if (currentTarget) {
+                const objectSource = typeof currentSource === 'object';
+                const objectTarget = typeof currentTarget === 'object';
+
+                if (objectSource && objectTarget) {
+                    void (Array.isArray(currentTarget) && Array.isArray(currentSource)
+                        ? void (target[key] = currentTarget.concat(currentSource))
+                        : void this.deepMerge(currentTarget, currentSource));
+                    continue;
+                }
             }
-        });
-        return baseOptions;
+            target[key] = currentSource;
+        }
+        return target;
     }
 
     private getChartOptions(): ChartJsOptions {
@@ -380,14 +397,24 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             this.setPieChartOptions(options);
         }
 
-        // todo: check it set formatted tooltip
+        const isV4InteractionIndex = this.componentVersion === 4 && options?.interaction?.mode === 'index';
+
+        // region apply tooltip options
         options.plugins.tooltip = {
-            callbacks: {
-                label: this.getTooltipLabel.bind(this)
-            },
             ...options.plugins.tooltip,
+            callbacks: {
+                ...options.plugins.tooltip.callbacks,
+                label: this.getTooltipLabel.bind(this),
+                ...(isV4InteractionIndex ? {footer: this.calculateTotals.bind(this)} : {})
+            },
             ...(isLastDotted ? {filter: this.filterTooltip.bind(this)} : {})
         };
+
+        options.plugins['hoverVerticalLine'] = false;
+        if (this.type === ChartType.Line && isV4InteractionIndex) {
+            options.plugins['hoverVerticalLine'] = true;
+        }
+        // end region
 
         return options;
     }
@@ -396,9 +423,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         // calculate line-point options (if more than 50 points on char)
         if (Array.isArray(this.chartData.datasets) && this.chartData.datasets.length !== 0 && this.chartData.datasets[0].data.length > 50) {
             options.elements.point.pointRadius = 0;
-        } /* else {
-            options.elements.point.pointRadius = options.elements.point.pointRadius ?? 3;
-        }*/
+        }
         this.calcYAxes(options.scales.y);
         if (this.isStacked) {
             this.chartData.datasets.forEach(dataset => {
@@ -457,17 +482,23 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         return options.dottedLineForToday && dataKeys[dataKeys.length - 1] === todayString;
     }
 
+    // region tooltip related methods
     private filterTooltip(context): boolean {
         return !context.dataset.borderDash;
     }
-
     private getTooltipLabel(context) {
         const label = context.dataset.label ?? context.label ?? '';
         const val = context.parsed.y ?? context.formattedValue;
-        const format = context.dataset.displayFormat;
+        const format = context.dataset.displayFormat ?? this.yAxesFormat;
 
         return ` ${label}: ${!!format ? this.getFormatted(val, format) : val}`;
     }
+    private calculateTotals(tooltipItem: any[]) {
+        const format = this.yAxesFormat;
+        const total = tooltipItem.reduce((acc, val) => acc + val.raw, 0);
+        return `Total: ${!!format ? this.getFormatted(total, format) : total}`;
+    }
+    // endregion
 
     private renderChart(ctx: HTMLCanvasElement) {
         const opts = {
@@ -475,7 +506,6 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             data: this.chartData,
             options: this.chartOptions
         };
-
         return new Chart(ctx, opts);
     }
 
@@ -521,6 +551,13 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             switch (formatter[0]) {
                 case 'currency':
                     retVal = this.currencyPipe.transform(value, 'USD', true);
+                    break;
+                case 'shortCurrency':
+                    retVal =
+                        '$' +
+                        this.numberToStringPipe.transform(value, {
+                            noSeparateBySpace: true
+                        });
                     break;
                 case 'percent':
                     retVal = this.percentPipe.transform(value / 100, formatter[1]);
