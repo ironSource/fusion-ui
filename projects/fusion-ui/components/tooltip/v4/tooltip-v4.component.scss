@@ -1,0 +1,10 @@
+@import '../../../src/style/scss/v4/colors';
+@import '../../../src/style/scss/v4/spacings';
+@import '../../../src/style/scss/v4/border-radius';
+@import '../../../src/style/scss/v4/vars/fonts';
+
+:host {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}

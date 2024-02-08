@@ -1,0 +1,38 @@
+import {Meta, Source} from '@storybook/addon-docs';
+
+<Meta title="V4/Foundation/Scrollbar"/>
+
+<style>
+    // todo: remove this style when the custom scroll will be added to the foundation
+    {
+        `.scrollbar {
+            overflow-y: auto;
+            width: 100px;
+            float: left;
+            height: 100px;
+            position: relative;
+            margin: auto;
+        }
+        ::-webkit-scrollbar {
+            background-color: rgba(0, 0, 0, 0.024);
+            width: 8px;
+            border-radius: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            border-radius: 8px;
+            background-color: rgb(187, 187, 187);
+            min-height: 24px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: rgb(128, 128, 128);
+        }
+        ::-webkit-scrollbar-corner {
+            background-color: rgb(255, 255, 255);
+        }
+        `
+    }
+</style>
+<div className="scrollbar">
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+    magna aliquam erat volutpat.
+</div>

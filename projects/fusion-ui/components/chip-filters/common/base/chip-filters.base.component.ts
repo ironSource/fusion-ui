@@ -64,6 +64,9 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
     /** @internal */
     addFilterIndex: number;
 
+    /** @internal */
+    addFilterIcon = 'tune';
+
     private selectedFilters: SelectedFilters[] = [];
     private preSelectedDynamicOptions: DropdownOption[] = [];
 

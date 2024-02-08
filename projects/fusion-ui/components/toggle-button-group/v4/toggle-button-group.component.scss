@@ -1,0 +1,154 @@
+@import '../../../src/style/scss/v4/colors';
+@import '../../../src/style/scss/v4/spacings';
+@import '../../../src/style/scss/v4/border-radius';
+@import '../../../src/style/scss/v4/vars/fonts';
+
+$borderRadius: var(--border-radius-md, #{$borderRadiusV4-md});
+$paddingSmall: calc(var(--spacing-50, #{$spacingV4-50}) - 1px) var(--spacing-50, #{$spacingV4-50});
+$paddingSmallWithIcon: calc(var(--spacing-25, #{$spacingV4-25}) - 1px) var(--spacing-50, #{$spacingV4-50});
+$paddingSmallWithIconOnly: calc(var(--spacing-25, #{$spacingV4-25}) - 1px) var(--spacing25, #{$spacingV4-25});
+$paddingMedium: calc(var(--spacing-75, #{$spacingV4-75}) - 1px) var(--spacing-100, #{$spacingV4-100});
+$paddingMediumWithIcon: calc(var(--spacing-50, #{$spacingV4-50}) - 1px) var(--spacing-100, #{$spacingV4-100});
+$paddingMediumWithIconOnly: calc(var(--spacing-50, #{$spacingV4-50}) - 1px) var(--spacing-50, #{$spacingV4-50});
+$paddingLarge: calc(var(--spacing-75, #{$spacingV4-75}) - 1px) var(--spacing-100, #{$spacingV4-100});
+$paddingLargeWithIcon: calc(var(--spacing-50, #{$spacingV4-50}) - 1px) var(--spacing-100, #{$spacingV4-100});
+$paddingLargeWithIconOnly: calc(var(--spacing-50, #{$spacingV4-50}) - 1px) var(--spacing-50, #{$spacingV4-50});
+$paddingXLarge: calc(var(--spacing-125, #{$spacingV4-125}) - 1px) var(--spacing-100, #{$spacingV4-100});
+$paddingXLargeWithIcon: calc(var(--spacing-100, #{$spacingV4-100}) - 1px) var(--spacing-100, #{$spacingV4-100});
+$paddingXLargeWithIconOnly: calc(var(--spacing-100, #{$spacingV4-100}) - 1px) var(--spacing-100, #{$spacingV4-100});
+
+%optionIconSize {
+    width: 20px;
+    height: 20px;
+}
+
+%optionIconXLargeSize {
+    width: 24px;
+    height: 24px;
+}
+
+:host {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    display: flex;
+
+    .fu-button-group-wrapper {
+        display: flex;
+        align-items: center;
+
+        .fu-button-group-option {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-50, #{$spacingV4-50});
+            @extend %font-v4-chip-label;
+            color: var(--action-active, #{$color-v4-action-active});
+            background-color: var(--default-main, #{$color-v4-default-main});
+            border: solid 1px var(--default-outlined-border, #{$color-v4-default-outlined-border});
+            border-left: none;
+
+            padding: $paddingMedium;
+            &:has(fusion-icon) {
+                padding: $paddingMediumWithIcon;
+            }
+            &:has(fusion-icon):not(:has(.fu-option-label-text)) {
+                padding: $paddingMediumWithIconOnly;
+            }
+
+            input {
+                display: none;
+            }
+
+            fusion-icon {
+                @extend %optionIconSize;
+            }
+
+            &:first-of-type {
+                border-left: solid 1px var(--default-outlined-border, #{$color-v4-default-outlined-border});
+                border-top-left-radius: $borderRadius;
+                border-bottom-left-radius: $borderRadius;
+            }
+
+            &:last-of-type {
+                border-top-right-radius: $borderRadius;
+                border-bottom-right-radius: $borderRadius;
+            }
+
+            &:hover {
+                color: var(--text-primary, #{$color-v4-text-primary});
+                background-color: var(--default-light, #{$color-v4-default-light});
+                cursor: pointer;
+            }
+
+            &:has(input:checked) {
+                color: var(--text-primary, #{$color-v4-text-primary});
+                background-color: var(--action-selected, #{$color-v4-action-selected});
+                pointer-events: none;
+            }
+
+        }
+
+        // region color
+        &.fu-color-primary {
+            .fu-button-group-option {
+                &:hover {
+                    color: var(--primary-main, #{$color-v4-primary-main});
+                    background-color: var(--primary-light, #{$color-v4-primary-light});
+                }
+
+                &:has(input:checked) {
+                    color: var(--primary-main, #{$color-v4-primary-main});
+                    background-color: var(--primary-main-8-p, #{$color-v4-primary-main-8-p});
+                }
+            }
+        }
+
+        // endregion
+
+        // region sizes
+        &.fu-size-small {
+            .fu-button-group-option {
+                padding: $paddingSmall;
+                &:has(fusion-icon) {
+                    padding: $paddingSmallWithIcon;
+                }
+                &:has(fusion-icon):not(:has(.fu-option-label-text)) {
+                    padding: $paddingSmallWithIconOnly;
+                }
+            }
+        }
+
+        &.fu-size-large {
+            .fu-button-group-option {
+                @extend %font-v4-button;
+                padding: $paddingLarge;
+                fusion-icon {
+                    @extend %optionIconXLargeSize;
+                }
+                &:has(fusion-icon) {
+                    padding: $paddingLargeWithIcon;
+                }
+                &:has(fusion-icon):not(:has(.fu-option-label-text)) {
+                    padding: $paddingLargeWithIconOnly;
+                }
+            }
+        }
+
+        &.fu-size-xlarge {
+            .fu-button-group-option {
+                @extend %font-v4-button;
+                padding: $paddingXLarge;
+                fusion-icon {
+                    @extend %optionIconXLargeSize;
+                }
+                &:has(fusion-icon) {
+                    padding: $paddingXLargeWithIcon;
+                }
+                &:has(fusion-icon):not(:has(.fu-option-label-text)) {
+                    padding: $paddingXLargeWithIconOnly;
+                }
+            }
+        }
+        // endregion
+    }
+}

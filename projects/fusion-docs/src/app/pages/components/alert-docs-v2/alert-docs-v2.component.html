@@ -11,13 +11,31 @@
                 <fusion-checkbox [formControl]="chbFormControl" label="checkbox"></fusion-checkbox>
                 <br><br>
                 <div style="display: flex; gap: 14px;">
-                    <fusion-button color="primary" [disabled]="false" [loading]="false" >Primary</fusion-button>
-                    <fusion-button [disabled]="false" [loading]="false" >Default</fusion-button>
-                    <fusion-button color="danger"  [disabled]="false" [loading]="false">Danger</fusion-button>
-                    <fusion-button color="info"  [disabled]="false" [loading]="false">Info</fusion-button>
-                    <fusion-button color="success"  [disabled]="false" [loading]="false">Success</fusion-button>
-                    <fusion-button color="warning"  [disabled]="false" [loading]="false">Warning</fusion-button>
+                    <fusion-button color="primary" [disabled]="false" [loading]="false">Primary</fusion-button>
+                    <fusion-button [disabled]="false" [loading]="false">Default</fusion-button>
+                    <fusion-button color="danger" [disabled]="false" [loading]="false">Danger</fusion-button>
+                    <fusion-button color="info" [disabled]="false" [loading]="false">Info</fusion-button>
+                    <fusion-button color="success" [disabled]="false" [loading]="false">Success</fusion-button>
+                    <fusion-button color="warning" [disabled]="false" [loading]="false">Warning</fusion-button>
                 </div>
+                <br>
+                <br>
+                <div style="display: flex; gap:16px; align-items: center;">
+                    <div style="width: 220px;">
+                        <fusion-input
+                            [formControl]="formControlInput"
+                            placeholder="Medium (default)"
+                            [showClear]="true"
+                        ></fusion-input>
+                    </div>
+                    <div>Val: {{ formControlInput.valueChanges | async }}</div>
+                </div>
+                <br>
+                <fusion-search
+                    [formControl]="formControlSearch"
+                    placeholder="Search"
+                ></fusion-search>
+
                 <br>
 
                 <fusion-chip-filters
@@ -40,7 +58,8 @@
                     </fusion-chip-filter>
 
                     <ng-container *ngFor="let chip of selectedDynamicFilters">
-                        <fusion-chip-filter [configuration]="chip.configChip" (chipRemove)="onDynamicChipRemove($event)">
+                        <fusion-chip-filter [configuration]="chip.configChip"
+                                            (chipRemove)="onDynamicChipRemove($event)">
                             <div class="filter-element">
                                 <fusion-dropdown-dual-multi-select
                                     [title]="chip.optionsTitleChip"
@@ -159,9 +178,11 @@ alert.appendChild(textNode);'
                 </fusion-code-block>
             </ng-template>
             <!--Code-Examples-->
-            <div><b>Capitalize pipe:</b> {{someTestVar | capitalize}}</div>
-            <div><b>Truncate 10 pipe:</b> {{someTestVar | truncate: 10}}</div>
-            <br /><hr/><br />
+            <div><b>Capitalize pipe:</b> {{ someTestVar | capitalize }}</div>
+            <div><b>Truncate 10 pipe:</b> {{ someTestVar | truncate: 10 }}</div>
+            <br/>
+            <hr/>
+            <br/>
             <!--files selector example holder-->
             <div style="width: 620px; height: 196px; display: block">
                 <fusion-file-csv-upload
@@ -173,55 +194,59 @@ alert.appendChild(textNode);'
                 ></fusion-file-csv-upload>
             </div>
             <!--files selector example holder-->
-            <br /><hr/><br />
+            <br/>
+            <hr/>
+            <br/>
             <div>
                 <fusion-file-csv-upload class="small"
-                    [loading]="fileInUpload$ | async"
-                    [disabled]="fileUploadDisabled$ | async"
-                    [fileState]="fileState$ | async"
-                    (handleFiles)="onFilesSelected($event)"
-                    (deleteFile)="onFileDelete($event)"
+                                        [loading]="fileInUpload$ | async"
+                                        [disabled]="fileUploadDisabled$ | async"
+                                        [fileState]="fileState$ | async"
+                                        (handleFiles)="onFilesSelected($event)"
+                                        (deleteFile)="onFileDelete($event)"
                 ></fusion-file-csv-upload>
             </div>
-            <br /><hr/><br />
+            <br/>
+            <hr/>
+            <br/>
 
             <div class="row">
                 <div class="col-6">
                     <fusion-alert
-                        ><strong>Heads up!</strong> This alert needs your attention, but it’s not super important
+                    ><strong>Heads up!</strong> This alert needs your attention, but it’s not super important
                         <a href="#" (click)="linkClicked($event)">Link</a></fusion-alert
                     >
                 </div>
             </div>
-            <br />
+            <br/>
             <div class="row">
                 <div class="col-6">
                     <fusion-alert type="success"
-                        ><strong>Well done!</strong> You successfully read this important alert message
+                    ><strong>Well done!</strong> You successfully read this important alert message
                         <a href="#" (click)="linkClicked($event)">Link</a>
                     </fusion-alert>
                 </div>
             </div>
-            <br />
+            <br/>
             <div class="row">
                 <div class="col-6">
                     <fusion-alert type="warning"
-                        ><strong>Warning!</strong> Better check yourself, you’re not looking too good
+                    ><strong>Warning!</strong> Better check yourself, you’re not looking too good
                         <a href="#" (click)="linkClicked($event)">Link</a>
                     </fusion-alert>
                 </div>
             </div>
-            <br />
+            <br/>
             <div class="row">
                 <div class="col-6">
                     <fusion-alert type="error"
-                        ><strong>Oh snap!</strong> Change a few things up and try submitting again
+                    ><strong>Oh snap!</strong> Change a few things up and try submitting again
                         <a href="#" (click)="linkClicked($event)">Link</a></fusion-alert
                     >
                 </div>
             </div>
         </fusion-example-block>
-        <br />
+        <br/>
         <fusion-example-block id="typeNoClose" title="Without 'close' button">
             <!--Code-Examples-->
             <ng-template fusionExampleBlock="Angular">
@@ -327,36 +352,36 @@ alert.appendChild(textNode);'
             <div class="row">
                 <div class="col-6">
                     <fusion-alert [showCloseButton]="false"
-                        ><strong>Heads up!</strong> This alert needs your attention, but it’s not super important
+                    ><strong>Heads up!</strong> This alert needs your attention, but it’s not super important
                     </fusion-alert>
                 </div>
             </div>
-            <br />
+            <br/>
             <div class="row">
                 <div class="col-6">
                     <fusion-alert type="success" [showCloseButton]="false"
-                        ><strong>Well done!</strong> You successfully read this important alert message
+                    ><strong>Well done!</strong> You successfully read this important alert message
                     </fusion-alert>
                 </div>
             </div>
-            <br />
+            <br/>
             <div class="row">
                 <div class="col-6">
                     <fusion-alert type="warning" [showCloseButton]="false"
-                        ><strong>Warning!</strong> Better check yourself, you’re not looking too good
+                    ><strong>Warning!</strong> Better check yourself, you’re not looking too good
                     </fusion-alert>
                 </div>
             </div>
-            <br />
+            <br/>
             <div class="row">
                 <div class="col-6">
                     <fusion-alert type="error" [showCloseButton]="false"
-                        ><strong>Oh snap!</strong> Change a few things up and try submitting again
+                    ><strong>Oh snap!</strong> Change a few things up and try submitting again
                     </fusion-alert>
                 </div>
             </div>
         </fusion-example-block>
-        <br />
+        <br/>
         <fusion-example-block id="typeSmall" title="Size Small">
             <!--Code-Examples-->
             <ng-template fusionExampleBlock="Angular">
@@ -465,55 +490,57 @@ alert.appendChild(textNode);'
             <div class="row">
                 <div class="col-6">
                     <fusion-alert class="small"
-                        ><strong>Heads up!</strong> This alert needs your attention, but it’s not super important
+                    ><strong>Heads up!</strong> This alert needs your attention, but it’s not super important
                         <a href="#" (click)="linkClicked($event)">Link</a></fusion-alert
                     >
                 </div>
                 <div class="col-6">
                     <fusion-alert [showCloseButton]="false" class="small"
-                        ><strong>Heads up!</strong> This alert needs your attention, but it’s not super important</fusion-alert
+                    ><strong>Heads up!</strong> This alert needs your attention, but it’s not super important
+                    </fusion-alert
                     >
                 </div>
             </div>
-            <br />
+            <br/>
             <div class="row">
                 <div class="col-6">
                     <fusion-alert class="small" type="success"
-                        ><strong>Well done!</strong> You successfully read this important alert message
+                    ><strong>Well done!</strong> You successfully read this important alert message
                         <a href="#" (click)="linkClicked($event)">Link</a>
                     </fusion-alert>
                 </div>
                 <div class="col-6">
                     <fusion-alert [showCloseButton]="false" class="small" type="success"
-                        ><strong>Well done!</strong> You successfully read this important alert message
+                    ><strong>Well done!</strong> You successfully read this important alert message
                     </fusion-alert>
                 </div>
             </div>
-            <br />
+            <br/>
             <div class="row">
                 <div class="col-6">
                     <fusion-alert class="small" type="warning"
-                        ><strong>Warning!</strong> Better check yourself, you’re not looking too good
+                    ><strong>Warning!</strong> Better check yourself, you’re not looking too good
                         <a href="#" (click)="linkClicked($event)">Link</a>
                     </fusion-alert>
                 </div>
                 <div class="col-6">
                     <fusion-alert [showCloseButton]="false" class="small" type="warning"
-                        ><strong>Warning!</strong> Better check yourself, you’re not looking too good
+                    ><strong>Warning!</strong> Better check yourself, you’re not looking too good
                     </fusion-alert>
                 </div>
             </div>
-            <br />
+            <br/>
             <div class="row">
                 <div class="col-6">
                     <fusion-alert class="small" type="error"
-                        ><strong>Oh snap!</strong> Change a few things up and try submitting again
+                    ><strong>Oh snap!</strong> Change a few things up and try submitting again
                         <a href="#" (click)="linkClicked($event)">Link</a></fusion-alert
                     >
                 </div>
                 <div class="col-6">
                     <fusion-alert [showCloseButton]="false" class="small" type="error"
-                        ><strong>Oh snap!</strong> Change a few things up and try submitting again</fusion-alert
+                    ><strong>Oh snap!</strong> Change a few things up and try submitting again
+                    </fusion-alert
                     >
                 </div>
             </div>

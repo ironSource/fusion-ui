@@ -1,0 +1,21 @@
+<ng-template #ref>
+    <ng-container *ngIf="apiBase" [ngTemplateOutlet]="chipComponent"></ng-container>
+</ng-template>
+<ng-content select=".filter-element"></ng-content>
+
+<ng-container *ngIf="!apiBase" [ngTemplateOutlet]="chipComponent"></ng-container>
+
+<ng-template #chipComponent>
+    <div class="fu-chip-filter-container">
+        <fusion-icon class="fu-chip-left-icon" *ngIf="leftIcon" [name]="leftIcon.icon" [fusionTooltip]="leftIcon.tooltipText"></fusion-icon>
+        <div class="fu-chip-content-wrapper">
+            <ng-container *ngIf="!isDefaultContent">
+                <ng-content select=".fu-chip-content"></ng-content>
+            </ng-container>
+            <ng-container *ngIf="apiBase && isDefaultContent" [ngTemplateOutlet]="defaultContent"></ng-container>
+        </div>
+        <fusion-icon class="fu-chip-right-icon" *ngIf="rightIcon" [name]="rightIcon.icon" [fusionTooltip]="rightIcon.tooltipText"></fusion-icon>
+        <fusion-icon class="fu-icon-close" *ngIf="showClose" (click)="closeClicked($event)" name="ph/fill/x-circle"></fusion-icon>
+        <fusion-icon class="fu-icon-close" *ngIf="showCaretDown" name="ph/caret-down"></fusion-icon>
+    </div>
+</ng-template>

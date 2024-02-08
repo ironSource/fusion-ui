@@ -1,0 +1,19 @@
+<div class="fu-snackbar-impl-wrapper">
+    <fusion-button *ngIf="!byStatuses && !byPosition && !actionButtons?.length" color="primary" (click)="showSnack()">Show basic snackbar</fusion-button>
+
+    <div  style="display: flex; gap: 16px;" *ngIf="byStatuses && !byPosition && !actionButtons?.length">
+        <fusion-button color="info" (click)="showSnackByType('default')">Show info snackbar</fusion-button>
+        <fusion-button color="danger" (click)="showSnackByType('error')">Show error snackbar</fusion-button>
+        <fusion-button color="success" (click)="showSnackByType('success')">Show info snackbar</fusion-button>
+    </div>
+    <div  style="display: flex; gap: 16px;" *ngIf="byPosition && !actionButtons?.length">
+        <fusion-button color="primary" (click)="showSnackByPosition('top-left')">Top left</fusion-button>
+        <fusion-button color="primary" (click)="showSnackByPosition('top-right')">Top right</fusion-button>
+        <fusion-button color="primary" (click)="showSnackByPosition('bottom-left')">Bottom left</fusion-button>
+        <fusion-button color="primary" (click)="showSnackByPosition('bottom-right')">Bottom right</fusion-button>
+    </div>
+    <div  style="display: flex; gap: 16px;" *ngIf="!byStatuses && !byPosition && actionButtons?.length">
+        <fusion-button color="primary" (click)="showSnack()">CTA buttons</fusion-button>
+        <fusion-button color="info" (click)="showSnack()">CTA buttons & description</fusion-button>
+    </div>
+</div>

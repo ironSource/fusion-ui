@@ -1,4 +1,4 @@
-import {Directive, Input, OnChanges, OnInit, TemplateRef} from '@angular/core';
+import {Directive, ElementRef, Input, OnChanges, OnInit, TemplateRef} from '@angular/core';
 import {DROPDOWN_OPTIONS_WITHOUT_SCROLL, DropdownBaseComponent} from '@ironsource/fusion-ui/components/dropdown/common/base';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 import {Observable} from 'rxjs';
@@ -11,7 +11,7 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
     /** @ignore */
     @Input() selectAllLabel: string;
     /** @ignore */
-    @Input() templateRef: TemplateRef<any>;
+    @Input() templateRef: TemplateRef<any>; // todo: rename it to optionTemplate ref. Just in use in demand
     /** @ignore */
     tempSelected: DropdownOption[];
     /** @ignore */
@@ -64,11 +64,11 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
         return [...super.getHolderCSSClasses(), ...[this.confirm && 'is-with-confirm']].filter(Boolean);
     }
     /** @ignore */
-    getOptionClasses(option: DropdownOption) {
+    getOptionClasses(option: DropdownOption, index?: number) {
         return {
             [option.class]: option.class,
-            'is-selected': option.checked,
-            'is-group': option.isGroup
+            'fu-group': option.isGroup && !option.childOptions,
+            'fu-group-first': option.isGroup && !option.childOptions && index === 0
         };
     }
 
@@ -130,6 +130,10 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
         if (!this.confirm) {
             this.applySelect();
         }
+    }
+
+    clearAll() {
+        this.selectAll(false);
     }
 
     /**

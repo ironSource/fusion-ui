@@ -1,0 +1,122 @@
+@import '../../../src/style/scss/v4/mixins/mixins';
+@import '../../../src/style/scss/v4/colors';
+@import '../../../src/style/scss/v4/spacings';
+@import '../../../src/style/scss/v4/shadows';
+@import '../../../src/style/scss/v4/border-radius';
+@import '../../../src/style/scss/v4/vars/fonts';
+
+$backgroundColor: var(--background-modelElevation, #{$color-v4-background-model-elevation});
+$arrowWidth: 16px;
+
+:host {
+    @extend %font-v4-body-2;
+    box-sizing: border-box;
+    position: fixed;
+    z-index: getZIndexLayerOffset(system, 20);
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 12px;
+    color: var(--text-primary, #{$color-v4-text-primary});
+    border: 1px solid var(--common-divider-elevation-0, #{$color-v4-common-divider-elevation-0});
+    border-radius: var(--border-radius-lg, #{$borderRadiusV4-lg});
+    background-color: var(--fu-tooltip-background-color, $backgroundColor);
+    box-shadow: var(--box-shadow-md, #{$boxShadowV4-MD});
+
+    .fu-tooltip-component {
+        position: relative;
+        .fu-tooltip-arrow {
+            display: none;
+            position: absolute;
+            width: $arrowWidth;
+            height: 8px;
+            flex-shrink: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='9' fill='none' viewBox='0 0 16 9'%3E%3Cpath fill='%23fff' stroke='%23E4E4E4' d='M14.793 1.044H1.236l6.779 6.778 6.778-6.778Z'/%3E%3C/svg%3E");
+            &:after{
+                content: '';
+                position: absolute;
+                margin-left: -7px;
+                border-width: 7px;
+                border-style: solid;
+                border-color: var(--fu-tooltip-background-color, $backgroundColor) transparent transparent transparent;
+                top: 0;
+                left: 50%;
+            }
+        }
+    }
+
+    &.fu-tooltip-top {
+        .fu-tooltip-component .fu-tooltip-arrow {
+            display: inherit;
+            bottom: -$arrowWidth;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+    &.fu-tooltip-bottom {
+        .fu-tooltip-component .fu-tooltip-arrow {
+            display: inherit;
+            top: -$arrowWidth;
+            left: 50%;
+            transform: rotate(180deg) translateX(50%);
+        }
+    }
+    &.fu-tooltip-left {
+        .fu-tooltip-component .fu-tooltip-arrow {
+            display: inherit;
+            top: calc(50% - 4px);
+            right: -20px;
+            transform: rotate(-90deg) translateY(50%);
+        }
+    }
+    &.fu-tooltip-right {
+        .fu-tooltip-component .fu-tooltip-arrow {
+            display: inherit;
+            top: calc(50% - 4px);
+            left: -20px;
+            transform: rotate(90deg) translateY(50%);
+        }
+    }
+
+    &.fu-tooltip-topright{
+        .fu-tooltip-component .fu-tooltip-arrow {
+            display: inherit;
+            bottom: -$arrowWidth;
+            right: -14px;
+            transform: translateX(-50%);
+        }
+    }
+    &.fu-tooltip-topleft{
+        .fu-tooltip-component .fu-tooltip-arrow {
+            display: inherit;
+            bottom: -$arrowWidth;
+            left: 2px;
+            transform: translateX(-50%);
+        }
+    }
+
+    &.fu-tooltip-bottomright{
+        .fu-tooltip-component .fu-tooltip-arrow {
+            display: inherit;
+            top: -$arrowWidth;
+            right: -14px;
+            transform: rotate(180deg) translateX(50%);
+        }
+    }
+    &.fu-tooltip-bottomleft{
+        .fu-tooltip-component .fu-tooltip-arrow {
+            display: inherit;
+            top: -$arrowWidth;
+            left: 2px;
+            transform: rotate(180deg) translateX(50%);
+        }
+    }
+
+    &.fu-tooltip-no-arrow{
+        .fu-tooltip-component .fu-tooltip-arrow {
+            display: none;
+        }
+    }
+}

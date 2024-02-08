@@ -1,0 +1,129 @@
+@import '../../../src/style/scss/v4/mixins/mixins';
+@import '../../../src/style/scss/v4/colors';
+@import '../../../src/style/scss/v4/spacings';
+@import '../../../src/style/scss/v4/shadows';
+@import '../../../src/style/scss/v4/border-radius';
+@import '../../../src/style/scss/v4/vars/fonts';
+
+$minWidth: 360px;
+$contentPadding: 0 28px;
+
+$width: $minWidth;
+$marginBottom: 8px;
+
+
+// Animations
+@keyframes top-fadein {
+  from {top: -1rem; opacity: 1;}
+  to {top: 1rem; opacity: 1;}
+}
+@keyframes bottom-fadein {
+  from {bottom: -1rem; opacity: 0;}
+  to {bottom: 1rem; opacity: 1;}
+}
+@keyframes fadein {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+@keyframes fadeout {
+  from {opacity: 1;}
+  to {opacity: 0; margin-top: -$marginBottom}
+}
+@keyframes slide-out-right {
+  from {right: 1rem; opacity: 1;}
+  to {right: -$width; opacity: 0;}
+}
+@keyframes slide-out-left {
+  from {left: 1rem; opacity: 1;}
+  to {left: -$width; opacity: 0;}
+}
+// -------------------------------
+
+:host {
+  padding: 0;
+  display: flex;
+  margin: 0 0 var(--snackbar-margin-bottom, $marginBottom);
+
+  .fu-snackbar-wrapper {
+    user-select: none;
+    width: $minWidth;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    align-self: stretch;
+    padding: var(--spacing-150, #{$spacingV4-150}) var(--spacing-200, #{$spacingV4-200});
+    background-color: var(--background-model-elevation, #{$color-v4-background-model-elevation});
+    border-radius: 12px;
+    border: solid 1px var(--common-divider-elevation-0, #{$color-v4-common-divider-elevation-0});
+    box-shadow: var(--box-shadow-md, #{$boxShadowV4-MD});
+
+    .fu-close-button {
+      margin-left: auto;
+    }
+    .fu-state-icon{
+      @include size(20px);
+      color: var(--action-active, #{$color-v4-action-active});
+    }
+
+    &.fu-state{
+      &-error{
+        .fu-state-icon{
+          color: var(--error-main, #{$color-v4-error-main});
+        }
+      }
+      &-success{
+        .fu-state-icon{
+          color: var(--success-main, #{$color-v4-success-main});
+        }
+      }
+        &-warning{
+            .fu-state-icon{
+            color: var(--warning-main, #{$color-v4-warning-main});
+            }
+        }
+    }
+
+    .fu-title {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      @extend %font-v4-heading-4;
+      color: var(--text-primary, #{$color-v4-text-primary});
+    }
+
+    .fu-description{
+      @extend %font-v4-body-2;
+      color: var(--text-secondary, #{$color-v4-text-secondary});
+      padding: $contentPadding;
+    }
+    .fu-content{
+      padding: $contentPadding;
+      display: flex;
+      gap: 8px;
+      &:empty {
+        display: none;
+      }
+    }
+  }
+
+  .fu-fadein{
+    animation: fadein 0.5s;
+  }
+  .fu-top-fadein{
+    animation: top-fadein 0.5s;
+  }
+  .fu-bottom-fadein{
+    animation: bottom-fadein 0.5s;
+  }
+  .fu-fadeout{
+    animation: fadeout 0.5s;
+  }
+  .fu-slide-out-right{
+    animation: slide-out-right 0.8s;
+  }
+  .fu-slide-out-left{
+    animation: slide-out-left 0.8s;
+  }
+}

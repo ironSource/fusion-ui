@@ -113,6 +113,47 @@ All notable changes to this project will be documented in this file. See [commit
 * **isct-120:** remove @ironsource/storybook-addon-stackblitz package till it will be update ([ee02d1a](https://github.com/ironSource/fusion-ui/commit/ee02d1abe0347a3fb73ad714c4460193f5116fea))
 * **isct-120:** update gh actions for use node >=18.13 for angular 17 ([1ccf445](https://github.com/ironSource/fusion-ui/commit/1ccf4455f90905f82f65a298ca45a2c6e2ebbce7))
 
+### [6.5.2](https://github.com/ironSource/fusion-ui/compare/v6.5.1...v6.5.2) (2024-02-07)
+
+### [6.5.1](https://github.com/ironSource/fusion-ui/compare/v6.5.0...v6.5.1) (2024-02-05)
+
+
+### Bug Fixes
+
+* **isct-256:** fixed back button functionality on multiline header ([44aa176](https://github.com/ironSource/fusion-ui/commit/44aa1766c7b3a57fa9cce7b1f705fc402df2186d))
+
+## [6.5.0](https://github.com/ironSource/fusion-ui/compare/v6.5.0-rc.2...v6.5.0) (2024-02-04)
+
+## [6.5.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v6.5.0-rc.1...v6.5.0-rc.2) (2024-02-01)
+
+## [6.5.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v6.4.1-rc.7...v6.5.0-rc.1) (2024-01-31)
+
+## [6.5.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.4.1-rc.3...v6.5.0-rc.0) (2024-01-28)
+
+
+### Features
+
+* **isct-233:** add "quick action" for the sidebar menu item (v4) ([07b9f74](https://github.com/ironSource/fusion-ui/commit/07b9f7464753e9e335d67fa9a291f88b32c9033e))
+
+## [6.5.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.4.0...v6.5.0-rc.0) (2024-01-28)
+
+
+### Features
+
+* **isct-233:** add "quick action" for the sidebar menu item (v4) ([07b9f74](https://github.com/ironSource/fusion-ui/commit/07b9f7464753e9e335d67fa9a291f88b32c9033e))
+
+### [6.4.1-rc.5](https://github.com/ironSource/fusion-ui/compare/v6.4.1-rc.4...v6.4.1-rc.5) (2024-01-30)
+
+### [6.4.1-rc.4](https://github.com/ironSource/fusion-ui/compare/v6.4.1-rc.3...v6.4.1-rc.4) (2024-01-29)
+
+### [6.4.1-rc.3](https://github.com/ironSource/fusion-ui/compare/v6.4.1-rc.2...v6.4.1-rc.3) (2024-01-11)
+
+### [6.4.1-rc.2](https://github.com/ironSource/fusion-ui/compare/v6.4.1-rc.1...v6.4.1-rc.2) (2024-01-10)
+
+### [6.4.1-rc.1](https://github.com/ironSource/fusion-ui/compare/v6.4.1-rc.0...v6.4.1-rc.1) (2024-01-10)
+
+### [6.4.1-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.4.0...v6.4.1-rc.0) (2024-01-10)
+
 ## [6.4.0](https://github.com/ironSource/fusion-ui/compare/v6.4.0-rc.5...v6.4.0) (2024-01-03)
 
 ## [6.4.0-rc.5](https://github.com/ironSource/fusion-ui/compare/v6.4.0-rc.4...v6.4.0-rc.5) (2023-12-25)
