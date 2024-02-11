@@ -28,7 +28,13 @@ export default {
     },
     args: {
         data: {...CHART_DATA_MOCK},
-        type: ChartType.Line
+        type: ChartType.Line,
+        options: {
+            interaction: {
+                intersect: false,
+                mode: 'point'
+            }
+        }
     }
 } as Meta<ChartV4Component>;
 
@@ -38,7 +44,7 @@ export const Basic: Story = {
     render: args => ({
         props: args,
         template: `
-            <fusion-chart-wrapper [data]="data" [type]="type"></fusion-chart-wrapper>
+            <fusion-chart-wrapper [data]="data" [type]="type" [options]="options"></fusion-chart-wrapper>
         `
     })
 };
@@ -50,7 +56,14 @@ export const Stack: Story = {
             type: ChartType.StackedLine,
             options: {
                 interaction: {
-                    mode: 'index'
+                    intersect: false,
+                    mode: 'index',
+                    axis: 'x'
+                },
+                plugins: {
+                    tooltip: {
+                        position: 'average'
+                    }
                 }
             }
         },
@@ -67,7 +80,14 @@ export const WithTotal: Story = {
             type: ChartType.Line,
             options: {
                 interaction: {
-                    mode: 'index'
+                    intersect: false,
+                    mode: 'index',
+                    axis: 'x'
+                },
+                plugins: {
+                    tooltip: {
+                        position: 'average'
+                    }
                 }
             }
         },

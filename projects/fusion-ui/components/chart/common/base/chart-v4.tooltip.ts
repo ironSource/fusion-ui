@@ -256,15 +256,15 @@ const COUNTRIES = {
 const TOOLTIP_ELEMENT_STYLE = `
   min-width: 120px;
   background:white;
-  opacity:0;
+  opacity:1;
   pointer-events:none;
   position:absolute;
   padding: 8px;
   box-shadow: 0px 4px 8px -2px rgba(16, 24, 40, 0.12);
   border: 1px solid #e4e4e4;
   border-radius: 8px;
-  transform:translate(-50%, 0);
-  transition:opacity .1s ease;
+  transform: translate(-50%, 0);
+  transition: all .1s ease;
 `;
 
 const TH_ELEMENT_STYLE = `
@@ -463,23 +463,18 @@ export function externalV4TooltipHandler(context) {
     }
 
     const {offsetLeft: positionX, offsetTop: positionY} = chart.canvas;
-
     const maxBottomPoint = chart.canvas.clientHeight + 90;
     const tooltipYPosition = tooltip.caretY + tooltipEl.clientHeight;
 
     const yPositionAdjustment = maxBottomPoint < tooltipYPosition ? -15 : 0;
 
-    tooltipEl.style.left = positionX + tooltip.caretX + 'px';
+    const tooltipOffset = positionX + 30 + tooltip.width / 2;
+    const isOnTheRight = chart.width - (tooltip.caretX + tooltipOffset) < tooltip.width / 2;
+    const tooltipLeft = tooltip.caretX + (positionX + 30 + tooltip.width / 2) * (isOnTheRight ? -1 : 1);
+
+    tooltipEl.style.opacity = 1;
+    tooltipEl.style.left = tooltipLeft + 'px';
     tooltipEl.style.top = positionY + tooltip.caretY + yPositionAdjustment + 'px';
     tooltipEl.style.font = tooltip.options.bodyFont.string;
     tooltipEl.style.padding = tooltip.options.padding + 'px ' + tooltip.options.padding + 'px';
-
-    setTimeout(() => {
-        const tooltipRect = tooltipEl.getBoundingClientRect();
-        const canvasRect = chart.canvas.getBoundingClientRect();
-        const isLeft = canvasRect.right - 10 < tooltipRect.right;
-        const tooltipLeftOffset = tooltipRect.width / 2 + 5;
-        tooltipEl.style.left = positionX + (isLeft ? -1 : 1) * tooltipLeftOffset + tooltip.caretX + 'px';
-        tooltipEl.style.opacity = 1;
-    }, 50);
 }

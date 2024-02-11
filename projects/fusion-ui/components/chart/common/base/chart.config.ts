@@ -244,7 +244,7 @@ export const CHART_CONFIGURATIONS: any = {
         maintainAspectRatio: false, // Maintain the original canvas aspect ratio (width / height) when resizing.
         resizeDelay: 0, // Delay the resize update by give amount of milliseconds. This can ease the resize process by debouncing update of the elements.
         interaction: {
-            mode: 'nearest'
+            mode: 'point'
         },
         plugins: {
             legend: {
@@ -274,10 +274,11 @@ export const CHART_CONFIGURATIONS: any = {
             },
             point: {
                 radius: 1,
-                hitRadius: 5,
+                hitRadius: 8,
                 borderWidth: 0,
-                hoverRadius: 5,
-                hoverBorderWidth: 3
+                hoverRadius: 4,
+                hoverBorderWidth: 2,
+                hoverBorderColor: '#ffffff'
             }
         },
         scales: {
@@ -306,7 +307,9 @@ export const CHART_CONFIGURATIONS: any = {
                 grid: {
                     lineWidth: 1,
                     color: '#E4E4E4',
-                    display: true
+                    display: true,
+                    tickLength: 8,
+                    drawTicks: false
                 }
             }
         }

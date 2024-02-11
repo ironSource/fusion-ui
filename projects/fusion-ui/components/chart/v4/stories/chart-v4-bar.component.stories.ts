@@ -59,10 +59,15 @@ export const Group: Story = {
     render: args => ({
         props: {
             data: {...CHART_BAR_GROUPED_DATA_MOCK},
-            type: ChartType.Bar
+            type: ChartType.Bar,
+            options: {
+                interaction: {
+                    mode: 'index'
+                }
+            }
         },
         template: `
-            <fusion-chart-wrapper [data]="data" [type]="type"></fusion-chart-wrapper>
+            <fusion-chart-wrapper [data]="data" [type]="type" [options]="options"></fusion-chart-wrapper>
         `
     })
 };

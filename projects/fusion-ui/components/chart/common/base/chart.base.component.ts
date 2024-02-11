@@ -433,6 +433,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         }
         this.calcYAxes(options.scales.y);
         if (this.isStacked) {
+            options.scales.y.stacked = true;
             this.chartData.datasets.forEach(dataset => {
                 if (dataset.label === 'Sum') {
                     dataset['fill'] = false;
@@ -460,8 +461,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
                 axis: 'xy'
             };
             options.plugins.tooltip = {
-                ...options.plugins.tooltip,
-                position: 'average'
+                ...options.plugins.tooltip
             };
         }
     }
@@ -538,7 +538,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         } else {
             const roundTo = Math.pow(10, parseInt(max.toString(), 10).toString().length - 1);
             const maxVal = Math.ceil((max / roundTo) * 10) * (roundTo / 10);
-            stepSize = parseFloat(((maxVal - min) / tickCount).toFixed(2));
+            stepSize = parseFloat((((maxVal - min) / tickCount) * (this.isStacked ? 2 : 1)).toFixed(2));
             max = stepSize * tickCount;
             formatCallbackObj = {callback: value => this.getFormatted(value, 'shortString')};
         }
