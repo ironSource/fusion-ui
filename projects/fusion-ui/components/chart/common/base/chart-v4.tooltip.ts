@@ -256,7 +256,7 @@ const COUNTRIES = {
 const TOOLTIP_ELEMENT_STYLE = `
   min-width: 120px;
   background:white;
-  opacity:1;
+  opacity:0;
   pointer-events:none;
   position:absolute;
   padding: 8px;
@@ -264,7 +264,7 @@ const TOOLTIP_ELEMENT_STYLE = `
   border: 1px solid #e4e4e4;
   border-radius: 8px;
   transform:translate(-50%, 0);
-  transition:all .1s ease;
+  transition:opacity .1s ease;
 `;
 
 const TH_ELEMENT_STYLE = `
@@ -469,9 +469,17 @@ export function externalV4TooltipHandler(context) {
 
     const yPositionAdjustment = maxBottomPoint < tooltipYPosition ? -15 : 0;
 
-    tooltipEl.style.opacity = 1;
     tooltipEl.style.left = positionX + tooltip.caretX + 'px';
     tooltipEl.style.top = positionY + tooltip.caretY + yPositionAdjustment + 'px';
     tooltipEl.style.font = tooltip.options.bodyFont.string;
     tooltipEl.style.padding = tooltip.options.padding + 'px ' + tooltip.options.padding + 'px';
+
+    setTimeout(() => {
+        const tooltipRect = tooltipEl.getBoundingClientRect();
+        const canvasRect = chart.canvas.getBoundingClientRect();
+        const isLeft = canvasRect.right - 10 < tooltipRect.right;
+        const tooltipLeftOffset = tooltipRect.width / 2 + 5;
+        tooltipEl.style.left = positionX + (isLeft ? -1 : 1) * tooltipLeftOffset + tooltip.caretX + 'px';
+        tooltipEl.style.opacity = 1;
+    }, 50);
 }
