@@ -25,5 +25,7 @@ interface ChartBarOptions {
 }
 
 interface ChartPieOptions {
+    borderWidth?: number;
+    hoverBorderWidth?: number;
     backgroundColor: string[];
 }

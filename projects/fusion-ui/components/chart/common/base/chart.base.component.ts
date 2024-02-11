@@ -314,6 +314,9 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         const piePalette: string[] = this.colorsService.getPieColorsPalette(this.componentVersion);
         // add colors and labels
         pieOptions.backgroundColor = [];
+        pieOptions.hoverBackgroundColor = [];
+        pieOptions.hoverBorderWidth = pieOptions.hoverBorderWidth;
+        pieOptions.borderWidth = pieOptions.borderWidth;
         this.chartData.datasets = this.chartData.datasets.map(item => {
             for (let i = 0; i < item.data.length; i++) {
                 let color;
@@ -321,9 +324,13 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
                     color = (this._data.data as FusionChartPieDataItem[]).find(part => part.displayText === this.chartData.labels[i]).color;
                 }
                 if (!color) {
-                    color = piePalette[i] ? piePalette[i] : piePalette[piePalette.length - 1];
+                    if (this.componentVersion === 4) {
+                        color = this.colorsService.toRgba(piePalette[i], datasetOptions.fillOpacity);
+                        pieOptions.hoverBackgroundColor.push(this.colorsService.toRgba(piePalette[i], 100));
+                    } else {
+                        color = piePalette[i] ? piePalette[i] : piePalette[piePalette.length - 1];
+                    }
                 }
-
                 pieOptions.backgroundColor.push(color);
             }
             return {...item, ...pieOptions};
@@ -506,6 +513,9 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             data: this.chartData,
             options: this.chartOptions
         };
+
+        // console.log('opts', opts);
+
         return new Chart(ctx, opts);
     }
 
