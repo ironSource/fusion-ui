@@ -49,7 +49,7 @@ export class LayoutHeaderComponent {
         return this._headerContent?.bottomRowContent?.teleportElements ?? [];
     }
     get isDrilldown(): boolean {
-        return this.isMultiline && (this._headerContent?.drilldown ?? false);
+        return this.isMultiline && !!this._headerContent?.hasBackButton;
     }
 
     private _headerContent: HeaderContent;

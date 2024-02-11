@@ -8,8 +8,7 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {LayoutComponent} from '../layout.component';
 import {
     LAYOUT_HEADER_MULTILINE_CONTENT_MOCK,
-    NAVIGATION_MENU_HOME_MOCK,
-    NAVIGATION_MENU_MOCK
+    NAVIGATION_MENU_HOME_MOCK
 } from '@ironsource/fusion-ui/components/navigation-menu/v4/stories/navigation-menu.mock';
 import {LayoutStoryWrapperComponent} from './layout-story-wrapper.component';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button';
@@ -327,7 +326,6 @@ export const Drilldown: LayoutV4Story = {
             ...args,
             headerContent: {
                 ...LAYOUT_HEADER_MULTILINE_CONTENT_MOCK,
-                drilldown: true,
                 hasBackButton: true
             },
             teleportElements: [{id: 'fuHeaderDrilldownTeleport'}, {id: 'fuHeaderTeleport', isOnRight: true}]

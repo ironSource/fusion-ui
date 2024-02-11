@@ -43,7 +43,7 @@ export default {
             options: ['default', 'primary', 'danger']
         },
         size: {
-            options: ['small', 'medium', 'large', 'extraLarge']
+            options: ['extraSmall', 'small', 'medium', 'large', 'extraLarge']
         },
         variant: {
             options: ['default', 'outlined']
@@ -89,10 +89,11 @@ export const Variants = {
 const ButtonSizesTemplate: StoryFn<IconButtonComponent> = (args: IconButtonComponent) => ({
     props: args,
     template: `<div style="display: flex; gap: 14px; align-items: center">
-    <fusion-icon-button [fusionTooltip]="tooltipText" [color]="color" [iconName]="iconName" [variant]="variant" [disabled]="disabled" [loading]="loading" size="small"></fusion-icon-button>
-    <fusion-icon-button [fusionTooltip]="tooltipText" [color]="color" [iconName]="iconName" [variant]="variant" [disabled]="disabled" [loading]="loading"></fusion-icon-button>
-    <fusion-icon-button [fusionTooltip]="tooltipText" [color]="color" [iconName]="iconName" [variant]="variant" [disabled]="disabled" [loading]="loading" size="large"></fusion-icon-button>
-    <fusion-icon-button [fusionTooltip]="tooltipText" [color]="color" [iconName]="iconName" [variant]="variant" [disabled]="disabled" [loading]="loading" size="extraLarge"></fusion-icon-button>
+    <fusion-icon-button fusionTooltip="extraSmall" [color]="color" [iconName]="iconName" [variant]="variant" [disabled]="disabled" [loading]="loading" size="extraSmall"></fusion-icon-button>
+    <fusion-icon-button fusionTooltip="small" [color]="color" [iconName]="iconName" [variant]="variant" [disabled]="disabled" [loading]="loading" size="small"></fusion-icon-button>
+    <fusion-icon-button fusionTooltip="medium (default)" [color]="color" [iconName]="iconName" [variant]="variant" [disabled]="disabled" [loading]="loading"></fusion-icon-button>
+    <fusion-icon-button fusionTooltip="large" [color]="color" [iconName]="iconName" [variant]="variant" [disabled]="disabled" [loading]="loading" size="large"></fusion-icon-button>
+    <fusion-icon-button fusionTooltip="extraLarge" [color]="color" [iconName]="iconName" [variant]="variant" [disabled]="disabled" [loading]="loading" size="extraLarge"></fusion-icon-button>
 </div>`
 });
 

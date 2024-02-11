@@ -2,10 +2,10 @@ import {componentWrapperDecorator, Meta, StoryObj} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {dedent} from 'ts-dedent';
 import {CommonModule} from '@angular/common';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DropdownComponent} from '@ironsource/fusion-ui/components/dropdown/v4';
 import {MultiDropdownComponent} from '@ironsource/fusion-ui/components/multi-dropdown/v4';
 import {ChipFilterButtonComponent, ChipFilterComponent} from '@ironsource/fusion-ui/components/chip-filter/v4';
@@ -18,6 +18,31 @@ import {
     PLATFORM_OPTIONS,
     STATUS_OPTIONS
 } from './chip-filters-v4.stories.mock';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
+import {CountryCode} from '@ironsource/fusion-ui/components/flag/v4';
+import {MOCK_OPTIONS_COUNTRIES, TOP_COUNTRIES} from '@ironsource/fusion-ui/storybook-foundations/mocking/countrues-mock';
+
+const groupedCountriesOptions: DropdownOption[] = ((allCountries: any[]): DropdownOption[] => {
+    const groupedCountries = [
+        {
+            id: 'topCountries',
+            displayText: 'Top Countries',
+            isGroup: true,
+            childOptions: []
+        },
+        {
+            id: 'restCountries',
+            displayText: 'Rest of the world',
+            isGroup: true,
+            childOptions: []
+        }
+    ];
+    allCountries.forEach(country => {
+        country.flag = country.flag.toLowerCase() as CountryCode;
+        groupedCountries[TOP_COUNTRIES.includes(country.id) ? 0 : 1].childOptions.push(country);
+    });
+    return groupedCountries;
+})(MOCK_OPTIONS_COUNTRIES);
 
 const basicTemplate = `
 <fusion-chip-filters>
@@ -29,6 +54,7 @@ const basicTemplate = `
                     [formControl]="fcChip1"
                     [options]="optionsChip1"
                     selectAllLabel="Select all"
+                    [search]="true"
                 ></fusion-multi-dropdown>
             </div>
         </fusion-chip-filter>
@@ -74,7 +100,19 @@ const basicTemplate = `
                     [options]="optionsChip5">
                 </fusion-dropdown>
             </div>
-        </fusion-chip-filter>        
+        </fusion-chip-filter>
+        <fusion-chip-filter [configuration]="configChip6">
+            <div class="filter-element">
+                <fusion-multi-dropdown
+                    [placeholderPrefix]="placeholderPrefixChip6"
+                    [placeholder]="placeholderChip6"
+                    [formControl]="fcChip6"
+                    [options]="optionsChip6"
+                    selectAllLabel="Select all"
+                    [search]="true"
+                ></fusion-multi-dropdown>
+            </div>
+        </fusion-chip-filter>                        
     </fusion-chip-filters>
 `;
 const datePickerTemplate = `
@@ -241,7 +279,13 @@ export const Default: Story = {
             configChip5: {id: 5, mode: 'static', close: true},
             optionsChip5: CATEGORY_OPTIONS,
             placeholderPrefixChip5: 'Category',
-            placeholderChip5: ''
+            placeholderChip5: '',
+
+            fcChip6: new FormControl(),
+            configChip6: {id: 5, mode: 'static', close: true},
+            optionsChip6: groupedCountriesOptions,
+            placeholderPrefixChip6: 'Country',
+            placeholderChip6: ''
         },
         template: basicTemplate
     })
