@@ -7,7 +7,7 @@ import {CHART_BAR_DATA_MOCK, CHART_BAR_GROUPED_DATA_MOCK, CHART_DATA_MOCK} from 
 import {ChartV4WrapperComponent} from './chart-v4-story-wrapper.component';
 
 export default {
-    title: 'V4/Components/Charts/LineChart',
+    title: 'V4/Components/DataVisualization/Charts/LineChart',
     component: ChartV4Component,
     decorators: [
         moduleMetadata({
@@ -76,24 +76,3 @@ export const WithTotal: Story = {
         `
     })
 };
-
-// export const Group: Story = {
-//     render: args => ({
-//         props: {
-//             data: {...CHART_BAR_GROUPED_DATA_MOCK},
-//             type: ChartType.Bar
-//         },
-//         template: `
-//             <fusion-chart-wrapper [data]="data" [type]="type"></fusion-chart-wrapper>
-//         `
-//     })
-// };
-//
-// export const NoDataToDisplay: Story = {
-//     render: args => ({
-//         props: {},
-//         template: `
-//             <fusion-chart-wrapper [data]="data" [type]="type"></fusion-chart-wrapper>
-//         `
-//     })
-// };

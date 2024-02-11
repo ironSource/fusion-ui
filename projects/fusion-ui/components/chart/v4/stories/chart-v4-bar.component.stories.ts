@@ -7,7 +7,7 @@ import {CHART_BAR_DATA_MOCK, CHART_BAR_GROUPED_DATA_MOCK} from './chart-v4.compo
 import {ChartV4WrapperComponent} from './chart-v4-story-wrapper.component';
 
 export default {
-    title: 'V4/Components/Charts/BarChart',
+    title: 'V4/Components/DataVisualization/Charts/BarChart',
     component: ChartV4Component,
     decorators: [
         moduleMetadata({

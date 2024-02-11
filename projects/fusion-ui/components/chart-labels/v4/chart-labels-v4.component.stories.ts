@@ -33,7 +33,7 @@ const CART_LABELS_ICONS_MOCK: ChartLabel[] = [
 ];
 
 export default {
-    title: 'V4/Components/Charts/LegendItems',
+    title: 'V4/Components/DataVisualization/LegendItems',
     component: ChartLabelsV4Component,
     decorators: [
         moduleMetadata({
