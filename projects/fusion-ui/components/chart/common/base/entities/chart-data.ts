@@ -6,6 +6,7 @@ export interface ChartData {
 }
 
 export interface FusionChartPieData {
+    displayFormat?: string;
     label?: string;
     data: FusionChartPie | FusionChartPieDataItem[];
 }

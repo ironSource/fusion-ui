@@ -150,7 +150,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     }
 
     private setChart(data, type): void {
-        this.yAxesFormat = this.getDisplayFormat(data);
+        this.yAxesFormat = this.getDisplayFormat(data) ?? data.displayFormat;
         this.chartData = this.dataParseService.parseChartData(data, type, this.isStacked);
         this.chartOptions = this.getChartOptions();
 
@@ -488,7 +488,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     }
     private getTooltipLabel(context) {
         const label = context.dataset.label ?? context.label ?? '';
-        const val = context.parsed.y ?? context.formattedValue;
+        const val = context.parsed.y ?? context?.formattedValue?.replace(/,/g, '');
         const format = context.dataset.displayFormat ?? this.yAxesFormat;
 
         return ` ${label}: ${!!format ? this.getFormatted(val, format) : val}`;
@@ -506,9 +506,6 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             data: this.chartData,
             options: this.chartOptions
         };
-
-        console.log('opts', opts);
-
         return new Chart(ctx, opts);
     }
 

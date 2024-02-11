@@ -44,6 +44,7 @@ export const CHART_DATA_MOCK: ChartData = {
 };
 
 export const CHART_PIE_DATA_MOCK: FusionChartPieData = {
+    displayFormat: 'shortCurrency',
     data: {
         ironSource: 8781958,
         UnityAds: 14345876
