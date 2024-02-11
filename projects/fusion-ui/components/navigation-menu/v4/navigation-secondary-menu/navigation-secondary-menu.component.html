@@ -19,7 +19,8 @@
         <!--endregion menu first level item-->
         <fusion-icon-button *ngIf="item.additionalAction as additionalAction"
                             class="fu-secondary-menu-quick-action"
-                            size="extraSmall" iconName="ph/bold/plus"
+                            size="extraSmall"
+                            [iconName]="additionalAction.icon ?? 'ph/bold/plus'"
                             [fusionTooltip]="additionalAction.name"
                             [configuration]="quickActionTooltipConfiguration"
                             (click)="onMenuItemClicked($event, additionalAction)"

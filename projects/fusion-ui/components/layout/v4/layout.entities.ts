@@ -28,5 +28,4 @@ export interface HeaderContent {
     multiline?: boolean;
     topRowContent?: HeaderAdditionalRowContent;
     bottomRowContent?: HeaderAdditionalRowContent;
-    drilldown?: boolean;
 }
