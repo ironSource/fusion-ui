@@ -20,7 +20,7 @@ import {ChartV4Component} from '../chart-v4.component';
                 (afterDatasetInit)="onChartInit($event)"
             ></fusion-chart>
         </div>
-        <div class="fusion-chart-labels-wrapper" *ngIf="data && (chartDataLabels$ | async).length">
+        <div class="fusion-chart-labels-wrapper" *ngIf="data && type !== 'doughnut'">
             <fusion-chart-labels [labels]="chartDataLabels$ | async" (labelHover)="labelHovered($event)"></fusion-chart-labels>
         </div>
         <div *ngIf="!data" class="fu-empty-state">
