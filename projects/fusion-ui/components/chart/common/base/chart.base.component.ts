@@ -311,7 +311,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
 
     private addDatasetPieStyleOptions(datasetOptions) {
         const pieOptions = datasetOptions.pieOptions;
-        const piePalette: string[] = this.colorsService.getPieColorsPalette();
+        const piePalette: string[] = this.colorsService.getPieColorsPalette(this.componentVersion);
         // add colors and labels
         pieOptions.backgroundColor = [];
         this.chartData.datasets = this.chartData.datasets.map(item => {
@@ -506,6 +506,9 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             data: this.chartData,
             options: this.chartOptions
         };
+
+        console.log('opts', opts);
+
         return new Chart(ctx, opts);
     }
 

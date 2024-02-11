@@ -1,4 +1,4 @@
-import {ChartData} from '@ironsource/fusion-ui/components/chart/common/base';
+import {ChartData, FusionChartPieData} from '@ironsource/fusion-ui/components/chart/common/base';
 
 export const CHART_BAR_DATA_MOCK: ChartData = {
     data: {
@@ -41,4 +41,11 @@ export const CHART_DATA_MOCK: ChartData = {
         {id: 9930, displayName: 'Unity Ads', displayFormat: 'shortCurrency'},
         {id: 9928, displayName: 'ironSource Ads', displayFormat: 'shortCurrency'}
     ]
+};
+
+export const CHART_PIE_DATA_MOCK: FusionChartPieData = {
+    data: {
+        ironSource: 8781958,
+        UnityAds: 14345876
+    }
 };
