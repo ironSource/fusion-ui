@@ -62,7 +62,14 @@ export const Group: Story = {
             type: ChartType.Bar,
             options: {
                 interaction: {
-                    mode: 'index'
+                    intersect: false,
+                    mode: 'index',
+                    axis: 'x'
+                },
+                plugins: {
+                    tooltip: {
+                        position: 'average'
+                    }
                 }
             }
         },
