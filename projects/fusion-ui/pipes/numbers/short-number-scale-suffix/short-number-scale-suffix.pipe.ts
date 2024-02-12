@@ -14,9 +14,6 @@ import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
  */
 export class ShortNumberScaleSuffixPipe implements PipeTransform {
     transform(value: number, options?: any): string {
-        if (value < 10) {
-            return value.toFixed(2);
-        }
         const i = value === 0 ? 0 : Math.floor(Math.log(value) / Math.log(1000));
         const bigPart = value / Math.pow(1000, i);
         const noSpaceDelimiter = !isNullOrUndefined(options) && !!options.noSeparateBySpace;
