@@ -145,7 +145,6 @@ export class ChartDataService {
         } else {
             Object.keys(data.data)
                 .map(key => [key, data.data[key]] as any)
-                .sort((a, b) => b[1] - a[1])
                 .forEach(item => {
                     legends.push(item[0]);
                     dataset.push(item[1]);
