@@ -324,14 +324,14 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
                     color = (this._data.data as FusionChartPieDataItem[]).find(part => part.displayText === this.chartData.labels[i]).color;
                 }
                 if (!color) {
-                    if (this.componentVersion === 4) {
-                        color = this.colorsService.toRgba(piePalette[i], datasetOptions.fillOpacity);
-                        pieOptions.hoverBackgroundColor.push(this.colorsService.toRgba(piePalette[i], 100));
-                    } else {
-                        color = piePalette[i] ? piePalette[i] : piePalette[piePalette.length - 1];
-                    }
+                    color = piePalette[i] ? piePalette[i] : piePalette[piePalette.length - 1];
                 }
-                pieOptions.backgroundColor.push(color);
+                if (this.componentVersion === 4) {
+                    pieOptions.backgroundColor.push(this.colorsService.toRgba(color, datasetOptions.fillOpacity));
+                    pieOptions.hoverBackgroundColor.push(this.colorsService.toRgba(color, 100));
+                } else {
+                    pieOptions.backgroundColor.push(color);
+                }
             }
             return {...item, ...pieOptions};
         });

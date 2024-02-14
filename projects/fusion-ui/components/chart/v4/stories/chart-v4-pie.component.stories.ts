@@ -3,7 +3,7 @@ import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {ChartV4Component} from '../chart-v4.component';
 import {ChartType} from '@ironsource/fusion-ui/components/chart/common/base';
-import {CHART_PIE_DATA_MOCK} from './chart-v4.component.mock';
+import {CHART_PIE_CUSTOM_COLORS_DATA_MOCK, CHART_PIE_DATA_MOCK} from './chart-v4.component.mock';
 import {ChartV4WrapperComponent} from './chart-v4-story-wrapper.component';
 
 export default {
@@ -43,3 +43,19 @@ export const Basic: Story = {
         `
     })
 };
+
+/*export const WithCustomColor: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            data: {...CHART_PIE_CUSTOM_COLORS_DATA_MOCK},
+        },
+        template: `
+           <fusion-chart style="width:100%;height:100%;"
+                [data]="data"
+                [type]="type"
+                [options]="options"
+            ></fusion-chart>
+        `
+    })
+};*/

@@ -79,6 +79,30 @@ export const Group: Story = {
     })
 };
 
+/*export const WithCustomColors: Story = {
+    render: args => ({
+        props: {
+            data: {...CHART_BAR_GROUPED_DATA_MOCK},
+            type: ChartType.Bar,
+            options: {
+                interaction: {
+                    intersect: false,
+                    mode: 'index',
+                    axis: 'x'
+                },
+                plugins: {
+                    tooltip: {
+                        position: 'average'
+                    }
+                }
+            }
+        },
+        template: `
+            <fusion-chart-wrapper [data]="data" [type]="type" [options]="options"></fusion-chart-wrapper>
+        `
+    })
+};*/
+
 export const NoDataToDisplay: Story = {
     render: args => ({
         props: {},
