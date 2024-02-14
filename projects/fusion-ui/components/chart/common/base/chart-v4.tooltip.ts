@@ -468,8 +468,9 @@ export function externalV4TooltipHandler(context) {
 
     const yPositionAdjustment = maxBottomPoint < tooltipYPosition ? -15 : 0;
 
+    const chartRect = chart.canvas.getBoundingClientRect();
     const tooltipOffset = positionX + 30 + tooltip.width / 2;
-    const isOnTheRight = chart.width - (tooltip.caretX + tooltipOffset) < tooltip.width / 2;
+    const isOnTheRight = chart.width - (tooltip.caretX + tooltipOffset) < tooltip.width / 2 && chartRect.left > tooltip.width / 2;
     const tooltipLeft = tooltip.caretX + (positionX + 30 + tooltip.width / 2) * (isOnTheRight ? -1 : 1);
 
     tooltipEl.style.opacity = 1;
