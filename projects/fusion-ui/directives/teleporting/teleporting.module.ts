@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {TeleportingDirective} from '@ironsource/fusion-ui/directives/teleporting/teleporting.directive';
+import {TeleportingDirective} from './teleporting.directive';
 
 @NgModule({
     declarations: [TeleportingDirective],
