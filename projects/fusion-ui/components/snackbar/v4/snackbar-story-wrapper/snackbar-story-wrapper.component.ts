@@ -1,14 +1,14 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
-import {TeleportingDirective} from '@ironsource/fusion-ui/directives/teleporting';
+import {TeleportingModule} from '@ironsource/fusion-ui/directives/teleporting';
 import {SnackbarComponent, SnackbarLocation, SnackbarType} from '../';
 import {SnackbarService} from '../snackbar.service';
 
 @Component({
     selector: 'fusion-snackbar-story-wrapper',
     standalone: true,
-    imports: [CommonModule, TeleportingDirective, ButtonComponent, SnackbarComponent],
+    imports: [CommonModule, TeleportingModule, ButtonComponent, SnackbarComponent],
     providers: [SnackbarService],
     templateUrl: './snackbar-story-wrapper.component.html',
     styleUrls: ['./snackbar-story-wrapper.component.scss'],

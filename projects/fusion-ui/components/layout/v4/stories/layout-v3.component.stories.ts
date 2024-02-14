@@ -15,7 +15,7 @@ import {
 } from '@ironsource/fusion-ui/components/navigation-menu/v4/stories/navigation-menu.mock';
 import {LayoutStoryWrapperComponent} from './layout-story-wrapper.component';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button';
-import {TeleportingDirective} from '@ironsource/fusion-ui/directives/teleporting';
+import {TeleportingModule} from '@ironsource/fusion-ui/directives/teleporting';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TopFilterIncludeExcludeComponent} from '@ironsource/fusion-ui/components/top-filter-include-exclude';
 import {MOK_APPLICATIONS_ONE_LINE_OPTIONS} from '@ironsource/fusion-ui/components/dropdown/v3/stories/dropdown.mock';
@@ -35,7 +35,7 @@ const meta: Meta<LayoutStoryWrapperComponent> = {
                 IconModule,
                 LayoutStoryWrapperComponent,
                 ButtonModule,
-                TeleportingDirective,
+                TeleportingModule,
                 TopFilterIncludeExcludeComponent
             ]
         })
@@ -385,7 +385,7 @@ export const WithHeaderTeleportElementsAndDynamicComponent = {
 import { Component } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from '@ironsource/fusion-ui/components/button';
-import { TeleportingDirective } from '@ironsource/fusion-ui/directives/teleporting';
+import { TeleportingModule } from '@ironsource/fusion-ui/directives/teleporting';
 import { LayoutComponent } from '@ironsource/fusion-ui/components/layout/v4';
 import { MenuItem } from '@ironsource/fusion-ui/components/menu/common/base';
 import {
@@ -459,7 +459,7 @@ import { DropdownOption } from '@ironsource/fusion-ui/components/dropdown-option
     ReactiveFormsModule,
     LayoutComponent,
     ButtonModule,
-    TeleportingDirective,
+    TeleportingModule,
   ],
 })
 export class FusionStoryWrapperComponent {
