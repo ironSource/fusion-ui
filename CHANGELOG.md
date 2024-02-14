@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [7.0.0-rc.9](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.8...v7.0.0-rc.9) (2024-02-14)
+
+
+### Features
+
+* **ISCT-120:** change teleporting directive to expose through module ([6a38163](https://github.com/ironSource/fusion-ui/commit/6a381634f5de2228c38f99e7e2555e2e33cb7368))
+
 ## [7.0.0-rc.8](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.7...v7.0.0-rc.8) (2024-02-14)
 
 ## [7.0.0-rc.7](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.6...v7.0.0-rc.7) (2024-02-14)
