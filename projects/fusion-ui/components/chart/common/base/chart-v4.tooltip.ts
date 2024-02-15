@@ -473,6 +473,8 @@ export function externalV4TooltipHandler(context) {
     const isOnTheRight = chart.width - (tooltip.caretX + tooltipOffset) < tooltip.width / 2 && chartRect.left > tooltip.width / 2;
     const tooltipLeft = tooltip.caretX + (positionX + 30 + tooltip.width / 2) * (isOnTheRight ? -1 : 1);
 
+    console.log('>>', tooltipLeft, isOnTheRight);
+
     tooltipEl.style.opacity = 1;
     tooltipEl.style.left = tooltipLeft + 'px';
     tooltipEl.style.top = positionY + tooltip.caretY + yPositionAdjustment + 'px';
