@@ -470,10 +470,11 @@ export function externalV4TooltipHandler(context) {
 
     const chartRect = chart.canvas.getBoundingClientRect();
     const tooltipOffset = positionX + 30 + tooltip.width / 2;
-    const isOnTheRight = chart.width - (tooltip.caretX + tooltipOffset) < tooltip.width / 2 && chartRect.left > tooltip.width / 2;
+    const isOnTheRight =
+        chart.width - (tooltip.caretX + tooltipOffset) < tooltip.width / 2 &&
+        chartRect.left > tooltip.width / 2 &&
+        chart.config?._config?.type !== 'doughnut';
     const tooltipLeft = tooltip.caretX + (positionX + 30 + tooltip.width / 2) * (isOnTheRight ? -1 : 1);
-
-    console.log('>>', tooltipLeft, isOnTheRight);
 
     tooltipEl.style.opacity = 1;
     tooltipEl.style.left = tooltipLeft + 'px';
