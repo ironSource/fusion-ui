@@ -262,54 +262,78 @@ const TOOLTIP_ELEMENT_STYLE = `
   padding: 8px;
   box-shadow: 0px 4px 8px -2px rgba(16, 24, 40, 0.12);
   border: 1px solid #e4e4e4;
-  border-radius: 8px;
+  border-radius: 6px;
   transform: translate(-50%, 0);
   transition: all .1s ease;
 `;
 
-const TH_ELEMENT_STYLE = `
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  border-width:0;
-  overflow: hidden;
-  color: #202020;
-  text-overflow: ellipsis;
-  text-align:left;
-  line-height: 16px;
-  font-size:13px;
-  font-weight: 500;
-  font-family:Inter;
+const WRAPPER_STYLE = `
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px
+`;
+
+const HEADER_ROW_STYLE = `
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    overflow: hidden;
+    color: var(--text-primary, #202020);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+`;
+
+const BODY_ROWS_WRAPPER = `
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+`;
+
+const BODY_ROW_STYLE = `
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.039px;
 `;
 
 const ROUND_INDICATOR_ELEMENT_STYLE = `
-  height:12px;
-  width:12px;
-  display:block;
-  border-radius:2px
+    height:12px;
+    width:12px;
+    display:block;
+    border-radius:2px
 `;
 
-const TR_ELEMENT_STYLE = `
-  background-color:inherit;
-  border-width:0;
-  display:block;
-  font-size:13px;
-  color:#646464;
-  font-weight: 400;
-  font-family:Inter;  
-  white-space: nowrap;
-  height:20px;
+const BODY_ROW_LABEL_STYLE = `
+    display: block;
+    flex: 1;
+    overflow: hidden;
+    color: var(--text-secondary, #646464);
+    text-overflow: ellipsis;
+    white-space: nowrap;
 `;
 
-function transform(value: number): string {
-    if (value < 10) {
-        return value.toFixed(2);
-    }
-    const i = value === 0 ? 0 : Math.floor(Math.log(value) / Math.log(1000));
-    const bigPart = value / Math.pow(1000, i);
+const BODY_ROW_VALUE_STYLE = `
+margin-left: auto;
+`;
 
-    return `${bigPart.toFixed(Number.isInteger(bigPart) ? 0 : 1)}${['', 'K', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y'][i]}`.trim();
-}
+const FOOTER_ROW_STYLE = `
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    color: var(--text-primary, #202020);
+    display: flex;
+    gap: 4px;
+`;
 
 function getOrCreateTooltip(chart) {
     let tooltipEl = chart.canvas.parentNode.querySelector('div');
@@ -318,8 +342,9 @@ function getOrCreateTooltip(chart) {
         tooltipEl = document.createElement('div');
         tooltipEl.style.cssText = TOOLTIP_ELEMENT_STYLE;
 
-        const table = document.createElement('table');
-        table.style.margin = '0px';
+        const table = document.createElement('div');
+        table.style.cssText = WRAPPER_STYLE;
+        table.classList.add('fu-chart-tooltip-wrapper');
 
         tooltipEl.appendChild(table);
         chart.canvas.parentNode.appendChild(tooltipEl);
@@ -329,28 +354,21 @@ function getOrCreateTooltip(chart) {
 }
 
 function generateTooltipHeaderElement(title) {
-    const tr = document.createElement('tr');
-    const th = document.createElement('th');
+    const headerRowEl = document.createElement('div');
+    headerRowEl.style.cssText = HEADER_ROW_STYLE;
     const countryCode = COUNTRIES[title];
-
     if (countryCode) {
         const flagImage = document.createElement('img');
         flagImage.style.width = '16px';
         flagImage.style.height = '16px';
         flagImage.style.borderRadius = '50%';
         flagImage.src = FLAG_BASE_URL + countryCode + '.svg';
-        th.appendChild(flagImage);
+        headerRowEl.appendChild(flagImage);
+    } else {
+        const text = document.createTextNode(title);
+        headerRowEl.appendChild(text);
     }
-
-    const text = document.createTextNode(title);
-
-    tr.style.borderWidth = '0';
-    th.style.cssText = TH_ELEMENT_STYLE;
-    th.colSpan = 2;
-
-    th.appendChild(text);
-    tr.appendChild(th);
-    return tr;
+    return headerRowEl;
 }
 
 function generateTooltipFooterElement(footer) {
@@ -358,67 +376,39 @@ function generateTooltipFooterElement(footer) {
     const label = parsedBody[0];
     const val = parsedBody[1];
 
-    const tr = document.createElement('tr');
-    const th = document.createElement('th');
-    const text = document.createTextNode(footer);
-
-    th.style.cssText = TH_ELEMENT_STYLE;
-    th.style.paddingTop = '8px';
-    th.colSpan = 2;
-
-    th.innerHTML = `<span>${label}</span><span style="margin-left: auto">${val}</span>`;
-    tr.appendChild(th);
-    return tr;
-}
-
-function round(number: number): number {
-    try {
-        return Math.round(number * 100) / 100;
-    } catch {
-        return number;
-    }
+    const footerRow = document.createElement('div');
+    footerRow.style.cssText = FOOTER_ROW_STYLE;
+    footerRow.innerHTML = `<div>${label}</div><div style="margin-left: auto">${val}</div>`;
+    return footerRow;
 }
 
 function generateTooltipBodyRow({tooltip, i, bodyLines, body}) {
+    const bodyRow = document.createElement('div');
+    bodyRow.style.cssText = BODY_ROW_STYLE;
     const colors = tooltip.labelColors[i];
-    const span = document.createElement('span');
-    const tr = document.createElement('tr');
-    const td = document.createElement('td');
-
-    span.style.cssText = `
+    const colorDiv = document.createElement('div');
+    colorDiv.style.cssText = `
     background:${colors.backgroundColor};
     border-color:${colors.borderColor};
     ${ROUND_INDICATOR_ELEMENT_STYLE}
   `;
 
-    tr.style.cssText = TR_ELEMENT_STYLE;
-    td.style.borderWidth = '0';
-
     const parsedBody = body[0].split(': ');
     const label = parsedBody[0];
-
     const val = parsedBody[1];
 
-    const labelTd = document.createElement('td');
-    labelTd.innerText = label;
-    labelTd.style.cssText = `
-    border-width:0;
-    min-width:120px;
-    white-space: nowrap;
-    height:26px;
-  `;
+    const labelDiv = document.createElement('div');
+    labelDiv.style.cssText = BODY_ROW_LABEL_STYLE;
+    labelDiv.innerText = label;
 
-    const valueTd = document.createElement('td');
-    valueTd.innerText = val;
-    valueTd.style.minWidth = '40px';
-    valueTd.style.textAlign = 'right';
-    valueTd.style.borderWidth = '0';
+    const valueDiv = document.createElement('div');
+    valueDiv.style.cssText = BODY_ROW_VALUE_STYLE;
+    valueDiv.innerText = val;
 
-    td.appendChild(span);
-    tr.appendChild(td);
-    tr.appendChild(labelTd);
-    tr.appendChild(valueTd);
-    return tr;
+    bodyRow.appendChild(colorDiv);
+    bodyRow.appendChild(labelDiv);
+    bodyRow.appendChild(valueDiv);
+    return bodyRow;
 }
 
 export function externalV4TooltipHandler(context) {
@@ -435,30 +425,29 @@ export function externalV4TooltipHandler(context) {
         const bodyLines = tooltip.body.map(b => b.lines);
         const footerLine = tooltip.footer || [];
 
-        const tableHead = document.createElement('thead');
-        const tableBody = document.createElement('tbody');
-        const tableRoot = tooltipEl.querySelector('table');
+        const tooltipHead = document.createElement('div');
+        const tooltipBody = document.createElement('div');
+        tooltipBody.style.cssText = BODY_ROWS_WRAPPER;
+        const tooltipRoot = tooltipEl.querySelector('div.fu-chart-tooltip-wrapper');
 
         titleLines.forEach(title => {
             const tr = generateTooltipHeaderElement(title);
-            tableHead.appendChild(tr);
+            tooltipHead.appendChild(tr);
         });
 
         bodyLines.forEach((body, i) => {
-            const tr = generateTooltipBodyRow({tooltip, i, bodyLines, body});
-            tableBody.appendChild(tr);
+            tooltipBody.appendChild(generateTooltipBodyRow({tooltip, i, bodyLines, body}));
         });
 
-        while (tableRoot.firstChild) {
-            tableRoot.firstChild.remove();
+        while (tooltipRoot.firstChild) {
+            tooltipRoot.firstChild.remove();
         }
-        tableRoot.appendChild(tableHead);
-        tableRoot.appendChild(tableBody);
+
+        tooltipRoot.appendChild(tooltipHead);
+        tooltipRoot.appendChild(tooltipBody);
 
         if (footerLine?.length && bodyLines?.length > 1) {
-            const tableFoot = document.createElement('tfoot');
-            tableFoot.appendChild(generateTooltipFooterElement(footerLine[0]));
-            tableRoot.appendChild(tableFoot);
+            tooltipRoot.appendChild(generateTooltipFooterElement(footerLine[0]));
         }
     }
 
@@ -479,6 +468,4 @@ export function externalV4TooltipHandler(context) {
     tooltipEl.style.opacity = 1;
     tooltipEl.style.left = tooltipLeft + 'px';
     tooltipEl.style.top = positionY + tooltip.caretY + yPositionAdjustment + 'px';
-    tooltipEl.style.font = tooltip.options.bodyFont.string;
-    tooltipEl.style.padding = tooltip.options.padding + 'px ' + tooltip.options.padding + 'px';
 }

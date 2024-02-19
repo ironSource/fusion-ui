@@ -9,7 +9,9 @@
   padding: 0;
   display: inline-flex;
   max-width: 170px;
+  width: 100%;
   .fu-chart-labels-wrapper{
+    width: 100%;
     display: flex;
     align-items: center;
     gap: 8px;
