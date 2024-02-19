@@ -3,7 +3,7 @@ import {ControlValueAccessor} from '@angular/forms';
 import {DomSanitizer} from '@angular/platform-browser';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
-import {isNullOrUndefined} from '@ironsource/fusion-ui';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Directive()
 export abstract class CheckboxBaseComponent implements OnInit, ControlValueAccessor {
