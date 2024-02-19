@@ -1,4 +1,5 @@
 const FLAG_BASE_URL = 'https://fusion.ironsrc.net/assets/flags/v4/';
+const ICONS_BASE_URL = 'https://fusion.ironsrc.net/assets/icons/';
 
 const COUNTRIES = {
     Afghanistan: 'af',
@@ -312,6 +313,11 @@ const ROUND_INDICATOR_ELEMENT_STYLE = `
     border-radius:2px
 `;
 
+const BODY_ROW_ICON_STYLE = `
+width: 16px;
+height: 16px;
+background-color: var(--action-active, #808080);
+`;
 const BODY_ROW_LABEL_STYLE = `
     display: block;
     flex: 1;
@@ -385,7 +391,7 @@ function generateTooltipFooterElement(footer) {
     return footerRow;
 }
 
-function generateTooltipBodyRow({tooltip, i, bodyLines, body}) {
+function generateTooltipBodyRow({tooltip, i, body}) {
     const bodyRow = document.createElement('div');
     bodyRow.style.cssText = BODY_ROW_STYLE;
     const colors = tooltip.labelColors[i];
@@ -409,6 +415,15 @@ function generateTooltipBodyRow({tooltip, i, bodyLines, body}) {
     valueDiv.innerText = val;
 
     bodyRow.appendChild(colorDiv);
+
+    const icon = tooltip.dataPoints.map(d => d.dataset.icon ?? null).filter(Boolean)[i];
+    if (!!icon) {
+        const iconImg = document.createElement('div');
+        iconImg.style.cssText = BODY_ROW_ICON_STYLE;
+        iconImg.style.mask = `url(${ICONS_BASE_URL + icon + '.svg'}) no-repeat center`;
+        bodyRow.appendChild(iconImg);
+    }
+
     bodyRow.appendChild(labelDiv);
     bodyRow.appendChild(valueDiv);
     return bodyRow;
@@ -439,7 +454,7 @@ export function externalV4TooltipHandler(context) {
         });
 
         bodyLines.forEach((body, i) => {
-            tooltipBody.appendChild(generateTooltipBodyRow({tooltip, i, bodyLines, body}));
+            tooltipBody.appendChild(generateTooltipBodyRow({tooltip, i, body}));
         });
 
         while (tooltipRoot.firstChild) {

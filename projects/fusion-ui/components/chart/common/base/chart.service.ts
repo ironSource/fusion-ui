@@ -66,7 +66,8 @@ export class ChartDataService {
                         id: label.id,
                         label: label.displayName,
                         data: dataValues,
-                        displayFormat: !isNullOrUndefined(label.displayFormat) ? label.displayFormat : null
+                        displayFormat: !isNullOrUndefined(label.displayFormat) ? label.displayFormat : null,
+                        icon: !isNullOrUndefined(label.icon) ? label.icon : null
                     },
                     !isNullOrUndefined(label.hidden) ? {hidden: label.hidden} : {}
                 )
