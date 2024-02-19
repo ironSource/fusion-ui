@@ -124,7 +124,6 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
     }
     /** @internal */
     onConfigurationChanged(value: InputConfiguration): void {
-        console.log('onConfigurationChanged: ', value);
         this.onOptionsChanged({previousValue: this.config.options, currentValue: value.options});
         this.onDisabledChanged({previousValue: this.config.disabled, currentValue: value.disabled});
         this.onErrorChanged({previousValue: this.config.error, currentValue: value.error});
@@ -333,7 +332,6 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
 
     private onDisabledChanged({previousValue, currentValue}: {previousValue: boolean; currentValue: boolean}): void {
         if (currentValue !== previousValue) {
-            console.log('onDisabledChanged: ', {previousValue, currentValue});
             this.disabled$.next(currentValue);
         }
     }
