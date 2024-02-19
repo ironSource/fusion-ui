@@ -522,12 +522,27 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     protected calcYAxes(yAxe: any): void {
         const sets = this.options.calculateMaxForAll ? this.chartData.datasets : this.chartData.datasets.filter(item => !item.hidden);
         const tickCount = this.options.yAxisLines || 5;
-        // get max & min values
-        // eslint-disable-next-line prefer-const
-        let [max, min] = sets.reduce(
+        // region get max & min values
+        const setsStacked = [{data: []}];
+        // for staked we need to calculate sum of all data values in set
+        if (this.isStacked) {
+            setsStacked[0].data = sets.reduce((acc, item, index) => {
+                item.data.forEach((val, idx) => {
+                    if (acc[idx]) {
+                        acc[idx] += val;
+                    } else {
+                        acc[idx] = val;
+                    }
+                });
+                return acc;
+            }, []);
+        }
+
+        let [max, min] = (this.isStacked ? setsStacked : sets).reduce(
             ([_max, _min], item) => [Math.max(_max, Math.max.apply(null, item.data)), Math.min(_min, Math.min.apply(null, item.data))],
             [-Infinity, 0]
         );
+        // endregion
 
         let stepSize;
         let formatCallbackObj;
@@ -538,7 +553,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         } else {
             const roundTo = Math.pow(10, parseInt(max.toString(), 10).toString().length - 1);
             const maxVal = Math.ceil((max / roundTo) * 10) * (roundTo / 10);
-            stepSize = parseFloat((((maxVal - min) / tickCount) * (this.isStacked ? 2 : 1)).toFixed(2));
+            stepSize = parseFloat(((maxVal - min) / tickCount).toFixed(2));
             max = stepSize * tickCount;
             formatCallbackObj = {callback: value => this.getFormatted(value, 'shortString')};
         }

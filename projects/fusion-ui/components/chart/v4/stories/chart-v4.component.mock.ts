@@ -42,6 +42,46 @@ export const CHART_DATA_MOCK: ChartData = {
         {id: 9928, displayName: 'ironSource Ads', displayFormat: 'shortCurrency'}
     ]
 };
+
+export const CHART_DATA_MOCK_BIG: ChartData = {
+    data: {
+        '2024-01-01': [2048, 5432, 3432, 6732, 5232],
+        '2024-01-02': [2458, 6543, 2343, 3443, 6543],
+        '2024-01-03': [3214, 4345, 4545, 4645, 2345],
+        '2024-01-04': [2323, 6543, 5443, 5543, 4543],
+        '2024-01-05': [4321, 2345, 2445, 4645, 2345],
+        '2024-01-06': [4566, 5432, 1532, 3532, 6332],
+        '2024-01-07': [6543, 1234, 1334, 2334, 1534]
+    },
+    legends: [
+        {
+            id: 1,
+            displayName: 'Chocolate Chip Cookie Game',
+            color: null
+        },
+        {
+            id: 2,
+            displayName: 'Bobbie & Friends - Cat Life Simulator',
+            color: null
+        },
+        {
+            id: 3,
+            displayName: 'Words for Winners',
+            color: null
+        },
+        {
+            id: 4,
+            displayName: 'Girl Power Cupcake Maker',
+            color: null
+        },
+        {
+            id: 5,
+            displayName: 'Dizzy Diamond Puzzle',
+            color: null
+        }
+    ]
+};
+
 export const CHART_CUSTOM_COLORS_DATA_MOCK: ChartData = {
     data: {
         '2023-12-11': [2048.16, 1588.59],
