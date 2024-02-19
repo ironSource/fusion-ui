@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [7.0.0-rc.11](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.10...v7.0.0-rc.11) (2024-02-19)
+
+
+### Features
+
+* **ISCT-120:** add console.log ([d7204ad](https://github.com/ironSource/fusion-ui/commit/d7204ad4c936ed07297d3d5c2c0cb3311dbd11a5))
+
 ## [7.0.0-rc.10](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.9...v7.0.0-rc.10) (2024-02-18)
 
 ## [7.0.0-rc.9](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.8...v7.0.0-rc.9) (2024-02-14)
