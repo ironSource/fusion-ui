@@ -124,6 +124,7 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
     }
     /** @internal */
     onConfigurationChanged(value: InputConfiguration): void {
+        console.log('onConfigurationChanged: ', value);
         this.onOptionsChanged({previousValue: this.config.options, currentValue: value.options});
         this.onDisabledChanged({previousValue: this.config.disabled, currentValue: value.disabled});
         this.onErrorChanged({previousValue: this.config.error, currentValue: value.error});
@@ -239,8 +240,9 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
     }
     /** @internal */
     setDisabledState?(isDisabled: boolean): void {
-        console.log('isDisabled: ', isDisabled);
-        this.disabled$.next(isDisabled);
+        if (isNullOrUndefined(this._configuration?.disabled) || !this._configuration?.disabled) {
+            this.disabled$.next(isDisabled);
+        }
     }
 
     private getStepIndication(): string {
@@ -330,8 +332,8 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
     }
 
     private onDisabledChanged({previousValue, currentValue}: {previousValue: boolean; currentValue: boolean}): void {
-        console.log('onDisabledChanged: ', {previousValue, currentValue});
         if (currentValue !== previousValue) {
+            console.log('onDisabledChanged: ', {previousValue, currentValue});
             this.disabled$.next(currentValue);
         }
     }

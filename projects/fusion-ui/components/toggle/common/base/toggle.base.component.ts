@@ -4,7 +4,7 @@ import {ControlValueAccessor} from '@angular/forms';
 import {BehaviorSubject, of} from 'rxjs';
 import {DomSanitizer} from '@angular/platform-browser';
 import {delay, startWith} from 'rxjs/operators';
-import {isString} from '@ironsource/fusion-ui/utils';
+import {isNullOrUndefined, isString} from '@ironsource/fusion-ui/utils';
 import {ToggleLabel} from '@ironsource/fusion-ui/components/toggle/common/entities';
 
 @Directive()
@@ -41,7 +41,7 @@ export abstract class ToggleBaseComponent implements OnInit, ControlValueAccesso
 
     id: string;
     isChecked$ = new BehaviorSubject<boolean>(false);
-    isDisabled$ = new BehaviorSubject<boolean>(false);
+    isDisabled$ = new BehaviorSubject<boolean>(null);
     currentLabel: string;
     _label: ToggleLabel;
     /**
@@ -118,6 +118,8 @@ export abstract class ToggleBaseComponent implements OnInit, ControlValueAccesso
      * also do UI Component enabled / disabled
      */
     setDisabledState?(isDisabled: boolean): void {
-        this.isDisabled$.next(isDisabled);
+        if (isNullOrUndefined(this.isDisabled$.getValue())) {
+            this.isDisabled$.next(isDisabled);
+        }
     }
 }

@@ -306,7 +306,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
         this.initIcon = typeof this.icon === 'string' ? this.icon : {...this.icon};
         this.search = this.search || false;
         this.strictSearch = this.strictSearch || false;
-        this.isDisabled = this.isDisabled || false;
+        // this.isDisable = this.isDisable || false;
         this.selected = this.selected || [];
         this.mappingOptions = {
             id: 'id',
@@ -931,9 +931,11 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     registerOnTouched(): void {}
     /** @ignore */
     setDisabledState?(isDisabled: boolean): void {
-        this.isDisabled = isDisabled;
-        this.dropdownSelectConfigurations$.next(this.getDropdownSelectConfigurations());
-        this.cdr.markForCheck();
+        if (isNullOrUndefined(this.isDisabled)) {
+            this.isDisabled = isDisabled;
+            this.dropdownSelectConfigurations$.next(this.getDropdownSelectConfigurations());
+            this.cdr.markForCheck();
+        }
     }
 
     private getDisplayedOptionsObservable(): Observable<DropdownOption[]> {
