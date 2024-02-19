@@ -108,7 +108,7 @@ export abstract class CheckboxBaseComponent implements OnInit, ControlValueAcces
      * @ignore
      */
     setDisabledState?(isDisabled: boolean): void {
-        if (isNullOrUndefined(this.isDisabled)) {
+        if (isNullOrUndefined(this.isDisabled) || !this.isDisabled) {
             this.isDisabled = isDisabled;
             this.cd.detectChanges();
         }

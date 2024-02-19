@@ -930,7 +930,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     registerOnTouched(): void {}
     /** @ignore */
     setDisabledState?(isDisabled: boolean): void {
-        if (isNullOrUndefined(this.isDisabled)) {
+        if (isNullOrUndefined(this.isDisabled) || !this.isDisabled) {
             this.isDisabled = isDisabled;
             this.dropdownSelectConfigurations$.next(this.getDropdownSelectConfigurations());
             this.cdr.markForCheck();
