@@ -306,7 +306,6 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
         this.initIcon = typeof this.icon === 'string' ? this.icon : {...this.icon};
         this.search = this.search || false;
         this.strictSearch = this.strictSearch || false;
-        // this.isDisable = this.isDisable || false;
         this.selected = this.selected || [];
         this.mappingOptions = {
             id: 'id',
