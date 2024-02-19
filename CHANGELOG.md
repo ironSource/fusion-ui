@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [7.0.0-rc.14](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.13...v7.0.0-rc.14) (2024-02-19)
+
+
+### Features
+
+* **ISCT-120:** fix disabled state in checkbox ([5a81feb](https://github.com/ironSource/fusion-ui/commit/5a81febdf807eda3e2b19932cfa58607ca7d05af))
+
 ## [7.0.0-rc.13](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.11...v7.0.0-rc.13) (2024-02-19)
 
 
