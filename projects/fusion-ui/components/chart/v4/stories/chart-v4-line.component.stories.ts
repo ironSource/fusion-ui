@@ -5,6 +5,9 @@ import {ChartV4Component} from '../chart-v4.component';
 import {ChartType} from '@ironsource/fusion-ui/components/chart/common/base';
 import {CHART_CUSTOM_COLORS_DATA_MOCK, CHART_DATA_MOCK, CHART_DATA_MOCK_BIG, CHART_DATA_MOCK_BIG_ICONS} from './chart-v4.component.mock';
 import {ChartV4WrapperComponent} from './chart-v4-story-wrapper.component';
+import {SvgModule} from '@ironsource/fusion-ui/components/svg';
+import {environment} from '../../../../../../stories/environments/environment';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 
 export default {
     title: 'V4/Components/DataVisualization/Charts/LineChart',
@@ -12,7 +15,7 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, ChartV4WrapperComponent]
+            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, ChartV4WrapperComponent]
         }),
         componentWrapperDecorator(
             story => `

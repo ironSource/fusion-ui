@@ -45,10 +45,12 @@ export class ChartV4WrapperComponent {
             const dataLabel: ChartLabel = {
                 id: idx,
                 label: dataSet.label,
-                color: dataSet.borderColor
+                color: dataSet.borderColor,
+                icon: dataSet.icon
             };
             return dataLabel;
         });
+        /*.filter((item, idx) => idx < 3);*/
 
         this.chartDataLabels$.next(chartDataLabels);
     }
