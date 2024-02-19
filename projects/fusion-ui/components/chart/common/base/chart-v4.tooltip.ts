@@ -254,7 +254,8 @@ const COUNTRIES = {
 };
 
 const TOOLTIP_ELEMENT_STYLE = `
-  min-width: 120px;
+  min-width: var(--chart-tooltip-min-width, 120px);
+  max-width: var(--chart-tooltip-max-width);
   background:white;
   opacity:1;
   pointer-events:none;
@@ -318,6 +319,7 @@ const BODY_ROW_LABEL_STYLE = `
     color: var(--text-secondary, #646464);
     text-overflow: ellipsis;
     white-space: nowrap;
+    margin-right: 4px;
 `;
 
 const BODY_ROW_VALUE_STYLE = `
@@ -340,6 +342,7 @@ function getOrCreateTooltip(chart) {
 
     if (!tooltipEl) {
         tooltipEl = document.createElement('div');
+        tooltipEl.className = 'fu-chart-tooltip';
         tooltipEl.style.cssText = TOOLTIP_ELEMENT_STYLE;
 
         const table = document.createElement('div');
@@ -372,7 +375,7 @@ function generateTooltipHeaderElement(title) {
 }
 
 function generateTooltipFooterElement(footer) {
-    const parsedBody = footer.split(': ');
+    const parsedBody = splitLastOccurrence(footer, ':');
     const label = parsedBody[0];
     const val = parsedBody[1];
 
@@ -393,7 +396,7 @@ function generateTooltipBodyRow({tooltip, i, bodyLines, body}) {
     ${ROUND_INDICATOR_ELEMENT_STYLE}
   `;
 
-    const parsedBody = body[0].split(': ');
+    const parsedBody = splitLastOccurrence(body[0], ':');
     const label = parsedBody[0];
     const val = parsedBody[1];
 
@@ -468,4 +471,12 @@ export function externalV4TooltipHandler(context) {
     tooltipEl.style.opacity = 1;
     tooltipEl.style.left = tooltipLeft + 'px';
     tooltipEl.style.top = positionY + tooltip.caretY + yPositionAdjustment + 'px';
+}
+
+function splitLastOccurrence(str, substring) {
+    const lastIndex = str.lastIndexOf(substring);
+    const before = str.slice(0, lastIndex);
+    const after = str.slice(lastIndex + 1);
+
+    return [before, after];
 }

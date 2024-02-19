@@ -57,27 +57,27 @@ export const CHART_DATA_MOCK_BIG: ChartData = {
         {
             id: 1,
             displayName: 'Chocolate Chip Cookie Game',
-            color: null
+            displayFormat: 'shortCurrency'
         },
         {
             id: 2,
-            displayName: 'Bobbie & Friends - Cat Life Simulator',
-            color: null
+            displayName: 'Bobbie & Friends: Cat Life Simulator',
+            displayFormat: 'shortCurrency'
         },
         {
             id: 3,
             displayName: 'Words for Winners',
-            color: null
+            displayFormat: 'shortCurrency'
         },
         {
             id: 4,
             displayName: 'Girl Power Cupcake Maker',
-            color: null
+            displayFormat: 'shortCurrency'
         },
         {
             id: 5,
             displayName: 'Dizzy Diamond Puzzle',
-            color: null
+            displayFormat: 'shortCurrency'
         }
     ]
 };
