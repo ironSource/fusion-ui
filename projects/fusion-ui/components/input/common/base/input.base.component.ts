@@ -239,6 +239,7 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
     }
     /** @internal */
     setDisabledState?(isDisabled: boolean): void {
+        console.log('isDisabled: ', isDisabled);
         this.disabled$.next(isDisabled);
     }
 
@@ -329,6 +330,7 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
     }
 
     private onDisabledChanged({previousValue, currentValue}: {previousValue: boolean; currentValue: boolean}): void {
+        console.log('onDisabledChanged: ', {previousValue, currentValue});
         if (currentValue !== previousValue) {
             this.disabled$.next(currentValue);
         }
