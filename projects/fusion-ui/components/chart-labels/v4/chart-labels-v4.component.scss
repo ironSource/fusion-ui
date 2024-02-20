@@ -63,17 +63,17 @@
     }
     &:has(> :last-child:nth-child(3)){
       .fu-chart-label{
-        max-width: calc(100% / 3);
+        max-width: calc(36% - 8px);
       }
     }
     &:has(> :last-child:nth-child(4)){
       .fu-chart-label{
-        max-width: calc(100% / 4);
+        max-width: calc(100% / 4 - 8px);
       }
     }
     &:has(> :last-child:nth-child(5)){
       .fu-chart-label{
-        max-width: calc(100% / 5);
+        max-width: calc(100% / 5 - 8px);
       }
     }
   }

@@ -50,7 +50,7 @@ export class ChartV4WrapperComponent {
             };
             return dataLabel;
         });
-        /*.filter((item, idx) => idx < 3);*/
+        /*.filter((item, idx) => idx < 5);*/
 
         this.chartDataLabels$.next(chartDataLabels);
     }
