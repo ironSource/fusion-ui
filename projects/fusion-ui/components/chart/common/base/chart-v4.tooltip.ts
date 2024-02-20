@@ -277,6 +277,9 @@ const WRAPPER_STYLE = `
 `;
 
 const HEADER_ROW_STYLE = `
+    display: flex;
+    align-items: center;
+    gap: 4px;
     font-family: Inter;
     font-size: 13px;
     font-style: normal;
@@ -373,10 +376,9 @@ function generateTooltipHeaderElement(title) {
         flagImage.style.borderRadius = '50%';
         flagImage.src = FLAG_BASE_URL + countryCode + '.svg';
         headerRowEl.appendChild(flagImage);
-    } else {
-        const text = document.createTextNode(title);
-        headerRowEl.appendChild(text);
     }
+    const text = document.createTextNode(title);
+    headerRowEl.appendChild(text);
     return headerRowEl;
 }
 
