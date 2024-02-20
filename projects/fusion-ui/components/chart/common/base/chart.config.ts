@@ -44,7 +44,7 @@ export const BASE_DATASET_OPTIONS: {[key: string]: ChartBaseDatasetOptions} = {
     },
     style_v4: {
         colorSettings: ['backgroundColor', 'borderColor', 'pointBorderColor', 'pointBackgroundColor'],
-        fillOpacity: 70,
+        fillOpacity: 80,
         seriesToShow: 7,
         dateFormat: 'MMM dd',
         lineOptions: {
