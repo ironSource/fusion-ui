@@ -40,7 +40,8 @@ export const COLORS_PALETTE = {
         '#a718a7',
         '#f62f91'
     ],
-    style_v4: ['#67B7DC', '#6794DC', '#6771DC', '#7B5FDF', '#A367DC']
+    style_v4: ['#459FCA', '#7ED0FF', '#8D8BE7', '#AF7CE0', '#D96DD8']
+    /*style_v4: ['#67B7DC', '#6794DC', '#6771DC', '#7B5FDF', '#A367DC']*/
 };
 
 export const PIE_COLORS_PALETTE = {
