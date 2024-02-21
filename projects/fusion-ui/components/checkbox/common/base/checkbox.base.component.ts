@@ -32,7 +32,7 @@ export abstract class CheckboxBaseComponent implements OnInit, ControlValueAcces
     @Output() changed = new EventEmitter();
     /** @internal */
     @HostBinding('class.only-checkbox') isOnlyCheckbox = false;
-
+    protected isDisabledForm: boolean;
     get toolTip(): string {
         return this.tooltipContent ? this.tooltipContent : this.class && this.class.indexOf('truncate') > -1 ? this.label : '';
     }
@@ -109,7 +109,7 @@ export abstract class CheckboxBaseComponent implements OnInit, ControlValueAcces
      */
     setDisabledState?(isDisabled: boolean): void {
         if (isNullOrUndefined(this.isDisabled)) {
-            this.isDisabled = isDisabled;
+            this.isDisabledForm = isDisabled;
             this.cd.detectChanges();
         }
     }
