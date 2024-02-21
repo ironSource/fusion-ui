@@ -239,7 +239,8 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
     }
     /** @internal */
     setDisabledState?(isDisabled: boolean): void {
-        if (isNullOrUndefined(this._configuration?.disabled)) {
+        console.log('IsDisabled: ', this._configuration?.disabled);
+        if (isNullOrUndefined(this._configuration?.disabled) || !this._configuration?.disabled) {
             this.disabled$.next(isDisabled);
         }
     }
