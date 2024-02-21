@@ -1,14 +1,14 @@
-import {Directive, ElementRef, EventEmitter, HostBinding, Input, OnInit, Output} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, HostBinding, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {ControlValueAccessor} from '@angular/forms';
-import {BehaviorSubject, of} from 'rxjs';
+import {BehaviorSubject, combineLatest, of, Subject} from 'rxjs';
 import {DomSanitizer} from '@angular/platform-browser';
-import {delay, startWith} from 'rxjs/operators';
+import {delay, startWith, takeUntil} from 'rxjs/operators';
 import {isNullOrUndefined, isString} from '@ironsource/fusion-ui/utils';
 import {ToggleLabel} from '@ironsource/fusion-ui/components/toggle/common/entities';
 
 @Directive()
-export abstract class ToggleBaseComponent implements OnInit, ControlValueAccessor {
+export abstract class ToggleBaseComponent implements OnInit, OnDestroy, ControlValueAccessor {
     @Input()
     set label(label: ToggleLabel) {
         this._label = label;
@@ -23,7 +23,7 @@ export abstract class ToggleBaseComponent implements OnInit, ControlValueAccesso
     @Input() name: string;
 
     @Input() set isDisabled(value: boolean) {
-        this.isDisabled$.next(value);
+        this.isDisabledInput$.next(value);
     }
 
     @Input() loading: boolean;
@@ -41,7 +41,9 @@ export abstract class ToggleBaseComponent implements OnInit, ControlValueAccesso
 
     id: string;
     isChecked$ = new BehaviorSubject<boolean>(false);
-    isDisabled$ = new BehaviorSubject<boolean>(null);
+    isDisabled$ = new BehaviorSubject<boolean>(false);
+    isDisabledInput$ = new BehaviorSubject<boolean>(false);
+    isDisabledFormControl$ = new BehaviorSubject<boolean>(false);
     currentLabel: string;
     _label: ToggleLabel;
     /**
@@ -50,12 +52,22 @@ export abstract class ToggleBaseComponent implements OnInit, ControlValueAccesso
      * So, in this case will not animation on component render.
      */
     animated$ = of(true).pipe(delay(500), startWith(false));
-
+    private onDestroy$ = new Subject<void>();
     constructor(private uniqueIdService: UniqueIdService, private sanitizer: DomSanitizer, private elementRef: ElementRef) {}
 
     ngOnInit() {
         this.id = 'is-toggle-' + this.uniqueIdService.getUniqueId();
         this.value = this.value || '';
+        combineLatest([this.isDisabledFormControl$.asObservable(), this.isDisabledInput$.asObservable()])
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe(([isDisabledInput, isDisabledFormControl]: [boolean, boolean]) =>
+                this.isDisabled$.next(isDisabledInput || isDisabledFormControl)
+            );
+    }
+
+    ngOnDestroy() {
+        this.onDestroy$.next();
+        this.onDestroy$.complete();
     }
 
     onChange(event) {
@@ -118,8 +130,6 @@ export abstract class ToggleBaseComponent implements OnInit, ControlValueAccesso
      * also do UI Component enabled / disabled
      */
     setDisabledState?(isDisabled: boolean): void {
-        if (isNullOrUndefined(this.isDisabled$.getValue())) {
-            this.isDisabled$.next(isDisabled);
-        }
+        this.isDisabledFormControl$.next(isDisabled);
     }
 }
