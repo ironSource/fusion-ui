@@ -30,7 +30,7 @@
              [class.fu-has-search]="templateRef && configurations.isSearch"
              [class.options-locate-left]="isLocatedLeft"
              [class.options-locate-right]="isLocatedRight"
-             [ngClass]="{'dd-disabled': isDisabled, 'dd-confirm': search || autoComplete, 'dd-scroll': hasScroll}"
+             [ngClass]="{'dd-disabled': isDisabled || isDisabledForm, 'dd-confirm': search || autoComplete, 'dd-scroll': hasScroll}"
         >
             <!--dropdown options holder-->
             <!--elements shown without selector-->
