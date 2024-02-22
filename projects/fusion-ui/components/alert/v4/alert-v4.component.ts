@@ -6,7 +6,7 @@ import {ButtonColor, ButtonComponent, IconButtonComponent} from '@ironsource/fus
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Component({
-    selector: 'fusion-alert-v4',
+    selector: 'fusion-alert',
     standalone: true,
     imports: [CommonModule, IconModule, ButtonComponent, IconButtonComponent],
     host: {class: 'fusion-v4'},

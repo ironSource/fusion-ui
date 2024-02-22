@@ -50,19 +50,19 @@ export const Severities: Story = {
         <div style="display: flex; flex-direction: column; gap: 16px">
             <div style="display: flex; flex-direction: column; gap: 8px">
                 <label class="font-v4-subtitle-2" style="color: #646464;">Success</label>
-                <fusion-alert-v4 [title]="title" [description]="description" color="success"></fusion-alert-v4>    
+                <fusion-alert [title]="title" [description]="description" color="success"></fusion-alert>    
             </div>
             <div style="display: flex; flex-direction: column; gap: 8px">
                 <label class="font-v4-subtitle-2" style="color: #646464;">Danger</label>
-                <fusion-alert-v4 [title]="title" [description]="description" color="danger"></fusion-alert-v4>    
+                <fusion-alert [title]="title" [description]="description" color="danger"></fusion-alert>    
             </div>
             <div style="display: flex; flex-direction: column; gap: 8px">
                 <label class="font-v4-subtitle-2" style="color: #646464;">Warning</label>
-                <fusion-alert-v4 [title]="title" [description]="description" color="warning"></fusion-alert-v4>    
+                <fusion-alert [title]="title" [description]="description" color="warning"></fusion-alert>    
             </div>
             <div style="display: flex; flex-direction: column; gap: 8px">
                 <label class="font-v4-subtitle-2" style="color: #646464;">Info</label>
-                <fusion-alert-v4 [title]="title" [description]="description" color="info"></fusion-alert-v4>    
+                <fusion-alert [title]="title" [description]="description" color="info"></fusion-alert>    
             </div>
         </div>
         `
@@ -79,11 +79,11 @@ export const Variants: Story = {
         <div style="display: flex; flex-direction: column; gap: 16px">
             <div style="display: flex; flex-direction: column; gap: 8px">
                 <label class="font-v4-subtitle-2" style="color: #646464;">Standard</label>
-                <fusion-alert-v4 [title]="title" [description]="description" color="info"></fusion-alert-v4>    
+                <fusion-alert [title]="title" [description]="description" color="info"></fusion-alert>    
             </div>
             <div style="display: flex; flex-direction: column; gap: 8px">
                 <label class="font-v4-subtitle-2" style="color: #646464;">Outlined</label>
-                <fusion-alert-v4 [title]="title" [description]="description" variant="outlined" color="info"></fusion-alert-v4>    
+                <fusion-alert [title]="title" [description]="description" variant="outlined" color="info"></fusion-alert>    
             </div>
         </div>
         `

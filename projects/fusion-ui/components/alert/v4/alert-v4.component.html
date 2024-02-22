@@ -1,4 +1,5 @@
 <div class="fu-alert-wrapper fu-alert-color-{{color}}"
+     *ngIf="description?.length || title"
      [class.fu-alert-outlined]="variant==='outlined'"
      [class.fu-alert-rounded]="rounded">
     <div class="fu-alert-icon-wrapper" *ngIf="iconName">

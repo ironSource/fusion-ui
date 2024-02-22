@@ -12,3 +12,14 @@ export const AlertIconColorsMap = {
     info: '#3E63DD',
     danger: '#E5484D'
 };
+
+export interface AlertV4Configuration {
+    color: AlertColor;
+    variant?: AlertVariant;
+    title?: string;
+    description: string;
+    action?: {
+        label: string;
+        onClick: () => void;
+    };
+}
