@@ -17,7 +17,7 @@ export class ModalV4StoryWrapperComponent implements AfterViewInit {
     teleportTarget = '#storybook-root';
 
     ngAfterViewInit() {
-        this.teleportTarget = !!document.getElementById('storybook-root').attributes['hidden'] ? '#storybook-docs' : '#storybook-root';
+        this.teleportTarget = !!document.getElementById('storybook-root')?.attributes['hidden'] ? '#storybook-docs' : '#storybook-root';
     }
 
     openModal() {
