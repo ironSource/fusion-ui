@@ -5,7 +5,7 @@ import {environment} from '../../../../../stories/environments/environment';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {ModalV4Component} from './modal-v4.component';
-import {ButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
+import {ModalV4StoryWrapperComponent} from './modal-v4-story-wrapper/modal-v4-story-wrapper.component';
 
 export default {
     title: 'V4/Components/Feedback/Dialog',
@@ -13,7 +13,7 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, ButtonComponent]
+            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, ModalV4StoryWrapperComponent]
         })
     ],
     tags: ['autodocs'],
@@ -105,4 +105,13 @@ SizeMedium.args = {
 export const SizeLarge: Story = {};
 SizeLarge.args = {
     size: 'large'
+};
+
+export const ToggleDialog: Story = {
+    render: args => ({
+        props: args,
+        template: `
+        <fusion-modal-story-wrapper></fusion-modal-story-wrapper>  
+        `
+    })
 };

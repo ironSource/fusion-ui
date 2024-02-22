@@ -7,13 +7,8 @@
 $defaultWidth: 444px;
 
 :host {
-  padding: 0;
-  margin: 0;
   position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  inset: 0;
   background: var(--background-backdrop);
   overflow-x: auto;
   z-index: getZIndexLayerOffset(system, 10);
@@ -21,7 +16,6 @@ $defaultWidth: 444px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
 
   .fu-modal-wrapper {
     width: $defaultWidth;

@@ -1,0 +1,15 @@
+<div class="fu-wrapper">
+    <fusion-button color="primary" (click)="openModal()">Open Dialog</fusion-button>
+</div>
+
+<ng-container  *ngIf="modalSown">
+    <fusion-modal *fusionTeleporting="teleportTarget"
+            [title]="'Title'"
+            [content]="'This is a dialog that demonstrates the usage of the DialogTitle and DialogActions components!'"
+            [primaryButtonLabel]="'Ok'"
+            [secondaryButtonLabel]="'Cancel'"
+            (primaryButtonClicked)="closeModal()"
+            (secondaryButtonClicked)="closeModal()"
+            (closeButtonClicked)="closeModal()"
+    ></fusion-modal>
+</ng-container>

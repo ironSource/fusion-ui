@@ -34,9 +34,9 @@ export class ModalV4Component implements OnInit {
     @Input() secondaryButtonVariant: ButtonVariant = 'outlined';
     @Input() secondaryButtonDisabled: boolean = false;
 
-    @Output() closeClicked = new EventEmitter<void>();
-    @Output() secondaryClicked = new EventEmitter<void>();
-    @Output() primaryClicked = new EventEmitter<void>();
+    @Output() closeButtonClicked = new EventEmitter<void>();
+    @Output() secondaryButtonClicked = new EventEmitter<void>();
+    @Output() primaryButtonClicked = new EventEmitter<void>();
 
     constructor() {}
 
@@ -46,18 +46,15 @@ export class ModalV4Component implements OnInit {
         this.alert.action?.onClick();
     }
 
-    closeButtonClicked($event) {
-        console.log('close button clicked', $event);
-        this.closeClicked.emit();
+    onCloseButtonClicked($event) {
+        this.closeButtonClicked.emit();
     }
 
-    secondaryButtonClicked($event) {
-        console.log('secondary button clicked', $event);
-        this.secondaryClicked.emit();
+    onSecondaryButtonClicked($event) {
+        this.secondaryButtonClicked.emit();
     }
 
-    primaryButtonClicked($event) {
-        console.log('primary button clicked', $event);
-        this.primaryClicked.emit();
+    onPrimaryButtonClicked($event) {
+        this.primaryButtonClicked.emit();
     }
 }
