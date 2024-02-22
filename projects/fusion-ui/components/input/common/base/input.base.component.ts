@@ -128,9 +128,9 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
 
         combineLatest([this.isDisabledFormControl$.asObservable(), this.isDisabledInput$.asObservable()])
             .pipe(takeUntil(this.onDestroy$))
-            .subscribe(([isDisabledInput, isDisabledFormControl]: [boolean, boolean]) =>
-                this.disabled$.next(isDisabledInput || isDisabledFormControl)
-            );
+            .subscribe(([isDisabledInput, isDisabledFormControl]: [boolean, boolean]) => {
+                this.disabled$.next(isDisabledInput || isDisabledFormControl);
+            });
     }
     /** @internal */
     onConfigurationChanged(value: InputConfiguration): void {
@@ -339,9 +339,9 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
     }
 
     private onDisabledChanged({previousValue, currentValue}: {previousValue: boolean; currentValue: boolean}): void {
-        if (currentValue !== previousValue) {
-            this.isDisabledInput$.next(currentValue);
-        }
+        // if (currentValue !== previousValue) {
+        this.isDisabledInput$.next(currentValue);
+        // }
     }
 
     private onErrorChanged({previousValue, currentValue}: {previousValue: boolean | string; currentValue: boolean | string}): void {
