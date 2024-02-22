@@ -2,7 +2,7 @@ import {Input, EventEmitter, OnInit, Output, ElementRef, ViewChild, Injector, On
 import {ControlValueAccessor, FormControl} from '@angular/forms';
 import {isNullOrUndefined, isString} from '@ironsource/fusion-ui/utils';
 import {BehaviorSubject, Observable, fromEvent, Subject, of, combineLatest} from 'rxjs';
-import {map, takeUntil, tap, filter} from 'rxjs/operators';
+import {map, takeUntil, tap, filter, startWith} from 'rxjs/operators';
 import {InputOptions} from './input.options';
 import {InputConfigByStyle} from './input.component.config';
 import {InputParameters} from './input-parameters';
@@ -17,6 +17,12 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
     @ViewChild('fileInput', {static: false}) fileInput: ElementRef;
     /** @internal */
     @Input() loading: boolean;
+    /** @internal */
+    // eslint-disable-next-line @angular-eslint/no-input-rename
+    @Input('isDisabled') set disabled(disabled: boolean) {
+        this.isDisabledInput$.next(disabled);
+    }
+
     // Todo - think about a way to use it with generic way to listen to all kind of events
     /** @internal */
     @Output() ngFocus = new EventEmitter<void>();
@@ -47,8 +53,8 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
     configByStyle$ = new Observable<InputConfigByStyle>();
     /** @internal */
     disabled$ = new BehaviorSubject(false);
-    /** @internal */
-    isDisabledInput$ = new BehaviorSubject<boolean>(false);
+    // /** @internal */
+    // isDisabledInput$ = new BehaviorSubject<boolean>(false);
     /** @internal */
     isDisabledFormControl$ = new BehaviorSubject<boolean>(false);
 
@@ -127,7 +133,7 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
         });
 
         combineLatest([this.isDisabledFormControl$.asObservable(), this.isDisabledInput$.asObservable()])
-            .pipe(takeUntil(this.onDestroy$))
+            .pipe(startWith([false, false]), takeUntil(this.onDestroy$))
             .subscribe(([isDisabledInput, isDisabledFormControl]: [boolean, boolean]) => {
                 this.disabled$.next(isDisabledInput || isDisabledFormControl);
             });
@@ -340,7 +346,7 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
 
     private onDisabledChanged({previousValue, currentValue}: {previousValue: boolean; currentValue: boolean}): void {
         // if (currentValue !== previousValue) {
-        this.isDisabledInput$.next(currentValue);
+        // this.isDisabledInput$.next(currentValue);
         // }
     }
 

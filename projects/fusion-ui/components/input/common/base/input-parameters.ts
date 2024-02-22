@@ -1,6 +1,7 @@
 import {Directive, Input} from '@angular/core';
 import {InputConfiguration, InputIconData} from './input-entities';
 import {InputOptions, DEFAULT_INPUT_OPTIONS} from './input.options';
+import {BehaviorSubject} from 'rxjs';
 
 @Directive()
 export abstract class InputParameters {
@@ -122,11 +123,12 @@ export abstract class InputParameters {
         };
     }
 
-    /** @internal */
-    // eslint-disable-next-line @angular-eslint/no-input-rename
-    @Input('isDisabled') set disabled(disabled: boolean) {
-        this.configuration = {...this._configuration, disabled};
-    }
+    // /** @internal */
+    // // eslint-disable-next-line @angular-eslint/no-input-rename
+    // @Input('isDisabled') set disabled(disabled: boolean) {
+    //     this.isDisabledInput$.next(false)
+    //     this.configuration = {...this._configuration, disabled};
+    // }
     /** @internal */
     @Input() set error(error: boolean | string) {
         this.configuration = {...this._configuration, error};
@@ -138,6 +140,8 @@ export abstract class InputParameters {
 
     /** @internal */
     _configuration: InputConfiguration = {};
+    /** @internal */
+    isDisabledInput$ = new BehaviorSubject<boolean>(false);
     /** @internal */
     abstract onConfigurationChanged(value: InputConfiguration): void;
 }
