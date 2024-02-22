@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [7.0.0-rc.23](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.22...v7.0.0-rc.23) (2024-02-22)
+
+
+### Features
+
+* **ISCT-120:** fix disabled state in toggle ([2d42c49](https://github.com/ironSource/fusion-ui/commit/2d42c49ba56ef0b9fb2609a08b3898f089018d7b))
+
 ## [7.0.0-rc.22](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.21...v7.0.0-rc.22) (2024-02-22)
 
 
