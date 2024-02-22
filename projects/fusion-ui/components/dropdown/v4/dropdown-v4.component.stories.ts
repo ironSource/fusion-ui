@@ -128,17 +128,17 @@ const formControlOptionsList = new FormControl();
 const templateCommon = `
 <div style="display:flex; gap: 14px;">
     <div style="width: 240px;">
-        <fusion-dropdown [size]="size" [search]="search" [placeholder]="placeholder" [options]="optionsFood" [formControl]="formControl"></fusion-dropdown>
+        <fusion-dropdown [size]="size" [search]="search" [placeholder]="placeholder" [options]="optionsFood" [formControl]="formControl" [triggerMode]="triggerMode"></fusion-dropdown>
     </div>
     <div style="width: 240px;">
-        <fusion-dropdown [size]="size" [search]="search" [placeholder]="placeholder" [options]="options" [formControl]="formControl"></fusion-dropdown>
+        <fusion-dropdown [size]="size" [search]="search" [placeholder]="placeholder" [options]="options" [formControl]="formControl" [triggerMode]="triggerMode"></fusion-dropdown>
     </div>
 </div>
 `;
 const templateCommonOneDropdown = `
 <div style="display:flex; gap: 14px;">
     <div style="width: 240px;">
-        <fusion-dropdown [size]="size" [search]="search" [placeholder]="placeholder" [options]="options" [formControl]="formControl"></fusion-dropdown>
+        <fusion-dropdown [size]="size" [search]="search" [placeholder]="placeholder" [options]="options" [formControl]="formControl" [triggerMode]="triggerMode"></fusion-dropdown>
     </div>
 </div>
 `;

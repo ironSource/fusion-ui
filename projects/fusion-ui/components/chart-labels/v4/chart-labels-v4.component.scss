@@ -1,0 +1,79 @@
+@import '../../../src/style/scss/v4/vars/vars';
+@import '../../../src/style/scss/v4/colors';
+@import '../../../src/style/scss/v4/spacings';
+@import '../../../src/style/scss/v4/border-radius';
+@import '../../../src/style/scss/v4/vars/fonts';
+
+:host {
+  margin: 0;
+  padding: 0;
+  display: inline;
+  width: 100%;
+  .fu-chart-labels-wrapper{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-direction: row;
+    justify-content: flex-start;
+    overflow-x: var(--chart-labels-wrapper-overflow-x, hidden);
+    .fu-chart-label{
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      height: 24px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      line-height: 15px;
+      background-color: var(--default-main, #{$color-v4-default-main});
+      .fu-chart-label-color{
+        min-width: 12px;
+        width: 12px;
+        height: 12px;
+        border-radius: 2px;
+      }
+      .fu-chart-label-icon{
+        width: 15px;
+        height: 15px;
+        color: var(--action-active, #{$color-v4-action-active});
+      }
+      .fu-chart-label-text{
+        @extend %font-v4-caption;
+        color: var(--text-primary, #{$color-v4-text-primary});
+      }
+      .truncate{
+        @extend %truncate-flex-child;
+      }
+      &:hover{
+        cursor: default;
+        background-color: var(--background-paper-elevation-3, #{$color-v4-background-paper-elevation-3});
+      }
+    }
+
+    &:has(> :last-child:nth-child(1)){
+      .fu-chart-label{
+        max-width: calc(100%);
+      }
+    }
+    &:has(> :last-child:nth-child(2)){
+      .fu-chart-label{
+        max-width: calc(100% / 2);
+      }
+    }
+    &:has(> :last-child:nth-child(3)){
+      .fu-chart-label{
+        max-width: calc(36% - 8px);
+      }
+    }
+    &:has(> :last-child:nth-child(4)){
+      .fu-chart-label{
+        max-width: calc(100% / 4 - 8px);
+      }
+    }
+    &:has(> :last-child:nth-child(5)){
+      .fu-chart-label{
+        max-width: calc(100% / 5 - 8px);
+      }
+    }
+  }
+}

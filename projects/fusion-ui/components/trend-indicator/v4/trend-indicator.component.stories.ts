@@ -8,7 +8,7 @@ import {TrendIndicatorComponent} from './trend-indicator.component';
 import {TrendStatus} from './trend-indicator.entities';
 
 export default {
-    title: 'V4/Components/Trend-Indicator',
+    title: 'V4/Components/DataVisualization/TrendIndicator',
     component: TrendIndicatorComponent,
     decorators: [
         moduleMetadata({

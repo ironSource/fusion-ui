@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {
+    CHART_BAR_DATA_MOCK,
     CHART_DATA_MOCK,
     CHART_DATA_MOCK_7DAYS,
     CHART_DATA_STACKEDLINE_MOCK,
@@ -131,6 +132,7 @@ export class ChartDocsV2Component implements OnInit, OnDestroy {
 
     chartType = ChartType;
     chartData: ChartData = {...CHART_DATA_MOCK};
+    chartBarData: ChartData = {...CHART_BAR_DATA_MOCK};
     chartDataLinesWithLabels: ChartData = {...CHART_DATA_MOCK};
     chartDataStackedLine: ChartData = CHART_DATA_STACKEDLINE_MOCK;
 
