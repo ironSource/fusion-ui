@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output}
 import {CommonModule} from '@angular/common';
 import {ButtonColor, ButtonComponent, ButtonVariant, IconButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
 import {AlertComponent, AlertV4Configuration} from '@ironsource/fusion-ui/components/alert/v4';
-import {ModalV4Size} from '@ironsource/fusion-ui/components/modal/v4/modal-v4.entities';
+import {ModalV4Size} from './modal-v4.entities';
 
 @Component({
     selector: 'fusion-modal',

@@ -9,6 +9,19 @@ $defaultWidth: 444px;
 :host {
   padding: 0;
   margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: var(--background-backdrop);
+  overflow-x: auto;
+  z-index: getZIndexLayerOffset(system, 10);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
 
   .fu-modal-wrapper {
     width: $defaultWidth;
@@ -71,4 +84,8 @@ $defaultWidth: 444px;
       width: 900px;
     }
   }
+}
+
+:host-context(.docs-story){
+  position: unset;
 }

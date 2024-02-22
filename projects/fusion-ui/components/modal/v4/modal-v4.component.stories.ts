@@ -1,10 +1,11 @@
-import {componentWrapperDecorator, Meta, StoryObj} from '@storybook/angular';
+import {Meta, StoryObj} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {environment} from '../../../../../stories/environments/environment';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {ModalV4Component} from './modal-v4.component';
+import {ButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
 
 export default {
     title: 'V4/Components/Feedback/Dialog',
@@ -12,7 +13,7 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule]
+            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, ButtonComponent]
         })
     ],
     tags: ['autodocs'],
@@ -91,12 +92,17 @@ export const Customized: Story = {
     })
 };
 
-export const Medium: Story = {};
-Medium.args = {
+export const PrimaryButtonPending: Story = {};
+PrimaryButtonPending.args = {
+    primaryButtonLoading: true
+};
+
+export const SizeMedium: Story = {};
+SizeMedium.args = {
     size: 'medium'
 };
 
-export const Large: Story = {};
-Large.args = {
+export const SizeLarge: Story = {};
+SizeLarge.args = {
     size: 'large'
 };
