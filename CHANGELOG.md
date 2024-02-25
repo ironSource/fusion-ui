@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [7.0.0-rc.25](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.24...v7.0.0-rc.25) (2024-02-25)
+
+
+### Features
+
+* **ISCT-120:** fix disabled state in input component ([ce69d3c](https://github.com/ironSource/fusion-ui/commit/ce69d3c7819117ce0f32c284fb79b12ab92f040c))
+
 ## [7.0.0-rc.24](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.23...v7.0.0-rc.24) (2024-02-22)
 
 
