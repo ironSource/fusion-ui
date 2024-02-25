@@ -103,6 +103,7 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
         this.showErrorClass$.next(!!this.config.error);
         this.isPassHidden = this.config.options.isPassHidden;
         this.initChangesTrigger();
+        this.initDisabledStateChanged();
     }
 
     ngAfterViewInit(): void {
@@ -126,7 +127,9 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
         valueChanges$.pipe(takeUntil(this.onDestroy$)).subscribe(value => {
             this.propagateChange(value);
         });
+    }
 
+    initDisabledStateChanged() {
         combineLatest([this.isDisabledFormControl$.asObservable(), this.isDisabledInput$.asObservable()])
             .pipe(startWith([false, false]), takeUntil(this.onDestroy$))
             .subscribe(([isDisabledInput, isDisabledFormControl]: [boolean, boolean]) => {
