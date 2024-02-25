@@ -263,7 +263,10 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             } else {
                 lineOptions.hidden = idx > seriesToShow - 1;
             }
-
+            // set fill option from line to line on stacked line chart
+            if (this.componentVersion === 4 && this.isStacked) {
+                lineOptions.fill = idx !== 0 ? '-1' : 'start';
+            }
             // set line options
             Object.assign(dataGroupOptions, lineOptions);
             return Object.assign(item, dataGroupOptions);
