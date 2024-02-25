@@ -18,11 +18,6 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
     /** @internal */
     @Input() loading: boolean;
     /** @internal */
-    // eslint-disable-next-line @angular-eslint/no-input-rename
-    @Input('isDisabled') set disabled(disabled: boolean) {
-        this.isDisabledInput$.next(disabled);
-    }
-
     // Todo - think about a way to use it with generic way to listen to all kind of events
     /** @internal */
     @Output() ngFocus = new EventEmitter<void>();
@@ -53,8 +48,8 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
     configByStyle$ = new Observable<InputConfigByStyle>();
     /** @internal */
     disabled$ = new BehaviorSubject(false);
-    // /** @internal */
-    // isDisabledInput$ = new BehaviorSubject<boolean>(false);
+    /** @internal */
+    isDisabledInput$ = new BehaviorSubject<boolean>(false);
     /** @internal */
     isDisabledFormControl$ = new BehaviorSubject<boolean>(false);
 
@@ -345,9 +340,9 @@ export class InputBaseComponent extends InputParameters implements OnInit, OnDes
     }
 
     private onDisabledChanged({previousValue, currentValue}: {previousValue: boolean; currentValue: boolean}): void {
-        // if (currentValue !== previousValue) {
-        // this.isDisabledInput$.next(currentValue);
-        // }
+        if (currentValue !== previousValue) {
+            this.isDisabledInput$.next(currentValue);
+        }
     }
 
     private onErrorChanged({previousValue, currentValue}: {previousValue: boolean | string; currentValue: boolean | string}): void {
