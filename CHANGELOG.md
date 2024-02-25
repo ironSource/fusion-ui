@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [7.0.0-rc.26](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.25...v7.0.0-rc.26) (2024-02-25)
+
+
+### Features
+
+* **ISCT-120:** upgrade angular to 17.2.1 ([01b2129](https://github.com/ironSource/fusion-ui/commit/01b21297b1f0850833094aa5cdcf5203485502aa))
+
 ## [7.0.0-rc.25](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.24...v7.0.0-rc.25) (2024-02-25)
 
 
