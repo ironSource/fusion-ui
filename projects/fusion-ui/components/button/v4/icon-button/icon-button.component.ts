@@ -54,7 +54,13 @@ export class IconButtonComponent extends ButtonBaseComponent {
     /** @internal */
     startIconName: string;
     /** @internal */
+    startIconColor: string;
+    /** @internal */
     endIconName: string;
+    /** @internal */
+    endIconColor: string;
+    /** @internal */
+    selected: boolean;
 
     private _iconName: string;
     private _variantIcon: IconButtonVariant = 'default';
