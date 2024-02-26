@@ -180,6 +180,9 @@ export class InputV4Component implements OnInit, OnDestroy {
 
     @Input() variant: InputVariant = 'default';
 
+    @Input() helperText: string;
+    @Input() helperIcon: string;
+
     // region Inputs - step (for number type)
     @Input()
     set step(value: number) {
