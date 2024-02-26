@@ -199,18 +199,6 @@
     // endregion
   }
 
-  &.ng-invalid{
-    .fu-input-wrapper{
-      outline-color: var(--error-main, #{$color-v4-error-main});
-      outline-width: 2px;
-    }
-    .fu-input-underline {
-      .fu-input-helper{
-        color: var(--error-main, #{$color-v4-error-main});
-      }
-    }
-  }
-
   // region bottom line
   .fu-input-underline {
     display: flex;
