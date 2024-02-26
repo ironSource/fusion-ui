@@ -71,6 +71,55 @@ export const Disabled: Story = {
     })
 };
 
+export const Variant: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            formControl: formControl
+        },
+        template: `
+<div style="display: flex; flex-direction: column; gap: 16px">
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Error"      
+        variant="error"  
+        [viewOnly]="viewOnly"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+      ></fusion-input>
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Success"
+        variant="success"
+        [viewOnly]="viewOnly"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+      ></fusion-input>
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Warning"
+        variant="warning"
+        [viewOnly]="viewOnly"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+      ></fusion-input>
+</div>
+`
+    })
+};
+
 export const Size: Story = {
     render: args => ({
         props: {

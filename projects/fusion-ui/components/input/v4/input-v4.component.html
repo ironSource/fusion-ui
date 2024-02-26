@@ -1,5 +1,5 @@
 <label *ngIf="labelText" for="{{id}}" class="fu-label">{{ labelText }}</label>
-<div class="fu-input-wrapper fu-size-{{size}}">
+<div class="fu-input-wrapper fu-size-{{size}} fu-variant-{{variant}}">
     <fusion-icon *ngIf="startIcon" class="fu-start-icon" [name]="startIcon"></fusion-icon>
     <div *ngIf="prefix" class="fu-input-prefix">{{prefix}}</div>
     <input #input
