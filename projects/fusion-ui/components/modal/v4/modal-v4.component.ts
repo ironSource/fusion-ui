@@ -21,7 +21,7 @@ export class ModalV4Component implements OnInit {
     @Input() size: ModalV4Size = 'small';
 
     @Input() content: string;
-    @Input() alert: AlertV4Configuration;
+    @Input() alert: AlertV4Configuration | undefined = undefined;
 
     @Input() primaryButtonLabel: string = 'OK';
     @Input() primaryButtonColor: ButtonColor = 'primary';
