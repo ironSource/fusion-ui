@@ -724,7 +724,14 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
             this.closeDropdown();
             this.setOptionsAndLabel();
         } else {
-            option.isOpen = !option.isOpen;
+            this.options = this.optionsState.map((optionItem: DropdownOption) =>
+                optionItem.id === option.id
+                    ? {
+                          ...option,
+                          isOpen: !option?.isOpen
+                      }
+                    : optionItem
+            );
         }
     }
 
