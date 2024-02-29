@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [7.0.0-rc.28](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.27...v7.0.0-rc.28) (2024-02-29)
+
+
+### Features
+
+* **ISCT-120:** fix group dropdown ([131897d](https://github.com/ironSource/fusion-ui/commit/131897dd28449679652753f6ec7510f30016d1ba))
+
 ## [7.0.0-rc.27](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.26...v7.0.0-rc.27) (2024-02-25)
 
 
