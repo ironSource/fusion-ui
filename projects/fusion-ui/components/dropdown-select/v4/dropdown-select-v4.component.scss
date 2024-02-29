@@ -118,6 +118,9 @@
     .fu-dropdown-select-wrapper{
       background-color: transparent;
       @extend %font-v4-button;
+      .fu-dropdown-select-icon{
+        color: var(--text-primary, #{$color-v4-text-primary});
+      }
       &:hover {
         background-color: var(--action-hover, #{$color-v4-action-hover});
       }
