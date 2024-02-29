@@ -1,5 +1,6 @@
 import {expect, test} from '@playwright/test';
 import {ButtonPage} from './button-page';
+
 let buttonPage: ButtonPage;
 
 test.beforeEach(async ({page}) => {
@@ -11,7 +12,6 @@ test('Verify button functionality', async () => {
     await buttonPage.waitForComponent();
     await buttonPage.clickOnButton();
     const buttonText = await buttonPage.getButtonText();
-    console.log('buttonText: ', buttonText.split(''));
     expect(buttonText).toContain(' Default');
 });
 

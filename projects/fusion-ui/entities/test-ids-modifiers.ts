@@ -9,6 +9,51 @@ export enum ButtonTestIdModifiers {
     LOADER = 'button-loader',
     CONTENT = 'button-content'
 }
+
+export enum DropdownTestIdModifiers {
+    TRIGGER = 'dd-trigger',
+    WRAPPER = 'dd-wrapper',
+    BUTTON = 'dd-button',
+    BUTTON_WRAPPER = 'dd-button-wrapper',
+    BUTTON_CONTENT = 'dd-button-content',
+    BUTTON_CLEAR = 'dd-button-clear',
+    LABEL = 'dd-label',
+    LIST_CONTAINER = 'dd-list-container',
+    SEARCH = 'dd-search',
+    TITLE = 'dd-title',
+    ACTION_CANCEL = 'dd-action-cancel',
+    ACTION_APPLY = 'dd-action-apply',
+    ACTION_CLEAR_ALL = 'dd-action-clear-all',
+    HELPER_TEXT = 'dd-helper-text',
+    HELPER_TEXT_ERROR = 'dd-helper-text-error',
+    SELECT_ALL = 'dd-select-all',
+    NO_RESULT = 'dd-no-result'
+}
+
+export enum FieldHelpTextTestIdModifiers {
+    CONTAINER = 'field-help-text-container',
+    TEXT = 'field-help-text-text',
+    ICON = 'field-help-text-icon'
+}
+
+export enum FieldLabelTestIdModifiers {
+    CONTAINER = 'field-label-container',
+    TEXT = 'field-label-text',
+    MANDATORY = 'field-label-mandatory',
+    TOOLTIP = 'field-label-help-tooltip'
+}
+
+export enum InputTestIdModifiers {
+    WRAPPER = 'input-wrapper',
+    TOOLTIP = 'input-tooltip',
+    MANDATORY = 'input-mandatory',
+    LABEL_CONTAINER = 'input-label-container',
+    LABEL_TEXT = 'input-label-text',
+    FIELD = 'input-field',
+    EXTRA_TEXT = 'input-extra-text',
+    TOGGLE_PASSWORD = 'input-toggle-password-icon'
+}
+
 export enum IncludeExcludeTestIdModifiers {
     INCLUDE_EXCLUDE = 'ie',
     CHIP_FILTER_LABEL = 'ie-chf-label',
@@ -38,7 +83,8 @@ export enum ModalTestIdModifiers {
 
 export enum SearchTestIdModifiers {
     INPUT = 'search-input',
-    CLEAR_BUTTON = 'search-clear-button'
+    CLEAR_BUTTON = 'search-clear-button',
+    FIELD = 'search-field'
 }
 
 export enum TableTestIdModifiers {

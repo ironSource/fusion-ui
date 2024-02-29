@@ -1,6 +1,6 @@
 import {Page} from '@playwright/test';
-
-// import {ButtonTestIdModifiers} from "@ironsource/fusion-ui";
+import {getTestId} from '../../global/utils';
+import {ButtonTestIdModifiers} from '@ironsource/fusion-ui/entities';
 
 export class ButtonComponent {
     readonly page: Page;
@@ -10,14 +10,12 @@ export class ButtonComponent {
     }
 
     async waitForComponent({testId}: {testId: string}) {
-        // const loadedPageSelector = `[data-testid='${testId}--${ButtonTestIdModifiers.BUTTON}']`;
-        const loadedPageSelector = `[data-testid='${testId}--button']`;
-        console.log('loadedPageSelector', loadedPageSelector);
+        const loadedPageSelector = `[data-testid='${getTestId(testId, ButtonTestIdModifiers.BUTTON)}']`;
         await this.page.waitForSelector(loadedPageSelector);
     }
 
     async clickOnButton({testId}: {testId: string}) {
-        const loadedPageSelector = `[data-testid='${testId}--button']`;
+        const loadedPageSelector = `[data-testid='${getTestId(testId, ButtonTestIdModifiers.BUTTON)}']`;
         await this.page.click(loadedPageSelector);
     }
 
@@ -30,9 +28,7 @@ export class ButtonComponent {
     }
 
     async getButtonText({testId}: {testId: string}) {
-        const loadedPageSelector = `${testId}--button`;
-
-        const buttonSelector = this.page.getByTestId(loadedPageSelector).locator('.fu-button-content');
+        const buttonSelector = this.page.getByTestId(getTestId(testId, ButtonTestIdModifiers.BUTTON)).locator('.fu-button-content');
         return buttonSelector.textContent();
     }
 

@@ -6,17 +6,18 @@ export const addPropsToUrl = (props: ComponentParams, url: string): string => {
 };
 
 export const createStoryBookComponentPath = (componentId: string, componentParams: ComponentParams = {}) => {
-    const additionalParamsValues: string[] = [];
-    Object.entries(componentParams).forEach(([key, value]: [string, string]) => {
-        (additionalParamsValues as string[]).push(`${key}:${value}`);
-    });
+    const args = Object.entries(componentParams)
+        .map(([key, value]: [string, string]) => `${key}:${value}`)
+        .join(';');
+
     const props = {
         id: componentId,
         viewMode: 'story',
-        args: additionalParamsValues.join(';')
+        args
     };
+
     const url = 'iframe.html';
     return addPropsToUrl(props, url);
 };
 
-export const getTestId = (testId: string, testIdModifier: string) => `${testId}-${testIdModifier}`;
+export const getTestId = (testId: string, testIdModifier: string) => `${testId}--${testIdModifier}`;

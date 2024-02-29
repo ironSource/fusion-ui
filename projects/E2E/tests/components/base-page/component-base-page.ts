@@ -22,10 +22,8 @@ export class ComponentBasePage {
         };
 
         await this.page.goto(createStoryBookComponentPath(gotoParams.storyId || this.componentId, componentParams));
-        // await this.page.waitForTimeout(2000)
-        //console.log('this.loadedPageSelector', this.loadedPageSelector);
-        // const x = await this.page.locator("[data-testid='buttonTestId--button']").textContent();
-        // console.log('x: ', x);
-        await this.page.waitForSelector('.fusion-v4');
+        console.log('testid in goto', this.testId);
+        const loadedPageSelector = `[data-testid='${this.testId}']`;
+        await this.page.waitForSelector(loadedPageSelector);
     }
 }
