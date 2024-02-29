@@ -3,6 +3,12 @@ export enum ChipFilterTestIdModifiers {
     RESET_BUTTON = 'chf-reset-button'
 }
 
+export enum ButtonTestIdModifiers {
+    BUTTON = 'button',
+    ICON = 'button-icon',
+    LOADER = 'button-loader',
+    CONTENT = 'button-content'
+}
 export enum IncludeExcludeTestIdModifiers {
     INCLUDE_EXCLUDE = 'ie',
     CHIP_FILTER_LABEL = 'ie-chf-label',

@@ -1,10 +1,10 @@
-import {StoryFn, Meta} from '@storybook/angular';
-import {moduleMetadata} from '@storybook/angular';
+import {Meta, moduleMetadata, StoryFn} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {environment} from '../../../../../../stories/environments/environment';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {ButtonComponent} from './button.component';
+// import {defaultTestId} from 'projects/E2E/tests/components/button/consts';
 
 export default {
     title: 'V4/Components/Buttons/Button',
@@ -28,7 +28,8 @@ export default {
         color: 'primary',
         variant: 'contained',
         startIconName: '',
-        endIconName: ''
+        endIconName: '',
+        testId: 'buttonTestId'
     },
     argsTypes: {
         disabled: {
@@ -51,11 +52,12 @@ export default {
 
 const ButtonTemplate: StoryFn<ButtonComponent> = (args: ButtonComponent) => ({
     props: args,
-    template: `<fusion-button 
-[color]="color" 
-[variant]="variant" 
-[size]="size" 
-[disabled]="disabled" 
+    template: `<fusion-button
+[color]="color"
+[variant]="variant"
+[size]="size"
+[testId]="testId"
+[disabled]="disabled"
 [loading]="loading"
 [startIconName]="startIconName"
 [endIconName]="endIconName"
