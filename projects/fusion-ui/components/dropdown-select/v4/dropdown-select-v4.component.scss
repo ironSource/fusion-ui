@@ -143,4 +143,8 @@
       border-color: transparent;
     }
   }
+
+  &:has(.fu-dropdown-select-wrapper.fu-disabled){
+    pointer-events: none;
+  }
 }
