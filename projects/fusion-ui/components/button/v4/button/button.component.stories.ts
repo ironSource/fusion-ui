@@ -134,6 +134,7 @@ export const Icons = {
     args: {color: 'primary', variant: 'contained', startIconName: 'ph/bold/plus', endIconName: 'ph/caret-down'}
 };
 
+/*
 export const CustomIconColor = {
     render: ButtonTemplate,
     args: {
@@ -143,7 +144,8 @@ export const CustomIconColor = {
         size: 'small',
         startIconName: 'ph/warning-circle',
         startIconColor: 'var(--error-darker, #C62A2F)',
-        /*        endIconName: 'ph/caret-down',*/
+        /!*        endIconName: 'ph/caret-down',*!/
         selected: false
     }
 };
+*/
