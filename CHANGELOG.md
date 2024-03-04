@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [7.0.0-rc.32](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.31...v7.0.0-rc.32) (2024-03-04)
+
+
+### Features
+
+* **ISCT-120:** fix modal v1 button ([4429f23](https://github.com/ironSource/fusion-ui/commit/4429f237a3f5bdac9f297867edcd0ddd6f20a9f7))
+
 ## [7.0.0-rc.31](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.30...v7.0.0-rc.31) (2024-03-03)
 
 
