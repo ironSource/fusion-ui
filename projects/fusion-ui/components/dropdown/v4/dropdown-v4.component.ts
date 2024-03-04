@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, forwardRef, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef, Input, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DropdownBaseComponent} from '@ironsource/fusion-ui/components/dropdown/common/base';
 import {DropdownService} from '@ironsource/fusion-ui/components/dropdown';
@@ -11,6 +11,8 @@ import {DropdownSearchComponent} from '@ironsource/fusion-ui/components/dropdown
 import {DropdownOptionsListComponent} from '@ironsource/fusion-ui/components/dropdown-options-list/v4';
 import {DropdownTriggerSize} from './dropdown-v4.entities';
 import {LoaderComponent} from '@ironsource/fusion-ui/components/loader/v4';
+import {GenericPipe} from '@ironsource/fusion-ui';
+import {defaultTestId} from 'projects/E2E/tests/components/dropdown/consts';
 
 @Component({
     selector: 'fusion-dropdown',
@@ -23,7 +25,8 @@ import {LoaderComponent} from '@ironsource/fusion-ui/components/loader/v4';
         DropdownSelectComponent,
         DropdownSearchComponent,
         DropdownOptionsListComponent,
-        LoaderComponent
+        LoaderComponent,
+        GenericPipe
     ],
     host: {class: 'fusion-v4'},
     templateUrl: './dropdown-v4.component.html',
@@ -42,4 +45,5 @@ import {LoaderComponent} from '@ironsource/fusion-ui/components/loader/v4';
 export class DropdownV4Component extends DropdownBaseComponent {
     @Input() size: DropdownTriggerSize = 'medium';
     @Input() triggerMode: 'button' | 'button-text' | 'default' = 'default';
+    @Output() testId: string = defaultTestId;
 }

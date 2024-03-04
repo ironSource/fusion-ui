@@ -11,7 +11,8 @@ export enum ButtonTestIdModifiers {
 }
 
 export enum DropdownTestIdModifiers {
-    TRIGGER = 'dd-trigger',
+    TRIGGER_BY_NAME = 'dd-trigger-by-name',
+    TRIGGER_BY_INDEX = 'dd-trigger-by-index',
     WRAPPER = 'dd-wrapper',
     BUTTON = 'dd-button',
     BUTTON_WRAPPER = 'dd-button-wrapper',
@@ -28,6 +29,51 @@ export enum DropdownTestIdModifiers {
     HELPER_TEXT_ERROR = 'dd-helper-text-error',
     SELECT_ALL = 'dd-select-all',
     NO_RESULT = 'dd-no-result'
+}
+
+export enum MultiDropdownTestIdModifiers {
+    WRAPPER = 'multi-dropdown-wrapper',
+    TRIGGER = 'multi-dropdown-trigger',
+    DEFAULT_TRIGGER = 'multi-dropdown-default-trigger',
+    SEARCH_INPUT = 'multi-dropdown-search-input',
+    OPTIONS_HOLDER = 'multi-dropdown-options-holder',
+    SELECT_ALL_CHECKBOX = 'multi-dropdown-select-all-checkbox',
+    OPTION = 'multi-dropdown-option',
+    GROUP_OPTION = 'multi-dropdown-group-option',
+    PARENT_OPTION = 'multi-dropdown-parent-option',
+    REGULAR_OPTION_LABEL = 'multi-dropdown-regular-option-label',
+    GROUP_NAME = 'multi-dropdown-group-name',
+    SUBGROUP_OPTIONS = 'multi-dropdown-subgroup-options',
+    ACTIONS_HOLDER = 'multi-dropdown-actions-holder',
+    CLEAR_ALL_BUTTON = 'multi-dropdown-clear-all-button',
+    CANCEL_BUTTON = 'multi-dropdown-cancel-button',
+    APPLY_BUTTON = 'multi-dropdown-apply-button',
+    LOADER_HOLDER = 'multi-dropdown-loader-holder',
+    NO_RESULTS = 'multi-dropdown-no-results',
+    CHIP_CONTENT = 'multi-dropdown-chip-content',
+    CHIP_TEXT = 'multi-dropdown-chip-text'
+}
+
+export enum ToggleButtonGroupTestIdModifiers {
+    WRAPPER = 'toggle-button-group-wrapper',
+    OPTION = 'toggle-button-group-option',
+    OPTION_RADIO_INPUT = 'toggle-button-group-option-radio-input',
+    OPTION_ICON = 'toggle-button-group-option-icon',
+    OPTION_LABEL = 'toggle-button-group-option-label'
+}
+
+export enum TrendIndicatorTestIdModifiers {
+    CHIP = 'trend-indicator-chip',
+    ICON = 'trend-indicator-icon',
+    VALUE = 'trend-indicator-value'
+}
+
+export enum TabsTestIdModifiers {
+    TABS_WRAPPER = 'tabs-wrapper',
+    TAB = 'tab',
+    TAB_CONTENT = 'tab-content',
+    SELECTED_TAB = 'selected-tab',
+    DISABLED_TAB = 'disabled-tab'
 }
 
 export enum FieldHelpTextTestIdModifiers {
@@ -52,6 +98,15 @@ export enum InputTestIdModifiers {
     FIELD = 'input-field',
     EXTRA_TEXT = 'input-extra-text',
     TOGGLE_PASSWORD = 'input-toggle-password-icon'
+}
+
+export enum ToggleTestIdModifiers {
+    WRAPPER = 'toggle-wrapper',
+    BODY = 'toggle-body',
+    FIELD = 'toggle-field',
+    TEXT = 'toggle-text',
+    HELPER_TEXT = 'toggle-helper-text',
+    ERROR_TEXT = 'toggle-error-text'
 }
 
 export enum IncludeExcludeTestIdModifiers {
@@ -79,6 +134,46 @@ export enum ModalTestIdModifiers {
     MODAL_SUBMIT_BUTTON = 'modal-submit-button',
     MODAL_CANCEL_BUTTON = 'modal-cancel-button',
     MODAL_ERROR = 'modal-error'
+}
+
+export enum ChartTestIdModifiers {
+    WRAPPER = 'chart-wrapper',
+    CHART = 'chart',
+    CHART_CANVAS = 'chart-canvas',
+    TOOLTIP = 'chart-tooltip',
+    TOOLTIP_WRAPPER = 'chart-tooltip-wrapper',
+    TOOLTIP_COUNTRY_FLAG = 'chart-tooltip-country-flag',
+    TOOLTIP_COUNTRY_NAME = 'chart-tooltip-country-name',
+    TOOLTIP_ITEM = 'chart-tooltip-item',
+    TOOLTIP_ITEM_COLOR = 'chart-tooltip-item-color',
+    TOOLTIP_ITEM_LABEL = 'chart-tooltip-item-label',
+    TOOLTIP_ITEM_VALUE = 'chart-tooltip-item-value',
+    LABELS_WRAPPER = 'chart-labels-wrapper',
+    LABEL = 'chart-label',
+    LABEL_COLOR = 'chart-label-color',
+    LABEL_TEXT = 'chart-label-text'
+}
+
+export enum TooltipTestIdModifiers {
+    WRAPPER = 'tooltip-wrapper',
+    TITLE = 'tooltip-title',
+    DESCRIPTION = 'tooltip-description',
+    CLOSE_BUTTON = 'tooltip-close-button',
+    CONTENT = 'tooltip-content',
+    ALERT = 'tooltip-alert',
+    ALERT_DESCRIPTION = 'tooltip-alert-description',
+    ALERT_ACTION_BUTTON = 'tooltip-alert-action-button',
+    FOOTER = 'tooltip-footer',
+    SECONDARY_BUTTON = 'tooltip-secondary-button',
+    PRIMARY_BUTTON = 'tooltip-primary-button'
+}
+
+export enum ChartLabelTestIdModifiers {
+    WRAPPER = 'chart-labels-wrapper',
+    LABEL = 'chart-label',
+    LABEL_COLOR = 'chart-label-color',
+    LABEL_ICON = 'chart-label-icon',
+    LABEL_TEXT = 'chart-label-text'
 }
 
 export enum SearchTestIdModifiers {

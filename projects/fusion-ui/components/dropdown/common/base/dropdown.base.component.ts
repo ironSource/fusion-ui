@@ -3,6 +3,7 @@ import {
     Directive,
     ElementRef,
     EventEmitter,
+    HostBinding,
     HostListener,
     Injector,
     Input,
@@ -33,9 +34,12 @@ import {DropdownSelectConfigurations} from '@ironsource/fusion-ui/components/dro
 import {DROPDOWN_DEBOUNCE_TIME, DROPDOWN_OPTIONS_WITHOUT_SCROLL} from './dropdown-config';
 import {BackendPagination, ClosedOptions, DropdownPlaceholderConfiguration} from '@ironsource/fusion-ui/components/dropdown/entities';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
+import {DropdownTestIdModifiers, TestIdsService} from '@ironsource/fusion-ui';
 
 @Directive()
 export abstract class DropdownBaseComponent extends ApiBase implements OnInit, OnDestroy, OnChanges, ControlValueAccessor {
+    @Input() testId: string;
+
     @Input() set options(value: DropdownOption[]) {
         this.optionsState = this.cloneOptions(value);
         this.displayedOptions$.next(this.parseOptions(this.optionsState));
@@ -83,6 +87,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     @Input() mappingOptions: any;
     /** @internal */
     @Input() limitOptions = 10;
+
     /** @internal */
     @Input() set placeholderLocation(location: 'right' | 'left') {
         if (location) {
@@ -90,21 +95,25 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
             this._isLocatedRight = 'right' === location;
         }
     }
+
     /** @internal */
     @Input() set loading(value: boolean) {
         this.isLoadingManuallyChanged = true;
         this.loadingState = value;
     }
+
     /** @ignore */
     @Input() strictSearch: boolean;
     /** @ignore */
     @Input() arrowNavigation: boolean;
+
     /** @internal */
     @Input()
     set error(error: string) {
         this._error = error;
         this.dropdownSelectConfigurations$.next(this.getDropdownSelectConfigurations());
     }
+
     get error(): string {
         return this._error;
     }
@@ -114,10 +123,12 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     set optionsTitle(value: string) {
         this._optionsTitle = value;
     }
+
     /** @ignore */
     get optionsTitle(): string {
         return this._optionsTitle;
     }
+
     /** @ignore */
     @Input() optionRightHoverText;
     /** @ignore */
@@ -126,15 +137,18 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     @Input() optionCloseIcon: boolean;
     /** @ignore */
     @Input() helper: string;
+
     /** @ignore */
     @Input() set backendPagination(value: BackendPagination) {
         this.onBackendPaginationChanged(value);
         this.backendPaginationState = value;
     }
+
     /** @ignore */
     @Input() isTabMode = false;
     /** @ignore */
     @Input() isMultiRawDisplay = false;
+
     /** @internal */
     @Input() set placeholder(value: string | DropdownPlaceholderConfiguration) {
         if (typeof value === 'string') {
@@ -145,6 +159,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
             this.forcePlaceholderOnSelection = value?.isForcedPlaceholder ? value?.isForcedPlaceholder : this.forcePlaceholderOnSelection;
         }
     }
+
     /** @ignore */
     @Input() optionsRenderByHover = true;
     /** @internal */
@@ -245,6 +260,14 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
 
     private parentWithOverflow: HTMLElement;
 
+    testIdDropdownModifiers: typeof DropdownTestIdModifiers = DropdownTestIdModifiers;
+
+    testIdsService: TestIdsService = this.injector.get(TestIdsService);
+
+    @HostBinding('attr.data-testid') get testAttribute(): string {
+        return this.testIdsService.getTestAttribute(this.testId, this.testIdDropdownModifiers.BUTTON);
+    }
+
     get filteredOptions(): DropdownOption[] {
         return this.filteredOptionsState;
     }
@@ -259,6 +282,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     get isLocatedLeft() {
         return this._isLocatedLeft;
     }
+
     get isLocatedRight() {
         return this._isLocatedRight;
     }
@@ -338,6 +362,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
 
         this.initListeners();
     }
+
     /** @ignore */
     getDropdownSelectConfigurations(): DropdownSelectConfigurations {
         return {
@@ -385,6 +410,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
         }
         this.dropdownSelectConfigurations$.next(this.getDropdownSelectConfigurations());
     }
+
     /** @ignore */
     initListeners() {
         this.dropdownSelectConfigurations$.next(this.getDropdownSelectConfigurations());
@@ -532,6 +558,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
             this.isTabMode && 'is-tab-mode'
         ].filter(Boolean);
     }
+
     /** @ignore */
     parseOptions(options: DropdownOption[]): DropdownOption[] {
         if (options) {
@@ -574,6 +601,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
             return [];
         }
     }
+
     /** @ignore */
     isSelected(option): boolean {
         return (
@@ -641,6 +669,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
             }
         }
     }
+
     /** @ignore */
     onScroll($event) {
         if (this.options) {
@@ -699,18 +728,22 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
             this.doChanges(option);
         }
     }
+
     /** @ignore */
     changeConfig(val: string) {
         this.element.nativeElement.style.setProperty('--fu-chip-max-width', val);
     }
+
     /** @ignore */
     valueSelected() {
         return this.optionSelected$.asObservable().pipe(map(value => ({value, isSelected: !!value})));
     }
+
     /** @ignore */
     open() {
         this.trigger.nativeElement.click();
     }
+
     /** @ignore */
     onCloseIconClicked(option: DropdownOption) {
         this.optionCloseIconClicked.emit(option);
@@ -923,12 +956,15 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
         }
         this.setOptionsAndLabel();
     }
+
     /** @ignore */
     registerOnChange(fn: any): void {
         this.propagateChange = fn;
     }
+
     /** @ignore */
     registerOnTouched(): void {}
+
     /** @ignore */
     setDisabledState?(isDisabled: boolean): void {
         this.isDisabled = isDisabled;

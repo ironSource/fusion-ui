@@ -22,7 +22,6 @@ export class ComponentBasePage {
         };
 
         await this.page.goto(createStoryBookComponentPath(gotoParams.storyId || this.componentId, componentParams));
-        console.log('testid in goto', this.testId);
         const loadedPageSelector = `[data-testid='${this.testId}']`;
         await this.page.waitForSelector(loadedPageSelector);
     }

@@ -1,0 +1,19 @@
+{
+  "name": "e2e",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "pw:ci": "npx playwright test --reporter=html",
+    "pw:local": "BASE_URL=http://localhost:6008/ npx playwright test",
+    "pw:ui": "BASE_URL=https://mobile-shared-ui.ironsrc.mobi/branch_release-2.x.x/ npx playwright test --ui",
+    "pw:ui:local": "BASE_URL=http://localhost:6008/ npx playwright test --ui"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.42.0",
+    "@types/node": "^20.11.22"
+  }
+}
