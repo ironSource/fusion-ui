@@ -4,3 +4,7 @@
 @import './border-radius';
 @import './spacings';
 @import './grid';
+
+body{
+  -webkit-font-smoothing: antialiased;
+}
