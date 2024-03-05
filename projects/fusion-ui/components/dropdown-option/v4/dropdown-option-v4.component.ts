@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DropdownOptionBaseComponent} from '@ironsource/fusion-ui/components/dropdown-option/common/base';
 import {DropdownService} from '@ironsource/fusion-ui/components/dropdown';
@@ -7,6 +7,7 @@ import {FlagComponent} from '@ironsource/fusion-ui/components/flag/v4';
 import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
+import {defaultTestId} from 'projects/E2E/tests/components/dropdown/consts';
 
 @Component({
     selector: 'fusion-dropdown-option',
@@ -17,4 +18,6 @@ import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
     styleUrls: ['./dropdown-option-v4.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DropdownOptionV4Component extends DropdownOptionBaseComponent {}
+export class DropdownOptionV4Component extends DropdownOptionBaseComponent {
+    @Output() testId: string = defaultTestId;
+}

@@ -11,10 +11,10 @@ export enum ButtonTestIdModifiers {
 }
 
 export enum DropdownTestIdModifiers {
-    TRIGGER_BY_NAME = 'dd-trigger-by-name',
-    TRIGGER_BY_INDEX = 'dd-trigger-by-index',
+    TRIGGER = 'dd-trigger',
     WRAPPER = 'dd-wrapper',
     BUTTON = 'dd-button',
+    LOADING = 'dd-loading',
     BUTTON_WRAPPER = 'dd-button-wrapper',
     BUTTON_CONTENT = 'dd-button-content',
     BUTTON_CLEAR = 'dd-button-clear',

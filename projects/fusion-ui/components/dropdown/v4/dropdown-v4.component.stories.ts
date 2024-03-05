@@ -10,7 +10,7 @@ import {DropdownTriggerSize} from './dropdown-v4.entities';
 import {getRandomAppImage, getRandomNumber} from '../../../storybook-foundations/mocking/app-images-mock';
 import {MOCK_OPTIONS_COUNTRIES} from '../v3/stories/dropdown.mock';
 import {CountryCode} from '@ironsource/fusion-ui/components/flag/v4';
-import {defaultTestId} from 'projects/E2E/tests/components/dropdown/consts';
+import {defaultTestId, testIdWithIndex} from 'projects/E2E/tests/components/dropdown/consts';
 
 // region mock options data
 const longOptionsList: DropdownOption[] = Array.from({length: 100}, (_, i) => ({
@@ -133,7 +133,7 @@ const templateCommon = `
 [placeholder]="placeholder" [options]="optionsFood" [formControl]="formControl" [triggerMode]="triggerMode"></fusion-dropdown>
     </div>
     <div style="width: 240px;">
-        <fusion-dropdown [size]="size" [search]="search" [testId]="testId"
+        <fusion-dropdown [size]="size" [search]="search" [testId]="testIdWithIndex"
  [placeholder]="placeholder" [options]="options" [formControl]="formControl" [triggerMode]="triggerMode"></fusion-dropdown>
     </div>
 </div>
@@ -176,7 +176,8 @@ export default {
         options: longOptionsList,
         optionsFood: foodOptionsList,
         formControl: formControlOptionsList,
-        testId: defaultTestId
+        testId: defaultTestId,
+        testIdWithIndex: testIdWithIndex
     }
 } as Meta<DropdownV4Component>;
 

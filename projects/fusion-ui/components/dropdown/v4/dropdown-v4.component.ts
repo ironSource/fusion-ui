@@ -12,7 +12,7 @@ import {DropdownOptionsListComponent} from '@ironsource/fusion-ui/components/dro
 import {DropdownTriggerSize} from './dropdown-v4.entities';
 import {LoaderComponent} from '@ironsource/fusion-ui/components/loader/v4';
 import {GenericPipe} from '@ironsource/fusion-ui';
-import {defaultTestId} from 'projects/E2E/tests/components/dropdown/consts';
+import {testIdWithIndex} from 'projects/E2E/tests/components/dropdown/consts';
 
 @Component({
     selector: 'fusion-dropdown',
@@ -45,5 +45,5 @@ import {defaultTestId} from 'projects/E2E/tests/components/dropdown/consts';
 export class DropdownV4Component extends DropdownBaseComponent {
     @Input() size: DropdownTriggerSize = 'medium';
     @Input() triggerMode: 'button' | 'button-text' | 'default' = 'default';
-    @Output() testId: string = defaultTestId;
+    @Output() testId: string = testIdWithIndex;
 }

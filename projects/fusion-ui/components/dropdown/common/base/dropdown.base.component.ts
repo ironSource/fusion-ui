@@ -17,10 +17,10 @@ import {
 } from '@angular/core';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {ControlValueAccessor, FormControl} from '@angular/forms';
-import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
-import {debounceTime, distinctUntilChanged, map, startWith, switchMapTo, take, takeUntil, tap} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, map, switchMapTo, take, takeUntil} from 'rxjs/operators';
 import {FilterByFieldPipe} from '@ironsource/fusion-ui/pipes/collection';
 import {detectChangesDecorator} from '@ironsource/fusion-ui/decorators';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
@@ -265,7 +265,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     testIdsService: TestIdsService = this.injector.get(TestIdsService);
 
     @HostBinding('attr.data-testid') get testAttribute(): string {
-        return this.testIdsService.getTestAttribute(this.testId, this.testIdDropdownModifiers.BUTTON);
+        return this.testId;
     }
 
     get filteredOptions(): DropdownOption[] {

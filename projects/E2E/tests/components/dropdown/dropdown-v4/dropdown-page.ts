@@ -1,8 +1,9 @@
 import {Page} from '@playwright/test';
-import {defaultTestId, dropdownDefaultStoryId, loadedPageSelector} from './consts';
+import {dropdownDefaultStoryId, loadedPageSelector} from './consts';
 import {DropdownComponent} from './dropdown-component';
 import {ComponentBasePage} from '../../base-page/component-base-page';
 import {ComponentProps} from '../../base-page/types';
+import {testIdWithIndex} from '../consts';
 
 export class DropdownPage extends ComponentBasePage {
     readonly component: DropdownComponent;
@@ -10,7 +11,7 @@ export class DropdownPage extends ComponentBasePage {
     constructor(page: Page) {
         const dropdownProps: ComponentProps = {
             page: page,
-            testId: defaultTestId,
+            testId: testIdWithIndex,
             componentId: dropdownDefaultStoryId,
             loadedPageSelector: loadedPageSelector
         };

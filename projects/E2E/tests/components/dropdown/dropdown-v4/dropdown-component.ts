@@ -55,7 +55,7 @@ export class DropdownComponent extends BaseDropdownComponent {
         await this.page.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD)).fill(searchTerm);
         return this.page
             .getByTestId(getTestId(testId, DropdownTestIdModifiers.LIST_CONTAINER))
-            .locator('ul > li span')
+            .locator('fusion-dropdown-options-list > li span')
             .first()
             .textContent();
     }
@@ -67,7 +67,7 @@ export class DropdownComponent extends BaseDropdownComponent {
 
     async isDisabled({testId}: {testId: string}) {
         const ddTriggerSelector = await this.page
-            .getByTestId(getTestId(testId, DropdownTestIdModifiers.TRIGGER_BY_INDEX))
+            .getByTestId(getTestId(testId, DropdownTestIdModifiers.TRIGGER))
             .locator('.button__container--disabled');
 
         return ddTriggerSelector.isVisible();

@@ -15,7 +15,7 @@ test('Verify wait for component', async () => {
 
 test('Select dropdown item by index', async () => {
     await component.goto();
-    await component.selectDropdownOptionByIndex(2);
+    await component.selectDropdownOptionByIndex(5);
     const actualItem = await component.getSelectedLabel();
     expect(actualItem).toBe('Option_5');
 });

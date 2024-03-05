@@ -3,10 +3,9 @@
      [clickOutsideActivate]="isOpen$ | async"
      (fusionClickOutside)="onOutsideClick($event)"
      [ngClass]="getHolderCSSClasses()"
-     [attr.data-testid]=testId
->
+     [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.TRIGGER">
     <div class="fu-dd-custom-trigger" *ngIf="templateRef" #trigger (click)="openDropdown($event)"
-         [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.TRIGGER_BY_NAME">
+         [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.TRIGGER">
         <ng-container [ngTemplateOutlet]="templateRef"></ng-container>
     </div>
 
@@ -25,7 +24,7 @@
                                 [country]="triggerConfiguration.labelFlag"
                                 [size]="size"
                                 (click)="openDropdown($event)"
-                                [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.TRIGGER_BY_INDEX"
+                                [testId]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.BUTTON_CONTENT"
         ></fusion-dropdown-select>
     </ng-template>
 
@@ -53,7 +52,9 @@
                 <!--search input-->
             </ng-container>
             <!--elements shown without selector-->
-            <div class="options-holder" (scroll)="onScroll($event)" #optionsHolder>
+            <div class="options-holder" (scroll)="onScroll($event)"
+                 [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.LIST_CONTAINER"
+                 #optionsHolder>
                 <ul class="options" [class.fu-loading]="loading">
                     <fusion-dropdown-options-list
                         [displayedOptions]="displayedOptionsObservable$ | async"

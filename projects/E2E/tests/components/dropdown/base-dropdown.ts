@@ -16,11 +16,11 @@ export class BaseDropdownComponent {
 
     async selectDropdownOptionByIndex({testId, index}: SelectionByIndex) {
         await this.openDropdownComponent({testId: testId});
-        const locator = await this.page
+        await this.page
             .getByTestId(getTestId(testId, DropdownTestIdModifiers.LIST_CONTAINER))
-            .locator('ul > li')
-            .nth(index);
-        locator.click();
+            .locator('fusion-dropdown-options-list > li')
+            .nth(index)
+            .click();
     }
 
     async getDropdownButtonContent(testId: string) {
@@ -28,21 +28,30 @@ export class BaseDropdownComponent {
     }
 
     async openDropdownComponent({testId}: {testId: string}) {
-        await this.page.getByTestId(getTestId(testId, DropdownTestIdModifiers.TRIGGER_BY_INDEX)).click({position: {x: 15, y: 15}});
+        await this.page.getByTestId(getTestId(testId, DropdownTestIdModifiers.TRIGGER)).click({
+            position: {
+                x: 15,
+                y: 15
+            }
+        });
     }
 
     async selectDropdownOptionByName({testId, name, shouldOpen = true}: SelectionByName) {
         if (shouldOpen) await this.openDropdownComponent({testId: testId});
         await this.page
             .getByTestId(getTestId(testId, DropdownTestIdModifiers.LIST_CONTAINER))
-            .locator('ul > li span', {hasText: name})
+            .locator('fusion-dropdown-options-list > li span', {hasText: name})
             .click();
     }
 
     async selectMultipleItemsByIndex({testId, itemsToSelect}: SelectMultiple) {
         await this.openDropdownComponent({testId: testId});
         for (const i of itemsToSelect) {
-            await this.page.getByTestId(getTestId(testId, DropdownTestIdModifiers.LIST_CONTAINER)).locator('ul > li').nth(i).click();
+            await this.page
+                .getByTestId(getTestId(testId, DropdownTestIdModifiers.LIST_CONTAINER))
+                .locator('fusion-dropdown-options-list > li')
+                .nth(i)
+                .click();
         }
     }
 
@@ -51,7 +60,7 @@ export class BaseDropdownComponent {
         for (const name of itemsToSelect) {
             await this.page
                 .getByTestId(getTestId(testId, DropdownTestIdModifiers.LIST_CONTAINER))
-                .locator('ul > li span', {hasText: name})
+                .locator('fusion-dropdown-options-list > li span', {hasText: name})
                 .first()
                 .click();
         }

@@ -5,6 +5,7 @@ import {ButtonTestIdModifiers, TestIdsService} from '@ironsource/fusion-ui';
 @Directive()
 export class ButtonBaseComponent {
     @Input() testId: string;
+
     /**
      * Set button color type
      * @param value
