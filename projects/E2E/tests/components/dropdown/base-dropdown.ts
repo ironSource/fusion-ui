@@ -40,18 +40,14 @@ export class BaseDropdownComponent {
         if (shouldOpen) await this.openDropdownComponent({testId: testId});
         await this.page
             .getByTestId(getTestId(testId, DropdownTestIdModifiers.LIST_CONTAINER))
-            .locator('fusion-dropdown-options-list > li span', {hasText: name})
+            .locator('fusion-dropdown-options-list > li', {hasText: name})
             .click();
     }
 
     async selectMultipleItemsByIndex({testId, itemsToSelect}: SelectMultiple) {
         await this.openDropdownComponent({testId: testId});
         for (const i of itemsToSelect) {
-            await this.page
-                .getByTestId(getTestId(testId, DropdownTestIdModifiers.LIST_CONTAINER))
-                .locator('fusion-dropdown-options-list > li')
-                .nth(i)
-                .click();
+            await this.page.getByTestId(getTestId(testId, DropdownTestIdModifiers.LIST_CONTAINER)).locator('ul > li').nth(i).click();
         }
     }
 
@@ -60,7 +56,7 @@ export class BaseDropdownComponent {
         for (const name of itemsToSelect) {
             await this.page
                 .getByTestId(getTestId(testId, DropdownTestIdModifiers.LIST_CONTAINER))
-                .locator('fusion-dropdown-options-list > li span', {hasText: name})
+                .locator('ul > li', {hasText: name})
                 .first()
                 .click();
         }

@@ -55,7 +55,7 @@ export class DropdownComponent extends BaseDropdownComponent {
         await this.page.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD)).fill(searchTerm);
         return this.page
             .getByTestId(getTestId(testId, DropdownTestIdModifiers.LIST_CONTAINER))
-            .locator('fusion-dropdown-options-list > li span')
+            .locator('fusion-dropdown-options-list > li')
             .first()
             .textContent();
     }
@@ -78,11 +78,12 @@ export class DropdownComponent extends BaseDropdownComponent {
     }
 
     isSelectAllChecked({testId}: {testId: string}) {
-        return this.page.getByTestId(getTestId(testId, DropdownTestIdModifiers.SELECT_ALL)).locator('.checkbox.input').isChecked();
+        return this.page.getByTestId(getTestId(testId, DropdownTestIdModifiers.SELECT_ALL)).locator('.fu-label-checkbox').isChecked();
     }
 
-    isSelectAllIndeterminate({testId}: {testId: string}) {
-        return this.page.getByTestId(getTestId(testId, DropdownTestIdModifiers.SELECT_ALL)).locator('.icon.indeterminate').isVisible();
+    async isSelectAllIndeterminate({testId}: {testId: string}) {
+        const locator = this.page.getByTestId(getTestId(testId, DropdownTestIdModifiers.SELECT_ALL)).locator('fusion-checkbox');
+        return (await locator.getAttribute('ng-reflect-is-indeterminate')) === 'true';
     }
 
     async removeChipSelection({testId}: {testId: string}) {

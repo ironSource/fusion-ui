@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, forwardRef, Input, TemplateRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef, Input, Output, TemplateRef} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DropdownService} from '@ironsource/fusion-ui/components/dropdown';
 import {NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
@@ -14,6 +14,9 @@ import {ButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
 import {FlagComponent} from '@ironsource/fusion-ui/components/flag/v4';
 import {DropdownSearchComponent} from '@ironsource/fusion-ui/components/dropdown-search/v4';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
+import {GenericPipe} from '@ironsource/fusion-ui';
+import {LoaderComponent} from '@ironsource/fusion-ui/components/loader/v4';
+import {testIdWithIndex} from 'projects/E2E/tests/components/dropdown/consts';
 
 @Component({
     selector: 'fusion-multi-dropdown',
@@ -28,7 +31,9 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
         FlagComponent,
         CheckboxComponent,
         ButtonComponent,
-        DropdownSearchComponent
+        DropdownSearchComponent,
+        LoaderComponent,
+        GenericPipe
     ],
     host: {class: 'fusion-v4'},
     templateUrl: './multi-dropdown-v4.component.html',
@@ -48,6 +53,7 @@ export class MultiDropdownV4Component extends MultiDropdownBaseComponent {
     @Input() size: DropdownTriggerSize = 'medium';
     @Input() optionTemplateRef: TemplateRef<any>;
     @Input() showSelectedFirst = true;
+    @Output() testId: string = testIdWithIndex;
 
     /** @ignore */
     getOptionContent(option: DropdownOption): string {

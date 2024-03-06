@@ -1,14 +1,16 @@
-import {ChangeDetectionStrategy, Component, forwardRef, Input, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef, Injector, Input, OnDestroy, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {InputComponent, InputSize} from '@ironsource/fusion-ui/components/input/v4';
 import {FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
 import {Subject} from 'rxjs';
+import {testIdWithIndex} from 'projects/E2E/tests/components/dropdown/consts';
 import {takeUntil} from 'rxjs/operators';
+import {GenericPipe, InputTestIdModifiers, ModalTestIdModifiers, TestIdsService} from '@ironsource/fusion-ui';
 
 @Component({
     selector: 'fusion-search',
     standalone: true,
-    imports: [CommonModule, ReactiveFormsModule, InputComponent],
+    imports: [CommonModule, ReactiveFormsModule, InputComponent, GenericPipe],
     host: {class: 'fusion-v4'},
     templateUrl: './search-v4.component.html',
     styleUrls: ['./search-v4.component.scss'],
@@ -21,18 +23,24 @@ export class SearchV4Component implements OnInit, OnDestroy {
     set placeholder(value: string) {
         this._placeholder = value;
     }
+
+    constructor(private injector: Injector) {}
+
     get placeholder() {
         return this._placeholder;
     }
+
     private _placeholder: string;
     // endregion
     // region Inputs - size
     @Input() set size(value: InputSize) {
         this._size = value;
     }
+
     get size() {
         return this._size;
     }
+
     private _size: InputSize = 'medium';
     // endregion
 
@@ -105,5 +113,10 @@ export class SearchV4Component implements OnInit, OnDestroy {
             this.searchFormControl.enable();
         }
     }
+
     // endregion
+    protected readonly modalTestIdModifiers = ModalTestIdModifiers;
+    testIdsService: TestIdsService = this.injector.get(TestIdsService);
+    protected readonly InputTestIdModifiers = InputTestIdModifiers;
+    testId: string = testIdWithIndex;
 }

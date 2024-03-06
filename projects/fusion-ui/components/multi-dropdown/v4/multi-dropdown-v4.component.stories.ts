@@ -10,6 +10,7 @@ import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
 import {getRandomAppImage, getRandomNumber} from '@ironsource/fusion-ui/storybook-foundations/mocking/app-images-mock';
 import {MOCK_OPTIONS_COUNTRIES, TOP_COUNTRIES} from '../../../storybook-foundations/mocking/countrues-mock';
 import {CountryCode} from '@ironsource/fusion-ui/components/flag/v4';
+import {defaultTestId, testIdWithIndex} from 'projects/E2E/tests/components/dropdown/consts';
 
 const longOptionsList: DropdownOption[] = Array.from({length: 100}, (_, i) => ({
     id: i,
@@ -141,23 +142,24 @@ const formControl = new FormControl();
 const templateCommon = `
 <div style="display:flex; gap: 14px;">
     <div style="width: 240px;">
-        <fusion-multi-dropdown [selectAllLabel]="selectAllLabel" [size]="size" [search]="search" [placeholder]="placeholder" [options]="optionsFood" [formControl]="formControl"></fusion-multi-dropdown>
+        <fusion-multi-dropdown [selectAllLabel]="selectAllLabel" [size]="size" [search]="search" [placeholder]="placeholder" [options]="optionsFood" [formControl]="formControl" [testId]="testId"></fusion-multi-dropdown>
     </div>
     <div style="width: 240px;">
-        <fusion-multi-dropdown [selectAllLabel]="selectAllLabel" [size]="size" [search]="search" [placeholder]="placeholder" [options]="options" [formControl]="formControl"></fusion-multi-dropdown>
+        <fusion-multi-dropdown [selectAllLabel]="selectAllLabel" [size]="size" [search]="search" [placeholder]="placeholder" [options]="options" [formControl]="formControl" [testId]="testIdWithIndex"></fusion-multi-dropdown>
     </div>
 </div>
 `;
 const templateOneDropdown = `
 <div style="display:flex; gap: 14px;">
     <div style="width: 300px;">
-        <fusion-multi-dropdown 
-            [selectAllLabel]="selectAllLabel" 
-            [size]="size" 
-            [search]="search" 
-            [placeholder]="placeholder" 
-            [options]="options" 
+        <fusion-multi-dropdown
+            [selectAllLabel]="selectAllLabel"
+            [size]="size"
+            [search]="search"
+            [placeholder]="placeholder"
+            [options]="options"
             [formControl]="formControl"
+            [testId]="testId"
         ></fusion-multi-dropdown>
     </div>
 </div>
@@ -165,13 +167,14 @@ const templateOneDropdown = `
 const templateOneDropdownGrouped = `
 <div style="display:flex; gap: 14px;">
     <div style="width: 300px;">
-        <fusion-multi-dropdown 
-            [selectAllLabel]="selectAllLabel" 
-            [size]="size" 
-            [search]="search" 
-            [placeholder]="placeholder" 
-            [optionsGroups]="optionsGroups" 
+        <fusion-multi-dropdown
+            [selectAllLabel]="selectAllLabel"
+            [size]="size"
+            [search]="search"
+            [placeholder]="placeholder"
+            [optionsGroups]="optionsGroups"
             [formControl]="formControl"
+            [testId]="testId"
         ></fusion-multi-dropdown>
     </div>
 </div>
@@ -206,7 +209,9 @@ export default {
         size: 'medium' as DropdownTriggerSize,
         options: longOptionsList,
         optionsFood: foodOptionsList,
-        formControl: formControl
+        formControl: formControl,
+        testId: defaultTestId,
+        testIdWithIndex: testIdWithIndex
     },
     argTypes: {
         formControl: {
