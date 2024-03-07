@@ -23,7 +23,7 @@
                                 [country]="triggerConfiguration.labelFlag"
                                 [size]="size"
                                 (click)="openDropdown($event)"
-                                [testId]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.BUTTON_CONTENT"
+                                [testId]="testId"
         ></fusion-dropdown-select>
     </ng-template>
 
@@ -99,7 +99,6 @@
                 (click)="closeDropdown()"
                 [disabled]="loading"
                 [testId]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.ACTION_CANCEL"
-
             >
                 Cancel
             </fusion-button>

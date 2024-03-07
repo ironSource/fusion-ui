@@ -1,10 +1,10 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Injector, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {DropdownPlaceholder} from '@ironsource/fusion-ui/components/dropdown-select';
 import {CountryCode, FlagComponent} from '@ironsource/fusion-ui/components/flag/v4';
-import {GenericPipe} from '@ironsource/fusion-ui';
+import {DropdownTestIdModifiers, GenericPipe, TestIdsService} from '@ironsource/fusion-ui';
 
 @Component({
     selector: 'fusion-dropdown-select',
@@ -26,4 +26,8 @@ export class DropdownSelectV4Component {
     @Input() iconColor: string;
     @Input() testId: string;
     @Input() country: CountryCode | string;
+    testIdDropdownModifiers: typeof DropdownTestIdModifiers = DropdownTestIdModifiers;
+    testIdsService: TestIdsService = this.injector.get(TestIdsService);
+
+    constructor(private injector: Injector) {}
 }
