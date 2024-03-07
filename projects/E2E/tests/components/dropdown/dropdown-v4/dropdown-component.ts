@@ -52,7 +52,7 @@ export class DropdownComponent extends BaseDropdownComponent {
 
     async searchForItem({testId, searchTerm}: SearchItem) {
         await this.openDropdownComponent({testId});
-        await this.page.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD)).fill(searchTerm);
+        await this.page.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD)).last().fill(searchTerm);
         return this.page
             .getByTestId(getTestId(testId, DropdownTestIdModifiers.LIST_CONTAINER))
             .locator('fusion-dropdown-options-list > li')

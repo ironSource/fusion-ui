@@ -1,5 +1,6 @@
 <label *ngIf="labelText" for="{{id}}" class="fu-label">{{ labelText }}</label>
-<div class="fu-input-wrapper fu-size-{{size}} fu-variant-{{variant}}">
+<div class="fu-input-wrapper fu-size-{{size}} fu-variant-{{variant}}"
+     [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdInputModifiers.WRAPPER">
     <fusion-icon *ngIf="startIcon" class="fu-start-icon" [name]="startIcon"></fusion-icon>
     <div *ngIf="prefix" class="fu-input-prefix">{{ prefix }}</div>
     <input #input
@@ -20,18 +21,21 @@
     />
     <div *ngIf="suffix" class="fu-input-suffix">{{ suffix }}</div>
     <fusion-icon *ngIf="showClear" class="fu-clear-button" name="ph/fill/x-circle"
-                 (click)="clearButtonClicked()"></fusion-icon>
+                 (click)="clearButtonClicked()" [attr.data-testid]="testId"></fusion-icon>
     <fusion-icon *ngIf="showApply" class="fu-apply-button" name="ph/check"
-                 (click)="applyButtonClicked.emit()"></fusion-icon>
+                 (click)="applyButtonClicked.emit()" [attr.data-testid]="testId"></fusion-icon>
     <fusion-icon *ngIf="showPasswordToggleButton$ | async" class="fu-show-password-button"
-                 name="{{type==='password' ? 'ph/eye-slash' : 'ph/eye'}}" (click)="togglePasswordShown()"></fusion-icon>
-    <fusion-icon *ngIf="endIcon" class="fu-end-icon" [name]="endIcon"></fusion-icon>
+                 name="{{type==='password' ? 'ph/eye-slash' : 'ph/eye'}}" (click)="togglePasswordShown()"
+                 [attr.data-testid]="testId"></fusion-icon>
+    <fusion-icon *ngIf="endIcon" class="fu-end-icon" [name]="endIcon" [attr.data-testid]="testId"></fusion-icon>
     <fusion-icon *ngIf="inlineErrorText" [fusionTooltip]="inlineErrorText" class="fu-inline-error-icon"
+                 [attr.data-testid]="testId"
                  name="ph/info"></fusion-icon>
 </div>
 <div *ngIf="helperText || showLengthCounter" class="fu-input-underline">
     <div *ngIf="helperText" class="fu-input-helper fu-variant-{{variant}}">
-        <fusion-icon *ngIf="helperIcon" class="fu-helper-icon" [name]="helperIcon"></fusion-icon>
+        <fusion-icon *ngIf="helperIcon" class="fu-helper-icon" [name]="helperIcon"
+                     [attr.data-testid]="testId"></fusion-icon>
         {{ helperText }}
     </div>
     <div *ngIf="showLengthCounter" class="fu-max-length-counter">{{ (valueLength$ | async) }}

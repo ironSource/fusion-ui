@@ -1,6 +1,6 @@
 import {type Page} from '@playwright/test';
 import {ComponentProps, GotoParams} from './types';
-import {createStoryBookComponentPath} from '../../global/utils';
+import {createStoryBookComponentPath, getTestIdSelector} from '../../global/utils';
 
 export class ComponentBasePage {
     readonly page: Page;
@@ -22,7 +22,7 @@ export class ComponentBasePage {
         };
 
         await this.page.goto(createStoryBookComponentPath(gotoParams.storyId || this.componentId, componentParams));
-        const loadedPageSelector = `[data-testid='${this.testId}']`;
+        const loadedPageSelector = getTestIdSelector(this.testId);
         await this.page.waitForSelector(loadedPageSelector);
     }
 }

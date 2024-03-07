@@ -1,5 +1,5 @@
 import {Page} from '@playwright/test';
-import {getTestId} from '../../global/utils';
+import {getTestId, getTestIdSelector} from '../../global/utils';
 import {ButtonTestIdModifiers} from '@ironsource/fusion-ui/entities';
 
 export class ButtonComponent {
@@ -10,12 +10,13 @@ export class ButtonComponent {
     }
 
     async waitForComponent({testId}: {testId: string}) {
-        const loadedPageSelector = `[data-testid='${getTestId(testId, ButtonTestIdModifiers.BUTTON)}']`;
+        const loadedPageSelector = getTestIdSelector(getTestId(testId, ButtonTestIdModifiers.BUTTON));
         await this.page.waitForSelector(loadedPageSelector);
     }
 
     async clickOnButton({testId}: {testId: string}) {
-        const loadedPageSelector = `[data-testid='${getTestId(testId, ButtonTestIdModifiers.BUTTON)}']`;
+        const loadedPageSelector = getTestIdSelector(getTestId(testId, ButtonTestIdModifiers.BUTTON));
+
         await this.page.click(loadedPageSelector);
     }
 

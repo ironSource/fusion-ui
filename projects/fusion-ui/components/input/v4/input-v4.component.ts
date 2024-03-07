@@ -4,6 +4,8 @@ import {
     ElementRef,
     EventEmitter,
     forwardRef,
+    HostBinding,
+    Injector,
     Input,
     OnDestroy,
     OnInit,
@@ -19,7 +21,7 @@ import {InputSize, InputType, InputVariant} from './input-v4.entities';
 import {takeUntil} from 'rxjs/operators';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
-import {GenericPipe} from '@ironsource/fusion-ui';
+import {GenericPipe, InputTestIdModifiers, ModalTestIdModifiers, TestIdsService} from '@ironsource/fusion-ui';
 import {ModalModule} from '@ironsource/fusion-ui/components/modal';
 
 @Component({
@@ -36,6 +38,16 @@ export class InputV4Component implements OnInit, OnDestroy {
     // region Inputs - id
     @Input() set id(value: string) {
         this._id = value;
+    }
+
+    @Input() testId: string;
+    /** @internal */
+    testIdInputModifiers: typeof InputTestIdModifiers = InputTestIdModifiers;
+    /** @internal */
+    testIdsService: TestIdsService = this.injector.get(TestIdsService);
+
+    @HostBinding('attr.data-testid') get testAttribute(): string {
+        return this.testId;
     }
 
     get id() {
@@ -281,7 +293,7 @@ export class InputV4Component implements OnInit, OnDestroy {
     private inputControlValueChanges$: Observable<any>;
     private _inputValue: string;
 
-    constructor(protected uniqueIdService: UniqueIdService) {}
+    constructor(protected uniqueIdService: UniqueIdService, private injector: Injector) {}
 
     ngOnInit(): void {
         this.inputControlValueChanges$ = this.inputControl.valueChanges;
@@ -357,5 +369,5 @@ export class InputV4Component implements OnInit, OnDestroy {
     }
 
     // endregion
-    @Input() testId: string;
+    protected readonly modalTestIdModifiers = ModalTestIdModifiers;
 }
