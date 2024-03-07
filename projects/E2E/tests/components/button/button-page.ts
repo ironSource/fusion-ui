@@ -36,6 +36,6 @@ export class ButtonPage extends ComponentBasePage {
     }
 
     isButtonDisabled() {
-        return this.component.isButtonDisabled();
+        return this.component.isButtonDisabled({testId: this.testId});
     }
 }

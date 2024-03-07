@@ -33,7 +33,7 @@ export class ButtonComponent {
         return buttonSelector.textContent();
     }
 
-    isButtonDisabled() {
-        return this.page.getByRole('button').isDisabled();
+    isButtonDisabled({testId}: {testId: string}) {
+        return this.page.getByTestId(testId).isDisabled();
     }
 }

@@ -1,5 +1,7 @@
 import {expect, test} from '@playwright/test';
 import {InputsPage} from './inputs-page';
+import {inputsStoryIdWithHelper} from './consts';
+
 let inputsPage: InputsPage;
 
 test.beforeEach(async ({page}) => {
@@ -40,6 +42,7 @@ test('Verify inputs placeholder', async () => {
 test('Verify helper text', async () => {
     const expectedText = 'Helper text';
     await inputsPage.goto({
+        storyId: inputsStoryIdWithHelper,
         additionalComponentParams: {feedbackText: expectedText}
     });
     const helperTextExists = await inputsPage.hasInputExtraText();
