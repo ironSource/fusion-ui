@@ -21,7 +21,7 @@ import {InputSize, InputType, InputVariant} from './input-v4.entities';
 import {takeUntil} from 'rxjs/operators';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
-import {GenericPipe, InputTestIdModifiers, ModalTestIdModifiers, TestIdsService} from '@ironsource/fusion-ui';
+import {FieldHelpTextTestIdModifiers, GenericPipe, InputTestIdModifiers, ModalTestIdModifiers, TestIdsService} from '@ironsource/fusion-ui';
 import {ModalModule} from '@ironsource/fusion-ui/components/modal';
 
 @Component({
@@ -370,4 +370,5 @@ export class InputV4Component implements OnInit, OnDestroy {
 
     // endregion
     protected readonly modalTestIdModifiers = ModalTestIdModifiers;
+    protected readonly FieldHelpTextTestIdModifiers = FieldHelpTextTestIdModifiers;
 }

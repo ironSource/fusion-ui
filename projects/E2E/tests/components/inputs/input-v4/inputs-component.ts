@@ -74,12 +74,12 @@ export class InputsComponent extends BaseInputComponent {
     isPasswordHidden({testId}: {testId: string}) {
         return this.page
             .getByTestId(getTestId(testId, InputTestIdModifiers.TOGGLE_PASSWORD))
-            .locator('.icon.icon-name--eye-slash')
+            .locator('.fu-show-password-button eye-slash')
             .isVisible();
     }
 
     async clearInput({testId}: {testId: string}) {
-        const inputFieldSelector = await this.page.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD));
+        const inputFieldSelector = this.page.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD));
         await inputFieldSelector.clear();
     }
 
@@ -98,13 +98,17 @@ export class InputsComponent extends BaseInputComponent {
     }
 
     async getMaxLengthNumber({testId}: {testId: string}) {
-        const fontCaptionText = await this.getFontCaptionText({testId});
-        return fontCaptionText[1];
+        // const fontCaptionText = await this.getFontCaptionText({testId});
+        // return fontCaptionText[1];
+        const inputFieldSelector = await this.page.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD));
+        return inputFieldSelector.getAttribute('maxlength');
     }
 
     async getActualNumberLength({testId}: {testId: string}) {
-        const fontCaptionText = await this.getFontCaptionText({testId});
-        return fontCaptionText[0];
+        const inputFieldSelector = await this.page.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD));
+        return inputFieldSelector.getAttribute('value').then(value => value.length);
+        // const fontCaptionText = await this.getFontCaptionText({testId});
+        // return fontCaptionText[0];
     }
 
     async getFontCaptionText({testId}: {testId: string}) {

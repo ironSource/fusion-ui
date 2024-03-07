@@ -10,7 +10,8 @@ export class FieldHelpTextComponent {
     }
 
     hasExtraText({testId}: {testId: string}) {
-        return this.page.getByTestId(getTestId(testId, FieldHelpTextTestIdModifiers.TEXT)).isVisible();
+        const byTestId = this.page.getByTestId(getTestId(testId, FieldHelpTextTestIdModifiers.TEXT));
+        return byTestId.isVisible();
     }
 
     getExtraText({testId}: {testId: string}) {

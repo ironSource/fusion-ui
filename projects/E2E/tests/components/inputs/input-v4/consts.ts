@@ -3,6 +3,10 @@ import {getTestId, getTestIdSelector} from '../../../global/utils';
 
 export const inputsStoryId = 'v4-components-inputs-textfield--default';
 export const inputsStoryIdWithHelper = 'v4-components-inputs-textfield--with-helper';
+export const inputsStoryIdWithPassword = 'v4-components-inputs-textfield--password';
+
+export const inputsStoryIdDisabled = 'v4-components-inputs-textfield--disabled';
+export const inputsStoryIdWithLengthCounter = 'v4-components-inputs-textfield--with-length-counter';
 export const defaultTestId = 'inputs-default';
 export const errorTestId = 'error-inputs';
 export const successTestId = 'success-inputs';

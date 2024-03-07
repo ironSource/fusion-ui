@@ -120,7 +120,7 @@ export const Variant: Story = {
         [min]="min"
         [max]="max"
         [maxLength]="maxLength"
-        testId="successTestId"
+        [testId]="successTestId"
       ></fusion-input>
     <fusion-input
         [formControl]="formControl"
@@ -133,7 +133,7 @@ export const Variant: Story = {
         [min]="min"
         [max]="max"
         [maxLength]="maxLength"
-        testId="warningTestId"
+        [testId]="warningTestId"
       ></fusion-input>
 </div>
 `
@@ -245,7 +245,7 @@ export const WithHelper: Story = {
         [min]="min"
         [max]="max"
         [maxLength]="maxLength"
-        [testId]="defaultTestId"
+        [testId]="testId"
       ></fusion-input>
     <fusion-input
         [formControl]="formControl"

@@ -95,6 +95,7 @@ export enum InputTestIdModifiers {
     MANDATORY = 'input-mandatory',
     LABEL_CONTAINER = 'input-label-container',
     LABEL_TEXT = 'input-label-text',
+    HELPER_TEXT = 'input-helper-text',
     FIELD = 'input-field',
     EXTRA_TEXT = 'input-extra-text',
     TOGGLE_PASSWORD = 'input-toggle-password-icon'
