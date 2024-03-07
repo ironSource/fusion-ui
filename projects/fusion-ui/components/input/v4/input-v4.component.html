@@ -17,7 +17,7 @@
            [attr.placeholder]="placeholder"
            [attr.disabled]="((disabled$ | async) || viewOnly) ? 'disabled' : null"
            [formControl]="inputControl"
-           [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdInputModifiers.FIELD"
+           [attr.data-testid]="testId"
     />
     <div *ngIf="suffix" class="fu-input-suffix">{{ suffix }}</div>
     <fusion-icon *ngIf="showClear" class="fu-clear-button" name="ph/fill/x-circle"

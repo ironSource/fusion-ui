@@ -20,12 +20,9 @@ export class ButtonComponent {
         await this.page.click(loadedPageSelector);
     }
 
-    async isButtonLoading() {
-        // const testIdSelector = `${testId}--button`;
-        const button = this.page.getByRole('button');
-        const buttonClass = button.getAttribute('class');
-        console.log('buttonClass', await buttonClass);
-        return (await buttonClass).includes('loading');
+    async isButtonLoading({testId}: {testId: string}) {
+        const buttonClass = await this.page.getByTestId(testId).getAttribute('class');
+        return buttonClass.includes('loading');
     }
 
     async getButtonText({testId}: {testId: string}) {

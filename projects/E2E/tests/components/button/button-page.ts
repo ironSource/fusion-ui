@@ -28,7 +28,7 @@ export class ButtonPage extends ComponentBasePage {
     }
 
     isButtonLoading() {
-        return this.component.isButtonLoading();
+        return this.component.isButtonLoading({testId: this.testId});
     }
 
     getButtonText() {
