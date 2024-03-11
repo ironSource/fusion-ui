@@ -102,6 +102,9 @@ export class TooltipV4Directive implements OnDestroy, AfterViewInit {
         } else if (this.fusionTooltip) {
             this.tooltipComponentRef = this.viewContainerRef.createComponent(TooltipContentV4Component);
             this.tooltipComponentRef.instance.tooltipTextContent = this.fusionTooltip;
+            if (this.testId) {
+                this.tooltipComponentRef.instance.testId = this.testId;
+            }
         } else {
             return;
         }
@@ -114,6 +117,7 @@ export class TooltipV4Directive implements OnDestroy, AfterViewInit {
     }
 
     private hideTooltip(): void {
+        return;
         if (!this.visible) {
             return;
         }
