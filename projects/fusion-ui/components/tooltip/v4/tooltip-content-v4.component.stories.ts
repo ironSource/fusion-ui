@@ -5,7 +5,7 @@ import {environment} from '../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipContentV4Component} from './tooltip-content-v4.component';
 import {TooltipComponentStyleConfiguration, TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
-import {triggerTestId} from 'projects/E2E/tests/components/tooltip/consts';
+import {defaultTestId} from 'projects/E2E/tests/components/tooltip/consts';
 
 export default {
     title: 'V4/Components/Tooltip/Content',
@@ -19,7 +19,7 @@ export default {
     tags: ['autodocs'],
     args: {
         tooltipTextContent: 'This is a tooltip',
-        testId: triggerTestId
+        testId: defaultTestId
     }
 } as Meta<TooltipContentV4Component>;
 
@@ -29,7 +29,7 @@ export const Default: Story = {
     render: args => ({
         props: {
             ...args,
-            testId: triggerTestId
+            testId: defaultTestId
         },
         template: `
 <fusion-tooltip-content

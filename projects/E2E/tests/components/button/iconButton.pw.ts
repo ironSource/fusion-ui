@@ -11,6 +11,6 @@ test.beforeEach(async ({page}) => {
 test('Verify icon button', async () => {
     await buttonPage.waitForComponent();
     await buttonPage.hoverOnButton();
-    const tooltipText = await buttonPage.getButtonText();
-    expect(tooltipText).toContain(' Default');
+    const tooltipText = await buttonPage.getIconButtonText();
+    expect(tooltipText).toContain('Edit');
 });

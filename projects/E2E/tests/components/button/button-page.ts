@@ -39,6 +39,10 @@ export class ButtonPage extends ComponentBasePage {
         return this.component.getButtonText({testId: this.testId});
     }
 
+    getIconButtonText() {
+        return this.component.getIconButtonText({testId: this.testId});
+    }
+
     isButtonDisabled() {
         return this.component.isButtonDisabled({testId: this.testId});
     }

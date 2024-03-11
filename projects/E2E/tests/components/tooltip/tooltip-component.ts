@@ -16,10 +16,11 @@ export class TooltipComponent {
     }
 
     getTooltipText({testId}: {testId: string}) {
-        return this.page.getByTestId(getTestId(testId, TooltipTestIdModifiers.TRIGGER)).getAttribute('text');
+        const locator = this.page.getByTestId(getTestId(testId, TooltipTestIdModifiers.TRIGGER)).last().locator('span');
+        return locator.textContent();
     }
 
     getTooltipHeaderText({testId}: {testId: string}) {
-        return this.page.getByTestId(getTestId(testId, TooltipTestIdModifiers.TRIGGER)).getAttribute('header');
+        return this.page.getByTestId(getTestId(testId, TooltipTestIdModifiers.TRIGGER)).last().getAttribute('header');
     }
 }

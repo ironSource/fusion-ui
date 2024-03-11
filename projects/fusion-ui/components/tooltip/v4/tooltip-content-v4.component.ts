@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ElementRef, HostBinding, Injector, Input, Renderer2, TemplateRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, Injector, Input, Renderer2, TemplateRef} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TooltipComponentStyleConfiguration, TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {GenericPipe, TestIdsService, TooltipTestIdModifiers} from '@ironsource/fusion-ui';
@@ -36,9 +36,9 @@ export class TooltipContentV4Component {
     /** @internal */
     testIdsService: TestIdsService = this.injector.get(TestIdsService);
 
-    @HostBinding('attr.data-testid') get testAttribute(): string {
-        return this.testIdsService.getTestAttribute(this.testId, this.testIdTooltipModifiers.TRIGGER);
-    }
+    // @HostBinding('attr.data-testid') get testAttribute(): string {
+    //     return this.testIdsService.getTestAttribute(this.testId, this.testIdTooltipModifiers.TRIGGER);
+    // }
 
     /** @internal */
     @Input() set templateRef(template: TemplateRef<any>) {

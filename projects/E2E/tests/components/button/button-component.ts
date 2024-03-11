@@ -32,8 +32,13 @@ export class ButtonComponent {
     }
 
     async getButtonText({testId}: {testId: string}) {
-        const buttonSelector = this.page.getByTestId(getTestId(testId, ButtonTestIdModifiers.BUTTON)).locator('.fu-button-content');
+        const buttonSelector = this.page.getByTestId(getTestId(testId, ButtonTestIdModifiers.CONTENT));
         return buttonSelector.textContent();
+    }
+
+    async getIconButtonText({testId}: {testId: string}) {
+        const textSelector = this.page.getByTestId(testId).last().locator('span');
+        return textSelector.textContent();
     }
 
     isButtonDisabled({testId}: {testId: string}) {
