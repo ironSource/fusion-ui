@@ -1,12 +1,13 @@
-import {ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2, TemplateRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, HostBinding, Injector, Input, Renderer2, TemplateRef} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TooltipComponentStyleConfiguration, TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
+import {GenericPipe, TestIdsService, TooltipTestIdModifiers} from '@ironsource/fusion-ui';
 
 @Component({
     selector: 'fusion-tooltip-content',
     standalone: true,
-    imports: [CommonModule],
-    template: ` <div class="fu-tooltip-component">
+    imports: [CommonModule, GenericPipe],
+    template: ` <div class="fu-tooltip-component" [attr.data-testid]="testId">
         <ng-container *ngIf="!tooltipInnerText" [ngTemplateOutlet]="temp"></ng-container>
         <span *ngIf="tooltipInnerText">{{ tooltipInnerText }}</span>
         <div class="fu-tooltip-arrow"></div>
@@ -22,10 +23,21 @@ export class TooltipContentV4Component {
     /** @internal */
     temp: TemplateRef<any>;
 
+    @Input() testId: string;
+
     @Input() set tooltipTextContent(text: string) {
         if (text) {
             this.tooltipInnerText = text;
         }
+    }
+
+    /** @internal */
+    testIdTooltipModifiers: typeof TooltipTestIdModifiers = TooltipTestIdModifiers;
+    /** @internal */
+    testIdsService: TestIdsService = this.injector.get(TestIdsService);
+
+    @HostBinding('attr.data-testid') get testAttribute(): string {
+        return this.testIdsService.getTestAttribute(this.testId, this.testIdTooltipModifiers.TRIGGER);
     }
 
     /** @internal */
@@ -49,7 +61,8 @@ export class TooltipContentV4Component {
     constructor(
         /** @internal */
         public elementRef: ElementRef,
-        private renderer: Renderer2
+        private renderer: Renderer2,
+        private injector: Injector
     ) {}
 
     suppressTooltipArrow(suppressPositionArrow: boolean) {

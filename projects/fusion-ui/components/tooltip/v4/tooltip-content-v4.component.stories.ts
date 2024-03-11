@@ -1,11 +1,11 @@
 import {Meta, moduleMetadata, StoryObj} from '@storybook/angular';
-import {dedent} from 'ts-dedent';
 import {CommonModule} from '@angular/common';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipContentV4Component} from './tooltip-content-v4.component';
 import {TooltipComponentStyleConfiguration, TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
+import {triggerTestId} from 'projects/E2E/tests/components/tooltip/consts';
 
 export default {
     title: 'V4/Components/Tooltip/Content',
@@ -18,7 +18,8 @@ export default {
     ],
     tags: ['autodocs'],
     args: {
-        tooltipTextContent: 'This is a tooltip'
+        tooltipTextContent: 'This is a tooltip',
+        testId: triggerTestId
     }
 } as Meta<TooltipContentV4Component>;
 
@@ -26,9 +27,13 @@ type Story = StoryObj<TooltipContentV4Component>;
 
 export const Default: Story = {
     render: args => ({
-        props: args,
+        props: {
+            ...args,
+            testId: triggerTestId
+        },
         template: `
 <fusion-tooltip-content
+    [testId]="testId"
     style="position: unset;"
     [tooltipTextContent]="tooltipTextContent"
     [tooltipPositionClass]="tooltipPositionClass"

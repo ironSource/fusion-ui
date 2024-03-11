@@ -8,6 +8,7 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
+import {triggerTestId} from 'projects/E2E/tests/components/tooltip/consts';
 
 export default {
     title: 'V4/Components/Tooltip',
@@ -42,24 +43,25 @@ type Story = StoryObj<TooltipV4Component>;
 
 export const Basic: Story = {
     render: args => ({
-        props: args,
-        template: `<fusion-button color="primary" fusionTooltip="I am tooltip!" [configuration]="tooltipConfiguration">Hover me</fusion-button>`
-    }),
-    args: {
-        tooltipText: 'Tooltip: You successfully read this alert message'
-    }
+        props: {
+            ...args,
+            testId: triggerTestId
+        },
+        template: `<fusion-button color="primary" fusionTooltip="I am tooltip!" [configuration]="tooltipConfiguration" [testId]="testId">Hover me</fusion-button>`
+    })
 };
 
 export const WithoutArrow: Story = {
     render: args => ({
         props: args,
-        template: `<fusion-button color="primary" fusionTooltip="I am tooltip!" [configuration]="tooltipConfiguration">Hover me</fusion-button>`
+        template: `<fusion-button color="primary" fusionTooltip="I am tooltip!" [testId]="testId" [configuration]="tooltipConfiguration">Hover me</fusion-button>`
     }),
     args: {
         tooltipText: 'Tooltip: You successfully read this alert message',
         tooltipConfiguration: {
             suppressPositionArrow: true
-        }
+        },
+        testId: triggerTestId
     }
 };
 

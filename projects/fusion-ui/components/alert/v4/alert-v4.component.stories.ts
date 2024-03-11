@@ -5,6 +5,16 @@ import {environment} from '../../../../../stories/environments/environment';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {AlertV4Component} from './alert-v4.component';
+import {
+    defaultTestId,
+    alertStoryId,
+    loadedPageSelector,
+    successTestId,
+    warningTestId,
+    dangerTestId,
+    infoTestId,
+    outlinedTestId
+} from 'projects/E2E/tests/components/alert/consts';
 
 export default {
     title: 'V4/Components/Feedback/Alert',
@@ -24,7 +34,13 @@ export default {
     },
     args: {
         description: 'Alert Description',
-        color: 'success'
+        color: 'success',
+        testId: defaultTestId,
+        successTestId: successTestId,
+        warningTestId: warningTestId,
+        dangerTestId: dangerTestId,
+        infoTestId: infoTestId,
+        outlinedTestId: outlinedTestId
     }
 } as Meta<AlertV4Component>;
 
@@ -50,19 +66,19 @@ export const Severities: Story = {
         <div style="display: flex; flex-direction: column; gap: 16px">
             <div style="display: flex; flex-direction: column; gap: 8px">
                 <label class="font-v4-subtitle-2" style="color: #646464;">Success</label>
-                <fusion-alert [title]="title" [description]="description" color="success"></fusion-alert>    
+                <fusion-alert [title]="title" [description]="description" color="success" [testId]="successTestId"></fusion-alert>
             </div>
             <div style="display: flex; flex-direction: column; gap: 8px">
                 <label class="font-v4-subtitle-2" style="color: #646464;">Danger</label>
-                <fusion-alert [title]="title" [description]="description" color="danger"></fusion-alert>    
+                <fusion-alert [title]="title" [description]="description" color="danger" [testId]="dangerTestId"></fusion-alert>
             </div>
             <div style="display: flex; flex-direction: column; gap: 8px">
                 <label class="font-v4-subtitle-2" style="color: #646464;">Warning</label>
-                <fusion-alert [title]="title" [description]="description" color="warning"></fusion-alert>    
+                <fusion-alert [title]="title" [description]="description" color="warning" [testId]="warningTestId"></fusion-alert>
             </div>
             <div style="display: flex; flex-direction: column; gap: 8px">
                 <label class="font-v4-subtitle-2" style="color: #646464;">Info</label>
-                <fusion-alert [title]="title" [description]="description" color="info"></fusion-alert>    
+                <fusion-alert [title]="title" [description]="description" color="info" [testId]="infoTestId"></fusion-alert>
             </div>
         </div>
         `
@@ -79,11 +95,11 @@ export const Variants: Story = {
         <div style="display: flex; flex-direction: column; gap: 16px">
             <div style="display: flex; flex-direction: column; gap: 8px">
                 <label class="font-v4-subtitle-2" style="color: #646464;">Standard</label>
-                <fusion-alert [title]="title" [description]="description" color="info"></fusion-alert>    
+                <fusion-alert [title]="title" [description]="description" color="info" [testId]="defaultTestId"></fusion-alert>
             </div>
             <div style="display: flex; flex-direction: column; gap: 8px">
                 <label class="font-v4-subtitle-2" style="color: #646464;">Outlined</label>
-                <fusion-alert [title]="title" [description]="description" variant="outlined" color="info"></fusion-alert>    
+                <fusion-alert [title]="title" [description]="description" variant="outlined" color="info" [testId]="outlinedTestId"></fusion-alert>
             </div>
         </div>
         `

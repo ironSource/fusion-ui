@@ -30,3 +30,8 @@ test('Verify button disabled state', async () => {
     buttonDisabled = await buttonPage.isButtonDisabled();
     expect(buttonDisabled).toBe(true);
 });
+
+test('Verify icon button', async () => {
+    const buttonText = await buttonPage.getButtonText();
+    expect(buttonText).toContain(' Default');
+});

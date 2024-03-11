@@ -89,6 +89,14 @@ export enum FieldLabelTestIdModifiers {
     TOOLTIP = 'field-label-help-tooltip'
 }
 
+export enum AlertTestIdModifiers {
+    WRAPPER = 'alert-wrapper',
+    TITLE = 'alert-title',
+    MESSAGE = 'alert-message',
+    ACTION_BUTTON = 'alert-action-button',
+    CLOSE_BUTTON = 'alert-close-button'
+}
+
 export enum InputTestIdModifiers {
     WRAPPER = 'input-wrapper',
     TOOLTIP = 'input-tooltip',
@@ -156,17 +164,9 @@ export enum ChartTestIdModifiers {
 }
 
 export enum TooltipTestIdModifiers {
-    WRAPPER = 'tooltip-wrapper',
-    TITLE = 'tooltip-title',
-    DESCRIPTION = 'tooltip-description',
-    CLOSE_BUTTON = 'tooltip-close-button',
-    CONTENT = 'tooltip-content',
-    ALERT = 'tooltip-alert',
-    ALERT_DESCRIPTION = 'tooltip-alert-description',
-    ALERT_ACTION_BUTTON = 'tooltip-alert-action-button',
-    FOOTER = 'tooltip-footer',
-    SECONDARY_BUTTON = 'tooltip-secondary-button',
-    PRIMARY_BUTTON = 'tooltip-primary-button'
+    TEXT = 'tt-text',
+    TRIGGER = 'tt-trigger',
+    HEADER = 'tt-header'
 }
 
 export enum ChartLabelTestIdModifiers {

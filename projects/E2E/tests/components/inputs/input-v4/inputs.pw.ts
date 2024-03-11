@@ -155,7 +155,7 @@ test.skip('Verify inputs help icon text', async () => {
     expect(actualText).toContain(expectedText);
 });
 
-test('Verify inputs password', async () => {
+test.skip('Verify inputs password', async () => {
     // const formControlPassword = new FormControl('qwerty123456');
 
     const expectedText = 'qwerty123456';

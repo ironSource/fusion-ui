@@ -27,6 +27,10 @@ export class ButtonPage extends ComponentBasePage {
         await this.component.clickOnButton({testId: this.testId});
     }
 
+    async hoverOnButton() {
+        await this.component.hoverOnButton({testId: this.testId});
+    }
+
     isButtonLoading() {
         return this.component.isButtonLoading({testId: this.testId});
     }

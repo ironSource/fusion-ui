@@ -6,6 +6,7 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {IconButtonComponent} from '@ironsource/fusion-ui/components/button/v4/icon-button/icon-button.component';
 import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
+import {iconButtonTestId} from 'projects/E2E/tests/components/button/consts';
 
 export default {
     title: 'V4/Components/Buttons/IconButton',
@@ -30,7 +31,8 @@ export default {
         variant: 'default',
         size: 'medium',
         iconName: 'ph/pencil-simple',
-        tooltipText: 'Edit'
+        tooltipText: 'Edit',
+        testId: iconButtonTestId
     },
     argsTypes: {
         disabled: {
@@ -53,7 +55,7 @@ export default {
 
 const ButtonTemplate: StoryFn<IconButtonComponent> = (args: IconButtonComponent) => ({
     props: args,
-    template: `<fusion-icon-button [fusionTooltip]="tooltipText"  [color]="color" [variant]="variant" [size]="size" [iconName]="iconName" [disabled]="disabled" [loading]="loading"></fusion-icon-button>`
+    template: `<fusion-icon-button [fusionTooltip]="tooltipText"  [color]="color" [variant]="variant" [size]="size" [iconName]="iconName" [disabled]="disabled" [loading]="loading" [testId]="testId"></fusion-icon-button>`
 });
 
 export const Basic = {

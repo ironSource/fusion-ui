@@ -20,6 +20,12 @@ export class ButtonComponent {
         await this.page.click(loadedPageSelector);
     }
 
+    async hoverOnButton({testId}: {testId: string}) {
+        const loadedPageSelector = getTestIdSelector(getTestId(testId, ButtonTestIdModifiers.BUTTON));
+
+        await this.page.hover(loadedPageSelector);
+    }
+
     async isButtonLoading({testId}: {testId: string}) {
         const buttonClass = await this.page.getByTestId(testId).getAttribute('class');
         return buttonClass.includes('loading');
