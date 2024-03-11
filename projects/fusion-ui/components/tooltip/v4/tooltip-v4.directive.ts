@@ -117,7 +117,6 @@ export class TooltipV4Directive implements OnDestroy, AfterViewInit {
     }
 
     private hideTooltip(): void {
-        return;
         if (!this.visible) {
             return;
         }
