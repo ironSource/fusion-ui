@@ -142,7 +142,7 @@ const formControl = new FormControl();
 const templateCommon = `
 <div style="display:flex; gap: 14px;">
     <div style="width: 240px;">
-        <fusion-multi-dropdown [selectAllLabel]="selectAllLabel" [size]="size" [search]="search" [placeholder]="placeholder" [options]="optionsFood" [formControl]="formControl" [testId]="testId"></fusion-multi-dropdown>
+        <fusion-multi-dropdown [selectAllLabel]="selectAllLabel" [size]="size" [search]="search" [placeholder]="placeholder" [options]="optionsFood" [formControl]="formControl"></fusion-multi-dropdown>
     </div>
     <div style="width: 240px;">
         <fusion-multi-dropdown [selectAllLabel]="selectAllLabel" [size]="size" [search]="search" [placeholder]="placeholder" [options]="options" [formControl]="formControl" [testId]="testIdWithIndex"></fusion-multi-dropdown>
