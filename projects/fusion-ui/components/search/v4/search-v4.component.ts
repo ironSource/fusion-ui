@@ -5,7 +5,9 @@ import {FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/form
 import {Subject} from 'rxjs';
 import {testIdWithIndex} from 'projects/E2E/tests/components/dropdown/consts';
 import {takeUntil} from 'rxjs/operators';
-import {GenericPipe, InputTestIdModifiers, ModalTestIdModifiers, TestIdsService} from '@ironsource/fusion-ui';
+import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
+import {InputTestIdModifiers, ModalTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-search',

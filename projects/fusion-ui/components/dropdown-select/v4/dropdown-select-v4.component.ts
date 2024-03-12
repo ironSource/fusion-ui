@@ -4,7 +4,9 @@ import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {DropdownPlaceholder} from '@ironsource/fusion-ui/components/dropdown-select';
 import {CountryCode, FlagComponent} from '@ironsource/fusion-ui/components/flag/v4';
-import {DropdownTestIdModifiers, GenericPipe, TestIdsService} from '@ironsource/fusion-ui';
+import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
+import {DropdownTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-dropdown-select',

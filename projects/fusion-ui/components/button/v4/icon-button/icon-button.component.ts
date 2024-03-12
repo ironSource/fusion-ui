@@ -4,7 +4,7 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {LoaderComponent} from '@ironsource/fusion-ui/components/loader/v4';
 import {ButtonBaseComponent} from '../common/button.base.component';
 import {IconButtonColor, IconButtonSize, IconButtonVariant} from '../common/button.entities';
-import {GenericPipe} from '@ironsource/fusion-ui';
+import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 
 @Component({
     selector: 'fusion-icon-button',
