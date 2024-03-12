@@ -70,7 +70,8 @@ export enum TrendIndicatorTestIdModifiers {
 
 export enum TabsTestIdModifiers {
     WRAPPER = 'tabs-wrapper',
-    TAB = 'tab'
+    TAB = 'tab',
+    TAB_DISABLED = 'tab-disabled'
 }
 
 export enum FieldHelpTextTestIdModifiers {

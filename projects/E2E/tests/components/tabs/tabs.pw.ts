@@ -24,6 +24,6 @@ test.skip('Validate tabs functionality', async () => {
 
 test('Validate disabled tab', async () => {
     await tabsPage.goto();
-    const tabDisabled = tabsPage.isTabDisabled({tabName: 'Disabled'});
+    const tabDisabled = tabsPage.isTabDisabled();
     expect(tabDisabled).toBeTruthy();
 });

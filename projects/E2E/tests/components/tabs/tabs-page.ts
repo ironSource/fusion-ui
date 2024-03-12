@@ -31,7 +31,7 @@ export class TabsPage extends ComponentBasePage {
         await this.component.selectTab({testId: this.testId, tabName});
     }
 
-    isTabDisabled({tabName}: {tabName: string}) {
-        return this.component.isTabDisabled({testId: this.testId, tabName});
+    isTabDisabled() {
+        return this.component.isTabDisabled(this.testId);
     }
 }
