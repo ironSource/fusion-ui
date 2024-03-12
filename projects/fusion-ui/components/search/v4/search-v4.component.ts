@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {InputComponent, InputSize} from '@ironsource/fusion-ui/components/input/v4';
 import {FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
 import {Subject} from 'rxjs';
-import {testIdWithIndex} from 'projects/E2E/tests/components/dropdown/consts';
+import {defaultTestId} from 'projects/E2E/tests/components/dropdown/consts';
 import {takeUntil} from 'rxjs/operators';
 import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 import {InputTestIdModifiers, ModalTestIdModifiers} from '@ironsource/fusion-ui/entities';
@@ -120,5 +120,5 @@ export class SearchV4Component implements OnInit, OnDestroy {
     protected readonly modalTestIdModifiers = ModalTestIdModifiers;
     testIdsService: TestIdsService = this.injector.get(TestIdsService);
     protected readonly InputTestIdModifiers = InputTestIdModifiers;
-    testId: string = testIdWithIndex;
+    testId: string = defaultTestId;
 }

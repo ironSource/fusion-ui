@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Injector, Input, Output} from '@angular/core';
-import {ModalTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {DialogTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
@@ -9,16 +9,19 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 })
 export class ModalFooterComponent {
     @Input() submitButtonPending = false;
+
     @Input() set cancelButton(config: {cancelButtonText?: string; cancelButtonClass?: string; cancelButtonHidden?: boolean}) {
         this.cancelButtonText = config?.cancelButtonText;
         this.cancelButtonClass = config?.cancelButtonClass;
         this.cancelButtonHidden = config?.cancelButtonHidden;
     }
+
     @Input() set submitButton(config: {submitButtonText?: string; submitButtonClass?: string; submitButtonDisabled?: boolean}) {
         this.submitButtonText = config?.submitButtonText;
         this.submitButtonClass = config?.submitButtonClass;
         this.submitButtonDisabled = config?.submitButtonDisabled;
     }
+
     @Input() error;
     /** @internal */
     @Input() testId: string;
@@ -27,7 +30,7 @@ export class ModalFooterComponent {
     @Output() onCloseButtonClicked = new EventEmitter();
 
     /** @internal */
-    modalTestIdModifiers: typeof ModalTestIdModifiers = ModalTestIdModifiers;
+    DialogTestIdModifiers: typeof DialogTestIdModifiers = DialogTestIdModifiers;
     /** @internal */
     testIdsService: TestIdsService = this.injector.get(TestIdsService);
 

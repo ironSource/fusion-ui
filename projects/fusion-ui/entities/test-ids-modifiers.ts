@@ -143,6 +143,26 @@ export enum ModalTestIdModifiers {
     MODAL_ERROR = 'modal-error'
 }
 
+export enum DialogTestIdModifiers {
+    MODAL = 'modal',
+    MODAL_TITLE = 'modal-title',
+    MODAL_CLOSE_BUTTON = 'modal-close-button',
+    MODAL_CONTENT = 'modal-content',
+    MODAL_BUTTON = 'modal-button',
+    MODAL_SUBMIT_BUTTON = 'modal-submit-button',
+    MODAL_CANCEL_BUTTON = 'modal-cancel-button',
+    MODAL_ERROR = 'modal-error',
+    WRAPPER = 'dialog-wrapper',
+    MODAL_WRAPPER = 'modal-wrapper',
+    HEADER = 'dialog-header',
+    ACTION_CLOSE = 'dialog-action-close',
+    HEADER_SECONDARY = 'dialog-header-secondary',
+    ACTION_BUTTONS_WRAPPER = 'dialog-action-buttons-wrapper',
+    BACKDROP = 'dialog-backdrop',
+    SAVE_BUTTON = 'dialog-save-button',
+    CANCEL_BUTTON = 'dialog-cancel-button'
+}
+
 export enum ChartTestIdModifiers {
     WRAPPER = 'chart-wrapper',
     CHART = 'chart',

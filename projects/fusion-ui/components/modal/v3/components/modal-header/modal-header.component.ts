@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Injector, Input, Output} from '@angular/core';
-import {ModalTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {DialogTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
@@ -17,12 +17,13 @@ export class ModalHeaderComponent {
     @Input() set infoText(value: string) {
         this._infoText = value;
     }
+
     get infoText(): string {
         return this._infoText;
     }
 
     /** @internal */
-    modalTestIdModifiers: typeof ModalTestIdModifiers = ModalTestIdModifiers;
+    DialogTestIdModifiers: typeof DialogTestIdModifiers = DialogTestIdModifiers;
     /** @internal */
     testIdsService: TestIdsService = this.injector.get(TestIdsService);
 

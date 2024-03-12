@@ -1,13 +1,16 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Injector, Input, OnInit, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ButtonColor, ButtonComponent, ButtonVariant, IconButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
 import {AlertComponent, AlertV4Configuration} from '@ironsource/fusion-ui/components/alert/v4';
 import {ModalV4Size} from './modal-v4.entities';
+import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
+import {InputTestIdModifiers, DialogTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-modal',
     standalone: true,
-    imports: [CommonModule, IconButtonComponent, ButtonComponent, AlertComponent],
+    imports: [CommonModule, IconButtonComponent, ButtonComponent, AlertComponent, GenericPipe],
     host: {class: 'fusion-v4'},
     templateUrl: './modal-v4.component.html',
     styleUrls: ['./modal-v4.component.scss'],
@@ -37,8 +40,11 @@ export class ModalV4Component implements OnInit {
     @Output() closeButtonClicked = new EventEmitter<void>();
     @Output() secondaryButtonClicked = new EventEmitter<void>();
     @Output() primaryButtonClicked = new EventEmitter<void>();
+    @Input() testId!: string;
+    testIdInputModifiers: typeof InputTestIdModifiers = InputTestIdModifiers;
+    testIdsService: TestIdsService = this.injector.get(TestIdsService);
 
-    constructor() {}
+    constructor(private injector: Injector) {}
 
     ngOnInit(): void {}
 
@@ -57,4 +63,6 @@ export class ModalV4Component implements OnInit {
     onPrimaryButtonClicked($event) {
         this.primaryButtonClicked.emit();
     }
+
+    protected readonly DialogTestIdModifiers = DialogTestIdModifiers;
 }
