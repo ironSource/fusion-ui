@@ -6,7 +6,6 @@ import {Subject} from 'rxjs';
 import {testIdWithIndex} from 'projects/E2E/tests/components/dropdown/consts';
 import {takeUntil} from 'rxjs/operators';
 import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
-import {InputTestIdModifiers, ModalTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
@@ -117,8 +116,6 @@ export class SearchV4Component implements OnInit, OnDestroy {
     }
 
     // endregion
-    protected readonly modalTestIdModifiers = ModalTestIdModifiers;
     testIdsService: TestIdsService = this.injector.get(TestIdsService);
-    protected readonly InputTestIdModifiers = InputTestIdModifiers;
     testId: string = testIdWithIndex;
 }

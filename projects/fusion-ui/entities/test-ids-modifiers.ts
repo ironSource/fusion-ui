@@ -133,16 +133,6 @@ export enum IncludeExcludeTestIdModifiers {
     APPLY_BUTTON = 'ie-apply-button'
 }
 
-export enum ModalTestIdModifiers {
-    MODAL = 'modal',
-    MODAL_TITLE = 'modal-title',
-    MODAL_CLOSE_BUTTON = 'modal-close-button',
-    MODAL_CONTENT = 'modal-content',
-    MODAL_SUBMIT_BUTTON = 'modal-submit-button',
-    MODAL_CANCEL_BUTTON = 'modal-cancel-button',
-    MODAL_ERROR = 'modal-error'
-}
-
 export enum DialogTestIdModifiers {
     MODAL = 'modal',
     MODAL_TITLE = 'modal-title',
