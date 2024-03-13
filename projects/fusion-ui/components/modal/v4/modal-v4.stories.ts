@@ -97,6 +97,13 @@ PrimaryButtonPending.args = {
     primaryButtonLoading: true
 };
 
+export const PendingDisabled: Story = {};
+PendingDisabled.args = {
+    primaryButtonLoading: true,
+    secondaryButtonDisabled: true,
+    disableCloseButton: true
+};
+
 export const SizeMedium: Story = {};
 SizeMedium.args = {
     size: 'medium'

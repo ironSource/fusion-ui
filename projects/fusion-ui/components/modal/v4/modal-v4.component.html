@@ -4,7 +4,7 @@
             <div class="fu-modal-header-title" *ngIf="title">{{title}}</div>
             <div class="fu-modal-header-description" *ngIf="description">{{description}}</div>
         </div>
-        <fusion-icon-button class="fu-modal-close-button" *ngIf="showCloseButton" size="small" iconName="ph/x" (click)="onCloseButtonClicked($event)"></fusion-icon-button>
+        <fusion-icon-button class="fu-modal-close-button" [disabled]="disableCloseButton" *ngIf="showCloseButton" size="small" iconName="ph/x" (click)="onCloseButtonClicked($event)"></fusion-icon-button>
     </div>
     <fusion-alert *ngIf="!!alert" [rounded]="false" [color]="alert.color" [description]="alert?.description" [actionText]="alert?.action?.label" (action)="onAlertActionClicked()"></fusion-alert>
     <div class="fu-modal-content">

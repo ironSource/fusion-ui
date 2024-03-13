@@ -10,7 +10,7 @@ $defaultWidth: 444px;
 :host {
   position: fixed;
   inset: 0;
-  background: var(--background-backdrop);
+  background: var(--background-backdrop, #{$color-v4-background-backdrop});
   overflow-x: auto;
   z-index: getZIndexLayerOffset(system, 10);
   display: flex;
@@ -20,16 +20,15 @@ $defaultWidth: 444px;
 
   .fu-modal-wrapper {
     width: $defaultWidth;
-    border-radius: var(--border-radius-lg);
-    border: 1px solid var(--common-divider-elevation-0);
-    background-color: var(--background-model-elevation);
+    border-radius: var(--border-radius-lg, #{$borderRadiusV4-lg});
+    border: 1px solid var(--common-divider-elevation-0, #{$color-v4-common-divider-elevation-0});
+    background-color: var(--background-model-elevation, #{$color-v4-background-model-elevation});
 
-    /* dark/elevation/xl */
-    box-shadow: var(--box-shadow-xl);
+    box-shadow: var(--box-shadow-xl, #{$boxShadowV4-XL});
 
     .fu-modal-header {
-      padding: var(--spacing-200) var(--spacing-300);
-      border-bottom: 1px solid var(--common-divider-elevation-0);
+      padding: var(--spacing-200, #{$spacingV4-200}) var(--spacing-300, #{$spacingV4-300});
+      border-bottom: 1px solid var(--common-divider-elevation-0, #{$color-v4-common-divider-elevation-0});
       display: flex;
 
       .fu-modal-header-content {
@@ -38,12 +37,12 @@ $defaultWidth: 444px;
 
         .fu-modal-header-title {
           @extend %font-v4-heading-3;
-          color: var(--text-primary);
+          color: var(--text-primary, #{$color-v4-text-primary});
         }
 
         .fu-modal-header-description {
           @extend %font-v4-body-1;
-          color: var(--text-secondary);
+          color: var(--text-secondary, #{$color-v4-text-secondary});
         }
       }
       .fu-modal-close-button{
@@ -52,14 +51,14 @@ $defaultWidth: 444px;
     }
 
     .fu-modal-content {
-      padding: var(--spacing-300);
+      padding: var(--spacing-300, #{$spacingV4-300});
       @extend %font-v4-body-1;
-      color: var(--text-secondary);
+      color: var(--text-secondary, #{$color-v4-text-secondary});
     }
 
     .fu-modal-footer {
-      padding: var(--spacing-150) var(--spacing-300);
-      border-top: 1px solid var(--common-divider-elevation-0);
+      padding: var(--spacing-150, #{$spacingV4-150}) var(--spacing-300, #{$spacingV4-300});
+      border-top: 1px solid var(--common-divider-elevation-0, #{$color-v4-common-divider-elevation-0});
       display: flex;
       align-items: center;
 
@@ -67,7 +66,7 @@ $defaultWidth: 444px;
         margin-left: auto;
         display: flex;
         align-items: center;
-        gap: var(--spacing-100);
+        gap: var(--spacing-100, #{$spacingV4-100});
       }
     }
 
