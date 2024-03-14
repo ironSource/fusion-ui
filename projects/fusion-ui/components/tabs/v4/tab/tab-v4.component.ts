@@ -1,7 +1,7 @@
 import {AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
-import {tabTestId} from '@ironsource/fusion-ui/components/tabs/consts';
+import {TabsConsts} from '@ironsource/fusion-ui/testIds';
 
 const ATTRIBUTE_SELECTED = 'tab-selected';
 const ATTRIBUTE_DISABLED = 'tab-disabled';
@@ -20,7 +20,7 @@ export class TabV4Component implements AfterViewInit {
         this.toggleSelected(value);
     }
 
-    @Input() testId: string = tabTestId;
+    @Input() testId: string = TabsConsts.tabTestId;
 
     @Input() set disabled(value: boolean) {
         this.toggleDisabled(value);

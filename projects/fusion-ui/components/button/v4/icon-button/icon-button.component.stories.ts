@@ -6,7 +6,7 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {IconButtonComponent} from '@ironsource/fusion-ui/components/button/v4/icon-button/icon-button.component';
 import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
-import {iconButtonTestId} from '@ironsource/fusion-ui/components/button/consts';
+import {ButtonConsts} from '@ironsource/fusion-ui/testIds';
 
 export default {
     title: 'V4/Components/Buttons/IconButton',
@@ -32,7 +32,7 @@ export default {
         size: 'medium',
         iconName: 'ph/pencil-simple',
         tooltipText: 'Edit',
-        testId: iconButtonTestId
+        testId: ButtonConsts.iconButtonTestId
     },
     argsTypes: {
         disabled: {

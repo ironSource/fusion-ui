@@ -1,8 +1,8 @@
 import {Page} from '@playwright/test';
 import {InputsComponent} from './inputs-component';
-import {defaultTestId, inputsStoryId, loadedPageSelector} from './consts';
 import {ComponentBasePage} from '../../base-page/component-base-page';
 import {ComponentProps} from '../../base-page/types';
+import {InputConsts} from '@ironsource/fusion-ui/testIds';
 
 export class InputsPage extends ComponentBasePage {
     readonly component: InputsComponent;
@@ -10,9 +10,9 @@ export class InputsPage extends ComponentBasePage {
     constructor(page: Page) {
         const inputsProps: ComponentProps = {
             page: page,
-            testId: defaultTestId,
-            componentId: inputsStoryId,
-            loadedPageSelector: loadedPageSelector
+            testId: InputConsts.defaultTestId,
+            componentId: InputConsts.inputsStoryId,
+            loadedPageSelector: InputConsts.loadedPageSelector
         };
 
         super(inputsProps);
