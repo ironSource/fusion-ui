@@ -1,6 +1,6 @@
 import {AlertPage} from './alert-page';
 import {expect, test} from '@playwright/test';
-import {alertSeveritiesStoryId} from './consts';
+import {AlertConsts} from '@ironsource/fusion-ui/testIds';
 
 let component: AlertPage;
 
@@ -40,7 +40,7 @@ test('Validate action button text', async () => {
 test.skip('Validate alert type', async () => {
     const successAlertType = 'success';
     await component.goto({
-        storyId: alertSeveritiesStoryId,
+        storyId: AlertConsts.alertSeveritiesStoryId,
         additionalComponentParams: {variant: successAlertType}
     });
     let iconType = await component.getAlertIconType();

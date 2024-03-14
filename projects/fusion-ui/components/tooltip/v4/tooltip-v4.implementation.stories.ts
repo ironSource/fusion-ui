@@ -8,7 +8,7 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
-import {triggerTestId} from 'projects/E2E/tests/components/tooltip/consts';
+import {TooltipConsts} from '@ironsource/fusion-ui/testIds';
 
 export default {
     title: 'V4/Components/Tooltip',
@@ -45,7 +45,7 @@ export const Basic: Story = {
     render: args => ({
         props: {
             ...args,
-            testId: triggerTestId
+            testId: TooltipConsts.triggerTestId
         },
         template: `<fusion-button color="primary" fusionTooltip="I am tooltip!" [configuration]="tooltipConfiguration" [testId]="testId">Hover me</fusion-button>`
     })
@@ -61,7 +61,7 @@ export const WithoutArrow: Story = {
         tooltipConfiguration: {
             suppressPositionArrow: true
         },
-        testId: triggerTestId
+        testId: TooltipConsts.triggerTestId
     }
 };
 

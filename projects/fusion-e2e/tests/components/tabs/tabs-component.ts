@@ -2,7 +2,7 @@ import {Page} from '@playwright/test';
 import {getTestId} from '../../global/utils';
 import {TabsSelectionParams} from './types';
 import {TabsTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {defaultTestId} from './consts';
+import {TabsConsts} from '@ironsource/fusion-ui/testIds';
 
 export class TabsComponent {
     readonly page: Page;
@@ -30,8 +30,8 @@ export class TabsComponent {
         return tabs.indexOf(tabName);
     }
 
-    async isTabDisabled() {
-        const disabledTestId = getTestId(defaultTestId, TabsTestIdModifiers.TAB_DISABLED);
+    async isTabDisabled(testId: string) {
+        const disabledTestId = getTestId(TabsConsts.defaultTestId, TabsTestIdModifiers.TAB_DISABLED);
         await this.waitForComponent({testId: disabledTestId});
         return this.page.getByTestId(disabledTestId).isDisabled();
     }

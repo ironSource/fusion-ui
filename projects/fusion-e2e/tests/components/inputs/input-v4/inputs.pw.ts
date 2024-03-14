@@ -1,6 +1,6 @@
 import {expect, test} from '@playwright/test';
 import {InputsPage} from './inputs-page';
-import {inputsStoryIdDisabled, inputsStoryIdWithHelper, inputsStoryIdWithLengthCounter, inputsStoryIdWithPassword} from './consts';
+import {InputConsts} from '@ironsource/fusion-ui/testIds';
 // import {FormControl} from "@angular/forms";
 
 let inputsPage: InputsPage;
@@ -43,7 +43,7 @@ test('Verify inputs placeholder', async () => {
 test('Verify helper text', async () => {
     const expectedText = 'Helper text';
     await inputsPage.goto({
-        storyId: inputsStoryIdWithHelper,
+        storyId: InputConsts.inputsStoryIdWithHelper,
         additionalComponentParams: {feedbackText: expectedText}
     });
     const helperTextExists = await inputsPage.hasInputExtraText();
@@ -127,14 +127,14 @@ test.skip('Verify feedback variants appear', async () => {
 });
 
 test('Verify inputs disabled', async () => {
-    await inputsPage.goto({storyId: inputsStoryIdDisabled});
+    await inputsPage.goto({storyId: InputConsts.inputsStoryIdDisabled});
     const inputsDisabled = await inputsPage.isDisabled();
     expect(inputsDisabled).toBe(true);
 });
 
 test('Verify inputs max length number', async () => {
     await inputsPage.goto({
-        storyId: inputsStoryIdWithLengthCounter,
+        storyId: InputConsts.inputsStoryIdWithLengthCounter,
         additionalComponentParams: {maxLength: 10}
     });
     const maxLengthNumber = await inputsPage.getMaxLengthNumber();
@@ -160,7 +160,7 @@ test.skip('Verify inputs password', async () => {
 
     const expectedText = 'qwerty123456';
     await inputsPage.goto({
-        storyId: inputsStoryIdWithPassword,
+        storyId: InputConsts.inputsStoryIdWithPassword,
         additionalComponentParams: {
             type: 'password',
             formControl: 'qwerty123456'

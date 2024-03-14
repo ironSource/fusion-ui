@@ -1,8 +1,8 @@
 import {Page} from '@playwright/test';
-import {tabsStoryId, loadedPageSelector, wrapperTestId} from './consts';
 import {ComponentBasePage} from '../base-page/component-base-page';
 import {ComponentProps} from '../base-page/types';
 import {TabsComponent} from './tabs-component';
+import {TabsConsts} from '@ironsource/fusion-ui/testIds';
 
 export class TabsPage extends ComponentBasePage {
     readonly component: TabsComponent;
@@ -10,9 +10,9 @@ export class TabsPage extends ComponentBasePage {
     constructor(page: Page) {
         const tabsProps: ComponentProps = {
             page: page,
-            testId: wrapperTestId,
-            componentId: tabsStoryId,
-            loadedPageSelector: loadedPageSelector
+            testId: TabsConsts.wrapperTestId,
+            componentId: TabsConsts.tabsStoryId,
+            loadedPageSelector: TabsConsts.loadedPageSelector
         };
 
         super(tabsProps);

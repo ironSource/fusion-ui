@@ -5,16 +5,7 @@ import {environment} from '../../../../../stories/environments/environment';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {AlertV4Component} from './alert-v4.component';
-import {
-    defaultTestId,
-    alertStoryId,
-    loadedPageSelector,
-    successTestId,
-    warningTestId,
-    dangerTestId,
-    infoTestId,
-    outlinedTestId
-} from 'projects/E2E/tests/components/alert/consts';
+import {AlertConsts} from '@ironsource/fusion-ui/testIds';
 
 export default {
     title: 'V4/Components/Feedback/Alert',
@@ -35,12 +26,12 @@ export default {
     args: {
         description: 'Alert Description',
         color: 'success',
-        testId: defaultTestId,
-        successTestId: successTestId,
-        warningTestId: warningTestId,
-        dangerTestId: dangerTestId,
-        infoTestId: infoTestId,
-        outlinedTestId: outlinedTestId
+        testId: AlertConsts.defaultTestId,
+        successTestId: AlertConsts.successTestId,
+        warningTestId: AlertConsts.warningTestId,
+        dangerTestId: AlertConsts.dangerTestId,
+        infoTestId: AlertConsts.infoTestId,
+        outlinedTestId: AlertConsts.outlinedTestId
     }
 } as Meta<AlertV4Component>;
 

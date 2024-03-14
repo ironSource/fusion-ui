@@ -1,10 +1,10 @@
 import {Page} from '@playwright/test';
-import {tooltipStoryId, defaultTestId, loadedPageSelector} from './consts';
 import {ComponentBasePage} from '../base-page/component-base-page';
 import {ComponentProps, GotoParams} from '../base-page/types';
 import {TooltipComponent} from './tooltip-component';
 import {createStoryBookComponentPath, getTestId} from '../../global/utils';
 import {TooltipTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TooltipConsts} from '@ironsource/fusion-ui/testIds';
 
 export class TooltipPage extends ComponentBasePage {
     readonly component: TooltipComponent;
@@ -12,9 +12,9 @@ export class TooltipPage extends ComponentBasePage {
     constructor(page: Page) {
         const tooltipProps: ComponentProps = {
             page: page,
-            testId: defaultTestId,
-            componentId: tooltipStoryId,
-            loadedPageSelector: loadedPageSelector
+            testId: TooltipConsts.defaultTestId,
+            componentId: TooltipConsts.tooltipStoryId,
+            loadedPageSelector: TooltipConsts.loadedPageSelector
         };
 
         super(tooltipProps);

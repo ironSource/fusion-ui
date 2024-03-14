@@ -2,7 +2,7 @@ import {Page} from '@playwright/test';
 import {ComponentBasePage} from '../base-page/component-base-page';
 import {ButtonComponent} from './button-component';
 import {ComponentProps} from '../base-page/types';
-import {buttonStoryId, defaultTestId, loadedPageSelector} from './consts';
+import {ButtonConsts} from '@ironsource/fusion-ui/testIds';
 
 export class ButtonPage extends ComponentBasePage {
     readonly component: ButtonComponent;
@@ -10,9 +10,9 @@ export class ButtonPage extends ComponentBasePage {
     constructor(page: Page) {
         const buttonProps: ComponentProps = {
             page: page,
-            testId: defaultTestId,
-            componentId: buttonStoryId,
-            loadedPageSelector: loadedPageSelector
+            testId: ButtonConsts.defaultTestId,
+            componentId: ButtonConsts.buttonStoryId,
+            loadedPageSelector: ButtonConsts.loadedPageSelector
         };
 
         super(buttonProps);

@@ -1,6 +1,6 @@
 import {expect, test} from '@playwright/test';
 import {DropdownPage} from './dropdown-page';
-import {dropdownMultiSelectionDefaultStoryId} from './consts';
+import {DropdownConsts} from '@ironsource/fusion-ui/testIds';
 
 const preSelectedArr = [2, 4, 5];
 let component: DropdownPage;
@@ -38,7 +38,7 @@ test('Select dropdown by item name', async () => {
 });
 
 test('Verify multi selection dropdown with one item', async () => {
-    await component.goto({storyId: dropdownMultiSelectionDefaultStoryId});
+    await component.goto({storyId: DropdownConsts.dropdownMultiSelectionDefaultStoryId});
     const selectionArr = [5];
     await component.selectMultipleItems(selectionArr);
     const selectedOption = await component.getSelectedLabel();
@@ -46,7 +46,7 @@ test('Verify multi selection dropdown with one item', async () => {
 });
 
 test('Verify Cancel behavior', async () => {
-    await component.goto({storyId: dropdownMultiSelectionDefaultStoryId});
+    await component.goto({storyId: DropdownConsts.dropdownMultiSelectionDefaultStoryId});
     await component.selectMultipleItems(preSelectedArr);
     const selectedOptions = [5, 7, 9];
     await component.selectMultipleItems(selectedOptions, false);
@@ -56,7 +56,7 @@ test('Verify Cancel behavior', async () => {
 });
 
 test('Verify clear all behavior', async () => {
-    await component.goto({storyId: dropdownMultiSelectionDefaultStoryId});
+    await component.goto({storyId: DropdownConsts.dropdownMultiSelectionDefaultStoryId});
     await component.selectMultipleItems(preSelectedArr);
     await component.openDropdownComponent();
     await component.clearAllOptions();
@@ -78,7 +78,7 @@ test('Verify dropdown with search', async () => {
 });
 
 test('Verify multi selection dropdown by name', async () => {
-    await component.goto({storyId: dropdownMultiSelectionDefaultStoryId});
+    await component.goto({storyId: DropdownConsts.dropdownMultiSelectionDefaultStoryId});
     const selectionArr = ['Option_1', 'Option_4', 'Option_7'];
     await component.selectMultipleItemsByName(selectionArr);
     const selectedItem = await component.getSelectedLabel();
@@ -108,11 +108,11 @@ test('Verify multi selection dropdown by name', async () => {
 
 test('Verify select all behavior', async () => {
     await component.goto({
-        storyId: dropdownMultiSelectionDefaultStoryId,
+        storyId: DropdownConsts.dropdownMultiSelectionDefaultStoryId,
         additionalComponentParams: {showSelectAll: 'true'}
     });
     await component.goto({
-        storyId: dropdownMultiSelectionDefaultStoryId,
+        storyId: DropdownConsts.dropdownMultiSelectionDefaultStoryId,
         additionalComponentParams: {showSelectAll: 'true'}
     });
 

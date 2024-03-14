@@ -1,8 +1,8 @@
 import {AlertComponent} from './alert-component';
-import {alertStoryId, defaultTestId, loadedPageSelector} from './consts';
 import {Page} from '@playwright/test';
 import {ComponentBasePage} from '../base-page/component-base-page';
 import {ComponentProps} from '../base-page/types';
+import {AlertConsts} from '@ironsource/fusion-ui/testIds';
 
 export class AlertPage extends ComponentBasePage {
     readonly component: AlertComponent;
@@ -10,9 +10,9 @@ export class AlertPage extends ComponentBasePage {
     constructor(page: Page) {
         const alertProps: ComponentProps = {
             page: page,
-            testId: defaultTestId,
-            componentId: alertStoryId,
-            loadedPageSelector: loadedPageSelector
+            testId: AlertConsts.defaultTestId,
+            componentId: AlertConsts.alertStoryId,
+            loadedPageSelector: AlertConsts.loadedPageSelector
         };
 
         super(alertProps);

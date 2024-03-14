@@ -10,7 +10,7 @@ import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
 import {getRandomAppImage, getRandomNumber} from '@ironsource/fusion-ui/storybook-foundations/mocking/app-images-mock';
 import {MOCK_OPTIONS_COUNTRIES, TOP_COUNTRIES} from '../../../storybook-foundations/mocking/countrues-mock';
 import {CountryCode} from '@ironsource/fusion-ui/components/flag/v4';
-import {defaultTestId, testIdWithIndex} from 'projects/E2E/tests/components/dropdown/consts';
+import {defaultTestId, testIdWithIndex} from '@ironsource/fusion-ui/components/dropdown/v4/consts';
 
 const longOptionsList: DropdownOption[] = Array.from({length: 100}, (_, i) => ({
     id: i,

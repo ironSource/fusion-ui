@@ -1,9 +1,9 @@
 import {Page} from '@playwright/test';
-import {dropdownDefaultStoryId, loadedPageSelector} from './consts';
 import {DropdownComponent} from './dropdown-component';
 import {ComponentBasePage} from '../../base-page/component-base-page';
 import {ComponentProps} from '../../base-page/types';
 import {testIdWithIndex} from '../consts';
+import {DropdownConsts} from '@ironsource/fusion-ui/testIds';
 
 export class DropdownPage extends ComponentBasePage {
     readonly component: DropdownComponent;
@@ -12,8 +12,8 @@ export class DropdownPage extends ComponentBasePage {
         const dropdownProps: ComponentProps = {
             page: page,
             testId: testIdWithIndex,
-            componentId: dropdownDefaultStoryId,
-            loadedPageSelector: loadedPageSelector
+            componentId: DropdownConsts.dropdownStoryId,
+            loadedPageSelector: DropdownConsts.loadedPageSelector
         };
 
         super(dropdownProps);
