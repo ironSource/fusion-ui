@@ -1,6 +1,6 @@
-import {getTestId} from '../../global/utils';
 import {Page} from '@playwright/test';
 import {FieldLabelTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 export class FieldLabelComponent {
     readonly page;
@@ -10,15 +10,15 @@ export class FieldLabelComponent {
     }
 
     getLabelText({testId}: {testId: string}) {
-        return this.page.getByTestId(getTestId(testId, FieldLabelTestIdModifiers.TEXT)).textContent();
+        return this.page.getByTestId(TestIdsService.getTestId(testId, FieldLabelTestIdModifiers.TEXT)).textContent();
     }
 
     isMandatory({testId}: {testId: string}) {
-        return this.page.getByTestId(getTestId(testId, FieldLabelTestIdModifiers.MANDATORY)).isVisible();
+        return this.page.getByTestId(TestIdsService.getTestId(testId, FieldLabelTestIdModifiers.MANDATORY)).isVisible();
     }
 
     async getHelpIconText({testId}: {testId: string}) {
-        const helpIconSelector = await this.page.getByTestId(getTestId(testId, FieldLabelTestIdModifiers.TOOLTIP));
+        const helpIconSelector = await this.page.getByTestId(TestIdsService.getTestId(testId, FieldLabelTestIdModifiers.TOOLTIP));
         await helpIconSelector.hover();
         return helpIconSelector.getAttribute('text');
     }

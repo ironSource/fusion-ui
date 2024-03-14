@@ -5,7 +5,7 @@ import {
     TabsTestIdModifiers,
     TooltipTestIdModifiers
 } from '@ironsource/fusion-ui/entities';
-import {getTestId, getTestIdSelector} from '@ironsource/fusion-ui/global/utils';
+import {TestIdsService} from '@ironsource/fusion-ui/services';
 
 const alertDefault = 'alert-default';
 export const AlertConsts = {
@@ -17,7 +17,7 @@ export const AlertConsts = {
     dangerTestId: 'danger-alert',
     infoTestId: 'info-alert',
     outlinedTestId: 'outlined-alert',
-    loadedPageSelector: getTestIdSelector(getTestId(alertDefault, AlertTestIdModifiers.WRAPPER))
+    loadedPageSelector: TestIdsService.getTestIdSelector(TestIdsService.getTestId(alertDefault, AlertTestIdModifiers.WRAPPER))
 };
 const buttonDefault = 'buttonTestId';
 export const ButtonConsts = {
@@ -25,7 +25,7 @@ export const ButtonConsts = {
     iconButtonStoryId: 'v4-components-buttons-iconbutton--basic',
     defaultTestId: buttonDefault,
     iconButtonTestId: 'iconButtonTestId',
-    loadedPageSelector: getTestIdSelector(buttonDefault)
+    loadedPageSelector: TestIdsService.getTestIdSelector(buttonDefault)
 };
 const dropdownDefault = 'dropdownTestId';
 export const DropdownConsts = {
@@ -34,7 +34,7 @@ export const DropdownConsts = {
     defaultTestId: dropdownDefault,
     defaultOptionTestId: 'dropdownOptionTestId',
     testIdWithIndex: 'dropdownTestIdWithIndex',
-    loadedPageSelector: getTestIdSelector(getTestId(dropdownDefault, DropdownTestIdModifiers.TRIGGER))
+    loadedPageSelector: TestIdsService.getTestIdSelector(TestIdsService.getTestId(dropdownDefault, DropdownTestIdModifiers.TRIGGER))
 };
 const inputDefault = 'inputs-default';
 export const InputConsts = {
@@ -50,20 +50,20 @@ export const InputConsts = {
     mediumTestId: 'medium-inputs',
     largeTestId: 'large-inputs',
     XLTestId: 'XL-inputs',
-    loadedPageSelector: getTestIdSelector(getTestId(inputDefault, InputTestIdModifiers.WRAPPER))
+    loadedPageSelector: TestIdsService.getTestIdSelector(TestIdsService.getTestId(inputDefault, InputTestIdModifiers.WRAPPER))
 };
 export const ModalConsts = {};
 const tabsDefault = 'tabs-default';
 export const TabsConsts = {
     tabsStoryId: 'v4-components-tabs--basic',
     defaultTestId: tabsDefault,
-    wrapperTestId: getTestId(tabsDefault, TabsTestIdModifiers.WRAPPER),
-    tabTestId: getTestId(tabsDefault, TabsTestIdModifiers.TAB),
-    firstTestId: getTestId(tabsDefault, TabsTestIdModifiers.TAB) + '1',
-    secondTestId: getTestId(tabsDefault, TabsTestIdModifiers.TAB) + '2',
-    thirdTestId: getTestId(tabsDefault, TabsTestIdModifiers.TAB) + '3',
-    disabledTestId: getTestId(tabsDefault, TabsTestIdModifiers.TAB_DISABLED),
-    loadedPageSelector: getTestIdSelector(getTestId(tabsDefault, TabsTestIdModifiers.WRAPPER))
+    wrapperTestId: TestIdsService.getTestId(tabsDefault, TabsTestIdModifiers.WRAPPER),
+    tabTestId: TestIdsService.getTestId(tabsDefault, TabsTestIdModifiers.TAB),
+    firstTestId: TestIdsService.getTestId(tabsDefault, TabsTestIdModifiers.TAB) + '1',
+    secondTestId: TestIdsService.getTestId(tabsDefault, TabsTestIdModifiers.TAB) + '2',
+    thirdTestId: TestIdsService.getTestId(tabsDefault, TabsTestIdModifiers.TAB) + '3',
+    disabledTestId: TestIdsService.getTestId(tabsDefault, TabsTestIdModifiers.TAB_DISABLED),
+    loadedPageSelector: TestIdsService.getTestIdSelector(TestIdsService.getTestId(tabsDefault, TabsTestIdModifiers.WRAPPER))
 };
 
 const tooltipDefault = 'tooltip-default';
@@ -71,6 +71,6 @@ const tooltipDefault = 'tooltip-default';
 export const TooltipConsts = {
     tooltipStoryId: 'v4-components-tooltip--basic',
     defaultTestId: tooltipDefault,
-    triggerTestId: getTestId(tooltipDefault, TooltipTestIdModifiers.TRIGGER),
-    loadedPageSelector: getTestIdSelector(getTestId(tooltipDefault, TooltipTestIdModifiers.TRIGGER))
+    triggerTestId: TestIdsService.getTestId(tooltipDefault, TooltipTestIdModifiers.TRIGGER),
+    loadedPageSelector: TestIdsService.getTestIdSelector(TestIdsService.getTestId(tooltipDefault, TooltipTestIdModifiers.TRIGGER))
 };

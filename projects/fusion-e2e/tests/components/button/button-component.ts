@@ -1,6 +1,6 @@
 import {Page} from '@playwright/test';
-import {getTestId, getTestIdSelector} from '../../global/utils';
 import {ButtonTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 export class ButtonComponent {
     readonly page: Page;
@@ -10,18 +10,18 @@ export class ButtonComponent {
     }
 
     async waitForComponent({testId}: {testId: string}) {
-        const loadedPageSelector = getTestIdSelector(getTestId(testId, ButtonTestIdModifiers.BUTTON));
+        const loadedPageSelector = TestIdsService.getTestIdSelector(TestIdsService.getTestId(testId, ButtonTestIdModifiers.BUTTON));
         await this.page.waitForSelector(loadedPageSelector);
     }
 
     async clickOnButton({testId}: {testId: string}) {
-        const loadedPageSelector = getTestIdSelector(getTestId(testId, ButtonTestIdModifiers.BUTTON));
+        const loadedPageSelector = TestIdsService.getTestIdSelector(TestIdsService.getTestId(testId, ButtonTestIdModifiers.BUTTON));
 
         await this.page.click(loadedPageSelector);
     }
 
     async hoverOnButton({testId}: {testId: string}) {
-        const loadedPageSelector = getTestIdSelector(getTestId(testId, ButtonTestIdModifiers.BUTTON));
+        const loadedPageSelector = TestIdsService.getTestIdSelector(TestIdsService.getTestId(testId, ButtonTestIdModifiers.BUTTON));
 
         await this.page.hover(loadedPageSelector);
     }
@@ -32,7 +32,7 @@ export class ButtonComponent {
     }
 
     async getButtonText({testId}: {testId: string}) {
-        const buttonSelector = this.page.getByTestId(getTestId(testId, ButtonTestIdModifiers.CONTENT));
+        const buttonSelector = this.page.getByTestId(TestIdsService.getTestId(testId, ButtonTestIdModifiers.CONTENT));
         return buttonSelector.textContent();
     }
 

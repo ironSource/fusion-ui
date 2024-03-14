@@ -1,7 +1,7 @@
 import {Page} from '@playwright/test';
-import {getTestId} from '../../global/utils';
 import {InputParams} from './types';
 import {InputTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 export class BaseInputComponent {
     readonly page: Page;
@@ -11,26 +11,26 @@ export class BaseInputComponent {
     }
 
     getInputsFieldText({testId}: {testId: string}) {
-        return this.page.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD)).inputValue();
+        return this.page.getByTestId(TestIdsService.getTestId(testId, InputTestIdModifiers.FIELD)).inputValue();
     }
 
     getPlaceholderText({testId}: {testId: string}) {
-        return this.page.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD)).getAttribute('placeholder');
+        return this.page.getByTestId(TestIdsService.getTestId(testId, InputTestIdModifiers.FIELD)).getAttribute('placeholder');
     }
 
     getInputsType({testId}: {testId: string}) {
-        return this.page.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD)).getAttribute('type');
+        return this.page.getByTestId(TestIdsService.getTestId(testId, InputTestIdModifiers.FIELD)).getAttribute('type');
     }
 
     async addInput({testId, text}: InputParams) {
-        await this.page.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD)).type(text as string);
+        await this.page.getByTestId(TestIdsService.getTestId(testId, InputTestIdModifiers.FIELD)).type(text as string);
     }
 
     async clearInput({testId}: {testId: string}) {
-        await this.page.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD)).clear();
+        await this.page.getByTestId(TestIdsService.getTestId(testId, InputTestIdModifiers.FIELD)).clear();
     }
 
     isDisabled({testId}: {testId: string}) {
-        return this.page.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD)).isDisabled();
+        return this.page.getByTestId(TestIdsService.getTestId(testId, InputTestIdModifiers.FIELD)).isDisabled();
     }
 }

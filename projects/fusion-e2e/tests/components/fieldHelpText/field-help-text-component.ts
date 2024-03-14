@@ -1,6 +1,6 @@
-import {getTestId} from '../../global/utils';
 import {HasHelpTextTypeParams} from './types';
 import {FieldHelpTextTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 export class FieldHelpTextComponent {
     readonly page;
@@ -10,17 +10,17 @@ export class FieldHelpTextComponent {
     }
 
     hasExtraText({testId}: {testId: string}) {
-        const byTestId = this.page.getByTestId(getTestId(testId, FieldHelpTextTestIdModifiers.TEXT));
+        const byTestId = this.page.getByTestId(TestIdsService.getTestId(testId, FieldHelpTextTestIdModifiers.TEXT));
         return byTestId.isVisible();
     }
 
     getExtraText({testId}: {testId: string}) {
-        return this.page.getByTestId(getTestId(testId, FieldHelpTextTestIdModifiers.TEXT)).textContent();
+        return this.page.getByTestId(TestIdsService.getTestId(testId, FieldHelpTextTestIdModifiers.TEXT)).textContent();
     }
 
     async hasExtraTextIconType({testId, type}: HasHelpTextTypeParams) {
         const extraTextIconTypeLocator = await this.page
-            .getByTestId(getTestId(testId, FieldHelpTextTestIdModifiers.CONTAINER))
+            .getByTestId(TestIdsService.getTestId(testId, FieldHelpTextTestIdModifiers.CONTAINER))
             .locator(`.icon.icon-name--${type}`);
         return (await extraTextIconTypeLocator.count()) !== 0;
     }

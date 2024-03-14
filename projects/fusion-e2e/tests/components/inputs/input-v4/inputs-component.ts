@@ -4,7 +4,7 @@ import {FieldLabelComponent} from '../../fieldLabel/field-label-component';
 import {FieldHelpTextComponent} from '../../fieldHelpText/field-help-text-component';
 import {HasHelpTextTypeParams} from '../../fieldHelpText/types';
 import {InputTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {getTestId, getTestIdSelector} from '../../../global/utils';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 export class InputsComponent extends BaseInputComponent {
     private readonly fieldLabelComponent: FieldLabelComponent;
@@ -21,7 +21,7 @@ export class InputsComponent extends BaseInputComponent {
     }
 
     async waitForComponent({testId}: {testId: string}) {
-        const loadedPageSelector = getTestIdSelector(getTestId(testId, InputTestIdModifiers.WRAPPER));
+        const loadedPageSelector = TestIdsService.getTestIdSelector(TestIdsService.getTestId(testId, InputTestIdModifiers.WRAPPER));
 
         await this.page.waitForSelector(loadedPageSelector);
     }
@@ -40,17 +40,17 @@ export class InputsComponent extends BaseInputComponent {
 
     async clickOnApplyButton({testId}: {testId: string}) {
         const applyButtonSelector = await this.page
-            .getByTestId(getTestId(testId, InputTestIdModifiers.WRAPPER))
+            .getByTestId(TestIdsService.getTestId(testId, InputTestIdModifiers.WRAPPER))
             .locator('.icon.icon-name--check');
         await applyButtonSelector.click();
     }
 
     hasInlineErrorText({testId}: {testId: string}) {
-        return this.page.getByTestId(getTestId(testId, InputTestIdModifiers.TOOLTIP)).isVisible();
+        return this.page.getByTestId(TestIdsService.getTestId(testId, InputTestIdModifiers.TOOLTIP)).isVisible();
     }
 
     async getInlineErrorText({testId}: {testId: string}) {
-        const inlineErrorSelector = await this.page.getByTestId(getTestId(testId, InputTestIdModifiers.TOOLTIP));
+        const inlineErrorSelector = await this.page.getByTestId(TestIdsService.getTestId(testId, InputTestIdModifiers.TOOLTIP));
         await inlineErrorSelector.hover();
         return inlineErrorSelector.getAttribute('text');
     }
@@ -62,7 +62,7 @@ export class InputsComponent extends BaseInputComponent {
     }
 
     async clickOnPasswordIcon({testId}: {testId: string}) {
-        await this.page.getByTestId(getTestId(testId, InputTestIdModifiers.TOGGLE_PASSWORD)).click();
+        await this.page.getByTestId(TestIdsService.getTestId(testId, InputTestIdModifiers.TOGGLE_PASSWORD)).click();
     }
 
     async clickOnHidePassword({testId}: {testId: string}) {
@@ -73,13 +73,13 @@ export class InputsComponent extends BaseInputComponent {
 
     isPasswordHidden({testId}: {testId: string}) {
         return this.page
-            .getByTestId(getTestId(testId, InputTestIdModifiers.TOGGLE_PASSWORD))
+            .getByTestId(TestIdsService.getTestId(testId, InputTestIdModifiers.TOGGLE_PASSWORD))
             .locator('.fu-show-password-button eye-slash')
             .isVisible();
     }
 
     async clearInput({testId}: {testId: string}) {
-        const inputFieldSelector = this.page.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD));
+        const inputFieldSelector = this.page.getByTestId(TestIdsService.getTestId(testId, InputTestIdModifiers.FIELD));
         await inputFieldSelector.clear();
     }
 
@@ -88,24 +88,27 @@ export class InputsComponent extends BaseInputComponent {
     }
 
     async isDisabled({testId}: {testId: string}) {
-        const inputFieldSelector = await this.page.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD));
+        const inputFieldSelector = await this.page.getByTestId(TestIdsService.getTestId(testId, InputTestIdModifiers.FIELD));
 
         return inputFieldSelector.isDisabled();
     }
 
     hasApplyButton({testId}: {testId: string}) {
-        return this.page.getByTestId(getTestId(testId, InputTestIdModifiers.WRAPPER)).locator('.icon.icon-name--check').isVisible();
+        return this.page
+            .getByTestId(TestIdsService.getTestId(testId, InputTestIdModifiers.WRAPPER))
+            .locator('.icon.icon-name--check')
+            .isVisible();
     }
 
     async getMaxLengthNumber({testId}: {testId: string}) {
         // const fontCaptionText = await this.getFontCaptionText({testId});
         // return fontCaptionText[1];
-        const inputFieldSelector = await this.page.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD));
+        const inputFieldSelector = await this.page.getByTestId(TestIdsService.getTestId(testId, InputTestIdModifiers.FIELD));
         return inputFieldSelector.getAttribute('maxlength');
     }
 
     async getActualNumberLength({testId}: {testId: string}) {
-        const inputFieldSelector = await this.page.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD));
+        const inputFieldSelector = await this.page.getByTestId(TestIdsService.getTestId(testId, InputTestIdModifiers.FIELD));
         return inputFieldSelector.getAttribute('value').then(value => value.length);
         // const fontCaptionText = await this.getFontCaptionText({testId});
         // return fontCaptionText[0];
@@ -113,7 +116,7 @@ export class InputsComponent extends BaseInputComponent {
 
     async getFontCaptionText({testId}: {testId: string}) {
         const fontCaptionText = await this.page
-            .getByTestId(getTestId(testId, InputTestIdModifiers.WRAPPER))
+            .getByTestId(TestIdsService.getTestId(testId, InputTestIdModifiers.WRAPPER))
             .locator('.font-caption')
             .textContent();
         return fontCaptionText.split('/').map(str => parseInt(str.trim(), 10));
@@ -124,7 +127,9 @@ export class InputsComponent extends BaseInputComponent {
     }
 
     async isValidationAppear({testId}: {testId: string}) {
-        const fieldClasses = await this.page.getByTestId(getTestId(testId, InputTestIdModifiers.WRAPPER)).getAttribute('class');
+        const fieldClasses = await this.page
+            .getByTestId(TestIdsService.getTestId(testId, InputTestIdModifiers.WRAPPER))
+            .getAttribute('class');
         return fieldClasses.includes('variant-error');
     }
 }

@@ -1,6 +1,6 @@
 import {type Page} from '@playwright/test';
 import {ComponentProps, GotoParams} from './types';
-import {createStoryBookComponentPath, getTestIdSelector} from '../../global/utils';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 export class ComponentBasePage {
     readonly page: Page;
@@ -21,8 +21,8 @@ export class ComponentBasePage {
             ...gotoParams.additionalComponentParams
         };
 
-        await this.page.goto(createStoryBookComponentPath(gotoParams.storyId || this.componentId, componentParams));
-        const loadedPageSelector = getTestIdSelector(this.testId);
+        await this.page.goto(TestIdsService.createStoryBookComponentPath(gotoParams.storyId || this.componentId, componentParams));
+        const loadedPageSelector = TestIdsService.getTestIdSelector(this.testId);
         await this.page.waitForSelector(loadedPageSelector);
     }
 }

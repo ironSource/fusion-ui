@@ -2,9 +2,8 @@ import {Page} from '@playwright/test';
 import {ComponentBasePage} from '../base-page/component-base-page';
 import {ComponentProps, GotoParams} from '../base-page/types';
 import {TooltipComponent} from './tooltip-component';
-import {createStoryBookComponentPath, getTestId} from '../../global/utils';
 import {TooltipTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TooltipConsts} from '@ironsource/fusion-ui/services/test-ids';
+import {TestIdsService, TooltipConsts} from '@ironsource/fusion-ui/services/test-ids';
 
 export class TooltipPage extends ComponentBasePage {
     readonly component: TooltipComponent;
@@ -31,7 +30,7 @@ export class TooltipPage extends ComponentBasePage {
             ...gotoParams.additionalComponentParams
         };
 
-        await this.page.goto(createStoryBookComponentPath(gotoParams.storyId || this.componentId, componentParams));
+        await this.page.goto(TestIdsService.createStoryBookComponentPath(gotoParams.storyId || this.componentId, componentParams));
 
         await this.openTooltip();
         await this.page.waitForSelector(this.loadedPageSelector);
@@ -46,7 +45,7 @@ export class TooltipPage extends ComponentBasePage {
     }
 
     private async openTooltip() {
-        const tooltipTriggerSelector = this.page.getByTestId(getTestId(this.testId, TooltipTestIdModifiers.TRIGGER));
+        const tooltipTriggerSelector = this.page.getByTestId(TestIdsService.getTestId(this.testId, TooltipTestIdModifiers.TRIGGER));
         await tooltipTriggerSelector.hover();
     }
 }

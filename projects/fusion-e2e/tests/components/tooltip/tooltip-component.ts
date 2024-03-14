@@ -1,6 +1,6 @@
 import {Page} from '@playwright/test';
 import {TooltipTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {getTestId, getTestIdSelector} from '../../global/utils';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 export class TooltipComponent {
     readonly page: Page;
@@ -10,17 +10,17 @@ export class TooltipComponent {
     }
 
     async waitForComponent({testId}: {testId: string}) {
-        const loadedPageSelector = getTestIdSelector(getTestId(testId, TooltipTestIdModifiers.TRIGGER));
+        const loadedPageSelector = TestIdsService.getTestIdSelector(TestIdsService.getTestId(testId, TooltipTestIdModifiers.TRIGGER));
 
         await this.page.waitForSelector(loadedPageSelector);
     }
 
     getTooltipText({testId}: {testId: string}) {
-        const locator = this.page.getByTestId(getTestId(testId, TooltipTestIdModifiers.TRIGGER)).last().locator('span');
+        const locator = this.page.getByTestId(TestIdsService.getTestId(testId, TooltipTestIdModifiers.TRIGGER)).last().locator('span');
         return locator.textContent();
     }
 
     getTooltipHeaderText({testId}: {testId: string}) {
-        return this.page.getByTestId(getTestId(testId, TooltipTestIdModifiers.TRIGGER)).last().getAttribute('header');
+        return this.page.getByTestId(TestIdsService.getTestId(testId, TooltipTestIdModifiers.TRIGGER)).last().getAttribute('header');
     }
 }

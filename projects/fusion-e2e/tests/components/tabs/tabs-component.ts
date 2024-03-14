@@ -1,8 +1,7 @@
 import {Page} from '@playwright/test';
-import {getTestId} from '../../global/utils';
 import {TabsSelectionParams} from './types';
 import {TabsTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TabsConsts} from '@ironsource/fusion-ui/services/test-ids';
+import {TabsConsts, TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 export class TabsComponent {
     readonly page: Page;
@@ -17,21 +16,27 @@ export class TabsComponent {
     }
 
     getSelectedTabText({testId}: {testId: string}) {
-        return this.page.getByTestId(getTestId(testId, TabsTestIdModifiers.WRAPPER)).locator('.tab-item--active').textContent();
+        return this.page
+            .getByTestId(TestIdsService.getTestId(testId, TabsTestIdModifiers.WRAPPER))
+            .locator('.tab-item--active')
+            .textContent();
     }
 
     async selectTab({testId, tabName}: TabsSelectionParams) {
         const tabIndex = await this.getTabIndex({testId, tabName});
-        await this.page.getByTestId(getTestId(testId, `${TabsTestIdModifiers.TAB}-${tabIndex + 1}`)).click();
+        await this.page.getByTestId(TestIdsService.getTestId(testId, `${TabsTestIdModifiers.TAB}-${tabIndex + 1}`)).click();
     }
 
     private async getTabIndex({testId, tabName}: TabsSelectionParams) {
-        const tabs = await this.page.getByTestId(getTestId(testId, TabsTestIdModifiers.WRAPPER)).locator('.tab-item').allTextContents();
+        const tabs = await this.page
+            .getByTestId(TestIdsService.getTestId(testId, TabsTestIdModifiers.WRAPPER))
+            .locator('.tab-item')
+            .allTextContents();
         return tabs.indexOf(tabName);
     }
 
     async isTabDisabled(testId: string) {
-        const disabledTestId = getTestId(TabsConsts.defaultTestId, TabsTestIdModifiers.TAB_DISABLED);
+        const disabledTestId = TestIdsService.getTestId(TabsConsts.defaultTestId, TabsTestIdModifiers.TAB_DISABLED);
         await this.waitForComponent({testId: disabledTestId});
         return this.page.getByTestId(disabledTestId).isDisabled();
     }
