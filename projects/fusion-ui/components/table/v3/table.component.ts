@@ -31,8 +31,7 @@ import {
 import {TableBasicComponent} from './components/table-basic/table-basic.component';
 import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
 import {FormControl} from '@angular/forms';
-import {TableTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
+import {TestIdsService, TableTestIdModifiers} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-table',

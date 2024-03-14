@@ -2,8 +2,7 @@ import {Directive, HostBinding, Injector, Input, OnInit} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/service';
-import {DropdownTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
+import {TestIdsService, DropdownTestIdModifiers} from '@ironsource/fusion-ui/services/test-ids';
 
 @Directive()
 export abstract class DropdownOptionBaseComponent implements OnInit {

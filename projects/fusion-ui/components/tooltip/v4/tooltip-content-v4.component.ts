@@ -2,8 +2,7 @@ import {ChangeDetectionStrategy, Component, ElementRef, Injector, Input, Rendere
 import {CommonModule} from '@angular/common';
 import {TooltipComponentStyleConfiguration, TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
-import {TooltipTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
+import {TestIdsService, TooltipTestIdModifiers} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-tooltip-content',

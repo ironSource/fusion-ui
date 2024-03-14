@@ -1,6 +1,5 @@
 import {Page} from '@playwright/test';
-import {TooltipTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
+import {TestIdsService, TooltipTestIdModifiers} from '@ironsource/fusion-ui/services/test-ids';
 
 export class TooltipComponent {
     readonly page: Page;

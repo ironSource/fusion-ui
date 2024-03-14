@@ -1,6 +1,5 @@
 import {HasHelpTextTypeParams} from './types';
-import {FieldHelpTextTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
+import {TestIdsService, FieldHelpTextTestIdModifiers} from '@ironsource/fusion-ui/services/test-ids';
 
 export class FieldHelpTextComponent {
     readonly page;

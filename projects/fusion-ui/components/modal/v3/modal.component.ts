@@ -23,8 +23,7 @@ import {ModalConfiguration} from './modal.entities';
 import {getDefaultCssUnit} from './modal-utils';
 import {takeUntil} from 'rxjs/operators';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {ModalTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
+import {TestIdsService, ModalTestIdModifiers} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-modal',

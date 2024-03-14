@@ -18,8 +18,7 @@ import {Observable, of} from 'rxjs';
 import {ColumnData} from './column-data';
 import {TableRow} from '@ironsource/fusion-ui/components/table/common/entities';
 import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
-import {TableTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
+import {TestIdsService, TableTestIdModifiers} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     // eslint-disable-next-line

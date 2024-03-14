@@ -4,8 +4,8 @@ import {
     InputTestIdModifiers,
     TabsTestIdModifiers,
     TooltipTestIdModifiers
-} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui/services';
+} from './test-ids-modifiers';
+import {TestIdsService} from './test-ids.service';
 
 const alertDefault = 'alert-default';
 export const AlertConsts = {

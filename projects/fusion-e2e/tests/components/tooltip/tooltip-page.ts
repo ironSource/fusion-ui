@@ -2,8 +2,7 @@ import {Page} from '@playwright/test';
 import {ComponentBasePage} from '../base-page/component-base-page';
 import {ComponentProps, GotoParams} from '../base-page/types';
 import {TooltipComponent} from './tooltip-component';
-import {TooltipTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService, TooltipConsts} from '@ironsource/fusion-ui/services/test-ids';
+import {TestIdsService, TooltipConsts, TooltipTestIdModifiers} from '@ironsource/fusion-ui/services/test-ids';
 
 export class TooltipPage extends ComponentBasePage {
     readonly component: TooltipComponent;

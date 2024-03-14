@@ -1,7 +1,6 @@
 import {Page} from '@playwright/test';
 import {InputParams} from './types';
-import {InputTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
+import {TestIdsService, InputTestIdModifiers} from '@ironsource/fusion-ui/services/test-ids';
 
 export class BaseInputComponent {
     readonly page: Page;

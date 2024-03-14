@@ -3,8 +3,12 @@ import {BaseDropdownComponent} from '../base-dropdown';
 import {FieldLabelComponent} from '../../fieldLabel/field-label-component';
 import {FieldHelpTextComponent} from '../../fieldHelpText/field-help-text-component';
 import {HasHelpTextTypeParams} from '../../fieldHelpText/types';
-import {DropdownTestIdModifiers, FieldHelpTextTestIdModifiers, InputTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
+import {
+    TestIdsService,
+    DropdownTestIdModifiers,
+    FieldHelpTextTestIdModifiers,
+    InputTestIdModifiers
+} from '@ironsource/fusion-ui/services/test-ids';
 
 type SearchItem = {
     testId: string;

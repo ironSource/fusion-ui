@@ -34,8 +34,7 @@ import {DropdownSelectConfigurations} from '@ironsource/fusion-ui/components/dro
 import {DROPDOWN_DEBOUNCE_TIME, DROPDOWN_OPTIONS_WITHOUT_SCROLL} from './dropdown-config';
 import {BackendPagination, ClosedOptions, DropdownPlaceholderConfiguration} from '@ironsource/fusion-ui/components/dropdown/entities';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
-import {DropdownTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
+import {TestIdsService, DropdownTestIdModifiers} from '@ironsource/fusion-ui/services/test-ids';
 
 @Directive()
 export abstract class DropdownBaseComponent extends ApiBase implements OnInit, OnDestroy, OnChanges, ControlValueAccessor {

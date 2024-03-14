@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Injector, Input, Output} from '@angular/core';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
-import {IncludeExcludeTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
+import {TestIdsService, IncludeExcludeTestIdModifiers} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-dropdown-dual-multi-select-body-item',

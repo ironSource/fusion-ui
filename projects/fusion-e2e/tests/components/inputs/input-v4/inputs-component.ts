@@ -3,8 +3,7 @@ import {BaseInputComponent} from '../base-input';
 import {FieldLabelComponent} from '../../fieldLabel/field-label-component';
 import {FieldHelpTextComponent} from '../../fieldHelpText/field-help-text-component';
 import {HasHelpTextTypeParams} from '../../fieldHelpText/types';
-import {InputTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
+import {TestIdsService, InputTestIdModifiers} from '@ironsource/fusion-ui/services/test-ids';
 
 export class InputsComponent extends BaseInputComponent {
     private readonly fieldLabelComponent: FieldLabelComponent;

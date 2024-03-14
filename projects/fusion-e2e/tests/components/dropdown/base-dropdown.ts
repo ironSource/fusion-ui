@@ -1,7 +1,6 @@
 import {Page} from '@playwright/test';
 import {SelectionByIndex, SelectionByName, SelectMultiple, SelectMultipleByName} from './types';
-import {DropdownTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
+import {TestIdsService, DropdownTestIdModifiers} from '@ironsource/fusion-ui/services/test-ids';
 
 export class BaseDropdownComponent {
     readonly page: Page;

@@ -6,8 +6,7 @@ import {takeUntil} from 'rxjs/operators';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
-import {SearchTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
+import {TestIdsService, SearchTestIdModifiers} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-search',

@@ -1,7 +1,6 @@
 import {Directive, HostBinding, Injector, Input} from '@angular/core';
 import {ButtonColor, ButtonSize, ButtonVariant, IconButtonColor, IconButtonSize, IconButtonVariant} from './button.entities';
-import {ButtonTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
+import {TestIdsService, ButtonTestIdModifiers} from '@ironsource/fusion-ui/services/test-ids';
 
 @Directive()
 export class ButtonBaseComponent {

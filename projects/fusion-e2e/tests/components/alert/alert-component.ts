@@ -1,6 +1,5 @@
 import {Page} from '@playwright/test';
-import {AlertTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
+import {TestIdsService, AlertTestIdModifiers} from '@ironsource/fusion-ui/services/test-ids';
 
 export class AlertComponent {
     readonly page: Page;

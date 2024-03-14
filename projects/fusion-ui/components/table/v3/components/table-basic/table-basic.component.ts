@@ -22,8 +22,7 @@ import {
 import {TableService} from '@ironsource/fusion-ui/components/table/common/services';
 import {fromEvent, Subject, from} from 'rxjs';
 import {filter, mergeMap, takeUntil} from 'rxjs/operators';
-import {TableTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
+import {TestIdsService, TableTestIdModifiers} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     // eslint-disable-next-line

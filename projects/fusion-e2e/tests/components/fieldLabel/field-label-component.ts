@@ -1,6 +1,5 @@
 import {Page} from '@playwright/test';
-import {FieldLabelTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
+import {TestIdsService, FieldLabelTestIdModifiers} from '@ironsource/fusion-ui/services/test-ids';
 
 export class FieldLabelComponent {
     readonly page;

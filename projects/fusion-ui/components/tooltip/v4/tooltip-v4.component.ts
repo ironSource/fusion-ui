@@ -4,8 +4,7 @@ import {tooltipConfiguration} from '@ironsource/fusion-ui/components/tooltip/com
 import {TooltipV4Directive} from './tooltip-v4.directive';
 import {TooltipContentV4Directive} from './tooltip-content-v4.directive';
 import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
-import {TooltipTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
+import {TestIdsService, TooltipTestIdModifiers} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-tooltip',

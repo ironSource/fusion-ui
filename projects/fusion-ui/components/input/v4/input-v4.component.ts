@@ -23,8 +23,12 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
 import {ModalModule} from '@ironsource/fusion-ui/components/modal';
 import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
-import {FieldHelpTextTestIdModifiers, InputTestIdModifiers, ModalTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
+import {
+    TestIdsService,
+    FieldHelpTextTestIdModifiers,
+    InputTestIdModifiers,
+    ModalTestIdModifiers
+} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-input',

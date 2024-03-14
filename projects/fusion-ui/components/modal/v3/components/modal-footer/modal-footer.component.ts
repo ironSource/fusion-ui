@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Injector, Input, Output} from '@angular/core';
-import {ModalTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
+import {TestIdsService, ModalTestIdModifiers} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-modal-footer',

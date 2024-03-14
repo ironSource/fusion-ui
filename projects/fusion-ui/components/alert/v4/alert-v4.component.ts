@@ -5,8 +5,7 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {ButtonColor, ButtonComponent, IconButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
-import {AlertTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
+import {TestIdsService, AlertTestIdModifiers} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-alert',

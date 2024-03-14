@@ -22,8 +22,7 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {BackendPagination, SelectedItemName} from '@ironsource/fusion-ui/components/dropdown';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {IncludeExcludeTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
+import {TestIdsService, IncludeExcludeTestIdModifiers} from '@ironsource/fusion-ui/services/test-ids';
 
 const CLASS_LIST = [
     'dual-select-button',
