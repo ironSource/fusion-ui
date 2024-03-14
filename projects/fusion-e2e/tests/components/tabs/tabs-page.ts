@@ -2,7 +2,7 @@ import {Page} from '@playwright/test';
 import {ComponentBasePage} from '../base-page/component-base-page';
 import {ComponentProps} from '../base-page/types';
 import {TabsComponent} from './tabs-component';
-import {TabsConsts} from '@ironsource/fusion-ui/testIds';
+import {TabsConsts} from '@ironsource/fusion-ui/services/test-ids';
 
 export class TabsPage extends ComponentBasePage {
     readonly component: TabsComponent;

@@ -1,6 +1,6 @@
 import {expect, test} from '@playwright/test';
 import {InputsPage} from './inputs-page';
-import {InputConsts} from '@ironsource/fusion-ui/testIds';
+import {InputConsts} from '@ironsource/fusion-ui/services/test-ids';
 // import {FormControl} from "@angular/forms";
 
 let inputsPage: InputsPage;

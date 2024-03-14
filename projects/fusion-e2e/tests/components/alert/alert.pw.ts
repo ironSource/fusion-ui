@@ -1,6 +1,6 @@
 import {AlertPage} from './alert-page';
 import {expect, test} from '@playwright/test';
-import {AlertConsts} from '@ironsource/fusion-ui/testIds';
+import {AlertConsts} from '@ironsource/fusion-ui/services/test-ids';
 
 let component: AlertPage;
 

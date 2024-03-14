@@ -6,7 +6,7 @@ import {environment} from 'stories/environments/environment';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {InputV4Component} from './input-v4.component';
-import {InputConsts} from '@ironsource/fusion-ui/testIds';
+import {InputConsts} from '@ironsource/fusion-ui/services/test-ids';
 
 const formControl = new FormControl();
 const formControlDisabled = new FormControl({value: 'Disabled', disabled: true});

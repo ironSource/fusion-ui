@@ -1,7 +1,7 @@
 import {AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
-import {TabsConsts} from '@ironsource/fusion-ui/testIds';
+import {TabsConsts} from '@ironsource/fusion-ui/services/test-ids';
 
 const ATTRIBUTE_SELECTED = 'tab-selected';
 const ATTRIBUTE_DISABLED = 'tab-disabled';

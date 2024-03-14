@@ -2,7 +2,7 @@ import {Page} from '@playwright/test';
 import {InputsComponent} from './inputs-component';
 import {ComponentBasePage} from '../../base-page/component-base-page';
 import {ComponentProps} from '../../base-page/types';
-import {InputConsts} from '@ironsource/fusion-ui/testIds';
+import {InputConsts} from '@ironsource/fusion-ui/services/test-ids';
 
 export class InputsPage extends ComponentBasePage {
     readonly component: InputsComponent;

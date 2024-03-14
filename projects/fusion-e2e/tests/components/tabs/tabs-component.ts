@@ -2,7 +2,7 @@ import {Page} from '@playwright/test';
 import {getTestId} from '../../global/utils';
 import {TabsSelectionParams} from './types';
 import {TabsTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TabsConsts} from '@ironsource/fusion-ui/testIds';
+import {TabsConsts} from '@ironsource/fusion-ui/services/test-ids';
 
 export class TabsComponent {
     readonly page: Page;

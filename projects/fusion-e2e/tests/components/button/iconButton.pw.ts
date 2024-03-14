@@ -1,6 +1,6 @@
 import {expect, test} from '@playwright/test';
 import {ButtonPage} from './button-page';
-import {ButtonConsts} from '@ironsource/fusion-ui/testIds';
+import {ButtonConsts} from '@ironsource/fusion-ui/services/test-ids';
 
 let buttonPage: ButtonPage;
 

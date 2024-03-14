@@ -7,7 +7,7 @@ import {environment} from '../../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TabV4Component} from '../tab/tab-v4.component';
 import {TabsV4Component} from './tabs-v4.component';
-import {TabsConsts} from '@ironsource/fusion-ui/testIds';
+import {TabsConsts} from '@ironsource/fusion-ui/services/test-ids';
 
 const actionsData = {
     selectedChange: action('selectedChange')

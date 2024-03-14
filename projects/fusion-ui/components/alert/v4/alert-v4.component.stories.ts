@@ -5,7 +5,7 @@ import {environment} from '../../../../../stories/environments/environment';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {AlertV4Component} from './alert-v4.component';
-import {AlertConsts} from '@ironsource/fusion-ui/testIds';
+import {AlertConsts} from '@ironsource/fusion-ui/services/test-ids';
 
 export default {
     title: 'V4/Components/Feedback/Alert',

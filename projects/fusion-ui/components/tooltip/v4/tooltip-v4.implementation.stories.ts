@@ -8,7 +8,7 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
-import {TooltipConsts} from '@ironsource/fusion-ui/testIds';
+import {TooltipConsts} from '@ironsource/fusion-ui/services/test-ids';
 
 export default {
     title: 'V4/Components/Tooltip',

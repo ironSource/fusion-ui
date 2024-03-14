@@ -1,6 +1,6 @@
 import {expect, test} from '@playwright/test';
 import {DropdownPage} from './dropdown-page';
-import {DropdownConsts} from '@ironsource/fusion-ui/testIds';
+import {DropdownConsts} from '@ironsource/fusion-ui/services/test-ids';
 
 const preSelectedArr = [2, 4, 5];
 let component: DropdownPage;

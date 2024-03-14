@@ -2,7 +2,7 @@ import {Page} from '@playwright/test';
 import {ComponentBasePage} from '../base-page/component-base-page';
 import {ButtonComponent} from './button-component';
 import {ComponentProps} from '../base-page/types';
-import {ButtonConsts} from '@ironsource/fusion-ui/testIds';
+import {ButtonConsts} from '@ironsource/fusion-ui/services/test-ids';
 
 export class ButtonPage extends ComponentBasePage {
     readonly component: ButtonComponent;

@@ -2,7 +2,7 @@ import {Page} from '@playwright/test';
 import {DropdownComponent} from './dropdown-component';
 import {ComponentBasePage} from '../../base-page/component-base-page';
 import {ComponentProps} from '../../base-page/types';
-import {DropdownConsts} from '@ironsource/fusion-ui/testIds';
+import {DropdownConsts} from '@ironsource/fusion-ui/services/test-ids';
 
 export class DropdownPage extends ComponentBasePage {
     readonly component: DropdownComponent;

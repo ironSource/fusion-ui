@@ -2,7 +2,7 @@ import {AlertComponent} from './alert-component';
 import {Page} from '@playwright/test';
 import {ComponentBasePage} from '../base-page/component-base-page';
 import {ComponentProps} from '../base-page/types';
-import {AlertConsts} from '@ironsource/fusion-ui/testIds';
+import {AlertConsts} from '@ironsource/fusion-ui/services/test-ids';
 
 export class AlertPage extends ComponentBasePage {
     readonly component: AlertComponent;
