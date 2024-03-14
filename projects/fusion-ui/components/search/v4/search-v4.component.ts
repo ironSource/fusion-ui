@@ -5,8 +5,6 @@ import {FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/form
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
-import {InputTestIdModifiers, ModalTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 import {DropdownConsts} from '@ironsource/fusion-ui/testIds';
 
 @Component({
@@ -117,8 +115,5 @@ export class SearchV4Component implements OnInit, OnDestroy {
     }
 
     // endregion
-    protected readonly modalTestIdModifiers = ModalTestIdModifiers;
-    testIdsService: TestIdsService = this.injector.get(TestIdsService);
-    protected readonly InputTestIdModifiers = InputTestIdModifiers;
     testId: string = DropdownConsts.testIdWithIndex;
 }
