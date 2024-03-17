@@ -51,7 +51,17 @@ export default {
 
 const ButtonTemplate: StoryFn<ButtonComponent> = (args: ButtonComponent) => ({
     props: args,
-    template: `<fusion-button [color]="color" [variant]="variant" [size]="size" [disabled]="disabled" [loading]="loading">
+    template: `<fusion-button 
+[color]="color" 
+[variant]="variant" 
+[size]="size" 
+[disabled]="disabled" 
+[loading]="loading"
+[startIconName]="startIconName"
+[endIconName]="endIconName"
+[startIconColor]="startIconColor"
+[selected]="selected"
+>
     {{content}}
 </fusion-button>`
 });
@@ -121,3 +131,19 @@ export const Icons = {
     render: ButtonIconsTemplate,
     args: {color: 'primary', variant: 'contained', startIconName: 'ph/bold/plus', endIconName: 'ph/caret-down'}
 };
+
+/*
+export const CustomIconColor = {
+    render: ButtonTemplate,
+    args: {
+        content: 'Custom Left Icon Color',
+        color: 'default',
+        variant: 'outlined',
+        size: 'small',
+        startIconName: 'ph/warning-circle',
+        startIconColor: 'var(--error-darker, #C62A2F)',
+        /!*        endIconName: 'ph/caret-down',*!/
+        selected: false
+    }
+};
+*/

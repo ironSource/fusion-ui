@@ -1,5 +1,5 @@
 <label *ngIf="labelText" for="{{id}}" class="fu-label">{{ labelText }}</label>
-<div class="fu-input-wrapper fu-size-{{size}}">
+<div class="fu-input-wrapper fu-size-{{size}} fu-variant-{{variant}}">
     <fusion-icon *ngIf="startIcon" class="fu-start-icon" [name]="startIcon"></fusion-icon>
     <div *ngIf="prefix" class="fu-input-prefix">{{prefix}}</div>
     <input #input
@@ -24,7 +24,10 @@
     <fusion-icon *ngIf="endIcon" class="fu-end-icon" [name]="endIcon"></fusion-icon>
     <fusion-icon *ngIf="inlineErrorText" [fusionTooltip]="inlineErrorText" class="fu-inline-error-icon" name="ph/info"></fusion-icon>
 </div>
-<div *ngIf="showLengthCounter" class="fu-input-underline">
-    <!-- Add FieldHelperComponent here -->
+<div *ngIf="helperText || showLengthCounter" class="fu-input-underline">
+    <div *ngIf="helperText" class="fu-input-helper fu-variant-{{variant}}">
+        <fusion-icon *ngIf="helperIcon" class="fu-helper-icon" [name]="helperIcon"></fusion-icon>
+        {{helperText}}
+    </div>
     <div *ngIf="showLengthCounter" class="fu-max-length-counter">{{(valueLength$ | async)}} <ng-container *ngIf="maxLength">/{{maxLength}}</ng-container></div>
 </div>

@@ -1,0 +1,16 @@
+<div class="fu-alert-wrapper fu-alert-color-{{color}}"
+     *ngIf="description?.length || title"
+     [class.fu-alert-outlined]="variant==='outlined'"
+     [class.fu-alert-rounded]="rounded">
+    <div class="fu-alert-icon-wrapper" *ngIf="iconName">
+        <fusion-icon class="fu-alert-icon" [style.color]="iconColor" [name]="iconName"></fusion-icon>
+    </div>
+    <div class="fu-alert-content">
+        <div class="fu-alert-title" *ngIf="title">{{title}}</div>
+        <div class="fu-alert-message" *ngIf="description?.length">{{description}}</div>
+    </div>
+    <div class="fu-alert-actions">
+        <fusion-button *ngIf="actionText" size="small" variant="outlined" [color]="actionButtonColor" (click)="onActionClicked()">{{actionText}}</fusion-button>
+        <fusion-icon-button *ngIf="dismissible" class="fu-alert-close" iconName="ph/x" (click)="onDismissClicked()"></fusion-icon-button>
+    </div>
+</div>

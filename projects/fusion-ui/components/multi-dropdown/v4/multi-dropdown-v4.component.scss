@@ -115,6 +115,9 @@ $optionsMinWidth: 225px;
               &.fu-group-first{
                 margin-top: var(--spacing-50, #{$spacingV4-50});
               }
+              &.fu-group-hide{
+                display: none;
+              }
             }
 
             .fu-text-content {

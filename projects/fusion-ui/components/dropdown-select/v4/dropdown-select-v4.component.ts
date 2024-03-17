@@ -17,10 +17,11 @@ import {CountryCode, FlagComponent} from '@ironsource/fusion-ui/components/flag/
 export class DropdownSelectV4Component {
     @Input() placeholder: DropdownPlaceholder = {value: 'Select'};
     @Input() isOpen: boolean = false;
-    @Input() size: 'medium' | 'large' | 'xlarge' = 'medium';
+    @Input() size: 'small' | 'medium' | 'large' | 'xlarge' = 'medium';
     @Input() disabled: boolean = false;
     @Input() validationState: 'error' | 'warning' | 'success' | null = null;
     @Input() imageUrl: string;
     @Input() icon: string;
+    @Input() iconColor: string;
     @Input() country: CountryCode | string;
 }

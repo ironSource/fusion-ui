@@ -1,0 +1,85 @@
+@import '../../../src/style/scss/v4/mixins/mixins';
+@import '../../../src/style/scss/v4/colors';
+@import '../../../src/style/scss/v4/spacings';
+@import '../../../src/style/scss/v4/border-radius';
+@import '../../../src/style/scss/v4/shadows';
+@import '../../../src/style/scss/v4/vars/fonts';
+
+$defaultWidth: 444px;
+
+:host {
+  position: fixed;
+  inset: 0;
+  background: var(--background-backdrop, #{$color-v4-background-backdrop});
+  overflow-x: auto;
+  z-index: getZIndexLayerOffset(system, 10);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .fu-modal-wrapper {
+    width: $defaultWidth;
+    border-radius: var(--border-radius-lg, #{$borderRadiusV4-lg});
+    border: 1px solid var(--common-divider-elevation-0, #{$color-v4-common-divider-elevation-0});
+    background-color: var(--background-model-elevation, #{$color-v4-background-model-elevation});
+
+    box-shadow: var(--box-shadow-xl, #{$boxShadowV4-XL});
+
+    .fu-modal-header {
+      padding: var(--spacing-200, #{$spacingV4-200}) var(--spacing-300, #{$spacingV4-300});
+      border-bottom: 1px solid var(--common-divider-elevation-0, #{$color-v4-common-divider-elevation-0});
+      display: flex;
+
+      .fu-modal-header-content {
+        display: flex;
+        flex-direction: column;
+
+        .fu-modal-header-title {
+          @extend %font-v4-heading-3;
+          color: var(--text-primary, #{$color-v4-text-primary});
+        }
+
+        .fu-modal-header-description {
+          @extend %font-v4-body-1;
+          color: var(--text-secondary, #{$color-v4-text-secondary});
+        }
+      }
+      .fu-modal-close-button{
+        margin-left: auto;
+      }
+    }
+
+    .fu-modal-content {
+      padding: var(--spacing-300, #{$spacingV4-300});
+      @extend %font-v4-body-1;
+      color: var(--text-secondary, #{$color-v4-text-secondary});
+    }
+
+    .fu-modal-footer {
+      padding: var(--spacing-150, #{$spacingV4-150}) var(--spacing-300, #{$spacingV4-300});
+      border-top: 1px solid var(--common-divider-elevation-0, #{$color-v4-common-divider-elevation-0});
+      display: flex;
+      align-items: center;
+
+      .fu-modal-footer-actions {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-100, #{$spacingV4-100});
+      }
+    }
+
+    &.fu-modal-medium {
+      width: 600px;
+    }
+
+    &.fu-modal-large {
+      width: 900px;
+    }
+  }
+}
+
+:host-context(.docs-story){
+  position: unset;
+}

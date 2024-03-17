@@ -71,6 +71,55 @@ export const Disabled: Story = {
     })
 };
 
+export const Variant: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            formControl: formControl
+        },
+        template: `
+<div style="display: flex; flex-direction: column; gap: 16px">
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Error"      
+        variant="error"  
+        [viewOnly]="viewOnly"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+      ></fusion-input>
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Success"
+        variant="success"
+        [viewOnly]="viewOnly"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+      ></fusion-input>
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Warning"
+        variant="warning"
+        [viewOnly]="viewOnly"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+      ></fusion-input>
+</div>
+`
+    })
+};
+
 export const Size: Story = {
     render: args => ({
         props: {
@@ -151,6 +200,140 @@ export const Counter: Story = {
         type: 'number',
         hideNumberArrows: false
     }
+};
+
+export const WithHelper: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            formControl: formControl,
+            helperText: 'Helper text'
+        },
+        template: `
+<div style="display: flex; flex-direction: column; gap: 16px">
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Default"      
+        [helperText]="helperText"  
+        [viewOnly]="viewOnly"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+      ></fusion-input>
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Error"      
+        variant="error" 
+        [helperText]="helperText"
+        [viewOnly]="viewOnly"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+      ></fusion-input>
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Success"
+        variant="success"
+        [helperText]="helperText"
+        [viewOnly]="viewOnly"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+      ></fusion-input>
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Warning"
+        variant="warning"
+        [helperText]="helperText"
+        [viewOnly]="viewOnly"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+      ></fusion-input>
+</div>
+`
+    })
+};
+
+export const WithHelperIcon: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            formControl: formControl,
+            helperText: 'Helper text'
+        },
+        template: `
+<div style="display: flex; flex-direction: column; gap: 16px">
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Default"      
+        [helperText]="helperText"  
+        [helperIcon]="'ph/fill/info'"
+        [viewOnly]="viewOnly"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+      ></fusion-input>
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Error"      
+        variant="error" 
+        [helperText]="helperText"
+        [helperIcon]="'ph/fill/warning-octagon'"
+        [viewOnly]="viewOnly"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+      ></fusion-input>
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Success"
+        variant="success"
+        [helperText]="helperText"
+        [helperIcon]="'ph/fill/check-circle'"
+        [viewOnly]="viewOnly"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+      ></fusion-input>
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Warning"
+        variant="warning"
+        [helperText]="helperText"
+        [helperIcon]="'ph/fill/warning'"
+        [viewOnly]="viewOnly"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+      ></fusion-input>
+</div>
+`
+    })
 };
 
 export const InlineValidation: Story = {

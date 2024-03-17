@@ -54,6 +54,9 @@ sass projects/fusion-ui/src/style/scss/v4/vars/_fonts.scss dist/fusion-ui/style/
 # copy and compile shadows v4
 sass projects/fusion-ui/src/style/scss/v4/shadows.scss dist/fusion-ui/style/v4/shadows.css -s compressed
 
+# common v4 variables
+sass projects/fusion-ui/src/style/scss/v4/variables.scss dist/fusion-ui/style/v4/variables.css -s compressed
+
 # common v4 style-guide
 sass projects/fusion-ui/src/style/scss/v4/style-guide.scss dist/fusion-ui/style/v4/style-guide.css -s compressed
 

@@ -11,12 +11,14 @@
     <ng-container *ngIf="!templateRef" [ngTemplateOutlet]="defaultTrigger"></ng-container>
 
     <ng-template #defaultTrigger>
-        <fusion-dropdown-select *ngIf="(dropdownSelectConfigurations$ | async) as triggerConfiguration"
+        <fusion-dropdown-select class="fu-mode-{{triggerMode}}"
+            *ngIf="(dropdownSelectConfigurations$ | async) as triggerConfiguration"
             #selectComponent
             [placeholder]="triggerConfiguration.placeholder"
             [disabled]="triggerConfiguration.disabled"
             [isOpen]="triggerConfiguration.isOpen"
             [icon]="triggerConfiguration.icon"
+            [iconColor]="triggerConfiguration.iconColor"
             [imageUrl]="triggerConfiguration.labelImage"
             [country]="triggerConfiguration.labelFlag"
             [size]="size"

@@ -4,11 +4,12 @@ import {ToggleButtonGroupColor, ToggleButtonGroupOption, ToggleButtonGroupSize} 
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
+import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
 
 @Component({
     selector: 'fusion-toggle-button-group',
     standalone: true,
-    imports: [CommonModule, IconModule],
+    imports: [CommonModule, IconModule, TooltipDirective],
     host: {class: 'fusion-v4'},
     templateUrl: './toggle-button-group.component.html',
     styleUrls: ['./toggle-button-group.component.scss'],

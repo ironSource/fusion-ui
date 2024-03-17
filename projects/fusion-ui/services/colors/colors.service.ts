@@ -10,8 +10,9 @@ export class ColorsService {
         return !!COLORS_PALETTE[paletteName] ? COLORS_PALETTE[paletteName] : COLORS_PALETTE.style_v2;
     }
 
-    public getPieColorsPalette(): string[] {
-        return PIE_COLORS_PALETTE;
+    public getPieColorsPalette(styleVersion: number): string[] {
+        const paletteName = `style_v${styleVersion}`;
+        return !!PIE_COLORS_PALETTE[paletteName] ? PIE_COLORS_PALETTE[paletteName] : PIE_COLORS_PALETTE.default;
     }
 
     public toRgba = (color: string, alpha: number = 100): string => {
