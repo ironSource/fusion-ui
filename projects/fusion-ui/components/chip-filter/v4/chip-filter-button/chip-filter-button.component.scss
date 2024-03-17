@@ -19,7 +19,7 @@ $chipSmallPadding: 4px 6px;
   .fu-chip-filter-container {
     width: 100%;
     padding: $chipPadding;
-    border-radius: var(--border-radius-md);
+    border-radius: var(--border-radius-md, #{$borderRadiusV4-md});
     color: var(--text-primary, #{$color-v4-text-primary});
 
     .fu-icon-close{

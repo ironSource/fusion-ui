@@ -32,6 +32,6 @@ export class TabsPage extends ComponentBasePage {
     }
 
     isTabDisabled() {
-        return this.component.isTabDisabled(this.testId);
+        return this.component.isTabDisabled();
     }
 }

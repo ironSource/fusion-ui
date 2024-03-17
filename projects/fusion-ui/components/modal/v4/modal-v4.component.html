@@ -5,42 +5,20 @@
          [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:DialogTestIdModifiers.HEADER"
     >
         <div class="fu-modal-header-content">
-            <div class="fu-modal-header-title"
-                 [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:DialogTestIdModifiers.MODAL_TITLE"
-                 *ngIf="title">{{ title }}
-            </div>
-            <div class="fu-modal-header-description" *ngIf="description">{{ description }}</div>
+            <div class="fu-modal-header-title" *ngIf="title">{{title}}</div>
+            <div class="fu-modal-header-description" *ngIf="description">{{description}}</div>
         </div>
-        <fusion-icon-button class="fu-modal-close-button" *ngIf="showCloseButton" size="small" iconName="ph/x"
-                            [testId]="testIdsService.getTestAttribute.bind(this) | generic:testId:DialogTestIdModifiers.ACTION_CLOSE"
-                            (click)="onCloseButtonClicked($event)"></fusion-icon-button>
+        <fusion-icon-button class="fu-modal-close-button" [disabled]="disableCloseButton" *ngIf="showCloseButton" size="small" iconName="ph/x" (click)="onCloseButtonClicked($event)"></fusion-icon-button>
     </div>
-    <fusion-alert *ngIf="!!alert" [rounded]="false" [color]="alert.color" [description]="alert?.description"
-                  [actionText]="alert?.action?.label" (action)="onAlertActionClicked()"></fusion-alert>
+    <fusion-alert *ngIf="!!alert" [rounded]="false" [color]="alert.color" [description]="alert?.description" [actionText]="alert?.action?.label" (action)="onAlertActionClicked()"></fusion-alert>
     <div class="fu-modal-content">
-        <div class="fu-modal-content-message" *ngIf="content"
-             [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:DialogTestIdModifiers.MODAL_CONTENT"
-        >{{ content }}
-        </div>
+        <div class="fu-modal-content-message" *ngIf="content">{{content}}</div>
         <ng-content></ng-content>
     </div>
     <div class="fu-modal-footer">
-        <div class="fu-modal-footer-actions"
-             [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:DialogTestIdModifiers.ACTION_BUTTONS_WRAPPER"
-        >
-            <fusion-button *ngIf="secondaryButtonLabel" [disabled]="secondaryButtonDisabled"
-                           [variant]="secondaryButtonVariant" [color]="secondaryButtonColor"
-                           [testId]="testIdsService.getTestAttribute.bind(this) | generic:testId:DialogTestIdModifiers.CANCEL_BUTTON"
-                           class="fu-modal-action-secondary"
-                           (click)="onSecondaryButtonClicked($event)">{{ secondaryButtonLabel }}
-            </fusion-button>
-            <fusion-button *ngIf="primaryButtonLabel" [loading]="primaryButtonLoading"
-                           [disabled]="primaryButtonDisabled" [variant]="primaryButtonVariant"
-                           [color]="primaryButtonColor"
-                           [testId]="testIdsService.getTestAttribute.bind(this) | generic:testId:DialogTestIdModifiers.SAVE_BUTTON"
-                           class="fu-modal-action-primary"
-                           (click)="onPrimaryButtonClicked($event)">{{ primaryButtonLabel }}
-            </fusion-button>
+        <div class="fu-modal-footer-actions">
+            <fusion-button *ngIf="secondaryButtonLabel" [disabled]="secondaryButtonDisabled" [variant]="secondaryButtonVariant" [color]="secondaryButtonColor" class="fu-modal-action-secondary" (click)="onSecondaryButtonClicked($event)">{{secondaryButtonLabel}}</fusion-button>
+            <fusion-button *ngIf="primaryButtonLabel" [loading]="primaryButtonLoading" [disabled]="primaryButtonDisabled" [variant]="primaryButtonVariant" [color]="primaryButtonColor" class="fu-modal-action-primary" (click)="onPrimaryButtonClicked($event)">{{primaryButtonLabel}}</fusion-button>
         </div>
     </div>
 </div>

@@ -21,6 +21,7 @@ export class ModalV4Component implements OnInit {
     @Input() description: string;
     @Input() showHeader: boolean = true;
     @Input() showCloseButton: boolean = true;
+    @Input() disableCloseButton: boolean = true;
     @Input() size: ModalV4Size = 'small';
 
     @Input() content: string;

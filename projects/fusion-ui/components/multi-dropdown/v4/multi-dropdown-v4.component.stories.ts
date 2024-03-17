@@ -10,7 +10,6 @@ import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
 import {getRandomAppImage, getRandomNumber} from '@ironsource/fusion-ui/storybook-foundations/mocking/app-images-mock';
 import {MOCK_OPTIONS_COUNTRIES, TOP_COUNTRIES} from '../../../storybook-foundations/mocking/countrues-mock';
 import {CountryCode} from '@ironsource/fusion-ui/components/flag/v4';
-import {defaultTestId, testIdWithIndex} from 'projects/E2E/tests/components/dropdown/consts';
 
 const longOptionsList: DropdownOption[] = Array.from({length: 100}, (_, i) => ({
     id: i,
@@ -145,7 +144,7 @@ const templateCommon = `
         <fusion-multi-dropdown [selectAllLabel]="selectAllLabel" [size]="size" [search]="search" [placeholder]="placeholder" [options]="optionsFood" [formControl]="formControl"></fusion-multi-dropdown>
     </div>
     <div style="width: 240px;">
-        <fusion-multi-dropdown [selectAllLabel]="selectAllLabel" [size]="size" [search]="search" [placeholder]="placeholder" [options]="options" [formControl]="formControl" [testId]="testIdWithIndex"></fusion-multi-dropdown>
+        <fusion-multi-dropdown [selectAllLabel]="selectAllLabel" [size]="size" [search]="search" [placeholder]="placeholder" [options]="options" [formControl]="formControl" [testId]="'dropdownTestIdWithIndex'"></fusion-multi-dropdown>
     </div>
 </div>
 `;
@@ -210,8 +209,8 @@ export default {
         options: longOptionsList,
         optionsFood: foodOptionsList,
         formControl: formControl,
-        testId: defaultTestId,
-        testIdWithIndex: testIdWithIndex
+        testId: 'dropdownTestId',
+        testIdWithIndex: 'dropdownTestIdWithIndex'
     },
     argTypes: {
         formControl: {
