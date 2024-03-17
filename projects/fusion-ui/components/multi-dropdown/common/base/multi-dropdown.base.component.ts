@@ -43,6 +43,13 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
             startWith(false),
             map(searchValue => !!searchValue)
         );
+
+        this.resetState$
+            .asObservable()
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe(_ => {
+                this.applySelect(true);
+            });
     }
 
     /**
