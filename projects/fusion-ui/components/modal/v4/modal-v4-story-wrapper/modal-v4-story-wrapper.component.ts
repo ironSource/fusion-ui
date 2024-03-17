@@ -5,7 +5,6 @@ import {ModalV4Component} from '../modal-v4.component';
 import {TeleportingDirective} from '@ironsource/fusion-ui/directives/teleporting';
 import {DialogTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {getTestId} from '@ironsource/fusion-ui/utils/utilsForTest';
-import {defaultTestId} from 'projects/E2E/tests/components/dialog/consts';
 
 @Component({
     selector: 'fusion-modal-story-wrapper',
@@ -33,8 +32,7 @@ export class ModalV4StoryWrapperComponent implements AfterViewInit {
     dialogConfig = {...this.defaultDialogConfig};
     modalSown = false;
     teleportTarget = '#storybook-root';
-    @Input() testId: string = defaultTestId;
-    modalButtonTestId = getTestId(this.testId, DialogTestIdModifiers.WRAPPER);
+    @Input() testId: string;
 
     ngAfterViewInit() {
         this.teleportTarget = !!document.getElementById('storybook-root')?.attributes['hidden'] ? '#storybook-docs' : '#storybook-root';
@@ -81,4 +79,7 @@ export class ModalV4StoryWrapperComponent implements AfterViewInit {
         console.log('close modal');
         this.modalSown = false;
     }
+
+    protected readonly getTestId = getTestId;
+    protected readonly DialogTestIdModifiers = DialogTestIdModifiers;
 }

@@ -17,7 +17,8 @@
     </ng-container>
     <ng-container *ngSwitchDefault>
         <div class="fu-wrapper">
-            <fusion-button color="primary" [testId]="modalButtonTestId" (click)="openModal('default')">Open Dialog
+            <fusion-button color="primary" [testId]="getTestId(this.testId, DialogTestIdModifiers.WRAPPER)"
+                           (click)="openModal('default')">Open Dialog
             </fusion-button>
         </div>
     </ng-container>

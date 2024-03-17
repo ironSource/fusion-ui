@@ -6,7 +6,6 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {ModalV4Component} from './modal-v4.component';
 import {ModalV4StoryWrapperComponent} from './modal-v4-story-wrapper/modal-v4-story-wrapper.component';
-import {defaultTestId} from 'projects/E2E/tests/components/dialog/consts';
 
 export default {
     title: 'V4/Components/Feedback/Dialog/Dialog',
@@ -38,8 +37,7 @@ type Story = StoryObj<ModalV4Component>;
 export const Basic: Story = {
     render: args => ({
         props: {
-            ...args,
-            testId: defaultTestId
+            ...args
         },
         template: `
         <fusion-modal-story-wrapper [testId]="testId"></fusion-modal-story-wrapper>
