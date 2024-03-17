@@ -28,7 +28,7 @@ export default {
         variant: 'contained',
         startIconName: '',
         endIconName: '',
-        testId: 'buttonTestId'
+        testId: 'testId'
     },
     argsTypes: {
         disabled: {
@@ -55,7 +55,7 @@ const ButtonTemplate: StoryFn<ButtonComponent> = (args: ButtonComponent) => ({
 [color]="color"
 [variant]="variant"
 [size]="size"
-[testId]="testId"
+[testId]=testId
 [disabled]="disabled"
 [loading]="loading"
 [startIconName]="startIconName"

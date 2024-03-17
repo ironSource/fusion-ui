@@ -17,8 +17,7 @@ export default {
     ],
     tags: ['autodocs'],
     args: {
-        tooltipTextContent: 'This is a tooltip',
-        testId: 'tooltip-default'
+        tooltipTextContent: 'This is a tooltip'
     }
 } as Meta<TooltipContentV4Component>;
 
@@ -27,8 +26,7 @@ type Story = StoryObj<TooltipContentV4Component>;
 export const Default: Story = {
     render: args => ({
         props: {
-            ...args,
-            testId: 'tooltip-default'
+            ...args
         },
         template: `
 <fusion-tooltip-content

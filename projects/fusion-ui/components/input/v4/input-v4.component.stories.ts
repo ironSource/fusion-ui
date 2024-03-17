@@ -38,14 +38,7 @@ export default {
         placeholder: 'Placeholder text',
         size: 'medium',
         formControl: formControl,
-        viewOnly: false,
-        testId: 'defaultTestId',
-        errorTestId: 'errorTestId',
-        successTestId: 'successTestId',
-        warningTestId: 'warningTestId',
-        mediumTestId: 'mediumTestId',
-        largeTestId: 'largeTestId',
-        XLTestId: 'XLTestId'
+        viewOnly: false
     },
     argTypes: {
         formControl: {

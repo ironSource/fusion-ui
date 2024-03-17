@@ -52,7 +52,7 @@ export const Basic: TabsStory = {
         props: args,
         template: `
 <div>
-    <fusion-tabs [variant]="variant" (selectedChange)="selectedChange($event)" [attr.data-testid]="'tabs-default--tabs-wrapper'">
+    <fusion-tabs [variant]="variant" (selectedChange)="selectedChange($event)" [attr.data-testid]="testId">
       <fusion-tab [selected]="true" [attr.data-testid]="'firstTestId'">First</fusion-tab>
       <fusion-tab [attr.data-testid]="'secondTestId'">Second</fusion-tab>
       <fusion-tab [attr.data-testid]="'thirdTestId'">Third</fusion-tab>
