@@ -584,7 +584,8 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
                     retVal =
                         '$' +
                         this.numberToStringPipe.transform(value, {
-                            noSeparateBySpace: true
+                            noSeparateBySpace: true,
+                            precision: this.componentVersion === 4 ? 3 : undefined
                         });
                     break;
                 case 'percent':
@@ -596,7 +597,8 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
                 case 'shortString':
                     retVal = !!value
                         ? this.numberToStringPipe.transform(value, {
-                              noSeparateBySpace: true
+                              noSeparateBySpace: true,
+                              precision: this.componentVersion === 4 ? 3 : undefined
                           })
                         : value;
                     break;
