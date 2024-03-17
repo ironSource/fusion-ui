@@ -6,15 +6,6 @@ import {environment} from 'stories/environments/environment';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {InputV4Component} from './input-v4.component';
-import {
-    defaultTestId,
-    errorTestId,
-    successTestId,
-    warningTestId,
-    mediumTestId,
-    largeTestId,
-    XLTestId
-} from 'projects/E2E/tests/components/inputs/input-v4/consts';
 
 const formControl = new FormControl();
 const formControlDisabled = new FormControl({value: 'Disabled', disabled: true});
@@ -48,13 +39,13 @@ export default {
         size: 'medium',
         formControl: formControl,
         viewOnly: false,
-        testId: defaultTestId,
-        errorTestId: errorTestId,
-        successTestId: successTestId,
-        warningTestId: warningTestId,
-        mediumTestId: mediumTestId,
-        largeTestId: largeTestId,
-        XLTestId: XLTestId
+        testId: 'defaultTestId',
+        errorTestId: 'errorTestId',
+        successTestId: 'successTestId',
+        warningTestId: 'warningTestId',
+        mediumTestId: 'mediumTestId',
+        largeTestId: 'largeTestId',
+        XLTestId: 'XLTestId'
     },
     argTypes: {
         formControl: {
@@ -315,7 +306,7 @@ export const WithHelperIcon: Story = {
         [min]="min"
         [max]="max"
         [maxLength]="maxLength"
-        [testId]="defaultTestId"
+        [testId]="'defaultTestId'"
       ></fusion-input>
     <fusion-input
         [formControl]="formControl"

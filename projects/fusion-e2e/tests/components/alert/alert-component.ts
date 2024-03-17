@@ -1,5 +1,5 @@
 import {Page} from '@playwright/test';
-import {AlertTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {AlertTestIdModifiers, TabsTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {getTestId, getTestIdSelector} from '../../global/utils';
 
 export class AlertComponent {
@@ -10,7 +10,7 @@ export class AlertComponent {
     }
 
     async waitForComponent({testId}: {testId: string}) {
-        const loadedPageSelector = getTestIdSelector(getTestId(testId, AlertTestIdModifiers.WRAPPER));
+        const loadedPageSelector = getTestIdSelector(getTestId(testId, AlertTestIdModifiers.WRAPPER), TabsTestIdModifiers.TAB_DISABLED);
         await this.page.waitForSelector(loadedPageSelector);
     }
 

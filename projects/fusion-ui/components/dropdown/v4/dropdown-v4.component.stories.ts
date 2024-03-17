@@ -10,7 +10,6 @@ import {DropdownTriggerSize} from './dropdown-v4.entities';
 import {getRandomAppImage, getRandomNumber} from '../../../storybook-foundations/mocking/app-images-mock';
 import {MOCK_OPTIONS_COUNTRIES} from '../v3/stories/dropdown.mock';
 import {CountryCode} from '@ironsource/fusion-ui/components/flag/v4';
-import {defaultTestId, testIdWithIndex} from 'projects/E2E/tests/components/dropdown/consts';
 
 // region mock options data
 const longOptionsList: DropdownOption[] = Array.from({length: 100}, (_, i) => ({
@@ -176,8 +175,8 @@ export default {
         options: longOptionsList,
         optionsFood: foodOptionsList,
         formControl: formControlOptionsList,
-        testId: defaultTestId,
-        testIdWithIndex: testIdWithIndex
+        testId: 'dropdownTestId',
+        testIdWithIndex: 'dropdownTestIdWithIndex'
     }
 } as Meta<DropdownV4Component>;
 
