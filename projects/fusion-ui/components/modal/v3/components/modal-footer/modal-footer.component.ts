@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Injector, Input, Output} from '@angular/core';
-import {DialogTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {ModalTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
@@ -30,7 +30,7 @@ export class ModalFooterComponent {
     @Output() onCloseButtonClicked = new EventEmitter();
 
     /** @internal */
-    DialogTestIdModifiers: typeof DialogTestIdModifiers = DialogTestIdModifiers;
+    modalTestIdModifiers: typeof ModalTestIdModifiers = ModalTestIdModifiers;
     /** @internal */
     testIdsService: TestIdsService = this.injector.get(TestIdsService);
 

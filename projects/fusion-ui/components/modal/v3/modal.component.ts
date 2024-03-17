@@ -23,7 +23,7 @@ import {ModalConfiguration} from './modal.entities';
 import {getDefaultCssUnit} from './modal-utils';
 import {takeUntil} from 'rxjs/operators';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {DialogTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {ModalTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
@@ -71,7 +71,7 @@ export class ModalComponent implements OnDestroy, OnInit {
     @ViewChild('modalHolder', {static: true}) modalHolder: ElementRef;
 
     /** @internal */
-    DialogTestIdModifiers: typeof DialogTestIdModifiers = DialogTestIdModifiers;
+    modalTestIdModifiers: typeof ModalTestIdModifiers = ModalTestIdModifiers;
     /** @internal */
     testIdsService: TestIdsService = this.injector.get(TestIdsService);
 
