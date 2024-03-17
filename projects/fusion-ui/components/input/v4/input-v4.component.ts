@@ -15,7 +15,7 @@ import {FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/form
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
-import {InputSize, InputType} from './input-v4.entities';
+import {InputSize, InputType, InputVariant} from './input-v4.entities';
 import {takeUntil} from 'rxjs/operators';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
@@ -177,6 +177,11 @@ export class InputV4Component implements OnInit, OnDestroy {
         return this._inlineErrorText;
     }
     private _inlineErrorText: string;
+
+    @Input() variant: InputVariant = 'default';
+
+    @Input() helperText: string;
+    @Input() helperIcon: string;
 
     // region Inputs - step (for number type)
     @Input()

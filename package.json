@@ -1,6 +1,6 @@
 {
     "name": "fusion-ui",
-    "version": "6.5.2",
+    "version": "6.5.3",
     "description": "UI library created by ironSource",
     "license": "MIT",
     "repository": {
@@ -52,7 +52,7 @@
         "@angular/platform-browser": "^14.2.0",
         "@angular/platform-browser-dynamic": "^14.2.0",
         "@angular/router": "^14.2.0",
-        "chart.js": "^3.6.2",
+        "chart.js": "3.7.1",
         "prismjs": "^1.22.0",
         "rxjs": "^6.6.3",
         "tslib": "^2.3.1",

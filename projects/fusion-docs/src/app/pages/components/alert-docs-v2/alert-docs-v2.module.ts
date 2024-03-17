@@ -13,10 +13,12 @@ import {ChipFiltersModule} from '@ironsource/fusion-ui/components/chip-filters';
 import {ChipFilterModule} from '@ironsource/fusion-ui/components/chip-filter';
 import {DropdownModule} from '@ironsource/fusion-ui/components/dropdown';
 import {DropdownDualMultiSelectModule} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
-import {ButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
+
 import {CheckboxComponent} from '@ironsource/fusion-ui/components/checkbox/v4';
 import {InputComponent} from '@ironsource/fusion-ui/components/input/v4';
 import {SearchComponent} from '@ironsource/fusion-ui/components/search/v4';
+import {ButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
+import {ButtonModule} from '@ironsource/fusion-ui/components/button/v2';
 
 const routes: Routes = [{path: '', component: AlertDocsV2Component}];
 
@@ -37,7 +39,7 @@ const routes: Routes = [{path: '', component: AlertDocsV2Component}];
         ChipFilterModule,
         DropdownModule,
         DropdownDualMultiSelectModule,
-        ButtonComponent,
+        ButtonModule,
         CheckboxComponent,
         InputComponent,
         SearchComponent

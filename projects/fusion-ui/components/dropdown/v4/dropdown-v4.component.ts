@@ -41,4 +41,5 @@ import {LoaderComponent} from '@ironsource/fusion-ui/components/loader/v4';
 })
 export class DropdownV4Component extends DropdownBaseComponent {
     @Input() size: DropdownTriggerSize = 'medium';
+    @Input() triggerMode: 'button' | 'button-text' | 'default' = 'default';
 }

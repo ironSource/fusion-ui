@@ -1,0 +1,46 @@
+@import '../../../../src/style/scss/v4/mixins/mixins';
+@import '../../../../src/style/scss/v4/colors';
+@import '../../../../src/style/scss/v4/fonts';
+@import '../../../../src/style/scss/v4/spacings';
+
+:host {
+    margin:auto;
+    width: 600px;
+    height: 276px;
+    background-color: #FCFCFC;
+    border-radius: 6px;
+    border:solid 1px #E4E4E4;
+    padding-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    .fusion-chart-wrapper{
+      height: 232px;
+      padding: 20px 16px 8px 8px;
+    }
+    .fusion-chart-labels-wrapper{
+      width: 100%;
+      padding: 0 16px;
+    }
+
+    .fu-empty-state{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+      @include size(100%);
+
+      .fu-empty-state-title{
+        color: var(--text-primary, #{$color-v4-text-primary});
+        @extend %font-v4-heading-4;
+      }
+
+      .fu-empty-state-icon{
+        @include size(48px);
+        color: var(--action-active, #{$color-v4-action-active});
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 48 48'%3E%3Cpath fill='gray' d='M39 16.5H28.5V6L39 16.5Z' opacity='.2'/%3E%3Cpath fill='gray' d='m40.061 15.439-10.5-10.5A1.501 1.501 0 0 0 28.5 4.5h-18a3 3 0 0 0-3 3v33a3 3 0 0 0 3 3h27a3 3 0 0 0 3-3v-24a1.5 1.5 0 0 0-.439-1.061ZM30 9.62 35.38 15H30V9.62ZM37.5 40.5h-27v-33H27v9a1.5 1.5 0 0 0 1.5 1.5h9v22.5Zm-7.939-15.439-3.44 3.439 3.44 3.439a1.502 1.502 0 0 1-2.122 2.122L24 30.621l-3.439 3.44a1.502 1.502 0 0 1-2.122-2.122l3.44-3.439-3.44-3.439a1.501 1.501 0 0 1 2.122-2.122L24 26.379l3.439-3.44a1.502 1.502 0 0 1 2.122 2.122Z'/%3E%3C/svg%3E");
+      }
+    }
+  }

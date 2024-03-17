@@ -3,6 +3,7 @@ import {DROPDOWN_OPTIONS_WITHOUT_SCROLL, DropdownBaseComponent} from '@ironsourc
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 import {Observable} from 'rxjs';
 import {map, startWith, takeUntil} from 'rxjs/operators';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Directive()
 export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent implements OnInit, OnChanges {
@@ -20,6 +21,8 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
     optionsWithoutScroll = DROPDOWN_OPTIONS_WITHOUT_SCROLL;
     /** @ignore */
     hasSearchValue$: Observable<boolean> = new Observable<boolean>();
+    /** @ignore */
+    showSelectedFirst: boolean = false;
 
     get isMulti(): boolean {
         return true;
@@ -63,12 +66,17 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
     getHolderCSSClasses(): string[] {
         return [...super.getHolderCSSClasses(), ...[this.confirm && 'is-with-confirm']].filter(Boolean);
     }
+
     /** @ignore */
     getOptionClasses(option: DropdownOption, index?: number) {
+        const isGroup = this.isGroupOption(option);
+        const hideGroup = this.showSelectedFirst && isGroup ? this.hideGroup(index) : false;
+
         return {
             [option.class]: option.class,
-            'fu-group': option.isGroup && !option.childOptions,
-            'fu-group-first': option.isGroup && !option.childOptions && index === 0
+            'fu-group': isGroup,
+            'fu-group-first': isGroup && index === 0,
+            'fu-group-hide': hideGroup
         };
     }
 
@@ -78,7 +86,6 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
      */
     openDropdown(event: MouseEvent) {
         this.tempSelected = this.cloneArray(this.selected);
-        this.tempOptions = this.cloneArray(this.options);
         super.openDropdown(event);
         this.isInSelectAllAction();
     }
@@ -142,7 +149,13 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
      */
     applySelect(close = false): void {
         this.selected = this.tempSelected;
-        this.options = this.tempOptions;
+
+        if (this.showSelectedFirst && this.selected.length && this.isIndeterminate) {
+            this.options = this.getSelectedOptionsFirst();
+        } else {
+            this.options = this.tempOptions;
+        }
+
         this.setLabel();
         this.selectedChange.emit(
             this.selected.map(item => {
@@ -236,6 +249,23 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
      */
     private cloneArray(array) {
         return [...array];
+    }
+
+    private isGroupOption(option: DropdownOption) {
+        return option.isGroup && !option.childOptions;
+    }
+
+    private hideGroup(index: number): boolean {
+        const nextOption = this.displayedOptions$.getValue()[index + 1];
+        return (!isNullOrUndefined(nextOption) && this.isGroupOption(nextOption)) || isNullOrUndefined(nextOption);
+    }
+
+    private getSelectedOptionsFirst(): DropdownOption[] {
+        return [...this.tempOptions].sort((a, b) => {
+            const isASelected = this.selected.includes(a);
+            const isBSelected = this.selected.includes(b);
+            return isASelected === isBSelected ? 0 : isASelected ? -1 : 1;
+        });
     }
 
     /** @ignore */

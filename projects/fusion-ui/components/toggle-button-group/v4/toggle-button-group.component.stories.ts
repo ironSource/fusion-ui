@@ -179,43 +179,52 @@ export const Steps: Story = {
             optionsIcon2: [
                 {
                     id: 1,
-                    icon: 'ph/chart-pie'
+                    icon: 'ph/chart-pie',
+                    tooltip: 'Pie'
                 },
                 {
                     id: 2,
-                    icon: 'ph/chart-line-up'
+                    icon: 'ph/chart-line-up',
+                    tooltip: 'Line'
                 }
             ] as ToggleButtonGroupOption[],
             optionsIcon3: [
                 {
                     id: 1,
-                    icon: 'ph/chart-pie'
+                    icon: 'ph/chart-pie',
+                    tooltip: 'Pie'
                 },
                 {
                     id: 2,
-                    icon: 'ph/chart-line-up'
+                    icon: 'ph/chart-line-up',
+                    tooltip: 'Line'
                 },
                 {
                     id: 3,
-                    icon: 'ph/chart-bar'
+                    icon: 'ph/chart-bar',
+                    tooltip: 'Bar'
                 }
             ] as ToggleButtonGroupOption[],
             optionsIcon4: [
                 {
                     id: 1,
-                    icon: 'ph/chart-pie'
+                    icon: 'ph/chart-pie',
+                    tooltip: 'Pie'
                 },
                 {
                     id: 2,
-                    icon: 'ph/chart-line-up'
+                    icon: 'ph/chart-line-up',
+                    tooltip: 'Line'
                 },
                 {
                     id: 3,
-                    icon: 'ph/chart-bar'
+                    icon: 'ph/chart-bar',
+                    tooltip: 'Bar'
                 },
                 {
                     id: 4,
-                    icon: 'ph/chart-scatter'
+                    icon: 'ph/chart-scatter',
+                    tooltip: 'Scatter'
                 }
             ] as ToggleButtonGroupOption[]
         },

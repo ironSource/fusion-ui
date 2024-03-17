@@ -47,6 +47,7 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 export class MultiDropdownV4Component extends MultiDropdownBaseComponent {
     @Input() size: DropdownTriggerSize = 'medium';
     @Input() optionTemplateRef: TemplateRef<any>;
+    @Input() showSelectedFirst = true;
 
     /** @ignore */
     getOptionContent(option: DropdownOption): string {

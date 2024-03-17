@@ -13,16 +13,21 @@ import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
  * for example 500000 to 500 K
  */
 export class ShortNumberScaleSuffixPipe implements PipeTransform {
-    transform(value: number, options?: any): string {
-        if (value < 10) {
+    transform(value: number, options?: {noSeparateBySpace?: boolean; precision?: number}): string {
+        if (value < 1) {
             return value.toFixed(2);
         }
+
         const i = value === 0 ? 0 : Math.floor(Math.log(value) / Math.log(1000));
         const bigPart = value / Math.pow(1000, i);
         const noSpaceDelimiter = !isNullOrUndefined(options) && !!options.noSeparateBySpace;
+        const precision: number = options?.precision;
+        let numberToShow = bigPart.toFixed(Number.isInteger(bigPart) ? 0 : 1);
 
-        return `${bigPart.toFixed(Number.isInteger(bigPart) ? 0 : 1)}${noSpaceDelimiter ? '' : ' '}${
-            ['', 'K', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y'][i]
-        }`.trim();
+        if (precision) {
+            numberToShow = bigPart.toPrecision(precision);
+        }
+
+        return `${numberToShow}${noSpaceDelimiter ? '' : ' '}${['', 'K', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y'][i] ?? ''}`.trim();
     }
 }
