@@ -321,6 +321,11 @@ width: 16px;
 height: 16px;
 background-color: var(--action-active, #808080);
 `;
+const TITLE_ROW_ICON_STYLE = `
+width: 16px;
+height: 16px;
+background-color: var(--action-active, #808080);
+`;
 const BODY_ROW_LABEL_STYLE = `
     display: block;
     flex: 1;
@@ -376,8 +381,16 @@ function generateTooltipHeaderElement(title) {
         flagImage.style.borderRadius = '50%';
         flagImage.src = FLAG_BASE_URL + countryCode + '.svg';
         headerRowEl.appendChild(flagImage);
-    } else {
-        title = title.replace(/,\(/g, ' (');
+    } else if (title.includes(',(')) {
+        const tileSplit = title.split(',(');
+        title = tileSplit[0];
+        const icon = tileSplit[1].replace(')', '');
+        if (!!icon) {
+            const iconImg = document.createElement('div');
+            iconImg.style.cssText = TITLE_ROW_ICON_STYLE;
+            iconImg.style.mask = `url(${ICONS_BASE_URL + 'v4/branded/' + icon.toLowerCase() + '.svg'}) no-repeat center`;
+            headerRowEl.appendChild(iconImg);
+        }
     }
     const text = document.createTextNode(title);
     headerRowEl.appendChild(text);

@@ -26,6 +26,39 @@ export const CHART_BAR_GROUPED_DATA_MOCK: ChartData = {
         {id: 9899, displayName: 'China', displayFormat: 'shortCurrency'}
     ]
 };
+export const CHART_BAR_GROUPED_BUNDLE_DATA_MOCK: ChartData = {
+    data: {
+        'Unity Ads': [30440.23447, 24305.11604, 23236.581397, 25868.996031, 26637.103381],
+        'ironSource Ads': [101767.5606288198, 54739.83288336369, 82346.69775942096, 54156.09207406471, 148581.30560731774]
+    },
+    legends: [
+        {
+            id: 1,
+            displayName: ['Bridge Race', '(iOS)'],
+            displayFormat: 'shortCurrency'
+        },
+        {
+            id: 1,
+            displayName: ['Build A Queen', '(Android)'],
+            displayFormat: 'shortCurrency'
+        },
+        {
+            id: 1,
+            displayName: ['Build A Queen', '(iOS)'],
+            displayFormat: 'shortCurrency'
+        },
+        {
+            id: 1,
+            displayName: ['Going Balls', '(Android)'],
+            displayFormat: 'shortCurrency'
+        },
+        {
+            id: 1,
+            displayName: ['Going Balls', '(iOS)'],
+            displayFormat: 'shortCurrency'
+        }
+    ]
+};
 
 export const CHART_DATA_MOCK: ChartData = {
     data: {

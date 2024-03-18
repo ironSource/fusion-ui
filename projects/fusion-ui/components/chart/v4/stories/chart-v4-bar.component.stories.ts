@@ -3,7 +3,7 @@ import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {ChartV4Component} from '../chart-v4.component';
 import {ChartType} from '@ironsource/fusion-ui/components/chart/common/base';
-import {CHART_BAR_DATA_MOCK, CHART_BAR_GROUPED_DATA_MOCK} from './chart-v4.component.mock';
+import {CHART_BAR_DATA_MOCK, CHART_BAR_GROUPED_BUNDLE_DATA_MOCK, CHART_BAR_GROUPED_DATA_MOCK} from './chart-v4.component.mock';
 import {ChartV4WrapperComponent} from './chart-v4-story-wrapper.component';
 
 export default {
@@ -47,6 +47,18 @@ export const Stack: Story = {
     render: args => ({
         props: {
             data: {...CHART_BAR_GROUPED_DATA_MOCK},
+            type: ChartType.StackedBar
+        },
+        template: `
+            <fusion-chart-wrapper [data]="data" [type]="type"></fusion-chart-wrapper>
+        `
+    })
+};
+
+export const StackBundle: Story = {
+    render: args => ({
+        props: {
+            data: {...CHART_BAR_GROUPED_BUNDLE_DATA_MOCK},
             type: ChartType.StackedBar
         },
         template: `
