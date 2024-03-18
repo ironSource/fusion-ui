@@ -61,6 +61,7 @@ export class ChartDataService {
                 dataValues.push(data.data[key][idx]);
             });
             dataset.push(
+                // @ts-ignore
                 Object.assign(
                     {
                         id: label.id,
@@ -80,6 +81,7 @@ export class ChartDataService {
         const legends: Array<string> = [];
         const dataset: Array<any> = [];
         data.legends.forEach((label: ChartLegend, idx) => {
+            // @ts-ignore
             legends.push(label.displayName);
         });
         Object.keys(data.data).forEach((key: string) => {
@@ -103,6 +105,7 @@ export class ChartDataService {
         const legends: Array<string> = [];
         const dataset: Array<number> = [];
         data.legends.forEach((label: ChartLegend, idx) => {
+            // @ts-ignore
             legends.push(label.displayName);
             if (!isNullOrUndefined(label.value)) {
                 dataset.push(label.value);

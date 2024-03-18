@@ -376,6 +376,8 @@ function generateTooltipHeaderElement(title) {
         flagImage.style.borderRadius = '50%';
         flagImage.src = FLAG_BASE_URL + countryCode + '.svg';
         headerRowEl.appendChild(flagImage);
+    } else {
+        title = title.replace(/,\(/g, ' (');
     }
     const text = document.createTextNode(title);
     headerRowEl.appendChild(text);
