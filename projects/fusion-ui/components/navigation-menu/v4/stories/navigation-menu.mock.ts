@@ -398,7 +398,7 @@ export const NAVIGATION_MENU_HOME_MOCK: PrimaryMenuItem[] = [
         menuTitle: 'Dashboard',
         route: '/dashboard',
         cssTheme: {
-            'fu-navbar-background-color': '#202020'
+            'fu-navbar-background-color': '#181818'
         }
     },
     {
@@ -406,7 +406,7 @@ export const NAVIGATION_MENU_HOME_MOCK: PrimaryMenuItem[] = [
         menuIcon: 'v4/branded/unity',
         menuTitle: 'LevelPlay',
         menuLogoSrc: 'v4/unity_logo_flat',
-        cssTheme: {'fu-navbar-background-color': '#181818'},
+        cssTheme: {'fu-navbar-background-color': '#202020'},
         menuItems: UNITY_MENU_ITEMS
     },
     {
