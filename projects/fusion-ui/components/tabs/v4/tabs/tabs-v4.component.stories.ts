@@ -7,7 +7,6 @@ import {environment} from '../../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TabV4Component} from '../tab/tab-v4.component';
 import {TabsV4Component} from './tabs-v4.component';
-import {disabledTestId, firstTestId, secondTestId, thirdTestId, wrapperTestId} from 'projects/E2E/tests/components/tabs/consts';
 
 const actionsData = {
     selectedChange: action('selectedChange')
@@ -34,12 +33,7 @@ Each tab should contain content that is distinct from other tabs in a set. For e
         }
     },
     args: {
-        variant: 'card',
-        testId: wrapperTestId,
-        firstTestId: firstTestId,
-        secondTestId: secondTestId,
-        thirdTestId: thirdTestId,
-        disabledTestId: disabledTestId
+        variant: 'card'
     },
     argsTypes: {
         variant: {
@@ -59,10 +53,10 @@ export const Basic: TabsStory = {
         template: `
 <div>
     <fusion-tabs [variant]="variant" (selectedChange)="selectedChange($event)" [attr.data-testid]="testId">
-      <fusion-tab [selected]="true" [attr.data-testid]="firstTestId">First</fusion-tab>
-      <fusion-tab [attr.data-testid]="secondTestId">Second</fusion-tab>
-      <fusion-tab [attr.data-testid]="thirdTestId">Third</fusion-tab>
-      <fusion-tab [attr.data-testid]="disabledTestId" [disabled]="true">Disabled</fusion-tab>
+      <fusion-tab [selected]="true" [attr.data-testid]="'firstTestId'">First</fusion-tab>
+      <fusion-tab [attr.data-testid]="'secondTestId'">Second</fusion-tab>
+      <fusion-tab [attr.data-testid]="'thirdTestId'">Third</fusion-tab>
+      <fusion-tab [attr.data-testid]="'tabs-default--tab-disabled'" [disabled]="true">Disabled</fusion-tab>
     </fusion-tabs>
 </div>
 `

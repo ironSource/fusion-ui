@@ -463,7 +463,9 @@ export function externalV4TooltipHandler(context) {
             tooltipRoot.firstChild.remove();
         }
 
-        tooltipRoot.appendChild(tooltipHead);
+        if (tooltipHead.textContent.trim().length) {
+            tooltipRoot.appendChild(tooltipHead);
+        }
         tooltipRoot.appendChild(tooltipBody);
 
         if (footerLine?.length && bodyLines?.length > 1) {

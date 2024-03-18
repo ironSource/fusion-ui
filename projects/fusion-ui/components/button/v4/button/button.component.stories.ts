@@ -4,7 +4,6 @@ import {environment} from '../../../../../../stories/environments/environment';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {ButtonComponent} from './button.component';
-import {defaultTestId} from 'projects/E2E/tests/components/button/consts';
 
 export default {
     title: 'V4/Components/Buttons/Button',
@@ -29,7 +28,7 @@ export default {
         variant: 'contained',
         startIconName: '',
         endIconName: '',
-        testId: defaultTestId
+        testId: 'testId'
     },
     argsTypes: {
         disabled: {
@@ -56,7 +55,7 @@ const ButtonTemplate: StoryFn<ButtonComponent> = (args: ButtonComponent) => ({
 [color]="color"
 [variant]="variant"
 [size]="size"
-[testId]="testId"
+[testId]=testId
 [disabled]="disabled"
 [loading]="loading"
 [startIconName]="startIconName"
