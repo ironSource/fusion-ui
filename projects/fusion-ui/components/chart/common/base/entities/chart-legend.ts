@@ -1,5 +1,5 @@
 export interface ChartLegend {
-    displayName: string;
+    displayName: string | string[];
     id: number | string;
     value?: number;
     hidden?: boolean;
