@@ -4,7 +4,7 @@ import {ButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
 import {ModalV4Component} from '../modal-v4.component';
 import {TeleportingDirective} from '@ironsource/fusion-ui/directives/teleporting';
 import {DialogTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {getTestId} from '@ironsource/fusion-ui/utils/utilsForTest';
+import {TestIdsService} from '@ironsource/fusion-ui';
 
 @Component({
     selector: 'fusion-modal-story-wrapper',
@@ -80,6 +80,6 @@ export class ModalV4StoryWrapperComponent implements AfterViewInit {
         this.modalSown = false;
     }
 
-    protected readonly getTestId = getTestId;
+    protected readonly getTestId = TestIdsService.getTestId;
     protected readonly DialogTestIdModifiers = DialogTestIdModifiers;
 }

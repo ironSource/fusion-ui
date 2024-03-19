@@ -39,7 +39,7 @@ export class TabsV4Component implements OnInit, OnDestroy {
     @ContentChildren(TabV4Component) tabList: QueryList<TabV4Component>;
     /** @internal */
     onDestroy$ = new Subject<void>();
-    @Input() testId: string = 'tabs-default--tabs-wrapper';
+    @Input() testId: string;
 
     constructor(private _element: ElementRef, private _renderer: Renderer2) {}
 
