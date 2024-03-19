@@ -1,11 +1,11 @@
-import {Page} from '@playwright/test';
 import {DialogComponent} from './dialog-component';
 import {dialogStoryId, defaultTestId, loadedPageSelector} from './consts';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
+import {Page} from '@playwright/test';
+import {ComponentBasePage} from '../base-page/component-base-page';
 import {ComponentProps, GotoParams} from '../base-page/types';
 import {createStoryBookComponentPath} from '../../global/utils';
-import {ComponentBasePage} from '../base-page/component-base-page';
 import {DialogTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui';
 
 export class DialogPage extends ComponentBasePage {
     readonly component: DialogComponent;
@@ -34,8 +34,8 @@ export class DialogPage extends ComponentBasePage {
     }
 
     async openDialog() {
-        const selector = getTestId(this.testId, DialogTestIdModifiers.WRAPPER);
-        await this.page.waitForSelector(getTestIdSelector(selector));
+        const selector = TestIdsService.getTestId(this.testId, DialogTestIdModifiers.WRAPPER);
+        await this.page.waitForSelector(TestIdsService.getTestIdSelector(selector));
         const dialogButton = this.page.getByTestId(selector);
         await dialogButton.click();
     }
