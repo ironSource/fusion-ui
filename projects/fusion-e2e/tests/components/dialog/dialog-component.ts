@@ -1,6 +1,6 @@
 import {Page} from '@playwright/test';
 import {DialogTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {getTestId} from '../../global/utils';
+import {getTestId, getTestIdSelector} from '../../global/utils';
 
 export class DialogComponent {
     readonly page: Page;
@@ -20,6 +20,13 @@ export class DialogComponent {
 
     getDialogText({testId}: {testId: string}) {
         return this.page.getByTestId(getTestId(testId, DialogTestIdModifiers.MODAL_CONTENT)).textContent();
+    }
+
+    async openDialog({testId}: {testId: string}) {
+        const selector = getTestId(testId, DialogTestIdModifiers.WRAPPER);
+        await this.page.waitForSelector(getTestIdSelector(selector));
+        const dialogButton = this.page.getByTestId(selector);
+        await dialogButton.click();
     }
 
     async closeDialog({testId}: {testId: string}) {
