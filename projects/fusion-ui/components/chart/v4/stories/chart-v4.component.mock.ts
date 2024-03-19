@@ -26,7 +26,46 @@ export const CHART_BAR_GROUPED_DATA_MOCK: ChartData = {
         {id: 9899, displayName: 'China', displayFormat: 'shortCurrency'}
     ]
 };
-export const CHART_BAR_GROUPED_BUNDLE_DATA_MOCK: ChartData = {
+
+const sortChartData = (data: ChartData): ChartData => {
+    const dataGroups = Object.keys(data.data);
+    const sumData = data.data[dataGroups[0]].map((_, idx) => {
+        return dataGroups.reduce((acc, group) => {
+            return acc + data.data[group][idx];
+        }, 0);
+    });
+    let sorted = data.legends
+        .map((legend, idx) => {
+            const group = dataGroups.reduce((acc, group, index) => {
+                acc[group] = data.data[group][idx];
+                return acc;
+            }, {});
+            return {
+                ...group,
+                legend: legend,
+                sumDataPoints: sumData[idx]
+            };
+        })
+        .sort((a, b) => b.sumDataPoints - a.sumDataPoints);
+    const retValue = sorted.reduce(
+        (acc, item) => {
+            console.log(item);
+            dataGroups.forEach(group => {
+                acc.data[group] = acc.data[group] || [];
+                acc.data[group].push(item[group]);
+            });
+            acc.legends.push(item.legend);
+            return acc;
+        },
+        {
+            data: {},
+            legends: []
+        }
+    );
+    return retValue;
+};
+
+export const CHART_BAR_GROUPED_BUNDLE_DATA_MOCK: ChartData = sortChartData({
     data: {
         'Unity Ads': [30440.23447, 24305.11604, 23236.581397, 25868.996031, 26637.103381],
         'ironSource Ads': [101767.5606288198, 54739.83288336369, 82346.69775942096, 54156.09207406471, 148581.30560731774]
@@ -38,27 +77,27 @@ export const CHART_BAR_GROUPED_BUNDLE_DATA_MOCK: ChartData = {
             displayFormat: 'shortCurrency'
         },
         {
-            id: 1,
+            id: 2,
             displayName: ['Build A Queen', '(Android)'],
             displayFormat: 'shortCurrency'
         },
         {
-            id: 1,
+            id: 3,
             displayName: ['Build A Queen', '(iOS)'],
             displayFormat: 'shortCurrency'
         },
         {
-            id: 1,
+            id: 4,
             displayName: ['Going Balls', '(Android)'],
             displayFormat: 'shortCurrency'
         },
         {
-            id: 1,
+            id: 5,
             displayName: ['Going Balls', '(iOS)'],
             displayFormat: 'shortCurrency'
         }
     ]
-};
+});
 
 export const CHART_DATA_MOCK: ChartData = {
     data: {

@@ -55,7 +55,7 @@ export const Stack: Story = {
     })
 };
 
-export const StackBundle: Story = {
+export const StackSorted: Story = {
     render: args => ({
         props: {
             data: {...CHART_BAR_GROUPED_BUNDLE_DATA_MOCK},
