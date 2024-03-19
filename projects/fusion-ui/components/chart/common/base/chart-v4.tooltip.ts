@@ -461,13 +461,17 @@ export function externalV4TooltipHandler(context) {
         const footerLine = tooltip.footer || [];
 
         const tooltipHead = document.createElement('div');
+        tooltipHead.style.cssText = HEADER_ROW_STYLE;
         const tooltipBody = document.createElement('div');
         tooltipBody.style.cssText = BODY_ROWS_WRAPPER;
         const tooltipRoot = tooltipEl.querySelector('div.fu-chart-tooltip-wrapper');
-
         titleLines.forEach(title => {
-            const tr = generateTooltipHeaderElement(title);
-            tooltipHead.appendChild(tr);
+            if (typeof title !== 'string' && title.tagName === 'IMG') {
+                tooltipHead.appendChild(title);
+            } else {
+                const tr = generateTooltipHeaderElement(title);
+                tooltipHead.appendChild(tr);
+            }
         });
 
         bodyLines.forEach((body, i) => {

@@ -1,4 +1,5 @@
 import {ChartData, FusionChartPieData} from '@ironsource/fusion-ui/components/chart/common/base';
+import {getRandomAppImage} from '@ironsource/fusion-ui/storybook-foundations/mocking/app-images-mock';
 
 export const CHART_BAR_DATA_MOCK: ChartData = {
     data: {
@@ -49,7 +50,6 @@ const sortChartData = (data: ChartData): ChartData => {
         .sort((a, b) => b.sumDataPoints - a.sumDataPoints);
     const retValue = sorted.reduce(
         (acc, item) => {
-            console.log(item);
             dataGroups.forEach(group => {
                 acc.data[group] = acc.data[group] || [];
                 acc.data[group].push(item[group]);
@@ -65,7 +65,7 @@ const sortChartData = (data: ChartData): ChartData => {
     return retValue;
 };
 
-export const CHART_BAR_GROUPED_BUNDLE_DATA_MOCK: ChartData = sortChartData({
+export const CHART_BAR_GROUPED_BUNDLE_DATA_MOCK: ChartData = {
     data: {
         'Unity Ads': [30440.23447, 24305.11604, 23236.581397, 25868.996031, 26637.103381],
         'ironSource Ads': [101767.5606288198, 54739.83288336369, 82346.69775942096, 54156.09207406471, 148581.30560731774]
@@ -74,30 +74,35 @@ export const CHART_BAR_GROUPED_BUNDLE_DATA_MOCK: ChartData = sortChartData({
         {
             id: 1,
             displayName: ['Bridge Race', '(iOS)'],
-            displayFormat: 'shortCurrency'
+            displayFormat: 'shortCurrency',
+            imageUrl: getRandomAppImage()
         },
         {
             id: 2,
             displayName: ['Build A Queen', '(Android)'],
-            displayFormat: 'shortCurrency'
+            displayFormat: 'shortCurrency',
+            imageUrl: getRandomAppImage()
         },
         {
             id: 3,
             displayName: ['Build A Queen', '(iOS)'],
-            displayFormat: 'shortCurrency'
+            displayFormat: 'shortCurrency',
+            imageUrl: getRandomAppImage()
         },
         {
             id: 4,
             displayName: ['Going Balls', '(Android)'],
-            displayFormat: 'shortCurrency'
+            displayFormat: 'shortCurrency',
+            imageUrl: getRandomAppImage()
         },
         {
             id: 5,
             displayName: ['Going Balls', '(iOS)'],
-            displayFormat: 'shortCurrency'
+            displayFormat: 'shortCurrency',
+            imageUrl: getRandomAppImage()
         }
     ]
-});
+};
 
 export const CHART_DATA_MOCK: ChartData = {
     data: {
