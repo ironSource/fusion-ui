@@ -66,6 +66,7 @@ export const Disabled: Story = {
     [size]="size"
     [viewOnly]="viewOnly"
     [type]="type"
+    [testId]="testId"
   ></fusion-input>
 `
     })
@@ -81,8 +82,8 @@ export const Variant: Story = {
 <div style="display: flex; flex-direction: column; gap: 16px">
     <fusion-input
         [formControl]="formControl"
-        placeholder="Error"      
-        variant="error"  
+        placeholder="Error"
+        variant="error"
         [viewOnly]="viewOnly"
         [type]="type"
         [step]="step"
@@ -90,6 +91,7 @@ export const Variant: Story = {
         [min]="min"
         [max]="max"
         [maxLength]="maxLength"
+        [testId]="errorTestId"
       ></fusion-input>
     <fusion-input
         [formControl]="formControl"
@@ -102,6 +104,7 @@ export const Variant: Story = {
         [min]="min"
         [max]="max"
         [maxLength]="maxLength"
+        [testId]="successTestId"
       ></fusion-input>
     <fusion-input
         [formControl]="formControl"
@@ -114,6 +117,7 @@ export const Variant: Story = {
         [min]="min"
         [max]="max"
         [maxLength]="maxLength"
+        [testId]="warningTestId"
       ></fusion-input>
 </div>
 `
@@ -130,7 +134,7 @@ export const Size: Story = {
 <div style="display: flex; flex-direction: column; gap: 16px">
     <fusion-input
         [formControl]="formControl"
-        placeholder="Medium (default)"        
+        placeholder="Medium (default)"
         [viewOnly]="viewOnly"
         [type]="type"
         [step]="step"
@@ -138,6 +142,7 @@ export const Size: Story = {
         [min]="min"
         [max]="max"
         [maxLength]="maxLength"
+        [testId]="mediumTestId"
       ></fusion-input>
     <fusion-input
         [formControl]="formControl"
@@ -150,6 +155,7 @@ export const Size: Story = {
         [min]="min"
         [max]="max"
         [maxLength]="maxLength"
+        [testId]="largeTestId"
       ></fusion-input>
     <fusion-input
         [formControl]="formControl"
@@ -162,6 +168,7 @@ export const Size: Story = {
         [min]="min"
         [max]="max"
         [maxLength]="maxLength"
+        [testId]="XLTestId"
       ></fusion-input>
 </div>
 `
@@ -213,20 +220,7 @@ export const WithHelper: Story = {
 <div style="display: flex; flex-direction: column; gap: 16px">
     <fusion-input
         [formControl]="formControl"
-        placeholder="Default"      
-        [helperText]="helperText"  
-        [viewOnly]="viewOnly"
-        [type]="type"
-        [step]="step"
-        [hideNumberArrows]="hideNumberArrows"
-        [min]="min"
-        [max]="max"
-        [maxLength]="maxLength"
-      ></fusion-input>
-    <fusion-input
-        [formControl]="formControl"
-        placeholder="Error"      
-        variant="error" 
+        placeholder="Default"
         [helperText]="helperText"
         [viewOnly]="viewOnly"
         [type]="type"
@@ -235,6 +229,21 @@ export const WithHelper: Story = {
         [min]="min"
         [max]="max"
         [maxLength]="maxLength"
+        [testId]="testId"
+      ></fusion-input>
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Error"
+        variant="error"
+        [helperText]="helperText"
+        [viewOnly]="viewOnly"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+        [testId]="errorTestId"
       ></fusion-input>
     <fusion-input
         [formControl]="formControl"
@@ -248,6 +257,7 @@ export const WithHelper: Story = {
         [min]="min"
         [max]="max"
         [maxLength]="maxLength"
+        [testId]="successTestId"
       ></fusion-input>
     <fusion-input
         [formControl]="formControl"
@@ -261,6 +271,7 @@ export const WithHelper: Story = {
         [min]="min"
         [max]="max"
         [maxLength]="maxLength"
+        [testId]="warningTestId"
       ></fusion-input>
 </div>
 `
@@ -278,8 +289,8 @@ export const WithHelperIcon: Story = {
 <div style="display: flex; flex-direction: column; gap: 16px">
     <fusion-input
         [formControl]="formControl"
-        placeholder="Default"      
-        [helperText]="helperText"  
+        placeholder="Default"
+        [helperText]="helperText"
         [helperIcon]="'ph/fill/info'"
         [viewOnly]="viewOnly"
         [type]="type"
@@ -288,11 +299,12 @@ export const WithHelperIcon: Story = {
         [min]="min"
         [max]="max"
         [maxLength]="maxLength"
+        [testId]="'defaultTestId'"
       ></fusion-input>
     <fusion-input
         [formControl]="formControl"
-        placeholder="Error"      
-        variant="error" 
+        placeholder="Error"
+        variant="error"
         [helperText]="helperText"
         [helperIcon]="'ph/fill/warning-octagon'"
         [viewOnly]="viewOnly"
@@ -302,6 +314,7 @@ export const WithHelperIcon: Story = {
         [min]="min"
         [max]="max"
         [maxLength]="maxLength"
+        [testId]="errorTestId"
       ></fusion-input>
     <fusion-input
         [formControl]="formControl"
@@ -316,6 +329,7 @@ export const WithHelperIcon: Story = {
         [min]="min"
         [max]="max"
         [maxLength]="maxLength"
+        [testId]="successTestId"
       ></fusion-input>
     <fusion-input
         [formControl]="formControl"
@@ -330,6 +344,7 @@ export const WithHelperIcon: Story = {
         [min]="min"
         [max]="max"
         [maxLength]="maxLength"
+        [testId]="warningTestId"
       ></fusion-input>
 </div>
 `
@@ -361,6 +376,7 @@ export const Password: Story = {
     [formControl]="formControl"
     [type]="type"
     [viewOnly]="viewOnly"
+    [testId]="testId"
   ></fusion-input>
 `
     })

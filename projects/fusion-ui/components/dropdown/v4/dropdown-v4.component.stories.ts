@@ -128,17 +128,20 @@ const formControlOptionsList = new FormControl();
 const templateCommon = `
 <div style="display:flex; gap: 14px;">
     <div style="width: 240px;">
-        <fusion-dropdown [size]="size" [search]="search" [placeholder]="placeholder" [options]="optionsFood" [formControl]="formControl" [triggerMode]="triggerMode"></fusion-dropdown>
+        <fusion-dropdown [size]="size" [search]="search"
+[placeholder]="placeholder" [options]="optionsFood" [formControl]="formControl" [triggerMode]="triggerMode"></fusion-dropdown>
     </div>
     <div style="width: 240px;">
-        <fusion-dropdown [size]="size" [search]="search" [placeholder]="placeholder" [options]="options" [formControl]="formControl" [triggerMode]="triggerMode"></fusion-dropdown>
+        <fusion-dropdown [size]="size" [search]="search" [testId]="testIdWithIndex"
+ [placeholder]="placeholder" [options]="options" [formControl]="formControl" [triggerMode]="triggerMode"></fusion-dropdown>
     </div>
 </div>
 `;
 const templateCommonOneDropdown = `
 <div style="display:flex; gap: 14px;">
     <div style="width: 240px;">
-        <fusion-dropdown [size]="size" [search]="search" [placeholder]="placeholder" [options]="options" [formControl]="formControl" [triggerMode]="triggerMode"></fusion-dropdown>
+        <fusion-dropdown [size]="size" [search]="search" [testId]="testId"
+[placeholder]="placeholder" [options]="options" [formControl]="formControl" [triggerMode]="triggerMode"></fusion-dropdown>
     </div>
 </div>
 `;
@@ -171,7 +174,9 @@ export default {
         size: 'medium' as DropdownTriggerSize,
         options: longOptionsList,
         optionsFood: foodOptionsList,
-        formControl: formControlOptionsList
+        formControl: formControlOptionsList,
+        testId: 'dropdownTestId',
+        testIdWithIndex: 'dropdownTestIdWithIndex'
     }
 } as Meta<DropdownV4Component>;
 

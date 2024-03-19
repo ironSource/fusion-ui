@@ -22,9 +22,14 @@ const POSITION_SHIFTING = 10;
 export class TooltipV4Directive implements OnDestroy, AfterViewInit {
     @ContentChild(TooltipContentV4Directive, {static: true}) directiveRef!: TooltipContentV4Directive;
     @ContentChild('tooltipTriggerElement', {static: true}) tooltipTriggerElement!: ElementRef;
-    @ContentChild('tooltipTriggerElement', {static: true, read: ViewContainerRef}) viewTriggerContainer!: ViewContainerRef;
+    @ContentChild('tooltipTriggerElement', {
+        static: true,
+        read: ViewContainerRef
+    })
+    viewTriggerContainer!: ViewContainerRef;
 
     @Input() fusionTooltip = '';
+
     @Input() set configuration(config: tooltipConfiguration) {
         if (config) {
             this.width = config?.width;
@@ -53,6 +58,8 @@ export class TooltipV4Directive implements OnDestroy, AfterViewInit {
     };
     private viewContainerRef: ViewContainerRef;
     private tooltipComponentRef: ComponentRef<TooltipContentV4Component>;
+    @Input() testId!: string;
+    @Input() contentTestId!: string;
 
     constructor(private renderer: Renderer2, private elementRef: ElementRef, private vcr: ViewContainerRef) {}
 
@@ -95,6 +102,9 @@ export class TooltipV4Directive implements OnDestroy, AfterViewInit {
         } else if (this.fusionTooltip) {
             this.tooltipComponentRef = this.viewContainerRef.createComponent(TooltipContentV4Component);
             this.tooltipComponentRef.instance.tooltipTextContent = this.fusionTooltip;
+            if (this.testId) {
+                this.tooltipComponentRef.instance.testId = this.testId;
+            }
         } else {
             return;
         }
@@ -107,6 +117,7 @@ export class TooltipV4Directive implements OnDestroy, AfterViewInit {
     }
 
     private hideTooltip(): void {
+        if (this.testId) return;
         if (!this.visible) {
             return;
         }
@@ -193,7 +204,14 @@ export class TooltipV4Directive implements OnDestroy, AfterViewInit {
         this.tooltipComponentRef.instance.suppressTooltipArrow(this.suppressPositionArrow);
     }
 
-    private setPositionLeftRight(pos: 'left' | 'right', tooltipWidth: number, tooltipHeight: number): {top: number; left: number} {
+    private setPositionLeftRight(
+        pos: 'left' | 'right',
+        tooltipWidth: number,
+        tooltipHeight: number
+    ): {
+        top: number;
+        left: number;
+    } {
         const position = {
             top: this.elementRef.nativeElement.offsetHeight / 2 - tooltipHeight / 2,
             left: 0

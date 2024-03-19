@@ -10,4 +10,8 @@ export class TestIdsService {
         }
         return undefined;
     }
+
+    static getTestId = (testId: string, testIdModifier: string) => `${testId}--${testIdModifier}`;
+
+    static getTestIdSelector = (testId: string) => `[data-testid='${testId}']`;
 }

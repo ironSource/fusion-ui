@@ -1,4 +1,4 @@
-import {ComponentRef, Directive, TemplateRef, ViewContainerRef} from '@angular/core';
+import {ComponentRef, Directive, Input, TemplateRef, ViewContainerRef} from '@angular/core';
 import {TooltipContentV4Component} from './tooltip-content-v4.component';
 
 @Directive({
@@ -7,6 +7,8 @@ import {TooltipContentV4Component} from './tooltip-content-v4.component';
 })
 export class TooltipContentV4Directive {
     private componentRef: ComponentRef<TooltipContentV4Component>;
+
+    @Input() testId!: string;
 
     constructor(private templateRef: TemplateRef<any>, private viewContainerRef: ViewContainerRef) {}
 
