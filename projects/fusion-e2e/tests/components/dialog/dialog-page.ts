@@ -5,7 +5,7 @@ import {ComponentProps, GotoParams} from '../base-page/types';
 import {createStoryBookComponentPath} from '../../global/utils';
 import {ComponentBasePage} from '../base-page/component-base-page';
 import {DialogTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 export class DialogPage extends ComponentBasePage {
     readonly component: DialogComponent;
