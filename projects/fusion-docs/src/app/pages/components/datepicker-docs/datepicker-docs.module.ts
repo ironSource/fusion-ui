@@ -10,7 +10,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {DatepickerModule} from '@ironsource/fusion-ui/components/datepicker/v1';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {DaterangeModule} from '@ironsource/fusion-ui/components/daterange/v1';
-import {GenericPipe} from '@ironsource/fusion-ui';
+import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 
 @NgModule({
     declarations: [DatepickerDocsComponent],

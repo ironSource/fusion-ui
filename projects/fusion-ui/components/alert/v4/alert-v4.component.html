@@ -1,16 +1,30 @@
 <div class="fu-alert-wrapper fu-alert-color-{{color}}"
      *ngIf="description?.length || title"
      [class.fu-alert-outlined]="variant==='outlined'"
-     [class.fu-alert-rounded]="rounded">
+     [class.fu-alert-rounded]="rounded"
+     [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdAlertModifiers.WRAPPER">
     <div class="fu-alert-icon-wrapper" *ngIf="iconName">
         <fusion-icon class="fu-alert-icon" [style.color]="iconColor" [name]="iconName"></fusion-icon>
     </div>
     <div class="fu-alert-content">
-        <div class="fu-alert-title" *ngIf="title">{{title}}</div>
-        <div class="fu-alert-message" *ngIf="description?.length">{{description}}</div>
+        <div class="fu-alert-title" *ngIf="title"
+             [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdAlertModifiers.TITLE">
+            {{ title }}
+        </div>
+        <div class="fu-alert-message" *ngIf="description?.length"
+             [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdAlertModifiers.MESSAGE">
+            {{ description }}
+        </div>
     </div>
     <div class="fu-alert-actions">
-        <fusion-button *ngIf="actionText" size="small" variant="outlined" [color]="actionButtonColor" (click)="onActionClicked()">{{actionText}}</fusion-button>
-        <fusion-icon-button *ngIf="dismissible" class="fu-alert-close" iconName="ph/x" (click)="onDismissClicked()"></fusion-icon-button>
+        <fusion-button *ngIf="actionText" size="small" variant="outlined" [color]="actionButtonColor"
+                       [testId]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdAlertModifiers.ACTION_BUTTON"
+                       (click)="onActionClicked()"
+        >{{ actionText }}
+        </fusion-button>
+        <fusion-icon-button *ngIf="dismissible" class="fu-alert-close" iconName="ph/x"
+                            [testId]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdAlertModifiers.CLOSE_BUTTON"
+                            (click)="onDismissClicked()
+"></fusion-icon-button>
     </div>
 </div>

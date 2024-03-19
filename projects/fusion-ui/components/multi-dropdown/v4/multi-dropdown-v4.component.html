@@ -3,9 +3,11 @@
      [clickOutsideActivate]="isOpen$ | async"
      (fusionClickOutside)="onOutsideClick($event)"
      [ngClass]="getHolderCSSClasses()"
+     [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.TRIGGER"
 >
     <!--custom trigger-->
-    <div *ngIf="templateRef" #trigger (click)="openDropdown($event)">
+    <div *ngIf="templateRef" #trigger (click)="openDropdown($event)"
+         [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.TRIGGER">
         <ng-container [ngTemplateOutlet]="templateRef"></ng-container>
     </div>
     <!--default trigger-->
@@ -21,6 +23,7 @@
                                 [country]="triggerConfiguration.labelFlag"
                                 [size]="size"
                                 (click)="openDropdown($event)"
+                                [testId]="testId"
         ></fusion-dropdown-select>
     </ng-template>
 
@@ -35,19 +38,22 @@
         </div>
         <!--search input-->
         <!-- region dropdown options holder -->
-        <div class="options-holder" (scroll)="onScroll($event)" #optionsHolder>
+        <div class="options-holder" (scroll)="onScroll($event)"
+             [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.LIST_CONTAINER"
+             #optionsHolder>
             <ul class="options multi">
                 <!--select all option checkbox-->
                 <li *ngIf="selectAllLabel && !loading && (hasSearchValue$ | async) === false && filteredOptions?.length !== 0">
                     <!--select all option-->
-                    <label class="fu-option-select-all" [for]="id + '-select-all'">
+                    <label class="fu-option-select-all" [for]="id + '-select-all'"
+                           [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.SELECT_ALL">
                         <fusion-checkbox
-                                [id]="id + '-select-all'"
-                                [checked]="isAllSelected"
-                                [value]="id + '-select-all'"
-                                [isIndeterminate]="isIndeterminate"
-                                (changed)="selectAll($event)"
-                                #selectAllCheckbox
+                            [id]="id + '-select-all'"
+                            [checked]="isAllSelected"
+                            [value]="id + '-select-all'"
+                            [isIndeterminate]="isIndeterminate"
+                            (changed)="selectAll($event)"
+                            #selectAllCheckbox
                         ></fusion-checkbox>
                         <span [innerHTML]="selectAllLabel"></span>
                     </label>
@@ -77,28 +83,31 @@
         <!--action "confirm" buttons holder-->
         <div class="fu-dd-actions" *ngIf="confirm && filteredOptions?.length">
             <fusion-button
-                    class="fu-clear-all-btn"
-                    variant="text"
-                    size="small"
-                    color="primary"
-                    [disabled]="loading"
-                    (click)="clearAll()"
+                class="fu-clear-all-btn"
+                variant="text"
+                size="small"
+                color="primary"
+                [disabled]="loading"
+                (click)="clearAll()"
+                [testId]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.ACTION_CLEAR_ALL"
             >Clear all
             </fusion-button>
             <fusion-button
-                    size="small"
-                    color="primary"
-                    variant="outlined"
-                    (click)="closeDropdown()"
-                    [disabled]="loading"
+                size="small"
+                color="primary"
+                variant="outlined"
+                (click)="closeDropdown()"
+                [disabled]="loading"
+                [testId]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.ACTION_CANCEL"
             >
                 Cancel
             </fusion-button>
             <fusion-button
-                    color="primary"
-                    size="small"
-                    (click)="applySelect(true)"
-                    [disabled]="loading"
+                color="primary"
+                size="small"
+                (click)="applySelect(true)"
+                [disabled]="loading"
+                [testId]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.ACTION_APPLY"
             >
                 Apply
             </fusion-button>
@@ -111,17 +120,17 @@
 <ng-template #regularOption let-option="option">
     <ng-container *ngIf="!option.isGroup; else groupOption">
         <label
-                class="truncate"
-                [id]="option.id"
-                [for]="id + '-' + option.id"
-                [ngClass]="{'has-icon': option.icon}"
-                [fusionTooltip]="dropdownService.optionToString(option, mappingOptions, {dropdownType: 'multi'})"
+            class="truncate"
+            [id]="option.id"
+            [for]="id + '-' + option.id"
+            [ngClass]="{'has-icon': option.icon}"
+            [fusionTooltip]="dropdownService.optionToString(option, mappingOptions, {dropdownType: 'multi'})"
         >
             <fusion-checkbox
-                    [id]="id + '-' + option.id"
-                    [checked]="isSelected(option)"
-                    [value]="option.id"
-                    (changed)="changeSelected(option)"
+                [id]="id + '-' + option.id"
+                [checked]="isSelected(option)"
+                [value]="option.id"
+                (changed)="changeSelected(option)"
             ></fusion-checkbox>
             <ng-container [ngTemplateOutlet]="optionTemplateRef || basicTemplate"
                           [ngTemplateOutletContext]="{option: option}">
@@ -170,7 +179,9 @@
     <div class="fu-chip-content-default">
         <div [fusionTooltip]="chipDefaultContent" class="truncate fu-chip-text">
             <span *ngIf="placeholderPrefix" class="fu-chip-label">{{ placeholderPrefix }}</span>
-            <ng-container *ngIf="(placeholder$ | async) as placeholder">{{ (placeholderPrefix ? ': ' : '') + placeholder }}</ng-container>
+            <ng-container
+                *ngIf="(placeholder$ | async) as placeholder">{{ (placeholderPrefix ? ': ' : '') + placeholder }}
+            </ng-container>
         </div>
     </div>
 </ng-template>

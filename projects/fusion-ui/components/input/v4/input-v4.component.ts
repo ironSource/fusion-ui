@@ -4,6 +4,8 @@ import {
     ElementRef,
     EventEmitter,
     forwardRef,
+    HostBinding,
+    Injector,
     Input,
     OnDestroy,
     OnInit,
@@ -19,11 +21,14 @@ import {InputSize, InputType, InputVariant} from './input-v4.entities';
 import {takeUntil} from 'rxjs/operators';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
+import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
+import {FieldHelpTextTestIdModifiers, InputTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-input',
     standalone: true,
-    imports: [CommonModule, ReactiveFormsModule, IconModule, TooltipDirective],
+    imports: [CommonModule, ReactiveFormsModule, IconModule, TooltipDirective, GenericPipe],
     host: {class: 'fusion-v4'},
     templateUrl: './input-v4.component.html',
     styleUrls: ['./input-v4.component.scss'],
@@ -35,9 +40,21 @@ export class InputV4Component implements OnInit, OnDestroy {
     @Input() set id(value: string) {
         this._id = value;
     }
+
+    @Input() testId: string;
+    /** @internal */
+    testIdInputModifiers: typeof InputTestIdModifiers = InputTestIdModifiers;
+    /** @internal */
+    testIdsService: TestIdsService = this.injector.get(TestIdsService);
+
+    @HostBinding('attr.data-testid') get testAttribute(): string {
+        return this.testId;
+    }
+
     get id() {
         return this._id;
     }
+
     private _id: string = this.uniqueIdService.getUniqueId().toString();
     // endregion
     // region Inputs - labelText
@@ -45,9 +62,11 @@ export class InputV4Component implements OnInit, OnDestroy {
     set labelText(value: string) {
         this._labelText = value;
     }
+
     get labelText() {
         return this._labelText;
     }
+
     private _labelText: string;
     // endregion
     // region Inputs - placeholder
@@ -55,9 +74,11 @@ export class InputV4Component implements OnInit, OnDestroy {
     set placeholder(value: string) {
         this._placeholder = value;
     }
+
     get placeholder() {
         return this._placeholder;
     }
+
     private _placeholder: string;
     // endregion
     // region Inputs - input type
@@ -68,9 +89,11 @@ export class InputV4Component implements OnInit, OnDestroy {
             this.showPasswordToggleButton$.next(this._type === 'password');
         }
     }
+
     get type() {
         return this._type;
     }
+
     private _type: InputType = 'text';
     // endregion
     // region Inputs - startIcon
@@ -90,27 +113,33 @@ export class InputV4Component implements OnInit, OnDestroy {
     set endIcon(value: string) {
         this._endIcon = value;
     }
+
     get endIcon() {
         return this._endIcon;
     }
+
     private _endIcon: string;
     // endregion
     // region Inputs - prefix
     @Input() set prefix(value: string) {
         this._prefix = value;
     }
+
     get prefix() {
         return this._prefix;
     }
+
     private _prefix: string;
     // endregion
     // region Inputs - suffix
     @Input() set suffix(value: string) {
         this._suffix = value;
     }
+
     get suffix() {
         return this._suffix;
     }
+
     private _suffix: string;
     // endregion
 
@@ -118,54 +147,66 @@ export class InputV4Component implements OnInit, OnDestroy {
     @Input() set size(value: InputSize) {
         this._size = value;
     }
+
     get size() {
         return this._size;
     }
+
     private _size: InputSize = 'medium';
     // endregion
     // region Inputs - maxLength
     @Input() set maxLength(value: number) {
         this._maxLength = value;
     }
+
     get maxLength() {
         return this._maxLength;
     }
+
     private _maxLength: number;
     // endregion
     // region Inputs - viewOnly
     @Input() set viewOnly(value: boolean) {
         this._viewOnly = value;
     }
+
     get viewOnly() {
         return this._viewOnly;
     }
+
     private _viewOnly: boolean = false;
     // endregion
     // region Inputs - showApply
     @Input() set showApply(value: boolean) {
         this._showApply = value;
     }
+
     get showApply() {
         return this._showApply;
     }
+
     private _showApply: boolean = false;
     // endregion
     // region Inputs - showClear
     @Input() set showClear(value: boolean) {
         this._showClear = value;
     }
+
     get showClear() {
         return this._showClear && this._inputValue?.length > 0;
     }
+
     private _showClear: boolean = false;
     // endregion
     // region Inputs - showLengthCounter
     @Input() set showLengthCounter(value: boolean) {
         this._showLengthCounter = value;
     }
+
     get showLengthCounter() {
         return this._showLengthCounter;
     }
+
     private _showLengthCounter: boolean = false;
     // endregion
 
@@ -173,9 +214,11 @@ export class InputV4Component implements OnInit, OnDestroy {
     @Input() set inlineErrorText(value: string) {
         this._inlineErrorText = value;
     }
+
     get inlineErrorText() {
         return this._inlineErrorText;
     }
+
     private _inlineErrorText: string;
 
     @Input() variant: InputVariant = 'default';
@@ -188,9 +231,11 @@ export class InputV4Component implements OnInit, OnDestroy {
     set step(value: number) {
         this._step = value;
     }
+
     get step() {
         return this._step;
     }
+
     private _step: number;
     // endregion
     //region Inputs - min (for number type)
@@ -198,9 +243,11 @@ export class InputV4Component implements OnInit, OnDestroy {
     set min(value: number) {
         this._min = value;
     }
+
     get min() {
         return this._min;
     }
+
     private _min: number;
     // endregion
     //region Inputs - max (for number type)
@@ -208,18 +255,22 @@ export class InputV4Component implements OnInit, OnDestroy {
     set max(value: number) {
         this._max = value;
     }
+
     get max() {
         return this._max;
     }
+
     private _max: number;
     // endregion
     // region Inputs - hideNumberArrows (for number type)
     @Input() set hideNumberArrows(value: boolean) {
         this._hideNumberArrows = value;
     }
+
     get hideNumberArrows() {
         return this._hideNumberArrows;
     }
+
     private _hideNumberArrows: boolean = false;
     // endregion
 
@@ -243,7 +294,7 @@ export class InputV4Component implements OnInit, OnDestroy {
     private inputControlValueChanges$: Observable<any>;
     private _inputValue: string;
 
-    constructor(protected uniqueIdService: UniqueIdService) {}
+    constructor(protected uniqueIdService: UniqueIdService, private injector: Injector) {}
 
     ngOnInit(): void {
         this.inputControlValueChanges$ = this.inputControl.valueChanges;
@@ -270,6 +321,7 @@ export class InputV4Component implements OnInit, OnDestroy {
             this.setFocus();
         }
     }
+
     /** @internal */
     setFocus(): void {
         this.input.nativeElement.focus();
@@ -318,4 +370,5 @@ export class InputV4Component implements OnInit, OnDestroy {
     }
 
     // endregion
+    protected readonly FieldHelpTextTestIdModifiers = FieldHelpTextTestIdModifiers;
 }

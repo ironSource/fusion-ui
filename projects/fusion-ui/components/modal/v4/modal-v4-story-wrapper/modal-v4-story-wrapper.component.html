@@ -1,30 +1,33 @@
 <ng-container [ngSwitch]="mode">
-    <ng-container  *ngSwitchCase="'size'">
+    <ng-container *ngSwitchCase="'size'">
         <div style="display: flex; align-items: center; gap: 24px;">
             <fusion-button color="primary" (click)="openModal('small')">small size</fusion-button>
             <fusion-button color="primary" (click)="openModal('medium')">medium size</fusion-button>
             <fusion-button color="primary" (click)="openModal('large')">large size</fusion-button>
         </div>
     </ng-container>
-    <ng-container  *ngSwitchCase="'delete'">
+    <ng-container *ngSwitchCase="'delete'">
         <fusion-button color="primary" (click)="openModal('delete')">Open Dialog</fusion-button>
     </ng-container>
-    <ng-container  *ngSwitchCase="'subTitle'">
+    <ng-container *ngSwitchCase="'subTitle'">
         <fusion-button color="primary" (click)="openModal('subTitle')">Open Dialog</fusion-button>
     </ng-container>
-    <ng-container  *ngSwitchCase="'noHeader'">
+    <ng-container *ngSwitchCase="'noHeader'">
         <fusion-button color="primary" (click)="openModal('noHeader')">Open Dialog</fusion-button>
     </ng-container>
     <ng-container *ngSwitchDefault>
         <div class="fu-wrapper">
-            <fusion-button color="primary" (click)="openModal('default')">Open Dialog</fusion-button>
+            <fusion-button color="primary" [testId]="getTestId(this.testId, DialogTestIdModifiers.WRAPPER)"
+                           (click)="openModal('default')">Open Dialog
+            </fusion-button>
         </div>
     </ng-container>
 </ng-container>
 
-<ng-container  *ngIf="modalSown">
+<ng-container *ngIf="modalSown">
     <fusion-modal *fusionTeleporting="teleportTarget"
                   [size]="dialogConfig.size"
+                  [testId]="testId"
                   [title]="dialogConfig.title"
                   [showHeader]="dialogConfig.showHeader"
                   [description]="dialogConfig.description"
@@ -35,5 +38,7 @@
                   (primaryButtonClicked)="closeModal()"
                   (secondaryButtonClicked)="closeModal()"
                   (closeButtonClicked)="closeModal()"
-    ><div *ngIf="dialogConfig.customContent" [innerHTML]="dialogConfig.customContent"></div></fusion-modal>
+    >
+        <div *ngIf="dialogConfig.customContent" [innerHTML]="dialogConfig.customContent"></div>
+    </fusion-modal>
 </ng-container>
