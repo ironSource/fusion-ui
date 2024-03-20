@@ -3,7 +3,10 @@ import {getRandomAppImage} from '@ironsource/fusion-ui/storybook-foundations/moc
 
 export const CHART_BAR_DATA_MOCK: ChartData = {
     data: {
-        'Unity Ads': [804.16, 1688.59, 1383.47, 1037.83, 899.56]
+        'Unity Ads': [804.16, 1688.59, 1383.47, 1037.83, 899.56],
+        'ironSource Ads': [940.16, 1288.59, 1183.47, 1137.83, 799.56],
+        'Tapjoy Offerwall': [1104.16, 1888.59, 1483.47, 1237.83, 999.56],
+        Aura: [604.16, 1688.59, 1083.47, 937.83, 699.56]
     },
     legends: [
         {id: 9930, displayName: 'Australia', displayFormat: 'shortCurrency'},
@@ -212,8 +215,8 @@ export const CHART_CUSTOM_COLORS_DATA_MOCK: ChartData = {
 export const CHART_PIE_DATA_MOCK: FusionChartPieData = {
     displayFormat: 'shortCurrency',
     data: {
-        ironSource: 8781958,
-        UnityAds: 14345876
+        UnityAds: 14345876,
+        ironSource: 8781958
     }
 };
 
