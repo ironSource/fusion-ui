@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, forwardRef, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef, Input, OnDestroy, OnInit} from '@angular/core';
 import {ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {DaterangeOptions} from '@ironsource/fusion-ui/components/daterange';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/v2';
@@ -11,7 +11,13 @@ import {map, takeUntil, tap} from 'rxjs/operators';
     templateUrl: './campaign-promotions-filter-section.component.html',
     styleUrls: ['campaign-promotions-filter-section.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => CampaignPromotionsFilterSectionComponent), multi: true}]
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => CampaignPromotionsFilterSectionComponent),
+            multi: true
+        }
+    ]
 })
 export class CampaignPromotionsFilterSectionComponent implements ControlValueAccessor, OnInit, OnDestroy {
     form: FormGroup;
@@ -54,6 +60,8 @@ export class CampaignPromotionsFilterSectionComponent implements ControlValueAcc
     }
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function
+    @Input() testId: string;
+
     setDisabledState?(isDisabled: boolean): void {}
 
     private setFiltersOptions() {
@@ -65,11 +73,19 @@ export class CampaignPromotionsFilterSectionComponent implements ControlValueAcc
             this.campaignPromotionsFilterService.getPromotionOptions()
         ).pipe(
             map(filters => {
-                return filters.reduce((acc: {[key: string]: DropdownOption[]}, cur: {[key: string]: DropdownOption[]}) => {
-                    const key = Object.keys(cur)[0];
-                    acc[key] = cur[key];
-                    return acc;
-                }, {});
+                return filters.reduce(
+                    (
+                        acc: {[key: string]: DropdownOption[]},
+                        cur: {
+                            [key: string]: DropdownOption[];
+                        }
+                    ) => {
+                        const key = Object.keys(cur)[0];
+                        acc[key] = cur[key];
+                        return acc;
+                    },
+                    {}
+                );
             })
         );
     }
