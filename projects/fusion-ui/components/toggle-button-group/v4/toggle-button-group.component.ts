@@ -45,6 +45,7 @@ export class ToggleButtonGroupComponent {
     propagateChange = (_: ToggleButtonGroupOption) => {};
     /** @internal */
     propagateTouched = () => {};
+    @Input() testId!: string;
 
     /** @internal */
     writeValue(value: ToggleButtonGroupOption): void {

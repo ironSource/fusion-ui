@@ -1,4 +1,5 @@
 import {AlertTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {getTestId, getTestIdSelector} from '../../global/utils';
 
 export const alertStoryId = 'v4-components-feedback-alert--basic';
 export const alertSeveritiesStoryId = 'v4-components-feedback-alert--severities';
@@ -10,4 +11,4 @@ export const dangerTestId = 'danger-alert';
 export const infoTestId = 'info-alert';
 export const outlinedTestId = 'outlined-alert';
 
-export const loadedPageSelector = `[data-testid='${defaultTestId}--${AlertTestIdModifiers.WRAPPER}']`;
+export const loadedPageSelector = getTestIdSelector(getTestId(defaultTestId, AlertTestIdModifiers.WRAPPER));
