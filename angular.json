@@ -5,7 +5,7 @@
     "projects": {
         "fusion-ui": {
             "root": "projects/fusion-ui",
-            "sourceRoot": "projects/fusion-ui/src",
+            "sourceRoot": "projects/fusion-ui",
             "projectType": "library",
             "prefix": "fusion",
             "architect": {
@@ -19,7 +19,10 @@
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
-                        "main": "projects/fusion-ui/test.ts",
+                        "polyfills": [
+                            "zone.js",
+                            "zone.js/testing"
+                        ],
                         "tsConfig": "projects/fusion-ui/tsconfig.spec.json",
                         "karmaConfig": "projects/fusion-ui/karma.conf.js"
                     }
@@ -160,22 +163,22 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "fusion-docs:build"
+                      "buildTarget": "fusion-docs:build"
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "fusion-docs:build:production"
+                          "buildTarget": "fusion-docs:build:production"
                         },
                         "hmr": {
                             "hmr": true,
-                            "browserTarget": "fusion-docs:build:hmr"
+                            "buildTarget": "fusion-docs:build:hmr"
                         }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "fusion-docs:build"
+                      "buildTarget": "fusion-docs:build"
                     }
                 },
                 "test": {
@@ -283,10 +286,10 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "fusion-mfe:build:production"
+                          "buildTarget": "fusion-mfe:build:production"
                         },
                         "development": {
-                            "browserTarget": "fusion-mfe:build:development"
+                          "buildTarget": "fusion-mfe:build:development"
                         }
                     },
                     "defaultConfiguration": "development"
@@ -294,7 +297,7 @@
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "fusion-mfe:build"
+                      "buildTarget": "fusion-mfe:build"
                     }
                 },
                 "test": {
@@ -327,9 +330,10 @@
             }
         }
     },
-    "defaultProject": "fusion-ui",
     "cli": {
         "analytics": false,
-        "defaultCollection": "@angular-eslint/schematics"
+        "schematicCollections": [
+          "@angular-eslint/schematics"
+        ]
     }
 }

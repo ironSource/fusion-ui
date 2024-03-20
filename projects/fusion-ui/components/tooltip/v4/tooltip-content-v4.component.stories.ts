@@ -1,5 +1,4 @@
 import {Meta, moduleMetadata, StoryObj} from '@storybook/angular';
-import {dedent} from 'ts-dedent';
 import {CommonModule} from '@angular/common';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../stories/environments/environment';
@@ -26,9 +25,12 @@ type Story = StoryObj<TooltipContentV4Component>;
 
 export const Default: Story = {
     render: args => ({
-        props: args,
+        props: {
+            ...args
+        },
         template: `
 <fusion-tooltip-content
+    [testId]="testId"
     style="position: unset;"
     [tooltipTextContent]="tooltipTextContent"
     [tooltipPositionClass]="tooltipPositionClass"

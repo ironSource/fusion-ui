@@ -42,24 +42,25 @@ type Story = StoryObj<TooltipV4Component>;
 
 export const Basic: Story = {
     render: args => ({
-        props: args,
-        template: `<fusion-button color="primary" fusionTooltip="I am tooltip!" [configuration]="tooltipConfiguration">Hover me</fusion-button>`
-    }),
-    args: {
-        tooltipText: 'Tooltip: You successfully read this alert message'
-    }
+        props: {
+            ...args,
+            testId: 'tooltip-default--tt-trigger'
+        },
+        template: `<fusion-button color="primary" fusionTooltip="I am tooltip!" [configuration]="tooltipConfiguration" [testId]="testId">Hover me</fusion-button>`
+    })
 };
 
 export const WithoutArrow: Story = {
     render: args => ({
         props: args,
-        template: `<fusion-button color="primary" fusionTooltip="I am tooltip!" [configuration]="tooltipConfiguration">Hover me</fusion-button>`
+        template: `<fusion-button color="primary" fusionTooltip="I am tooltip!" [testId]="testId" [configuration]="tooltipConfiguration">Hover me</fusion-button>`
     }),
     args: {
         tooltipText: 'Tooltip: You successfully read this alert message',
         tooltipConfiguration: {
             suppressPositionArrow: true
-        }
+        },
+        testId: 'tooltip-default--tt-trigger'
     }
 };
 

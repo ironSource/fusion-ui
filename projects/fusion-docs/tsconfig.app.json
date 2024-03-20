@@ -4,6 +4,11 @@
         "outDir": "../../out-tsc/app",
         "types": ["node"]
     },
-    "files": ["src/main.ts", "src/polyfills.ts"],
-    "include": ["projects/fusion-docs/src/**/*.d.ts"]
+    "files": [
+        "src/main.ts",
+        "src/polyfills.ts",
+        "src/app/components/docPageBase/docPageBase.ts",
+        "src/app/pages/components/table-docs-v3/components/campaign-promotions-table/campaign-promotions-table.service.ts"
+    ],
+    "include": ["projects/fusion-docs/src/**/*.d.ts", "src/environments/*"]
 }

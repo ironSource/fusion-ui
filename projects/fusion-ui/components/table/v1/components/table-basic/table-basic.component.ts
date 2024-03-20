@@ -33,7 +33,6 @@ export class TableBasicComponent implements OnInit, OnDestroy {
     @Output() rowSelected = new EventEmitter();
     @Output() expandRow = new EventEmitter<TableRowExpandEmitter>();
 
-    // eslint-disable-next-line @typescript-eslint/adjacent-overload-signatures
     get options() {
         return this.tableOptions;
     }

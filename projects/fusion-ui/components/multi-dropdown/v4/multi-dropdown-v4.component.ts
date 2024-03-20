@@ -14,6 +14,8 @@ import {ButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
 import {FlagComponent} from '@ironsource/fusion-ui/components/flag/v4';
 import {DropdownSearchComponent} from '@ironsource/fusion-ui/components/dropdown-search/v4';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
+import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
+import {LoaderComponent} from '@ironsource/fusion-ui/components/loader/v4';
 
 @Component({
     selector: 'fusion-multi-dropdown',
@@ -28,7 +30,9 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
         FlagComponent,
         CheckboxComponent,
         ButtonComponent,
-        DropdownSearchComponent
+        DropdownSearchComponent,
+        LoaderComponent,
+        GenericPipe
     ],
     host: {class: 'fusion-v4'},
     templateUrl: './multi-dropdown-v4.component.html',
@@ -47,6 +51,7 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 export class MultiDropdownV4Component extends MultiDropdownBaseComponent {
     @Input() size: DropdownTriggerSize = 'medium';
     @Input() optionTemplateRef: TemplateRef<any>;
+    @Input() showSelectedFirst = true;
 
     /** @ignore */
     getOptionContent(option: DropdownOption): string {

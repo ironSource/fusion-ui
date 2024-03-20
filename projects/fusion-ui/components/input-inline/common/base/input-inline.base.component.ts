@@ -204,7 +204,7 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
     setDisabledState?(isDisabled: boolean): void {
         const status = isDisabled ? 'disable' : 'enable';
         this.inputControl[status]();
-        this.readOnly = isDisabled;
+        this.readOnly = this.readOnly || isDisabled;
         this.disable = isDisabled;
     }
 

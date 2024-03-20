@@ -17,6 +17,7 @@ export class ModalHeaderComponent {
     @Input() set infoText(value: string) {
         this._infoText = value;
     }
+
     get infoText(): string {
         return this._infoText;
     }
@@ -31,7 +32,7 @@ export class ModalHeaderComponent {
     /** @internal */
     infoIcon = {iconName: 'info', iconVersion: 'v3'};
 
-    @Output() close = new EventEmitter();
+    @Output() closeModal = new EventEmitter();
 
     constructor(private injector: Injector) {}
 }

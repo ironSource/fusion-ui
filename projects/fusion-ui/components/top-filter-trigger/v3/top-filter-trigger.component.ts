@@ -9,7 +9,8 @@ import {
     Output,
     TemplateRef,
     ViewChild,
-    ChangeDetectorRef
+    ChangeDetectorRef,
+    AfterViewInit
 } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
@@ -31,7 +32,7 @@ import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
     styleUrls: ['./top-filter-trigger.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TopFilterTriggerComponent implements OnInit, OnDestroy {
+export class TopFilterTriggerComponent implements OnInit, OnDestroy, AfterViewInit {
     /** @internal */
     @ContentChild(ApiBase, {static: true}) apiBase: ApiBase;
     /** @internal */
@@ -50,7 +51,7 @@ export class TopFilterTriggerComponent implements OnInit, OnDestroy {
     @Input() imageApp: string;
     @Input() loading: boolean;
 
-    @Output() onSelectedChange = new EventEmitter<any>();
+    @Output() selectedChange = new EventEmitter<any>();
 
     /** @internal */
     triggerIcon = TRIGGER_ICON;
@@ -122,6 +123,6 @@ export class TopFilterTriggerComponent implements OnInit, OnDestroy {
             }
         }
         this.cdr.detectChanges();
-        this.onSelectedChange.emit(selected);
+        this.selectedChange.emit(selected);
     }
 }

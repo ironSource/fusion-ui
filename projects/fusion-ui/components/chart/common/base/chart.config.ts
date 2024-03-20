@@ -2,6 +2,7 @@
  * Base ChartJS dataset options used for data render
  */
 import {ChartBaseDatasetOptions} from './entities/chart-options';
+import {externalV4TooltipHandler} from './chart-v4.tooltip';
 
 export const BASE_DATASET_OPTIONS: {[key: string]: ChartBaseDatasetOptions} = {
     style_v1: {
@@ -26,6 +27,7 @@ export const BASE_DATASET_OPTIONS: {[key: string]: ChartBaseDatasetOptions} = {
         colorSettings: ['backgroundColor', 'borderColor', 'pointBorderColor', 'pointBackgroundColor'],
         fillOpacity: 40, // in %
         seriesToShow: 7,
+        dateFormat: 'MMM dd, yyyy',
         lineOptions: {
             fill: false,
             hidden: false,
@@ -37,6 +39,28 @@ export const BASE_DATASET_OPTIONS: {[key: string]: ChartBaseDatasetOptions} = {
             borderColor: []
         },
         pieOptions: {
+            backgroundColor: []
+        }
+    },
+    style_v4: {
+        colorSettings: ['backgroundColor', 'borderColor', 'pointBorderColor', 'pointBackgroundColor'],
+        fillOpacity: 75,
+        seriesToShow: 7,
+        dateFormat: 'MMM dd',
+        lineOptions: {
+            fill: false,
+            hidden: false,
+            pointBorderColor: '#FFFFFF'
+        },
+        barOptions: {
+            borderRadius: 4,
+            borderWidth: 0,
+            backgroundColor: [],
+            borderColor: []
+        },
+        pieOptions: {
+            borderWidth: 3,
+            hoverBorderWidth: 0,
             backgroundColor: []
         }
     }
@@ -207,6 +231,85 @@ export const CHART_CONFIGURATIONS: any = {
                     drawBorder: false,
                     lineWidth: 1,
                     color: '#e5e7e9'
+                }
+            }
+        }
+    },
+    style_v4: {
+        dottedLineForToday: true, // extend by fusion
+        calculateMaxForAll: true, // extend by fusion: calculate Y maximum of chart for all datasets (not showed only)
+        calculatePieSummary: true, // extend by fusion
+
+        responsive: true, // Resizes the chart canvas when its container does
+        maintainAspectRatio: false, // Maintain the original canvas aspect ratio (width / height) when resizing.
+        resizeDelay: 0, // Delay the resize update by give amount of milliseconds. This can ease the resize process by debouncing update of the elements.
+        interaction: {
+            mode: 'point'
+        },
+        plugins: {
+            legend: {
+                display: false
+            },
+            title: {
+                display: false
+            },
+            subtitle: {
+                display: true
+            },
+            tooltip: {
+                enabled: false,
+                position: 'nearest',
+                external: externalV4TooltipHandler
+            }
+        },
+        layout: {
+            padding: {
+                top: 10
+            }
+        },
+        elements: {
+            line: {
+                borderWidth: 2,
+                tension: 0
+            },
+            point: {
+                radius: 1,
+                hitRadius: 8,
+                borderWidth: 0,
+                hoverRadius: 4,
+                hoverBorderWidth: 2,
+                hoverBorderColor: '#ffffff'
+            }
+        },
+        scales: {
+            x: {
+                beginAtZero: true,
+                ticks: {
+                    color: '#646464',
+                    font: {size: 12, weight: 400},
+                    padding: 0
+                },
+                grid: {
+                    drawBorder: false,
+                    display: false
+                }
+            },
+            y: {
+                border: {
+                    display: false
+                },
+                beginAtZero: true,
+                ticks: {
+                    color: '#646464',
+                    font: {size: 12, weight: 400},
+                    padding: 8
+                },
+                grid: {
+                    lineWidth: 1,
+                    color: '#E4E4E4',
+                    display: true,
+                    tickLength: 8,
+                    drawTicks: false
                 }
             }
         }

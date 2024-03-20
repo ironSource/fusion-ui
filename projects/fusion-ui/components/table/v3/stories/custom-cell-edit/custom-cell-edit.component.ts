@@ -54,7 +54,7 @@ export class CustomCellEditComponent implements AfterViewInit {
         return this._remaining;
     }
 
-    @Output() onChange = new EventEmitter();
+    @Output() dataChange = new EventEmitter();
 
     @HostBinding('class.fu-show-edit') get showInput(): boolean {
         return this._showInput;
@@ -85,7 +85,7 @@ export class CustomCellEditComponent implements AfterViewInit {
             const inlineInputComponent = this.inputInlineComponent;
             if (newValue !== prevValue) {
                 this.isInRequest$.next(true);
-                this.onChange.emit({
+                this.dataChange.emit({
                     newValue: newValue,
                     prevValue: prevValue,
                     cellPosition: this.cellPosition,

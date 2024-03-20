@@ -21,7 +21,6 @@ export abstract class PopupBaseComponent implements OnInit, AfterViewInit {
     private isOnInit = true;
     private _popupData: PopupEntity;
 
-    // eslint-disable-next-line @typescript-eslint/adjacent-overload-signatures
     get popupData(): PopupEntity {
         return this._popupData || {};
     }

@@ -130,7 +130,7 @@ alert.appendChild(textNode);'
                     class="is-collapsible"
                     code='<fusion-alert mode="header"
               type="success"
-              (closed)="onCloseButtonClicked($event)">
+              (closed)="closeButtonClicked($event)">
   <strong>Well done!</strong> You successfully read this important alert message
 </fusion-alert>'
                 ></fusion-code-block>
@@ -235,7 +235,7 @@ alert.addEventListener("close", e => console.log(e.detail));'
 
             <div class="row fusion-alert-example-holder" style="padding-top: 0;">
                 <div class="col-12">
-                    <fusion-alert mode="header" (closed)="onCloseButtonClicked($event)"
+                    <fusion-alert mode="header" (closed)="closeButtonClicked($event)"
                         ><strong>Heads up!</strong> This alert needs your attention, but it’s not super important
                     </fusion-alert>
                 </div>
@@ -370,7 +370,7 @@ alert.addEventListener("close", e => console.log(e.detail));'
 
             <div class="row fusion-alert-example-holder" style="padding-top: 0;">
                 <div class="col-12">
-                    <fusion-alert mode="large" (closed)="onCloseButtonClicked($event)"
+                    <fusion-alert mode="large" (closed)="closeButtonClicked($event)"
                         ><strong>Heads up!</strong> This alert needs your attention, but it’s not super important
                     </fusion-alert>
                 </div>
@@ -408,7 +408,7 @@ alert.addEventListener("close", e => console.log(e.detail));'
                     class="is-collapsible"
                     code='<fusion-alert mode="fc-header"
               type="success"
-              (closed)="onCloseButtonClicked($event)">
+              (closed)="closeButtonClicked($event)">
   <strong>Well done!</strong> You successfully read this important alert message
 </fusion-alert>'
                 ></fusion-code-block>
@@ -510,7 +510,7 @@ alert.addEventListener("close", e => console.log(e.detail));'
 
             <div class="row fusion-alert-example-holder" style="padding-top: 0;">
                 <div class="col-12">
-                    <fusion-alert mode="fc-header" (closed)="onCloseButtonClicked($event)"
+                    <fusion-alert mode="fc-header" (closed)="closeButtonClicked($event)"
                         ><strong>Heads up!</strong> This alert needs your attention, but it’s not super important
                     </fusion-alert>
                 </div>

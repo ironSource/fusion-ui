@@ -8,7 +8,7 @@ import {ChartType} from './entities/chart-type.enum';
 
 @Injectable()
 export class ChartDataService {
-    parseChartData(data: ChartData, type: ChartType): ChartJsData {
+    parseChartData(data: ChartData, type: ChartType, isStacked = false): ChartJsData {
         let parsed: ChartJsData = void 0; // void 0 returns undefined and can not be overwritten while undefined can be overwritten.
         switch (type) {
             case ChartType.Line:
@@ -18,7 +18,7 @@ export class ChartDataService {
                 };
                 break;
             case ChartType.Bar:
-                parsed = this.getTotals(data);
+                parsed = this.getGroupedDataSet(data);
                 break;
             case ChartType.Doughnut:
             case ChartType.Pie:
@@ -61,18 +61,40 @@ export class ChartDataService {
                 dataValues.push(data.data[key][idx]);
             });
             dataset.push(
+                // @ts-ignore
                 Object.assign(
                     {
                         id: label.id,
                         label: label.displayName,
                         data: dataValues,
-                        displayFormat: !isNullOrUndefined(label.displayFormat) ? label.displayFormat : null
+                        displayFormat: !isNullOrUndefined(label.displayFormat) ? label.displayFormat : null,
+                        icon: !isNullOrUndefined(label.icon) ? label.icon : null
                     },
                     !isNullOrUndefined(label.hidden) ? {hidden: label.hidden} : {}
                 )
             );
         });
         return dataset;
+    }
+
+    private getGroupedDataSet(data: ChartData): ChartJsData {
+        const legends: Array<string> = [];
+        const dataset: Array<any> = [];
+        data.legends.forEach((label: ChartLegend, idx) => {
+            // @ts-ignore
+            legends.push(label.displayName);
+        });
+        Object.keys(data.data).forEach((key: string) => {
+            dataset.push({
+                label: key,
+                data: data.data[key]
+            });
+        });
+
+        return {
+            labels: legends,
+            datasets: dataset
+        };
     }
 
     private getLegends(data: ChartData): string[] {
@@ -83,6 +105,7 @@ export class ChartDataService {
         const legends: Array<string> = [];
         const dataset: Array<number> = [];
         data.legends.forEach((label: ChartLegend, idx) => {
+            // @ts-ignore
             legends.push(label.displayName);
             if (!isNullOrUndefined(label.value)) {
                 dataset.push(label.value);
@@ -126,7 +149,6 @@ export class ChartDataService {
         } else {
             Object.keys(data.data)
                 .map(key => [key, data.data[key]] as any)
-                .sort((a, b) => b[1] - a[1])
                 .forEach(item => {
                     legends.push(item[0]);
                     dataset.push(item[1]);

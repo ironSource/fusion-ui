@@ -22,7 +22,7 @@
             [cancelButtonText]="data?.buttons?.secondary?.label"
             [cancelButtonClass]="data?.buttons?.secondary?.class || 'secondary'"
             (onSave)="primaryButtonClicked()"
-            (onCloseButtonClicked)="secondaryButtonClicked()"
+            (closeButtonClicked)="secondaryButtonClicked()"
         ></fusion-modal-footer>
     </div>
     <div class="is-notification-overlay"></div>

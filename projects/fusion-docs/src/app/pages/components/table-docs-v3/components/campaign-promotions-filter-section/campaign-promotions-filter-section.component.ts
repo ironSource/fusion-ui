@@ -33,18 +33,14 @@ export class CampaignPromotionsFilterSectionComponent implements ControlValueAcc
         this.onDestroy$.complete();
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     propagateTouched = () => {};
 
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     writeValue(value: any): void {
         this.form.setValue(value);
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     propagateChange = (_: any) => {};
 
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     registerOnChange(fn: any): void {
         this.propagateChange = fn;
     }
@@ -53,7 +49,6 @@ export class CampaignPromotionsFilterSectionComponent implements ControlValueAcc
         this.propagateTouched = fn;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     setDisabledState?(isDisabled: boolean): void {}
 
     private setFiltersOptions() {

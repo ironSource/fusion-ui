@@ -14,7 +14,7 @@
         #selectComponent
     >
     </fusion-dropdown-select>
-    <div class="options-dropdown" [class.options-locate-left]="isLocatedLeft" [class.options-locate-right]="isLocatedRight" [ngClass]="{'dd-disabled': isDisabled, 'dd-confirm': search || autoComplete, 'dd-scroll': hasScroll}">
+    <div class="options-dropdown" [class.options-locate-left]="isLocatedLeft" [class.options-locate-right]="isLocatedRight" [ngClass]="{'dd-disabled': isDisabled || isDisabledForm, 'dd-confirm': search || autoComplete, 'dd-scroll': hasScroll}">
         <!--dropdown options holder-->
         <div class="options-holder" (scroll)="onScroll($event)" #optionsHolder>
             <ul class="options">

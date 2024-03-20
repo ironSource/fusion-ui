@@ -1,5 +1,6 @@
 import {AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, Renderer2} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 
 const ATTRIBUTE_SELECTED = 'tab-selected';
 const ATTRIBUTE_DISABLED = 'tab-disabled';
@@ -7,9 +8,9 @@ const ATTRIBUTE_DISABLED = 'tab-disabled';
 @Component({
     selector: 'fusion-tab',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, GenericPipe],
     host: {class: 'fusion-v4'},
-    template: '<div class="fu-tab-content"><ng-content></ng-content></div>',
+    template: '<div class="fu-tab-content" data-testid="wrapperTestId" [attr.data-testid]="testId"><ng-content></ng-content></div>',
     styleUrls: ['./tab-v4.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -17,6 +18,9 @@ export class TabV4Component implements AfterViewInit {
     @Input() set selected(value: boolean) {
         this.toggleSelected(value);
     }
+
+    @Input() testId: string;
+
     @Input() set disabled(value: boolean) {
         this.toggleDisabled(value);
     }
@@ -25,6 +29,7 @@ export class TabV4Component implements AfterViewInit {
     get nativeElement(): HTMLElement {
         return this._element.nativeElement;
     }
+
     get selected(): boolean {
         return this.nativeElement.hasAttribute(ATTRIBUTE_SELECTED);
     }

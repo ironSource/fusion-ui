@@ -10,4 +10,5 @@ export interface ChartDataset {
     pointBackgroundColor?: string;
     fill?: boolean;
     hidden?: boolean;
+    icon?: string;
 }
