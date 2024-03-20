@@ -1,6 +1,6 @@
 import {Page} from '@playwright/test';
 import {DialogTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {getTestId} from '../../global/utils';
+import {getTestId, getTestIdSelector} from '../../global/utils';
 
 export class DialogComponent {
     readonly page: Page;
@@ -10,7 +10,7 @@ export class DialogComponent {
     }
 
     async waitForComponent({testId}: {testId: string}) {
-        const loadedPageSelector = `[data-testid='${testId}--${DialogTestIdModifiers.WRAPPER}']`;
+        const loadedPageSelector = getTestIdSelector(getTestId(testId, DialogTestIdModifiers.WRAPPER));
         await this.page.waitForSelector(loadedPageSelector);
     }
 

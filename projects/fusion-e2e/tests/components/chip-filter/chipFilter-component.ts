@@ -1,5 +1,5 @@
 import {Page} from '@playwright/test';
-import {IncludeExcludeTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {ChipFilterTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {getTestId, getTestIdSelector} from '../../global/utils';
 
 export class ChipFilterComponent {
@@ -10,18 +10,17 @@ export class ChipFilterComponent {
     }
 
     async waitForComponent({testId}: {testId: string}) {
-        const loadedPageSelector = getTestIdSelector(getTestId(testId, IncludeExcludeTestIdModifiers.CHIP_FILTER_LABEL));
-
+        const loadedPageSelector = getTestIdSelector(testId);
         await this.page.waitForSelector(loadedPageSelector);
     }
 
     getChipFilterLabel({testId}: {testId: string}) {
-        const locator = this.page.getByTestId(getTestId(testId, IncludeExcludeTestIdModifiers.CHIP_FILTER_LABEL)).last().locator('span');
+        const locator = this.page.getByTestId(getTestId(testId, ChipFilterTestIdModifiers.CHIP_FILTER)).locator('.fu-chip-label');
         return locator.textContent();
     }
 
-    getChipFilterValue({testId}: {testId: string}) {
-        const locator = this.page.getByTestId(getTestId(testId, IncludeExcludeTestIdModifiers.CHIP_FILTER_VALUE)).last().locator('span');
-        return locator.textContent();
+    click({testId}: {testId: string}) {
+        const locator = this.page.getByTestId(getTestId(testId, ChipFilterTestIdModifiers.CHIP_FILTER)).locator('.fu-chip-label');
+        return locator.click();
     }
 }

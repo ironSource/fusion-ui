@@ -3,8 +3,7 @@ import {chipFilterStoryId, defaultTestId, loadedPageSelector} from './consts';
 import {ComponentBasePage} from '../base-page/component-base-page';
 import {ComponentProps, GotoParams} from '../base-page/types';
 import {ChipFilterComponent} from './chipFilter-component';
-import {createStoryBookComponentPath, getTestId} from '../../global/utils';
-import {IncludeExcludeTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {createStoryBookComponentPath} from '../../global/utils';
 
 export class ChipFilterPage extends ComponentBasePage {
     readonly component: ChipFilterComponent;
@@ -34,6 +33,10 @@ export class ChipFilterPage extends ComponentBasePage {
         await this.page.goto(createStoryBookComponentPath(gotoParams.storyId || this.componentId, componentParams));
 
         await this.page.waitForSelector(this.loadedPageSelector);
+    }
+
+    click() {
+        return this.component.click({testId: this.testId});
     }
 
     getChipFilterLabel() {
