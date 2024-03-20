@@ -5,11 +5,10 @@ import {ChipFilterModule} from '@ironsource/fusion-ui/components/chip-filter';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {ReactiveFormsModule} from '@angular/forms';
 import {DropdownModule} from '@ironsource/fusion-ui/components/dropdown/v3';
-import {GenericPipe} from '@ironsource/fusion-ui';
 
 @NgModule({
     declarations: [ChipFiltersComponent],
     exports: [ChipFiltersComponent],
-    imports: [CommonModule, ChipFilterModule, IconModule, ReactiveFormsModule, DropdownModule, GenericPipe]
+    imports: [CommonModule, ChipFilterModule, IconModule, ReactiveFormsModule, DropdownModule]
 })
 export class ChipFiltersModule {}
