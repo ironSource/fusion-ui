@@ -24,7 +24,8 @@
                         "prefix": "fusion",
                         "style": "kebab-case"
                     }
-                ]
+                ],
+                "@angular-eslint/no-output-native": "off"
             }
         },
         {
