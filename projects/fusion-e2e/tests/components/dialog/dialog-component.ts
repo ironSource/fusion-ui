@@ -22,6 +22,13 @@ export class DialogComponent {
         return this.page.getByTestId(getTestId(testId, DialogTestIdModifiers.MODAL_CONTENT)).textContent();
     }
 
+    async openDialog({testId}: {testId: string}) {
+        const selector = getTestId(testId, DialogTestIdModifiers.WRAPPER);
+        await this.page.waitForSelector(getTestIdSelector(selector));
+        const dialogButton = this.page.getByTestId(selector);
+        await dialogButton.click();
+    }
+
     async closeDialog({testId}: {testId: string}) {
         const closeButton = await this.page.getByTestId(getTestId(testId, DialogTestIdModifiers.ACTION_CLOSE));
         await closeButton.click();

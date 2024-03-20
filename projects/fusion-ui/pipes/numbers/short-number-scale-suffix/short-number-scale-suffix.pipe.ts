@@ -28,6 +28,6 @@ export class ShortNumberScaleSuffixPipe implements PipeTransform {
             numberToShow = bigPart.toPrecision(precision);
         }
 
-        return `${numberToShow}${noSpaceDelimiter ? '' : ' '}${['', 'K', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y'][i] ?? ''}`.trim();
+        return `${numberToShow}${noSpaceDelimiter ? '' : ' '}${['', 'K', 'M', 'B', 'T', 'P', 'E', 'Z', 'Y'][i] ?? ''}`.trim();
     }
 }

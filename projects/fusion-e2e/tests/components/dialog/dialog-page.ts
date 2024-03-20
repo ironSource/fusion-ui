@@ -4,8 +4,6 @@ import {dialogStoryId, defaultTestId, loadedPageSelector} from './consts';
 import {ComponentProps, GotoParams} from '../base-page/types';
 import {createStoryBookComponentPath} from '../../global/utils';
 import {ComponentBasePage} from '../base-page/component-base-page';
-import {DialogTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui';
 
 export class DialogPage extends ComponentBasePage {
     readonly component: DialogComponent;
@@ -33,15 +31,12 @@ export class DialogPage extends ComponentBasePage {
         await this.page.waitForSelector(this.loadedPageSelector);
     }
 
-    async openDialog() {
-        const selector = TestIdsService.getTestId(this.testId, DialogTestIdModifiers.WRAPPER);
-        await this.page.waitForSelector(TestIdsService.getTestIdSelector(selector));
-        const dialogButton = this.page.getByTestId(selector);
-        await dialogButton.click();
-    }
-
     getDialogTitle() {
         return this.component.getDialogTitle({testId: this.testId});
+    }
+
+    openDialog() {
+        return this.component.openDialog({testId: this.testId});
     }
 
     getDialogText() {

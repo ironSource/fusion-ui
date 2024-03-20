@@ -115,6 +115,6 @@ export class SearchV4Component implements OnInit, OnDestroy {
     }
 
     testIdsService: TestIdsService = this.injector.get(TestIdsService);
-    @Input() testId: string = 'dropdownTestIdWithIndex';
+    @Input() testId: string;
     // endregion
 }
