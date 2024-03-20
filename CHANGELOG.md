@@ -342,6 +342,16 @@ All notable changes to this project will be documented in this file. See [commit
 * **isct-120:** remove @ironsource/storybook-addon-stackblitz package till it will be update ([ee02d1a](https://github.com/ironSource/fusion-ui/commit/ee02d1abe0347a3fb73ad714c4460193f5116fea))
 * **isct-120:** update gh actions for use node >=18.13 for angular 17 ([1ccf445](https://github.com/ironSource/fusion-ui/commit/1ccf4455f90905f82f65a298ca45a2c6e2ebbce7))
 
+### [6.5.4](https://github.com/ironSource/fusion-ui/compare/v6.5.4-rc.3...v6.5.4) (2024-03-19)
+
+### [6.5.4-rc.3](https://github.com/ironSource/fusion-ui/compare/v6.5.4-rc.2...v6.5.4-rc.3) (2024-03-18)
+
+### [6.5.4-rc.2](https://github.com/ironSource/fusion-ui/compare/v6.5.4-rc.1...v6.5.4-rc.2) (2024-03-18)
+
+### [6.5.4-rc.1](https://github.com/ironSource/fusion-ui/compare/v6.5.4-rc.0...v6.5.4-rc.1) (2024-03-17)
+
+### [6.5.4-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.5.3...v6.5.4-rc.0) (2024-03-17)
+
 ### [6.5.3](https://github.com/ironSource/fusion-ui/compare/v6.5.3-rc.31...v6.5.3) (2024-03-14)
 
 ### [6.5.3-rc.31](https://github.com/ironSource/fusion-ui/compare/v6.5.3-rc.29...v6.5.3-rc.31) (2024-03-14)

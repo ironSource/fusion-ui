@@ -17,6 +17,7 @@ export class ModalHeaderComponent {
     @Input() set infoText(value: string) {
         this._infoText = value;
     }
+
     get infoText(): string {
         return this._infoText;
     }

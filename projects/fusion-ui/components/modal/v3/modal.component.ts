@@ -58,6 +58,7 @@ export class ModalComponent implements OnDestroy, OnInit {
     get configuration(): ModalConfiguration {
         return this._configuration.getValue();
     }
+
     /** @internal */
     @Input() testId: string;
 
@@ -116,6 +117,7 @@ export class ModalComponent implements OnDestroy, OnInit {
         this.renderer.setStyle(this.elRef.nativeElement, 'display', 'block');
         this.openModal.emit();
     }
+
     /** @internal */
     onClose(emitEvent = true, eventType: 'close' | 'submit' = 'close') {
         if (eventType === 'close') {

@@ -1,5 +1,4 @@
-import {StoryFn, Meta} from '@storybook/angular';
-import {moduleMetadata} from '@storybook/angular';
+import {Meta, moduleMetadata, StoryFn} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {environment} from '../../../../../../stories/environments/environment';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
@@ -28,7 +27,8 @@ export default {
         color: 'primary',
         variant: 'contained',
         startIconName: '',
-        endIconName: ''
+        endIconName: '',
+        testId: 'testId'
     },
     argsTypes: {
         disabled: {
@@ -51,11 +51,12 @@ export default {
 
 const ButtonTemplate: StoryFn<ButtonComponent> = (args: ButtonComponent) => ({
     props: args,
-    template: `<fusion-button 
-[color]="color" 
-[variant]="variant" 
-[size]="size" 
-[disabled]="disabled" 
+    template: `<fusion-button
+[color]="color"
+[variant]="variant"
+[size]="size"
+[testId]=testId
+[disabled]="disabled"
 [loading]="loading"
 [startIconName]="startIconName"
 [endIconName]="endIconName"

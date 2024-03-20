@@ -36,9 +36,11 @@ type Story = StoryObj<ModalV4Component>;
 
 export const Basic: Story = {
     render: args => ({
-        props: args,
+        props: {
+            ...args
+        },
         template: `
-        <fusion-modal-story-wrapper></fusion-modal-story-wrapper>  
+        <fusion-modal-story-wrapper [testId]="testId"></fusion-modal-story-wrapper>
         `
     })
 };
@@ -47,7 +49,7 @@ export const Size: Story = {
     render: args => ({
         props: args,
         template: `
-        <fusion-modal-story-wrapper mode="size"></fusion-modal-story-wrapper>  
+        <fusion-modal-story-wrapper mode="size"></fusion-modal-story-wrapper>
         `
     })
 };
@@ -56,7 +58,7 @@ export const Delete: Story = {
     render: args => ({
         props: args,
         template: `
-        <fusion-modal-story-wrapper mode="delete"></fusion-modal-story-wrapper>  
+        <fusion-modal-story-wrapper mode="delete"></fusion-modal-story-wrapper>
         `
     })
 };
@@ -65,7 +67,7 @@ export const SubTitle: Story = {
     render: args => ({
         props: args,
         template: `
-        <fusion-modal-story-wrapper mode="subTitle"></fusion-modal-story-wrapper>  
+        <fusion-modal-story-wrapper mode="subTitle"></fusion-modal-story-wrapper>
         `
     })
 };
@@ -74,7 +76,7 @@ export const NoHeader: Story = {
     render: args => ({
         props: args,
         template: `
-        <fusion-modal-story-wrapper mode="noHeader"></fusion-modal-story-wrapper>  
+        <fusion-modal-story-wrapper mode="noHeader"></fusion-modal-story-wrapper>
         `
     })
 };

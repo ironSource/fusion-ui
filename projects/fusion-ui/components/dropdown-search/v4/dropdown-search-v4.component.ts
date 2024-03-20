@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, forwardRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
 import {SearchComponent} from '@ironsource/fusion-ui/components/search/v4';
@@ -20,4 +20,6 @@ import {DropdownSearchBaseComponent} from '@ironsource/fusion-ui/components/drop
         }
     ]
 })
-export class DropdownSearchV4Component extends DropdownSearchBaseComponent {}
+export class DropdownSearchV4Component extends DropdownSearchBaseComponent {
+    @Input() testId!: string;
+}

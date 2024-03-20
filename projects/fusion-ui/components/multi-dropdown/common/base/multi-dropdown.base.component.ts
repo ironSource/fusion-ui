@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Input, OnChanges, OnInit, TemplateRef} from '@angular/core';
+import {Directive, Input, OnChanges, OnInit, TemplateRef} from '@angular/core';
 import {DROPDOWN_OPTIONS_WITHOUT_SCROLL, DropdownBaseComponent} from '@ironsource/fusion-ui/components/dropdown/common/base';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/entities';
 import {Observable} from 'rxjs';
@@ -23,6 +23,7 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
     hasSearchValue$: Observable<boolean> = new Observable<boolean>();
     /** @ignore */
     showSelectedFirst: boolean = false;
+    @Input() testId: string;
 
     get isMulti(): boolean {
         return true;
@@ -43,6 +44,13 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
             startWith(false),
             map(searchValue => !!searchValue)
         );
+
+        this.resetState$
+            .asObservable()
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe(_ => {
+                this.applySelect(true);
+            });
     }
 
     /**
