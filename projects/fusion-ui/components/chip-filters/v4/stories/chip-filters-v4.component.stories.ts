@@ -76,6 +76,7 @@ const basicTemplate = `
                     [placeholder]="placeholderChip3"
                     [formControl]="fcChip3"
                     [options]="optionsChip3"
+                    [search]="[search]"
                     selectAllLabel="Select all"
                 ></fusion-multi-dropdown>
             </div>
@@ -107,7 +108,7 @@ const basicTemplate = `
                     [placeholderPrefix]="placeholderPrefixChip6"
                     [placeholder]="placeholderChip6"
                     [formControl]="fcChip6"
-                    [options]="optionsChip6"
+                    [optionsGroups]="optionsChip6"
                     selectAllLabel="Select all"
                     [search]="true"
                 ></fusion-multi-dropdown>

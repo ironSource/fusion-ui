@@ -228,5 +228,22 @@
         }
 
         // endregion
+
+        &.fu-selected{
+            border-width: 2px;
+            padding: 3px 7px;
+            border-color: var(--action-active, #{$color-v4-action-active});
+            background-color: var(--action-selected, #{$color-v4-action-selected});
+           padding: 2px 6px;
+            &.fu-small{
+                padding: 0 4px;
+            }
+            &.fu-large{
+                padding: 4px 6px;
+            }
+            &.fu-extraLarge{
+                padding: 8px 10px;
+            }
+        }
     }
 }

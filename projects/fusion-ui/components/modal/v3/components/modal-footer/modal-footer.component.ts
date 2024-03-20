@@ -9,16 +9,19 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 })
 export class ModalFooterComponent {
     @Input() submitButtonPending = false;
+
     @Input() set cancelButton(config: {cancelButtonText?: string; cancelButtonClass?: string; cancelButtonHidden?: boolean}) {
         this.cancelButtonText = config?.cancelButtonText;
         this.cancelButtonClass = config?.cancelButtonClass;
         this.cancelButtonHidden = config?.cancelButtonHidden;
     }
+
     @Input() set submitButton(config: {submitButtonText?: string; submitButtonClass?: string; submitButtonDisabled?: boolean}) {
         this.submitButtonText = config?.submitButtonText;
         this.submitButtonClass = config?.submitButtonClass;
         this.submitButtonDisabled = config?.submitButtonDisabled;
     }
+
     @Input() error;
     /** @internal */
     @Input() testId: string;

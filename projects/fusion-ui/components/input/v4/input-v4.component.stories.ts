@@ -66,7 +66,60 @@ export const Disabled: Story = {
     [size]="size"
     [viewOnly]="viewOnly"
     [type]="type"
+    [testId]="testId"
   ></fusion-input>
+`
+    })
+};
+
+export const Variant: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            formControl: formControl
+        },
+        template: `
+<div style="display: flex; flex-direction: column; gap: 16px">
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Error"
+        variant="error"
+        [viewOnly]="viewOnly"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+        [testId]="errorTestId"
+      ></fusion-input>
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Success"
+        variant="success"
+        [viewOnly]="viewOnly"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+        [testId]="successTestId"
+      ></fusion-input>
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Warning"
+        variant="warning"
+        [viewOnly]="viewOnly"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+        [testId]="warningTestId"
+      ></fusion-input>
+</div>
 `
     })
 };
@@ -81,7 +134,7 @@ export const Size: Story = {
 <div style="display: flex; flex-direction: column; gap: 16px">
     <fusion-input
         [formControl]="formControl"
-        placeholder="Medium (default)"        
+        placeholder="Medium (default)"
         [viewOnly]="viewOnly"
         [type]="type"
         [step]="step"
@@ -89,6 +142,7 @@ export const Size: Story = {
         [min]="min"
         [max]="max"
         [maxLength]="maxLength"
+        [testId]="mediumTestId"
       ></fusion-input>
     <fusion-input
         [formControl]="formControl"
@@ -101,6 +155,7 @@ export const Size: Story = {
         [min]="min"
         [max]="max"
         [maxLength]="maxLength"
+        [testId]="largeTestId"
       ></fusion-input>
     <fusion-input
         [formControl]="formControl"
@@ -113,6 +168,7 @@ export const Size: Story = {
         [min]="min"
         [max]="max"
         [maxLength]="maxLength"
+        [testId]="XLTestId"
       ></fusion-input>
 </div>
 `
@@ -153,6 +209,148 @@ export const Counter: Story = {
     }
 };
 
+export const WithHelper: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            formControl: formControl,
+            helperText: 'Helper text'
+        },
+        template: `
+<div style="display: flex; flex-direction: column; gap: 16px">
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Default"
+        [helperText]="helperText"
+        [viewOnly]="viewOnly"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+        [testId]="testId"
+      ></fusion-input>
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Error"
+        variant="error"
+        [helperText]="helperText"
+        [viewOnly]="viewOnly"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+        [testId]="errorTestId"
+      ></fusion-input>
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Success"
+        variant="success"
+        [helperText]="helperText"
+        [viewOnly]="viewOnly"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+        [testId]="successTestId"
+      ></fusion-input>
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Warning"
+        variant="warning"
+        [helperText]="helperText"
+        [viewOnly]="viewOnly"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+        [testId]="warningTestId"
+      ></fusion-input>
+</div>
+`
+    })
+};
+
+export const WithHelperIcon: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            formControl: formControl,
+            helperText: 'Helper text'
+        },
+        template: `
+<div style="display: flex; flex-direction: column; gap: 16px">
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Default"
+        [helperText]="helperText"
+        [helperIcon]="'ph/fill/info'"
+        [viewOnly]="viewOnly"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+        [testId]="'defaultTestId'"
+      ></fusion-input>
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Error"
+        variant="error"
+        [helperText]="helperText"
+        [helperIcon]="'ph/fill/warning-octagon'"
+        [viewOnly]="viewOnly"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+        [testId]="errorTestId"
+      ></fusion-input>
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Success"
+        variant="success"
+        [helperText]="helperText"
+        [helperIcon]="'ph/fill/check-circle'"
+        [viewOnly]="viewOnly"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+        [testId]="successTestId"
+      ></fusion-input>
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Warning"
+        variant="warning"
+        [helperText]="helperText"
+        [helperIcon]="'ph/fill/warning'"
+        [viewOnly]="viewOnly"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+        [testId]="warningTestId"
+      ></fusion-input>
+</div>
+`
+    })
+};
+
 export const InlineValidation: Story = {
     args: {
         inlineErrorText: 'Error message'
@@ -178,6 +376,7 @@ export const Password: Story = {
     [formControl]="formControl"
     [type]="type"
     [viewOnly]="viewOnly"
+    [testId]="testId"
   ></fusion-input>
 `
     })

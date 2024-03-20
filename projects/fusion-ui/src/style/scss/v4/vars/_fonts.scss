@@ -11,18 +11,22 @@ $inter: 'Inter', sans-serif;
 %font-v4-bold {
     font-family: $inter;
     font-weight: 700;
+    -webkit-font-smoothing: antialiased;
 }
 %font-v4-semibold {
     font-family: $inter;
     font-weight: 600;
+    -webkit-font-smoothing: antialiased;
 }
 %font-v4-medium {
     font-family: $inter;
     font-weight: 500;
+    -webkit-font-smoothing: antialiased;
 }
 %font-v4-regular {
     font-family: $inter;
     font-weight: 400;
+    -webkit-font-smoothing: antialiased;
 }
 
 // region heading

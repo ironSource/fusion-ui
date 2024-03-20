@@ -1,8 +1,12 @@
-import {Directive, Input} from '@angular/core';
+import {Directive, HostBinding, Injector, Input} from '@angular/core';
 import {ButtonColor, ButtonSize, ButtonVariant, IconButtonColor, IconButtonSize, IconButtonVariant} from './button.entities';
+import {ButtonTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Directive()
 export class ButtonBaseComponent {
+    @Input() testId: string;
+
     /**
      * Set button color type
      * @param value
@@ -43,6 +47,15 @@ export class ButtonBaseComponent {
         this._loading = value ?? false;
     }
 
+    /** @internal */
+    testIdButtonModifiers: typeof ButtonTestIdModifiers = ButtonTestIdModifiers;
+    /** @internal */
+    testIdsService: TestIdsService = this.injector.get(TestIdsService);
+
+    @HostBinding('attr.data-testid') get testAttribute(): string {
+        return this.testIdsService.getTestAttribute(this.testId, this.testIdButtonModifiers.BUTTON);
+    }
+
     get buttonClass(): string {
         return `${this.colorClass} ${this.variantClass} ${this.sizeClass}`;
     }
@@ -66,6 +79,8 @@ export class ButtonBaseComponent {
     get loading(): boolean {
         return this._loading;
     }
+
+    constructor(private injector: Injector) {}
 
     private _color: ButtonColor | IconButtonColor = 'default';
     private _variant: ButtonVariant | IconButtonVariant = 'contained';

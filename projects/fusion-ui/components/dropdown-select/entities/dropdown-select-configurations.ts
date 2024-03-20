@@ -23,6 +23,7 @@ export interface DropdownSelectConfigurations {
     isMultipleSelection?: boolean;
     error?: string;
     icon?: IconData;
+    iconColor?: string;
     labelFlag?: string;
     labelImage?: string;
     dropdownArrowIconName?: IconData;

@@ -30,7 +30,8 @@ export default {
         variant: 'default',
         size: 'medium',
         iconName: 'ph/pencil-simple',
-        tooltipText: 'Edit'
+        tooltipText: 'Edit',
+        testId: 'iconButtonTestId'
     },
     argsTypes: {
         disabled: {
@@ -53,7 +54,7 @@ export default {
 
 const ButtonTemplate: StoryFn<IconButtonComponent> = (args: IconButtonComponent) => ({
     props: args,
-    template: `<fusion-icon-button [fusionTooltip]="tooltipText"  [color]="color" [variant]="variant" [size]="size" [iconName]="iconName" [disabled]="disabled" [loading]="loading"></fusion-icon-button>`
+    template: `<fusion-icon-button [fusionTooltip]="tooltipText"  [color]="color" [variant]="variant" [size]="size" [iconName]="iconName" [disabled]="disabled" [loading]="loading" [testId]="testId"></fusion-icon-button>`
 });
 
 export const Basic = {

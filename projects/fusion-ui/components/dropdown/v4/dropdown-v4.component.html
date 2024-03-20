@@ -1,26 +1,30 @@
 <div class="fu-dropdown"
-        [id]="id"
-        [clickOutsideActivate]="isOpen$ | async"
-        (fusionClickOutside)="onOutsideClick($event)"
-        [ngClass]="getHolderCSSClasses()"
->
-    <div class="fu-dd-custom-trigger" *ngIf="templateRef" #trigger  (click)="openDropdown($event)">
+     [id]="id"
+     [clickOutsideActivate]="isOpen$ | async"
+     (fusionClickOutside)="onOutsideClick($event)"
+     [ngClass]="getHolderCSSClasses()"
+     [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.TRIGGER">
+    <div class="fu-dd-custom-trigger" *ngIf="templateRef" #trigger (click)="openDropdown($event)"
+         [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.TRIGGER">
         <ng-container [ngTemplateOutlet]="templateRef"></ng-container>
     </div>
 
     <ng-container *ngIf="!templateRef" [ngTemplateOutlet]="defaultTrigger"></ng-container>
 
     <ng-template #defaultTrigger>
-        <fusion-dropdown-select *ngIf="(dropdownSelectConfigurations$ | async) as triggerConfiguration"
-            #selectComponent
-            [placeholder]="triggerConfiguration.placeholder"
-            [disabled]="triggerConfiguration.disabled"
-            [isOpen]="triggerConfiguration.isOpen"
-            [icon]="triggerConfiguration.icon"
-            [imageUrl]="triggerConfiguration.labelImage"
-            [country]="triggerConfiguration.labelFlag"
-            [size]="size"
-            (click)="openDropdown($event)"
+        <fusion-dropdown-select class="fu-mode-{{triggerMode}}"
+                                *ngIf="(dropdownSelectConfigurations$ | async) as triggerConfiguration"
+                                #selectComponent
+                                [placeholder]="triggerConfiguration.placeholder"
+                                [disabled]="triggerConfiguration.disabled"
+                                [isOpen]="triggerConfiguration.isOpen"
+                                [icon]="triggerConfiguration.icon"
+                                [iconColor]="triggerConfiguration.iconColor"
+                                [imageUrl]="triggerConfiguration.labelImage"
+                                [country]="triggerConfiguration.labelFlag"
+                                [size]="size"
+                                (click)="openDropdown($event)"
+                                [testId]="testId"
         ></fusion-dropdown-select>
     </ng-template>
 
@@ -41,6 +45,7 @@
                         <fusion-dropdown-search class="fu-search-in-options"
                                                 [formControl]="searchValue"
                                                 [placeholder]="configurations.placeholder?.search"
+                                                [testId]="testId"
                                                 #searchComponent
                         ></fusion-dropdown-search>
                     </div>
@@ -48,16 +53,21 @@
                 <!--search input-->
             </ng-container>
             <!--elements shown without selector-->
-            <div class="options-holder" (scroll)="onScroll($event)" #optionsHolder>
+            <div class="options-holder" (scroll)="onScroll($event)"
+                 [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.LIST_CONTAINER"
+                 #optionsHolder>
                 <ul class="options" [class.fu-loading]="loading">
                     <fusion-dropdown-options-list
-                            [displayedOptions]="displayedOptionsObservable$ | async"
-                            [selectedOptions]="selected"
-                            (changeSelected)="changeSelected($event)"
+                        [displayedOptions]="displayedOptionsObservable$ | async"
+                        [selectedOptions]="selected"
+                        (changeSelected)="changeSelected($event)"
                     ></fusion-dropdown-options-list>
                     <!--loader holder-->
                     <li *ngIf="(autoComplete && search) || loading">
-                        <div class="fu-loader-holder"><fusion-loader></fusion-loader><div>Loading...</div></div>
+                        <div class="fu-loader-holder">
+                            <fusion-loader></fusion-loader>
+                            <div>Loading...</div>
+                        </div>
                     </li>
                     <!--no-result holder-->
                     <li class="no-results" *ngIf="!filteredOptions?.length && !loading">No results found</li>
@@ -71,7 +81,9 @@
     <div class="fu-chip-content-default">
         <div [fusionTooltip]="chipDefaultContent" class="truncate fu-chip-text">
             <span *ngIf="placeholderPrefix" class="fu-chip-label">{{ placeholderPrefix }}</span>
-            <ng-container *ngIf="(placeholder$ | async) as placeholder">{{ (placeholderPrefix ? ': ' : '') + placeholder }}</ng-container>
+            <ng-container
+                *ngIf="(placeholder$ | async) as placeholder">{{ (placeholderPrefix ? ': ' : '') + placeholder }}
+            </ng-container>
         </div>
     </div>
 </ng-template>

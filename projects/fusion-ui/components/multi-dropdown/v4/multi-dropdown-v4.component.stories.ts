@@ -144,20 +144,21 @@ const templateCommon = `
         <fusion-multi-dropdown [selectAllLabel]="selectAllLabel" [size]="size" [search]="search" [placeholder]="placeholder" [options]="optionsFood" [formControl]="formControl"></fusion-multi-dropdown>
     </div>
     <div style="width: 240px;">
-        <fusion-multi-dropdown [selectAllLabel]="selectAllLabel" [size]="size" [search]="search" [placeholder]="placeholder" [options]="options" [formControl]="formControl"></fusion-multi-dropdown>
+        <fusion-multi-dropdown [selectAllLabel]="selectAllLabel" [size]="size" [search]="search" [placeholder]="placeholder" [options]="options" [formControl]="formControl" [testId]="'dropdownTestIdWithIndex'"></fusion-multi-dropdown>
     </div>
 </div>
 `;
 const templateOneDropdown = `
 <div style="display:flex; gap: 14px;">
     <div style="width: 300px;">
-        <fusion-multi-dropdown 
-            [selectAllLabel]="selectAllLabel" 
-            [size]="size" 
-            [search]="search" 
-            [placeholder]="placeholder" 
-            [options]="options" 
+        <fusion-multi-dropdown
+            [selectAllLabel]="selectAllLabel"
+            [size]="size"
+            [search]="search"
+            [placeholder]="placeholder"
+            [options]="options"
             [formControl]="formControl"
+            [testId]="testId"
         ></fusion-multi-dropdown>
     </div>
 </div>
@@ -165,13 +166,14 @@ const templateOneDropdown = `
 const templateOneDropdownGrouped = `
 <div style="display:flex; gap: 14px;">
     <div style="width: 300px;">
-        <fusion-multi-dropdown 
-            [selectAllLabel]="selectAllLabel" 
-            [size]="size" 
-            [search]="search" 
-            [placeholder]="placeholder" 
-            [optionsGroups]="optionsGroups" 
+        <fusion-multi-dropdown
+            [selectAllLabel]="selectAllLabel"
+            [size]="size"
+            [search]="search"
+            [placeholder]="placeholder"
+            [optionsGroups]="optionsGroups"
             [formControl]="formControl"
+            [testId]="testId"
         ></fusion-multi-dropdown>
     </div>
 </div>
@@ -206,7 +208,9 @@ export default {
         size: 'medium' as DropdownTriggerSize,
         options: longOptionsList,
         optionsFood: foodOptionsList,
-        formControl: formControl
+        formControl: formControl,
+        testId: 'dropdownTestId',
+        testIdWithIndex: 'dropdownTestIdWithIndex'
     },
     argTypes: {
         formControl: {
