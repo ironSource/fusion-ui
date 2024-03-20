@@ -1,5 +1,5 @@
 import {Page} from '@playwright/test';
-import {getTestId} from '../../global/utils';
+import {getTestId, getTestIdSelector} from '../../global/utils';
 import {TabsSelectionParams} from './types';
 import {TabsTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {defaultTestId} from './consts';
