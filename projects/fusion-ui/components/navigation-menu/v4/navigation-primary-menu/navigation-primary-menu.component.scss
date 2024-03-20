@@ -10,7 +10,7 @@
     .fu-navigation-bar-holder{
         position: fixed;
         z-index: getZIndexLayerOffset(application, 4);
-        background-color: var(--fu-navbar-background-color, #0D148C);
+        background-color: var(--fu-navbar-background-color, #181818);
         transition: background-color .8s;
 
 

@@ -44,7 +44,7 @@ $chipHeight: 28px;
     }
 
     &:hover {
-      border-color: var(--action-hover, #{$color-v4-action-hover});
+      border-color: var(--action-active, #{$color-v4-action-hover});
       background-color: var(--action-hover, #{$color-v4-action-hover});
       cursor: pointer;
     }
