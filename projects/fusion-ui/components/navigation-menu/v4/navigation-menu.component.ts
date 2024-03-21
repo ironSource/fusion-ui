@@ -181,6 +181,7 @@ export class NavigationMenuComponent implements OnInit {
                 this.setSecondaryMenu(primary);
             } else {
                 this.resetSecondaryMenu();
+                this.secondaryMenuOpen$.next(false);
             }
             this.primaryMenu.setSelectedPrimaryMenuItem(primary);
             setTimeout(() => {
