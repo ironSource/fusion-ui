@@ -22,4 +22,8 @@ export class TrendIndicatorPage extends ComponentBasePage {
     async waitForComponent() {
         await this.component.waitForComponent({testId: this.testId});
     }
+
+    async getTrendIndicatorValue() {
+        return this.component.getTrendIndicatorValue({testId: this.testId});
+    }
 }

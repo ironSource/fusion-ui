@@ -1,14 +1,20 @@
 import {TrendIndicatorPage} from './trend-indicator-page';
 import {expect, test} from '@playwright/test';
-import {trendIndicatorStoryId} from './consts';
 
-let component: TrendIndicatorPage;
+let trendIndicatorPage: TrendIndicatorPage;
 
 test.beforeEach(async ({page}) => {
-    component = new TrendIndicatorPage(page);
+    trendIndicatorPage = new TrendIndicatorPage(page);
 });
 
 test('Validate component is loaded', async () => {
-    await component.goto();
-    await component.waitForComponent();
+    await trendIndicatorPage.goto();
+    await trendIndicatorPage.waitForComponent();
+});
+
+test('Value should appear', async () => {
+    await trendIndicatorPage.goto();
+    await trendIndicatorPage.waitForComponent();
+    const actualValue = await trendIndicatorPage.getTrendIndicatorValue();
+    expect(actualValue).toContain('0.0% ');
 });
