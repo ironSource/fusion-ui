@@ -4,12 +4,12 @@ import {CommonModule} from '@angular/common';
 import {environment} from '../../../../../stories/environments/environment';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
-import {TrendIndcatorComponent} from './trend-indicator.component';
+import {TrendIndicatorComponent} from './trend-indicator.component';
 import {TrendStatus} from './trend-indicator.entities';
 
 export default {
     title: 'V4/Components/DataVisualization/TrendIndicator',
-    component: TrendIndcatorComponent,
+    component: TrendIndicatorComponent,
     decorators: [
         moduleMetadata({
             declarations: [],
@@ -35,9 +35,9 @@ export default {
         hasBackground: true,
         testId: 'testId'
     }
-} as Meta<TrendIndcatorComponent>;
+} as Meta<TrendIndicatorComponent>;
 
-type Story = StoryObj<TrendIndcatorComponent>;
+type Story = StoryObj<TrendIndicatorComponent>;
 
 export const Neutral: Story = {
     render: args => ({

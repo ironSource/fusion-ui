@@ -15,7 +15,7 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
     styleUrls: ['./trend-indicator.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TrendIndcatorComponent {
+export class TrendIndicatorComponent {
     @Input() status: TrendStatus = 'neutral';
     @Input() value: string = '';
     @Input() hasBackground: boolean = true;

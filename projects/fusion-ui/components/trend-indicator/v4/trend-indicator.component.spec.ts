@@ -1,18 +1,18 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {TrendIndcatorComponent} from './trend-indicator.component';
+import {TrendIndicatorComponent} from './trend-indicator.component';
 
 describe('TrendIndcatorComponent', () => {
-    let component: TrendIndcatorComponent;
-    let fixture: ComponentFixture<TrendIndcatorComponent>;
+    let component: TrendIndicatorComponent;
+    let fixture: ComponentFixture<TrendIndicatorComponent>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [TrendIndcatorComponent]
+            imports: [TrendIndicatorComponent]
         })
             .compileComponents();
 
-        fixture = TestBed.createComponent(TrendIndcatorComponent);
+        fixture = TestBed.createComponent(TrendIndicatorComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
