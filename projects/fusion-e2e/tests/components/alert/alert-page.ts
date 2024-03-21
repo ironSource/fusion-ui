@@ -16,7 +16,7 @@ export class AlertPage extends ComponentBasePage {
         };
 
         super(alertProps);
-        this.component = new AlertComponent(page);
+        this.component = new AlertComponent(page, this.testId);
     }
 
     getAlertText() {
