@@ -214,15 +214,16 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     protected getColors(): string[] {
         const palette = this.colorsService.getColorPalette(this.componentVersion);
         const legends = (this._data as ChartData).legends;
-        const customPalette = legends
-            ? legends.map((legend, idx) => {
-                  return !isNullOrUndefined(legend.color)
-                      ? legend.color
-                      : !isNullOrUndefined(palette[idx])
-                      ? palette[idx]
-                      : '#' + Math.floor(Math.random() * 16777215).toString(16); // no color - gen random
-              })
-            : palette;
+        const customPalette =
+            legends && this.type !== ChartType.Bar
+                ? legends.map((legend, idx) => {
+                      return !isNullOrUndefined(legend.color)
+                          ? legend.color
+                          : !isNullOrUndefined(palette[idx])
+                          ? palette[idx]
+                          : '#' + Math.floor(Math.random() * 16777215).toString(16); // no color - gen random
+                  })
+                : palette;
         return customPalette;
     }
 
