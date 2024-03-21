@@ -2,7 +2,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {TrendIndicatorComponent} from './trend-indicator.component';
 
-describe('TrendIndcatorComponent', () => {
+describe('TrendIndicatorComponent', () => {
     let component: TrendIndicatorComponent;
     let fixture: ComponentFixture<TrendIndicatorComponent>;
 

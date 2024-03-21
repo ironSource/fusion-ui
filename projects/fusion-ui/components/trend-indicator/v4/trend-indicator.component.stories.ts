@@ -20,7 +20,7 @@ export default {
     parameters: {
         docs: {
             description: {
-                component: dedent`***TrendIndcatorComponent***.
+                component: dedent`***TrendIndicatorComponent***.
                 `
             }
         },
