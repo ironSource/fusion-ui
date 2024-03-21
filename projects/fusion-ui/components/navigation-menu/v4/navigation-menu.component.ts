@@ -170,14 +170,16 @@ export class NavigationMenuComponent implements OnInit {
         this.secondaryMenuLogoSrc$.next('');
     }
 
-    setActiveMenu(primary: PrimaryMenuItem, secondary: MenuItem) {
+    setActiveMenu(primary: PrimaryMenuItem, secondary: MenuItem | PrimaryMenuItem) {
         if (isNullOrUndefined(primary) || isNullOrUndefined(secondary)) {
             this.secondaryMenu.setSelected(null);
         } else {
             this.selectedPrimaryMenuItem = primary;
             this.preSelectedPrimaryMenuItem = primary;
-            this.selectedSecondaryMenuItem = secondary;
-            this.setSecondaryMenu(primary);
+            if (primary !== secondary) {
+                this.selectedSecondaryMenuItem = secondary as MenuItem;
+                this.setSecondaryMenu(primary);
+            }
             this.primaryMenu.setSelectedPrimaryMenuItem(primary);
             setTimeout(() => {
                 this.primaryMenu.setColorTheme(primary?.cssTheme ?? null);
