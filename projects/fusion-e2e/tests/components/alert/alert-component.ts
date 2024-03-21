@@ -1,11 +1,13 @@
 import {Page} from '@playwright/test';
 import {AlertTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {getTestId, getTestIdSelector} from '../../global/utils';
+import {BaseComponent} from '../base-component';
 
-export class AlertComponent {
+export class AlertComponent extends BaseComponent {
     readonly page: Page;
 
-    constructor(page: Page) {
+    constructor(page: Page, selector: string) {
+        super(page, selector);
         this.page = page;
     }
 
