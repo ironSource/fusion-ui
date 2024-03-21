@@ -179,6 +179,8 @@ export class NavigationMenuComponent implements OnInit {
             if (primary !== secondary) {
                 this.selectedSecondaryMenuItem = secondary as MenuItem;
                 this.setSecondaryMenu(primary);
+            } else {
+                this.secondaryMenu.setSelected(null);
             }
             this.primaryMenu.setSelectedPrimaryMenuItem(primary);
             setTimeout(() => {
@@ -195,6 +197,9 @@ export class NavigationMenuComponent implements OnInit {
 
             this.menuOpenForPrimaryMenuItem$.next(selectedNetwork);
             this.selectSecondaryMenuItem(selectedNetwork);
+        } else if (selectedNetwork?.type === NavigationBarItemType.Home) {
+            this.resetSecondaryMenu();
+            this.menuOpenForPrimaryMenuItem$.next(null);
         }
     }
 
