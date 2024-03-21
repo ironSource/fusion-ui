@@ -199,7 +199,6 @@ export class NavigationMenuComponent implements OnInit {
             this.selectSecondaryMenuItem(selectedNetwork);
         } else if (selectedNetwork?.type === NavigationBarItemType.Home) {
             this.resetSecondaryMenu();
-            this.menuOpenForPrimaryMenuItem$.next(null);
         }
     }
 
