@@ -55,7 +55,6 @@ export class CampaignPromotionsFilterSectionComponent implements ControlValueAcc
         this.propagateTouched = fn;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     @Input() testId: string;
 
     setDisabledState?(isDisabled: boolean): void {}
