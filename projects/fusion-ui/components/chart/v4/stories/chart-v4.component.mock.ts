@@ -16,8 +16,8 @@ export const CHART_BAR_DATA_MOCK: ChartData = {
 
 export const CHART_BAR_GROUPED_DATA_MOCK: ChartData = {
     data: {
-        'Unity Ads': [804.16, 1688.59, 1383.47, 1037.83, 899.56],
-        'ironSource Ads': [456.16, 1290.59, 678.47, 659.83, 344.56]
+        'Unity Ads': [804.16, 1688.59, 1383.47, 7.83, 0],
+        'ironSource Ads': [456.16, 1290.59, 678.47, 9.83, 0]
     },
     legends: [
         {id: 9930, displayName: 'Australia', displayFormat: 'shortCurrency'},

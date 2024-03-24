@@ -469,7 +469,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             options.scales.x.stacked = true;
             options.scales.y.stacked = true;
             options.interaction = {
-                intersect: true,
+                intersect: false,
                 mode: 'index',
                 axis: 'xy'
             };
@@ -510,7 +510,6 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         const label = context.dataset.label ?? context.label ?? '';
         const val = context.parsed.y ?? context?.formattedValue?.replace(/,/g, '');
         const format = context.dataset.displayFormat ?? this.yAxesFormat;
-
         return ` ${label}: ${!!format ? this.getFormatted(val, format) : val}`;
     }
     private calculateTotals(tooltipItem: any[]) {
