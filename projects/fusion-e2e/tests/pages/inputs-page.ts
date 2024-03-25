@@ -77,8 +77,8 @@ export class InputsPage extends BasePage {
         });
     }
 
-    isDisabled() {
-        return this.component.isDisabled({testId: this.testId});
+    isInputDisabled() {
+        return this.component.isInputDisabled({testId: this.testId});
     }
 
     getMaxLengthNumber() {

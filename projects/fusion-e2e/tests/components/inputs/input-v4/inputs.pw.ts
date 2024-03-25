@@ -128,7 +128,7 @@ test.skip('Verify feedback variants appear', async () => {
 
 test('Verify inputs disabled', async () => {
     await inputsPage.goto({storyId: inputsStoryIdDisabled});
-    const inputsDisabled = await inputsPage.isDisabled();
+    const inputsDisabled = await inputsPage.isInputDisabled();
     expect(inputsDisabled).toBe(true);
 });
 

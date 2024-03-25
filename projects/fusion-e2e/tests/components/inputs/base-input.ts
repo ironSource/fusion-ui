@@ -1,36 +1,40 @@
-import {Page} from '@playwright/test';
 import {getTestId} from '../../global/utils';
 import {InputParams} from './types';
 import {InputTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {BaseComponent} from '../base-component';
 
-export class BaseInputComponent {
-    readonly page: Page;
-
-    constructor(page: Page) {
-        this.page = page;
+export class BaseInputComponent extends BaseComponent {
+    constructor(page, selector: string) {
+        super(page, selector);
     }
 
-    getInputsFieldText({testId}: {testId: string}) {
-        return this.page.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD)).inputValue();
+    async getInputsFieldText({testId}: {testId: string}) {
+        const element = await this.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD));
+        return element.inputValue();
     }
 
-    getPlaceholderText({testId}: {testId: string}) {
-        return this.page.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD)).getAttribute('placeholder');
+    async getPlaceholderText({testId}: {testId: string}) {
+        const element = await this.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD));
+        return element.getAttribute('placeholder');
     }
 
-    getInputsType({testId}: {testId: string}) {
-        return this.page.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD)).getAttribute('type');
+    async getInputsType({testId}: {testId: string}) {
+        const element = await this.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD));
+        return element.getAttribute('type');
     }
 
     async addInput({testId, text}: InputParams) {
-        await this.page.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD)).type(text as string);
+        const element = await this.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD));
+        await element.type(text as string);
     }
 
     async clearInput({testId}: {testId: string}) {
-        await this.page.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD)).clear();
+        const element = await this.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD));
+        await element.clear();
     }
 
-    isDisabled({testId}: {testId: string}) {
-        return this.page.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD)).isDisabled();
+    async isInputDisabled({testId}: {testId: string}) {
+        const element = await this.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD));
+        return element.isDisabled();
     }
 }
