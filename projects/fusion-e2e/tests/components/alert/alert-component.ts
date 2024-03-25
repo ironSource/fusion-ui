@@ -1,4 +1,3 @@
-// import {Page} from '@playwright/test';
 import {AlertTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {getTestId, getTestIdSelector} from '../../global/utils';
 import {BaseComponent} from '../base-component';
