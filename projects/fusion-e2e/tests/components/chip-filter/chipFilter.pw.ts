@@ -22,6 +22,6 @@ test('should work when clicked', async () => {
 test('should show option dropdown when clicked', async ({page}) => {
     await chipFilterPage.goto();
     await chipFilterPage.waitForComponent();
-    await chipFilterPage.click();
+    await chipFilterPage.clickChipFilter();
     await expect(await page.locator('.options-dropdown').first()).toBeVisible();
 });

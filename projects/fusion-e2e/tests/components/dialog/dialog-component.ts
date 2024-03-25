@@ -1,64 +1,66 @@
-import {Page} from '@playwright/test';
 import {DialogTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {getTestId, getTestIdSelector} from '../../global/utils';
+import {BaseComponent} from '../base-component';
 
-export class DialogComponent {
-    readonly page: Page;
-
-    constructor(page: Page) {
-        this.page = page;
+export class DialogComponent extends BaseComponent {
+    constructor(page, selector: string) {
+        super(page, selector);
     }
 
     async waitForComponent({testId}: {testId: string}) {
         const loadedPageSelector = getTestIdSelector(getTestId(testId, DialogTestIdModifiers.WRAPPER));
-        await this.page.waitForSelector(loadedPageSelector);
+        await this.waitForSelector(loadedPageSelector);
     }
 
-    getDialogTitle({testId}: {testId: string}) {
-        return this.page.getByTestId(getTestId(testId, DialogTestIdModifiers.HEADER)).textContent();
+    async getDialogTitle({testId}: {testId: string}) {
+        const element = await this.getByTestId(getTestId(testId, DialogTestIdModifiers.HEADER));
+        return element.textContent();
     }
 
-    getDialogText({testId}: {testId: string}) {
-        return this.page.getByTestId(getTestId(testId, DialogTestIdModifiers.MODAL_CONTENT)).textContent();
+    async getDialogText({testId}: {testId: string}) {
+        const element = await this.getByTestId(getTestId(testId, DialogTestIdModifiers.MODAL_CONTENT));
+        return element.textContent();
     }
 
     async openDialog({testId}: {testId: string}) {
         const selector = getTestId(testId, DialogTestIdModifiers.WRAPPER);
-        await this.page.waitForSelector(getTestIdSelector(selector));
-        const dialogButton = this.page.getByTestId(selector);
+        await this.waitForSelector(getTestIdSelector(selector));
+        const dialogButton = await this.getByTestId(selector);
         await dialogButton.click();
     }
 
     async closeDialog({testId}: {testId: string}) {
-        const closeButton = await this.page.getByTestId(getTestId(testId, DialogTestIdModifiers.ACTION_CLOSE));
+        const closeButton = await this.getByTestId(getTestId(testId, DialogTestIdModifiers.ACTION_CLOSE));
         await closeButton.click();
     }
 
     async clickOnPrimaryButton({testId}: {testId: string}) {
-        const primaryButton = this.page.getByTestId(getTestId(testId, DialogTestIdModifiers.SAVE_BUTTON));
+        const primaryButton = await this.getByTestId(getTestId(testId, DialogTestIdModifiers.SAVE_BUTTON));
         await primaryButton.click();
     }
 
     async clickOnDefaultButton({testId}: {testId: string}) {
-        const defaultButton = this.page.getByTestId(getTestId(testId, DialogTestIdModifiers.CANCEL_BUTTON));
+        const defaultButton = await this.getByTestId(getTestId(testId, DialogTestIdModifiers.CANCEL_BUTTON));
         await defaultButton.click();
     }
 
     async clickOnDeleteButton({testId}: {testId: string}) {
-        const deleteButton = await this.page
-            .getByTestId(getTestId(testId, DialogTestIdModifiers.ACTION_BUTTONS_WRAPPER))
-            .locator('.danger');
+        const deleteButton = await (
+            await this.getByTestId(getTestId(testId, DialogTestIdModifiers.ACTION_BUTTONS_WRAPPER))
+        ).locator('.danger');
 
         await deleteButton.click();
     }
 
-    getDialogSubtitle({testId}: {testId: string}) {
-        return this.page.getByTestId(getTestId(testId, DialogTestIdModifiers.HEADER_SECONDARY)).locator('.subtitle').textContent();
+    async getDialogSubtitle({testId}: {testId: string}) {
+        const element = await this.getByTestId(getTestId(testId, DialogTestIdModifiers.HEADER_SECONDARY));
+        const locator = await element.locator('.subtitle');
+        return locator.textContent();
     }
 
     async isDialogVisible({testId}: {testId: string}) {
-        await this.page.waitForTimeout(1000);
-        const dialog = this.page.getByTestId(getTestId(testId, DialogTestIdModifiers.MODAL_WRAPPER));
+        await this.waitForTimeout(1000);
+        const dialog = await this.getByTestId(getTestId(testId, DialogTestIdModifiers.MODAL_WRAPPER));
         return dialog.isVisible();
     }
 }

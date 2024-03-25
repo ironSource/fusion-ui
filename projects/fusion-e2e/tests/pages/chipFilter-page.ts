@@ -17,7 +17,7 @@ export class ChipFilterPage extends BasePage {
         };
 
         super(chipFilterProps);
-        this.component = new ChipFilterComponent(page);
+        this.component = new ChipFilterComponent(page, this.testId);
     }
 
     async waitForComponent() {
@@ -35,8 +35,8 @@ export class ChipFilterPage extends BasePage {
         await this.page.waitForSelector(this.loadedPageSelector);
     }
 
-    click() {
-        return this.component.click({testId: this.testId});
+    clickChipFilter() {
+        return this.component.clickChipFilter({testId: this.testId});
     }
 
     getChipFilterLabel() {

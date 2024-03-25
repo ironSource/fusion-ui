@@ -17,7 +17,7 @@ export class DropdownPage extends BasePage {
         };
 
         super(dropdownProps);
-        this.component = new DropdownComponent(page);
+        this.component = new DropdownComponent(page, this.testId);
     }
 
     async selectDropdownOptionByIndex(index: number) {
@@ -78,7 +78,7 @@ export class DropdownPage extends BasePage {
     }
 
     isDisabled() {
-        return this.component.isDisabled({testId: this.testId});
+        return this.component.isDropdownDisabled({testId: this.testId});
     }
 
     async clearAllOptions() {
