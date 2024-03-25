@@ -1,6 +1,7 @@
 import {Directive, Input} from '@angular/core';
 import {InputConfiguration, InputIconData} from './input-entities';
 import {InputOptions, DEFAULT_INPUT_OPTIONS} from './input.options';
+import {BehaviorSubject} from 'rxjs';
 
 @Directive()
 export abstract class InputParameters {

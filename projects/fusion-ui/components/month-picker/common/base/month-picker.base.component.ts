@@ -36,7 +36,7 @@ export class MonthPickerBaseComponent {
         this.propagateTouched();
     }
 
-    onSelectedChanged(selected: MonthPicker) {
+    selectedChanged(selected: MonthPicker) {
         this.propagateTouched();
         this.selected = selected;
         this.propagateChange(this.selected);

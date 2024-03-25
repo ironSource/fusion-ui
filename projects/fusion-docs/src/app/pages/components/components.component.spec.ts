@@ -19,7 +19,7 @@ describe('ComponentsComponent', () => {
                             children: []
                         }
                     ],
-                    {relativeLinkResolution: 'legacy'}
+                    {}
                 )
             ]
         }).compileComponents();

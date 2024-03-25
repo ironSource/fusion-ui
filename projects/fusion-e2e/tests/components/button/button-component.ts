@@ -14,6 +14,11 @@ export class ButtonComponent {
         await this.page.waitForSelector(loadedPageSelector);
     }
 
+    async waitForToggleButtonComponent({testId}: {testId: string}) {
+        const loadedPageSelector = getTestIdSelector(testId);
+        await this.page.waitForSelector(loadedPageSelector);
+    }
+
     async clickOnButton({testId}: {testId: string}) {
         const loadedPageSelector = getTestIdSelector(getTestId(testId, ButtonTestIdModifiers.BUTTON));
 
@@ -43,5 +48,9 @@ export class ButtonComponent {
 
     isButtonDisabled({testId}: {testId: string}) {
         return this.page.getByTestId(testId).isDisabled();
+    }
+
+    getToggleButtonFirstLabel({testId}: {testId: string}) {
+        return this.page.getByTestId(testId).textContent();
     }
 }

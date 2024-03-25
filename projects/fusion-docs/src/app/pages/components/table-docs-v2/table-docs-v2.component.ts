@@ -737,8 +737,8 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
         }
     }
 
-    onSelectedChanged(selectedRows) {
-        console.log('onSelectedChanged:', selectedRows);
+    selectedChanged(selectedRows) {
+        console.log('selectedChanged:', selectedRows);
         this.rowsBig = this.rowsBig.map(item => {
             item.checkbox = selectedRows.some(row => row.id === item.id);
             return item;

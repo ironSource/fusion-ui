@@ -612,7 +612,7 @@ document.body.appendChild(tagsInput);'
         class="tag-filter"
         *ngFor="let option of tagsFilters"
         [configuration]="option"
-        (onSelectedChange)="onTagToggle($event)"
+        (selectedChange)="onTagToggle($event)"
         >{ { option.title } }
     </fusion-tag>
 </div>
@@ -872,7 +872,7 @@ document.addEventListener("DOMContentLoaded", onLoad, false);'
                     class="tag-filter"
                     *ngFor="let option of tagsFilters"
                     [configuration]="option"
-                    (onSelectedChange)="onTagToggle($event)"
+                    (selectedChange)="onTagToggle($event)"
                     >{{ option.title }}
                 </fusion-tag>
             </div>

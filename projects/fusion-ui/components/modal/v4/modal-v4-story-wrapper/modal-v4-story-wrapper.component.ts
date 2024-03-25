@@ -2,14 +2,14 @@ import {AfterViewInit, ChangeDetectionStrategy, Component, Input} from '@angular
 import {CommonModule} from '@angular/common';
 import {ButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
 import {ModalV4Component} from '../modal-v4.component';
-import {TeleportingDirective} from '@ironsource/fusion-ui/directives/teleporting';
+import {TeleportingDirective, TeleportingModule} from '@ironsource/fusion-ui/directives/teleporting';
 import {DialogTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {TestIdsService} from '@ironsource/fusion-ui';
 
 @Component({
     selector: 'fusion-modal-story-wrapper',
     standalone: true,
-    imports: [CommonModule, ButtonComponent, ModalV4Component, TeleportingDirective],
+    imports: [CommonModule, ButtonComponent, ModalV4Component, TeleportingModule],
     templateUrl: './modal-v4-story-wrapper.component.html',
     styleUrls: ['./modal-v4-story-wrapper.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush

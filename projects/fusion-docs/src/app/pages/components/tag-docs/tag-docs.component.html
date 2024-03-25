@@ -718,7 +718,7 @@ onBulkInsert(value: string[]) {
     <fusion-tag *ngFor="let option of tagsFilters"
                 [id]="option.id"
                 [selected]="option.selected"
-                (onSelectedChange)="onTagToggle($event)">
+                (selectedChange)="onTagToggle($event)">
                 {option.title}
     </fusion-tag>
 </div>
@@ -738,7 +738,7 @@ onBulkInsert(value: string[]) {
                         *ngFor="let option of tagsFilters"
                         [id]="option.id"
                         [selected]="option.selected"
-                        (onSelectedChange)="onTagToggle($event)"
+                        (selectedChange)="onTagToggle($event)"
                         >{{ option.title }}
                     </fusion-tag>
                 </div>

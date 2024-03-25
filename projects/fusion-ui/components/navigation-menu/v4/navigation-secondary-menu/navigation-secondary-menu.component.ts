@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
@@ -17,7 +17,7 @@ import {TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/b
     styleUrls: ['./navigation-secondary-menu.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NavigationSecondaryMenuComponent implements OnInit {
+export class NavigationSecondaryMenuComponent {
     @Input() set menuItems(value: MenuItem[]) {
         if (Array.isArray(value)) {
             this._menuItems = [...value];
@@ -40,8 +40,6 @@ export class NavigationSecondaryMenuComponent implements OnInit {
     private _menuItems: secondaryMenuItem[] = [];
 
     constructor() {}
-
-    ngOnInit(): void {}
 
     onMenuItemClicked($event: MouseEvent, menuItem: secondaryMenuItem) {
         if ($event && $event.metaKey) {

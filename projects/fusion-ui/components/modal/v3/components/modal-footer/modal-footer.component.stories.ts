@@ -8,8 +8,8 @@ import {ButtonModule} from '@ironsource/fusion-ui/components/button/v3';
 import {ModalFooterComponent} from '@ironsource/fusion-ui/components/modal';
 
 const actionsData = {
-    onCloseButtonClicked: action('onCloseButtonClicked'),
-    onSubmit: action('onSubmit')
+    closeButtonClicked: action('closeButtonClicked'),
+    primaryButtonClicked: action('primaryButtonClicked')
 };
 
 export default {
@@ -52,15 +52,15 @@ export default {
 } as Meta<ModalFooterComponent>;
 
 const ModalFooterTemplate: StoryFn<ModalFooterComponent> = (args: ModalFooterComponent) => ({
-    props: {...args, onCloseButtonClicked: actionsData.onCloseButtonClicked},
+    props: {...args, closeButtonClicked: actionsData.closeButtonClicked},
     template: `<div style="width: 500px; background-color: #ffffff;">
     <fusion-modal-footer class="{{footerSizeClassName}} {{footerAlignmentClassName}}"
         [submitButtonPending]="submitButtonPending"
         [submitButton]="submitButton"
         [cancelButton]="cancelButton"
         [error]="error"
-        (onCloseButtonClicked)="onCloseButtonClicked($event)"
-        (onSubmit)="onSubmit($event)"
+        (closeButtonClicked)="closeButtonClicked($event)"
+        (primaryButtonClicked)="primaryButtonClicked($event)"
       ></fusion-modal-footer>
 </div>`
 });

@@ -1,6 +1,8 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {DatepickerComponent} from './datepicker.component';
+import {DaterangeModule} from "@ironsource/fusion-ui/components/daterange/v3";
+import {ReactiveFormsModule} from "@angular/forms";
 
 describe('DatepickerComponent', () => {
     let component: DatepickerComponent;
@@ -8,7 +10,8 @@ describe('DatepickerComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [DatepickerComponent]
+            declarations: [DatepickerComponent],
+            imports: [DaterangeModule, ReactiveFormsModule]
         }).compileComponents();
     });
 

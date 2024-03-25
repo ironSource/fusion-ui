@@ -9,12 +9,6 @@ LIGHTGREEN='\033[1;32m'
 
 echo -e "${LIGHTGREEN}== Start build styles ${NOCOLOR}"
 
-# run css-bundle
-npm run styles
-
-# compile common fusion.theme.scss
-sass dist/fusion-ui/fusion.theme.scss dist/fusion-ui/fusion.theme.css -s compressed
-
 # create style folder on dist/fusion-ui
 mkdir -p dist/fusion-ui/style
 
