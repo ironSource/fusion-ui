@@ -62,6 +62,7 @@ export class BaseElement {
 
         return isEnabled;
     }
+
     async isAttached(): Promise<any> {
         let isAttached: any;
 
@@ -126,6 +127,7 @@ export class BaseElement {
             await this.page.waitForURL(url);
         });
     }
+
     async waitForLoadState(state: `load` | `domcontentloaded` | `networkidle` = `load`) {
         await test.step(`Wait for load state: ${state}`, async () => {
             await this.page.waitForLoadState(state);
@@ -141,6 +143,12 @@ export class BaseElement {
     async reload(): Promise<void> {
         await test.step(`Reload page`, async () => {
             await this.page.reload();
+        });
+    }
+
+    async getByTestId(testId: string): Promise<Locator> {
+        return test.step(`Get element by test id: ${testId}`, async () => {
+            return this.page.getByTestId(testId);
         });
     }
 
