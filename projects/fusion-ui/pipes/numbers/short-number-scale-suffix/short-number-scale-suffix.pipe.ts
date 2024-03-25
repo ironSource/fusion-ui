@@ -13,8 +13,8 @@ import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
  * for example 500000 to 500 K
  */
 export class ShortNumberScaleSuffixPipe implements PipeTransform {
-    transform(value: number, options?: {noSeparateBySpace?: boolean; precision?: number}): string {
-        if (value < 1) {
+    transform(value: number, options?: {noSeparateBySpace?: boolean; precision?: number; intBase?: number}): string {
+        if (value < options?.intBase || 1) {
             return value.toFixed(2);
         }
 
