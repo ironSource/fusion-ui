@@ -12,8 +12,10 @@ export interface ChartBaseDatasetOptions {
     pieOptions: ChartPieOptions;
 }
 interface ChartLineOptions {
-    fill: boolean;
-    hidden: boolean;
+    fill?: boolean;
+    hidden?: boolean;
+    tension?: number;
+    borderWidth?: number;
     pointBorderColor?: string;
     pointBackgroundColor?: string;
 }

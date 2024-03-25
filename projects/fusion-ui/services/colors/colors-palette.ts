@@ -40,12 +40,12 @@ export const COLORS_PALETTE = {
         '#a718a7',
         '#f62f91'
     ],
-    style_v4: ['#0091FF', '#8E4EC6', '#F68336', '#2DA6C0', '#E2D269']
+    style_v4: ['#80BCFE', '#9999FF', '#5883E4', '#80CBC4', '#FFC670']
 };
 
 export const PIE_COLORS_PALETTE = {
     default: ['#005be2', '#3083ff', '#68a5ff', '#96c0ff', '#c9dfff', '#e2eeff'],
-    style_v4: ['#0091FF', '#8E4EC6', '#F68336', '#2DA6C0', '#E2D269']
+    style_v4: ['#80BCFE', '#9999FF', '#5883E4', '#80CBC4', '#FFC670']
 };
 
 // taken from https://www.w3schools.com/colors/colors_names.asp
