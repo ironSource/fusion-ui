@@ -3,8 +3,22 @@ import {getTestId, getTestIdSelector} from '../../global/utils';
 import {BaseComponent} from '../base-component';
 
 export class AlertComponent extends BaseComponent {
+    private wrapperComponent: BaseComponent;
+    private messageComponent: BaseComponent;
+    private titleComponent: BaseComponent;
+    private actionButtonComponent: BaseComponent;
+    private closeButtonComponent: BaseComponent;
+
     constructor(page, selector: string) {
         super(page, selector);
+        this.wrapperComponent = new BaseComponent(page, getTestIdSelector(getTestId(this.selector, AlertTestIdModifiers.WRAPPER)));
+        this.messageComponent = new BaseComponent(page, getTestIdSelector(getTestId(this.selector, AlertTestIdModifiers.MESSAGE)));
+        this.titleComponent = new BaseComponent(page, getTestIdSelector(getTestId(this.selector, AlertTestIdModifiers.TITLE)));
+        this.actionButtonComponent = new BaseComponent(
+            page,
+            getTestIdSelector(getTestId(this.selector, AlertTestIdModifiers.ACTION_BUTTON))
+        );
+        this.closeButtonComponent = new BaseComponent(page, getTestIdSelector(getTestId(this.selector, AlertTestIdModifiers.CLOSE_BUTTON)));
     }
 
     async waitForComponent({testId}: {testId: string}) {
@@ -12,39 +26,32 @@ export class AlertComponent extends BaseComponent {
         await this.waitForSelector(loadedPageSelector);
     }
 
-    async getAlertText({testId}: {testId: string}) {
-        const element = await this.getByTestId(getTestId(testId, AlertTestIdModifiers.MESSAGE));
-        return element.textContent();
+    async getAlertText() {
+        return this.messageComponent.textContent();
     }
 
-    async getAlertTitle({testId}: {testId: string}) {
-        const element = await this.getByTestId(getTestId(testId, AlertTestIdModifiers.TITLE));
-        return element.textContent();
+    async getAlertTitle() {
+        return this.titleComponent.textContent();
     }
 
-    async getActionButtonText({testId}: {testId: string}) {
-        const button = await this.getByTestId(getTestId(testId, AlertTestIdModifiers.ACTION_BUTTON));
-        return button.textContent();
+    async getActionButtonText() {
+        return this.actionButtonComponent.textContent();
     }
 
-    async clickOnActionButton({testId}: {testId: string}) {
-        const button = await this.getByTestId(getTestId(testId, AlertTestIdModifiers.ACTION_BUTTON));
-        await button.click();
+    async clickOnActionButton() {
+        await this.actionButtonComponent.click();
     }
 
-    async closeAlert({testId}: {testId: string}) {
-        const element = await this.getByTestId(getTestId(testId, AlertTestIdModifiers.CLOSE_BUTTON));
-        await element.click();
+    async closeAlert() {
+        await this.closeButtonComponent.click();
     }
 
-    async isAlertVisible({testId}: {testId: string}) {
-        const element = await this.getByTestId(getTestId(testId, AlertTestIdModifiers.WRAPPER));
-        const alertSelector = await element.count();
+    async isAlertVisible() {
+        const alertSelector = await this.wrapperComponent.count();
         return alertSelector > 0;
     }
 
-    async getAlertIconType({testId}: {testId: string}) {
-        const element = await this.getByTestId(getTestId(testId, AlertTestIdModifiers.WRAPPER));
-        return element.getAttribute('class');
+    async getAlertIconType() {
+        return this.wrapperComponent.getAttribute('class');
     }
 }

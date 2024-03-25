@@ -17,6 +17,16 @@ export class BaseElement {
         });
     }
 
+    async count(): Promise<number> {
+        let count: number;
+
+        await test.step(`Count: ${this.selector}`, async () => {
+            count = await this.page.locator(this.selector).count();
+        });
+
+        return count;
+    }
+
     async hover(): Promise<void> {
         await test.step(`Hover on: ${this.selector}`, async () => {
             await this.page.hover(this.selector);
@@ -138,6 +148,16 @@ export class BaseElement {
         await test.step(`Wait for selector: ${selectorName}`, async () => {
             await this.page.waitForSelector(selectorName);
         });
+    }
+
+    async textContent(): Promise<string> {
+        let text: string;
+
+        await test.step(`Get text content of: ${this.selector}`, async () => {
+            text = await this.locator.textContent();
+        });
+
+        return text;
     }
 
     async reload(): Promise<void> {
