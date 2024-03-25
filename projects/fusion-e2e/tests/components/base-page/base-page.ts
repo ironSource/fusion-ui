@@ -2,7 +2,7 @@ import {type Page} from '@playwright/test';
 import {ComponentProps, GotoParams} from './types';
 import {createStoryBookComponentPath, getTestIdSelector} from '../../global/utils';
 
-export class ComponentBasePage {
+export class BasePage {
     readonly page: Page;
     readonly testId: string;
     readonly componentId: string;

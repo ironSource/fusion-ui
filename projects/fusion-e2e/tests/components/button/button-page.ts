@@ -1,10 +1,10 @@
 import {Page} from '@playwright/test';
-import {ComponentBasePage} from '../base-page/component-base-page';
+import {BasePage} from '../base-page/base-page';
 import {ButtonComponent} from './button-component';
 import {ComponentProps} from '../base-page/types';
 import {buttonStoryId, defaultTestId, loadedPageSelector} from './consts';
 
-export class ButtonPage extends ComponentBasePage {
+export class ButtonPage extends BasePage {
     readonly component: ButtonComponent;
 
     constructor(page: Page) {
@@ -16,7 +16,7 @@ export class ButtonPage extends ComponentBasePage {
         };
 
         super(buttonProps);
-        this.component = new ButtonComponent(page);
+        this.component = new ButtonComponent(page, this.testId);
     }
 
     async waitForComponent() {

@@ -3,9 +3,9 @@ import {DialogComponent} from './dialog-component';
 import {dialogStoryId, defaultTestId, loadedPageSelector} from './consts';
 import {ComponentProps, GotoParams} from '../base-page/types';
 import {createStoryBookComponentPath} from '../../global/utils';
-import {ComponentBasePage} from '../base-page/component-base-page';
+import {BasePage} from '../base-page/base-page';
 
-export class DialogPage extends ComponentBasePage {
+export class DialogPage extends BasePage {
     readonly component: DialogComponent;
 
     constructor(page: Page) {

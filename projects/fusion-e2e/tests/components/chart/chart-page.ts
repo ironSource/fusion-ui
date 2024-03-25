@@ -1,11 +1,11 @@
 import {Page} from '@playwright/test';
 import {chartStoryId, labelTestId, loadedPageSelector} from './consts';
-import {ComponentBasePage} from '../base-page/component-base-page';
+import {BasePage} from '../base-page/base-page';
 import {ComponentProps, GotoParams} from '../base-page/types';
 import {ChartComponent} from './chart-component';
 import {createStoryBookComponentPath} from '../../global/utils';
 
-export class ChartPage extends ComponentBasePage {
+export class ChartPage extends BasePage {
     readonly component: ChartComponent;
 
     constructor(page: Page) {

@@ -1,10 +1,10 @@
 import {Page} from '@playwright/test';
 import {InputsComponent} from './inputs-component';
 import {defaultTestId, inputsStoryId, loadedPageSelector} from './consts';
-import {ComponentBasePage} from '../../base-page/component-base-page';
+import {BasePage} from '../../base-page/base-page';
 import {ComponentProps} from '../../base-page/types';
 
-export class InputsPage extends ComponentBasePage {
+export class InputsPage extends BasePage {
     readonly component: InputsComponent;
 
     constructor(page: Page) {

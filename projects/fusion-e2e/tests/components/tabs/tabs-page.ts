@@ -1,10 +1,10 @@
 import {Page} from '@playwright/test';
 import {tabsStoryId, loadedPageSelector, wrapperTestId} from './consts';
-import {ComponentBasePage} from '../base-page/component-base-page';
+import {BasePage} from '../base-page/base-page';
 import {ComponentProps} from '../base-page/types';
 import {TabsComponent} from './tabs-component';
 
-export class TabsPage extends ComponentBasePage {
+export class TabsPage extends BasePage {
     readonly component: TabsComponent;
 
     constructor(page: Page) {

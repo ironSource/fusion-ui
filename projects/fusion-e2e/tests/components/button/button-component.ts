@@ -1,8 +1,8 @@
 import {getTestId, getTestIdSelector} from '../../global/utils';
 import {ButtonTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {BaseComponent} from '../base-component';
+import {Clickable} from '../../behavior';
 
-export class ButtonComponent extends BaseComponent {
+export class ButtonComponent extends Clickable {
     constructor(page, selector: string) {
         super(page, selector);
     }

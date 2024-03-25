@@ -1,11 +1,11 @@
 import {Page} from '@playwright/test';
 import {chipFilterStoryId, defaultTestId, loadedPageSelector} from './consts';
-import {ComponentBasePage} from '../base-page/component-base-page';
+import {BasePage} from '../base-page/base-page';
 import {ComponentProps, GotoParams} from '../base-page/types';
 import {ChipFilterComponent} from './chipFilter-component';
 import {createStoryBookComponentPath} from '../../global/utils';
 
-export class ChipFilterPage extends ComponentBasePage {
+export class ChipFilterPage extends BasePage {
     readonly component: ChipFilterComponent;
 
     constructor(page: Page) {
