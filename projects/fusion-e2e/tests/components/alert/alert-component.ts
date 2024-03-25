@@ -2,7 +2,6 @@
 import {AlertTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {getTestId, getTestIdSelector} from '../../global/utils';
 import {BaseComponent} from '../base-component';
-import {BaseElement} from '../../behavior';
 
 export class AlertComponent extends BaseComponent {
     constructor(page, selector: string) {
@@ -30,7 +29,7 @@ export class AlertComponent extends BaseComponent {
     }
 
     async clickOnActionButton({testId}: {testId: string}) {
-        const actionButton = new BaseElement(this.page, getTestId(testId, AlertTestIdModifiers.ACTION_BUTTON));
+        const actionButton = new AlertComponent(this.page, getTestId(testId, AlertTestIdModifiers.ACTION_BUTTON));
         await actionButton.click();
     }
 
