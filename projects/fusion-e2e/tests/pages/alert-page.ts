@@ -20,27 +20,27 @@ export class AlertPage extends BasePage {
     }
 
     getAlertText() {
-        return this.component.getAlertText({testId: this.testId});
+        return this.component.getAlertText();
     }
 
     getAlertTitle() {
-        return this.component.getAlertTitle({testId: this.testId});
+        return this.component.getAlertTitle();
     }
 
     async clickOnActionButton() {
-        await this.component.clickOnActionButton({testId: this.testId});
+        await this.component.clickOnActionButton();
     }
 
     getActionButtonText() {
-        return this.component.getActionButtonText({testId: this.testId});
+        return this.component.getActionButtonText();
     }
 
     async closeAlert() {
-        await this.component.closeAlert({testId: this.testId});
+        await this.component.closeAlert();
     }
 
     isAlertVisible() {
-        return this.component.isAlertVisible({testId: this.testId});
+        return this.component.isAlertVisible();
     }
 
     async waitForComponent() {
@@ -48,6 +48,6 @@ export class AlertPage extends BasePage {
     }
 
     getAlertIconType() {
-        return this.component.getAlertIconType({testId: this.testId});
+        return this.component.getAlertIconType();
     }
 }
