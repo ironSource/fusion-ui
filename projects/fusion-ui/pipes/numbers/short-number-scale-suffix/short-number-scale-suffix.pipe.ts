@@ -14,7 +14,8 @@ import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
  */
 export class ShortNumberScaleSuffixPipe implements PipeTransform {
     transform(value: number, options?: {noSeparateBySpace?: boolean; precision?: number; intBase?: number}): string {
-        if (value < options?.intBase || 1) {
+        const baseNumber = options?.intBase ? options.intBase : 1;
+        if (value < baseNumber) {
             return value.toFixed(2);
         }
 
