@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [7.0.2](https://github.com/ironSource/fusion-ui/compare/v7.0.1...v7.0.2) (2024-03-25)
+
+
+### Bug Fixes
+
+* **release/7.x.x:** fix ShortNumberScaleSuffixPipe to support intBase ([3a5d860](https://github.com/ironSource/fusion-ui/commit/3a5d860e8742ff797c5a5647250cc49517a96c3d))
+* **release/7.x.x:** fix ShortNumberScaleSuffixPipe to support intBase ([edbdb53](https://github.com/ironSource/fusion-ui/commit/edbdb53dd7bb8bb98f72ae0a730224ed0fbc6829))
+
 ### [7.0.1](https://github.com/ironSource/fusion-ui/compare/v7.0.0...v7.0.1) (2024-03-24)
 
 ## [7.0.0](https://github.com/ironSource/fusion-ui/compare/v6.5.4...v7.0.0) (2024-03-20)
