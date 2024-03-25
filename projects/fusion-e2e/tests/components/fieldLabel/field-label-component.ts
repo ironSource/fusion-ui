@@ -1,24 +1,22 @@
 import {getTestId} from '../../global/utils';
-import {Page} from '@playwright/test';
 import {FieldLabelTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {BaseComponent} from '../base-component';
 
-export class FieldLabelComponent {
-    readonly page;
-
-    constructor(page: Page) {
-        this.page = page;
+export class FieldLabelComponent extends BaseComponent {
+    constructor(page, selector: string) {
+        super(page, selector);
     }
 
-    getLabelText({testId}: {testId: string}) {
-        return this.page.getByTestId(getTestId(testId, FieldLabelTestIdModifiers.TEXT)).textContent();
+    async getLabelText({testId}: {testId: string}) {
+        return (await this.getByTestId(getTestId(testId, FieldLabelTestIdModifiers.TEXT))).textContent();
     }
 
-    isMandatory({testId}: {testId: string}) {
-        return this.page.getByTestId(getTestId(testId, FieldLabelTestIdModifiers.MANDATORY)).isVisible();
+    async isMandatory({testId}: {testId: string}) {
+        return (await this.getByTestId(getTestId(testId, FieldLabelTestIdModifiers.MANDATORY))).isVisible();
     }
 
     async getHelpIconText({testId}: {testId: string}) {
-        const helpIconSelector = await this.page.getByTestId(getTestId(testId, FieldLabelTestIdModifiers.TOOLTIP));
+        const helpIconSelector = await this.getByTestId(getTestId(testId, FieldLabelTestIdModifiers.TOOLTIP));
         await helpIconSelector.hover();
         return helpIconSelector.getAttribute('text');
     }

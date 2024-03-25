@@ -23,13 +23,13 @@ export class AlertComponent extends BaseComponent {
     }
 
     async getActionButtonText({testId}: {testId: string}) {
-        const element = await this.getByTestId(getTestId(testId, AlertTestIdModifiers.ACTION_BUTTON));
-        return element.textContent();
+        const button = await this.getByTestId(getTestId(testId, AlertTestIdModifiers.ACTION_BUTTON));
+        return button.textContent();
     }
 
     async clickOnActionButton({testId}: {testId: string}) {
-        const actionButton = new AlertComponent(this.page, getTestId(testId, AlertTestIdModifiers.ACTION_BUTTON));
-        await actionButton.click();
+        const button = await this.getByTestId(getTestId(testId, AlertTestIdModifiers.ACTION_BUTTON));
+        await button.click();
     }
 
     async closeAlert({testId}: {testId: string}) {

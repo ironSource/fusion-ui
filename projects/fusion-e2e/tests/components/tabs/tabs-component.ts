@@ -1,38 +1,36 @@
-import {Page} from '@playwright/test';
 import {getTestId, getTestIdSelector} from '../../global/utils';
 import {TabsSelectionParams} from './types';
 import {TabsTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {defaultTestId} from './consts';
+import {BaseComponent} from '../base-component';
 
-export class TabsComponent {
-    readonly page: Page;
-
-    constructor(page: Page) {
-        this.page = page;
+export class TabsComponent extends BaseComponent {
+    constructor(page, selector: string) {
+        super(page, selector);
     }
 
     async waitForComponent({testId}: {testId: string}) {
         const loadedPageSelector = getTestIdSelector(testId);
-        await this.page.waitForSelector(loadedPageSelector);
+        await this.waitForSelector(loadedPageSelector);
     }
 
-    getSelectedTabText({testId}: {testId: string}) {
-        return this.page.getByTestId(getTestId(testId, TabsTestIdModifiers.WRAPPER)).locator('.tab-item--active').textContent();
+    async getSelectedTabText({testId}: {testId: string}) {
+        return (await this.getByTestId(getTestId(testId, TabsTestIdModifiers.WRAPPER))).locator('.tab-item--active').textContent();
     }
 
     async selectTab({testId, tabName}: TabsSelectionParams) {
         const tabIndex = await this.getTabIndex({testId, tabName});
-        await this.page.getByTestId(getTestId(testId, `${TabsTestIdModifiers.TAB}-${tabIndex + 1}`)).click();
+        await (await this.getByTestId(getTestId(testId, `${TabsTestIdModifiers.TAB}-${tabIndex + 1}`))).click();
     }
 
     private async getTabIndex({testId, tabName}: TabsSelectionParams) {
-        const tabs = await this.page.getByTestId(getTestId(testId, TabsTestIdModifiers.WRAPPER)).locator('.tab-item').allTextContents();
+        const tabs = await (await this.getByTestId(getTestId(testId, TabsTestIdModifiers.WRAPPER))).locator('.tab-item').allTextContents();
         return tabs.indexOf(tabName);
     }
 
     async isTabDisabled() {
         const disabledTestId = getTestId(defaultTestId, TabsTestIdModifiers.TAB_DISABLED);
         await this.waitForComponent({testId: disabledTestId});
-        return this.page.getByTestId(disabledTestId).isDisabled();
+        return (await this.getByTestId(disabledTestId)).isDisabled();
     }
 }

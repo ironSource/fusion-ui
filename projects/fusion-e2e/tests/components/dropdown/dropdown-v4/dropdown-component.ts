@@ -51,15 +51,15 @@ export class DropdownComponent extends BaseDropdownComponent {
 
     async searchForItem({testId, searchTerm}: SearchItem) {
         await this.openDropdownComponent({testId});
-        const inputElement = await this.page.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD)).last();
+        const inputElement = await (await this.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD))).last();
         await inputElement.fill(searchTerm);
-        const listElement = await this.page.getByTestId(getTestId(testId, DropdownTestIdModifiers.LIST_CONTAINER));
+        const listElement = await this.getByTestId(getTestId(testId, DropdownTestIdModifiers.LIST_CONTAINER));
         const firstItem = await listElement.locator('fusion-dropdown-options-list > li').first();
         return firstItem.textContent();
     }
 
     async isErrorText({testId}: {testId: string}) {
-        const errorTextLocator = await this.page.getByTestId(getTestId(testId, FieldHelpTextTestIdModifiers.TEXT));
+        const errorTextLocator = await this.getByTestId(getTestId(testId, FieldHelpTextTestIdModifiers.TEXT));
         const count = await errorTextLocator.count();
         return count > 0;
     }

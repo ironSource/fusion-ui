@@ -1,21 +1,19 @@
-import {Page} from '@playwright/test';
 import {getTestId, getTestIdSelector} from '../../global/utils';
 import {TrendIndicatorTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {BaseComponent} from '../base-component';
 
-export class TrendIndicatorComponent {
-    readonly page: Page;
-
-    constructor(page: Page) {
-        this.page = page;
+export class TrendIndicatorComponent extends BaseComponent {
+    constructor(page, selector: string) {
+        super(page, selector);
     }
 
     async waitForComponent({testId}: {testId: string}) {
         const loadedPageSelector = getTestIdSelector(testId);
-        await this.page.waitForSelector(loadedPageSelector);
+        await this.waitForSelector(loadedPageSelector);
     }
 
-    getTrendIndicatorValue({testId}: {testId: string}) {
-        const locator = this.page.getByTestId(getTestId(testId, TrendIndicatorTestIdModifiers.VALUE));
-        return locator.textContent();
+    async getTrendIndicatorValue({testId}: {testId: string}) {
+        const locator = this.getByTestId(getTestId(testId, TrendIndicatorTestIdModifiers.VALUE));
+        return (await locator).textContent();
     }
 }
