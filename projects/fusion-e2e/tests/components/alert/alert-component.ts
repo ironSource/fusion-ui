@@ -1,24 +1,26 @@
 import {AlertTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {getTestId, getTestIdSelector} from '../../global/utils';
 import {BaseComponent} from '../base-component';
+import {BaseElement} from '../../behavior';
+import {ButtonComponent} from '../button/button-component';
 
 export class AlertComponent extends BaseComponent {
-    private wrapperComponent: BaseComponent;
-    private messageComponent: BaseComponent;
-    private titleComponent: BaseComponent;
-    private actionButtonComponent: BaseComponent;
-    private closeButtonComponent: BaseComponent;
+    private wrapperElement: BaseElement;
+    private messageElement: BaseElement;
+    private titleElement: BaseElement;
+    private actionButtonElement: ButtonComponent;
+    private closeButtonElement: ButtonComponent;
 
     constructor(page, selector: string) {
         super(page, selector);
-        this.wrapperComponent = new BaseComponent(page, getTestIdSelector(getTestId(this.selector, AlertTestIdModifiers.WRAPPER)));
-        this.messageComponent = new BaseComponent(page, getTestIdSelector(getTestId(this.selector, AlertTestIdModifiers.MESSAGE)));
-        this.titleComponent = new BaseComponent(page, getTestIdSelector(getTestId(this.selector, AlertTestIdModifiers.TITLE)));
-        this.actionButtonComponent = new BaseComponent(
+        this.wrapperElement = new BaseElement(page, getTestIdSelector(getTestId(this.selector, AlertTestIdModifiers.WRAPPER)));
+        this.messageElement = new BaseElement(page, getTestIdSelector(getTestId(this.selector, AlertTestIdModifiers.MESSAGE)));
+        this.titleElement = new BaseElement(page, getTestIdSelector(getTestId(this.selector, AlertTestIdModifiers.TITLE)));
+        this.actionButtonElement = new ButtonComponent(
             page,
             getTestIdSelector(getTestId(this.selector, AlertTestIdModifiers.ACTION_BUTTON))
         );
-        this.closeButtonComponent = new BaseComponent(page, getTestIdSelector(getTestId(this.selector, AlertTestIdModifiers.CLOSE_BUTTON)));
+        this.closeButtonElement = new ButtonComponent(page, getTestIdSelector(getTestId(this.selector, AlertTestIdModifiers.CLOSE_BUTTON)));
     }
 
     async waitForComponent({testId}: {testId: string}) {
@@ -27,31 +29,31 @@ export class AlertComponent extends BaseComponent {
     }
 
     async getAlertText() {
-        return this.messageComponent.textContent();
+        return this.messageElement.textContent();
     }
 
     async getAlertTitle() {
-        return this.titleComponent.textContent();
+        return this.titleElement.textContent();
     }
 
     async getActionButtonText() {
-        return this.actionButtonComponent.textContent();
+        return this.actionButtonElement.textContent();
     }
 
     async clickOnActionButton() {
-        await this.actionButtonComponent.click();
+        await this.actionButtonElement.click();
     }
 
     async closeAlert() {
-        await this.closeButtonComponent.click();
+        await this.closeButtonElement.click();
     }
 
     async isAlertVisible() {
-        const alertSelector = await this.wrapperComponent.count();
+        const alertSelector = await this.wrapperElement.count();
         return alertSelector > 0;
     }
 
     async getAlertIconType() {
-        return this.wrapperComponent.getAttribute('class');
+        return this.wrapperElement.getAttribute('class');
     }
 }
