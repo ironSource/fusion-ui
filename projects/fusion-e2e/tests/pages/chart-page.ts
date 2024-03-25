@@ -1,9 +1,9 @@
 import {Page} from '@playwright/test';
-import {chartStoryId, labelTestId, loadedPageSelector} from './consts';
-import {BasePage} from '../base-page/base-page';
-import {ComponentProps, GotoParams} from '../base-page/types';
-import {ChartComponent} from './chart-component';
-import {createStoryBookComponentPath} from '../../global/utils';
+import {chartStoryId, labelTestId, loadedPageSelector} from '../components/chart/consts';
+import {BasePage} from './base-page/base-page';
+import {ComponentProps, GotoParams} from './base-page/types';
+import {ChartComponent} from '../components/chart/chart-component';
+import {createStoryBookComponentPath} from '../global/utils';
 
 export class ChartPage extends BasePage {
     readonly component: ChartComponent;

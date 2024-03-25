@@ -1,9 +1,9 @@
 import {Page} from '@playwright/test';
-import {tooltipStoryId, defaultTestId, loadedPageSelector} from './consts';
-import {BasePage} from '../base-page/base-page';
-import {ComponentProps, GotoParams} from '../base-page/types';
-import {TooltipComponent} from './tooltip-component';
-import {createStoryBookComponentPath, getTestId} from '../../global/utils';
+import {tooltipStoryId, defaultTestId, loadedPageSelector} from '../components/tooltip/consts';
+import {BasePage} from './base-page/base-page';
+import {ComponentProps, GotoParams} from './base-page/types';
+import {TooltipComponent} from '../components/tooltip/tooltip-component';
+import {createStoryBookComponentPath, getTestId} from '../global/utils';
 import {TooltipTestIdModifiers} from '@ironsource/fusion-ui/entities';
 
 export class TooltipPage extends BasePage {

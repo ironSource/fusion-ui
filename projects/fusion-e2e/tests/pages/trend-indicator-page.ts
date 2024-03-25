@@ -1,8 +1,8 @@
-import {TrendIndicatorComponent} from './trendindicator-component';
-import {trendIndicatorStoryId, defaultTestId, loadedPageSelector} from './consts';
+import {TrendIndicatorComponent} from '../components/trendindicator/trendindicator-component';
+import {trendIndicatorStoryId, defaultTestId, loadedPageSelector} from '../components/trendindicator/consts';
 import {Page} from '@playwright/test';
-import {BasePage} from '../base-page/base-page';
-import {ComponentProps} from '../base-page/types';
+import {BasePage} from './base-page/base-page';
+import {ComponentProps} from './base-page/types';
 
 export class TrendIndicatorPage extends BasePage {
     readonly component: TrendIndicatorComponent;

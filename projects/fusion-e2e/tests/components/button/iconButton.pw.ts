@@ -1,5 +1,5 @@
 import {expect, test} from '@playwright/test';
-import {ButtonPage} from './button-page';
+import {ButtonPage} from '../../pages/button-page';
 import {iconButtonStoryId} from './consts';
 
 let buttonPage: ButtonPage;

@@ -1,4 +1,4 @@
-import {AlertPage} from './alert-page';
+import {AlertPage} from '../../pages/alert-page';
 import {expect, test} from '@playwright/test';
 import {alertSeveritiesStoryId} from './consts';
 

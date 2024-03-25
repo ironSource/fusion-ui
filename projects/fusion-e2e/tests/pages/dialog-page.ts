@@ -1,9 +1,9 @@
 import {Page} from '@playwright/test';
-import {DialogComponent} from './dialog-component';
-import {dialogStoryId, defaultTestId, loadedPageSelector} from './consts';
-import {ComponentProps, GotoParams} from '../base-page/types';
-import {createStoryBookComponentPath} from '../../global/utils';
-import {BasePage} from '../base-page/base-page';
+import {DialogComponent} from '../components/dialog/dialog-component';
+import {dialogStoryId, defaultTestId, loadedPageSelector} from '../components/dialog/consts';
+import {ComponentProps, GotoParams} from './base-page/types';
+import {createStoryBookComponentPath} from '../global/utils';
+import {BasePage} from './base-page/base-page';
 
 export class DialogPage extends BasePage {
     readonly component: DialogComponent;

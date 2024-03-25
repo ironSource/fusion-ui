@@ -1,5 +1,5 @@
 import {dialogDeleteStoryId} from './consts';
-import {DialogPage} from './dialog-page';
+import {DialogPage} from '../../pages/dialog-page';
 import {expect, test} from '@playwright/test';
 
 let dialogPage: DialogPage;

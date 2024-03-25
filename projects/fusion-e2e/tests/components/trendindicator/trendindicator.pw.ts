@@ -1,4 +1,4 @@
-import {TrendIndicatorPage} from './trend-indicator-page';
+import {TrendIndicatorPage} from '../../pages/trend-indicator-page';
 import {expect, test} from '@playwright/test';
 
 let trendIndicatorPage: TrendIndicatorPage;

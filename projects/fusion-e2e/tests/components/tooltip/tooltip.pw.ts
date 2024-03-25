@@ -1,5 +1,5 @@
 import {expect, test} from '@playwright/test';
-import {TooltipPage} from './tooltip-page';
+import {TooltipPage} from '../../pages/tooltip-page';
 
 let tooltipPage: TooltipPage;
 

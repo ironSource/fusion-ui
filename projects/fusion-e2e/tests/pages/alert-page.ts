@@ -1,8 +1,8 @@
-import {AlertComponent} from './alert-component';
-import {alertStoryId, defaultTestId, loadedPageSelector} from './consts';
+import {AlertComponent} from '../components/alert/alert-component';
+import {alertStoryId, defaultTestId, loadedPageSelector} from '../components/alert/consts';
 import {Page} from '@playwright/test';
-import {BasePage} from '../base-page/base-page';
-import {ComponentProps} from '../base-page/types';
+import {BasePage} from './base-page/base-page';
+import {ComponentProps} from './base-page/types';
 
 export class AlertPage extends BasePage {
     readonly component: AlertComponent;

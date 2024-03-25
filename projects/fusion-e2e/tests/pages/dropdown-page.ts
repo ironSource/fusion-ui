@@ -1,9 +1,9 @@
 import {Page} from '@playwright/test';
-import {dropdownDefaultStoryId, loadedPageSelector} from './consts';
-import {DropdownComponent} from './dropdown-component';
-import {BasePage} from '../../base-page/base-page';
-import {ComponentProps} from '../../base-page/types';
-import {testIdWithIndex} from '../consts';
+import {dropdownDefaultStoryId, loadedPageSelector} from '../components/dropdown/dropdown-v4/consts';
+import {DropdownComponent} from '../components/dropdown/dropdown-v4/dropdown-component';
+import {BasePage} from './base-page/base-page';
+import {ComponentProps} from './base-page/types';
+import {testIdWithIndex} from '../components/dropdown/consts';
 
 export class DropdownPage extends BasePage {
     readonly component: DropdownComponent;

@@ -1,5 +1,5 @@
 import {expect, test} from '@playwright/test';
-import {DropdownPage} from './dropdown-page';
+import {DropdownPage} from '../../../pages/dropdown-page';
 import {dropdownMultiSelectionDefaultStoryId} from './consts';
 
 const preSelectedArr = [2, 4, 5];

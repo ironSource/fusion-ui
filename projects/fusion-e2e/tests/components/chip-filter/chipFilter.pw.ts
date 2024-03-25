@@ -1,4 +1,4 @@
-import {ChipFilterPage} from './chipFilter-page';
+import {ChipFilterPage} from '../../pages/chipFilter-page';
 import {expect, test} from '@playwright/test';
 
 let chipFilterPage: ChipFilterPage;

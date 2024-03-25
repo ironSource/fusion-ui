@@ -1,5 +1,5 @@
 import {expect, test} from '@playwright/test';
-import {InputsPage} from './inputs-page';
+import {InputsPage} from '../../../pages/inputs-page';
 import {inputsStoryIdDisabled, inputsStoryIdWithHelper, inputsStoryIdWithLengthCounter, inputsStoryIdWithPassword} from './consts';
 // import {FormControl} from "@angular/forms";
 
