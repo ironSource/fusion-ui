@@ -414,7 +414,7 @@ function generateTooltipBodyRow({tooltip, i, body}) {
     const colors = tooltip.labelColors[i];
     const colorDiv = document.createElement('div');
     colorDiv.style.cssText = `
-    background:${colors.backgroundColor};
+    background:${colors.borderColor};
     border-color:${colors.borderColor};
     ${ROUND_INDICATOR_ELEMENT_STYLE}
   `;

@@ -18,6 +18,7 @@ interface ChartLineOptions {
     borderWidth?: number;
     pointBorderColor?: string;
     pointBackgroundColor?: string;
+    pointHoverBackgroundColor?: string;
 }
 interface ChartBarOptions {
     borderRadius?: number;

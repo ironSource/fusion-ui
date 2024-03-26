@@ -17,18 +17,13 @@ import {ColorsService} from '@ironsource/fusion-ui/services';
 })
 export class ChartLabelsV4Component {
     @Input() set labels(value: ChartLabel[]) {
-        this._labels = value.map(label => {
-            return {
-                ...label,
-                backgroundColor: this.getLabelBGColor(label.color)
-            };
-        });
+        this._labels = value;
     }
     private _labels: ChartLabel[] = [];
     get labels(): ChartLabel[] {
         return this._labels;
     }
-    @Input() bgOpacity = 10;
+    @Input() bgOpacity = 100;
     @Output() labelClick = new EventEmitter<ChartLabel>();
     @Output() labelHover = new EventEmitter<ChartLabel>();
 

@@ -43,7 +43,7 @@ export const BASE_DATASET_OPTIONS: {[key: string]: ChartBaseDatasetOptions} = {
         }
     },
     style_v4: {
-        colorSettings: ['backgroundColor', 'borderColor', 'pointBorderColor', 'pointBackgroundColor'],
+        colorSettings: ['backgroundColor', 'borderColor', 'pointBorderColor', 'pointHoverBackgroundColor'],
         fillOpacity: 10,
         seriesToShow: 7,
         dateFormat: 'MMM dd',
@@ -51,7 +51,8 @@ export const BASE_DATASET_OPTIONS: {[key: string]: ChartBaseDatasetOptions} = {
             fill: false,
             hidden: false,
             borderWidth: 2,
-            tension: 0.4
+            tension: 0.4,
+            pointHoverBackgroundColor: '#fcfcfc'
         },
         barOptions: {
             borderRadius: 4,

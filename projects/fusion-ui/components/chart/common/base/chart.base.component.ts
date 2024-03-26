@@ -250,6 +250,9 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
                     case 'pointBackgroundColor':
                         resultOptions[colorOption] = lineOptions[colorOption] ? lineOptions[colorOption] : color;
                         break;
+                    case 'pointHoverBackgroundColor':
+                        resultOptions[colorOption] = lineOptions[colorOption] ? lineOptions[colorOption] : color;
+                        break;
                     case 'pointBorderColor':
                         resultOptions[colorOption] = lineOptions[colorOption] ? lineOptions[colorOption] : color;
                         break;
