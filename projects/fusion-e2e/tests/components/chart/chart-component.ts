@@ -13,6 +13,6 @@ export class ChartComponent extends BaseComponent {
 
     async getLabelText({testId}: {testId: string}) {
         let label = await this.getByTestId(testId);
-        return label.textContent();
+        return this.selectorText(label);
     }
 }
