@@ -236,8 +236,8 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         // set bg fill options
         lineOptions.fill = this.isStacked;
         if (this.componentVersion === 4 && this.isStacked) {
-            lineOptions.borderWidth = 0;
-            lineOptions.pointRadius = 0;
+            lineOptions.borderWidth = this.chartData.labels.length === 1 ? 2 : 0;
+            lineOptions.pointRadius = this.chartData.labels.length === 1 ? 2 : 0;
         }
         // lineOptions.borderWidth = this.isStacked ? 10 : lineOptions.borderWidth;
         bgOpacity = this.componentVersion === 4 ? bgOpacity : bgOpacity / 2;

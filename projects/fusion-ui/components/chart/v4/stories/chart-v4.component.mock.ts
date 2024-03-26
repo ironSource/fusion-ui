@@ -137,13 +137,28 @@ export const CHART_DATA_MOCK_BIG: ChartData = {
         {
             id: 1,
             displayName: 'ironSource Ads',
-            color: '#6794DC',
             displayFormat: 'shortCurrency'
         },
         {
             id: 2,
             displayName: 'Unity Ads',
-            color: '#67B7DC',
+            displayFormat: 'shortCurrency'
+        }
+    ]
+};
+export const CHART_DATA_MOCK_ONE_DAY: ChartData = {
+    data: {
+        '2024-03-08': [61455525, 23878360]
+    },
+    legends: [
+        {
+            id: 1,
+            displayName: 'ironSource Ads',
+            displayFormat: 'shortCurrency'
+        },
+        {
+            id: 2,
+            displayName: 'Unity Ads',
             displayFormat: 'shortCurrency'
         }
     ]
