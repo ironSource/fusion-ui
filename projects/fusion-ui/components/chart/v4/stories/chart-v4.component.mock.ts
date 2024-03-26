@@ -140,13 +140,11 @@ export const CHART_DATA_MOCK_BIG: ChartData = {
         {
             id: 1,
             displayName: 'ironSource Ads',
-            color: '#6794DC',
             displayFormat: 'shortCurrency'
         },
         {
             id: 2,
             displayName: 'Unity Ads',
-            color: '#67B7DC',
             displayFormat: 'shortCurrency'
         }
     ]
