@@ -236,12 +236,10 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         // set bg fill options
         lineOptions.fill = this.isStacked;
         if (this.componentVersion === 4 && this.isStacked) {
-            lineOptions.borderWidth = 0;
-            lineOptions.pointRadius = 0;
+            lineOptions.lineOptions = 2;
         }
         // lineOptions.borderWidth = this.isStacked ? 10 : lineOptions.borderWidth;
         bgOpacity = this.componentVersion === 4 ? bgOpacity : bgOpacity / 2;
-
         this.chartData.datasets = this.chartData.datasets.map((item, idx) => {
             // set color options
             const dataGroupOptions = colorKeys.reduce((resultOptions, colorOption) => {
@@ -251,6 +249,9 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
                         resultOptions[colorOption] = this.colorsService.toRgba(color, bgOpacity);
                         break;
                     case 'pointBackgroundColor':
+                        resultOptions[colorOption] = lineOptions[colorOption] ? lineOptions[colorOption] : color;
+                        break;
+                    case 'pointHoverBackgroundColor':
                         resultOptions[colorOption] = lineOptions[colorOption] ? lineOptions[colorOption] : color;
                         break;
                     case 'pointBorderColor':
@@ -305,8 +306,16 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         this.chartData.datasets = this.chartData.datasets.map((item, idx) => {
             if (this.componentVersion === 4) {
                 barOptions.borderColor = palette[idx];
-                barOptions.backgroundColor = this.colorsService.toRgba(palette[idx], bgOpacity);
-                barOptions.hoverBackgroundColor = this.colorsService.toRgba(palette[idx], 100);
+                barOptions.backgroundColor = palette[idx];
+                barOptions.hoverBackgroundColor = palette[idx];
+                barOptions.borderWidth = 0;
+                barOptions.barPercentage = 0.9;
+                if (this.isStacked) {
+                    barOptions.barPercentage = 0.5;
+                    barOptions.borderWidth = 2;
+                    barOptions.borderColor = '#FCFCFC';
+                    barOptions.hoverBorderColor = '#FCFCFC';
+                }
             } else {
                 for (let i = 0; i < item.data.length; i++) {
                     barOptions.borderColor.push(palette[i]);

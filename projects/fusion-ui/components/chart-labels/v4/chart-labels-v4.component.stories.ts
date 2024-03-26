@@ -58,6 +58,13 @@ export const Basic: Story = {
     }
 };
 
+export const WithOpacity: Story = {
+    args: {
+        labels: CART_LABELS_MOCK,
+        bgOpacity: 10
+    }
+};
+
 export const WithIcon: Story = {
     args: {
         labels: CART_LABELS_ICONS_MOCK

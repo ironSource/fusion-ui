@@ -21,7 +21,11 @@ import {ChartV4Component} from '../chart-v4.component';
             ></fusion-chart>
         </div>
         <div class="fusion-chart-labels-wrapper" *ngIf="data && type !== 'doughnut'">
-            <fusion-chart-labels [labels]="chartDataLabels$ | async" (labelHover)="labelHovered($event)"></fusion-chart-labels>
+            <fusion-chart-labels
+                [labels]="chartDataLabels$ | async"
+                [bgOpacity]="type === 'stackedLine' ? 10 : 100"
+                (labelHover)="labelHovered($event)"
+            ></fusion-chart-labels>
         </div>
         <div *ngIf="!data" class="fu-empty-state">
             <div class="fu-empty-state-icon"></div>
@@ -45,7 +49,7 @@ export class ChartV4WrapperComponent {
             const dataLabel: ChartLabel = {
                 id: idx,
                 label: dataSet.label,
-                color: dataSet.borderColor,
+                color: dataSet.borderColor === '#FCFCFC' ? dataSet.backgroundColor : dataSet.borderColor,
                 icon: dataSet.icon
             };
             return dataLabel;

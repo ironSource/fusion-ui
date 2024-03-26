@@ -43,9 +43,35 @@ export default {
 
 type Story = StoryObj<ChartV4Component>;
 
+/*
 export const Basic: Story = {
     render: args => ({
         props: args,
+        template: `
+            <fusion-chart-wrapper [data]="data" [type]="type" [options]="options"></fusion-chart-wrapper>
+        `
+    })
+};
+*/
+
+export const Basic: Story = {
+    render: args => ({
+        props: {
+            data: {...CHART_DATA_MOCK},
+            type: ChartType.Line,
+            options: {
+                interaction: {
+                    intersect: false,
+                    mode: 'index',
+                    axis: 'x'
+                },
+                plugins: {
+                    tooltip: {
+                        position: 'average'
+                    }
+                }
+            }
+        },
         template: `
             <fusion-chart-wrapper [data]="data" [type]="type" [options]="options"></fusion-chart-wrapper>
         `
@@ -96,30 +122,6 @@ export const WithIconsInTooltip: Story = {
         },
         template: `
             <fusion-chart-wrapper style="--chart-tooltip-max-width: 270px;" [data]="data" [type]="type" [options]="options"></fusion-chart-wrapper>
-        `
-    })
-};
-
-export const WithTotal: Story = {
-    render: args => ({
-        props: {
-            data: {...CHART_DATA_MOCK},
-            type: ChartType.Line,
-            options: {
-                interaction: {
-                    intersect: false,
-                    mode: 'index',
-                    axis: 'x'
-                },
-                plugins: {
-                    tooltip: {
-                        position: 'average'
-                    }
-                }
-            }
-        },
-        template: `
-            <fusion-chart-wrapper [data]="data" [type]="type" [options]="options"></fusion-chart-wrapper>
         `
     })
 };
