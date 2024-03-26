@@ -3,7 +3,7 @@ import {Locator, Page, test} from '@playwright/test';
 export class BaseElement {
     readonly page: Page;
     readonly selector: string;
-    readonly locator: Locator;
+    locator: Locator;
 
     constructor(page: Page, selector: string) {
         this.page = page;
@@ -148,6 +148,16 @@ export class BaseElement {
         await test.step(`Wait for selector: ${selectorName}`, async () => {
             await this.page.waitForSelector(selectorName);
         });
+    }
+
+    async selectorText(locator: Locator): Promise<string> {
+        let text: string;
+
+        await test.step(`Get text of: ${this.selector}`, async () => {
+            text = await locator.textContent();
+        });
+
+        return text;
     }
 
     async textContent(): Promise<string> {

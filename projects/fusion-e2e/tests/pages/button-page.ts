@@ -28,11 +28,11 @@ export class ButtonPage extends BasePage {
     }
 
     async clickOnButton() {
-        await this.component.clickOnButton({testId: this.testId});
+        await this.component.clickOnButton();
     }
 
     async hoverOnButton() {
-        await this.component.hoverOnButton({testId: this.testId});
+        await this.component.hoverOnButton();
     }
 
     isButtonLoading() {
@@ -40,7 +40,7 @@ export class ButtonPage extends BasePage {
     }
 
     getButtonText() {
-        return this.component.getButtonText({testId: this.testId});
+        return this.component.getButtonText();
     }
 
     getIconButtonText() {
@@ -48,10 +48,10 @@ export class ButtonPage extends BasePage {
     }
 
     isButtonDisabled() {
-        return this.component.isButtonDisabled({testId: this.testId});
+        return this.component.isButtonDisabled();
     }
 
     getToggleButtonFirstLabel() {
-        return this.component.getToggleButtonFirstLabel({testId: this.testId});
+        return this.component.getToggleButtonFirstLabel();
     }
 }

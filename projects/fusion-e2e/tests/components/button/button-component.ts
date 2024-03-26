@@ -1,10 +1,17 @@
 import {getTestId, getTestIdSelector} from '../../global/utils';
 import {ButtonTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {Clickable} from '../../behavior';
+import {BaseElement, Clickable} from '../../behavior';
 
 export class ButtonComponent extends Clickable {
+    private contentElement: BaseElement;
+    private buttonModifierElement: BaseElement;
+    private buttonElement: BaseElement;
+
     constructor(page, selector: string) {
         super(page, selector);
+        this.contentElement = new BaseElement(page, getTestIdSelector(getTestId(this.selector, ButtonTestIdModifiers.CONTENT)));
+        this.buttonModifierElement = new BaseElement(page, getTestIdSelector(getTestId(this.selector, ButtonTestIdModifiers.BUTTON)));
+        this.buttonElement = new BaseElement(page, getTestIdSelector(this.selector));
     }
 
     async waitForComponent({testId}: {testId: string}) {
@@ -17,14 +24,12 @@ export class ButtonComponent extends Clickable {
         await this.waitForSelector(loadedPageSelector);
     }
 
-    async clickOnButton({testId}: {testId: string}) {
-        const element = await this.getByTestId(getTestId(testId, ButtonTestIdModifiers.BUTTON));
-        await element.click();
+    async clickOnButton() {
+        await this.buttonModifierElement.click();
     }
 
-    async hoverOnButton({testId}: {testId: string}) {
-        const element = await this.getByTestId(getTestId(testId, ButtonTestIdModifiers.BUTTON));
-        await element.hover();
+    async hoverOnButton() {
+        await this.buttonModifierElement.hover();
     }
 
     async isButtonLoading({testId}: {testId: string}) {
@@ -34,24 +39,21 @@ export class ButtonComponent extends Clickable {
         return buttonClass.includes('loading');
     }
 
-    async getButtonText({testId}: {testId: string}) {
-        const button = await this.getByTestId(getTestId(testId, ButtonTestIdModifiers.CONTENT));
-        return button.textContent();
+    async getButtonText() {
+        return this.contentElement.textContent();
     }
 
     async getIconButtonText({testId}: {testId: string}) {
         const button = await this.getByTestId(testId);
         const textSelector = await button.last().locator('span');
-        return textSelector.textContent();
+        return this.selectorText(textSelector);
     }
 
-    async isButtonDisabled({testId}: {testId: string}) {
-        const button = await this.getByTestId(testId);
-        return button.isDisabled();
+    async isButtonDisabled() {
+        return this.buttonElement.isDisabled();
     }
 
-    async getToggleButtonFirstLabel({testId}: {testId: string}) {
-        const button = await this.getByTestId(testId);
-        return button.textContent();
+    async getToggleButtonFirstLabel() {
+        return this.buttonElement.textContent();
     }
 }
