@@ -413,9 +413,10 @@ function generateTooltipBodyRow({tooltip, i, body}) {
     bodyRow.style.cssText = BODY_ROW_STYLE;
     const colors = tooltip.labelColors[i];
     const colorDiv = document.createElement('div');
+    const labelColor = colors.borderColor === '#fcfcfc'.toUpperCase() ? colors.backgroundColor : colors.borderColor;
     colorDiv.style.cssText = `
-    background:${colors.borderColor};
-    border-color:${colors.borderColor};
+    background:${labelColor};
+    border-color:${labelColor};
     ${ROUND_INDICATOR_ELEMENT_STYLE}
   `;
 

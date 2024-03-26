@@ -34,6 +34,7 @@ export default {
 
 type Story = StoryObj<ChartV4Component>;
 
+/*
 export const Basic: Story = {
     render: args => ({
         props: args,
@@ -42,6 +43,7 @@ export const Basic: Story = {
         `
     })
 };
+*/
 
 export const Stack: Story = {
     render: args => ({

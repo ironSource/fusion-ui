@@ -49,7 +49,7 @@ export class ChartV4WrapperComponent {
             const dataLabel: ChartLabel = {
                 id: idx,
                 label: dataSet.label,
-                color: dataSet.borderColor,
+                color: dataSet.borderColor === '#FCFCFC' ? dataSet.backgroundColor : dataSet.borderColor,
                 icon: dataSet.icon
             };
             return dataLabel;
