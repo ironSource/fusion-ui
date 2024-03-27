@@ -1,18 +1,27 @@
 import {TooltipTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {getTestId} from '../../global/utils';
 import {BaseComponent} from '../base-component';
+import {Locator, Page} from '@playwright/test';
 
 export class TooltipComponent extends BaseComponent {
-    constructor(page, selector: string) {
+    constructor(page: Page, selector: string) {
         super(page, selector);
     }
 
-    async getTooltipText({testId}: {testId: string}) {
-        const locator = (await this.getByTestId(getTestId(testId, TooltipTestIdModifiers.TRIGGER))).last().locator('span');
-        return locator.textContent();
+    // Get the text of the tooltip
+    async getTooltipText({testId}: {testId: string}): Promise<string> {
+        const testIdSelector = getTestId(testId, TooltipTestIdModifiers.TRIGGER);
+        const triggerLocator: Locator = await this.getByTestId(testIdSelector);
+        const lastTriggerLocator: Locator = triggerLocator.last();
+        const spanLocator: Locator = lastTriggerLocator.locator('span');
+        return spanLocator.textContent();
     }
 
-    async getTooltipHeaderText({testId}: {testId: string}) {
-        return (await this.getByTestId(getTestId(testId, TooltipTestIdModifiers.TRIGGER))).last().getAttribute('header');
+    // Get the header text of the tooltip
+    async getTooltipHeaderText({testId}: {testId: string}): Promise<string> {
+        const testIdSelector = getTestId(testId, TooltipTestIdModifiers.TRIGGER);
+        const triggerLocator: Locator = await this.getByTestId(testIdSelector);
+        const lastTriggerLocator: Locator = triggerLocator.last();
+        return lastTriggerLocator.getAttribute('header');
     }
 }

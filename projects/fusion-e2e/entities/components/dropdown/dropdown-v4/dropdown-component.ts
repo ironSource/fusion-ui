@@ -4,6 +4,7 @@ import {FieldLabelComponent} from '../../fieldLabel/field-label-component';
 import {FieldHelpTextComponent} from '../../fieldHelpText/field-help-text-component';
 import {HasHelpTextTypeParams} from '../../fieldHelpText/types';
 import {DropdownTestIdModifiers, FieldHelpTextTestIdModifiers, InputTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {Locator} from '@playwright/test';
 
 type SearchItem = {
     testId: string;
@@ -45,7 +46,7 @@ export class DropdownComponent extends BaseDropdownComponent {
     }
 
     async getSelectedLabel({testId}: {testId: string}) {
-        const element = await this.getByTestId(getTestId(testId, DropdownTestIdModifiers.BUTTON_CONTENT));
+        const element: Locator = await this.getByTestId(getTestId(testId, DropdownTestIdModifiers.BUTTON_CONTENT));
         return element.textContent();
     }
 

@@ -3,29 +3,42 @@ import {TabsSelectionParams} from './types';
 import {TabsTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {defaultTestId} from './consts';
 import {BaseComponent} from '../base-component';
+import {Locator, Page} from '@playwright/test';
 
 export class TabsComponent extends BaseComponent {
-    constructor(page, selector: string) {
+    constructor(page: Page, selector: string) {
         super(page, selector);
     }
 
-    async getSelectedTabText({testId}: {testId: string}) {
-        return (await this.getByTestId(getTestId(testId, TabsTestIdModifiers.WRAPPER))).locator('.tab-item--active').textContent();
+    // Get the text of the selected tab
+    async getSelectedTabText({testId}: {testId: string}): Promise<string> {
+        const testIdSelector = getTestId(testId, TabsTestIdModifiers.WRAPPER);
+        const element: Locator = await this.getByTestId(testIdSelector);
+        const activeTab: Locator = element.locator('.tab-item--active');
+        return activeTab.textContent();
     }
 
-    async selectTab({testId, tabName}: TabsSelectionParams) {
-        const tabIndex = await this.getTabIndex({testId, tabName});
-        await (await this.getByTestId(getTestId(testId, `${TabsTestIdModifiers.TAB}-${tabIndex + 1}`))).click();
+    // Select a tab
+    async selectTab({testId, tabName}: TabsSelectionParams): Promise<void> {
+        const tabIndex: number = await this.getTabIndex({testId, tabName});
+        const tabTestIdSelector = getTestId(testId, `${TabsTestIdModifiers.TAB}-${tabIndex + 1}`);
+        const tab: Locator = await this.getByTestId(tabTestIdSelector);
+        await tab.click();
     }
 
-    private async getTabIndex({testId, tabName}: TabsSelectionParams) {
-        const tabs = await (await this.getByTestId(getTestId(testId, TabsTestIdModifiers.WRAPPER))).locator('.tab-item').allTextContents();
+    // Get the index of a tab
+    private async getTabIndex({testId, tabName}: TabsSelectionParams): Promise<number> {
+        const testIdSelector = getTestId(testId, TabsTestIdModifiers.WRAPPER);
+        const wrapperLocator: Locator = await this.getByTestId(testIdSelector);
+        const tabs: string[] = await wrapperLocator.locator('.tab-item').allTextContents();
         return tabs.indexOf(tabName);
     }
 
-    async isTabDisabled() {
+    // Check if a tab is disabled
+    async isTabDisabled(): Promise<boolean> {
         const disabledTestId = getTestId(defaultTestId, TabsTestIdModifiers.TAB_DISABLED);
         await this.waitForComponent({testId: disabledTestId});
-        return (await this.getByTestId(disabledTestId)).isDisabled();
+        const disabledTab: Locator = await this.getByTestId(disabledTestId);
+        return disabledTab.isDisabled();
     }
 }

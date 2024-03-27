@@ -2,25 +2,32 @@ import {getTestId} from '../../global/utils';
 import {HasHelpTextTypeParams} from './types';
 import {FieldHelpTextTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {BaseComponent} from '../base-component';
+import {Locator, Page} from '@playwright/test';
 
 export class FieldHelpTextComponent extends BaseComponent {
-    constructor(page, selector: string) {
+    constructor(page: Page, selector: string) {
         super(page, selector);
     }
 
-    async hasExtraText({testId}: {testId: string}) {
-        const byTestId = this.getByTestId(getTestId(testId, FieldHelpTextTestIdModifiers.TEXT));
+    // Check if the extra text is visible
+    async hasExtraText({testId}: {testId: string}): Promise<boolean> {
+        const testIdSelector = getTestId(testId, FieldHelpTextTestIdModifiers.TEXT);
+        const byTestId: Locator = await this.getByTestId(testIdSelector);
         return (await byTestId).isVisible();
     }
 
-    async getExtraText({testId}: {testId: string}) {
-        return (await this.getByTestId(getTestId(testId, FieldHelpTextTestIdModifiers.TEXT))).textContent();
+    // Get the extra text
+    async getExtraText({testId}: {testId: string}): Promise<string> {
+        const testIdSelector = getTestId(testId, FieldHelpTextTestIdModifiers.TEXT);
+        const byTestId: Locator = await this.getByTestId(testIdSelector);
+        return byTestId.textContent();
     }
 
-    async hasExtraTextIconType({testId, type}: HasHelpTextTypeParams) {
-        const extraTextIconTypeLocator = await (
-            await this.getByTestId(getTestId(testId, FieldHelpTextTestIdModifiers.CONTAINER))
-        ).locator(`.icon.icon-name--${type}`);
+    // Check if the extra text icon type is present
+    async hasExtraTextIconType({testId, type}: HasHelpTextTypeParams): Promise<boolean> {
+        const testIdSelector = getTestId(testId, FieldHelpTextTestIdModifiers.CONTAINER);
+        const containerLocator: Locator = await this.getByTestId(testIdSelector);
+        const extraTextIconTypeLocator: Locator = await containerLocator.locator(`.icon.icon-name--${type}`);
         return (await extraTextIconTypeLocator.count()) !== 0;
     }
 }
