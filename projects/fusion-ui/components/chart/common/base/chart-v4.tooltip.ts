@@ -449,6 +449,7 @@ function generateTooltipBodyRow({tooltip, i, body}) {
 export function externalV4TooltipHandler(context) {
     const {chart, tooltip} = context;
     const tooltipEl = getOrCreateTooltip(chart);
+    const bodySortReverse = chart?.config?._config?.options?.plugins?.tooltip?.sortReverse ?? false;
 
     if (tooltip.opacity === 0) {
         tooltipEl.style.opacity = 0;
@@ -461,17 +462,24 @@ export function externalV4TooltipHandler(context) {
         const footerLine = tooltip.footer || [];
 
         const tooltipHead = document.createElement('div');
+        tooltipHead.style.cssText = HEADER_ROW_STYLE;
         const tooltipBody = document.createElement('div');
         tooltipBody.style.cssText = BODY_ROWS_WRAPPER;
         const tooltipRoot = tooltipEl.querySelector('div.fu-chart-tooltip-wrapper');
-
-        titleLines.forEach(title => {
-            const tr = generateTooltipHeaderElement(title);
-            tooltipHead.appendChild(tr);
+        titleLines.forEach((title: string | HTMLElement) => {
+            if (typeof title !== 'string' && title.tagName === 'IMG') {
+                tooltipHead.appendChild(title);
+            } else {
+                const tr = generateTooltipHeaderElement(title);
+                tooltipHead.appendChild(tr);
+            }
         });
-
         bodyLines.forEach((body, i) => {
-            tooltipBody.appendChild(generateTooltipBodyRow({tooltip, i, body}));
+            if (bodyLines.length > 1 && bodySortReverse) {
+                tooltipBody.prepend(generateTooltipBodyRow({tooltip, i, body}));
+            } else {
+                tooltipBody.appendChild(generateTooltipBodyRow({tooltip, i, body}));
+            }
         });
 
         while (tooltipRoot.firstChild) {

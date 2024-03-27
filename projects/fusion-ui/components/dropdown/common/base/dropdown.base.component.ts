@@ -525,9 +525,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
                 const placeholderPrefix = this.isAllSelected ? 'All' : `${this.selected.length}`;
                 if (this.placeholderChipV4Mode) {
                     placeholderForSearch = placeholder =
-                        placeholderPrefix === 'All'
-                            ? `${placeholderPrefix}`
-                            : `${this.getFirstSelectedLabel()}, +${this.selected.length - 1}`;
+                        placeholderPrefix === 'All' ? `${placeholderPrefix}` : this.getFirstSelectedLabel(2);
                 } else {
                     placeholderForSearch = placeholder = this.placeholderPrefix
                         ? `${placeholderPrefix} ${this.placeholderPrefix} ${placeholderPrefix !== 'All' ? 'selected' : ''}`
@@ -787,10 +785,21 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
         this.closeDropdown({clickOutside: true});
     }
 
-    private getFirstSelectedLabel(): string {
-        return this.selected[0].titleText
-            ? this.selected[0].titleText
-            : this.dropdownService.optionToString(this.selected[0], this.mappingOptions);
+    private getFirstSelectedLabel(amount = 1): string {
+        const labelString = this.selected
+            .slice(0, amount)
+            .map(item =>
+                item.titleText
+                    ? item.titleText
+                    : this.placeholderChipV4Mode && item.flag
+                    ? item.flag.toUpperCase()
+                    : this.dropdownService.optionToString(item, this.mappingOptions)
+            )
+            .join(', ');
+
+        const andPlus = this.selected.length > amount ? `, +${this.selected.length - amount}` : '';
+
+        return labelString + andPlus;
     }
 
     private cloneOptions(options: DropdownOption[]): DropdownOption[] {

@@ -3,7 +3,13 @@ import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {ChartV4Component} from '../chart-v4.component';
 import {ChartType} from '@ironsource/fusion-ui/components/chart/common/base';
-import {CHART_CUSTOM_COLORS_DATA_MOCK, CHART_DATA_MOCK, CHART_DATA_MOCK_BIG, CHART_DATA_MOCK_BIG_ICONS} from './chart-v4.component.mock';
+import {
+    CHART_CUSTOM_COLORS_DATA_MOCK,
+    CHART_DATA_MOCK,
+    CHART_DATA_MOCK_BIG,
+    CHART_DATA_MOCK_BIG_ICONS,
+    CHART_DATA_MOCK_ONE_DAY
+} from './chart-v4.component.mock';
 import {ChartV4WrapperComponent} from './chart-v4-story-wrapper.component';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../../stories/environments/environment';
@@ -56,6 +62,30 @@ export const Stack: Story = {
     render: args => ({
         props: {
             data: {...CHART_DATA_MOCK_BIG},
+            type: ChartType.StackedLine,
+            options: {
+                interaction: {
+                    intersect: false,
+                    mode: 'index',
+                    axis: 'x'
+                },
+                plugins: {
+                    tooltip: {
+                        position: 'average'
+                    }
+                }
+            }
+        },
+        template: `
+            <fusion-chart-wrapper [data]="data" [type]="type" [options]="options"></fusion-chart-wrapper>
+        `
+    })
+};
+
+export const StackOneDate: Story = {
+    render: args => ({
+        props: {
+            data: {...CHART_DATA_MOCK_ONE_DAY},
             type: ChartType.StackedLine,
             options: {
                 interaction: {
