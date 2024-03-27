@@ -2,6 +2,242 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [8.0.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.5.5-rc.8...v8.0.0-rc.0) (2024-03-27)
+
+### [7.0.2](https://github.com/ironSource/fusion-ui/compare/v6.5.5-rc.7...v7.0.2) (2024-03-25)
+
+
+### Bug Fixes
+
+* **release/7.x.x:** fix ShortNumberScaleSuffixPipe to support intBase ([3a5d860](https://github.com/ironSource/fusion-ui/commit/3a5d860e8742ff797c5a5647250cc49517a96c3d))
+* **release/7.x.x:** fix ShortNumberScaleSuffixPipe to support intBase ([edbdb53](https://github.com/ironSource/fusion-ui/commit/edbdb53dd7bb8bb98f72ae0a730224ed0fbc6829))
+
+### [7.0.1](https://github.com/ironSource/fusion-ui/compare/v6.5.5-rc.6...v7.0.1) (2024-03-24)
+
+## [7.0.0](https://github.com/ironSource/fusion-ui/compare/v6.5.5-rc.0...v7.0.0) (2024-03-20)
+
+
+### Features
+
+* **ISCT-120:** fix modal v1 button ([b02b1e4](https://github.com/ironSource/fusion-ui/commit/b02b1e46782b64f0d395adb50af46421a106440c))
+
+## [7.0.0-rc.32](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.31...v7.0.0-rc.32) (2024-03-04)
+
+
+### Features
+
+* **ISCT-120:** fix modal v1 button ([4429f23](https://github.com/ironSource/fusion-ui/commit/4429f237a3f5bdac9f297867edcd0ddd6f20a9f7))
+
+## [7.0.0-rc.31](https://github.com/ironSource/fusion-ui/compare/v6.5.3-rc.23...v7.0.0-rc.31) (2024-03-03)
+
+
+### Features
+
+* **ISCT-120:** fix tags input component disabled state ([fbc8b7a](https://github.com/ironSource/fusion-ui/commit/fbc8b7acfedfe054e4b1baf8479f99fbe847a308))
+* **ISCT-120:** fix tags input component disabled state ([2893cef](https://github.com/ironSource/fusion-ui/commit/2893cef7e4c2ef70551cfb9f6297de21e474ce0d))
+
+## [7.0.0-rc.30](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.29...v7.0.0-rc.30) (2024-02-29)
+
+## [7.0.0-rc.29](https://github.com/ironSource/fusion-ui/compare/v6.5.3-rc.22...v7.0.0-rc.29) (2024-02-29)
+
+
+### Features
+
+* **ISCT-120:** fix group dropdown ([12308d8](https://github.com/ironSource/fusion-ui/commit/12308d8d69d526f3aa59b61d096c1ecd363f2d77))
+
+## [7.0.0-rc.28](https://github.com/ironSource/fusion-ui/compare/v6.5.3-rc.21...v7.0.0-rc.28) (2024-02-29)
+
+
+### Features
+
+* **ISCT-120:** fix group dropdown ([131897d](https://github.com/ironSource/fusion-ui/commit/131897dd28449679652753f6ec7510f30016d1ba))
+
+## [7.0.0-rc.27](https://github.com/ironSource/fusion-ui/compare/v6.5.3-rc.16...v7.0.0-rc.27) (2024-02-25)
+
+
+### Features
+
+* **ISCT-120:** upgrade angular to 17.2.1 ([e0ba818](https://github.com/ironSource/fusion-ui/commit/e0ba8186bd46c88f77f046a77ba9bd8a87af0f4f))
+
+## [7.0.0-rc.26](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.25...v7.0.0-rc.26) (2024-02-25)
+
+
+### Features
+
+* **ISCT-120:** upgrade angular to 17.2.1 ([01b2129](https://github.com/ironSource/fusion-ui/commit/01b21297b1f0850833094aa5cdcf5203485502aa))
+
+## [7.0.0-rc.25](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.24...v7.0.0-rc.25) (2024-02-25)
+
+
+### Features
+
+* **ISCT-120:** fix disabled state in input component ([ce69d3c](https://github.com/ironSource/fusion-ui/commit/ce69d3c7819117ce0f32c284fb79b12ab92f040c))
+
+## [7.0.0-rc.24](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.23...v7.0.0-rc.24) (2024-02-22)
+
+
+### Features
+
+* **ISCT-120:** fix disabled state in toggle ([e077a44](https://github.com/ironSource/fusion-ui/commit/e077a44f39b15706c9a6d5c5971bd6f61623c856))
+
+## [7.0.0-rc.23](https://github.com/ironSource/fusion-ui/compare/v6.5.3-rc.14...v7.0.0-rc.23) (2024-02-22)
+
+
+### Features
+
+* **ISCT-120:** fix disabled state in toggle ([2d42c49](https://github.com/ironSource/fusion-ui/commit/2d42c49ba56ef0b9fb2609a08b3898f089018d7b))
+
+## [7.0.0-rc.22](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.21...v7.0.0-rc.22) (2024-02-22)
+
+
+### Features
+
+* **ISCT-120:** fix disabled state in toggle ([6086cd6](https://github.com/ironSource/fusion-ui/commit/6086cd623c5118cb7816576e49d44e054ef25b5d))
+* **ISCT-120:** fix disabled state in toggle ([7840a9e](https://github.com/ironSource/fusion-ui/commit/7840a9ec594b1aaf61ce03bc35731fde2722ff42))
+
+## [7.0.0-rc.21](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.20...v7.0.0-rc.21) (2024-02-21)
+
+
+### Features
+
+* **ISCT-120:** fix disabled state in toggle ([35cb351](https://github.com/ironSource/fusion-ui/commit/35cb3511db54ac16e5d788f9bb2fc12f3407f669))
+
+## [7.0.0-rc.20](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.19...v7.0.0-rc.20) (2024-02-21)
+
+
+### Features
+
+* **ISCT-120:** fix disabled state in toggle ([0256d3a](https://github.com/ironSource/fusion-ui/commit/0256d3a355793536e2f1e88298a727cd090135da))
+
+## [7.0.0-rc.19](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.18...v7.0.0-rc.19) (2024-02-21)
+
+
+### Features
+
+* **ISCT-120:** fix disabled state in checkbox ([e4bf303](https://github.com/ironSource/fusion-ui/commit/e4bf3036680793f384db00367439bd58477db4ca))
+
+## [7.0.0-rc.18](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.17...v7.0.0-rc.18) (2024-02-21)
+
+
+### Features
+
+* **ISCT-120:** fix disabled state in checkbox ([6ef1175](https://github.com/ironSource/fusion-ui/commit/6ef1175402ee42aa106b91c8dcd21b9dde3a906a))
+* **ISCT-120:** fix disabled state in checkbox ([6d5d676](https://github.com/ironSource/fusion-ui/commit/6d5d67676abbe61a9fe24ee072a9b5c39d217135))
+
+## [7.0.0-rc.17](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.16...v7.0.0-rc.17) (2024-02-21)
+
+
+### Features
+
+* **ISCT-120:** fix disabled state in checkbox ([b84bc1d](https://github.com/ironSource/fusion-ui/commit/b84bc1decb3fdc8e4d5425225fb5c1e71c54d67a))
+
+## [7.0.0-rc.16](https://github.com/ironSource/fusion-ui/compare/v6.5.3-rc.13...v7.0.0-rc.16) (2024-02-21)
+
+
+### Features
+
+* **ISCT-120:** fix disabled state in checkbox ([4a670f2](https://github.com/ironSource/fusion-ui/commit/4a670f29abb34879b85010de374870d784317bf6))
+
+## [7.0.0-rc.15](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.14...v7.0.0-rc.15) (2024-02-19)
+
+
+### Features
+
+* **ISCT-120:** fix disabled state in checkbox ([c0b407b](https://github.com/ironSource/fusion-ui/commit/c0b407b80ca67129e94da855be587c48cf3f06a7))
+
+## [7.0.0-rc.14](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.13...v7.0.0-rc.14) (2024-02-19)
+
+
+### Features
+
+* **ISCT-120:** fix disabled state in checkbox ([5a81feb](https://github.com/ironSource/fusion-ui/commit/5a81febdf807eda3e2b19932cfa58607ca7d05af))
+
+## [7.0.0-rc.13](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.11...v7.0.0-rc.13) (2024-02-19)
+
+
+### Features
+
+* **ISCT-120:** fix disabled state in checkbox ([d7ddf85](https://github.com/ironSource/fusion-ui/commit/d7ddf85280ffaccf216a1f4f79e85709d1cfa229))
+* **ISCT-120:** fix disabled state in dropdown input and toggle ([b0f495b](https://github.com/ironSource/fusion-ui/commit/b0f495b2a9d765e6ba3aa6881d7201ebe45c88bc))
+* **ISCT-120:** fix disabled state in dropdown input and toggle ([c2b6209](https://github.com/ironSource/fusion-ui/commit/c2b6209ba614287e610319bf20468674d0eede0d))
+* **ISCT-120:** fix disabled state in dropdown input and toggle ([b40cb91](https://github.com/ironSource/fusion-ui/commit/b40cb911ebb8f2340cedd033c4761913537b7340))
+
+## [7.0.0-rc.11](https://github.com/ironSource/fusion-ui/compare/v6.5.3-rc.9...v7.0.0-rc.11) (2024-02-19)
+
+
+### Features
+
+* **ISCT-120:** add console.log ([d7204ad](https://github.com/ironSource/fusion-ui/commit/d7204ad4c936ed07297d3d5c2c0cb3311dbd11a5))
+
+## [7.0.0-rc.10](https://github.com/ironSource/fusion-ui/compare/v6.5.3-rc.8...v7.0.0-rc.10) (2024-02-18)
+
+## [7.0.0-rc.9](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.8...v7.0.0-rc.9) (2024-02-14)
+
+
+### Features
+
+* **ISCT-120:** change teleporting directive to expose through module ([6a38163](https://github.com/ironSource/fusion-ui/commit/6a381634f5de2228c38f99e7e2555e2e33cb7368))
+
+## [7.0.0-rc.8](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.7...v7.0.0-rc.8) (2024-02-14)
+
+## [7.0.0-rc.7](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.6...v7.0.0-rc.7) (2024-02-14)
+
+
+### Features
+
+* **ISCT-120:** change teleporting directive to expose through module ([18e6da0](https://github.com/ironSource/fusion-ui/commit/18e6da00b1d60f9483743cde5eba7755974e3296))
+
+## [7.0.0-rc.6](https://github.com/ironSource/fusion-ui/compare/v6.5.3-rc.5...v7.0.0-rc.6) (2024-02-14)
+
+
+### Features
+
+* **ISCT-120:** change teleporting directive to expose through module ([6043a7b](https://github.com/ironSource/fusion-ui/commit/6043a7bde8e6d43230fedc79eee5dbda9a43568f))
+* **ISCT-120:** change teleporting directive to expose through module ([66bec53](https://github.com/ironSource/fusion-ui/commit/66bec537af84aa4e3a496839626dc5bd4029bf2f))
+
+## [7.0.0-rc.5](https://github.com/ironSource/fusion-ui/compare/v6.5.2...v7.0.0-rc.5) (2024-02-08)
+
+
+### Features
+
+* **ISCT-120:** merge 6.x.x ([5cbc028](https://github.com/ironSource/fusion-ui/commit/5cbc028fd7875e266fbdb5ab3263eb2f2f40e620))
+
+## [7.0.0-rc.4](https://github.com/ironSource/fusion-ui/compare/v6.4.1-rc.3...v7.0.0-rc.4) (2024-01-23)
+
+## [7.0.0-rc.3](https://github.com/ironSource/fusion-ui/compare/v7.0.0-rc.2...v7.0.0-rc.3) (2023-12-11)
+
+
+### Bug Fixes
+
+* **isct-120:** input-inline read only state in table angular 17 ([18d4969](https://github.com/ironSource/fusion-ui/commit/18d49699045a3072528e73b505ce2642691a7401))
+
+## [7.0.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v6.4.0-rc.1...v7.0.0-rc.2) (2023-12-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* **isct-120:** Upgrade to Angular 17
+
+### Features
+
+* **isct-120:** up to angular 17 ([c69ed77](https://github.com/ironSource/fusion-ui/commit/c69ed77e989be8b74afe61e21baebd317b2a2ee1))
+
+
+### Bug Fixes
+
+* **isct-120:** fix serve-docs ([4ebd4a0](https://github.com/ironSource/fusion-ui/commit/4ebd4a044549970b2f045f1750a74e7a3dcecac9))
+
+
+### CI
+
+* **isct-120:** remove @ironsource/storybook-addon-stackblitz package till it will be update ([ee02d1a](https://github.com/ironSource/fusion-ui/commit/ee02d1abe0347a3fb73ad714c4460193f5116fea))
+* **isct-120:** update gh actions for use node >=18.13 for angular 17 ([1ccf445](https://github.com/ironSource/fusion-ui/commit/1ccf4455f90905f82f65a298ca45a2c6e2ebbce7))
+* **isct-120:** update node version to 20 in gh actions ([257ece6](https://github.com/ironSource/fusion-ui/commit/257ece6936011bb2d4db39875c1f93e3a21f8add))
+* **isct-133:** added @ironsource/storybook-addon-stackblitz-angular ([19afd88](https://github.com/ironSource/fusion-ui/commit/19afd8825692c75d02287cc51978e32586a732d9))
+* **isct-133:** regen package-lock.json, remove @ironsource/storybook-addon-stackblitz addon ([66a24da](https://github.com/ironSource/fusion-ui/commit/66a24dae26be622c29c855ee68314cfbe75ddcfa))
+* **isct-133:** up version for @ironsource/storybook-addon-stackblitz-angular ([242a6d1](https://github.com/ironSource/fusion-ui/commit/242a6d115ff2b860708136d599c567e92fe09a95))
+* **isct-133:** upgrade to storybook 7.6 ([f6fd5d6](https://github.com/ironSource/fusion-ui/commit/f6fd5d6b10c653ee7c793000331fd7782eeb0940))
+
 ### [7.0.2](https://github.com/ironSource/fusion-ui/compare/v7.0.1...v7.0.2) (2024-03-25)
 
 
