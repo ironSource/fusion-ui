@@ -1,6 +1,6 @@
 import {AlertPage} from '../../pages/alert-page';
 import {expect, test} from '@playwright/test';
-import {alertSeveritiesStoryId} from './consts';
+import {alertSeveritiesStoryId} from './const';
 
 let component: AlertPage;
 

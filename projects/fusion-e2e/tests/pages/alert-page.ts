@@ -1,5 +1,5 @@
 import {AlertComponent} from '../components/alert/alert-component';
-import {alertStoryId, defaultTestId, loadedPageSelector} from '../components/alert/consts';
+import {alertStoryId, defaultTestId, loadedPageSelector} from '../components/alert/const';
 import {Page} from '@playwright/test';
 import {BasePage} from './base-page/base-page';
 import {ComponentProps} from './base-page/types';
