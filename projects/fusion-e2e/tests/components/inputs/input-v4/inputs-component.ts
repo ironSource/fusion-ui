@@ -6,8 +6,8 @@ import {InputTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {getTestId} from '../../../global/utils';
 
 export class InputsComponent extends BaseInputComponent {
-    private readonly fieldLabelComponent: FieldLabelComponent;
-    private readonly fieldHelpTextComponent: FieldHelpTextComponent;
+    readonly fieldLabelComponent: FieldLabelComponent;
+    readonly fieldHelpTextComponent: FieldHelpTextComponent;
 
     constructor(page, selector: string) {
         super(page, selector);

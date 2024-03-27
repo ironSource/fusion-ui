@@ -11,13 +11,13 @@ type SearchItem = {
 };
 
 export class DropdownComponent extends BaseDropdownComponent {
-    private readonly fieldLabelComponent;
-    private readonly fieldHelpTextComponent;
+    readonly fieldLabelComponent;
+    readonly fieldHelpTextComponent;
 
     constructor(page, selector: string) {
         super(page, selector);
-        this.fieldLabelComponent = new FieldLabelComponent(page);
-        this.fieldHelpTextComponent = new FieldHelpTextComponent(page);
+        this.fieldLabelComponent = new FieldLabelComponent(page, this.selector);
+        this.fieldHelpTextComponent = new FieldHelpTextComponent(page, this.selector);
     }
 
     getDropdownTitle({testId}: {testId: string}) {

@@ -6,11 +6,11 @@ import {StaticText} from '../../elements';
 import {Page} from '@playwright/test';
 
 export class AlertComponent extends BaseComponent {
-    private wrapperElement: StaticText;
-    private messageElement: StaticText;
-    private titleElement: StaticText;
-    private actionButtonElement: ButtonComponent;
-    private closeButtonElement: ButtonComponent;
+    wrapperElement: StaticText;
+    messageElement: StaticText;
+    titleElement: StaticText;
+    actionButtonElement: ButtonComponent;
+    closeButtonElement: ButtonComponent;
 
     constructor(page: Page, selector: string) {
         super(page, selector);

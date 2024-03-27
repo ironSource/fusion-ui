@@ -4,9 +4,9 @@ import {BaseElement} from '../../behavior';
 import {Button} from '../../elements';
 
 export class ButtonComponent extends Button {
-    private contentElement: BaseElement;
-    private buttonModifierElement: BaseElement;
-    private buttonElement: BaseElement;
+    contentElement: BaseElement;
+    buttonModifierElement: BaseElement;
+    buttonElement: BaseElement;
 
     constructor(page, selector: string) {
         super(page, selector);
