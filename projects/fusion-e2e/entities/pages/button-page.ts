@@ -6,7 +6,7 @@ import {buttonStoryId, defaultTestId, loadedPageSelector} from '../components/bu
 import {ButtonTestIdModifiers} from '@ironsource/fusion-ui/entities';
 
 export class ButtonPage extends BasePage {
-    readonly component: ButtonComponent;
+    readonly button: ButtonComponent;
 
     constructor(page: Page) {
         const buttonProps: ComponentProps = {
@@ -17,42 +17,42 @@ export class ButtonPage extends BasePage {
         };
 
         super(buttonProps);
-        this.component = new ButtonComponent(page, this.testId);
+        this.button = new ButtonComponent(page, this.testId);
     }
 
     async waitForComponent() {
-        await this.component.waitForComponent({testId: this.testId, modifiers: ButtonTestIdModifiers.BUTTON});
+        await this.button.waitForComponent({testId: this.testId, modifiers: ButtonTestIdModifiers.BUTTON});
     }
 
     async waitForToggleButtonComponent() {
-        await this.component.waitForToggleButtonComponent({testId: this.testId});
+        await this.button.waitForToggleButtonComponent({testId: this.testId});
     }
 
     async clickOnButton() {
-        await this.component.clickOnButton();
+        await this.button.clickOnButton();
     }
 
     async hoverOnButton() {
-        await this.component.hoverOnButton();
+        await this.button.hoverOnButton();
     }
 
     isButtonLoading() {
-        return this.component.isButtonLoading({testId: this.testId});
+        return this.button.isButtonLoading({testId: this.testId});
     }
 
     getButtonText() {
-        return this.component.getButtonText();
+        return this.button.getButtonText();
     }
 
     getIconButtonText() {
-        return this.component.getIconButtonText({testId: this.testId});
+        return this.button.getIconButtonText({testId: this.testId});
     }
 
     isButtonDisabled() {
-        return this.component.isButtonDisabled();
+        return this.button.isButtonDisabled();
     }
 
     getToggleButtonFirstLabel() {
-        return this.component.getToggleButtonFirstLabel();
+        return this.button.getToggleButtonFirstLabel();
     }
 }

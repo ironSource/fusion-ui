@@ -6,7 +6,7 @@ import {ComponentProps} from './base-page/types';
 import {InputTestIdModifiers} from '@ironsource/fusion-ui/entities';
 
 export class InputsPage extends BasePage {
-    readonly component: InputsComponent;
+    readonly input: InputsComponent;
 
     constructor(page: Page) {
         const inputsProps: ComponentProps = {
@@ -17,100 +17,100 @@ export class InputsPage extends BasePage {
         };
 
         super(inputsProps);
-        this.component = new InputsComponent(page, this.testId);
+        this.input = new InputsComponent(page, this.testId);
     }
 
     getInputsFieldText() {
-        return this.component.getInputsFieldText({testId: this.testId});
+        return this.input.getInputsFieldText({testId: this.testId});
     }
 
     getInputsLabelText() {
-        return this.component.getInputsLabelText({testId: this.testId});
+        return this.input.getInputsLabelText({testId: this.testId});
     }
 
     addInput({textInput}: {textInput: string}) {
-        return this.component.addInput({
+        return this.input.addInput({
             testId: this.testId,
             text: textInput
         });
     }
 
     isInputMandatory() {
-        return this.component.isInputMandatory({testId: this.testId});
+        return this.input.isInputMandatory({testId: this.testId});
     }
 
     getPlaceholderText() {
-        return this.component.getPlaceholderText({testId: this.testId});
+        return this.input.getPlaceholderText({testId: this.testId});
     }
 
     hasInputExtraText() {
-        return this.component.hasInputExtraText({testId: this.testId});
+        return this.input.hasInputExtraText({testId: this.testId});
     }
 
     getInputExtraText() {
-        return this.component.getInputExtraText({testId: this.testId});
+        return this.input.getInputExtraText({testId: this.testId});
     }
 
     getInputsType() {
-        return this.component.getInputsType({testId: this.testId});
+        return this.input.getInputsType({testId: this.testId});
     }
 
     hasInlineErrorText() {
-        return this.component.hasInlineErrorText({testId: this.testId});
+        return this.input.hasInlineErrorText({testId: this.testId});
     }
 
     getInlineErrorText() {
-        return this.component.getInlineErrorText({testId: this.testId});
+        return this.input.getInlineErrorText({testId: this.testId});
     }
 
     async clickOnApplyButton() {
-        await this.component.clickOnApplyButton({testId: this.testId});
+        await this.input.clickOnApplyButton({testId: this.testId});
     }
 
     hasApplyButton() {
-        return this.component.hasApplyButton({testId: this.testId});
+        return this.input.hasApplyButton({testId: this.testId});
     }
 
     hasExtraTextIconType({type}: {type: string}) {
-        return this.component.hasExtraTextIconType({
+        return this.input.hasExtraTextIconType({
             testId: this.testId,
             type: type
         });
     }
 
     isInputDisabled() {
-        return this.component.isInputDisabled({testId: this.testId});
+        return this.input.isInputDisabled({testId: this.testId});
     }
 
     getMaxLengthNumber() {
-        return this.component.getMaxLengthNumber({testId: this.testId});
+        return this.input.getMaxLengthNumber({testId: this.testId});
     }
 
     getActualNumberLength() {
-        return this.component.getActualNumberLength({testId: this.testId});
+        return this.input.getActualNumberLength({testId: this.testId});
     }
 
     getHelpIconText() {
-        return this.component.getHelpIconText({testId: this.testId});
+        return this.input.getHelpIconText({testId: this.testId});
     }
 
     async clickOnShowPassword() {
-        await this.component.clickOnShowPassword({testId: this.testId});
+        await this.input.clickOnShowPassword({testId: this.testId});
     }
 
     async clickOnHidePassword() {
-        await this.component.clickOnHidePassword({testId: this.testId});
+        await this.input.clickOnHidePassword({testId: this.testId});
     }
 
     isPasswordHidden() {
-        return this.component.isPasswordHidden({testId: this.testId});
+        return this.input.isPasswordHidden({testId: this.testId});
     }
 
     async waitForComponent() {
-        return this.component.waitForComponent({testId: this.testId, modifiers: InputTestIdModifiers.WRAPPER});
+        return this.input.waitForComponent({testId: this.testId, modifiers: InputTestIdModifiers.WRAPPER});
     }
 
     async clearInput() {
-        await this.component.clearInput({testId: this.testId});
+        await this.input.clearInput({testId: this.testId});
     }
 }

@@ -5,7 +5,7 @@ import {BasePage} from './base-page/base-page';
 import {ComponentProps} from './base-page/types';
 
 export class TrendIndicatorPage extends BasePage {
-    readonly component: TrendIndicatorComponent;
+    readonly trendIndicator: TrendIndicatorComponent;
 
     constructor(page: Page) {
         const alertProps: ComponentProps = {
@@ -16,14 +16,14 @@ export class TrendIndicatorPage extends BasePage {
         };
 
         super(alertProps);
-        this.component = new TrendIndicatorComponent(page, this.testId);
+        this.trendIndicator = new TrendIndicatorComponent(page, this.testId);
     }
 
     async waitForComponent() {
-        await this.component.waitForComponent({testId: this.testId});
+        await this.trendIndicator.waitForComponent({testId: this.testId});
     }
 
     async getTrendIndicatorValue() {
-        return this.component.getTrendIndicatorValue({testId: this.testId});
+        return this.trendIndicator.getTrendIndicatorValue({testId: this.testId});
     }
 }

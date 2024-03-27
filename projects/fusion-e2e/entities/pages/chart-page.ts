@@ -6,7 +6,7 @@ import {ChartComponent} from '../components/chart/chart-component';
 import {createStoryBookComponentPath} from '../global/utils';
 
 export class ChartPage extends BasePage {
-    readonly component: ChartComponent;
+    readonly chart: ChartComponent;
 
     constructor(page: Page) {
         const chartProps: ComponentProps = {
@@ -17,7 +17,7 @@ export class ChartPage extends BasePage {
         };
 
         super(chartProps);
-        this.component = new ChartComponent(page, this.testId);
+        this.chart = new ChartComponent(page, this.testId);
     }
 
     async goto(gotoParams: GotoParams = {}) {
@@ -32,10 +32,10 @@ export class ChartPage extends BasePage {
     }
 
     async waitForComponent() {
-        await this.component.waitForComponent({testId: this.testId});
+        await this.chart.waitForComponent({testId: this.testId});
     }
 
     async getLabelText() {
-        return this.component.getLabelText({testId: this.testId});
+        return this.chart.getLabelText({testId: this.testId});
     }
 }

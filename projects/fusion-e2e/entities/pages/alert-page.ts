@@ -5,7 +5,7 @@ import {BasePage} from './base-page/base-page';
 import {ComponentProps} from './base-page/types';
 
 export class AlertPage extends BasePage {
-    readonly component: AlertComponent;
+    readonly alert: AlertComponent;
 
     constructor(page: Page) {
         const alertProps: ComponentProps = {
@@ -16,38 +16,38 @@ export class AlertPage extends BasePage {
         };
 
         super(alertProps);
-        this.component = new AlertComponent(page, this.testId);
+        this.alert = new AlertComponent(page, this.testId);
     }
 
     getAlertText() {
-        return this.component.getAlertText();
+        return this.alert.getAlertText();
     }
 
     getAlertTitle() {
-        return this.component.getAlertTitle();
+        return this.alert.getAlertTitle();
     }
 
     async clickOnActionButton() {
-        await this.component.clickOnActionButton();
+        await this.alert.clickOnActionButton();
     }
 
     getActionButtonText() {
-        return this.component.getActionButtonText();
+        return this.alert.getActionButtonText();
     }
 
     async closeAlert() {
-        await this.component.closeAlert();
+        await this.alert.closeAlert();
     }
 
     isAlertVisible() {
-        return this.component.isAlertVisible();
+        return this.alert.isAlertVisible();
     }
 
     async waitForComponent() {
-        await this.component.waitForComponent({testId: this.testId});
+        await this.alert.waitForComponent({testId: this.testId});
     }
 
     getAlertIconType() {
-        return this.component.getAlertIconType();
+        return this.alert.getAlertIconType();
     }
 }

@@ -5,7 +5,7 @@ import {ComponentProps} from './base-page/types';
 import {TabsComponent} from '../components/tabs/tabs-component';
 
 export class TabsPage extends BasePage {
-    readonly component: TabsComponent;
+    readonly tabs: TabsComponent;
 
     constructor(page: Page) {
         const tabsProps: ComponentProps = {
@@ -16,22 +16,22 @@ export class TabsPage extends BasePage {
         };
 
         super(tabsProps);
-        this.component = new TabsComponent(page, this.testId);
+        this.tabs = new TabsComponent(page, this.testId);
     }
 
     async waitForComponent() {
-        await this.component.waitForComponent({testId: this.testId});
+        await this.tabs.waitForComponent({testId: this.testId});
     }
 
     getSelectedTabText() {
-        return this.component.getSelectedTabText({testId: this.testId});
+        return this.tabs.getSelectedTabText({testId: this.testId});
     }
 
     async selectTab({tabName}: {tabName: string}) {
-        await this.component.selectTab({testId: this.testId, tabName});
+        await this.tabs.selectTab({testId: this.testId, tabName});
     }
 
     isTabDisabled() {
-        return this.component.isTabDisabled();
+        return this.tabs.isTabDisabled();
     }
 }

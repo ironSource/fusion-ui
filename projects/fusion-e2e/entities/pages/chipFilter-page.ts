@@ -6,7 +6,7 @@ import {ChipFilterComponent} from '../components/chip-filter/chipFilter-componen
 import {createStoryBookComponentPath} from '../global/utils';
 
 export class ChipFilterPage extends BasePage {
-    readonly component: ChipFilterComponent;
+    readonly chipFilter: ChipFilterComponent;
 
     constructor(page: Page) {
         const chipFilterProps: ComponentProps = {
@@ -17,11 +17,11 @@ export class ChipFilterPage extends BasePage {
         };
 
         super(chipFilterProps);
-        this.component = new ChipFilterComponent(page, this.testId);
+        this.chipFilter = new ChipFilterComponent(page, this.testId);
     }
 
     async waitForComponent() {
-        await this.component.waitForComponent({testId: this.testId});
+        await this.chipFilter.waitForComponent({testId: this.testId});
     }
 
     async goto(gotoParams: GotoParams = {}) {
@@ -36,10 +36,10 @@ export class ChipFilterPage extends BasePage {
     }
 
     clickChipFilter() {
-        return this.component.clickChipFilter({testId: this.testId});
+        return this.chipFilter.clickChipFilter({testId: this.testId});
     }
 
     getChipFilterLabel() {
-        return this.component.getChipFilterLabel({testId: this.testId});
+        return this.chipFilter.getChipFilterLabel({testId: this.testId});
     }
 }

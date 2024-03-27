@@ -7,7 +7,7 @@ import {createStoryBookComponentPath, getTestId} from '../global/utils';
 import {TooltipTestIdModifiers} from '@ironsource/fusion-ui/entities';
 
 export class TooltipPage extends BasePage {
-    readonly component: TooltipComponent;
+    readonly tooltip: TooltipComponent;
 
     constructor(page: Page) {
         const tooltipProps: ComponentProps = {
@@ -18,11 +18,11 @@ export class TooltipPage extends BasePage {
         };
 
         super(tooltipProps);
-        this.component = new TooltipComponent(page, this.testId);
+        this.tooltip = new TooltipComponent(page, this.testId);
     }
 
     async waitForComponent() {
-        await this.component.waitForComponent({testId: this.testId, modifiers: TooltipTestIdModifiers.TRIGGER});
+        await this.tooltip.waitForComponent({testId: this.testId, modifiers: TooltipTestIdModifiers.TRIGGER});
     }
 
     async goto(gotoParams: GotoParams = {}) {
@@ -38,11 +38,11 @@ export class TooltipPage extends BasePage {
     }
 
     getTooltipText() {
-        return this.component.getTooltipText({testId: this.testId});
+        return this.tooltip.getTooltipText({testId: this.testId});
     }
 
     getTooltipHeaderText() {
-        return this.component.getTooltipHeaderText({testId: this.testId});
+        return this.tooltip.getTooltipHeaderText({testId: this.testId});
     }
 
     private async openTooltip() {

@@ -7,7 +7,7 @@ import {BasePage} from './base-page/base-page';
 import {DialogTestIdModifiers} from '@ironsource/fusion-ui/entities';
 
 export class DialogPage extends BasePage {
-    readonly component: DialogComponent;
+    readonly dialog: DialogComponent;
 
     constructor(page: Page) {
         const dialogProps: ComponentProps = {
@@ -18,7 +18,7 @@ export class DialogPage extends BasePage {
         };
 
         super(dialogProps);
-        this.component = new DialogComponent(page, this.testId);
+        this.dialog = new DialogComponent(page, this.testId);
     }
 
     async goto(gotoParams: GotoParams = {}) {
@@ -33,44 +33,44 @@ export class DialogPage extends BasePage {
     }
 
     getDialogTitle() {
-        return this.component.getDialogTitle({testId: this.testId});
+        return this.dialog.getDialogTitle({testId: this.testId});
     }
 
     openDialog() {
-        return this.component.openDialog({testId: this.testId});
+        return this.dialog.openDialog({testId: this.testId});
     }
 
     getDialogText() {
-        return this.component.getDialogText({testId: this.testId});
+        return this.dialog.getDialogText({testId: this.testId});
     }
 
     getDialogSubtitle() {
-        return this.component.getDialogSubtitle({testId: this.testId});
+        return this.dialog.getDialogSubtitle({testId: this.testId});
     }
 
     async closeDialog() {
-        await this.component.closeDialog({testId: this.testId});
+        await this.dialog.closeDialog({testId: this.testId});
     }
 
     async clickOnPrimaryButton() {
-        await this.component.clickOnPrimaryButton({testId: this.testId});
+        await this.dialog.clickOnPrimaryButton({testId: this.testId});
     }
 
     async clickOnDefaultButton() {
-        await this.component.clickOnDefaultButton({testId: this.testId});
+        await this.dialog.clickOnDefaultButton({testId: this.testId});
     }
 
     async clickOnDeleteButton() {
-        await this.component.clickOnDeleteButton({testId: this.testId});
+        await this.dialog.clickOnDeleteButton({testId: this.testId});
     }
 
     async waitForComponent() {
         // const loadedPageSelector = getTestIdSelector(getTestId(testId, DialogTestIdModifiers.WRAPPER));
 
-        await this.component.waitForComponent({testId: this.testId, modifiers: DialogTestIdModifiers.WRAPPER});
+        await this.dialog.waitForComponent({testId: this.testId, modifiers: DialogTestIdModifiers.WRAPPER});
     }
 
     isDialogVisible() {
-        return this.component.isDialogVisible({testId: this.testId});
+        return this.dialog.isDialogVisible({testId: this.testId});
     }
 }
