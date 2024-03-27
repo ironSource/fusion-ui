@@ -24,11 +24,6 @@ export class AlertComponent extends BaseComponent {
         this.closeButtonElement = new ButtonComponent(page, getTestIdSelector(getTestId(this.selector, AlertTestIdModifiers.CLOSE_BUTTON)));
     }
 
-    async waitForComponent({testId}: {testId: string}) {
-        const loadedPageSelector = getTestIdSelector(getTestId(testId, AlertTestIdModifiers.WRAPPER));
-        await this.waitForSelector(loadedPageSelector);
-    }
-
     async getAlertText() {
         return this.messageElement.textContent();
     }

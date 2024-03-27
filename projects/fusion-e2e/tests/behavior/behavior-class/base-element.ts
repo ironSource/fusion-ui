@@ -1,4 +1,5 @@
 import {Locator, Page, test} from '@playwright/test';
+import {getTestId, getTestIdSelector} from '../../global/utils';
 
 export class BaseElement {
     readonly page: Page;
@@ -148,6 +149,16 @@ export class BaseElement {
         await test.step(`Wait for selector: ${selectorName}`, async () => {
             await this.page.waitForSelector(selectorName);
         });
+    }
+
+    async waitForComponent({testId, modifiers}: {testId: string; modifiers?: string}) {
+        let loadedPageSelector: string;
+        if (!modifiers) {
+            loadedPageSelector = getTestIdSelector(testId);
+        } else {
+            loadedPageSelector = getTestIdSelector(getTestId(testId, modifiers));
+        }
+        await this.waitForSelector(loadedPageSelector);
     }
 
     async selectorText(locator: Locator): Promise<string> {

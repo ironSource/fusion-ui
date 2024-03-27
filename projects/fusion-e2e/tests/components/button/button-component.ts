@@ -15,11 +15,6 @@ export class ButtonComponent extends Button {
         this.buttonElement = new BaseElement(page, getTestIdSelector(this.selector));
     }
 
-    async waitForComponent({testId}: {testId: string}) {
-        const loadedPageSelector = getTestIdSelector(getTestId(testId, ButtonTestIdModifiers.BUTTON));
-        await this.waitForSelector(loadedPageSelector);
-    }
-
     async waitForToggleButtonComponent({testId}: {testId: string}) {
         const loadedPageSelector = getTestIdSelector(testId);
         await this.waitForSelector(loadedPageSelector);

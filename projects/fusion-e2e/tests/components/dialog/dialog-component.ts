@@ -7,11 +7,6 @@ export class DialogComponent extends BaseComponent {
         super(page, selector);
     }
 
-    async waitForComponent({testId}: {testId: string}) {
-        const loadedPageSelector = getTestIdSelector(getTestId(testId, DialogTestIdModifiers.WRAPPER));
-        await this.waitForSelector(loadedPageSelector);
-    }
-
     async getDialogTitle({testId}: {testId: string}) {
         const element = await this.getByTestId(getTestId(testId, DialogTestIdModifiers.HEADER));
         return element.textContent();

@@ -1,16 +1,10 @@
 import {TooltipTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {getTestId, getTestIdSelector} from '../../global/utils';
+import {getTestId} from '../../global/utils';
 import {BaseComponent} from '../base-component';
 
 export class TooltipComponent extends BaseComponent {
     constructor(page, selector: string) {
         super(page, selector);
-    }
-
-    async waitForComponent({testId}: {testId: string}) {
-        const loadedPageSelector = getTestIdSelector(getTestId(testId, TooltipTestIdModifiers.TRIGGER));
-
-        await this.waitForSelector(loadedPageSelector);
     }
 
     async getTooltipText({testId}: {testId: string}) {

@@ -16,7 +16,7 @@ export class TabsPage extends BasePage {
         };
 
         super(tabsProps);
-        this.component = new TabsComponent(page);
+        this.component = new TabsComponent(page, this.testId);
     }
 
     async waitForComponent() {

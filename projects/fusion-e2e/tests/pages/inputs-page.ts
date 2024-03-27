@@ -3,6 +3,7 @@ import {InputsComponent} from '../components/inputs/input-v4/inputs-component';
 import {defaultTestId, inputsStoryId, loadedPageSelector} from '../components/inputs/input-v4/consts';
 import {BasePage} from './base-page/base-page';
 import {ComponentProps} from './base-page/types';
+import {InputTestIdModifiers} from '@ironsource/fusion-ui/entities';
 
 export class InputsPage extends BasePage {
     readonly component: InputsComponent;
@@ -16,7 +17,7 @@ export class InputsPage extends BasePage {
         };
 
         super(inputsProps);
-        this.component = new InputsComponent(page);
+        this.component = new InputsComponent(page, this.testId);
     }
 
     getInputsFieldText() {
@@ -106,7 +107,7 @@ export class InputsPage extends BasePage {
     }
 
     async waitForComponent() {
-        return this.component.waitForComponent({testId: this.testId});
+        return this.component.waitForComponent({testId: this.testId, modifiers: InputTestIdModifiers.WRAPPER});
     }
 
     async clearInput() {

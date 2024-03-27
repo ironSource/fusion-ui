@@ -18,11 +18,11 @@ export class TooltipPage extends BasePage {
         };
 
         super(tooltipProps);
-        this.component = new TooltipComponent(page);
+        this.component = new TooltipComponent(page, this.testId);
     }
 
     async waitForComponent() {
-        await this.component.waitForComponent({testId: this.testId});
+        await this.component.waitForComponent({testId: this.testId, modifiers: TooltipTestIdModifiers.TRIGGER});
     }
 
     async goto(gotoParams: GotoParams = {}) {

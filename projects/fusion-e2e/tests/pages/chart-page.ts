@@ -17,7 +17,7 @@ export class ChartPage extends BasePage {
         };
 
         super(chartProps);
-        this.component = new ChartComponent(page);
+        this.component = new ChartComponent(page, this.testId);
     }
 
     async goto(gotoParams: GotoParams = {}) {

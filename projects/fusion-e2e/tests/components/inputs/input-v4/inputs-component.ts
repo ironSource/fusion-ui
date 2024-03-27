@@ -3,7 +3,7 @@ import {FieldLabelComponent} from '../../fieldLabel/field-label-component';
 import {FieldHelpTextComponent} from '../../fieldHelpText/field-help-text-component';
 import {HasHelpTextTypeParams} from '../../fieldHelpText/types';
 import {InputTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {getTestId, getTestIdSelector} from '../../../global/utils';
+import {getTestId} from '../../../global/utils';
 
 export class InputsComponent extends BaseInputComponent {
     private readonly fieldLabelComponent: FieldLabelComponent;
@@ -11,18 +11,12 @@ export class InputsComponent extends BaseInputComponent {
 
     constructor(page, selector: string) {
         super(page, selector);
-        this.fieldLabelComponent = new FieldLabelComponent(page);
-        this.fieldHelpTextComponent = new FieldHelpTextComponent(page);
+        this.fieldLabelComponent = new FieldLabelComponent(page, selector);
+        this.fieldHelpTextComponent = new FieldHelpTextComponent(page, selector);
     }
 
     getInputsLabelText({testId}: {testId: string}) {
         return this.fieldLabelComponent.getLabelText({testId: testId});
-    }
-
-    async waitForComponent({testId}: {testId: string}) {
-        const loadedPageSelector = getTestIdSelector(getTestId(testId, InputTestIdModifiers.WRAPPER));
-
-        await this.waitForSelector(loadedPageSelector);
     }
 
     isInputMandatory({testId}: {testId: string}) {

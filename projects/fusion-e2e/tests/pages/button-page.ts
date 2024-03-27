@@ -3,6 +3,7 @@ import {BasePage} from './base-page/base-page';
 import {ButtonComponent} from '../components/button/button-component';
 import {ComponentProps} from './base-page/types';
 import {buttonStoryId, defaultTestId, loadedPageSelector} from '../components/button/consts';
+import {ButtonTestIdModifiers} from '@ironsource/fusion-ui/entities';
 
 export class ButtonPage extends BasePage {
     readonly component: ButtonComponent;
@@ -20,7 +21,7 @@ export class ButtonPage extends BasePage {
     }
 
     async waitForComponent() {
-        await this.component.waitForComponent({testId: this.testId});
+        await this.component.waitForComponent({testId: this.testId, modifiers: ButtonTestIdModifiers.BUTTON});
     }
 
     async waitForToggleButtonComponent() {

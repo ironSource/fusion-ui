@@ -4,6 +4,7 @@ import {dialogStoryId, defaultTestId, loadedPageSelector} from '../components/di
 import {ComponentProps, GotoParams} from './base-page/types';
 import {createStoryBookComponentPath} from '../global/utils';
 import {BasePage} from './base-page/base-page';
+import {DialogTestIdModifiers} from '@ironsource/fusion-ui/entities';
 
 export class DialogPage extends BasePage {
     readonly component: DialogComponent;
@@ -17,7 +18,7 @@ export class DialogPage extends BasePage {
         };
 
         super(dialogProps);
-        this.component = new DialogComponent(page);
+        this.component = new DialogComponent(page, this.testId);
     }
 
     async goto(gotoParams: GotoParams = {}) {
@@ -64,7 +65,9 @@ export class DialogPage extends BasePage {
     }
 
     async waitForComponent() {
-        await this.component.waitForComponent({testId: this.testId});
+        // const loadedPageSelector = getTestIdSelector(getTestId(testId, DialogTestIdModifiers.WRAPPER));
+
+        await this.component.waitForComponent({testId: this.testId, modifiers: DialogTestIdModifiers.WRAPPER});
     }
 
     isDialogVisible() {

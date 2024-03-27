@@ -16,7 +16,7 @@ export class TrendIndicatorPage extends BasePage {
         };
 
         super(alertProps);
-        this.component = new TrendIndicatorComponent(page);
+        this.component = new TrendIndicatorComponent(page, this.testId);
     }
 
     async waitForComponent() {

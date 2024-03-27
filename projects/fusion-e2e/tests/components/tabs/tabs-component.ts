@@ -1,4 +1,4 @@
-import {getTestId, getTestIdSelector} from '../../global/utils';
+import {getTestId} from '../../global/utils';
 import {TabsSelectionParams} from './types';
 import {TabsTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {defaultTestId} from './consts';
@@ -7,11 +7,6 @@ import {BaseComponent} from '../base-component';
 export class TabsComponent extends BaseComponent {
     constructor(page, selector: string) {
         super(page, selector);
-    }
-
-    async waitForComponent({testId}: {testId: string}) {
-        const loadedPageSelector = getTestIdSelector(testId);
-        await this.waitForSelector(loadedPageSelector);
     }
 
     async getSelectedTabText({testId}: {testId: string}) {
