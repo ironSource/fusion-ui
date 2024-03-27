@@ -28,15 +28,19 @@ export class LayoutComponent implements OnInit, OnDestroy {
         }
         this.layoutUser = {...value?.layoutUser} ?? null;
     }
+
     @Input() set headerContent(value: HeaderContent) {
         this._headerContent = value;
     }
+
     get headerContent(): HeaderContent {
         return this._headerContent;
     }
+
     @Input() set teleportElements(value: TeleportWrapperElement[]) {
         this._teleportElements = value;
     }
+
     get teleportElements(): TeleportWrapperElement[] {
         return this._teleportElements ?? [];
     }
@@ -109,32 +113,37 @@ export class LayoutComponent implements OnInit, OnDestroy {
 
     private setSelectedMenuByPath(menuPrimary: PrimaryMenuItem[]): boolean {
         const currentPath = this.windowRef.nativeWindow.location.pathname;
-        let itemFound: MenuItem = null;
+        let itemFound: MenuItem | PrimaryMenuItem = null;
         let primaryItemFound: PrimaryMenuItem = null;
         if (menuPrimary.length) {
             menuPrimary.forEach((primaryMenuItem: PrimaryMenuItem) => {
-                if (primaryMenuItem?.menuItems?.length && !itemFound) {
-                    primaryMenuItem.menuItems.forEach((menuItem: MenuItem) => {
-                        if (!itemFound) {
-                            if (menuItem.children?.length) {
-                                menuItem.children.forEach((childMenuItem: MenuItem) => {
-                                    if (!itemFound && this.isActiveMenuItem(childMenuItem, currentPath)) {
-                                        itemFound = childMenuItem;
-                                        primaryItemFound = primaryMenuItem;
-                                    }
-                                });
-                            } else if (menuItem.route && this.isActiveMenuItem(menuItem, currentPath)) {
-                                itemFound = menuItem;
-                                primaryItemFound = primaryMenuItem;
+                if (!itemFound && primaryMenuItem.route && primaryMenuItem.route !== '/' && currentPath.startsWith(primaryMenuItem.route)) {
+                    itemFound = primaryMenuItem;
+                    primaryItemFound = primaryMenuItem;
+                } else {
+                    if (primaryMenuItem?.menuItems?.length && !itemFound) {
+                        primaryMenuItem.menuItems.forEach((menuItem: MenuItem) => {
+                            if (!itemFound) {
+                                if (menuItem.children?.length) {
+                                    menuItem.children.forEach((childMenuItem: MenuItem) => {
+                                        if (!itemFound && this.isActiveMenuItem(childMenuItem, currentPath)) {
+                                            itemFound = childMenuItem;
+                                            primaryItemFound = primaryMenuItem;
+                                        }
+                                    });
+                                } else if (menuItem.route && this.isActiveMenuItem(menuItem, currentPath)) {
+                                    itemFound = menuItem;
+                                    primaryItemFound = primaryMenuItem;
+                                }
                             }
-                        }
-                    });
+                        });
+                    }
                 }
             });
         }
         if (itemFound) {
             this.navigationMenu.setActiveMenu(primaryItemFound, itemFound);
-            this.menuItemSelectedByRoute.emit(itemFound);
+            this.menuItemSelectedByRoute.emit(itemFound as MenuItem);
         } else {
             this.navigationMenu.setActiveMenu(null, null);
         }
