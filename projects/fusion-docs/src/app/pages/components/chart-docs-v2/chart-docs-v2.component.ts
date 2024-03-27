@@ -145,7 +145,7 @@ export class ChartDocsV2Component implements OnInit, OnDestroy {
         }
     };
 
-    // used for some chart customizations tests
+    // used for some chart customizations entities
     chartOptions = {
         scales: {
             xAxes: [

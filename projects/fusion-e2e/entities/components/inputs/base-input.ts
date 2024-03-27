@@ -37,4 +37,8 @@ export class BaseInputComponent extends BaseComponent {
         const element = await this.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD));
         return element.isDisabled();
     }
+
+    async getInputValue(): Promise<string> {
+        return await this.locator.inputValue();
+    }
 }
