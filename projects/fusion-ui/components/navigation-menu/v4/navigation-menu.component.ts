@@ -170,14 +170,19 @@ export class NavigationMenuComponent implements OnInit {
         this.secondaryMenuLogoSrc$.next('');
     }
 
-    setActiveMenu(primary: PrimaryMenuItem, secondary: MenuItem) {
+    setActiveMenu(primary: PrimaryMenuItem, secondary: MenuItem | PrimaryMenuItem) {
         if (isNullOrUndefined(primary) || isNullOrUndefined(secondary)) {
             this.secondaryMenu.setSelected(null);
         } else {
             this.selectedPrimaryMenuItem = primary;
             this.preSelectedPrimaryMenuItem = primary;
-            this.selectedSecondaryMenuItem = secondary;
-            this.setSecondaryMenu(primary);
+            if (primary !== secondary) {
+                this.selectedSecondaryMenuItem = secondary as MenuItem;
+                this.setSecondaryMenu(primary);
+            } else {
+                this.resetSecondaryMenu();
+                this.secondaryMenuOpen$.next(false);
+            }
             this.primaryMenu.setSelectedPrimaryMenuItem(primary);
             setTimeout(() => {
                 this.primaryMenu.setColorTheme(primary?.cssTheme ?? null);
@@ -193,6 +198,8 @@ export class NavigationMenuComponent implements OnInit {
 
             this.menuOpenForPrimaryMenuItem$.next(selectedNetwork);
             this.selectSecondaryMenuItem(selectedNetwork);
+        } else if (selectedNetwork?.type === NavigationBarItemType.Home) {
+            this.resetSecondaryMenu();
         }
     }
 
