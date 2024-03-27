@@ -8,7 +8,7 @@ NC='\033[0m'
 
 BRANCH_NAME="$(git branch | grep \* | sed -e 's/\* //g')"
 if [[ -z "$BRANCH_NAME" ]] || [ "$BRANCH_NAME" != "master" ]; then
-    # if branch is different then master do not run entities
+    # if branch is different then master do not run tests
     exit 0
 else
     echo -e "\t${RED}Push Aborted - Pushing to master only available from github pull requests${NC}"
