@@ -1,8 +1,7 @@
 import {AfterViewInit, Directive, EmbeddedViewRef, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef} from '@angular/core';
 
 @Directive({
-    selector: '[fusionTeleporting]',
-    standalone: true
+    selector: '[fusionTeleporting]'
 })
 export class TeleportingDirective implements OnInit, OnDestroy, AfterViewInit {
     @Input('fusionTeleporting') selector: string;

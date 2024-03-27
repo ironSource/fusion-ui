@@ -56,7 +56,8 @@ export default {
         ] as ToggleButtonGroupOption[],
         size: 'medium',
         color: 'default',
-        formControl: formControl
+        formControl: formControl,
+        testId: 'testId'
     },
     argTypes: {
         formControl: {
@@ -71,7 +72,8 @@ export const Default: Story = {
     render: args => ({
         props: args,
         template: `
-        <fusion-toggle-button-group color="default" [size]="size" [color]="color" [options]="options" [formControl]="formControl"></fusion-toggle-button-group>
+        <fusion-toggle-button-group color="default" [size]="size" [color]="color" [options]="options"
+        [formControl]="formControl" [testId]="testId"></fusion-toggle-button-group>
         `
     })
 };

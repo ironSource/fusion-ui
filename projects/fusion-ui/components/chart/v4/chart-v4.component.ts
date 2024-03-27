@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {CommonModule, CurrencyPipe, DatePipe, DecimalPipe, PercentPipe} from '@angular/common';
 import {
     Chart,
@@ -47,4 +47,5 @@ Chart.register(
 export class ChartV4Component extends ChartBaseComponent {
     /** @internal */
     componentVersion = 4;
+    @Input() testId: string;
 }

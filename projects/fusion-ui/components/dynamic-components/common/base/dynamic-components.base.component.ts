@@ -1,6 +1,5 @@
 import {
     Component,
-    ComponentFactoryResolver,
     ComponentRef,
     Input,
     ViewChild,
@@ -57,7 +56,7 @@ export abstract class DynamicComponentsBaseComponent implements OnChanges, OnIni
     private nativeElement: Node;
     private elementContainer: ElementRef;
 
-    constructor(private componentFactoryResolver: ComponentFactoryResolver, private renderer: Renderer2, private sanitizer: DomSanitizer) {}
+    constructor(private renderer: Renderer2, private sanitizer: DomSanitizer) {}
 
     updateComponent(isComponentChanged?: boolean) {
         if (!this.isViewInitialized) {
@@ -69,8 +68,7 @@ export abstract class DynamicComponentsBaseComponent implements OnChanges, OnIni
                 this.cmpRef.destroy();
             }
 
-            const factory = this.componentFactoryResolver.resolveComponentFactory(this.component);
-            this.cmpRef = this.dynamicData.createComponent(factory);
+            this.cmpRef = this.dynamicData.createComponent(this.component);
         }
 
         this.onComponentChanges();

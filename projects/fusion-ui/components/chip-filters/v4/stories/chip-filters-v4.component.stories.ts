@@ -45,10 +45,11 @@ const groupedCountriesOptions: DropdownOption[] = ((allCountries: any[]): Dropdo
 })(MOCK_OPTIONS_COUNTRIES);
 
 const basicTemplate = `
-<fusion-chip-filters>
-        <fusion-chip-filter [configuration]="configChip1">
+<fusion-chip-filters [testId]="testId">
+        <fusion-chip-filter [testId]="testId" [configuration]="configChip1">
             <div class="filter-element">
                 <fusion-multi-dropdown
+                    [testId]="testId"
                     [placeholderPrefix]="placeholderPrefixChip1"
                     [placeholder]="placeholderChip1"
                     [formControl]="fcChip1"
@@ -61,6 +62,7 @@ const basicTemplate = `
         <fusion-chip-filter [configuration]="configChip2">
             <div class="filter-element">
                 <fusion-multi-dropdown
+                    [testId]="testId"
                     [placeholderPrefix]="placeholderPrefixChip2"
                     [placeholder]="placeholderChip2"
                     [formControl]="fcChip2"
@@ -72,6 +74,7 @@ const basicTemplate = `
         <fusion-chip-filter [configuration]="configChip3">
             <div class="filter-element">
                 <fusion-multi-dropdown
+                    [testId]="testId"
                     [placeholderPrefix]="placeholderPrefixChip3"
                     [placeholder]="placeholderChip3"
                     [formControl]="fcChip3"
@@ -113,11 +116,11 @@ const basicTemplate = `
                     [search]="true"
                 ></fusion-multi-dropdown>
             </div>
-        </fusion-chip-filter>                        
+        </fusion-chip-filter>
     </fusion-chip-filters>
 `;
 const datePickerTemplate = `
-<fusion-chip-filters>
+<fusion-chip-filters [testId]="testId">
         <fusion-chip-filter-button [configuration]="configChip1">
             <div class="filter-element">
                  <fusion-dropdown
@@ -164,7 +167,7 @@ const datePickerTemplate = `
     </fusion-chip-filters>
 `;
 const addFilterTemplate = `
-<fusion-chip-filters
+<fusion-chip-filters [testId]="testId"
         [addFilterOptions]="addFilterOptions"
         [disableAddFilter]="disableAddFilter"
         [isSearch]="isSearch"
@@ -212,7 +215,7 @@ const addFilterTemplate = `
                     selectAllLabel="Select all"
                 ></fusion-multi-dropdown>
             </div>
-        </fusion-chip-filter>        
+        </fusion-chip-filter>
     </fusion-chip-filters>
 `;
 

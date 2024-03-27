@@ -94,10 +94,8 @@ export class TableCellComponent implements OnInit, OnChanges {
     isNullOrUndefined: (object: any) => boolean = isNullOrUndefined;
     customCellData: DynamicComponentConfiguration;
 
-    // eslint-disable-next-line @typescript-eslint/adjacent-overload-signatures
     get data(): CellDataType {
         if (!isNull(this._data) && this.tableService.isTypeComponent(this.column) && typeof this._data === 'object') {
-            // eslint-disable-next-line dot-notation, @typescript-eslint/dot-notation
             this._data['cellPosition'] = this.position;
         }
         return this._data;

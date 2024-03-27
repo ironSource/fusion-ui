@@ -1,15 +1,4 @@
-import {
-    ComponentFactoryResolver,
-    ComponentRef,
-    Directive,
-    EmbeddedViewRef,
-    HostBinding,
-    Input,
-    OnChanges,
-    OnInit,
-    Renderer2,
-    ViewContainerRef
-} from '@angular/core';
+import {Directive, EmbeddedViewRef, HostBinding, inject, Input, OnChanges, OnInit, Renderer2, ViewContainerRef} from '@angular/core';
 
 @Directive()
 export abstract class DropdownOptionBaseDirective implements OnInit, OnChanges {
@@ -24,20 +13,18 @@ export abstract class DropdownOptionBaseDirective implements OnInit, OnChanges {
     @HostBinding('class.option') optionClass = true;
     @HostBinding('class.is-hidden') isOptionHidden = false;
 
+    viewContainerRef = inject(ViewContainerRef);
+
     // protected optionComponentRef: ComponentRef<DropdownOptionBaseComponent>;
     protected dropdownOptionComponentType;
     protected optionComponentRef;
 
-    constructor(
-        public viewContainerRef: ViewContainerRef,
-        private componentFactoryResolver: ComponentFactoryResolver,
-        private renderer: Renderer2
-    ) {}
+    constructor(private renderer: Renderer2) {}
 
     ngOnInit() {
         this.isOptionHidden = this.fusionDropdownOption.checked;
-        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.dropdownOptionComponentType);
-        this.optionComponentRef = this.viewContainerRef.createComponent(componentFactory);
+        this.viewContainerRef.clear();
+        this.optionComponentRef = this.viewContainerRef.createComponent(this.dropdownOptionComponentType);
         this.updateData();
         const loaderViewRef = this.optionComponentRef.hostView as EmbeddedViewRef<any>;
         this.renderer.appendChild(this.viewContainerRef.element.nativeElement, loaderViewRef.rootNodes[0]);

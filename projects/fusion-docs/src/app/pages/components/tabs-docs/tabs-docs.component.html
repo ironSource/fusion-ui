@@ -176,7 +176,7 @@ class App extends React.Component {
   <div class="example-holder">
     <p>Tabs example</p>
     <div class="tabs-holder">
-      <FusionTabs :config="tabs" @selectedChange="onSelectedChanged"></FusionTabs>
+      <FusionTabs :config="tabs" @selectedChange="selectedChanged"></FusionTabs>
     </div>
     <div class="tabs-content-holder">
       Selected: { { selectedContent }}
@@ -234,7 +234,7 @@ export const FooComponent = {
     }
   },
   methods: {
-    onSelectedChanged: function(selected){
+    selectedChanged: function(selected){
       this.selectedContent = selected.text
     }
   }
@@ -530,7 +530,7 @@ export default class Foo extends React.Component {
   <div class="example-holder">
     <p>Tabs example</p>
     <div class="tabs-holder">
-      <FusionTabs :config="tabs" @selectedChange="onSelectedChanged"></FusionTabs>
+      <FusionTabs :config="tabs" @selectedChange="selectedChanged"></FusionTabs>
     </div>
     <div class="tabs-content-holder">
       Selected: { { selectedContent }}
@@ -582,7 +582,7 @@ export const FooComponent = {
     }
   },
   methods: {
-    onSelectedChanged: function(selected){
+    selectedChanged: function(selected){
       this.selectedContent = selected.text
     }
   }
@@ -850,7 +850,7 @@ export default class Foo extends React.Component {
   <div class="example-holder">
     <p>Tabs example</p>
     <div class="tabs-holder">
-      <FusionTabs :config="tabs" @selectedChange="onSelectedChanged"></FusionTabs>
+      <FusionTabs :config="tabs" @selectedChange="selectedChanged"></FusionTabs>
     </div>
     <div class="tabs-content-holder">
       Selected: { { selectedContent }}
@@ -907,7 +907,7 @@ export const FooComponent = {
     }
   },
   methods: {
-    onSelectedChanged: function(selected){
+    selectedChanged: function(selected){
       this.selectedContent = selected.text
     }
   }
@@ -1165,7 +1165,7 @@ export default class Foo extends React.Component {
   <div class="example-holder">
     <p>Tabs example</p>
     <div class="tabs-holder">
-      <FusionTabs :config="tabs" @selectedChange="onSelectedChanged"></FusionTabs>
+      <FusionTabs :config="tabs" @selectedChange="selectedChanged"></FusionTabs>
     </div>
     <div class="tabs-content-holder">
       Selected: { { selectedContent }}
@@ -1215,7 +1215,7 @@ export const FooComponent = {
     }
   },
   methods: {
-    onSelectedChanged: function(selected){
+    selectedChanged: function(selected){
       this.selectedContent = `index ${TABS_BASE_MOCK.findIndex(item=>item==selected)}`
     }
   }

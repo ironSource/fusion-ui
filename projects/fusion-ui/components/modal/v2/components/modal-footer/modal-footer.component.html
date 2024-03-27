@@ -4,7 +4,7 @@
         <fusion-button
             [class]="cancelButtonClass"
             [ngClass]="{small: notificationFooter}"
-            (click)="onCloseButtonClicked.emit()"
+            (click)="closeButtonClicked.emit()"
             *ngIf="!cancelButtonHidden"
         >
             {{ cancelButtonText }}

@@ -59,7 +59,7 @@ const FilterPanelDefaultTemplate: StoryFn<ChipFiltersComponent> = (args: ChipFil
     <fusion-chip-filters
         [addFiltersTitle]="addFiltersTitle"
         [addFilterOptions]="addFilterOptions"
-        (onDynamicChipSelect)="onDynamicChipSelect($event)"
+        (dynamicChipSelect)="dynamicChipSelect($event)"
     >
         <fusion-chip-filter [configuration]="configChip1">
             <div class="filter-element">
@@ -76,7 +76,7 @@ const FilterPanelDefaultTemplate: StoryFn<ChipFiltersComponent> = (args: ChipFil
         </fusion-chip-filter>
 
         <ng-container *ngFor="let chip of selectedDynamicFilters">
-            <fusion-chip-filter [configuration]="chip.configChip" (onChipRemove)="onDynamicChipRemove($event)">
+            <fusion-chip-filter [configuration]="chip.configChip" (chipRemove)="onDynamicChipRemove($event)">
                 <div class="filter-element">
                     <fusion-dropdown-dual-multi-select
                         [title]="chip.optionsTitleChip"
@@ -135,7 +135,7 @@ export const Default = {
             [addFilterOptions]="addFilterOptions"
             [disableAddFilter]="disableAddFilter"
             [isSearch]="isSearch"
-            (onDynamicChipSelect)="onDynamicChipSelect($event)"
+            (dynamicChipSelect)="dynamicChipSelect($event)"
             >
             <fusion-chip-filter [configuration]="configChip1">
                 <div class="filter-element">
@@ -152,7 +152,7 @@ export const Default = {
             </fusion-chip-filter>
 
             <ng-container *ngFor="let chip of selectedDynamicFilters">
-                <fusion-chip-filter [configuration]="chip.configChip" (onChipRemove)="onDynamicChipRemove($event)">
+                <fusion-chip-filter [configuration]="chip.configChip" (chipRemove)="onDynamicChipRemove($event)">
                     <div class="filter-element">
                         <fusion-dropdown-dual-multi-select
                             [title]="chip.optionsTitleChip"
@@ -215,7 +215,7 @@ export const Default = {
 
         selectedDynamicFilters = [];
 
-        onDynamicChipSelect(selected) {
+        dynamicChipSelect(selected) {
              if (!this.selectedDynamicFilters.some(item => selected.id === item.configChip.id)) {
                 this.selectedDynamicFilters = [
                     ...this.selectedDynamicFilters,
@@ -289,7 +289,7 @@ export const WithDynamicPreselected = {
             [addFilterOptions]="addFilterOptions"
             [disableAddFilter]="disableAddFilter"
             [isSearch]="isSearch"
-            (onDynamicChipSelect)="onDynamicChipSelect($event)"
+            (dynamicChipSelect)="dynamicChipSelect($event)"
             >
             <fusion-chip-filter [configuration]="configChip1">
                 <div class="filter-element">
@@ -306,7 +306,7 @@ export const WithDynamicPreselected = {
             </fusion-chip-filter>
 
             <ng-container *ngFor="let chip of selectedDynamicFilters">
-                <fusion-chip-filter [configuration]="chip.configChip" (onChipRemove)="onDynamicChipRemove($event)">
+                <fusion-chip-filter [configuration]="chip.configChip" (chipRemove)="onDynamicChipRemove($event)">
                     <div class="filter-element">
                         <fusion-dropdown-dual-multi-select
                             [title]="chip.optionsTitleChip"
@@ -371,7 +371,7 @@ export const WithDynamicPreselected = {
 
         selectedDynamicFilters = this.dynamicFiltersAll.filter(filter=>(!!filter.fcChip.value));
 
-        onDynamicChipSelect(selected) {
+        dynamicChipSelect(selected) {
              if (!this.selectedDynamicFilters.some(item => selected.id === item.configChip.id)) {
                 this.selectedDynamicFilters = [
                     ...this.selectedDynamicFilters,

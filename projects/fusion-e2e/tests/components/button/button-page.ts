@@ -23,6 +23,10 @@ export class ButtonPage extends ComponentBasePage {
         await this.component.waitForComponent({testId: this.testId});
     }
 
+    async waitForToggleButtonComponent() {
+        await this.component.waitForToggleButtonComponent({testId: this.testId});
+    }
+
     async clickOnButton() {
         await this.component.clickOnButton({testId: this.testId});
     }
@@ -45,5 +49,9 @@ export class ButtonPage extends ComponentBasePage {
 
     isButtonDisabled() {
         return this.component.isButtonDisabled({testId: this.testId});
+    }
+
+    getToggleButtonFirstLabel() {
+        return this.component.getToggleButtonFirstLabel({testId: this.testId});
     }
 }

@@ -100,7 +100,7 @@ export abstract class TagBaseComponent implements OnInit, OnDestroy {
     @Output() onRemove = new EventEmitter<TagComponentConfigurations>();
     /** @internal */
     // eslint-disable-next-line
-    @Output() onSelectedChange = new EventEmitter<any>();
+    @Output() selectedChange = new EventEmitter<any>();
 
     constructor(private element: ElementRef, private renderer: Renderer2) {}
 
@@ -132,7 +132,7 @@ export abstract class TagBaseComponent implements OnInit, OnDestroy {
             .pipe(takeUntil(this.onDestroy$))
             .subscribe(_ => {
                 this.selected = !this.selected;
-                this.onSelectedChange.emit({
+                this.selectedChange.emit({
                     id: this.id,
                     selected: this.selected
                 });

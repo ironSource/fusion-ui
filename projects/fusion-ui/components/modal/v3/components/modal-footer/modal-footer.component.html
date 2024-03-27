@@ -3,7 +3,7 @@
     <fusion-button class="fu-secondary-button"
         [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:modalTestIdModifiers.MODAL_CANCEL_BUTTON"
         [class]="cancelButtonClass"
-        (click)="onCloseButtonClicked.emit()"
+        (click)="closeButtonClicked.emit()"
         *ngIf="!cancelButtonHidden"
     >
         {{ cancelButtonText }}
@@ -13,7 +13,7 @@
         [class]="submitButtonClass"
         [loading]="submitButtonPending"
         [disabled]="submitButtonDisabled || !!error"
-        (click)="onSubmit.emit()"
+        (click)="primaryButtonClicked.emit()"
     >
         {{ submitButtonText }}
     </fusion-button>

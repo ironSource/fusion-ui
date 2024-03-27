@@ -1,6 +1,5 @@
 import {
     ChangeDetectorRef,
-    ComponentFactoryResolver,
     ComponentRef,
     Directive,
     ElementRef,
@@ -37,7 +36,6 @@ export class ErrorMessageDirective implements OnInit, OnDestroy, OnChanges {
 
     constructor(
         private elementRef: ElementRef,
-        private componentFactoryResolver: ComponentFactoryResolver,
         private viewContainerRef: ViewContainerRef,
         private changeDetectorRef: ChangeDetectorRef,
         private fg: ControlContainer,
@@ -56,8 +54,7 @@ export class ErrorMessageDirective implements OnInit, OnDestroy, OnChanges {
         const showErrorInit = this.showError;
         this.showError = this.showError === undefined || this.showError === null ? true : this.showError;
 
-        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(ErrorMessageComponent);
-        this.errorMessageComponent = this.viewContainerRef.createComponent(componentFactory);
+        this.errorMessageComponent = this.viewContainerRef.createComponent(ErrorMessageComponent);
         this.errorMessageComponent.instance.styles = this.errorStyles;
         this.formControl = this.parentFormControl.get(this.elementRef.nativeElement.getAttribute('formcontrolname'));
         this.isTooltipMessage = this.elementRef.nativeElement.getAttribute('errortype');
@@ -79,6 +76,7 @@ export class ErrorMessageDirective implements OnInit, OnDestroy, OnChanges {
     }
 
     ngOnChanges() {
+        this.viewContainerRef.clear();
         this._checkErrors();
     }
 
