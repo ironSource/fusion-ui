@@ -1,13 +1,15 @@
 <div class="fu-button-group-wrapper fu-size-{{size}} fu-color-{{color}}">
-    <ng-container *ngFor="let option of options">
+    <ng-container *ngFor="let option of options; let isFirst = first">
         <label class="fu-button-group-option" [fusionTooltip]="option.tooltip">
             <input type="radio"
                    id="{{name}}__{{option.id}}"
                    [name]="name"
                    [checked]="option.id === selected?.id"
-                   (change)="setSelected(option)" />
+                   (change)="setSelected(option)"/>
             <fusion-icon *ngIf="option.icon" [name]="option.icon"></fusion-icon>
-            <div *ngIf="option.label" class="fu-option-label-text">{{ option.label }}</div>
+            <div *ngIf="option.label" class="fu-option-label-text"
+                 [attr.data-testid]="isFirst ? testId : null">{{ option.label }}
+            </div>
         </label>
     </ng-container>
 </div>

@@ -18,4 +18,5 @@ export class ChartLabelsV4Component {
     @Input() labels: ChartLabel[] = [];
     @Output() labelClick = new EventEmitter<ChartLabel>();
     @Output() labelHover = new EventEmitter<ChartLabel>();
+    @Input() testId: string;
 }

@@ -38,6 +38,8 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
         this.disableAddFilter$.next(val);
     }
 
+    @Input() testId: string;
+
     @Input() set addFilterOptions(options: DropdownOption[]) {
         this.optionsRef$.next(options);
         this.options$.next(this.optionsRef$.getValue());

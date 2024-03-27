@@ -10,7 +10,7 @@ export class DialogComponent {
     }
 
     async waitForComponent({testId}: {testId: string}) {
-        const loadedPageSelector = `[data-testid='${testId}--${DialogTestIdModifiers.WRAPPER}']`;
+        const loadedPageSelector = getTestIdSelector(getTestId(testId, DialogTestIdModifiers.WRAPPER));
         await this.page.waitForSelector(loadedPageSelector);
     }
 

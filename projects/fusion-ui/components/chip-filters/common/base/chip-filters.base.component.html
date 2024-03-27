@@ -1,7 +1,9 @@
-<div class="chip-filters-container">
+<div class="chip-filters-container" style="color: #1a7f37"
+     [attr.data-testid]="testId">
     <ng-content></ng-content>
     <ng-container *ngIf="(options$ | async).length">
-        <fusion-chip-filter [isDynamicContent]="true" [configuration]="{id: addFilterIndex,mode:'add', disabled: (disableAddFilter$ | async)}">
+        <fusion-chip-filter [isDynamicContent]="true" [testId]="testId"
+                            [configuration]="{id: addFilterIndex,mode:'add', disabled: (disableAddFilter$ | async)}">
             <div class="fu-chip-content">
                 <span>
                     <fusion-icon [name]="addFilterIcon"></fusion-icon>
@@ -10,6 +12,7 @@
             </div>
             <div class="filter-element" #addFilter>
                 <fusion-dropdown
+                    [testId]="testId"
                     [optionsTitle]="addFiltersTitle"
                     [search]="isSearch"
                     [options]="options$ | async"
