@@ -53,7 +53,7 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
                     this.clearAll();
                     this.applySelect(true);
                     console.log('resetState$');
-                }, 500);
+                });
             });
     }
 
