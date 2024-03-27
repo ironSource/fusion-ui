@@ -24,32 +24,32 @@ export class AlertComponent extends BaseComponent {
         this.closeButtonElement = new ButtonComponent(page, getTestIdSelector(getTestId(this.selector, AlertTestIdModifiers.CLOSE_BUTTON)));
     }
 
-    async getAlertText() {
+    async getAlertText(): Promise<string> {
         return this.messageElement.textContent();
     }
 
-    async getAlertTitle() {
+    async getAlertTitle(): Promise<string> {
         return this.titleElement.textContent();
     }
 
-    async getActionButtonText() {
+    async getActionButtonText(): Promise<string> {
         return this.actionButtonElement.textContent();
     }
 
-    async clickOnActionButton() {
+    async clickOnActionButton(): Promise<void> {
         await this.actionButtonElement.click();
     }
 
-    async closeAlert() {
+    async closeAlert(): Promise<void> {
         await this.closeButtonElement.click();
     }
 
-    async isAlertVisible() {
+    async isAlertVisible(): Promise<boolean> {
         const alertSelector = await this.wrapperElement.count();
         return alertSelector > 0;
     }
 
-    async getAlertIconType() {
+    async getAlertIconType(): Promise<string> {
         return this.wrapperElement.getAttribute('class');
     }
 }
