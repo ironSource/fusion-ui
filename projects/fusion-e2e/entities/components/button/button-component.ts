@@ -35,7 +35,7 @@ export class ButtonComponent extends BaseComponent {
     }
 
     async isButtonLoading({testId}: {testId: string}) {
-        const buttonLocator = await this.getByTestId(testId);
+        const buttonLocator = await this.getLocator(getTestIdSelector(testId));
         const buttonElement = await buttonLocator.elementHandle();
         const buttonClass = await buttonElement.getAttribute('class');
         return buttonClass.includes('loading');
@@ -46,7 +46,7 @@ export class ButtonComponent extends BaseComponent {
     }
 
     async getIconButtonText({testId}: {testId: string}) {
-        const button = await this.getByTestId(testId);
+        const button = await this.getLocator(getTestIdSelector(testId));
         const textSelector = await button.last().locator('span');
         return this.selectorText(textSelector);
     }
