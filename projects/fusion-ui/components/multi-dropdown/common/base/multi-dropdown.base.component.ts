@@ -49,10 +49,11 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
             .asObservable()
             .pipe(takeUntil(this.onDestroy$))
             .subscribe(_ => {
-                this.clearAll();
                 setTimeout(() => {
+                    this.clearAll();
                     this.applySelect(true);
-                });
+                    console.log('resetState$');
+                }, 500);
             });
     }
 
