@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [6.5.5-rc.8](https://github.com/ironSource/fusion-ui/compare/v6.5.5-rc.7...v6.5.5-rc.8) (2024-03-26)
+
+### [6.5.5-rc.7](https://github.com/ironSource/fusion-ui/compare/v6.5.5-rc.6...v6.5.5-rc.7) (2024-03-24)
+
+### [6.5.5-rc.6](https://github.com/ironSource/fusion-ui/compare/v6.5.5-rc.5...v6.5.5-rc.6) (2024-03-21)
+
+### [6.5.5-rc.5](https://github.com/ironSource/fusion-ui/compare/v6.5.5-rc.4...v6.5.5-rc.5) (2024-03-21)
+
+### [6.5.5-rc.4](https://github.com/ironSource/fusion-ui/compare/v6.5.5-rc.3...v6.5.5-rc.4) (2024-03-21)
+
+### [6.5.5-rc.3](https://github.com/ironSource/fusion-ui/compare/v6.5.5-rc.2...v6.5.5-rc.3) (2024-03-21)
+
+### [6.5.5-rc.2](https://github.com/ironSource/fusion-ui/compare/v6.5.5-rc.1...v6.5.5-rc.2) (2024-03-21)
+
+### [6.5.5-rc.1](https://github.com/ironSource/fusion-ui/compare/v6.5.5-rc.0...v6.5.5-rc.1) (2024-03-21)
+
+### [6.5.5-rc.0](https://github.com/ironSource/fusion-ui/compare/v6.5.4...v6.5.5-rc.0) (2024-03-19)
+
 ### [6.5.4](https://github.com/ironSource/fusion-ui/compare/v6.5.4-rc.3...v6.5.4) (2024-03-19)
 
 ### [6.5.4-rc.3](https://github.com/ironSource/fusion-ui/compare/v6.5.4-rc.2...v6.5.4-rc.3) (2024-03-18)

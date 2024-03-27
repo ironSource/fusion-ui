@@ -14,6 +14,7 @@ import {ChartBaseDatasetOptions} from './entities/chart-options';
 import {ChartType} from './entities/chart-type.enum';
 import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
 import {HoverVerticalLine} from './hoverVerticalLine.plugin';
+import {ChartLegend} from './entities/chart-legend';
 
 // Chart.js 3 is tree-shakeable, so it is necessary to import and register the controllers, elements, scales and plugins you are going to use.
 import {
@@ -99,6 +100,8 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     protected isStacked = false;
     protected yAxesFormat: string;
 
+    private legends: ChartLegend[] = [];
+
     constructor(
         protected datePipe: DatePipe,
         protected currencyPipe: CurrencyPipe,
@@ -153,6 +156,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         this.yAxesFormat = this.getDisplayFormat(data) ?? data.displayFormat;
         this.chartData = this.dataParseService.parseChartData(data, type, this.isStacked);
         this.chartOptions = this.getChartOptions();
+        this.legends = (data as ChartData).legends;
 
         if (!isNullOrUndefined(this.chart)) {
             this.chart.destroy();
@@ -210,15 +214,16 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     protected getColors(): string[] {
         const palette = this.colorsService.getColorPalette(this.componentVersion);
         const legends = (this._data as ChartData).legends;
-        const customPalette = legends
-            ? legends.map((legend, idx) => {
-                  return !isNullOrUndefined(legend.color)
-                      ? legend.color
-                      : !isNullOrUndefined(palette[idx])
-                      ? palette[idx]
-                      : '#' + Math.floor(Math.random() * 16777215).toString(16); // no color - gen random
-              })
-            : palette;
+        const customPalette =
+            legends && this.type !== ChartType.Bar
+                ? legends.map((legend, idx) => {
+                      return !isNullOrUndefined(legend.color)
+                          ? legend.color
+                          : !isNullOrUndefined(palette[idx])
+                          ? palette[idx]
+                          : '#' + Math.floor(Math.random() * 16777215).toString(16); // no color - gen random
+                  })
+                : palette;
         return customPalette;
     }
 
@@ -231,8 +236,8 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         // set bg fill options
         lineOptions.fill = this.isStacked;
         if (this.componentVersion === 4 && this.isStacked) {
-            lineOptions.borderWidth = 0;
-            lineOptions.pointRadius = 0;
+            lineOptions.borderWidth = this.chartData.labels.length === 1 ? 2 : 0;
+            lineOptions.pointRadius = this.chartData.labels.length === 1 ? 2 : 0;
         }
         // lineOptions.borderWidth = this.isStacked ? 10 : lineOptions.borderWidth;
         bgOpacity = this.componentVersion === 4 ? bgOpacity : bgOpacity / 2;
@@ -415,7 +420,12 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             callbacks: {
                 ...options.plugins.tooltip.callbacks,
                 label: this.getTooltipLabel.bind(this),
-                ...(isV4InteractionIndex ? {footer: this.calculateTotals.bind(this)} : {})
+                ...(isV4InteractionIndex
+                    ? {
+                          footer: this.calculateTotals.bind(this),
+                          beforeTitle: this.getBeforeTitle.bind(this)
+                      }
+                    : {})
             },
             ...(isLastDotted ? {filter: this.filterTooltip.bind(this)} : {})
         };
@@ -459,7 +469,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             options.scales.x.stacked = true;
             options.scales.y.stacked = true;
             options.interaction = {
-                intersect: true,
+                intersect: false,
                 mode: 'index',
                 axis: 'xy'
             };
@@ -500,13 +510,28 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         const label = context.dataset.label ?? context.label ?? '';
         const val = context.parsed.y ?? context?.formattedValue?.replace(/,/g, '');
         const format = context.dataset.displayFormat ?? this.yAxesFormat;
-
         return ` ${label}: ${!!format ? this.getFormatted(val, format) : val}`;
     }
     private calculateTotals(tooltipItem: any[]) {
         const format = this.yAxesFormat;
         const total = tooltipItem.reduce((acc, val) => acc + val.raw, 0);
         return `Total: ${!!format ? this.getFormatted(total, format) : total}`;
+    }
+    private getBeforeTitle(data): HTMLElement {
+        const legend = this.legends.find(legend => {
+            return Array.isArray(legend.displayName)
+                ? legend.displayName.join(',') === data[0].label
+                : legend.displayName === data[0].label;
+        });
+        if (!!legend?.imageUrl) {
+            const appImage = document.createElement('img');
+            appImage.style.width = '20px';
+            appImage.style.height = '20px';
+            appImage.style.borderRadius = '4px';
+            appImage.src = legend?.imageUrl;
+            return appImage;
+        }
+        return null;
     }
     // endregion
 
