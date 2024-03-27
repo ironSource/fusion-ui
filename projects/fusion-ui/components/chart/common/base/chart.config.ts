@@ -43,14 +43,16 @@ export const BASE_DATASET_OPTIONS: {[key: string]: ChartBaseDatasetOptions} = {
         }
     },
     style_v4: {
-        colorSettings: ['backgroundColor', 'borderColor', 'pointBorderColor', 'pointBackgroundColor'],
-        fillOpacity: 75,
+        colorSettings: ['backgroundColor', 'borderColor', 'pointBorderColor', 'pointHoverBackgroundColor'],
+        fillOpacity: 10,
         seriesToShow: 7,
         dateFormat: 'MMM dd',
         lineOptions: {
             fill: false,
             hidden: false,
-            pointBorderColor: '#FFFFFF'
+            borderWidth: 2,
+            tension: 0.4,
+            pointHoverBackgroundColor: '#fcfcfc'
         },
         barOptions: {
             borderRadius: 4,
@@ -259,7 +261,6 @@ export const CHART_CONFIGURATIONS: any = {
             tooltip: {
                 enabled: false,
                 position: 'nearest',
-                sortReverse: true,
                 external: externalV4TooltipHandler
             }
         },
@@ -271,15 +272,13 @@ export const CHART_CONFIGURATIONS: any = {
         elements: {
             line: {
                 borderWidth: 2,
-                tension: 0
+                tension: 0.4
             },
             point: {
-                radius: 1,
+                radius: 0,
                 hitRadius: 8,
-                borderWidth: 0,
-                hoverRadius: 4,
                 hoverBorderWidth: 2,
-                hoverBorderColor: '#ffffff'
+                pointHoverBackgroundColor: '#fcfcfc'
             }
         },
         scales: {

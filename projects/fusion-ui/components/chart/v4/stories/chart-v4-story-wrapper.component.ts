@@ -23,7 +23,7 @@ import {ChartV4Component} from '../chart-v4.component';
         <div class="fusion-chart-labels-wrapper" *ngIf="data && type !== 'doughnut'">
             <fusion-chart-labels
                 [labels]="chartDataLabels$ | async"
-                [testId]="testId"
+                [bgOpacity]="type === 'stackedLine' ? 10 : 100"
                 (labelHover)="labelHovered($event)"
             ></fusion-chart-labels>
         </div>
@@ -39,7 +39,6 @@ export class ChartV4WrapperComponent {
     @Input() data: ChartData;
     @Input() type: ChartType;
     @Input() options: any;
-    @Input() testId: string = 'charts-default';
 
     @ViewChild('fusionChart') fusionChart: ChartV4Component;
 
@@ -50,7 +49,7 @@ export class ChartV4WrapperComponent {
             const dataLabel: ChartLabel = {
                 id: idx,
                 label: dataSet.label,
-                color: dataSet.borderColor,
+                color: dataSet.borderColor === '#FCFCFC' ? dataSet.backgroundColor : dataSet.borderColor,
                 icon: dataSet.icon
             };
             return dataLabel;

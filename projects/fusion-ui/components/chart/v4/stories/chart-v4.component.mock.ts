@@ -3,7 +3,10 @@ import {getRandomAppImage} from '@ironsource/fusion-ui/storybook-foundations/moc
 
 export const CHART_BAR_DATA_MOCK: ChartData = {
     data: {
-        'Unity Ads': [804.16, 1688.59, 1383.47, 1037.83, 899.56]
+        'Unity Ads': [804.16, 1688.59, 1383.47, 1037.83, 899.56],
+        'ironSource Ads': [940.16, 1288.59, 1183.47, 1137.83, 799.56],
+        'Tapjoy Offerwall': [1104.16, 1888.59, 1483.47, 1237.83, 999.56],
+        Aura: [604.16, 1688.59, 1083.47, 937.83, 699.56]
     },
     legends: [
         {id: 9930, displayName: 'Australia', displayFormat: 'shortCurrency'},
@@ -16,8 +19,8 @@ export const CHART_BAR_DATA_MOCK: ChartData = {
 
 export const CHART_BAR_GROUPED_DATA_MOCK: ChartData = {
     data: {
-        'Unity Ads': [804.16, 1688.59, 1383.47, 7.83, 0],
-        'ironSource Ads': [456.16, 1290.59, 678.47, 9.83, 0]
+        'Unity Ads': [804.16, 1688.59, 1383.47, 1037.83, 899.56],
+        'ironSource Ads': [456.16, 1290.59, 678.47, 659.83, 344.56]
     },
     legends: [
         {id: 9930, displayName: 'Australia', displayFormat: 'shortCurrency'},
@@ -146,23 +149,6 @@ export const CHART_DATA_MOCK_BIG: ChartData = {
         }
     ]
 };
-export const CHART_DATA_MOCK_ONE_DAY: ChartData = {
-    data: {
-        '2024-03-08': [61455525, 23878360]
-    },
-    legends: [
-        {
-            id: 1,
-            displayName: 'ironSource Ads',
-            displayFormat: 'shortCurrency'
-        },
-        {
-            id: 2,
-            displayName: 'Unity Ads',
-            displayFormat: 'shortCurrency'
-        }
-    ]
-};
 
 export const CHART_DATA_MOCK_BIG_ICONS: ChartData = {
     data: {
@@ -227,8 +213,8 @@ export const CHART_CUSTOM_COLORS_DATA_MOCK: ChartData = {
 export const CHART_PIE_DATA_MOCK: FusionChartPieData = {
     displayFormat: 'shortCurrency',
     data: {
-        ironSource: 8781958,
-        UnityAds: 14345876
+        UnityAds: 14345876,
+        ironSource: 8781958
     }
 };
 

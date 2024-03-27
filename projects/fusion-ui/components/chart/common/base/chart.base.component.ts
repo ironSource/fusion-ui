@@ -214,16 +214,15 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     protected getColors(): string[] {
         const palette = this.colorsService.getColorPalette(this.componentVersion);
         const legends = (this._data as ChartData).legends;
-        const customPalette =
-            legends && this.type !== ChartType.Bar
-                ? legends.map((legend, idx) => {
-                      return !isNullOrUndefined(legend.color)
-                          ? legend.color
-                          : !isNullOrUndefined(palette[idx])
-                          ? palette[idx]
-                          : '#' + Math.floor(Math.random() * 16777215).toString(16); // no color - gen random
-                  })
-                : palette;
+        const customPalette = legends
+            ? legends.map((legend, idx) => {
+                  return !isNullOrUndefined(legend.color)
+                      ? legend.color
+                      : !isNullOrUndefined(palette[idx])
+                      ? palette[idx]
+                      : '#' + Math.floor(Math.random() * 16777215).toString(16); // no color - gen random
+              })
+            : palette;
         return customPalette;
     }
 
@@ -236,12 +235,10 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         // set bg fill options
         lineOptions.fill = this.isStacked;
         if (this.componentVersion === 4 && this.isStacked) {
-            lineOptions.borderWidth = this.chartData.labels.length === 1 ? 2 : 0;
-            lineOptions.pointRadius = this.chartData.labels.length === 1 ? 2 : 0;
+            lineOptions.lineOptions = 2;
         }
         // lineOptions.borderWidth = this.isStacked ? 10 : lineOptions.borderWidth;
         bgOpacity = this.componentVersion === 4 ? bgOpacity : bgOpacity / 2;
-
         this.chartData.datasets = this.chartData.datasets.map((item, idx) => {
             // set color options
             const dataGroupOptions = colorKeys.reduce((resultOptions, colorOption) => {
@@ -251,6 +248,9 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
                         resultOptions[colorOption] = this.colorsService.toRgba(color, bgOpacity);
                         break;
                     case 'pointBackgroundColor':
+                        resultOptions[colorOption] = lineOptions[colorOption] ? lineOptions[colorOption] : color;
+                        break;
+                    case 'pointHoverBackgroundColor':
                         resultOptions[colorOption] = lineOptions[colorOption] ? lineOptions[colorOption] : color;
                         break;
                     case 'pointBorderColor':
@@ -305,8 +305,16 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         this.chartData.datasets = this.chartData.datasets.map((item, idx) => {
             if (this.componentVersion === 4) {
                 barOptions.borderColor = palette[idx];
-                barOptions.backgroundColor = this.colorsService.toRgba(palette[idx], bgOpacity);
-                barOptions.hoverBackgroundColor = this.colorsService.toRgba(palette[idx], 100);
+                barOptions.backgroundColor = palette[idx];
+                barOptions.hoverBackgroundColor = palette[idx];
+                barOptions.borderWidth = 0;
+                barOptions.barPercentage = 0.9;
+                if (this.isStacked) {
+                    barOptions.barPercentage = 0.5;
+                    barOptions.borderWidth = 2;
+                    barOptions.borderColor = '#FCFCFC';
+                    barOptions.hoverBorderColor = '#FCFCFC';
+                }
             } else {
                 for (let i = 0; i < item.data.length; i++) {
                     barOptions.borderColor.push(palette[i]);
@@ -469,7 +477,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             options.scales.x.stacked = true;
             options.scales.y.stacked = true;
             options.interaction = {
-                intersect: false,
+                intersect: true,
                 mode: 'index',
                 axis: 'xy'
             };
@@ -510,6 +518,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         const label = context.dataset.label ?? context.label ?? '';
         const val = context.parsed.y ?? context?.formattedValue?.replace(/,/g, '');
         const format = context.dataset.displayFormat ?? this.yAxesFormat;
+
         return ` ${label}: ${!!format ? this.getFormatted(val, format) : val}`;
     }
     private calculateTotals(tooltipItem: any[]) {

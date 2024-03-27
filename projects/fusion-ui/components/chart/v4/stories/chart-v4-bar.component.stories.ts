@@ -28,21 +28,22 @@ export default {
     },
     args: {
         data: {...CHART_BAR_DATA_MOCK},
-        type: ChartType.Bar,
-        testId: 'moshe'
+        type: ChartType.Bar
     }
 } as Meta<ChartV4Component>;
 
 type Story = StoryObj<ChartV4Component>;
 
+/*
 export const Basic: Story = {
     render: args => ({
         props: args,
         template: `
-            <fusion-chart-wrapper [data]="data" [type]="type" [testId]="testId"></fusion-chart-wrapper>
+            <fusion-chart-wrapper [data]="data" [type]="type"></fusion-chart-wrapper>
         `
     })
 };
+*/
 
 export const Stack: Story = {
     render: args => ({

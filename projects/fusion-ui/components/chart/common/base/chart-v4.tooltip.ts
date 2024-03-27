@@ -413,9 +413,10 @@ function generateTooltipBodyRow({tooltip, i, body}) {
     bodyRow.style.cssText = BODY_ROW_STYLE;
     const colors = tooltip.labelColors[i];
     const colorDiv = document.createElement('div');
+    const labelColor = colors.borderColor === '#fcfcfc'.toUpperCase() ? colors.backgroundColor : colors.borderColor;
     colorDiv.style.cssText = `
-    background:${colors.backgroundColor};
-    border-color:${colors.borderColor};
+    background:${labelColor};
+    border-color:${labelColor};
     ${ROUND_INDICATOR_ELEMENT_STYLE}
   `;
 
@@ -449,7 +450,6 @@ function generateTooltipBodyRow({tooltip, i, body}) {
 export function externalV4TooltipHandler(context) {
     const {chart, tooltip} = context;
     const tooltipEl = getOrCreateTooltip(chart);
-    const bodySortReverse = chart?.config?._config?.options?.plugins?.tooltip?.sortReverse ?? false;
 
     if (tooltip.opacity === 0) {
         tooltipEl.style.opacity = 0;
@@ -466,7 +466,7 @@ export function externalV4TooltipHandler(context) {
         const tooltipBody = document.createElement('div');
         tooltipBody.style.cssText = BODY_ROWS_WRAPPER;
         const tooltipRoot = tooltipEl.querySelector('div.fu-chart-tooltip-wrapper');
-        titleLines.forEach((title: string | HTMLElement) => {
+        titleLines.forEach(title => {
             if (typeof title !== 'string' && title.tagName === 'IMG') {
                 tooltipHead.appendChild(title);
             } else {
@@ -474,12 +474,9 @@ export function externalV4TooltipHandler(context) {
                 tooltipHead.appendChild(tr);
             }
         });
+
         bodyLines.forEach((body, i) => {
-            if (bodyLines.length > 1 && bodySortReverse) {
-                tooltipBody.prepend(generateTooltipBodyRow({tooltip, i, body}));
-            } else {
-                tooltipBody.appendChild(generateTooltipBodyRow({tooltip, i, body}));
-            }
+            tooltipBody.appendChild(generateTooltipBodyRow({tooltip, i, body}));
         });
 
         while (tooltipRoot.firstChild) {
