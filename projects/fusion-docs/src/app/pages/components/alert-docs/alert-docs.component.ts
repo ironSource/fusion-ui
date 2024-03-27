@@ -73,7 +73,7 @@ export class AlertDocsComponent implements OnInit, OnDestroy {
         this.onDestroy$.complete();
     }
 
-    onCloseButtonClicked(event: any): void {
+    closeButtonClicked(event: any): void {
         console.log('>>', event);
     }
 }

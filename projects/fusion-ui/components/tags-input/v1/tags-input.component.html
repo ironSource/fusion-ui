@@ -5,7 +5,7 @@
     [clickOutsideByCoordinates]="true"
     (fusionClickOutside)="onOutsideClick()"
     [ngClass]="{'is-icon-right-position': isIconRightPosition, 'dd-opened': isOpen$ | async, 'ss-selected': selected?.length > 0}"
-    [class.tags-disabled]="isDisabled"
+    [class.tags-disabled]="isDisabled || isDisabledForm"
     [class.is-autocomplete]="autoComplete"
 >
     <!--tags list holder-->
@@ -18,7 +18,7 @@
                 [flag]="tag.flag"
                 [suppressClickOnRemove]="suppressClickOnRemove"
                 [tooltipContent]="tag.tooltip ? tag.tooltip : tag.title"
-                [disabled]="isDisabled"
+                [disabled]="isDisabled || isDisabledForm"
             >{{ tag.title }}</fusion-tag
             >
         </li>
@@ -26,14 +26,14 @@
             <fusion-input
                 #tagInput
                 [formControl]="searchValue"
-                *ngIf="!isDisabled && (isAddTagsAllowed || autoComplete)"
-                [hidden]="isDisabled"
+                *ngIf="!(isDisabled || isDisabledForm) && (isAddTagsAllowed || autoComplete)"
+                [hidden]="isDisabled || isDisabledForm"
                 [loading]="loading && bulkInsertion"
                 [placeholder]="displayPlaceholder"
                 (ngEnter)="onEnterNewTag($event)"
                 [options]="{size: 'small'}"
             ></fusion-input>
-            <span class="placeholder" *ngIf="isDisabled">
+            <span class="placeholder" *ngIf="isDisabled || isDisabledForm">
                 {{ displayPlaceholder }}
             </span>
         </li>

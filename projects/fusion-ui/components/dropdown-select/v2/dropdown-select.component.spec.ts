@@ -1,6 +1,8 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {DropdownSelectComponent} from './dropdown-select.component';
+import {IconModule} from "@ironsource/fusion-ui/components/icon/v1";
+import {TooltipModule} from "@ironsource/fusion-ui/components/tooltip/v2";
 
 describe('DropdownSelectComponent', () => {
     let component: DropdownSelectComponent;
@@ -8,7 +10,8 @@ describe('DropdownSelectComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [DropdownSelectComponent]
+            declarations: [DropdownSelectComponent],
+            imports: [IconModule, TooltipModule]
         }).compileComponents();
     });
 

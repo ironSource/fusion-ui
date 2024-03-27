@@ -19,5 +19,5 @@ export class ModalFooterComponent {
     // eslint-disable-next-line
     @Output() onSave = new EventEmitter();
     // eslint-disable-next-line
-    @Output() onCloseButtonClicked = new EventEmitter();
+    @Output() closeButtonClicked = new EventEmitter();
 }

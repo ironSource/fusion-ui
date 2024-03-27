@@ -3,8 +3,8 @@
     "compilerOptions": {
         "outDir": "../../out-tsc/lib",
         "declarationMap": true,
-        "target": "es2015",
-        "module": "es2015",
+        "target": "ES2022",
+        "module": "ES2022",
         "moduleResolution": "node",
         "declaration": true,
         "sourceMap": true,
@@ -13,7 +13,7 @@
         "experimentalDecorators": true,
         "importHelpers": true,
         "types": [],
-        "lib": ["dom", "es2018"]
+        "lib": ["dom", "ES2022"]
     },
     "angularCompilerOptions": {
         "skipTemplateCodegen": true,
@@ -22,5 +22,5 @@
         "strictInjectionParameters": true,
         "enableResourceInlining": true
     },
-    "exclude": ["src/test.ts", "**/*.spec.ts", "**/*.stories.ts"]
+    "exclude": ["src/test.ts", "**/*.spec.ts"]
 }

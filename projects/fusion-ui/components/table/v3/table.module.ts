@@ -33,7 +33,7 @@ import {ErrorMessageModule} from '@ironsource/fusion-ui/components/error-message
 import {NotAvailablePipe} from '@ironsource/fusion-ui/pipes/not-available';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button/v3';
 import {MenuDropComponent} from '@ironsource/fusion-ui/components/menu-drop';
-import {TeleportingDirective} from '@ironsource/fusion-ui/directives/teleporting';
+import {TeleportingModule} from '@ironsource/fusion-ui/directives/teleporting';
 import {RepositionDirective} from '@ironsource/fusion-ui/directives/reposition';
 import {SearchComponent} from '@ironsource/fusion-ui/components/search';
 
@@ -71,7 +71,7 @@ import {SearchComponent} from '@ironsource/fusion-ui/components/search';
         ButtonModule,
         MenuDropComponent,
         RepositionDirective,
-        TeleportingDirective,
+        TeleportingModule,
         SearchComponent
     ]
 })

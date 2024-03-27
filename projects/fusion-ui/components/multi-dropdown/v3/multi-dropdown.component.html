@@ -20,7 +20,7 @@
         [class.options-locate-left]="isLocatedLeft"
         [class.options-locate-right]="isLocatedRight"
         [ngClass]="{
-            'dd-disabled': isDisabled,
+            'dd-disabled': isDisabled || isDisabledForm,
             'dd-confirm': search || autoComplete,
             'dd-scroll': filteredOptions?.length >= optionsWithoutScroll
         }"

@@ -248,6 +248,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     private _isLocatedRight = false;
     private _isLocatedLeft = false;
     private initPlaceholder: string;
+    protected isDisabledForm: boolean;
     private initIcon: IconData;
     protected focusedLI = -1;
     private loadingState: boolean;
@@ -331,7 +332,6 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
         this.initIcon = typeof this.icon === 'string' ? this.icon : {...this.icon};
         this.search = this.search || false;
         this.strictSearch = this.strictSearch || false;
-        this.isDisabled = this.isDisabled || false;
         this.selected = this.selected || [];
         this.mappingOptions = {
             id: 'id',
@@ -377,7 +377,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
                 forcePlaceholderOnSelection: this.forcePlaceholderOnSelection,
                 overlayLocation: this.placeholderLocation
             },
-            disabled: this.isDisabled,
+            disabled: this.isDisabled || this.isDisabledForm,
             readonly: this.readonly,
             isTabMode: this.isTabMode,
             isSearch: this.autoComplete || this.search,
@@ -445,7 +445,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
      */
     openDropdown(event: MouseEvent) {
         const forceOpen = !!(event.target as Element).closest('div.dropdown-arrow-container');
-        if (!this.isDisabled && !this.readonly) {
+        if (!(this.isDisabled || this.isDisabledForm) && !this.readonly) {
             if (!this.isTabMode || forceOpen) {
                 if (this.isOpen$.getValue()) {
                     this.closeDropdown();
@@ -552,7 +552,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
             this.isIconRightPosition && 'is-icon-right-position',
             this.isOpen$.getValue() && 'dd-opened',
             !!this.selected && this.selected.length && 'ss-selected',
-            this.isDisabled && 'dd-disabled',
+            (this.isDisabled || this.isDisabledForm) && 'dd-disabled',
             this.readonly && 'dd-readonly',
             this.isTabMode && 'is-tab-mode'
         ].filter(Boolean);
@@ -756,7 +756,14 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
             this.closeDropdown();
             this.setOptionsAndLabel();
         } else {
-            option.isOpen = !option.isOpen;
+            this.options = this.optionsState.map((optionItem: DropdownOption) =>
+                optionItem.id === option.id
+                    ? {
+                          ...option,
+                          isOpen: !option?.isOpen
+                      }
+                    : optionItem
+            );
         }
     }
 
@@ -977,9 +984,11 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
 
     /** @ignore */
     setDisabledState?(isDisabled: boolean): void {
-        this.isDisabled = isDisabled;
-        this.dropdownSelectConfigurations$.next(this.getDropdownSelectConfigurations());
-        this.cdr.markForCheck();
+        if (isNullOrUndefined(this.isDisabled)) {
+            this.isDisabledForm = isDisabled;
+            this.dropdownSelectConfigurations$.next(this.getDropdownSelectConfigurations());
+            this.cdr.markForCheck();
+        }
     }
 
     private getDisplayedOptionsObservable(): Observable<DropdownOption[]> {

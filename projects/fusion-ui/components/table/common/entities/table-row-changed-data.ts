@@ -5,6 +5,5 @@ export interface TableRowChangedData {
     keyChanged: string;
     newValue: any;
     prevValue: any;
-    // eslint-disable-next-line @typescript-eslint/ban-types
     onRequestDone?: Function;
 }

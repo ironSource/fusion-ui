@@ -59,7 +59,7 @@ const DefaultTemplate: StoryFn<TopFilterTriggerComponent> = (args: TopFilterTrig
     [error]="error"
     [required]="required"
     [loading]="loading"
-    (onSelectedChange)="onSelectedChange($event)"
+    (selectedChange)="selectedChange($event)"
 >
 <div class="filter-element">
     <fusion-dropdown
@@ -101,7 +101,7 @@ export const Default = {
       template: \`<div style="height: 380px">
     <fusion-top-filter-trigger
         [placeholder]="placeholder"
-        (onSelectedChange)="onSelectedChange($event)"
+        (selectedChange)="selectedChange($event)"
     >
     <div class="filter-element">
         <fusion-dropdown
@@ -124,8 +124,8 @@ export const Default = {
         search = true;
         options: DropdownOption[] = ${JSON.stringify(MOK_APPLICATIONS_ONE_LINE_OPTIONS)};
 
-        onSelectedChange($event){
-            console.log('onSelectedChange', $event);
+        selectedChange($event){
+            console.log('selectedChange', $event);
         }
     }
                 `,
@@ -165,7 +165,7 @@ export const Loading = {
     <fusion-top-filter-trigger
         [placeholder]="placeholder"
         [loading]="loading"
-        (onSelectedChange)="onSelectedChange($event)"
+        (selectedChange)="selectedChange($event)"
     >
     <div class="filter-element">
         <fusion-dropdown
@@ -189,8 +189,8 @@ export const Loading = {
         loading = true;
         options: DropdownOption[] = ${JSON.stringify(MOK_APPLICATIONS_ONE_LINE_OPTIONS)};
 
-        onSelectedChange($event){
-            console.log('onSelectedChange', $event);
+        selectedChange($event){
+            console.log('selectedChange', $event);
         }
     }
                 `,
@@ -227,7 +227,7 @@ export const SelectedApplication = {
       template: \`<div style="height: 380px">
     <fusion-top-filter-trigger
         [placeholder]="placeholder"
-        (onSelectedChange)="onSelectedChange($event)"
+        (selectedChange)="selectedChange($event)"
     >
     <div class="filter-element">
         <fusion-dropdown
@@ -250,8 +250,8 @@ export const SelectedApplication = {
         options: DropdownOption[] = ${JSON.stringify(MOK_APPLICATIONS_ONE_LINE_OPTIONS)};
         formControl = new FormControl(this.options[1]);
 
-        onSelectedChange($event){
-            console.log('onSelectedChange', $event);
+        selectedChange($event){
+            console.log('selectedChange', $event);
         }
     }
                 `,

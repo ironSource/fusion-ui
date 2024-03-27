@@ -3,7 +3,7 @@
     [id]="id"
     [value]="value"
     [checked]="checked"
-    [disabled]="isDisabled"
+    [disabled]="isDisabled || isDisabledForm"
     (change)="change($event)"
     [indeterminate]="isIndeterminate"
 />

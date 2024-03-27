@@ -3,6 +3,7 @@ import {ControlValueAccessor} from '@angular/forms';
 import {DomSanitizer} from '@angular/platform-browser';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Directive()
 export abstract class CheckboxBaseComponent implements OnInit, ControlValueAccessor {
@@ -31,7 +32,7 @@ export abstract class CheckboxBaseComponent implements OnInit, ControlValueAcces
     @Output() changed = new EventEmitter();
     /** @internal */
     @HostBinding('class.only-checkbox') isOnlyCheckbox = false;
-
+    protected isDisabledForm: boolean;
     get toolTip(): string {
         return this.tooltipContent ? this.tooltipContent : this.class && this.class.indexOf('truncate') > -1 ? this.label : '';
     }
@@ -42,7 +43,7 @@ export abstract class CheckboxBaseComponent implements OnInit, ControlValueAcces
         const unique = this.uniqueIdService.getUniqueId();
         this.id = this.id || 'is-checkboxes-' + unique;
         this.checked = this.checked || false;
-        this.isDisabled = this.isDisabled || false;
+        // this.isDisabled = this.isDisabled || false;
         this.label = this.label || '';
         this.value = this.value || '';
         this.isOnlyCheckbox = !this.label && !this.icon && !this.flag;
@@ -107,7 +108,9 @@ export abstract class CheckboxBaseComponent implements OnInit, ControlValueAcces
      * @ignore
      */
     setDisabledState?(isDisabled: boolean): void {
-        this.isDisabled = isDisabled;
-        this.cd.detectChanges();
+        if (isNullOrUndefined(this.isDisabled)) {
+            this.isDisabledForm = isDisabled;
+            this.cd.detectChanges();
+        }
     }
 }

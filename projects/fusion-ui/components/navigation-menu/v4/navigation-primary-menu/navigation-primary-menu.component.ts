@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
@@ -22,7 +22,7 @@ import {map} from 'rxjs/operators';
     styleUrls: ['./navigation-primary-menu.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NavigationPrimaryMenuComponent implements OnInit {
+export class NavigationPrimaryMenuComponent {
     @Input() set menuBarItems(value: PrimaryMenuItem[]) {
         if (!isNullOrUndefined(value)) {
             this.parseNavigationBarItems(value);
@@ -73,8 +73,6 @@ export class NavigationPrimaryMenuComponent implements OnInit {
     defaultCssTheme: {[key: string]: string};
 
     constructor(private elementRef: ElementRef) {}
-
-    ngOnInit(): void {}
 
     networkItemClicked(item: PrimaryMenuItem) {
         switch (item?.type) {

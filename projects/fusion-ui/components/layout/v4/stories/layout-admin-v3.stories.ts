@@ -14,7 +14,7 @@ import {
 } from '@ironsource/fusion-ui/components/navigation-menu/v4/stories/navigation-menu.mock';
 import {LayoutStoryWrapperComponent} from './layout-story-wrapper.component';
 import {ButtonModule} from '@ironsource/fusion-ui/components/button';
-import {TeleportingDirective} from '@ironsource/fusion-ui/directives/teleporting';
+import {TeleportingModule} from '@ironsource/fusion-ui/directives/teleporting';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TopFilterIncludeExcludeComponent} from '@ironsource/fusion-ui/components/top-filter-include-exclude';
 
@@ -32,7 +32,7 @@ const meta: Meta<LayoutStoryWrapperComponent> = {
                 IconModule,
                 LayoutStoryWrapperComponent,
                 ButtonModule,
-                TeleportingDirective,
+                TeleportingModule,
                 TopFilterIncludeExcludeComponent
             ]
         })

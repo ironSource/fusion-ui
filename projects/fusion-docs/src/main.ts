@@ -10,7 +10,6 @@ if (environment.production) {
 
 const bootstrap = () => platformBrowserDynamic().bootstrapModule(AppModule);
 if (environment.hmr) {
-    // eslint-disable-next-line dot-notation, @typescript-eslint/dot-notation
     if (module['hot']) {
         hmrBootstrap(module, bootstrap);
     } else {
