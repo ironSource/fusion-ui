@@ -49,10 +49,10 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
             .asObservable()
             .pipe(takeUntil(this.onDestroy$))
             .subscribe(_ => {
-                if (this.isOpen$.getValue()) {
-                    this.closeDropdown();
-                }
-                // this.applySelect(true);
+                // if (this.isOpen$.getValue()) {
+                //     this.closeDropdown();
+                // }
+                this.applySelect(true, false);
                 //
             });
     }
@@ -159,7 +159,7 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
      * Saving selected options
      * @internal
      */
-    applySelect(close = false): void {
+    applySelect(close = false, doSelectedChanged = true): void {
         this.selected = this.tempSelected;
 
         if (this.showSelectedFirst && this.selected.length && this.isIndeterminate) {
@@ -167,15 +167,16 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
         } else {
             this.options = this.tempOptions;
         }
-
-        this.setLabel();
-        this.selectedChange.emit(
-            this.selected.map(item => {
-                item.isSelected = true;
-                return item;
-            })
-        );
-        this.propagateChange(this.selected);
+        if (doSelectedChanged) {
+            this.setLabel();
+            this.selectedChange.emit(
+                this.selected.map(item => {
+                    item.isSelected = true;
+                    return item;
+                })
+            );
+            this.propagateChange(this.selected);
+        }
 
         if (close) {
             this.closeDropdown();
