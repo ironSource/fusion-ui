@@ -49,11 +49,7 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
             .asObservable()
             .pipe(takeUntil(this.onDestroy$))
             .subscribe(_ => {
-                // if (this.isOpen$.getValue()) {
-                //     this.closeDropdown();
-                // }
                 this.applySelect(true, false);
-                //
             });
     }
 
