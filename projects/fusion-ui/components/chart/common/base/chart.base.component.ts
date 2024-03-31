@@ -277,9 +277,11 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             return Object.assign(item, dataGroupOptions);
         });
         // format xAxis (dates)
-        this.chartData.labels = this.chartData.labels.map(lbl => {
-            return isDateString(lbl as string) ? this.datePipe.transform(lbl as any, dateFormat) : lbl;
-        });
+        if (this.componentVersion !== 4) {
+            this.chartData.labels = this.chartData.labels.map(lbl => {
+                return isDateString(lbl as string) ? this.datePipe.transform(lbl as any, dateFormat) : lbl;
+            });
+        }
         // support for last point (if last point - today) - dotted line type
         if (isLastDotted) {
             this.chartData.datasets = this.dataParseService.setLastDotted(this.chartData.datasets);
@@ -431,7 +433,8 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
                 ...(isV4InteractionIndex
                     ? {
                           footer: this.calculateTotals.bind(this),
-                          beforeTitle: this.getBeforeTitle.bind(this)
+                          beforeTitle: this.getBeforeTitle.bind(this),
+                          title: this.getTooltipDateTitle.bind(this)
                       }
                     : {})
             },
@@ -460,6 +463,15 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
                     dataset['fill'] = false;
                 }
             });
+        }
+        if (this.componentVersion === 4) {
+            const datasetOptions = this.getDataSetOptionsByStyleVersion(this.componentVersion);
+            const dateFormat = datasetOptions.dateFormat ?? 'MMM dd, yyyy';
+            options.scales.x.ticks.callback = (index: any) => {
+                const label = this.chartData.labels[index] as string;
+                const value = isDateString(label) ? this.datePipe.transform(label, dateFormat) : label;
+                return value;
+            };
         }
     }
 
@@ -541,6 +553,11 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             return appImage;
         }
         return null;
+    }
+    private getTooltipDateTitle(data): string {
+        const label = data[0].label;
+        const value = isDateString(label) ? this.datePipe.transform(label, 'dd MMM YYYY') : label;
+        return value;
     }
     // endregion
 
