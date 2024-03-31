@@ -614,10 +614,11 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         };
     }
 
-    protected getFormatted(value, format?: string): string {
-        let retVal = value;
+    protected getFormatted(value: number, format?: string): string {
+        let retVal: string = value.toString();
         if (!isNullOrUndefined(format)) {
             const formatter = format.split(':');
+            value = isNumber(value) ? value : Number(value);
             switch (formatter[0]) {
                 case 'currency':
                     retVal = this.currencyPipe.transform(value, 'USD', true);
