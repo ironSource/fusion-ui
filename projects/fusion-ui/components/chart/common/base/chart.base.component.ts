@@ -345,8 +345,11 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
                     color = piePalette[i] ? piePalette[i] : piePalette[piePalette.length - 1];
                 }
                 if (this.componentVersion === 4) {
-                    pieOptions.backgroundColor.push(this.colorsService.toRgba(color, datasetOptions.fillOpacity));
-                    pieOptions.hoverBackgroundColor.push(this.colorsService.toRgba(color, 100));
+                    pieOptions.backgroundColor.push(color);
+                    pieOptions.hoverBackgroundColor.push(color);
+                    pieOptions.borderColor = '#FCFCFC';
+                    pieOptions.hoverBorderWidth = 0;
+                    pieOptions.hoverBorderColor = 'transparent';
                 } else {
                     pieOptions.backgroundColor.push(color);
                 }

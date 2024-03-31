@@ -61,8 +61,9 @@ export const BASE_DATASET_OPTIONS: {[key: string]: ChartBaseDatasetOptions} = {
             borderColor: []
         },
         pieOptions: {
-            borderWidth: 3,
-            hoverBorderWidth: 0,
+            cutout: 105,
+            borderWidth: 2,
+            hoverBorderWidth: 2,
             backgroundColor: []
         }
     }
