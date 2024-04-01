@@ -6,7 +6,7 @@ import {CurrencyPipe, DatePipe, DecimalPipe, PercentPipe} from '@angular/common'
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {ChartDataService} from './chart.service';
 import {ColorsService} from '@ironsource/fusion-ui/services/colors';
-import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
+import {isNullOrUndefined, isNumber} from '@ironsource/fusion-ui/utils';
 import {isDateString} from '@ironsource/fusion-ui/utils';
 import {BASE_DATASET_OPTIONS, CHART_CONFIGURATIONS} from './chart.config';
 import {ShortNumberScaleSuffixPipe} from '@ironsource/fusion-ui/pipes/numbers';
@@ -626,10 +626,11 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         };
     }
 
-    protected getFormatted(value, format?: string): string {
-        let retVal = value;
+    protected getFormatted(value: number, format?: string): string {
+        let retVal: string = value.toString();
         if (!isNullOrUndefined(format)) {
             const formatter = format.split(':');
+            value = isNumber(value) ? value : Number(value);
             switch (formatter[0]) {
                 case 'currency':
                     retVal = this.currencyPipe.transform(value, 'USD', true);
@@ -649,7 +650,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
                     retVal = this.decimalPipe.transform(value, formatter[1]);
                     break;
                 case 'shortString':
-                    retVal = !!value
+                    retVal = isNumber(value)
                         ? this.numberToStringPipe.transform(value, {
                               noSeparateBySpace: true,
                               precision: this.componentVersion === 4 ? 3 : undefined

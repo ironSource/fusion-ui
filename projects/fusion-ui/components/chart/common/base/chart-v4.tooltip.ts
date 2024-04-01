@@ -338,6 +338,7 @@ const BODY_ROW_LABEL_STYLE = `
 
 const BODY_ROW_VALUE_STYLE = `
 margin-left: auto;
+color: var(--text-secondary, #646464);
 `;
 
 const FOOTER_ROW_STYLE = `
