@@ -4,7 +4,7 @@ import {ChartLabel} from '@ironsource/fusion-ui/components/chart/common/base';
 import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox/v1';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
-import {ColorsService} from '@ironsource/fusion-ui/services';
+import {ColorsService} from '@ironsource/fusion-ui/services/colors';
 
 @Component({
     selector: 'fusion-chart-labels',
