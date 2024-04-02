@@ -190,11 +190,17 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
                 index: idx
             }));
             datasets.forEach((dataset, idx) => {
-                if (idx !== activeElements[0].datasetIndex) {
+                if (idx !== activeElements[0].datasetIndex || this.type === ChartType.Doughnut) {
                     if (this.type === ChartType.Line) {
                         dataset.borderColor = dataset.backgroundColor;
                     } else if (this.type === ChartType.Bar) {
                         dataset.backgroundColor = (dataset.backgroundColor as string).replace(',1)', ',0.1)');
+                    } else if (this.type === ChartType.Doughnut) {
+                        (dataset.backgroundColor as string[]).forEach((color, idx) => {
+                            if (idx !== label.id) {
+                                dataset.backgroundColor[idx] = dataset.backgroundColor[idx].replace(',1)', ',0.1)');
+                            }
+                        });
                     }
                 } else {
                     if (this.type === ChartType.Line) {
@@ -209,6 +215,10 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
                     dataset.backgroundColor = (dataset.backgroundColor as string).replace('0.7)', '0.1)');
                 } else if (this.type === ChartType.Bar) {
                     dataset.backgroundColor = (dataset.backgroundColor as string).replace(',0.1)', ',1)');
+                } else if (this.type === ChartType.Doughnut) {
+                    (dataset.backgroundColor as string[]).forEach((color, idx) => {
+                        dataset.backgroundColor[idx] = dataset.backgroundColor[idx].replace(',0.1)', ',1)');
+                    });
                 }
             });
         }
@@ -364,7 +374,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
                     color = piePalette[i] ? piePalette[i] : piePalette[piePalette.length - 1];
                 }
                 if (this.componentVersion === 4) {
-                    pieOptions.backgroundColor.push(color);
+                    pieOptions.backgroundColor.push(this.colorsService.toRgba(color, 100));
                     pieOptions.hoverBackgroundColor.push(color);
                     pieOptions.borderColor = '#FCFCFC';
                     pieOptions.hoverBorderWidth = 0;

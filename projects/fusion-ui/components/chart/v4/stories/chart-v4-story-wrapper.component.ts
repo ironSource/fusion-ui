@@ -20,7 +20,7 @@ import {ChartV4Component} from '../chart-v4.component';
                 (afterDatasetInit)="onChartInit($event)"
             ></fusion-chart>
         </div>
-        <div class="fusion-chart-labels-wrapper" *ngIf="data && type !== 'doughnut'">
+        <div class="fusion-chart-labels-wrapper" *ngIf="data">
             <fusion-chart-labels [labels]="chartDataLabels$ | async" (labelHover)="labelHovered($event)"></fusion-chart-labels>
         </div>
         <div *ngIf="!data" class="fu-empty-state">
@@ -41,18 +41,34 @@ export class ChartV4WrapperComponent {
     chartDataLabels$ = new BehaviorSubject<ChartLabel[]>([]);
 
     onChartInit(chartDatasets: ChartDataset[]): void {
-        const chartDataLabels = chartDatasets
-            .map((dataSet, idx) => {
-                const dataLabel: ChartLabel = {
-                    id: idx,
-                    label: dataSet.label,
-                    color: dataSet.borderColor === '#FCFCFC' ? dataSet.backgroundColor : dataSet.borderColor,
-                    icon: dataSet.icon
-                };
-                return dataLabel;
-            })
-            .reverse();
-        /*.filter((item, idx) => idx < 5);*/
+        let chartDataLabels: ChartLabel[] = [];
+        if (this.type === 'doughnut') {
+            const legends = chartDatasets[0]?.legends;
+            const values = chartDatasets[0]?.data;
+            const colors = chartDatasets[0]?.backgroundColor;
+            chartDataLabels = legends
+                .map((legend: string, idx: number) => {
+                    const dataLabel: ChartLabel = {
+                        id: idx,
+                        label: legend,
+                        color: colors[idx]
+                    };
+                    return dataLabel;
+                })
+                .reverse();
+        } else {
+            chartDataLabels = chartDatasets
+                .map((dataSet, idx) => {
+                    const dataLabel: ChartLabel = {
+                        id: idx,
+                        label: dataSet.label,
+                        color: dataSet.borderColor === '#FCFCFC' ? dataSet.backgroundColor : dataSet.borderColor,
+                        icon: dataSet.icon
+                    };
+                    return dataLabel;
+                })
+                .reverse();
+        }
         this.chartDataLabels$.next(chartDataLabels);
     }
 

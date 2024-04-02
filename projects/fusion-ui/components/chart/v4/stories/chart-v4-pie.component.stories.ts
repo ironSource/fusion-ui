@@ -14,11 +14,10 @@ export default {
             declarations: [],
             imports: [CommonModule, ChartV4WrapperComponent]
         }),
-        componentWrapperDecorator(story => `<div style="width: 160px; height: 160px;">${story}</div>`)
+        componentWrapperDecorator(story => `<div>${story}</div>`)
     ],
     tags: ['autodocs'],
     parameters: {
-        layout: 'centered',
         options: {
             showPanel: true,
             panelPosition: 'bottom'
@@ -36,11 +35,7 @@ export const Basic: Story = {
     render: args => ({
         props: args,
         template: `
-           <fusion-chart style="width:100%;height:100%;"
-                [data]="data"
-                [type]="type"
-                [options]="options"
-            ></fusion-chart>
+            <fusion-chart-wrapper [data]="data" [type]="type" [options]="options"></fusion-chart-wrapper>
         `
     })
 };
