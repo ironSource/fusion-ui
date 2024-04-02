@@ -21,11 +21,7 @@ import {ChartV4Component} from '../chart-v4.component';
             ></fusion-chart>
         </div>
         <div class="fusion-chart-labels-wrapper" *ngIf="data && type !== 'doughnut'">
-            <fusion-chart-labels
-                [labels]="chartDataLabels$ | async"
-                [bgOpacity]="type === 'stackedLine' ? 10 : 100"
-                (labelHover)="labelHovered($event)"
-            ></fusion-chart-labels>
+            <fusion-chart-labels [labels]="chartDataLabels$ | async" (labelHover)="labelHovered($event)"></fusion-chart-labels>
         </div>
         <div *ngIf="!data" class="fu-empty-state">
             <div class="fu-empty-state-icon"></div>
@@ -45,17 +41,18 @@ export class ChartV4WrapperComponent {
     chartDataLabels$ = new BehaviorSubject<ChartLabel[]>([]);
 
     onChartInit(chartDatasets: ChartDataset[]): void {
-        const chartDataLabels = chartDatasets.map((dataSet, idx) => {
-            const dataLabel: ChartLabel = {
-                id: idx,
-                label: dataSet.label,
-                color: dataSet.borderColor === '#FCFCFC' ? dataSet.backgroundColor : dataSet.borderColor,
-                icon: dataSet.icon
-            };
-            return dataLabel;
-        });
+        const chartDataLabels = chartDatasets
+            .map((dataSet, idx) => {
+                const dataLabel: ChartLabel = {
+                    id: idx,
+                    label: dataSet.label,
+                    color: dataSet.borderColor === '#FCFCFC' ? dataSet.backgroundColor : dataSet.borderColor,
+                    icon: dataSet.icon
+                };
+                return dataLabel;
+            })
+            .reverse();
         /*.filter((item, idx) => idx < 5);*/
-
         this.chartDataLabels$.next(chartDataLabels);
     }
 

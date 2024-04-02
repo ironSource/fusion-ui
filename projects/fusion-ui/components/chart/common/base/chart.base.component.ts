@@ -69,6 +69,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             this._options = {...this._options, ...value};
         }
     }
+
     /** @internal */
     get options(): any {
         return this._options;
@@ -182,16 +183,34 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     }
 
     highlightDataset(label: ChartLabel) {
-        if (this.chart?.getActiveElements()?.length) {
-            this.chart?.setActiveElements([]);
+        const datasets = this.chart?.data.datasets;
+        if (!isNullOrUndefined(label)) {
+            const activeElements = this.chart?.getDatasetMeta(0)?.data?.map((item, idx) => ({
+                datasetIndex: label.id as number,
+                index: idx
+            }));
+            datasets.forEach((dataset, idx) => {
+                if (idx !== activeElements[0].datasetIndex) {
+                    if (this.type === ChartType.Line) {
+                        dataset.borderColor = dataset.backgroundColor;
+                    } else if (this.type === ChartType.Bar) {
+                        dataset.backgroundColor = (dataset.backgroundColor as string).replace(',1)', ',0.1)');
+                    }
+                } else {
+                    if (this.type === ChartType.Line) {
+                        dataset.backgroundColor = (dataset.backgroundColor as string).replace('0.1)', '0.7)');
+                    }
+                }
+            });
         } else {
-            if (!isNullOrUndefined(label)) {
-                const activeElements = this.chart?.getDatasetMeta(0)?.data?.map((item, idx) => ({
-                    datasetIndex: label.id as number,
-                    index: idx
-                }));
-                this.chart?.setActiveElements(activeElements);
-            }
+            datasets.forEach((dataset, idx) => {
+                if (this.type === ChartType.Line) {
+                    dataset.borderColor = (dataset.backgroundColor as string).replace('0.1)', '1)');
+                    dataset.backgroundColor = (dataset.backgroundColor as string).replace('0.7)', '0.1)');
+                } else if (this.type === ChartType.Bar) {
+                    dataset.backgroundColor = (dataset.backgroundColor as string).replace(',0.1)', ',1)');
+                }
+            });
         }
         this.chart.update();
     }
@@ -307,7 +326,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         this.chartData.datasets = this.chartData.datasets.map((item, idx) => {
             if (this.componentVersion === 4) {
                 barOptions.borderColor = palette[idx];
-                barOptions.backgroundColor = palette[idx];
+                barOptions.backgroundColor = this.colorsService.toRgba(palette[idx], 100);
                 barOptions.hoverBackgroundColor = palette[idx];
                 barOptions.borderWidth = 0;
                 barOptions.barPercentage = 0.9;
@@ -529,6 +548,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     private filterTooltip(context): boolean {
         return !context.dataset.borderDash;
     }
+
     private getTooltipLabel(context) {
         const label = context.dataset.label ?? context.label ?? '';
         const val = context.parsed.y ?? context?.formattedValue?.replace(/,/g, '');
@@ -536,11 +556,13 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
 
         return ` ${label}: ${!!format ? this.getFormatted(val, format) : val}`;
     }
+
     private calculateTotals(tooltipItem: any[]) {
         const format = this.yAxesFormat;
         const total = tooltipItem.reduce((acc, val) => acc + val.raw, 0);
         return `Total: ${!!format ? this.getFormatted(total, format) : total}`;
     }
+
     private getBeforeTitle(data): HTMLElement {
         const legend = this.legends.find(legend => {
             return Array.isArray(legend.displayName)
@@ -557,11 +579,13 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         }
         return null;
     }
+
     private getTooltipDateTitle(data): string {
         const label = data[0].label;
         const value = isDateString(label) ? this.datePipe.transform(label, 'dd MMM YYYY') : label;
         return value;
     }
+
     // endregion
 
     private renderChart(ctx: HTMLCanvasElement) {

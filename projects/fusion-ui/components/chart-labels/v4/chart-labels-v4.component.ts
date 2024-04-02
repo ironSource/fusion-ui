@@ -32,6 +32,6 @@ export class ChartLabelsV4Component {
     colorsService = inject(ColorsService);
 
     getLabelBGColor(hexColor: string): string {
-        return this.colorsService.toRgba(hexColor, this.bgOpacity);
+        return hexColor.startsWith('#') ? this.colorsService.toRgba(hexColor, this.bgOpacity) : hexColor;
     }
 }

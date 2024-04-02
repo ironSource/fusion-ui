@@ -262,6 +262,7 @@ export const CHART_CONFIGURATIONS: any = {
             tooltip: {
                 enabled: false,
                 position: 'nearest',
+                sortReverse: true,
                 external: externalV4TooltipHandler
             }
         },
