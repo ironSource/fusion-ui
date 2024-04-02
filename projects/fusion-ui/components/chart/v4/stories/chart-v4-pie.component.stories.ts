@@ -14,10 +14,11 @@ export default {
             declarations: [],
             imports: [CommonModule, ChartV4WrapperComponent]
         }),
-        componentWrapperDecorator(story => `<div>${story}</div>`)
+        componentWrapperDecorator(story => `<div style="width: 160px; height: 160px;">${story}</div>`)
     ],
     tags: ['autodocs'],
     parameters: {
+        layout: 'centered',
         options: {
             showPanel: true,
             panelPosition: 'bottom'

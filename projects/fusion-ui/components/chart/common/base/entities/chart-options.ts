@@ -28,7 +28,7 @@ interface ChartBarOptions {
 }
 
 interface ChartPieOptions {
-    cutout?: number;
+    cutout?: number | string;
     borderWidth?: number;
     hoverBorderWidth?: number;
     backgroundColor: string[];
