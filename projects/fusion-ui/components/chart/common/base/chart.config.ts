@@ -62,7 +62,6 @@ export const BASE_DATASET_OPTIONS: {[key: string]: ChartBaseDatasetOptions} = {
         },
         pieOptions: {
             cutout: '73%',
-            rotation: 180,
             borderWidth: 2,
             hoverBorderWidth: 2,
             backgroundColor: []
