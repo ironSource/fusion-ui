@@ -123,6 +123,16 @@ export const CHART_DATA_MOCK: ChartData = {
     ]
 };
 
+export const CHART_DATA_ONE_DAY_MOCK: ChartData = {
+    data: {
+        '2024-03-29': [2049.24, 1563.08]
+    },
+    legends: [
+        {id: 1, displayName: 'Unity Ads', displayFormat: 'shortCurrency'},
+        {id: 2, displayName: 'ironSource Ads', displayFormat: 'shortCurrency'}
+    ]
+};
+
 export const CHART_DATA_MOCK_BIG: ChartData = {
     data: {
         '2024-03-04': [50009405, 18784923],

@@ -30,6 +30,7 @@ interface ChartBarOptions {
 interface ChartPieOptions {
     cutout?: number | string;
     borderWidth?: number;
+    rotation?: number;
     hoverBorderWidth?: number;
     backgroundColor: string[];
 }

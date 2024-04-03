@@ -260,16 +260,16 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         const seriesToShow = datasetOptions.seriesToShow;
         const lineOptions = datasetOptions.lineOptions;
         const dateFormat = datasetOptions.dateFormat ?? 'MMM dd, yyyy';
+        const isOneDataPoint = this.chartData.labels.length === 1;
 
         // set bg fill options
         lineOptions.fill = this.isStacked;
-        if (this.componentVersion === 4 && this.isStacked) {
-            lineOptions.lineOptions = 2;
+        if (this.componentVersion === 4) {
+            lineOptions.pointRadius = isOneDataPoint ? 3 : 0;
+            colorKeys.push('pointBackgroundColor');
         }
-        // lineOptions.borderWidth = this.isStacked ? 10 : lineOptions.borderWidth;
         bgOpacity = this.componentVersion === 4 ? bgOpacity : bgOpacity / 2;
         this.chartData.datasets = this.chartData.datasets.map((item, idx) => {
-            // set color options
             const dataGroupOptions = colorKeys.reduce((resultOptions, colorOption) => {
                 const color = (this._data as ChartData)?.legends[idx]?.color || palette[idx];
                 switch (colorOption) {
@@ -648,7 +648,11 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             const maxVal = Math.ceil((max / roundTo) * 10) * (roundTo / 10);
             stepSize = parseFloat(((maxVal - min) / tickCount).toFixed(2));
             max = stepSize * tickCount;
-            formatCallbackObj = {callback: value => this.getFormatted(value, 'shortString')};
+            formatCallbackObj = {
+                callback: (value: number) => {
+                    return value === 0 ? value : this.getFormatted(value, 'shortString');
+                }
+            };
         }
 
         yAxe.ticks = {
