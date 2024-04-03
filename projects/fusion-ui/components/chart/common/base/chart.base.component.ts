@@ -359,11 +359,13 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     private addDatasetPieStyleOptions(datasetOptions) {
         const pieOptions = datasetOptions.pieOptions;
         const piePalette: string[] = this.colorsService.getPieColorsPalette(this.componentVersion);
+        const onlyOneData = this.chartData.datasets[0].data.length === 1;
         // add colors and labels
         pieOptions.backgroundColor = [];
         pieOptions.hoverBackgroundColor = [];
         pieOptions.hoverBorderWidth = pieOptions.hoverBorderWidth;
-        pieOptions.borderWidth = pieOptions.borderWidth;
+        pieOptions.borderWidth = !onlyOneData ? pieOptions.borderWidth : 0;
+
         this.chartData.datasets = this.chartData.datasets.map(item => {
             for (let i = 0; i < item.data.length; i++) {
                 let color;
