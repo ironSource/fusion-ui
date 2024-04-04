@@ -85,13 +85,13 @@ var TabsPage = /** @class */ (function (_super) {
         return this.tabs.getSelectedTabText({ testId: this.testId });
     };
     TabsPage.prototype.selectTab = function (_a) {
-        var tabName = _a.tabName;
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+        return __awaiter(this, arguments, void 0, function (_b) {
+            var tabName = _b.tabName;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.tabs.selectTab({ testId: this.testId, tabName: tabName })];
                     case 1:
-                        _b.sent();
+                        _c.sent();
                         return [2 /*return*/];
                 }
             });

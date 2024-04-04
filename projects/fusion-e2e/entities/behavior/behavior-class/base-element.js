@@ -304,10 +304,10 @@ var BaseElement = /** @class */ (function () {
             });
         });
     };
-    BaseElement.prototype.keyPress = function (key, count) {
-        if (count === void 0) { count = 1; }
-        return __awaiter(this, void 0, void 0, function () {
+    BaseElement.prototype.keyPress = function (key_1) {
+        return __awaiter(this, arguments, void 0, function (key, count) {
             var _this = this;
+            if (count === void 0) { count = 1; }
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, test_1.test.step("Press key: ".concat(key, ", ").concat(count, " times"), function () { return __awaiter(_this, void 0, void 0, function () {
@@ -403,10 +403,10 @@ var BaseElement = /** @class */ (function () {
             });
         });
     };
-    BaseElement.prototype.waitForLoadState = function (state) {
-        if (state === void 0) { state = "load"; }
-        return __awaiter(this, void 0, void 0, function () {
+    BaseElement.prototype.waitForLoadState = function () {
+        return __awaiter(this, arguments, void 0, function (state) {
             var _this = this;
+            if (state === void 0) { state = "load"; }
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, test_1.test.step("Wait for load state: ".concat(state), function () { return __awaiter(_this, void 0, void 0, function () {
@@ -449,11 +449,11 @@ var BaseElement = /** @class */ (function () {
         });
     };
     BaseElement.prototype.waitForComponent = function (_a) {
-        var testId = _a.testId, modifiers = _a.modifiers;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var loadedPageSelector;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId, modifiers = _b.modifiers;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0:
                         if (!modifiers) {
                             loadedPageSelector = (0, utils_1.getTestIdSelector)(testId);
@@ -463,7 +463,7 @@ var BaseElement = /** @class */ (function () {
                         }
                         return [4 /*yield*/, this.waitForSelector(loadedPageSelector)];
                     case 1:
-                        _b.sent();
+                        _c.sent();
                         return [2 /*return*/];
                 }
             });

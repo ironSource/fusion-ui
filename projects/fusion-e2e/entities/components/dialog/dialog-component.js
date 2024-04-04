@@ -62,16 +62,16 @@ var DialogComponent = /** @class */ (function (_super) {
     }
     // Get the title of the dialog
     DialogComponent.prototype.getDialogTitle = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var testIdSelector, element;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0:
                         testIdSelector = (0, utils_1.getTestIdSelector)((0, utils_1.getTestId)(testId, entities_1.DialogTestIdModifiers.HEADER));
                         return [4 /*yield*/, this.getLocator(testIdSelector)];
                     case 1:
-                        element = _b.sent();
+                        element = _c.sent();
                         return [2 /*return*/, element.textContent()];
                 }
             });
@@ -79,16 +79,16 @@ var DialogComponent = /** @class */ (function (_super) {
     };
     // Get the text of the dialog
     DialogComponent.prototype.getDialogText = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var testIdSelector, element;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0:
                         testIdSelector = (0, utils_1.getTestIdSelector)((0, utils_1.getTestId)(testId, entities_1.DialogTestIdModifiers.MODAL_CONTENT));
                         return [4 /*yield*/, this.getLocator(testIdSelector)];
                     case 1:
-                        element = _b.sent();
+                        element = _c.sent();
                         return [2 /*return*/, element.textContent()];
                 }
             });
@@ -96,23 +96,23 @@ var DialogComponent = /** @class */ (function (_super) {
     };
     // Open the dialog
     DialogComponent.prototype.openDialog = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var selector, testIdSelector, dialogButton;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0:
                         selector = (0, utils_1.getTestId)(testId, entities_1.DialogTestIdModifiers.WRAPPER);
                         testIdSelector = (0, utils_1.getTestIdSelector)(selector);
                         return [4 /*yield*/, this.waitForSelector(testIdSelector)];
                     case 1:
-                        _b.sent();
+                        _c.sent();
                         return [4 /*yield*/, this.getLocator(testIdSelector)];
                     case 2:
-                        dialogButton = _b.sent();
+                        dialogButton = _c.sent();
                         return [4 /*yield*/, dialogButton.click()];
                     case 3:
-                        _b.sent();
+                        _c.sent();
                         return [2 /*return*/];
                 }
             });
@@ -120,19 +120,19 @@ var DialogComponent = /** @class */ (function (_super) {
     };
     // Close the dialog
     DialogComponent.prototype.closeDialog = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var testIdSelector, closeButton;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0:
                         testIdSelector = (0, utils_1.getTestIdSelector)((0, utils_1.getTestId)(testId, entities_1.DialogTestIdModifiers.ACTION_CLOSE));
                         return [4 /*yield*/, this.getLocator(testIdSelector)];
                     case 1:
-                        closeButton = _b.sent();
+                        closeButton = _c.sent();
                         return [4 /*yield*/, closeButton.click()];
                     case 2:
-                        _b.sent();
+                        _c.sent();
                         return [2 /*return*/];
                 }
             });
@@ -140,19 +140,19 @@ var DialogComponent = /** @class */ (function (_super) {
     };
     // Click on the primary button of the dialog
     DialogComponent.prototype.clickOnPrimaryButton = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var testIdSelector, primaryButton;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0:
                         testIdSelector = (0, utils_1.getTestIdSelector)((0, utils_1.getTestId)(testId, entities_1.DialogTestIdModifiers.SAVE_BUTTON));
                         return [4 /*yield*/, this.getLocator(testIdSelector)];
                     case 1:
-                        primaryButton = _b.sent();
+                        primaryButton = _c.sent();
                         return [4 /*yield*/, primaryButton.click()];
                     case 2:
-                        _b.sent();
+                        _c.sent();
                         return [2 /*return*/];
                 }
             });
@@ -160,19 +160,19 @@ var DialogComponent = /** @class */ (function (_super) {
     };
     // Click on the default button of the dialog
     DialogComponent.prototype.clickOnDefaultButton = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var testIdSelector, defaultButton;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0:
                         testIdSelector = (0, utils_1.getTestIdSelector)((0, utils_1.getTestId)(testId, entities_1.DialogTestIdModifiers.CANCEL_BUTTON));
                         return [4 /*yield*/, this.getLocator(testIdSelector)];
                     case 1:
-                        defaultButton = _b.sent();
+                        defaultButton = _c.sent();
                         return [4 /*yield*/, defaultButton.click()];
                     case 2:
-                        _b.sent();
+                        _c.sent();
                         return [2 /*return*/];
                 }
             });
@@ -180,22 +180,22 @@ var DialogComponent = /** @class */ (function (_super) {
     };
     // Click on the delete button of the dialog
     DialogComponent.prototype.clickOnDeleteButton = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var testIdSelector, wrapperLocator, deleteButton;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0:
                         testIdSelector = (0, utils_1.getTestIdSelector)((0, utils_1.getTestId)(testId, entities_1.DialogTestIdModifiers.ACTION_BUTTONS_WRAPPER));
                         return [4 /*yield*/, this.getLocator(testIdSelector)];
                     case 1:
-                        wrapperLocator = _b.sent();
+                        wrapperLocator = _c.sent();
                         return [4 /*yield*/, wrapperLocator.locator('.danger')];
                     case 2:
-                        deleteButton = _b.sent();
+                        deleteButton = _c.sent();
                         return [4 /*yield*/, deleteButton.click()];
                     case 3:
-                        _b.sent();
+                        _c.sent();
                         return [2 /*return*/];
                 }
             });
@@ -203,19 +203,19 @@ var DialogComponent = /** @class */ (function (_super) {
     };
     // Get the subtitle of the dialog
     DialogComponent.prototype.getDialogSubtitle = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var testIdSelector, element, locator;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0:
                         testIdSelector = (0, utils_1.getTestIdSelector)((0, utils_1.getTestId)(testId, entities_1.DialogTestIdModifiers.HEADER_SECONDARY));
                         return [4 /*yield*/, this.getLocator(testIdSelector)];
                     case 1:
-                        element = _b.sent();
+                        element = _c.sent();
                         return [4 /*yield*/, element.locator('.subtitle')];
                     case 2:
-                        locator = _b.sent();
+                        locator = _c.sent();
                         return [2 /*return*/, locator.textContent()];
                 }
             });
@@ -223,18 +223,18 @@ var DialogComponent = /** @class */ (function (_super) {
     };
     // Check if the dialog is visible
     DialogComponent.prototype.isDialogVisible = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var testIdSelector, dialog;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.waitForTimeout(1000)];
                     case 1:
-                        _b.sent();
+                        _c.sent();
                         testIdSelector = (0, utils_1.getTestIdSelector)((0, utils_1.getTestId)(testId, entities_1.DialogTestIdModifiers.MODAL_WRAPPER));
                         return [4 /*yield*/, this.getLocator(testIdSelector)];
                     case 2:
-                        dialog = _b.sent();
+                        dialog = _c.sent();
                         return [2 /*return*/, dialog.isVisible()];
                 }
             });

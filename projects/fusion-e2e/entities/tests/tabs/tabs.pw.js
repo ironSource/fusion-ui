@@ -39,15 +39,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var test_1 = require("@playwright/test");
 var tabs_page_1 = require("../../pages/tabs-page");
 var tabsPage;
-test_1.test.beforeEach(function (_a) {
-    var page = _a.page;
-    return __awaiter(void 0, void 0, void 0, function () {
-        return __generator(this, function (_b) {
-            tabsPage = new tabs_page_1.TabsPage(page);
-            return [2 /*return*/];
-        });
+test_1.test.beforeEach(function (_a) { return __awaiter(void 0, [_a], void 0, function (_b) {
+    var page = _b.page;
+    return __generator(this, function (_c) {
+        tabsPage = new tabs_page_1.TabsPage(page);
+        return [2 /*return*/];
     });
-});
+}); });
 (0, test_1.test)('Validate component is loaded', function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         switch (_a.label) {

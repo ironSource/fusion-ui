@@ -106,9 +106,9 @@ var DropdownPage = /** @class */ (function (_super) {
             });
         });
     };
-    DropdownPage.prototype.selectMultipleItems = function (itemsToSelect, applyChanges) {
-        if (applyChanges === void 0) { applyChanges = true; }
-        return __awaiter(this, void 0, void 0, function () {
+    DropdownPage.prototype.selectMultipleItems = function (itemsToSelect_1) {
+        return __awaiter(this, arguments, void 0, function (itemsToSelect, applyChanges) {
+            if (applyChanges === void 0) { applyChanges = true; }
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.dropdown.selectMultipleItemsByIndex({
@@ -145,9 +145,9 @@ var DropdownPage = /** @class */ (function (_super) {
             searchTerm: searchTerm
         });
     };
-    DropdownPage.prototype.selectMultipleItemsByName = function (itemsToSelect, applyChanges) {
-        if (applyChanges === void 0) { applyChanges = true; }
-        return __awaiter(this, void 0, void 0, function () {
+    DropdownPage.prototype.selectMultipleItemsByName = function (itemsToSelect_1) {
+        return __awaiter(this, arguments, void 0, function (itemsToSelect, applyChanges) {
+            if (applyChanges === void 0) { applyChanges = true; }
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.dropdown.selectMultipleItemsByName({

@@ -61,34 +61,34 @@ var BaseDropdownComponent = /** @class */ (function (_super) {
         return _super.call(this, page, selector) || this;
     }
     BaseDropdownComponent.prototype.waitForComponent = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+        return __awaiter(this, arguments, void 0, function (_b) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.DropdownTestIdModifiers.WRAPPER))];
                     case 1:
-                        _b.sent();
+                        _c.sent();
                         return [2 /*return*/];
                 }
             });
         });
     };
     BaseDropdownComponent.prototype.selectDropdownOptionByIndex = function (_a) {
-        var testId = _a.testId, index = _a.index;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var element, locator;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId, index = _b.index;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.openDropdownComponent({ testId: testId })];
                     case 1:
-                        _b.sent();
+                        _c.sent();
                         return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.DropdownTestIdModifiers.LIST_CONTAINER))];
                     case 2:
-                        element = _b.sent();
+                        element = _c.sent();
                         locator = element.locator('fusion-dropdown-options-list > li').nth(index);
                         return [4 /*yield*/, locator.click()];
                     case 3:
-                        _b.sent();
+                        _c.sent();
                         return [2 /*return*/];
                 }
             });
@@ -108,14 +108,14 @@ var BaseDropdownComponent = /** @class */ (function (_super) {
         });
     };
     BaseDropdownComponent.prototype.openDropdownComponent = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var element;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.DropdownTestIdModifiers.TRIGGER))];
                     case 1:
-                        element = _b.sent();
+                        element = _c.sent();
                         return [4 /*yield*/, element.click({
                                 position: {
                                     x: 15,
@@ -123,58 +123,58 @@ var BaseDropdownComponent = /** @class */ (function (_super) {
                                 }
                             })];
                     case 2:
-                        _b.sent();
+                        _c.sent();
                         return [2 /*return*/];
                 }
             });
         });
     };
     BaseDropdownComponent.prototype.selectDropdownOptionByName = function (_a) {
-        var testId = _a.testId, name = _a.name, _b = _a.shouldOpen, shouldOpen = _b === void 0 ? true : _b;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var element, locator;
-            return __generator(this, function (_c) {
-                switch (_c.label) {
+            var testId = _b.testId, name = _b.name, _c = _b.shouldOpen, shouldOpen = _c === void 0 ? true : _c;
+            return __generator(this, function (_d) {
+                switch (_d.label) {
                     case 0:
                         if (!shouldOpen) return [3 /*break*/, 2];
                         return [4 /*yield*/, this.openDropdownComponent({ testId: testId })];
                     case 1:
-                        _c.sent();
-                        _c.label = 2;
+                        _d.sent();
+                        _d.label = 2;
                     case 2: return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.DropdownTestIdModifiers.LIST_CONTAINER))];
                     case 3:
-                        element = _c.sent();
+                        element = _d.sent();
                         locator = element.locator('fusion-dropdown-options-list > li', { hasText: name });
                         return [4 /*yield*/, locator.click()];
                     case 4:
-                        _c.sent();
+                        _d.sent();
                         return [2 /*return*/];
                 }
             });
         });
     };
     BaseDropdownComponent.prototype.selectMultipleItemsByIndex = function (_a) {
-        var testId = _a.testId, itemsToSelect = _a.itemsToSelect;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var _i, itemsToSelect_1, i, element, locator;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId, itemsToSelect = _b.itemsToSelect;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.openDropdownComponent({ testId: testId })];
                     case 1:
-                        _b.sent();
+                        _c.sent();
                         _i = 0, itemsToSelect_1 = itemsToSelect;
-                        _b.label = 2;
+                        _c.label = 2;
                     case 2:
                         if (!(_i < itemsToSelect_1.length)) return [3 /*break*/, 6];
                         i = itemsToSelect_1[_i];
                         return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.DropdownTestIdModifiers.LIST_CONTAINER))];
                     case 3:
-                        element = _b.sent();
+                        element = _c.sent();
                         locator = element.locator('ul > li').nth(i);
                         return [4 /*yield*/, locator.click()];
                     case 4:
-                        _b.sent();
-                        _b.label = 5;
+                        _c.sent();
+                        _c.label = 5;
                     case 5:
                         _i++;
                         return [3 /*break*/, 2];
@@ -184,27 +184,27 @@ var BaseDropdownComponent = /** @class */ (function (_super) {
         });
     };
     BaseDropdownComponent.prototype.selectMultipleItemsByName = function (_a) {
-        var testId = _a.testId, itemsToSelect = _a.itemsToSelect;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var _i, itemsToSelect_2, name_1, element, locator;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId, itemsToSelect = _b.itemsToSelect;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.openDropdownComponent({ testId: testId })];
                     case 1:
-                        _b.sent();
+                        _c.sent();
                         _i = 0, itemsToSelect_2 = itemsToSelect;
-                        _b.label = 2;
+                        _c.label = 2;
                     case 2:
                         if (!(_i < itemsToSelect_2.length)) return [3 /*break*/, 6];
                         name_1 = itemsToSelect_2[_i];
                         return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.DropdownTestIdModifiers.LIST_CONTAINER))];
                     case 3:
-                        element = _b.sent();
+                        element = _c.sent();
                         locator = element.locator('ul > li', { hasText: name_1 }).first();
                         return [4 /*yield*/, locator.click()];
                     case 4:
-                        _b.sent();
-                        _b.label = 5;
+                        _c.sent();
+                        _c.label = 5;
                     case 5:
                         _i++;
                         return [3 /*break*/, 2];
@@ -214,34 +214,34 @@ var BaseDropdownComponent = /** @class */ (function (_super) {
         });
     };
     BaseDropdownComponent.prototype.clickOnApply = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var element;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.DropdownTestIdModifiers.ACTION_APPLY))];
                     case 1:
-                        element = _b.sent();
+                        element = _c.sent();
                         return [4 /*yield*/, element.click()];
                     case 2:
-                        _b.sent();
+                        _c.sent();
                         return [2 /*return*/];
                 }
             });
         });
     };
     BaseDropdownComponent.prototype.clickOnCancel = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var element;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.DropdownTestIdModifiers.ACTION_CANCEL))];
                     case 1:
-                        element = _b.sent();
+                        element = _c.sent();
                         return [4 /*yield*/, element.click()];
                     case 2:
-                        _b.sent();
+                        _c.sent();
                         return [2 /*return*/];
                 }
             });

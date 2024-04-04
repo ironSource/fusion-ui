@@ -94,10 +94,10 @@ var TooltipPage = /** @class */ (function (_super) {
             });
         });
     };
-    TooltipPage.prototype.goto = function (gotoParams) {
-        if (gotoParams === void 0) { gotoParams = {}; }
-        return __awaiter(this, void 0, void 0, function () {
+    TooltipPage.prototype.goto = function () {
+        return __awaiter(this, arguments, void 0, function (gotoParams) {
             var componentParams;
+            if (gotoParams === void 0) { gotoParams = {}; }
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:

@@ -39,21 +39,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var test_1 = require("@playwright/test");
 var button_page_1 = require("../../pages/button-page");
 var buttonPage;
-test_1.test.beforeEach(function (_a) {
-    var page = _a.page;
-    return __awaiter(void 0, void 0, void 0, function () {
-        return __generator(this, function (_b) {
-            switch (_b.label) {
-                case 0:
-                    buttonPage = new button_page_1.ButtonPage(page);
-                    return [4 /*yield*/, buttonPage.goto()];
-                case 1:
-                    _b.sent();
-                    return [2 /*return*/];
-            }
-        });
+test_1.test.beforeEach(function (_a) { return __awaiter(void 0, [_a], void 0, function (_b) {
+    var page = _b.page;
+    return __generator(this, function (_c) {
+        switch (_c.label) {
+            case 0:
+                buttonPage = new button_page_1.ButtonPage(page);
+                return [4 /*yield*/, buttonPage.goto()];
+            case 1:
+                _c.sent();
+                return [2 /*return*/];
+        }
     });
-});
+}); });
 (0, test_1.test)('Verify button functionality', function () { return __awaiter(void 0, void 0, void 0, function () {
     var buttonText;
     return __generator(this, function (_a) {

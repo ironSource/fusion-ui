@@ -87,20 +87,20 @@ var InputsComponent = /** @class */ (function (_super) {
     };
     // Click on the apply button
     InputsComponent.prototype.clickOnApplyButton = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var wrapperLocator, applyButtonSelector;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.InputTestIdModifiers.WRAPPER))];
                     case 1:
-                        wrapperLocator = _b.sent();
+                        wrapperLocator = _c.sent();
                         return [4 /*yield*/, wrapperLocator.locator('.icon.icon-name--check')];
                     case 2:
-                        applyButtonSelector = _b.sent();
+                        applyButtonSelector = _c.sent();
                         return [4 /*yield*/, applyButtonSelector.click()];
                     case 3:
-                        _b.sent();
+                        _c.sent();
                         return [2 /*return*/];
                 }
             });
@@ -108,14 +108,14 @@ var InputsComponent = /** @class */ (function (_super) {
     };
     // Check if the inline error text is visible
     InputsComponent.prototype.hasInlineErrorText = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var element;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.InputTestIdModifiers.TOOLTIP))];
                     case 1:
-                        element = _b.sent();
+                        element = _c.sent();
                         return [2 /*return*/, element.isVisible()];
                 }
             });
@@ -123,17 +123,17 @@ var InputsComponent = /** @class */ (function (_super) {
     };
     // Get the inline error text
     InputsComponent.prototype.getInlineErrorText = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var inlineErrorSelector;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.InputTestIdModifiers.TOOLTIP))];
                     case 1:
-                        inlineErrorSelector = _b.sent();
+                        inlineErrorSelector = _c.sent();
                         return [4 /*yield*/, inlineErrorSelector.hover()];
                     case 2:
-                        _b.sent();
+                        _c.sent();
                         return [2 /*return*/, inlineErrorSelector.getAttribute('text')];
                 }
             });
@@ -141,17 +141,17 @@ var InputsComponent = /** @class */ (function (_super) {
     };
     // Click on the show password button
     InputsComponent.prototype.clickOnShowPassword = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+        return __awaiter(this, arguments, void 0, function (_b) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.isPasswordHidden({ testId: testId })];
                     case 1:
-                        if (!_b.sent()) return [3 /*break*/, 3];
+                        if (!_c.sent()) return [3 /*break*/, 3];
                         return [4 /*yield*/, this.clickOnPasswordIcon({ testId: testId })];
                     case 2:
-                        _b.sent();
-                        _b.label = 3;
+                        _c.sent();
+                        _c.label = 3;
                     case 3: return [2 /*return*/];
                 }
             });
@@ -159,17 +159,17 @@ var InputsComponent = /** @class */ (function (_super) {
     };
     // Click on the password icon
     InputsComponent.prototype.clickOnPasswordIcon = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var passwordIcon;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.InputTestIdModifiers.TOGGLE_PASSWORD))];
                     case 1:
-                        passwordIcon = _b.sent();
+                        passwordIcon = _c.sent();
                         return [4 /*yield*/, passwordIcon.click()];
                     case 2:
-                        _b.sent();
+                        _c.sent();
                         return [2 /*return*/];
                 }
             });
@@ -177,17 +177,17 @@ var InputsComponent = /** @class */ (function (_super) {
     };
     // Click on the hide password button
     InputsComponent.prototype.clickOnHidePassword = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+        return __awaiter(this, arguments, void 0, function (_b) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.isPasswordHidden({ testId: testId })];
                     case 1:
-                        if (!!(_b.sent())) return [3 /*break*/, 3];
+                        if (!!(_c.sent())) return [3 /*break*/, 3];
                         return [4 /*yield*/, this.clickOnPasswordIcon({ testId: testId })];
                     case 2:
-                        _b.sent();
-                        _b.label = 3;
+                        _c.sent();
+                        _c.label = 3;
                     case 3: return [2 /*return*/];
                 }
             });
@@ -195,14 +195,14 @@ var InputsComponent = /** @class */ (function (_super) {
     };
     // Check if the password is hidden
     InputsComponent.prototype.isPasswordHidden = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var passwordToggle, hiddenPasswordLocator;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.InputTestIdModifiers.TOGGLE_PASSWORD))];
                     case 1:
-                        passwordToggle = _b.sent();
+                        passwordToggle = _c.sent();
                         hiddenPasswordLocator = passwordToggle.locator('.fu-show-password-button eye-slash');
                         return [2 /*return*/, hiddenPasswordLocator.isVisible()];
                 }
@@ -211,17 +211,17 @@ var InputsComponent = /** @class */ (function (_super) {
     };
     // Clear the input
     InputsComponent.prototype.clearInput = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var inputFieldSelector;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.InputTestIdModifiers.FIELD))];
                     case 1:
-                        inputFieldSelector = _b.sent();
+                        inputFieldSelector = _c.sent();
                         return [4 /*yield*/, inputFieldSelector.clear()];
                     case 2:
-                        _b.sent();
+                        _c.sent();
                         return [2 /*return*/];
                 }
             });
@@ -234,14 +234,14 @@ var InputsComponent = /** @class */ (function (_super) {
     };
     // Check if the input is disabled
     InputsComponent.prototype.isInputDisabled = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var inputFieldSelector;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.InputTestIdModifiers.FIELD))];
                     case 1:
-                        inputFieldSelector = _b.sent();
+                        inputFieldSelector = _c.sent();
                         return [2 /*return*/, inputFieldSelector.isDisabled()];
                 }
             });
@@ -249,14 +249,14 @@ var InputsComponent = /** @class */ (function (_super) {
     };
     // Check if the apply button is present
     InputsComponent.prototype.hasApplyButton = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var wrapperLocator, applyButtonLocator;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.InputTestIdModifiers.WRAPPER))];
                     case 1:
-                        wrapperLocator = _b.sent();
+                        wrapperLocator = _c.sent();
                         applyButtonLocator = wrapperLocator.locator('.icon.icon-name--check');
                         return [2 /*return*/, applyButtonLocator.isVisible()];
                 }
@@ -265,14 +265,14 @@ var InputsComponent = /** @class */ (function (_super) {
     };
     // Get the maximum length number of the input
     InputsComponent.prototype.getMaxLengthNumber = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var inputFieldSelector;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.InputTestIdModifiers.FIELD))];
                     case 1:
-                        inputFieldSelector = _b.sent();
+                        inputFieldSelector = _c.sent();
                         return [2 /*return*/, inputFieldSelector.getAttribute('maxlength')];
                 }
             });
@@ -280,17 +280,17 @@ var InputsComponent = /** @class */ (function (_super) {
     };
     // Get the actual number length of the input
     InputsComponent.prototype.getActualNumberLength = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var inputFieldSelector, value;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.InputTestIdModifiers.FIELD))];
                     case 1:
-                        inputFieldSelector = _b.sent();
+                        inputFieldSelector = _c.sent();
                         return [4 /*yield*/, inputFieldSelector.getAttribute('value')];
                     case 2:
-                        value = _b.sent();
+                        value = _c.sent();
                         return [2 /*return*/, value ? value.length : 0];
                 }
             });
@@ -298,18 +298,18 @@ var InputsComponent = /** @class */ (function (_super) {
     };
     // Get the font caption text of the input
     InputsComponent.prototype.getFontCaptionText = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var wrapperLocator, fontCaptionLocator, fontCaptionText;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.InputTestIdModifiers.WRAPPER))];
                     case 1:
-                        wrapperLocator = _b.sent();
+                        wrapperLocator = _c.sent();
                         fontCaptionLocator = wrapperLocator.locator('.font-caption');
                         return [4 /*yield*/, fontCaptionLocator.textContent()];
                     case 2:
-                        fontCaptionText = _b.sent();
+                        fontCaptionText = _c.sent();
                         return [2 /*return*/, fontCaptionText ? fontCaptionText.split('/').map(function (str) { return parseInt(str.trim(), 10); }) : []];
                 }
             });
@@ -322,17 +322,17 @@ var InputsComponent = /** @class */ (function (_super) {
     };
     // Check if the validation appears
     InputsComponent.prototype.isValidationAppear = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var wrapperLocator, fieldClasses;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.InputTestIdModifiers.WRAPPER))];
                     case 1:
-                        wrapperLocator = _b.sent();
+                        wrapperLocator = _c.sent();
                         return [4 /*yield*/, wrapperLocator.getAttribute('class')];
                     case 2:
-                        fieldClasses = _b.sent();
+                        fieldClasses = _c.sent();
                         return [2 /*return*/, fieldClasses ? fieldClasses.includes('variant-error') : false];
                 }
             });

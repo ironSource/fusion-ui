@@ -82,10 +82,10 @@ var DialogPage = /** @class */ (function (_super) {
         _this.dialog = new dialog_component_1.DialogComponent(page, _this.testId);
         return _this;
     }
-    DialogPage.prototype.goto = function (gotoParams) {
-        if (gotoParams === void 0) { gotoParams = {}; }
-        return __awaiter(this, void 0, void 0, function () {
+    DialogPage.prototype.goto = function () {
+        return __awaiter(this, arguments, void 0, function (gotoParams) {
             var componentParams;
+            if (gotoParams === void 0) { gotoParams = {}; }
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:

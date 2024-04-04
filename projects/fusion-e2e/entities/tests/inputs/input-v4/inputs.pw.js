@@ -41,15 +41,13 @@ var inputs_page_1 = require("../../../pages/inputs-page");
 var consts_1 = require("./consts");
 // import {FormControl} from "@angular/forms";
 var inputsPage;
-test_1.test.beforeEach(function (_a) {
-    var page = _a.page;
-    return __awaiter(void 0, void 0, void 0, function () {
-        return __generator(this, function (_b) {
-            inputsPage = new inputs_page_1.InputsPage(page);
-            return [2 /*return*/];
-        });
+test_1.test.beforeEach(function (_a) { return __awaiter(void 0, [_a], void 0, function (_b) {
+    var page = _b.page;
+    return __generator(this, function (_c) {
+        inputsPage = new inputs_page_1.InputsPage(page);
+        return [2 /*return*/];
     });
-});
+}); });
 (0, test_1.test)('Verify inputs text', function () { return __awaiter(void 0, void 0, void 0, function () {
     var expectedText, actualText;
     return __generator(this, function (_a) {
@@ -307,7 +305,7 @@ test_1.test.skip('Verify inputs disabled', function () { return __awaiter(void 0
                 return [4 /*yield*/, inputsPage.getMaxLengthNumber()];
             case 2:
                 maxLengthNumber = _a.sent();
-                if (typeof maxLengthNumber === "string") {
+                if (typeof maxLengthNumber === 'string') {
                     (0, test_1.expect)(parseInt(maxLengthNumber)).toBe(10);
                 }
                 return [2 /*return*/];

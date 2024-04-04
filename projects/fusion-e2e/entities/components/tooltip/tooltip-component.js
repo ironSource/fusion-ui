@@ -62,39 +62,39 @@ var TooltipComponent = /** @class */ (function (_super) {
     }
     // Get the text of the tooltip
     TooltipComponent.prototype.getTooltipText = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var testIdSelector, triggerLocator, lastTriggerLocator, spanLocator;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0:
                         testIdSelector = (0, utils_1.getTestId)(testId, entities_1.TooltipTestIdModifiers.TRIGGER);
                         return [4 /*yield*/, this.getByTestId(testIdSelector)];
                     case 1:
-                        triggerLocator = _b.sent();
+                        triggerLocator = _c.sent();
                         lastTriggerLocator = triggerLocator.last();
                         spanLocator = lastTriggerLocator.locator('span');
                         return [4 /*yield*/, spanLocator.textContent()];
-                    case 2: return [2 /*return*/, _b.sent()];
+                    case 2: return [2 /*return*/, _c.sent()];
                 }
             });
         });
     };
     // Get the header text of the tooltip
     TooltipComponent.prototype.getTooltipHeaderText = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var testIdSelector, triggerLocator, lastTriggerLocator;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0:
                         testIdSelector = (0, utils_1.getTestId)(testId, entities_1.TooltipTestIdModifiers.TRIGGER);
                         return [4 /*yield*/, this.getByTestId(testIdSelector)];
                     case 1:
-                        triggerLocator = _b.sent();
+                        triggerLocator = _c.sent();
                         lastTriggerLocator = triggerLocator.last();
                         return [4 /*yield*/, lastTriggerLocator.getAttribute('header')];
-                    case 2: return [2 /*return*/, _b.sent()];
+                    case 2: return [2 /*return*/, _c.sent()];
                 }
             });
         });

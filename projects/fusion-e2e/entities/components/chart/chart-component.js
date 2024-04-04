@@ -59,14 +59,14 @@ var ChartComponent = /** @class */ (function (_super) {
         return _super.call(this, page, selector) || this;
     }
     ChartComponent.prototype.getLabelText = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var label;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getByTestId(testId)];
                     case 1:
-                        label = _b.sent();
+                        label = _c.sent();
                         return [2 /*return*/, this.selectorText(label)];
                 }
             });

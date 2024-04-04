@@ -90,150 +90,150 @@ var DropdownComponent = /** @class */ (function (_super) {
         return this.fieldHelpTextComponent.hasExtraTextIconType({ testId: testId, type: type });
     };
     DropdownComponent.prototype.getSelectedLabel = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var element;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.DropdownTestIdModifiers.BUTTON_CONTENT))];
                     case 1:
-                        element = _b.sent();
+                        element = _c.sent();
                         return [2 /*return*/, element.textContent()];
                 }
             });
         });
     };
     DropdownComponent.prototype.searchForItem = function (_a) {
-        var testId = _a.testId, searchTerm = _a.searchTerm;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var inputElement, listElement, firstItem;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId, searchTerm = _b.searchTerm;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.openDropdownComponent({ testId: testId })];
                     case 1:
-                        _b.sent();
+                        _c.sent();
                         return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.InputTestIdModifiers.FIELD))];
-                    case 2: return [4 /*yield*/, (_b.sent()).last()];
+                    case 2: return [4 /*yield*/, (_c.sent()).last()];
                     case 3:
-                        inputElement = _b.sent();
+                        inputElement = _c.sent();
                         return [4 /*yield*/, inputElement.fill(searchTerm)];
                     case 4:
-                        _b.sent();
+                        _c.sent();
                         return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.DropdownTestIdModifiers.LIST_CONTAINER))];
                     case 5:
-                        listElement = _b.sent();
+                        listElement = _c.sent();
                         return [4 /*yield*/, listElement.locator('fusion-dropdown-options-list > li').first()];
                     case 6:
-                        firstItem = _b.sent();
+                        firstItem = _c.sent();
                         return [2 /*return*/, firstItem.textContent()];
                 }
             });
         });
     };
     DropdownComponent.prototype.isErrorText = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var errorTextLocator, count;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.FieldHelpTextTestIdModifiers.TEXT))];
                     case 1:
-                        errorTextLocator = _b.sent();
+                        errorTextLocator = _c.sent();
                         return [4 /*yield*/, errorTextLocator.count()];
                     case 2:
-                        count = _b.sent();
+                        count = _c.sent();
                         return [2 /*return*/, count > 0];
                 }
             });
         });
     };
     DropdownComponent.prototype.isDropdownDisabled = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var ddTriggerSelector;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.DropdownTestIdModifiers.TRIGGER))];
-                    case 1: return [4 /*yield*/, (_b.sent()).locator('.button__container--disabled')];
+                    case 1: return [4 /*yield*/, (_c.sent()).locator('.button__container--disabled')];
                     case 2:
-                        ddTriggerSelector = _b.sent();
+                        ddTriggerSelector = _c.sent();
                         return [2 /*return*/, ddTriggerSelector.isVisible()];
                 }
             });
         });
     };
     DropdownComponent.prototype.clearAllOptions = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+        return __awaiter(this, arguments, void 0, function (_b) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.DropdownTestIdModifiers.ACTION_CLEAR_ALL))];
-                    case 1: return [4 /*yield*/, (_b.sent()).click()];
+                    case 1: return [4 /*yield*/, (_c.sent()).click()];
                     case 2:
-                        _b.sent();
+                        _c.sent();
                         return [2 /*return*/];
                 }
             });
         });
     };
     DropdownComponent.prototype.isSelectAllChecked = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var element;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.DropdownTestIdModifiers.SELECT_ALL))];
-                    case 1: return [4 /*yield*/, (_b.sent()).locator('.fu-label-checkbox')];
+                    case 1: return [4 /*yield*/, (_c.sent()).locator('.fu-label-checkbox')];
                     case 2:
-                        element = _b.sent();
+                        element = _c.sent();
                         return [2 /*return*/, element.isChecked()];
                 }
             });
         });
     };
     DropdownComponent.prototype.isSelectAllIndeterminate = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var locator;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.DropdownTestIdModifiers.SELECT_ALL))];
-                    case 1: return [4 /*yield*/, (_b.sent()).locator('fusion-checkbox')];
+                    case 1: return [4 /*yield*/, (_c.sent()).locator('fusion-checkbox')];
                     case 2:
-                        locator = _b.sent();
+                        locator = _c.sent();
                         return [4 /*yield*/, locator.getAttribute('ng-reflect-is-indeterminate')];
-                    case 3: return [2 /*return*/, (_b.sent()) === 'true'];
+                    case 3: return [2 /*return*/, (_c.sent()) === 'true'];
                 }
             });
         });
     };
     DropdownComponent.prototype.removeChipSelection = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var element;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.DropdownTestIdModifiers.BUTTON_CLEAR))];
                     case 1:
-                        element = _b.sent();
+                        element = _c.sent();
                         return [4 /*yield*/, element.click()];
                     case 2:
-                        _b.sent();
+                        _c.sent();
                         return [2 /*return*/];
                 }
             });
         });
     };
     DropdownComponent.prototype.getDropdownOptions = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var element;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.DropdownTestIdModifiers.LIST_CONTAINER))];
-                    case 1: return [4 /*yield*/, (_b.sent()).locator('.list')];
+                    case 1: return [4 /*yield*/, (_c.sent()).locator('.list')];
                     case 2:
-                        element = _b.sent();
+                        element = _c.sent();
                         return [2 /*return*/, element.allTextContents()];
                 }
             });

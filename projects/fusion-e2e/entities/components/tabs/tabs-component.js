@@ -63,40 +63,40 @@ var TabsComponent = /** @class */ (function (_super) {
     }
     // Get the text of the selected tab
     TabsComponent.prototype.getSelectedTabText = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var testIdSelector, element, activeTab;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0:
                         testIdSelector = (0, utils_1.getTestId)(testId, entities_1.TabsTestIdModifiers.WRAPPER);
                         return [4 /*yield*/, this.getByTestId(testIdSelector)];
                     case 1:
-                        element = _b.sent();
+                        element = _c.sent();
                         activeTab = element.locator('.tab-item--active');
                         return [4 /*yield*/, activeTab.textContent()];
-                    case 2: return [2 /*return*/, _b.sent()];
+                    case 2: return [2 /*return*/, _c.sent()];
                 }
             });
         });
     };
     // Select a tab
     TabsComponent.prototype.selectTab = function (_a) {
-        var testId = _a.testId, tabName = _a.tabName;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var tabIndex, tabTestIdSelector, tab;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId, tabName = _b.tabName;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getTabIndex({ testId: testId, tabName: tabName })];
                     case 1:
-                        tabIndex = _b.sent();
+                        tabIndex = _c.sent();
                         tabTestIdSelector = (0, utils_1.getTestId)(testId, "".concat(entities_1.TabsTestIdModifiers.TAB, "-").concat(tabIndex + 1));
                         return [4 /*yield*/, this.getByTestId(tabTestIdSelector)];
                     case 2:
-                        tab = _b.sent();
+                        tab = _c.sent();
                         return [4 /*yield*/, tab.click()];
                     case 3:
-                        _b.sent();
+                        _c.sent();
                         return [2 /*return*/];
                 }
             });
@@ -104,19 +104,19 @@ var TabsComponent = /** @class */ (function (_super) {
     };
     // Get the index of a tab
     TabsComponent.prototype.getTabIndex = function (_a) {
-        var testId = _a.testId, tabName = _a.tabName;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var testIdSelector, wrapperLocator, tabs;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId, tabName = _b.tabName;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0:
                         testIdSelector = (0, utils_1.getTestId)(testId, entities_1.TabsTestIdModifiers.WRAPPER);
                         return [4 /*yield*/, this.getByTestId(testIdSelector)];
                     case 1:
-                        wrapperLocator = _b.sent();
+                        wrapperLocator = _c.sent();
                         return [4 /*yield*/, wrapperLocator.locator('.tab-item').allTextContents()];
                     case 2:
-                        tabs = _b.sent();
+                        tabs = _c.sent();
                         return [2 /*return*/, tabs.indexOf(tabName)];
                 }
             });

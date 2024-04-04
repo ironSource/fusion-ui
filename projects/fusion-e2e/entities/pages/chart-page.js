@@ -81,10 +81,10 @@ var ChartPage = /** @class */ (function (_super) {
         _this.chart = new chart_component_1.ChartComponent(page, _this.testId);
         return _this;
     }
-    ChartPage.prototype.goto = function (gotoParams) {
-        if (gotoParams === void 0) { gotoParams = {}; }
-        return __awaiter(this, void 0, void 0, function () {
+    ChartPage.prototype.goto = function () {
+        return __awaiter(this, arguments, void 0, function (gotoParams) {
             var componentParams;
+            if (gotoParams === void 0) { gotoParams = {}; }
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:

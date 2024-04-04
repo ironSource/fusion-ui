@@ -39,15 +39,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var chipFilter_page_1 = require("../../pages/chipFilter-page");
 var test_1 = require("@playwright/test");
 var chipFilterPage;
-test_1.test.beforeEach(function (_a) {
-    var page = _a.page;
-    return __awaiter(void 0, void 0, void 0, function () {
-        return __generator(this, function (_b) {
-            chipFilterPage = new chipFilter_page_1.ChipFilterPage(page);
-            return [2 /*return*/];
-        });
+test_1.test.beforeEach(function (_a) { return __awaiter(void 0, [_a], void 0, function (_b) {
+    var page = _b.page;
+    return __generator(this, function (_c) {
+        chipFilterPage = new chipFilter_page_1.ChipFilterPage(page);
+        return [2 /*return*/];
     });
-});
+}); });
 (0, test_1.test)('Validate component is loaded', function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -79,28 +77,26 @@ test_1.test.beforeEach(function (_a) {
         }
     });
 }); });
-(0, test_1.test)('should show option dropdown when clicked', function (_a) {
-    var page = _a.page;
-    return __awaiter(void 0, void 0, void 0, function () {
-        var _b;
-        return __generator(this, function (_c) {
-            switch (_c.label) {
-                case 0: return [4 /*yield*/, chipFilterPage.goto()];
-                case 1:
-                    _c.sent();
-                    return [4 /*yield*/, chipFilterPage.waitForComponent()];
-                case 2:
-                    _c.sent();
-                    return [4 /*yield*/, chipFilterPage.clickChipFilter()];
-                case 3:
-                    _c.sent();
-                    _b = test_1.expect;
-                    return [4 /*yield*/, page.locator('.options-dropdown').first()];
-                case 4: return [4 /*yield*/, _b.apply(void 0, [_c.sent()]).toBeVisible()];
-                case 5:
-                    _c.sent();
-                    return [2 /*return*/];
-            }
-        });
+(0, test_1.test)('should show option dropdown when clicked', function (_a) { return __awaiter(void 0, [_a], void 0, function (_b) {
+    var _c;
+    var page = _b.page;
+    return __generator(this, function (_d) {
+        switch (_d.label) {
+            case 0: return [4 /*yield*/, chipFilterPage.goto()];
+            case 1:
+                _d.sent();
+                return [4 /*yield*/, chipFilterPage.waitForComponent()];
+            case 2:
+                _d.sent();
+                return [4 /*yield*/, chipFilterPage.clickChipFilter()];
+            case 3:
+                _d.sent();
+                _c = test_1.expect;
+                return [4 /*yield*/, page.locator('.options-dropdown').first()];
+            case 4: return [4 /*yield*/, _c.apply(void 0, [_d.sent()]).toBeVisible()];
+            case 5:
+                _d.sent();
+                return [2 /*return*/];
+        }
     });
-});
+}); });

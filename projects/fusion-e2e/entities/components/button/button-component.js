@@ -70,16 +70,16 @@ var ButtonComponent = /** @class */ (function (_super) {
         return _this;
     }
     ButtonComponent.prototype.waitForToggleButtonComponent = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var loadedPageSelector;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0:
                         loadedPageSelector = (0, utils_1.getTestIdSelector)(testId);
                         return [4 /*yield*/, this.waitForSelector(loadedPageSelector)];
                     case 1:
-                        _b.sent();
+                        _c.sent();
                         return [2 /*return*/];
                 }
             });
@@ -110,21 +110,21 @@ var ButtonComponent = /** @class */ (function (_super) {
         });
     };
     ButtonComponent.prototype.isButtonLoading = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var buttonLocator, buttonElement, buttonClass;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getLocator((0, utils_1.getTestIdSelector)(testId))];
                     case 1:
-                        buttonLocator = _b.sent();
+                        buttonLocator = _c.sent();
                         return [4 /*yield*/, buttonLocator.elementHandle()];
                     case 2:
-                        buttonElement = _b.sent();
+                        buttonElement = _c.sent();
                         if (!buttonElement) return [3 /*break*/, 4];
                         return [4 /*yield*/, buttonElement.getAttribute('class')];
                     case 3:
-                        buttonClass = _b.sent();
+                        buttonClass = _c.sent();
                         return [2 /*return*/, buttonClass ? buttonClass.includes('loading') : false];
                     case 4: return [2 /*return*/, false];
                 }
@@ -139,17 +139,17 @@ var ButtonComponent = /** @class */ (function (_super) {
         });
     };
     ButtonComponent.prototype.getIconButtonText = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var button, textSelector;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getLocator((0, utils_1.getTestIdSelector)(testId))];
                     case 1:
-                        button = _b.sent();
+                        button = _c.sent();
                         return [4 /*yield*/, button.last().locator('span')];
                     case 2:
-                        textSelector = _b.sent();
+                        textSelector = _c.sent();
                         return [2 /*return*/, this.selectorText(textSelector)];
                 }
             });

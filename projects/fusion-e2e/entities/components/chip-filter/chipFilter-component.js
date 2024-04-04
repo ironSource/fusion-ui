@@ -61,34 +61,34 @@ var ChipFilterComponent = /** @class */ (function (_super) {
         return _super.call(this, page, selector) || this;
     }
     ChipFilterComponent.prototype.getChipFilterLabel = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var element, locator;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getLocator((0, utils_1.getTestIdSelector)((0, utils_1.getTestId)(testId, entities_1.ChipFilterTestIdModifiers.CHIP_FILTER)))];
                     case 1:
-                        element = _b.sent();
+                        element = _c.sent();
                         return [4 /*yield*/, element.locator('.fu-chip-label')];
                     case 2:
-                        locator = _b.sent();
+                        locator = _c.sent();
                         return [2 /*return*/, locator.textContent()];
                 }
             });
         });
     };
     ChipFilterComponent.prototype.clickChipFilter = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var element, locator;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getLocator((0, utils_1.getTestIdSelector)((0, utils_1.getTestId)(testId, entities_1.ChipFilterTestIdModifiers.CHIP_FILTER)))];
                     case 1:
-                        element = _b.sent();
+                        element = _c.sent();
                         return [4 /*yield*/, element.locator('.fu-chip-label')];
                     case 2:
-                        locator = _b.sent();
+                        locator = _c.sent();
                         return [2 /*return*/, locator.click()];
                 }
             });

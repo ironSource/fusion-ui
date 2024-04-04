@@ -61,42 +61,42 @@ var FieldHelpTextComponent = /** @class */ (function (_super) {
         return _super.call(this, page, selector) || this;
     }
     FieldHelpTextComponent.prototype.hasExtraText = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var byTestId;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0:
                         byTestId = this.getByTestId((0, utils_1.getTestId)(testId, entities_1.FieldHelpTextTestIdModifiers.TEXT));
                         return [4 /*yield*/, byTestId];
-                    case 1: return [2 /*return*/, (_b.sent()).isVisible()];
+                    case 1: return [2 /*return*/, (_c.sent()).isVisible()];
                 }
             });
         });
     };
     FieldHelpTextComponent.prototype.getExtraText = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+        return __awaiter(this, arguments, void 0, function (_b) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.FieldHelpTextTestIdModifiers.TEXT))];
-                    case 1: return [2 /*return*/, (_b.sent()).textContent()];
+                    case 1: return [2 /*return*/, (_c.sent()).textContent()];
                 }
             });
         });
     };
     FieldHelpTextComponent.prototype.hasExtraTextIconType = function (_a) {
-        var testId = _a.testId, type = _a.type;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var extraTextIconTypeLocator;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId, type = _b.type;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0: return [4 /*yield*/, this.getByTestId((0, utils_1.getTestId)(testId, entities_1.FieldHelpTextTestIdModifiers.CONTAINER))];
-                    case 1: return [4 /*yield*/, (_b.sent()).locator(".icon.icon-name--".concat(type))];
+                    case 1: return [4 /*yield*/, (_c.sent()).locator(".icon.icon-name--".concat(type))];
                     case 2:
-                        extraTextIconTypeLocator = _b.sent();
+                        extraTextIconTypeLocator = _c.sent();
                         return [4 /*yield*/, extraTextIconTypeLocator.count()];
-                    case 3: return [2 /*return*/, (_b.sent()) !== 0];
+                    case 3: return [2 /*return*/, (_c.sent()) !== 0];
                 }
             });
         });

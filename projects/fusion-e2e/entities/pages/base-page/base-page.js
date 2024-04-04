@@ -56,10 +56,10 @@ var BasePage = /** @class */ (function () {
         this.componentId = componentProps.componentId;
         this.loadedPageSelector = componentProps.loadedPageSelector;
     }
-    BasePage.prototype.goto = function (gotoParams) {
-        if (gotoParams === void 0) { gotoParams = {}; }
-        return __awaiter(this, void 0, void 0, function () {
+    BasePage.prototype.goto = function () {
+        return __awaiter(this, arguments, void 0, function (gotoParams) {
             var componentParams, loadedPageSelector;
+            if (gotoParams === void 0) { gotoParams = {}; }
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:

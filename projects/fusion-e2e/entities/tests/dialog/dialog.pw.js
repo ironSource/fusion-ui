@@ -40,15 +40,13 @@ var consts_1 = require("./consts");
 var dialog_page_1 = require("../../pages/dialog-page");
 var test_1 = require("@playwright/test");
 var dialogPage;
-test_1.test.beforeEach(function (_a) {
-    var page = _a.page;
-    return __awaiter(void 0, void 0, void 0, function () {
-        return __generator(this, function (_b) {
-            dialogPage = new dialog_page_1.DialogPage(page);
-            return [2 /*return*/];
-        });
+test_1.test.beforeEach(function (_a) { return __awaiter(void 0, [_a], void 0, function (_b) {
+    var page = _b.page;
+    return __generator(this, function (_c) {
+        dialogPage = new dialog_page_1.DialogPage(page);
+        return [2 /*return*/];
     });
-});
+}); });
 (0, test_1.test)('Validate component is loaded', function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         switch (_a.label) {

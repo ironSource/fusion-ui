@@ -323,12 +323,12 @@ var IncludeExclude = /** @class */ (function (_super) {
         });
     };
     IncludeExclude.prototype.isOptionIncluded = function (_a) {
-        var expectedOption = _a.expectedOption, _b = _a.isExactMatch, isExactMatch = _b === void 0 ? true : _b;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var isIncluded;
             var _this = this;
-            return __generator(this, function (_c) {
-                switch (_c.label) {
+            var expectedOption = _b.expectedOption, _c = _b.isExactMatch, isExactMatch = _c === void 0 ? true : _c;
+            return __generator(this, function (_d) {
+                switch (_d.label) {
                     case 0:
                         isIncluded = false;
                         return [4 /*yield*/, test_1.test.step("Is option included: ".concat(expectedOption), function () { return __awaiter(_this, void 0, void 0, function () {
@@ -379,7 +379,7 @@ var IncludeExclude = /** @class */ (function (_super) {
                                 });
                             }); })];
                     case 1:
-                        _c.sent();
+                        _d.sent();
                         return [2 /*return*/, isIncluded];
                 }
             });

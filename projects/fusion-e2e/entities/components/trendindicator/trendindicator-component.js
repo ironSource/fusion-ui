@@ -62,18 +62,18 @@ var TrendIndicatorComponent = /** @class */ (function (_super) {
     }
     // Get the value of the trend indicator
     TrendIndicatorComponent.prototype.getTrendIndicatorValue = function (_a) {
-        var testId = _a.testId;
-        return __awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, arguments, void 0, function (_b) {
             var testIdSelector, locator;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var testId = _b.testId;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0:
                         testIdSelector = (0, utils_1.getTestId)(testId, entities_1.TrendIndicatorTestIdModifiers.VALUE);
                         return [4 /*yield*/, this.getByTestId(testIdSelector)];
                     case 1:
-                        locator = _b.sent();
+                        locator = _c.sent();
                         return [4 /*yield*/, locator.textContent()];
-                    case 2: return [2 /*return*/, _b.sent()];
+                    case 2: return [2 /*return*/, _c.sent()];
                 }
             });
         });
