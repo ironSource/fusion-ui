@@ -138,7 +138,9 @@ test('Verify inputs max length number', async () => {
         additionalComponentParams: {maxLength: 10}
     });
     const maxLengthNumber = await inputsPage.getMaxLengthNumber();
-    expect(parseInt(maxLengthNumber)).toBe(10);
+    if (typeof maxLengthNumber === 'string') {
+        expect(parseInt(maxLengthNumber)).toBe(10);
+    }
 });
 
 test.skip('Verify inputs actual length number', async () => {

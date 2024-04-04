@@ -2,7 +2,7 @@ import {getTestId, getTestIdSelector} from '../../global/utils';
 import {ButtonTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {BaseElement, Clickable} from '../../behavior';
 import {StaticText} from '../../elements';
-import {test} from '@playwright/test';
+import {Page, test} from '@playwright/test';
 import {BaseComponent} from '../base-component';
 
 export class ButtonComponent extends BaseComponent {
@@ -12,7 +12,7 @@ export class ButtonComponent extends BaseComponent {
     buttonModifierElement: BaseElement;
     buttonElement: BaseElement;
 
-    constructor(page, selector: string) {
+    constructor(page: Page, selector: string) {
         super(page, selector);
         this.contentElement = new BaseElement(page, getTestIdSelector(getTestId(this.selector, ButtonTestIdModifiers.CONTENT)));
         this.buttonModifierElement = new BaseElement(page, getTestIdSelector(getTestId(this.selector, ButtonTestIdModifiers.BUTTON)));
@@ -37,8 +37,11 @@ export class ButtonComponent extends BaseComponent {
     async isButtonLoading({testId}: {testId: string}) {
         const buttonLocator = await this.getLocator(getTestIdSelector(testId));
         const buttonElement = await buttonLocator.elementHandle();
-        const buttonClass = await buttonElement.getAttribute('class');
-        return buttonClass.includes('loading');
+        if (buttonElement) {
+            const buttonClass = await buttonElement.getAttribute('class');
+            return buttonClass ? buttonClass.includes('loading') : false;
+        }
+        return false;
     }
 
     async getButtonText() {
@@ -60,7 +63,7 @@ export class ButtonComponent extends BaseComponent {
     }
 
     async isIconExist(selector: string): Promise<boolean> {
-        let numOfIcons: number;
+        let numOfIcons: number = 0;
 
         await test.step(`Is icon exist: ${selector}`, async () => {
             const isButtonWithIcon = await this.getLocator(selector);
@@ -71,7 +74,7 @@ export class ButtonComponent extends BaseComponent {
     }
 
     async getButtonLabel(): Promise<string> {
-        let labelSelector: string;
+        let labelSelector: string = '';
 
         await test.step(`Get button label`, async () => {
             labelSelector = await this.label.getText();

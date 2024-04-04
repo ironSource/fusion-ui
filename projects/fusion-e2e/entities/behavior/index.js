@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.BaseElement = exports.Checkable = exports.Clickable = exports.Editable = void 0;
+var editable_1 = require("./behavior-class/editable");
+Object.defineProperty(exports, "Editable", { enumerable: true, get: function () { return editable_1.Editable; } });
+var clickable_1 = require("./behavior-class/clickable");
+Object.defineProperty(exports, "Clickable", { enumerable: true, get: function () { return clickable_1.Clickable; } });
+var checkable_1 = require("./behavior-class/checkable");
+Object.defineProperty(exports, "Checkable", { enumerable: true, get: function () { return checkable_1.Checkable; } });
+var base_element_1 = require("./behavior-class/base-element");
+Object.defineProperty(exports, "BaseElement", { enumerable: true, get: function () { return base_element_1.BaseElement; } });

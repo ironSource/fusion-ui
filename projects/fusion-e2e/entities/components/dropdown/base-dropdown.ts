@@ -2,10 +2,10 @@ import {getTestId} from '../../global/utils';
 import {SelectionByIndex, SelectionByName, SelectMultiple, SelectMultipleByName} from './types';
 import {DropdownTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {BaseComponent} from '../base-component';
-import {Locator} from '@playwright/test';
+import {Locator, Page} from '@playwright/test';
 
 export class BaseDropdownComponent extends BaseComponent {
-    constructor(page, selector: string) {
+    constructor(page: Page, selector: string) {
         super(page, selector);
     }
 

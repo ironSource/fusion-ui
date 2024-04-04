@@ -1,7 +1,7 @@
 import {Page, expect, test} from '@playwright/test';
 import {SELECTORS, LABELS} from './constants';
-import {BaseComponent} from '../../fusion-components/base-component';
 import {FileCSVUploadInput, Button, StaticText} from '../../elements';
+import {BaseComponent} from '../base-component';
 
 export class FileCsvUpload extends BaseComponent {
     readonly fileMessage: StaticText;
@@ -25,7 +25,7 @@ export class FileCsvUpload extends BaseComponent {
     }
 
     async isPending(): Promise<boolean> {
-        let isPending: boolean;
+        let isPending: boolean = false;
 
         await test.step(`Is pending`, async () => {
             isPending = (await this.locator.locator(SELECTORS.FILE_DRAG_DROP_LOADING).count()) > 0;
@@ -35,7 +35,7 @@ export class FileCsvUpload extends BaseComponent {
     }
 
     async isUploadSuccess(): Promise<boolean> {
-        let isUploadSuccess: boolean;
+        let isUploadSuccess: boolean = false;
 
         await test.step(`Is upload success`, async () => {
             isUploadSuccess = (await this.fileMessage.getText()) === LABELS.UPLOAD_SUCCESS_MESSAGE;
@@ -45,7 +45,7 @@ export class FileCsvUpload extends BaseComponent {
     }
 
     async isUploadFailed(): Promise<boolean> {
-        let isUploadFailed: boolean;
+        let isUploadFailed: boolean = false;
 
         await test.step(`Is upload failed`, async () => {
             isUploadFailed = [LABELS.UPLOAD_FAILD_MESSAGE, LABELS.UPLOAD_INVALID_FILE_FORMAT_MESSAGE].includes(
@@ -57,7 +57,7 @@ export class FileCsvUpload extends BaseComponent {
     }
 
     async getFileUploadMessage(): Promise<string> {
-        let fileUploadMessage: string;
+        let fileUploadMessage: string = '';
 
         await test.step(`Get file upload message`, async () => {
             fileUploadMessage = await this.fileMessage.getText();

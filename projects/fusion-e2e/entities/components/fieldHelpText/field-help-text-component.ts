@@ -17,7 +17,7 @@ export class FieldHelpTextComponent extends BaseComponent {
     }
 
     // Get the extra text
-    async getExtraText({testId}: {testId: string}): Promise<string> {
+    async getExtraText({testId}: {testId: string}): Promise<string | null> {
         const testIdSelector = getTestId(testId, FieldHelpTextTestIdModifiers.TEXT);
         const byTestId: Locator = await this.getByTestId(testIdSelector);
         return byTestId.textContent();

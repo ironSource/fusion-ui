@@ -19,7 +19,7 @@ export class BaseElement {
     }
 
     async count(): Promise<number> {
-        let count: number;
+        let count: number = 0;
 
         await test.step(`Count: ${this.selector}`, async () => {
             count = await this.page.locator(this.selector).count();
@@ -35,7 +35,7 @@ export class BaseElement {
     }
 
     async isVisible(): Promise<boolean> {
-        let isVisible: boolean;
+        let isVisible: boolean = false;
 
         await test.step(`Is visible: ${this.selector}`, async () => {
             isVisible = await this.page.isVisible(this.selector);
@@ -45,7 +45,7 @@ export class BaseElement {
     }
 
     async isHidden(): Promise<boolean> {
-        let isHidden: boolean;
+        let isHidden: boolean = false;
 
         await test.step(`Is hidden: ${this.selector}`, async () => {
             isHidden = await this.page.isHidden(this.selector);
@@ -55,7 +55,7 @@ export class BaseElement {
     }
 
     async isDisabled(): Promise<boolean> {
-        let isDisabled: boolean;
+        let isDisabled: boolean = false;
 
         await test.step(`Is disabled: ${this.selector}`, async () => {
             isDisabled = await this.page.isDisabled(this.selector);
@@ -65,7 +65,7 @@ export class BaseElement {
     }
 
     async isEnabled(): Promise<boolean> {
-        let isEnabled: boolean;
+        let isEnabled: boolean = false;
 
         await test.step(`Is enabled: ${this.selector}`, async () => {
             isEnabled = await this.page.isEnabled(this.selector);
@@ -85,7 +85,7 @@ export class BaseElement {
     }
 
     async getSelector(): Promise<string> {
-        let selector: string;
+        let selector: string = ``;
 
         await test.step(`Get selector`, async () => {
             selector = this.selector;
@@ -95,7 +95,7 @@ export class BaseElement {
     }
 
     async getLocator(selector: string): Promise<Locator> {
-        let locator: Locator;
+        let locator: Locator = this.page.locator(selector);
 
         await test.step(`Get locator of: ${this.selector}`, async () => {
             locator = this.page.locator(selector);
@@ -105,7 +105,7 @@ export class BaseElement {
     }
 
     async getAttribute(attributeName: string): Promise<string | null> {
-        let attribute: string | null;
+        let attribute: string | null = null;
 
         await test.step(`Get attribute of: ${attributeName}`, async () => {
             attribute = await this.page.getAttribute(this.selector, attributeName);
@@ -161,8 +161,8 @@ export class BaseElement {
         await this.waitForSelector(loadedPageSelector);
     }
 
-    async selectorText(locator: Locator): Promise<string> {
-        let text: string;
+    async selectorText(locator: Locator): Promise<string | null> {
+        let text: string | null = null;
 
         await test.step(`Get text of: ${this.selector}`, async () => {
             text = await locator.textContent();
@@ -171,8 +171,8 @@ export class BaseElement {
         return text;
     }
 
-    async textContent(): Promise<string> {
-        let text: string;
+    async textContent(): Promise<string | null> {
+        let text: string | null = null;
 
         await test.step(`Get text content of: ${this.selector}`, async () => {
             text = await this.locator.textContent();

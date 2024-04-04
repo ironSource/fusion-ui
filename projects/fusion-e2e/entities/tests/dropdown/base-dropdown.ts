@@ -6,8 +6,8 @@ import {expect, Page, test} from '@playwright/test';
 import {SELECTORS} from './consts';
 import {GLOBAL_DEBOUNCE} from '../../constants';
 import {StaticText} from '../static-text';
-import {ButtonComponent} from '../button/button-component';
 import {BaseInputComponent} from '../inputs/base-input';
+import {ButtonComponent} from '../../components/button/button-component';
 
 export class BaseDropdownComponent extends BaseComponent {
     searchInput: BaseInputComponent;
@@ -124,7 +124,7 @@ export class BaseDropdownComponent extends BaseComponent {
     }
 
     async getSelectedOption(): Promise<string> {
-        let selectedOption: string;
+        let selectedOption: string = '';
 
         await test.step(`Get selected option`, async () => {
             selectedOption = await this.selectedOptionLabel.getText();
@@ -163,9 +163,11 @@ export class BaseDropdownComponent extends BaseComponent {
 
         await this.openDropdownIfClosed();
         await this.scrollToTheLastOption();
-        for (let i = 0; i < (await this.option.locator.count()); i++) {
-            const option = await this.option.locator.nth(i).textContent();
-            actualOptions.push(option.trim());
+        if (this.option && this.option.locator) {
+            for (let i = 0; i < (await this.option.locator.count()); i++) {
+                const option = await this.option.locator.nth(i).textContent();
+                actualOptions.push(option ? option.trim() : '');
+            }
         }
 
         if (isByOrder) {
@@ -201,7 +203,7 @@ export class BaseDropdownComponent extends BaseComponent {
 
         for (let i = 0; i < (await this.option.locator.count()); i++) {
             const option = await this.option.locator.nth(i).textContent();
-            options.push(option.trim());
+            options.push(option ? option.trim() : '');
         }
 
         return options;

@@ -1,7 +1,8 @@
 import {BaseComponent} from '../base-component';
+import {Page} from '@playwright/test';
 
 export class ChartComponent extends BaseComponent {
-    constructor(page, selector: string) {
+    constructor(page: Page, selector: string) {
         super(page, selector);
     }
 

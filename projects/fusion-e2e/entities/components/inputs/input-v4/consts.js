@@ -1,0 +1,18 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.loadedPageSelector = exports.XLTestId = exports.largeTestId = exports.mediumTestId = exports.warningTestId = exports.successTestId = exports.errorTestId = exports.defaultTestId = exports.inputsStoryIdWithLengthCounter = exports.inputsStoryIdDisabled = exports.inputsStoryIdWithPassword = exports.inputsStoryIdWithHelper = exports.inputsStoryId = void 0;
+var entities_1 = require("@ironsource/fusion-ui/entities");
+var utils_1 = require("../../../global/utils");
+exports.inputsStoryId = 'v4-components-inputs-textfield--default';
+exports.inputsStoryIdWithHelper = 'v4-components-inputs-textfield--with-helper';
+exports.inputsStoryIdWithPassword = 'v4-components-inputs-textfield--password';
+exports.inputsStoryIdDisabled = 'v4-components-inputs-textfield--disabled';
+exports.inputsStoryIdWithLengthCounter = 'v4-components-inputs-textfield--with-length-counter';
+exports.defaultTestId = 'inputs-default';
+exports.errorTestId = 'error-inputs';
+exports.successTestId = 'success-inputs';
+exports.warningTestId = 'warning-inputs';
+exports.mediumTestId = 'medium-inputs';
+exports.largeTestId = 'large-inputs';
+exports.XLTestId = 'XL-inputs';
+exports.loadedPageSelector = (0, utils_1.getTestIdSelector)((0, utils_1.getTestId)(exports.defaultTestId, entities_1.InputTestIdModifiers.WRAPPER));

@@ -9,9 +9,9 @@ export class TrendIndicatorComponent extends BaseComponent {
     }
 
     // Get the value of the trend indicator
-    async getTrendIndicatorValue({testId}: {testId: string}): Promise<string> {
+    async getTrendIndicatorValue({testId}: {testId: string}): Promise<string | null> {
         const testIdSelector = getTestId(testId, TrendIndicatorTestIdModifiers.VALUE);
         const locator: Locator = await this.getByTestId(testIdSelector);
-        return locator.textContent();
+        return await locator.textContent();
     }
 }

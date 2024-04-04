@@ -17,14 +17,13 @@ export class BaseInputComponent extends BaseComponent {
     }
 
     // Get the placeholder text of the input
-    async getPlaceholderText({testId}: {testId: string}): Promise<string> {
+    async getPlaceholderText({testId}: {testId: string}): Promise<string | null> {
         const testIdSelector = getTestId(testId, InputTestIdModifiers.FIELD);
         const element: Locator = await this.getByTestId(testIdSelector);
         return element.getAttribute('placeholder');
     }
 
-    // Get the type of the input
-    async getInputsType({testId}: {testId: string}): Promise<string> {
+    async getInputsType({testId}: {testId: string}): Promise<string | null> {
         const testIdSelector = getTestId(testId, InputTestIdModifiers.FIELD);
         const element: Locator = await this.getByTestId(testIdSelector);
         return element.getAttribute('type');

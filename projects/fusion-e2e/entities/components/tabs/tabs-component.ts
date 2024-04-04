@@ -11,11 +11,11 @@ export class TabsComponent extends BaseComponent {
     }
 
     // Get the text of the selected tab
-    async getSelectedTabText({testId}: {testId: string}): Promise<string> {
+    async getSelectedTabText({testId}: {testId: string}): Promise<string | null> {
         const testIdSelector = getTestId(testId, TabsTestIdModifiers.WRAPPER);
         const element: Locator = await this.getByTestId(testIdSelector);
         const activeTab: Locator = element.locator('.tab-item--active');
-        return activeTab.textContent();
+        return await activeTab.textContent();
     }
 
     // Select a tab

@@ -24,15 +24,15 @@ export class AlertComponent extends BaseComponent {
         this.closeButtonElement = new ButtonComponent(page, getTestIdSelector(getTestId(this.selector, AlertTestIdModifiers.CLOSE_BUTTON)));
     }
 
-    async getAlertText(): Promise<string> {
+    async getAlertText(): Promise<string | null> {
         return this.messageElement.textContent();
     }
 
-    async getAlertTitle(): Promise<string> {
+    async getAlertTitle(): Promise<string | null> {
         return this.titleElement.textContent();
     }
 
-    async getActionButtonText(): Promise<string> {
+    async getActionButtonText(): Promise<string | null> {
         return this.actionButtonElement.textContent();
     }
 
@@ -49,7 +49,7 @@ export class AlertComponent extends BaseComponent {
         return alertSelector > 0;
     }
 
-    async getAlertIconType(): Promise<string> {
+    async getAlertIconType(): Promise<string | null> {
         return this.wrapperElement.getAttribute('class');
     }
 }

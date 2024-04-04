@@ -1,7 +1,7 @@
 import {Page, test} from '@playwright/test';
-import {BaseComponent} from '../../fusion-components/base-component';
 import {Button, StaticText} from '../../elements';
 import {SELECTORS} from './constants';
+import {BaseComponent} from '../base-component';
 
 export class FloatingToolbar extends BaseComponent {
     counter: StaticText;

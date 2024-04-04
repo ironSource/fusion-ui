@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "typeRoots": ["node_modules/@types", "node_modules/@ironsource/fusion-ui/entities"]
+    },
+    "include": ["entities/**/*.ts"],
+    "exclude": ["node_modules"]
+}

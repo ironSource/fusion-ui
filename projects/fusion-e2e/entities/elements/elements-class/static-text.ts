@@ -7,7 +7,7 @@ export class StaticText extends BaseElement {
     }
 
     async getText(): Promise<string> {
-        let text: string;
+        let text: string | null = '';
 
         await test.step(`Get text`, async () => {
             const textLocator = await this.getLocator(this.selector);

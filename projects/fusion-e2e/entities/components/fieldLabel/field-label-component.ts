@@ -1,9 +1,10 @@
 import {getTestId} from '../../global/utils';
 import {FieldLabelTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {BaseComponent} from '../base-component';
+import {Page} from '@playwright/test';
 
 export class FieldLabelComponent extends BaseComponent {
-    constructor(page, selector: string) {
+    constructor(page: Page, selector: string) {
         super(page, selector);
     }
 

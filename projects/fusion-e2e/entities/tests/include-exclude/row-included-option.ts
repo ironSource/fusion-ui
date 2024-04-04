@@ -1,10 +1,10 @@
 import {Page, expect, test} from '@playwright/test';
-import {BaseComponent} from '../../fusion-components/base-component';
 import {Button, StaticText} from '../../elements';
 import {SELECTORS} from './constants';
+import {BaseComponent} from '../base-component';
 
 export class RowIncludedOption extends BaseComponent {
-    readonly testId: string;
+    readonly testId: string | undefined;
     readonly optionLabel: StaticText;
     readonly clearOptionButton: Button;
 
@@ -15,7 +15,7 @@ export class RowIncludedOption extends BaseComponent {
     }
 
     async getOptionLabel(): Promise<string> {
-        let optionLabel: string;
+        let optionLabel: string = '';
 
         await test.step(`Get option label`, async () => {
             optionLabel = await this.optionLabel.getText();
@@ -32,7 +32,7 @@ export class RowIncludedOption extends BaseComponent {
     }
 
     async isIncluded(): Promise<boolean> {
-        let isIncluded: boolean;
+        let isIncluded: boolean = false;
 
         await test.step(`Is included`, async () => {
             isIncluded = await this.optionLabel.isVisible();

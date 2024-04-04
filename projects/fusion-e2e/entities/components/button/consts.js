@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.loadedPageSelector = exports.iconButtonTestId = exports.defaultTestId = exports.toggleButtonStoryId = exports.iconButtonStoryId = exports.buttonStoryId = void 0;
+var utils_1 = require("../../global/utils");
+exports.buttonStoryId = 'v4-components-buttons-button--basic';
+exports.iconButtonStoryId = 'v4-components-buttons-iconbutton--basic';
+exports.toggleButtonStoryId = 'v4-components-buttons-togglebutton--default';
+exports.defaultTestId = 'buttonTestId';
+exports.iconButtonTestId = 'iconButtonTestId';
+exports.loadedPageSelector = (0, utils_1.getTestIdSelector)(exports.defaultTestId);

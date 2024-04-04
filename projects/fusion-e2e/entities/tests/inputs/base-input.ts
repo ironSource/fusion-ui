@@ -2,9 +2,10 @@ import {getTestId} from '../../global/utils';
 import {InputParams} from './types';
 import {InputTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {Editable} from '../../behavior';
+import {Page} from '@playwright/test';
 
 export class BaseInputComponent extends Editable {
-    constructor(page, selector: string) {
+    constructor(page: Page, selector: string) {
         super(page, selector);
     }
 

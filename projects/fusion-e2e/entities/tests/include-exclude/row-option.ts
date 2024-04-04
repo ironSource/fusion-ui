@@ -26,7 +26,7 @@ export class RowOption extends BaseComponent {
     }
 
     async isChecked(): Promise<boolean> {
-        let isChecked: boolean;
+        let isChecked: boolean = false;
 
         await test.step('Is option checked', async () => {
             isChecked = await this.checkBox.isChecked();
@@ -35,7 +35,7 @@ export class RowOption extends BaseComponent {
     }
 
     async getLabel(): Promise<string> {
-        let label: string;
+        let label: string = '';
 
         await test.step('Get label', async () => {
             label = await this.optionTitle.getText();
@@ -45,7 +45,7 @@ export class RowOption extends BaseComponent {
     }
 
     async isExist(): Promise<boolean> {
-        let isExist: boolean;
+        let isExist: boolean = false;
 
         await test.step('Check option', async () => {
             isExist = await this.checkBox.isVisible();

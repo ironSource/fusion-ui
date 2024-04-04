@@ -1,9 +1,10 @@
 import {DialogTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {getTestId, getTestIdSelector} from '../../global/utils';
 import {BaseComponent} from '../base-component';
+import {Page} from '@playwright/test';
 
 export class DialogComponent extends BaseComponent {
-    constructor(page, selector: string) {
+    constructor(page: Page, selector: string) {
         super(page, selector);
     }
 

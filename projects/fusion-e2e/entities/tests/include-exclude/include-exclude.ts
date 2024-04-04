@@ -1,14 +1,13 @@
 import {Page, expect, test} from '@playwright/test';
-import {BaseComponent} from '../../fusion-components/base-component';
 import {Button, StaticText, Input} from '../../elements';
 import {RowOption} from './row-option';
 import {RowIncludedOption} from './row-included-option';
 import {SELECTORS} from './constants';
 import {SELECTORS as elementsSelectors} from '../constants';
 import {GLOBAL_DEBOUNCE} from '../../constants';
+import {BaseComponent} from '../base-component';
 
 export class IncludeExclude extends BaseComponent {
-    readonly testIdAttr: string;
     readonly clearAllButton: Button;
     readonly searchInput: Input;
     readonly rowOption: RowOption;
@@ -39,7 +38,7 @@ export class IncludeExclude extends BaseComponent {
     }
 
     async getTypeTitle(): Promise<string> {
-        let typeTitle: string;
+        let typeTitle: string = '';
 
         await test.step(`Get type title`, async () => {
             typeTitle = await this.typeTitle.getText();
@@ -138,7 +137,7 @@ export class IncludeExclude extends BaseComponent {
     }
 
     async getNumOfIncludedItemsLabel(): Promise<string> {
-        let numOfIncludedItemsLabel: string;
+        let numOfIncludedItemsLabel: string = '';
 
         await test.step(`Get num of included items label`, async () => {
             numOfIncludedItemsLabel = await this.numOfIncludedLabel.getText();

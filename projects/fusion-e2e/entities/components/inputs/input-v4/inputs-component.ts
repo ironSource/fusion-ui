@@ -17,7 +17,7 @@ export class InputsComponent extends BaseInputComponent {
     }
 
     // Get the label text of the inputs
-    getInputsLabelText({testId}: {testId: string}): Promise<string> {
+    getInputsLabelText({testId}: {testId: string}): Promise<string | null> {
         return this.fieldLabelComponent.getLabelText({testId: testId});
     }
 
@@ -32,7 +32,7 @@ export class InputsComponent extends BaseInputComponent {
     }
 
     // Get the extra text of the input
-    getInputExtraText({testId}: {testId: string}): Promise<string> {
+    getInputExtraText({testId}: {testId: string}): Promise<string | null> {
         return this.fieldHelpTextComponent.getExtraText({testId: testId});
     }
 
@@ -50,7 +50,7 @@ export class InputsComponent extends BaseInputComponent {
     }
 
     // Get the inline error text
-    async getInlineErrorText({testId}: {testId: string}): Promise<string> {
+    async getInlineErrorText({testId}: {testId: string}): Promise<string | null> {
         const inlineErrorSelector: Locator = await this.getByTestId(getTestId(testId, InputTestIdModifiers.TOOLTIP));
         await inlineErrorSelector.hover();
         return inlineErrorSelector.getAttribute('text');
@@ -108,7 +108,7 @@ export class InputsComponent extends BaseInputComponent {
     }
 
     // Get the maximum length number of the input
-    async getMaxLengthNumber({testId}: {testId: string}): Promise<string> {
+    async getMaxLengthNumber({testId}: {testId: string}): Promise<string | null> {
         const inputFieldSelector: Locator = await this.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD));
         return inputFieldSelector.getAttribute('maxlength');
     }
@@ -116,27 +116,27 @@ export class InputsComponent extends BaseInputComponent {
     // Get the actual number length of the input
     async getActualNumberLength({testId}: {testId: string}): Promise<number> {
         const inputFieldSelector: Locator = await this.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD));
-        const value: string = await inputFieldSelector.getAttribute('value');
-        return value.length;
+        const value: string | null = await inputFieldSelector.getAttribute('value');
+        return value ? value.length : 0;
     }
 
     // Get the font caption text of the input
     async getFontCaptionText({testId}: {testId: string}): Promise<number[]> {
         const wrapperLocator: Locator = await this.getByTestId(getTestId(testId, InputTestIdModifiers.WRAPPER));
         const fontCaptionLocator: Locator = wrapperLocator.locator('.font-caption');
-        const fontCaptionText: string = await fontCaptionLocator.textContent();
-        return fontCaptionText.split('/').map(str => parseInt(str.trim(), 10));
+        const fontCaptionText: string | null = await fontCaptionLocator.textContent();
+        return fontCaptionText ? fontCaptionText.split('/').map(str => parseInt(str.trim(), 10)) : [];
     }
 
     // Get the help icon text of the input
-    getHelpIconText({testId}: {testId: string}): Promise<string> {
+    getHelpIconText({testId}: {testId: string}): Promise<string | null> {
         return this.fieldLabelComponent.getHelpIconText({testId: testId});
     }
 
     // Check if the validation appears
     async isValidationAppear({testId}: {testId: string}): Promise<boolean> {
         const wrapperLocator: Locator = await this.getByTestId(getTestId(testId, InputTestIdModifiers.WRAPPER));
-        const fieldClasses: string = await wrapperLocator.getAttribute('class');
-        return fieldClasses.includes('variant-error');
+        const fieldClasses: string | null = await wrapperLocator.getAttribute('class');
+        return fieldClasses ? fieldClasses.includes('variant-error') : false;
     }
 }

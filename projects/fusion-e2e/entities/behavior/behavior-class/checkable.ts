@@ -14,6 +14,7 @@ export class Checkable extends BaseElement {
             }
         });
     }
+
     async uncheck(): Promise<void> {
         await test.step(`UnCheck`, async () => {
             await this.page.uncheck(this.selector);
@@ -24,7 +25,7 @@ export class Checkable extends BaseElement {
     }
 
     async isChecked(): Promise<boolean> {
-        let isChecked: boolean;
+        let isChecked: boolean = false;
 
         await test.step(`isChecked`, async () => {
             isChecked = await this.locator.isChecked();

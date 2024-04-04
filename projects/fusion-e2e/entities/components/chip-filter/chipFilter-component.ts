@@ -1,10 +1,10 @@
 import {ChipFilterTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {getTestId, getTestIdSelector} from '../../global/utils';
 import {BaseComponent} from '../base-component';
-import {Locator} from '@playwright/test';
+import {Locator, Page} from '@playwright/test';
 
 export class ChipFilterComponent extends BaseComponent {
-    constructor(page, selector: string) {
+    constructor(page: Page, selector: string) {
         super(page, selector);
     }
 

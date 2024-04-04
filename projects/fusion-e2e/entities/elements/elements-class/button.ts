@@ -13,7 +13,7 @@ export class Button extends BaseElement {
     }
 
     async isIconExist(selector: string): Promise<boolean> {
-        let numOfIcons: number;
+        let numOfIcons: number = 0;
 
         await test.step(`Is icon exist: ${selector}`, async () => {
             const isButtonWithIcon = await this.getLocator(selector);
@@ -24,7 +24,7 @@ export class Button extends BaseElement {
     }
 
     async getButtonLabel(): Promise<string> {
-        let labelSelector: string;
+        let labelSelector: string = '';
 
         await test.step(`Get button label`, async () => {
             labelSelector = await this.label.getText();
