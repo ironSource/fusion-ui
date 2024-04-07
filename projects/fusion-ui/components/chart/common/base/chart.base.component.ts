@@ -523,9 +523,9 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             options.scales.x.stacked = true;
             options.scales.y.stacked = true;
             options.interaction = {
-                intersect: true,
+                intersect: false,
                 mode: 'index',
-                axis: 'xy'
+                axis: 'x'
             };
             options.plugins.tooltip = {
                 ...options.plugins.tooltip

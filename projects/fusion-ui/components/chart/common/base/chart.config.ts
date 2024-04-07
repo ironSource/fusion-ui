@@ -289,7 +289,10 @@ export const CHART_CONFIGURATIONS: any = {
                 ticks: {
                     color: '#646464',
                     font: {size: 12, weight: 400},
-                    padding: 0
+                    padding: 0,
+                    minRotation: 0,
+                    maxRotation: 0,
+                    autoSkip: true
                 },
                 grid: {
                     drawBorder: false,
