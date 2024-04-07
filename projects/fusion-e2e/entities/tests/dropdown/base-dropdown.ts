@@ -6,8 +6,8 @@ import {expect, Page, test} from '@playwright/test';
 import {SELECTORS} from './consts';
 import {GLOBAL_DEBOUNCE} from '../../constants';
 import {StaticText} from '../static-text';
-import {ButtonComponent} from '../button/button-component';
 import {BaseInputComponent} from '../inputs/base-input';
+import {ButtonComponent} from '../../components/button/button-component';
 
 export class BaseDropdownComponent extends BaseComponent {
     searchInput: BaseInputComponent;

@@ -1,5 +1,5 @@
 import {Page, test} from '@playwright/test';
-import {BaseComponent} from '../../fusion-components/base-component';
+import {BaseComponent} from '../base-component';
 import {Button, StaticText} from '../../elements';
 import {SELECTORS} from './constants';
 

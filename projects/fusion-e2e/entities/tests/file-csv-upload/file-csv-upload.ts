@@ -1,7 +1,7 @@
 import {Page, expect, test} from '@playwright/test';
 import {SELECTORS, LABELS} from './constants';
-import {BaseComponent} from '../../fusion-components/base-component';
 import {FileCSVUploadInput, Button, StaticText} from '../../elements';
+import {BaseComponent} from '../base-component';
 
 export class FileCsvUpload extends BaseComponent {
     readonly fileMessage: StaticText;

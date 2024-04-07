@@ -1,11 +1,11 @@
 import {Page, expect, test} from '@playwright/test';
-import {BaseComponent} from '../../fusion-components/base-component';
 import {Button, StaticText, Input} from '../../elements';
 import {RowOption} from './row-option';
 import {RowIncludedOption} from './row-included-option';
 import {SELECTORS} from './constants';
 import {SELECTORS as elementsSelectors} from '../constants';
 import {GLOBAL_DEBOUNCE} from '../../constants';
+import {BaseComponent} from '../base-component';
 
 export class IncludeExclude extends BaseComponent {
     readonly testIdAttr: string;
