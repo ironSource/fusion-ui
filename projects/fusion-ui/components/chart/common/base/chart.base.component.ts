@@ -1,13 +1,12 @@
-import {Directive, ElementRef, EventEmitter, Injector, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
-import {ChartData, FusionChartPieDataItem, FusionChartPieData} from './entities/chart-data';
+import {Directive, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
+import {ChartData, FusionChartPieData, FusionChartPieDataItem} from './entities/chart-data';
 import {ChartLabel} from './entities/chart-label';
 import {ChartDataset} from './entities/chart-dataset';
 import {CurrencyPipe, DatePipe, DecimalPipe, PercentPipe} from '@angular/common';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {ChartDataService} from './chart.service';
 import {ColorsService} from '@ironsource/fusion-ui/services/colors';
-import {isNullOrUndefined, isNumber} from '@ironsource/fusion-ui/utils';
-import {isDateString} from '@ironsource/fusion-ui/utils';
+import {isDateString, isNullOrUndefined, isNumber} from '@ironsource/fusion-ui/utils';
 import {BASE_DATASET_OPTIONS, CHART_CONFIGURATIONS} from './chart.config';
 import {ShortNumberScaleSuffixPipe} from '@ironsource/fusion-ui/pipes/numbers';
 import {ChartBaseDatasetOptions} from './entities/chart-options';
@@ -87,7 +86,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     /** @internal */
     componentVersion = 2;
 
-    private _options: {} = {
+    private _options: any = {
         yAxisLines: 4
     };
 
@@ -102,6 +101,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     protected yAxesFormat: string;
 
     private legends: ChartLegend[] = [];
+    private barWidth: number; // for bar chart type, if showCharsAmountXLabels is set to true
 
     constructor(
         protected datePipe: DatePipe,
@@ -163,6 +163,18 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             this.chart.destroy();
         }
         this.chart = this.renderChart(this.ctx);
+
+        if (
+            (this.type === ChartType.Bar || this.type === ChartType.StackedBar) &&
+            isNumber(this.options.showCharsAmountXLabels) &&
+            !!this.chartData?.labels?.length
+        ) {
+            this.barWidth = (this.chart.getDatasetMeta(0)?.xScale?.width ?? this.ctx.width) / this.chartData?.labels?.length;
+            if (this.barWidth) {
+                this.chartOptions.scales.x.ticks.callback = this.trimAxisXLabel.bind(this);
+                this.chart.update();
+            }
+        }
 
         this.afterDatasetInit.emit(this.chartData.datasets as ChartDataset[]);
     }
@@ -531,6 +543,18 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
                 ...options.plugins.tooltip
             };
         }
+    }
+
+    private trimAxisXLabel(index: number): string | string[] {
+        const label = this.chartData.labels[index] as string | string[];
+        const len = Math.round(this.barWidth * (this._options?.showCharsAmountXLabels / 100));
+        const isArray = Array.isArray(label);
+        let labelText = isArray ? label[0] : label;
+        if (labelText.length > len) {
+            labelText = labelText.substring(0, len) + '...';
+            return isArray ? [labelText, label[1]] : labelText;
+        }
+        return label;
     }
 
     private setPieChartOptions(options) {

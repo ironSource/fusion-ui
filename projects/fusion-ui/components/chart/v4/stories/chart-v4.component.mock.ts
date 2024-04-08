@@ -17,6 +17,74 @@ export const CHART_BAR_DATA_MOCK: ChartData = {
     ]
 };
 
+export const CHART_BAR_LONG_LABELS_DATA_MOCK: ChartData = {
+    data: {
+        'ironSource Ads': [17131.689014285, 35613.50929814659, 662.5999993325677, 586.8265028684241, 465.5515011067328]
+    },
+    legends: [
+        {
+            id: 1,
+            displayName: ['Block Blast！', '(iOS)'],
+            displayFormat: 'shortCurrency',
+            imageUrl: 'https://icon-uap.iads.unity3d.com/demand-creatives/icons/icon_b8d4b4964985888de6558aa5accd9e00_39915.jpeg'
+        },
+        {
+            id: 1,
+            displayName: ['Block Blast!', '(Android)'],
+            displayFormat: 'shortCurrency',
+            imageUrl: 'https://icon-uap.iads.unity3d.com/demand-creatives/icons/icon_70e0d8de66f39a0d59c47edf95968633_transformed_2432.jpeg'
+        },
+        {
+            id: 1,
+            displayName: ['Sudoku Pro: Number Puzzle Game', '(iOS)'],
+            displayFormat: 'shortCurrency',
+            imageUrl: 'https://icon-uap.iads.unity3d.com/demand-creatives/icons/icon_9bc66c1e68d843f925e77c4b8957bf51_39286.jpeg'
+        },
+        {
+            id: 1,
+            displayName: ['Block Journey!', '(iOS)'],
+            displayFormat: 'shortCurrency',
+            imageUrl: 'https://icon-uap.iads.unity3d.com/demand-creatives/icons/icon_c445b2ea104198a98e330bef34d9db20_19786.jpeg'
+        },
+        {
+            id: 1,
+            displayName: ['Solitaire - Classic Card Games', '(Android)'],
+            displayFormat: 'shortCurrency',
+            imageUrl: 'https://icon-uap.iads.unity3d.com/demand-creatives/icons/icon_7a168a5ca621c44f7b23efb7cf86968a_transformed_4692.jpeg'
+        }
+    ]
+};
+export const CHART_BAR_LONG_LABELS_OPTIONS_MOCK: any = {
+    showCharsAmountXLabels: 12,
+    interaction: {
+        intersect: false,
+        mode: 'index',
+        axis: 'x'
+    },
+    plugins: {
+        tooltip: {
+            position: 'average'
+        }
+    },
+    scales: {
+        x: {
+            ticks: {
+                minRotation: 0,
+                maxRotation: 0,
+                autoSkip: false
+            },
+            grid: {
+                display: false
+            }
+        }
+    },
+    animations: {
+        colors: {
+            duration: 300
+        }
+    }
+};
+
 export const CHART_BAR_GROUPED_DATA_MOCK: ChartData = {
     data: {
         'Unity Ads': [804.16, 1688.59, 1383.47, 1037.83, 899.56],

@@ -3,7 +3,13 @@ import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {ChartV4Component} from '../chart-v4.component';
 import {ChartType} from '@ironsource/fusion-ui/components/chart/common/base';
-import {CHART_BAR_DATA_MOCK, CHART_BAR_GROUPED_BUNDLE_DATA_MOCK, CHART_BAR_GROUPED_DATA_MOCK} from './chart-v4.component.mock';
+import {
+    CHART_BAR_DATA_MOCK,
+    CHART_BAR_GROUPED_BUNDLE_DATA_MOCK,
+    CHART_BAR_GROUPED_DATA_MOCK,
+    CHART_BAR_LONG_LABELS_DATA_MOCK,
+    CHART_BAR_LONG_LABELS_OPTIONS_MOCK
+} from './chart-v4.component.mock';
 import {ChartV4WrapperComponent} from './chart-v4-story-wrapper.component';
 
 export default {
@@ -116,6 +122,19 @@ export const Group: Story = {
         `
     })
 };*/
+
+export const LongLabels: Story = {
+    render: args => ({
+        props: {
+            data: {...CHART_BAR_LONG_LABELS_DATA_MOCK},
+            type: ChartType.StackedBar,
+            options: CHART_BAR_LONG_LABELS_OPTIONS_MOCK
+        },
+        template: `
+            <fusion-chart-wrapper [data]="data" [type]="type" [options]="options"></fusion-chart-wrapper>
+        `
+    })
+};
 
 export const NoDataToDisplay: Story = {
     render: args => ({
