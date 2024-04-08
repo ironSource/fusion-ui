@@ -2,7 +2,7 @@
     "name": "@ironsource/fusion-ui",
     "version": "8.0.0-rc.25",
     "dependencies": {
-        "chart.js": "3.7.1",
+        "chart.js": "4.4.2",
         "@floating-ui/dom": "^1.0.9",
         "tslib": "^2.0.0",
         "zone.js": "~0.11.4"
