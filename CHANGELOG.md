@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [8.0.0-rc.27](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.26...v8.0.0-rc.27) (2024-04-08)
+
+
+### Features
+
+* add support for truncate long labels in Barchart ([1987be8](https://github.com/ironSource/fusion-ui/commit/1987be8a1d9c8d2501e752f1499792f0bc3cbeab))
+
 ## [8.0.0-rc.26](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.25...v8.0.0-rc.26) (2024-04-08)
 
 
