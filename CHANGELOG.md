@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [8.0.0-rc.26](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.25...v8.0.0-rc.26) (2024-04-08)
+
+
+### Features
+
+* up ChartJs to 4.4.2 ([8b3c3a3](https://github.com/ironSource/fusion-ui/commit/8b3c3a32aef0cccdd030a1c1ec1070b01e6699d5))
+
 ## [8.0.0-rc.25](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.24...v8.0.0-rc.25) (2024-04-04)
 
 ## [8.0.0-rc.24](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.23...v8.0.0-rc.24) (2024-04-03)
