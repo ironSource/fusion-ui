@@ -1,4 +1,4 @@
-import {TooltipTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TooltipTestIdModifiers} from '@ironsource/fusion-ui/entities/test-ids-modifiers';
 import {getTestId, getTestIdSelector} from '../../global/utils';
 
 export const tooltipStoryId = 'v4-components-tooltip--basic';

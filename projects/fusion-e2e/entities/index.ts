@@ -1,3 +1,4 @@
+export * from './components/alert/alert-component';
 export * from './components/base-component';
 export * from './global/types';
 export * from './components/dialog/dialog-component';

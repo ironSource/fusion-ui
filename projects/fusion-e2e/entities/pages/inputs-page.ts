@@ -3,7 +3,7 @@ import {InputsComponent} from '../components/inputs/input-v4/inputs-component';
 import {defaultTestId, inputsStoryId, loadedPageSelector} from '../components/inputs/input-v4/consts';
 import {BasePage} from './base-page/base-page';
 import {ComponentProps} from './base-page/types';
-import {InputTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {InputTestIdModifiers} from '@ironsource/fusion-ui/entities/test-ids-modifiers';
 
 export class InputsPage extends BasePage {
     readonly input: InputsComponent;

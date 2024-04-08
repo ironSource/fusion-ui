@@ -1,4 +1,4 @@
-import {TabsTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TabsTestIdModifiers} from '@ironsource/fusion-ui/entities/test-ids-modifiers';
 import {getTestId, getTestIdSelector} from '../../global/utils';
 
 export const tabsStoryId = 'v4-components-tabs--basic';

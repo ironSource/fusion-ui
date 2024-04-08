@@ -1,4 +1,4 @@
-import {ChipFilterTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {ChipFilterTestIdModifiers} from '@ironsource/fusion-ui/entities/test-ids-modifiers';
 import {getTestId, getTestIdSelector} from '../../global/utils';
 import {BaseComponent} from '../base-component';
 import {Locator} from '@playwright/test';

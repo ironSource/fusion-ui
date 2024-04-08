@@ -1,6 +1,6 @@
 import {getTestId} from '../../global/utils';
 import {HasHelpTextTypeParams} from './types';
-import {FieldHelpTextTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {FieldHelpTextTestIdModifiers} from '@ironsource/fusion-ui/entities/test-ids-modifiers';
 import {BaseComponent} from '../base-component';
 import {Locator, Page} from '@playwright/test';
 

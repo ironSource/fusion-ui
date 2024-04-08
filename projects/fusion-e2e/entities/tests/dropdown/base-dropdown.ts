@@ -1,6 +1,6 @@
 import {getTestId} from '../../global/utils';
 import {SelectionByIndex, SelectionByName, SelectMultiple, SelectMultipleByName} from './types';
-import {DropdownTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {DropdownTestIdModifiers} from '@ironsource/fusion-ui/entities/test-ids-modifiers';
 import {BaseComponent} from '../base-component';
 import {expect, Page, test} from '@playwright/test';
 import {SELECTORS} from './consts';

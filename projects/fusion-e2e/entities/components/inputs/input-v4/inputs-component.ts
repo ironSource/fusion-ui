@@ -2,7 +2,7 @@ import {BaseInputComponent} from '../base-input';
 import {FieldLabelComponent} from '../../fieldLabel/field-label-component';
 import {FieldHelpTextComponent} from '../../fieldHelpText/field-help-text-component';
 import {HasHelpTextTypeParams} from '../../fieldHelpText/types';
-import {InputTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {InputTestIdModifiers} from '@ironsource/fusion-ui/entities/test-ids-modifiers';
 import {getTestId} from '../../../global/utils';
 import {Locator, Page} from '@playwright/test';
 

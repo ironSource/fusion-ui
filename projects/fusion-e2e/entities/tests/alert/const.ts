@@ -1,4 +1,4 @@
-import {AlertTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {AlertTestIdModifiers} from '@ironsource/fusion-ui/entities/test-ids-modifiers';
 import {getTestId, getTestIdSelector} from '../../global/utils';
 
 export const alertStoryId = 'v4-components-feedback-alert--basic';

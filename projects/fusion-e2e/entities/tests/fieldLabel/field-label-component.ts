@@ -1,5 +1,5 @@
 import {getTestId} from '../../global/utils';
-import {FieldLabelTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {FieldLabelTestIdModifiers} from '@ironsource/fusion-ui/entities/test-ids-modifiers';
 import {BaseComponent} from '../base-component';
 
 export class FieldLabelComponent extends BaseComponent {

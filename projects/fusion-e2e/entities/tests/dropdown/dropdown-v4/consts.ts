@@ -1,4 +1,4 @@
-import {DropdownTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {DropdownTestIdModifiers} from '@ironsource/fusion-ui/entities/test-ids-modifiers';
 import {getTestId, getTestIdSelector} from '../../../global/utils';
 
 export const dropdownDefaultStoryId = 'v4-components-dropdown-singleselection--basic';

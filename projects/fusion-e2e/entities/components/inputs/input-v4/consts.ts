@@ -1,4 +1,4 @@
-import {InputTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {InputTestIdModifiers} from '@ironsource/fusion-ui/entities/test-ids-modifiers';
 import {getTestId, getTestIdSelector} from '../../../global/utils';
 
 export const inputsStoryId = 'v4-components-inputs-textfield--default';

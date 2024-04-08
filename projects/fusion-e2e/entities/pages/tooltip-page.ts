@@ -4,7 +4,7 @@ import {BasePage} from './base-page/base-page';
 import {ComponentProps, GotoParams} from './base-page/types';
 import {TooltipComponent} from '../components/tooltip/tooltip-component';
 import {createStoryBookComponentPath, getTestId} from '../global/utils';
-import {TooltipTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TooltipTestIdModifiers} from '@ironsource/fusion-ui/entities/test-ids-modifiers';
 
 export class TooltipPage extends BasePage {
     readonly tooltip: TooltipComponent;

@@ -1,6 +1,6 @@
 import {getTestId} from '../../global/utils';
 import {InputParams} from './types';
-import {InputTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {InputTestIdModifiers} from '@ironsource/fusion-ui/entities/test-ids-modifiers';
 import {Editable} from '../../behavior';
 
 export class BaseInputComponent extends Editable {

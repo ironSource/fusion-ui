@@ -1,4 +1,4 @@
-import {AlertTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {AlertTestIdModifiers} from '@ironsource/fusion-ui/entities/test-ids-modifiers';
 import {getTestId, getTestIdSelector} from '../../global/utils';
 import {BaseComponent} from '../base-component';
 import {ButtonComponent} from '../button/button-component';

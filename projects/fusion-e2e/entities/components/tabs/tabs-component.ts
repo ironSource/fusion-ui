@@ -1,6 +1,6 @@
 import {getTestId} from '../../global/utils';
 import {TabsSelectionParams} from './types';
-import {TabsTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TabsTestIdModifiers} from '@ironsource/fusion-ui/entities/test-ids-modifiers';
 import {defaultTestId} from './consts';
 import {BaseComponent} from '../base-component';
 import {Locator, Page} from '@playwright/test';

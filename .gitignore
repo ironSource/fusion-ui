@@ -53,3 +53,5 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+/fusion-e2e/dist

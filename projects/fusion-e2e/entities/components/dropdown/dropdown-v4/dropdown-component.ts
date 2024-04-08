@@ -3,7 +3,11 @@ import {BaseDropdownComponent} from '../base-dropdown';
 import {FieldLabelComponent} from '../../fieldLabel/field-label-component';
 import {FieldHelpTextComponent} from '../../fieldHelpText/field-help-text-component';
 import {HasHelpTextTypeParams} from '../../fieldHelpText/types';
-import {DropdownTestIdModifiers, FieldHelpTextTestIdModifiers, InputTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {
+    DropdownTestIdModifiers,
+    FieldHelpTextTestIdModifiers,
+    InputTestIdModifiers
+} from '@ironsource/fusion-ui/entities/test-ids-modifiers';
 import {Locator} from '@playwright/test';
 
 type SearchItem = {

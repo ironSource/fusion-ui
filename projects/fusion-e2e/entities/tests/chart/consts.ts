@@ -1,4 +1,4 @@
-import {ChartLabelTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {ChartLabelTestIdModifiers} from '@ironsource/fusion-ui/entities/test-ids-modifiers';
 import {getTestId, getTestIdSelector} from '../../global/utils';
 
 export const chartStoryId = 'v4-components-datavisualization-charts-barchart--basic';

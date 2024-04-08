@@ -3,7 +3,7 @@ import {BasePage} from './base-page/base-page';
 import {ButtonComponent} from '../components/button/button-component';
 import {ComponentProps} from './base-page/types';
 import {buttonStoryId, defaultTestId, loadedPageSelector} from '../components/button/consts';
-import {ButtonTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {ButtonTestIdModifiers} from '@ironsource/fusion-ui/entities/test-ids-modifiers';
 
 export class ButtonPage extends BasePage {
     readonly button: ButtonComponent;

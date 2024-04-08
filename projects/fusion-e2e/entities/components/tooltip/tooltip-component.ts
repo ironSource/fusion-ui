@@ -1,4 +1,4 @@
-import {TooltipTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TooltipTestIdModifiers} from '@ironsource/fusion-ui/entities/test-ids-modifiers';
 import {getTestId} from '../../global/utils';
 import {BaseComponent} from '../base-component';
 import {Locator, Page} from '@playwright/test';

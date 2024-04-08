@@ -1,5 +1,5 @@
 import {getTestId, getTestIdSelector} from '../../global/utils';
-import {ButtonTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {ButtonTestIdModifiers} from '@ironsource/fusion-ui/entities/test-ids-modifiers';
 import {BaseElement, Clickable} from '../../behavior';
 import {StaticText} from '../../elements';
 import {test} from '@playwright/test';

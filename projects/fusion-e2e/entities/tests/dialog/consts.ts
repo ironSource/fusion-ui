@@ -1,4 +1,4 @@
-import {DialogTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {DialogTestIdModifiers} from '@ironsource/fusion-ui/entities/test-ids-modifiers';
 import {getTestId, getTestIdSelector} from '../../global/utils';
 
 export const dialogStoryId = 'v4-components-feedback-dialog-dialog--basic';
