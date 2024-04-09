@@ -1,13 +1,12 @@
-import {Directive, ElementRef, EventEmitter, Injector, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
-import {ChartData, FusionChartPieDataItem, FusionChartPieData} from './entities/chart-data';
+import {Directive, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
+import {ChartData, FusionChartPieData, FusionChartPieDataItem} from './entities/chart-data';
 import {ChartLabel} from './entities/chart-label';
 import {ChartDataset} from './entities/chart-dataset';
 import {CurrencyPipe, DatePipe, DecimalPipe, PercentPipe} from '@angular/common';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {ChartDataService} from './chart.service';
 import {ColorsService} from '@ironsource/fusion-ui/services/colors';
-import {isNullOrUndefined, isNumber} from '@ironsource/fusion-ui/utils';
-import {isDateString} from '@ironsource/fusion-ui/utils';
+import {isDateString, isNullOrUndefined, isNumber} from '@ironsource/fusion-ui/utils';
 import {BASE_DATASET_OPTIONS, CHART_CONFIGURATIONS} from './chart.config';
 import {ShortNumberScaleSuffixPipe} from '@ironsource/fusion-ui/pipes/numbers';
 import {ChartBaseDatasetOptions} from './entities/chart-options';
@@ -69,6 +68,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             this._options = {...this._options, ...value};
         }
     }
+
     /** @internal */
     get options(): any {
         return this._options;
@@ -86,7 +86,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     /** @internal */
     componentVersion = 2;
 
-    private _options: {} = {
+    private _options: any = {
         yAxisLines: 4
     };
 
@@ -101,6 +101,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     protected yAxesFormat: string;
 
     private legends: ChartLegend[] = [];
+    private barWidth: number; // for bar chart type, if showCharsAmountXLabels is set to true
 
     constructor(
         protected datePipe: DatePipe,
@@ -163,6 +164,18 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         }
         this.chart = this.renderChart(this.ctx);
 
+        if (
+            (this.type === ChartType.Bar || this.type === ChartType.StackedBar) &&
+            isNumber(this.options.showCharsAmountXLabels) &&
+            !!this.chartData?.labels?.length
+        ) {
+            this.barWidth = (this.chart.getDatasetMeta(0)?.xScale?.width ?? this.ctx.width) / this.chartData?.labels?.length;
+            if (this.barWidth) {
+                this.chartOptions.scales.x.ticks.callback = this.trimAxisXLabel.bind(this);
+                this.chart.update();
+            }
+        }
+
         this.afterDatasetInit.emit(this.chartData.datasets as ChartDataset[]);
     }
 
@@ -182,16 +195,44 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     }
 
     highlightDataset(label: ChartLabel) {
-        if (this.chart?.getActiveElements()?.length) {
-            this.chart?.setActiveElements([]);
+        const datasets = this.chart?.data.datasets;
+        if (!isNullOrUndefined(label)) {
+            const activeElements = this.chart?.getDatasetMeta(0)?.data?.map((item, idx) => ({
+                datasetIndex: label.id as number,
+                index: idx
+            }));
+            datasets.forEach((dataset, idx) => {
+                if (idx !== activeElements[0].datasetIndex || this.type === ChartType.Doughnut) {
+                    if (this.type === ChartType.Line) {
+                        dataset.borderColor = dataset.backgroundColor;
+                    } else if (this.type === ChartType.Bar) {
+                        dataset.backgroundColor = (dataset.backgroundColor as string).replace(',1)', ',0.1)');
+                    } else if (this.type === ChartType.Doughnut) {
+                        (dataset.backgroundColor as string[]).forEach((color, idx) => {
+                            if (idx !== label.id) {
+                                dataset.backgroundColor[idx] = dataset.backgroundColor[idx].replace(',1)', ',0.1)');
+                            }
+                        });
+                    }
+                } else {
+                    if (this.type === ChartType.Line) {
+                        dataset.backgroundColor = (dataset.backgroundColor as string).replace('0.1)', '0.7)');
+                    }
+                }
+            });
         } else {
-            if (!isNullOrUndefined(label)) {
-                const activeElements = this.chart?.getDatasetMeta(0)?.data?.map((item, idx) => ({
-                    datasetIndex: label.id as number,
-                    index: idx
-                }));
-                this.chart?.setActiveElements(activeElements);
-            }
+            datasets.forEach((dataset, idx) => {
+                if (this.type === ChartType.Line) {
+                    dataset.borderColor = (dataset.backgroundColor as string).replace('0.1)', '1)');
+                    dataset.backgroundColor = (dataset.backgroundColor as string).replace('0.7)', '0.1)');
+                } else if (this.type === ChartType.Bar) {
+                    dataset.backgroundColor = (dataset.backgroundColor as string).replace(',0.1)', ',1)');
+                } else if (this.type === ChartType.Doughnut) {
+                    (dataset.backgroundColor as string[]).forEach((color, idx) => {
+                        dataset.backgroundColor[idx] = dataset.backgroundColor[idx].replace(',0.1)', ',1)');
+                    });
+                }
+            });
         }
         this.chart.update();
     }
@@ -214,16 +255,15 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     protected getColors(): string[] {
         const palette = this.colorsService.getColorPalette(this.componentVersion);
         const legends = (this._data as ChartData).legends;
-        const customPalette =
-            legends && this.type !== ChartType.Bar
-                ? legends.map((legend, idx) => {
-                      return !isNullOrUndefined(legend.color)
-                          ? legend.color
-                          : !isNullOrUndefined(palette[idx])
-                          ? palette[idx]
-                          : '#' + Math.floor(Math.random() * 16777215).toString(16); // no color - gen random
-                  })
-                : palette;
+        const customPalette = legends
+            ? legends.map((legend, idx) => {
+                  return !isNullOrUndefined(legend.color)
+                      ? legend.color
+                      : !isNullOrUndefined(palette[idx])
+                      ? palette[idx]
+                      : '#' + Math.floor(Math.random() * 16777215).toString(16); // no color - gen random
+              })
+            : palette;
         return customPalette;
     }
 
@@ -232,18 +272,16 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         const seriesToShow = datasetOptions.seriesToShow;
         const lineOptions = datasetOptions.lineOptions;
         const dateFormat = datasetOptions.dateFormat ?? 'MMM dd, yyyy';
+        const isOneDataPoint = this.chartData.labels.length === 1;
 
         // set bg fill options
         lineOptions.fill = this.isStacked;
-        if (this.componentVersion === 4 && this.isStacked) {
-            lineOptions.borderWidth = this.chartData.labels.length === 1 ? 2 : 0;
-            lineOptions.pointRadius = this.chartData.labels.length === 1 ? 2 : 0;
+        if (this.componentVersion === 4) {
+            lineOptions.pointRadius = isOneDataPoint ? 3 : 0;
+            colorKeys.push('pointBackgroundColor');
         }
-        // lineOptions.borderWidth = this.isStacked ? 10 : lineOptions.borderWidth;
         bgOpacity = this.componentVersion === 4 ? bgOpacity : bgOpacity / 2;
-
         this.chartData.datasets = this.chartData.datasets.map((item, idx) => {
-            // set color options
             const dataGroupOptions = colorKeys.reduce((resultOptions, colorOption) => {
                 const color = (this._data as ChartData)?.legends[idx]?.color || palette[idx];
                 switch (colorOption) {
@@ -251,6 +289,9 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
                         resultOptions[colorOption] = this.colorsService.toRgba(color, bgOpacity);
                         break;
                     case 'pointBackgroundColor':
+                        resultOptions[colorOption] = lineOptions[colorOption] ? lineOptions[colorOption] : color;
+                        break;
+                    case 'pointHoverBackgroundColor':
                         resultOptions[colorOption] = lineOptions[colorOption] ? lineOptions[colorOption] : color;
                         break;
                     case 'pointBorderColor':
@@ -307,8 +348,16 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         this.chartData.datasets = this.chartData.datasets.map((item, idx) => {
             if (this.componentVersion === 4) {
                 barOptions.borderColor = palette[idx];
-                barOptions.backgroundColor = this.colorsService.toRgba(palette[idx], bgOpacity);
-                barOptions.hoverBackgroundColor = this.colorsService.toRgba(palette[idx], 100);
+                barOptions.backgroundColor = this.colorsService.toRgba(palette[idx], 100);
+                barOptions.hoverBackgroundColor = palette[idx];
+                barOptions.borderWidth = 0;
+                barOptions.barPercentage = 0.9;
+                if (this.isStacked) {
+                    barOptions.barPercentage = 0.5;
+                    barOptions.borderWidth = 2;
+                    barOptions.borderColor = '#FCFCFC';
+                    barOptions.hoverBorderColor = '#FCFCFC';
+                }
             } else {
                 for (let i = 0; i < item.data.length; i++) {
                     barOptions.borderColor.push(palette[i]);
@@ -322,11 +371,13 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     private addDatasetPieStyleOptions(datasetOptions) {
         const pieOptions = datasetOptions.pieOptions;
         const piePalette: string[] = this.colorsService.getPieColorsPalette(this.componentVersion);
+        const onlyOneData = this.chartData.datasets[0].data.length === 1;
         // add colors and labels
         pieOptions.backgroundColor = [];
         pieOptions.hoverBackgroundColor = [];
         pieOptions.hoverBorderWidth = pieOptions.hoverBorderWidth;
-        pieOptions.borderWidth = pieOptions.borderWidth;
+        pieOptions.borderWidth = !onlyOneData ? pieOptions.borderWidth : 0;
+
         this.chartData.datasets = this.chartData.datasets.map(item => {
             for (let i = 0; i < item.data.length; i++) {
                 let color;
@@ -337,8 +388,11 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
                     color = piePalette[i] ? piePalette[i] : piePalette[piePalette.length - 1];
                 }
                 if (this.componentVersion === 4) {
-                    pieOptions.backgroundColor.push(this.colorsService.toRgba(color, datasetOptions.fillOpacity));
-                    pieOptions.hoverBackgroundColor.push(this.colorsService.toRgba(color, 100));
+                    pieOptions.backgroundColor.push(this.colorsService.toRgba(color, 100));
+                    pieOptions.hoverBackgroundColor.push(color);
+                    pieOptions.borderColor = '#FCFCFC';
+                    pieOptions.hoverBorderWidth = 0;
+                    pieOptions.hoverBorderColor = 'transparent';
                 } else {
                     pieOptions.backgroundColor.push(color);
                 }
@@ -483,12 +537,24 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             options.interaction = {
                 intersect: false,
                 mode: 'index',
-                axis: 'xy'
+                axis: 'x'
             };
             options.plugins.tooltip = {
                 ...options.plugins.tooltip
             };
         }
+    }
+
+    private trimAxisXLabel(index: number): string | string[] {
+        const label = this.chartData.labels[index] as string | string[];
+        const len = Math.round(this.barWidth * (this._options?.showCharsAmountXLabels / 100));
+        const isArray = Array.isArray(label);
+        let labelText = isArray ? label[0] : label;
+        if (labelText.length > len) {
+            labelText = labelText.substring(0, len) + '...';
+            return isArray ? [labelText, label[1]] : labelText;
+        }
+        return label;
     }
 
     private setPieChartOptions(options) {
@@ -518,17 +584,21 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     private filterTooltip(context): boolean {
         return !context.dataset.borderDash;
     }
+
     private getTooltipLabel(context) {
         const label = context.dataset.label ?? context.label ?? '';
         const val = context.parsed.y ?? context?.formattedValue?.replace(/,/g, '');
         const format = context.dataset.displayFormat ?? this.yAxesFormat;
+
         return ` ${label}: ${!!format ? this.getFormatted(val, format) : val}`;
     }
+
     private calculateTotals(tooltipItem: any[]) {
         const format = this.yAxesFormat;
         const total = tooltipItem.reduce((acc, val) => acc + val.raw, 0);
         return `Total: ${!!format ? this.getFormatted(total, format) : total}`;
     }
+
     private getBeforeTitle(data): HTMLElement {
         const legend = this.legends.find(legend => {
             return Array.isArray(legend.displayName)
@@ -545,11 +615,13 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         }
         return null;
     }
+
     private getTooltipDateTitle(data): string {
         const label = data[0].label;
         const value = isDateString(label) ? this.datePipe.transform(label, 'dd MMM YYYY') : label;
         return value;
     }
+
     // endregion
 
     private renderChart(ctx: HTMLCanvasElement) {
@@ -600,7 +672,11 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             const maxVal = Math.ceil((max / roundTo) * 10) * (roundTo / 10);
             stepSize = parseFloat(((maxVal - min) / tickCount).toFixed(2));
             max = stepSize * tickCount;
-            formatCallbackObj = {callback: value => this.getFormatted(value, 'shortString')};
+            formatCallbackObj = {
+                callback: (value: number) => {
+                    return value === 0 ? value : this.getFormatted(value, 'shortString');
+                }
+            };
         }
 
         yAxe.ticks = {

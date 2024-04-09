@@ -3,7 +3,10 @@ import {getRandomAppImage} from '@ironsource/fusion-ui/storybook-foundations/moc
 
 export const CHART_BAR_DATA_MOCK: ChartData = {
     data: {
-        'Unity Ads': [804.16, 1688.59, 1383.47, 1037.83, 899.56]
+        'Unity Ads': [804.16, 1688.59, 1383.47, 1037.83, 899.56],
+        'ironSource Ads': [940.16, 1288.59, 1183.47, 1137.83, 799.56],
+        'Tapjoy Offerwall': [1104.16, 1888.59, 1483.47, 1237.83, 999.56],
+        Aura: [604.16, 1688.59, 1083.47, 937.83, 699.56]
     },
     legends: [
         {id: 9930, displayName: 'Australia', displayFormat: 'shortCurrency'},
@@ -14,10 +17,78 @@ export const CHART_BAR_DATA_MOCK: ChartData = {
     ]
 };
 
+export const CHART_BAR_LONG_LABELS_DATA_MOCK: ChartData = {
+    data: {
+        'ironSource Ads': [17131, 35613, 23662, 16586, 10465]
+    },
+    legends: [
+        {
+            id: 1,
+            displayName: ['Block Blast！', '(iOS)'],
+            displayFormat: 'shortCurrency',
+            imageUrl: 'https://icon-uap.iads.unity3d.com/demand-creatives/icons/icon_b8d4b4964985888de6558aa5accd9e00_39915.jpeg'
+        },
+        {
+            id: 1,
+            displayName: ['Block Blast!', '(Android)'],
+            displayFormat: 'shortCurrency',
+            imageUrl: 'https://icon-uap.iads.unity3d.com/demand-creatives/icons/icon_70e0d8de66f39a0d59c47edf95968633_transformed_2432.jpeg'
+        },
+        {
+            id: 1,
+            displayName: ['Sudoku Pro: Number Puzzle Game', '(iOS)'],
+            displayFormat: 'shortCurrency',
+            imageUrl: 'https://icon-uap.iads.unity3d.com/demand-creatives/icons/icon_9bc66c1e68d843f925e77c4b8957bf51_39286.jpeg'
+        },
+        {
+            id: 1,
+            displayName: ['Block Journey!', '(iOS)'],
+            displayFormat: 'shortCurrency',
+            imageUrl: 'https://icon-uap.iads.unity3d.com/demand-creatives/icons/icon_c445b2ea104198a98e330bef34d9db20_19786.jpeg'
+        },
+        {
+            id: 1,
+            displayName: ['Solitaire - Classic Card Games', '(Android)'],
+            displayFormat: 'shortCurrency',
+            imageUrl: 'https://icon-uap.iads.unity3d.com/demand-creatives/icons/icon_7a168a5ca621c44f7b23efb7cf86968a_transformed_4692.jpeg'
+        }
+    ]
+};
+export const CHART_BAR_LONG_LABELS_OPTIONS_MOCK: any = {
+    showCharsAmountXLabels: 12,
+    interaction: {
+        intersect: false,
+        mode: 'index',
+        axis: 'x'
+    },
+    plugins: {
+        tooltip: {
+            position: 'average'
+        }
+    },
+    scales: {
+        x: {
+            ticks: {
+                minRotation: 0,
+                maxRotation: 0,
+                autoSkip: false
+            },
+            grid: {
+                display: false
+            }
+        }
+    },
+    animations: {
+        colors: {
+            duration: 300
+        }
+    }
+};
+
 export const CHART_BAR_GROUPED_DATA_MOCK: ChartData = {
     data: {
-        'Unity Ads': [804.16, 1688.59, 1383.47, 7.83, 0],
-        'ironSource Ads': [456.16, 1290.59, 678.47, 9.83, 0]
+        'Unity Ads': [804.16, 1688.59, 1383.47, 1037.83, 899.56],
+        'ironSource Ads': [456.16, 1290.59, 678.47, 659.83, 344.56]
     },
     legends: [
         {id: 9930, displayName: 'Australia', displayFormat: 'shortCurrency'},
@@ -120,6 +191,16 @@ export const CHART_DATA_MOCK: ChartData = {
     ]
 };
 
+export const CHART_DATA_ONE_DAY_MOCK: ChartData = {
+    data: {
+        '2024-03-29': [2049.24, 1563.08]
+    },
+    legends: [
+        {id: 1, displayName: 'Unity Ads', displayFormat: 'shortCurrency'},
+        {id: 2, displayName: 'ironSource Ads', displayFormat: 'shortCurrency'}
+    ]
+};
+
 export const CHART_DATA_MOCK_BIG: ChartData = {
     data: {
         '2024-03-04': [50009405, 18784923],
@@ -132,23 +213,6 @@ export const CHART_DATA_MOCK_BIG: ChartData = {
         '2024-03-11': [56093198, 20433989],
         '2024-03-12': [57340335, 21564298],
         '2024-03-13': [56108004, 20924348]
-    },
-    legends: [
-        {
-            id: 1,
-            displayName: 'ironSource Ads',
-            displayFormat: 'shortCurrency'
-        },
-        {
-            id: 2,
-            displayName: 'Unity Ads',
-            displayFormat: 'shortCurrency'
-        }
-    ]
-};
-export const CHART_DATA_MOCK_ONE_DAY: ChartData = {
-    data: {
-        '2024-03-08': [61455525, 23878360]
     },
     legends: [
         {
@@ -227,8 +291,8 @@ export const CHART_CUSTOM_COLORS_DATA_MOCK: ChartData = {
 export const CHART_PIE_DATA_MOCK: FusionChartPieData = {
     displayFormat: 'shortCurrency',
     data: {
-        ironSource: 8781958,
-        UnityAds: 14345876
+        UnityAds: 14345876,
+        ironSource: 8781958
     }
 };
 

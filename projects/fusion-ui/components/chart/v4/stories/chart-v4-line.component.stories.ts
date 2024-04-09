@@ -8,7 +8,7 @@ import {
     CHART_DATA_MOCK,
     CHART_DATA_MOCK_BIG,
     CHART_DATA_MOCK_BIG_ICONS,
-    CHART_DATA_MOCK_ONE_DAY
+    CHART_DATA_ONE_DAY_MOCK
 } from './chart-v4.component.mock';
 import {ChartV4WrapperComponent} from './chart-v4-story-wrapper.component';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
@@ -49,6 +49,7 @@ export default {
 
 type Story = StoryObj<ChartV4Component>;
 
+/*
 export const Basic: Story = {
     render: args => ({
         props: args,
@@ -57,12 +58,13 @@ export const Basic: Story = {
         `
     })
 };
+*/
 
-export const Stack: Story = {
+export const Basic: Story = {
     render: args => ({
         props: {
-            data: {...CHART_DATA_MOCK_BIG},
-            type: ChartType.StackedLine,
+            data: {...CHART_DATA_MOCK},
+            type: ChartType.Line,
             options: {
                 interaction: {
                     intersect: false,
@@ -82,10 +84,34 @@ export const Stack: Story = {
     })
 };
 
-export const StackOneDate: Story = {
+export const OneDate: Story = {
     render: args => ({
         props: {
-            data: {...CHART_DATA_MOCK_ONE_DAY},
+            data: {...CHART_DATA_ONE_DAY_MOCK},
+            type: ChartType.Line,
+            options: {
+                interaction: {
+                    intersect: false,
+                    mode: 'index',
+                    axis: 'x'
+                },
+                plugins: {
+                    tooltip: {
+                        position: 'average'
+                    }
+                }
+            }
+        },
+        template: `
+            <fusion-chart-wrapper [data]="data" [type]="type" [options]="options"></fusion-chart-wrapper>
+        `
+    })
+};
+
+export const Stack: Story = {
+    render: args => ({
+        props: {
+            data: {...CHART_DATA_MOCK_BIG},
             type: ChartType.StackedLine,
             options: {
                 interaction: {
@@ -126,30 +152,6 @@ export const WithIconsInTooltip: Story = {
         },
         template: `
             <fusion-chart-wrapper style="--chart-tooltip-max-width: 270px;" [data]="data" [type]="type" [options]="options"></fusion-chart-wrapper>
-        `
-    })
-};
-
-export const WithTotal: Story = {
-    render: args => ({
-        props: {
-            data: {...CHART_DATA_MOCK},
-            type: ChartType.Line,
-            options: {
-                interaction: {
-                    intersect: false,
-                    mode: 'index',
-                    axis: 'x'
-                },
-                plugins: {
-                    tooltip: {
-                        position: 'average'
-                    }
-                }
-            }
-        },
-        template: `
-            <fusion-chart-wrapper [data]="data" [type]="type" [options]="options"></fusion-chart-wrapper>
         `
     })
 };

@@ -7,6 +7,7 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {ToggleButtonGroupComponent} from './toggle-button-group.component';
 import {ToggleButtonGroupOption} from '@ironsource/fusion-ui/components/toggle-button-group/v4/toggle-button-group.entities';
+import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
 
 const formControl = new FormControl({
     id: 1,
@@ -20,7 +21,14 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, FormsModule, ReactiveFormsModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule]
+            imports: [
+                CommonModule,
+                FormsModule,
+                ReactiveFormsModule,
+                SvgModule.forRoot({assetsPath: environment.assetsPath}),
+                IconModule,
+                TooltipDirective
+            ]
         })
     ],
     tags: ['autodocs'],
@@ -41,17 +49,20 @@ export default {
             {
                 id: 1,
                 label: 'Pie',
-                icon: 'ph/chart-pie'
+                icon: 'ph/chart-pie',
+                tooltip: 'Pie'
             },
             {
                 id: 2,
                 label: 'Line',
-                icon: 'ph/chart-line-up'
+                icon: 'ph/chart-line-up',
+                tooltip: 'Line'
             },
             {
                 id: 3,
                 label: 'Bar',
-                icon: 'ph/chart-bar'
+                icon: 'ph/chart-bar',
+                tooltip: 'Bar'
             }
         ] as ToggleButtonGroupOption[],
         size: 'medium',

@@ -43,14 +43,16 @@ export const BASE_DATASET_OPTIONS: {[key: string]: ChartBaseDatasetOptions} = {
         }
     },
     style_v4: {
-        colorSettings: ['backgroundColor', 'borderColor', 'pointBorderColor', 'pointBackgroundColor'],
-        fillOpacity: 75,
+        colorSettings: ['backgroundColor', 'borderColor', 'pointBorderColor', 'pointHoverBackgroundColor'],
+        fillOpacity: 10,
         seriesToShow: 7,
         dateFormat: 'MMM dd',
         lineOptions: {
             fill: false,
             hidden: false,
-            pointBorderColor: '#FFFFFF'
+            borderWidth: 2,
+            tension: 0.4,
+            pointHoverBackgroundColor: '#fcfcfc'
         },
         barOptions: {
             borderRadius: 4,
@@ -59,8 +61,9 @@ export const BASE_DATASET_OPTIONS: {[key: string]: ChartBaseDatasetOptions} = {
             borderColor: []
         },
         pieOptions: {
-            borderWidth: 3,
-            hoverBorderWidth: 0,
+            cutout: '73%',
+            borderWidth: 2,
+            hoverBorderWidth: 2,
             backgroundColor: []
         }
     }
@@ -271,15 +274,13 @@ export const CHART_CONFIGURATIONS: any = {
         elements: {
             line: {
                 borderWidth: 2,
-                tension: 0
+                tension: 0.4
             },
             point: {
-                radius: 1,
+                radius: 0,
                 hitRadius: 8,
-                borderWidth: 0,
-                hoverRadius: 4,
                 hoverBorderWidth: 2,
-                hoverBorderColor: '#ffffff'
+                pointHoverBackgroundColor: '#fcfcfc'
             }
         },
         scales: {
@@ -288,7 +289,10 @@ export const CHART_CONFIGURATIONS: any = {
                 ticks: {
                     color: '#646464',
                     font: {size: 12, weight: 400},
-                    padding: 0
+                    padding: 0,
+                    minRotation: 0,
+                    maxRotation: 0,
+                    autoSkip: true
                 },
                 grid: {
                     drawBorder: false,
