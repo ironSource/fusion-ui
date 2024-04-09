@@ -19,7 +19,7 @@ export const CHART_BAR_DATA_MOCK: ChartData = {
 
 export const CHART_BAR_LONG_LABELS_DATA_MOCK: ChartData = {
     data: {
-        'ironSource Ads': [17131.689014285, 35613.50929814659, 662.5999993325677, 586.8265028684241, 465.5515011067328]
+        'ironSource Ads': [17131, 35613, 23662, 16586, 10465]
     },
     legends: [
         {
