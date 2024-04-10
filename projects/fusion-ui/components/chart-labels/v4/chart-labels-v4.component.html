@@ -9,7 +9,8 @@
         >
         </div>
         <fusion-icon class="fu-chart-label-icon" *ngIf="datasetLabel.icon" [name]="datasetLabel.icon"></fusion-icon>
-        <div class="fu-chart-label-text truncate" [attr.data-testid]="testId"
+        <div class="fu-chart-label-text truncate"
+             [attr.data-testid]="datasetLabel.label === 'Unity Ads' ? testId : null"
              [fusionTooltip]="datasetLabel.label">{{ datasetLabel.label }}
         </div>
     </div>

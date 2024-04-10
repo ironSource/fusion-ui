@@ -34,7 +34,8 @@ export default {
     },
     args: {
         data: {...CHART_BAR_DATA_MOCK},
-        type: ChartType.Bar
+        type: ChartType.Bar,
+        testId: 'chart-test-id'
     }
 } as Meta<ChartV4Component>;
 
@@ -55,10 +56,11 @@ export const Stack: Story = {
     render: args => ({
         props: {
             data: {...CHART_BAR_GROUPED_DATA_MOCK},
-            type: ChartType.StackedBar
+            type: ChartType.StackedBar,
+            testId: args.testId
         },
         template: `
-            <fusion-chart-wrapper [data]="data" [type]="type"></fusion-chart-wrapper>
+            <fusion-chart-wrapper [data]="data" [type]="type" [testId]="testId"></fusion-chart-wrapper>
         `
     })
 };
