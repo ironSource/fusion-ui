@@ -12,10 +12,13 @@ export interface ChartBaseDatasetOptions {
     pieOptions: ChartPieOptions;
 }
 interface ChartLineOptions {
-    fill: boolean;
-    hidden: boolean;
+    fill?: boolean;
+    hidden?: boolean;
+    tension?: number;
+    borderWidth?: number;
     pointBorderColor?: string;
     pointBackgroundColor?: string;
+    pointHoverBackgroundColor?: string;
 }
 interface ChartBarOptions {
     borderRadius?: number;
@@ -25,7 +28,9 @@ interface ChartBarOptions {
 }
 
 interface ChartPieOptions {
+    cutout?: number | string;
     borderWidth?: number;
+    rotation?: number;
     hoverBorderWidth?: number;
     backgroundColor: string[];
 }

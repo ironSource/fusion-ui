@@ -83,7 +83,6 @@ $paddingXLargeWithIconOnly: calc(var(--spacing-100, #{$spacingV4-100}) - 1px) va
             &:has(input:checked) {
                 color: var(--text-primary, #{$color-v4-text-primary});
                 background-color: var(--action-selected, #{$color-v4-action-selected});
-                pointer-events: none;
             }
 
         }

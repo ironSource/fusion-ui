@@ -35,11 +35,7 @@ export const Basic: Story = {
     render: args => ({
         props: args,
         template: `
-           <fusion-chart style="width:100%;height:100%;"
-                [data]="data"
-                [type]="type"
-                [options]="options"
-            ></fusion-chart>
+            <fusion-chart-wrapper [data]="data" [type]="type" [options]="options"></fusion-chart-wrapper>
         `
     })
 };

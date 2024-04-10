@@ -2,6 +2,46 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [8.0.0-rc.27](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.26...v8.0.0-rc.27) (2024-04-08)
+
+
+### Features
+
+* add support for truncate long labels in Barchart ([1987be8](https://github.com/ironSource/fusion-ui/commit/1987be8a1d9c8d2501e752f1499792f0bc3cbeab))
+
+## [8.0.0-rc.26](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.25...v8.0.0-rc.26) (2024-04-08)
+
+
+### Features
+
+* up ChartJs to 4.4.2 ([8b3c3a3](https://github.com/ironSource/fusion-ui/commit/8b3c3a32aef0cccdd030a1c1ec1070b01e6699d5))
+
+## [8.0.0-rc.25](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.24...v8.0.0-rc.25) (2024-04-04)
+
+## [8.0.0-rc.24](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.23...v8.0.0-rc.24) (2024-04-03)
+
+## [8.0.0-rc.23](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.22...v8.0.0-rc.23) (2024-04-03)
+
+## [8.0.0-rc.22](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.21...v8.0.0-rc.22) (2024-04-03)
+
+## [8.0.0-rc.21](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.20...v8.0.0-rc.21) (2024-04-03)
+
+## [8.0.0-rc.20](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.19...v8.0.0-rc.20) (2024-04-02)
+
+## [8.0.0-rc.19](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.18...v8.0.0-rc.19) (2024-04-02)
+
+## [8.0.0-rc.18](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.17...v8.0.0-rc.18) (2024-04-02)
+
+## [8.0.0-rc.17](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.16...v8.0.0-rc.17) (2024-04-01)
+
+## [8.0.0-rc.16](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.15...v8.0.0-rc.16) (2024-04-01)
+
+## [8.0.0-rc.15](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.14...v8.0.0-rc.15) (2024-03-31)
+
+## [8.0.0-rc.14](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.13...v8.0.0-rc.14) (2024-03-31)
+
+## [8.0.0-rc.13](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.12...v8.0.0-rc.13) (2024-03-31)
+
 ## [8.0.0-rc.12](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.11...v8.0.0-rc.12) (2024-03-28)
 
 ## [8.0.0-rc.11](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.10...v8.0.0-rc.11) (2024-03-28)
