@@ -42,7 +42,7 @@ export class ChartV4WrapperComponent {
     @Input() data: ChartData;
     @Input() type: ChartType;
     @Input() options: any;
-    @Input() testId: string = 'charts-default';
+    @Input() testId: string;
 
     @ViewChild('fusionChart') fusionChart: ChartV4Component;
 

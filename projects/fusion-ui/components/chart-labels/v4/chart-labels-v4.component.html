@@ -8,7 +8,9 @@
              [style.border-color]="datasetLabel.color"
         >
         </div>
-        <fusion-icon class="fu-chart-label-icon" *ngIf="datasetLabel.icon" [name]="datasetLabel.icon"></fusion-icon>
+        <fusion-icon class="fu-chart-label-icon" *ngIf="datasetLabel.icon"
+                     [attr.data-testid]="getTestId(testId, ChartLabelTestIdModifiers.LABEL_ICON)"
+                     [name]="datasetLabel.icon"></fusion-icon>
         <div class="fu-chart-label-text truncate" [attr.data-testid]="testId + '_' + i"
              [fusionTooltip]="datasetLabel.label">{{ datasetLabel.label }}
         </div>

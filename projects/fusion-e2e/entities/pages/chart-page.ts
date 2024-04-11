@@ -3,7 +3,7 @@ import {chartStoryId, defaultTestId, labelTestId, loadedPageSelector} from '../c
 import {BasePage} from './base-page/base-page';
 import {ComponentProps, GotoParams} from './base-page/types';
 import {ChartComponent} from '../components/chart/chart-component';
-import {createStoryBookComponentPath} from '../global/utils';
+import {createStoryBookComponentPath, getTestId, getTestIdSelector} from '../global/utils';
 
 export class ChartPage extends BasePage {
     readonly chart: ChartComponent;
@@ -31,11 +31,26 @@ export class ChartPage extends BasePage {
         await this.page.waitForSelector(this.loadedPageSelector);
     }
 
-    async waitForComponent() {
-        await this.chart.waitForComponent({testId: this.testId});
+    async waitForComponent(modifier = '') {
+        let testId: string = '';
+        if (modifier) {
+            testId = getTestId(this.testId, modifier);
+        } else {
+            testId = this.testId;
+        }
+        await this.chart.waitForComponent({testId: testId});
+    }
+
+    async waitForIconLabelComponent() {
+        const loadedPageSelector = getTestIdSelector(defaultTestId);
+        await this.chart.waitForSelector(loadedPageSelector);
     }
 
     async getLabelText(idx) {
         return this.chart.getLabelText({testId: `${labelTestId}_${idx}`});
+    }
+
+    async getIcon() {
+        return this.chart.getIcon({testId: this.testId});
     }
 }

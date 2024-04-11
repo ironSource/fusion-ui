@@ -5,6 +5,7 @@ import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox/v1';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
 import {ColorsService} from '@ironsource/fusion-ui/services/colors';
+import {ChartLabelTestIdModifiers, TestIdsService} from '@ironsource/fusion-ui';
 
 @Component({
     selector: 'fusion-chart-labels',
@@ -19,10 +20,12 @@ export class ChartLabelsV4Component {
     @Input() set labels(value: ChartLabel[]) {
         this._labels = value;
     }
+
     private _labels: ChartLabel[] = [];
     get labels(): ChartLabel[] {
         return this._labels;
     }
+
     @Input() bgOpacity = 100;
     @Input() testId: string;
 
@@ -34,4 +37,7 @@ export class ChartLabelsV4Component {
     getLabelBGColor(hexColor: string): string {
         return hexColor.startsWith('#') ? this.colorsService.toRgba(hexColor, this.bgOpacity) : hexColor;
     }
+
+    protected readonly ChartLabelTestIdModifiers = ChartLabelTestIdModifiers;
+    protected readonly getTestId = TestIdsService.getTestId;
 }
