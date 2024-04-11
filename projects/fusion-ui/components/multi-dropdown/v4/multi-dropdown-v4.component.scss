@@ -48,10 +48,17 @@ $optionsMinWidth: 225px;
           flex-direction: column;
           gap: var(--spacing-50, #{$spacingV4-50});
           padding: 0 var(--spacing-50, #{$spacingV4-50}) 0 0;
-          &.fu-subgroup-options{
+
+          &.fu-subgroup-options {
+            &:not(.fu-nested-subgroup){
             margin-bottom: 12px;
           }
-          &.fu-loading{
+            .fu-indentation {
+              margin-left: 24px;
+            }
+          }
+
+          &.fu-loading {
             gap: 0;
           }
           li {
@@ -67,7 +74,18 @@ $optionsMinWidth: 225px;
               fusion-flag{
                 min-width: 16px;
               }
-              .fu-option-image{
+
+              &.fu-parent-option-no-group {
+                .option-icon-arrow {
+                  color: var(--text-disabled, #{$color-v4-text-disabled});
+                  width: 16px;
+                  height: 16px;
+                  margin-left: auto;
+                  transition: transform 0.2s;
+                }
+              }
+
+              .fu-option-image {
                 width: 20px;
                 height: 20px;
                 border-radius: 4px;
@@ -94,13 +112,35 @@ $optionsMinWidth: 225px;
                 pointer-events: none;
             }
 
-            &.fu-has-children{
-              .fu-parent{
+            &.fu-has-children {
+              height: 32px;
+
+              &.fu-open {
+                height: 100%;
+              }
+
+              .fu-parent {
                 padding: 6px 8px;
                 @extend %font-v4-heading-6;
                 color: var(--text-secondary, #{$color-v4-text-secondary});
                 &:first-of-type{
                   margin-top: 4px;
+                }
+              }
+
+              .fu-subgroup-options {
+                display: none;
+                height: 0;
+              }
+
+              &.fu-open {
+                .fu-subgroup-options {
+                  display: flex;
+                  height: 100%;
+                }
+
+                .option-icon-arrow {
+                  transform: rotate(-180deg);
                 }
               }
             }

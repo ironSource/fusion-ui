@@ -113,6 +113,80 @@ const optionsFoodCategories: DropdownOption[] = [
         ]
     }
 ];
+const hierarchyOptionsList: DropdownOption[] = [
+    {
+        id: 'vegeterian',
+        displayText: 'Vegeterian',
+        isGroup: true
+    },
+    {
+        id: 'fish',
+        displayText: 'Fish',
+        childOptions: [
+            {
+                id: 'salmon',
+                displayText: 'Salmon'
+            },
+            {
+                id: 'lbl-1',
+                displayText: 'Label'
+            },
+            {
+                id: 'lbl-2',
+                displayText: 'Label'
+            }
+        ]
+    },
+    {
+        id: 'tofu',
+        displayText: 'Tofu',
+        childOptions: [
+            {
+                id: 'tofuSteak',
+                displayText: 'Tofu steak'
+            },
+            {
+                id: 'lbl-11',
+                displayText: 'Label'
+            },
+            {
+                id: 'lbl-22',
+                displayText: 'Label'
+            }
+        ]
+    },
+    {
+        id: 'deserts',
+        displayText: 'Desserts',
+        isGroup: true
+    },
+    {
+        id: 'des',
+        displayText: 'Desserts',
+        childOptions: [
+            {
+                id: 'lbl-0',
+                displayText: 'Mushrooms Hamburger'
+            },
+            {
+                id: 'lbl-123',
+                displayText: 'Label'
+            },
+            {
+                id: 'lbl-223',
+                displayText: 'Label'
+            },
+            {
+                id: 'lbl-323',
+                displayText: 'Label'
+            },
+            {
+                id: 'lbl-423',
+                displayText: 'Label'
+            }
+        ]
+    }
+];
 
 const groupedCountriesOptions: DropdownOption[] = ((allCountries: any[]): DropdownOption[] => {
     const groupedCountries = [
@@ -305,6 +379,17 @@ export const WithCategories: Story = {
             selectAllLabel: 'Select all',
             search: true,
             options: optionsFoodCategories
+        },
+        template: templateOneDropdown
+    })
+};
+
+export const WithHierarchy: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            search: true,
+            options: hierarchyOptionsList
         },
         template: templateOneDropdown
     })

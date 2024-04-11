@@ -239,17 +239,50 @@ export abstract class MultiDropdownBaseComponent extends DropdownBaseComponent i
     }
 
     /** @ignore */
-    optionParentClicked($event) {
+    optionParentClicked($event, targetClass?: string, stateClass?: string) {
         const targetEl = $event.currentTarget;
         const targetClassList = targetEl.classList;
-
-        if (targetClassList.contains('is-has-children')) {
-            if (targetClassList.contains('is-open')) {
-                this.renderer.removeClass(targetEl, 'is-open');
+        if (targetClassList.contains(targetClass || 'is-has-children')) {
+            if (targetClassList.contains(stateClass || 'is-open')) {
+                this.renderer.removeClass(targetEl, stateClass || 'is-open');
             } else {
-                this.renderer.addClass(targetEl, 'is-open');
+                this.renderer.addClass(targetEl, stateClass || 'is-open');
             }
         }
+    }
+
+    /**
+     * selects all children in case of parent selection (relevant only to V4)
+     * @ignore
+     */
+    handleChildrenChange(options: DropdownOption[]): void {
+        const isAllSameValue = this.checkAllOptionsHaveSameSelectedValue(options);
+        const isIndeterminate = this.getIsParentIndeterminate(options);
+        options.forEach(option => {
+            if (isAllSameValue || (isIndeterminate && !this.isSelected(option))) {
+                this.changeSelected(option);
+            }
+        });
+    }
+    /**
+     * get parent indeterminate state (relevant only to V4)
+     * @ignore
+     */
+    getIsParentIndeterminate(options: DropdownOption[]): boolean {
+        const isSomeChecked = options.some(this.isSelected.bind(this));
+        const isAllChecked = this.getIsAllChildrenChecked(options);
+        return isSomeChecked && !isAllChecked;
+    }
+    /**
+     * get parent checked indeterminate state (relevant only to V4)
+     * @ignore
+     */
+    getIsAllChildrenChecked(options: DropdownOption[]): boolean {
+        return options.every(this.isSelected.bind(this));
+    }
+    private checkAllOptionsHaveSameSelectedValue(options: DropdownOption[]): boolean {
+        const firstValue = this.isSelected(options[0]);
+        return options.every(option => this.isSelected(option) === firstValue);
     }
 
     /**
