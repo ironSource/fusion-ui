@@ -6,4 +6,4 @@ export const defaultTestId = 'charts-default';
 
 export const labelTestId = getTestId(defaultTestId, ChartLabelTestIdModifiers.LABEL);
 
-export const loadedPageSelector = getTestIdSelector(labelTestId);
+export const loadedPageSelector = getTestIdSelector(defaultTestId);
