@@ -55,6 +55,7 @@
     "@angular/platform-browser-dynamic": "^17.2.2",
     "@angular/router": "^17.2.2",
     "chart.js": "^4.4.2",
+    "chartjs-plugin-datalabels": "^2.2.0",
     "prismjs": "^1.22.0",
     "rxjs": "^6.6.3",
     "tslib": "^2.3.1",

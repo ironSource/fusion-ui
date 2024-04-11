@@ -14,8 +14,6 @@ import {ChartType} from './entities/chart-type.enum';
 import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
 import {HoverVerticalLine} from './hoverVerticalLine.plugin';
 import {ChartLegend} from './entities/chart-legend';
-
-// Chart.js 3 is tree-shakeable, so it is necessary to import and register the controllers, elements, scales and plugins you are going to use.
 import {
     Chart,
     ArcElement,
@@ -34,6 +32,7 @@ import {
     ChartData as ChartJsData,
     ChartOptions as ChartJsOptions
 } from 'chart.js';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 Chart.register(
     ArcElement,
@@ -77,6 +76,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     @Input() chartSubject: string; // user in tooltip for BAR chart type
     @Input() loading: boolean;
     @Input() noData: boolean;
+    @Input() useDataLabels = false;
     @Output() afterDatasetInit: EventEmitter<ChartDataset[]> = new EventEmitter();
 
     /** @internal */
@@ -468,9 +468,14 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             this.setPieChartOptions(options);
         }
 
+        this.setChartPlugins(options, isLastDotted);
+
+        return options;
+    }
+
+    private setChartPlugins(options: any, isLastDotted = false) {
         const isV4InteractionIndex = this.componentVersion === 4 && options?.interaction?.mode === 'index';
 
-        // region apply tooltip options
         options.plugins.tooltip = {
             ...options.plugins.tooltip,
             callbacks: {
@@ -491,9 +496,6 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         if (this.type === ChartType.Line && isV4InteractionIndex) {
             options.plugins['hoverVerticalLine'] = true;
         }
-        // end region
-
-        return options;
     }
 
     protected setLineChartOptions(options) {
@@ -631,7 +633,11 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             options: this.chartOptions
         };
 
-        // console.log('opts', opts);
+        if (this.useDataLabels) {
+            Object.assign(opts, {plugins: [ChartDataLabels]});
+        }
+
+        console.log('opts', opts);
 
         return new Chart(ctx, opts);
     }

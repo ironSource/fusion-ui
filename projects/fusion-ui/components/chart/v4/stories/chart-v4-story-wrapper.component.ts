@@ -17,6 +17,7 @@ import {ChartV4Component} from '../chart-v4.component';
                 [data]="data"
                 [type]="type"
                 [options]="options"
+                [useDataLabels]="useDataLabels"
                 (afterDatasetInit)="onChartInit($event)"
             ></fusion-chart>
         </div>
@@ -35,6 +36,7 @@ export class ChartV4WrapperComponent {
     @Input() data: ChartData;
     @Input() type: ChartType;
     @Input() options: any;
+    @Input() useDataLabels = false;
 
     @ViewChild('fusionChart') fusionChart: ChartV4Component;
 

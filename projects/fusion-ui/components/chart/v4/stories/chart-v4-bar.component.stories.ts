@@ -58,7 +58,7 @@ export const Stack: Story = {
             type: ChartType.StackedBar
         },
         template: `
-            <fusion-chart-wrapper [data]="data" [type]="type"></fusion-chart-wrapper>
+            <fusion-chart-wrapper [data]="data" [type]="type" [useDataLabels]="true"></fusion-chart-wrapper>
         `
     })
 };
