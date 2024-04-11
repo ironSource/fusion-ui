@@ -278,6 +278,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         lineOptions.fill = this.isStacked;
         if (this.componentVersion === 4) {
             lineOptions.pointRadius = isOneDataPoint ? 3 : 0;
+            lineOptions.clip = 5;
             colorKeys.push('pointBackgroundColor');
         }
         bgOpacity = this.componentVersion === 4 ? bgOpacity : bgOpacity / 2;
