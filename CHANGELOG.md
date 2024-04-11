@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [8.0.0-rc.28](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.27...v8.0.0-rc.28) (2024-04-11)
+
+
+### Features
+
+* multi select dropdown hierarchy support ([a6b0c43](https://github.com/ironSource/fusion-ui/commit/a6b0c43479679704c7f5ae4d970fcc7e7204b570))
+
 ## [8.0.0-rc.27](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.26...v8.0.0-rc.27) (2024-04-08)
 
 
