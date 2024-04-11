@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [8.0.0-rc.29](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.27...v8.0.0-rc.29) (2024-04-11)
+
+
+### Bug Fixes
+
+* fix line chart v4 fixed point cut on left ([081a2e1](https://github.com/ironSource/fusion-ui/commit/081a2e18e9a53570f826d8b989e2bf716ca3bfa0))
+
 ## [8.0.0-rc.27](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.26...v8.0.0-rc.27) (2024-04-08)
 
 
