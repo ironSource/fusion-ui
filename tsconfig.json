@@ -16,8 +16,7 @@
         "lib": ["ES2022", "dom"],
         "paths": {
             "@ironsource/fusion-ui/*": ["projects/fusion-ui/*"],
-            "@ironsource/fusion-ui": ["projects/fusion-ui"],
-            "@fusion-e2e/*": ["projects/fusion-e2e/*"]
+            "@ironsource/fusion-ui": ["projects/fusion-ui"]
         },
         "useDefineForClassFields": false,
         "skipLibCheck": true
