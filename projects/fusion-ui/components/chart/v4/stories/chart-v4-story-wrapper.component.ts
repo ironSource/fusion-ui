@@ -4,7 +4,7 @@ import {BehaviorSubject} from 'rxjs';
 import {ChartData, ChartDataset, ChartLabel, ChartType} from '@ironsource/fusion-ui/components/chart/common/base';
 import {ChartLabelsV4Component} from '@ironsource/fusion-ui/components/chart-labels/v4/chart-labels-v4.component';
 import {ChartV4Component} from '../chart-v4.component';
-import {getTestId} from '../../../../../fusion-e2e/entities/global/utils';
+import {getTestId} from '@fusion-e2e/entities/global/utils';
 import {ChartLabelTestIdModifiers} from '@ironsource/fusion-ui';
 
 @Component({
