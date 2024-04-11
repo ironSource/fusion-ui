@@ -218,6 +218,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
                     if (this.type === ChartType.Line) {
                         dataset.backgroundColor = (dataset.backgroundColor as string).replace('0.1)', '0.7)');
                     }
+                    this.showDataLabel(dataset, true);
                 }
             });
         } else {
@@ -232,6 +233,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
                         dataset.backgroundColor[idx] = dataset.backgroundColor[idx].replace(',0.1)', ',1)');
                     });
                 }
+                this.showDataLabel(dataset, false);
             });
         }
         this.chart.update();
@@ -364,6 +366,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
                     barOptions.backgroundColor.push(this.colorsService.toRgba(palette[i], bgOpacity));
                 }
             }
+
             return Object.assign(item, barOptions);
         });
     }
@@ -496,6 +499,15 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         if (this.type === ChartType.Line && isV4InteractionIndex) {
             options.plugins['hoverVerticalLine'] = true;
         }
+        if (this.useDataLabels) {
+            options.plugins.datalabels = {
+                display: false,
+                color: 'black',
+                formatter: (value: any, context: any) => {
+                    return this.getFormatted(value, this.yAxesFormat);
+                }
+            };
+        }
     }
 
     protected setLineChartOptions(options) {
@@ -582,6 +594,15 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         return options.dottedLineForToday && dataKeys[dataKeys.length - 1] === todayString;
     }
 
+    private showDataLabel(datasetOptions: any, showDatalabel = true) {
+        if (this.useDataLabels) {
+            if (isNullOrUndefined(datasetOptions.datalabels)) {
+                datasetOptions.datalabels = {};
+            }
+            datasetOptions.datalabels.display = showDatalabel;
+        }
+    }
+
     // region tooltip related methods
     private filterTooltip(context): boolean {
         return !context.dataset.borderDash;
@@ -637,7 +658,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             Object.assign(opts, {plugins: [ChartDataLabels]});
         }
 
-        console.log('opts', opts);
+        // console.log('opts', opts);
 
         return new Chart(ctx, opts);
     }

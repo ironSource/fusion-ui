@@ -58,7 +58,7 @@ export const Stack: Story = {
             type: ChartType.StackedBar
         },
         template: `
-            <fusion-chart-wrapper [data]="data" [type]="type" [useDataLabels]="true"></fusion-chart-wrapper>
+            <fusion-chart-wrapper [data]="data" [type]="type"></fusion-chart-wrapper>
         `
     })
 };
@@ -71,6 +71,18 @@ export const StackImageInTooltipTitle: Story = {
         },
         template: `
             <fusion-chart-wrapper [data]="data" [type]="type"></fusion-chart-wrapper>
+        `
+    })
+};
+
+export const WithValueOnLabelHover: Story = {
+    render: args => ({
+        props: {
+            data: {...CHART_BAR_GROUPED_DATA_MOCK},
+            type: ChartType.StackedBar
+        },
+        template: `
+            <fusion-chart-wrapper [data]="data" [type]="type" [useDataLabels]="true"></fusion-chart-wrapper>
         `
     })
 };
