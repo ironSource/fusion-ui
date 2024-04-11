@@ -502,7 +502,12 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         if (this.useDataLabels) {
             options.plugins.datalabels = {
                 display: false,
-                color: 'black',
+                color: '#646464',
+                backgroundColor: '#ffffff',
+                borderColor: '#E4E4E4',
+                borderRadius: 4,
+                borderWidth: 1,
+                anchor: 'end',
                 formatter: (value: any, context: any) => {
                     return this.getFormatted(value, this.yAxesFormat);
                 }
