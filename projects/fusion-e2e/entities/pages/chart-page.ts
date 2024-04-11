@@ -1,5 +1,5 @@
 import {Page} from '@playwright/test';
-import {chartStoryId, labelTestId, loadedPageSelector} from '../components/chart/consts';
+import {chartStoryId, defaultTestId, labelTestId, loadedPageSelector} from '../components/chart/consts';
 import {BasePage} from './base-page/base-page';
 import {ComponentProps, GotoParams} from './base-page/types';
 import {ChartComponent} from '../components/chart/chart-component';
@@ -11,7 +11,7 @@ export class ChartPage extends BasePage {
     constructor(page: Page) {
         const chartProps: ComponentProps = {
             page: page,
-            testId: labelTestId,
+            testId: defaultTestId,
             componentId: chartStoryId,
             loadedPageSelector: loadedPageSelector
         };
@@ -22,7 +22,7 @@ export class ChartPage extends BasePage {
 
     async goto(gotoParams: GotoParams = {}) {
         const componentParams = {
-            testId: labelTestId,
+            testId: defaultTestId,
             ...gotoParams.additionalComponentParams
         };
 
@@ -35,7 +35,7 @@ export class ChartPage extends BasePage {
         await this.chart.waitForComponent({testId: this.testId});
     }
 
-    async getLabelText() {
-        return this.chart.getLabelText({testId: this.testId});
+    async getLabelText(idx) {
+        return this.chart.getLabelText({testId: `${labelTestId}_${idx}`});
     }
 }

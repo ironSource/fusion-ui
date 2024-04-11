@@ -4,6 +4,8 @@ import {BehaviorSubject} from 'rxjs';
 import {ChartData, ChartDataset, ChartLabel, ChartType} from '@ironsource/fusion-ui/components/chart/common/base';
 import {ChartLabelsV4Component} from '@ironsource/fusion-ui/components/chart-labels/v4/chart-labels-v4.component';
 import {ChartV4Component} from '../chart-v4.component';
+import {getTestId} from '../../../../../fusion-e2e/entities/global/utils';
+import {ChartLabelTestIdModifiers} from '@ironsource/fusion-ui';
 
 @Component({
     selector: 'fusion-chart-wrapper',
@@ -17,6 +19,7 @@ import {ChartV4Component} from '../chart-v4.component';
                 [data]="data"
                 [type]="type"
                 [options]="options"
+                [testId]="testId"
                 (afterDatasetInit)="onChartInit($event)"
             ></fusion-chart>
         </div>
@@ -24,7 +27,7 @@ import {ChartV4Component} from '../chart-v4.component';
             <fusion-chart-labels
                 [labels]="chartDataLabels$ | async"
                 (labelHover)="labelHovered($event)"
-                [testId]="testId"
+                [testId]="getTestId(testId, ChartLabelTestIdModifiers.LABEL)"
             ></fusion-chart-labels>
         </div>
         <div *ngIf="!data" class="fu-empty-state">
@@ -80,4 +83,7 @@ export class ChartV4WrapperComponent {
     labelHovered(label: ChartLabel): void {
         this.fusionChart?.highlightDataset(label);
     }
+
+    protected readonly getTestId = getTestId;
+    protected readonly ChartLabelTestIdModifiers = ChartLabelTestIdModifiers;
 }

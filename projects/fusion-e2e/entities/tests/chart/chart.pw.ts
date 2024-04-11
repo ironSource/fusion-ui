@@ -16,6 +16,8 @@ test('Validate component is loaded', async () => {
 test('Check chart label text appears', async () => {
     await chartPage.goto();
     await chartPage.waitForComponent();
-    const labelText = await chartPage.getLabelText();
-    expect(labelText).toContain('Unity Ads');
+    const firstLabelText = await chartPage.getLabelText(0);
+    const secondLabelText = await chartPage.getLabelText(1);
+    expect(firstLabelText).toContain('ironSource Ads');
+    expect(secondLabelText).toContain('Unity Ads');
 });
