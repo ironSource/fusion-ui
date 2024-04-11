@@ -4,7 +4,9 @@
          (mouseleave)="labelHover.emit(null)"
     >
         <div class="fu-chart-label-color"
-             [style.background-color]="datasetLabel.color">
+             [style.background-color]="getLabelBGColor(datasetLabel.color)"
+             [style.border-color]="datasetLabel.color"
+        >
         </div>
         <fusion-icon class="fu-chart-label-icon" *ngIf="datasetLabel.icon" [name]="datasetLabel.icon"></fusion-icon>
         <div class="fu-chart-label-text truncate" [attr.data-testid]="testId"

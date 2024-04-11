@@ -39,7 +39,7 @@ $optionsMinWidth: 225px;
         overflow-y: auto;
         overflow-x: hidden;
         @extend %cloudUiScroll;
-        max-height: calc($optionsMaxHeight - (var(--spacing-100, #{$spacingV4-100}) * 2));
+        max-height: calc(var(--fu-options-max-height, #{$optionsMaxHeight}) - (var(--spacing-100, #{$spacingV4-100}) * 2));
 
         ul {
           margin: 0;
@@ -197,7 +197,7 @@ $optionsMinWidth: 225px;
 
       &:has(.fu-search-holder) {
         .options-holder {
-          max-height: calc(#{$optionsMaxHeight} - (var(--spacing-100, #{$spacingV4-100}) * 2) - #{$searchHeight});
+          max-height: calc(var(--fu-options-max-height, #{$optionsMaxHeight}) - (var(--spacing-100, #{$spacingV4-100}) * 2) - #{$searchHeight});
         }
       }
 
@@ -223,7 +223,7 @@ $optionsMinWidth: 225px;
       .options-dropdown {
         display: flex;
         z-index: 100;
-        max-height: $optionsMaxHeight;
+        max-height: var(--fu-options-max-height, #{$optionsMaxHeight});
       }
     }
   }

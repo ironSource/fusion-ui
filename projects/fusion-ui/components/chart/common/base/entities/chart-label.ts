@@ -7,6 +7,7 @@ export interface ChartLabel {
     labelSuffix?: string;
     labelVisible?: FormControl;
     color?: string;
+    backgroundColor?: string;
     labelLetterColor?: string; // custom color for label letter
     icon?: string;
     flag?: string;

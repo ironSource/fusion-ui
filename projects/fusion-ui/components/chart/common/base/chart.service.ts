@@ -140,12 +140,10 @@ export class ChartDataService {
         const legends: Array<string> = [];
         const dataset: Array<number> = [];
         if (Array.isArray(data.data)) {
-            data.data
-                .sort((a, b) => b.value - a.value)
-                .forEach(item => {
-                    legends.push(item.displayText);
-                    dataset.push(item.value);
-                });
+            data.data.forEach(item => {
+                legends.push(item.displayText);
+                dataset.push(item.value);
+            });
         } else {
             Object.keys(data.data)
                 .map(key => [key, data.data[key]] as any)
