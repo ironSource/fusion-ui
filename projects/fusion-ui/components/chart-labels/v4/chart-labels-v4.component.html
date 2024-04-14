@@ -2,6 +2,7 @@
     <div class="fu-chart-label" *ngFor="let datasetLabel of labels;"
          (mouseenter)="labelHover.emit(datasetLabel)"
          (mouseleave)="labelHover.emit(null)"
+         (click)="clickable && labelClick.emit(datasetLabel)"
     >
         <div class="fu-chart-label-color"
              [style.background-color]="getLabelBGColor(datasetLabel.color)"

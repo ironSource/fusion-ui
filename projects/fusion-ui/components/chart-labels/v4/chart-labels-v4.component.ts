@@ -24,6 +24,7 @@ export class ChartLabelsV4Component {
         return this._labels;
     }
     @Input() bgOpacity = 100;
+    @Input() clickable = false;
     @Input() testId: string;
 
     @Output() labelClick = new EventEmitter<ChartLabel>();

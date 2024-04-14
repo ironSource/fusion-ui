@@ -67,6 +67,7 @@ export const WithOpacity: Story = {
 
 export const WithIcon: Story = {
     args: {
-        labels: CART_LABELS_ICONS_MOCK
+        labels: CART_LABELS_ICONS_MOCK,
+        clickable: true
     }
 };
