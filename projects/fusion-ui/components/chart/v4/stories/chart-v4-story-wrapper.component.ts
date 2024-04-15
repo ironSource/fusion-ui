@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {FormControl} from '@angular/forms';
 import {BehaviorSubject} from 'rxjs';
 import {ChartComponent} from '@ironsource/fusion-ui/components/chart/v4';
 import {ChartLabelsComponent} from '@ironsource/fusion-ui/components/chart-labels/v4';
@@ -39,6 +40,7 @@ export class ChartV4WrapperComponent {
     @Input() data: ChartData;
     @Input() type: ChartType;
     @Input() options: any;
+    @Input() labelsClickable = false;
 
     @ViewChild('fusionChart') fusionChart: ChartComponent;
 
@@ -69,6 +71,9 @@ export class ChartV4WrapperComponent {
                         color: dataSet.borderColor === '#FCFCFC' ? dataSet.backgroundColor : dataSet.borderColor,
                         icon: dataSet.icon
                     };
+                    if (this.labelsClickable) {
+                        dataLabel.labelVisible = new FormControl(true);
+                    }
                     return dataLabel;
                 })
                 .reverse();

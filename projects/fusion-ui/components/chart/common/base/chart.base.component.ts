@@ -182,7 +182,11 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     /** @internal */
     toggleDataset(label: ChartLabel, recalculateYMax = false): void {
         this.chart.data.datasets
-            .filter(item => item.label === label.label && (item as any).id === label.id)
+            .filter(item => {
+                let thisLabel: boolean =
+                    this.componentVersion === 4 ? item.label === label.label : item.label === label.label && (item as any).id === label.id;
+                return thisLabel;
+            })
             .forEach(item => {
                 item.hidden = !label.labelVisible.value;
             });
@@ -195,14 +199,10 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     }
 
     highlightDataset(label: ChartLabel) {
-        const datasets = this.chart?.data.datasets;
+        const datasets: any = this.chart?.data.datasets;
         if (!isNullOrUndefined(label)) {
-            const activeElements = this.chart?.getDatasetMeta(0)?.data?.map((item, idx) => ({
-                datasetIndex: label.id as number,
-                index: idx
-            }));
-            datasets.forEach((dataset, idx) => {
-                if (idx !== activeElements[0].datasetIndex || this.type === ChartType.Doughnut) {
+            datasets.forEach((dataset: any, idx: number) => {
+                if (idx !== label.id || this.type === ChartType.Doughnut) {
                     if (this.type === ChartType.Line) {
                         dataset.borderColor = dataset.backgroundColor;
                     } else if (this.type === ChartType.Bar) {

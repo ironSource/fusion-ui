@@ -40,13 +40,22 @@ export class ChartLabelsV4Component {
     }
 
     onLabelHover(chartLabel: ChartLabel): void {
-        this.labelHover.emit(chartLabel);
+        if (isNullOrUndefined(chartLabel) || (!isNullOrUndefined(chartLabel.labelVisible) && chartLabel.labelVisible.value)) {
+            this.labelHover.emit(chartLabel);
+        }
     }
 
     chartLabelClicked(chartLabel: ChartLabel): void {
         if (!isNullOrUndefined(chartLabel.labelVisible)) {
             chartLabel.labelVisible.setValue(!chartLabel.labelVisible.value, {emitEvent: true});
             this.labelClick.emit(chartLabel);
+            if (!chartLabel.typeCheckbox) {
+                if (chartLabel.labelVisible.value) {
+                    this.labelHover.emit(chartLabel);
+                } else {
+                    this.labelHover.emit(null);
+                }
+            }
         }
     }
 }
