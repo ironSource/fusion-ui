@@ -619,7 +619,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
 
     private getTooltipDateTitle(data): string {
         const label = data[0].label;
-        const value = isDateString(label) ? this.datePipe.transform(label, 'dd MMM YYYY') : label;
+        const value = isDateString(label) ? this.datePipe.transform(label, 'MMM d, YYYY') : label;
         return value;
     }
 
