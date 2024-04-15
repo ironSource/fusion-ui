@@ -1,17 +1,24 @@
 <div class="fu-chart-labels-wrapper">
     <div class="fu-chart-label" *ngFor="let datasetLabel of labels;"
-         (mouseenter)="labelHover.emit(datasetLabel)"
-         (mouseleave)="labelHover.emit(null)"
-         (click)="clickable && labelClick.emit(datasetLabel)"
+         [class.fu-clickable]="datasetLabel?.labelVisible"
+         [class.fu-align-right]="datasetLabel?.alignToRight"
+         (mouseenter)="!datasetLabel.typeCheckbox && onLabelHover(datasetLabel)"
+         (mouseleave)="!datasetLabel.typeCheckbox && onLabelHover(null)"
+         (click)="chartLabelClicked(datasetLabel)"
     >
-        <div class="fu-chart-label-color"
-             [style.background-color]="getLabelBGColor(datasetLabel.color)"
-             [style.border-color]="datasetLabel.color"
-        >
-        </div>
-        <fusion-icon class="fu-chart-label-icon" *ngIf="datasetLabel.icon" [name]="datasetLabel.icon"></fusion-icon>
-        <div class="fu-chart-label-text truncate" [attr.data-testid]="testId"
-             [fusionTooltip]="datasetLabel.label">{{ datasetLabel.label }}
-        </div>
+        <ng-container *ngIf="!datasetLabel.typeCheckbox">
+            <div class="fu-chart-label-color"
+                 [style.background-color]="getLabelBGColor(datasetLabel.color)"
+                 [style.border-color]="datasetLabel.color"
+            >
+            </div>
+            <fusion-icon class="fu-chart-label-icon" *ngIf="datasetLabel.icon" [name]="datasetLabel.icon"></fusion-icon>
+            <div class="fu-chart-label-text truncate" [class.fu-label-strikethrough]="!(datasetLabel?.labelVisible?.value ?? true)" [attr.data-testid]="testId"
+                 [fusionTooltip]="datasetLabel.label">{{ datasetLabel.label }}
+            </div>
+        </ng-container>
+        <ng-container *ngIf="datasetLabel.typeCheckbox">
+            <fusion-checkbox [label]="datasetLabel.label" [backgroundColor]="datasetLabel.backgroundColor" [formControl]="datasetLabel?.labelVisible"></fusion-checkbox>
+        </ng-container>
     </div>
 </div>

@@ -9,7 +9,8 @@
   padding: 0;
   display: inline;
   width: 100%;
-  .fu-chart-labels-wrapper{
+
+  .fu-chart-labels-wrapper {
     width: 100%;
     display: flex;
     align-items: center;
@@ -17,7 +18,8 @@
     flex-direction: row;
     justify-content: flex-start;
     overflow-x: var(--chart-labels-wrapper-overflow-x, hidden);
-    .fu-chart-label{
+
+    .fu-chart-label {
       display: flex;
       align-items: center;
       gap: 4px;
@@ -26,53 +28,78 @@
       border-radius: 4px;
       line-height: 15px;
       background-color: var(--default-main, #{$color-v4-default-main});
-      .fu-chart-label-color{
+
+      .fu-chart-label-color {
         min-width: 12px;
         width: 12px;
         height: 12px;
         border-radius: 2px;
         border: solid 1px;
       }
-      .fu-chart-label-icon{
+
+      .fu-chart-label-icon {
         width: 15px;
         height: 15px;
         color: var(--action-active, #{$color-v4-action-active});
       }
-      .fu-chart-label-text{
+
+      .fu-chart-label-text {
         @extend %font-v4-caption;
         color: var(--text-primary, #{$color-v4-text-primary});
+
+        &.fu-label-strikethrough {
+          text-decoration: line-through;
+        }
       }
-      .truncate{
+
+      .truncate {
         @extend %truncate-flex-child;
       }
-      &:hover{
+
+      &:hover {
         cursor: default;
         background-color: var(--background-paper-elevation-3, #{$color-v4-background-paper-elevation-3});
       }
+      &.fu-clickable:hover {
+        cursor: pointer;
+      }
+      &.fu-align-right {
+        margin-left: auto;
+        background-color: transparent;
+        order: 1;
+        &:hover {
+          background-color: transparent;
+          cursor: default;
+        }
+      }
     }
 
-    &:has(> :last-child:nth-child(1)){
-      .fu-chart-label{
+    &:has(> :last-child:nth-child(1)) {
+      .fu-chart-label {
         max-width: calc(100%);
       }
     }
-    &:has(> :last-child:nth-child(2)){
-      .fu-chart-label{
+
+    &:has(> :last-child:nth-child(2)) {
+      .fu-chart-label {
         max-width: calc(100% / 2);
       }
     }
-    &:has(> :last-child:nth-child(3)){
-      .fu-chart-label{
+
+    &:has(> :last-child:nth-child(3)) {
+      .fu-chart-label {
         max-width: calc(36% - 8px);
       }
     }
-    &:has(> :last-child:nth-child(4)){
-      .fu-chart-label{
+
+    &:has(> :last-child:nth-child(4)) {
+      .fu-chart-label {
         max-width: calc(100% / 4 - 8px);
       }
     }
-    &:has(> :last-child:nth-child(5)){
-      .fu-chart-label{
+
+    &:has(> :last-child:nth-child(5)) {
+      .fu-chart-label {
         max-width: calc(100% / 5 - 8px);
       }
     }

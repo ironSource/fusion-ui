@@ -1,14 +1,14 @@
 import {ChangeDetectionStrategy, Component, Input, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BehaviorSubject} from 'rxjs';
+import {ChartComponent} from '@ironsource/fusion-ui/components/chart/v4';
+import {ChartLabelsComponent} from '@ironsource/fusion-ui/components/chart-labels/v4';
 import {ChartData, ChartDataset, ChartLabel, ChartType} from '@ironsource/fusion-ui/components/chart/common/base';
-import {ChartLabelsV4Component} from '@ironsource/fusion-ui/components/chart-labels/v4/chart-labels-v4.component';
-import {ChartV4Component} from '../chart-v4.component';
 
 @Component({
     selector: 'fusion-chart-wrapper',
     standalone: true,
-    imports: [CommonModule, ChartV4Component, ChartLabelsV4Component],
+    imports: [CommonModule, ChartComponent, ChartLabelsComponent],
     host: {class: 'fusion-v4'},
     template: `
         <div class="fusion-chart-wrapper" *ngIf="data">
@@ -21,7 +21,11 @@ import {ChartV4Component} from '../chart-v4.component';
             ></fusion-chart>
         </div>
         <div class="fusion-chart-labels-wrapper" *ngIf="data">
-            <fusion-chart-labels [labels]="chartDataLabels$ | async" (labelHover)="labelHovered($event)"></fusion-chart-labels>
+            <fusion-chart-labels
+                [labels]="chartDataLabels$ | async"
+                (labelHover)="labelHovered($event)"
+                (labelClick)="labelClicked($event)"
+            ></fusion-chart-labels>
         </div>
         <div *ngIf="!data" class="fu-empty-state">
             <div class="fu-empty-state-icon"></div>
@@ -36,7 +40,7 @@ export class ChartV4WrapperComponent {
     @Input() type: ChartType;
     @Input() options: any;
 
-    @ViewChild('fusionChart') fusionChart: ChartV4Component;
+    @ViewChild('fusionChart') fusionChart: ChartComponent;
 
     chartDataLabels$ = new BehaviorSubject<ChartLabel[]>([]);
 
@@ -74,5 +78,9 @@ export class ChartV4WrapperComponent {
 
     labelHovered(label: ChartLabel): void {
         this.fusionChart?.highlightDataset(label);
+    }
+
+    labelClicked(label: ChartLabel): void {
+        this.fusionChart?.toggleDataset(label);
     }
 }

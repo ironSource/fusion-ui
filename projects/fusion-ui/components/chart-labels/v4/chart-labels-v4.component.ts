@@ -1,15 +1,17 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {ReactiveFormsModule} from '@angular/forms';
 import {ChartLabel} from '@ironsource/fusion-ui/components/chart/common/base';
-import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox/v1';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
 import {ColorsService} from '@ironsource/fusion-ui/services/colors';
+import {CheckboxComponent} from '@ironsource/fusion-ui/components/checkbox/v4';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Component({
     selector: 'fusion-chart-labels',
     standalone: true,
-    imports: [CommonModule, CheckboxModule, IconModule, TooltipDirective],
+    imports: [CommonModule, IconModule, TooltipDirective, CheckboxComponent, ReactiveFormsModule],
     host: {class: 'fusion-v4'},
     templateUrl: './chart-labels-v4.component.html',
     styleUrls: ['./chart-labels-v4.component.scss'],
@@ -19,12 +21,13 @@ export class ChartLabelsV4Component {
     @Input() set labels(value: ChartLabel[]) {
         this._labels = value;
     }
+
     private _labels: ChartLabel[] = [];
     get labels(): ChartLabel[] {
         return this._labels;
     }
+
     @Input() bgOpacity = 100;
-    @Input() clickable = false;
     @Input() testId: string;
 
     @Output() labelClick = new EventEmitter<ChartLabel>();
@@ -34,5 +37,16 @@ export class ChartLabelsV4Component {
 
     getLabelBGColor(hexColor: string): string {
         return hexColor.startsWith('#') ? this.colorsService.toRgba(hexColor, this.bgOpacity) : hexColor;
+    }
+
+    onLabelHover(chartLabel: ChartLabel): void {
+        this.labelHover.emit(chartLabel);
+    }
+
+    chartLabelClicked(chartLabel: ChartLabel): void {
+        if (!isNullOrUndefined(chartLabel.labelVisible)) {
+            chartLabel.labelVisible.setValue(!chartLabel.labelVisible.value, {emitEvent: true});
+            this.labelClick.emit(chartLabel);
+        }
     }
 }
