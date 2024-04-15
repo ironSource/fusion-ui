@@ -3,7 +3,7 @@ import {chartStoryId, defaultTestId, labelTestId, loadedPageSelector} from '../c
 import {BasePage} from './base-page/base-page';
 import {ComponentProps, GotoParams} from './base-page/types';
 import {ChartComponent} from '../components/chart/chart-component';
-import {createStoryBookComponentPath, getTestId, getTestIdSelector} from '../global/utils';
+import {createStoryBookComponentPath} from '../global/utils';
 
 export class ChartPage extends BasePage {
     readonly chart: ChartComponent;
@@ -31,26 +31,31 @@ export class ChartPage extends BasePage {
         await this.page.waitForSelector(this.loadedPageSelector);
     }
 
-    async waitForComponent(modifier = '') {
-        let testId: string = '';
-        if (modifier) {
-            testId = getTestId(this.testId, modifier);
-        } else {
-            testId = this.testId;
-        }
-        await this.chart.waitForComponent({testId: testId});
+    async waitForComponent() {
+        await this.chart.waitForComponent({testId: this.testId});
     }
 
     async waitForIconLabelComponent() {
-        const loadedPageSelector = getTestIdSelector(defaultTestId);
-        await this.chart.waitForSelector(loadedPageSelector);
+        await this.chart.waitForSelector('fusion-chart-labels');
     }
 
     async getLabelText(idx) {
         return this.chart.getLabelText({testId: `${labelTestId}_${idx}`});
     }
 
-    async getIcon() {
-        return this.chart.getIcon({testId: this.testId});
+    async getLabelIconText(idx) {
+        return this.chart.getLabelText({testId: `${defaultTestId}_${idx}`});
+    }
+
+    async getLabels() {
+        return this.chart.getLabels({testId: this.testId});
+    }
+
+    async getLabelColor(label) {
+        return this.chart.getColor(this.testId, label);
+    }
+
+    async getLabelIcon(label) {
+        return this.chart.getIcon(this.testId, label);
     }
 }

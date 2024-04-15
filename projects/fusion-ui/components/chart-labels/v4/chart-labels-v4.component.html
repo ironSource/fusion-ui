@@ -1,9 +1,11 @@
 <div class="fu-chart-labels-wrapper" [attr.data-testid]="testId">
     <div class="fu-chart-label" *ngFor="let datasetLabel of labels; let i = index"
+         [attr.data-testid]="getTestId(testId, ChartLabelTestIdModifiers.LABEL)"
          (mouseenter)="labelHover.emit(datasetLabel)"
          (mouseleave)="labelHover.emit(null)"
     >
         <div class="fu-chart-label-color"
+             [attr.data-testid]="getTestId(testId, ChartLabelTestIdModifiers.LABEL_COLOR)"
              [style.background-color]="getLabelBGColor(datasetLabel.color)"
              [style.border-color]="datasetLabel.color"
         >
