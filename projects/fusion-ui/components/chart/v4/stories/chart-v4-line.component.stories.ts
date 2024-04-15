@@ -132,7 +132,7 @@ export const Stack: Story = {
     })
 };
 
-export const WithIconsInTooltip: Story = {
+export const IconLabel: Story = {
     render: args => ({
         props: {
             data: {...CHART_DATA_MOCK_BIG_ICONS},
@@ -156,7 +156,7 @@ export const WithIconsInTooltip: Story = {
     })
 };
 
-export const WithHideByLabelClick: Story = {
+export const HideLabel: Story = {
     render: args => ({
         props: {
             data: {...CHART_DATA_MOCK_BIG_ICONS},

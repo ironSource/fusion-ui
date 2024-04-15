@@ -89,12 +89,12 @@ export const Basic: Story = {
     }
 };
 
-export const WithOpacity: Story = {
+/*export const WithOpacity: Story = {
     args: {
         labels: CART_LABELS_MOCK,
         bgOpacity: 10
     }
-};
+};*/
 
 export const WithIcon: Story = {
     args: {
@@ -102,13 +102,13 @@ export const WithIcon: Story = {
     }
 };
 
-export const Clickable: Story = {
+export const HideLabels: Story = {
     args: {
         labels: CART_LABELS_CLICKABLE_MOCK
     }
 };
 
-export const WithShowAllTrigger: Story = {
+export const ShowAllData: Story = {
     args: {
         labels: CART_LABELS_WITH_TOGGLE_MOCK
     },

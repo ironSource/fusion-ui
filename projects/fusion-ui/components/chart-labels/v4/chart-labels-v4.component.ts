@@ -40,7 +40,11 @@ export class ChartLabelsV4Component {
     }
 
     onLabelHover(chartLabel: ChartLabel): void {
-        if (isNullOrUndefined(chartLabel) || (!isNullOrUndefined(chartLabel.labelVisible) && chartLabel.labelVisible.value)) {
+        if (
+            isNullOrUndefined(chartLabel) ||
+            isNullOrUndefined(chartLabel.labelVisible) ||
+            (!isNullOrUndefined(chartLabel.labelVisible) && chartLabel.labelVisible.value)
+        ) {
             this.labelHover.emit(chartLabel);
         }
     }
