@@ -9,24 +9,24 @@ export class BaseDropdownComponent extends BaseComponent {
         super(page, selector);
     }
 
-    async waitForComponent({testId}: {testId: string}) {
-        await this.getByTestId(getTestId(testId, DropdownTestIdModifiers.WRAPPER));
+    async waitForComponent() {
+        await this.getByTestId(getTestId(this.selector, DropdownTestIdModifiers.WRAPPER));
     }
 
-    async selectDropdownOptionByIndex({testId, index}: SelectionByIndex) {
-        await this.openDropdownComponent({testId: testId});
-        const element: Locator = await this.getByTestId(getTestId(testId, DropdownTestIdModifiers.LIST_CONTAINER));
+    async selectDropdownOptionByIndex({index}: SelectionByIndex) {
+        await this.openDropdownComponent();
+        const element: Locator = await this.getByTestId(getTestId(this.selector, DropdownTestIdModifiers.LIST_CONTAINER));
         const locator: Locator = element.locator('fusion-dropdown-options-list > li').nth(index);
         await locator.click();
     }
 
-    async getDropdownButtonContent(testId: string) {
-        const element: Locator = await this.getByTestId(getTestId(testId, DropdownTestIdModifiers.BUTTON_CONTENT));
+    async getDropdownButtonContent() {
+        const element: Locator = await this.getByTestId(getTestId(this.selector, DropdownTestIdModifiers.BUTTON_CONTENT));
         return element.textContent();
     }
 
-    async openDropdownComponent({testId}: {testId: string}) {
-        const element = await this.getByTestId(getTestId(testId, DropdownTestIdModifiers.TRIGGER));
+    async openDropdownComponent() {
+        const element = await this.getByTestId(getTestId(this.selector, DropdownTestIdModifiers.TRIGGER));
         await element.click({
             position: {
                 x: 15,
@@ -35,38 +35,38 @@ export class BaseDropdownComponent extends BaseComponent {
         });
     }
 
-    async selectDropdownOptionByName({testId, name, shouldOpen = true}: SelectionByName) {
-        if (shouldOpen) await this.openDropdownComponent({testId: testId});
-        const element: Locator = await this.getByTestId(getTestId(testId, DropdownTestIdModifiers.LIST_CONTAINER));
+    async selectDropdownOptionByName({name, shouldOpen = true}: SelectionByName) {
+        if (shouldOpen) await this.openDropdownComponent();
+        const element: Locator = await this.getByTestId(getTestId(this.selector, DropdownTestIdModifiers.LIST_CONTAINER));
         const locator: Locator = element.locator('fusion-dropdown-options-list > li', {hasText: name});
         await locator.click();
     }
 
-    async selectMultipleItemsByIndex({testId, itemsToSelect}: SelectMultiple) {
-        await this.openDropdownComponent({testId: testId});
+    async selectMultipleItemsByIndex({itemsToSelect}: SelectMultiple) {
+        await this.openDropdownComponent();
         for (const i of itemsToSelect) {
-            const element: Locator = await this.getByTestId(getTestId(testId, DropdownTestIdModifiers.LIST_CONTAINER));
+            const element: Locator = await this.getByTestId(getTestId(this.selector, DropdownTestIdModifiers.LIST_CONTAINER));
             const locator: Locator = element.locator('ul > li').nth(i);
             await locator.click();
         }
     }
 
-    async selectMultipleItemsByName({testId, itemsToSelect}: SelectMultipleByName) {
-        await this.openDropdownComponent({testId: testId});
+    async selectMultipleItemsByName({itemsToSelect}: SelectMultipleByName) {
+        await this.openDropdownComponent();
         for (const name of itemsToSelect) {
-            const element: Locator = await this.getByTestId(getTestId(testId, DropdownTestIdModifiers.LIST_CONTAINER));
+            const element: Locator = await this.getByTestId(getTestId(this.selector, DropdownTestIdModifiers.LIST_CONTAINER));
             const locator: Locator = element.locator('ul > li', {hasText: name}).first();
             await locator.click();
         }
     }
 
-    async clickOnApply({testId}: {testId: string}) {
-        const element: Locator = await this.getByTestId(getTestId(testId, DropdownTestIdModifiers.ACTION_APPLY));
+    async clickOnApply() {
+        const element: Locator = await this.getByTestId(getTestId(this.selector, DropdownTestIdModifiers.ACTION_APPLY));
         await element.click();
     }
 
-    async clickOnCancel({testId}: {testId: string}) {
-        const element: Locator = await this.getByTestId(getTestId(testId, DropdownTestIdModifiers.ACTION_CANCEL));
+    async clickOnCancel() {
+        const element: Locator = await this.getByTestId(getTestId(this.selector, DropdownTestIdModifiers.ACTION_CANCEL));
         await element.click();
     }
 }

@@ -28,11 +28,11 @@ export class DropdownPage extends BasePage {
     }
 
     getSelectedLabel() {
-        return this.dropdown.getSelectedLabel({testId: this.testId});
+        return this.dropdown.getSelectedLabel();
     }
 
     getDropdownTitle() {
-        return this.dropdown.getDropdownTitle({testId: this.testId});
+        return this.dropdown.getDropdownTitle();
     }
 
     async selectDropdownOptionByName(name: string) {
@@ -48,17 +48,17 @@ export class DropdownPage extends BasePage {
             itemsToSelect
         });
         if (applyChanges) {
-            await this.dropdown.clickOnApply({testId: this.testId});
+            await this.dropdown.clickOnApply();
         }
     }
 
     async clickOnCancel() {
-        await this.dropdown.clickOnCancel({testId: this.testId});
+        await this.dropdown.clickOnCancel();
     }
 
     searchForItem(searchTerm: string) {
         return this.dropdown.searchForItem({
-            testId: this.testId,
+            selector: this.testId,
             searchTerm
         });
     }
@@ -69,47 +69,47 @@ export class DropdownPage extends BasePage {
             itemsToSelect
         });
         if (applyChanges) {
-            await this.dropdown.clickOnApply({testId: this.testId});
+            await this.dropdown.clickOnApply();
         }
     }
 
     isErrorState() {
-        return this.dropdown.isErrorText({testId: this.testId});
+        return this.dropdown.isErrorText();
     }
 
     isDisabled() {
-        return this.dropdown.isDropdownDisabled({testId: this.testId});
+        return this.dropdown.isDropdownDisabled();
     }
 
     async clearAllOptions() {
-        await this.dropdown.clearAllOptions({testId: this.testId});
+        await this.dropdown.clearAllOptions();
     }
 
     async openDropdownComponent() {
-        await this.dropdown.openDropdownComponent({testId: this.testId});
+        await this.dropdown.openDropdownComponent();
     }
 
     async clickOnApply() {
-        await this.dropdown.clickOnApply({testId: this.testId});
+        await this.dropdown.clickOnApply();
     }
 
     isSelectAllChecked() {
-        return this.dropdown.isSelectAllChecked({testId: this.testId});
+        return this.dropdown.isSelectAllChecked();
     }
 
     isSelectAllIndeterminate() {
-        return this.dropdown.isSelectAllIndeterminate({testId: this.testId});
+        return this.dropdown.isSelectAllIndeterminate();
     }
 
     async removeChipSelection() {
-        await this.dropdown.removeChipSelection({testId: this.testId});
+        await this.dropdown.removeChipSelection();
     }
 
     async waitForComponent() {
-        await this.dropdown.waitForComponent({testId: this.testId});
+        await this.dropdown.waitForComponent();
     }
 
     getDropdownOptions() {
-        return this.dropdown.getDropdownOptions({testId: this.testId});
+        return this.dropdown.getDropdownOptions();
     }
 }

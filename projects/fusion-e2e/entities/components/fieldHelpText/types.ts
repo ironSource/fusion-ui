@@ -1,4 +1,4 @@
 export type HasHelpTextTypeParams = {
-    testId: string;
+    testId?: string;
     type: string;
 };
