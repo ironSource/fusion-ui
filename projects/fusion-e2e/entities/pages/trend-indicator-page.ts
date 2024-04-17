@@ -24,6 +24,6 @@ export class TrendIndicatorPage extends BasePage {
     }
 
     async getTrendIndicatorValue() {
-        return this.trendIndicator.getTrendIndicatorValue({testId: this.testId});
+        return this.trendIndicator.getTrendIndicatorValue();
     }
 }
