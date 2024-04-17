@@ -1,22 +1,26 @@
 import {ChipFilterTestIdModifiers} from '@ironsource/fusion-ui/entities/test-ids-modifiers';
 import {getTestId, getTestIdSelector} from '../../global/utils';
 import {BaseComponent} from '../base-component';
-import {Locator} from '@playwright/test';
+import {StaticText} from '../../elements';
+import {Page} from '@playwright/test';
+import {Clickable} from '../../behavior';
 
 export class ChipFilterComponent extends BaseComponent {
-    constructor(page, selector: string) {
+    chipFilterElement: Clickable;
+    chipFilterLabel: StaticText;
+
+    constructor(page: Page, selector: string) {
         super(page, selector);
+        const chipFilterSelector = getTestIdSelector(getTestId(selector, ChipFilterTestIdModifiers.CHIP_FILTER));
+        this.chipFilterElement = new Clickable(page, chipFilterSelector);
+        this.chipFilterLabel = new StaticText(page, `${chipFilterSelector} .fu-chip-label`);
     }
 
-    async getChipFilterLabel({testId}: {testId: string}) {
-        const element: Locator = await this.getLocator(getTestIdSelector(getTestId(testId, ChipFilterTestIdModifiers.CHIP_FILTER)));
-        const locator: Locator = await element.locator('.fu-chip-label');
-        return locator.textContent();
+    async getChipFilterLabel() {
+        return this.chipFilterLabel.getText();
     }
 
-    async clickChipFilter({testId}: {testId: string}) {
-        const element: Locator = await this.getLocator(getTestIdSelector(getTestId(testId, ChipFilterTestIdModifiers.CHIP_FILTER)));
-        const locator = await element.locator('.fu-chip-label');
-        return locator.click();
+    async clickChipFilter() {
+        return this.chipFilterElement.click();
     }
 }

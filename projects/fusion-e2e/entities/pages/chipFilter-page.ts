@@ -36,10 +36,10 @@ export class ChipFilterPage extends BasePage {
     }
 
     clickChipFilter() {
-        return this.chipFilter.clickChipFilter({testId: this.testId});
+        return this.chipFilter.clickChipFilter();
     }
 
     getChipFilterLabel() {
-        return this.chipFilter.getChipFilterLabel({testId: this.testId});
+        return this.chipFilter.getChipFilterLabel();
     }
 }
