@@ -38,11 +38,11 @@ export class TooltipPage extends BasePage {
     }
 
     getTooltipText() {
-        return this.tooltip.getTooltipText({testId: this.testId});
+        return this.tooltip.getTooltipText();
     }
 
     getTooltipHeaderText() {
-        return this.tooltip.getTooltipHeaderText({testId: this.testId});
+        return this.tooltip.getTooltipHeaderText();
     }
 
     private async openTooltip() {
