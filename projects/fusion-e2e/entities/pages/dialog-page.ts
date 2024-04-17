@@ -33,35 +33,35 @@ export class DialogPage extends BasePage {
     }
 
     getDialogTitle() {
-        return this.dialog.getDialogTitle({testId: this.testId});
+        return this.dialog.getDialogTitle();
     }
 
     openDialog() {
-        return this.dialog.openDialog({testId: this.testId});
+        return this.dialog.openDialog();
     }
 
     getDialogText() {
-        return this.dialog.getDialogText({testId: this.testId});
+        return this.dialog.getDialogText();
     }
 
     getDialogSubtitle() {
-        return this.dialog.getDialogSubtitle({testId: this.testId});
+        return this.dialog.getDialogSubtitle();
     }
 
     async closeDialog() {
-        await this.dialog.closeDialog({testId: this.testId});
+        await this.dialog.closeDialog();
     }
 
     async clickOnPrimaryButton() {
-        await this.dialog.clickOnPrimaryButton({testId: this.testId});
+        await this.dialog.clickOnPrimaryButton();
     }
 
     async clickOnDefaultButton() {
-        await this.dialog.clickOnDefaultButton({testId: this.testId});
+        await this.dialog.clickOnDefaultButton();
     }
 
     async clickOnDeleteButton() {
-        await this.dialog.clickOnDeleteButton({testId: this.testId});
+        await this.dialog.clickOnDeleteButton();
     }
 
     async waitForComponent() {
@@ -71,6 +71,6 @@ export class DialogPage extends BasePage {
     }
 
     isDialogVisible() {
-        return this.dialog.isDialogVisible({testId: this.testId});
+        return this.dialog.isDialogVisible();
     }
 }
