@@ -1,4 +1,4 @@
 export type TabsSelectionParams = {
-    testId: string;
+    testId?: string;
     tabName: string;
 };

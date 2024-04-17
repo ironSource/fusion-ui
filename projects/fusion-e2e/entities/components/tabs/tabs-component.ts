@@ -1,9 +1,9 @@
-import {getTestId} from '../../global/utils';
 import {TabsSelectionParams} from './types';
 import {TabsTestIdModifiers} from '@ironsource/fusion-ui/entities/test-ids-modifiers';
-import {defaultTestId} from './consts';
 import {BaseComponent} from '../base-component';
 import {Locator, Page} from '@playwright/test';
+import {getTestId} from '../../global/utils';
+import {defaultTestId} from './consts';
 
 export class TabsComponent extends BaseComponent {
     constructor(page: Page, selector: string) {
@@ -11,24 +11,24 @@ export class TabsComponent extends BaseComponent {
     }
 
     // Get the text of the selected tab
-    async getSelectedTabText({testId}: {testId: string}): Promise<string> {
-        const testIdSelector = getTestId(testId, TabsTestIdModifiers.WRAPPER);
+    async getSelectedTabText(): Promise<string> {
+        const testIdSelector = getTestId(this.selector, TabsTestIdModifiers.WRAPPER);
         const element: Locator = await this.getByTestId(testIdSelector);
         const activeTab: Locator = element.locator('.tab-item--active');
         return activeTab.textContent();
     }
 
     // Select a tab
-    async selectTab({testId, tabName}: TabsSelectionParams): Promise<void> {
-        const tabIndex: number = await this.getTabIndex({testId, tabName});
-        const tabTestIdSelector = getTestId(testId, `${TabsTestIdModifiers.TAB}-${tabIndex + 1}`);
+    async selectTab({tabName}: TabsSelectionParams): Promise<void> {
+        const tabIndex: number = await this.getTabIndex({tabName});
+        const tabTestIdSelector = getTestId(this.selector, `${TabsTestIdModifiers.TAB}-${tabIndex + 1}`);
         const tab: Locator = await this.getByTestId(tabTestIdSelector);
         await tab.click();
     }
 
     // Get the index of a tab
-    private async getTabIndex({testId, tabName}: TabsSelectionParams): Promise<number> {
-        const testIdSelector = getTestId(testId, TabsTestIdModifiers.WRAPPER);
+    private async getTabIndex({tabName}: TabsSelectionParams): Promise<number> {
+        const testIdSelector = getTestId(this.selector, TabsTestIdModifiers.WRAPPER);
         const wrapperLocator: Locator = await this.getByTestId(testIdSelector);
         const tabs: string[] = await wrapperLocator.locator('.tab-item').allTextContents();
         return tabs.indexOf(tabName);

@@ -24,11 +24,11 @@ export class TabsPage extends BasePage {
     }
 
     getSelectedTabText() {
-        return this.tabs.getSelectedTabText({testId: this.testId});
+        return this.tabs.getSelectedTabText();
     }
 
     async selectTab({tabName}: {tabName: string}) {
-        await this.tabs.selectTab({testId: this.testId, tabName});
+        await this.tabs.selectTab({tabName});
     }
 
     isTabDisabled() {
