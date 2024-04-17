@@ -48,14 +48,14 @@ export class ChartPage extends BasePage {
     }
 
     async getLabels() {
-        return this.chart.getLabels({testId: this.testId});
+        return this.chart.getLabels();
     }
 
     async getLabelColor(label) {
-        return this.chart.getColor(this.testId, label);
+        return this.chart.getColor(label);
     }
 
     async getLabelIcon(label) {
-        return this.chart.getIcon(this.testId, label);
+        return this.chart.getIcon(label);
     }
 }
