@@ -8,28 +8,32 @@ export class BaseInputComponent extends Editable {
         super(page, selector);
     }
 
-    async getInputsFieldText({testId}: {testId: string}) {
-        const element = await this.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD));
+    async getInputField() {
+        return await this.getByTestId(getTestId(this.selector, InputTestIdModifiers.FIELD));
+    }
+
+    async getInputsFieldText() {
+        const element = await this.getInputField();
         return element.inputValue();
     }
 
-    async getPlaceholderText({testId}: {testId: string}) {
-        const element = await this.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD));
+    async getPlaceholderText() {
+        const element = await this.getInputField();
         return element.getAttribute('placeholder');
     }
 
-    async getInputsType({testId}: {testId: string}) {
-        const element = await this.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD));
+    async getInputsType() {
+        const element = await this.getInputField();
         return element.getAttribute('type');
     }
 
-    async addInput({testId, text}: InputParams) {
-        const element = await this.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD));
+    async addInput({text}: InputParams) {
+        const element = await this.getInputField();
         await element.type(text as string);
     }
 
-    async isInputDisabled({testId}: {testId: string}) {
-        const element = await this.getByTestId(getTestId(testId, InputTestIdModifiers.FIELD));
+    async isInputDisabled() {
+        const element = await this.getInputField();
         return element.isDisabled();
     }
 

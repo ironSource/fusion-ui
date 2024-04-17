@@ -1,4 +1,4 @@
 export type InputParams = {
-    testId: string;
+    testId?: string;
     text: string | number;
 };

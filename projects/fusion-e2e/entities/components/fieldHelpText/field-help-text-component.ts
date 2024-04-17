@@ -10,15 +10,15 @@ export class FieldHelpTextComponent extends BaseComponent {
     }
 
     // Check if the extra text is visible
-    async hasExtraText({testId}: {testId: string}): Promise<boolean> {
-        const testIdSelector = getTestId(testId, FieldHelpTextTestIdModifiers.TEXT);
+    async hasExtraText(): Promise<boolean> {
+        const testIdSelector = getTestId(this.selector, FieldHelpTextTestIdModifiers.TEXT);
         const byTestId: Locator = await this.getByTestId(testIdSelector);
         return (await byTestId).isVisible();
     }
 
     // Get the extra text
-    async getExtraText({testId}: {testId: string}): Promise<string> {
-        const testIdSelector = getTestId(testId, FieldHelpTextTestIdModifiers.TEXT);
+    async getExtraText(): Promise<string> {
+        const testIdSelector = getTestId(this.selector, FieldHelpTextTestIdModifiers.TEXT);
         const byTestId: Locator = await this.getByTestId(testIdSelector);
         return byTestId.textContent();
     }

@@ -21,54 +21,53 @@ export class InputsPage extends BasePage {
     }
 
     getInputsFieldText() {
-        return this.input.getInputsFieldText({testId: this.testId});
+        return this.input.getInputsFieldText();
     }
 
     getInputsLabelText() {
-        return this.input.getInputsLabelText({testId: this.testId});
+        return this.input.getInputsLabelText();
     }
 
     addInput({textInput}: {textInput: string}) {
         return this.input.addInput({
-            testId: this.testId,
             text: textInput
         });
     }
 
     isInputMandatory() {
-        return this.input.isInputMandatory({testId: this.testId});
+        return this.input.isInputMandatory();
     }
 
     getPlaceholderText() {
-        return this.input.getPlaceholderText({testId: this.testId});
+        return this.input.getPlaceholderText();
     }
 
     hasInputExtraText() {
-        return this.input.hasInputExtraText({testId: this.testId});
+        return this.input.hasInputExtraText();
     }
 
     getInputExtraText() {
-        return this.input.getInputExtraText({testId: this.testId});
+        return this.input.getInputExtraText();
     }
 
     getInputsType() {
-        return this.input.getInputsType({testId: this.testId});
+        return this.input.getInputsType();
     }
 
     hasInlineErrorText() {
-        return this.input.hasInlineErrorText({testId: this.testId});
+        return this.input.hasInlineErrorText();
     }
 
     getInlineErrorText() {
-        return this.input.getInlineErrorText({testId: this.testId});
+        return this.input.getInlineErrorText();
     }
 
     async clickOnApplyButton() {
-        await this.input.clickOnApplyButton({testId: this.testId});
+        await this.input.clickOnApplyButton();
     }
 
     hasApplyButton() {
-        return this.input.hasApplyButton({testId: this.testId});
+        return this.input.hasApplyButton();
     }
 
     hasExtraTextIconType({type}: {type: string}) {
@@ -79,31 +78,31 @@ export class InputsPage extends BasePage {
     }
 
     isInputDisabled() {
-        return this.input.isInputDisabled({testId: this.testId});
+        return this.input.isInputDisabled();
     }
 
     getMaxLengthNumber() {
-        return this.input.getMaxLengthNumber({testId: this.testId});
+        return this.input.getMaxLengthNumber();
     }
 
     getActualNumberLength() {
-        return this.input.getActualNumberLength({testId: this.testId});
+        return this.input.getActualNumberLength();
     }
 
     getHelpIconText() {
-        return this.input.getHelpIconText({testId: this.testId});
+        return this.input.getHelpIconText();
     }
 
     async clickOnShowPassword() {
-        await this.input.clickOnShowPassword({testId: this.testId});
+        await this.input.clickOnShowPassword();
     }
 
     async clickOnHidePassword() {
-        await this.input.clickOnHidePassword({testId: this.testId});
+        await this.input.clickOnHidePassword();
     }
 
     isPasswordHidden() {
-        return this.input.isPasswordHidden({testId: this.testId});
+        return this.input.isPasswordHidden();
     }
 
     async waitForComponent() {
@@ -111,6 +110,6 @@ export class InputsPage extends BasePage {
     }
 
     async clearInput() {
-        await this.input.clearInput({testId: this.testId});
+        await this.input.clearInput();
     }
 }
