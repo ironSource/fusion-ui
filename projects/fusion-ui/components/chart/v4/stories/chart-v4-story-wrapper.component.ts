@@ -53,28 +53,24 @@ export class ChartV4WrapperComponent {
             const legends = chartDatasets[0]?.legends;
             const values = chartDatasets[0]?.data;
             const colors = chartDatasets[0]?.backgroundColor;
-            chartDataLabels = legends
-                .map((legend: string, idx: number) => {
-                    const dataLabel: ChartLabel = {
-                        id: idx,
-                        label: legend,
-                        color: colors[idx]
-                    };
-                    return dataLabel;
-                })
-                .reverse();
+            chartDataLabels = legends.map((legend: string, idx: number) => {
+                const dataLabel: ChartLabel = {
+                    id: idx,
+                    label: legend,
+                    color: colors[idx]
+                };
+                return dataLabel;
+            });
         } else {
-            chartDataLabels = chartDatasets
-                .map((dataSet, idx) => {
-                    const dataLabel: ChartLabel = {
-                        id: idx,
-                        label: dataSet.label,
-                        color: dataSet.borderColor === '#FCFCFC' ? dataSet.backgroundColor : dataSet.borderColor,
-                        icon: dataSet.icon
-                    };
-                    return dataLabel;
-                })
-                .reverse();
+            chartDataLabels = chartDatasets.map((dataSet, idx) => {
+                const dataLabel: ChartLabel = {
+                    id: idx,
+                    label: dataSet.label,
+                    color: dataSet.borderColor === '#FCFCFC' ? dataSet.backgroundColor : dataSet.borderColor,
+                    icon: dataSet.icon
+                };
+                return dataLabel;
+            });
         }
         this.chartDataLabels$.next(chartDataLabels);
     }

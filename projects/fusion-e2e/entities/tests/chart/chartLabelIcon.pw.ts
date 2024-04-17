@@ -2,9 +2,7 @@ import {expect, Locator, test} from '@playwright/test';
 import {ChartPage} from '../../pages/chart-page';
 import {chartLabelWithIconStoryId} from './consts';
 import {CART_LABELS_ICONS_MOCK} from '@ironsource/fusion-ui/components/chart-labels/v4/chart-labels-v4.stories.mock';
-import {toRgba} from '../utils';
-
-const ALPHA_VALUE = 100;
+import {checkLabelProperties} from '../utils/chartUtils';
 
 let chartPage: ChartPage;
 
@@ -24,23 +22,9 @@ test('Checks the number and properties of labels', async () => {
     expect(labelsCount).toBe(CART_LABELS_ICONS_MOCK.length);
 
     for (let i = 0; i < labelsCount; i++) {
-        await checkLabelProperties(i, labels);
+        await checkLabelProperties(i, labels, chartPage);
     }
 });
-
-async function checkLabelProperties(index: number, labels: Locator) {
-    const label = await labels.nth(index);
-    const mockLabel = CART_LABELS_ICONS_MOCK[index];
-
-    // Check color
-    const color: string = (await chartPage.getLabelColor(label)).replace(/\s/g, '');
-    const expectedColor = mockLabel.color.startsWith('#') ? toRgba(mockLabel.color, ALPHA_VALUE) : mockLabel.color;
-    expect(color).toBe(expectedColor);
-
-    // Check icon
-    const icon = await chartPage.getLabelIcon(label);
-    expect(icon).toBe(mockLabel.icon);
-}
 
 test('Checks that chart label text appears', async () => {
     const firstLabelText = await chartPage.getLabelIconText(0);
