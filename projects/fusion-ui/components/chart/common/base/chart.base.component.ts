@@ -194,7 +194,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             this.calcYAxes(this.chart?.options?.scales?.y);
         }
 
-        this.chart.update();
+        this.chart.update('none');
     }
 
     highlightDataset(label: ChartLabel) {
