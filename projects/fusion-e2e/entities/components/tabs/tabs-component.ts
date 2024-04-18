@@ -6,8 +6,11 @@ import {getTestId} from '../../global/utils';
 import {defaultTestId} from './consts';
 
 export class TabsComponent extends BaseComponent {
+    private readonly disabledTestId: string;
+
     constructor(page: Page, selector: string) {
         super(page, selector);
+        this.disabledTestId = getTestId(defaultTestId, TabsTestIdModifiers.TAB_DISABLED);
     }
 
     // Get the text of the selected tab
@@ -36,9 +39,8 @@ export class TabsComponent extends BaseComponent {
 
     // Check if a tab is disabled
     async isTabDisabled(): Promise<boolean> {
-        const disabledTestId = getTestId(defaultTestId, TabsTestIdModifiers.TAB_DISABLED);
-        await this.waitForComponent({testId: disabledTestId});
-        const disabledTab: Locator = await this.getByTestId(disabledTestId);
+        await this.waitForComponent();
+        const disabledTab: Locator = await this.getByTestId(this.disabledTestId);
         return disabledTab.isDisabled();
     }
 }

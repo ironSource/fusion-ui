@@ -67,7 +67,7 @@ export class DialogPage extends BasePage {
     async waitForComponent() {
         // const loadedPageSelector = getTestIdSelector(getTestId(testId, DialogTestIdModifiers.WRAPPER));
 
-        await this.dialog.waitForComponent({testId: this.testId, modifiers: DialogTestIdModifiers.WRAPPER});
+        await this.dialog.waitForComponent(DialogTestIdModifiers.WRAPPER);
     }
 
     isDialogVisible() {

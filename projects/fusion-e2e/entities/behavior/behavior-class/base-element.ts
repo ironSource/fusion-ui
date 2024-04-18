@@ -151,12 +151,12 @@ export class BaseElement {
         });
     }
 
-    async waitForComponent({testId, modifiers}: {testId: string; modifiers?: string}) {
+    async waitForComponent(modifiers?: string) {
         let loadedPageSelector: string;
         if (!modifiers) {
-            loadedPageSelector = getTestIdSelector(testId);
+            loadedPageSelector = getTestIdSelector(this.selector);
         } else {
-            loadedPageSelector = getTestIdSelector(getTestId(testId, modifiers));
+            loadedPageSelector = getTestIdSelector(getTestId(this.selector, modifiers));
         }
         await this.waitForSelector(loadedPageSelector);
     }

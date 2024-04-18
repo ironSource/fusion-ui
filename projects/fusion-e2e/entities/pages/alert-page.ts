@@ -44,7 +44,7 @@ export class AlertPage extends BasePage {
     }
 
     async waitForComponent() {
-        await this.alert.waitForComponent({testId: this.testId});
+        await this.alert.waitForComponent();
     }
 
     getAlertIconType() {

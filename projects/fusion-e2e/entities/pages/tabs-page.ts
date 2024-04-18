@@ -20,7 +20,7 @@ export class TabsPage extends BasePage {
     }
 
     async waitForComponent() {
-        await this.tabs.waitForComponent({testId: this.testId});
+        await this.tabs.waitForComponent();
     }
 
     getSelectedTabText() {

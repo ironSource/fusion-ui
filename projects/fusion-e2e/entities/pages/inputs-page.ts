@@ -106,7 +106,7 @@ export class InputsPage extends BasePage {
     }
 
     async waitForComponent() {
-        return this.input.waitForComponent({testId: this.testId, modifiers: InputTestIdModifiers.WRAPPER});
+        return this.input.waitForComponent(InputTestIdModifiers.WRAPPER);
     }
 
     async clearInput() {

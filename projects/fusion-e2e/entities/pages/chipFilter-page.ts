@@ -21,7 +21,7 @@ export class ChipFilterPage extends BasePage {
     }
 
     async waitForComponent() {
-        await this.chipFilter.waitForComponent({testId: this.testId});
+        await this.chipFilter.waitForComponent();
     }
 
     async goto(gotoParams: GotoParams = {}) {

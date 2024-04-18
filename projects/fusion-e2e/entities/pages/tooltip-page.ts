@@ -22,7 +22,7 @@ export class TooltipPage extends BasePage {
     }
 
     async waitForComponent() {
-        await this.tooltip.waitForComponent({testId: this.testId, modifiers: TooltipTestIdModifiers.TRIGGER});
+        await this.tooltip.waitForComponent(TooltipTestIdModifiers.TRIGGER);
     }
 
     async goto(gotoParams: GotoParams = {}) {

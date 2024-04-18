@@ -32,7 +32,7 @@ export class ChartPage extends BasePage {
     }
 
     async waitForComponent() {
-        await this.chart.waitForComponent({testId: this.testId});
+        await this.chart.waitForComponent();
     }
 
     async waitForIconLabelComponent() {
