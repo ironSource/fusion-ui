@@ -24,7 +24,7 @@ export class ButtonPage extends BasePage {
     }
 
     async waitForToggleButtonComponent() {
-        await this.button.waitForToggleButtonComponent({testId: this.testId});
+        await this.button.waitForToggleButtonComponent();
     }
 
     async clickOnButton() {
@@ -36,7 +36,7 @@ export class ButtonPage extends BasePage {
     }
 
     isButtonLoading() {
-        return this.button.isButtonLoading({testId: this.testId});
+        return this.button.isButtonLoading();
     }
 
     getButtonText() {
@@ -44,7 +44,7 @@ export class ButtonPage extends BasePage {
     }
 
     getIconButtonText() {
-        return this.button.getIconButtonText({testId: this.testId});
+        return this.button.getIconButtonText();
     }
 
     isButtonDisabled() {

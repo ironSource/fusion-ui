@@ -21,8 +21,8 @@ export class ButtonComponent extends BaseComponent {
         this.label = new StaticText(page, selector);
     }
 
-    async waitForToggleButtonComponent({testId}: {testId: string}) {
-        const loadedPageSelector = getTestIdSelector(testId);
+    async waitForToggleButtonComponent() {
+        const loadedPageSelector = getTestIdSelector(this.selector);
         await this.waitForSelector(loadedPageSelector);
     }
 
@@ -34,8 +34,8 @@ export class ButtonComponent extends BaseComponent {
         await this.buttonModifierElement.hover();
     }
 
-    async isButtonLoading({testId}: {testId: string}) {
-        const buttonLocator = await this.getLocator(getTestIdSelector(testId));
+    async isButtonLoading() {
+        const buttonLocator = await this.getLocator(getTestIdSelector(this.selector));
         const buttonElement = await buttonLocator.elementHandle();
         const buttonClass = await buttonElement.getAttribute('class');
         return buttonClass.includes('loading');
@@ -45,8 +45,8 @@ export class ButtonComponent extends BaseComponent {
         return this.contentElement.textContent();
     }
 
-    async getIconButtonText({testId}: {testId: string}) {
-        const button = await this.getLocator(getTestIdSelector(testId));
+    async getIconButtonText() {
+        const button = await this.getLocator(getTestIdSelector(this.selector));
         const textSelector = await button.last().locator('span');
         return this.selectorText(textSelector);
     }

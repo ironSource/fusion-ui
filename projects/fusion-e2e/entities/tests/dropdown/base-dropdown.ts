@@ -21,8 +21,8 @@ export class BaseDropdownComponent extends BaseComponent {
         this.selectedOptionLabel = new StaticText(page, `${selector} ${SELECTORS.SELECTED_OPTION}`);
     }
 
-    async waitForComponent({testId}: {testId: string}) {
-        await this.getByTestId(getTestId(testId, DropdownTestIdModifiers.WRAPPER));
+    async waitForComponent() {
+        await this.getByTestId(getTestId(this.selector, DropdownTestIdModifiers.WRAPPER));
     }
 
     async selectDropdownOptionByIndex({testId, index}: SelectionByIndex) {

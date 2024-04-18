@@ -8,13 +8,13 @@ export class FieldHelpTextComponent extends BaseComponent {
         super(page, selector);
     }
 
-    async hasExtraText({testId}: {testId: string}) {
-        const byTestId = this.getByTestId(getTestId(testId, FieldHelpTextTestIdModifiers.TEXT));
+    async hasExtraText() {
+        const byTestId = this.getByTestId(getTestId(this.selector, FieldHelpTextTestIdModifiers.TEXT));
         return (await byTestId).isVisible();
     }
 
-    async getExtraText({testId}: {testId: string}) {
-        return (await this.getByTestId(getTestId(testId, FieldHelpTextTestIdModifiers.TEXT))).textContent();
+    async getExtraText() {
+        return (await this.getByTestId(getTestId(this.selector, FieldHelpTextTestIdModifiers.TEXT))).textContent();
     }
 
     async hasExtraTextIconType({testId, type}: HasHelpTextTypeParams) {
