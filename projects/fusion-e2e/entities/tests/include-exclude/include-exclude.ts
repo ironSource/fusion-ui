@@ -8,7 +8,6 @@ import {GLOBAL_DEBOUNCE} from '../../constants';
 import {BaseComponent} from '../base-component';
 
 export class IncludeExclude extends BaseComponent {
-    readonly testIdAttr: string;
     readonly clearAllButton: Button;
     readonly searchInput: Input;
     readonly rowOption: RowOption;
