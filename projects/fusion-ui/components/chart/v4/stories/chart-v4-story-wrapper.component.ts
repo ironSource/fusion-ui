@@ -66,7 +66,7 @@ export class ChartV4WrapperComponent {
             chartDataLabels = chartDatasets
                 .map((dataSet, idx) => {
                     const dataLabel: ChartLabel = {
-                        id: idx,
+                        id: dataSet.id ?? idx,
                         label: dataSet.label,
                         color: dataSet.borderColor === '#FCFCFC' ? dataSet.backgroundColor : dataSet.borderColor,
                         icon: dataSet.icon
