@@ -44,6 +44,6 @@ export class BaseInputComponent extends Editable {
 
     // Get the value of the input
     async getInputValue(): Promise<string> {
-        return await this.locator.inputValue();
+        return this.locator.inputValue();
     }
 }
