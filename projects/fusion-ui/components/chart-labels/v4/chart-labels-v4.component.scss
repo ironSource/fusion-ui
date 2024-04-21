@@ -73,35 +73,5 @@
         }
       }
     }
-
-    &:has(> :last-child:nth-child(1)) {
-      .fu-chart-label {
-        max-width: calc(100%);
-      }
-    }
-
-    &:has(> :last-child:nth-child(2)) {
-      .fu-chart-label {
-        max-width: calc(100% / 2);
-      }
-    }
-
-    &:has(> :last-child:nth-child(3)) {
-      .fu-chart-label {
-        max-width: calc(36% - 8px);
-      }
-    }
-
-    &:has(> :last-child:nth-child(4)) {
-      .fu-chart-label {
-        max-width: calc(100% / 4 - 8px);
-      }
-    }
-
-    &:has(> :last-child:nth-child(5)) {
-      .fu-chart-label {
-        max-width: calc(100% / 5 - 8px);
-      }
-    }
   }
 }

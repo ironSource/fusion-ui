@@ -2,6 +2,7 @@
     <div class="fu-chart-label" *ngFor="let datasetLabel of labels;"
          [class.fu-clickable]="datasetLabel?.labelVisible"
          [class.fu-align-right]="datasetLabel?.alignToRight"
+         [style.max-width]="'calc(100% / ' + labels?.length + ' - 8px)'"
          (mouseenter)="!datasetLabel.typeCheckbox && onLabelHover(datasetLabel)"
          (mouseleave)="!datasetLabel.typeCheckbox && onLabelHover(null)"
          (click)="chartLabelClicked(datasetLabel)"
