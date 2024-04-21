@@ -5,7 +5,7 @@
          [style.max-width]="'calc(100% / ' + labels?.length + ' - var(--fu-chart-label-width-normalize, 8px)'"
          (mouseenter)="!datasetLabel.typeCheckbox && onLabelHover(datasetLabel)"
          (mouseleave)="!datasetLabel.typeCheckbox && onLabelHover(null)"
-         (click)="chartLabelClicked(datasetLabel)"
+         (click)="chartLabelClicked($event, datasetLabel)"
     >
         <ng-container *ngIf="!datasetLabel.typeCheckbox">
             <div class="fu-chart-label-color"

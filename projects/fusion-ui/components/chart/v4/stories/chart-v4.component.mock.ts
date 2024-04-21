@@ -88,9 +88,24 @@ export const CHART_BAR_LONG_LABELS_OPTIONS_MOCK: any = {
 export const CHART_BAR_GROUPED_DATA_MOCK: ChartData = {
     data: {
         'Unity Ads': [804.16, 1688.59, 1383.47, 1037.83, 899.56],
-        'ironSource Ads': [456.16, 1290.59, 678.47, 659.83, 344.56]
+        'ironSource Ads': [456.16, 1290.59, 678.47, 659.83, 344.56, 1823]
     },
     legends: [
+        {id: 9930, displayName: 'Australia', displayFormat: 'shortCurrency'},
+        {id: 9928, displayName: 'United States', displayFormat: 'shortCurrency'},
+        {id: 9935, displayName: 'Germany', displayFormat: 'shortCurrency'},
+        {id: 9936, displayName: 'United Kingdom', displayFormat: 'shortCurrency'},
+        {id: 9899, displayName: 'China', displayFormat: 'shortCurrency'}
+    ]
+};
+
+export const CHART_BAR_GROUPED_DATA_OTHER_MOCK: ChartData = {
+    data: {
+        'Unity Ads': [2033, 804.16, 1688.59, 1383.47, 1037.83, 899.56],
+        'ironSource Ads': [1823, 456.16, 1290.59, 678.47, 659.83, 344.56]
+    },
+    legends: [
+        {id: 0, displayName: 'Other', displayFormat: 'shortCurrency'},
         {id: 9930, displayName: 'Australia', displayFormat: 'shortCurrency'},
         {id: 9928, displayName: 'United States', displayFormat: 'shortCurrency'},
         {id: 9935, displayName: 'Germany', displayFormat: 'shortCurrency'},
@@ -216,13 +231,13 @@ export const CHART_DATA_MOCK_BIG: ChartData = {
     },
     legends: [
         {
-            id: 1,
-            displayName: 'ironSource Ads',
+            id: 2,
+            displayName: 'Unity Ads',
             displayFormat: 'shortCurrency'
         },
         {
-            id: 2,
-            displayName: 'Unity Ads',
+            id: 1,
+            displayName: 'ironSource Ads',
             displayFormat: 'shortCurrency'
         }
     ]

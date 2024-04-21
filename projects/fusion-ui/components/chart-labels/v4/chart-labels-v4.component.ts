@@ -49,7 +49,8 @@ export class ChartLabelsV4Component {
         }
     }
 
-    chartLabelClicked(chartLabel: ChartLabel): void {
+    chartLabelClicked($event: Event, chartLabel: ChartLabel): void {
+        $event.preventDefault();
         if (!isNullOrUndefined(chartLabel.labelVisible)) {
             chartLabel.labelVisible.setValue(!chartLabel.labelVisible.value, {emitEvent: true});
             this.labelClick.emit(chartLabel);

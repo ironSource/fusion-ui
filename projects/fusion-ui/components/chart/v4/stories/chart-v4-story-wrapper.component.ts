@@ -37,10 +37,17 @@ import {ChartData, ChartDataset, ChartLabel, ChartType} from '@ironsource/fusion
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChartV4WrapperComponent {
-    @Input() data: ChartData;
+    @Input() set data(value: ChartData) {
+        this._data = value;
+    }
+    get data(): ChartData {
+        return this._data;
+    }
+    private _data: ChartData;
     @Input() type: ChartType;
     @Input() options: any;
     @Input() labelsClickable = false;
+    @Input() labelOther = false;
 
     @ViewChild('fusionChart') fusionChart: ChartComponent;
 
@@ -63,20 +70,29 @@ export class ChartV4WrapperComponent {
                 })
                 .reverse();
         } else {
-            chartDataLabels = chartDatasets
-                .map((dataSet, idx) => {
-                    const dataLabel: ChartLabel = {
-                        id: dataSet.id ?? idx,
-                        label: dataSet.label,
-                        color: dataSet.borderColor === '#FCFCFC' ? dataSet.backgroundColor : dataSet.borderColor,
-                        icon: dataSet.icon
-                    };
-                    if (this.labelsClickable) {
-                        dataLabel.labelVisible = new FormControl(true);
-                    }
-                    return dataLabel;
-                })
-                .reverse();
+            chartDataLabels = chartDatasets.map((dataSet, idx) => {
+                const dataLabel: ChartLabel = {
+                    id: dataSet.id ?? idx,
+                    label: dataSet.label,
+                    color: dataSet.borderColor === '#FCFCFC' ? dataSet.backgroundColor : dataSet.borderColor,
+                    icon: dataSet.icon
+                };
+                if (this.labelsClickable) {
+                    dataLabel.labelVisible = new FormControl(true);
+                }
+                return dataLabel;
+            }); /*
+                .reverse();*/
+        }
+        if (this.labelOther) {
+            chartDataLabels.push({
+                id: 'Other',
+                label: 'Show All',
+                labelVisible: new FormControl(true),
+                alignToRight: true,
+                typeCheckbox: true,
+                backgroundColor: '#646464'
+            });
         }
         this.chartDataLabels$.next(chartDataLabels);
     }
@@ -86,6 +102,6 @@ export class ChartV4WrapperComponent {
     }
 
     labelClicked(label: ChartLabel): void {
-        this.fusionChart?.toggleDataset(label);
+        this.fusionChart?.toggleDataset(label, true);
     }
 }
