@@ -8,7 +8,7 @@
         [indeterminate]="isIndeterminate"
         (change)="checkStateChange($event)"
     />
-    <span class="fu-label-checkbox">&nbsp;</span>
+    <span class="fu-label-checkbox" [style.background]="getColoredBackgroundImage()">&nbsp;</span>
     <ng-content></ng-content>
     <span *ngIf="label" [fusionTooltip]="label" class="fu-label-text truncate">{{ label }}</span>
 </label>

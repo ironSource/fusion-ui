@@ -1,6 +1,7 @@
 import {Directive, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ControlValueAccessor} from '@angular/forms';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Directive()
 export abstract class CheckboxBaseComponent implements OnInit, ControlValueAccessor {
@@ -17,7 +18,7 @@ export abstract class CheckboxBaseComponent implements OnInit, ControlValueAcces
     @Input() set disabled(value: boolean) {
         this._disabled = value ?? false;
     }
-
+    @Input() backgroundColor: string;
     /** @internal */
     @Input() value: string;
     /** @internal */
@@ -52,7 +53,7 @@ export abstract class CheckboxBaseComponent implements OnInit, ControlValueAcces
     private _checked = false;
     private _isIndeterminate = false;
 
-    constructor(private uniqueIdService: UniqueIdService) {}
+    constructor(private uniqueIdService: UniqueIdService, protected sanitizer: DomSanitizer) {}
 
     ngOnInit() {
         this.id = this.id || 'fu-chb-' + this.uniqueIdService.getUniqueId();
@@ -64,6 +65,22 @@ export abstract class CheckboxBaseComponent implements OnInit, ControlValueAcces
         this._checked = ($event.target as HTMLInputElement).checked;
         this.propagateChange(this.checked);
         this.changed.emit(this.checked);
+    }
+
+    /** @internal */
+    getColoredBackgroundImage() {
+        const checked = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3E%3Crect width='15' height='15' x='.5' y='.5' fill='{backgroundColor}' rx='3.5'/%3E%3Crect width='15' height='15' x='.5' y='.5' stroke='{backgroundColor}' rx='3.5'/%3E%3Cpath stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m12.125 5.375-5.25 5.25L4.25 8'/%3E%3C/svg%3E`;
+        const indeterminate = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3E%3Crect width='15' height='15' x='.5' y='.5' fill='{backgroundColor}' rx='3.5'/%3E%3Crect width='15' height='15' x='.5' y='.5' stroke='{backgroundColor}' rx='3.5'/%3E%3Cpath stroke='%23fff' stroke-linecap='round' stroke-width='1.5' d='M4.75 8.25h6.5'/%3E%3C/svg%3E`;
+        let svg;
+        if (this.backgroundColor && (this.checked || this.isIndeterminate)) {
+            svg = this.sanitizer.bypassSecurityTrustStyle(
+                `url("${(this.isIndeterminate ? indeterminate : checked).replace(
+                    '{backgroundColor}',
+                    encodeURIComponent(this.backgroundColor)
+                )}") left center no-repeat`
+            );
+        }
+        return svg;
     }
 
     // Implement ControlValueAccessor methods
