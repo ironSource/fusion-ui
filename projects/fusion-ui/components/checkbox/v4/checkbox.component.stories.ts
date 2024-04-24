@@ -66,6 +66,25 @@ export const Basic: Story = {
     })
 };
 
+export const WithCustomColor: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            backgroundColor: '#646464',
+            formControlChecked: formControlChecked
+        },
+        template: `
+    <fusion-checkbox
+        [label]="label"
+        [disabled]="disabled"
+        [isIndeterminate]="isIndeterminate"
+        [backgroundColor]="backgroundColor"
+        [formControl]="formControlChecked"
+    ></fusion-checkbox>
+`
+    })
+};
+
 export const States: Story = {
     render: args => ({
         props: {

@@ -1,17 +1,19 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {ReactiveFormsModule} from '@angular/forms';
 import {ChartLabel} from '@ironsource/fusion-ui/components/chart/common/base';
-import {CheckboxModule} from '@ironsource/fusion-ui/components/checkbox/v1';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
 import {ColorsService} from '@ironsource/fusion-ui/services/colors';
+import {CheckboxComponent} from '@ironsource/fusion-ui/components/checkbox/v4';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {ChartLabelTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-chart-labels',
     standalone: true,
-    imports: [CommonModule, CheckboxModule, IconModule, TooltipDirective],
+    imports: [CommonModule, IconModule, TooltipDirective, CheckboxComponent, ReactiveFormsModule],
     host: {class: 'fusion-v4'},
     templateUrl: './chart-labels-v4.component.html',
     styleUrls: ['./chart-labels-v4.component.scss'],
@@ -37,6 +39,31 @@ export class ChartLabelsV4Component {
 
     getLabelBGColor(hexColor: string): string {
         return hexColor.startsWith('#') ? this.colorsService.toRgba(hexColor, this.bgOpacity) : hexColor;
+    }
+
+    onLabelHover(chartLabel: ChartLabel): void {
+        if (
+            isNullOrUndefined(chartLabel) ||
+            isNullOrUndefined(chartLabel.labelVisible) ||
+            (!isNullOrUndefined(chartLabel.labelVisible) && chartLabel.labelVisible.value)
+        ) {
+            this.labelHover.emit(chartLabel);
+        }
+    }
+
+    chartLabelClicked($event: Event, chartLabel: ChartLabel): void {
+        $event.preventDefault();
+        if (!isNullOrUndefined(chartLabel.labelVisible)) {
+            chartLabel.labelVisible.setValue(!chartLabel.labelVisible.value, {emitEvent: true});
+            this.labelClick.emit(chartLabel);
+            if (!chartLabel.typeCheckbox) {
+                if (chartLabel.labelVisible.value) {
+                    this.labelHover.emit(chartLabel);
+                } else {
+                    this.labelHover.emit(null);
+                }
+            }
+        }
     }
 
     protected readonly ChartLabelTestIdModifiers = ChartLabelTestIdModifiers;

@@ -7,6 +7,7 @@ import {
     CHART_BAR_DATA_MOCK,
     CHART_BAR_GROUPED_BUNDLE_DATA_MOCK,
     CHART_BAR_GROUPED_DATA_MOCK,
+    CHART_BAR_GROUPED_DATA_OTHER_MOCK,
     CHART_BAR_LONG_LABELS_DATA_MOCK,
     CHART_BAR_LONG_LABELS_OPTIONS_MOCK
 } from './chart-v4.component.mock';
@@ -61,6 +62,31 @@ export const Stack: Story = {
         },
         template: `
             <fusion-chart-wrapper [data]="data" [type]="type" [testId]="testId"></fusion-chart-wrapper>
+        `
+    })
+};
+
+export const StackWithOther: Story = {
+    render: args => ({
+        props: {
+            data: structuredClone(CHART_BAR_GROUPED_DATA_OTHER_MOCK),
+            type: ChartType.StackedBar,
+            labelOther: true,
+            options: {
+                showCharsAmountXLabels: 12,
+                scales: {
+                    x: {
+                        ticks: {
+                            minRotation: 0,
+                            maxRotation: 0,
+                            autoSkip: false
+                        }
+                    }
+                }
+            }
+        },
+        template: `
+            <fusion-chart-wrapper [data]="data" [type]="type" [options]="options" [labelOther]="labelOther"></fusion-chart-wrapper>
         `
     })
 };

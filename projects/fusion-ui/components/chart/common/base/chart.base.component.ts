@@ -105,6 +105,10 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     private legends: ChartLegend[] = [];
     private barWidth: number; // for bar chart type, if showCharsAmountXLabels is set to true
 
+    // originalLabels and originalBarData used for store chart type Bar data without filtering;
+    private originalBarData: any;
+    private originalLabels: string[];
+
     constructor(
         protected datePipe: DatePipe,
         protected currencyPipe: CurrencyPipe,
@@ -181,14 +185,31 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         this.afterDatasetInit.emit(this.chartData.datasets as ChartDataset[]);
     }
 
+    // region chart datasets show / hide methods
     /** @internal */
     toggleDataset(label: ChartLabel, recalculateYMax = false): void {
-        this.chart.data.datasets
-            .filter(item => item.label === label.label && (item as any).id === label.id)
-            .forEach(item => {
-                item.hidden = !label.labelVisible.value;
-            });
+        if ((this.type === ChartType.Bar || this.type === ChartType.StackedBar) && label.typeCheckbox) {
+            this.filterBarData(label, recalculateYMax);
+        } else {
+            this.toggleLineDataset(label, recalculateYMax);
+        }
+    }
 
+    private filterBarData(label: ChartLabel, recalculateYMax = false): void {
+        if (isNullOrUndefined(this.originalBarData)) {
+            this.originalLabels = [...this.chart.data.labels] as string[];
+            this.originalBarData = structuredClone(this.chart.data.datasets);
+        }
+        if (!label.labelVisible.value) {
+            const otherDataIndex = this.chart.data.labels.indexOf(label.id);
+            Object.keys(this.chart.data.datasets).forEach(key => {
+                this.chart.data.datasets[key].data.splice(otherDataIndex, 1);
+            });
+            this.chart.data.labels.splice(otherDataIndex, 1);
+        } else {
+            this.chart.data.labels = [...this.originalLabels] as string[];
+            this.chart.data.datasets = structuredClone(this.originalBarData);
+        }
         if (recalculateYMax) {
             this.calcYAxes(this.chart?.options?.scales?.y);
         }
@@ -196,48 +217,73 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         this.chart.update();
     }
 
+    private toggleLineDataset(label: ChartLabel, recalculateYMax = false): void {
+        this.chart.data.datasets
+            .filter(item => {
+                let thisLabel: boolean = item.label === label.label && (item as any).id === label.id;
+                return thisLabel;
+            })
+            .forEach(item => {
+                item.hidden = !label.labelVisible.value;
+            });
+
+        if (recalculateYMax) {
+            this.calcYAxes(this.chart?.options?.scales?.y);
+        }
+        this.chart.update('none');
+    }
+    // endregion
+
+    // region chart dataset highlight methods
+    /** @internal */
     highlightDataset(label: ChartLabel) {
-        const datasets = this.chart?.data.datasets;
+        const datasets: any = this.chart?.data.datasets;
         if (!isNullOrUndefined(label)) {
-            const activeElements = this.chart?.getDatasetMeta(0)?.data?.map((item, idx) => ({
-                datasetIndex: label.id as number,
-                index: idx
-            }));
-            datasets.forEach((dataset, idx) => {
-                if (idx !== activeElements[0].datasetIndex || this.type === ChartType.Doughnut) {
-                    if (this.type === ChartType.Line) {
-                        dataset.borderColor = dataset.backgroundColor;
-                    } else if (this.type === ChartType.Bar) {
-                        dataset.backgroundColor = (dataset.backgroundColor as string).replace(',1)', ',0.1)');
-                    } else if (this.type === ChartType.Doughnut) {
-                        (dataset.backgroundColor as string[]).forEach((color, idx) => {
-                            if (idx !== label.id) {
-                                dataset.backgroundColor[idx] = dataset.backgroundColor[idx].replace(',1)', ',0.1)');
-                            }
-                        });
-                    }
-                } else {
-                    if (this.type === ChartType.Line) {
-                        dataset.backgroundColor = (dataset.backgroundColor as string).replace('0.1)', '0.7)');
-                    }
-                }
-            });
+            this.setChartUnHoveredBGColor(label, datasets);
         } else {
-            datasets.forEach((dataset, idx) => {
-                if (this.type === ChartType.Line) {
-                    dataset.borderColor = (dataset.backgroundColor as string).replace('0.1)', '1)');
-                    dataset.backgroundColor = (dataset.backgroundColor as string).replace('0.7)', '0.1)');
-                } else if (this.type === ChartType.Bar) {
-                    dataset.backgroundColor = (dataset.backgroundColor as string).replace(',0.1)', ',1)');
-                } else if (this.type === ChartType.Doughnut) {
-                    (dataset.backgroundColor as string[]).forEach((color, idx) => {
-                        dataset.backgroundColor[idx] = dataset.backgroundColor[idx].replace(',0.1)', ',1)');
-                    });
-                }
-            });
+            this.setChartHoveredBGColor(label, datasets);
         }
         this.chart.update();
     }
+
+    private setChartUnHoveredBGColor(label: ChartLabel, datasets: any): void {
+        datasets.forEach((dataset: any, idx: number) => {
+            const isOtherDataset = !isNullOrUndefined(dataset.id) ? dataset.id !== label.id : idx !== label.id;
+            if (isOtherDataset || this.type === ChartType.Doughnut) {
+                if (this.type === ChartType.Line) {
+                    dataset.borderColor = dataset.backgroundColor;
+                } else if (this.type === ChartType.Bar) {
+                    dataset.backgroundColor = (dataset.backgroundColor as string).replace(',1)', ',0.1)');
+                } else if (this.type === ChartType.Doughnut) {
+                    (dataset.backgroundColor as string[]).forEach((color, idx) => {
+                        if (idx !== label.id) {
+                            dataset.backgroundColor[idx] = dataset.backgroundColor[idx].replace(',1)', ',0.1)');
+                        }
+                    });
+                }
+            } else {
+                if (this.type === ChartType.Line) {
+                    dataset.backgroundColor = (dataset.backgroundColor as string).replace('0.1)', '0.7)');
+                }
+            }
+        });
+    }
+
+    private setChartHoveredBGColor(label: ChartLabel, datasets: any): void {
+        datasets.forEach((dataset, idx) => {
+            if (this.type === ChartType.Line) {
+                dataset.borderColor = (dataset.backgroundColor as string).replace('0.1)', '1)');
+                dataset.backgroundColor = (dataset.backgroundColor as string).replace('0.7)', '0.1)');
+            } else if (this.type === ChartType.Bar) {
+                dataset.backgroundColor = (dataset.backgroundColor as string).replace(',0.1)', ',1)');
+            } else if (this.type === ChartType.Doughnut) {
+                (dataset.backgroundColor as string[]).forEach((color, idx) => {
+                    dataset.backgroundColor[idx] = dataset.backgroundColor[idx].replace(',0.1)', ',1)');
+                });
+            }
+        });
+    }
+    // endregion
 
     /** @internal */
     addDatasetStyleOptions(isLastDotted = true) {
@@ -280,6 +326,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         lineOptions.fill = this.isStacked;
         if (this.componentVersion === 4) {
             lineOptions.pointRadius = isOneDataPoint ? 3 : 0;
+            lineOptions.clip = 5;
             colorKeys.push('pointBackgroundColor');
         }
         bgOpacity = this.componentVersion === 4 ? bgOpacity : bgOpacity / 2;
@@ -620,7 +667,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
 
     private getTooltipDateTitle(data): string {
         const label = data[0].label;
-        const value = isDateString(label) ? this.datePipe.transform(label, 'dd MMM YYYY') : label;
+        const value = isDateString(label) ? this.datePipe.transform(label, 'MMM d, YYYY') : label;
         return value;
     }
 

@@ -12,4 +12,6 @@ export interface ChartLabel {
     icon?: string;
     flag?: string;
     tooltip?: string;
+    alignToRight?: boolean;
+    typeCheckbox?: boolean;
 }
