@@ -200,10 +200,12 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         }
         if (!label.labelVisible.value) {
             const otherDataIndex = this.getLabelIndex(label.id);
-            Object.keys(this.chart.data.datasets).forEach(key => {
-                this.chart.data.datasets[key].data.splice(otherDataIndex, 1);
-            });
-            this.chart.data.labels.splice(otherDataIndex, 1);
+            if (otherDataIndex !== -1) {
+                Object.keys(this.chart.data.datasets).forEach(key => {
+                    this.chart.data.datasets[key].data.splice(otherDataIndex, 1);
+                });
+                this.chart.data.labels.splice(otherDataIndex, 1);
+            }
         } else {
             this.chart.data.labels = [...this.originalLabels] as string[];
             this.chart.data.datasets = structuredClone(this.originalBarData);
