@@ -15,6 +15,7 @@ import {TimezoneService} from '@ironsource/fusion-ui/services/timezone';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {MockTimeZonesService, MockUniqueIdService} from '@ironsource/fusion-ui/services/mocks';
 import {DebugElement} from '@angular/core';
+import {DaterangeModule} from "@ironsource/fusion-ui/components/daterange/v1";
 
 describe('DatepickerComponent', () => {
     let component: DatepickerComponent;
@@ -27,7 +28,7 @@ describe('DatepickerComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [IconModule, InputModule, DropdownModule, ClickOutsideModule, ReactiveFormsModule],
+            imports: [IconModule, InputModule, DropdownModule, ClickOutsideModule, ReactiveFormsModule, DaterangeModule],
             providers: [
                 DatePipe,
                 LogService,

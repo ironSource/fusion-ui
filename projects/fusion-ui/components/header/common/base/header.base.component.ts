@@ -26,12 +26,10 @@ export abstract class HeaderBaseComponent {
     @Output() menuStateChanged = new EventEmitter();
     @Output() logoClick = new EventEmitter();
 
-    // eslint-disable-next-line @typescript-eslint/adjacent-overload-signatures
     get state(): HeaderState {
         return this._state;
     }
 
-    // eslint-disable-next-line @typescript-eslint/adjacent-overload-signatures
     get menuAction(): ElementRef {
         return this._menuAction;
     }

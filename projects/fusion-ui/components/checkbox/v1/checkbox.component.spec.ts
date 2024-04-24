@@ -4,12 +4,12 @@
 
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {DebugElement, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {DebugElement, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 
 import {CheckboxComponent} from './checkbox.component';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
-import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
+import {TooltipModule} from "@ironsource/fusion-ui/components/tooltip/v1";
 
 class MockUniqueIdService extends UniqueIdService {
     getUniqueId() {
@@ -41,7 +41,7 @@ describe('CheckboxComponent', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule, TooltipModule],
-            schemas: [CUSTOM_ELEMENTS_SCHEMA],
+            schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
             declarations: [CheckboxComponent],
             providers: [{provide: UniqueIdService, useClass: MockUniqueIdService}]
         });

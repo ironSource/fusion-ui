@@ -38,6 +38,8 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
         this.disableAddFilter$.next(val);
     }
 
+    @Input() testId: string;
+
     @Input() set addFilterOptions(options: DropdownOption[]) {
         this.optionsRef$.next(options);
         this.options$.next(this.optionsRef$.getValue());
@@ -47,11 +49,11 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
 
     @Input() isSearch: boolean = false;
 
-    @Output() onSelect = new EventEmitter<any>();
+    @Output() selectFilter = new EventEmitter<any>();
 
-    @Output() onDynamicChipSelect = new EventEmitter<DropdownOption>();
+    @Output() dynamicChipSelect = new EventEmitter<DropdownOption>();
 
-    @Output() onRemoveSelection = new EventEmitter<any>();
+    @Output() removeSelection = new EventEmitter<any>();
 
     /** @internal */
     disableAddFilter$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(null);
@@ -124,7 +126,7 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
             .pipe(
                 takeUntil(this.onDestroy$),
                 filter(options => Array.isArray(options)),
-                tap(options => this.onDynamicChipSelect.emit(options[0])),
+                tap(options => this.dynamicChipSelect.emit(options[0])),
                 delay(50)
             )
             .subscribe((options: DropdownOption[]) => {
@@ -148,13 +150,13 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
 
     private onSelectedValueListener(): void {
         this.chipFilters.forEach(chip => {
-            chip.onSelectedChange.pipe(takeUntil(this.onDestroy$)).subscribe(val => {
+            chip.selectedChange.pipe(takeUntil(this.onDestroy$)).subscribe(val => {
                 const isSelected = this.selectedFilters.some(selectedChip => selectedChip.id === val.id);
                 this.selectedFilters = isSelected
                     ? this.selectedFilters.map(filter => (filter.id === val.id ? val : filter))
                     : [...this.selectedFilters, val];
 
-                this.onSelect.emit(this.selectedFilters);
+                this.selectFilter.emit(this.selectedFilters);
             });
         });
     }
@@ -173,7 +175,7 @@ export abstract class ChipFiltersBaseComponent implements AfterViewInit, OnDestr
                     }
                     return val.id !== filterChip.id;
                 });
-                this.onRemoveSelection.emit(this.selectedFilters);
+                this.removeSelection.emit(this.selectedFilters);
                 this.addFilterControl.reset();
             })
         );

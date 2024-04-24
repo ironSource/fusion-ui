@@ -46,7 +46,7 @@ export class AlertV4Component {
     @Input() dismissible: boolean = false;
     @Input() actionText: string = '';
     @Input() rounded: boolean = true;
-
+    // ts-ignore
     @Output() close = new EventEmitter<void>();
     @Output() action = new EventEmitter<void>();
 

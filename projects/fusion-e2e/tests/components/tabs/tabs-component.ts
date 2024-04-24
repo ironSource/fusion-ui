@@ -1,5 +1,5 @@
 import {Page} from '@playwright/test';
-import {getTestId} from '../../global/utils';
+import {getTestId, getTestIdSelector} from '../../global/utils';
 import {TabsSelectionParams} from './types';
 import {TabsTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {defaultTestId} from './consts';
@@ -12,7 +12,7 @@ export class TabsComponent {
     }
 
     async waitForComponent({testId}: {testId: string}) {
-        const loadedPageSelector = `[data-testid='${testId}']`;
+        const loadedPageSelector = getTestIdSelector(testId);
         await this.page.waitForSelector(loadedPageSelector);
     }
 

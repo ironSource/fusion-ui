@@ -10,8 +10,7 @@ const config = {
         '@storybook/addon-mdx-gfm'
     ],
     framework: {
-        name: '@storybook/angular',
-        options: {enableIvy: true}
+        name: '@storybook/angular'
     },
     docs: {
         /*autodocs: true // auto generate mdx dox story*/

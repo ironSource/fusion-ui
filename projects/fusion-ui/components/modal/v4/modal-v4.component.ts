@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Injector, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Injector, Input, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ButtonColor, ButtonComponent, ButtonVariant, IconButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
 import {AlertComponent, AlertV4Configuration} from '@ironsource/fusion-ui/components/alert/v4';
@@ -16,7 +16,7 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
     styleUrls: ['./modal-v4.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ModalV4Component implements OnInit {
+export class ModalV4Component {
     @Input() title!: string;
     @Input() description: string;
     @Input() showHeader: boolean = true;
@@ -46,8 +46,6 @@ export class ModalV4Component implements OnInit {
     testIdsService: TestIdsService = this.injector.get(TestIdsService);
 
     constructor(private injector: Injector) {}
-
-    ngOnInit(): void {}
 
     onAlertActionClicked() {
         this.alert.action?.onClick();

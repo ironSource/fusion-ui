@@ -15,8 +15,8 @@ export class IconComponent extends SvgComponent {
             this.setLibPath(val);
             this.onNameChanged(this.iconName ?? val);
         } else {
-            this.libVersion = val.iconVersion;
-            this.onNameChanged(val.iconName);
+            this.libVersion = val?.iconVersion;
+            this.onNameChanged(val?.iconName);
         }
     }
 

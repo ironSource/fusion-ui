@@ -136,7 +136,6 @@ export class InputDocsComponent implements OnInit {
         }
     ];
 
-    // eslint-disable-next-line @typescript-eslint/naming-convention, no-underscore-dangle, id-blacklist, id-match
     inputOptionsTest_options: any;
 
     actionMessageShown = false;

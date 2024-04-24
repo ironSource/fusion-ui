@@ -32,7 +32,8 @@ export default {
     args: {
         value: '0.0%',
         status: 'neutral' as TrendStatus,
-        hasBackground: true
+        hasBackground: true,
+        testId: 'testId'
     }
 } as Meta<TrendIndicatorComponent>;
 
@@ -43,7 +44,7 @@ export const Neutral: Story = {
         props: args,
         template: `
         <div style="display: flex; flex-direction: row; gap: 16px; align-items: center;">
-            <fusion-trend-indicator [status]="status" [value]="value" [hasBackground]="hasBackground"></fusion-trend-indicator>
+            <fusion-trend-indicator [status]="status" [value]="value" [hasBackground]="hasBackground" [testId]="testId" ></fusion-trend-indicator>
             <fusion-trend-indicator [status]="status" [hasBackground]="hasBackground"></fusion-trend-indicator>
             <fusion-trend-indicator [status]="status" [value]="value" [hasBackground]="false"></fusion-trend-indicator>
             <fusion-trend-indicator [status]="status" [hasBackground]="false"></fusion-trend-indicator>
@@ -65,7 +66,8 @@ export const Positive: Story = {
     }),
     args: {
         value: '0.5%',
-        status: 'up' as TrendStatus
+        status: 'up' as TrendStatus,
+        testId: 'testId'
     }
 };
 export const Negative: Story = {
@@ -73,7 +75,7 @@ export const Negative: Story = {
         props: args,
         template: `
         <div style="display: flex; flex-direction: row; gap: 16px; align-items: center;">
-            <fusion-trend-indicator [status]="status" [value]="value" [hasBackground]="hasBackground"></fusion-trend-indicator>
+            <fusion-trend-indicator [status]="status" [testId]="testId"  [value]="value" [hasBackground]="hasBackground"></fusion-trend-indicator>
             <fusion-trend-indicator [status]="status" [hasBackground]="hasBackground"></fusion-trend-indicator>
             <fusion-trend-indicator [status]="status" [value]="value" [hasBackground]="false"></fusion-trend-indicator>
             <fusion-trend-indicator [status]="status" [hasBackground]="false"></fusion-trend-indicator>

@@ -192,7 +192,7 @@ export abstract class TagsInputBaseComponent extends DropdownBaseComponent imple
     protected initialTagsOptions = [];
 
     @HostBinding('class.fu-disabled') get disabled(): boolean {
-        return this.isDisabled;
+        return this.isDisabled || this.isDisabledForm;
     }
 
     private isBulkInMaxValue(value): boolean {

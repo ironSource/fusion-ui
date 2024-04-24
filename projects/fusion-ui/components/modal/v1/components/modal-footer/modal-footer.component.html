@@ -4,7 +4,7 @@
         <button
             fusion-button
             [class]="cancelButtonClass"
-            (click)="onCloseButtonClicked.emit()"
+            (click)="closeButtonClicked.emit()"
             *ngIf="!cancelButtonHidden"
         >
             {{ cancelButtonText }}

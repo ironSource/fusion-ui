@@ -849,7 +849,7 @@ export const Checkbox = {
       [columns]="columns"
       [rows]="rows"
       [options]="options"
-      (selectionChanged)="onSelectedChanged($event)"
+      (selectionChanged)="selectedChanged($event)"
     ></fusion-table>\`,
     standalone: true,
     imports: [TableModule],
@@ -861,8 +861,8 @@ export const Checkbox = {
     columns: TableColumn[] = COLUMNS_CONFIG;
     rows: any[] = ROWS_DATA;
 
-    onSelectedChanged(selectedRows) {
-        console.log('onSelectedChanged:', selectedRows);
+    selectedChanged(selectedRows) {
+        console.log('selectedChanged:', selectedRows);
         this.rows = this.rows.map(item => {
             item.checkbox = selectedRows.some(row => row.id === item.id);
             return item;

@@ -10,7 +10,7 @@ const ATTRIBUTE_DISABLED = 'tab-disabled';
     standalone: true,
     imports: [CommonModule, GenericPipe],
     host: {class: 'fusion-v4'},
-    template: '<div class="fu-tab-content" data-testid="wrapperTestId" [attr.data-testid]="testId"><ng-content></ng-content></div>',
+    template: '<div class="fu-tab-content" [attr.data-testid]="testId"><ng-content></ng-content></div>',
     styleUrls: ['./tab-v4.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
