@@ -1,6 +1,7 @@
 import {BaseComponent} from '../base-component';
 import {getTestId} from '../../global/utils';
-import {ChartLabelTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {ChartLabelTestIdModifiers} from '@ironsource/fusion-ui/entities/test-ids-modifiers';
+
 import {Locator} from '@playwright/test';
 
 export class ChartComponent extends BaseComponent {
