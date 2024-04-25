@@ -86,7 +86,7 @@ export class ChartV4WrapperComponent {
         }
         if (this.labelOther) {
             chartDataLabels.push({
-                id: 'Other',
+                id: 'Others',
                 label: 'Show All',
                 labelVisible: new FormControl(true),
                 alignToRight: true,
