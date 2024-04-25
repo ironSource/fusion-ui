@@ -88,7 +88,7 @@ export const CHART_BAR_LONG_LABELS_OPTIONS_MOCK: any = {
 export const CHART_BAR_GROUPED_DATA_MOCK: ChartData = {
     data: {
         'Unity Ads': [804.16, 1688.59, 1383.47, 1037.83, 899.56],
-        'ironSource Ads': [456.16, 1290.59, 678.47, 659.83, 344.56]
+        'ironSource Ads': [456.16, 1290.59, 678.47, 659.83, 344.56, 1823]
     },
     legends: [
         {id: 9930, displayName: 'Australia', displayFormat: 'shortCurrency'},
@@ -98,6 +98,66 @@ export const CHART_BAR_GROUPED_DATA_MOCK: ChartData = {
         {id: 9899, displayName: 'China', displayFormat: 'shortCurrency'}
     ]
 };
+
+export const CHART_BAR_GROUPED_DATA_OTHER_MOCK: ChartData = {
+    data: {
+        'Unity Ads': [86257.75730499999, 29461.370534, 11882.475274, 87808.91530700003, 17251.551461, 45689.544187],
+        'ironSource Ads': [610234.3170500001, 198672.08078, 189211.81293, 107574.70432000002, 122046.86341, 59686.691540000014]
+    },
+    legends: [
+        {
+            id: 1,
+            displayName: ['Others'],
+            displayFormat: 'shortCurrency'
+        },
+        {
+            id: 1,
+            displayName: ['Going Balls', '(iOS)'],
+            displayFormat: 'shortCurrency',
+            imageUrl: 'https://icon-uap.iads.unity3d.com/demand-creatives/icons/icon_8de05b1a361bb7fa64c95aa67d8f814c_93009.jpeg'
+        },
+        {
+            id: 1,
+            displayName: ['Bridge Race', '(iOS)'],
+            displayFormat: 'shortCurrency',
+            imageUrl: 'https://icon-uap.iads.unity3d.com/demand-creatives/icons/icon_565bc88a61e6a38aaa34d39b4f87cdcd_70865.jpeg'
+        },
+        {
+            id: 1,
+            displayName: ['Build A Queen', '(Android)'],
+            displayFormat: 'shortCurrency',
+            imageUrl:
+                'https://icon-uap.iads.unity3d.com/demand-creatives/icons/icon_e0e0a727de113cc2c6e1d2d6d7e6f109_transformed_13858.jpeg'
+        },
+        {
+            id: 1,
+            displayName: ['Build A Queen', '(iOS)'],
+            displayFormat: 'shortCurrency',
+            imageUrl: 'https://icon-uap.iads.unity3d.com/demand-creatives/icons/icon_32528c4b1a6c44324054f658d24587ef_42835.jpeg'
+        },
+        {
+            id: 1,
+            displayName: ['Family Life', '(Android)'],
+            displayFormat: 'shortCurrency',
+            imageUrl:
+                'https://icon-uap.iads.unity3d.com/demand-creatives/icons/icon_9f03ef9fddf1eafaf1d804ffc07fb7b1_transformed_18086.jpeg'
+        }
+    ]
+};
+/*{
+data: {
+    'Unity Ads': [2033, 804.16, 1688.59, 1383.47, 1037.83, 899.56],
+    'ironSource Ads': [1823, 456.16, 1290.59, 678.47, 659.83, 344.56]
+},
+legends: [
+    {id: 0, displayName: 'Others', displayFormat: 'shortCurrency'},
+    {id: 9930, displayName: 'Australia', displayFormat: 'shortCurrency'},
+    {id: 9928, displayName: 'United States', displayFormat: 'shortCurrency'},
+    {id: 9935, displayName: 'Germany', displayFormat: 'shortCurrency'},
+    {id: 9936, displayName: 'United Kingdom', displayFormat: 'shortCurrency'},
+    {id: 9899, displayName: 'China', displayFormat: 'shortCurrency'}
+]
+};*/
 
 const sortChartData = (data: ChartData): ChartData => {
     const dataGroups = Object.keys(data.data);
@@ -216,13 +276,13 @@ export const CHART_DATA_MOCK_BIG: ChartData = {
     },
     legends: [
         {
-            id: 1,
-            displayName: 'ironSource Ads',
+            id: 2,
+            displayName: 'Unity Ads',
             displayFormat: 'shortCurrency'
         },
         {
-            id: 2,
-            displayName: 'Unity Ads',
+            id: 1,
+            displayName: 'ironSource Ads',
             displayFormat: 'shortCurrency'
         }
     ]

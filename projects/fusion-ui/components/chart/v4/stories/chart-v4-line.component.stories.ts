@@ -132,7 +132,7 @@ export const Stack: Story = {
     })
 };
 
-export const WithIconsInTooltip: Story = {
+export const IconLabel: Story = {
     render: args => ({
         props: {
             data: {...CHART_DATA_MOCK_BIG_ICONS},
@@ -152,6 +152,31 @@ export const WithIconsInTooltip: Story = {
         },
         template: `
             <fusion-chart-wrapper style="--chart-tooltip-max-width: 270px;" [data]="data" [type]="type" [options]="options"></fusion-chart-wrapper>
+        `
+    })
+};
+
+export const HideLabel: Story = {
+    render: args => ({
+        props: {
+            data: {...CHART_DATA_MOCK_BIG_ICONS},
+            type: ChartType.StackedLine,
+            labelsClickable: true,
+            options: {
+                interaction: {
+                    intersect: false,
+                    mode: 'index',
+                    axis: 'x'
+                },
+                plugins: {
+                    tooltip: {
+                        position: 'average'
+                    }
+                }
+            }
+        },
+        template: `
+            <fusion-chart-wrapper style="--chart-tooltip-max-width: 270px;" [data]="data" [type]="type" [labelsClickable]="labelsClickable" [options]="options"></fusion-chart-wrapper>
         `
     })
 };

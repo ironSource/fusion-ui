@@ -1,14 +1,15 @@
 import {ChangeDetectionStrategy, Component, Input, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {FormControl} from '@angular/forms';
 import {BehaviorSubject} from 'rxjs';
+import {ChartComponent} from '@ironsource/fusion-ui/components/chart/v4';
+import {ChartLabelsComponent} from '@ironsource/fusion-ui/components/chart-labels/v4';
 import {ChartData, ChartDataset, ChartLabel, ChartType} from '@ironsource/fusion-ui/components/chart/common/base';
-import {ChartLabelsV4Component} from '@ironsource/fusion-ui/components/chart-labels/v4/chart-labels-v4.component';
-import {ChartV4Component} from '../chart-v4.component';
 
 @Component({
     selector: 'fusion-chart-wrapper',
     standalone: true,
-    imports: [CommonModule, ChartV4Component, ChartLabelsV4Component],
+    imports: [CommonModule, ChartComponent, ChartLabelsComponent],
     host: {class: 'fusion-v4'},
     template: `
         <div class="fusion-chart-wrapper" *ngIf="data">
@@ -21,7 +22,11 @@ import {ChartV4Component} from '../chart-v4.component';
             ></fusion-chart>
         </div>
         <div class="fusion-chart-labels-wrapper" *ngIf="data">
-            <fusion-chart-labels [labels]="chartDataLabels$ | async" (labelHover)="labelHovered($event)"></fusion-chart-labels>
+            <fusion-chart-labels
+                [labels]="chartDataLabels$ | async"
+                (labelHover)="labelHovered($event)"
+                (labelClick)="labelClicked($event)"
+            ></fusion-chart-labels>
         </div>
         <div *ngIf="!data" class="fu-empty-state">
             <div class="fu-empty-state-icon"></div>
@@ -32,11 +37,19 @@ import {ChartV4Component} from '../chart-v4.component';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChartV4WrapperComponent {
-    @Input() data: ChartData;
+    @Input() set data(value: ChartData) {
+        this._data = value;
+    }
+    get data(): ChartData {
+        return this._data;
+    }
+    private _data: ChartData;
     @Input() type: ChartType;
     @Input() options: any;
+    @Input() labelsClickable = false;
+    @Input() labelOther = false;
 
-    @ViewChild('fusionChart') fusionChart: ChartV4Component;
+    @ViewChild('fusionChart') fusionChart: ChartComponent;
 
     chartDataLabels$ = new BehaviorSubject<ChartLabel[]>([]);
 
@@ -57,22 +70,38 @@ export class ChartV4WrapperComponent {
                 })
                 .reverse();
         } else {
-            chartDataLabels = chartDatasets
-                .map((dataSet, idx) => {
-                    const dataLabel: ChartLabel = {
-                        id: idx,
-                        label: dataSet.label,
-                        color: dataSet.borderColor === '#FCFCFC' ? dataSet.backgroundColor : dataSet.borderColor,
-                        icon: dataSet.icon
-                    };
-                    return dataLabel;
-                })
-                .reverse();
+            chartDataLabels = chartDatasets.map((dataSet, idx) => {
+                const dataLabel: ChartLabel = {
+                    id: dataSet.id ?? idx,
+                    label: dataSet.label,
+                    color: dataSet.borderColor === '#FCFCFC' ? dataSet.backgroundColor : dataSet.borderColor,
+                    icon: dataSet.icon
+                };
+                if (this.labelsClickable) {
+                    dataLabel.labelVisible = new FormControl(true);
+                }
+                return dataLabel;
+            }); /*
+                .reverse();*/
+        }
+        if (this.labelOther) {
+            chartDataLabels.push({
+                id: 'Others',
+                label: 'Show All',
+                labelVisible: new FormControl(true),
+                alignToRight: true,
+                typeCheckbox: true,
+                backgroundColor: '#646464'
+            });
         }
         this.chartDataLabels$.next(chartDataLabels);
     }
 
     labelHovered(label: ChartLabel): void {
         this.fusionChart?.highlightDataset(label);
+    }
+
+    labelClicked(label: ChartLabel): void {
+        this.fusionChart?.toggleDataset(label, true);
     }
 }

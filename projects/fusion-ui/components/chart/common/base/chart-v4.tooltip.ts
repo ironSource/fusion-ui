@@ -468,14 +468,16 @@ export function externalV4TooltipHandler(context) {
         const tooltipBody = document.createElement('div');
         tooltipBody.style.cssText = BODY_ROWS_WRAPPER;
         const tooltipRoot = tooltipEl.querySelector('div.fu-chart-tooltip-wrapper');
-        titleLines.forEach((title: string | HTMLElement) => {
-            if (typeof title !== 'string' && title.tagName === 'IMG') {
-                tooltipHead.appendChild(title);
-            } else {
-                const tr = generateTooltipHeaderElement(title);
-                tooltipHead.appendChild(tr);
-            }
-        });
+        if (chart.config?._config?.type !== 'doughnut') {
+            titleLines.forEach((title: string | HTMLElement) => {
+                if (typeof title !== 'string' && title.tagName === 'IMG') {
+                    tooltipHead.appendChild(title);
+                } else {
+                    const tr = generateTooltipHeaderElement(title);
+                    tooltipHead.appendChild(tr);
+                }
+            });
+        }
         bodyLines.forEach((body, i) => {
             if (bodyLines.length > 1 && bodySortReverse) {
                 tooltipBody.prepend(generateTooltipBodyRow({tooltip, i, body}));
