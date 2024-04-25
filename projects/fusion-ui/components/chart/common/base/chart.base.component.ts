@@ -201,11 +201,13 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             this.originalBarData = structuredClone(this.chart.data.datasets);
         }
         if (!label.labelVisible.value) {
-            const otherDataIndex = this.chart.data.labels.indexOf(label.id);
-            Object.keys(this.chart.data.datasets).forEach(key => {
-                this.chart.data.datasets[key].data.splice(otherDataIndex, 1);
-            });
-            this.chart.data.labels.splice(otherDataIndex, 1);
+            const otherDataIndex = this.getLabelIndex(label.id);
+            if (otherDataIndex !== -1) {
+                Object.keys(this.chart.data.datasets).forEach(key => {
+                    this.chart.data.datasets[key].data.splice(otherDataIndex, 1);
+                });
+                this.chart.data.labels.splice(otherDataIndex, 1);
+            }
         } else {
             this.chart.data.labels = [...this.originalLabels] as string[];
             this.chart.data.datasets = structuredClone(this.originalBarData);
@@ -215,6 +217,21 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         }
 
         this.chart.update();
+    }
+
+    private getLabelIndex(labelId: string | number): number {
+        let index = -1;
+        this.chart.data.labels.find((item, idx) => {
+            if (index === -1) {
+                if (Array.isArray(item) && item[0] === labelId) {
+                    index = idx;
+                } else {
+                    console.log('item', item);
+                    index = item === labelId ? idx : -1;
+                }
+            }
+        });
+        return index;
     }
 
     private toggleLineDataset(label: ChartLabel, recalculateYMax = false): void {

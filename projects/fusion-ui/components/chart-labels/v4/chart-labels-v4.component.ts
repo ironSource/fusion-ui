@@ -1,6 +1,8 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, inject, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ReactiveFormsModule} from '@angular/forms';
+import {Subject} from 'rxjs';
+import {debounceTime, takeUntil} from 'rxjs/operators';
 import {ChartLabel} from '@ironsource/fusion-ui/components/chart/common/base';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
@@ -19,7 +21,7 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
     styleUrls: ['./chart-labels-v4.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChartLabelsV4Component {
+export class ChartLabelsV4Component implements OnInit, OnDestroy {
     @Input() set labels(value: ChartLabel[]) {
         this._labels = value;
     }
@@ -36,6 +38,31 @@ export class ChartLabelsV4Component {
     @Output() labelHover = new EventEmitter<ChartLabel>();
 
     colorsService = inject(ColorsService);
+    private labelClick$ = new Subject();
+    private onDestroy$ = new Subject<void>();
+
+    ngOnInit() {
+        this.labelClick$.pipe(takeUntil(this.onDestroy$), debounceTime(100)).subscribe((chartLabel: ChartLabel) => {
+            if (!isNullOrUndefined(chartLabel.labelVisible)) {
+                if (!chartLabel.typeCheckbox) {
+                    chartLabel.labelVisible.setValue(!chartLabel.labelVisible.value, {emitEvent: true});
+                }
+                this.labelClick.emit(chartLabel);
+                if (!chartLabel.typeCheckbox) {
+                    if (chartLabel.labelVisible.value) {
+                        this.labelHover.emit(chartLabel);
+                    } else {
+                        this.labelHover.emit(null);
+                    }
+                }
+            }
+        });
+    }
+
+    ngOnDestroy(): void {
+        this.onDestroy$.next();
+        this.onDestroy$.complete();
+    }
 
     getLabelBGColor(hexColor: string): string {
         return hexColor.startsWith('#') ? this.colorsService.toRgba(hexColor, this.bgOpacity) : hexColor;
@@ -52,18 +79,8 @@ export class ChartLabelsV4Component {
     }
 
     chartLabelClicked($event: Event, chartLabel: ChartLabel): void {
-        $event.preventDefault();
-        if (!isNullOrUndefined(chartLabel.labelVisible)) {
-            chartLabel.labelVisible.setValue(!chartLabel.labelVisible.value, {emitEvent: true});
-            this.labelClick.emit(chartLabel);
-            if (!chartLabel.typeCheckbox) {
-                if (chartLabel.labelVisible.value) {
-                    this.labelHover.emit(chartLabel);
-                } else {
-                    this.labelHover.emit(null);
-                }
-            }
-        }
+        $event.stopPropagation();
+        this.labelClick$.next(chartLabel);
     }
 
     protected readonly ChartLabelTestIdModifiers = ChartLabelTestIdModifiers;
