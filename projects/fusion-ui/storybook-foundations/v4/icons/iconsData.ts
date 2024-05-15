@@ -272,10 +272,6 @@ export const iconsAdNetworks = [
         path: 'v4/ad-networks/moloco.svg'
     },
     {
-        name: 'MyTarget',
-        path: 'v4/ad-networks/mytarget.svg'
-    },
-    {
         name: 'Pangle',
         path: 'v4/ad-networks/pangle.svg'
     },
@@ -298,6 +294,10 @@ export const iconsAdNetworks = [
     {
         name: 'Unity Ads',
         path: 'v4/ad-networks/unityAds.svg'
+    },
+    {
+        name: 'VK Ad Network',
+        path: 'v4/ad-networks/vkAdNetwork.svg'
     },
     {
         name: 'Voodoo',
