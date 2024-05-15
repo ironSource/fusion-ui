@@ -1,5 +1,5 @@
 import {Meta, IconGallery, IconItem} from '@storybook/addon-docs';
-import {assetsPath, iconsBrandedData, iconsADUnitData, iconsABTestData} from "./iconsData";
+import {assetsPath, iconsBrandedData, iconsADUnitData, iconsABTestData, iconsAdNetworks} from "./iconsData";
 
 <Meta title="V4/Foundation/Icons"/>
 
@@ -132,6 +132,33 @@ ul li{
     letter-spacing: -0.084px;
     margin-bottom: 0;
 }
+.icons-ad-networks {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+.icon-ad-network{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    align-self: stretch;
+    width: 31%;
+}
+.ad-network{
+    width: 100%;
+    border-bottom: 1px solid var(--common-divider, #E4E4E4);
+}
+.ad-network-name{
+    color: var(--text-secondary, #646464);
+    font-family: Inter;
+    font-size: 7px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    cursor: default;
+}
 `
     }
 </style>
@@ -213,4 +240,43 @@ When used correctly, UI icons can speed up user interactions by being immediatel
         }
     </IconGallery>
     <div class="icons-wrapper-notes">icon type: "ab-test"</div>
+</div>
+
+<div class="icons-title">Ad networks</div>
+<div class="icons-wrapper">
+    <div class="icons-ad-networks">
+        {
+            iconsAdNetworks.map(icon=>{
+                return (
+                    <div class="icon-ad-network">
+                        <div class="ad-network">
+                            <img src={assetsPath + icon.path} title={icon.path} alt={icon.name} style={{height: '16px'}}/>
+                        </div>
+                        <div class="ad-network-name" title={icon.name}>{icon.name}</div>
+                    </div>
+                )
+            })
+        }
+    </div>
+    <div class="icons-wrapper-notes" style={{'border-top': 'none', 'padding-top': '26px'}}>icon type: "ad-networks"</div>
+</div>
+
+<div class="icons-title">Ad networks (flat)</div>
+<div class="icons-wrapper">
+    <div class="icons-ad-networks">
+        {
+            iconsAdNetworks.map(icon=>{
+                return (
+                    icon.path = icon.path.replace('ad-networks/', 'ad-networks/flat/'),
+                    <div class="icon-ad-network">
+                        <div class="ad-network">
+                            <img src={assetsPath + icon.path} title={icon.path} alt={icon.name} style={{height: '16px'}}/>
+                        </div>
+                        <div class="ad-network-name" title={icon.name}>{icon.name}</div>
+                    </div>
+                )
+            })
+        }
+    </div>
+    <div class="icons-wrapper-notes" style={{'border-top': 'none', 'padding-top': '26px'}}>icon type: "ad-networks/flat"</div>
 </div>
