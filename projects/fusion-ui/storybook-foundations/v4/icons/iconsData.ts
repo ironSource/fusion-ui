@@ -173,3 +173,138 @@ export const iconsABTestData = [
         path: 'v4/ab-test/ab-gray.svg'
     }
 ];
+
+export const iconsAdNetworks = [
+    {
+        name: 'AppLovin',
+        path: 'v4/ad-networks/appLovin.svg'
+    },
+    {
+        name: 'APS',
+        path: 'v4/ad-networks/aps.svg'
+    },
+    {
+        name: 'BidMachine',
+        path: 'v4/ad-networks/bidMachine.svg'
+    },
+    {
+        name: 'Chartboost',
+        path: 'v4/ad-networks/chartboost.svg'
+    },
+    {
+        name: 'Cross Promotion',
+        path: 'v4/ad-networks/cross-promotion.svg'
+    },
+    {
+        name: 'CSJ',
+        path: 'v4/ad-networks/csj.svg'
+    },
+    {
+        name: 'Direct Deals',
+        path: 'v4/ad-networks/directDeals.svg'
+    },
+    {
+        name: 'DT Exchange',
+        path: 'v4/ad-networks/dtExchange.svg'
+    },
+    {
+        name: 'Gameloft',
+        path: 'v4/ad-networks/gameloft.svg'
+    },
+    {
+        name: 'Google AdManager',
+        path: 'v4/ad-networks/googleAdManager.svg'
+    },
+    {
+        name: 'Google AdManager Native',
+        path: 'v4/ad-networks/googleAdManagerNative.svg'
+    },
+    {
+        name: 'Google AdMob',
+        path: 'v4/ad-networks/googleAdMob.svg'
+    },
+    {
+        name: 'Google AdMob Native',
+        path: 'v4/ad-networks/googleAdMobNative.svg'
+    },
+    {
+        name: 'HyprMX',
+        path: 'v4/ad-networks/hyprMX.svg'
+    },
+    {
+        name: 'InMobi',
+        path: 'v4/ad-networks/inMobi.svg'
+    },
+    {
+        name: 'ironSource',
+        path: 'v4/ad-networks/ironSource.svg'
+    },
+    {
+        name: 'ironSource Ads',
+        path: 'v4/ad-networks/ironSourceAds.svg'
+    },
+    {
+        name: 'ironSource Backfill',
+        path: 'v4/ad-networks/ironSourceBackfill.svg'
+    },
+    {
+        name: 'Liftoff',
+        path: 'v4/ad-networks/liftoff.svg'
+    },
+    {
+        name: 'Liftoff Monetize',
+        path: 'v4/ad-networks/liftoffMonetize.svg'
+    },
+    {
+        name: 'Maio',
+        path: 'v4/ad-networks/maio.svg'
+    },
+    {
+        name: 'Meta',
+        path: 'v4/ad-networks/meta.svg'
+    },
+    {
+        name: 'Mintegral',
+        path: 'v4/ad-networks/mintegral.svg'
+    },
+    {
+        name: 'Moloco',
+        path: 'v4/ad-networks/moloco.svg'
+    },
+    {
+        name: 'MyTarget',
+        path: 'v4/ad-networks/mytarget.svg'
+    },
+    {
+        name: 'Pangle',
+        path: 'v4/ad-networks/pangle.svg'
+    },
+    {
+        name: 'Smaato',
+        path: 'v4/ad-networks/smaato.svg'
+    },
+    {
+        name: 'SuperAwesome',
+        path: 'v4/ad-networks/superAwesome.svg'
+    },
+    {
+        name: 'TapJoy',
+        path: 'v4/ad-networks/tapjoy.svg'
+    },
+    {
+        name: 'Tencent',
+        path: 'v4/ad-networks/tencent.svg'
+    },
+    {
+        name: 'Unity Ads',
+        path: 'v4/ad-networks/unityAds.svg'
+    },
+    {
+        name: 'Voodoo',
+        path: 'v4/ad-networks/voodoo.svg'
+    },
+    {
+        name: 'Yandex',
+        path: 'v4/ad-networks/yandex.svg'
+    }
+];
