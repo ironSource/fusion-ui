@@ -1,6 +1,7 @@
-import {Meta, StoryObj} from '@storybook/angular';
+import {componentWrapperDecorator, Meta, StoryObj} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
+import {FormControl} from '@angular/forms';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../stories/environments/environment';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
@@ -31,6 +32,36 @@ const CART_LABELS_ICONS_MOCK: ChartLabel[] = [
         icon: 'v4/branded/ios'
     }
 ];
+const CART_LABELS_CLICKABLE_MOCK: ChartLabel[] = [
+    {
+        color: CHART_COLORS[0],
+        label: 'Label 1',
+        labelVisible: new FormControl(true)
+    },
+    {
+        color: CHART_COLORS[1],
+        label: 'Label 2',
+        labelVisible: new FormControl(true)
+    }
+];
+
+const CART_LABELS_WITH_TOGGLE_MOCK: ChartLabel[] = [
+    {
+        color: CHART_COLORS[0],
+        label: 'Label 1'
+    },
+    {
+        color: CHART_COLORS[1],
+        label: 'Label 2'
+    },
+    {
+        label: 'Show All',
+        labelVisible: new FormControl(true),
+        alignToRight: true,
+        typeCheckbox: true,
+        backgroundColor: '#646464'
+    }
+];
 
 export default {
     title: 'V4/Components/DataVisualization/LegendItems',
@@ -58,8 +89,28 @@ export const Basic: Story = {
     }
 };
 
+/*export const WithOpacity: Story = {
+    args: {
+        labels: CART_LABELS_MOCK,
+        bgOpacity: 10
+    }
+};*/
+
 export const WithIcon: Story = {
     args: {
         labels: CART_LABELS_ICONS_MOCK
     }
+};
+
+export const HideLabels: Story = {
+    args: {
+        labels: CART_LABELS_CLICKABLE_MOCK
+    }
+};
+
+export const ShowAllData: Story = {
+    args: {
+        labels: CART_LABELS_WITH_TOGGLE_MOCK
+    },
+    decorators: [componentWrapperDecorator(story => `<div style="border: solid 1px #ccc; padding: 4px; width: 600px;">${story}</div>`)]
 };

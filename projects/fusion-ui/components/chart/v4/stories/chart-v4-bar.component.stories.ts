@@ -3,7 +3,14 @@ import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {ChartV4Component} from '../chart-v4.component';
 import {ChartType} from '@ironsource/fusion-ui/components/chart/common/base';
-import {CHART_BAR_DATA_MOCK, CHART_BAR_GROUPED_BUNDLE_DATA_MOCK, CHART_BAR_GROUPED_DATA_MOCK} from './chart-v4.component.mock';
+import {
+    CHART_BAR_DATA_MOCK,
+    CHART_BAR_GROUPED_BUNDLE_DATA_MOCK,
+    CHART_BAR_GROUPED_DATA_MOCK,
+    CHART_BAR_GROUPED_DATA_OTHER_MOCK,
+    CHART_BAR_LONG_LABELS_DATA_MOCK,
+    CHART_BAR_LONG_LABELS_OPTIONS_MOCK
+} from './chart-v4.component.mock';
 import {ChartV4WrapperComponent} from './chart-v4-story-wrapper.component';
 
 export default {
@@ -28,21 +35,22 @@ export default {
     },
     args: {
         data: {...CHART_BAR_DATA_MOCK},
-        type: ChartType.Bar,
-        testId: 'moshe'
+        type: ChartType.Bar
     }
 } as Meta<ChartV4Component>;
 
 type Story = StoryObj<ChartV4Component>;
 
+/*
 export const Basic: Story = {
     render: args => ({
         props: args,
         template: `
-            <fusion-chart-wrapper [data]="data" [type]="type" [testId]="testId"></fusion-chart-wrapper>
+            <fusion-chart-wrapper [data]="data" [type]="type"></fusion-chart-wrapper>
         `
     })
 };
+*/
 
 export const Stack: Story = {
     render: args => ({
@@ -56,7 +64,32 @@ export const Stack: Story = {
     })
 };
 
-export const StackSorted: Story = {
+export const StackWithOther: Story = {
+    render: args => ({
+        props: {
+            data: structuredClone(CHART_BAR_GROUPED_DATA_OTHER_MOCK),
+            type: ChartType.StackedBar,
+            labelOther: true,
+            options: {
+                showCharsAmountXLabels: 12,
+                scales: {
+                    x: {
+                        ticks: {
+                            minRotation: 0,
+                            maxRotation: 0,
+                            autoSkip: false
+                        }
+                    }
+                }
+            }
+        },
+        template: `
+            <fusion-chart-wrapper [data]="data" [type]="type" [options]="options" [labelOther]="labelOther"></fusion-chart-wrapper>
+        `
+    })
+};
+
+export const StackImageInTooltipTitle: Story = {
     render: args => ({
         props: {
             data: {...CHART_BAR_GROUPED_BUNDLE_DATA_MOCK},
@@ -115,6 +148,19 @@ export const Group: Story = {
         `
     })
 };*/
+
+export const LongLabels: Story = {
+    render: args => ({
+        props: {
+            data: {...CHART_BAR_LONG_LABELS_DATA_MOCK},
+            type: ChartType.StackedBar,
+            options: CHART_BAR_LONG_LABELS_OPTIONS_MOCK
+        },
+        template: `
+            <fusion-chart-wrapper [data]="data" [type]="type" [options]="options"></fusion-chart-wrapper>
+        `
+    })
+};
 
 export const NoDataToDisplay: Story = {
     render: args => ({

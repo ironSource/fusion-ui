@@ -9,6 +9,16 @@
 $optionsMaxHeight: 300px;
 $searchHeight: 28px;
 
+%location {
+  &.options-locate-right {
+    left: auto;
+  }
+
+  &.options-locate-left {
+    right: auto;
+  }
+}
+
 :host {
   margin: 0;
   padding: 0;
@@ -32,6 +42,7 @@ $searchHeight: 28px;
       border: solid 1px var(--common-divider, #{$color-v4-common-divider});
       background-color: var(--background-default, #{$color-v4-background-default});
       box-shadow: var(--box-shadow-lg, #{$boxShadowV4-LG});
+      @extend %location;
 
       .options-holder {
         overflow-y: auto;
@@ -46,23 +57,27 @@ $searchHeight: 28px;
           flex-direction: column;
           gap: var(--spacing-50, #{$spacingV4-50});
           padding: 0 var(--spacing-50, #{$spacingV4-50}) 0 0;
-          &.fu-loading{
+
+          &.fu-loading {
             gap: 0;
           }
 
-          .fu-loader-holder{
+          .fu-loader-holder {
             display: flex;
             align-items: center;
             gap: 8px;
             height: 30px;
-            fusion-loader{
+
+            fusion-loader {
               width: 20px;
               height: 20px;
             }
+
             color: var(--text-disabled, #{$color-v4-text-disabled});
             @extend %font-v4-body-2;
             padding: var(--spacing-75, #{$spacingV4-75}) var(--spacing-100, #{$spacingV4-100});
           }
+
           .no-results {
             color: var(--text-disabled, #{$color-v4-text-disabled});
             @extend %font-v4-body-2;

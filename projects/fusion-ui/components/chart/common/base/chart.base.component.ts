@@ -1,19 +1,19 @@
-import {Directive, ElementRef, EventEmitter, Injector, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
-import {ChartData, FusionChartPieDataItem, FusionChartPieData} from './entities/chart-data';
+import {Directive, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
+import {ChartData, FusionChartPieData, FusionChartPieDataItem} from './entities/chart-data';
 import {ChartLabel} from './entities/chart-label';
 import {ChartDataset} from './entities/chart-dataset';
 import {CurrencyPipe, DatePipe, DecimalPipe, PercentPipe} from '@angular/common';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {ChartDataService} from './chart.service';
 import {ColorsService} from '@ironsource/fusion-ui/services/colors';
-import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
-import {isDateString} from '@ironsource/fusion-ui/utils';
+import {isDateString, isNullOrUndefined, isNumber} from '@ironsource/fusion-ui/utils';
 import {BASE_DATASET_OPTIONS, CHART_CONFIGURATIONS} from './chart.config';
 import {ShortNumberScaleSuffixPipe} from '@ironsource/fusion-ui/pipes/numbers';
 import {ChartBaseDatasetOptions} from './entities/chart-options';
 import {ChartType} from './entities/chart-type.enum';
 import {ClonePipe} from '@ironsource/fusion-ui/pipes/clone';
 import {HoverVerticalLine} from './hoverVerticalLine.plugin';
+import {ChartLegend} from './entities/chart-legend';
 
 // Chart.js 3 is tree-shakeable, so it is necessary to import and register the controllers, elements, scales and plugins you are going to use.
 import {
@@ -68,6 +68,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             this._options = {...this._options, ...value};
         }
     }
+
     /** @internal */
     get options(): any {
         return this._options;
@@ -85,7 +86,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     /** @internal */
     componentVersion = 2;
 
-    private _options: {} = {
+    private _options: any = {
         yAxisLines: 4
     };
 
@@ -98,6 +99,13 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     protected maxVal: number;
     protected isStacked = false;
     protected yAxesFormat: string;
+
+    private legends: ChartLegend[] = [];
+    private barWidth: number; // for bar chart type, if showCharsAmountXLabels is set to true
+
+    // originalLabels and originalBarData used for store chart type Bar data without filtering;
+    private originalBarData: any;
+    private originalLabels: string[];
 
     constructor(
         protected datePipe: DatePipe,
@@ -153,23 +161,55 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         this.yAxesFormat = this.getDisplayFormat(data) ?? data.displayFormat;
         this.chartData = this.dataParseService.parseChartData(data, type, this.isStacked);
         this.chartOptions = this.getChartOptions();
+        this.legends = (data as ChartData).legends;
 
         if (!isNullOrUndefined(this.chart)) {
             this.chart.destroy();
         }
         this.chart = this.renderChart(this.ctx);
 
+        if (
+            (this.type === ChartType.Bar || this.type === ChartType.StackedBar) &&
+            isNumber(this.options.showCharsAmountXLabels) &&
+            !!this.chartData?.labels?.length
+        ) {
+            this.barWidth = (this.chart.getDatasetMeta(0)?.xScale?.width ?? this.ctx.width) / this.chartData?.labels?.length;
+            if (this.barWidth) {
+                this.chartOptions.scales.x.ticks.callback = this.trimAxisXLabel.bind(this);
+                this.chart.update();
+            }
+        }
+
         this.afterDatasetInit.emit(this.chartData.datasets as ChartDataset[]);
     }
 
+    // region chart datasets show / hide methods
     /** @internal */
     toggleDataset(label: ChartLabel, recalculateYMax = false): void {
-        this.chart.data.datasets
-            .filter(item => item.label === label.label && (item as any).id === label.id)
-            .forEach(item => {
-                item.hidden = !label.labelVisible.value;
-            });
+        if ((this.type === ChartType.Bar || this.type === ChartType.StackedBar) && label.typeCheckbox) {
+            this.filterBarData(label, recalculateYMax);
+        } else {
+            this.toggleLineDataset(label, recalculateYMax);
+        }
+    }
 
+    private filterBarData(label: ChartLabel, recalculateYMax = false): void {
+        if (isNullOrUndefined(this.originalBarData)) {
+            this.originalLabels = [...this.chart.data.labels] as string[];
+            this.originalBarData = structuredClone(this.chart.data.datasets);
+        }
+        if (!label.labelVisible.value) {
+            const otherDataIndex = this.getLabelIndex(label.id);
+            if (otherDataIndex !== -1) {
+                Object.keys(this.chart.data.datasets).forEach(key => {
+                    this.chart.data.datasets[key].data.splice(otherDataIndex, 1);
+                });
+                this.chart.data.labels.splice(otherDataIndex, 1);
+            }
+        } else {
+            this.chart.data.labels = [...this.originalLabels] as string[];
+            this.chart.data.datasets = structuredClone(this.originalBarData);
+        }
         if (recalculateYMax) {
             this.calcYAxes(this.chart?.options?.scales?.y);
         }
@@ -177,20 +217,88 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         this.chart.update();
     }
 
-    highlightDataset(label: ChartLabel) {
-        if (this.chart?.getActiveElements()?.length) {
-            this.chart?.setActiveElements([]);
-        } else {
-            if (!isNullOrUndefined(label)) {
-                const activeElements = this.chart?.getDatasetMeta(0)?.data?.map((item, idx) => ({
-                    datasetIndex: label.id as number,
-                    index: idx
-                }));
-                this.chart?.setActiveElements(activeElements);
+    private getLabelIndex(labelId: string | number): number {
+        let index = -1;
+        this.chart.data.labels.find((item, idx) => {
+            if (index === -1) {
+                if (Array.isArray(item) && item[0] === labelId) {
+                    index = idx;
+                } else {
+                    console.log('item', item);
+                    index = item === labelId ? idx : -1;
+                }
             }
+        });
+        return index;
+    }
+
+    private toggleLineDataset(label: ChartLabel, recalculateYMax = false): void {
+        this.chart.data.datasets
+            .filter(item => {
+                let thisLabel: boolean = item.label === label.label && (item as any).id === label.id;
+                return thisLabel;
+            })
+            .forEach(item => {
+                item.hidden = !label.labelVisible.value;
+            });
+
+        if (recalculateYMax) {
+            this.calcYAxes(this.chart?.options?.scales?.y);
+        }
+        this.chart.update('none');
+    }
+    // endregion
+
+    // region chart dataset highlight methods
+    /** @internal */
+    highlightDataset(label: ChartLabel) {
+        const datasets: any = this.chart?.data.datasets;
+        if (!isNullOrUndefined(label)) {
+            this.setChartUnHoveredBGColor(label, datasets);
+        } else {
+            this.setChartHoveredBGColor(label, datasets);
         }
         this.chart.update();
     }
+
+    private setChartUnHoveredBGColor(label: ChartLabel, datasets: any): void {
+        datasets.forEach((dataset: any, idx: number) => {
+            const isOtherDataset = !isNullOrUndefined(dataset.id) ? dataset.id !== label.id : idx !== label.id;
+            if (isOtherDataset || this.type === ChartType.Doughnut) {
+                if (this.type === ChartType.Line) {
+                    dataset.borderColor = dataset.backgroundColor;
+                } else if (this.type === ChartType.Bar) {
+                    dataset.backgroundColor = (dataset.backgroundColor as string).replace(',1)', ',0.1)');
+                } else if (this.type === ChartType.Doughnut) {
+                    (dataset.backgroundColor as string[]).forEach((color, idx) => {
+                        if (idx !== label.id) {
+                            dataset.backgroundColor[idx] = dataset.backgroundColor[idx].replace(',1)', ',0.1)');
+                        }
+                    });
+                }
+            } else {
+                if (this.type === ChartType.Line) {
+                    dataset.backgroundColor = (dataset.backgroundColor as string).replace('0.1)', '0.7)');
+                }
+            }
+        });
+    }
+
+    private setChartHoveredBGColor(label: ChartLabel, datasets: any): void {
+        datasets.forEach((dataset, idx) => {
+            if (this.type === ChartType.Line) {
+                dataset.borderColor = (dataset.backgroundColor as string).replace('0.1)', '1)');
+                dataset.backgroundColor = (dataset.backgroundColor as string).replace('0.7)', '0.1)');
+            } else if (this.type === ChartType.Bar) {
+                dataset.backgroundColor = (dataset.backgroundColor as string).replace(',0.1)', ',1)');
+            } else if (this.type === ChartType.Doughnut) {
+                (dataset.backgroundColor as string[]).forEach((color, idx) => {
+                    dataset.backgroundColor[idx] = dataset.backgroundColor[idx].replace(',0.1)', ',1)');
+                });
+            }
+        });
+    }
+    // endregion
 
     /** @internal */
     addDatasetStyleOptions(isLastDotted = true) {
@@ -227,18 +335,17 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         const seriesToShow = datasetOptions.seriesToShow;
         const lineOptions = datasetOptions.lineOptions;
         const dateFormat = datasetOptions.dateFormat ?? 'MMM dd, yyyy';
+        const isOneDataPoint = this.chartData.labels.length === 1;
 
         // set bg fill options
         lineOptions.fill = this.isStacked;
-        if (this.componentVersion === 4 && this.isStacked) {
-            lineOptions.borderWidth = 0;
-            lineOptions.pointRadius = 0;
+        if (this.componentVersion === 4) {
+            lineOptions.pointRadius = isOneDataPoint ? 3 : 0;
+            lineOptions.clip = 5;
+            colorKeys.push('pointBackgroundColor');
         }
-        // lineOptions.borderWidth = this.isStacked ? 10 : lineOptions.borderWidth;
         bgOpacity = this.componentVersion === 4 ? bgOpacity : bgOpacity / 2;
-
         this.chartData.datasets = this.chartData.datasets.map((item, idx) => {
-            // set color options
             const dataGroupOptions = colorKeys.reduce((resultOptions, colorOption) => {
                 const color = (this._data as ChartData)?.legends[idx]?.color || palette[idx];
                 switch (colorOption) {
@@ -246,6 +353,9 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
                         resultOptions[colorOption] = this.colorsService.toRgba(color, bgOpacity);
                         break;
                     case 'pointBackgroundColor':
+                        resultOptions[colorOption] = lineOptions[colorOption] ? lineOptions[colorOption] : color;
+                        break;
+                    case 'pointHoverBackgroundColor':
                         resultOptions[colorOption] = lineOptions[colorOption] ? lineOptions[colorOption] : color;
                         break;
                     case 'pointBorderColor':
@@ -272,9 +382,11 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             return Object.assign(item, dataGroupOptions);
         });
         // format xAxis (dates)
-        this.chartData.labels = this.chartData.labels.map(lbl => {
-            return isDateString(lbl as string) ? this.datePipe.transform(lbl as any, dateFormat) : lbl;
-        });
+        if (this.componentVersion !== 4) {
+            this.chartData.labels = this.chartData.labels.map(lbl => {
+                return isDateString(lbl as string) ? this.datePipe.transform(lbl as any, dateFormat) : lbl;
+            });
+        }
         // support for last point (if last point - today) - dotted line type
         if (isLastDotted) {
             this.chartData.datasets = this.dataParseService.setLastDotted(this.chartData.datasets);
@@ -300,8 +412,16 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         this.chartData.datasets = this.chartData.datasets.map((item, idx) => {
             if (this.componentVersion === 4) {
                 barOptions.borderColor = palette[idx];
-                barOptions.backgroundColor = this.colorsService.toRgba(palette[idx], bgOpacity);
-                barOptions.hoverBackgroundColor = this.colorsService.toRgba(palette[idx], 100);
+                barOptions.backgroundColor = this.colorsService.toRgba(palette[idx], 100);
+                barOptions.hoverBackgroundColor = palette[idx];
+                barOptions.borderWidth = 0;
+                barOptions.barPercentage = 0.9;
+                if (this.isStacked) {
+                    barOptions.barPercentage = 0.5;
+                    barOptions.borderWidth = 2;
+                    barOptions.borderColor = '#FCFCFC';
+                    barOptions.hoverBorderColor = '#FCFCFC';
+                }
             } else {
                 for (let i = 0; i < item.data.length; i++) {
                     barOptions.borderColor.push(palette[i]);
@@ -315,11 +435,13 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     private addDatasetPieStyleOptions(datasetOptions) {
         const pieOptions = datasetOptions.pieOptions;
         const piePalette: string[] = this.colorsService.getPieColorsPalette(this.componentVersion);
+        const onlyOneData = this.chartData.datasets[0].data.length === 1;
         // add colors and labels
         pieOptions.backgroundColor = [];
         pieOptions.hoverBackgroundColor = [];
         pieOptions.hoverBorderWidth = pieOptions.hoverBorderWidth;
-        pieOptions.borderWidth = pieOptions.borderWidth;
+        pieOptions.borderWidth = !onlyOneData ? pieOptions.borderWidth : 0;
+
         this.chartData.datasets = this.chartData.datasets.map(item => {
             for (let i = 0; i < item.data.length; i++) {
                 let color;
@@ -330,8 +452,11 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
                     color = piePalette[i] ? piePalette[i] : piePalette[piePalette.length - 1];
                 }
                 if (this.componentVersion === 4) {
-                    pieOptions.backgroundColor.push(this.colorsService.toRgba(color, datasetOptions.fillOpacity));
-                    pieOptions.hoverBackgroundColor.push(this.colorsService.toRgba(color, 100));
+                    pieOptions.backgroundColor.push(this.colorsService.toRgba(color, 100));
+                    pieOptions.hoverBackgroundColor.push(color);
+                    pieOptions.borderColor = '#FCFCFC';
+                    pieOptions.hoverBorderWidth = 0;
+                    pieOptions.hoverBorderColor = 'transparent';
                 } else {
                     pieOptions.backgroundColor.push(color);
                 }
@@ -415,7 +540,13 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             callbacks: {
                 ...options.plugins.tooltip.callbacks,
                 label: this.getTooltipLabel.bind(this),
-                ...(isV4InteractionIndex ? {footer: this.calculateTotals.bind(this)} : {})
+                ...(isV4InteractionIndex
+                    ? {
+                          footer: this.calculateTotals.bind(this),
+                          beforeTitle: this.getBeforeTitle.bind(this),
+                          title: this.getTooltipDateTitle.bind(this)
+                      }
+                    : {})
             },
             ...(isLastDotted ? {filter: this.filterTooltip.bind(this)} : {})
         };
@@ -443,6 +574,15 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
                 }
             });
         }
+        if (this.componentVersion === 4) {
+            const datasetOptions = this.getDataSetOptionsByStyleVersion(this.componentVersion);
+            const dateFormat = datasetOptions.dateFormat ?? 'MMM dd, yyyy';
+            options.scales.x.ticks.callback = (index: any) => {
+                const label = this.chartData.labels[index] as string;
+                const value = isDateString(label) ? this.datePipe.transform(label, dateFormat) : label;
+                return value;
+            };
+        }
     }
 
     private setBarChartOptions(options) {
@@ -459,14 +599,26 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             options.scales.x.stacked = true;
             options.scales.y.stacked = true;
             options.interaction = {
-                intersect: true,
+                intersect: false,
                 mode: 'index',
-                axis: 'xy'
+                axis: 'x'
             };
             options.plugins.tooltip = {
                 ...options.plugins.tooltip
             };
         }
+    }
+
+    private trimAxisXLabel(index: number): string | string[] {
+        const label = this.chartData.labels[index] as string | string[];
+        const len = Math.round(this.barWidth * (this._options?.showCharsAmountXLabels / 100));
+        const isArray = Array.isArray(label);
+        let labelText = isArray ? label[0] : label;
+        if (labelText.length > len) {
+            labelText = labelText.substring(0, len) + '...';
+            return isArray ? [labelText, label[1]] : labelText;
+        }
+        return label;
     }
 
     private setPieChartOptions(options) {
@@ -496,6 +648,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     private filterTooltip(context): boolean {
         return !context.dataset.borderDash;
     }
+
     private getTooltipLabel(context) {
         const label = context.dataset.label ?? context.label ?? '';
         const val = context.parsed.y ?? context?.formattedValue?.replace(/,/g, '');
@@ -503,11 +656,36 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
 
         return ` ${label}: ${!!format ? this.getFormatted(val, format) : val}`;
     }
+
     private calculateTotals(tooltipItem: any[]) {
         const format = this.yAxesFormat;
         const total = tooltipItem.reduce((acc, val) => acc + val.raw, 0);
         return `Total: ${!!format ? this.getFormatted(total, format) : total}`;
     }
+
+    private getBeforeTitle(data): HTMLElement {
+        const legend = this.legends.find(legend => {
+            return Array.isArray(legend.displayName)
+                ? legend.displayName.join(',') === data[0].label
+                : legend.displayName === data[0].label;
+        });
+        if (!!legend?.imageUrl) {
+            const appImage = document.createElement('img');
+            appImage.style.width = '20px';
+            appImage.style.height = '20px';
+            appImage.style.borderRadius = '4px';
+            appImage.src = legend?.imageUrl;
+            return appImage;
+        }
+        return null;
+    }
+
+    private getTooltipDateTitle(data): string {
+        const label = data[0].label;
+        const value = isDateString(label) ? this.datePipe.transform(label, 'MMM d, YYYY') : label;
+        return value;
+    }
+
     // endregion
 
     private renderChart(ctx: HTMLCanvasElement) {
@@ -558,7 +736,11 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             const maxVal = Math.ceil((max / roundTo) * 10) * (roundTo / 10);
             stepSize = parseFloat(((maxVal - min) / tickCount).toFixed(2));
             max = stepSize * tickCount;
-            formatCallbackObj = {callback: value => this.getFormatted(value, 'shortString')};
+            formatCallbackObj = {
+                callback: (value: number) => {
+                    return value === 0 ? value : this.getFormatted(value, 'shortString');
+                }
+            };
         }
 
         yAxe.ticks = {
@@ -572,10 +754,11 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
         };
     }
 
-    protected getFormatted(value, format?: string): string {
-        let retVal = value;
+    protected getFormatted(value: number, format?: string): string {
+        let retVal: string = value.toString();
         if (!isNullOrUndefined(format)) {
             const formatter = format.split(':');
+            value = isNumber(value) ? value : Number(value);
             switch (formatter[0]) {
                 case 'currency':
                     retVal = this.currencyPipe.transform(value, 'USD', true);
@@ -595,7 +778,7 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
                     retVal = this.decimalPipe.transform(value, formatter[1]);
                     break;
                 case 'shortString':
-                    retVal = !!value
+                    retVal = isNumber(value)
                         ? this.numberToStringPipe.transform(value, {
                               noSeparateBySpace: true,
                               precision: this.componentVersion === 4 ? 3 : undefined
