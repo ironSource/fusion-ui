@@ -150,8 +150,8 @@ export const iconsADUnitData = [
         path: 'v4/ad-unit/offerwall.svg'
     },
     {
-        name: 'reworded-video',
-        path: 'v4/ad-unit/reworded-video.svg'
+        name: 'rewarded',
+        path: 'v4/ad-unit/rewarded.svg'
     }
 ];
 
