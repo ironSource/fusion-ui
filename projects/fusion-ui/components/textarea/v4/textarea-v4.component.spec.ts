@@ -3,6 +3,7 @@ import {TextareaV4Component} from './textarea-v4.component';
 import {By} from '@angular/platform-browser';
 import {DebugElement, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {TabV4Component} from "@ironsource/fusion-ui/components/tabs/v4/tab/tab-v4.component";
 
 describe('TextareaComponent', () => {
     let component: TextareaV4Component;
@@ -13,12 +14,11 @@ describe('TextareaComponent', () => {
     let helperEl: DebugElement;
     let el: HTMLElement;
 
-    beforeEach(() => {
-        TestBed.configureTestingModule({
-            imports: [FormsModule],
-            schemas: [CUSTOM_ELEMENTS_SCHEMA],
-            declarations: [TextareaV4Component]
-        });
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [ TextareaV4Component ]
+        })
+            .compileComponents();
 
         fixture = TestBed.overrideComponent(TextareaV4Component, {
             set: {changeDetection: ChangeDetectionStrategy.Default}

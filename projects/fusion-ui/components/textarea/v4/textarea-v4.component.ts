@@ -1,10 +1,14 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
+import {CommonModule} from '@angular/common';
 
 @Component({
     selector: 'fusion-textarea',
     templateUrl: './textarea-v4.component.html',
     styleUrls: ['./textarea-v4.component.scss'],
+    host: {class: 'fusion-v4'},
+    standalone: true,
+    imports: [CommonModule, ReactiveFormsModule, FormsModule],
     changeDetection: ChangeDetectionStrategy.Default,
     providers: [
         {

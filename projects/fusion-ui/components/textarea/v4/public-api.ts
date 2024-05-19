@@ -1,2 +1,1 @@
-export * from './textarea.module';
-export * from './textarea-v4.component';
+export {TextareaV4Component as TextareaComponent} from './textarea-v4.component';

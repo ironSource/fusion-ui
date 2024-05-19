@@ -4,7 +4,7 @@ import {dedent} from 'ts-dedent';
 import {CommonModule} from '@angular/common';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {InputComponent} from '@ironsource/fusion-ui/components/input';
-import {TextareaV4Component} from '@ironsource/fusion-ui/components/textarea/v4/textarea-v4.component';
+import {TextareaComponent} from '@ironsource/fusion-ui/components/textarea/v4';
 
 const formControlNoValue = new FormControl();
 
@@ -12,9 +12,9 @@ const formControlWithValue = new FormControl(
     'Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.'
 );
 
-const meta: Meta<TextareaV4Component> = {
+const meta: Meta<TextareaComponent> = {
     title: 'V4/Components/Inputs/Textarea',
-    component: TextareaV4Component,
+    component: TextareaComponent,
     decorators: [
         moduleMetadata({
             declarations: [],
@@ -124,7 +124,7 @@ export const Resizable = {
     }
 };
 
-export const Error = {
+/*export const Error = {
     render: InputTemplate,
     args: {
         formControl: formControlWithValue,
@@ -138,4 +138,4 @@ export const Helper = {
         formControl: formControlWithValue,
         helperText: 'Helper text'
     }
-};
+};*/
