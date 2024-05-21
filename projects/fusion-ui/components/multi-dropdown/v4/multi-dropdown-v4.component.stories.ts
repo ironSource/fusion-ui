@@ -231,6 +231,7 @@ const templateOneDropdown = `
             [search]="search"
             [placeholder]="placeholder"
             [options]="options"
+            [loading]="loading"
             [formControl]="formControl"
             [testId]="testId"
         ></fusion-multi-dropdown>
@@ -267,7 +268,7 @@ export default {
     parameters: {
         docs: {
             description: {
-                component: dedent`***DropdownComponent***.`
+                component: dedent`Dropdown present a list of options from which a user can select one or several..`
             }
         },
         options: {
@@ -281,6 +282,7 @@ export default {
         search: false,
         size: 'medium' as DropdownTriggerSize,
         options: longOptionsList,
+        loading: false,
         optionsFood: foodOptionsList,
         formControl: formControl,
         testId: 'dropdownTestId',
@@ -372,7 +374,7 @@ export const WithCaption: Story = {
     })
 };
 
-export const WithCategories: Story = {
+export const TreeView2Levels: Story = {
     render: args => ({
         props: {
             ...args,
@@ -384,12 +386,23 @@ export const WithCategories: Story = {
     })
 };
 
-export const WithHierarchy: Story = {
+export const TreeView3Levels: Story = {
     render: args => ({
         props: {
             ...args,
             search: true,
             options: hierarchyOptionsList
+        },
+        template: templateOneDropdown
+    })
+};
+
+export const WithLoading: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            options: [],
+            loading: true
         },
         template: templateOneDropdown
     })

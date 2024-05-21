@@ -73,7 +73,12 @@
                                   [ngTemplateOutletContext]="{option: option}"></ng-container>
                 </li>
                 <!--loader holder-->
-                <!--<li [fusionDropdownLoader]="(autoComplete || search) && loading"></li>-->
+                <li *ngIf="(autoComplete && search) || loading">
+                    <div class="fu-loader-holder">
+                        <fusion-loader></fusion-loader>
+                        <div>Loading...</div>
+                    </div>
+                </li>
                 <!--no-result holder-->
                 <li class="no-results" *ngIf="!filteredOptions?.length && !loading && searchValue?.value">No results
                     found
@@ -185,7 +190,6 @@
         </div>
     </div>
 </ng-template>
-
 
 <ng-template #groupedParent let-option="option">
     <div
