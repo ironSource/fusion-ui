@@ -70,6 +70,7 @@ export const StackWithOther: Story = {
             data: structuredClone(CHART_BAR_GROUPED_DATA_OTHER_MOCK),
             type: ChartType.StackedBar,
             labelOther: true,
+            labelsClickable: true,
             options: {
                 showCharsAmountXLabels: 12,
                 scales: {
@@ -84,7 +85,7 @@ export const StackWithOther: Story = {
             }
         },
         template: `
-            <fusion-chart-wrapper [data]="data" [type]="type" [options]="options" [labelOther]="labelOther"></fusion-chart-wrapper>
+            <fusion-chart-wrapper [data]="data" [type]="type" [options]="options" [labelOther]="labelOther" [labelsClickable]="labelsClickable"></fusion-chart-wrapper>
         `
     })
 };
