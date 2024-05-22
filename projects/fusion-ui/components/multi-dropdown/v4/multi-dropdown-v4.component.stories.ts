@@ -76,12 +76,12 @@ const optionsFoodCategories: DropdownOption[] = [
                 displayText: 'Noodles'
             },
             {
-                id: 'lbl-1',
-                displayText: 'Label'
+                id: 'StuffedBellPeppers',
+                displayText: 'Stuffed Bell Peppers'
             },
             {
-                id: 'lbl-2',
-                displayText: 'Label'
+                id: 'EggplantParmesan',
+                displayText: 'Eggplant Parmesan'
             }
         ]
     },
@@ -92,23 +92,23 @@ const optionsFoodCategories: DropdownOption[] = [
         childOptions: [
             {
                 id: 'lbl-0',
-                displayText: 'Mushrooms Hamburger'
+                displayText: 'Tiramisu'
             },
             {
                 id: 'lbl-1',
-                displayText: 'Label'
+                displayText: 'Crème Brûlée'
             },
             {
                 id: 'lbl-2',
-                displayText: 'Label'
+                displayText: 'Cheesecake'
             },
             {
                 id: 'lbl-3',
-                displayText: 'Label'
+                displayText: 'Baklava'
             },
             {
                 id: 'lbl-4',
-                displayText: 'Label'
+                displayText: 'Chocolate Lava Cake'
             }
         ]
     }
@@ -129,11 +129,11 @@ const hierarchyOptionsList: DropdownOption[] = [
             },
             {
                 id: 'lbl-1',
-                displayText: 'Label'
+                displayText: 'Clownfish'
             },
             {
                 id: 'lbl-2',
-                displayText: 'Label'
+                displayText: 'Blue Tang'
             }
         ]
     },
@@ -147,11 +147,11 @@ const hierarchyOptionsList: DropdownOption[] = [
             },
             {
                 id: 'lbl-11',
-                displayText: 'Label'
+                displayText: 'Mapo Tofu'
             },
             {
                 id: 'lbl-22',
-                displayText: 'Label'
+                displayText: 'Tofu Stir-Fry'
             }
         ]
     },
@@ -170,19 +170,19 @@ const hierarchyOptionsList: DropdownOption[] = [
             },
             {
                 id: 'lbl-123',
-                displayText: 'Label'
+                displayText: 'Tiramisu'
             },
             {
                 id: 'lbl-223',
-                displayText: 'Label'
+                displayText: 'Cheesecake'
             },
             {
                 id: 'lbl-323',
-                displayText: 'Label'
+                displayText: 'Crème Brûlée'
             },
             {
                 id: 'lbl-423',
-                displayText: 'Label'
+                displayText: 'Panna Cotta'
             }
         ]
     }

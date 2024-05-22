@@ -27,7 +27,7 @@
         ></fusion-dropdown-select>
     </ng-template>
 
-    <div class="options-dropdown">
+    <div class="options-dropdown" [class.dd-scroll]="hasScroll">
         <!--search input-->
         <div class="fu-search-holder" *ngIf="search">
             <fusion-dropdown-search class="fu-search-in-options"

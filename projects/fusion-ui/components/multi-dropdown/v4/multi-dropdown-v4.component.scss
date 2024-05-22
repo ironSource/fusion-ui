@@ -51,7 +51,7 @@ $optionsMinWidth: 225px;
 
           &.fu-subgroup-options {
             &:not(.fu-nested-subgroup){
-            margin-bottom: 12px;
+            margin-bottom: 8px;
           }
             .fu-indentation {
               margin-left: 24px;
@@ -201,6 +201,17 @@ $optionsMinWidth: 225px;
           max-height: calc(var(--fu-options-max-height, #{$optionsMaxHeight}) - (var(--spacing-100, #{$spacingV4-100}) * 2) - #{$searchHeight});
         }
       }
+
+      &.dd-scroll{
+        max-height: 400px !important;
+        .options-holder{
+          max-height: 343px;
+          &:has(.fu-search-holder) {
+            max-height: 343px;
+          }
+        }
+      }
+
 
       // region action buttons
       .fu-dd-actions{
