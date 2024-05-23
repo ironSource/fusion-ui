@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, forwardRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, forwardRef, Input} from '@angular/core';
 import {DropdownService} from '@ironsource/fusion-ui/components/dropdown/service';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {MultiDropdownBaseComponent} from '@ironsource/fusion-ui/components/multi-dropdown/common/base';
@@ -18,6 +18,7 @@ import {MultiDropdownBaseComponent} from '@ironsource/fusion-ui/components/multi
     ]
 })
 export class MultiDropdownComponent extends MultiDropdownBaseComponent {
+    @Input() showSelectedFirst = false;
     dropdownArrowIconName = {
         iconName: 'arrow-dropdown',
         iconVersion: 'v1'
