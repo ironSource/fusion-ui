@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [7.1.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v7.0.2...v7.1.0-rc.0) (2024-05-23)
+
+
+### Features
+
+* **feature/show_selected_first:** add to multi-dropdown the ability to put selected option first ([0107c00](https://github.com/ironSource/fusion-ui/commit/0107c00d316d8f4c33752369beac92349270c0dc))
+
 ### [7.0.2](https://github.com/ironSource/fusion-ui/compare/v7.0.1...v7.0.2) (2024-03-25)
 
 
