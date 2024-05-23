@@ -48,15 +48,9 @@ export default {
 
 type Story = StoryObj<SearchV4Component>;
 
-export const Default: Story = {};
+export const Basic: Story = {};
 
-export const MediumSize: Story = {
-    args: {
-        size: 'medium'
-    }
-};
-
-export const LargeSize: Story = {
+export const InDropdown: Story = {
     args: {
         size: 'large'
     }

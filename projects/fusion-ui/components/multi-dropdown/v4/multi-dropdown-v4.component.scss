@@ -48,10 +48,17 @@ $optionsMinWidth: 225px;
           flex-direction: column;
           gap: var(--spacing-50, #{$spacingV4-50});
           padding: 0 var(--spacing-50, #{$spacingV4-50}) 0 0;
-          &.fu-subgroup-options{
-            margin-bottom: 12px;
+
+          &.fu-subgroup-options {
+            &:not(.fu-nested-subgroup){
+            margin-bottom: 8px;
           }
-          &.fu-loading{
+            .fu-indentation {
+              margin-left: 24px;
+            }
+          }
+
+          &.fu-loading {
             gap: 0;
           }
           li {
@@ -67,7 +74,18 @@ $optionsMinWidth: 225px;
               fusion-flag{
                 min-width: 16px;
               }
-              .fu-option-image{
+
+              &.fu-parent-option-no-group {
+                .option-icon-arrow {
+                  color: var(--text-disabled, #{$color-v4-text-disabled});
+                  width: 16px;
+                  height: 16px;
+                  margin-left: auto;
+                  transition: transform 0.2s;
+                }
+              }
+
+              .fu-option-image {
                 width: 20px;
                 height: 20px;
                 border-radius: 4px;
@@ -76,6 +94,7 @@ $optionsMinWidth: 225px;
                 color: var(--action-active, #{$color-v4-action-active});
                 width: 16px;
                 height: 16px;
+                margin: 0 -4px;
                 &.phosphor-icon{
                   width: 20px;
                   height: 20px;
@@ -94,13 +113,35 @@ $optionsMinWidth: 225px;
                 pointer-events: none;
             }
 
-            &.fu-has-children{
-              .fu-parent{
+            &.fu-has-children {
+              height: 32px;
+
+              &.fu-open {
+                height: 100%;
+              }
+
+              .fu-parent {
                 padding: 6px 8px;
                 @extend %font-v4-heading-6;
                 color: var(--text-secondary, #{$color-v4-text-secondary});
                 &:first-of-type{
                   margin-top: 4px;
+                }
+              }
+
+              .fu-subgroup-options {
+                display: none;
+                height: 0;
+              }
+
+              &.fu-open {
+                .fu-subgroup-options {
+                  display: flex;
+                  height: 100%;
+                }
+
+                .option-icon-arrow {
+                  transform: rotate(90deg);
                 }
               }
             }
@@ -111,7 +152,7 @@ $optionsMinWidth: 225px;
                 color: var(--text-secondary, #{$color-v4-text-secondary});
                 padding: var(--spacing-75, #{$spacingV4-75}) var(--spacing-100, #{$spacingV4-100});
               }
-              margin-top: var(--spacing-150, #{$spacingV4-150});
+              margin-top: var(--spacing-100, #{$spacingV4-100});
               &.fu-group-first{
                 margin-top: var(--spacing-50, #{$spacingV4-50});
               }
@@ -161,6 +202,17 @@ $optionsMinWidth: 225px;
         }
       }
 
+      &.dd-scroll{
+        max-height: 400px !important;
+        .options-holder{
+          max-height: 343px;
+          &:has(.fu-search-holder) {
+            max-height: 343px;
+          }
+        }
+      }
+
+
       // region action buttons
       .fu-dd-actions{
         margin-top: 4px;
@@ -187,4 +239,37 @@ $optionsMinWidth: 225px;
       }
     }
   }
+
+  // region bottom line
+  .fu-input-underline {
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
+
+    .fu-input-helper {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      @extend %font-v4-caption;
+      color: var(--text-secondary, #{$color-v4-text-secondary});
+
+      .fu-helper-icon {
+        width: 16px;
+        height: 16px;
+      }
+
+      &.fu-variant-error {
+        color: var(--error-main, #{$color-v4-error-main});
+      }
+
+      &.fu-variant-success {
+        color: var(--success-main, #{$color-v4-success-main});
+      }
+
+      &.fu-variant-warning {
+        color: var(--warning-main, #{$color-v4-warning-main});
+      }
+    }
+  }
+  // endregion
 }

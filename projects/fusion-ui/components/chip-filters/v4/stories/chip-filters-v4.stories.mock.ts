@@ -1032,3 +1032,62 @@ export const MOCK_DYNAMIC_PRESELECT_FILTERS = [
         optionsTitleChip: 'Campaigns'
     }
 ];
+
+export const MOCK_CATEGORY_FILTERS: DropdownOption[] = [
+    {
+        id: 'casino',
+        displayText: 'Casino',
+        isGroup: true
+    },
+    {
+        id: 'casino2',
+        displayText: 'Casino',
+        childOptions: [
+            {
+                id: 'bingo',
+                displayText: 'Bingo'
+            },
+            {
+                id: 'blackjack',
+                displayText: 'Blackjack'
+            },
+            {
+                id: 'poker',
+                displayText: 'Poker'
+            }
+        ]
+    },
+    {
+        id: 'otherCasino',
+        displayText: 'Other Casino',
+        childOptions: [
+            {
+                id: 'roulette',
+                displayText: 'Roulette'
+            },
+            {
+                id: 'slots',
+                displayText: 'Slot Machine'
+            }
+        ]
+    },
+    {
+        id: 'midCore',
+        displayText: 'Mid-core',
+        isGroup: true
+    },
+    {
+        id: 'cardGames',
+        displayText: 'Card Games',
+        childOptions: [
+            {
+                id: 'yaniv',
+                displayText: 'Yaniv'
+            },
+            {
+                id: 'taki',
+                displayText: 'Taki'
+            }
+        ]
+    }
+];

@@ -12,6 +12,8 @@ import {DropdownOptionsListComponent} from '@ironsource/fusion-ui/components/dro
 import {DropdownTriggerSize} from './dropdown-v4.entities';
 import {LoaderComponent} from '@ironsource/fusion-ui/components/loader/v4';
 import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+import {InputVariant} from '@ironsource/fusion-ui/components/input/v4';
 
 @Component({
     selector: 'fusion-dropdown',
@@ -25,7 +27,8 @@ import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
         DropdownSearchComponent,
         DropdownOptionsListComponent,
         LoaderComponent,
-        GenericPipe
+        GenericPipe,
+        IconModule
     ],
     host: {class: 'fusion-v4'},
     templateUrl: './dropdown-v4.component.html',
@@ -44,4 +47,8 @@ import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 export class DropdownV4Component extends DropdownBaseComponent {
     @Input() size: DropdownTriggerSize = 'medium';
     @Input() triggerMode: 'button' | 'button-text' | 'default' = 'default';
+
+    @Input() helperText: string;
+    @Input() helperIcon: string;
+    @Input() helperVariant: InputVariant = 'default';
 }
