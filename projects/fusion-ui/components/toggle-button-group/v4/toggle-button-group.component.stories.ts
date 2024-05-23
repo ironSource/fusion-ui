@@ -16,7 +16,7 @@ const formControl = new FormControl({
 });
 
 export default {
-    title: 'V4/Components/Buttons/ToggleButton',
+    title: 'V4/Components/Buttons/ToggleButtonGroup',
     component: ToggleButtonGroupComponent,
     decorators: [
         moduleMetadata({
