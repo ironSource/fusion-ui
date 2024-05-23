@@ -114,15 +114,18 @@ export const Variants: Story = {
             optionsIcon: [
                 {
                     id: 1,
-                    icon: 'ph/chart-pie'
+                    icon: 'ph/chart-pie',
+                    tooltip: 'Pie'
                 },
                 {
                     id: 2,
-                    icon: 'ph/chart-line-up'
+                    icon: 'ph/chart-line-up',
+                    tooltip: 'Pie'
                 },
                 {
                     id: 3,
-                    icon: 'ph/chart-bar'
+                    icon: 'ph/chart-bar',
+                    tooltip: 'Pie'
                 }
             ] as ToggleButtonGroupOption[],
             optionsText: [
