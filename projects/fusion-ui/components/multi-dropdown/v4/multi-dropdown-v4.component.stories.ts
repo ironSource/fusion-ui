@@ -234,6 +234,9 @@ const templateOneDropdown = `
             [loading]="loading"
             [formControl]="formControl"
             [testId]="testId"
+            [helperText]="helperText"
+            [helperIcon]="helperIcon"
+            [helperVariant]="helperVariant"
         ></fusion-multi-dropdown>
     </div>
 </div>
@@ -403,6 +406,17 @@ export const WithLoading: Story = {
             ...args,
             options: [],
             loading: true
+        },
+        template: templateOneDropdown
+    })
+};
+
+export const HelperText: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            helperText: 'Helper text',
+            helperIcon: 'ph/fill/info'
         },
         template: templateOneDropdown
     })

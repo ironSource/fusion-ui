@@ -121,6 +121,13 @@
     </div>
 </div>
 
+<div *ngIf="helperText" class="fu-input-underline">
+    <div *ngIf="helperText" class="fu-input-helper fu-variant-{{helperVariant}}">
+        <fusion-icon *ngIf="helperIcon" class="fu-helper-icon" [name]="helperIcon"></fusion-icon>
+        {{ helperText }}
+    </div>
+</div>
+
 <!--INNER TEMPLATES-->
 <!--regular option-->
 <ng-template #regularOption let-option="option" let-indentation="indentation">
