@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DropdownOptionsListV4Component } from './dropdown-options-list-v4.component';
+import {TooltipComponent} from "@ironsource/fusion-ui/components/tooltip/v4";
 
 describe('DropdownOptionsListV4Component', () => {
   let component: DropdownOptionsListV4Component;
@@ -8,7 +9,7 @@ describe('DropdownOptionsListV4Component', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ DropdownOptionsListV4Component ]
+      imports: [ DropdownOptionsListV4Component, TooltipComponent ]
     })
     .compileComponents();
 
