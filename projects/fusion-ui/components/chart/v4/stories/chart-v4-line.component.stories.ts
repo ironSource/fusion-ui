@@ -75,7 +75,8 @@ export const Basic: Story = {
                     tooltip: {
                         position: 'average'
                     }
-                }
+                },
+                yAxeMaxAddPercent: 0.02
             }
         },
         template: `
@@ -123,7 +124,8 @@ export const Stack: Story = {
                     tooltip: {
                         position: 'average'
                     }
-                }
+                },
+                yAxeMaxAddPercent: 0.02
             }
         },
         template: `
@@ -172,7 +174,8 @@ export const HideLabel: Story = {
                     tooltip: {
                         position: 'average'
                     }
-                }
+                },
+                yAxeMaxAddPercent: 0.02
             }
         },
         template: `

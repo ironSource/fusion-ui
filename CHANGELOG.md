@@ -18,6 +18,14 @@ All notable changes to this project will be documented in this file. See [commit
 
 * multi select dropdown hierarchy support ([a6b0c43](https://github.com/ironSource/fusion-ui/commit/a6b0c43479679704c7f5ae4d970fcc7e7204b570))
 
+
+### [8.0.1-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.0.0...v8.0.1-rc.0) (2024-05-21)
+
+
+### Bug Fixes
+
+* **isct-331:** add series view toggle to bar, add option yAxeMaxAddPercent ([f2bbb4c](https://github.com/ironSource/fusion-ui/commit/f2bbb4c9fab427c8cddbb974ae26c663ca741943))
+
 ## [8.0.0](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.39...v8.0.0) (2024-04-25)
 
 
