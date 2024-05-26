@@ -6,16 +6,62 @@ import {environment} from 'stories/environments/environment';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {SearchV4Component} from './search-v4.component';
+import {DropdownComponent} from '@ironsource/fusion-ui/components/dropdown/v4';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
 
 const formControl = new FormControl();
+const formControlOptionsList = new FormControl();
+const foodOptionsList: DropdownOption[] = [
+    {
+        id: 'pizza',
+        displayText: 'Pizza'
+    },
+    {
+        id: 'hamburger',
+        displayText: 'Hamburger'
+    },
+    {
+        id: 'plant',
+        displayText: 'Vegan'
+    },
+    {
+        id: 'bowl-food',
+        displayText: 'Noodles'
+    },
+    {
+        id: 'coffee',
+        displayText: 'Coffee'
+    }
+];
+
+const templateDropdown = `
+<div style="display:flex; gap: 14px;">
+    <div style="width: 300px;">
+        <fusion-dropdown 
+           [size]="size"
+           [search]="true"
+           [searchPlaceholder]="'Search'"
+           [placeholder]="placeholder"
+           [options]="options"
+           [formControl]="formControl"
+         ></fusion-dropdown>
+    </div>
+</div>
+`;
 
 export default {
-    title: 'V4/Components/Search',
+    title: 'V4/Components/Inputs/Search',
     component: SearchV4Component,
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, ReactiveFormsModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule]
+            imports: [
+                CommonModule,
+                ReactiveFormsModule,
+                SvgModule.forRoot({assetsPath: environment.assetsPath}),
+                IconModule,
+                DropdownComponent
+            ]
         }),
         componentWrapperDecorator(story => `<div style="width: 300px;">${story}</div>`)
     ],
@@ -48,16 +94,17 @@ export default {
 
 type Story = StoryObj<SearchV4Component>;
 
-export const Default: Story = {};
+export const Basic: Story = {};
 
-export const MediumSize: Story = {
-    args: {
-        size: 'medium'
-    }
-};
-
-export const LargeSize: Story = {
-    args: {
-        size: 'large'
-    }
+export const InDropdown: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            placeholder: 'Select',
+            options: foodOptionsList,
+            formControl: formControlOptionsList
+        },
+        template: templateDropdown
+    }),
+    decorators: [componentWrapperDecorator(story => `<div style="height: 350px;">${story}</div>`)]
 };

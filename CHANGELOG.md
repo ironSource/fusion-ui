@@ -2,41 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
-### [8.0.1-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.0.0...v8.0.1-rc.0) (2024-05-21)
+## [8.1.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v8.1.0-rc.0...v8.1.0-rc.1) (2024-05-19)
+
+## [8.1.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.0.0...v8.1.0-rc.0) (2024-04-25)
 
 
-### Bug Fixes
+### Features
 
-* **isct-331:** add series view toggle to bar, add option yAxeMaxAddPercent ([f2bbb4c](https://github.com/ironSource/fusion-ui/commit/f2bbb4c9fab427c8cddbb974ae26c663ca741943))
+* textarea-v4.component wip ([6f7c063](https://github.com/ironSource/fusion-ui/commit/6f7c0632ef43bd91e77f04b617a2585d3f3c96de))
+
+## [8.0.0-rc.28](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.27...v8.0.0-rc.28) (2024-04-11)
+
+
+### Features
+
+* multi select dropdown hierarchy support ([a6b0c43](https://github.com/ironSource/fusion-ui/commit/a6b0c43479679704c7f5ae4d970fcc7e7204b570))
 
 ## [8.0.0](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.39...v8.0.0) (2024-04-25)
-
-## [8.0.0-rc.39](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.38...v8.0.0-rc.39) (2024-04-24)
-
-## [8.0.0-rc.38](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.37...v8.0.0-rc.38) (2024-04-24)
-
-## [8.0.0-rc.37](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.36...v8.0.0-rc.37) (2024-04-21)
-
-## [8.0.0-rc.36](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.35...v8.0.0-rc.36) (2024-04-21)
-
-## [8.0.0-rc.35](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.34...v8.0.0-rc.35) (2024-04-18)
-
-## [8.0.0-rc.34](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.33...v8.0.0-rc.34) (2024-04-18)
-
-## [8.0.0-rc.33](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.32...v8.0.0-rc.33) (2024-04-16)
-
-## [8.0.0-rc.32](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.31...v8.0.0-rc.32) (2024-04-15)
-
-## [8.0.0-rc.31](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.30...v8.0.0-rc.31) (2024-04-15)
-
-## [8.0.0-rc.30](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.29...v8.0.0-rc.30) (2024-04-15)
-
-## [8.0.0-rc.29](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.27...v8.0.0-rc.29) (2024-04-11)
 
 
 ### Bug Fixes
 
 * fix line chart v4 fixed point cut on left ([081a2e1](https://github.com/ironSource/fusion-ui/commit/081a2e18e9a53570f826d8b989e2bf716ca3bfa0))
+
+## [8.0.0-rc.28](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.27...v8.0.0-rc.28) (2024-04-11)
+
+
+### Features
+
+* multi select dropdown hierarchy support ([a6b0c43](https://github.com/ironSource/fusion-ui/commit/a6b0c43479679704c7f5ae4d970fcc7e7204b570))
 
 ## [8.0.0-rc.27](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.26...v8.0.0-rc.27) (2024-04-08)
 
