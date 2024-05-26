@@ -6,11 +6,12 @@ import {DropdownOptionComponent} from '@ironsource/fusion-ui/components/dropdown
 import {DropdownService} from '@ironsource/fusion-ui/components/dropdown';
 import {SearchComponent} from '@ironsource/fusion-ui/components/search/v4';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
+import {TooltipComponent} from '@ironsource/fusion-ui/components/tooltip/v4';
 
 @Component({
     selector: 'fusion-dropdown-options-list',
     standalone: true,
-    imports: [CommonModule, ReactiveFormsModule, DropdownOptionComponent, SearchComponent],
+    imports: [CommonModule, ReactiveFormsModule, DropdownOptionComponent, SearchComponent, TooltipComponent],
     providers: [DropdownService],
     templateUrl: './dropdown-options-list-v4.component.html',
     styleUrls: ['./dropdown-options-list-v4.component.scss'],

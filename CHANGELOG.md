@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [8.1.0-rc.3](https://github.com/ironSource/fusion-ui/compare/v8.1.0-rc.2...v8.1.0-rc.3) (2024-05-26)
+
+## [8.1.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v8.0.1-rc.0...v8.1.0-rc.2) (2024-05-23)
+
+
+### Bug Fixes
+
+* **isct-331:** add loading state to the multi dropdown v4, update its story page ([c972c75](https://github.com/ironSource/fusion-ui/commit/c972c7523ef1ab6627d8f5e814d42032a157c120))
+* **isct-331:** dropdown fixes ([bc3281e](https://github.com/ironSource/fusion-ui/commit/bc3281e3a0b060b7bd834ce784556a9c23ccb0c2))
+* **isct-331:** multiselect option 3 lever fixed open/close icon ([6a4bb2c](https://github.com/ironSource/fusion-ui/commit/6a4bb2cb28b88bbf957bea20fd32f70b170e42ed))
+* **isct-331:** multiselect option group change top margin ([78aea3d](https://github.com/ironSource/fusion-ui/commit/78aea3d4cc939e95862aeba1c24df2f8be8f13bc))
+* **isct-331:** multiselect option with icon css fix ([b04e47b](https://github.com/ironSource/fusion-ui/commit/b04e47bde8f518c87f4ccd909ad50d5eeafa21fb))
+
 ## [8.1.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v8.1.0-rc.0...v8.1.0-rc.1) (2024-05-19)
 
 ## [8.1.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.0.0...v8.1.0-rc.0) (2024-04-25)
@@ -17,6 +30,30 @@ All notable changes to this project will be documented in this file. See [commit
 ### Features
 
 * multi select dropdown hierarchy support ([a6b0c43](https://github.com/ironSource/fusion-ui/commit/a6b0c43479679704c7f5ae4d970fcc7e7204b570))
+
+## [8.1.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v8.1.0-rc.0...v8.1.0-rc.1) (2024-05-19)
+
+## [8.1.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.0.0...v8.1.0-rc.0) (2024-04-25)
+
+
+### Features
+
+* textarea-v4.component wip ([6f7c063](https://github.com/ironSource/fusion-ui/commit/6f7c0632ef43bd91e77f04b617a2585d3f3c96de))
+
+## [8.0.0-rc.28](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.27...v8.0.0-rc.28) (2024-04-11)
+
+
+### Features
+
+* multi select dropdown hierarchy support ([a6b0c43](https://github.com/ironSource/fusion-ui/commit/a6b0c43479679704c7f5ae4d970fcc7e7204b570))
+
+
+### [8.0.1-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.0.0...v8.0.1-rc.0) (2024-05-21)
+
+
+### Bug Fixes
+
+* **isct-331:** add series view toggle to bar, add option yAxeMaxAddPercent ([f2bbb4c](https://github.com/ironSource/fusion-ui/commit/f2bbb4c9fab427c8cddbb974ae26c663ca741943))
 
 ## [8.0.0](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.39...v8.0.0) (2024-04-25)
 

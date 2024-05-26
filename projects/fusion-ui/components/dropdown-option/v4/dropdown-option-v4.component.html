@@ -6,7 +6,7 @@
                      [ngClass]="{'phosphor-icon': option?.icon?.startsWith('ph/')}"></fusion-icon>
         <div [id]="option?.id" class="fu-text-content truncate"
              [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.BUTTON_CONTENT"
-             fusionTooltip="{{ optionToStringFunc | generic: option:mappingOptions:settings }}">
+             fusionTooltip="{{ !!option?.tooltipCustom ? null : optionToStringFunc | generic: option:mappingOptions:settings }}">
             <span innerHTML="{{ optionToStringFunc | generic: option:mappingOptions:settings }}"></span>
             <div *ngIf="option?.subText" class="sub-text-container">
                 <label>{{ option?.subText?.text || option?.subText }}</label>

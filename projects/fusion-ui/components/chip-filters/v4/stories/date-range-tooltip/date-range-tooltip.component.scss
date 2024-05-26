@@ -1,0 +1,35 @@
+@import '../../../../../src/style/scss/v4/colors';
+@import '../../../../../src/style/scss/v4/fonts';
+
+:host{
+  width: 100%;
+  color: var(--text-primary, #{$color-v4-text-primary});
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  @extend %font-v4-body-2;
+  .date-tooltip-title{
+    @extend %font-v4-subtitle-2;
+    margin-bottom: 4px;
+  }
+  .date-tooltip-dates{
+    color: var(--text-secondary, #{$color-v4-text-secondary});
+    @extend %font-v4-body-2;
+  }
+  .date-tooltip-vs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='2' fill='none' viewBox='0 0 34 2'%3E%3Cpath fill='%23D9D9D9' d='M0 .5h34v1H0z'/%3E%3C/svg%3E");
+    background-position: center;
+    background-repeat:repeat-x;
+    div{
+      height: 16px;
+      width: 26px;
+      text-align: center;
+      background-color: var(--background-default, #{$color-v4-background-default});
+      @extend %font-v4-caption;
+      color: var(--text-secondary, #{$color-v4-text-secondary});
+    }
+  }
+}
