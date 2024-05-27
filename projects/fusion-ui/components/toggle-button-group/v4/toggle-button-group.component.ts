@@ -5,6 +5,7 @@ import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
+import {TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
 
 @Component({
     selector: 'fusion-toggle-button-group',
@@ -31,6 +32,10 @@ export class ToggleButtonGroupComponent {
 
     /** @internal */
     selected: ToggleButtonGroupOption;
+
+    tooltipConfiguration = {
+        position: TooltipPosition.TopFixed
+    };
 
     constructor(private uniqueService: UniqueIdService) {}
 
