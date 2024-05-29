@@ -2,6 +2,7 @@
     <!--navigation-->
     <div class="fu-left-navigation">
         <fusion-navigation-menu #navigationMenu
+            [primaryMenuItemMode]="primaryMenuItemMode"
             [layoutUser]="layoutUser"
             [menuItems]="navigationMenu$ | async"
             (menuItemClicked)="menuItemClick.emit($event)"

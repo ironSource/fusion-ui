@@ -23,4 +23,5 @@ export interface MenuItem {
     isGroupName?: boolean;
     order?: number;
     executeBeforeNavigation?: () => void;
+    default?: boolean; // if primary menu has mode 'clickToDefaultSecondaryItem' use this flag to set default item to navigate
 }

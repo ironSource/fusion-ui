@@ -1,6 +1,8 @@
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 
+export type PrimaryMenuMode = 'clickToDefaultSecondaryItem' | 'clickToOpenSecondaryMenu';
+
 export enum NavigationBarItemType {
     Home = 'home',
     Main = 'main',
