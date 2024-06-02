@@ -38,7 +38,7 @@ export const UNITY_MENU_ITEMS: MenuItem[] = [
     {
         icon: 'ph/plus',
         name: 'Add app',
-        route: '/docs/components/v2/alert'
+        route: '/iframe.html'
     },
     {
         name: 'Mediation',

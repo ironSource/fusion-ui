@@ -7,7 +7,7 @@
     <!--region main items-->
     <ng-container *ngIf="(networkItems$ | async) as networkItems">
         <div class="fu-navigation-bar-item fu-network" *ngFor="let networkItem of networkItems" [fusionTooltip]="networkItem.menuTooltip" >
-            <ng-container [ngTemplateOutlet]="navigationButton" [ngTemplateOutletContext]="{item: networkItem, selectedItem: (networkItem === (selectedBarItem$ |async))}"></ng-container>
+            <ng-container [ngTemplateOutlet]="navigationButton" [ngTemplateOutletContext]="{item: networkItem, selectedItem: (networkItem === (selectedBarItem$ |async)), hoverMode: menuHoverMode}"></ng-container>
             <div *ngIf="networkItem.menuTitle" class="fu-navigation-bar-network-name">{{networkItem.menuTitle}}</div>
         </div>
     </ng-container>
@@ -51,13 +51,14 @@
     <!--endregion bottom items-->
 </div>
 
-<ng-template #navigationButton let-item="item" let-selectedItem="selectedItem" let-popMenu="popMenu" let-index=index>
+<ng-template #navigationButton let-item="item" let-selectedItem="selectedItem" let-popMenu="popMenu" let-index=index let-hoverMode="hoverMode">
     <div class="fu-navigation-bar-button" id="fu-bottom-nav-item-btn_{{index}}"
          [class.fu-selected]="selectedItem"
          [class.fu-with-pop-menu]="popMenu"
          [class.fu-selected]="popMenu && (showPopMenu$ | async)"
          [class.fu-triangle]="menuOpened && (item === menuOpenForPrimaryMenuItem)"
          (click)="networkItemClicked(item)"
+         (mouseenter)="onItemHover(item, hoverMode)"
     >
         <fusion-svg  *ngIf="item.menuIconPath" class="fu-navigation-bar-button-icon-wrapper" [path]="item.menuIconPath"></fusion-svg>
         <fusion-icon *ngIf="item.menuIcon" class="fu-navigation-bar-button-icon" [name]="item.menuIcon"></fusion-icon>
