@@ -32,6 +32,7 @@ export class NavigationPrimaryMenuComponent {
     @Input() layoutUser: LayoutUser;
     @Input() menuOpened = false;
     @Input() menuOpenForPrimaryMenuItem: PrimaryMenuItem;
+    @Input() menuHoverMode = false;
 
     @Output() menuItemClick = new EventEmitter<MenuItem>();
 
@@ -73,6 +74,12 @@ export class NavigationPrimaryMenuComponent {
     defaultCssTheme: {[key: string]: string};
 
     constructor(private elementRef: ElementRef) {}
+
+    onItemHover(item: PrimaryMenuItem, hoverMode: boolean) {
+        if (hoverMode) {
+            this.networkItemClicked(item);
+        }
+    }
 
     networkItemClicked(item: PrimaryMenuItem) {
         switch (item?.type) {

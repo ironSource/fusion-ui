@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnIn
 import {CommonModule} from '@angular/common';
 import {BehaviorSubject, Subject} from 'rxjs';
 import {WindowService} from '@ironsource/fusion-ui/services/window';
-import {NavigationMenuComponent, PrimaryMenuItem} from '@ironsource/fusion-ui/components/navigation-menu/v4';
+import {NavigationMenuComponent, PrimaryMenuItem, PrimaryMenuMode} from '@ironsource/fusion-ui/components/navigation-menu/v4';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
 import {HeaderContent, LayoutConfiguration, TeleportWrapperElement} from './layout.entities';
 import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
@@ -26,6 +26,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
                 this.toggleMenu();
             }
         }
+        this.primaryMenuItemMode = value?.primaryMenuItemMode ?? 'clickToOpenSecondaryMenu';
         this.layoutUser = {...value?.layoutUser} ?? null;
     }
 
@@ -55,6 +56,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
 
     @ViewChild('navigationMenu', {static: true}) navigationMenu: NavigationMenuComponent;
 
+    /** @internal */
+    primaryMenuItemMode: PrimaryMenuMode;
     /** @internal */
     navigationMenu$ = new BehaviorSubject<PrimaryMenuItem[]>([]);
     /** @internal */
