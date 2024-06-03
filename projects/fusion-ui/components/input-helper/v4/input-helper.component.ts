@@ -1,8 +1,9 @@
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {FieldHelpTextTestIdModifiers, GenericPipe, TestIdsService} from '@ironsource/fusion-ui';
 import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {CommonModule} from '@angular/common';
-import {InputVariant} from '@ironsource/fusion-ui/components/input/v4';
+import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
+import {FieldHelpTextTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-input-helper',
@@ -14,7 +15,7 @@ import {InputVariant} from '@ironsource/fusion-ui/components/input/v4';
 })
 export class InputHelperComponent {
     @Input() text: string;
-    @Input() state: InputVariant = 'default';
+    @Input() state: 'default' | 'error' | 'success' | 'warning' = 'default';
     @Input() iconName: IconData;
 
     @Input() testId: string;
