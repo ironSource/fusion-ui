@@ -24,11 +24,12 @@ import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
 import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 import {FieldHelpTextTestIdModifiers, InputTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
+import {InputHelperComponent} from '@ironsource/fusion-ui/components/input-helper/v4';
 
 @Component({
     selector: 'fusion-input',
     standalone: true,
-    imports: [CommonModule, ReactiveFormsModule, IconModule, TooltipDirective, GenericPipe],
+    imports: [CommonModule, ReactiveFormsModule, IconModule, TooltipDirective, GenericPipe, InputHelperComponent],
     host: {class: 'fusion-v4'},
     templateUrl: './input-v4.component.html',
     styleUrls: ['./input-v4.component.scss'],
