@@ -78,10 +78,7 @@
 </div>
 
 <div *ngIf="helperText" class="fu-input-underline">
-    <div *ngIf="helperText" class="fu-input-helper fu-variant-{{helperVariant}}">
-        <fusion-icon *ngIf="helperIcon" class="fu-helper-icon" [name]="helperIcon"></fusion-icon>
-        {{ helperText }}
-    </div>
+    <fusion-input-helper [text]="helperText" [state]="helperVariant" [iconName]="helperIcon" [testId]="testId"></fusion-input-helper>
 </div>
 
 <ng-template #chipContent>

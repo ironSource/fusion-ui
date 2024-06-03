@@ -14,6 +14,7 @@ import {LoaderComponent} from '@ironsource/fusion-ui/components/loader/v4';
 import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {InputVariant} from '@ironsource/fusion-ui/components/input/v4';
+import {InputHelperComponent} from '@ironsource/fusion-ui/components/input-helper/v4';
 
 @Component({
     selector: 'fusion-dropdown',
@@ -28,7 +29,8 @@ import {InputVariant} from '@ironsource/fusion-ui/components/input/v4';
         DropdownOptionsListComponent,
         LoaderComponent,
         GenericPipe,
-        IconModule
+        IconModule,
+        InputHelperComponent
     ],
     host: {class: 'fusion-v4'},
     templateUrl: './dropdown-v4.component.html',
