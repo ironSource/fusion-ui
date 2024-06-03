@@ -17,6 +17,7 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 import {LoaderComponent} from '@ironsource/fusion-ui/components/loader/v4';
 import {InputVariant} from '@ironsource/fusion-ui/components/input/v4';
+import {InputHelperComponent} from '@ironsource/fusion-ui/components/input-helper/v4';
 
 @Component({
     selector: 'fusion-multi-dropdown',
@@ -33,7 +34,8 @@ import {InputVariant} from '@ironsource/fusion-ui/components/input/v4';
         ButtonComponent,
         DropdownSearchComponent,
         LoaderComponent,
-        GenericPipe
+        GenericPipe,
+        InputHelperComponent
     ],
     host: {class: 'fusion-v4'},
     templateUrl: './multi-dropdown-v4.component.html',
