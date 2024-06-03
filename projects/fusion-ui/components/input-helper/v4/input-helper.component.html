@@ -1,0 +1,7 @@
+<div class="fu-input-helper fu-variant-{{state}}"
+     [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:fieldHelpTextTestIdModifiers.TEXT">
+    @if(iconName) {
+        <fusion-icon class="fu-helper-icon" [name]="iconName" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:fieldHelpTextTestIdModifiers.ICON"></fusion-icon>
+    }
+    {{ text }}
+</div>
