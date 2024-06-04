@@ -1,6 +1,9 @@
-import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
+import {Component, Type} from '@angular/core';
 import {FormControl} from '@angular/forms';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
 import {ChipFilterComponentConfigurations} from '@ironsource/fusion-ui/components/chip-filter/common/base';
+import {TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
+import {DateRangeTooltipComponent} from './date-range-tooltip/date-range-tooltip.component';
 
 export const STATUS_OPTIONS: DropdownOption[] = [
     {id: 'active', displayText: 'Active'},
@@ -41,10 +44,100 @@ export const CATEGORY_OPTIONS = [
     {id: '5', displayText: 'Beauty'}
 ];
 
-export const DATERANGE_OPTIONS = [
-    {id: '1', displayText: 'Last day vs. previous day'},
-    {id: '2', displayText: 'Last 7 days vs. previous 7 days'},
-    {id: '3', displayText: 'Last 30 days vs. previous 30 days'}
+const commonTooltipConfig = {
+    suppressPositionArrow: true,
+    position: TooltipPosition.Right,
+    positionOffset: 10
+};
+export const DATERANGE_OPTIONS: DropdownOption[] = [
+    {
+        id: 'lastDay',
+        displayText: 'Last day vs. same day last week',
+        tooltipCustom: {
+            content: {
+                component: DateRangeTooltipComponent as Type<Component>,
+                dataInputs: {
+                    datePeriods: {
+                        period_1: {
+                            start: 'May 22, 2024',
+                            end: 'May 22, 2024'
+                        },
+                        period_2: {
+                            start: 'May 15, 2024',
+                            end: 'May 15, 2024'
+                        }
+                    }
+                }
+            },
+            configuration: commonTooltipConfig
+        }
+    },
+    {
+        id: 'last7Days',
+        displayText: 'Last 7 days vs. previous 7 days',
+        tooltipCustom: {
+            content: {
+                component: DateRangeTooltipComponent as Type<Component>,
+                dataInputs: {
+                    datePeriods: {
+                        period_1: {
+                            start: 'May 16, 2024',
+                            end: 'May 22, 2024'
+                        },
+                        period_2: {
+                            start: 'May 9, 2024',
+                            end: 'May 15, 2024'
+                        }
+                    }
+                }
+            },
+            configuration: commonTooltipConfig
+        }
+    },
+    {
+        id: 'last14Days',
+        displayText: 'Last 14 days vs. previous 14 days',
+        tooltipCustom: {
+            content: {
+                component: DateRangeTooltipComponent as Type<Component>,
+                dataInputs: {
+                    datePeriods: {
+                        period_1: {
+                            start: 'May 9, 2024',
+                            end: 'May 22, 2024'
+                        },
+                        period_2: {
+                            start: 'Apr 25, 2024',
+                            end: 'May 8, 2024'
+                        }
+                    }
+                }
+            },
+            configuration: commonTooltipConfig
+        }
+    },
+    {
+        id: 'last30Days',
+        displayText: 'Last 30 days vs. previous 30 days',
+        tooltipCustom: {
+            content: {
+                component: DateRangeTooltipComponent as Type<Component>,
+                dataInputs: {
+                    datePeriods: {
+                        period_1: {
+                            start: 'Apr 23, 2024',
+                            end: 'May 22, 2024'
+                        },
+                        period_2: {
+                            start: 'Mar 24, 2024',
+                            end: 'Apr 22, 2024'
+                        }
+                    }
+                }
+            },
+            configuration: commonTooltipConfig
+        }
+    }
 ];
 
 export const MOCK_USERS: DropdownOption[] = [

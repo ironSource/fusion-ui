@@ -136,7 +136,7 @@ const datePickerTemplate = `
 <fusion-chip-filters [testId]="testId">
         <fusion-chip-filter-button [configuration]="configChip1">
             <div class="filter-element">
-                 <fusion-dropdown
+                 <fusion-dropdown style="--dropdown-overlay-min-width: 250px;"
                     [placeholderPrefix]="placeholderPrefixChip1"
                     [placeholder]="placeholderChip1"
                     [formControl]="fcChip1"

@@ -49,20 +49,17 @@ export default {
             {
                 id: 1,
                 label: 'Pie',
-                icon: 'ph/chart-pie',
-                tooltip: 'Pie'
+                icon: 'ph/chart-pie'
             },
             {
                 id: 2,
                 label: 'Line',
-                icon: 'ph/chart-line-up',
-                tooltip: 'Line'
+                icon: 'ph/chart-line-up'
             },
             {
                 id: 3,
                 label: 'Bar',
-                icon: 'ph/chart-bar',
-                tooltip: 'Bar'
+                icon: 'ph/chart-bar'
             }
         ] as ToggleButtonGroupOption[],
         size: 'medium',
@@ -120,12 +117,16 @@ export const Variants: Story = {
                 {
                     id: 2,
                     icon: 'ph/chart-line-up',
-                    tooltip: 'Pie'
+                    tooltip: 'Type Line'
                 },
                 {
                     id: 3,
                     icon: 'ph/chart-bar',
-                    tooltip: 'Pie'
+                    tooltip: 'Type Bar',
+                    tooltipConfiguration: {
+                        positionOffset: -10,
+                        position: 4
+                    }
                 }
             ] as ToggleButtonGroupOption[],
             optionsText: [

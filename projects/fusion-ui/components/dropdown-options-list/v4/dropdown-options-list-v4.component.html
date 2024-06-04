@@ -1,6 +1,21 @@
 <ng-container *ngFor="let option of displayedOptions; trackBy: trackByFunc">
     <li class="option" *ngIf="!option.isGroup; else groupOption" [class.fu-selected]="isSelected(option)">
-        <fusion-dropdown-option  [option]="option" (click)="onChangeSelected(option, $event)"></fusion-dropdown-option>
+        <!--With custom-component tooltip-->
+        <fusion-tooltip *ngIf="!!option.tooltipCustom" [tooltipConfiguration]="option?.tooltipCustom?.configuration" class="fusion-v4">
+            <fusion-dropdown-option class="fusionTooltipTrigger" [option]="option" (click)="onChangeSelected(option, $event)"></fusion-dropdown-option>
+            <div class="fusionTooltipContent">
+                <ng-container
+                        [ngComponentOutlet]="option?.tooltipCustom?.content?.component"
+                        [ngComponentOutletInputs]="option?.tooltipCustom?.content.dataInputs"
+                ></ng-container>
+            </div>
+        </fusion-tooltip>
+        <!--With custom-component tooltip-->
+        <!--regular option-->
+        <ng-container *ngIf="!option.tooltipCustom">
+            <fusion-dropdown-option [option]="option" (click)="onChangeSelected(option, $event)"></fusion-dropdown-option>
+        </ng-container>
+        <!--regular option-->
     </li>
     <ng-template #groupOption>
         <li class="option fu-dd-group">
