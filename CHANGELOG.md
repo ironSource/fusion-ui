@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [8.1.1](https://github.com/ironSource/fusion-ui/compare/v8.1.0-rc.1...v8.1.1) (2024-06-04)
+
+
+### Bug Fixes
+
+* **isct-331:** add loading state to the multi dropdown v4, update its story page ([c972c75](https://github.com/ironSource/fusion-ui/commit/c972c7523ef1ab6627d8f5e814d42032a157c120))
+* **isct-331:** dropdown fixes ([bc3281e](https://github.com/ironSource/fusion-ui/commit/bc3281e3a0b060b7bd834ce784556a9c23ccb0c2))
+* **isct-331:** multiselect option 3 lever fixed open/close icon ([6a4bb2c](https://github.com/ironSource/fusion-ui/commit/6a4bb2cb28b88bbf957bea20fd32f70b170e42ed))
+* **isct-331:** multiselect option group change top margin ([78aea3d](https://github.com/ironSource/fusion-ui/commit/78aea3d4cc939e95862aeba1c24df2f8be8f13bc))
+* **isct-331:** multiselect option with icon css fix ([b04e47b](https://github.com/ironSource/fusion-ui/commit/b04e47bde8f518c87f4ccd909ad50d5eeafa21fb))
+
 ### [8.1.1-rc.4](https://github.com/ironSource/fusion-ui/compare/v8.1.1-rc.3...v8.1.1-rc.4) (2024-06-04)
 
 ### [8.1.1-rc.3](https://github.com/ironSource/fusion-ui/compare/v8.1.0-rc.5...v8.1.1-rc.3) (2024-06-02)
