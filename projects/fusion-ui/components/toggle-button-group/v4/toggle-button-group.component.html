@@ -1,6 +1,9 @@
 <div class="fu-button-group-wrapper fu-size-{{size}} fu-color-{{color}}">
     <ng-container *ngFor="let option of options; let isFirst = first">
-        <label class="fu-button-group-option" [fusionTooltip]="option.tooltip" [configuration]="tooltipConfiguration">
+        <label class="fu-button-group-option"
+               [fusionTooltip]="option.tooltip"
+               [configuration]="option.tooltipConfiguration ?? tooltipConfiguration"
+        >
             <input type="radio"
                    id="{{name}}__{{option.id}}"
                    [name]="name"

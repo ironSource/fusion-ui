@@ -117,12 +117,16 @@ export const Variants: Story = {
                 {
                     id: 2,
                     icon: 'ph/chart-line-up',
-                    tooltip: 'Line'
+                    tooltip: 'Type Line'
                 },
                 {
                     id: 3,
                     icon: 'ph/chart-bar',
-                    tooltip: 'Bar'
+                    tooltip: 'Type Bar',
+                    tooltipConfiguration: {
+                        positionOffset: -10,
+                        position: 4
+                    }
                 }
             ] as ToggleButtonGroupOption[],
             optionsText: [
