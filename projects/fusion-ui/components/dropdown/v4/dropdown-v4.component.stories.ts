@@ -287,3 +287,25 @@ export const HelperText: Story = {
         template: templateCommonOneDropdown
     })
 };
+
+export const WithLabel: Story = {
+    render: args => ({
+        props: {
+            ...args
+        },
+        template: `
+<div style="width: 240px; display: flex; flex-direction: column; gap: 16px">
+COMING SOON
+    <fusion-dropdown 
+       [size]="size"
+       [search]="search"
+       [testId]="testId"
+       [placeholder]="placeholder"
+       [options]="options"
+       [formControl]="formControl"
+       [triggerMode]="triggerMode"
+     ></fusion-dropdown>
+</div>
+        `
+    })
+};
