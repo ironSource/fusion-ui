@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [8.1.4-rc.1](https://github.com/ironSource/fusion-ui/compare/v8.1.4-rc.0...v8.1.4-rc.1) (2024-06-05)
+
+
+### Bug Fixes
+
+* remove clear menu close state (persistent_fusionMenuCollapsed) on home menu item click ([4eebc10](https://github.com/ironSource/fusion-ui/commit/4eebc10d8af496530fd057bfb1a0f36c60030160))
+
 ### [8.1.4-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.1.3...v8.1.4-rc.0) (2024-06-05)
 
 
