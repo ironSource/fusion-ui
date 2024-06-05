@@ -38,7 +38,7 @@ export class TooltipV4Directive implements OnDestroy, AfterViewInit {
             this.preventTooltipToClose = config?.preventTooltipToClose;
             this.position = config?.position || TooltipPosition.Top;
             this.suppressPositionArrow = config?.suppressPositionArrow;
-            // this.positionOffset = config?.positionOffset ?? 0;
+            this.positionOffset = config?.positionOffset ?? 0;
         }
     }
 
@@ -47,7 +47,7 @@ export class TooltipV4Directive implements OnDestroy, AfterViewInit {
     backgroundColor: string;
     preventTooltipToClose: boolean = false;
     suppressPositionArrow: boolean = false;
-    // positionOffset: number;
+    positionOffset: number = 0;
 
     private visible = false;
     private onDestroy$ = new Subject<void>();
@@ -189,7 +189,7 @@ export class TooltipV4Directive implements OnDestroy, AfterViewInit {
 
         this.tooltipPosition = {
             position: pos,
-            left: tooltipLeft /* + this.positionOffset*/,
+            left: tooltipLeft + this.positionOffset,
             top: shiftPosition.top + rect.top
         };
     }
