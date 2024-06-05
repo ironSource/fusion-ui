@@ -140,8 +140,18 @@ const templateCommon = `
 const templateCommonOneDropdown = `
 <div style="display:flex; gap: 14px;">
     <div style="width: 240px;">
-        <fusion-dropdown [size]="size" [search]="search" [testId]="testId"
-[placeholder]="placeholder" [options]="options" [formControl]="formControl" [triggerMode]="triggerMode"></fusion-dropdown>
+        <fusion-dropdown 
+           [size]="size"
+           [search]="search"
+           [testId]="testId"
+           [placeholder]="placeholder"
+           [options]="options"
+           [formControl]="formControl"
+           [triggerMode]="triggerMode"
+           [helperText]="helperText"
+           [helperIcon]="helperIcon"
+           [helperVariant]="helperVariant"
+         ></fusion-dropdown>
     </div>
 </div>
 `;
@@ -262,6 +272,17 @@ export const WithLoading: Story = {
             ...args,
             loading: true,
             options: []
+        },
+        template: templateCommonOneDropdown
+    })
+};
+
+export const HelperText: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            helperText: 'Helper text',
+            helperIcon: 'ph/fill/info'
         },
         template: templateCommonOneDropdown
     })

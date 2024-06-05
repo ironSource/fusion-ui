@@ -16,7 +16,7 @@ const formControl = new FormControl({
 });
 
 export default {
-    title: 'V4/Components/Buttons/ToggleButton',
+    title: 'V4/Components/Buttons/ToggleButtonGroup',
     component: ToggleButtonGroupComponent,
     decorators: [
         moduleMetadata({
@@ -49,20 +49,17 @@ export default {
             {
                 id: 1,
                 label: 'Pie',
-                icon: 'ph/chart-pie',
-                tooltip: 'Pie'
+                icon: 'ph/chart-pie'
             },
             {
                 id: 2,
                 label: 'Line',
-                icon: 'ph/chart-line-up',
-                tooltip: 'Line'
+                icon: 'ph/chart-line-up'
             },
             {
                 id: 3,
                 label: 'Bar',
-                icon: 'ph/chart-bar',
-                tooltip: 'Bar'
+                icon: 'ph/chart-bar'
             }
         ] as ToggleButtonGroupOption[],
         size: 'medium',
@@ -114,15 +111,22 @@ export const Variants: Story = {
             optionsIcon: [
                 {
                     id: 1,
-                    icon: 'ph/chart-pie'
+                    icon: 'ph/chart-pie',
+                    tooltip: 'Pie'
                 },
                 {
                     id: 2,
-                    icon: 'ph/chart-line-up'
+                    icon: 'ph/chart-line-up',
+                    tooltip: 'Type Line'
                 },
                 {
                     id: 3,
-                    icon: 'ph/chart-bar'
+                    icon: 'ph/chart-bar',
+                    tooltip: 'Type Bar',
+                    tooltipConfiguration: {
+                        positionOffset: -10,
+                        position: 4
+                    }
                 }
             ] as ToggleButtonGroupOption[],
             optionsText: [

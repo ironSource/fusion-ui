@@ -15,6 +15,7 @@ import {
     AD_TYPE_OPTIONS,
     CATEGORY_OPTIONS,
     DATERANGE_OPTIONS,
+    MOCK_CATEGORY_FILTERS,
     PLATFORM_OPTIONS,
     STATUS_OPTIONS
 } from './chip-filters-v4.stories.mock';
@@ -117,13 +118,25 @@ const basicTemplate = `
                 ></fusion-multi-dropdown>
             </div>
         </fusion-chip-filter>
+         <fusion-chip-filter [configuration]="configChip7">
+            <div class="filter-element">
+                <fusion-multi-dropdown
+                    [placeholderPrefix]="placeholderPrefixChip7"
+                    [placeholder]="placeholderChip7"
+                    [formControl]="fcChip7"
+                    [options]="optionsChip7"
+                    selectAllLabel="Select all"
+                    [search]="true"
+                ></fusion-multi-dropdown>
+            </div>
+        </fusion-chip-filter>
     </fusion-chip-filters>
 `;
 const datePickerTemplate = `
 <fusion-chip-filters [testId]="testId">
         <fusion-chip-filter-button [configuration]="configChip1">
             <div class="filter-element">
-                 <fusion-dropdown
+                 <fusion-dropdown style="--dropdown-overlay-min-width: 250px;"
                     [placeholderPrefix]="placeholderPrefixChip1"
                     [placeholder]="placeholderChip1"
                     [formControl]="fcChip1"
@@ -289,7 +302,13 @@ export const Default: Story = {
             configChip6: {id: 5, mode: 'static', close: true},
             optionsChip6: groupedCountriesOptions,
             placeholderPrefixChip6: 'Country',
-            placeholderChip6: ''
+            placeholderChip6: '',
+
+            fcChip7: new FormControl(),
+            configChip7: {id: 5, mode: 'static', close: true},
+            optionsChip7: MOCK_CATEGORY_FILTERS,
+            placeholderPrefixChip7: 'Sub Categories',
+            placeholderChip7: ''
         },
         template: basicTemplate
     })

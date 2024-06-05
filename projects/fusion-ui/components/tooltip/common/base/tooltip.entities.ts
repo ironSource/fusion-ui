@@ -1,4 +1,4 @@
-import {ElementRef} from '@angular/core';
+import {Component, ElementRef, Type} from '@angular/core';
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 
 export enum TooltipPosition {
@@ -47,5 +47,14 @@ export type tooltipConfiguration = {
     backgroundColor?: string;
     preventTooltipToClose?: boolean;
     position?: TooltipPosition;
+    positionOffset?: number;
     suppressPositionArrow?: boolean;
 };
+
+export interface TooltipCustom {
+    content?: {
+        component: Type<Component>;
+        dataInputs: any;
+    };
+    configuration?: tooltipConfiguration;
+}

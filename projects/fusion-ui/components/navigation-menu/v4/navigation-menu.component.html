@@ -4,6 +4,7 @@
         [layoutUser]="layoutUser"
         [menuOpened]="secondaryMenuOpen$ | async"
         [menuOpenForPrimaryMenuItem]="menuOpenForPrimaryMenuItem$ | async"
+        [menuHoverMode]="primaryMenuItemMode === 'hoverToShowSecondaryItems'"
         (primaryMenuItemClicked)="onPrimaryMainMenuItemClicked($event)"
         (changeColorTheme)="onChangeColorTheme($event)"
         (toggleMenu)="toggleMenu()"

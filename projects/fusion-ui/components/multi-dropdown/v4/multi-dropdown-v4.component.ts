@@ -16,6 +16,7 @@ import {DropdownSearchComponent} from '@ironsource/fusion-ui/components/dropdown
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 import {LoaderComponent} from '@ironsource/fusion-ui/components/loader/v4';
+import {InputVariant} from '@ironsource/fusion-ui/components/input/v4';
 
 @Component({
     selector: 'fusion-multi-dropdown',
@@ -53,6 +54,10 @@ export class MultiDropdownV4Component extends MultiDropdownBaseComponent {
     @Input() optionTemplateRef: TemplateRef<any>;
     @Input() showSelectedFirst = true;
     @Input() testId: string;
+
+    @Input() helperText: string;
+    @Input() helperIcon: string;
+    @Input() helperVariant: InputVariant = 'default';
 
     /** @ignore */
     getOptionContent(option: DropdownOption): string {

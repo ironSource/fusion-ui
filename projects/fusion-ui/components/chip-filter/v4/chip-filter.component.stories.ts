@@ -68,7 +68,7 @@ export default {
         }
     },
     args: {
-        placeholder: 'Chip filter',
+        placeholder: 'Select',
         options: MOCK_OPTIONS,
         configuration: {id: 1, mode: 'static', close: true}
     },

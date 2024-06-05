@@ -1,0 +1,94 @@
+@import '../../../src/style/scss/v4/colors';
+@import '../../../src/style/scss/v4/spacings';
+@import '../../../src/style/scss/v4/border-radius';
+@import '../../../src/style/scss/v4/vars/fonts';
+
+$borderRadius: 8px;
+:host {
+  height: inherit;
+
+  .fu-textarea-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .fu-textarea-content {
+      position: relative;
+      display: flex;
+      overflow: hidden;
+      flex-direction: column;
+      width: 100%;
+      border-radius: var(--border-radius-md, #{$borderRadiusV4-md});
+      outline: 1px solid var(--action-outlined-border, #{$color-v4-action-outlined-border});
+      outline-offset: -1px;
+
+      textarea {
+        outline: none;
+        border: none;
+        border-radius: var(--border-radius-md, #{$borderRadiusV4-md});
+        box-sizing: border-box;
+        background: var(--default-main, #{$color-v4-default-main});
+        resize: none;
+        width: 100%;
+        height: 100%;
+        padding: 8px 12px 8px 12px;
+        min-height: 96px;
+        @extend %font-v4-body-1;
+        line-height: 20px;
+
+        ::placeholder {
+          color: var(--text-secondary);
+          letter-spacing: normal;
+        }
+
+        &:focus {
+
+        }
+
+        &:hover {
+          border-color: var(--action-active, #{$color-v4-action-active});
+          background-color: var(--action-hover, #{$color-v4-action-hover});
+        }
+
+        &.resize {
+          resize: both;
+        }
+
+        &.disabled,
+        &:disabled {
+          pointer-events: all;
+          color: var(--text-disabled);
+
+          &:hover {
+            cursor: not-allowed;
+          }
+
+          &:focus {
+            border: none;
+          }
+
+          resize: none;
+        }
+
+        &.error {
+          &:focus {
+            outline: none;
+            box-shadow: none;
+
+            & + .fu-error-msg {
+              display: none;
+            }
+          }
+        }
+
+      }
+      &:has(textarea:focus) {
+        outline-color: var(--primary-main, #{$color-v4-primary-main});
+        outline-width: 2px;
+        background-color: var(--action-hover, #{$color-v4-action-hover});
+      }
+    }
+
+  }
+
+}

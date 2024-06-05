@@ -27,7 +27,7 @@
         ></fusion-dropdown-select>
     </ng-template>
 
-    <div class="options-dropdown">
+    <div class="options-dropdown" [class.dd-scroll]="hasScroll">
         <!--search input-->
         <div class="fu-search-holder" *ngIf="search">
             <fusion-dropdown-search class="fu-search-in-options"
@@ -48,12 +48,12 @@
                     <label class="fu-option-select-all" [for]="id + '-select-all'"
                            [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.SELECT_ALL">
                         <fusion-checkbox
-                            [id]="id + '-select-all'"
-                            [checked]="isAllSelected"
-                            [value]="id + '-select-all'"
-                            [isIndeterminate]="isIndeterminate"
-                            (changed)="selectAll($event)"
-                            #selectAllCheckbox
+                                [id]="id + '-select-all'"
+                                [checked]="isAllSelected"
+                                [value]="id + '-select-all'"
+                                [isIndeterminate]="isIndeterminate"
+                                (changed)="selectAll($event)"
+                                #selectAllCheckbox
                         ></fusion-checkbox>
                         <span [innerHTML]="selectAllLabel"></span>
                     </label>
@@ -62,7 +62,8 @@
                 <li class="option"
                     [class.fu-option-two-lines]="!!option.subText"
                     [class.fu-has-children]="option.childOptions"
-                    (click)="optionParentClicked($event)"
+                    [class.fu-open]="option.childOptions && option.isGroup"
+                    (click)="!option.isGroup ? optionParentClicked($event, 'fu-has-children', 'fu-open'): $event.stopPropagation();"
                     [ngClass]="getOptionClasses(option, i)"
                     *ngFor="let option of displayedOptions$ | async; index as i">
                     <!--option regular or parent for check-->
@@ -72,7 +73,12 @@
                                   [ngTemplateOutletContext]="{option: option}"></ng-container>
                 </li>
                 <!--loader holder-->
-                <!--<li [fusionDropdownLoader]="(autoComplete || search) && loading"></li>-->
+                <li *ngIf="(autoComplete && search) || loading">
+                    <div class="fu-loader-holder">
+                        <fusion-loader></fusion-loader>
+                        <div>Loading...</div>
+                    </div>
+                </li>
                 <!--no-result holder-->
                 <li class="no-results" *ngIf="!filteredOptions?.length && !loading && searchValue?.value">No results
                     found
@@ -83,31 +89,31 @@
         <!--action "confirm" buttons holder-->
         <div class="fu-dd-actions" *ngIf="confirm && filteredOptions?.length">
             <fusion-button
-                class="fu-clear-all-btn"
-                variant="text"
-                size="small"
-                color="primary"
-                [disabled]="loading"
-                (click)="clearAll()"
-                [testId]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.ACTION_CLEAR_ALL"
+                    class="fu-clear-all-btn"
+                    variant="text"
+                    size="small"
+                    color="primary"
+                    [disabled]="loading"
+                    (click)="clearAll()"
+                    [testId]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.ACTION_CLEAR_ALL"
             >Clear all
             </fusion-button>
             <fusion-button
-                size="small"
-                color="primary"
-                variant="outlined"
-                (click)="closeDropdown()"
-                [disabled]="loading"
-                [testId]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.ACTION_CANCEL"
+                    size="small"
+                    color="primary"
+                    variant="outlined"
+                    (click)="closeDropdown()"
+                    [disabled]="loading"
+                    [testId]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.ACTION_CANCEL"
             >
                 Cancel
             </fusion-button>
             <fusion-button
-                color="primary"
-                size="small"
-                (click)="applySelect(true)"
-                [disabled]="loading"
-                [testId]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.ACTION_APPLY"
+                    color="primary"
+                    size="small"
+                    (click)="applySelect(true)"
+                    [disabled]="loading"
+                    [testId]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.ACTION_APPLY"
             >
                 Apply
             </fusion-button>
@@ -115,22 +121,30 @@
     </div>
 </div>
 
+<div *ngIf="helperText" class="fu-input-underline">
+    <div *ngIf="helperText" class="fu-input-helper fu-variant-{{helperVariant}}">
+        <fusion-icon *ngIf="helperIcon" class="fu-helper-icon" [name]="helperIcon"></fusion-icon>
+        {{ helperText }}
+    </div>
+</div>
+
 <!--INNER TEMPLATES-->
 <!--regular option-->
-<ng-template #regularOption let-option="option">
+<ng-template #regularOption let-option="option" let-indentation="indentation">
     <ng-container *ngIf="!option.isGroup; else groupOption">
         <label
-            class="truncate"
-            [id]="option.id"
-            [for]="id + '-' + option.id"
-            [ngClass]="{'has-icon': option.icon}"
-            [fusionTooltip]="dropdownService.optionToString(option, mappingOptions, {dropdownType: 'multi'})"
-        >
+                class="truncate"
+                [id]="option.id"
+                [for]="id + '-' + option.id"
+                [ngClass]="{'has-icon': option.icon}"
+                (click)="$event.stopPropagation()"
+                [fusionTooltip]="dropdownService.optionToString(option, mappingOptions, {dropdownType: 'multi'})">
             <fusion-checkbox
-                [id]="id + '-' + option.id"
-                [checked]="isSelected(option)"
-                [value]="option.id"
-                (changed)="changeSelected(option)"
+                    [id]="id + '-' + option.id"
+                    [checked]="isSelected(option)"
+                    [value]="option.id"
+                    (changed)="changeSelected(option)"
+                    [class.fu-indentation]="indentation"
             ></fusion-checkbox>
             <ng-container [ngTemplateOutlet]="optionTemplateRef || basicTemplate"
                           [ngTemplateOutletContext]="{option: option}">
@@ -145,19 +159,17 @@
 </ng-template>
 <!--parent option-->
 <ng-template #parentOption let-option="option">
-    <div [id]="option.id" class="fu-parent truncate"
-         [fusionTooltip]="dropdownService.optionToString(option, mappingOptions, {dropdownType: 'multi'})">
-        <span innerHTML="{{ dropdownService.optionToString(option, {dropdownType: 'multi'}) }}"></span>
-    </div>
-    <!--
-        <fusion-icon class="option-icon-arrow"
-                     [name]="dropdownArrowIconName"></fusion-icon>
-        <div class="fu-flex-row-break"></div>
-    -->
-    <ul class="fu-subgroup-options">
+
+    <ng-container [ngTemplateOutlet]="option.isGroup ? groupedParent : noGroupParentOption"
+                  [ngTemplateOutletContext]="{option: option, children: option.childOptions }"></ng-container>
+
+
+    <ul class="fu-subgroup-options"
+        [class.fu-nested-subgroup]="!option.isGroup"
+        #childOptionsWrapper>
         <li class="option" *ngFor="let childOption of option.childOptions; index as i">
             <ng-container [ngTemplateOutlet]="regularOption"
-                          [ngTemplateOutletContext]="{option: childOption}"></ng-container>
+                          [ngTemplateOutletContext]="{option: childOption, indentation: !option.isGroup}"></ng-container>
         </li>
     </ul>
 </ng-template>
@@ -180,8 +192,42 @@
         <div [fusionTooltip]="chipDefaultContent" class="truncate fu-chip-text">
             <span *ngIf="placeholderPrefix" class="fu-chip-label">{{ placeholderPrefix }}</span>
             <ng-container
-                *ngIf="(placeholder$ | async) as placeholder">{{ (placeholderPrefix ? ': ' : '') + placeholder }}
+                    *ngIf="(placeholder$ | async) as placeholder">{{ (placeholderPrefix ? ': ' : '') + placeholder }}
             </ng-container>
         </div>
     </div>
+</ng-template>
+
+<ng-template #groupedParent let-option="option">
+    <div
+            [id]="option.id" class="fu-parent truncate"
+            [fusionTooltip]="dropdownService.optionToString(option, mappingOptions, {dropdownType: 'multi'})">
+        <span innerHTML="{{ dropdownService.optionToString(option, {dropdownType: 'multi'}) }}"></span>
+    </div>
+</ng-template>
+
+<ng-template #noGroupParentOption let-option="option" let-children="children">
+    <label
+            class="truncate fu-parent-option-no-group"
+            [id]="option.id"
+            [for]="id + '-' + option.id"
+            [ngClass]="{'has-icon': option.icon}"
+            [fusionTooltip]="dropdownService.optionToString(option, mappingOptions, {dropdownType: 'multi'})"
+            (click)="$event.preventDefault();"
+    >
+        <fusion-checkbox
+                [id]="id + '-' + option.id"
+                [checked]="getIsAllChildrenChecked(children)"
+                [isIndeterminate]="getIsParentIndeterminate(children)"
+                [value]="option.id"
+                (click)="$event.stopPropagation(); handleChildrenChange(children)"
+                (changed)="handleChildrenChange(children)"
+        ></fusion-checkbox>
+        <ng-container [ngTemplateOutlet]="optionTemplateRef || basicTemplate"
+                      [ngTemplateOutletContext]="{option: option}">
+        </ng-container>
+        <fusion-icon class="option-icon-arrow"
+                     name="ph/caret-right"
+        ></fusion-icon>
+    </label>
 </ng-template>

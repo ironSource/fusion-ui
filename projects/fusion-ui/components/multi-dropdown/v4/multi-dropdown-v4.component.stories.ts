@@ -76,12 +76,12 @@ const optionsFoodCategories: DropdownOption[] = [
                 displayText: 'Noodles'
             },
             {
-                id: 'lbl-1',
-                displayText: 'Label'
+                id: 'StuffedBellPeppers',
+                displayText: 'Stuffed Bell Peppers'
             },
             {
-                id: 'lbl-2',
-                displayText: 'Label'
+                id: 'EggplantParmesan',
+                displayText: 'Eggplant Parmesan'
             }
         ]
     },
@@ -92,23 +92,97 @@ const optionsFoodCategories: DropdownOption[] = [
         childOptions: [
             {
                 id: 'lbl-0',
-                displayText: 'Mushrooms Hamburger'
+                displayText: 'Tiramisu'
             },
             {
                 id: 'lbl-1',
-                displayText: 'Label'
+                displayText: 'Crème Brûlée'
             },
             {
                 id: 'lbl-2',
-                displayText: 'Label'
+                displayText: 'Cheesecake'
             },
             {
                 id: 'lbl-3',
-                displayText: 'Label'
+                displayText: 'Baklava'
             },
             {
                 id: 'lbl-4',
-                displayText: 'Label'
+                displayText: 'Chocolate Lava Cake'
+            }
+        ]
+    }
+];
+const hierarchyOptionsList: DropdownOption[] = [
+    {
+        id: 'vegeterian',
+        displayText: 'Vegeterian',
+        isGroup: true
+    },
+    {
+        id: 'fish',
+        displayText: 'Fish',
+        childOptions: [
+            {
+                id: 'salmon',
+                displayText: 'Salmon'
+            },
+            {
+                id: 'lbl-1',
+                displayText: 'Clownfish'
+            },
+            {
+                id: 'lbl-2',
+                displayText: 'Blue Tang'
+            }
+        ]
+    },
+    {
+        id: 'tofu',
+        displayText: 'Tofu',
+        childOptions: [
+            {
+                id: 'tofuSteak',
+                displayText: 'Tofu steak'
+            },
+            {
+                id: 'lbl-11',
+                displayText: 'Mapo Tofu'
+            },
+            {
+                id: 'lbl-22',
+                displayText: 'Tofu Stir-Fry'
+            }
+        ]
+    },
+    {
+        id: 'deserts',
+        displayText: 'Desserts',
+        isGroup: true
+    },
+    {
+        id: 'des',
+        displayText: 'Desserts',
+        childOptions: [
+            {
+                id: 'lbl-0',
+                displayText: 'Mushrooms Hamburger'
+            },
+            {
+                id: 'lbl-123',
+                displayText: 'Tiramisu'
+            },
+            {
+                id: 'lbl-223',
+                displayText: 'Cheesecake'
+            },
+            {
+                id: 'lbl-323',
+                displayText: 'Crème Brûlée'
+            },
+            {
+                id: 'lbl-423',
+                displayText: 'Panna Cotta'
             }
         ]
     }
@@ -157,8 +231,12 @@ const templateOneDropdown = `
             [search]="search"
             [placeholder]="placeholder"
             [options]="options"
+            [loading]="loading"
             [formControl]="formControl"
             [testId]="testId"
+            [helperText]="helperText"
+            [helperIcon]="helperIcon"
+            [helperVariant]="helperVariant"
         ></fusion-multi-dropdown>
     </div>
 </div>
@@ -193,7 +271,7 @@ export default {
     parameters: {
         docs: {
             description: {
-                component: dedent`***DropdownComponent***.`
+                component: dedent`Dropdown present a list of options from which a user can select one or several..`
             }
         },
         options: {
@@ -207,6 +285,7 @@ export default {
         search: false,
         size: 'medium' as DropdownTriggerSize,
         options: longOptionsList,
+        loading: false,
         optionsFood: foodOptionsList,
         formControl: formControl,
         testId: 'dropdownTestId',
@@ -298,13 +377,46 @@ export const WithCaption: Story = {
     })
 };
 
-export const WithCategories: Story = {
+export const TreeView2Levels: Story = {
     render: args => ({
         props: {
             ...args,
             selectAllLabel: 'Select all',
             search: true,
             options: optionsFoodCategories
+        },
+        template: templateOneDropdown
+    })
+};
+
+export const TreeView3Levels: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            search: true,
+            options: hierarchyOptionsList
+        },
+        template: templateOneDropdown
+    })
+};
+
+export const WithLoading: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            options: [],
+            loading: true
+        },
+        template: templateOneDropdown
+    })
+};
+
+export const HelperText: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            helperText: 'Helper text',
+            helperIcon: 'ph/fill/info'
         },
         template: templateOneDropdown
     })

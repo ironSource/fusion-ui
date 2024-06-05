@@ -5,7 +5,7 @@ import {filter, takeUntil} from 'rxjs/operators';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {LayoutUser} from '@ironsource/fusion-ui/entities';
 import {MenuItem, MenuItemAdditionalData} from '@ironsource/fusion-ui/components/menu/common/base';
-import {NavigationBarItemType, PrimaryMenuItem} from './navigation-menu.entities';
+import {NavigationBarItemType, PrimaryMenuItem, PrimaryMenuMode} from './navigation-menu.entities';
 import {NavigationPrimaryMenuComponent} from './navigation-primary-menu/navigation-primary-menu.component';
 import {NavigationSecondaryMenuComponent} from './navigation-secondary-menu/navigation-secondary-menu.component';
 import {StorageService, StorageType} from '@ironsource/fusion-ui/services/stogare';
@@ -26,6 +26,7 @@ export class NavigationMenuComponent implements OnInit {
 
     @Input() menuItems: PrimaryMenuItem[];
     @Input() layoutUser: LayoutUser;
+    @Input() primaryMenuItemMode: PrimaryMenuMode = 'clickToDefaultSecondaryItem';
 
     @Output() menuAdditionalItemClicked = new EventEmitter<MenuItemAdditionalData>();
     @Output() menuItemClicked = new EventEmitter<MenuItem>();
@@ -142,7 +143,13 @@ export class NavigationMenuComponent implements OnInit {
                     this.storageService.remove(StorageType.SessionStorage, MENU_CACHE_KEY);
                 }
             } else {
-                this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, true);
+                const isNavigateByClick = this.primaryMenuItemMode === 'clickToDefaultSecondaryItem';
+                const itemToNavigate = isNavigateByClick ? this.findDefaultMenuItem(selectedNetwork.menuItems) : undefined;
+                if (itemToNavigate) {
+                    this.onMenuItemClicked(itemToNavigate);
+                } else {
+                    this.setSecondaryMenuVisibilityState(this.isSecondaryMenuExpandable, true);
+                }
             }
         }
     }
@@ -222,5 +229,29 @@ export class NavigationMenuComponent implements OnInit {
                 this.elementRef.nativeElement.style.setProperty(`--${key}`, theme[key]);
             });
         }
+    }
+
+    private findDefaultMenuItem(items: MenuItem[]): MenuItem | undefined {
+        const searchMenuItemByKey = (items: MenuItem[], key: string): MenuItem | undefined => {
+            for (const item of items) {
+                if (!!item[key]) {
+                    return item;
+                }
+            }
+            for (const item of items) {
+                if (item.children) {
+                    const found = searchMenuItemByKey(item.children, key);
+                    if (found) {
+                        return found;
+                    }
+                }
+            }
+            return undefined;
+        };
+        const defaultMenuItem = searchMenuItemByKey(items, 'default');
+        if (defaultMenuItem) {
+            return defaultMenuItem;
+        }
+        return searchMenuItemByKey(items, 'route');
     }
 }
