@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [8.1.4-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.1.3...v8.1.4-rc.0) (2024-06-05)
+
+
+### Bug Fixes
+
+* comment clear storage (sticky state ) for secondary menu if home (dashboard was clicked) ([a74dd60](https://github.com/ironSource/fusion-ui/commit/a74dd60fb88cee8247f66006099d4f7ed1f5a4b7))
+
 ### [8.1.3](https://github.com/ironSource/fusion-ui/compare/v8.0.0...v8.1.3) (2024-06-05)
 
 
