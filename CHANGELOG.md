@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [8.1.3](https://github.com/ironSource/fusion-ui/compare/v8.0.0...v8.1.3) (2024-06-05)
+
+
+### Bug Fixes
+
+* chart tooltip css z-index ([0f456bc](https://github.com/ironSource/fusion-ui/commit/0f456bc3ab08fa3a490b556516e3bf5c4e5b6baa))
+* hot fix for tooltip on primary menu ([#316](https://github.com/ironSource/fusion-ui/issues/316)) ([30e57da](https://github.com/ironSource/fusion-ui/commit/30e57da453bf31c2965f675c5f3755b37afa310a))
+
+
+### CI
+
+* init after checkout from master ([2c0a285](https://github.com/ironSource/fusion-ui/commit/2c0a285cccdda624e4169d3f0a85d03caa17796a))
+
 ### [8.1.2](https://github.com/ironSource/fusion-ui/compare/v8.1.2-rc.1...v8.1.2) (2024-06-05)
 
 ### [8.1.2-rc.1](https://github.com/ironSource/fusion-ui/compare/v8.1.2-rc.0...v8.1.2-rc.1) (2024-06-05)
