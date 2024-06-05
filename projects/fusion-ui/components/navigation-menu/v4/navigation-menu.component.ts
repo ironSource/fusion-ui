@@ -139,9 +139,11 @@ export class NavigationMenuComponent implements OnInit {
                 this.selectedPrimaryMenuItem = this.preSelectedPrimaryMenuItem;
                 this.primaryMenu.setSelectedPrimaryMenuItem(this.selectedPrimaryMenuItem);
                 this.menuItemClicked.emit({name: selectedNetwork.menuTitle, route: selectedNetwork.route});
+                /*
                 if (selectedNetwork.type === NavigationBarItemType.Home) {
                     this.storageService.remove(StorageType.SessionStorage, MENU_CACHE_KEY);
                 }
+*/
             } else {
                 const isNavigateByClick = this.primaryMenuItemMode === 'clickToDefaultSecondaryItem';
                 const itemToNavigate = isNavigateByClick ? this.findDefaultMenuItem(selectedNetwork.menuItems) : undefined;
