@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [8.1.2](https://github.com/ironSource/fusion-ui/compare/v8.1.2-rc.1...v8.1.2) (2024-06-05)
+
+### [8.1.2-rc.1](https://github.com/ironSource/fusion-ui/compare/v8.1.2-rc.0...v8.1.2-rc.1) (2024-06-05)
+
+
+### Bug Fixes
+
+* **manu-tooltip:** fixed tooltip left position if it don't get config ([4ab80ec](https://github.com/ironSource/fusion-ui/commit/4ab80ec7422ac2fed5e3ae4afc421c1010d2a0aa))
+
+### [8.1.2-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.0.0...v8.1.2-rc.0) (2024-06-05)
+
+
+### Bug Fixes
+
+* **manu-tooltip:** hotfix for tooltip on primary menu ([703eba2](https://github.com/ironSource/fusion-ui/commit/703eba2e8815e32dd3500cbfc97977f64a7d8e99))
+
+
+### CI
+
+* init after checkout from master ([2c0a285](https://github.com/ironSource/fusion-ui/commit/2c0a285cccdda624e4169d3f0a85d03caa17796a))
+
 ### [8.1.1](https://github.com/ironSource/fusion-ui/compare/v8.1.0-rc.1...v8.1.1) (2024-06-04)
 
 
