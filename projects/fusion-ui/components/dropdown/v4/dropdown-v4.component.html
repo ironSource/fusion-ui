@@ -5,7 +5,7 @@
      [ngClass]="getHolderCSSClasses()"
      [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.TRIGGER">
     @if(labelText){
-        <fusion-input-label [text]="labelText" [required]="labelRequired" [icon]="labelIcon" [disabled]="(dropdownSelectConfigurations$ | async)?.disabled"></fusion-input-label>
+        <fusion-input-label class="fu-dropdown-label" [text]="labelText" [required]="labelRequired" [icon]="labelIcon" [tooltipText]="labelTooltipText" [disabled]="(dropdownSelectConfigurations$ | async)?.disabled"></fusion-input-label>
     }
     <div class="fu-dd-custom-trigger" *ngIf="templateRef" #trigger (click)="openDropdown($event)"
          [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.TRIGGER">

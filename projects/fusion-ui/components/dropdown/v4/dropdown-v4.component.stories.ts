@@ -291,20 +291,60 @@ export const HelperText: Story = {
 export const WithLabel: Story = {
     render: args => ({
         props: {
-            ...args
+            ...args,
+            labelText: 'Label',
+            helperText: 'Helper text',
+            helperIcon: 'ph/fill/info'
         },
         template: `
-<div style="width: 240px; display: flex; flex-direction: column; gap: 16px">
-COMING SOON
+<div style="width: 240px; display: flex; flex-direction: column; gap: 16px;">
     <fusion-dropdown 
        [size]="size"
        [search]="search"
        [testId]="testId"
        [placeholder]="placeholder"
-       [options]="options"
+       [options]="optionsFood"
        [formControl]="formControl"
-       [triggerMode]="triggerMode"
+       [triggerMode]="triggerMode"       
+       [labelText]="'Label'"
      ></fusion-dropdown>
+     <fusion-dropdown 
+       [size]="size"
+       [search]="search"
+       [testId]="testId"
+       [placeholder]="placeholder"
+       [options]="optionsFood"
+       [formControl]="formControl"
+       [triggerMode]="triggerMode"       
+       [labelText]="'Label'"
+       [labelRequired]="true"
+     ></fusion-dropdown>
+    <fusion-dropdown 
+       [size]="size"
+       [search]="search"
+       [testId]="testId"
+       [placeholder]="placeholder"
+       [options]="optionsFood"
+       [formControl]="formControl"
+       [triggerMode]="triggerMode"       
+       [labelText]="'Label'"
+       [labelRequired]="true"
+       [labelIcon]="'ph/question'"
+       [labelTooltipText]="'Label tooltip'"
+     ></fusion-dropdown>
+    <fusion-dropdown 
+       [size]="size"
+       [search]="search"
+       [testId]="testId"
+       [placeholder]="placeholder"
+       [options]="optionsFood"
+       [formControl]="formControl"
+       [triggerMode]="triggerMode"       
+       [labelText]="'Label'"
+       [labelIcon]="'ph/question'"
+       [labelTooltipText]="'Label tooltip'"
+     ></fusion-dropdown>
+
 </div>
         `
     })
