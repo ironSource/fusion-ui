@@ -240,7 +240,10 @@ $optionsMinWidth: 225px;
     }
   }
 
-  // region bottom line
+  // region label and helper
+  fusion-input-label.fu-dropdown-label {
+    margin-bottom: 4px;
+  }
   .fu-input-underline {
     display: flex;
     align-items: center;

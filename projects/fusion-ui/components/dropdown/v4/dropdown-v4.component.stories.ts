@@ -292,9 +292,7 @@ export const WithLabel: Story = {
     render: args => ({
         props: {
             ...args,
-            labelText: 'Label',
-            helperText: 'Helper text',
-            helperIcon: 'ph/fill/info'
+            labelText: 'Label'
         },
         template: `
 <div style="width: 240px; display: flex; flex-direction: column; gap: 16px;">
@@ -306,7 +304,7 @@ export const WithLabel: Story = {
        [options]="optionsFood"
        [formControl]="formControl"
        [triggerMode]="triggerMode"       
-       [labelText]="'Label'"
+       [labelText]="labelText"
      ></fusion-dropdown>
      <fusion-dropdown 
        [size]="size"
@@ -316,7 +314,7 @@ export const WithLabel: Story = {
        [options]="optionsFood"
        [formControl]="formControl"
        [triggerMode]="triggerMode"       
-       [labelText]="'Label'"
+       [labelText]="labelText"
        [labelRequired]="true"
      ></fusion-dropdown>
     <fusion-dropdown 
@@ -327,7 +325,7 @@ export const WithLabel: Story = {
        [options]="optionsFood"
        [formControl]="formControl"
        [triggerMode]="triggerMode"       
-       [labelText]="'Label'"
+       [labelText]="labelText"
        [labelRequired]="true"
        [labelIcon]="'ph/question'"
        [labelTooltipText]="'Label tooltip'"
@@ -340,11 +338,10 @@ export const WithLabel: Story = {
        [options]="optionsFood"
        [formControl]="formControl"
        [triggerMode]="triggerMode"       
-       [labelText]="'Label'"
+       [labelText]="labelText"
        [labelIcon]="'ph/question'"
        [labelTooltipText]="'Label tooltip'"
      ></fusion-dropdown>
-
 </div>
         `
     })

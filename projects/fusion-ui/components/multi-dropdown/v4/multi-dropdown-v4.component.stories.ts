@@ -421,3 +421,69 @@ export const HelperText: Story = {
         template: templateOneDropdown
     })
 };
+
+export const WithLabel: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            labelText: 'Label'
+        },
+        template: `
+        <div style="width: 240px; display: flex; flex-direction: column; gap: 16px;">
+        <fusion-multi-dropdown
+            [selectAllLabel]="selectAllLabel"
+            [size]="size"
+            [search]="search"
+            [placeholder]="placeholder"
+            [options]="options"
+            [loading]="loading"
+            [formControl]="formControl"
+            [testId]="testId"
+            [labelText]="labelText"
+            [labelRequired]="true"
+            [labelIcon]="'ph/question'"
+            [labelTooltipText]="'Label tooltip'"
+        ></fusion-multi-dropdown>
+        <fusion-multi-dropdown
+            [selectAllLabel]="selectAllLabel"
+            [size]="size"
+            [search]="search"
+            [placeholder]="placeholder"
+            [options]="options"
+            [loading]="loading"
+            [formControl]="formControl"
+            [testId]="testId"
+            [labelText]="labelText"
+            [labelRequired]="true"
+        ></fusion-multi-dropdown>
+        <fusion-multi-dropdown
+            [selectAllLabel]="selectAllLabel"
+            [size]="size"
+            [search]="search"
+            [placeholder]="placeholder"
+            [options]="options"
+            [loading]="loading"
+            [formControl]="formControl"
+            [testId]="testId"
+            [labelText]="labelText"
+            [labelRequired]="true"
+            [labelIcon]="'ph/question'"
+            [labelTooltipText]="'Label tooltip'"
+        ></fusion-multi-dropdown>
+        <fusion-multi-dropdown
+            [selectAllLabel]="selectAllLabel"
+            [size]="size"
+            [search]="search"
+            [placeholder]="placeholder"
+            [options]="options"
+            [loading]="loading"
+            [formControl]="formControl"
+            [testId]="testId"
+            [labelText]="labelText"
+            [labelIcon]="'ph/question'"
+            [labelTooltipText]="'Label tooltip'"
+        ></fusion-multi-dropdown>
+        </div>
+        `
+    })
+};

@@ -8,7 +8,7 @@ import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
 import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
 import {DropdownSelectComponent} from '@ironsource/fusion-ui/components/dropdown-select/v4';
 import {DropdownTriggerSize} from '@ironsource/fusion-ui/components/dropdown/v4';
-import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {CheckboxComponent} from '@ironsource/fusion-ui/components/checkbox/v4';
 import {ButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
 import {FlagComponent} from '@ironsource/fusion-ui/components/flag/v4';
@@ -18,6 +18,7 @@ import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 import {LoaderComponent} from '@ironsource/fusion-ui/components/loader/v4';
 import {InputVariant} from '@ironsource/fusion-ui/components/input/v4';
 import {InputHelperComponent} from '@ironsource/fusion-ui/components/input-helper/v4';
+import {InputLabelComponent} from '@ironsource/fusion-ui/components/input-label/v4';
 
 @Component({
     selector: 'fusion-multi-dropdown',
@@ -35,7 +36,8 @@ import {InputHelperComponent} from '@ironsource/fusion-ui/components/input-helpe
         DropdownSearchComponent,
         LoaderComponent,
         GenericPipe,
-        InputHelperComponent
+        InputHelperComponent,
+        InputLabelComponent
     ],
     host: {class: 'fusion-v4'},
     templateUrl: './multi-dropdown-v4.component.html',
@@ -60,6 +62,11 @@ export class MultiDropdownV4Component extends MultiDropdownBaseComponent {
     @Input() helperText: string;
     @Input() helperIcon: string;
     @Input() helperVariant: InputVariant = 'default';
+
+    @Input() labelText: string;
+    @Input() labelRequired: boolean = false;
+    @Input() labelIcon: IconData;
+    @Input() labelTooltipText: string;
 
     /** @ignore */
     getOptionContent(option: DropdownOption): string {
