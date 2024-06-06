@@ -414,11 +414,63 @@ export const WithLoading: Story = {
 export const HelperText: Story = {
     render: args => ({
         props: {
-            ...args,
-            helperText: 'Helper text',
-            helperIcon: 'ph/fill/info'
+            ...args
         },
-        template: templateOneDropdown
+        template: `
+<div style="width: 240px; display: flex; flex-direction: column; gap: 16px;">
+        <fusion-multi-dropdown
+            [selectAllLabel]="selectAllLabel"
+            [size]="size"
+            [search]="search"
+            [placeholder]="placeholder"
+            [options]="options"
+            [loading]="loading"
+            [formControl]="formControl"
+            [testId]="testId"
+            [helperText]="'Helper text'"
+            [helperIcon]="'ph/fill/info'"
+        ></fusion-multi-dropdown>
+        <fusion-multi-dropdown
+            [selectAllLabel]="selectAllLabel"
+            [size]="size"
+            [search]="search"
+            [placeholder]="placeholder"
+            [options]="options"
+            [loading]="loading"
+            [formControl]="formControl"
+            [testId]="testId"
+            [helperText]="'Helper error'"
+            [helperIcon]="'ph/fill/warning-octagon'"
+            [helperVariant]="'error'"
+        ></fusion-multi-dropdown>
+        <fusion-multi-dropdown
+            [selectAllLabel]="selectAllLabel"
+            [size]="size"
+            [search]="search"
+            [placeholder]="placeholder"
+            [options]="options"
+            [loading]="loading"
+            [formControl]="formControl"
+            [testId]="testId"
+            [helperText]="'Helper warning'"
+            [helperIcon]="'ph/fill/warning'"
+            [helperVariant]="'warning'"
+        ></fusion-multi-dropdown>                        
+        <fusion-multi-dropdown
+            [selectAllLabel]="selectAllLabel"
+            [size]="size"
+            [search]="search"
+            [placeholder]="placeholder"
+            [options]="options"
+            [loading]="loading"
+            [formControl]="formControl"
+            [testId]="testId"
+            [helperText]="'Helper success'"
+            [helperIcon]="'ph/fill/check-circle'"
+            [helperVariant]="'success'"
+        ></fusion-multi-dropdown>                                                        
+</div>
+        `
     })
 };
 
