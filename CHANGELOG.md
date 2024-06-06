@@ -2,6 +2,71 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [8.1.4](https://github.com/ironSource/fusion-ui/compare/v8.1.4-rc.1...v8.1.4) (2024-06-05)
+
+### [8.1.4-rc.1](https://github.com/ironSource/fusion-ui/compare/v8.1.4-rc.0...v8.1.4-rc.1) (2024-06-05)
+
+
+### Bug Fixes
+
+* remove clear menu close state (persistent_fusionMenuCollapsed) on home menu item click ([4eebc10](https://github.com/ironSource/fusion-ui/commit/4eebc10d8af496530fd057bfb1a0f36c60030160))
+
+### [8.1.4-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.1.3...v8.1.4-rc.0) (2024-06-05)
+
+
+### Bug Fixes
+
+* comment clear storage (sticky state ) for secondary menu if home (dashboard was clicked) ([a74dd60](https://github.com/ironSource/fusion-ui/commit/a74dd60fb88cee8247f66006099d4f7ed1f5a4b7))
+
+### [8.1.3](https://github.com/ironSource/fusion-ui/compare/v8.0.0...v8.1.3) (2024-06-05)
+
+
+### Bug Fixes
+
+* chart tooltip css z-index ([0f456bc](https://github.com/ironSource/fusion-ui/commit/0f456bc3ab08fa3a490b556516e3bf5c4e5b6baa))
+* hot fix for tooltip on primary menu ([#316](https://github.com/ironSource/fusion-ui/issues/316)) ([30e57da](https://github.com/ironSource/fusion-ui/commit/30e57da453bf31c2965f675c5f3755b37afa310a))
+
+
+### CI
+
+* init after checkout from master ([2c0a285](https://github.com/ironSource/fusion-ui/commit/2c0a285cccdda624e4169d3f0a85d03caa17796a))
+
+### [8.1.2](https://github.com/ironSource/fusion-ui/compare/v8.1.2-rc.1...v8.1.2) (2024-06-05)
+
+### [8.1.2-rc.1](https://github.com/ironSource/fusion-ui/compare/v8.1.2-rc.0...v8.1.2-rc.1) (2024-06-05)
+
+
+### Bug Fixes
+
+* **manu-tooltip:** fixed tooltip left position if it don't get config ([4ab80ec](https://github.com/ironSource/fusion-ui/commit/4ab80ec7422ac2fed5e3ae4afc421c1010d2a0aa))
+
+### [8.1.2-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.0.0...v8.1.2-rc.0) (2024-06-05)
+
+
+### Bug Fixes
+
+* **manu-tooltip:** hotfix for tooltip on primary menu ([703eba2](https://github.com/ironSource/fusion-ui/commit/703eba2e8815e32dd3500cbfc97977f64a7d8e99))
+
+
+### CI
+
+* init after checkout from master ([2c0a285](https://github.com/ironSource/fusion-ui/commit/2c0a285cccdda624e4169d3f0a85d03caa17796a))
+
+### [8.1.1](https://github.com/ironSource/fusion-ui/compare/v8.1.0-rc.1...v8.1.1) (2024-06-04)
+
+
+### Bug Fixes
+
+* **isct-331:** add loading state to the multi dropdown v4, update its story page ([c972c75](https://github.com/ironSource/fusion-ui/commit/c972c7523ef1ab6627d8f5e814d42032a157c120))
+* **isct-331:** dropdown fixes ([bc3281e](https://github.com/ironSource/fusion-ui/commit/bc3281e3a0b060b7bd834ce784556a9c23ccb0c2))
+* **isct-331:** multiselect option 3 lever fixed open/close icon ([6a4bb2c](https://github.com/ironSource/fusion-ui/commit/6a4bb2cb28b88bbf957bea20fd32f70b170e42ed))
+* **isct-331:** multiselect option group change top margin ([78aea3d](https://github.com/ironSource/fusion-ui/commit/78aea3d4cc939e95862aeba1c24df2f8be8f13bc))
+* **isct-331:** multiselect option with icon css fix ([b04e47b](https://github.com/ironSource/fusion-ui/commit/b04e47bde8f518c87f4ccd909ad50d5eeafa21fb))
+
+### [8.1.1-rc.4](https://github.com/ironSource/fusion-ui/compare/v8.1.1-rc.3...v8.1.1-rc.4) (2024-06-04)
+
+### [8.1.1-rc.3](https://github.com/ironSource/fusion-ui/compare/v8.1.0-rc.5...v8.1.1-rc.3) (2024-06-02)
+
 ### [8.1.1-rc.2](https://github.com/ironSource/fusion-ui/compare/v8.1.0-rc.1...v8.1.1-rc.2) (2024-06-02)
 
 
@@ -35,13 +100,6 @@ All notable changes to this project will be documented in this file. See [commit
 ### Bug Fixes
 
 * fix line chart v4 fixed point cut on left ([081a2e1](https://github.com/ironSource/fusion-ui/commit/081a2e18e9a53570f826d8b989e2bf716ca3bfa0))
-
-## [8.0.0-rc.28](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.27...v8.0.0-rc.28) (2024-04-11)
-
-
-### Features
-
-* multi select dropdown hierarchy support ([a6b0c43](https://github.com/ironSource/fusion-ui/commit/a6b0c43479679704c7f5ae4d970fcc7e7204b570))
 
 ## [8.0.0-rc.27](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.26...v8.0.0-rc.27) (2024-04-08)
 

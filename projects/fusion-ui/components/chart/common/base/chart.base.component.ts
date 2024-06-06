@@ -224,7 +224,6 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
                 if (Array.isArray(item) && item[0] === labelId) {
                     index = idx;
                 } else {
-                    console.log('item', item);
                     index = item === labelId ? idx : -1;
                 }
             }
@@ -235,7 +234,8 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     private toggleLineDataset(label: ChartLabel, recalculateYMax = false): void {
         this.chart.data.datasets
             .filter(item => {
-                let thisLabel: boolean = item.label === label.label && (item as any).id === label.id;
+                let thisLabel: boolean =
+                    item.label === label.label && (!isNullOrUndefined((item as any).id) ? (item as any).id === label.id : true);
                 return thisLabel;
             })
             .forEach(item => {
@@ -318,15 +318,17 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     protected getColors(): string[] {
         const palette = this.colorsService.getColorPalette(this.componentVersion);
         const legends = (this._data as ChartData).legends;
-        const customPalette = legends
-            ? legends.map((legend, idx) => {
-                  return !isNullOrUndefined(legend.color)
-                      ? legend.color
-                      : !isNullOrUndefined(palette[idx])
-                      ? palette[idx]
-                      : '#' + Math.floor(Math.random() * 16777215).toString(16); // no color - gen random
-              })
-            : palette;
+        // todo: need to check this case for stacked bar (it look like related to Object.keys(data) not for label).
+        const customPalette =
+            Array.isArray(legends) && legends.some(legend => !!legend.color)
+                ? legends.map((legend, idx) => {
+                      return !isNullOrUndefined(legend.color)
+                          ? legend.color
+                          : !isNullOrUndefined(palette[idx])
+                          ? palette[idx]
+                          : '#' + Math.floor(Math.random() * 16777215).toString(16); // no color - gen random
+                  })
+                : palette;
         return customPalette;
     }
 
@@ -724,6 +726,11 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
             [-Infinity, 0]
         );
         // endregion
+
+        const yAxeMaxAddPercent = this.options.yAxeMaxAddPercent;
+        if (!!yAxeMaxAddPercent) {
+            max = max + max * yAxeMaxAddPercent;
+        }
 
         let stepSize;
         let formatCallbackObj;

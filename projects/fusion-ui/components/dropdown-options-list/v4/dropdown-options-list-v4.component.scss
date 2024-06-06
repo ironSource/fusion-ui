@@ -10,6 +10,10 @@
   gap: var(--spacing-50, #{$spacingV4-50});
 
   .option {
+    .fusionTooltipTrigger{
+      display: block;
+      width: 100%;
+    }
     &.fu-dd-group {
       &:not(:first-child) {
         margin-top: var(--spacing-150, #{$spacingV4-150});
