@@ -13,7 +13,7 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
     imports: [CommonModule, TooltipV4Directive, TooltipContentV4Directive, GenericPipe],
     template: `
         <div class="tooltip-container" [attr.data-testid]="testId" [fusionTooltip]="tooltipText" [configuration]="tooltipConfig">
-            <div #tooltipTriggerElement>
+            <div #tooltipTriggerElement style="width: 100%; display: block;">
                 <ng-content select=".fusionTooltipTrigger"></ng-content>
             </div>
             <div *fusionTooltipContent>
@@ -24,8 +24,9 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
     styles: [
         `
             .tooltip-container {
-                display: inline-block;
+                display: flex;
                 position: relative;
+                width: 100%;
             }
         `
     ],

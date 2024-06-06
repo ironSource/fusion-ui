@@ -58,7 +58,7 @@ export class NavigationPrimaryMenuComponent {
 
     selectedBarItem$ = new BehaviorSubject<PrimaryMenuItem>(null);
 
-    menuToggleCollapsed = false;
+    menuToggleCollapsed$ = new BehaviorSubject<boolean>(false);
     menuCollapsedIcon = 'ph/arrow-line-left';
     menuExpandedIcon = 'ph/arrow-line-right';
     popMenuPosition = TooltipPosition.BottomLeft;
@@ -126,7 +126,7 @@ export class NavigationPrimaryMenuComponent {
     }
 
     menuToggleButtonClicked(event: MouseEvent) {
-        this.menuToggleCollapsed = !this.menuToggleCollapsed;
+        this.menuToggleCollapsed$.next(!this.menuToggleCollapsed$.getValue());
         this.toggleMenu.emit();
     }
 
