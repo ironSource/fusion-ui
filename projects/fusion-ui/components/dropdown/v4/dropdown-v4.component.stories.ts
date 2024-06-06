@@ -280,11 +280,59 @@ export const WithLoading: Story = {
 export const HelperText: Story = {
     render: args => ({
         props: {
-            ...args,
-            helperText: 'Helper text',
-            helperIcon: 'ph/fill/info'
+            ...args
         },
-        template: templateCommonOneDropdown
+        template: `
+<div style="width: 240px; display: flex; flex-direction: column; gap: 16px;">
+    <fusion-dropdown 
+       [size]="size"
+       [search]="search"
+       [testId]="testId"
+       [placeholder]="placeholder"
+       [options]="optionsFood"
+       [formControl]="formControl"
+       [triggerMode]="triggerMode"       
+       [helperText]="'Helper text'"
+       [helperIcon]="'ph/fill/info'"
+     ></fusion-dropdown>
+     <fusion-dropdown 
+       [size]="size"
+       [search]="search"
+       [testId]="testId"
+       [placeholder]="placeholder"
+       [options]="optionsFood"
+       [formControl]="formControl"
+       [triggerMode]="triggerMode"       
+       [helperText]="'Helper error'"
+       [helperIcon]="'ph/fill/warning-octagon'"
+       [helperVariant]="'error'"
+     ></fusion-dropdown>
+    <fusion-dropdown 
+       [size]="size"
+       [search]="search"
+       [testId]="testId"
+       [placeholder]="placeholder"
+       [options]="optionsFood"
+       [formControl]="formControl"
+       [triggerMode]="triggerMode"
+       [helperText]="'Helper warning'"
+       [helperIcon]="'ph/fill/warning'"
+       [helperVariant]="'warning'"              
+     ></fusion-dropdown>
+    <fusion-dropdown 
+       [size]="size"
+       [search]="search"
+       [testId]="testId"
+       [placeholder]="placeholder"
+       [options]="optionsFood"
+       [formControl]="formControl"
+       [triggerMode]="triggerMode"
+       [helperText]="'Helper success'"
+       [helperIcon]="'ph/fill/check-circle'"
+       [helperVariant]="'success'"       
+     ></fusion-dropdown>
+</div>        
+        `
     })
 };
 
