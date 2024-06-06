@@ -1,0 +1,9 @@
+<div class="fu-input-label-wrapper" [class.fu-disabled]="disabled" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:fieldLabelTestIdModifiers.CONTAINER">
+    <label class="fu-input-label-text" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:fieldLabelTestIdModifiers.TEXT">{{text}}</label>
+    @if(required){
+        <div class="fu-input-label-required" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:fieldLabelTestIdModifiers.MANDATORY">*</div>
+    }
+    @if(icon){
+        <fusion-icon class="fu-input-label-icon" [name]="icon" [fusionTooltip]="tooltipText" [configuration]="tooltipConfiguration" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:fieldLabelTestIdModifiers.ICON"></fusion-icon>
+    }
+</div>

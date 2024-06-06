@@ -1,0 +1,44 @@
+@import '../../../src/style/scss/v4/colors';
+@import '../../../src/style/scss/v4/spacings';
+@import '../../../src/style/scss/v4/vars/fonts';
+
+:host {
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+
+  .fu-input-helper {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    @extend %font-v4-caption;
+    color: var(--text-secondary, #{$color-v4-text-secondary});
+
+    .fu-helper-icon {
+      width: 16px;
+      height: 16px;
+      color: var(--action-active, #{$color-v4-action-active});
+    }
+
+    &.fu-variant-error {
+      color: var(--error-main, #{$color-v4-error-main});
+      .fu-helper-icon {
+        color: var(--error-main, #{$color-v4-error-main});
+      }
+    }
+
+    &.fu-variant-success {
+      color: var(--success-dark, #{$color-v4-success-dark});
+      .fu-helper-icon {
+        color: var(--success-main, #{$color-v4-success-main});
+      }
+    }
+
+    &.fu-variant-warning {
+      color: var(--warning-darker, #{$color-v4-warning-darker});
+      .fu-helper-icon {
+        color: var(--warning-dark, #{$color-v4-warning-dark});
+      }
+    }
+  }
+}
