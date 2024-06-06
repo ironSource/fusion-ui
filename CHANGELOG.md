@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [8.1.4](https://github.com/ironSource/fusion-ui/compare/v8.1.4-rc.1...v8.1.4) (2024-06-05)
+
+### [8.1.4-rc.1](https://github.com/ironSource/fusion-ui/compare/v8.1.4-rc.0...v8.1.4-rc.1) (2024-06-05)
+
+
+### Bug Fixes
+
+* remove clear menu close state (persistent_fusionMenuCollapsed) on home menu item click ([4eebc10](https://github.com/ironSource/fusion-ui/commit/4eebc10d8af496530fd057bfb1a0f36c60030160))
+
+### [8.1.4-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.1.3...v8.1.4-rc.0) (2024-06-05)
+
+
+### Bug Fixes
+
+* comment clear storage (sticky state ) for secondary menu if home (dashboard was clicked) ([a74dd60](https://github.com/ironSource/fusion-ui/commit/a74dd60fb88cee8247f66006099d4f7ed1f5a4b7))
+
+### [8.1.3](https://github.com/ironSource/fusion-ui/compare/v8.0.0...v8.1.3) (2024-06-05)
+
+
+### Bug Fixes
+
+* chart tooltip css z-index ([0f456bc](https://github.com/ironSource/fusion-ui/commit/0f456bc3ab08fa3a490b556516e3bf5c4e5b6baa))
+* hot fix for tooltip on primary menu ([#316](https://github.com/ironSource/fusion-ui/issues/316)) ([30e57da](https://github.com/ironSource/fusion-ui/commit/30e57da453bf31c2965f675c5f3755b37afa310a))
+
+
+### CI
+
+* init after checkout from master ([2c0a285](https://github.com/ironSource/fusion-ui/commit/2c0a285cccdda624e4169d3f0a85d03caa17796a))
+
 ### [8.1.2](https://github.com/ironSource/fusion-ui/compare/v8.1.2-rc.1...v8.1.2) (2024-06-05)
 
 ### [8.1.2-rc.1](https://github.com/ironSource/fusion-ui/compare/v8.1.2-rc.0...v8.1.2-rc.1) (2024-06-05)

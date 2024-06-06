@@ -261,6 +261,7 @@ const TOOLTIP_ELEMENT_STYLE = `
   opacity:1;
   pointer-events:none;
   position:absolute;
+  z-index: var(--chart-tooltip-z-index, 1001);
   padding: 8px;
   box-shadow: 0px 4px 8px -2px rgba(16, 24, 40, 0.12);
   border: 1px solid #e4e4e4;
