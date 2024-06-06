@@ -33,12 +33,7 @@
                  name="ph/info"></fusion-icon>
 </div>
 <div *ngIf="helperText || showLengthCounter" class="fu-input-underline">
-    <div *ngIf="helperText" class="fu-input-helper fu-variant-{{variant}}"
-         [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:FieldHelpTextTestIdModifiers.TEXT">
-        <fusion-icon *ngIf="helperIcon" class="fu-helper-icon" [name]="helperIcon"
-                     [attr.data-testid]="testId"></fusion-icon>
-        {{ helperText }}
-    </div>
+    <fusion-input-helper [text]="helperText" [state]="variant" [iconName]="helperIcon" [testId]="testId"></fusion-input-helper>
     <div *ngIf="showLengthCounter" class="fu-max-length-counter"
          [attr.data-testid]="testId">{{ (valueLength$ | async) }}
         <ng-container *ngIf="maxLength">/{{ maxLength }}</ng-container>

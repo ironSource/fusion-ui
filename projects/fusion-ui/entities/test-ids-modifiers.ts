@@ -84,7 +84,8 @@ export enum FieldLabelTestIdModifiers {
     CONTAINER = 'field-label-container',
     TEXT = 'field-label-text',
     MANDATORY = 'field-label-mandatory',
-    TOOLTIP = 'field-label-help-tooltip'
+    TOOLTIP = 'field-label-help-tooltip',
+    ICON = 'field-label-icon'
 }
 
 export enum AlertTestIdModifiers {

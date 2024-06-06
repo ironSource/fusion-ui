@@ -240,36 +240,14 @@ $optionsMinWidth: 225px;
     }
   }
 
-  // region bottom line
+  // region label and helper
+  fusion-input-label.fu-dropdown-label {
+    margin-bottom: 4px;
+  }
   .fu-input-underline {
     display: flex;
     align-items: center;
     margin-top: 4px;
-
-    .fu-input-helper {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      @extend %font-v4-caption;
-      color: var(--text-secondary, #{$color-v4-text-secondary});
-
-      .fu-helper-icon {
-        width: 16px;
-        height: 16px;
-      }
-
-      &.fu-variant-error {
-        color: var(--error-main, #{$color-v4-error-main});
-      }
-
-      &.fu-variant-success {
-        color: var(--success-main, #{$color-v4-success-main});
-      }
-
-      &.fu-variant-warning {
-        color: var(--warning-main, #{$color-v4-warning-main});
-      }
-    }
   }
   // endregion
 }
