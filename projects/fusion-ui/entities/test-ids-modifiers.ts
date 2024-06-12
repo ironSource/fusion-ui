@@ -1,3 +1,5 @@
+export const getTestId = (testId: string, testIdModifier: string) => `${testId}--${testIdModifier}`;
+
 export enum ChipFilterTestIdModifiers {
     CHIP_FILTER = 'chf',
     RESET_BUTTON = 'chf-reset-button'
