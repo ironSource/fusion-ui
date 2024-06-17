@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [8.1.5-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.1.4...v8.1.5-rc.0) (2024-06-17)
+
+
+### Bug Fixes
+
+* changing spaces in layout v4 header ([ffdc773](https://github.com/ironSource/fusion-ui/commit/ffdc773c936f3a21ceebec7dccb7108c3f097620))
+
 ### [8.1.4](https://github.com/ironSource/fusion-ui/compare/v8.1.4-rc.1...v8.1.4) (2024-06-05)
 
 ### [8.1.4-rc.1](https://github.com/ironSource/fusion-ui/compare/v8.1.4-rc.0...v8.1.4-rc.1) (2024-06-05)
