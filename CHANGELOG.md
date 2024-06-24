@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [8.1.5](https://github.com/ironSource/fusion-ui/compare/v8.1.5-rc.1...v8.1.5) (2024-06-24)
+
+### [8.1.5-rc.1](https://github.com/ironSource/fusion-ui/compare/v8.1.4...v8.1.5-rc.1) (2024-06-24)
+
+
+### Bug Fixes
+
+* add support for html in alert v4 description ([50a3e36](https://github.com/ironSource/fusion-ui/commit/50a3e3645cff5399e08dbfc34d0bb95f2e95fd7a))
+
 ### [8.1.5-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.1.4...v8.1.5-rc.0) (2024-06-17)
 
 
