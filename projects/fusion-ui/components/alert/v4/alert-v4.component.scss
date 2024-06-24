@@ -36,7 +36,7 @@
     // endregion
 
     // region variants
-    &.fu-alert-outlined{
+    &.fu-alert-outlined {
       background-color: transparent;
       border-width: 1px;
       border-style: solid;
@@ -70,6 +70,14 @@
       .fu-alert-message {
         @extend %font-v4-body-1;
         color: var(--text-secondary, #{$color-v4-text-secondary});
+
+        ::ng-deep a:link,
+        ::ng-deep a:visited,
+        ::ng-deep a:hover,
+        ::ng-deep a:active {
+          text-decoration: none;
+          color: var(--primary-main, #{$color-v4-primary-main});
+        }
       }
     }
 
