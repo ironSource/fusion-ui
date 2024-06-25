@@ -12,8 +12,9 @@
             {{ title }}
         </div>
         <div class="fu-alert-message" *ngIf="description?.length"
-             [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdAlertModifiers.MESSAGE">
-            {{ description }}
+             [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdAlertModifiers.MESSAGE"
+             [innerHTML]="description"
+        >
         </div>
     </div>
     <div class="fu-alert-actions">

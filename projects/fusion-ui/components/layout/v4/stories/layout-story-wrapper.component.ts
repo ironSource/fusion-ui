@@ -35,7 +35,7 @@ import {takeUntil} from 'rxjs/operators';
         </fusion-layout>
     `,
     styles: [
-        '.parent {padding: 24px; width: 100%; height: 100%; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(4, 1fr); grid-column-gap: 16px; grid-row-gap: 24px;}',
+        '.parent {padding: 0 24px 24px 24px; width: 100%; height: 100%; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(4, 1fr); grid-column-gap: 16px; grid-row-gap: 24px;}',
         '.div1 { grid-area: 1 / 1 / 2 / 2; }',
         '.div2 { grid-area: 1 / 2 / 2 / 3; }',
         '.div3 { grid-area: 1 / 3 / 2 / 4; }',
@@ -56,8 +56,7 @@ import {takeUntil} from 'rxjs/operators';
         '.parent.layout1 .div8 { grid-area: 4 / 4 / 5 / 5; }',
         '.parent.layout1 .div9 { grid-area: 1 / 2 / 3 / 4; }',
         '.parent.layout1 .div10 { grid-area: 3 / 2 / 5 / 4; }',
-        '.parent div{color: #a7a7a7; background: #F7F7F7; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 4px; display: flex; align-items: center; justify-content: center}',
-        '.parent.fu-header-multiline {padding-top: 8px;}'
+        '.parent div{color: #a7a7a7; background: #F7F7F7; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 4px; display: flex; align-items: center; justify-content: center}'
     ],
     changeDetection: ChangeDetectionStrategy.OnPush
 })

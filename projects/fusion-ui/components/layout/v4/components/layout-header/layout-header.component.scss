@@ -70,7 +70,7 @@ $drilldownHeight: 72px;
     &.fu-multiline-header{
         .fu-header-main-row{
             display: flex;
-            padding: 36px 24px 8px 24px;
+            padding: 24px 24px 8px 24px;
             flex-direction: row;
             align-items: center;
             gap: 24px;
@@ -95,9 +95,11 @@ $drilldownHeight: 72px;
                     margin-left: 0;
                 }
             }
+            /* todo: remove this after approving
             &.fu-has-top-row{
                 padding-top: 28px;
             }
+            */
         }
         .fu-header-top-row{
             display: flex;

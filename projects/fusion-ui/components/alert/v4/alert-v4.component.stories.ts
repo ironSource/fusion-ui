@@ -39,6 +39,12 @@ Rectangle.args = {
     rounded: false
 };
 
+export const WithHTML: Story = {};
+WithHTML.args = {
+    color: 'info',
+    description: `<b>Bold text!</b> regular text <a href="#" target="_blank">link 1</a> and <a href="#">link 2</a>`
+};
+
 export const Severities: Story = {
     render: args => ({
         props: {
