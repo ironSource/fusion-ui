@@ -518,7 +518,6 @@ export const WithLabel: Story = {
             [formControl]="formControl"
             [testId]="testId"
             [labelText]="labelText"
-            [labelRequired]="true"
             [labelIcon]="'ph/question'"
             [labelTooltipText]="'Label tooltip'"
         ></fusion-multi-dropdown>
@@ -532,8 +531,6 @@ export const WithLabel: Story = {
             [formControl]="formControl"
             [testId]="testId"
             [labelText]="labelText"
-            [labelIcon]="'ph/question'"
-            [labelTooltipText]="'Label tooltip'"
         ></fusion-multi-dropdown>
         </div>
         `
