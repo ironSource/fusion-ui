@@ -417,7 +417,9 @@ export const HelperText: Story = {
             ...args
         },
         template: `
+<div style="display:flex; gap: 14px;">
 <div style="width: 240px; display: flex; flex-direction: column; gap: 16px;">
+<label>With Icon</label>
         <fusion-multi-dropdown
             [selectAllLabel]="selectAllLabel"
             [size]="size"
@@ -469,6 +471,57 @@ export const HelperText: Story = {
             [helperIcon]="'ph/fill/check-circle'"
             [helperVariant]="'success'"
         ></fusion-multi-dropdown>                                                        
+</div>
+<div style="width: 240px; display: flex; flex-direction: column; gap: 16px;">
+<label>Without Icon</label>
+        <fusion-multi-dropdown
+            [selectAllLabel]="selectAllLabel"
+            [size]="size"
+            [search]="search"
+            [placeholder]="placeholder"
+            [options]="options"
+            [loading]="loading"
+            [formControl]="formControl"
+            [testId]="testId"
+            [helperText]="'Helper text'"
+        ></fusion-multi-dropdown>
+        <fusion-multi-dropdown
+            [selectAllLabel]="selectAllLabel"
+            [size]="size"
+            [search]="search"
+            [placeholder]="placeholder"
+            [options]="options"
+            [loading]="loading"
+            [formControl]="formControl"
+            [testId]="testId"
+            [helperText]="'Helper error'"
+            [helperVariant]="'error'"
+        ></fusion-multi-dropdown>
+        <fusion-multi-dropdown
+            [selectAllLabel]="selectAllLabel"
+            [size]="size"
+            [search]="search"
+            [placeholder]="placeholder"
+            [options]="options"
+            [loading]="loading"
+            [formControl]="formControl"
+            [testId]="testId"
+            [helperText]="'Helper warning'"
+            [helperVariant]="'warning'"
+        ></fusion-multi-dropdown>                        
+        <fusion-multi-dropdown
+            [selectAllLabel]="selectAllLabel"
+            [size]="size"
+            [search]="search"
+            [placeholder]="placeholder"
+            [options]="options"
+            [loading]="loading"
+            [formControl]="formControl"
+            [testId]="testId"
+            [helperText]="'Helper success'"
+            [helperVariant]="'success'"
+        ></fusion-multi-dropdown>                                                        
+</div>
 </div>
         `
     })
