@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [8.1.7-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.1.6...v8.1.7-rc.0) (2024-07-04)
+
+
+### Bug Fixes
+
+* **isct-351:** fix for sidebar navigation secondary menu open/close state ([a14f09b](https://github.com/ironSource/fusion-ui/commit/a14f09bc9e725bec3ae8cddbbdb2d06e6da2d939))
+
 ### [8.1.6](https://github.com/ironSource/fusion-ui/compare/v8.1.5...v8.1.6) (2024-06-25)
 
 ### [8.1.5-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.1.4...v8.1.5-rc.0) (2024-06-17)
