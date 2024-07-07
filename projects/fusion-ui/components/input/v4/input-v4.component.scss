@@ -34,7 +34,7 @@
       background-color: var(--action-hover, #{$color-v4-action-hover});
     }
 
-    &:has(input[disabled="disabled"]) {
+    &.fu-disabled {
       outline-color: var(--action-outlined-border, #{$color-v4-action-outlined-border});
       background-color: var(--action-disabled-background, #{$color-v4-action-disabled-background});
 

@@ -1,8 +1,9 @@
 @if(labelText){
-    <fusion-input-label class="fu-dropdown-label" [text]="labelText" [required]="labelRequired" [icon]="labelIcon" [tooltipText]="labelTooltipText" [disabled]="(dropdownSelectConfigurations$ | async)?.disabled"></fusion-input-label>
+    <fusion-input-label class="fu-dropdown-label" [text]="labelText" [required]="labelRequired" [icon]="labelIcon" [tooltipText]="labelTooltipText" [disabled]="disabled$ | async"></fusion-input-label>
 }
 <div class="fu-input-wrapper fu-size-{{size}} fu-variant-{{variant}}"
      [class.fu-with-counter]="showLengthCounter"
+     [class.fu-disabled]="disabled$ | async"
      [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdInputModifiers.WRAPPER">
     <fusion-icon *ngIf="startIcon" class="fu-start-icon" [name]="startIcon"></fusion-icon>
     <div *ngIf="prefix" class="fu-input-prefix">{{ prefix }}</div>

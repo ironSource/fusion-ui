@@ -276,6 +276,8 @@ export class InputV4Component implements OnInit, OnDestroy {
     /** @internal */
     inputControl = new FormControl();
     /** @internal */
+    disabled$ = new BehaviorSubject(false);
+    /** @internal */
     showPasswordToggleButton$ = new BehaviorSubject<boolean>(null);
     /** @internal */
     valueLength$ = new BehaviorSubject(0);
@@ -355,6 +357,7 @@ export class InputV4Component implements OnInit, OnDestroy {
 
     /** @internal */
     setDisabledState?(isDisabled: boolean): void {
+        this.disabled$.next(isDisabled);
         if (isDisabled) {
             this.inputControl.disable({emitEvent: false});
         } else {
