@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [8.1.7-rc.2](https://github.com/ironSource/fusion-ui/compare/v8.1.7-rc.1...v8.1.7-rc.2) (2024-07-07)
+
+
+### Bug Fixes
+
+* **8.x.x:** restore include to css variables for v4 in style-guide.scss ([9ce35b6](https://github.com/ironSource/fusion-ui/commit/9ce35b69317be4968d4de42deceb1616dcc3e776))
+* **8.x.x:** restore include to css variavles for v4 in style-guide.scss ([#323](https://github.com/ironSource/fusion-ui/issues/323)) ([c5ec0b0](https://github.com/ironSource/fusion-ui/commit/c5ec0b06e3b4d7df31ca4bb273ba7a33d95fbbc4))
+
 ### [8.1.7-rc.1](https://github.com/ironSource/fusion-ui/compare/v8.1.7-rc.0...v8.1.7-rc.1) (2024-07-04)
 
 ### [8.1.7-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.1.6...v8.1.7-rc.0) (2024-07-04)
