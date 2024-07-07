@@ -56,6 +56,54 @@ type Story = StoryObj<InputV4Component>;
 
 export const Basic: Story = {};
 
+export const Size: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            formControl: formControl
+        },
+        template: `
+<div style="display: flex; flex-direction: column; gap: 16px">
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Medium (default)"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+        [testId]="mediumTestId"
+      ></fusion-input>
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Large"
+        size="large"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+        [testId]="largeTestId"
+      ></fusion-input>
+    <fusion-input
+        [formControl]="formControl"
+        placeholder="Extra Large"
+        size="xlarge"
+        [type]="type"
+        [step]="step"
+        [hideNumberArrows]="hideNumberArrows"
+        [min]="min"
+        [max]="max"
+        [maxLength]="maxLength"
+        [testId]="XLTestId"
+      ></fusion-input>
+</div>
+`
+    })
+};
+
 export const Disabled: Story = {
     render: args => ({
         props: {
@@ -127,54 +175,6 @@ export const Variant: Story = {
     })
 };
 
-export const Size: Story = {
-    render: args => ({
-        props: {
-            ...args,
-            formControl: formControl
-        },
-        template: `
-<div style="display: flex; flex-direction: column; gap: 16px">
-    <fusion-input
-        [formControl]="formControl"
-        placeholder="Medium (default)"
-        [type]="type"
-        [step]="step"
-        [hideNumberArrows]="hideNumberArrows"
-        [min]="min"
-        [max]="max"
-        [maxLength]="maxLength"
-        [testId]="mediumTestId"
-      ></fusion-input>
-    <fusion-input
-        [formControl]="formControl"
-        placeholder="Large"
-        size="large"
-        [type]="type"
-        [step]="step"
-        [hideNumberArrows]="hideNumberArrows"
-        [min]="min"
-        [max]="max"
-        [maxLength]="maxLength"
-        [testId]="largeTestId"
-      ></fusion-input>
-    <fusion-input
-        [formControl]="formControl"
-        placeholder="Extra Large"
-        size="xlarge"
-        [type]="type"
-        [step]="step"
-        [hideNumberArrows]="hideNumberArrows"
-        [min]="min"
-        [max]="max"
-        [maxLength]="maxLength"
-        [testId]="XLTestId"
-      ></fusion-input>
-</div>
-`
-    })
-};
-
 export const WithIcon: Story = {
     args: {
         startIcon: 'ph/corners-out',
@@ -209,7 +209,7 @@ export const Counter: Story = {
     }
 };
 
-export const WithHelper: Story = {
+export const HelperText: Story = {
     render: args => ({
         props: {
             ...args,
@@ -274,7 +274,7 @@ export const WithHelper: Story = {
     })
 };
 
-export const WithHelperIcon: Story = {
+export const HelperWithIcon: Story = {
     render: args => ({
         props: {
             ...args,
@@ -343,6 +343,31 @@ export const WithHelperIcon: Story = {
         [testId]="warningTestId"
       ></fusion-input>
 </div>
+`
+    })
+};
+
+export const NoLabelOrHelperText: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            labelText: null,
+            helperText: null
+        },
+        template: `
+<fusion-input
+    [labelText]="labelText"
+    [labelRequired]="labelRequired"
+    [labelIcon]="labelIcon"
+    [labelTooltipText]="labelTooltipText"
+    [helperText]="helperText"
+    [helperIcon]="'ph/fill/info'"
+    [formControl]="formControlDisabled"
+    [placeholder]="placeholder"
+    [size]="size"
+    [type]="type"
+    [testId]="testId"
+  ></fusion-input>
 `
     })
 };
