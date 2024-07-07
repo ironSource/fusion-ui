@@ -85,9 +85,11 @@ export class InputV4Component implements OnInit, OnDestroy {
     // region Inputs - input type
     @Input()
     set type(value: InputType) {
-        this._type = value;
-        if (this.showPasswordToggleButton$.getValue() === null) {
-            this.showPasswordToggleButton$.next(this._type === 'password');
+        if (!isNullOrUndefined(value) && value !== this._type) {
+            this._type = value;
+            if (this.showPasswordToggleButton$.getValue() === null) {
+                this.showPasswordToggleButton$.next(this._type === 'password');
+            }
         }
     }
 
@@ -166,16 +168,7 @@ export class InputV4Component implements OnInit, OnDestroy {
 
     private _maxLength: number;
     // endregion
-    // region Inputs - viewOnly
-    @Input() set viewOnly(value: boolean) {
-        this._viewOnly = value;
-    }
 
-    get viewOnly() {
-        return this._viewOnly;
-    }
-
-    private _viewOnly: boolean = false;
     // endregion
     // region Inputs - showApply
     @Input() set showApply(value: boolean) {
@@ -286,8 +279,6 @@ export class InputV4Component implements OnInit, OnDestroy {
     /** @internal */
     inputControl = new FormControl();
     /** @internal */
-    disabled$ = new BehaviorSubject(false);
-    /** @internal */
     showPasswordToggleButton$ = new BehaviorSubject<boolean>(null);
     /** @internal */
     valueLength$ = new BehaviorSubject(0);
@@ -367,7 +358,11 @@ export class InputV4Component implements OnInit, OnDestroy {
 
     /** @internal */
     setDisabledState?(isDisabled: boolean): void {
-        this.disabled$.next(isDisabled);
+        if (isDisabled) {
+            this.inputControl.disable({emitEvent: false});
+        } else {
+            this.inputControl.enable({emitEvent: false});
+        }
     }
 
     // endregion

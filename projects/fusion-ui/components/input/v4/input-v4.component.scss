@@ -135,7 +135,7 @@
       line-height: 20px;
 
       &::placeholder {
-        color: var(--text-secondary);
+        color: var(--text-secondary, #{$color-v4-text-secondary});
         letter-spacing: normal;
       }
 

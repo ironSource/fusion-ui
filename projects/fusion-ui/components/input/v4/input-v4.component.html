@@ -15,7 +15,6 @@
            [attr.min]="min"
            [attr.max]="max"
            [attr.placeholder]="placeholder"
-           [attr.disabled]="((disabled$ | async) || viewOnly) ? 'disabled' : null"
            [formControl]="inputControl"
            [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdInputModifiers.FIELD"
     />
