@@ -37,8 +37,7 @@ export default {
     args: {
         placeholder: 'Placeholder text',
         size: 'medium',
-        formControl: formControl,
-        viewOnly: false
+        formControl: formControl
     },
     argTypes: {
         formControl: {
@@ -64,7 +63,6 @@ export const Disabled: Story = {
     [formControl]="formControlDisabled"
     [placeholder]="placeholder"
     [size]="size"
-    [viewOnly]="viewOnly"
     [type]="type"
     [testId]="testId"
   ></fusion-input>
@@ -84,7 +82,6 @@ export const Variant: Story = {
         [formControl]="formControl"
         placeholder="Error"
         variant="error"
-        [viewOnly]="viewOnly"
         [type]="type"
         [step]="step"
         [hideNumberArrows]="hideNumberArrows"
@@ -97,7 +94,6 @@ export const Variant: Story = {
         [formControl]="formControl"
         placeholder="Success"
         variant="success"
-        [viewOnly]="viewOnly"
         [type]="type"
         [step]="step"
         [hideNumberArrows]="hideNumberArrows"
@@ -110,7 +106,6 @@ export const Variant: Story = {
         [formControl]="formControl"
         placeholder="Warning"
         variant="warning"
-        [viewOnly]="viewOnly"
         [type]="type"
         [step]="step"
         [hideNumberArrows]="hideNumberArrows"
@@ -135,7 +130,6 @@ export const Size: Story = {
     <fusion-input
         [formControl]="formControl"
         placeholder="Medium (default)"
-        [viewOnly]="viewOnly"
         [type]="type"
         [step]="step"
         [hideNumberArrows]="hideNumberArrows"
@@ -148,7 +142,6 @@ export const Size: Story = {
         [formControl]="formControl"
         placeholder="Large"
         size="large"
-        [viewOnly]="viewOnly"
         [type]="type"
         [step]="step"
         [hideNumberArrows]="hideNumberArrows"
@@ -161,7 +154,6 @@ export const Size: Story = {
         [formControl]="formControl"
         placeholder="Extra Large"
         size="xlarge"
-        [viewOnly]="viewOnly"
         [type]="type"
         [step]="step"
         [hideNumberArrows]="hideNumberArrows"
@@ -222,7 +214,6 @@ export const WithHelper: Story = {
         [formControl]="formControl"
         placeholder="Default"
         [helperText]="helperText"
-        [viewOnly]="viewOnly"
         [type]="type"
         [step]="step"
         [hideNumberArrows]="hideNumberArrows"
@@ -236,7 +227,6 @@ export const WithHelper: Story = {
         placeholder="Error"
         variant="error"
         [helperText]="helperText"
-        [viewOnly]="viewOnly"
         [type]="type"
         [step]="step"
         [hideNumberArrows]="hideNumberArrows"
@@ -250,7 +240,6 @@ export const WithHelper: Story = {
         placeholder="Success"
         variant="success"
         [helperText]="helperText"
-        [viewOnly]="viewOnly"
         [type]="type"
         [step]="step"
         [hideNumberArrows]="hideNumberArrows"
@@ -264,7 +253,6 @@ export const WithHelper: Story = {
         placeholder="Warning"
         variant="warning"
         [helperText]="helperText"
-        [viewOnly]="viewOnly"
         [type]="type"
         [step]="step"
         [hideNumberArrows]="hideNumberArrows"
@@ -292,7 +280,6 @@ export const WithHelperIcon: Story = {
         placeholder="Default"
         [helperText]="helperText"
         [helperIcon]="'ph/fill/info'"
-        [viewOnly]="viewOnly"
         [type]="type"
         [step]="step"
         [hideNumberArrows]="hideNumberArrows"
@@ -307,7 +294,6 @@ export const WithHelperIcon: Story = {
         variant="error"
         [helperText]="helperText"
         [helperIcon]="'ph/fill/warning-octagon'"
-        [viewOnly]="viewOnly"
         [type]="type"
         [step]="step"
         [hideNumberArrows]="hideNumberArrows"
@@ -322,7 +308,6 @@ export const WithHelperIcon: Story = {
         variant="success"
         [helperText]="helperText"
         [helperIcon]="'ph/fill/check-circle'"
-        [viewOnly]="viewOnly"
         [type]="type"
         [step]="step"
         [hideNumberArrows]="hideNumberArrows"
@@ -337,7 +322,6 @@ export const WithHelperIcon: Story = {
         variant="warning"
         [helperText]="helperText"
         [helperIcon]="'ph/fill/warning'"
-        [viewOnly]="viewOnly"
         [type]="type"
         [step]="step"
         [hideNumberArrows]="hideNumberArrows"
@@ -375,7 +359,6 @@ export const Password: Story = {
 <fusion-input
     [formControl]="formControl"
     [type]="type"
-    [viewOnly]="viewOnly"
     [testId]="testId"
   ></fusion-input>
 `

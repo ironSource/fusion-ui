@@ -179,7 +179,6 @@
       // endregion
 
     }
-
     // endregion
 
     // region variant
@@ -208,21 +207,30 @@
     }
 
     // endregion
+
+    &.fu-with-counter{
+        position: relative;
+        input{
+            padding-right: 40px;
+        }
+    }
   }
+
+  // region chars counter / maxlength
+  .fu-max-length-counter {
+    position: absolute;
+    right: 6px;
+    @extend %font-v4-caption;
+    color: var(--text-secondary, #{$color-v4-text-secondary});
+  }
+  // endregion
 
   // region bottom line
   .fu-input-underline {
     display: flex;
     align-items: center;
     margin-top: 4px;
-
-    .fu-max-length-counter {
-      margin-left: auto;
-      @extend %font-v4-caption;
-      color: var(--text-secondary, #{$color-v4-text-secondary});
-    }
   }
-
   // endregion
 
 }
