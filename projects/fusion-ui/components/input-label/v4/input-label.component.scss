@@ -10,7 +10,7 @@
   .fu-input-label-wrapper {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 2px;
 
     .fu-input-label-text {
       @extend %font-v4-input-label;
@@ -23,7 +23,7 @@
       font-size: 16px;
       font-style: normal;
       font-weight: 400;
-      line-height: 20px;
+      height: 16px;
     }
 
     .fu-input-label-icon {

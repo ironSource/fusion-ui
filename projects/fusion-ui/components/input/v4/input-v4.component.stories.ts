@@ -37,7 +37,11 @@ export default {
     args: {
         placeholder: 'Placeholder text',
         size: 'medium',
-        formControl: formControl
+        formControl: formControl,
+        labelText: 'Label',
+        labelRequired: true,
+        labelIcon: 'ph/question',
+        labelTooltipText: 'Tooltip text'
     },
     argTypes: {
         formControl: {
@@ -50,7 +54,7 @@ export default {
 
 type Story = StoryObj<InputV4Component>;
 
-export const Default: Story = {};
+export const Basic: Story = {};
 
 export const Disabled: Story = {
     render: args => ({
@@ -60,6 +64,10 @@ export const Disabled: Story = {
         },
         template: `
 <fusion-input
+    [labelText]="labelText"
+    [labelRequired]="labelRequired"
+    [labelIcon]="labelIcon"
+    [labelTooltipText]="labelTooltipText"
     [formControl]="formControlDisabled"
     [placeholder]="placeholder"
     [size]="size"
@@ -276,6 +284,10 @@ export const WithHelperIcon: Story = {
         template: `
 <div style="display: flex; flex-direction: column; gap: 16px">
     <fusion-input
+        [labelText]="labelText"
+        [labelRequired]="labelRequired"
+        [labelIcon]="labelIcon"
+        [labelTooltipText]="labelTooltipText"
         [formControl]="formControl"
         placeholder="Default"
         [helperText]="helperText"
@@ -357,6 +369,10 @@ export const Password: Story = {
         },
         template: `
 <fusion-input
+    [labelText]="labelText"
+    [labelRequired]="labelRequired"
+    [labelIcon]="labelIcon"
+    [labelTooltipText]="labelTooltipText"
     [formControl]="formControl"
     [type]="type"
     [testId]="testId"

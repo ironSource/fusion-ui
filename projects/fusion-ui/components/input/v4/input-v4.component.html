@@ -1,4 +1,6 @@
-<label *ngIf="labelText" for="{{id}}" class="fu-label">{{ labelText }}</label>
+@if(labelText){
+    <fusion-input-label class="fu-dropdown-label" [text]="labelText" [required]="labelRequired" [icon]="labelIcon" [tooltipText]="labelTooltipText" [disabled]="(dropdownSelectConfigurations$ | async)?.disabled"></fusion-input-label>
+}
 <div class="fu-input-wrapper fu-size-{{size}} fu-variant-{{variant}}"
      [class.fu-with-counter]="showLengthCounter"
      [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdInputModifiers.WRAPPER">

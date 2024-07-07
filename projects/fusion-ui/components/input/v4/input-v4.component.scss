@@ -8,6 +8,7 @@
   padding: 0;
   display: flex;
   flex-direction: column;
+  gap: 4px;
 
   .fu-input-wrapper {
     flex-grow: 2;
@@ -229,7 +230,6 @@
   .fu-input-underline {
     display: flex;
     align-items: center;
-    margin-top: 4px;
   }
   // endregion
 

@@ -19,17 +19,18 @@ import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {InputSize, InputType, InputVariant} from './input-v4.entities';
 import {takeUntil} from 'rxjs/operators';
-import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
 import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 import {FieldHelpTextTestIdModifiers, InputTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 import {InputHelperComponent} from '@ironsource/fusion-ui/components/input-helper/v4';
+import {InputLabelComponent} from '@ironsource/fusion-ui/components/input-label/v4';
 
 @Component({
     selector: 'fusion-input',
     standalone: true,
-    imports: [CommonModule, ReactiveFormsModule, IconModule, TooltipDirective, GenericPipe, InputHelperComponent],
+    imports: [CommonModule, ReactiveFormsModule, IconModule, TooltipDirective, GenericPipe, InputHelperComponent, InputLabelComponent],
     host: {class: 'fusion-v4'},
     templateUrl: './input-v4.component.html',
     styleUrls: ['./input-v4.component.scss'],
@@ -58,18 +59,14 @@ export class InputV4Component implements OnInit, OnDestroy {
 
     private _id: string = this.uniqueIdService.getUniqueId().toString();
     // endregion
+
     // region Inputs - labelText
-    @Input()
-    set labelText(value: string) {
-        this._labelText = value;
-    }
-
-    get labelText() {
-        return this._labelText;
-    }
-
-    private _labelText: string;
+    @Input() labelText: string;
+    @Input() labelRequired: boolean = false;
+    @Input() labelIcon: IconData;
+    @Input() labelTooltipText: string;
     // endregion
+
     // region Inputs - placeholder
     @Input()
     set placeholder(value: string) {
