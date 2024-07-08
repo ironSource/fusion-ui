@@ -42,7 +42,7 @@
             <!--region toggle secondary menu button-->
             <div class="fu-menu-toggle-button-holder" *ngIf="(selectedBarItem$ | async)?.type === 'main'" >
                 <div class="fu-navigation-bar-button fu-menu-toggle" (click)="menuToggleButtonClicked($event)">
-                    <fusion-icon class="fu-navigation-bar-button-icon" [name]=" (menuToggleCollapsed$ |async) ? menuExpandedIcon : menuCollapsedIcon"></fusion-icon>
+                    <fusion-icon class="fu-navigation-bar-button-icon" [name]="(menuToggleCollapsed$ |async) ? menuExpandedIcon : menuCollapsedIcon"></fusion-icon>
                 </div>
             </div>
             <!--endregion toggle secondary menu button-->
