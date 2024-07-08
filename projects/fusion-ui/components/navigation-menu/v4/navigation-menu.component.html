@@ -3,6 +3,7 @@
         [menuBarItems]="menuItems"
         [layoutUser]="layoutUser"
         [menuOpened]="secondaryMenuOpen$ | async"
+        [menuExpanded]="secondaryMenuExpanded$ | async"
         [menuOpenForPrimaryMenuItem]="menuOpenForPrimaryMenuItem$ | async"
         [menuHoverMode]="primaryMenuItemMode === 'hoverToShowSecondaryItems'"
         (primaryMenuItemClicked)="onPrimaryMainMenuItemClicked($event)"
