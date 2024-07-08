@@ -1,6 +1,11 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, forwardRef, HostBinding, Input, OnInit, ViewChild} from '@angular/core';
 import {ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
+import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
+import {InputVariant} from '@ironsource/fusion-ui/components/input/v4';
+import {InputHelperComponent} from '@ironsource/fusion-ui/components/input-helper/v4';
+import {InputLabelComponent} from '@ironsource/fusion-ui/components/input-label/v4';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
     selector: 'fusion-textarea',
@@ -8,7 +13,7 @@ import {CommonModule} from '@angular/common';
     styleUrls: ['./textarea-v4.component.scss'],
     host: {class: 'fusion-v4'},
     standalone: true,
-    imports: [CommonModule, ReactiveFormsModule, FormsModule],
+    imports: [CommonModule, ReactiveFormsModule, FormsModule, InputHelperComponent, InputLabelComponent],
     changeDetection: ChangeDetectionStrategy.Default,
     providers: [
         {
@@ -20,30 +25,51 @@ import {CommonModule} from '@angular/common';
 })
 export class TextareaV4Component implements OnInit, ControlValueAccessor {
     @Input() placeholder: string;
-    @Input() error: string;
-    @Input() helperText: string;
     @Input() readonly: boolean;
-    @Input() required: boolean;
     @Input() resize: boolean;
     @Input() name: string;
     @Input() isDisabled: boolean;
     @Input() model: string;
-    @Output() modelChange = new EventEmitter();
+    @Input() maxLength: number;
+    @Input() showLengthCounter = false;
+
+    // region Inputs - labelText
+    @Input() labelText: string;
+    @Input() labelRequired: boolean = false;
+    @Input() labelIcon: IconData;
+    @Input() labelTooltipText: string;
+    // endregion
+
+    // region Inputs - helper
+    @Input() helperText: string;
+    @Input() helperIcon: string;
+    // end region
+
+    @Input() variant: InputVariant = 'default';
+
+    /** @internal */
     focused: boolean = false;
+    /** @internal */
+    valueLength$ = new BehaviorSubject(0);
+    /** @internal */
+    @ViewChild('textArea') textArea: ElementRef<HTMLTextAreaElement>;
+
+    @Input() testId: string;
+
+    @HostBinding('attr.data-testid') get testAttribute(): string {
+        return this.testId;
+    }
 
     ngOnInit() {
         this.resize = typeof this.resize === 'undefined' ? false : this.resize;
         this.model = this.model || '';
-        this.placeholder = this.placeholder || '';
-        this.error = this.error || '';
-        this.helperText = this.helperText || '';
     }
 
     onChange(event) {
         this.propagateTouched();
         this.model = event;
         this.propagateChange(event);
-        this.modelChange.emit(this.model);
+        this.valueLength$.next(event.length);
     }
 
     // Implement ControlValueAccessor methods
@@ -91,10 +117,12 @@ export class TextareaV4Component implements OnInit, ControlValueAccessor {
         this.isDisabled = isDisabled;
     }
 
+    /** @internal */
     focus(): void {
         this.focused = true;
     }
 
+    /** @internal */
     blur(): void {
         this.focused = false;
     }
