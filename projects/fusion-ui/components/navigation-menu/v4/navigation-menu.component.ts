@@ -85,7 +85,11 @@ export class NavigationMenuComponent implements OnInit {
             .pipe(takeUntil(this.onDestroy$))
             .subscribe(this.onNavigationMenuMouseLeave.bind(this));
 
-        if (this.selectedPrimaryMenuItem?.type !== NavigationBarItemType.Main && this.secondaryMenuOpen$.getValue()) {
+        if (
+            !isNullOrUndefined(this.selectedPrimaryMenuItem) &&
+            this.selectedPrimaryMenuItem?.type !== NavigationBarItemType.Main &&
+            this.secondaryMenuOpen$.getValue()
+        ) {
             this.secondaryMenuOpen$.next(false);
         }
     }
