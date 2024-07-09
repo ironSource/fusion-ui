@@ -159,9 +159,6 @@ export class NavigationMenuComponent implements OnInit {
         if (!(this.secondaryMenuOpen$.getValue() && this.secondaryMenuExpanded$.getValue())) {
             this.secondaryMenuOpen$.next(!this.secondaryMenuOpen$.getValue() && this.secondaryMenuItems$.getValue().length > 0);
         }
-        // todo: remove console.log
-        console.log('toggleMenu', this.secondaryMenuOpen$.getValue(), this.storageService.get(StorageType.SessionStorage, MENU_CACHE_KEY));
-
         this.storageService.set(StorageType.SessionStorage, MENU_CACHE_KEY, this.secondaryMenuOpen$.getValue());
         if (this.secondaryMenuOpen$.getValue()) {
             if (this.needRestoreSelectedState) {
@@ -188,7 +185,6 @@ export class NavigationMenuComponent implements OnInit {
                 this.setSecondaryMenu(primary);
             } else {
                 this.resetSecondaryMenu();
-                this.secondaryMenuOpen$.next(false);
             }
             this.primaryMenu.setSelectedPrimaryMenuItem(primary);
             setTimeout(() => {
