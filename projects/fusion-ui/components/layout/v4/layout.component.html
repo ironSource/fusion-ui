@@ -21,7 +21,7 @@
         </div>
         <!--main header-->
         <!--main content-->
-        <div #mainContent class="main-content" id="main-view" [class.fu-menu-expanded-opened]="!navigationMenu.isSecondaryMenuExpandable && ((navigationMenu.secondaryMenuOpen$ | async) && (navigationMenu.secondaryMenuItems$ | async)?.length)">
+        <div #mainContent class="main-content" id="main-view" [class.fu-menu-expanded-opened]="!navigationMenu.isSecondaryMenuExpandable && (navigationMenu.secondaryMenuOpen$ | async)">
             <div class="page-view">
                 <div class="app-route-content-holder">
                     <ng-content></ng-content>

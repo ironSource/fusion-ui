@@ -17,7 +17,7 @@
         [menuName]="secondaryMenuName$ | async"
         [menuLogoSrc]="secondaryMenuLogoSrc$ | async"
         [class.fu-menu-expanded]="secondaryMenuExpanded$ | async"
-        [class.fu-menu-open]="(secondaryMenuOpen$ | async) && (secondaryMenuItems$ | async)?.length"
+        [class.fu-menu-open]="(secondaryMenuOpen$ | async)"
         (menuItemClick)="onMenuItemClicked($event)"
     ></fusion-navigation-secondary-menu>
 </div>

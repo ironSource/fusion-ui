@@ -35,7 +35,7 @@ export class NavigationMenuComponent implements OnInit {
     secondaryMenuName$ = new BehaviorSubject<string>('');
     secondaryMenuLogoSrc$ = new BehaviorSubject<string>('');
 
-    secondaryMenuOpen$ = new BehaviorSubject<boolean>(true);
+    secondaryMenuOpen$ = new BehaviorSubject<boolean>(/*this.storageService.get(StorageType.SessionStorage, MENU_CACHE_KEY) ??*/ true);
     secondaryMenuExpanded$ = new BehaviorSubject<boolean>(true);
 
     menuOpenForPrimaryMenuItem$ = new BehaviorSubject<PrimaryMenuItem>(null);
@@ -84,6 +84,10 @@ export class NavigationMenuComponent implements OnInit {
         fromEvent(this.elementRef.nativeElement, 'mouseleave')
             .pipe(takeUntil(this.onDestroy$))
             .subscribe(this.onNavigationMenuMouseLeave.bind(this));
+
+        if (this.selectedPrimaryMenuItem?.type !== NavigationBarItemType.Main && this.secondaryMenuOpen$.getValue()) {
+            this.secondaryMenuOpen$.next(false);
+        }
     }
 
     onMenuItemClicked(menuItem, popMenuItem = false) {
