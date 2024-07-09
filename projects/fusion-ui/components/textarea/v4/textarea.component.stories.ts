@@ -69,16 +69,6 @@ export const Disabled: Story = {
         template: baseTemplate
     })
 };
-export const ReadOnly: Story = {
-    render: args => ({
-        props: {
-            ...args,
-            readonly: true,
-            formControl: formControlWithValue
-        },
-        template: baseTemplate
-    })
-};
 export const Resizable: Story = {
     render: args => ({
         props: {
