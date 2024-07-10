@@ -86,7 +86,10 @@ export class NavigationMenuComponent implements OnInit {
             .subscribe(this.onNavigationMenuMouseLeave.bind(this));
 
         if (this.selectedPrimaryMenuItem?.type !== NavigationBarItemType.Main && this.secondaryMenuOpen$.getValue()) {
-            this.secondaryMenuOpen$.next(false);
+            // if started from primary menu item that have NOT children and secondary menu is open
+            setTimeout(() => {
+                this.secondaryMenuOpen$.next(false);
+            });
         }
     }
 
@@ -155,13 +158,11 @@ export class NavigationMenuComponent implements OnInit {
         this.setNetworkTheme(cssTheme);
     }
 
-    toggleMenu($event?: MouseEvent) {
+    toggleMenu() {
         if (!(this.secondaryMenuOpen$.getValue() && this.secondaryMenuExpanded$.getValue())) {
             this.secondaryMenuOpen$.next(!this.secondaryMenuOpen$.getValue() && this.secondaryMenuItems$.getValue().length > 0);
         }
-        if (($event?.currentTarget as Element)?.matches('.fu-menu-toggle')) {
-            this.storageService.set(StorageType.SessionStorage, MENU_CACHE_KEY, this.secondaryMenuOpen$.getValue());
-        }
+        this.storageService.set(StorageType.SessionStorage, MENU_CACHE_KEY, this.secondaryMenuOpen$.getValue());
         if (this.secondaryMenuOpen$.getValue()) {
             if (this.needRestoreSelectedState) {
                 this.setSecondaryMenu(this.selectedPrimaryMenuItem);

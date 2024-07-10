@@ -128,7 +128,7 @@ export class NavigationPrimaryMenuComponent {
 
     menuToggleButtonClicked($event: MouseEvent) {
         this.menuToggleCollapsed$.next(this.menuOpened && !this.menuExpanded);
-        this.toggleMenu.emit($event);
+        this.toggleMenu.emit();
     }
 
     private parseNavigationBarItems(value: PrimaryMenuItem[]) {
