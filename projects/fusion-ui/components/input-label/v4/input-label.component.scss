@@ -30,6 +30,9 @@
       width: 16px;
       height: 16px;
       color: var(--action-active, #{$color-v4-action-active});
+      &:hover {
+        color: var(--action-primary, #{$color-v4-action-primary});
+      }
     }
 
     &.fu-disabled {
