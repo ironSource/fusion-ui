@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [8.1.8](https://github.com/ironSource/fusion-ui/compare/v8.1.8-rc.11...v8.1.8) (2024-07-10)
+
+### [8.1.8-rc.11](https://github.com/ironSource/fusion-ui/compare/v8.1.8-rc.10...v8.1.8-rc.11) (2024-07-10)
+
+### [8.1.8-rc.10](https://github.com/ironSource/fusion-ui/compare/v8.1.8-rc.9...v8.1.8-rc.10) (2024-07-10)
+
+### [8.1.8-rc.9](https://github.com/ironSource/fusion-ui/compare/v8.1.8-rc.8...v8.1.8-rc.9) (2024-07-10)
+
+### [8.1.8-rc.8](https://github.com/ironSource/fusion-ui/compare/v8.1.8-rc.7...v8.1.8-rc.8) (2024-07-10)
+
+### [8.1.8-rc.7](https://github.com/ironSource/fusion-ui/compare/v8.1.8-rc.6...v8.1.8-rc.7) (2024-07-10)
+
+### [8.1.8-rc.6](https://github.com/ironSource/fusion-ui/compare/v8.1.8-rc.5...v8.1.8-rc.6) (2024-07-09)
+
+### [8.1.8-rc.5](https://github.com/ironSource/fusion-ui/compare/v8.1.8-rc.4...v8.1.8-rc.5) (2024-07-09)
+
+### [8.1.8-rc.4](https://github.com/ironSource/fusion-ui/compare/v8.1.8-rc.3...v8.1.8-rc.4) (2024-07-09)
+
+### [8.1.8-rc.3](https://github.com/ironSource/fusion-ui/compare/v8.1.8-rc.2...v8.1.8-rc.3) (2024-07-09)
+
+### [8.1.8-rc.2](https://github.com/ironSource/fusion-ui/compare/v8.1.8-rc.1...v8.1.8-rc.2) (2024-07-09)
+
+### [8.1.8-rc.1](https://github.com/ironSource/fusion-ui/compare/v8.1.8-rc.0...v8.1.8-rc.1) (2024-07-09)
+
+### [8.1.8-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.1.6...v8.1.8-rc.0) (2024-07-08)
+
 ### [8.1.7](https://github.com/ironSource/fusion-ui/compare/v8.1.7-rc.2...v8.1.7) (2024-07-08)
 
 ### [8.1.7-rc.2](https://github.com/ironSource/fusion-ui/compare/v8.1.7-rc.1...v8.1.7-rc.2) (2024-07-07)
