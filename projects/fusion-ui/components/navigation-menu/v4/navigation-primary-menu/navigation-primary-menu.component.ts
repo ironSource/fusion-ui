@@ -126,7 +126,7 @@ export class NavigationPrimaryMenuComponent {
         }
     }
 
-    menuToggleButtonClicked(event: MouseEvent) {
+    menuToggleButtonClicked($event: MouseEvent) {
         this.menuToggleCollapsed$.next(this.menuOpened && !this.menuExpanded);
         this.toggleMenu.emit();
     }

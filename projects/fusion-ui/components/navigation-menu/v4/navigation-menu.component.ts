@@ -86,7 +86,10 @@ export class NavigationMenuComponent implements OnInit {
             .subscribe(this.onNavigationMenuMouseLeave.bind(this));
 
         if (this.selectedPrimaryMenuItem?.type !== NavigationBarItemType.Main && this.secondaryMenuOpen$.getValue()) {
-            this.secondaryMenuOpen$.next(false);
+            // if started from primary menu item that have NOT children and secondary menu is open
+            setTimeout(() => {
+                this.secondaryMenuOpen$.next(false);
+            }, 250);
         }
     }
 
@@ -185,7 +188,6 @@ export class NavigationMenuComponent implements OnInit {
                 this.setSecondaryMenu(primary);
             } else {
                 this.resetSecondaryMenu();
-                this.secondaryMenuOpen$.next(false);
             }
             this.primaryMenu.setSelectedPrimaryMenuItem(primary);
             setTimeout(() => {

@@ -396,7 +396,7 @@ export const NAVIGATION_MENU_HOME_MOCK: PrimaryMenuItem[] = [
         type: NavigationBarItemType.Home,
         menuIcon: 'ph/house',
         menuTitle: 'Dashboard',
-        route: '/dashboard',
+        route: '/iframe.html',
         cssTheme: {
             'fu-navbar-background-color': '#181818'
         }
