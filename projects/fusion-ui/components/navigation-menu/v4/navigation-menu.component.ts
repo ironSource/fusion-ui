@@ -89,7 +89,7 @@ export class NavigationMenuComponent implements OnInit {
             // if started from primary menu item that have NOT children and secondary menu is open
             setTimeout(() => {
                 this.secondaryMenuOpen$.next(false);
-            });
+            }, 250);
         }
     }
 
