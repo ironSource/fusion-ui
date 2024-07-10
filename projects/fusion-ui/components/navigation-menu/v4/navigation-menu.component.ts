@@ -35,7 +35,7 @@ export class NavigationMenuComponent implements OnInit {
     secondaryMenuName$ = new BehaviorSubject<string>('');
     secondaryMenuLogoSrc$ = new BehaviorSubject<string>('');
 
-    secondaryMenuOpen$ = new BehaviorSubject<boolean>(/*this.storageService.get(StorageType.SessionStorage, MENU_CACHE_KEY) ??*/ true);
+    secondaryMenuOpen$ = new BehaviorSubject<boolean>(this.storageService.get(StorageType.SessionStorage, MENU_CACHE_KEY) ?? true);
     secondaryMenuExpanded$ = new BehaviorSubject<boolean>(true);
 
     menuOpenForPrimaryMenuItem$ = new BehaviorSubject<PrimaryMenuItem>(null);
@@ -85,11 +85,7 @@ export class NavigationMenuComponent implements OnInit {
             .pipe(takeUntil(this.onDestroy$))
             .subscribe(this.onNavigationMenuMouseLeave.bind(this));
 
-        if (
-            !isNullOrUndefined(this.selectedPrimaryMenuItem) &&
-            this.selectedPrimaryMenuItem?.type !== NavigationBarItemType.Main &&
-            this.secondaryMenuOpen$.getValue()
-        ) {
+        if (this.selectedPrimaryMenuItem?.type !== NavigationBarItemType.Main && this.secondaryMenuOpen$.getValue()) {
             this.secondaryMenuOpen$.next(false);
         }
     }
@@ -159,11 +155,13 @@ export class NavigationMenuComponent implements OnInit {
         this.setNetworkTheme(cssTheme);
     }
 
-    toggleMenu() {
+    toggleMenu($event?: MouseEvent) {
         if (!(this.secondaryMenuOpen$.getValue() && this.secondaryMenuExpanded$.getValue())) {
             this.secondaryMenuOpen$.next(!this.secondaryMenuOpen$.getValue() && this.secondaryMenuItems$.getValue().length > 0);
         }
-        this.storageService.set(StorageType.SessionStorage, MENU_CACHE_KEY, this.secondaryMenuOpen$.getValue());
+        if (($event?.currentTarget as Element)?.matches('.fu-menu-toggle')) {
+            this.storageService.set(StorageType.SessionStorage, MENU_CACHE_KEY, this.secondaryMenuOpen$.getValue());
+        }
         if (this.secondaryMenuOpen$.getValue()) {
             if (this.needRestoreSelectedState) {
                 this.setSecondaryMenu(this.selectedPrimaryMenuItem);
