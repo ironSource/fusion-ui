@@ -162,7 +162,10 @@ export class NavigationMenuComponent implements OnInit {
         if (!(this.secondaryMenuOpen$.getValue() && this.secondaryMenuExpanded$.getValue())) {
             this.secondaryMenuOpen$.next(!this.secondaryMenuOpen$.getValue() && this.secondaryMenuItems$.getValue().length > 0);
         }
-        this.storageService.set(StorageType.SessionStorage, MENU_CACHE_KEY, this.secondaryMenuOpen$.getValue());
+        const newMenuStateValue = isNullOrUndefined(this.storageService.get(StorageType.SessionStorage, MENU_CACHE_KEY))
+            ? true
+            : this.secondaryMenuOpen$.getValue();
+        this.storageService.set(StorageType.SessionStorage, MENU_CACHE_KEY, newMenuStateValue);
         if (this.secondaryMenuOpen$.getValue()) {
             if (this.needRestoreSelectedState) {
                 this.setSecondaryMenu(this.selectedPrimaryMenuItem);

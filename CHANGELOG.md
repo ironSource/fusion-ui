@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [8.1.9](https://github.com/ironSource/fusion-ui/compare/v8.1.9-rc.0...v8.1.9) (2024-07-11)
+
+### [8.1.9-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.1.6...v8.1.9-rc.0) (2024-07-11)
+
+
+### Bug Fixes
+
+* **isct-351:** set default true to session for menu state ([90a7e99](https://github.com/ironSource/fusion-ui/commit/90a7e996faea2bee5e3155879e93199f656e55e4))
+* **sidebar-menu:** fix for default state is open ([9633a47](https://github.com/ironSource/fusion-ui/commit/9633a4769f6069b3b241bf9329e4dbe689c61587))
+
 ### [8.1.8](https://github.com/ironSource/fusion-ui/compare/v8.1.8-rc.11...v8.1.8) (2024-07-10)
 
 ### [8.1.8-rc.11](https://github.com/ironSource/fusion-ui/compare/v8.1.8-rc.10...v8.1.8-rc.11) (2024-07-10)
