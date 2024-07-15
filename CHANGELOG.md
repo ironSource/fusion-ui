@@ -2,6 +2,61 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [8.1.9](https://github.com/ironSource/fusion-ui/compare/v8.1.9-rc.0...v8.1.9) (2024-07-11)
+
+### [8.1.9-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.1.6...v8.1.9-rc.0) (2024-07-11)
+
+
+### Bug Fixes
+
+* **isct-351:** set default true to session for menu state ([90a7e99](https://github.com/ironSource/fusion-ui/commit/90a7e996faea2bee5e3155879e93199f656e55e4))
+* **sidebar-menu:** fix for default state is open ([9633a47](https://github.com/ironSource/fusion-ui/commit/9633a4769f6069b3b241bf9329e4dbe689c61587))
+
+### [8.1.8](https://github.com/ironSource/fusion-ui/compare/v8.1.8-rc.11...v8.1.8) (2024-07-10)
+
+### [8.1.8-rc.11](https://github.com/ironSource/fusion-ui/compare/v8.1.8-rc.10...v8.1.8-rc.11) (2024-07-10)
+
+### [8.1.8-rc.10](https://github.com/ironSource/fusion-ui/compare/v8.1.8-rc.9...v8.1.8-rc.10) (2024-07-10)
+
+### [8.1.8-rc.9](https://github.com/ironSource/fusion-ui/compare/v8.1.8-rc.8...v8.1.8-rc.9) (2024-07-10)
+
+### [8.1.8-rc.8](https://github.com/ironSource/fusion-ui/compare/v8.1.8-rc.7...v8.1.8-rc.8) (2024-07-10)
+
+### [8.1.8-rc.7](https://github.com/ironSource/fusion-ui/compare/v8.1.8-rc.6...v8.1.8-rc.7) (2024-07-10)
+
+### [8.1.8-rc.6](https://github.com/ironSource/fusion-ui/compare/v8.1.8-rc.5...v8.1.8-rc.6) (2024-07-09)
+
+### [8.1.8-rc.5](https://github.com/ironSource/fusion-ui/compare/v8.1.8-rc.4...v8.1.8-rc.5) (2024-07-09)
+
+### [8.1.8-rc.4](https://github.com/ironSource/fusion-ui/compare/v8.1.8-rc.3...v8.1.8-rc.4) (2024-07-09)
+
+### [8.1.8-rc.3](https://github.com/ironSource/fusion-ui/compare/v8.1.8-rc.2...v8.1.8-rc.3) (2024-07-09)
+
+### [8.1.8-rc.2](https://github.com/ironSource/fusion-ui/compare/v8.1.8-rc.1...v8.1.8-rc.2) (2024-07-09)
+
+### [8.1.8-rc.1](https://github.com/ironSource/fusion-ui/compare/v8.1.8-rc.0...v8.1.8-rc.1) (2024-07-09)
+
+### [8.1.8-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.1.6...v8.1.8-rc.0) (2024-07-08)
+
+### [8.1.7](https://github.com/ironSource/fusion-ui/compare/v8.1.7-rc.2...v8.1.7) (2024-07-08)
+
+### [8.1.7-rc.2](https://github.com/ironSource/fusion-ui/compare/v8.1.7-rc.1...v8.1.7-rc.2) (2024-07-07)
+
+
+### Bug Fixes
+
+* **8.x.x:** restore include to css variables for v4 in style-guide.scss ([9ce35b6](https://github.com/ironSource/fusion-ui/commit/9ce35b69317be4968d4de42deceb1616dcc3e776))
+* **8.x.x:** restore include to css variavles for v4 in style-guide.scss ([#323](https://github.com/ironSource/fusion-ui/issues/323)) ([c5ec0b0](https://github.com/ironSource/fusion-ui/commit/c5ec0b06e3b4d7df31ca4bb273ba7a33d95fbbc4))
+
+### [8.1.7-rc.1](https://github.com/ironSource/fusion-ui/compare/v8.1.7-rc.0...v8.1.7-rc.1) (2024-07-04)
+
+### [8.1.7-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.1.6...v8.1.7-rc.0) (2024-07-04)
+
+
+### Bug Fixes
+
+* **isct-351:** fix for sidebar navigation secondary menu open/close state ([a14f09b](https://github.com/ironSource/fusion-ui/commit/a14f09bc9e725bec3ae8cddbbdb2d06e6da2d939))
+
 ### [8.1.6](https://github.com/ironSource/fusion-ui/compare/v8.1.5...v8.1.6) (2024-06-25)
 
 ### [8.1.5-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.1.4...v8.1.5-rc.0) (2024-06-17)

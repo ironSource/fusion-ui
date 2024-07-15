@@ -51,6 +51,7 @@ const meta: Meta<LayoutStoryWrapperComponent> = {
         headerContent: LAYOUT_HEADER_MULTILINE_CONTENT_MOCK,
         layoutConfiguration: {
             navigationMenuItems: NAVIGATION_MENU_HOME_MOCK,
+            primaryMenuItemMode: 'hoverToShowSecondaryItems',
             layoutUser: {
                 name: 'Jonny Kim',
                 email: 'jonny.kim@supercell.com'

@@ -35,8 +35,8 @@ export class NavigationMenuComponent implements OnInit {
     secondaryMenuName$ = new BehaviorSubject<string>('');
     secondaryMenuLogoSrc$ = new BehaviorSubject<string>('');
 
-    secondaryMenuOpen$ = new BehaviorSubject<boolean>(this.storageService.get(StorageType.SessionStorage, MENU_CACHE_KEY) ?? false);
-    secondaryMenuExpanded$ = new BehaviorSubject<boolean>(false);
+    secondaryMenuOpen$ = new BehaviorSubject<boolean>(this.storageService.get(StorageType.SessionStorage, MENU_CACHE_KEY) ?? true);
+    secondaryMenuExpanded$ = new BehaviorSubject<boolean>(true);
 
     menuOpenForPrimaryMenuItem$ = new BehaviorSubject<PrimaryMenuItem>(null);
 
@@ -86,7 +86,10 @@ export class NavigationMenuComponent implements OnInit {
             .subscribe(this.onNavigationMenuMouseLeave.bind(this));
 
         if (this.selectedPrimaryMenuItem?.type !== NavigationBarItemType.Main && this.secondaryMenuOpen$.getValue()) {
-            this.secondaryMenuOpen$.next(false);
+            // if started from primary menu item that have NOT children and secondary menu is open
+            setTimeout(() => {
+                this.secondaryMenuOpen$.next(false);
+            }, 250);
         }
     }
 
@@ -159,7 +162,10 @@ export class NavigationMenuComponent implements OnInit {
         if (!(this.secondaryMenuOpen$.getValue() && this.secondaryMenuExpanded$.getValue())) {
             this.secondaryMenuOpen$.next(!this.secondaryMenuOpen$.getValue() && this.secondaryMenuItems$.getValue().length > 0);
         }
-        this.storageService.set(StorageType.SessionStorage, MENU_CACHE_KEY, this.secondaryMenuOpen$.getValue());
+        const newMenuStateValue = isNullOrUndefined(this.storageService.get(StorageType.SessionStorage, MENU_CACHE_KEY))
+            ? true
+            : this.secondaryMenuOpen$.getValue();
+        this.storageService.set(StorageType.SessionStorage, MENU_CACHE_KEY, newMenuStateValue);
         if (this.secondaryMenuOpen$.getValue()) {
             if (this.needRestoreSelectedState) {
                 this.setSecondaryMenu(this.selectedPrimaryMenuItem);
@@ -185,7 +191,6 @@ export class NavigationMenuComponent implements OnInit {
                 this.setSecondaryMenu(primary);
             } else {
                 this.resetSecondaryMenu();
-                this.secondaryMenuOpen$.next(false);
             }
             this.primaryMenu.setSelectedPrimaryMenuItem(primary);
             setTimeout(() => {

@@ -31,6 +31,7 @@ export class NavigationPrimaryMenuComponent {
 
     @Input() layoutUser: LayoutUser;
     @Input() menuOpened = false;
+    @Input() menuExpanded = false;
     @Input() menuOpenForPrimaryMenuItem: PrimaryMenuItem;
     @Input() menuHoverMode = false;
 
@@ -125,8 +126,8 @@ export class NavigationPrimaryMenuComponent {
         }
     }
 
-    menuToggleButtonClicked(event: MouseEvent) {
-        this.menuToggleCollapsed$.next(!this.menuToggleCollapsed$.getValue());
+    menuToggleButtonClicked($event: MouseEvent) {
+        this.menuToggleCollapsed$.next(this.menuOpened && !this.menuExpanded);
         this.toggleMenu.emit();
     }
 
