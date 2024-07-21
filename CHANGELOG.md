@@ -181,13 +181,6 @@ All notable changes to this project will be documented in this file. See [commit
 
 * fix line chart v4 fixed point cut on left ([081a2e1](https://github.com/ironSource/fusion-ui/commit/081a2e18e9a53570f826d8b989e2bf716ca3bfa0))
 
-## [8.0.0-rc.28](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.27...v8.0.0-rc.28) (2024-04-11)
-
-
-### Features
-
-* multi select dropdown hierarchy support ([a6b0c43](https://github.com/ironSource/fusion-ui/commit/a6b0c43479679704c7f5ae4d970fcc7e7204b570))
-
 ## [8.0.0-rc.27](https://github.com/ironSource/fusion-ui/compare/v8.0.0-rc.26...v8.0.0-rc.27) (2024-04-08)
 
 

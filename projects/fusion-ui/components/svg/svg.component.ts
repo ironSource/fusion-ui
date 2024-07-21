@@ -4,7 +4,7 @@ import {SVG_OPTIONS_TOKEN} from './svg-config';
 import {SvgOptions} from './svg-entities';
 import {HttpClient} from '@angular/common/http';
 import {Observable, Subject} from 'rxjs';
-import {finalize, publishReplay, refCount, takeUntil} from 'rxjs/operators';
+import {finalize, publishReplay, refCount, takeUntil, tap} from 'rxjs/operators';
 import {StorageService, StorageType} from '@ironsource/fusion-ui/services/stogare';
 
 @Component({
@@ -85,6 +85,9 @@ export class SvgComponent implements AfterViewInit, OnDestroy {
         if (!SvgComponent.cache[svgUrl]) {
             SvgComponent.cache[svgUrl] = this.httpClient.get(svgUrl, {responseType: 'text'}).pipe(
                 takeUntil(this.onDestroy$),
+                tap(data => {
+                    console.log('SvgComponent: getSvgData', data);
+                }),
                 publishReplay(1),
                 refCount(),
                 finalize(() => {

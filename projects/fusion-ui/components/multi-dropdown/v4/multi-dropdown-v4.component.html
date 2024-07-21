@@ -5,6 +5,9 @@
      [ngClass]="getHolderCSSClasses()"
      [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.TRIGGER"
 >
+    @if(labelText){
+        <fusion-input-label class="fu-dropdown-label" [text]="labelText" [required]="labelRequired" [icon]="labelIcon" [tooltipText]="labelTooltipText" [disabled]="(dropdownSelectConfigurations$ | async)?.disabled"></fusion-input-label>
+    }
     <!--custom trigger-->
     <div *ngIf="templateRef" #trigger (click)="openDropdown($event)"
          [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.TRIGGER">
@@ -122,10 +125,7 @@
 </div>
 
 <div *ngIf="helperText" class="fu-input-underline">
-    <div *ngIf="helperText" class="fu-input-helper fu-variant-{{helperVariant}}">
-        <fusion-icon *ngIf="helperIcon" class="fu-helper-icon" [name]="helperIcon"></fusion-icon>
-        {{ helperText }}
-    </div>
+    <fusion-input-helper [text]="helperText" [state]="helperVariant" [iconName]="helperIcon" [testId]="testId"></fusion-input-helper>
 </div>
 
 <!--INNER TEMPLATES-->
