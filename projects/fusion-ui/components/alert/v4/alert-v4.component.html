@@ -13,7 +13,7 @@
         </div>
         <div class="fu-alert-message" *ngIf="description?.length"
              [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdAlertModifiers.MESSAGE"
-             [innerHTML]="description"
+             [innerHTML]="alertContent"
         >
         </div>
     </div>
