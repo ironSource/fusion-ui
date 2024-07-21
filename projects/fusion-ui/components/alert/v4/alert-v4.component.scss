@@ -10,7 +10,7 @@
   .fu-alert-wrapper {
     display: flex;
     align-items: center;
-    gap: var(--spacing-150);
+    gap: var(--spacing-100, #{$spacingV4-100});
     padding: var(--spacing-150) var(--spacing-200);
 
     // region colors
