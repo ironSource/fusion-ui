@@ -1,4 +1,5 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, HostBinding, Injector} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, HostBinding, inject} from '@angular/core';
+import {DomSanitizer} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
 import {AlertColor, AlertIconColorsMap, AlertIconMap, AlertVariant} from './alert-v4.entities';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
@@ -32,7 +33,7 @@ export class AlertV4Component {
     /** @internal */
     testIdAlertModifiers: typeof AlertTestIdModifiers = AlertTestIdModifiers;
     /** @internal */
-    testIdsService: TestIdsService = this.injector.get(TestIdsService);
+    testIdsService: TestIdsService = inject(TestIdsService);
 
     @HostBinding('attr.data-testid') get testAttribute(): string {
         return this.testId;
@@ -40,6 +41,13 @@ export class AlertV4Component {
 
     get color() {
         return this._color;
+    }
+
+    get alertContent() {
+        const htmlRegex = /<([A-Za-z][A-Za-z0-9]*)\b[^>]*>(.*?)<\/\1>/i;
+        return !!this.description && htmlRegex.test(this.description)
+            ? this.sanitizer.bypassSecurityTrustHtml(this.description)
+            : this.description;
     }
 
     @Input() variant: AlertVariant = 'standard';
@@ -59,7 +67,7 @@ export class AlertV4Component {
 
     private _color: AlertColor = 'success';
 
-    constructor(private injector: Injector) {}
+    private sanitizer = inject(DomSanitizer);
 
     /** @internal */
     onDismissClicked() {
