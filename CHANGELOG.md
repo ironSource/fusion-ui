@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [8.2.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v8.2.0-rc.0...v8.2.0-rc.1) (2024-07-21)
+
+
+### Bug Fixes
+
+* **isct-362:** add html sanitizer for html content in alert ([06f4fe6](https://github.com/ironSource/fusion-ui/commit/06f4fe66882ea8494d1c7e093ec5efaeeee7329c))
+
 ## [8.2.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.1.9...v8.2.0-rc.0) (2024-07-21)
 
 
