@@ -8,6 +8,7 @@
   padding: 0;
   display: flex;
   flex-direction: column;
+  gap: 4px;
 
   .fu-input-wrapper {
     flex-grow: 2;
@@ -33,7 +34,7 @@
       background-color: var(--action-hover, #{$color-v4-action-hover});
     }
 
-    &:has(input[disabled="disabled"]) {
+    &.fu-disabled {
       outline-color: var(--action-outlined-border, #{$color-v4-action-outlined-border});
       background-color: var(--action-disabled-background, #{$color-v4-action-disabled-background});
 
@@ -135,7 +136,7 @@
       line-height: 20px;
 
       &::placeholder {
-        color: var(--text-secondary);
+        color: var(--text-secondary, #{$color-v4-text-secondary});
         letter-spacing: normal;
       }
 
@@ -179,7 +180,6 @@
       // endregion
 
     }
-
     // endregion
 
     // region variant
@@ -208,46 +208,29 @@
     }
 
     // endregion
+
+    &.fu-with-counter{
+        position: relative;
+        input{
+            padding-right: 40px;
+        }
+    }
   }
+
+  // region chars counter / maxlength
+  .fu-max-length-counter {
+    position: absolute;
+    right: 6px;
+    @extend %font-v4-caption;
+    color: var(--text-secondary, #{$color-v4-text-secondary});
+  }
+  // endregion
 
   // region bottom line
   .fu-input-underline {
     display: flex;
     align-items: center;
-    margin-top: 4px;
-
-    .fu-input-helper {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      @extend %font-v4-caption;
-      color: var(--text-secondary, #{$color-v4-text-secondary});
-
-      .fu-helper-icon {
-        width: 16px;
-        height: 16px;
-      }
-
-      &.fu-variant-error {
-        color: var(--error-main, #{$color-v4-error-main});
-      }
-
-      &.fu-variant-success {
-        color: var(--success-main, #{$color-v4-success-main});
-      }
-
-      &.fu-variant-warning {
-        color: var(--warning-main, #{$color-v4-warning-main});
-      }
-    }
-
-    .fu-max-length-counter {
-      margin-left: auto;
-      @extend %font-v4-caption;
-      color: var(--text-secondary, #{$color-v4-text-secondary});
-    }
   }
-
   // endregion
 
 }

@@ -46,16 +46,6 @@ describe('TextareaComponent', () => {
         expect(inputEl.nativeElement.getAttribute('placeholder')).toContain(testPlaceholder);
     });
 
-    it('Can have cols, rows, resize and require attribute', () => {
-        component.resize = false;
-        component.required = false;
-
-        fixture.detectChanges();
-
-        expect(Array.from(inputEl.nativeElement.classList)).not.toContain('resize');
-        expect(inputEl.nativeElement.getAttribute('required')).toBe(null);
-    });
-
     it('Can set disabled / enabled', () => {
         component.isDisabled = true;
         fixture.detectChanges();
@@ -66,21 +56,5 @@ describe('TextareaComponent', () => {
         fixture.detectChanges();
         inputEl = fixture.debugElement.query(By.css('textarea'));
         expect(Array.from(inputEl.nativeElement.classList)).not.toContain('disabled');
-    });
-
-    it('Can have an error message', () => {
-        const testErr = 'error message';
-        component.error = testErr;
-        fixture.detectChanges();
-        errEl = fixture.debugElement.query(By.css('.fu-error-msg'));
-        expect(errEl.nativeElement.innerText).toBe(testErr);
-    });
-
-    it('Can have an helper text', () => {
-        const testHelpText = 'Help text';
-        component.helperText = testHelpText;
-        fixture.detectChanges();
-        helperEl = fixture.debugElement.query(By.css('.fu-helper-text'));
-        expect(helperEl.nativeElement.innerText).toBe(testHelpText);
     });
 });

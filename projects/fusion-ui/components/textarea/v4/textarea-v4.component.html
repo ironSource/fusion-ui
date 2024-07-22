@@ -1,27 +1,28 @@
 <div class="fu-textarea-container">
-    <div class="fu-textarea-content"
-         [class.focused]="focused"
-         [class.fu-readonly]="!!readonly">
-        <textarea
+    @if(labelText){
+        <fusion-input-label class="fu-dropdown-label" [text]="labelText" [required]="labelRequired" [icon]="labelIcon" [tooltipText]="labelTooltipText"></fusion-input-label>
+    }
+        @if (showLengthCounter){
+            <div class="fu-max-length-counter" [attr.data-testid]="testId">
+                {{ (valueLength$ | async) }}<ng-container *ngIf="maxLength">/{{ maxLength }}</ng-container>
+            </div>
+        }
+        <textarea #textArea
             class="is-textarea"
+            [class.fu-readonly]="!!readonly"
             [placeholder]="placeholder"
             [readonly]="readonly"
-            [required]="required"
-            minlength="1"
             [name]="name"
-            [ngClass]="{disabled: isDisabled, resize: resize, error:error}"
+            [ngClass]="{disabled: isDisabled, resize: resize}"
             [ngModel]="model"
+            [maxlength]="maxLength"
             (ngModelChange)="onChange($event)"
             (focus)="focus()"
             (blur)="blur()"
             [disabled]="isDisabled"></textarea>
-    </div>
-
-    <div class="fu-error-msg" *ngIf="error" [innerHTML]="error"></div>
-
-    <div class="fu-helper-text"
-         *ngIf="helperText"
-         [hidden]="!helperText || !!error"
-         [innerHTML]="helperText">
-    </div>
+    @if (helperText){
+        <div class="fu-input-underline">
+            <fusion-input-helper [text]="helperText" [state]="variant" [iconName]="helperIcon" [testId]="testId"></fusion-input-helper>
+        </div>
+    }
 </div>

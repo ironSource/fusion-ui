@@ -36,9 +36,17 @@ export const USER_PROFILE_MENU_ITEMS: MenuItem[] = [
 
 export const UNITY_MENU_ITEMS: MenuItem[] = [
     {
-        icon: 'ph/plus',
-        name: 'Add app',
-        route: '/iframe.html'
+        name: 'Apps',
+        icon: 'ph/circles-four',
+        permissions: ['monetizerAny', 'isAppsPageEnabled'],
+        route: '/next/mediation/apps',
+        subRoutes: ['/applications/edit/'],
+        cssClass: 'apps-menu-item',
+        additionalAction: {
+            name: 'Add app',
+            route: '/applications/edit/new',
+            icon: 'ph/plus'
+        }
     },
     {
         name: 'Mediation',

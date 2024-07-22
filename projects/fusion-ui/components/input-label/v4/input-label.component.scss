@@ -1,0 +1,44 @@
+@import '../../../src/style/scss/v4/colors';
+@import '../../../src/style/scss/v4/spacings';
+@import '../../../src/style/scss/v4/vars/fonts';
+
+:host {
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+
+  .fu-input-label-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+
+    .fu-input-label-text {
+      @extend %font-v4-input-label;
+      color: var(--text-primary, #{$color-v4-text-primary});
+    }
+
+    .fu-input-label-required {
+      color: var(--error-main, #{$color-v4-error-main});
+      font-family: Inter;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      height: 16px;
+    }
+
+    .fu-input-label-icon {
+      width: 16px;
+      height: 16px;
+      color: var(--action-active, #{$color-v4-action-active});
+      &:hover {
+        color: var(--action-primary, #{$color-v4-action-primary});
+      }
+    }
+
+    &.fu-disabled {
+      .fu-input-label-text {
+        color: var(--text-disabled, #{$color-v4-text-disabled});
+      }
+    }
+  }
+}

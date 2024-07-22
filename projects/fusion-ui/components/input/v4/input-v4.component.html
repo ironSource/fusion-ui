@@ -1,8 +1,17 @@
-<label *ngIf="labelText" for="{{id}}" class="fu-label">{{ labelText }}</label>
+@if(labelText){
+    <fusion-input-label class="fu-dropdown-label" [text]="labelText" [required]="labelRequired" [icon]="labelIcon" [tooltipText]="labelTooltipText"></fusion-input-label>
+}
 <div class="fu-input-wrapper fu-size-{{size}} fu-variant-{{variant}}"
+     [class.fu-with-counter]="showLengthCounter"
+     [class.fu-disabled]="disabled$ | async"
      [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdInputModifiers.WRAPPER">
     <fusion-icon *ngIf="startIcon" class="fu-start-icon" [name]="startIcon"></fusion-icon>
     <div *ngIf="prefix" class="fu-input-prefix">{{ prefix }}</div>
+    @if (showLengthCounter){
+        <div class="fu-max-length-counter" [attr.data-testid]="testId">
+            {{ (valueLength$ | async) }}<ng-container *ngIf="maxLength">/{{ maxLength }}</ng-container>
+        </div>
+    }
     <input #input
            [id]="id"
            class="fu-input"
@@ -15,7 +24,6 @@
            [attr.min]="min"
            [attr.max]="max"
            [attr.placeholder]="placeholder"
-           [attr.disabled]="((disabled$ | async) || viewOnly) ? 'disabled' : null"
            [formControl]="inputControl"
            [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdInputModifiers.FIELD"
     />
@@ -32,15 +40,8 @@
                  [attr.data-testid]="testId"
                  name="ph/info"></fusion-icon>
 </div>
-<div *ngIf="helperText || showLengthCounter" class="fu-input-underline">
-    <div *ngIf="helperText" class="fu-input-helper fu-variant-{{variant}}"
-         [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:FieldHelpTextTestIdModifiers.TEXT">
-        <fusion-icon *ngIf="helperIcon" class="fu-helper-icon" [name]="helperIcon"
-                     [attr.data-testid]="testId"></fusion-icon>
-        {{ helperText }}
+@if (helperText){
+    <div class="fu-input-underline">
+        <fusion-input-helper [text]="helperText" [state]="variant" [iconName]="helperIcon" [testId]="testId"></fusion-input-helper>
     </div>
-    <div *ngIf="showLengthCounter" class="fu-max-length-counter"
-         [attr.data-testid]="testId">{{ (valueLength$ | async) }}
-        <ng-container *ngIf="maxLength">/{{ maxLength }}</ng-container>
-    </div>
-</div>
+}
