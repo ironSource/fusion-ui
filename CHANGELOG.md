@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [8.2.1](https://github.com/ironSource/fusion-ui/compare/v8.2.0...v8.2.1) (2024-07-22)
+
+
+### Bug Fixes
+
+* **master:** remove console.log ([a7cc9f1](https://github.com/ironSource/fusion-ui/commit/a7cc9f16b95251b2df3add459f7c1b7c00142926))
+
 ## [8.2.0](https://github.com/ironSource/fusion-ui/compare/v8.2.0-rc.1...v8.2.0) (2024-07-22)
 
 ## [8.2.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v8.2.0-rc.0...v8.2.0-rc.1) (2024-07-21)
