@@ -10,6 +10,14 @@ export enum ButtonTestIdModifiers {
     CONTENT = 'button-content'
 }
 
+export enum LinkTestIdModifiers {
+    LINK = 'link',
+    CONTENT = 'link-content',
+    START_ICON = 'link-start-icon',
+    END_ICON = 'link-end-icon',
+    EXTERNAL_ICON = 'link-external-icon'
+}
+
 export enum DropdownTestIdModifiers {
     TRIGGER = 'dd-trigger',
     WRAPPER = 'dd-wrapper',
