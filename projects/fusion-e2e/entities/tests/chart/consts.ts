@@ -1,0 +1,10 @@
+import {ChartLabelTestIdModifiers} from '@ironsource/fusion-ui/entities/test-ids-modifiers';
+import {getTestId, getTestIdSelector} from '../../global/utils';
+
+export const chartStoryId = 'v4-components-datavisualization-charts-barchart--stack';
+export const chartLabelWithIconStoryId = 'v4-components-datavisualization-legenditems--with-icon';
+export const defaultTestId = 'charts-default';
+
+export const labelTestId = getTestId(defaultTestId, ChartLabelTestIdModifiers.LABEL);
+
+export const loadedPageSelector = getTestIdSelector(labelTestId);

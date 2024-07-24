@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist",
+        "noImplicitAny": false,
+        "module": "es6",
+        "target": "es5",
+        "allowJs": true,
+        "baseUrl": ".",
+        "moduleResolution": "node",
+        "declaration": true,
+        "paths": {
+            "@ironsource/fusion-ui/*": ["../fusion-ui/*"],
+            "@ironsource/fusion-ui": ["../fusion-ui"]
+        },
+        "types": ["node"]
+    },
+    "exclude": ["node_modules"],
+    "include": ["entities/**/*"]
+}

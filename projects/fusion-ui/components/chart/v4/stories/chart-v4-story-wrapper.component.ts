@@ -5,6 +5,7 @@ import {BehaviorSubject} from 'rxjs';
 import {ChartComponent} from '@ironsource/fusion-ui/components/chart/v4';
 import {ChartLabelsComponent} from '@ironsource/fusion-ui/components/chart-labels/v4';
 import {ChartData, ChartDataset, ChartLabel, ChartType} from '@ironsource/fusion-ui/components/chart/common/base';
+import {getTestId, ChartLabelTestIdModifiers} from '@ironsource/fusion-ui/entities';
 
 @Component({
     selector: 'fusion-chart-wrapper',
@@ -18,6 +19,7 @@ import {ChartData, ChartDataset, ChartLabel, ChartType} from '@ironsource/fusion
                 [data]="data"
                 [type]="type"
                 [options]="options"
+                [testId]="testId"
                 (afterDatasetInit)="onChartInit($event)"
             ></fusion-chart>
         </div>
@@ -26,6 +28,7 @@ import {ChartData, ChartDataset, ChartLabel, ChartType} from '@ironsource/fusion
                 [labels]="chartDataLabels$ | async"
                 (labelHover)="labelHovered($event)"
                 (labelClick)="labelClicked($event)"
+                [testId]="getTestId(testId, ChartLabelTestIdModifiers.LABEL)"
             ></fusion-chart-labels>
         </div>
         <div *ngIf="!data" class="fu-empty-state">
@@ -46,6 +49,7 @@ export class ChartV4WrapperComponent {
     private _data: ChartData;
     @Input() type: ChartType;
     @Input() options: any;
+    @Input() testId: string;
     @Input() labelsClickable = false;
     @Input() labelOther = false;
 
@@ -59,16 +63,14 @@ export class ChartV4WrapperComponent {
             const legends = chartDatasets[0]?.legends;
             const values = chartDatasets[0]?.data;
             const colors = chartDatasets[0]?.backgroundColor;
-            chartDataLabels = legends
-                .map((legend: string, idx: number) => {
-                    const dataLabel: ChartLabel = {
-                        id: idx,
-                        label: legend,
-                        color: colors[idx]
-                    };
-                    return dataLabel;
-                })
-                .reverse();
+            chartDataLabels = legends.map((legend: string, idx: number) => {
+                const dataLabel: ChartLabel = {
+                    id: idx,
+                    label: legend,
+                    color: colors[idx]
+                };
+                return dataLabel;
+            });
         } else {
             chartDataLabels = chartDatasets.map((dataSet, idx) => {
                 const dataLabel: ChartLabel = {
@@ -100,8 +102,10 @@ export class ChartV4WrapperComponent {
     labelHovered(label: ChartLabel): void {
         this.fusionChart?.highlightDataset(label);
     }
-
     labelClicked(label: ChartLabel): void {
         this.fusionChart?.toggleDataset(label, true);
     }
+
+    protected readonly getTestId = getTestId;
+    protected readonly ChartLabelTestIdModifiers = ChartLabelTestIdModifiers;
 }
