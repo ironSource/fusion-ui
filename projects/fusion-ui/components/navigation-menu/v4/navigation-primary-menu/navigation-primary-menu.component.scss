@@ -71,6 +71,11 @@
                 &:last-of-type{
                     padding-bottom: 8px;
                 }
+                &:not(:has(a)){
+                    :hover{
+                        cursor: pointer;
+                    }
+                }
             }
         }
 

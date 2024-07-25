@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [8.3.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.2.1...v8.3.0-rc.0) (2024-07-25)
+
+
+### Features
+
+* **isct-378:** added one trust icon with tooltip and custom click callback to the menu ([249a93d](https://github.com/ironSource/fusion-ui/commit/249a93d54e3864d8fa199aa833b51be7fc487b54))
+
 ### [8.2.1](https://github.com/ironSource/fusion-ui/compare/v8.2.0...v8.2.1) (2024-07-22)
 
 
