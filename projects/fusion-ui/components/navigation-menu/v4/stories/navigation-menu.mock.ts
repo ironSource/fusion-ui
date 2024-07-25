@@ -427,6 +427,16 @@ export const NAVIGATION_MENU_HOME_MOCK: PrimaryMenuItem[] = [
     },
     {
         type: NavigationBarItemType.Bottom,
+        id: 'fusionOnTrustButton',
+        menuIcon: 'ph/shield-check',
+        menuTooltip: 'Privacy preference',
+        customClick: () => {
+            console.log('Privacy preference');
+        },
+        cssStyle: 'display: none;'
+    },
+    {
+        type: NavigationBarItemType.Bottom,
         menuIcon: 'ph/question',
         menuTooltip: 'Knowledge Center',
         redirect: 'https://developers.is.com/',

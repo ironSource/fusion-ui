@@ -22,8 +22,10 @@ export interface PrimaryMenuItem {
     menuTitle?: string;
     menuTooltip?: string;
     menuItems?: MenuItem[];
+    customClick?: Function; // for custom click event handling in BOTTOM menu item type
     route?: string;
     redirect?: string; // url to navigate in case has value here - route will be suppressed
     target?: string; // for open in new tab named as target
     cssTheme?: {[key: string]: string}; // for type - main css color theme
+    cssStyle?: string;
 }
