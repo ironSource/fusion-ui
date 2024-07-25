@@ -16,7 +16,7 @@
     <ng-container *ngIf="(bottomItems$ | async) as bottomItems">
         <div class="fu-navigation-bar-bottom-items">
             <ng-container *ngFor="let bottomItem of bottomItems; let bottomItemIndex = index;">
-                <div class="fu-navigation-bar-item fu-bottom-block"  [fusionTooltip]="bottomItem.menuTooltip">
+                <div [id]="bottomItem.id ?? 'bottomPrimaryMenuItem_'+bottomItemIndex" class="fu-navigation-bar-item fu-bottom-block" [style]="bottomItem.cssStyle"  [fusionTooltip]="bottomItem.menuTooltip">
                     <!--region item with link.href-->
                     <ng-container *ngIf="!!bottomItem.redirect">
                         <a href="{{bottomItem.redirect}}" target="{{bottomItem.target}}">
