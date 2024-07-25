@@ -12,6 +12,6 @@ Fusion-UI also comes with built-in accessibility features, ensuring that your ap
 
 Whether you're building a simple website or a complex web application, Fusion-UI is the perfect choice for your UI needs. Get started today and experience the power and simplicity of Fusion-UI!
 
-**FusionUI installation:**
+**FusionUI installation:** 
 
 ```npm install --save @ironsource/fusion-ui```
