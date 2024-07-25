@@ -96,6 +96,11 @@ export class NavigationPrimaryMenuComponent {
                 this.primaryMenuItemClicked.emit(item);
                 this.primaryMenuOpenedItem = item;
                 break;
+            case NavigationBarItemType.Bottom:
+                if (!!item.customClick) {
+                    item.customClick();
+                }
+                break;
         }
     }
 
