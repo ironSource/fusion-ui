@@ -1,0 +1,49 @@
+@switch (type) {
+    @case ('error') {
+        <div class="fu-empty-state-image">
+            <fusion-svg path="assets/images/v4/illustrations/error.svg"></fusion-svg>
+        </div>
+    }
+    @case ('accessDenied') {
+        <div class="fu-empty-state-image">
+            <fusion-svg path="assets/images/v4/illustrations/access-denied.svg"></fusion-svg>
+        </div>
+    }
+    @case ('noResult') {
+        <div class="fu-empty-state-image">
+            <fusion-svg path="assets/images/v4/illustrations/no-result.svg"></fusion-svg>
+        </div>
+    }
+    @case ('noData') {
+        <div class="fu-empty-state-image">
+            <fusion-svg path="assets/images/v4/illustrations/no-data.svg"></fusion-svg>
+        </div>
+    }
+    @case ('chart') {
+        <div class="fu-empty-state-image">
+            <fusion-svg path="assets/images/v4/illustrations/chart.svg"></fusion-svg>
+        </div>
+    }
+    @case ('files') {
+        <div class="fu-empty-state-image">
+            <fusion-svg path="assets/images/v4/illustrations/files.svg"></fusion-svg>
+        </div>
+    }
+    @case ('settings') {
+        <div class="fu-empty-state-image">
+            <fusion-svg path="assets/images/v4/illustrations/settings-exclamation.svg"></fusion-svg>
+        </div>
+    }
+    @default {
+        <fusion-icon class="fu-empty-state-icon" name="v4/ghost"></fusion-icon>
+    }
+}
+@if (title) {
+    <div class="fu-empty-state-title">{{ title }}</div>
+}
+@if (description) {
+    <div class="fu-empty-state-description">{{ description }}</div>
+}
+<div class="fu-empty-state-content">
+    <ng-content></ng-content>
+</div>
