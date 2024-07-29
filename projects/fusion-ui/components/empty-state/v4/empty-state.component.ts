@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {EmptyStateType} from '@ironsource/fusion-ui/components/empty-state/v4/empty-state.entities';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+import {EmptyStateType} from './empty-state.entities';
 
 @Component({
     selector: 'fusion-empty-state',
