@@ -32,10 +32,10 @@ export default {
         iconName: {control: {type: 'text'}},
         removeIconName: {control: {type: 'text'}},
         removable: {control: {type: 'boolean'}},
-        theme: {control: {type: 'select', options: ['default', 'primary', 'info', 'error', 'success', 'warning', 'dark']}},
-        size: {control: {type: 'radio', options: ['small', 'medium']}},
-        variant: {control: {type: 'radio', options: ['filled', 'outlined']}},
-        shape: {control: {type: 'radio', options: ['square', 'round']}},
+        // theme: {control: {type: 'select', options: ['default', 'primary', 'info', 'error', 'success', 'warning', 'dark']}},
+        // size: {control: {type: 'radio', options: ['small', 'medium']}},
+        // variant: {control: {type: 'radio', options: ['filled', 'outlined']}},
+        // shape: {control: {type: 'radio', options: ['square', 'round']}},
         selected: {control: {type: 'boolean'}},
         disabled: {control: {type: 'boolean'}}
     }
