@@ -1,0 +1,12 @@
+<div class="fu-chip-wrapper fu-chip-{{size()}} fu-chip-{{variant()}} fu-chip-{{theme()}}  fu-chip-{{shape()}}"
+     [class.fu-chip-selected]="selected()"
+     [class.fu-chip-disabled]="disabled()"
+>
+    @if (iconName()) {
+        <fusion-icon class="fu-chip-start-icon" [name]="iconName()"></fusion-icon>
+    }
+    <div class="fu-chip-label">{{ label() }}</div>
+    @if (removable()) {
+        <fusion-icon class="fu-chip-remove-icon" [name]="removeIconName()" (click)="remove.emit(label())"></fusion-icon>
+    }
+</div>
