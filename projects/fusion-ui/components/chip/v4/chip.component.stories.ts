@@ -32,12 +32,13 @@ export default {
         iconName: {control: {type: 'text'}},
         removeIconName: {control: {type: 'text'}},
         removable: {control: {type: 'boolean'}},
+        selected: {control: {type: 'boolean'}},
+        disabled: {control: {type: 'boolean'}}
+        // todo: because of this component used input signals, we can't use control types with options
         // theme: {control: {type: 'select', options: ['default', 'primary', 'info', 'error', 'success', 'warning', 'dark']}},
         // size: {control: {type: 'radio', options: ['small', 'medium']}},
         // variant: {control: {type: 'radio', options: ['filled', 'outlined']}},
         // shape: {control: {type: 'radio', options: ['square', 'round']}},
-        selected: {control: {type: 'boolean'}},
-        disabled: {control: {type: 'boolean'}}
     }
 } as Meta<ChipComponent>;
 
