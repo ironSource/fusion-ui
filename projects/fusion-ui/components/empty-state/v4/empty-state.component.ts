@@ -6,6 +6,7 @@ import {EmptyStateType} from './empty-state.entities';
 @Component({
     selector: 'fusion-empty-state',
     standalone: true,
+    host: {class: 'fusion-v4'},
     imports: [SvgModule, IconModule],
     templateUrl: './empty-state.component.html',
     styleUrl: './empty-state.component.scss',
