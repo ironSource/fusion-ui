@@ -24,11 +24,10 @@
             <fusion-icon class="fu-toggle-start-icon" [name]="startIcon"
                          [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdToggleModifiers.START_ICON"></fusion-icon>
         }
-
         @if (labelText) {
             <span class="fu-toggle-label-text">{{ labelText }}</span>
             @if (endIcon) {
-                <fusion-icon class="fu-toggle-send-icon" [name]="endIcon"
+                <fusion-icon class="fu-toggle-end-icon" [name]="endIcon"
                              [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdToggleModifiers.END_ICON"></fusion-icon>
             }
             @if (labelHelpIcon) {
