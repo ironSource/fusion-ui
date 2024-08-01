@@ -60,7 +60,6 @@ export class ToggleV4Component {
     }
     @Input() set disabled(value: boolean) {
         this.disabled$.next(value);
-        console.log('set', this.disabled$.getValue());
     }
     // endregion
 
@@ -133,6 +132,5 @@ export class ToggleV4Component {
      */
     setDisabledState?(disabled: boolean): void {
         this.disabled$.next(disabled);
-        console.log('fc', this.disabled$.getValue());
     }
 }
