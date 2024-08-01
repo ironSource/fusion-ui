@@ -118,11 +118,11 @@ export enum InputTestIdModifiers {
 
 export enum ToggleTestIdModifiers {
     WRAPPER = 'toggle-wrapper',
-    BODY = 'toggle-body',
-    FIELD = 'toggle-field',
-    TEXT = 'toggle-text',
-    HELPER_TEXT = 'toggle-helper-text',
-    ERROR_TEXT = 'toggle-error-text'
+    START_ICON = 'toggle-start-icon',
+    END_ICON = 'toggle-end-icon',
+    LABEL = 'toggle-label',
+    LABEL_ICON = 'toggle-label-icon',
+    HELPER = 'toggle-helper'
 }
 
 export enum IncludeExcludeTestIdModifiers {
