@@ -71,7 +71,6 @@ export const Themes: Story = {
     <fusion-chip label="Success" theme="success"></fusion-chip>
     <fusion-chip label="Dark" theme="dark"></fusion-chip>
     <fusion-chip label="Disabled" [disabled]="true"></fusion-chip>
-    <fusion-chip label="Selected" [selected]="true"></fusion-chip>
 </div>
         `
     })

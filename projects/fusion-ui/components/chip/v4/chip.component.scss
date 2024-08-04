@@ -27,17 +27,11 @@
       border-radius: 100px;
     }
 
-
     &:hover {
-      background-color: var(--action-active, #{$color-v4-action-active});
-      color: var(--action-primary, #{$color-v4-action-primary});
-      outline: solid 1px var(--devider, #{$color-v4-common-divider});
       cursor: default;
-
-      .fu-chip-remove-icon,
-      .fu-chip-start-icon {
-        color: var(--action-primary, #{$color-v4-action-primary});
-      }
+    }
+    .fu-chip-remove-icon:hover {
+      color: var(--action-primary, #{$color-v4-action-primary});
     }
 
     &.fu-chip-medium {
@@ -93,9 +87,6 @@
 
       &.fu-chip-disabled {
         outline: solid 1px var(--action-outlined-border, #{$color-v4-action-outlined-border});
-        &:hover{
-          outline: solid 1px var(--action-outlined-border, #{$color-v4-action-outlined-border});
-        }
       }
     }
 
@@ -103,16 +94,11 @@
       color: var(--action-disabled, #{$color-v4-action-disabled});
       background-color: var(--action-disabled-background, #{$color-v4-action-disabled-background});
 
-      &:hover{
-        outline-width: 0
-      }
-
       .fu-chip-remove-icon {
         color: var(--action-disabled, #{$color-v4-action-disabled});
         pointer-events: none;
         cursor: default;
       }
     }
-
   }
 }
