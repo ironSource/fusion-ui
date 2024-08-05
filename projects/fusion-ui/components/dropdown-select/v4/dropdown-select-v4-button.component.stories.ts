@@ -137,7 +137,7 @@ export const WithDropdown: Story = {
             optionsFood: foodOptionsList
         },
         template: `
-<div style="display: flex; gap: 16px;">
+<div style="display: flex; gap: 16px; height: 200px">
     <fusion-dropdown
         [options]="optionsFood"
         [placeholder]="{placeholderText:'Select an option'}"
@@ -155,7 +155,7 @@ export const AddParam: Story = {
             optionsFood: foodOptionsList
         },
         template: `
-<div style="display: flex; gap: 16px;">
+<div style="display: flex; gap: 16px; height: 200px">
     <fusion-dropdown
         [options]="optionsFood"        
         [placeholder]="{placeholderText:'Add param', icon: 'ph/plus'}"
