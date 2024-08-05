@@ -10,3 +10,5 @@ export interface SelectedItemName {
     singular: string;
     plural: string;
 }
+
+export type DropdownTriggerMode = 'button' | 'button-text' | 'button-add' | 'default';

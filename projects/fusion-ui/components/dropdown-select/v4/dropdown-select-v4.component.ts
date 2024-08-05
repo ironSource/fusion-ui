@@ -28,6 +28,7 @@ export class DropdownSelectV4Component {
     @Input() iconColor: string;
     @Input() testId: string;
     @Input() country: CountryCode | string;
+    @Input() hideCaretIcon: boolean = false;
     testIdDropdownModifiers: typeof DropdownTestIdModifiers = DropdownTestIdModifiers;
     testIdsService: TestIdsService = this.injector.get(TestIdsService);
 

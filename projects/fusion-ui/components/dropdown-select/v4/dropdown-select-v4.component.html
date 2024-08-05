@@ -5,11 +5,19 @@
      [class.fu-success]="validationState === 'success'"
      [class.fu-warning]="validationState === 'warning'"
 >
-    <img class="fu-dropdown-select-image" *ngIf="imageUrl" src="{{imageUrl}}" alt=""/>
-    <fusion-flag class="fu-dropdown-select-flag" *ngIf="country" [countryCode]="country"></fusion-flag>
-    <fusion-icon class="fu-dropdown-select-icon" [style.color]="iconColor" *ngIf="icon" name="{{icon}}"></fusion-icon>
+    @if (imageUrl){
+        <img class="fu-dropdown-select-image" src="{{imageUrl}}" alt=""/>
+    }
+    @if (country){
+        <fusion-flag class="fu-dropdown-select-flag" [countryCode]="country"></fusion-flag>
+    }
+    @if (icon){
+        <fusion-icon class="fu-dropdown-select-icon" [style.color]="iconColor" name="{{icon}}"></fusion-icon>
+    }
     <div class="fu-placeholder-text truncate"
          [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.BUTTON_CONTENT"
          [fusionTooltip]="placeholder?.value" [innerHTML]="placeholder?.value"></div>
-    <fusion-icon class="fu-arrow-icon" name="ph/caret-down"></fusion-icon>
+    @if(!hideCaretIcon){
+        <fusion-icon class="fu-arrow-icon" name="ph/caret-down"></fusion-icon>
+    }
 </div>

@@ -11,7 +11,7 @@ import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {ToggleTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {InputHelperComponent} from '@ironsource/fusion-ui/components/input-helper/v4';
 import {InputVariant} from '@ironsource/fusion-ui/components/input/v4';
-import {GenericPipe} from '@ironsource/fusion-ui';
+import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 
 @Component({
     selector: 'fusion-toggle',
