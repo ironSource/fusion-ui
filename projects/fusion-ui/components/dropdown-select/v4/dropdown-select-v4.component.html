@@ -5,19 +5,23 @@
      [class.fu-success]="validationState === 'success'"
      [class.fu-warning]="validationState === 'warning'"
 >
-    @if (imageUrl){
-        <img class="fu-dropdown-select-image" src="{{imageUrl}}" alt="" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.TRIGGER_IMAGE" />
+    @if (imageUrl) {
+        <img class="fu-dropdown-select-image" src="{{imageUrl}}" alt=""
+             [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.TRIGGER_IMAGE"/>
     }
-    @if (country){
-        <fusion-flag class="fu-dropdown-select-flag" [countryCode]="country" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.TRIGGER_COUNTRY_FLAG"></fusion-flag>
+    @if (country) {
+        <fusion-flag class="fu-dropdown-select-flag" [countryCode]="country"
+                     [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.TRIGGER_COUNTRY_FLAG"></fusion-flag>
     }
-    @if (icon){
-        <fusion-icon class="fu-dropdown-select-icon" [style.color]="iconColor" name="{{icon}}" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.TRIGGER_ICON"></fusion-icon>
+    @if (icon) {
+        <fusion-icon class="fu-dropdown-select-icon" [style.color]="iconColor" name="{{icon}}"
+                     [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.TRIGGER_ICON"></fusion-icon>
     }
     <div class="fu-placeholder-text truncate"
          [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.BUTTON_CONTENT"
          [fusionTooltip]="placeholder?.value" [innerHTML]="placeholder?.value"></div>
-    @if(!hideCaretIcon){
-        <fusion-icon class="fu-arrow-icon" name="ph/caret-down" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.TRIGGER_CARET_ICON"></fusion-icon>
+    @if (!hideCaretIcon) {
+        <fusion-icon class="fu-arrow-icon" name="ph/caret-down"
+                     [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.TRIGGER_CARET_ICON"></fusion-icon>
     }
 </div>

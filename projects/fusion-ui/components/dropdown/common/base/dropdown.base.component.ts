@@ -160,7 +160,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
         if (typeof value === 'string') {
             this.placeholderText = value ?? 'Please Select';
         } else {
-            this.placeholderText = value?.placeholderText || 'Please Select';
+            this.placeholderText = value?.placeholderText ?? 'Please Select';
             this.placeholderIcon = value?.icon;
             this.forcePlaceholderOnSelection = value?.isForcedPlaceholder ? value?.isForcedPlaceholder : this.forcePlaceholderOnSelection;
         }

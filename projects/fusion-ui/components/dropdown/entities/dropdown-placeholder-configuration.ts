@@ -11,4 +11,4 @@ export interface SelectedItemName {
     plural: string;
 }
 
-export type DropdownTriggerMode = 'button' | 'button-text' | 'button-add' | 'default';
+export type DropdownTriggerMode = 'button' | 'button-text' | 'button-add' | 'button-icon' | 'default';
