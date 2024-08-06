@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Injector, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
@@ -29,8 +29,9 @@ export class DropdownSelectV4Component {
     @Input() testId: string;
     @Input() country: CountryCode | string;
     @Input() hideCaretIcon: boolean = false;
-    testIdDropdownModifiers: typeof DropdownTestIdModifiers = DropdownTestIdModifiers;
-    testIdsService: TestIdsService = this.injector.get(TestIdsService);
 
-    constructor(private injector: Injector) {}
+    /** @internal */
+    testIdDropdownModifiers: typeof DropdownTestIdModifiers = DropdownTestIdModifiers;
+    /** @internal */
+    testIdsService: TestIdsService = inject(TestIdsService);
 }

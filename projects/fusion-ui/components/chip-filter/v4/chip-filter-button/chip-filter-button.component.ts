@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostBinding, inject, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';

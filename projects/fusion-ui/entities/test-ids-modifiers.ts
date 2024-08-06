@@ -1,6 +1,12 @@
 export enum ChipFilterTestIdModifiers {
     CHIP_FILTER = 'chf',
-    RESET_BUTTON = 'chf-reset-button'
+    RESET_BUTTON = 'chf-reset-button',
+    CONTAINER = 'chf-container',
+    WRAPPER = 'chf-wrapper',
+    LEFT_ICON = 'chf-left-icon',
+    RIGHT_ICON = 'chf-right-icon',
+    CLOSE_ICON = 'chf-close-icon',
+    CARET_ICON = 'chf-caret-icon'
 }
 
 export enum ButtonTestIdModifiers {

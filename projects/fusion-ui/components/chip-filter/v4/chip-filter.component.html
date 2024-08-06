@@ -6,16 +6,32 @@
 <ng-container *ngIf="!apiBase" [ngTemplateOutlet]="chipComponent"></ng-container>
 
 <ng-template #chipComponent>
-    <div class="fu-chip-filter-container">
-        <fusion-icon class="fu-chip-left-icon" *ngIf="leftIcon" [name]="leftIcon.icon" [fusionTooltip]="leftIcon.tooltipText"></fusion-icon>
-        <div class="fu-chip-content-wrapper">
+    <div class="fu-chip-filter-container fu-chip-filter-variant-{{variant}}"  [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdChipFilterModifiers.CONTAINER">
+        <fusion-icon class="fu-chip-left-icon" *ngIf="leftIcon" [name]="leftIcon.icon"
+                     [fusionTooltip]="leftIcon.tooltipText"
+                     [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdChipFilterModifiers.LEFT_ICON"
+        ></fusion-icon>
+        <div class="fu-chip-content-wrapper" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdChipFilterModifiers.WRAPPER">
             <ng-container *ngIf="!isDefaultContent">
                 <ng-content select=".fu-chip-content"></ng-content>
             </ng-container>
             <ng-container *ngIf="apiBase && isDefaultContent" [ngTemplateOutlet]="defaultContent"></ng-container>
         </div>
-        <fusion-icon class="fu-chip-right-icon" *ngIf="rightIcon" [name]="rightIcon.icon" [fusionTooltip]="rightIcon.tooltipText"></fusion-icon>
-        <fusion-icon class="fu-icon-close" *ngIf="showClose" (click)="closeClicked($event)" name="ph/fill/x-circle"></fusion-icon>
-        <fusion-icon class="fu-icon-close" *ngIf="showCaretDown" name="ph/caret-down"></fusion-icon>
+        @if (rightIcon) {
+            <fusion-icon class="fu-chip-right-icon" [name]="rightIcon.icon"
+                         [fusionTooltip]="rightIcon.tooltipText"
+                         [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdChipFilterModifiers.RIGHT_ICON"
+            ></fusion-icon>
+        }
+        @if (showClose) {
+            <fusion-icon class="fu-icon-close"(click)="closeClicked($event)"
+                         name="ph/fill/x-circle"
+                         [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdChipFilterModifiers.CLOSE_ICON"
+            ></fusion-icon>
+        }
+        @if (showCaretDown) {
+            <fusion-icon class="fu-icon-close" name="ph/caret-down"
+                         [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdChipFilterModifiers.CARET_ICON"></fusion-icon>
+        }
     </div>
 </ng-template>
