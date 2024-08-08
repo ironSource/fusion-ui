@@ -73,7 +73,7 @@ const baseTemplateMultiselect = `
 `;
 
 export default {
-    title: 'V4/Components/Dropdown/Triggers/Button',
+    title: 'V4/Components/Dropdown/Triggers/ButtonFilter',
     component: ChipFilterButtonComponent,
     decorators: [
         moduleMetadata({
@@ -94,7 +94,12 @@ export default {
     parameters: {
         docs: {
             description: {
-                component: dedent`***ChipTriggerComponent***.`
+                component: dedent`
+***<fusion-chip-filter-button />***.
+
+By studio request some stories will be not shown. I understand that it look like not ok, but it what it is. 
+So, you can check it in the code.
+`
             }
         },
         options: {
@@ -107,7 +112,8 @@ export default {
         options: MOCK_OPTIONS,
         configuration: {id: 1, mode: 'static', close: true},
         size: 'medium',
-        weight: 'light'
+        weight: 'light',
+        showCaretIcon: true
     },
     argTypes: {
         formControl: {
@@ -118,7 +124,7 @@ export default {
 
 type Story = StoryObj<ChipFilterButtonComponent>;
 
-export const Default: Story = {
+export const Basic: Story = {
     render: args => ({
         props: {
             ...args,
@@ -130,7 +136,48 @@ export const Default: Story = {
     decorators: [componentWrapperDecorator(story => `<div style="width: 300px; height: 150px;">${story}</div>`)]
 };
 
-export const Disabled: Story = {
+export const Variant: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            formControl: new FormControl(),
+            options: MOCK_OPTIONS_TYPE
+        },
+        template: `
+<div style="display: flex; gap: 16px;">
+    <fusion-chip-filter-button [showCaretIcon]="showCaretIcon" [size]="size" [weight]="weight" [configuration]="configuration">
+        <div class="filter-element">
+            <fusion-dropdown
+                 [placeholderPrefix]="placeholderPrefix"
+                 placeholder="Outline (default)"
+                 [formControl]="formControl"
+                 [options]="options"
+                 [optionsTitle]="optionsTitle"
+                 [search]="search"
+                 >
+            </fusion-dropdown>
+        </div>
+    </fusion-chip-filter-button>
+        <fusion-chip-filter-button variant="text" [showCaretIcon]="showCaretIcon" [size]="size" [weight]="weight" [configuration]="configuration">
+        <div class="filter-element">
+            <fusion-dropdown
+                 [placeholderPrefix]="placeholderPrefix"
+                 placeholder="Text"
+                 [formControl]="formControl"
+                 [options]="options"
+                 [optionsTitle]="optionsTitle"
+                 [search]="search"
+                 >
+            </fusion-dropdown>
+        </div>
+    </fusion-chip-filter-button>
+</div>
+        `
+    }),
+    decorators: [componentWrapperDecorator(story => `<div style="width: 300px; height: 150px;">${story}</div>`)]
+};
+
+/*export const Disabled: Story = {
     render: args => ({
         props: {
             ...args,
@@ -139,9 +186,9 @@ export const Disabled: Story = {
         },
         template: baseTemplate
     })
-};
+};*/
 
-export const Multiselect: Story = {
+/*export const Multiselect: Story = {
     render: args => ({
         props: {
             ...args,
@@ -150,8 +197,10 @@ export const Multiselect: Story = {
         template: baseTemplateMultiselect
     }),
     decorators: [componentWrapperDecorator(story => `<div style="height: 350px;">${story}</div>`)]
-};
+};*/
 
+/*
+// for studio request this stories will not shown
 export const WithIconLeft: Story = {
     render: args => ({
         props: {
@@ -256,7 +305,7 @@ export const Weight: Story = {
     }),
     decorators: [componentWrapperDecorator(story => `<div style="height: 350px;">${story}</div>`)]
 };
-
+*/
 export const Icon: Story = {
     render: args => ({
         props: {
@@ -269,7 +318,7 @@ export const Icon: Story = {
         <fusion-chip-filter-button [showCaretIcon]="false" [weight]="weight" [configuration]="configuration">
             <div class="filter-element">
                 <fusion-dropdown
-                     placeholder="No icons"
+                     placeholder="None"
                      [formControl]="formControl"
                      [options]="options"
                      [optionsTitle]="optionsTitle"

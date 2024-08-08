@@ -114,9 +114,12 @@
   }
 
   &.fu-mode-button,
+  &.fu-mode-button-add,
+  &.fu-mode-button-icon,
   &.fu-mode-button-text{
     .fu-dropdown-select-wrapper{
       background-color: transparent;
+      gap: var(--spacing-100, #{$spacingV4-100});
       @extend %font-v4-button;
       .fu-dropdown-select-icon{
         color: var(--text-primary, #{$color-v4-text-primary});
@@ -138,9 +141,31 @@
       }
     }
   }
+  &.fu-mode-button-add,
+  &.fu-mode-button-icon,
   &.fu-mode-button-text{
     .fu-dropdown-select-wrapper{
       border-color: transparent;
+      &.fu-open {
+        border-color: transparent;
+        background-color: var(--default-main, #{$color-v4-default-main});
+      }
+    }
+  }
+
+  &.fu-mode-button-icon{
+    .fu-dropdown-select-wrapper {
+      padding: 4px;
+      &.fu-open{
+        padding: 4px;
+        border-width: 1px;
+      }
+      .fu-dropdown-select-icon {
+        @include size(20px);
+      }
+      .fu-placeholder-text{
+        display: none;
+      }
     }
   }
 

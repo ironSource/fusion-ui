@@ -38,6 +38,8 @@ export abstract class ChipFilterBaseComponent implements OnInit, AfterViewInit, 
     /** @internal */
     @ViewChild('ref', {static: true}) ref: TemplateRef<any>;
 
+    @Input() variant: 'outline' | 'text' = 'outline';
+
     /** @internal */
     id: number | string;
     /** @internal */

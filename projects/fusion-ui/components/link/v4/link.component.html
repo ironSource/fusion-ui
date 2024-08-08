@@ -1,0 +1,31 @@
+<a class="fu-link fu-link-variant-{{variant}}"
+   [class.fu-link-primary]="isPrimary"
+   [class.fu-link-underline]="underline"
+   [class.fu-link-disabled]="disabled"
+   [href]="href"
+   [target]="target"
+   [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdLinkModifiers.LINK"
+>
+    @if (!!startIconName) {
+        <fusion-icon class="fu-link-start-icon"
+                     [style.color]="startIconColor"
+                     [name]="startIconName"
+                     [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdLinkModifiers.START_ICON">
+        </fusion-icon>
+    }
+    <span class="fu-link-content" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdLinkModifiers.CONTENT"><ng-content></ng-content></span>
+    @if (!!endIconName) {
+        <fusion-icon class="fu-link-end-icon"
+                     [style.color]="endIconColor"
+                     [name]="endIconName"
+                     [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdLinkModifiers.END_ICON">
+        </fusion-icon>
+    }
+    @if (isExternal && !!externalIcon) {
+        <fusion-icon class="fu-link-end-icon"
+                     [style.color]="externalIconColor"
+                     [name]="externalIcon"
+                     [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdLinkModifiers.EXTERNAL_ICON">
+        </fusion-icon>
+    }
+</a>
