@@ -119,7 +119,7 @@
             }
           }
 
-          &.selected:not(.active), &.hover-range:not(.active) {
+          &.selected:not(.active) {
             border: none;
 
             .selected-range {
@@ -152,15 +152,6 @@
               }
             }
           }
-
-          &.hover-current {
-            color: $White;
-
-            &:before {
-              @include calendar-circle(red, 0 50% 50% 0);
-            }
-          }
-
 
           // region today dot
           &.today {

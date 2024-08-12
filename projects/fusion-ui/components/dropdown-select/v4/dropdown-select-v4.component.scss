@@ -13,7 +13,7 @@
   .fu-dropdown-select-wrapper {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: var(--placegolder-gap, #{$spacingV4-50});
     @extend %font-v4-body-1;
     color: var(--text-primary, #{$color-v4-text-primary});
     box-sizing: border-box;
@@ -119,8 +119,9 @@
   &.fu-mode-button-text{
     .fu-dropdown-select-wrapper{
       background-color: transparent;
-      gap: var(--spacing-100, #{$spacingV4-100});
+      gap: var(--placegolder-gap, #{$spacingV4-100});
       @extend %font-v4-button;
+      font-size: var(--placegolder-font-size, 0.875rem);
       .fu-dropdown-select-icon{
         color: var(--text-primary, #{$color-v4-text-primary});
       }
