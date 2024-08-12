@@ -440,6 +440,7 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
         return true;
     }
 
+    /** @internal */
     setValueToPropagate(value: DaterangeSelection): DaterangeSelection {
         if (this.fcHasTimeSelector.value) {
             return {...value, startTime: this.fcStartTime.value, endTime: this.fcEndTime.value};

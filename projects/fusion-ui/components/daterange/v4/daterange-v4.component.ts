@@ -32,7 +32,9 @@ import {BehaviorSubject} from 'rxjs';
     ]
 })
 export class DaterangeV4Component extends DaterangeBaseComponent {
+    /** @internal */
     @Input() selectorIcon: IconData = 'ph/calendar-blank';
+    /** @internal */
     @Input() footerMessage: string = 'All dates are in UTC';
     /** @internal */
     dropdownSelectConfigurations$ = new BehaviorSubject<DropdownSelectConfigurations>({

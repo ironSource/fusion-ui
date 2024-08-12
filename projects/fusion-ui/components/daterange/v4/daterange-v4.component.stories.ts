@@ -13,6 +13,10 @@ const BASE_TEMPLATE = `<fusion-daterange
     [selectorPlaceholder]="selectorPlaceholder"
 ></fusion-daterange>`;
 
+const TODAY = new Date();
+const YESTERDAY = new Date(Date.now() - 1000 * 60 * 60 * 24);
+const BEFORE_5_DAYS = new Date(Date.now() - 1000 * 60 * 60 * 24 * 5);
+
 export default {
     title: 'V4/Components/Dates/DateRange',
     component: DaterangeV4Component,
@@ -32,7 +36,7 @@ export default {
     },
     args: {
         formControl: new FormControl() as FormControl<DaterangeSelection>,
-        options: {placeholder: 'Select date range'} as DaterangeOptions
+        options: {placeholder: 'Select date range', format: 'MMM dd, y'} as DaterangeOptions
     },
     argTypes: {
         formControl: {
@@ -45,13 +49,13 @@ type Story = StoryObj<DaterangeV4Component>;
 
 export const Basic: Story = {};
 
-export const Selected: Story = {
+export const Selected5Days: Story = {
     render: args => ({
         props: {
             ...args,
             formControl: new FormControl({
-                startDate: new Date(),
-                endDate: new Date()
+                startDate: BEFORE_5_DAYS,
+                endDate: YESTERDAY
             }) as FormControl<DaterangeSelection>
         },
         template: BASE_TEMPLATE
