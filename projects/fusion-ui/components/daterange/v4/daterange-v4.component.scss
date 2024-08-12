@@ -1,0 +1,180 @@
+@import '../../../src/style/scss/v4/vars/vars';
+@import '../../../src/style/scss/v4/mixins/mixins';
+
+:host {
+  @extend %reset;
+  @include user-select(none);
+  position: relative;
+  display: inline-block;
+
+  // region variables
+  --daterange-overlay-min-width: 480px;
+  --daterange-overlay-top: #{$spacingV4-50};
+  --daterange-overlay-bg-color: var(--common-white, #{$color-v4-common-white});
+  --daterange-overlay-border: 1px solid var(--common-divider-elevation-0, #{$color-v4-common-divider-elevation-0});
+  --daterange-overlay-border-radius: #{$borderRadiusV4-lg};
+  --daterange-overlay-box-shadow: #{$boxShadowV4-LG};
+
+  --daterange-preset-wrapper-width: 164px;
+  --daterange-preset-wrapper-padding: 8px;
+  --daterange-preset-wrapper-bg-color: var(--background-paper, #{$color-v4-background-paper});
+  --daterange-preset-wrapper-gap: 4px;
+  --daterange-preset-item-height: 32px;
+  --daterange-preset-item-padding: 6px 8px;;
+  --daterange-preset-item-border-radius: #{$borderRadiusV4-lg};
+  --daterange-preset-color: var(--text-primary, #{$color-v4-text-primary});
+  --daterange-preset-item-disabled-color: var(--text-disabled, #{$color-v4-text-disabled});
+  --daterange-preset-item-hover-bg-color: var(--action-hover, #{$color-v4-action-hover});
+  --daterange-preset-item-selected-bg-color: var(--action-selected, #{$color-v4-action-selected});
+
+  --daterange-calendars-wrapper-width: 504px;
+  --daterange-calendars-wrapper-margin: 16px;
+  --daterange-calendars-wrapper-gap: 24px;
+  --daterange-calendars-prev-next-size: 24px;
+  --daterange-calendars-prev-next-button-hover-color: var(--default-contrast-text, #{$color-v4-default-contrast-text});
+  --daterange-calendars-prev-next-button-hover-bg-color: var(--action-hover, #{$color-v4-action-hover});
+
+
+
+  --daterange-calendars-prev-next-icon-size: 20px;
+  --daterange-calendars-prev-next-icon-color: var(--action-active, #{$color-v4-action-active});
+
+  --daterange-footer-message-color: var(--text-secondary, #{$color-v4-text-secondary});
+  --daterange-footer-gap: 8px;
+  --daterange-footer-padding: 12px 16px;
+  --daterange-footer-height: $spacingV4-600;
+  // endregion
+
+  &.open-to-right .fu-daterange-overlay {
+    left: 0;
+  }
+
+  .fu-daterange-overlay {
+    position: absolute;
+    @extend %notificationLayer;
+    right: 0;
+    margin-top: var(--daterange-overlay-top);
+    min-width: var(--daterange-overlay-min-width);
+    display: none;
+    visibility: hidden;
+    border: var(--daterange-overlay-border);
+    border-radius: var(--daterange-overlay-border-radius);
+    box-shadow: var(--daterange-overlay-box-shadow);
+    background-color: var(--daterange-overlay-bg-color);
+
+    // region overlay state and position
+    &.isOpen {
+      display: flex;
+    }
+
+    &.visible {
+      visibility: initial;
+    }
+
+    &.left {
+      left: 0;
+      right: initial;
+    }
+
+    // endregion
+
+    .fu-daterange-preset-wrapper {
+      border-top-left-radius: var(--daterange-overlay-border-radius);
+      border-bottom-left-radius: var(--daterange-overlay-border-radius);
+      border-right: var(--daterange-overlay-border);
+      min-width: var(--daterange-preset-wrapper-width);
+      padding: var(--daterange-preset-wrapper-padding);
+      @extend %font-v4-body-2;
+      background-color: var(--daterange-preset-wrapper-bg-color);
+
+      ul {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: var(--daterange-preset-wrapper-gap);
+        li {
+          color: var(--daterange-preset-color);
+          height: var(--daterange-preset-item-height);
+          padding: var(--daterange-preset-item-padding);
+          display: flex;
+          align-items: center;
+          border-radius: var(--daterange-preset-item-border-radius);
+
+          // region presets state
+          &:not(.selected):not(.disabled):hover {
+            cursor: pointer;
+            background-color: var(--daterange-preset-item-hover-bg-color);
+          }
+
+          &.selected {
+            background-color: var(--daterange-preset-item-selected-bg-color);
+          }
+
+          &.disabled {
+            color: var(--daterange-preset-item-disabled-color);
+            pointer-events: none;
+          }
+
+          // endregion
+        }
+      }
+    }
+
+    .fu-daterange-calendars-wrapper {
+      width: var(--daterange-calendars-wrapper-width);
+      display: flex;
+      flex-direction: column;
+
+      .fu-daterange-calendars {
+        position: relative;
+        flex-grow: 1;
+        display: flex;
+        margin: var(--daterange-calendars-wrapper-margin);
+        align-items: flex-start;
+        gap: var(--daterange-calendars-wrapper-gap);
+
+        .fu-daterange-prev, .fu-daterange-next {
+          position: absolute;
+          top: 8px;
+          @include size(var(--daterange-calendars-prev-next-size));
+          cursor: pointer;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .fu-daterange-prev-icon,
+          .fu-daterange-next-icon{
+            @include size(var(--daterange-calendars-prev-next-icon-size));
+            color: var(--daterange-calendars-prev-next-icon-color);
+          }
+
+          &:hover {
+            background-color: var(--daterange-calendars-prev-next-button-hover-bg-color);
+            color: var(--daterange-calendars-prev-next-button-hover-color);
+          }
+        }
+        .fu-daterange-next{
+          right: 0;
+        }
+      }
+
+      .fu-daterange-actions-footer {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: var(--daterange-footer-gap);
+        padding: var(--daterange-footer-padding);
+        height: var(--daterange-footer-height);
+        border-top: var(--daterange-overlay-border);
+
+        .fu-daterange-actions-footer-message {
+          flex-grow: 1;
+          @extend %font-v4-body-2;
+          color: var(--daterange-footer-message-color);
+        }
+      }
+    }
+  }
+}

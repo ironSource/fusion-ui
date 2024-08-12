@@ -204,7 +204,6 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     }
     /** @internal */
     onOutsideClick(target: HTMLElement) {
-        // if (this.validateClickOutside(target) && !target.closest('fusion-dropdown-option')) {
         if (this.validateClickOutside(target)) {
             this.close();
         }
@@ -213,9 +212,10 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     apply() {
         if (this.isOpen$.getValue() && this.isTimeSelectorValid()) {
             this.isOpen$.next(false);
-            if (this.selection?.endDate) {
-                this.selection.endDate;
-            }
+            // todo: check it
+            // if (this.selection?.endDate) {
+            //     this.selection.endDate;
+            // }
 
             this.originalSelection = {...this.selection};
             this.setPlaceholder({isOpen: false});
@@ -390,6 +390,12 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
             this.daterangeOptions = Object.assign({}, this.defaultOptions, this.daterangeOptions);
         } else {
             this.daterangeOptions = this.defaultOptions;
+        }
+        if (!!this.daterangeOptions?.placeholder) {
+            this.dropdownSelectConfigurations$.next({
+                ...this.dropdownSelectConfigurations$.getValue(),
+                placeholder: {value: this.daterangeOptions.placeholder}
+            });
         }
 
         if (!isNullOrUndefined(this.daterangeOptions?.overlayAlignPosition)) {

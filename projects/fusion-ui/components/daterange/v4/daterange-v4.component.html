@@ -1,1 +1,66 @@
-<p>daterange-v4 works!</p>
+<div [id]="id" (fusionClickOutside)="onOutsideClick($event)">
+    @if (templateRef) {
+        <div #trigger (click)="toggle()">
+            <ng-container [ngTemplateOutlet]="templateRef"></ng-container>
+        </div>
+    } @else {
+        <fusion-dropdown-select class="fu-mode-button"
+                                [icon]="selectorIcon"
+                                [placeholder]="placeholder"
+                                [isOpen]="isOpen"
+                                (click)="toggle()"
+        ></fusion-dropdown-select>
+    }
+
+    <div class="fu-daterange-overlay" #overlay
+         [class.fu-no-presets]="!isPresetsShown"
+         [class]="overlayAlign$ | async"
+         [ngClass]="{visible: (overlayAlign$ | async), isOpen: (isOpen$ | async) , singleDatePicker: isSingleDatePicker}"
+    >
+        @if (isPresetsShown) {
+            <div class="fu-daterange-preset-wrapper">
+                <ng-container [ngTemplateOutlet]="presetsHeaderTemplate || defaultPreset"></ng-container>
+                <ng-template #defaultPreset>
+                    <ul>
+                        @for (preset of options.presets; track preset) {
+                            <li [ngClass]="{selected: currentPreset === preset}"
+                                (click)="selectPreset(preset)"
+                            >{{ daterangeService.getPresetName(preset) }}
+                            </li>
+                        }
+                    </ul>
+                </ng-template>
+            </div>
+        }
+        <div class="fu-daterange-calendars-wrapper">
+            <div class="fu-daterange-calendars">
+                <div class="fu-daterange-prev" (click)="onMonthChange('previous')">
+                    <fusion-icon class="fu-daterange-prev-icon" [name]="pevIconName"></fusion-icon>
+                </div>
+
+                @for (month of currentMonths; track month) {
+                    <fusion-calendar
+                        (daySelected)="onSelectDay($event)"
+                        [configuration]="getCalendarConfigurations(month)"
+                    ></fusion-calendar>
+                }
+
+                <div class="fu-daterange-next" (click)="onMonthChange('next')">
+                    <fusion-icon class="fu-daterange-next-icon" [name]="nextIconName"></fusion-icon>
+                </div>
+            </div>
+            @if (!isSingleDatePicker){
+                <div class="fu-daterange-actions-footer">
+                    @if (footerMessage){
+                        <div class="fu-daterange-actions-footer-message">{{footerMessage}}</div>
+                    }
+                    <fusion-button size="small" variant="outlined" (click)="close()">Cancel</fusion-button>
+                    <fusion-button size="small" color="primary" (click)="apply()">Apply</fusion-button>
+                </div>
+            }
+        </div>
+
+    </div>
+</div>
+
+
