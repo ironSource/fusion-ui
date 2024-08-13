@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {CalendarService} from '../common/base';
-import {CalendarComponent} from '../v3';
+import {CalendarService} from '@ironsource/fusion-ui/components/calendar/common/base';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+import {CalendarComponent} from '@ironsource/fusion-ui/components/calendar/v3';
 
 @Component({
     selector: 'fusion-calendar',
