@@ -50,10 +50,8 @@ import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 export class DaterangeV4Component extends DaterangeBaseComponent {
     /** @internal */
     @Input() selectorIcon: IconData = 'ph/calendar-blank';
-    /** @internal */
     @Input() footerMessage: string = 'All dates are in UTC';
 
-    /** @internal */
     @Input() testId: string;
     /** @internal */
     testIdModifiers: typeof DateRangeTestIdModifiers = DateRangeTestIdModifiers;
