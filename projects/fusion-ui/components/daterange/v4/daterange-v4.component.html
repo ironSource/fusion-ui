@@ -1,10 +1,11 @@
 <div [id]="id" (fusionClickOutside)="onOutsideClick($event)">
     @if (templateRef) {
-        <div #trigger (click)="toggle()">
+        <div #trigger (click)="toggle()" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdModifiers.TRIGGER_CUSTOM">
             <ng-container [ngTemplateOutlet]="templateRef"></ng-container>
         </div>
     } @else {
         <fusion-dropdown-select class="fu-mode-button"
+                                [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdModifiers.TRIGGER"
                                 [icon]="selectorIcon"
                                 [placeholder]="placeholder"
                                 [isOpen]="isOpen"
@@ -13,12 +14,13 @@
     }
 
     <div class="fu-daterange-overlay" #overlay
+         [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdModifiers.OVERLAY"
          [class.fu-no-presets]="!isPresetsShown"
          [class]="overlayAlign$ | async"
          [ngClass]="{visible: (overlayAlign$ | async), isOpen: (isOpen$ | async) , singleDatePicker: isSingleDatePicker}"
     >
         @if (isPresetsShown) {
-            <div class="fu-daterange-preset-wrapper">
+            <div class="fu-daterange-preset-wrapper" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdModifiers.PRESETS_WRAPPER">
                 <ng-container [ngTemplateOutlet]="presetsHeaderTemplate || defaultPreset"></ng-container>
                 <ng-template #defaultPreset>
                     <ul>
@@ -34,7 +36,7 @@
         }
         <div class="fu-daterange-calendars-wrapper">
             <div class="fu-daterange-calendars">
-                <div class="fu-daterange-prev" (click)="onMonthChange('previous')">
+                <div class="fu-daterange-prev" (click)="onMonthChange('previous')" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdModifiers.PREV_MONTH_BUTTON">
                     <fusion-icon class="fu-daterange-prev-icon" [name]="pevIconName"></fusion-icon>
                 </div>
 
@@ -42,20 +44,36 @@
                     <fusion-calendar
                         (daySelected)="onSelectDay($event)"
                         [configuration]="getCalendarConfigurations(month)"
+                        [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdModifiers.CALENDAR"
                     ></fusion-calendar>
                 }
 
-                <div class="fu-daterange-next" (click)="onMonthChange('next')">
+                <div class="fu-daterange-next" (click)="onMonthChange('next')" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdModifiers.NEXT_MONTH_BUTTON">
                     <fusion-icon class="fu-daterange-next-icon" [name]="nextIconName"></fusion-icon>
                 </div>
             </div>
-            @if (!isSingleDatePicker){
-                <div class="fu-daterange-actions-footer">
-                    @if (footerMessage){
-                        <div class="fu-daterange-actions-footer-message">{{footerMessage}}</div>
+            @if (options.calendarAmount !== 1 && options?.withTimeSelect) {
+                <div class="fu-time-selector" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdModifiers.TIME_SELECTOR">
+                    <fusion-checkbox label="Add hours" [formControl]="fcHasTimeSelector" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdModifiers.TIME_CHECKBOX"></fusion-checkbox>
+                    @if(fcHasTimeSelector.value){
+                        <div class="fu-time-select-wrapper">
+                            <div class="fu-start-time-wrapper">
+                                Start <fusion-input type="time" [variant]="!fcStartTime.valid ? 'error': null" [formControl]="fcStartTime" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdModifiers.TIME_START"></fusion-input>
+                            </div>
+                            <div class="fu-end-time-wrapper">
+                                End <fusion-input type="time" [variant]="!fcEndTime.valid ? 'error': null" [formControl]="fcEndTime" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdModifiers.TIME_END"></fusion-input>
+                            </div>
+                        </div>
                     }
-                    <fusion-button size="small" variant="outlined" (click)="close()">Cancel</fusion-button>
-                    <fusion-button size="small" color="primary" (click)="apply()">Apply</fusion-button>
+                </div>
+            }
+            @if (!isSingleDatePicker){
+                <div class="fu-daterange-actions-footer" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdModifiers.ACTION_FOOTER">
+                    @if (footerMessage){
+                        <div class="fu-daterange-actions-footer-message" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdModifiers.ACTION_FOOTER_MESSAGE">{{footerMessage}}</div>
+                    }
+                    <fusion-button size="small" variant="outlined" (click)="close()" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdModifiers.ACTION_CANCEL_BUTTON">Cancel</fusion-button>
+                    <fusion-button size="small" color="primary" (click)="apply()" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdModifiers.ACTION_APPLY_BUTTON">Apply</fusion-button>
                 </div>
             }
         </div>

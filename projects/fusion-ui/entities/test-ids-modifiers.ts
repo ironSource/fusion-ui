@@ -232,3 +232,21 @@ export enum TableTestIdModifiers {
 
     BUTTON_GO_TOP = 'table-button-go-top'
 }
+
+export enum DateRangeTestIdModifiers {
+    TRIGGER = 'trigger',
+    TRIGGER_CUSTOM = 'trigger-custom',
+    OVERLAY = 'overlay',
+    PRESETS_WRAPPER = 'presets-wrapper',
+    PREV_MONTH_BUTTON = 'prev-month-button',
+    NEXT_MONTH_BUTTON = 'next-month-button',
+    CALENDAR = 'calendar',
+    TIME_SELECTOR = 'time-selector',
+    TIME_CHECKBOX = 'time-checkbox',
+    TIME_START = 'time-start',
+    TIME_END = 'time-END',
+    ACTION_FOOTER = 'action-footer',
+    ACTION_FOOTER_MESSAGE = 'action-footer-message',
+    ACTION_CANCEL_BUTTON = 'action-cancel-button',
+    ACTION_APPLY_BUTTON = 'action-apply-button'
+}
