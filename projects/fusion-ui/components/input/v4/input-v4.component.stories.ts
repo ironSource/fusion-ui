@@ -6,6 +6,7 @@ import {environment} from 'stories/environments/environment';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {InputV4Component} from './input-v4.component';
+import {InputType} from '@ironsource/fusion-ui/components/input/v4/input-v4.entities';
 
 const formControl = new FormControl();
 const formControlDisabled = new FormControl({value: 'Disabled', disabled: true});
@@ -398,6 +399,23 @@ export const Password: Story = {
     [labelRequired]="labelRequired"
     [labelIcon]="labelIcon"
     [labelTooltipText]="labelTooltipText"
+    [formControl]="formControl"
+    [type]="type"
+    [testId]="testId"
+  ></fusion-input>
+`
+    })
+};
+
+export const Time: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            type: 'time' as InputType,
+            formControl: formControlPassword
+        },
+        template: `
+<fusion-input
     [formControl]="formControl"
     [type]="type"
     [testId]="testId"

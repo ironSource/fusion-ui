@@ -10,6 +10,8 @@
   flex-direction: column;
   gap: 4px;
 
+  --input-time-width: 86px;
+
   .fu-input-wrapper {
     flex-grow: 2;
     display: flex;
@@ -214,6 +216,10 @@
         input{
             padding-right: 40px;
         }
+    }
+
+    &:has(input[type="time"]){
+      width: var(--input-time-width);
     }
   }
 
