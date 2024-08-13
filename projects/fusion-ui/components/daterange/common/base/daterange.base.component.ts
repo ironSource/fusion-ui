@@ -365,6 +365,12 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
                 const componentClientRect = this.elemRef.nativeElement.getBoundingClientRect();
                 if (overlayClientRect.width > componentClientRect.width) {
                     // need check if has a place on left
+                    console.log('ov', this.overlay.nativeElement);
+                    console.log('ov', overlayClientRect);
+                    console.log('el', this.elemRef.nativeElement);
+                    console.log('el', componentClientRect);
+                    console.log('>>', componentClientRect.x + componentClientRect.width, overlayClientRect.width);
+
                     if (!(componentClientRect.x + componentClientRect.width >= overlayClientRect.width)) {
                         this.overlayAlign$.next('left');
                     }
