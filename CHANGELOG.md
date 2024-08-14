@@ -7,6 +7,9 @@ All notable changes to this project will be documented in this file. See [commit
 
 ### Features
 
+* **isct-165:** added datepicker component v4 ([1861561](https://github.com/ironSource/fusion-ui/commit/18615618690c33149516f2d25f3f8430710f3c90))
+* **isct-166:** added daterange component v4 ([6b7197f](https://github.com/ironSource/fusion-ui/commit/6b7197f7920a55a1701a2d3f6057cf6b3a2a90c8))
+* **isct-166:** added calendar component v4 ([285c4d8](https://github.com/ironSource/fusion-ui/commit/285c4d8d35cedcf6c1eb69be36b97b9a993c5cf2))
 * **isct-168:** remove hover from chip except remove icon ([d50ed86](https://github.com/ironSource/fusion-ui/commit/d50ed8667ce19af9b66ff2e82fda80cd38adaf6e))
 
 
