@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [8.4.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.0...v8.4.0-rc.1) (2024-08-14)
+
+
+### Features
+
+* **isct-168:** remove hover from chip except remove icon ([d50ed86](https://github.com/ironSource/fusion-ui/commit/d50ed8667ce19af9b66ff2e82fda80cd38adaf6e))
+
+
+### Bug Fixes
+
+* **trigger-button:** up stories for button trigger v4 ([99beca3](https://github.com/ironSource/fusion-ui/commit/99beca30c176b591acb5528a7fc376d1e8500f9c))
+* **trigger-button:** v4 sync with vue ([9f9843c](https://github.com/ironSource/fusion-ui/commit/9f9843ca5ce25e1aa2807fdd1a9c662554fbeb33))
+
 ## [8.4.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.3.0...v8.4.0-rc.0) (2024-08-01)
 
 
