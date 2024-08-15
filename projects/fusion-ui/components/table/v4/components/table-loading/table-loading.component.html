@@ -1,0 +1,13 @@
+@if(fusionTableLoadingExpanding){
+    @for(c of colsToShow; track c){
+        <td class="fu-table-cell-loading fu-expanding-loader"><fusion-skeleton size="16"></fusion-skeleton></td>
+    }
+} @else {
+    @for (r of rowsToShow; track r){
+        <tr>
+            @for(c of colsToShow; track c){
+                <td class="fu-table-cell-loading"><fusion-skeleton size="16"></fusion-skeleton></td>
+            }
+        </tr>
+    }
+}

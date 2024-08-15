@@ -1,0 +1,23 @@
+@import "../../../../../src/style/scss/v4/vars/vars";
+
+:host {
+  tr {
+    display: flex;
+    flex-direction: row;
+    .fu-table-cell-loading {
+      display: flex;
+      align-items: center;
+      flex: 1 0 0;
+      height: var(--table-row-height);
+      gap: var(--table-header-cell-gap);
+      padding: var(--table-row-cell-padding);
+
+      &.fu-expanding-loader:first-of-type {
+        div {
+          display: none;
+        }
+      }
+    }
+
+  }
+}

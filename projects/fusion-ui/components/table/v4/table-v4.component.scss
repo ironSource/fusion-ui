@@ -1,0 +1,66 @@
+@import "../../../src/style/scss/v4/vars/vars";
+@import "../../../src/style/scss/v4/mixins/mixins";
+
+:host {
+  // region css variables
+  --table-border-width: 1px;
+  --table-border-type: solid;
+  --table-border-color: var(--common-divider, #{$color-v4-common-divider});
+  --table-border: var(--table-border-width) var(--table-border-type) var(--table-border-color);
+
+  --table-text-color: var(--text-primary, #{$color-v4-text-primary});
+
+  --table-header-cell-height: 40px;
+  --table-header-cell-padding: 0 16px;
+  --table-header-cell-bg-color: var(--background-paper-elevation-0, #{$color-v4-background-paper-elevation-0});
+  --table-header-cell-gap: 4px;
+  --table-header-text-color: var(--table-text-color);
+
+  --table-row-height: 48px;
+  --table-row-cell-padding: 0 16px;
+
+  // endregion
+
+  @extend %reset;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  border: var(--table-border);
+
+  .tableWrap {
+    flex-grow: 1;
+    display: block;
+    overflow: auto;
+    @extend %customScroll;
+
+    table {
+      border: none;
+      margin: 0;
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 100%;
+
+      thead {
+        tr{
+          display: flex;
+          flex-direction: row;
+          td {
+            @extend %font-v4-table-label;
+            display: flex;
+            align-items: center;
+            flex: 1 0 0;
+            height: var(--table-header-cell-height);
+            gap: var(--table-header-cell-gap);
+            padding: var(--table-header-cell-padding) ;
+            background-color: var(--table-header-cell-bg-color);
+          }
+        }
+      }
+
+    }
+  }
+
+}
