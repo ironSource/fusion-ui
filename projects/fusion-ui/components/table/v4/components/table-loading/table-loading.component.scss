@@ -7,7 +7,7 @@
       align-items: center;
       flex: 1 0 0;
       height: var(--table-row-height);
-      gap: var(--table-header-cell-gap);
+      gap: var(--table-row-cell-gap);
       padding: var(--table-row-cell-padding);
 
       &.fu-expanding-loader:first-of-type {
