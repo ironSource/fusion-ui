@@ -16,6 +16,8 @@
   --table-header-cell-gap: 4px;
   --table-header-text-color: var(--table-text-color);
 
+  --table-empty-state-padding: 48px;
+
   --table-row-height: 48px;
   --table-row-cell-padding: 0 16px;
   --table-row-cell-gap: 4px;
@@ -57,11 +59,32 @@
             gap: var(--table-header-cell-gap);
             padding: var(--table-header-cell-padding) ;
             background-color: var(--table-header-cell-bg-color);
+            border-bottom: var(--table-border)
           }
         }
       }
+      tbody {
+        tr {
+          display: flex;
+          flex-direction: row;
+          overflow: auto;
+          td {
+            @extend %font-v4-body-1;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            flex: 1 0 0;
+            height: var(--table-row-height);
+            gap: var(--table-row-cell-gap);
+            padding: var(--table-row-cell-padding) ;
+            border-bottom: var(--table-border)
+          }
 
+          &:last-of-type td{
+              border-bottom: none;
+          }
+        }
+      }
     }
   }
-
 }

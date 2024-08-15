@@ -36,12 +36,13 @@ import {TableBasicComponent} from '@ironsource/fusion-ui/components/table/v3/com
 import {TestIdsService, UniqueIdService} from '@ironsource/fusion-ui/services';
 import {TableTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {TableLoadingComponent} from './components/table-loading/table-loading.component';
+import {TableEmptyComponent} from './components/table-empty/table-empty.component';
 
 @Component({
     selector: 'fusion-table-v4',
     standalone: true,
     host: {class: 'fusion-v4'},
-    imports: [CommonModule, GenericPipe, CheckboxComponent, TooltipDirective, TooltipComponent, TableLoadingComponent],
+    imports: [CommonModule, GenericPipe, CheckboxComponent, TooltipDirective, TooltipComponent, TableLoadingComponent, TableEmptyComponent],
     providers: [TableService],
     templateUrl: './table-v4.component.html',
     styleUrl: './table-v4.component.scss',
@@ -102,6 +103,7 @@ export class TableV4Component implements OnInit, OnDestroy {
     get options(): TableOptions {
         return this._options;
     }
+
     private _options: TableOptions = {};
     // endregion
 
@@ -112,9 +114,11 @@ export class TableV4Component implements OnInit, OnDestroy {
             this.subHeader = this.getSubHeaders(this._columns);
         }
     }
+
     get columns(): TableColumn[] {
         return this._columns;
     }
+
     private _columns: TableColumn[] = [];
     // endregion
 
@@ -125,9 +129,11 @@ export class TableV4Component implements OnInit, OnDestroy {
             this.initRows();
         }
     }
+
     get rows(): any[] | TableRowsGrouped {
         return this._rows;
     }
+
     private _rows: any[] | TableRowsGrouped = [];
     // endregion
 
@@ -137,9 +143,11 @@ export class TableV4Component implements OnInit, OnDestroy {
         this.onExternalExpandRowChanged(value);
         this._expandedRows = value;
     }
+
     get expandedRows(): {[key: string]: boolean} {
         return this._expandedRows;
     }
+
     private _expandedRows: {[key: string]: boolean} = {};
     // endregion
 
@@ -178,24 +186,31 @@ export class TableV4Component implements OnInit, OnDestroy {
     @HostBinding('class.fixed-table') get isFixedHeader(): boolean {
         return !isNullOrUndefined(this.options) && !isNullOrUndefined(this.options.stickyHeader) && this.options.stickyHeader;
     }
+
     @HostBinding('class.fu-no-table-frame') get noTableFrame(): boolean {
         return !(!!this.options?.tableLabel || !!this.options?.searchOptions);
     }
+
     @HostBinding('class.fu-no-table-footer') get noTableFooter(): boolean {
         return !this.noTableFrame && this.options?.noTableFooter;
     }
+
     @HostBinding('class.is-empty') get isEmpty(): boolean {
         return this.tableService.isTableEmpty(this.rows, this.options.isGroupedTable, this.options.hasTotalsRow);
     }
+
     @HostBinding('class.is-loading') get isLoading(): boolean {
         return this.loading;
     }
+
     @HostBinding('class.on-scroll-right') isScrollRight: boolean;
+
     @HostBinding('class.on-vertical-scroll') get onVerticalScroll(): boolean {
         if (this.tableWrapperElement) {
             return this.tableWrapperElement.nativeElement.scrollTop > 0;
         }
     }
+
     // endregion
 
     // region getters
@@ -234,6 +249,7 @@ export class TableV4Component implements OnInit, OnDestroy {
         }
         return scrollElement;
     }
+
     // endregion
 
     // region  private props
@@ -241,10 +257,12 @@ export class TableV4Component implements OnInit, OnDestroy {
     private currentExpandedMap: {[key: string]: boolean} = {};
     private ignoredParentSelectorsRowClickEvent: string[];
     private onDestroy$ = new Subject<void>();
+
     // endregion
 
     ngOnInit(): void {
         this.tableService.clearSelectedRows();
+        this.searchFormControl = new FormControl(this.options?.searchOptions?.initalValue || '');
         if (!!this.options.rowsExpandableOptions) {
             try {
                 this.tableService.setExpandLevelByExpandOptions(this.options.rowsExpandableOptions);
@@ -255,7 +273,7 @@ export class TableV4Component implements OnInit, OnDestroy {
         }
         this.options.tableId = this.id;
         this.noDataMessage = isNullOrUndefined(this.options.noDataMessage) ? 'No Data to Display' : this.options.noDataMessage;
-        this.noDataSubMessage = this.options.noDataSubMessage || '';
+        this.noDataSubMessage = this.options.noDataSubMessage ?? '';
         this.hideHeaderOnEmpty = !isNullOrUndefined(this.options.hideHeaderOnEmpty) ? this.options.hideHeaderOnEmpty : false;
         this.isAllRowsSelectable = typeof this.options.isAllRowsSelectable === 'undefined' ? true : this.options.isAllRowsSelectable;
         this.scrollListeners();

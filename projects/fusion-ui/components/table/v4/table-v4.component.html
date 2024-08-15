@@ -1,30 +1,30 @@
 <!--<div class="fu-table-header">Table Header</div>-->
 <div #tableWrapper class="tableWrap" [ngClass]="wrapperClasses">
-    @if(!tableMainError){
+    @if (!tableMainError) {
         <table [id]="id" #table>
-            @if(columns && options){
-                <!-- region Table Header-->
-                @if(columns.length){
+            <!-- region Table Header-->
+            @if (columns && options) {
+                @if (columns.length) {
                     <thead [hidden]="(isEmpty || (loading && !isLoadingOverlay)) && hideHeaderOnEmpty">
                     <!-- region SubHeader-->
-                    @if(subHeader.length){
-                        <tr>
-                            <!--<ng-container *ngIf="!!options?.rowsExpandableOptions" [ngTemplateOutlet]="headerExpandColumn" [ngTemplateOutletContext]="{$implicit: true}"></ng-container>-->
-                            @for(subheader of subHeader; track subHeader; let isFirst = $first){
-                                <td class="fu-header-group"
-                                    [class.fu-border-left]="!isFirst"
-                                    [attr.colspan]="(isFirst && !!options?.rowsExpandableOptions) ? subheader.colspan + 1 : subheader.colspan"
-                                >
-                                    {{ subheader.name}}
-                                </td>
-                            }
-                        </tr>
-                    }
+                        @if (subHeader.length) {
+                            <tr>
+                                <!--<ng-container *ngIf="!!options?.rowsExpandableOptions" [ngTemplateOutlet]="headerExpandColumn" [ngTemplateOutletContext]="{$implicit: true}"></ng-container>-->
+                                @for (subheader of subHeader; track subHeader; let isFirst = $first) {
+                                    <td class="fu-header-group"
+                                        [class.fu-border-left]="!isFirst"
+                                        [attr.colspan]="(isFirst && !!options?.rowsExpandableOptions) ? subheader.colspan + 1 : subheader.colspan"
+                                    >
+                                        {{ subheader.name }}
+                                    </td>
+                                }
+                            </tr>
+                        }
                     <!-- endregion SubHeader-->
                     <!-- region Header-->
                     <tr [ngStyle]="!!options.rowsOptions && !!options.rowsOptions.headerRow ? options.rowsOptions.headerRow.style : null">
                         <!--<ng-container *ngIf="!!options?.rowsExpandableOptions" [ngTemplateOutlet]="headerExpandColumn"></ng-container>-->
-                        @for (column of columns; track trackByFunc; let isLast = $last; let isFirst = $first; let idx = $index){
+                        @for (column of columns; track trackByFunc; let isLast = $last; let isFirst = $first; let idx = $index) {
                             <td
                                     [attr.data-col-key]="column.key"
                                     [ngClass]="tableService.getColumnClasses(column, true)"
@@ -40,10 +40,13 @@
                                     <div class="fu-header-text"
                                          [class.fu-tooltiped]="column.tooltip" [fusionTooltip]="column.tooltip"
                                          [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.COLUMN_TITLE+idx)"
-                                    >{{ column.title }}</div>
+                                    >{{ column.title }}
+                                    </div>
                                     <div class="fu-sort-wrapper">
-                                        <div class="fu-sort-up" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.COLUMN_SORT_UP+idx)"></div>
-                                        <div class="fu-sort-down" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.COLUMN_SORT_DOWN+idx)"></div>
+                                        <div class="fu-sort-up"
+                                             [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.COLUMN_SORT_UP+idx)"></div>
+                                        <div class="fu-sort-down"
+                                             [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.COLUMN_SORT_DOWN+idx)"></div>
                                     </div>
                                 </ng-container>
                                 <!--                        <fusion-multi-dropdown
@@ -58,12 +61,12 @@
                                                                 selectAllLabel="Select All <span class='grey'>(No Filters)</span>"
                                                         >
                                                         </fusion-multi-dropdown>-->
-                                @if (tableService.isTypeCheckbox(column) && isAllRowsSelectable && !isEmpty && isCheckboxTitleShown){
+                                @if (tableService.isTypeCheckbox(column) && isAllRowsSelectable && !isEmpty && isCheckboxTitleShown) {
                                     <fusion-checkbox class="is-regular" title="select / un-select all"
-                                            [checked]="tableService.isAllRowsSelected(rows)"
-                                            [isIndeterminate]="tableService.isPartialSelected(rows)"
-                                            (changed)="tableService.onRowsSelectChanged(options.isGroupedTable, rows, $event)"
-                                            [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:tableTestIdModifiers.COLUMN_HEADER_SELECT_ALL"
+                                                     [checked]="tableService.isAllRowsSelected(rows)"
+                                                     [isIndeterminate]="tableService.isPartialSelected(rows)"
+                                                     (changed)="tableService.onRowsSelectChanged(options.isGroupedTable, rows, $event)"
+                                                     [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:tableTestIdModifiers.COLUMN_HEADER_SELECT_ALL"
                                     ></fusion-checkbox>
                                 }
                             </td>
@@ -72,64 +75,56 @@
                     <!-- endregion Header-->
                     </thead>
                 }
-                <!-- endregion Table Header-->
-                <!-- region Table Body-->
-                @if(loading && !isLoadingOverlay){
-                    <tbody [fusionTableLoading]="colsCount"></tbody>
-                }
-                @if(!options.isGroupedTable && (!loading || isLoadingOverlay) && !isEmpty){
-                    <!--                <tbody
-                                            *ngIf=""
-                                            fusionTableBasic
-                                            [rows]="tableRows"
-                                            [columns]="columns"
-                                            [options]="options"
-                                            [tableClientWidth]="getTableClientWidth()"
-                                            [expandedRows]="expandedRows"
-                                            [testId]="testId"
-                                            (rowSelected)="selectionChanged.emit($event)"
-                                            (expandRow)="doExpandRow($event)"
-                                            (click)="onTableBodyClicked($event)"
-                                            #tableBody
-                                    ></tbody>-->
-                }
-                @if(options?.pagination && options.pagination.loading){
-                    <!--table pagination loading overlay -->
-                    <tbody [fusionTableLoading]="colsCount"></tbody>
-                }
-                <!-- region Grouped Table Body-->
-<!--
-                <tbody
-                        *ngIf="options.isGroupedTable && (!loading || isLoadingOverlay) && !isEmpty"
-                        fusionTableGrouped
-                        [rows]="groupedTableRows"
-                        [columns]="columns"
-                        [options]="options"
-                        (rowSelected)="selectionChanged.emit($event)"
-                ></tbody>
--->
-                <!-- endregion Grouped Table Body-->
-                <!-- endregion Table Body-->
             }
-            <!-- region table empty-->
-            @if (!loading && isEmpty){
-                <!--
+            <!-- endregion Table Header-->
+            <!-- region Table Body-->
+            @if (!options.isGroupedTable && (!loading || isLoadingOverlay) && !isEmpty) {
+                <!--                <tbody
+                                        *ngIf=""
+                                        fusionTableBasic
+                                        [rows]="tableRows"
+                                        [columns]="columns"
+                                        [options]="options"
+                                        [tableClientWidth]="getTableClientWidth()"
+                                        [expandedRows]="expandedRows"
+                                        [testId]="testId"
+                                        (rowSelected)="selectionChanged.emit($event)"
+                                        (expandRow)="doExpandRow($event)"
+                                        (click)="onTableBodyClicked($event)"
+                                        #tableBody
+                                ></tbody>-->
+            }
+            <!-- region grouped Table Body-->
+            <!--
                             <tbody
-                                    [fusionTableEmpty]="colsCount"
-                                    [customContent]="options?.customNoData"
-                                    [header]="noDataMessage"
-                                    [subHeader]="noDataSubMessage"
-                                    [icon]="options?.emptyTableIcon"
-                                    [imageBackgroundUrl]="options?.noDataImageBgUrl"
+                                    *ngIf="options.isGroupedTable && (!loading || isLoadingOverlay) && !isEmpty"
+                                    fusionTableGrouped
+                                    [rows]="groupedTableRows"
+                                    [columns]="columns"
+                                    [options]="options"
+                                    (rowSelected)="selectionChanged.emit($event)"
                             ></tbody>
-                -->
+            -->
+            <!-- endregion grouped Table Body-->
+            <!-- region table empty-->
+            @if (!loading && isEmpty) {
+                <tbody
+                        [fusionTableEmpty]="colsCount"
+                        [customContent]="options?.customNoData"
+                        [type]="options?.emptyTableType"
+                        [header]="noDataMessage"
+                        [subHeader]="noDataSubMessage"
+                ></tbody>
             }
             <!-- endregion table empty-->
-            <!-- region table empty loading-->
-            @if(isEmpty && loading){
+            <!-- region table loading-->
+            @if ((loading && !isLoadingOverlay) ||
+            (options?.pagination && options.pagination.loading) ||
+            (isEmpty && loading)) {
                 <tbody [fusionTableLoading]="colsCount"></tbody>
             }
-            <!-- endregion table empty loading-->
+            <!-- endregion table loading-->
+            <!-- endregion Table Body-->
         </table>
     }
 </div>

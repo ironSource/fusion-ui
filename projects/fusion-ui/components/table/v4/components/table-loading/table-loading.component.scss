@@ -9,6 +9,7 @@
       height: var(--table-row-height);
       gap: var(--table-row-cell-gap);
       padding: var(--table-row-cell-padding);
+      border-bottom: var(--table-border);
 
       &.fu-expanding-loader:first-of-type {
         div {
@@ -16,6 +17,5 @@
         }
       }
     }
-
   }
 }

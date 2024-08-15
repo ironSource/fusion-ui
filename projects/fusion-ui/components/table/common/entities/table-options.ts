@@ -4,6 +4,7 @@ import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dy
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 import {EventEmitter} from '@angular/core';
 import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
+import {EmptyStateType} from '@ironsource/fusion-ui/components/empty-state/v4/empty-state.entities';
 
 export interface TableLabel {
     text: string;
@@ -33,6 +34,8 @@ export interface TableOptions {
     noDataMessage?: string;
     noDataSubMessage?: string;
     noDataImageBgUrl?: string; // custom image for empty table as background URL (v3)
+    emptyTableIcon?: string;
+    emptyTableType?: EmptyStateType; // used for empty table v4 state
     customNoData?: DynamicComponentConfiguration; // user defined "no data" content
     isGroupedTable?: boolean;
     pagination?: TablePaginationOption;
@@ -40,7 +43,6 @@ export interface TableOptions {
     stickyHeader?: boolean; // is sticky header table
     hideHeaderOnEmpty?: boolean; // is need to hide columns headers if table empty
     cellBorders?: boolean;
-    emptyTableIcon?: string;
     rowStyle?: any;
     rowHeight?: TableRowHeight;
     rowTrackingOption?: string;
