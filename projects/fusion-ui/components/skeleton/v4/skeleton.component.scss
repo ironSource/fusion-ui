@@ -10,12 +10,13 @@
 :host {
   margin: 0;
   padding: 0;
-
+  width: var(--fu-skeleton-width, 100%);
+  height: var(--fu-skeleton-height, 16px);
   .fu-skeleton {
     position: relative;
     overflow: hidden;
-    width: var(--fu-skeleton-width, 100%);
-    height: var(--fu-skeleton-height, 16px);
+    width: 100%;
+    height: 100%;
     background-color: var(--action-hover, #{$color-v4-action-hover});
     color: transparent;
 
