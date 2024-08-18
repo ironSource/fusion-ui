@@ -1,0 +1,104 @@
+<ng-container *ngFor="let row of rows; trackBy: trackByRowInvoke(); let rowIndex = index">
+    >>Oppa<<
+    <!--First parent row-->
+    <!--<tr
+        fusionTableRow
+        [rowIndex]="rowIndex"
+        [row]="row"
+        [columns]="columns"
+        [options]="options"
+        [isRowSelected]="rowIsSelected | generic:row"
+        [isExpanded]="isExpanded(rowIndex)"
+        [isInnerRow]="false"
+        [class.is-row-in-request]="tableService.rowsMetadata[row['_rowId']]?.inRequest"
+        [testId]="testId"
+        (rowRemoved)="tableService.removeRow({rows: rows, rowIndex: rowIndex, row: row, options: options})"
+        (selectedChange)="tableService.onRowSelectChanged($event, row)"
+        (expandRow)="onExpandRow($event)"
+        [ngClass]="rowClass | generic:row:rowIndex"
+        [ngStyle]="!!options.rowsOptions && !!options.rowsOptions.global ? options.rowsOptions.global.style : null"
+    ></tr>-->
+    <!--First parent row END-->
+    <!--Rowspan rows if any-->
+    <!--<ng-container *ngIf="tableService.rowsMetadata[row['_rowId']]?.rowspanColumnsData as rowSpanData"
+                  [ngTemplateOutlet]="multiRowColumns"
+                  [ngTemplateOutletContext]="{$implicit: row, rowIndex: rowIndex, rowSpanData: rowSpanData}">
+
+    </ng-container>-->
+    <!--Rowspan rows if any END-->
+    <!--Child rows-->
+    <!--<ng-container
+        *ngIf="displayExpandableRows(rowIndex)"
+        [ngTemplateOutlet]="childRowsTemplate"
+        [ngTemplateOutletContext]="{$implicit: row[options.rowsExpandableOptions.key], parentIndex: rowIndex}"
+    >
+    </ng-container>-->
+    <!--Child rows END-->
+    <!--Recursive template for child rows render-->
+    <!--<ng-template #childRowsTemplate let-parentRowChildren let-parentIndex="parentIndex">
+        <ng-container *fusionLoadMore="let displayRows$ of parentRowChildren; chunkSize: options.rowsExpandableOptions?.expendChunkSize || 10; let loadMore = loadMore; let hasMore$ = hasMore$;">
+            <ng-container
+                *ngFor="let innerRow of displayRows$ | async; trackBy: trackByRowInvoke(); let innerRowIndex = index; let last = last"
+            >
+                <tr
+                    fusionTableRow
+                    class="is-inner-row"
+                    [rowIndex]="parentIndex + '_' + innerRowIndex"
+                    [row]="innerRow"
+                    [columns]="options.rowsExpandableOptions.columns"
+                    [options]="childRowOptions"
+                    [isExpanded]="isExpanded(parentIndex + '_' + innerRowIndex)"
+                    [isInnerRow]="true"
+                    [ngClass]="rowClass | generic:innerRow:innerRowIndex"
+                    [hasAfterSticky]="hasAfterSticky(last, hasMore$ | async, parentIndex + '_' + innerRowIndex)"
+                    [ngStyle]="!!options.rowsOptions && !!options.rowsOptions.global ? options.rowsOptions.global.style : null"
+                    (expandRow)="onExpandRow($event)"
+                ></tr>
+                <tr class="full-cell load-more" *ngIf="!loadingChildRows[parentIndex] && (hasMore$ | async) && last">
+                    <td [attr.colspan]="fullCellColspan">
+                        <a [style.margin-left.px]="getHalfTableClientWidth" (click)="loadMore()">Load more</a>
+                    </td>
+                </tr>
+                &lt;!&ndash;recursive template invocation&ndash;&gt;
+                <ng-container
+                    *ngIf="displayExpandableRows(parentIndex + '_' + innerRowIndex) && getInnerRows(parentIndex + '_' + innerRowIndex) as innerRows"
+                    [ngTemplateOutlet]="childRowsTemplate"
+                    [ngTemplateOutletContext]="{
+                        $implicit: innerRows,
+                        parentIndex: parentIndex + '_' + innerRowIndex
+                    }"
+                >
+                </ng-container>
+            </ng-container>
+        </ng-container>
+        <ng-container *ngIf="loadingChildRows[parentIndex]">
+            <tr [fusionTableLoading]="fullCellColspan" [fusionTableLoadingExpanding]="true"></tr>
+        </ng-container>
+        <tr class="full-cell failed" *ngIf="failedChildRows[parentIndex]">
+            <td [attr.colspan]="fullCellColspan">
+                <p [style.margin-left.px]="getHalfTableClientWidth - 80">
+                    Failed to load data...
+                    <a (click)="onExpandRow({rowIndex: rowIndex, row: row, isExpanded: true})">Try again</a>
+                </p>
+            </td>
+        </tr>
+    </ng-template>-->
+    <!--Recursive template for child rows render END-->
+    <!--additional row-span rows-->
+    <!--<ng-template #multiRowColumns let-row let-rowIndex="rowIndex" let-rowSpanData=rowSpanData>
+        <ng-container *ngFor="let idx of rowRowspanIndexes | generic:row">
+            <tr
+                fusionTableRow
+                [rowIndex]="rowIndex"
+                [rowSpanIndex]="idx"
+                [row]="row"
+                [columns]="columns"
+                [options]="options"
+                [class.is-row-in-request]="tableService.rowsMetadata[row['_rowId']]?.inRequest"
+                [ngClass]="rowClass | generic:row:rowIndex"
+                [ngStyle]="!!options.rowsOptions && !!options.rowsOptions.global ? options.rowsOptions.global.style : null"
+            ></tr>
+        </ng-container>
+    </ng-template>-->
+    <!--additional rows END`-->
+</ng-container>

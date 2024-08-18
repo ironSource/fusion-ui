@@ -1,12 +1,12 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {EmptyStateComponent} from '@ironsource/fusion-ui/components/empty-state';
-import {EmptyStateType} from '@ironsource/fusion-ui/components/empty-state/v4/empty-state.entities';
+import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
+import {EmptyStateComponent, EmptyStateType} from '@ironsource/fusion-ui/components/empty-state/v4';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components/v1';
-import {isNullOrUndefined} from '@ironsource/fusion-ui';
 
 @Component({
+    // eslint-disable-next-line
     selector: '[fusionTableEmpty]',
     standalone: true,
     imports: [CommonModule, EmptyStateComponent, DynamicComponentsModule],
@@ -21,7 +21,6 @@ export class TableEmptyComponent {
     @Input() subHeader: string;
     @Input() set type(value: EmptyStateType) {
         if (!isNullOrUndefined(value)) {
-            console.log('value', value);
             this._type = value;
         }
     }

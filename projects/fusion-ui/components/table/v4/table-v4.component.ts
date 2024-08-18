@@ -32,17 +32,18 @@ import {
     TableRowExpandEmitter,
     TableRowsGrouped
 } from '@ironsource/fusion-ui/components/table/common/entities';
-import {TableBasicComponent} from '@ironsource/fusion-ui/components/table/v3/components/table-basic/table-basic.component';
-import {TestIdsService, UniqueIdService} from '@ironsource/fusion-ui/services';
+import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 import {TableTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TableLoadingComponent} from './components/table-loading/table-loading.component';
 import {TableEmptyComponent} from './components/table-empty/table-empty.component';
+import {TableBasicComponent} from './components/table-basic/table-basic.component';
+import {TableLoadingComponent} from './components/table-loading/table-loading.component';
 
 @Component({
     selector: 'fusion-table-v4',
     standalone: true,
     host: {class: 'fusion-v4'},
-    imports: [CommonModule, GenericPipe, CheckboxComponent, TooltipDirective, TooltipComponent, TableLoadingComponent, TableEmptyComponent],
+    imports: [CommonModule, GenericPipe, CheckboxComponent, TooltipDirective, TooltipComponent, TableEmptyComponent, TableLoadingComponent],
     providers: [TableService],
     templateUrl: './table-v4.component.html',
     styleUrl: './table-v4.component.scss',

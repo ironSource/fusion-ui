@@ -1,8 +1,9 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {TableEmptyComponent} from './table-empty.component';
 import {Component, DebugElement} from '@angular/core';
-import {By} from '@angular/platform-browser';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+import {EmptyStateComponent} from '@ironsource/fusion-ui/components/empty-state';
+import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components/v1';
+import {TableEmptyComponent} from './table-empty.component';
 
 // do dummy component - holder
 @Component({
@@ -18,25 +19,21 @@ class TestTableRowEmptyComponent {
     public noDataSubMessage = '';
 }
 
-describe('TestTableRowEmptyComponent', () => {
-    let component: TestTableRowEmptyComponent;
-    let fixture: ComponentFixture<TestTableRowEmptyComponent>;
+describe('TableEmptyComponent', () => {
+    let component: TableEmptyComponent;
+    let fixture: ComponentFixture<TableEmptyComponent>;
     let debugEl: DebugElement;
-    let buttonEl: DebugElement;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [IconModule],
-            declarations: [TestTableRowEmptyComponent, TableEmptyComponent]
+            imports: [TableEmptyComponent, EmptyStateComponent, IconModule, DynamicComponentsModule]
         });
 
-        fixture = TestBed.createComponent(TestTableRowEmptyComponent);
+        fixture = TestBed.createComponent(TableEmptyComponent);
 
         component = fixture.componentInstance;
 
         debugEl = fixture.debugElement;
-        buttonEl = debugEl.query(By.css('button'));
-
         fixture.detectChanges();
     });
 

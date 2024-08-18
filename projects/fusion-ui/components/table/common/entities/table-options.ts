@@ -4,7 +4,7 @@ import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dy
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
 import {EventEmitter} from '@angular/core';
 import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
-import {EmptyStateType} from '@ironsource/fusion-ui/components/empty-state/v4/empty-state.entities';
+import {EmptyStateType} from '@ironsource/fusion-ui/components/empty-state/v4';
 
 export interface TableLabel {
     text: string;
