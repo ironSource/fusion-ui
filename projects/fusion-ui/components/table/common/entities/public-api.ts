@@ -11,3 +11,5 @@ export * from './table-cell-position';
 export * from './table-column-type.enum';
 export * from './table-row-classes.enum';
 export * from './table.config';
+
+export * from './column-data';
