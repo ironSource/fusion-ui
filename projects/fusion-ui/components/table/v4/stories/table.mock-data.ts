@@ -8,6 +8,13 @@ export const TABLE_DEFAULT_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'state', title: 'State'}
 ];
 
+export const TABLE_TOOLTIP_COLUMNS_CONFIG: TableColumn[] = [
+    {key: 'firstName', title: 'First name', tooltip: 'First name tooltip'},
+    {key: 'lastName', title: 'Last name', tooltip: 'Last name tooltip'},
+    {key: 'address', title: 'Address'},
+    {key: 'state', title: 'State', tooltip: 'State tooltip'}
+];
+
 export const ROWS_DEFAULT_DATA = [
     {
         id: 1,
@@ -58,7 +65,7 @@ export const TABLE_NUMBERS_SORTABLE_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'lastUpdate', title: 'Last updated', type: TableColumnTypeEnum.Date, sort: ''},
     {key: 'price', title: 'Price', type: TableColumnTypeEnum.Currency, sort: ''},
     {key: 'amount', title: 'Amount', type: TableColumnTypeEnum.Number, sort: ''},
-    {key: 'discount', title: 'Discount', type: TableColumnTypeEnum.Percent, sort: ''}
+    {key: 'discount', title: 'Discount', type: TableColumnTypeEnum.Percent, sort: '', tooltip: 'Discount tooltip'}
 ];
 
 export const ROWS_NUMBERS_DATA = [

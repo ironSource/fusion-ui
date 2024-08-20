@@ -10,7 +10,8 @@ import {
     TABLE_DEFAULT_COLUMNS_CONFIG,
     TABLE_NUMBERS_COLUMNS_CONFIG,
     TABLE_NUMBERS_SORTABLE_COLUMNS_CONFIG,
-    TABLE_SELECTABLE_COLUMNS_CONFIG
+    TABLE_SELECTABLE_COLUMNS_CONFIG,
+    TABLE_TOOLTIP_COLUMNS_CONFIG
 } from './table.mock-data';
 import {TableV4StoryHolderComponent} from './table.story-holder.component/table.story-holder.component.component';
 import {action} from '@storybook/addon-actions';
@@ -54,6 +55,11 @@ export default {
 type Story = StoryObj<TableV4Component>;
 
 export const Basic: Story = {};
+
+export const ColumnTooltips: Story = {};
+ColumnTooltips.args = {
+    columns: TABLE_TOOLTIP_COLUMNS_CONFIG
+};
 
 export const Numbers: Story = {};
 Numbers.args = {

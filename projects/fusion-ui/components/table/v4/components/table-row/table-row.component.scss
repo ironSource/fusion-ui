@@ -25,6 +25,10 @@
         border-bottom: none;
     }
 
+    &:hover{
+        background-color: var(--table-row-hover-background-color);
+    }
+
 /*
     &:hover,
     &.fu-hovered, //for rowspan rows

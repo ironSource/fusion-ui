@@ -225,6 +225,7 @@ export enum TableTestIdModifiers {
     LABEL = 'table-label',
     COLUMN_HEADER = 'table-header-c',
     COLUMN_TITLE = 'table-column-title-c',
+    COLUMN_TOOLTIP = 'table-column-tooltip-c',
     COLUMN_SORT_UP = 'table-column-sort-up-c',
     COLUMN_SORT_DOWN = 'table-column-sort-down-c',
     COLUMN_HEADER_SELECT_ALL = 'table-header-select-all',

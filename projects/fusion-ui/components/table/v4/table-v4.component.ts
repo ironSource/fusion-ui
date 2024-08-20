@@ -90,6 +90,8 @@ export class TableV4Component implements OnInit, OnDestroy {
     iconArrowUp = 'ph/arrow-up';
     /** @internal */
     iconArrowDown = 'ph/arrow-down';
+    /** @internal */
+    iconTooltip = 'ph/question';
     // endregion
 
     // region E2E test id

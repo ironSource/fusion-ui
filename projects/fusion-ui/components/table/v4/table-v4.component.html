@@ -43,32 +43,38 @@
                                     ></fusion-checkbox>
                                 } @else if (column.filter && column.filter.options) {
                                     <!-- todo: Add support for filter column -->
-                                    <!--<fusion-multi-dropdown
-                                                placeholder="Please Select"
-                                                class="filter"
-                                                [selected]="column.filter.selected"
-                                                [options]="column.filter.options"
-                                                (selectedChange)="filterColumn(column, $event)"
-                                                [confirm]="true"
-                                                [search]="true"
-                                                selectAllLabel="Select All <span class='grey'>(No Filters)</span>"
-                                        >
-                                        </fusion-multi-dropdown>-->
+                                            <!--<fusion-multi-dropdown
+                                                        placeholder="Please Select"
+                                                        class="filter"
+                                                        [selected]="column.filter.selected"
+                                                        [options]="column.filter.options"
+                                                        (selectedChange)="filterColumn(column, $event)"
+                                                        [confirm]="true"
+                                                        [search]="true"
+                                                        selectAllLabel="Select All <span class='grey'>(No Filters)</span>"
+                                                >
+                                                </fusion-multi-dropdown>-->
                                 } @else {
                                     <div class="fu-header-text"
                                          (click)="onHeaderClicked(column)"
-                                         [class.fu-tooltiped]="column.tooltip" [fusionTooltip]="column.tooltip"
                                          [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.COLUMN_TITLE+idx)"
                                     >{{ column.title }}
                                     </div>
+                                    @if (column.tooltip) {
+                                        <fusion-icon class="fu-header-tooltip-icon"
+                                                     [fusionTooltip]="column.tooltip"
+                                                     [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.COLUMN_TOOLTIP+idx)"
+                                                     [name]="column.tooltipIcon || iconTooltip"
+                                        ></fusion-icon>
+                                    }
                                     @if (tableService.isColumnSortable(column)) {
                                         <div class="fu-sort-wrapper">
-                                            @if (column.sort==='asc'){
+                                            @if (column.sort === 'asc') {
                                                 <div class="fu-sort-up"
                                                      [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.COLUMN_SORT_UP+idx)">
                                                     <fusion-icon [name]="iconArrowUp"></fusion-icon>
                                                 </div>
-                                            } @else if (column.sort==='desc'){
+                                            } @else if (column.sort === 'desc') {
                                                 <div class="fu-sort-down"
                                                      [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.COLUMN_SORT_DOWN+idx)">
                                                     <fusion-icon [name]="iconArrowDown"></fusion-icon>

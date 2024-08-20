@@ -17,6 +17,8 @@
   --table-header-text-color: var(--table-text-color);
   --table-header-sort-icon-color: var(--action-active, #{$color-v4-action-active});
   --table-header-sort-icon-size: 20px;
+  --table-header-tooltip-icon-size: 16px;
+  --table-header-tooltip-icon-color: var(--action-active, #{$color-v4-action-active});
 
   --table-empty-state-padding: 48px;
 
@@ -25,6 +27,7 @@
   --table-row-cell-padding: 0 16px;
   --table-row-cell-gap: 4px;
 
+  --table-row-hover-background-color: var(--background-paper-elevation-1, #{$color-v4-background-paper-elevation-1});
   --table-odd-row-background-color: #{$color-v4-common-white};
   --table-even-row-background-color: #{$color-v4-common-white};
 
@@ -86,11 +89,18 @@
                   display: inherit;
                 }
               }
-              & > div.fu-header-text:hover{
+
+              & > div.fu-header-text:hover {
                 cursor: pointer;
               }
             }
+
             // endregion
+
+            fusion-icon.fu-header-tooltip-icon {
+              @include size(var(--table-header-tooltip-icon-size));
+              color: var(--table-header-tooltip-icon-color);
+            }
 
             &.is-checkbox-holder {
               flex: auto 0 0;
