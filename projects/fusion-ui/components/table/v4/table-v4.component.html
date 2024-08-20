@@ -28,10 +28,9 @@
                             <td
                                     [attr.data-col-key]="column.key"
                                     [ngClass]="tableService.getColumnClasses(column, true)"
-                                    [ngStyle]="tableService.getColumnStyle(column)"
+                                    [ngStyle]="tableService.getColumnStyle(column, 4)"
                                     (click)="onHeaderClicked(column)"
                                     [style.width]="tableService.setWidth(isLast, column.width)"
-                                    [style.justify-content]="column.headerAlign ?? tableService.getCellAlignByColumnType(column)"
                                     [attr.colspan]="isFirst ? (tableService.expandLevels + 1) : undefined"
                                     [style.top.px]="options?.stickyHeaderTopOffset"
                                     [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.COLUMN_HEADER+idx)"

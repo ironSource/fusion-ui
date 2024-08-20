@@ -218,7 +218,7 @@ export class TableRowComponent implements OnInit, OnChanges {
                 hasTooltip: this.hasTooltip(column.key, row),
                 isRemove: this.tableService.isRemove(isLast, options, this.rowRemoveIconOptions(options, row)),
                 infoIconOnHoverTooltip: isLast ? this.infoIconOnHooverToolTip(options, row) : '',
-                styles: this.tableService.getColumnStyle(column),
+                styles: this.tableService.getColumnStyle(column, 4),
                 colspan: this.getCellColspan(isFirst, column.colspan, this.tableService.expandLevels),
                 width: this.tableService.setWidth(isLast, column.width)
             };

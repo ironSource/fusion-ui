@@ -3,14 +3,14 @@ import {isNullOrUndefined, isNumber, isUndefined} from '@ironsource/fusion-ui/ut
 import {DomSanitizer} from '@angular/platform-browser';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {
+    TableCellAlign,
     TableColumn,
     TableColumnTypeEnum,
     TableOptions,
     TableRow,
     TableRowChangedData,
     TableRowMetaData,
-    TableRowsExpandableOptions,
-    TableFlexCellAlign
+    TableRowsExpandableOptions
 } from '@ironsource/fusion-ui/components/table/common/entities';
 import {DEFAULT_EXPANDABLE_LEVEL, MAXIMUM_EXPANDABLE_LEVEL} from '@ironsource/fusion-ui/components/table/common/entities';
 import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
@@ -124,10 +124,18 @@ export class TableService {
         return this.selectedRows.length && rows.length !== this.selectedRows.length;
     }
 
-    getColumnStyle(col: any): any {
+    getColumnStyle(col: TableColumn, componentVersion?: number): any {
         const style = col.style || {};
+        const cellAlign = col.headerAlign ?? this.getCellAlignByColumnType(col);
         if (col.stickyLeftMargin) {
             style.left = col.stickyLeftMargin;
+        }
+        if (cellAlign) {
+            if (componentVersion === 4) {
+                style['justify-content'] = cellAlign === 'right' ? 'flex-end' : cellAlign === 'left' ? 'flex-start' : 'center';
+            } else {
+                style['text-align'] = col.headerAlign;
+            }
         }
         return style;
     }
@@ -205,18 +213,6 @@ export class TableService {
             }
         }
         return defaultAsString || column.totalRowTypeAsString;
-    }
-
-    /**
-     * Get cell align by column type for table v4
-     * @param column
-     */
-    getCellAlignByColumnType(column): TableFlexCellAlign | null {
-        // todo: refactor it by component version v4 or less
-        if (this.isTypeCurrency(column) || this.isTypeNumber(column) || this.isTypePercent(column)) {
-            return 'flex-end';
-        }
-        return null;
     }
 
     isRemove(isLast: boolean, tableOptions: TableOptions, rowOptions: any = {}) {
@@ -307,6 +303,10 @@ export class TableService {
 
     getMaxRowspanInColumn(row: any): number {
         return this.rowsMetadata[row['_rowId']]?.maxRowspanInColumn ?? 0;
+    }
+
+    private getCellAlignByColumnType(column: TableColumn): TableCellAlign | null {
+        return this.isTypeCurrency(column) || this.isTypeNumber(column) || this.isTypePercent(column) ? 'right' : null;
     }
 
     private getRowspanColumns(row: any, columnsKeys: string[]): {[key: string]: number} {
