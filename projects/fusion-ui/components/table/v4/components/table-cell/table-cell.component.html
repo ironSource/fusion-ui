@@ -1,0 +1,149 @@
+@if ((isRowTotal && tableService.isInTotalTypeString(column)) || tableService.isTypeString(column)) {
+    <!--String Cell-->
+    <div class="truncate centerVertical" [ngClass]="column.align" [style.width]="innerElementWidth"
+         [fusionTooltip]="cellStringData">
+        {{ cellStringData | notAvailable: notAvailableText }}
+    </div>
+} @else {
+    @if (tableService.isTypeCheckbox(column) && isBoolean(data)) {
+        <!--todo: add support for checkbox cell-->
+        <div class="checkbox-cell">
+            <fusion-checkbox
+                    class="is-regular"
+                    title="select / un-select row"
+                    [checked]="isRowChecked()"
+                    (changed)="selectedChange.emit($event)"
+            ></fusion-checkbox>
+        </div>
+    } @else if (tableService.isTypeToggleButton(column) && isBoolean(data)) {
+        <!-- todo: add support for toggle cell-->
+        <div>tgl
+            <!--
+                    <fusion-toggle
+                        [model]="data"
+                        [isDisabled]="isReadOnly"
+                        size="small"
+                        customCheckedBackgroundColor="#3083FF"
+                        (modelChange)="onToggleChanged($event)"
+                    ></fusion-toggle>
+            -->
+        </div>
+    } @else if (tableService.isTypeInputEdit(column) && data) {
+        <!-- todo: add support for input edit cell-->
+        <div>input edit</div>
+        <!--    <div
+                [style.min-width]="'calc(' + column.width + ' - 1px)'"
+                class="inputType"
+                [ngClass]="column.align"
+            >
+                <fusion-input-inline
+                    #inlineInput
+                    *ngIf="!isRowTotal; else noEditCell"
+                    [type]="column.inputType"
+                    (onSave)="onEndEdit($event)"
+                    (onCancel)="onCancel()"
+                    [textClass]="customClass && customClass[column.key]"
+                    [formControl]="data"
+                    [loading]="isInRequest$ | async"
+                    [error]="inputError$ | async"
+                    [readOnly]="isReadOnly"
+                    [currencyPipeParameters]="column?.currencyPipeParameters"
+                ></fusion-input-inline>
+                <ng-template #noEditCell>&nbsp;</ng-template>
+            </div>-->
+    } @else if (tableService.isTypeComponent(column)) {
+        <!-- todo: add support for dynamic cell-->
+        <div>dynamic</div>
+        <!--
+            <fusion-dynamic-components
+                [configuration]="customCellData"
+            >
+            </fusion-dynamic-components>
+        -->
+    } @else if (tableService.isTypeCurrency(column)) {
+        <div class="truncate"
+             [ngClass]="column.align || 'right'"
+             [style.width]="innerElementWidth"
+             [fusionTooltip]="$any(data) | currency: 'USD'"
+        >
+            {{
+                !isNull(data)
+                    ? ($any(data)
+                        | currency
+                        : column?.currencyPipeParameters?.currencyCode || undefined
+                            : column?.currencyPipeParameters?.display || (column?.currencyPipeParameters ? undefined : '$')
+                            : column?.currencyPipeParameters?.digitsInfo || undefined)
+                    : (data | notAvailable: notAvailableText)
+            }}
+        </div>
+    } @else if (tableService.isTypeNumber(column)) {
+        <div class="truncate"
+             [ngClass]="column.align || 'right'"
+             [style.width]="innerElementWidth"
+             [fusionTooltip]="$any(data) | number: column.pipeOptions"
+        >
+            {{ !isNull(data) ? ($any(data) | number: column.pipeOptions) : (data | notAvailable: notAvailableText) }}
+        </div>
+    } @else if (tableService.isTypePercent(column)) {
+        <div class="truncate"
+             [ngClass]="column.align || 'right'"
+             [style.width]="innerElementWidth"
+             fusionTooltip="{{ $any(data) | number: column.pipeOptions }} %"
+        >
+            {{ !isNull(data) ? ($any(data) | number: column.pipeOptions) : (data | notAvailable: notAvailableText) }}
+            {{ !isNullOrUndefined(data) ? '%' : null }}
+        </div>
+    } @else if (tableService.isTypeDate(column)) {
+        <div class="truncate">
+            {{
+                data
+                    ? isAsDate(data)
+                        ? ($any(data) | date: getDateFormat(column.dateFormat):getDateUTCFormat(column.ignoreTimeZone))
+                        : data
+                    : !isRowTotal
+                        ? 'No ' + column.title
+                        : ''
+            }}
+        </div>
+    } @else {
+        <div>&nbsp;{{column.type}}</div>
+    }
+}
+
+<!--Row utility Cell icons and buttons-->
+<!--
+<ng-container *ngIf="!isRowTotal && isLastColumn">
+    &lt;!&ndash;single remove action button&ndash;&gt;
+    <ng-container *ngIf="isRemove && !isReadOnly" [ngTemplateOutlet]="removeActionButton"></ng-container>
+    &lt;!&ndash;single remove action button&ndash;&gt;
+    &lt;!&ndash;multiple actions menu&ndash;&gt;
+    <ng-container *ngIf="multipleActions as rowActions" [ngTemplateOutlet]="multipleActionsMenu" [ngTemplateOutletContext]="{$implicit: rowActions.actions}"></ng-container>
+    &lt;!&ndash;multiple actions menu&ndash;&gt;
+</ng-container>
+-->
+
+<!--<ng-template #removeActionButton>
+    <div class="fu-cell-action-button"
+         [fusionTooltip]="getRemoveIconTooltipText()"
+         (click)="onRowRemoveClicked($event)"
+    >
+        <fusion-icon class="fu-table-action-icon" [name]="cellRemoveActionIcon"></fusion-icon>
+    </div>
+</ng-template>-->
+
+<!--<ng-template #multipleActionsMenu let-menuActions>
+    <div id="{{actionsMenuButtonId}}" class="fu-button-holder" [class.fu-row-menu-shown]="shownActionsMenu">
+        <fusion-button class="transparent third fu-menu-drop-button" [icon]="'more-vert'" (click)="onActionButtonClicked()"></fusion-button>
+    </div>
+    <ng-container *ngIf="shownActionsMenu">
+        <fusion-menu-drop
+            *fusionTeleporting="'#'+options.tableId+'_tableTeleportWrapper'"
+            [fusionReposition]="'#'+actionsMenuButtonId"
+            [fusionRepositionPlacement]="floatingMenuPosition"
+            [fusionRepositionOffset]="{y:-32}"
+            [menuItems]="menuActions"
+            (fusionClickOutside)="onActionMenuClickOutSide($event)"
+            (menuItemClicked)="menuItemClicked($event)"
+        ></fusion-menu-drop>
+    </ng-container>
+</ng-template>-->

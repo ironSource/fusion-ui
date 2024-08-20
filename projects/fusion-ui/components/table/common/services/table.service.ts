@@ -9,7 +9,8 @@ import {
     TableRow,
     TableRowChangedData,
     TableRowMetaData,
-    TableRowsExpandableOptions
+    TableRowsExpandableOptions,
+    TableFlexCellAlign
 } from '@ironsource/fusion-ui/components/table/common/entities';
 import {DEFAULT_EXPANDABLE_LEVEL, MAXIMUM_EXPANDABLE_LEVEL} from '@ironsource/fusion-ui/components/table/common/entities';
 import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
@@ -204,6 +205,18 @@ export class TableService {
             }
         }
         return defaultAsString || column.totalRowTypeAsString;
+    }
+
+    /**
+     * Get cell align by column type for table v4
+     * @param column
+     */
+    getCellAlignByColumnType(column): TableFlexCellAlign | null {
+        // todo: refactor it by component version v4 or less
+        if (this.isTypeCurrency(column) || this.isTypeNumber(column) || this.isTypePercent(column)) {
+            return 'flex-end';
+        }
+        return null;
     }
 
     isRemove(isLast: boolean, tableOptions: TableOptions, rowOptions: any = {}) {

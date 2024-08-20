@@ -1,7 +1,6 @@
-<ng-container *ngFor="let row of rows; trackBy: trackByRowInvoke(); let rowIndex = index">
-    >>Oppa<<
+@for (row of rows; track trackByRowInvoke(); let rowIndex = $index) {
     <!--First parent row-->
-    <!--<tr
+    <tr
         fusionTableRow
         [rowIndex]="rowIndex"
         [row]="row"
@@ -17,7 +16,7 @@
         (expandRow)="onExpandRow($event)"
         [ngClass]="rowClass | generic:row:rowIndex"
         [ngStyle]="!!options.rowsOptions && !!options.rowsOptions.global ? options.rowsOptions.global.style : null"
-    ></tr>-->
+    ></tr>
     <!--First parent row END-->
     <!--Rowspan rows if any-->
     <!--<ng-container *ngIf="tableService.rowsMetadata[row['_rowId']]?.rowspanColumnsData as rowSpanData"
@@ -101,4 +100,4 @@
         </ng-container>
     </ng-template>-->
     <!--additional rows END`-->
-</ng-container>
+}

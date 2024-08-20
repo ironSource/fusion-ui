@@ -43,7 +43,16 @@ import {TableLoadingComponent} from './components/table-loading/table-loading.co
     selector: 'fusion-table-v4',
     standalone: true,
     host: {class: 'fusion-v4'},
-    imports: [CommonModule, GenericPipe, CheckboxComponent, TooltipDirective, TooltipComponent, TableEmptyComponent, TableLoadingComponent],
+    imports: [
+        CommonModule,
+        GenericPipe,
+        CheckboxComponent,
+        TooltipDirective,
+        TooltipComponent,
+        TableEmptyComponent,
+        TableLoadingComponent,
+        TableBasicComponent
+    ],
     providers: [TableService],
     templateUrl: './table-v4.component.html',
     styleUrl: './table-v4.component.scss',

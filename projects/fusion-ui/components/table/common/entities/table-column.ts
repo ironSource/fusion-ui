@@ -5,6 +5,10 @@ import {EventEmitter} from '@angular/core';
 import {CellPosition} from './table-cell-position';
 import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
 
+export type TableCellAlign = 'left' | 'center' | 'right';
+// todo: refactor it with 'left' | 'center' | 'right' so will no needed additional type;
+export type TableFlexCellAlign = 'flex-start' | 'center' | 'flex-end';
+
 export interface TableColumn {
     key: string;
     title?: string;
@@ -17,8 +21,8 @@ export interface TableColumn {
     class?: string;
     width?: string;
     style?: any;
-    align?: 'left' | 'center' | 'right';
-    headerAlign?: 'left' | 'center' | 'right';
+    align?: TableCellAlign | TableFlexCellAlign;
+    headerAlign?: TableCellAlign | TableFlexCellAlign;
     tooltip?: string;
     tooltipIcon?: IconData;
     pipeOptions?: string;

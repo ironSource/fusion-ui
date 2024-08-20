@@ -5,7 +5,7 @@ import {
     Component,
     ElementRef,
     EventEmitter,
-    Injector,
+    inject,
     Input,
     OnDestroy,
     OnInit,
@@ -15,6 +15,8 @@ import {
 import {CommonModule} from '@angular/common';
 import {fromEvent, Subject, from} from 'rxjs';
 import {filter, mergeMap, takeUntil} from 'rxjs/operators';
+import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 import {
     TableColumn,
     TableOptions,
@@ -23,14 +25,14 @@ import {
     ROW_HOVERED_CLASS_NAME
 } from '@ironsource/fusion-ui/components/table/common/entities';
 import {TableTestIdModifiers} from '@ironsource/fusion-ui/entities';
-import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
-import {TableService} from '@ironsource/fusion-ui/components/table/common/services';
+import {TableService} from '@ironsource/fusion-ui/components/table';
+import {TableRowComponent} from '../table-row/table-row.component';
 
 @Component({
     // eslint-disable-next-line
     selector: '[fusionTableBasic]',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, GenericPipe, TableRowComponent],
     templateUrl: './table-basic.component.html',
     styleUrls: ['./table-basic.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -82,19 +84,16 @@ export class TableBasicComponent implements OnInit, OnDestroy, AfterViewInit {
     /** @internal */
     tableTestIdModifiers: typeof TableTestIdModifiers = TableTestIdModifiers;
     /** @internal */
-    testIdsService: TestIdsService = this.injector.get(TestIdsService);
+    testIdsService: TestIdsService = inject(TestIdsService);
+
+    tableService: TableService = inject(TableService);
 
     private _halfTableClientWidth = 0;
-    private tableOptions;
+    private tableOptions: TableOptions;
     private onDestroy$ = new Subject();
-
-    constructor(
-        public tableService: TableService,
-        private cdr: ChangeDetectorRef,
-        private elementRef: ElementRef,
-        private renderer: Renderer2,
-        private injector: Injector
-    ) {}
+    private cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
+    private elementRef: ElementRef = inject(ElementRef);
+    private renderer: Renderer2 = inject(Renderer2);
 
     ngOnInit(): void {
         this.tableService.selectionChanged.pipe(takeUntil(this.onDestroy$)).subscribe(val => {

@@ -31,43 +31,48 @@
                                     [ngStyle]="tableService.getColumnStyle(column)"
                                     (click)="onHeaderClicked(column)"
                                     [style.width]="tableService.setWidth(isLast, column.width)"
-                                    [style.text-align]="column.headerAlign"
+                                    [style.justify-content]="column.headerAlign ?? tableService.getCellAlignByColumnType(column)"
                                     [attr.colspan]="isFirst ? (tableService.expandLevels + 1) : undefined"
                                     [style.top.px]="options?.stickyHeaderTopOffset"
                                     [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.COLUMN_HEADER+idx)"
                             >
-                                <ng-container>
-                                    <div class="fu-header-text"
-                                         [class.fu-tooltiped]="column.tooltip" [fusionTooltip]="column.tooltip"
-                                         [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.COLUMN_TITLE+idx)"
-                                    >{{ column.title }}
-                                    </div>
-                                    <div class="fu-sort-wrapper">
-                                        <div class="fu-sort-up"
-                                             [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.COLUMN_SORT_UP+idx)"></div>
-                                        <div class="fu-sort-down"
-                                             [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.COLUMN_SORT_DOWN+idx)"></div>
-                                    </div>
-                                </ng-container>
-                                <!--                        <fusion-multi-dropdown
-                                                                *ngIf="column.filter && column.filter.options"
-                                                                placeholder="Please Select"
-                                                                class="filter"
-                                                                [selected]="column.filter.selected"
-                                                                [options]="column.filter.options"
-                                                                (selectedChange)="filterColumn(column, $event)"
-                                                                [confirm]="true"
-                                                                [search]="true"
-                                                                selectAllLabel="Select All <span class='grey'>(No Filters)</span>"
-                                                        >
-                                                        </fusion-multi-dropdown>-->
                                 @if (tableService.isTypeCheckbox(column) && isAllRowsSelectable && !isEmpty && isCheckboxTitleShown) {
+                                    <!-- todo: Add support for checkbox column -->
+<!--
                                     <fusion-checkbox class="is-regular" title="select / un-select all"
                                                      [checked]="tableService.isAllRowsSelected(rows)"
                                                      [isIndeterminate]="tableService.isPartialSelected(rows)"
                                                      (changed)="tableService.onRowsSelectChanged(options.isGroupedTable, rows, $event)"
                                                      [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:tableTestIdModifiers.COLUMN_HEADER_SELECT_ALL"
                                     ></fusion-checkbox>
+-->
+                                } @else if (column.filter && column.filter.options) {
+                                    <!-- todo: Add support for filter column -->
+                                    <!--<fusion-multi-dropdown
+                                                placeholder="Please Select"
+                                                class="filter"
+                                                [selected]="column.filter.selected"
+                                                [options]="column.filter.options"
+                                                (selectedChange)="filterColumn(column, $event)"
+                                                [confirm]="true"
+                                                [search]="true"
+                                                selectAllLabel="Select All <span class='grey'>(No Filters)</span>"
+                                        >
+                                        </fusion-multi-dropdown>-->
+                                } @else {
+                                    <div class="fu-header-text"
+                                         [class.fu-tooltiped]="column.tooltip" [fusionTooltip]="column.tooltip"
+                                         [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.COLUMN_TITLE+idx)"
+                                    >{{ column.title }}
+                                    </div>
+                                    @if (column.sort) {
+                                        <div class="fu-sort-wrapper">
+                                            <div class="fu-sort-up"
+                                                 [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.COLUMN_SORT_UP+idx)"></div>
+                                            <div class="fu-sort-down"
+                                                 [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.COLUMN_SORT_DOWN+idx)"></div>
+                                        </div>
+                                    }
                                 }
                             </td>
                         }
@@ -79,20 +84,18 @@
             <!-- endregion Table Header-->
             <!-- region Table Body-->
             @if (!options.isGroupedTable && (!loading || isLoadingOverlay) && !isEmpty) {
-                <!--                <tbody
-                                        *ngIf=""
-                                        fusionTableBasic
-                                        [rows]="tableRows"
-                                        [columns]="columns"
-                                        [options]="options"
-                                        [tableClientWidth]="getTableClientWidth()"
-                                        [expandedRows]="expandedRows"
-                                        [testId]="testId"
-                                        (rowSelected)="selectionChanged.emit($event)"
-                                        (expandRow)="doExpandRow($event)"
-                                        (click)="onTableBodyClicked($event)"
-                                        #tableBody
-                                ></tbody>-->
+                <tbody #tableBody
+                       fusionTableBasic
+                       [rows]="tableRows"
+                       [columns]="columns"
+                       [options]="options"
+                       [tableClientWidth]="getTableClientWidth()"
+                       [expandedRows]="expandedRows"
+                       [testId]="testId"
+                       (rowSelected)="selectionChanged.emit($event)"
+                       (expandRow)="doExpandRow($event)"
+                       (click)="onTableBodyClicked($event)"
+                ></tbody>
             }
             <!-- region grouped Table Body-->
             <!--

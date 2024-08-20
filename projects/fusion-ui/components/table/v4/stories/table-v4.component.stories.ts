@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../../stories/environments/environment';
 import {TableV4Component} from '../table-v4.component';
-import {TABLE_DEFAULT_COLUMNS_CONFIG} from './table.mock-data';
+import {ROWS_DEFAULT_DATA, ROWS_NUMBERS_DATA, TABLE_DEFAULT_COLUMNS_CONFIG, TABLE_NUMBERS_COLUMNS_CONFIG} from './table.mock-data';
 
 export default {
     title: 'V4/Components/DataDisplay/DataGrid (Table)',
@@ -23,13 +23,20 @@ export default {
         }
     },
     args: {
-        columns: TABLE_DEFAULT_COLUMNS_CONFIG
+        columns: TABLE_DEFAULT_COLUMNS_CONFIG,
+        rows: ROWS_DEFAULT_DATA
     }
 } as Meta<TableV4Component>;
 
 type Story = StoryObj<TableV4Component>;
 
 export const Basic: Story = {};
+
+export const Numbers: Story = {};
+Numbers.args = {
+    columns: TABLE_NUMBERS_COLUMNS_CONFIG,
+    rows: ROWS_NUMBERS_DATA
+};
 
 export const SkeletonLoading: Story = {};
 SkeletonLoading.args = {

@@ -34,24 +34,32 @@ export const ROWS_DEFAULT_DATA = [
 export const TABLE_NUMBERS_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'planName', title: 'Plan name'},
     {key: 'lastUpdate', title: 'Last updated', type: TableColumnTypeEnum.Date},
-    {key: 'price', title: 'Price', type: TableColumnTypeEnum.Currency}
+    {key: 'price', title: 'Price', type: TableColumnTypeEnum.Currency, headerAlign: 'right'},
+    {key: 'amount', title: 'Amount', type: TableColumnTypeEnum.Number, headerAlign: 'right'},
+    {key: 'discount', title: 'Discount', type: TableColumnTypeEnum.Percent, headerAlign: 'right'}
 ];
 
 export const ROWS_NUMBERS_DATA = [
     {
         planName: 'Starter',
         lastUpdate: new Date('12 Oct 2023'),
-        price: 10.9
+        price: 10.9,
+        amount: 46,
+        discount: 1.3
     },
     {
         planName: 'Pro',
         lastUpdate: new Date('8 Oct 2023'),
-        price: 35.9
+        price: 35.9,
+        amount: 22,
+        discount: 2.4
     },
     {
         planName: 'Business',
         lastUpdate: new Date('11 Oct 2023'),
-        price: 89.9
+        price: 89.9,
+        amount: 15,
+        discount: 5
     }
 ];
 
