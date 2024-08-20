@@ -3,7 +3,30 @@ import {CommonModule} from '@angular/common';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../../stories/environments/environment';
 import {TableV4Component} from '../table-v4.component';
-import {ROWS_DEFAULT_DATA, ROWS_NUMBERS_DATA, TABLE_DEFAULT_COLUMNS_CONFIG, TABLE_NUMBERS_COLUMNS_CONFIG} from './table.mock-data';
+import {
+    ROWS_DEFAULT_DATA,
+    ROWS_NUMBERS_DATA,
+    ROWS_SELECTABLE_DATA,
+    TABLE_DEFAULT_COLUMNS_CONFIG,
+    TABLE_NUMBERS_COLUMNS_CONFIG,
+    TABLE_NUMBERS_SORTABLE_COLUMNS_CONFIG,
+    TABLE_SELECTABLE_COLUMNS_CONFIG
+} from './table.mock-data';
+import {TableV4StoryHolderComponent} from './table.story-holder.component/table.story-holder.component.component';
+import {action} from '@storybook/addon-actions';
+
+const TEMPLATE_TABLE_HOLDER = `<fusion-table-story-holder
+    [options]="options"
+    [columns]="columns"
+    [rows]="rows"
+    (selectionChanged)="selectionChanged($event)"
+    (rowModelChange)="rowModelChange($event)"
+></fusion-table-story-holder>`;
+
+const actionsData = {
+    selectionChanged: action('selectionChanged'),
+    rowModelChange: action('rowModelChange')
+};
 
 export default {
     title: 'V4/Components/DataDisplay/DataGrid (Table)',
@@ -11,9 +34,9 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath})]
+            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), TableV4StoryHolderComponent]
         }),
-        componentWrapperDecorator(story => `<div style="display: block; width: 800px; border: solid 0px red">${story}</div>`)
+        componentWrapperDecorator(story => `<div style="display: block; width: 800px;">${story}</div>`)
     ],
     tags: ['autodocs'],
     parameters: {
@@ -38,9 +61,28 @@ Numbers.args = {
     rows: ROWS_NUMBERS_DATA
 };
 
+export const SortableColumns: Story = {};
+SortableColumns.args = {
+    columns: TABLE_NUMBERS_SORTABLE_COLUMNS_CONFIG,
+    rows: ROWS_NUMBERS_DATA
+};
+
+export const SelectableRows: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            columns: TABLE_SELECTABLE_COLUMNS_CONFIG,
+            rows: ROWS_SELECTABLE_DATA,
+            selectionChanged: actionsData.selectionChanged
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+
 export const SkeletonLoading: Story = {};
 SkeletonLoading.args = {
-    loading: true
+    loading: true,
+    rows: []
 };
 
 export const NoData: Story = {};

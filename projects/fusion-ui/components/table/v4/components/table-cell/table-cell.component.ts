@@ -80,7 +80,6 @@ export class TableCellComponent implements OnInit, OnChanges {
 
     @ViewChild('inlineInput') inlineInputEdit: InputInlineComponent;
 
-    @HostBinding('class.cell-borders') cellBorders = true;
     @HostBinding('class.is-inline-removable') isInlineRemovable = false;
 
     @HostBinding('class.is-editable') get isCellEditable(): boolean {
@@ -178,9 +177,6 @@ export class TableCellComponent implements OnInit, OnChanges {
     ) {}
 
     ngOnInit() {
-        this.cellBorders =
-            isNullOrUndefined(this.options.cellBorders) || this.tableService.isTypeCheckbox(this.column) ? true : this.options.cellBorders;
-
         this.innerElementWidth = this.column.width ? `calc(${this.column.width} - ${this.cellLRPadding})` : '';
         this.notAvailableText = this.options ? this.options.notAvailableText : null;
     }

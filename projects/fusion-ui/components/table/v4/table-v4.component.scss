@@ -15,6 +15,8 @@
   --table-header-cell-bg-color: var(--background-paper-elevation-0, #{$color-v4-background-paper-elevation-0});
   --table-header-cell-gap: 4px;
   --table-header-text-color: var(--table-text-color);
+  --table-header-sort-icon-color: var(--action-active, #{$color-v4-action-active});
+  --table-header-sort-icon-size: 20px;
 
   --table-empty-state-padding: 48px;
 
@@ -51,9 +53,10 @@
       width: 100%;
 
       thead {
-        tr{
+        tr {
           display: flex;
           flex-direction: row;
+
           td {
             @extend %font-v4-table-label;
             display: flex;
@@ -61,9 +64,38 @@
             flex: 1 0 0;
             height: var(--table-header-cell-height);
             gap: var(--table-header-cell-gap);
-            padding: var(--table-header-cell-padding) ;
+            padding: var(--table-header-cell-padding);
             background-color: var(--table-header-cell-bg-color);
-            border-bottom: var(--table-border)
+            border-bottom: var(--table-border);
+
+            // region sort
+            .fu-sort-wrapper {
+              display: none;
+              @include size(var(--table-header-sort-icon-size));
+
+              fusion-icon {
+                @include size(var(--table-header-sort-icon-size));
+                color: var(--table-header-sort-icon-color);
+              }
+            }
+
+            &.is-sort {
+              &.asc,
+              &.desc {
+                .fu-sort-wrapper {
+                  display: inherit;
+                }
+              }
+              & > div.fu-header-text:hover{
+                cursor: pointer;
+              }
+            }
+            // endregion
+
+            &.is-checkbox-holder {
+              flex: auto 0 0;
+              justify-content: center;
+            }
           }
         }
       }

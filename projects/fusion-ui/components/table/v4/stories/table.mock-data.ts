@@ -10,18 +10,21 @@ export const TABLE_DEFAULT_COLUMNS_CONFIG: TableColumn[] = [
 
 export const ROWS_DEFAULT_DATA = [
     {
+        id: 1,
         firstName: 'Abdullah',
         lastName: 'Williamson',
         address: '2785 Karlie Run',
         state: 'Florida'
     },
     {
+        id: 2,
         firstName: 'Ada',
         lastName: 'McLaughlin',
         address: '841 Chanelle Canyon',
         state: 'Arkansas'
     },
     {
+        id: 3,
         firstName: 'Adell',
         lastName: 'Bergstrom',
         address: '3844 Cormier Island',
@@ -30,13 +33,32 @@ export const ROWS_DEFAULT_DATA = [
 ];
 // endregion
 
+// region selectable rows data
+export const TABLE_SELECTABLE_COLUMNS_CONFIG: TableColumn[] = [
+    {key: 'checkbox', type: TableColumnTypeEnum.Checkbox},
+    ...TABLE_DEFAULT_COLUMNS_CONFIG
+];
+
+export const ROWS_SELECTABLE_DATA = ROWS_DEFAULT_DATA.map((row, idx) => {
+    return {checkbox: idx == 3, ...row};
+});
+// endregion
+
 // region numbers data
 export const TABLE_NUMBERS_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'planName', title: 'Plan name'},
     {key: 'lastUpdate', title: 'Last updated', type: TableColumnTypeEnum.Date},
-    {key: 'price', title: 'Price', type: TableColumnTypeEnum.Currency, headerAlign: 'right'},
-    {key: 'amount', title: 'Amount', type: TableColumnTypeEnum.Number, headerAlign: 'right'},
-    {key: 'discount', title: 'Discount', type: TableColumnTypeEnum.Percent, headerAlign: 'right'}
+    {key: 'price', title: 'Price', type: TableColumnTypeEnum.Currency},
+    {key: 'amount', title: 'Amount', type: TableColumnTypeEnum.Number},
+    {key: 'discount', title: 'Discount', type: TableColumnTypeEnum.Percent}
+];
+
+export const TABLE_NUMBERS_SORTABLE_COLUMNS_CONFIG: TableColumn[] = [
+    {key: 'planName', title: 'Plan name', sort: 'asc'},
+    {key: 'lastUpdate', title: 'Last updated', type: TableColumnTypeEnum.Date, sort: ''},
+    {key: 'price', title: 'Price', type: TableColumnTypeEnum.Currency, sort: ''},
+    {key: 'amount', title: 'Amount', type: TableColumnTypeEnum.Number, sort: ''},
+    {key: 'discount', title: 'Discount', type: TableColumnTypeEnum.Percent, sort: ''}
 ];
 
 export const ROWS_NUMBERS_DATA = [

@@ -157,7 +157,7 @@ export class TableService {
         return this.isInSelected(row) !== -1;
     }
 
-    isColumnSortable(col: any): boolean {
+    isColumnSortable(col: TableColumn): boolean {
         return !isUndefined(col.sort);
     }
 

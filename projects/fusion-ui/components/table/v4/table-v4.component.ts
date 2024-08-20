@@ -20,6 +20,7 @@ import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 import {CheckboxComponent} from '@ironsource/fusion-ui/components/checkbox/v4';
 import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
 import {TooltipComponent, TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TableService} from '@ironsource/fusion-ui/components/table/common/services';
 import {
     CONFIG_TABLE_BY_UI_STYLE,
@@ -40,12 +41,13 @@ import {TableBasicComponent} from './components/table-basic/table-basic.componen
 import {TableLoadingComponent} from './components/table-loading/table-loading.component';
 
 @Component({
-    selector: 'fusion-table-v4',
+    selector: 'fusion-table',
     standalone: true,
     host: {class: 'fusion-v4'},
     imports: [
         CommonModule,
         GenericPipe,
+        IconModule,
         CheckboxComponent,
         TooltipDirective,
         TooltipComponent,
@@ -84,6 +86,10 @@ export class TableV4Component implements OnInit, OnDestroy {
     subHeader: {name: string; colspan: number}[] = [];
     /** @internal */
     searchFormControl: FormControl<string>;
+    /** @internal */
+    iconArrowUp = 'ph/arrow-up';
+    /** @internal */
+    iconArrowDown = 'ph/arrow-down';
     // endregion
 
     // region E2E test id

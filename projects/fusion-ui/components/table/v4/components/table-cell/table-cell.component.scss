@@ -23,6 +23,10 @@ $v3-cellActionIconSize: 16px;
     padding: var(--table-row-cell-padding) ;
     border-bottom: var(--table-border);
 
+    &.is-checkbox-holder{
+        flex: auto 0 0;
+    }
+
     & > div {
         width: 100%;
         max-width: 350px;
