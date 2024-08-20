@@ -83,11 +83,22 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
     ngOnInit() {
         if (!isNullOrUndefined(this.options?.searchOptions?.onSearch)) {
             this.options.searchOptions.onSearch.pipe(takeUntil(this.onDestroy$)).subscribe(value => {
+                console.log('onSearch >>', value);
                 this.tableRows = [
                     ...this._rows.filter(item => {
-                        return item.name.includes(value);
+                        return Object.keys(item).some(key => {
+                            return item[key].toString().toLowerCase().includes(value.toLowerCase());
+                        });
                     })
                 ];
+                if (this.tableRows.length === 0) {
+                    this.options = {
+                        ...this.options,
+                        noDataMessage: 'No data to display',
+                        noDataSubMessage: 'Search again with different filters',
+                        emptyTableType: 'noResult'
+                    };
+                }
             });
         }
         this.onRowDataChanged$.pipe(takeUntil(this.onDestroy$)).subscribe(this.onRowModelChange.bind(this));

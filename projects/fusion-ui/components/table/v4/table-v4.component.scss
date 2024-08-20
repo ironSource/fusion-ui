@@ -10,6 +10,9 @@
 
   --table-text-color: var(--text-primary, #{$color-v4-text-primary});
 
+  --table-header-bg-color: var(--background-paper-elevation-0, #{$color-v4-background-paper-elevation-0});
+  --table-header-search-width: 220px;
+
   --table-header-cell-height: 40px;
   --table-header-cell-padding: 0 16px;
   --table-header-cell-bg-color: var(--background-paper-elevation-0, #{$color-v4-background-paper-elevation-0});
@@ -41,6 +44,36 @@
   flex-direction: column;
 
   border: var(--table-border);
+
+  .fu-table-header{
+    display: flex;
+    height: var(--spacing-800, #{$spacingV4-800});
+    padding: 0px var(--spacing-300, #{$spacingV4-300});
+    align-items: center;
+    gap: 8px;
+
+    border-bottom: var(--table-border);
+    background-color: var(--table-header-bg-color);
+
+    .fu-table-label{
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex: 1;
+
+      .fu-table-label-text{
+        @extend %font-v4-heading-3;
+        color: var(--table-header-text-color);
+      }
+      .fu-header-tooltip-icon{
+        @include size(var(--table-header-tooltip-icon-size));
+        color: var(--table-header-tooltip-icon-color);
+      }
+    }
+    fusion-search{
+      width: var(--table-header-search-width);
+    }
+  }
 
   .tableWrap {
     flex-grow: 1;

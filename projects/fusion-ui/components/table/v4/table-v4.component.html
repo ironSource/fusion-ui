@@ -1,4 +1,26 @@
-<!--<div class="fu-table-header">Table Header</div>-->
+@if (options?.tableLabel){
+    <div class="fu-table-header">
+        <div class="fu-table-label">
+            <div class="fu-table-label-text" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:tableTestIdModifiers.LABEL">
+                {{ options?.tableLabel?.text }}
+            </div>
+            @if (options?.tableLabel?.tooltip){
+                <fusion-icon class="fu-header-tooltip-icon"
+                             [name]="options?.tableLabel?.icon ?? iconTooltip"
+                             [fusionTooltip]="options?.tableLabel?.tooltip"
+                             [testId]="testIdsService.getTestAttribute.bind(this) | generic:testId:tableTestIdModifiers.HEADER_TOOLTIP"
+                ></fusion-icon>
+            }
+        </div>
+        @if(options?.searchOptions){
+            <fusion-search
+                    [placeholder]="options?.searchOptions?.placeholder"
+                    [formControl]="searchFormControl"
+                    [testId]="testIdsService.getTestAttribute.bind(this) | generic:testId:tableTestIdModifiers.SEARCH"
+            ></fusion-search>
+        }
+    </div>
+}
 <div #tableWrapper class="tableWrap" [ngClass]="wrapperClasses">
     @if (!tableMainError) {
         <table [id]="id" #table>
@@ -124,8 +146,8 @@
                         [fusionTableEmpty]="colsCount"
                         [customContent]="options?.customNoData"
                         [type]="options?.emptyTableType"
-                        [header]="noDataMessage"
-                        [subHeader]="noDataSubMessage"
+                        [header]="options?.noDataMessage"
+                        [subHeader]="options?.noDataSubMessage"
                 ></tbody>
             }
             <!-- endregion table empty-->

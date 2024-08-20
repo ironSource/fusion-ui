@@ -12,7 +12,7 @@ import {
     ViewChild
 } from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {BehaviorSubject, defer, fromEvent, Subject} from 'rxjs';
 import {debounceTime, takeUntil, tap} from 'rxjs/operators';
 import {isNullOrUndefined, isUndefined} from '@ironsource/fusion-ui/utils';
@@ -39,6 +39,7 @@ import {TableTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {TableEmptyComponent} from './components/table-empty/table-empty.component';
 import {TableBasicComponent} from './components/table-basic/table-basic.component';
 import {TableLoadingComponent} from './components/table-loading/table-loading.component';
+import {SearchComponent} from '@ironsource/fusion-ui/components/search/v4';
 
 @Component({
     selector: 'fusion-table',
@@ -47,8 +48,10 @@ import {TableLoadingComponent} from './components/table-loading/table-loading.co
     imports: [
         CommonModule,
         GenericPipe,
+        ReactiveFormsModule,
         IconModule,
         CheckboxComponent,
+        SearchComponent,
         TooltipDirective,
         TooltipComponent,
         TableEmptyComponent,

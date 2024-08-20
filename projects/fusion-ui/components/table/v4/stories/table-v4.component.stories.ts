@@ -1,5 +1,6 @@
 import {componentWrapperDecorator, Meta, moduleMetadata, StoryObj} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
+import {EventEmitter} from '@angular/core';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../../stories/environments/environment';
 import {TableV4Component} from '../table-v4.component';
@@ -80,6 +81,22 @@ export const SelectableRows: Story = {
             columns: TABLE_SELECTABLE_COLUMNS_CONFIG,
             rows: ROWS_SELECTABLE_DATA,
             selectionChanged: actionsData.selectionChanged
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+
+export const HeaderAndFooter: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            options: {
+                tableLabel: {text: 'Users', tooltip: 'Users table'},
+                searchOptions: {
+                    placeholder: 'Search',
+                    onSearch: new EventEmitter()
+                }
+            }
         },
         template: TEMPLATE_TABLE_HOLDER
     })

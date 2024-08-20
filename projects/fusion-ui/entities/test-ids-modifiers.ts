@@ -223,6 +223,8 @@ export enum SearchTestIdModifiers {
 
 export enum TableTestIdModifiers {
     LABEL = 'table-label',
+    SEARCH = 'table-search',
+    HEADER_TOOLTIP = 'table-header-tooltip',
     COLUMN_HEADER = 'table-header-c',
     COLUMN_TITLE = 'table-column-title-c',
     COLUMN_TOOLTIP = 'table-column-tooltip-c',
