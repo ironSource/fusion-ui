@@ -15,7 +15,7 @@ import {TableV4Component} from '../../table-v4.component';
     selector: 'fusion-table-story-holder',
     standalone: true,
     imports: [CommonModule, ReactiveFormsModule, TableV4Component, ButtonComponent, GenericPipe, SearchV4Component],
-    template: ` <fusion-table
+    template: `<fusion-table
         [columns]="columns"
         [rows]="tableRows"
         [options]="options"
