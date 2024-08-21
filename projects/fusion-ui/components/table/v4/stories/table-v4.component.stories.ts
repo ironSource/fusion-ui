@@ -6,6 +6,7 @@ import {environment} from '../../../../../../stories/environments/environment';
 import {TableV4Component} from '../table-v4.component';
 import {
     ROWS_DEFAULT_DATA,
+    ROWS_DEFAULT_DATA_WITH_ID,
     ROWS_NUMBERS_DATA,
     ROWS_SELECTABLE_DATA,
     TABLE_DEFAULT_COLUMNS_CONFIG,
@@ -103,6 +104,41 @@ export const HeaderAndFooter: Story = {
         template: TEMPLATE_TABLE_HOLDER
     })
 };
+
+export const StickyHeader: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            rows: ROWS_DEFAULT_DATA_WITH_ID,
+            options: {
+                stickyHeader: true
+            }
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+StickyHeader.decorators = [
+    componentWrapperDecorator(story => `<div style="height: 600px; border: solid 0px red; display: block">${story}</div>`)
+];
+
+export const InfiniteScrolling: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            rows: ROWS_DEFAULT_DATA_WITH_ID,
+            options: {
+                stickyHeader: true,
+                pagination: {
+                    enable: true
+                }
+            }
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+InfiniteScrolling.decorators = [
+    componentWrapperDecorator(story => `<div style="height: 600px; border: solid 0px red; display: block">${story}</div>`)
+];
 
 export const SkeletonLoading: Story = {};
 SkeletonLoading.args = {

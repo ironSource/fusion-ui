@@ -503,6 +503,9 @@ export class TableV4Component implements OnInit, OnDestroy {
         if (this.options?.stickyHeader && this.options?.scrollElementSelector) {
             classes.push(`fu-stocky-to-external`);
         }
+        if (this.options.stickyHeader || this.options?.pagination?.enable) {
+            classes.push(`fu-table-sticky-header`);
+        }
         return classes;
     }
 

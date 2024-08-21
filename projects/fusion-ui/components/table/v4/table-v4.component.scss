@@ -103,8 +103,6 @@
   .tableWrap {
     flex-grow: 1;
     display: block;
-    overflow: auto;
-    @extend %customScroll;
 
     table {
       border: none;
@@ -165,6 +163,20 @@
               justify-content: center;
             }
           }
+        }
+      }
+    }
+
+    &.fu-table-sticky-header {
+      height: 100%;
+      overflow: auto;
+      @extend %cloudUiScroll;
+
+      table {
+        thead {
+          position: sticky;
+          top: 0;
+          z-index: getZIndexLayerOffset(normal, 3);
         }
       }
     }
