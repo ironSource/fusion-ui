@@ -15,6 +15,15 @@ export const TABLE_TOOLTIP_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'state', title: 'State', tooltip: 'State tooltip'}
 ];
 
+export const TABLE_HORIZONTAL_COLUMNS_CONFIG: TableColumn[] = [
+    {key: 'firstName', title: 'First name', width: '150px'},
+    {key: 'lastName', title: 'Last name', width: '150px'},
+    {key: 'address', title: 'Address', width: '200px'},
+    {key: 'state', title: 'State', width: '150px'},
+    {key: 'phone', title: 'Phone number', width: '200px'},
+    {key: 'status', title: 'Status', width: '150px'}
+];
+
 export const ROWS_DEFAULT_DATA = [
     {
         id: 1,
@@ -240,6 +249,189 @@ export const ROWS_DEFAULT_DATA_WITH_ID = [
         state: 'Wyoming'
     },
     {id: 50, firstName: 'Aubrey', lastName: 'Collins', address: '4125 Paisley Road', state: 'Rhode Island'}
+];
+
+export const ROWS_HORIZONTAL_DATA_WITH = [
+    {
+        id: 1,
+        firstName: 'Abdullah',
+        lastName: 'Williamson',
+        address: '2785 Karlie Run',
+        state: 'Florida',
+        phone: '(212) 95-212-32',
+        status: 'Active'
+    },
+    {
+        id: 2,
+        firstName: 'Sophia',
+        lastName: 'Martinez',
+        address: '4721 Oak Street',
+        state: 'California',
+        phone: '(555) 123-4567',
+        status: 'Inactive'
+    },
+    {
+        id: 3,
+        firstName: 'Liam',
+        lastName: 'Johnson',
+        address: '789 Pine Avenue',
+        state: 'New York',
+        phone: '(333) 987-6543',
+        status: 'Active'
+    },
+    {
+        id: 4,
+        firstName: 'Emma',
+        lastName: 'Garcia',
+        address: '1010 Maple Lane',
+        state: 'Texas',
+        phone: '(444) 567-8901',
+        status: 'Active'
+    },
+    {
+        id: 5,
+        firstName: 'Noah',
+        lastName: 'Brown',
+        address: '2468 Elm Street',
+        state: 'Illinois',
+        phone: '(777) 234-5678',
+        status: 'Inactive'
+    },
+    {
+        id: 6,
+        firstName: 'Olivia',
+        lastName: 'Davis',
+        address: '3690 Cedar Road',
+        state: 'Pennsylvania',
+        phone: '(888) 345-6789',
+        status: 'Active'
+    },
+    {
+        id: 7,
+        firstName: 'Ethan',
+        lastName: 'Wilson',
+        address: '1357 Birch Boulevard',
+        state: 'Ohio',
+        phone: '(999) 876-5432',
+        status: 'Active'
+    },
+    {
+        id: 8,
+        firstName: 'Ava',
+        lastName: 'Anderson',
+        address: '2468 Spruce Street',
+        state: 'Michigan',
+        phone: '(111) 222-3333',
+        status: 'Inactive'
+    },
+    {
+        id: 9,
+        firstName: 'Mason',
+        lastName: 'Taylor',
+        address: '9876 Willow Way',
+        state: 'Georgia',
+        phone: '(222) 333-4444',
+        status: 'Active'
+    },
+    {
+        id: 10,
+        firstName: 'Isabella',
+        lastName: 'Thomas',
+        address: '5432 Aspen Avenue',
+        state: 'Washington',
+        phone: '(333) 444-5555',
+        status: 'Active'
+    },
+    {
+        id: 11,
+        firstName: 'William',
+        lastName: 'Jackson',
+        address: '7890 Sycamore Street',
+        state: 'Arizona',
+        phone: '(444) 555-6666',
+        status: 'Inactive'
+    },
+    {
+        id: 12,
+        firstName: 'Charlotte',
+        lastName: 'White',
+        address: '1234 Magnolia Drive',
+        state: 'Massachusetts',
+        phone: '(555) 666-7777',
+        status: 'Active'
+    },
+    {
+        id: 13,
+        firstName: 'James',
+        lastName: 'Harris',
+        address: '5678 Juniper Lane',
+        state: 'Virginia',
+        phone: '(666) 777-8888',
+        status: 'Active'
+    },
+    {
+        id: 14,
+        firstName: 'Amelia',
+        lastName: 'Martin',
+        address: '9012 Poplar Place',
+        state: 'New Jersey',
+        phone: '(777) 888-9999',
+        status: 'Inactive'
+    },
+    {
+        id: 15,
+        firstName: 'Benjamin',
+        lastName: 'Thompson',
+        address: '3456 Chestnut Court',
+        state: 'North Carolina',
+        phone: '(888) 999-0000',
+        status: 'Active'
+    },
+    {
+        id: 16,
+        firstName: 'Mia',
+        lastName: 'Garcia',
+        address: '7890 Walnut Way',
+        state: 'Colorado',
+        phone: '(999) 000-1111',
+        status: 'Active'
+    },
+    {
+        id: 17,
+        firstName: 'Elijah',
+        lastName: 'Martinez',
+        address: '2345 Hickory Hill',
+        state: 'Oregon',
+        phone: '(000) 111-2222',
+        status: 'Inactive'
+    },
+    {
+        id: 18,
+        firstName: 'Evelyn',
+        lastName: 'Robinson',
+        address: '6789 Beech Boulevard',
+        state: 'Indiana',
+        phone: '(111) 222-3333',
+        status: 'Active'
+    },
+    {
+        id: 19,
+        firstName: 'Daniel',
+        lastName: 'Clark',
+        address: '1357 Cypress Circle',
+        state: 'Minnesota',
+        phone: '(222) 333-4444',
+        status: 'Active'
+    },
+    {
+        id: 20,
+        firstName: 'Harper',
+        lastName: 'Rodriguez',
+        address: '2468 Fir Forest',
+        state: 'Wisconsin',
+        phone: '(333) 444-5555',
+        status: 'Inactive'
+    }
 ];
 
 // endregion

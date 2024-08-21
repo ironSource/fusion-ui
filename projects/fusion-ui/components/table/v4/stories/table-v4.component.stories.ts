@@ -7,9 +7,11 @@ import {TableV4Component} from '../table-v4.component';
 import {
     ROWS_DEFAULT_DATA,
     ROWS_DEFAULT_DATA_WITH_ID,
+    ROWS_HORIZONTAL_DATA_WITH,
     ROWS_NUMBERS_DATA,
     ROWS_SELECTABLE_DATA,
     TABLE_DEFAULT_COLUMNS_CONFIG,
+    TABLE_HORIZONTAL_COLUMNS_CONFIG,
     TABLE_NUMBERS_COLUMNS_CONFIG,
     TABLE_NUMBERS_SORTABLE_COLUMNS_CONFIG,
     TABLE_SELECTABLE_COLUMNS_CONFIG,
@@ -135,6 +137,29 @@ export const StickyHeader: Story = {
     })
 };
 StickyHeader.decorators = [
+    componentWrapperDecorator(story => `<div style="height: 600px; border: solid 0px red; display: block">${story}</div>`)
+];
+
+export const BothVerticalAndHorizontalScroll: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            columns: TABLE_HORIZONTAL_COLUMNS_CONFIG,
+            rows: ROWS_HORIZONTAL_DATA_WITH,
+            options: {
+                stickyHeader: true,
+                tableLabel: {text: 'Users', tooltip: 'Users table'},
+                searchOptions: {
+                    placeholder: 'Search',
+                    onSearch: new EventEmitter()
+                }
+            },
+            hasCustomFooter: true
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+BothVerticalAndHorizontalScroll.decorators = [
     componentWrapperDecorator(story => `<div style="height: 600px; border: solid 0px red; display: block">${story}</div>`)
 ];
 

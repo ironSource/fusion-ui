@@ -3,12 +3,14 @@
 
 :host {
   // region css variables
+  --fu-scroll-width: 6px;
+  --fu-scroll-border: solid 1px var(--common-divider, #{$color-v4-common-divider});
+  --fu-scroll-button-bg-color: var(--default-light, #{$color-v4-default-light});
   --table-border-width: 1px;
   --table-border-type: solid;
   --table-border-radius: 4px;
   --table-border-color: var(--common-divider, #{$color-v4-common-divider});
   --table-border: var(--table-border-width) var(--table-border-type) var(--table-border-color);
-
   --table-text-color: var(--text-primary, #{$color-v4-text-primary});
 
   --table-header-bg-color: var(--background-paper-elevation-0, #{$color-v4-background-paper-elevation-0});
@@ -170,7 +172,7 @@
     &.fu-table-sticky-header {
       height: 100%;
       overflow: auto;
-      @extend %cloudUiScroll;
+      @extend %customNavBarScroll;
 
       table {
         thead {
