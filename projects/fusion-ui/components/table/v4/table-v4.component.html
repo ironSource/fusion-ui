@@ -162,4 +162,9 @@
         </table>
     }
 </div>
-<!--<div class="fu-table-footer">Footer</div>-->
+@if(hasCustomFooter){
+    <div class="fu-table-footer-wrapper">
+        <ng-content select=".fu-table-footer"></ng-content>
+    </div>
+}
+

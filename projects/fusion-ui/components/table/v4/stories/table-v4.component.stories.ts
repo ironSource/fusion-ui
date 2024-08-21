@@ -21,6 +21,7 @@ const TEMPLATE_TABLE_HOLDER = `<fusion-table-story-holder
     [options]="options"
     [columns]="columns"
     [rows]="rows"
+    [hasCustomFooter]="hasCustomFooter"
     (selectionChanged)="selectionChanged($event)"
     (rowModelChange)="rowModelChange($event)"
 ></fusion-table-story-holder>`;
@@ -96,7 +97,8 @@ export const HeaderAndFooter: Story = {
                     placeholder: 'Search',
                     onSearch: new EventEmitter()
                 }
-            }
+            },
+            hasCustomFooter: true
         },
         template: TEMPLATE_TABLE_HOLDER
     })

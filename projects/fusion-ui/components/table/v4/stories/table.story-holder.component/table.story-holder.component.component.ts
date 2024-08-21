@@ -17,13 +17,19 @@ import {TableV4Component} from '../../table-v4.component';
         [rows]="tableRows"
         [options]="options"
         [loading]="tableLoading$ | async"
+        [hasCustomFooter]="hasCustomFooter"
         [(expandedRows)]="expandedRows"
         (rowModelChange)="onRowModelChange($event)"
         (scrollDown)="onscrollDown()"
         (expandRow)="onExpandRow($event)"
         (sortChanged)="onSortChanged($event)"
         (selectionChanged)="selectedChanged($event)"
-    ></fusion-table>`,
+    >
+        <div class="fu-table-footer" style="color: #646464;">
+            Displaying <span style="color: #202020; font-weight: 500;">{{ shownRows }}</span> out of
+            <span style="color: #202020; font-weight: 500;">{{ totalRows }}</span> total rows
+        </div>
+    </fusion-table>`,
     styles: [
         `
             ::ng-deep tbody tr td.fu-badge:not(.inner-row) div {
@@ -61,6 +67,8 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
         }
     }
 
+    @Input() hasCustomFooter: boolean = false;
+
     @Output() rowModelChange = new EventEmitter();
     @Output() selectionChanged = new EventEmitter();
 
@@ -75,12 +83,17 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
     /** @ignore */
     expandedRows: {[key: string]: boolean} = {}; // maf expanded rows - {1: true} mean that row with index 1 - expanded
 
+    totalRows: number;
+    shownRows: number;
+
     private onDestroy$ = new Subject<void>();
     private _rows = [];
 
     private onRowDataChanged$ = new EventEmitter<any>();
 
     ngOnInit() {
+        this.totalRows = this._rows.length;
+        this.shownRows = this.totalRows;
         if (!isNullOrUndefined(this.options?.searchOptions?.onSearch)) {
             this.options.searchOptions.onSearch.pipe(takeUntil(this.onDestroy$)).subscribe(value => {
                 console.log('onSearch >>', value);
@@ -91,6 +104,7 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
                         });
                     })
                 ];
+                this.shownRows = this.tableRows.length;
                 if (this.tableRows.length === 0) {
                     this.options = {
                         ...this.options,

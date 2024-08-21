@@ -5,6 +5,7 @@
   // region css variables
   --table-border-width: 1px;
   --table-border-type: solid;
+  --table-border-radius: 4px;
   --table-border-color: var(--common-divider, #{$color-v4-common-divider});
   --table-border: var(--table-border-width) var(--table-border-type) var(--table-border-color);
 
@@ -22,6 +23,12 @@
   --table-header-sort-icon-size: 20px;
   --table-header-tooltip-icon-size: 16px;
   --table-header-tooltip-icon-color: var(--action-active, #{$color-v4-action-active});
+
+  --table-footer-height: 48px;
+  --table-footer-padding: 14px 16px;
+  --table-footer-gap: 8px;
+  --table-footer-text-color: var(--table-text-color);
+  --table-footer-bg-color: var(--background-paper-elevation-0, #{$color-v4-background-paper-elevation-0});
 
   --table-empty-state-padding: 48px;
 
@@ -44,6 +51,7 @@
   flex-direction: column;
 
   border: var(--table-border);
+  border-radius: var(--table-border-radius);
 
   .fu-table-header{
     display: flex;
@@ -51,6 +59,9 @@
     padding: 0px var(--spacing-300, #{$spacingV4-300});
     align-items: center;
     gap: 8px;
+
+    border-top-left-radius: var(--table-border-radius);
+    border-top-right-radius: var(--table-border-radius);
 
     border-bottom: var(--table-border);
     background-color: var(--table-header-bg-color);
@@ -73,6 +84,20 @@
     fusion-search{
       width: var(--table-header-search-width);
     }
+  }
+
+  .fu-table-footer-wrapper{
+    display: flex;
+    align-items: center;
+    height: var(--table-footer-height);
+    padding: var(--table-footer-padding);
+    gap: var(--table-footer-gap);
+    background-color: var(--table-footer-bg-color);
+    border-top: var(--table-border);
+    border-bottom-left-radius: var(--table-border-radius);
+    border-bottom-right-radius: var(--table-border-radius);
+    @extend %font-v4-body-1;
+    color: var(--table-footer-text-color);
   }
 
   .tableWrap {
@@ -144,4 +169,18 @@
       }
     }
   }
+
+  &:not(:has(.fu-table-header)){
+    .tableWrap{
+      border-top-left-radius: var(--table-border-radius);
+      border-top-right-radius: var(--table-border-radius);
+    }
+  }
+  &:not(:has(.fu-table-footer-wrapper)){
+    .tableWrap{
+      border-bottom-left-radius: var(--table-border-radius);
+      border-bottom-right-radius: var(--table-border-radius);
+    }
+  }
+
 }
