@@ -111,8 +111,14 @@ export const StickyHeader: Story = {
             ...args,
             rows: ROWS_DEFAULT_DATA_WITH_ID,
             options: {
-                stickyHeader: true
-            }
+                stickyHeader: true,
+                tableLabel: {text: 'Users', tooltip: 'Users table'},
+                searchOptions: {
+                    placeholder: 'Search',
+                    onSearch: new EventEmitter()
+                }
+            },
+            hasCustomFooter: true
         },
         template: TEMPLATE_TABLE_HOLDER
     })
