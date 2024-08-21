@@ -163,7 +163,7 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
             this._rows = [...this._rows, ...newRows];
             this.tableRows = this._rows;
             this.options = {...this.options, pagination: {enable: true, loading: false}};
-        }, 1000);
+        }, 700);
     }
 
     onSortChanged(sortByKey) {
