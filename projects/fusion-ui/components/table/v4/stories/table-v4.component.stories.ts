@@ -22,6 +22,7 @@ const TEMPLATE_TABLE_HOLDER = `<fusion-table-story-holder
     [options]="options"
     [columns]="columns"
     [rows]="rows"
+    [hasCustomHeader]="hasCustomHeader"
     [hasCustomFooter]="hasCustomFooter"
     (selectionChanged)="selectionChanged($event)"
     (rowModelChange)="rowModelChange($event)"
@@ -100,6 +101,16 @@ export const HeaderAndFooter: Story = {
                 }
             },
             hasCustomFooter: true
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+
+export const CustomHeader: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            hasCustomHeader: true
         },
         template: TEMPLATE_TABLE_HOLDER
     })

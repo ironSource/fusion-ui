@@ -1,9 +1,12 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {delay, finalize, map, take, takeUntil, tap} from 'rxjs/operators';
 import {BehaviorSubject, of, Subject} from 'rxjs';
 import {isNullOrUndefined, isNumber} from '@ironsource/fusion-ui/utils';
+import {ButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
+import {GenericPipe, TableTestIdModifiers} from '@ironsource/fusion-ui';
+import {SearchV4Component} from '@ironsource/fusion-ui/components/search/v4/search-v4.component';
 import {TableColumn, TableOptions, TableRowExpandEmitter} from '@ironsource/fusion-ui/components/table';
 import {ROWS_DEFAULT_DATA} from '../table.mock-data';
 import {TableV4Component} from '../../table-v4.component';
@@ -11,12 +14,13 @@ import {TableV4Component} from '../../table-v4.component';
 @Component({
     selector: 'fusion-table-story-holder',
     standalone: true,
-    imports: [CommonModule, TableV4Component],
+    imports: [CommonModule, ReactiveFormsModule, TableV4Component, ButtonComponent, GenericPipe, SearchV4Component],
     template: ` <fusion-table
         [columns]="columns"
         [rows]="tableRows"
         [options]="options"
         [loading]="tableLoading$ | async"
+        [hasCustomHeader]="hasCustomHeader"
         [hasCustomFooter]="hasCustomFooter"
         [(expandedRows)]="expandedRows"
         (rowModelChange)="onRowModelChange($event)"
@@ -25,6 +29,19 @@ import {TableV4Component} from '../../table-v4.component';
         (sortChanged)="onSortChanged($event)"
         (selectionChanged)="selectedChanged($event)"
     >
+        <div class="fu-table-header" style="width: 100%; display: flex; gap: 8px; align-items: center;">
+            <div style="flex: 1 0 0; color: #646464;">
+                Displaying <span style="color: #202020; font-weight: 500;">{{ shownRows }}</span> out of
+                <span style="color: #202020; font-weight: 500;">{{ totalRows }}</span> total rows
+            </div>
+            <div style="display: flex; gap: 8px; align-items: center;">
+                <fusion-search style="width: 220px" placeholder="Search" [formControl]="searchFormControl"></fusion-search>
+
+                <fusion-button variant="outlined">Secondary</fusion-button>
+                <fusion-button color="primary">Primary</fusion-button>
+            </div>
+        </div>
+
         <div class="fu-table-footer" style="color: #646464;">
             Displaying <span style="color: #202020; font-weight: 500;">{{ shownRows }}</span> out of
             <span style="color: #202020; font-weight: 500;">{{ totalRows }}</span> total rows
@@ -67,6 +84,7 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
         }
     }
 
+    @Input() hasCustomHeader: boolean = false;
     @Input() hasCustomFooter: boolean = false;
 
     @Output() rowModelChange = new EventEmitter();
@@ -87,6 +105,8 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
     totalRows: number;
     shownRows: number;
 
+    searchFormControl = new FormControl();
+
     private onDestroy$ = new Subject<void>();
     private _rows = [];
 
@@ -96,26 +116,12 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
         this.totalRows = this._rows.length;
         this.shownRows = this.totalRows;
 
+        if (this.hasCustomHeader) {
+            this.searchFormControl.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(this.doSearch.bind(this));
+        }
+
         if (!isNullOrUndefined(this.options?.searchOptions?.onSearch)) {
-            this.options.searchOptions.onSearch.pipe(takeUntil(this.onDestroy$)).subscribe(value => {
-                console.log('onSearch >>', value);
-                this.tableRows = [
-                    ...this._rows.filter(item => {
-                        return Object.keys(item).some(key => {
-                            return item[key].toString().toLowerCase().includes(value.toLowerCase());
-                        });
-                    })
-                ];
-                this.shownRows = this.tableRows.length;
-                if (this.tableRows.length === 0) {
-                    this.options = {
-                        ...this.options,
-                        noDataMessage: 'No data to display',
-                        noDataSubMessage: 'Search again with different filters',
-                        emptyTableType: 'noResult'
-                    };
-                }
-            });
+            this.options.searchOptions.onSearch.pipe(takeUntil(this.onDestroy$)).subscribe(this.doSearch.bind(this));
         }
 
         this.onRowDataChanged$.pipe(takeUntil(this.onDestroy$)).subscribe(this.onRowModelChange.bind(this));
@@ -231,6 +237,26 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
             }, failedCallback);
     }
 
+    private doSearch(value: string) {
+        console.log('onSearch >>', value);
+        this.tableRows = [
+            ...this._rows.filter(item => {
+                return Object.keys(item).some(key => {
+                    return item[key].toString().toLowerCase().includes(value.toLowerCase());
+                });
+            })
+        ];
+        this.shownRows = this.tableRows.length;
+        if (this.tableRows.length === 0) {
+            this.options = {
+                ...this.options,
+                noDataMessage: 'No data to display',
+                noDataSubMessage: 'Search again with different filters',
+                emptyTableType: 'noResult'
+            };
+        }
+    }
+
     /**
      * Just get from main data mock - portion for child rows
      */
@@ -263,4 +289,6 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
             return sortDirection === 'asc' ? a[sortKey].localeCompare(b[sortKey]) : b[sortKey].localeCompare(a[sortKey]);
         });
     }
+
+    protected readonly tableTestIdModifiers = TableTestIdModifiers;
 }

@@ -174,6 +174,7 @@ export class TableV4Component implements OnInit, OnDestroy {
 
     @Input() loading: boolean;
     @Input() sortTableOnDataChanges = false;
+    @Input() hasCustomHeader = false;
     @Input() hasCustomFooter = false;
     // endregion
 

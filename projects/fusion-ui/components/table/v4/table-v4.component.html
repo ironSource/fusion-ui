@@ -1,23 +1,30 @@
-@if (options?.tableLabel){
+@if (hasCustomHeader || options?.tableLabel) {
     <div class="fu-table-header-wrapper">
-        <div class="fu-table-label">
-            <div class="fu-table-label-text" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:tableTestIdModifiers.LABEL">
-                {{ options?.tableLabel?.text }}
-            </div>
-            @if (options?.tableLabel?.tooltip){
-                <fusion-icon class="fu-header-tooltip-icon"
-                             [name]="options?.tableLabel?.icon ?? iconTooltip"
-                             [fusionTooltip]="options?.tableLabel?.tooltip"
-                             [testId]="testIdsService.getTestAttribute.bind(this) | generic:testId:tableTestIdModifiers.HEADER_TOOLTIP"
-                ></fusion-icon>
+        @if (hasCustomHeader) {
+            <ng-content select=".fu-table-header"></ng-content>
+        } @else {
+            @if (options?.tableLabel) {
+                <div class="fu-table-label">
+                    <div class="fu-table-label-text"
+                         [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:tableTestIdModifiers.LABEL">
+                        {{ options?.tableLabel?.text }}
+                    </div>
+                    @if (options?.tableLabel?.tooltip) {
+                        <fusion-icon class="fu-header-tooltip-icon"
+                                     [name]="options?.tableLabel?.icon ?? iconTooltip"
+                                     [fusionTooltip]="options?.tableLabel?.tooltip"
+                                     [testId]="testIdsService.getTestAttribute.bind(this) | generic:testId:tableTestIdModifiers.HEADER_TOOLTIP"
+                        ></fusion-icon>
+                    }
+                </div>
             }
-        </div>
-        @if(options?.searchOptions){
-            <fusion-search
-                    [placeholder]="options?.searchOptions?.placeholder"
-                    [formControl]="searchFormControl"
-                    [testId]="testIdsService.getTestAttribute.bind(this) | generic:testId:tableTestIdModifiers.SEARCH"
-            ></fusion-search>
+            @if (options?.searchOptions) {
+                <fusion-search
+                        [placeholder]="options?.searchOptions?.placeholder"
+                        [formControl]="searchFormControl"
+                        [testId]="testIdsService.getTestAttribute.bind(this) | generic:testId:tableTestIdModifiers.SEARCH"
+                ></fusion-search>
+            }
         }
     </div>
 }
@@ -162,7 +169,7 @@
         </table>
     }
 </div>
-@if(hasCustomFooter){
+@if (hasCustomFooter) {
     <div class="fu-table-footer-wrapper">
         <ng-content select=".fu-table-footer"></ng-content>
     </div>
