@@ -12,7 +12,7 @@ import {TableV4Component} from '../../table-v4.component';
     selector: 'fusion-table-story-holder',
     standalone: true,
     imports: [CommonModule, TableV4Component],
-    template: `<fusion-table
+    template: ` <fusion-table
         [columns]="columns"
         [rows]="tableRows"
         [options]="options"
@@ -76,6 +76,7 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
     @Input() set loading(value: boolean) {
         this.tableLoading$.next(value);
     }
+
     /** @ignore */
     tableRows = [];
     /** @ignore */
@@ -94,6 +95,7 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.totalRows = this._rows.length;
         this.shownRows = this.totalRows;
+
         if (!isNullOrUndefined(this.options?.searchOptions?.onSearch)) {
             this.options.searchOptions.onSearch.pipe(takeUntil(this.onDestroy$)).subscribe(value => {
                 console.log('onSearch >>', value);
@@ -115,6 +117,7 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
                 }
             });
         }
+
         this.onRowDataChanged$.pipe(takeUntil(this.onDestroy$)).subscribe(this.onRowModelChange.bind(this));
     }
 
@@ -148,12 +151,11 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
         const newRows = Array.from({length: 20}, (_, i) => {
             const id = i + shownLength + 1;
             return {
-                checkbox: false,
                 id: id,
-                name: id + ' name',
-                username: id + ' UserName',
-                email: id + ' E-mail',
-                website: id + ' Website'
+                firstName: id + ' first name',
+                lastName: id + ' last Name',
+                address: id + ' address',
+                state: id + ' state'
             };
         });
 
@@ -206,7 +208,12 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
                 tap(
                     _ =>
                         // set what row expanded, or update to collapsed state if was expanded
-                        (this.expandedRows = updateMap ? {...this.expandedRows, [rowIndex]: isExpanded} : this.expandedRows)
+                        (this.expandedRows = updateMap
+                            ? {
+                                  ...this.expandedRows,
+                                  [rowIndex]: isExpanded
+                              }
+                            : this.expandedRows)
                 )
             )
             .subscribe(data => {
