@@ -53,7 +53,7 @@
   border: var(--table-border);
   border-radius: var(--table-border-radius);
 
-  .fu-table-header{
+  .fu-table-header-wrapper{
     display: flex;
     height: var(--spacing-800, #{$spacingV4-800});
     padding: 0px var(--spacing-300, #{$spacingV4-300});
@@ -170,7 +170,7 @@
     }
   }
 
-  &:not(:has(.fu-table-header)){
+  &:not(:has(.fu-table-header-wrapper)){
     .tableWrap{
       border-top-left-radius: var(--table-border-radius);
       border-top-right-radius: var(--table-border-radius);

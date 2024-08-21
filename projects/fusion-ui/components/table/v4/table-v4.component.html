@@ -1,5 +1,5 @@
 @if (options?.tableLabel){
-    <div class="fu-table-header">
+    <div class="fu-table-header-wrapper">
         <div class="fu-table-label">
             <div class="fu-table-label-text" [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:tableTestIdModifiers.LABEL">
                 {{ options?.tableLabel?.text }}
