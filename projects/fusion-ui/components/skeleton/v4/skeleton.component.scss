@@ -12,6 +12,7 @@
   padding: 0;
   width: var(--fu-skeleton-width, 100%);
   height: var(--fu-skeleton-height, 16px);
+  display: inline-flex;
   .fu-skeleton {
     position: relative;
     overflow: hidden;
