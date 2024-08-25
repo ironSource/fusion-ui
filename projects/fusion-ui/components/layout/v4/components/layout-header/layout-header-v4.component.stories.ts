@@ -89,7 +89,21 @@ export const WithBottomLine = {
 export const WithSkeletons = {
     render: LayoutHeaderTemplate,
     args: {
-        teleportElements: [{id: 'fuHeaderTeleport'}, {id: 'fuHeaderTeleportRight', isOnRight: true}],
+        teleportElements: [
+            {
+                id: 'fuHeaderTeleport',
+                skeletons: [{width: '130px', height: '28px', shape: 'pill'}]
+            },
+            {
+                id: 'fuHeaderTeleportRight',
+                isOnRight: true,
+                skeletons: [
+                    {width: '130px', height: '28px', shape: 'pill'},
+                    {width: '60px', height: '28px', shape: 'pill'}
+                ],
+                skeletonsGap: '8px'
+            }
+        ],
         headerContent: {
             ...HEADER_CONTENT_MOCK,
             multiline: true,
@@ -98,7 +112,17 @@ export const WithSkeletons = {
                 skeletons: [{width: '320px', height: '40px', borderRadius: '8px'}]
             },
             bottomRowContent: {
-                show: true
+                show: true,
+                skeletons: [
+                    {width: '130px', height: '28px', shape: 'pill'},
+                    {
+                        width: '130px',
+                        height: '28px',
+                        shape: 'pill'
+                    },
+                    {width: '130px', height: '28px', shape: 'pill'}
+                ],
+                skeletonsGap: '8px'
             }
         }
     }

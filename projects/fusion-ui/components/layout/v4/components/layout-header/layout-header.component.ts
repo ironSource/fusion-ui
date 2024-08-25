@@ -45,15 +45,29 @@ export class LayoutHeaderComponent {
         return this._headerContent?.topRowContent?.skeletons ?? [];
     }
 
+    get teleportTopRowBaseSkeletonsGap(): string {
+        return this._headerContent?.topRowContent?.skeletonsGap;
+    }
+
     get teleportTopRowElements(): TeleportWrapperElement[] {
         return this._headerContent?.topRowContent?.teleportElements ?? [];
     }
     get hasBottomLine(): boolean {
         return this.isMultiline && !!this._headerContent?.bottomRowContent?.show;
     }
+
     get bottomTopRowElements(): TeleportWrapperElement[] {
         return this._headerContent?.bottomRowContent?.teleportElements ?? [];
     }
+
+    get teleportBottomLineSkeletons(): TeleportSkeleton[] {
+        return this.isMultiline && this._headerContent?.bottomRowContent?.skeletons ? this._headerContent.bottomRowContent.skeletons : [];
+    }
+
+    get teleportBottomLineSkeletonsGap(): string {
+        return this._headerContent?.bottomRowContent?.skeletonsGap;
+    }
+
     get isDrilldown(): boolean {
         return this.isMultiline && !!this._headerContent?.hasBackButton;
     }
