@@ -29,8 +29,7 @@
         </div>
     } @else if (tableService.isTypeInputEdit(column) && data) {
         <!-- todo: add support for input edit cell-->
-        <div>input edit</div>
-        <!--    <div
+            <div
                 [style.min-width]="'calc(' + column.width + ' - 1px)'"
                 class="inputType"
                 [ngClass]="column.align"
@@ -49,7 +48,7 @@
                     [currencyPipeParameters]="column?.currencyPipeParameters"
                 ></fusion-input-inline>
                 <ng-template #noEditCell>&nbsp;</ng-template>
-            </div>-->
+            </div>
     } @else if (tableService.isTypeComponent(column)) {
         <!-- todo: add support for dynamic cell-->
         <div>dynamic</div>

@@ -14,7 +14,7 @@ import {
     ViewChild
 } from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
-import {FormControl} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {isBoolean, isNull, isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {TableService} from '@ironsource/fusion-ui/components/table/common/services';
 import {InputInlineComponent} from '@ironsource/fusion-ui/components/input-inline';
@@ -49,7 +49,7 @@ type CellDataType = Type<Component> | FormControl | string | boolean | undefined
     // eslint-disable-next-line
     selector: '[fusionTableCell]',
     standalone: true,
-    imports: [CommonModule, NotAvailablePipe, TooltipDirective, CheckboxComponent],
+    imports: [CommonModule, ReactiveFormsModule, NotAvailablePipe, TooltipDirective, CheckboxComponent, InputInlineComponent],
     templateUrl: './table-cell.component.html',
     styleUrls: ['./table-cell.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush

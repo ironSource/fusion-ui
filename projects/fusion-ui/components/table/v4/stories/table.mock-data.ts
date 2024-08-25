@@ -1,4 +1,6 @@
 import {TableColumn, TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table';
+import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline';
+import {FormControl, Validators} from '@angular/forms';
 
 // region default data
 export const TABLE_DEFAULT_COLUMNS_CONFIG: TableColumn[] = [
@@ -47,6 +49,11 @@ export const ROWS_DEFAULT_DATA = [
         state: 'Georgia'
     }
 ];
+
+export const ROWS_DEFAULT_EDITABLE_DATA = ROWS_DEFAULT_DATA.map((row, idx) => {
+    const fcLastName = new FormControl(row.lastName, [Validators.required, Validators.minLength(3)]);
+    return {...row, lastName: fcLastName};
+});
 
 export const ROWS_DEFAULT_DATA_WITH_ID = [
     {
@@ -488,4 +495,61 @@ export const ROWS_NUMBERS_DATA = [
     }
 ];
 
+// endregion
+
+// region inline input data
+export const TABLE_EDITABLE_COLUMNS_CONFIG: TableColumn[] = [
+    {
+        key: 'planName',
+        title: 'Plan name',
+        type: TableColumnTypeEnum.InputEdit,
+        inputType: InlineInputType.Text,
+        customErrorMapping: {
+            required: {errorMessageKey: 'required'}
+        }
+    },
+    {key: 'lastUpdate', title: 'Last updated', type: TableColumnTypeEnum.Date},
+    {
+        key: 'price',
+        title: 'Price',
+        type: TableColumnTypeEnum.InputEdit,
+        inputType: InlineInputType.Currency,
+        customErrorMapping: {
+            required: {errorMessageKey: 'required'}
+        }
+    },
+    {
+        key: 'amount',
+        title: 'Amount',
+        type: TableColumnTypeEnum.InputEdit,
+        inputType: InlineInputType.Number,
+        customErrorMapping: {
+            required: {errorMessageKey: 'required'}
+        }
+    },
+    {
+        key: 'discount',
+        title: 'Discount',
+        type: TableColumnTypeEnum.InputEdit,
+        inputType: InlineInputType.Percent,
+        customErrorMapping: {
+            required: {errorMessageKey: 'required'}
+        }
+    }
+
+    /*
+        {key: 'firstName', title: 'First name'},
+        {
+            key: 'lastName',
+            title: 'Last name',
+            type: TableColumnTypeEnum.InputEdit,
+            inputType: InlineInputType.Text,
+            customErrorMapping: {
+                required: {errorMessageKey: 'required'}
+            }
+        },
+        {key: 'address', title: 'Address'},
+        {key: 'state', title: 'State'}
+    */
+];
 // endregion

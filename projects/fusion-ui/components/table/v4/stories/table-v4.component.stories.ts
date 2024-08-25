@@ -7,10 +7,12 @@ import {TableV4Component} from '../table-v4.component';
 import {
     ROWS_DEFAULT_DATA,
     ROWS_DEFAULT_DATA_WITH_ID,
+    ROWS_DEFAULT_EDITABLE_DATA,
     ROWS_HORIZONTAL_DATA_WITH,
     ROWS_NUMBERS_DATA,
     ROWS_SELECTABLE_DATA,
     TABLE_DEFAULT_COLUMNS_CONFIG,
+    TABLE_EDITABLE_COLUMNS_CONFIG,
     TABLE_HORIZONTAL_COLUMNS_CONFIG,
     TABLE_NUMBERS_COLUMNS_CONFIG,
     TABLE_NUMBERS_SORTABLE_COLUMNS_CONFIG,
@@ -62,11 +64,6 @@ type Story = StoryObj<TableV4Component>;
 
 export const Basic: Story = {};
 
-export const ColumnTooltips: Story = {};
-ColumnTooltips.args = {
-    columns: TABLE_TOOLTIP_COLUMNS_CONFIG
-};
-
 export const Numbers: Story = {};
 Numbers.args = {
     columns: TABLE_NUMBERS_COLUMNS_CONFIG,
@@ -77,6 +74,11 @@ export const SortableColumns: Story = {};
 SortableColumns.args = {
     columns: TABLE_NUMBERS_SORTABLE_COLUMNS_CONFIG,
     rows: ROWS_NUMBERS_DATA
+};
+
+export const ColumnTooltips: Story = {};
+ColumnTooltips.args = {
+    columns: TABLE_TOOLTIP_COLUMNS_CONFIG
 };
 
 export const SelectableRows: Story = {
@@ -113,6 +115,18 @@ export const CustomHeader: Story = {
         props: {
             ...args,
             hasCustomHeader: true
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+
+export const InlineEditing: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            columns: TABLE_EDITABLE_COLUMNS_CONFIG,
+            rows: ROWS_NUMBERS_DATA,
+            rowModelChange: actionsData.rowModelChange
         },
         template: TEMPLATE_TABLE_HOLDER
     })
