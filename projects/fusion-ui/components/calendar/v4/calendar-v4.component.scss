@@ -1,0 +1,206 @@
+@import '../../../src/style/scss/v4/vars/vars';
+@import '../../../src/style/scss/v4/mixins/mixins';
+
+@mixin calendar-circle($color, $border-radius) {
+  position: absolute;
+  content: '';
+  left: 0;
+  top: 0;
+  background-color: $color;
+  height: 32px;
+  width: 32px;
+  border-radius: $border-radius;
+  display: block;
+}
+
+@mixin calendar-today-dot($color) {
+  content: '';
+  background-color: $color;
+  width: 4px;
+  height: 4px;
+  position: absolute;
+  bottom: 5px;
+  border-radius: 100px;
+  left: calc(50% - 2px);
+}
+
+:host {
+  @extend %reset;
+  @include user-select(none);
+
+  --fu-calendar-width: 224px;
+  --fu-calendar-mian-color: var(--text-primary, #{$color-v4-text-primary});
+  --fu-calendar-bg-color: var(--common-white, #{$color-v4-common-white});
+  --fu-month-color: var(--text-primary, #{$color-v4-text-primary});
+  --fu-month-height: 40px;
+  --fu-day-in-week-color: var(--text-secondary, #{$color-v4-text-secondary});
+  --fu-day-today-dot-color: var(--primary-main, #{$color-v4-primary-main});
+  --fu-day-disabled-color: var(--text-disabled, #{$color-v4-text-disabled});
+  --fu-day-hover-bg-color: var(--primary-main-50-p, #{$color-v4-primary-main-50-p});
+  --fu-day-selected-background: var(--primary-light, #{$color-v4-primary-light});
+  --fu-day-selected-hovered-background: var(--primary-main-50-p, #{$color-v4-primary-main-50-p});
+  --fu-day-active-background: var(--primary-main, #{$color-v4-primary-main});
+
+  .fu-calendar {
+    width: var(--fu-calendar-width);
+    @extend %font-v4-body-1;
+    color: var(--fu-calendar-mian-color);
+    background-color: var(--fu-calendar-bg-color);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .fu-month-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 0px;
+      height: var(--fu-month-height);
+
+      .fu-month {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+        @extend %font-v4-button;
+        color: var(--fu-month-color);
+      }
+    }
+
+    .fu-weekdays-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .fu-day-in-week {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+        height: 32px;
+        padding: 0px 4px;
+        @extend %font-v4-caption;
+        color: var(--fu-day-in-week-color);
+      }
+    }
+
+    .fu-days-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+
+      .fu-week {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .fu-day {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-grow: 1;
+          @include size(32px);
+          cursor: pointer;
+          padding: 6px 0;
+          position: relative;
+
+          span {
+            position: relative;
+          }
+
+
+          // region regular day hover
+          &:not(.selected):not(.disabled):not(.hover-current):hover {
+            &:before {
+              @include calendar-circle(var(--fu-day-hover-bg-color), 50%);
+            }
+          }
+
+          &.selected:not(.active) {
+            border: none;
+
+            .selected-range {
+              display: inline;
+              cursor: pointer;
+              width: 32px;
+              height: 32px;
+              position: absolute;
+              top: 0;
+              left: 0;
+              background-color: var(--fu-day-selected-background);
+            }
+
+            &:hover {
+              .selected-range {
+                background-color: var(--fu-day-selected-hovered-background);
+              }
+            }
+          }
+
+          // endregion
+
+          &.active {
+            color: $White;
+            background-color: transparent;
+
+            &.selected.oneDaySelection {
+              &:before {
+                @include calendar-circle(var(--fu-day-active-background), 50%);
+              }
+            }
+          }
+
+          // region today dot
+          &.today {
+            &.selected, &.active, &.hover-current {
+              &:after {
+                @include calendar-today-dot(var(--fu-calendar-bg-color));
+              }
+            }
+          }
+
+          &.today:not(.active):not(.hover-current):after {
+            @include calendar-today-dot(var(--fu-day-today-dot-color));
+          }
+
+          // endregion
+
+          // region selected start and end day
+          &.selectedEnd {
+            background-color: var(--fu-day-selected-background);
+            border-radius: 0 50% 50% 0;
+
+            &:before {
+              @include calendar-circle(var(--fu-day-active-background), 50%);
+            }
+          }
+
+          &.selectedStart {
+            background-color: var(--fu-day-selected-background);
+            border-radius: 50% 0 0 50%;
+
+            &:before, &.active.selected.oneDaySelection.hover-range:before {
+              @include calendar-circle(var(--fu-day-active-background), 50%);
+            }
+          }
+
+          // endregion
+
+          // region disabled
+          &.disabled {
+            pointer-events: none;
+
+            &:not(.selected) {
+              color: var(--fu-day-disabled-color)
+            }
+          }
+
+          // endregion
+        }
+      }
+    }
+  }
+}

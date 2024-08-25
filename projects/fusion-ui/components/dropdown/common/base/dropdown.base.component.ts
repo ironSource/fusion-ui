@@ -32,7 +32,12 @@ import {DropdownSearchComponent} from '@ironsource/fusion-ui/components/dropdown
 import {DropdownSelectComponent} from '@ironsource/fusion-ui/components/dropdown-select';
 import {DropdownSelectConfigurations} from '@ironsource/fusion-ui/components/dropdown-select/entities';
 import {DROPDOWN_DEBOUNCE_TIME, DROPDOWN_OPTIONS_WITHOUT_SCROLL} from './dropdown-config';
-import {BackendPagination, ClosedOptions, DropdownPlaceholderConfiguration} from '@ironsource/fusion-ui/components/dropdown/entities';
+import {
+    BackendPagination,
+    ClosedOptions,
+    DropdownPlaceholderConfiguration,
+    DropdownTriggerMode
+} from '@ironsource/fusion-ui/components/dropdown/entities';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 import {DropdownTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
@@ -155,7 +160,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
         if (typeof value === 'string') {
             this.placeholderText = value ?? 'Please Select';
         } else {
-            this.placeholderText = value?.placeholderText || 'Please Select';
+            this.placeholderText = value?.placeholderText ?? 'Please Select';
             this.placeholderIcon = value?.icon;
             this.forcePlaceholderOnSelection = value?.isForcedPlaceholder ? value?.isForcedPlaceholder : this.forcePlaceholderOnSelection;
         }
@@ -243,6 +248,7 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
     /** @ignore */
     chipDefaultContent: string;
 
+    protected _triggerMode: DropdownTriggerMode = 'default';
     private _optionsTitle: string;
     protected _error: string;
     private _isLocatedRight = false;
@@ -499,6 +505,9 @@ export abstract class DropdownBaseComponent extends ApiBase implements OnInit, O
      * @ignore
      */
     setLabel() {
+        if (this._triggerMode === 'button-add') {
+            return;
+        }
         this.labelImageSrc = undefined;
         let placeholder = this.initPlaceholder;
         let placeholderForSearch = this.searchPlaceholder;

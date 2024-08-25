@@ -1,0 +1,104 @@
+@import '../../../src/style/scss/v4/colors';
+@import '../../../src/style/scss/v4/spacings';
+@import '../../../src/style/scss/v4/fonts';
+
+:host {
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+
+  .fu-chip-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 2px 4px;
+    border-radius: 6px;
+    @extend %font-v4-chip-label;
+    color: var(--action-primary, #{$color-v4-action-primary});
+    background-color: var(--default-light, #{$color-v4-default-light});
+
+    &.fu-chip-outlined {
+      background-color: var(--common-inverse-white, #{$color-v4-common-inverse-white});
+      outline: solid 1px var(--common-divider-elevation-0, #{$color-v4-common-divider-elevation-0});
+    }
+
+    &.fu-chip-round {
+      border-radius: 100px;
+    }
+
+    &:hover {
+      cursor: default;
+    }
+    .fu-chip-remove-icon:hover {
+      color: var(--action-primary, #{$color-v4-action-primary});
+    }
+
+    &.fu-chip-medium {
+      padding: 6px;
+    }
+
+    .fu-chip-remove-icon,
+    .fu-chip-start-icon {
+      width: 16px;
+      height: 16px;
+      color: var(--action-active, #{$color-v4-action-active});
+      cursor: pointer;
+    }
+
+    .fu-chip-start-icon {
+      cursor: default;
+    }
+
+    &.fu-chip-primary {
+      color: var(--primary-contrast-text, #{$color-v4-primary-contrast-text});
+      background-color: var(--primary-light, #{$color-v4-primary-light});
+    }
+
+    &.fu-chip-info {
+      color: var(--info-contrast-text, #{$color-v4-info-contrast-text});
+      background-color: var(--info-light, #{$color-v4-info-light});
+    }
+
+    &.fu-chip-error {
+      color: var(--error-contrast-text, #{$color-v4-error-contrast-text});
+      background-color: var(--error-light, #{$color-v4-error-light});
+    }
+
+    &.fu-chip-warning {
+      color: var(--warning-contrast-text, #{$color-v4-warning-contrast-text});
+      background-color: var(--warning-light, #{$color-v4-warning-light});
+    }
+
+    &.fu-chip-success {
+      color: var(--success-contrast-text, #{$color-v4-success-contrast-text});
+      background-color: var(--success-light, #{$color-v4-success-light});
+    }
+
+    &.fu-chip-dark {
+      color: var(--common-inverse-white, #{$color-v4-common-inverse-white});
+      background-color: var(--common-inverse-black, #{$color-v4-common-inverse-black});
+    }
+
+    &.fu-chip-selected {
+      color: var(--action-primary, #{$color-v4-action-primary});
+      background-color: var(--action-hover, #{$color-v4-action-hover});
+      outline: solid 1px var(--action-active, #{$color-v4-action-active});
+
+      &.fu-chip-disabled {
+        outline: solid 1px var(--action-outlined-border, #{$color-v4-action-outlined-border});
+      }
+    }
+
+      &.fu-chip-disabled {
+      color: var(--action-disabled, #{$color-v4-action-disabled});
+      background-color: var(--action-disabled-background, #{$color-v4-action-disabled-background});
+
+      .fu-chip-remove-icon {
+        color: var(--action-disabled, #{$color-v4-action-disabled});
+        pointer-events: none;
+        cursor: default;
+      }
+    }
+  }
+}

@@ -164,6 +164,7 @@ $inter: 'Inter', sans-serif;
 %font-v4-chip-label {
     font-size: 0.75rem;
     line-height: 1rem;
+    letter-spacing: normal;
     @extend %font-v4-semibold;
 }
 // endregion
