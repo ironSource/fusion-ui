@@ -161,7 +161,7 @@ $drilldownHeight: 72px;
             color: #005BE2;
         }
     }
-    #pageHeaderTopTeleportSlot{
+    #pageHeaderTopTeleportSlot:not(:has(.fu-skeleton)){
         &:after{
             content: '#pageHeaderTopTeleportSlot';
             color: #005BE2;

@@ -1,14 +1,15 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components/v1';
-import {HeaderContent, TeleportWrapperElement} from '../../layout.entities';
+import {HeaderContent, TeleportSkeleton, TeleportWrapperElement} from '../../layout.entities';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {IconButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
+import {SkeletonComponent} from '@ironsource/fusion-ui/components/skeleton';
 
 @Component({
     selector: 'fusion-layout-header',
     standalone: true,
-    imports: [CommonModule, DynamicComponentsModule, IconModule, IconButtonComponent],
+    imports: [CommonModule, DynamicComponentsModule, IconModule, IconButtonComponent, SkeletonComponent],
     templateUrl: './layout-header.component.html',
     styleUrls: ['./layout-header.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -39,6 +40,11 @@ export class LayoutHeaderComponent {
     get hasTopLine(): boolean {
         return this.isMultiline && !!this._headerContent?.topRowContent?.show;
     }
+
+    get teleportTopRowBaseSkeletons(): TeleportSkeleton[] {
+        return this._headerContent?.topRowContent?.skeletons ?? [];
+    }
+
     get teleportTopRowElements(): TeleportWrapperElement[] {
         return this._headerContent?.topRowContent?.teleportElements ?? [];
     }

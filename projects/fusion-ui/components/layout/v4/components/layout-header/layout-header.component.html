@@ -1,5 +1,14 @@
 <div class="fu-header-top-row" [hidden]="!hasTopLine">
-    <div id="pageHeaderTopTeleportSlot"></div>
+    <div id="pageHeaderTopTeleportSlot" [class.fu-has-skeleton]="teleportTopRowBaseSkeletons?.length">
+        @for (skeleton of teleportTopRowBaseSkeletons; track skeleton){
+            <fusion-skeleton
+                    [shape]="skeleton.shape ?? 'rectangle'"
+                    [style.--fu-skeleton-width]="skeleton.width"
+                    [style.--fu-skeleton-height]="skeleton.height"
+                    [style.--fu-skeleton-border-radius]="skeleton.borderRadius"
+            ></fusion-skeleton>
+        }
+    </div>
     <div *ngFor="let teleportItem of teleportTopRowElements" [id]="teleportItem.id" class="fu-header-top-teleport-host"
          [class.fu-flex-align-right]="teleportItem.isOnRight"></div>
 </div>

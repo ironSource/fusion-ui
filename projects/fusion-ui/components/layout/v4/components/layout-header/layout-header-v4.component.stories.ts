@@ -86,6 +86,24 @@ export const WithBottomLine = {
     }
 };
 
+export const WithSkeletons = {
+    render: LayoutHeaderTemplate,
+    args: {
+        teleportElements: [{id: 'fuHeaderTeleport'}, {id: 'fuHeaderTeleportRight', isOnRight: true}],
+        headerContent: {
+            ...HEADER_CONTENT_MOCK,
+            multiline: true,
+            topRowContent: {
+                show: true,
+                skeletons: [{width: '320px', height: '40px', borderRadius: '8px'}]
+            },
+            bottomRowContent: {
+                show: true
+            }
+        }
+    }
+};
+
 export const MainDrilldownTeleport = {
     render: LayoutHeaderTemplate,
     args: {
