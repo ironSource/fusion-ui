@@ -8,6 +8,7 @@ import {InputType} from '@ironsource/fusion-ui/components/input/v4';
 import {CurrencyPipeParameters} from '@ironsource/fusion-ui/components/table';
 import {InputComponent} from '@ironsource/fusion-ui/components/input/v4';
 import {takeUntil} from 'rxjs/operators';
+import {INPUT_INLINE_ERROR_MESSAGES_MAP} from './error-messages.config';
 
 @Component({
     selector: 'fusion-input-inline',
@@ -48,7 +49,6 @@ export class InputInlineV4Component implements OnInit, OnDestroy {
     }
 
     @Input() readOnly: boolean = false;
-    @Input() error: string;
     @Input() set loading(value: boolean) {
         if (value) {
             this.inputControl.disable({emitEvent: false});
@@ -79,6 +79,12 @@ export class InputInlineV4Component implements OnInit, OnDestroy {
         return null;
     }
 
+    @Input() error: string;
+    @Input() set errorMapping(value: {[key: string]: string}) {
+        if (!isNullOrUndefined(value)) {
+            this._errorMapping = value;
+        }
+    }
     // eslint-disable-next-line
     @Output() onSave = new EventEmitter();
     // eslint-disable-next-line
@@ -100,10 +106,14 @@ export class InputInlineV4Component implements OnInit, OnDestroy {
     private clickOutSideSubscription: Subscription;
     private onDestroy$ = new Subject<void>();
     private stayInEditMode = false;
+    private _errorMapping: {[key: string]: string} = INPUT_INLINE_ERROR_MESSAGES_MAP;
 
     ngOnInit() {
         this.setEditMode$.pipe(takeUntil(this.onDestroy$)).subscribe(this.setEditMode.bind(this));
         this.isEditMode$.asObservable().pipe(takeUntil(this.onDestroy$)).subscribe(this.handleClickOutside.bind(this));
+        this.inputControl.statusChanges.pipe(takeUntil(this.onDestroy$)).subscribe(status => {
+            this.error = status === 'INVALID' ? this.getErrorMessage(this.inputControl.errors) : null;
+        });
     }
 
     ngOnDestroy() {
@@ -142,10 +152,22 @@ export class InputInlineV4Component implements OnInit, OnDestroy {
     goToEditMode(withValue?: string | number): void {
         this.inputControl.setValue(!isNullOrUndefined(withValue) ? withValue : this.inputValue, {emitEvent: false});
         this.isEditMode$.next(true);
-        this.inputControl.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(value => {
-            console.log('value', value);
-            console.log('>>>', this.inputControl.valid);
-        });
+    }
+
+    private getErrorMessage(inputError: {[key: string]: any}): string {
+        if (inputError) {
+            const errorKey = Object.keys(inputError)[0];
+            let errorMessage = `Error: ${errorKey}`;
+            console.log('>>', inputError);
+            if (this._errorMapping[errorKey]) {
+                errorMessage = this._errorMapping[errorKey];
+                Object.keys(inputError[errorKey]).forEach((find: string) => {
+                    errorMessage = errorMessage.replace(`{${find}}`, inputError[errorKey][find]);
+                });
+            }
+            return errorMessage;
+        }
+        return null;
     }
 
     private setEditMode(val: string | number) {

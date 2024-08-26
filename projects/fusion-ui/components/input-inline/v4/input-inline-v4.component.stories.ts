@@ -48,7 +48,7 @@ export const Numeric: Story = {
     render: args => ({
         props: {
             ...args,
-            formControl: new FormControl(135, [Validators.min(100), Validators.max(200)]),
+            formControl: new FormControl(135, [Validators.required, Validators.min(100), Validators.max(200)]),
             type: InlineInputType.Number
         },
         template: BASE_TEMPLATE
@@ -59,7 +59,7 @@ export const Currency: Story = {
     render: args => ({
         props: {
             ...args,
-            formControl: new FormControl(34.99),
+            formControl: new FormControl(34.99, [Validators.required]),
             type: InlineInputType.Currency
         },
         template: BASE_TEMPLATE

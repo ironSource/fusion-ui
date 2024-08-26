@@ -28,26 +28,19 @@
             -->
         </div>
     } @else if (tableService.isTypeInputEdit(column) && data) {
-        <!-- todo: add support for input edit cell-->
-            <div
-                [style.min-width]="'calc(' + column.width + ' - 1px)'"
-                class="inputType"
-                [ngClass]="column.align"
-            >
-                <fusion-input-inline
-                    #inlineInput
-                    *ngIf="!isRowTotal; else noEditCell"
-                    [type]="column.inputType"
-                    (onSave)="onEndEdit($event)"
-                    (onCancel)="onCancel()"
-                    [formControl]="data"
-                    [loading]="isInRequest$ | async"
-                    [error]="inputError$ | async"
-                    [readOnly]="isReadOnly"
-                    [currencyPipeParameters]="column?.currencyPipeParameters"
-                ></fusion-input-inline>
-                <ng-template #noEditCell>&nbsp;</ng-template>
-            </div>
+        @if(!isRowTotal){
+            <fusion-input-inline
+                #inlineInput
+                [type]="column.inputType"
+                (onSave)="onEndEdit($event)"
+                (onCancel)="onCancel()"
+                [formControl]="data"
+                [loading]="isInRequest$ | async"
+                [error]="inputError$ | async"
+                [readOnly]="isReadOnly"
+                [currencyPipeParameters]="column?.currencyPipeParameters"
+            ></fusion-input-inline>
+        }
     } @else if (tableService.isTypeComponent(column)) {
         <!-- todo: add support for dynamic cell-->
         <div>dynamic</div>
