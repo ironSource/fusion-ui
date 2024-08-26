@@ -28,6 +28,7 @@
                 [placeholder]="inputValue"
                 [formControl]="inputControl"
                 [type]="inputType"
+                [inlineErrorText]="error"
                 (keydown.enter)="save()"
                 (keydown.escape)="cancel()"
         ></fusion-input>

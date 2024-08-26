@@ -66,11 +66,21 @@ export class InputInlineV4Component implements OnInit, OnDestroy {
     }
 
     @Input() readOnly: boolean = false;
-    @Input() error: boolean = false;
+    @Input() error: string;
+    @Input() set loading(value: boolean) {
+        if (value) {
+            this.inputControl.disable({emitEvent: false});
+        } else {
+            this.inputControl.enable({emitEvent: false});
+        }
+    }
+
     @Input() currencyPipeParameters?: CurrencyPipeParameters;
     @Input() pipeOptions?: string;
 
+    // eslint-disable-next-line
     @Output() onSave = new EventEmitter();
+    // eslint-disable-next-line
     @Output() onCancel = new EventEmitter();
 
     /** @internal */
@@ -87,7 +97,6 @@ export class InputInlineV4Component implements OnInit, OnDestroy {
     private clickOutSideSubscription: Subscription;
     private onDestroy$ = new Subject<void>();
     private stayInEditMode = false;
-    private loading = false;
 
     ngOnInit() {
         this.setEditMode$.pipe(takeUntil(this.onDestroy$)).subscribe(this.setEditMode.bind(this));
