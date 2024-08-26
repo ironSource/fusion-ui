@@ -1,0 +1,47 @@
+@import '../../../src/style/scss/v4/vars/vars';
+@import '../../../src/style/scss/v4/mixins/mixins';
+
+:host {
+  @extend %reset;
+
+  --inline-edit-value-height: 28px;
+  --inline-edit-value-padding: 0 8px;
+  --inline-edit-value-color: var(--table-text-color, #{$color-v4-text-primary});
+
+  .fu-edit-value-wrapper {
+    display: flex;
+    align-items: center;
+    @extend %font-v4-body-1;
+    height: var(--inline-edit-value-height);
+    padding: var(--inline-edit-value-padding);
+    color: var(--inline-edit-value-color);
+
+    &:hover {
+      border-radius: 6px;
+      outline: 1px solid var(--action-outlinedBorder, #{$color-v4-action-outlined-border});
+      background-color: var(--default-main, #{$color-v4-default-main});
+      cursor: text;
+    }
+
+    &.fu-number{
+      justify-content: flex-end;
+    }
+
+    &.is-readonly {
+      cursor: default;
+
+      &:hover {
+        background-color: transparent;
+        cursor: default;
+      }
+    }
+  }
+
+  .fu-hidden {
+    display: none;
+  }
+
+  .truncate {
+    @extend %truncate;
+  }
+}

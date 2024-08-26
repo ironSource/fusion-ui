@@ -1,0 +1,36 @@
+@if (!(isEditMode$ | async)) {
+    <div class="fu-edit-value-wrapper"
+         [class.fu-read-only]="readOnly"
+         [class.fu-number]="isNumber"
+         (click)="switchToEdit()"
+    >
+        @switch (type) {
+            @case (1) {
+                <span class="fu-edit-value">{{ inputValue | number: pipeOptions }}</span>
+            }
+            @case (2) {
+                <span class="fu-edit-value">{{ inputValue | currency
+                    : currencyPipeParameters?.currencyCode || undefined
+                    : currencyPipeParameters?.display || (currencyPipeParameters ? undefined : '$')
+                    : currencyPipeParameters?.digitsInfo || undefined }}</span>
+            }
+            @case (3) {
+                <span class="fu-edit-value">{{ inputValue | number: pipeOptions }}%</span>
+            }
+            @default{
+                <span class="fu-edit-value">{{ inputValue }}</span>
+            }
+        }
+    </div>
+} @else {
+    <div class="fu-edit-input-wrapper" #inputWrapper>
+        <fusion-input #inputComponent
+                [placeholder]="inputValue"
+                [formControl]="inputControl"
+                [type]="inputType"
+                (keydown.enter)="save()"
+                (keydown.escape)="cancel()"
+        ></fusion-input>
+    </div>
+}
+
