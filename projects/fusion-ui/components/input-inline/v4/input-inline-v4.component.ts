@@ -1,17 +1,6 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    ElementRef,
-    EventEmitter,
-    forwardRef,
-    Input,
-    OnDestroy,
-    OnInit,
-    Output,
-    ViewChild
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FormControl, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BehaviorSubject, fromEvent, Subject, Subscription} from 'rxjs';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline';
@@ -27,14 +16,7 @@ import {takeUntil} from 'rxjs/operators';
     imports: [CommonModule, FormsModule, ReactiveFormsModule, InputComponent],
     templateUrl: './input-inline-v4.component.html',
     styleUrl: './input-inline-v4.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => InputInlineV4Component),
-            multi: true
-        }
-    ]
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InputInlineV4Component implements OnInit, OnDestroy {
     /** @internal */
@@ -78,6 +60,12 @@ export class InputInlineV4Component implements OnInit, OnDestroy {
     @Input() currencyPipeParameters?: CurrencyPipeParameters;
     @Input() pipeOptions?: string;
 
+    @Input() set data(value: FormControl) {
+        this.inputControl = value;
+        this.inputValue = this.inputControl.value;
+        this.disabled = this.inputControl.disabled;
+    }
+
     get inputPrefix(): string {
         if (this.type === InlineInputType.Currency) {
             return this.currencyPipeParameters?.display || '$';
@@ -104,6 +92,8 @@ export class InputInlineV4Component implements OnInit, OnDestroy {
     inputControl = new FormControl();
     /** @internal */
     inputValue = '';
+    /** @internal */
+    disabled = false;
 
     private _type: InlineInputType = InlineInputType.Text;
     private _inputType: InputType = 'text';
@@ -121,15 +111,10 @@ export class InputInlineV4Component implements OnInit, OnDestroy {
         this.onDestroy$.complete();
     }
 
-    switchToEdit() {
-        this.isEditMode$.next(true);
-    }
-
     /** @internal */
     save() {
         if (this.isEditMode$.getValue() && this.inputControl.valid) {
             if (this.inputControl.value.toString() !== this.inputValue.toString()) {
-                this.propagateChange(this.inputControl.value);
                 this.onSave.emit({
                     currentValue: this.inputValue,
                     newValue: this.inputControl.value
@@ -157,6 +142,10 @@ export class InputInlineV4Component implements OnInit, OnDestroy {
     goToEditMode(withValue?: string | number): void {
         this.inputControl.setValue(!isNullOrUndefined(withValue) ? withValue : this.inputValue, {emitEvent: false});
         this.isEditMode$.next(true);
+        this.inputControl.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(value => {
+            console.log('value', value);
+            console.log('>>>', this.inputControl.valid);
+        });
     }
 
     private setEditMode(val: string | number) {
@@ -195,50 +184,4 @@ export class InputInlineV4Component implements OnInit, OnDestroy {
             parentRect.bottom >= event.clientY
         );
     }
-
-    // region ControlValueAccessor
-    /** @internal */
-    writeValue(data: any): void {
-        if (!isNullOrUndefined(data)) {
-            const value: string = data.toString();
-            this.inputValue = value;
-            this.inputControl.setValue(value, {emitEvent: false});
-        } else {
-            this.inputValue = '';
-            this.inputControl.setValue('', {emitEvent: false});
-        }
-    }
-
-    /**
-     * Method to call when the input value has changes.
-     * @internal
-     */
-    propagateChange = (_: string) => {};
-
-    /**
-     * Method to call when the component is touched (when it was is clicked).
-     * @internal
-     */
-    propagateTouched = () => {};
-
-    /** @internal */
-    registerOnChange(fn: any): void {
-        this.propagateChange = fn;
-    }
-
-    /** @internal */
-    registerOnTouched(fn): void {
-        // this.onBlur = fn;
-    }
-
-    /** @internal */
-    setDisabledState?(isDisabled: boolean): void {
-        if (isDisabled) {
-            this.inputControl.disable({emitEvent: false});
-        } else {
-            this.inputControl.enable({emitEvent: false});
-        }
-    }
-
-    // endregion
 }

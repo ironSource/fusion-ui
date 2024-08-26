@@ -2,7 +2,7 @@
     <div class="fu-edit-value-wrapper"
          [class.fu-read-only]="readOnly"
          [class.fu-number]="isNumber"
-         (click)="switchToEdit()"
+         (click)="goToEditMode()"
     >
         @switch (type) {
             @case (1) {
@@ -25,13 +25,13 @@
 } @else {
     <div class="fu-edit-input-wrapper" #inputWrapper>
         <fusion-input #inputComponent
-                [placeholder]="inputValue"
                 [formControl]="inputControl"
                 [type]="inputType"
                 [inlineErrorText]="error"
                 [prefix]="inputPrefix"
                 [suffix]="inputSuffix"
                 [showApply]="true"
+                [disabled]="disabled"
                 (applyButtonClicked)="save()"
                 (keydown.enter)="save()"
                 (keydown.escape)="cancel()"

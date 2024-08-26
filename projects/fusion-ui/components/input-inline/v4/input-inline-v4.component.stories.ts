@@ -1,6 +1,6 @@
 import {componentWrapperDecorator, Meta, moduleMetadata, StoryObj} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../stories/environments/environment';
 import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline';
@@ -9,7 +9,7 @@ import {InputInlineV4Component} from './input-inline-v4.component';
 const BASE_TEMPLATE = `
 <fusion-input-inline
     [type]="type"
-    [formControl]="formControl"
+    [data]="formControl"
     [currencyPipeParameters]="currencyPipeParameters"
 ></fusion-input-inline>`;
 
@@ -38,7 +38,7 @@ export const Basic: Story = {
     render: args => ({
         props: {
             ...args,
-            formControl: new FormControl('Abdullah')
+            formControl: new FormControl('Abdullah', [Validators.required, Validators.minLength(3)])
         },
         template: BASE_TEMPLATE
     })
@@ -48,7 +48,7 @@ export const Numeric: Story = {
     render: args => ({
         props: {
             ...args,
-            formControl: new FormControl(135),
+            formControl: new FormControl(135, [Validators.min(100), Validators.max(200)]),
             type: InlineInputType.Number
         },
         template: BASE_TEMPLATE
