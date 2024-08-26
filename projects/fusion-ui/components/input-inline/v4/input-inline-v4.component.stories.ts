@@ -10,7 +10,11 @@ const BASE_TEMPLATE = `
 <fusion-input-inline
     [type]="type"
     [data]="formControl"
+    [readOnly]="readOnly"
+    [pending]="pending"
     [currencyPipeParameters]="currencyPipeParameters"
+    (onSave)="onSave($event)"
+    (onCancel)="onCancel($event)"
 ></fusion-input-inline>`;
 
 export default {
@@ -72,6 +76,38 @@ export const Percent: Story = {
             ...args,
             formControl: new FormControl(5),
             type: InlineInputType.Percent
+        },
+        template: BASE_TEMPLATE
+    })
+};
+
+export const Readonly: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            readOnly: true,
+            formControl: new FormControl('Abdullah')
+        },
+        template: BASE_TEMPLATE
+    })
+};
+
+export const Disabled: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            formControl: new FormControl({value: 'Abdullah', disabled: true})
+        },
+        template: BASE_TEMPLATE
+    })
+};
+
+export const Pending: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            pending: true,
+            formControl: new FormControl('Abdullah')
         },
         template: BASE_TEMPLATE
     })

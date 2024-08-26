@@ -1,6 +1,6 @@
 @if (!(isEditMode$ | async)) {
     <div class="fu-edit-value-wrapper"
-         [class.fu-read-only]="readOnly"
+         [class.fu-read-only]="readOnly || disabled"
          [class.fu-number]="isNumber"
          (click)="goToEditMode()"
     >
@@ -31,12 +31,19 @@
                 [prefix]="inputPrefix"
                 [suffix]="inputSuffix"
                 [variant]="error ? 'error' : null"
-                [showApply]="!error"
+                [showApply]="!error && !disabled && !pending"
                 [disabled]="disabled"
                 (applyButtonClicked)="save()"
                 (keydown.enter)="save()"
                 (keydown.escape)="cancel()"
         ></fusion-input>
+        @if (pending){
+            <fusion-loader
+                    [style.width]="'20px'"
+                    [style.height]="'20px'"
+                    strokeWidth="1"
+            ></fusion-loader>
+        }
     </div>
 }
 

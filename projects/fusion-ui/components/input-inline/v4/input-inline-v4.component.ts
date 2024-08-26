@@ -9,12 +9,13 @@ import {CurrencyPipeParameters} from '@ironsource/fusion-ui/components/table';
 import {InputComponent} from '@ironsource/fusion-ui/components/input/v4';
 import {takeUntil} from 'rxjs/operators';
 import {INPUT_INLINE_ERROR_MESSAGES_MAP} from './error-messages.config';
+import {LoaderComponent} from '@ironsource/fusion-ui/components/loader/v4';
 
 @Component({
     selector: 'fusion-input-inline',
     standalone: true,
     host: {class: 'fusion-v4'},
-    imports: [CommonModule, FormsModule, ReactiveFormsModule, InputComponent],
+    imports: [CommonModule, FormsModule, ReactiveFormsModule, InputComponent, LoaderComponent],
     templateUrl: './input-inline-v4.component.html',
     styleUrl: './input-inline-v4.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -49,12 +50,23 @@ export class InputInlineV4Component implements OnInit, OnDestroy {
     }
 
     @Input() readOnly: boolean = false;
-    @Input() set loading(value: boolean) {
+
+    @Input() set pending(value: boolean) {
         if (value) {
             this.inputControl.disable({emitEvent: false});
+            this.isEditMode$.next(true);
+            this._pending = true;
         } else {
-            this.inputControl.enable({emitEvent: false});
+            if (!this.disabled) {
+                this.inputControl.enable({emitEvent: false});
+            }
+            this._pending = false;
+            this.isEditMode$.next(false);
         }
+    }
+
+    get pending(): boolean {
+        return this._pending;
     }
 
     @Input() currencyPipeParameters?: CurrencyPipeParameters;
@@ -106,6 +118,7 @@ export class InputInlineV4Component implements OnInit, OnDestroy {
     private clickOutSideSubscription: Subscription;
     private onDestroy$ = new Subject<void>();
     private stayInEditMode = false;
+    private _pending = false;
     private _errorMapping: {[key: string]: string} = INPUT_INLINE_ERROR_MESSAGES_MAP;
 
     ngOnInit() {
@@ -137,7 +150,7 @@ export class InputInlineV4Component implements OnInit, OnDestroy {
 
     /** @internal */
     cancel() {
-        if (this.isEditMode$.getValue() && !this.loading) {
+        if (this.isEditMode$.getValue() && !this.pending) {
             if (!this.stayInEditMode) {
                 this.inputControl.setValue(this.inputValue, {emitEvent: false});
                 this.isEditMode$.next(false);
@@ -150,15 +163,16 @@ export class InputInlineV4Component implements OnInit, OnDestroy {
 
     /** @internal */
     goToEditMode(withValue?: string | number): void {
-        this.inputControl.setValue(!isNullOrUndefined(withValue) ? withValue : this.inputValue, {emitEvent: false});
-        this.isEditMode$.next(true);
+        if (!this.disabled && !this.readOnly) {
+            this.inputControl.setValue(!isNullOrUndefined(withValue) ? withValue : this.inputValue, {emitEvent: false});
+            this.isEditMode$.next(true);
+        }
     }
 
     private getErrorMessage(inputError: {[key: string]: any}): string {
         if (inputError) {
             const errorKey = Object.keys(inputError)[0];
             let errorMessage = `Error: ${errorKey}`;
-            console.log('>>', inputError);
             if (this._errorMapping[errorKey]) {
                 errorMessage = this._errorMapping[errorKey];
                 Object.keys(inputError[errorKey]).forEach((find: string) => {

@@ -35,7 +35,7 @@
                 (onSave)="onEndEdit($event)"
                 (onCancel)="onCancel()"
                 [formControl]="data"
-                [loading]="isInRequest$ | async"
+                [pending]="isInRequest$ | async"
                 [error]="inputError$ | async"
                 [readOnly]="isReadOnly"
                 [currencyPipeParameters]="column?.currencyPipeParameters"

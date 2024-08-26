@@ -27,10 +27,10 @@
       justify-content: flex-end;
     }
 
-    &.is-readonly {
+    &.fu-read-only {
       cursor: default;
-
       &:hover {
+        outline: none;
         background-color: transparent;
         cursor: default;
       }
@@ -43,5 +43,13 @@
 
   .truncate {
     @extend %truncate;
+  }
+  .fu-edit-input-wrapper{
+    position: relative;
+    fusion-loader{
+      position: absolute;
+      right: 5px;
+      top: 3px;
+    }
   }
 }
