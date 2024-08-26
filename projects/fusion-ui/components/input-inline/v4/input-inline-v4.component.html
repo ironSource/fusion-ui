@@ -29,6 +29,10 @@
                 [formControl]="inputControl"
                 [type]="inputType"
                 [inlineErrorText]="error"
+                [prefix]="inputPrefix"
+                [suffix]="inputSuffix"
+                [showApply]="true"
+                (applyButtonClicked)="save()"
                 (keydown.enter)="save()"
                 (keydown.escape)="cancel()"
         ></fusion-input>

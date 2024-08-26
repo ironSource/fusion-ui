@@ -40,7 +40,6 @@
                     [type]="column.inputType"
                     (onSave)="onEndEdit($event)"
                     (onCancel)="onCancel()"
-                    [textClass]="customClass && customClass[column.key]"
                     [formControl]="data"
                     [loading]="isInRequest$ | async"
                     [error]="inputError$ | async"
@@ -86,7 +85,7 @@
         <div class="truncate"
              [ngClass]="column.align || 'right'"
              [style.width]="innerElementWidth"
-             fusionTooltip="{{ $any(data) | number: column.pipeOptions }} %"
+             fusionTooltip="{{ $any(data) | number: column.pipeOptions }}%"
         >
             {{ !isNull(data) ? ($any(data) | number: column.pipeOptions) : (data | notAvailable: notAvailableText) }}
             {{ !isNullOrUndefined(data) ? '%' : null }}

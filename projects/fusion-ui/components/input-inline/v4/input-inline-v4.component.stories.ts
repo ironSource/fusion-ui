@@ -1,8 +1,10 @@
 import {componentWrapperDecorator, Meta, moduleMetadata, StoryObj} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
-import {InputInlineV4Component} from './input-inline-v4.component';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {SvgModule} from '@ironsource/fusion-ui/components/svg';
+import {environment} from '../../../../../stories/environments/environment';
 import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline';
+import {InputInlineV4Component} from './input-inline-v4.component';
 
 const BASE_TEMPLATE = `
 <fusion-input-inline
@@ -17,7 +19,7 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, FormsModule, ReactiveFormsModule]
+            imports: [CommonModule, FormsModule, ReactiveFormsModule, SvgModule.forRoot({assetsPath: environment.assetsPath})]
         }),
         componentWrapperDecorator(story => `<div style="width: 150px;">${story}</div>`)
     ],

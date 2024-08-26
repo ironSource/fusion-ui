@@ -17,13 +17,12 @@ import {BehaviorSubject} from 'rxjs';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {isBoolean, isNull, isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {TableService} from '@ironsource/fusion-ui/components/table/common/services';
-import {InputInlineComponent} from '@ironsource/fusion-ui/components/input-inline';
+import {InputInlineComponent} from '@ironsource/fusion-ui/components/input-inline/v4';
 import {AdvancedInputInline} from '@ironsource/fusion-ui/components/input-inline/common/base';
 import {
     CELL_PADDING,
     DEFAULT_REMOVE_ICON_V3,
     DEFAULT_REMOVE_TOOLTIP_TEXT,
-    DEFAULT_REMOVE_TOOLTIP_WIDTH,
     TABLE_OPTIONS_TOKEN,
     TableModuleOptions,
     CellPosition,

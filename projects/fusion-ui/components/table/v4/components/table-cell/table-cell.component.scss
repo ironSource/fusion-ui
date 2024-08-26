@@ -1,17 +1,6 @@
 @import '../../../../../src/style/scss/v4/vars/vars';
 @import '../../../../../src/style/scss/v4/mixins/mixins';
 
-/*
-$v3-rowTotalsHeight: 32px;
-$v3-rowSmallHeight: 32px;
-$v3-rowDefaultHeight: 48px;
-$v3-rowBigHeight: 48px;
-$v3-bodyBorder: 1px solid $fu-light-400;
-$v3-cellColor: $fu-black-500;
-$v3-cellActionIconSize: 16px;
-*/
-
-
 :host {
     position: relative;
     @extend %font-v4-body-1;

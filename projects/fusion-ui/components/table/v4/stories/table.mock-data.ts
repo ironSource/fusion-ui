@@ -536,20 +536,16 @@ export const TABLE_EDITABLE_COLUMNS_CONFIG: TableColumn[] = [
             required: {errorMessageKey: 'required'}
         }
     }
-
-    /*
-        {key: 'firstName', title: 'First name'},
-        {
-            key: 'lastName',
-            title: 'Last name',
-            type: TableColumnTypeEnum.InputEdit,
-            inputType: InlineInputType.Text,
-            customErrorMapping: {
-                required: {errorMessageKey: 'required'}
-            }
-        },
-        {key: 'address', title: 'Address'},
-        {key: 'state', title: 'State'}
-    */
 ];
+
+export const ROWS_EDITABLE_DATA = ROWS_NUMBERS_DATA.map((row, idx) => {
+    const data = {
+        planName: new FormControl(row.planName, [Validators.required]),
+        lastUpdate: row.lastUpdate,
+        price: new FormControl(row.price, [Validators.required]),
+        amount: new FormControl(row.amount, [Validators.required]),
+        discount: new FormControl(row.discount, [Validators.required])
+    };
+    return data;
+});
 // endregion

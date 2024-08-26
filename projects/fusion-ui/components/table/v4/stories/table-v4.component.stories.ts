@@ -7,7 +7,7 @@ import {TableV4Component} from '../table-v4.component';
 import {
     ROWS_DEFAULT_DATA,
     ROWS_DEFAULT_DATA_WITH_ID,
-    ROWS_DEFAULT_EDITABLE_DATA,
+    ROWS_EDITABLE_DATA,
     ROWS_HORIZONTAL_DATA_WITH,
     ROWS_NUMBERS_DATA,
     ROWS_SELECTABLE_DATA,
@@ -125,7 +125,7 @@ export const InlineEditing: Story = {
         props: {
             ...args,
             columns: TABLE_EDITABLE_COLUMNS_CONFIG,
-            rows: ROWS_NUMBERS_DATA,
+            rows: ROWS_EDITABLE_DATA,
             rowModelChange: actionsData.rowModelChange
         },
         template: TEMPLATE_TABLE_HOLDER

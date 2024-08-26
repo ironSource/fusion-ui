@@ -78,6 +78,19 @@ export class InputInlineV4Component implements OnInit, OnDestroy {
     @Input() currencyPipeParameters?: CurrencyPipeParameters;
     @Input() pipeOptions?: string;
 
+    get inputPrefix(): string {
+        if (this.type === InlineInputType.Currency) {
+            return this.currencyPipeParameters?.display || '$';
+        }
+        return null;
+    }
+    get inputSuffix(): string {
+        if (this.type === InlineInputType.Percent) {
+            return '%';
+        }
+        return null;
+    }
+
     // eslint-disable-next-line
     @Output() onSave = new EventEmitter();
     // eslint-disable-next-line
