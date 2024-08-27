@@ -250,7 +250,7 @@ export class TableCellComponent implements OnInit, OnChanges {
                             if (stayInEditMode) {
                                 inlineInputComponent.setEditMode$.next(newValue);
                             } else {
-                                this.inputError$.next(error && error.message);
+                                this.inputError$.next(error?.message);
                             }
                             this.initInputData = prevValue;
                         } else if (this.initInputData === '') {

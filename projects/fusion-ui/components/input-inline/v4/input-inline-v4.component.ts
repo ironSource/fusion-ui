@@ -144,6 +144,7 @@ export class InputInlineV4Component implements OnInit, OnDestroy {
                     newValue: this.inputControl.value
                 });
                 this.isEditMode$.next(false);
+                this.inputValue = this.inputControl.value;
             } else {
                 this.cancel();
             }
