@@ -47,6 +47,13 @@ export const Basic: Story = {
         template: BASE_TEMPLATE
     })
 };
+Basic.parameters = {
+    docs: {
+        description: {
+            story: `This example has input validations: **Required, Minimum length 3**`
+        }
+    }
+};
 
 export const Numeric: Story = {
     render: args => ({
@@ -58,6 +65,13 @@ export const Numeric: Story = {
         template: BASE_TEMPLATE
     })
 };
+Numeric.parameters = {
+    docs: {
+        description: {
+            story: `This example has input validations: **Required, Min 100, Max 200**`
+        }
+    }
+};
 
 export const Currency: Story = {
     render: args => ({
@@ -68,6 +82,13 @@ export const Currency: Story = {
         },
         template: BASE_TEMPLATE
     })
+};
+Currency.parameters = {
+    docs: {
+        description: {
+            story: `This example has input validations: **Required**`
+        }
+    }
 };
 
 export const Percent: Story = {
