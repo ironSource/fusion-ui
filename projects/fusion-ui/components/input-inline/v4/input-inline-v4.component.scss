@@ -8,6 +8,8 @@
   --inline-edit-value-padding: 0 8px;
   --inline-edit-value-color: var(--table-text-color, #{$color-v4-text-primary});
 
+  width: var(--inline-edit-width, 100%);
+
   .fu-edit-value-wrapper {
     display: flex;
     align-items: center;
@@ -16,7 +18,7 @@
     padding: var(--inline-edit-value-padding);
     color: var(--inline-edit-value-color);
 
-    &:hover {
+    &:hover:not(.fu-read-only) {
       border-radius: 6px;
       outline: 1px solid var(--action-outlinedBorder, #{$color-v4-action-outlined-border});
       background-color: var(--default-main, #{$color-v4-default-main});
@@ -29,11 +31,6 @@
 
     &.fu-read-only {
       cursor: default;
-      &:hover {
-        outline: none;
-        background-color: transparent;
-        cursor: default;
-      }
     }
   }
 
@@ -51,5 +48,14 @@
       right: 5px;
       top: 3px;
     }
+  }
+}
+
+:host-context(tr:hover){
+  .fu-edit-value-wrapper:not(.fu-read-only) {
+    border-radius: 6px;
+    outline: 1px solid var(--action-outlinedBorder, #{$color-v4-action-outlined-border});
+    background-color: var(--default-main, #{$color-v4-default-main});
+    cursor: text;
   }
 }

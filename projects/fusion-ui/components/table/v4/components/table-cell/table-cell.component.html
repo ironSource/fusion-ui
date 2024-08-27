@@ -34,7 +34,7 @@
                 [type]="column.inputType"
                 (onSave)="onEndEdit($event)"
                 (onCancel)="onCancel()"
-                [formControl]="data"
+                [data]="data"
                 [pending]="isInRequest$ | async"
                 [error]="inputError$ | async"
                 [readOnly]="isReadOnly"

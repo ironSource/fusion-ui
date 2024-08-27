@@ -3,6 +3,8 @@ import {isNullOrUndefined, isNumber, isUndefined} from '@ironsource/fusion-ui/ut
 import {DomSanitizer} from '@angular/platform-browser';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {
+    DEFAULT_EXPANDABLE_LEVEL,
+    MAXIMUM_EXPANDABLE_LEVEL,
     TableCellAlign,
     TableColumn,
     TableColumnTypeEnum,
@@ -12,9 +14,9 @@ import {
     TableRowMetaData,
     TableRowsExpandableOptions
 } from '@ironsource/fusion-ui/components/table/common/entities';
-import {DEFAULT_EXPANDABLE_LEVEL, MAXIMUM_EXPANDABLE_LEVEL} from '@ironsource/fusion-ui/components/table/common/entities';
 import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
+import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline';
 
 @Injectable()
 export class TableService {
@@ -306,7 +308,10 @@ export class TableService {
     }
 
     private getCellAlignByColumnType(column: TableColumn): TableCellAlign | null {
-        return this.isTypeCurrency(column) || this.isTypeNumber(column) || this.isTypePercent(column) ? 'right' : null;
+        const inputTypeAlignRight = this.isTypeInputEdit(column) && column.inputType !== InlineInputType.Text;
+        return this.isTypeCurrency(column) || this.isTypeNumber(column) || this.isTypePercent(column) || inputTypeAlignRight
+            ? 'right'
+            : null;
     }
 
     private getRowspanColumns(row: any, columnsKeys: string[]): {[key: string]: number} {

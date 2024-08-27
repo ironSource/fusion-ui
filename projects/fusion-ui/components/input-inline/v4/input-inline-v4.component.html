@@ -33,6 +33,7 @@
                 [variant]="error ? 'error' : null"
                 [showApply]="!error && !disabled && !pending"
                 [disabled]="disabled"
+                [hideNumberArrows]="hideNumberArrows"
                 (applyButtonClicked)="save()"
                 (keydown.enter)="save()"
                 (keydown.escape)="cancel()"

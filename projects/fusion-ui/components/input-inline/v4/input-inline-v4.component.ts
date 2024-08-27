@@ -97,6 +97,8 @@ export class InputInlineV4Component implements OnInit, OnDestroy {
             this._errorMapping = value;
         }
     }
+    @Input() hideNumberArrows = true;
+
     // eslint-disable-next-line
     @Output() onSave = new EventEmitter();
     // eslint-disable-next-line
