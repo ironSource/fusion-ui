@@ -54,17 +54,16 @@ export class InputInlineV4Component implements OnInit, OnDestroy {
     @Input() set pending(value: boolean) {
         if (value) {
             this.inputControl.disable({emitEvent: false});
-            this.isEditMode$.next(true);
             this._pending = true;
         } else {
             if (!this.disabled) {
                 this.inputControl.enable({emitEvent: false});
             }
             this._pending = false;
-            this.isEditMode$.next(false);
         }
     }
 
+    // todo: check with Moran if we need show loader
     get pending(): boolean {
         return this._pending;
     }
@@ -144,6 +143,7 @@ export class InputInlineV4Component implements OnInit, OnDestroy {
                     currentValue: this.inputValue,
                     newValue: this.inputControl.value
                 });
+                this.isEditMode$.next(false);
             } else {
                 this.cancel();
             }

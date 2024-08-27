@@ -81,10 +81,6 @@ export class TableCellComponent implements OnInit, OnChanges {
 
     @HostBinding('class.is-inline-removable') isInlineRemovable = false;
 
-    @HostBinding('class.is-editable') get isCellEditable(): boolean {
-        return this.tableService.isTypeInputEdit(this.column);
-    }
-
     @HostBinding('class.sticky-left') get sticky(): boolean {
         return this.column.sticky;
     }

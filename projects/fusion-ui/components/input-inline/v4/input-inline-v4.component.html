@@ -1,6 +1,7 @@
 @if (!(isEditMode$ | async)) {
     <div class="fu-edit-value-wrapper"
          [class.fu-read-only]="readOnly || disabled"
+         [class.fu-pending]="pending"
          [class.fu-number]="isNumber"
          (click)="goToEditMode()"
     >

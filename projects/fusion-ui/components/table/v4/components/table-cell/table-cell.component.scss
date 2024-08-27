@@ -35,6 +35,7 @@
 
     }
 
+    // todo: to review and remove
     /*    padding: 0 16px;
         height:$v3-rowDefaultHeight;
         box-sizing: border-box;
@@ -105,10 +106,6 @@
             top: 8px;
         }
 
-        &.is-editable{
-            padding: 0 8px;
-        }
-
         .loader-holder {
             position: relative;
             top: 9px;
@@ -140,6 +137,11 @@
         }*/
 }
 
+:host-context(.is-row-in-request) {
+    opacity: var(--table-row-loading-opacity, 0.7);
+}
+
+// todo: to review and remove
 /*
 :host-context(.is-row-height-big) {
     height: $v3-rowBigHeight;

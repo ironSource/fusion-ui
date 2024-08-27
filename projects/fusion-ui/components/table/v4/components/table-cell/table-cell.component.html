@@ -32,13 +32,13 @@
             <fusion-input-inline
                 #inlineInput
                 [type]="column.inputType"
-                (onSave)="onEndEdit($event)"
-                (onCancel)="onCancel()"
                 [data]="data"
                 [pending]="isInRequest$ | async"
                 [error]="inputError$ | async"
                 [readOnly]="isReadOnly"
                 [currencyPipeParameters]="column?.currencyPipeParameters"
+                (onSave)="onEndEdit($event)"
+                (onCancel)="onCancel()"
             ></fusion-input-inline>
         }
     } @else if (tableService.isTypeComponent(column)) {
