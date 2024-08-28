@@ -10,10 +10,11 @@
             [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.CELL+'-r'+rowIndex+'-c'+idx)"
         >
             @if(isLast && showExpandIcon()){
-                <fusion-icon class="icon-expand"
-                             [name]="expandArrowIconName"
-                             (click)="expandRow.emit({rowIndex: rowIndex, row: row, isExpanded: !isExpanded})"
-                ></fusion-icon>
+                <fusion-icon-button
+                        [iconName]="expandArrowIconName"
+                        [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.EXPAND_ICON_BUTTON+'-r'+rowIndex+'-c'+idx)"
+                        (click)="expandRow.emit({rowIndex: rowIndex, row: row, isExpanded: !isExpanded})"
+                ></fusion-icon-button>
             }
         </td>
     }

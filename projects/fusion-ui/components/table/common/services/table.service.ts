@@ -139,6 +139,9 @@ export class TableService {
                 style['text-align'] = col.headerAlign;
             }
         }
+        if (col.width) {
+            style.flex = `0 0 ${col.width}`;
+        }
         return style;
     }
 

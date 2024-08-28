@@ -29,6 +29,23 @@
         background-color: var(--table-row-hover-background-color);
     }
 
+
+    // region Expand cell in row
+    td {
+        &.expand-cell {
+            display: flex;
+            flex: 0 0 var(--table-expand-cell-width);
+            align-items: center;
+            justify-content: center;
+            border-bottom: var(--table-border);
+        }
+    }
+
+    &:last-of-type td.expand-cell{
+        border-bottom: none;
+    }
+    // endregion
+
 /*
     &:hover,
     &.fu-hovered, //for rowspan rows

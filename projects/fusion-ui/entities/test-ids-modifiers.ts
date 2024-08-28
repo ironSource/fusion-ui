@@ -232,6 +232,7 @@ export enum TableTestIdModifiers {
     COLUMN_SORT_DOWN = 'table-column-sort-down-c',
     COLUMN_HEADER_SELECT_ALL = 'table-header-select-all',
     CELL = 'table-cell',
+    EXPAND_ICON_BUTTON = 'table-expand-icon-button',
 
     BUTTON_GO_TOP = 'table-button-go-top'
 }

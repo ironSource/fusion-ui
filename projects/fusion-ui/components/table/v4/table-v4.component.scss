@@ -39,6 +39,10 @@
   --table-row-cell-padding: 0 16px;
   --table-row-cell-gap: 4px;
 
+  --table-expand-icon-color: var(--action-active, #{$color-v4-action-active});
+  --table-expand-icon-size: 20px;
+  --table-expand-cell-width: 46px;
+
   --table-row-hover-background-color: var(--background-paper-elevation-1, #{$color-v4-background-paper-elevation-1});
   --table-odd-row-background-color: #{$color-v4-common-white};
   --table-even-row-background-color: #{$color-v4-common-white};
@@ -163,6 +167,11 @@
 
             &.is-checkbox-holder {
               flex: auto 0 0;
+              justify-content: center;
+            }
+
+            &.expand-column {
+              flex: 0 0 var(--table-expand-cell-width);
               justify-content: center;
             }
           }

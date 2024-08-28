@@ -38,7 +38,9 @@
                     <!-- region SubHeader-->
                         @if (subHeader.length) {
                             <tr>
-                                <!--<ng-container *ngIf="!!options?.rowsExpandableOptions" [ngTemplateOutlet]="headerExpandColumn" [ngTemplateOutletContext]="{$implicit: true}"></ng-container>-->
+                                @if(!!options?.rowsExpandableOptions){
+                                   <ng-container [ngTemplateOutlet]="headerExpandColumn" [ngTemplateOutletContext]="{$implicit: true}"></ng-container>
+                                }
                                 @for (subheader of subHeader; track subHeader; let isFirst = $first) {
                                     <td class="fu-header-group"
                                         [class.fu-border-left]="!isFirst"
@@ -52,14 +54,15 @@
                     <!-- endregion SubHeader-->
                     <!-- region Header-->
                     <tr [ngStyle]="!!options.rowsOptions && !!options.rowsOptions.headerRow ? options.rowsOptions.headerRow.style : null">
-                        <!--<ng-container *ngIf="!!options?.rowsExpandableOptions" [ngTemplateOutlet]="headerExpandColumn"></ng-container>-->
+                        @if(!!options?.rowsExpandableOptions){
+                            <ng-container [ngTemplateOutlet]="headerExpandColumn"></ng-container>
+                        }
                         @for (column of columns; track trackByFunc; let isLast = $last; let isFirst = $first; let idx = $index) {
                             <td
                                     [attr.data-col-key]="column.key"
                                     [ngClass]="tableService.getColumnClasses(column, true)"
                                     [ngStyle]="tableService.getColumnStyle(column, 4)"
                                     [style.width]="tableService.setWidth(isLast, column.width)"
-                                    [attr.colspan]="isFirst ? (tableService.expandLevels + 1) : undefined"
                                     [style.top.px]="options?.stickyHeaderTopOffset"
                                     [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.COLUMN_HEADER+idx)"
                             >
@@ -175,3 +178,10 @@
     </div>
 }
 
+<ng-template #headerExpandColumn let-isSubHeader>
+    <td class="expand-column"
+        [class.fu-header-group]="isSubHeader"
+        [class.sticky-left]="options?.rowsExpandableOptions?.sticky"
+        [style.top.px]="options?.stickyHeaderTopOffset"
+    ><span></span></td>
+</ng-template>

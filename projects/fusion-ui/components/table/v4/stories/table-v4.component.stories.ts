@@ -5,6 +5,8 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../../stories/environments/environment';
 import {TableV4Component} from '../table-v4.component';
 import {
+    EXPAND_COLUMNS_CONFIG,
+    EXPAND_ROWS_DEFAULT_DATA,
     ROWS_DEFAULT_DATA,
     ROWS_DEFAULT_DATA_WITH_ID,
     ROWS_EDITABLE_DATA,
@@ -150,9 +152,7 @@ export const StickyHeader: Story = {
         template: TEMPLATE_TABLE_HOLDER
     })
 };
-StickyHeader.decorators = [
-    componentWrapperDecorator(story => `<div style="height: 600px; border: solid 0px red; display: block">${story}</div>`)
-];
+StickyHeader.decorators = [componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)];
 
 export const BothVerticalAndHorizontalScroll: Story = {
     render: args => ({
@@ -174,7 +174,7 @@ export const BothVerticalAndHorizontalScroll: Story = {
     })
 };
 BothVerticalAndHorizontalScroll.decorators = [
-    componentWrapperDecorator(story => `<div style="height: 600px; border: solid 0px red; display: block">${story}</div>`)
+    componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)
 ];
 
 export const InfiniteScrolling: Story = {
@@ -192,9 +192,28 @@ export const InfiniteScrolling: Story = {
         template: TEMPLATE_TABLE_HOLDER
     })
 };
-InfiniteScrolling.decorators = [
-    componentWrapperDecorator(story => `<div style="height: 600px; border: solid 0px red; display: block">${story}</div>`)
-];
+InfiniteScrolling.decorators = [componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)];
+
+export const ExpandRows: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            columns: EXPAND_COLUMNS_CONFIG,
+            rows: EXPAND_ROWS_DEFAULT_DATA.slice(0, 5),
+            options: {
+                stickyHeader: true,
+                rowsExpandableOptions: {
+                    key: 'children',
+                    columns: EXPAND_COLUMNS_CONFIG
+                }
+            }
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+/*ExpandRows.decorators = [
+    componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)
+];*/
 
 export const SkeletonLoading: Story = {};
 SkeletonLoading.args = {

@@ -23,12 +23,13 @@ import {TableTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 import {TableCellComponent} from '../table-cell/table-cell.component';
 import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
+import {IconButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
 
 @Component({
     // eslint-disable-next-line
     selector: '[fusionTableRow]',
     standalone: true,
-    imports: [CommonModule, GenericPipe, IconModule, TooltipDirective, TableCellComponent],
+    imports: [CommonModule, GenericPipe, IconModule, TooltipDirective, TableCellComponent, IconButtonComponent],
     templateUrl: './table-row.component.html',
     styleUrls: ['./table-row.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -121,7 +122,7 @@ export class TableRowComponent implements OnInit, OnChanges {
 
     ngOnInit(): void {
         this.dataRowIndex = this.rowIndex;
-        this.expandArrowIconName = {iconName: 'arrow-right', iconVersion: 'v3'};
+        this.expandArrowIconName = 'ph/caret-right';
         if (this.isRowTotal) {
             Object.assign(this.row, {isRowTotal: true});
         }
