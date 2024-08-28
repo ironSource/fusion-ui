@@ -5,7 +5,7 @@ import {FormControl, Validators} from '@angular/forms';
 // region default data
 export const TABLE_DEFAULT_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'firstName', title: 'First name'},
-    {key: 'lastName', title: 'Last name'},
+    {key: 'lastName', title: 'Last name', width: '150px'},
     {key: 'address', title: 'Address'},
     {key: 'state', title: 'State'}
 ];
@@ -37,7 +37,7 @@ export const ROWS_DEFAULT_DATA = [
     {
         id: 2,
         firstName: 'Ada',
-        lastName: 'McLaughlin',
+        lastName: 'McLaughlin lorem ipsum dolor sit amet consectetur adipiscing elit',
         address: '841 Chanelle Canyon',
         state: 'Arkansas'
     },

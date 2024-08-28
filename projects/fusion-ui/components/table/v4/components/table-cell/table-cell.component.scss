@@ -32,6 +32,9 @@
             text-align: center;
             height: 14px;
         }
+        &.truncate{
+            @extend %truncate-flex-child;
+        }
 
     }
 

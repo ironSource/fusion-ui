@@ -1,6 +1,6 @@
 @if ((isRowTotal && tableService.isInTotalTypeString(column)) || tableService.isTypeString(column)) {
     <!--String Cell-->
-    <div class="truncate centerVertical" [ngClass]="column.align" [style.width]="innerElementWidth"
+    <div class="truncate" [ngClass]="column.align" [style.width]="innerElementWidth"
          [fusionTooltip]="cellStringData">
         {{ cellStringData | notAvailable: notAvailableText }}
     </div>
