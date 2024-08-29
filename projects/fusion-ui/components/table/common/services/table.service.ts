@@ -126,21 +126,10 @@ export class TableService {
         return this.selectedRows.length && rows.length !== this.selectedRows.length;
     }
 
-    getColumnStyle(col: TableColumn, componentVersion?: number): any {
+    getColumnStyle(col: TableColumn): any {
         const style = col.style || {};
-        const cellAlign = col.headerAlign ?? this.getCellAlignByColumnType(col);
         if (col.stickyLeftMargin) {
             style.left = col.stickyLeftMargin;
-        }
-        if (cellAlign) {
-            if (componentVersion === 4) {
-                style['justify-content'] = cellAlign === 'right' ? 'flex-end' : cellAlign === 'left' ? 'flex-start' : 'center';
-            } else {
-                style['text-align'] = col.headerAlign;
-            }
-        }
-        if (col.width) {
-            style.flex = `0 0 ${col.width}`;
         }
         return style;
     }
@@ -310,7 +299,7 @@ export class TableService {
         return this.rowsMetadata[row['_rowId']]?.maxRowspanInColumn ?? 0;
     }
 
-    private getCellAlignByColumnType(column: TableColumn): TableCellAlign | null {
+    getCellAlignByColumnType(column: TableColumn): TableCellAlign | null {
         const inputTypeAlignRight = this.isTypeInputEdit(column) && column.inputType !== InlineInputType.Text;
         return this.isTypeCurrency(column) || this.isTypeNumber(column) || this.isTypePercent(column) || inputTypeAlignRight
             ? 'right'

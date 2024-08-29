@@ -211,9 +211,6 @@ export const ExpandRows: Story = {
         template: TEMPLATE_TABLE_HOLDER
     })
 };
-/*ExpandRows.decorators = [
-    componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)
-];*/
 
 export const SkeletonLoading: Story = {};
 SkeletonLoading.args = {

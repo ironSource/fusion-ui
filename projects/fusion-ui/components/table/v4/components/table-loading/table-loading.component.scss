@@ -1,13 +1,7 @@
 :host {
   tr {
-    display: flex;
-    flex-direction: row;
     .fu-table-cell-loading {
-      display: flex;
-      align-items: center;
-      flex: 1 0 0;
       height: var(--table-row-height);
-      gap: var(--table-row-cell-gap);
       padding: var(--table-row-cell-padding);
       border-bottom: var(--table-border);
 

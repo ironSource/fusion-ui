@@ -2,153 +2,154 @@
 @import '../../../../../src/style/scss/v4/mixins/mixins';
 
 %left-sticky {
-    content: '';
-    position: absolute;
-    top: 0;
-    height: 100%;
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 100%;
 }
 
 :host {
-    display: flex;
-    flex-direction: row;
+  // region zebra
+  &:nth-child(odd) {
+    background-color: var(--table-odd-row-background-color);
+  }
 
-    // region zebra
-    &:nth-child(odd){
-        background-color: var(--table-odd-row-background-color);
+  &:nth-child(even) {
+    background-color: var(--table-even-row-background-color);
+  }
+
+  // endregion
+
+  &:last-of-type td {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background-color: var(--table-row-hover-background-color);
+  }
+
+  // region Expand cell in row
+  td.expand-cell {
+    width: var(--table-expand-cell-width);
+    border-bottom: var(--table-border);
+    vertical-align: middle;
+    & > div {
+        padding-right: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        width: 100%;
     }
-    &:nth-child(even){
-        background-color: var(--table-even-row-background-color);
-    }
-    // endregion
+  }
+  &:last-of-type td.expand-cell {
+    border-bottom: none;
+  }
 
-    &:last-of-type td{
-        border-bottom: none;
-    }
+  // endregion
 
-    &:hover{
-        background-color: var(--table-row-hover-background-color);
-    }
+  /*
+      &:hover,
+      &.fu-hovered, //for rowspan rows
+      &:has(.fu-button-holder.fu-row-menu-shown){
+          td {
+              background-color: $fu-light-50;
+              &.inner-row,
+              &.sticky-left{
+                  background-color: $fu-light-50;
+              }
+          }
+      }
 
+      &.is-row-in-request,
+      &.is-row-disabled {
+          td {
+              position: relative;
+              &::after{
+                  content: '';
+                  background-color: $White;
+                  width: 100%;
+                  height: 100%;
+                  top: 0;
+                  left: 0;
+                  position: absolute;
+                  opacity: 0.3;
+              }
+          }
+      }
 
-    // region Expand cell in row
-    td {
-        &.expand-cell {
-            display: flex;
-            flex: 0 0 var(--table-expand-cell-width);
-            align-items: center;
-            justify-content: center;
-            border-bottom: var(--table-border);
-        }
-    }
+      // todo-shai: commented by request from Shai Keren
+      !*&.is-row-selected,*!
+      &.is-row-expanded{
+          //background-color: $fu-light-200;
+      }
 
-    &:last-of-type td.expand-cell{
-        border-bottom: none;
-    }
-    // endregion
+      td {
+          &.inner-row {
+              // todo-shai: commented by request from Shai Keren
+              //background-color: rgba(229, 231, 233, 0.4);
+          }
+          &.expand-cell {
+              width: 32px;
+              padding-left: 16px;
+              text-align: center;
+              border-top: $v3-bodyBorder;
+              border-bottom: $v3-bodyBorder;
+              @include icon-style('icon-expand', $fu-black-500, 16px, true, true) {
+                  @include size(16px);
+                  cursor: pointer;
+                  display: block;
+                  margin-top: 3px;
+              }
+              &.expanded {
+                  @include icon-style('icon-expand', $fu-black-500, 16px, true, true, 90);
+              }
+              &.inner-row {
+                  // todo-shai: commented by request from Shai Keren
+                  //border: none;
+              }
+              & + td{
+                  padding-left: 8px;
+                  border-left: none;
+              }
+          }
 
-/*
-    &:hover,
-    &.fu-hovered, //for rowspan rows
-    &:has(.fu-button-holder.fu-row-menu-shown){
-        td {
-            background-color: $fu-light-50;
-            &.inner-row,
-            &.sticky-left{
-                background-color: $fu-light-50;
-            }
-        }
-    }
+          &.sticky-left {
+              background-color: $White;
+              position: sticky;
+              left: 0;
+              z-index: 2;
+          }
+          &.fu-border-left{
+              border-left: solid 1px $fu-light-400;
+          }
 
-    &.is-row-in-request,
-    &.is-row-disabled {
-        td {
-            position: relative;
-            &::after{
-                content: '';
-                background-color: $White;
-                width: 100%;
-                height: 100%;
-                top: 0;
-                left: 0;
-                position: absolute;
-                opacity: 0.3;
-            }
-        }
-    }
+      }
 
-    // todo-shai: commented by request from Shai Keren
-    !*&.is-row-selected,*!
-    &.is-row-expanded{
-        //background-color: $fu-light-200;
-    }
+      &.is-with-totals {
+          &:hover td {
+              background-color: $White;
+          }
+      }
 
-    td {
-        &.inner-row {
-            // todo-shai: commented by request from Shai Keren
-            //background-color: rgba(229, 231, 233, 0.4);
-        }
-        &.expand-cell {
-            width: 32px;
-            padding-left: 16px;
-            text-align: center;
-            border-top: $v3-bodyBorder;
-            border-bottom: $v3-bodyBorder;
-            @include icon-style('icon-expand', $fu-black-500, 16px, true, true) {
-                @include size(16px);
-                cursor: pointer;
-                display: block;
-                margin-top: 3px;
-            }
-            &.expanded {
-                @include icon-style('icon-expand', $fu-black-500, 16px, true, true, 90);
-            }
-            &.inner-row {
-                // todo-shai: commented by request from Shai Keren
-                //border: none;
-            }
-            & + td{
-                padding-left: 8px;
-                border-left: none;
-            }
-        }
-
-        &.sticky-left {
-            background-color: $White;
-            position: sticky;
-            left: 0;
-            z-index: 2;
-        }
-        &.fu-border-left{
-            border-left: solid 1px $fu-light-400;
-        }
-
-    }
-
-    &.is-with-totals {
-        &:hover td {
-            background-color: $White;
-        }
-    }
-
-    &.is-inner-row-expandable{
-        td {
-            &.expand-cell.inner-row{
-                border-top: $v3-bodyBorder;
-                border-bottom: $v3-bodyBorder;
-            }
-            &.inner-row {
-                background-color: $fu-light-200;
-            }
-        }
-        // todo-shai: commented by request from Shai Keren
-        //&.fu-hovered, //for rowspan rows
-        //&:hover{
-        //    td{
-        //        background-color: $fu-light-100;
-        //    }
-        //}
-    }
-    */
+      &.is-inner-row-expandable{
+          td {
+              &.expand-cell.inner-row{
+                  border-top: $v3-bodyBorder;
+                  border-bottom: $v3-bodyBorder;
+              }
+              &.inner-row {
+                  background-color: $fu-light-200;
+              }
+          }
+          // todo-shai: commented by request from Shai Keren
+          //&.fu-hovered, //for rowspan rows
+          //&:hover{
+          //    td{
+          //        background-color: $fu-light-100;
+          //    }
+          //}
+      }
+      */
 }
 
 /*:host-context(.on-scroll-right) {

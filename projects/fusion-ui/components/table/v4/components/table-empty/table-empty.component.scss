@@ -1,8 +1,5 @@
 :host {
     tr td {
-        display: flex;
-        align-items: center;
-        justify-content: center;
         padding: var(--table-empty-state-padding, 48px);
     }
 }

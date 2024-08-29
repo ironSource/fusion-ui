@@ -4,28 +4,26 @@
 :host {
     position: relative;
     @extend %font-v4-body-1;
-    display: flex;
-    align-items: center;
-    flex: 1 0 0;
     height: var(--table-row-height);
-    gap: var(--table-row-cell-gap);
     padding: var(--table-row-cell-padding) ;
     border-bottom: var(--table-border);
 
     &.is-checkbox-holder{
-        flex: auto 0 0;
+        width: var(--table-checkbox-cell-width);
     }
 
     & > div {
+        display: flex;
+        align-items: center;
+        height: 100%;
         width: 100%;
         max-width: 350px;
         word-break: break-all;
         &.right {
-            text-align: right;
-            float: none;
+            justify-content: flex-end;
         }
         &.center {
-            text-align: center;
+            justify-content: center;
         }
         &.checkbox-cell {
             margin: 0 auto;
@@ -37,6 +35,11 @@
         }
 
     }
+
+    .truncate{
+        @extend %truncate-flex-child;
+    }
+
 
     // todo: to review and remove
     /*    padding: 0 16px;
@@ -138,6 +141,8 @@
                 }
             }
         }*/
+
+
 }
 
 :host-context(.is-row-in-request) {

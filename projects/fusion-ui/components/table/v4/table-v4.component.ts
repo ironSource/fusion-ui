@@ -1,4 +1,5 @@
 import {
+    AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     ElementRef,
@@ -63,7 +64,7 @@ import {SearchComponent} from '@ironsource/fusion-ui/components/search/v4';
     styleUrl: './table-v4.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TableV4Component implements OnInit, OnDestroy {
+export class TableV4Component implements OnInit, OnDestroy, AfterViewInit {
     // region public props
     /** @internal */
     tableService: TableService = inject(TableService);
@@ -319,6 +320,16 @@ export class TableV4Component implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.onDestroy$.next();
         this.onDestroy$.complete();
+    }
+
+    ngAfterViewInit() {
+        const columns = this.tableElement.nativeElement.querySelectorAll('thead tr td');
+        columns.forEach((column: HTMLElement, index: number) => {
+            // todo: check if this "if" needed
+            if (!column.style.width) {
+                column.style.width = `${column.clientWidth}px`;
+            }
+        });
     }
 
     /** @internal */

@@ -15,7 +15,6 @@
 
   --table-header-bg-color: var(--background-paper-elevation-0, #{$color-v4-background-paper-elevation-0});
   --table-header-search-width: 220px;
-
   --table-header-cell-height: 40px;
   --table-header-cell-padding: 0 16px;
   --table-header-cell-bg-color: var(--background-paper-elevation-0, #{$color-v4-background-paper-elevation-0});
@@ -33,11 +32,11 @@
   --table-footer-bg-color: var(--background-paper-elevation-0, #{$color-v4-background-paper-elevation-0});
 
   --table-empty-state-padding: 48px;
+  --table-checkbox-cell-width: 32px;
 
   --table-body-border: var(--table-border);
   --table-row-height: 48px;
   --table-row-cell-padding: 0 16px;
-  --table-row-cell-gap: 4px;
 
   --table-expand-icon-color: var(--action-active, #{$color-v4-action-active});
   --table-expand-icon-size: 20px;
@@ -60,7 +59,7 @@
   border: var(--table-border);
   border-radius: var(--table-border-radius);
 
-  .fu-table-header-wrapper{
+  .fu-table-header-wrapper {
     display: flex;
     height: var(--spacing-800, #{$spacingV4-800});
     padding: 0px var(--spacing-300, #{$spacingV4-300});
@@ -73,27 +72,29 @@
     border-bottom: var(--table-border);
     background-color: var(--table-header-bg-color);
 
-    .fu-table-label{
+    .fu-table-label {
       display: flex;
       align-items: center;
       gap: 4px;
       flex: 1;
 
-      .fu-table-label-text{
+      .fu-table-label-text {
         @extend %font-v4-heading-3;
         color: var(--table-header-text-color);
       }
-      .fu-header-tooltip-icon{
+
+      .fu-header-tooltip-icon {
         @include size(var(--table-header-tooltip-icon-size));
         color: var(--table-header-tooltip-icon-color);
       }
     }
-    fusion-search{
+
+    fusion-search {
       width: var(--table-header-search-width);
     }
   }
 
-  .fu-table-footer-wrapper{
+  .fu-table-footer-wrapper {
     display: flex;
     align-items: center;
     height: var(--table-footer-height);
@@ -120,25 +121,32 @@
 
       thead {
         tr {
-          display: flex;
-          flex-direction: row;
-
           td {
             @extend %font-v4-table-label;
-            display: flex;
-            align-items: center;
-            flex: 1 0 0;
             height: var(--table-header-cell-height);
-            gap: var(--table-header-cell-gap);
             padding: var(--table-header-cell-padding);
             background-color: var(--table-header-cell-bg-color);
             border-bottom: var(--table-border);
+
+            .fu-header-cell-content {
+              display: flex;
+              align-items: center;
+              gap: var(--table-header-cell-gap);
+              &.right{
+                justify-content: flex-end;
+              }
+              &.center{
+                justify-content: center;
+              }
+            }
 
             // region sort
             .fu-sort-wrapper {
               display: none;
               @include size(var(--table-header-sort-icon-size));
-
+              &:hover {
+                cursor: pointer;
+              }
               fusion-icon {
                 @include size(var(--table-header-sort-icon-size));
                 color: var(--table-header-sort-icon-color);
@@ -153,7 +161,7 @@
                 }
               }
 
-              & > div.fu-header-text:hover {
+              & > div.fu-header-cell-content .fu-header-text:hover {
                 cursor: pointer;
               }
             }
@@ -166,14 +174,15 @@
             }
 
             &.is-checkbox-holder {
-              flex: auto 0 0;
-              justify-content: center;
+              width: var(--table-checkbox-cell-width);
             }
 
+            /*
             &.expand-column {
-              flex: 0 0 var(--table-expand-cell-width);
-              justify-content: center;
+              //flex: 0 0 var(--table-expand-cell-width);
+              //justify-content: center;
             }
+            */
           }
         }
       }
@@ -194,14 +203,15 @@
     }
   }
 
-  &:not(:has(.fu-table-header-wrapper)){
-    .tableWrap{
+  &:not(:has(.fu-table-header-wrapper)) {
+    .tableWrap {
       border-top-left-radius: var(--table-border-radius);
       border-top-right-radius: var(--table-border-radius);
     }
   }
-  &:not(:has(.fu-table-footer-wrapper)){
-    .tableWrap{
+
+  &:not(:has(.fu-table-footer-wrapper)) {
+    .tableWrap {
       border-bottom-left-radius: var(--table-border-radius);
       border-bottom-right-radius: var(--table-border-radius);
     }
