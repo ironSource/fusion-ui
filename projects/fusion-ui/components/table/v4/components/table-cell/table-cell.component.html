@@ -1,7 +1,8 @@
 @if ((isRowTotal && tableService.isInTotalTypeString(column)) || tableService.isTypeString(column)) {
     <!--String Cell-->
     <div [ngClass]="column.align" [style.width]="innerElementWidth">
-        <span class="truncate" [fusionTooltip]="cellStringData">{{ cellStringData | notAvailable: notAvailableText }}</span>
+        <span class="truncate"
+              [fusionTooltip]="cellStringData">{{ cellStringData | notAvailable: notAvailableText }}</span>
     </div>
 } @else {
     @if (tableService.isTypeCheckbox(column) && isBoolean(data)) {
@@ -27,18 +28,20 @@
             -->
         </div>
     } @else if (tableService.isTypeInputEdit(column) && data) {
-        @if(!isRowTotal){
-            <fusion-input-inline
-                #inlineInput
-                [type]="column.inputType"
-                [data]="data"
-                [pending]="isInRequest$ | async"
-                [error]="inputError$ | async"
-                [readOnly]="isReadOnly"
-                [currencyPipeParameters]="column?.currencyPipeParameters"
-                (onSave)="onEndEdit($event)"
-                (onCancel)="onCancel()"
-            ></fusion-input-inline>
+        @if (!isRowTotal) {
+            <div class="fu-input-cell" [class.fu-type-number]="column.inputType">
+                <fusion-input-inline
+                    #inlineInput
+                    [type]="column.inputType"
+                    [data]="data"
+                    [pending]="isInRequest$ | async"
+                    [error]="inputError$ | async"
+                    [readOnly]="isReadOnly"
+                    [currencyPipeParameters]="column?.currencyPipeParameters"
+                    (onSave)="onEndEdit($event)"
+                    (onCancel)="onCancel()"
+                ></fusion-input-inline>
+            </div>
         }
     } @else if (tableService.isTypeComponent(column)) {
         <!-- todo: add support for dynamic cell-->
@@ -95,7 +98,7 @@
             }}
         </div>
     } @else {
-        <div>&nbsp;{{column.type}}</div>
+        <div>&nbsp;{{ column.type }}</div>
     }
 }
 

@@ -40,6 +40,7 @@
             [class.cell-tooltip]="columnsData[columnIndex]?.hasTooltip"
             [class.after-sticky]="hasAfterSticky"
             [class.inner-row]="isInnerRow"
+            [class.fu-editable-cell]="tableService.isTypeInputEdit(column)"
             [class.is-checkbox-holder]="tableService.isTypeCheckbox(column)"
             [ngStyle]="columnsData[columnIndex]?.styles"
             [style.width]="columnsData[columnIndex]?.width"

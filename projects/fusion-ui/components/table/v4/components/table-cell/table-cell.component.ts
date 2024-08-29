@@ -90,7 +90,6 @@ export class TableCellComponent implements OnInit, OnChanges {
     }
 
     isInRequest$: BehaviorSubject<boolean> = new BehaviorSubject(false);
-    cellLRPadding = CELL_PADDING;
     innerElementWidth = '';
     isInEditMode = false;
     initInputData: string | boolean | undefined | null | AdvancedInputInline;
@@ -172,7 +171,6 @@ export class TableCellComponent implements OnInit, OnChanges {
     ) {}
 
     ngOnInit() {
-        this.innerElementWidth = this.column.width ? `calc(${this.column.width} - ${this.cellLRPadding})` : '';
         this.notAvailableText = this.options ? this.options.notAvailableText : null;
     }
 

@@ -16,8 +16,6 @@
         display: flex;
         align-items: center;
         height: 100%;
-        width: 100%;
-        min-width: 0;
         max-width: 350px;
         word-break: break-all;
         &.right {
@@ -29,6 +27,15 @@
         &.checkbox-cell {
             margin: 0 auto;
             justify-content: center;
+        }
+
+        &.fu-input-cell{
+            position: relative;
+            left: calc(#{$spacingV4-100} * -1);
+            &.fu-type-number{
+                left: initial;
+                right: calc(#{$spacingV4-100} * -1);
+            }
         }
     }
 

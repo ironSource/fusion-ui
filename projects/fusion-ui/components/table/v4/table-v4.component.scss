@@ -36,7 +36,8 @@
 
   --table-body-border: var(--table-border);
   --table-row-height: 48px;
-  --table-row-cell-padding: 0 16px;
+  --table-row-cell-lr-padding: 16px;
+  --table-row-cell-padding: 0 var(--table-row-cell-lr-padding);
 
   --table-expand-icon-color: var(--action-active, #{$color-v4-action-active});
   --table-expand-icon-size: 20px;

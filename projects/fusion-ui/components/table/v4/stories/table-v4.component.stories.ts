@@ -156,7 +156,7 @@ export const StickyHeader: Story = {
 };
 StickyHeader.decorators = [componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)];
 
-export const BothVerticalAndHorizontalScroll: Story = {
+export const VerticalScroll: Story = {
     render: args => ({
         props: {
             ...args,
@@ -175,9 +175,7 @@ export const BothVerticalAndHorizontalScroll: Story = {
         template: TEMPLATE_TABLE_HOLDER
     })
 };
-BothVerticalAndHorizontalScroll.decorators = [
-    componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)
-];
+VerticalScroll.decorators = [componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)];
 
 export const InfiniteScrolling: Story = {
     render: args => ({
