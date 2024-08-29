@@ -214,6 +214,26 @@ export const ExpandRows: Story = {
     })
 };
 
+export const ExpandDynamicElement: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            columns: EXPAND_COLUMNS_CONFIG,
+            rows: EXPAND_ROWS_DEFAULT_DATA.slice(0, 5),
+            options: {
+                stickyHeader: true,
+                hasRowSpan: true,
+                rowsExpandableOptions: {
+                    key: 'customExpandElement',
+                    columns: []
+                }
+            },
+            expandRow: actionsData.expandRow
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+
 export const SkeletonLoading: Story = {};
 SkeletonLoading.args = {
     loading: true,
