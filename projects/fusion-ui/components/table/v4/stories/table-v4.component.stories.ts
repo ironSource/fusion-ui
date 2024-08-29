@@ -32,11 +32,13 @@ const TEMPLATE_TABLE_HOLDER = `<fusion-table-story-holder
     [hasCustomFooter]="hasCustomFooter"
     (selectionChanged)="selectionChanged($event)"
     (rowModelChange)="rowModelChange($event)"
+    (expandRow)="expandRow($event)"
 ></fusion-table-story-holder>`;
 
 const actionsData = {
     selectionChanged: action('selectionChanged'),
-    rowModelChange: action('rowModelChange')
+    rowModelChange: action('rowModelChange'),
+    expandRow: action('expandRow')
 };
 
 export default {
@@ -202,11 +204,13 @@ export const ExpandRows: Story = {
             rows: EXPAND_ROWS_DEFAULT_DATA.slice(0, 5),
             options: {
                 stickyHeader: true,
+                hasRowSpan: true,
                 rowsExpandableOptions: {
                     key: 'children',
                     columns: EXPAND_COLUMNS_CONFIG
                 }
-            }
+            },
+            expandRow: actionsData.expandRow
         },
         template: TEMPLATE_TABLE_HOLDER
     })

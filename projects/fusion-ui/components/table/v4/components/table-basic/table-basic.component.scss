@@ -1,10 +1,19 @@
 @import "../../../../../src/style/scss/v4/vars/vars";
 
 $fullCellHeight: 48px;
-$failedCellHeight: 27px;
+$failedCellHeight: 36px;
 
 :host{
-    @extend %reset;
+    .full-cell{
+        background-color: var(--table-header-cell-bg-color);
+        &.load-more, &.failed{
+            td {
+                height: $failedCellHeight;
+                padding: var(--table-row-cell-padding) ;
+                border-bottom: var(--table-border);
+            }
+        }
+    }
     tr.is-row-in-request{
         pointer-events: none;
     }

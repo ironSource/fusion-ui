@@ -27,12 +27,15 @@ import {
 import {TableTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {TableService} from '@ironsource/fusion-ui/components/table';
 import {TableRowComponent} from '../table-row/table-row.component';
+import {TableLoadingComponent} from '../table-loading/table-loading.component';
+import {LoadMoreModule} from '@ironsource/fusion-ui/directives/load-more';
+import {LinkComponent} from '@ironsource/fusion-ui/components/link';
 
 @Component({
     // eslint-disable-next-line
     selector: '[fusionTableBasic]',
     standalone: true,
-    imports: [CommonModule, GenericPipe, TableRowComponent],
+    imports: [CommonModule, GenericPipe, TableRowComponent, TableLoadingComponent, LoadMoreModule, LinkComponent],
     templateUrl: './table-basic.component.html',
     styleUrls: ['./table-basic.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -46,10 +49,6 @@ export class TableBasicComponent implements OnInit, OnDestroy, AfterViewInit {
     @Input() set options(value: TableOptions) {
         this.tableOptions = value;
         this.childRowOptions = {...value, hasTotalsRow: false};
-    }
-
-    @Input() set tableClientWidth(value: number) {
-        this._halfTableClientWidth = value ? value / 2 : 0;
     }
 
     /** @internal */
@@ -69,10 +68,6 @@ export class TableBasicComponent implements OnInit, OnDestroy, AfterViewInit {
         return this.columns.length;
     }
 
-    get getHalfTableClientWidth(): number {
-        return this._halfTableClientWidth;
-    }
-
     childRowOptions: TableOptions;
     loadingChildRows: {[key: number]: boolean} = {};
     failedChildRows: {[key: number]: boolean} = {};
@@ -88,7 +83,6 @@ export class TableBasicComponent implements OnInit, OnDestroy, AfterViewInit {
 
     tableService: TableService = inject(TableService);
 
-    private _halfTableClientWidth = 0;
     private tableOptions: TableOptions;
     private onDestroy$ = new Subject();
     private cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
@@ -154,18 +148,7 @@ export class TableBasicComponent implements OnInit, OnDestroy, AfterViewInit {
         return !!this.options?.rowsExpandableOptions?.key && this.isExpanded(rowIndex);
     }
 
-    getInnerRows(index): any[] {
-        const innerKey = this.options.rowsExpandableOptions.key;
-        const indexes = index.split('_').map(Number);
-        let retRow = this.rows;
-        indexes.forEach((item, idx) => {
-            retRow = !!idx ? retRow[innerKey][item] : retRow[item];
-        });
-        return retRow[innerKey] || [];
-    }
-
     isExpanded(rowIndex: number | string): boolean {
-        // check if has row index keys in expandedRows / loadingChildRows / failedChildRows;
         if (
             this.expandedRows?.hasOwnProperty(rowIndex) ||
             this.loadingChildRows.hasOwnProperty(rowIndex) ||

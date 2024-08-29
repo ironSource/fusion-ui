@@ -8,7 +8,7 @@ import {ButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
 import {GenericPipe, TableTestIdModifiers} from '@ironsource/fusion-ui';
 import {SearchV4Component} from '@ironsource/fusion-ui/components/search/v4/search-v4.component';
 import {TableColumn, TableOptions, TableRowExpandEmitter} from '@ironsource/fusion-ui/components/table';
-import {ROWS_DEFAULT_DATA} from '../table.mock-data';
+import {EXPAND_ROWS_DEFAULT_DATA} from '../table.mock-data';
 import {TableV4Component} from '../../table-v4.component';
 
 @Component({
@@ -89,6 +89,7 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
 
     @Output() rowModelChange = new EventEmitter();
     @Output() selectionChanged = new EventEmitter();
+    @Output() expandRow = new EventEmitter();
 
     /** @ignore */
     @Input() set loading(value: boolean) {
@@ -204,6 +205,7 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
     }
 
     onExpandRow({rowIndex, row, isExpanded, successCallback, failedCallback, updateMap}: TableRowExpandEmitter): void {
+        this.expandRow.emit({rowIndex, row, isExpanded, successCallback, failedCallback, updateMap});
         // updateMap - in case external expand call it must be false because map will be already updated.
         const tableRows = this.tableRows;
         // get child rows that can be already existed
@@ -212,7 +214,7 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
             .pipe(
                 take(1),
                 tap(
-                    _ =>
+                    () =>
                         // set what row expanded, or update to collapsed state if was expanded
                         (this.expandedRows = updateMap
                             ? {
@@ -263,16 +265,12 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
     private getExpandedData(rowIndex) {
         if (isNumber(rowIndex)) {
             return of(
-                ROWS_DEFAULT_DATA.slice(5, 7).map(item => {
+                EXPAND_ROWS_DEFAULT_DATA.slice(5, 6).map(item => {
                     if (!this.options.hasRowSpan) {
                         return item;
                     } else {
                         return {
-                            ...item,
-                            id: '',
-                            margin: new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]),
-                            margin_target: new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)]),
-                            profitizer: new FormControl(Math.floor(Math.random() * 100), [Validators.required, Validators.min(5)])
+                            ...item
                         };
                     }
                 })

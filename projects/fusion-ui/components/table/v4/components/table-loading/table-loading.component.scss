@@ -1,14 +1,12 @@
 :host {
-  tr {
-    .fu-table-cell-loading {
-      height: var(--table-row-height);
-      padding: var(--table-row-cell-padding);
-      border-bottom: var(--table-border);
+  .fu-table-cell-loading {
+    height: var(--table-row-height, 48px);
+    padding: var(--table-row-cell-padding, 0 16px);
+    border-bottom: var(--table-border);
 
-      &.fu-expanding-loader:first-of-type {
-        div {
-          display: none;
-        }
+    &.fu-expanding-loader:first-of-type {
+      div {
+        display: none;
       }
     }
   }

@@ -37,7 +37,7 @@ export const ROWS_DEFAULT_DATA = [
     {
         id: 2,
         firstName: 'Ada',
-        lastName: 'McLaughlin lorem ipsum dolor sit amet consectetur adipiscing elit',
+        lastName: 'McLaughlin lorem ipsum dolor sit amet consectetur adipiscing elit.',
         address: '841 Chanelle Canyon',
         state: 'Arkansas'
     },
@@ -629,6 +629,162 @@ export const EXPAND_ROWS_DEFAULT_DATA = [
         username: 'Moriah.Stanton',
         email: 'Rey.Padberg@karina.biz',
         website: 'ambrose.net'
+    },
+    {
+        id: 11,
+        name: 'Evelyn Prescott',
+        username: 'Eve.Prescott',
+        email: 'EPrescott@lumina.com',
+        website: 'prescottdesigns.net'
+    },
+    {id: 12, name: "Liam O'Connor", username: 'LiamOC', email: 'Liam.OConnor@techwave.io', website: 'oconnortech.com'},
+    {
+        id: 13,
+        name: 'Sofia Rodriguez',
+        username: 'SofiaR',
+        email: 'Sofia.Rodriguez@globalnet.org',
+        website: 'rodriguezarts.net'
+    },
+    {id: 14, name: 'Ethan Zhao', username: 'E_Zhao', email: 'EthanZ@innovative.biz', website: 'zhaoengineering.com'},
+    {
+        id: 15,
+        name: 'Isabella Moretti',
+        username: 'Bella.Moretti',
+        email: 'I.Moretti@fashionista.it',
+        website: 'morettistyle.net'
+    },
+    {
+        id: 16,
+        name: 'Noah Campbell',
+        username: 'N_Campbell',
+        email: 'Noah.Campbell@ecofriendly.org',
+        website: 'campbellgreen.com'
+    },
+    {id: 17, name: 'Mia Tanaka', username: 'MiaTanaka', email: 'Mia.T@tokyotech.jp', website: 'tanakadesigns.net'},
+    {
+        id: 18,
+        name: 'Oliver Singh',
+        username: 'O_Singh',
+        email: 'Oliver.Singh@globalfinance.com',
+        website: 'singhconsulting.net'
+    },
+    {id: 19, name: 'Ava Kowalski', username: 'AvaK', email: 'A.Kowalski@polisharts.pl', website: 'kowalskigallery.com'},
+    {
+        id: 20,
+        name: 'Lucas Ferreira',
+        username: 'L_Ferreira',
+        email: 'Lucas.F@braziltech.br',
+        website: 'ferreirasoft.net'
+    },
+    {
+        id: 21,
+        name: 'Emma Larsson',
+        username: 'EmmaL',
+        email: 'E.Larsson@nordicdesign.se',
+        website: 'larssoninteriors.com'
+    },
+    {
+        id: 22,
+        name: 'Alexander Volkov',
+        username: 'A_Volkov',
+        email: 'Alex.Volkov@russiancoder.ru',
+        website: 'volkovtech.net'
+    },
+    {id: 23, name: 'Charlotte Wu', username: 'CharlotteW', email: 'C.Wu@asianmarket.cn', website: 'wuenterprises.com'},
+    {id: 24, name: 'William Nkosi', username: 'Will_Nkosi', email: 'W.Nkosi@africanart.za', website: 'nkosicraft.net'},
+    {
+        id: 25,
+        name: 'Sophia Müller',
+        username: 'S_Mueller',
+        email: 'Sophia.Mueller@deutschebank.de',
+        website: 'muellerfinance.com'
+    },
+    {id: 26, name: "James O'Brien", username: 'JOBrien', email: 'J.OBrien@irishpub.ie', website: 'obrientavern.net'},
+    {
+        id: 27,
+        name: 'Amelia Dubois',
+        username: 'A_Dubois',
+        email: 'Amelia.D@frenchcuisine.fr',
+        website: 'duboiscooking.com'
+    },
+    {id: 28, name: 'Benjamin Cohen', username: 'BenC', email: 'B.Cohen@isratech.il', website: 'cohentechnology.net'},
+    {
+        id: 29,
+        name: 'Harper Nguyen',
+        username: 'H_Nguyen',
+        email: 'Harper.Nguyen@vietsoft.vn',
+        website: 'nguyencode.com'
+    },
+    {
+        id: 30,
+        name: 'Elijah Sanchez',
+        username: 'E_Sanchez',
+        email: 'Elijah.S@latinoart.mx',
+        website: 'sanchezgallery.net'
+    },
+    {
+        id: 31,
+        name: 'Aria Rossi',
+        username: 'AriaR',
+        email: 'A.Rossi@italiandesign.it',
+        website: 'rossiarchitecture.com'
+    },
+    {id: 32, name: 'Leo Kim', username: 'LeoK', email: 'Leo.Kim@kpopstar.kr', website: 'kimenterprises.net'},
+    {
+        id: 33,
+        name: 'Zoe Andersen',
+        username: 'ZoeA',
+        email: 'Z.Andersen@danishdesign.dk',
+        website: 'anderseninteriors.com'
+    },
+    {
+        id: 34,
+        name: 'Gabriel Santos',
+        username: 'G_Santos',
+        email: 'Gabriel.S@brazilsoccer.br',
+        website: 'santossports.net'
+    },
+    {
+        id: 35,
+        name: 'Chloe Dupont',
+        username: 'ChloeDupont',
+        email: 'C.Dupont@parismode.fr',
+        website: 'dupontfashion.com'
+    },
+    {
+        id: 36,
+        name: 'Daniel Yamamoto',
+        username: 'D_Yamamoto',
+        email: 'Daniel.Y@tokyotech.jp',
+        website: 'yamamotorobotics.net'
+    },
+    {
+        id: 37,
+        name: 'Victoria Ivanova',
+        username: 'V_Ivanova',
+        email: 'Victoria.I@russianballet.ru',
+        website: 'ivanovadance.com'
+    },
+    {
+        id: 38,
+        name: 'Henry Okafor',
+        username: 'HenryO',
+        email: 'H.Okafor@africantech.ng',
+        website: 'okafortechnology.net'
+    },
+    {
+        id: 39,
+        name: 'Scarlett Chen',
+        username: 'S_Chen',
+        email: 'Scarlett.Chen@chinesemed.cn',
+        website: 'chenholistic.com'
+    },
+    {
+        id: 40,
+        name: 'Sebastian Gomez',
+        username: 'SebGomez',
+        email: 'S.Gomez@latinmusic.co',
+        website: 'gomezrecords.net'
     }
 ];
 

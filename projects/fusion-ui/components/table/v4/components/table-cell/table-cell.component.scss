@@ -17,6 +17,7 @@
         align-items: center;
         height: 100%;
         width: 100%;
+        min-width: 0;
         max-width: 350px;
         word-break: break-all;
         &.right {
@@ -27,13 +28,8 @@
         }
         &.checkbox-cell {
             margin: 0 auto;
-            text-align: center;
-            height: 14px;
+            justify-content: center;
         }
-        &.truncate{
-            @extend %truncate-flex-child;
-        }
-
     }
 
     .truncate{
@@ -141,8 +137,6 @@
                 }
             }
         }*/
-
-
 }
 
 :host-context(.is-row-in-request) {

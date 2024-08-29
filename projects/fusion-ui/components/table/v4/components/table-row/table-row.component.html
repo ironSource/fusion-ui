@@ -6,17 +6,14 @@
             [class.expanded]="isExpanded"
             [class.inner-row]="isInnerRow"
             [class.sticky-left]="options?.rowsExpandableOptions?.sticky"
-            [attr.rowspan]="attrRowspan | generic:'cell-expand'"
             [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.CELL+'-r'+rowIndex+'-c'+idx)"
         >
             @if(isLast && showExpandIcon()){
-                <div>
-                    <fusion-icon-button
-                            [iconName]="expandArrowIconName"
-                            [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.EXPAND_ICON_BUTTON+'-r'+rowIndex+'-c'+idx)"
-                            (click)="expandRow.emit({rowIndex: rowIndex, row: row, isExpanded: !isExpanded})"
-                    ></fusion-icon-button>
-                </div>
+                <div><fusion-icon-button
+                        [iconName]="!isExpanded ? expandArrowIconName : collapseArrowIconName"
+                        [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.EXPAND_ICON_BUTTON+'-r'+rowIndex+'-c'+idx)"
+                        (click)="expandRow.emit({rowIndex: rowIndex, row: row, isExpanded: !isExpanded})"
+                ></fusion-icon-button></div>
             }
         </td>
     }
@@ -47,7 +44,6 @@
             [ngStyle]="columnsData[columnIndex]?.styles"
             [style.width]="columnsData[columnIndex]?.width"
             [attr.colspan]="columnsData[columnIndex]?.colspan"
-            [attr.rowspan]="attrRowspan | generic:column.key"
             [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.CELL+'-r'+rowIndex+'-c'+columnIndex)"
             (remove)="rowRemoved.emit()"
             (selectedChange)="selectedChange.emit($event)"

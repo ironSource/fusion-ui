@@ -77,10 +77,10 @@ export class TableRowComponent implements OnInit, OnChanges {
     }
 
     expandArrowIconName: IconData;
+    collapseArrowIconName: IconData;
     columnsData: ColumnData[] = [];
 
     cellShown = this.showCell.bind(this);
-    attrRowspan = this.getAttrRowspan.bind(this);
 
     /** @internal */
     tableTestIdModifiers: typeof TableTestIdModifiers = TableTestIdModifiers;
@@ -123,6 +123,7 @@ export class TableRowComponent implements OnInit, OnChanges {
     ngOnInit(): void {
         this.dataRowIndex = this.rowIndex;
         this.expandArrowIconName = 'ph/caret-right';
+        this.collapseArrowIconName = 'ph/caret-down';
         if (this.isRowTotal) {
             Object.assign(this.row, {isRowTotal: true});
         }

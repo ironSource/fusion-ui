@@ -1,6 +1,10 @@
 @if(fusionTableLoadingExpanding){
-    @for(c of colsToShow; track c){
-        <td class="fu-table-cell-loading fu-expanding-loader"><fusion-skeleton size="16"></fusion-skeleton></td>
+    @for(c of colsToShow; track c; let first = $first){
+        <td class="fu-table-cell-loading fu-expanding-loader">
+            @if (!first){
+                <fusion-skeleton size="16"></fusion-skeleton>
+            }
+        </td>
     }
 } @else {
     @for (r of rowsToShow; track r){
