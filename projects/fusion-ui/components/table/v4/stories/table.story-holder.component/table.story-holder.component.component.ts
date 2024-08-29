@@ -265,7 +265,7 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
     private getExpandedData(rowIndex) {
         if (isNumber(rowIndex)) {
             return of(
-                EXPAND_ROWS_DEFAULT_DATA.slice(5, 6).map(item => {
+                EXPAND_ROWS_DEFAULT_DATA.slice(5, 30).map(item => {
                     if (!this.options.hasRowSpan) {
                         return item;
                     } else {

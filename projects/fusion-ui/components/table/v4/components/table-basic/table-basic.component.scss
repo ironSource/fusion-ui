@@ -11,6 +11,13 @@ $failedCellHeight: 36px;
                 height: $failedCellHeight;
                 padding: var(--table-row-cell-padding) ;
                 border-bottom: var(--table-border);
+                .fu-load-more-button-wrapper{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100%;
+                    width: 100%;
+                }
             }
         }
     }

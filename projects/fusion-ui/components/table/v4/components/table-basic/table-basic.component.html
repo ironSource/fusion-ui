@@ -45,12 +45,12 @@
                         [ngStyle]="!!options?.rowsOptions?.global ? options.rowsOptions.global.style : null"
                         (expandRow)="onExpandRow($event)"
                 ></tr>
-                @if(!loadingChildRows[parentIndex] && (hasMore$ | async) && last && false){
+                @if(!loadingChildRows[parentIndex] && (hasMore$ | async) && last){
                     <tr class="full-cell load-more">
                         <td [attr.colspan]="fullCellColspan">
-                            <fusion-link color="primary" (click)="loadMore()">
-                                Load more
-                            </fusion-link>
+                            <div class="fu-load-more-button-wrapper">
+                                <fusion-link color="primary" (click)="loadMore()">Load more</fusion-link>
+                            </div>
                         </td>
                     </tr>
                 }
