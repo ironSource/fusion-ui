@@ -30,7 +30,9 @@
     <!--Template Child rows render-->
     <ng-template #childRowsTemplate let-parentRowChildren let-parentIndex="parentIndex">
         <ng-container *fusionLoadMore="let displayRows$ of parentRowChildren; chunkSize: options.rowsExpandableOptions?.expendChunkSize || 10; let loadMore = loadMore; let hasMore$ = hasMore$;">
-            @for (innerRow of (displayRows$ | async); track trackByRowInvoke(); let innerRowIndex = $index; let last = $last){
+            <ng-container
+                *ngFor="let innerRow of displayRows$ | async; trackBy: trackByRowInvoke(); let innerRowIndex = index; let last = last"
+            >
                 <tr
                         fusionTableRow
                         class="is-inner-row"
@@ -54,7 +56,7 @@
                         </td>
                     </tr>
                 }
-            }
+            </ng-container>
         </ng-container>
         @if(loadingChildRows[parentIndex]){
             <tr [fusionTableLoading]="fullCellColspan" [fusionTableLoadingExpanding]="true" fusionTableLoadingRows="1"></tr>
