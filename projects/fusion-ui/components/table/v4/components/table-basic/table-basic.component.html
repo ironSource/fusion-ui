@@ -62,7 +62,7 @@
         @if (failedChildRows[parentIndex]){
             <tr class="full-cell failed">
                 <td [attr.colspan]="fullCellColspan">
-                    <div>
+                    <div class="fu-load-failed">
                         <span>Failed to load data.</span>
                         <fusion-link color="primary" (click)="onExpandRow({rowIndex: rowIndex, row: row, isExpanded: true})">
                             Try again

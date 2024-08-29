@@ -11,12 +11,18 @@ $failedCellHeight: 36px;
                 height: $failedCellHeight;
                 padding: var(--table-row-cell-padding) ;
                 border-bottom: var(--table-border);
-                .fu-load-more-button-wrapper{
+                .fu-load-more-button-wrapper,
+                .fu-load-failed {
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     height: 100%;
                     width: 100%;
+                }
+                .fu-load-failed{
+                    padding: 16px;
+                    flex-direction: column;
+                    gap: 8px;
                 }
             }
         }

@@ -10,12 +10,13 @@ import {SearchV4Component} from '@ironsource/fusion-ui/components/search/v4/sear
 import {TableColumn, TableOptions, TableRowExpandEmitter} from '@ironsource/fusion-ui/components/table';
 import {EXPAND_ROWS_DEFAULT_DATA} from '../table.mock-data';
 import {TableV4Component} from '../../table-v4.component';
+import {Exception} from 'sass';
 
 @Component({
     selector: 'fusion-table-story-holder',
     standalone: true,
     imports: [CommonModule, ReactiveFormsModule, TableV4Component, ButtonComponent, GenericPipe, SearchV4Component],
-    template: `<fusion-table
+    template: ` <fusion-table
         [columns]="columns"
         [rows]="tableRows"
         [options]="options"
@@ -213,16 +214,17 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
         (isExpanded ? (!isNullOrUndefined(childExisted) ? of(childExisted) : this.getExpandedData(rowIndex)) : of(null))
             .pipe(
                 take(1),
-                tap(
-                    () =>
-                        // set what row expanded, or update to collapsed state if was expanded
-                        (this.expandedRows = updateMap
-                            ? {
-                                  ...this.expandedRows,
-                                  [rowIndex]: isExpanded
-                              }
-                            : this.expandedRows)
-                )
+                tap(() => {
+                    // set what row expanded, or update to collapsed state if was expanded
+                    // @ts-ignore
+                    // throw new Exception();
+                    return (this.expandedRows = updateMap
+                        ? {
+                              ...this.expandedRows,
+                              [rowIndex]: isExpanded
+                          }
+                        : this.expandedRows);
+                })
             )
             .subscribe(data => {
                 if (isNullOrUndefined(childExisted)) {
@@ -264,6 +266,7 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
      */
     private getExpandedData(rowIndex) {
         if (isNumber(rowIndex)) {
+            // @ts-ignore
             return of(
                 EXPAND_ROWS_DEFAULT_DATA.slice(5, 30).map(item => {
                     if (!this.options.hasRowSpan) {
