@@ -325,7 +325,7 @@ export class TableV4Component implements OnInit, OnDestroy, AfterViewInit {
     ngAfterViewInit() {
         const columns = this.tableElement.nativeElement.querySelectorAll('thead tr td');
         columns.forEach((column: HTMLElement, index: number) => {
-            if (!column.style.width) {
+            if (!column.style.width && column?.dataset?.editable === 'true') {
                 column.style.width = `${column.clientWidth}px`;
             }
         });

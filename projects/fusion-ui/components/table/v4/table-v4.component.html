@@ -66,6 +66,7 @@
                                     [ngStyle]="tableService.getColumnStyle(column)"
                                     [style.width]="tableService.setWidth(isLast, column.width)"
                                     [style.top.px]="options?.stickyHeaderTopOffset"
+                                    [attr.data-editable]="tableService.isTypeInputEdit(column)"
                                     [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.COLUMN_HEADER+idx)"
                             >
                                 <div class="fu-header-cell-content"
