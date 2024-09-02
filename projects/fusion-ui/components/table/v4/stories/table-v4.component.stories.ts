@@ -214,7 +214,7 @@ export const ExpandRows: Story = {
     })
 };
 
-export const ExpandDynamicElement: Story = {
+export const ExpandWithDynamicElement: Story = {
     render: args => ({
         props: {
             ...args,
