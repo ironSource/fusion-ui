@@ -25,7 +25,7 @@
     }
 
     &.fu-shape-square {
-      border-radius: var(--border-radius-sm);
+      border-radius: var(--fu-skeleton-border-radius, var(--border-radius-sm));
       width: var(--fu-skeleton-height);
     }
 
@@ -35,7 +35,7 @@
     }
 
     &.fu-shape-pill {
-      border-radius: calc(var(--fu-skeleton-height) / 2);
+      border-radius: var(--fu-skeleton-border-radius, calc(var(--fu-skeleton-height) / 2));
     }
 
     &::after {
