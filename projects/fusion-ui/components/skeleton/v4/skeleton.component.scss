@@ -10,14 +10,12 @@
 :host {
   margin: 0;
   padding: 0;
-  width: var(--fu-skeleton-width, 100%);
-  height: var(--fu-skeleton-height, 16px);
-  display: inline-flex;
+
   .fu-skeleton {
     position: relative;
     overflow: hidden;
-    width: 100%;
-    height: 100%;
+    width: var(--fu-skeleton-width, 100%);
+    height: var(--fu-skeleton-height, 16px);
     background-color: var(--action-hover, #{$color-v4-action-hover});
     color: transparent;
 
@@ -27,7 +25,7 @@
     }
 
     &.fu-shape-square {
-      border-radius: var(--border-radius-sm);
+      border-radius: var(--fu-skeleton-border-radius, var(--border-radius-sm));
       width: var(--fu-skeleton-height);
     }
 
@@ -37,7 +35,7 @@
     }
 
     &.fu-shape-pill {
-      border-radius: calc(var(--fu-skeleton-height) / 2);
+      border-radius: var(--fu-skeleton-border-radius, calc(var(--fu-skeleton-height) / 2));
     }
 
     &::after {
