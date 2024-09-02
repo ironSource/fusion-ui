@@ -11,16 +11,16 @@
     </div>
     @for (teleportItem of teleportTopRowElements; track teleportItem) {
         <div [id]="teleportItem.id" class="fu-header-top-teleport-host"
-             [class.fu-flex-align-right]="teleportItem.isOnRight"
+             [class.fu-flex-align-right]="teleportItem?.isOnRight"
              [class.fu-has-skeleton]="teleportItem?.skeletons?.length"
              [style.gap]="teleportItem?.skeletonsGap"
         >
             @for (skeleton of teleportItem?.skeletons; track skeleton) {
                 <fusion-skeleton
-                        [shape]="skeleton.shape ?? 'rectangle'"
-                        [style.--fu-skeleton-width]="skeleton.width"
-                        [style.--fu-skeleton-height]="skeleton.height"
-                        [style.--fu-skeleton-border-radius]="skeleton.borderRadius"
+                        [shape]="skeleton?.shape"
+                        [style.--fu-skeleton-width]="skeleton?.width"
+                        [style.--fu-skeleton-height]="skeleton?.height"
+                        [style.--fu-skeleton-border-radius]="skeleton?.borderRadius"
                 ></fusion-skeleton>
             }
 
