@@ -327,8 +327,6 @@ export class TableV4Component implements OnInit, OnDestroy, AfterViewInit {
         columns.forEach((column: HTMLElement, index: number) => {
             if (!column.style.width && column?.dataset?.editable === 'true') {
                 column.style.width = `${column.clientWidth}px`;
-            } else if (!!column.style.width) {
-                column.style.minWidth = column.style.width;
             }
         });
     }

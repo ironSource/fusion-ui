@@ -65,6 +65,7 @@
                                     [ngClass]="tableService.getColumnClasses(column, true)"
                                     [ngStyle]="tableService.getColumnStyle(column)"
                                     [style.width]="tableService.setWidth(isLast, column.width)"
+                                    [style.min-width]="column.width"
                                     [style.top.px]="options?.stickyHeaderTopOffset"
                                     [attr.data-editable]="tableService.isTypeInputEdit(column)"
                                     [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.COLUMN_HEADER+idx)"
