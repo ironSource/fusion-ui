@@ -23,11 +23,11 @@
     border: solid 1px var(--action-outlined-border, #{$color-v4-action-outlined-border});
     background-color: var(--default-main, #{$color-v4-default-main});
 
-    .fu-placeholder-text{
+    .fu-placeholder-text {
       flex-grow: 1;
     }
 
-    .fu-dropdown-select-image{
+    .fu-dropdown-select-image {
       @include size(20px);
       border-radius: 2px;
     }
@@ -45,11 +45,13 @@
       background-color: var(--action-hover, #{$color-v4-action-hover});
       cursor: pointer;
     }
+
     &.fu-disabled {
       color: var(--text-disabled, #{$color-v4-text-disabled});
       border-color: var(--action-outlined-border, #{$color-v4-action-outlined-border});
       background-color: var(--action-disabled-background, #{$color-v4-action-disabled-background});
       pointer-events: none;
+
       .fu-arrow-icon,
       .fu-dropdown-select-icon {
         color: var(--text-disabled, #{$color-v4-text-disabled});
@@ -68,45 +70,56 @@
       border-color: var(--primary-main, #{$color-v4-primary-main});
       background-color: var(--action-hover, #{$color-v4-action-hover});
     }
+
     &.fu-error {
       border-color: var(--error-main, #{$color-v4-error-main});
     }
-    &.fu-success{
+
+    &.fu-success {
       border-color: var(--success-main, #{$color-v4-success-main});
     }
-    &.fu-warning{
+
+    &.fu-warning {
       border-color: var(--warning-main, #{$color-v4-warning-main});
     }
 
     &.fu-size-small {
       height: 24px;
       padding: 2px 6px;
+
       .fu-dropdown-select-icon {
         @include size(16px);
       }
-      .fu-dropdown-select-image{
+
+      .fu-dropdown-select-image {
         @include size(16px);
         border-radius: 4px;
       }
     }
+
     &.fu-size-large {
       height: 32px;
       padding: 6px 8px;
+
       .fu-dropdown-select-icon {
         @include size(20px);
       }
-      .fu-dropdown-select-image{
+
+      .fu-dropdown-select-image {
         @include size(20px);
         border-radius: 4px;
       }
     }
+
     &.fu-size-xlarge {
       height: 40px;
       padding: 10px 8px;
+
       .fu-dropdown-select-icon {
         @include size(16px);
       }
-      .fu-dropdown-select-image{
+
+      .fu-dropdown-select-image {
         @include size(24px);
         border-radius: 4px;
       }
@@ -114,37 +127,93 @@
   }
 
   &.fu-mode-button,
-  &.fu-mode-button-text{
-    .fu-dropdown-select-wrapper{
+  &.fu-mode-button-add,
+  &.fu-mode-button-icon,
+  &.fu-mode-button-text {
+    .fu-dropdown-select-wrapper {
       background-color: transparent;
+      gap: var(--spacing-100, #{$spacingV4-100});
       @extend %font-v4-button;
-      .fu-dropdown-select-icon{
+      .fu-dropdown-select-icon {
         color: var(--text-primary, #{$color-v4-text-primary});
       }
+
       &:hover {
         background-color: var(--action-hover, #{$color-v4-action-hover});
       }
+
       &.fu-disabled {
         background-color: transparent;
       }
+
       &.fu-open {
         border-width: 2px;
         padding: 3px 7px;
         border-color: var(--action-active, #{$color-v4-action-active});
         background-color: var(--action-selected, #{$color-v4-action-selected});
-        &.fu-size-small{
+
+        &.fu-size-small {
           padding: 1px 5px;
         }
       }
     }
   }
-  &.fu-mode-button-text{
-    .fu-dropdown-select-wrapper{
+
+  &.fu-mode-button-add,
+  &.fu-mode-button-icon,
+  &.fu-mode-button-text {
+    .fu-dropdown-select-wrapper {
       border-color: transparent;
+
+      &.fu-open {
+        border-color: transparent;
+        background-color: var(--default-main, #{$color-v4-default-main});
+      }
     }
   }
 
-  &:has(.fu-dropdown-select-wrapper.fu-disabled){
+  &.fu-mode-button-icon {
+    .fu-dropdown-select-wrapper {
+      padding: 4px;
+
+      &.fu-open {
+        padding: 4px;
+        border-width: 1px;
+      }
+
+      .fu-dropdown-select-icon {
+        @include size(20px);
+      }
+
+      .fu-placeholder-text {
+        display: none;
+      }
+    }
+  }
+
+  &:has(.fu-dropdown-select-wrapper.fu-disabled) {
     pointer-events: none;
+  }
+}
+
+:host-context(fusion-daterange) {
+  .fu-dropdown-select-wrapper {
+    gap: 4px;
+    padding: 6px;
+  }
+
+  &.fu-mode-button,
+  &.fu-mode-button-add,
+  &.fu-mode-button-icon,
+  &.fu-mode-button-text {
+    .fu-dropdown-select-wrapper {
+      @extend %font-v4-chip-label;
+      letter-spacing: normal;
+      gap: 4px;
+      &.fu-open {
+        padding: 6px 5px;
+      }
+    }
+
   }
 }

@@ -1,0 +1,42 @@
+<div class="fu-calendar">
+    <!-- region MONTH -->
+    <div class="fu-month-wrapper">
+        <div class="fu-month">
+            {{ configuration.month | date: 'MMMM' }} {{ configuration.month | date: 'y' }}
+        </div>
+    </div>
+    <!-- endregion MONTH END -->
+    <!-- region DAYS OF THE WEEK -->
+    <div class="fu-weekdays-wrapper">
+        @for (dow of daysOfTheWeek; track dow) {
+            <div class="fu-day-in-week" >{{ dow }}</div>
+        }
+    </div>
+    <!-- endregion DAYS OF THE WEEK -->
+    <!-- region DAYS -->
+    <div class="fu-days-wrapper">
+        @for ( week of calendarService.getParsedMonth(configuration.month, configuration.maxDate).weeks; track week; let last = $last) {
+            @if (!last || (last && week[0].date)) {
+                <div class="fu-week">
+                    @for ( day of week; track day){
+                        @if (day.date){
+                            <div #date class="fu-day"
+                                 [ngClass]="getDayClasses(day)"
+                                 (mouseenter)="dayHovered(day, $event)"
+                                 [attr.data-datetime]="[day.date.getTime()]"
+                                 (click)="selectDay(day)"
+                            >
+                                <span class="selected-range"></span>
+                                <span class="date-text">{{ day.date | date: 'd' }}</span>
+                            </div>
+                        }
+                        @else {
+                            <div class="fu-day"> </div>
+                        }
+                    }
+                </div>
+            }
+        }
+    </div>
+    <!-- endregion DAYS -->
+</div>

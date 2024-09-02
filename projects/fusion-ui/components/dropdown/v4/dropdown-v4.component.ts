@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, forwardRef, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DropdownBaseComponent} from '@ironsource/fusion-ui/components/dropdown/common/base';
-import {DropdownService} from '@ironsource/fusion-ui/components/dropdown';
+import {DropdownService, DropdownTriggerMode} from '@ironsource/fusion-ui/components/dropdown';
 import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 import {NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
 import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
@@ -50,7 +50,15 @@ import {InputLabelComponent} from '@ironsource/fusion-ui/components/input-label/
 })
 export class DropdownV4Component extends DropdownBaseComponent {
     @Input() size: DropdownTriggerSize = 'medium';
-    @Input() triggerMode: 'button' | 'button-text' | 'default' = 'default';
+    @Input() set triggerMode(value: DropdownTriggerMode) {
+        this._triggerMode = value;
+    }
+
+    get triggerMode(): DropdownTriggerMode {
+        return this._triggerMode;
+    }
+
+    @Input() hideCaretIcon: boolean = false;
 
     @Input() helperText: string;
     @Input() helperIcon: string;

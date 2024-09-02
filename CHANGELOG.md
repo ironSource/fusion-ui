@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [8.4.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.0...v8.4.0-rc.1) (2024-08-14)
+
+
+### Features
+
+* **isct-165:** added datepicker component v4 ([1861561](https://github.com/ironSource/fusion-ui/commit/18615618690c33149516f2d25f3f8430710f3c90))
+* **isct-166:** added daterange component v4 ([6b7197f](https://github.com/ironSource/fusion-ui/commit/6b7197f7920a55a1701a2d3f6057cf6b3a2a90c8))
+* **isct-166:** added calendar component v4 ([285c4d8](https://github.com/ironSource/fusion-ui/commit/285c4d8d35cedcf6c1eb69be36b97b9a993c5cf2))
+* **isct-168:** remove hover from chip except remove icon ([d50ed86](https://github.com/ironSource/fusion-ui/commit/d50ed8667ce19af9b66ff2e82fda80cd38adaf6e))
+
+
+### Bug Fixes
+
+* **trigger-button:** up stories for button trigger v4 ([99beca3](https://github.com/ironSource/fusion-ui/commit/99beca30c176b591acb5528a7fc376d1e8500f9c))
+* **trigger-button:** v4 sync with vue ([9f9843c](https://github.com/ironSource/fusion-ui/commit/9f9843ca5ce25e1aa2807fdd1a9c662554fbeb33))
+
+## [8.4.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.3.0...v8.4.0-rc.0) (2024-08-01)
+
+
+### Features
+
+* **isct-161:** added empty-state component v4 ([8959503](https://github.com/ironSource/fusion-ui/commit/89595036e08c53cac7eebd98a13cbb0dde67939c))
+* **isct-161:** added empty-state component v4 unit-tests ([a114b1a](https://github.com/ironSource/fusion-ui/commit/a114b1a0c2f767fd05a52d5c76eadb9c865d423c))
+* **isct-161:** added skeleton component v4 unit-tests ([0bf6dd6](https://github.com/ironSource/fusion-ui/commit/0bf6dd6bae01207ee84bd48d69fc659a8727472b))
+* **isct-163:** added skeleton component v4 ([c63aba1](https://github.com/ironSource/fusion-ui/commit/c63aba1a7a139b882cd459182b2a925931cf0494))
+* **isct-163:** start with skeleton component ([83258ff](https://github.com/ironSource/fusion-ui/commit/83258ff2a32c50ca91a0f2405b575f03161c36dc))
+* **isct-168:** added chip component v4 ([3756856](https://github.com/ironSource/fusion-ui/commit/37568562e53950bc6251c1fb1cf8f008fba508a2))
+* **isct-241:** added new link (button) v4 component ([f6cdcdc](https://github.com/ironSource/fusion-ui/commit/f6cdcdc506d0ac12aa99a4fe06f56da52b174f6c))
+
+
+### Bug Fixes
+
+* **master:** remove console.log ([2da5f01](https://github.com/ironSource/fusion-ui/commit/2da5f0184686c6f3d122067c4dad63745dba4148))
+
 ## [8.3.0](https://github.com/ironSource/fusion-ui/compare/v8.3.0-rc.0...v8.3.0) (2024-07-25)
 
 ## [8.3.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.2.1...v8.3.0-rc.0) (2024-07-25)
