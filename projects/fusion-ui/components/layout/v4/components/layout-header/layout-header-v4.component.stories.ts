@@ -86,6 +86,48 @@ export const WithBottomLine = {
     }
 };
 
+export const WithSkeletons = {
+    render: LayoutHeaderTemplate,
+    args: {
+        teleportElements: [
+            {
+                id: 'fuHeaderTeleport',
+                skeletons: [{width: '130px', height: '28px', shape: 'pill'}]
+            },
+            {
+                id: 'fuHeaderTeleportRight',
+                isOnRight: true,
+                skeletons: [
+                    {width: '130px', height: '28px', shape: 'pill'},
+                    {width: '60px', height: '28px', shape: 'pill'}
+                ],
+                skeletonsGap: '8px'
+            }
+        ],
+        headerContent: {
+            ...HEADER_CONTENT_MOCK,
+            multiline: true,
+            topRowContent: {
+                show: true,
+                skeletons: [{width: '320px', height: '40px', borderRadius: '8px'}]
+            },
+            bottomRowContent: {
+                show: true,
+                skeletons: [
+                    {width: '130px', height: '28px', shape: 'pill'},
+                    {
+                        width: '130px',
+                        height: '28px',
+                        shape: 'pill'
+                    },
+                    {width: '130px', height: '28px', shape: 'pill'}
+                ],
+                skeletonsGap: '8px'
+            }
+        }
+    }
+};
+
 export const MainDrilldownTeleport = {
     render: LayoutHeaderTemplate,
     args: {
