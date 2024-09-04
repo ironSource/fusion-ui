@@ -80,9 +80,12 @@ export interface TableRowMetaData {
     maxRowspanInColumn?: number;
 }
 
+export type InnerEntityType = 'innerRows' | 'dynamicComponent'; // used in table v4 default is 'innerRows'
+
 export interface TableRowsExpandableOptions {
     key: string;
     columns: TableColumn[];
+    innerEntityType?: InnerEntityType;
     sticky?: boolean;
     keyToIgnore?: string;
     expandLevels?: number;

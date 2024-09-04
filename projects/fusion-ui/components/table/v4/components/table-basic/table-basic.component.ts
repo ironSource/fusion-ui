@@ -22,7 +22,8 @@ import {
     TableOptions,
     TableRowClassesEnum,
     TableRowExpandEmitter,
-    ROW_HOVERED_CLASS_NAME
+    ROW_HOVERED_CLASS_NAME,
+    InnerEntityType
 } from '@ironsource/fusion-ui/components/table/common/entities';
 import {TableTestIdModifiers} from '@ironsource/fusion-ui/entities';
 import {TableService} from '@ironsource/fusion-ui/components/table';
@@ -146,6 +147,10 @@ export class TableBasicComponent implements OnInit, OnDestroy, AfterViewInit {
 
     displayExpandableRows(rowIndex: number | string): boolean {
         return !!this.options?.rowsExpandableOptions?.key && this.isExpanded(rowIndex);
+    }
+
+    isInnerEntityType(innerType: InnerEntityType) {
+        return this.options.rowsExpandableOptions.innerEntityType === innerType;
     }
 
     isExpanded(rowIndex: number | string): boolean {

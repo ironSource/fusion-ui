@@ -30,4 +30,12 @@ $failedCellHeight: 36px;
     tr.is-row-in-request{
         pointer-events: none;
     }
+    tr.fu-inner-object{
+        border-bottom: var(--table-border);
+        .fu-inner-object-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
 }

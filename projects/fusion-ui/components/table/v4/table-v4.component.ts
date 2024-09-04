@@ -361,7 +361,8 @@ export class TableV4Component implements OnInit, OnDestroy, AfterViewInit {
         if (!!this.expandRow.observers.length) {
             // has expandRow event subscription in host
             if (Array.isArray(this.rows)) {
-                this.expandRow.emit({rowIndex, row, isExpanded, successCallback, failedCallback, updateMap});
+                const innerEntityType = this.options.rowsExpandableOptions?.innerEntityType ?? 'innerRows';
+                this.expandRow.emit({rowIndex, row, isExpanded, successCallback, failedCallback, updateMap, innerEntityType});
                 this.currentExpandedMap = {...this.currentExpandedMap, [rowIndex]: isExpanded};
             }
         } else {

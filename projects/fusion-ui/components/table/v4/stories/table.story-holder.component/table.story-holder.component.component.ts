@@ -1,16 +1,17 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, Type} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {delay, finalize, map, take, takeUntil, tap} from 'rxjs/operators';
-import {BehaviorSubject, of, Subject} from 'rxjs';
+import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {isNullOrUndefined, isNumber} from '@ironsource/fusion-ui/utils';
 import {ButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
 import {GenericPipe, TableTestIdModifiers} from '@ironsource/fusion-ui';
 import {SearchV4Component} from '@ironsource/fusion-ui/components/search/v4/search-v4.component';
-import {TableColumn, TableOptions, TableRowExpandEmitter} from '@ironsource/fusion-ui/components/table';
+import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
+import {InnerEntityType, TableColumn, TableOptions, TableRowExpandEmitter} from '@ironsource/fusion-ui/components/table';
 import {EXPAND_ROWS_DEFAULT_DATA} from '../table.mock-data';
 import {TableV4Component} from '../../table-v4.component';
-import {Exception} from 'sass';
+import {RowExpandInnerComponent} from '../row-expand-inner/row-expand-inner.component';
 
 @Component({
     selector: 'fusion-table-story-holder',
@@ -205,13 +206,13 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
             });
     }
 
-    onExpandRow({rowIndex, row, isExpanded, successCallback, failedCallback, updateMap}: TableRowExpandEmitter): void {
-        this.expandRow.emit({rowIndex, row, isExpanded, successCallback, failedCallback, updateMap});
+    onExpandRow({rowIndex, row, isExpanded, successCallback, failedCallback, updateMap, innerEntityType}: TableRowExpandEmitter): void {
+        this.expandRow.emit({rowIndex, row, isExpanded, successCallback, failedCallback, updateMap, innerEntityType});
         // updateMap - in case external expand call it must be false because map will be already updated.
         const tableRows = this.tableRows;
         // get child rows that can be already existed
         const childExisted: any[] = tableRows[rowIndex].children;
-        (isExpanded ? (!isNullOrUndefined(childExisted) ? of(childExisted) : this.getExpandedData(rowIndex)) : of(null))
+        (isExpanded ? (!isNullOrUndefined(childExisted) ? of(childExisted) : this.getExpandedData(rowIndex, innerEntityType)) : of(null))
             .pipe(
                 take(1),
                 tap(() => {
@@ -230,7 +231,6 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
                 if (isNullOrUndefined(childExisted)) {
                     // if was no children, set arrived data as children
                     const children = !!data ? data : [];
-
                     // update row by index with children
                     tableRows.splice(parseInt(rowIndex as string, 10), 1, {...row, children});
                     // update table rows
@@ -264,20 +264,37 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
     /**
      * Just get from main data mock - portion for child rows
      */
-    private getExpandedData(rowIndex) {
+    private getExpandedData(rowIndex, innerEntityType: InnerEntityType): Observable<any[]> {
         if (isNumber(rowIndex)) {
-            // @ts-ignore
-            return of(
-                EXPAND_ROWS_DEFAULT_DATA.slice(5, 30).map(item => {
-                    if (!this.options.hasRowSpan) {
-                        return item;
-                    } else {
-                        return {
-                            ...item
-                        };
+            if (innerEntityType === 'dynamicComponent') {
+                // @ts-ignore
+                return of([
+                    {
+                        component: {
+                            type: RowExpandInnerComponent as Type<Component>,
+                            data: {
+                                title: this.tableRows[rowIndex]?.name ?? 'NoName',
+                                subtitle:
+                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dolor magna eget est lorem ipsum dolor sit amet',
+                                benefits: ['Odio pellentesque diam volutpat commodo', 'Egestas sed tempus urna et pharetra pharetra']
+                            }
+                        }
                     }
-                })
-            ).pipe(delay(1000));
+                ] as DynamicComponentConfiguration[]).pipe(delay(1000));
+            } else {
+                // @ts-ignore
+                return of(
+                    EXPAND_ROWS_DEFAULT_DATA.slice(5, 30).map(item => {
+                        if (!this.options.hasRowSpan) {
+                            return item;
+                        } else {
+                            return {
+                                ...item
+                            };
+                        }
+                    })
+                ).pipe(delay(1000));
+            }
         }
         return of([]).pipe(delay(1000));
     }

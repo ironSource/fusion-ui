@@ -214,7 +214,7 @@ export const ExpandRows: Story = {
     })
 };
 
-export const ExpandWithDynamicElement: Story = {
+export const ExpandWithDynamicObject: Story = {
     render: args => ({
         props: {
             ...args,
@@ -224,8 +224,9 @@ export const ExpandWithDynamicElement: Story = {
                 stickyHeader: true,
                 hasRowSpan: true,
                 rowsExpandableOptions: {
-                    key: 'customExpandElement',
-                    columns: []
+                    key: 'children',
+                    columns: EXPAND_COLUMNS_CONFIG,
+                    innerEntityType: 'dynamicComponent'
                 }
             },
             expandRow: actionsData.expandRow
