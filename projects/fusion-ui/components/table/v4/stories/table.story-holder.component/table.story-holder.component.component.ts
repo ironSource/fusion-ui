@@ -7,7 +7,7 @@ import {isNullOrUndefined, isNumber} from '@ironsource/fusion-ui/utils';
 import {ButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
 import {GenericPipe, TableTestIdModifiers} from '@ironsource/fusion-ui';
 import {SearchV4Component} from '@ironsource/fusion-ui/components/search/v4/search-v4.component';
-import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
+import {DynamicComponent, DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 import {InnerEntityType, TableColumn, TableOptions, TableRowExpandEmitter} from '@ironsource/fusion-ui/components/table';
 import {EXPAND_ROWS_DEFAULT_DATA} from '../table.mock-data';
 import {TableV4Component} from '../../table-v4.component';
@@ -278,7 +278,7 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
                                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dolor magna eget est lorem ipsum dolor sit amet',
                                 benefits: ['Odio pellentesque diam volutpat commodo', 'Egestas sed tempus urna et pharetra pharetra']
                             }
-                        }
+                        } as DynamicComponent
                     }
                 ] as DynamicComponentConfiguration[]).pipe(delay(1000));
             } else {

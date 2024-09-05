@@ -44,14 +44,10 @@
             </div>
         }
     } @else if (tableService.isTypeComponent(column)) {
-        <!-- todo: add support for dynamic cell-->
-        <div>dynamic</div>
-        <!--
             <fusion-dynamic-components
                 [configuration]="customCellData"
             >
             </fusion-dynamic-components>
-        -->
     } @else if (tableService.isTypeCurrency(column)) {
         <div class="truncate"
              [ngClass]="column.align || 'right'"

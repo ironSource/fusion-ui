@@ -41,6 +41,7 @@ import {CommonModule} from '@angular/common';
 import {NotAvailablePipe} from '@ironsource/fusion-ui/pipes/not-available';
 import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
 import {CheckboxComponent} from '@ironsource/fusion-ui/components/checkbox/v4';
+import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components/v1';
 
 type CellDataType = Type<Component> | FormControl | string | boolean | undefined | null;
 
@@ -48,7 +49,15 @@ type CellDataType = Type<Component> | FormControl | string | boolean | undefined
     // eslint-disable-next-line
     selector: '[fusionTableCell]',
     standalone: true,
-    imports: [CommonModule, ReactiveFormsModule, NotAvailablePipe, TooltipDirective, CheckboxComponent, InputInlineComponent],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        NotAvailablePipe,
+        TooltipDirective,
+        CheckboxComponent,
+        InputInlineComponent,
+        DynamicComponentsModule
+    ],
     templateUrl: './table-cell.component.html',
     styleUrls: ['./table-cell.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
