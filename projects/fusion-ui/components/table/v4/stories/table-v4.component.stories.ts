@@ -137,6 +137,27 @@ export const InlineEditing: Story = {
     })
 };
 
+export const RemoveActions: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            columns: TABLE_DEFAULT_COLUMNS_CONFIG,
+            rows: ROWS_DEFAULT_DATA_WITH_ID,
+            rowModelChange: actionsData.rowModelChange,
+            options: {
+                stickyHeader: true,
+                remove: {
+                    active: true,
+                    icon: 'ph/trash',
+                    tooltip: {text: 'Remove this row'}
+                }
+            }
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+RemoveActions.decorators = [componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)];
+
 export const MenuActions: Story = {
     render: args => ({
         props: {

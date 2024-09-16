@@ -103,18 +103,17 @@
     <!--single remove action button-->
     <ng-container *ngIf="isRemove && !isReadOnly" [ngTemplateOutlet]="removeActionButton"></ng-container>
     <!--single remove action button-->
-            <!--multiple actions menu-->
+    <!--multiple actions menu-->
     <ng-container *ngIf="multipleActions as rowActions" [ngTemplateOutlet]="multipleActionsMenu"
                   [ngTemplateOutletContext]="{$implicit: rowActions.actions}"></ng-container>
     <!--multiple actions menu-->
 }
 
 <ng-template #removeActionButton>
-    <div class="fu-cell-action-button"
-         [fusionTooltip]="getRemoveIconTooltipText()"
-         (click)="onRowRemoveClicked($event)"
-    >
-        <fusion-icon class="fu-table-action-icon" [name]="cellRemoveActionIcon"></fusion-icon>
+    <div class="fu-button-holder">
+        <fusion-icon-button [iconName]="cellRemoveActionIcon"
+                            [fusionTooltip]="getRemoveIconTooltipText()"
+                            (click)="onRowRemoveClicked($event)"></fusion-icon-button>
     </div>
 </ng-template>
 
