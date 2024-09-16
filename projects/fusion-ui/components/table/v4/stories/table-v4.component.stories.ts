@@ -35,12 +35,14 @@ const TEMPLATE_TABLE_HOLDER = `<fusion-table-story-holder
     (selectionChanged)="selectionChanged($event)"
     (rowModelChange)="rowModelChange($event)"
     (expandRow)="expandRow($event)"
+    (rowActionClicked)="rowActionClicked($event)"
 ></fusion-table-story-holder>`;
 
 const actionsData = {
     selectionChanged: action('selectionChanged'),
     rowModelChange: action('rowModelChange'),
-    expandRow: action('expandRow')
+    expandRow: action('expandRow'),
+    rowActionClicked: action('rowActionClicked')
 };
 
 export default {
