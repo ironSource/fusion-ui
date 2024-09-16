@@ -23,7 +23,7 @@ export const TABLE_HORIZONTAL_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'address', title: 'Address', width: '200px'},
     {key: 'state', title: 'State', width: '150px'},
     {key: 'phone', title: 'Phone number', width: '200px'},
-    {key: 'status', title: 'Status', width: '150px'}
+    {key: 'status', title: 'Status'}
 ];
 
 export const ROWS_DEFAULT_DATA = [

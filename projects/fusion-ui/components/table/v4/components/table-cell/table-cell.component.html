@@ -1,9 +1,11 @@
 @if ((isRowTotal && tableService.isInTotalTypeString(column)) || tableService.isTypeString(column)) {
     <!--String Cell-->
-    <div [ngClass]="column.align" [style.width]="innerElementWidth">
+    @if(cellStringData){
+        <div [ngClass]="column.align" [style.width]="innerElementWidth">
         <span class="truncate"
               [fusionTooltip]="cellStringData">{{ cellStringData | notAvailable: notAvailableText }}</span>
-    </div>
+        </div>
+    }
 } @else {
     @if (tableService.isTypeCheckbox(column) && isBoolean(data)) {
         <div class="checkbox-cell">

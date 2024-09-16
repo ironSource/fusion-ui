@@ -53,6 +53,21 @@
         right: 12px;
         @include size(28px);
     }
+
+    &.fu-sticky-actions{
+        position: sticky;
+        right: 0;
+        background-color: var(--table-odd-row-background-color);
+        .fu-button-holder{
+            border-left: var(--table-border);
+            right: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+    }
 }
 
 :host-context(.is-row-in-request) {

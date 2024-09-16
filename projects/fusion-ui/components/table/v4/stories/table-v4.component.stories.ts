@@ -24,6 +24,7 @@ import {
 } from './table.mock-data';
 import {TableV4StoryHolderComponent} from './table.story-holder.component/table.story-holder.component.component';
 import {action} from '@storybook/addon-actions';
+import {TableOptions} from '@ironsource/fusion-ui/components/table';
 
 const TEMPLATE_TABLE_HOLDER = `<fusion-table-story-holder
     [options]="options"
@@ -169,13 +170,33 @@ export const MenuActions: Story = {
                 stickyHeader: true,
                 rowActionsMenu: {
                     actions: MOCK_ROW_ACTIONS
-                }
+                } as TableOptions
             }
         },
         template: TEMPLATE_TABLE_HOLDER
     })
 };
 MenuActions.decorators = [componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)];
+
+export const StickyActions: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            columns: TABLE_HORIZONTAL_COLUMNS_CONFIG,
+            rows: ROWS_HORIZONTAL_DATA_WITH,
+            rowModelChange: actionsData.rowModelChange,
+            options: {
+                stickyHeader: true,
+                rowActionsMenu: {
+                    stickyActionButton: true,
+                    actions: MOCK_ROW_ACTIONS
+                }
+            }
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+StickyActions.decorators = [componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)];
 
 export const StickyHeader: Story = {
     render: args => ({
