@@ -19,7 +19,8 @@ import {
     TABLE_NUMBERS_COLUMNS_CONFIG,
     TABLE_NUMBERS_SORTABLE_COLUMNS_CONFIG,
     TABLE_SELECTABLE_COLUMNS_CONFIG,
-    TABLE_TOOLTIP_COLUMNS_CONFIG
+    TABLE_TOOLTIP_COLUMNS_CONFIG,
+    MOCK_ROW_ACTIONS
 } from './table.mock-data';
 import {TableV4StoryHolderComponent} from './table.story-holder.component/table.story-holder.component.component';
 import {action} from '@storybook/addon-actions';
@@ -135,6 +136,25 @@ export const InlineEditing: Story = {
         template: TEMPLATE_TABLE_HOLDER
     })
 };
+
+export const MenuActions: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            columns: TABLE_DEFAULT_COLUMNS_CONFIG,
+            rows: ROWS_DEFAULT_DATA_WITH_ID,
+            rowModelChange: actionsData.rowModelChange,
+            options: {
+                stickyHeader: true,
+                rowActionsMenu: {
+                    actions: MOCK_ROW_ACTIONS
+                }
+            }
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+MenuActions.decorators = [componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)];
 
 export const StickyHeader: Story = {
     render: args => ({

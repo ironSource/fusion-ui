@@ -530,8 +530,6 @@ export class TableV4Component implements OnInit, OnDestroy, AfterViewInit {
                     if (this.lastScrollLeftValue !== scrollLeft) {
                         this.isScrollRight = scrollLeft > 0;
                         this.lastScrollLeftValue = scrollLeft;
-                        // todo: check this
-                        // this.cdr.markForCheck();
                     }
                 }),
                 debounceTime(10)
@@ -589,6 +587,8 @@ export class TableV4Component implements OnInit, OnDestroy, AfterViewInit {
     }
 
     private onScroll($event) {
+        this.tableService.tableScrolled.emit($event);
+
         if (this.options.hasReturnToTopButton) {
             this.shownGoTopButton$.next(this.scrollElement.scrollTop > this.tableElement.nativeElement.offsetTop);
         }

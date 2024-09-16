@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MenuDropComponent} from '@ironsource/fusion-ui/components/menu-drop';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';

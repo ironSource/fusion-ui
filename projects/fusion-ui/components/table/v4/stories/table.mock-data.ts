@@ -789,3 +789,11 @@ export const EXPAND_ROWS_DEFAULT_DATA = [
 ];
 
 // endregion
+
+// region row actions
+export const MOCK_ROW_ACTIONS = [
+    {icon: 'ph/pencil-simple', label: 'Edit'},
+    {icon: 'ph/copy-simple', label: 'Duplicate'},
+    {icon: 'ph/trash-simple', label: 'Delete'}
+];
+// endregion

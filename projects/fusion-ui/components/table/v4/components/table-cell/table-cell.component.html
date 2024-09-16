@@ -44,10 +44,10 @@
             </div>
         }
     } @else if (tableService.isTypeComponent(column)) {
-            <fusion-dynamic-components
+        <fusion-dynamic-components
                 [configuration]="customCellData"
-            >
-            </fusion-dynamic-components>
+        >
+        </fusion-dynamic-components>
     } @else if (tableService.isTypeCurrency(column)) {
         <div class="truncate"
              [ngClass]="column.align || 'right'"
@@ -99,39 +99,38 @@
 }
 
 <!--Row utility Cell icons and buttons-->
-<!--
-<ng-container *ngIf="!isRowTotal && isLastColumn">
-    &lt;!&ndash;single remove action button&ndash;&gt;
+@if (!isRowTotal && isLastColumn) {
+    <!--single remove action button-->
     <ng-container *ngIf="isRemove && !isReadOnly" [ngTemplateOutlet]="removeActionButton"></ng-container>
-    &lt;!&ndash;single remove action button&ndash;&gt;
-    &lt;!&ndash;multiple actions menu&ndash;&gt;
-    <ng-container *ngIf="multipleActions as rowActions" [ngTemplateOutlet]="multipleActionsMenu" [ngTemplateOutletContext]="{$implicit: rowActions.actions}"></ng-container>
-    &lt;!&ndash;multiple actions menu&ndash;&gt;
-</ng-container>
--->
+    <!--single remove action button-->
+            <!--multiple actions menu-->
+    <ng-container *ngIf="multipleActions as rowActions" [ngTemplateOutlet]="multipleActionsMenu"
+                  [ngTemplateOutletContext]="{$implicit: rowActions.actions}"></ng-container>
+    <!--multiple actions menu-->
+}
 
-<!--<ng-template #removeActionButton>
+<ng-template #removeActionButton>
     <div class="fu-cell-action-button"
          [fusionTooltip]="getRemoveIconTooltipText()"
          (click)="onRowRemoveClicked($event)"
     >
         <fusion-icon class="fu-table-action-icon" [name]="cellRemoveActionIcon"></fusion-icon>
     </div>
-</ng-template>-->
+</ng-template>
 
-<!--<ng-template #multipleActionsMenu let-menuActions>
-    <div id="{{actionsMenuButtonId}}" class="fu-button-holder" [class.fu-row-menu-shown]="shownActionsMenu">
-        <fusion-button class="transparent third fu-menu-drop-button" [icon]="'more-vert'" (click)="onActionButtonClicked()"></fusion-button>
+<ng-template #multipleActionsMenu let-menuActions>
+    <div id="{{actionsMenuButtonId}}" class="fu-button-holder" [class.fu-row-menu-shown]="shownActionsMenu$ | async">
+        <fusion-icon-button [iconName]="'ph/dots-three'" (click)="onActionButtonClicked()"></fusion-icon-button>
+        @if (shownActionsMenu$ | async) {
+            <fusion-menu-drop style="--fu-drop-menu-width: 200px"
+                    *fusionTeleporting="'#'+options.tableId+'_tableTeleportWrapper'"
+                    [fusionReposition]="'#'+actionsMenuButtonId"
+                    [fusionRepositionPlacement]="floatingMenuPosition"
+                    [fusionRepositionOffset]="{y:-32, x:-32}"
+                    [menuItems]="menuActions"
+                    (fusionClickOutside)="onActionMenuClickOutSide($event)"
+                    (menuItemClicked)="menuItemClicked($event)"
+            ></fusion-menu-drop>
+        }
     </div>
-    <ng-container *ngIf="shownActionsMenu">
-        <fusion-menu-drop
-            *fusionTeleporting="'#'+options.tableId+'_tableTeleportWrapper'"
-            [fusionReposition]="'#'+actionsMenuButtonId"
-            [fusionRepositionPlacement]="floatingMenuPosition"
-            [fusionRepositionOffset]="{y:-32}"
-            [menuItems]="menuActions"
-            (fusionClickOutside)="onActionMenuClickOutSide($event)"
-            (menuItemClicked)="menuItemClicked($event)"
-        ></fusion-menu-drop>
-    </ng-container>
-</ng-template>-->
+</ng-template>

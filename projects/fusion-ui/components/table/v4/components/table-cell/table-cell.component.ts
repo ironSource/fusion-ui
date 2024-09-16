@@ -13,7 +13,7 @@ import {
     Type,
     ViewChild
 } from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {isBoolean, isNull, isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {TableService} from '@ironsource/fusion-ui/components/table/common/services';
@@ -35,13 +35,18 @@ import {ERROR_MESSAGES} from '@ironsource/fusion-ui/components/error-message';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
-import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
+import {MenuDropComponent, MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop/v4';
 import {TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {CommonModule} from '@angular/common';
 import {NotAvailablePipe} from '@ironsource/fusion-ui/pipes/not-available';
 import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
 import {CheckboxComponent} from '@ironsource/fusion-ui/components/checkbox/v4';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components/v1';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+import {IconButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
+import {ClickOutsideModule, TeleportingModule} from '@ironsource/fusion-ui';
+import {RepositionDirective} from '@ironsource/fusion-ui/directives/reposition';
+import {takeUntil} from 'rxjs/operators';
 
 type CellDataType = Type<Component> | FormControl | string | boolean | undefined | null;
 
@@ -56,7 +61,13 @@ type CellDataType = Type<Component> | FormControl | string | boolean | undefined
         TooltipDirective,
         CheckboxComponent,
         InputInlineComponent,
-        DynamicComponentsModule
+        DynamicComponentsModule,
+        IconModule,
+        IconButtonComponent,
+        MenuDropComponent,
+        ClickOutsideModule,
+        TeleportingModule,
+        RepositionDirective
     ],
     templateUrl: './table-cell.component.html',
     styleUrls: ['./table-cell.component.scss'],
@@ -109,7 +120,7 @@ export class TableCellComponent implements OnInit, OnChanges {
     customCellData: DynamicComponentConfiguration;
     floatingMenuPosition = TooltipPosition.BottomRight;
 
-    shownActionsMenu = false;
+    shownActionsMenu$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
     get actionsMenuButtonId(): string {
         return this.options.tableId + '_' + this.rowIndex;
@@ -170,6 +181,7 @@ export class TableCellComponent implements OnInit, OnChanges {
 
     private _data: CellDataType;
     private inlineInputViewOnlyText = '';
+    private onActionMenuClose$ = new Subject<void>();
 
     constructor(
         public tableService: TableService,
@@ -327,18 +339,27 @@ export class TableCellComponent implements OnInit, OnChanges {
     }
 
     menuItemClicked(action: MenuDropItem) {
-        this.shownActionsMenu = false;
+        this.closeActionsMenu();
         this.tableService.rowActionClicked.emit({action: action, rowIndex: this.rowIndex, row: this.row});
     }
 
     onActionButtonClicked() {
-        this.shownActionsMenu = true;
+        this.shownActionsMenu$.next(true);
+        this.tableService.tableScrolled.pipe(takeUntil(this.onActionMenuClose$)).subscribe($event => {
+            this.closeActionsMenu();
+        });
     }
 
     onActionMenuClickOutSide(target) {
         if (!target.closest('#' + this.actionsMenuButtonId)) {
-            this.shownActionsMenu = false;
+            this.closeActionsMenu();
         }
+    }
+
+    private closeActionsMenu() {
+        this.shownActionsMenu$.next(false);
+        this.onActionMenuClose$.next();
+        this.onActionMenuClose$.complete();
     }
 
     private _getMessage(errorKey, {errorMessageKey = '', textMapping = []}, errorDefaults?: any): string {

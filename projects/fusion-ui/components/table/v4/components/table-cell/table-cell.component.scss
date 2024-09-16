@@ -44,6 +44,32 @@
         @extend %truncate-flex-child;
     }
 
+    .fu-button-holder{
+        display: block;
+        position: absolute;
+        margin: auto 0;
+        top: 0;
+        bottom: 0;
+        right: 12px;
+        @include size(28px);
+
+        /*
+        fusion-button {
+            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.24);
+            border: none;
+            background-color: $White;
+            ::ng-deep fusion-icon{
+                @include size(24px);
+                svg {
+                    @include size(24px);
+                }
+            }
+        }
+        */
+    }
+
+
+
 
     // todo: to review and remove
     /*    padding: 0 16px;

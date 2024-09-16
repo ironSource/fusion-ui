@@ -22,6 +22,7 @@ import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline';
 export class TableService {
     private selectedRows: any[] = [];
     public selectionChanged = new EventEmitter();
+    public tableScrolled = new EventEmitter<Event>();
     public rowModelChange: EventEmitter<TableRowChangedData> = new EventEmitter();
     public rowActionClicked = new EventEmitter<{action: MenuDropItem; rowIndex: string | number; row: TableRow}>();
     public expandLevels: number;
