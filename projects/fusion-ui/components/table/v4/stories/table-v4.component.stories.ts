@@ -80,15 +80,43 @@ Numbers.args = {
     rows: ROWS_NUMBERS_DATA
 };
 
-export const SortableColumns: Story = {};
-SortableColumns.args = {
-    columns: TABLE_NUMBERS_SORTABLE_COLUMNS_CONFIG,
-    rows: ROWS_NUMBERS_DATA
+export const HeaderAndFooter: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            options: {
+                tableLabel: {text: 'Users', tooltip: 'Users table'},
+                searchOptions: {
+                    placeholder: 'Search',
+                    onSearch: new EventEmitter()
+                }
+            },
+            hasCustomFooter: true
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
 };
 
-export const ColumnTooltips: Story = {};
-ColumnTooltips.args = {
-    columns: TABLE_TOOLTIP_COLUMNS_CONFIG
+export const ActionsHeader: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            hasCustomHeader: true
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+
+export const InlineEditing: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            columns: TABLE_EDITABLE_COLUMNS_CONFIG,
+            rows: ROWS_EDITABLE_DATA,
+            rowModelChange: actionsData.rowModelChange
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
 };
 
 export const SelectableRows: Story = {
@@ -114,66 +142,6 @@ export const ToggleInRows: Story = {
         template: TEMPLATE_TABLE_HOLDER
     })
 };
-
-export const HeaderAndFooter: Story = {
-    render: args => ({
-        props: {
-            ...args,
-            options: {
-                tableLabel: {text: 'Users', tooltip: 'Users table'},
-                searchOptions: {
-                    placeholder: 'Search',
-                    onSearch: new EventEmitter()
-                }
-            },
-            hasCustomFooter: true
-        },
-        template: TEMPLATE_TABLE_HOLDER
-    })
-};
-
-export const CustomHeader: Story = {
-    render: args => ({
-        props: {
-            ...args,
-            hasCustomHeader: true
-        },
-        template: TEMPLATE_TABLE_HOLDER
-    })
-};
-
-export const InlineEditing: Story = {
-    render: args => ({
-        props: {
-            ...args,
-            columns: TABLE_EDITABLE_COLUMNS_CONFIG,
-            rows: ROWS_EDITABLE_DATA,
-            rowModelChange: actionsData.rowModelChange
-        },
-        template: TEMPLATE_TABLE_HOLDER
-    })
-};
-
-export const RemoveActions: Story = {
-    render: args => ({
-        props: {
-            ...args,
-            columns: TABLE_DEFAULT_COLUMNS_CONFIG,
-            rows: ROWS_DEFAULT_DATA_WITH_ID,
-            rowModelChange: actionsData.rowModelChange,
-            options: {
-                stickyHeader: true,
-                remove: {
-                    active: true,
-                    icon: 'ph/trash',
-                    tooltip: {text: 'Remove this row'}
-                }
-            }
-        },
-        template: TEMPLATE_TABLE_HOLDER
-    })
-};
-RemoveActions.decorators = [componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)];
 
 export const MenuActions: Story = {
     render: args => ({
@@ -213,6 +181,55 @@ export const StickyActions: Story = {
     })
 };
 StickyActions.decorators = [componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)];
+
+export const DeleteRow: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            columns: TABLE_DEFAULT_COLUMNS_CONFIG,
+            rows: ROWS_DEFAULT_DATA_WITH_ID,
+            rowModelChange: actionsData.rowModelChange,
+            options: {
+                stickyHeader: true,
+                remove: {
+                    active: true,
+                    icon: 'ph/trash',
+                    tooltip: {text: 'Remove this row'}
+                }
+            }
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+DeleteRow.decorators = [componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)];
+
+export const SortableColumns: Story = {};
+SortableColumns.args = {
+    columns: TABLE_NUMBERS_SORTABLE_COLUMNS_CONFIG,
+    rows: ROWS_NUMBERS_DATA
+};
+
+export const ColumnTooltips: Story = {};
+ColumnTooltips.args = {
+    columns: TABLE_TOOLTIP_COLUMNS_CONFIG
+};
+
+export const InfiniteScrolling: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            rows: ROWS_DEFAULT_DATA_WITH_ID,
+            options: {
+                stickyHeader: true,
+                pagination: {
+                    enable: true
+                }
+            }
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+InfiniteScrolling.decorators = [componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)];
 
 export const StickyHeader: Story = {
     render: args => ({
@@ -254,23 +271,6 @@ export const VerticalAndHorizontalScroll: Story = {
     })
 };
 VerticalAndHorizontalScroll.decorators = [componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)];
-
-export const InfiniteScrolling: Story = {
-    render: args => ({
-        props: {
-            ...args,
-            rows: ROWS_DEFAULT_DATA_WITH_ID,
-            options: {
-                stickyHeader: true,
-                pagination: {
-                    enable: true
-                }
-            }
-        },
-        template: TEMPLATE_TABLE_HOLDER
-    })
-};
-InfiniteScrolling.decorators = [componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)];
 
 export const ExpandRows: Story = {
     render: args => ({
