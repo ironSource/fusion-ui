@@ -454,6 +454,16 @@ export const ROWS_SELECTABLE_DATA = ROWS_DEFAULT_DATA.map((row, idx) => {
 });
 // endregion
 
+// region toggle rows data
+export const TABLE_TOGGLEABLE_COLUMNS_CONFIG: TableColumn[] = [
+    {key: 'toggle', type: TableColumnTypeEnum.ToggleButton},
+    ...TABLE_DEFAULT_COLUMNS_CONFIG
+];
+export const ROWS_TOGGLEABLE_DATA = ROWS_DEFAULT_DATA.map((row, idx) => {
+    return {toggle: true, ...row};
+});
+// endregion
+
 // region numbers data
 export const TABLE_NUMBERS_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'planName', title: 'Plan name'},

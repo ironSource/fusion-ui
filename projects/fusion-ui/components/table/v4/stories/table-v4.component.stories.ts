@@ -20,7 +20,9 @@ import {
     TABLE_NUMBERS_SORTABLE_COLUMNS_CONFIG,
     TABLE_SELECTABLE_COLUMNS_CONFIG,
     TABLE_TOOLTIP_COLUMNS_CONFIG,
-    MOCK_ROW_ACTIONS
+    MOCK_ROW_ACTIONS,
+    TABLE_TOGGLEABLE_COLUMNS_CONFIG,
+    ROWS_TOGGLEABLE_DATA
 } from './table.mock-data';
 import {TableV4StoryHolderComponent} from './table.story-holder.component/table.story-holder.component.component';
 import {action} from '@storybook/addon-actions';
@@ -95,6 +97,18 @@ export const SelectableRows: Story = {
             ...args,
             columns: TABLE_SELECTABLE_COLUMNS_CONFIG,
             rows: ROWS_SELECTABLE_DATA,
+            selectionChanged: actionsData.selectionChanged
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+
+export const ToggleInRows: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            columns: TABLE_TOGGLEABLE_COLUMNS_CONFIG,
+            rows: ROWS_TOGGLEABLE_DATA,
             selectionChanged: actionsData.selectionChanged
         },
         template: TEMPLATE_TABLE_HOLDER

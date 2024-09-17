@@ -17,17 +17,13 @@
             ></fusion-checkbox>
         </div>
     } @else if (tableService.isTypeToggleButton(column) && isBoolean(data)) {
-        <!-- todo: add support for toggle cell-->
-        <div>tgl
-            <!--
-                    <fusion-toggle
-                        [model]="data"
-                        [isDisabled]="isReadOnly"
-                        size="small"
-                        customCheckedBackgroundColor="#3083FF"
-                        (modelChange)="onToggleChanged($event)"
-                    ></fusion-toggle>
-            -->
+        <div>
+            <fusion-toggle
+                [model]="data"
+                [disabled]="isReadOnly"
+                [loading]="toggleInRequest$ | async"
+                (modelChange)="onToggleChanged($event)"
+            ></fusion-toggle>
         </div>
     } @else if (tableService.isTypeInputEdit(column) && data) {
         @if (!isRowTotal) {

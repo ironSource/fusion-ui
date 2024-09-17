@@ -14,13 +14,13 @@ import {
     ViewChild
 } from '@angular/core';
 import {BehaviorSubject, Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {isBoolean, isNull, isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {TableService} from '@ironsource/fusion-ui/components/table/common/services';
 import {InputInlineComponent} from '@ironsource/fusion-ui/components/input-inline/v4';
 import {AdvancedInputInline} from '@ironsource/fusion-ui/components/input-inline/common/base';
 import {
-    CELL_PADDING,
     DEFAULT_REMOVE_ICON_V3,
     DEFAULT_REMOVE_TOOLTIP_TEXT,
     TABLE_OPTIONS_TOKEN,
@@ -46,7 +46,7 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {IconButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
 import {ClickOutsideModule, TeleportingModule} from '@ironsource/fusion-ui';
 import {RepositionDirective} from '@ironsource/fusion-ui/directives/reposition';
-import {takeUntil} from 'rxjs/operators';
+import {ToggleComponent} from '@ironsource/fusion-ui/components/toggle/v4';
 
 type CellDataType = Type<Component> | FormControl | string | boolean | undefined | null;
 
@@ -67,7 +67,8 @@ type CellDataType = Type<Component> | FormControl | string | boolean | undefined
         MenuDropComponent,
         ClickOutsideModule,
         TeleportingModule,
-        RepositionDirective
+        RepositionDirective,
+        ToggleComponent
     ],
     templateUrl: './table-cell.component.html',
     styleUrls: ['./table-cell.component.scss'],
@@ -110,6 +111,7 @@ export class TableCellComponent implements OnInit, OnChanges {
     }
 
     isInRequest$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+    toggleInRequest$: BehaviorSubject<boolean> = new BehaviorSubject(false);
     innerElementWidth = '';
     isInEditMode = false;
     initInputData: string | boolean | undefined | null | AdvancedInputInline;
@@ -235,8 +237,7 @@ export class TableCellComponent implements OnInit, OnChanges {
     }
 
     onToggleChanged(newValue: boolean) {
-        // set waiter for cell
-        this.isInRequest$.next(true);
+        this.toggleInRequest$.next(true);
         this.dataChange.emit({
             newValue,
             onCellRequestDone: (isSuccess: boolean, error: {message: string; status: number}, stayInEditMode = false) => {
@@ -245,7 +246,7 @@ export class TableCellComponent implements OnInit, OnChanges {
                 } else {
                     this.data = !newValue;
                 }
-                this.isInRequest$.next(false);
+                this.toggleInRequest$.next(false);
             }
         });
     }
