@@ -22,11 +22,13 @@ import {
     TABLE_TOOLTIP_COLUMNS_CONFIG,
     MOCK_ROW_ACTIONS,
     TABLE_TOGGLEABLE_COLUMNS_CONFIG,
-    ROWS_TOGGLEABLE_DATA
+    ROWS_TOGGLEABLE_DATA,
+    ROWS_SELECTABLE_STICKY_DATA,
+    TABLE_SELECTABLE_STICKY_COLUMNS_CONFIG
 } from './table.mock-data';
 import {TableV4StoryHolderComponent} from './table.story-holder.component/table.story-holder.component.component';
 import {action} from '@storybook/addon-actions';
-import {TableOptions} from '@ironsource/fusion-ui/components/table';
+import {TableColumn, TableOptions} from '@ironsource/fusion-ui/components/table';
 
 const TEMPLATE_TABLE_HOLDER = `<fusion-table-story-holder
     [options]="options"
@@ -130,6 +132,22 @@ export const SelectableRows: Story = {
         template: TEMPLATE_TABLE_HOLDER
     })
 };
+
+export const SelectableStickyRows: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            columns: TABLE_SELECTABLE_STICKY_COLUMNS_CONFIG as TableColumn[],
+            rows: ROWS_SELECTABLE_STICKY_DATA,
+            selectionChanged: actionsData.selectionChanged,
+            options: {
+                stickyHeader: true
+            }
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+SelectableStickyRows.decorators = [componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)];
 
 export const ToggleInRows: Story = {
     render: args => ({

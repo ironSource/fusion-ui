@@ -192,6 +192,22 @@
           position: sticky;
           top: 0;
           z-index: getZIndexLayerOffset(normal, 3);
+          outline: var(--table-border);
+          td.sticky-left {
+            position: sticky;
+            left: 0;
+            z-index: 2;
+            &:after{
+              content: '';
+              position: absolute;
+              top: 0;
+              right: -1px;
+              height: 100%;
+              width: 1px;
+              border-right: var(--table-border);
+            }
+          }
+
         }
       }
     }

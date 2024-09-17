@@ -7,6 +7,7 @@
     height: var(--table-row-height);
     padding: var(--table-row-cell-padding) ;
     border-bottom: var(--table-border);
+    background-color: var(--table-odd-row-background-color);
 
     &.is-checkbox-holder{
         width: var(--table-checkbox-cell-width);
@@ -57,7 +58,6 @@
     &.fu-sticky-actions{
         position: sticky;
         right: 0;
-        background-color: var(--table-odd-row-background-color);
         .fu-button-holder{
             border-left: var(--table-border);
             right: 0;
@@ -68,8 +68,27 @@
             height: 100%;
         }
     }
+
+    &.sticky-left {
+        position: sticky;
+        left: 0;
+        z-index: 2;
+        &:after{
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -1px;
+            height: 100%;
+            width: 1px;
+            border-right: var(--table-border);
+        }
+    }
 }
 
 :host-context(.is-row-in-request) {
     opacity: var(--table-row-loading-opacity, 0.7);
+}
+
+:host-context(tr:hover) {
+    background-color: var(--table-row-hover-background-color);
 }

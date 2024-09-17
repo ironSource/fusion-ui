@@ -449,6 +449,15 @@ export const TABLE_SELECTABLE_COLUMNS_CONFIG: TableColumn[] = [
     ...TABLE_DEFAULT_COLUMNS_CONFIG
 ];
 
+export const TABLE_SELECTABLE_STICKY_COLUMNS_CONFIG: TableColumn[] = [
+    {key: 'checkbox', type: TableColumnTypeEnum.Checkbox, sticky: true},
+    ...TABLE_HORIZONTAL_COLUMNS_CONFIG
+];
+
+export const ROWS_SELECTABLE_STICKY_DATA = ROWS_HORIZONTAL_DATA_WITH.map((row, idx) => {
+    return {checkbox: idx == 3, ...row};
+});
+
 export const ROWS_SELECTABLE_DATA = ROWS_DEFAULT_DATA.map((row, idx) => {
     return {checkbox: idx == 3, ...row};
 });
