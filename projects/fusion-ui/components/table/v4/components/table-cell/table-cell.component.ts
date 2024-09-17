@@ -1,6 +1,7 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    ElementRef,
     EventEmitter,
     HostBinding,
     Inject,
@@ -49,6 +50,7 @@ import {RepositionDirective} from '@ironsource/fusion-ui/directives/reposition';
 import {ToggleComponent} from '@ironsource/fusion-ui/components/toggle/v4';
 
 type CellDataType = Type<Component> | FormControl | string | boolean | undefined | null;
+const CELL_PADDING = '32px';
 
 @Component({
     // eslint-disable-next-line
@@ -190,10 +192,13 @@ export class TableCellComponent implements OnInit, OnChanges {
         @Optional()
         @Inject(TABLE_OPTIONS_TOKEN)
         private tableModuleOptions: TableModuleOptions,
-        private logService: LogService
+        private logService: LogService,
+        public elementRef: ElementRef
     ) {}
 
     ngOnInit() {
+        const {paddingLeft, paddingRight} = this.getSellLefRightPadding();
+        this.innerElementWidth = this.column.width ? `calc(${this.column.width} - ${paddingLeft} - ${paddingRight})` : null;
         this.notAvailableText = this.options ? this.options.notAvailableText : null;
     }
 
@@ -379,6 +384,13 @@ export class TableCellComponent implements OnInit, OnChanges {
             }
         }
         return errorMessage;
+    }
+
+    private getSellLefRightPadding(): {paddingLeft: string; paddingRight: string} {
+        const computedStyle = getComputedStyle(this.elementRef.nativeElement);
+        const paddingLeft = computedStyle.paddingLeft;
+        const paddingRight = computedStyle.paddingRight;
+        return {paddingLeft, paddingRight};
     }
 
     setDisableStateForFloatingAction(menuItem: MenuDropItem): MenuDropItem {

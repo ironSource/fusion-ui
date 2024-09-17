@@ -8,7 +8,7 @@
     }
 } @else {
     @if (tableService.isTypeCheckbox(column) && isBoolean(data)) {
-        <div class="checkbox-cell">
+        <div class="checkbox-cell" [style.width]="innerElementWidth">
             <fusion-checkbox
                     class="is-regular"
                     title="select / un-select row"
@@ -17,7 +17,7 @@
             ></fusion-checkbox>
         </div>
     } @else if (tableService.isTypeToggleButton(column) && isBoolean(data)) {
-        <div>
+        <div [style.width]="innerElementWidth">
             <fusion-toggle
                 [model]="data"
                 [disabled]="isReadOnly"

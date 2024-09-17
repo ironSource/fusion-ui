@@ -456,7 +456,7 @@ export const ROWS_SELECTABLE_DATA = ROWS_DEFAULT_DATA.map((row, idx) => {
 
 // region toggle rows data
 export const TABLE_TOGGLEABLE_COLUMNS_CONFIG: TableColumn[] = [
-    {key: 'toggle', type: TableColumnTypeEnum.ToggleButton},
+    {key: 'toggle', type: TableColumnTypeEnum.ToggleButton, width: '50px'},
     ...TABLE_DEFAULT_COLUMNS_CONFIG
 ];
 export const ROWS_TOGGLEABLE_DATA = ROWS_DEFAULT_DATA.map((row, idx) => {
