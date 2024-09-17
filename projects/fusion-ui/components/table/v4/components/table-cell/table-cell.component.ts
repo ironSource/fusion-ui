@@ -45,12 +45,12 @@ import {CheckboxComponent} from '@ironsource/fusion-ui/components/checkbox/v4';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components/v1';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {IconButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
-import {ClickOutsideModule, TeleportingModule} from '@ironsource/fusion-ui';
+import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
+import {TeleportingModule} from '@ironsource/fusion-ui/directives/teleporting';
 import {RepositionDirective} from '@ironsource/fusion-ui/directives/reposition';
 import {ToggleComponent} from '@ironsource/fusion-ui/components/toggle/v4';
 
 type CellDataType = Type<Component> | FormControl | string | boolean | undefined | null;
-const CELL_PADDING = '32px';
 
 @Component({
     // eslint-disable-next-line
