@@ -131,6 +131,8 @@ export class TableService {
         const style = col.style || {};
         if (col.stickyLeftMargin) {
             style.left = col.stickyLeftMargin;
+        } else if (col.stickyRightMargin) {
+            style.right = col.stickyRightMargin;
         }
         return style;
     }
@@ -240,6 +242,8 @@ export class TableService {
         let headerClass = '';
         if (col.sticky) {
             headerClass += ' sticky-left';
+        } else if (col.stickyRight) {
+            headerClass += ' sticky-right';
         }
         if (col.class && col.class.indexOf('display-shadow-on-scroll') !== -1) {
             headerClass += ' display-shadow-on-scroll';

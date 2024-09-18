@@ -83,6 +83,22 @@
             border-right: var(--table-border);
         }
     }
+    &.sticky-right {
+        position: sticky;
+        right: 0;
+        z-index: 2;
+        &:nth-child(1 of .sticky-right){
+            &:before{
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -1px;
+                height: 100%;
+                width: 1px;
+                border-left: var(--table-border);
+            }
+        }
+    }
 }
 
 :host-context(.is-row-in-request) {

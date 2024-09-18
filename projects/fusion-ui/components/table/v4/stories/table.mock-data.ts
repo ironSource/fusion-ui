@@ -21,9 +21,9 @@ export const TABLE_HORIZONTAL_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'firstName', title: 'First name', width: '150px'},
     {key: 'lastName', title: 'Last name', width: '150px'},
     {key: 'address', title: 'Address', width: '200px'},
-    {key: 'state', title: 'State', width: '150px'},
-    {key: 'phone', title: 'Phone number', width: '200px'},
-    {key: 'status', title: 'Status'}
+    {key: 'state', title: 'State'},
+    {key: 'phone', title: 'Phone number', width: '150px'},
+    {key: 'status', title: 'Status', width: '100px'}
 ];
 
 export const ROWS_DEFAULT_DATA = [
@@ -448,6 +448,20 @@ export const TABLE_SELECTABLE_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'checkbox', type: TableColumnTypeEnum.Checkbox},
     ...TABLE_DEFAULT_COLUMNS_CONFIG
 ];
+
+export const TABLE_STICKY_COLUMNS_CONFIG: TableColumn[] = TABLE_HORIZONTAL_COLUMNS_CONFIG.map((column: TableColumn, idx: number) => {
+    let colData: TableColumn;
+    const length = TABLE_HORIZONTAL_COLUMNS_CONFIG.length;
+    if (idx === length - 1 || idx === length - 2) {
+        colData = {...column, stickyRight: true};
+        if (idx === length - 2) {
+            colData = {...colData, stickyRightMargin: '100px'};
+        }
+    } else {
+        colData = {...column, sticky: idx === 0};
+    }
+    return colData;
+});
 
 export const TABLE_SELECTABLE_STICKY_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'checkbox', type: TableColumnTypeEnum.Checkbox, sticky: true},

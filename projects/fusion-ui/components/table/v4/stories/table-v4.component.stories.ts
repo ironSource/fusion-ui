@@ -24,7 +24,8 @@ import {
     TABLE_TOGGLEABLE_COLUMNS_CONFIG,
     ROWS_TOGGLEABLE_DATA,
     ROWS_SELECTABLE_STICKY_DATA,
-    TABLE_SELECTABLE_STICKY_COLUMNS_CONFIG
+    TABLE_SELECTABLE_STICKY_COLUMNS_CONFIG,
+    TABLE_STICKY_COLUMNS_CONFIG
 } from './table.mock-data';
 import {TableV4StoryHolderComponent} from './table.story-holder.component/table.story-holder.component.component';
 import {action} from '@storybook/addon-actions';
@@ -148,6 +149,21 @@ export const SelectableStickyRows: Story = {
     })
 };
 SelectableStickyRows.decorators = [componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)];
+
+export const StickyColumns: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            columns: TABLE_STICKY_COLUMNS_CONFIG as TableColumn[],
+            rows: ROWS_HORIZONTAL_DATA_WITH,
+            options: {
+                stickyHeader: true
+            }
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+StickyColumns.decorators = [componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)];
 
 export const ToggleInRows: Story = {
     render: args => ({

@@ -39,6 +39,8 @@ export interface TableColumn {
     };
     sticky?: boolean;
     stickyLeftMargin?: string;
+    stickyRight?: boolean; // from v4, sticky column on end of table
+    stickyRightMargin?: string; // from v4, sticky column on end of table but not last stickyRight column
     dateFormat?: string;
     ignoreTimeZone?: boolean;
     colspan?: number;
