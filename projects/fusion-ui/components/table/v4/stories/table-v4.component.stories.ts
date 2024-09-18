@@ -122,6 +122,18 @@ export const InlineEditing: Story = {
     })
 };
 
+export const ToggleInRows: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            columns: TABLE_TOGGLEABLE_COLUMNS_CONFIG,
+            rows: ROWS_TOGGLEABLE_DATA,
+            selectionChanged: actionsData.selectionChanged
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+
 export const SelectableRows: Story = {
     render: args => ({
         props: {
@@ -164,18 +176,6 @@ export const StickyColumns: Story = {
     })
 };
 StickyColumns.decorators = [componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)];
-
-export const ToggleInRows: Story = {
-    render: args => ({
-        props: {
-            ...args,
-            columns: TABLE_TOGGLEABLE_COLUMNS_CONFIG,
-            rows: ROWS_TOGGLEABLE_DATA,
-            selectionChanged: actionsData.selectionChanged
-        },
-        template: TEMPLATE_TABLE_HOLDER
-    })
-};
 
 export const MenuActions: Story = {
     render: args => ({
