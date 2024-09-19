@@ -5,6 +5,8 @@ import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../stories/environments/environment';
 import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline';
 import {InputInlineV4Component} from './input-inline-v4.component';
+import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
+import {DropdownComponent} from '@ironsource/fusion-ui/components/dropdown/v4';
 
 const BASE_TEMPLATE = `
 <fusion-input-inline
@@ -13,17 +15,39 @@ const BASE_TEMPLATE = `
     [readOnly]="readOnly"
     [pending]="pending"
     [currencyPipeParameters]="currencyPipeParameters"
+    [selectOptions]="selectOptions"
     (onSave)="onSave($event)"
     (onCancel)="onCancel($event)"
 ></fusion-input-inline>`;
 
+const SELECT_OPTIONS: DropdownOption[] = [
+    {
+        id: 1,
+        displayText: 'Option 1'
+    },
+    {
+        id: 2,
+        displayText: 'Option 2'
+    },
+    {
+        id: 3,
+        displayText: 'Option 3'
+    }
+];
+
 export default {
-    title: 'V4/Components/Inputs/TextField-Inline',
+    title: 'V4/Components/Inputs/Inline-Edit',
     component: InputInlineV4Component,
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, FormsModule, ReactiveFormsModule, SvgModule.forRoot({assetsPath: environment.assetsPath})]
+            imports: [
+                CommonModule,
+                FormsModule,
+                ReactiveFormsModule,
+                SvgModule.forRoot({assetsPath: environment.assetsPath}),
+                DropdownComponent
+            ]
         }),
         componentWrapperDecorator(story => `<div style="width: 150px;">${story}</div>`)
     ],
@@ -97,6 +121,18 @@ export const Percent: Story = {
             ...args,
             formControl: new FormControl(5),
             type: InlineInputType.Percent
+        },
+        template: BASE_TEMPLATE
+    })
+};
+
+export const Dropdown: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            formControl: new FormControl([SELECT_OPTIONS[1]]),
+            selectOptions: SELECT_OPTIONS,
+            type: InlineInputType.Dropdown
         },
         template: BASE_TEMPLATE
     })
