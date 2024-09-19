@@ -83,7 +83,7 @@
     outline: 1px solid var(--action-outlinedBorder, #{$color-v4-action-outlined-border});
     background-color: var(--default-main, #{$color-v4-default-main});
     cursor: text;
-    .fu-dropdown-icon{
+    &.fu-dropdown .fu-edit-value .fu-dropdown-icon{
       visibility: visible;
     }
   }

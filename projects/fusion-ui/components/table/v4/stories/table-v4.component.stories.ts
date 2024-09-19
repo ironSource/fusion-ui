@@ -25,7 +25,9 @@ import {
     ROWS_TOGGLEABLE_DATA,
     ROWS_SELECTABLE_STICKY_DATA,
     TABLE_SELECTABLE_STICKY_COLUMNS_CONFIG,
-    TABLE_STICKY_COLUMNS_CONFIG
+    TABLE_STICKY_COLUMNS_CONFIG,
+    TABLE_DROPDOWN_COLUMNS_CONFIG,
+    ROWS_DROPDOWN_DATA
 } from './table.mock-data';
 import {TableV4StoryHolderComponent} from './table.story-holder.component/table.story-holder.component.component';
 import {action} from '@storybook/addon-actions';
@@ -116,6 +118,18 @@ export const InlineEditing: Story = {
             ...args,
             columns: TABLE_EDITABLE_COLUMNS_CONFIG,
             rows: ROWS_EDITABLE_DATA,
+            rowModelChange: actionsData.rowModelChange
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+
+export const InlineDropdown: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            columns: TABLE_DROPDOWN_COLUMNS_CONFIG,
+            rows: ROWS_DROPDOWN_DATA,
             rowModelChange: actionsData.rowModelChange
         },
         template: TEMPLATE_TABLE_HOLDER

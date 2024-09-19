@@ -583,6 +583,57 @@ export const ROWS_EDITABLE_DATA = ROWS_NUMBERS_DATA.map((row, idx) => {
 });
 // endregion
 
+// region inline dropdown data
+export const TABLE_DROPDOWN_COLUMNS_CONFIG: TableColumn[] = [
+    {
+        key: 'planName',
+        title: 'Plan name',
+        type: TableColumnTypeEnum.InputEdit,
+        inputType: InlineInputType.Dropdown,
+        inlineDropdownOptions: ROWS_NUMBERS_DATA.map((row, idx) => ({id: idx++, displayText: row.planName}))
+    },
+    {key: 'lastUpdate', title: 'Last updated', type: TableColumnTypeEnum.Date},
+    {
+        key: 'price',
+        title: 'Price',
+        type: TableColumnTypeEnum.InputEdit,
+        inputType: InlineInputType.Currency,
+        customErrorMapping: {
+            required: {errorMessageKey: 'required'}
+        }
+    },
+    {
+        key: 'amount',
+        title: 'Amount',
+        type: TableColumnTypeEnum.InputEdit,
+        inputType: InlineInputType.Number,
+        customErrorMapping: {
+            required: {errorMessageKey: 'required'}
+        }
+    },
+    {
+        key: 'discount',
+        title: 'Discount',
+        type: TableColumnTypeEnum.InputEdit,
+        inputType: InlineInputType.Percent,
+        customErrorMapping: {
+            required: {errorMessageKey: 'required'}
+        }
+    }
+];
+
+export const ROWS_DROPDOWN_DATA = ROWS_NUMBERS_DATA.map((row, idx) => {
+    const data = {
+        planName: new FormControl(TABLE_DROPDOWN_COLUMNS_CONFIG[0].inlineDropdownOptions.filter(item => item.displayText === row.planName)),
+        lastUpdate: row.lastUpdate,
+        price: new FormControl(row.price, [Validators.required]),
+        amount: new FormControl(row.amount, [Validators.required]),
+        discount: new FormControl(row.discount, [Validators.required])
+    };
+    return data;
+});
+// endregion
+
 // region row expand data
 export const EXPAND_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'id', title: 'Id', width: '50px'},
