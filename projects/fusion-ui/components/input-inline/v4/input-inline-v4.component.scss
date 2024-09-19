@@ -7,6 +7,8 @@
   --inline-edit-value-height: 28px;
   --inline-edit-value-padding: 0 8px;
   --inline-edit-value-color: var(--table-text-color, #{$color-v4-text-primary});
+  --dropdown-carret-icon-color: var(--action-active, #{$color-v4-action-active});
+  --dropdown-carret-icon-size: 20px;
 
   width: var(--inline-edit-width, 100%);
 
@@ -23,10 +25,28 @@
       outline: 1px solid var(--action-outlinedBorder, #{$color-v4-action-outlined-border});
       background-color: var(--default-main, #{$color-v4-default-main});
       cursor: text;
+      &.fu-dropdown .fu-edit-value .fu-dropdown-icon{
+        visibility: visible;
+      }
     }
 
-    &.fu-number{
+    &.fu-number {
       justify-content: flex-end;
+    }
+
+    &.fu-dropdown {
+      .fu-edit-value {
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        .fu-dropdown-icon {
+          margin-left: auto;
+          color: var(--dropdown-carret-icon-color);
+          @include size(var(--dropdown-carret-icon-size));
+          visibility: hidden;
+        }
+      }
     }
 
     &.fu-read-only {
@@ -43,11 +63,13 @@
   }
 
   .truncate {
-    @extend %truncate;
+    @extend %truncate-flex-child;
   }
-  .fu-edit-input-wrapper{
+
+  .fu-edit-input-wrapper {
     position: relative;
-    fusion-loader{
+
+    fusion-loader {
       position: absolute;
       right: 5px;
       top: 3px;
@@ -55,11 +77,14 @@
   }
 }
 
-:host-context(tr:hover){
+:host-context(tr:hover) {
   .fu-edit-value-wrapper:not(.fu-read-only) {
     border-radius: 6px;
     outline: 1px solid var(--action-outlinedBorder, #{$color-v4-action-outlined-border});
     background-color: var(--default-main, #{$color-v4-default-main});
     cursor: text;
+    &.fu-dropdown .fu-edit-value .fu-dropdown-icon{
+      visibility: visible;
+    }
   }
 }

@@ -13,6 +13,7 @@ export interface TableColumn {
     groupName?: string;
     type?: TableColumnTypeEnum;
     inputType?: InlineInputType;
+    inlineDropdownOptions?: DropdownOption[]; // used for inline dropdown in table v4
     totalRowTypeAsString?: boolean; // data type represent in total string. default true
     component?: any;
     sort?: string;
