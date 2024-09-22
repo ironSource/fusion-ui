@@ -1,10 +1,14 @@
 import {componentWrapperDecorator, Meta, moduleMetadata, StoryObj} from '@storybook/angular';
+import {action} from '@storybook/addon-actions';
 import {CommonModule} from '@angular/common';
 import {FormCardComponent} from './form-card.component';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../stories/environments/environment';
-import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {ButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
+
+const actionsData = {
+    onActionButtonClicked: action('onActionButtonClicked')
+};
 
 export default {
     title: 'V4/Components/Inputs/FormCard',
@@ -25,7 +29,8 @@ export default {
     },
     args: {
         title: 'Description card title',
-        content: 'Any content here...'
+        content: 'Any content here...',
+        onActionButtonClicked: actionsData.onActionButtonClicked
     }
 } as Meta<FormCardComponent>;
 
@@ -39,8 +44,8 @@ export const Basic: Story = {
     <ng-container slot="form-card-title">{{ title }}</ng-container>
     <ng-container slot="form-card-content">{{ content }}</ng-container>
     <ng-container slot="form-card-actions">
-        <fusion-button variant="outlined">Cancel</fusion-button>
-        <fusion-button color="primary">Save</fusion-button>
+        <fusion-button variant="outlined" (click)="onActionButtonClicked('cancel')">Cancel</fusion-button>
+        <fusion-button color="primary"  (click)="onActionButtonClicked('save')">Save</fusion-button>
     </ng-container>            
 </fusion-form-card>
 `
