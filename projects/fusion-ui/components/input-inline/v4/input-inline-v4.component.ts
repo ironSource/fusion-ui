@@ -77,7 +77,6 @@ export class InputInlineV4Component implements OnInit, OnDestroy {
         }
     }
 
-    // todo: check with Moran if we need show loader
     get pending(): boolean {
         return this._pending;
     }
