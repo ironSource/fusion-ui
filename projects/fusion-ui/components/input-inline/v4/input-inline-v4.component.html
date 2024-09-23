@@ -34,6 +34,8 @@
                     [options]="selectOptions"
                     [formControl]="inputControl"
             ></fusion-dropdown>
+        } @loading {
+            <fusion-skeleton></fusion-skeleton>
         }
         @defer (when !isDropdown; prefetch on idle){
             <fusion-input #inputComponent
@@ -50,6 +52,8 @@
                           (keydown.enter)="save()"
                           (keydown.escape)="cancel()"
             ></fusion-input>
+        } @loading {
+            <fusion-skeleton></fusion-skeleton>
         }
         @if (pending){
             <fusion-loader

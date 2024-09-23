@@ -13,12 +13,22 @@ import {LoaderComponent} from '@ironsource/fusion-ui/components/loader/v4';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {DropdownComponent} from '@ironsource/fusion-ui/components/dropdown/v4';
+import {SkeletonComponent} from '@ironsource/fusion-ui/components/skeleton';
 
 @Component({
     selector: 'fusion-input-inline',
     standalone: true,
     host: {class: 'fusion-v4'},
-    imports: [CommonModule, FormsModule, ReactiveFormsModule, InputComponent, LoaderComponent, IconModule, DropdownComponent],
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        InputComponent,
+        LoaderComponent,
+        IconModule,
+        DropdownComponent,
+        SkeletonComponent
+    ],
     templateUrl: './input-inline-v4.component.html',
     styleUrl: './input-inline-v4.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush
