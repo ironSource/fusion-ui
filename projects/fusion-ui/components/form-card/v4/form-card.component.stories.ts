@@ -7,6 +7,9 @@ import {environment} from '../../../../../stories/environments/environment';
 import {ButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
 import {LinkComponent} from '@ironsource/fusion-ui/components/link';
 import {SkeletonComponent} from '@ironsource/fusion-ui/components/skeleton';
+import {InputLabelComponent} from '@ironsource/fusion-ui/components/input-label/v4';
+import {InputComponent} from '@ironsource/fusion-ui/components/input/v4';
+import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 
 const actionsData = {
     onActionButtonClicked: action('onActionButtonClicked')
@@ -20,10 +23,13 @@ export default {
             declarations: [],
             imports: [
                 CommonModule,
+                ReactiveFormsModule,
                 SvgModule.forRoot({assetsPath: environment.assetsPath}),
                 ButtonComponent,
                 LinkComponent,
-                SkeletonComponent
+                SkeletonComponent,
+                InputLabelComponent,
+                InputComponent
             ]
         }),
         componentWrapperDecorator(story => `<div style="width: 800px;">${story}</div>`)
@@ -105,6 +111,38 @@ export const NoButtons: Story = {
 <fusion-form-card>
     <ng-container slot="form-card-title">{{ title }}</ng-container>
     <ng-container slot="form-card-content">{{ content }}</ng-container>
+</fusion-form-card>
+`
+    })
+};
+
+export const FormRow: Story = {
+    render: args => ({
+        props: {...args, title: 'Ad unit setup', formControl: new FormControl('Native-01', [Validators.required])},
+        template: `
+<fusion-form-card>
+    <ng-container slot="form-card-title">{{ title }}</ng-container>
+    <ng-container slot="form-card-content">
+        <div style="display: flex; flex-direction: column; gap: 24px">
+                <div class="row">
+                    <div class="col-3">
+                        <fusion-input-label text="Ad unit name" [required]="true"></fusion-input-label>
+                    </div>
+                    <div class="col-4">
+                        <fusion-input
+                          [placeholder]="'Enter name'"
+                          [formControl]="formControl"
+                          variant="{{formControl.invalid ? 'error' : 'default'}}"
+                          helperText="{{formControl.invalid ? 'This field is required' : ''}}"
+                        ></fusion-input>
+                    </div>
+                </div>
+        </div>
+    </ng-container>
+    <ng-container slot="form-card-actions">
+        <fusion-button variant="outlined" (click)="onActionButtonClicked('cancel')">Cancel</fusion-button>
+        <fusion-button color="primary" [disabled]="formControl.invalid"  (click)="onActionButtonClicked('save')">Save</fusion-button>
+    </ng-container>            
 </fusion-form-card>
 `
     })
