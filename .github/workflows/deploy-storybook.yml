@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   Deploy:
-    runs-on: [self-hosted, eks, us, demand-amd64, dev]
+    runs-on: [self-hosted, eks, us, demand, dev]
     outputs:
       branch_name: ${{ steps.branch_name.outputs.branch }}
       folder_name: ${{ steps.branch_name.outputs.folder }}
