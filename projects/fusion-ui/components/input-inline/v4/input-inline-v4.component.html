@@ -29,15 +29,12 @@
     </div>
 } @else {
     <div class="fu-edit-input-wrapper"  #inputWrapper [class.fu-dropdown]="isDropdown">
-        @defer (when isDropdown; prefetch on idle){
+        @if (isDropdown){
             <fusion-dropdown
                     [options]="selectOptions"
                     [formControl]="inputControl"
             ></fusion-dropdown>
-        } @loading {
-            <fusion-skeleton></fusion-skeleton>
-        }
-        @defer (when !isDropdown; prefetch on idle){
+        } @else {
             <fusion-input #inputComponent
                           [formControl]="inputControl"
                           [type]="inputType"
@@ -52,8 +49,6 @@
                           (keydown.enter)="save()"
                           (keydown.escape)="cancel()"
             ></fusion-input>
-        } @loading {
-            <fusion-skeleton></fusion-skeleton>
         }
         @if (pending){
             <fusion-loader

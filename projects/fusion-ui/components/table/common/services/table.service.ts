@@ -305,7 +305,8 @@ export class TableService {
     }
 
     getCellAlignByColumnType(column: TableColumn): TableCellAlign | null {
-        const inputTypeAlignRight = this.isTypeInputEdit(column) && column.inputType !== InlineInputType.Text;
+        const inputTypeAlignRight =
+            this.isTypeInputEdit(column) && column.inputType !== InlineInputType.Text && column.inputType !== InlineInputType.Dropdown;
         return this.isTypeCurrency(column) || this.isTypeNumber(column) || this.isTypePercent(column) || inputTypeAlignRight
             ? 'right'
             : null;
