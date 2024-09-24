@@ -6,7 +6,7 @@ on:
 
 jobs:
   notify:
-    runs-on: [self-hosted, x64, linux, eks, us, demand, dev]
+    runs-on: [self-hosted, x64, linux, eks, us, demand-amd64, dev]
     steps:
       - uses: actions/checkout@v2
 
