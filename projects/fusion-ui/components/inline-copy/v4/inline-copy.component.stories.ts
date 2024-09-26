@@ -7,7 +7,7 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
 
 export default {
-    title: 'V4/Components/Buttons/Common Actions',
+    title: 'V4/Components/Inline Copy',
     component: InlineCopyComponent,
     decorators: [
         moduleMetadata({
@@ -22,13 +22,40 @@ export default {
             showPanel: true,
             panelPosition: 'bottom'
         }
-    },
-    args: {
-        text: 'Copy me',
-        testId: 'inline-copy-test-id'
     }
 } as Meta<InlineCopyComponent>;
 
 type Story = StoryObj<InlineCopyComponent>;
 
 export const InlineCopy: Story = {};
+InlineCopy.args = {text: 'Copy me'};
+
+export const SizeMedium: Story = {};
+SizeMedium.args = {
+    text: 'It medium size',
+    size: 'medium'
+};
+
+export const IconOnly: Story = {};
+IconOnly.args = {
+    valueToCopy: 'Value to copy',
+    size: 'medium'
+};
+
+export const WithoutTooltip: Story = {};
+WithoutTooltip.args = {
+    text: 'No tooltip',
+    suppressTooltip: true
+};
+
+export const WithoutSnackbar: Story = {};
+WithoutSnackbar.args = {
+    text: 'No snackbar',
+    suppressSnackbar: true
+};
+
+export const IconOnLeft: Story = {};
+IconOnLeft.args = {
+    text: 'Icon on left',
+    iconPosition: 'left'
+};

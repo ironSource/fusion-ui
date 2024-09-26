@@ -27,6 +27,7 @@ export class InlineCopyComponent {
     @Input() iconPosition: 'left' | 'right' = 'right';
     @Input() testId = '';
     @Input() valueToCopy = '';
+    @Input() suppressTooltip = false;
     @Input() suppressSnackbar = false;
     @Input() copiedSnackbarText = 'Copied successfully';
 
