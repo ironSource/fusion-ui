@@ -1,0 +1,10 @@
+<div class="fu-inline-copy-wrapper fu-size-{{size}} fu-icon-position-{{iconPosition}}" [attr.data-testid]="testId">
+    <div class="fu-inline-copy-text">{{text}}</div>
+    <fusion-icon class="fu-inline-copy-icon"
+                 [name]="iconName"
+                 [fusionTooltip]="tooltipText"
+                 [configuration]="tooltipConfiguration"
+                 [fusionCopyToClipboard]="copyToClipboard()"
+                 (copied)="textCopied()"
+    />
+</div>

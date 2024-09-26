@@ -1,0 +1,31 @@
+@import '../../../src/style/scss/v4/vars/vars';
+@import '../../../src/style/scss/v4/mixins/mixins';
+
+:host {
+  @extend %reset;
+
+  --fu-inline-copy-gap: #{$spacingV4-100};
+  --fu-inline-copy-color: var(--text-secondary, #{$color-v4-text-secondary});
+  --fu-inline-copy-icon-hover-color: var(--action-primary, #{$color-v4-action-primary});
+  --fu-inline-copy-icon-size: 16px;
+
+  .fu-inline-copy-wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--fu-inline-copy-gap);
+    @extend %font-v4-body-1;
+    color: var(--fu-inline-copy-color);
+
+    &.fu-size-medium {
+      --fu-inline-copy-icon-size: 20px;
+    }
+
+    .fu-inline-copy-icon{
+      @include size(var(--fu-inline-copy-icon-size));
+      &:hover {
+        color: var(--fu-inline-copy-icon-hover-color);
+        cursor: pointer;
+      }
+    }
+  }
+}
