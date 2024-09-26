@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {tooltipConfiguration, TooltipPosition} from '../../tooltip/common/base';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
+import {tooltipConfiguration, TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {CopyToClipboardModule} from '@ironsource/fusion-ui/directives/copy-to-clipboard';
 import {SnackbarService} from '@ironsource/fusion-ui/components/snackbar/v4';
 
