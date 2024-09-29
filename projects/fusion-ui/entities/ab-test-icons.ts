@@ -1,1 +1,1 @@
-export type IBTestIcon = 'ab' | '2a' | '2b' | 'ab-gray';
+export type AbTestIcons = 'ab' | '2a' | '2b' | 'ab-gray';

@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {NgOptimizedImage} from '@angular/common';
 import {InlineCopyComponent} from '@ironsource/fusion-ui/components/inline-copy';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
-import {IBTestIcon} from '@ironsource/fusion-ui/entities';
+import {AbTestIcons} from '@ironsource/fusion-ui/entities';
 import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
 
 @Component({
@@ -19,14 +19,14 @@ export class AppHeaderComponent {
     @Input() appImageSrc!: string;
     @Input() platform!: 'android' | 'ios';
     @Input() appKey!: string;
-    @Input() abTest: IBTestIcon;
+    @Input() abTest: AbTestIcons;
 
     get appImageSize(): number {
         return this.size === 'small' ? 32 : 48;
     }
 
     get platformIcon(): string {
-        return this.platform === 'android' ? 'v4/branded/android' : 'v4/branded/ios';
+        return `v4/branded/${this.platform}`;
     }
 
     get abTestIcon(): string {
