@@ -1,6 +1,7 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    ElementRef,
     EventEmitter,
     HostBinding,
     Inject,
@@ -13,14 +14,14 @@ import {
     Type,
     ViewChild
 } from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {isBoolean, isNull, isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 import {TableService} from '@ironsource/fusion-ui/components/table/common/services';
 import {InputInlineComponent} from '@ironsource/fusion-ui/components/input-inline/v4';
 import {AdvancedInputInline} from '@ironsource/fusion-ui/components/input-inline/common/base';
 import {
-    CELL_PADDING,
     DEFAULT_REMOVE_ICON_V3,
     DEFAULT_REMOVE_TOOLTIP_TEXT,
     TABLE_OPTIONS_TOKEN,
@@ -35,13 +36,19 @@ import {ERROR_MESSAGES} from '@ironsource/fusion-ui/components/error-message';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 import {IconData} from '@ironsource/fusion-ui/components/icon/common/entities';
-import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
+import {MenuDropComponent, MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop/v4';
 import {TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {CommonModule} from '@angular/common';
 import {NotAvailablePipe} from '@ironsource/fusion-ui/pipes/not-available';
 import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
 import {CheckboxComponent} from '@ironsource/fusion-ui/components/checkbox/v4';
 import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-components/v1';
+import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+import {IconButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
+import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside';
+import {TeleportingModule} from '@ironsource/fusion-ui/directives/teleporting';
+import {RepositionDirective} from '@ironsource/fusion-ui/directives/reposition';
+import {ToggleComponent} from '@ironsource/fusion-ui/components/toggle/v4';
 
 type CellDataType = Type<Component> | FormControl | string | boolean | undefined | null;
 
@@ -56,7 +63,14 @@ type CellDataType = Type<Component> | FormControl | string | boolean | undefined
         TooltipDirective,
         CheckboxComponent,
         InputInlineComponent,
-        DynamicComponentsModule
+        DynamicComponentsModule,
+        IconModule,
+        IconButtonComponent,
+        MenuDropComponent,
+        ClickOutsideModule,
+        TeleportingModule,
+        RepositionDirective,
+        ToggleComponent
     ],
     templateUrl: './table-cell.component.html',
     styleUrls: ['./table-cell.component.scss'],
@@ -99,6 +113,7 @@ export class TableCellComponent implements OnInit, OnChanges {
     }
 
     isInRequest$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+    toggleInRequest$: BehaviorSubject<boolean> = new BehaviorSubject(false);
     innerElementWidth = '';
     isInEditMode = false;
     initInputData: string | boolean | undefined | null | AdvancedInputInline;
@@ -109,7 +124,7 @@ export class TableCellComponent implements OnInit, OnChanges {
     customCellData: DynamicComponentConfiguration;
     floatingMenuPosition = TooltipPosition.BottomRight;
 
-    shownActionsMenu = false;
+    shownActionsMenu$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
     get actionsMenuButtonId(): string {
         return this.options.tableId + '_' + this.rowIndex;
@@ -170,16 +185,20 @@ export class TableCellComponent implements OnInit, OnChanges {
 
     private _data: CellDataType;
     private inlineInputViewOnlyText = '';
+    private onActionMenuClose$ = new Subject<void>();
 
     constructor(
         public tableService: TableService,
         @Optional()
         @Inject(TABLE_OPTIONS_TOKEN)
         private tableModuleOptions: TableModuleOptions,
-        private logService: LogService
+        private logService: LogService,
+        public elementRef: ElementRef
     ) {}
 
     ngOnInit() {
+        const {paddingLeft, paddingRight} = this.getSellLefRightPadding();
+        this.innerElementWidth = this.column.width ? `calc(${this.column.width} - ${paddingLeft} - ${paddingRight})` : null;
         this.notAvailableText = this.options ? this.options.notAvailableText : null;
     }
 
@@ -223,8 +242,7 @@ export class TableCellComponent implements OnInit, OnChanges {
     }
 
     onToggleChanged(newValue: boolean) {
-        // set waiter for cell
-        this.isInRequest$.next(true);
+        this.toggleInRequest$.next(true);
         this.dataChange.emit({
             newValue,
             onCellRequestDone: (isSuccess: boolean, error: {message: string; status: number}, stayInEditMode = false) => {
@@ -233,7 +251,7 @@ export class TableCellComponent implements OnInit, OnChanges {
                 } else {
                     this.data = !newValue;
                 }
-                this.isInRequest$.next(false);
+                this.toggleInRequest$.next(false);
             }
         });
     }
@@ -327,18 +345,27 @@ export class TableCellComponent implements OnInit, OnChanges {
     }
 
     menuItemClicked(action: MenuDropItem) {
-        this.shownActionsMenu = false;
+        this.closeActionsMenu();
         this.tableService.rowActionClicked.emit({action: action, rowIndex: this.rowIndex, row: this.row});
     }
 
     onActionButtonClicked() {
-        this.shownActionsMenu = true;
+        this.shownActionsMenu$.next(true);
+        this.tableService.tableScrolled.pipe(takeUntil(this.onActionMenuClose$)).subscribe($event => {
+            this.closeActionsMenu();
+        });
     }
 
     onActionMenuClickOutSide(target) {
         if (!target.closest('#' + this.actionsMenuButtonId)) {
-            this.shownActionsMenu = false;
+            this.closeActionsMenu();
         }
+    }
+
+    private closeActionsMenu() {
+        this.shownActionsMenu$.next(false);
+        this.onActionMenuClose$.next();
+        this.onActionMenuClose$.complete();
     }
 
     private _getMessage(errorKey, {errorMessageKey = '', textMapping = []}, errorDefaults?: any): string {
@@ -357,6 +384,13 @@ export class TableCellComponent implements OnInit, OnChanges {
             }
         }
         return errorMessage;
+    }
+
+    private getSellLefRightPadding(): {paddingLeft: string; paddingRight: string} {
+        const computedStyle = getComputedStyle(this.elementRef.nativeElement);
+        const paddingLeft = computedStyle.paddingLeft;
+        const paddingRight = computedStyle.paddingRight;
+        return {paddingLeft, paddingRight};
     }
 
     setDisableStateForFloatingAction(menuItem: MenuDropItem): MenuDropItem {

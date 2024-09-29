@@ -177,13 +177,6 @@
             &.is-checkbox-holder {
               width: var(--table-checkbox-cell-width);
             }
-
-            /*
-            &.expand-column {
-              //flex: 0 0 var(--table-expand-cell-width);
-              //justify-content: center;
-            }
-            */
           }
         }
       }
@@ -199,6 +192,38 @@
           position: sticky;
           top: 0;
           z-index: getZIndexLayerOffset(normal, 3);
+          outline: var(--table-border);
+          td.sticky-left {
+            position: sticky;
+            left: 0;
+            z-index: 2;
+            &:after{
+              content: '';
+              position: absolute;
+              top: 0;
+              right: -1px;
+              height: 100%;
+              width: 1px;
+              border-right: var(--table-border);
+            }
+          }
+          td.sticky-right {
+            position: sticky;
+            right: 0;
+            z-index: 2;
+            &:nth-child(1 of .sticky-right){
+              &:before{
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -1px;
+                height: 100%;
+                width: 1px;
+                border-left: var(--table-border);
+              }
+            }
+          }
+
         }
       }
     }

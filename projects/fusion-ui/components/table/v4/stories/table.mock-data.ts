@@ -21,9 +21,9 @@ export const TABLE_HORIZONTAL_COLUMNS_CONFIG: TableColumn[] = [
     {key: 'firstName', title: 'First name', width: '150px'},
     {key: 'lastName', title: 'Last name', width: '150px'},
     {key: 'address', title: 'Address', width: '200px'},
-    {key: 'state', title: 'State', width: '150px'},
-    {key: 'phone', title: 'Phone number', width: '200px'},
-    {key: 'status', title: 'Status', width: '150px'}
+    {key: 'state', title: 'State'},
+    {key: 'phone', title: 'Phone number', width: '150px'},
+    {key: 'status', title: 'Status', width: '100px'}
 ];
 
 export const ROWS_DEFAULT_DATA = [
@@ -449,8 +449,41 @@ export const TABLE_SELECTABLE_COLUMNS_CONFIG: TableColumn[] = [
     ...TABLE_DEFAULT_COLUMNS_CONFIG
 ];
 
+export const TABLE_STICKY_COLUMNS_CONFIG: TableColumn[] = TABLE_HORIZONTAL_COLUMNS_CONFIG.map((column: TableColumn, idx: number) => {
+    let colData: TableColumn;
+    const length = TABLE_HORIZONTAL_COLUMNS_CONFIG.length;
+    if (idx === length - 1 || idx === length - 2) {
+        colData = {...column, stickyRight: true};
+        if (idx === length - 2) {
+            colData = {...colData, stickyRightMargin: '100px'};
+        }
+    } else {
+        colData = {...column, sticky: idx === 0};
+    }
+    return colData;
+});
+
+export const TABLE_SELECTABLE_STICKY_COLUMNS_CONFIG: TableColumn[] = [
+    {key: 'checkbox', type: TableColumnTypeEnum.Checkbox, sticky: true},
+    ...TABLE_HORIZONTAL_COLUMNS_CONFIG
+];
+
+export const ROWS_SELECTABLE_STICKY_DATA = ROWS_HORIZONTAL_DATA_WITH.map((row, idx) => {
+    return {checkbox: idx == 3, ...row};
+});
+
 export const ROWS_SELECTABLE_DATA = ROWS_DEFAULT_DATA.map((row, idx) => {
     return {checkbox: idx == 3, ...row};
+});
+// endregion
+
+// region toggle rows data
+export const TABLE_TOGGLEABLE_COLUMNS_CONFIG: TableColumn[] = [
+    {key: 'toggle', type: TableColumnTypeEnum.ToggleButton, width: '50px'},
+    ...TABLE_DEFAULT_COLUMNS_CONFIG
+];
+export const ROWS_TOGGLEABLE_DATA = ROWS_DEFAULT_DATA.map((row, idx) => {
+    return {toggle: true, ...row};
 });
 // endregion
 
@@ -541,6 +574,57 @@ export const TABLE_EDITABLE_COLUMNS_CONFIG: TableColumn[] = [
 export const ROWS_EDITABLE_DATA = ROWS_NUMBERS_DATA.map((row, idx) => {
     const data = {
         planName: new FormControl(row.planName, [Validators.required]),
+        lastUpdate: row.lastUpdate,
+        price: new FormControl(row.price, [Validators.required]),
+        amount: new FormControl(row.amount, [Validators.required]),
+        discount: new FormControl(row.discount, [Validators.required])
+    };
+    return data;
+});
+// endregion
+
+// region inline dropdown data
+export const TABLE_DROPDOWN_COLUMNS_CONFIG: TableColumn[] = [
+    {
+        key: 'planName',
+        title: 'Plan name',
+        type: TableColumnTypeEnum.InputEdit,
+        inputType: InlineInputType.Dropdown,
+        inlineDropdownOptions: ROWS_NUMBERS_DATA.map((row, idx) => ({id: idx++, displayText: row.planName}))
+    },
+    {key: 'lastUpdate', title: 'Last updated', type: TableColumnTypeEnum.Date},
+    {
+        key: 'price',
+        title: 'Price',
+        type: TableColumnTypeEnum.InputEdit,
+        inputType: InlineInputType.Currency,
+        customErrorMapping: {
+            required: {errorMessageKey: 'required'}
+        }
+    },
+    {
+        key: 'amount',
+        title: 'Amount',
+        type: TableColumnTypeEnum.InputEdit,
+        inputType: InlineInputType.Number,
+        customErrorMapping: {
+            required: {errorMessageKey: 'required'}
+        }
+    },
+    {
+        key: 'discount',
+        title: 'Discount',
+        type: TableColumnTypeEnum.InputEdit,
+        inputType: InlineInputType.Percent,
+        customErrorMapping: {
+            required: {errorMessageKey: 'required'}
+        }
+    }
+];
+
+export const ROWS_DROPDOWN_DATA = ROWS_NUMBERS_DATA.map((row, idx) => {
+    const data = {
+        planName: new FormControl(TABLE_DROPDOWN_COLUMNS_CONFIG[0].inlineDropdownOptions.filter(item => item.displayText === row.planName)),
         lastUpdate: row.lastUpdate,
         price: new FormControl(row.price, [Validators.required]),
         amount: new FormControl(row.amount, [Validators.required]),
@@ -788,4 +872,12 @@ export const EXPAND_ROWS_DEFAULT_DATA = [
     }
 ];
 
+// endregion
+
+// region row actions
+export const MOCK_ROW_ACTIONS = [
+    {icon: 'ph/pencil-simple', label: 'Edit'},
+    {icon: 'ph/copy-simple', label: 'Duplicate'},
+    {icon: 'ph/trash-simple', label: 'Delete'}
+];
 // endregion

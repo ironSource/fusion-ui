@@ -1,0 +1,13 @@
+<div class="fu-menu-holder">
+    @for (menuItem of menuItems; track menuItem) {
+        <div class="fu-menu-item"
+             [class.fu-disabled]="menuItem.disabled"
+             (click)="itemClicked(menuItem)"
+        >
+            @if (menuItem.icon) {
+                <fusion-icon class="fu-menu-item-icon" [name]="menuItem.icon"></fusion-icon>
+            }
+            <div>{{ menuItem.label }}</div>
+        </div>
+    }
+</div>

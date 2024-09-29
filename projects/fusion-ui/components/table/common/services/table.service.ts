@@ -22,6 +22,7 @@ import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline';
 export class TableService {
     private selectedRows: any[] = [];
     public selectionChanged = new EventEmitter();
+    public tableScrolled = new EventEmitter<Event>();
     public rowModelChange: EventEmitter<TableRowChangedData> = new EventEmitter();
     public rowActionClicked = new EventEmitter<{action: MenuDropItem; rowIndex: string | number; row: TableRow}>();
     public expandLevels: number;
@@ -130,6 +131,8 @@ export class TableService {
         const style = col.style || {};
         if (col.stickyLeftMargin) {
             style.left = col.stickyLeftMargin;
+        } else if (col.stickyRightMargin) {
+            style.right = col.stickyRightMargin;
         }
         return style;
     }
@@ -239,6 +242,8 @@ export class TableService {
         let headerClass = '';
         if (col.sticky) {
             headerClass += ' sticky-left';
+        } else if (col.stickyRight) {
+            headerClass += ' sticky-right';
         }
         if (col.class && col.class.indexOf('display-shadow-on-scroll') !== -1) {
             headerClass += ' display-shadow-on-scroll';
@@ -300,7 +305,8 @@ export class TableService {
     }
 
     getCellAlignByColumnType(column: TableColumn): TableCellAlign | null {
-        const inputTypeAlignRight = this.isTypeInputEdit(column) && column.inputType !== InlineInputType.Text;
+        const inputTypeAlignRight =
+            this.isTypeInputEdit(column) && column.inputType !== InlineInputType.Text && column.inputType !== InlineInputType.Dropdown;
         return this.isTypeCurrency(column) || this.isTypeNumber(column) || this.isTypePercent(column) || inputTypeAlignRight
             ? 'right'
             : null;

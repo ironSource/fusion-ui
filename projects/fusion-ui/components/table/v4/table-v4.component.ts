@@ -303,6 +303,7 @@ export class TableV4Component implements OnInit, OnDestroy, AfterViewInit {
         this.scrollListeners();
         this.configIconNames = CONFIG_TABLE_BY_UI_STYLE[`style_v2`];
         this.wrapperClasses = this.getWrapperClasses();
+        this.initColumns();
 
         this.ignoredParentSelectorsRowClickEvent = ROW_CLICK_SUPPRESS_FOR_PARENT_SELECTORS.concat(
             this.options.rowsOptions?.ignoredParentSelectorsRowClickEvent ?? []
@@ -407,6 +408,12 @@ export class TableV4Component implements OnInit, OnDestroy, AfterViewInit {
                     viewPortElement.scrollTo(0, currentScroll - currentScroll / 8);
                 }
             })();
+        }
+    }
+
+    private initColumns() {
+        if (this.options.rowActionsMenu?.stickyActionButton) {
+            this._columns = [...this.columns, {key: 'row_actions_column', title: '', width: '52px'}];
         }
     }
 
@@ -530,8 +537,6 @@ export class TableV4Component implements OnInit, OnDestroy, AfterViewInit {
                     if (this.lastScrollLeftValue !== scrollLeft) {
                         this.isScrollRight = scrollLeft > 0;
                         this.lastScrollLeftValue = scrollLeft;
-                        // todo: check this
-                        // this.cdr.markForCheck();
                     }
                 }),
                 debounceTime(10)
@@ -589,6 +594,8 @@ export class TableV4Component implements OnInit, OnDestroy, AfterViewInit {
     }
 
     private onScroll($event) {
+        this.tableService.tableScrolled.emit($event);
+
         if (this.options.hasReturnToTopButton) {
             this.shownGoTopButton$.next(this.scrollElement.scrollTop > this.tableElement.nativeElement.offsetTop);
         }

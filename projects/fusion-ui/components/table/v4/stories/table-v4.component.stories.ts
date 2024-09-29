@@ -19,10 +19,19 @@ import {
     TABLE_NUMBERS_COLUMNS_CONFIG,
     TABLE_NUMBERS_SORTABLE_COLUMNS_CONFIG,
     TABLE_SELECTABLE_COLUMNS_CONFIG,
-    TABLE_TOOLTIP_COLUMNS_CONFIG
+    TABLE_TOOLTIP_COLUMNS_CONFIG,
+    MOCK_ROW_ACTIONS,
+    TABLE_TOGGLEABLE_COLUMNS_CONFIG,
+    ROWS_TOGGLEABLE_DATA,
+    ROWS_SELECTABLE_STICKY_DATA,
+    TABLE_SELECTABLE_STICKY_COLUMNS_CONFIG,
+    TABLE_STICKY_COLUMNS_CONFIG,
+    TABLE_DROPDOWN_COLUMNS_CONFIG,
+    ROWS_DROPDOWN_DATA
 } from './table.mock-data';
 import {TableV4StoryHolderComponent} from './table.story-holder.component/table.story-holder.component.component';
 import {action} from '@storybook/addon-actions';
+import {TableColumn, TableOptions} from '@ironsource/fusion-ui/components/table';
 
 const TEMPLATE_TABLE_HOLDER = `<fusion-table-story-holder
     [options]="options"
@@ -33,12 +42,14 @@ const TEMPLATE_TABLE_HOLDER = `<fusion-table-story-holder
     (selectionChanged)="selectionChanged($event)"
     (rowModelChange)="rowModelChange($event)"
     (expandRow)="expandRow($event)"
+    (rowActionClicked)="rowActionClicked($event)"
 ></fusion-table-story-holder>`;
 
 const actionsData = {
     selectionChanged: action('selectionChanged'),
     rowModelChange: action('rowModelChange'),
-    expandRow: action('expandRow')
+    expandRow: action('expandRow'),
+    rowActionClicked: action('rowActionClicked')
 };
 
 export default {
@@ -74,29 +85,6 @@ Numbers.args = {
     rows: ROWS_NUMBERS_DATA
 };
 
-export const SortableColumns: Story = {};
-SortableColumns.args = {
-    columns: TABLE_NUMBERS_SORTABLE_COLUMNS_CONFIG,
-    rows: ROWS_NUMBERS_DATA
-};
-
-export const ColumnTooltips: Story = {};
-ColumnTooltips.args = {
-    columns: TABLE_TOOLTIP_COLUMNS_CONFIG
-};
-
-export const SelectableRows: Story = {
-    render: args => ({
-        props: {
-            ...args,
-            columns: TABLE_SELECTABLE_COLUMNS_CONFIG,
-            rows: ROWS_SELECTABLE_DATA,
-            selectionChanged: actionsData.selectionChanged
-        },
-        template: TEMPLATE_TABLE_HOLDER
-    })
-};
-
 export const HeaderAndFooter: Story = {
     render: args => ({
         props: {
@@ -114,7 +102,7 @@ export const HeaderAndFooter: Story = {
     })
 };
 
-export const CustomHeader: Story = {
+export const ActionsHeader: Story = {
     render: args => ({
         props: {
             ...args,
@@ -135,6 +123,161 @@ export const InlineEditing: Story = {
         template: TEMPLATE_TABLE_HOLDER
     })
 };
+
+export const InlineDropdown: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            columns: TABLE_DROPDOWN_COLUMNS_CONFIG,
+            rows: ROWS_DROPDOWN_DATA,
+            rowModelChange: actionsData.rowModelChange
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+
+export const ToggleInRows: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            columns: TABLE_TOGGLEABLE_COLUMNS_CONFIG,
+            rows: ROWS_TOGGLEABLE_DATA,
+            selectionChanged: actionsData.selectionChanged
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+
+export const SelectableRows: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            columns: TABLE_SELECTABLE_COLUMNS_CONFIG,
+            rows: ROWS_SELECTABLE_DATA,
+            selectionChanged: actionsData.selectionChanged
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+
+export const SelectableStickyRows: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            columns: TABLE_SELECTABLE_STICKY_COLUMNS_CONFIG as TableColumn[],
+            rows: ROWS_SELECTABLE_STICKY_DATA,
+            selectionChanged: actionsData.selectionChanged,
+            options: {
+                stickyHeader: true
+            }
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+SelectableStickyRows.decorators = [componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)];
+
+export const StickyColumns: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            columns: TABLE_STICKY_COLUMNS_CONFIG as TableColumn[],
+            rows: ROWS_HORIZONTAL_DATA_WITH,
+            options: {
+                stickyHeader: true
+            }
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+StickyColumns.decorators = [componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)];
+
+export const MenuActions: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            columns: TABLE_DEFAULT_COLUMNS_CONFIG,
+            rows: ROWS_DEFAULT_DATA_WITH_ID,
+            rowModelChange: actionsData.rowModelChange,
+            options: {
+                stickyHeader: true,
+                rowActionsMenu: {
+                    actions: MOCK_ROW_ACTIONS
+                } as TableOptions
+            }
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+MenuActions.decorators = [componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)];
+
+export const StickyActions: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            columns: TABLE_HORIZONTAL_COLUMNS_CONFIG,
+            rows: ROWS_HORIZONTAL_DATA_WITH,
+            rowModelChange: actionsData.rowModelChange,
+            options: {
+                stickyHeader: true,
+                rowActionsMenu: {
+                    stickyActionButton: true,
+                    actions: MOCK_ROW_ACTIONS
+                }
+            }
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+StickyActions.decorators = [componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)];
+
+export const DeleteRow: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            columns: TABLE_DEFAULT_COLUMNS_CONFIG,
+            rows: ROWS_DEFAULT_DATA_WITH_ID,
+            rowModelChange: actionsData.rowModelChange,
+            options: {
+                stickyHeader: true,
+                remove: {
+                    active: true,
+                    icon: 'ph/trash',
+                    tooltip: {text: 'Remove this row'}
+                }
+            }
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+DeleteRow.decorators = [componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)];
+
+export const SortableColumns: Story = {};
+SortableColumns.args = {
+    columns: TABLE_NUMBERS_SORTABLE_COLUMNS_CONFIG,
+    rows: ROWS_NUMBERS_DATA
+};
+
+export const ColumnTooltips: Story = {};
+ColumnTooltips.args = {
+    columns: TABLE_TOOLTIP_COLUMNS_CONFIG
+};
+
+export const InfiniteScrolling: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            rows: ROWS_DEFAULT_DATA_WITH_ID,
+            options: {
+                stickyHeader: true,
+                pagination: {
+                    enable: true
+                }
+            }
+        },
+        template: TEMPLATE_TABLE_HOLDER
+    })
+};
+InfiniteScrolling.decorators = [componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)];
 
 export const StickyHeader: Story = {
     render: args => ({
@@ -176,23 +319,6 @@ export const VerticalAndHorizontalScroll: Story = {
     })
 };
 VerticalAndHorizontalScroll.decorators = [componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)];
-
-export const InfiniteScrolling: Story = {
-    render: args => ({
-        props: {
-            ...args,
-            rows: ROWS_DEFAULT_DATA_WITH_ID,
-            options: {
-                stickyHeader: true,
-                pagination: {
-                    enable: true
-                }
-            }
-        },
-        template: TEMPLATE_TABLE_HOLDER
-    })
-};
-InfiniteScrolling.decorators = [componentWrapperDecorator(story => `<div style="height: 600px; display: block">${story}</div>`)];
 
 export const ExpandRows: Story = {
     render: args => ({

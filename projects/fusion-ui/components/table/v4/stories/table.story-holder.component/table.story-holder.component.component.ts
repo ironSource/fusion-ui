@@ -30,6 +30,7 @@ import {RowExpandInnerComponent} from '../row-expand-inner/row-expand-inner.comp
         (expandRow)="onExpandRow($event)"
         (sortChanged)="onSortChanged($event)"
         (selectionChanged)="selectedChanged($event)"
+        (rowActionClicked)="onRowActionClicked($event)"
     >
         <div class="fu-table-header" style="width: 100%; display: flex; gap: 8px; align-items: center;">
             <div style="flex: 1 0 0; color: #646464;">
@@ -92,6 +93,7 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
     @Output() rowModelChange = new EventEmitter();
     @Output() selectionChanged = new EventEmitter();
     @Output() expandRow = new EventEmitter();
+    @Output() rowActionClicked = new EventEmitter();
 
     /** @ignore */
     @Input() set loading(value: boolean) {
@@ -239,6 +241,11 @@ export class TableV4StoryHolderComponent implements OnInit, OnDestroy {
                 // all Ok - call success
                 successCallback();
             }, failedCallback);
+    }
+
+    onRowActionClicked($event) {
+        console.log('onRowActionClicked >>', $event);
+        this.rowActionClicked.emit($event);
     }
 
     private doSearch(value: string) {

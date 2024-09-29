@@ -1,13 +1,6 @@
 @import '../../../../../src/style/scss/v4/vars/vars';
 @import '../../../../../src/style/scss/v4/mixins/mixins';
 
-%left-sticky {
-  content: '';
-  position: absolute;
-  top: 0;
-  height: 100%;
-}
-
 :host {
   // region zebra
   &:nth-child(odd) {
@@ -19,14 +12,6 @@
   }
 
   // endregion
-
-  &:last-of-type td {
-    border-bottom: none;
-  }
-
-  &:hover {
-    background-color: var(--table-row-hover-background-color);
-  }
 
   // region Expand cell in row
   td.expand-cell {
@@ -42,10 +27,10 @@
       width: var(--table-expand-cell-width);
     }
   }
+  // endregion
 
-  &:last-of-type td.expand-cell {
+  &:last-of-type td,
+  &:last-of-type td.expand-cell{
     border-bottom: none;
   }
-
-  // endregion
 }

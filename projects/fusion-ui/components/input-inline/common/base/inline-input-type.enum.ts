@@ -2,5 +2,6 @@ export enum InlineInputType {
     Text,
     Number,
     Currency,
-    Percent
+    Percent,
+    Dropdown
 }
