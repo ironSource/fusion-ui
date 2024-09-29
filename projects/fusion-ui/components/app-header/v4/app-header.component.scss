@@ -1,0 +1,73 @@
+@import '../../../src/style/scss/v4/vars/vars';
+@import '../../../src/style/scss/v4/mixins/mixins';
+
+:host {
+  @extend %reset;
+
+  --fu-app-header-height: 48px;
+  --fu-app-header-gap: 8px;
+  --fu-app-header-app-image-border-radius: 6px;
+  --fu-app-header-app-name-color: var(--text-primary, #{$color-v4-text-primary});
+  --fu-app-header-platform-icon-size: 24px;
+  --fu-app-header-platform-icon-color: var(--action-active, #{$color-v4-action-active});
+  --fu-app-header-appkey-color: var(--text-secondary, #{$color-v4-text-secondary});
+  --fu-app-header-ab-icon-size: 28px;
+  --fu-app-header-ab-border: solid 1px var(--common-divider, #{$color-v4-common-divider});
+  --fu-app-header-ab-gap: 4px;
+
+
+  .fu-app-header-wrapper {
+    display: flex;
+    align-items: center;
+
+    &.fu-size-small {
+      --fu-app-header-height: 32px;
+      --fu-app-header-gap: 4px;
+      --fu-app-header-platform-icon-size: 20px;
+    }
+
+    gap: var(--fu-app-header-gap);
+    height: var(--fu-app-header-height);
+
+    .fu-app-header-image {
+      border-radius: var(--fu-app-header-app-image-border-radius);
+    }
+
+    .fu-app-header-platform {
+      @include size(var(--fu-app-header-platform-icon-size));
+      color: var(--fu-app-header-platform-icon-color);
+    }
+
+    .fu-app-header-content{
+      .fu-app-header-name {
+        @extend %font-v4-heading-2;
+        color: var(--fu-app-header-app-name-color);
+
+        &.truncate {
+          @extend %truncate-flex-child;
+        }
+      }
+    }
+
+    .fu-app-header-ab{
+      height: 100%;
+      border-left: var(--fu-app-header-ab-border);
+      margin-left: var(--fu-app-header-ab-gap);
+      padding-left: calc(var(--fu-app-header-ab-gap) * 2);
+      display: flex;
+      align-items: center;
+      .fu-app-header-ab-icon{
+        @include size(var(--fu-app-header-ab-icon-size));
+      }
+    }
+
+    &.fu-size-small .fu-app-header-content {
+      display: flex;
+      align-items: center;
+      gap: var(--fu-app-header-gap);
+      .fu-app-header-name{
+        @extend %font-v4-subtitle-1;
+      }
+    }
+  }
+}

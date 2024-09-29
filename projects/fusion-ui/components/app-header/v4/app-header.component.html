@@ -1,0 +1,13 @@
+<div class="fu-app-header-wrapper fu-size-{{size}}">
+    <img [ngSrc]="appImageSrc" [width]="appImageSize" [height]="appImageSize"  class="fu-app-header-image"/>
+    <fusion-icon class="fu-app-header-platform" [name]="platformIcon"></fusion-icon>
+    <div class="fu-app-header-content">
+        <div class="fu-app-header-name truncate" [fusionTooltip]="appName">{{appName}}</div>
+        <fusion-inline-copy [text]="appKeyToCopy" [valueToCopy]="valueToCopy" tooltipText="Copy app key" />
+    </div>
+    @if(abTest){
+        <div class="fu-app-header-ab">
+            <fusion-icon class="fu-app-header-ab-icon fu-colored" [name]="abTestIcon"></fusion-icon>
+        </div>
+    }
+</div>
