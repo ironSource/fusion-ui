@@ -1,0 +1,19 @@
+@import '../../../../../src/style/scss/v4/vars/vars';
+
+:host {
+  display: block;
+  width: 100%;
+  padding: 24px 32px;
+  color: var(--text-primary, #{$color-v4-text-primary});
+  .fu-title{
+    @extend %font-v4-heading-3;
+    margin-bottom: 8px;
+  }
+  .fu-subtitle{
+    @extend %font-v4-body-1;
+  }
+  .fu-benefits{
+    margin-top: 24px;
+    @extend %font-v4-body-1;
+  }
+}

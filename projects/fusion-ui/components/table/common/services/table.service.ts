@@ -3,6 +3,9 @@ import {isNullOrUndefined, isNumber, isUndefined} from '@ironsource/fusion-ui/ut
 import {DomSanitizer} from '@angular/platform-browser';
 import {LogService} from '@ironsource/fusion-ui/services/log';
 import {
+    DEFAULT_EXPANDABLE_LEVEL,
+    MAXIMUM_EXPANDABLE_LEVEL,
+    TableCellAlign,
     TableColumn,
     TableColumnTypeEnum,
     TableOptions,
@@ -11,14 +14,15 @@ import {
     TableRowMetaData,
     TableRowsExpandableOptions
 } from '@ironsource/fusion-ui/components/table/common/entities';
-import {DEFAULT_EXPANDABLE_LEVEL, MAXIMUM_EXPANDABLE_LEVEL} from '@ironsource/fusion-ui/components/table/common/entities';
 import {MenuDropItem} from '@ironsource/fusion-ui/components/menu-drop';
 import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
+import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline';
 
 @Injectable()
 export class TableService {
     private selectedRows: any[] = [];
     public selectionChanged = new EventEmitter();
+    public tableScrolled = new EventEmitter<Event>();
     public rowModelChange: EventEmitter<TableRowChangedData> = new EventEmitter();
     public rowActionClicked = new EventEmitter<{action: MenuDropItem; rowIndex: string | number; row: TableRow}>();
     public expandLevels: number;
@@ -123,10 +127,12 @@ export class TableService {
         return this.selectedRows.length && rows.length !== this.selectedRows.length;
     }
 
-    getColumnStyle(col: any): any {
+    getColumnStyle(col: TableColumn): any {
         const style = col.style || {};
         if (col.stickyLeftMargin) {
             style.left = col.stickyLeftMargin;
+        } else if (col.stickyRightMargin) {
+            style.right = col.stickyRightMargin;
         }
         return style;
     }
@@ -148,7 +154,7 @@ export class TableService {
         return this.isInSelected(row) !== -1;
     }
 
-    isColumnSortable(col: any): boolean {
+    isColumnSortable(col: TableColumn): boolean {
         return !isUndefined(col.sort);
     }
 
@@ -236,6 +242,8 @@ export class TableService {
         let headerClass = '';
         if (col.sticky) {
             headerClass += ' sticky-left';
+        } else if (col.stickyRight) {
+            headerClass += ' sticky-right';
         }
         if (col.class && col.class.indexOf('display-shadow-on-scroll') !== -1) {
             headerClass += ' display-shadow-on-scroll';
@@ -294,6 +302,14 @@ export class TableService {
 
     getMaxRowspanInColumn(row: any): number {
         return this.rowsMetadata[row['_rowId']]?.maxRowspanInColumn ?? 0;
+    }
+
+    getCellAlignByColumnType(column: TableColumn): TableCellAlign | null {
+        const inputTypeAlignRight =
+            this.isTypeInputEdit(column) && column.inputType !== InlineInputType.Text && column.inputType !== InlineInputType.Dropdown;
+        return this.isTypeCurrency(column) || this.isTypeNumber(column) || this.isTypePercent(column) || inputTypeAlignRight
+            ? 'right'
+            : null;
     }
 
     private getRowspanColumns(row: any, columnsKeys: string[]): {[key: string]: number} {

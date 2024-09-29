@@ -1,0 +1,134 @@
+@if ((isRowTotal && tableService.isInTotalTypeString(column)) || tableService.isTypeString(column)) {
+    <!--String Cell-->
+    @if(cellStringData){
+        <div [ngClass]="column.align" [style.width]="innerElementWidth">
+        <span class="truncate"
+              [fusionTooltip]="cellStringData">{{ cellStringData | notAvailable: notAvailableText }}</span>
+        </div>
+    }
+} @else {
+    @if (tableService.isTypeCheckbox(column) && isBoolean(data)) {
+        <div class="checkbox-cell" [style.width]="innerElementWidth">
+            <fusion-checkbox
+                    class="is-regular"
+                    title="select / un-select row"
+                    [checked]="isRowChecked()"
+                    (changed)="selectedChange.emit($event)"
+            ></fusion-checkbox>
+        </div>
+    } @else if (tableService.isTypeToggleButton(column) && isBoolean(data)) {
+        <div [style.width]="innerElementWidth">
+            <fusion-toggle
+                [model]="data"
+                [disabled]="isReadOnly"
+                [loading]="toggleInRequest$ | async"
+                (modelChange)="onToggleChanged($event)"
+            ></fusion-toggle>
+        </div>
+    } @else if (tableService.isTypeInputEdit(column) && data) {
+        @if (!isRowTotal) {
+            <div class="fu-input-cell" [class.fu-type-number]="column.inputType">
+                <fusion-input-inline
+                    #inlineInput
+                    [type]="column.inputType"
+                    [data]="data"
+                    [selectOptions]="column.inlineDropdownOptions"
+                    [pending]="isInRequest$ | async"
+                    [error]="inputError$ | async"
+                    [readOnly]="isReadOnly"
+                    [currencyPipeParameters]="column?.currencyPipeParameters"
+                    (onSave)="onEndEdit($event)"
+                    (onCancel)="onCancel()"
+                ></fusion-input-inline>
+            </div>
+        }
+    } @else if (tableService.isTypeComponent(column)) {
+        <fusion-dynamic-components
+                [configuration]="customCellData"
+        >
+        </fusion-dynamic-components>
+    } @else if (tableService.isTypeCurrency(column)) {
+        <div class="truncate"
+             [ngClass]="column.align || 'right'"
+             [style.width]="innerElementWidth"
+             [fusionTooltip]="$any(data) | currency: 'USD'"
+        >
+            {{
+                !isNull(data)
+                    ? ($any(data)
+                        | currency
+                        : column?.currencyPipeParameters?.currencyCode || undefined
+                            : column?.currencyPipeParameters?.display || (column?.currencyPipeParameters ? undefined : '$')
+                            : column?.currencyPipeParameters?.digitsInfo || undefined)
+                    : (data | notAvailable: notAvailableText)
+            }}
+        </div>
+    } @else if (tableService.isTypeNumber(column)) {
+        <div class="truncate"
+             [ngClass]="column.align || 'right'"
+             [style.width]="innerElementWidth"
+             [fusionTooltip]="$any(data) | number: column.pipeOptions"
+        >
+            {{ !isNull(data) ? ($any(data) | number: column.pipeOptions) : (data | notAvailable: notAvailableText) }}
+        </div>
+    } @else if (tableService.isTypePercent(column)) {
+        <div class="truncate"
+             [ngClass]="column.align || 'right'"
+             [style.width]="innerElementWidth"
+             fusionTooltip="{{ $any(data) | number: column.pipeOptions }}%"
+        >
+            {{ !isNull(data) ? ($any(data) | number: column.pipeOptions) : (data | notAvailable: notAvailableText) }}
+            {{ !isNullOrUndefined(data) ? '%' : null }}
+        </div>
+    } @else if (tableService.isTypeDate(column)) {
+        <div class="truncate">
+            {{
+                data
+                    ? isAsDate(data)
+                        ? ($any(data) | date: getDateFormat(column.dateFormat):getDateUTCFormat(column.ignoreTimeZone))
+                        : data
+                    : !isRowTotal
+                        ? 'No ' + column.title
+                        : ''
+            }}
+        </div>
+    } @else {
+        <div>&nbsp;{{ column.type }}</div>
+    }
+}
+
+<!--Row utility Cell icons and buttons-->
+@if (!isRowTotal && isLastColumn) {
+    <!--single remove action button-->
+    <ng-container *ngIf="isRemove && !isReadOnly" [ngTemplateOutlet]="removeActionButton"></ng-container>
+    <!--single remove action button-->
+    <!--multiple actions menu-->
+    <ng-container *ngIf="multipleActions as rowActions" [ngTemplateOutlet]="multipleActionsMenu"
+                  [ngTemplateOutletContext]="{$implicit: rowActions.actions}"></ng-container>
+    <!--multiple actions menu-->
+}
+
+<ng-template #removeActionButton>
+    <div class="fu-button-holder">
+        <fusion-icon-button [iconName]="cellRemoveActionIcon"
+                            [fusionTooltip]="getRemoveIconTooltipText()"
+                            (click)="onRowRemoveClicked($event)"></fusion-icon-button>
+    </div>
+</ng-template>
+
+<ng-template #multipleActionsMenu let-menuActions>
+    <div id="{{actionsMenuButtonId}}" class="fu-button-holder" [class.fu-row-menu-shown]="shownActionsMenu$ | async">
+        <fusion-icon-button [iconName]="'ph/dots-three'" (click)="onActionButtonClicked()"></fusion-icon-button>
+        @if (shownActionsMenu$ | async) {
+            <fusion-menu-drop style="--fu-drop-menu-width: 200px"
+                    *fusionTeleporting="'#'+options.tableId+'_tableTeleportWrapper'"
+                    [fusionReposition]="'#'+actionsMenuButtonId"
+                    [fusionRepositionPlacement]="floatingMenuPosition"
+                    [fusionRepositionOffset]="{y:-32, x:-32}"
+                    [menuItems]="menuActions"
+                    (fusionClickOutside)="onActionMenuClickOutSide($event)"
+                    (menuItemClicked)="menuItemClicked($event)"
+            ></fusion-menu-drop>
+        }
+    </div>
+</ng-template>

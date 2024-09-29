@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, forwardRef, inject, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, forwardRef, inject, Input, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
 import {BehaviorSubject} from 'rxjs';
@@ -63,6 +63,17 @@ export class ToggleV4Component {
     }
     // endregion
 
+    // region model in case work with component as model, not as form control
+    @Input() set model(value: boolean) {
+        this.#model = value ?? false;
+    }
+    get model(): boolean {
+        return this.#model;
+    }
+    #model = false;
+    @Output() modelChange = new EventEmitter();
+    // region model
+
     // region testId
     @Input() testId?: string;
     /** @internal */
@@ -83,8 +94,10 @@ export class ToggleV4Component {
     /** @ignore */
     change($event: Event): void {
         this.propagateTouched();
-        this.checked$.next(($event.target as HTMLInputElement).checked);
-        this.propagateChange(this.checked$.getValue());
+        this.model = ($event.target as HTMLInputElement).checked;
+        this.checked$.next(this.model);
+        this.propagateChange(this.model);
+        this.modelChange.emit(this.model);
     }
 
     // Implement ControlValueAccessor methods

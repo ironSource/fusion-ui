@@ -1,0 +1,58 @@
+<!-- region Expand rows Cell -->
+@for (expandCell of (expandCellCount | async); track expandCell; let isLast = $last, idx = $index){
+    @if(cellShown | generic:'cell-expand'){
+        <td class="expand-cell"
+            [class.total-row]="isRowTotal"
+            [class.expanded]="isExpanded"
+            [class.inner-row]="isInnerRow"
+            [class.sticky-left]="options?.rowsExpandableOptions?.sticky"
+            [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.CELL+'-r'+rowIndex+'-c'+idx)"
+        >
+            @if(isLast && showExpandIcon()){
+                <div><fusion-icon-button
+                        [iconName]="!isExpanded ? expandArrowIconName : collapseArrowIconName"
+                        [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.EXPAND_ICON_BUTTON+'-r'+rowIndex+'-c'+idx)"
+                        (click)="expandRow.emit({rowIndex: rowIndex, row: row, isExpanded: !isExpanded})"
+                ></fusion-icon-button></div>
+            }
+        </td>
+    }
+}
+<!-- endregion Expand Cell -->
+@for (column of columns; track column; let columnIndex = $index, isLast = $last){
+    @if (cellShown | generic:column.key){
+        <td fusionTableCell
+            [fusionTooltip]="columnsData[columnIndex]?.tooltip"
+            [data]="row[column.key]"
+            [row]="row"
+            [rowIndex]="rowIndex"
+            [rowSpanIndex]="rowSpanIndex"
+            [column]="column"
+            [options]="options"
+            [position]="{x: rowIndex, y: columnIndex}"
+            [isRemove]="columnsData[columnIndex]?.isRemove"
+            [infoIconTooltip]="columnsData[columnIndex]?.infoIconOnHoverTooltip"
+            [isRowSelected]="isRowSelected"
+            [isLastColumn]="isLast"
+            [isReadOnly]="isRowReadOnly"
+            [customClass]="row['customClass']"
+            [class]="columnsData[columnIndex]?.classes"
+            [class.cell-tooltip]="columnsData[columnIndex]?.hasTooltip"
+            [class.after-sticky]="hasAfterSticky"
+            [class.inner-row]="isInnerRow"
+            [class.fu-editable-cell]="tableService.isTypeInputEdit(column)"
+            [class.is-checkbox-holder]="tableService.isTypeCheckbox(column)"
+            [class.sticky-right]="column.stickyRight"
+            [class.fu-sticky-actions]="isLast && options?.rowActionsMenu?.stickyActionButton"
+            [ngStyle]="columnsData[columnIndex]?.styles"
+            [style.width]="columnsData[columnIndex]?.width"
+            [style.right]="column.stickyRightMargin"
+            [attr.colspan]="columnsData[columnIndex]?.colspan"
+            [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:(tableTestIdModifiers.CELL+'-r'+rowIndex+'-c'+columnIndex)"
+            (remove)="rowRemoved.emit()"
+            (selectedChange)="selectedChange.emit($event)"
+            (dataChange)="onDataChange($event, column.key)"
+        ></td>
+    }
+}
+
