@@ -1,9 +1,9 @@
 import {componentWrapperDecorator, Meta, moduleMetadata, StoryObj} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
-import {InlineCopyComponent} from '@ironsource/fusion-ui/components/inline-copy';
 import {environment} from 'stories/environments/environment';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
+import {InlineCopyComponent} from '@ironsource/fusion-ui/components/inline-copy';
 import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
 
 export default {
