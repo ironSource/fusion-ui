@@ -73,7 +73,8 @@ export const WithDropdown: Story = {
             optionsApp: optionsApp
         },
         template: `<fusion-app-trigger-story-wrapper [optionsApp]="optionsApp"/>`
-    })
+    }),
+    decorators: [componentWrapperDecorator(story => `<div style="height: 350px;">${story}</div>`)]
 };
 
 export const WithDropdownMultiSelect: Story = {
@@ -82,5 +83,6 @@ export const WithDropdownMultiSelect: Story = {
             optionsApp: optionsApp
         },
         template: `<fusion-app-trigger-story-wrapper [isMultiselect]="true" [optionsApp]="optionsApp"/>`
-    })
+    }),
+    decorators: [componentWrapperDecorator(story => `<div style="height: 450px;">${story}</div>`)]
 };
