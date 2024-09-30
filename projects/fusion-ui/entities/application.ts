@@ -1,4 +1,4 @@
-import {PlatformType} from '@ironsource/fusion-ui';
+import {PlatformType} from './platform-type';
 
 export interface Application {
     name: string;
