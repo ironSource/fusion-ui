@@ -1,9 +1,11 @@
 import {componentWrapperDecorator, Meta, moduleMetadata, StoryObj} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
-import {environment} from 'stories/environments/environment';
+import {environment} from '../../../../../stories/environments/environment';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {AppTriggerComponent} from './app-trigger.component';
+import {optionsApp} from './app-trigger.mock';
+import {AppTriggerStoryWrapperComponent} from './app-trigger-story-wrapper/app-trigger-story-wrapper.component';
 
 export default {
     title: 'V4/Components/Dropdown/Triggers/Applications',
@@ -11,7 +13,7 @@ export default {
     decorators: [
         moduleMetadata({
             declarations: [],
-            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule]
+            imports: [CommonModule, SvgModule.forRoot({assetsPath: environment.assetsPath}), IconModule, AppTriggerStoryWrapperComponent]
         }),
         componentWrapperDecorator(story => `<div style="width: 280px;">${story}</div>`)
     ],
@@ -63,4 +65,13 @@ SingleSelectedWithCopy.args = {
 export const MultipleSelected: Story = {};
 MultipleSelected.args = {
     placeholder: 'All apps selected (24)'
+};
+
+export const WithDropdown: Story = {
+    render: args => ({
+        props: {
+            optionsApp: optionsApp
+        },
+        template: `<fusion-app-trigger-story-wrapper [optionsApp]="optionsApp"/>`
+    })
 };

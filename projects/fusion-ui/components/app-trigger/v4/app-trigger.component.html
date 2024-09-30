@@ -2,7 +2,7 @@
         @if (application) {
             <img loading="lazy" [src]="appImageSrc" class="fu-app-trigger-image"/>
             <fusion-icon class="fu-app-trigger-platform" [name]="platformIcon"></fusion-icon>
-            <div class="fu-app-trigger-name truncate">{{ application?.name }}</div>
+            <div class="fu-app-trigger-name truncate" [fusionTooltip]="application.name">{{ application?.name }}</div>
         } @else {
             <div class="fu-app-trigger-placeholder">{{ placeholderText }}</div>
             @if (required) {

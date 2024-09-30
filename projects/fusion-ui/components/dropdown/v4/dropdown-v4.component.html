@@ -7,12 +7,22 @@
     @if(labelText){
         <fusion-input-label class="fu-dropdown-label" [text]="labelText" [required]="labelRequired" [icon]="labelIcon" [tooltipText]="labelTooltipText" [disabled]="(dropdownSelectConfigurations$ | async)?.disabled"></fusion-input-label>
     }
-    <div class="fu-dd-custom-trigger" *ngIf="templateRef" #trigger (click)="openDropdown($event)"
-         [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.TRIGGER">
-        <ng-container [ngTemplateOutlet]="templateRef"></ng-container>
-    </div>
-
-    <ng-container *ngIf="!templateRef" [ngTemplateOutlet]="defaultTrigger"></ng-container>
+    @if (templateRef){
+        <div class="fu-dd-custom-trigger" #trigger (click)="openDropdown($event)"
+             [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.TRIGGER">
+            <ng-container [ngTemplateOutlet]="templateRef"></ng-container>
+        </div>
+    } @else if (dynamicTrigger){
+        <div class="fu-dd-custom-trigger" #trigger (click)="openDropdown($event)"
+             [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdDropdownModifiers.TRIGGER">
+            <ng-container
+                    [ngComponentOutlet]="dynamicTrigger?.type"
+                    [ngComponentOutletInputs]="dynamicTrigger?.data"
+            ></ng-container>
+        </div>
+    } @else {
+        <ng-container [ngTemplateOutlet]="defaultTrigger"></ng-container>
+    }
 
     <ng-template #defaultTrigger>
         <fusion-dropdown-select class="fu-mode-{{triggerMode}}"

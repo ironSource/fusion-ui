@@ -1,10 +1,11 @@
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
-import {Application, CopyToClipboardModule} from '@ironsource/fusion-ui';
+import {Application} from '@ironsource/fusion-ui/entities';
 import {SnackbarService} from '@ironsource/fusion-ui/components/snackbar/v4';
 import {TooltipComponent} from '@ironsource/fusion-ui/components/tooltip/v4';
 import {tooltipConfiguration, TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
+import {CopyToClipboardModule} from '@ironsource/fusion-ui/directives/copy-to-clipboard';
 
 @Component({
     selector: 'fusion-app-trigger',

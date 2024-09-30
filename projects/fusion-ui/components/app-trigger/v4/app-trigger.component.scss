@@ -101,4 +101,8 @@
       border-bottom-right-radius: var(--fu-app-trigger-border-radius);
     }
   }
+
+  .truncate {
+    @extend %truncate;
+  }
 }
