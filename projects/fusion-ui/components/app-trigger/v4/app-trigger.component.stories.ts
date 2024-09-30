@@ -59,3 +59,8 @@ SingleSelectedWithCopy.args = {
         key: '324571'
     }
 };
+
+export const MultipleSelected: Story = {};
+MultipleSelected.args = {
+    placeholder: 'All apps selected (24)'
+};
