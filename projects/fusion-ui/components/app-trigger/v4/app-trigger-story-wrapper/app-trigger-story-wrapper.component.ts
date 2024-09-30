@@ -7,24 +7,31 @@ import {Subject} from 'rxjs';
 import {distinctUntilChanged, takeUntil} from 'rxjs/operators';
 import {Application} from '@ironsource/fusion-ui/entities';
 import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
+import {MultiDropdownComponent} from '@ironsource/fusion-ui/components/multi-dropdown/v4';
 
 @Component({
     selector: 'fusion-app-trigger-story-wrapper',
     standalone: true,
-    imports: [ReactiveFormsModule, DropdownComponent],
-    template: ` <fusion-dropdown [dynamicTrigger]="customDynamicComponent" [formControl]="dropdownControl" [options]="optionsApp" /> `,
+    imports: [ReactiveFormsModule, DropdownComponent, MultiDropdownComponent],
+    template: `
+        @if (isMultiselect){
+        <fusion-multi-dropdown [dynamicTrigger]="customDynamicComponent" [formControl]="dropdownControl" [options]="optionsApp" />
+        } @else {
+        <fusion-dropdown [dynamicTrigger]="customDynamicComponent" [formControl]="dropdownControl" [options]="optionsApp" />
+        }
+    `,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppTriggerStoryWrapperComponent implements OnInit, OnDestroy {
     @Input() optionsApp: any[];
+    @Input() isMultiselect = false;
 
     dropdownControl = new FormControl();
 
     customDynamicComponent: DynamicComponent = {
         type: AppTriggerComponent as Type<Component>,
         data: {
-            placeholder: 'Select app',
-            required: true
+            placeholder: 'Select app'
         }
     };
 
@@ -32,14 +39,20 @@ export class AppTriggerStoryWrapperComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.dropdownControl.valueChanges.pipe(takeUntil(this.onDestroy$), distinctUntilChanged()).subscribe((value: DropdownOption[]) => {
-            this.customDynamicComponent.data = {
-                application: {
-                    key: value[0].id,
-                    name: value[0].displayText,
-                    imageSrc: value[0].image,
-                    platform: (value[0].icon as string).includes('android') ? 'android' : 'ios'
-                } as Application
-            };
+            if (this.isMultiselect && value.length > 1) {
+                this.customDynamicComponent.data = {
+                    placeholder: value.length + ' selected'
+                };
+            } else {
+                this.customDynamicComponent.data = {
+                    application: {
+                        key: value[0].id,
+                        name: value[0].displayText,
+                        imageSrc: value[0].image,
+                        platform: (value[0].icon as string).includes('android') ? 'android' : 'ios'
+                    } as Application
+                };
+            }
         });
     }
 

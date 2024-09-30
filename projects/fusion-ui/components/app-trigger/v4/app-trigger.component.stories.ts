@@ -75,3 +75,12 @@ export const WithDropdown: Story = {
         template: `<fusion-app-trigger-story-wrapper [optionsApp]="optionsApp"/>`
     })
 };
+
+export const WithDropdownMultiSelect: Story = {
+    render: args => ({
+        props: {
+            optionsApp: optionsApp
+        },
+        template: `<fusion-app-trigger-story-wrapper [isMultiselect]="true" [optionsApp]="optionsApp"/>`
+    })
+};
