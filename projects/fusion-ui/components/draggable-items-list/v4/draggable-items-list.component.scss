@@ -1,0 +1,84 @@
+@import '../../../src/style/scss/v4/vars/vars';
+@import '../../../src/style/scss/v4/mixins/mixins';
+
+:host {
+  @extend %reset;
+
+  --fu-list-items-gap: #{$spacingV4-75};
+  --fu-list-item-padding: 0 8px 0 0;
+  --fu-list-item-heigth: #{$spacingV4-400};
+  --fu-list-item-background-color: var(--background-paper, #{$color-v4-background-paper});
+  --fu-list-item-border-color: var(--default-outlinedBorder, #{$color-v4-default-outlined-border});
+  --fu-list-item-hover-border-color: var(--action-active, #{$color-v4-action-active});
+  --fu-list-item-border: 1px solid var(--fu-list-item-border-color);
+  --fu-list-item-border-radius: #{$spacingV4-50};
+  --fu-list-item-drag-icon-size: #{$spacingV4-250};
+  --fu-list-item-drag-icon-padding: 0 8px;
+  --fu-list-item-drag-icon-color: var(--action-active, #{$color-v4-action-active});
+  --fu-list-item-hover-drag-icon-color: var(--action-primary, #{$color-v4-action-primary});
+  --fu-list-item-drag-label-color: var(--text-primary, #{$color-v4-text-primary});
+  --fu-list-item-content-gap: #{$spacingV4-50};
+  --fu-list-item-remove-icon-size: #{$spacingV4-200};
+  --fu-list-item-remove-icon-color: var(--action-active, #{$color-v4-action-active});
+
+  .fu-items-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--fu-list-items-gap);
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+
+    .fu-list-item {
+      user-select: none;
+      padding: var(--fu-list-item-padding);
+      margin: 0;
+      width: 100%;
+      height: var(--fu-list-item-heigth);
+      display: flex;
+      align-items: center;
+      border: var(--fu-list-item-border);
+      border-radius: var(--fu-list-item-border-radius);
+      background-color: var(--fu-list-item-background-color);
+
+      .fu-item-drag-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--fu-list-item-drag-icon-padding);
+
+        .fu-drag-icon {
+          @include size(var(--fu-list-item-drag-icon-size));
+          color: var(--fu-list-item-drag-icon-color);
+        }
+      }
+
+      .fu-item-content {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: var(--fu-list-item-border);
+
+        .fu-item-label {
+          @extend %font-v4-body-2;
+          color: var(--fu-list-item-drag-label-color);
+        }
+
+        .fu-remove-icon {
+          margin-left: auto;
+          @include size(var(--fu-list-item-remove-icon-size));
+          color: var(--fu-list-item-remove-icon-color);
+        }
+      }
+
+      &:hover {
+        border-color: var(--fu-list-item-hover-border-color);
+        cursor: grab;
+        .fu-item-drag-icon .fu-drag-icon{
+          color: var(--fu-list-item-hover-drag-icon-color);
+        }
+      }
+    }
+  }
+
+}

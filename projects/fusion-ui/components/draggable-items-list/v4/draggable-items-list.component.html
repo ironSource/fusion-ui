@@ -1,0 +1,13 @@
+<ul class="fu-items-wrapper">
+    @for (item of items; track item.label) {
+        <li class="fu-list-item" [attr.data-id]="item.id">
+            <div class="fu-item-drag-icon">
+                <fusion-icon class="fu-drag-icon" name="ph/bold/dots-six-vertical"></fusion-icon>
+            </div>
+            <div class="fu-item-content">
+                <div class="fu-item-label">{{ item.label }}</div>
+                <fusion-icon class="fu-remove-icon" name="ph/x"></fusion-icon>
+            </div>
+        </li>
+    }
+</ul>
