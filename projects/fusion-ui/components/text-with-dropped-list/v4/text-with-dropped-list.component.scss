@@ -1,0 +1,39 @@
+@import '../../../src/style/scss/v4/vars/vars';
+@import '../../../src/style/scss/v4/mixins/mixins';
+
+:host {
+  @extend %reset;
+
+  --fu-text-color: var(--text-primary, #{$color-v4-text-primary});
+  --fu-text-disabled-color: var(--text-disabled, #{$color-v4-text-disabled});
+  --fu-text-border-width: 1px;
+  --fu-text-border-type: dashed;
+  --fu-text-border-color: var(--text-secondary, #{$color-v4-text-secondary});
+  --fu-text-disabled-border-color: var(--text-disabled, #{$color-v4-text-disabled});
+
+  display: flex;
+  align-items: center;
+  position: relative;
+
+
+  .fu-text{
+    @extend %font-v4-body-1;
+    color: var(--fu-text-color);
+    border-bottom: var(--fu-text-border-width) var(--fu-text-border-type) var(--fu-text-border-color);
+  }
+  .fu-list-wrapper{
+    display: none;
+  }
+  &.fu-small{
+    .fu-text{
+      @extend %font-v4-body-2;
+    }
+  }
+  &.fu-disabled{
+    .fu-text{
+      pointer-events: none;
+      color: var(--fu-text-disabled-color);
+      border-bottom-color: var(--fu-text-disabled-border-color);
+    }
+  }
+}
