@@ -7,6 +7,7 @@ import {ItemDragAndDrop} from './draggable-items-list.entities';
 @Component({
     selector: 'fusion-draggable-items-list',
     standalone: true,
+    host: {class: 'fusion-v4'},
     imports: [IconModule, DragAndDropDirective, IconButtonComponent],
     templateUrl: './draggable-items-list.component.html',
     styleUrl: './draggable-items-list.component.scss',
