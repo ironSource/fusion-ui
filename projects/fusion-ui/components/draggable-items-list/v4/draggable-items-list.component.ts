@@ -14,13 +14,22 @@ import {ItemDragAndDrop} from './draggable-items-list.entities';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DraggableItemsListComponent {
-    @Input() items: ItemDragAndDrop[] = [];
+    @Input() set items(value: ItemDragAndDrop[]) {
+        if (Array.isArray(value)) {
+            this.#items = [...value];
+        }
+    }
+    get items(): ItemDragAndDrop[] {
+        return this.#items;
+    }
 
     @Output() orderChanged = new EventEmitter<DragAndDropListChanges>();
     @Output() itemRemoved = new EventEmitter<{removedAtIndex: number; itemList: ItemDragAndDrop[]}>();
 
+    #items: ItemDragAndDrop[] = [];
+
     removeItem(index: number) {
-        this.items.splice(index, 1);
+        this.#items.splice(index, 1);
         this.itemRemoved.emit({removedAtIndex: index, itemList: this.items});
     }
 }
