@@ -8,6 +8,8 @@
   --fu-list-item-padding: 0 8px 0 0;
   --fu-list-item-heigth: #{$spacingV4-400};
   --fu-list-item-background-color: var(--background-paper, #{$color-v4-background-paper});
+  --fu-list-item-drag-over-background-color: var(--background-paper-elevation-2, #{$color-v4-background-paper-elevation-2});
+  --fu-list-item-drag-over-border-color: var(--background-paper-elevation-2, #{$color-v4-background-paper-elevation-2});
   --fu-list-item-border-color: var(--default-outlinedBorder, #{$color-v4-default-outlined-border});
   --fu-list-item-hover-border-color: var(--action-active, #{$color-v4-action-active});
   --fu-list-item-border: 1px solid var(--fu-list-item-border-color);
@@ -17,9 +19,8 @@
   --fu-list-item-drag-icon-color: var(--action-active, #{$color-v4-action-active});
   --fu-list-item-hover-drag-icon-color: var(--action-primary, #{$color-v4-action-primary});
   --fu-list-item-drag-label-color: var(--text-primary, #{$color-v4-text-primary});
+  --fu-list-item-draging-box-shadow: #{$boxShadowV4-LG};
   --fu-list-item-content-gap: #{$spacingV4-50};
-  --fu-list-item-remove-icon-size: #{$spacingV4-200};
-  --fu-list-item-remove-icon-color: var(--action-active, #{$color-v4-action-active});
 
   .fu-items-wrapper {
     display: flex;
@@ -64,10 +65,8 @@
           color: var(--fu-list-item-drag-label-color);
         }
 
-        .fu-remove-icon {
+        fusion-icon-button {
           margin-left: auto;
-          @include size(var(--fu-list-item-remove-icon-size));
-          color: var(--fu-list-item-remove-icon-color);
         }
       }
 
@@ -78,6 +77,28 @@
           color: var(--fu-list-item-hover-drag-icon-color);
         }
       }
+
+      &.dragging{
+        cursor: grab;
+        &:active{
+          cursor: grab;
+          box-shadow: var(--fu-list-item-draging-box-shadow);
+        }
+      }
+
+      &.dragging-transit {
+        color: transparent;
+        background-color: var(--fu-list-item-drag-over-background-color);
+        border-color: var(--fu-list-item-drag-over-border-color);
+        .fu-item-drag-icon,
+        .fu-item-content {
+          visibility: hidden;
+        }
+        &:hover {
+          border-color: var(--fu-list-item-drag-over-border-color);
+        }
+      }
+
     }
   }
 

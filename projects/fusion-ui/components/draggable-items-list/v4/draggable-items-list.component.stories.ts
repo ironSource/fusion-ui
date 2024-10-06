@@ -1,10 +1,16 @@
 import {componentWrapperDecorator, Meta, moduleMetadata, StoryObj} from '@storybook/angular';
+import {action} from '@storybook/addon-actions';
 import {CommonModule} from '@angular/common';
 import {environment} from 'stories/environments/environment';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {DraggableItemsListComponent} from './draggable-items-list.component';
 import {ItemDragAndDrop} from './draggable-items-list.entities';
+
+const actionsData = {
+    orderChanged: action('orderChanged'),
+    itemRemoved: action('itemRemoved')
+};
 
 const ITEMS: ItemDragAndDrop[] = [{label: 'Milk shake'}, {label: 'Cocktails'}, {label: 'Fruit salad'}, {label: 'Coffee'}];
 

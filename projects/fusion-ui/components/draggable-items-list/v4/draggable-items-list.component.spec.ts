@@ -63,9 +63,10 @@ describe('DraggableItemsListComponent', () => {
 
   it('should have item remove icon', () => {
     const item: HTMLElement = fixture.nativeElement.querySelector('.fu-items-wrapper .fu-list-item');
-    const itemRemoveIcon: HTMLElement = item.querySelector('.fu-item-content .fu-remove-icon');
-    expect(itemRemoveIcon).toBeTruthy();
-    expect(itemRemoveIcon.classList).toContain('x');
+    const itemRemoveIconButton: HTMLElement = item.querySelector('.fu-item-content fusion-icon-button');
+    expect(itemRemoveIconButton).toBeTruthy();
+    expect(itemRemoveIconButton.getAttribute('iconname')).toBe('ph/x');
+    expect(itemRemoveIconButton.getAttribute('size')).toBe('extraSmall');
   });
 
 });
