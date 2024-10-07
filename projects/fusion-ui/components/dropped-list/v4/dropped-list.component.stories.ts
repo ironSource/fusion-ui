@@ -33,8 +33,8 @@ type Story = StoryObj<DroppedListComponent>;
 
 export const Basic: Story = {};
 
-export const WithFlag: Story = {};
-WithFlag.args = {list: COUNTRY_LIST_OPTIONS};
-
 export const WithApplication: Story = {};
 WithApplication.args = {list: APPLICATION_LIST_OPTIONS};
+
+export const WithFlag: Story = {};
+WithFlag.args = {list: COUNTRY_LIST_OPTIONS};
