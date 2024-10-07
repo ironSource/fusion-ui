@@ -49,13 +49,13 @@ $scrollBarColor: rgba(83, 87, 91, 0.3);
 %customScroll{
     /* total width */
     &::-webkit-scrollbar {
-        background-color: #fff;
+        background-color: var(--fu-custom-scroll-bg-color, #fff);
         width: 12px;
     }
 
     /* background of the scrollbar except button or resizer */
     &::-webkit-scrollbar-track {
-        background-color: #fff;
+        background-color:  var(--fu-custom-scroll-bg-color, #fff);
     }
 
     /* scrollbar itself */
