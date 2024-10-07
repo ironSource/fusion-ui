@@ -1,4 +1,10 @@
-<div class="fu-text">{{text}}</div>
-<ul class="fu-list-wrapper">
-    <li class="fu-list-item"></li>
-</ul>
+<div class="fu-text" [id]="id">{{text}}</div>
+@if (showedList$ | async){
+    <fusion-dropped-list
+            class="fu-dropped-list"
+            [id]="'for_'+id"
+            [list]="list"
+            (mouseenter)="moseEnter()"
+            (mouseleave)="mouseLeave()"
+    />
+}

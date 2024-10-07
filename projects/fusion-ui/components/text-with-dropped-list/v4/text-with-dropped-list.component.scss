@@ -12,18 +12,17 @@
   --fu-text-disabled-border-color: var(--text-disabled, #{$color-v4-text-disabled});
 
   display: flex;
+  width: fit-content;
   align-items: center;
   position: relative;
-
 
   .fu-text{
     @extend %font-v4-body-1;
     color: var(--fu-text-color);
     border-bottom: var(--fu-text-border-width) var(--fu-text-border-type) var(--fu-text-border-color);
+    cursor: default;
   }
-  .fu-list-wrapper{
-    display: none;
-  }
+
   &.fu-small{
     .fu-text{
       @extend %font-v4-body-2;
@@ -35,5 +34,12 @@
       color: var(--fu-text-disabled-color);
       border-bottom-color: var(--fu-text-disabled-border-color);
     }
+  }
+
+  .fu-dropped-list{
+    position: absolute;
+    top: calc(100% + 4px);
+    right: var(--fu-dropped-list-right);
+    z-index: getZIndexLayerOffset(notification, 3);
   }
 }
