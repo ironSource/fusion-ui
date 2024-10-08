@@ -6,7 +6,6 @@ import {
   BASE_LIST_OPTIONS,
   COUNTRY_LIST_OPTIONS
 } from "@ironsource/fusion-ui/components/dropped-list/v4/dropped-list.mock";
-import {getLocaleFirstDayOfWeek} from "@angular/common";
 
 describe('DroppedListComponent', () => {
   let component: DroppedListComponent;
