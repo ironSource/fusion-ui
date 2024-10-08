@@ -1,9 +1,9 @@
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, Input, OnDestroy, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, from, Subject} from 'rxjs';
+import {debounceTime, filter, switchMap, takeUntil, tap} from 'rxjs/operators';
 import {computePosition, flip, shift} from '@floating-ui/dom';
 import {RepositionDirective} from '@ironsource/fusion-ui/directives/reposition';
-import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
 import {TeleportingModule} from '@ironsource/fusion-ui/directives/teleporting';
 import {DroppedListComponent, DroppedListOption} from '@ironsource/fusion-ui/components/dropped-list/v4';
 
@@ -14,51 +14,58 @@ import {DroppedListComponent, DroppedListOption} from '@ironsource/fusion-ui/com
         class: 'fusion-v4',
         '[class.fu-disabled]': 'disabled',
         '[class.fu-small]': 'size === "small"',
-        '(mouseenter)': 'moseEnter()',
-        '(mouseleave)': 'mouseLeave()'
+        '(mouseenter)': 'showedList$.next(true)',
+        '(mouseleave)': 'showedList$.next(false)'
     },
     imports: [CommonModule, TeleportingModule, RepositionDirective, DroppedListComponent],
     templateUrl: './text-with-dropped-list.component.html',
     styleUrl: './text-with-dropped-list.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TextWithDroppedListComponent {
+export class TextWithDroppedListComponent implements OnInit, OnDestroy {
     @Input() size: 'small' | 'medium' = 'medium';
     @Input() text: string;
     @Input() disabled = false;
     @Input() list: DroppedListOption[] = [];
 
-    #uniqueIdService: UniqueIdService = inject(UniqueIdService);
-
-    /** @ignore */
-    id = 'fu_' + this.#uniqueIdService.getUniqueId().toString();
     /** @ignore */
     showedList$ = new BehaviorSubject<boolean>(false);
 
-    /** @ignore */
-    moseEnter() {
-        if (this.disabled) {
-            return;
-        }
+    #onDestroy$ = new Subject<void>();
+    #hostElement: HTMLElement = this.hostElementRef.nativeElement;
+    #textLabel: HTMLElement;
+    #droppedList: HTMLElement;
 
-        this.showedList$.next(true);
+    constructor(private hostElementRef: ElementRef) {}
 
-        setTimeout(() => {
-            const texEl = <HTMLElement>document.querySelector(`#${this.id}`);
-            const popListEl = <HTMLElement>document.querySelector(`#for_${this.id}`);
-
-            computePosition(texEl, popListEl, {
-                placement: 'bottom',
-                middleware: [flip(), shift({padding: 5})]
-            }).then(({x, y}) => {
-                popListEl.style.left = x + 'px';
-                popListEl.style.top = y + 'px';
+    ngOnInit() {
+        this.showedList$
+            .asObservable()
+            .pipe(
+                takeUntil(this.#onDestroy$),
+                filter(isShow => isShow && !this.list.length),
+                debounceTime(0),
+                tap(() => {
+                    this.#textLabel = <HTMLElement>this.#hostElement.querySelector(`.fu-text`);
+                    this.#droppedList = <HTMLElement>this.#hostElement.querySelector(`fusion-dropped-list`);
+                }),
+                switchMap(() =>
+                    from(
+                        computePosition(this.#textLabel, this.#droppedList, {
+                            placement: 'bottom',
+                            middleware: [flip(), shift({padding: 5})]
+                        })
+                    )
+                )
+            )
+            .subscribe(({x, y}) => {
+                this.#droppedList.style.left = x + 'px';
+                this.#droppedList.style.top = y + 'px';
             });
-        });
     }
 
-    /** @ignore */
-    mouseLeave() {
-        this.showedList$.next(false);
+    ngOnDestroy(): void {
+        this.#onDestroy$.next();
+        this.#onDestroy$.complete();
     }
 }

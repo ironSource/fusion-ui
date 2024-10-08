@@ -29,6 +29,7 @@
     }
   }
   &.fu-disabled{
+    pointer-events: none;
     .fu-text{
       pointer-events: none;
       color: var(--fu-text-disabled-color);

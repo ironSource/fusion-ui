@@ -1,10 +1,7 @@
-<div class="fu-text" [id]="id">{{text}}</div>
+<div class="fu-text">{{text}}</div>
 @if (showedList$ | async){
     <fusion-dropped-list
             class="fu-dropped-list"
-            [id]="'for_'+id"
             [list]="list"
-            (mouseenter)="moseEnter()"
-            (mouseleave)="mouseLeave()"
     />
 }
