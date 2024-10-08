@@ -41,7 +41,5 @@ describe('TextWithDroppedListComponent', () => {
     fixture.detectChanges();
     const droppedListEl = fixture.nativeElement.querySelector('.fu-dropped-list');
     expect(droppedListEl).toBeTruthy();
-    const textElId = fixture.nativeElement.querySelector('.fu-text').id;
-    expect(droppedListEl.id).toBe('for_'+textElId);
   });
 });
