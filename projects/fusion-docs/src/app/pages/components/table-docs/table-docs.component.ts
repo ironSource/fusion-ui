@@ -35,7 +35,9 @@ const tblColumns: Array<TableColumn> = [
             digitsInfo: '1.0-3'
         },
         customErrorMapping: {
-            required: {errorMessageKey: 'required'},
+            required: {
+                errorMessageKey: 'required'
+            },
             min: {
                 errorMessageKey: 'min',
                 textMapping: [{key: 'minValue', value: '10'}]
@@ -174,7 +176,7 @@ export class TableDocsComponent implements OnInit, OnDestroy {
 
     // for base table will NOT use select column
     columnsBasic: Array<TableColumn> = tblColumns.filter(cel => cel.key !== 'checkbox');
-    optionsBasicTotals = {
+    optionsBasicTotals: TableOptions = {
         sortingType: 'local',
         hasTotalsRow: true
     };

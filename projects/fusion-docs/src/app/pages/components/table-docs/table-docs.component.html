@@ -3,8 +3,8 @@
         <!--UI-Component Examples-->
         <div class="is-example-title">Type</div>
 
-<!--        <fusion-example-block id="typeBasic" title="Basic">
-            &lt;!&ndash;code examples by framework&ndash;&gt;
+        <fusion-example-block id="typeBasic" title="Basic">
+            <!--code examples by framework-->
             <ng-template fusionExampleBlock="Angular">
                 <fusion-code-block
                     lang="html"
@@ -336,7 +336,7 @@ export default FooComponent;'
 document.addEventListener("DOMContentLoaded", onLoad, false);'
                 ></fusion-code-block>
             </ng-template>
-            &lt;!&ndash;code examples by framework&ndash;&gt;
+            <!--code examples by framework-->
 
             <fusion-alert [shown]="isBadRequest" mode="header" type="error"
                 ><strong>Server Error!</strong> Something wrong.... Try again later.</fusion-alert
@@ -355,6 +355,7 @@ document.addEventListener("DOMContentLoaded", onLoad, false);'
                 </div>
             </div>
         </fusion-example-block>
+<!--
 
         <fusion-example-block id="typeMultipleSelect" title="Multiple Selection">
             <ng-template fusionExampleBlock="Angular">
@@ -2860,7 +2861,7 @@ tblColumnsCellExamples: Array<ITableColumn> = [
             ></fusion-table>
         </fusion-example-block>
 
-        <div class="is-example-title">Grouped Table</div>-->
+        <div class="is-example-title">Grouped Table</div>
 
         <fusion-example-block id="GroupedTable" title="Grouped Table">
             <fusion-code-block
@@ -2881,15 +2882,15 @@ tblColumnsCellExamples: Array<ITableColumn> = [
                 [options]="optionsGroupedTable"
             ></fusion-table>
         </fusion-example-block>
-        <!--UI-Component Examples-->
-        <!--UI-Component Configuration Doc-->
+        &lt;!&ndash;UI-Component Examples&ndash;&gt;
+        &lt;!&ndash;UI-Component Configuration Doc&ndash;&gt;
         <div class="is-example-title">Configuration</div>
         need to update this.
 
         <fusion-example-block id="params" title="Parameters" [collapsible]="false">
             <fusion-code-block
                 lang="js"
-                code="// --- Input parameters:
+                code="// -&#45;&#45; Input parameters:
 id: string;
 options: TableOptions = {};
 columns: TableColumn[] = [];
@@ -2898,7 +2899,7 @@ loading: boolean;
 sortTableOnDataChanges = false;
 expandedRows: {[key: number]: boolean} = {};
 
-// ---- Interfaces and Enums
+// &#45;&#45;&#45;&#45; Interfaces and Enums
 
 interface TableOptions {
     sortingType?: string;
@@ -3049,6 +3050,7 @@ scrollDown($event.target);
 expandRow(tableRowExpandData: TableRowExpandEmitter)"
             ></fusion-code-block>
         </fusion-example-block>
+-->
 
         <!--UI-Component Configuration Doc-->
     </div>
