@@ -16,6 +16,7 @@
     box-shadow: var(--fu-item-list-box-shadow, #{$boxShadowV4-MD});
     background-color: var(--fu-item-list-background-color, var(--background-default, #{$color-v4-background-default}));
     max-height: var(--fu-item-list-max-height, 210px);
+    height:  var(--fu-item-list-max-height, 210px);
     overflow-x: hidden;
     overflow-y: auto;
     --fu-custom-scroll-bg-color: transparent;

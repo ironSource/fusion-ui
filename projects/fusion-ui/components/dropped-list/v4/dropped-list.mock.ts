@@ -17,3 +17,7 @@ export const APPLICATION_LIST_OPTIONS = MOK_APPLICATIONS_ONE_LINE_OPTIONS.map(co
     label: country.displayText,
     imageUrl: country.image
 }));
+
+export const BIG_LIST_OPTIONS = new Array(1000).fill(null).map((_, index) => ({
+    label: `Option ${index + 1}`
+}));

@@ -1,6 +1,6 @@
 import {componentWrapperDecorator, Meta, moduleMetadata, StoryObj} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
-import {APPLICATION_LIST_OPTIONS, BASE_LIST_OPTIONS, COUNTRY_LIST_OPTIONS} from './dropped-list.mock';
+import {APPLICATION_LIST_OPTIONS, BASE_LIST_OPTIONS, BIG_LIST_OPTIONS, COUNTRY_LIST_OPTIONS} from './dropped-list.mock';
 import {DroppedListComponent} from './dropped-list.component';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../stories/environments/environment';
@@ -38,3 +38,6 @@ WithApplication.args = {list: APPLICATION_LIST_OPTIONS};
 
 export const WithFlag: Story = {};
 WithFlag.args = {list: COUNTRY_LIST_OPTIONS};
+
+export const WithBigList: Story = {};
+WithBigList.args = {list: BIG_LIST_OPTIONS};

@@ -1,6 +1,5 @@
-<cdk-virtual-scroll-viewport itemSize="30">
-    <ul class="fu-list-wrapper">
-        <li *cdkVirtualFor="let listItem of list;" class="fu-list-item">
+<cdk-virtual-scroll-viewport itemSize="20" class="fu-list-wrapper">
+        <div *cdkVirtualFor="let listItem of list;" class="fu-list-item">
             @if (listItem.flag) {
                 <fusion-flag [countryCode]="listItem.flag"></fusion-flag>
             }
@@ -8,10 +7,10 @@
                 <img class="fu-list-item-image" [src]="listItem.imageUrl" alt="listItem.label" loading="lazy">
             }
             <div class="fu-list-item-label truncate" [fusionTooltip]="listItem.label">{{ listItem.label }}</div>
-        </li>
-    </ul>
+        </div>
 </cdk-virtual-scroll-viewport>
 <!--
+<ul class="fu-list-wrapper">
     @for (listItem of list; track listItem){
         <li class="fu-list-item">
             @if (listItem.flag){
@@ -23,6 +22,7 @@
             <div class="fu-list-item-label truncate" [fusionTooltip]="listItem.label">{{listItem.label}}</div>
         </li>
     }
+</ul>
 -->
 
 
