@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [8.4.0-rc.4](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.3...v8.4.0-rc.4) (2024-10-08)
+
+## [8.4.0-rc.3](https://github.com/ironSource/fusion-ui/compare/v8.3.0...v8.4.0-rc.3) (2024-10-08)
+
+
+### Features
+
+* **isct-159:** added base application-trigger v4 component ([c377612](https://github.com/ironSource/fusion-ui/commit/c377612516eeecb124958e366fdf58fa90129f24))
+* **isct-367:** create app header component ([46b05e7](https://github.com/ironSource/fusion-ui/commit/46b05e7b3a688f2d53058428bfe4d1913a6864ba))
+* **ISCT-369:** Inline copy component ([#344](https://github.com/ironSource/fusion-ui/issues/344)) ([eacdb5b](https://github.com/ironSource/fusion-ui/commit/eacdb5b2f5f5bc1b1d6c0df134c9fc87c5f154c1))
+* **isct-374:** added drag-and-drop directive and draggable-items-list component ([1f073cb](https://github.com/ironSource/fusion-ui/commit/1f073cb2aef7dae50ca619e49617f6df0a241e2e))
+
 ## [8.4.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.1...v8.4.0-rc.2) (2024-08-25)
 
 ## [8.4.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.0...v8.4.0-rc.1) (2024-08-14)
