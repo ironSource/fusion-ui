@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [8.4.0-rc.5](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.4...v8.4.0-rc.5) (2024-10-09)
+
+
+### Features
+
+* **isct-381:** text with dropped list component ([#348](https://github.com/ironSource/fusion-ui/issues/348)) ([8618249](https://github.com/ironSource/fusion-ui/commit/86182499f5c7ade31093cca37d18e1577c17a809))
+
+
+### Bug Fixes
+
+* **tooltip:** fixed tooltip on cycle close/open on element mouse out when mouse on element border ([#349](https://github.com/ironSource/fusion-ui/issues/349)) ([f31be22](https://github.com/ironSource/fusion-ui/commit/f31be222d8cf3ad67ea769e602020f52f11268af))
+
 ## [8.4.0-rc.4](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.3...v8.4.0-rc.4) (2024-10-08)
 
 ## [8.4.0-rc.3](https://github.com/ironSource/fusion-ui/compare/v8.3.0...v8.4.0-rc.3) (2024-10-08)
