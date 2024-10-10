@@ -1,4 +1,4 @@
-import {Component, Directive, ElementRef, HostBinding, Inject, Input, OnDestroy, Renderer2, Type} from '@angular/core';
+import {Directive, ElementRef, HostBinding, Inject, Input, OnDestroy, Renderer2} from '@angular/core';
 import {ITooltipData, TooltipPosition, TooltipType} from './tooltip.entities';
 import {TooltipService} from './tooltip.base.service';
 import {Subject, fromEvent, merge, Observable, of} from 'rxjs';
@@ -8,7 +8,7 @@ import {DOCUMENT} from '@angular/common';
 
 @Directive()
 export abstract class TooltipBaseDirective implements OnDestroy {
-    @Input() set fusionTooltip(tooltipContent: string | Type<Component>) {
+    @Input() set fusionTooltip(tooltipContent: string) {
         if (!!tooltipContent) {
             this.clearTooltipContentListener$.next();
             this.fusionTooltipContent = tooltipContent;
@@ -32,7 +32,7 @@ export abstract class TooltipBaseDirective implements OnDestroy {
     private clearHover$ = merge(this.clearTooltipContentListener$.asObservable(), this.onDestroy$.asObservable());
     private takeUntil$ = merge(this.clearListeners$.asObservable(), this.onDestroy$.asObservable());
     private onMouseEnterObservable$: Observable<MouseEvent>;
-    private fusionTooltipContent: string | Type<Component> = '';
+    private fusionTooltipContent = '';
 
     constructor(
         private elementRef: ElementRef,
@@ -95,7 +95,7 @@ export abstract class TooltipBaseDirective implements OnDestroy {
             icon: this.tooltipIcon,
             width: this.tooltipWidth,
             type: this.tooltipType,
-            componentData: this.tooltipComponentData.componentData
+            componentData: this.tooltipComponentData
         };
         this.tooltipService.showTooltip(tooltipData);
     }

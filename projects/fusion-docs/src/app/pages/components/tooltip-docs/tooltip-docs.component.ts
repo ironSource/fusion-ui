@@ -16,12 +16,12 @@ import {ExmlForTooltipComponent} from '../../../components/exml-for-tooltip/exml
 export class TooltipDocsComponent implements OnInit {
     public tooltipPosition = TooltipPosition;
     private styleElement: HTMLStyleElement;
+
     tooltipTypeHtml = TooltipType.Html;
+
     tooltipTypeComponent = TooltipType.Component;
     tooltipCustomComponent = ExmlForTooltipComponent as Type<Component>;
-    tooltipCustomData = {
-        componentData: {ppid: 'a0ad70e0-bc66-414c-901b-35a410cffd50A'}
-    };
+    tooltipCustomData = {ppid: 'a0ad70e0-bc66-414c-901b-35a410cffd50A'};
 
     rightMenu: DocsMenuItem[] = [
         {

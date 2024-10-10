@@ -20,7 +20,7 @@ export enum TooltipType {
 export interface ITooltipData {
     parentEl?: ElementRef;
     position?: TooltipPosition;
-    content?: string | Type<Component>;
+    content?: string;
     width?: number;
     type?: TooltipType;
     icon?: IconData;

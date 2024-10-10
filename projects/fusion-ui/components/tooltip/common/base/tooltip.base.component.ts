@@ -19,12 +19,9 @@ export abstract class TooltipBaseComponent implements AfterViewInit, OnChanges {
         this.hostEl = newTooltipData.parentEl;
         this.position = newTooltipData.position || TooltipPosition.Top;
         this.content =
-            newTooltipData.type === TooltipType.Html && typeof newTooltipData.content === 'string'
+            newTooltipData.type === TooltipType.Html
                 ? this.sanitizer.bypassSecurityTrustHtml(newTooltipData.content)
-                : newTooltipData.type === TooltipType.Component
-                ? newTooltipData.content
-                : '';
-
+                : newTooltipData.content;
         this.width = newTooltipData.width;
         this.icon = newTooltipData.icon;
         this.type = newTooltipData.type || TooltipType.Html;
