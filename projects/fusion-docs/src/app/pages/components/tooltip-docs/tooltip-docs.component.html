@@ -324,7 +324,7 @@ document.addEventListener('DOMContentLoaded', onLoad, false);"
             <div class="row">
                 <div class="col-3">
                     <div class="is-tooltip-example-holder">
-                        <div [tooltipType]="tooltipTypeHtml" tooltipPreventToClose="true" fusionTooltip="<div style='color: green'>Here's a tooltip!</div>" [tooltipIcon]="'success'">Tooltip on top</div>
+                        <div [tooltipType]="tooltipTypeComponent" [fusionTooltip]="tooltipCustomComponent" [tooltipComponentData]="tooltipCustomData">Tooltip on top</div>
                     </div>
                 </div>
                 <div class="col-3">

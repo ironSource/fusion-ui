@@ -95,7 +95,7 @@ export abstract class TooltipBaseDirective implements OnDestroy {
             icon: this.tooltipIcon,
             width: this.tooltipWidth,
             type: this.tooltipType,
-            componentData: this.tooltipComponentData
+            componentData: this.tooltipComponentData.componentData
         };
         this.tooltipService.showTooltip(tooltipData);
     }
