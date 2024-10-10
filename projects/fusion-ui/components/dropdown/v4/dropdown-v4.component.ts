@@ -16,6 +16,7 @@ import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {InputVariant} from '@ironsource/fusion-ui/components/input/v4';
 import {InputHelperComponent} from '@ironsource/fusion-ui/components/input-helper/v4';
 import {InputLabelComponent} from '@ironsource/fusion-ui/components/input-label/v4';
+import {DynamicComponent} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 
 @Component({
     selector: 'fusion-dropdown',
@@ -53,6 +54,8 @@ export class DropdownV4Component extends DropdownBaseComponent {
     @Input() set triggerMode(value: DropdownTriggerMode) {
         this._triggerMode = value;
     }
+
+    @Input() dynamicTrigger?: DynamicComponent;
 
     get triggerMode(): DropdownTriggerMode {
         return this._triggerMode;

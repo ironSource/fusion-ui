@@ -10,5 +10,6 @@ export interface TableRowRemoveAction {
 }
 
 export interface TableMultipleActions {
+    stickyActionButton?: boolean;
     actions: MenuDropItem[];
 }

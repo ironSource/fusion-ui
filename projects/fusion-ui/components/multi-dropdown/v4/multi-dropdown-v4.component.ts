@@ -19,6 +19,7 @@ import {LoaderComponent} from '@ironsource/fusion-ui/components/loader/v4';
 import {InputVariant} from '@ironsource/fusion-ui/components/input/v4';
 import {InputHelperComponent} from '@ironsource/fusion-ui/components/input-helper/v4';
 import {InputLabelComponent} from '@ironsource/fusion-ui/components/input-label/v4';
+import {DynamicComponent} from '@ironsource/fusion-ui/components/dynamic-components/common/entities';
 
 @Component({
     selector: 'fusion-multi-dropdown',
@@ -67,6 +68,9 @@ export class MultiDropdownV4Component extends MultiDropdownBaseComponent {
     @Input() labelRequired: boolean = false;
     @Input() labelIcon: IconData;
     @Input() labelTooltipText: string;
+
+    /** @ignore */
+    @Input() dynamicTrigger?: DynamicComponent;
 
     /** @ignore */
     getOptionContent(option: DropdownOption): string {

@@ -44,7 +44,7 @@ export const Basic: Story = {
     render: args => ({
         props: {
             ...args,
-            testId: 'tooltip-default--tt-trigger'
+            testId: null //'tooltip-default--tt-trigger'
         },
         template: `<fusion-button color="primary" fusionTooltip="I am tooltip!" [configuration]="tooltipConfiguration" [testId]="testId">Hover me</fusion-button>`
     })
@@ -60,7 +60,7 @@ export const WithoutArrow: Story = {
         tooltipConfiguration: {
             suppressPositionArrow: true
         },
-        testId: 'tooltip-default--tt-trigger'
+        testId: null //'tooltip-default--tt-trigger'
     }
 };
 

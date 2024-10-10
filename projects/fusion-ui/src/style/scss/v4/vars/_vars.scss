@@ -49,13 +49,13 @@ $scrollBarColor: rgba(83, 87, 91, 0.3);
 %customScroll{
     /* total width */
     &::-webkit-scrollbar {
-        background-color: #fff;
+        background-color: var(--fu-custom-scroll-bg-color, #fff);
         width: 12px;
     }
 
     /* background of the scrollbar except button or resizer */
     &::-webkit-scrollbar-track {
-        background-color: #fff;
+        background-color:  var(--fu-custom-scroll-bg-color, #fff);
     }
 
     /* scrollbar itself */
@@ -75,18 +75,21 @@ $scrollBarColor: rgba(83, 87, 91, 0.3);
     /* total width */
     &::-webkit-scrollbar {
         background-color: transparent;
-        width: 4px;
+        border-left: var(--fu-scroll-border, solid 0px transparent);
+        border-top: var(--fu-scroll-border, solid 0px transparent);
+        width: var(--fu-scroll-width, 4px);
+        height: var(--fu-scroll-width, 4px);
     }
 
     /* background of the scrollbar except button or resizer */
     &::-webkit-scrollbar-track {
-        background-color: transparent;
+        background-color: var(--fu-scroll-bg-color, transparent);
     }
 
     /* scrollbar itself */
     &::-webkit-scrollbar-thumb {
-        background-color: $scrollBarColor;
-        border-radius: 4px;
+        background-color: var(--fu-scroll-button-bg-color, $scrollBarColor);
+        border-radius: var(--fu-scroll-button-border-radius, 4px);
     }
     /* set button(top and bottom of the scrollbar) */
     &::-webkit-scrollbar-button {

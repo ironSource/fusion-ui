@@ -20,7 +20,7 @@
     height: 28px;
     padding: 4px 8px;
     border-radius: var(--border-radius-md, #{$borderRadiusV4-md});
-    border: solid 1px var(--action-outlined-border, #{$color-v4-action-outlined-border});
+    outline: solid 1px var(--action-outlined-border, #{$color-v4-action-outlined-border});
     background-color: var(--default-main, #{$color-v4-default-main});
 
     .fu-placeholder-text {
@@ -34,21 +34,21 @@
 
     .fu-arrow-icon,
     .fu-dropdown-select-icon {
-      @include size(16px);
+      @include size(var(--dropdown-caret-icon, 20px));
       color: var(--action-active, #{$color-v4-action-active});
       margin-left: auto;
       flex-grow: 0;
     }
 
     &:hover {
-      border-color: var(--action-active, #{$color-v4-action-active});
+      outline-color: var(--action-active, #{$color-v4-action-active});
       background-color: var(--action-hover, #{$color-v4-action-hover});
       cursor: pointer;
     }
 
     &.fu-disabled {
       color: var(--text-disabled, #{$color-v4-text-disabled});
-      border-color: var(--action-outlined-border, #{$color-v4-action-outlined-border});
+      outline-color: var(--action-outlined-border, #{$color-v4-action-outlined-border});
       background-color: var(--action-disabled-background, #{$color-v4-action-disabled-background});
       pointer-events: none;
 
@@ -62,25 +62,24 @@
     &.fu-error,
     &.fu-success,
     &.fu-warning {
-      border-width: 2px;
-      padding: 3px 7px;
+      outline-width: 2px;
     }
 
     &.fu-open {
-      border-color: var(--primary-main, #{$color-v4-primary-main});
+      outline-color: var(--primary-main, #{$color-v4-primary-main});
       background-color: var(--action-hover, #{$color-v4-action-hover});
     }
 
     &.fu-error {
-      border-color: var(--error-main, #{$color-v4-error-main});
+      outline-color: var(--error-main, #{$color-v4-error-main});
     }
 
     &.fu-success {
-      border-color: var(--success-main, #{$color-v4-success-main});
+      outline-color: var(--success-main, #{$color-v4-success-main});
     }
 
     &.fu-warning {
-      border-color: var(--warning-main, #{$color-v4-warning-main});
+      outline-color: var(--warning-main, #{$color-v4-warning-main});
     }
 
     &.fu-size-small {
@@ -147,9 +146,9 @@
       }
 
       &.fu-open {
-        border-width: 2px;
+        outline-width: 2px;
         padding: 3px 7px;
-        border-color: var(--action-active, #{$color-v4-action-active});
+        outline-color: var(--action-active, #{$color-v4-action-active});
         background-color: var(--action-selected, #{$color-v4-action-selected});
 
         &.fu-size-small {
@@ -163,10 +162,10 @@
   &.fu-mode-button-icon,
   &.fu-mode-button-text {
     .fu-dropdown-select-wrapper {
-      border-color: transparent;
+      outline-color: transparent;
 
       &.fu-open {
-        border-color: transparent;
+        outline-color: transparent;
         background-color: var(--default-main, #{$color-v4-default-main});
       }
     }
@@ -178,7 +177,7 @@
 
       &.fu-open {
         padding: 4px;
-        border-width: 1px;
+        outline-width: 1px;
       }
 
       .fu-dropdown-select-icon {

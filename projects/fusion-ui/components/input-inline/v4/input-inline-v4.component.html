@@ -1,0 +1,62 @@
+@if (!(isEditMode$ | async)) {
+    <div class="fu-edit-value-wrapper"
+         [class.fu-read-only]="readOnly || disabled"
+         [class.fu-pending]="pending"
+         [class.fu-number]="isNumber"
+         [class.fu-dropdown]="isDropdown"
+         (click)="goToEditMode()"
+    >
+        @switch (type) {
+            @case (InlineInputType.Number) {
+                <span class="fu-edit-value">{{ inputValue | number: pipeOptions }}</span>
+            }
+            @case (InlineInputType.Currency) {
+                <span class="fu-edit-value">{{ inputValue | currency
+                    : currencyPipeParameters?.currencyCode || undefined
+                    : currencyPipeParameters?.display || (currencyPipeParameters ? undefined : '$')
+                    : currencyPipeParameters?.digitsInfo || undefined }}</span>
+            }
+            @case (InlineInputType.Percent) {
+                <span class="fu-edit-value">{{ inputValue | number: pipeOptions }}%</span>
+            }
+            @case (InlineInputType.Dropdown) {
+                <span class="fu-edit-value truncate">{{ dropdownSelectedText }} <fusion-icon class="fu-dropdown-icon" [name]="dropdownIcon"></fusion-icon></span>
+            }
+            @default{
+                <span class="fu-edit-value">{{ inputValue }}</span>
+            }
+        }
+    </div>
+} @else {
+    <div class="fu-edit-input-wrapper"  #inputWrapper [class.fu-dropdown]="isDropdown">
+        @if (isDropdown){
+            <fusion-dropdown
+                    [options]="selectOptions"
+                    [formControl]="inputControl"
+            ></fusion-dropdown>
+        } @else {
+            <fusion-input #inputComponent
+                          [formControl]="inputControl"
+                          [type]="inputType"
+                          [inlineErrorText]="error"
+                          [prefix]="inputPrefix"
+                          [suffix]="inputSuffix"
+                          [variant]="error ? 'error' : null"
+                          [showApply]="!error && !disabled && !pending"
+                          [disabled]="disabled"
+                          [hideNumberArrows]="hideNumberArrows"
+                          (applyButtonClicked)="save()"
+                          (keydown.enter)="save()"
+                          (keydown.escape)="cancel()"
+            ></fusion-input>
+        }
+        @if (pending){
+            <fusion-loader
+                    [style.width]="'20px'"
+                    [style.height]="'20px'"
+                    strokeWidth="1"
+            ></fusion-loader>
+        }
+    </div>
+}
+
