@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [8.4.0-rc.7](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.6...v8.4.0-rc.7) (2024-10-10)
+
+
+### Code Refactoring
+
+* **tooltip-table-v1:** revert tooltip changes, update table header template ([4ef5e92](https://github.com/ironSource/fusion-ui/commit/4ef5e925fd857d9d4b9ea6b33625a6ec825f771e))
+
 ## [8.4.0-rc.6](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.5...v8.4.0-rc.6) (2024-10-10)
 
 
