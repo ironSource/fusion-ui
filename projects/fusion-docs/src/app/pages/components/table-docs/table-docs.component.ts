@@ -16,11 +16,14 @@ import {Router} from '@angular/router';
 import {TableCustomNoDataComponent} from '../../../components/table-custom-no-data/table-custom-no-data.component';
 import {VersionService} from '../../../services/version/version.service';
 import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
+import {ExmlForTooltipComponent} from '../../../components/exml-for-tooltip/exml-for-tooltip.component';
+import {TooltipCustom} from '@ironsource/fusion-ui/components/tooltip/common/base';
 
 const tblOptions: TableOptions = {
     sortingType: 'local',
     remove: {active: true, onRemove: new EventEmitter()}
 };
+
 const tblColumns: Array<TableColumn> = [
     {key: 'checkbox', type: TableColumnTypeEnum.Checkbox, width: '35px'},
     {key: 'id', title: 'Id', sort: 'asc'}, // 'asc' | 'desc' | ''
@@ -45,7 +48,12 @@ const tblColumns: Array<TableColumn> = [
         },
         title: 'Bid',
         width: '85px',
-        tooltip: 'Lorem ipsum dolor sit amet',
+        tooltipCustom: {
+            content: {
+                component: ExmlForTooltipComponent as Type<Component>,
+                dataInputs: {ppid: 'a0ad70e0-bc66-414c-901b-35a410cffd50A'}
+            }
+        } as TooltipCustom,
         align: 'right'
     },
     {key: 'email', title: 'Email', sort: ''},
