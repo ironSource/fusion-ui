@@ -27,6 +27,7 @@ import {
     TableIconsConfigByStyle
 } from '@ironsource/fusion-ui/components/table/common/entities';
 import {TableBasicComponent} from './components/table-basic/table-basic.component';
+import {TooltipType} from '@ironsource/fusion-ui/components/tooltip/common/base';
 
 @Component({
     selector: 'fusion-table',
@@ -98,6 +99,7 @@ export class TableComponent implements OnInit, OnDestroy {
     wrapperClasses: string[];
 
     tableMainError = false;
+    tooltipTypeComponent = TooltipType.Component;
 
     get isCheckboxTitleShown(): boolean {
         return this.columns ? this.columns.some(column => column.type === TableColumnTypeEnum.Checkbox && column.title !== '') : false;
