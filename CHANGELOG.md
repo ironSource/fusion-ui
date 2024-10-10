@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [8.4.0-rc.6](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.5...v8.4.0-rc.6) (2024-10-10)
+
+
+### Features
+
+* **isct-381:** added dropped-list component ([3343eb0](https://github.com/ironSource/fusion-ui/commit/3343eb0f0df90dbe577f2f1c9f5f036e31fd7fc1))
+* **isct-381:** added text-with-dropped-list component ([452c8d2](https://github.com/ironSource/fusion-ui/commit/452c8d20cf5dc964fd5a88126fe8f7d402b90ff0))
+* **isct-381:** added unit tests for text-with-dropped-list component ([6985d43](https://github.com/ironSource/fusion-ui/commit/6985d43db3ae68ce577710bc904e65c62fbfb26a))
+* **table-v1:** add support to using custom component in table v1 header tooltip ([ae719f6](https://github.com/ironSource/fusion-ui/commit/ae719f64049cc450d27ed1e71d1f9bb6102e5844))
+* **tooltip:** add support for custom component using in tooltip v1 (base) ([ad30d35](https://github.com/ironSource/fusion-ui/commit/ad30d35b2d6c46d43024d188162e7d3aa7996a08))
+
+
+### CI
+
+* **isct-381:** added dropped-list component unit-tests ([0c03389](https://github.com/ironSource/fusion-ui/commit/0c033897b41b02ad991179958520f148a818d419))
+
+
+### Docs
+
+* **table-v1-doc:** add example for using custom component in table header tooltip ([9ec2353](https://github.com/ironSource/fusion-ui/commit/9ec2353541c0472cd09ab1a69697f628d6fd4b08))
+
 ## [8.4.0-rc.5](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.4...v8.4.0-rc.5) (2024-10-09)
 
 
