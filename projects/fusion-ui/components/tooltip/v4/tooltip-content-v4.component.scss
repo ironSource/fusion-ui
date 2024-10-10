@@ -35,6 +35,7 @@ $arrowWidth: 16px;
             flex-shrink: 0;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='9' fill='none' viewBox='0 0 16 9'%3E%3Cpath fill='%23fff' stroke='%23E4E4E4' d='M14.793 1.044H1.236l6.779 6.778 6.778-6.778Z'/%3E%3C/svg%3E");
             &:after{
+                pointer-events: none;
                 content: '';
                 position: absolute;
                 margin-left: -7px;

@@ -1,0 +1,20 @@
+<ul class="fu-items-wrapper"
+    fusionDragAndDrop
+    (dragElementDrop)="orderChanged.emit($event)"
+>
+    @for (item of items; track item.label; let i = $index) {
+        <li #draggableItem class="fu-list-item" [attr.data-id]="item.id">
+            <div class="fu-item-drag-icon">
+                <fusion-icon class="fu-drag-icon" name="ph/bold/dots-six-vertical"></fusion-icon>
+            </div>
+            <div class="fu-item-content">
+                <div class="fu-item-label">{{ item.label }}</div>
+                <fusion-icon-button
+                        iconName="ph/x"
+                        size="extraSmall"
+                        (click)="removeItem(i)"
+                ></fusion-icon-button>
+            </div>
+        </li>
+    }
+</ul>

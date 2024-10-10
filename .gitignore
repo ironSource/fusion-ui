@@ -23,6 +23,7 @@ speed-measure-plugin.json
 
 # IDEs and editors
 /.idea
+projects/fusion-e2e/.idea
 .project
 .classpath
 .c9/

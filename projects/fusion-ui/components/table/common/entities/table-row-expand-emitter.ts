@@ -1,3 +1,5 @@
+import {InnerEntityType} from './table-options';
+
 export interface TableRowExpandEmitter {
     rowIndex: string | number;
     row: any;
@@ -5,4 +7,5 @@ export interface TableRowExpandEmitter {
     successCallback?: () => void;
     failedCallback?: () => void;
     updateMap?: boolean;
+    innerEntityType?: InnerEntityType;
 }

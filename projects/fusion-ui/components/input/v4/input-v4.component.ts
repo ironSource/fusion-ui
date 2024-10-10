@@ -79,6 +79,23 @@ export class InputV4Component implements OnInit, OnDestroy {
 
     private _placeholder: string;
     // endregion
+
+    // region Inputs - pattern
+    @Input()
+    set pattern(value: string) {
+        this._pattern = value;
+    }
+
+    get pattern() {
+        if (this.type === 'time') {
+            return '[0-9]{2}:[0-9]{2}';
+        }
+        return this._pattern;
+    }
+
+    private _pattern: string;
+    // endregion
+
     // region Inputs - input type
     @Input()
     set type(value: InputType) {

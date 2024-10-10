@@ -1,0 +1,39 @@
+@import '../../../src/style/scss/v4/colors';
+@import '../../../src/style/scss/v4/spacings';
+@import '../../../src/style/scss/v4/fonts';
+
+:host {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+
+  .fu-empty-state-icon {
+    width: 48px;
+    height: 48px;
+    color: var(--default-outlined-border, #{$color-v4-default-outlined-border});
+  }
+
+  .fu-empty-state-image {
+    width: 112px;
+    height: 112px;
+    display: block;
+  }
+
+  .fu-empty-state-title {
+    @extend %font-v4-heading-4;
+    color: var(--text-primary, #{$color-v4-text-primary});
+  }
+
+  .fu-empty-state-description {
+    @extend %font-v4-body-1;
+    color: var(--text-secondary, #{$color-v4-text-secondary});
+  }
+
+  .fu-empty-state-content {
+    margin-top: 8px;
+  }
+}

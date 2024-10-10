@@ -1,0 +1,108 @@
+@import '../../../src/style/scss/v4/vars/vars';
+@import '../../../src/style/scss/v4/mixins/mixins';
+
+:host {
+  @extend %reset;
+  --fu-app-trigger-padding: 0 12px;
+  --fu-app-trigger-app-left-padding: 8px;
+  --fu-app-trigger-gap: #{$spacingV4-50};;
+  --fu-app-trigger-border-radius: #{$spacingV4-100};
+  --fu-app-trigger-background-color: var(--default-main, #{$color-v4-default-main});
+  --fu-app-trigger-hover-background-color: var(--action-selected, #{$color-v4-action-selected});
+  --fu-app-trigger-color: var(--text-primary, #{$color-v4-text-primary});
+  --fu-app-trigger-image-size: 28px;
+  --fu-app-trigger-image-border-radius: 6px;
+  --fu-app-platforn-icon-size: 20px;
+  --fu-app-platforn-icon-color: var(--action-active, #{$color-v4-action-active});
+  --fu-app-platforn-icon-hover-color: var(--action-primary, #{$color-v4-action-primary});
+  --fu-app-trigger-mandatory-color: var(--error-main, #{$color-v4-error-main});
+  --fu-app-trigger-carret-icon-size: 20px;
+  --fu-app-trigger-carret-icon-color: var(--action-active, #{$color-v4-action-active});
+  --fu-app-trigger-border: 1px solid var(--common-divider, #{$color-v4-common-divider});
+
+  display: flex;
+  align-items: center;
+  width: var(--fu-app-trigger-width, 100%);
+  height: var(--fu-app-trigger-height, 40px);
+
+  .fu-app-trigger-wrapper {
+    width: 100%;
+    height: 100%;
+    padding: var(--fu-app-trigger-padding);
+    display: flex;
+    align-items: center;
+    gap: var(--fu-app-trigger-gap);
+    border-top-left-radius: var(--fu-app-trigger-border-radius);
+    border-bottom-left-radius: var(--fu-app-trigger-border-radius);
+    background: var(--fu-app-trigger-background-color);
+    color: var(--fu-app-trigger-color);
+    @extend %font-v4-button;
+
+    .fu-app-trigger-platform {
+      @include size(var(--fu-app-platforn-icon-size));
+      color: var(--fu-app-platforn-icon-color);
+    }
+
+    .fu-app-trigger-image {
+      @include size(var(--fu-app-trigger-image-size));
+      border-radius: var(--fu-app-trigger-image-border-radius);
+    }
+
+    .fu-app-trigger-mandatory {
+      color: var(--fu-app-trigger-mandatory-color);
+    }
+
+    .fu-app-trigger-caret-icon {
+      margin-left: auto;
+      @include size(var(--fu-app-trigger-carret-icon-size));
+      color: var(--fu-app-trigger-carret-icon-color);
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: var(--fu-app-trigger-hover-background-color);
+    }
+
+
+    &:has(.fu-app-trigger-image) {
+      padding-left: var(--fu-app-trigger-app-left-padding);
+    }
+  }
+
+  .fu-app-trigger-inline-copy-wrapper {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    border-top-right-radius: var(--fu-app-trigger-border-radius);
+    border-bottom-right-radius: var(--fu-app-trigger-border-radius);
+    background: var(--fu-app-trigger-background-color);
+    border-left: var(--fu-app-trigger-border);
+    padding: 10px;
+    width: 40px;
+    height: 100%;
+
+    .fu-inline-copy-icon{
+        @include size(20px);
+        color: var(--fu-app-platforn-icon-color);
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: var(--fu-app-trigger-hover-background-color);
+      .fu-inline-copy-icon{
+        color: var(--fu-app-platforn-icon-hover-color);
+      }
+    }
+  }
+
+  &:not(:has(.fu-app-trigger-app-key)) {
+    .fu-app-trigger-wrapper {
+      border-top-right-radius: var(--fu-app-trigger-border-radius);
+      border-bottom-right-radius: var(--fu-app-trigger-border-radius);
+    }
+  }
+
+  .truncate {
+    @extend %truncate;
+  }
+}

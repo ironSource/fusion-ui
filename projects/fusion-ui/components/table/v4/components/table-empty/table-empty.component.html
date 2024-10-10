@@ -1,0 +1,12 @@
+<tr>
+    <td [attr.colspan]="fusionTableEmpty">
+        @if (!!customContent?.component?.type) {
+            <ng-container
+                    [ngComponentOutlet]="customContent?.component?.type"
+                    [ngComponentOutletInputs]="customContent?.component?.data"
+            ></ng-container>
+        } @else {
+            <fusion-empty-state [type]="type" [title]="header" [description]="subHeader"></fusion-empty-state>
+        }
+    </td>
+</tr>

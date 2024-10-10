@@ -1,0 +1,92 @@
+@for (row of rows; track trackByRowInvoke(); let rowIndex = $index) {
+    <!--First parent row-->
+    <tr
+        fusionTableRow
+        [rowIndex]="rowIndex"
+        [row]="row"
+        [columns]="columns"
+        [options]="options"
+        [isRowSelected]="rowIsSelected | generic:row"
+        [isExpanded]="isExpanded(rowIndex)"
+        [isInnerRow]="false"
+        [class.is-row-in-request]="tableService.rowsMetadata[row['_rowId']]?.inRequest"
+        [testId]="testId"
+        (rowRemoved)="tableService.removeRow({rows: rows, rowIndex: rowIndex, row: row, options: options})"
+        (selectedChange)="tableService.onRowSelectChanged($event, row)"
+        (expandRow)="onExpandRow($event)"
+        [ngClass]="rowClass | generic:row:rowIndex"
+        [ngStyle]="!!options.rowsOptions && !!options.rowsOptions.global ? options.rowsOptions.global.style : null"
+    ></tr>
+    <!--First parent row END-->
+    <!--Child rows-->
+    @if(displayExpandableRows(rowIndex)){
+        <ng-container
+                [ngTemplateOutlet]="childRowsTemplate"
+                [ngTemplateOutletContext]="{$implicit: row[options.rowsExpandableOptions.key], parentIndex: rowIndex}"
+        ></ng-container>
+    }
+    <!--Child rows END-->
+
+    <!--Template Child rows render-->
+    <ng-template #childRowsTemplate let-parentRowChildren let-parentIndex="parentIndex">
+        <ng-container *fusionLoadMore="let displayRows$ of parentRowChildren; chunkSize: options.rowsExpandableOptions?.expendChunkSize || 10; let loadMore = loadMore; let hasMore$ = hasMore$;">
+            @if(isInnerEntityType('dynamicComponent')){
+                <ng-container *ngIf="(displayRows$ | async) as innerEntity">
+                    @if(innerEntity.length){
+                        <tr class="is-inner-row fu-inner-object">
+                            <td [attr.colspan]="fullCellColspan">
+                                <div class="fu-inner-object-wrapper">
+                                    <ng-container *ngComponentOutlet="innerEntity[0]?.component?.type; inputs: innerEntity[0]?.component?.data"></ng-container>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </ng-container>
+            } @else {
+                <ng-container
+                        *ngFor="let innerRow of displayRows$ | async; trackBy: trackByRowInvoke(); let innerRowIndex = index; let last = last"
+                >
+                    <tr
+                            fusionTableRow
+                            class="is-inner-row"
+                            [rowIndex]="parentIndex + '_' + innerRowIndex"
+                            [row]="innerRow"
+                            [columns]="options.rowsExpandableOptions.columns"
+                            [options]="childRowOptions"
+                            [isExpanded]="isExpanded(parentIndex + '_' + innerRowIndex)"
+                            [isInnerRow]="true"
+                            [ngClass]="rowClass | generic:innerRow:innerRowIndex"
+                            [hasAfterSticky]="hasAfterSticky(last, hasMore$ | async, parentIndex + '_' + innerRowIndex)"
+                            [ngStyle]="!!options?.rowsOptions?.global ? options.rowsOptions.global.style : null"
+                            (expandRow)="onExpandRow($event)"
+                    ></tr>
+                    @if(!loadingChildRows[parentIndex] && (hasMore$ | async) && last){
+                        <tr class="full-cell load-more">
+                            <td [attr.colspan]="fullCellColspan">
+                                <div class="fu-load-more-button-wrapper">
+                                    <fusion-link color="primary" (click)="loadMore()">Load more</fusion-link>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </ng-container>
+            }
+        </ng-container>
+        @if(loadingChildRows[parentIndex]){
+            <tr [fusionTableLoading]="fullCellColspan" [fusionTableLoadingExpanding]="true" fusionTableLoadingRows="1"></tr>
+        }
+        @if (failedChildRows[parentIndex]){
+            <tr class="full-cell failed">
+                <td [attr.colspan]="fullCellColspan">
+                    <div class="fu-load-failed">
+                        <span>Failed to load data.</span>
+                        <fusion-link color="primary" (click)="onExpandRow({rowIndex: rowIndex, row: row, isExpanded: true})">
+                            Try again
+                        </fusion-link>
+                    </div>
+                </td>
+            </tr>
+        }
+    </ng-template>
+    <!--additional rows END`-->
+}
