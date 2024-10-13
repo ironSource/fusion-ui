@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [8.4.0-rc.8](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.7...v8.4.0-rc.8) (2024-10-13)
+
+
+### Bug Fixes
+
+* **isct-428:** update inline-input v1 in table v1 (with error icon) ([ca88a67](https://github.com/ironSource/fusion-ui/commit/ca88a67f5f15e285ad16024de91fac11f5329365))
+
 ## [8.4.0-rc.7](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.6...v8.4.0-rc.7) (2024-10-10)
 
 
