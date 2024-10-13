@@ -31,12 +31,7 @@
     "release": "commit-and-tag-version",
     "docs:show": "compodoc -p ./tsconfig.doc.json -s --disablePrivate --disableProtected --disableLifeCycleHooks --disableInternal",
     "storybook": "ng run fusion-ui:storybook",
-    "build-storybook": "ng run fusion-ui:build-storybook",
-    "aws:build-storybook": "npm run build-storybook",
-    "aws:deploy-storybook": "npm run deploy:static-storybook && npm run deploy:html-storybook",
-    "deploy:static-storybook": "aws s3 cp ./storybook-static s3://fusion-storybook/$FOLDER  --recursive  --exclude 'index.html'",
-    "deploy:html-storybook": "aws s3 cp ./storybook-static/index.html s3://fusion-storybook/$FOLDER/index.html  --cache-control='max-age=0, s-maxage=604800'",
-    "cf:invalidate": "aws cloudfront create-invalidation --distribution-id E3LE7X89G2T5J3 --paths  \"/$FOLDER/*\" "
+    "build-storybook": "ng run fusion-ui:build-storybook"
   },
   "lint-staged": {
     "**/*{.ts,.json}": "prettier --config ./prettier.config.js --write"
