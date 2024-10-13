@@ -33,6 +33,7 @@ export interface TableColumn {
         [errorKey: string]: {
             errorMessageKey: string;
             textMapping?: {key: string; value: string}[];
+            errorText?: string;
         };
     };
     filter?: {

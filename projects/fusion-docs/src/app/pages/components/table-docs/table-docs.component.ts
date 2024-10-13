@@ -7,7 +7,7 @@ import {
     TableRowExpandEmitter
 } from '@ironsource/fusion-ui/components/table/common/entities';
 import {InlineInputType} from '@ironsource/fusion-ui/components/input-inline/common/base';
-import {FormControl, Validators} from '@angular/forms';
+import {AbstractControl, FormControl, Validators} from '@angular/forms';
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 import {delay, take, takeUntil, tap} from 'rxjs/operators';
 import {TableCellIconExampleComponent} from '../../../components/table-cell-icon-exmpale';
@@ -38,6 +38,10 @@ const tblColumns: Array<TableColumn> = [
             digitsInfo: '1.0-3'
         },
         customErrorMapping: {
+            invalidBid: {
+                errorMessageKey: 'invalidBid',
+                errorText: 'Invalid bid value'
+            },
             required: {
                 errorMessageKey: 'required'
             },
@@ -834,7 +838,7 @@ export class TableDocsComponent implements OnInit, OnDestroy {
             .subscribe(
                 data => {
                     this.rows = data.map((item, _index) => {
-                        const fcBid = new FormControl(_index + 23, [Validators.required, Validators.min(10)]);
+                        const fcBid = new FormControl(_index + 23, [Validators.required, Validators.min(10), this.customValidator]);
                         return {
                             checkbox: false,
                             id: item.id,
@@ -933,5 +937,9 @@ export class TableDocsComponent implements OnInit, OnDestroy {
 
                 successCallback();
             }, failedCallback);
+    }
+
+    customValidator(control: AbstractControl) {
+        return control.value === '123' ? {invalidBid: 'Bid is invalid'} : null;
     }
 }
