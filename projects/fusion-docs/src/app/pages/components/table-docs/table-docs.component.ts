@@ -34,6 +34,7 @@ const tblColumns: Array<TableColumn> = [
         key: 'bid',
         type: TableColumnTypeEnum.InputEdit,
         inputType: InlineInputType.Currency,
+        inputErrorIconShow: true,
         currencyPipeParameters: {
             digitsInfo: '1.0-3'
         },

@@ -14,6 +14,7 @@ export interface TableColumn {
     groupName?: string;
     type?: TableColumnTypeEnum;
     inputType?: InlineInputType;
+    inputErrorIconShow?: boolean; // show error icon in input inline v1
     inlineDropdownOptions?: DropdownOption[]; // used for inline dropdown in table v4
     totalRowTypeAsString?: boolean; // data type represent in total string. default true
     component?: any;

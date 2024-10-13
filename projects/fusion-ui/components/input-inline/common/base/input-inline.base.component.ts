@@ -33,6 +33,7 @@ export abstract class InputInlineBaseComponent implements ControlValueAccessor, 
     @Input() readOnly: boolean;
     @Input() error: string;
     @Input() errorType = 'error';
+    @Input() inputErrorIconShow: boolean;
     @Input() currencyPipeParameters: CurrencyPipeParameters;
     @Input() inputOptions: InputOptions;
 

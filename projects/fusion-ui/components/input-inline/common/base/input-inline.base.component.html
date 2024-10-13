@@ -22,7 +22,8 @@
             [type]="inputType"
             [sanitationRegex]="sanitationRegex"
             [error]="error"
-            [errorType]="errorType"
+            [fusionTooltip]="!inputErrorIconShow && error"
+            [errorType]="inputErrorIconShow ? 'error' : null"
             [units]="inputUnits"
             unitPos="left"
             [options]="{size: 'small'}"
@@ -30,7 +31,7 @@
             [isDisabled]="loading"
             [formControl]="inputControl"
         ></fusion-input>
-        <fusion-icon class="icon-save" [name]="configByStyle.iconSave" (click)="save()" *ngIf="!loading && !error"></fusion-icon>
+        <fusion-icon class="icon-save" [name]="configByStyle.iconSave" (click)="save()" *ngIf="!loading && !(inputErrorIconShow)"></fusion-icon>
         <fusion-loader [status]="loading" [size]="configByStyle.loadingSize"></fusion-loader>
     </div>
 </div>
