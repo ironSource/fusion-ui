@@ -112,7 +112,7 @@ new FormControl({
     }
 };
 
-export const SelectedToday: Story = {
+export const Today: Story = {
     render: args => ({
         props: {
             ...args,
@@ -124,7 +124,7 @@ export const SelectedToday: Story = {
         template: BASE_TEMPLATE
     })
 };
-SelectedToday.parameters = {
+Today.parameters = {
     docs: {
         description: {
             story: dedent`***formControl:***                     
@@ -138,7 +138,7 @@ new FormControl({
     }
 };
 
-export const SelectedLast14Days: Story = {
+export const Last14Days: Story = {
     render: args => ({
         props: {
             ...args,
@@ -150,6 +150,7 @@ export const SelectedLast14Days: Story = {
         template: BASE_TEMPLATE
     })
 };
+Last14Days.storyName = 'Last 14 days';
 
 export const WithoutPresets: Story = {
     render: args => ({
@@ -167,6 +168,7 @@ WithoutPresets.parameters = {
         }
     }
 };
+WithoutPresets.storyName = 'Without presets';
 
 export const LimitedRange: Story = {
     render: args => ({
@@ -190,6 +192,7 @@ LimitedRange.parameters = {
         }
     }
 };
+LimitedRange.storyName = 'Limited range';
 
 export const NotAllowFutureDateSelected: Story = {
     render: args => ({
@@ -207,6 +210,7 @@ NotAllowFutureDateSelected.parameters = {
         }
     }
 };
+NotAllowFutureDateSelected.storyName = 'Not future date';
 
 export const WithTimeSelect: Story = {
     render: args => ({
@@ -245,3 +249,4 @@ WithTimeSelect.parameters = {
         }
     }
 };
+WithTimeSelect.storyName = 'Selected time';
