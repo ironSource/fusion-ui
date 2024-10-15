@@ -166,6 +166,7 @@ export const WithAppTrigger: LayoutV4Story = {
         `
     })
 };
+WithAppTrigger.storyName = 'With app trigger header';
 
 export const WithFilters: LayoutV4Story = {
     render: (args: LayoutComponent) => ({
@@ -243,6 +244,7 @@ export const WithFilters: LayoutV4Story = {
         `
     })
 };
+WithFilters.storyName = 'With app trigger header and filters';
 
 export const WithTabs: LayoutV4Story = {
     render: (args: LayoutComponent) => ({
@@ -320,6 +322,7 @@ export const WithTabs: LayoutV4Story = {
         `
     })
 };
+WithTabs.storyName = 'With app trigger header and tabs';
 
 export const Drilldown: LayoutV4Story = {
     render: (args: LayoutComponent) => ({
@@ -344,7 +347,9 @@ export const Drilldown: LayoutV4Story = {
         `
     })
 };
+Drilldown.storyName = 'With back (drilldown) button';
 
+/*
 export const NavigateToDefaultByClickOnParent: LayoutV4Story = {
     render: (args: LayoutComponent) => ({
         props: {
@@ -408,3 +413,4 @@ export const ShowSecondaryByHoverOnPrimary: LayoutV4Story = {
         `
     })
 };
+*/
