@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [8.4.0-rc.10](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.9...v8.4.0-rc.10) (2024-10-15)
+
+
+### CI
+
+* **runners:** change runners ([a888bf1](https://github.com/ironSource/fusion-ui/commit/a888bf11401f81bae53e589ac93b5d27b7ea4707))
+* **runners:** change runners ([ebbace9](https://github.com/ironSource/fusion-ui/commit/ebbace94be246610c767d6cea5f177035a043c7a))
+* **runners:** change runners ([05b5b75](https://github.com/ironSource/fusion-ui/commit/05b5b7540a26ba9adc052e52c8521340a1b0ff4d))
+* **storybook:** remove storybook deploy related code ([ecb8697](https://github.com/ironSource/fusion-ui/commit/ecb86975d16a807ec92b246fea5437a30019acb9))
+
 ## [8.4.0-rc.9](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.8...v8.4.0-rc.9) (2024-10-13)
 
 ## [8.4.0-rc.8](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.7...v8.4.0-rc.8) (2024-10-13)
