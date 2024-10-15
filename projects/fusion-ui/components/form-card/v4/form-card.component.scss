@@ -1,0 +1,84 @@
+@import '../../../src/style/scss/v4/vars/vars';
+
+:host {
+  --form-card-border-radius: 6px;
+  --form-card-border-color: var(--common-divider, #{$color-v4-common-divider});
+  --form-card-border: solid 1px var(--form-card-border-color);
+
+  --form-card-header-padding: 14px 24px;
+  --form-card-header-background: var(--background-paper-elevation-0, #{$color-v4-background-paper-elevation-0});
+  --form-card-title-color: var(--text-primary, #{$color-v4-text-primary});
+  --form-card-subtitle-color: var(--text-secondary, #{$color-v4-text-secondary});
+
+  --form-card-content-padding: 32px 40px 40px 40px;
+  --form-card-content-background: var(--background-paper, #{$color-v4-background-paper});
+
+  --form-card-footer-padding: 14px 0;
+  --form-card-footer-actions-gap: 8px;
+
+  @extend %reset;
+
+  .fu-form-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--form-card-border-radius);
+    border: var(--form-card-border);
+
+    @extend %font-v4-body-2;
+
+
+    .form-card__header {
+      display: flex;
+      align-items: center;
+      gap: 42px;
+      min-height: 48px;
+      padding: var(--form-card-header-padding);
+      background-color: var(--form-card-header-background);
+      border-bottom: var(--form-card-border);
+      border-top-left-radius: var(--form-card-border-radius);
+      border-top-right-radius: var(--form-card-border-radius);
+
+      .form-card__header__title {
+        display: flex;
+        flex-direction: column;
+
+        @extend %font-v4-heading-4;
+        color: var(--form-card-title-color);
+
+        .form-card__header__subtitle {
+          @extend %font-v4-body-2;
+          color: var(--form-card-subtitle-color);
+          display: none;
+          &:not(:empty) {
+            margin-top: 4px;
+            display: initial;
+          }
+        }
+      }
+
+      .form-card__header__actions {
+        margin-left: auto;
+      }
+
+    }
+
+    .form-card__content {
+      @extend %font-v4-subtitle-1;
+      padding: var(--form-card-content-padding);
+      background-color: var(--form-card-content-background);
+      color: var(--text-secondary, #{$color-v4-text-secondary});
+      border-bottom-left-radius: var(--form-card-border-radius);
+      border-bottom-right-radius: var(--form-card-border-radius);
+
+    }
+  }
+
+  .form-card__footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: var(--form-card-footer-padding);
+    gap: var(--form-card-footer-actions-gap);
+  }
+}
+

@@ -1,0 +1,21 @@
+<div class="fu-form-card">
+    <div class="form-card__header">
+        <div class="form-card__header__title">
+            <ng-content select="[slot='form-card-title']"></ng-content>
+            <div class="form-card__header__subtitle">
+                <ng-content select="[slot='form-card-subtitle']"></ng-content>
+            </div>
+        </div>
+        <div class="form-card__header__actions">
+            <ng-content select="[slot='form-card-header-actions']"></ng-content>
+        </div>
+    </div>
+    <div class="form-card__content">
+        <ng-content select="[slot='form-card-content']"></ng-content>
+    </div>
+</div>
+<div class="form-card__footer">
+    <ng-content select="[slot='form-card-actions']"></ng-content>
+</div>
+
+

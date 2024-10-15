@@ -11,6 +11,7 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {TableModule} from '@ironsource/fusion-ui/components/table/v1';
 import {TableCellIconExampleModule} from '../../../components/table-cell-icon-exmpale';
 import {TableCustomNoDataModule} from '../../../components/table-custom-no-data/table-custom-no-data.module';
+import {ExmlForTooltipComponent} from '../../../components/exml-for-tooltip/exml-for-tooltip.component';
 
 const routes: Routes = [{path: '', component: TableDocsComponent}];
 
@@ -27,7 +28,8 @@ const routes: Routes = [{path: '', component: TableDocsComponent}];
         IconModule,
         AlertModule,
         TableCellIconExampleModule,
-        TableCustomNoDataModule
+        TableCustomNoDataModule,
+        ExmlForTooltipComponent
     ]
 })
 export class TableDocsModule {}

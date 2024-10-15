@@ -1,0 +1,80 @@
+@import '../../../src/style/scss/v4/vars/vars';
+@import '../../../src/style/scss/v4/mixins/mixins';
+
+:host {
+    --fu-drop-menu-max-width: 220px;
+    --fu-drop-menu-piosition: fixed;
+    --fu-drop-menu-bg-color: #{$color-v4-background-default};
+    --fu-drop-menu-padding: 8px;
+    --fu-drop-menu-border-radius: 8px;
+    --fu-drop-menu-border: 1px solid var(--common-divider, #{$color-v4-common-divider});
+    --fu-drop-menu-box-shadow: #{$boxShadowV4-LG};
+    --fu-drop-menu-item-gap: 4px;
+    --fu-drop-menu-max-items-shown: 5;
+    --fu-drop-menu-item-icon-size: 20px;
+    --fu-drop-menu-item-icon-color: var(--action-active, #{$color-v4-action-active});
+    --fu-drop-menu-item-color: var(--text-primary, #{$color-v4-text-primary});
+    --fu-drop-menu-item-hover-bg-color: #{$color-v4-action-hover};
+    --fu-drop-menu-item-padding: 6px 8px;
+    --fu-drop-menu-item-inner-gap: 8px;
+    --fu-drop-menu-item-max-height: 32px;
+    --fu-drop-menu-item-border-radius: 8px;
+
+    display: block;
+    @extend %border-box-normalize;
+    @extend %list-reset;
+
+    position: var(--fu-drop-menu-piosition);
+    z-index: getZIndexLayerOffset(application, 1);
+
+    .fu-menu-holder {
+        max-width: var(--fu-drop-menu-max-width);
+        width: var(--fu-drop-menu-width);
+        max-height: calc(32px * var(--fu-drop-menu-max-items-shown) + (var(--fu-drop-menu-padding)*2)); // 5 items + 36px for padding
+        overflow-x: hidden;
+        overflow-y: auto;
+        @extend %customScroll;
+        padding: var(--fu-drop-menu-padding);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--fu-drop-menu-item-gap);
+        background-color: var(--fu-drop-menu-bg-color);
+        box-shadow: var(--fu-drop-menu-box-shadow);
+        border-radius: var(--fu-drop-menu-border-radius);
+        border: var(--fu-drop-menu-border);
+
+        .fu-menu-item{
+            display: flex;
+            align-items: center;
+            align-self: stretch;
+            gap: var(--fu-drop-menu-item-inner-gap);
+            padding: var(--fu-drop-menu-item-padding);
+            color: var(--fu-drop-menu-item-color);
+            @extend %font-v4-body-2;
+            max-height: var(--fu-drop-menu-item-max-height);
+            border-radius: var(--fu-drop-menu-item-border-radius);
+
+            .fu-menu-item-icon{
+                @include size(var(--fu-drop-menu-item-icon-size));
+                color: var(--fu-drop-menu-item-icon-color);
+            }
+
+            &:hover{
+                background-color: var(--fu-drop-menu-item-hover-bg-color);
+                cursor: pointer;
+            }
+            &.fu-disabled{
+                pointer-events: none;
+                opacity: .7;
+                &:hover {
+                    background-color: unset;
+                    cursor: default;
+                }
+                .fu-menu-item-icon{
+                    opacity: .7;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+import {componentWrapperDecorator, Meta, moduleMetadata, StoryObj} from '@storybook/angular';
+import {CommonModule} from '@angular/common';
+import {RowExpandInnerComponent} from './row-expand-inner.component';
+
+export default {
+    title: 'V4/Components/DataDisplay/DataGrid (Table)/innerComponents',
+    component: RowExpandInnerComponent,
+    decorators: [
+        moduleMetadata({
+            declarations: [],
+            imports: [CommonModule]
+        }),
+        componentWrapperDecorator(story => `<div style="width: 700px;">${story}</div>`)
+    ],
+    tags: ['autodocs'],
+    parameters: {
+        options: {
+            showPanel: true,
+            panelPosition: 'bottom'
+        }
+    },
+    args: {
+        title: 'Soybean Oil',
+        subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dolor magna eget est lorem ipsum dolor sit amet.',
+        benefits: ['Odio pellentesque diam volutpat commodo', 'Egestas sed tempus urna et pharetra pharetra', 'Viverra tellus in hac habitasse platea dictumst vestibulum rhoncus']
+    }
+} as Meta<RowExpandInnerComponent>;
+
+type Story = StoryObj<RowExpandInnerComponent>;
+
+export const Basic: Story = {};

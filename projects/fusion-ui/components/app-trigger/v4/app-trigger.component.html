@@ -1,0 +1,30 @@
+<div class="fu-app-trigger-wrapper">
+        @if (application) {
+            <img loading="lazy" [src]="appImageSrc" class="fu-app-trigger-image"/>
+            <fusion-icon class="fu-app-trigger-platform" [name]="platformIcon"></fusion-icon>
+            <div class="fu-app-trigger-name truncate" [fusionTooltip]="application.name">{{ application?.name }}</div>
+        } @else {
+            <div class="fu-app-trigger-placeholder">{{ placeholderText }}</div>
+            @if (required) {
+                <div class="fu-app-trigger-mandatory">*</div>
+            }
+        }
+        <fusion-icon class="fu-app-trigger-caret-icon" name="ph/caret-down"></fusion-icon>
+</div>
+@if (application?.key) {
+    <fusion-tooltip class="fusion-v4 fu-app-trigger-app-key" [tooltipConfiguration]="tooltipConfiguration">
+        <div class="fusionTooltipTrigger">
+            <div class="fu-app-trigger-inline-copy-wrapper"
+                 [fusionCopyToClipboard]="copyToClipboard()"
+                 (copied)="textCopied()"
+            >
+                <fusion-icon class="fu-inline-copy-icon" name="ph/copy"/>
+            </div>
+
+        </div>
+        <div class="fusionTooltipContent">
+            <div class="font-v4-heading-5" style="margin-bottom: 5px;">Copy app key</div>
+            <div class="font-v4-body-2">{{application.key}}</div>
+        </div>
+    </fusion-tooltip>
+}

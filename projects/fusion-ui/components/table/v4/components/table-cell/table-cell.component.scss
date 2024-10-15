@@ -1,0 +1,110 @@
+@import '../../../../../src/style/scss/v4/vars/vars';
+@import '../../../../../src/style/scss/v4/mixins/mixins';
+
+:host {
+    position: relative;
+    @extend %font-v4-body-1;
+    height: var(--table-row-height);
+    padding: var(--table-row-cell-padding) ;
+    border-bottom: var(--table-border);
+    background-color: var(--table-odd-row-background-color);
+
+    &.is-checkbox-holder{
+        width: var(--table-checkbox-cell-width);
+    }
+
+    & > div {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        max-width: 350px;
+        word-break: break-all;
+        &.right {
+            justify-content: flex-end;
+        }
+        &.center {
+            justify-content: center;
+        }
+        &.checkbox-cell {
+            margin: 0 auto;
+            justify-content: center;
+        }
+
+        &.fu-input-cell{
+            position: relative;
+            left: calc(#{$spacingV4-100} * -1);
+            &.fu-type-number{
+                left: initial;
+                right: calc(#{$spacingV4-100} * -1);
+            }
+        }
+    }
+
+    .truncate{
+        @extend %truncate-flex-child;
+    }
+
+    .fu-button-holder{
+        display: block;
+        position: absolute;
+        margin: auto 0;
+        top: 0;
+        bottom: 0;
+        right: 12px;
+        @include size(28px);
+    }
+
+    &.fu-sticky-actions{
+        position: sticky;
+        right: 0;
+        .fu-button-holder{
+            border-left: var(--table-border);
+            right: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+    }
+
+    &.sticky-left {
+        position: sticky;
+        left: 0;
+        z-index: 2;
+        &:after{
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -1px;
+            height: 100%;
+            width: 1px;
+            border-right: var(--table-border);
+        }
+    }
+    &.sticky-right {
+        position: sticky;
+        right: 0;
+        z-index: 2;
+        &:nth-child(1 of .sticky-right){
+            &:before{
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -1px;
+                height: 100%;
+                width: 1px;
+                border-left: var(--table-border);
+            }
+        }
+    }
+}
+
+:host-context(.is-row-in-request) {
+    opacity: var(--table-row-loading-opacity, 0.7);
+}
+
+:host-context(tr:hover) {
+    background-color: var(--table-row-hover-background-color);
+}

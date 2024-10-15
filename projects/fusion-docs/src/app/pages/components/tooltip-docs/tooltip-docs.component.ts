@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, Renderer2} from '@angular/core';
+import {Component, ElementRef, OnInit, Renderer2, Type} from '@angular/core';
 import {TooltipPosition, TooltipType} from '@ironsource/fusion-ui/components/tooltip/common/base';
 import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 import {DocsLayoutService} from '../../docs/docs-layout.service';
@@ -6,6 +6,7 @@ import {BehaviorSubject} from 'rxjs';
 import {delay, tap} from 'rxjs/operators';
 import {VersionService} from '../../../services/version/version.service';
 import {TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table/common/entities';
+import {ExmlForTooltipComponent} from '../../../components/exml-for-tooltip/exml-for-tooltip.component';
 
 @Component({
     selector: 'fusion-tooltip-docs',
@@ -15,7 +16,13 @@ import {TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table/common
 export class TooltipDocsComponent implements OnInit {
     public tooltipPosition = TooltipPosition;
     private styleElement: HTMLStyleElement;
+
     tooltipTypeHtml = TooltipType.Html;
+
+    tooltipTypeComponent = TooltipType.Component;
+    tooltipCustomComponent = ExmlForTooltipComponent as Type<Component>;
+    tooltipCustomData = {ppid: 'a0ad70e0-bc66-414c-901b-35a410cffd50A'};
+
     rightMenu: DocsMenuItem[] = [
         {
             title: 'Content',

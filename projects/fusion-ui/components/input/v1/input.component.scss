@@ -318,8 +318,8 @@ $smallPadding: 4px 6px;
         }
         .fu-validation-icon-holder {
             position: absolute;
-            right: 6px;
-            top: 3px;;
+            right: var(--fu-validation-error-right, 6px);
+            top: 3px;
             ::ng-deep svg {
                 width: 11px;
                 height: 11px;

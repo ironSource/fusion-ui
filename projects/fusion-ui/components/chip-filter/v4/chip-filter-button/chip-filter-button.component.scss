@@ -31,6 +31,10 @@ $chipSmallPadding: 4px 6px;
       background-color: var(--action-hover, #{$color-v4-action-hover});
       cursor: pointer;
     }
+
+    &.fu-chip-filter-variant-text{
+        border-color: transparent;
+    }
   }
 
   // selected + opened
@@ -47,6 +51,9 @@ $chipSmallPadding: 4px 6px;
         background-color: var(--action-hover, #{$color-v4-action-hover});
         cursor: pointer;
       }
+      &.fu-chip-filter-variant-text{
+        border-color: transparent;
+      }
     }
   }
 
@@ -60,6 +67,9 @@ $chipSmallPadding: 4px 6px;
 
       .fu-icon-close {
         color: var(--action-active, #{$color-v4-action-active});
+      }
+      &.fu-chip-filter-variant-text{
+        border-color: transparent;
       }
     }
   }

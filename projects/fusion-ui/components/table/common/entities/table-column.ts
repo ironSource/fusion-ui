@@ -4,6 +4,9 @@ import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/e
 import {EventEmitter} from '@angular/core';
 import {CellPosition} from './table-cell-position';
 import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
+import {TooltipCustom} from '@ironsource/fusion-ui/components/tooltip/common/base';
+
+export type TableCellAlign = 'left' | 'center' | 'right';
 
 export interface TableColumn {
     key: string;
@@ -11,16 +14,19 @@ export interface TableColumn {
     groupName?: string;
     type?: TableColumnTypeEnum;
     inputType?: InlineInputType;
+    inputErrorIconShow?: boolean; // show error icon in input inline v1
+    inlineDropdownOptions?: DropdownOption[]; // used for inline dropdown in table v4
     totalRowTypeAsString?: boolean; // data type represent in total string. default true
     component?: any;
     sort?: string;
     class?: string;
     width?: string;
     style?: any;
-    align?: 'left' | 'center' | 'right';
-    headerAlign?: 'left' | 'center' | 'right';
+    align?: TableCellAlign;
+    headerAlign?: TableCellAlign;
     tooltip?: string;
     tooltipIcon?: IconData;
+    tooltipCustom?: TooltipCustom;
     pipeOptions?: string;
     dataParser?: (data: any) => any; // used for data parsing (null to Undefined in budget for example)
     // customErrorMapping example, turn pattern error to decimal error: { pattern: { error: 'decimalMax', values: {'decimalMax': 2}}}
@@ -28,6 +34,7 @@ export interface TableColumn {
         [errorKey: string]: {
             errorMessageKey: string;
             textMapping?: {key: string; value: string}[];
+            errorText?: string;
         };
     };
     filter?: {
@@ -37,6 +44,8 @@ export interface TableColumn {
     };
     sticky?: boolean;
     stickyLeftMargin?: string;
+    stickyRight?: boolean; // from v4, sticky column on end of table
+    stickyRightMargin?: string; // from v4, sticky column on end of table but not last stickyRight column
     dateFormat?: string;
     ignoreTimeZone?: boolean;
     colspan?: number;
