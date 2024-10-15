@@ -49,6 +49,7 @@
                 [formControl]="data"
                 [loading]="isInRequest$ | async"
                 [error]="inputError$ | async"
+                [inputErrorIconShow]="column.inputErrorIconShow"
                 [readOnly]="isReadOnly"
                 [currencyPipeParameters]="column?.currencyPipeParameters"
             ></fusion-input-inline>
