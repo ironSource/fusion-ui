@@ -72,6 +72,22 @@ const baseTemplateMultiselect = `
     </fusion-chip-filter-button>
 `;
 
+const datePeriodTemplate = `
+    <fusion-chip-filter-button [showCaretIcon]="showCaretIcon" [size]="size" [weight]="weight" [configuration]="configuration">
+        <div class="filter-element">
+            <fusion-dropdown style="--dropdown-overlay-min-width: 250px"
+                 [placeholderPrefix]="placeholderPrefix"
+                 [placeholder]="placeholder"
+                 [formControl]="formControl"
+                 [options]="options"
+                 [optionsTitle]="optionsTitle"
+                 [search]="search"
+                 >
+            </fusion-dropdown>
+        </div>
+    </fusion-chip-filter-button>
+`;
+
 export default {
     title: 'V4/Components/Dropdown/Triggers/ButtonFilter',
     component: ChipFilterButtonComponent,
@@ -380,7 +396,7 @@ export const DatePeriodPicker: Story = {
             formControl: new FormControl([MOCK_OPTIONS_PERIOD[1]]),
             configuration: {id: 1, mode: 'static', close: true, leftIcon: {icon: 'ph/calendar-blank'}}
         },
-        template: baseTemplate
+        template: datePeriodTemplate
     }),
     decorators: [componentWrapperDecorator(story => `<div style="height: 200px;">${story}</div>`)]
 };
