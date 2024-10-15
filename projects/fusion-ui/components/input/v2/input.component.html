@@ -56,7 +56,7 @@
         </button>
 
         <i class="fu-validation-icon-holder"
-           *ngIf="config?.errorType && showErrorIcon && !loading"
+           *ngIf="config?.errorType && showErrorIcon() && !loading"
            [fusionTooltip]="getTooltipErrorsMessage()">
             <fusion-icon class="icon-validation"
                          [name]="getErrorIcon(config?.errorType, configByStyle.iconInfo, configByStyle.iconWarning)">
