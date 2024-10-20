@@ -8,8 +8,8 @@ import {DebugElement} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {SvgComponent} from './svg.component';
 import {LogService} from '@ironsource/fusion-ui/services/log';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {HttpClient} from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 const dataMock: string =
     '<?xml version="1.0" encoding="UTF-8"?>' +
@@ -74,10 +74,10 @@ describe('SVG Component', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [HttpClientTestingModule],
-            declarations: [SvgComponent],
-            providers: [LogService, {provide: HttpClient, useClass: MockApiService}]
-        });
+    declarations: [SvgComponent],
+    imports: [],
+    providers: [LogService, { provide: HttpClient, useClass: MockApiService }, provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
 
         fixture = TestBed.createComponent(SvgComponent);
         component = fixture.componentInstance;
