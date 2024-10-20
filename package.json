@@ -26,8 +26,6 @@
     "format:check": "prettier --config ./prettier.config.js --check 'projects/**/*{.ts,.json}'",
     "format:pretty": "prettier --config ./prettier.config.js --write 'projects/**/*{.ts,.json}'",
     "prettier": "prettier",
-    "build:mfe:dev": "ng build fusion-mfe -c dev",
-    "build:mfe": "ng build fusion-mfe",
     "release": "commit-and-tag-version",
     "docs:show": "compodoc -p ./tsconfig.doc.json -s --disablePrivate --disableProtected --disableLifeCycleHooks --disableInternal",
     "storybook": "ng run fusion-ui:storybook",
