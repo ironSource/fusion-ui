@@ -1,0 +1,92 @@
+@import '../../../src/style/scss/v4/colors';
+@import '../../../src/style/scss/v4/spacings';
+@import '../../../src/style/scss/v4/vars/fonts';
+
+:host {
+  margin: 0;
+  padding: 0;
+
+  a.fu-link {
+    text-decoration: none;
+    @extend %font-v4-body-1;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    // region common
+    &:link,
+    &:visited,
+    &:active {
+      color: var(--text-secondary, #{$color-v4-text-primary});
+    }
+
+    &:hover {
+      color: var(--text-primary, #{$color-v4-text-primary});
+    }
+
+    // endregion
+
+    // region variant
+    &.fu-link-variant-caption {
+      @extend %font-v4-caption;
+    }
+
+    &.fu-link-variant-body2 {
+      @extend %font-v4-body-2;
+    }
+
+    &.fu-link-variant-subtitle1 {
+      @extend %font-v4-subtitle-1;
+    }
+
+    &.fu-link-variant-subtitle2 {
+      @extend %font-v4-subtitle-2;
+    }
+
+    &.fu-link-variant-chip-label {
+      @extend %font-v4-chip-label;
+    }
+
+    &.fu-link-variant-button {
+      @extend %font-v4-button;
+    }
+
+    // endregion
+
+    // region color primary
+    &.fu-link-primary {
+      &:link,
+      &:visited,
+      &:active {
+        color: var(--primary-main, #{$color-v4-primary-main});
+      }
+
+      &:hover {
+        color: var(--primary-dark, #{$color-v4-primary-dark});
+      }
+    }
+
+    // endregion
+
+    // region icons
+    fusion-icon {
+      width: 16px;
+      height: 16px;
+    }
+    // endregion
+
+    // region disabled and underlined
+    &.fu-link-disabled,
+    &.fu-link-primary.fu-link-disabled {
+      color: var(--text-disabled, #{$color-v4-text-disabled});
+      cursor: default;
+      pointer-events: none;
+    }
+
+    &.fu-link-underline {
+      text-decoration: underline;
+    }
+
+    // endregion
+  }
+}

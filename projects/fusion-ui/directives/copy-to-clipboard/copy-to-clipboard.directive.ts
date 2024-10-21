@@ -1,4 +1,4 @@
-import {Directive, ElementRef, HostListener, Inject, Input, Renderer2} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, HostListener, Inject, Input, Output, Renderer2} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {isFunction} from '@ironsource/fusion-ui/utils';
 
@@ -7,7 +7,7 @@ import {isFunction} from '@ironsource/fusion-ui/utils';
 })
 export class CopyToClipboardDirective {
     @Input() fusionCopyToClipboard?: (elRef?: ElementRef) => string;
-
+    @Output() copied = new EventEmitter();
     private _document?: Document;
 
     constructor(
@@ -26,6 +26,8 @@ export class CopyToClipboardDirective {
             ? this.fusionCopyToClipboard(this.elementRef)
             : this.elementRef.nativeElement.innerHTML;
         this.copyText(textToCopy);
+
+        this.copied.emit();
     }
 
     private copyText(textToCopy: string): void {

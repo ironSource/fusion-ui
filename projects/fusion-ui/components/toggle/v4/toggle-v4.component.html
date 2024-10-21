@@ -1,0 +1,52 @@
+<div class="fu-toggle-wrapper"
+     [class.fu-toggle-loading]="loading$ | async"
+>
+    <label class="fu-toggle-holder fu-toggle-size-{{size}} fu-toggle-color-{{color}}">
+        <input type="checkbox"
+               [id]="id"
+               [checked]="checked$ | async"
+               [disabled]="(disabled$ | async) || (loading$ | async)"
+               (change)="change($event)"
+        />
+        <div class="fu-toggle-slider">
+            <div class="fu-toggle-slider-dot">
+                <div class="fu-toggle-loader">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 12">
+                        <path fill="currentColor" d="M12 6a6 6 0 1 1-6-6v1.2A4.8 4.8 0 1 0 10.8 6H12Z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </label>
+    <div class="fu-toggle-label"
+         [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdToggleModifiers.LABEL">
+        @if (startIcon) {
+            <fusion-icon class="fu-toggle-start-icon" [name]="startIcon"
+                         [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdToggleModifiers.START_ICON"></fusion-icon>
+        }
+        @if (labelText) {
+            <span class="fu-toggle-label-text">{{ labelText }}</span>
+            @if (endIcon) {
+                <fusion-icon class="fu-toggle-end-icon" [name]="endIcon"
+                             [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdToggleModifiers.END_ICON"></fusion-icon>
+            }
+            @if (labelHelpIcon) {
+                <fusion-icon class="fu-toggle-label-icon"
+                             [name]="labelHelpIcon"
+                             [fusionTooltip]="labelTooltipText"
+                             [configuration]="labelTooltipConfiguration"
+                             [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdToggleModifiers.LABEL_ICON"
+                ></fusion-icon>
+            }
+        }
+    </div>
+</div>
+@if (helperText) {
+    <fusion-input-helper [text]="helperText"
+                         [state]="helperVariant"
+                         [iconName]="helperIcon"
+                         [testId]="testId"
+                         [attr.data-testid]="testIdsService.getTestAttribute.bind(this) | generic:testId:testIdToggleModifiers.HELPER"
+    ></fusion-input-helper>
+}
+

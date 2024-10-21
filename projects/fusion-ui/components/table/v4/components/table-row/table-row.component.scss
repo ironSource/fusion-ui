@@ -1,0 +1,36 @@
+@import '../../../../../src/style/scss/v4/vars/vars';
+@import '../../../../../src/style/scss/v4/mixins/mixins';
+
+:host {
+  // region zebra
+  &:nth-child(odd) {
+    background-color: var(--table-odd-row-background-color);
+  }
+
+  &:nth-child(even) {
+    background-color: var(--table-even-row-background-color);
+  }
+
+  // endregion
+
+  // region Expand cell in row
+  td.expand-cell {
+    width: var(--table-expand-cell-width);
+    border-bottom: var(--table-border);
+    vertical-align: middle;
+
+    & > div {
+      padding-right: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: var(--table-expand-cell-width);
+    }
+  }
+  // endregion
+
+  &:last-of-type td,
+  &:last-of-type td.expand-cell{
+    border-bottom: none;
+  }
+}

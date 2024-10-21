@@ -1,6 +1,12 @@
 export enum ChipFilterTestIdModifiers {
     CHIP_FILTER = 'chf',
-    RESET_BUTTON = 'chf-reset-button'
+    RESET_BUTTON = 'chf-reset-button',
+    CONTAINER = 'chf-container',
+    WRAPPER = 'chf-wrapper',
+    LEFT_ICON = 'chf-left-icon',
+    RIGHT_ICON = 'chf-right-icon',
+    CLOSE_ICON = 'chf-close-icon',
+    CARET_ICON = 'chf-caret-icon'
 }
 
 export enum ButtonTestIdModifiers {
@@ -10,10 +16,22 @@ export enum ButtonTestIdModifiers {
     CONTENT = 'button-content'
 }
 
+export enum LinkTestIdModifiers {
+    LINK = 'link',
+    CONTENT = 'link-content',
+    START_ICON = 'link-start-icon',
+    END_ICON = 'link-end-icon',
+    EXTERNAL_ICON = 'link-external-icon'
+}
+
 export enum DropdownTestIdModifiers {
     TRIGGER = 'dd-trigger',
     WRAPPER = 'dd-wrapper',
     BUTTON = 'dd-button',
+    TRIGGER_IMAGE = 'dd-trigger-image',
+    TRIGGER_ICON = 'dd-trigger-icon',
+    TRIGGER_CARET_ICON = 'dd-trigger-caret',
+    TRIGGER_COUNTRY_FLAG = 'dd-trigger-flag',
     LOADING = 'dd-loading',
     BUTTON_WRAPPER = 'dd-button-wrapper',
     BUTTON_CONTENT = 'dd-button-content',
@@ -110,11 +128,11 @@ export enum InputTestIdModifiers {
 
 export enum ToggleTestIdModifiers {
     WRAPPER = 'toggle-wrapper',
-    BODY = 'toggle-body',
-    FIELD = 'toggle-field',
-    TEXT = 'toggle-text',
-    HELPER_TEXT = 'toggle-helper-text',
-    ERROR_TEXT = 'toggle-error-text'
+    START_ICON = 'toggle-start-icon',
+    END_ICON = 'toggle-end-icon',
+    LABEL = 'toggle-label',
+    LABEL_ICON = 'toggle-label-icon',
+    HELPER = 'toggle-helper'
 }
 
 export enum IncludeExcludeTestIdModifiers {
@@ -205,12 +223,34 @@ export enum SearchTestIdModifiers {
 
 export enum TableTestIdModifiers {
     LABEL = 'table-label',
+    SEARCH = 'table-search',
+    HEADER_TOOLTIP = 'table-header-tooltip',
     COLUMN_HEADER = 'table-header-c',
     COLUMN_TITLE = 'table-column-title-c',
+    COLUMN_TOOLTIP = 'table-column-tooltip-c',
     COLUMN_SORT_UP = 'table-column-sort-up-c',
     COLUMN_SORT_DOWN = 'table-column-sort-down-c',
     COLUMN_HEADER_SELECT_ALL = 'table-header-select-all',
     CELL = 'table-cell',
+    EXPAND_ICON_BUTTON = 'table-expand-icon-button',
 
     BUTTON_GO_TOP = 'table-button-go-top'
+}
+
+export enum DateRangeTestIdModifiers {
+    TRIGGER = 'trigger',
+    TRIGGER_CUSTOM = 'trigger-custom',
+    OVERLAY = 'overlay',
+    PRESETS_WRAPPER = 'presets-wrapper',
+    PREV_MONTH_BUTTON = 'prev-month-button',
+    NEXT_MONTH_BUTTON = 'next-month-button',
+    CALENDAR = 'calendar',
+    TIME_SELECTOR = 'time-selector',
+    TIME_CHECKBOX = 'time-checkbox',
+    TIME_START = 'time-start',
+    TIME_END = 'time-END',
+    ACTION_FOOTER = 'action-footer',
+    ACTION_FOOTER_MESSAGE = 'action-footer-message',
+    ACTION_CANCEL_BUTTON = 'action-cancel-button',
+    ACTION_APPLY_BUTTON = 'action-apply-button'
 }

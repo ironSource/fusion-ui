@@ -1,0 +1,90 @@
+@import '../../../src/style/scss/v4/vars/vars';
+@import '../../../src/style/scss/v4/mixins/mixins';
+
+:host {
+  @extend %reset;
+
+  --inline-edit-value-height: 28px;
+  --inline-edit-value-padding: 0 8px;
+  --inline-edit-value-color: var(--table-text-color, #{$color-v4-text-primary});
+  --dropdown-carret-icon-color: var(--action-active, #{$color-v4-action-active});
+  --dropdown-carret-icon-size: 20px;
+
+  width: var(--inline-edit-width, 100%);
+
+  .fu-edit-value-wrapper {
+    display: flex;
+    align-items: center;
+    @extend %font-v4-body-1;
+    height: var(--inline-edit-value-height);
+    padding: var(--inline-edit-value-padding);
+    color: var(--inline-edit-value-color);
+
+    &:hover:not(.fu-read-only) {
+      border-radius: 6px;
+      outline: 1px solid var(--action-outlinedBorder, #{$color-v4-action-outlined-border});
+      background-color: var(--default-main, #{$color-v4-default-main});
+      cursor: text;
+      &.fu-dropdown .fu-edit-value .fu-dropdown-icon{
+        visibility: visible;
+      }
+    }
+
+    &.fu-number {
+      justify-content: flex-end;
+    }
+
+    &.fu-dropdown {
+      .fu-edit-value {
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        .fu-dropdown-icon {
+          margin-left: auto;
+          color: var(--dropdown-carret-icon-color);
+          @include size(var(--dropdown-carret-icon-size));
+          visibility: hidden;
+        }
+      }
+    }
+
+    &.fu-read-only {
+      cursor: default;
+    }
+
+    &.fu-pending {
+      opacity: var(--table-row-loading-opacity, 0.7);
+    }
+  }
+
+  .fu-hidden {
+    display: none;
+  }
+
+  .truncate {
+    @extend %truncate-flex-child;
+  }
+
+  .fu-edit-input-wrapper {
+    position: relative;
+
+    fusion-loader {
+      position: absolute;
+      right: 5px;
+      top: 3px;
+    }
+  }
+}
+
+:host-context(tr:hover) {
+  .fu-edit-value-wrapper:not(.fu-read-only) {
+    border-radius: 6px;
+    outline: 1px solid var(--action-outlinedBorder, #{$color-v4-action-outlined-border});
+    background-color: var(--default-main, #{$color-v4-default-main});
+    cursor: text;
+    &.fu-dropdown .fu-edit-value .fu-dropdown-icon{
+      visibility: visible;
+    }
+  }
+}

@@ -54,6 +54,9 @@ export class SvgComponent implements AfterViewInit, OnDestroy {
             // check for .svg if no, add
             this.svgPath += '.svg';
         }
+        if (this.svgPath.startsWith('assets/')) {
+            assetPath = assetPath.replace('assets/icons/', '');
+        }
         return `${assetPath}${this.svgPath}`;
     }
 

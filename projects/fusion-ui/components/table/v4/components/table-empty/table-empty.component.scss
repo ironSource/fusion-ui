@@ -1,0 +1,5 @@
+:host {
+    tr td {
+        padding: var(--table-empty-state-padding, 48px);
+    }
+}

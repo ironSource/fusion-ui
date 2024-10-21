@@ -2,6 +2,117 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [8.4.0](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.11...v8.4.0) (2024-10-21)
+
+## [8.4.0-rc.11](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.10...v8.4.0-rc.11) (2024-10-15)
+
+## [8.4.0-rc.10](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.9...v8.4.0-rc.10) (2024-10-15)
+
+
+### CI
+
+* **runners:** change runners ([a888bf1](https://github.com/ironSource/fusion-ui/commit/a888bf11401f81bae53e589ac93b5d27b7ea4707))
+* **runners:** change runners ([ebbace9](https://github.com/ironSource/fusion-ui/commit/ebbace94be246610c767d6cea5f177035a043c7a))
+* **runners:** change runners ([05b5b75](https://github.com/ironSource/fusion-ui/commit/05b5b7540a26ba9adc052e52c8521340a1b0ff4d))
+* **storybook:** remove storybook deploy related code ([ecb8697](https://github.com/ironSource/fusion-ui/commit/ecb86975d16a807ec92b246fea5437a30019acb9))
+
+## [8.4.0-rc.9](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.8...v8.4.0-rc.9) (2024-10-13)
+
+## [8.4.0-rc.8](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.7...v8.4.0-rc.8) (2024-10-13)
+
+
+### Bug Fixes
+
+* **isct-428:** update inline-input v1 in table v1 (with error icon) ([ca88a67](https://github.com/ironSource/fusion-ui/commit/ca88a67f5f15e285ad16024de91fac11f5329365))
+
+## [8.4.0-rc.7](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.6...v8.4.0-rc.7) (2024-10-10)
+
+
+### Code Refactoring
+
+* **tooltip-table-v1:** revert tooltip changes, update table header template ([4ef5e92](https://github.com/ironSource/fusion-ui/commit/4ef5e925fd857d9d4b9ea6b33625a6ec825f771e))
+
+## [8.4.0-rc.6](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.5...v8.4.0-rc.6) (2024-10-10)
+
+
+### Features
+
+* **isct-381:** added dropped-list component ([3343eb0](https://github.com/ironSource/fusion-ui/commit/3343eb0f0df90dbe577f2f1c9f5f036e31fd7fc1))
+* **isct-381:** added text-with-dropped-list component ([452c8d2](https://github.com/ironSource/fusion-ui/commit/452c8d20cf5dc964fd5a88126fe8f7d402b90ff0))
+* **isct-381:** added unit tests for text-with-dropped-list component ([6985d43](https://github.com/ironSource/fusion-ui/commit/6985d43db3ae68ce577710bc904e65c62fbfb26a))
+* **table-v1:** add support to using custom component in table v1 header tooltip ([ae719f6](https://github.com/ironSource/fusion-ui/commit/ae719f64049cc450d27ed1e71d1f9bb6102e5844))
+* **tooltip:** add support for custom component using in tooltip v1 (base) ([ad30d35](https://github.com/ironSource/fusion-ui/commit/ad30d35b2d6c46d43024d188162e7d3aa7996a08))
+
+
+### CI
+
+* **isct-381:** added dropped-list component unit-tests ([0c03389](https://github.com/ironSource/fusion-ui/commit/0c033897b41b02ad991179958520f148a818d419))
+
+
+### Docs
+
+* **table-v1-doc:** add example for using custom component in table header tooltip ([9ec2353](https://github.com/ironSource/fusion-ui/commit/9ec2353541c0472cd09ab1a69697f628d6fd4b08))
+
+## [8.4.0-rc.5](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.4...v8.4.0-rc.5) (2024-10-09)
+
+
+### Features
+
+* **isct-381:** text with dropped list component ([#348](https://github.com/ironSource/fusion-ui/issues/348)) ([8618249](https://github.com/ironSource/fusion-ui/commit/86182499f5c7ade31093cca37d18e1577c17a809))
+
+
+### Bug Fixes
+
+* **tooltip:** fixed tooltip on cycle close/open on element mouse out when mouse on element border ([#349](https://github.com/ironSource/fusion-ui/issues/349)) ([f31be22](https://github.com/ironSource/fusion-ui/commit/f31be222d8cf3ad67ea769e602020f52f11268af))
+
+## [8.4.0-rc.4](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.3...v8.4.0-rc.4) (2024-10-08)
+
+## [8.4.0-rc.3](https://github.com/ironSource/fusion-ui/compare/v8.3.0...v8.4.0-rc.3) (2024-10-08)
+
+
+### Features
+
+* **isct-159:** added base application-trigger v4 component ([c377612](https://github.com/ironSource/fusion-ui/commit/c377612516eeecb124958e366fdf58fa90129f24))
+* **isct-367:** create app header component ([46b05e7](https://github.com/ironSource/fusion-ui/commit/46b05e7b3a688f2d53058428bfe4d1913a6864ba))
+* **ISCT-369:** Inline copy component ([#344](https://github.com/ironSource/fusion-ui/issues/344)) ([eacdb5b](https://github.com/ironSource/fusion-ui/commit/eacdb5b2f5f5bc1b1d6c0df134c9fc87c5f154c1))
+* **isct-374:** added drag-and-drop directive and draggable-items-list component ([1f073cb](https://github.com/ironSource/fusion-ui/commit/1f073cb2aef7dae50ca619e49617f6df0a241e2e))
+
+## [8.4.0-rc.2](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.1...v8.4.0-rc.2) (2024-08-25)
+
+## [8.4.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.0...v8.4.0-rc.1) (2024-08-14)
+
+
+### Features
+
+* **isct-165:** added datepicker component v4 ([1861561](https://github.com/ironSource/fusion-ui/commit/18615618690c33149516f2d25f3f8430710f3c90))
+* **isct-166:** added daterange component v4 ([6b7197f](https://github.com/ironSource/fusion-ui/commit/6b7197f7920a55a1701a2d3f6057cf6b3a2a90c8))
+* **isct-166:** added calendar component v4 ([285c4d8](https://github.com/ironSource/fusion-ui/commit/285c4d8d35cedcf6c1eb69be36b97b9a993c5cf2))
+* **isct-168:** remove hover from chip except remove icon ([d50ed86](https://github.com/ironSource/fusion-ui/commit/d50ed8667ce19af9b66ff2e82fda80cd38adaf6e))
+
+
+### Bug Fixes
+
+* **trigger-button:** up stories for button trigger v4 ([99beca3](https://github.com/ironSource/fusion-ui/commit/99beca30c176b591acb5528a7fc376d1e8500f9c))
+* **trigger-button:** v4 sync with vue ([9f9843c](https://github.com/ironSource/fusion-ui/commit/9f9843ca5ce25e1aa2807fdd1a9c662554fbeb33))
+
+## [8.4.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.3.0...v8.4.0-rc.0) (2024-08-01)
+
+
+### Features
+
+* **isct-161:** added empty-state component v4 ([8959503](https://github.com/ironSource/fusion-ui/commit/89595036e08c53cac7eebd98a13cbb0dde67939c))
+* **isct-161:** added empty-state component v4 unit-tests ([a114b1a](https://github.com/ironSource/fusion-ui/commit/a114b1a0c2f767fd05a52d5c76eadb9c865d423c))
+* **isct-161:** added skeleton component v4 unit-tests ([0bf6dd6](https://github.com/ironSource/fusion-ui/commit/0bf6dd6bae01207ee84bd48d69fc659a8727472b))
+* **isct-163:** added skeleton component v4 ([c63aba1](https://github.com/ironSource/fusion-ui/commit/c63aba1a7a139b882cd459182b2a925931cf0494))
+* **isct-163:** start with skeleton component ([83258ff](https://github.com/ironSource/fusion-ui/commit/83258ff2a32c50ca91a0f2405b575f03161c36dc))
+* **isct-168:** added chip component v4 ([3756856](https://github.com/ironSource/fusion-ui/commit/37568562e53950bc6251c1fb1cf8f008fba508a2))
+* **isct-241:** added new link (button) v4 component ([f6cdcdc](https://github.com/ironSource/fusion-ui/commit/f6cdcdc506d0ac12aa99a4fe06f56da52b174f6c))
+
+
+### Bug Fixes
+
+* **master:** remove console.log ([2da5f01](https://github.com/ironSource/fusion-ui/commit/2da5f0184686c6f3d122067c4dad63745dba4148))
+
 ## [8.3.0](https://github.com/ironSource/fusion-ui/compare/v8.3.0-rc.0...v8.3.0) (2024-07-25)
 
 ## [8.3.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.2.1...v8.3.0-rc.0) (2024-07-25)

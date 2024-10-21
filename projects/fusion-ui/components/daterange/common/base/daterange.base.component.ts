@@ -204,7 +204,6 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     }
     /** @internal */
     onOutsideClick(target: HTMLElement) {
-        // if (this.validateClickOutside(target) && !target.closest('fusion-dropdown-option')) {
         if (this.validateClickOutside(target)) {
             this.close();
         }
@@ -213,9 +212,10 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
     apply() {
         if (this.isOpen$.getValue() && this.isTimeSelectorValid()) {
             this.isOpen$.next(false);
-            if (this.selection?.endDate) {
-                this.selection.endDate;
-            }
+            // todo: check it
+            // if (this.selection?.endDate) {
+            //     this.selection.endDate;
+            // }
 
             this.originalSelection = {...this.selection};
             this.setPlaceholder({isOpen: false});
@@ -365,6 +365,12 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
                 const componentClientRect = this.elemRef.nativeElement.getBoundingClientRect();
                 if (overlayClientRect.width > componentClientRect.width) {
                     // need check if has a place on left
+                    console.log('ov', this.overlay.nativeElement);
+                    console.log('ov', overlayClientRect);
+                    console.log('el', this.elemRef.nativeElement);
+                    console.log('el', componentClientRect);
+                    console.log('>>', componentClientRect.x + componentClientRect.width, overlayClientRect.width);
+
                     if (!(componentClientRect.x + componentClientRect.width >= overlayClientRect.width)) {
                         this.overlayAlign$.next('left');
                     }
@@ -390,6 +396,12 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
             this.daterangeOptions = Object.assign({}, this.defaultOptions, this.daterangeOptions);
         } else {
             this.daterangeOptions = this.defaultOptions;
+        }
+        if (!!this.daterangeOptions?.placeholder) {
+            this.dropdownSelectConfigurations$.next({
+                ...this.dropdownSelectConfigurations$.getValue(),
+                placeholder: {value: this.daterangeOptions.placeholder}
+            });
         }
 
         if (!isNullOrUndefined(this.daterangeOptions?.overlayAlignPosition)) {
@@ -434,6 +446,7 @@ export abstract class DaterangeBaseComponent extends ApiBase implements OnInit, 
         return true;
     }
 
+    /** @internal */
     setValueToPropagate(value: DaterangeSelection): DaterangeSelection {
         if (this.fcHasTimeSelector.value) {
             return {...value, startTime: this.fcStartTime.value, endTime: this.fcEndTime.value};

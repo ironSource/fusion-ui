@@ -1,0 +1,41 @@
+@import '../../../src/style/scss/v4/vars/vars';
+@import '../../../src/style/scss/v4/mixins/mixins';
+
+:host {
+  @extend %reset;
+
+  .fu-list-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: var(--fu-item-list-width, 224px);
+    padding: var(--fu-item-list-padding, 0 8px);
+    margin: 0;
+    list-style-type: none;
+    border-radius: var(--fu-item-list-border-radius, 8px);
+    border: var(--fu-item-list-border, 1px solid var(--common-divider, #{$color-v4-common-divider}));
+    box-shadow: var(--fu-item-list-box-shadow, #{$boxShadowV4-MD});
+    background-color: var(--fu-item-list-background-color, var(--background-default, #{$color-v4-background-default}));
+    max-height: var(--fu-item-list-max-height, 210px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    --fu-custom-scroll-bg-color: transparent;
+    @extend %customScroll;
+
+    .fu-list-item{
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      @extend %font-v4-body-2;
+      color: var(--fu-item-color, var(--text-primary, #{$color-v4-text-primary}));
+      padding: var(--fu-item-padding, 6px 8px);
+
+      .fu-list-item-image{
+        @include size(20px);
+        border-radius: 4px;
+      }
+    }
+  }
+  .truncate{
+    @extend %truncate;
+  }
+}
