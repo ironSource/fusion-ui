@@ -1,4 +1,5 @@
 @use "sass:math";
+@use "sass:map";
 
 @mixin keyframes($animation-name) {
     @-webkit-keyframes #{$animation-name} {
@@ -59,7 +60,7 @@ $flexLocationMapping: (
 );
 
 @mixin flex-direction($location) {
-    $direction: map-get($flexLocationMapping, $location);
+    $direction: map.get($flexLocationMapping, $location);
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
@@ -180,19 +181,19 @@ $ZIndexByLayer: (
 );
 
 %applicationLayer {
-    z-index: map-get($ZIndexByLayer, application) !important;
+    z-index: map.get($ZIndexByLayer, application) !important;
 }
 
 %notificationLayer {
-    z-index: map-get($ZIndexByLayer, notification) !important;
+    z-index: map.get($ZIndexByLayer, notification) !important;
 }
 
 %systemLayer {
-    z-index: map-get($ZIndexByLayer, system) !important;
+    z-index: map.get($ZIndexByLayer, system) !important;
 }
 
 @function getZIndexLayerOffset($layer, $offset) {
-    @return map-get($ZIndexByLayer, $layer) + $offset;
+    @return map.get($ZIndexByLayer, $layer) + $offset;
 }
 
 @function remCalc($pxWidth) {
