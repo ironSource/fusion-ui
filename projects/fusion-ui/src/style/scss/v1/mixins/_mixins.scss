@@ -1,5 +1,6 @@
 @use "sass:math";
 @use "sass:map";
+@use "sass:meta";
 
 @mixin keyframes($animation-name) {
     @-webkit-keyframes #{$animation-name} {
@@ -104,7 +105,7 @@ $flexLocationMapping: (
         @content;
 
         #{$ngDeep} svg {
-            @if (type_of($size) == 'map') {
+            @if (meta.type_of($size) == 'map') {
                 @each $css, $value in $size {
                     #{$css}: $value;
                 }
@@ -114,10 +115,10 @@ $flexLocationMapping: (
             @if $rotate !=0 {
                 transform: rotate(#{$rotate}deg);
             }
-            @if (type_of($colors) == 'map') {
+            @if (meta.type_of($colors) == 'map') {
                 @each $cssSelector, $color in $colors {
                     #{$cssSelector} {
-                        @if (type_of($color) == 'map') {
+                        @if (meta.type_of($color) == 'map') {
                             @each $css, $value in $color {
                                 #{$css}: $value;
                             }
