@@ -1,4 +1,4 @@
-@import './colors';
-@import './shadows';
-@import './border-radius';
-@import './spacings';
+@forward './colors';
+@forward './shadows';
+@forward './border-radius';
+@forward './spacings';

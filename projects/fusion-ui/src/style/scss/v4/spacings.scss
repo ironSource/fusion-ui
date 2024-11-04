@@ -1,21 +1,21 @@
-@import 'vars/spacings';
+@use './vars/spacings';
 
 .fusion-v4 {
-    --spacing-tockenset: #{$spacingV4-tokenset};
-    --spacing-25: #{$spacingV4-25};
-    --spacing-50: #{$spacingV4-50};
-    --spacing-75: #{$spacingV4-75};
-    --spacing-100: #{$spacingV4-100};
-    --spacing-125: #{$spacingV4-125};
-    --spacing-150: #{$spacingV4-150};
-    --spacing-200: #{$spacingV4-200};
-    --spacing-250: #{$spacingV4-250};
-    --spacing-300: #{$spacingV4-300};
-    --spacing-400: #{$spacingV4-400};
-    --spacing-500: #{$spacingV4-500};
-    --spacing-600: #{$spacingV4-600};
-    --spacing-700: #{$spacingV4-700};
-    --spacing-800: #{$spacingV4-800};
-    --spacing-900: #{$spacingV4-900};
-    --spacing-1000: #{$spacingV4-1000};
+    --spacing-tockenset: #{spacings.$spacingV4-tokenset};
+    --spacing-25: #{spacings.$spacingV4-25};
+    --spacing-50: #{spacings.$spacingV4-50};
+    --spacing-75: #{spacings.$spacingV4-75};
+    --spacing-100: #{spacings.$spacingV4-100};
+    --spacing-125: #{spacings.$spacingV4-125};
+    --spacing-150: #{spacings.$spacingV4-150};
+    --spacing-200: #{spacings.$spacingV4-200};
+    --spacing-250: #{spacings.$spacingV4-250};
+    --spacing-300: #{spacings.$spacingV4-300};
+    --spacing-400: #{spacings.$spacingV4-400};
+    --spacing-500: #{spacings.$spacingV4-500};
+    --spacing-600: #{spacings.$spacingV4-600};
+    --spacing-700: #{spacings.$spacingV4-700};
+    --spacing-800: #{spacings.$spacingV4-800};
+    --spacing-900: #{spacings.$spacingV4-900};
+    --spacing-1000: #{spacings.$spacingV4-1000};
 }

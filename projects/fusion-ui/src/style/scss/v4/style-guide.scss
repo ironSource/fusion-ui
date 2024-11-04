@@ -1,6 +1,6 @@
-@import './fonts';
-@import './colors';
-@import './shadows';
-@import './border-radius';
-@import './spacings';
-@import './grid';
+@forward './fonts';
+@forward './colors';
+@forward './shadows';
+@forward './border-radius';
+@forward './spacings';
+@forward './grid';

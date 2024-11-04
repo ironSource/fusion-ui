@@ -34,37 +34,37 @@ cp -R projects/fusion-ui/src/style/scss/v4/mixins dist/fusion-ui/style/v4
 # copy and compile grid by versions
 echo  -e "${GREEN}-- copy and compile grid by versions ${NOCOLOR}"
 cp -R projects/fusion-ui/src/style/scss/v1/grid.scss dist/fusion-ui/style/v1/grid.scss
-sass --silence-deprecation=import dist/fusion-ui/style/v1/grid.scss dist/fusion-ui/style/v1/grid.css -s compressed
+sass dist/fusion-ui/style/v1/grid.scss dist/fusion-ui/style/v1/grid.css -s compressed
 
 cp -R projects/fusion-ui/src/style/scss/v2/grid.scss dist/fusion-ui/style/v2/grid.scss
-sass --silence-deprecation=import dist/fusion-ui/style/v2/grid.scss dist/fusion-ui/style/v2/grid.css -s compressed
+sass dist/fusion-ui/style/v2/grid.scss dist/fusion-ui/style/v2/grid.css -s compressed
 
 cp -R projects/fusion-ui/src/style/scss/v3/grid.scss dist/fusion-ui/style/v3/grid.scss
-sass --silence-deprecation=import dist/fusion-ui/style/v3/grid.scss dist/fusion-ui/style/v3/grid.css -s compressed
+sass dist/fusion-ui/style/v3/grid.scss dist/fusion-ui/style/v3/grid.css -s compressed
 
 cp -R projects/fusion-ui/src/style/scss/v4/grid.scss dist/fusion-ui/style/v4/grid.scss
-sass --silence-deprecation=import dist/fusion-ui/style/v4/grid.scss dist/fusion-ui/style/v4/grid.css -s compressed
+sass dist/fusion-ui/style/v4/grid.scss dist/fusion-ui/style/v4/grid.css -s compressed
 
 # compile fonts by version
-sass --silence-deprecation=import projects/fusion-ui/src/style/scss/v1/fonts.scss dist/fusion-ui/style/v1/fonts.css -s compressed
-sass --silence-deprecation=import projects/fusion-ui/src/style/scss/v2/fonts.scss dist/fusion-ui/style/v2/fonts.css -s compressed
-sass --silence-deprecation=import projects/fusion-ui/src/style/scss/v3/vars/_fonts.scss dist/fusion-ui/style/v3/fonts.css -s compressed
-sass --silence-deprecation=import projects/fusion-ui/src/style/scss/v4/vars/_fonts.scss dist/fusion-ui/style/v4/fonts.css -s compressed
+sass projects/fusion-ui/src/style/scss/v1/fonts.scss dist/fusion-ui/style/v1/fonts.css -s compressed
+sass projects/fusion-ui/src/style/scss/v2/fonts.scss dist/fusion-ui/style/v2/fonts.css -s compressed
+sass projects/fusion-ui/src/style/scss/v3/vars/_fonts.scss dist/fusion-ui/style/v3/fonts.css -s compressed
+sass projects/fusion-ui/src/style/scss/v4/vars/_fonts.scss dist/fusion-ui/style/v4/fonts.css -s compressed
 
 # copy and compile shadows v4
-sass --silence-deprecation=import projects/fusion-ui/src/style/scss/v4/shadows.scss dist/fusion-ui/style/v4/shadows.css -s compressed
+sass projects/fusion-ui/src/style/scss/v4/shadows.scss dist/fusion-ui/style/v4/shadows.css -s compressed
 
 # common v4 variables
-sass --silence-deprecation=import projects/fusion-ui/src/style/scss/v4/variables.scss dist/fusion-ui/style/v4/variables.css -s compressed
+sass projects/fusion-ui/src/style/scss/v4/variables.scss dist/fusion-ui/style/v4/variables.css -s compressed
 
 # common v4 style-guide
 sass --silence-deprecation=import projects/fusion-ui/src/style/scss/v4/style-guide.scss dist/fusion-ui/style/v4/style-guide.css -s compressed
 
 
 echo  -e "${GREEN}-- copy and compile default fonts and grid by last (v3) versions ${NOCOLOR}"
-# compile default fonts (last version default - 3 )
-sass --silence-deprecation=import projects/fusion-ui/src/style/scss/v3/vars/_fonts.scss dist/fusion-ui/style/fonts.css -s compressed
-# copy default grid (last version default - 3 )
+# compile default fonts (version default - 3 )
+sass projects/fusion-ui/src/style/scss/v3/vars/_fonts.scss dist/fusion-ui/style/fonts.css -s compressed
+# copy default grid (version default - 3 )
 cp -R dist/fusion-ui/style/v3/grid.css dist/fusion-ui/style/grid.css
 cp -R dist/fusion-ui/style/v3/grid.css.map dist/fusion-ui/style/grid.css.map
 

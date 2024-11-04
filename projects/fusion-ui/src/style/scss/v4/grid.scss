@@ -1,7 +1,7 @@
 @use "sass:math";
 @use "sass:map";
 
-@import "mixins/breakpoints";
+@use "mixins/breakpoints" as *;
 
 $gridColumns: 12 !default;
 $gridColumnGap: 32px !default;

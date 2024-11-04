@@ -1,3 +1,5 @@
+@use './vars/fonts' as *;
+
 $baseSDN: 'https://fusion.ironsrc.net/assets';
 
 @font-face {
@@ -36,7 +38,6 @@ $baseSDN: 'https://fusion.ironsrc.net/assets';
     url('#{$baseSDN}/fonts/HelveticaNeue-Medium.ttf') format('truetype');
 }
 
-@import 'vars/fonts';
 
 // fonts v2
 .fu-font-headlineLarge {
