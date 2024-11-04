@@ -1,4 +1,3 @@
-@use './vars/fonts' as *;
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
 $baseSDN: 'https://fusion.ironsrc.net/assets';
 
@@ -56,6 +55,8 @@ $baseSDN: 'https://fusion.ironsrc.net/assets';
     font-weight: bold;
     font-style: normal;
 }
+
+@import 'vars/fonts';
 
 .fu-font1 {
     @extend %font1;
