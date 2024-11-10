@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [8.4.0](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.11...v8.4.0) (2024-10-21)
+
 ## [8.4.0-rc.11](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.10...v8.4.0-rc.11) (2024-10-15)
 
 ## [8.4.0-rc.10](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.9...v8.4.0-rc.10) (2024-10-15)
