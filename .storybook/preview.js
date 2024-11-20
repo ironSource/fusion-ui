@@ -8,7 +8,7 @@ const preview = {
     globals: {
         stackblitzGlobals: {
             stackblitzAdditionalDependency: {
-                '@ironsource/fusion-ui': '7.0.0-rc.3'
+                '@ironsource/fusion-ui': '8.4.0'
             }
         }
     },
