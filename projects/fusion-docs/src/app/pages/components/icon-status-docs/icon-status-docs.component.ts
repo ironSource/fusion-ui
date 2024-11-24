@@ -4,7 +4,8 @@ import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 @Component({
     selector: 'fusion-icon-status-docs',
     templateUrl: './icon-status-docs.component.html',
-    styleUrls: ['./icon-status-docs.component.scss']
+    styleUrls: ['./icon-status-docs.component.scss'],
+    standalone: false
 })
 export class IconStatusDocsComponent {
     rightMenu: DocsMenuItem[] = [

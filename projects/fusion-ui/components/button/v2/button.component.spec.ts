@@ -12,7 +12,8 @@ const innerText = 'Test Button';
 
 // do dummy component - holder
 @Component({
-    template: ` <button fusion-button [disabled]="isDisabled">${innerText}</button> `
+    template: ` <button fusion-button [disabled]="isDisabled">${innerText}</button> `,
+    standalone: false
 })
 class TestButtonComponent {
     isDisabled = false;

@@ -26,7 +26,6 @@ import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 
 @Component({
     selector: 'fusion-top-filter-trigger',
-    standalone: true,
     imports: [CommonModule, IconModule, TooltipModule],
     templateUrl: './top-filter-trigger.component.html',
     styleUrls: ['./top-filter-trigger.component.scss'],

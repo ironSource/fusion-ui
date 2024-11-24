@@ -13,6 +13,7 @@ import {MonthPickerBaseComponent} from '@ironsource/fusion-ui/components/month-p
             useExisting: forwardRef(() => MonthPickerComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class MonthPickerComponent extends MonthPickerBaseComponent {}

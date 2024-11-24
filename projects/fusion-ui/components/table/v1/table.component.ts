@@ -34,7 +34,8 @@ import {TooltipType} from '@ironsource/fusion-ui/components/tooltip/common/base'
     templateUrl: './table.component.html',
     styleUrls: ['./table.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TableService]
+    providers: [TableService],
+    standalone: false
 })
 export class TableComponent implements OnInit, OnDestroy {
     @Input() id: string;

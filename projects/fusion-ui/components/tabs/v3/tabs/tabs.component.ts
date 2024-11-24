@@ -7,7 +7,8 @@ import {TabComponent} from '../tab/tab.component';
 @Component({
     selector: 'fusion-tabs',
     template: '<ng-content></ng-content>',
-    styleUrls: ['./tabs.component.scss']
+    styleUrls: ['./tabs.component.scss'],
+    standalone: false
 })
 export class TabsComponent implements OnInit, OnDestroy {
     @Output() selectedChange = new EventEmitter<TabSelectedEventData>();

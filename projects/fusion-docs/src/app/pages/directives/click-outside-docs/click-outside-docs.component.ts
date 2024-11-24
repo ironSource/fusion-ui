@@ -6,7 +6,8 @@ import {takeUntil} from 'rxjs/operators';
 @Component({
     selector: 'fusion-click-outside-docs',
     templateUrl: './click-outside-docs.component.html',
-    styleUrls: ['./click-outside-docs.component.scss']
+    styleUrls: ['./click-outside-docs.component.scss'],
+    standalone: false
 })
 export class ClickOutsideDocsComponent implements OnInit, OnDestroy {
     rightMenu = [

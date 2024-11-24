@@ -12,7 +12,6 @@ import {BehaviorSubject} from 'rxjs';
     templateUrl: './textarea-v4.component.html',
     styleUrls: ['./textarea-v4.component.scss'],
     host: {class: 'fusion-v4'},
-    standalone: true,
     imports: [CommonModule, ReactiveFormsModule, FormsModule, InputHelperComponent, InputLabelComponent],
     changeDetection: ChangeDetectionStrategy.Default,
     providers: [

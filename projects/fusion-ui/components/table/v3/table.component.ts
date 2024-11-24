@@ -39,7 +39,8 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
     templateUrl: './table.component.html',
     styleUrls: ['./table.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [TableService]
+    providers: [TableService],
+    standalone: false
 })
 export class TableComponent implements OnInit, OnDestroy {
     /** @internal */

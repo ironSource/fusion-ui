@@ -8,7 +8,6 @@ import {ChipFiltersBaseComponent} from '@ironsource/fusion-ui/components/chip-fi
 
 @Component({
     selector: 'fusion-chip-filters',
-    standalone: true,
     imports: [CommonModule, ReactiveFormsModule, IconModule, ChipFilterComponent, DropdownComponent],
     host: {class: 'fusion-v4'},
     templateUrl: '../common/base/chip-filters.base.component.html',

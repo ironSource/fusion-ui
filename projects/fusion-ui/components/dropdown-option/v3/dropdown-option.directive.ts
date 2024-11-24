@@ -3,7 +3,8 @@ import {DropdownOptionBaseDirective} from '@ironsource/fusion-ui/components/drop
 import {DropdownOptionComponent} from './dropdown-option.component';
 
 @Directive({
-    selector: '[fusionDropdownOption]'
+    selector: '[fusionDropdownOption]',
+    standalone: false
 })
 export class DropdownOptionDirective extends DropdownOptionBaseDirective {
     protected dropdownOptionComponentType = DropdownOptionComponent;

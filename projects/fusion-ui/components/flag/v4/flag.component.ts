@@ -4,7 +4,6 @@ import {FlagBaseComponent} from './flag-base.component';
 
 @Component({
     selector: 'fusion-flag',
-    standalone: true,
     imports: [CommonModule],
     template: `
         <svg class="fu-flag" focusable="false" aria-hidden="true" viewBox="0 0 24 24" [style.border-radius]="borderRadius">

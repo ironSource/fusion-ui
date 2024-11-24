@@ -8,7 +8,6 @@ import {DynamicComponentsModule} from '@ironsource/fusion-ui/components/dynamic-
 @Component({
     // eslint-disable-next-line
     selector: '[fusionTableEmpty]',
-    standalone: true,
     imports: [CommonModule, EmptyStateComponent, DynamicComponentsModule],
     templateUrl: './table-empty.component.html',
     styleUrls: ['./table-empty.component.scss'],

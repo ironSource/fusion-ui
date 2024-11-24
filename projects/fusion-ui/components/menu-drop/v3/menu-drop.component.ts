@@ -6,7 +6,6 @@ import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside
 
 @Component({
     selector: 'fusion-menu-drop',
-    standalone: true,
     imports: [CommonModule, IconModule],
     templateUrl: './menu-drop.component.html',
     styleUrls: ['./menu-drop.component.scss'],

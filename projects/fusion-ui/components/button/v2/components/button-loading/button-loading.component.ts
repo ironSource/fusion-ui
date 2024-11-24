@@ -3,7 +3,8 @@ import {Component, Input} from '@angular/core';
 @Component({
     selector: 'fusion-button-loading',
     templateUrl: 'button-loading.component.html',
-    styleUrls: ['./button-loading.component.scss']
+    styleUrls: ['./button-loading.component.scss'],
+    standalone: false
 })
 export class ButtonLoadingComponent {
     @Input() projectContent: boolean = false;

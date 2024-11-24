@@ -4,7 +4,6 @@ import {defaultStrokeWidth} from './loader.configuration';
 
 @Component({
     selector: 'fusion-loader',
-    standalone: true,
     imports: [CommonModule],
     templateUrl: './loader.component.html',
     styleUrls: ['./loader.component.scss'],

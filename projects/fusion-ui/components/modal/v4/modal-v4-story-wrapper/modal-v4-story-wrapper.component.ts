@@ -8,7 +8,6 @@ import {TestIdsService} from '@ironsource/fusion-ui';
 
 @Component({
     selector: 'fusion-modal-story-wrapper',
-    standalone: true,
     imports: [CommonModule, ButtonComponent, ModalV4Component, TeleportingModule],
     templateUrl: './modal-v4-story-wrapper.component.html',
     styleUrls: ['./modal-v4-story-wrapper.component.scss'],

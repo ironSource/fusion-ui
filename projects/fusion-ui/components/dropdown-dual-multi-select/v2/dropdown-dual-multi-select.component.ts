@@ -13,6 +13,7 @@ import {DropdownDualMultiSelectBaseComponent} from '@ironsource/fusion-ui/compon
             useExisting: forwardRef(() => DropdownDualMultiSelectComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class DropdownDualMultiSelectComponent extends DropdownDualMultiSelectBaseComponent {}

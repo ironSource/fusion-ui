@@ -13,7 +13,8 @@ import {CONFIG_INPUT_INLINE_BY_UI_STYLE, InputInlineBaseComponent} from '@ironso
             useExisting: forwardRef(() => InputInlineComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class InputInlineComponent extends InputInlineBaseComponent implements OnInit {
     ngOnInit() {

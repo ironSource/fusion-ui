@@ -7,7 +7,6 @@ import {InlineInputType, InputInlineComponent} from '@ironsource/fusion-ui/compo
 
 @Component({
     selector: 'fusion-custom-cell-edit',
-    standalone: true,
     imports: [CommonModule, FormsModule, ReactiveFormsModule, InputInlineComponent],
     templateUrl: './custom-cell-edit.component.html',
     styleUrls: ['./custom-cell-edit.component.scss'],

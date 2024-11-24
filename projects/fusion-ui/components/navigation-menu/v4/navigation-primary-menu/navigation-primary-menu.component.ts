@@ -16,7 +16,6 @@ import {map} from 'rxjs/operators';
 
 @Component({
     selector: 'fusion-navigation-primary-menu',
-    standalone: true,
     imports: [CommonModule, SvgModule, IconModule, TooltipDirective, ClickOutsideModule, RepositionDirective, NavigationPopMenuComponent],
     templateUrl: './navigation-primary-menu.component.html',
     styleUrls: ['./navigation-primary-menu.component.scss'],

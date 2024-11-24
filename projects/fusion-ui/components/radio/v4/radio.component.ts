@@ -5,7 +5,6 @@ import {RadioBaseComponent} from './radio.base.component';
 
 @Component({
     selector: 'fusion-radio',
-    standalone: true,
     imports: [CommonModule, TooltipModule],
     templateUrl: './radio.component.html',
     styleUrls: ['./radio.component.scss'],

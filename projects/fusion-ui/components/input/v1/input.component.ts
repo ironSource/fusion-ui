@@ -10,7 +10,8 @@ import {isBoolean} from '@ironsource/fusion-ui/utils';
     templateUrl: './input.component.html',
     styleUrls: ['./input.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => InputComponent), multi: true}]
+    providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => InputComponent), multi: true}],
+    standalone: false
 })
 export class InputComponent extends InputBaseComponent implements OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
     /** @internal */

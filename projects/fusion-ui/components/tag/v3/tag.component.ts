@@ -10,7 +10,6 @@ import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip/v3';
     templateUrl: './tag.component.html',
     styleUrls: ['./tag.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [CommonModule, IconModule, FlagModule, TooltipModule]
 })
 export class TagComponent extends TagBaseComponent implements OnInit {

@@ -3,7 +3,8 @@ import {DOCUMENT} from '@angular/common';
 import {isFunction} from '@ironsource/fusion-ui/utils';
 
 @Directive({
-    selector: '[fusionCopyToClipboard]'
+    selector: '[fusionCopyToClipboard]',
+    standalone: false
 })
 export class CopyToClipboardDirective {
     @Input() fusionCopyToClipboard?: (elRef?: ElementRef) => string;

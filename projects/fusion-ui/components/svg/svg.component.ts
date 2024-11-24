@@ -10,7 +10,8 @@ import {StorageService, StorageType} from '@ironsource/fusion-ui/services/stogar
 @Component({
     selector: 'fusion-svg',
     templateUrl: './svg.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SvgComponent implements AfterViewInit, OnDestroy {
     // inputs

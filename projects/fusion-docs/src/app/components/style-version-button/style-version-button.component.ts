@@ -8,7 +8,8 @@ import {FusionBase, StyleVersion} from '@ironsource/fusion-ui/components/fusion-
 @Component({
     selector: 'fusion-style-version-button',
     templateUrl: './style-version-button.component.html',
-    styleUrls: ['./style-version-button.component.scss']
+    styleUrls: ['./style-version-button.component.scss'],
+    standalone: false
 })
 export class StyleVersionButtonComponent extends FusionBase implements OnInit {
     StyleVersion = StyleVersion;

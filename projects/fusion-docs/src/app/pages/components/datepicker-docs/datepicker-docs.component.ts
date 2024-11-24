@@ -12,7 +12,8 @@ import {Datepicker} from '@ironsource/fusion-ui/components/datepicker/v1';
     selector: 'fusion-datepicker-docs',
     templateUrl: './datepicker-docs.component.html',
     styleUrls: ['./datepicker-docs.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DatepickerDocsComponent implements OnInit {
     formDatePicker: FormGroup;

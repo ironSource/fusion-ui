@@ -28,7 +28,6 @@ import {IconButtonComponent} from '@ironsource/fusion-ui/components/button/v4';
 @Component({
     // eslint-disable-next-line
     selector: '[fusionTableRow]',
-    standalone: true,
     imports: [CommonModule, GenericPipe, IconModule, TooltipDirective, TableCellComponent, IconButtonComponent],
     templateUrl: './table-row.component.html',
     styleUrls: ['./table-row.component.scss'],

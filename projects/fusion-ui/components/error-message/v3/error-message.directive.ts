@@ -21,7 +21,8 @@ import {DropdownComponent} from '@ironsource/fusion-ui/components/dropdown/v3';
 import {InputComponent} from '@ironsource/fusion-ui/components/input/v3';
 
 @Directive({
-    selector: '[fusionErrorMessage]'
+    selector: '[fusionErrorMessage]',
+    standalone: false
 })
 export class ErrorMessageDirective implements OnInit, OnDestroy, OnChanges {
     @Input() showError: boolean;

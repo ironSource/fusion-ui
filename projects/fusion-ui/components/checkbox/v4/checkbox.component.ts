@@ -6,7 +6,6 @@ import {NG_VALUE_ACCESSOR} from '@angular/forms';
 
 @Component({
     selector: 'fusion-checkbox',
-    standalone: true,
     imports: [CommonModule, TooltipModule],
     templateUrl: './checkbox.component.html',
     styleUrls: ['./checkbox.component.scss'],

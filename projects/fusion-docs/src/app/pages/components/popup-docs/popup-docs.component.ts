@@ -19,7 +19,8 @@ const popUpBasic: PopupEntity = {
 @Component({
     selector: 'fusion-popup-docs',
     templateUrl: './popup-docs.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class PopupDocsComponent implements OnInit, OnDestroy {
     private onDestroy$ = new Subject<void>();

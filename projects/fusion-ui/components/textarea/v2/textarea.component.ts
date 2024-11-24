@@ -13,6 +13,7 @@ import {TextareaBaseComponent} from '@ironsource/fusion-ui/components/textarea/c
             useExisting: forwardRef(() => TextareaComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class TextareaComponent extends TextareaBaseComponent {}

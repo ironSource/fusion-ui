@@ -37,7 +37,8 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
             useExisting: forwardRef(() => ModalComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class ModalComponent implements OnDestroy, OnInit {
     /** @internal */

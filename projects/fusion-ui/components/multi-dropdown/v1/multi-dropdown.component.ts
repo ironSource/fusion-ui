@@ -15,7 +15,8 @@ import {MultiDropdownBaseComponent} from '@ironsource/fusion-ui/components/multi
             useExisting: forwardRef(() => MultiDropdownComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class MultiDropdownComponent extends MultiDropdownBaseComponent {
     dropdownArrowIconName = {

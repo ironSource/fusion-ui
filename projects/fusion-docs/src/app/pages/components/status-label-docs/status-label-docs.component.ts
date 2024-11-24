@@ -9,7 +9,8 @@ import {StatusLabelType} from '@ironsource/fusion-ui/components/status-label/v3/
 @Component({
     selector: 'fusion-status-label-docs',
     templateUrl: './status-label-docs.component.html',
-    styleUrls: ['./status-label-docs.component.scss']
+    styleUrls: ['./status-label-docs.component.scss'],
+    standalone: false
 })
 export class StatusLabelDocsComponent implements OnInit {
     rightMenu: DocsMenuItem[] = [

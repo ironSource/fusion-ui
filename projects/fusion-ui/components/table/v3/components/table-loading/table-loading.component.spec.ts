@@ -9,7 +9,8 @@ import {By} from '@angular/platform-browser';
         <table>
             <tr [fusionTableLoading]="1"></tr>
         </table>
-    `
+    `,
+    standalone: false
 })
 class TestTableLoadingComponent {}
 

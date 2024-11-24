@@ -31,7 +31,8 @@ import {VersionService} from '../../../services/version/version.service';
     selector: 'fusion-chart-docs',
     templateUrl: './chart-docs.component.html',
     styleUrls: ['./chart-docs.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ChartDocsComponent implements OnInit, OnDestroy {
     @ViewChild('myLineTypeLabels', {static: true}) myLineTypeLabels: ChartComponent;

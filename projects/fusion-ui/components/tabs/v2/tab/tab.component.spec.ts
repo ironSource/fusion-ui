@@ -35,7 +35,8 @@ const TAB_TOOLTIP_ICON_MOCK: TabConfiguration = {
 
 @Component({
     selector: 'fusion-dummy-components',
-    template: 'it a dummy component'
+    template: 'it a dummy component',
+    standalone: false
 })
 export class DummyComponent {}
 

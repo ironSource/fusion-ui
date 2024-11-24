@@ -6,7 +6,8 @@ import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 @Component({
     selector: 'fusion-colors-docs',
     templateUrl: './colors-docs.component.html',
-    styleUrls: ['./colors-docs.component.scss']
+    styleUrls: ['./colors-docs.component.scss'],
+    standalone: false
 })
 export class ColorsDocsComponent {
     commonState: any;

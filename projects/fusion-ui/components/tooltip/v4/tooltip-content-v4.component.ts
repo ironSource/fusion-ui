@@ -7,7 +7,6 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-tooltip-content',
-    standalone: true,
     imports: [CommonModule, GenericPipe],
     template: ` <div class="fu-tooltip-component" [attr.data-testid]="testId">
         <ng-container *ngIf="!tooltipInnerText" [ngTemplateOutlet]="temp"></ng-container>

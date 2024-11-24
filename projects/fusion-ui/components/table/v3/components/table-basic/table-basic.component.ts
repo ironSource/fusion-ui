@@ -30,7 +30,8 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
     selector: '[fusionTableBasic]',
     templateUrl: './table-basic.component.html',
     styleUrls: ['./table-basic.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TableBasicComponent implements OnInit, OnDestroy, AfterViewInit {
     @Input() rows: {[key: string]: any}[];

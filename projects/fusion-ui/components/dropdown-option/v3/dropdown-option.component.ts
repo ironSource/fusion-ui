@@ -12,7 +12,8 @@ const ARROW_ICON = {
     selector: 'fusion-dropdown-option',
     templateUrl: './dropdown-option.component.html',
     styleUrls: ['./dropdown-option.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DropdownOptionComponent extends DropdownOptionBaseComponent {
     dropdownArrowIconName: IconData = ARROW_ICON;

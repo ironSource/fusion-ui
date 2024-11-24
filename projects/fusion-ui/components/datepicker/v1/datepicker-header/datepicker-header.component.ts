@@ -5,7 +5,8 @@ import {ControlContainer, FormGroupDirective} from '@angular/forms';
     selector: 'fusion-datepicker-header',
     templateUrl: './datepicker-header.component.html',
     styleUrls: ['./datepicker-header.component.scss'],
-    providers: [{provide: ControlContainer, useExisting: FormGroupDirective}]
+    providers: [{provide: ControlContainer, useExisting: FormGroupDirective}],
+    standalone: false
 })
 export class DatepickerHeaderComponent {
     @Input() prefix: string;

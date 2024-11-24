@@ -10,7 +10,6 @@ import {Subject} from 'rxjs';
 
 @Component({
     selector: 'fusion-tags-input-include-exclude-wrapper',
-    standalone: true,
     imports: [CommonModule, FormsModule, ReactiveFormsModule, TagsInputComponent, DropdownDualMultiSelectModule],
     template: `<fusion-tags-input [placeholder]="placeholder" [tags]="tags" [error]="error" [helper]="helper">
         <div class="filter-element">

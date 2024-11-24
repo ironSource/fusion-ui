@@ -5,7 +5,8 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 @Component({
     selector: 'fusion-modal-footer',
     templateUrl: './modal-footer.component.html',
-    styleUrls: ['./modal-footer.component.scss']
+    styleUrls: ['./modal-footer.component.scss'],
+    standalone: false
 })
 export class ModalFooterComponent {
     @Input() submitButtonPending = false;

@@ -14,7 +14,8 @@ import {BASE_CHECKED_IMAGE} from './checkbox.cusom-svg';
             useExisting: forwardRef(() => CheckboxComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class CheckboxComponent extends CheckboxBaseComponent {
     /** @internal */

@@ -7,7 +7,6 @@ import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
 
 @Component({
     selector: 'fusion-chip-filter',
-    standalone: true,
     imports: [CommonModule, GenericPipe, IconModule, TooltipDirective],
     host: {class: 'fusion-v4'},
     templateUrl: './chip-filter.component.html',

@@ -13,7 +13,8 @@ import {ModalService} from '@ironsource/fusion-ui/components/modal';
 @Component({
     selector: 'fusion-modal-docs',
     templateUrl: './modal-docs.component.html',
-    styleUrls: ['./modal-docs.component.scss']
+    styleUrls: ['./modal-docs.component.scss'],
+    standalone: false
 })
 export class ModalDocsComponent implements OnInit, OnDestroy {
     private onDestroy$ = new Subject<void>();

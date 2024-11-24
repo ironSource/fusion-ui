@@ -13,7 +13,6 @@ import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside
     templateUrl: './input-inline.component.html',
     styleUrls: ['./input-inline.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [CommonModule, ReactiveFormsModule, LoaderModule, IconModule, InputModule, TooltipModule, ClickOutsideModule],
     providers: [
         {

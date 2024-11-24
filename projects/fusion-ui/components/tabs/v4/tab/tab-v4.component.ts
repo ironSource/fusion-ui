@@ -7,7 +7,6 @@ const ATTRIBUTE_DISABLED = 'tab-disabled';
 
 @Component({
     selector: 'fusion-tab',
-    standalone: true,
     imports: [CommonModule, GenericPipe],
     host: {class: 'fusion-v4'},
     template: '<div class="fu-tab-content" [attr.data-testid]="testId"><ng-content></ng-content></div>',

@@ -3,7 +3,8 @@ import {WindowService} from '@ironsource/fusion-ui/services/window';
 import {IntersectionOptions} from './intersection';
 
 @Directive({
-    selector: '[fusionIntersection]'
+    selector: '[fusionIntersection]',
+    standalone: false
 })
 export class IntersectionDirective implements OnInit, OnDestroy, AfterViewInit {
     @Input() set intersectionOptions(value: IntersectionOptions) {

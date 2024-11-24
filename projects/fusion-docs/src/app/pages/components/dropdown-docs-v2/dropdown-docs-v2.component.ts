@@ -26,7 +26,8 @@ import {ClosedOptions} from '@ironsource/fusion-ui/components/dropdown/entities'
 @Component({
     selector: 'fusion-dropdown-docs-v2',
     templateUrl: './dropdown-docs-v2.component.html',
-    styleUrls: ['./dropdown-docs-v2.component.scss']
+    styleUrls: ['./dropdown-docs-v2.component.scss'],
+    standalone: false
 })
 export class DropdownDocsV2Component implements OnInit, OnDestroy {
     @ViewChild('dropdownCustomComponent') dropdownCustomComponent: DropdownComponent;

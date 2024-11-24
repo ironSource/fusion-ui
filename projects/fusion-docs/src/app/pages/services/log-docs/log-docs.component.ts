@@ -4,7 +4,8 @@ import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 @Component({
     selector: 'fusion-log-docs',
     templateUrl: './log-docs.component.html',
-    styleUrls: ['./log-docs.component.scss']
+    styleUrls: ['./log-docs.component.scss'],
+    standalone: false
 })
 export class LogDocsComponent {
     rightMenu: DocsMenuItem[] = [

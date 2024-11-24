@@ -5,7 +5,8 @@ import {PopupService} from '@ironsource/fusion-ui/components/popup/common/servic
 @Component({
     selector: 'fusion-popup-content-example',
     templateUrl: './popup-content-example.component.html',
-    styleUrls: ['./popup-content-example.component.scss']
+    styleUrls: ['./popup-content-example.component.scss'],
+    standalone: false
 })
 export class PopupContentExampleComponent {
     @Input() set configuration(value: PopupContentExampleEntity) {

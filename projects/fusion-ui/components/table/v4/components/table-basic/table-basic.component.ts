@@ -35,7 +35,6 @@ import {LinkComponent} from '@ironsource/fusion-ui/components/link';
 @Component({
     // eslint-disable-next-line
     selector: '[fusionTableBasic]',
-    standalone: true,
     imports: [CommonModule, GenericPipe, TableRowComponent, TableLoadingComponent, LoadMoreModule, LinkComponent],
     templateUrl: './table-basic.component.html',
     styleUrls: ['./table-basic.component.scss'],

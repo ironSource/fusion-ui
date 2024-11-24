@@ -9,7 +9,6 @@ import {takeUntil} from 'rxjs/operators';
 
 @Component({
     selector: 'fusion-top-filter-include-exclude',
-    standalone: true,
     imports: [CommonModule, ReactiveFormsModule, TopFilterTriggerComponent, DropdownDualMultiSelectModule],
     templateUrl: './top-filter-include-exclude.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

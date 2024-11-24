@@ -11,7 +11,8 @@ import {delay, tap} from 'rxjs/operators';
 @Component({
     selector: 'fusion-radio-docs',
     templateUrl: './radio-docs.component.html',
-    styleUrls: ['./radio-docs.component.scss']
+    styleUrls: ['./radio-docs.component.scss'],
+    standalone: false
 })
 export class RadioDocsComponent implements OnInit {
     rightMenu: DocsMenuItem[] = [

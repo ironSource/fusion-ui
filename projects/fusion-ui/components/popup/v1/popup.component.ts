@@ -5,6 +5,7 @@ import {PopupBaseComponent} from '@ironsource/fusion-ui/components/popup/common/
     selector: 'fusion-popup',
     templateUrl: '../common/base/popup.base.component.html',
     styleUrls: ['../common/base/popup.base.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class PopupComponent extends PopupBaseComponent {}

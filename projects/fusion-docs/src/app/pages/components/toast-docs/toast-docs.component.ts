@@ -8,7 +8,8 @@ import {DocsLayoutService} from '../../docs/docs-layout.service';
 @Component({
     selector: 'fusion-toast-docs',
     templateUrl: './toast-docs.component.html',
-    styleUrls: ['./toast-docs.component.scss']
+    styleUrls: ['./toast-docs.component.scss'],
+    standalone: false
 })
 export class ToastDocsComponent implements OnInit {
     rightMenu: DocsMenuItem[] = [

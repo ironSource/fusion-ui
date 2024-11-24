@@ -2,7 +2,8 @@ import {ComponentRef, Directive, EmbeddedViewRef, HostBinding, inject, Input, On
 import {DropdownLoaderComponent} from './dropdown-loader.component';
 
 @Directive({
-    selector: '[fusionDropdownLoader]'
+    selector: '[fusionDropdownLoader]',
+    standalone: false
 })
 export class DropdownLoaderDirective implements OnChanges {
     @HostBinding('class.is-hidden') isOptionHidden = false;

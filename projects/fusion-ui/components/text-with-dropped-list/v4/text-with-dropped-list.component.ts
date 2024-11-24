@@ -9,7 +9,6 @@ import {DroppedListComponent, DroppedListOption} from '@ironsource/fusion-ui/com
 
 @Component({
     selector: 'fusion-text-with-dropped-list',
-    standalone: true,
     host: {
         class: 'fusion-v4',
         '[class.fu-disabled]': 'disabled',

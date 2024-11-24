@@ -35,7 +35,8 @@ import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
         './layout-mobile.component.scss',
         './layout-themes.component.scss'
     ],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
     @Input() set configuration(value: LayoutComponentConfiguration) {

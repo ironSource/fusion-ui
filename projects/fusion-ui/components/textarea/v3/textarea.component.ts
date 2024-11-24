@@ -12,7 +12,8 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
             useExisting: forwardRef(() => TextareaComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class TextareaComponent implements OnInit, ControlValueAccessor {
     @Input() placeholder: string;

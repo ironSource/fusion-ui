@@ -95,12 +95,15 @@
             },
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-angular:browser",
+                    "builder": "@angular-devkit/build-angular:application",
                     "options": {
-                        "outputPath": "dist/fusion-docs",
+                        "outputPath": {
+                          "base": "dist/fusion-docs"
+                        },
                         "index": "projects/fusion-docs/src/index.html",
-                        "main": "projects/fusion-docs/src/main.ts",
-                        "polyfills": "projects/fusion-docs/src/polyfills.ts",
+                        "polyfills": [
+                          "projects/fusion-docs/src/polyfills.ts"
+                        ],
                         "tsConfig": "projects/fusion-docs/tsconfig.app.json",
                         "assets": [
                             "projects/fusion-docs/src/assets"
@@ -109,12 +112,11 @@
                             "projects/fusion-docs/src/styles.scss"
                         ],
                         "scripts": [],
-                        "vendorChunk": true,
                         "extractLicenses": false,
-                        "buildOptimizer": false,
                         "sourceMap": true,
                         "optimization": false,
-                        "namedChunks": true
+                        "namedChunks": true,
+                        "browser": "projects/fusion-docs/src/main.ts"
                     },
                     "configurations": {
                         "production": {
@@ -129,8 +131,6 @@
                             "sourceMap": false,
                             "namedChunks": false,
                             "extractLicenses": true,
-                            "vendorChunk": false,
-                            "buildOptimizer": true,
                             "budgets": [
                                 {
                                     "type": "initial",

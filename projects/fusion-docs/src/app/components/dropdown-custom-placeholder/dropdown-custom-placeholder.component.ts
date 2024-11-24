@@ -3,7 +3,8 @@ import {Component, Input} from '@angular/core';
 @Component({
     selector: 'fusion-dropdown-custom-placeholder',
     templateUrl: './dropdown-custom-placeholder.component.html',
-    styleUrls: ['./dropdown-custom-placeholder.component.scss']
+    styleUrls: ['./dropdown-custom-placeholder.component.scss'],
+    standalone: false
 })
 export class DropdownCustomPlaceholderComponent {
     @Input() set text(value: string) {

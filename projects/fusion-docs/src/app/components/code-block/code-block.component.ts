@@ -6,7 +6,8 @@ declare var Prism;
     selector: 'fusion-code-block',
     templateUrl: './code-block.component.html',
     styleUrls: ['./code-block.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class CodeBlockComponent implements OnInit {
     @Input() title: string;

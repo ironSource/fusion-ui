@@ -11,7 +11,6 @@ import {MultiDropdownComponent} from '@ironsource/fusion-ui/components/multi-dro
 
 @Component({
     selector: 'fusion-app-trigger-story-wrapper',
-    standalone: true,
     imports: [ReactiveFormsModule, DropdownComponent, MultiDropdownComponent],
     template: `
         @if (isMultiselect){

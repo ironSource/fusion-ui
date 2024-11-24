@@ -11,7 +11,6 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-alert',
-    standalone: true,
     imports: [CommonModule, IconModule, ButtonComponent, IconButtonComponent, GenericPipe],
     host: {class: 'fusion-v4'},
     templateUrl: './alert-v4.component.html',

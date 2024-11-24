@@ -6,7 +6,8 @@ import {MONTH_NAMES_SHORT, MonthPicker} from '@ironsource/fusion-ui/components/m
     selector: 'fusion-month-picker-selector',
     templateUrl: './month-picker-selector.component.html',
     styleUrls: ['./month-picker-selector.component.scss', './month-picker-selector-v2.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class MonthPickerSelectorComponent implements OnInit {
     @Input() min: MonthPicker;

@@ -5,7 +5,8 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 @Component({
     selector: 'fusion-modal-header',
     templateUrl: './modal-header.component.html',
-    styleUrls: ['./modal-header.component.scss']
+    styleUrls: ['./modal-header.component.scss'],
+    standalone: false
 })
 export class ModalHeaderComponent {
     @Input() headerText: string;

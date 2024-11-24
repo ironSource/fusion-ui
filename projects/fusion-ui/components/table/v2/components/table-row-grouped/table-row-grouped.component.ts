@@ -5,7 +5,8 @@ import {TableService} from '@ironsource/fusion-ui/components/table/common/servic
     // eslint-disable-next-line
     selector: '[fusionTableRowGrouped]',
     templateUrl: './table-row-grouped.component.html',
-    styleUrls: ['./table-row-grouped.component.scss']
+    styleUrls: ['./table-row-grouped.component.scss'],
+    standalone: false
 })
 export class TableRowGroupedComponent {
     @Input() row: any;

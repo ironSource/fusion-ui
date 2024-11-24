@@ -6,7 +6,8 @@ import {DocsLayoutService} from '../../docs/docs-layout.service';
     selector: 'fusion-colors-docs-v2',
     templateUrl: './colors-docs-v2.component.html',
     styleUrls: ['./colors-docs-v2.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ColorsDocsV2Component implements OnInit {
     @ViewChild('colorsFixedContent', {static: true}) colorsFixedContent: TemplateRef<any>;

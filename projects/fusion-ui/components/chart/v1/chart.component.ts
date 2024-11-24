@@ -37,7 +37,8 @@ Chart.register(
     selector: 'fusion-chart',
     templateUrl: '../common/base/chart.base.component.html',
     styleUrls: ['./chart.component-common.scss', './chart.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ChartComponent extends ChartBaseComponent {
     protected getColors(): string[] {

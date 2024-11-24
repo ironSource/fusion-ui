@@ -12,7 +12,8 @@ import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
     selector: 'fusion-sidebar-menu',
     templateUrl: './sidebar-menu.component.html',
     styleUrls: ['./sidebar-menu.component.scss', './sidebar-menu-mobile.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SidebarMenuComponent implements OnInit, OnDestroy {
     @Input() set menuItems(value: SidebarMenuItem[]) {

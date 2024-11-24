@@ -13,6 +13,7 @@ import {IconSelectListBaseComponent} from '@ironsource/fusion-ui/components/icon
             useExisting: forwardRef(() => IconSelectListComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class IconSelectListComponent extends IconSelectListBaseComponent {}

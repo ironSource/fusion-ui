@@ -14,7 +14,6 @@ const MENU_CACHE_KEY = 'persistent_fusionMenuCollapsed';
 
 @Component({
     selector: 'fusion-navigation-menu',
-    standalone: true,
     imports: [CommonModule, NavigationPrimaryMenuComponent, NavigationSecondaryMenuComponent],
     templateUrl: './navigation-menu.component.html',
     styleUrls: ['./navigation-menu.component.scss'],

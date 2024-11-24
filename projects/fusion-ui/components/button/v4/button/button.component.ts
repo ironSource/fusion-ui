@@ -7,7 +7,6 @@ import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 
 @Component({
     selector: 'fusion-button',
-    standalone: true,
     imports: [CommonModule, IconModule, LoaderComponent, GenericPipe],
     templateUrl: './button.component.html',
     styleUrls: ['./button.component.scss'],

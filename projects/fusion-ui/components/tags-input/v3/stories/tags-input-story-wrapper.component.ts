@@ -5,7 +5,6 @@ import {TagComponentConfigurations} from '@ironsource/fusion-ui/components/tag';
 
 @Component({
     selector: 'fusion-tags-input-wrapper',
-    standalone: true,
     imports: [CommonModule, TagsInputComponent],
     template: `<fusion-tags-input
         [inputPlaceholder]="inputPlaceholder"

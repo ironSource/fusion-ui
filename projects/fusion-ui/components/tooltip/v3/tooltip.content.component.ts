@@ -8,7 +8,8 @@ import {TooltipComponentStyleConfiguration, TooltipPosition} from '@ironsource/f
         <span *ngIf="tooltipInnerText">{{ tooltipInnerText }}</span>
     </div>`,
     styleUrls: ['./tooltip.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TooltipContentComponent {
     /** @internal */

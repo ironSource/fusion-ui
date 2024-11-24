@@ -1,7 +1,8 @@
 import {Directive, TemplateRef, Input} from '@angular/core';
 
 @Directive({
-    selector: '[fusionExampleBlock]'
+    selector: '[fusionExampleBlock]',
+    standalone: false
 })
 export class ExampleBlockDirective {
     @Input() fusionExampleBlock: string;

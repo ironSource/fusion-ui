@@ -46,7 +46,8 @@ type CellDataType = Type<Component> | FormControl | string | boolean | undefined
     selector: '[fusionTableCell]',
     templateUrl: './table-cell.component.html',
     styleUrls: ['./table-cell.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TableCellComponent implements OnInit, OnChanges {
     @Input() set data(value: CellDataType) {

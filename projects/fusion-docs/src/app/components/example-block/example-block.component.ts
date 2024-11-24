@@ -5,7 +5,8 @@ import {ExampleBlockDirective} from './example-block.directive';
     selector: 'fusion-example-block',
     templateUrl: './example-block.component.html',
     styleUrls: ['./example-block.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class ExampleBlockComponent implements OnInit {
     @ContentChildren(ExampleBlockDirective, {read: ExampleBlockDirective})

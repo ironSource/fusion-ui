@@ -10,7 +10,8 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
         <table>
             <tr [fusionTableEmpty]="colsSpan" [header]="noDataMessage" [subHeader]="noDataSubMessage"></tr>
         </table>
-    `
+    `,
+    standalone: false
 })
 class TestTableRowEmptyComponent {
     public colsSpan = 1;

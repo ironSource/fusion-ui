@@ -53,7 +53,8 @@ const MOCK_DATA_4 = [
 @Component({
     selector: 'fusion-list-box-docs-v2',
     templateUrl: './list-box-docs-v2.component.html',
-    styleUrls: ['./list-box-docs-v2.component.scss']
+    styleUrls: ['./list-box-docs-v2.component.scss'],
+    standalone: false
 })
 export class ListBoxDocsV2Component implements OnInit, OnDestroy {
     private onDestroy$ = new Subject<void>();

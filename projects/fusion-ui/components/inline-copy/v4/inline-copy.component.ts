@@ -7,7 +7,6 @@ import {SnackbarService} from '@ironsource/fusion-ui/components/snackbar/v4';
 
 @Component({
     selector: 'fusion-inline-copy',
-    standalone: true,
     host: {class: 'fusion-v4'},
     imports: [IconModule, TooltipDirective, CopyToClipboardModule],
     providers: [SnackbarService],

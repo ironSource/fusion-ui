@@ -11,7 +11,8 @@ import {delay, tap} from 'rxjs/operators';
     selector: 'fusion-month-picker-docs',
     templateUrl: './month-picker-docs.component.html',
     styleUrls: ['./month-picker-docs.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class MonthPickerDocsComponent implements OnInit {
     rightMenu: DocsMenuItem[] = [

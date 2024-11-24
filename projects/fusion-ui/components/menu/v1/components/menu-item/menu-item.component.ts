@@ -4,7 +4,8 @@ import {MenuItem} from '@ironsource/fusion-ui/components/menu/common/base';
 @Component({
     selector: 'fusion-menu-item',
     templateUrl: './menu-item.component.html',
-    styleUrls: ['./menu-item.component.scss']
+    styleUrls: ['./menu-item.component.scss'],
+    standalone: false
 })
 export class MenuItemComponent {
     @Input() item: MenuItem;

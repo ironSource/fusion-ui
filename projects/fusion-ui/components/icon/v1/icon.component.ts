@@ -7,7 +7,8 @@ import {SvgComponent} from '@ironsource/fusion-ui/components/svg';
     template: '<span></span>',
     styleUrls: ['./icon.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class IconComponent extends SvgComponent {
     @Input() set name(val: IconData) {

@@ -6,7 +6,6 @@ import {DropdownSearchBaseComponent} from '@ironsource/fusion-ui/components/drop
 
 @Component({
     selector: 'fusion-dropdown-search',
-    standalone: true,
     imports: [CommonModule, ReactiveFormsModule, SearchComponent],
     host: {class: 'fusion-v4'},
     templateUrl: './dropdown-search-v4.component.html',

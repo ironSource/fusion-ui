@@ -4,7 +4,8 @@ import {IconStatusOption} from '@ironsource/fusion-ui/components/icon-status/com
 @Component({
     selector: 'fusion-ab-test-option',
     templateUrl: './ab-test-option.component.html',
-    styleUrls: ['./ab-test-option.component.scss']
+    styleUrls: ['./ab-test-option.component.scss'],
+    standalone: false
 })
 export class AbTestOptionComponent {
     @Input() set status(status: 'active' | 'internal' | 'completed') {

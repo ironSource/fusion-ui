@@ -5,7 +5,8 @@ import {ControlContainer, FormGroupDirective} from '@angular/forms';
     selector: 'fusion-datepicker-selection',
     templateUrl: './datepicker-selection.component.html',
     styleUrls: ['./datepicker-selection.component.scss'],
-    viewProviders: [{provide: ControlContainer, useExisting: FormGroupDirective}]
+    viewProviders: [{provide: ControlContainer, useExisting: FormGroupDirective}],
+    standalone: false
 })
 export class DatepickerSelectionComponent {
     @Input() dropDownStyle: boolean;

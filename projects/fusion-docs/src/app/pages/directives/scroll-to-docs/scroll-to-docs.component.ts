@@ -4,7 +4,8 @@ import {FormBuilder, Validators} from '@angular/forms';
 @Component({
     selector: 'fusion-scroll-to-docs',
     templateUrl: './scroll-to-docs.component.html',
-    styleUrls: ['./scroll-to-docs.component.scss']
+    styleUrls: ['./scroll-to-docs.component.scss'],
+    standalone: false
 })
 export class ScrollToDocsComponent {
     form = this.fb.group({

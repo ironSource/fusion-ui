@@ -17,7 +17,6 @@ import {SkeletonComponent} from '@ironsource/fusion-ui/components/skeleton';
 
 @Component({
     selector: 'fusion-input-inline',
-    standalone: true,
     host: {class: 'fusion-v4'},
     imports: [
         CommonModule,

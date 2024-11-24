@@ -12,7 +12,8 @@ import {delay, tap} from 'rxjs/operators';
 @Component({
     selector: 'fusion-input-docs',
     templateUrl: './input-docs.component.html',
-    styleUrls: ['./input-docs.component.scss']
+    styleUrls: ['./input-docs.component.scss'],
+    standalone: false
 })
 export class InputDocsComponent implements OnInit {
     model = new FormControl();

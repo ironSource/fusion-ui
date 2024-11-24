@@ -6,7 +6,8 @@ import {PubSubEvent, StatusTableCell} from '../';
     selector: 'fusion-status-table-cell',
     templateUrl: './status-table-cell.component.html',
     styleUrls: ['./status-table-cell.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class StatusTableCellComponent {
     @Input() config: StatusTableCell | undefined;

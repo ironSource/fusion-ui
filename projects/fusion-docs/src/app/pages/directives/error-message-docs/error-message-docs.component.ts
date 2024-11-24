@@ -4,7 +4,8 @@ import {FormControl, FormBuilder, Validators} from '@angular/forms';
 @Component({
     selector: 'fusion-error-message-docs',
     templateUrl: './error-message-docs.component.html',
-    styleUrls: ['./error-message-docs.component.scss']
+    styleUrls: ['./error-message-docs.component.scss'],
+    standalone: false
 })
 export class ErrorMessageDocsComponent implements OnInit {
     minValue = 10;

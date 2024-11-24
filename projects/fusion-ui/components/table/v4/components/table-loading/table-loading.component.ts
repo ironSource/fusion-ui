@@ -6,8 +6,7 @@ import {SkeletonComponent} from '@ironsource/fusion-ui/components/skeleton';
     selector: '[fusionTableLoading]',
     imports: [SkeletonComponent],
     templateUrl: './table-loading.component.html',
-    styleUrls: ['./table-loading.component.scss'],
-    standalone: true
+    styleUrls: ['./table-loading.component.scss']
 })
 export class TableLoadingComponent {
     @Input() fusionTableLoading: number;

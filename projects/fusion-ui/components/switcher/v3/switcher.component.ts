@@ -15,7 +15,8 @@ import {UniqueIdService} from '@ironsource/fusion-ui/services/unique-id';
             useExisting: forwardRef(() => SwitcherComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class SwitcherComponent implements OnInit {
     /**

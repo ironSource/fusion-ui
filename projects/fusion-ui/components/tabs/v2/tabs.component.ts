@@ -10,7 +10,8 @@ import {PopupService} from '@ironsource/fusion-ui/components/popup/common/servic
     templateUrl: './tabs.component.html',
     styleUrls: ['./tabs.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [PopupService]
+    providers: [PopupService],
+    standalone: false
 })
 export class TabsComponent implements OnInit {
     @Input() set configuration(value: TabsConfiguration) {

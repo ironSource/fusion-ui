@@ -17,7 +17,8 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
             useExisting: forwardRef(() => DaterangeComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class DaterangeComponent extends DaterangeBaseComponent {
     /** @internal */

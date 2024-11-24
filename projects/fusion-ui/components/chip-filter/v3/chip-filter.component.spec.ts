@@ -13,7 +13,8 @@ const innerText = 'Test Chip';
 @Component({
     template: `<fusion-chip-filter [configuration]="chipConfig">
         <div class="fu-chip-content">${innerText}</div>
-    </fusion-chip-filter>`
+    </fusion-chip-filter>`,
+    standalone: false
 })
 class TestChipComponent {
     chipConfig: ChipFilterComponentConfigurations;

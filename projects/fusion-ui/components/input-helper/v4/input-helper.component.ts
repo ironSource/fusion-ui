@@ -7,7 +7,6 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-input-helper',
-    standalone: true,
     imports: [CommonModule, GenericPipe, IconModule],
     templateUrl: './input-helper.component.html',
     styleUrl: './input-helper.component.scss',

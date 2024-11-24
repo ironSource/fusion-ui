@@ -2,7 +2,8 @@ import {Directive, HostListener, Input, OnInit} from '@angular/core';
 import {ScrollToService} from './scroll-to.service';
 
 @Directive({
-    selector: '[fusionScrollTo]'
+    selector: '[fusionScrollTo]',
+    standalone: false
 })
 export class ScrollToDirective implements OnInit {
     @Input() fusionScrollTo: string;

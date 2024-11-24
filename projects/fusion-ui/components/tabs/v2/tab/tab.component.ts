@@ -7,7 +7,8 @@ import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
     selector: 'fusion-tab',
     templateUrl: './tab.component.html',
     styleUrls: ['./tab.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TabComponent {
     @Input() set configuration(value: TabConfiguration) {

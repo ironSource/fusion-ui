@@ -8,7 +8,6 @@ import {SkeletonComponent} from '@ironsource/fusion-ui/components/skeleton';
 
 @Component({
     selector: 'fusion-layout-header',
-    standalone: true,
     imports: [CommonModule, DynamicComponentsModule, IconModule, IconButtonComponent, SkeletonComponent],
     templateUrl: './layout-header.component.html',
     styleUrls: ['./layout-header.component.scss'],

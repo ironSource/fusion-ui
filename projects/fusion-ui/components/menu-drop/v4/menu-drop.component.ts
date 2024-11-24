@@ -5,7 +5,6 @@ import {IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 
 @Component({
     selector: 'fusion-menu-drop',
-    standalone: true,
     host: {class: 'fusion-v4'},
     imports: [CommonModule, IconModule],
     templateUrl: './menu-drop.component.html',

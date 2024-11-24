@@ -4,7 +4,8 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
     selector: 'fusion-modal-content',
     templateUrl: './modal-content.component.html',
     styleUrls: ['./modal-content.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ModalContentComponent {
     @Input() pending = false;

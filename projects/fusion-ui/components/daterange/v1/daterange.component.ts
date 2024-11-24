@@ -13,7 +13,8 @@ import {DaterangeBaseComponent} from '@ironsource/fusion-ui/components/daterange
             useExisting: forwardRef(() => DaterangeComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class DaterangeComponent extends DaterangeBaseComponent {
     pevIconName = {iconName: 'arrow-right', iconVersion: 'v1'};

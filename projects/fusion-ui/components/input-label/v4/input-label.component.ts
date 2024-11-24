@@ -8,7 +8,6 @@ import {tooltipConfiguration, TooltipDirective} from '@ironsource/fusion-ui/comp
 
 @Component({
     selector: 'fusion-input-label',
-    standalone: true,
     imports: [CommonModule, GenericPipe, IconModule, TooltipDirective],
     templateUrl: './input-label.component.html',
     styleUrl: './input-label.component.scss',

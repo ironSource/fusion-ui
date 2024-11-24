@@ -2,7 +2,8 @@ import {ComponentRef, Directive, TemplateRef, ViewContainerRef} from '@angular/c
 import {TooltipContentComponent} from './tooltip.content.component';
 
 @Directive({
-    selector: `[fusionTooltipContent]`
+    selector: `[fusionTooltipContent]`,
+    standalone: false
 })
 export class TooltipContentDirective {
     private componentRef: ComponentRef<TooltipContentComponent>;

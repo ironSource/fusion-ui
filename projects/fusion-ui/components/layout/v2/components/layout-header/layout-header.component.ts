@@ -10,7 +10,8 @@ import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
     selector: 'fusion-layout-header',
     templateUrl: './layout-header.component.html',
     styleUrls: ['./layout-header.component.scss', './layout-header-mobile.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class LayoutHeaderComponent {
     @Input() set configuration(value: LayoutHeaderComponentConfiguration) {

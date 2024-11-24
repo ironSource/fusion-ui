@@ -36,7 +36,6 @@ Chart.register(
 
 @Component({
     selector: 'fusion-chart',
-    standalone: true,
     imports: [CommonModule, ShortNumberScaleSuffixPipe],
     providers: [DatePipe, CurrencyPipe, DecimalPipe, PercentPipe, ChartDataService, ShortNumberScaleSuffixPipe],
     host: {class: 'fusion-v4'},

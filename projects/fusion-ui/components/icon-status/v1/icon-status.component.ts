@@ -5,6 +5,7 @@ import {IconStatusBaseComponent} from '@ironsource/fusion-ui/components/icon-sta
     selector: 'fusion-icon-status',
     templateUrl: '../common/base/icon-status.base.component.html',
     styleUrls: ['./icon-status.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class IconStatusComponent extends IconStatusBaseComponent {}

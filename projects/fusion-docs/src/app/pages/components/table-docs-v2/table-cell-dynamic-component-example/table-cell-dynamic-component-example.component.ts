@@ -4,7 +4,8 @@ import {StatusLabelConfig, StatusLabelStatus} from '@ironsource/fusion-ui/compon
 @Component({
     selector: 'fusion-table-cell-dynamic-component-example',
     templateUrl: './table-cell-dynamic-component-example.component.html',
-    styleUrls: ['./table-cell-dynamic-component-example.component.scss']
+    styleUrls: ['./table-cell-dynamic-component-example.component.scss'],
+    standalone: false
 })
 export class TableCellDynamicComponentExampleComponent implements OnInit {
     @Input() status: StatusLabelStatus;

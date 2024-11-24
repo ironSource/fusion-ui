@@ -4,7 +4,8 @@ import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 @Component({
     selector: 'fusion-toast-service-doc',
     templateUrl: './toast-service-doc.component.html',
-    styleUrls: ['./toast-service-doc.component.scss']
+    styleUrls: ['./toast-service-doc.component.scss'],
+    standalone: false
 })
 export class ToastServiceDocComponent {
     rightMenu: DocsMenuItem[] = [

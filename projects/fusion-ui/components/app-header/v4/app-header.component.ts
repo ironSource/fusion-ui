@@ -7,7 +7,6 @@ import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
 
 @Component({
     selector: 'fusion-app-header',
-    standalone: true,
     host: {class: 'fusion-v4'},
     imports: [InlineCopyComponent, IconModule, NgOptimizedImage, TooltipDirective],
     templateUrl: './app-header.component.html',

@@ -4,7 +4,8 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
     selector: 'fusion-accordion-header',
     templateUrl: './accordion-header.component.html',
     styleUrls: ['./accordion-header.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AccordionHeaderComponent {
     @Input() isOpen: boolean;

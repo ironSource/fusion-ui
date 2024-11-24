@@ -4,7 +4,6 @@ import {SkeletonShapeType} from './skeleton.component.entities';
 
 @Component({
     selector: 'fusion-skeleton',
-    standalone: true,
     host: {class: 'fusion-v4'},
     imports: [CommonModule],
     template: `<div [ngClass]="class"></div>`,

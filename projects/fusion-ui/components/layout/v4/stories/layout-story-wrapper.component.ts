@@ -9,7 +9,6 @@ import {takeUntil} from 'rxjs/operators';
 
 @Component({
     selector: 'fusion-layout-story-wrapper',
-    standalone: true,
     imports: [CommonModule, LayoutComponent],
     template: `
         <fusion-layout

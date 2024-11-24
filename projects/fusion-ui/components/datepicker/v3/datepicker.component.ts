@@ -26,7 +26,8 @@ const DEFAULT_OPTIONS = {
             useExisting: forwardRef(() => DatepickerComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class DatepickerComponent implements OnInit, OnDestroy, ControlValueAccessor {
     @Input() set options(value: DatepickerOptions) {

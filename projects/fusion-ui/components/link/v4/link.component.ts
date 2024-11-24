@@ -7,7 +7,6 @@ import {LinkTestIdModifiers} from '@ironsource/fusion-ui/entities';
 
 @Component({
     selector: 'fusion-link',
-    standalone: true,
     host: {class: 'fusion-v4'},
     imports: [GenericPipe, IconModule],
     templateUrl: './link.component.html',

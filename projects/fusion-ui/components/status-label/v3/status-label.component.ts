@@ -4,7 +4,8 @@ import {StatusLabelType} from './status-label.entity';
 @Component({
     selector: 'fusion-status-label',
     templateUrl: './status-label.component.html',
-    styleUrls: ['./status-label.component.scss']
+    styleUrls: ['./status-label.component.scss'],
+    standalone: false
 })
 export class StatusLabelComponent {
     @Input() set flat(value: boolean) {

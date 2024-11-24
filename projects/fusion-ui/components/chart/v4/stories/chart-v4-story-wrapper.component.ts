@@ -8,7 +8,6 @@ import {ChartData, ChartDataset, ChartLabel, ChartType} from '@ironsource/fusion
 
 @Component({
     selector: 'fusion-chart-wrapper',
-    standalone: true,
     imports: [CommonModule, ChartComponent, ChartLabelsComponent],
     host: {class: 'fusion-v4'},
     template: `

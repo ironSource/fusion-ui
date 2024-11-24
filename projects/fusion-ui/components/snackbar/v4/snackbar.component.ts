@@ -19,7 +19,6 @@ import {ButtonComponent, IconButtonComponent} from '@ironsource/fusion-ui/compon
 
 @Component({
     selector: 'fusion-snackbar',
-    standalone: true,
     imports: [CommonModule, IconModule, IconButtonComponent, ButtonComponent],
     templateUrl: './snackbar.component.html',
     styleUrls: ['./snackbar.component.scss'],

@@ -15,7 +15,10 @@ import {fromEvent, Observable, of, Subject} from 'rxjs';
 import {switchMap, takeUntil} from 'rxjs/operators';
 import {TooltipContentDirective} from './tooltip-content.directive';
 
-@Directive({selector: '[fusionTooltip]'})
+@Directive({
+    selector: '[fusionTooltip]',
+    standalone: false
+})
 export class TooltipDirective implements OnDestroy, AfterViewInit {
     //todo: Fix React not passing configuration for static mode
     @ContentChild(TooltipContentDirective, {static: true}) directiveRef!: TooltipContentDirective;

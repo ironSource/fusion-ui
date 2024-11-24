@@ -14,7 +14,8 @@ import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
             useExisting: forwardRef(() => DropdownSearchComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class DropdownSearchComponent extends DropdownSearchBaseComponent {
     @ViewChild('input') input?: ElementRef;

@@ -21,7 +21,6 @@ import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 
 @Component({
     selector: 'fusion-daterange',
-    standalone: true,
     host: {class: 'fusion-v4'},
     imports: [
         CommonModule,

@@ -22,7 +22,8 @@ import {IconData} from '@ironsource/fusion-ui/components/icon/v1';
     selector: '[fusionTableRow]',
     templateUrl: './table-row.component.html',
     styleUrls: ['./table-row.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TableRowComponent implements OnInit, OnChanges {
     @Input() rowIndex: string | number;

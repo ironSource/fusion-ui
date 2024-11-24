@@ -5,7 +5,8 @@ import {VideoPlayerBaseComponent} from '@ironsource/fusion-ui/components/video-p
     selector: 'fusion-video-player',
     templateUrl: './video-player.component.html',
     styleUrls: ['./video-player.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class VideoPlayerComponent extends VideoPlayerBaseComponent {
     playIconName = {iconName: 'play-video', iconVersion: 'v1'};

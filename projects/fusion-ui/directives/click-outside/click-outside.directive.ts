@@ -4,7 +4,8 @@ import {takeUntil} from 'rxjs/operators';
 import {isFunction} from '@ironsource/fusion-ui/utils';
 
 @Directive({
-    selector: '[fusionClickOutside]'
+    selector: '[fusionClickOutside]',
+    standalone: false
 })
 export class ClickOutsideDirective implements OnInit, OnDestroy {
     @Input() set clickOutsideActivate(value: boolean) {

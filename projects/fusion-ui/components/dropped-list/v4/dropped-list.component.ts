@@ -5,7 +5,6 @@ import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
 
 @Component({
     selector: 'fusion-dropped-list',
-    standalone: true,
     host: {class: 'fusion-v4'},
     imports: [FlagComponent, TooltipDirective],
     templateUrl: './dropped-list.component.html',

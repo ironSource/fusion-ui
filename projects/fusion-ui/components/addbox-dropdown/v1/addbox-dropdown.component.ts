@@ -17,7 +17,8 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
             useExisting: forwardRef(() => AddboxDropdownComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 // eslint-disable-next-line @angular-eslint/no-conflicting-lifecycle
 export class AddboxDropdownComponent extends AddboxDropdownBaseComponent {}

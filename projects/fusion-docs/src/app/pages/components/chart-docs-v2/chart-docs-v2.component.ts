@@ -23,7 +23,8 @@ import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
     selector: 'fusion-chart-docs-v2',
     templateUrl: './chart-docs-v2.component.html',
     styleUrls: ['./chart-docs-v2.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ChartDocsV2Component implements OnInit, OnDestroy {
     @ViewChild('myLineTypeLabels', {static: true}) myLineTypeLabels: ChartComponent;

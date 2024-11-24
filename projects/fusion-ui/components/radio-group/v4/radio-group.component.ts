@@ -6,7 +6,6 @@ import {RadioComponent} from '@ironsource/fusion-ui/components/radio/v4';
 
 @Component({
     selector: 'fusion-radio-group',
-    standalone: true,
     imports: [CommonModule, RadioComponent],
     templateUrl: './radio-group.component.html',
     styleUrls: ['./radio-group.component.scss'],

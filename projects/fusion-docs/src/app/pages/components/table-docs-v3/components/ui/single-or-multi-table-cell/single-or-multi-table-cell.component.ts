@@ -7,7 +7,8 @@ const MAX_LINES = 20;
     selector: 'fusion-single-or-multi-table-cell',
     templateUrl: './single-or-multi-table-cell.component.html',
     styleUrls: ['./single-or-multi-table-cell.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SingleOrMultiTableCellComponent implements OnInit {
     @Input() config: SingleOrMultiTableCell | undefined;

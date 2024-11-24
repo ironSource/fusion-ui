@@ -8,7 +8,8 @@ import {DocsLayoutService} from '../../docs/docs-layout.service';
 @Component({
     selector: 'fusion-accordion-docs',
     templateUrl: './accordion-docs.component.html',
-    styleUrls: ['./accordion-docs.component.scss']
+    styleUrls: ['./accordion-docs.component.scss'],
+    standalone: false
 })
 export class AccordionDocsComponent implements OnInit {
     rightMenu: DocsMenuItem[] = [

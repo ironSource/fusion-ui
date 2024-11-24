@@ -4,7 +4,8 @@ import {TableColumnTypeEnum} from '@ironsource/fusion-ui/components/table/common
 @Component({
     selector: 'fusion-typography-docs',
     templateUrl: './typography-docs-v3.component.html',
-    styleUrls: ['./typography-docs-v3.component.scss']
+    styleUrls: ['./typography-docs-v3.component.scss'],
+    standalone: false
 })
 export class TypographyDocV3Component {
     rightMenu: Array<any> = [

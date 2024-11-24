@@ -8,7 +8,8 @@ import {takeUntil} from 'rxjs/operators';
 @Component({
     selector: 'fusion-table-docs-v3',
     templateUrl: './table-docs-v3.component.html',
-    styleUrls: ['./table-docs-v3.component.scss']
+    styleUrls: ['./table-docs-v3.component.scss'],
+    standalone: false
 })
 export class TableDocsV3Component implements OnInit, OnDestroy {
     onDestroy$ = new Subject();

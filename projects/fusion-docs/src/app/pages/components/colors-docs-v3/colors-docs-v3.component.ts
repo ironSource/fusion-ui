@@ -7,7 +7,8 @@ import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
     selector: 'fusion-colors-docs-v2',
     templateUrl: './colors-docs-v3.component.html',
     styleUrls: ['./colors-docs-v3.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ColorsDocsV3Component implements OnInit {
     @ViewChild('colorsFixedContent', {static: true}) colorsFixedContent: TemplateRef<any>;

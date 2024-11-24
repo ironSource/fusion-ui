@@ -23,7 +23,6 @@ import {DynamicComponent} from '@ironsource/fusion-ui/components/dynamic-compone
 
 @Component({
     selector: 'fusion-multi-dropdown',
-    standalone: true,
     imports: [
         CommonModule,
         ReactiveFormsModule,

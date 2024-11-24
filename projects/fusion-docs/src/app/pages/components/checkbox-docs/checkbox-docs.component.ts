@@ -11,7 +11,8 @@ import {VersionService} from '../../../services/version/version.service';
 @Component({
     selector: 'fusion-checkbox-docs',
     templateUrl: './checkbox-docs.component.html',
-    styleUrls: ['./checkbox-docs.component.scss']
+    styleUrls: ['./checkbox-docs.component.scss'],
+    standalone: false
 })
 export class CheckboxDocsComponent implements OnInit, OnDestroy {
     rightMenu: DocsMenuItem[] = [

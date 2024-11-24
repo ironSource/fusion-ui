@@ -16,7 +16,6 @@ const DEFAULT_OPTIONS = {
 
 @Component({
     selector: 'fusion-datepicker',
-    standalone: true,
     host: {class: 'fusion-v4'},
     imports: [CommonModule, ReactiveFormsModule, DaterangeComponent],
     template: `<fusion-daterange

@@ -9,7 +9,8 @@ import {DISABLED_CSS_CLASS, DRAG_OVER_CSS_CLASS, LOADING_CSS_CLASS} from './file
  * or by files drag and drop to the host area
  */
 @Directive({
-    selector: '[fusionFileDragAndDrop]'
+    selector: '[fusionFileDragAndDrop]',
+    standalone: false
 })
 export class FileDragAndDropDirective implements OnInit, AfterViewInit, OnDestroy {
     /**

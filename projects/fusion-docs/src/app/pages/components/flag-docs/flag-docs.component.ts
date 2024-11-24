@@ -4,7 +4,8 @@ import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 @Component({
     selector: 'fusion-flag-docs',
     templateUrl: './flag-docs.component.html',
-    styleUrls: ['./flag-docs.component.scss']
+    styleUrls: ['./flag-docs.component.scss'],
+    standalone: false
 })
 export class FlagDocsComponent {
     rightMenu: DocsMenuItem[] = [

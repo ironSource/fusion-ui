@@ -16,7 +16,8 @@ import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
             useExisting: forwardRef(() => MultiDropdownComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class MultiDropdownComponent extends MultiDropdownBaseComponent {
     /** @ignore */

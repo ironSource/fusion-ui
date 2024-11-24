@@ -10,7 +10,8 @@ import {delay, tap} from 'rxjs/operators';
 @Component({
     selector: 'fusion-toggle-docs',
     templateUrl: './toggle-docs.component.html',
-    styleUrls: ['./toggle-docs.component.scss']
+    styleUrls: ['./toggle-docs.component.scss'],
+    standalone: false
 })
 export class ToggleDocsComponent implements OnInit {
     toggleFormControl = new FormControl(false);

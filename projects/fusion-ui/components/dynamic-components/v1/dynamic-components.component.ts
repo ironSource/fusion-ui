@@ -5,6 +5,7 @@ import {DynamicComponentsBaseComponent} from '@ironsource/fusion-ui/components/d
     selector: 'fusion-dynamic-components',
     templateUrl: './dynamic-components.component.html',
     styleUrls: ['./dynamic-components.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DynamicComponentsComponent extends DynamicComponentsBaseComponent {}

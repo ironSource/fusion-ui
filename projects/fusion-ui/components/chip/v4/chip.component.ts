@@ -3,7 +3,6 @@ import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 
 @Component({
     selector: 'fusion-chip',
-    standalone: true,
     host: {class: 'fusion-v4'},
     imports: [IconModule],
     templateUrl: './chip.component.html',

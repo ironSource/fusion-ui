@@ -8,7 +8,8 @@ import {isUndefined} from '@ironsource/fusion-ui/utils';
     selector: '[fusionTableGrouped]',
     templateUrl: './table-grouped.component.html',
     styleUrls: ['./table-grouped.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TableGroupedComponent implements OnChanges {
     @Input() rows: TableRowsGrouped;

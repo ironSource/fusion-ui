@@ -5,7 +5,8 @@ import {FormControl, FormBuilder, FormGroup, Validators, AbstractControl, Valida
 @Component({
     selector: 'fusion-playground',
     templateUrl: './playground.component.html',
-    styleUrls: ['./playground.component.scss']
+    styleUrls: ['./playground.component.scss'],
+    standalone: false
 })
 export class PlaygroundComponent implements OnInit {
     group: FormGroup;

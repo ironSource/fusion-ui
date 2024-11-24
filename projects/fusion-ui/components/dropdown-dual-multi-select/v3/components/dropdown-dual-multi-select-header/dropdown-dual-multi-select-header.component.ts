@@ -27,7 +27,8 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
             useExisting: forwardRef(() => DropdownDualMultiSelectHeaderComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class DropdownDualMultiSelectHeaderComponent implements OnDestroy, AfterViewInit, ControlValueAccessor {
     @ViewChild('input') input?: ElementRef;

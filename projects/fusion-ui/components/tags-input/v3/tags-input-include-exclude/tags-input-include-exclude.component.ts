@@ -13,7 +13,6 @@ import {TagsInputComponent} from '../tags-input.component';
  */
 @Component({
     selector: 'fusion-tags-input-include-exclude',
-    standalone: true,
     imports: [CommonModule, ReactiveFormsModule, TagsInputComponent, DropdownDualMultiSelectModule],
     templateUrl: './tags-input-include-exclude.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

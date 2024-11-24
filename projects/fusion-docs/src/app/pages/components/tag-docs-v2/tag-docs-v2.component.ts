@@ -13,7 +13,8 @@ import {TagsInputClearSearchOn, TagsInputComponentConfigurations} from '@ironsou
 @Component({
     selector: 'fusion-tag-docs-v2',
     templateUrl: './tag-docs-v2.component.html',
-    styleUrls: ['./tag-docs-v2.component.scss']
+    styleUrls: ['./tag-docs-v2.component.scss'],
+    standalone: false
 })
 export class TagDocsV2Component implements OnInit, OnDestroy {
     private onDestroy$ = new Subject<void>();

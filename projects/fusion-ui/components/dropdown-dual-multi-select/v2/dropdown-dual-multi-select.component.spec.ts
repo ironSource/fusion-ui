@@ -17,7 +17,8 @@ import {Component} from '@angular/core';
 import {MOCK_DUAL_ITEMS} from './mock-entities';
 
 @Component({
-    template: ` <div class="outside"></div> `
+    template: ` <div class="outside"></div> `,
+    standalone: false
 })
 class TestComponent {
     clickOutside(): void {}

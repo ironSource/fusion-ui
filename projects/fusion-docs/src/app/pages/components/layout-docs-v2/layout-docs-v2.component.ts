@@ -16,7 +16,8 @@ import {LayoutComponentConfiguration} from '@ironsource/fusion-ui/components/lay
 @Component({
     selector: 'fusion-layout-docs-v2',
     templateUrl: './layout-docs-v2.component.html',
-    styleUrls: ['./layout-docs-v2.component.scss']
+    styleUrls: ['./layout-docs-v2.component.scss'],
+    standalone: false
 })
 export class LayoutDocsV2Component implements OnInit, OnDestroy {
     private onDestroy$ = new Subject<void>();

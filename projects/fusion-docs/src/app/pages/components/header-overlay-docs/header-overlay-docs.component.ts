@@ -10,7 +10,8 @@ import {HeaderOptions} from '@ironsource/fusion-ui/components/header-overlay/com
             <fusion-icon [name]="{iconName: 'apps', iconVersion: 'v1'}" *ngIf="isActive"></fusion-icon>
         </div>
     `,
-    styleUrls: ['./demo-filter.component.scss']
+    styleUrls: ['./demo-filter.component.scss'],
+    standalone: false
 })
 export class DemoFilterComponent {
     @Input() isActive: boolean;
@@ -20,7 +21,8 @@ export class DemoFilterComponent {
 @Component({
     selector: 'fusion-header-overlay-docs',
     templateUrl: './header-overlay-docs.component.html',
-    styleUrls: ['./header-overlay-docs.component.scss']
+    styleUrls: ['./header-overlay-docs.component.scss'],
+    standalone: false
 })
 export class HeaderOverlayDocsComponent implements OnInit {
     rightMenu: Array<any> = [

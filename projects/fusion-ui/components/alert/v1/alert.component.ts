@@ -5,6 +5,7 @@ import {AlertBaseComponent} from '@ironsource/fusion-ui/components/alert/common/
     selector: 'fusion-alert',
     templateUrl: './alert.component.html',
     styleUrls: ['./alert.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AlertComponent extends AlertBaseComponent {}

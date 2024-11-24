@@ -14,7 +14,8 @@ import {takeUntil} from 'rxjs/operators';
     selector: '[fusionTableBasic]',
     templateUrl: './table-basic.component.html',
     styleUrls: ['./table-basic.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TableBasicComponent implements OnInit, OnDestroy {
     @Input() rows: {[key: string]: any}[];

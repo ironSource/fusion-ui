@@ -4,6 +4,7 @@ import {StatusLabelBaseComponent} from '@ironsource/fusion-ui/components/status-
 @Component({
     selector: 'fusion-status-label',
     templateUrl: '../common/base/status-label.base.component.html',
-    styleUrls: ['../common/base/status-label.base.component.scss']
+    styleUrls: ['../common/base/status-label.base.component.scss'],
+    standalone: false
 })
 export class StatusLabelComponent extends StatusLabelBaseComponent {}

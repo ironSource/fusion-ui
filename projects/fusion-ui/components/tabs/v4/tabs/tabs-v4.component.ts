@@ -20,7 +20,6 @@ import {TabV4Component} from '../tab/tab-v4.component';
 
 @Component({
     selector: 'fusion-tabs',
-    standalone: true,
     imports: [CommonModule],
     host: {class: 'fusion-v4'},
     template: '<ng-content></ng-content>',

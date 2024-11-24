@@ -3,7 +3,8 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 @Component({
     selector: 'fusion-file-drag-and-drop',
     templateUrl: './file-drag-and-drop.component.html',
-    styleUrls: ['./file-drag-and-drop.component.scss']
+    styleUrls: ['./file-drag-and-drop.component.scss'],
+    standalone: false
 })
 export class FileDragAndDropComponent {
     /**

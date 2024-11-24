@@ -15,7 +15,8 @@ import {Subject} from 'rxjs';
             useExisting: forwardRef(() => DropdownDualMultiSelectHeaderComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class DropdownDualMultiSelectHeaderComponent implements OnDestroy, ControlValueAccessor {
     @Input() title: string;

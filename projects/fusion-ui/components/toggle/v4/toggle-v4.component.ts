@@ -15,7 +15,6 @@ import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 
 @Component({
     selector: 'fusion-toggle',
-    standalone: true,
     host: {class: 'fusion-v4'},
     imports: [CommonModule, FormsModule, ReactiveFormsModule, IconModule, TooltipDirective, InputHelperComponent, GenericPipe],
     templateUrl: './toggle-v4.component.html',

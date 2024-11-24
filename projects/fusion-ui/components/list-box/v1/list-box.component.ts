@@ -13,7 +13,8 @@ import {ListBoxBaseComponent} from '@ironsource/fusion-ui/components/list-box/co
             useExisting: forwardRef(() => ListBoxComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class ListBoxComponent extends ListBoxBaseComponent implements OnInit {
     ngOnInit() {

@@ -9,7 +9,8 @@ import {FormControl} from '@angular/forms';
     selector: 'fusion-icon-docs-v2',
     templateUrl: './icon-docs-v2.component.html',
     styleUrls: ['./icon-docs-v2.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class IconDocsV2Component implements OnInit {
     @ViewChild('iconsActionHeader', {static: true}) iconsActionHeader: TemplateRef<any>;

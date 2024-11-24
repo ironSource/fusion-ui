@@ -6,7 +6,8 @@ import {BehaviorSubject} from 'rxjs';
     selector: 'fusion-mobile-previewer',
     templateUrl: '../common/base/mobile-previewer.base.component.html',
     styleUrls: ['./mobile-previewer.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class MobilePreviewerComponent extends MobilePreviewerBaseComponent implements OnInit {
     iconPrefix$ = new BehaviorSubject<string>('');

@@ -13,7 +13,8 @@ import {CheckboxBaseComponent} from '@ironsource/fusion-ui/components/checkbox/c
             useExisting: forwardRef(() => CheckboxComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class CheckboxComponent extends CheckboxBaseComponent {
     /** @internal */

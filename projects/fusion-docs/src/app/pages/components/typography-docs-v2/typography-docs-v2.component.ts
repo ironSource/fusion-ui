@@ -5,7 +5,8 @@ import {DocsLayoutService} from '../../docs/docs-layout.service';
 @Component({
     selector: 'fusion-typography-doc-v2',
     templateUrl: './typography-docs-v2.component.html',
-    styleUrls: ['./typography-docs-v2.component.scss']
+    styleUrls: ['./typography-docs-v2.component.scss'],
+    standalone: false
 })
 export class TypographyDocsV2Component implements OnInit {
     typographyList = TYPOGRAPHY_LIST;

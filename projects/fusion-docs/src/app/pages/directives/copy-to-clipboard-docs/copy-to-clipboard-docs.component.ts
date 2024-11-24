@@ -3,7 +3,8 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'fusion-copy-to-clipboard-docs',
     templateUrl: './copy-to-clipboard-docs.component.html',
-    styleUrls: ['./copy-to-clipboard-docs.component.scss']
+    styleUrls: ['./copy-to-clipboard-docs.component.scss'],
+    standalone: false
 })
 export class CopyToClipboardDocsComponent {
     rightMenu = [

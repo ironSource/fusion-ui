@@ -13,6 +13,7 @@ import {ToggleBaseComponent} from '@ironsource/fusion-ui/components/toggle/commo
             useExisting: forwardRef(() => ToggleComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class ToggleComponent extends ToggleBaseComponent {}

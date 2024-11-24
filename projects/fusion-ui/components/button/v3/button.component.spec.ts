@@ -7,7 +7,8 @@ import {ButtonComponent} from './button.component';
 const innerText = 'Test Button';
 
 @Component({
-    template: ` <fusion-button [disabled]="isDisabled">${innerText}</fusion-button> `
+    template: ` <fusion-button [disabled]="isDisabled">${innerText}</fusion-button> `,
+    standalone: false
 })
 class TestButtonComponent {
     isDisabled = false;

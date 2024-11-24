@@ -11,7 +11,8 @@ import {TableEmptyComponent} from './table-empty.component';
         <table>
             <tr [fusionTableEmpty]="colsSpan" [header]="noDataMessage" [subHeader]="noDataSubMessage"></tr>
         </table>
-    `
+    `,
+    standalone: false
 })
 class TestTableRowEmptyComponent {
     public colsSpan = 1;

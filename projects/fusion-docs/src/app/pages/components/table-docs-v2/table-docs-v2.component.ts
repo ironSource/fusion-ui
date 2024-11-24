@@ -166,7 +166,8 @@ const MOCK_DATA = [
 @Component({
     selector: 'fusion-table-docs-v2',
     templateUrl: './table-docs-v2.component.html',
-    styleUrls: ['./table-docs-v2.component.scss']
+    styleUrls: ['./table-docs-v2.component.scss'],
+    standalone: false
 })
 export class TableDocsV2Component implements OnInit, OnDestroy {
     private onDestroy$ = new Subject<void>();

@@ -6,7 +6,6 @@ import {CalendarComponent} from '@ironsource/fusion-ui/components/calendar/v3';
 
 @Component({
     selector: 'fusion-calendar',
-    standalone: true,
     host: {class: 'fusion-v4'},
     imports: [CommonModule, IconModule],
     providers: [CalendarService],

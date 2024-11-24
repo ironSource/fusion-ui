@@ -10,7 +10,8 @@ import {TabConfiguration} from '@ironsource/fusion-ui/components/tabs/v2';
 @Component({
     selector: 'fusion-button-docs',
     templateUrl: './button-docs.component.html',
-    styleUrls: ['./button-docs.component.scss']
+    styleUrls: ['./button-docs.component.scss'],
+    standalone: false
 })
 export class ButtonDocsComponent implements OnInit {
     model: any;

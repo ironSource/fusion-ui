@@ -12,7 +12,8 @@ import {VersionService} from '../../../services/version/version.service';
 @Component({
     selector: 'fusion-popup-docs-v2',
     templateUrl: './popup-docs-v2.component.html',
-    styleUrls: ['./popup-docs-v2.component.scss']
+    styleUrls: ['./popup-docs-v2.component.scss'],
+    standalone: false
 })
 export class PopupDocsV2Component implements OnInit, OnDestroy {
     private onDestroy$ = new Subject<void>();

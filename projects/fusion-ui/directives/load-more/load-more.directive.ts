@@ -4,7 +4,8 @@ import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 
 @Directive({
-    selector: '[fusionLoadMore]'
+    selector: '[fusionLoadMore]',
+    standalone: false
 })
 export class LoadMoreDirective implements OnInit {
     @Input() fusionLoadMoreChunkSize = 10;

@@ -12,7 +12,6 @@ import {filter, takeUntil} from 'rxjs/operators';
 
 @Component({
     selector: 'fusion-layout',
-    standalone: true,
     imports: [CommonModule, LayoutHeaderComponent, NavigationMenuComponent],
     templateUrl: './layout.component.html',
     styleUrls: ['./layout.component.scss'],

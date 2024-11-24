@@ -3,7 +3,8 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 @Component({
     selector: 'fusion-modal-footer',
     templateUrl: './modal-footer.component.html',
-    styleUrls: ['./modal-footer.component.scss']
+    styleUrls: ['./modal-footer.component.scss'],
+    standalone: false
 })
 export class ModalFooterComponent {
     @Input() loading = false;

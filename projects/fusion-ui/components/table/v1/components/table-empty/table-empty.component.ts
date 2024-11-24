@@ -6,7 +6,8 @@ import {DynamicComponentConfiguration} from '@ironsource/fusion-ui/components/dy
     selector: '[fusionTableEmpty]',
     templateUrl: './table-empty.component.html',
     styleUrls: ['./table-empty.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TableEmptyComponent {
     @Input() fusionTableEmpty: number;

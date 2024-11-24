@@ -35,7 +35,8 @@ const rightMenuItems = [
 @Component({
     selector: 'fusion-daterange-docs',
     templateUrl: './daterange-docs.component.html',
-    styleUrls: ['./daterange-docs.component.scss']
+    styleUrls: ['./daterange-docs.component.scss'],
+    standalone: false
 })
 export class DaterangeDocsComponent implements OnInit, OnDestroy {
     date = new Date('2022-05-15 10:00:00');

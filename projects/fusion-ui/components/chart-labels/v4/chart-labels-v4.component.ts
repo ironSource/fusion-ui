@@ -12,7 +12,6 @@ import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
 
 @Component({
     selector: 'fusion-chart-labels',
-    standalone: true,
     imports: [CommonModule, IconModule, TooltipDirective, CheckboxComponent, ReactiveFormsModule],
     host: {class: 'fusion-v4'},
     templateUrl: './chart-labels-v4.component.html',

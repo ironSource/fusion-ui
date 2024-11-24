@@ -17,7 +17,8 @@ const DOWNLOAD_SDK_URL = `${environment.developersReference}/sdk-repository`;
 @Component({
     selector: 'fusion-layout-docs',
     templateUrl: './layout-docs.component.html',
-    styleUrls: ['./layout-docs.component.scss']
+    styleUrls: ['./layout-docs.component.scss'],
+    standalone: false
 })
 export class LayoutDocsComponent implements OnInit, OnDestroy {
     private onDestroy$ = new Subject<void>();

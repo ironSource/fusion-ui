@@ -11,7 +11,8 @@ import {SwitcherItem, SwitcherMode} from '@ironsource/fusion-ui/components/switc
 @Component({
     selector: 'fusion-switchers-docs',
     templateUrl: './switchers-docs.component.html',
-    styleUrls: ['./switchers-docs.component.scss']
+    styleUrls: ['./switchers-docs.component.scss'],
+    standalone: false
 })
 export class SwitchersDocsComponent implements OnInit, OnDestroy {
     private onDestroy$ = new Subject<void>();

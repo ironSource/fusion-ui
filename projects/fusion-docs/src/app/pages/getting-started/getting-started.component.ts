@@ -7,7 +7,8 @@ const ASSET_PATH = `${environment.assetsPath}/images`;
 @Component({
     selector: 'fusion-getting-started',
     templateUrl: './getting-started.component.html',
-    styleUrls: ['./getting-started.component.scss']
+    styleUrls: ['./getting-started.component.scss'],
+    standalone: false
 })
 export class GettingStartedComponent implements OnInit {
     text = GETTING_STARTED_PAGE_TEXTS;

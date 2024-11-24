@@ -16,7 +16,8 @@ import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option/e
 @Component({
     selector: 'fusion-dropdown-docs',
     templateUrl: './dropdown-docs.component.html',
-    styleUrls: ['./dropdown-docs.component.scss']
+    styleUrls: ['./dropdown-docs.component.scss'],
+    standalone: false
 })
 export class DropdownDocsComponent implements OnInit, OnDestroy {
     rightMenu: DocsMenuItem[] = [

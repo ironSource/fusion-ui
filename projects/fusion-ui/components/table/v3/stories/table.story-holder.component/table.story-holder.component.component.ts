@@ -35,7 +35,6 @@ import {CommonModule} from '@angular/common';
             }
         `
     ],
-    standalone: true,
     imports: [CommonModule, TableModule]
 })
 export class TableStoryHolderComponent implements OnInit, OnDestroy {

@@ -32,7 +32,8 @@ const popUpBasic: PopupEntity = {
 @Component({
     selector: 'fusion-mobile-previewer-docs-v2',
     templateUrl: './mobile-previewer-docs-v2.component.html',
-    styleUrls: ['./mobile-previewer-docs-v2.component.scss']
+    styleUrls: ['./mobile-previewer-docs-v2.component.scss'],
+    standalone: false
 })
 export class MobilePreviewerDocsV2Component implements OnInit, OnDestroy {
     onDestroy$ = new Subject<void>();

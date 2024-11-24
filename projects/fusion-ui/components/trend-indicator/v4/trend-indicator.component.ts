@@ -8,7 +8,6 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-trend-indicator',
-    standalone: true,
     imports: [CommonModule, IconModule, GenericPipe],
     host: {class: 'fusion-v4'},
     templateUrl: './trend-indicator.component.html',

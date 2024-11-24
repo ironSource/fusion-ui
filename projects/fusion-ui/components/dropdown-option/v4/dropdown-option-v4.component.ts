@@ -10,7 +10,6 @@ import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
 
 @Component({
     selector: 'fusion-dropdown-option',
-    standalone: true,
     imports: [CommonModule, DynamicComponentsModule, FlagComponent, GenericPipe, IconModule, TooltipDirective],
     providers: [DropdownService],
     templateUrl: './dropdown-option-v4.component.html',

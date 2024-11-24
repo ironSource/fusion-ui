@@ -15,7 +15,6 @@ import {RowExpandInnerComponent} from '../row-expand-inner/row-expand-inner.comp
 
 @Component({
     selector: 'fusion-table-story-holder',
-    standalone: true,
     imports: [CommonModule, ReactiveFormsModule, TableV4Component, ButtonComponent, GenericPipe, SearchV4Component],
     template: ` <fusion-table
         [columns]="columns"

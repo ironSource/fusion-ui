@@ -5,6 +5,7 @@ import {SidebarBaseComponent} from '@ironsource/fusion-ui/components/sidebar/com
     selector: 'fusion-sidebar',
     templateUrl: '../common/base/sidebar.base.component.html',
     styleUrls: ['./sidebar.component.scss', './sidebar-mobile.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SidebarComponent extends SidebarBaseComponent {}

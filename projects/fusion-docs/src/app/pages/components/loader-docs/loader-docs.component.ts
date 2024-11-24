@@ -9,7 +9,8 @@ import {delay, tap} from 'rxjs/operators';
 @Component({
     selector: 'fusion-loader-docs',
     templateUrl: './loader-docs.component.html',
-    styleUrls: ['./loader-docs.component.scss']
+    styleUrls: ['./loader-docs.component.scss'],
+    standalone: false
 })
 export class LoaderDocsComponent implements OnInit {
     rightMenu: DocsMenuItem[] = [

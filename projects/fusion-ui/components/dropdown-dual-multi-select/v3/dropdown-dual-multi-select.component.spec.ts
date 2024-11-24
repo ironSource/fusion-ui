@@ -19,7 +19,8 @@ import {GenericPipe} from "@ironsource/fusion-ui/pipes/generic";
 const itemNames = {singular: 'Actor', plural: 'Actors'};
 
 @Component({
-    template: ` <div class="outside"></div> `
+    template: ` <div class="outside"></div> `,
+    standalone: false
 })
 class TestComponent {
     clickOutside(): void {}

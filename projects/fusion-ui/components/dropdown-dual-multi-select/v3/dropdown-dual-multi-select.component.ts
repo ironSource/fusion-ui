@@ -15,6 +15,7 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
             useExisting: forwardRef(() => DropdownDualMultiSelectComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class DropdownDualMultiSelectComponent extends DropdownDualMultiSelectBaseComponent {}

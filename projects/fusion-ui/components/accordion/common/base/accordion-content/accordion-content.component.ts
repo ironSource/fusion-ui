@@ -4,7 +4,8 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
     selector: 'fusion-accordion-content',
     templateUrl: './accordion-content.component.html',
     styleUrls: ['./accordion-content.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AccordionContentComponent {
     @Input() text: string;

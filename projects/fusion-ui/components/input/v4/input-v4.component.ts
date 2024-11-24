@@ -29,7 +29,6 @@ import {InputLabelComponent} from '@ironsource/fusion-ui/components/input-label/
 
 @Component({
     selector: 'fusion-input',
-    standalone: true,
     imports: [CommonModule, ReactiveFormsModule, IconModule, TooltipDirective, GenericPipe, InputHelperComponent, InputLabelComponent],
     host: {class: 'fusion-v4'},
     templateUrl: './input-v4.component.html',

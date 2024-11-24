@@ -5,7 +5,8 @@ import {takeUntil} from 'rxjs/operators';
 @Component({
     selector: 'fusion-intersection-docs',
     templateUrl: './intersection-docs.component.html',
-    styleUrls: ['./intersection-docs.component.scss']
+    styleUrls: ['./intersection-docs.component.scss'],
+    standalone: false
 })
 export class IntersectionDocsComponent implements OnInit, OnDestroy {
     rightMenu = [

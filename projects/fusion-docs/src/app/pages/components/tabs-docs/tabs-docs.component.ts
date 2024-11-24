@@ -9,7 +9,8 @@ import {TabConfiguration} from '@ironsource/fusion-ui/components/tabs/v2';
     selector: 'fusion-tabs-docs',
     templateUrl: './tabs-docs.component.html',
     styleUrls: ['./tabs-docs.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TabsDocsComponent implements OnInit {
     rightMenu: DocsMenuItem[] = [

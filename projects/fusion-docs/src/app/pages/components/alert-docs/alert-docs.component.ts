@@ -9,7 +9,8 @@ import {VersionService} from '../../../services/version/version.service';
 @Component({
     selector: 'fusion-alert-docs',
     templateUrl: './alert-docs.component.html',
-    styleUrls: ['./alert-docs.component.scss']
+    styleUrls: ['./alert-docs.component.scss'],
+    standalone: false
 })
 export class AlertDocsComponent implements OnInit, OnDestroy {
     private onDestroy$ = new Subject<void>();

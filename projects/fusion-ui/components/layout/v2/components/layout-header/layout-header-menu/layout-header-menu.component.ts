@@ -7,7 +7,8 @@ import {LayoutUser} from '@ironsource/fusion-ui/entities';
     selector: 'fusion-layout-header-menu',
     templateUrl: './layout-header-menu.component.html',
     styleUrls: ['./layout-header-menu.component.scss', './layout-header-menu-mobile.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class LayoutHeaderMenuComponent {
     @Input() set configuration(value: LayoutHeaderMenuConfiguration) {

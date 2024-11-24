@@ -5,6 +5,7 @@ import {AccordionBaseComponent} from '@ironsource/fusion-ui/components/accordion
     selector: 'fusion-accordion',
     templateUrl: '../common/base/accordion.base.component.html',
     styleUrls: ['./accordion.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AccordionComponent extends AccordionBaseComponent {}

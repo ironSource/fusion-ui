@@ -5,6 +5,7 @@ import {MenuBaseComponent} from '@ironsource/fusion-ui/components/menu/common/ba
     selector: 'fusion-menu',
     templateUrl: '../common/base/menu.base.component.html',
     styleUrls: ['./menu.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class MenuComponent extends MenuBaseComponent {}

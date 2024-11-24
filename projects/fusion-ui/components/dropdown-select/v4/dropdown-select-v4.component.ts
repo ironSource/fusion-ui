@@ -10,7 +10,6 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-dropdown-select',
-    standalone: true,
     imports: [CommonModule, TooltipModule, IconModule, FlagComponent, GenericPipe],
     host: {class: 'fusion-v4'},
     templateUrl: './dropdown-select-v4.component.html',

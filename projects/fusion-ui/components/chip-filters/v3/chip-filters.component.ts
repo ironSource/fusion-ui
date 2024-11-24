@@ -5,6 +5,7 @@ import {ChipFiltersBaseComponent} from '@ironsource/fusion-ui/components/chip-fi
     selector: 'fusion-chip-filters',
     templateUrl: '../common/base/chip-filters.base.component.html',
     styleUrls: ['./chip-filters.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ChipFiltersComponent extends ChipFiltersBaseComponent {}

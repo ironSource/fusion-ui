@@ -4,7 +4,8 @@ import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 @Component({
     selector: 'fusion-notification-service-doc',
     templateUrl: './notification-service-doc.component.html',
-    styleUrls: ['./notification-service-doc.component.scss']
+    styleUrls: ['./notification-service-doc.component.scss'],
+    standalone: false
 })
 export class NotificationServiceDocComponent {
     rightMenu: DocsMenuItem[] = [

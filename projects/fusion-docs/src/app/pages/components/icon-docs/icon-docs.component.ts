@@ -5,7 +5,8 @@ import {DocsMenuItem} from '../../../components/docs-menu/docs-menu';
 @Component({
     selector: 'fusion-icon-docs',
     templateUrl: './icon-docs.component.html',
-    styleUrls: ['./icon-docs.component.scss']
+    styleUrls: ['./icon-docs.component.scss'],
+    standalone: false
 })
 export class IconDocsComponent implements OnInit {
     commonState: any;

@@ -5,6 +5,7 @@ import {TooltipBaseComponent} from '@ironsource/fusion-ui/components/tooltip/com
     selector: 'fusion-tooltip',
     templateUrl: './tooltip.component.html',
     styleUrls: ['./tooltip.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TooltipComponent extends TooltipBaseComponent {}

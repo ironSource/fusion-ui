@@ -18,6 +18,7 @@ import {TagsInputBaseComponent} from '@ironsource/fusion-ui/components/tags-inpu
             useExisting: forwardRef(() => TagsInputComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class TagsInputComponent extends TagsInputBaseComponent {}

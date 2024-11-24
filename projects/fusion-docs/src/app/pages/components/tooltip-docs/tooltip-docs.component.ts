@@ -11,7 +11,8 @@ import {ExmlForTooltipComponent} from '../../../components/exml-for-tooltip/exml
 @Component({
     selector: 'fusion-tooltip-docs',
     templateUrl: './tooltip-docs.component.html',
-    styleUrls: ['./tooltip-docs.component.scss']
+    styleUrls: ['./tooltip-docs.component.scss'],
+    standalone: false
 })
 export class TooltipDocsComponent implements OnInit {
     public tooltipPosition = TooltipPosition;

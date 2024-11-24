@@ -5,7 +5,8 @@ import {LoaderBaseComponent} from '@ironsource/fusion-ui/components/loader/commo
     selector: 'fusion-loader',
     templateUrl: '../common/base/loader.base.component.html',
     styleUrls: ['./loader.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class LoaderComponent extends LoaderBaseComponent implements OnInit {
     ngOnInit() {

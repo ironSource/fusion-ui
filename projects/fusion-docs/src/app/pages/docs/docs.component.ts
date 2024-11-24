@@ -22,7 +22,8 @@ import {MOK_APPLICATIONS_ONE_LINE_OPTIONS} from '@ironsource/fusion-ui/component
 @Component({
     selector: 'fusion-docs',
     templateUrl: './docs.component.html',
-    styleUrls: ['./docs.component.scss']
+    styleUrls: ['./docs.component.scss'],
+    standalone: false
 })
 export class DocsComponent implements OnInit, OnDestroy {
     useNewLayout = false; // switch to new layout

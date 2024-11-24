@@ -9,7 +9,6 @@ import {BehaviorSubject} from 'rxjs';
     templateUrl: './toggle.component.html',
     styleUrls: ['./toggle.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
     imports: [CommonModule, FormsModule, ReactiveFormsModule],
     providers: [
         {

@@ -23,7 +23,8 @@ const LEAVE_MENU_TIME_INTERVAL = 2000;
     selector: 'fusion-menu-list',
     templateUrl: './menu-list.component.html',
     styleUrls: ['./menu-list.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class MenuListComponent implements OnDestroy, OnInit {
     @Input() menuItems: MenuItem[];

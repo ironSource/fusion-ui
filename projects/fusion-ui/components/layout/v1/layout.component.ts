@@ -9,7 +9,8 @@ import {StorageService, StorageType} from '@ironsource/fusion-ui/services/stogar
     selector: 'fusion-layout',
     templateUrl: './layout.component.html',
     styleUrls: ['./layout.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class LayoutComponent implements OnDestroy {
     @Input() loading: boolean;

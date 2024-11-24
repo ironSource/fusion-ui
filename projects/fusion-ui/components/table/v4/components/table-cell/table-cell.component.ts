@@ -55,7 +55,6 @@ type CellDataType = Type<Component> | FormControl | string | boolean | undefined
 @Component({
     // eslint-disable-next-line
     selector: '[fusionTableCell]',
-    standalone: true,
     imports: [
         CommonModule,
         ReactiveFormsModule,

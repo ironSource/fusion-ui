@@ -13,6 +13,7 @@ import {RadioBaseComponent} from '@ironsource/fusion-ui/components/radio/common/
             useExisting: forwardRef(() => RadioComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class RadioComponent extends RadioBaseComponent {}

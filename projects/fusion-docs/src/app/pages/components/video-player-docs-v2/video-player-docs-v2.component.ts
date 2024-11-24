@@ -10,7 +10,8 @@ import {StyleVersion} from '@ironsource/fusion-ui/components/fusion-base';
 @Component({
     selector: 'fusion-video-player-docs-v2',
     templateUrl: './video-player-docs-v2.component.html',
-    styleUrls: ['./video-player-docs-v2.component.scss']
+    styleUrls: ['./video-player-docs-v2.component.scss'],
+    standalone: false
 })
 export class VideoPlayerDocsV2Component implements OnInit, OnDestroy {
     onDestroy$ = new Subject<void>();

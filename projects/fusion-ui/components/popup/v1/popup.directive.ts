@@ -3,7 +3,8 @@ import {PopupEntity, PopupLocation} from '@ironsource/fusion-ui/components/popup
 import {PopupService} from '@ironsource/fusion-ui/components/popup/common/services';
 
 @Directive({
-    selector: '[fusionPopup]'
+    selector: '[fusionPopup]',
+    standalone: false
 })
 export class PopupDirective {
     @Input() fusionPopup: PopupEntity;

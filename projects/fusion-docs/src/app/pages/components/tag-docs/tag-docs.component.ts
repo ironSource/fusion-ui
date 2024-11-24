@@ -12,7 +12,8 @@ import {HttpClient} from '@angular/common/http';
 @Component({
     selector: 'fusion-tag-docs',
     templateUrl: './tag-docs.component.html',
-    styleUrls: ['./tag-docs.component.scss']
+    styleUrls: ['./tag-docs.component.scss'],
+    standalone: false
 })
 export class TagDocsComponent implements OnInit, OnDestroy {
     appTags = ['Social Gambling', 'Gambling', 'Dating', 'Game Mobile App Install', 'Inappropriate content'];

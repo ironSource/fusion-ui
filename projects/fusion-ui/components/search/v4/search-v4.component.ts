@@ -9,7 +9,6 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-search',
-    standalone: true,
     imports: [CommonModule, ReactiveFormsModule, InputComponent, GenericPipe],
     host: {class: 'fusion-v4'},
     templateUrl: './search-v4.component.html',

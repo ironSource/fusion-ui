@@ -14,6 +14,7 @@ import {RadioGroupBaseComponent} from '@ironsource/fusion-ui/components/radio-gr
             useExisting: forwardRef(() => RadioGroupComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class RadioGroupComponent extends RadioGroupBaseComponent {}

@@ -11,7 +11,6 @@ import {TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/b
 
 @Component({
     selector: 'fusion-navigation-secondary-menu',
-    standalone: true,
     imports: [CommonModule, IconModule, TooltipDirective, SvgModule, IconButtonComponent],
     templateUrl: './navigation-secondary-menu.component.html',
     styleUrls: ['./navigation-secondary-menu.component.scss'],

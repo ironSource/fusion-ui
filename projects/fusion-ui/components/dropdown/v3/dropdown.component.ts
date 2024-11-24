@@ -24,7 +24,8 @@ const ARROW_ICON = {
             useExisting: forwardRef(() => DropdownComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class DropdownComponent extends DropdownBaseComponent {
     /** @ignore */

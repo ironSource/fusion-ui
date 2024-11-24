@@ -6,7 +6,8 @@ import {NotificationBaseComponent} from '@ironsource/fusion-ui/components/notifi
     selector: 'fusion-notification',
     templateUrl: '../common/base/notification.base.component.html',
     styleUrls: ['./notification.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class NotificationComponent extends NotificationBaseComponent implements OnInit {
     ngOnInit() {

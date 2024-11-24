@@ -21,7 +21,8 @@ import {BackendPagination} from '@ironsource/fusion-ui/components/dropdown';
 @Component({
     selector: 'fusion-dropdown-dual-multi-select-docs',
     templateUrl: './dropdown-dual-multi-select-docs.component.html',
-    styleUrls: ['./dropdown-dual-multi-select-docs.component.scss']
+    styleUrls: ['./dropdown-dual-multi-select-docs.component.scss'],
+    standalone: false
 })
 export class DropdownDualMultiSelectDocsComponent implements OnInit, OnDestroy {
     private onDestroy$ = new Subject<void>();

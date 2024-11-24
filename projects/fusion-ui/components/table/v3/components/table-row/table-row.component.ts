@@ -25,7 +25,8 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
     selector: '[fusionTableRow]',
     templateUrl: './table-row.component.html',
     styleUrls: ['./table-row.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TableRowComponent implements OnInit, OnChanges {
     @Input() rowIndex: string | number;

@@ -17,7 +17,8 @@ import {map, takeUntil, tap} from 'rxjs/operators';
             useExisting: forwardRef(() => CampaignPromotionsFilterSectionComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class CampaignPromotionsFilterSectionComponent implements ControlValueAccessor, OnInit, OnDestroy {
     form: FormGroup;

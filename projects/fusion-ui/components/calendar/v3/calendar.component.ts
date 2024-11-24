@@ -9,7 +9,8 @@ import {CalendarService} from '@ironsource/fusion-ui/components/calendar/common/
     selector: 'fusion-calendar',
     templateUrl: '../common/base/calendar.base.component.html',
     styleUrls: ['./calendar.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CalendarComponent extends CalendarBaseComponent implements OnDestroy, OnInit {
     private onDestroy$ = new Subject<void>();

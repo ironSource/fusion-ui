@@ -13,6 +13,7 @@ import {SwitcherBaseComponent} from '@ironsource/fusion-ui/components/switcher/c
             useExisting: forwardRef(() => SwitcherComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class SwitcherComponent extends SwitcherBaseComponent {}

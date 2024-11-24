@@ -7,7 +7,6 @@ import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 
 @Component({
     selector: 'fusion-navigation-pop-menu',
-    standalone: true,
     imports: [CommonModule, IconModule, TooltipModule],
     templateUrl: './navigation-pop-menu.component.html',
     styleUrls: ['./navigation-pop-menu.component.scss'],

@@ -31,7 +31,8 @@ import {LOADER_COMPONENT_TYPE_TOKEN} from '@ironsource/fusion-ui/components/load
                 }
             }
         `
-    ]
+    ],
+    standalone: false
 })
 export class CustomLoaderComponent {}
 
@@ -44,6 +45,7 @@ export class CustomLoaderComponent {}
             provide: LOADER_COMPONENT_TYPE_TOKEN,
             useValue: CustomLoaderComponent
         }
-    ]
+    ],
+    standalone: false
 })
 export class CustomLoaderHostComponent {}

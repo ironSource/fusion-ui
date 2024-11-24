@@ -70,7 +70,8 @@ const tblColumns: Array<TableColumn> = [
     selector: 'fusion-table-docs',
     templateUrl: './table-docs.component.html',
     styleUrls: ['./table-docs.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TableDocsComponent implements OnInit, OnDestroy {
     rightMenu: DocsMenuItem[] = [

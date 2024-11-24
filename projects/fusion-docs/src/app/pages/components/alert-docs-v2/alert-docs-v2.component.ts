@@ -20,7 +20,8 @@ import {DropdownOption} from '@ironsource/fusion-ui/components/dropdown-option';
     selector: 'fusion-alert-docs-v2',
     templateUrl: './alert-docs-v2.component.html',
     styleUrls: ['./alert-docs-v2.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AlertDocsV2Component implements OnInit, OnDestroy {
     private onDestroy$ = new Subject<void>();

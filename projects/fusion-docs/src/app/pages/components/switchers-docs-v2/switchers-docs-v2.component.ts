@@ -12,7 +12,8 @@ import {VersionService} from '../../../services/version/version.service';
 @Component({
     selector: 'fusion-switchers-docs-v2',
     templateUrl: './switchers-docs-v2.component.html',
-    styleUrls: ['./switchers-docs-v2.component.scss']
+    styleUrls: ['./switchers-docs-v2.component.scss'],
+    standalone: false
 })
 export class SwitchersDocsV2Component implements OnInit, OnDestroy {
     private onDestroy$ = new Subject<void>();

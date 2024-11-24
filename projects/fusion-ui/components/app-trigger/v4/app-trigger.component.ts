@@ -9,7 +9,6 @@ import {CopyToClipboardModule} from '@ironsource/fusion-ui/directives/copy-to-cl
 
 @Component({
     selector: 'fusion-app-trigger',
-    standalone: true,
     host: {class: 'fusion-v4'},
     imports: [IconModule, TooltipDirective, CopyToClipboardModule, TooltipComponent],
     providers: [SnackbarService],

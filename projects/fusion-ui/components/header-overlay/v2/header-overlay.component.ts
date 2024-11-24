@@ -13,6 +13,7 @@ import {HeaderOverlayBaseComponent} from '@ironsource/fusion-ui/components/heade
             useExisting: forwardRef(() => HeaderOverlayComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class HeaderOverlayComponent extends HeaderOverlayBaseComponent {}

@@ -13,6 +13,7 @@ import {NG_VALUE_ACCESSOR} from '@angular/forms';
             useExisting: forwardRef(() => DropdownSearchComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class DropdownSearchComponent extends DropdownSearchBaseComponent {}

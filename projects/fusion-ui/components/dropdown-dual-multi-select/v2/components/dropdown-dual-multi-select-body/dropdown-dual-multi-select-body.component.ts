@@ -28,7 +28,8 @@ const PAGINATION_CHUNK = 20;
             useExisting: forwardRef(() => DropdownDualMultiSelectBodyComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class DropdownDualMultiSelectBodyComponent implements OnInit, OnDestroy, ControlValueAccessor {
     @ViewChild('wrapperLeft', {read: ElementRef, static: true})

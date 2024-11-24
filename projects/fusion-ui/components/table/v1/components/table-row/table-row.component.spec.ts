@@ -27,7 +27,8 @@ import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
                 }"
             ></tr>
         </table>
-    `
+    `,
+    standalone: false
 })
 class TestTableRowComponent {
     public rowIndex = 1;

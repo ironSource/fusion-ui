@@ -9,7 +9,8 @@ import {FusionBase} from '@ironsource/fusion-ui/components/fusion-base';
     templateUrl: './docs-menu.component.html',
     styleUrls: ['./docs-menu.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DocsMenuComponent extends FusionBase implements OnInit {
     @Input() set menuData(value: DocsMenuItem[]) {

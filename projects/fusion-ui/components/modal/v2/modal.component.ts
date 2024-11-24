@@ -13,6 +13,7 @@ import {ModalBaseComponent} from '@ironsource/fusion-ui/components/modal/common/
             useExisting: forwardRef(() => ModalComponent),
             multi: true
         }
-    ]
+    ],
+    standalone: false
 })
 export class ModalComponent extends ModalBaseComponent {}

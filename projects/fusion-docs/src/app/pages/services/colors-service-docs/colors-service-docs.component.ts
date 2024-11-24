@@ -7,7 +7,8 @@ import {VersionService} from '../../../services/version/version.service';
 @Component({
     selector: 'fusion-colors-service-docs',
     templateUrl: './colors-service-docs.component.html',
-    styleUrls: ['./colors-service-docs.component.scss']
+    styleUrls: ['./colors-service-docs.component.scss'],
+    standalone: false
 })
 export class ColorsServiceDocsComponent implements OnInit {
     rightMenu: DocsMenuItem[] = [

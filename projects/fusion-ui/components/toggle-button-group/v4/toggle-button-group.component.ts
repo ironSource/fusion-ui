@@ -9,7 +9,6 @@ import {TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/b
 
 @Component({
     selector: 'fusion-toggle-button-group',
-    standalone: true,
     imports: [CommonModule, IconModule, TooltipDirective],
     host: {class: 'fusion-v4'},
     templateUrl: './toggle-button-group.component.html',

@@ -4,7 +4,6 @@ import {TableLoadingComponent} from './table-loading.component';
 
 // do dummy component - holder
 @Component({
-    standalone: true,
     imports: [TableLoadingComponent],
     template: `
         <table>

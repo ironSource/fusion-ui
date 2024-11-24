@@ -7,7 +7,6 @@ import {SnackbarService} from '../snackbar.service';
 
 @Component({
     selector: 'fusion-snackbar-story-wrapper',
-    standalone: true,
     imports: [CommonModule, TeleportingModule, ButtonComponent, SnackbarComponent],
     providers: [SnackbarService],
     templateUrl: './snackbar-story-wrapper.component.html',

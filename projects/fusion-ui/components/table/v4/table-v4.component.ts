@@ -44,7 +44,6 @@ import {SearchComponent} from '@ironsource/fusion-ui/components/search/v4';
 
 @Component({
     selector: 'fusion-table',
-    standalone: true,
     host: {class: 'fusion-v4'},
     imports: [
         CommonModule,
