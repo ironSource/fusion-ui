@@ -1,4 +1,4 @@
-import {StoryFn, Meta} from '@storybook/angular';
+import {StoryObj, Meta} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -14,6 +14,15 @@ import {CheckboxModule} from './checkbox.module';
 const checkboxLabel = 'Hello world';
 const formControlChecked = new FormControl(true);
 const formControlUnchecked = new FormControl(false);
+
+const commonTemplate = `<fusion-checkbox [label]="label"
+ [icon]="icon"
+ [flag]="flag"
+ [isDisabled]="isDisabled"
+ [isIndeterminate]="isIndeterminate"
+ [backgroundColor]="backgroundColor"
+ [formControl]="formControl"
+></fusion-checkbox>`;
 
 export default {
     title: 'V3/Components/Inputs/Checkbox',
@@ -92,76 +101,72 @@ If you have multiple options appearing in a list, you can preserve space by usin
     }
 } as Meta<CheckboxComponent>;
 
-const CheckboxTemplate: StoryFn<CheckboxComponent> = (args: CheckboxComponent) => ({
-    props: {...args},
-    template: `<fusion-checkbox [label]="label"
- [icon]="icon"
- [flag]="flag"
- [isDisabled]="isDisabled"
- [isIndeterminate]="isIndeterminate"
- [backgroundColor]="backgroundColor"
- [formControl]="formControl"
-></fusion-checkbox>`
-});
+type Story = StoryObj<CheckboxComponent>;
 
-export const Default = {
-    render: CheckboxTemplate,
+export const Default: Story = {};
 
-    args: {
-        formControl: formControlUnchecked
-    }
-};
-
-export const Checked = {
-    render: CheckboxTemplate,
-
-    args: {
-        formControl: formControlChecked
-    }
+export const Checked: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            formControl: formControlChecked
+        },
+        template: commonTemplate
+    })
 };
 
 export const Indeterminate = {
-    render: CheckboxTemplate,
-
-    args: {
-        isIndeterminate: true,
-        formControl: formControlUnchecked
-    }
+    render: args => ({
+        props: {
+            ...args,
+            isIndeterminate: true,
+            formControl: formControlUnchecked
+        },
+        template: commonTemplate
+    })
 };
 
 export const Disabled = {
-    render: CheckboxTemplate,
-
-    args: {
-        isDisabled: true,
-        isIndeterminate: true,
-        formControl: formControlUnchecked
-    }
+    render: args => ({
+        props: {
+            ...args,
+            isDisabled: true,
+            isIndeterminate: true,
+            formControl: formControlUnchecked
+        },
+        template: commonTemplate
+    })
 };
 
 export const WithIcon = {
-    render: CheckboxTemplate,
-
-    args: {
-        icon: 'frame',
-        formControl: formControlUnchecked
-    }
+    render: args => ({
+        props: {
+            ...args,
+            icon: 'frame',
+            formControl: formControlUnchecked
+        },
+        template: commonTemplate
+    })
 };
 
 export const WithFlag = {
-    render: CheckboxTemplate,
-
-    args: {
-        flag: 'us',
-        formControl: formControlUnchecked
-    }
+    render: args => ({
+        props: {
+            ...args,
+            flag: 'us',
+            formControl: formControlUnchecked
+        },
+        template: commonTemplate
+    })
 };
 
 export const CustomColor = {
-    render: CheckboxTemplate,
-
-    args: {
-        backgroundColor: '#459FCA',
-        formControl: formControlChecked
-    }
+    render: args => ({
+        props: {
+            ...args,
+            backgroundColor: '#459FCA',
+            formControl: formControlChecked
+        },
+        template: commonTemplate
+    })
 };

@@ -1,16 +1,17 @@
+import remarkGfm from 'remark-gfm';
+
 /** @type { import('@storybook/angular').StorybookConfig } */
 const config = {
-    stories: ['../projects/fusion-ui/components/Introduction.mdx', '../projects/fusion-ui/**/*.mdx', '../projects/fusion-ui/**/*.stories.ts'],
+    stories: ['../projects/fusion-ui/storybook-foundations/**/*.mdx', /*'../projects/fusion-ui/!**!/!*.mdx',*/ '../projects/fusion-ui/**/*.stories.ts'],
     staticDirs: ['../public'],
     addons: [
         '@storybook/addon-links',
         '@storybook/addon-essentials',
         '@storybook/addon-interactions',
-        '@ironsource/storybook-addon-stackblitz',
-        '@storybook/addon-mdx-gfm'
     ],
     framework: {
-        name: '@storybook/angular'
+        name: '@storybook/angular',
+        options: {}
     },
     docs: {
         /*autodocs: true // auto generate mdx dox story*/

@@ -3,7 +3,7 @@
     "version": "9.0.0-test.3",
     "peerDependencies": {
         "chart.js": "4.4.2",
-        "@floating-ui/dom": "^1.0.9",
+        "@floating-ui/dom": "^1.6.12",
         "tslib": "^2.3.1",
         "zone.js": "~0.15.0"
     }
