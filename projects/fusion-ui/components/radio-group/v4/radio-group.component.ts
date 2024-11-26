@@ -6,6 +6,7 @@ import {RadioComponent} from '@ironsource/fusion-ui/components/radio/v4';
 
 @Component({
     selector: 'fusion-radio-group',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     imports: [CommonModule, RadioComponent],
     templateUrl: './radio-group.component.html',
     styleUrls: ['./radio-group.component.scss'],
