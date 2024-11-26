@@ -9,6 +9,7 @@ import {DroppedListComponent, DroppedListOption} from '@ironsource/fusion-ui/com
 
 @Component({
     selector: 'fusion-text-with-dropped-list',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     host: {
         class: 'fusion-v4',
         '[class.fu-disabled]': 'disabled',
