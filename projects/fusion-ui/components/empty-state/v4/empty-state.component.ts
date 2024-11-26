@@ -5,6 +5,7 @@ import {EmptyStateType} from './empty-state.entities';
 
 @Component({
     selector: 'fusion-empty-state',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     host: {class: 'fusion-v4'},
     imports: [SvgModule, IconModule],
     templateUrl: './empty-state.component.html',
