@@ -3,6 +3,7 @@ import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 
 @Component({
     selector: 'fusion-chip',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     host: {class: 'fusion-v4'},
     imports: [IconModule],
     templateUrl: './chip.component.html',

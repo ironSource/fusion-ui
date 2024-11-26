@@ -25,7 +25,7 @@ export default {
         }
     },
     args: {
-        label: 'Label' as unknown as InputSignal<string>
+        label: 'Label'
     },
     argTypes: {
         label: {control: {type: 'text'}},
@@ -57,7 +57,6 @@ export const Size: Story = {
         `
     })
 };
-
 export const Themes: Story = {
     render: args => ({
         props: args,
@@ -102,14 +101,14 @@ export const Style: Story = {
 
 export const WithRemoveAction: Story = {};
 WithRemoveAction.args = {
-    label: 'Clickable removable chip' as unknown as InputSignal<string>,
-    shape: 'round' as unknown as InputSignal<'square' | 'round'>,
-    removable: true as unknown as InputSignal<boolean>
+    label: 'Clickable removable chip',
+    shape: 'round',
+    removable: true
 };
 
 export const WithIcon: Story = {};
 WithIcon.args = {
-    label: 'With icon' as unknown as InputSignal<string>,
-    shape: 'round' as unknown as InputSignal<'square' | 'round'>,
-    iconName: 'ph/placeholder' as unknown as InputSignal<IconData>
+    label: 'With icon',
+    shape: 'round',
+    iconName: 'ph/placeholder'
 };
