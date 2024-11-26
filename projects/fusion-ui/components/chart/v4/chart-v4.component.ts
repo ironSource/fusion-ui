@@ -36,6 +36,7 @@ Chart.register(
 
 @Component({
     selector: 'fusion-chart',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     imports: [CommonModule, ShortNumberScaleSuffixPipe],
     providers: [DatePipe, CurrencyPipe, DecimalPipe, PercentPipe, ChartDataService, ShortNumberScaleSuffixPipe],
     host: {class: 'fusion-v4'},
