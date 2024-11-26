@@ -21,6 +21,7 @@ import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 
 @Component({
     selector: 'fusion-daterange',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     host: {class: 'fusion-v4'},
     imports: [
         CommonModule,
