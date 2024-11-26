@@ -8,6 +8,7 @@ import {ChipFilterButtonSize, ChipFilterButtonWeight} from './chip-filter-button
 
 @Component({
     selector: 'fusion-chip-filter-button',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     imports: [CommonModule, GenericPipe, IconModule, TooltipDirective],
     host: {class: 'fusion-v4'},
     templateUrl: '../chip-filter.component.html',
