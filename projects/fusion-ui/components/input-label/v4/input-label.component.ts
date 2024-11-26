@@ -8,6 +8,8 @@ import {tooltipConfiguration, TooltipDirective} from '@ironsource/fusion-ui/comp
 
 @Component({
     selector: 'fusion-input-label',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
+    host: {class: 'fusion-v4'},
     imports: [CommonModule, GenericPipe, IconModule, TooltipDirective],
     templateUrl: './input-label.component.html',
     styleUrl: './input-label.component.scss',
