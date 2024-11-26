@@ -16,6 +16,7 @@ const DEFAULT_OPTIONS = {
 
 @Component({
     selector: 'fusion-datepicker',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     host: {class: 'fusion-v4'},
     imports: [CommonModule, ReactiveFormsModule, DaterangeComponent],
     template: `<fusion-daterange
