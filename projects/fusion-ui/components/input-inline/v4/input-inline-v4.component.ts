@@ -17,6 +17,7 @@ import {SkeletonComponent} from '@ironsource/fusion-ui/components/skeleton';
 
 @Component({
     selector: 'fusion-input-inline',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     host: {class: 'fusion-v4'},
     imports: [
         CommonModule,
