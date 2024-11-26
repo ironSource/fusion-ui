@@ -4,6 +4,7 @@ import {SkeletonShapeType} from './skeleton.component.entities';
 
 @Component({
     selector: 'fusion-skeleton',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     host: {class: 'fusion-v4'},
     imports: [CommonModule],
     template: `<div [ngClass]="class"></div>`,
