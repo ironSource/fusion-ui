@@ -6,6 +6,7 @@ import {NG_VALUE_ACCESSOR} from '@angular/forms';
 
 @Component({
     selector: 'fusion-checkbox',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     imports: [CommonModule, TooltipModule],
     templateUrl: './checkbox.component.html',
     styleUrls: ['./checkbox.component.scss'],
