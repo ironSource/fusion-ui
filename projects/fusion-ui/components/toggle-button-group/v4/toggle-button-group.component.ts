@@ -9,6 +9,7 @@ import {TooltipPosition} from '@ironsource/fusion-ui/components/tooltip/common/b
 
 @Component({
     selector: 'fusion-toggle-button-group',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     imports: [CommonModule, IconModule, TooltipDirective],
     host: {class: 'fusion-v4'},
     templateUrl: './toggle-button-group.component.html',
