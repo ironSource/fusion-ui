@@ -9,6 +9,7 @@ import {CopyToClipboardModule} from '@ironsource/fusion-ui/directives/copy-to-cl
 
 @Component({
     selector: 'fusion-app-trigger',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     host: {class: 'fusion-v4'},
     imports: [IconModule, TooltipDirective, CopyToClipboardModule, TooltipComponent],
     providers: [SnackbarService],

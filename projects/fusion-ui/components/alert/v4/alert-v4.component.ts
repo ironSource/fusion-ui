@@ -11,6 +11,7 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-alert',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     imports: [CommonModule, IconModule, ButtonComponent, IconButtonComponent, GenericPipe],
     host: {class: 'fusion-v4'},
     templateUrl: './alert-v4.component.html',
