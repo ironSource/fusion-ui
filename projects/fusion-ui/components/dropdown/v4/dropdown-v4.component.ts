@@ -20,6 +20,7 @@ import {DynamicComponent} from '@ironsource/fusion-ui/components/dynamic-compone
 
 @Component({
     selector: 'fusion-dropdown',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     imports: [
         CommonModule,
         ReactiveFormsModule,
