@@ -7,6 +7,7 @@ import {SnackbarService} from '@ironsource/fusion-ui/components/snackbar/v4';
 
 @Component({
     selector: 'fusion-inline-copy',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     host: {class: 'fusion-v4'},
     imports: [IconModule, TooltipDirective, CopyToClipboardModule],
     providers: [SnackbarService],
