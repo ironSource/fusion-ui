@@ -8,6 +8,7 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-trend-indicator',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     imports: [CommonModule, IconModule, GenericPipe],
     host: {class: 'fusion-v4'},
     templateUrl: './trend-indicator.component.html',
