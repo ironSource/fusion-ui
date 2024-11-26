@@ -29,6 +29,7 @@ import {InputLabelComponent} from '@ironsource/fusion-ui/components/input-label/
 
 @Component({
     selector: 'fusion-input',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     imports: [CommonModule, ReactiveFormsModule, IconModule, TooltipDirective, GenericPipe, InputHelperComponent, InputLabelComponent],
     host: {class: 'fusion-v4'},
     templateUrl: './input-v4.component.html',
