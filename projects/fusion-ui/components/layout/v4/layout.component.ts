@@ -12,6 +12,7 @@ import {filter, takeUntil} from 'rxjs/operators';
 
 @Component({
     selector: 'fusion-layout',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     imports: [CommonModule, LayoutHeaderComponent, NavigationMenuComponent],
     templateUrl: './layout.component.html',
     styleUrls: ['./layout.component.scss'],
