@@ -8,6 +8,7 @@ import {GenericPipe} from '@ironsource/fusion-ui/pipes/generic';
 
 @Component({
     selector: 'fusion-icon-button',
+    standalone: true, // todo: just for storybook to work, will be fixed in story
     imports: [CommonModule, IconModule, LoaderComponent, GenericPipe],
     templateUrl: '../button/button.component.html',
     styleUrls: ['../button/button.component.scss', './icon-button.component.scss'],
