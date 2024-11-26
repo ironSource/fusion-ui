@@ -8,6 +8,7 @@ import {ChipFiltersBaseComponent} from '@ironsource/fusion-ui/components/chip-fi
 
 @Component({
     selector: 'fusion-chip-filters',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     imports: [CommonModule, ReactiveFormsModule, IconModule, ChipFilterComponent, DropdownComponent],
     host: {class: 'fusion-v4'},
     templateUrl: '../common/base/chip-filters.base.component.html',
