@@ -7,6 +7,8 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-tooltip-content',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
+    host: {class: 'fusion-v4'},
     imports: [CommonModule, GenericPipe],
     template: ` <div class="fu-tooltip-component" [attr.data-testid]="testId">
         <ng-container *ngIf="!tooltipInnerText" [ngTemplateOutlet]="temp"></ng-container>
