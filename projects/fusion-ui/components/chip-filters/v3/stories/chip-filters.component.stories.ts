@@ -1,4 +1,4 @@
-import {StoryFn, Meta} from '@storybook/angular';
+import {StoryFn, Meta, StoryObj} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {dedent} from 'ts-dedent';
 import {CommonModule} from '@angular/common';
@@ -18,6 +18,14 @@ import {
 } from '@ironsource/fusion-ui/components/chip-filters/v3/stories/chip-filters.stories.mock';
 import {DaterangeModule, DaterangeOptions} from '@ironsource/fusion-ui/components/daterange';
 import {DropdownDualMultiSelectModule} from '@ironsource/fusion-ui/components/dropdown-dual-multi-select';
+import {
+    AD_FORMAT_OPTIONS,
+    AD_TYPE_OPTIONS,
+    CATEGORY_OPTIONS,
+    MOCK_CATEGORY_FILTERS,
+    PLATFORM_OPTIONS,
+    STATUS_OPTIONS
+} from '@ironsource/fusion-ui/components/chip-filters/v4/stories/chip-filters-v4.stories.mock';
 
 export default {
     title: 'V3/Components/Filters/Filter Panel',
@@ -70,9 +78,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 } as Meta<ChipFiltersComponent>;
 
 // region Default
-const FilterPanelDefaultTemplate: StoryFn<ChipFiltersComponent> = (args: ChipFiltersComponent) => ({
-    props: {...args},
-    template: `
+const templateDefault = `
 <div style="height: 350px;">
     <fusion-chip-filters>
         <fusion-chip-filter [configuration]="configChip1">
@@ -122,38 +128,39 @@ const FilterPanelDefaultTemplate: StoryFn<ChipFiltersComponent> = (args: ChipFil
             </div>
         </fusion-chip-filter>
     </fusion-chip-filters>
-</div>`
-});
+</div>`;
 
-export const Default = {
-    render: FilterPanelDefaultTemplate,
+type Story = StoryObj<ChipFiltersComponent>;
 
-    args: {
-        fcChip1: new FormControl(),
-        configChip1: {id: 1, mode: 'static', close: true},
-        optionsChip1: MOCK_DUMMY_OPTIONS,
-        placeholderPrefixChip1: 'Label 1',
-        placeholderChip1: 'All',
+export const Default: Story = {
+    render: args => ({
+        props: {
+            fcChip1: new FormControl(),
+            configChip1: {id: 1, mode: 'static', close: true},
+            optionsChip1: MOCK_DUMMY_OPTIONS,
+            placeholderPrefixChip1: 'Label 1',
+            placeholderChip1: 'All',
 
-        fcChip2: new FormControl(),
-        configChip2: {id: 2, mode: 'static', close: true},
-        optionsChip2: MOCK_DUMMY_OPTIONS,
-        placeholderPrefixChip2: 'Label 2',
-        placeholderChip2: 'All',
+            fcChip2: new FormControl(),
+            configChip2: {id: 2, mode: 'static', close: true},
+            optionsChip2: MOCK_DUMMY_OPTIONS,
+            placeholderPrefixChip2: 'Label 2',
+            placeholderChip2: 'All',
 
-        fcChip3: new FormControl(),
-        configChip3: {id: 3, mode: 'static', close: true},
-        optionsChip3: MOCK_DUMMY_OPTIONS,
-        placeholderPrefixChip3: 'Label 3',
-        placeholderChip3: 'All',
+            fcChip3: new FormControl(),
+            configChip3: {id: 3, mode: 'static', close: true},
+            optionsChip3: MOCK_DUMMY_OPTIONS,
+            placeholderPrefixChip3: 'Label 3',
+            placeholderChip3: 'All',
 
-        fcChip4: new FormControl(),
-        configChip4: {id: 4, mode: 'static', close: true},
-        optionsChip4: MOCK_DUMMY_OPTIONS,
-        placeholderPrefixChip4: 'Label 4',
-        placeholderChip4: 'All'
-    },
-
+            fcChip4: new FormControl(),
+            configChip4: {id: 4, mode: 'static', close: true},
+            optionsChip4: MOCK_DUMMY_OPTIONS,
+            placeholderPrefixChip4: 'Label 4',
+            placeholderChip4: 'All'
+        },
+        template: templateDefault
+    }),
     parameters: {
         docs: {
             source: {
@@ -261,35 +268,35 @@ export const Default = {
     }
 };
 
-export const OnePreselectedNotClosable = {
-    render: FilterPanelDefaultTemplate,
+export const OnePreselectedNotClosable: Story = {
+    render: args => ({
+        props: {
+            fcChip1: new FormControl(),
+            configChip1: {id: 1, mode: 'static', close: true},
+            optionsChip1: MOCK_DUMMY_OPTIONS,
+            placeholderPrefixChip1: 'Label 1',
+            placeholderChip1: 'All',
 
-    args: {
-        fcChip1: new FormControl(),
-        configChip1: {id: 1, mode: 'static', close: true},
-        optionsChip1: MOCK_DUMMY_OPTIONS,
-        placeholderPrefixChip1: 'Label 1',
-        placeholderChip1: 'All',
+            fcChip2: new FormControl([MOCK_DUMMY_OPTIONS[3]]),
+            configChip2: {id: 2, mode: 'static', close: false},
+            optionsChip2: MOCK_DUMMY_OPTIONS,
+            placeholderPrefixChip2: 'Label 2',
+            placeholderChip2: 'All',
 
-        fcChip2: new FormControl([MOCK_DUMMY_OPTIONS[3]]),
-        configChip2: {id: 2, mode: 'static', close: false},
-        optionsChip2: MOCK_DUMMY_OPTIONS,
-        placeholderPrefixChip2: 'Label 2',
-        placeholderChip2: 'All',
+            fcChip3: new FormControl(),
+            configChip3: {id: 3, mode: 'static', close: true},
+            optionsChip3: MOCK_DUMMY_OPTIONS,
+            placeholderPrefixChip3: 'Label 3',
+            placeholderChip3: 'All',
 
-        fcChip3: new FormControl(),
-        configChip3: {id: 3, mode: 'static', close: true},
-        optionsChip3: MOCK_DUMMY_OPTIONS,
-        placeholderPrefixChip3: 'Label 3',
-        placeholderChip3: 'All',
-
-        fcChip4: new FormControl(),
-        configChip4: {id: 4, mode: 'static', close: true},
-        optionsChip4: MOCK_DUMMY_OPTIONS,
-        placeholderPrefixChip4: 'Label 4',
-        placeholderChip4: 'All'
-    },
-
+            fcChip4: new FormControl(),
+            configChip4: {id: 4, mode: 'static', close: true},
+            optionsChip4: MOCK_DUMMY_OPTIONS,
+            placeholderPrefixChip4: 'Label 4',
+            placeholderChip4: 'All'
+        },
+        template: templateDefault
+    }),
     parameters: {
         docs: {
             source: {
@@ -395,12 +402,64 @@ export const OnePreselectedNotClosable = {
         }
     }
 };
-
 // endregion
 
-const FilterPanelTemplate: StoryFn<ChipFiltersComponent> = (args: ChipFiltersComponent) => ({
-    props: {...args},
-    template: `
+// region With Add button
+export const WithAddButton: Story = {
+    render: args => ({
+        props: {
+            // region Add Filter Chip props
+            addFiltersTitle: 'Add filter by:',
+            addFilterOptions: [
+                {id: 4, displayText: 'Country'},
+                {id: 5, displayText: 'Campaigns'}
+            ],
+            disableAddFilter: false,
+            isSearch: true,
+            // endregion
+
+            // region first chip - User
+            fcChip1: new FormControl(),
+            configChip1: {id: 1, mode: 'static', close: true},
+            optionsChip1: MOCK_USERS,
+            placeholderPrefixChip1: 'User',
+            placeholderChip1: 'All',
+            searchChip1: true,
+            optionsTitleChip1: 'User',
+            // endregion
+
+            // region first chip - Status
+            configChip2: {id: 2, mode: 'static', close: true},
+            fcChip2: new FormControl(),
+            placeholderPrefixChip2: 'Status',
+            placeholderChip2: 'All',
+            optionsChip2: MOCK_STATUS,
+            optionsTitleChip2: 'Status',
+            // endregion
+
+            // region first chip - Date Range
+            configChip3: {id: 3, mode: 'static', close: true},
+            fcChip3: new FormControl(),
+            dateRangeOptions: {chipLabel: 'Date range', placeholder: 'All', overlayAlignPosition: 'left'},
+            // endregion
+
+            // region first chip - Country (dynamic)
+            fcChip4: new FormControl(),
+            configChip4: {id: 4, mode: 'dynamic', close: true},
+            optionsChip4: MOCK_COUNTRIES,
+            placeholderChip4: 'All',
+            optionsTitleChip4: 'Country',
+            // endregion
+
+            // region first chip - Campaigns (dynamic)
+            fcChip5: new FormControl(),
+            configChip5: {id: 5, mode: 'dynamic', close: true},
+            optionsChip5: MOCK_CAMPAIGNS,
+            placeholderChip5: 'All',
+            optionsTitleChip5: 'Campaigns'
+            // endregion
+        },
+        template: `
 <div style="height: 350px;">
     <fusion-chip-filters
         [addFiltersTitle]="addFiltersTitle"
@@ -462,64 +521,7 @@ const FilterPanelTemplate: StoryFn<ChipFiltersComponent> = (args: ChipFiltersCom
         </fusion-chip-filter>
     </fusion-chip-filters>
 </div>`
-});
-
-export const WithAddButton = {
-    render: FilterPanelTemplate,
-
-    args: {
-        // region Add Filter Chip props
-        addFiltersTitle: 'Add filter by:',
-        addFilterOptions: [
-            {id: 4, displayText: 'Country'},
-            {id: 5, displayText: 'Campaigns'}
-        ],
-        disableAddFilter: false,
-        isSearch: true,
-        // endregion
-
-        // region first chip - User
-        fcChip1: new FormControl(),
-        configChip1: {id: 1, mode: 'static', close: true},
-        optionsChip1: MOCK_USERS,
-        placeholderPrefixChip1: 'User',
-        placeholderChip1: 'All',
-        searchChip1: true,
-        optionsTitleChip1: 'User',
-        // endregion
-
-        // region first chip - Status
-        configChip2: {id: 2, mode: 'static', close: true},
-        fcChip2: new FormControl(),
-        placeholderPrefixChip2: 'Status',
-        placeholderChip2: 'All',
-        optionsChip2: MOCK_STATUS,
-        optionsTitleChip2: 'Status',
-        // endregion
-
-        // region first chip - Date Range
-        configChip3: {id: 3, mode: 'static', close: true},
-        fcChip3: new FormControl(),
-        dateRangeOptions: {chipLabel: 'Date range', placeholder: 'All', overlayAlignPosition: 'left'},
-        // endregion
-
-        // region first chip - Country (dynamic)
-        fcChip4: new FormControl(),
-        configChip4: {id: 4, mode: 'dynamic', close: true},
-        optionsChip4: MOCK_COUNTRIES,
-        placeholderChip4: 'All',
-        optionsTitleChip4: 'Country',
-        // endregion
-
-        // region first chip - Campaigns (dynamic)
-        fcChip5: new FormControl(),
-        configChip5: {id: 5, mode: 'dynamic', close: true},
-        optionsChip5: MOCK_CAMPAIGNS,
-        placeholderChip5: 'All',
-        optionsTitleChip5: 'Campaigns'
-        // endregion
-    },
-
+    }),
     parameters: {
         docs: {
             source: {
@@ -659,39 +661,31 @@ export const WithAddButton = {
         }
     }
 };
-
 // endregion
 
 // region Add Button
-const FilterAddButtonTemplate: StoryFn<ChipFiltersComponent> = (args: ChipFiltersComponent) => ({
-    props: {...args},
-    template: `
-<div style="height: 350px;">
+export const AddButton: Story = {
+    render: args => ({
+        props: {
+            // region Add Filter Chip props
+            addFiltersTitle: 'Add filter by:',
+            addFilterOptions: [
+                {id: 4, displayText: 'Country'},
+                {id: 5, displayText: 'Campaigns'}
+            ],
+            disableAddFilter: false,
+            isSearch: true
+            // endregion
+        },
+        template: `<div style="height: 350px;">
     <fusion-chip-filters
         [addFiltersTitle]="addFiltersTitle"
         [addFilterOptions]="addFilterOptions"
         [disableAddFilter]="disableAddFilter"
         [isSearch]="isSearch"
         >
-    </fusion-chip-filters>
-</div>`
-});
-
-export const AddButton = {
-    render: FilterAddButtonTemplate,
-
-    args: {
-        // region Add Filter Chip props
-        addFiltersTitle: 'Add filter by:',
-        addFilterOptions: [
-            {id: 4, displayText: 'Country'},
-            {id: 5, displayText: 'Campaigns'}
-        ],
-        disableAddFilter: false,
-        isSearch: true
-        // endregion
-    },
-
+    </fusion-chip-filters>`
+    }),
     parameters: {
         docs: {
             source: {
@@ -738,20 +732,27 @@ export const AddButton = {
     }
 };
 
-export const AddButtonDisabled = {
-    render: FilterAddButtonTemplate,
-
-    args: {
-        // region Add Filter Chip props
-        addFiltersTitle: 'Add filter by:',
-        addFilterOptions: [
-            {id: 4, displayText: 'Country'},
-            {id: 5, displayText: 'Campaigns'}
-        ],
-        disableAddFilter: true
-        // endregion
-    },
-
+export const AddButtonDisabled: Story = {
+    render: args => ({
+        props: {
+            // region Add Filter Chip props
+            addFiltersTitle: 'Add filter by:',
+            addFilterOptions: [
+                {id: 4, displayText: 'Country'},
+                {id: 5, displayText: 'Campaigns'}
+            ],
+            disableAddFilter: true
+            // endregion
+        },
+        template: `<div style="height: 350px;">
+    <fusion-chip-filters
+        [addFiltersTitle]="addFiltersTitle"
+        [addFilterOptions]="addFilterOptions"
+        [disableAddFilter]="disableAddFilter"
+        [isSearch]="isSearch"
+        >
+    </fusion-chip-filters>`
+    }),
     parameters: {
         docs: {
             source: {
@@ -797,13 +798,54 @@ export const AddButtonDisabled = {
         }
     }
 };
-
 // endregion
 
 // region NoAddButton
-const FilterPanelNoAddTemplate: StoryFn<ChipFiltersComponent> = (args: ChipFiltersComponent) => ({
-    props: {...args},
-    template: `
+export const NoAddButton: Story = {
+    render: args => ({
+        props: {
+            // region first chip - User
+            fcChip1: new FormControl(),
+            configChip1: {id: 1, mode: 'static', close: true},
+            optionsChip1: MOCK_USERS,
+            placeholderPrefixChip1: 'User',
+            placeholderChip1: 'All',
+            searchChip1: true,
+            optionsTitleChip1: 'User',
+            // endregion
+
+            // region first chip - Status
+            configChip2: {id: 2, mode: 'static', close: true},
+            fcChip2: new FormControl(),
+            placeholderPrefixChip2: 'Status',
+            placeholderChip2: 'All',
+            optionsChip2: MOCK_STATUS,
+            optionsTitleChip2: 'Status',
+            // endregion
+
+            // region first chip - Date Range
+            configChip3: {id: 3, mode: 'static', close: true},
+            fcChip3: new FormControl(),
+            dateRangeOptions: {chipLabel: 'Date range', placeholder: 'All', overlayAlignPosition: 'left'} as DaterangeOptions,
+            // endregion
+
+            // region first chip - Country (dynamic)
+            fcChip4: new FormControl([MOCK_COUNTRIES[4]]),
+            configChip4: {id: 4, mode: 'static', close: true},
+            optionsChip4: MOCK_COUNTRIES,
+            placeholderChip4: 'All',
+            optionsTitleChip4: 'Country',
+            // endregion
+
+            // region first chip - Campaigns (dynamic)
+            fcChip5: new FormControl(),
+            configChip5: {id: 5, mode: 'static', close: true},
+            optionsChip5: MOCK_CAMPAIGNS,
+            placeholderChip5: 'All',
+            optionsTitleChip5: 'Campaigns'
+            // endregion
+        },
+        template: `
 <div style="height: 350px;">
     <fusion-chip-filters>
         <fusion-chip-filter [configuration]="configChip1">
@@ -858,54 +900,7 @@ const FilterPanelNoAddTemplate: StoryFn<ChipFiltersComponent> = (args: ChipFilte
         </fusion-chip-filter>
     </fusion-chip-filters>
 </div>`
-});
-
-export const NoAddButton = {
-    render: FilterPanelNoAddTemplate,
-
-    args: {
-        // region first chip - User
-        fcChip1: new FormControl(),
-        configChip1: {id: 1, mode: 'static', close: true},
-        optionsChip1: MOCK_USERS,
-        placeholderPrefixChip1: 'User',
-        placeholderChip1: 'All',
-        searchChip1: true,
-        optionsTitleChip1: 'User',
-        // endregion
-
-        // region first chip - Status
-        configChip2: {id: 2, mode: 'static', close: true},
-        fcChip2: new FormControl(),
-        placeholderPrefixChip2: 'Status',
-        placeholderChip2: 'All',
-        optionsChip2: MOCK_STATUS,
-        optionsTitleChip2: 'Status',
-        // endregion
-
-        // region first chip - Date Range
-        configChip3: {id: 3, mode: 'static', close: true},
-        fcChip3: new FormControl(),
-        dateRangeOptions: {chipLabel: 'Date range', placeholder: 'All', overlayAlignPosition: 'left'} as DaterangeOptions,
-        // endregion
-
-        // region first chip - Country (dynamic)
-        fcChip4: new FormControl([MOCK_COUNTRIES[4]]),
-        configChip4: {id: 4, mode: 'static', close: true},
-        optionsChip4: MOCK_COUNTRIES,
-        placeholderChip4: 'All',
-        optionsTitleChip4: 'Country',
-        // endregion
-
-        // region first chip - Campaigns (dynamic)
-        fcChip5: new FormControl(),
-        configChip5: {id: 5, mode: 'static', close: true},
-        optionsChip5: MOCK_CAMPAIGNS,
-        placeholderChip5: 'All',
-        optionsTitleChip5: 'Campaigns'
-        // endregion
-    },
-
+    }),
     parameters: {
         docs: {
             source: {
@@ -1030,3 +1025,4 @@ export const NoAddButton = {
         }
     }
 };
+// endregion
