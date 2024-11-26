@@ -7,6 +7,8 @@ import {SnackbarService} from '../snackbar.service';
 
 @Component({
     selector: 'fusion-snackbar-story-wrapper',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
+    host: {class: 'fusion-v4'},
     imports: [CommonModule, TeleportingModule, ButtonComponent, SnackbarComponent],
     providers: [SnackbarService],
     templateUrl: './snackbar-story-wrapper.component.html',

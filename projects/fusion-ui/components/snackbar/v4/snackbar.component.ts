@@ -19,6 +19,8 @@ import {ButtonComponent, IconButtonComponent} from '@ironsource/fusion-ui/compon
 
 @Component({
     selector: 'fusion-snackbar',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
+    host: {class: 'fusion-v4'},
     imports: [CommonModule, IconModule, IconButtonComponent, ButtonComponent],
     templateUrl: './snackbar.component.html',
     styleUrls: ['./snackbar.component.scss'],
