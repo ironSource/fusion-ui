@@ -6,6 +6,7 @@ import {ItemDragAndDrop} from './draggable-items-list.entities';
 
 @Component({
     selector: 'fusion-draggable-items-list',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     host: {class: 'fusion-v4'},
     imports: [IconModule, DragAndDropDirective, IconButtonComponent],
     templateUrl: './draggable-items-list.component.html',
