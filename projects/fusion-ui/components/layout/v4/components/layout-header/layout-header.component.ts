@@ -8,6 +8,7 @@ import {SkeletonComponent} from '@ironsource/fusion-ui/components/skeleton';
 
 @Component({
     selector: 'fusion-layout-header',
+    standalone: true, // todo: just for storybook to work, will be fixed in story
     imports: [CommonModule, DynamicComponentsModule, IconModule, IconButtonComponent, SkeletonComponent],
     templateUrl: './layout-header.component.html',
     styleUrls: ['./layout-header.component.scss'],
