@@ -9,6 +9,7 @@ import {BehaviorSubject} from 'rxjs';
 
 @Component({
     selector: 'fusion-textarea',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     templateUrl: './textarea-v4.component.html',
     styleUrls: ['./textarea-v4.component.scss'],
     host: {class: 'fusion-v4'},
