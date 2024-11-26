@@ -1,4 +1,4 @@
-import {StoryFn, Meta} from '@storybook/angular';
+import {Meta, StoryObj} from '@storybook/angular';
 import {moduleMetadata} from '@storybook/angular';
 import {dedent} from 'ts-dedent';
 import {CommonModule} from '@angular/common';
@@ -47,7 +47,8 @@ export default {
     args: {
         placeholder: 'Chip filter',
         options: MOCK_OPTIONS,
-        title: 'Label'
+        title: 'Label',
+        formControl: new FormControl()
     },
     argTypes: {
         formControl: {
@@ -59,9 +60,7 @@ export default {
     }
 } as Meta<ChipFilterComponent>;
 
-const ChipFilterTemplate: StoryFn<ChipFilterComponent> = (args: ChipFilterComponent) => ({
-    props: {...args},
-    template: `<div style="height: 250px;">
+const templateCommon = `<div style="height: 250px;">
     <fusion-chip-filter [configuration]="configuration">
         <div class="filter-element">
             <fusion-dropdown
@@ -76,17 +75,18 @@ const ChipFilterTemplate: StoryFn<ChipFilterComponent> = (args: ChipFilterCompon
             </fusion-dropdown>
         </div>
     </fusion-chip-filter>
-</div>`
-});
+</div>`;
 
-export const Default = {
-    render: ChipFilterTemplate,
+type Story = StoryObj<ChipFilterComponent>;
 
-    args: {
-        formControl: new FormControl(),
-        configuration: {mode: 'static', close: true}
-    },
-
+export const Basic: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            configuration: {mode: 'static', close: true}
+        },
+        template: templateCommon
+    }),
     parameters: {
         docs: {
             source: {
@@ -128,28 +128,29 @@ export const Default = {
     }
 };
 
-export const WithRightAndLeftIcons = {
-    render: ChipFilterTemplate,
-
-    args: {
-        formControl: new FormControl(),
-        configuration: {
-            mode: 'static',
-            close: true,
-            leftIcon: {icon: 'frame', tooltipText: 'This is LEFT icon'},
-            rightIcon: {icon: 'info', tooltipText: 'This is RIGHT icon'}
-        } as ChipFilterComponentConfigurations
-    }
+export const WithRightAndLeftIcons: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            configuration: {
+                mode: 'static',
+                close: true,
+                leftIcon: {icon: 'frame', tooltipText: 'This is LEFT icon'},
+                rightIcon: {icon: 'info', tooltipText: 'This is RIGHT icon'}
+            } as ChipFilterComponentConfigurations
+        },
+        template: templateCommon
+    })
 };
 
-export const Disabled = {
-    render: ChipFilterTemplate,
-
-    args: {
-        formControl: new FormControl(),
-        configuration: {mode: 'static', close: true, disabled: true}
-    },
-
+export const Disabled: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            configuration: {mode: 'static', close: true, disabled: true} as ChipFilterComponentConfigurations
+        },
+        template: templateCommon
+    }),
     parameters: {
         docs: {
             source: {
@@ -191,29 +192,31 @@ export const Disabled = {
     }
 };
 
-export const DisabledWithRightAndLeftIcons = {
-    render: ChipFilterTemplate,
-
-    args: {
-        formControl: new FormControl(),
-        configuration: {
-            mode: 'static',
-            close: true,
-            disabled: true,
-            leftIcon: {icon: 'frame', tooltipText: 'This is LEFT icon'},
-            rightIcon: {icon: 'info', tooltipText: 'This is RIGHT icon'}
-        } as ChipFilterComponentConfigurations
-    }
+export const DisabledWithRightAndLeftIcons: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            configuration: {
+                mode: 'static',
+                close: true,
+                disabled: true,
+                leftIcon: {icon: 'frame', tooltipText: 'This is LEFT icon'},
+                rightIcon: {icon: 'info', tooltipText: 'This is RIGHT icon'}
+            } as ChipFilterComponentConfigurations
+        },
+        template: templateCommon
+    })
 };
 
-export const Selected = {
-    render: ChipFilterTemplate,
-
-    args: {
-        formControl: new FormControl(MOCK_OPTIONS[1]),
-        configuration: {mode: 'static', close: true}
-    },
-
+export const Selected: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            formControl: new FormControl(MOCK_OPTIONS[1]),
+            configuration: {mode: 'static', close: true} as ChipFilterComponentConfigurations
+        },
+        template: templateCommon
+    }),
     parameters: {
         docs: {
             source: {
@@ -255,14 +258,15 @@ export const Selected = {
     }
 };
 
-export const SelectedUnremovable = {
-    render: ChipFilterTemplate,
-
-    args: {
-        formControl: new FormControl(MOCK_OPTIONS[1]),
-        configuration: {mode: 'static', close: false}
-    },
-
+export const SelectedUnremovable: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            formControl: new FormControl(MOCK_OPTIONS[1]),
+            configuration: {mode: 'static', close: false} as ChipFilterComponentConfigurations
+        },
+        template: templateCommon
+    }),
     parameters: {
         docs: {
             source: {
@@ -304,14 +308,15 @@ export const SelectedUnremovable = {
     }
 };
 
-export const SelectedUnremovableDisabled = {
-    render: ChipFilterTemplate,
-
-    args: {
-        formControl: new FormControl(MOCK_OPTIONS[1]),
-        configuration: {mode: 'static', close: false, disabled: true}
-    },
-
+export const SelectedUnremovableDisabled: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            formControl: new FormControl(MOCK_OPTIONS[1]),
+            configuration: {mode: 'static', close: false, disabled: true} as ChipFilterComponentConfigurations
+        },
+        template: templateCommon
+    }),
     parameters: {
         docs: {
             source: {
@@ -353,15 +358,16 @@ export const SelectedUnremovableDisabled = {
     }
 };
 
-export const DropdownWithLabel = {
-    render: ChipFilterTemplate,
-
-    args: {
-        formControl: new FormControl(),
-        configuration: {mode: 'static', close: true},
-        placeholderPrefix: 'Label'
-    },
-
+export const DropdownWithLabel: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            formControl: new FormControl(),
+            configuration: {mode: 'static', close: true} as ChipFilterComponentConfigurations,
+            placeholderPrefix: 'Label'
+        },
+        template: templateCommon
+    }),
     parameters: {
         docs: {
             source: {
@@ -405,15 +411,16 @@ export const DropdownWithLabel = {
     }
 };
 
-export const DropdownWithOptionsTitle = {
-    render: ChipFilterTemplate,
-
-    args: {
-        formControl: new FormControl(),
-        configuration: {mode: 'static', close: true},
-        optionsTitle: 'Title'
-    },
-
+export const DropdownWithOptionsTitle: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            formControl: new FormControl(),
+            configuration: {mode: 'static', close: true} as ChipFilterComponentConfigurations,
+            optionsTitle: 'Title'
+        },
+        template: templateCommon
+    }),
     parameters: {
         docs: {
             source: {
@@ -457,16 +464,17 @@ export const DropdownWithOptionsTitle = {
     }
 };
 
-export const DropdownWithOptionsTitleAndSearch = {
-    render: ChipFilterTemplate,
-
-    args: {
-        formControl: new FormControl(),
-        configuration: {mode: 'static', close: true},
-        optionsTitle: 'Title',
-        search: true
-    },
-
+export const DropdownWithOptionsTitleAndSearch: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            formControl: new FormControl(),
+            configuration: {mode: 'static', close: true} as ChipFilterComponentConfigurations,
+            optionsTitle: 'Title',
+            search: true
+        },
+        template: templateCommon
+    }),
     parameters: {
         docs: {
             source: {
@@ -511,30 +519,25 @@ export const DropdownWithOptionsTitleAndSearch = {
         }
     }
 };
-
 // endregion
 
 // region DateRangeWithIcon
-const ChipFilterIconTemplate: StoryFn<ChipFilterComponent> = (args: ChipFilterComponent) => ({
-    props: {...args},
-    template: `<div style="height: 350px;">
+export const DateRangeWithIcon: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            fcDateRange: new FormControl(),
+            configuration: {mode: 'static', close: true, maxWidth: 300} as ChipFilterComponentConfigurations,
+            dateRangeOptions: {chipLabel: 'Date range', placeholder: 'All'}
+        },
+        template: `<div style="height: 350px;">
     <fusion-chip-filter [configuration]="configuration">
         <div class="filter-element">
             <fusion-daterange [options]="dateRangeOptions" [formControl]="fcDateRange"> </fusion-daterange>
         </div>
     </fusion-chip-filter>
 </div>`
-});
-
-export const DateRangeWithIcon = {
-    render: ChipFilterIconTemplate,
-
-    args: {
-        configuration: {mode: 'static', close: true, maxWidth: 300},
-        dateRangeOptions: {chipLabel: 'Date range', placeholder: 'All'},
-        fcDateRange: new FormControl()
-    },
-
+    }),
     parameters: {
         docs: {
             source: {
@@ -567,13 +570,18 @@ export const DateRangeWithIcon = {
         }
     }
 };
-
 // endregion
 
 // region IncludeExcludeWithLabel
-const ChipFilterIncludeExcludeTemplate: StoryFn<ChipFilterComponent> = (args: ChipFilterComponent) => ({
-    props: {...args},
-    template: `<div style="height: 350px; width: 250px;">
+export const IncludeExcludeWithLabel: Story = {
+    render: args => ({
+        props: {
+            ...args,
+            formControl: new FormControl([]),
+            items: [...MOCK_OPTIONS],
+            configuration: {mode: 'static', close: true} as ChipFilterComponentConfigurations
+        },
+        template: `<div style="height: 350px; width: 250px;">
     <fusion-chip-filter [configuration]="configuration" [testId]="testId">
         <div class="filter-element">
              <fusion-dropdown-dual-multi-select
@@ -586,17 +594,7 @@ const ChipFilterIncludeExcludeTemplate: StoryFn<ChipFilterComponent> = (args: Ch
         </div>
     </fusion-chip-filter>
 </div>`
-});
-
-export const IncludeExcludeWithLabel = {
-    render: ChipFilterIncludeExcludeTemplate,
-
-    args: {
-        formControl: new FormControl([]),
-        items: [...MOCK_OPTIONS],
-        configuration: {mode: 'static', close: true}
-    },
-
+    }),
     parameters: {
         docs: {
             source: {
