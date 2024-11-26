@@ -44,6 +44,7 @@ import {SearchComponent} from '@ironsource/fusion-ui/components/search/v4';
 
 @Component({
     selector: 'fusion-table',
+    standalone: true, // todo: just for storybook to work, will be fixed in story
     host: {class: 'fusion-v4'},
     imports: [
         CommonModule,
