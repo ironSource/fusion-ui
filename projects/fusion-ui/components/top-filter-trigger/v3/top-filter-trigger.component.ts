@@ -26,6 +26,7 @@ import {TooltipModule} from '@ironsource/fusion-ui/components/tooltip';
 
 @Component({
     selector: 'fusion-top-filter-trigger',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     imports: [CommonModule, IconModule, TooltipModule],
     templateUrl: './top-filter-trigger.component.html',
     styleUrls: ['./top-filter-trigger.component.scss'],
