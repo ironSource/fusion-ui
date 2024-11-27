@@ -11,6 +11,7 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-search',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     templateUrl: './search.component.html',
     styleUrls: ['./search.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
