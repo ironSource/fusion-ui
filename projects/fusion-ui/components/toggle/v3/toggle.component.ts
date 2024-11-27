@@ -6,6 +6,7 @@ import {BehaviorSubject} from 'rxjs';
 
 @Component({
     selector: 'fusion-toggle',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     templateUrl: './toggle.component.html',
     styleUrls: ['./toggle.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
