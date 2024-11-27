@@ -10,6 +10,7 @@ import {ClickOutsideModule} from '@ironsource/fusion-ui/directives/click-outside
 
 @Component({
     selector: 'fusion-input-inline',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     templateUrl: './input-inline.component.html',
     styleUrls: ['./input-inline.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
