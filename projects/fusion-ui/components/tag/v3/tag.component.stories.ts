@@ -33,7 +33,7 @@ export default {
     }
 } as Meta<TagComponent>;
 
-const TagTemplate: StoryFn<TagComponent> = (args: TagComponent) => ({
+const TagTemplate: StoryFn<TagComponent> = args => ({
     props: {...args},
     template: `<fusion-tag [class]="customClass" [configuration]="configuration" (onRemove)="onRemove($event)"></fusion-tag>`
 });
