@@ -13,6 +13,7 @@ import {TagsInputComponent} from '../tags-input.component';
  */
 @Component({
     selector: 'fusion-tags-input-include-exclude',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     imports: [CommonModule, ReactiveFormsModule, TagsInputComponent, DropdownDualMultiSelectModule],
     templateUrl: './tags-input-include-exclude.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

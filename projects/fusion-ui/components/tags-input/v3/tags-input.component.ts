@@ -18,6 +18,7 @@ import {ApiBase} from '@ironsource/fusion-ui/components/api-base';
 
 @Component({
     selector: 'fusion-tags-input',
+    standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
     imports: [CommonModule, InputModule, TagComponent],
     templateUrl: './tags-input.component.html',
     styleUrls: ['./tags-input.component.scss'],
