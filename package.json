@@ -1,6 +1,6 @@
 {
   "name": "fusion-ui",
-  "version": "9.0.0-test.3",
+  "version": "9.0.1-test.1",
   "description": "UI library created by ironSource",
   "license": "MIT",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "https://github.com/ironSource/fusion-ui.git"
   },
   "engines": {
-    "node": ">=18.13.0"
+    "node": ">=18.19.1"
   },
   "scripts": {
     "ng": "ng",
