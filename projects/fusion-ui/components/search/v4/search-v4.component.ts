@@ -10,7 +10,7 @@ import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 @Component({
     selector: 'fusion-search',
     standalone: true, // todo: just for storybook to work, will be fixed in storybook 8.5.0
-    imports: [CommonModule, ReactiveFormsModule, InputComponent, GenericPipe],
+    imports: [CommonModule, ReactiveFormsModule, InputComponent],
     host: {class: 'fusion-v4'},
     templateUrl: './search-v4.component.html',
     styleUrls: ['./search-v4.component.scss'],

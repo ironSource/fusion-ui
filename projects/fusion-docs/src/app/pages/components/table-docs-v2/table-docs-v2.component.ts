@@ -734,7 +734,7 @@ export class TableDocsV2Component implements OnInit, OnDestroy {
         if (index === 'reset') {
             this.expandedRows = {};
         } else {
-            this.expandedRows = {...this.expandedRows, ...{[index]: !this.expandedRows[index] ?? true}};
+            this.expandedRows = {...this.expandedRows, ...{[index]: !(this.expandedRows[index] ? this.expandedRows[index] : false)}};
         }
     }
 

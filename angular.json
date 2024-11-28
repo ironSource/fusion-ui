@@ -110,6 +110,11 @@
                         "styles": [
                             "projects/fusion-docs/src/styles.scss"
                         ],
+                        "stylePreprocessorOptions": {
+                            "sass": {
+                                "silenceDeprecations": ["import","mixed-decls"]
+                            }
+                        },
                         "scripts": [],
                         "extractLicenses": false,
                         "sourceMap": true,
