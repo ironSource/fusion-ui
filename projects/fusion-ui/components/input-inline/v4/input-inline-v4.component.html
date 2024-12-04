@@ -1,4 +1,4 @@
-@if (!(isEditMode$ | async)) {
+@if ((isEditMode$ | async) === false) {
     <div class="fu-edit-value-wrapper"
          [class.fu-read-only]="readOnly || disabled"
          [class.fu-pending]="pending"
