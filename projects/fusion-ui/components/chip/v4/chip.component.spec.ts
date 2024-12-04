@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ChipComponent } from './chip.component';
-import {input} from "@angular/core";
+
 
 const LABEL = 'Label';
 
@@ -17,7 +16,7 @@ describe('ChipComponent', () => {
     
     fixture = TestBed.createComponent(ChipComponent);
     component = fixture.componentInstance;
-    component.label = input(LABEL);
+    fixture.componentRef.setInput('label', LABEL);
     fixture.detectChanges();
   });
 
@@ -44,8 +43,8 @@ describe('ChipComponent', () => {
   it('can be rounded', () => {
     fixture = TestBed.createComponent(ChipComponent);
     component = fixture.componentInstance;
-    component.label = input(LABEL);
-    component.shape = input('round');
+    fixture.componentRef.setInput('label', LABEL);
+    fixture.componentRef.setInput('shape', 'round');
     fixture.detectChanges();
     
     const el: HTMLElement = fixture.nativeElement;
@@ -55,8 +54,8 @@ describe('ChipComponent', () => {
   it('can be disabled', () => {
     fixture = TestBed.createComponent(ChipComponent);
     component = fixture.componentInstance;
-    component.label = input(LABEL);
-    component.disabled = input(true);
+    fixture.componentRef.setInput('label', LABEL);
+    fixture.componentRef.setInput('disabled', true);
     fixture.detectChanges();
     
     const el: HTMLElement = fixture.nativeElement;
@@ -65,8 +64,8 @@ describe('ChipComponent', () => {
   it('can be selected', () => {
     fixture = TestBed.createComponent(ChipComponent);
     component = fixture.componentInstance;
-    component.label = input(LABEL);
-    component.selected = input(true);
+    fixture.componentRef.setInput('label', LABEL);
+    fixture.componentRef.setInput('selected', true);
     fixture.detectChanges();
     
     const el: HTMLElement = fixture.nativeElement;
@@ -75,8 +74,8 @@ describe('ChipComponent', () => {
   it('can be medium size', () => {
     fixture = TestBed.createComponent(ChipComponent);
     component = fixture.componentInstance;
-    component.label = input(LABEL);
-    component.size = input('medium');
+    fixture.componentRef.setInput('label', LABEL);
+    fixture.componentRef.setInput('size', 'medium');
     fixture.detectChanges();
     
     const el: HTMLElement = fixture.nativeElement;
@@ -86,8 +85,8 @@ describe('ChipComponent', () => {
   it('can be primary theme', () => {
     fixture = TestBed.createComponent(ChipComponent);
     component = fixture.componentInstance;
-    component.label = input(LABEL);
-    component.theme = input('primary');
+    fixture.componentRef.setInput('label', LABEL);
+    fixture.componentRef.setInput('theme', 'primary');
     fixture.detectChanges();
     
     const el: HTMLElement = fixture.nativeElement;
@@ -97,8 +96,8 @@ describe('ChipComponent', () => {
   it('can be info theme', () => {
     fixture = TestBed.createComponent(ChipComponent);
     component = fixture.componentInstance;
-    component.label = input(LABEL);
-    component.theme = input('info');
+    fixture.componentRef.setInput('label', LABEL);
+    fixture.componentRef.setInput('theme', 'info');
     fixture.detectChanges();
     const el: HTMLElement = fixture.nativeElement;
     expect(el.querySelector('.fu-chip-info')).toBeTruthy();
@@ -107,8 +106,8 @@ describe('ChipComponent', () => {
   it('can be error theme', () => {
     fixture = TestBed.createComponent(ChipComponent);
     component = fixture.componentInstance;
-    component.label = input(LABEL);
-    component.theme = input('error');
+    fixture.componentRef.setInput('label', LABEL);
+    fixture.componentRef.setInput('theme', 'error');
     fixture.detectChanges();
     const el: HTMLElement = fixture.nativeElement;
     expect(el.querySelector('.fu-chip-error')).toBeTruthy();
@@ -117,8 +116,8 @@ describe('ChipComponent', () => {
   it('can be warning theme', () => {
     fixture = TestBed.createComponent(ChipComponent);
     component = fixture.componentInstance;
-    component.label = input(LABEL);
-    component.theme = input('warning');
+    fixture.componentRef.setInput('label', LABEL);
+    fixture.componentRef.setInput('theme', 'warning');
     fixture.detectChanges();
     const el: HTMLElement = fixture.nativeElement;
     expect(el.querySelector('.fu-chip-warning')).toBeTruthy();
@@ -127,8 +126,8 @@ describe('ChipComponent', () => {
   it('can be success theme', () => {
     fixture = TestBed.createComponent(ChipComponent);
     component = fixture.componentInstance;
-    component.label = input(LABEL);
-    component.theme = input('success');
+    fixture.componentRef.setInput('label', LABEL);
+    fixture.componentRef.setInput('theme', 'success');
     fixture.detectChanges();
     const el: HTMLElement = fixture.nativeElement;
     expect(el.querySelector('.fu-chip-success')).toBeTruthy();
@@ -137,8 +136,8 @@ describe('ChipComponent', () => {
   it('can be dark theme', () => {
     fixture = TestBed.createComponent(ChipComponent);
     component = fixture.componentInstance;
-    component.label = input(LABEL);
-    component.theme = input('dark');
+    fixture.componentRef.setInput('label', LABEL);
+    fixture.componentRef.setInput('theme', 'dark');
     fixture.detectChanges();
     const el: HTMLElement = fixture.nativeElement;
     expect(el.querySelector('.fu-chip-dark')).toBeTruthy();

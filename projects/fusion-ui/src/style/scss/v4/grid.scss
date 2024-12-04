@@ -1,4 +1,5 @@
 @use "sass:math";
+@use "sass:map";
 
 @import "mixins/breakpoints";
 
@@ -12,18 +13,18 @@ $columnHiddenPrefix: '.hidden' !default;
 // create column props by size
 @mixin make-col($size, $columns: $gridColumns) {
     flex: 0 0 auto;
-    width: percentage(math.div($size, $columns));
+    width: math.percentage(math.div($size, $columns));
 }
 
 // create column offset props
 @mixin make-col-offset($size, $columns: $gridColumns) {
     $num: math.div($size, $columns);
-    margin-left: if($num==0, 0, percentage($num));
+    margin-left: if($num==0, 0, math.percentage($num));
 }
 
 // Generate the correct number of grid classes
 @mixin make-grid-columns($columns: $gridColumns, $gutter: $gridColumnGap, $breakpoints: $breakPoints) {
-    @each $breakpoint in map-keys($breakpoints) {
+    @each $breakpoint in map.keys($breakpoints) {
         $infix: breakpoint-infix($breakpoint, $breakpoints);
 
         @include media-breakpoint-min($breakpoint, $breakpoints) {
