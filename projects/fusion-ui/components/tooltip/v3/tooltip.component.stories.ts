@@ -24,7 +24,7 @@ export default {
     }
 } as Meta<TooltipContentComponent>;
 
-const TooltipTemplate: StoryFn<TooltipContentComponent> = (args: TooltipContentComponent) => ({
+const TooltipTemplate: StoryFn<TooltipContentComponent> = args => ({
     props: args,
     template: `<fusion-tooltip-content style="position: unset;" [tooltipTextContent]="tooltipTextContent" [tooltipPositionClass]="tooltipPositionClass" [tooltipStyleConfiguration]="tooltipStyleConfiguration"></fusion-tooltip-content>`
 });

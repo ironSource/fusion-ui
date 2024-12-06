@@ -30,7 +30,7 @@ export default {
     }
 } as Meta<TooltipComponent>;
 
-const TooltipTemplate: StoryFn<TooltipComponent> = (args: TooltipComponent) => ({
+const TooltipTemplate: StoryFn<TooltipComponent> = args => ({
     props: args,
     template: `
 <style>
@@ -77,7 +77,7 @@ export const Directive = {
 // endregion
 
 // region Inline
-const TooltipInlineTemplate: StoryFn<TooltipComponent> = (args: TooltipComponent) => ({
+const TooltipInlineTemplate: StoryFn<TooltipComponent> = args => ({
     props: args,
     template: `
 <fusion-tooltip [tooltipConfiguration]="tooltipConfiguration">
@@ -134,7 +134,7 @@ export const Inline = {
     }
 };
 
-const TooltipInlineWithLinkTemplate: StoryFn<TooltipComponent> = (args: TooltipComponent) => ({
+const TooltipInlineWithLinkTemplate: StoryFn<TooltipComponent> = args => ({
     props: args,
     template: `
 <fusion-tooltip [tooltipConfiguration]="tooltipConfiguration">

@@ -65,7 +65,7 @@ export default {
     }
 } as Meta<SearchComponent>;
 
-const TooltipTemplate: StoryFn<SearchComponent> = (args: SearchComponent) => ({
+const TooltipTemplate: StoryFn<SearchComponent> = args => ({
     props: {...args},
     template: `<div style="width: 230px;"><fusion-search class="{{searchClassName}} {{transparentClassName}}" [showClearIcon]="showClearIcon" [placeholder]="placeholder" [formControl]="formControl"></fusion-search></div>`
 });

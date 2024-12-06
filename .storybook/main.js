@@ -7,15 +7,13 @@ const config = {
         '@storybook/addon-essentials',
         '@storybook/addon-interactions',
         '@ironsource/storybook-addon-stackblitz',
-        '@storybook/addon-mdx-gfm'
+        '@storybook/addon-mdx-gfm',
+        '@chromatic-com/storybook'
     ],
     framework: {
         name: '@storybook/angular'
     },
-    docs: {
-        /*autodocs: true // auto generate mdx dox story*/
-        autodocs: 'tag' // autogenerate only for stories with tag: 'autodoc'
-    }
+    docs: {}
 };
 
 export default config;

@@ -82,7 +82,7 @@ export default {
     }
 } as Meta<TableComponent>;
 
-const TableEditTemplate: StoryFn<TableComponent> = (args: TableComponent) => ({
+const TableEditTemplate: StoryFn<TableComponent> = args => ({
     props: {
         ...args,
         rowModelChange: actionsData.rowModelChange

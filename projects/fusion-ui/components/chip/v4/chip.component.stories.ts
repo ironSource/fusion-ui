@@ -2,7 +2,6 @@ import {Meta, moduleMetadata, StoryObj} from '@storybook/angular';
 import {CommonModule} from '@angular/common';
 import {SvgModule} from '@ironsource/fusion-ui/components/svg';
 import {environment} from '../../../../../stories/environments/environment';
-import {InputSignal} from '@angular/core';
 import {IconData, IconModule} from '@ironsource/fusion-ui/components/icon/v1';
 import {ChipComponent} from './chip.component';
 
@@ -25,7 +24,7 @@ export default {
         }
     },
     args: {
-        label: 'Label' as unknown as InputSignal<string>
+        label: 'Label'
     },
     argTypes: {
         label: {control: {type: 'text'}},
@@ -102,14 +101,14 @@ export const Style: Story = {
 
 export const WithRemoveAction: Story = {};
 WithRemoveAction.args = {
-    label: 'Clickable removable chip' as unknown as InputSignal<string>,
-    shape: 'round' as unknown as InputSignal<'square' | 'round'>,
-    removable: true as unknown as InputSignal<boolean>
+    label: 'Clickable removable chip',
+    shape: 'round',
+    removable: true
 };
 
 export const WithIcon: Story = {};
 WithIcon.args = {
-    label: 'With icon' as unknown as InputSignal<string>,
-    shape: 'round' as unknown as InputSignal<'square' | 'round'>,
-    iconName: 'ph/placeholder' as unknown as InputSignal<IconData>
+    label: 'With icon',
+    shape: 'round',
+    iconName: 'ph/placeholder'
 };

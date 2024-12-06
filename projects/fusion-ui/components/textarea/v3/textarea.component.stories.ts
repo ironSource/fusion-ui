@@ -29,7 +29,7 @@ const meta: Meta<TextareaComponent> = {
 
 export default meta;
 
-const InputTemplate: StoryFn<InputComponent> = (args: InputComponent) => ({
+const InputTemplate: StoryFn<InputComponent> = args => ({
     props: {...args},
     template: `<div style="width: 600px;">
     <fusion-textarea

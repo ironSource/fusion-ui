@@ -32,7 +32,7 @@ const meta: Meta<TopFilterIncludeExcludeComponent> = {
 };
 export default meta;
 
-const DefaultTemplate: StoryFn<TopFilterIncludeExcludeComponent> = (args: TopFilterIncludeExcludeComponent) => ({
+const DefaultTemplate: StoryFn<TopFilterIncludeExcludeComponent> = args => ({
     props: {...args},
     template: `<div style="height: 380px">
     <fusion-top-filter-include-exclude

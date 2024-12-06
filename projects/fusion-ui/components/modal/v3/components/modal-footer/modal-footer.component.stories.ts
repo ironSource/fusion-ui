@@ -51,7 +51,7 @@ export default {
     }
 } as Meta<ModalFooterComponent>;
 
-const ModalFooterTemplate: StoryFn<ModalFooterComponent> = (args: ModalFooterComponent) => ({
+const ModalFooterTemplate: StoryFn<ModalFooterComponent> = args => ({
     props: {...args, closeButtonClicked: actionsData.closeButtonClicked},
     template: `<div style="width: 500px; background-color: #ffffff;">
     <fusion-modal-footer class="{{footerSizeClassName}} {{footerAlignmentClassName}}"

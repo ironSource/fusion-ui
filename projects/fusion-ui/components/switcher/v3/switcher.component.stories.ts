@@ -42,7 +42,7 @@ export default {
     }
 } as Meta<SwitcherComponent>;
 
-const SwitchTemplate: StoryFn<SwitcherComponent> = (args: SwitcherComponent) => ({
+const SwitchTemplate: StoryFn<SwitcherComponent> = args => ({
     props: args,
     template: `<fusion-switcher [configuration]="configuration" [formControl]="formControl" [options]="options"></fusion-switcher>`
 });

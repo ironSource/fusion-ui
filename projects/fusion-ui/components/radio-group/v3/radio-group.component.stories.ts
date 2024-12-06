@@ -80,7 +80,7 @@ export default {
     }
 } as Meta<RadioGroupComponent>;
 
-const RadioGroupTemplate: StoryFn<RadioGroupComponent> = (args: RadioGroupComponent) => ({
+const RadioGroupTemplate: StoryFn<RadioGroupComponent> = args => ({
     props: {...args},
     template: `<div style="width: 300px;"><fusion-radio-group
     [inline]="inline"
