@@ -1,5 +1,7 @@
 name: "Chromatic Tests"
 
+# todo: setup running on feature branches, remove this tests branch
+# read more about this here: https://www.chromatic.com/docs/github-actions
 on:
   push:
     branches:
@@ -25,3 +27,4 @@ jobs:
         with:
           # ⚠️ Make sure to configure a `CHROMATIC_PROJECT_TOKEN` repository secret
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          exitZeroOnChanges: false # 👈 Fail workflow if changes are found
