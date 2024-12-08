@@ -46,6 +46,7 @@ export default {
     ],
     tags: ['autodocs'],
     parameters: {
+        chromatic: {disableSnapshot: true}, // todo: remove when chromatic will be fixed
         design: {
             type: 'figma',
             url: 'https://www.figma.com/file/V4eZU3qDgKYPhR4eaTvSwy/%F0%9F%8E%A8-Style-guide-2021-Master?node-id=5529%3A98551'
@@ -82,7 +83,7 @@ export default {
     }
 } as Meta<TableComponent>;
 
-const TableEditTemplate: StoryFn<TableComponent> = (args: TableComponent) => ({
+const TableEditTemplate: StoryFn<TableComponent> = args => ({
     props: {
         ...args,
         rowModelChange: actionsData.rowModelChange

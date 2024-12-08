@@ -52,7 +52,7 @@ export default {
     }
 } as Meta<ChipFiltersComponent>;
 
-const FilterPanelDefaultTemplate: StoryFn<ChipFiltersComponent> = (args: ChipFiltersComponent) => ({
+const FilterPanelDefaultTemplate: StoryFn<ChipFiltersComponent> = args => ({
     props: {...args},
     template: `
 <div style="height: 350px;">

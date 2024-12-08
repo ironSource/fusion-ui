@@ -63,7 +63,7 @@ const meta: Meta<LayoutStoryWrapperComponent> = {
 };
 export default meta;
 
-const LayoutTemplate: StoryFn<LayoutComponent> = (args: LayoutComponent) => ({
+const LayoutTemplate: StoryFn<LayoutComponent> = args => ({
     props: {...args},
     template: `<fusion-layout-story-wrapper [headerContent]="headerContent" [layoutConfiguration]="layoutConfiguration"></fusion-layout-story-wrapper>`
 });

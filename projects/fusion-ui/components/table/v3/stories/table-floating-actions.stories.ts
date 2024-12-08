@@ -53,7 +53,7 @@ export default {
     }
 } as Meta<TableComponent>;
 
-const TableTemplate: StoryFn<TableComponent> = (args: TableComponent) => ({
+const TableTemplate: StoryFn<TableComponent> = args => ({
     props: {...args},
     template: `<fusion-table
     [options]="options"

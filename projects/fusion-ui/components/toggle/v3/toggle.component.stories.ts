@@ -39,7 +39,7 @@ export default {
     }
 } as Meta<ToggleComponent>;
 
-const TooltipTemplate: StoryFn<ToggleComponent> = (args: ToggleComponent) => ({
+const TooltipTemplate: StoryFn<ToggleComponent> = args => ({
     props: {...args},
     template: `<fusion-toggle
     [formControl]="formControl"
@@ -430,7 +430,7 @@ export const WithLabelErrorText = {
 // endregion
 
 // region WithCustomCheckedColor
-const TooltipCustomColorTemplate: StoryFn<ToggleComponent> = (args: ToggleComponent) => ({
+const TooltipCustomColorTemplate: StoryFn<ToggleComponent> = args => ({
     props: {...args},
     template: `<fusion-toggle style="--checked-bg-color:#FFB424;"
     [formControl]="formControl"

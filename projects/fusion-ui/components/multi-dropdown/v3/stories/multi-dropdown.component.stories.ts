@@ -60,7 +60,7 @@ export default {
     }
 } as Meta<MultiDropdownComponent>;
 
-const MultiDropdownTemplate: StoryFn<MultiDropdownComponent> = (args: MultiDropdownComponent) => ({
+const MultiDropdownTemplate: StoryFn<MultiDropdownComponent> = args => ({
     props: {...args},
     template: `<div style="height: 310px; width: 250px; margin: auto">
     <fusion-multi-dropdown

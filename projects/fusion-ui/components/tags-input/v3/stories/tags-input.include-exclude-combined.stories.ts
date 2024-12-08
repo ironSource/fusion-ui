@@ -47,7 +47,7 @@ export default {
     }
 } as Meta<TagsInputIncludeExcludeComponent>;
 
-const TagsInputTemplate: StoryFn<TagsInputIncludeExcludeComponent> = (args: TagsInputIncludeExcludeComponent) => ({
+const TagsInputTemplate: StoryFn<TagsInputIncludeExcludeComponent> = args => ({
     props: {...args},
     template: `<div style="width: 520px; height: 380px">
     <fusion-tags-input-include-exclude

@@ -52,7 +52,7 @@ export default {
     }
 } as Meta<IconButtonComponent>;
 
-const ButtonTemplate: StoryFn<IconButtonComponent> = (args: IconButtonComponent) => ({
+const ButtonTemplate: StoryFn<IconButtonComponent> = args => ({
     props: args,
     template: `<fusion-icon-button [fusionTooltip]="tooltipText"  [color]="color" [variant]="variant" [size]="size" [iconName]="iconName" [disabled]="disabled" [loading]="loading" [testId]="testId"></fusion-icon-button>`
 });
@@ -61,7 +61,7 @@ export const Basic = {
     render: ButtonTemplate
 };
 
-const ButtonColorTemplate: StoryFn<IconButtonComponent> = (args: IconButtonComponent) => ({
+const ButtonColorTemplate: StoryFn<IconButtonComponent> = args => ({
     props: args,
     template: `<div style="display: flex; gap: 14px;">
     <fusion-icon-button [fusionTooltip]="tooltipText" [iconName]="iconName" [disabled]="disabled"  [loading]="loading" [size]="size" [variant]="variant">Default</fusion-icon-button>
@@ -75,7 +75,7 @@ export const Colors = {
     args: {variant: 'text'}
 };
 
-const ButtonVariantTemplate: StoryFn<IconButtonComponent> = (args: IconButtonComponent) => ({
+const ButtonVariantTemplate: StoryFn<IconButtonComponent> = args => ({
     props: args,
     template: `<div style="display: flex; gap: 14px;">
     <fusion-icon-button [fusionTooltip]="tooltipText" [color]="color" variant="text" [iconName]="iconName" [disabled]="disabled" [loading]="loading"></fusion-icon-button>
@@ -87,7 +87,7 @@ export const Variants = {
     render: ButtonVariantTemplate
 };
 
-const ButtonSizesTemplate: StoryFn<IconButtonComponent> = (args: IconButtonComponent) => ({
+const ButtonSizesTemplate: StoryFn<IconButtonComponent> = args => ({
     props: args,
     template: `<div style="display: flex; gap: 14px; align-items: center">
     <fusion-icon-button fusionTooltip="extraSmall" [color]="color" [iconName]="iconName" [variant]="variant" [disabled]="disabled" [loading]="loading" size="extraSmall"></fusion-icon-button>

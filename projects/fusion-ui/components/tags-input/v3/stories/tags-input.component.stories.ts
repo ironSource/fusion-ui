@@ -38,7 +38,7 @@ export default {
     }
 } as Meta<TagsInputComponent>;
 
-const TagsInputTemplate: StoryFn<TagsInputComponent> = (args: TagsInputComponent) => ({
+const TagsInputTemplate: StoryFn<TagsInputComponent> = args => ({
     props: {...args, addNewTag: actionsData.addNewTag, removeTag: actionsData.removeTag},
     template: `<div style="width: 576px">
     <fusion-tags-input-wrapper

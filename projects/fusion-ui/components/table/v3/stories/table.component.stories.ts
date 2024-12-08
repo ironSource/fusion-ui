@@ -50,6 +50,7 @@ export default {
     ],
     tags: ['autodocs'],
     parameters: {
+        chromatic: {disableSnapshot: true}, // todo: remove when chromatic will be fixed
         design: {
             type: 'figma',
             url: 'https://www.figma.com/file/V4eZU3qDgKYPhR4eaTvSwy/%F0%9F%8E%A8-Style-guide-2021-Master?node-id=5529%3A98551'
@@ -70,7 +71,7 @@ export default {
     }
 } as Meta<TableComponent>;
 
-const TableTemplate: StoryFn<TableComponent> = (args: TableComponent) => ({
+const TableTemplate: StoryFn<TableComponent> = args => ({
     props: {...args},
     template: `<fusion-table
     [options]="options"
@@ -81,7 +82,7 @@ const TableTemplate: StoryFn<TableComponent> = (args: TableComponent) => ({
 ></fusion-table>`
 });
 
-const TableWithHostTemplate: StoryFn<TableComponent> = (args: TableComponent) => ({
+const TableWithHostTemplate: StoryFn<TableComponent> = args => ({
     props: {...args},
     template: `<fusion-table-story-holder
     [options]="options"
@@ -677,7 +678,7 @@ export const SortingBackend = {
 // endregion
 
 // region Sticky Header
-const TableStickyHeaderTemplate: StoryFn<TableComponent> = (args: TableComponent) => ({
+const TableStickyHeaderTemplate: StoryFn<TableComponent> = args => ({
     props: {...args},
     template: `<div style="height: 523px">
     <fusion-table
@@ -854,7 +855,7 @@ export const StickyHeader = {
 // endregion
 
 // region Stiky Column
-const TableStickyColumnTemplate: StoryFn<TableComponent> = (args: TableComponent) => ({
+const TableStickyColumnTemplate: StoryFn<TableComponent> = args => ({
     props: {...args},
     template: `<div style="width: 600px; margin: 0 auto;">
     <fusion-table
@@ -995,7 +996,7 @@ export const StickyColumn = {
 // endregion
 
 // region Sticky Column and Header
-const TableStickyColumnHeaderTemplate: StoryFn<TableComponent> = (args: TableComponent) => ({
+const TableStickyColumnHeaderTemplate: StoryFn<TableComponent> = args => ({
     props: {...args},
     template: `<div style="width: 600px; height: 523px; margin: 0 auto;">
     <fusion-table
@@ -1617,7 +1618,7 @@ const ROWS_DATA = [
 */
 
 // region Go Top Button
-const TableGoTopButtonTemplate: StoryFn<TableComponent> = (args: TableComponent) => ({
+const TableGoTopButtonTemplate: StoryFn<TableComponent> = args => ({
     props: {...args},
     template: `<div style="height: 505px;">
     <fusion-table
@@ -1790,7 +1791,7 @@ export const GoTopButton = {
 // endregion
 
 // region Infinity scroll
-const TableInfinityScrollTemplate: StoryFn<TableComponent> = (args: TableComponent) => ({
+const TableInfinityScrollTemplate: StoryFn<TableComponent> = args => ({
     props: {...args},
     template: `<div style="height: 507px;"><fusion-table-story-holder
     [options]="options"

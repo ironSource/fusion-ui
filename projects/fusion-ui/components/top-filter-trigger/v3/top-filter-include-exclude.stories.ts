@@ -51,7 +51,7 @@ export default {
     }
 } as Meta<TopFilterTriggerComponent>;
 
-const DefaultTemplate: StoryFn<TopFilterTriggerComponent> = (args: TopFilterTriggerComponent) => ({
+const DefaultTemplate: StoryFn<TopFilterTriggerComponent> = args => ({
     props: {...args},
     template: `<div style="height: 380px">
 <fusion-top-filter-trigger

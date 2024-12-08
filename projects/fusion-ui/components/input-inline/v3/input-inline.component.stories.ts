@@ -63,7 +63,7 @@ export default {
     }
 } as Meta<InputInlineComponent>;
 
-const InputTemplate: StoryFn<InputInlineComponent> = (args: InputInlineComponent) => ({
+const InputTemplate: StoryFn<InputInlineComponent> = args => ({
     props: {...args},
     template: `<div style="width: 155px;">
 <fusion-input-inline class="{{className}}"

@@ -59,7 +59,7 @@ export default {
     }
 } as Meta<ChipFilterComponent>;
 
-const ChipFilterTemplate: StoryFn<ChipFilterComponent> = (args: ChipFilterComponent) => ({
+const ChipFilterTemplate: StoryFn<ChipFilterComponent> = args => ({
     props: {...args},
     template: `<div style="height: 250px;">
     <fusion-chip-filter [configuration]="configuration">
@@ -515,7 +515,7 @@ export const DropdownWithOptionsTitleAndSearch = {
 // endregion
 
 // region DateRangeWithIcon
-const ChipFilterIconTemplate: StoryFn<ChipFilterComponent> = (args: ChipFilterComponent) => ({
+const ChipFilterIconTemplate: StoryFn<ChipFilterComponent> = args => ({
     props: {...args},
     template: `<div style="height: 350px;">
     <fusion-chip-filter [configuration]="configuration">
@@ -571,7 +571,7 @@ export const DateRangeWithIcon = {
 // endregion
 
 // region IncludeExcludeWithLabel
-const ChipFilterIncludeExcludeTemplate: StoryFn<ChipFilterComponent> = (args: ChipFilterComponent) => ({
+const ChipFilterIncludeExcludeTemplate: StoryFn<ChipFilterComponent> = args => ({
     props: {...args},
     template: `<div style="height: 350px; width: 250px;">
     <fusion-chip-filter [configuration]="configuration" [testId]="testId">

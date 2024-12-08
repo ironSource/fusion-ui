@@ -49,7 +49,7 @@ export default {
     }
 } as Meta<ButtonComponent>;
 
-const ButtonTemplate: StoryFn<ButtonComponent> = (args: ButtonComponent) => ({
+const ButtonTemplate: StoryFn<ButtonComponent> = args => ({
     props: args,
     template: `<fusion-button
 [color]="color"
@@ -72,7 +72,7 @@ export const Basic = {
     args: {content: 'Default'}
 };
 
-const ButtonColorTemplate: StoryFn<ButtonComponent> = (args: ButtonComponent) => ({
+const ButtonColorTemplate: StoryFn<ButtonComponent> = args => ({
     props: args,
     template: `<div style="display: flex; gap: 14px;">
     <fusion-button color="primary" [size]="size" [disabled]="disabled" [loading]="loading" [variant]="variant">Primary</fusion-button>
@@ -89,7 +89,7 @@ export const Colors = {
     args: {variant: 'contained'}
 };
 
-const ButtonVariantTemplate: StoryFn<ButtonComponent> = (args: ButtonComponent) => ({
+const ButtonVariantTemplate: StoryFn<ButtonComponent> = args => ({
     props: args,
     template: `<div style="display: flex; gap: 14px;">
     <fusion-button [color]="color" [size]="size" [disabled]="disabled" [loading]="loading">Contained</fusion-button>
@@ -103,7 +103,7 @@ export const Variants = {
     args: {color: 'primary'}
 };
 
-const ButtonSizesTemplate: StoryFn<ButtonComponent> = (args: ButtonComponent) => ({
+const ButtonSizesTemplate: StoryFn<ButtonComponent> = args => ({
     props: args,
     template: `<div style="display: flex; gap: 14px; align-items: center">
     <fusion-button size="small" [color]="color" [variant]="variant" [disabled]="disabled" [loading]="loading">Small</fusion-button>
@@ -118,7 +118,7 @@ export const Sizes = {
     args: {color: 'primary', variant: 'contained'}
 };
 
-const ButtonIconsTemplate: StoryFn<ButtonComponent> = (args: ButtonComponent) => ({
+const ButtonIconsTemplate: StoryFn<ButtonComponent> = args => ({
     props: args,
     template: `<div style="display: flex; gap: 14px; align-items: center">
     <fusion-button [color]="color" [size]="size" [variant]="variant" [disabled]="disabled" [loading]="loading" [endIconName]="endIconName">With end icon</fusion-button>

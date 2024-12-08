@@ -32,6 +32,8 @@ export default {
     }
 } as Meta<NavigationPrimaryMenuComponent>;
 
+// todo: refactor it!
+
 const DefaultTemplate: Story<NavigationPrimaryMenuComponent> = (args: NavigationPrimaryMenuComponent) => ({
     props: args,
     template: `<div style="height: 100vh">

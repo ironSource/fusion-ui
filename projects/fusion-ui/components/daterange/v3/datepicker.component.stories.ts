@@ -43,7 +43,7 @@ export default {
     }
 } as Meta<DaterangeComponent>;
 
-const CalendarTemplate: StoryFn<DaterangeComponent> = (args: DaterangeComponent) => ({
+const CalendarTemplate: StoryFn<DaterangeComponent> = args => ({
     props: {...args},
     template: `<div style="height: 380px; width: 250px;">
         <fusion-daterange

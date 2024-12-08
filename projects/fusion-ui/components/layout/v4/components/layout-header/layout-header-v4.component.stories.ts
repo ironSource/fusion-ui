@@ -31,7 +31,7 @@ const meta: Meta<LayoutHeaderComponent> = {
 };
 export default meta;
 
-const LayoutHeaderTemplate: StoryFn<LayoutHeaderComponent> = (args: LayoutHeaderComponent) => ({
+const LayoutHeaderTemplate: StoryFn<LayoutHeaderComponent> = args => ({
     props: {...args, backButtonClicked: actionsData.backButtonClicked},
     template: `<div class="header-only-story" style="display: flex; flex-direction: column; height: 100vh">
 <div [style]="!headerContent?.multiline ? 'border-bottom: solid 1px #E0E0E0; max-height: 64px;' : ''">

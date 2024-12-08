@@ -26,7 +26,7 @@ export default {
     }
 } as Meta<ModalContentComponent>;
 
-const ModalContentTemplate: StoryFn<ModalContentComponent> = (args: ModalContentComponent) => ({
+const ModalContentTemplate: StoryFn<ModalContentComponent> = args => ({
     props: {...args},
     template: `<div style="background-color: #ffffff;">
     <style>

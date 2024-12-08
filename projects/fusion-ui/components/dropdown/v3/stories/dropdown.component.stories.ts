@@ -72,7 +72,7 @@ export default {
     }
 } as Meta<DropdownComponent>;
 
-const DropdownTemplate: StoryFn<DropdownComponent> = (args: DropdownComponent) => ({
+const DropdownTemplate: StoryFn<DropdownComponent> = args => ({
     props: {...args},
     template: `<div style="height: 300px; width: 250px; margin: auto">
 <fusion-dropdown
@@ -704,7 +704,7 @@ export const TwoLines = {
 // endregion
 
 // region GruppedOptions
-const DropdownGruppedTemplate: StoryFn<DropdownComponent> = (args: DropdownComponent) => ({
+const DropdownGruppedTemplate: StoryFn<DropdownComponent> = args => ({
     props: {...args},
     template: `<div style="height: 300px; width: 250px; margin: auto">
 <fusion-dropdown

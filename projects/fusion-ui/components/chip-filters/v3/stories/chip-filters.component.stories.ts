@@ -70,7 +70,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 } as Meta<ChipFiltersComponent>;
 
 // region Default
-const FilterPanelDefaultTemplate: StoryFn<ChipFiltersComponent> = (args: ChipFiltersComponent) => ({
+const FilterPanelDefaultTemplate: StoryFn<ChipFiltersComponent> = args => ({
     props: {...args},
     template: `
 <div style="height: 350px;">
@@ -398,7 +398,7 @@ export const OnePreselectedNotClosable = {
 
 // endregion
 
-const FilterPanelTemplate: StoryFn<ChipFiltersComponent> = (args: ChipFiltersComponent) => ({
+const FilterPanelTemplate: StoryFn<ChipFiltersComponent> = args => ({
     props: {...args},
     template: `
 <div style="height: 350px;">
@@ -663,7 +663,7 @@ export const WithAddButton = {
 // endregion
 
 // region Add Button
-const FilterAddButtonTemplate: StoryFn<ChipFiltersComponent> = (args: ChipFiltersComponent) => ({
+const FilterAddButtonTemplate: StoryFn<ChipFiltersComponent> = args => ({
     props: {...args},
     template: `
 <div style="height: 350px;">
@@ -801,7 +801,7 @@ export const AddButtonDisabled = {
 // endregion
 
 // region NoAddButton
-const FilterPanelNoAddTemplate: StoryFn<ChipFiltersComponent> = (args: ChipFiltersComponent) => ({
+const FilterPanelNoAddTemplate: StoryFn<ChipFiltersComponent> = args => ({
     props: {...args},
     template: `
 <div style="height: 350px;">

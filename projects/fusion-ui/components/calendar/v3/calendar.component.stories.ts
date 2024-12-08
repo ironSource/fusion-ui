@@ -47,7 +47,7 @@ export default {
     }
 } as Meta<CalendarComponent>;
 
-const CalendarTemplate: StoryFn<CalendarComponent> = (args: CalendarComponent) => ({
+const CalendarTemplate: StoryFn<CalendarComponent> = args => ({
     props: {...args, daySelected: actionsData.daySelected},
     template: `<div style="width: 250px; margin: auto">
         <fusion-calendar
@@ -363,7 +363,7 @@ export const PreviouseMonth = {
 // endregion
 
 // region GridMode
-const CalendarGridTemplate: StoryFn<CalendarComponent> = (args: CalendarComponent) => ({
+const CalendarGridTemplate: StoryFn<CalendarComponent> = args => ({
     props: {...args, daySelected: actionsData.daySelected},
     template: `<div style="width: 250px; margin: auto">
         <fusion-calendar class="fu-calendar-grid"

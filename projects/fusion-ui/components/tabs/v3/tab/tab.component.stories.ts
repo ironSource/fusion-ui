@@ -48,7 +48,7 @@ Each tab should contain content that is distinct from other tabs in a set. For e
     }
 } as Meta<TabComponent>;
 
-const TabTemplate: StoryFn<TabComponent> = (args: TabComponent) => ({
+const TabTemplate: StoryFn<TabComponent> = args => ({
     props: args,
     template: `<div style="width: 50px;">
     <fusion-tab [selected]="selected" [disabled]="disabled">$link</fusion-tab>
@@ -197,7 +197,7 @@ export const SelectedDisabled = {
 // endregion
 
 // region IconLeft Tab
-const TabIconLeftTemplate: StoryFn<TabComponent> = (args: TabComponent) => ({
+const TabIconLeftTemplate: StoryFn<TabComponent> = args => ({
     props: args,
     template: `<div style="width: 100px;">
     <fusion-tab [selected]="selected" [disabled]="disabled">
@@ -319,7 +319,7 @@ export const WithIconLeftDisabled = {
 // endregion
 
 // region Icon Only Tab
-const TabIconOnlyTemplate: StoryFn<TabComponent> = (args: TabComponent) => ({
+const TabIconOnlyTemplate: StoryFn<TabComponent> = args => ({
     props: args,
     template: `<div style="width: 50px;">
     <fusion-tab [selected]="selected" [disabled]="disabled">
