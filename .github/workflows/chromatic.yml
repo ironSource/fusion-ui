@@ -1,9 +1,10 @@
 name: "Chromatic Tests"
 
 on:
-  push:
-    branches:
-      - "feature/storybook-up-to-8"
+  workflow_dispatch:
+#  push:
+#    branches:
+#      - "feature/storybook-up-to-8"
 
 jobs:
   chromatic:
