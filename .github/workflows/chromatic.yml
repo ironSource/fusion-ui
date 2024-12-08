@@ -1,4 +1,4 @@
-name: "Chromatic Tests"
+name: "CI - Chromatic Tests"
 
 # todo: setup running on feature branches, remove this tests branch
 # read more about this here: https://www.chromatic.com/docs/github-actions
