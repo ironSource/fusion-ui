@@ -3,9 +3,10 @@ name: "CI - Chromatic Tests"
 # todo: setup running on feature branches, remove this tests branch
 # read more about this here: https://www.chromatic.com/docs/github-actions
 on:
-  push:
-    branches:
-      - "feature/storybook-up-to-8"
+  workflow_dispatch:
+#  push:
+#    branches:
+#      - "feature/storybook-up-to-8"
 
 jobs:
   chromatic:
