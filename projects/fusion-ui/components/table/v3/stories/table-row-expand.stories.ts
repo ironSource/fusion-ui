@@ -33,6 +33,7 @@ export default {
     ],
     tags: ['autodocs'],
     parameters: {
+        chromatic: {disableSnapshot: true}, // todo: remove when chromatic will be fixed
         design: {
             type: 'figma',
             url: 'https://www.figma.com/file/kcJkxGeKecNjp1ViXxEYat/Margin-manager?node-id=923%3A70154&t=xPTPODCPLj2fgoMo-4'
@@ -64,7 +65,7 @@ export default {
     }
 } as Meta<TableComponent>;
 
-const TableTemplate: StoryFn<TableComponent> = (args: TableComponent) => ({
+const TableTemplate: StoryFn<TableComponent> = args => ({
     props: {...args},
     template: `<fusion-table-story-holder
     [options]="options"

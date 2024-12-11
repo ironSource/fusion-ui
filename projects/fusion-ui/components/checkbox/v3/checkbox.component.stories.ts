@@ -92,7 +92,7 @@ If you have multiple options appearing in a list, you can preserve space by usin
     }
 } as Meta<CheckboxComponent>;
 
-const CheckboxTemplate: StoryFn<CheckboxComponent> = (args: CheckboxComponent) => ({
+const CheckboxTemplate: StoryFn<CheckboxComponent> = args => ({
     props: {...args},
     template: `<fusion-checkbox [label]="label"
  [icon]="icon"

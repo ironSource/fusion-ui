@@ -99,7 +99,7 @@ export default {
     }
 } as Meta<ButtonComponent>;
 
-const ButtonTemplate: StoryFn<ButtonComponent> = (args: ButtonComponent) => ({
+const ButtonTemplate: StoryFn<ButtonComponent> = args => ({
     props: args,
     template: `<fusion-button
 class="{{class_size}} {{class_theme}}"
@@ -114,7 +114,7 @@ Button
 </fusion-button>`
 });
 
-const ButtonIconOnlyTemplate: StoryFn<ButtonComponent> = (args: ButtonComponent) => ({
+const ButtonIconOnlyTemplate: StoryFn<ButtonComponent> = args => ({
     props: args,
     template: `<fusion-button
 class="{{class_size}} {{class_theme}}"

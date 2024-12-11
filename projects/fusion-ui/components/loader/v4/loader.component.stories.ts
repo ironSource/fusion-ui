@@ -38,7 +38,7 @@ A loader web component is a visual element designed to indicate that content or 
     }
 } as Meta<LoaderComponent>;
 
-const LoaderTemplate: StoryFn<LoaderComponent> = (args: LoaderComponent) => ({
+const LoaderTemplate: StoryFn<LoaderComponent> = args => ({
     props: args,
     template: `<fusion-loader [style.width]="size" [style.height]="size" [strokeWidth]="strokeWidth"></fusion-loader>`
 });

@@ -58,7 +58,7 @@ export default {
     }
 } as Meta<InputComponent>;
 
-const InputTemplate: StoryFn<InputComponent> = (args: InputComponent) => ({
+const InputTemplate: StoryFn<InputComponent> = args => ({
     props: {...args},
     template: `<div style="width: 290px;"><fusion-input [configuration]="configuration" [formControl]="formControl"></fusion-input></div>`
 });
@@ -169,7 +169,7 @@ export const TypeNumber = {
     }
 };
 
-const InputTimeTemplate: StoryFn<InputComponent> = (args: InputComponent) => ({
+const InputTimeTemplate: StoryFn<InputComponent> = args => ({
     props: {...args},
     template: `<fusion-input [configuration]="configuration" [formControl]="formControl"></fusion-input>`
 });

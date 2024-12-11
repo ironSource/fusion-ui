@@ -37,7 +37,7 @@ export default {
     }
 } as Meta<ModalHeaderComponent>;
 
-const ModalHeaderTemplate: StoryFn<ModalHeaderComponent> = (args: ModalHeaderComponent) => ({
+const ModalHeaderTemplate: StoryFn<ModalHeaderComponent> = args => ({
     props: {...args, close: actionsData.close},
     template: `<div style="width: 500px; background-color: #ffffff;">
     <fusion-modal-header

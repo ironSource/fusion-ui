@@ -26,7 +26,7 @@ export default {
     }
 } as Meta<CustomCellEditComponent>;
 
-const CustomCellTemplate: StoryFn<CustomCellEditComponent> = (args: CustomCellEditComponent) => ({
+const CustomCellTemplate: StoryFn<CustomCellEditComponent> = args => ({
     props: {...args}
 });
 

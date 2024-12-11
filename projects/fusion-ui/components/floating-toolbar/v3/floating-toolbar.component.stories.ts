@@ -47,7 +47,7 @@ export default {
     }
 } as Meta<FloatingToolbarComponent>;
 
-const DropdownTemplate: StoryFn<FloatingToolbarComponent> = (args: FloatingToolbarComponent) => ({
+const DropdownTemplate: StoryFn<FloatingToolbarComponent> = args => ({
     props: {...args},
     template: `<fusion-button (click)="shown = !shown"><span>Toggle toolbar</span></fusion-button>
 

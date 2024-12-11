@@ -36,7 +36,7 @@ export default {
     }
 } as Meta<ModalComponent>;
 
-const ModalTemplate: StoryFn<ModalComponent> = (args: ModalComponent) => ({
+const ModalTemplate: StoryFn<ModalComponent> = args => ({
     props: {...args},
     template: `<style>
 .content-example{

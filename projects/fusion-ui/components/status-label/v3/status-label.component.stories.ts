@@ -48,7 +48,7 @@ export default {
     }
 } as Meta<StatusLabelComponent>;
 
-const StatusLabelTemplate: StoryFn<StatusLabelComponent> = (args: StatusLabelComponent) => ({
+const StatusLabelTemplate: StoryFn<StatusLabelComponent> = args => ({
     props: {...args}
 });
 
@@ -59,7 +59,7 @@ export const Default = {
 // endregion
 
 // region WithLabel
-const StatusLabelWithLabelTemplate: StoryFn<StatusLabelComponent> = (args: StatusLabelComponent) => ({
+const StatusLabelWithLabelTemplate: StoryFn<StatusLabelComponent> = args => ({
     props: {...args},
     template: `<fusion-status-label
   [status]="status"
@@ -86,7 +86,7 @@ export const WithLabel = {
 // endregion
 
 // region WithTwoLines
-const StatusLabelWithTwoLinesTemplate: StoryFn<StatusLabelComponent> = (args: StatusLabelComponent) => ({
+const StatusLabelWithTwoLinesTemplate: StoryFn<StatusLabelComponent> = args => ({
     props: {...args},
     template: `<fusion-status-label
   [status]="status"

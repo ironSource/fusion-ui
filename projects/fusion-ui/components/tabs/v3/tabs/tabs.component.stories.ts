@@ -66,7 +66,7 @@ Each tab should contain content that is distinct from other tabs in a set. For e
     }
 } as Meta<TabsComponent>;
 
-const TabsTemplate: StoryFn<TabsComponent> = (args: TabsComponent) => ({
+const TabsTemplate: StoryFn<TabsComponent> = args => ({
     props: {...args, selectedChange: actionsData.selectedChange},
     template: `<style>
     fusion-tab {background-color: #fff;}

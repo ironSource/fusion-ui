@@ -62,7 +62,7 @@ export default {
     }
 } as Meta<DropdownDualMultiSelectComponent>;
 
-const DropdownIncludeExcludeTemplate: StoryFn<DropdownDualMultiSelectComponent> = (args: DropdownDualMultiSelectComponent) => ({
+const DropdownIncludeExcludeTemplate: StoryFn<DropdownDualMultiSelectComponent> = args => ({
     props: {...args},
     template: `<div style="height: 400px; width: 450px; margin: auto">
  <fusion-dropdown-dual-multi-select

@@ -71,7 +71,7 @@ type LayoutV4Story = StoryObj<LayoutComponent>;
 };*/
 
 export const Default: LayoutV4Story = {
-    render: (args: LayoutComponent) => ({
+    render: args => ({
         props: {
             ...args,
             headerContent: {
@@ -100,7 +100,7 @@ export const Default: LayoutV4Story = {
 };
 
 export const WithAppTrigger: LayoutV4Story = {
-    render: (args: LayoutComponent) => ({
+    render: args => ({
         props: {
             ...args,
             headerContent: {
@@ -168,7 +168,7 @@ export const WithAppTrigger: LayoutV4Story = {
 };
 
 export const WithFilters: LayoutV4Story = {
-    render: (args: LayoutComponent) => ({
+    render: args => ({
         props: {
             ...args,
             headerContent: {
@@ -245,7 +245,7 @@ export const WithFilters: LayoutV4Story = {
 };
 
 export const WithTabs: LayoutV4Story = {
-    render: (args: LayoutComponent) => ({
+    render: args => ({
         props: {
             ...args,
             headerContent: {
@@ -322,7 +322,7 @@ export const WithTabs: LayoutV4Story = {
 };
 
 export const Drilldown: LayoutV4Story = {
-    render: (args: LayoutComponent) => ({
+    render: args => ({
         props: {
             ...args,
             headerContent: {
@@ -346,7 +346,7 @@ export const Drilldown: LayoutV4Story = {
 };
 
 export const NavigateToDefaultByClickOnParent: LayoutV4Story = {
-    render: (args: LayoutComponent) => ({
+    render: args => ({
         props: {
             ...args,
             layoutConfiguration: {
@@ -378,7 +378,7 @@ export const NavigateToDefaultByClickOnParent: LayoutV4Story = {
 };
 
 export const ShowSecondaryByHoverOnPrimary: LayoutV4Story = {
-    render: (args: LayoutComponent) => ({
+    render: args => ({
         props: {
             ...args,
             layoutConfiguration: {

@@ -42,7 +42,7 @@ export default {
     }
 } as Meta<MenuDropComponent>;
 
-const MenuDropTemplate: StoryFn<MenuDropComponent> = (args: MenuDropComponent) => ({
+const MenuDropTemplate: StoryFn<MenuDropComponent> = args => ({
     props: {...args},
     template: `<div style="margin: auto; display: flex; justify-content: center; height: 200px">
     <fusion-menu-drop

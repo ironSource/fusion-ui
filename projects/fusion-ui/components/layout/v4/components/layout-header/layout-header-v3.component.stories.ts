@@ -34,7 +34,7 @@ const meta: Meta<LayoutHeaderComponent> = {
 };
 export default meta;
 
-const LayoutHeaderTemplate: StoryFn<LayoutHeaderComponent> = (args: LayoutHeaderComponent) => ({
+const LayoutHeaderTemplate: StoryFn<LayoutHeaderComponent> = args => ({
     props: {...args, backButtonClicked: actionsData.backButtonClicked},
     template: `<div style="border-bottom: solid 1px #E0E0E0; max-height: 64px;">
     <fusion-layout-header [headerContent]="headerContent" [teleportElements]="teleportElements" (backButtonClicked)="backButtonClicked($event)"></fusion-layout-header>
