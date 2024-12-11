@@ -13,9 +13,6 @@ documentation.json
 /storybook-static
 /documentation
 
-# chromatic config
-chromatic.config.json
-
 # dependencies
 /node_modules
 node_modules
