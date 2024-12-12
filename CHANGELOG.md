@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [8.4.1](https://github.com/ironSource/fusion-ui/compare/v8.4.0...v8.4.1) (2024-12-12)
+
+
+### Bug Fixes
+
+* **calendar:** calendar v4 - fixed hover on empty days (no need hover on it) ([97353f0](https://github.com/ironSource/fusion-ui/commit/97353f0ca397146cc25c57539ab701df22c57c53))
+* **calendar:** date-range v4 - rename stories ([c65ac9f](https://github.com/ironSource/fusion-ui/commit/c65ac9f8c1c44c734da8afb5c886dde5283c1378))
+* **DatePeriodPicker:** change options-wrapper width in story ([af6c5ef](https://github.com/ironSource/fusion-ui/commit/af6c5ef8de09f4f519e57db59fbec852aa08fc04))
+* **radio-group:** fusion-radio-group v4 - horizontal gap changed to 16px instead 8px ([ee11cc4](https://github.com/ironSource/fusion-ui/commit/ee11cc49882b9aa565efafca982a0243a5e90ce6))
+
 ## [8.4.0](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.11...v8.4.0) (2024-10-21)
 
 ## [8.4.0-rc.11](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.10...v8.4.0-rc.11) (2024-10-15)
