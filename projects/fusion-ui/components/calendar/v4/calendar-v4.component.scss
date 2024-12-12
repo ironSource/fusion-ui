@@ -110,10 +110,12 @@
           span {
             position: relative;
           }
-
+          &:empty{
+            cursor: default;
+          }
 
           // region regular day hover
-          &:not(.selected):not(.disabled):not(.hover-current):hover {
+          &:not(.selected):not(.disabled):not(.hover-current):not(:empty):hover {
             &:before {
               @include calendar-circle(var(--fu-day-hover-bg-color), 50%);
             }
