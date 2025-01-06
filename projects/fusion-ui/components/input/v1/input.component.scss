@@ -335,7 +335,7 @@ $smallPadding: 4px 6px;
             }
         }
         &.fu-error-warning {
-            .fu-input-units.fu-error,
+            .fu-input-units,
             input {
                 border-color: $warningBorderColor;
             }
