@@ -24,6 +24,26 @@ All notable changes to this project will be documented in this file. See [commit
 
 * **update-a18:** manual update some packages versions ([d646ca4](https://github.com/ironSource/fusion-ui/commit/d646ca40be525d05b2c1e4b98750ad95689a300e))
 
+
+### [8.4.2](https://github.com/ironSource/fusion-ui/compare/v8.4.2-rc.0...v8.4.2) (2025-01-06)
+
+### [8.4.2-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.4.1...v8.4.2-rc.0) (2025-01-06)
+
+
+### Bug Fixes
+
+* **isct-532:** fixed css for input v1 unit placeholder border color for warning ([2c7130e](https://github.com/ironSource/fusion-ui/commit/2c7130e78a2f75298b277e46a7b7768b2bea3bcb))
+
+### [8.4.1](https://github.com/ironSource/fusion-ui/compare/v8.4.0...v8.4.1) (2024-12-12)
+
+
+### Bug Fixes
+
+* **calendar:** calendar v4 - fixed hover on empty days (no need hover on it) ([97353f0](https://github.com/ironSource/fusion-ui/commit/97353f0ca397146cc25c57539ab701df22c57c53))
+* **calendar:** date-range v4 - rename stories ([c65ac9f](https://github.com/ironSource/fusion-ui/commit/c65ac9f8c1c44c734da8afb5c886dde5283c1378))
+* **DatePeriodPicker:** change options-wrapper width in story ([af6c5ef](https://github.com/ironSource/fusion-ui/commit/af6c5ef8de09f4f519e57db59fbec852aa08fc04))
+* **radio-group:** fusion-radio-group v4 - horizontal gap changed to 16px instead 8px ([ee11cc4](https://github.com/ironSource/fusion-ui/commit/ee11cc49882b9aa565efafca982a0243a5e90ce6))
+
 ## [8.4.0](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.11...v8.4.0) (2024-10-21)
 
 ## [8.4.0-rc.11](https://github.com/ironSource/fusion-ui/compare/v8.4.0-rc.10...v8.4.0-rc.11) (2024-10-15)
