@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [8.4.2](https://github.com/ironSource/fusion-ui/compare/v8.4.2-rc.0...v8.4.2) (2025-01-06)
+
+### [8.4.2-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.4.1...v8.4.2-rc.0) (2025-01-06)
+
+
+### Bug Fixes
+
+* **isct-532:** fixed css for input v1 unit placeholder border color for warning ([2c7130e](https://github.com/ironSource/fusion-ui/commit/2c7130e78a2f75298b277e46a7b7768b2bea3bcb))
+
 ### [8.4.1](https://github.com/ironSource/fusion-ui/compare/v8.4.0...v8.4.1) (2024-12-12)
 
 
