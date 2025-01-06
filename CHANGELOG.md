@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [9.1.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.4.2...v9.1.0-rc.0) (2025-01-06)
+
+
+### Bug Fixes
+
+* **isct-532:** fixed css for input v1 unit placeholder border color for warning ([74d6e2b](https://github.com/ironSource/fusion-ui/commit/74d6e2b44e1f117c1c0b2c25ca2d09d4847c8561))
+
+## [9.0.0](https://github.com/ironSource/fusion-ui/compare/v8.4.0...v9.0.0) (2024-12-04)
+
+
+### Features
+
+* **update-a18:** remove fusion-mfe project ([9584e5c](https://github.com/ironSource/fusion-ui/commit/9584e5cbffc38571e4fa3fd6a8407d5d534775a6))
+
+
+### Reverts
+
+* Revert "chore(update-a18): refactor common scss" ([1cb2225](https://github.com/ironSource/fusion-ui/commit/1cb22259a8463e0489a83bd2b03f20bc07e362fd))
+
+
+### Tests
+
+* **update-a18:** update unit tests for HttpTestingController and signal inputs ([2279205](https://github.com/ironSource/fusion-ui/commit/227920533bba2fdb5fa674e44aebf915fd685863))
+
+
+### Code Refactoring
+
+* **update-a18:** manual update some packages versions ([d646ca4](https://github.com/ironSource/fusion-ui/commit/d646ca40be525d05b2c1e4b98750ad95689a300e))
+
 ## [9.0.0](https://github.com/ironSource/fusion-ui/compare/v8.4.0...v9.0.0) (2024-12-04)
 
 
