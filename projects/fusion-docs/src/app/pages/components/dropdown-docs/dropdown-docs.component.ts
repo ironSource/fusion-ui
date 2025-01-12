@@ -165,6 +165,7 @@ export class DropdownDocsComponent implements OnInit, OnDestroy {
     optionsAutoComplete: Array<any>;
     options: Array<any>;
     optionsNoIcons: Array<DropdownOption>;
+    optionsInfoIcon: Array<DropdownOption>;
     optionsApplications: Array<DropdownOption>;
     optionsNoIconsWithImages: Array<any>;
     loading: boolean;
@@ -629,6 +630,18 @@ export class DropdownDocsComponent implements OnInit, OnDestroy {
             delete objNoIcon.displayText;
 
             return objNoIcon;
+        });
+
+        this.optionsInfoIcon = this.options.map(obj => {
+            const objIcon = Object.assign({}, obj);
+            delete objIcon.icon;
+            delete objIcon.displayText;
+
+            objIcon.tooltipedIcon = {
+                iconName: 'info',
+                tooltipText: 'This is a tooltip'
+            };
+            return objIcon;
         });
 
         this.optionsNoIconsWithImages = this.optionsNoIcons.map(obj => {
