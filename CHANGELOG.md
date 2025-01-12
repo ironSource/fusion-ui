@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [8.5.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.4.2...v8.5.0-rc.0) (2025-01-12)
+
+
+### Features
+
+* **ISCT-540:** dropdown option v1 get new tooltiped icon ([2e0a8af](https://github.com/ironSource/fusion-ui/commit/2e0a8afbf4baff3d57749242e0db1c2c00b92424))
+
 ### [8.4.2](https://github.com/ironSource/fusion-ui/compare/v8.4.2-rc.0...v8.4.2) (2025-01-06)
 
 ### [8.4.2-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.4.1...v8.4.2-rc.0) (2025-01-06)
