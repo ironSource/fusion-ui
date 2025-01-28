@@ -9,6 +9,11 @@
         <fusion-icon *ngIf="option.indicationStatus"
                      [name]="{iconName: 'status-dots', iconVersion: 'v1'}"></fusion-icon>
         <span innerHTML="{{ optionToStringFunc | generic: option:mappingOptions:settings }}"></span>
+        <span *ngIf="option.tooltipedIcon && !option.isDisabled">
+            <fusion-icon class="option-tooltiped-icon"
+                    [fusionTooltip]="option.tooltipedIcon?.tooltipText"
+                    [name]="option.tooltipedIcon?.iconName"></fusion-icon>
+        </span>
         <div *ngIf="option.subText?.text && shouldDisplayMultiRaw" class="sub-text-container">
             <fusion-icon *ngIf="option.subText?.icon" class="sub-text-icon" [name]="option.subText?.icon"></fusion-icon>
             <label>{{ option.subText?.text }}</label>

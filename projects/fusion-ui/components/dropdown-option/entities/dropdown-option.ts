@@ -25,4 +25,11 @@ export interface DropdownOption {
     tooltipCustom?: TooltipCustom;
     isDisabled?: boolean;
     content?: DynamicComponentConfiguration; // dynamic content as option
+    /**
+     * This property for option in component v1
+     */
+    tooltipedIcon?: {
+        iconName: string;
+        tooltipText: string;
+    };
 }
