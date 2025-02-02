@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [9.1.0](https://github.com/ironSource/fusion-ui/compare/v9.1.0-rc.1...v9.1.0) (2025-02-02)
+
 ## [9.1.0-rc.1](https://github.com/ironSource/fusion-ui/compare/v8.5.0...v9.1.0-rc.1) (2025-01-28)
 
 
