@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {TableCellIconExampleModule} from '../../components/table-cell-icon-exmpale';
 import {PlaygroundComponent} from './playground.component';
@@ -37,7 +37,6 @@ import {VideoPlayerModule} from '@ironsource/fusion-ui/components/video-player/v
         CommonModule,
         PlaygroundRoutingModule,
         ReactiveFormsModule,
-        HttpClientModule,
         ButtonModule.forRoot({
             svgOptions: {assetsPath: environment.assetsPath}
         }),
@@ -66,6 +65,7 @@ import {VideoPlayerModule} from '@ironsource/fusion-ui/components/video-player/v
         ToggleModule,
         AccordionModule,
         VideoPlayerModule
-    ]
+    ],
+    providers: [provideHttpClient(withInterceptorsFromDi())]
 })
 export class PlaygroundModule {}

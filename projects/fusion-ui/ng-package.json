@@ -3,6 +3,5 @@
     "dest": "../../dist/fusion-ui",
     "lib": {
         "entryFile": "src/public-api.ts"
-    },
-    "allowedNonPeerDependencies": ["."]
+    }
 }

@@ -3,13 +3,13 @@ import {CommonModule} from '@angular/common';
 import {SvgComponent} from './svg.component';
 import {SvgOptions} from './svg-entities';
 import {SVG_OPTIONS_DEFAULT_VALUES, SVG_OPTIONS_TOKEN} from './svg-config';
-import {HttpClientModule, provideHttpClient, withFetch} from '@angular/common/http';
+import {provideHttpClient, withFetch, withInterceptorsFromDi} from '@angular/common/http';
 
 @NgModule({
     declarations: [SvgComponent],
     exports: [SvgComponent],
-    imports: [CommonModule, HttpClientModule],
-    providers: [provideHttpClient(withFetch())]
+    imports: [CommonModule],
+    providers: [provideHttpClient(withFetch()), provideHttpClient(withInterceptorsFromDi())]
 })
 export class SvgModule {
     static forRoot(options?: SvgOptions): ModuleWithProviders<SvgModule> {
