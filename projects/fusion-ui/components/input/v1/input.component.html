@@ -105,7 +105,7 @@
 </div>
 
 <div class="fu-error-msg"
-     *ngIf="config?.error !== true"
+     *ngIf="config?.error && config?.error !== true"
      [hidden]="config?.errorType && showErrorIcon()"
      [class.focused]="focused"
      [innerHTML]="config.error">

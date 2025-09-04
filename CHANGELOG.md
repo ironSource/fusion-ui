@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+### [8.5.1](https://github.com/ironSource/fusion-ui/compare/v8.5.1-rc.0...v8.5.1) (2025-09-04)
+
+### [8.5.1-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.5.0...v8.5.1-rc.0) (2025-09-04)
+
+
+### Bug Fixes
+
+* **dg-10041:** fix input v1 component for error shown ([7a5d4be](https://github.com/ironSource/fusion-ui/commit/7a5d4be361e5966ec9eb3ce1a4a4ecbe4eda1631))
+
+
+### CI
+
+* **8.x.x:** init after merge ([04d63a6](https://github.com/ironSource/fusion-ui/commit/04d63a648a6befe17a0f6816f4344a6613d7e489))
+
 ## [8.5.0](https://github.com/ironSource/fusion-ui/compare/v8.5.0-rc.0...v8.5.0) (2025-01-20)
 
 ## [8.5.0-rc.0](https://github.com/ironSource/fusion-ui/compare/v8.4.2...v8.5.0-rc.0) (2025-01-12)
