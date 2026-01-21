@@ -1,19 +1,44 @@
 {
-    "name": "e2e",
+    "name": "e2e-fusion-ui",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
+    "main": "./shared-e2e-commands.js",
+    "module": "entities/index.ts",
     "scripts": {
         "pw:ci": "npx playwright test --reporter=html",
         "pw:local": "BASE_URL=http://localhost:6008/ npx playwright test",
         "pw:ui": "BASE_URL=https://fusion-storybook.ironsrc.mobi/branch_feature-isct-192-components-v4/ npx playwright test --ui",
-        "pw:ui:local": "BASE_URL=http://localhost:6008/ npx playwright test --ui"
+        "pw:ui:local": "BASE_URL=http://localhost:6008/ npx playwright test --ui",
+        "pw:build": "webpack build"
     },
-    "keywords": [],
+    "exports": {
+        ".": {
+            "types": "./fusion-e2e/entities/index.d.ts",
+            "esm2020": "./fusion-pw-lib.js",
+            "es2020": "./fusion-pw-lib.js",
+            "es2015": "./fusion-pw-lib.js",
+            "node": "./fusion-pw-lib.js",
+            "default": "./fusion-pw-lib.js"
+        }
+    },
+    "types": "./fusion-e2e/entities/index.d.ts",
+    "esm2020": "./fusion-pw-lib.js",
+    "es2020": "./fusion-pw-lib.js",
+    "es2015": "./fusion-pw-lib.js",
+    "node": "./fusion-pw-lib.js",
+    "default": "./fusion-pw-lib.js",
     "author": "",
     "license": "ISC",
     "devDependencies": {
         "@playwright/test": "^1.42.0",
-        "@types/node": "^20.11.22"
+        "@types/node": "^20.11.22",
+        "copy-webpack-plugin": "^12.0.2",
+        "rollup-plugin-node-builtins": "^2.1.2",
+        "ts-loader": "^9.5.1",
+        "tsconfig-paths-webpack-plugin": "^4.1.0",
+        "typescript": "^5.4.4",
+        "vite": "^4.4.5",
+        "vite-plugin-static-copy": "^0.17.0",
+        "webpack-cli": "^5.1.4"
     }
 }

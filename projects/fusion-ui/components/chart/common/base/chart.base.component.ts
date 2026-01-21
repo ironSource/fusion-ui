@@ -58,6 +58,8 @@ export abstract class ChartBaseComponent implements OnInit, OnDestroy, OnChanges
     /** @internal */
     @Input() type: ChartType;
 
+    @Input() testId!: string;
+
     @Input() set data(value: ChartData | FusionChartPieData) {
         this._data = {...value};
     }

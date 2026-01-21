@@ -9,6 +9,8 @@ import {TooltipDirective} from '@ironsource/fusion-ui/components/tooltip/v4';
 import {ColorsService} from '@ironsource/fusion-ui/services/colors';
 import {CheckboxComponent} from '@ironsource/fusion-ui/components/checkbox/v4';
 import {isNullOrUndefined} from '@ironsource/fusion-ui/utils';
+import {ChartLabelTestIdModifiers} from '@ironsource/fusion-ui/entities';
+import {TestIdsService} from '@ironsource/fusion-ui/services/test-ids';
 
 @Component({
     selector: 'fusion-chart-labels',
@@ -80,4 +82,7 @@ export class ChartLabelsV4Component implements OnInit, OnDestroy {
         $event.stopPropagation();
         this.labelClick$.next(chartLabel);
     }
+
+    protected readonly ChartLabelTestIdModifiers = ChartLabelTestIdModifiers;
+    protected readonly getTestId = TestIdsService.getTestId;
 }

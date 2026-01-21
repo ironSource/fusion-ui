@@ -1,5 +1,6 @@
-<div class="fu-chart-labels-wrapper">
-    <div class="fu-chart-label" *ngFor="let datasetLabel of labels;"
+<div class="fu-chart-labels-wrapper" [attr.data-testid]="testId">
+    <div class="fu-chart-label" *ngFor="let datasetLabel of labels; let i = index"
+         [attr.data-testid]="getTestId(testId, ChartLabelTestIdModifiers.LABEL)"
          [class.fu-clickable]="datasetLabel?.labelVisible"
          [class.fu-align-right]="datasetLabel?.alignToRight"
          [style.max-width]="'calc(100% / ' + labels?.length + ' - var(--fu-chart-label-width-normalize, 8px)'"
@@ -9,12 +10,15 @@
     >
         <ng-container *ngIf="!datasetLabel.typeCheckbox">
             <div class="fu-chart-label-color"
+             [attr.data-testid]="getTestId(testId, ChartLabelTestIdModifiers.LABEL_COLOR)"
                  [style.background-color]="getLabelBGColor(datasetLabel.color)"
                  [style.border-color]="datasetLabel.color"
             >
             </div>
-            <fusion-icon class="fu-chart-label-icon" *ngIf="datasetLabel.icon" [name]="datasetLabel.icon"></fusion-icon>
-            <div class="fu-chart-label-text truncate" [class.fu-label-strikethrough]="!(datasetLabel?.labelVisible?.value ?? true)" [attr.data-testid]="testId"
+            <fusion-icon class="fu-chart-label-icon" *ngIf="datasetLabel.icon"
+                     [attr.data-testid]="getTestId(testId, ChartLabelTestIdModifiers.LABEL_ICON)"
+                     [name]="datasetLabel.icon"></fusion-icon>
+            <div class="fu-chart-label-text truncate" [class.fu-label-strikethrough]="!(datasetLabel?.labelVisible?.value ?? true)" [attr.data-testid]="testId + '_' + i"
                  [fusionTooltip]="datasetLabel.label">{{ datasetLabel.label }}
             </div>
         </ng-container>
